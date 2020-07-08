@@ -4,10 +4,9 @@ description: Tento článek shrnuje Azure Backup podporu při zálohování poč
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84709874"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
@@ -41,7 +40,7 @@ Instalace na záložní server | Když nastavíte DPM nebo MABS pro zálohován�
 
 Když použijete agenta MARS k zálohování dat, agent pořizuje snímek dat a uloží ho do složky místní mezipaměti předtím, než odešle data do Azure. Složka cache (Scratch) má několik požadavků:
 
-**Mezipaměť** | **Podrobnosti**
+**Cache** | **Podrobnosti**
 --- | ---
 Velikost |  Volné místo ve složce mezipaměti by mělo být alespoň 5 až 10 procent celkové velikosti zálohovaných dat.
 Umístění | Složka mezipaměti musí být uložená místně na počítači, který se zálohuje, a musí být online. Složka mezipaměti by neměla být ve sdílené síťové složce, na vyměnitelném médiu nebo na svazku offline.
@@ -111,13 +110,13 @@ Operační systémy musí být 64 bitů a měly by být spuštěny nejnovější
 
 **Operační systém** | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**
 --- | --- | --- | ---
-Windows 10 (Enterprise, pro, Home) | Ano | Ne |  Ověřte odpovídající verzi serveru pro software/modul požadavky.
-Windows 8.1 (Enterprise, pro)| Ano |Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
-Windows 8 (Enterprise, pro) | Ano | Ne | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 10 (Enterprise, pro, Home) | Ano | No |  Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 8.1 (Enterprise, pro)| Ano |No | Ověřte odpovídající verzi serveru pro software/modul požadavky.
+Windows 8 (Enterprise, pro) | Ano | No | Ověřte odpovídající verzi serveru pro software/modul požadavky.
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2012 (Standard, Datacenter, základ) | Ano | Ano |– .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0 <br> – Údržba a Správa imagí nasazení (DISM.exe)
-Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Ano | Ne | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
+Windows Storage Server 2016/2012 R2/2012 (Standard, pracovní skupina) | Yes | No | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 Windows Server 2019 (Standard, Datacenter, Essentials) | Ano | Ano | – .NET 4,5 <br> – Windows PowerShell <br> -Nejnovější kompatibilní Microsoft VC + + distribuovatelné <br> – Microsoft Management Console (MMC) 3,0
 
 Další informace najdete v tématu [podporované MABS a operační systémy DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
@@ -132,9 +131,9 @@ U místních nebo hostovaných prostředí, kde nemůžete upgradovat operační
 
 | **Operační systém**                                       | **Soubory/složky** | **Stav systému** | **Požadavky na software/modul**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Ano               | Ne                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
+| Windows 7 (Ultimate, Enterprise, pro, Home Premium/Basic, Starter) | Yes               | No                 | Ověřte odpovídající verzi serveru pro software/modul požadavky. |
 | Windows Server 2008 R2 (Standard, Enterprise, Datacenter, základ) | Ano               | Ano                | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) |
-| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Ano               | Ne                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
+| Windows Server 2008 SP2 (Standard, Datacenter, základ)  | Yes               | No                 | – .NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilní Microsoft VC + + Redistributable <br>  – Microsoft Management Console (MMC) 3,0 <br>  – Údržba a Správa imagí nasazení (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Omezení zálohování
 

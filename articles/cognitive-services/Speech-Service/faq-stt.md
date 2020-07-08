@@ -10,12 +10,11 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: c572c03936a809ce2f5ccb0071352d6c84c2ee90
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
-ms.translationtype: MT
+ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561569"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921016"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -71,7 +70,7 @@ Pokud jste přizpůsobeni a nasadili model pomocí směrného plánu V 1.0, zůs
 
 **Otázka: jsou protokolovány moje požadavky?**
 
-Odpověď **: můžete**vybrat, když vytvoříte nasazení pro přepnutí trasování. V tomto okamžiku nebudou protokolovány žádné zvuky ani přepisy. V opačném případě se požadavky obvykle protokolují do Azure v zabezpečeném úložišti.
+Odpověď **: ve**výchozím nastavení se požadavky neprotokolují (ani zvuk ani přepis). V případě potřeby můžete vybrat *obsah protokolu z této možnosti koncového bodu* , když [vytvoříte vlastní koncový bod](how-to-custom-speech-deploy-model.md) , který povolí trasování. Požadavky se pak budou protokolovat v Azure v zabezpečeném úložišti.
 
 **Otázka: jsou omezeny moje požadavky?**
 
@@ -110,7 +109,7 @@ a buď
 
 - přístupový token pro vaše předplatné (viz [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
 
-– nebo –
+nebo
 
 - ID prostředku pro vaše předplatné:
   - Přejít na [Azure Portal](https://portal.azure.com),
@@ -118,6 +117,10 @@ a buď
   - ze zobrazených služeb vyberte službu rozpoznávání řeči, pro kterou chcete, aby se souběžnost zvýšila,
   - Zobrazit `Properties` pro tuto službu,
   - Zkopírujte dokončeno `Resource ID` .
+  
+**Otázka: zvýší počet mých souběžných souběžnosti na moje náklady?**
+
+Odpověď: Ne, náklady vycházejí **z využití**. Zvýšení souběžnosti nemá za následek vyšší náklady. Podrobnosti o nákladech najdete na naší [stránce s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) . 
   
 >[!NOTE]
 >[Kontejnery](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) nevyžadují zvýšení omezení souběžnosti, protože kontejnery jsou omezené jenom procesory hardwaru, na kterých jsou hostované.

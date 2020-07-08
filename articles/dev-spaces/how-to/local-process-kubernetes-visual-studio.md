@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Naučte se používat místní proces s Kubernetes a sadou Visual Studio k připojení vašeho vývojového počítače k clusteru Kubernetes s Azure Dev Spaces
 keywords: Místní proces pomocí Kubernetes, Azure Dev Spaces, vývojových prostorů, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
 ms.openlocfilehash: 8e89baeac8d9042a87685ed1268ed694db8d9455
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84316800"
 ---
 # <a name="use-local-process-with-kubernetes-with-visual-studio-preview"></a>Použití místního procesu s Kubernetes s využitím sady Visual Studio (Preview)
@@ -25,7 +24,7 @@ V této příručce se dozvíte, jak pomocí místního procesu s Kubernetes př
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][preview-terms]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tato příručka používá [ukázkovou aplikaci Azure dev Spaces pro sdílení kol][bike-sharing-github] k předvedení připojení vývojového počítače ke clusteru Kubernetes. Pokud už máte svoji vlastní aplikaci spuštěnou v clusteru Kubernetes, můžete postupovat podle následujících kroků a používat i názvy vlastních služeb.
 

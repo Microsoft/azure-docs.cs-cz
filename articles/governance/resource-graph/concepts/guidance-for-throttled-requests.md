@@ -4,10 +4,9 @@ description: Naučte se paralelně seskupovat, rozložit, stránkování a dotaz
 ms.date: 05/20/2020
 ms.topic: conceptual
 ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682062"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Doprovodné materiály k omezením požadavků v grafu prostředků Azure

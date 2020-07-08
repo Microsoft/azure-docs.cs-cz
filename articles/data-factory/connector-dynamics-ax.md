@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 23a486dfe1256cea46f6722873950ffcb1bde084
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84982692"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Kopírování dat z Dynamics AX pomocí Azure Data Factory
@@ -63,13 +62,13 @@ Pro propojenou službu Dynamics AX jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** musí být nastavená na **DynamicsAx**. |Ano |
-| url | Koncový bod OData instance Dynamics AX (nebo finance a operace Dynamics 365). |Ano |
-| servicePrincipalId | Zadejte ID klienta aplikace. | Ano |
-| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Ano |
-| aadResourceId | Zadejte prostředek AAD, který požadujete pro autorizaci. Například pokud je adresa URL vašeho Dynamics `https://sampledynamics.sandbox.operations.dynamics.com/data/` , odpovídající prostředek AAD je obvykle `https://sampledynamics.sandbox.operations.dynamics.com` . | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Můžete zvolit Azure Integration Runtime nebo v místním prostředí Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| typ | Vlastnost **Type** musí být nastavená na **DynamicsAx**. |Yes |
+| url | Koncový bod OData instance Dynamics AX (nebo finance a operace Dynamics 365). |Yes |
+| servicePrincipalId | Zadejte ID klienta aplikace. | Yes |
+| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| tenant | Zadejte informace o tenantovi (název domény nebo ID tenanta), pod kterým se vaše aplikace nachází. Načtěte ho tak, že najedete myší v pravém horním rohu Azure Portal. | Yes |
+| aadResourceId | Zadejte prostředek AAD, který požadujete pro autorizaci. Například pokud je adresa URL vašeho Dynamics `https://sampledynamics.sandbox.operations.dynamics.com/data/` , odpovídající prostředek AAD je obvykle `https://sampledynamics.sandbox.operations.dynamics.com` . | Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Můžete zvolit Azure Integration Runtime nebo v místním prostředí Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
 **Příklad**
 
@@ -107,8 +106,8 @@ Chcete-li kopírovat data z Dynamics AX, nastavte vlastnost **Type** datové sad
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** datové sady musí být nastavená na **DynamicsAXResource**. | Ano |
-| cesta | Cesta k entitě Dynamics AX OData | Ano |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **DynamicsAXResource**. | Yes |
+| cesta | Cesta k entitě Dynamics AX OData | Yes |
 
 **Příklad**
 
@@ -141,9 +140,9 @@ Chcete-li kopírovat data z Dynamics AX, nastavte typ **zdroje** v aktivitě kop
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **DynamicsAXSource**. | Ano |
-| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka**: konektor kopíruje data z kombinované adresy URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` . Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Ne |
-| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | Ne |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **DynamicsAXSource**. | Yes |
+| query | Možnosti dotazu OData pro filtrování dat Příklad: `"?$select=Name,Description&$top=5"`.<br/><br/>**Poznámka**: konektor kopíruje data z kombinované adresy URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` . Další informace najdete v tématu [komponenty adresy URL OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
+| httpRequestTimeout | Časový limit (hodnota **TimeSpan** ) požadavku HTTP získat odpověď. Tato hodnota představuje časový limit pro získání odpovědi, nikoli časový limit pro čtení dat odpovědi. Pokud není zadaný, výchozí hodnota je **00:30:00** (30 minut). | No |
 
 **Příklad**
 

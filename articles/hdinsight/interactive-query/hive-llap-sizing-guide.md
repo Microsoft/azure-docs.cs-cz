@@ -8,10 +8,9 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: a9b86f09ade0d437436779ef3e4a17fcdede2cf0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664960"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Průvodce nastavením velikosti clusterů Azure HDInsight Interactive Query (LLAPa registru)
@@ -29,7 +28,7 @@ Tento dokument popisuje určení velikosti clusteru HDInsight Interactive Query 
 ***Poznámka: všechny doporučené konfigurace jsou založené na pracovním uzlu typ D14 v2.***  
 
 ### <a name="configuration"></a>**Rozšířeného**    
-| Konfigurační klíč      | Doporučená hodnota  | Popis |
+| Konfigurační klíč      | Doporučená hodnota  | Description |
 | :---        |    :----:   | :---     |
 | příz. NodeManager. Resource. paměť-MB | 102400 (MB) | Celková velikost paměti (v MB) pro všechny kontejnery PŘÍZe na uzlu | 
 | příze. Scheduler. maximum – přidělení-MB | 102400 (MB) | Maximální přidělení pro každou žádost kontejneru v RM v MB. Požadavky na paměť vyšší než tato hodnota se projeví |
@@ -39,7 +38,7 @@ Tento dokument popisuje určení velikosti clusteru HDInsight Interactive Query 
 | TEZ. am. Resource. Memory. MB | 4096 (MB) | Velikost paměti v MB, kterou má tez AppMaster použít |
 | podregistr. Server2. TEZ. Sessions. per. default. Queue | <number_of_worker_nodes> |Počet relací pro každou frontu s názvem v podregistru. Server2. TEZ. default. Queues. Toto číslo odpovídá počtu koordinátorů dotazů (tez AMs). |
 | podregistr. TEZ. Container. Size | 4096 (MB) | Zadaná velikost kontejneru tez v MB |
-| podregistr. llap. démon. NUM. prováděče | 12 | Počet prováděcích modulů na démona LLAP | 
+| hive.llap.daemon.num.executors | 12 | Počet prováděcích modulů na démona LLAP | 
 | podregistr. llap. IO. nevláken. Size | 12 | Velikost fondu vláken pro prováděcí moduly |
 | podregistr. llap. démon. příze. Container. MB | 77824 (MB) | Celková paměť v MB používaná jednotlivými démony LLAP (paměť na démona)
 | podregistr. llap. IO. Memory. Size | 235520 (MB) | Velikost mezipaměti v MB na LLAP démon, poskytnutá mezipaměť SSD, je povolená. |
@@ -119,9 +118,9 @@ Pro pracovní uzel D14 v2, HDI 4,0 – doporučená hodnota je (80 GB-4 GB)) = *
 (Pro HDI 3,6 je doporučená hodnota **74 GB** , protože byste měli vyhradit další ~ 2 GB pro posuvník.)  
 
 #### <a name="8-determining-number-of-executors-per-llap-daemon"></a>**8. určení počtu prováděcích modulů na démona LLAP**  
-Konfigurace: ***podregistr. llap. démon. #. prováděče***, ***podregistr. llap. IO. nevlákenná velikost***
+Konfigurace: ***hive.llap.daemon.num.executors***, ***podregistr. llap. IO. nevláken. Size***
 
-***podregistr. llap. démon. NUM. prováděče***:   
+***hive.llap.daemon.num.executors***:   
 Tato konfigurace řídí počet prováděcích modulů, které mohou paralelně provádět úlohy na LLAP démon. Tato hodnota závisí na počtu virtuální jádra, velikosti paměti dané na vykonavateli a celkovém množství paměti, které je k dispozici pro démona LLAP. Obvykle by tato hodnota měla být co nejblíže k počtu virtuální jádra.
 Na virtuálních počítačích s D14 v2 je 16 virtuální jádra. Nicméně ne všechny virtuální jádra mohou být provedeny, protože jiné služby, jako je NodeManager, datanode, metrika a monitor atd. také potřebují část dostupného virtuální jádra. 
 

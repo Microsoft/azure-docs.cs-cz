@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84984789"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-site pomocí ověřování certifikátů (Classic)
@@ -21,7 +20,7 @@ ms.locfileid: "84984789"
 V tomto článku se dozvíte, jak vytvořit virtuální síť s připojením Point-to-site. Tuto virtuální síť vytvoříte pomocí modelu nasazení Classic pomocí Azure Portal. Tato konfigurace používá certifikáty k ověření připojujícího se klienta, buď podepsané svým držitelem (self-signed certificate), nebo vydané certifikační autoritou. Tuto konfiguraci můžete také vytvořit pomocí jiného nástroje pro nasazení nebo modelu pomocí možností, které jsou popsány v následujících článcích:
 
 > [!div class="op_single_selector"]
-> * [portál Azure](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [Azure Portal (Classic)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >

@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756663"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Monitorování připojení zařízení s využitím Azure CLI
@@ -25,7 +24,7 @@ Pomocí rozšíření Azure CLI IoT můžete zobrazit zprávy, které vaše zař
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Rozhraní příkazového řádku Azure je nainstalované a má verzi 2.0.7 nebo vyšší. Ověřte verzi rozhraní příkazového řádku Azure spuštěním `az --version`. Informace o tom, jak nainstalovat a aktualizovat z [dokumentů Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
++ Rozhraní příkazového řádku Azure je nainstalované a má verzi 2.0.7 nebo vyšší. Ověřte verzi rozhraní příkazového řádku Azure spuštěním `az --version` . Informace o tom, jak nainstalovat a aktualizovat z [dokumentů Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 + Pracovní nebo školní účet v Azure, který se přidal jako uživatel do aplikace IoT Central.
 
 ## <a name="install-the-iot-central-extension"></a>Instalace rozšíření IoT Central
@@ -50,7 +49,7 @@ az extension update --name azure-iot
 
 ## <a name="using-the-extension"></a>Použití rozšíření
 
-Následující části popisují běžné příkazy a možnosti, které můžete použít při spuštění `az iot central`. Chcete-li zobrazit úplnou sadu příkazů a možností, `--help` předejte `az iot central` nebo libovolné dílčí příkazy.
+Následující části popisují běžné příkazy a možnosti, které můžete použít při spuštění `az iot central` . Chcete-li zobrazit úplnou sadu příkazů a možností, předejte `--help` `az iot central` nebo libovolné dílčí příkazy.
 
 ### <a name="login"></a>Přihlásit
 

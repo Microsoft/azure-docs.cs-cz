@@ -9,10 +9,9 @@ ms.service: iot-central
 services: iot-central
 manager: jeffya
 ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81756812"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení zařízení IoT DevKit MXChip k aplikaci Azure IoT Central
@@ -46,7 +45,7 @@ K provedení kroků v tomto článku budete potřebovat následující:
 
     ![Nové zařízení](media/howto-connect-devkit/new-device.png)
 
-1. V automaticky otevíraném okně zadejte **ID zařízení** `SampleDevKit` a jako **název zařízení** `MXChip IoT DevKit - Sample`. Ujistěte se, že je **simulovaná** možnost vypnutá. Pak vyberte **vytvořit**.
+1. V automaticky otevíraném okně zadejte **ID zařízení** `SampleDevKit` a jako **název zařízení** `MXChip IoT DevKit - Sample` . Ujistěte se, že je **simulovaná** možnost vypnutá. Potom vyberte **Vytvořit**.
 
     ![ID a název zařízení](media/howto-connect-devkit/device-id-name.png)
 
@@ -69,7 +68,7 @@ K provedení kroků v tomto článku budete potřebovat následující:
 
 1. V počítači nebo tabletu se připojte k názvu sítě Wi-Fi, který je zobrazený na obrazovce zařízení. Síť Wi-Fi začíná na **AZ-** NÁSLEDOVANÝ adresou MAC. Když se připojíte k této síti, nemáte přístup k Internetu. Tento stav je očekávaný a při konfiguraci zařízení se k této síti budete připojovat jenom po krátké době.
 
-1. Otevřete webový prohlížeč a přejděte na [http://192.168.0.1/](http://192.168.0.1/). Zobrazí se následující webová stránka:
+1. Otevřete webový prohlížeč a přejděte na [http://192.168.0.1/](http://192.168.0.1/) . Zobrazí se následující webová stránka:
 
     ![Konfigurační uživatelské rozhraní](media/howto-connect-devkit/config-ui.png)
 

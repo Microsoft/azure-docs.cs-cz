@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.openlocfilehash: 047915874dfd81fdf68dc97ac217274b2439d726
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710469"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027473"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití SQL Server
 V tomto kurzu se seznámíte s procesem sestavení a nasazení modelu Machine Learning pomocí SQL Server a veřejně dostupné datové sady ( [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) ). Postup následuje za standardním pracovním postupem pro datové vědy: ingestování a zkoumání dat, inženýr funkcí usnadňujících učení a následné sestavení a nasazení modelu.
@@ -26,20 +25,31 @@ Data NYC taxislužby na cestách mají přibližně 20 GB komprimovaných soubor
 
 1. CSV trip_data obsahuje podrobnosti o cestě, jako je třeba počet cestujících, vyzvednutí a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
    
-        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+    `medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
+
+    `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+
+    `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+
+    `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+
+    `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+
+    `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
+
 2. CSV trip_fare obsahuje podrobnosti o tarifu placeného za každou cestu, jako je typ platby, částka tarifů, příplatek a daně, tipy a mýtné a celková placená částka. Tady je několik ukázkových záznamů:
    
-        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+    `medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
+
+    `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+
+    `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+
+    `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+
+    `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+
+    `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
 
 Jedinečný klíč pro připojení k \_ datům cest a služební \_ tarif se skládá z těchto polí: Medallion, licence pro napadení \_ a \_ data a času vyzvednutí.
 
@@ -48,12 +58,17 @@ Budeme formulovat tři problémy předpovědi na základě * \_ výše tipu*, ko
 
 * Binární klasifikace: předpověď bez ohledu na to, zda byl pro cestu zaplacen tip, tj. * \_ hodnota tipu* větší než $0 je pozitivní příklad, zatímco * \_ hodnota tipu* $0 je negativním příkladem.
 * Klasifikace více tříd: pro předpověď rozsahu tipu placeného pro danou cestu. * \_ Velikost tipu* rozdělíme na pět přihrádek nebo tříd:
-   
-        Class 0 : tip_amount = $0
-        Class 1 : tip_amount > $0 and tip_amount <= $5
-        Class 2 : tip_amount > $5 and tip_amount <= $10
-        Class 3 : tip_amount > $10 and tip_amount <= $20
-        Class 4 : tip_amount > $20
+
+   `Class 0 : tip_amount = $0`
+
+   `Class 1 : tip_amount > $0 and tip_amount <= $5`
+
+   `Class 2 : tip_amount > $5 and tip_amount <= $10`
+
+   `Class 3 : tip_amount > $10 and tip_amount <= $20`
+
+   `Class 4 : tip_amount > $20`
+
 * Regresní úloha: pro předpověď množství tipu placeného pro cestu.  
 
 ## <a name="setting-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Nastavení prostředí pro datové vědy Azure pro pokročilou analýzu
@@ -89,9 +104,11 @@ Kopírování dat pomocí AzCopy:
 1. Přihlaste se k virtuálnímu počítači (VM).
 2. Vytvořte nový adresář na datovém disku virtuálního počítače (Poznámka: Nepoužívejte dočasný disk, který je součástí virtuálního počítače jako datový disk).
 3. V okně příkazového řádku spusťte následující příkazový řádek AzCopy, ve kterém nahradíte <path_to_data_folder> s vaší datovou složkou vytvořenou v (2):
-   
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
-   
+
+    ```console
+    "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```
+
     Po dokončení AzCopy by měl být celkem 24 souborů. CSV (12 pro data o služební cestě \_ a 12 pro služební \_ tarif) ve složce data.
 4. Extrahování stažených souborů. Poznamenejte si složku, do které se nacházejí nekomprimované soubory. Tato složka bude označována jako <cesta \_ k \_ datovým \_ souborům \> .
 
@@ -157,77 +174,87 @@ V této části uložíme konečný dotaz pro extrakci a vzorkování dat. Druh�
 
 Rychlé ověření počtu řádků a sloupců v tabulkách vydaných dříve pomocí paralelního hromadného importu
 
-    -- Report number of rows in table nyctaxi_trip without table scan
-    SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')
-
-    -- Report number of columns in table nyctaxi_trip
-    SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
+- Vykázat počet řádků v tabulce nyctaxi_trip bez prohledávání tabulky:`SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('nyctaxi_trip')`
+- Sestava počtu sloupců v tabulce nyctaxi_trip:`SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'`
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Průzkum: distribuce cest pomocí Medallion
 Tento příklad identifikuje Medallion (taxislužby čísla) o více než 100 cest během daného časového období. Dotaz by měl těžit z tabulkového přístupu s dělenou výhodou, protože je podmíněné schémam oddílu **pro \_ Datum vyzvednutí**. Dotazování na celou datovou sadu použije také prohledání děleného tabulky nebo indexu.
 
-    SELECT medallion, COUNT(*)
-    FROM nyctaxi_fare
-    WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
-    GROUP BY medallion
-    HAVING COUNT(*) > 100
+```sql
+SELECT medallion, COUNT(*)
+FROM nyctaxi_fare
+WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
+GROUP BY medallion
+HAVING COUNT(*) > 100
+```
 
 #### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>Průzkum: distribuce cest pomocí Medallion a hack_license
-    SELECT medallion, hack_license, COUNT(*)
-    FROM nyctaxi_fare
-    WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
-    GROUP BY medallion, hack_license
-    HAVING COUNT(*) > 100
+
+```sql
+SELECT medallion, hack_license, COUNT(*)
+FROM nyctaxi_fare
+WHERE pickup_datetime BETWEEN '20130101' AND '20130131'
+GROUP BY medallion, hack_license
+HAVING COUNT(*) > 100
+```
 
 #### <a name="data-quality-assessment-verify-records-with-incorrect-longitude-andor-latitude"></a>Vyhodnocení kvality dat: ověření záznamů s nesprávnou zeměpisnou délkou nebo zeměpisnou šířkou
 Tento příklad zkoumá, pokud některá pole Zeměpisná délka a/nebo zeměpisná délka buď obsahují neplatnou hodnotu (Radian stupně by měly být mezi-90 a 90), nebo musí mít souřadnice (0, 0).
 
-    SELECT COUNT(*) FROM nyctaxi_trip
-    WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
-    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND 90
-    OR    CAST(pickup_latitude AS float) NOT BETWEEN -90 AND 90
-    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND 90
-    OR    CAST(dropoff_latitude AS float) NOT BETWEEN -90 AND 90
-    OR    (pickup_longitude = '0' AND pickup_latitude = '0')
-    OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
+```sql
+SELECT COUNT(*) FROM nyctaxi_trip
+WHERE pickup_datetime BETWEEN '20130101' AND '20130331'
+AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND 90
+OR    CAST(pickup_latitude AS float) NOT BETWEEN -90 AND 90
+OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND 90
+OR    CAST(dropoff_latitude AS float) NOT BETWEEN -90 AND 90
+OR    (pickup_longitude = '0' AND pickup_latitude = '0')
+OR    (dropoff_longitude = '0' AND dropoff_latitude = '0'))
+```
 
 #### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Prozkoumávání: v nestejné distribuci cest
 Tento příklad vyhledá počet cest, které byly v daném časovém období (nebo v plné datové sadě), které jsou v daném časovém období pokryté, nešikmé (nebo v úplném datové sadě). Tato distribuce odráží binární distribuci jmenovky, která se má později použít pro modelování binární klasifikace.
 
-    SELECT tipped, COUNT(*) AS tip_freq FROM (
-      SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
-      FROM nyctaxi_fare
-      WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
-    GROUP BY tipped
+```sql
+SELECT tipped, COUNT(*) AS tip_freq FROM (
+  SELECT CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped, tip_amount
+  FROM nyctaxi_fare
+  WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
+GROUP BY tipped
+```
 
 #### <a name="exploration-tip-classrange-distribution"></a>Průzkum: distribuce třídy nebo rozsahu tipu
 Tento příklad vypočítá distribuci rozsahů tipů v daném časovém období (nebo v úplné datové sadě, pokud pokrývá celý rok). Tato distribuce tříd popisků se bude používat později pro modelování klasifikace s více třídami.
 
-    SELECT tip_class, COUNT(*) AS tip_freq FROM (
-        SELECT CASE
-            WHEN (tip_amount = 0) THEN 0
-            WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
-            WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
-            WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-            ELSE 4
-        END AS tip_class
-    FROM nyctaxi_fare
-    WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
-    GROUP BY tip_class
+```sql
+SELECT tip_class, COUNT(*) AS tip_freq FROM (
+    SELECT CASE
+        WHEN (tip_amount = 0) THEN 0
+        WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+        WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+        WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+        ELSE 4
+    END AS tip_class
+FROM nyctaxi_fare
+WHERE pickup_datetime BETWEEN '20130101' AND '20131231') tc
+GROUP BY tip_class
+```
 
 #### <a name="exploration-compute-and-compare-trip-distance"></a>Průzkum: výpočty a porovnání vzdálenosti cest
 Tento příklad převede vyzvednutí a dropoff zeměpisnou délku a zeměpisnou šířku na geografické body SQL, vypočítá vzdálenost pro cestu pomocí rozdílů geografických bodů SQL a vrátí náhodný vzorek výsledků pro porovnání. Příklad omezuje výsledky na platné souřadnice pouze pomocí dotazu vyhodnocení kvality dat popsaných výše.
 
-    SELECT
-    pickup_location=geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326)
-    ,dropoff_location=geography::STPointFromText('POINT(' + dropoff_longitude + ' ' + dropoff_latitude + ')', 4326)
-    ,trip_distance
-    ,computedist=round(geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326).STDistance(geography::STPointFromText('POINT(' + dropoff_longitude + ' ' + dropoff_latitude + ')', 4326))/1000, 2)
-    FROM nyctaxi_trip
-    tablesample(0.01 percent)
-    WHERE CAST(pickup_latitude AS float) BETWEEN -90 AND 90
-    AND   CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
-    AND   pickup_longitude != '0' AND dropoff_longitude != '0'
+```sql
+SELECT
+pickup_location=geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326)
+,dropoff_location=geography::STPointFromText('POINT(' + dropoff_longitude + ' ' + dropoff_latitude + ')', 4326)
+,trip_distance
+,computedist=round(geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326).STDistance(geography::STPointFromText('POINT(' + dropoff_longitude + ' ' + dropoff_latitude + ')', 4326))/1000, 2)
+FROM nyctaxi_trip
+tablesample(0.01 percent)
+WHERE CAST(pickup_latitude AS float) BETWEEN -90 AND 90
+AND   CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
+AND   pickup_longitude != '0' AND dropoff_longitude != '0'
+```
 
 #### <a name="feature-engineering-in-sql-queries"></a>Inženýrské funkce v dotazech SQL
 Dotazy pro zkoumání a vytváření popisků se dají použít ke generování popisků nebo funkcí odebráním části počítání. Další příklady metodologie jazyka SQL najdete v části [zkoumání dat a funkce pro vývoj funkcí v poznámkovém bloku IPython](#ipnb) . Je efektivnější spustit dotazy generace funkcí na celé datové sadě nebo ve velké podmnožině pomocí dotazů jazyka SQL, které se spouštějí přímo na instanci databáze SQL Server. Dotazy mohou být spuštěny v **SQL Server Management Studio**, poznámkovém bloku IPython nebo jakémkoli vývojovém nástroji nebo prostředí, které má přístup k databázi místně nebo vzdáleně.
@@ -235,21 +262,22 @@ Dotazy pro zkoumání a vytváření popisků se dají použít ke generování 
 #### <a name="preparing-data-for-model-building"></a>Příprava dat pro vytváření modelů
 Následující dotaz se spojí s tabulkami **nyctaxi \_ TRIPS** a **nyctaxi \_ tarifs** , vygeneruje **binární popisek klasifikace**, který je na ní popsán, ** \_ třídu tipů**klasifikační klasifikace s více třídami a extrahuje 1% náhodný vzorek z plné připojené datové sady. Tento dotaz se dá zkopírovat přímo do [Azure Machine Learning Studio](https://studio.azureml.net) [importovat data][import-data] modul pro příjem přímých dat z instance databáze SQL Server v Azure. Dotaz vyloučí záznamy s nesprávnými souřadnicemi (0, 0).
 
-    SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
-        CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
-        CASE WHEN (tip_amount = 0) THEN 0
-            WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
-            WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
-            WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-            ELSE 4
-        END AS tip_class
-    FROM nyctaxi_trip t, nyctaxi_fare f
-    TABLESAMPLE (1 percent)
-    WHERE t.medallion = f.medallion
-    AND   t.hack_license = f.hack_license
-    AND   t.pickup_datetime = f.pickup_datetime
-    AND   pickup_longitude != '0' AND dropoff_longitude != '0'
-
+```sql
+SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
+    CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
+    CASE WHEN (tip_amount = 0) THEN 0
+        WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+        WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+        WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+        ELSE 4
+    END AS tip_class
+FROM nyctaxi_trip t, nyctaxi_fare f
+TABLESAMPLE (1 percent)
+WHERE t.medallion = f.medallion
+AND   t.hack_license = f.hack_license
+AND   t.pickup_datetime = f.pickup_datetime
+AND   pickup_longitude != '0' AND dropoff_longitude != '0'
+```
 
 ## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>Zkoumání dat a strojírenství funkcí v IPython poznámkovém bloku
 V této části provedeme zkoumání dat a generování funkcí pomocí dotazů Python a SQL pro databázi SQL Server vytvořenou dříve. Ukázkový Poznámkový blok IPython nazvaný **Machine-Learning-data-věda-Process-SQL-Story. ipynb** je k dispozici ve složce **ukázek IPython poznámkových bloků** . Tento Poznámkový blok je také k dispozici na [GitHubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks).
@@ -272,53 +300,64 @@ Níže jsou uvedeny některé příklady zkoumání dat, vizualizace dat a techn
 #### <a name="initialize-database-credentials"></a>Inicializovat pověření databáze
 Nastavení připojení k databázi inicializujte v těchto proměnných:
 
-    SERVER_NAME=<server name>
-    DATABASE_NAME=<database name>
-    USERID=<user name>
-    PASSWORD=<password>
-    DB_DRIVER = <database server>
+```sql
+SERVER_NAME=<server name>
+DATABASE_NAME=<database name>
+USERID=<user name>
+PASSWORD=<password>
+DB_DRIVER = <database server>
+```
 
 #### <a name="create-database-connection"></a>Vytvoření připojení k databázi
-    CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
-    conn = pyodbc.connect(CONNECTION_STRING)
+
+```sql
+CONNECTION_STRING = 'DRIVER={'+DRIVER+'};SERVER='+SERVER_NAME+';DATABASE='+DATABASE_NAME+';UID='+USERID+';PWD='+PASSWORD
+conn = pyodbc.connect(CONNECTION_STRING)
+```
 
 #### <a name="report-number-of-rows-and-columns-in-table-nyctaxi_trip"></a>Vykázat počet řádků a sloupců v tabulce nyctaxi_trip
-    nrows = pd.read_sql('''
-        SELECT SUM(rows) FROM sys.partitions
-        WHERE object_id = OBJECT_ID('nyctaxi_trip')
-    ''', conn)
 
-    print 'Total number of rows = %d' % nrows.iloc[0,0]
+```sql
+nrows = pd.read_sql('''
+    SELECT SUM(rows) FROM sys.partitions
+    WHERE object_id = OBJECT_ID('nyctaxi_trip')
+''', conn)
 
-    ncols = pd.read_sql('''
-        SELECT COUNT(*) FROM information_schema.columns
-        WHERE table_name = ('nyctaxi_trip')
-    ''', conn)
+print 'Total number of rows = %d' % nrows.iloc[0,0]
 
-    print 'Total number of columns = %d' % ncols.iloc[0,0]
+ncols = pd.read_sql('''
+    SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_name = ('nyctaxi_trip')
+''', conn)
+
+print 'Total number of columns = %d' % ncols.iloc[0,0]
+```
 
 * Celkový počet řádků = 173179759  
 * Celkový počet sloupců = 14
 
 #### <a name="read-in-a-small-data-sample-from-the-sql-server-database"></a>Čtení malého datového vzorku z databáze SQL Server
-    t0 = time.time()
 
-    query = '''
-        SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax,
-            f.tolls_amount, f.total_amount, f.tip_amount
-        FROM nyctaxi_trip t, nyctaxi_fare f
-        TABLESAMPLE (0.05 PERCENT)
-        WHERE t.medallion = f.medallion
-        AND   t.hack_license = f.hack_license
-        AND   t.pickup_datetime = f.pickup_datetime
-    '''
+```sql
+t0 = time.time()
 
-    df1 = pd.read_sql(query, conn)
+query = '''
+    SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax,
+        f.tolls_amount, f.total_amount, f.tip_amount
+    FROM nyctaxi_trip t, nyctaxi_fare f
+    TABLESAMPLE (0.05 PERCENT)
+    WHERE t.medallion = f.medallion
+    AND   t.hack_license = f.hack_license
+    AND   t.pickup_datetime = f.pickup_datetime
+'''
 
-    t1 = time.time()
-    print 'Time to read the sample table is %f seconds' % (t1-t0)
+df1 = pd.read_sql(query, conn)
 
-    print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
+t1 = time.time()
+print 'Time to read the sample table is %f seconds' % (t1-t0)
+
+print 'Number of rows and columns retrieved = (%d, %d)' % (df1.shape[0], df1.shape[1])
+```
 
 Doba čtení ukázkové tabulky je 6,492000 sekund.  
 Počet načtených řádků a sloupců = (84952, 21)
@@ -326,52 +365,68 @@ Počet načtených řádků a sloupců = (84952, 21)
 #### <a name="descriptive-statistics"></a>Popisné statistiky
 Teď jsou připravené k prozkoumání ukázkových dat. Začneme s prohlížením popisných statistik o ** \_ vzdálenosti** (nebo jakémkoli jiném) poli na cestách:
 
-    df1['trip_distance'].describe()
+```sql
+df1['trip_distance'].describe()
+```
 
 #### <a name="visualization-box-plot-example"></a>Vizualizace: příklad vykreslení boxu
 V dalším kroku se podíváme na krabicový pohled, který vizualizuje cestu pro quantiles.
 
-    df1.boxplot(column='trip_distance',return_type='dict')
+```sql
+df1.boxplot(column='trip_distance',return_type='dict')
+```
 
 ![#1 vykreslení][1]
 
 #### <a name="visualization-distribution-plot-example"></a>Vizualizace: příklad vykreslení distribuce
-    fig = plt.figure()
-    ax1 = fig.add_subplot(1,2,1)
-    ax2 = fig.add_subplot(1,2,2)
-    df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
-    df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
+
+```sql
+fig = plt.figure()
+ax1 = fig.add_subplot(1,2,1)
+ax2 = fig.add_subplot(1,2,2)
+df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
+df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
+```
 
 ![#2 vykreslení][2]
 
 #### <a name="visualization-bar-and-line-plots"></a>Vizualizace: pruhové a spojnicové pruhy
 V tomto příkladu vytvoříme cestu ke vzdálenosti do pěti přihrádek a vizualizujte výsledky binningu.
 
-    trip_dist_bins = [0, 1, 2, 4, 10, 1000]
-    df1['trip_distance']
-    trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
-    trip_dist_bin_id
+```sql
+trip_dist_bins = [0, 1, 2, 4, 10, 1000]
+df1['trip_distance']
+trip_dist_bin_id = pd.cut(df1['trip_distance'], trip_dist_bins)
+trip_dist_bin_id
+```
 
 Rozdělení přihrádky můžeme vykreslit do pruhového nebo pruhového grafu, jak je uvedeno níže.
 
-    pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
+```sql
+pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
+```
 
 ![#3 vykreslení][3]
 
-    pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
-
+```sql
+pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
+```
 ![#4 vykreslení][4]
 
 #### <a name="visualization-scatterplot-example"></a>Vizualizace: příklad scatterplot
 Pro zjištění, zda existuje korelace, zobrazujeme ** \_ v grafu dobu provozu \_ v \_ sekundách** a na **služební \_ dráze** .
 
-    plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
+```sql
+plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
+```
 
 ![#6 vykreslení][6]
 
 Podobně můžeme kontrolovat vztah mezi ** \_ kódem sazby** a ** \_ délkou cesty**.
 
-    plt.scatter(df1['passenger_count'], df1['trip_distance'])
+```sql
+plt.scatter(df1['passenger_count'], df1['trip_distance'])
+```
 
 ![#8 vykreslení][8]
 
@@ -383,47 +438,55 @@ V této části vytvoříme novou tabulku, která bude obsahovat ukázková a in
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Vytvořte ukázkovou tabulku a naplňte ji o 1% spojených tabulek. Přetáhněte tabulku jako první, pokud existuje.
 V této části se spojíme s tabulkami **nyctaxi \_ TRIPS** a **nyctaxi \_ jízdné**, extrahujete náhodný vzorek o velikosti 1% a zachovejte ukázková data v novém názvu tabulky **nyctaxi \_ 1 \_ **%:
 
-    cursor = conn.cursor()
+```sql
+cursor = conn.cursor()
 
-    drop_table_if_exists = '''
-        IF OBJECT_ID('nyctaxi_one_percent', 'U') IS NOT NULL DROP TABLE nyctaxi_one_percent
-    '''
+drop_table_if_exists = '''
+    IF OBJECT_ID('nyctaxi_one_percent', 'U') IS NOT NULL DROP TABLE nyctaxi_one_percent
+'''
 
-    nyctaxi_one_percent_insert = '''
-        SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount
-        INTO nyctaxi_one_percent
-        FROM nyctaxi_trip t, nyctaxi_fare f
-        TABLESAMPLE (1 PERCENT)
-        WHERE t.medallion = f.medallion
-        AND   t.hack_license = f.hack_license
-        AND   t.pickup_datetime = f.pickup_datetime
-        AND   pickup_longitude <> '0' AND dropoff_longitude <> '0'
-    '''
+nyctaxi_one_percent_insert = '''
+    SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount, f.total_amount, f.tip_amount
+    INTO nyctaxi_one_percent
+    FROM nyctaxi_trip t, nyctaxi_fare f
+    TABLESAMPLE (1 PERCENT)
+    WHERE t.medallion = f.medallion
+    AND   t.hack_license = f.hack_license
+    AND   t.pickup_datetime = f.pickup_datetime
+    AND   pickup_longitude <> '0' AND dropoff_longitude <> '0'
+'''
 
-    cursor.execute(drop_table_if_exists)
-    cursor.execute(nyctaxi_one_percent_insert)
-    cursor.commit()
+cursor.execute(drop_table_if_exists)
+cursor.execute(nyctaxi_one_percent_insert)
+cursor.commit()
+```
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>Zkoumání dat pomocí dotazů SQL v poznámkovém bloku IPython
 V této části prozkoumáme distribuci dat pomocí 1% ukázkových dat, která jsou trvalá v nové tabulce, kterou jsme vytvořili výše. Podobné průzkumy je možné provádět pomocí původních tabulek, volitelně můžete pomocí funkce **TABLESAMPLE** omezit ukázku průzkumu nebo omezením výsledků na dané časové období pomocí oddílů data a času **vyzvednutí \_ ** , jak je znázorněno v části [zkoumání dat a funkce pro vývoj funkcí v SQL Server](#dbexplore) .
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Průzkum: každodenní distribuce cest
-    query = '''
-        SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
-        FROM nyctaxi_one_percent
-        GROUP BY CONVERT(date, dropoff_datetime)
-    '''
 
-    pd.read_sql(query,conn)
+```sql
+query = '''
+    SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
+    FROM nyctaxi_one_percent
+    GROUP BY CONVERT(date, dropoff_datetime)
+'''
+
+pd.read_sql(query,conn)
+```
 
 #### <a name="exploration-trip-distribution-per-medallion"></a>Průzkum: distribuce cest na Medallion
-    query = '''
-        SELECT medallion,count(*) AS c
-        FROM nyctaxi_one_percent
-        GROUP BY medallion
-    '''
 
-    pd.read_sql(query,conn)
+```sql
+query = '''
+    SELECT medallion,count(*) AS c
+    FROM nyctaxi_one_percent
+    GROUP BY medallion
+'''
+
+pd.read_sql(query,conn)
+```
 
 ### <a name="feature-generation-using-sql-queries-in-ipython-notebook"></a>Generování funkcí pomocí dotazů SQL v poznámkovém bloku IPython
 V této části vygenerujeme nové popisky a funkce přímo pomocí dotazů SQL, které pracují na vzorové tabulce 1%, kterou jsme vytvořili v předchozí části.
@@ -433,116 +496,127 @@ V následujícím příkladu generujeme dvě sady popisků, které se mají pou�
 
 1. Popisky binárních **tipped** tříd byly označeny (předpověď, jestli se má Tip předávat)
 2. ** \_ Třída Tip** pro více tříd (předpověď z přihrádky nebo rozsahu Tip)
+
+```sql   
+    nyctaxi_one_percent_add_col = '''
+        ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
+    '''
    
-        nyctaxi_one_percent_add_col = '''
-            ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
-        '''
+    cursor.execute(nyctaxi_one_percent_add_col)
+    cursor.commit()
    
-        cursor.execute(nyctaxi_one_percent_add_col)
-        cursor.commit()
+    nyctaxi_one_percent_update_col = '''
+        UPDATE nyctaxi_one_percent
+        SET
+           tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
+           tip_class = CASE WHEN (tip_amount = 0) THEN 0
+                            WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
+                            WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
+                            WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
+                            ELSE 4
+                        END
+    '''
    
-        nyctaxi_one_percent_update_col = '''
-            UPDATE nyctaxi_one_percent
-            SET
-               tipped = CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END,
-               tip_class = CASE WHEN (tip_amount = 0) THEN 0
-                                WHEN (tip_amount > 0 AND tip_amount <= 5) THEN 1
-                                WHEN (tip_amount > 5 AND tip_amount <= 10) THEN 2
-                                WHEN (tip_amount > 10 AND tip_amount <= 20) THEN 3
-                                ELSE 4
-                            END
-        '''
-   
-        cursor.execute(nyctaxi_one_percent_update_col)
-        cursor.commit()
+    cursor.execute(nyctaxi_one_percent_update_col)
+    cursor.commit()
+```
 
 #### <a name="feature-engineering-count-features-for-categorical-columns"></a>Funkce pro vývoj funkcí: počet funkcí pro kategorií sloupce
 Tento příklad transformuje pole kategorií do číselného pole nahrazením každé kategorie počtem jejich výskytů v datech.
 
-    nyctaxi_one_percent_insert_col = '''
-        ALTER TABLE nyctaxi_one_percent ADD cmt_count int, vts_count int
-    '''
+```sql
+nyctaxi_one_percent_insert_col = '''
+    ALTER TABLE nyctaxi_one_percent ADD cmt_count int, vts_count int
+'''
 
-    cursor.execute(nyctaxi_one_percent_insert_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_insert_col)
+cursor.commit()
 
-    nyctaxi_one_percent_update_col = '''
-        WITH B AS
-        (
-            SELECT medallion, hack_license,
-                SUM(CASE WHEN vendor_id = 'cmt' THEN 1 ELSE 0 END) AS cmt_count,
-                SUM(CASE WHEN vendor_id = 'vts' THEN 1 ELSE 0 END) AS vts_count
-            FROM nyctaxi_one_percent
-            GROUP BY medallion, hack_license
-        )
+nyctaxi_one_percent_update_col = '''
+    WITH B AS
+    (
+        SELECT medallion, hack_license,
+            SUM(CASE WHEN vendor_id = 'cmt' THEN 1 ELSE 0 END) AS cmt_count,
+            SUM(CASE WHEN vendor_id = 'vts' THEN 1 ELSE 0 END) AS vts_count
+        FROM nyctaxi_one_percent
+        GROUP BY medallion, hack_license
+    )
 
-        UPDATE nyctaxi_one_percent
-        SET nyctaxi_one_percent.cmt_count = B.cmt_count,
-            nyctaxi_one_percent.vts_count = B.vts_count
-        FROM nyctaxi_one_percent A INNER JOIN B
-        ON A.medallion = B.medallion AND A.hack_license = B.hack_license
-    '''
+    UPDATE nyctaxi_one_percent
+    SET nyctaxi_one_percent.cmt_count = B.cmt_count,
+        nyctaxi_one_percent.vts_count = B.vts_count
+    FROM nyctaxi_one_percent A INNER JOIN B
+    ON A.medallion = B.medallion AND A.hack_license = B.hack_license
+'''
 
-    cursor.execute(nyctaxi_one_percent_update_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_update_col)
+cursor.commit()
+```
 
 #### <a name="feature-engineering-bin-features-for-numerical-columns"></a>Inženýrské funkce: funkce přihrádek pro číselné sloupce
 Tento příklad převede souvislé číselné pole na předdefinované rozsahy kategorií, tj. transformuje číselné pole na pole kategorií.
 
-    nyctaxi_one_percent_insert_col = '''
-        ALTER TABLE nyctaxi_one_percent ADD trip_time_bin int
-    '''
+```sql
+nyctaxi_one_percent_insert_col = '''
+    ALTER TABLE nyctaxi_one_percent ADD trip_time_bin int
+'''
 
-    cursor.execute(nyctaxi_one_percent_insert_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_insert_col)
+cursor.commit()
 
-    nyctaxi_one_percent_update_col = '''
-        WITH B(medallion,hack_license,pickup_datetime,trip_time_in_secs, BinNumber ) AS
-        (
-            SELECT medallion,hack_license,pickup_datetime,trip_time_in_secs,
-            NTILE(5) OVER (ORDER BY trip_time_in_secs) AS BinNumber from nyctaxi_one_percent
-        )
+nyctaxi_one_percent_update_col = '''
+    WITH B(medallion,hack_license,pickup_datetime,trip_time_in_secs, BinNumber ) AS
+    (
+        SELECT medallion,hack_license,pickup_datetime,trip_time_in_secs,
+        NTILE(5) OVER (ORDER BY trip_time_in_secs) AS BinNumber from nyctaxi_one_percent
+    )
 
-        UPDATE nyctaxi_one_percent
-        SET trip_time_bin = B.BinNumber
-        FROM nyctaxi_one_percent A INNER JOIN B
-        ON A.medallion = B.medallion
-        AND A.hack_license = B.hack_license
-        AND A.pickup_datetime = B.pickup_datetime
-    '''
+    UPDATE nyctaxi_one_percent
+    SET trip_time_bin = B.BinNumber
+    FROM nyctaxi_one_percent A INNER JOIN B
+    ON A.medallion = B.medallion
+    AND A.hack_license = B.hack_license
+    AND A.pickup_datetime = B.pickup_datetime
+'''
 
-    cursor.execute(nyctaxi_one_percent_update_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_update_col)
+cursor.commit()
+```
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Strojírenství funkcí: extrakce funkcí umístění z desetinné šířky/délky
 V tomto příkladu dojde k rozdělení desítkové reprezentace pole Zeměpisná šířka a/nebo zeměpisná délka do několika polí oblastí různé členitosti, jako je například země/oblast, město, město, blok atd. Nová geografická pole nejsou namapovaná na skutečná umístění. Informace o mapování umístění pro různá místa v kódu najdete v tématu [služby pro službu REST pro mapy Bing](https://msdn.microsoft.com/library/ff701710.aspx).
 
-    nyctaxi_one_percent_insert_col = '''
-        ALTER TABLE nyctaxi_one_percent
-        ADD l1 varchar(6), l2 varchar(3), l3 varchar(3), l4 varchar(3),
-            l5 varchar(3), l6 varchar(3), l7 varchar(3)
-    '''
+```sql
+nyctaxi_one_percent_insert_col = '''
+    ALTER TABLE nyctaxi_one_percent
+    ADD l1 varchar(6), l2 varchar(3), l3 varchar(3), l4 varchar(3),
+        l5 varchar(3), l6 varchar(3), l7 varchar(3)
+'''
 
-    cursor.execute(nyctaxi_one_percent_insert_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_insert_col)
+cursor.commit()
 
-    nyctaxi_one_percent_update_col = '''
-        UPDATE nyctaxi_one_percent
-        SET l1=round(pickup_longitude,0)
-            , l2 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 1 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),1,1) ELSE '0' END     
-            , l3 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 2 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),2,1) ELSE '0' END     
-            , l4 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 3 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),3,1) ELSE '0' END     
-            , l5 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 4 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),4,1) ELSE '0' END     
-            , l6 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 5 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),5,1) ELSE '0' END     
-            , l7 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 6 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),6,1) ELSE '0' END
-    '''
+nyctaxi_one_percent_update_col = '''
+    UPDATE nyctaxi_one_percent
+    SET l1=round(pickup_longitude,0)
+        , l2 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 1 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),1,1) ELSE '0' END     
+        , l3 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 2 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),2,1) ELSE '0' END     
+        , l4 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 3 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),3,1) ELSE '0' END     
+        , l5 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 4 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),4,1) ELSE '0' END     
+        , l6 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 5 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),5,1) ELSE '0' END     
+        , l7 = CASE WHEN LEN (PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1)) >= 6 THEN SUBSTRING(PARSENAME(ROUND(ABS(pickup_longitude) - FLOOR(ABS(pickup_longitude)),6),1),6,1) ELSE '0' END
+'''
 
-    cursor.execute(nyctaxi_one_percent_update_col)
-    cursor.commit()
+cursor.execute(nyctaxi_one_percent_update_col)
+cursor.commit()
+```
 
 #### <a name="verify-the-final-form-of-the-featurized-table"></a>Ověření konečného formuláře tabulky natrénuje
-    query = '''SELECT TOP 100 * FROM nyctaxi_one_percent'''
-    pd.read_sql(query,conn)
+
+```sql
+query = '''SELECT TOP 100 * FROM nyctaxi_one_percent'''
+pd.read_sql(query,conn)
+```
 
 Nyní je připraven pokračovat na sestavení modelu a nasazení modelu v [Azure Machine Learning](https://studio.azureml.net). Data jsou připravená na některý z výše zjištěných problémů předpovědi, konkrétně:
 

@@ -8,10 +8,9 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512168"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
@@ -179,7 +178,7 @@ Počínaje verzí 3,0 se okno konzoly zobrazí při spuštění emulátoru úlo�
 
 Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `/help`.
 
-| Možnost | Popis | Příkaz | Arguments |
+| Možnost | Description | Příkaz | Arguments |
 | --- | --- | --- | --- |
 | **Zahájení** |Spustí emulátor úložiště. |`AzureStorageEmulator.exe start [-inprocess]` |*-Rezpracovat*: spustí emulátor v aktuálním procesu místo vytvoření nového procesu. |
 | **Zastavit** |Zastaví emulátor úložiště. |`AzureStorageEmulator.exe stop` | |

@@ -10,12 +10,11 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: d479548e682e814345e13d9416d08ec453f90304
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7d16b0755fae91979802e50cb2ebbf4324ce2c45
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74072852"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921140"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>Odesílání požadavků do rozhraní API pro automatické návrhy Bingu.
 
@@ -25,9 +24,9 @@ Pokud vaše aplikace odesílá dotazy do některého z rozhraní API pro vyhled�
 
 **Rozhraní API pro automatické návrhy Bingu** obsahuje jeden koncový bod, který vrací seznam navrhovaných dotazů z částečného hledaného výrazu.
 
-Pokud chcete získat navrhované dotazy pomocí rozhraní API Bingu, `GET` odešlete požadavek na následující koncový bod. K definování dalších specifikací použijte záhlaví a parametry URL.
+Pokud chcete získat navrhované dotazy pomocí rozhraní API Bingu, odešlete `GET` požadavek na následující koncový bod. K definování dalších specifikací použijte záhlaví a parametry URL.
 
-**Koncový bod:** Vrátí návrhy hledání jako výsledky JSON, které jsou relevantní pro vstup uživatele definovaný pomocí `?q=""`.
+**Koncový bod:** Vrátí návrhy hledání jako výsledky JSON, které jsou relevantní pro vstup uživatele definovaný pomocí `?q=""` .
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/Suggestions 
@@ -68,15 +67,21 @@ Pokud to chcete vyřešit, můžete žádost o rozhraní API pro automatické n�
 
 Je snadné nainstalovat proxy CORS, aby mohla naše [aplikace](../tutorials/autosuggest.md) získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 Dále změňte koncový bod rozhraní API pro automatické návrhy Bingu v souboru HTML na:
 
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
+```http
+http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
+```
 
 Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
@@ -95,7 +100,7 @@ Následující příklad ukazuje požadavek, který vrací navrhované řetězce
 
 Pokud voláte některé z rozhraní API Bingu poprvé, nezahrnujte do volání hlavičku ID klienta. Hlavičku ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení.
 
-Následující skupina návrhů webu představuje odpověď na výše uvedený požadavek. Skupina obsahuje seznam návrhů vyhledávacích dotazů, přičemž každý návrh zahrnuje pole `displayText`, `query`a. `url`
+Následující skupina návrhů webu představuje odpověď na výše uvedený požadavek. Skupina obsahuje seznam návrhů vyhledávacích dotazů, přičemž každý návrh zahrnuje `displayText` `query` pole, a `url` .
 
 Pole `displayText` obsahuje navrhovaný dotaz, který můžete použít k vyplnění rozevíracího seznamu vašeho vyhledávacího pole. Musíte zobrazit všechny návrhy, které odpověď obsahuje, v uvedeném pořadí.  
 

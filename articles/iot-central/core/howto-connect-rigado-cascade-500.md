@@ -11,10 +11,9 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 3e6026e683d46ca9062c5c139fcd7febd7df9bd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758245"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Připojení zařízení brány 500 Rigado do IoT Central k aplikaci Azure
@@ -41,9 +40,9 @@ Aby bylo možné za500 členit do instance aplikace IoT Central služby Azure br
 
 Přidání šablony zařízení s kaskádovou 500: 
 
-1. V levém podokně přejděte na kartu ***šablony zařízení*** , vyberte **+ Nový**: vytvořit novou ![šablonu zařízení.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. V levém podokně přejděte na kartu ***šablony zařízení*** , vyberte **+ Nový**: ![ vytvořit novou šablonu zařízení.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
 1. Stránka vám nabídne možnost ***vytvořit vlastní šablonu*** nebo ***použít předkonfigurovaný šablonu zařízení*** .
-1. V seznamu předkonfigurovaných šablon zařízení vyberte šablonu zařízení C500, jak je vidět níže: vyberte ![šablonu zařízení C500.](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
+1. V seznamu předkonfigurovaných šablon zařízení vyberte šablonu zařízení C500, jak je vidět níže: ![ Vyberte šablonu zařízení C500.](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
 1. Vyberte ***Další: přizpůsobit*** , aby pokračoval k dalšímu kroku. 
 1. Na další obrazovce vyberte ***vytvořit*** a připojte šablonu zařízení C500 do vaší aplikace IoT Central.
 
@@ -54,8 +53,8 @@ Teď budete muset pro aplikaci Azure IoT Central načíst **ID oboru** a **prim�
 1. V levém podokně přejděte do části **Správa** a klikněte na **připojení zařízení**. 
 2. Poznamenejte si **ID oboru** pro vaši aplikaci IoT Central.
 ![ID oboru aplikace](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
-3. Nyní klikněte na **Zobrazit klíče** a poznamenejte si primární klíč **primárního klíče**
-![.](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
+3. Nyní klikněte na **Zobrazit klíče** a poznamenejte si primární klíč **primárního klíče**. 
+ ![](./media/howto-connect-rigado-cascade-500/primary-key-sas.png)  
 
 ## <a name="contact-rigado-to-connect-the-gateway"></a>Kontaktujte Rigado a připojte bránu. 
 

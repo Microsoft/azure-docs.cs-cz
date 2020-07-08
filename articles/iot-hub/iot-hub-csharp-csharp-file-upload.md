@@ -11,10 +11,9 @@ ms.date: 07/04/2017
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733397"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (.NET)
@@ -62,7 +61,7 @@ Na konci tohoto kurzu spustíte dvě konzolové aplikace .NET:
 
 V této části upravíte aplikaci zařízení, kterou jste vytvořili v části [posílání zpráv z cloudu na zařízení pomocí IoT Hub](iot-hub-csharp-csharp-c2d.md) pro příjem zpráv z cloudu na zařízení ze služby IoT Hub.
 
-1. V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulatedDevice** a vyberte **Přidat** > **existující položku**. Najděte soubor obrázku a zahrňte ho do projektu. V tomto kurzu se předpokládá, že `image.jpg`se image jmenuje.
+1. V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulatedDevice** a vyberte **Přidat**  >  **existující položku**. Najděte soubor obrázku a zahrňte ho do projektu. V tomto kurzu se předpokládá, že se image jmenuje `image.jpg` .
 
 1. Klikněte pravým tlačítkem na obrázek a pak vyberte **vlastnosti**. Ujistěte se, že je **Složka kopírovat do výstupního adresáře** nastavená na hodnotu **vždy kopírovat**.
 
@@ -93,9 +92,9 @@ V této části upravíte aplikaci zařízení, kterou jste vytvořili v části
     }
     ```
 
-    `UploadToBlobAsync` Metoda přebírá název souboru a zdroj streamu souboru, který se má nahrát, a zpracuje odeslání do úložiště. Aplikace konzoly zobrazuje dobu potřebnou k nahrání souboru.
+    `UploadToBlobAsync`Metoda přebírá název souboru a zdroj streamu souboru, který se má nahrát, a zpracuje odeslání do úložiště. Aplikace konzoly zobrazuje dobu potřebnou k nahrání souboru.
 
-1. Do metody **Main** přidejte následující řádek, a to hned před `Console.ReadLine()`:
+1. Do metody **Main** přidejte následující řádek, a to hned před `Console.ReadLine()` :
 
     ```csharp
     SendToBlobAsync();
@@ -114,7 +113,7 @@ V tomto článku vytvoříte back-end službu pro příjem zpráv s oznámením 
 
 V této části napíšete konzolovou aplikaci .NET, která přijímá zprávy s oznámením o nahrávání souborů z IoT Hub.
 
-1. V aktuálním řešení sady Visual Studio vyberte **soubor** > **Nový** > **projekt**. V poli **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+1. V aktuálním řešení sady Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V poli **vytvořit nový projekt**vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
 1. Pojmenujte projekt *ReadFileUploadNotification*. V části **řešení**vyberte **Přidat do řešení**. Vyberte **Vytvořit** a vytvořte projekt.
 
@@ -180,7 +179,7 @@ Nyní můžete spustit aplikace.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na své řešení a vyberte **nastavit projekty po spuštění**.
 
-1. V **okně běžné vlastnosti** > **spouštěný projekt**vyberte **více projektů po spuštění**a pak vyberte akci **spuštění** pro **ReadFileUploadNotification** a **SimulatedDevice**. Výběrem **OK** uložte změny.
+1. V **okně běžné vlastnosti**  >  **spouštěný projekt**vyberte **více projektů po spuštění**a pak vyberte akci **spuštění** pro **ReadFileUploadNotification** a **SimulatedDevice**. Výběrem **OK** uložte změny.
 
 1. Stiskněte klávesu **F5**. Obě aplikace by měly být spuštěny. Měli byste vidět, že nahrávání bylo dokončeno v jedné aplikaci konzoly a zpráva oznámení o odeslání obdržená jinou konzolovou aplikací. K vyhledání přítomnosti nahraného souboru ve vašem účtu Azure Storage můžete použít [Azure Portal](https://portal.azure.com/) nebo Průzkumník serveru sady Visual Studio.
 

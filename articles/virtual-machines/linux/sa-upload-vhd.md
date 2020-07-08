@@ -9,10 +9,9 @@ ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
 ms.openlocfilehash: 7ec9b670f8b2eb1731511deb1d01cfc7db55054f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758574"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Nahrání a vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
@@ -26,7 +25,7 @@ Pokud potřebujete úkol rychle provést, následující část podrobně popisu
 
 Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlášení k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
-V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují `myResourceGroup` `mystorageaccount`, a `mydisks`.
+V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují `myResourceGroup` , `mystorageaccount` a `mydisks` .
 
 Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group). Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umístění `WestUs`:
 
@@ -34,27 +33,27 @@ Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cl
 az group create --name myResourceGroup --location westus
 ```
 
-Vytvořte účet úložiště pro ukládání virtuálních disků pomocí [AZ Storage Account Create](/cli/azure/storage/account). Následující příklad vytvoří účet úložiště s názvem `mystorageaccount`:
+Vytvořte účet úložiště pro ukládání virtuálních disků pomocí [AZ Storage Account Create](/cli/azure/storage/account). Následující příklad vytvoří účet úložiště s názvem `mystorageaccount` :
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
   --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-Seznam přístupových klíčů pro účet úložiště pomocí [seznamu AZ Storage Account Keys list](/cli/azure/storage/account/keys). Poznamenejte si `key1`:
+Seznam přístupových klíčů pro účet úložiště pomocí [seznamu AZ Storage Account Keys list](/cli/azure/storage/account/keys). Poznamenejte si `key1` :
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-Vytvořte kontejner v rámci svého účtu úložiště pomocí klíče úložiště, který jste získali pomocí [AZ Storage Container Create](/cli/azure/storage/container). Následující příklad vytvoří kontejner s názvem `mydisks` pomocí hodnoty klíče úložiště z: `key1`
+Vytvořte kontejner v rámci svého účtu úložiště pomocí klíče úložiště, který jste získali pomocí [AZ Storage Container Create](/cli/azure/storage/container). Následující příklad vytvoří kontejner s názvem `mydisks` pomocí hodnoty klíče úložiště z `key1` :
 
 ```azurecli
 az storage container create --account-name mystorageaccount \
     --account-key key1 --name mydisks
 ```
 
-Nakonec nahrajte virtuální pevný disk do kontejneru, který jste vytvořili pomocí příkazu [AZ Storage BLOB upload](/cli/azure/storage/blob). V části `/path/to/disk/mydisk.vhd`zadejte místní cestu k virtuálnímu pevnému disku:
+Nakonec nahrajte virtuální pevný disk do kontejneru, který jste vytvořili pomocí příkazu [AZ Storage BLOB upload](/cli/azure/storage/blob). V části zadejte místní cestu k virtuálnímu pevnému disku `/path/to/disk/mydisk.vhd` :
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -62,7 +61,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-Zadejte identifikátor URI k disku (`--image`) pomocí [AZ VM Create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem `myVM` pomocí dříve odeslaného virtuálního disku:
+Zadejte identifikátor URI k disku ( `--image` ) pomocí [AZ VM Create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem `myVM` pomocí dříve odeslaného virtuálního disku:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -78,11 +77,11 @@ Cílový účet úložiště musí být stejný jako místo, kam jste nahráli v
 K provedení následujících kroků potřebujete:
 
 * **Operační systém Linux nainstalovaný v souboru. VHD** – nainstalujte [distribuci Linux schválené pro Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (nebo si přečtěte [informace pro neschválené distribuce](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) na virtuální disk ve formátu VHD. Existuje několik nástrojů, které slouží k vytvoření virtuálního počítače a virtuálního pevného disku:
-  * Nainstalujte a nakonfigurujte [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) nebo [KVM](https://www.linux-kvm.org/page/RunningKVM), přičemž se ujistěte, že jako formát obrázku použijete VHD. V případě potřeby můžete [obrázek převést](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) pomocí `qemu-img convert`.
+  * Nainstalujte a nakonfigurujte [qemu](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) nebo [KVM](https://www.linux-kvm.org/page/RunningKVM), přičemž se ujistěte, že jako formát obrázku použijete VHD. V případě potřeby můžete [obrázek převést](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) pomocí `qemu-img convert` .
   * Můžete také použít Hyper-V [ve Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) nebo [Windows Serveru 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
 > [!NOTE]
-> Novější formát VHDX se v Azure nepodporuje. Když vytváříte virtuální počítač, zadejte jako formát VHD. V případě potřeby můžete disky VHDX převést na VHD pomocí [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) rutiny nebo [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) PowerShellu. Kromě toho Azure nepodporuje nahrávání dynamických virtuálních pevných disků, takže před odesláním musíte tyto disky převést na statické virtuální pevné disky. Pomocí nástrojů, jako jsou například [nástroje Azure VHD](https://github.com/Microsoft/azure-vhd-utils-for-go) Tools, můžete v průběhu nahrávání do Azure převést dynamické disky.
+> Novější formát VHDX se v Azure nepodporuje. Když vytváříte virtuální počítač, zadejte jako formát VHD. V případě potřeby můžete disky VHDX převést na VHD pomocí [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) rutiny nebo PowerShellu. Kromě toho Azure nepodporuje nahrávání dynamických virtuálních pevných disků, takže před odesláním musíte tyto disky převést na statické virtuální pevné disky. Pomocí nástrojů, jako jsou například [nástroje Azure VHD](https://github.com/Microsoft/azure-vhd-utils-for-go) Tools, můžete v průběhu nahrávání do Azure převést dynamické disky.
 > 
 > 
 
@@ -92,18 +91,18 @@ K provedení následujících kroků potřebujete:
 
 Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlášení k účtu Azure pomocí [AZ Login](/cli/azure/reference-index).
 
-V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují `myResourceGroup` `mystorageaccount`, a `mydisks`.
+V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují `myResourceGroup` , `mystorageaccount` a `mydisks` .
 
 <a id="prepimage"> </a>
 
 ## <a name="prepare-the-disk-to-be-uploaded"></a>Příprava disku, který se má nahrát
 Azure podporuje různé distribuce systému Linux (viz [schválené distribuce](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Následující články vás seznámí s postupem přípravy různých distribucí systému Linux, které jsou podporovány v Azure:
 
-* **[Distribuce na základě CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[Distribuce založené na CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES a openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Jiné neschválené distribuce](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
@@ -160,7 +159,7 @@ Poznamenejte si, `key1` jak ho budete používat k interakci s účtem úložiš
 ## <a name="create-a-storage-container"></a>Vytvoření kontejneru úložiště
 Stejným způsobem, jakým vytvoříte různé adresáře pro logickou organizaci místního systému souborů, vytvoříte kontejnery v rámci účtu úložiště, abyste mohli své disky uspořádat. Účet úložiště může obsahovat libovolný počet kontejnerů. Vytvořte kontejner pomocí [AZ Storage Container Create](/cli/azure/storage/container).
 
-Následující příklad vytvoří kontejner s názvem `mydisks`:
+Následující příklad vytvoří kontejner s názvem `mydisks` :
 
 ```azurecli
 az storage container create \
@@ -180,9 +179,9 @@ az storage blob upload --account-name mystorageaccount \
 ```
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
-Pokud chcete vytvořit virtuální počítač s nespravovanými disky, zadejte identifikátor URI k`--image`disku () pomocí [AZ VM Create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem `myVM` pomocí dříve odeslaného virtuálního disku:
+Pokud chcete vytvořit virtuální počítač s nespravovanými disky, zadejte identifikátor URI k disku ( `--image` ) pomocí [AZ VM Create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem `myVM` pomocí dříve odeslaného virtuálního disku:
 
-`--image` Parametr pomocí [AZ VM Create](/cli/azure/vm) určíte tak, aby odkazoval na vlastní disk. Zajistěte, aby `--storage-account` odpovídaly účtu úložiště, ve kterém je uložený vlastní disk. Nemusíte používat stejný kontejner jako vlastní disk pro ukládání virtuálních počítačů. Před nahráním vlastního disku nezapomeňte vytvořit další kontejnery stejným způsobem jako v předchozích krocích.
+`--image`Parametr pomocí [AZ VM Create](/cli/azure/vm) určíte tak, aby odkazoval na vlastní disk. Zajistěte, aby `--storage-account` odpovídaly účtu úložiště, ve kterém je uložený vlastní disk. Nemusíte používat stejný kontejner jako vlastní disk pro ukládání virtuálních počítačů. Před nahráním vlastního disku nezapomeňte vytvořit další kontejnery stejným způsobem jako v předchozích krocích.
 
 Následující příklad vytvoří virtuální počítač s názvem `myVM` z vašeho vlastního disku:
 
@@ -200,7 +199,7 @@ Stále musíte zadat nebo zodpovědět výzvy pro všechny další parametry vy�
 ## <a name="resource-manager-template"></a>Šablona Resource Manageru
 Šablony Azure Resource Manager jsou soubory JavaScript Object Notation (JSON), které definují prostředí, které chcete sestavit. Šablony jsou rozdělené do různých poskytovatelů prostředků, jako jsou výpočetní prostředky nebo síť. Můžete použít existující šablony nebo napsat vlastní. Přečtěte si další informace o [použití Správce prostředků a šablon](../../azure-resource-manager/management/overview.md).
 
-V rámci `Microsoft.Compute/virtualMachines` poskytovatele šablony máte `storageProfile` uzel, který obsahuje podrobnosti o konfiguraci pro váš virtuální počítač. Dva hlavní parametry, které je potřeba upravit `image` , `vhd` jsou identifikátory URI a, které odkazují na váš vlastní disk a virtuální disk nového virtuálního počítače. V následujícím příkladu vidíte příklad formátu JSON pro použití vlastního disku:
+V rámci `Microsoft.Compute/virtualMachines` poskytovatele šablony máte `storageProfile` uzel, který obsahuje podrobnosti o konfiguraci pro váš virtuální počítač. Dva hlavní parametry, které je potřeba upravit `image` `vhd` , jsou identifikátory URI a, které odkazují na váš vlastní disk a virtuální disk nového virtuálního počítače. V následujícím příkladu vidíte příklad formátu JSON pro použití vlastního disku:
 
 ```json
 "storageProfile": {
@@ -227,7 +226,7 @@ az group deployment create --resource-group myNewResourceGroup \
   --template-uri https://uri.to.template/mytemplate.json
 ```
 
-Pokud máte soubor JSON uložený místně na svém počítači, můžete místo toho použít `--template-file` parametr:
+Pokud máte soubor JSON uložený místně na svém počítači, můžete `--template-file` místo toho použít parametr:
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \

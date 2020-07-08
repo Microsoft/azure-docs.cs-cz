@@ -12,10 +12,9 @@ ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 0c6fc0cdba4607bba55383f2662257322ef23aa2
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212237"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Začínáme s transparentní šifrování dat (TDE)
@@ -23,7 +22,7 @@ ms.locfileid: "85212237"
 > [!div class="op_single_selector"]
 >
 > * [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md)
-> * [Ověřování](sql-data-warehouse-authentication.md)
+> * [Authentication](sql-data-warehouse-authentication.md)
 > * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 

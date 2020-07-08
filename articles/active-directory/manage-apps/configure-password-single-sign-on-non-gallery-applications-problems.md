@@ -16,10 +16,9 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9620a6ad584f20a0956e6a29c89609d79832f4d2
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763444"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problémy s konfigurací jednotného přihlašování k heslům pro aplikaci mimo galerii
@@ -106,7 +105,7 @@ Pokud chcete pro aplikaci nakonfigurovat jednotné přihlašování na základě
 
 16. Postupujte podle pokynů k použití přístupového panelu.
 
-## <a name="troubleshoot-problems"></a>Odstraňování potíží
+## <a name="troubleshoot-problems"></a>Poradce při potížích
 
 ### <a name="i-get-a-we-couldnt-find-any-sign-in-fields-at-that-url-error"></a>Zobrazuje se chybová zpráva: nenašly se žádné přihlašovací pole na adrese URL.
 

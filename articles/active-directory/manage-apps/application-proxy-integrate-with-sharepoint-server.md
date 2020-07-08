@@ -17,10 +17,9 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764532"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu k SharePointu s využitím Proxy aplikací služby Azure AD
@@ -188,7 +187,7 @@ Ke konfiguraci KCD použijte následující postup pro každý počítač konekt
 1. Najděte počítač, na kterém běží konektor proxy služby Azure AD. V tomto příkladu je to samotný server SharePoint.
 1. Poklikejte na počítač a vyberte kartu **Delegování**.
 1. Ujistěte se, že možnosti delegování jsou nastavené tak, aby **důvěřovaly tomuto počítači pro delegování pouze určeným službám**. Pak vyberte **použít libovolný protokol pro ověřování**.
-1. Vyberte tlačítko **Přidat** , vyberte možnost **Uživatelé nebo počítače**a vyhledejte účet fondu aplikací služby SharePoint. Příklad: `Contoso\spapppool`.
+1. Vyberte tlačítko **Přidat** , vyberte možnost **Uživatelé nebo počítače**a vyhledejte účet fondu aplikací služby SharePoint. Například: `Contoso\spapppool`.
 1. V seznamu SPN vyberte ten, který jste předtím vytvořili pro účet služby.
 1. Vyberte **OK** a pak znovu vyberte **OK** , aby se změny uložily.
   

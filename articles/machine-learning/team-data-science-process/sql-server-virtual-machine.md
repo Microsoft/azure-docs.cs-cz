@@ -11,12 +11,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e387d5f7ee0b1926457717b30b03bbfeb8d70a1c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76718476"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027422"
 ---
 # <a name="process-data-in-sql-server-virtual-machine-on-azure"></a><a name="heading"></a>Zpracování dat na virtuálním počítači s SQL Serverem v Azure
 Tento dokument popisuje, jak prozkoumat data a generovat funkce pro data uložená v SQL Serverm VIRTUÁLNÍm počítači v Azure. Tento cíl může dokončit data tahání pomocí SQL nebo pomocí programovacího jazyka, jako je Python.
@@ -68,16 +67,19 @@ V této části popíšeme způsoby generování funkcí pomocí SQL:
 ### <a name="count-based-feature-generation"></a><a name="sql-countfeature"></a>Generace funkcí na základě počtu
 Následující příklady znázorňují dva způsoby, jak vygenerovat funkce Count. První metoda používá Podmíněný součet a druhá metoda používá klauzuli WHERE. Tyto výsledky pak mohou být spojeny s původní tabulkou (pomocí sloupců primárního klíče), aby měly funkce Count společně s původními daty.
 
-    select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
+```sql
+select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
-    select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
-    where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
+select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename> 
+where <column_name3> = '<some_value>' group by <column_name1>,<column_name2> 
+```
 
 ### <a name="binning-feature-generation"></a><a name="sql-binningfeature"></a>Generace funkcí binningu
 Následující příklad ukazuje, jak generovat funkce rozdělený pomocí binningu (pomocí pěti přihrádek) číselný sloupec, který lze použít jako funkci místo toho:
 
-    `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
-
+```sql
+SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>
+```
 
 ### <a name="rolling-out-the-features-from-a-single-column"></a><a name="sql-featurerollout"></a>Zavádění funkcí z jednoho sloupce
 V této části ukážeme, jak v tabulce zavést jeden sloupec pro generování dalších funkcí. V příkladu se předpokládá, že je v tabulce, ze které se pokoušíte generovat funkce, sloupec Zeměpisná šířka nebo zeměpisná délka.
@@ -97,16 +99,18 @@ Tady je stručný úvod k datům o poloze/Zeměpisná šířka (znovu se zdroji 
 
 Informace o umístění může být natrénuje takto, oddělit informace o oblasti, umístění a městech. Můžete také zavolat koncový bod REST, jako je například rozhraní API služby Bing Maps, které je k dispozici v [umístění, kde](https://msdn.microsoft.com/library/ff701710.aspx) získáte informace o oblasti a oblasti.
 
-    select 
-        <location_columnname>
-        ,round(<location_columnname>,0) as l1        
-        ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
-        ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
-        ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
-        ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
-        ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
-        ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
-    from <tablename>
+```sql
+select 
+    <location_columnname>
+    ,round(<location_columnname>,0) as l1        
+    ,l2=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 1 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),1,1) else '0' end     
+    ,l3=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 2 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),2,1) else '0' end     
+    ,l4=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 3 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),3,1) else '0' end     
+    ,l5=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 4 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),4,1) else '0' end     
+    ,l6=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 5 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),5,1) else '0' end     
+    ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
+from <tablename>
+```
 
 Tyto funkce založené na umístění je možné dále využít ke generování dalších funkcí Count, jak je popsáno výše. 
 
@@ -125,14 +129,18 @@ Použití Pythonu k prozkoumávání dat a generování funkcí, když jsou data
 
 Následující formát připojovacího řetězce se dá použít k připojení k SQL Server databázi z Pythonu pomocí pyodbc (nahraďte servername, dbname, username a Password konkrétními hodnotami):
 
-    #Set up the SQL Azure connection
-    import pyodbc    
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```python
+#Set up the SQL Azure connection
+import pyodbc    
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
+```
 
 [Knihovna PANDAS](https://pandas.pydata.org/) v Pythonu poskytuje bohatou sadu datových struktur a nástrojů pro analýzu dat pro manipulaci s daty pro programování v Pythonu. Následující kód přečte výsledky vrácené z databáze SQL Server do datového rámce PANDAS:
 
-    # Query database and load the returned results in pandas data frame
-    data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```python
+# Query database and load the returned results in pandas data frame
+data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
+```
 
 Nyní můžete pracovat s datovým rámcem PANDAS, jak je popsáno v článku [zpracování dat objektů BLOB v Azure ve vašem prostředí pro datové vědy](data-blob.md).
 

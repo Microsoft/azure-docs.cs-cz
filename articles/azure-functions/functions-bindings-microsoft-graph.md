@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
 ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84322511"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph vazby pro Azure Functions
@@ -75,7 +74,7 @@ Vstupní vazba tokenu ověřování získá token Azure AD pro daný prostředek
 
 Tato část obsahuje následující pododdíly:
 
-* [Případě](#auth-token---example)
+* [Příklad](#auth-token---example)
 * [Atributy](#auth-token---attributes)
 * [Konfigurace](#auth-token---configuration)
 * [Použití](#auth-token---usage)
@@ -91,7 +90,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 Následující příklad získá informace o profilu uživatele.
 
-Soubor *Function. JSON* definuje Trigger http se vstupní vazbou tokenu:
+*function.jsv* souboru definuje aktivační událost HTTP pomocí vstupní vazby tokenu:
 
 ```json
 {
@@ -138,7 +137,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 
 Následující příklad získá informace o profilu uživatele.
 
-Soubor *Function. JSON* definuje Trigger http se vstupní vazbou tokenu:
+*function.jsv* souboru definuje aktivační událost HTTP pomocí vstupní vazby tokenu:
 
 ```json
 {
@@ -203,9 +202,9 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 ### <a name="auth-token---configuration"></a>Ověřovací token – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `Token` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Token` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro ověřovací token. Viz [použití vstupní vazby ověřovacího tokenu z kódu](#token-input-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `token` .|
@@ -233,7 +232,7 @@ Vstupní vazba tabulky Excelu přečte obsah excelové tabulky uložené na OneD
 
 Tato část obsahuje následující pododdíly:
 
-* [Případě](#excel-input---example)
+* [Příklad](#excel-input---example)
 * [Atributy](#excel-input---attributes)
 * [Konfigurace](#excel-input---configuration)
 * [Použití](#excel-input---usage)
@@ -247,7 +246,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 #### <a name="excel-input---c-script-example"></a>Ukázka vstupu Excelu – příklad skriptu C#
 
-Následující soubor *Function. JSON* definuje Trigger http se vstupní vazbou aplikace Excel:
+Následující *function.jsv* souboru definuje aktivační událost HTTP pomocí vstupní vazby v aplikaci Excel:
 
 ```json
 {
@@ -292,7 +291,7 @@ public static IActionResult Run(HttpRequest req, string[][] excelTableData, ILog
 
 #### <a name="excel-input---javascript-example"></a>Ukázka v Excelu – příklad JavaScriptu
 
-Následující soubor *Function. JSON* definuje Trigger http se vstupní vazbou aplikace Excel:
+Následující *function.jsv* souboru definuje aktivační událost HTTP pomocí vstupní vazby v aplikaci Excel:
 
 ```json
 {
@@ -338,9 +337,9 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 ### <a name="excel-input---configuration"></a>Vstup v Excelu – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `Excel` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Excel` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Required – název proměnné použitý v kódu funkce pro excelovou tabulku. Viz [použití vstupní vazby z tabulky v aplikaci Excel z kódu](#excel-input-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `excel` .|
@@ -382,7 +381,7 @@ Vazba na výstupu z Excelu upraví obsah excelové tabulky uložené na OneDrivu
 
 Tato část obsahuje následující pododdíly:
 
-* [Případě](#excel-output---example)
+* [Příklad](#excel-output---example)
 * [Atributy](#excel-output---attributes)
 * [Konfigurace](#excel-output---configuration)
 * [Použití](#excel-output---usage)
@@ -398,7 +397,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 Následující příklad přidá řádky do excelové tabulky.
 
-Soubor *Function. JSON* definuje Trigger http s výstupní vazbou Excelu:
+*function.jsv* souboru definuje aktivační událost HTTP pomocí výstupní vazby aplikace Excel:
 
 ```json
 {
@@ -452,7 +451,7 @@ public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRo
 
 Následující příklad přidá řádky do excelové tabulky.
 
-Soubor *Function. JSON* definuje Trigger http s výstupní vazbou Excelu:
+*function.jsv* souboru definuje aktivační událost HTTP pomocí výstupní vazby aplikace Excel:
 
 ```json
 {
@@ -500,9 +499,9 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 ### <a name="excel-output---configuration"></a>Výstup aplikace Excel – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `Excel` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Excel` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro ověřovací token. Viz [použití výstupní vazby tabulky aplikace Excel z kódu](#excel-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `excel` .|
@@ -526,7 +525,7 @@ Tato vazba vyžaduje následující oprávnění služby Azure AD:
 
 Vazba zpřístupňuje následující typy pro funkce .NET:
 - řetězec [] []
-- Newtonsoft. JSON. Linq. JObject
+- Newtonsoft.Js. LINQ. JObject
 - Microsoft. Graph. Workbook – sešit
 - Vlastní typy objektů (pomocí vazby strukturálního modelu)
 
@@ -541,7 +540,7 @@ Vazba vstupu na soubor na OneDrivu čte obsah souboru uloženého na OneDrivu.
 
 Tato část obsahuje následující pododdíly:
 
-* [Případě](#file-input---example)
+* [Příklad](#file-input---example)
 * [Atributy](#file-input---attributes)
 * [Konfigurace](#file-input---configuration)
 * [Použití](#file-input---usage)
@@ -557,7 +556,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 V následujícím příkladu se přečte soubor, který je uložený na OneDrivu.
 
-Soubor *Function. JSON* definuje Trigger http se vstupní vazbou souboru OneDrive:
+*function.jsv* souboru definuje aktivační událost http se vstupní vazbou souboru OneDrive:
 
 ```json
 {
@@ -601,7 +600,7 @@ public static void Run(HttpRequestMessage req, Stream myOneDriveFile, ILogger lo
 
 V následujícím příkladu se přečte soubor, který je uložený na OneDrivu.
 
-Soubor *Function. JSON* definuje Trigger http se vstupní vazbou souboru OneDrive:
+*function.jsv* souboru definuje aktivační událost http se vstupní vazbou souboru OneDrive:
 
 ```json
 {
@@ -646,9 +645,9 @@ V [knihovnách tříd C#](functions-dotnet-class-library.md)použijte atribut [O
 
 ### <a name="file-input---configuration"></a>Vstup souboru – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `OneDrive` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `OneDrive` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce souboru. Viz [použití vazby vstupu souboru na OneDrivu z kódu](#onedrive-input-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `onedrive` .|
@@ -669,7 +668,7 @@ Tato vazba vyžaduje následující oprávnění služby Azure AD:
 
 Vazba zpřístupňuje následující typy pro funkce .NET:
 - Byte []
-- Stream
+- Datový proud
 - řetězec
 - Microsoft. Graph. DriveItem
 
@@ -685,7 +684,7 @@ Vazba výstupu souboru na OneDrivu upraví obsah souboru uloženého na OneDrivu
 
 Tato část obsahuje následující pododdíly:
 
-* [Případě](#file-output---example)
+* [Příklad](#file-output---example)
 * [Atributy](#file-output---attributes)
 * [Konfigurace](#file-output---configuration)
 * [Použití](#file-output---usage)
@@ -701,7 +700,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 Následující příklad zapisuje do souboru, který je uložený na OneDrivu.
 
-Soubor *Function. JSON* definuje Trigger http s výstupní vazbou na OneDrivu:
+*function.jsv* souboru definuje Trigger http s výstupní vazbou na OneDrivu:
 
 ```json
 {
@@ -729,7 +728,7 @@ Soubor *Function. JSON* definuje Trigger http s výstupní vazbou na OneDrivu:
 }
 ```
 
-Kód skriptu jazyka C# získá text z řetězce dotazu a zapíše ho do textového souboru (FunctionsTest. txt, jak je definováno v předchozím příkladu) v kořenovém adresáři OneDrivu volajícího:
+Kód skriptu jazyka C# získá text z řetězce dotazu a zapíše jej do textového souboru (FunctionsTest.txt jak je definováno v předchozím příkladu) v kořenovém adresáři OneDrivu volajícího:
 
 ```csharp
 using System.Net;
@@ -751,7 +750,7 @@ public static async Task Run(HttpRequest req, ILogger log, Stream myOneDriveFile
 
 Následující příklad zapisuje do souboru, který je uložený na OneDrivu.
 
-Soubor *Function. JSON* definuje Trigger http s výstupní vazbou na OneDrivu:
+*function.jsv* souboru definuje Trigger http s výstupní vazbou na OneDrivu:
 
 ```json
 {
@@ -779,7 +778,7 @@ Soubor *Function. JSON* definuje Trigger http s výstupní vazbou na OneDrivu:
 }
 ```
 
-Kód JavaScriptu získá text z řetězce dotazu a zapíše ho do textového souboru (FunctionsTest. txt, jak je definováno v konfiguraci výše) v kořenovém adresáři OneDrivu volajícího.
+Kód jazyka JavaScript získá text z řetězce dotazu a zapíše jej do textového souboru (FunctionsTest.txt jak je definováno v konfiguraci výše) v kořenovém adresáři OneDrivu volajícího.
 
 ```js
 module.exports = function (context, req) {
@@ -794,9 +793,9 @@ V [knihovnách tříd C#](functions-dotnet-class-library.md)použijte atribut [O
 
 ### <a name="file-output---configuration"></a>Výstup souboru – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `OneDrive` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `OneDrive` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro soubor. Viz [použití vazby výstupu souboru na OneDrivu z kódu](#onedrive-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `onedrive` .|
@@ -817,7 +816,7 @@ Tato vazba vyžaduje následující oprávnění služby Azure AD:
 
 Vazba zpřístupňuje následující typy pro funkce .NET:
 - Byte []
-- Stream
+- Datový proud
 - řetězec
 - Microsoft. Graph. DriveItem
 
@@ -832,7 +831,7 @@ Výstupní vazba zprávy Outlooku pošle e-mailovou zprávu přes Outlook.
 
 Tato část obsahuje následující pododdíly:
 
-* [Případě](#outlook-output---example)
+* [Příklad](#outlook-output---example)
 * [Atributy](#outlook-output---attributes)
 * [Konfigurace](#outlook-output---configuration)
 * [Použití](#outlook-output---usage)
@@ -848,7 +847,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 V následujícím příkladu se pošle e-mail přes Outlook.
 
-Soubor *Function. JSON* definuje aktivační událost HTTP pomocí výstupní vazby zprávy Outlooku:
+*function.jsv* souboru definuje aktivační událost HTTP pomocí výstupní vazby zprávy Outlooku:
 
 ```json
 {
@@ -903,7 +902,7 @@ public class Recipient {
 
 V následujícím příkladu se pošle e-mail přes Outlook.
 
-Soubor *Function. JSON* definuje aktivační událost HTTP pomocí výstupní vazby zprávy Outlooku:
+*function.jsv* souboru definuje aktivační událost HTTP pomocí výstupní vazby zprávy Outlooku:
 
 ```json
 {
@@ -945,9 +944,9 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 ### <a name="outlook-output---configuration"></a>Výstup aplikace Outlook – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `Outlook` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Outlook` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `outlook` .|
@@ -967,7 +966,7 @@ Tato vazba vyžaduje následující oprávnění služby Azure AD:
 
 Vazba zpřístupňuje následující typy pro funkce .NET:
 - Microsoft. Graph. Message
-- Newtonsoft. JSON. Linq. JObject
+- Newtonsoft.Js. LINQ. JObject
 - řetězec
 - Vlastní typy objektů (pomocí vazby strukturálního modelu)
 
@@ -997,7 +996,7 @@ Trigger Microsoft Graph Webhooku umožňuje funkci reagovat na příchozí Webho
 
 Tato část obsahuje následující pododdíly:
 
-* [Případě](#webhook-trigger---example)
+* [Příklad](#webhook-trigger---example)
 * [Atributy](#webhook-trigger---attributes)
 * [Konfigurace](#webhook-trigger---configuration)
 * [Použití](#webhook-trigger---usage)
@@ -1013,7 +1012,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 Následující příklad zpracovává Webhooky pro příchozí zprávy Outlooku. Pokud chcete použít Trigger Webhooku, můžete [Vytvořit předplatné](#webhook-output---example)a [předplatné aktualizovat](#webhook-subscription-refresh) , abyste zabránili jeho vypršení platnosti.
 
-Soubor *Function. JSON* definuje Trigger Webhooku:
+*function.jsv* souboru definuje Trigger Webhooku:
 
 ```json
 {
@@ -1052,7 +1051,7 @@ public static async Task Run(Message msg, ILogger log)
 
 Následující příklad zpracovává Webhooky pro příchozí zprávy Outlooku. Pokud chcete použít Trigger Webhooku, můžete [Vytvořit předplatné](#webhook-output---example)a [předplatné aktualizovat](#webhook-subscription-refresh) , abyste zabránili jeho vypršení platnosti.
 
-Soubor *Function. JSON* definuje Trigger Webhooku:
+*function.jsv* souboru definuje Trigger Webhooku:
 
 ```json
 {
@@ -1088,9 +1087,9 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 ### <a name="webhook-trigger---configuration"></a>Trigger Webhooku – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `GraphWebhookTrigger` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `GraphWebhookTrigger` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `graphWebhook` .|
@@ -1116,7 +1115,7 @@ Vstupní vazba Webhooku Microsoft Graph umožňuje načíst seznam předplatnýc
 
 Tato část obsahuje následující pododdíly:
 
-* [Případě](#webhook-input---example)
+* [Příklad](#webhook-input---example)
 * [Atributy](#webhook-input---attributes)
 * [Konfigurace](#webhook-input---configuration)
 * [Použití](#webhook-input---usage)
@@ -1132,7 +1131,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 Následující příklad načte všechna předplatná pro volajícího uživatele a odstraní je.
 
-Soubor *Function. JSON* definuje Trigger http se vstupní vazbou předplatného a výstupní vazbou předplatného, které používá akci odstranit:
+*function.jsv* souboru definuje aktivační událost http se vstupní vazbou předplatného a výstupní vazbou předplatného, které používá akci odstranit:
 
 ```json
 {
@@ -1186,7 +1185,7 @@ public static async Task Run(HttpRequest req, string[] existingSubscriptions, IA
 
 Následující příklad načte všechna předplatná pro volajícího uživatele a odstraní je.
 
-Soubor *Function. JSON* definuje Trigger http se vstupní vazbou předplatného a výstupní vazbou předplatného, které používá akci odstranit:
+*function.jsv* souboru definuje aktivační událost http se vstupní vazbou předplatného a výstupní vazbou předplatného, které používá akci odstranit:
 
 ```json
 {
@@ -1240,9 +1239,9 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 ### <a name="webhook-input---configuration"></a>Vstup Webhooku – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `GraphWebhookSubscription` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `GraphWebhookSubscription` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `graphWebhookSubscription` .|
@@ -1254,7 +1253,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 Vazba zpřístupňuje následující typy pro funkce .NET:
 - řetězec []
 - Vlastní pole typu objektu
-- Newtonsoft. JSON. Linq. JObject []
+- Newtonsoft.Js. LINQ. JObject []
 - Microsoft. Graph. Subscription []
 
 
@@ -1267,7 +1266,7 @@ Výstupní vazba předplatného Webhooku umožňuje vytvořit, odstranit a aktua
 
 Tato část obsahuje následující pododdíly:
 
-* [Případě](#webhook-output---example)
+* [Příklad](#webhook-output---example)
 * [Atributy](#webhook-output---attributes)
 * [Konfigurace](#webhook-output---configuration)
 * [Použití](#webhook-output---usage)
@@ -1283,7 +1282,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 V následujícím příkladu se vytvoří předplatné. Předplatné můžete [aktualizovat](#webhook-subscription-refresh) , abyste zabránili jeho vypršení platnosti.
 
-Soubor *Function. JSON* definuje aktivační událost http s výstupní vazbou předplatného pomocí akce vytvořit:
+*function.jsv* souboru definuje aktivační událost http s výstupní vazbou předplatného pomocí akce vytvořit:
 
 ```json
 {
@@ -1333,7 +1332,7 @@ public static HttpResponseMessage run(HttpRequestMessage req, out string clientS
 
 V následujícím příkladu se vytvoří předplatné. Předplatné můžete [aktualizovat](#webhook-subscription-refresh) , abyste zabránili jeho vypršení platnosti.
 
-Soubor *Function. JSON* definuje aktivační událost http s výstupní vazbou předplatného pomocí akce vytvořit:
+*function.jsv* souboru definuje aktivační událost http s výstupní vazbou předplatného pomocí akce vytvořit:
 
 ```json
 {
@@ -1381,9 +1380,9 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 ### <a name="webhook-output---configuration"></a>Výstup Webhooku – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `GraphWebhookSubscription` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `GraphWebhookSubscription` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `graphWebhookSubscription` .|
@@ -1428,7 +1427,7 @@ Podívejte se na příklad konkrétního jazyka:
 
 Následující příklad používá identitu aplikace k aktualizaci předplatného.
 
-*Funkce Function. JSON* definuje aktivační událost časovače se vstupní vazbou předplatného a výstupní vazbou předplatného:
+*function.jsv* definuje aktivační událost časovače se vstupní vazbou předplatného a výstupní vazbou předplatného:
 
 ```json
 {
@@ -1479,7 +1478,7 @@ public static void Run(TimerInfo myTimer, string[] existingSubscriptions, IColle
 
 Následující příklad používá identitu aplikace k aktualizaci předplatného.
 
-*Funkce Function. JSON* definuje aktivační událost časovače se vstupní vazbou předplatného a výstupní vazbou předplatného:
+*function.jsv* definuje aktivační událost časovače se vstupní vazbou předplatného a výstupní vazbou předplatného:
 
 ```json
 {
@@ -1529,7 +1528,7 @@ module.exports = function (context) {
 
 Následující příklad používá identitu uživatele k aktualizaci předplatného.
 
-Soubor *Function. JSON* definuje aktivační událost časovače a odloží vstupní vazbu předplatného na kód funkce:
+*function.jsv* souboru definuje aktivační událost časovače a odloží vstupní vazbu předplatného na kód funkce:
 
 ```json
 {

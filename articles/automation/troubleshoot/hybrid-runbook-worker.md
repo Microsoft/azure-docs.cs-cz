@@ -10,13 +10,12 @@ ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83681001"
 ---
-# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Řešení potíží s Hybrid Runbook Worker
+# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Řešení problémů s funkcí Hybrid Runbook Worker
 
 Tento článek poskytuje informace o řešení potíží a řešení problémů s Azure Automation procesy Hybrid Runbook Worker. Obecné informace najdete v tématu [přehled Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md).
 
@@ -234,17 +233,17 @@ Protokoly se ukládají místně na každý hybridní pracovní proces na C:\Pro
 
 Hybridní pracovní procesy odesílají [výstup a zprávy Runbooku](../automation-runbook-output-and-messages.md) do Azure Automation stejným způsobem jako úlohy Runbooku běžící v cloudu odesílají výstup a zprávy. Můžete povolit streamování s podrobnými a průběhy stejně jako u runbooků.
 
-### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Scénář: Orchestrator. sandbox. exe se nemůže připojit k Office 365 prostřednictvím proxy
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Scénář: Orchestrator.Sandbox.exe se nemůže připojit k Office 365 prostřednictvím proxy
 
 #### <a name="issue"></a>Problém
 
 Skript, který běží na Windows Hybrid Runbook Worker, se v izolovaném prostoru (sandbox) Orchestrator nemůže připojit podle očekávání na Office 365. Skript používá pro připojení [příkaz Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) . 
 
-Pokud upravíte soubor **Orchestrator. sandbox. exe. config** a nastavíte proxy server a seznam pro obejití, izolovaný prostor (sandbox) se stále nepřipojí správně. Zdá se, že soubor **Powershell_ise. exe. config** se stejným nastavením proxy serveru a seznamu obcházení funguje podle očekávání. Protokoly Service Management Automation (SMA) a protokoly prostředí PowerShell neposkytují žádné informace týkající se proxy serveru.
+Pokud upravíte **Orchestrator.Sandbox.exe.config** nastavíte proxy server a seznam pro obejití, izolovaný prostor (sandbox) se stále nepřipojí správně. **Powershell_ise.exe.config** soubor se stejným nastavením proxy serveru a seznamu obcházení se zdá fungovat podle očekávání. Protokoly Service Management Automation (SMA) a protokoly prostředí PowerShell neposkytují žádné informace týkající se proxy serveru.
 
 #### <a name="cause"></a>Příčina
 
-Připojení k Active Directory Federation Services (AD FS) (AD FS) na serveru nemůže obejít proxy server. Pamatujte, že izolovaný prostor (sandbox) PowerShellu běží jako přihlášený uživatel. Izolovaný prostor Orchestrator je ale silně přizpůsobený a může ignorovat nastavení souboru **Orchestrator. sandbox. exe. config** . Má speciální kód pro zpracování nastavení proxy serveru nebo Log Analytics agenta, ale ne pro zpracování jiných vlastních nastavení proxy serveru. 
+Připojení k Active Directory Federation Services (AD FS) (AD FS) na serveru nemůže obejít proxy server. Pamatujte, že izolovaný prostor (sandbox) PowerShellu běží jako přihlášený uživatel. Izolovaný prostor Orchestrator je ale silně přizpůsobený a může **Orchestrator.Sandbox.exe.config** nastavení souboru ignorovat. Má speciální kód pro zpracování nastavení proxy serveru nebo Log Analytics agenta, ale ne pro zpracování jiných vlastních nastavení proxy serveru. 
 
 #### <a name="resolution"></a>Řešení
 

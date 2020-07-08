@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 63919d7770746025189f3d6e578919b2fc2799c3
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84884914"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921155"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Použití Azure CDN s CORS
 ## <a name="what-is-cors"></a>Co je CORS?
@@ -82,7 +81,9 @@ Existují dva způsoby, jak to provést s modulem pravidel Premium. V obou pří
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Jeden regulární výraz se všemi platnými zdroji
 V tomto případě vytvoříte regulární výraz, který bude obsahovat všechny zdroje, které chcete dovolit: 
 
-    https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```http
+https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```
 
 > [!TIP]
 > **Azure CDN Premium od Verizon** využívá jako svůj modul regulární [výrazy kompatibilní s Perl](https://pcre.org/) jako jeho modul pro regulární výrazy.  Můžete použít nástroj jako [regulární výrazy 101](https://regex101.com/) k ověření regulárního výrazu.  Všimněte si, že znak "/" je platný v regulárních výrazech a nemusí být uvozen řídicím znakem, ale označení je považováno za osvědčený postup a je očekáváno některými validátory regulárního výrazu.

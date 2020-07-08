@@ -5,10 +5,9 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.openlocfilehash: 040ac3069500d0e52441df6f07d92645a7ae69df
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764430"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Obnovení souborů na Windows serveru pomocí agenta MARS

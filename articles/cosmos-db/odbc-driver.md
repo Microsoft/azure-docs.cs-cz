@@ -6,12 +6,11 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 250bb5c7bec9cb68ba3236d0cb43938566b60fa8
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
-ms.translationtype: MT
+ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392501"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027235"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení k Azure Cosmos DB pomocí nástrojů BI Analytics s ovladačem ODBC
 
@@ -196,7 +195,7 @@ V rámci procesu vzorkování můžete definovat a vytvářet zobrazení. Tato z
 
 Chcete-li vytvořit zobrazení pro data, v okně **editor schémat** klikněte ve sloupci **definice zobrazení** na položku **Přidat** na řádku kontejneru a proveďte ukázku. 
 
-    :::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Create a view of data":::
+:::image type="content" source="./media/odbc-driver/odbc-driver-create-view.png" alt-text="Vytvoření zobrazení dat":::
 
 
 Pak v okně **definice zobrazení** proveďte následující:
@@ -226,7 +225,7 @@ Pomocí nového názvu DSN se můžete připojit k Azure Cosmos DB pomocí libov
 
 1. V okně **z rozhraní ODBC** vyberte název zdroje dat, který jste vytvořili, a pak klikněte na **OK**. **Rozšířené položky možností** můžete nechat prázdné.
 
-    ![Zvolit název zdroje dat (DSN) ve Power BI získat data](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
+   :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Zvolit název zdroje dat (DSN) ve Power BI získat data":::
 
 1. V okně **přístup ke zdroji dat pomocí ovladače ODBC** vyberte **výchozí nebo vlastní** a potom klikněte na **připojit**. Nemusíte zahrnovat **vlastnosti připojovacího řetězce přihlašovacích údajů**.
 
@@ -240,11 +239,14 @@ Pomocí nového názvu DSN se můžete připojit k Azure Cosmos DB pomocí libov
 
 1. Vizuály teď můžete vytvářet pomocí Power BI kliknutím na ![ kartu Sestava sestavy v Power BI Desktop ](./media/odbc-driver/odbc-driver-report-tab.png) , kliknutím na **Nový vizuál**a přizpůsobením dlaždice. Další informace o vytváření vizualizací v Power BI Desktop najdete v tématu [typy vizualizací v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se zobrazí následující chyba, ujistěte se, že hodnoty pro **hostitele** a **přístupová oprávnění** , které jste zkopírovali Azure Portal v [kroku 2](#connect) jsou správné, a pak to zkuste znovu. Použijte tlačítka Kopírovat napravo od **hostitele** a přístupové hodnoty **klíčů** v Azure Portal ke zkopírování hodnoty bez chyb.
 
-    [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
+```output
+[HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}
+```
+
 
 ## <a name="next-steps"></a>Další kroky
 

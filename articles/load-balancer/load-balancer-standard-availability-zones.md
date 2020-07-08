@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 2c16c40ba7ed97f933516811432c3d4768bd0c62
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
-ms.translationtype: MT
+ms.openlocfilehash: e6f788689b4e817aae6dc84f66703f4f88b8d44a
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888496"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027558"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
@@ -105,7 +104,7 @@ Jiné zóny, které se můžou připojit k tomuto virtuálnímu počítači, mů
 
 Nástroj pro vyrovnávání zatížení je flexibilní v kontextu zón dostupnosti. Pro každé pravidlo můžete vybrat, že se mají zarovnat do zón nebo být redundantní pro zónu. Vyšší dostupnost se může zvýšit na cenu zvýšené složitosti. Návrh dostupnosti pro zajištění optimálního výkonu.
 
-### <a name="automatic-zone-redundancy"></a>Automatická redundance zóny
+### <a name="zone-redundancy"></a>Zóna – redundance
 
 Load Balancer usnadňuje jednu IP adresu jako front-redundantní front-end. Redundantní IP adresa v zóně může sloužit k práci s geografickými prostředky v libovolné zóně.  Tato IP adresa může přetrvat jednu nebo více selhání zóny, pokud jedna zóna zůstane v pořádku v rámci oblasti.  Místo toho je oblast front-endu omezením služby na jednu zónu a podílí se v ní osud v příslušné zóně.
 

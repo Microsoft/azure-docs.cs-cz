@@ -10,10 +10,9 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: d86e42dcc16d108cc82c9d245c7919145cef365f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759334"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
@@ -58,7 +57,7 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. Pokud chcete sestavit všechno, co se dá sestavit, včetně dokumentace (HTML a Man Pages) a dalších modulů (`contrib`), spusťte následující příkaz:
+5. Pokud chcete sestavit všechno, co se dá sestavit, včetně dokumentace (HTML a Man Pages) a dalších modulů ( `contrib` ), spusťte následující příkaz:
    
         # gmake install-world
    

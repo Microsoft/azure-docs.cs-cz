@@ -8,12 +8,11 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eea6f901a7228d7ed411d27296e1fb44a41d9f72
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
-ms.translationtype: MT
+ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85361332"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027388"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Vytvoření kontejneru profilu se soubory Azure a služba AD DS
 
@@ -81,12 +80,12 @@ V dalším kroku budete muset povolit ověřování služby Active Directory (AD
 
 Všem uživatelům, kteří musí mít v účtu úložiště uložené profily FSLogix, musí mít přiřazenou roli Přispěvatel sdílené složky SMB pro data souborů úložiště.
 
-Uživatelé přihlášeni k hostitelům relace virtuálních počítačů s Windows potřebují přístupová oprávnění pro přístup ke sdílené složce souborů. Udělení přístupu ke sdílené složce Azure zahrnuje konfiguraci oprávnění na úrovni sdílené složky i na úrovni NTFS, podobně jako tradiční sdílená složka systému Windows.
+Uživatelé, kteří se přihlašují k hostitelům relací služby Windows Virtual Desktop, musí mít přístupová oprávnění pro přístup k vaší sdílené složce. Udělení přístupu ke sdílené složce Azure zahrnuje konfiguraci oprávnění na úrovni sdílené složky i na úrovni NTFS, podobně jako u tradiční sdílené složky ve Windows.
 
 Pokud chcete nakonfigurovat oprávnění na úrovni sdílené složky, přiřaďte každému uživateli roli s příslušnými přístupovými oprávněními. Oprávnění lze přiřadit buď k jednotlivým uživatelům, nebo ke skupině Azure AD. Další informace najdete v tématu [Přiřazení přístupových oprávnění k identitě](../storage/files/storage-files-identity-ad-ds-assign-permissions.md).
 
 >[!NOTE]
->Účty nebo skupiny, kterým přiřadíte oprávnění, by měly být vytvořeny v doméně a synchronizovány se službou Azure AD. Účty vytvořené ve službě Azure AD nebudou fungovat.
+>Účty nebo skupiny, kterým přiřazujete oprávnění, musí být vytvořené v dané doméně a synchronizované s Azure AD. Účty vytvořené v Azure AD nebudou fungovat.
 
 Přiřazení oprávnění řízení přístupu na základě role (RBAC):
 
@@ -94,19 +93,21 @@ Přiřazení oprávnění řízení přístupu na základě role (RBAC):
 
 2. Otevřete účet úložiště, který jste vytvořili v části [Nastavení účtu úložiště](#set-up-a-storage-account).
 
-3. Vyberte **Access Control (IAM)**.
+3. Vyberte **sdílené složky**a potom vyberte název sdílené složky, kterou plánujete použít.
 
-4. Vyberte **Přidat přiřazení role**.
+4. Vyberte **Access Control (IAM)**.
 
-5. Na kartě **Přidat přiřazení role** vyberte **úložiště souborová data SMB sdílet oprávnění Přispěvatel** pro účet správce.
+5. Vyberte **Přidat přiřazení role**.
 
-     Pokud chcete přiřadit oprávnění uživatele k profilům FSLogix, postupujte podle těchto pokynů. Když se ale dostanete ke kroku 5, vyberte místo toho možnost **soubor úložiště SMB sdílení** .
+6. Na kartě **Přidat přiřazení role** vyberte **úložiště souborová data SMB sdílet oprávnění Přispěvatel** pro účet správce.
 
-6. Vyberte **Uložit**.
+     Pokud chcete uživatelům přiřadit oprávnění k jejich profilům FSLogix, postupujte podle stejných pokynů. Když se ale dostanete ke kroku 5, vyberte místo toho možnost **soubor úložiště SMB sdílení** .
+
+7. Vyberte **Uložit**.
 
 ## <a name="assign-users-permissions-on-the-azure-file-share"></a>Přiřazení oprávnění uživatelů ke sdílené složce Azure
 
-Jakmile uživatelům přiřadíte oprávnění RBAC, budete muset nakonfigurovat oprávnění systému souborů NTFS.
+Jakmile uživatelům přiřadíte oprávnění RBAC, jako další krok budete muset nakonfigurovat oprávnění NTFS.
 
 Abyste mohli začít, musíte si od Azure Portal víc věcí:
 
@@ -151,7 +152,7 @@ Konfigurace oprávnění systému souborů NTFS:
 
 1. Otevřete příkazový řádek na virtuálním počítači připojeném k doméně.
 
-2. Spusťte následující rutinu pro připojení sdílené složky Azure a přiřazení písmene jednotky:
+2. Spuštěním následující rutiny připojte sdílenou složku Azure a přiřaďte jí písmeno jednotky: .
 
      ```powershell
      net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
@@ -192,15 +193,15 @@ Konfigurace oprávnění systému souborů NTFS:
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>Konfigurace FSLogix na virtuálních počítačích hostitele relací
 
-V této části se dozvíte, jak nakonfigurovat virtuální počítač pomocí FSLogix. Při každé konfiguraci hostitele relace budete muset postupovat podle těchto pokynů. Než začnete s konfigurací, postupujte podle pokynů v tématu [Stažení a instalace FSLogix](/fslogix/install-ht). K dispozici je několik možností, které zajišťují, aby byly klíče registru nastaveny na všech hostitelích relací. Tyto možnosti můžete nastavit v imagi nebo nakonfigurovat zásady skupiny.
+V této části se dozvíte, jak na virtuálním počítači nakonfigurovat FSLogix. Podle těchto pokynů budete muset postupovat vždy, když budete konfigurovat hostitele relace. Než začnete s konfigurací, postupujte podle pokynů v tématu [Stažení a instalace FSLogix](/fslogix/install-ht). Je k dispozici několik možností, které zajistí nastavení klíčů registru na všech hostitelích relací. Tyto možnosti můžete nastavit v imagi nebo můžete nakonfigurovat zásady skupiny.
 
-Konfigurace FSLogix na VIRTUÁLNÍm počítači hostitele relace:
+Konfigurace FSLogix na virtuálním počítači hostitele relace:
 
 1. RDP na virtuální počítač hostitele relace fondu hostitelů virtuálních ploch Windows.
 
 2. [Stáhněte a nainstalujte FSLogix](/fslogix/install-ht).
 
-5. Postupujte podle pokynů v části [Konfigurace nastavení registru kontejneru profilu](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings):
+5. Postupujte podle pokynů v tématu [Konfigurace nastavení registru kontejneru profilů](/fslogix/configure-profile-container-tutorial#configure-profile-container-registry-settings).
 
     - Přejděte na **počítač**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**.
 

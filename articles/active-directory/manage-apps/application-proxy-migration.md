@@ -17,10 +17,9 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef1ffb5ec0b39c5331afbc55d99268d9a3997e62
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764447"
 ---
 # <a name="compare-remote-access-solutions"></a>Porovnání řešení vzdáleného přístupu
@@ -38,17 +37,17 @@ Tato tabulka vám pomůže pochopit, jak brány pro správu hrozeb (TMG), Unifie
 | Selektivní publikování aplikací v prohlížeči | Ano | Ano | Ano | Ano |
 | Předběžné ověření a jednotné přihlašování | Ano | Ano | Ano | Ano | 
 | Brána firewall vrstvy 2/3 | Ano | Ano | - | - |
-| Možnosti předávaného proxy serveru | Ano | - | - | - |
+| Možnosti předávaného proxy serveru | Yes | - | - | - |
 | Možnosti sítě VPN | Ano | Ano | - | - |
-| Bohatá podpora protokolů | - | Ano | Ano, pokud se používá přes protokol HTTP | Ano, pokud je spuštěn přes protokol HTTP nebo prostřednictvím Brána vzdálené plochy |
+| Bohatá podpora protokolů | - | Yes | Ano, pokud se používá přes protokol HTTP | Ano, pokud je spuštěn přes protokol HTTP nebo prostřednictvím Brána vzdálené plochy |
 | Slouží jako proxy server ADFS | - | Ano | Ano | - |
 | Jeden portál pro přístup k aplikaci | - | Ano | - | Ano |
 | Překlad odkazu na text odpovědi | Ano | Ano | - | Ano | 
-| Ověřování pomocí hlaviček | - | Ano | - | Ano, s PingAccess | 
-| Cloud – škálování zabezpečení | - | - | - | Ano | 
+| Ověřování pomocí hlaviček | - | Yes | - | Ano, s PingAccess | 
+| Cloud – škálování zabezpečení | - | - | - | Yes | 
 | Podmíněný přístup | - | Ano | - | Ano |
-| Žádné součásti v zóně demilitarizovaná (DMZ) | - | - | - | Ano |
-| Žádná příchozí připojení | - | - | - | Ano |
+| Žádné součásti v zóně demilitarizovaná (DMZ) | - | - | - | Yes |
+| Žádná příchozí připojení | - | - | - | Yes |
 
 Pro většinu scénářů doporučujeme Azure Proxy aplikací služby AD jako moderní řešení. Proxy webových aplikací je preferován pouze ve scénářích, které vyžadují proxy server pro AD FS a nemůžete použít vlastní domény v Azure Active Directory. 
 

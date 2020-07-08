@@ -3,12 +3,11 @@ title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 225a7f7725762c6887858366b134a7ad9a7b8eb6
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
-ms.translationtype: MT
+ms.openlocfilehash: ef2fe2ecd72234312a750e206b8920f4ea7eaa02
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920604"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -33,9 +32,9 @@ Správa delegovaných prostředků Azure umožňuje větší flexibilitu při sp
 
 Úlohy správy můžete u delegovaných prostředků provádět buď přímo na portálu, nebo pomocí rozhraní API a nástrojů pro správu (například Azure CLI a Azure PowerShell). Všechna existující rozhraní API se dají použít při práci s delegovanými prostředky, pokud je tato funkce podporovaná pro správu mezi klienty a uživatel má příslušná oprávnění.
 
-[Rutina Azure PowerShell Get-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) zobrazuje **tenantID** pro každé předplatné a umožňuje určit, jestli vrácené předplatné patří do vašeho tenanta poskytovatele služeb nebo do spravovaného tenanta zákazníka.
+[Rutina Azure PowerShell Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) zobrazuje **tenantID** pro každé předplatné a umožňuje určit, jestli vrácené předplatné patří do vašeho tenanta poskytovatele služeb nebo do spravovaného tenanta zákazníka.
 
-Podobně příkazy rozhraní příkazového řádku Azure, jako [AZ Account list](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) , zobrazují atributy **homeTenantId** a **managedByTenants** .
+Podobně příkazy rozhraní příkazového řádku Azure, jako [AZ Account list](/cli/azure/account?view=azure-cli-latest#az-account-list) , zobrazují atributy **homeTenantId** a **managedByTenants** .
 
 > [!TIP]
 > Pokud nevidíte tyto hodnoty při použití rozhraní příkazového řádku Azure, zkuste vyprázdnit mezipaměť spuštěním příkazu `az account clear` a `az login --identity` .

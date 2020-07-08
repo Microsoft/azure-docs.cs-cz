@@ -11,10 +11,9 @@ ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: 620e0213733d278a28ec1bcad4b031f5764ccda9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733132"
 ---
 # <a name="get-started-with-device-twins-net"></a>Začínáme se zdvojením zařízení (.NET)
@@ -67,7 +66,7 @@ V této části vytvoříte konzolovou aplikaci .NET pomocí jazyka C#, která p
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **AddTagsAndQuery** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. Vyberte **Procházet** a Hledat a vyberte **Microsoft. Azure. Devices**. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Procházet** a Hledat a vyberte **Microsoft. Azure. Devices**. Vyberte **Nainstalovat**.
 
     ![Okno Správce balíčků NuGet](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
 
@@ -141,13 +140,13 @@ V další části vytvoříte aplikaci pro zařízení, která oznamuje informac
 
 V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vašemu rozbočovači jako **myDeviceId**, a pak aktualizuje své hlášené vlastnosti tak, aby obsahovala informace, které jsou připojené pomocí mobilní sítě.
 
-1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**. V možnosti **vytvořit nový projekt**zvolte **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
+1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. V možnosti **vytvořit nový projekt**zvolte **aplikace konzoly (.NET Framework)** a pak vyberte **Další**.
 
 1. V části **Konfigurovat nový projekt**pojmenujte projekt **ReportConnectivity**. V případě **řešení**zvolte možnost **Přidat do řešení**a pak vyberte **vytvořit**.
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **ReportConnectivity** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. Vyberte **Procházet** a Hledat a zvolte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Procházet** a Hledat a zvolte **Microsoft. Azure. Devices. Client**. Vyberte **Nainstalovat**.
 
    Tento krok stáhne a nainstaluje balíček NuGet [sady SDK pro zařízení Azure IoT](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) a jeho závislosti a přidá se na něj odkaz.
 
@@ -234,7 +233,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na řešení a vyberte **nastavit projekty po spuštění**.
 
-1. V možnosti **běžné vlastnosti** > **spouštěný projekt**vyberte **více projektů po spuštění**. Pro **ReportConnectivity**vyberte **Spustit** jako **akci**. Výběrem **OK** uložte změny.  
+1. V možnosti **běžné vlastnosti**  >  **spouštěný projekt**vyberte **více projektů po spuštění**. Pro **ReportConnectivity**vyberte **Spustit** jako **akci**. Výběrem **OK** uložte změny.  
 
 1. Spusťte tuto aplikaci tak, že kliknete pravým tlačítkem na projekt **ReportConnectivity** a vyberete **ladění**a potom **zahájíte novou instanci**. Měli byste vidět, že aplikace získává informace o zdvojení, a pak odesílat připojení jako ***hlášenou vlastnost***.
 
@@ -242,7 +241,7 @@ V této části vytvoříte konzolovou aplikaci .NET, která se připojí k vaš
 
    Jakmile zařízení nahlásí informace o připojení, musí se zobrazit v obou dotazech.
 
-1. Klikněte pravým tlačítkem na projekt **AddTagsAndQuery** a vyberte **ladit** > **spustit novou instanci** a spusťte dotazy znovu. Tentokrát by **myDeviceId** měla být ve výsledcích dotazu.
+1. Klikněte pravým tlačítkem na projekt **AddTagsAndQuery** a vyberte **ladit**  >  **spustit novou instanci** a spusťte dotazy znovu. Tentokrát by **myDeviceId** měla být ve výsledcích dotazu.
 
     ![Připojení zařízení se úspěšně nahlásilo.](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 

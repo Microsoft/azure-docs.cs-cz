@@ -4,10 +4,9 @@ description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje vi
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84322905"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
@@ -49,7 +48,7 @@ Tady je postup, jak Azure Backup Dokončit zálohování virtuálních počíta�
 
 Když zálohujete virtuální počítače Azure pomocí Azure Backup, jsou virtuální počítače v klidovém stavu šifrované pomocí Šifrování služby Storage (SSE). Azure Backup taky můžou zálohovat virtuální počítače Azure, které jsou zašifrované pomocí Azure Disk Encryption.
 
-**Šifrování** | **Zobrazí** | **Podpora**
+**Šifrování** | **Podrobnosti** | **Podpora**
 --- | --- | ---
 **Azure Disk Encryption** | Azure Disk Encryption šifruje operační systém a datové disky pro virtuální počítače Azure.<br/><br/> Azure Disk Encryption se integruje s šifrovacími klíči BitLockeru (BEKs), které jsou v trezoru klíčů zabezpečené jako tajné klíče. Azure Disk Encryption se taky integruje s klíči šifrovacího klíče Azure Key Vault (KEK). | Azure Backup podporuje zálohování spravovaných a nespravovaných virtuálních počítačů Azure šifrovaných jenom pomocí BEKs nebo s BEKs společně s KEK.<br/><br/> BEKs i KEK se zálohují a šifrují.<br/><br/> Vzhledem k tomu, že se zálohují KEK a BEKs, můžou uživatelé s potřebnými oprávněními v případě potřeby obnovit klíče a tajné kódy zpátky do trezoru klíčů. Tito uživatelé můžou také obnovit zašifrovaný virtuální počítač.<br/><br/> Šifrované klíče a tajné kódy nejde číst neoprávněnými uživateli nebo Azure.
 **SSE** | Pomocí SSE Azure Storage poskytuje šifrování v klidovém prostředí tím, že před uložením automaticky šifruje data. Azure Storage také dešifruje data před jejich načtením. | Azure Backup používá SSE pro šifrování virtuálních počítačů Azure v klidovém prostředí.
@@ -76,21 +75,21 @@ Azure Backup převezme snímky podle plánu zálohování.
 
 Následující tabulka vysvětluje různé typy konzistence snímků:
 
-**Snímek** | **Zobrazí** | **Obnovení** | **Aspekty**
+**Snímek** | **Podrobnosti** | **Obnovení** | **Aspekty**
 --- | --- | --- | ---
 **Konzistentní vzhledem k aplikacím** | Zálohování konzistentní s aplikací zaznamenává obsah paměti a nedokončené vstupně-výstupní operace. Snímky konzistentní vzhledem k aplikacím používají zapisovač VSS (nebo předzálohovací skripty pro Linux), aby se zajistila konzistence dat aplikace před tím, než dojde k zálohování. | Při obnovování virtuálního počítače pomocí snímku konzistentního vzhledem k aplikacím se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace se spustí v konzistentním stavu. | Windows: Všechny zapisovače VSS byly úspěšné.<br/><br/> Linux: jsou nakonfigurovány a úspěšně spouštěny skripty před prodejem.
 **Konzistentní se systémem souborů** | Zálohy konzistentní se systémem souborů poskytují konzistenci tím, že pořizuje všechny soubory ve stejnou dobu.<br/><br/> | Při obnovování virtuálního počítače pomocí snímku konzistentního se systémem souborů se spustí virtuální počítač. Nedošlo k žádnému poškození nebo ztrátě dat. Aplikace potřebují implementovat vlastní mechanizmus "opravování", aby se zajistila konzistence obnovených dat. | Windows: některé zapisovače VSS selhaly. <br/><br/> Linux: výchozí (pokud nejsou nakonfigurovány nebo se nezdařily skripty před prodejem)
 **Konzistentní vzhledem k selháním** | K snímkům konzistentním se selháním obvykle dochází v případě, že se virtuální počítač Azure vypíná v době zálohování. Budou zachycena a zálohována pouze data, která na disku již existují v době zálohování. | Spustí spouštěcí proces virtuálního počítače následovaný kontrolou disku, aby opravil chyby poškození. Veškerá data v paměti nebo operace zápisu, které nebyly přeneseny na disk před ztrátou chyby. Aplikace implementují svá vlastní ověření dat. Databázová aplikace může například použít svůj transakční protokol k ověření. Pokud transakční protokol obsahuje položky, které nejsou v databázi, software databáze zahrne transakce zpět, dokud nebudou data konzistentní. | Virtuální počítač je ve stavu vypnutí (zastaveno/zrušeno přidělení).
 
-## <a name="backup-and-restore-considerations"></a>Předpoklady pro zálohování a obnovení
+## <a name="backup-and-restore-considerations"></a>Důležité informace o zálohování a obnovení
 
-**Aspekty** | **Zobrazí**
+**Aspekty** | **Podrobnosti**
 --- | ---
 **Disk** | Zálohování disků virtuálních počítačů je paralelní. Pokud například virtuální počítač obsahuje čtyři disky, Služba Backup se pokusí zálohovat všechny čtyři disky paralelně. Zálohování je přírůstkové (pouze změněná data).
-**Plánování** |  Pro snížení zátěže zálohování zálohujte různé virtuální počítače v různou dobu a ujistěte se, že se časy nepřekrývají. Zálohování virtuálních počítačů v současné době způsobuje zablokování provozu.
-**Příprava záloh** | Mějte na paměti čas potřebný k přípravě zálohy. Doba přípravy zahrnuje instalaci nebo aktualizaci rozšíření zálohování a aktivaci snímku podle plánu zálohování.
-**Přenos dat** | Zvažte dobu potřebnou pro Azure Backup k identifikaci přírůstkových změn z předchozí zálohy.<br/><br/> V přírůstkové záloze Azure Backup určuje změny pomocí výpočtu kontrolního součtu bloku. Pokud dojde ke změně bloku, je označený pro přenos do trezoru. Služba analyzuje identifikované bloky a snaží se o další minimalizaci množství dat, která se mají přenést. Po vyhodnocení všech změněných bloků Azure Backup přenese změny do trezoru.<br/><br/> Může dojít ke zpoždění mezi pořizováním snímku a jeho zkopírováním do trezoru. V časech špičky může trvat až osm hodin, než se snímky přenesou do trezoru. Čas zálohování pro virtuální počítač bude pro každodenní zálohování kratší než 24 hodin.
-**Prvotní zálohování** | I když je celková doba zálohování přírůstkových záloh méně než 24 hodin, nemusí se jednat o případ první zálohy. Čas potřebný k prvotnímu zálohování bude záviset na velikosti dat a při zpracování zálohy.
+**Plánování** |  Pro snížení zátěže zálohování zálohujte různé virtuální počítače v různou dobu a ujistěte se, že se časy nepřekrývají. Zálohování virtuálních počítačů ve stejnou dobu způsobuje blokování provozu.
+**Příprava záloh** | Mějte na paměti čas potřebný k přípravě zálohy. Doba přípravy zahrnuje instalaci nebo aktualizaci rozšíření zálohování a aktivaci vytvoření snímku podle plánu zálohování.
+**Přenos dat** | Zvažte dobu potřebnou pro Azure Backup k identifikaci přírůstkových změn z předchozí zálohy.<br/><br/> Při přírůstkovém zálohování služba Azure Backup určuje změny tím, že počítá kontrolní součet bloku. Pokud se blok změní, označí se pro přesun do trezoru. Služba analyzuje identifikované bloky a pokouší se dále minimalizovat objem přenášených dat. Po vyhodnocení všech změněných bloků služba Azure Backup přenese změny do trezoru.<br/><br/> Mezi pořízením snímku a jeho zkopírováním do trezoru může dojít k prodlevě. V časech špičky může trvat až osm hodin, než se snímky přenesou do trezoru. V případě denního zálohování bude čas zálohování virtuálních počítačů kratší než 24 hodin.
+**Prvotní zálohování** | Přestože je celková doba zálohování v případě přírůstkového zálohování kratší než 24 hodin, u prvního zálohování to platit nemusí. Doba potřebná k prvotnímu zálohování bude záviset na velikosti dat a době zpracování zálohování.
 **Obnovit frontu** | Azure Backup procesy obnovují úlohy z více účtů úložiště ve stejnou dobu a zařadí požadavky na obnovení do fronty.
 **Obnovit kopii** | Během procesu obnovení se data zkopírují z trezoru do účtu úložiště.<br/><br/> Celková doba obnovení závisí na vstupně-výstupních operacích za sekundu (IOPS) a propustnosti účtu úložiště.<br/><br/> Pokud chcete zkrátit dobu kopírování, vyberte účet úložiště, který není načtený s jinými zápisy a čteními aplikace.
 
@@ -105,12 +104,12 @@ Tyto běžné scénáře mohou ovlivnit celkovou dobu zálohování:
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Když konfigurujete zálohy virtuálních počítačů, doporučujeme postupovat podle těchto postupů:
+Při konfiguraci zálohování virtuálních počítačů doporučujeme dodržovat tyto postupy:
 
-- Upravte výchozí časy plánování, které jsou nastaveny v zásadě. Pokud je například výchozí čas v zásadě 12:00., zvyšte časování o několik minut, aby se prostředky optimálně používaly.
+- Upravte výchozí naplánované časy nastavené v zásadách. Pokud je například výchozí čas v zásadách nastavený na 00:00, zvyšte tento čas o několik minut, aby se zajistilo optimální využití prostředků.
 - Pokud obnovujete virtuální počítače z jednoho trezoru, důrazně doporučujeme, abyste používali jiné [účty úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) , abyste zajistili, že cílový účet úložiště nebude omezený. Každý virtuální počítač například musí mít jiný účet úložiště. Pokud se například obnoví 10 virtuálních počítačů, použijte 10 různých účtů úložiště.
-- Pro zálohování virtuálních počítačů, které používají Prémiové úložiště, s okamžitým obnovením doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
-- Omezení počtu disků na účet úložiště je relativní vzhledem k tom, jak intenzivně jsou disky dostupné v aplikacích, které běží na virtuálním počítači IaaS (infrastruktura jako služba). Obecně platí, že pokud se na jednom účtu úložiště nachází 5 až 10 disků nebo víc, vyvážení zátěže tím, že některé disky přesunete do samostatných účtů úložiště.
+- Pro zálohování virtuálních počítačů, které používají Prémiové úložiště, s okamžitým obnovením doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. Po dokončení prvního zálohování se pro další zálohování už 50 % volného místa nevyžaduje.
+- Omezení počtu disků na účet úložiště je relativní vzhledem k tomu, jak často k diskům přistupují aplikace, které jsou spuštěné na virtuálním počítači IaaS (infrastruktura jako služba). Obecně platí, že pokud je v jednom účtu úložiště 5 až 10 nebo více disků, měli byste vyrovnat zatížení přesunem některých disků do samostatných účtů úložiště.
 
 ## <a name="backup-costs"></a>Náklady na zálohování
 

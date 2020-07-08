@@ -6,12 +6,11 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 2266046923000f3353e2fa01c183846a1b5814bc
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
-ms.translationtype: MT
+ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483937"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027405"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
 
@@ -20,9 +19,6 @@ ms.locfileid: "85483937"
 Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL je nastaveno na úrovni serveru. Pro daný server se k zašifrování datového šifrovacího klíče (klíč DEK) používaného službou používá klíč spravovaný zákazníkem (KEK), který se nazývá klíč šifrovací klíč (). KEK je asymetrický klíč uložený v instanci [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) spravované zákazníkem a zákazníkem. Klíč šifrování klíče (KEK) a šifrovací klíč (klíč DEK) jsou podrobněji popsány dále v tomto článku.
 
 Key Vault je cloudový externí systém pro správu klíčů. Je vysoce dostupná a poskytuje škálovatelné a zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování autorizovaným entitám. Key Vault může klíč vygenerovat, naimportovat nebo [přenášet z místního zařízení HSM](../key-vault/key-Vault-hsm-protected-keys.md).
-
-> [!NOTE]
-> Tato funkce se v současné době zavádí globálně a bude brzy k dispozici ve všech oblastech. Pokud ji ve vaší oblasti nevidíte, obraťte se naAskAzureDBforMySQL@service.microsoft.com
 
 > [!NOTE]
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for MySQL podporuje cenové úrovně "Pro obecné účely" a "paměťově optimalizovaná".
@@ -142,15 +138,6 @@ V případě Azure Database for MySQL podporuje šifrování neaktivních dat po
     > - Pokud chcete ověřit, jestli zřízený Server podporuje až 16TB, můžete přejít na okno cenová úroveň na portálu a zobrazit maximální velikost úložiště podporovanou zřízeným serverem. Pokud můžete posuvník přesunout až na 4 TB, váš server možná nepodporuje šifrování se spravovanými klíči zákazníka. Data se ale šifrují pomocí klíčů spravovaných službou. AskAzureDBforMySQL@service.microsoft.comPokud máte nějaké dotazy, obraťte se na něj.
 
 * Šifrování se podporuje jenom s kryptografickým klíčem RSA 2048.
-
-## <a name="infrastructure-double-encryption"></a>Šifrování s dvojitou infrastrukturou
-Azure Database for MySQL používá pro data šifrování úložiště dat [v klidovém](concepts-security.md#at-rest) formátu pomocí spravovaných klíčů společnosti Microsoft. Data včetně záloh se šifrují na disku a toto šifrování je vždycky zapnuté a nedá se zakázat. Šifrování používá šifrovací modul ověřený standardem FIPS 140-2 a šifrovací šifru AES 256 pro šifrování úložiště Azure. 
-
-Šifrování s dvojitou přesností přidává druhou vrstvu šifrování pomocí ověřovaného kryptografického modulu FIPS 140-2 a jiného šifrovacího algoritmu, který zajišťuje další vrstvu ochrany vašich dat v klidovém formátu. Klíč používaný v infrastruktuře s dvojitým šifrováním je také spravován službou. Tato verze není ve výchozím nastavení *zapnutá* , protože bude mít dopad na výkon z důvodu další vrstvy šifrování. 
-
-   > [!NOTE]
-   > - Tato funkce není stále k dispozici globálně. 
-   > - Podpora této funkce je omezená na **pro obecné účely** a **paměťově optimalizované** cenové úrovně.
 
 ## <a name="next-steps"></a>Další kroky
 

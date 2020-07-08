@@ -8,10 +8,9 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: cynthn
 ms.openlocfilehash: f89b28e7a3c29e45efa2796788e27325c01d7098
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759249"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Nasazení virtuálních počítačů do skupin umístění pro Proximity pomocí Azure CLI
@@ -22,7 +21,7 @@ Skupina umístění blízkosti je logické seskupení, které se používá k za
 
 
 ## <a name="create-the-proximity-placement-group"></a>Vytvořit skupinu umístění blízkosti
-Vytvořte skupinu umístění blízkosti pomocí [`az ppg create`](/cli/azure/ppg#az-ppg-create). 
+Vytvořte skupinu umístění blízkosti pomocí [`az ppg create`](/cli/azure/ppg#az-ppg-create) . 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus

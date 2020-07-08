@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
 ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83674592"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
@@ -76,7 +75,7 @@ Obě metody otevřou podokno konfigurace nastavení úložiště.
 
 Podokno konfigurace zobrazuje následující Azure Repos nastavení úložiště kódu:
 
-| Nastavení | Popis | Hodnota |
+| Nastavení | Description | Hodnota |
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště kódu Azure Repos.<br/> | Azure DevOps Git nebo GitHub |
 | **Azure Active Directory** | Název vašeho tenanta Azure AD. | `<your tenant name>` |
@@ -145,9 +144,9 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 
 | **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHub |
+| **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
-| **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Příklad: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
+| **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Například: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https: \/ /GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
 | **Název úložiště**  | Název vašeho úložiště kódu GitHubu Účty GitHubu obsahují úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už máte ve svém účtu. | `<your repository name>` |
 | **Větev pro spolupráci** | Vaše větev pro spolupráci GitHubu, která se používá k publikování. Ve výchozím nastavení se jedná o hlavní server. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch>` |

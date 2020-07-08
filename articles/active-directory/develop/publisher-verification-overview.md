@@ -13,13 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
 ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682435"
 ---
-# <a name="publisher-verification-preview"></a>Ověřování vydavatele (Preview)
+# <a name="publisher-verification-preview"></a>Ověření vydavatele (Preview)
 
 Ověřování vydavatele (Preview) pomáhá správcům a koncovým uživatelům pochopit pravost vývojářů aplikací, které jsou integrovány s platformou Microsoft identity. Pokud je aplikace označena jako ověřená vydavatelem, znamená to, že vydavatel ověřil svoji identitu pomocí účtu [Microsoft Partner Network](https://partner.microsoft.com/membership) , který dokončil proces [ověření](/partner-center/verification-responses) a přidružil tento účet MPN k registraci aplikace. 
 

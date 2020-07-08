@@ -17,10 +17,9 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd4a645038dfb49e7c79995b90b159bdc07bea4f
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763767"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problémy s přihlášením k aplikaci Galerie Azure AD konfigurované pro jednotné přihlašování s heslem
@@ -78,7 +77,7 @@ Požadavky zahrnují:
 
 -   Nastavili jste [Active Directory Domain Services](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)a připojili jste počítače uživatelů k vaší doméně.
 
--   Chcete-li upravit objekt Zásady skupiny (GPO), je nutné mít oprávnění upravit nastavení. Ve výchozím nastavení mají toto oprávnění členové těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Zásady skupiny Creator Owners. [Přečtěte si další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   Chcete-li upravit objekt Zásady skupiny (GPO), je nutné mít oprávnění upravit nastavení. Ve výchozím nastavení mají toto oprávnění členové těchto skupin zabezpečení: Domain Administrators, Enterprise Administrators a Zásady skupiny Creator Owners. [Další informace](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
 
 Postupujte podle kurzu [nasazení rozšíření přístupového panelu pro Internet Explorer pomocí Zásady skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-group-policy) , kde najdete podrobné pokyny ke konfiguraci zásad skupiny a jejich nasazení pro uživatele.
 

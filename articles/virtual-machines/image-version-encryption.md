@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: cynthn
 ms.openlocfilehash: 3d55efb15454f0b1dfe5ac1101a8a53eb1c9aa8f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683954"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
@@ -113,7 +112,7 @@ Virtuální počítač můžete vytvořit z Galerie sdílených imagí a pomocí
 V případě datových disků je nutné přidat `-DiskEncryptionSetId $setID` parametr při použití [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk).
 
 
-## <a name="cli"></a>CLI 
+## <a name="cli"></a>Rozhraní příkazového řádku 
 
 Ve verzi Public Preview musíte nejprve zaregistrovat funkci.
 

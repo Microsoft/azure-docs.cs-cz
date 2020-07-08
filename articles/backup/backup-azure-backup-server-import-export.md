@@ -3,12 +3,11 @@ title: Offline zálohování pro DPM a Azure Backup Server
 description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro DPM a Azure Backup Server.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: bb9b3599e74e74058598acd53f5156459c0b74fb
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
-ms.translationtype: MT
+ms.openlocfilehash: 0ff6198eed4e3e365b443a51e5c63534c2cf0973
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374929"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921253"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (MABS)
 
@@ -102,9 +101,7 @@ Informace v této části vám pomůžou dokončit pracovní postup offline zál
 
 ## <a name="prepare-sata-drives-and-ship-to-azure"></a>Příprava jednotek SATA a odeslání do Azure
 
-Nástroj *AzureOfflineBackupDiskPrep* připraví jednotky SATA, které se odesílají do nejbližšího datacentra Azure. Tento nástroj je k dispozici v instalačním adresáři agenta Azure Backup (v následující cestě):
-
-    *\Microsoft Azure Recovery Services Agent\Utils\\*
+Nástroj *AzureOfflineBackupDiskPrep* připraví jednotky SATA, které se odesílají do nejbližšího datacentra Azure. Tento nástroj je k dispozici v instalačním adresáři agenta Azure Backup (v následující cestě):`*\Microsoft Azure Recovery Services Agent\Utils\\*`
 
 1. Přejít do adresáře a zkopírovat adresář **AzureOfflineBackupDiskPrep** do jiného počítače, kde jsou připojeny jednotky SATA. V počítači s připojenými jednotkami SATA zajistěte:
 
@@ -119,9 +116,9 @@ Nástroj *AzureOfflineBackupDiskPrep* připraví jednotky SATA, které se odesí
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními na počítači pro kopírování s adresářem nástroje *AzureOfflineBackupDiskPrep* jako s aktuálním adresářem. Spusťte následující příkaz:
 
-        ```cmd
-        .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
-        ```
+    ```console
+    .\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>
+    ```
 
     | Parametr | Popis |
     | --- | --- |

@@ -7,15 +7,14 @@ ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: d33207639ebef912307a3c594ec274fd9609bd67
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84656536"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí ISE (Integration Service Environment) pomocí Logic Apps REST API
 
-Tento článek ukazuje, jak vytvořit [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) prostřednictvím REST API Logic Apps ve scénářích, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md). ISE je vyhrazené prostředí, které využívá vyhrazené úložiště a další prostředky, které jsou oddělené od "globální" víceklientské Logic Apps služby. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. ISE také poskytuje vlastní statické IP adresy. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
+Tento článek ukazuje, jak vytvořit [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) prostřednictvím REST API Logic Apps ve scénářích, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md). Prostředí integrační služby (ISE) je vyhrazené prostředí, které využívá vyhrazené úložiště a další prostředky oddělené od globální služby Logic Apps pro více tenantů. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. ISE také poskytuje vlastní statické IP adresy. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
 
 Můžete také vytvořit ISE pomocí [ukázkové Azure Resource Manager šablony pro rychlé](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) zprovoznění nebo pomocí [Azure Portal](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 

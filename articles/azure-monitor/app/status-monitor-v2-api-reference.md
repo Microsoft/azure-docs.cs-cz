@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733671"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Reference k rozhraní API agenta Azure Monitor Application Insights
@@ -66,8 +65,8 @@ Configuring registry for instrumentation engine...
 
 Povoluje nekódovatelné monitorování aplikací služby IIS na cílovém počítači.
 
-Tato rutina změní soubor applicationHost. config služby IIS a nastavila některé klíče registru.
-Vytvoří také soubor ApplicationInsights. ikey. config, který definuje klíč instrumentace používaný jednotlivými aplikacemi.
+Tato rutina změní applicationHost.config služby IIS a nastavila některé klíče registru.
+Vytvoří také soubor applicationinsights.ikey.config, který definuje klíč instrumentace používaný jednotlivými aplikacemi.
 Služba IIS načte RedfieldModule při spuštění, čímž vloží sadu Application Insights SDK do aplikací jako spuštění aplikací.
 Restartujte službu IIS, aby se provedené změny projevily.
 
@@ -85,7 +84,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 #### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
 V tomto příkladu:
 - `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
-- `AppFilter='WebAppExclude'`poskytuje klíč `null` instrumentace. Zadaná aplikace nebude instrumentovaná.
+- `AppFilter='WebAppExclude'`poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentovaná.
 - `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
 - `AppFilter='WebAppTwo'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
 - Nakonec `AppFilter` taky používá `'.*'` zástupný znak ke spárování se všemi webovými aplikacemi, které se neshodují s předchozími pravidly a přiřazují výchozí klíč instrumentace.
@@ -104,11 +103,11 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ### <a name="parameters"></a>Parametry
 
 #### <a name="-instrumentationkey"></a>– InstrumentationKey
-**Povinná hodnota.** Pomocí tohoto parametru můžete zadat jeden klíč instrumentace pro použití všemi aplikacemi v cílovém počítači.
+**Požadovanou.** Pomocí tohoto parametru můžete zadat jeden klíč instrumentace pro použití všemi aplikacemi v cílovém počítači.
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Povinná hodnota.** Tento parametr použijte k zadání více klíčů instrumentace a mapování klíčů instrumentace používaných jednotlivými aplikacemi.
-Jeden instalační skript pro několik počítačů můžete vytvořit nastavením `MachineFilter`.
+**Požadovanou.** Tento parametr použijte k zadání více klíčů instrumentace a mapování klíčů instrumentace používaných jednotlivými aplikacemi.
+Jeden instalační skript pro několik počítačů můžete vytvořit nastavením `MachineFilter` .
 
 > [!IMPORTANT]
 > Aplikace budou odpovídat pravidlům v pořadí, v jakém jsou tato pravidla k dispozici. Proto byste měli nejdřív zadat nejvíce specifická pravidla a nejobecnější pravidla.
@@ -213,7 +212,7 @@ Configuring registry for instrumentation engine...
 ## <a name="disable-applicationinsightsmonitoring"></a>Disable-ApplicationInsightsMonitoring
 
 Zakáže monitorování v cílovém počítači.
-Tato rutina odstraní úpravy souboru applicationHost. config služby IIS a odebere klíče registru.
+Tato rutina odstraní úpravy applicationHost.config služby IIS a odebere klíče registru.
 
 ### <a name="examples"></a>Příklady
 
@@ -290,7 +289,7 @@ Tato rutina oznámí informace o verzi a informace o souborech klíčů potřebn
 
 #### <a name="example-application-status"></a>Příklad: stav aplikace
 
-Spuštěním příkazu `Get-ApplicationInsightsMonitoringStatus` zobrazte stav monitorování webů.
+Spuštěním příkazu `Get-ApplicationInsightsMonitoringStatus` Zobrazte stav monitorování webů.
 
 ```powershell
 
@@ -392,7 +391,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime
 
 Můžete zkontrolovat proces v instrumentované počítači a zjistit, jestli jsou všechny knihovny DLL načtené. Pokud monitorování funguje, měli byste načíst aspoň 12 knihoven DLL.
 
-Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
+Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus -InspectProcess` :
 
 
 ```
@@ -446,9 +445,9 @@ Stáhne také externí nástroje a určí, zda jsou potřebné knihovny DLL nač
 
 
 Pokud se tento proces z jakéhokoli důvodu nepovede, můžete tyto příkazy spustit ručně:
-- iisreset. exe/status
-- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) – p W3wp | Findstr/I "InstrumentationEngine AI". ApplicationInsights
-- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "InstrumentationEngine AI ApplicationInsights"
+- iisreset.exe/status
+- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | Findstr/I "InstrumentationEngine AI". ApplicationInsights
+- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -477,7 +476,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 #### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
 V tomto příkladu:
 - `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
-- `AppFilter='WebAppExclude'`poskytuje klíč `null` instrumentace. Zadaná aplikace nebude instrumentovaná.
+- `AppFilter='WebAppExclude'`poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentovaná.
 - `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
 - `AppFilter='WebAppTwo'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
 - Nakonec `AppFilter` taky používá `'.*'` zástupný znak ke spárování se všemi webovými aplikacemi, které se neshodují s předchozími pravidly a přiřazují výchozí klíč instrumentace.
@@ -494,11 +493,11 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 ### <a name="parameters"></a>Parametry
 
 #### <a name="-instrumentationkey"></a>– InstrumentationKey
-**Povinná hodnota.** Pomocí tohoto parametru můžete zadat jeden klíč instrumentace pro použití všemi aplikacemi v cílovém počítači.
+**Požadovanou.** Pomocí tohoto parametru můžete zadat jeden klíč instrumentace pro použití všemi aplikacemi v cílovém počítači.
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Povinná hodnota.** Tento parametr použijte k zadání více klíčů instrumentace a mapování klíčů instrumentace používaných jednotlivými aplikacemi.
-Jeden instalační skript pro několik počítačů můžete vytvořit nastavením `MachineFilter`.
+**Požadovanou.** Tento parametr použijte k zadání více klíčů instrumentace a mapování klíčů instrumentace používaných jednotlivými aplikacemi.
+Jeden instalační skript pro několik počítačů můžete vytvořit nastavením `MachineFilter` .
 
 > [!IMPORTANT]
 > Aplikace budou odpovídat pravidlům v pořadí, v jakém jsou tato pravidla k dispozici. Proto byste měli nejdřív zadat nejvíce specifická pravidla a nejobecnější pravidla.
@@ -556,7 +555,7 @@ Shromažďuje [události ETW](https://docs.microsoft.com/windows/desktop/etw/eve
 
 Shromážděné události budou v reálném čase vytištěny do konzoly a uloženy do souboru ETL. Výstupní soubor ETL může otevřít [PerfView](https://github.com/microsoft/perfview) k dalšímu prošetření.
 
-Tato rutina se spustí, dokud nedosáhne časového limitu (výchozí hodnota je 5 minut) nebo`Ctrl + C`se zastaví ručně ().
+Tato rutina se spustí, dokud nedosáhne časového limitu (výchozí hodnota je 5 minut) nebo se zastaví ručně ( `Ctrl + C` ).
 
 ### <a name="examples"></a>Příklady
 
@@ -569,9 +568,9 @@ Modul runtime pro nekódování kódu bude generovat události ETW při spuště
 Shromažďování těchto událostí:
 1. V konzole cmd s oprávněními správce spusťte `iisreset /stop` vypnutí služby IIS a všech webových aplikací.
 2. Spustit tuto rutinu
-3. V konzole cmd s oprávněními `iisreset /start` správce spusťte službu IIS.
+3. V konzole cmd s oprávněními správce spusťte `iisreset /start` službu IIS.
 4. Zkuste přejít do aplikace.
-5. Po dokončení načítání aplikace ji můžete zastavit ručně (`Ctrl + C`) nebo počkat na časový limit.
+5. Po dokončení načítání aplikace ji můžete zastavit ručně ( `Ctrl + C` ) nebo počkat na časový limit.
 
 #### <a name="what-events-to-collect"></a>Jaké události se mají shromáždit
 

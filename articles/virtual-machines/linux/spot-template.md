@@ -9,10 +9,9 @@ ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 2d546e9154352ec90aa1b1a457eb5320979239d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758345"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Nasazení virtuálních počítačů na místě pomocí šablony Správce prostředků
@@ -21,12 +20,12 @@ Použití [přímých virtuálních počítačů](spot-vms.md) vám umožní vyu
 
 Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
-Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Hodnota `0.98765`by měla být například maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu `-1`, nebude se virtuální počítač vyřadit podle ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta. Další informace o nastavení maximální ceny najdete v tématu [virtuální počítače – ceny](spot-vms.md#pricing).
+Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Hodnota by měla být například `0.98765` maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu `-1` , nebude se virtuální počítač vyřadit podle ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta. Další informace o nastavení maximální ceny najdete v tématu [virtuální počítače – ceny](spot-vms.md#pricing).
 
 
 ## <a name="use-a-template"></a>Použití šablony
 
-Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` nebo novější. `priority`Do šablony přidejte `evictionPolicy` vlastnosti `billingProfile` a a:
+Pro nasazení šablon přímých `"apiVersion": "2019-03-01"` verzí použijte nebo novější. Do `priority` šablony přidejte `evictionPolicy` vlastnosti a a `billingProfile` :
 
 ```json
 "priority": "Spot",

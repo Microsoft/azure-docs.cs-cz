@@ -9,12 +9,11 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2774fc1374bf7fa3ed171258e8b1b51cfdb4b8b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612941"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920716"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování
 
@@ -29,19 +28,19 @@ Každý uživatel v roli **správce** má úplný přístup k řešení, včetn�
 | Oprávnění            | Správce | Jen pro čtení |
 |----------------       |-------|-----------|
 | Zobrazit řešení         | Ano   | Ano       |
-| Aktualizovat alarmy         | Ano   | Ne        |
-| Odstranit alarmy         | Ano   | Ne        |
-| Vytváření zařízení        | Ano   | Ne        |
-| Aktualizace zařízení        | Ano   | Ne        |
-| Odstranit zařízení        | Ano   | Ne        |
-| Vytvoření skupin zařízení  | Ano   | Ne        |
-| Aktualizace skupin zařízení  | Ano   | Ne        |
-| Odstranění skupin zařízení  | Ano   | Ne        |
-| Vytvořit pravidla          | Ano   | Ne        |
-| Aktualizovat pravidla          | Ano   | Ne        |
-| Odstranit pravidla          | Ano   | Ne        |
-| Vytváření úloh           | Ano   | Ne        |
-| Aktualizace správy SIM | Ano   | Ne        |
+| Aktualizovat alarmy         | Yes   | No        |
+| Odstranit alarmy         | Yes   | No        |
+| Vytváření zařízení        | Yes   | No        |
+| Aktualizace zařízení        | Yes   | No        |
+| Odstranit zařízení        | Yes   | No        |
+| Vytvoření skupin zařízení  | Yes   | No        |
+| Aktualizace skupin zařízení  | Yes   | No        |
+| Odstranění skupin zařízení  | Yes   | No        |
+| Vytvořit pravidla          | Yes   | No        |
+| Aktualizovat pravidla          | Yes   | No        |
+| Odstranit pravidla          | Yes   | No        |
+| Vytváření úloh           | Yes   | No        |
+| Aktualizace správy SIM | Yes   | No        |
 
 Ve výchozím nastavení se uživateli, který toto řešení nasadí, automaticky přiřadí role **správce** a je vlastníkem aplikace Azure Active Directory. Jako vlastník aplikace můžete přiřadit role jiným uživatelům prostřednictvím Azure Portal. Pokud chcete, aby jiný uživatel přidělil role v řešení, musí být také nastaven jako vlastník aplikace v Azure Portal.
 
@@ -50,9 +49,9 @@ Ve výchozím nastavení se uživateli, který toto řešení nasadí, automatic
 
 ## <a name="add-or-remove-users"></a>Přidat nebo odebrat uživatele
 
-Jako vlastník aplikace Azure Active Directory můžete pomocí Azure Portal přidat nebo odebrat uživatele k roli z řešení vzdáleného monitorování. Následující kroky používají [Azure Active Directory podnikovou aplikaci](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) , která byla vytvořena při nasazení řešení vzdáleného monitorování.
+Jako vlastník aplikace Azure Active Directory můžete pomocí Azure Portal přidat nebo odebrat uživatele k roli z řešení vzdáleného monitorování. Následující kroky používají [Azure Active Directory podnikovou aplikaci](../active-directory/manage-apps/view-applications-portal.md) , která byla vytvořena při nasazení řešení vzdáleného monitorování.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Ověřte, že se [uživatel nachází v adresáři](../active-directory/fundamentals/add-users-azure-active-directory.md) , který používáte. Zvolili jste adresář, který se má použít, když jste přihlášeni k webu [akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators) . Název adresáře je viditelný v pravém horním rohu [stránky](https://www.azureiotsolutions.com/Accelerators).
 
@@ -72,7 +71,7 @@ Jako vlastník aplikace Azure Active Directory můžete pomocí Azure Portal př
 
 1. Pokud chcete uživatele přiřadit k roli, klikněte na **Vybrat roli, žádná vybraná** a pro uživatele zvolte roli **správce** nebo jen **pro čtení** . Klikněte na **Vybrat**a pak na **přiřadit**.
 
-    ![Výběr role](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
+    ![Vybrat roli](media/iot-accelerators-remote-monitoring-rbac/selectrole.png)
 
 1. Uživatel teď může získat přístup k řešení vzdáleného monitorování s oprávněními definovanými rolí.
 
@@ -92,7 +91,7 @@ Následující postup popisuje, jak přidat roli do aplikace v Azure Active Dire
 
 1. Vyhledejte v Azure Portal **registraci aplikace** pro vaše řešení. Název aplikace je název vašeho řešení vzdáleného monitorování. Na následujícím snímku obrazovky jsou zobrazované názvy řešení a aplikace **Contoso-RM4**.
 
-    ![Registrace aplikací](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
+    ![Registrace aplikace](media/iot-accelerators-remote-monitoring-rbac/app-registration-2.png)
 
 1. Vyberte svou aplikaci a pak klikněte na **manifest**. Můžete si zobrazit dvě existující [role aplikace](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) definované pro aplikaci:
 
@@ -139,11 +138,11 @@ Následující postup popisuje, jak přidat roli do aplikace v Azure Active Dire
 
 ### <a name="define-a-policy-for-the-new-role"></a>Definujte zásadu pro novou roli.
 
-Po přidání role do aplikace v Azure Portal musíte definovat zásadu v [rolích. JSON](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) pro roli, která přiřazuje oprávnění potřebná ke správě zařízení.
+Po přidání role do aplikace v Azure Portal musíte definovat zásadu v [roles.js](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) pro roli, která přiřazuje oprávnění potřebná ke správě zařízení.
 
 1. Naklonujte úložiště [mikroslužeb vzdáleného monitorování](https://github.com/Azure/remote-monitoring-services-dotnet) z GitHubu do místního počítače.
 
-1. Chcete-li přidat zásadu pro roli **ManageDevices** , jak je znázorněno v následujícím fragmentu kódu, upravte soubor **auth/Services/data/Policy/Roles. JSON** . Hodnoty **ID** a **role** se musí shodovat s definicí role v manifestu aplikace z předchozí části. Seznam povolených akcí umožňuje někomu v roli **ManageDevices** vytvářet, aktualizovat a odstraňovat zařízení připojená k řešení:
+1. Chcete-li přidat zásadu pro roli **ManageDevices** , jak je znázorněno v následujícím fragmentu kódu, upravte pole **ověřování/služby/data/zásady/roles.jsna** soubor. Hodnoty **ID** a **role** se musí shodovat s definicí role v manifestu aplikace z předchozí části. Seznam povolených akcí umožňuje někomu v roli **ManageDevices** vytvářet, aktualizovat a odstraňovat zařízení připojená k řešení:
 
     ```json
     {
@@ -185,7 +184,7 @@ Po přidání role do aplikace v Azure Portal musíte definovat zásadu v [rolí
     }
     ```
 
-1. Po dokončení úprav souboru **Services/data/policies. JSON** znovu sestavte a znovu nasaďte mikroslužbu pro ověřování a autorizaci do svého akcelerátoru řešení.
+1. Po dokončení úprav **služeb/dat/zásad/roles.jsv** souboru znovu sestavte a znovu nasaďte mikroslužbu pro ověřování a autorizaci do svého akcelerátoru řešení.
 
 ### <a name="how-the-web-ui-enforces-permissions"></a>Způsob, jakým webové uživatelské rozhraní vynutilo oprávnění
 
@@ -213,7 +212,7 @@ Pro uživatele s názvem **Device Manager** v roli **ManageDevices** odpověď o
 }
 ```
 
-Následující fragment kódu z [deviceDelete. js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) ve [webovém uživatelském rozhraní](https://github.com/Azure/pcs-remote-monitoring-webui/) ukazuje, jak jsou oprávnění nastavena deklarativně:
+Následující fragment kódu z [deviceDelete.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/pages/devices/flyouts/deviceDelete/deviceDelete.js) ve [webovém uživatelském rozhraní](https://github.com/Azure/pcs-remote-monitoring-webui/) ukazuje, jak jsou oprávnění nastavena deklarativně:
 
 ```json
 <FlyoutContent>
@@ -225,7 +224,7 @@ Následující fragment kódu z [deviceDelete. js](https://github.com/Azure/pcs-
 </FlyoutContent>
 ```
 
-Další informace najdete v tématu [chráněné součásti](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md). V souboru [authModel. js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) můžete definovat další oprávnění.
+Další informace najdete v tématu [chráněné součásti](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/components/shared/protected/README.md). V souboru [authModel.js](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/src/services/models/authModels.js) můžete definovat další oprávnění.
 
 ### <a name="how-the-microservices-enforce-permissions"></a>Jak mikroslužby vynutily oprávnění
 

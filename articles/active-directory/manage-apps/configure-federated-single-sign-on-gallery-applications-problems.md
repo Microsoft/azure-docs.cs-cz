@@ -16,10 +16,9 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 858e61c6371aac28d709a9016e4b9cbed6befe3f
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84763597"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Problém s konfigurací federovaného jednotného přihlašování pro aplikaci Galerie Azure AD

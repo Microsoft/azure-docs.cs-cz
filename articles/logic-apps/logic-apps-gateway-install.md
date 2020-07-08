@@ -7,15 +7,14 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
 ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83659268"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
-Než se budete moct [připojit k místním zdrojům dat z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), Stáhněte a nainstalujte místní [bránu dat](https://aka.ms/on-premises-data-gateway-installer) do místního počítače. Brána funguje jako most, který poskytuje rychlý přenos dat a šifrování mezi zdroji dat místně a vašimi Logic Apps. Stejnou instalaci brány můžete použít i u jiných cloudových služeb, jako je Power BI, automatizace, Power Apps a Azure Analysis Services. Informace o tom, jak používat bránu s těmito službami, najdete v těchto článcích:
+Než se budete moct [připojit k místním zdrojům dat z Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), Stáhněte a nainstalujte místní [bránu dat](https://aka.ms/on-premises-data-gateway-installer) do místního počítače. Tato brána funguje jako most, který poskytuje rychlý přenos dat a šifrování mezi místními zdroji dat a vašimi aplikacemi logiky. Stejnou instalaci brány můžete použít i u jiných cloudových služeb, jako je Power BI, automatizace, Power Apps a Azure Analysis Services. Informace o tom, jak používat bránu s těmito službami, najdete v těchto článcích:
 
 * [Microsoft Power Automatizujte místní bránu dat](/power-automate/gateway-reference)
 * [Místní brána dat Power BI Microsoftu](/power-bi/service-gateway-onprem)
