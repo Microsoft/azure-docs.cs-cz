@@ -13,10 +13,9 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84702290"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Přesun dat do a z Azure Cosmos DB pomocí Azure Data Factory
@@ -483,16 +482,16 @@ Azure Cosmos DB je úložiště NoSQL pro dokumenty JSON, kde jsou povoleny vno�
 ## <a name="appendix"></a>Příloha
 1. **Otázka:** Podporuje aktivita kopírování aktualizace stávajících záznamů?
 
-    **Odpověď:** Ne.
+    **Odpověď:** No.
 2. **Otázka:** Jak se při opakovaném kopírování Azure Cosmos DB zabývat již zkopírovanými záznamy?
 
     **Odpověď:** Pokud mají záznamy pole ID a operace kopírování se pokusí vložit záznam se stejným ID, operace kopírování vyvolá chybu.
 3. **Otázka:** Podporuje Data Factory [dělení dat v rozsahu nebo na základě hodnoty hash](../../cosmos-db/sql-api-partition-data.md)?
 
-    **Odpověď:** Ne.
+    **Odpověď:** No.
 4. **Otázka:** Můžu pro tabulku zadat více než jednu kolekci Azure Cosmos DB?
 
-    **Odpověď:** Ne. V tuto chvíli lze zadat pouze jednu kolekci.
+    **Odpověď:** No. V tuto chvíli lze zadat pouze jednu kolekci.
 
 ## <a name="performance-and-tuning"></a>Výkon a optimalizace
 Další informace o klíčových faktorech, které mají vliv na výkon přesunu dat (aktivita kopírování) v Azure Data Factory a různých způsobech jejich optimalizace, najdete v tématu [Průvodce optimalizací aktivity kopírování &](data-factory-copy-activity-performance.md) .

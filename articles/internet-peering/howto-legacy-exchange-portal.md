@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 5/21/2020
 ms.author: derekol
 ms.openlocfilehash: 6249d68486af754f2d2980aaed9d5fd8287dcb5e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84700157"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Převedení staršího partnerského vztahu serveru Exchange na prostředek Azure pomocí Azure Portal

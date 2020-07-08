@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 902c14211e91a1500c6b50cd790b347e337c4f70
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84699919"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Nastavení konfiguračního serveru pro zotavení po havárii fyzických serverů do Azure
@@ -24,7 +23,7 @@ Tento článek popisuje, jak nastavit místní prostředí pro zahájení replik
 Článek předpokládá, že už máte:
 - Recovery Services trezor v [Azure Portal](https://portal.azure.com "portál Azure").
 - Fyzický počítač, na který se má nainstalovat konfigurační server
-- Pokud jste na počítači, na který instalujete konfigurační server, zakázali protokol TLS 1,0, zkontrolujte, zda je povolena možnost TLs 1,2 a zda je na počítači nainstalovaná verze .NET Framework 4,6 nebo novější (se zapnutým silným šifrováním). [Přečtěte si další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+- Pokud jste na počítači, na který instalujete konfigurační server, zakázali protokol TLS 1,0, zkontrolujte, zda je povolena možnost TLs 1,2 a zda je na počítači nainstalovaná verze .NET Framework 4,6 nebo novější (se zapnutým silným šifrováním). [Další informace](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>Minimální požadavky konfiguračního serveru
 Následující tabulka uvádí minimální požadavky na hardware, software a síť pro konfigurační server.
@@ -63,7 +62,7 @@ Následující tabulka uvádí minimální požadavky na hardware, software a s�
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> Konfigurační server lze nainstalovat pomocí příkazového řádku. [Přečtěte si další informace](physical-manage-configuration-server.md#install-from-the-command-line).
+> Konfigurační server lze nainstalovat pomocí příkazového řádku. [Další informace](physical-manage-configuration-server.md#install-from-the-command-line).
 
 
 ## <a name="common-issues"></a>Běžné problémy
