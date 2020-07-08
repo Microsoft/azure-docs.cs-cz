@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09fa612e7e5c681da16bf19e94c626ae14a3b8a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77590718"
 ---
-Když přidáváte datové disky do virtuálního počítače se systémem Linux, může dojít k chybám, pokud disk neexistuje na logické jednotce (LUN) 0. Pokud přidáváte disk ručně pomocí `az vm disk attach -new` příkazu a ZAdáte logickou jednotku ()`--lun`místo toho, aby platforma Azure mohla určit příslušnou logickou jednotku (LUN), zajistěte, aby disk již existoval, nebo bude existovat na jednotce LUN 0. 
+Když přidáváte datové disky do virtuálního počítače se systémem Linux, může dojít k chybám, pokud disk neexistuje na logické jednotce (LUN) 0. Pokud přidáváte disk ručně pomocí `az vm disk attach -new` příkazu a zadáte logickou jednotku ( `--lun` ) místo toho, aby platforma Azure mohla určit příslušnou logickou jednotku (LUN), zajistěte, aby disk již existoval, nebo bude existovat na jednotce LUN 0. 
 
-Vezměte v úvahu následující příklad znázorňující fragment výstupu z `lsscsi`:
+Vezměte v úvahu následující příklad znázorňující fragment výstupu z `lsscsi` :
 
 ```bash
 [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc 
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-Dva datové disky existují na logických jednotkách 0 a LUN 1 (první sloupec v podrobnostech `lsscsi` `[host:channel:target:lun]`výstupu). Oba disky by měly být přístupné z virtuálního počítače. Pokud jste ručně zadali první disk, který se má přidat na logickou jednotku 1 a druhý disk na logické jednotce 2, nemusíte na svém VIRTUÁLNÍm počítači správně vidět disky.
+Dva datové disky existují na logických jednotkách 0 a LUN 1 (první sloupec v `lsscsi` podrobnostech výstupu `[host:channel:target:lun]` ). Oba disky by měly být přístupné z virtuálního počítače. Pokud jste ručně zadali první disk, který se má přidat na logickou jednotku 1 a druhý disk na logické jednotce 2, nemusíte na svém VIRTUÁLNÍm počítači správně vidět disky.
 
 > [!NOTE]
 > Hodnota Azure `host` v těchto příkladech je 5, ale může se lišit v závislosti na typu vybraného úložiště.

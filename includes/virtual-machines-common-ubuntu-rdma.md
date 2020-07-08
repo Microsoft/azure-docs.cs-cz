@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d41b86b902d9a58b144e251e6922fbd95d459031
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67671209"
 ---
 1. Instalace dapl, rdmacm, ibverbs a mlx4
@@ -28,7 +28,7 @@ ms.locfileid: "67671209"
    OS.UpdateRdmaDriver=y
    ```
 
-3. V souboru/etc/Security/Limits.conf přidejte nebo změňte následující nastavení paměti v KB. Pro úpravu tohoto souboru potřebujete root Access. Pro účely testování můžete nastavit memlock na neomezené. Příklad: `<User or group name>   hard    memlock   unlimited`.
+3. V souboru/etc/Security/Limits.conf přidejte nebo změňte následující nastavení paměti v KB. Pro úpravu tohoto souboru potřebujete root Access. Pro účely testování můžete nastavit memlock na neomezené. Například: `<User or group name>   hard    memlock   unlimited`.
 
    ```
    <User or group name> hard    memlock <memory required for your application in KB>

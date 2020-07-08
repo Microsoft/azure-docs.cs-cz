@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
 ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77123219"
 ---
 Agent Azure File Sync se pravidelně aktualizuje, aby bylo možné přidat nové funkce a vyřešit problémy. Doporučujeme, abyste nakonfigurovali Microsoft Update, abyste získali aktualizace pro agenta Azure File Sync, jak jsou k dispozici.
@@ -21,8 +21,8 @@ Agent Azure File Sync se pravidelně aktualizuje, aby bylo možné přidat nové
 Existují čtyři schválené a testované způsoby, jak nainstalovat aktualizace agenta Azure File Sync. 
 1. **Doporučeno Nakonfigurujte Microsoft Update pro automatické stažení a instalaci aktualizací agenta.**  
     Vždycky doporučujeme, abyste provedli každou aktualizaci Azure File Sync, abyste měli jistotu, že máte přístup k nejnovějším opravám pro agenta serveru. Microsoft Update tento proces plynule provede automatickým stažením a instalací aktualizací.
-2. **Stáhněte a nainstalujte aktualizace agenta pomocí AfsUpdater. exe.**  
-    AfsUpdater. exe se nachází v instalačním adresáři agenta. Dvakrát klikněte na spustitelný soubor ke stažení a instalaci aktualizací agenta. 
+2. **Pomocí AfsUpdater.exe stáhnout a nainstalovat aktualizace agenta.**  
+    AfsUpdater.exe se nachází v instalačním adresáři agenta. Dvakrát klikněte na spustitelný soubor ke stažení a instalaci aktualizací agenta. 
 3. **Opravte stávajícího agenta Azure File Sync pomocí souboru Microsoft Update opravy nebo spustitelného souboru. msp. Nejnovější balíček aktualizace Azure File Sync lze stáhnout z [katalogu Microsoft Update](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync).**  
     Spuštění souboru. msp provede upgrade instalace Azure File Sync stejným způsobem použitým automaticky pomocí Microsoft Update v předchozí cestě upgradu. Použití opravy Microsoft Update provede místní upgrade instalace Azure File Sync.
 4. **Stáhněte si nejnovější Azure File Sync instalátor agenta z webu [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257).**  

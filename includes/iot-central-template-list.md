@@ -9,15 +9,15 @@ ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 2eda1fc8595962849b6a24cc272f6604d0be9175
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "82744549"
 ---
 **Šablony aplikací**
 
-| Šablona                 | Name        | Popis |
+| Šablona                 | Name        | Description |
 | ------------------------ | ----------- | ----------- |
 | IOTC – PNP – Preview         | Custom application (Vlastní aplikace) | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
 | IOTC – výchozí             | Vlastní aplikace (starší verze) | Vytvoří prázdnou starší verzi aplikace, abyste mohli naplnit vlastní šablony zařízení a zařízení.

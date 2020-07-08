@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67534608"
 ---
 1. Navažte Připojení ke vzdálené ploše na počítači, na kterém běží procesový Server. 
-2. Spusťte cspsconfigtool. exe a spusťte nástroj pro konfiguraci procesu Azure Site Recovery procesového serveru.
+2. Spusťte cspsconfigtool.exe a spusťte nástroj pro konfiguraci Azure Site Recovery procesového serveru.
     - Nástroj se spustí automaticky při prvním přihlášení k procesu serveru.
     - Pokud se nespustí automaticky, klikněte na jeho zástupce na ploše.
 
 3. V části **plně kvalifikovaný název domény nebo IP adresa konfiguračního**serveru zadejte název nebo IP adresu konfiguračního serveru, se kterým chcete zaregistrovat procesový Server.
 4. V **portu konfiguračního serveru**ověřte, že je zadaná 443. Toto je port, na kterém konfigurační server naslouchá požadavkům.
 5. Do pole **heslo pro připojení**zadejte heslo, které jste zadali při nastavování konfiguračního serveru. Postup při hledání hesla:
-    -  Na konfiguračním serveru přejděte do instalační složky Site Recovery **\home\svssystems\bin\**:
+    -  Na konfiguračním serveru přejděte do instalační složky Site Recovery **\home\svssystems\bin \* *:
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     ```

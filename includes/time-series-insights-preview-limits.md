@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: cshankar
 ms.custom: include file
 ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77123215"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Obecná dostupnost a porovnání verze Preview
@@ -25,11 +25,11 @@ Následující tabulka shrnuje několik hlavních rozdílů mezi Azure Time Seri
 | Občan první třídy | Orientované na události | Orientované na časovou řadu |
 | Sémantický důvod | Nízká úroveň (referenční data) | Nejvyšší úroveň (modely) |
 | Kontextová data | Úroveň bez zařízení | Na úrovni zařízení a mimo zařízení |
-| Úložiště COMPUTE Logic | Ne | Uloženo v části typu proměnné modelu |
-| Úložiště a řízení přístupu | Ne | Povoleno přes model |
-| Agregace a vzorkování | Ne | Vážené a časově vážené události |
-| Rekonstrukce signálu | Ne | Interpolace |
-| Výroba odvozených časových řad | Ne | Ano, sloučit a spojení |
+| Úložiště COMPUTE Logic | No | Uloženo v části typu proměnné modelu |
+| Úložiště a řízení přístupu | No | Povoleno přes model |
+| Agregace a vzorkování | No | Vážené a časově vážené události |
+| Rekonstrukce signálu | No | Interpolace |
+| Výroba odvozených časových řad | No | Ano, sloučit a spojení |
 | Flexibilita jazyka | Bez možnosti složení | Sestavitelné |
 | Jazyk výrazů | Řetězec predikátu | Výrazy časových řad (řetězce predikátů, hodnoty, výrazy a funkce) |
 
@@ -37,7 +37,7 @@ Následující tabulka shrnuje několik hlavních rozdílů mezi Azure Time Seri
 
 Time Series Insights limity vlastností se zvýšily na 1 000 z maximálního limitu 800 v GA. Zadané vlastnosti události mají odpovídající sloupce JSON, CSV a grafu, které můžete zobrazit v [průzkumníkovi Time Series Insights Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
-| Skladová jednotka (SKU) | Maximální vlastnosti |
+| SKU | Maximální vlastnosti |
 | --- | --- |
 | Náhled PAYG | 1 000 vlastnosti (sloupce) |
 | GA S1 | 600 vlastnosti (sloupce) |

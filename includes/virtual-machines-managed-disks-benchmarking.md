@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67673282"
 ---
 *Zahřívání mezipaměti*  
@@ -21,7 +21,7 @@ Disk s ukládáním do mezipaměti hostitele jen pro čtení umožňuje poskytno
 > [!IMPORTANT]
 > Před spuštěním srovnávacích testů je nutné zavěsit mezipaměť a pokaždé, když se virtuální počítač restartuje.
 
-## <a name="tools"></a>Nástroje
+## <a name="tools"></a>nástroje
 
 ### <a name="iometer"></a>Iometer
 
@@ -33,7 +33,7 @@ IOMeter používá testovací soubor, který je uložený na svazku, na kterém 
 
 #### <a name="access-specifications"></a>Specifikace přístupu
 
-Specifikace, velikost vstupně-výstupních operací požadavků,% čtení/zápisu,% Random/sekvenční, se konfigurují pomocí karty specifikace přístupu v IOMeter. Vytvořte specifikaci přístupu pro každý ze scénářů popsaných níže. Vytvořte specifikace přístupu a "Uložit" s odpovídajícím názvem, například – RandomWrites\_8K, RandomReads\_8K. Vyberte odpovídající specifikaci při spuštění testovacího scénáře.
+Specifikace, velikost vstupně-výstupních operací požadavků,% čtení/zápisu,% Random/sekvenční, se konfigurují pomocí karty specifikace přístupu v IOMeter. Vytvořte specifikaci přístupu pro každý ze scénářů popsaných níže. Vytvořte specifikace přístupu a "Uložit" s odpovídajícím názvem, například – RandomWrites \_ 8K, RandomReads \_ 8K. Vyberte odpovídající specifikaci při spuštění testovacího scénáře.
 
 Příklad specifikací přístupu pro maximální scénář zápisu IOPS je uveden níže.  
     ![Příklad specifikací přístupu pro maximální zápis IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
@@ -44,8 +44,8 @@ K předvedení maximálního IOPs použijte menší velikost žádosti. Použijt
 
 | Specifikace přístupu | Velikost požadavku | Vybraných | Oprávnění |
 | --- | --- | --- | --- |
-| RandomWrites\_8K |8 tis. |100 |0 |
-| RandomReads\_8K |8 tis. |100 |100 |
+| RandomWrites \_ 8K |8 tis. |100 |0 |
+| RandomReads \_ 8K |8 tis. |100 |100 |
 
 #### <a name="maximum-throughput-test-specifications"></a>Specifikace maximální propustnosti testu
 
@@ -53,8 +53,8 @@ K předvedení maximální propustnosti použijte větší velikost žádosti. P
 
 | Specifikace přístupu | Velikost požadavku | Vybraných | Oprávnění |
 | --- | --- | --- | --- |
-| RandomWrites\_64 KB |64 K |100 |0 |
-| RandomReads\_64 KB |64 K |100 |100 |
+| RandomWrites \_ 64 KB |64 K |100 |0 |
+| RandomReads \_ 64 KB |64 K |100 |100 |
 
 #### <a name="run-the-iometer-test"></a>Spustit test IOMeter
 
@@ -62,33 +62,33 @@ Provedením následujících kroků zahříváte mezipaměť.
 
 1. Vytvořte dvě specifikace přístupu s hodnotami uvedenými níže,
 
-   | Název | Velikost požadavku | Vybraných | Oprávnění |
+   | Name | Velikost požadavku | Vybraných | Oprávnění |
    | --- | --- | --- | --- |
-   | RandomWrites\_1 MB |1 MB |100 |0 |
-   | RandomReads\_1 MB |1 MB |100 |100 |
+   | RandomWrites \_ 1 MB |1 MB |100 |0 |
+   | RandomReads \_ 1 MB |1 MB |100 |100 |
 1. Spusťte test IOMeter pro inicializaci disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní vlákna a hloubku fronty 128. Nastavte hodnotu doba běhu testu na 2 hodiny na kartě nastavení testu.
 
-   | Scénář | Cílový svazek | Název | Doba trvání |
+   | Scénář | Cílový svazek | Name | Doba trvání |
    | --- | --- | --- | --- |
-   | Inicializovat disk mezipaměti |CacheReads |RandomWrites\_1 MB |2 hodiny |
+   | Inicializovat disk mezipaměti |CacheReads |RandomWrites \_ 1 MB |2 hodiny |
 1. Spusťte test IOMeter pro vyhřívání disku mezipaměti s následujícími parametry. Pro cílový svazek použijte tři pracovní vlákna a hloubku fronty 128. Nastavte hodnotu doba běhu testu na 2 hodiny na kartě nastavení testu.
 
-   | Scénář | Cílový svazek | Název | Doba trvání |
+   | Scénář | Cílový svazek | Name | Doba trvání |
    | --- | --- | --- | --- |
-   | Zahřívání disku mezipaměti |CacheReads |RandomReads\_1 MB |2 hodiny |
+   | Zahřívání disku mezipaměti |CacheReads |RandomReads \_ 1 MB |2 hodiny |
 
 Po zahřívání disku mezipaměti pokračujte podle níže uvedených scénářů testování. Chcete-li spustit test IOMeter, použijte pro **každý** cílový svazek alespoň tři pracovní vlákna. Pro každé pracovní vlákno vyberte cílový svazek, nastavte hloubku fronty a vyberte jednu z uložených specifikací testu, jak je znázorněno v následující tabulce, aby se mohl spustit odpovídající testovací scénář. Tabulka také ukazuje očekávané výsledky pro IOPS a propustnost při spuštění těchto testů. Pro všechny scénáře se používá malá vstupně-výstupní operace o velikosti 8 KB a vysoká hloubka fronty 128.
 
-| Scénář testu | Cílový svazek | Název | Výsledek |
+| Scénář testu | Cílový svazek | Name | Výsledek |
 | --- | --- | --- | --- |
-| Max. Čtení IOPS |CacheReads |RandomWrites\_8K |50 000 IOPS |
-| Max. Zápis IOPS |NoCacheWrites |RandomReads\_8K |64 000 IOPS |
-| Max. Kombinované IOPS |CacheReads |RandomWrites\_8K |100 000 IOPS |
-| NoCacheWrites |RandomReads\_8K | &nbsp; | &nbsp; |
-| Max. Čtení MB/s |CacheReads |RandomWrites\_64 KB |524 MB/s |
-| Max. Zápisy MB/s |NoCacheWrites |RandomReads\_64 KB |524 MB/s |
-| Kombinované MB/s |CacheReads |RandomWrites\_64 KB |1000 MB/s |
-| NoCacheWrites |RandomReads\_64 KB | &nbsp; | &nbsp; |
+| Max. Čtení IOPS |CacheReads |RandomWrites \_ 8K |50 000 IOPS |
+| Max. Zápis IOPS |NoCacheWrites |RandomReads \_ 8K |64 000 IOPS |
+| Max. Kombinované IOPS |CacheReads |RandomWrites \_ 8K |100 000 IOPS |
+| NoCacheWrites |RandomReads \_ 8K | &nbsp; | &nbsp; |
+| Max. Čtení MB/s |CacheReads |RandomWrites \_ 64 KB |524 MB/s |
+| Max. Zápisy MB/s |NoCacheWrites |RandomReads \_ 64 KB |524 MB/s |
+| Kombinované MB/s |CacheReads |RandomWrites \_ 64 KB |1000 MB/s |
+| NoCacheWrites |RandomReads \_ 64 KB | &nbsp; | &nbsp; |
 
 Níže jsou uvedeny snímky obrazovky výsledků IOMeter testů pro kombinované scénáře IOPS a propustnosti.
 
@@ -116,7 +116,7 @@ Pro řízení operací zápisu a čtyři pracovní vlákna pro řízení operac�
 
 #### <a name="maximum-write-iops"></a>Maximální počet IOPS zápisu
 
-Vytvořte soubor úlohy s následujícími specifikacemi pro získání maximálního počtu vstupně-výstupních operací zápisu. Pojmenujte ho "fiowrite. ini".
+Vytvořte soubor úlohy s následujícími specifikacemi pro získání maximálního počtu vstupně-výstupních operací zápisu. Pojmenujte ho "fiowrite.ini".
 
 ```ini
 [global]
@@ -157,7 +157,7 @@ V průběhu testu můžete zobrazit počet vstupně-výstupních operací pro z�
 
 #### <a name="maximum-read-iops"></a>Maximální počet IOPS pro čtení
 
-Vytvořte soubor úlohy s následujícími specifikacemi pro získání maximálního počtu vstupně-výstupních operací čtení. Pojmenujte ho "fioread. ini".
+Vytvořte soubor úlohy s následujícími specifikacemi pro získání maximálního počtu vstupně-výstupních operací čtení. Pojmenujte ho "fioread.ini".
 
 ```ini
 [global]
@@ -198,7 +198,7 @@ I když se test spustí, můžete zobrazit počet vstupně-výstupních operací
 
 #### <a name="maximum-read-and-write-iops"></a>Maximální počet vstupně-výstupních operací čtení a zápisu
 
-Vytvořte soubor úlohy s následujícími specifikacemi pro získání maximálního počtu vstupně-výstupních operací čtení a zápisu. Pojmenujte ho "fioreadwrite. ini".
+Vytvořte soubor úlohy s následujícími specifikacemi pro získání maximálního počtu vstupně-výstupních operací čtení a zápisu. Pojmenujte ho "fioreadwrite.ini".
 
 ```ini
 [global]
