@@ -3,12 +3,12 @@ title: Událost vytvoření fondu Azure Batch
 description: Odkaz na událost vytvoření fondu Batch, která je generována po vytvoření fondu. Obsah protokolu bude zveřejňovat Obecné informace o fondu.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: fe327b7c369405cb3160c67d79e5dbdf55463f77
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: d8e4537e0074b7af1e65ea5f13a9668483abc45e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83724033"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962488"
 ---
 # <a name="pool-create-event"></a>Událost vytvoření fondu
 
@@ -51,45 +51,45 @@ ms.locfileid: "83724033"
 
 |Prvek|Typ|Poznámky|
 |-------------|----------|-----------|
-|`id`|String|ID fondu|
-|`displayName`|String|Zobrazovaný název fondu.|
-|`vmSize`|String|Velikost virtuálních počítačů ve fondu. Všechny virtuální počítače ve fondu mají stejnou velikost. <br/><br/> Informace o dostupných velikostech virtuálních počítačů pro fondy Cloud Services (fondy vytvořené pomocí nástroje cloudServiceConfiguration) najdete v tématu [velikosti pro Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Batch podporuje všechny velikosti Cloud Services virtuálních počítačů s výjimkou `ExtraSmall` .<br/><br/> Informace o dostupných velikostech virtuálních počítačů pro fondy pomocí imagí z Virtual Machines Marketplace (fondy vytvořené pomocí virtualMachineConfiguration) najdete v tématu [velikosti pro Virtual Machines](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) nebo [velikosti pro Virtual Machines](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). Služba Batch podporuje všechny velikosti VM Azure kromě `STANDARD_A0` a těch, které používají Premium Storage (série `STANDARD_GS`, `STANDARD_DS` a `STANDARD_DSV2`).|
-|`imageType`|String|Metoda nasazení pro obrázek. Podporovány jsou hodnoty `virtualMachineConfiguration` nebo.`cloudServiceConfiguration`|
+|`id`|Řetězec|ID fondu|
+|`displayName`|Řetězec|Zobrazovaný název fondu.|
+|`vmSize`|Řetězec|Velikost virtuálních počítačů ve fondu. Všechny virtuální počítače ve fondu mají stejnou velikost. <br/><br/> Informace o dostupných velikostech virtuálních počítačů pro fondy Cloud Services (fondy vytvořené pomocí nástroje cloudServiceConfiguration) najdete v tématu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Batch podporuje všechny velikosti Cloud Services virtuálních počítačů s výjimkou `ExtraSmall` .<br/><br/> Informace o dostupných velikostech virtuálních počítačů pro fondy pomocí imagí z Virtual Machines Marketplace (fondy vytvořené pomocí virtualMachineConfiguration) najdete v tématu [velikosti pro Virtual Machines](/azure/virtual-machines/linux/sizes?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (Linux) nebo [velikosti pro Virtual Machines](/azure/virtual-machines/windows/sizes?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows). Služba Batch podporuje všechny velikosti VM Azure kromě `STANDARD_A0` a těch, které používají Premium Storage (série `STANDARD_GS`, `STANDARD_DS` a `STANDARD_DSV2`).|
+|`imageType`|Řetězec|Metoda nasazení pro obrázek. Podporovány jsou hodnoty `virtualMachineConfiguration` nebo.`cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|Komplexní typ|Konfigurace cloudové služby pro fond.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Komplexní typ|Konfigurace virtuálního počítače pro fond.|
 |[`networkConfiguration`](#bk_netconf)|Komplexní typ|Konfigurace sítě pro fond.|
-|`resizeTimeout`|Time|Časový limit pro přidělení výpočetních uzlů do fondu zadaného pro operaci poslední změny velikosti ve fondu.  (Počáteční velikost při vytváření fondu se počítá jako změna velikosti.)|
+|`resizeTimeout`|Čas|Časový limit pro přidělení výpočetních uzlů do fondu zadaného pro operaci poslední změny velikosti ve fondu.  (Počáteční velikost při vytváření fondu se počítá jako změna velikosti.)|
 |`targetDedicatedNodes`|Int32|Počet vyhrazených výpočetních uzlů, které jsou požadovány pro fond.|
 |`targetLowPriorityNodes`|Int32|Počet výpočetních uzlů s nízkou prioritou, které jsou pro fond požadovány.|
 |`enableAutoScale`|Logická hodnota|Určuje, jestli se velikost fondu v průběhu času automaticky upraví.|
 |`enableInterNodeCommunication`|Logická hodnota|Určuje, jestli je fond nastavený pro přímou komunikaci mezi uzly.|
 |`isAutoPool`|Logická hodnota|Určuje, jestli se fond vytvořil pomocí mechanismu autopoolu úlohy.|
 |`maxTasksPerNode`|Int32|Maximální počet úloh, které mohou běžet souběžně na jednom výpočetním uzlu ve fondu.|
-|`vmFillType`|String|Definuje, jak služba Batch distribuuje úlohy mezi výpočetními uzly ve fondu. Platné hodnoty jsou rozprostření nebo sbalení.|
+|`vmFillType`|Řetězec|Definuje, jak služba Batch distribuuje úlohy mezi výpočetními uzly ve fondu. Platné hodnoty jsou rozprostření nebo sbalení.|
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a>cloudServiceConfiguration
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|`osFamily`|String|Řada hostovaných operačních systémů Azure, která se má nainstalovat na virtuální počítače ve fondu.<br /><br /> Možné hodnoty:<br /><br /> **2** – řada OS 2, ekvivalent Windows serveru 2008 R2 SP1.<br /><br /> **3** – řada OS 3, ekvivalent Windows Serveru 2012.<br /><br /> **4** – řada OS 4, která odpovídá Windows Serveru 2012 R2.<br /><br /> Další informace najdete v tématu [vydání hostovaného operačního systému Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
-|`targetOSVersion`|String|Verze operačního systému hosta Azure, která se má nainstalovat na virtuální počítače ve fondu.<br /><br /> Výchozí hodnota je, **\*** která určuje nejnovější verzi operačního systému pro určenou rodinu.<br /><br /> Další povolené hodnoty najdete v tématu [vydání hostovaného operačního systému Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|`osFamily`|Řetězec|Řada hostovaných operačních systémů Azure, která se má nainstalovat na virtuální počítače ve fondu.<br /><br /> Možné hodnoty:<br /><br /> **2** – řada OS 2, ekvivalent Windows serveru 2008 R2 SP1.<br /><br /> **3** – řada OS 3, ekvivalent Windows Serveru 2012.<br /><br /> **4** – řada OS 4, která odpovídá Windows Serveru 2012 R2.<br /><br /> Další informace najdete v tématu [vydání hostovaného operačního systému Azure](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
+|`targetOSVersion`|Řetězec|Verze operačního systému hosta Azure, která se má nainstalovat na virtuální počítače ve fondu.<br /><br /> Výchozí hodnota je, **\*** která určuje nejnovější verzi operačního systému pro určenou rodinu.<br /><br /> Další povolené hodnoty najdete v tématu [vydání hostovaného operačního systému Azure](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a>virtualMachineConfiguration
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
 |[`imageReference`](#bk_imgref)|Komplexní typ|Určuje informace o platformě nebo imagi Marketplace, které se mají použít.|
-|`nodeAgentId`|String|SKU agenta uzlu Batch zřízeného na výpočetním uzlu.|
+|`nodeAgentId`|Řetězec|SKU agenta uzlu Batch zřízeného na výpočetním uzlu.|
 |[`windowsConfiguration`](#bk_winconf)|Komplexní typ|Určuje nastavení operačního systému Windows na virtuálním počítači. Tato vlastnost nesmí být zadána, pokud element imagereference odkazuje na bitovou kopii operačního systému Linux.|
 
 ###  <a name="imagereference"></a><a name="bk_imgref"></a>Element imagereference
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|`publisher`|String|Vydavatel obrázku|
-|`offer`|String|Nabídka obrázku|
-|`sku`|String|SKU obrázku.|
-|`version`|String|Verze bitové kopie|
+|`publisher`|Řetězec|Vydavatel obrázku|
+|`offer`|Řetězec|Nabídka obrázku|
+|`sku`|Řetězec|SKU obrázku.|
+|`version`|Řetězec|Verze bitové kopie|
 
 ###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a>windowsConfiguration
 
@@ -101,4 +101,4 @@ ms.locfileid: "83724033"
 
 |Název elementu|Typ|Poznámky|
 |------------------|--------------|----------|
-|`subnetId`|String|Určuje identifikátor prostředku podsítě, ve které jsou výpočetní uzly fondu vytvářeny.|
+|`subnetId`|Řetězec|Určuje identifikátor prostředku podsítě, ve které jsou výpočetní uzly fondu vytvářeny.|

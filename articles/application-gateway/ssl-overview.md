@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: f9d55c3294cc28b6193371cdc6ede7ba1bc8167b
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 1986955c7135cb9296937392b23635ae62d8d9f7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254799"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962097"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Přehled ukončení protokolu TLS a koncového a koncového protokolu TLS s Application Gateway
 
@@ -111,7 +111,7 @@ Ověřovací certifikáty jsou zastaralé a v SKU Application Gateway v2 byly na
 
 - Kromě shody s kořenovým certifikátem Application Gateway v2 taky ověří, jestli nastavení hostitele zadané v nastavení http back-endu odpovídá běžnému názvu (CN), který prezentuje certifikát TLS/SSL serveru back-endu. Při pokusu o navázání připojení TLS k back-endu nastaví Application Gateway v2 rozšíření Indikace názvu serveru (SNI) na hostitele zadané v nastavení http back-endu.
 
-- Pokud je zvolena možnost **Vybrat název hostitele z back-endu** , místo aby bylo pole hostitel v nastavení http back-endu nastaveno, pak je hlavička sni vždy nastavená na plně kvalifikovaný název domény fondu back-end a CN v certifikátu TLS/SSL serveru back-end se musí shodovat s názvem FQDN. V tomto scénáři nejsou podporovány členy fondu back-end s IP adresami.
+- Pokud je zvolena možnost **Vybrat název hostitele ze služby back-end** hosta místo v poli Hostitel v nastavení http back-endu, pak je hlavička sni vždy nastavená na plně kvalifikovaný název domény fondu back-end a CN v certifikátu TLS/SSL serveru back-end musí odpovídat jeho plně kvalifikovanému názvu V tomto scénáři nejsou podporovány členy fondu back-end s IP adresami.
 
 - Kořenový certifikát je kořenový certifikát kódovaný v kódování Base64 od certifikátů back-end serveru.
 
