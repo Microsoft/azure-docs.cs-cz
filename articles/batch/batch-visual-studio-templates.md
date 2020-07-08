@@ -4,12 +4,11 @@ description: Přečtěte si, jak vám šablony projektů sady Visual Studio pom�
 ms.topic: how-to
 ms.date: 02/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 9332684008b45aea39e07d8225bae6450ba57de5
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: c4cdc3fa7b3238a83d55113c5f7dc551d637c8e2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779511"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959768"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Použití šablon projektů sady Visual Studio ke skoku na zahájení dávkového řešení
 
@@ -90,7 +89,7 @@ Když vytvoříte projekt pomocí šablony Správce úloh, vygeneruje tři skupi
 
 Samozřejmě můžete přidat další soubory podle potřeby pro podporu kódu rozdělovače úlohy v závislosti na složitosti logiky rozdělení úloh.
 
-Šablona také generuje standardní soubory projektu .NET, jako je například soubor. csproj, App. config, Packages. config, atd.
+Šablona také generuje standardní soubory projektu .NET, jako je například soubor. csproj, app.config, packages.config atd.
 
 Zbytek této části popisuje různé soubory a jejich strukturu kódu a vysvětluje, co jednotlivé třídy dělá.
 
@@ -178,7 +177,7 @@ Ukončovací kódy a výjimky poskytují mechanismus pro určení výsledku spu�
 
 Úkol správce úloh implementovaný pomocí šablony Správce úloh může vracet tři možné ukončovací kódy:
 
-| Kód | Popis |
+| Kód | Description |
 | --- | --- |
 | 0 |Správce úloh byl úspěšně dokončen. Došlo k dokončení kódu rozdělovače úlohy a všechny úkoly byly přidány do úlohy. |
 | 1 |Úloha správce úloh se nezdařila s výjimkou v části očekávaná v programu. Výjimka byla přeložena do JobManagerException s diagnostickými informacemi a tam, kde je to možné, návrhy pro vyřešení selhání. |
@@ -186,7 +185,7 @@ Ukončovací kódy a výjimky poskytují mechanismus pro určení výsledku spu�
 
 V případě selhání úlohy Správce úloh může být do služby ještě před tím, než došlo k chybě, stále přidány některé úlohy. Tyto úlohy budou spouštěny normálním způsobem. Projděte si část "selhání rozdělení úlohy" výše pro diskuzi o této cestě k kódu.
 
-Všechny informace vrácené výjimkami se zapisují do souborů STDOUT. txt a stderr. txt. Další informace najdete v tématu [zpracování chyb](error-handling.md).
+Všechny informace vrácené výjimkami se zapisují do stdout.txt a stderr.txt souborů. Další informace najdete v tématu [zpracování chyb](error-handling.md).
 
 ### <a name="client-considerations"></a>Klientské požadavky
 Tato část popisuje některé požadavky implementace klienta při vyvolání Správce úloh na základě této šablony. Podrobnosti o předávání parametrů a nastavení prostředí najdete v tématu [postup předání parametrů a proměnných prostředí z klientského kódu](#pass-environment-settings) .
@@ -259,7 +258,7 @@ Při vytváření projektu pomocí šablony procesoru úloh generuje tři skupin
 
 Samozřejmě můžete přidat další soubory podle potřeby pro podporu kódu procesoru úloh v závislosti na složitosti rozdělené logiky úlohy.
 
-Šablona také generuje standardní soubory projektu .NET, jako je například soubor. csproj, App. config, Packages. config, atd.
+Šablona také generuje standardní soubory projektu .NET, jako je například soubor. csproj, app.config, packages.config atd.
 
 Zbytek této části popisuje různé soubory a jejich strukturu kódu a vysvětluje, co jednotlivé třídy dělá.
 
@@ -356,7 +355,7 @@ Ukončovací kódy a výjimky poskytují mechanismus pro určení výsledku spu�
 
 Úloha procesoru úlohy, která je implementovaná pomocí šablony procesoru úloh, může vracet tři možné ukončovací kódy:
 
-| Kód | Popis |
+| Kód | Description |
 | --- | --- |
 | [Process. ExitCode][process_exitcode] |Procesor úkolů byl dokončen. Všimněte si, že to neznamená, že program, který jste vyvolali, byl úspěšný – pouze tento procesor úkol vyvolal úspěšně a provedl jakékoli následné zpracování bez výjimek. Význam ukončovacího kódu závisí na vyvolaném programu – obvykle ukončovací kód 0 znamená úspěšné dokončení programu a další ukončovací kód znamená, že se program nezdařil. |
 | 1 |Procesor úloh se nezdařil s výjimkou v části očekávaná v programu. Výjimka byla přeložena na `TaskProcessorException` s diagnostickými informacemi a je-li to možné, návrhy pro vyřešení selhání. |
@@ -367,7 +366,7 @@ Ukončovací kódy a výjimky poskytují mechanismus pro určení výsledku spu�
 > 
 > 
 
-Všechny informace vrácené výjimkami se zapisují do souborů STDOUT. txt a stderr. txt. Další informace najdete v dokumentaci ke službě Batch v tématu zpracování chyb.
+Všechny informace vrácené výjimkami se zapisují do stdout.txt a stderr.txt souborů. Další informace najdete v dokumentaci ke službě Batch v tématu zpracování chyb.
 
 ### <a name="client-considerations"></a>Klientské požadavky
 **Přihlašovací údaje úložiště**
@@ -397,12 +396,12 @@ Klient může předat informace do úlohy Správce úloh ve formě nastavení pr
 * Adresa URL účtu Batch
 * Klíč účtu Batch
 
-Služba Batch má jednoduchý mechanismus pro předávání nastavení prostředí úkolu správce úloh pomocí `EnvironmentSettings` vlastnosti v [Microsoft. Azure. batch. JobManagerTask][net_jobmanagertask].
+Služba Batch má jednoduchý mechanismus pro předávání nastavení prostředí úkolu správce úloh pomocí `EnvironmentSettings` vlastnosti v [Microsoft.Azure.Batch. JobManagerTask][net_jobmanagertask].
 
 Například pro získání `BatchClient` instance účtu Batch můžete předat jako proměnné prostředí z kódu klienta přihlašovací údaje adresy URL a sdíleného klíče pro účet Batch. Podobně pro přístup k účtu úložiště, který je propojený s účtem Batch, můžete název účtu úložiště a klíč účtu úložiště předat jako proměnné prostředí.
 
 ### <a name="pass-parameters-to-the-job-manager-template"></a>Předání parametrů do šablony Správce úloh
-V mnoha případech je vhodné předat parametry za úlohu do úlohy Správce úloh, a to buď k řízení rozděleného procesu úlohy, nebo ke konfiguraci úkolů pro úlohu. To můžete provést tak, že nahrajete soubor JSON s názvem Parameters. JSON jako soubor prostředků pro úkol správce úloh. Parametry pak mohou být k dispozici v `JobSplitter._parameters` poli v šabloně Správce úloh.
+V mnoha případech je vhodné předat parametry za úlohu do úlohy Správce úloh, a to buď k řízení rozděleného procesu úlohy, nebo ke konfiguraci úkolů pro úlohu. To můžete provést tak, že nahrajete soubor JSON s názvem parameters.jsdo souboru prostředků pro úkol správce úloh. Parametry pak mohou být k dispozici v `JobSplitter._parameters` poli v šabloně Správce úloh.
 
 > [!NOTE]
 > Vestavěný parametr obslužné rutiny podporuje pouze slovníky řetězců do řetězce. Pokud chcete předat komplexní hodnoty JSON jako hodnoty parametrů, budete je muset předat jako řetězce a analyzovat je v rozdělovači úlohy nebo upravit `Configuration.GetJobParameters` metodu rozhraní.
@@ -412,10 +411,10 @@ V mnoha případech je vhodné předat parametry za úlohu do úlohy Správce ú
 ### <a name="pass-parameters-to-the-task-processor-template"></a>Předání parametrů do šablony procesoru úloh
 Můžete také předat parametry jednotlivým úlohám implementovaným pomocí šablony procesoru úloh. Stejně jako u šablony Správce úloh vyhledává šablona procesoru úloh soubor prostředků s názvem.
 
-Parameters. JSON, a pokud ho najde, načte ho jako slovník parametrů. Existuje několik možností, jak předat parametry úlohám procesoru úloh:
+parameters.js, a pokud ho najde, načte ho jako slovník parametrů. Existuje několik možností, jak předat parametry úlohám procesoru úloh:
 
-* Znovu použijte parametry úlohy JSON. To funguje dobře, pokud jsou jediné parametry v rámci úlohy (například výška a šířka vykreslování). Pokud to chcete provést při vytváření CloudTask v rozdělovače úlohy, přidejte odkaz na objekt souboru prostředků Parameters. JSON z úlohy Správce úloh ResourceFiles ( `JobSplitter._jobManagerTask.ResourceFiles` ) do kolekce ResourceFiles CloudTask.
-* Vygenerujte a nahrajte dokument parametry konkrétního úkolu. JSON jako součást provádění rozdělovače úlohy a odkázat na tento objekt BLOB v kolekci souborů prostředků úlohy. To je nezbytné v případě, že různé úlohy mají různé parametry. Příkladem může být scénář prostorového vykreslování, ve kterém je index rámce předán úkolu jako parametr.
+* Znovu použijte parametry úlohy JSON. To funguje dobře, pokud jsou jediné parametry v rámci úlohy (například výška a šířka vykreslování). Pokud to chcete provést, při vytváření CloudTask v rozdělovače úlohy přidejte odkaz na objekt parameters.jsv objektu souboru prostředků z ResourceFiles () úlohy Správce úloh `JobSplitter._jobManagerTask.ResourceFiles` do kolekce ResourceFiles CloudTask.
+* Vygenerujte a nahrajte parameters.jsspecifickou pro úkol v dokumentu jako součást provádění rozdělovače úlohy a vytvořte odkaz na tento objekt BLOB v kolekci souborů prostředků úlohy. To je nezbytné v případě, že různé úlohy mají různé parametry. Příkladem může být scénář prostorového vykreslování, ve kterém je index rámce předán úkolu jako parametr.
 
 > [!NOTE]
 > Vestavěný parametr obslužné rutiny podporuje pouze slovníky řetězců do řetězce. Pokud chcete předat komplexní hodnoty JSON jako hodnoty parametrů, budete je muset předat jako řetězce a analyzovat je v procesoru úloh nebo upravit `Configuration.GetTaskParameters` metodu rozhraní.
@@ -427,13 +426,13 @@ Parameters. JSON, a pokud ho najde, načte ho jako slovník parametrů. Existuje
 Dalším užitečným nástrojem pro vývoj řešení Batch je [Azure Batch konvence souborů][nuget_package]. Pomocí této knihovny tříd .NET (v současnosti ve verzi Preview) můžete v aplikacích Batch .NET snadno ukládat a načítat výstupy úloh z Azure Storage. [Trvalý výstup úlohy a úlohy Azure Batch](batch-task-output.md) obsahuje úplnou diskuzi o knihovně a jejím využití.
 
 
-[net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
+[net_jobmanagertask]: /dotnet/api/microsoft.azure.batch.jobmanagertask
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
-[process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
+[process_exitcode]: /dotnet/api/system.diagnostics.process.exitcode
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
 [vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
-[vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
+[vs_find_use_ext]: /visualstudio/ide/finding-and-using-visual-studio-extensions
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png

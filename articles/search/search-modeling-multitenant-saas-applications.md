@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85081111"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Vzory návrhu pro víceklientské aplikace SaaS a Azure Kognitivní hledání
@@ -41,7 +40,7 @@ Přidávání a odebírání oddílů a replik v nástroji umožní, aby služba
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Omezení služby a indexu v Azure Kognitivní hledání
 V Azure Kognitivní hledání existuje několik různých [cenových úrovní](https://azure.microsoft.com/pricing/details/search/) , každá z vrstev má různá [omezení a kvóty](search-limits-quotas-capacity.md). Některá z těchto omezení jsou na úrovni služby, některé jsou na úrovni indexu a některé jsou na úrovni oddílu.
 
-|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Základní | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximální počet replik na službu |3 |12 |12 |12 |12 |
 | Maximální počet oddílů na službu |1 |12 |12 |12 |3 |

@@ -13,12 +13,11 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d7ce3a19ddb5f14e53a8821cf070500f8e3eb061
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 58f2b1828bcc63ce11c234847bc20f90944aba18
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338437"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960380"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Registrace několika virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,7 +34,7 @@ Další informace o poskytovateli prostředků najdete v tématu [poskytovatel p
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat následující: 
 
-- [Předplatné Azure](https://azure.microsoft.com/free/) , které je [zaregistrované u poskytovatele prostředků](sql-vm-resource-provider-register.md#register-a-subscription-with-the-resource-provider) a obsahuje neregistrované virtuální počítače SQL Server. 
+- [Předplatné Azure](https://azure.microsoft.com/free/) , které je [zaregistrované u poskytovatele prostředků](sql-vm-resource-provider-register.md#register-subscription-with-rp) a obsahuje neregistrované virtuální počítače SQL Server. 
 - Pověření klienta používaná k registraci virtuálních počítačů existují v kterékoli z následujících rolí RBAC: přispěvatel, **Přispěvatel**nebo **vlastník** **virtuálního počítače**. 
 - Nejnovější verzi [AZ PowerShellu](/powershell/azure/new-azureps-module-az) 
 - Nejnovější verzi [AZ. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).

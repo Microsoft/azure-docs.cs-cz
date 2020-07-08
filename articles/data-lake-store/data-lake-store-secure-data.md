@@ -13,10 +13,9 @@ ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515259"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Zabezpečení dat uložených ve službě Azure Data Lake Storage Gen1

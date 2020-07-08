@@ -5,12 +5,11 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 90cd6476992eed30abbe9faca5cc66405aa40079
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
-ms.translationtype: MT
+ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780185"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959989"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Použití virtuálních počítačů s nízkou prioritou se službou Batch
 
@@ -23,11 +22,11 @@ Kompromisy pro použití virtuálních počítačů s nízkou prioritou je, že 
 Virtuální počítače s nízkou prioritou se v porovnání s vyhrazenými virtuálními počítači nabízejí výrazně snížené ceny. Podrobnosti o cenách najdete v tématu [ceny služby Batch](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
-> Virtuální počítače s [přímým](https://azure.microsoft.com/pricing/spot/) výskytem jsou teď dostupné pro [virtuální počítače s jednou instancí](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) a služby [VM Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot). Virtuální počítače s nízkou prioritou představují vývoj virtuálních počítačů s nízkou prioritou, ale liší se tím, že se ceny můžou lišit a volitelná maximální cena se dá nastavit při přidělování virtuálních počítačů na místě.
+> Virtuální počítače s [přímým](https://azure.microsoft.com/pricing/spot/) výskytem jsou teď dostupné pro [virtuální počítače s jednou instancí](../virtual-machines/linux/spot-vms.md) a služby [VM Scale Sets](../virtual-machine-scale-sets/use-spot.md). Virtuální počítače s nízkou prioritou představují vývoj virtuálních počítačů s nízkou prioritou, ale liší se tím, že se ceny můžou lišit a volitelná maximální cena se dá nastavit při přidělování virtuálních počítačů na místě.
 >
-> Fondy Azure Batch začnou podporovat virtuální počítače s plochou během několika měsíců, které jsou všeobecně dostupné, s novými verzemi [rozhraní API a nástrojů služby Batch](https://docs.microsoft.com/azure/batch/batch-apis-tools). Jakmile bude k dispozici podpora virtuálních počítačů, virtuální počítače s nízkou prioritou budou zastaralé – budou i nadále podporovány pomocí současných rozhraní API a verzí nástrojů po dobu nejméně 12 měsíců, aby bylo umožněno dostatek času pro migraci na virtuální počítače. 
+> Fondy Azure Batch začnou podporovat virtuální počítače s plochou během několika měsíců, které jsou všeobecně dostupné, s novými verzemi [rozhraní API a nástrojů služby Batch](./batch-apis-tools.md). Jakmile bude k dispozici podpora virtuálních počítačů, virtuální počítače s nízkou prioritou budou zastaralé – budou i nadále podporovány pomocí současných rozhraní API a verzí nástrojů po dobu nejméně 12 měsíců, aby bylo umožněno dostatek času pro migraci na virtuální počítače. 
 >
-> Virtuální počítače s přímým odkazem se pro fondy [konfigurací cloudových služeb](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) nepodporují. Pokud chcete použít virtuální počítače s plochou, bude nutné, aby fondy cloudových služeb byly migrovány do fondů [Konfigurace virtuálních počítačů](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
+> Virtuální počítače s přímým odkazem se pro fondy [konfigurací cloudových služeb](/rest/api/batchservice/pool/add#cloudserviceconfiguration) nepodporují. Pokud chcete použít virtuální počítače s plochou, bude nutné, aby fondy cloudových služeb byly migrovány do fondů [Konfigurace virtuálních počítačů](/rest/api/batchservice/pool/add#virtualmachineconfiguration) .
 
 ## <a name="use-cases-for-low-priority-vms"></a>Případy použití pro virtuální počítače s nízkou prioritou
 
@@ -144,7 +143,7 @@ Vzorec automatického škálování fondu podporuje virtuální počítače s n�
 -   Můžete získat hodnotu proměnné definované službou **$PreemptedNodeCount**. 
     Tato proměnná vrátí počet uzlů v zastaveném stavu a umožňuje horizontální navýšení nebo snížení kapacity počtu vyhrazených uzlů v závislosti na počtu nedostupných uzlů, které nejsou k dispozici.
 
-## <a name="jobs-and-tasks"></a>Úlohy a úlohy
+## <a name="jobs-and-tasks"></a>Úlohy a úkoly
 
 Úlohy a úlohy vyžadují pro uzly s nízkou prioritou trochu další konfiguraci. jediná podpora je následující:
 

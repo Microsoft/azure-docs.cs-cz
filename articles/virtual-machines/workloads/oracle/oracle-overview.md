@@ -13,10 +13,9 @@ ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: borisb
 ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85098928"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
@@ -89,7 +88,7 @@ Nasaďte také vlastní aplikace v Azure, které se připojují k OCI a dalším
 V kombinaci se softwarem Oracle běžícím v Azure použijte Oracle Database Cloud Services (autonomní databáze, RAC, Exadata, DBaaS, jeden uzel). Přečtěte si další informace o [možnostech databáze OCI](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licensing
+## <a name="licensing"></a>Licencování
 
 Nasazení aplikací Oracle v Azure je založené na modelu "Přineste si vlastní licenci". Předpokládáte, že máte řádně licenci na používání softwaru Oracle a máte k dispozici aktuální smlouvu o podpoře pro Oracle. Oracle garantuje mobilitu licencí z místního prostředí do Azure. Podívejte se na [Nejčastější dotazy](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)k Oracle-Azure.
 

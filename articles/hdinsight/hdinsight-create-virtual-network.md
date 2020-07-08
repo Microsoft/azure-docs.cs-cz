@@ -8,12 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: abe9938a3cc9466a56a3e4be24a677751e28e9ac
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531012"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960159"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Vytváření virtuálních sítí pro clustery Azure HDInsight
 
@@ -50,7 +49,7 @@ Pomocí následujícího skriptu PowerShellu vytvořte virtuální síť, která
 > [!IMPORTANT]  
 > Změňte IP adresy pro `hdirule1` a `hdirule2` v tomto příkladu tak, aby odpovídaly oblasti Azure, kterou používáte. Tyto informace najdete v informacích o [IP adresách správy HDInsight](hdinsight-management-ip-addresses.md).
 
-```powershell
+```azurepowershell
 $vnetName = "Replace with your virtual network name"
 $resourceGroupName = "Replace with the resource group the virtual network is in"
 $subnetName = "Replace with the name of the subnet that you plan to use for HDInsight"
@@ -153,7 +152,7 @@ $vnet | Set-AzVirtualNetwork
 
 Tento příklad ukazuje, jak přidat pravidla, která povolují příchozí přenosy na požadovaných IP adresách. Neobsahuje pravidlo pro omezení příchozího přístupu z jiných zdrojů. Následující kód ukazuje, jak povolit přístup přes SSH z Internetu:
 
-```powershell
+```azurepowershell
 Get-AzNetworkSecurityGroup -Name hdisecure -ResourceGroupName RESOURCEGROUP |
 Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 ```
@@ -162,7 +161,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
 Pomocí následujících kroků můžete vytvořit virtuální síť, která omezuje příchozí provoz, ale umožňuje provoz z IP adres vyžadovaných službou HDInsight.
 
-1. Pomocí následujícího příkazu vytvořte novou skupinu zabezpečení sítě s názvem `hdisecure`. Nahraďte `RESOURCEGROUP` skupinou prostředků, která obsahuje Virtual Network Azure. Nahraďte `LOCATION` umístěním (oblastí), ve kterém se skupina vytvořila.
+1. Pomocí následujícího příkazu vytvořte novou skupinu zabezpečení sítě s názvem `hdisecure` . Nahraďte `RESOURCEGROUP` skupinou prostředků, která obsahuje Virtual Network Azure. Nahraďte `LOCATION` umístěním (oblastí), ve kterém se skupina vytvořila.
 
     ```azurecli
     az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
@@ -192,9 +191,11 @@ Pomocí následujících kroků můžete vytvořit virtuální síť, která ome
 
     Tento příkaz vrátí hodnotu podobnou následujícímu textu:
 
-        "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```output
+    "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
+    ```
 
-4. Pomocí následujícího příkazu použijte skupinu zabezpečení sítě na podsíť. Hodnoty `GUID` a `RESOURCEGROUP` nahraďte těmi vrácenými z předchozího kroku. `VNETNAME` Nahraďte `SUBNETNAME` a názvem virtuální sítě a názvem podsítě, který chcete vytvořit.
+4. Pomocí následujícího příkazu použijte skupinu zabezpečení sítě na podsíť. `GUID`Hodnoty a nahraďte `RESOURCEGROUP` těmi vrácenými z předchozího kroku. Nahraďte `VNETNAME` a názvem `SUBNETNAME` virtuální sítě a názvem podsítě, který chcete vytvořit.
 
     ```azurecli
     az network vnet subnet update -g RESOURCEGROUP --vnet-name VNETNAME --name SUBNETNAME --set networkSecurityGroup.id="/subscriptions/GUID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Network/networkSecurityGroups/hdisecure"
@@ -228,7 +229,7 @@ Na vlastním serveru DNS ve virtuální síti:
 
     Nahraďte `RESOURCEGROUP` názvem skupiny prostředků, která obsahuje virtuální síť, a pak zadejte příkaz:
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
@@ -237,7 +238,7 @@ Na vlastním serveru DNS ve virtuální síti:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-1. Na vlastním serveru DNS pro virtuální síť použijte jako obsah `/etc/bind/named.conf.local` souboru následující text:
+1. Na vlastním serveru DNS pro virtuální síť použijte jako obsah souboru následující text `/etc/bind/named.conf.local` :
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -251,7 +252,7 @@ Na vlastním serveru DNS ve virtuální síti:
 
     Tato konfigurace směruje všechny požadavky DNS na příponu DNS virtuální sítě do rekurzivního překladače Azure.
 
-1. Na vlastním serveru DNS pro virtuální síť použijte jako obsah `/etc/bind/named.conf.options` souboru následující text:
+1. Na vlastním serveru DNS pro virtuální síť použijte jako obsah souboru následující text `/etc/bind/named.conf.options` :
 
     ```
     // Clients to accept requests from
@@ -281,11 +282,11 @@ Na vlastním serveru DNS ve virtuální síti:
     };
     ```
     
-    * `10.0.0.0/16` Hodnotu nahraďte rozsahem IP adres vaší virtuální sítě. Tato položka umožňuje adresám požadavků na překlad názvů v rámci tohoto rozsahu.
+    * Hodnotu nahraďte `10.0.0.0/16` rozsahem IP adres vaší virtuální sítě. Tato položka umožňuje adresám požadavků na překlad názvů v rámci tohoto rozsahu.
 
-    * Přidejte do `acl goodclients { ... }` oddílu rozsah IP adres místní sítě.  položka povoluje požadavky na překlad názvů z prostředků v místní síti.
+    * Přidejte do oddílu rozsah IP adres místní sítě `acl goodclients { ... }` .  položka povoluje požadavky na překlad názvů z prostředků v místní síti.
     
-    * Hodnotu `192.168.0.1` nahraďte IP adresou vašeho místního serveru DNS. Tato položka směruje všechny ostatní požadavky DNS na místní server DNS.
+    * Hodnotu nahraďte `192.168.0.1` IP adresou vašeho místního serveru DNS. Tato položka směruje všechny ostatní požadavky DNS na místní server DNS.
 
 1. Chcete-li použít konfiguraci, restartujte službu BIND. Například, `sudo service bind9 restart`.
 
@@ -310,7 +311,7 @@ Tento příklad provede následující předpoklady:
 
     Nahraďte `RESOURCEGROUP` názvem skupiny prostředků, která obsahuje virtuální síť, a pak zadejte příkaz:
 
-    ```powershell
+    ```azurepowershell
     $NICs = Get-AzNetworkInterface -ResourceGroupName "RESOURCEGROUP"
     $NICs[0].DnsSettings.InternalDomainNameSuffix
     ```
@@ -331,7 +332,7 @@ Tento příklad provede následující předpoklady:
 
     Nahraďte `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` hodnotu příponou DNS __druhé__ virtuální sítě. Tato položka směruje požadavky na příponu DNS vzdálené sítě do vlastního DNS v dané síti.
 
-3. Na vlastních serverech DNS v obou virtuálních sítích použijte jako obsah `/etc/bind/named.conf.options` souboru následující text:
+3. Na vlastních serverech DNS v obou virtuálních sítích použijte jako obsah souboru následující text `/etc/bind/named.conf.options` :
 
     ```
     // Clients to accept requests from
@@ -360,7 +361,7 @@ Tento příklad provede následující předpoklady:
     };
     ```
 
-   Hodnoty `10.0.0.0/16` a `10.1.0.0/16` nahraďte rozsahy IP adres virtuálních sítí. Tato položka umožňuje prostředkům v každé síti vytvářet požadavky na servery DNS.
+   `10.0.0.0/16`Hodnoty a nahraďte `10.1.0.0/16` rozsahy IP adres virtuálních sítí. Tato položka umožňuje prostředkům v každé síti vytvářet požadavky na servery DNS.
 
     Všechny požadavky, které nejsou pro přípony DNS virtuálních sítí (například microsoft.com), se zpracovávají pomocí rekurzivního překladače Azure.
 

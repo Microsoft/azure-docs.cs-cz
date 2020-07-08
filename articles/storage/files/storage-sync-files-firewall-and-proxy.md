@@ -8,10 +8,9 @@ ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 7410e30c892eb083f9ed71b1d9ce379ae9a036b5
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515279"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu Synchronizace souborů Azure
@@ -46,14 +45,14 @@ Azure File Sync podporuje nastavení proxy serveru pro konkrétní aplikace a na
 
 **Nastavení proxy serveru specifické pro aplikaci** umožňuje konfiguraci proxy serveru specificky pro Azure File Sync provoz. Nastavení proxy serveru specifické pro aplikaci jsou podporovaná v agentech verze 4.0.1.0 nebo novější a dají se nakonfigurovat během instalace agenta nebo pomocí rutiny Set-StorageSyncProxyConfiguration prostředí PowerShell.
 
-Příkazy prostředí PowerShell pro konfiguraci nastavení proxy serveru specifických pro aplikaci:
+příkazů PowerShellu pro konfiguraci nastavení proxy serveru pro konkrétní aplikaci:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
 **Nastavení proxy serveru pro celý počítač** jsou transparentní pro agenta Azure File Sync, protože celý provoz serveru je směrován přes proxy server.
 
-Pokud chcete nakonfigurovat nastavení proxy serveru na úrovni počítače, postupujte podle následujících kroků: 
+Pokud chcete nakonfigurovat nastavení proxy serveru pro celý počítač, postupujte následovně: 
 
 1. Konfigurace nastavení proxy serveru pro aplikace .NET 
 

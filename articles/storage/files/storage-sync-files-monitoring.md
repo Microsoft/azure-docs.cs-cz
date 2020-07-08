@@ -8,15 +8,14 @@ ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85515205"
 ---
 # <a name="monitor-azure-file-sync"></a>Sledování služby Synchronizace souborů Azure
 
-Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
+Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
 
 Tento článek popisuje, jak monitorovat nasazení Azure File Sync pomocí Azure Monitor, služby synchronizace úložiště a Windows serveru.
 
@@ -34,7 +33,7 @@ Pokud chcete v Azure Monitor zobrazit metriky Azure File Sync, vyberte typ prost
 
 V Azure Monitor jsou k dispozici následující metriky pro Azure File Sync:
 
-| Název metriky | Popis |
+| Název metriky | Description |
 |-|-|
 | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování).<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Použitelné dimenze: název koncového bodu serveru, směr synchronizace, název skupiny synchronizace |
 | Stažení vrstvení cloudu | Velikost vrácených dat.<br><br>**Poznámka**: Tato metrika bude v budoucnu odebrána. K monitorování velikosti vrácených dat použijte metriku velikosti volání ve vrstvách cloudu.<br><br>Jednotka: bajtů<br>Typ agregace: součet<br>Platná dimenze: název serveru |
@@ -79,7 +78,7 @@ Pokud chcete zobrazit registrovaný stav serveru, stav koncového bodu serveru a
 
 - Na portálu služby synchronizace úložiště se mohou zobrazit následující grafy metrik:
 
-  | Název metriky | Popis | Název okna |
+  | Název metriky | Description | Název okna |
   |-|-|-|
   | Synchronizované bajty | Velikost přenesených dat (nahrávání a stahování) | Skupina synchronizace, koncový bod serveru |
   | Stažení vrstvení cloudu | Velikost vrácených dat | Registrované servery |
@@ -136,7 +135,7 @@ Chcete-li zobrazit Azure File Sync čítače výkonu na serveru, spusťte nástr
 
 V nástroji Sledování výkonu jsou k dispozici následující čítače výkonu pro Azure File Sync:
 
-| Název Object\Counter výkonu | Popis |
+| Název Object\Counter výkonu | Description |
 |-|-|
 | Bajty AFS Transferred\Downloaded bajty/s | Počet stažených bajtů za sekundu |
 | Bajty AFS Transferred\Uploaded bajty/s | Počet odeslaných bajtů za sekundu |

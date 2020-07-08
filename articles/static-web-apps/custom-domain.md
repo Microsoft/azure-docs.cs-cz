@@ -7,14 +7,13 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
-ms.translationtype: MT
+ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142057"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85960295"
 ---
-# <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Nastavení vlastní domény ve službě Azure static Web Apps Preview
+# <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Nastavení vlastní domény ve službě Azure Static Web Apps ve verzi Preview
 
 Ve výchozím nastavení poskytuje Azure static Web Apps automaticky generovaný název domény. V tomto článku se dozvíte, jak namapovat vlastní název domény na statickou Web Apps aplikaci Azure.
 
@@ -29,11 +28,11 @@ Při konfiguraci názvů domén se k mapování kořenových domén (například
 
 Pro aplikaci je k dispozici několik různých typů konfigurací služby DNS.
 
-| Pokud chcete                            | Pak...                                                |
-| ----------------------------------------- | --------------------------------------------------- |
-| Pracovníky`www.example.com`                 | [Mapování záznamu CNAME](#map-a-cname-record)           |
-| Pracovníky`example.com`                     | [Konfigurace kořenové domény](#configure-a-root-domain) |
-| Nasměrovat všechny subdomény na`www.example.com` | [Mapování zástupného znaku](#map-a-wildcard-domain)                   |
+| Pokud chcete                                 | Pak...                                                |
+| -----------------------------------------------| --------------------------------------------------- |
+| Podpora `www.example.com` nebo`blog.example.net`| [Mapování záznamu CNAME](#map-a-cname-record)           |
+| Pracovníky`example.com`                          | [Konfigurace kořenové domény](#configure-a-root-domain) |
+| Nasměrovat všechny subdomény na`www.example.com`      | [Mapování zástupného znaku](#map-a-wildcard-domain)            |
 
 ## <a name="map-a-cname-record"></a>Mapování záznamu CNAME
 
