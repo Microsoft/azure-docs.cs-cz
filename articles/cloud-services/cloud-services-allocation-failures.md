@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 470778e5c441bb05ffc7c5e1c5ef97a6c30d3359
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: ab6cc71478e80bc3ff9d81a3a91ce90fbb09adb3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84696894"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921609"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Řešení potíží s přidělením při nasazení Cloud Services v Azure
 ## <a name="summary"></a>Souhrn
@@ -41,7 +41,7 @@ Když je požadavek na přidělení připnutý ke clusteru, existuje větší š
 ### <a name="error-message"></a>Chybová zpráva
 Může se zobrazit následující chybová zpráva:
 
-    "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+> Operace "Azure Operation ID}" se nezdařila s kódem Compute. ConstrainedAllocationFailed. Podrobnosti: přidělení nebylo úspěšné; v požadavku nelze naplnit omezení. Požadované nasazení nové služby je spojené se skupinou vztahů nebo je jeho cílem virtuální síť, anebo je v této hostované službě nějaké nasazení. Kterákoli z těchto podmínek omezuje nové nasazení na konkrétní prostředky Azure. Zkuste to znovu později nebo zkuste zmenšit velikost virtuálního počítače nebo počet instancí role. Případně, pokud je to možné, odeberte uvedená omezení nebo se pokuste nasadit do jiné oblasti. "
 
 ### <a name="common-issues"></a>Běžné problémy
 Tady jsou společné scénáře přidělování, které způsobují připnutí žádosti o přidělení k jednomu clusteru.

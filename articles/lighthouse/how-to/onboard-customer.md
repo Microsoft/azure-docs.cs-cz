@@ -3,12 +3,12 @@ title: Nasazení zákazníků do správy delegovaných prostředků Azure
 description: Naučte se, jak začlenit správu delegovaných prostředků do Azure, aby k nim bylo možné získat a spravovat jejich prostředky prostřednictvím vašeho vlastního tenanta.
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: dc8156307a91a0d9fd598f330b4fbc28223e4483
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 149398a822d5aa21335be4122e92c96800d94255
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636542"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920913"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -36,7 +36,7 @@ Pokud chcete připojit tenanta zákazníka, musí mít aktivní předplatné Azu
 
 Pokud tyto hodnoty ID již nemáte, můžete je načíst jedním z následujících způsobů. Ujistěte se, že používáte tyto přesné hodnoty v nasazení.
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 ID tenanta si můžete zobrazit tak, že najedete myší na název účtu v horní pravé části Azure Portal, nebo výběrem **přepínače Adresář**. Pokud chcete vybrat a zkopírovat ID tenanta, vyhledejte na portálu "Azure Active Directory", pak vyberte **vlastnosti** a zkopírujte hodnotu zobrazenou v poli **ID adresáře** . Pokud chcete najít ID předplatného v tenantovi zákazníka, vyhledejte "Subscriptions" a pak vyberte příslušné ID předplatného.
 
@@ -126,17 +126,17 @@ Proces zprovoznění vyžaduje šablonu Azure Resource Manager (poskytnutou v [�
 
 |K zaregistrování  |Použít tuto šablonu Azure Resource Manager  |A upravit tento soubor parametrů |
 |---------|---------|---------|
-|Předplatné   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Skupina prostředků   |[rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Několik skupin prostředků v rámci předplatného   |[multipleRgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|Předplatné (při použití nabídky publikované do Azure Marketplace)   |[marketplaceDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Předplatné   |[delegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Skupina prostředků   |[rgDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Několik skupin prostředků v rámci předplatného   |[multipleRgDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Předplatné (při použití nabídky publikované do Azure Marketplace)   |[marketplaceDelegatedResourceManagement.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.jsna](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
 > Proces, který je zde popsán, vyžaduje samostatné nasazení na úrovni předplatného pro každé připojení na úrovni předplatného, a to i v případě, že odběry provádíte ve stejném tenantovi zákazníka. Pokud se připojujete k několika skupinám prostředků v rámci různých předplatných ve stejném tenantovi zákazníka, vyžaduje se také samostatné nasazení. Připojování více skupin prostředků v rámci jednoho předplatného se ale dá udělat v jednom nasazení na úrovni předplatného.
 >
 > Pro stejné předplatné (nebo skupiny prostředků v rámci předplatného se taky vyžadují samostatná nasazení). Každá použitá nabídka musí používat jiný **mspOfferName**.
 
-Následující příklad ukazuje upravený soubor **delegatedResourceManagement. Parameters. JSON** , který lze použít k zaregistrování předplatného. Soubory parametrů skupiny prostředků (nacházející se ve složce [RG-delegované pro správu prostředků](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) ) jsou podobné, ale také obsahují parametr **RgName** pro identifikaci konkrétních skupin prostředků, které se mají připojit.
+Následující příklad ukazuje upravený **delegatedResourceManagement.parameters.js** souboru, který se dá použít k zaregistrování předplatného. Soubory parametrů skupiny prostředků (nacházející se ve složce [RG-delegované pro správu prostředků](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) ) jsou podobné, ale také obsahují parametr **RgName** pro identifikaci konkrétních skupin prostředků, které se mají připojit.
 
 ```json
 {
@@ -189,7 +189,7 @@ Následující příklad ukazuje upravený soubor **delegatedResourceManagement.
 }
 ```
 
-Poslední autorizace v předchozím příkladu přidá **principalId** s rolí správce přístupu uživatele (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Při přiřazování této role musíte zahrnout vlastnost **delegatedRoleDefinitionIds** a jednu nebo více předdefinovaných rolí. Uživatel vytvořený v této autorizaci bude moci přiřadit tyto předdefinované role ke [spravovaným identitám](../../active-directory/managed-identities-azure-resources/overview.md) v tenantovi zákazníka, který je potřeba k [nasazení zásad, které se dají opravit](deploy-policy-remediation.md). Pro tohoto uživatele se nebudou vztahovat žádná další oprávnění normálně přidružená k roli správce přístupu uživatele.
+Poslední autorizace v předchozím příkladu přidá **principalId** s rolí správce přístupu uživatele (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9). Při přiřazování této role musíte zahrnout vlastnost **delegatedRoleDefinitionIds** a jednu nebo více předdefinovaných rolí. Uživatel vytvořený v této autorizaci bude moci přiřadit tyto předdefinované role ke [spravovaným identitám](../../active-directory/managed-identities-azure-resources/overview.md) v tenantovi zákazníka, který je potřeba k [nasazení zásad, které se dají opravit](deploy-policy-remediation.md).  Uživatel také může vytvořit incidenty podpory.  Pro tohoto uživatele se nebudou vztahovat žádná další oprávnění normálně přidružená k roli správce přístupu uživatele.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Nasazení šablon Azure Resource Manager
 
@@ -198,9 +198,9 @@ Po aktualizaci souboru parametrů musí uživatel v tenantovi zákazníka nasadi
 Vzhledem k tomu, že se jedná o nasazení na úrovni předplatného, nejde ho iniciovat v Azure Portal. Nasazení se dá provést pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI, jak vidíte níže.
 
 > [!IMPORTANT]
-> Toto nasazení na úrovni předplatného musí provést jiný účet než host v tenantovi zákazníka, který má [předdefinovanou roli](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) předplatného pro odběr (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete zobrazit všechny uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> Toto nasazení na úrovni předplatného musí provést jiný účet než host v tenantovi zákazníka, který má [předdefinovanou roli](../../role-based-access-control/built-in-roles.md#owner) předplatného pro odběr (nebo který obsahuje skupiny prostředků, které jsou připojené). Pokud chcete zobrazit všechny uživatele, kteří můžou delegovat předplatné, uživatel v tenantovi zákazníka může vybrat předplatné ve Azure Portal, otevřít **řízení přístupu (IAM)** a [Zobrazit všechny uživatele s rolí vlastníka](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
 >
-> Pokud bylo předplatné vytvořeno prostřednictvím [programu Cloud Solution Provider (CSP)](../concepts/cloud-solution-provider.md), může nasazení provést libovolný uživatel, který má v tenantovi poskytovatele služeb roli [agenta správce](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) .
+> Pokud bylo předplatné vytvořeno prostřednictvím [programu Cloud Solution Provider (CSP)](../concepts/cloud-solution-provider.md), může nasazení provést libovolný uživatel, který má v tenantovi poskytovatele služeb roli [agenta správce](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) .
 
 ### <a name="powershell"></a>PowerShell
 
@@ -246,7 +246,7 @@ az deployment create --name <deploymentName> \
 
 Po úspěšném připojení zákaznického předplatného do Azure delegované správy prostředků uvidí uživatelé v tenantovi poskytovatele služeb předplatné a jeho prostředky (pokud jim k ní byl udělen přístup prostřednictvím výše uvedeného procesu), a to buď jednotlivě, nebo jako člen skupiny Azure AD s příslušnými oprávněními. Potvrďte to tak, že zkontrolujete, že se odběr zobrazuje jedním z následujících způsobů:  
 
-### <a name="azure-portal"></a>Portál Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V tenantovi poskytovatele služeb:
 

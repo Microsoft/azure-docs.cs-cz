@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a63b7af1cf29f120f41bd03ed51b5114fa85fa02
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: ed973b6ea5bbcd2b23e30d381e909ef2ab03b917
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669422"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921662"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Automatizované opravy pro SQL Server na virtuálních počítačích Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -67,7 +67,7 @@ Pokud chcete používat automatizované opravy, vezměte v úvahu následující
 ## <a name="settings"></a>Nastavení
 Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro automatizované opravy. Skutečné kroky konfigurace se liší v závislosti na tom, jestli používáte příkazy Azure Portal nebo Azure Windows PowerShellu.
 
-| Nastavení | Možné hodnoty | Popis |
+| Nastavení | Možné hodnoty | Description |
 | --- | --- | --- |
 | **Automatizované opravy** |Povolit/zakázat (zakázáno) |Povolí nebo zakáže automatizované opravy pro virtuální počítač Azure. |
 | **Plán údržby** |Každodenní, pondělí, úterý, středa, čtvrtek, pátek, sobota, neděle |Plán pro stažení a instalaci aktualizací Windows, SQL Server a Microsoft pro váš virtuální počítač. |
@@ -105,10 +105,13 @@ Po zřízení virtuálního počítače s SQL nakonfigurujte automatizované opr
 
 V následujícím příkladu se prostředí PowerShell používá ke konfiguraci automatizované opravy na stávajícím virtuálním počítači s SQL Server. Příkaz **New-AzVMSqlServerAutoPatchingConfig** nakonfiguruje nové okno údržby pro automatické aktualizace.
 
-    $vmname = "vmname"
-    $resourcegroupname = "resourcegroupname"
-    $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
-s set-AzVMSqlServerExtension-AutoPatchingSettings $aps-VMName $vmname-ResourceGroupName $resourcegroupname
+```azurepowershell
+$vmname = "vmname"
+$resourcegroupname = "resourcegroupname"
+$aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
+s
+Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
+```
 
 > [!IMPORTANT]
 > Pokud rozšíření ještě není nainstalované, instalace se restartuje SQL Server.

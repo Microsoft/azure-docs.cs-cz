@@ -1,0 +1,68 @@
+---
+title: Virtuální pevný disk se nepodporuje při vytváření virtuálního počítače v Azure | Microsoft Docs
+description: Tento článek pomáhá opravovat chyby VHD při spuštění virtuálního počítače v Microsoft Azure.
+services: virtual-machines
+documentationCenter: ''
+author: v-miegge
+manager: dcscontentpm
+editor: ''
+ms.service: virtual-machines
+ms.assetid: 5488aba9-c3da-435d-b4a5-63470f455b07
+ms.topic: troubleshooting
+ms.tgt_pltfrm: na
+ms.workload: infrastructure
+ms.date: 06/29/2020
+ms.author: genli
+ms.openlocfilehash: ff4822b513ed2aea6a18ba45bffc1d060ee2410e
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85937528"
+---
+# <a name="vhd-is-not-supported-when-you-create-a-virtual-machine-in-azure"></a>Virtuální pevný disk se nepodporuje při vytváření virtuálního počítače v Azure.
+
+Tento článek pomáhá opravovat chyby VHD při spuštění virtuálního počítače v systému Windows nebo Linux.
+
+## <a name="symptoms"></a>Příznaky
+
+Když vytvoříte virtuální počítač v Microsoft Azure pomocí nahraného virtuálního pevného disku, nasazení se nepovede a vrátí se tato chybová zpráva: 
+
+```
+New-AzureRmVM : Long running operation failed with status 'Failed'.
+ErrorCode: InvalidVhd
+ErrorMessage: The specified cookie value in VHD footer indicates that disk 'diskname' with blob https://xxxxxx.blob.core.windows.net/vhds/samplename.vhd is not a supported VHD. Disk is expected to have cookie value 'conectix'.
+```
+
+## <a name="cause"></a>Příčina
+
+K tomuto problému dochází z jednoho z následujících důvodů:
+
+- Virtuální pevný disk nesplňuje zarovnání na 1 MB (posun). Podporovaná velikost disku by měla být 1 MB × N. Disk by měl mít velikost například 102 401 MB.
+- Virtuální pevný disk je poškozený nebo se nepodporuje. 
+
+## <a name="resolution"></a>Řešení
+
+> [!NOTE]
+> Aby bylo možné provést následující opravu, zákazník bude muset provést tyto kroky před nahráním virtuálního pevného disku do Azure.
+
+Chcete-li tento problém vyřešit, změňte velikost disku tak, aby odpovídala velikosti 1 MB:
+
+- Pokud chcete vyřešit problém ve Windows, použijte [rutinu změnit velikost-VHD PowerShell](https://docs.microsoft.com/powershell/module/hyper-v/resize-vhd). Všimněte si, že **Změna velikosti – VHD** není Azure PowerShell rutinou.
+
+  1. [Instalace role Hyper-V na Windows serveru](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
+  1. [Převést virtuální disk na virtuální pevný disk s pevnou velikostí](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#convert-the-virtual-disk-to-a-fixed-size-vhd)
+
+- K vyřešení problému v systému Linux použijte [příkaz qemu-img](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
+
+Další informace o tom, jak vytvořit a nahrát VHD pro vytváření virtuálních počítačů Azure, najdete v následujících článcích:
+
+- [Nahrání a vytvoření virtuálního počítače se systémem Linux z vlastní image disku pomocí Azure CLI 1,0](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
+- [Vytvořte a nahrajte virtuální pevný disk Windows Serveru na Azure](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+
+Pokračování v potížích může znamenat poškozený virtuální pevný disk. V takové situaci doporučujeme znovu sestavit VHD od začátku.
+
+Další informace najdete v následujících článcích:
+
+- [O virtuálním pevném disku Windows](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#about-vhds)
+- [O VHD pro Linux](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds#about-vhds)
