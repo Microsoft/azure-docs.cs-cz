@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 65c2e3dbe7cb99c9b7c6e1a84178fd28d5013a69
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 8e917d279d8de3dbe6de540a4ea1ef8cec1b6ffc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85507938"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830056"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Jak aktualizovat pravidla upozornění nebo pravidla akcí, když se jejich cílový prostředek přesune do jiné oblasti Azure
 
@@ -68,6 +68,8 @@ Pokud se přesunuly **jenom některé** prostředky v oboru, je potřeba odebrat
 ### <a name="identifying-rules-associated-with-a-moved-resource-from-the-azure-portal"></a>Identifikují se pravidla přidružená k přesunutému prostředku z Azure Portal
 
 - **Pro pravidla upozornění** – můžete přejít na výstrahy > spravovat pravidla výstrah > filtrovat podle obsahujícího předplatného a přesunutého prostředku.
+> [!NOTE]
+> Pravidla upozornění protokolu aktivit tento proces nepodporují. Není možné aktualizovat rozsah pravidla upozornění protokolu aktivit a odkazovat na prostředek v jiném předplatném. Místo toho můžete vytvořit nové pravidlo, které nahradí starou.
 
 - **Pro pravidla akcí** – přejděte na výstrahy > spravovat akce > pravidla akcí (preview) > filtr podle obsahujícího předplatného a přesunutého prostředku.
 

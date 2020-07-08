@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c16bd728fe81796d671762615ec8dc4ad6e1d87d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83123729"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829835"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
@@ -60,7 +60,7 @@ Dál vytvoříte v nové aplikaci Function App funkci.
     | **Nová funkce** | Přijměte výchozí název. | Název funkce |
     | **Připojení účtu databáze Cosmos DB** | Přijměte výchozí nový název. | Vyberte **Nový**, **databázový účet** , který jste vytvořili dříve, a pak klikněte na **OK**. Tato akce vytvoří nastavení aplikace pro připojení k účtu. Toto nastavení vazba použije k připojení k databázi. |
     | **Název databáze** | Úlohy | Název databáze, která obsahuje kolekci, která se má monitorovat |
-    | **Název kolekce** | Items (Položky) | Název kolekce, která se má monitorovat |
+    | **Název kolekce** | Položky | Název kolekce, která se má monitorovat |
     | **Název kolekce pro zapůjčení** | leases | Název kolekce, do které se mají ukládat zapůjčení |
     | **Vytvořit kolekci zapůjčení, pokud neexistuje** | Yes | Kontroluje existenci kolekce zapůjčení a automaticky ji vytvoří. |
 
@@ -99,7 +99,7 @@ V dalším kroku se připojíte k účtu Azure Cosmos DB a vytvoříte `Items` k
     | Nastavení|Navrhovaná hodnota|Popis |
     | ---|---|--- |
     | **ID databáze** | Úlohy |Název nové databáze. Musí se shodovat s názvem definovaným ve vazbě vaší funkce. |
-    | **ID kontejneru** | Items (Položky) | Název nového kontejneru. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
+    | **ID kontejneru** | Položky | Název nového kontejneru. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
     | **[Klíč oddílu](../cosmos-db/partition-data.md)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý při vytváření výkonného kontejneru. | 
     | **Propustnost** |400 RU| Použijte výchozí hodnotu. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. |    
 
@@ -115,11 +115,13 @@ Po tom, co kontejner zadaný ve vazbě funkce existuje, můžete funkci otestova
 
 1. Nahraďte obsah nové položky následujícím obsahem a pak zvolte **Uložit**.
 
-        {
-            "id": "task1",
-            "category": "general",
-            "description": "some task"
-        }
+    ```yaml
+    {
+        "id": "task1",
+        "category": "general",
+        "description": "some task"
+    }
+    ```
 
 1. Přepněte na první kartu prohlížeče, která obsahuje vaši funkci na portálu. Rozbalte protokoly funkce a ověřte, že nový dokument aktivoval funkci. Všimněte si, že se do protokolů zapsala hodnota ID dokumentu `task1`. 
 

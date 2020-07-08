@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04f523a2615892268d56c167a682987453dc997c
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: f0c8134cdb72f8bff74fa68dff81fc9d6f1f5ccc
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359734"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830447"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -62,7 +62,9 @@ Služba Azure AD se pokusí monitorovat federační metadata a aktualizovat podp
 ### <a name="step-1-check-the-autocertificaterollover-state"></a>Krok 1: ověření stavu AutoCertificateRollover
 Na serveru AD FS otevřete PowerShell. Ověřte, zda je hodnota AutoCertificateRollover nastavena na hodnotu true.
 
-    Get-Adfsproperties
+```azurepowershell-interactive
+Get-Adfsproperties
+```
 
 ![AutoCertificateRollover](./media/how-to-connect-fed-o365-certs/autocertrollover.png)
 
@@ -78,16 +80,22 @@ Na serveru AD FS otevřete příkazový řádek PowerShellu MSOnline a připojte
 > 
 >
 
-    Install-Module MSOnline
+```azurepowershell-interactive
+Install-Module MSOnline
+```
 
 Připojte se k Azure AD pomocí modulu MSOnline PowerShellu.
 
-    Import-Module MSOnline
-    Connect-MsolService
+```azurepowershell-interactive
+Import-Module MSOnline
+Connect-MsolService
+```
 
 Ověřte certifikáty nakonfigurované v AD FS a ve vlastnostech vztahu důvěryhodnosti služby Azure AD pro zadanou doménu.
 
-    Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```azurepowershell-interactive
+Get-MsolFederationProperty -DomainName <domain.name> | FL Source, TokenSigningCertificate
+```
 
 ![Get-MsolFederationProperty](./media/how-to-connect-fed-o365-certs/certsync.png)
 
@@ -99,7 +107,7 @@ Ve výstupu příkazu Get-MsolFederationProperty nebo Get-AdfsCertificate zaškr
 | AutoCertificateRollover | Synchronizace certifikátů s Azure AD | Federační metadata jsou veřejně přístupná. | Obou | Akce |
 |:---:|:---:|:---:|:---:|:---:|
 | Ano |Ano |Ano |- |Není vyžadována žádná akce. Přečtěte si téma [Automatické obnovení podpisového certifikátu tokenu](#autorenew). |
-| Yes |Ne |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
+| Yes |No |- |Méně než 15 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
 | No |- |- |Méně než 30 dní |Obnovte hned. Viz [Ruční obnovení podpisového certifikátu tokenu](#manualrenew). |
 
 \[-] Nezáleží

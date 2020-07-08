@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 36268910003c4235d7ae60d2fd68bc30d7b8b858
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84698338"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830005"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Jak škálovat Azure cache pro Redis
 Mezipaměť Azure pro Redis má různé nabídky mezipaměti, které poskytují flexibilitu v výběru velikosti a funkcí mezipaměti. Po vytvoření mezipaměti můžete velikost a cenovou úroveň mezipaměti škálovat, pokud se změní požadavky vaší aplikace. V tomto článku se dozvíte, jak škálovat mezipaměť pomocí Azure Portal a nástrojů jako Azure PowerShell a Azure CLI.
@@ -66,7 +66,9 @@ Kromě škálování instancí mezipaměti v Azure Portal můžete škálovat po
 
 Mezipaměť Azure můžete škálovat pro instance Redis pomocí prostředí PowerShell pomocí rutiny [set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) při `Size` `Sku` změně vlastností,, nebo `ShardCount` . Následující příklad ukazuje, jak škálovat mezipaměť s názvem `myCache` na 2,5 GB mezipaměti. 
 
-    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```powershell
+   Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
+```
 
 Další informace o škálování pomocí PowerShellu najdete v tématu [škálování mezipaměti Azure pro Redis pomocí PowerShellu](cache-how-to-manage-redis-cache-powershell.md#scale).
 
@@ -78,6 +80,7 @@ Další informace o škálování pomocí Azure CLI najdete v tématu [Změna na
 ### <a name="scale-using-maml"></a>Škálování pomocí MAML
 Pokud chcete škálovat mezipaměť Azure pro instance Redis pomocí [knihoven pro správu Microsoft Azure (MAML)](https://azure.microsoft.com/updates/management-libraries-for-net-release-announcement/), zavolejte `IRedisOperations.CreateOrUpdate` metodu a předejte novou velikost pro `RedisProperties.SKU.Capacity` .
 
+```csharp
     static void Main(string[] args)
     {
         // For instructions on getting the access token, see
@@ -95,6 +98,7 @@ Pokud chcete škálovat mezipaměť Azure pro instance Redis pomocí [knihoven p
         var redisParams = new RedisCreateOrUpdateParameters(redisProperties, redisCacheRegion);
         client.Redis.CreateOrUpdate(resourceGroupName,cacheName, redisParams);
     }
+```
 
 Další informace najdete v tématu [Správa mezipaměti Azure pro Redis pomocí ukázky MAML](https://github.com/rustd/RedisSamples/tree/master/ManageCacheUsingMAML) .
 

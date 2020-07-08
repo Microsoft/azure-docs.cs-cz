@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/17/2018
 ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03a8d1f3e541d61d515b28bf56964c0add3b390e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80876180"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830634"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Přidání informací o ochraně osobních údajů vaší organizace pomocí Azure Active Directory
 Tento článek vysvětluje, jak může správce klienta přidávat informace týkající se ochrany osobních údajů do tenanta Azure Active Directory organizace (Azure AD) prostřednictvím Azure Portal.
@@ -32,15 +32,15 @@ Do oblasti **vlastnosti** Azure AD přidáte informace o ochraně osobních úda
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Přístup k oblasti vlastnosti a přidání informací o ochraně osobních údajů
 
-1.    Přihlaste se k Azure Portal jako správce tenanta.
+1. Přihlaste se k Azure Portal jako správce tenanta.
 
-2.    V levém navigačním panelu vyberte **Azure Active Directory**a pak vyberte **vlastnosti**.
+2. V levém navigačním panelu vyberte **Azure Active Directory**a pak vyberte **vlastnosti**.
 
     Zobrazí se oblast **vlastnosti** .
 
     ![Oblast vlastností Azure AD – zvýraznění oblasti informací o ochraně osobních údajů](media/active-directory-properties-area/properties-area.png)
 
-3.    Přidejte své informace o ochraně osobních údajů pro své zaměstnance:
+3. Přidejte své informace o ochraně osobních údajů pro své zaměstnance:
 
     - **Technický kontakt.** Zadejte e-mailovou adresu osoby, která má požádat o technickou podporu v rámci vaší organizace.
     
@@ -53,7 +53,7 @@ Do oblasti **vlastnosti** Azure AD přidáte informace o ochraně osobních úda
 
         ![Pole oprávnění pro kontrolu spolupráce B2B se zprávou](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.    Vyberte **Uložit**.
+4. Vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 - [Azure Active Directory uplatnění pozvánky B2B pro spolupráci](../b2b/redemption-experience.md)

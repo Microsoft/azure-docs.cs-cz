@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/30/2020
+ms.openlocfilehash: 056962483fe10e8b6558d2ca0aeb92d1ec970734
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74765626"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830981"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for PostgreSQL-Single server pomocí Azure Portal
 
@@ -33,7 +33,7 @@ Při vytváření serveru prostřednictvím Azure Portal v okně **cenová úrov
 Další informace o nastavení těchto hodnot během vytváření najdete v [rychlém startu Azure Database for PostgreSQL serveru](quickstart-create-server-database-portal.md).
 
 Dobu uchovávání záloh serveru lze změnit pomocí následujících kroků:
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Vyberte svůj server Azure Database for PostgreSQL. Tato akce otevře stránku s **přehledem** .
 3. V nabídce v části **Nastavení**vyberte **cenová úroveň** . Pomocí posuvníku můžete změnit **dobu uchovávání záloh** na svou předvolbu mezi 7 a 35 dny.
 Na snímku obrazovky níže byl zvýšen na 34 dní.
@@ -69,30 +69,55 @@ Následující kroky obnovují ukázkový Server k určitému bodu v čase:
 
 Nový server vytvořený nástrojem obnovení k bodu v čase má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době, kdy je zvolený časový okamžik. Heslo můžete změnit na stránce **Přehled** nového serveru.
 
-Nový server vytvořený během obnovy nemá pravidla brány firewall nebo koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba nastavit samostatně pro tento nový server.
-
+Nový server vytvořený během obnovování neobsahuje pravidla brány firewall nebo koncové body služeb virtuální sítě, které byly na původním serveru. Tato pravidla je potřeba pro tento nový server nastavit samostatně.
 
 ## <a name="geo-restore"></a>Geografické obnovení
 
 Pokud jste server nakonfigurovali pro geograficky redundantní zálohy, můžete vytvořit nový server ze zálohy stávajícího serveru. Tento nový server se dá vytvořit v libovolné oblasti, kterou Azure Database for PostgreSQL k dispozici.  
 
-1. V levém horním rohu portálu vyberte tlačítko **vytvořit prostředek** (+). Vyberte **databáze** > **Azure Database for PostgreSQL**.
+1. V levém horním rohu portálu vyberte tlačítko **vytvořit prostředek** (+). Vyberte **databáze**  >  **Azure Database for PostgreSQL**.
 
-   ![Možnost Azure Database for PostgreSQL](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
+   :::image type="content" source="./media/howto-restore-server-portal/1-navigate-to-postgres.png" alt-text="Přejděte na Azure Database for PostgreSQL.":::
 
-2. V rozevíracím seznamu **Vybrat zdroj vyberte** možnost **zálohovat**. Tato akce načte seznam serverů, u kterých je povoleno geograficky redundantní zálohy. Vyberte jeden z těchto záloh, který bude zdrojem nového serveru.
-   ![Vybrat zdroj: zálohování a seznam geograficky redundantních záloh](./media/howto-restore-server-portal/2-georestore.png)
+2. Vyberte možnost nasazení na **jeden server** .
 
+   :::image type="content" source="./media/howto-restore-server-portal/2-select-deployment-option.png" alt-text="Vyberte možnost nasazení na jeden server Azure Database for PostgreSQL.":::
+ 
+3. Zadejte předplatné, skupinu prostředků a název nového serveru. 
+
+4. Jako **zdroj dat**vyberte **Backup** . Tato akce načte rozevírací seznam, který obsahuje seznam serverů s povolenými geografickými redundantními zálohami.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore.png" alt-text="Vyberte zdroj dat.":::
+    
    > [!NOTE]
    > Při prvním vytvoření serveru nemusí být pro geografickou obnovu k dispozici okamžitě. Naplnění potřebných metadat může trvat několik hodin.
    >
 
-3. Vyplňte zbytek formuláře vlastními preferencemi. Můžete vybrat libovolné **umístění**. Po výběru umístění můžete vybrat **cenovou úroveň**. Ve výchozím nastavení se zobrazí parametry pro existující server, který obnovujete. Můžete kliknout na tlačítko **OK** bez provedení změn, které by zdědily tato nastavení. Můžete také změnit **výpočetní generaci** (Pokud je k dispozici v oblasti, kterou jste zvolili), **počet virtuální jádra**, **dobu uchování zálohy**a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
+5. Vyberte rozevírací seznam **zálohování** .
+   
+   :::image type="content" source="./media/howto-restore-server-portal/5-geo-restore-backup.png" alt-text="Vyberte rozevírací seznam zálohování.":::
 
+6. Vyberte zdrojový server, ze kterého chcete obnovit.
+   
+   :::image type="content" source="./media/howto-restore-server-portal/6-select-backup.png" alt-text="Vyberte zálohování.":::
+
+7. Na serveru se nastaví výchozí hodnoty pro počet **virtuální jádra**, **Doba uchování záloh**, **možnost redundance zálohy**, **verze modulu**a **přihlašovací údaje správce**. Vyberte **Pokračovat**. 
+   
+   :::image type="content" source="./media/howto-restore-server-portal/7-accept-backup.png" alt-text="Pokračujte v zálohování.":::
+
+8. Vyplňte zbytek formuláře vlastními preferencemi. Můžete vybrat libovolné **umístění**.
+
+    Po výběru umístění můžete vybrat **Konfigurovat Server** a aktualizovat **výpočetní generaci** (Pokud je dostupné v oblasti, kterou jste zvolili), počet **virtuální jádra**, **dobu uchování zálohy**a **možnost redundance zálohy**. Změna **cenové úrovně** (Basic, pro obecné účely nebo paměťově optimalizovaná) nebo velikosti **úložiště** během obnovení není podporovaná.
+
+   :::image type="content" source="./media/howto-restore-server-portal/8-create.png" alt-text="Vyplnit formulář"::: 
+
+9. Vyberte možnost **zkontrolovat + vytvořit** a zkontrolujte výběr. 
+
+10. Vyberte **Vytvořit**, aby se server zřídil. Tato operace může trvat několik minut.
 
 Nový server vytvořený geografickým obnovením má stejné přihlašovací jméno a heslo správce serveru, které bylo platné pro existující server v době zahájení obnovení. Heslo lze změnit na stránce **Přehled** nového serveru.
 
-Nový server vytvořený během obnovy nemá pravidla brány firewall nebo koncové body služby virtuální sítě, které existovaly na původním serveru. Tato pravidla je potřeba nastavit samostatně pro tento nový server.
+Nový server vytvořený během obnovování neobsahuje pravidla brány firewall nebo koncové body služeb virtuální sítě, které byly na původním serveru. Tato pravidla je potřeba pro tento nový server nastavit samostatně.
 
 
 ## <a name="next-steps"></a>Další kroky

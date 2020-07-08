@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 58d2efd0c61045739930ce36ba317b1aa6a40ce8
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84685997"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830022"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Přidání prostředků do prostředí ISE (Integration Service Environment) v Azure Logic Apps
 
@@ -26,7 +26,7 @@ Po vytvoření [prostředí ISE (Integration Service Environment)](../logic-apps
 
 * ISE, který jste vytvořili ke spouštění aplikací logiky. Pokud nemáte ISE, [vytvořte nejprve ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
-* Pokud chcete vytvořit, přidat nebo aktualizovat prostředky, které jsou nasazené na ISE, musíte mít přiřazenou roli vlastníka nebo přispěvatele na daném ISE nebo máte zděděná oprávnění prostřednictvím předplatného Azure nebo skupiny prostředků Azure přidružené k tomuto ISE. Pro uživatele, kteří nemají oprávnění vlastníka, přispěvatele nebo zděděná oprávnění, se jim dá přiřadit role prostředí integrační služby přispěvatel nebo role vývojář prostředí integrační služby. Další informace o řízení přístupu na základě role (RBAC) najdete v tématu [co je řízení přístupu na základě role (RBAC) pro prostředky Azure](../role-based-access-control/overview.md)?
+* Pokud chcete vytvořit, přidat nebo aktualizovat prostředky, které jsou nasazené na ISE, musíte mít přiřazenou roli vlastníka nebo přispěvatele na daném ISE nebo máte zděděná oprávnění prostřednictvím předplatného Azure nebo skupiny prostředků Azure přidružené k tomuto ISE. Pro uživatele, kteří nemají oprávnění vlastníka, přispěvatele nebo zděděná oprávnění, se jim dá přiřadit role prostředí integrační služby přispěvatel nebo role vývojář prostředí integrační služby. Další informace najdete v tématu [co je řízení přístupu na základě role Azure (Azure RBAC)](../role-based-access-control/overview.md)?
 
 <a name="create-logic-apps-environment"></a>
 
@@ -44,10 +44,10 @@ Pokud chcete sestavovat aplikace logiky, které běží ve vašem prostředí IS
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název** | Ano | Název aplikace logiky, která se má vytvořit |
-   | **Předplatné** | Ano | Název předplatného Azure, které se má použít |
-   | **Skupina prostředků** | Ano | Název skupiny prostředků Azure (nová nebo existující), která se má použít |
-   | **Umístění** | Ano | V části **prostředí integrační služby**vyberte ISE, který se má použít, pokud ještě není vybraný. <p><p> **Důležité**: Pokud chcete používat vaše aplikace logiky s účtem pro integraci, musí oba používat stejný ISE. |
+   | **Název** | Yes | Název aplikace logiky, která se má vytvořit |
+   | **Předplatné** | Yes | Název předplatného Azure, které se má použít |
+   | **Skupina prostředků** | Yes | Název skupiny prostředků Azure (nová nebo existující), která se má použít |
+   | **Umístění** | Yes | V části **prostředí integrační služby**vyberte ISE, který se má použít, pokud ještě není vybraný. <p><p> **Důležité**: Pokud chcete používat vaše aplikace logiky s účtem pro integraci, musí oba používat stejný ISE. |
    ||||
 
 1. Po dokončení vyberte **Vytvořit**.
@@ -76,11 +76,11 @@ Pokud chcete vytvořit účet pro integraci, který používá ISE, postupujte p
 
    | Vlastnost | Povinné | Popis |
    |----------|----------|-------------|
-   | **Název** | Ano | Název účtu pro integraci, který chcete vytvořit. |
-   | **Předplatné** | Ano | Název předplatného Azure, které chcete použít |
-   | **Skupina prostředků** | Ano | Název skupiny prostředků Azure (nová nebo existující), která se má použít |
-   | **Cenová úroveň** | Ano | Cenová úroveň, která se má použít pro účet pro integraci |
-   | **Umístění** | Ano | V části **prostředí integrační služby**vyberte stejný ISE, které vaše aplikace logiky používají, pokud ještě není vybraná. <p><p> **Důležité**: Pokud chcete použít účet pro integraci s Logic Apps, musí oba používat stejný ISE. |
+   | **Název** | Yes | Název účtu pro integraci, který chcete vytvořit. |
+   | **Předplatné** | Yes | Název předplatného Azure, které chcete použít |
+   | **Skupina prostředků** | Yes | Název skupiny prostředků Azure (nová nebo existující), která se má použít |
+   | **Cenová úroveň** | Yes | Cenová úroveň, která se má použít pro účet pro integraci |
+   | **Umístění** | Yes | V části **prostředí integrační služby**vyberte stejný ISE, které vaše aplikace logiky používají, pokud ještě není vybraná. <p><p> **Důležité**: Pokud chcete použít účet pro integraci s Logic Apps, musí oba používat stejný ISE. |
    ||||
 
 1. Po dokončení vyberte **Vytvořit**.

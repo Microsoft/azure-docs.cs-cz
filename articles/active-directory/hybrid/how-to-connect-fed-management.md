@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d64be7350b373dcceb8c192f0859fa2ee7f47334
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360074"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830923"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Správa a přizpůsobení Active Directory Federation Services (AD FS) pomocí Azure AD Connect
 Tento článek popisuje, jak spravovat a přizpůsobovat Active Directory Federation Services (AD FS) (AD FS) pomocí Azure Active Directory (Azure AD) Connect. Zahrnuje taky další běžné AD FS úlohy, které může být potřeba udělat pro kompletní konfiguraci AD FS farmy.
@@ -192,7 +192,9 @@ Chcete-li změnit logo společnosti zobrazené na **přihlašovací** stránce, 
 > [!NOTE]
 > Doporučené dimenze pro logo jsou 260 x 35 \@ 96 dpi a velikost souboru nesmí být větší než 10 KB.
 
-    Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```azurepowershell-interactive
+Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
+```
 
 > [!NOTE]
 > Parametr *TargetName* je povinný. Výchozí motiv vydaný pomocí AD FS se nazývá výchozí.
@@ -200,7 +202,9 @@ Chcete-li změnit logo společnosti zobrazené na **přihlašovací** stránce, 
 ## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Přidat popis přihlášení 
 K přidání popisu přihlašovací stránky na **přihlašovací stránku**použijte následující rutinu Windows PowerShellu a syntaxi.
 
-    Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```azurepowershell-interactive
+Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
+```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>Upravit pravidla deklarace AD FS 
 AD FS podporuje bohatý jazyk deklarací identity, který můžete použít k vytvoření vlastních pravidel deklarací identity. Další informace najdete v tématu [Role jazyka pravidel deklarací identity](https://technet.microsoft.com/library/dd807118.aspx).
@@ -214,8 +218,10 @@ Můžete například vybrat **MS-DS-consistencyguid** jako atribut pro zdrojové
 
 **Pravidlo 1: atributy dotazu**
 
-    c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
-    => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```claim-rule-language
+c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
+=> add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
+```
 
 V tomto pravidle se dotazuje na hodnoty **MS-DS-consistencyguid** a **objectGUID** pro uživatele ze služby Active Directory. V nasazení AD FS změňte název úložiště na příslušný název úložiště. Změňte také typ deklarace identity na správný typ deklarací identity pro vaši federaci, jak je definováno pro **objectGUID** a **MS-DS-consistencyguid**.
 
@@ -223,23 +229,29 @@ Kromě **toho se**můžete vyhnout přidáním odchozího problému pro entitu *
 
 **Pravidlo 2: Ověřte, jestli pro uživatele existuje ms-DS-consistencyguid.**
 
-    NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
-    => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```claim-rule-language
+NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
+=> add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
+```
 
 Toto pravidlo definuje dočasný příznak s názvem **idflag** , který je nastaven na **useguid** , pokud pro uživatele není naplněno žádné y **MS-DS-consistencyguid** . Logika za tímto je fakt, že AD FS nepovoluje prázdné deklarace identity. Takže když přidáte deklarace identity `http://contoso.com/ws/2016/02/identity/claims/objectguid` a `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` v pravidle 1, skončíte s deklarací **msdsconsistencyguid** jenom v případě, že se hodnota naplní pro uživatele. Pokud není naplněno, AD FS uvidí, že bude mít prázdnou hodnotu a okamžitě ho sníží. Všechny objekty budou mít **objectGUID**, takže po provedení pravidla 1 bude deklarace identity vždycky.
 
 **Pravidlo 3: vystavení ms-DS-consistencyguid jako neproměnlivé ID, pokud je k dispozici**
 
-    c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```claim-rule-language
+c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
+```
 
 Toto je implicitní **existence** kontroly. Pokud hodnota deklarace identity existuje, pak ji vydejte jako neproměnlivé ID. Předchozí příklad používá deklaraci identity **NameIdentifier** . Budete je muset změnit na příslušný typ deklarace identity pro neměnné ID ve vašem prostředí.
 
 **Pravidlo 4: vystavení objectGuid jako neměnné ID, pokud není k dispozici služba MS-DS-consistencyGuid.**
 
-    c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
-    && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
-    => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```claim-rule-language
+c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
+&& c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
+=> issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
+```
 
 V tomto pravidle jednoduše kontrolujete dočasný příznak **idflag**. Rozhodnete, zda chcete vystavit deklaraci identity na základě její hodnoty.
 

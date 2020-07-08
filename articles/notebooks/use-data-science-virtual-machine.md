@@ -6,21 +6,21 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: b4da63b7b2a6da4316215b85a09ca7420745251c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898406"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830298"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Použití Virtual Machines pro datové vědy v Azure
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 Ve výchozím nastavení jsou projekty spouštěny na **bezplatné výpočetní** úrovni, což je omezeno na 4 GB paměti a 1 GB dat, aby nedocházelo k zneužití. Tato omezení můžete obejít tak, že použijete jiný virtuální počítač, který jste zřídili v rámci předplatného Azure. Pro tento účel je nejlepší volbou Azure Data Science Virtual Machine (DSVM) pomocí Image **Data Science Virtual Machine pro Linux (Ubuntu)** . Takový DSVM je předem nakonfigurovaný se všemi potřebnými pro Azure Notebooks a automaticky se zobrazuje v rozevíracím seznamu **Spustit** v Azure Notebooks.
 
 > [!Note]
 > Azure Notebooks se podporuje jenom v DSVMs vytvořených pomocí Image Ubuntu pro Linux. Poznámkové bloky nejsou podporované v imagí Windows 2012, Windows 2016 nebo Linux CentOS.
-
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 ## <a name="create-a-dsvm-instance"></a>Vytvoření instance DSVM
 

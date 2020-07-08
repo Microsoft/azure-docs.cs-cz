@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dbcbd173ce0a7c4c6a123f0644b870aa3cec2f5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75412410"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829886"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Vytvoření mezipaměti Azure pro Redis pomocí šablony
 
@@ -32,7 +32,7 @@ Další informace o vytváření šablon najdete v tématu [vytváření šablon
 > * [Vytvoření mezipaměti Azure Premium pro Redis s Trvalost dat](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
 > * [Vytvoření Redis Cache úrovně Premium nasazených do Virtual Network](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
-> Pokud chcete vyhledat nejnovější šablony, přečtěte si téma šablony pro `Azure Cache for Redis` [rychlý Start Azure](https://azure.microsoft.com/documentation/templates/) a vyhledejte.
+> Pokud chcete vyhledat nejnovější šablony, přečtěte si téma [šablony pro rychlý Start Azure](https://azure.microsoft.com/documentation/templates/) a vyhledejte `Azure Cache for Redis` .
 > 
 > 
 
@@ -52,76 +52,91 @@ Parametr byste měli definovat pro hodnoty, které se mění v závislosti na na
 ### <a name="rediscachelocation"></a>redisCacheLocation
 Umístění mezipaměti Azure pro Redis. Nejlepšího výkonu dosáhnete, když použijete stejné umístění jako aplikace, která se má použít spolu s mezipamětí.
 
-    "redisCacheLocation": {
-      "type": "string"
-    }
+```json
+  "redisCacheLocation": {
+    "type": "string"
+  }
+```
 
 ### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
 Název existujícího účtu úložiště, který se má použít pro diagnostiku. 
 
-    "existingDiagnosticsStorageAccountName": {
-      "type": "string"
-    }
+```json
+  "existingDiagnosticsStorageAccountName": {
+    "type": "string"
+  }
+```
 
 ### <a name="enablenonsslport"></a>enableNonSslPort
 Logická hodnota, která označuje, jestli se má povolený přístup přes porty bez SSL.
 
-    "enableNonSslPort": {
-      "type": "bool"
-    }
+```json
+  "enableNonSslPort": {
+    "type": "bool"
+  }
+```
 
 ### <a name="diagnosticsstatus"></a>diagnosticsStatus
 Hodnota, která určuje, zda je povolena Diagnostika. Použijte ZAPNUTo nebo vypnuto.
 
-    "diagnosticsStatus": {
-      "type": "string",
-      "defaultValue": "ON",
-      "allowedValues": [
-            "ON",
-            "OFF"
-        ]
-    }
+```json
+  "diagnosticsStatus": {
+    "type": "string",
+    "defaultValue": "ON",
+    "allowedValues": [
+          "ON",
+          "OFF"
+      ]
+  }
+```
 
 ## <a name="resources-to-deploy"></a>Prostředky k nasazení
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Vytvoří službu Azure cache pro Redis.
 
-    {
-      "apiVersion": "2015-08-01",
-      "name": "[parameters('redisCacheName')]",
-      "type": "Microsoft.Cache/Redis",
-      "location": "[parameters('redisCacheLocation')]",
-      "properties": {
-        "enableNonSslPort": "[parameters('enableNonSslPort')]",
-        "sku": {
-          "capacity": "[parameters('redisCacheCapacity')]",
-          "family": "[parameters('redisCacheFamily')]",
-          "name": "[parameters('redisCacheSKU')]"
+```json
+  {
+    "apiVersion": "2015-08-01",
+    "name": "[parameters('redisCacheName')]",
+    "type": "Microsoft.Cache/Redis",
+    "location": "[parameters('redisCacheLocation')]",
+    "properties": {
+      "enableNonSslPort": "[parameters('enableNonSslPort')]",
+      "sku": {
+        "capacity": "[parameters('redisCacheCapacity')]",
+        "family": "[parameters('redisCacheFamily')]",
+        "name": "[parameters('redisCacheSKU')]"
+      }
+    },
+    "resources": [
+      {
+        "apiVersion": "2017-05-01-preview",
+        "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
+        "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
+        "location": "[parameters('redisCacheLocation')]",
+        "dependsOn": [
+          "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
+        ],
+        "properties": {
+          "status": "[parameters('diagnosticsStatus')]",
+          "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
         }
-      },
-      "resources": [
-        {
-          "apiVersion": "2017-05-01-preview",
-          "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
-          "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
-          "location": "[parameters('redisCacheLocation')]",
-          "dependsOn": [
-            "[concat('Microsoft.Cache/Redis/', parameters('redisCacheName'))]"
-          ],
-          "properties": {
-            "status": "[parameters('diagnosticsStatus')]",
-            "storageAccountName": "[parameters('existingDiagnosticsStorageAccountName')]"
-          }
-        }
-      ]
-    }
+      }
+    ]
+  }
+```
 
 ## <a name="commands-to-run-deployment"></a>Příkazy pro spuštění nasazení
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
 
+```azurepowershell
     New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
+```
 
 ### <a name="azure-cli"></a>Azure CLI
+
+```azurecli
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup
+```

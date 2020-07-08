@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 10485a5467a63e0b3bb1aa0dbefc4d156c2a9565
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 5cefc59a6072a945be493487c09b1cc7f9827475
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479024"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830566"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Diagnostikování chyb pomocí Azure Active Directory připojené služby
 
@@ -33,16 +33,20 @@ Připojená služba také kontroluje nastavení ověřování, která byla dří
 
 V projektu MVC připojená služba kontroluje všechna následující nastavení, která jsou výsledkem předchozího použití služby:
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:AADInstance" value="" />
-    <add key="ida:PostLogoutRedirectUri" value="" />
+```xml
+<add key="ida:ClientId" value="" />
+<add key="ida:Tenant" value="" />
+<add key="ida:AADInstance" value="" />
+<add key="ida:PostLogoutRedirectUri" value="" />
+```
 
 Připojená služba také kontroluje jakékoli z následujících nastavení v projektu webového rozhraní API, které je výsledkem předchozího použití služby:
 
-    <add key="ida:ClientId" value="" />
-    <add key="ida:Tenant" value="" />
-    <add key="ida:Audience" value="" />
+```xml
+<add key="ida:ClientId" value="" />
+<add key="ida:Tenant" value="" />
+<add key="ida:Audience" value="" />
+```
 
 ## <a name="incompatible-authentication-code"></a>Nekompatibilní ověřovací kód
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7cb99ee9f52a26bd432a506ddc3ea4c9b13275b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9c4d70bcd0b991d90c68d310f94b21757fe2437
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185111"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830209"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Standardní hodnoty zabezpečení Azure pro službu Key Vault
 
@@ -709,7 +709,7 @@ Získání předplatných, ke kterým má aktuální účet přístup:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Co je řízení přístupu na základě role (RBAC) u prostředků Azure?
+Co je řízení přístupu na základě role Azure (Azure RBAC)?
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
 

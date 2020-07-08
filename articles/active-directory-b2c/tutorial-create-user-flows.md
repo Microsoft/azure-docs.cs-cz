@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2019
+ms.date: 07/01/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d9fb98da40602837eee57914036742994b4eb9c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 63c15b13134f17cd2e1d0bf7b8d11a168dca5b2a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85385055"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829943"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: vytvoření toků uživatelů v Azure Active Directory B2C
 
@@ -40,13 +40,13 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i přihlašovací prostředí s jedinou konfigurací. Uživatelé vaší aplikace jsou ve správném umístění v závislosti na kontextu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
     ![B2C, okno klienta, adresáře a předplatného, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
-1. V části **zásady**vyberte **toky uživatelů (zásady)** a pak vyberte **Nový tok uživatele**.
+1. V části **zásady**vyberte **toky uživatelů**a pak vyberte **Nový tok uživatele**.
 
     ![Stránka toky uživatelů na portálu s zvýrazněným tlačítkem nový uživatelský tok](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
@@ -82,7 +82,7 @@ Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i
 
 Pokud chcete uživatelům umožnit úpravy svého profilu v aplikaci, použijte uživatelský tok upravující profil.
 
-1. V nabídce na stránce Přehled klienta Azure AD B2C vyberte **toky uživatelů (zásady)** a pak vyberte **Nový tok uživatele**.
+1. V nabídce na stránce Přehled klienta Azure AD B2C vyberte **toky uživatelů**a pak vyberte **Nový tok uživatele**.
 1. Na kartě **Doporučené** vyberte tok uživatele **upravující profilování** .
 1. Zadejte **název** toku uživatele. Například *profileediting1*.
 1. V případě **zprostředkovatelů identity**vyberte **přihlášení k místnímu účtu**.
@@ -100,7 +100,7 @@ Pokud chcete uživatelům umožnit úpravy svého profilu v aplikaci, použijte 
 
 Pokud chcete uživatelům vaší aplikace povolit resetování hesla, použijte uživatelský tok pro resetování hesla.
 
-1. V nabídce přehled Azure AD B2C tenanta vyberte **toky uživatelů (zásady)** a pak vyberte **Nový tok uživatele**.
+1. V nabídce přehled Azure AD B2C tenanta vyberte **toky uživatelů**a pak vyberte **Nový tok uživatele**.
 1. Na kartě **Doporučené** vyberte tok uživatele **resetování hesla** .
 1. Zadejte **název** toku uživatele. Například *passwordreset1*.
 1. U **zprostředkovatelů identity**povolte možnost **resetovat heslo pomocí e-mailové adresy**.

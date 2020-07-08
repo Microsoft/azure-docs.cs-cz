@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 4f68a3c8bb70c720f9d0c1870ead723b7b4c179c
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457446"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830702"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Aktivační událost služby signalizace pro Azure Functions
 
@@ -67,9 +67,9 @@ public static async Task Run([SignalRTrigger("SignalRTest", "messages", "SendMes
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Tady je vazba dat v souboru *Function. JSON* :
+Tady je vazba dat v *function.js* souboru:
 
-Příklad Function. JSON:
+Příklad function.js:
 
 ```json
 {
@@ -101,9 +101,9 @@ public static void Run(InvocationContext invocation, string message, ILogger log
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Tady je vazba dat v souboru *Function. JSON* :
+Tady je vazba dat v *function.js* souboru:
 
-Příklad Function. JSON:
+Příklad function.js:
 
 ```json
 {
@@ -130,9 +130,9 @@ module.exports = function (context, invocation) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Tady je vazba dat v souboru *Function. JSON* :
+Tady je vazba dat v *function.js* souboru:
 
-Příklad Function. JSON:
+Příklad function.js:
 
 ```json
 {
@@ -166,9 +166,9 @@ def main(invocation) -> None:
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `SignalRTrigger` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `SignalRTrigger` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový**| Není k dispozici | Musí být nastaven na hodnotu `SignalRTrigger` .|
 |**direction**| Není k dispozici | Musí být nastaven na hodnotu `in` .|
@@ -222,7 +222,9 @@ Pro vazbu parametru se jedná o pořadí. Pokud používáte `ParameterNames` , 
 
 Funkce Azure Functions vygeneruje adresu URL pro aktivační vazby služby Signaler a je naformátovaná takto:
 
-    https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+```http
+https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>
+```
 
 `API_KEY`Služba je vygenerovaná funkcí Azure Functions. Z Azure Portal můžete získat, `API_KEY` když používáte vazbu triggeru služby signalizace.
 :::image type="content" source="media/functions-bindings-signalr-service/signalr-keys.png" alt-text="Klíč rozhraní API":::

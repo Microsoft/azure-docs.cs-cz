@@ -3,12 +3,12 @@ title: Prozkoumejte protokoly trasování .NET v Application Insights
 description: Hledání v protokolech vygenerovaných trasováním, NLog nebo Log4Net.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: bcd21286a547e0b0a6b5b93e8b05921e8e8cc1e2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d010fe4389e22c9909800f5329911b6b5619d7b6
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647916"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829529"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování .NET/.NET Core a Python v Application Insights
 
@@ -19,7 +19,7 @@ Odešle protokoly diagnostiky trasování pro vaši aplikaci ASP.NET/ASP.NET Cor
 >
 >
 ## <a name="install-logging-on-your-app"></a>Instalace protokolování do aplikace
-V projektu nainstalujte zvolené protokolovací rozhraní, které by mělo mít za následek zadání v App. config nebo Web. config.
+Do projektu nainstalujte zvolené protokolovací rozhraní, které by mělo mít za následek zadání app.config nebo web.config.
 
 ```XML
  <configuration>
@@ -64,7 +64,7 @@ Tuto metodu použijte, pokud váš typ projektu není podporován instalačním 
    - [Microsoft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/) 
  [ ![ NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
-Pokud je to možné, balíček NuGet nainstaluje potřebná sestavení a upraví soubor Web. config nebo App. config.
+Balíček NuGet nainstaluje nezbytná sestavení a upraví web.config nebo app.config, pokud je to možné.
 
 ## <a name="ilogger"></a>ILogger
 
@@ -73,14 +73,18 @@ Příklady použití implementace Application Insights ILogger s konzolovou apli
 ## <a name="insert-diagnostic-log-calls"></a>Vložit volání diagnostického protokolu
 Použijete-li System. Diagnostics. Trace, bude typické volání:
 
-    System.Diagnostics.Trace.TraceWarning("Slow response - database01");
+```csharp
+System.Diagnostics.Trace.TraceWarning("Slow response - database01");
+```
 
 Pokud dáváte přednost log4net nebo NLog, použijte:
 
+```csharp
     logger.Warn("Slow response - database01");
+```
 
 ## <a name="use-eventsource-events"></a>Použití událostí EventSource
-Můžete nakonfigurovat události [System. Diagnostics. Tracing. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) pro odeslání do Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EventSourceListener` balíček NuGet. Pak upravte `TelemetryModules` oddíl souboru [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+Můžete nakonfigurovat události [System. Diagnostics. Tracing. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) pro odeslání do Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EventSourceListener` balíček NuGet. Pak upravte `TelemetryModules` část souboru [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -96,7 +100,7 @@ Pro každý zdroj můžete nastavit následující parametry:
  * **Klíčová slova** (volitelné) zadejte celočíselnou hodnotu kombinací klíčového slova, které chcete použít.
 
 ## <a name="use-diagnosticsource-events"></a>Použití událostí DiagnosticSource
-Můžete nakonfigurovat události [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) , které budou odeslány do Application Insights jako trasování. Nejdřív nainstalujte [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) balíček NuGet. Pak upravte oddíl "TelemetryModules" v souboru [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+Můžete nakonfigurovat události [System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) , které budou odeslány do Application Insights jako trasování. Nejdřív nainstalujte [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) balíček NuGet. Pak upravte část "TelemetryModules" souboru [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
@@ -109,7 +113,7 @@ Můžete nakonfigurovat události [System. Diagnostics. DiagnosticSource](https:
 Pro každý DiagnosticSource, který chcete trasovat, přidejte položku s atributem **Name** nastaveným na název vaší DiagnosticSource.
 
 ## <a name="use-etw-events"></a>Použít události ETW
-Můžete nakonfigurovat události trasování událostí pro Windows (ETW), které se mají odeslat Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EtwCollector` balíček NuGet. Pak upravte oddíl "TelemetryModules" v souboru [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
+Můžete nakonfigurovat události trasování událostí pro Windows (ETW), které se mají odeslat Application Insights jako trasování. Nejdřív nainstalujte `Microsoft.ApplicationInsights.EtwCollector` balíček NuGet. Pak upravte část "TelemetryModules" souboru [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) .
 
 > [!NOTE] 
 > Události ETW se můžou shromažďovat jenom v případě, že se proces, který hostuje sadu SDK, spouští pod identitou, která je členem skupiny Performance Log Users nebo Administrators.
@@ -131,19 +135,23 @@ Pro každý zdroj můžete nastavit následující parametry:
 ## <a name="use-the-trace-api-directly"></a>Přímé použití rozhraní API trasování
 Rozhraní API pro trasování Application Insights můžete volat přímo. Toto rozhraní API používají adaptéry protokolování.
 
-Například:
+Příklad:
 
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow response - database01");
+```csharp
+var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+telemetry.TrackTrace("Slow response - database01");
+```
 
 Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data. Můžete například zakódovat data POST.
 
-Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Například:
+Do zprávy můžete také přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
 
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow database response",
-                   SeverityLevel.Warning,
-                   new Dictionary<string,string> { {"database", db.ID} });
+  ```csharp
+  var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+  telemetry.TrackTrace("Slow database response",
+                 SeverityLevel.Warning,
+                 new Dictionary<string,string> { {"database", db.ID} });
+  ```
 
 To vám umožní snadno odfiltrovat ve [vyhledávání][diagnostic] všechny zprávy určité úrovně závažnosti, které se vztahují k určité databázi.
 
@@ -192,11 +200,11 @@ Pokud používáte sadu Java SDK, použijte [adaptéry protokolu Java](../../azu
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>V konfiguračním nástroji není žádná možnost adaptéru protokolu.
 * Nejdřív nainstalujte rozhraní protokolování.
-* Pokud používáte System. Diagnostics. Trace, ujistěte se, že je [v *souboru Web. config*nakonfigurován](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
+* Pokud používáte System. Diagnostics. Trace, ujistěte se, že je [v *web.config*nakonfigurovaný ](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
 * Ujistěte se, že máte nejnovější verzi Application Insights. V aplikaci Visual Studio, přejít na **nástroje**  >  **rozšíření a aktualizace**a otevřete kartu **aktualizace** . Pokud tam **Developer Analytics Tools** , vyberte ho a aktualizujte ho.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>Zobrazí se chybová zpráva "klíč instrumentace nemůže být prázdný"
-Pravděpodobně jste nainstalovali balíček NuGet pro protokolovací adaptér bez instalace Application Insights. V Průzkumník řešení klikněte pravým tlačítkem na *ApplicationInsights. config*a vyberte **aktualizovat Application Insights**. Zobrazí se výzva, abyste se přihlásili k Azure a vytvořili prostředek Application Insights nebo znovu použijete existující. To by mělo problém vyřešit.
+Pravděpodobně jste nainstalovali balíček NuGet pro protokolovací adaptér bez instalace Application Insights. V Průzkumník řešení klikněte pravým tlačítkem na *ApplicationInsights.config*a vyberte **aktualizovat Application Insights**. Zobrazí se výzva, abyste se přihlásili k Azure a vytvořili prostředek Application Insights nebo znovu použijete existující. To by mělo problém vyřešit.
 
 ### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>Můžu zobrazit trasování, ale ne jiné události v diagnostickém vyhledávání
 Může chvíli trvat, než se všechny události a požadavky dostanou přes kanál.

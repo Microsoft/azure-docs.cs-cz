@@ -5,17 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/01/2020
+ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74768261"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85830277"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorování výkonu pomocí úložiště dotazů
 
-**Platí pro:** Azure Database for PostgreSQL – jeden server verze 9,6, 10, 11
+**Platí pro:** Azure Database for PostgreSQL – jeden server verze 9,6 a vyšší
 
 Funkce úložiště dotazů v Azure Database for PostgreSQL poskytuje způsob, jak sledovat výkon dotazů v průběhu času. Úložiště dotazů zjednodušuje řešení potíží s výkonem tím, že vám pomůže rychle najít nejdelší běžící a většinu dotazů náročných na prostředky. Úložiště dotazů automaticky zachycuje historii dotazů a statistik za běhu a zachovává je pro vaši kontrolu. Odděluje data podle časových oken, takže můžete vidět vzory využití databáze. Data pro všechny uživatele, databáze a dotazy jsou uložena v databázi s názvem **azure_sys** v instanci Azure Database for PostgreSQL.
 
@@ -72,9 +72,6 @@ Nebo tento dotaz pro statistiku čekání:
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
 
-Můžete také vygenerovat data úložiště dotazů, abyste [Azure monitor protokoly](../azure-monitor/log-query/log-query-overview.md) pro analýzy a upozorňování, Event Hubs pro streamování a Azure Storage k archivaci. Kategorie protokolů, které se mají nakonfigurovat, jsou **QueryStoreRuntimeStatistics** a **QueryStoreWaitStatistics**. Další informace o instalaci najdete v článku [Azure monitor nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md) .
-
-
 ## <a name="finding-wait-queries"></a>Hledání dotazů čekání
 Typy událostí čekání spojují různé události čekání do sad podle podobnosti. Úložiště dotazů poskytuje typ události čekání, název konkrétní události čekání a dotaz na něj. Možnost korelovat tyto informace o čekání pomocí statistiky za běhu dotazů znamená, že můžete získat hlubší přehled o tom, co přispívá k charakteristikám výkonu dotazů.
 
@@ -91,18 +88,18 @@ Když je povoleno úložiště dotazů, ukládá data v oknech agregace 15 minut
 
 Pro konfiguraci parametrů úložiště dotazů jsou k dispozici následující možnosti.
 
-| **Ukazatele** | **Popis** | **Výchozí** | **Oblasti**|
+| **Parametr** | **Popis** | **Výchozí** | **Oblasti**|
 |---|---|---|---|
-| pg_qs. query_capture_mode | Nastaví, které příkazy jsou sledovány. | Žádná | žádné, nahoře, vše |
+| pg_qs. query_capture_mode | Nastaví, které příkazy jsou sledovány. | žádné | žádné, nahoře, vše |
 | pg_qs. max_query_text_length | Nastaví maximální délku dotazu, kterou lze uložit. Delší dotazy budou zkráceny. | 6000 | 100 – 10 000 |
 | pg_qs. retention_period_in_days | Nastaví dobu uchování. | 7 | 1 - 30 |
 | pg_qs. track_utility | Nastaví, jestli se mají sledovat příkazy nástrojů. | on | zapnuto, vypnuto |
 
 Následující možnosti platí konkrétně pro čekání na statistiku.
 
-| **Ukazatele** | **Popis** | **Výchozí** | **Oblasti**|
+| **Parametr** | **Popis** | **Výchozí** | **Oblasti**|
 |---|---|---|---|
-| pgms_wait_sampling. query_capture_mode | Nastaví, které příkazy jsou sledovány pro statistiku čekání. | Žádná | žádné, vše|
+| pgms_wait_sampling. query_capture_mode | Nastaví, které příkazy jsou sledovány pro statistiku čekání. | žádné | žádné, vše|
 | Pgms_wait_sampling. history_period | Nastavte četnost vzorkování událostí čekání v milisekundách. | 100 | 1-600000 |
 
 > [!NOTE] 
@@ -119,35 +116,35 @@ Dotazy jsou normalizovány tím, že si po odebrání literálů a konstant vyhl
 ### <a name="query_storeqs_view"></a>query_store. qs_view
 Toto zobrazení vrátí všechna data v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele a ID dotazu je k dispozici jeden řádek. 
 
-|**Název**   |**Typ** | **Odkazy**  | **Popis**|
+|**Název**   |**Typ** | **Reference**  | **Popis**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | ID z runtime_stats_entries tabulky|
 |user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
 |db_id  |identifikátor    |pg_database. OID    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|
-|query_id   |bigint  || Vnitřní kód hash vypočítaný z stromu analýzy příkazu|
-|query_sql_text |Varchar (10000)  || Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru.|
+|query_id   |bigint  || Vnitřní kód hash vypočítaný z stromu analýzy příkazu|
+|query_sql_text |Varchar (10000)  || Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru.|
 |plan_id    |bigint |   |ID plánu, který odpovídá tomuto dotazu, zatím není k dispozici|
 |start_time |časové razítko  ||  Dotazy jsou agregované podle časových intervalů – ve výchozím nastavení je časový rozsah intervalu 15 minut. Toto je čas spuštění odpovídající časovému intervalu pro tuto položku.|
 |end_time   |časové razítko  ||  Čas ukončení odpovídající časovému intervalu pro tuto položku.|
-|volání  |bigint  || Počet provedení dotazu|
-|total_time |Dvojitá přesnost   ||  Celková doba provádění dotazu v milisekundách|
+|volání  |bigint  || Počet provedení dotazu|
+|total_time |Dvojitá přesnost   ||  Celková doba provádění dotazu v milisekundách|
 |min_time   |Dvojitá přesnost   ||  Minimální doba provádění dotazu v milisekundách|
 |max_time   |Dvojitá přesnost   ||  Maximální doba provádění dotazu v milisekundách|
 |mean_time  |Dvojitá přesnost   ||  Průměrná doba provádění dotazu (v milisekundách)|
 |stddev_time|   Dvojitá přesnost    ||  Směrodatná odchylka doby provádění dotazu (v milisekundách) |
-|tabulky   |bigint ||  Celkový počet řádků načtených nebo ovlivněných příkazem|
-|shared_blks_hit|   bigint  ||  Celkový počet přístupů do mezipaměti sdílených bloků pomocí příkazu|
+|tabulky   |bigint ||  Celkový počet řádků načtených nebo ovlivněných příkazem|
+|shared_blks_hit|   bigint  ||  Celkový počet přístupů do mezipaměti sdílených bloků pomocí příkazu|
 |shared_blks_read|  bigint  ||  Celkový počet sdílených bloků přečtených příkazem|
-|shared_blks_dirtied|   bigint   || Celkový počet sdílených bloků změněných příkazem |
-|shared_blks_written|   bigint  ||  Celkový počet sdílených bloků zapsaných příkazem|
+|shared_blks_dirtied|   bigint   || Celkový počet sdílených bloků změněných příkazem |
+|shared_blks_written|   bigint  ||  Celkový počet sdílených bloků zapsaných příkazem|
 |local_blks_hit|    bigint ||   Celkový počet přístupů do místní blokové mezipaměti příkazem|
-|local_blks_read|   bigint   || Celkový počet místních bloků čtených příkazem|
-|local_blks_dirtied|    bigint  ||  Celkový počet místních bloků změněných příkazem|
-|local_blks_written|    bigint  ||  Celkový počet místních bloků zapsaných příkazem|
-|temp_blks_read |bigint  || Celkový počet dočasných bloků čtených příkazem|
-|temp_blks_written| bigint   || Celkový počet dočasných bloků zapsaných příkazem|
-|blk_read_time  |Dvojitá přesnost    || Celková doba, po kterou příkaz strávil bloky čtení, v milisekundách (Pokud je povolená track_io_timing, jinak nula)|
-|blk_write_time |Dvojitá přesnost    || Celková doba, po kterou příkaz strávil zápis bloků, v milisekundách (Pokud je povolená track_io_timing, jinak nula)|
+|local_blks_read|   bigint   || Celkový počet místních bloků čtených příkazem|
+|local_blks_dirtied|    bigint  ||  Celkový počet místních bloků změněných příkazem|
+|local_blks_written|    bigint  ||  Celkový počet místních bloků zapsaných příkazem|
+|temp_blks_read |bigint  || Celkový počet dočasných bloků čtených příkazem|
+|temp_blks_written| bigint   || Celkový počet dočasných bloků zapsaných příkazem|
+|blk_read_time  |Dvojitá přesnost    || Celková doba, po kterou příkaz strávil bloky čtení, v milisekundách (Pokud je povolená track_io_timing, jinak nula)|
+|blk_write_time |Dvojitá přesnost    || Celková doba, po kterou příkaz strávil zápis bloků, v milisekundách (Pokud je povolená track_io_timing, jinak nula)|
     
 ### <a name="query_storequery_texts_view"></a>query_store. query_texts_view
 Toto zobrazení vrátí textová data dotazu v úložišti dotazů. Pro každý query_text je k dispozici jeden řádek.
@@ -155,17 +152,17 @@ Toto zobrazení vrátí textová data dotazu v úložišti dotazů. Pro každý 
 |**Název**|  **Typ**|   **Popis**|
 |---|---|---|
 |query_text_id  |bigint     |ID pro query_textsovou tabulku|
-|query_sql_text |Varchar (10000)     |Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru.|
+|query_sql_text |Varchar (10000)     |Text zástupce příkazu Různé dotazy se stejnou strukturou jsou clusterované dohromady; Tento text je text pro první z dotazů v clusteru.|
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store. pgms_wait_sampling_view
 Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro každé jedinečné ID databáze, ID uživatele, ID dotazu a událost je jeden řádek.
 
-|**Název**|  **Typ**|   **Odkazy**| **Popis**|
+|**Název**|  **Typ**|   **Reference**| **Popis**|
 |---|---|---|---|
 |user_id    |identifikátor    |pg_authid. OID  |Identifikátor OID uživatele, který příkaz provedl|
 |db_id  |identifikátor    |pg_database. OID    |Identifikátor objektu databáze, ve kterém byl příkaz proveden|
-|query_id   |bigint     ||Vnitřní kód hash vypočítaný z stromu analýzy příkazu|
-|event_type |text       ||Typ události, pro kterou back-end čeká|
+|query_id   |bigint     ||Vnitřní kód hash vypočítaný z stromu analýzy příkazu|
+|event_type |text       ||Typ události, pro kterou back-end čeká|
 |event  |text       ||Název události čekání, pokud back-end momentálně čeká|
 |volání  |Integer        ||Číslo stejné zachycené události|
 
@@ -173,11 +170,82 @@ Toto zobrazení vrátí data událostí čekání v úložišti dotazů. Pro ka�
 ### <a name="functions"></a>Functions
 Query_store. qs_reset () vrátí typ void.
 
-`qs_reset` zahodí všechny statistiky shromážděné zatím v úložišti dotazů. Tuto funkci může spustit jenom role správce serveru.
+`qs_reset`zahodí všechny statistiky shromážděné zatím v úložišti dotazů. Tuto funkci může spustit jenom role správce serveru.
 
 Query_store. staging_data_reset () vrátí typ void.
 
-`staging_data_reset` zahodí všechny statistiky shromážděné v paměti úložištěm dotazů (tj. data v paměti, která ještě nebyla vyprázdněna do databáze). Tuto funkci může spustit jenom role správce serveru.
+`staging_data_reset`zahodí všechny statistiky shromážděné v paměti úložištěm dotazů (tj. data v paměti, která ještě nebyla vyprázdněna do databáze). Tuto funkci může spustit jenom role správce serveru.
+
+
+## <a name="azure-monitor"></a>Azure Monitor
+Azure Database for PostgreSQL je integrován s [nastavením diagnostiky Azure monitor](../azure-monitor/platform/diagnostic-settings.md). Nastavení diagnostiky umožňuje odeslat protokoly Postgres ve formátu JSON, abyste [Azure monitor protokoly](../azure-monitor/log-query/log-query-overview.md) pro analýzy a upozorňování, Event Hubs pro streamování a Azure Storage k archivaci.
+
+>[!IMPORTANT]
+> Tato diagnostická funkce pro je dostupná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
+
+### <a name="configure-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
+Nastavení diagnostiky pro server Postgres můžete povolit pomocí Azure Portal, CLI, REST API a PowerShellu. Kategorie protokolů, které se mají nakonfigurovat, jsou **QueryStoreRuntimeStatistics** a **QueryStoreWaitStatistics**. 
+
+Postup povolení protokolů prostředku pomocí Azure Portal:
+
+1. Na portálu přejděte v navigační nabídce serveru Postgres na nastavení diagnostiky.
+2. Vyberte Přidat nastavení diagnostiky.
+3. Pojmenujte toto nastavení.
+4. Vyberte preferovaný koncový bod (účet úložiště, centrum událostí a Log Analytics).
+5. Vyberte typy protokolů **QueryStoreRuntimeStatistics** a **QueryStoreWaitStatistics**.
+6. Uložte nastavení.
+
+Pokud chcete toto nastavení povolit pomocí PowerShellu, rozhraní příkazového řádku nebo REST API, přejděte na [článek nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md).
+
+### <a name="json-log-format"></a>Formát protokolu JSON
+V následujících tabulkách jsou popsána pole pro dva typy protokolů. V závislosti na zvoleném výstupním koncovém bodu se můžou pole zahrnutá a pořadí, ve kterém se zobrazují, lišit.
+
+#### <a name="querystoreruntimestatistics"></a>QueryStoreRuntimeStatistics
+|**Pole** | **Popis** |
+|---|---|
+| TimeGenerated [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
+| ResourceId | Identifikátor URI prostředku Azure serveru Postgres |
+| Kategorie | `QueryStoreRuntimeStatistics` |
+| OperationName | `QueryStoreRuntimeStatisticsEvent` |
+| LogicalServerName_s | Název serveru Postgres | 
+| runtime_stats_entry_id_s | ID z runtime_stats_entries tabulky |
+| user_id_s | Identifikátor OID uživatele, který příkaz provedl |
+| db_id_s | Identifikátor objektu databáze, ve kterém byl příkaz proveden |
+| query_id_s | Vnitřní kód hash vypočítaný z stromu analýzy příkazu |
+| end_time_s | Čas ukončení odpovídající časovému intervalu pro tuto položku |
+| calls_s | Počet provedení dotazu |
+| total_time_s | Celková doba provádění dotazu v milisekundách |
+| min_time_s | Minimální doba provádění dotazu v milisekundách |
+| max_time_s | Maximální doba provádění dotazu v milisekundách |
+| mean_time_s | Průměrná doba provádění dotazu (v milisekundách) |
+| ResourceGroup | Skupina prostředků | 
+| SubscriptionId | ID vašeho předplatného |
+| ResourceProvider | `Microsoft.DBForPostgreSQL` | 
+| Prostředek | Název serveru Postgres |
+| ResourceType | `Servers` | 
+
+
+#### <a name="querystorewaitstatistics"></a>QueryStoreWaitStatistics
+|**Pole** | **Popis** |
+|---|---|
+| TimeGenerated [UTC] | Časové razítko, kdy se protokol zaznamenal v UTC |
+| ResourceId | Identifikátor URI prostředku Azure serveru Postgres |
+| Kategorie | `QueryStoreWaitStatistics` |
+| OperationName | `QueryStoreWaitEvent` |
+| user_id_s | Identifikátor OID uživatele, který příkaz provedl |
+| db_id_s | Identifikátor objektu databáze, ve kterém byl příkaz proveden |
+| query_id_s | Vnitřní kód hash dotazu |
+| calls_s | Číslo stejné zachycené události |
+| event_type_s | Typ události, pro kterou back-end čeká |
+| event_s | Název události čekání, pokud back-end aktuálně čeká |
+| start_time_t | Čas spuštění události |
+| end_time_s | Čas ukončení události | 
+| LogicalServerName_s | Název serveru Postgres | 
+| ResourceGroup | Skupina prostředků | 
+| SubscriptionId | ID vašeho předplatného |
+| ResourceProvider | `Microsoft.DBForPostgreSQL` | 
+| Prostředek | Název serveru Postgres |
+| ResourceType | `Servers` | 
 
 ## <a name="limitations-and-known-issues"></a>Omezení a známé problémy
 - Pokud má server PostgreSQL parametr default_transaction_read_only na, nemůže úložiště dotazů zachytit data.
