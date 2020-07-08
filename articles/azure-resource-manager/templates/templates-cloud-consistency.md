@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 459a34d104e01dca2cdf997c6aedd6f54f3adbaa
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677674"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055235"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Vývoj šablon ARM pro cloudovou konzistenci
 
@@ -487,7 +487,7 @@ Pokud chcete načíst seznam dostupných imagí virtuálních počítačů v ně
 az vm image list -all
 ```
 
-Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Například:
+Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Příklad:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -574,7 +574,7 @@ Stejné změny také platí pro [datové disky](../../virtual-machines/windows/u
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>Ověřte, že jsou rozšíření virtuálních počítačů k dispozici v Azure Stack
 
-Dalším aspektem konzistence cloudu je použití [rozšíření virtuálních počítačů](../../virtual-machines/windows/extensions-features.md) ke konfiguraci prostředků v rámci virtuálního počítače. V Azure Stack nejsou k dispozici všechna rozšíření virtuálních počítačů. Šablona může určovat prostředky vyhrazené pro rozšíření virtuálního počítače a vytvářet závislosti a podmínky v rámci šablony.
+Dalším aspektem konzistence cloudu je použití [rozšíření virtuálních počítačů](../../virtual-machines/extensions/features-windows.md) ke konfiguraci prostředků v rámci virtuálního počítače. V Azure Stack nejsou k dispozici všechna rozšíření virtuálních počítačů. Šablona může určovat prostředky vyhrazené pro rozšíření virtuálního počítače a vytvářet závislosti a podmínky v rámci šablony.
 
 Pokud třeba chcete nakonfigurovat virtuální počítač s Microsoft SQL Server, může rozšíření virtuálního počítače nakonfigurovat SQL Server jako součást nasazení šablony. Zvažte, co se stane, když šablona nasazení obsahuje taky aplikační server nakonfigurovaný k vytvoření databáze na virtuálním počítači se systémem SQL Server. Kromě toho, že používá rozšíření virtuálního počítače pro aplikační servery, můžete nakonfigurovat závislost aplikačního serveru na úspěšném návratu prostředku rozšíření SQL Server virtuálního počítače. Tento přístup zajišťuje, aby byl virtuální počítač se spuštěným SQL Server nakonfigurovaný a dostupný, když je aplikační server pokyn k vytvoření databáze.
 
@@ -590,7 +590,7 @@ Pokud chcete načíst seznam rozšíření virtuálních počítačů, které js
 az vm extension image list --location myLocation
 ```
 
-Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Například:
+Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Příklad:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version

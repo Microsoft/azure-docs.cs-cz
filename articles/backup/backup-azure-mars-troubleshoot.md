@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit potíže s instalací a r
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1d1397519b39ffbc439cdd0d3e78d9b553ea302e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb9e5cf48f960a70c6a699df1163089eb4e8bc31
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598007"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056587"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -165,6 +165,25 @@ Set-ExecutionPolicy Unrestricted
 Chyba | Možné příčiny | Doporučené akce
 --- | --- | ---
 Aktuální operace selhala kvůli vnitřní chybě služby (prostředek není zřízený na razítku služby). Zkuste prosím tuto operaci za chvíli znovu. (ID: 230006) | Chráněný Server se přejmenoval. | <li> Přejmenujte Server zpátky na původní název, který je zaregistrovaný v trezoru. <br> <li> Znovu zaregistrujte Server do trezoru s novým názvem.
+
+## <a name="job-could-not-be-started-as-another-job-was-in-progress"></a>Úlohu se nepovedlo spustit, protože probíhala jiná úloha.
+
+Pokud se v historii úloh **konzoly Mars**zobrazí zpráva s upozorněním  >  **Job history**, že úloha nemohla být spuštěna, protože probíhala jiná úloha, může to být způsobeno duplicitní instancí úlohy aktivované Plánovač úloh.
+
+![Úlohu se nepovedlo spustit, protože probíhala jiná úloha.](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
+
+Řešení tohoto problému:
+
+1. Spusťte modul snap-in Plánovač úloh tak, že v okně Spustit zadáte *Taskschd. msc.*
+1. V levém podokně přejděte do **knihovny Plánovač úloh**  ->  **Microsoft**  ->  **OnlineBackup**.
+1. Pro každý úkol v této knihovně poklikejte na úkol a otevřete vlastnosti a proveďte následující kroky:
+    1. Přepněte na kartu **Nastavení**.
+
+         ![Karta nastavení](./media/backup-azure-mars-troubleshoot/settings-tab.png)
+
+    1. **Pokud je úloha už spuštěná, použijte následující pravidlo**. Vyberte **nespustit novou instanci**.
+
+         ![Změnit pravidlo na nespouštět novou instanci](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
 ## <a name="troubleshoot-restore-problems"></a>Řešení potíží s obnovením
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 440162d6cddd790cdb2859c119d60a6dbe28dcbf
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374865"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055456"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -25,7 +25,7 @@ Language Understanding (LUIS) ověřování při vytváření se změnilo z e-ma
 
 ## <a name="what-is-migration"></a>Co je migrace?
 
-Migrace je proces změny vytváření ověřování z e-mailového účtu na prostředek Azure. Po dokončení migrace bude váš účet propojený s předplatným Azure a prostředkem pro vytváření prostředků Azure. *Všichni LUIS uživatelé (vlastníci nebo spolupracovníci) nakonec budou muset migrovat.* 
+Migrace je proces změny vytváření ověřování z e-mailového účtu na prostředek Azure. Po dokončení migrace bude váš účet propojený s předplatným Azure a prostředkem pro vytváření prostředků Azure. *Všichni LUIS uživatelé (vlastníci nebo spolupracovníci) nakonec budou muset migrovat.*
 
 Migraci je potřeba provést z portálu LUIS. Pokud vytvoříte vytváření klíčů pomocí rozhraní příkazového řádku LUIS, například budete muset proces migrace dokončit na portálu LUIS. Po migraci můžete i nadále mít spoluautory svých aplikací, ale přidají se na úrovni prostředků Azure místo na úrovni aplikace.
 
@@ -81,7 +81,7 @@ Migraci je potřeba provést z portálu LUIS. Pokud vytvoříte vytváření kl�
 3. Pokud má kterákoli z vašich aplikací spolupracovníky, budete vyzváni k odeslání e-mailu, který jim umožní znát migraci. Toto je volitelný krok.
 
    U každého spolupracovníka a aplikace se výchozí e-mailová aplikace otevře s lehce formátovaným e-mailem. E-mail můžete před odesláním upravit. Šablona e-mailu obsahuje přesné ID aplikace a název aplikace.
-   
+
    ```html
    Dear Sir/Madam,
 
@@ -89,10 +89,10 @@ Migraci je potřeba provést z portálu LUIS. Pokud vytvoříte vytváření kl�
 
    App Id: <app-ID-omitted>
    App name: Human Resources
-      
+
    Thank you
    ```
-   
+
    > [!Note]
    > Po dokončení migrace účtu do Azure už nebudou vaše aplikace k dispozici pro spolupracovníky.
 
@@ -162,7 +162,7 @@ V seznamu **Moje aplikace** se zobrazí aplikace migrované do nového prostřed
  > [!div class="mx-imgBorder"]
  > ![Pole pro odběr a zdroj obsahu](./media/create-app-in-portal-select-subscription-luis-resource.png)
 
-Pokud chcete pokračovat v úpravách vašich aplikací na portálu LUIS, nemusíte znát klíč prostředku pro vytváření obsahu. 
+Pokud chcete pokračovat v úpravách vašich aplikací na portálu LUIS, nemusíte znát klíč prostředku pro vytváření obsahu.
 
 Pokud plánujete upravit aplikace programově, budete potřebovat hodnoty pro vytváření kódu. Tyto hodnoty se zobrazí na stránce **Správa**  >  **prostředků Azure** na portálu Luis. Jsou také k dispozici ve Azure Portal na stránce **klíče** prostředku. Můžete také vytvořit další prostředky pro vytváření obsahu a přiřadit je ze stejné stránky.
 
@@ -246,5 +246,5 @@ Pokud se zobrazí následující chyba, zkontrolujte [Doporučené kroky, pokud 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si [koncepty o vytváření a klíčích modulu runtime](luis-concept-keys.md). 
+* Přečtěte si [koncepty o vytváření a klíčích modulu runtime](luis-how-to-azure-subscription.md).
 * Přečtěte si, jak [přiřadit klíče](luis-how-to-azure-subscription.md) a [Přidat přispěvatele](luis-how-to-collaborate.md).

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 8a101235f8e7aaeff455732b5c048cbc81c20079
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079044"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055490"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.65 nebo nově
 
 V mnoha prostředích jste definovali virtuální sítě a podsítě s přidělenými rozsahy IP adres. Tyto prostředky virtuální sítě se používají k podpoře více služeb a aplikací. Pro zajištění připojení k síti můžou clustery AKS používat *kubenet* (základní sítě) nebo Azure CNI (*Pokročilé sítě*).
 
-V případě *kubenet*obdrží jenom uzly IP adresu v podsíti virtuální sítě. Lusky spolu nemůžou komunikovat přímo. Místo toho se k propojení mezi různými uzly používá uživatelem definované směrování (UDR) a předávání IP. Můžete také nasadit lusky za službu, která obdrží přiřazenou IP adresu a zatížení pro vyrovnávání zatížení pro aplikaci. Následující diagram znázorňuje, jak uzly AKS obdrží IP adresu v podsíti virtuální sítě, ale ne lusky:
+V případě *kubenet*obdrží jenom uzly IP adresu v podsíti virtuální sítě. Lusky spolu nemůžou komunikovat přímo. Místo toho se k propojení mezi různými uzly používá uživatelem definované směrování (UDR) a předávání IP. Ve výchozím nastavení je udr a konfigurace předávání IP adres vytvořena a udržována službou AKS, ale je nutné použít možnost k zařazení vlastní [směrovací tabulky pro vlastní správu tras][byo-subnet-route-table]. Můžete také nasadit lusky za službu, která obdrží přiřazenou IP adresu a zatížení pro vyrovnávání zatížení pro aplikaci. Následující diagram znázorňuje, jak uzly AKS obdrží IP adresu v podsíti virtuální sítě, ale ne lusky:
 
 ![Model sítě Kubenet s clusterem AKS](media/use-kubenet/kubenet-overview.png)
 
@@ -84,7 +84,7 @@ Volba síťového modulu plug-in, který se má použít pro cluster AKS, je obv
 
 - Máte k dispozici adresní prostor IP adres.
 - Většina komunikace pod je na prostředky mimo cluster.
-- Nechcete spravovat udr.
+- Nechcete spravovat trasy definované uživatelem pro připojení pod.
 - Potřebujete AKS pokročilé funkce, jako jsou virtuální uzly nebo zásady sítě Azure.  Použijte [zásady sítě Calico][calico-network-policies].
 
 Další informace, které vám pomůžou určit, který model sítě se má použít, najdete v tématu [porovnání síťových modelů a jejich oboru podpory][network-comparisons].
@@ -139,10 +139,10 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Nyní přiřaďte instančnímu objektu oprávnění *přispěvatele* clusteru AKS ve virtuální síti pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Zadejte vlastní *\<appId>* , jak je znázorněno ve výstupu z předchozího příkazu k vytvoření instančního objektu:
+Nyní přiřaďte instančnímu objektu oprávnění *přispěvatele sítě* AKS clusteru k virtuální síti pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Zadejte vlastní *\<appId>* , jak je znázorněno ve výstupu z předchozího příkazu k vytvoření instančního objektu:
 
 ```azurecli-interactive
-az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
+az role assignment create --assignee <appId> --scope $VNET_ID --role "Network Contributor"
 ```
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Vytvoření clusteru AKS ve virtuální síti
@@ -253,6 +253,7 @@ Když je cluster AKS nasazený do stávající podsítě virtuální sítě, mů
 [az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[byo-subnet-route-table]: #bring-your-own-subnet-and-route-table-with-kubenet
 [develop-helm]: quickstart-helm.md
 [use-helm]: kubernetes-helm.md
 [virtual-nodes]: virtual-nodes-cli.md

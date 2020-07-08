@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 00d260a74807774d5bf226c3ec00a6b84f93b8d1
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5e3cd30f2ed523584ae827f51d19c6acebf72abf
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84706575"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055507"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Správa prostředků Azure pomocí Azure Portal
 
@@ -33,7 +33,7 @@ Prostředky Azure se uspořádávají podle služeb Azure a skupin prostředků.
 
 Postup otevření prostředku podle typu služby:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V levém podokně vyberte službu Azure. V tomto případě **účty úložiště**.  Pokud uvedenou službu nevidíte, vyberte **všechny služby**a potom vyberte typ služby.
 
     ![otevřít prostředek Azure na portálu](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -48,7 +48,7 @@ Postup otevření prostředku podle typu služby:
 
 Postup otevření prostředku podle skupiny prostředků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V levém podokně vyberte **skupiny prostředků** a seznam prostředků v rámci skupiny.
 3. Vyberte prostředek, který chcete otevřít. 
 
@@ -120,5 +120,5 @@ Můžete vybrat ikonu připnutí v pravém horním rohu grafů a připnout graf 
 
 - Informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](overview.md).
 - Další informace o syntaxi šablon Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](../templates/template-syntax.md).
-- Další informace o vývoji šablon najdete v [podrobných kurzech](/azure/azure-resource-manager/).
+- Další informace o vývoji šablon najdete v [podrobných kurzech](../index.yml).
 - Chcete-li zobrazit schémata šablon Azure Resource Manager, přečtěte si téma [reference šablony](/azure/templates/).

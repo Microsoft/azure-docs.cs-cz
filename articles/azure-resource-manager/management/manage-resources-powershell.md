@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: de6f24ea66ef41b5ee4bfdda5948de9639f10a51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c14e8ae7de48752466cea43205445d5bb4856c9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75485400"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055354"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Správa prostředků Azure pomocí Azure PowerShell
 
@@ -139,5 +139,5 @@ Označení pomáhá organizovat skupinu prostředků a prostředky logicky. Info
 
 - Informace o Azure Resource Manager najdete v tématu [Azure Resource Manager Overview](overview.md).
 - Další informace o syntaxi šablon Správce prostředků naleznete v tématu [pochopení struktury a syntaxe šablon Azure Resource Manager](../templates/template-syntax.md).
-- Další informace o vývoji šablon najdete v [podrobných kurzech](/azure/azure-resource-manager/).
+- Další informace o vývoji šablon najdete v [podrobných kurzech](../index.yml).
 - Chcete-li zobrazit schémata šablon Azure Resource Manager, přečtěte si téma [reference šablony](/azure/templates/).

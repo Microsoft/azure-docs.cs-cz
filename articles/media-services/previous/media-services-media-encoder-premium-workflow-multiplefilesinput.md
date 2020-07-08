@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
-ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 4a51a67200ec411f0f9362bc92bf7926f221b1f2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84712339"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056799"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Použití více vstupních souborů a vlastností komponenty s kodérem Premium
 ## <a name="overview"></a>Přehled
@@ -366,7 +366,7 @@ Teď přidejte soubory multiplexů a **výstupů** **ISO MPEG-4** a připojte PI
 
 Je nutné nastavit název výstupního souboru. Klikněte na součást **výstup souboru** a upravte výraz pro tento soubor:
 
-    ${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4
+`${ROOT_outputWriteDirectory}\${ROOT_sourceFileBaseName}_withoverlay.mp4`
 
 ![Název výstupního souboru](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture17_filenameoutput.png)
 

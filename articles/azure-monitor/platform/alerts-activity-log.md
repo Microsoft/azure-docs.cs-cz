@@ -4,12 +4,12 @@ description: Výstrahy protokolu aktivit Vytvářejte pomocí Azure Portal, šab
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 45345d06e64194224df48a33fab1e74433a1eaac
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 242192118d59f972cebe2837d74c34310cac74aa
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744266"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056255"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor  
 
@@ -199,7 +199,12 @@ Chcete-li vytvořit pravidlo upozornění protokolu aktivit pomocí šablony Azu
   ]
 }
 ```
-Předchozí vzorový JSON se dá uložit jako například sampleActivityLogAlert. JSON pro účely tohoto Názorného postupu a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
+Předchozí vzorový JSON se dá uložit jako například sampleActivityLogAlert.jspro účely tohoto podrobného návodu a dá se nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
+
+  > [!NOTE]
+  > 
+  > Všimněte si, že je možné definovat výstrahy protokolu aktivit nejvyšší úrovně v rámci předplatného.
+  > To znamená, že není k dispozici možnost k definování výstrahy u několika předplatných, proto by měla být tato definice výstraha v rámci předplatného.
 
 Následující pole jsou možnosti, které můžete použít v šabloně Azure Resource Manager pro pole podmínky: Všimněte si, že "Resource Health", "Advisor" a "Service Health" mají pole s dalšími vlastnostmi pro jejich speciální pole. 
 1. resourceId: ID prostředku ovlivněného prostředku v události protokolu aktivit, na které má být výstraha vygenerována.
@@ -213,7 +218,7 @@ Následující pole jsou možnosti, které můžete použít v šabloně Azure R
 9. Dílčí stav: obvykle stavový kód HTTP odpovídajícího volání REST, ale může také zahrnovat další řetězce popisující dílčí stav.   Příklad: OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu HTTP: 400), Nenalezeno (kód stavu HTTP: 404), konflikt (kód stavu HTTP: 409), interní chyba serveru (Stavový kód http: 500), nedostupná služba (Stavový kód http: 503), časový limit brány (kód stavu http: 504).
 10. ResourceType: typ prostředku, který byl ovlivněn událostí. Například: Microsoft. Resources/Deployments
 
-Například:
+Příklad:
 
 ```json
 "condition": {
@@ -251,7 +256,7 @@ Pokud chcete použít PowerShell k nasazení ukázkové Správce prostředků š
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 
-kde sampleActivityLogAlert. Parameters. JSON obsahuje hodnoty, které jsou k dispozici pro parametry potřebné pro vytvoření pravidla výstrahy.
+kde sampleActivityLogAlert.parameters.json obsahuje hodnoty, které jsou k dispozici pro parametry potřebné pro vytvoření pravidla výstrahy.
 
 ### <a name="use-activity-log-powershell-cmdlets"></a>Použít rutiny prostředí PowerShell pro protokol aktivit
 

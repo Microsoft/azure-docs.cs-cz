@@ -2,13 +2,13 @@
 title: Ověřování mezi registry z ACR úlohy
 description: Konfigurace úlohy Azure Container Registry (úloha ACR) pro přístup k jinému privátnímu registru služby Azure Container Registry pomocí spravované identity pro prostředky Azure
 ms.topic: article
-ms.date: 01/14/2020
-ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76842485"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057347"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Ověřování mezi registry v úloze ACR pomocí identity spravované službou Azure 
 
@@ -39,11 +39,12 @@ Pokud ještě nemáte potřebné registry kontejnerů Azure, přečtěte si tém
 
 ## <a name="prepare-base-registry"></a>Příprava základního registru
 
-Nejprve vytvořte pracovní adresář a pak vytvořte soubor s názvem souboru Dockerfile s následujícím obsahem. V tomto jednoduchém příkladu se vytvoří základní image Node. js z veřejné image v Docker Hub.
+Nejprve vytvořte pracovní adresář a pak vytvořte soubor s názvem souboru Dockerfile s následujícím obsahem. V tomto jednoduchém příkladu se vytvoří základní image Node.js z veřejné image v Docker Hub.
     
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
+
 V aktuálním adresáři spuštěním příkazu [AZ ACR Build][az-acr-build] Sestavte a nahrajte základní image do základního registru. V praxi může jiný tým nebo proces v organizaci uchovávat základní Registry.
     
 ```azurecli
@@ -62,7 +63,7 @@ steps:
   - push: ["$Registry/hello-world:$ID"]
 ```
 
-Krok sestavení používá `Dockerfile-app` soubor v úložišti [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) k sestavení image. `--build-arg` Odkazuje na základní registr pro získání základní image. Po úspěšném sestavení se obrázek vloží do registru, který se používá ke spuštění úlohy.
+Krok sestavení používá `Dockerfile-app` soubor v úložišti [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) k sestavení image. `--build-arg`Odkazuje na základní registr pro získání základní image. Po úspěšném sestavení se obrázek vloží do registru, který se používá ke spuštění úlohy.
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>Možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem
 
@@ -72,7 +73,7 @@ Kroky v této části vytvoří úlohu a umožní uživateli přiřazenou identi
 
 ### <a name="create-task"></a>Vytvořit úlohu
 
-Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity` Parametr předá ID prostředku identity přiřazené uživatelem. 
+Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity`Parametr předá ID prostředku identity přiřazené uživatelem. 
 
 ```azurecli
 az acr task create \
@@ -85,13 +86,34 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Udělení oprávnění pro získání identity základnímu registru
+
+V této části udělte spravované identitě oprávnění k vyžádání ze základního registru *mybaseregistry*.
+
+Pomocí příkazu [AZ ACR show][az-acr-show] Získejte ID prostředku základního registru a uložte ho do proměnné:
+
+```azurecli
+baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
+```
+
+Pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] přiřaďte identitu `acrpull` roli k základnímu registru. Tato role má oprávnění pouze k vyžádání imagí z registru.
+
+```azurecli
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
+```
+
+Pokračujte [přidáním přihlašovacích údajů cílového registru do úlohy](#add-target-registry-credentials-to-task).
+
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>Možnost 2: vytvoření úlohy s identitou přiřazenou systémem
 
 Kroky v této části vytvoří úlohu a povolí identitu přiřazenou systémem. Pokud místo toho chcete povolit uživatelsky přiřazenou identitu, přečtěte si část [možnost 1: vytvoření úlohy s identitou přiřazenou uživatelem](#option-1-create-task-with-user-assigned-identity). 
 
 ### <a name="create-task"></a>Vytvořit úlohu
 
-Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity` Parametr bez hodnoty umožňuje systémem přiřazenou identitu daného úkolu. 
+Vytvořte úlohu *helloworldtask* spuštěním následujícího příkazu [AZ ACR Task Create][az-acr-task-create] . Úloha se spouští bez kontextu zdrojového kódu a příkaz odkazuje na soubor `helloworldtask.yaml` v pracovním adresáři. `--assign-identity`Parametr bez hodnoty umožňuje systémem přiřazenou identitu daného úkolu. 
 
 ```azurecli
 az acr task create \
@@ -103,7 +125,7 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>Udělení oprávnění pro získání identity základnímu registru
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Udělení oprávnění pro získání identity základnímu registru
 
 V této části udělte spravované identitě oprávnění k vyžádání ze základního registru *mybaseregistry*.
 
@@ -124,7 +146,7 @@ az role assignment create \
 
 ## <a name="add-target-registry-credentials-to-task"></a>Přidat do úlohy přihlašovací údaje pro cílový registr
 
-Nyní pomocí příkazu [AZ ACR Task Credential Add přidejte][az-acr-task-credential-add] úlohu k ověření se základním registrem pomocí přihlašovacích údajů identity. Spusťte příkaz odpovídající typu spravované identity, který jste povolili v úloze. Pokud jste povolili identitu přiřazenou uživatelem, předejte jí `--use-identity` ID klienta identity. Pokud jste povolili identitu přiřazenou systémem, předejte `--use-identity [system]`.
+Nyní pomocí příkazu [AZ ACR Task Credential Add přidejte][az-acr-task-credential-add] úlohu k ověření se základním registrem pomocí přihlašovacích údajů identity. Spusťte příkaz odpovídající typu spravované identity, který jste povolili v úloze. Pokud jste povolili identitu přiřazenou uživatelem, předejte jí `--use-identity` ID klienta identity. Pokud jste povolili identitu přiřazenou systémem, předejte `--use-identity [system]` .
 
 ```azurecli
 # Add credentials for user-assigned identity to the task

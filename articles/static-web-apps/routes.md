@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e6c38f3bc695db0e27547e434a81f95fa556e84b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85295994"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056782"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Trasy ve službě Azure static Web Apps Preview
 
@@ -36,7 +36,7 @@ Následující tabulka uvádí vhodné umístění pro vložení _routes.js_ do 
 
 |Architektura/knihovna | Umístění  |
 |---------|----------|
-| Angular | _hmot_   |
+| Úhlová | _hmot_   |
 | React   | _republik_  |
 | Svelte  | _republik_   |
 | Vue     | _republik_ |
@@ -47,10 +47,10 @@ Trasy jsou definovány v _routes.jsv_ souboru jako pole pravidel směrování pr
 
 | Vlastnost pravidla  | Vyžadováno | Výchozí hodnota | Komentář                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ano      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \* _ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
-| `serve`        | Ne       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve`hodnoty musí ukazovat na skutečné soubory.  |
-| `allowedRoles` | Ne       | Anonymous     | Pole názvů rolí <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Předdefinovaná role `anonymous` platí pro všechny neověřené uživatele.<li>Předdefinovaná role `authenticated` se vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi. Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.<li>Jednotlivé uživatele jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
-| `statusCode`   | Ne       | 200           | Odpověď [kódu stavu HTTP](https://wikipedia.org/wiki/List_of_HTTP_status_codes) pro požadavek. |
+| `route`        | Yes      | Není k dispozici          | Vzor trasy požadovaný volajícím.<ul><li>[Zástupné znaky](#wildcards) jsou podporovány na konci cest směrování. Například _správce tras/ \* _ odpovídá libovolné trase v cestě _správce_ .<li>Výchozí soubor trasy je _index.html_.</ul>|
+| `serve`        | No       | Není k dispozici          | Definuje soubor nebo cestu vrácenou z požadavku. Cesta k souboru a název se mohou lišit od požadované cesty. Pokud není `serve` definována hodnota, použije se požadovaná cesta. Parametry QueryString nejsou podporovány; `serve`hodnoty musí ukazovat na skutečné soubory.  |
+| `allowedRoles` | No       | Anonymous     | Pole názvů rolí <ul><li>Mezi platné znaky patří `a-z` , `A-Z` , `0-9` a `_` .<li>Předdefinovaná role `anonymous` platí pro všechny neověřené uživatele.<li>Předdefinovaná role `authenticated` se vztahuje na všechny přihlášené uživatele.<li>Uživatelé musí patřit do alespoň jedné role.<li>Role se shodují na _nebo_ bázi. Pokud je uživatel v některé z uvedených rolí, pak je udělen přístup.<li>Jednotlivé uživatele jsou přidruženi k rolím prostřednictvím [pozvánk](authentication-authorization.md).</ul> |
+| `statusCode`   | No       | 200           | Odpověď [kódu stavu HTTP](https://wikipedia.org/wiki/List_of_HTTP_status_codes) pro požadavek. |
 
 ## <a name="securing-routes-with-roles"></a>Zabezpečení tras s rolemi
 
@@ -167,6 +167,53 @@ V následující tabulce jsou uvedeny potlačení dostupných chyb platformy:
 | `Unauthorized_TooManyUsers` | 401 | Lokalita dosáhla maximálního počtu uživatelů a server omezuje další doplňky. Tato chyba je k dispozici klientovi, protože neexistuje žádné omezení počtu [požadavků](authentication-authorization.md) , které můžete vygenerovat, a někteří uživatelé nemusí nikdy přijmout svou pozvánku.|
 | `Unauthorized_Unknown` | 401 | Při pokusu o ověření uživatele došlo k neznámému problému. Jednou z příčin této chyby je, že uživatel není rozpoznaný, protože neudělil souhlas aplikaci.|
 
+## <a name="custom-mime-types"></a>Vlastní typy MIME
+
+`mimeTypes`Objekt, který je uveden na stejné úrovni jako `routes` pole, umožňuje přidružit [typy MIME](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) k příponám souborů.
+
+```json
+{
+    "routes": [],
+    "mimeTypes": {
+        "custom": "text/html"
+    }
+}
+```
+
+V předchozím příkladu jsou všechny soubory s `.custom` příponou obsluhovány pomocí `text/html` typu MIME.
+
+Při práci s typy MIME jsou důležité tyto okolnosti:
+
+- Klíče nemohou mít hodnotu null ani být prázdné ani delší než 50 znaků.
+- Hodnoty nemůžou být null ani prázdné ani delší než 1000 znaků.
+
+## <a name="default-headers"></a>Výchozí hlavičky
+
+`defaultHeaders`Objekt, který je uveden na stejné úrovni jako `routes` pole, umožňuje přidat, upravit nebo odebrat [hlavičky odpovědí](https://developer.mozilla.org/docs/Web/HTTP/Headers).
+
+Zadáním hodnoty pro záhlaví buď přidáte nebo změníte hlavičku. Zadáním prázdné hodnoty odeberete hlavičku, která má být obsluhována klientovi.
+
+```json
+{
+    "routes": [],
+    "defaultHeaders": {
+      "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'",
+      "cache-control": "must-revalidate, max-age=6000",
+      "x-dns-prefetch-control": ""
+    }
+}
+```
+
+V předchozím příkladu `content-security-policy` je přidána nová hlavička, `cache-control` mění se výchozí hodnota serveru a `x-dns-prefectch-control` Hlavička je odebrána.
+
+Při práci s hlavičkami jsou důležité následující důležité informace:
+
+- Klíč nemůže mít hodnotu null ani být prázdný.
+- Hodnoty null nebo prázdné hodnoty odstraňují hlavičku ze zpracování.
+- Klíče nebo hodnoty nesmí být delší než 8 000 znaků.
+- Definované hlavičky jsou obsluhovány se všemi požadavky.
+- Hlavičky definované v _routes.js_ platí jenom pro statický obsah. V kódu funkce můžete přizpůsobit hlavičky odpovědí koncového bodu rozhraní API.
+
 ## <a name="example-route-file"></a>Příklad souboru směrování
 
 Následující příklad ukazuje, jak vytvořit pravidla směrování pro statický obsah a rozhraní API v _routes.js_ v souboru. Některé trasy používají [systémovou složku _/.auth_ ](authentication-authorization.md) , která přistupuje k koncovým bodům souvisejícím s ověřováním.
@@ -222,24 +269,33 @@ Následující příklad ukazuje, jak vytvořit pravidla směrování pro static
       "statusCode": "302",
       "serve": "/login"
     }
-  ]
+  ],
+  "defaultHeaders": {
+    "content-security-policy": "default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'"
+  },
+  "mimeTypes": {
+      "custom": "text/html"
+  }
 }
 ```
 
 Následující příklady popisují, co se stane, když požadavek odpovídá pravidlu.
 
-|Požadavky na...  | Výsledek... |
-|---------|---------|---------|
+| Požadavky na... | Výsledek... |
+|--|--|--|
 | _/Profile_ | Ověřeným uživatelům se obsluhuje soubor _/profile/index.html_ . Neověření uživatelé přesměrováni na _/Login_. |
 | _/admin/reports_ | Ověřeným uživatelům v roli _správců_ se obsluhuje soubor _/admin/Reports/index.html_ . Ověřeným uživatelům, kteří nejsou v roli _Administrators_ , se doplní chybová zpráva 401.<sup>2</sup>. Neověření uživatelé přesměrováni na _/Login_. |
 | _/api/admin_ | Žádosti od ověřených uživatelů v roli _Administrators_ se odesílají do rozhraní API. Ověřeným uživatelům, kteří nejsou v roli _správců_ a neověřeným uživatelům, je zpracována chyba 401. |
 | _/customers/contoso_ | Ověřeným uživatelům, kteří patří do rolí _správců nebo správců_ _ \_ společnosti Contoso_ , je dodáván soubor _/Customers/contoso/index.html_ <sup>2</sup>. U ověřených uživatelů, kteří nejsou ve _skupině Administrators_ nebo _Customers role \_ Contoso_ , se doplní chyba 401. Neověření uživatelé přesměrováni na _/Login_. |
-| _/Login_     | Neověření uživatelé mají k ověření pomocí GitHubu výzvy. |
-| _/.auth/login/twitter_     | Autorizace pomocí Twitteru je zakázaná. Server odpoví chybou 404. |
-| _/logout_     | Uživatelé se odhlásí od jakéhokoli poskytovatele ověřování. |
+| _/Login_ | Neověření uživatelé mají k ověření pomocí GitHubu výzvy. |
+| _/.auth/login/twitter_ | Autorizace pomocí Twitteru je zakázaná. Server odpoví chybou 404. |
+| _/logout_ | Uživatelé se odhlásí od jakéhokoli poskytovatele ověřování. |
 | _/calendar/2020/01_ | V prohlížeči se dosloužil soubor _/calendar.html_ . |
 | _/specials_ | Prohlížeč se přesměruje na _/Deals_. |
-| _/unknown-folder_     | Soubor _/custom-404.html_ se obsluhuje. |
+| _/unknown-folder_ | Soubor _/custom-404.html_ se obsluhuje. |
+| Soubory s `.custom` příponou | Jsou obsluhovány s `text/html` typem MIME |
+
+- Všechny odpovědi obsahují `content-security-policy` záhlaví s hodnotou `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
 
 <sup>1</sup> pravidla směrování pro funkce rozhraní API podporují jenom [přesměrování](#redirects) a [zabezpečení tras s rolemi](#securing-routes-with-roles).
 

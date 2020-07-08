@@ -105,9 +105,6 @@
           href: luis-concept-test.md
         - name: Dávkové testování
           href: luis-concept-batch-test.md
-    - name: Klíče pro vytváření obsahu a běhové klíče
-      displayName: 'shared, transfer, ownership, author, access, import'
-      href: luis-concept-keys.md
     - name: Správa dat
       items:
         - name: Změna dat

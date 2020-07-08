@@ -3,12 +3,12 @@ title: Zálohování souborů a složek – běžné otázky
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254746"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056170"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné dotazy týkající se zálohování souborů a složek
 
@@ -112,7 +112,7 @@ Velikost složky mezipaměti určuje množství dat, která zálohujete.
 1. Spuštěním tohoto příkazu v příkazovém řádku se zvýšenými oprávněními zastavte modul zálohování:
 
     ```Net stop obengine```
-2. Pokud jste nakonfigurovali zálohování stavu systému, otevřete správu disků a odpojte disky s názvy ve formátu `"CBSSBVol_<ID>"`.
+2. Pokud jste nakonfigurovali zálohování stavu systému, otevřete správu disků a odpojte disky s názvy ve formátu `"CBSSBVol_<ID>"` .
 3. Ve výchozím nastavení se složka pro pomocné složky nachází v`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 4. Zkopírujte celou `\Scratch` složku na jinou jednotku, která má dostatek místa. Přesvědčte se, zda je obsah zkopírován, nikoli přesunut.
 5. Aktualizujte následující položky registru s cestou nově přesunuté pomocné složky.
@@ -159,12 +159,13 @@ Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit �
 
 ### <a name="manage"></a>Spravovat
 
-**Můžu obnovit heslo?**
+#### <a name="can-i-recover-if-i-forgot-my-passphrase"></a>Můžu obnovit heslo?
+
 Agent Azure Backup vyžaduje heslo (které jste zadali během registrace) k dešifrování zálohovaných dat během obnovování. Přečtěte si níže uvedené scénáře, abyste porozuměli vašim možnostem zpracování ztraceného hesla:
 
 | Původní počítač <br> *(zdrojový počítač, ve kterém proběhlo zálohování)* | Hesel | Dostupné možnosti |
 | --- | --- | --- |
-| K dispozici. |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
+| K dispozici |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 Vezměte v úvahu následující podmínky:
@@ -177,14 +178,18 @@ Vezměte v úvahu následující podmínky:
   * *Jiné heslo*, nebudete moci obnovit zálohovaná data.
 * Pokud je původní počítač poškozený (bráníte opětovnému generování hesla přes konzolu MARS), ale můžete obnovit nebo získat přístup k původní pomocné složce používané agentem Mars, pak budete moct obnovit (Pokud jste zapomněli heslo). Pokud potřebujete další pomoc, obraťte se na zákaznickou podporu.
 
-**Návody obnovení po ztrátě původního počítače (kde se prováděly zálohy)?**
+#### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>Návody obnovení po ztrátě původního počítače (kde se prováděly zálohy)?
 
 Pokud máte stejné heslo (které jste zadali během registrace) původního počítače, pak můžete zálohovaná data obnovit na jiný počítač. Další informace o možnostech obnovení najdete v následujících scénářích.
 
 | Původní počítač | Hesel | Dostupné možnosti |
 | --- | --- | --- |
-| Ztráty |K dispozici. |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. Chcete-li provést obnovení, vyberte **možnost** > obnovení**jiné umístění** . Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Ztráty |K dispozici |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. **Recovery Option**  >  Chcete-li provést obnovení, vyberte možnost obnovení**jiné umístění** . Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
+
+### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Úlohy zálohování se nezdařily nebo nejsou spuštěny po dlouhou dobu. Jsem po dobu uchování. Můžu I nadále obnovit?
+
+V rámci bezpečnostního opatření Azure Backup zachová poslední bod obnovení, a to i v případě, že zůstane po dobu uchování. Jakmile budou zálohy obnoveny a budou k dispozici nové body obnovení, bude starší bod obnovení odebrán podle zadaného uchovávání.
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Co se stane, když zruším probíhající úlohu obnovení?
 

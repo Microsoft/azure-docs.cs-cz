@@ -3,18 +3,19 @@ title: Jak používat klíč pro vytváření a modul runtime – LUIS
 description: Při prvním použití Language Understanding (LUIS) není nutné vytvářet klíč pro vytváření obsahu. Pokud máte v úmyslu publikovat aplikaci, pak použijte koncový bod za běhu, musíte pro aplikaci vytvořit a přiřadit klíč modulu runtime.
 services: cognitive-services
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 5f6d62a63ea5ae0d3e4ca5913d6e7834ba07692a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/07/2020
+ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560432"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055762"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
 Materiály pro modul runtime pro vytváření a předpověď dotazů poskytují ověřování do vaší aplikace LUIS a koncového bodu předpovědi.
 
+<a name="azure-resources-for-luis"></a>
 <a name="programmatic-key" ></a>
 <a name="endpoint-key"></a>
 <a name="authoring-key"></a>
@@ -38,7 +39,7 @@ Je důležité vytvářet aplikace LUIS v [oblastech](luis-reference-regions.md#
 
 Prostředek Azure, jako je třeba LUIS, je vlastněn předplatným, které tento prostředek obsahuje.
 
-Pro přenos vlastnictví prostředku může organizační jednotka buď:
+Chcete-li přenést vlastnictví prostředku, můžete:
 * Přenos [vlastnictví](../../cost-management-billing/manage/billing-subscription-transfer.md) předplatného
 * Exportujte aplikaci LUIS jako soubor a pak importujte aplikaci v jiném předplatném. Export je k dispozici na stránce **Moje aplikace** na portálu Luis.
 
@@ -70,6 +71,8 @@ Pro aplikace, které ještě nebyly migrovány: klíč se resetuje na všech va�
 
 Znovu vygenerujte klíče Azure z Azure Portal na stránce **klíče** .
 
+
+<a name="securing-the-endpoint"></a>
 
 ## <a name="app-ownership-access-and-security"></a>Vlastnictví aplikace, přístup a zabezpečení
 
@@ -158,11 +161,10 @@ Můžete určit, kdo může zobrazit klíč koncového bodu LUIS předpovědi, v
 1. Po dokončení procesu výběru prostředků [vytvořte novou aplikaci](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
 
-## <a name="create-azure-resources"></a>Vytvoření prostředků Azure
-
+<a name="create-azure-resources"></a>
 <a name="create-resources-in-the-azure-portal"></a>
 
-[!INCLUDE [Create LUIS resource in Azure Portal](includes/create-luis-resource.md)]
+[!INCLUDE [Create LUIS resource in Azure portal](includes/create-luis-resource.md)]
 
 ### <a name="create-resources-in-azure-cli"></a>Vytváření prostředků v Azure CLI
 

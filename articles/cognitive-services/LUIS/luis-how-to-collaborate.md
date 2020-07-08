@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: f1aed6b1c03a2b83e3b4fd91f1106614adb5a701
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d1f534b801ec3a71e891bf654628f9e49fc04b0d
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344386"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055626"
 ---
 # <a name="add-contributors-to-your-app"></a>Přidání přispěvatelů do aplikace
 
@@ -97,6 +97,6 @@ Další informace o uživatelích a souhlasu Azure Active Directory:
 ## <a name="next-steps"></a>Další kroky
 
 * Naučte se [používat verze](luis-how-to-manage-versions.md) k řízení životního cyklu aplikace.
-* Seznamte se s koncepty, včetně [prostředků pro vytváření](luis-concept-keys.md#authoring-key) a [přispěvatelů](luis-concept-keys.md#contributions-from-other-authors) na tomto prostředku.
+* Seznamte se s koncepty, včetně [prostředků pro vytváření](luis-how-to-azure-subscription.md#authoring-key) a [přispěvatelů](luis-how-to-azure-subscription.md#contributions-from-other-authors) na tomto prostředku.
 * Naučte [se vytvářet prostředky pro](luis-how-to-azure-subscription.md) vytváření obsahu a modul runtime
 * Migrace na nový [prostředek pro vytváření](luis-migration-authoring.md)

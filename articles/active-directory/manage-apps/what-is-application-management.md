@@ -1,6 +1,6 @@
 ---
 title: Správa aplikací pomocí služby Azure Active Directory | Microsoft Docs
-description: Přehled použití Azure Active Directory (AD) jako systému správy identit a autorizace (IAM) pro vaše cloudové a místní aplikace.
+description: Přehled použití Azure Active Directory (AD) jako systému správy identit a přístupu (IAM) pro vaše cloudové a místní aplikace.
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -12,16 +12,16 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d69da3f1e9a505d14974a7a3089acca0e17c713
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9aae292d97457ebe1d36a839b779b9233037ea60
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85549532"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055201"
 ---
 # <a name="what-is-application-management"></a>Co je správa aplikací?
 
-Azure AD je systém pro správu identit a autorizací (IAM). Poskytuje jediné místo pro ukládání informací o digitálních identitách. Softwarové aplikace můžete nakonfigurovat tak, aby používaly Azure AD jako místo, kde jsou uložené informace o uživateli. 
+Azure AD je systém správy identit a přístupu (IAM). Poskytuje jediné místo pro ukládání informací o digitálních identitách. Softwarové aplikace můžete nakonfigurovat tak, aby používaly Azure AD jako místo, kde jsou uložené informace o uživateli. 
 
 Služba Azure AD musí být nakonfigurovaná tak, aby se mohla integrovat s aplikací. Jinými slovy, musí znát, co aplikace používají jako systém identit. Proces uchovávání těchto aplikací na základě služby Azure AD a způsobu jejich zpracování se označuje jako Správa aplikací.
 
@@ -29,12 +29,12 @@ Aplikace spravujete v okně **podnikové aplikace** , které najdete v části S
 
 ![Možnost podnikové aplikace v části spravovat na portálu Azure AD.](media/what-is-application-management/enterprise-applications-in-nav.png)
 
-## <a name="what-is-an-identity-and-authorization-management-iam-system"></a>Co je systém pro správu identit a autorizací (IAM)?
+## <a name="what-is-an-identity-and-access-management-iam-system"></a>Co je systém pro správu identit a přístupu (IAM)?
 Aplikace je software, který se používá k nějakému účelu. Většina aplikací vyžaduje, aby se uživatelé přihlásili, aby aplikace mohla poskytovat přizpůsobené prostředí pro konkrétního uživatele. Jinými slovy aplikace potřebuje znát identitu uživatele pomocí aplikace. Protože ví, jakou funkci má uživatel nabízet nebo odebírat,
 
 Pokud každá aplikace udržuje přehled o uživatelích samostatně, pak by výsledkem bylo silo různých uživatelských jmen a přihlášení pro každou aplikaci. Jedna aplikace by neznala žádné informace o uživatelích v jiných aplikacích.
 
-Centralizovaný systém identit tento problém vyřeší tím, že poskytuje jediné místo pro ukládání informací o uživateli, které mohou být použity všemi aplikacemi. Tyto systémy jsou známé jako systémy správy identit a autorizací (IAM). Azure Active Directory je systém IAM pro Cloud Microsoftu.
+Centralizovaný systém identit tento problém vyřeší tím, že poskytuje jediné místo pro ukládání informací o uživateli, které mohou být použity všemi aplikacemi. Tyto systémy jsou známé jako systémy správy identit a přístupu (IAM). Azure Active Directory je systém IAM pro Cloud Microsoftu.
 
 >[!TIP]
 >Systém IAM poskytuje jediné místo, kde si můžete sledovat identity uživatelů. Azure AD je systém IAM pro Cloud Microsoftu.

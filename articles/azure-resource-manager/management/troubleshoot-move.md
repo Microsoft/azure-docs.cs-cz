@@ -3,12 +3,12 @@ title: Řešení chyb přesunutí
 description: K přesunutí prostředků do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60e4ffb2b79fcce85fa4b316e68e191eb14f8bf0
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75891262"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055075"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Řešení potíží s přesunem prostředků Azure do nové skupiny prostředků nebo nového předplatného
 
@@ -18,8 +18,8 @@ Tento článek popisuje návrhy, které vám pomůžou vyřešit problémy při 
 
 Pokud ve skutečnosti chcete upgradovat předplatné Azure (jako je například přepínání z bezplatného na průběžné platby), budete muset převést své předplatné.
 
-* Pokud chcete upgradovat bezplatnou zkušební verzi, přečtěte si téma [upgrade bezplatné zkušební verze nebo Microsoft Imagine předplatné Azure na průběžné platby](../../billing/billing-upgrade-azure-subscription.md).
-* Pokud chcete změnit účet s průběžnými platbami, přečtěte si téma [Změna předplatného s průběžnými platbami Azure na jinou nabídku](../../billing/billing-how-to-switch-azure-offer.md).
+* Pokud chcete upgradovat bezplatnou zkušební verzi, přečtěte si téma [upgrade bezplatné zkušební verze nebo Microsoft Imagine předplatné Azure na průběžné platby](../../cost-management-billing/manage/upgrade-azure-subscription.md).
+* Pokud chcete změnit účet s průběžnými platbami, přečtěte si téma [Změna předplatného s průběžnými platbami Azure na jinou nabídku](../../cost-management-billing/manage/switch-azure-offer.md).
 
 Pokud předplatné nepřevedete, [vytvořte žádost o podporu Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md). Jako typ problému vyberte **Správa předplatného** .
 
@@ -32,7 +32,7 @@ Některé služby vyžadují při přesunu prostředků další předpoklady. Po
 * [Model nasazení Classic](./move-limitations/classic-model-move-limitations.md)
 * [Sítě](./move-limitations/networking-move-limitations.md)
 * [Recovery Services](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
-* [Virtuální počítače](./move-limitations/virtual-machines-move-limitations.md)
+* [Virtual Machines](./move-limitations/virtual-machines-move-limitations.md)
 
 ## <a name="large-requests"></a>Velké požadavky
 

@@ -3,12 +3,12 @@ title: Omezení – LUIS
 description: Tento článek obsahuje známé limity Azure Cognitive Services Language Understanding (LUIS). LUIS má několik omezených oblastí. Model omezuje ovládací prvky pro záměry, entity a funkce v LUIS. Omezení kvóty na základě typu klíče. Kombinace kláves řídí web LUIS.
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: fce4aab0221cf050ce175c582f21de58b6e27eac
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 79a59408ec7d0cdfa4ded07e196a75a28143c20c
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84976978"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055337"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Omezení pro LUIS model a klíče
 LUIS má několik omezených oblastí. První je [limit modelu](#model-limits), který řídí záměry, entity a funkce v Luis. Druhá oblast má [omezení kvóty](#key-limits) na základě typu klíče. Třetí oblastí omezení je [kombinace kláves](#keyboard-controls) pro řízení webu Luis. Čtvrtá oblast je [mapování světové oblasti](luis-reference-regions.md) mezi vytvářením webu Luis a rozhraními API [koncového bodu](luis-glossary.md#endpoint) Luis.
@@ -68,7 +68,7 @@ V následujících názvech nepoužívejte následující znaky.
 
 ## <a name="resource-usage-and-limits"></a>Využití a omezení prostředků
 
-Porozumění jazyku má samostatné prostředky, jeden typ pro vytváření obsahu a jeden typ pro dotazování koncového bodu předpovědi. Další informace o rozdílech mezi typy klíčů najdete v tématu [vytváření klíčů koncových bodů a předpovědi dotazů v Luis](luis-concept-keys.md).
+Porozumění jazyku má samostatné prostředky, jeden typ pro vytváření obsahu a jeden typ pro dotazování koncového bodu předpovědi. Další informace o rozdílech mezi typy klíčů najdete v tématu [vytváření klíčů koncových bodů a předpovědi dotazů v Luis](luis-how-to-azure-subscription.md).
 
 <a name="key-limits"></a>
 

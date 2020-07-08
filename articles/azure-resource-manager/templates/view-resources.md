@@ -3,12 +3,12 @@ title: Zjistit vlastnosti prostředku
 description: Popisuje, jak vyhledat vlastnosti prostředku.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 6e00ee875d9b0f7fadf27a44c55920872c815045
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 75c089ac9d0ca08c788fea1ac9011f018ef0195e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668555"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057071"
 ---
 # <a name="discover-resource-properties"></a>Zjistit vlastnosti prostředku
 
@@ -16,7 +16,7 @@ Před vytvořením Správce prostředků šablon potřebujete pochopit, jaké ty
 
 ## <a name="find-resource-provider-namespaces"></a>Najít obory názvů poskytovatele prostředků
 
-Prostředky v šabloně ARM jsou definované pomocí oboru názvů poskytovatele prostředků a typu prostředku. Například Microsoft. Storage/storageAccounts je úplný název typu prostředku účtu úložiště. Microsoft. Storage je obor názvů. Pokud ještě neznáte obory názvů pro typy prostředků, které chcete použít, přečtěte si téma [poskytovatelé prostředků pro služby Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-services-resource-providers).
+Prostředky v šabloně ARM jsou definované pomocí oboru názvů poskytovatele prostředků a typu prostředku. Například Microsoft. Storage/storageAccounts je úplný název typu prostředku účtu úložiště. Microsoft. Storage je obor názvů. Pokud ještě neznáte obory názvů pro typy prostředků, které chcete použít, přečtěte si téma [poskytovatelé prostředků pro služby Azure](../management/azure-services-resource-providers.md).
 
 ![Správce prostředků mapování oboru názvů poskytovatele prostředků](./media/view-resources/resource-provider-namespace-and-azure-service-mapping.png)
 

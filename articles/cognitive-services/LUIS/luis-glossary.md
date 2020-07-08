@@ -3,12 +3,12 @@ title: Glosář – LUIS
 description: Glosář vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS API.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681616"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056374"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Jazyk porozumění běžným slovníkům a konceptům
 Glosář Language Understanding (LUIS) vysvětluje výrazy, se kterými se můžete setkat při práci se službou LUIS.
@@ -38,11 +38,11 @@ Vytváření, Správa a nasazování aplikace LUIS, a to buď pomocí portálu L
 
 ### <a name="authoring-key"></a>Vytváření klíče
 
-[Klíč pro vytváření obsahu](luis-concept-keys.md) slouží k vytváření aplikací. Nepoužívá se pro dotazy na koncové body na úrovni výroby. Další informace najdete v tématu [omezení klíčů](luis-limits.md#key-limits).
+[Klíč pro vytváření obsahu](luis-how-to-azure-subscription.md) slouží k vytváření aplikací. Nepoužívá se pro dotazy na koncové body na úrovni výroby. Další informace najdete v tématu [omezení klíčů](luis-limits.md#key-limits).
 
 ### <a name="authoring-resource"></a>Vytváření prostředku
 
-Prostředek pro [vytváření obsahu](luis-concept-keys.md#azure-resources-for-luis) Luis je spravovatelná položka, která je dostupná prostřednictvím Azure. Prostředek je váš přístup k přidruženým schopnostem vytváření obsahu, školení a publikování služby Azure. Prostředek obsahuje informace o ověřování, autorizaci a zabezpečení, které potřebujete pro přístup k přidružené službě Azure.
+Prostředek pro [vytváření obsahu](luis-how-to-azure-subscription.md#azure-resources-for-luis) Luis je spravovatelná položka, která je dostupná prostřednictvím Azure. Prostředek je váš přístup k přidruženým schopnostem vytváření obsahu, školení a publikování služby Azure. Prostředek obsahuje informace o ověřování, autorizaci a zabezpečení, které potřebujete pro přístup k přidružené službě Azure.
 
 Prostředek pro vytváření obsahu obsahuje typ Azure `LUIS-Authoring` .
 
@@ -234,7 +234,7 @@ Předpovědi je žádost REST ke službě předpovědi Azure LUIS, která přeb�
 
 ### <a name="prediction-key"></a>Klíč předpovědi
 
-[Klíč předpovědi](luis-concept-keys.md) (dříve označovaný jako klíč předplatného) je klíč přidružený ke službě Luis, kterou jste vytvořili v Azure, která slouží k autorizaci využití koncového bodu předpovědi.
+[Klíč předpovědi](luis-how-to-azure-subscription.md) (dříve označovaný jako klíč předplatného) je klíč přidružený ke službě Luis, kterou jste vytvořili v Azure, která slouží k autorizaci využití koncového bodu předpovědi.
 
 Tento klíč není klíč pro vytváření. Pokud máte klíč koncového bodu předpovědi, měl by se místo vytváření klíče použít pro všechny požadavky na koncový bod. Aktuální klíč předpovědi si můžete prohlédnout v adrese URL koncového bodu na dolní části stránky prostředků Azure na webu LUIS. Je to hodnota dvojice název/hodnota klíče předplatného.
 
@@ -290,7 +290,7 @@ V LUIS [seznam entit](reference-entity-list.md)můžete vytvořit normalizovanou
 
 Model Vrátí normalizovanou hodnotu pro entitu, pokud se ve vstupu objeví kterákoli z synonym.
 
-## <a name="test"></a>Testování
+## <a name="test"></a>Test
 
 [Testování](luis-concept-test.md) aplikace Luis znamená zobrazení modelu předpovědi.
 
@@ -300,7 +300,7 @@ Koncový bod zahrnuje [timezoneOffset](luis-concept-data-alteration.md#change-ti
 
 Podívejte se [na téma Změna časového pásma předem sestavené entity datetimeV2](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
 
-## <a name="token"></a>Podpisový
+## <a name="token"></a>Token
 [Token](luis-language-support.md#tokenization) je nejmenší jednotka textu, kterou může Luis rozeznat. To se mírně liší v různých jazycích.
 
 Pro **angličtinu**je token souvislým rozsahem písmen a číslic (bez mezer nebo interpunkčních znamének). Prostor není token.

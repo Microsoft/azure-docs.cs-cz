@@ -2,13 +2,13 @@
 title: Označení prostředků, skupin prostředků a předplatných pro logickou organizaci
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: c06bd5f44f01a98e3a39d0cf404713e0d0546192
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 07/01/2020
+ms.openlocfilehash: 9dd025818a64a8ece1f4218a8341a40ecc617829
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791924"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056918"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -17,7 +17,9 @@ Značky můžete použít pro prostředky Azure, skupiny prostředků a odběry 
 Doporučení, jak implementovat strategii označování, najdete v článku [Průvodce vytvářením názvů prostředků a označování označením](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).
 
 > [!IMPORTANT]
-> V názvech značek se nerozlišují malá a velká písmena. Hodnoty značek rozlišují velká a malá písmena.
+> V názvech značek se operace nerozlišují malá a velká písmena. Značka s názvem značky, bez ohledu na velikost písmen, je aktualizována nebo načtena. Poskytovatel prostředků ale může uchovávat velká a malá písmena, která zadáte pro název značky. V sestavách nákladů se zobrazí velká a malá písmena.
+> 
+> Hodnoty značek rozlišují velká a malá písmena.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 
@@ -576,7 +578,7 @@ Značky použité pro skupinu prostředků nebo odběr nejsou děděny prostřed
 
 Můžete je použít třeba k seskupení údajů o fakturaci. Pokud například používáte odlišný virtuální počítač pro každou organizační složku, můžete pomocí značek seskupit údaje o využití podle nákladových středisek. Značky lze použít také ke kategorizaci nákladů podle prostředí modulu spuštění, jako je například fakturované využití virtuálních počítačů běžících v produkčním prostředí.
 
-Můžete načítat informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a ratecard](../../billing/billing-usage-rate-card-overview.md) nebo souborů hodnot oddělených čárkami (CSV). Soubor využití si můžete stáhnout z [centrum účtů Azure](https://account.azure.com/Subscriptions) nebo Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../../billing/billing-download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
+Můžete načítat informace o značkách prostřednictvím [rozhraní API pro využití prostředků Azure a ratecard](../../cost-management-billing/manage/usage-rate-card-overview.md) nebo souborů hodnot oddělených čárkami (CSV). Soubor využití si můžete stáhnout z [centrum účtů Azure](https://account.azure.com/Subscriptions) nebo Azure Portal. Další informace najdete v tématech [stažení nebo zobrazení fakturačních faktur Azure a dat o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Při stahování souboru využití z Centrum účtů Azure vyberte možnost **verze 2**. Pro služby, které podporují značky s fakturací, se značky zobrazí ve sloupci **značky** .
 
 Informace o REST API operacích najdete v [referenčních informacích o fakturačních REST API Azure](/rest/api/billing/).
 

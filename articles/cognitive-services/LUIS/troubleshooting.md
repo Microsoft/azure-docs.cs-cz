@@ -4,18 +4,18 @@ description: Tento článek obsahuje odpovědi na nejčastější dotazy týkaj�
 ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 15f2cf3c06e56656efd68d472cabd1da52c375cc
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b45f3c43e70502b2734696a66d2a497c2213d1b9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343532"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054827"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Novinky
+## <a name="whats-new"></a>Co je nového
 
 [Přečtěte si další](whats-new.md) informace o novinkách v Language UNDERSTANDING (Luis).
 
@@ -43,7 +43,7 @@ Ano, je dobré naučit svůj záměr **none** s více projevy při přidávání
 Přečtěte si kurz [rozhraní API Bingu pro kontrolu pravopisu v7](luis-tutorial-bing-spellcheck.md) . LUIS vynucuje omezení vyplývající z rozhraní API Bingu pro kontrolu pravopisu v7.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Návody aplikaci LUIS programově upravit?
-Pokud chcete aplikaci LUIS upravit programově, použijte [rozhraní API pro vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087). Příklady, jak volat rozhraní API pro vytváření, najdete v tématu [volání rozhraní API pro volání Luis](./get-started-get-model-rest-apis.md) a [Vytvoření aplikace Luis programově pomocí Node. js](./luis-tutorial-node-import-utterances-csv.md) . Rozhraní API pro vytváření obsahu vyžaduje použití [klíčového obsahu](luis-concept-keys.md#azure-resources-for-luis) místo klíče koncového bodu. Programový vytváření obsahu umožňuje až 1 000 000 volání za měsíc a pět transakcí za sekundu. Další informace o klíčích, které používáte se službou LUIS, najdete v tématu [Správa klíčů](./luis-concept-keys.md).
+Pokud chcete aplikaci LUIS upravit programově, použijte [rozhraní API pro vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087). Příklady volání rozhraní API pro vytváření najdete v tématu [volání rozhraní API pro Luis](./get-started-get-model-rest-apis.md) a vytváření [aplikací Luis pomocí Node.js](./luis-tutorial-node-import-utterances-csv.md) . Rozhraní API pro vytváření obsahu vyžaduje použití [klíčového obsahu](luis-how-to-azure-subscription.md#azure-resources-for-luis) místo klíče koncového bodu. Programový vytváření obsahu umožňuje až 1 000 000 volání za měsíc a pět transakcí za sekundu. Další informace o klíčích, které používáte se službou LUIS, najdete v tématu [Správa klíčů](./luis-how-to-azure-subscription.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Kde je funkce vzoru, která poskytuje porovnávání regulárních výrazů?
 Předchozí **funkce vzoru** je aktuálně zastaralá, Nahrazená **[vzorci](luis-concept-patterns.md)**.
@@ -123,7 +123,7 @@ Projděte si [osvědčené postupy](luis-concept-best-practices.md) pro další 
 LUIS [tokenizes](luis-glossary.md#token) utterance na základě [jazykové verze](luis-language-support.md#tokenization). Pro [extrakci dat](luis-concept-data-extraction.md#tokenized-entity-returned)jsou k dispozici jak původní hodnota, tak i hodnota s tokeny.
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Návody vytvořit a přiřadit klíč koncového bodu LUIS?
-[Vytvořte v Azure klíč koncového bodu](luis-how-to-azure-subscription.md) pro vaši úroveň [služeb](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) . [Přiřaďte klíč](luis-how-to-azure-subscription.md) na stránce **[prostředky Azure](luis-how-to-azure-subscription.md)** . Pro tuto akci není k dispozici žádné odpovídající rozhraní API. Pak musíte požadavek HTTP změnit na koncový bod, aby [používal nový klíč koncového bodu](luis-concept-keys.md).
+[Vytvořte v Azure klíč koncového bodu](luis-how-to-azure-subscription.md) pro vaši úroveň [služeb](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) . [Přiřaďte klíč](luis-how-to-azure-subscription.md) na stránce **[prostředky Azure](luis-how-to-azure-subscription.md)** . Pro tuto akci není k dispozici žádné odpovídající rozhraní API. Pak musíte požadavek HTTP změnit na koncový bod, aby [používal nový klíč koncového bodu](luis-how-to-azure-subscription.md).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Návody interpretovat skóre LUIS?
 Váš systém by měl používat nejvyšší záměr bodování bez ohledu na jeho hodnotu. Například skóre nižší než 0,5 (méně než 50%) nemusí nutně znamenat, že LUIS má nízkou důvěru. Poskytování více školicích dat může přispět ke zvýšení [skóre](luis-concept-prediction-score.md) nejpravděpodobnějšího záměru.
@@ -144,10 +144,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Moje aplikace LUIS fungovala včera, ale dnes jsem 403 chyb. Nezměnil (a) jsem aplikaci. Jak ho mám opravit?
-Podle těchto [pokynů](#how-do-i-create-and-assign-a-luis-endpoint-key) vytvořte klíč koncového bodu Luis a přiřaďte ho k aplikaci. Pak je nutné změnit požadavek HTTP klientské aplikace na koncový bod tak, aby [používal nový klíč koncového bodu](luis-concept-keys.md). Pokud jste vytvořili nový prostředek v jiné oblasti, změňte také oblast žádosti klienta HTTP.
+Podle těchto [pokynů](#how-do-i-create-and-assign-a-luis-endpoint-key) vytvořte klíč koncového bodu Luis a přiřaďte ho k aplikaci. Pak je nutné změnit požadavek HTTP klientské aplikace na koncový bod tak, aby [používal nový klíč koncového bodu](luis-how-to-azure-subscription.md). Pokud jste vytvořili nový prostředek v jiné oblasti, změňte také oblast žádosti klienta HTTP.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Návody zabezpečený koncový bod LUIS?
-Viz [zabezpečení koncového bodu](luis-concept-keys.md#securing-the-endpoint).
+Viz [zabezpečení koncového bodu](luis-how-to-azure-subscription.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>Práce v rámci omezení LUIS
 
@@ -206,7 +206,7 @@ Pokud vaše aplikace existovala ještě dřív, než LUIS byla všeobecně dostu
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Návody vědět, jakou klávesu potřebuji, jak ji získám a co s nimi mám dělat?
 
-Další informace o rozdílech mezi klíčovým slovem pro tvorbu a klíčovým modulem runtime najdete [v tématu klíče koncových bodů pro vytváření a předpovědi dotazů v Luis](luis-concept-keys.md) .
+Další informace o rozdílech mezi klíčovým slovem pro tvorbu a klíčovým modulem runtime najdete [v tématu klíče koncových bodů pro vytváření a předpovědi dotazů v Luis](luis-how-to-azure-subscription.md) .
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Zobrazila se mi chyba při nedostatku kvóty. Jak ho mám opravit?
 
@@ -301,7 +301,7 @@ Dočistění [řeči](https://docs.microsoft.com/bot-framework/bot-service-manag
 
 ### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Návody programově získat oblast LUIS prostředku?
 
-Pomocí ukázky LUIS můžete [najít oblast](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programově pomocí C# nebo Node. js.
+Pomocí ukázky LUIS můžete [najít oblast](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) programově pomocí C# nebo Node.Js.
 
 ## <a name="luis-service"></a>Služba LUIS
 

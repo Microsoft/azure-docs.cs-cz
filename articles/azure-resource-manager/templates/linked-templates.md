@@ -3,12 +3,12 @@ title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: d8e9617fca38ca2b1f16ba2c6c1599e3663347e7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 1b63ebc62a944b43aef3b777dd7d285369356c29
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445181"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86056680"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
@@ -16,7 +16,7 @@ K nasazení složitých řešení můžete rozdělit šablonu na mnoho souvisej�
 
 Pro malá až středně střední řešení je jedinou šablonou snazší pochopení a udržování. Všechny prostředky a hodnoty můžete zobrazit v jednom souboru. V případě pokročilých scénářů umožňují propojené šablony rozdělit řešení na cílené součásti. Tyto šablony můžete snadno opakovaně použít pro jiné scénáře.
 
-Kurz najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](template-tutorial-create-linked-templates.md).
+Kurz najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
 > U propojených nebo vnořených šablon můžete použít pouze režim [přírůstkového](deployment-modes.md) nasazení.
@@ -785,7 +785,7 @@ az deployment group create --resource-group ExampleGroup --template-uri $url?$to
 
 Následující příklady znázorňují běžné použití propojených šablon.
 
-|Hlavní šablona  |Odkazovaná šablona |Popis  |
+|Hlavní šablona  |Odkazovaná šablona |Description  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Vrátí řetězec z propojené šablony. |
 |[Load Balancer s veřejnou IP adresou](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[odkazovaná šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Vrátí veřejnou IP adresu z propojené šablony a nastaví tuto hodnotu v nástroji pro vyrovnávání zatížení. |
@@ -793,7 +793,7 @@ Následující příklady znázorňují běžné použití propojených šablon.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Kurz najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](template-tutorial-create-linked-templates.md).
+* Kurz najdete v tématu [kurz: Vytvoření propojených Azure Resource Manager šablon](./deployment-tutorial-linked-template.md).
 * Další informace o definování pořadí nasazení pro vaše prostředky najdete v tématu [Definování závislostí v šablonách Azure Resource Manager](define-resource-dependency.md).
 * Informace o tom, jak definovat jeden prostředek, ale vytvořit mnoho instancí, najdete [v tématu Vytvoření více instancí prostředků v Azure Resource Manager](copy-resources.md).
 * Postup při nastavení šablony v účtu úložiště a vygenerování tokenu SAS najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](deploy-powershell.md) nebo [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](deploy-cli.md).

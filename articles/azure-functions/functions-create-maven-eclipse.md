@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e4c989e4550c1ea504a08d3cc975f2add5a4ba2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756486"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86054725"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Vytvoření první funkce pomocí Java a zatmění 
 
@@ -37,14 +37,10 @@ Doporučujeme také nainstalovat [Azure Functions Core Tools, verzi 2](functions
 
 ## <a name="create-a-functions-project"></a>Vytvoření projektu Functions
 
-1. V části zatmění vyberte nabídku **soubor** a pak vyberte **projekt New-&gt; Maven**. 
+1. V části zatmění vyberte nabídku **soubor** a pak vyberte **projekt New- &gt; Maven**. 
 1. Přijměte výchozí hodnoty v dialogovém okně **Nový projekt Maven** a vyberte **Další**.
-1. Vyberte **Přidat Archetype** a přidejte položky pro [Azure-Functions-Archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
-    - ID skupiny archetype: com. Microsoft. Azure
-    - ID artefaktu archetype: Azure-Functions-Archetype
-    - Verze: Podívejte se a použijte nejnovější verzi z [centrálního](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![Mavenového zatmění vytvořit.](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Klikněte na **OK** a potom na **Další**.  `resourceGroup`Nezapomeňte vyplnit hodnoty pro všechna pole, včetně, `appName`a `appRegion` (použijte jiný název_aplikace kromě **Fabrikam-Function-20170920120101928**) a nakonec **dokončete**.
+1. Vyhledejte a vyberte [Azure-Functions-Archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) a klikněte na **Další**.
+1. Nezapomeňte vyplnit hodnoty pro všechna pole `resourceGroup` , včetně, `appName` a `appRegion` (použijte jiný název_aplikace kromě **fabrikam-Function-20170920120101928**) a nakonec **dokončete**.
     ![Create2 Maven pro zatmění](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven přesune soubory projektu do nové složky s názvem _artifactId_. Generovaný kód v projektu je jednoduchá funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook) , která vypisuje tělo triggeru požadavku HTTP.
@@ -55,7 +51,7 @@ Maven přesune soubory projektu do nové složky s názvem _artifactId_. Generov
 > Azure Functions Core Tools musí být nainstalována [verze 2](functions-run-local.md#v2) pro místní spouštění a ladění funkcí.
 
 1. Klikněte pravým tlačítkem na vygenerovaný projekt a pak zvolte **Spustit jako** a **Maven sestavení**.
-1. V dialogovém **okně Upravit konfiguraci** zadejte `package` do polí **cíle** a **název** a pak vyberte **Spustit**. Tím se sestaví a zabalí kód funkce.
+1. V dialogovém okně **Upravit konfiguraci** zadejte `package` do polí **cíle** a **název** a pak vyberte **Spustit**. Tím se sestaví a zabalí kód funkce.
 1. Po dokončení sestavení vytvořte další konfiguraci spuštění výše pomocí `azure-functions:run` jako cíl a název. Vyberte **Spustit** a spusťte funkci v integrovaném vývojovém prostředí (IDE).
 
 Až skončíte s testováním funkce, ukončete modul runtime v okně konzoly. Pouze jeden hostitel funkce může být aktivní a spuštěn místně v jednom okamžiku.
@@ -64,7 +60,7 @@ Až skončíte s testováním funkce, ukončete modul runtime v okně konzoly. P
 
 V nastavení konfigurace **Spustit jako** v předchozím kroku změňte `azure-functions:run` na `azure-functions:run -DenableDebug` a spusťte aktualizovanou konfiguraci, aby se spustila aplikace Function App v režimu ladění.
 
-Vyberte nabídku **Spustit** a otevřete **Konfigurace ladění**. Vyberte možnost **Vzdálená aplikace Java** a vytvořte novou. Zadejte název vaší konfigurace a vyplňte nastavení. Port by měl být konzistentní s portem ladění otevřeným hostitelem funkce, který je `5005`ve výchozím nastavení. Po instalaci kliknutím na zapnout `Debug` spusťte ladění.
+Vyberte nabídku **Spustit** a otevřete **Konfigurace ladění**. Vyberte možnost **Vzdálená aplikace Java** a vytvořte novou. Zadejte název vaší konfigurace a vyplňte nastavení. Port by měl být konzistentní s portem ladění otevřeným hostitelem funkce, který je ve výchozím nastavení `5005` . Po instalaci kliknutím na zapnout `Debug` Spusťte ladění.
 
 ![Ladění funkcí v zatmění](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 

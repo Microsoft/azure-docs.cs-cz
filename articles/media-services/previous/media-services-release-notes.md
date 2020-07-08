@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: edea04e15fe5b844654f250a22a05a753f0df123
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 63b3def9c37f53ebf68642faf3f45cee6602bbe5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836392"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057292"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 
@@ -32,7 +32,7 @@ Chceme od našich zákazníků slyšet, abychom se mohli zaměřit na opravy pro
 ## <a name="known-issues"></a><a id="issues"/>Známé problémy
 ### <a name="media-services-general-issues"></a><a id="general_issues"/>Media Services Obecné problémy
 
-| Problém | Popis |
+| Problém | Description |
 | --- | --- |
 | V REST API není k dispozici několik běžných hlaviček protokolu HTTP. |Pokud vyvíjíte Media Services aplikace pomocí REST API, zjistíte, že některá společná pole hlaviček protokolu HTTP (včetně klienta-požadavek-ID, požadavek-ID a RETURN-CLIENT-REQUEST-ID) se nepodporují. Hlavičky budou přidány v budoucí aktualizaci. |
 | Procento – kódování není povoleno. |Media Services používá hodnotu vlastnosti IAssetFile.Name při vytváření adres URL pro obsah streamování (například `http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters` ). Z tohoto důvodu není povolena procentuální kódování. Hodnota vlastnosti Name nemůže obsahovat žádný z následujících [znaků rezervovaných v procentech](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * ' ();: @ &= + $,/?% # [] ". Přípona názvu souboru může taky obsahovat jenom jeden znak ".". |
@@ -90,7 +90,7 @@ Nyní můžete použít Media Services k vygenerování pohyblivých souborů mi
 
 S nejnovější verzí služby jsou drobné změny v chybových zprávách, které služba vrátila, v případě, že úloha selže, s ohledem na to, jak je rozděleno na dva nebo více řádků.
 
-## <a name="may-2018"></a>Květen 2018 
+## <a name="may-2018"></a>May 2018 
 
 Od 12. května 2018 už živé kanály nebudou podporovat protokol ingestování přenosového streamu RTP/MPEG-2. Migrujte prosím z protokolu RTP/MPEG-2 na RTMP nebo fragmentujte protokoly ingesta MP4 (Smooth Streaming).
 
@@ -191,12 +191,14 @@ Nyní můžete použít Media Services k dynamickému šifrování obsahu HTTP L
 ## <a name="february-2016-release"></a><a id="feb_changes16"></a>Verze z února 2016
 Nejnovější verze sady Media Services SDK pro .NET (3.5.3) obsahuje opravu chyb týkající se Google Widevine. Nebylo možné znovu použít AssetDeliveryPolicy pro více assetů šifrovaných pomocí Widevine. V rámci této opravy chyby byla do sady SDK přidána následující vlastnost: WidevineBaseLicenseAcquisitionUrl.
 
-    Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
-        new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
-    {
-        {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
+```csharp
+Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
+    new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
+{
+    {AssetDeliveryPolicyConfigurationKey.WidevineBaseLicenseAcquisitionUrl,"http://testurl"},
 
-    };
+};
+```
 
 ## <a name="january-2016-release"></a><a id="jan_changes_16"></a>Verze z ledna 2016
 Jednotky rezervované pro kódování byly přejmenovány, aby se zkrátily názvy kodérů.
@@ -212,7 +214,7 @@ Jednotky rezervované pro kódování Basic, Standard a Premium se přejmenovaly
 ### <a name="azure-sdk-for-php"></a>Azure SDK pro PHP
 Tým Azure SDK publikoval novou verzi balíčku [Azure SDK pro php](https://github.com/Azure/azure-sdk-for-php) , který obsahuje aktualizace a nové funkce pro Media Services. Konkrétně sada Media Services SDK for PHP nyní podporuje nejnovější funkce [ochrany obsahu](media-services-content-protection-overview.md) . Tyto funkce jsou dynamické šifrování pomocí AES a DRM (PlayReady a Widevine) s omezeními tokenu a bez něj. Podporuje také škálování [jednotek kódování](media-services-dotnet-encoding-units.md).
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * Následující [ukázky kódu](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) vám pomůžou rychle začít:
   * **vodworkflow_aes. php**: Tento soubor php ukazuje, jak používat dynamické šifrování aes-128 a službu pro doručování klíčů. Je založený na ukázce .NET, která je vysvětlena v tématu [použití dynamického šifrování AES-128 a služby doručování klíčů](media-services-protect-with-aes128.md).
@@ -251,7 +253,7 @@ Konfiguraci zásady AssetDeliveryConfiguration na používání technologie Wide
 Další informace najdete v [tomto blogu](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
 ## <a name="august-2015-release"></a><a id="august_changes_15"></a>Verze z srpna 2015
-* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace naleznete v tématu:
+* K dispozici je teď sada Media Services SDK pro 0.8.0 verze Java a nové ukázky. Další informace naleznete v tématech:
     
 * Azure Media Player byla aktualizována s podporou více audio streamu. Další informace najdete v [tomto blogovém příspěvku](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/).
 
@@ -323,7 +325,9 @@ Sada Media Services .NET SDK je teď verze 3.1.0.1.
 
 Tato verze označila výchozí konstruktor Microsoft. WindowsAzure. MediaServices. Client. ContentKeyAuthorization. TokenRestrictionTemplate jako zastaralou. Nový konstruktor přijímá jako argument typ TokenType.
 
-    TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```csharp
+TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
+```
 
 
 ## <a name="december-2014-release"></a><a id="december_changes_14"></a>Verze z prosince 2014
@@ -502,8 +506,8 @@ V červnu 2013 Media Services vydání sady SDK jsou zahrnuty následující zm�
     * Typ Microsoft. WindowsAzure. MediaServices. Client. IJobNotificationSubscription
     * Typ Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointCollection
     * Typ Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointType
-* Závislost na sadě SDK klienta úložiště 2,0 (Microsoft. WindowsAzure. StorageClient. dll)
-* Závislost na OData 5,5 (Microsoft. data. OData. dll)
+* Závislost na sadě SDK klienta úložiště 2,0 (Microsoft.WindowsAzure.StorageClient.dll)
+* Závislost na OData 5,5 (Microsoft.Data.OData.dll)
 
 ## <a name="december-2012-release"></a><a id="december_changes_12"></a>Verze z prosince 2012
 ### <a name="media-services-net-sdk-changes"></a><a name="dec_12_dotnet_changes"></a>Změny Media Services .NET SDK
@@ -601,7 +605,7 @@ Následující funkce byly v listopadu vydání sady SDK nové:
 [Connect to Media Services with the Media Services SDK for .NET]: https://msdn.microsoft.com/library/azure/jj129571.aspx
 [Media Services .NET SDK extensions]: https://github.com/Azure/azure-sdk-for-media-services-extensions/tree/dev
 [Azure SDK tools]: https://github.com/Azure/azure-sdk-tools
-[GitHub]: https://github.com/Azure/azure-sdk-for-media-services
+[GitHubu]: https://github.com/Azure/azure-sdk-for-media-services
 [Manage Media Services assets across multiple Storage accounts]: https://msdn.microsoft.com/library/azure/dn271889.aspx
 [Handle Media Services job notifications]: https://msdn.microsoft.com/library/azure/dn261241.aspx
 

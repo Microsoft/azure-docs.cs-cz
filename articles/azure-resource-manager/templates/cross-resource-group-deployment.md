@@ -3,12 +3,12 @@ title: Nasazení prostředků mezi předplatnými & skupiny prostředků
 description: Ukazuje, jak během nasazení cílit více než jedno předplatné Azure a skupinu prostředků.
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 34de1d9df53d61d849ffbb81a57b468020bc3b65
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650639"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057377"
 ---
 # <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>Nasazení prostředků Azure v rámci předplatných nebo skupin prostředků
 
@@ -25,7 +25,7 @@ Chcete-li cílit na skupinu prostředků, která je jiná než ta pro nadřazeno
 
 Pokud nezadáte ID předplatného nebo skupinu prostředků, použije se předplatné a skupina prostředků z nadřazené šablony. Před spuštěním nasazení musí existovat všechny skupiny prostředků.
 
-Účet, který nasazuje šablonu, musí mít oprávnění k nasazení na zadané ID předplatného. Pokud zadané předplatné existuje v jiném tenantovi Azure Active Directory, musíte [Přidat uživatele typu host z jiného adresáře](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
+Účet, který nasazuje šablonu, musí mít oprávnění k nasazení na zadané ID předplatného. Pokud zadané předplatné existuje v jiném tenantovi Azure Active Directory, musíte [Přidat uživatele typu host z jiného adresáře](../../active-directory/b2b/what-is-b2b.md).
 
 Následující příklad nasadí dva účty úložiště. První účet úložiště se nasadí do skupiny prostředků zadané v operaci nasazení. Druhý účet úložiště se nasadí do skupiny prostředků zadané v `secondResourceGroup` `secondSubscriptionID` parametrech a:
 
@@ -129,7 +129,7 @@ Následující tabulka ukazuje, jestli se funkce překládají na nadřazenou ne
 | ------------- | ----- | ---------- |
 | vnořen        | vnější (výchozí) | Nadřazená skupina prostředků |
 | vnořen        | vnořen | Dílčí skupina prostředků |
-| Spojeného        | –   | Dílčí skupina prostředků |
+| Spojeného        | Není k dispozici   | Dílčí skupina prostředků |
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) ukazuje:
 

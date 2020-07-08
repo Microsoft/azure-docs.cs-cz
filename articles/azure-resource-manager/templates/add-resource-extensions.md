@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: jgao
-ms.openlocfilehash: b3c4110c8761b3e8daf324d65ac7fa1dcbcdf61f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be55138a2aa6dc0552c7556438ffd43705687c87
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023493"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055039"
 ---
 # <a name="provide-post-deployment-configurations-by-using-extensions"></a>Poskytování konfigurací po nasazení pomocí rozšíření
 
@@ -20,13 +20,13 @@ Rozšíření šablon jsou malé aplikace, které poskytují konfiguraci po nasa
 
 Stávající rozšíření jsou:
 
-- [Microsoft. COMPUTE/virtualMachines/Extensions](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
-- [Microsoft. COMPUTE virtualMachineScaleSets/Extensions](https://docs.microsoft.com/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
-- [Clustery/rozšíření Microsoft. HDInsight](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters)
-- [Microsoft. SQL servery/databáze/rozšíření](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
-- [Microsoft. Web/weby/siteextensions](https://docs.microsoft.com/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
+- [Microsoft. COMPUTE/virtualMachines/Extensions](/azure/templates/microsoft.compute/2018-10-01/virtualmachines/extensions)
+- [Microsoft. COMPUTE virtualMachineScaleSets/Extensions](/azure/templates/microsoft.compute/2018-10-01/virtualmachinescalesets/extensions)
+- [Clustery/rozšíření Microsoft. HDInsight](/azure/templates/microsoft.hdinsight/2018-06-01-preview/clusters)
+- [Microsoft. SQL servery/databáze/rozšíření](/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions) 
+- [Microsoft. Web/weby/siteextensions](/azure/templates/microsoft.web/2016-08-01/sites/siteextensions)
 
-Dostupná rozšíření zjistíte tak, že přejdete na [odkaz šablony](https://docs.microsoft.com/azure/templates/). V části **filtrovat podle názvu**zadejte **příponu**.
+Dostupná rozšíření zjistíte tak, že přejdete na [odkaz šablony](/azure/templates/). V části **filtrovat podle názvu**zadejte **příponu**.
 
 Další informace o tom, jak tato rozšíření použít, najdete tady:
 

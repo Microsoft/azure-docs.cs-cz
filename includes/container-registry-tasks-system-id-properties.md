@@ -5,17 +5,17 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 07/12/2019
+ms.date: 07/06/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b7c8487eb42204f2741679c9ef6eb2717c272cd
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77112332"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057346"
 ---
-Ve výstupu příkazu ukazuje `identity` oddíl identitu typu `SystemAssigned` nastavenou v úloze. `principalId` Je hlavní ID identity úlohy:
+Ve výstupu příkazu `identity` ukazuje oddíl identitu typu `SystemAssigned` nastavenou v úloze. `principalId`Je hlavní ID identity úlohy:
 
 ```console
 [...]
@@ -31,7 +31,9 @@ Ve výstupu příkazu ukazuje `identity` oddíl identitu typu `SystemAssigned` n
 Pomocí příkazu [AZ ACR Task show][az-acr-task-show] uložte principalId do proměnné pro použití v pozdějších příkazech. V následujícím příkazu nahraďte název svého úkolu a registru:
 
 ```azurecli
-principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)
+principalID=$(az acr task show \
+  --name <task_name> --registry <registry_name> \
+  --query identity.principalId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

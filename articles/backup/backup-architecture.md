@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707919"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055252"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -44,8 +44,8 @@ Recovery Services trezory mají následující funkce:
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
 - Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)v Azure.
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
 ## <a name="backup-agents"></a>Agenti zálohování
@@ -61,7 +61,7 @@ Azure Backup poskytuje různé agenty zálohování v závislosti na tom, jaký 
 
 Následující tabulka popisuje různé typy zálohování a jejich použití:
 
-**Typ zálohování** | **Podrobnosti** | **Použití**
+**Typ zálohy** | **Podrobnosti** | **Použití**
 --- | --- | ---
 **Do bloku** | Úplná záloha obsahuje celý zdroj dat. Trvá větší šířku pásma sítě než rozdílové nebo přírůstkové zálohy. | Slouží k prvotnímu zálohování.
 **Diferenciál** |  Rozdílové zálohování ukládá bloky, které se od počátečního úplného zálohování změnily. Používá menší množství sítě a úložiště a neuchovává redundantní kopie nezměněných dat.<br/><br/> Neefektivní vzhledem k tomu, že se přenesou a ukládají datové bloky nezměněné mezi novějšími zálohami. | Nepoužívá se Azure Backup.
@@ -71,7 +71,7 @@ Následující tabulka popisuje různé typy zálohování a jejich použití:
 
 Následující tabulka popisuje různé typy záloh používaných pro SQL Server databáze a četnost jejich používání:
 
-**Typ zálohování** | **Podrobnosti** | **Použití**
+**Typ zálohy** | **Podrobnosti** | **Použití**
 --- | --- | ---
 **Úplné zálohování** | Úplná záloha databáze zálohuje celou databázi. Obsahuje všechna data v konkrétní databázi nebo v sadě skupin souborů nebo souborů. Úplné zálohování také obsahuje dostatek protokolů pro obnovení těchto dat. | Maximálně můžete aktivovat jednu úplnou zálohu denně.<br/><br/> Můžete si zvolit, že chcete vytvořit úplnou zálohu na denní nebo týdenní interval.
 **Rozdílové zálohování** | Rozdílová záloha vychází z poslední předchozí zálohy na základě úplného zálohování dat.<br/><br/> Zachycuje jenom data, která se od úplného zálohování změnila. |  Ve většině případů můžete aktivovat jednu rozdílovou zálohu za den.<br/><br/> V jednom dni nemůžete nakonfigurovat úplnou zálohu a rozdílovou zálohu.
@@ -105,9 +105,7 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 ## <a name="backup-policy-essentials"></a>Základy zásad zálohování
 
 - Zásady zálohování se vytvoří pro každý trezor.
-- Zásady zálohování se dají vytvořit pro zálohování následujících úloh.
-  - Virtuální počítač Azure
-  - SQL na virtuálním počítači Azure
+- Zásady zálohování se dají vytvořit pro zálohování následujících úloh: virtuální počítače Azure, SQL ve virtuálních počítačích Azure, SAP HANA ve virtuálních počítačích Azure a sdílených složkách Azure. Zásada pro zálohování souborů a složek pomocí agenta MARS je uvedena v konzole MARS.
   - Sdílená složka Azure
 - Zásady je možné přiřadit k mnoha prostředkům. Zásady zálohování virtuálních počítačů Azure je možné použít k ochraně mnoha virtuálních počítačů Azure.
 - Zásada se skládá ze dvou součástí
@@ -115,9 +113,12 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
   - Uchovávání informací: pro dobu, po kterou by se měly uchovávat zálohy.
 - Plán lze definovat jako "denní" nebo "týdně" s konkrétním časovým bodem.
 - Uchovávání informací lze definovat pro "denní", "týdenní", "měsíční", "roční" body zálohování.
-- "týdenní" odkazuje na zálohu v určitý den v týdnu, "měsíční" znamená zálohování v určitý den v měsíci a "roční" odkazuje na zálohu v určitý den v roce.
-- Doba uchovávání "měsíčně", "ročních" bodů zálohy se označuje jako "LongTermRetention".
-- Při vytvoření trezoru se vytvoří taky zásada pro zálohování virtuálních počítačů Azure označované jako "DefaultPolicy" a dá se použít k zálohování virtuálních počítačů Azure.
+  - "týdně" odkazuje na zálohu v určitý den v týdnu
+  - "měsíční" odkazuje na zálohu v určitý den v měsíci
+  - "roční" odkazuje na zálohu v určitý den v roce
+- Doba uchovávání "měsíčně", "ročních" bodů zálohy se označuje jako dlouhodobá doba uchování (LTR).
+- Při vytvoření trezoru se vytvoří také "DefaultPolicy" a můžete ho použít k zálohování prostředků.
+- Všechny změny provedené v době uchování zásady zálohování se použijí zpět na všechny starší body obnovení z nových.
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektura: Integrovaná záloha virtuálního počítače Azure
 

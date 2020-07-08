@@ -13,16 +13,16 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d04953789dc3fc864dd2809783b0d214a91738f
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983114"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86055388"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Rychlý Start: zobrazení seznamu aplikací, které používají klienta služby Azure Active Directory (Azure AD) pro správu identit
 
-Začněte používat Azure AD jako systém pro správu identit a autorizace (IAM) pro aplikace, které vaše organizace používá. V tomto rychlém startu zobrazíte aplikace označované také jako aplikace, které už jsou nastavené tak, aby jako zprostředkovatele identity používaly tenanta Azure AD.
+Začněte používat Azure AD jako systém pro správu identit a přístupu (IAM) pro aplikace, které vaše organizace používá. V tomto rychlém startu zobrazíte aplikace označované také jako aplikace, které už jsou nastavené tak, aby jako zprostředkovatele identity používaly tenanta Azure AD.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -72,7 +72,7 @@ Hledání konkrétní aplikace:
 
 V tomto rychlém startu jste zjistili, jak zobrazit aplikace v tenantovi Azure AD. Zjistili jste, jak filtrovat seznam aplikací podle typu aplikace, stavu a viditelnosti. Také jste zjistili, jak vyhledat konkrétní aplikaci.
 
-- [Přidat aplikaci](add-application-portal.md)
+- [Přidání aplikace](add-application-portal.md)
 - [Konfigurace aplikace](add-application-portal-configure.md)
 - [Nastavení jednotného přihlašování](add-application-portal-setup-sso.md)
 - [Odstranění aplikace](delete-application-portal.md)
