@@ -14,10 +14,9 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885629"
 ---
 # <a name="app-registration-reference"></a>Reference k registraci aplikací
@@ -26,7 +25,7 @@ Tento dokument obsahuje kontext a popisy různých funkcí, které najdete v Azu
 
 ## <a name="my-applications-or-converged-applications"></a>Moje aplikace nebo sblížené aplikace
 
-Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití s koncovým bodem Microsoft Identity Platform (v 2.0). Tyto aplikace mají možnost přihlásit uživatele pomocí osobních účtů Microsoft i pracovních nebo školních účtů z Azure Active Directory. Další informace o koncovém bodu platformy identity najdete v tématu [Přehled verze 2.0](active-directory-appmodel-v2-overview.md). Tyto aplikace je také možné použít k integraci s koncovým bodem ověřování účet Microsoft `https://login.live.com`.
+Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití s koncovým bodem Microsoft Identity Platform (v 2.0). Tyto aplikace mají možnost přihlásit uživatele pomocí osobních účtů Microsoft i pracovních nebo školních účtů z Azure Active Directory. Další informace o koncovém bodu platformy identity najdete v tématu [Přehled verze 2.0](active-directory-appmodel-v2-overview.md). Tyto aplikace je také možné použít k integraci s koncovým bodem ověřování účet Microsoft `https://login.live.com` .
 
 ## <a name="azure-ad-only-applications"></a>Jenom aplikace Azure AD
 
@@ -34,11 +33,11 @@ Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití s ko
 
 ## <a name="live-sdk-applications"></a>Živé aplikace sady SDK
 
-Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití výhradně s účet Microsoft. Nejsou povolené pro použití s Azure Active Directory. Tady najdete všechny aplikace, které byly dříve zaregistrované na portálu pro vývojáře MSA na `https://account.live.com/developers/applications`adrese. Všechny funkce, které jste dříve provedli, se teď `https://account.live.com/developers/applications` dají provádět v [Registrace aplikací](https://aka.ms/appregistrations).
+Tento seznam obsahuje všechny vaše aplikace zaregistrované pro použití výhradně s účet Microsoft. Nejsou povolené pro použití s Azure Active Directory. Tady najdete všechny aplikace, které byly dříve zaregistrované na portálu pro vývojáře MSA na adrese `https://account.live.com/developers/applications` . Všechny funkce, které jste dříve provedli, `https://account.live.com/developers/applications` se teď dají provádět v [Registrace aplikací](https://aka.ms/appregistrations).
 
 ## <a name="application-secrets"></a>Tajné klíče aplikace
 
-Tajné klíče aplikace jsou přihlašovací údaje, které umožňují vaší aplikaci provádět spolehlivé [ověřování klientů](https://tools.ietf.org/html/rfc6749#section-2.3) pomocí Azure AD. V protokolu OAuth & OpenID Connect se klíč aplikace často označuje jako `client_secret`. V protokolu v 2.0 musí každá aplikace, která obdrží token zabezpečení v umístění web s adresou (pomocí `https` schématu), používat tajný klíč aplikace k identifikaci služby Azure AD při uplatnění tohoto tokenu zabezpečení. Kromě toho bude pro všechny nativní klienty, kteří přijímají tokeny na zařízení, zakázáno používat k ověřování klientů tajný klíč aplikace. Tím se nedoporučuje ukládání tajných klíčů v nezabezpečených prostředích.
+Tajné klíče aplikace jsou přihlašovací údaje, které umožňují vaší aplikaci provádět spolehlivé [ověřování klientů](https://tools.ietf.org/html/rfc6749#section-2.3) pomocí Azure AD. V protokolu OAuth & OpenID Connect se klíč aplikace často označuje jako `client_secret` . V protokolu v 2.0 musí každá aplikace, která obdrží token zabezpečení v umístění web s adresou (pomocí `https` schématu), používat tajný klíč aplikace k identifikaci služby Azure AD při uplatnění tohoto tokenu zabezpečení. Kromě toho bude pro všechny nativní klienty, kteří přijímají tokeny na zařízení, zakázáno používat k ověřování klientů tajný klíč aplikace. Tím se nedoporučuje ukládání tajných klíčů v nezabezpečených prostředích.
 
 Každá aplikace může v daném okamžiku obsahovat dvě platné tajné klíče aplikace. Díky udržování dvou tajných kódů máte možnost provádět pravidelné výměny klíčů v celém prostředí vaší aplikace. Po dokončení migrace celé aplikace na nový tajný kód můžete odstranit starý tajný klíč a zřídit nový.
 

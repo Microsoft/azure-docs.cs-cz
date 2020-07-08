@@ -4,10 +4,9 @@ description: Azure Service Fabric umožňuje zadat omezení prostředků pro slu
 ms.topic: conceptual
 ms.date: 8/9/2017
 ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81115147"
 ---
 # <a name="resource-governance"></a>Zásady správného řízení prostředků
@@ -21,9 +20,9 @@ Pokud spouštíte více služeb na stejném uzlu nebo clusteru, je možné, že 
 
 Zásady správného řízení prostředků jsou podporované v Service Fabric v souladu s [balíčkem služby](service-fabric-application-model.md). Prostředky, které jsou přiřazeny k balíčku služby, mohou být dále rozděleny mezi balíčky kódu. Zadaná omezení prostředků také znamenají rezervaci prostředků. Service Fabric podporuje určení procesoru a paměti na balíček služby se dvěma integrovanými [metrikami](service-fabric-cluster-resource-manager-metrics.md):
 
-* *CPU* (název `servicefabric:/_CpuCores`metriky): Logická jádra, která je k dispozici na hostitelském počítači. Všechny jádra ve všech uzlech jsou vážená na stejnou.
+* *CPU* (název metriky `servicefabric:/_CpuCores` ): Logická jádra, která je k dispozici na hostitelském počítači. Všechny jádra ve všech uzlech jsou vážená na stejnou.
 
-* *Paměť* (název `servicefabric:/_MemoryInMB`metriky): paměť je vyjádřena v megabajtech a je namapována na fyzickou paměť, která je k dispozici v počítači.
+* *Paměť* (název metriky `servicefabric:/_MemoryInMB` ): paměť je vyjádřena v megabajtech a je namapována na fyzickou paměť, která je k dispozici v počítači.
 
 Pro tyto dvě metriky [cluster správce prostředků](service-fabric-cluster-resource-manager-cluster-description.md) sleduje celkovou kapacitu clusteru, zatížení každého uzlu v clusteru a zbývající prostředky v clusteru. Tyto dvě metriky jsou ekvivalentní libovolné jiné uživateli nebo vlastní metriky. U těchto funkcí se dají použít všechny existující funkce:
 
@@ -206,7 +205,7 @@ Aby nedocházelo k těmto situacím, Service Fabric vám umožní *vyhodnotit o
 
 Další poznámky:
 
-* Vynucení limitu prostředků se vztahuje `servicefabric:/_CpuCores` jenom `servicefabric:/_MemoryInMB` na metriky prostředků a.
+* Vynucení limitu prostředků se vztahuje jenom na `servicefabric:/_CpuCores` `servicefabric:/_MemoryInMB` metriky prostředků a.
 * Vynucení limitu prostředků funguje jenom v případě, že jsou kapacity uzlů pro metriky prostředků dostupné Service Fabric, buď prostřednictvím mechanismu automatického zjišťování, nebo přes uživatele ručně zadáním kapacit uzlů (jak je vysvětleno v části [instalace clusteru pro povolení zásad správného řízení prostředků](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ).Pokud nejsou nakonfigurované kapacity uzlů, nelze použít funkci vynucení limitu prostředků, protože Service Fabric nemůže zjistit, kolik prostředků se má vyhradit pro uživatelské služby.Service Fabric vydá upozornění na stav, pokud je hodnota "EnforceUserServiceMetricCapacities" pravdivá, ale nejsou nakonfigurovány kapacity uzlů.
 
 ## <a name="other-resources-for-containers"></a>Další zdroje informací o kontejnerech

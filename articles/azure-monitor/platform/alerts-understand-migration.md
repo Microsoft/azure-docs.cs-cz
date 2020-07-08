@@ -7,10 +7,9 @@ ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
 ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114312"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Princip fungování nástroje pro migraci
@@ -121,12 +120,12 @@ Jedná se o pravidla pro klasických výstrah pro metriky, které byly dříve p
 
 ## <a name="how-equivalent-new-alert-rules-and-action-groups-are-created"></a>Jak se vytvářejí ekvivalentní nová pravidla upozornění a skupiny akcí
 
-Nástroj pro migraci převede pravidla vašich klasických výstrah na ekvivalentní nová pravidla upozornění a skupiny akcí. Pro většinu klasických pravidel výstrah jsou stejná nová pravidla upozornění na stejné metrikě se stejnými vlastnostmi, jako `windowSize` jsou `aggregationType`a. Existují však některá klasická pravidla pro výstrahy, která mají jinou ekvivalentní metriku v novém systému. Následující zásady platí pro migraci klasických výstrah, pokud nejsou uvedené v následující části:
+Nástroj pro migraci převede pravidla vašich klasických výstrah na ekvivalentní nová pravidla upozornění a skupiny akcí. Pro většinu klasických pravidel výstrah jsou stejná nová pravidla upozornění na stejné metrikě se stejnými vlastnostmi, jako jsou `windowSize` a `aggregationType` . Existují však některá klasická pravidla pro výstrahy, která mají jinou ekvivalentní metriku v novém systému. Následující zásady platí pro migraci klasických výstrah, pokud nejsou uvedené v následující části:
 
 - **Frekvence**: definuje, jak často pravidlo klasického nebo nového upozornění kontroluje podmínku. Nastavení `frequency` v klasických pravidlech výstrah nebylo uživatelem konfigurovatelné a bylo vždy 5 minut pro všechny typy prostředků s výjimkou Application Insightsch komponent, pro které bylo 1 min. Frekvence ekvivalentních pravidel je také nastavená na 5 min a 1 min.
-- **Typ agregace**: definuje, jak je metrika agregována nad oknem zájmu. `aggregationType` Je také totéž mezi klasickými výstrahami a novými výstrahami pro většinu metrik. V některých případech, protože se metrika liší mezi výstrahami Classic a novými výstrahami `aggregationType` , je `primary Aggregation Type` použita ekvivalentní nebo definovaná pro metriku.
+- **Typ agregace**: definuje, jak je metrika agregována nad oknem zájmu. `aggregationType`Je také totéž mezi klasickými výstrahami a novými výstrahami pro většinu metrik. V některých případech, protože se metrika liší mezi výstrahami Classic a novými výstrahami, `aggregationType` `primary Aggregation Type` je použita ekvivalentní nebo definovaná pro metriku.
 - **Units**: vlastnost metriky, na které je vytvořena výstraha. Některé ekvivalentní metriky mají různé jednotky. Prahová hodnota se podle potřeby upraví. Například pokud má původní metrika sekundy jako jednotky, ale ekvivalentní nová metrika má milisekundy jako jednotky, původní prahová hodnota se vynásobí 1000, aby se zajistilo stejné chování.
-- **Velikost okna**: definuje okno, přes které se agreguje data metriky pro porovnání s prahovou hodnotou. U standardních `windowSize` hodnot, jako jsou 5mins, 15mins, 30mins, hodinového, 3hours, 6 hodin, 12 hodin, 1 den, se u ekvivalentního nového pravidla výstrahy neudělala žádná změna. Pro jiné hodnoty se vybere nejpodobnější `windowSize` , která se má použít. U většiny zákazníků neexistuje žádný vliv na tuto změnu. Pro malé procento zákazníků může být potřeba upravit prahovou hodnotu a získat tak přesně stejné chování.
+- **Velikost okna**: definuje okno, přes které se agreguje data metriky pro porovnání s prahovou hodnotou. U standardních `windowSize` hodnot, jako jsou 5mins, 15mins, 30mins, hodinového, 3hours, 6 hodin, 12 hodin, 1 den, se u ekvivalentního nového pravidla výstrahy neudělala žádná změna. Pro jiné hodnoty se vybere nejpodobnější, která se má `windowSize` použít. U většiny zákazníků neexistuje žádný vliv na tuto změnu. Pro malé procento zákazníků může být potřeba upravit prahovou hodnotu a získat tak přesně stejné chování.
 
 V následujících částech jsme podrobně nastavili metriky, které mají jinou ekvivalentní metriku v novém systému. Žádná metrika, která zůstává stejná pro klasický a nová pravidla upozornění, není uvedená. Seznam metrik podporovaných v novém systému najdete [tady](metrics-supported.md).
 
@@ -197,7 +196,7 @@ Pro Application Insights se používají ekvivalentní metriky, jak je znázorn�
 | requestFailed. Count | požadavky/selhání| Použijte `aggregationType` ' count ' místo ' Sum '.   |
 | Zobrazit. počet | pageViews/Count| Použijte `aggregationType` ' count ' místo ' Sum '.   |
 
-### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
+### <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
 Pro Cosmos DB se používají ekvivalentní metriky, jak je znázorněno níže:
 

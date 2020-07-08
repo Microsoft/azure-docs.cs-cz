@@ -13,10 +13,9 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881328"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>Veřejné klientské aplikace s jedním a několika účty
@@ -25,18 +24,18 @@ Tento článek vám pomůže pochopit typy používané v veřejných klientský
 
 Model knihovny Azure Active Directory Authentication Library (ADAL) serveru.  Knihovna Microsoft Authentication Library (MSAL) místo toho vytváří model klientské aplikace.  Většina aplikací pro Android se považuje za veřejné klienty. Veřejný klient je aplikace, která nemůže bezpečně uchovávat tajný klíč.  
 
-MSAL specializuje plochu rozhraní API, `PublicClientApplication` aby zjednodušila a objasnila vývojové prostředí pro aplikace, které umožňují používat pouze jeden účet v jednom okamžiku. `PublicClientApplication`je podtříd `SingleAccountPublicClientApplication` a `MultipleAccountPublicClientApplication`.  Následující diagram znázorňuje vztah mezi těmito třídami.
+MSAL specializuje plochu rozhraní API, `PublicClientApplication` aby zjednodušila a objasnila vývojové prostředí pro aplikace, které umožňují používat pouze jeden účet v jednom okamžiku. `PublicClientApplication`je podtříd `SingleAccountPublicClientApplication` a `MultipleAccountPublicClientApplication` .  Následující diagram znázorňuje vztah mezi těmito třídami.
 
 ![Diagram tříd UML SingleAccountPublicClientApplication](./media/single-multi-account/single-and-multiple-account.png)
 
 ## <a name="single-account-public-client-application"></a>Veřejná klientská aplikace s jedním účtem
 
-`SingleAccountPublicClientApplication` Třída umožňuje vytvořit aplikaci založenou na MSAL, která umožňuje, aby byl pouze jeden účet přihlášen v jednom okamžiku. `SingleAccountPublicClientApplication`se liší od `PublicClientApplication` následujících způsobů:
+`SingleAccountPublicClientApplication`Třída umožňuje vytvořit aplikaci založenou na MSAL, která umožňuje, aby byl pouze jeden účet přihlášen v jednom okamžiku. `SingleAccountPublicClientApplication`se liší od `PublicClientApplication` následujících způsobů:
 
 - MSAL sleduje aktuálně přihlášený účet.
   - Pokud vaše aplikace používá zprostředkovatele (výchozí během Azure Portal registrace aplikace) a je nainstalovaný na zařízení, ve kterém je zprostředkovatel přítomen, MSAL ověří, jestli je účet pořád k dispozici na zařízení.
 - `signIn`slouží k tomu, abyste se k účtu přihlásili explicitně a nezávisle na žádosti o obory.
-- `acquireTokenSilent`nevyžaduje parametr účtu.  Pokud účet zadáte a účet, který zadáte, se neshoduje s aktuálním účtem sledovaným nástrojem MSAL `MsalClientException` , je vyvolána výjimka.
+- `acquireTokenSilent`nevyžaduje parametr účtu.  Pokud účet zadáte a účet, který zadáte, se neshoduje s aktuálním účtem sledovaným nástrojem MSAL, `MsalClientException` je vyvolána výjimka.
 - `acquireToken`neumožňuje uživateli přepnout účty. Pokud se uživatel pokusí přepnout na jiný účet, je vyvolána výjimka.
 - `getCurrentAccount`Vrátí objekt výsledku, který poskytuje následující:
   - Logická hodnota označující, zda byl účet změněn. Účet může být změněn v důsledku odebrání ze zařízení, například.
@@ -44,11 +43,11 @@ MSAL specializuje plochu rozhraní API, `PublicClientApplication` aby zjednoduš
   - CurrentAccount.
 - `signOut`Odebere ze zařízení všechny tokeny přidružené ke klientovi.  
 
-Když je na zařízení nainstalovaný zprostředkovatel ověřování Androidu, jako je Microsoft Authenticator nebo Portál společnosti Intune, a vaše aplikace je nakonfigurovaná tak, aby `signOut` používala zprostředkovatele, účet neodebere ze zařízení.
+Když je na zařízení nainstalovaný zprostředkovatel ověřování Androidu, jako je Microsoft Authenticator nebo Portál společnosti Intune, a vaše aplikace je nakonfigurovaná tak, aby používala zprostředkovatele, `signOut` účet neodebere ze zařízení.
 
 ## <a name="single-account-scenario"></a>Scénář pro jeden účet
 
-Následující pseudo kód ilustruje použití `SingleAccountPublicClientApplication`.
+Následující pseudo kód ilustruje použití `SingleAccountPublicClientApplication` .
 
 ```java
 // Construct Single Account Public Client Application
@@ -107,7 +106,7 @@ if (app.signOut())
 
 ## <a name="multiple-account-public-client-application"></a>Veřejná klientská aplikace s více účty
 
-`MultipleAccountPublicClientApplication` Třída se používá k vytváření aplikací založených na MSAL, které umožňují přihlášení více účtů současně. Umožňuje získat, přidat a odebrat účty následujícím způsobem:
+`MultipleAccountPublicClientApplication`Třída se používá k vytváření aplikací založených na MSAL, které umožňují přihlášení více účtů současně. Umožňuje získat, přidat a odebrat účty následujícím způsobem:
 
 ### <a name="add-an-account"></a>Přidání účtu
 
@@ -116,7 +115,7 @@ Použijte jeden nebo více účtů v aplikaci voláním `acquireToken` jednoho n
 ### <a name="get-accounts"></a>Získání účtů
 
 - Zavolejte `getAccount` na získat konkrétní účet.
-- Volá `getAccounts`se, aby se získal seznam účtů, které aplikace aktuálně zná.
+- Volá `getAccounts` se, aby se získal seznam účtů, které aplikace aktuálně zná.
 
 Vaše aplikace nebude moct zobrazit výčet všech účtů Microsoft Identity Platform na zařízení, které je v aplikaci zprostředkovatele známé. Může vytvořit jenom výčet účtů, které vaše aplikace použila.  Pomocí těchto funkcí se nevrátí účty, které jste odebrali ze zařízení.
 
@@ -124,7 +123,7 @@ Vaše aplikace nebude moct zobrazit výčet všech účtů Microsoft Identity Pl
 
 Odeberte účet voláním `removeAccount` pomocí identifikátoru účtu.
 
-Pokud je vaše aplikace nakonfigurovaná tak, aby používala zprostředkovatele, a v zařízení je nainstalovaný zprostředkovatel, při volání `removeAccount`se účet neodebere ze zprostředkovatele.  Odeberou se jenom tokeny přidružené k vašemu klientovi.
+Pokud je vaše aplikace nakonfigurovaná tak, aby používala zprostředkovatele, a v zařízení je nainstalovaný zprostředkovatel, při volání se účet neodebere ze zprostředkovatele `removeAccount` .  Odeberou se jenom tokeny přidružené k vašemu klientovi.
 
 ## <a name="multiple-account-scenario"></a>Scénář s více účty
 

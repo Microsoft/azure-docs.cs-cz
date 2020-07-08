@@ -12,10 +12,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885068"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>Scénář: webové rozhraní API, které volá webová rozhraní API.
@@ -30,7 +29,7 @@ Tento scénář, ve kterém chráněné webové rozhraní API volá webová rozh
 
 - Webový klient, stolní nebo mobilní aplikace nebo klient s jednou stránkou (který není reprezentován v doprovodném diagramu) volá chráněné webové rozhraní API a v jeho autorizační hlavičce "autorizace" poskytne nosný token JSON Web Token (JWT).
 - Chráněné webové rozhraní API ověří token a pomocí metody Microsoft Authentication Library (MSAL) `AcquireTokenOnBehalfOf` požádá o jiný token z Azure Active Directory (Azure AD), aby chráněné webové rozhraní API mohlo zavolat druhé webové rozhraní API nebo podřízené webové rozhraní API jménem uživatele.
-- Chráněné webové rozhraní API může zavolat `AcquireTokenSilent`také později a požádat o tokeny pro jiná rozhraní API pro příjem dat jménem stejného uživatele. `AcquireTokenSilent`v případě potřeby aktualizuje token.
+- Chráněné webové rozhraní API může zavolat také `AcquireTokenSilent` později a požádat o tokeny pro jiná rozhraní API pro příjem dat jménem stejného uživatele. `AcquireTokenSilent`v případě potřeby aktualizuje token.
 
 ![Diagram webového rozhraní API, které volá webové rozhraní API](media/scenarios/web-api.svg)
 
@@ -41,4 +40,4 @@ Tento scénář, ve kterém chráněné webové rozhraní API volá webová rozh
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Registrace aplikací](scenario-web-api-call-api-app-registration.md)
+> [Registrace aplikace](scenario-web-api-call-api-app-registration.md)

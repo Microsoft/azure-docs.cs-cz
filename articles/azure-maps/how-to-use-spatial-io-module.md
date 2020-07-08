@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80804635"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Jak používat modul Azure Maps prostorového vstupu/výstupu
@@ -127,7 +126,7 @@ Modul Azure Maps prostorového vstupu a výstupu můžete načíst pomocí jedn�
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-3. `datasource`Inicializujte a přidejte zdroj dat do mapy. `layer`Inicializujte a přidejte zdroj dat do vrstvy mapy. Potom vykreslete zdroj dat i vrstvu. Než se posuňte dolů k zobrazení úplného kódu v dalším kroku, zamyslete se nad nejlepšími místy pro vložení zdrojů dat a fragmentů kódu vrstvy. Navrácení: před tím, než programově spolupracujeme s mapou, doporučujeme počkat, až bude prostředek mapy připravený.
+3. Inicializujte `datasource` a přidejte zdroj dat do mapy. Inicializujte `layer` a přidejte zdroj dat do vrstvy mapy. Potom vykreslete zdroj dat i vrstvu. Než se posuňte dolů k zobrazení úplného kódu v dalším kroku, zamyslete se nad nejlepšími místy pro vložení zdrojů dat a fragmentů kódu vrstvy. Navrácení: před tím, než programově spolupracujeme s mapou, doporučujeme počkat, až bude prostředek mapy připravený.
 
     ```javascript
     var datasource, layer;
@@ -235,13 +234,13 @@ Modul Azure Maps prostorového vstupu a výstupu můžete načíst pomocí jedn�
 Funkce, kterou jsme tady ukázali, je jenom jedna z mnoha funkcí dostupných v modulu pro prostorové vstupně-výstupní operace. Přečtěte si následující příručky, kde se dozvíte, jak používat další funkce v modulu prostorového vstupu/výstupu:
 
 > [!div class="nextstepaction"]
-> [Přidat jednoduchou datovou vrstvu](spatial-io-add-simple-data-layer.md)
+> [Přidání jednoduché datové vrstvy](spatial-io-add-simple-data-layer.md)
 
 > [!div class="nextstepaction"]
 > [Čtení a zápis prostorových dat](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu mapy OGC](spatial-io-add-ogc-map-layer.md)
+> [Přidání vrstvy mapy OGC](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
 > [Připojení ke službě WFS](spatial-io-connect-wfs-service.md)
@@ -250,7 +249,7 @@ Funkce, kterou jsme tady ukázali, je jenom jedna z mnoha funkcí dostupných v 
 > [Využití základních operací](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Podrobnosti o podporovaném formátu dat](spatial-io-supported-data-format-details.md)
+> [Podrobnosti o podporovaných formátech dat](spatial-io-supported-data-format-details.md)
 
 Přečtěte si dokumentaci Azure Maps prostor v/v:
 

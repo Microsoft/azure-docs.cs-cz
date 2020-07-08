@@ -18,10 +18,9 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80891505"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenční informace k aktivitám auditování Azure AD
@@ -135,11 +134,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa aplikací|AdminPolicyDatas-SetResources|
 |Správa aplikací|AdminUserJourneys-GetResources|
 |Správa aplikací|AdminUserJourneys-RemoveResources|
-|Ověřování|AdminUserJourneys-SetResources|
-|Ověřování|Create IdentityProvider|
-|Ověřování|Vytvoření aplikace V1|
-|Ověřování|Vytvoření aplikace V2|
-|Ověřování|Vytvoření vlastních domén v tenantovi|
+|Authentication|AdminUserJourneys-SetResources|
+|Authentication|Create IdentityProvider|
+|Authentication|Vytvoření aplikace V1|
+|Authentication|Vytvoření aplikace V2|
+|Authentication|Vytvoření vlastních domén v tenantovi|
 |Autorizace|Vytvoření nového objektu AdminUserJourney|
 |Autorizace|Vytvoření kódu JSON lokalizovaného prostředku|
 |Autorizace|Vytvoření nového vlastního zprostředkovatele identity|
@@ -256,19 +255,19 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Získání informací o tenantovi|
 |Správa adresářů|Získání povolených funkcí tenanta|
 |Správa adresářů|Získání objektu tenantDomains|
-|Key|Získá typ tenanta|
-|Key|Ověření povolení funkce B2C|
-|Key|Ověřte, jestli je funkce povolená.|
-|Key|Přidání partnera ke společnosti|
-|Key|Přidání neověřené domény|
-|Key|Přidání ověřené domény|
-|Key|Vytvoření společnosti|
-|Key|Vytvoření nastavení společnosti|
-|Key|Odstranění nastavení společnosti|
-|Key|Snížení úrovně partnera|
-|Key|Adresář je odstraněný|
-|Ostatní|Adresář je trvale odstraněný|
-|Ostatní|Adresář s naplánovaným odstraněním|
+|Klíč|Získá typ tenanta|
+|Klíč|Ověření povolení funkce B2C|
+|Klíč|Ověřte, jestli je funkce povolená.|
+|Klíč|Přidání partnera ke společnosti|
+|Klíč|Přidání neověřené domény|
+|Klíč|Přidání ověřené domény|
+|Klíč|Vytvoření společnosti|
+|Klíč|Vytvoření nastavení společnosti|
+|Klíč|Odstranění nastavení společnosti|
+|Klíč|Snížení úrovně partnera|
+|Klíč|Adresář je odstraněný|
+|Jiné|Adresář je trvale odstraněný|
+|Jiné|Adresář s naplánovaným odstraněním|
 |Prostředek|Propagace společnosti u partnera|
 |Prostředek|Vyprázdnění vlastností Rights Management|
 |Prostředek|Odebrání partnera ze společnosti|
@@ -507,11 +506,11 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 |Správa adresářů|Zvýšení oprávnění|
 |Správa adresářů|Odebráno|
 |Správa adresářů|Změny nastavení role|
-|Ostatní|ScanAlertsNow|
-|Ostatní|Registrace|
-|Ostatní|Pozastavení|
-|Ostatní|UpdateAlertSettings|
-|Ostatní|UpdateCurrentState|
+|Jiné|ScanAlertsNow|
+|Jiné|Registrace|
+|Jiné|Pozastavení|
+|Jiné|UpdateAlertSettings|
+|Jiné|UpdateCurrentState|
 |Správa zásad|Ukončení kontroly přístupu|
 |Správa zásad|Přidání schvalovatele k žádosti o schválení|
 |Správa zásad|Přidání revidujícího ke kontrole přístupu|
@@ -523,8 +522,8 @@ Tento článek obsahuje seznam aktivit auditování, které můžete protokolova
 
 |Kategorie auditu|Aktivita|
 |---|---|
-|Ostatní|Vytvoření žádosti o schválení|
-|Ostatní|Odstranění kontroly přístupu|
+|Jiné|Vytvoření žádosti o schválení|
+|Jiné|Odstranění kontroly přístupu|
 |Správa uživatelů|Odebrání revidujícího z kontroly přístupu|
 |Správa uživatelů|Žádost o použití výsledku kontroly|
 |Správa uživatelů|Žádost a zastavení kontroly|

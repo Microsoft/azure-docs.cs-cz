@@ -6,10 +6,9 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: e635c243a887690fb1f7a5dcd017c1130d74a747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114585"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor
@@ -34,7 +33,7 @@ Klasické výstrahy metrik v Azure Monitor poskytují způsob, jak dostávat ozn
 
 6. Vyberte **vlastníky e-mailů...** Pokud chcete, aby správci a spolusprávci dostávali e-mailová oznámení, když se výstraha aktivuje.
 
-7. Pokud chcete odesílat oznámení na další e-mailové adresy, když se výstraha aktivuje, přidejte je do pole **Další e-maily správce** . Více e-mailů oddělujte středníkem v následujícím formátu: *e-mail\@contoso. com; email2\@contoso.com*
+7. Pokud chcete odesílat oznámení na další e-mailové adresy, když se výstraha aktivuje, přidejte je do pole **Další e-maily správce** . Více e-mailů oddělujte středníkem v následujícím formátu: *e-mail \@ contoso. com; email2 \@ contoso.com*
 
 8. Vložte do pole **Webhooku** platný identifikátor URI, pokud chcete, aby byl volán při aktivaci výstrahy.
 

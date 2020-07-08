@@ -7,10 +7,9 @@ ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892253"
 ---
 # <a name="what-is-distributed-tracing"></a>Co je distribuované trasování?
@@ -31,7 +30,7 @@ Povolení distribuovaného trasování napříč službami v aplikaci je jednodu
 
 ## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Povolení prostřednictvím Application Insights prostřednictvím automatické instrumentace nebo sad SDK
 
-Všechna Application Insights agenti a sady SDK pro .NET, .NET Core, Java, Node. js a JavaScript podporují nativně distribuované trasování. Pokyny k instalaci a konfiguraci každé Application Insights SDK jsou k dispozici níže:
+Všechna Application Insights agenti a sady SDK pro .NET, .NET Core, Java, Node.js a JavaScript podporují nativně distribuované trasování. Pokyny k instalaci a konfiguraci každé Application Insights SDK jsou k dispozici níže:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)

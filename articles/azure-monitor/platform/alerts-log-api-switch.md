@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
 ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114356"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Přepnout předvolby rozhraní API pro výstrahy protokolu
@@ -50,7 +49,7 @@ Dopady přepínače preference na rozhraní API scheduledQueryRules jsou kompilo
 Proces přesunutí pravidel výstrah z [rozhraní API pro upozornění starší verze Log Analytics](api-alerts.md) nezahrnuje žádné změny definice upozornění, dotazování nebo konfigurace jakýmkoli způsobem. Vaše pravidla a monitorování nejsou nijak ovlivněna a výstrahy se v průběhu nebo po přepínači nezastaví nebo nebudou zastaveny. Jediné změny jsou:
 
 - Změna předvoleb rozhraní API a přístup k vašim pravidlům prostřednictvím nového rozhraní API.
-- Upravený identifikátor URI prostředku pravidla výstrahy obsahující ID použitá v [rozhraní API pro upozornění na starší verzi Log Analytics](api-alerts.md) , nikoli název pravidla výstrahy v `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`této struktuře. Zobrazovaný název pravidla výstrahy zůstane beze změny.
+- Upravený identifikátor URI prostředku pravidla výstrahy obsahující ID použitá v [rozhraní API pro upozornění na starší verzi Log Analytics](api-alerts.md) , nikoli název pravidla výstrahy v této struktuře `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` . Zobrazovaný název pravidla výstrahy zůstane beze změny.
 
 Všichni zákazníci, kteří chtějí dobrovolně přejít na nové [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) a zablokovat využití z [rozhraní API pro upozornění starší verze Log Analytics](api-alerts.md); To lze provést tak, že pomocí volání metody PUT v níže uvedeném rozhraní API přepnete všechna pravidla výstrah přidružená ke konkrétnímu pracovnímu prostoru Log Analytics.
 

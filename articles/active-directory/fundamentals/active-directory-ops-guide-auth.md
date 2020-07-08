@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80876288"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
@@ -128,7 +127,7 @@ Podobně jako uživatel ve vaší organizaci je zařízení základní identitou
 Tento cíl můžete provést tak, že navedete identity zařízení a spravujete je ve službě Azure AD pomocí jedné z následujících metod:
 
 - Organizace můžou pomocí [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) spravovat zařízení a vystavovat zásady dodržování předpisů, ověřit stav zařízení a nastavit zásady podmíněného přístupu na základě toho, jestli zařízení dodržuje předpisy. Microsoft Intune může spravovat zařízení se systémem iOS, stolní počítače Mac (prostřednictvím integrace JAMF), desktopy Windows (nativně pomocí správy mobilních zařízení pro Windows 10 a spolusprávu pomocí služby Microsoft Endpoint Configuration Manager) a mobilních zařízení s Androidem.
-- [Připojení k hybridní službě Azure AD](../devices/hybrid-azuread-join-managed-domains.md) poskytuje správu pomocí zásad skupiny nebo Microsoft Endpoint Configuration Manager v prostředí s počítači připojenými k doméně služby Active Directory. Organizace můžou nasadit spravované prostředí prostřednictvím KOSMETICE nebo PTA s bezproblémové jednotné přihlašování. Uvedení zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím jednotného přihlašování napříč vaším cloudem a místními prostředky a zároveň vám umožní zabezpečit přístup k vašemu cloudu a místním prostředkům s [podmíněným přístupem](../conditional-access/overview.md) současně.
+- [Připojení k hybridní službě Azure AD](../devices/hybrid-azuread-join-managed-domains.md) poskytuje správu pomocí zásad skupiny nebo Microsoft Endpoint Configuration Manager v prostředí s počítači připojenými k doméně služby Active Directory. Organizace můžou nasadit spravované prostředí prostřednictvím KOSMETICE nebo PTA s bezproblémové jednotné přihlašování. Uvedení zařízení do Azure AD maximalizuje produktivitu uživatelů prostřednictvím jednotného přihlašování napříč vaším cloudem a místními prostředky a zároveň vám umožní zabezpečit přístup k vašemu cloudu a místním prostředkům s [podmíněným přístupem](../conditional-access/overview.md)   současně.
 
 Pokud máte zařízení s Windows připojená k doméně, která nejsou registrovaná v cloudu, nebo zařízení s Windows připojená k doméně, která jsou zaregistrovaná v cloudu, ale bez zásad podmíněného přístupu, měli byste zaregistrovat neregistrovaná zařízení a v obou případech [použít hybridní službu Azure AD JOIN jako ovládací prvek](../conditional-access/require-managed-devices.md) v zásadách podmíněného přístupu.
 
@@ -337,7 +336,7 @@ Níže jsou uvedena nastavení uživatelů a skupin, která se můžou uzamknout
 > [!NOTE]
 > Bez správců stále přístup k rozhraním pro správu služby Azure AD prostřednictvím příkazového řádku a dalších programových rozhraní.
 
-#### <a name="group-settings"></a>Nastavení skupin
+#### <a name="group-settings"></a>Nastavení skupiny
 
 **Samoobslužná správa skupin/uživatelé můžou vytvářet skupiny zabezpečení nebo skupiny O365.** Pokud není k dispozici žádná stávající samoobslužná iniciativa pro skupiny v cloudu, zákazníci se můžou rozhodnout je vypnout, dokud nebudou připravené k použití této možnosti.
 

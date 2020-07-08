@@ -4,10 +4,9 @@ description: Jak odebrat sadu Application Insights SDK pro ASP.NET a ASP.NET Cor
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 1c9ff8d3d305645ac7d113421e2c6c5f8451bd2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80805102"
 ---
 # <a name="how-to-remove-application-insights-in-visual-studio"></a>Jak odebrat Application Insights v aplikaci Visual Studio
@@ -49,7 +48,7 @@ Chcete-li odebrat Application Insights, bude nutné odebrat balíčky NuGet a od
 
 # <a name="net"></a>[.NET](#tab/net)
 
-1. V *Průzkumník řešení* na pravé straně klikněte pravým tlačítkem na **řešení** a vyberte **Spravovat balíčky NuGet pro řešení**.
+1. V *Průzkumník řešení*   na pravé straně klikněte pravým tlačítkem na **řešení**   a vyberte **Spravovat balíčky NuGet pro řešení**.
 
     Zobrazí se obrazovka, která umožňuje upravit všechny balíčky NuGet, které jsou součástí projektu.
     
@@ -58,25 +57,25 @@ Chcete-li odebrat Application Insights, bude nutné odebrat balíčky NuGet a od
     > [!NOTE]
     > Pokud je povolené shromažďování trasování, musíte nejdřív odinstalovat Microsoft. ApplicationInsights. TraceListener bez vybraných závislostí a potom podle následujících pokynů odinstalovat Microsoft. ApplicationInsights. Web s vybranými možnostmi odebrat závislosti.
     
-1. Klikněte na balíček Microsoft. ApplicationInsights. Web.Na pravé straně zaškrtněte políčko vedle *projektu* pro výběr všech projektů.
+1. Klikněte na balíček Microsoft. ApplicationInsights. Web.Na pravé straně zaškrtněte políčko vedle *projektu*   pro výběr všech projektů.
     
-1. Chcete-li odebrat všechny závislosti při odinstalaci, vyberte rozevírací tlačítko **Možnosti** pod oddílem, ve kterém jste vybrali možnost projekt.
+1. Chcete-li odebrat všechny závislosti při odinstalaci **Options**, vyberte   rozevírací tlačítko Možnosti pod oddílem, ve kterém jste vybrali možnost projekt.
 
     V části *Možnosti odinstalace*zaškrtněte políčko u položky *odebrat závislosti*.
 
-1. Vyberte **odinstalovat**.
+1. Vyberte **Odinstalovat**.
     
     ![Zaškrtněte odebrat závislosti a potom odinstalujte.](./media/remove-application-insights/uninstall-framework.png)
 
-    Zobrazí se dialogové okno, ve kterém se zobrazí všechny závislosti, které mají být z aplikace odebrány.Kliknutím na **tlačítko OK** odinstalujte.
+    Zobrazí se dialogové okno, ve kterém se zobrazí všechny závislosti, které mají být z aplikace odebrány.Kliknutím na **tlačítko OK**   odinstalujte.
     
     ![Zaškrtněte odebrat závislosti a potom odinstalujte.](./media/remove-application-insights/preview-uninstall-framework.png)
     
-1.  Po odinstalaci všeho se v *Průzkumník řešení*pořád zobrazuje zpráva "ApplicationInsights. config" a "AiHandleErrorAttribute.cs".Tyto dva soubory můžete odstranit ručně.
+1.  Po odinstalaci všeho se v *Průzkumník řešení*pořád zobrazují "ApplicationInsights.config" a "AiHandleErrorAttribute.cs".Tyto dva soubory můžete odstranit ručně.
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-1. V *Průzkumník řešení* na pravé straně klikněte pravým tlačítkem na **řešení** a vyberte **Spravovat balíčky NuGet pro řešení**.
+1. V *Průzkumník řešení*   na pravé straně klikněte pravým tlačítkem na **řešení**   a vyberte **Spravovat balíčky NuGet pro řešení**.
 
     Zobrazí se obrazovka, která umožňuje upravit všechny balíčky NuGet, které jsou součástí projektu.
 
@@ -107,7 +106,7 @@ Jsou přidány následující části kódu:
      <ApplicationInsightsResourceId>/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/WebApplication4</ApplicationInsightsResourceId>
     ```
 
-- Soubor Packages. config
+- Packages.config
 
     ```xml
     <packages>
@@ -155,7 +154,7 @@ Jsou přidány následující části kódu:
     </head>
     ```
 
-- Připojenou službu. JSON
+- ConnectedService.jsna
 
     ```json
     {
@@ -197,14 +196,14 @@ Když přidáte Telemetrie Application Insights do projektu šablony ASP.NET Cor
       </ItemGroup>
     ```
 
-- AppSettings. JSON:
+- Appsettings.js:
 
     ```json
     "ApplicationInsights": {
         "InstrumentationKey": "00000000-0000-0000-0000-000000000000"
     ```
 
-- Připojenou službu. JSON
+- ConnectedService.jsna
     
     ```json
     {

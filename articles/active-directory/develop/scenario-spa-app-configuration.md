@@ -12,10 +12,9 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f159105046231ba5fb4e458cdd70d930a411a920
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882331"
 ---
 # <a name="single-page-application-code-configuration"></a>Jednostránkové aplikace: Konfigurace kódu
@@ -26,10 +25,10 @@ Naučte se konfigurovat kód pro jednostránkové aplikace (SPA).
 
 Platforma Microsoft Identity poskytuje následující knihovny Microsoft Authentication Library (MSAL) pro podporu implicitního toku pomocí doporučených postupů zabezpečení v oboru:
 
-| Knihovna MSAL | Popis |
+| Knihovna MSAL | Description |
 |--------------|--------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Prostá knihovna JavaScriptu pro použití v jakékoli webové aplikaci na straně klienta, která je sestavena prostřednictvím rozhraní JavaScript nebo SPA, jako je například úhlová Vue. js, a reaguje. js. |
-| ![MSALý úhlový](media/sample-v2-code/logo_angular.png) <br/> [MSALý úhlový](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Obálka základní knihovny MSAL. js pro zjednodušení použití v aplikacích s jednou stránkou, které jsou sestaveny prostřednictvím úhlové architektury. |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Jednoduchá knihovna JavaScriptu pro použití v jakékoli webové aplikaci na straně klienta, která je sestavena prostřednictvím rozhraní JavaScript nebo SPA, jako je například úhlová, Vue.jsa a React.js. |
+| ![MSALý úhlový](media/sample-v2-code/logo_angular.png) <br/> [MSALý úhlový](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Obálka základní knihovny MSAL.js pro zjednodušení použití v jednostránkovéch aplikacích, které jsou sestaveny prostřednictvím úhlové architektury. |
 
 ## <a name="application-code-configuration"></a>Konfigurace kódu aplikace
 
@@ -50,7 +49,7 @@ const config = {
 const userAgentApplication = new UserAgentApplication(config);
 ```
 
-Další informace o konfigurovatelných možnostech naleznete v tématu [inicializace aplikace pomocí MSAL. js](msal-js-initializing-client-applications.md).
+Další informace o konfigurovatelných možnostech naleznete v tématu [inicializace aplikace pomocí MSAL.js](msal-js-initializing-client-applications.md).
 
 # <a name="angular"></a>[Angular](#tab/angular)
 

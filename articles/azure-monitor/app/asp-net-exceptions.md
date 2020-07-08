@@ -4,10 +4,9 @@ description: Zachyťte výjimky z aplikací ASP.NET spolu s telemetrie žádost�
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892338"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve webových aplikacích pomocí služby Application Insights
@@ -94,7 +93,7 @@ Podrobnosti žádosti neobsahují data odesílaná do aplikace v příspěvku. P
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a>Zachycování výjimek a souvisejících diagnostických dat
 Nejdříve se na portálu nezobrazí všechny výjimky, které způsobují chyby ve vaší aplikaci. Zobrazí se všechny výjimky prohlížeče (Pokud používáte [sadu JavaScript SDK](../../azure-monitor/app/javascript.md) na webových stránkách). Ale většina výjimek serveru je zachycena službou IIS a je nutné napsat bitovou kopii pro jejich zobrazení.
 
-Můžete:
+Další možnosti:
 
 * **Protokolujte výjimky explicitně** vložením kódu do obslužných rutin výjimek pro hlášení výjimek.
 * **Automatické zachycení výjimek** konfigurací architektury ASP.NET Nezbytné doplňky jsou odlišné pro různé typy rozhraní.
@@ -157,7 +156,7 @@ Parametry vlastností a měření jsou volitelné, ale jsou užitečné pro [fil
 ## <a name="browser-exceptions"></a>Výjimky prohlížečů
 Je nahlášena většina výjimek prohlížeče.
 
-Pokud vaše webová stránka obsahuje soubory skriptu ze sítě pro doručování obsahu nebo jiné domény, ujistěte se, že značka ```crossorigin="anonymous"```skriptu má atribut a že server posílá [hlavičky CORS](https://enable-cors.org/). To vám umožní získat trasování zásobníku a podrobnosti o neošetřených výjimkách JavaScriptu z těchto prostředků.
+Pokud vaše webová stránka obsahuje soubory skriptu ze sítě pro doručování obsahu nebo jiné domény, ujistěte se, že značka skriptu má atribut ```crossorigin="anonymous"``` a že server posílá [hlavičky CORS](https://enable-cors.org/). To vám umožní získat trasování zásobníku a podrobnosti o neošetřených výjimkách JavaScriptu z těchto prostředků.
 
 ## <a name="reuse-your-telemetry-client"></a>Opětovné použití klienta telemetrie
 
@@ -209,12 +208,12 @@ Existuje několik případů, kdy filtry výjimek nemůžou zpracovat. Příklad
 * V úlohách na pozadí byla vyvolána výjimka.
 
 Všechny výjimky, které aplikace *zpracovává* , je stále nutné sledovat ručně.
-Neošetřené výjimky, které pocházejí z řadičů, obvykle způsobují odpověď 500 "interní chyba serveru". Pokud je taková odpověď manuálně vytvořená jako výsledek ošetřené výjimky (nebo žádná výjimka vůbec), je sledována v odpovídající telemetrii žádostí `ResultCode` s 500, ale Application Insights SDK nemůže sledovat odpovídající výjimku.
+Neošetřené výjimky, které pocházejí z řadičů, obvykle způsobují odpověď 500 "interní chyba serveru". Pokud je taková odpověď manuálně vytvořená jako výsledek ošetřené výjimky (nebo žádná výjimka vůbec), je sledována v odpovídající telemetrii žádostí s `ResultCode` 500, ale Application Insights SDK nemůže sledovat odpovídající výjimku.
 
 ### <a name="prior-versions-support"></a>Podpora předchozích verzí
 Pokud používáte MVC 4 (a předchozí) Application Insights web SDK 2,5 (a předchozí), Sledujte výjimky v následujících příkladech.
 
-Pokud je `Off`konfigurace [customErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) , budou k dispozici výjimky pro [modul HTTP](https://msdn.microsoft.com/library/ms178468.aspx) ke shromáždění. Pokud je `RemoteOnly` však (výchozí) nebo `On`, bude výjimka vymazána a nebude k dispozici pro Application Insights pro automatické shromáždění. Můžete to opravit přepsáním [třídy System. Web. Mvc. HandleErrorAttribute](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)a použitím přepsané třídy, jak je znázorněno pro různé verze MVC níže ([zdroj GitHubu](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Pokud je konfigurace [customErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) `Off` , budou k dispozici výjimky pro [modul HTTP](https://msdn.microsoft.com/library/ms178468.aspx) ke shromáždění. Pokud je však `RemoteOnly` (výchozí) nebo `On` , bude výjimka vymazána a nebude k dispozici pro Application Insights pro automatické shromáždění. Můžete to opravit přepsáním [třídy System. Web. Mvc. HandleErrorAttribute](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)a použitím přepsané třídy, jak je znázorněno pro různé verze MVC níže ([zdroj GitHubu](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;

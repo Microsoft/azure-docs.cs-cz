@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
 ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991650"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Osvědčené postupy pro návrh aplikací pro Azure Service Fabric
@@ -70,7 +69,7 @@ Service Fabric Reliable Actors umožňuje snadno vytvořit stavové a virtuáln�
 - Vzhledem k jejich [souběžnosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction#concurrency), jsou objekty actor nejlépe používány jako nezávislé objekty. Nevytvářejte grafy více objektů Actor, synchronní volání metod (každý z nich se pravděpodobně nazývá samostatné síťové volání) nebo Vytvářejte kruhové požadavky objektu actor. Tato akce významně ovlivní výkon a škálování.
 - Nepoužívejte kombinaci synchronního kódu s asynchronním kódem. Používejte Async konzistentně, aby se zabránilo problémům s výkonem.
 - V aktérech neprovádějte dlouhotrvající volání. Dlouhotrvající volání zablokují jiná volání stejnému objektu actor z důvodu souběžnosti založené na zapínání.
-- Pokud komunikujete s jinými službami pomocí [Service Fabric vzdálené komunikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) a vytváříte `ServiceProxyFactory`, vytvořte továrnu na úrovni [actor-Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) a *ne* na úrovni objektu actor.
+- Pokud komunikujete s jinými službami pomocí [Service Fabric vzdálené komunikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication-remoting) a vytváříte `ServiceProxyFactory` , vytvořte továrnu na úrovni [actor-Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-using) a *ne* na úrovni objektu actor.
 
 
 ## <a name="application-diagnostics"></a>Application Diagnostics

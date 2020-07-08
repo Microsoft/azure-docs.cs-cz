@@ -6,10 +6,9 @@ ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811692"
 ---
 # <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Použijte certifikát TLS/SSL v kódu v Azure App Service
@@ -29,7 +28,7 @@ Postup při použití tohoto průvodce:
 
 ## <a name="find-the-thumbprint"></a>Najít kryptografický otisk
 
-V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services** > **\<název aplikace>**.
+V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
 V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL**, pak vyberte **certifikáty privátních klíčů (. pfx)** nebo **certifikáty veřejného klíče (. cer)**.
 
@@ -39,22 +38,22 @@ Vyhledejte certifikát, který chcete použít, a zkopírujte jeho kryptografick
 
 ## <a name="make-the-certificate-accessible"></a>Zpřístupněte certifikát jako přístupný.
 
-Pokud chcete získat přístup k certifikátu v kódu aplikace, přidejte jeho kryptografický otisk `WEBSITE_LOAD_CERTIFICATES` do nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
+Pokud chcete získat přístup k certifikátu v kódu aplikace, přidejte jeho kryptografický otisk do `WEBSITE_LOAD_CERTIFICATES` nastavení aplikace spuštěním následujícího příkazu v <a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_CERTIFICATES=<comma-separated-certificate-thumbprints>
 ```
 
-Pro zpřístupnění všech certifikátů nastavte hodnotu na `*`.
+Pro zpřístupnění všech certifikátů nastavte hodnotu na `*` .
 
 ## <a name="load-certificate-in-windows-apps"></a>Načtení certifikátu v aplikacích pro Windows
 
-Nastavení `WEBSITE_LOAD_CERTIFICATES` aplikace zpřístupňuje zadané certifikáty pro aplikaci hostovanou v systému Windows v úložišti certifikátů Windows a umístění závisí na [cenové úrovni](overview-hosting-plans.md):
+`WEBSITE_LOAD_CERTIFICATES`Nastavení aplikace zpřístupňuje zadané certifikáty pro aplikaci hostovanou v systému Windows v úložišti certifikátů Windows a umístění závisí na [cenové úrovni](overview-hosting-plans.md):
 
 - **Izolovaná** vrstva – [místní Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) 
 - Všechny ostatní úrovně – v [aktuální User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
-V kódu jazyka C# získáte přístup k certifikátu pomocí kryptografického otisku certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+V kódu jazyka C# získáte přístup k certifikátu pomocí kryptografického otisku certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870` .
 
 ```csharp
 using System;
@@ -109,7 +108,7 @@ Jazyky, které nepodporují nebo neposkytují nedostatečnou podporu úložišt�
 
 ## <a name="load-certificate-in-linux-apps"></a>Načíst certifikát v aplikacích pro Linux
 
-Nastavení `WEBSITE_LOAD_CERTIFICATES` aplikace zpřístupňuje zadané certifikáty pro hostované aplikace Linux (včetně vlastních kontejnerových aplikací) jako soubory. Soubory se nacházejí v následujících adresářích:
+`WEBSITE_LOAD_CERTIFICATES`Nastavení aplikace zpřístupňuje zadané certifikáty pro hostované aplikace Linux (včetně vlastních kontejnerových aplikací) jako soubory. Soubory se nacházejí v následujících adresářích:
 
 - Privátní certifikáty – `/var/ssl/private` ( `.p12` soubory)
 - Veřejné certifikáty – `/var/ssl/certs` ( `.der` soubory)
@@ -128,7 +127,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-Informace o tom, jak načíst certifikát TLS/SSL ze souboru v Node. js, PHP, Pythonu, Java nebo Ruby, najdete v dokumentaci k příslušnému jazyku nebo webové platformě.
+Pokud chcete zjistit, jak načíst certifikát TLS/SSL ze souboru v Node.js, PHP, Pythonu, Java nebo Ruby, přečtěte si dokumentaci k příslušnému jazyku nebo webové platformě.
 
 ## <a name="load-certificate-from-file"></a>Načíst certifikát ze souboru
 
@@ -157,7 +156,7 @@ var cert = new X509Certificate2(bytes);
 // Use the loaded certificate
 ```
 
-Informace o tom, jak načíst certifikát TLS/SSL ze souboru v Node. js, PHP, Pythonu, Java nebo Ruby, najdete v dokumentaci k příslušnému jazyku nebo webové platformě.
+Pokud chcete zjistit, jak načíst certifikát TLS/SSL ze souboru v Node.js, PHP, Pythonu, Java nebo Ruby, přečtěte si dokumentaci k příslušnému jazyku nebo webové platformě.
 
 ## <a name="more-resources"></a>Další zdroje informací
 

@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881244"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Postupy: Konfigurace jednotného přihlašování v macOS a iOS
@@ -78,7 +77,7 @@ Identifikátor URI pro přesměrování APP3:`msauth.com.contoso.mytestapp3://au
 
 Pokud chcete povolit sdílení řetězce klíčů, podívejte se do článku věnovaném [Přidání schopností](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html) společnosti Apple. Důležité je, abyste se rozhodli, co chcete volat do řetězce klíčů, a přidat tuto možnost do všech aplikací, které budou součástí jednotného přihlašování.
 
-Pokud máte oprávnění nastavené správně, zobrazí se v adresáři projektu `entitlements.plist` soubor, který obsahuje něco podobného jako v tomto příkladu:
+Pokud máte oprávnění nastavené správně, zobrazí se `entitlements.plist` v adresáři projektu soubor, který obsahuje něco podobného jako v tomto příkladu:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -145,7 +144,7 @@ MSAL poskytuje podporu pro zprostředkované ověřování pomocí Microsoft Aut
 
 Následující postup slouží k povolení jednotného přihlašování pomocí zprostředkovatele ověřování pro vaši aplikaci:
 
-1. Zaregistrujte formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem pro aplikaci v souboru info. plist vaší aplikace. Formát identifikátoru URI přesměrování kompatibilního `msauth.<app.bundle.id>://auth`s zprostředkovatelem je. Nahraďte '<app.bundle.id>' ' ID sady prostředků vaší aplikace. Příklad:
+1. Zaregistrujte formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem pro aplikaci v souboru info. plist vaší aplikace. Formát identifikátoru URI přesměrování kompatibilního s zprostředkovatelem je `msauth.<app.bundle.id>://auth` . Nahraďte '<app.bundle.id>' ' ID sady prostředků vaší aplikace. Příklad:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -154,7 +153,7 @@ Následující postup slouží k povolení jednotného přihlašování pomocí 
     </array>
     ```
 
-1. Do souboru info. plist vaší aplikace přidejte následující schémata `LSApplicationQueriesSchemes`:
+1. Do souboru info. plist vaší aplikace přidejte následující schémata `LSApplicationQueriesSchemes` :
 
     ```xml
     <key>LSApplicationQueriesSchemes</key>

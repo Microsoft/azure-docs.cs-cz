@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
 ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811414"
 ---
 # <a name="how-to-configure-cloud-services"></a>Jak konfigurovat Cloud Services
@@ -46,7 +45,7 @@ Pokud potřebujete cílit na konkrétní verzi operačního systému, můžete j
 
 ## <a name="monitoring"></a>Monitorování
 
-Do své cloudové služby můžete přidat výstrahy. Klikněte na **Nastavení** > **pravidla** > výstrahy**Přidat výstrahu**.
+Do své cloudové služby můžete přidat výstrahy. Klikněte na **Nastavení**  >  **pravidla výstrahy**  >  **Přidat výstrahu**.
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
@@ -62,7 +61,7 @@ Tady můžete nastavit výstrahu. Pomocí rozevíracího seznamu **metrika** mů
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Konfigurace monitorování z dlaždice metriky
 
-Místo používání **Nastavení** > **pravidla upozornění**můžete kliknout na jeden z dlaždic metriky v části **monitorování** v cloudové službě.
+Místo používání **Nastavení**  >  **pravidla upozornění**můžete kliknout na jeden z dlaždic metriky v části **monitorování** v cloudové službě.
 
 ![Monitorování cloudové služby](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 

@@ -16,10 +16,9 @@ ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81258826"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Použití monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon
@@ -168,7 +167,7 @@ Příklad: *WADMetricsPT1HP10DV2S20151108* obsahuje data metrik agregovaná za h
 Každá tabulka WADMetrics obsahuje následující sloupce:
 
 * **PartitionKey**: klíč oddílu je vytvořen na základě hodnoty *ResourceID* k jedinečné identifikaci prostředku virtuálního počítače. Příklad: `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
-* **RowKey**: následuje formát `<Descending time tick>:<Performance Counter Name>`. Výpočet vzestupného časového intervalu je maximální časový interval v čase začátku agregačního období. Pokud například začíná ukázková Perioda 10. listopadu-2015 a 00:00Hrs UTC, pak výpočet by byl: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. V čítači výkonu dostupné bajty paměti bude klíč řádku vypadat takto:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
+* **RowKey**: následuje formát `<Descending time tick>:<Performance Counter Name>` . Výpočet vzestupného časového intervalu je maximální časový interval v čase začátku agregačního období. Pokud například začíná ukázková Perioda 10. listopadu-2015 a 00:00Hrs UTC, pak výpočet by byl: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)` . V čítači výkonu dostupné bajty paměti bude klíč řádku vypadat takto:`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: je název čítače výkonu. To odpovídá *counterSpecifier* definovanému v konfiguraci XML.
 * **Maximum**: maximální hodnota čítače výkonu v rámci agregačního období.
 * **Minimum**: minimální hodnota čítače výkonu v rámci agregačního období.

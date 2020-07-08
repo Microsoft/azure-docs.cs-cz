@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81011119"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Uživatelsky definované funkce (UDF) v Azure Cosmos DB
@@ -32,7 +31,7 @@ Pokud v dotazu musíte použít stejnou hodnotu UDF několikrát, měli byste v 
 
 ## <a name="examples"></a>Příklady
 
-Následující příklad registruje UDF v rámci kontejneru položek v databázi Cosmos. Příklad vytvoří příponu UDF, jejíž název je `REGEX_MATCH`. Přijímá dvě hodnoty řetězce JSON `input` a `pattern`a kontroluje, zda první odpovídá vzoru zadanému ve druhém pomocí `string.match()` funkce JavaScriptu.
+Následující příklad registruje UDF v rámci kontejneru položek v databázi Cosmos. Příklad vytvoří příponu UDF, jejíž název je `REGEX_MATCH` . Přijímá dvě hodnoty řetězce JSON a a `input` `pattern` kontroluje, zda první odpovídá vzoru zadanému ve druhém pomocí `string.match()` funkce JavaScriptu.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -48,7 +47,7 @@ Následující příklad registruje UDF v rámci kontejneru položek v databázi
            regexMatchUdf).Result;  
 ```
 
-Teď tuto UDF použijte v projekci dotazu. Při volání v rámci dotazů musíte kvalifikovat UDF s předponou `udf.` pro velká a malá písmena.
+Teď tuto UDF použijte v projekci dotazu. Při volání v rámci dotazů musíte kvalifikovat UDF s předponou pro velká a malá písmena `udf.` .
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
@@ -68,7 +67,7 @@ Výsledky jsou následující:
     ]
 ```
 
-V rámci filtru můžete použít úplný formát UDF `udf.` s předponou, jak je uvedeno v následujícím příkladu:
+V rámci filtru můžete použít úplný formát UDF s `udf.` předponou, jak je uvedeno v následujícím příkladu:
 
 ```sql
     SELECT Families.id, Families.address.city

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985061"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
@@ -21,7 +20,7 @@ Application Insights mohou monitorovat webové aplikace a služby v jazyce Java 
 Na straně klienta Application Insights může převzít telemetrii z webových stránek a širokou škálu zařízení, včetně aplikací pro iOS, Android a Windows Store.
 
 ## <a name="set-up-performance-monitoring"></a><a name="setup"></a>Nastavení sledování výkonu
-Pokud jste ještě nepřidali Application Insights do projektu (tj. Pokud nemá ApplicationInsights. config), vyberte jeden z následujících způsobů, jak začít:
+Pokud jste ještě nepřidali Application Insights do projektu (tj. Pokud nemá ApplicationInsights.config), vyberte jeden z následujících způsobů, jak začít:
 
 * [Webové aplikace v ASP.NET](../../azure-monitor/app/asp-net.md)
   * [Přidat monitorování výjimek](../../azure-monitor/app/asp-net-exceptions.md)

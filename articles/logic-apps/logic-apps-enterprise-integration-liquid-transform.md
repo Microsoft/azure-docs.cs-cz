@@ -9,15 +9,14 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
 ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80879169"
 ---
-# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Provádění pokročilých transformací JSON pomocí tekutých šablon v Azure Logic Apps
+# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Provádění pokročilých transformací JSON pomocí šablon Liquid v Azure Logic Apps
 
-V Logic Apps můžete provádět základní transformace JSON s akcemi nativních operací s daty, jako je například **Vytvoření** nebo **Analýza JSON**. K provádění pokročilých transformací JSON můžete vytvářet šablony nebo mapy pomocí [tekutého](https://shopify.github.io/liquid/), což je open source jazyk šablony pro flexibilní webové aplikace. Šablona Liquid definuje, jak transformovat výstup JSON a podporuje složitější transformace JSON, jako jsou iterace, řídicí toky, proměnné a tak dále.
+V Logic Apps můžete provádět základní transformace JSON s akcemi nativních operací s daty, jako je například **Vytvoření** nebo **Analýza JSON**. K provádění pokročilých transformací JSON můžete vytvářet šablony nebo mapy pomocí [tekutého](https://shopify.github.io/liquid/), což je open source jazyk šablony pro flexibilní webové aplikace. Šablona Liquid definuje, jak transformovat výstup JSON, a podporuje složitější transformace JSON, jako jsou iterace, toky řízení, proměnné a tak dále.
 
 Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nutné nejprve definovat mapování JSON na JSON s šablonou Liquid a uložit tuto mapu v účtu integrace. V tomto článku se dozvíte, jak vytvořit a použít tuto šablonu nebo mapu kapalné.
 
@@ -57,7 +56,7 @@ Předtím, než můžete v aplikaci logiky provést transformaci kapalin, je nut
    }
    ```
 
-1. V [Azure Portal](https://portal.azure.com)do pole Azure Search zadejte `integration accounts`a vyberte účty pro **integraci**.
+1. V [Azure Portal](https://portal.azure.com)do pole Azure Search zadejte `integration accounts` a vyberte **účty pro integraci**.
 
    ![Vyhledání "účtů pro integraci"](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 

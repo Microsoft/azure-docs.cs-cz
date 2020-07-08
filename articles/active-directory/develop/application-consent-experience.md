@@ -14,10 +14,9 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885578"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Prostředí vyjádření souhlasu s aplikací Azure AD
@@ -31,7 +30,7 @@ Souhlas je proces uživatele, který uděluje oprávnění k přístupu k chrán
 Skutečné uživatelské prostředí udělování souhlasu se bude lišit v závislosti na zásadách nastavených v tenantovi uživatele, rozsahu uživatele autority (nebo roli) a typu [oprávnění](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent) , které klientská aplikace požaduje. To znamená, že vývojáři aplikací a Správci klientů mají kontrolu nad tím, jakým způsobem se bude jednat o používání souhlasu. Správci mají flexibilitu nastavení a zakázání zásad v tenantovi nebo aplikaci, aby mohli řídit možnosti souhlasu ve svém tenantovi. Vývojáři aplikací mohou určovat, jaké typy oprávnění jsou požadovány, a pokud chtějí uživatele pořídit pomocí toku souhlasu uživatele nebo toku souhlasu správce.
 
 - **Tok souhlasu uživatele** je v případě, že vývojář aplikace přesměruje uživatele na koncový bod autorizace s cílem zaznamenat souhlas jenom pro aktuálního uživatele.
-- **Tok souhlasu správce** je v případě, že vývojář aplikace nasměruje uživatele do koncového bodu souhlasu správce s cílem zaznamenat souhlas celého tenanta. Aby bylo zajištěno, že tok souhlasu správce funguje správně, musí vývojáři aplikací zobrazit seznam `RequiredResourceAccess` všech oprávnění ve vlastnosti v manifestu aplikace. Další informace naleznete v tématu [manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- **Tok souhlasu správce** je v případě, že vývojář aplikace nasměruje uživatele do koncového bodu souhlasu správce s cílem zaznamenat souhlas celého tenanta. Aby bylo zajištěno, že tok souhlasu správce funguje správně, musí vývojáři aplikací zobrazit seznam všech oprávnění ve `RequiredResourceAccess` vlastnosti v manifestu aplikace. Další informace naleznete v tématu [manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>Stavební bloky výzvy k vyjádření souhlasu
 

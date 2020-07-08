@@ -4,10 +4,9 @@ description: Získejte odpovědi na běžné dotazy týkající se zotavení po 
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259506"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné otázky týkající se replikace z VMware do Azure
@@ -282,7 +281,7 @@ Ano, ale Upozorňujeme, že fyzický počítač se může vrátit zpátky jenom 
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Kde můžu stahovat registrační klíče trezoru?
 
-V trezoru Recovery Services v části > **Správa** **infrastruktury Site Recovery**vyberte **konfigurační servery** . Pak na stránce **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
+V trezoru Recovery Services v části Správa **infrastruktury Site Recovery**vyberte **konfigurační servery**  >  **Manage**. Pak na stránce **servery**vyberte **Stáhnout registrační klíč** a Stáhněte si soubor s přihlašovacími údaji trezoru.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Může být pro ochranu více instancí vCenter použit jediný konfigurační server?
 

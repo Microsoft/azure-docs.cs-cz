@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/31/2020
 ms.service: stream-analytics
 ms.openlocfilehash: 736fce1d4b347e36ad5c10ca89ad0627104a0232
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80879840"
 ---
 # <a name="develop-and-debug-azure-stream-analytics-jobs-locally"></a>Místní vývoj a ladění úloh Azure Stream Analytics
@@ -23,7 +22,7 @@ Způsob, jakým vyvíjíte Stream Analytics úlohy na místním počítači, zá
 
 Prostředí v následující tabulce podporují místní vývoj:
 
-|Prostředí                              |Popis    |
+|Prostředí                              |Description    |
 |-----------------------------------------|------------|
 |[Visual Studio Code](visual-studio-code-explore-jobs.md)| [Rozšíření Azure Stream Analytics nástrojů](https://marketplace.visualstudio.com/items?itemName=ms-bigdatatools.vscode-asa) pro Visual Studio Code umožňuje vytvářet, spravovat a testovat úlohu Stream Analytics jak místně, tak v cloudu pomocí bohatých technologií IntelliSense a nativního správy zdrojového kódu. Podporuje vývoj v systémech Linux, MacOS a Windows. Další informace najdete v tématu [Vytvoření úlohy Azure Stream Analytics v Visual Studio Code](quick-create-vs-code.md).|
 |[Visual Studio 2019](stream-analytics-tools-for-visual-studio-install.md) |Stream Analytics nástroje jsou součástí vývoje Azure a úloh úložiště a zpracování dat v aplikaci Visual Studio. Můžete použít Visual Studio k psaní vlastních uživatelsky definovaných funkcí C# a deserializace. Další informace najdete v tématu [Vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio](stream-analytics-quick-create-vs.md).|

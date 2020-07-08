@@ -14,10 +14,9 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882569"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scénář: mobilní aplikace, která volá webová rozhraní API
@@ -63,4 +62,4 @@ Při vytváření mobilní aplikace na platformě Microsoft identity je potřeba
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Registrace aplikací](scenario-mobile-app-registration.md)
+> [Registrace aplikace](scenario-mobile-app-registration.md)

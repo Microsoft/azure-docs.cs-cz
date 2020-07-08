@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
 ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80810233"
 ---
 # <a name="azure-application-gateway-features"></a>Funkce Azure Application Gateway
@@ -26,7 +25,7 @@ Application Gateway obsahuje následující funkce:
 - [Automatické škálování](#autoscaling)
 - [Redundance zóny](#zone-redundancy)
 - [Statická virtuální IP adresa](#static-vip)
-- [Web Application Firewall (Brána firewall webových aplikací)](#web-application-firewall)
+- [Firewall webových aplikací](#web-application-firewall)
 - [Kontroler Ingress pro AKS](#ingress-controller-for-aks)
 - [Směrování na základě adresy URL](#url-based-routing)
 - [Hostování několika webů](#multiple-site-hosting)
@@ -58,7 +57,7 @@ Application Gateway Standard_v2 může zahrnovat více Zóny dostupnosti, což n
 
 SKU služby Application Gateway Standard_v2 podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění ani po dobu života Application Gateway.
 
-## <a name="web-application-firewall"></a>Web Application Firewall (Brána firewall webových aplikací)
+## <a name="web-application-firewall"></a>Firewall webových aplikací
 
 Firewall webových aplikací (WAF) je služba, která poskytuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. WAF je založená na pravidlech z [OWASP (Open Web Application Security Project) základních sad pravidel](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (jenom WAF_v2), 3,0 a 2.2.9. 
 
@@ -153,7 +152,7 @@ Application Gateway Standard se nabízí ve třech velikostech: **malá**, **st�
 
 Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway V1 s povoleným snižováním zatížení SSL:
 
-| Průměrná velikost odpovědi back-endu stránky | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
+| Průměrná velikost odpovědi back-endu stránky | Malá | Střední | Velká |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |

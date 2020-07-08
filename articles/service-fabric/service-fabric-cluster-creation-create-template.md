@@ -4,10 +4,9 @@ description: Naučte se, jak vytvořit šablonu Správce prostředků pro cluste
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985367"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření Správce prostředků šablony Service Fabric clusteru
@@ -24,13 +23,13 @@ Před nasazením produkčního clusteru pro spouštění produkčních úloh nez
 ## <a name="create-the-resource-manager-template"></a>Vytvoření šablony Resource Manageru
 Ukázkové šablony Správce prostředků jsou k dispozici v [ukázkách Azure na GitHubu](https://github.com/Azure-Samples/service-fabric-cluster-templates). Tyto šablony lze použít jako výchozí bod pro šablonu clusteru.
 
-Tento článek používá příklad šablony a parametrů šablony [zabezpečeného clusteru s pěti uzly][service-fabric-secure-cluster-5-node-1-nodetype] . Stáhněte si do počítače *azuredeploy. JSON* a *azuredeploy. Parameters. JSON* a otevřete oba soubory ve svém oblíbeném textovém editoru.
+Tento článek používá příklad šablony a parametrů šablony [zabezpečeného clusteru s pěti uzly][service-fabric-secure-cluster-5-node-1-nodetype] . Stáhněte *azuredeploy.js* a *azuredeploy.parameters.jsna* svůj počítač a otevřete oba soubory v oblíbeném textovém editoru.
 
 > [!NOTE]
-> Pro národní cloudy (Azure Government, Azure Čína, Azure Německo) byste měli taky do šablony přidat `fabricSettings` následující: `AADLoginEndpoint` `AADTokenEndpointFormat` a `AADCertEndpointFormat`.
+> Pro národní cloudy (Azure Government, Azure Čína, Azure Německo) byste měli taky `fabricSettings` do šablony přidat následující: `AADLoginEndpoint` `AADTokenEndpointFormat` a `AADCertEndpointFormat` .
 
 ## <a name="add-certificates"></a>Přidat certifikáty
-Certifikáty se přidávají do šablony Správce prostředků clusteru odkazem na Trezor klíčů, který obsahuje klíče certifikátu. Přidejte tyto parametry a hodnoty trezoru klíčů do souboru parametrů šablony Správce prostředků (*azuredeploy. Parameters. JSON*).
+Certifikáty se přidávají do šablony Správce prostředků clusteru odkazem na Trezor klíčů, který obsahuje klíče certifikátu. Přidejte tyto parametry a hodnoty trezoru klíčů do souboru parametrů šablony Správce prostředků (*azuredeploy.parameters.json*).
 
 ### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Přidat všechny certifikáty do sady škálování virtuálních počítačů osProfile
 Každý certifikát, který je nainstalovaný v clusteru, musí být nakonfigurovaný v oddílu **osProfile** prostředku sady škálování (Microsoft. COMPUTE/virtualMachineScaleSets). Tato akce vydá pokyn poskytovateli prostředků k instalaci certifikátu na virtuální počítače. Tato instalace zahrnuje certifikát clusteru i všechny certifikáty zabezpečení aplikací, které plánujete použít pro vaše aplikace:
@@ -132,7 +131,7 @@ Certifikát pro ověřování clusteru musí být nakonfigurovaný jak v prostř
 
 ## <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Přidání konfigurace Azure AD pro použití Azure AD pro klientský přístup
 
-Konfiguraci služby Azure AD přidáte do šablony Správce prostředků clusteru odkazem na Trezor klíčů, který obsahuje klíče certifikátu. Přidejte parametry a hodnoty služby Azure AD do souboru parametrů šablony Správce prostředků (*azuredeploy. Parameters. JSON*). 
+Konfiguraci služby Azure AD přidáte do šablony Správce prostředků clusteru odkazem na Trezor klíčů, který obsahuje klíče certifikátu. Do souboru parametrů šablony Správce prostředků přidejte tyto parametry a hodnoty služby Azure AD (*azuredeploy.parameters.json*). 
 
 > [!NOTE]
 > V systému Linux je nutné před vytvořením clusteru vytvořit klienty a uživatele služby Azure AD.  Pokud potřebujete další informace, přečtěte si téma [Nastavení Azure AD pro ověřování klientů](service-fabric-cluster-creation-setup-aad.md).

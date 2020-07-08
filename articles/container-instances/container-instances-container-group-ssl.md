@@ -4,10 +4,9 @@ description: Vytvoření koncového bodu SSL nebo TLS pro skupinu kontejnerů b�
 ms.topic: article
 ms.date: 02/14/2020
 ms.openlocfilehash: b9ea9367219db694b89d6bf4a1e52efb373c71c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80984602"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Povolení koncového bodu TLS v kontejneru webvozík
@@ -46,19 +45,19 @@ Spuštěním následujícího příkazu vytvořte certifikát podepsaný svým d
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
 ```
 
-Nyní byste měli vidět tři soubory v adresáři: žádost o certifikát (`ssl.csr`), privátní klíč (`ssl.key`) a certifikát podepsaný svým držitelem (`ssl.crt`). Použijete `ssl.key` a `ssl.crt` v pozdějších krocích.
+Nyní byste měli vidět tři soubory v adresáři: žádost o certifikát ( `ssl.csr` ), privátní klíč ( `ssl.key` ) a certifikát podepsaný svým držitelem ( `ssl.crt` ). Použijete `ssl.key` a `ssl.crt` v pozdějších krocích.
 
 ## <a name="configure-nginx-to-use-tls"></a>Konfigurace nginx pro použití TLS
 
 ### <a name="create-nginx-configuration-file"></a>Vytvořit konfigurační soubor Nginx
 
-V této části vytvoříte konfigurační soubor pro Nginx, který bude používat protokol TLS. Začněte zkopírováním následujícího textu do nového souboru s názvem `nginx.conf`. V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
+V této části vytvoříte konfigurační soubor pro Nginx, který bude používat protokol TLS. Začněte zkopírováním následujícího textu do nového souboru s názvem `nginx.conf` . V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
 
 ```console
 code nginx.conf
 ```
 
-V `location`nástroji nezapomeňte nastavit `proxy_pass` správný port pro vaši aplikaci. V tomto příkladu nastavíme pro `aci-helloworld` kontejner port 80.
+V `location` nástroji nezapomeňte nastavit `proxy_pass` správný port pro vaši aplikaci. V tomto příkladu nastavíme pro kontejner port 80 `aci-helloworld` .
 
 ```console
 # nginx Configuration File
@@ -138,13 +137,13 @@ Nyní nasaďte skupinu kontejnerů zadáním konfigurace kontejneru v [souboru Y
 
 ### <a name="create-yaml-file"></a>Vytvořit soubor YAML
 
-Zkopírujte následující YAML do nového souboru s názvem `deploy-aci.yaml`. V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
+Zkopírujte následující YAML do nového souboru s názvem `deploy-aci.yaml` . V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
 
 ```console
 code deploy-aci.yaml
 ```
 
-Zadejte obsah souborů s kódováním base64, kde jsou uvedeny v `secret`části. Například `cat` každý ze souborů s kódováním base64 zobrazí jeho obsah. Během nasazování se tyto soubory přidají do [tajného svazku](container-instances-volume-secret.md) ve skupině kontejnerů. V tomto příkladu je tajný svazek připojený ke kontejneru Nginx.
+Zadejte obsah souborů s kódováním base64, kde jsou uvedeny v části `secret` . Například `cat` každý ze souborů s kódováním base64 zobrazí jeho obsah. Během nasazování se tyto soubory přidají do [tajného svazku](container-instances-volume-secret.md) ve skupině kontejnerů. V tomto příkladu je tajný svazek připojený ke kontejneru Nginx.
 
 ```YAML
 api-version: 2018-10-01
@@ -223,7 +222,7 @@ app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-
 
 ## <a name="verify-tls-connection"></a>Ověřit připojení TLS
 
-Pomocí prohlížeče přejděte na veřejnou IP adresu skupiny kontejnerů. IP adresa zobrazená v tomto příkladu je `52.157.22.76`, takže adresa URL je **https://52.157.22.76**. K zobrazení spuštěné aplikace z důvodu konfigurace serveru Nginx je nutné použít protokol HTTPS. Pokus o připojení přes protokol HTTP selže.
+Pomocí prohlížeče přejděte na veřejnou IP adresu skupiny kontejnerů. IP adresa zobrazená v tomto příkladu je `52.157.22.76` , takže adresa URL je **https://52.157.22.76** . K zobrazení spuštěné aplikace z důvodu konfigurace serveru Nginx je nutné použít protokol HTTPS. Pokus o připojení přes protokol HTTP selže.
 
 ![Snímek obrazovky prohlížeče ukazující aplikaci spuštěnou v instanci kontejneru Azure](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 

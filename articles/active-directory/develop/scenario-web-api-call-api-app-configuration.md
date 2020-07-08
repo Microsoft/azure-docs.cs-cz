@@ -13,10 +13,9 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991003"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Webové rozhraní API, které volá webová rozhraní API: Konfigurace kódu
@@ -73,7 +72,7 @@ Metoda AddAccountToCacheFromJwt () potřebuje:
 
 ### <a name="instantiate-a-confidential-client-application"></a>Vytvoření instance aplikace důvěrného klienta
 
-Tento tok je dostupný jenom v důvěrném toku klienta, takže chráněné webové rozhraní API poskytuje přihlašovací údaje klienta (tajný klíč klienta nebo certifikát) ke [třídě ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) prostřednictvím metody `WithClientSecret` nebo `WithCertificate` .
+Tento tok je dostupný jenom v důvěrném toku klienta, takže chráněné webové rozhraní API poskytuje přihlašovací údaje klienta (tajný klíč klienta nebo certifikát) ke [třídě ConfidentialClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) prostřednictvím `WithClientSecret` `WithCertificate` metody nebo.
 
 ![Seznam metod IConfidentialClientApplication](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
@@ -100,7 +99,7 @@ Další informace o tomto pokročilém scénáři najdete v tématu [důvěrné 
 
 OBO volání provádíte voláním [metody AcquireTokenOnBehalf](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) na `IConfidentialClientApplication` rozhraní.
 
-`UserAssertion` Třída je sestavená z tokenu nosiče, který je WEBOVÝm rozhraním API přijatý z jeho vlastních klientů. Existují [dva konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet):
+`UserAssertion`Třída je sestavená z tokenu nosiče, který je webovým rozhraním API přijatý z jeho vlastních klientů. Existují [dva konstruktory](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet):
 * Ten, který přebírá nosný token JSON Web Token (JWT)
 * Ten, který přebírá libovolný typ uživatelského kontrolního výrazu, je jiný druh tokenu zabezpečení, jehož typ je pak uveden v dalším parametru s názvem.`assertionType`
 
@@ -145,7 +144,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 
 Tok spouštěný za běhu (OBO) slouží k získání tokenu pro volání webového rozhraní API pro příjem dat. V tomto toku vaše webové rozhraní API obdrží token nosiče s delegovanými oprávněními z klientské aplikace a potom tento token vymění pro jiný přístupový token pro volání webového rozhraní API pro příjem dat.
 
-Následující kód používá rozhraní zabezpečení pružiny `SecurityContextHolder` ve webovém rozhraní API k získání ověřeného nosného tokenu. Pak používá knihovnu Java MSAL k získání tokenu pro rozhraní API pro příjem dat pomocí `acquireToken` volání s `OnBehalfOfParameters`. MSAL ukládá token do mezipaměti, aby následné volání rozhraní API mohla použít `acquireTokenSilently` k získání tokenu v mezipaměti.
+Následující kód používá rozhraní zabezpečení pružiny `SecurityContextHolder` ve webovém rozhraní API k získání ověřeného nosného tokenu. Pak používá knihovnu Java MSAL k získání tokenu pro rozhraní API pro příjem dat pomocí `acquireToken` volání s `OnBehalfOfParameters` . MSAL ukládá token do mezipaměti, aby následné volání rozhraní API mohla použít `acquireTokenSilently` k získání tokenu v mezipaměti.
 
 ```Java
 @Component
@@ -218,7 +217,7 @@ Webové rozhraní API v Pythonu bude muset použít nějaký middleware k ověř
 
 ---
 
-Můžete také zobrazit příklad implementace toku OBO v [Node. js a Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
+Můžete si také prohlédnout příklad implementace toku OBO v [Node.js a Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
 
 ## <a name="protocol"></a>Protocol (Protokol)
 

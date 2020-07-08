@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
 ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259784"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>O službě mobility pro virtuální počítače VMware a fyzické servery
@@ -129,7 +128,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 Nastavení | Podrobnosti
 --- | ---
-Syntaxe | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Instalační protokoly | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 `/InstallLocation`| Volitelný parametr. Určuje umístění instalace služby mobility (všechny složky).
@@ -140,7 +139,7 @@ Instalační protokoly | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.lo
 
 Nastavení | Podrobnosti
 --- | ---
-Syntaxe | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 Protokoly konfigurace agenta | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
 `/CSEndPoint` | Povinný parametr. `<CSIP>`Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
 `/PassphraseFilePath` |  Povinné. Umístění přístupového hesla Použijte jakoukoli platnou cestu UNC nebo místní cestu k souboru.
@@ -170,9 +169,9 @@ Protokoly konfigurace agenta | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfig
 
 Nastavení | Podrobnosti
 --- | ---
-Syntaxe | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
-`-d` | Volitelný parametr. Určuje umístění instalace služby mobility: `/usr/local/ASR`.
+`-d` | Volitelný parametr. Určuje umístění instalace služby mobility: `/usr/local/ASR` .
 `-v` | Povinné. Určuje platformu, na které je nainstalovaná služba mobility. <br/> **VMware** pro virtuální počítače VMware nebo fyzické servery. <br/> **Azure** pro virtuální počítače Azure.
 `-q` | Nepovinný parametr. Určuje, jestli se má spustit instalační program v tichém režimu.
 
@@ -180,7 +179,7 @@ Syntaxe | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 Nastavení | Podrobnosti
 --- | ---
-Syntaxe | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
 `-i` | Povinný parametr. `<CSIP>`Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
 `-P` |  Povinné. Úplná cesta k souboru, ve kterém se heslo ukládá Použijte libovolnou platnou složku.
 

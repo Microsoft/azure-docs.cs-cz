@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811171"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace API Management v interní virtuální síti s Application Gateway
@@ -87,11 +86,11 @@ V této příručce zveřejníme také portál pro **vývojáře** pro externí 
 > Pokud používáte ověřování Azure AD nebo třetí strany, povolte v Application Gateway funkci [spřažení relace na základě souborů cookie](../application-gateway/features.md#session-affinity) .
 
 > [!WARNING]
-> Chcete-li zabránit Application Gateway WAF z narušení stahování specifikace OpenAPI na portálu pro vývojáře, je nutné zakázat pravidlo `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`brány firewall.
+> Chcete-li zabránit Application Gateway WAF z narušení stahování specifikace OpenAPI na portálu pro vývojáře, je nutné zakázat pravidlo brány firewall `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` .
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Vytvoření skupiny prostředků pro Resource Manager
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 Přihlaste se k Azure.
 
@@ -126,7 +125,7 @@ Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umí
 
 Následující příklad ukazuje, jak vytvořit Virtual Network pomocí Správce prostředků.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 Přiřaďte proměnné podsítě rozsah adres 10.0.0.0/24, který se má použít pro Application Gateway při vytváření Virtual Network.
 
@@ -163,7 +162,7 @@ $apimsubnetdata = $vnet.Subnets[1]
 
 Následující příklad ukazuje, jak vytvořit službu API Management ve virtuální síti nakonfigurovanou pouze pro interní přístup.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 Vytvořte objekt API Management Virtual Network pomocí podsítě $apimsubnetdata vytvořené výše.
 
@@ -189,9 +188,9 @@ Po úspěšném provedení výše uvedeného příkazu se podívejte na [konfigu
 > [!IMPORTANT]
 > [Nový portál pro vývojáře](api-management-howto-developer-portal.md) také vyžaduje povolení připojení ke koncovému bodu správy API Management kromě následujících kroků.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
-Inicializujte následující proměnné s podrobnostmi o certifikátech a soukromých klíčích pro domény. V tomto příkladu použijeme `api.contoso.net` a. `portal.contoso.net`  
+Inicializujte následující proměnné s podrobnostmi o certifikátech a soukromých klíčích pro domény. V tomto příkladu použijeme `api.contoso.net` a `portal.contoso.net` .  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -220,7 +219,7 @@ Set-AzApiManagement -InputObject $apimService
 ```
 
 > [!NOTE]
-> Pokud chcete nakonfigurovat starší připojení portálu pro vývojáře, musíte ho `-HostnameType DeveloperPortal` nahradit `-HostnameType Portal`.
+> Pokud chcete nakonfigurovat starší připojení portálu pro vývojáře, musíte ho `-HostnameType DeveloperPortal` nahradit `-HostnameType Portal` .
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci
 
@@ -236,7 +235,7 @@ IP adresa je ke službě Application Gateway přiřazena při spuštění služb
 
 Před vytvořením služby Application Gateway musí být nastaveny všechny položky konfigurace. Následující kroky slouží k vytvoření položek konfigurace potřebné pro prostředek služby Application Gateway.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 Vytvořte konfiguraci protokolu IP služby Application Gateway s názvem **gatewayIP01**. Při spuštění služby Application Gateway se předá IP adresa z nakonfigurované podsítě a síťový provoz se bude směrovat na IP adresy ve fondu back-end IP adres. Uvědomte si, že každá instance vyžaduje jednu IP adresu.
 
@@ -280,10 +279,10 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>Krok 6
 
-Vytvořte vlastní testy pro koncový bod domény proxy `ContosoApi` serveru služby API Management. Tato cesta `/status-0123456789abcdef` je výchozím koncovým bodem stavu hostovaným na všech službách API Management. Nastavte `api.contoso.net` jako vlastní název hostitele testu, abyste ho zabezpečili pomocí certifikátu TLS/SSL.
+Vytvořte vlastní testy pro `ContosoApi` koncový bod domény proxy serveru služby API Management. Tato cesta `/status-0123456789abcdef` je výchozím koncovým bodem stavu hostovaným na všech službách API Management. Nastavte `api.contoso.net` jako vlastní název hostitele testu, abyste ho zabezpečili pomocí certifikátu TLS/SSL.
 
 > [!NOTE]
-> Název hostitele `contosoapi.azure-api.net` je výchozím názvem proxy hostitele nakonfigurovaným při vytvoření služby `contosoapi` s názvem ve veřejném Azure.
+> Název hostitele `contosoapi.azure-api.net` je výchozím názvem proxy hostitele nakonfigurovaným při vytvoření služby s názvem `contosoapi` ve veřejném Azure.
 >
 
 ```powershell

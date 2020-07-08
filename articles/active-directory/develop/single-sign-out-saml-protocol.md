@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80881261"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Protokol SAML pro jednotné odhlašování
@@ -38,20 +37,20 @@ Cloudová služba pošle `LogoutRequest` zprávu službě Azure AD, která indik
 ```
 
 ### <a name="logoutrequest"></a>LogoutRequest
-`LogoutRequest` Element odeslaný do Azure AD vyžaduje následující atributy:
+`LogoutRequest`Element odeslaný do Azure AD vyžaduje následující atributy:
 
 * `ID`– Identifikuje žádost o odhlášení. Hodnota `ID` by neměla začínat číslicí. Typický postup je připojit **ID** k řetězcové REprezentaci identifikátoru GUID.
 * `Version`-Nastavte hodnotu tohoto prvku na **2,0**. Tato hodnota se vyžaduje.
 * `IssueInstant`– Jedná se o `DateTime` řetězec s hodnotou souřadnic Universal Time (UTC) a [formátu Round-Trip ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu tohoto typu, ale neuplatní ji.
 
 ### <a name="issuer"></a>Vystavitel
-`Issuer` Element v elementu `LogoutRequest` musí přesně odpovídat jednomu z **ServicePrincipalNames** v cloudové službě v Azure AD. Obvykle je tento parametr nastavený na **identifikátor URI ID aplikace** , který je zadaný při registraci aplikace.
+`Issuer`Element v elementu `LogoutRequest` musí přesně odpovídat jednomu z **ServicePrincipalNames** v cloudové službě v Azure AD. Obvykle je tento parametr nastavený na **identifikátor URI ID aplikace** , který je zadaný při registraci aplikace.
 
 ### <a name="nameid"></a>NameID
 Hodnota `NameID` elementu musí přesně odpovídat `NameID` uživateli, který je právě podepsán.
 
 ## <a name="logoutresponse"></a>LogoutResponse
-Azure AD pošle `LogoutResponse` odpověď na `LogoutRequest` element. Následující úryvek ukazuje ukázku `LogoutResponse`.
+Azure AD pošle `LogoutResponse` odpověď na `LogoutRequest` element. Následující úryvek ukazuje ukázku `LogoutResponse` .
 
 ```
 <samlp:LogoutResponse ID="_f0961a83-d071-4be5-a18c-9ae7b22987a4" Version="2.0" IssueInstant="2013-03-18T08:49:24.405Z" InResponseTo="iddce91f96e56747b5ace6d2e2aa9d4f8c" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -63,10 +62,10 @@ Azure AD pošle `LogoutResponse` odpověď na `LogoutRequest` element. Následuj
 ```
 
 ### <a name="logoutresponse"></a>LogoutResponse
-`ID`Azure AD nastaví `Version` hodnoty a `IssueInstant` v `LogoutResponse` elementu. Také nastaví `InResponseTo` element na hodnotu `ID` atributu `LogoutRequest` , který vyvolá odpověď.
+Azure AD nastaví `ID` `Version` `IssueInstant` hodnoty a v `LogoutResponse` elementu. Také nastaví `InResponseTo` element na hodnotu `ID` atributu `LogoutRequest` , který vyvolá odpověď.
 
 ### <a name="issuer"></a>Vystavitel
-Azure AD Nastaví tuto hodnotu na `https://login.microsoftonline.com/<TenantIdGUID>/` , \<kde TenantIdGUID> je ID tenanta tenanta Azure AD.
+Azure AD Nastaví tuto hodnotu na `https://login.microsoftonline.com/<TenantIdGUID>/` , kde \<TenantIdGUID> je ID tenanta TENANTA Azure AD.
 
 K vyhodnocení hodnoty `Issuer` elementu použijte hodnotu **identifikátoru URI ID aplikace** poskytnutou během registrace aplikace.
 

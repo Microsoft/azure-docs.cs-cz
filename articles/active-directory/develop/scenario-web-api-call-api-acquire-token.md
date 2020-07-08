@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885136"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webové rozhraní API, které volá webová rozhraní API: Získá token pro aplikaci.
@@ -50,7 +49,7 @@ private async Task GetTodoList(bool isAppStarting)
 
 `BuildConfidentialClient()`se podobá scénáři ve [webovém rozhraní API, které volá webová rozhraní API: Konfigurace aplikace](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()`Vytvoří instanci `IConfidentialClientApplication` s mezipamětí, která obsahuje informace pouze pro jeden účet. Účet je poskytován `GetAccountIdentifier` metodou.
 
-`GetAccountIdentifier` Metoda používá deklarace identity, které jsou přidružené k identitě uživatele, pro kterou webové rozhraní API přijalo JSON web token (Jwt):
+`GetAccountIdentifier`Metoda používá deklarace identity, které jsou přidružené k identitě uživatele, pro kterou webové rozhraní API přijalo JSON web token (Jwt):
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)

@@ -5,10 +5,9 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: danlep
 ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80892389"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor
@@ -39,7 +38,7 @@ Získání ID a primárního klíče pracovního prostoru Log Analytics:
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
 1. V části **Nastavení**vyberte **Upřesnit nastavení** .
-1. Vyberte **připojené zdroje** > **Windows servery** (nebo **servery**se systémem Linux – ID a klíče jsou u obou) stejné.
+1. Vyberte **připojené zdroje**  >  **Windows servery** (nebo **servery**se systémem Linux – ID a klíče jsou u obou) stejné.
 1. Poznamenejte si:
    * **ID PRACOVNÍHO PROSTORU**
    * **PRIMÁRNÍ KLÍČ**
@@ -130,7 +129,7 @@ Měl by se zobrazit několik výsledků zobrazených dotazem. Pokud nevidíte ž
 
 Protokoly Azure Monitor obsahují obsáhlý [dotazovací jazyk][query_lang] pro přijímání informací z potenciálně tisíců výstupů protokolu.
 
-Základní strukturou dotazu je zdrojová tabulka (v tomto článku `ContainerInstanceLog_CL` `ContainerEvent_CL`), po které následuje řada operátorů oddělených znakem svislé čáry (`|`). Zřetězením více operátorů můžete zúžit výsledky a provádět pokročilé funkce.
+Základní strukturou dotazu je zdrojová tabulka (v tomto článku), po které `ContainerInstanceLog_CL` `ContainerEvent_CL` následuje řada operátorů oddělených znakem svislé čáry ( `|` ). Zřetězením více operátorů můžete zúžit výsledky a provádět pokročilé funkce.
 
 Chcete-li zobrazit příklady výsledků dotazu, vložte následující dotaz do textového pole dotazu a vyberte tlačítko **Spustit** pro spuštění dotazu. Tento dotaz zobrazí všechny položky protokolu, jejichž pole Message (Zpráva) obsahuje slovo warn (upozornění):
 

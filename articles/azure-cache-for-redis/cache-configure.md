@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010303"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak nakonfigurovat Azure cache pro Redis
@@ -58,7 +57,7 @@ Pomocí **nabídky prostředků**můžete zobrazit a nakonfigurovat následujíc
     * [Pravidla výstrah](#alert-rules)
     * [Diagnostika](#diagnostics)
 * Podpora nastavení & řešení potíží
-    * [Stav prostředku](#resource-health)
+    * [Stav prostředků](#resource-health)
     * [Nová žádost o podporu](#new-support-request)
 
 
@@ -145,7 +144,7 @@ Nastavení **rezervované pro maxmemory** konfiguruje velikost paměti (v MB), k
 
 Nastavení **rezervované pro maxfragmentationmemory** konfiguruje velikost paměti v MB, která je vyhrazena pro fragmentaci paměti. Když nastavíte tuto hodnotu, budete mít k dispozici jednotnější možnosti Redis serveru, když je mezipaměť plná nebo téměř kompletní, a poměr fragmentace je vysoký. Pokud je paměť vyhrazena pro tyto operace, není k dispozici pro ukládání dat uložených v mezipaměti.
 
-Jedna věc, kterou je potřeba vzít v úvahu při výběru nové hodnoty rezervace paměti (**maxmemory-rezervováno** nebo **maxfragmentationmemory**), je to, jak může tato změna ovlivnit mezipaměť, která už je spuštěná s velkým objemem dat. Pokud máte například mezipaměť 53 GB s 49 GB dat, změňte hodnotu rezervace na 8 GB. Tato změna způsobí, že maximální dostupná paměť systému vyřadí hodnotu až 45 GB. Pokud `used_memory` vaše aktuální `used_memory_rss` hodnota nebo hodnoty jsou vyšší než nové omezení 45 GB, bude systém muset data vyřadit, dokud nebudou `used_memory` a `used_memory_rss` nižší než 45 GB. Vyřazení může zvýšit zatížení serveru a fragmentaci paměti. Další informace o metrikách mezipaměti, jako jsou `used_memory` a `used_memory_rss`, najdete v tématu [dostupné metriky a intervaly generování sestav](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Jedna věc, kterou je potřeba vzít v úvahu při výběru nové hodnoty rezervace paměti (**maxmemory-rezervováno** nebo **maxfragmentationmemory**), je to, jak může tato změna ovlivnit mezipaměť, která už je spuštěná s velkým objemem dat. Pokud máte například mezipaměť 53 GB s 49 GB dat, změňte hodnotu rezervace na 8 GB. Tato změna způsobí, že maximální dostupná paměť systému vyřadí hodnotu až 45 GB. Pokud vaše aktuální `used_memory` `used_memory_rss` hodnota nebo hodnoty jsou vyšší než nové omezení 45 GB, bude systém muset data vyřadit, dokud `used_memory` `used_memory_rss` nebudou a nižší než 45 GB. Vyřazení může zvýšit zatížení serveru a fragmentaci paměti. Další informace o metrikách mezipaměti `used_memory` , jako jsou a `used_memory_rss` , najdete v tématu [dostupné metriky a intervaly generování sestav](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > Nastavení rezervovaná v **maxmemory** a **maxfragmentationmemory** jsou dostupná jenom pro mezipaměti úrovně Standard a Premium.
@@ -356,7 +355,7 @@ Nastavení v části **Podpora a řešení potíží** poskytují možnosti pro 
 
 ![Podpora a řešení potíží](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
-* [Stav prostředku](#resource-health)
+* [Stav prostředků](#resource-health)
 * [Nová žádost o podporu](#new-support-request)
 
 ### <a name="resource-health"></a>Stav prostředků
@@ -386,18 +385,18 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
 >
 >
 
-| Nastavení | Výchozí hodnota | Popis |
+| Nastavení | Výchozí hodnota | Description |
 | --- | --- | --- |
-| `databases` |16 |Výchozí počet databází je 16, ale můžete na základě cenové úrovně nakonfigurovat jiné číslo. <sup>1</sup> `connection.GetDatabase(dbid)` výchozí databáze je DB 0. pro jednotlivá připojení můžete vybrat jiný, a to pomocí, kde `dbid` je číslo mezi `0` a. `databases - 1` |
+| `databases` |16 |Výchozí počet databází je 16, ale můžete na základě cenové úrovně nakonfigurovat jiné číslo. <sup>1</sup> výchozí databáze je DB 0. pro jednotlivá připojení můžete vybrat jiný, `connection.GetDatabase(dbid)` a to pomocí, kde `dbid` je číslo mezi `0` a `databases - 1` . |
 | `maxclients` |Závisí na cenové úrovni<sup>2</sup> . |Tato hodnota je maximální povolený počet připojených klientů ve stejnou dobu. Po dosažení limitu Redis ukončí všechna nová připojení a vrátí chybu maximální počet klientů, které se dosáhly. |
-| `maxmemory-policy` |`volatile-lru` |Zásada Maxmemory je nastavení, jak Redis vybere, co se má odebrat `maxmemory` , když se dosáhne (velikost nabídky mezipaměti, kterou jste vybrali při vytváření mezipaměti). V případě služby Azure cache pro Redis je `volatile-lru`výchozí nastavení, což odstraní klíče s nastavenou hodnotou vypršení platnosti pomocí LRU algoritmu. Toto nastavení lze nakonfigurovat v Azure Portal. Další informace najdete v tématu [zásady paměti](#memory-policies). |
+| `maxmemory-policy` |`volatile-lru` |Zásada Maxmemory je nastavení, jak Redis vybere, co se má odebrat, když `maxmemory` se dosáhne (velikost nabídky mezipaměti, kterou jste vybrali při vytváření mezipaměti). V případě služby Azure cache pro Redis je výchozí nastavení `volatile-lru` , což odstraní klíče s nastavenou hodnotou vypršení platnosti pomocí LRU algoritmu. Toto nastavení lze nakonfigurovat v Azure Portal. Další informace najdete v tématu [zásady paměti](#memory-policies). |
 | `maxmemory-samples` |3 |Aby se ušetřila paměť, LRU a minimální algoritmy TTL jsou přibližné algoritmy místo přes přesné algoritmy. Ve výchozím nastavení Redis zkontroluje tři klíče a vybere ten, který byl naposledy použit méně. |
 | `lua-time-limit` |5 000 |Maximální doba provádění lua skriptu v milisekundách Pokud je dosaženo maximální doby spuštění, protokol Redis zaznamená, že skript je stále spuštěný po maximálním povoleném čase, a začne odpovídat na dotazy s chybou. |
 | `lua-event-limit` |500 |Maximální velikost fronty událostí skriptu |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity výstupní vyrovnávací paměti klienta se dají použít k vynucení odpojení klientů, kteří nečtou data ze serveru z nějakého důvodu dostatečně rychle (běžným důvodem je to, že klient typu Pub/Sub nemůže spotřebovávat zprávy tak rychle, jak je může vydavatel vytvořit). Další informace najdete v tématu [https://redis.io/topics/clients](https://redis.io/topics/clients). |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |Limity výstupní vyrovnávací paměti klienta se dají použít k vynucení odpojení klientů, kteří nečtou data ze serveru z nějakého důvodu dostatečně rychle (běžným důvodem je to, že klient typu Pub/Sub nemůže spotřebovávat zprávy tak rychle, jak je může vydavatel vytvořit). Další informace najdete na webu [https://redis.io/topics/clients](https://redis.io/topics/clients). |
 
 <a name="databases"></a>
-<sup>1</sup> U každé cenové `databases` úrovně služby Azure cache pro Redis se omezení pro liší a dá se nastavit při vytváření mezipaměti. Pokud při `databases` vytváření mezipaměti není zadané žádné nastavení, výchozí hodnota je 16.
+<sup>1</sup> U `databases` každé cenové úrovně služby Azure cache pro Redis se omezení pro liší a dá se nastavit při vytváření mezipaměti. Pokud `databases` při vytváření mezipaměti není zadané žádné nastavení, výchozí hodnota je 16.
 
 * Mezipaměti úrovně Basic a Standard
   * C0 (250 MB) mezipaměť-až 16 databází
@@ -412,12 +411,12 @@ Nová mezipaměť Azure pro instance Redis je nakonfigurovaná s následujícím
   * P2 (13 GB až 130 GB) – až 32 databází
   * P3 (26 GB až 260 GB) – až 48 databází
   * P4 (53 GB až 530 GB) – až 64 databází
-  * Všechny mezipaměti úrovně Premium s povoleným clusterem Redis – cluster Redis podporuje jenom použití databáze 0, `databases` takže limit pro jakoukoliv mezipaměť Premium s povoleným clusterem Redis je efektivně 1 a příkaz [Select](https://redis.io/commands/select) není povolený. Další informace najdete v tématu musím dělat [změny v klientské aplikaci, aby používaly clustering?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+  * Všechny mezipaměti úrovně Premium s povoleným clusterem Redis – cluster Redis podporuje jenom použití databáze 0, takže `databases` limit pro jakoukoliv mezipaměť Premium s povoleným clusterem Redis je efektivně 1 a příkaz [Select](https://redis.io/commands/select) není povolený. Další informace najdete v tématu musím dělat [změny v klientské aplikaci, aby používaly clustering?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
 Další informace o databázích najdete v tématu [co jsou databáze Redis?](cache-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> Nastavení `databases` se dá nakonfigurovat jenom během vytváření mezipaměti a jenom pomocí PowerShellu, rozhraní příkazového řádku nebo jiných klientů pro správu. Příklad konfigurace `databases` během vytváření mezipaměti pomocí prostředí PowerShell najdete v části [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
+> `databases`Nastavení se dá nakonfigurovat jenom během vytváření mezipaměti a jenom pomocí PowerShellu, rozhraní příkazového řádku nebo jiných klientů pro správu. Příklad konfigurace `databases` během vytváření mezipaměti pomocí prostředí PowerShell najdete v části [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases).
 >
 >
 
@@ -447,7 +446,7 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 
 ## <a name="redis-commands-not-supported-in-azure-cache-for-redis"></a>Příkazy Redis nejsou podporované v mezipaměti Azure pro Redis.
 > [!IMPORTANT]
-> Vzhledem k tomu, že konfigurace a Správa mezipaměti Azure pro instance Redis spravuje společnost Microsoft, jsou tyto příkazy zakázané. Pokud se pokusíte je vyvolat, zobrazí se chybová zpráva podobná této `"(error) ERR unknown command"`.
+> Vzhledem k tomu, že konfigurace a Správa mezipaměti Azure pro instance Redis spravuje společnost Microsoft, jsou tyto příkazy zakázané. Pokud se pokusíte je vyvolat, zobrazí se chybová zpráva podobná této `"(error) ERR unknown command"` .
 >
 > * BGREWRITEAOF
 > * BGSAVE
@@ -461,14 +460,14 @@ Další informace o databázích najdete v tématu [co jsou databáze Redis?](ca
 >
 >
 
-Další informace o příkazech Redis naleznete v [https://redis.io/commands](https://redis.io/commands)tématu.
+Další informace o příkazech Redis naleznete v tématu [https://redis.io/commands](https://redis.io/commands) .
 
 ## <a name="redis-console"></a>Konzola Redis
 Pomocí **konzoly Redis**, která je k dispozici v Azure Portal pro všechny úrovně mezipaměti, můžete bezpečně vystavit příkazy do mezipaměti Azure cache pro instance Redis.
 
 > [!IMPORTANT]
 > - Konzola Redis nefunguje s [virtuální](cache-how-to-premium-vnet.md)sítí. Když je mezipaměť součástí virtuální sítě, budou mít přístup k mezipaměti jenom klienti ve virtuální síti. Vzhledem k tomu, že se konzola Redis spouští v místním prohlížeči, který je mimo virtuální síť, nemůže se připojit ke svojí mezipaměti.
-> - V mezipaměti Azure pro Redis nejsou podporované všechny příkazy Redis. Seznam příkazů Redis, které jsou pro Azure cache pro Redis zakázané, najdete v části předchozí [příkazy Redis, které se v Azure cache pro Redis nepodporují](#redis-commands-not-supported-in-azure-cache-for-redis) . Další informace o příkazech Redis naleznete v [https://redis.io/commands](https://redis.io/commands)tématu.
+> - V mezipaměti Azure pro Redis nejsou podporované všechny příkazy Redis. Seznam příkazů Redis, které jsou pro Azure cache pro Redis zakázané, najdete v části předchozí [příkazy Redis, které se v Azure cache pro Redis nepodporují](#redis-commands-not-supported-in-azure-cache-for-redis) . Další informace o příkazech Redis naleznete v tématu [https://redis.io/commands](https://redis.io/commands) .
 >
 >
 
@@ -494,7 +493,7 @@ shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```
 
-V předchozím příkladu je horizontálních oddílů 1 vybraný horizontálních oddílů, ale `myKey` je umístěn v horizontálních oddílů 0, jak je uvedeno v `(shard 0)` části chybové zprávy. V tomto příkladu můžete pro přístup `myKey`vybrat horizontálních oddílů 0 pomocí nástroje pro výběr horizontálních oddílů a pak vydávat požadovaný příkaz.
+V předchozím příkladu je horizontálních oddílů 1 vybraný horizontálních oddílů, ale `myKey` je umístěn v horizontálních oddílů 0, jak je uvedeno v `(shard 0)` části chybové zprávy. V tomto příkladu můžete pro přístup `myKey` Vybrat horizontálních oddílů 0 pomocí nástroje pro výběr horizontálních oddílů a pak vydávat požadovaný příkaz.
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Přesunout mezipaměť do nového předplatného

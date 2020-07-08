@@ -12,15 +12,14 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882314"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Jednostránkové aplikace: získání tokenu pro volání rozhraní API
 
-Vzor pro získání tokenů pro rozhraní API pomocí MSAL. js slouží jako první pokus o požadavek na bezobslužný token pomocí `acquireTokenSilent` metody. Při volání této metody knihovna nejprve zkontroluje mezipaměť v úložišti prohlížeče a zjistí, zda existuje platný token a vrátí jej. Pokud není v mezipaměti žádný platný token, pošle se požadavek na bezobslužný token Azure Active Directory (Azure AD) ze skrytého prvku IFRAME. Tato metoda také umožňuje, aby knihovna obnovila tokeny. Další informace o relaci jednotného přihlašování a hodnotách životnosti tokenů ve službě Azure AD najdete v tématu [Životnost tokenů](active-directory-configurable-token-lifetimes.md).
+Vzor pro získání tokenů pro rozhraní API s MSAL.js je prvním pokusem o požadavek na pasivní token pomocí `acquireTokenSilent` metody. Při volání této metody knihovna nejprve zkontroluje mezipaměť v úložišti prohlížeče a zjistí, zda existuje platný token a vrátí jej. Pokud není v mezipaměti žádný platný token, pošle se požadavek na bezobslužný token Azure Active Directory (Azure AD) ze skrytého prvku IFRAME. Tato metoda také umožňuje, aby knihovna obnovila tokeny. Další informace o relaci jednotného přihlašování a hodnotách životnosti tokenů ve službě Azure AD najdete v tématu [Životnost tokenů](active-directory-configurable-token-lifetimes.md).
 
 Požadavky na tiché tokeny do služby Azure AD mohou selhat z důvodů, jako je například relace Azure AD s vypršenou platností nebo změna hesla. V takovém případě můžete vyvolat jednu z interaktivních metod (s výzvou uživateli) získat tokeny:
 
@@ -70,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 MSAL úhlová obálka poskytuje zachytávací protokolem HTTP, která automaticky získá přístupové tokeny a připojí je k požadavkům HTTP na rozhraní API.
 
-V možnosti `protectedResourceMap` konfigurace můžete zadat obory pro rozhraní API. `MsalInterceptor`vyžádá si tyto obory při automatickém získávání tokenů.
+V možnosti konfigurace můžete zadat obory pro rozhraní API `protectedResourceMap` . `MsalInterceptor`vyžádá si tyto obory při automatickém získávání tokenů.
 
 ```javascript
 // app.module.ts
@@ -126,7 +125,7 @@ ngOnDestroy() {
  }
 ```
 
-Alternativně můžete explicitně získat tokeny pomocí metod získání tokenu, jak je popsáno v základní knihovně MSAL. js.
+Případně můžete explicitně získat tokeny pomocí metod získání tokenu, jak je popsáno v základní MSAL.js knihovně.
 
 ---
 
@@ -168,7 +167,7 @@ Volitelné deklarace identity můžete použít pro následující účely:
 - Změna chování určitých deklarací identity, které Azure AD vrací v tokenech
 - Přidejte a získejte přístup k vlastním deklaracím pro vaši aplikaci.
 
-Chcete-li vyžádat `IdToken`volitelné deklarace identity v nástroji, můžete odeslat objekt deklarací `claimsRequest` dokument do pole `AuthenticationParameters.ts` třídy.
+Chcete-li vyžádat volitelné deklarace identity v nástroji `IdToken` , můžete odeslat objekt deklarací dokument do `claimsRequest` pole `AuthenticationParameters.ts` třídy.
 
 ```javascript
 "optionalClaims":

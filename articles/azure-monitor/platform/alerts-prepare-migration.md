@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114409"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Příprava aplikací logiky a runbooků na migraci klasických pravidel upozornění
@@ -24,7 +23,7 @@ Pokud se rozhodnete, že chcete migrovat pravidla vašich klasických výstrah n
 
 ## <a name="api-changes"></a>Změny rozhraní API
 
-Rozhraní API, která vytvářejí a spravují klasická pravidla upozornění`microsoft.insights/alertrules`(), se liší od rozhraní API, která vytvářejí a spravují nové`microsoft.insights/metricalerts`výstrahy metriky (). Pokud máte v dnešní době programově vytvářet a spravovat pravidla výstrah, aktualizujte skripty pro nasazení tak, aby fungovaly s novými rozhraními API.
+Rozhraní API, která vytvářejí a spravují klasická pravidla upozornění ( `microsoft.insights/alertrules` ), se liší od rozhraní API, která vytvářejí a spravují nové výstrahy metriky ( `microsoft.insights/metricalerts` ). Pokud máte v dnešní době programově vytvářet a spravovat pravidla výstrah, aktualizujte skripty pro nasazení tak, aby fungovaly s novými rozhraními API.
 
 Následující tabulka je odkazem na programová rozhraní pro klasické a nové výstrahy:
 
@@ -32,7 +31,7 @@ Následující tabulka je odkazem na programová rozhraní pro klasické a nové
 |---------|---------|---------|
 |REST API     | [Microsoft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [AZ monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [AZ monitor Metrics Alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Referenční informace](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referenční informace](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+|PowerShell      | [Reference](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Reference](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Šablona Azure Resource Manageru | [Pro klasické výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Nové výstrahy metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
 
 ## <a name="notification-payload-changes"></a>Změny datové části oznámení

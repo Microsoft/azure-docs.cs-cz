@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885527"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
@@ -46,7 +45,7 @@ Kde *{vaše hledané výrazy}* odpovídají vašim klíčovým slovům pro hled�
 
 ## <a name="use-the-development-support-tools"></a>Použití nástrojů pro podporu vývoje
 
-| Nástroj  | Popis  |
+| Nástroj  | Description  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Vložte ID nebo přístupový token k dekódování názvů a hodnot deklarací identity. |
 | [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| Nástroj, který umožňuje vytvářet žádosti a zobrazovat odpovědi na rozhraní Microsoft Graph API. |

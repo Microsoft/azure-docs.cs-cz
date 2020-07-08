@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259918"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Podmínky shody v modulu Standard rules pro Azure CDN
@@ -62,7 +61,7 @@ Název souboru cookie | Operátor | Hodnota souboru cookie | Transformace příp
 
 #### <a name="key-information"></a>Informace o klíči
 
-- Pokud zadáte název souboru cookie, nemůžete\*použít zástupné znaky (včetně hvězdičk ()). je nutné použít přesný název souboru cookie.
+- Pokud zadáte název souboru cookie, nemůžete použít zástupné znaky (včetně hvězdiček ( \* )). je nutné použít přesný název souboru cookie.
 - Pro každou instanci této podmínky shody můžete zadat jenom jeden název souboru cookie.
 - Porovnávání názvů souborů cookie rozlišuje velká a malá písmena.
 - Chcete-li zadat více hodnot souborů cookie, použijte jednu mezeru mezi každou hodnotou souboru cookie. 
@@ -97,10 +96,10 @@ Identifikuje požadavky na základě umístění nebo IP adresy žadatele.
 
 Operátor | Podporované hodnoty
 ---------|-----------------
-Všechny | –
+Všechny | Není k dispozici
 Geografická shoda | Kód země
 Shoda IP adres | IP adresa (oddělená mezerami)
-Ne žádné | –
+Ne žádné | Není k dispozici
 Neshoda geografického umístění | Kód země
 Neshoda IP adres | IP adresa (oddělená mezerami)
 
@@ -170,7 +169,7 @@ Operátor | Adresa URL požadavku | Transformace případu
 
 #### <a name="key-information"></a>Informace o klíči
 
-- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: *https://www.\<yourdomain\>.com*.
+- Když použijete tuto podmínku pravidla, nezapomeňte zahrnout informace o protokolu. Například: * https://www . \<yourdomain\> . model COM*.
 
 ### <a name="url-file-extension"></a>Přípona souboru adresy URL
 

@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
 ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010575"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Živé události a živé výstupy v Media Services
@@ -30,7 +29,7 @@ Azure Media Services vám umožní doručovat živé události zákazníkům v c
 
 ## <a name="live-events"></a>Živé události
 
-[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Když vytvoříte živou událost, vytvoří se primární a sekundární vstupní koncový bod, který můžete použít k odeslání živého signálu ze vzdáleného kodéru. Vzdálený živý kodér pošle do tohoto vstupního koncového bodu kanál příspěvků pomocí vstupního protokolu [RTMP](https://www.adobe.com/devnet/rtmp.html) nebo [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentovaný-MP4). Pro protokol ingestování RTMP se dá obsah poslat jasným (`rtmp://`) nebo bezpečně šifrovaným na lince (`rtmps://`). Pro protokol Smooth Streaming ingestování jsou `http://` podporovaná schémata URL nebo `https://`.  
+[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Když vytvoříte živou událost, vytvoří se primární a sekundární vstupní koncový bod, který můžete použít k odeslání živého signálu ze vzdáleného kodéru. Vzdálený živý kodér pošle do tohoto vstupního koncového bodu kanál příspěvků pomocí vstupního protokolu [RTMP](https://www.adobe.com/devnet/rtmp.html) nebo [Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) (fragmentovaný-MP4). Pro protokol ingestování RTMP se dá obsah poslat jasným ( `rtmp://` ) nebo bezpečně šifrovaným na lince ( `rtmps://` ). Pro protokol Smooth Streaming ingestování jsou podporovaná schémata URL `http://` nebo `https://` .  
 
 ## <a name="live-event-types"></a>Typy živých událostí
 
@@ -87,7 +86,7 @@ Při vytváření živé události můžete zadat následující možnosti:
 ### <a name="naming-rules"></a>Pravidla pojmenování
 
 * Maximální název živé události je 32 znaků.
-* Název by měl splňovat tento vzor [regulárního výrazu](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+* Název by měl splňovat tento vzor [regulárního výrazu](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) : `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` .
 
 Viz také [zásady vytváření názvů koncových bodů streamování](streaming-endpoint-concept.md#naming-convention).
 
@@ -116,16 +115,16 @@ Můžete použít buď nejednoduché adresy URL, nebo jednoduché adresy URL.
     > [!NOTE]
     > V Azure Portal se adresa URL individuální nazývá "*trvalá vstupní adresa URL*".
 
-    Chcete-li zadat tento režim v rozhraní API `vanityUrl` , `true` nastavte na hodnotu při vytváření ( `false`výchozí nastavení je). V době vytváření je také potřeba předat vlastní přístupový token`LiveEventInput.accessToken`(). Zadejte hodnotu tokenu, aby se zabránilo náhodnému tokenu v adrese URL. Přístupový token musí být platný řetězec GUID (s pomlčkami nebo bez nich). Po nastavení je režim nepůjde aktualizovat.
+    Chcete-li zadat tento režim v rozhraní API, nastavte `vanityUrl` na hodnotu `true` při vytváření (výchozí nastavení je `false` ). V době vytváření je také potřeba předat vlastní přístupový token ( `LiveEventInput.accessToken` ). Zadejte hodnotu tokenu, aby se zabránilo náhodnému tokenu v adrese URL. Přístupový token musí být platný řetězec GUID (s pomlčkami nebo bez nich). Po nastavení je režim nepůjde aktualizovat.
 
     Přístupový token musí být ve vašem datovém centru jedinečný. Pokud vaše aplikace potřebuje použít adresu URL individuální, doporučujeme vždy vytvořit novou instanci GUID pro přístupový token (místo opětovného použití existujícího identifikátoru GUID).
 
-    Pomocí následujících rozhraní API povolte adresu URL individuální a nastavte přístupový token na platný identifikátor GUID (například `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`).  
+    Pomocí následujících rozhraní API povolte adresu URL individuální a nastavte přístupový token na platný identifikátor GUID (například `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"` ).  
 
     |Jazyk|Povolit individuální adresu URL|Nastavení přístupového tokenu|
     |---|---|---|
     |REST|[Properties. vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |CLI|[--individuální-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--Access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |Rozhraní příkazového řádku|[--individuální-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--Access-token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
     |.NET|[Livestream. VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>Pravidla pro pojmenování adres URL pro živá přijímání

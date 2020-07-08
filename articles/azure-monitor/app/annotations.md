@@ -4,10 +4,9 @@ description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81010703"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
@@ -63,7 +62,7 @@ Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pi
    
 1. V okně Šablona verze vyberte na kartě **proměnné** možnost **Přidat** a vytvořte definici proměnné pro nový klíč rozhraní API.
 
-1. Do pole **název**zadejte `ApiKey`a v části **hodnota**vložte klíč rozhraní API, který jste zkopírovali z karty **přístup přes rozhraní API** .
+1. Do pole **název**zadejte `ApiKey` a v části **hodnota**vložte klíč rozhraní API, který jste zkopírovali z karty **přístup přes rozhraní API** .
    
    ![Na kartě proměnné DevOps Azure vyberte Přidat, pojmenujte proměnnou ApiKey a vložte klíč rozhraní API pod hodnotu.](./media/annotations/7-paste-api-key.png)
    
@@ -94,7 +93,7 @@ Vyberte libovolnou značku poznámky a otevřete tak podrobnosti o vydané verzi
 ## <a name="create-custom-annotations-from-powershell"></a>Vytváření vlastních poznámek z PowerShellu
 Pomocí skriptu prostředí PowerShell pro [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) z GitHubu můžete vytvářet poznámky z libovolného procesu, který chcete, bez použití Azure DevOps. 
 
-1. Vytvořte místní kopii [CreateReleaseAnnotation. ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Vytvořte místní kopii [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
    
 1. Pomocí kroků v předchozím postupu můžete získat ID Application Insights a na kartě **přístup k rozhraní api** Application Insights vytvořit klíč rozhraní API.
    

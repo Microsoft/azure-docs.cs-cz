@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
 ms.openlocfilehash: 476241ad3d4077f2da0c513e3c989218701232ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81255749"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače o agenta Network Watcher pro Linux
@@ -35,7 +34,7 @@ Tento článek podrobně popisuje podporované platformy a možnosti nasazení p
 
 Rozšíření agenta Network Watcher lze nakonfigurovat pro následující distribuce systému Linux:
 
-| Distribuce | Version |
+| Distribuce | Verze |
 |---|---|
 | Ubuntu | 12+ |
 | Debian | 7 a 8 |
@@ -75,11 +74,11 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. Azure. NetworkWatcher |
-| type | NetworkWatcherAgentLinux |
+| typ | NetworkWatcherAgentLinux |
 | typeHandlerVersion | 1.4 |
 
 ## <a name="template-deployment"></a>Nasazení šablon

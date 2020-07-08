@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261563"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Klíčová slova v Azure Cosmos DB
@@ -19,7 +18,7 @@ Tento článek podrobně popisuje klíčová slova, která se dají použít v A
 
 ## <a name="between"></a>BETWEEN
 
-`BETWEEN` Klíčové slovo lze použít pro vyjádření dotazů na rozsahy řetězcových nebo číselných hodnot. Například následující dotaz vrátí všechny položky, ve kterých je první podřízená hodnota 1-5 (včetně).
+Klíčové slovo lze použít `BETWEEN` pro vyjádření dotazů na rozsahy řetězcových nebo číselných hodnot. Například následující dotaz vrátí všechny položky, ve kterých je první podřízená hodnota 1-5 (včetně).
 
 ```sql
     SELECT *
@@ -27,21 +26,21 @@ Tento článek podrobně popisuje klíčová slova, která se dají použít v A
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-`BETWEEN` Klíčové slovo lze použít také v `SELECT` klauzuli, jak je uvedeno v následujícím příkladu.
+Klíčové slovo lze použít také `BETWEEN` v `SELECT` klauzuli, jak je uvedeno v následujícím příkladu.
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-V rozhraní SQL API na rozdíl od ANSI SQL můžete vyjádřit dotazy na rozsah proti vlastnostem smíšených typů. Může se například `grade` jednat o číslo, například `5` v některých položkách, a v `grade4` řetězci podobném jiným. V těchto případech, jako v jazyce JavaScript, porovnávání dvou různých typů má za `Undefined`následek, že se položka přeskočí.
+V rozhraní SQL API na rozdíl od ANSI SQL můžete vyjádřit dotazy na rozsah proti vlastnostem smíšených typů. `grade`Může se například jednat o číslo, například `5` v některých položkách, a v řetězci podobném `grade4` jiným. V těchto případech, jako v jazyce JavaScript, porovnávání dvou různých typů má za následek `Undefined` , že se položka přeskočí.
 
 > [!TIP]
 > Pro rychlejší spouštění dotazů vytvořte zásadu indexování, která používá typ indexu rozsahu pro všechny číselné vlastnosti nebo cesty, které jsou `BETWEEN` filtry klauzule.
 
 ## <a name="distinct"></a>DISTINCT
 
-`DISTINCT` Klíčové slovo eliminuje duplicity v projekci dotazu.
+`DISTINCT`Klíčové slovo eliminuje duplicity v projekci dotazu.
 
 V tomto příkladu se dotazují hodnoty pro každý poslední název:
 
@@ -103,7 +102,7 @@ Výsledky jsou následující:
 ]
 ```
 
-Dotazy s agregovanou systémovou funkcí a poddotazem `DISTINCT` s nejsou podporovány. Například následující dotaz není podporován:
+Dotazy s agregovanou systémovou funkcí a poddotazem s `DISTINCT` nejsou podporovány. Například následující dotaz není podporován:
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
@@ -111,7 +110,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 ## <a name="in"></a>IN
 
-Použijte klíčové slovo IN ke kontrole, zda zadaná hodnota odpovídá jakékoli hodnotě v seznamu. Například následující dotaz vrátí všechny rodinné položky, kde `id` je `WakefieldFamily` nebo. `AndersenFamily`
+Použijte klíčové slovo IN ke kontrole, zda zadaná hodnota odpovídá jakékoli hodnotě v seznamu. Například následující dotaz vrátí všechny rodinné položky, kde `id` je `WakefieldFamily` nebo `AndersenFamily` .
 
 ```sql
     SELECT *
@@ -133,7 +132,7 @@ Pokud zahrnete klíč oddílu do `IN` filtru, dotaz se automaticky vyfiltruje je
 
 ## <a name="top"></a>TOP
 
-Klíčové slovo TOP vrátí první `N` počet výsledků dotazu v nedefinovaném pořadí. Jako osvědčený postup použijte `ORDER BY` klauzuli TOP s klauzulí k omezení výsledků na první `N` počet seřazených hodnot. Kombinování těchto dvou klauzulí je jediným způsobem, jak prediktivním označovat, které řádky mají vliv na nejvyšší vliv.
+Klíčové slovo TOP vrátí první `N` počet výsledků dotazu v nedefinovaném pořadí. Jako osvědčený postup použijte klauzuli TOP s `ORDER BY` klauzulí k omezení výsledků na první `N` počet seřazených hodnot. Kombinování těchto dvou klauzulí je jediným způsobem, jak prediktivním označovat, které řádky mají vliv na nejvyšší vliv.
 
 Můžete použít TOP s konstantní hodnotou, jako v následujícím příkladu, nebo s hodnotou proměnné s použitím parametrizovaných dotazů.
 

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259132"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Postup při integraci služby Azure API Management s Azure Application Insights
@@ -72,9 +71,9 @@ Než budete moct použít Azure Application Insights, musíte nejdřív vytvoři
 > [!NOTE]
 > Za scénou je na úrovni rozhraní API vytvořená [diagnostická](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) entita s názvem ApplicationInsights.
 
-| Název nastavení                        | Typ hodnoty                        | Popis                                                                                                                                                                                                                                                                                                                                      |
+| Název nastavení                        | Typ hodnoty                        | Description                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Povolení                              | Boolean                           | Určuje, jestli je povolené protokolování tohoto rozhraní API.                                                                                                                                                                                                                                                                                                |
+| Povolit                              | Boolean                           | Určuje, jestli je povolené protokolování tohoto rozhraní API.                                                                                                                                                                                                                                                                                                |
 | Cíl                         | Protokolovací nástroj Azure Application Insights | Určuje protokolovací nástroj Azure Application Insights, který se má použít.                                                                                                                                                                                                                                                                                           |
 | Vzorkování (%)                        | decimal                           | Hodnoty od 0 do 100 (procenta). <br/> Určuje, jaké procento požadavků se bude protokolovat do služby Azure Application Insights. 0% vzorkování znamená nulový počet požadavků, zatímco 100% vzorkování znamená, že jsou všechny požadavky protokolovány. <br/> Toto nastavení se používá k omezení dopadu na výkon požadavků protokolování do Azure Application Insights (viz část níže). |
 | Vždycky protokolovat chyby                   | Boolean                           | Pokud je toto nastavení vybrané, všechny chyby se zaprotokolují do služby Azure Application Insights bez ohledu na nastavení **vzorkování** .                                                                                                                                                                                                                  |

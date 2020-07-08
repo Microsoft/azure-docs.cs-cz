@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 04/10/2020
 ms.author: victorh
 ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113437"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logika zpracování pravidel Azure Firewall
@@ -49,7 +48,7 @@ Připojení k google.com je povolené z důvodu odpovídajícího síťového pr
 - Akce: Povolit
 
 
-|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
+|name  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
 |Povolení – Web     |TCP|IP adresa|*|IP adresa|*|80,443
 
@@ -57,7 +56,7 @@ Připojení k google.com je povolené z důvodu odpovídajícího síťového pr
 
 - Akce: Odepřít
 
-|jméno  |Typ zdroje  |Zdroj  |Protokol: port|Cílové plně kvalifikované názvy domén|
+|name  |Typ zdroje  |Zdroj  |Protokol: port|Cílové plně kvalifikované názvy domén|
 |---------|---------|---------|---------|----------|----------|
 |Odepřít – Google     |IP adresa|*|http: 80, https: 443|google.com
 
@@ -75,7 +74,7 @@ Přenosy SSH se zamítly, protože kolekce *síťových pravidel* s vyšší pri
 - Priorita: 200
 - Akce: Povolit
 
-|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
+|name  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
 |Povolení – SSH     |TCP|IP adresa|*|IP adresa|*|22
 
@@ -85,7 +84,7 @@ Přenosy SSH se zamítly, protože kolekce *síťových pravidel* s vyšší pri
 - Priorita: 100
 - Akce: Odepřít
 
-|jméno  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
+|name  |Protocol (Protokol)  |Typ zdroje  |Zdroj  |Cílový typ  |Cílová adresa  |Cílové porty|
 |---------|---------|---------|---------|----------|----------|--------|
 |Odepřít – SSH     |TCP|IP adresa|*|IP adresa|*|22
 

@@ -6,10 +6,9 @@ services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80877894"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro úložiště a zálohování ve službě Azure Kubernetes (AKS)
@@ -35,8 +34,8 @@ Následující tabulka popisuje dostupné typy úložišť a jejich možnosti:
 | Případ použití | Modul plug-in svazku | Čtení a zápis jednou | Velký počet jen pro čtení | Čtení a zápis mnoha | Podpora kontejneru Windows serveru |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Sdílená konfigurace       | Soubory Azure   | Ano | Ano | Ano | Ano |
-| Data strukturovaných aplikací        | Disky Azure   | Ano | Ne  | Ne  | Ano |
-| Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Ano | Ano | Ano | Ne |
+| Data strukturovaných aplikací        | Disky Azure   | Yes | No  | No  | Yes |
+| Nestrukturovaná data, operace systému souborů | [BlobFuse][blobfuse] | Ano | Ano | Ano | No |
 
 Dva primární typy úložiště poskytované pro svazky v AKS se zálohují na disky Azure nebo soubory Azure. Pro zvýšení zabezpečení oba typy úložiště ve výchozím nastavení používají šifrování služby Azure Storage (SSE), které šifruje neaktivní neaktivní data. Disky se momentálně nedají šifrovat pomocí Azure Disk Encryption na úrovni uzlu AKS.
 

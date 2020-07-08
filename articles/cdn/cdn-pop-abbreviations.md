@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: allensu
 ms.openlocfilehash: a5f3f8dbb83b23fc16fd1225e5a9cbeab16b9576
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81260237"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN umístění POP podle zkratky
@@ -77,9 +76,9 @@ FTY | Brno, Gruzie, USA | Severní Amerika: východní pobřeží USA
 4GIGOVÝ | Rio de Janeiro, Brazílie | Latinská Amerika
 GRU | Svatý Paulo, Brazílie | Latinská Amerika
 HEL | Helsinky, Finsko | Evropa
-HHP | Hongkong – zvláštní správní oblast | Asie
-HKC | Hongkong – zvláštní správní oblast | Asie
-HKG | Hongkong – zvláštní správní oblast | Asie
+HHP | Hongkong – zvláštní administrativní oblast | Asie
+HKC | Hongkong – zvláštní administrativní oblast | Asie
+HKG | Hongkong – zvláštní administrativní oblast | Asie
 HND | Tokio, Japonsko | Asie
 IAD | Ashburn,) – Virginia, USA | Severní Amerika: východní pobřeží USA
 ICN | Soul, Korea | Asie

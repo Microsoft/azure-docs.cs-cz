@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80811334"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak vytvořit a nasadit cloudovou službu
@@ -48,7 +47,7 @@ Před exportem balíčku služby vyžadují tři funkce cloudové služby speci�
 
 Chcete-li vytvořit cloudovou službu s nasazením webových rolí nebo rolí pracovního procesu, je nutné [vytvořit balíček služby](cloud-services-model-and-package.md#servicepackagecspkg).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 * Pokud jste sadu Azure SDK nenainstalovali, klikněte na **nainstalovat sadu Azure SDK** , otevřete [stránku Azure downloads](https://azure.microsoft.com/downloads/)a Stáhněte si sadu SDK pro jazyk, ve kterém dáváte přednost vývoji kódu. (Budete mít příležitost k tomu později.)
 * Pokud nějaké instance role vyžadují certifikát, vytvořte certifikáty. Cloud Services vyžadují soubor. pfx s privátním klíčem. Certifikáty můžete do Azure nahrát při vytváření a nasazení cloudové služby.
 

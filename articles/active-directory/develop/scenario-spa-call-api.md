@@ -12,15 +12,14 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882127"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Jednostránkové aplikace: volání webového rozhraní API
 
-Doporučujeme, abyste před voláním `acquireTokenSilent` webového rozhraní API zavolali metodu pro získání nebo obnovení přístupového tokenu. Po vytvoření tokenu můžete zavolat chráněné webové rozhraní API.
+Doporučujeme, abyste `acquireTokenSilent` před voláním webového rozhraní API zavolali metodu pro získání nebo obnovení přístupového tokenu. Po vytvoření tokenu můžete zavolat chráněné webové rozhraní API.
 
 ## <a name="call-a-web-api"></a>Volání webového rozhraní API
 
@@ -53,4 +52,4 @@ Pomocí získaného přístupového tokenu jako nosiče v požadavku HTTP může
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přechod k produkčnímu prostředí](scenario-spa-production.md)
+> [Přesunout do produkčního prostředí](scenario-spa-production.md)

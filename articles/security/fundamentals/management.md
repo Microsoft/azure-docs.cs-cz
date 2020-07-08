@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
 ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80981303"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
@@ -106,7 +105,7 @@ Přístup k správě služeb infrastruktury a platformy Azure můžete omezit po
 ### <a name="management-gateway"></a>Brána pro správu
 Pokud chcete centralizovat veškerý přístup pro správu a zjednodušit sledování a protokolování, můžete nasadit vyhrazený server [brány vzdálené plochy](https://technet.microsoft.com/library/dd560672) (brána VP) v místní síti, který je připojený k prostředí Azure.
 
-Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách, která vynucuje požadavky na zabezpečení. Zavedení brány VP spolu s architekturou NAP (Network Access Protection) pro Windows Server pomáhá zajistit, že se připojí pouze klienti, kteří splňují konkrétní bezpečnostní kritéria stanovená objekty zásad skupiny (GPO) ve službě Active Directory Domain Services (AD DS). Navíc platí:
+Brána vzdálené plochy je proxy služba protokolu RDP založená na zásadách, která vynucuje požadavky na zabezpečení. Zavedení brány VP spolu s architekturou NAP (Network Access Protection) pro Windows Server pomáhá zajistit, že se připojí pouze klienti, kteří splňují konkrétní bezpečnostní kritéria stanovená objekty zásad skupiny (GPO) ve službě Active Directory Domain Services (AD DS). Další vylepšení:
 
 * Na bráně VP zřiďte [certifikát pro správu Azure](https://msdn.microsoft.com/library/azure/gg551722.aspx), aby byla jediným hostitelem s povoleným přístupem k webu Azure Portal.
 * Připojte bránu VP ke stejné [doméně pro správu](https://technet.microsoft.com/library/bb727085.aspx) jako pracovní stanice správce. Je to nezbytné, když používáte VPN typu site-to-site s protokolem IPsec nebo ExpressRoute v rámci domény, která má jednosměrný vztah důvěryhodnosti k Azure AD, nebo pokud federujete přihlašovací údaje mezi místní instancí AD DS a Azure AD.

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80989523"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
@@ -112,7 +111,7 @@ namespace CustomInitializer.Telemetry
 
 **Aplikace ASP.NET: inicializátor zatížení pro aktivní TelemetryConfiguration**
 
-V souboru ApplicationInsights. config:
+V ApplicationInsights.config:
 
 ```xml
     <ApplicationInsights>
@@ -138,7 +137,7 @@ Alternativním způsobem pro webové aplikace ASP.NET je vytvoření instance in
 ```
 
 > [!NOTE]
-> Přidání inicializátoru `ApplicationInsights.config` pomocí nebo `TelemetryConfiguration.Active` použití není pro ASP.NET Core aplikace platné. 
+> Přidání inicializátoru pomocí `ApplicationInsights.config` nebo použití `TelemetryConfiguration.Active` není pro ASP.NET Core aplikace platné. 
 
 **ASP.NET Core aplikace: inicializátor zátěže na TelemetryConfiguration**
 
@@ -169,7 +168,7 @@ V případě [agenta Java 3,0](https://docs.microsoft.com/azure/azure-monitor/ap
 }
 ```
 
-Název cloudové role můžete také nastavit pomocí proměnné ```APPLICATIONINSIGHTS_ROLE_NAME```prostředí.
+Název cloudové role můžete také nastavit pomocí proměnné prostředí ```APPLICATIONINSIGHTS_ROLE_NAME``` .
 
 **Java SDK**
 
@@ -199,7 +198,7 @@ appInsights.defaultClient.context.tags["ai.cloud.role"] = "your role name";
 appInsights.defaultClient.context.tags["ai.cloud.roleInstance"] = "your role instance";
 ```
 
-### <a name="alternate-method-for-nodejs"></a>Alternativní metoda pro Node. js
+### <a name="alternate-method-for-nodejs"></a>Alternativní metoda pro Node.js
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -229,7 +228,7 @@ Vzhledem k tomu, jak si představit **název cloudové role**, může být užit
 
 ![Snímek obrazovky s mapou aplikace](media/app-map/cloud-rolename.png)
 
-V mapě aplikace nad každým názvem v zelených polích jsou hodnoty názvu cloudové role pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci se tyto role skládají z `Authentication`: `acmefrontend`, `Inventory Management`,, `Payment Processing Worker Role`a. 
+V mapě aplikace nad každým názvem v zelených polích jsou hodnoty názvu cloudové role pro různé aspekty této konkrétní distribuované aplikace. Takže pro tuto aplikaci se tyto role skládají z: `Authentication` , `acmefrontend` , `Inventory Management` , a `Payment Processing Worker Role` . 
 
 V případě této aplikace všechny názvy cloudových rolí také představují jiný jedinečný Application Insights prostředek s vlastními klíči instrumentace. Vzhledem k tomu, že vlastník této aplikace má přístup ke každému z těchto čtyř různorodých Application Insightsch prostředků, může mapa aplikace spojovat mapu základních vztahů.
 

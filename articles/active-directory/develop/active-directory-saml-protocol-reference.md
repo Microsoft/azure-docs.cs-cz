@@ -13,10 +13,9 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: 44d06030d8015d2df9499ce903eb9cb06e1ef27a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885646"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Jak Azure AD využívá protokol SAML
@@ -31,8 +30,8 @@ Azure AD pomocí **identifikátoru URI metadat** cloudové služby načte podpis
 
 Azure Active Directory zveřejňuje jednotné přihlašování (nezávislé na klientovi) a koncové body s jedním odhlášením pro konkrétního tenanta. Tyto adresy URL představují adresovatelná umístění – nejedná se o pouze identifikátory – takže můžete načíst metadata z tohoto koncového bodu.
 
-* Koncový bod specifický pro tenanta je umístěný na `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`adrese. Zástupný symbol * \<TenantDomainName>* představuje registrovaný název domény nebo identifikátor GUID TenantID tenanta Azure AD. Federační metadata klienta contoso.com jsou například v:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* Koncový bod specifický pro tenanta je umístěný na adrese `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` . *\<TenantDomainName>* Zástupný symbol představuje registrovaný název domény nebo identifikátor GUID TenantID tenanta Azure AD. Federační metadata klienta contoso.com jsou například v:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
-* Koncový bod nezávislý na klientovi je umístěný na `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`adrese. V této adrese koncového bodu se **běžně** zobrazuje název domény klienta nebo ID.
+* Koncový bod nezávislý na klientovi je umístěný na adrese `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml` . V této adrese koncového bodu se **běžně** zobrazuje název domény klienta nebo ID.
 
 Informace o dokumentech federačních metadat, které zveřejňuje Azure AD, najdete v tématu [federační metadata](../azuread-dev/azure-ad-federation-metadata.md).

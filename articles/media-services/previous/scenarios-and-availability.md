@@ -14,10 +14,9 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: fa0cf5d698bc2186928e0db19be173ec725485e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80985928"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
@@ -177,10 +176,10 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 #### <a name="availability"></a>Dostupnost
 
-|Název|Status|Datová centra
+|Name|Status|Datová centra
 |---|---|---|
-|Standard|GA|Všechny|
-|Premium|GA|Všechny|
+|Standard|GA|Vše|
+|Premium|GA|Vše|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
 
@@ -196,7 +195,7 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 |Název procesoru médií|Status|Datová centra
 |---|---|---|
-|Media Encoder Standard|GA|Všechny|
+|Media Encoder Standard|GA|Vše|
 |Pracovní postup kodéru Media Encoder Premium|GA|Všechny s výjimkou Číny|
 
 ### <a name="analytics-media-processors"></a>Analytické procesory médií
@@ -210,12 +209,12 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 
 |Název procesoru médií|Status|Datová centra
 |---|---|---|
-|Azure Media Face Detector|Preview|Všechny|
-|Azure Media Indexer|GA|Všechny|
-|Azure Media Motion Detector|Preview|Všechny|
-|Azure Media OCR|Preview|Všechny|
-|Azure Media Redactor|GA|Všechny|
-|Azure Media Video Thumbnails|Preview|Všechny|
+|Azure Media Face Detector|Preview|Vše|
+|Azure Media Indexer|GA|Vše|
+|Azure Media Motion Detector|Preview|Vše|
+|Azure Media OCR|Preview|Vše|
+|Azure Media Redactor|GA|Vše|
+|Azure Media Video Thumbnails|Preview|Vše|
 
 ### <a name="protection"></a>Ochrana
 
@@ -225,10 +224,10 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 |Šifrování|Status|Datová centra|
 |---|---|---| 
-|Storage|GA|Všechny|
-|Klíče AES-128|GA|Všechny|
-|FairPlay|GA|Všechny|
-|PlayReady|GA|Všechny|
+|Storage|GA|Vše|
+|Klíče AES-128|GA|Vše|
+|FairPlay|GA|Vše|
+|PlayReady|GA|Vše|
 |Widevine|GA|Všechna kromě oblastí Německo, Federální vláda a Čína.
 
 ### <a name="reserved-units-rus"></a>Rezervované jednotky (RU)
@@ -251,7 +250,7 @@ Další informace najdete v části popisující [škálování](#scaling).
 
 |Název typu RU|Status|Datová centra
 |---|---|---|
-|S1|GA|Všechny|
+|S1|GA|Vše|
 |S2|GA|Všechna kromě oblastí Brazílie – jih a Indie – západ|
 |S3|GA|Všechna kromě oblasti Indie – západ|
 

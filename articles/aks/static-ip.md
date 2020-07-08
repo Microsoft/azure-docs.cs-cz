@@ -6,10 +6,9 @@ services: container-service
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886734"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Použití statické veřejné IP adresy a popisku DNS pomocí nástroje pro vyrovnávání zatížení AKS (Azure Kubernetes Service)
@@ -18,11 +17,11 @@ Ve výchozím nastavení je veřejná IP adresa přiřazená k prostředku nást
 
 V tomto článku se dozvíte, jak vytvořit statickou veřejnou IP adresu a přiřadit ji ke službě Kubernetes.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 Tento článek se věnuje použití *standardní* IP adresy SKU s nástrojem pro vyrovnávání zatížení *Standard* SKU. Další informace najdete v tématu [typy IP adres a metody přidělování v Azure][ip-sku].
 
@@ -74,7 +73,7 @@ az role assignment create \
 
 Případně můžete použít spravovanou identitu přiřazenou systémem pro oprávnění místo instančního objektu. Další informace najdete v tématu [použití spravovaných identit](use-managed-identity.md).
 
-Chcete-li vytvořit službu *Vyrovnávání zatížení* se STATICKOU veřejnou IP adresou `loadBalancerIP` , přidejte do manifestu YAML vlastnost a hodnotu statické veřejné IP adresy. Vytvořte soubor s názvem `load-balancer-service.yaml` a zkopírujte ho na následující YAML. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku. Následující příklad také nastaví anotaci na skupinu prostředků s názvem *myResourceGroup*. Zadejte název vlastní skupiny prostředků.
+Chcete-li vytvořit službu *Vyrovnávání zatížení* se STATICKOU veřejnou IP adresou, přidejte do `loadBalancerIP` manifestu YAML vlastnost a hodnotu statické veřejné IP adresy. Vytvořte soubor s názvem `load-balancer-service.yaml` a zkopírujte ho na následující YAML. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku. Následující příklad také nastaví anotaci na skupinu prostředků s názvem *myResourceGroup*. Zadejte název vlastní skupiny prostředků.
 
 ```yaml
 apiVersion: v1
@@ -92,7 +91,7 @@ spec:
     app: azure-load-balancer
 ```
 
-Pomocí `kubectl apply` příkazu vytvořte službu a nasazení.
+Pomocí příkazu vytvořte službu a nasazení `kubectl apply` .
 
 ```console
 kubectl apply -f load-balancer-service.yaml
@@ -100,7 +99,7 @@ kubectl apply -f load-balancer-service.yaml
 
 ## <a name="apply-a-dns-label-to-the-service"></a>Použití popisku DNS u služby
 
-Pokud vaše služba používá dynamickou nebo statickou veřejnou IP adresu, můžete použít anotaci `service.beta.kubernetes.io/azure-dns-label-name` služby k nastavení popisku DNS s veřejným přístupem. Tím se publikuje plně kvalifikovaný název domény pro vaši službu pomocí veřejných serverů DNS Azure a domény nejvyšší úrovně. Hodnota anotace musí být jedinečná v rámci umístění Azure, proto se doporučuje použít dostatečně kvalifikovaný popisek.   
+Pokud vaše služba používá dynamickou nebo statickou veřejnou IP adresu, můžete použít anotaci služby `service.beta.kubernetes.io/azure-dns-label-name` k nastavení popisku DNS s veřejným přístupem. Tím se publikuje plně kvalifikovaný název domény pro vaši službu pomocí veřejných serverů DNS Azure a domény nejvyšší úrovně. Hodnota anotace musí být jedinečná v rámci umístění Azure, proto se doporučuje použít dostatečně kvalifikovaný popisek.   
 
 Azure pak automaticky připojí výchozí podsíť, například `<location>.cloudapp.azure.com` (kde umístění je oblast, kterou jste zvolili), k názvu, který zadáte, k vytvoření plně kvalifikovaného názvu DNS. Příklad:
 

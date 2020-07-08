@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81259948"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Akce v modulu Standard rules pro Azure CDN
@@ -30,7 +29,7 @@ Pomocí této akce můžete přepsat hodnotu TTL (Time to Live) koncového bodu 
 
 #### <a name="required-fields"></a>Povinná pole
 
-Chování mezipaměti |  Popis              
+Chování mezipaměti |  Description              
 ---------------|----------------
 Vynechat mezipaměť | Pokud je vybrána tato možnost a pravidlo odpovídá, není obsah uložen do mezipaměti.
 Přepis | Pokud je vybrána tato možnost a pravidlo odpovídá, hodnota TTL vrácená z vašeho zdroje je přepsána hodnotou zadanou v akci.
@@ -48,7 +47,7 @@ Tuto akci použijte k úpravě klíče mezipaměti založeného na řetězcích 
 
 #### <a name="required-fields"></a>Povinná pole
 
-Chování | Popis
+Chování | Description
 ---------|------------
 Zařadit členy | Pokud je vybrána tato možnost a pravidlo odpovídá, budou řetězce dotazů zadané v parametrech zahrnuty při vygenerování klíče mezipaměti. 
 Ukládat do mezipaměti každou jedinečnou adresu URL | Pokud je vybrána tato možnost a pravidlo odpovídá, každá jedinečná adresa URL má svůj vlastní klíč mezipaměti. 
@@ -85,7 +84,7 @@ Tuto akci použijte k přesměrování klientů na novou adresu URL.
 
 #### <a name="required-fields"></a>Povinná pole
 
-Pole | Popis 
+Pole | Description 
 ------|------------
 Typ | Vyberte typ odpovědi, který se má vrátit žadateli: Nalezeno (302), přesunuto (301), dočasné přesměrování (307) a trvalé přesměrování (308).
 Protocol (Protokol) | Požadavek shody, HTTP, HTTPS.
@@ -102,9 +101,9 @@ Pomocí této akce přepište cestu k žádosti, která je v cestě k původním
 
 #### <a name="required-fields"></a>Povinná pole
 
-Pole | Popis 
+Pole | Description 
 ------|------------
-Zdrojový vzor | Definujte zdrojový vzor v cestě URL, která má být nahrazena. V současné době zdrojový vzor používá shodu na základě předpony. Pro vyhledání všech cest URL použijte lomítko (**/**) jako hodnotu zdrojového vzoru.
+Zdrojový vzor | Definujte zdrojový vzor v cestě URL, která má být nahrazena. V současné době zdrojový vzor používá shodu na základě předpony. Pro vyhledání všech cest URL použijte lomítko ( **/** ) jako hodnotu zdrojového vzoru.
 Cíl | Zadejte cílovou cestu, která se má použít při přepisování. Cílová cesta přepíše zdrojový vzor.
 Zachovat neshodnou cestu | Pokud je nastaveno na **Ano**, zbývající cesta po zdrojovém vzoru se připojí k nové cílové cestě. 
 

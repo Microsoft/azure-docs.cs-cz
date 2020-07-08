@@ -4,10 +4,9 @@ description: Naučte se monitorovat a diagnostikovat Service Fabric služby na m
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80991326"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Monitorování a diagnostika služeb v nastavení pro vývoj v místním počítači se systémem Linux
@@ -24,7 +23,7 @@ Monitorování, detekce, diagnostika a řešení potíží umožní službám po
 
 ## <a name="debugging-service-fabric-java-applications"></a>Ladění aplikací Service Fabric Java
 
-Pro aplikace Java je k dispozici [více rozhraní protokolování](https://en.wikipedia.org/wiki/Java_logging_framework) . Vzhledem `java.util.logging` k tomu, že je výchozí možnost s JRE, používá se také pro [Příklady kódu na GitHubu](https://github.com/Azure-Samples/service-fabric-java-getting-started). Následující diskuze vysvětluje, jak nakonfigurovat `java.util.logging` architekturu.
+Pro aplikace Java je k dispozici [více rozhraní protokolování](https://en.wikipedia.org/wiki/Java_logging_framework) . Vzhledem k `java.util.logging` tomu, že je výchozí možnost s JRE, používá se také pro [Příklady kódu na GitHubu](https://github.com/Azure-Samples/service-fabric-java-getting-started). Následující diskuze vysvětluje, jak nakonfigurovat `java.util.logging` architekturu.
 
 Pomocí jazyka Java. util. log můžete přesměrovat protokoly aplikace na paměť, Výstupní proudy, soubory konzoly nebo sokety. Pro každou z těchto možností jsou již v rozhraní k dispozici výchozí obslužné rutiny. Můžete vytvořit `app.properties` soubor pro konfiguraci obslužné rutiny souboru pro vaši aplikaci pro přesměrování všech protokolů do místního souboru.
 
@@ -40,14 +39,14 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-Složka, na kterou `app.properties` soubor odkazuje, musí existovat. Po vytvoření `app.properties` souboru je potřeba také upravit skript vstupního `entrypoint.sh` bodu ve `<applicationfolder>/<servicePkg>/Code/` složce pro nastavení vlastnosti `java.util.logging.config.file` na `app.properties` soubor. Záznam by měl vypadat jako následující fragment kódu:
+Složka, na kterou soubor odkazuje, `app.properties` musí existovat. Po `app.properties` Vytvoření souboru je potřeba také upravit skript vstupního bodu `entrypoint.sh` ve `<applicationfolder>/<servicePkg>/Code/` složce pro nastavení vlastnosti `java.util.logging.config.file` na `app.properties` soubor. Záznam by měl vypadat jako následující fragment kódu:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Výsledkem této konfigurace je, že protokoly se shromažďují rotujícím způsobem `/tmp/servicefabric/logs/`. Soubor protokolu v tomto případě se nazývá mysfapp% u .% g. log, kde:
+Výsledkem této konfigurace je, že protokoly se shromažďují rotujícím způsobem `/tmp/servicefabric/logs/` . Soubor protokolu v tomto případě se nazývá mysfapp% u .% g. log, kde:
 * **% u** je jedinečné číslo, které řeší konflikty mezi souběžnými procesy Java.
 * **% g** je číslo generace pro rozlišení mezi rotačními protokoly.
 
@@ -61,7 +60,7 @@ Další informace najdete v [příkladech kódu v GitHubu](https://github.com/Az
 
 K dispozici je více platforem pro trasování aplikací CoreCLR v systému Linux. Další informace najdete v tématu [rozšíření .NET pro protokolování](https://github.com/dotnet/extensions/tree/master/src/Logging).  Vzhledem k tomu, že je EventSource známo pro vývojáře v jazyce C#, "Tento článek používá EventSource pro trasování v CoreCLR Samples on Linux.
 
-Prvním krokem je zahrnutí System. Diagnostics. Tracing, abyste mohli zapisovat protokoly do paměti, výstupních datových proudů nebo souborů konzoly.  Pro protokolování pomocí EventSource přidejte do Project. JSON následující projekt:
+Prvním krokem je zahrnutí System. Diagnostics. Tracing, abyste mohli zapisovat protokoly do paměti, výstupních datových proudů nebo souborů konzoly.  Pro protokolování pomocí EventSource přidejte do project.jsnásledující projekt:
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
@@ -120,7 +119,7 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-Předchozí fragment kódu výstupuje protokoly do souboru v `/tmp/MyServiceLog.txt`. Tento název souboru musí být řádně aktualizovaný. V případě, že chcete přesměrovat protokoly do konzoly, použijte následující fragment kódu v přizpůsobené třídě naslouchacího procesu událostí:
+Předchozí fragment kódu výstupuje protokoly do souboru v `/tmp/MyServiceLog.txt` . Tento název souboru musí být řádně aktualizovaný. V případě, že chcete přesměrovat protokoly do konzoly, použijte následující fragment kódu v přizpůsobené třídě naslouchacího procesu událostí:
 
 ```csharp
 public static TextWriter Out = Console.Out;

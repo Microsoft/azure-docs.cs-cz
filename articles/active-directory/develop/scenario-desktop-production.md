@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882875"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: přesunout do produkčního prostředí
@@ -31,7 +30,7 @@ V různých tocích jste se naučili, jak zpracovávat chyby pro tiché toky, ja
 > [!NOTE]
 > Získání souhlasu pro několik prostředků funguje pro Microsoft Identity Platform, ale ne pro Azure Active Directory (Azure AD) B2C. Azure AD B2C podporuje jenom souhlas správce, ne pro vyjádření souhlasu s uživatelem.
 
-Pomocí koncového bodu Microsoft Identity Platform (v 2.0) nemůžete získat token pro několik prostředků současně. `scopes` Parametr může obsahovat obory pouze pro jeden prostředek. Můžete zajistit, aby uživatel mohl předběžně odeslat několik prostředků pomocí `extraScopesToConsent` parametru.
+Pomocí koncového bodu Microsoft Identity Platform (v 2.0) nemůžete získat token pro několik prostředků současně. `scopes`Parametr může obsahovat obory pouze pro jeden prostředek. Můžete zajistit, aby uživatel mohl předběžně odeslat několik prostředků pomocí `extraScopesToConsent` parametru.
 
 Například můžete mít dva prostředky, které mají dva obory:
 

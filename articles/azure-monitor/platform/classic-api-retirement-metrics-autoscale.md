@@ -5,10 +5,9 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114227"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure Monitor vyřazení rozhraní API modelu nasazení Classic pro metriky a automatické škálování
@@ -35,9 +34,9 @@ Tento článek se týká, pokud používáte následující součásti:
 
 Pokud si nejste jistí, jestli váš kód nebo vlastní nástroje volají rozhraní API Classic, podívejte se na následující:
 
-- Zkontrolujte identifikátor URI, na který se odkazuje v kódu nebo nástroji. Rozhraní API Classic používají identifikátor URI https://management.core.windows.net. Měli byste používat novější identifikátor URI pro rozhraní API založená na Správce prostředků začíná na `https://management.azure.com/`.
+- Zkontrolujte identifikátor URI, na který se odkazuje v kódu nebo nástroji. Rozhraní API Classic používají identifikátor URI https://management.core.windows.net . Měli byste používat novější identifikátor URI pro rozhraní API založená na Správce prostředků začíná na `https://management.azure.com/` .
 
-- Porovnejte název sestavení v počítači. Starší sestavení Classic je na https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/.
+- Porovnejte název sestavení v počítači. Starší sestavení Classic je na https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
 
 - Pokud k přístupu k metrikám nebo rozhraním API automatického škálování používáte ověřování pomocí certifikátů, používáte klasický koncový bod a knihovnu. Novější rozhraní Správce prostředků API vyžadují Azure Active Directory ověřování prostřednictvím instančního objektu nebo objektu zabezpečení uživatele.
 
@@ -83,9 +82,9 @@ Oznámení o vyřazení bylo odesláno na e-mailové adresy následujících rol
 - Správci účtů a služeb
 - Spolusprávci  
 
-Pokud máte nějaké dotazy, kontaktujte nás na adrese MonitorClassicAPIhelp@microsoft.com.  
+Pokud máte nějaké dotazy, kontaktujte nás na adrese MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 - [Novější rozhraní REST API pro Azure Monitor](https://docs.microsoft.com/rest/api/monitor/) 
 - [Novější sada Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

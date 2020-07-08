@@ -18,19 +18,18 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81113317"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Sestavy zřizování na portálu Azure Active Directory (Preview)
 
 Architektura vytváření sestav ve službě Azure Active Directory (Azure AD) se skládá z následujících součástí:
 
-- **Akce** 
+- **Aktivita** 
     - **Přihlášení** – informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
-    - **Protokoly auditu protokoly**auditu poskytují informace o činnosti systému týkající se správy uživatelů a skupin, spravovaných aplikací a aktivit adresáře.[Audit logs](concept-audit-logs.md)  - 
+    - **Protokoly auditu**  -  [Protokoly auditu](concept-audit-logs.md) poskytují informace o činnostech systému o uživatelích a správě skupin, spravovaných aplikacích a aktivitách adresářů.
     - **Zřizování protokolů** – poskytněte systémové aktivity o uživatelích, skupinách a rolích, které zřídí služba zřizování Azure AD. 
 
 - **Zabezpečení** 
@@ -118,7 +117,7 @@ Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a
 
 Filtr **stavu** umožňuje vybrat:
 
-- Všechny
+- Vše
 - Úspěch
 - Selhání
 - Přeskočeno
@@ -131,7 +130,7 @@ Filtr **akcí** umožňuje filtrovat:
 - Aktualizace
 - Odstranit
 - Zakázat
-- Ostatní
+- Jiné
 
 Kromě toho můžete také nastavit následující filtry pro filtry výchozího zobrazení:
 
@@ -224,7 +223,7 @@ Karta **Souhrn** poskytuje přehled o tom, co se stalo, a identifikátory pro ob
 
 Pomocí následující tabulky můžete lépe pochopit, jak vyřešit chyby, které můžete najít v protokolech zřizování. U všech chybových kódů, které chybí, poskytněte zpětnou vazbu pomocí odkazu v dolní části této stránky. 
 
-|Kód chyby|Popis|
+|Kód chyby|Description|
 |---|---|
 |Konflikt, EntryConflict|Opravte konfliktní hodnoty atributů buď v rámci služby Azure AD, nebo v aplikaci, nebo zkontrolujte shodnou konfiguraci atributu, pokud by byl konfliktní uživatelský účet shodný a převzatý z něj. Další informace o konfiguraci atributů odpovídajícího atributu najdete v následující [dokumentaci](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) .|
 |TooManyRequests|Cílová aplikace odmítla tento pokus o aktualizaci uživatele, protože je přetížena a přijímá příliš mnoho požadavků. Žádná akce není k dispozici. Tento pokus bude automaticky vyřazen. Společnost Microsoft si také oznámila tento problém.|

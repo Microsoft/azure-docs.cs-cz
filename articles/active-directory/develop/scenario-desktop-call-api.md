@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882960"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: volání webového rozhraní API
@@ -94,7 +93,7 @@ task.resume()
 
 ## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Volání několika rozhraní API: přírůstkový souhlas a podmíněný přístup
 
-Chcete-li volat několik rozhraní API pro stejného uživatele, poté, co získáte token pro první rozhraní API `AcquireTokenSilent`, zavolejte. Token pro ostatní rozhraní API bude v tichosti většinou.
+Chcete-li volat několik rozhraní API pro stejného uživatele, poté, co získáte token pro první rozhraní API, zavolejte `AcquireTokenSilent` . Token pro ostatní rozhraní API bude v tichosti většinou.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -130,4 +129,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přechod k produkčnímu prostředí](scenario-desktop-production.md)
+> [Přesunout do produkčního prostředí](scenario-desktop-production.md)

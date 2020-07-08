@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81114505"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou klasická upozornění v Microsoft Azure?
@@ -78,7 +77,7 @@ Starší výstrahy metriky ale nepoužívají skupiny akcí. Místo toho můžet
 
 Webhooky umožňují automatizaci a nápravu, například pomocí:
 - Runbook Azure Automation
-- Funkce Azure Functions
+- Funkce Azure
 - Aplikace logiky Azure
 - Služba třetí strany
 

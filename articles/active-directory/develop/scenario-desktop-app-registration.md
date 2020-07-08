@@ -12,10 +12,9 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80885153"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: registrace aplikace
@@ -40,10 +39,10 @@ Pokud vaše aplikace klasické pracovní plochy používá interaktivní ověřo
 
 Identifikátor URI pro přesměrování, který se má použít v desktopové aplikaci, závisí na toku, který chcete použít.
 
-- Pokud používáte interaktivní ověřování nebo tok kódu zařízení, použijte `https://login.microsoftonline.com/common/oauth2/nativeclient`. Chcete-li dosáhnout této konfigurace, vyberte odpovídající adresu URL v části **ověřování** pro vaši aplikaci.
+- Pokud používáte interaktivní ověřování nebo tok kódu zařízení, použijte `https://login.microsoftonline.com/common/oauth2/nativeclient` . Chcete-li dosáhnout této konfigurace, vyberte odpovídající adresu URL v části **ověřování** pro vaši aplikaci.
   
   > [!IMPORTANT]
-  > V současné době MSAL.NET používá jiný identifikátor URI pro přesměrování ve výchozím nastavení v aplikacích klasické pracovní`urn:ietf:wg:oauth:2.0:oob`plochy, které běží ve Windows (). V budoucnu bude vhodné změnit toto výchozí nastavení, proto doporučujeme, abyste používali `https://login.microsoftonline.com/common/oauth2/nativeclient`.
+  > V současné době MSAL.NET používá jiný identifikátor URI pro přesměrování ve výchozím nastavení v aplikacích klasické pracovní plochy, které běží ve Windows ( `urn:ietf:wg:oauth:2.0:oob` ). V budoucnu bude vhodné změnit toto výchozí nastavení, proto doporučujeme, abyste používali `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 
 - Pokud vytváříte nativní cíl-C nebo aplikaci SWIFT pro macOS, zaregistrujte identifikátor URI přesměrování na základě identifikátoru sady prostředků vaší aplikace v následujícím formátu: msauth. <your.app.bundle.id>://auth. nahraďte <your.app.bundle.id> s identifikátorem sady prostředků vaší aplikace.
 - Pokud vaše aplikace používá integrované ověřování systému Windows nebo uživatelské jméno a heslo, nemusíte pro svoji aplikaci registrovat identifikátor URI přesměrování. Tyto toky dovedou k přenosu koncového bodu Microsoft Identity Platform v 2.0. Vaše aplikace se nebude volat zpátky na žádný konkrétní identifikátor URI.

@@ -10,10 +10,9 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81258452"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit k akcelerátoru řešení vzdáleného monitorování Azure IoT
@@ -62,7 +61,7 @@ Aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat přes j
   
    ![Přidání nového zařízení](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-add-new-device.png)
 
-7. Klikněte na možnost **Chci definovat vlastní ID zařízení**, zadejte `AZ3166`a potom klikněte na **vytvořit**.
+7. Klikněte na možnost **Chci definovat vlastní ID zařízení**, zadejte `AZ3166` a potom klikněte na **vytvořit**.
   
    ![Vytvořit zařízení s ID](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-new-device-configuration.png)
 
@@ -82,11 +81,11 @@ Aktivní předplatné Azure. Pokud ho nemáte, můžete se zaregistrovat přes j
 4. Rozbalte části **Příklady Arduino** na levé straně, přejděte k **příkladům pro MXCHIP AZ3166 > AzureIoT**a vyberte **RemoteMonitoring**. Otevře se nové okno VS Code se složkou projektu v něm.
 
    > [!NOTE]
-   > Pokud se rozhodnete podokno zavřít, můžete ho znovu otevřít. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P`) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
+   > Pokud se rozhodnete podokno zavřít, můžete ho znovu otevřít. Použijte `Ctrl+Shift+P` (MacOS: `Cmd+Shift+P` ) k otevření palety příkazů, zadejte **Arduino**a pak vyhledejte a vyberte **Arduino: příklady**.
 
 ## <a name="provision-required-azure-services"></a>Zřízení požadovaných služeb Azure
 
-V okně řešení spusťte úlohu prostřednictvím `Ctrl+P` (MacOS: `Cmd+P`) zadáním `task cloud-provision` do zadaného textového pole.
+V okně řešení spusťte úlohu prostřednictvím `Ctrl+P` (MacOS: `Cmd+P` ) zadáním `task cloud-provision` do zadaného textového pole.
 
 V terminálu VS Code vás interaktivní příkazový řádek provede zřízením požadovaných služeb Azure.
 
@@ -94,7 +93,7 @@ V terminálu VS Code vás interaktivní příkazový řádek provede zřízením
 
 ## <a name="build-and-upload-the-device-code"></a>Sestavení a nahrání kódu zařízení
 
-1. Použijte `Ctrl+P` (MacOS: `Cmd + P`) a zadejte **Konfigurace úlohy-zařízení-připojení**.
+1. Použijte `Ctrl+P` (MacOS: `Cmd + P` ) a zadejte **Konfigurace úlohy-zařízení-připojení**.
 
 2. Terminál se zeptá, jestli chcete použít připojovací řetězec, který načte z `task cloud-provision` kroku. Můžete také zadat vlastní připojovací řetězec zařízení tak, že kliknete na vytvořit nový...
 
@@ -102,7 +101,7 @@ V terminálu VS Code vás interaktivní příkazový řádek provede zřízením
 
    ![Vstupní připojovací řetězec](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/config-device-connection.png)
 
-4. Po `task config-device-connection` dokončení kliknutím `F1` načtěte vs Code příkazy a vyberte `Arduino: Upload`. VS Code spustí ověřování a nahrávání náčrtu Arduino.
+4. Po `task config-device-connection` dokončení kliknutím `F1` načtěte vs Code příkazy a vyberte `Arduino: Upload` . VS Code spustí ověřování a nahrávání náčrtu Arduino.
   
    ![Ověření a nahrání Arduino náčrtu](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/arduino-upload.png)
 

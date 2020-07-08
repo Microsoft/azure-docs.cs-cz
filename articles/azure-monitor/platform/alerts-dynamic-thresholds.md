@@ -6,10 +6,9 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81261070"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Výstrahy metrik s dynamickými prahovými hodnotami v Azure Monitor
@@ -18,7 +17,7 @@ Výstraha metriky s detekcí dynamických prahových hodnot využívá pokročil
 
 Po vytvoření pravidla výstrahy se aktivuje jenom v případě, že se monitorovaná metrika nechová podle očekávání, a to na základě jejich upravených prahových hodnot.
 
-Rádi bychom slyšeli vaši zpětnou vazbu, podíváme se <azurealertsfeedback@microsoft.com>na.
+Rádi bychom slyšeli vaši zpětnou vazbu, podíváme se na <azurealertsfeedback@microsoft.com> .
 
 ## <a name="why-and-when-is-using-dynamic-condition-type-recommended"></a>Proč a kdy se doporučuje použít typ dynamické podmínky?
 

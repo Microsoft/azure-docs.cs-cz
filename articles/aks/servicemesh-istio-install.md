@@ -7,22 +7,21 @@ ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80877690"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalace a použití Istio ve službě Azure Kubernetes Service (AKS)
 
 [Istio][istio-github] je open source síť, která poskytuje klíčovou sadu funkcí napříč mikroslužbami v clusteru Kubernetes. Mezi tyto funkce patří Správa provozu, identita služby a zabezpečení, vynucování zásad a jejich pozorování. Další informace o Istio najdete v dokumentaci oficiální dokumentace k [Istio?][istio-docs-concepts] .
 
-V tomto článku se dozvíte, jak nainstalovat Istio. Binární soubor `istioctl` klienta Istio se nainstaluje do klientského počítače a součásti Istio se nainstalují do clusteru KUBERNETES v AKS.
+V tomto článku se dozvíte, jak nainstalovat Istio. `istioctl`Binární soubor klienta Istio se nainstaluje do klientského počítače a součásti Istio se nainstalují do clusteru Kubernetes v AKS.
 
 > [!NOTE]
-> Následující pokyny odkazují na verzi `1.4.0`Istio.
+> Následující pokyny odkazují na verzi Istio `1.4.0` .
 >
-> Istio `1.4.x` vydané verze byly testovány týmem Istio proti `1.13`verzím Kubernetes, `1.14`,. `1.15` Další verze Istio najdete na webu [GitHub-Istio releases][istio-github-releases], informace o každé vydané verzi v [Istio News][istio-release-notes] a podporovaných verzích Kubernetes na [Istio obecné Nejčastější dotazy][istio-faq].
+> Istio vydané verze byly `1.4.x` testovány týmem Istio proti verzím Kubernetes `1.13` , `1.14` , `1.15` . Další verze Istio najdete na webu [GitHub-Istio releases][istio-github-releases], informace o každé vydané verzi v [Istio News][istio-release-notes] a podporovaných verzích Kubernetes na [Istio obecné Nejčastější dotazy][istio-faq].
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -33,7 +32,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Přístup k doplňkům
 > * Odinstalace Istio z AKS
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a vyšší s povoleným RBAC) a navázali jste `kubectl` připojení ke clusteru. Pokud potřebujete s kteroukoli z těchto položek pomáhat, přečtěte si [rychlý Start AKS][aks-quickstart].
 
@@ -63,7 +62,7 @@ Tento článek odděluje pokyny k instalaci Istio do několika diskrétních kro
 
 V rámci naší instalace Istio budeme instalovat [Grafana][grafana] a [Kiali][kiali] . Grafana poskytuje řídicí panely pro analýzy a monitorování a Kiali poskytuje řídicí panel pro pozorování v mřížce služby. V naší instalaci každá z těchto komponent vyžaduje přihlašovací údaje, které je třeba zadat jako [tajný kód][kubernetes-secrets].
 
-Než budeme moct nainstalovat komponenty Istio, je potřeba vytvořit tajné klíče pro Grafana i Kiali. Tyto tajné klíče je potřeba nainstalovat do `istio-system` oboru názvů, který budou používat Istio, takže je potřeba vytvořit taky tento obor názvů. Tuto `--save-config` možnost je nutné použít při vytváření oboru názvů prostřednictvím `kubectl create` , aby mohl být v budoucnu v tomto `kubectl apply` objektu spuštěn instalační program Istio.
+Než budeme moct nainstalovat komponenty Istio, je potřeba vytvořit tajné klíče pro Grafana i Kiali. Tyto tajné klíče je potřeba nainstalovat do `istio-system` oboru názvů, který budou používat Istio, takže je potřeba vytvořit taky tento obor názvů. Tuto možnost je nutné použít `--save-config` při vytváření oboru názvů prostřednictvím `kubectl create` , aby mohl být v budoucnu v tomto objektu spuštěn instalační program Istio `kubectl apply` .
 
 ```console
 kubectl create namespace istio-system --save-config
@@ -91,7 +90,7 @@ kubectl create namespace istio-system --save-config
 
 Teď, když jsme úspěšně vytvořili tajné kódy Grafana a Kiali v našem clusteru AKS, je čas nainstalovat komponenty Istio. 
 
-Přístup k instalaci [Helm][helm] pro Istio se v budoucnu už nepoužívá. Nový přístup k instalaci pro Istio využívá binární soubor `istioctl` klienta, [konfigurační profily Istio][istio-configuration-profiles]a novou [specifikaci roviny ovládacího prvku Istio a rozhraní API][istio-control-plane]. Tento nový přístup se používá k instalaci Istio.
+Přístup k instalaci [Helm][helm] pro Istio se v budoucnu už nepoužívá. Nový přístup k instalaci pro Istio využívá `istioctl` binární soubor klienta, [konfigurační profily Istio][istio-configuration-profiles]a novou [specifikaci roviny ovládacího prvku Istio a rozhraní API][istio-control-plane]. Tento nový přístup se používá k instalaci Istio.
 
 > [!NOTE]
 > Istio je v současné době nutné naplánovat na spuštění v uzlech se systémem Linux. Pokud máte v clusteru uzly Windows serveru, musíte zajistit, aby se Istio lusky spouštěly jenom na uzlech se systémem Linux. Použijeme [Selektory uzlů][kubernetes-node-selectors] k ujištění, že lusky jsou naplánované na správných uzlech.
@@ -239,7 +238,7 @@ V tomto okamžiku jste nasadili Istio do svého clusteru AKS. Abychom zajistili 
 
 ## <a name="validate-the-istio-installation"></a>Ověření instalace Istio
 
-Nejprve potvrďte, že byly vytvořeny očekávané služby. K zobrazení spuštěných služeb použijte příkaz [kubectl Get svc][kubectl-get] . Dotaz na `istio-system` obor názvů, ve kterém byly nainstalovány Istio a součásti doplňku pomocí grafu `istio` Helm:
+Nejprve potvrďte, že byly vytvořeny očekávané služby. K zobrazení spuštěných služeb použijte příkaz [kubectl Get svc][kubectl-get] . Dotaz na `istio-system` obor názvů, ve kterém byly nainstalovány Istio a součásti doplňku pomocí `istio` grafu Helm:
 
 ```console
 kubectl get svc --namespace istio-system --output wide
@@ -248,12 +247,12 @@ kubectl get svc --namespace istio-system --output wide
 Následující příklad výstupu ukazuje služby, které by nyní měly být spuštěny:
 
 - `istio-*`orgány
-- `jaeger-*`služby `tracing`trasování, `zipkin` a doplňku
+- `jaeger-*``tracing` `zipkin` služby trasování, a doplňku
 - `prometheus`doplňková služba metrik
 - `grafana`Služba řídicího panelu pro analýzu a monitorování doplňků
 - `kiali`Služba doplňku sítě pro mřížku služby
 
-Pokud se `istio-ingressgateway` zobrazí externí IP adresa `<pending>`, počkejte několik minut, než se IP adresa přiřadí pomocí sítě Azure.
+Pokud se `istio-ingressgateway` zobrazí externí IP adresa `<pending>` , počkejte několik minut, než se IP adresa přiřadí pomocí sítě Azure.
 
 ```console
 NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                                      AGE   SELECTOR
@@ -274,7 +273,7 @@ tracing                  ClusterIP      10.0.249.95    <none>           9411/TCP
 zipkin                   ClusterIP      10.0.154.89    <none>           9411/TCP                                                                                                                     94s   app=jaeger
 ```
 
-Pak potvrďte, že byly vytvořeny požadované lusky. Použijte příkaz [kubectl Get lusks][kubectl-get] a znovu se Dotazujte `istio-system` na obor názvů:
+Pak potvrďte, že byly vytvořeny požadované lusky. Použijte příkaz [kubectl Get lusks][kubectl-get] a znovu se Dotazujte na `istio-system` obor názvů:
 
 ```console
 kubectl get pods --namespace istio-system
@@ -282,10 +281,10 @@ kubectl get pods --namespace istio-system
 
 Následující příklad výstupu ukazuje, kde jsou spuštěny tyto lusky:
 
-- `istio-*` lusky
-- Metrika `prometheus-*` doplňku pod
-- řídicí `grafana-*` panel analýza a monitorování doplňku pod
-- řídicí `kiali` panel pro mřížku služby doplňku pod
+- `istio-*`lusky
+- `prometheus-*`metrika doplňku pod
+- `grafana-*`řídicí panel analýza a monitorování doplňku pod
+- `kiali`řídicí panel pro mřížku služby doplňku pod
 
 ```console
 NAME                                          READY   STATUS    RESTARTS   AGE
@@ -302,7 +301,7 @@ kiali-59b7fd7f68-92zrh                        1/1     Running   0          95s
 prometheus-7c7cf9dbd6-rjxcv                   1/1     Running   0          94s
 ```
 
-Všechny lusky by měly zobrazit stav `Running`. Pokud vaše lusky nemají tyto stavy, počkejte minutu nebo dvě, dokud to neudělá. Pokud jakékoli lusky nahlásí problém, zkontrolujte výstup a stav pomocí příkazu [kubectl popsat pod][kubectl-describe] .
+Všechny lusky by měly zobrazit stav `Running` . Pokud vaše lusky nemají tyto stavy, počkejte minutu nebo dvě, dokud to neudělá. Pokud jakékoli lusky nahlásí problém, zkontrolujte výstup a stav pomocí příkazu [kubectl popsat pod][kubectl-describe] .
 
 ## <a name="accessing-the-add-ons"></a>Přístup k doplňkům
 
@@ -359,7 +358,7 @@ istioctl dashboard envoy <pod-name>.<namespace>
 
 ### <a name="remove-istio-components-and-namespace"></a>Odebrat součásti a obor názvů Istio
 
-Chcete-li odebrat Istio z clusteru AKS, použijte `istioctl manifest generate` příkaz se souborem `istio.aks.yaml` specifikace roviny ovládacího prvku Istio. Tím se vygeneruje nasazený manifest, na `kubectl delete` který se pošle kanál, aby bylo možné odebrat všechny nainstalované komponenty `istio-system` a obor názvů.
+Chcete-li odebrat Istio z clusteru AKS, použijte `istioctl manifest generate` příkaz se `istio.aks.yaml` souborem specifikace roviny ovládacího prvku Istio. Tím se vygeneruje nasazený manifest, na který se pošle kanál, aby `kubectl delete` bylo možné odebrat všechny nainstalované komponenty a `istio-system` obor názvů.
 
 ```console
 istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 

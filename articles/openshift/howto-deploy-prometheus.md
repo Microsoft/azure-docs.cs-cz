@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, ARO, OpenShift, metriky, Red Hat
 ms.openlocfilehash: 7f22df587f51af735e0ea663e53f6eef14d60692
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80886884"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Nasazení samostatné instance Prometheus v clusteru Azure Red Hat OpenShift
@@ -30,13 +29,13 @@ Soubory konfigurace Prometheus budete připravovat místně. Vytvořte novou slo
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Přihlaste se ke clusteru pomocí nástroje OC.
 
-1. Otevřete webový prohlížeč a pak klikněte na webovou konzoli vašeho clusteru (https://openshift.* ID náhodného*. *region*. azmosa.IO).
+1. Otevřete webový prohlížeč a pak klikněte na webovou konzoli vašeho clusteru ( https://openshift .* ID náhodného*. *region*. azmosa.IO).
 2. Přihlaste se pomocí přihlašovacích údajů Azure.
 3. V pravém horním rohu vyberte své uživatelské jméno a pak vyberte **příkaz Kopírovat přihlášení**.
 4. Vložte své uživatelské jméno do terminálu, který budete používat.
 
 > [!NOTE]
-> Pokud se chcete podívat, jestli jste se přihlásili ke správnému `oc whoami -c` clusteru, spusťte příkaz.
+> Pokud se chcete podívat, jestli jste se přihlásili ke správnému clusteru, spusťte `oc whoami -c` příkaz.
 
 ## <a name="prepare-the-projects"></a>Příprava projektů
 
@@ -49,7 +48,7 @@ oc new-project app-project2
 
 
 > [!NOTE]
-> Můžete buď použít parametr `-n` nebo `--namespace` , nebo vybrat aktivní projekt spuštěním `oc project` příkazu.
+> Můžete buď použít `-n` `--namespace` parametr nebo, nebo vybrat aktivní projekt spuštěním `oc project` příkazu.
 
 ## <a name="prepare-the-prometheus-configuration-file"></a>Příprava konfiguračního souboru Prometheus
 Zadáním následujícího obsahu vytvořte soubor Prometheus. yml:
@@ -178,11 +177,11 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 ```
 
 > [!NOTE]
-> Chcete-li ověřit, zda byla role a RoleBinding správně vytvořena `oc get role` , `oc get rolebinding` spusťte příkazy a.
+> Chcete-li ověřit, zda byla role a RoleBinding správně vytvořena, spusťte `oc get role` `oc get rolebinding` příkazy a.
 
 ## <a name="optional-deploy-example-application"></a>Volitelné: příklad nasazení aplikace
 
-Vše funguje, ale neexistují žádné zdroje metriky. Přejít na adresu URL Prometheus (https://prom-prometheus-project.apps.* ID náhodného*. *region*. azmosa.IO/). Můžete ji najít pomocí následujícího příkazu:
+Vše funguje, ale neexistují žádné zdroje metriky. Přejít na adresu URL Prometheus ( https://prom-prometheus-project.apps .* ID náhodného*. *region*. azmosa.IO/). Můžete ji najít pomocí následujícího příkazu:
 
 ```
 oc get route prom -n prometheus-project
@@ -200,7 +199,7 @@ oc new-app python:3.6~https://github.com/Makdaam/prometheus-example --name=examp
 ```
 Nové aplikace by se měly zobrazit jako platné cíle na stránce zjišťování služby během 30 sekund po nasazení.
 
-Další podrobnosti najdete v výběru **Status** > **cíle**stavu.
+Další podrobnosti najdete v výběru **Status**  >  **cíle**stavu.
 
 > [!NOTE]
 > Pro každý úspěšně vyřazený cíl Prometheus přidá datový bod do metriky nahoru. V levém horním rohu vyberte **Prometheus** **, jako výraz** zadejte a pak vyberte Execute ( **Spustit**).

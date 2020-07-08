@@ -13,10 +13,9 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "80882467"
 ---
 # <a name="protected-web-api-code-configuration"></a>Chráněné webové rozhraní API: Konfigurace kódu
@@ -134,7 +133,7 @@ Předchozí fragment kódu se extrahuje z přírůstkového kurzu ASP.NET Core w
 
 ## <a name="token-validation"></a>Ověření tokenu
 
-V předchozím fragmentu kódu JwtBearer middleware, jako je middleware OpenID Connect ve službě Web Apps, ověřuje token na základě hodnoty `TokenValidationParameters`. Token se v případě potřeby dešifruje, deklarace se extrahují a podpis se ověří. Middleware potom ověří token tím, že zkontroluje tato data:
+V předchozím fragmentu kódu JwtBearer middleware, jako je middleware OpenID Connect ve službě Web Apps, ověřuje token na základě hodnoty `TokenValidationParameters` . Token se v případě potřeby dešifruje, deklarace se extrahují a podpis se ověří. Middleware potom ověří token tím, že zkontroluje tato data:
 
 - Cílová skupina: token je zaměřen na webové rozhraní API.
 - Sub: byla vydána pro aplikaci, která má povoleno volání webového rozhraní API.
@@ -150,7 +149,7 @@ Kroky ověření jsou zachyceny ve validátorech, které jsou poskytovány pomoc
 
 Tato tabulka popisuje validátory:
 
-| Hodnocení | Popis |
+| Hodnocení | Description |
 |---------|---------|
 | **ValidateAudience** | Ověří, jestli je token pro aplikaci, která token ověřuje za vás. |
 | **ValidateIssuer** | Zajišťuje, že token byl vydán důvěryhodnou službou STS, což znamená, že je od někoho, kterému důvěřujete. |
