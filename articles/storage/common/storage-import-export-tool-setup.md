@@ -9,10 +9,10 @@ ms.date: 06/29/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: c7d2cac9402477090ae412dcf21265bec4609278
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514186"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Nastavení nástroje Azure pro import/export

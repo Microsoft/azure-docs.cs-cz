@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509774"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
@@ -30,8 +30,8 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 | Windows 8.1 | SMB 3.0 | Ano | Ano |
 | Windows Server 2012 R2 | SMB 3.0 | Ano | Ano |
 | Windows Server 2012 | SMB 3.0 | Ano | Ano |
-| Systém Windows 7<sup>3</sup> | SMB 2.1 | Yes | Ne |
-| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | Ne |
+| Systém Windows 7<sup>3</sup> | SMB 2.1 | Yes | No |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Yes | No |
 
 <sup>1</sup> Windows 10, verze 1507, 1607, 1709, 1803, 1809, 1903 a 1909.  
 <sup>2</sup> . Windows Server, verze 1809, 1903 a 1909.  
@@ -57,7 +57,7 @@ Azure Portal vám poskytne skript, který můžete použít k připojení sdíle
 
 Postup získání tohoto skriptu:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Přejděte do účtu úložiště, který obsahuje sdílenou složku, kterou chcete připojit.
 1. Vyberte **sdílení souborů**.
 1. Vyberte sdílenou složku, kterou chcete připojit.
@@ -87,7 +87,7 @@ Teď máte připojenou sdílenou složku Azure.
     
     ![Snímek obrazovky s rozevírací nabídkou Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Vyberte písmeno jednotky a zadejte cestu UNC, formát cesty UNC `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Příklad: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
+1. Vyberte písmeno jednotky a zadejte cestu UNC, formát cesty UNC `\\<storageAccountName>.file.core.windows.net\<fileShareName>` . Například: `\\anexampleaccountname.file.core.windows.net\example-share-name`.
     
     ![Snímek obrazovky s dialogovým oknem Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 

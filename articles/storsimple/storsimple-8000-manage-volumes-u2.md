@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508244"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Použití služby StorSimple Device Manager ke správě svazků (Update 3 nebo novější)
@@ -57,8 +57,8 @@ V následující tabulce najdete maximální zřízenou kapacitu pro každé za�
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Virtuální zařízení** | | |
-| 8010 |30 TB |– |
-| 8020 |64 TB |– |
+| 8010 |30 TB |Není k dispozici |
+| 8020 |64 TB |Není k dispozici |
 
 ## <a name="the-volumes-blade"></a>Okno svazky
 

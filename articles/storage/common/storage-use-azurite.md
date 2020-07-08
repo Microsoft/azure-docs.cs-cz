@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.openlocfilehash: af846b0c203934468b7f6282234819142093286f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512144"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Použití emulátoru Azurite pro místní Azure Storage vývoj a testování (Preview)
@@ -148,7 +148,7 @@ Tento příkaz oznamuje Azurite, aby ukládal všechna data do konkrétního adr
 
 Tato část podrobně popisuje přepínače příkazového řádku, které jsou k dispozici při spuštění Azurite.
 
-### <a name="help"></a>Help
+### <a name="help"></a>Nápověda
 
 **Volitelné** – získat nápovědu příkazového řádku pomocí `-h` `--help` přepínače nebo.
 
@@ -464,7 +464,7 @@ V Průzkumník služby Storage se připojte k Azurite pomocí následujících k
  1. Vyberte ikonu **Spravovat účty** .
  1. Vyberte **Přidat účet** .
  1. Vybrat **připojit k místnímu emulátoru**
- 1. Vybrat **Další**
+ 1. Vyberte **Další**.
  1. Upravte pole **zobrazované jméno** na název dle vašeho výběru.
  1. Znovu vybrat **Další**
  1. Vyberte **připojit**
@@ -493,7 +493,7 @@ Pomocí těchto kroků přidejte Azurite HTTPS do Průzkumník služby Storage:
 1. Vyberte **Další**.
 1. Do pole **Zobrazovaný název** zadejte hodnotu.
 1. Zadejte [připojovací řetězec https](#https-connection-strings) z předchozí části tohoto dokumentu.
-1. Vybrat **Další**
+1. Vyberte **Další**.
 1. Vyberte **připojit**
 
 ## <a name="workspace-structure"></a>Struktura pracovního prostoru

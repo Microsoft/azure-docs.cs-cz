@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512967"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Použití indikátorů monitorování StorSimple ke správě zařízení
@@ -55,13 +55,13 @@ Pomocí následující tabulky Identifikujte stav vyznačený diodami LED na př
 
 | Výkon systému | Chyba modulu | Logická chyba | Požární | Status |
 | --- | --- | --- | --- | --- |
-| Červená – oranžová |OFF |OFF |– |Napájení ze sítě se ztratilo, pracuje na napájení ze zálohy nebo napájení a moduly kontroleru se odebraly. |
-| Green |ON |ON |– |Stav testu na panelu Ops (5) |
-| Green |OFF |OFF |– |Zapnutí, všechny funkce dobré |
-| Green |ON |– |Diody chyb PCM, diody chyb ventilátoru |Jakákoli chyba PCM, Chyba ventilátoru, nad nebo pod teplotou |
-| Green |ON |– |Vstupně-výstupní diody v modulu |Jakákoli chyba modulu Controller |
-| Green |ON |– |– |Chyba logiky skříně |
-| Green |Blikající |– |Indikátor stavu modulu v modulu kontroleru. Diody chyb PCM, diody chyb ventilátoru |Je nainstalovaný neznámý typ modulu kontroleru, chyba sběrnice I2C, chyba konfigurace dat modulu kontroleru |
+| Červená – oranžová |OFF |OFF |Není k dispozici |Napájení ze sítě se ztratilo, pracuje na napájení ze zálohy nebo napájení a moduly kontroleru se odebraly. |
+| Green |ON |ON |Není k dispozici |Stav testu na panelu Ops (5) |
+| Green |OFF |OFF |Není k dispozici |Zapnutí, všechny funkce dobré |
+| Green |ON |Není k dispozici |Diody chyb PCM, diody chyb ventilátoru |Jakákoli chyba PCM, Chyba ventilátoru, nad nebo pod teplotou |
+| Green |ON |Není k dispozici |Vstupně-výstupní diody v modulu |Jakákoli chyba modulu Controller |
+| Green |ON |Není k dispozici |Není k dispozici |Chyba logiky skříně |
+| Green |Blikající |Není k dispozici |Indikátor stavu modulu v modulu kontroleru. Diody chyb PCM, diody chyb ventilátoru |Je nainstalovaný neznámý typ modulu kontroleru, chyba sběrnice I2C, chyba konfigurace dat modulu kontroleru |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>Indikátory LED pro modul Power chlazení (PCM)
 Indikátory LED na zadní straně primární skříně nebo skříně EBOD se v každém modulu PCM dají najít. Toto téma popisuje, jak pomocí následujících diod LED monitorovat stav zařízení StorSimple.  
@@ -91,7 +91,7 @@ Stav PCM je uveden na panelu indikátoru LED. Panel INDIKÁTORu PCM pro zaříze
 | Bez napájení z AC (do skříně) |OFF |OFF |OFF |OFF |
 | Žádný výkon střídavého napětí (jenom tento PCM) |OFF |ON |OFF |ON |
 | Vypněte modul PCM v systému – OK |ON |OFF |OFF |OFF |
-| Chyba PCM (ventilátor selže) |OFF |OFF |ON |– |
+| Chyba PCM (ventilátor selže) |OFF |OFF |ON |Není k dispozici |
 | Chyba PCM (přes amp, nad napětím, nad aktuální) |OFF |ON |ON |ON |
 | PCM (ventilátor je mimo toleranci) |ON |OFF |OFF |ON |
 | Pohotovostní režim |Blikající |OFF |OFF |OFF |
@@ -136,7 +136,7 @@ Následující obrázek vám pomůže identifikovat diody LED na primárním kon
 Pomocí následující tabulky určete, zda modul řadiče pracuje správně.  
 
 ### <a name="controller-indicator-leds"></a>Indikátory LED řadiče
-| POD | Popis |
+| POD | Description |
 | --- | --- |
 | ID – DIODa (modrá) |Indikuje, že se modul identifikuje. Pokud se indikátor Blue LED na spuštěném kontroleru zabliká, je řadič aktivní a druhý kontroler je pohotovostní. Další informace najdete v tématu [určení aktivního řadiče na zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | INDIKÁTOR chyby (žlutý) |Označuje chybu v kontroleru. |

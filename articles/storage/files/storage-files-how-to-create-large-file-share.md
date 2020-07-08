@@ -8,10 +8,10 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 427d936353b47e951f8faaf90483691bab856767
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85510723"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
@@ -34,7 +34,7 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V Azure Portal vyberte **všechny služby**. 
 1. V seznamu prostředků zadejte **účty úložiště**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **účty úložiště**.
 1. V okně **účty úložiště** , které se zobrazí, vyberte **Přidat**.

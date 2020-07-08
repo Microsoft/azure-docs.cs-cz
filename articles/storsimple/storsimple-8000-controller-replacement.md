@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 9d8b75c48da2bb13d843258ead378d3e849da951
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514082"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Výměna modulu Controller na zařízení StorSimple
@@ -90,7 +90,7 @@ Pokud jeden z řadičů v zařízení Microsoft Azure StorSimple neprojde, prove
    
     **Obrázek 1** Back-StorSimple zařízení
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -231,7 +231,7 @@ Pokud je tento indikátor LED blikat, je kontroler aktivní a druhý kontroler j
 
 **Obrázek 8** Back of the Primary skříň s datovými porty a monitorováním diody LED
 
-| Popisek | Popis |
+| Popisek | Description |
 |:--- |:--- |
 | 1-6 |DATA 0 – 5 síťových portů |
 | 7 |Indikátor Blue |

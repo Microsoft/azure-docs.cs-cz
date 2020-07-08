@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: b27cf605c978e15d81a43db3371a71b0ccc48c8d
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508916"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Zobrazení a správa svazků pomocí Snapshot Manager StorSimple
@@ -91,9 +91,9 @@ K zobrazení informací o místních a StorSimple svazcích Azure použijte nás
    
     ![Konfigurace sloupců](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | Sloupec výsledků | Popis |
+   | Sloupec výsledků | Description |
    |:--- |:--- |
-   |  Název |Sloupec **název** obsahuje písmeno jednotky přiřazené ke každému zjištěnému svazku. |
+   |  Name |Sloupec **název** obsahuje písmeno jednotky přiřazené ke každému zjištěnému svazku. |
    |  Zařízení |Sloupec **zařízení** obsahuje IP adresu zařízení, které je připojené k hostitelskému počítači. |
    |  Název svazku zařízení |Sloupec **název svazku zařízení** obsahuje název svazku zařízení, ke kterému patří vybraný svazek. Toto je název svazku definovaný v Azure Portal pro tento konkrétní svazek. |
    |  Přístup k cestám |Sloupec **přístupové cesty** zobrazuje cestu přístupu ke svazku. Toto je písmeno jednotky nebo přípojný bod, ve kterém je svazek přístupný na hostitelském počítači. |

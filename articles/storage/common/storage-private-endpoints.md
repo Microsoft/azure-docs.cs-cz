@@ -11,10 +11,10 @@ ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513275"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Použití privátních koncových bodů pro Azure Storage
@@ -79,7 +79,7 @@ Při překladu adresy URL koncového bodu úložiště mimo virtuální síť s 
 
 V zobrazeném příkladu se v záznamech o prostředcích DNS pro účet úložiště "StorageAccountA" po vyřešení mimo virtuální síť hostující soukromý koncový bod:
 
-| Název                                                  | Typ  | Hodnota                                                 |
+| Name                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
@@ -89,7 +89,7 @@ Jak už jsme uvedli, můžete odepřít nebo řídit přístup pro klienty mimo 
 
 Záznamy prostředků DNS pro StorageAccountA, když je klient ve virtuální síti hostující soukromý koncový bod, budou:
 
-| Název                                                  | Typ  | Hodnota                                                 |
+| Name                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | zákazníka 10.1.1.5                                              |

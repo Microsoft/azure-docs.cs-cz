@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511602"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na hostiteli StorSimple se systémem CentOS
@@ -413,7 +413,7 @@ A. Pokud chcete ověřit, jestli je zařízení na seznamu povolených, použijt
 Další informace najdete v postupu [při odstraňování více cest](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)na webu.
 
 ## <a name="list-of-useful-commands"></a>Seznam užitečných příkazů
-| Typ | Příkaz | Popis |
+| Typ | Příkaz | Description |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Spustit službu iSCSI |
 | &nbsp; |`service iscsid stop` |Zastavení služby iSCSI |
@@ -428,7 +428,7 @@ Další informace najdete v postupu [při odstraňování více cest](https://ac
 | **Používání více cest** |`service multipathd start` |Spustit proces Multipath |
 | &nbsp; |`service multipathd stop` |Zastavení procesu Multipath |
 | &nbsp; |`service multipathd restart` |Opětovné spuštění procesu Multipath |
-| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |Povolit spuštění procesu Multipath v době spuštění |
+| &nbsp; |`chkconfig multipathd on` </br> NEBO </br> `mpathconf -with_chkconfig y` |Povolit spuštění procesu Multipath v době spuštění |
 | &nbsp; |`multipathd -k` |Spustit interaktivní konzolu pro řešení potíží |
 | &nbsp; |`multipath -l` |Seznam připojení a zařízení se seznamem funkcí Multipath |
 | &nbsp; |`mpathconf --enable` |Vytvoření ukázkového souboru mulitpath. conf v`/etc/mulitpath.conf` |

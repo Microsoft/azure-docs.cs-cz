@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 93f484bd30de1ba0ca0f7aa5db263243bebc5b09
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85508805"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Kopírování dat z a do IBM Informix pomocí Azure Data Factory
@@ -59,7 +59,7 @@ Pro propojenou službu Informix jsou podporovány následující vlastnosti:
 | pověření | Část přístupového pověření v připojovacím řetězci, kterou jste zadali ve formátu hodnoty vlastnosti specifické pro ovladač. Označte toto pole jako SecureString. | No |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -123,9 +123,9 @@ Chcete-li kopírovat data z Informix, v části **zdroj** aktivity kopírování
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
 | typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **InformixSource** . | Yes |
-| query | Pomocí vlastního dotazu můžete číst data. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| query | Pomocí vlastního dotazu můžete číst data. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -168,7 +168,7 @@ Chcete-li kopírovat data do Informix, v části **jímka** aktivity kopírován
 | writeBatchSize |Když velikost vyrovnávací paměti dosáhne writeBatchSize, vloží data do tabulky SQL.<br/>Povolené hodnoty jsou: celé číslo (počet řádků). |Ne (výchozí hodnota je 0 – automaticky se zjistilo) |
 | preCopyScript |Zadejte dotaz SQL pro aktivitu kopírování, která má být provedena před zápisem dat do úložiště dat v každém spuštění. Tuto vlastnost můžete použít k vyčištění předem načtených dat. |No |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

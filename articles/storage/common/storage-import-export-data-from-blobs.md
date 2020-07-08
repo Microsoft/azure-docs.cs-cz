@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: c9ce265707743d98f6c93d3facca33e16d1b75ea
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513510"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Službu Azure Import/Export můžete použít k exportu dat z úložiště objektů blob v Azure.
@@ -155,7 +155,7 @@ Tento *volitelný* krok vám pomůže určit počet jednotek vyžadovaných pro 
 
     Parametry jsou popsány v následující tabulce:
 
-    |Parametr příkazového řádku|Popis|  
+    |Parametr příkazového řádku|Description|  
     |--------------------------|-----------------|  
     |**/logdir:**|Nepovinný parametr. Adresář protokolu. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud tento parametr nezadáte, použije se jako adresář protokolu aktuální adresář.|  
     |**SN**|Povinná hodnota. Název účtu úložiště pro úlohu exportu|  
@@ -209,7 +209,7 @@ Number of drives needed:        3
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Popis |
+   | Volič | Cesta objektu BLOB | Description |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |

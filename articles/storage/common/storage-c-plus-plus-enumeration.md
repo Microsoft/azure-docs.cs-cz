@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: 86fc63d8b0615423f4138ed1b09dc3a24d1e527e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514446"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Výpis prostředků Azure Storage v C++
@@ -34,7 +34,7 @@ Každá z těchto metod je zobrazena pomocí různých přetížení pro různé
 
 ## <a name="asynchronous-versus-synchronous"></a>Asynchronní versus synchronní
 
-Vzhledem k tomu, že klientská knihovna pro úložiště pro C++ je postavená na [knihovně REST jazyka c++](https://github.com/Microsoft/cpprestsdk), podstatně podporujeme asynchronní operace pomocí aplikace [PPLX:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Například:
+Vzhledem k tomu, že klientská knihovna pro úložiště pro C++ je postavená na [knihovně REST jazyka c++](https://github.com/Microsoft/cpprestsdk), podstatně podporujeme asynchronní operace pomocí aplikace [PPLX:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Příklad:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;

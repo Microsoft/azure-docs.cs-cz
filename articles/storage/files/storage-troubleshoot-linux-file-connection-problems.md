@@ -8,10 +8,10 @@ ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85512004"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
@@ -210,7 +210,7 @@ Příznak vynucení **f** ve výsledku příkazu COPYFILE spouští **CP-p-f** v
 
 ### <a name="workaround"></a>Alternativní řešení
 
-Pro kopírování souborů použijte uživatele účtu úložiště:
+Ke kopírování souborů použijte uživatele účtu úložiště:
 
 - `Useadd : [storage account name]`
 - `Passwd [storage account name]`
@@ -277,7 +277,7 @@ Tento problém s opětovným připojením v jádru Linuxu je teď opravený v r�
 
 - [Oprava opětovného připojení, aby se neodkládalo opětovné připojení k relaci protokolu SMB 3 dlouho po opětovném připojení k socketu](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/fs/cifs?id=4fcd1813e6404dd4420c7d12fb483f9320f0bf93)
 - [Volání služby Echo okamžitě po opětovném připojení k socketu](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=b8c600120fc87d53642476f48c8055b38d6e14c7)
-- [CIFS: Oprava možného poškození paměti během opětovného připojení](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
+- [CIFS: Oprava možného poškození paměti během opětovného připojování](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: Oprava možného dvojitého zamykání mutex během opětovného připojení (pro jádro v 4.9 a novější)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
 Tyto změny se však ještě nemusely přenést do všech distribucí Linuxu. Pokud používáte oblíbenou distribuci pro Linux, můžete se podívat na téma [použití souborů Azure se systémem Linux](storage-how-to-use-files-linux.md) k zobrazení, která verze distribuce má potřebné změny jádra.

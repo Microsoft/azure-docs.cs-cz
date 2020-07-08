@@ -9,15 +9,15 @@ ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513758"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Kopírování dat z Amazon S3 do Azure Storage pomocí AzCopy
 
-AzCopy je nástroj příkazového řádku, který můžete použít ke kopírování objektů BLOB nebo souborů do nebo z účtu úložiště. Tento článek vám pomůže s kopírováním objektů, adresářů a kontejnerů z Amazon Web Services (AWS) S3 do úložiště objektů BLOB v Azure pomocí AzCopy.
+AzCopy je nástroj příkazového řádku, pomocí kterého můžete kopírovat objekty blob nebo soubory do nebo z účtu úložiště. Tento článek vám pomůže s kopírováním objektů, adresářů a kontejnerů z Amazon Web Services (AWS) S3 do úložiště objektů BLOB v Azure pomocí AzCopy.
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>Vyberte způsob poskytování autorizačních přihlašovacích údajů.
 
@@ -34,7 +34,7 @@ Pokud si chcete stáhnout AzCopy, přečtěte si článek Začínáme [s AzCopy]
 >
 > Pokud místo toho chcete použít token SAS k autorizaci přístupu k datům objektu blob, můžete tento token připojit k adrese URL prostředku v každém příkazu AzCopy.
 >
-> Příklad: `https://mystorageaccount.blob.core.windows.net/mycontainer?<SAS-token>`.
+> Například: `https://mystorageaccount.blob.core.windows.net/mycontainer?<SAS-token>`.
 
 ### <a name="authorize-with-aws-s3"></a>Autorizace pomocí AWS S3
 
@@ -129,7 +129,7 @@ AWS S3 a Azure povolují v názvech klíčů objektů různé sady znaků. Můž
 
 Jako součást `copy` příkazu AzCopy můžete zadat hodnotu volitelného `s2s-invalid-metadata-handle` příznaku, který určuje, jak chcete zpracovat soubory, kde metadata souboru obsahují nekompatibilní názvy klíčů. V následující tabulce jsou popsány všechny hodnoty příznaků.
 
-| Hodnota příznaku | Popis  |
+| Hodnota příznaku | Description  |
 |--------|-----------|
 | **ExcludeIfInvalid** | (Výchozí možnost) Tato metadata nejsou obsažena v přenesených objektech. AzCopy zaznamená upozornění. |
 | **FailIfInvalid** | Objekty nejsou kopírovány. AzCopy zaznamená chybu a zahrne tuto chybu do neúspěšného počtu, který se zobrazí v souhrnu přenosu.  |

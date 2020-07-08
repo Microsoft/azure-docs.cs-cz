@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: 7027fe9988c0c559db72c3c388c7a579d533c57e
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509434"
 ---
 # <a name="monitor-azure-fxt-edge-filer-hardware-status"></a>Monitorovat stav hardwaru Azure FXT Edge souborového
@@ -60,7 +60,7 @@ Indikátory stavu na levé straně zobrazují plnou žlutou žlutou světlo, pok
 
 Pokud k této chybě došlo i po vyzkoušení těchto řešení, [požádejte](fxt-support-ticket.md) o pomoc podporu. 
 
-| Ikona | Popis | Chybový stav | Možná řešení |
+| Ikona | Description | Chybový stav | Možná řešení |
 |----------------|---------------|--------------------|----------------------|
 | ![ikona jednotky](media/fxt-monitor/fxt-hd-icon.jpg) | Stav jednotky | Chyba jednotky | Zkontrolujte protokol událostí systému, abyste zjistili, jestli má jednotka chybu, nebo <br>Spusťte příslušný test online diagnostiky. Restartujte systém a spusťte Embedded Diagnostics (ePSA), nebo <br>Pokud jsou jednotky nakonfigurované v poli RAID, restartujte systém a zadejte program pro konfiguraci hostitelského adaptéru. |
 |![ikona teploty](media/fxt-monitor/fxt-temp-icon.jpg) | Stav teploty | Tepelná chyba – například ventilátor se nezdařil nebo je okolní teplota mimo rozsah | Podívejte se na následující adresovatelné podmínky: <br>Chladicí ventilátor chybí nebo se nezdařil. <br>V systému se odeberou titulní stranu systému, modul Air Shroud, modul pro vyplňování paměti nebo zálomená závorka. <br>Okolní teplota je příliš vysoká. <br>Externí tok v toku je zablokován. |

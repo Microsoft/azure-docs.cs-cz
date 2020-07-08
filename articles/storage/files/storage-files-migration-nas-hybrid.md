@@ -8,10 +8,10 @@ ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: fd8e845734169bcd73fa0e087c30c0f2fd6ef4f6
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85510301"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrace z úložiště připojení k síti (NAS) do hybridního nasazení v cloudu pomocí Azure File Sync

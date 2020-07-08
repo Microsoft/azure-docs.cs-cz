@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
 ms.openlocfilehash: f2a514b6f44df7be15f18aa8f7c42668c872ab4a
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509689"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple jako cíl zálohování s Veeam
@@ -104,7 +104,7 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 | Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
-| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | –  |
+| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -319,7 +319,7 @@ Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 | Frekvence/typ zálohování | Do bloku | Přírůstkové (dny 1-5)  |   
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
-| Měsíčně  | Sobota  |   |
+| měsíčně  | Sobota  |   |
 | Roční | Sobota  |   |
 
 
@@ -399,7 +399,7 @@ GFS rotace týdně, měsíčně a ročního plánu
 | Týden 2 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
-| Měsíčně | StorSimple měsíčně |   |   |   |   |   |
+| měsíčně | StorSimple měsíčně |   |   |   |   |   |
 | Roční | StorSimple ročně  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Přiřazení svazků StorSimple k úloze kopírování Veeam
@@ -507,7 +507,7 @@ Havárie může být způsobeno nejrůznějšími faktory. V následující tabu
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte Veeam. | Nejprve obnovte StorSimple a pak obnovte Veeam. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 Následující dokumenty byly odkazovány na tento článek:
 

@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514222"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Použití služby Azure import/export k importu dat do Azure Blob Storage
@@ -77,7 +77,7 @@ K přípravě jednotek proveďte následující kroky.
 
     Použité parametry jsou popsány v následující tabulce:
 
-    |Možnost  |Popis  |
+    |Možnost  |Description  |
     |---------|---------|
     |/j     |Název souboru deníku s příponou. jrn. Vygeneruje se soubor deníku na jednotku. Doporučujeme použít sériové číslo disku jako název souboru deníku.         |
     |/ID     |ID relace Pro každou instanci příkazu použijte jedinečné číslo relace.      |

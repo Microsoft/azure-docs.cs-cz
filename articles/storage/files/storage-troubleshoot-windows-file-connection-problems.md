@@ -8,10 +8,10 @@ ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 89a5fa0be104c3a7b7e035f82d2fed80d4781701
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511988"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
@@ -99,16 +99,16 @@ Pokud připojení proběhne úspěšně, měl by se zobrazit následující výs
 ### <a name="solution-for-cause-1"></a>Řešení 1. příčiny
 
 #### <a name="solution-1---use-azure-file-sync"></a>1. řešení – Použití Synchronizace souborů Azure
-Azure File Sync může transformovat místní Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Azure File Sync funguje přes port 443 a je možné ho použít jako alternativní řešení pro přístup k souborům Azure z klientů, kteří mají blokované porty 445. [Naučte se, jak nastavit Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
+Azure File Sync může transformovat místní Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru, včetně SMB, NFS a FTPS. Synchronizace souborů Azure funguje na portu 443 a proto ji můžou používat klienti se zablokovaným portem 445 jako alternativní způsob přístupu ke službě Azure Files. [Naučte se, jak nastavit Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>2. řešení – Použití sítě VPN
-Když nastavíte síť VPN na konkrétní účet úložiště, přenos přes Internet prochází zabezpečeným tunelovým propojením na rozdíl od Internetu. Postupujte podle [pokynů pro nastavení sítě VPN](storage-files-configure-p2s-vpn-windows.md) pro přístup k souborům Azure ze systému Windows.
+Když nastavíte síť VPN na konkrétní účet úložiště, přenos přes Internet prochází zabezpečeným tunelovým propojením na rozdíl od Internetu. Pokud chcete získat přístup ke službě Azure Files z Windows, postupujte podle [pokynů k nastavení sítě VPN](storage-files-configure-p2s-vpn-windows.md).
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>3. řešení – Odblokování portu 445 s pomocí poskytovatele internetových služeb nebo správce IT
 Pracujte s vaším IT oddělením nebo poskytovatelem internetových služeb a otevřete port 445 odchozí do [rozsahů IP adres Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>4. řešení – Použití nástrojů založených na rozhraní REST API, jako jsou Průzkumník služby Storage nebo PowerShell
-Soubory Azure také kromě protokolu SMB podporují i REST. Přístup REST funguje přes port 443 (standard TCP). Existují různé nástroje, které jsou napsané pomocí REST API, které umožňují používání uživatelského rozhraní s bohatou funkcí. [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) je jeden z nich. [Stáhněte a nainstalujte Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) a připojte se ke sdílené složce, kterou zálohuje soubory Azure. Můžete také použít [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) , který také REST API uživatel.
+Soubory Azure také kromě protokolu SMB podporují i REST. Přístup přes rozhraní REST funguje na portu 443 (standardní port TCP). Rozhraní REST API využívají různé nástroje, které nabízejí bohaté uživatelské rozhraní. [Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) je jeden z nich. [Stáhněte a nainstalujte si Průzkumníka služby Storage](https://azure.microsoft.com/features/storage-explorer/) a připojte se ke své sdílené složce využívající službu Azure Files. Můžete také použít [PowerShell](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-powershell) , který také REST API uživatel.
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>Příčina 2: ověřovací NTLMv1 je povolená.
 
@@ -276,7 +276,7 @@ K tomuto problému může dojít, pokud používáte systém souborů EFS (Encry
 Chcete-li zkopírovat soubor přes síť, je nutné jej nejprve dešifrovat. Použijte jednu z následujících metod:
 
 - Použijte příkaz **Kopírovat/d** . Povoluje ukládání šifrovaných souborů v cílovém umístění jako dešifrovaných souborů.
-- Nastavte následující klíč registru:
+- Nastavíte následující klíč registru:
   - Cesta = HKLM\Software\Policies\Microsoft\Windows\System
   - Typ hodnoty = DWORD
   - Název = CopyFileAllowDecryptedRemoteDestination

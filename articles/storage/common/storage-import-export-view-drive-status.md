@@ -9,10 +9,10 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514133"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazení stavu úloh služby Azure Import/Export
@@ -28,7 +28,7 @@ Stav úloh importu nebo exportu můžete sledovat z Azure Portal. Klikněte na k
 
 V závislosti na tom, kde se jednotka právě nachází, se zobrazí jedna z následujících stavů úlohy.
 
-| Stav úlohy | Popis |
+| Stav úlohy | Description |
 |:--- |:--- |
 | Vytváření | Po vytvoření úlohy se její stav nastaví na **vytvořit**. Když je úloha ve stavu **vytváření** , služba import/export předpokládá, že se jednotky nedodaly do datového centra. Úloha může zůstat v tomto stavu po dobu až dvou týdnů, po jejímž uplynutí je služba automaticky odstranila. |
 | Shipping | Po odeslání balíčku byste měli aktualizovat informace o sledování v Azure Portal.  Tím se úloha přepíná do stavu **expedice** . Úloha zůstane ve stavu **expedice** po dobu až dvou týdnů. 
@@ -44,7 +44,7 @@ Následující tabulka popisuje životní cyklus jednotlivé jednotky při přec
 
 V následující tabulce jsou popsány všechny stavy, které mohou jednotlivé jednotky v úloze Procházet.
 
-| Stav jednotky | Popis |
+| Stav jednotky | Description |
 |:--- |:--- |
 | Dané | Při vytvoření úlohy z Azure Portal se pro úlohu importu **zadá**počáteční stav jednotky. V případě úlohy exportu, protože při vytvoření úlohy není zadána žádná jednotka, je **přijat**počáteční stav jednotky. |
 | Přijato | Pokud služba import/export zpracovává jednotky, které byly přijaty od společnosti pro expedici pro úlohu importu, přejde do stavu **přijato** . V případě úlohy exportu je počáteční stav jednotky stav **přijato** . |
@@ -63,7 +63,7 @@ Následující tabulka popisuje stavy selhání jednotek a akce prováděné pro
 | Stav jednotky | Událost | Řešení/další krok |
 |:--- |:--- |:--- |
 | NeverReceived | Jednotka, která je označena jako **NeverReceived** (protože nebyla přijata jako součást dodávky úlohy), dorazí do jiné dodávky. | Provozní tým přesune jednotku k **přijetí**. |
-| – | Jednotka, která není součástí žádné úlohy, přijde v datovém centru jako součást jiné úlohy. | Jednotka je označena jako dodatečná jednotka a při dokončení úlohy přidružené k původnímu balíčku se vám vrátí. |
+| Není k dispozici | Jednotka, která není součástí žádné úlohy, přijde v datovém centru jako součást jiné úlohy. | Jednotka je označena jako dodatečná jednotka a při dokončení úlohy přidružené k původnímu balíčku se vám vrátí. |
 
 ## <a name="time-to-process-job"></a>Čas zpracování úlohy
 Doba potřebná ke zpracování úlohy importu/exportu se liší v závislosti na mnoha faktorech, jako například:

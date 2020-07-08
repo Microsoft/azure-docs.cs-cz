@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85510910"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Storage Gen1
@@ -42,7 +42,7 @@ Upravte toto číslo na základě toho, kolik paměti je potřeba pro mapu nebo 
 
 Určuje maximální počet mapovačů nebo reduktorůů, které se mají vytvořit. Počet rozdělení určuje, kolik mapovačů se má pro úlohu MapReduce vytvořit. Proto můžete získat méně mapovačů, než kolik jich požadujete, pokud je menší počet rozdělení, než je počet požadovaných mapovačů.
 
-## <a name="guidance"></a>Doprovodné materiály
+## <a name="guidance"></a>Pokyny
 
 ### <a name="step-1-determine-number-of-jobs-running"></a>Krok 1: určení počtu spuštěných úloh
 

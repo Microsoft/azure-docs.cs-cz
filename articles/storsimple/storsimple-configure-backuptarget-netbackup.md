@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 87885d9b476582fcce53b8b960d24093693af4ec
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509383"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple jako cíl zálohování s NetBackup
@@ -102,7 +102,7 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 | Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
-| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | –  |
+| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -303,7 +303,7 @@ Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 | Frekvence/typ zálohování | Do bloku | Přírůstkové (dny 1-5)  |   
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
-| Měsíčně  | Sobota  |   |
+| měsíčně  | Sobota  |   |
 | Roční | Sobota  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Přiřazení svazků StorSimple k úloze zálohování NetBackup
@@ -414,7 +414,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 | Týden 2 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
-| Měsíčně | StorSimple měsíčně |   |   |   |   |   |
+| měsíčně | StorSimple měsíčně |   |   |   |   |   |
 | Roční | StorSimple ročně  |   |   |   |   |   |
 
 

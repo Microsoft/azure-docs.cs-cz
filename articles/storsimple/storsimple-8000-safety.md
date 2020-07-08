@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
 ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85514531"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Bezpečné instalace a obsluha zařízení StorSimple
@@ -30,7 +30,7 @@ Přečtěte si veškeré informace o bezpečnosti a stavu v tomto článku, kter
 ## <a name="safety-icon-conventions"></a>Bezpečnostní konvence ikon
 Tady jsou ikony, které najdete, když provedete kontrolu bezpečnostních opatření, která se mají pozorovat při nastavování a spouštění zařízení Microsoft Azure StorSimple.
 
-| Ikona | Popis |
+| Ikona | Description |
 |:--- |:--- |
 | ![](./media/storsimple-safety/IC740879.png) **Nebezpečí** ikony nebezpečí |Označuje nebezpečnou situaci, která, pokud se nevyhne, má za následek smrt nebo vážnou škodu. Toto slovo signálu se bude omezovat na nejvíce extrémních situací. |
 | ![Upozornění na ikonu upozornění ](./media/storsimple-safety/IC740879.png) **!** |Označuje nebezpečnou situaci, že pokud se nevyhnete, může dojít k úmrtí nebo závažné újmě. |

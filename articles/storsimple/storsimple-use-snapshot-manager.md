@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
 ms.openlocfilehash: 1706ae4005c337fdffb45683133e5682a56a0de5
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513735"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Použití uživatelského rozhraní StorSimple Snapshot Manager ke správě úloh zálohování a katalogu záloh
@@ -67,7 +67,7 @@ Chcete-li zobrazit nabídku **soubor** , klikněte na položku **soubor** na pan
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce **soubor** .
 
-| Položka nabídky | Popis |
+| Položka nabídky | Description |
 |:--- |:--- |
 | Nová |Kliknutím na **Nový** vytvořte novou konzolu založenou na StorSimple Snapshot Manager. |
 | Otevřít |Kliknutím na **otevřít** otevřete existující konzolu. |
@@ -107,7 +107,7 @@ Následující tabulka obsahuje abecední seznam akcí StorSimple Snapshot Manag
 > 
 > 
 
-| Akce | Navigace | Popis |
+| Akce | Navigace | Description |
 |:--- |:--- |:--- |
 | Ověření |Klikněte na uzel **zařízení** a v podokně **výsledků** klikněte pravým tlačítkem na zařízení. |Kliknutím na **ověřit** zadejte heslo, které jste nakonfigurovali pro zařízení. |
 | Klonování |Rozbalte **Katalog zálohování**, rozbalte **cloudové snímky**, klikněte na zálohu s datem a potom v podokně **výsledků** vyberte svazek. |Kliknutím na **klonovat** vytvořte kopii snímku cloudu a uložte ji do umístění, které určíte. |
@@ -118,7 +118,7 @@ Následující tabulka obsahuje abecední seznam akcí StorSimple Snapshot Manag
 | Podrobnosti |Klikněte na uzel **zařízení** a potom v podokně **výsledků** klikněte pravým tlačítkem na zařízení. |Kliknutím na **Podrobnosti** zobrazíte podrobnosti o konfiguraci zařízení. |
 | Upravit |Klikněte na **zásady zálohování**a potom v podokně **výsledků** klikněte pravým tlačítkem na zásadu. |Klikněte na **Upravit** a změňte plán zálohování pro skupinu svazků. |
 | Exportovat seznam |Klikněte na libovolný uzel nebo výsledek (Tato položka se zobrazí v podoknech všechny **Akce** a **Akce** ). |Kliknutím na **Exportovat seznam** uložte seznam do souboru s hodnotami oddělenými čárkou (CSV). Tento soubor pak můžete importovat do aplikace v tabulce pro účely analýzy. |
-| Help |Klikněte na libovolný uzel nebo výsledek. (Tato položka se zobrazí v podoknech všechny **Akce** **a akce.** ) |Kliknutím na tlačítko **Zobrazit** otevřete online nápovědě v samostatném okně prohlížeče. |
+| Nápověda |Klikněte na libovolný uzel nebo výsledek. (Tato položka se zobrazí v podoknech všechny **Akce** **a akce.** ) |Kliknutím na tlačítko **Zobrazit** otevřete online nápovědě v samostatném okně prohlížeče. |
 | New Window from Here |Klikněte na libovolný uzel nebo výsledek (Tato položka se zobrazí v podoknech všechny **Akce** a **Akce** ). |Kliknutím na **nové okno z tohoto místa** otevřete nové okno StorSimple Snapshot Manager. |
 | Aktualizovat |Klikněte na libovolný uzel nebo výsledek (Tato položka se zobrazí v podoknech všechny **Akce** a **Akce** ). |Kliknutím na **aktualizovat** aktualizujte aktuálně zobrazené Snapshot Manager okno StorSimple. |
 | Aktualizovat zařízení |Klikněte na uzel **zařízení** a v podokně **výsledků** klikněte pravým tlačítkem na zařízení. |Kliknutím na **aktualizovat zařízení** synchronizujete konkrétní připojené zařízení s Snapshot Manager StorSimple. |
@@ -139,7 +139,7 @@ K nabídce **zobrazení** můžete získat přístup na panelu nabídek nebo v p
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce **zobrazení** .
 
-| Položka nabídky | Popis |
+| Položka nabídky | Description |
 |:--- |:--- |
 | Přidat či odebrat sloupce |Kliknutím na **Přidat nebo odebrat sloupce** přidejte nebo odeberte sloupce v podokně **výsledků** . |
 | Přizpůsobení |Kliknutím na **přizpůsobit** zobrazíte nebo skryjete položky v okně konzoly StorSimple Snapshot Manager. |
@@ -155,7 +155,7 @@ K nabídce **Oblíbené položky** můžete získat přístup v řádku nabídek
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce **Oblíbené** .
 
-| Položka nabídky | Popis |
+| Položka nabídky | Description |
 |:--- |:--- |
 | Add to Favorites |Kliknutím na tlačítko **Přidat k oblíbeným položkám** přidáte aktuální zobrazení do seznamu oblíbených položek. |
 | Uspořádat oblíbené položky |Kliknutím na **Uspořádat oblíbené položky** uspořádáte obsah složky Oblíbené položky. |
@@ -173,7 +173,7 @@ Přístup k nabídce **okna** můžete získat z panelu nabídek.
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce okna.
 
-| Položka nabídky | Popis |
+| Položka nabídky | Description |
 |:--- |:--- |
 | Nové okno |Kliknutím na **nové okno** otevřete nové okno konzoly (kromě stávajícího okna). |
 | Nášejí |Kliknutím na tlačítko **kaskády** zobrazíte otevřená okna konzoly v Kaskádovém stylu. |
@@ -190,7 +190,7 @@ K nabídce **help** můžete získat přístup na řádku nabídek. Témata náp
 #### <a name="menu-description"></a>Popis nabídky
 Následující tabulka popisuje položky, které se zobrazí v nabídce Help.
 
-| Položka nabídky | Popis |
+| Položka nabídky | Description |
 |:--- |:--- |
 | Help Snapshot Manager StorSimple |Kliknutím na tlačítko **help on StorSimple Snapshot Manager** otevřete Snapshot Manager nápovědě k StorSimple v samostatném okně. |
 | Témata nápovědy |Kliknutím na **témata nápovědy** otevřete MMC online nápovědu v samostatném okně. |
@@ -204,7 +204,7 @@ Panel nástrojů umístěný pod řádkem nabídek obsahuje ikony navigace a úk
 ### <a name="icon-descriptions"></a>Popisy ikon
 Následující tabulka popisuje ikony, které se zobrazí na panelu nástrojů. 
 
-| Ikona | Popis |
+| Ikona | Description |
 |:--- |:--- |
 | ![Šipka vlevo](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |Kliknutím na ikonu se šipkou doleva se vrátíte na předchozí stránku. |
 | ![Šipka vpravo](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |Kliknutím na šipku doprava přejdete na další stránku (Pokud je šipka šedá, akce není k dispozici). |

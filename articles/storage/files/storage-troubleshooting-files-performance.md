@@ -8,10 +8,10 @@ ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
 ms.openlocfilehash: 64c7e56f14fb06e7b211954eb93e4858563a8f08
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85511949"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
@@ -26,7 +26,7 @@ Výchozí kvótou pro sdílenou složku Premium je 100 GiB, která poskytuje 100
 
 Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využít metriky Azure na portálu.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. Vyberte **všechny služby** a pak vyhledejte **metriky**.
 

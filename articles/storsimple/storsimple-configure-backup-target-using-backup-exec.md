@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 699df6ab44a08645c9f46e95cd2ad279de75ea70
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85509655"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple jako cíl zálohování pomocí Backup Exec
@@ -102,7 +102,7 @@ V následujících tabulkách jsou uvedeny úvodní pokyny k modelům zařízen�
 | Scénář zálohování  | Kapacita místního úložiště  | Kapacita cloudového úložiště  |
 |---|---|---|
 | Primární záloha  | Poslední zálohy uložené v místním úložišti pro rychlé obnovení, aby splňovaly cíl bodu obnovení (RPO) | Historie zálohování (RPO) se vejde do kapacity cloudu |
-| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | –  |
+| Sekundární zálohování | Sekundární kopie zálohovaných dat se dá ukládat do kapacity cloudu.  | Není k dispozici  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple jako primární cíl zálohování
 
@@ -313,7 +313,7 @@ Tady je příklad plánu GFS rotace na čtyři týdny, měsíčně a ročně:
 | Frekvence/typ zálohování | Do bloku | Přírůstkové (dny 1-5)  |   
 |---|---|---|
 | Týdně (týdny 1-4) | Sobota | Pondělí – pátek |
-| Měsíčně  | Sobota  |   |
+| měsíčně  | Sobota  |   |
 | Roční | Sobota  |   |
 
 
@@ -387,7 +387,7 @@ Následující tabulka ukazuje, jak nastavit zálohování pro spouštění na m
 | Týden 2 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 3 | StorSimple týdny 2-4 |   |   |   |   |   |
 | Týden 4 | StorSimple týdny 2-4 |   |   |   |   |   |
-| Měsíčně | StorSimple měsíčně |   |   |   |   |   |
+| měsíčně | StorSimple měsíčně |   |   |   |   |   |
 | Roční | StorSimple ročně  |   |   |   |   |   |
 
 
@@ -478,7 +478,7 @@ Havárie může být způsobeno nejrůznějšími faktory. V následující tabu
 | Selhání serveru Backup Exec | Operace zálohování a obnovení jsou přerušeny. | Znovu sestavte záložní server a proveďte obnovení databáze podle podrobných postupů v tématu [Postup ručního zálohování a obnovení databáze Backup Exec (BEDB)](http://www.veritas.com/docs/000041083). | Na serveru pro zotavení po havárii je nutné znovu sestavit nebo obnovit Server Backup Exec. Obnovte databázi do nejnovějšího bodu. Pokud obnovená databáze Backup Exec není synchronizovaná s vašimi nejnovějšími úlohami zálohování, je nutné indexování a vytváření katalogu. Tento index a proces opětovného prohledání katalogu může způsobit, že se všechny zálohovací sklady prohledají a nastavují z vrstvy cloudu na úroveň místního zařízení. Díky tomu je tato operace časově náročná. |
 | Selhání lokality, které vede ke ztrátě záložního serveru i StorSimple | Operace zálohování a obnovení jsou přerušeny. | Nejprve obnovte StorSimple a pak obnovte zálohovací Exec. | Nejprve obnovte StorSimple a pak obnovte zálohovací Exec. Pokud po obnovení zařízení potřebujete provést obnovení, všechny pracovní sady dat se z cloudu načtou do nového zařízení. Všechny operace jsou v cloudových rychlostech. |
 
-## <a name="references"></a>Reference
+## <a name="references"></a>Odkazy
 
 Následující dokumenty byly odkazovány na tento článek:
 
