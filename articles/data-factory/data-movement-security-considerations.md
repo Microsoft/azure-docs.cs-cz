@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
 ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84019975"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Otázky zabezpečení při přesunu dat v Azure Data Factory
@@ -139,9 +138,9 @@ Následující tabulka shrnuje doporučení konfigurace sítě a místního pros
 
 | Zdroj      | Cíl                              | Konfigurace sítě                    | Instalace prostředí Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah)           | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
-| Lokálně | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (partnerský vztah Microsoftu)            | Místní prostředí Integration runtime se dá nainstalovat místně nebo na virtuální počítač Azure. |
+| Místní | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
+| Místní | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah)           | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
+| Místní | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (partnerský vztah Microsoftu)            | Místní prostředí Integration runtime se dá nainstalovat místně nebo na virtuální počítač Azure. |
 
 Následující obrázky ukazují použití prostředí Integration runtime v místním prostředí pro přesun dat mezi místní databází a službami Azure pomocí ExpressRoute a IPSec VPN (s využitím Azure Virtual Network):
 
@@ -194,7 +193,7 @@ Následující cloudová úložiště dat vyžadují, abyste povolili IP adresu 
 
 **Je možné místní prostředí Integration runtime sdílet mezi různými datovými továrnami?**
 
-Yes. Další podrobnosti najdete [tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
+Ano. Další podrobnosti najdete [tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
 
 **Jaké jsou požadavky na porty pro fungování prostředí Integration runtime v místním prostředí?**
 

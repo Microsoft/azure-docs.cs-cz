@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/25/2019
 ms.openlocfilehash: a5c09ef5ca1e3a4f47c4fd9d7d022c000378a6d3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84046366"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-or-sql-managed-instance-flat-files"></a>Načtení dat z CSV do Azure SQL Database nebo spravované instance SQL (ploché soubory)
@@ -23,7 +22,7 @@ ms.locfileid: "84046366"
 
 K importu dat ze souboru CSV do Azure SQL Database nebo spravované instance Azure SQL můžete použít nástroj příkazového řádku BCP.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 ### <a name="prerequisites"></a>Požadavky
 

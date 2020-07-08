@@ -16,10 +16,9 @@ ms.date: 05/26/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6415214e5d6b71d174e5117c1cf1e41af381334c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84013558"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
@@ -176,7 +175,7 @@ V tomto kroku udělíte skupině zabezpečení oprávnění zásady zabezpečen�
      >[!div class="mx-imgBorder"]
      >![Zásady zabezpečení domény](./media/workday-inbound-tutorial/wd_isu_08.png "Zásady zabezpečení domény") 
 
-     Klikněte na tlačítko **OK**.
+     Klikněte na **OK**.
 
 3. V sestavě, která se zobrazí, vyberte tři tečky (...), které se zobrazí vedle **zřizování externího účtu** , a klikněte na možnost nabídky **doména-> upravit oprávnění zásady zabezpečení** .
    >[!div class="mx-imgBorder"]
@@ -397,7 +396,7 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
      |------------|----------------------|------------------------|
      | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ano |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Pokud v adrese URL nejsou zadané žádné informace o verzi, aplikace používá WWS (Workday Web Services) v 21.1 a pro výchozí výrazy rozhraní API XPATH dodávané s aplikací se nevyžadují žádné změny. Pokud chcete použít konkrétní verzi rozhraní WWS API, zadejte v adrese URL číslo verze. <br>
@@ -511,7 +510,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 | **BusinessTitle**   |  title     |     |  Vytvořit a aktualizovat | 
 | **AddressLineData**    |  streetAddress  |     |   Vytvořit a aktualizovat |
 | **Úřad**   |   l   |     | Vytvořit a aktualizovat |
-| **CountryReferenceTwoLetter**      |   společném |     |   Vytvořit a aktualizovat |
+| **CountryReferenceTwoLetter**      |   co |     |   Vytvořit a aktualizovat |
 | **CountryReferenceTwoLetter**    |  c  |     |         Vytvořit a aktualizovat |
 | **CountryRegionReference** |  st     |     | Vytvořit a aktualizovat |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  Vytvořit a aktualizovat |
@@ -668,7 +667,7 @@ Během konfigurace se agent zřizování vyzve k zadání přihlašovacích úda
 #### <a name="how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication"></a>Návody nakonfigurovat agenta zřizování pro použití proxy server pro odchozí komunikaci HTTP?
 
 Agent zřizování podporuje použití odchozího proxy serveru. Můžete ji nakonfigurovat úpravou konfiguračního souboru agenta **C:\Program Files\Microsoft Azure AD Connect zřizování Agent\AADConnectProvisioningAgent.exe.config**. Do sebe přidejte následující řádky, a to na konec souboru těsně před uzavírací `</configuration>` značku.
-Nahraďte proměnné [proxy-server] a [proxy-port] svým názvem proxy server a hodnotami portů.
+Nahraďte proměnné [proxy-server] a [proxy-port] hodnotami názvu a portu vašeho proxy serveru.
 
 ```xml
     <system.net>

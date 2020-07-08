@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Popisuje, jak nastavovat cluster služby Azure Kubernetes pro Azure Dev Spaces funguje.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995883"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Jak nastavovat cluster pro Azure Dev Spaces funguje

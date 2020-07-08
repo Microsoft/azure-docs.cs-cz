@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84016844"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
@@ -60,7 +59,7 @@ U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Applica
 ## <a name="faq"></a>Nejčastější dotazy
 
 * *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
-  * No. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](../../azure-monitor/app/data-retention-privacy.md).
+  * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](../../azure-monitor/app/data-retention-privacy.md).
 * *Analyzujete všechna data shromažďovaná v Application Insights?*
   * V současné době není k dispozici. V současné době analyzujeme dobu odezvy požadavku, dobu odezvy závislosti a dobu načítání stránky. Analýza dalších metrik je na našich nevyřízených položkách, které jsou vyhledány.
 
@@ -76,7 +75,7 @@ U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Applica
 
   * Analýzy provedeme denně na telemetrie z předchozího dne (celý den v časovém pásmu UTC).
 * *To znamená, že tyto [výstrahy metriky](/azure/azure-monitor/platform/alerts-log)nahrazují?*
-  * No.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
+  * Ne.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
 
 
 * *Pokud v reakci na oznámení něco neudělám, zobrazí se vám připomenutí?*

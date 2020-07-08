@@ -15,10 +15,9 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84041810"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>Kurz: Konfigurace zřizování uživatelů v Workday na Azure AD
@@ -121,7 +120,7 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
      |------------|----------------------|------------------------|
      | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ano |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
 
       > [!NOTE]
      > Pokud v adrese URL nejsou zadané žádné informace o verzi, aplikace používá WWS (Workday Web Services) v 21.1 a pro výchozí výrazy rozhraní API XPATH dodávané s aplikací se nevyžadují žádné změny. Pokud chcete použít konkrétní verzi rozhraní WWS API, zadejte v adrese URL číslo verze. <br>

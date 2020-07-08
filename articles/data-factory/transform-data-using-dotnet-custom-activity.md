@@ -10,11 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 98f0eb89893ff7394390d2fc1fc77497f1bf948d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84019958"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
@@ -35,7 +34,7 @@ Chcete-li přesunout data do nebo z úložiště dat, které Data Factory nepodp
 
 Pokud Azure Batch službu nepoužíváte, přečtěte si následující články:
 
-* [Azure Batch základy](../azure-sql/database/sql-database-paas-overview.md) pro přehled služby Azure Batch.
+* [Azure Batch základy](../batch/batch-technical-overview.md) pro přehled služby Azure Batch.
 * Rutina [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) pro vytvoření účtu Azure Batch (nebo) [Azure Portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí Azure Portal. Podrobné pokyny k používání rutiny najdete v článku [použití PowerShellu ke správě Azure Batch účtu](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) .
 * Rutina [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) pro vytvoření fondu Azure Batch.
 
@@ -96,22 +95,22 @@ Následující fragment kódu JSON definuje kanál s jednoduchou vlastní aktivi
 }
 ```
 
-V této ukázce je soubor HelloWorld. exe vlastní aplikací uloženou ve složce customactv2/HelloWorld účtu Azure Storage, který se používá v resourceLinkedService. Vlastní aktivita odesílá tuto vlastní aplikaci k provedení Azure Batch. Příkaz můžete nahradit pro libovolnou upřednostňovanou aplikaci, kterou lze spustit v cílovém operačním systému uzlů Azure Batchch fondů.
+V této ukázce je helloworld.exe vlastní aplikací uloženou ve složce customactv2/HelloWorld účtu Azure Storage, který se používá v resourceLinkedService. Vlastní aktivita odesílá tuto vlastní aplikaci k provedení Azure Batch. Příkaz můžete nahradit pro libovolnou upřednostňovanou aplikaci, kterou lze spustit v cílovém operačním systému uzlů Azure Batchch fondů.
 
 V následující tabulce jsou popsány názvy a popisy vlastností, které jsou specifické pro tuto aktivitu.
 
-| Vlastnost              | Description                              | Vyžadováno |
+| Vlastnost              | Popis                              | Vyžadováno |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | Název aktivity v kanálu     | Ano      |
-| description           | Text popisující, co aktivita dělá.  | Ne       |
-| typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Ano      |
-| linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Ano      |
-| command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz `cmd /c dir` , který bude nativně podporován uzlem fondu služby Batch systému Windows. | Ano      |
+| name                  | Název aktivity v kanálu     | Yes      |
+| description           | Text popisující, co aktivita dělá.  | No       |
+| typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Yes      |
+| linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Yes      |
+| command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz `cmd /c dir` , který bude nativně podporován uzlem fondu služby Batch systému Windows. | Yes      |
 | resourceLinkedService | Azure Storage propojených služeb k účtu úložiště, ve kterém je vlastní aplikace uložená. | Bez &#42;       |
 | folderPath            | Cesta ke složce vlastní aplikace a všech jejích závislostí<br/><br/>Pokud máte závislosti uložené v podsložkách – to znamená, že v hierarchické struktuře složek pod *FolderPath* – struktura složek se v současnosti při kopírování souborů do Azure Batch nesloučí. To znamená, že všechny soubory se zkopírují do jediné složky bez podsložek. Chcete-li toto chování obejít, zvažte komprimaci souborů, kopírování komprimovaného souboru a jeho rozzipovává pomocí vlastního kódu v požadovaném umístění. | Bez &#42;       |
-| referenceObjects      | Pole existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON, aby váš vlastní kód mohl odkazovat na prostředky Data Factory | Ne       |
-| extendedProperties    | Uživatelsky definované vlastnosti, které se dají předat vlastní aplikaci ve formátu JSON, aby váš vlastní kód mohl odkazovat na další vlastnosti | Ne       |
-| retentionTimeInDays | Doba uchování souborů odeslaných pro vlastní aktivitu. Výchozí hodnota je 30 dní. | Ne |
+| referenceObjects      | Pole existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON, aby váš vlastní kód mohl odkazovat na prostředky Data Factory | No       |
+| extendedProperties    | Uživatelsky definované vlastnosti, které se dají předat vlastní aplikaci ve formátu JSON, aby váš vlastní kód mohl odkazovat na další vlastnosti | No       |
+| retentionTimeInDays | Doba uchování souborů odeslaných pro vlastní aktivitu. Výchozí hodnota je 30 dní. | No |
 
 &#42; vlastnosti `resourceLinkedService` a `folderPath` musí být buď zadány, nebo musí být obě vynechány.
 
@@ -190,7 +189,7 @@ Tento příklad ukazuje, jak můžete použít referenceObjects a extendedProper
 }
 ```
 
-Po spuštění aktivity jsou referenceObjects a extendedProperties uloženy v následujících souborech, které jsou nasazeny do stejné spouštěcí složky souboru dotazů. exe:
+Po spuštění aktivity jsou referenceObjects a extendedProperties uloženy v následujících souborech, které jsou nasazeny do stejné spouštěcí složky SampleApp.exe:
 
 - `activity.json`
 
@@ -204,7 +203,7 @@ Po spuštění aktivity jsou referenceObjects a extendedProperties uloženy v n�
 
   Ukládá pole datových sad definovaných ve vlastnosti referenceObjects.
 
-Následující vzorový kód ukazuje, jak může dotazů. exe získat přístup k požadovaným informacím ze souborů JSON:
+Následující vzorový kód ukazuje, jak SampleApp.exe získat přístup k požadovaným informacím ze souborů JSON:
 
 ```csharp
 using Newtonsoft.Json;
@@ -298,10 +297,10 @@ Activity Error section:
 "target": "MyCustomActivity"
 ```
 
-Pokud chcete spotřebovat obsah STDOUT. txt v podřízených aktivitách, můžete získat cestu k souboru STDOUT. txt ve výrazu " \@ Activity (' MyCustomActivity '). Output. Outputs [0]".
+Pokud chcete využívat obsah stdout.txt v rámci navazujících aktivit, můžete získat cestu k souboru stdout.txt ve výrazu " \@ Activity (' MyCustomActivity '). Output. Outputs [0]".
 
 > [!IMPORTANT]
-> - Soubory Activity. JSON, linkedServices. JSON a DataSets. JSON jsou uloženy ve složce runtime dávkové úlohy. V tomto příkladu jsou aktivity Activity. JSON, linkedServices. JSON a DataSets. JSON uložené v `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` cestě. V případě potřeby je potřeba je vyčistit samostatně.
+> - activity.json, linkedServices.json a datasets.json, se ukládají do složky runtime dávkové úlohy. V tomto příkladu jsou uloženy v cestě activity.json, linkedServices.json a datasets.json `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` . V případě potřeby je potřeba je vyčistit samostatně.
 > - U propojených služeb, které používají Integration Runtime v místním prostředí, jsou citlivé informace, jako jsou klíče nebo hesla, zašifrované pomocí samoobslužného Integration Runtime, aby bylo zajištěno, že přihlašovací údaje zůstanou v prostředí privátní sítě definované zákazníkem. Některá citlivá pole by mohla chybět, když na ni odkazuje vlastní kód aplikace tímto způsobem. V případě potřeby použijte v extendedProperties místo použití odkazu na propojenou službu SecureString.
 
 ## <a name="pass-outputs-to-another-activity"></a>Předání výstupů jiné aktivitě
@@ -331,7 +330,7 @@ V Azure Data Factory verze 1 implementujete (vlastní) aktivitu DotNet tím, že
 
 V rámci vlastní aktivity Azure Data Factory v2 není nutné implementovat rozhraní .NET. Nyní můžete přímo spouštět příkazy, skripty a vlastní kód, kompilovány jako spustitelný soubor. Chcete-li konfigurovat tuto implementaci, určete `Command` vlastnost spolu s `folderPath` vlastností. Vlastní aktivita nahraje spustitelný soubor a jeho závislosti do `folderpath` a provede příkaz za vás.
 
-Propojené služby, datové sady (definované v referenceObjects) a rozšířené vlastnosti definované v datové části JSON vlastní aktivity služby Data Factory v2 jsou k dispozici ve spustitelném souboru jako soubory JSON. K požadovaným vlastnostem můžete přistupovat pomocí serializátoru JSON, jak je znázorněno v předchozím příkladu kódu dotazů. exe.
+Propojené služby, datové sady (definované v referenceObjects) a rozšířené vlastnosti definované v datové části JSON vlastní aktivity služby Data Factory v2 jsou k dispozici ve spustitelném souboru jako soubory JSON. K požadovaným vlastnostem můžete přistupovat pomocí serializátoru JSON, jak je znázorněno v předchozím příkladu kódu SampleApp.exe.
 
 Změny zavedené ve vlastní aktivitě Data Factory v2 vám umožní napsat vlastní logiku kódu v preferovaném jazyce a spustit ji v operačních systémech Windows a Linux podporovaných Azure Batch.
 
@@ -344,15 +343,15 @@ Následující tabulka popisuje rozdíly mezi vlastní aktivitou Data Factory v2
 |Spouštění skriptů      |Podporuje spouštěné skripty přímo (například "cmd/c echo Hello World" na virtuálním počítači s Windows).      |Vyžaduje implementaci v knihovně DLL .NET.      |
 |Požadovaná datová sada      |Volitelné      |Požadováno pro řetězení aktivit a předávání informací      |
 |Předání informací z aktivity do vlastní logiky      |Prostřednictvím ReferenceObjects (LinkedServices a datových sad) a ExtendedProperties (vlastní vlastnosti)      |Prostřednictvím ExtendedProperties (vlastní vlastnosti), vstupních a výstupních datových sad      |
-|Načtení informací v vlastní logice      |Analyzuje soubor Activity. JSON, linkedServices. JSON a DataSets. JSON uložený ve stejné složce spustitelného souboru.      |Přes .NET SDK (.NET Frame 4.5.2)      |
-|Protokolování      |Zápisy přímo do STDOUT      |Implementace protokolovacího nástroje v knihovně DLL .NET      |
+|Načtení informací v vlastní logice      |Analyzuje activity.js, linkedServices.jsna a datasets.jsna uložených ve stejné složce spustitelného souboru.      |Přes .NET SDK (.NET Frame 4.5.2)      |
+|protokolování      |Zápisy přímo do STDOUT      |Implementace protokolovacího nástroje v knihovně DLL .NET      |
 
 Pokud máte existující kód .NET napsaný pro aktivitu rozhraní DotNet verze 1 (vlastní), musíte upravit kód, aby fungoval s aktuální verzí vlastní aktivity. Aktualizujte kód podle následujících pokynů vysoké úrovně:
 
   - Změňte projekt z knihovny tříd .NET na konzolovou aplikaci.
   - Spusťte aplikaci pomocí `Main` metody. `Execute`Metoda `IDotNetActivity` rozhraní již není požadována.
-  - Přečtěte si a analyzujte propojené služby, datové sady a aktivity pomocí serializátoru JSON a ne jako objekty silného typu. Předejte hodnoty požadovaných vlastností do vaší hlavní logiky vlastního kódu. Jako příklad se podívejte na předchozí kód dotazů. exe.
-  - Objekt protokolovacího nástroje již není podporován. Výstup z spustitelného souboru lze vytisknout do konzoly nástroje a je uložen do STDOUT. txt.
+  - Přečtěte si a analyzujte propojené služby, datové sady a aktivity pomocí serializátoru JSON a ne jako objekty silného typu. Předejte hodnoty požadovaných vlastností do vaší hlavní logiky vlastního kódu. Jako příklad se podívejte na předchozí kód SampleApp.exe.
+  - Objekt protokolovacího nástroje již není podporován. Výstup z spustitelného souboru může být vytištěn do konzoly a uložen do stdout.txt.
   - Balíček NuGet Microsoft. Azure. Management. DataFactory už není potřeba.
   - Zkompilujte kód, nahrajte spustitelný soubor a jeho závislosti do Azure Storage a definujte cestu ve `folderPath` Vlastnosti.
 

@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 2222c1d5e434e1c51cb66c2c5943badd58f95af9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84013023"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Index "integrovaných kontrolních mechanismů zabezpečení" v článcích pro služby Azure
@@ -29,13 +28,13 @@ Integrované články týkající se řízení zabezpečení jsou k dispozici pr
 - [Azure Backup](../../backup/backup-security-controls.md)
 - [Azure Event Hubs](../../event-hubs/event-hubs-security-controls.md)
 - [Azure ExpressRoute](../../expressroute/expressroute-security-controls.md)
-- [Azure Load Balancer](../../load-balancer/load-balancer-security-controls.md)
+- [Nástroj pro vyrovnávání zatížení Azure](../../load-balancer/load-balancer-security-controls.md)
 - [Azure Service Bus zasílání zpráv](../../service-bus-messaging/service-bus-messaging-security-controls.md)
 - [Azure Service Bus Relay](../../service-bus-relay/service-bus-relay-security-controls.md)
 - [Azure Service Fabric](../../service-fabric/service-fabric-security-controls.md)
 - [Azure Spring Cloud](../../spring-cloud/spring-cloud-concept-security-controls.md)
 - [Azure SQL Database](../../azure-sql/database/security-controls.md)
-- [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
+- [Škálovací sady virtuálních počítačů Azure](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
 - [Virtuální počítače s Linuxem](../../virtual-machines/linux/virtual-machines-linux-security-controls.md)
 - [Virtuální počítače s Windows](../../virtual-machines/windows/virtual-machines-windows-security-controls.md)
 - [Službu Azure VPN Gateway](../../vpn-gateway/vpn-gateway-security-controls.md)

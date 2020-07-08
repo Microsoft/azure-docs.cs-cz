@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
 ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83871913"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Kopírování dat ze seznamu SharePointu Online pomocí Azure Data Factory
@@ -81,14 +80,14 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 
 | **Vlastnost**        | **Popis**                                              | **Požadováno** |
 | ------------------- | ------------------------------------------------------------ | ------------ |
-| typ                | Vlastnost Type musí být nastavená na: **SharePointOnlineList**.  | Ano          |
-| siteUrl             | Adresa URL webu SharePointu Online, např `https://contoso.sharepoint.com/sites/siteName` . | Ano          |
-| servicePrincipalId  | ID aplikace (klienta) aplikace zaregistrované v Azure Active Directory. | Ano          |
-| servicePrincipalKey | Klíč aplikace Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano          |
-| tenantId            | ID tenanta, pod kterým se vaše aplikace nachází.          | Ano          |
-| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne           |
+| typ                | Vlastnost Type musí být nastavená na: **SharePointOnlineList**.  | Yes          |
+| siteUrl             | Adresa URL webu SharePointu Online, např `https://contoso.sharepoint.com/sites/siteName` . | Yes          |
+| servicePrincipalId  | ID aplikace (klienta) aplikace zaregistrované v Azure Active Directory. | Yes          |
+| servicePrincipalKey | Klíč aplikace Označte toto pole jako **SecureString** , abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes          |
+| tenantId            | ID tenanta, pod kterým se vaše aplikace nachází.          | Yes          |
+| connectVia          | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace o [požadavcích](#prerequisites)najdete výše v tomto článku. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No           |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -114,10 +113,10 @@ Pro propojenou službu seznamu SharePointu Online jsou podporovány následujíc
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** datové sady musí být nastavená na **SharePointOnlineLResource**. | Ano |
-| listName | Název seznamu SharePointu Online | Ano |
+| typ | Vlastnost **Type** datové sady musí být nastavená na **SharePointOnlineLResource**. | Yes |
+| listName | Název seznamu SharePointu Online | Yes |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -147,11 +146,11 @@ Pro kopírování dat ze seznamu SharePointu Online jsou v části **zdroje** ak
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SharePointOnlineListSource**. | Ano |
-| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | Ne |
-| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | Ne |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SharePointOnlineListSource**. | Yes |
+| query | Vlastní možnosti dotazů OData pro filtrování dat Příklad: `"$top=10&$select=Title,Number"`. | No |
+| httpRequestTimeout | Časový limit (v sekundách), po který má požadavek HTTP získat odpověď. Výchozí hodnota je 300 (5 minut). | No |
 
-**Případě**
+**Příklad**
 
 ```json
 "activities":[
@@ -194,7 +193,7 @@ Při kopírování dat ze seznamu SharePointu Online se používají následují
 | Volba (nabídka pro výběr)                    | Edm.String                                           | Řetězec                                   |
 | Číslo (1, 1,0, 100)                            | Edm.Double                                           | Double                                   |
 | Měna ($, y, €)                              | Edm.Double                                           | Double                                   |
-| Datum a čas                                   | EDM. DateTime                                         | Datum a čas                                 |
+| Datum a čas                                   | EDM. DateTime                                         | DateTime                                 |
 | Vyhledávání (informace již na tomto webu)       | Edm.Int32                                            | Int32                                    |
 | Ano/ne (zaškrtávací políčko)                              | Edm.Boolean                                          | Logická hodnota                                  |
 | Osoba nebo Skupina                                 | Edm.Int32                                            | Int32                                    |

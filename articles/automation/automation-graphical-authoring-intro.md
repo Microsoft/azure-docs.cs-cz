@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83849752"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Vytváření grafických runbooků v Azure Automation
@@ -34,7 +33,7 @@ Ovládací prvek plátna umožňuje návrh sady Runbook. Do sady Runbook můžet
 
 Ovládací prvek knihovna umožňuje vybrat [aktivity](#use-activities) , které se mají přidat do Runbooku. Můžete je přidat na plátno, kde je můžete propojit s dalšími aktivitami. Ovládací prvek knihovna obsahuje oddíly, které jsou definovány v následující tabulce.
 
-| Sekce | Popis |
+| Sekce | Description |
 |:--- |:--- |
 | Rutiny |Všechny rutiny, které lze použít v sadě Runbook. Rutiny jsou uspořádány podle modulu. Všechny moduly, které jste nainstalovali v účtu Automation, jsou k dispozici. |
 | Runbooky |Runbooky v účtu Automation. Tyto Runbooky můžete přidat na plátno, které se použijí jako podřízené Runbooky. Zobrazují se jenom Runbooky stejného základního typu jako upravované sady Runbook. Pro grafické Runbooky se zobrazí pouze Runbooky založené na PowerShellu. Pro grafické Runbooky pracovních postupů PowerShellu se zobrazí jenom Runbooky založené na pracovním postupu PowerShellu. |
@@ -69,7 +68,7 @@ V následujícím příkladu má rutina [Get-AzVM](https://docs.microsoft.com/po
 
 Když zadáte hodnotu parametru, vyberete zdroj dat, abyste určili, jak je hodnota zadaná. Zdroje dat, které jsou k dispozici pro konkrétní parametr, závisí na platných hodnotách pro daný parametr. Například hodnota null není dostupná možnost pro parametr, který nepovoluje hodnoty null.
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 |:--- |:--- |
 | Hodnota konstanty |Zadejte hodnotu parametru. Tento zdroj dat je k dispozici pouze pro následující datové typy: Int32, Int64, String, Boolean, DateTime, Switch. |
 | Výstup aktivity |Použijte výstup aktivity, která předchází aktuální aktivitě v pracovním postupu. V seznamu jsou uvedeny všechny platné aktivity. Pro hodnotu parametru použijte pouze aktivitu, která vytváří výstup. V případě, že výstupem aktivity je objekt s více vlastnostmi, můžete po výběru aktivity zadat název určité vlastnosti. |
@@ -151,7 +150,7 @@ Propojení dvou aktivit můžete vytvořit tak, že vyberete zdrojovou aktivitu 
 
 Vyberte odkaz pro konfiguraci vlastností v okně konfigurace. Vlastnosti obsahují typ odkazu, který je popsán v následující tabulce.
 
-| Typ odkazu | Popis |
+| Typ odkazu | Description |
 |:--- |:--- |
 | Kanál |Cílová aktivita se spustí jednou pro každý výstup objektu ze zdrojové aktivity. Cílová aktivita se nespustí, pokud výsledkem zdrojové aktivity není žádný výstup. Výstup zdrojové aktivity je k dispozici jako objekt. |
 | Sequence |Cílová aktivita se spustí pouze jednou při přijetí výstupu ze zdrojové aktivity. Výstup zdrojové aktivity je k dispozici jako pole objektů. |
@@ -257,7 +256,7 @@ Jednotlivé vstupní parametry jsou definovány vlastnostmi v následující tab
 | Vlastnost | Popis |
 |:--- |:--- |
 | Name | Povinná hodnota. Název parametru Název musí být v rámci sady Runbook jedinečný. Musí začínat písmenem a může obsahovat jenom písmena, číslice a podtržítka. Název nesmí obsahovat mezery. |
-| Popis |Nepovinný parametr. Popis účelu pro vstupní parametr |
+| Description |Nepovinný parametr. Popis účelu pro vstupní parametr |
 | Typ | Nepovinný parametr. Pro hodnotu parametru se očekával datový typ. Azure Portal poskytuje vhodný ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy pro vstup. Podporované typy parametrů jsou String, Int32, Int64, Decimal, Boolean, DateTime a Object. Pokud není vybraný datový typ, použije se výchozí hodnota String (řetězec).|
 | Povinné | Nepovinný parametr. Nastavení, které určuje, zda musí být pro parametr zadána hodnota. Zvolíte-li `yes` tuto možnost, musí být při spuštění sady Runbook zadána hodnota. Zvolíte-li možnost `no` , není při spuštění sady Runbook požadována hodnota a je možné použít výchozí hodnotu. Sadu Runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá definovánu výchozí hodnotu. |
 | Výchozí hodnota | Nepovinný parametr. Hodnota použitá pro parametr, pokud není předána při spuštění Runbooku. Pokud chcete nastavit výchozí hodnotu, vyberte `Custom` . Tuto možnost vyberte `None` , pokud nechcete zadat žádnou výchozí hodnotu. |

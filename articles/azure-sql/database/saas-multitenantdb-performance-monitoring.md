@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: e4f26b21ad7458b4f5bcad9a902f4e048d726f1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84042432"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorování a Správa výkonu horizontálně dělené víceklientské Azure SQL Database v SaaS aplikaci s více klienty
@@ -64,7 +63,7 @@ Aby bylo dobré pochopit, jak funguje sledování a Správa výkonu, je nutné, 
 
 Pokud jste v předchozím kurzu již zřídili dávku tenantů, přejděte k části [simulace využití ve všech databázích tenantů](#simulate-usage-on-all-tenant-databases) .
 
-1. V **prostředí POWERSHELL ISE**otevřete... \\ Výukové moduly \\ pro sledování a správu výkonu \\ *demo-PerformanceMonitoringAndManagement. ps1*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
+1. V **prostředí POWERSHELL ISE**otevřete... \\ \\Demo-PerformanceMonitoringAndManagement.ps1pro monitorování a správu výkonu výukových modulů \\ * * Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
 1. Nastavení **$DemoScenario**  =  **1** _zřídí dávku tenantů_ .
 1. Stisknutím klávesy **F5** spusťte skript.
 
@@ -74,7 +73,7 @@ Skript *New-TenantBatch* vytvoří nové klienty s jedinečnými klíči tenanta
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Simulace využití ve všech databázích tenantů
 
-Je k dispozici skript *demo-PerformanceMonitoringAndManagement. ps1* , který simuluje zatížení běžící proti víceklientské databázi. Zatížení je generováno pomocí jednoho z dostupných scénářů načítání:
+*Demo-PerformanceMonitoringAndManagement.ps1* skript je k dispozici, která simuluje zatížení běžící proti víceklientské databázi. Zatížení je generováno pomocí jednoho z dostupných scénářů načítání:
 
 | Ukázka | Scénář |
 |:--|:--|
@@ -85,7 +84,7 @@ Je k dispozici skript *demo-PerformanceMonitoringAndManagement. ps1* , který si
 
 Generátor zatížení použije *syntetické* zatížení jenom pro CPU na každé databázi tenantů. Generátor spustí úlohu pro každou databázi tenantů, která pravidelně volá uloženou proceduru generující zatížení. Úrovně zatížení (v DTU), doba trvání a intervaly jsou v rámci všech databází různé a simulují nepředvídatelné aktivity tenanta.
 
-1. V **prostředí POWERSHELL ISE**otevřete... \\ Výukové moduly \\ pro sledování a správu výkonu \\ *demo-PerformanceMonitoringAndManagement. ps1*. Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
+1. V **prostředí POWERSHELL ISE**otevřete... \\ \\Demo-PerformanceMonitoringAndManagement.ps1pro monitorování a správu výkonu výukových modulů \\ * * Tento skript nechte otevřený, protože během tohoto kurzu budete spouštět několik scénářů.
 1. Nastavit **$DemoScenario**  =  **2**, _Generovat normální zatížení intenzity_
 1. Stisknutím klávesy **F5** použijte zatížení pro všechny klienty.
 
@@ -154,7 +153,7 @@ Model horizontálně dělené multi-tenant vám umožňuje zvolit, jestli se má
 
 Pokud jste již zřídili nového tenanta ve vlastní databázi, přeskočte několik dalších kroků.
 
-1. V **prostředí POWERSHELL ISE**otevřete... \\ Výukové moduly \\ ProvisionTenants \\ *demo-ProvisionTenants. ps1*. 
+1. V **prostředí POWERSHELL ISE**otevřete... \\ Výukové moduly \\ ProvisionTenants \\ *Demo-ProvisionTenants.ps1*. 
 1. Modify **$TenantName = "Salix Salsa"** a **$VenueType = "roztancoval"**
 1. Nastavení **$Scenario**  =  **2** _zřízení tenanta v nové databázi s jedním tenantovi_
 1. Stisknutím klávesy **F5** spusťte skript.
@@ -167,7 +166,7 @@ Pokud má jeden tenant v rámci víceklientské databáze trvalé zatížení, m
 
 Toto cvičení simuluje účinek Salix Salsa s vysokým zatížením, když lístky jdou na prodej pro oblíbenou událost.
 
-1. Otevřete... \\ Skript *demo-PerformanceMonitoringAndManagement. ps1*
+1. Otevřete... \\ *Demo-PerformanceMonitoringAndManagement.ps1* skript.
 1. Nastavte **$DemoScenario = 5**, _vygenerujte normální zatížení plus vysoké zatížení v jednom tenantovi (přibližně 90 DTU)._
 1. Set **$SingleTenantName = Salix Salsa**
 1. Skript proveďte pomocí **F5**.

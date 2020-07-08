@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84047521"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Přesun dat mezi cloudovými databázemi s horizontálním navýšením kapacity
@@ -141,7 +140,7 @@ Balíček služby pro dělení a slučování zahrnuje roli pracovního procesu 
 
 - **Zdrojový rozsah (rozdělení a sloučení)**
 
-  Operace rozdělení a sloučení zpracuje rozsah pomocí jeho nízkého a horního klíče. Chcete-li zadat operaci s neohraničenou hodnotou klíče s vysokým klíčem, zaškrtněte políčko vysoká hodnota klíče Max a nechejte pole horní klíč prázdné. Hodnoty klíče rozsahu, které určíte, nemusejí přesně odpovídat mapování a jeho hranicím v mapě horizontálních oddílů. Pokud nezadáte žádné hranice rozsahu na všech službách, odsadí nejbližší rozsah automaticky. Pomocí skriptu PowerShellu getmappings. ps1 můžete načíst aktuální mapování v dané mapě horizontálních oddílů.
+  Operace rozdělení a sloučení zpracuje rozsah pomocí jeho nízkého a horního klíče. Chcete-li zadat operaci s neohraničenou hodnotou klíče s vysokým klíčem, zaškrtněte políčko vysoká hodnota klíče Max a nechejte pole horní klíč prázdné. Hodnoty klíče rozsahu, které určíte, nemusejí přesně odpovídat mapování a jeho hranicím v mapě horizontálních oddílů. Pokud nezadáte žádné hranice rozsahu na všech službách, odsadí nejbližší rozsah automaticky. K načtení aktuálních mapování v dané mapě horizontálních oddílů můžete použít skript prostředí PowerShell GetMappings.ps1.
 
 - **Chování rozdělení zdroje (rozdělit)**
 

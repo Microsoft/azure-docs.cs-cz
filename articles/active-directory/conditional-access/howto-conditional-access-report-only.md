@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46a00d55c58992be1009da1de5441ebe4e589a70
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83994965"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Konfigurace zásad podmíněného přístupu v režimu pouze sestavy
@@ -30,7 +29,7 @@ Konfigurace zásad podmíněného přístupu v režimu pouze pro sestavy:
 1. Vyberte **nové zásady**.
 1. Podle potřeby konfigurujte podmínky zásad a požadované ovládací prvky pro udělení oprávnění.
 1. V části **Povolit zásadu** nastavte přepínač na režim **pouze pro sestavy** .
-1. Vybrat **Uložit**
+1. Vyberte **Uložit**.
 
 > [!TIP]
 > Můžete upravit stav **Povolit zásadu Povolit** u existující zásady z **na** na **jenom sestavy** , ale zabráníte tak vynucení zásad. 

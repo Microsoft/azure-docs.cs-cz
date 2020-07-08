@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 75633521474ec3bcbc35cea49ea7a2da6a271e01
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83872507"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Odkazy na modul Azure CDN z Verizon Premium Rules
@@ -67,7 +66,7 @@ Pracovní postup, pomocí kterého se dá zásady použít v produkčním nebo p
 
 ![Pracovní postup nasazení zásad](./media/cdn-verizon-premium-rules-engine-reference/policy-deployment-workflow.png)
 
-|Krok |Popis |
+|Krok |Description |
 |---------|---------|
 |[Vytvořit koncept](https://docs.vdms.com/cdn/index.html#HRE/AdministeringDraftsandRules.htm#Create)    |    Koncept se skládá ze sady pravidel definujících způsob, jakým by měly být požadavky na obsah zpracovávány přes CDN.     |
 |Zamknout koncept   |     Po dokončení konceptu by měl být uzamčen a převeden na zásadu jen pro čtení.    |
@@ -75,7 +74,7 @@ Pracovní postup, pomocí kterého se dá zásady použít v produkčním nebo p
 |Nasadit revizi žádosti   |    <br>Požadavek na nasazení přechází k automatizovanému ověřování a detekci chyb.</br><br>I když je většina žádostí o nasazení automaticky schválena, pro složitější zásady se vyžaduje ruční kontrola.</br>   |
 |Nasazení zásad ([fázování](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Staging))   |  <br> Po schválení žádosti o nasazení do přípravného prostředí se zásada použije pro pracovní prostředí. Toto prostředí umožňuje testování zásad proti provozu lokality.</br><br>Jakmile je zásada připravena k použití pro provoz živého webového serveru, měla by se odeslat nová žádost o nasazení v produkčním prostředí.</br>      |
 |Nasazení zásad ([produkční](https://docs.vdms.com/cdn/index.html#HRE/Environment.htm#Producti))   |  Po schválení žádosti o nasazení v produkčním prostředí se zásada použije v produkčním prostředí. Toto prostředí umožňuje zásadám fungovat jako koncová autorita pro určení způsobu, jakým má síť CDN pracovat s živým provozem.     |
-## <a name="syntax"></a>Syntaxe
+## <a name="syntax"></a>Syntax
 
 Způsob, jakým jsou zpracovány speciální znaky, se liší podle toho, jak podmínka shody nebo funkce zpracovává textové hodnoty. Podmínka nebo funkce shody může interpretovat text jedním z následujících způsobů:
 
@@ -93,19 +92,19 @@ Symbol procenta se používá k označení kódování adresy URL (například `
 
 Text, který je interpretován jako zástupná hodnota, přiřadí další význam pro speciální znaky. Následující tabulka popisuje, jak je interpretována následující sada znaků:
 
-Znak | Popis
+Znak | Description
 ----------|------------
 \ | Zpětné lomítko se používá k úniku znaků určených v této tabulce. Zpětné lomítko musí být zadáno přímo před speciálním znakem, který by měl být uvozen řídicím znakem.<br/>Například následující syntaxe řídí hvězdičku:`\*`
 % | Symbol procenta se používá k označení kódování adresy URL (například `%20` ).
 \* | Hvězdička je zástupný znak, který reprezentuje jeden nebo více znaků.
 Místo | Znak mezery označuje, že podmínka shody může být splněna některou ze zadaných hodnot nebo vzorů.
-osa | Jedna nabídka nemá zvláštní význam. Sada jednoduchých uvozovek však používá k označení toho, že by měla být hodnota považována za hodnotu literálu. Dá se použít následujícími způsoby:<br><br/>– Umožňuje splnění podmínky shody vždy, když zadaná hodnota odpovídá jakékoli části hodnoty porovnání.  Například `'ma'` by odpovídaly jakémukoli z následujících řetězců: <br/><br/>/Business/**ma**rathon/Asset.htm<br/>**ma**p. gif<br/>/business/template. **ma**p<br /><br />– Umožňuje zadat speciální znak jako literální znak. Například můžete zadat literální znak mezery ohraničujícím znakem mezery v rámci sady jednoduchých uvozovek (tj `' '` `'sample value'` . nebo).<br/>– Povoluje zadání prázdné hodnoty. Zadáním sady jednoduchých uvozovek (tj.) zadejte prázdnou hodnotu.<br /><br/>**Významná**<br/>– Pokud zadaná hodnota neobsahuje zástupný znak, je automaticky považována za literálovou hodnotu, což znamená, že není nutné zadávat sadu jednoduchých uvozovek.<br/>– Pokud zpětné lomítko neřídí jiný znak v této tabulce, je ignorováno, pokud je zadáno v rámci sady jednoduchých uvozovek.<br/>– Jiný způsob, jak zadat speciální znak jako literální znak, je vystavení pomocí zpětného lomítka (tj `\` .).
+osa | Jedna nabídka nemá zvláštní význam. Sada jednoduchých uvozovek však používá k označení toho, že by měla být hodnota považována za hodnotu literálu. Dá se použít následujícími způsoby:<br><br/>– Umožňuje splnění podmínky shody vždy, když zadaná hodnota odpovídá jakékoli části hodnoty porovnání.  Například `'ma'` by odpovídaly jakémukoli z následujících řetězců: <br/><br/>/Business/**ma**rathon/asset.htm<br/>**ma**p.gif<br/>/business/template. **ma**p<br /><br />– Umožňuje zadat speciální znak jako literální znak. Například můžete zadat literální znak mezery ohraničujícím znakem mezery v rámci sady jednoduchých uvozovek (tj `' '` `'sample value'` . nebo).<br/>– Povoluje zadání prázdné hodnoty. Zadáním sady jednoduchých uvozovek (tj.) zadejte prázdnou hodnotu.<br /><br/>**Důležité:**<br/>– Pokud zadaná hodnota neobsahuje zástupný znak, je automaticky považována za literálovou hodnotu, což znamená, že není nutné zadávat sadu jednoduchých uvozovek.<br/>– Pokud zpětné lomítko neřídí jiný znak v této tabulce, je ignorováno, pokud je zadáno v rámci sady jednoduchých uvozovek.<br/>– Jiný způsob, jak zadat speciální znak jako literální znak, je vystavení pomocí zpětného lomítka (tj `\` .).
 
 ### <a name="regular-expressions"></a>Regulární výrazy
 
 Regulární výrazy definují vzor, který je prohledáván v rámci textové hodnoty. Zápis regulárního výrazu definuje konkrétní význam pro nejrůznější symboly. Následující tabulka uvádí, jak jsou speciální znaky ošetřeny podmínkami shody a funkcemi, které podporují regulární výrazy.
 
-Speciální znak | Popis
+Speciální znak | Description
 ------------------|------------
 \ | Zpětné lomítko řídí znak, který následuje, což způsobí, že tento znak bude považován za hodnotu literálu namísto převzetí jeho regulárního výrazu. Například následující syntaxe řídí hvězdičku:`\*`
 % | Význam symbolu procenta závisí na jeho využití.<br/><br/> `%{HTTPVariable}`: Tato syntaxe identifikuje proměnnou HTTP.<br/>`%{HTTPVariable%Pattern}`: Tato syntaxe používá symbol procenta k identifikaci proměnné HTTP a jako oddělovače.<br />`\%`: Uvozovací znak v procentech umožňuje použití jako literálové hodnoty nebo k označení kódování adresy URL (například `\%20` ).

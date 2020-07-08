@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
 ms.openlocfilehash: a384db9c3c0b4beee6063fd503abadcb4c6b5158
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84016946"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Pochopení kódu Apache Spark pro vývojáře U-SQL
@@ -23,7 +22,7 @@ V této části najdete pokyny vysoké úrovně pro transformaci skriptů U-SQL 
 - Poskytuje tipy, jak:
    - [Transformace skriptů](#transform-u-sql-scripts) včetně [výrazů sady řádků](#transform-u-sql-rowset-expressions-and-sql-based-scalar-expressions) U-SQL
    - [Kód .NET](#transform-net-code)
-   - [Typy dat](#transform-typed-values)
+   - [Datové typy](#transform-typed-values)
    - [Objekty katalogu](#transform-u-sql-catalog-objects).
 
 ## <a name="understand-the-u-sql-and-spark-language-and-processing-paradigms"></a>Pochopení jazyka U-SQL a Spark a zpracování paradigmat
@@ -128,7 +127,7 @@ Následující tabulka poskytuje ekvivalentní typy v Spark, Scala a PySpark pro
 |`SQL.MAP<K,V>`   |`MapType(keyType, valueType, valueContainsNull)` |`scala.collection.Map` | `MapType(keyType, valueType, valueContainsNull=True)`|
 |`SQL.ARRAY<T>`   |`ArrayType(elementType, containsNull)` |`scala.collection.Seq` | `ArrayType(elementType, containsNull=True)`|
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 - [org. Apache. spark. SQL. Types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
 - [Typy Spark SQL a dataframes](https://spark.apache.org/docs/latest/sql-reference.html#data-types)

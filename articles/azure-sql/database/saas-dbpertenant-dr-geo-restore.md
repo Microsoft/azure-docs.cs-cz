@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: sstein
 ms.date: 01/14/2019
 ms.openlocfilehash: 70d21170bfc172f30b01c2af093bc82a54c80dd3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84043125"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Použití geografického obnovení k obnovení víceklientské aplikace SaaS ze záloh databáze
@@ -108,7 +107,7 @@ V této úloze zahájíte proces synchronizace konfigurace serverů, elastickýc
 
 1. V prostředí PowerShell ISE otevřete soubor Modules\UserConfig.psm1. ..\Learning. Nahraďte `<resourcegroup>` a `<user>` na řádcích 10 a 11 hodnotou použitou při nasazení aplikace. Uložte soubor.
 
-2. V prostředí PowerShell ISE otevřete skript. ..\Learning Modules\Business kontinuita a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1.
+2. V prostředí PowerShell ISE otevřete skript. ..\Learning Modules\Business kontinuita a Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 skriptu pro zotavení po havárii.
 
     V tomto kurzu spustíte všechny scénáře v tomto skriptu PowerShellu, takže tento soubor zůstane otevřený.
 
@@ -172,7 +171,7 @@ Proces obnovení provádí následující akce:
 
 Představte si výpadky v oblasti, ve které je aplikace nasazená, a spusťte skript pro obnovení:
 
-1. V ISE PowerShellu ve skriptu ..\Learning pro zajištění kontinuity a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 nastavte následující hodnotu:
+1. V ISE PowerShellu ve skriptu. ..\Learning Modules\Business kontinuita a Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 pro zotavení po havárii nastavte následující hodnotu:
 
     $DemoScenario = 2: Obnovte aplikaci do oblasti obnovení obnovením z geograficky redundantního zálohování.
 
@@ -207,7 +206,7 @@ I když je koncový bod aplikace v Traffic Manager zakázán, aplikace není k d
 ## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Zřízení nového tenanta v oblasti obnovení
 Dokonce i před obnovením databází klientů můžete zřídit nové klienty v oblasti obnovení. Nové databáze tenantů zřízené v oblasti obnovení jsou později vráceny se obnovenými databázemi.   
 
-1. V prostředí PowerShell ISE ve skriptu ..\Learning pro zajištění kontinuity Modules\Business a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 nastavte následující vlastnost:
+1. V ISE PowerShellu ve skriptu. ..\Learning Modules\Business kontinuita a Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 pro zotavení po havárii nastavte následující vlastnost:
 
     $DemoScenario = 3: zřízení nového tenanta v oblasti obnovení.
 
@@ -260,7 +259,7 @@ V této úloze aktualizujete jednu z obnovených databází tenantů. Proces vr�
 
 1. V prohlížeči Najděte seznam událostí pro společnost Contoso. Procházejte události a Všimněte si poslední události, vážně Strauss.
 
-2. V ISE PowerShellu ve skriptu ..\Learning pro zajištění kontinuity a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 nastavte následující hodnotu:
+2. V ISE PowerShellu ve skriptu. ..\Learning Modules\Business kontinuita a Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 pro zotavení po havárii nastavte následující hodnotu:
 
     $DemoScenario = 4: odstranění události z klienta v oblasti obnovení.
 
@@ -318,7 +317,7 @@ Představte si, že se výpadek vyřeší a spustí se skript pro vrácení.
 
 Pokud jste postupovali podle tohoto kurzu, skript okamžitě znovu aktivuje Fabrikam jazz klub a Dogwood Dojo v původní oblasti, protože se nezměnily. Pak převrácení nového tenanta, Hawthorn místnosti a společnosti Contoso, protože byla upravena. Skript také převrácení katalogu, který byl aktualizován při zřízení Hawthorn místnosti.
   
-1. V prostředí PowerShell ISE ve skriptu ..\Learning pro zajištění kontinuity a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 ověřte, že proces synchronizace katalogu pořád běží v instanci PowerShellu. V případě potřeby ho restartujte nastavením:
+1. V ISE PowerShellu ve skriptu ..\Learning a Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 pro zotavení po havárii ověřte, že proces synchronizace katalogu pořád běží v instanci PowerShellu. V případě potřeby ho restartujte nastavením:
 
     $DemoScenario = 1: Spustit synchronizaci informací o serveru klienta, fondu a konfiguraci databáze do katalogu.
 
@@ -350,7 +349,7 @@ Po vrácení se změnami je bezpečné prostředky odstranit v oblasti obnovení
 
 Proces obnovení vytvoří všechny prostředky obnovení ve skupině prostředků pro obnovení. Proces čištění odstraní tuto skupinu prostředků a odebere všechny odkazy na prostředky z katalogu. 
 
-1. V prostředí PowerShell ISE ve skriptu ..\Learning pro zajištění kontinuity Modules\Business a havárie Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 nastavte tyto možnosti:
+1. V ISE PowerShellu ve skriptu. ..\Learning Modules\Business kontinuita a Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 pro zotavení po havárii nastavte:
     
     $DemoScenario = 6: odstranit zastaralé prostředky z oblasti obnovení.
 

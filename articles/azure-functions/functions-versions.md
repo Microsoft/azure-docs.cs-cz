@@ -4,10 +4,9 @@ description: Azure Functions podporuje více verzí modulu runtime. Přečtěte 
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996716"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions – přehled verzí modulu runtime
@@ -27,7 +26,7 @@ Následující tabulka uvádí, které programovací jazyky jsou aktuálně podp
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-Další informace najdete v tématu [Podporované jazyky](supported-languages.md).
+Další informace najdete v tématu [podporované jazyky](supported-languages.md).
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Spustit na konkrétní verzi
 
@@ -43,7 +42,7 @@ I když je možné provést upgrade na místě tak, že ručně aktualizujete ko
 
 Od verze 2. x je nutné nainstalovat rozšíření pro konkrétní triggery a vazby používané funkcemi ve vaší aplikaci. Jediná výjimka pro tuto aktivační událost HTTP a časovač, která nevyžaduje rozšíření.  Další informace najdete v tématu [registrace a instalace rozšíření vazby](./functions-bindings-register.md).
 
-V *Functions. JSON* nebo atributů funkce mezi verzemi je také několik změn. Například vlastnost centra událostí `path` je nyní `eventHubName` . V [existující tabulce vazeb](#bindings) najdete odkazy na dokumentaci pro každou vazbu.
+K dispozici je také několik změn v *function.jsna* nebo atributů funkce mezi verzemi. Například vlastnost centra událostí `path` je nyní `eventHubName` . V [existující tabulce vazeb](#bindings) najdete odkazy na dokumentaci pro každou vazbu.
 
 ### <a name="changes-in-features-and-functionality-after-version-1x"></a>Změny funkcí a funkcí po verzi 1. x
 
@@ -55,15 +54,15 @@ Ve verzi 2. x byly provedeny následující změny:
 
 * Modul runtime verze 2. x neobsahuje integrovanou podporu pro poskytovatele webhooků. Tato změna byla provedena za účelem zvýšení výkonu. Pro Webhooky můžete pořád používat triggery HTTP jako koncové body.
 
-* Konfigurační soubor hostitele (host. JSON) by měl být prázdný nebo obsahovat řetězec `"version": "2.0"` .
+* Konfigurační soubor hostitele (host.json) by měl být prázdný nebo obsahovat řetězec `"version": "2.0"` .
 
 * Pro zlepšení monitorování se řídicí panel WebJobs na portálu, který použil nastavení, [`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard) nahradí pomocí Azure Application Insights, který toto [`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey) nastavení používá. Další informace najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
-* Všechny funkce ve Function App musí sdílet stejný jazyk. Při vytváření aplikace Function App musíte zvolit zásobník modulu runtime pro aplikaci. Zásobník modulu runtime je určen [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) hodnotou v nastavení aplikace. Tento požadavek byl přidaný, aby se zlepšila nároky a čas spuštění. Při vývoji místně musíte také zahrnout toto nastavení do [souboru Local. Settings. JSON](functions-run-local.md#local-settings-file).
+* Všechny funkce ve Function App musí sdílet stejný jazyk. Při vytváření aplikace Function App musíte zvolit zásobník modulu runtime pro aplikaci. Zásobník modulu runtime je určen [`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime) hodnotou v nastavení aplikace. Tento požadavek byl přidaný, aby se zlepšila nároky a čas spuštění. Při vývoji v místním prostředí musíte také zahrnout toto nastavení do [local.settings.jsv souboru](functions-run-local.md#local-settings-file).
 
-* Výchozí časový limit pro funkce v plánu App Service se změnil na 30 minut. Můžete ručně změnit časový limit zpět na neomezený pomocí nastavení [functionTimeout](functions-host-json.md#functiontimeout) v Host. JSON.
+* Výchozí časový limit pro funkce v plánu App Service se změnil na 30 minut. Můžete ručně změnit časový limit zpět na neomezený pomocí nastavení [functionTimeout](functions-host-json.md#functiontimeout) v host.jszapnuto.
 
-* Omezení Concurrency protokolu HTTP jsou ve výchozím nastavení implementovaná pro funkce plánu spotřeby s výchozí 100 souběžných požadavků na instanci. To můžete změnit v [`maxConcurrentRequests`](functions-host-json.md#http) nastavení v souboru Host. JSON.
+* Omezení Concurrency protokolu HTTP jsou ve výchozím nastavení implementovaná pro funkce plánu spotřeby s výchozí 100 souběžných požadavků na instanci. To můžete změnit v [`maxConcurrentRequests`](functions-host-json.md#http) nastavení host.jsv souboru.
 
 * Z důvodu [omezení rozhraní .NET Core](https://github.com/Azure/azure-functions-host/issues/3414)byla odebrána podpora funkcí skriptu jazyka F # (. FSX). Zkompilované funkce F # (. FS) jsou pořád podporované.
 
@@ -87,7 +86,7 @@ Níže jsou uvedené změny, které je třeba znát před upgradem aplikace 2. x
 
 * Datová část požadavku HTTP nemůže být již k dispozici prostřednictvím `context.bindingData.req` .  Stále je k němu možné přistupovat jako vstupní parametr, `context.req` a v `context.bindings` .
 
-* Node. js 8 již není podporován a nebude spuštěn ve 3. x funkcích.
+* Node.js 8 již není podporováno a nebude spuštěno ve 3. x funkcích.
 
 #### <a name="net"></a>.NET
 
@@ -199,4 +198,4 @@ Další informace najdete v následujících materiálech:
 
 * [Místní psaní kódu a testování funkcí Azure Functions](functions-run-local.md)
 * [Jak cílit na verze modulu runtime Azure Functions](set-runtime-version.md)
-* [Poznámky k verzi](https://github.com/Azure/azure-functions-host/releases)
+* [Zpráva k vydání verze](https://github.com/Azure/azure-functions-host/releases)

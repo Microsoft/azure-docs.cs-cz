@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: acf17f4cef43fe4221781deedb130ef587208550
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83993741"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Podmíněný přístup: zabezpečení registrace informací o zabezpečení
@@ -46,7 +45,7 @@ Následující zásady platí pro všechny vybrané uživatele, kteří se pokou
    1. Vyberte **blokovat přístup**.
    1. Pak klikněte na **Vybrat**.
 1. Nastavte **Povolit zásadu** na **Zapnuté**.
-1. Potom vyberte **Uložit**.
+1. Pak vyberte **Uložit**.
 
 V kroku 6 v této zásadě mají organizace volby, které můžou dělat. Výše uvedená zásada vyžaduje registraci z důvěryhodného umístění v síti. Organizace si můžou zvolit, že budou využívat jakékoli dostupné podmínky místo **umístění**. Mějte na paměti, že tato zásada je zásada blokování, takže cokoli zahrnuto je blokované a povoluje se cokoli, co se neshoduje s zahrnutím. 
 

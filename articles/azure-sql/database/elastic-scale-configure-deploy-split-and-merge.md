@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84045645"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Nasazení služby dělení a slučování pro přesun dat mezi databázemi horizontálně dělené
@@ -27,7 +26,7 @@ Nástroj pro dělení a slučování umožňuje přesouvat data mezi databázemi
 
 1. Stáhněte si nejnovější verzi NuGet z [nugetu](https://docs.nuget.org/docs/start-here/installing-nuget).
 
-1. Otevřete příkazový řádek a přejděte do adresáře, kam jste stáhli NuGet. exe. Soubor ke stažení obsahuje příkazy prostředí PowerShell.
+1. Otevřete příkazový řádek a přejděte do adresáře, kam jste stáhli nuget.exe. Soubor ke stažení obsahuje příkazy prostředí PowerShell.
 
 1. Stáhněte si nejnovější balíček pro dělené sloučení do aktuálního adresáře pomocí příkazu níže:
 
@@ -176,9 +175,9 @@ Nasazení a vaše prostředí je možné otestovat spuštěním zahrnutých uká
 
 K dispozici jsou tyto soubory skriptu:
 
-1. *SetupSampleSplitMergeEnvironment. ps1* – nastaví úroveň testovacích dat pro rozdělení a sloučení (podrobný popis najdete v tabulce níže).
-2. *ExecuteSampleSplitMerge. ps1* – provede operace testu na úrovni testovacích dat (podrobný popis najdete v tabulce níže).
-3. *Getmappings. ps1* -vzorový skript nejvyšší úrovně, který tiskne aktuální stav mapování horizontálních oddílů.
+1. *SetupSampleSplitMergeEnvironment.ps1* – nastaví testovací datovou vrstvu pro rozdělení a sloučení (podrobný popis najdete v tabulce níže).
+2. *ExecuteSampleSplitMerge.ps1* – provede operace testu na úrovni testovacích dat (podrobný popis najdete v tabulce níže).
+3. *GetMappings.ps1* – vzorový skript nejvyšší úrovně, který tiskne aktuální stav mapování horizontálních oddílů.
 4. Skript *ShardManagement. psm1* -Helper, který zabalí rozhraní ShardManagement API
 5. *SqlDatabaseHelpers. psm1* – Pomocný skript pro vytváření a správu databází v SQL Database
 
@@ -188,7 +187,7 @@ K dispozici jsou tyto soubory skriptu:
        <th>Kroky</th>
      </tr>
      <tr>
-       <th rowspan="5">SetupSampleSplitMergeEnvironment. ps1</th>
+       <th rowspan="5">SetupSampleSplitMergeEnvironment.ps1</th>
        <td>1. Vytvoří databázi správce mapy horizontálních oddílů.</td>
      </tr>
      <tr>
@@ -210,7 +209,7 @@ K dispozici jsou tyto soubory skriptu:
        <th>Kroky</th>
      </tr>
    <tr>
-       <th rowspan="4">ExecuteSampleSplitMerge. ps1 </th>
+       <th rowspan="4">ExecuteSampleSplitMerge.ps1 </th>
        <td>1. Odešle požadavek na rozdělení na webový front-end Service, který rozdělí polovinu dat z prvního horizontálních oddílů do druhé horizontálních oddílů.</td>
      </tr>
      <tr>
@@ -231,13 +230,13 @@ K dispozici jsou tyto soubory skriptu:
 2. Vytvořte Server (nebo vyberte existující server), kde se vytvoří správce mapy horizontálních oddílů a horizontálních oddílů.
 
    > [!NOTE]
-   > Skript *SetupSampleSplitMergeEnvironment. ps1* ve výchozím nastavení vytvoří všechny tyto databáze na stejném serveru, aby byl skript jednoduchý. Nejedná se o omezení samotné služby rozdělení a sloučení.
+   > Skript *SetupSampleSplitMergeEnvironment.ps1* ve výchozím nastavení vytvoří všechny tyto databáze na stejném serveru, aby byl skript jednoduchý. Nejedná se o omezení samotné služby rozdělení a sloučení.
 
    Přihlašovací jméno SQL ověřování s přístupem pro čtení i zápis pro databáze bude potřeba, aby služba dělení a slučování dat přesunula data a aktualizovala mapu horizontálních oddílů. Vzhledem k tomu, že služba dělení a slučování běží v cloudu, aktuálně nepodporuje integrované ověřování.
 
    Ujistěte se, že je server nakonfigurovaný tak, aby povoloval přístup z IP adresy počítače, na kterém běží tyto skripty. Toto nastavení můžete najít v části SQL Server/brány firewall a virtuální sítě/IP adresy klientů.
 
-3. Spusťte skript *SetupSampleSplitMergeEnvironment. ps1* pro vytvoření ukázkového prostředí.
+3. Spusťte skript *SetupSampleSplitMergeEnvironment.ps1* pro vytvoření ukázkového prostředí.
 
    Spuštěním tohoto skriptu dojde k vymazání všech stávajících datových struktur správy mapy horizontálních oddílů v databázi správce map horizontálních oddílů a v horizontálních oddílů. Pokud chcete znovu inicializovat mapu horizontálních oddílů nebo horizontálních oddílů, může být užitečné skript spustit znovu.
 
@@ -248,14 +247,14 @@ K dispozici jsou tyto soubory skriptu:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-4. Spusťte skript getmappings. ps1, který zobrazí mapování, která aktuálně existují ve vzorovém prostředí.
+4. Spusťte skript Getmappings.ps1 pro zobrazení mapování, která aktuálně existují ve vzorovém prostředí.
 
    ```cmd
    .\GetMappings.ps1
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Spusťte skript *ExecuteSampleSplitMerge. ps1* , který spustí operaci rozdělení (přesune polovinu dat na první horizontálních oddílů do druhé horizontálních oddílů) a pak operaci sloučení (přesun dat zpět do prvního horizontálních oddílů). Pokud jste nakonfigurovali protokol TLS a opustili jste koncový bod HTTP zakázaný, ujistěte se, že místo toho použijete koncový bod https://.
+5. Spusťte skript *ExecuteSampleSplitMerge.ps1* , který spustí operaci rozdělení (přesunou polovinu dat na první horizontálních oddílů do druhé horizontálních oddílů) a potom operaci sloučení (přesun dat zpět na první horizontálních oddílů). Pokud jste nakonfigurovali protokol TLS a opustili jste koncový bod HTTP zakázaný, ujistěte se, že místo toho použijete koncový bod https://.
 
     Vzorový příkazový řádek:
 
@@ -324,7 +323,7 @@ Aby bylo možné provést operaci dělení na sloučení, je nutné deklarovat t
 4. Získejte odkaz na objekt **ShardMapManager** a zavolejte **GetSchemaInfoCollection**.
 5. Přidejte **SchemaInfo** do **SchemaInfoCollection**a poskytněte název mapy horizontálních oddílů.
 
-Příklad tohoto příkladu lze vidět ve skriptu SetupSampleSplitMergeEnvironment. ps1.
+Příkladem toho lze zobrazit ve skriptu SetupSampleSplitMergeEnvironment.ps1.
 
 Služba rozdělení a sloučení nevytváří cílovou databázi (nebo schéma pro žádné tabulky v databázi) za vás. Před odesláním žádosti službě je nutné je předem vytvořit.
 

@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: af82a9d19f8dee9062d15a58e83ee3c2a8c59af6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83995424"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Podmíněný přístup: vyžadovat MFA pro správce
@@ -32,7 +31,7 @@ Společnost Microsoft doporučuje vyžadovat vícefaktorové ověřování na n�
 * Správce hesel
 * Správce zabezpečení
 * Správce SharePointu
-* Správce uživatele
+* Správce uživatelů
 
 Organizace si můžou zvolit, že se mají zahrnout nebo vyloučit role podle potřeby.
 
@@ -64,7 +63,7 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
       * Správce hesel
       * Správce zabezpečení
       * Správce SharePointu
-      * Správce uživatele
+      * Správce uživatelů
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Done** (Hotovo).
 1. V části **cloudové aplikace nebo akce**  >  **Include**vyberte **všechny cloudové aplikace**a vyberte **Hotovo**.

@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.openlocfilehash: 999c58871ed811d91fd96d158ea6f65db6c718f3
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83853838"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark operace podporované konektorem skladu podregistru ve službě Azure HDInsight
@@ -142,6 +141,6 @@ Pomocí **kombinace kláves CTRL + C** zastavte NetCat v druhé relaci SSH. Pomo
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Integrace umožní s Apache Spark a Apache Hive](./apache-hive-warehouse-connector.md)
+* [Integrace HWC s Apache Sparkem a Apache Hivem](./apache-hive-warehouse-connector.md)
 * [Použití Interactive Query se službou HDInsight](./apache-interactive-query-get-started.md).
-* [Integrace umožní s Apache Zeppelin](./apache-hive-warehouse-connector-zeppelin.md)
+* [Integrace HWC s Apache Zeppelinem](./apache-hive-warehouse-connector-zeppelin.md)

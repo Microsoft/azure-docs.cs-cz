@@ -8,10 +8,9 @@ ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
 ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014532"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Vytvoření zásad firewallu webových aplikací pro Application Gateway
@@ -29,7 +28,7 @@ Pokud je u vašeho Application Gateway použita zásada a potom použijete pro n
 
 Všechna nová nastavení WAF firewallu webových aplikací (vlastní pravidla, spravované konfigurace rulset, vyloučení atd.) se nachází v rámci zásad WAF v reálném čase. Pokud máte existující WAF, tato nastavení můžou pořád existovat v konfiguraci WAF. Postup, jak přejít na nové zásady WAF, najdete v části [migrace konfigurace WAF do zásad WAF](#migrate) dále v tomto článku. 
 
-## <a name="create-a-policy"></a>Vytvoření zásady
+## <a name="create-a-policy"></a>Vytvoření zásad
 
 Nejdřív vytvořte základní zásadu WAF se spravovanými výchozí sadou pravidel (DRS) pomocí Azure Portal.
 

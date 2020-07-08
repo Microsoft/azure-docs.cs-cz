@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
 ms.openlocfilehash: 11d1a4743f9aaf70d96e6cfd1f22ff31def440f1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021258"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetování místního hesla Windows pro offline virtuální počítač Azure
@@ -45,7 +44,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
 
 1. Položte si snímek disku s operačním systémem ovlivněného virtuálního počítače, vytvořte disk ze snímku a pak ho připojte k virtuálnímu počítači pro odstraňování potíží. Další informace najdete v tématu [řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal](troubleshoot-recovery-disks-portal-windows.md).
 2. Připojte se k virtuálnímu počítači pro řešení potíží pomocí vzdálené plochy.
-3. Vytvořte `gpt.ini` na `\Windows\System32\GroupPolicy` jednotce zdrojového virtuálního počítače (pokud existuje GPT. ini, přejmenujte na GPT. ini. bak):
+3. Vytvořte `gpt.ini` v `\Windows\System32\GroupPolicy` jednotce zdrojového virtuálního počítače (Pokud gpt.ini existuje, přejmenujte na gpt.ini. bak):
    
    > [!WARNING]
    > Ujistěte se, že jste omylem nevytvořili následující soubory v C:\Windows, což je jednotka operačního systému pro virtuální počítač pro řešení potíží. Na jednotce operačního systému vytvořte následující soubory pro zdrojový virtuální počítač, který je připojený jako datový disk.
@@ -59,7 +58,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      Version=1
      ```
      
-     ![Vytvořit GPT. ini](./media/reset-local-password-without-agent/create-gpt-ini.png)
+     ![Vytvořit gpt.ini](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
 4. Vytvořte `scripts.ini` v `\Windows\System32\GroupPolicy\Machine\Scripts\` . Ujistěte se, že jsou zobrazené skryté složky. V případě potřeby vytvořte `Machine` složky nebo `Scripts` .
    
@@ -71,7 +70,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      0Parameters=
      ```
      
-     ![Vytvoření skriptů. ini](./media/reset-local-password-without-agent/create-scripts-ini.png)
+     ![Vytvořit scripts.ini](./media/reset-local-password-without-agent/create-scripts-ini.png)
 
 5. Vytvořte `FixAzureVM.cmd` `\Windows\System32` pomocí následujícího obsahu, nahraďte `<username>` a `<newpassword>` vlastními hodnotami:
    
@@ -96,9 +95,9 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
     * Z%windir%\System32
       * odebrat FixAzureVM. cmd
     * Z%windir%\System32\GroupPolicy\Machine\Scripts
-      * odebrat skripty. ini
+      * odebrat scripts.ini
     * Z%windir%\System32\GroupPolicy
-      * Odstraňte GPT. ini (Pokud soubor GPT. ini existoval dříve a přejmenovali jste ho na GPT. ini. bak, přejmenujte soubor. bak zpátky na GPT. ini).
+      * Odeberte gpt.ini (Pokud gpt.ini existovala dříve a přejmenovali jste ji na gpt.ini. bak, přejmenujte soubor. bak zpět na gpt.ini).
 
 ## <a name="detailed-steps-for-classic-vm"></a>Podrobný postup pro klasický virtuální počítač
 
@@ -163,7 +162,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      Version=1
      ```
      
-     ![Vytvořit GPT. ini](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
+     ![Vytvořit gpt.ini](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
 5. Vytvořte `scripts.ini` v `\Windows\System32\GroupPolicy\Machines\Scripts\` . Ujistěte se, že jsou zobrazené skryté složky. V případě potřeby vytvořte `Machine` složky nebo `Scripts` .
    
@@ -175,7 +174,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      0Parameters=
      ```
      
-     ![Vytvoření skriptů. ini](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
+     ![Vytvořit scripts.ini](./media/reset-local-password-without-agent/create-scripts-ini-classic.png)
 
 6. Vytvořte `FixAzureVM.cmd` `\Windows\System32` pomocí následujícího obsahu, nahraďte `<username>` a `<newpassword>` vlastními hodnotami:
    

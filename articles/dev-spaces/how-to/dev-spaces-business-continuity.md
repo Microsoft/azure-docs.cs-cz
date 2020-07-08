@@ -9,10 +9,9 @@ description: Naučte se používat Azure Dev Spaces a služby Azure Kubernetes k
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83996920"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Provozní kontinuita a zotavení po havárii v Azure Dev Spaces
@@ -67,7 +66,7 @@ Po spuštění těchto příkazů se vybraný cluster a místo pro vývoj použi
 
 Pokud používáte aplikaci Visual Studio, můžete přepínat cluster používaný existujícím projektem pomocí následujících kroků:
 
-1. Otevřete projekt v aplikaci Visual Studio.
+1. Otevřete svůj projekt v sadě Visual Studio.
 1. Klikněte pravým tlačítkem myši na název projektu v Průzkumník řešení a klikněte na **vlastnosti** .
 1. V levém podokně klikněte na **ladění** .
 1. Na stránce Vlastnosti ladění klikněte na rozevírací seznam **profil** a vyberte **Azure dev Spaces**.

@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: c3892cfe3f8bd6966f5bd00c0747590eef3bc50d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83860511"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD
@@ -100,10 +99,10 @@ Proveďte následující kroky:
 1. V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**.
 1. V **režimu správy**vyberte **upřesnit** a nakonfigurujte App Service ověřování podle následující tabulky:
 
-    |Pole|Popis|
+    |Pole|Description|
     |-|-|
     |ID klienta| Použijte **ID aplikace (klienta)** registrace aplikace. |
-    |Adresa URL vydavatele| Použijte `<authentication-endpoint>/<tenant-id>/v2.0` a nahraďte * \< Authentication-Endpoint>* s [koncovým bodem ověřování pro vaše cloudové prostředí](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (např. " https://login.microsoft.com " pro globální Azure), a taky nahraďte * \<>ID tenanta* ID **adresáře (tenanta)** , ve kterém se vytvořila registrace aplikace. Tato hodnota se používá k přesměrování uživatelů do správného tenanta Azure AD a také ke stažení odpovídajících metadat k určení vhodného podpisového klíče tokenu a hodnoty deklarace vystavitele tokenu. `/v2.0`Oddíl může být vynechán pro aplikace používající AAD v1. |
+    |Adresa URL vydavatele| Pomocí `<authentication-endpoint>/<tenant-id>/v2.0` a nahraďte *\<authentication-endpoint>* [koncovým bodem ověřování pro vaše cloudové prostředí](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (např. " https://login.microsoft.com " pro globální Azure ") nahraďte *\<tenant-id>* **ID adresáře (tenanta)** , ve kterém se vytvořila registrace aplikace. Tato hodnota se používá k přesměrování uživatelů do správného tenanta Azure AD a také ke stažení odpovídajících metadat k určení vhodného podpisového klíče tokenu a hodnoty deklarace vystavitele tokenu. `/v2.0`Oddíl může být vynechán pro aplikace používající AAD v1. |
     |Tajný kód klienta (volitelné)| Použijte tajný klíč klienta, který jste vygenerovali v registraci aplikace.|
     |Povolené cílové skupiny tokenů| Pokud se jedná o cloudovou nebo serverovou aplikaci a chcete z webové aplikace dovolit ověřovací tokeny, přidejte sem **identifikátor URI ID aplikace** webové aplikace. Nakonfigurované **ID klienta** se *vždycky* implicitně považuje za povolenou cílovou skupinu. |
 
@@ -160,4 +159,4 @@ Nyní jste nakonfigurovali klientskou aplikaci démona, která má přístup k v
 * [Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service](app-service-web-tutorial-auth-aad.md)
 <!-- URLs. -->
 
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

@@ -15,10 +15,9 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014855"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure pomocí PowerShellu
@@ -179,7 +178,7 @@ Server řadiče domény se teď úspěšně zřídil. Dále nakonfigurujete dom�
 ## <a name="configure-the-domain-controller"></a>Konfigurace řadiče domény
 1. Připojte se k serveru řadiče domény spuštěním souboru vzdálené plochy. Použijte uživatelské jméno pro správce počítače AzureAdmin a heslo **Contoso! 000**, které jste zadali při vytváření nového virtuálního počítače.
 2. Otevřete okno PowerShellu v režimu správce.
-3. Spusťte následující příkaz **dcpromo. Příkaz EXE** pro nastavení domény **Corp.contoso.com** s datovými adresáři na jednotce M.
+3. Spusťte následující příkaz **DCPROMO.EXE** pro nastavení domény **Corp.contoso.com** s datovými adresáři na jednotce M.
 
         dcpromo.exe `
             /unattend `
@@ -481,7 +480,7 @@ Nakonec budete připraveni ke konfiguraci skupiny dostupnosti. Pomocí zprostře
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Stáhněte si **CreateAzureFailoverCluster. ps1** z [vytváření clusteru s podporou převzetí služeb při selhání pro skupiny dostupnosti Always On na virtuálním počítači Azure](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) do místního pracovního adresáře. Pomocí tohoto skriptu vám pomůžete vytvořit funkční cluster s podporou převzetí služeb při selhání. Důležité informace o tom, jak Windows Clustering s podporou převzetí služeb při selhání spolupracuje se sítí Azure, najdete v tématu [Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+7. Stáhněte si **CreateAzureFailoverCluster.ps1** z části [Vytvoření clusteru s podporou převzetí služeb při selhání pro skupiny dostupnosti Always On na virtuálním počítači Azure](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) do místního pracovního adresáře. Pomocí tohoto skriptu vám pomůžete vytvořit funkční cluster s podporou převzetí služeb při selhání. Důležité informace o tom, jak Windows Clustering s podporou převzetí služeb při selhání spolupracuje se sítí Azure, najdete v tématu [Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 8. Přejděte do pracovního adresáře a vytvořte cluster s podporou převzetí služeb při selhání se staženým skriptem.
 
         Set-ExecutionPolicy Unrestricted -Force

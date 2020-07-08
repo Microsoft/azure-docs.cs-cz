@@ -16,10 +16,9 @@ ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ca11fce252192cbf8e5f0bc2cfb5fcd38f5d4443
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84020876"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Použití Azure Premium Storage s SQL Serverem na virtuálních počítačích
@@ -33,7 +32,7 @@ ms.locfileid: "84020876"
 
 Tento článek popisuje plánování a pokyny k migraci virtuálního počítače se spuštěným SQL Server pro použití Premium Storage. To zahrnuje postupy infrastruktury Azure (sítě, úložiště) a hostovaného virtuálního počítače s Windows. V příkladu v [příloze](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) se zobrazuje kompletní ucelená migrace, jak přesunout větší virtuální počítače, aby bylo možné využít vylepšené místní úložiště SSD pomocí PowerShellu.
 
-Je důležité pochopit, jak se v rámci procesu Azure Premium Storage využíváme SQL Server na virtuálních počítačích s IAAS. To zahrnuje:
+Je důležité pochopit, jak se v rámci procesu Azure Premium Storage využíváme SQL Server na virtuálních počítačích s IAAS. Sem patří:
 
 * Identifikace požadavků, které se mají použít Premium Storage.
 * Příklady nasazení SQL Server v IaaS pro Premium Storage pro nová nasazení.

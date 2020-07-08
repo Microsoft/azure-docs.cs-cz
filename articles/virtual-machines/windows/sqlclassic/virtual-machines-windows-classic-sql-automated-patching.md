@@ -16,10 +16,9 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 3b977c0900178d64f202d4faa122f5d0ef90187c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84014651"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatizované opravy pro SQL Server v Azure Virtual Machines (Classic)
@@ -82,7 +81,7 @@ V následujícím příkladu se prostředí PowerShell používá ke konfiguraci
 
 Na základě tohoto příkladu popisuje následující tabulka praktický efekt na cílovém virtuálním počítači Azure:
 
-| Parametr | Účinek |
+| Parametr | Efekt |
 | --- | --- |
 | **DayOfWeek** |Opravy se nainstalují každý čtvrtek. |
 | **MaintenanceWindowStartingHour** |Začněte s aktualizacemi na 11:10:00. |

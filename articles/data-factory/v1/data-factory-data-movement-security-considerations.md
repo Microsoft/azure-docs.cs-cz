@@ -12,10 +12,9 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: c22168aade11bbba66682efea0e2f5a1fcc2ac1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84021496"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – požadavky na zabezpečení při přesunu dat
@@ -128,9 +127,9 @@ Následující tabulka shrnuje doporučení konfigurace sítě a brány na zákl
 
 | Zdroj | Cíl | Konfigurace sítě | Nastavení brány |
 | ------ | ----------- | --------------------- | ------------- | 
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Bránu můžete nainstalovat buď místně, nebo na virtuální počítač Azure (VM) ve virtuální síti. | 
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah) | Bránu můžete nainstalovat buď místně, nebo na virtuálním počítači Azure ve virtuální síti. | 
-| Lokálně | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (veřejný partnerský vztah) | Brána musí být nainstalovaná místně. | 
+| Místní | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Bránu můžete nainstalovat buď místně, nebo na virtuální počítač Azure (VM) ve virtuální síti. | 
+| Místní | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah) | Bránu můžete nainstalovat buď místně, nebo na virtuálním počítači Azure ve virtuální síti. | 
+| Místní | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (veřejný partnerský vztah) | Brána musí být nainstalovaná místně. | 
 
 Následující obrázky ukazují použití Správa dat brány pro přesun dat mezi místní databází a službami Azure pomocí Express Route a IPSec VPN (s Virtual Network):
 

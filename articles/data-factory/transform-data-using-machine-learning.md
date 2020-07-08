@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
 ms.openlocfilehash: 26ba4c3da0bcfa36874e7b31241839c138809cec
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84019890"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí služby Azure Machine Learning a Azure Data Factory
@@ -125,15 +124,15 @@ Následující fragment kódu JSON definuje aktivitu spuštění Azure Machine L
 }
 ```
 
-| Vlastnost          | Description                              | Vyžadováno |
+| Vlastnost          | Popis                              | Vyžadováno |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | Název aktivity v kanálu     | Ano      |
-| description       | Text popisující, co aktivita dělá.  | Ne       |
-| typ              | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity **AzureMLBatchExecution**. | Ano      |
-| linkedServiceName | Propojené služby pro propojenou službu Azure Machine Learning. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
-| webServiceInputs  | Páry klíč-hodnota, mapování názvů Azure Machine Learning vstupů webové služby. Klíč musí odpovídat vstupním parametrům definovaným v publikované webové službě Azure Machine Learning. Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění vstupních objektů BLOB. | Ne       |
-| webServiceOutputs | Páry klíč-hodnota, mapování názvů Azure Machine Learning výstupů webové služby. Klíč musí odpovídat výstupním parametrům definovaným v publikované webové službě Azure Machine Learning. Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění výstupního objektu BLOB. | Ne       |
-| globalParameters  | Páry klíč-hodnota, které mají být předány do koncového bodu služby Azure Machine Learning Studio (Classic) Batch. Klíče musí odpovídat názvům parametrů webové služby, které jsou definovány v publikované webové službě Azure Machine Learning Studio (Classic). Hodnoty se předávají do Azure Machine Learning Studio vlastnosti GlobalParameters (Classic) žádosti o spuštění dávky. | Ne       |
+| name              | Název aktivity v kanálu     | Yes      |
+| description       | Text popisující, co aktivita dělá.  | No       |
+| typ              | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity **AzureMLBatchExecution**. | Yes      |
+| linkedServiceName | Propojené služby pro propojenou službu Azure Machine Learning. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
+| webServiceInputs  | Páry klíč-hodnota, mapování názvů Azure Machine Learning vstupů webové služby. Klíč musí odpovídat vstupním parametrům definovaným v publikované webové službě Azure Machine Learning. Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění vstupních objektů BLOB. | No       |
+| webServiceOutputs | Páry klíč-hodnota, mapování názvů Azure Machine Learning výstupů webové služby. Klíč musí odpovídat výstupním parametrům definovaným v publikované webové službě Azure Machine Learning. Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění výstupního objektu BLOB. | No       |
+| globalParameters  | Páry klíč-hodnota, které mají být předány do koncového bodu služby Azure Machine Learning Studio (Classic) Batch. Klíče musí odpovídat názvům parametrů webové služby, které jsou definovány v publikované webové službě Azure Machine Learning Studio (Classic). Hodnoty se předávají do Azure Machine Learning Studio vlastnosti GlobalParameters (Classic) žádosti o spuštění dávky. | No       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Scénář 1: experimenty s využitím vstupů a výstupů webové služby, které odkazují na data v Azure Blob Storage
 

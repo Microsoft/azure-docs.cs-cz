@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
 ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84012972"
 ---
 # <a name="azure-encryption-overview"></a>Přehled šifrování Azure
@@ -181,7 +180,7 @@ Připojení brány VPN typu Site-to-site můžete použít k připojení místn�
 
 Připojení VPN typu Site-to-site k virtuální síti můžete nakonfigurovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 [Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

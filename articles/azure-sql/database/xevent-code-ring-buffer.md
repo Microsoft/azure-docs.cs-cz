@@ -12,10 +12,9 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: faba9eaf59f5d1c941bacb58ba1faf9f817d39cf
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84046982"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>Cílový kód cyklické vyrovnávací paměti pro rozšířené události v Azure SQL Database
@@ -47,8 +46,8 @@ Toto téma představuje ukázku kódu Transact-SQL, který:
 * Všechny databáze, na kterých můžete vytvořit tabulku.
   
   * Volitelně můžete [vytvořit ukázkovou databázi **AdventureWorksLT** ](single-database-create-quickstart.md) během několika minut.
-* SQL Server Management Studio (SSMS. exe), v ideálním případě podle nejnovější měsíční verze aktualizace.
-  Nejnovější SSMS. exe si můžete stáhnout z těchto:
+* SQL Server Management Studio (ssms.exe), v ideálním případě podle nejnovější měsíční verze aktualizace.
+  Nejnovější ssms.exe si můžete stáhnout z těchto:
   
   * Téma s názvem [stažení SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
   * [Přímý odkaz na stažení.](https://go.microsoft.com/fwlink/?linkid=616025)
@@ -220,7 +219,7 @@ Použili jsme `ssms.exe` ke spuštění ukázky kódu.
 
 Pokud chcete zobrazit výsledky, klikneme na buňku pod záhlavím sloupce **target_data_XML**.
 
-Pak v podokně výsledků kliknete na buňku pod záhlavím sloupce **target_data_XML**. Tím kliknete na tlačítko vytvořit další kartu soubor v SSMS. exe, ve kterém se obsah buňky výsledku zobrazil jako XML.
+Pak v podokně výsledků kliknete na buňku pod záhlavím sloupce **target_data_XML**. Tím kliknete na tlačítko vytvořit další kartu soubor v ssms.exe, ve které byl obsah buňky výsledku zobrazen jako XML.
 
 Výstup je zobrazen v následujícím bloku. Vypadá to dlouhou dobu, ale je to jen dva **\<event>** prvky.
 
