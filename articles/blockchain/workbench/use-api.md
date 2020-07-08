@@ -5,10 +5,10 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 7c96e45c8bcc9834df7ef2a0b2a59f53fd8315cf
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210058"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Používání Azure blockchain Workbench Preview REST API
@@ -19,7 +19,7 @@ Azure blockchain Workbench Preview REST API poskytuje vývojářům a informačn
 
 K rozhraním API aplikace blockchain Workbench se dostanete prostřednictvím koncového bodu pro vaše nasazení. Pro získání adresy URL koncového bodu rozhraní API pro vaše nasazení:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V levém navigačním podokně vyberte **skupiny prostředků**.
 1. Vyberte název skupiny prostředků, kterou jste nasadili blockchain Workbench.
 1. Vyberte záhlaví sloupce **typ** k seřazení seznamu abecedně podle typu.
@@ -28,7 +28,7 @@ K rozhraním API aplikace blockchain Workbench se dostanete prostřednictvím ko
 
     ![Adresa URL koncového bodu rozhraní API služby App Service](media/use-api/app-service-api.png)
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Požadavky na REST API Workbench blockchain jsou chráněné pomocí Azure Active Directory (Azure AD).
 

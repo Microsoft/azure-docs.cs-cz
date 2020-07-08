@@ -9,10 +9,10 @@ ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85209347"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak můžete rozšířit existující fond hostite
 
 Než začnete, ujistěte se, že jste vytvořili fond hostitelů a virtuální počítače hostitele relace (VM) pomocí jedné z následujících metod:
 
-- [portál Azure](./create-host-pools-azure-marketplace.md)
+- [Azure Portal](./create-host-pools-azure-marketplace.md)
 - [Vytvoření fondu hostitelů pomocí PowerShellu](./create-host-pools-powershell.md)
 
 Při prvním vytvoření fondu hostitelů a hostitele relací budete také potřebovat následující informace:

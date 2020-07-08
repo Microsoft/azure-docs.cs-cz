@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
 ms.openlocfilehash: 8543276a338b523a290fb131a8f1b7a55affbd98
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85248968"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformuje data pomocí aktivity SQL Server uložených procedur v Azure Data Factory
@@ -70,12 +70,12 @@ Tyto vlastnosti JSON jsou popsány v následující tabulce:
 
 | Vlastnost                  | Popis                              | Vyžadováno |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | Název aktivity                     | Ano      |
-| description               | Text popisující, k čemu se aktivita používá | Ne       |
-| typ                      | Pro aktivitu uložená procedura je typ aktivity **SqlServerStoredProcedure** | Ano      |
-| linkedServiceName         | Odkaz na **Azure SQL Database** nebo **Azure synapse Analytics (dříve Azure SQL Data Warehouse)** nebo **SQL Server** registrován jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
-| storedProcedureName       | Zadejte název uložené procedury, která se má vyvolat. | Ano      |
-| storedProcedureParameters | Zadejte hodnoty parametrů uložených procedur. Slouží `"param1": { "value": "param1Value","type":"param1Type" }` k předání hodnot parametrů a jejich typu, které jsou podporovány zdrojem dat. Pokud pro parametr potřebujete předat hodnotu null, použijte `"param1": { "value": null }` (všechna malá písmena). | Ne       |
+| name                      | Název aktivity                     | Yes      |
+| description               | Text popisující, k čemu se aktivita používá | No       |
+| typ                      | Pro aktivitu uložená procedura je typ aktivity **SqlServerStoredProcedure** | Yes      |
+| linkedServiceName         | Odkaz na **Azure SQL Database** nebo **Azure synapse Analytics (dříve Azure SQL Data Warehouse)** nebo **SQL Server** registrován jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Yes      |
+| storedProcedureName       | Zadejte název uložené procedury, která se má vyvolat. | Yes      |
+| storedProcedureParameters | Zadejte hodnoty parametrů uložených procedur. Slouží `"param1": { "value": "param1Value","type":"param1Type" }` k předání hodnot parametrů a jejich typu, které jsou podporovány zdrojem dat. Pokud pro parametr potřebujete předat hodnotu null, použijte `"param1": { "value": null }` (všechna malá písmena). | No       |
 
 ## <a name="parameter-data-type-mapping"></a>Mapování datových typů parametrů
 Datový typ, který zadáte pro parametr, je typ Azure Data Factory, který se mapuje na datový typ ve zdroji dat, který používáte. Mapování datových typů pro zdroj dat můžete najít v oblasti konektory. Některé příklady jsou

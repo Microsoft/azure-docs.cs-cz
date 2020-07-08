@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85208769"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Jak nakonfigurovat přístup Azure Active Directory ke službě Azure blockchain
@@ -29,13 +29,13 @@ Přístup můžete udělit na úrovni člena i na úrovni uzlu. Udělení přís
 
 Udělení oprávnění k přístupu na úrovni člena.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte na **řízení přístupu (IAM) > přidat > přidat přiřazení role**.
 1. Vyberte roli **přístup k členskému uzlu blockchain (Preview)** a přidejte objekt Azure AD ID, ke kterému chcete udělit přístup. Objekt Azure AD ID může být:
 
     | Objekt Azure AD | Příklad |
     |-----------------|---------|
-    | Uživatel Azure AD   | `kim@contoso.onmicrosoft.com` |
+    | Uživatel služby Azure AD   | `kim@contoso.onmicrosoft.com` |
     | Skupina Azure AD  | `sales@contoso.onmicrosoft.com` |
     | ID aplikace  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 

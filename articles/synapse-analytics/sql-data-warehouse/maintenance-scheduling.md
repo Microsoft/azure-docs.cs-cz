@@ -11,10 +11,10 @@ ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
 ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85210979"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Použití plánů údržby ke správě aktualizací a údržby služby
@@ -54,7 +54,7 @@ Ve výchozím nastavení mají všechny nově vytvořené instance datového skl
 
 Chcete-li zobrazit plán údržby, který byl použit pro váš synapse fond SQL, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Vyberte synapse fond SQL, který chcete zobrazit.
 3. Vybraný synapse fond SQL se otevře v okně Přehled. Plán údržby, který se použije pro datový sklad, se zobrazí pod **plánem údržby**.
 
@@ -70,7 +70,7 @@ Primární a sekundární systém Windows musí mít oddělené rozsahy dnů. P�
 
 Chcete-li změnit plán údržby pro synapse fond SQL, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Vyberte synapse fond SQL, který chcete aktualizovat. Otevře se stránka s přehledem.
 Kliknutím na odkaz **Souhrn plánu údržby** v okně Přehled otevřete stránku nastavení plánu údržby. Případně vyberte možnost **plán údržby** v nabídce na levé straně prostředku.
 

@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85208157"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Správa služby Azure blockchain pomocí Azure CLI
@@ -229,7 +229,7 @@ az role assignment create \
 | **zmocněn** | ID uživatele Azure AD. Například `user@contoso.com`. |
 | **oboru** | Rozsah přiřazení role Může to být buď člen blockchain nebo uzel transakce. |
 
-**Případě**
+**Příklad:**
 
 Udělit přístup k uzlu pro uživatele Azure AD k blockchain **členu**:
 
@@ -240,7 +240,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**Případě**
+**Příklad:**
 
 Udělit přístup k uzlu pro uživatele Azure AD na **uzel blockchain transakce**:
 
@@ -265,7 +265,7 @@ az role assignment create \
 | **nabyvatel – ID objektu** | ID skupiny nebo ID aplikace služby Azure AD. |
 | **oboru** | Rozsah přiřazení role Může to být buď člen blockchain nebo uzel transakce. |
 
-**Případě**
+**Příklad:**
 
 Udělení přístupu k uzlu pro **roli aplikace**
 
