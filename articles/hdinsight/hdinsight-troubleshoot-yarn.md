@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79272198"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Řešení potíží s Apache Hadoop YARN pomocí služby Azure HDInsight
@@ -95,7 +94,7 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
     ```
 
-    Tento příkaz vytvoří soubor protokolu s názvem amlogs. txt.
+    Tento příkaz vytvoří soubor protokolu s názvem amlogs.txt.
 
 1. Chcete-li stáhnout protokoly kontejneru PŘÍZ pouze pro nejnovější hlavní aplikaci, použijte následující příkaz:
 
@@ -103,7 +102,7 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
     ```
 
-    Tento příkaz vytvoří soubor protokolu s názvem latestamlogs. txt.
+    Tento příkaz vytvoří soubor protokolu s názvem latestamlogs.txt.
 
 1. Chcete-li stáhnout protokoly kontejneru PŘÍZe pro první dva hlavní aplikační servery, použijte následující příkaz:
 
@@ -111,7 +110,7 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
     ```
 
-    Tento příkaz vytvoří soubor protokolu s názvem first2amlogs. txt.
+    Tento příkaz vytvoří soubor protokolu s názvem first2amlogs.txt.
 
 1. Chcete-li stáhnout všechny protokoly kontejneru PŘÍZe, použijte následující příkaz:
 
@@ -119,7 +118,7 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
     ```
 
-    Tento příkaz vytvoří soubor protokolu s názvem Logs. txt.
+    Tento příkaz vytvoří soubor protokolu s názvem logs.txt.
 
 1. Chcete-li stáhnout protokol kontejneru PŘÍZ pro konkrétní kontejner, použijte následující příkaz:
 
@@ -127,7 +126,7 @@ Tyto změny jsou okamžitě viditelné v uživatelském rozhraní plánovače P�
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
     ```
 
-    Tento příkaz vytvoří soubor protokolu s názvem containerlogs. txt.
+    Tento příkaz vytvoří soubor protokolu s názvem containerlogs.txt.
 
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>Další čtení
 
@@ -140,6 +139,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 - Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-- Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+- Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 - Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

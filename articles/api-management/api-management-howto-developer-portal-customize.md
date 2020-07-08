@@ -13,10 +13,9 @@ ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
 ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79244092"
 ---
 # <a name="access-and-customize-developer-portal"></a>Přístup a přizpůsobení portálu pro vývojáře
@@ -68,7 +67,7 @@ Kliknutím na modrou ikonu se znaménkem plus můžete přidat řádky na strán
 
 Rozložení definují způsob zobrazení stránek. Například ve výchozím obsahu jsou k dispozici dvě rozložení – jedna se vztahuje na domovskou stránku a druhá na všechny zbývající stránky.
 
-Rozložení se použije na stránku podle odpovídající šablony URL k adrese URL stránky. `/wiki/*` Například rozložení s šablonou URL bude použito na všechny stránky s `/wiki/` segmentem v adrese URL: `/wiki/getting-started`, `/wiki/styles`atd.
+Rozložení se použije na stránku podle odpovídající šablony URL k adrese URL stránky. Například rozložení s šablonou URL `/wiki/*` bude použito na všechny stránky s `/wiki/` segmentem v adrese URL: `/wiki/getting-started` , `/wiki/styles` atd.
 
 Na obrázku výše je obsah patřící do rozložení označen modře, zatímco stránka je označena červeně. Oddíly nabídky jsou označeny v uvedeném pořadí.
 
@@ -91,7 +90,7 @@ Pokaždé, když provedete změnu na portálu, je nutné ji uložit ručně stis
 Než zpřístupníte portál návštěvníkům, měli byste přizpůsobit automaticky generovaný obsah. Mezi doporučené změny patří rozložení, styly a obsah domovské stránky.
 
 > [!NOTE]
-> Z důvodu integrace nelze následující stránky odebrat ani přesunout pod jinou adresu URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`,. `/signup`
+> Z důvodu integrace nelze následující stránky odebrat ani přesunout pod jinou adresu URL: `/404` , `/500` , `/captcha` , `/change-password` , `/config.json` , `/confirm/invitation` , `/confirm-v2/identities/basic/signup` , `/confirm-v2/password` , `/internal-status-0123456789abcdef` , `/publish` , `/signin` , `/signin-sso` , `/signup` .
 
 ### <a name="home-page"></a>Domovská stránka
 
@@ -124,7 +123,7 @@ Pokud chcete, aby byl váš portál a jeho nejnovější změny dostupné pro n�
 
 ## <a name="visit-the-published-portal"></a>Navštívit publikovaný portál
 
-Po publikování portálu je možné k němu přistupovat na stejné adrese URL jako panel pro správu, například `https://contoso-api.developer.azure-api.net`. Zobrazí se v samostatné relaci prohlížeče (režim procházení anonymním/privátní) jako externí návštěvník.
+Po publikování portálu je možné k němu přistupovat na stejné adrese URL jako panel pro správu, například `https://contoso-api.developer.azure-api.net` . Zobrazí se v samostatné relaci prohlížeče (režim procházení anonymním/privátní) jako externí návštěvník.
 
 ## <a name="apply-the-cors-policy-on-apis"></a>Použití zásad CORS na rozhraních API
 

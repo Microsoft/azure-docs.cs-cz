@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: 06c4ede12f939e48973d3e0b502d90b848d199bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79280297"
 ---
 # <a name="api-management-caching-policies"></a>Zásady ukládání do mezipaměti pro službu API Management
@@ -76,7 +75,7 @@ Pomocí `cache-lookup` zásady můžete vyhledat mezipaměť a vrátit platnou o
 ```
 
 #### <a name="example-using-policy-expressions"></a>Příklad použití výrazů zásad
-Tento příklad ukazuje, jak nakonfigurovat API Management dobu ukládání odpovědí do mezipaměti, která odpovídá mezipaměti služby back-end, jak je uvedeno v `Cache-Control` direktivě zálohované služby. Ukázku konfigurace a používání těchto zásad najdete v tématu [cloudový krytový díl 177: další API Management funkce s využitím Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a rychlé převinutí na 25:25.
+Tento příklad ukazuje, jak nakonfigurovat API Management dobu ukládání odpovědí do mezipaměti, která odpovídá mezipaměti služby back-end, jak je uvedeno v direktivě zálohované služby `Cache-Control` . Ukázku konfigurace a používání těchto zásad najdete v tématu [cloudový krytový díl 177: další API Management funkce s využitím Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a rychlé převinutí na 25:25.
 
 ```xml
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->
@@ -100,22 +99,22 @@ Další informace najdete v tématu [výrazy zásad](api-management-policy-expre
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Description|Vyžadováno|
 |----------|-----------------|--------------|
-|mezipaměť – vyhledávání|Kořenový element.|Ano|
-|různé – podle záhlaví|Zahájit ukládání odpovědí do mezipaměti na hodnotu zadaného záhlaví, například přijmout, přijmout-charset, přijmout – kódování, přijmout – jazyk, autorizace, očekávané, z, hostitel, If-Match.|Ne|
-|různé – podle dotazu – parametr|Spustí ukládání odpovědí do mezipaměti na hodnotu zadaných parametrů dotazu. Zadejte jeden nebo více parametrů. Jako oddělovač použijte středník. Pokud není zadán žádný parametr, jsou použity všechny parametry dotazu.|Ne|
+|mezipaměť – vyhledávání|Kořenový element.|Yes|
+|různé – podle záhlaví|Zahájit ukládání odpovědí do mezipaměti na hodnotu zadaného záhlaví, například přijmout, přijmout-charset, přijmout – kódování, přijmout – jazyk, autorizace, očekávané, z, hostitel, If-Match.|No|
+|různé – podle dotazu – parametr|Spustí ukládání odpovědí do mezipaměti na hodnotu zadaných parametrů dotazu. Zadejte jeden nebo více parametrů. Jako oddělovač použijte středník. Pokud není zadán žádný parametr, jsou použity všechny parametry dotazu.|No|
 
 ### <a name="attributes"></a>Atributy
 
-| Název                           | Popis                                                                                                                                                                                                                                                                                                                                                 | Požaduje se | Výchozí           |
+| Name                           | Description                                                                                                                                                                                                                                                                                                                                                 | Vyžadováno | Výchozí           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| povolení ukládání privátních odpovědí do mezipaměti | Pokud je nastaveno `true`na, umožňuje ukládání požadavků, které obsahují autorizační hlavičku, do mezipaměti.                                                                                                                                                                                                                                                                        | Ne       | false (nepravda)             |
-| typ ukládání do mezipaměti               | Vyberte jednu z následujících hodnot atributu:<br />- `internal`Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external`Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | Ne       | `prefer-external` |
-| pro ukládání do mezipaměti – typ        | Tento atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -None-ukládání do mezipaměti se nepovoluje.<br />– soukromé ukládání do mezipaměti privátních dat je povolené.<br />– ukládání do mezipaměti veřejného a sdíleného pro příjem dat je povolené.                                                                                                          | Ne       | Žádná              |
-| nutné – znovu ověřit                | Pokud je povoleno ukládání do mezipaměti, tato vlastnost zapne nebo vypne `must-revalidate` direktivu řízení mezipaměti v odpovědích brány.                                                                                                                                                                                                                      | Ne       | true              |
-| různé – podle vývojáře              | Nastavte na `true` pro ukládání odpovědí do mezipaměti na [klíč předplatného](https://docs.microsoft.com/azure/api-management/api-management-subscriptions).                                                                                                                                                                                                                                                                                                         | Ano      |         False          |
-| různé – podle – Developer-Groups       | Nastavte na `true` pro ukládání odpovědí do mezipaměti na [skupinu uživatelů](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Ano      |       False            |
+| povolení ukládání privátních odpovědí do mezipaměti | Pokud je nastaveno na `true` , umožňuje ukládání požadavků, které obsahují autorizační hlavičku, do mezipaměti.                                                                                                                                                                                                                                                                        | No       | false (nepravda)             |
+| typ ukládání do mezipaměti               | Vyberte jednu z následujících hodnot atributu:<br />- `internal`Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external`Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | No       | `prefer-external` |
+| pro ukládání do mezipaměti – typ        | Tento atribut musí být nastaven na jednu z následujících hodnot.<br /><br /> -None-ukládání do mezipaměti se nepovoluje.<br />– soukromé ukládání do mezipaměti privátních dat je povolené.<br />– ukládání do mezipaměti veřejného a sdíleného pro příjem dat je povolené.                                                                                                          | No       | žádné              |
+| nutné – znovu ověřit                | Pokud je povoleno ukládání do mezipaměti, tato vlastnost zapne nebo vypne `must-revalidate` direktivu řízení mezipaměti v odpovědích brány.                                                                                                                                                                                                                      | No       | true              |
+| různé – podle vývojáře              | Nastavte na `true` pro ukládání odpovědí do mezipaměti na [klíč předplatného](https://docs.microsoft.com/azure/api-management/api-management-subscriptions).                                                                                                                                                                                                                                                                                                         | Yes      |         False          |
+| různé – podle – Developer-Groups       | Nastavte na `true` pro ukládání odpovědí do mezipaměti na [skupinu uživatelů](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups).                                                                                                                                                                                                                                                                                                             | Yes      |       False            |
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
@@ -124,7 +123,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 - **Obory zásad:** všechny rozsahy
 
 ## <a name="store-to-cache"></a><a name="StoreToCache"></a>Ukládat do mezipaměti
-`cache-store` Zásada ukládá odpovědi do mezipaměti podle zadaného nastavení mezipaměti. Tato zásada se dá použít v případech, kdy obsah odpovědi zůstane v časovém intervalu statický. Ukládání odpovědí do mezipaměti omezuje požadavky na šířku pásma a zpracování na back-end webovém serveru a snižuje latenci zjištěné uživateli rozhraní API.
+`cache-store`Zásada ukládá odpovědi do mezipaměti podle zadaného nastavení mezipaměti. Tato zásada se dá použít v případech, kdy obsah odpovědi zůstane v časovém intervalu statický. Ukládání odpovědí do mezipaměti omezuje požadavky na šířku pásma a zpracování na back-end webovém serveru a snižuje latenci zjištěné uživateli rozhraní API.
 
 > [!NOTE]
 > Tato zásada musí mít odpovídající možnost [získat ze zásad mezipaměti](api-management-caching-policies.md#GetFromCache) .
@@ -155,7 +154,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 ```
 
 #### <a name="example-using-policy-expressions"></a>Příklad použití výrazů zásad
-Tento příklad ukazuje, jak nakonfigurovat API Management dobu ukládání odpovědí do mezipaměti, která odpovídá mezipaměti služby back-end, jak je uvedeno v `Cache-Control` direktivě zálohované služby. Ukázku konfigurace a používání těchto zásad najdete v tématu [cloudový krytový díl 177: další API Management funkce s využitím Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a rychlé převinutí na 25:25.
+Tento příklad ukazuje, jak nakonfigurovat API Management dobu ukládání odpovědí do mezipaměti, která odpovídá mezipaměti služby back-end, jak je uvedeno v direktivě zálohované služby `Cache-Control` . Ukázku konfigurace a používání těchto zásad najdete v tématu [cloudový krytový díl 177: další API Management funkce s využitím Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) a rychlé převinutí na 25:25.
 
 ```xml
 <!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->
@@ -179,15 +178,15 @@ Další informace najdete v tématu [výrazy zásad](api-management-policy-expre
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Description|Vyžadováno|
 |----------|-----------------|--------------|
-|ukládat do mezipaměti|Kořenový element.|Ano|
+|ukládat do mezipaměti|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
-| Název             | Popis                                                                                                                                                                                                                                                                                                                                                 | Požaduje se | Výchozí           |
+| Name             | Description                                                                                                                                                                                                                                                                                                                                                 | Vyžadováno | Výchozí           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| doba trvání         | Doba až živých položek v mezipaměti, které jsou zadány v sekundách.                                                                                                                                                                                                                                                                                                   | Ano      | –               |
+| doba trvání         | Doba až živých položek v mezipaměti, které jsou zadány v sekundách.                                                                                                                                                                                                                                                                                                   | Yes      | Není k dispozici               |
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
@@ -222,18 +221,18 @@ Další informace a příklady těchto zásad najdete v tématu [vlastní uklád
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Description|Vyžadováno|
 |----------|-----------------|--------------|
-|mezipaměť – vyhledání hodnoty|Kořenový element.|Ano|
+|mezipaměť – vyhledání hodnoty|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
-| Název             | Popis                                                                                                                                                                                                                                                                                                                                                 | Požaduje se | Výchozí           |
+| Name             | Description                                                                                                                                                                                                                                                                                                                                                 | Vyžadováno | Výchozí           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| typ ukládání do mezipaměti | Vyberte jednu z následujících hodnot atributu:<br />- `internal`Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external`Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | Ne       | `prefer-external` |
-| Výchozí hodnota    | Hodnota, která bude přiřazena proměnné v případě, že výsledkem hledání klíče mezipaměti bylo neúspěšné. Pokud tento atribut není zadán, `null` je přiřazen.                                                                                                                                                                                                           | Ne       | `null`            |
-| key              | Hodnota klíče mezipaměti, která se má použít při vyhledávání                                                                                                                                                                                                                                                                                                                       | Ano      | –               |
-| název proměnné    | Název [kontextové proměnné](api-management-policy-expressions.md#ContextVariables) , ke které je hledaná hodnota přiřazena, pokud vyhledávání proběhlo úspěšně. Pokud dojde k neúspěšnému vyhledávání, proměnné se přiřadí hodnota `default-value` atributu nebo `null`, pokud je `default-value` atribut vynechán.                                       | Ano      | –               |
+| typ ukládání do mezipaměti | Vyberte jednu z následujících hodnot atributu:<br />- `internal`Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external`Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | No       | `prefer-external` |
+| Výchozí hodnota    | Hodnota, která bude přiřazena proměnné v případě, že výsledkem hledání klíče mezipaměti bylo neúspěšné. Pokud tento atribut není zadán, `null` je přiřazen.                                                                                                                                                                                                           | No       | `null`            |
+| key              | Hodnota klíče mezipaměti, která se má použít při vyhledávání                                                                                                                                                                                                                                                                                                                       | Yes      | Není k dispozici               |
+| název proměnné    | Název [kontextové proměnné](api-management-policy-expressions.md#ContextVariables) , ke které je hledaná hodnota přiřazena, pokud vyhledávání proběhlo úspěšně. Pokud dojde k neúspěšnému vyhledávání, proměnné se přiřadí hodnota `default-value` atributu nebo `null` , pokud `default-value` je atribut vynechán.                                       | Yes      | Není k dispozici               |
 
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
@@ -242,7 +241,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 - **Obory zásad:** všechny rozsahy
 
 ## <a name="store-value-in-cache"></a><a name="StoreToCacheByKey"></a>Hodnota úložiště v mezipaměti
-Služba `cache-store-value` provádí úložiště mezipaměti podle klíče. Klíč může obsahovat libovolnou řetězcovou hodnotu a obvykle se poskytuje pomocí výrazu zásad.
+`cache-store-value`Služba provádí úložiště mezipaměti podle klíče. Klíč může obsahovat libovolnou řetězcovou hodnotu a obvykle se poskytuje pomocí výrazu zásad.
 
 > [!NOTE]
 > Tato zásada musí mít odpovídající [hodnotu Get ze zásad mezipaměti](#GetFromCacheByKey) .
@@ -265,18 +264,18 @@ Další informace a příklady těchto zásad najdete v tématu [vlastní uklád
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Description|Vyžadováno|
 |----------|-----------------|--------------|
-|cache-Store-Value|Kořenový element.|Ano|
+|cache-Store-Value|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
-| Název             | Popis                                                                                                                                                                                                                                                                                                                                                 | Požaduje se | Výchozí           |
+| Name             | Description                                                                                                                                                                                                                                                                                                                                                 | Vyžadováno | Výchozí           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| typ ukládání do mezipaměti | Vyberte jednu z následujících hodnot atributu:<br />- `internal`Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external`Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | Ne       | `prefer-external` |
-| doba trvání         | Hodnota se uloží do mezipaměti pro zadanou hodnotu trvání zadanou v sekundách.                                                                                                                                                                                                                                                                                 | Ano      | –               |
-| key              | Klíč mezipaměti, do které se hodnota uloží.                                                                                                                                                                                                                                                                                                                   | Ano      | –               |
-| value            | Hodnota, která má být uložena do mezipaměti.                                                                                                                                                                                                                                                                                                                                     | Ano      | –               |
+| typ ukládání do mezipaměti | Vyberte jednu z následujících hodnot atributu:<br />- `internal`Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external`Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | No       | `prefer-external` |
+| doba trvání         | Hodnota se uloží do mezipaměti pro zadanou hodnotu trvání zadanou v sekundách.                                                                                                                                                                                                                                                                                 | Yes      | Není k dispozici               |
+| key              | Klíč mezipaměti, do které se hodnota uloží.                                                                                                                                                                                                                                                                                                                   | Yes      | Není k dispozici               |
+| hodnota            | Hodnota, která má být uložena do mezipaměti.                                                                                                                                                                                                                                                                                                                                     | Yes      | Není k dispozici               |
 ### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
 
@@ -284,7 +283,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 - **Obory zásad:** všechny rozsahy
 
 ### <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a>Odebrat hodnotu z mezipaměti
-`cache-remove-value` Odstraní položku uloženou v mezipaměti, kterou identifikuje její klíč. Klíč může obsahovat libovolnou řetězcovou hodnotu a obvykle se poskytuje pomocí výrazu zásad.
+`cache-remove-value`Odstraní položku uloženou v mezipaměti, kterou identifikuje její klíč. Klíč může obsahovat libovolnou řetězcovou hodnotu a obvykle se poskytuje pomocí výrazu zásad.
 
 #### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -304,16 +303,16 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 
 #### <a name="elements"></a>Elementy
 
-|Název|Popis|Požaduje se|
+|Name|Description|Vyžadováno|
 |----------|-----------------|--------------|
-|mezipaměť – Remove-Value|Kořenový element.|Ano|
+|mezipaměť – Remove-Value|Kořenový element.|Yes|
 
 #### <a name="attributes"></a>Atributy
 
-| Název             | Popis                                                                                                                                                                                                                                                                                                                                                 | Požaduje se | Výchozí           |
+| Name             | Description                                                                                                                                                                                                                                                                                                                                                 | Vyžadováno | Výchozí           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| typ ukládání do mezipaměti | Vyberte jednu z následujících hodnot atributu:<br />- `internal`Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external`Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | Ne       | `prefer-external` |
-| key              | Klíč hodnoty dříve uložené v mezipaměti, který má být odstraněn z mezipaměti.                                                                                                                                                                                                                                                                                        | Ano      | –               |
+| typ ukládání do mezipaměti | Vyberte jednu z následujících hodnot atributu:<br />- `internal`Pokud chcete používat integrovanou API Management mezipaměť,<br />- `external`Pokud chcete použít externí mezipaměť, jak je popsáno v tématu [použití externí mezipaměti Azure pro Redis v Azure API Management](api-management-howto-cache-external.md),<br />- `prefer-external`Pokud chcete použít externí mezipaměť v případě, že je nakonfigurovaná nebo interní mezipaměť, jinak. | No       | `prefer-external` |
+| key              | Klíč hodnoty dříve uložené v mezipaměti, který má být odstraněn z mezipaměti.                                                                                                                                                                                                                                                                                        | Yes      | Není k dispozici               |
 
 #### <a name="usage"></a>Využití
 Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) zásad.

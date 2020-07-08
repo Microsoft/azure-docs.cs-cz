@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969565"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření kompletního virtuálního počítače se systémem Linux pomocí Azure CLI
@@ -94,7 +93,7 @@ Výstup ukazuje logicky vytvořenou podsíť ve virtuální síti:
 
 
 ## <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
-Teď vytvoříme veřejnou IP adresu pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip). Tato veřejná IP adresa vám umožní připojit se k virtuálním počítačům z Internetu. Vzhledem k tomu, že výchozí adresa je dynamická, vytvořte s `--domain-name-label` parametrem pojmenovaný záznam DNS. Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* s názvem DNS *mypublicdns*. Vzhledem k tomu, že název DNS musí být jedinečný, zadejte vlastní jedinečný název DNS:
+Teď vytvoříme veřejnou IP adresu pomocí [AZ Network Public-IP Create](/cli/azure/network/public-ip). Tato veřejná IP adresa vám umožní připojit se k virtuálním počítačům z Internetu. Vzhledem k tomu, že výchozí adresa je dynamická, vytvořte s parametrem pojmenovaný záznam DNS `--domain-name-label` . Následující příklad vytvoří veřejnou IP adresu s názvem *myPublicIP* s názvem DNS *mypublicdns*. Vzhledem k tomu, že název DNS musí být jedinečný, zadejte vlastní jedinečný název DNS:
 
 ```azurecli
 az network public-ip create \
@@ -471,7 +470,7 @@ Doména selhání výstupních poznámek a aktualizačních domén:
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 Vytvořili jste síťové prostředky pro podporu virtuálních počítačů s přístupem k Internetu. Nyní vytvořte virtuální počítač a zabezpečte ho pomocí klíče SSH. V tomto příkladu vytvoříme virtuální počítač Ubuntu založený na nejnovějším LTS. Další image najdete pomocí [seznamu AZ VM Image list](/cli/azure/vm/image), jak je popsáno v tématu [vyhledání imagí virtuálních počítačů Azure](cli-ps-findimage.md).
 
-Zadejte klíč SSH, který se má použít pro ověřování. Pokud nemáte dvojici veřejného klíče SSH, můžete [je vytvořit](mac-create-ssh-keys.md) nebo použít `--generate-ssh-keys` parametr k jejich vytvoření. Pokud již máte dvojici klíčů, tento parametr používá existující klíče v `~/.ssh`.
+Zadejte klíč SSH, který se má použít pro ověřování. Pokud nemáte dvojici veřejného klíče SSH, můžete [je vytvořit](mac-create-ssh-keys.md) nebo použít `--generate-ssh-keys` parametr k jejich vytvoření. Pokud již máte dvojici klíčů, tento parametr používá existující klíče v `~/.ssh` .
 
 Pomocí příkazu [AZ VM Create](/cli/azure/vm) vytvořte virtuální počítač tím, že spojíte všechny prostředky a informace. Následující příklad vytvoří virtuální počítač s názvem *myVM*:
 
@@ -556,7 +555,7 @@ Co když teď chcete vytvořit další vývojové prostředí se stejnými param
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Tento příkaz vytvoří `myResourceGroup.json` soubor v aktuálním pracovním adresáři. Když z této šablony vytvoříte prostředí, zobrazí se výzva k zadání všech názvů prostředků. Tyto názvy můžete vyplnit v souboru šablony přidáním `--include-parameter-default-value` parametru do `az group export` příkazu. Upravte šablonu JSON tak, aby určovala názvy prostředků, nebo [vytvořte soubor Parameters. JSON](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , který určuje názvy prostředků.
+Tento příkaz vytvoří `myResourceGroup.json` soubor v aktuálním pracovním adresáři. Když z této šablony vytvoříte prostředí, zobrazí se výzva k zadání všech názvů prostředků. Tyto názvy můžete vyplnit v souboru šablony přidáním `--include-parameter-default-value` parametru do `az group export` příkazu. Upravte šablonu JSON tak, aby určovala názvy prostředků, nebo [vytvořte parameters.jsv souboru](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , který určuje názvy prostředků.
 
 Pokud chcete vytvořit prostředí ze šablony, použijte příkaz [AZ Group Deployment Create](/cli/azure/group/deployment) následujícím způsobem:
 

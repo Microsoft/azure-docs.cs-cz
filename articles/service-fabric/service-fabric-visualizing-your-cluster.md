@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: mikhegn
 ms.openlocfilehash: 80e3d990b6e8026c57ffff0048d0447a95529564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79258184"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Vizualizujte cluster pomocí Service Fabric Exploreru
@@ -37,9 +36,9 @@ Pomocí následujících odkazů stáhněte Service Fabric Explorer jako desktop
 
 ### <a name="running-service-fabric-explorer-from-the-cluster"></a>Spuštění Service Fabric Explorer z clusteru
 
-Service Fabric Explorer se taky hostuje v koncovém bodě správy HTTP clusteru Service Fabric. Pokud chcete spustit SFX ve webovém prohlížeči, přejděte ke koncovému bodu správy HTTP clusteru z libovolného prohlížeče – například https:\//clusterFQDN: 19080.
+Service Fabric Explorer se taky hostuje v koncovém bodě správy HTTP clusteru Service Fabric. Pokud chcete spustit SFX ve webovém prohlížeči, přejděte ke koncovému bodu správy HTTP clusteru z libovolného prohlížeče – například https: \/ /clusterFQDN: 19080.
 
-Pro nastavení pracovní stanice pro vývojáře můžete Service Fabric Explorer spustit v místním clusteru, a to tak, https://localhost:19080/Explorerže přejdete na. V tomto článku si [Připravte vývojové prostředí](service-fabric-get-started.md).
+Pro nastavení pracovní stanice pro vývojáře můžete Service Fabric Explorer spustit v místním clusteru, a to tak, že přejdete na https://localhost:19080/Explorer . V tomto článku si [Připravte vývojové prostředí](service-fabric-get-started.md).
 
 > [!NOTE]
 > Pokud je váš cluster zabezpečený certifikátem podepsaným svým držitelem, zobrazí se chybová zpráva z webového prohlížeče "Tato lokalita není zabezpečená". Můžete jednoduše pokračovat ve většině moderních webových prohlížečů, a to přepsáním upozornění. V produkčním prostředí by měl být cluster zabezpečený pomocí běžného názvu a certifikátu vystaveného certifikační autoritou. 
@@ -47,7 +46,7 @@ Pro nastavení pracovní stanice pro vývojáře můžete Service Fabric Explore
 >
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Připojení ke clusteru Service Fabric
-Pokud se chcete připojit ke clusteru Service Fabric, budete potřebovat koncový bod správy clusterů (FQDN/IP) a port HTTP Management Endpoint (standardně 19080). Například https\://mysfcluster.westus.cloudapp.Azure.com:19080. Pomocí zaškrtávacího políčka připojit k localhost se můžete připojit k místnímu clusteru v pracovní stanici.
+Pokud se chcete připojit ke clusteru Service Fabric, budete potřebovat koncový bod správy clusterů (FQDN/IP) a port HTTP Management Endpoint (standardně 19080). Například https \: //mysfcluster.westus.cloudapp.Azure.com:19080. Pomocí zaškrtávacího políčka připojit k localhost se můžete připojit k místnímu clusteru v pracovní stanici.
 
 ### <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 Přístup klienta k vašemu Service Fabric clusteru můžete řídit pomocí certifikátů nebo pomocí Azure Active Directory (AAD).
@@ -83,7 +82,7 @@ Zobrazení uzlu obsahuje fyzické rozložení clusteru. Pro daný uzel můžete 
 ## <a name="actions"></a>Akce
 Service Fabric Explorer nabízí rychlý způsob, jak vyvolat akce na uzlech, aplikacích a službách v rámci vašeho clusteru.
 
-Pokud chcete například odstranit instanci aplikace, zvolte aplikaci ze stromu na levé straně a pak zvolte **Akce** > **Odstranit aplikaci**.
+Pokud chcete například odstranit instanci aplikace, zvolte aplikaci ze stromu na levé straně a pak zvolte **Akce**  >  **Odstranit aplikaci**.
 
 ![Odstranění aplikace v Service Fabric Explorer][sfx-delete-application]
 

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: stevelas
 ms.openlocfilehash: 2c6b66b635a2513ccc19e0352414d18d8389fef1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79371048"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Vložení a vyžádání artefaktu OCI pomocí služby Azure Container Registry
@@ -22,9 +21,9 @@ V tomto článku se dozvíte, jak pomocí nástroje [Registry OCI jako úložiš
 ## <a name="prerequisites"></a>Požadavky
 
 * **Registr kontejnerů Azure** – Vytvořte registr kontejnerů ve svém předplatném Azure. Použijte například [Azure Portal](container-registry-get-started-portal.md) nebo rozhraní příkazového [řádku Azure CLI](container-registry-get-started-azure-cli.md).
-* **Nástroj Oras** – Stáhněte a nainstalujte si aktuální verzi Oras pro váš operační systém z [úložiště GitHub](https://github.com/deislabs/oras/releases). Nástroj se uvolní jako komprimovaný tarballu (`.tar.gz` soubor). Extrahujte a nainstalujte soubor pomocí standardních postupů pro váš operační systém.
+* **Nástroj Oras** – Stáhněte a nainstalujte si aktuální verzi Oras pro váš operační systém z [úložiště GitHub](https://github.com/deislabs/oras/releases). Nástroj se uvolní jako komprimovaný tarballu ( `.tar.gz` soubor). Extrahujte a nainstalujte soubor pomocí standardních postupů pro váš operační systém.
 * **Azure Active Directory instanční objekt (volitelné)** – pro ověřování přímo pomocí Oras vytvořte [instanční objekt](container-registry-auth-service-principal.md) pro přístup k vašemu registru. Ujistěte se, že instanční objekt má přiřazenou roli, jako je například AcrPush, aby měl oprávnění k nasdílení a vyžádání artefaktů.
-* **Azure CLI (volitelné)** – Chcete-li použít individuální identitu, potřebujete místní instalaci rozhraní příkazového řádku Azure CLI. Doporučuje se verze 2.0.71 nebo novější. Verzi `az --version `zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+* **Azure CLI (volitelné)** – Chcete-li použít individuální identitu, potřebujete místní instalaci rozhraní příkazového řádku Azure CLI. Doporučuje se verze 2.0.71 nebo novější. `az --version `Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 * **Docker (volitelné)** – Chcete-li použít jednotlivou identitu, je také nutné mít k ověření v registru místně nainstalovaný Docker. Docker nabízí balíčky pro snadnou konfiguraci Dockeru v libovolném systému [macOS][docker-mac], [Windows][docker-windows] nebo [Linux][docker-linux].
 
 
@@ -34,13 +33,13 @@ V této části najdete dva navrhované pracovní postupy pro přihlášení k r
 
 ### <a name="sign-in-with-oras"></a>Přihlaste se pomocí ORAS
 
-Pomocí [instančního objektu](container-registry-auth-service-principal.md) s nabízenými právy spusťte `oras login` příkaz pro přihlášení k registru pomocí ID a hesla aplikace instančního objektu. V tomto případě *myregistry.azurecr.IO*zadejte plně kvalifikovaný název registru (všechna malá písmena). ID aplikace instančního objektu se předává do proměnné `$SP_APP_ID`prostředí a heslo v proměnné. `$SP_PASSWD`
+Pomocí [instančního objektu](container-registry-auth-service-principal.md) s nabízenými právy spusťte `oras login` příkaz pro přihlášení k registru pomocí ID a hesla aplikace instančního objektu. V tomto případě *myregistry.azurecr.IO*zadejte plně kvalifikovaný název registru (všechna malá písmena). ID aplikace instančního objektu se předává do proměnné prostředí `$SP_APP_ID` a heslo v proměnné `$SP_PASSWD` .
 
 ```bash
 oras login myregistry.azurecr.io --username $SP_APP_ID --password $SP_PASSWD
 ```
 
-Pokud si chcete přečíst heslo ze standardního vstupu `--password-stdin`, použijte.
+Pokud si chcete přečíst heslo ze standardního vstupu, použijte `--password-stdin` .
 
 ### <a name="sign-in-with-azure-cli"></a>Přihlášení pomocí Azure CLI
 
@@ -54,7 +53,7 @@ az acr login --name myregistry
 ```
 
 > [!NOTE]
-> `az acr login`k nastavení tokenu Azure Active Directory v `docker.config` souboru používá klienta Docker. Aby bylo možné dokončit jednotlivé směry ověřování, je nutné nainstalovat a spustit klienta Docker.
+> `az acr login`k nastavení tokenu Azure Active Directory v souboru používá klienta Docker `docker.config` . Aby bylo možné dokončit jednotlivé směry ověřování, je nutné nainstalovat a spustit klienta Docker.
 
 ## <a name="push-an-artifact"></a>Vložení artefaktu
 
@@ -64,7 +63,7 @@ Vytvořte textový soubor v místním pracovním pracovním adresáři s nějak�
 echo "Here is an artifact!" > artifact.txt
 ```
 
-Pomocí `oras push` příkazu nahrajte tento textový soubor do svého registru. Následující příklad vloží vzorový textový soubor do `samples/artifact` úložiště. Registr se identifikuje s plně kvalifikovaným názvem registru *myregistry.azurecr.IO* (malými písmeny). Artefakt je označený `1.0`. Artefakt má Nedefinovaný typ, který je ve výchozím nastavení identifikován řetězcem *typu média* za názvem souboru `artifact.txt`. Další typy najdete v tématu [artefakty OCI](https://github.com/opencontainers/artifacts) . 
+Pomocí příkazu nahrajte `oras push` Tento textový soubor do svého registru. Následující příklad vloží vzorový textový soubor do `samples/artifact` úložiště. Registr se identifikuje s plně kvalifikovaným názvem registru *myregistry.azurecr.IO* (malými písmeny). Artefakt je označený `1.0` . Artefakt má Nedefinovaný typ, který je ve výchozím nastavení identifikován řetězcem *typu média* za názvem souboru `artifact.txt` . Další typy najdete v tématu [artefakty OCI](https://github.com/opencontainers/artifacts) . 
 
 **Linux**
 

@@ -8,10 +8,9 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79086750"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí portálu
@@ -32,7 +31,7 @@ Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedica
 
     ![Účet správce](./media/quick-create-portal/administrator-account.png)
 
-1. V části **příchozí pravidla** > portů**veřejné příchozí porty**zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **SSH (22)** . 
+1. V části **příchozí pravidla portů**  >  **veřejné příchozí porty**zvolte **Povolit vybrané porty** a v rozevíracím seznamu vyberte **SSH (22)** . 
 1. V horní části stránky vyberte kartu **Upřesnit** a v části **hostitel** vyberte *MyHostGroup* pro **skupinu hostitelů** a *myHost* pro **hostitele**. 
     ![Vybrat skupinu hostitelů a hostitele](./media/dedicated-hosts-portal/advanced.png)
 1. Zbytek ponechte ve výchozím nastavení a potom v dolní části stránky vyberte tlačítko **Zkontrolovat a vytvořit**.

@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79243923"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Šablony produktů v Azure API Management
@@ -28,7 +27,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 -   [Seznam produktů](#ProductList)  
   
--   [Produktu](#Product)  
+-   [Product](#Product) (Produkt)  
   
 > [!NOTE]
 >  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
@@ -71,7 +70,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Product list` Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
+ `Product list`Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
 -   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
@@ -79,7 +78,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |Stránkování|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce Products|  
 |Filtrování|Entita [filtrování](api-management-template-data-model-reference.md#Filtering)|Informace o filtrování pro stránku seznam produktů.|  
@@ -198,15 +197,15 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Product list` Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
+ `Product list`Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
 -   [přihlášení k odběru – tlačítko](api-management-page-controls.md#subscribe-button)  
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
-|Produkt|[Produktu](api-management-template-data-model-reference.md#Product)|Zadaný produkt.|  
+|Produkt|[Product](api-management-template-data-model-reference.md#Product) (Produkt)|Zadaný produkt.|  
 |IsDeveloperSubscribed|Boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
 |SubscriptionState|číslo|Stav předplatného. Možné stavy:<br /><br /> -   `0 - suspended`– předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active`– předplatné je aktivní.<br />-   `2 - expired`– předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted`– žádost o odběr byla vytvořena vývojářem, ale ještě nebyla schválena nebo odmítnuta.<br />-   `4 - rejected`– žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled`– předplatné zrušila vývojář nebo správce.|  
 |Omezení|pole|Tato vlastnost je zastaralá a neměla by se používat.|  

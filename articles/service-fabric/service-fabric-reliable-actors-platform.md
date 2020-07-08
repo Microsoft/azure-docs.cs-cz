@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
 ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282299"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak Reliable Actors používat platformu Service Fabric
@@ -28,7 +27,7 @@ Vzhledem k tomu, že samotná služba actor je spolehlivou službou, je nutné p
 
 Předchozí diagram znázorňuje vztah mezi Service Fabric aplikačními architekturami a uživatelským kódem. Modré prvky představují Reliable Services aplikační Framework, oranžová představuje architekturu Reliable actor a zelená představuje uživatelský kód.
 
-V Reliable Services vaše služba dědí `StatefulService` třídu. Tato třída je sama o sobě `StatefulServiceBase` odvozena `StatelessService` z (nebo pro bezstavové služby). V Reliable Actors používáte službu objektu actor. Služba objektu actor je odlišná implementace `StatefulServiceBase` třídy, která implementuje vzorek objektu actor, ve kterém se vaše objekty actor spouštějí. Vzhledem k tomu, že samotné služby objektu `StatefulServiceBase`actor jsou pouze implementací, můžete napsat vlastní službu, která je `ActorService` odvozena z a implementovat funkce na úrovni služby stejným způsobem jako při dědění `StatefulService`, jako například:
+V Reliable Services vaše služba dědí `StatefulService` třídu. Tato třída je sama o sobě odvozena z `StatefulServiceBase` (nebo `StatelessService` pro bezstavové služby). V Reliable Actors používáte službu objektu actor. Služba objektu actor je odlišná implementace `StatefulServiceBase` třídy, která implementuje vzorek objektu actor, ve kterém se vaše objekty actor spouštějí. Vzhledem k tomu, že samotné služby objektu actor jsou pouze implementací `StatefulServiceBase` , můžete napsat vlastní službu, která je odvozena z `ActorService` a implementovat funkce na úrovni služby stejným způsobem jako při dědění `StatefulService` , jako například:
 
 * Zálohování a obnovení služby.
 * Sdílená funkce všech objektů Actor, například přerušení okruhů.
@@ -40,7 +39,7 @@ Další informace najdete v tématu [implementace funkcí na úrovni služby ve 
 Služby objektu actor jsou Reliable Services, takže model aplikace je stejný. Nástroje pro sestavení rozhraní actor však generují některé soubory modelu aplikace za vás.
 
 ### <a name="service-manifest"></a>Manifest služby
-Nástroje pro vytváření rozhraní actor Framework automaticky generují obsah souboru ServiceManifest. XML služby objektu actor. Tento soubor obsahuje:
+Nástroje pro sestavování rozhraní actor automaticky generují obsah souboru ServiceManifest.xml služby objektu actor. Tento soubor obsahuje:
 
 * Typ služby objektu actor Název typu se generuje na základě názvu projektu vašeho objektu actor. V závislosti na atributu trvalosti v objektu actor je příznak HasPersistedState také nastaven odpovídajícím způsobem.
 * Balíček kódu.
@@ -71,7 +70,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Každé `ActorId` je hodnota hash na hodnotu Int64. Důvodem je, že služba objektu actor musí používat schéma dělení na instance Int64 s plným rozsahem klíčů Int64. Vlastní hodnoty ID však lze použít pro `ActorID`, včetně identifikátorů GUID/UUID, řetězců a Int64.
+Každé `ActorId` je hodnota hash na hodnotu Int64. Důvodem je, že služba objektu actor musí používat schéma dělení na instance Int64 s plným rozsahem klíčů Int64. Vlastní hodnoty ID však lze použít pro `ActorID` , včetně identifikátorů GUID/UUID, řetězců a Int64.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -84,7 +83,7 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-Pokud používáte identifikátory GUID/UUID a řetězce, hodnoty jsou pro hodnotu Int64 hash. Pokud ale výslovně zadáte hodnotu typu Int64 k objektu `ActorId`, bude hodnota Int64 namapována přímo na oddíl bez dalšího hashování. Tento postup můžete použít k určení oddílu, ve kterém jsou objekty actor umístěny.
+Pokud používáte identifikátory GUID/UUID a řetězce, hodnoty jsou pro hodnotu Int64 hash. Pokud ale výslovně zadáte hodnotu typu Int64 k objektu `ActorId` , bude hodnota Int64 namapována přímo na oddíl bez dalšího hashování. Tento postup můžete použít k určení oddílu, ve kterém jsou objekty actor umístěny.
 
 
 ## <a name="next-steps"></a>Další kroky

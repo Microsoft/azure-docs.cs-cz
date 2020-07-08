@@ -10,10 +10,9 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79265698"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Správa Azure Data Lake Analytics pomocí webu Azure Portal
@@ -29,8 +28,8 @@ Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje 
 
 ### <a name="create-an-account"></a>Vytvoření účtu
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Klikněte na **vytvořit prostředek** > **Intelligence + Analytics** > **Data Lake Analytics**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+2. Klikněte na **vytvořit prostředek**  >  **Intelligence + Analytics**  >  **Data Lake Analytics**.
 3. Vyberte hodnoty pro následující položky: 
    1. **Název**: název účtu Data Lake Analytics.
    2. **Předplatné**: předplatné Azure použité pro tento účet.
@@ -111,10 +110,10 @@ Pomocí vývojářské role Data Lake Analytics můžete povolit vývojářům U
 ### <a name="add-users-or-security-groups-to-a-data-lake-analytics-account"></a>Přidání uživatelů nebo skupin zabezpečení k účtu Data Lake Analytics
 
 1. V Azure Portal přejít na účet Data Lake Analytics.
-2. Klikněte na **řízení přístupu (IAM)** > **Přidat přiřazení role**.
+2. Klikněte na **řízení přístupu (IAM)**  >  **Přidat přiřazení role**.
 3. Vyberte roli.
 4. Přidejte uživatele.
-5. Klikněte na tlačítko **OK**.
+5. Klikněte na **OK**.
 
 >[!NOTE]
 >Pokud uživatel nebo skupina zabezpečení potřebuje odesílat úlohy, potřebují taky oprávnění k účtu Store. Další informace najdete v tématu [zabezpečení dat uložených v Data Lake Store](../data-lake-store/data-lake-store-secure-data.md).

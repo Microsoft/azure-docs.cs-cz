@@ -10,10 +10,9 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281337"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Přesun dat z MongoDB pomocí Azure Data Factory
@@ -61,27 +60,27 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu **OnPremisesMongoDB** .
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **OnPremisesMongoDb** . |Ano |
-| server |IP adresa nebo název hostitele serveru MongoDB |Ano |
+| typ |Vlastnost Type musí být nastavená na: **OnPremisesMongoDb** . |Yes |
+| server |IP adresa nebo název hostitele serveru MongoDB |Yes |
 | port |Port TCP, který server MongoDB používá k naslouchání klientským připojením. |Volitelná výchozí hodnota: 27017 |
-| authenticationType |Basic nebo Anonymous. |Ano |
+| authenticationType |Basic nebo Anonymous. |Yes |
 | uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
 | heslo |Heslo pro tohoto uživatele. |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole vašich přihlašovacích údajů pro ověřování. |Volitelné (Pokud se používá základní ověřování). výchozí: používá účet správce a databázi určenou pomocí vlastnosti databaseName. |
-| Databáze |Název databáze MongoDB, ke které chcete získat přístup. |Ano |
-| gatewayName |Název brány, která přistupuje k úložišti dat. |Ano |
-| encryptedCredential |Přihlašovací údaje zašifrované bránou |Nepovinné |
+| Databáze |Název databáze MongoDB, ke které chcete získat přístup. |Yes |
+| gatewayName |Název brány, která přistupuje k úložišti dat. |Yes |
+| encryptedCredential |Přihlašovací údaje zašifrované bránou |Volitelné |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro sadu dat typu **MongoDbCollection** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| collectionName |Název kolekce v databázi MongoDB |Ano |
+| collectionName |Název kolekce v databázi MongoDB |Yes |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
@@ -90,7 +89,7 @@ Vlastnosti, které jsou k dispozici v části **typeProperties** aktivity, se li
 
 Pokud je zdrojem typ **MongoDbSource** , jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL-92 Příklad: SELECT * FROM MyTable. |Ne (Pokud je zadán parametr **CollectionName** pro **sadu dat** ) |
 
@@ -292,7 +291,7 @@ Při přesunu dat na MongoDB se z typů MongoDB na typy .NET používají násle
 
 | Typ MongoDB | Typ rozhraní .NET Framework |
 | --- | --- |
-| binární |Byte [] |
+| Binární |Byte [] |
 | Logická hodnota |Logická hodnota |
 | Datum |DateTime |
 | NumberDouble |Double |
@@ -321,14 +320,14 @@ Virtuální tabulky odkazují na data v reálné tabulce a umožňují tak ovlad
 ### <a name="example"></a>Příklad
 Například "priklad Table" níže je tabulka MongoDB, která má jeden sloupec s polem objektů v každé buňce – faktury a jeden sloupec s polem skalárních typů – hodnocení.
 
-| _id | Jméno zákazníka | Faktury | Úroveň služby | Ratings |
+| _id | Název zákazníka | Faktury | Úroveň služby | Ratings |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", Item: "informační zpráva", Cena: "456", sleva: "0,2"}, {invoice_id: "124", položka: "sušárna", Cena: "1235", sleva: "0,2"}] |Silver |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135"; Item: "nákupem ledničky"; Price: "12543"; Discount: "0,0"}] |Gold |[1, 2] |
 
 Ovladač by vygeneroval několik virtuálních tabulek, které reprezentují tuto jedinou tabulku. První virtuální tabulka je základní tabulka s názvem "priklad Table", která je uvedená níže. Základní tabulka obsahuje všechna data původní tabulky, ale data z těchto polí byla vynechána a jsou rozbalena ve virtuálních tabulkách.
 
-| _id | Jméno zákazníka | Úroveň služby |
+| _id | Název zákazníka | Úroveň služby |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
 | 2222 |XYZ |Gold |

@@ -10,10 +10,9 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: 35e31e5ace53654e8aad794dd3e25fc04bd9a088
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367512"
 ---
 # <a name="enter-data-manually-module"></a>Zadat data ručně modul
@@ -57,7 +56,7 @@ Tento modul může být užitečný ve scénářích, jako jsou:
   
    - **Arff**: vložte do existujícího souboru formátu arff. Pokud zadáváte hodnoty přímo, nezapomeňte přidat volitelné záhlaví a požadovaná pole atributu na začátek dat. 
 
-     Například následující záhlaví a řádky atributů lze přidat do jednoduchého seznamu. Záhlaví sloupce by bylo `SampleText`. Všimněte si, že typ řetězce není podporován.
+     Například následující záhlaví a řádky atributů lze přidat do jednoduchého seznamu. Záhlaví sloupce by bylo `SampleText` . Všimněte si, že typ řetězce není podporován.
     
      ```text
      % Title: SampleText.ARFF  

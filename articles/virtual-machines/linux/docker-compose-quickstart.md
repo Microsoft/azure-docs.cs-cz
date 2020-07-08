@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78970310"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Začínáme s Docker a seznámení s definováním a spuštěním aplikace s více kontejnery v Azure
@@ -27,7 +26,7 @@ Nejdřív vytvořte skupinu prostředků pro prostředí Docker pomocí [AZ Grou
 az group create --name myDockerGroup --location eastus
 ```
 
-Vytvořte soubor s názvem *Cloud-init. txt* a vložte následující konfiguraci. Zadáním příkazu `sensible-editor cloud-init.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. 
+Vytvořte soubor s názvem *cloud-init.txt* a vložte následující konfiguraci. Zadáním příkazu `sensible-editor cloud-init.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. 
 
 ```yaml
 #include https://get.docker.com
@@ -94,7 +93,7 @@ db:
 ```
 
 ## <a name="start-the-containers-with-compose"></a>Spuštění kontejnerů s psaním
-Ve stejném adresáři jako soubor *Docker-Compose. yml* spusťte následující příkaz (v závislosti na vašem prostředí budete možná muset spustit `docker-compose` pomocí `sudo`):
+Ve stejném adresáři jako soubor *Docker-Compose. yml* spusťte následující příkaz (v závislosti na vašem prostředí budete možná muset spustit `docker-compose` pomocí `sudo` ):
 
 ```bash
 sudo docker-compose up -d
@@ -109,7 +108,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-Chcete-li ověřit, zda jsou kontejnery v `sudo docker-compose ps`seznamu, zadejte. Měli byste vidět přibližně toto:
+Chcete-li ověřit, zda jsou kontejnery v seznamu, zadejte `sudo docker-compose ps` . Měli byste vidět přibližně toto:
 
 ```
         Name                       Command               State         Ports

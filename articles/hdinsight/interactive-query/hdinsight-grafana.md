@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: cd515bfd1dc57e78a041ed96686e1ba692bf6d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79082859"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Přístup ke Grafaně ve službě Azure HDInsight
@@ -28,7 +27,7 @@ Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí
 
 ## <a name="access-the-grafana-dashboard"></a>Přístup k řídicímu panelu Grafana
 
-1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net/grafana/` místo, kde název_clusteru je název vašeho clusteru.
+1. Ve webovém prohlížeči přejděte na místo, `https://CLUSTERNAME.azurehdinsight.net/grafana/` kde název_clusteru je název vašeho clusteru.
 
 1. Zadejte přihlašovací údaje uživatele clusteru Hadoop.
 
@@ -40,7 +39,7 @@ Další informace najdete v tématu [Vytvoření clusterů Apache Hadoop pomocí
 
 Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster, který jste vytvořili, pomocí následujících kroků:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Do **vyhledávacího** pole v horní části zadejte **HDInsight**.
 

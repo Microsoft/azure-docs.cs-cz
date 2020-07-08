@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79263644"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Řešení potíží: místní ochrana heslem Azure AD
@@ -50,9 +49,9 @@ Hlavním příznakem tohoto problému jsou 30018 události v protokolu událost�
 
 1. Ujistěte se, že je doménová struktura a všechny proxy servery zaregistrované u stejného tenanta Azure.
 
-   Tento požadavek můžete ověřit spuštěním rutin prostředí PowerShell `Get-AzureADPasswordProtectionProxy` a `Get-AzureADPasswordProtectionDCAgent` potom porovnejte `AzureTenant` vlastnost jednotlivých vrácených položek. Pro správnou operaci musí být nahlášený název tenanta stejný ve všech agentech DC a proxy serverech.
+   Tento požadavek můžete ověřit spuštěním `Get-AzureADPasswordProtectionProxy` `Get-AzureADPasswordProtectionDCAgent` rutin prostředí PowerShell a potom porovnejte `AzureTenant` vlastnost jednotlivých vrácených položek. Pro správnou operaci musí být nahlášený název tenanta stejný ve všech agentech DC a proxy serverech.
 
-   Pokud neshoda s registrací tenanta Azure existuje, můžete tento problém vyřešit spuštěním rutin `Register-AzureADPasswordProtectionProxy` a/nebo `Register-AzureADPasswordProtectionForest` PowerShellu podle potřeby a tím, že použijete přihlašovací údaje ze stejného tenanta Azure pro všechny registrace.
+   Pokud neshoda s registrací tenanta Azure existuje, můžete tento problém vyřešit spuštěním `Register-AzureADPasswordProtectionProxy` rutin a/nebo `Register-AzureADPasswordProtectionForest` PowerShellu podle potřeby a tím, že použijete přihlašovací údaje ze stejného tenanta Azure pro všechny registrace.
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>Agent řadiče domény nemůže šifrovat nebo dešifrovat soubory zásad hesel.
 
@@ -94,7 +93,7 @@ Tento problém může mít několik příčin.
 
 1. Algoritmus ověřování hesla může ve skutečnosti fungovat podle očekávání. Podívejte [se, jak jsou hesla vyhodnocována](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
-## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Nástroje Ntdsutil. exe se nepodařilo nastavit slabé heslo pro režim obnovení adresářových služeb.
+## <a name="ntdsutilexe-fails-to-set-a-weak-dsrm-password"></a>Ntdsutil.exe se nepovedlo nastavit slabé heslo pro režim obnovení adresářových služeb.
 
 Služba Active Directory vždy ověří nové heslo režimu opravy adresářových služeb, aby bylo zajištěno, že splňuje požadavky na složitost hesla domény. Toto ověření také volá knihovny DLL filtru hesel, jako je ochrana heslem Azure AD. Pokud se nové heslo DSRM odmítne, zobrazí se následující chybová zpráva:
 
@@ -166,7 +165,7 @@ Vzhledem k tomu, že konečný termín je kontrolován pouze při počátečním
 > [!IMPORTANT]
 > Microsoft doporučuje, aby agenti řadiče domény s vypršenou platností verze Public Preview byli hned upgradováni na nejnovější verzi.
 
-Snadný způsob, jak zjistit agenty řadiče domény v prostředí, které je potřeba upgradovat, je `Get-AzureADPasswordProtectionDCAgent` spuštění rutiny, třeba:
+Snadný způsob, jak zjistit agenty řadiče domény v prostředí, které je potřeba upgradovat, je spuštění `Get-AzureADPasswordProtectionDCAgent` rutiny, třeba:
 
 ```powershell
 PS C:\> Get-AzureADPasswordProtectionDCAgent
@@ -187,7 +186,7 @@ PS C:\> $LatestAzureADPasswordProtectionVersion = "1.2.125.0"
 PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion -lt $LatestAzureADPasswordProtectionVersion}
 ```
 
-Software proxy ochrany heslem služby Azure AD není časově omezený v jakékoli verzi. Společnost Microsoft stále doporučuje, aby se řadiče DC i proxy upgradovali na nejnovější verze hned po jejich vydání. `Get-AzureADPasswordProtectionProxy` Rutina se dá použít k vyhledání agentů proxy, kteří vyžadují upgrady, podobně jako v příkladu výše pro agenty řadiče domény.
+Software proxy ochrany heslem služby Azure AD není časově omezený v jakékoli verzi. Společnost Microsoft stále doporučuje, aby se řadiče DC i proxy upgradovali na nejnovější verze hned po jejich vydání. `Get-AzureADPasswordProtectionProxy`Rutina se dá použít k vyhledání agentů proxy, kteří vyžadují upgrady, podobně jako v příkladu výše pro agenty řadiče domény.
 
 Další podrobnosti o konkrétních postupech upgradu najdete v tématu [Upgrade agenta řadiče domény](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) a [upgrade služby proxy serveru](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service) .
 
@@ -216,7 +215,7 @@ Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyč
 
    Vynechejte hvězdičku ("*") na konci hodnoty proměnné $keywords.
 
-   Výsledné objekty, které byly nalezeny prostřednictvím `Get-ADObject` příkazu, lze následně přesměrovat do `Remove-ADObject`kanálu nebo odstranit ručně.
+   Výsledné objekty, které byly nalezeny prostřednictvím `Get-ADObject` příkazu, lze následně přesměrovat do kanálu `Remove-ADObject` nebo odstranit ručně.
 
 4. Ručně odeberte všechny spojovací body agenta DC v každém názvovém kontextu domény. V závislosti na tom, jak rozsáhlá verze softwaru byla nasazena, může být jeden z těchto objektů na řadič domény v doménové struktuře. Umístění tohoto objektu může být zjištěno pomocí následujícího příkazu prostředí PowerShell služby Active Directory:
 
@@ -226,7 +225,7 @@ Pokud se rozhodnete odinstalovat software ochrany heslem služby Azure AD a vyč
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
    ```
 
-   Výsledné objekty, které byly nalezeny prostřednictvím `Get-ADObject` příkazu, lze následně přesměrovat do `Remove-ADObject`kanálu nebo odstranit ručně.
+   Výsledné objekty, které byly nalezeny prostřednictvím `Get-ADObject` příkazu, lze následně přesměrovat do kanálu `Remove-ADObject` nebo odstranit ručně.
 
    Vynechejte hvězdičku ("*") na konci hodnoty proměnné $keywords.
 

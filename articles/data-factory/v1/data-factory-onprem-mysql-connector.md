@@ -13,10 +13,9 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281285"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Přesun dat z MySQL pomocí Azure Data Factory
@@ -65,23 +64,23 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu MySQL.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **OnPremisesMySql** . |Ano |
-| server |Název serveru MySQL |Ano |
-| database |Název databáze MySQL |Ano |
-| XSD |Název schématu v databázi. |Ne |
-| authenticationType |Typ ověřování, který se používá pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic`. |Ano |
-| userName |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Ano |
-| heslo |Zadejte heslo pro uživatelský účet, který jste zadali. |Ano |
-| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi MySQL. |Ano |
+| typ |Vlastnost Type musí být nastavená na: **OnPremisesMySql** . |Yes |
+| server |Název serveru MySQL |Yes |
+| database |Název databáze MySQL |Yes |
+| XSD |Název schématu v databázi. |No |
+| authenticationType |Typ ověřování, který se používá pro připojení k databázi MySQL. Možné hodnoty jsou: `Basic` . |Yes |
+| userName |Zadejte uživatelské jméno pro připojení k databázi MySQL. |Yes |
+| heslo |Zadejte heslo pro uživatelský účet, který jste zadali. |Yes |
+| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní databázi MySQL. |Yes |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam sekcí & vlastností dostupných pro definování datových sad naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačních** objektů typu (což zahrnuje datovou sadu MySQL) má následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | tableName |Název tabulky v instanci databáze MySQL, na kterou odkazuje propojená služba |Ne (Pokud je zadán **dotaz** na **RelationalSource** ) |
 
@@ -92,7 +91,7 @@ V takovém případě se vlastnosti dostupné v části **typeProperties** v akt
 
 Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrnuje MySQL), jsou v části typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: SELECT * FROM MyTable. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
@@ -302,7 +301,7 @@ Při přesunu dat do MySQL se z typů MySQL do typů .NET používají následuj
 | --- | --- |
 | bigint bez znaménka |Desetinné číslo |
 | bigint |Int64 |
-| bitové |Desetinné číslo |
+| bit |Desetinné číslo |
 | blob |Byte [] |
 | bool |Logická hodnota |
 | char |Řetězec |
@@ -312,7 +311,7 @@ Při přesunu dat do MySQL se z typů MySQL do typů .NET používají následuj
 | Dvojitá přesnost |Double |
 | double |Double |
 | enum |Řetězec |
-| float |Single |
+| float |Jeden |
 | celé číslo bez znaménka |Int64 |
 | int |Int32 |
 | celé číslo bez znaménka |Int64 |

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: f1782bfe0c14e3b44703f89ec7f78590c1bb74c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969238"
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Použití Cloud-init k přidání uživatele do virtuálního počítače se systémem Linux v Azure
@@ -19,7 +18,7 @@ V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthe
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Přidání uživatele k virtuálnímu počítači pomocí Cloud-init
 Jedním z prvních úkolů na jakémkoli novém virtuálním počítači se systémem Linux je přidání dalšího uživatele, aby se předešlo používání *kořenového adresáře*. Klíče SSH jsou osvědčené postupy pro zabezpečení a použitelnost. Klíče se přidají do souboru *~/.ssh/authorized_keys* pomocí tohoto skriptu Cloud-init.
 
-Pokud chcete přidat uživatele do virtuálního počítače se systémem Linux, vytvořte v aktuálním prostředí soubor s názvem *cloud_init_add_user. txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_add_user.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  Pro zjednodušení příkladu je třeba zadat vlastní veřejný klíč (například obsah *~/.ssh/id_rsa. pub*) pro hodnotu `ssh-authorized-keys:` – tady se zkrátila.
+Pokud chcete přidat uživatele k virtuálnímu počítači se systémem Linux, vytvořte v aktuálním prostředí soubor s názvem *cloud_init_add_user.txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_add_user.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  Pro zjednodušení příkladu je třeba zadat vlastní veřejný klíč (například obsah *~/.ssh/id_rsa. pub*) pro hodnotu `ssh-authorized-keys:` – tady se zkrátila.
 
 ```yaml
 #cloud-config
@@ -33,7 +32,7 @@ users:
       - ssh-rsa AAAAB3<snip>
 ```
 > [!NOTE] 
-> Soubor #cloud-config zahrnuje zahrnutý `- default` parametr. Tím se uživatel připojí k existujícímu administrativnímu uživateli vytvořenému během zřizování. Pokud vytvoříte uživatele bez `- default` parametru – bude přepsán automaticky generovaný uživatel s rolí správce vytvořený platformou Azure. 
+> Soubor #cloud-config zahrnuje `- default` zahrnutý parametr. Tím se uživatel připojí k existujícímu administrativnímu uživateli vytvořenému během zřizování. Pokud vytvoříte uživatele bez `- default` parametru – bude přepsán automaticky generovaný uživatel s rolí správce vytvořený platformou Azure. 
 
 Před nasazením této image je potřeba vytvořit skupinu prostředků pomocí příkazu [AZ Group Create](/cli/azure/group) . Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*.
 
@@ -41,7 +40,7 @@ Před nasazením této image je potřeba vytvořit skupinu prostředků pomocí 
 az group create --name myResourceGroup --location eastus
 ```
 
-Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor `--custom-data cloud_init_add_user.txt` Cloud-init následujícím způsobem:
+Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor Cloud-init následujícím `--custom-data cloud_init_add_user.txt` způsobem:
 
 ```azurecli-interactive 
 az vm create \
@@ -64,7 +63,7 @@ Pokud chcete potvrdit, že se uživatel přidal do virtuálního počítače a z
 cat /etc/group
 ```
 
-Následující příklad výstupu ukazuje, že se uživatel ze souboru *cloud_init_add_user. txt* přidal do virtuálního počítače a do příslušné skupiny:
+Následující příklad výstupu ukazuje, že uživatel z *cloud_init_add_user.txt* soubor byl přidán do virtuálního počítače a do příslušné skupiny:
 
 ```bash
 root:x:0:

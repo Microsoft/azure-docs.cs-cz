@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 631b8ef83d5fbf10ec401df7432b23238f2ae2e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969170"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>Použití Cloud-init k nastavení názvu hostitele pro virtuální počítač Linux v Azure
@@ -19,7 +18,7 @@ V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthe
 ## <a name="set-the-hostname-with-cloud-init"></a>Nastavení názvu hostitele pomocí Cloud-init
 Ve výchozím nastavení je název hostitele stejný jako název virtuálního počítače při vytváření nového virtuálního počítače v Azure.  Pokud chcete spustit skript Cloud-init pro změnu tohoto výchozího názvu hostitele při vytváření virtuálního počítače v Azure pomocí [AZ VM Create](/cli/azure/vm), zadejte soubor Cloud-init s `--custom-data` přepínačem.  
 
-Chcete-li zobrazit proces upgradu v akci, vytvořte v aktuálním prostředí soubor s názvem *cloud_init_hostname. txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_hostname.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
+Pokud chcete zobrazit proces upgradu v akci, vytvořte v aktuálním prostředí soubor s názvem *cloud_init_hostname.txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_hostname.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
 
 ```yaml
 #cloud-config
@@ -32,7 +31,7 @@ Před nasazením této image je potřeba vytvořit skupinu prostředků pomocí 
 az group create --name myResourceGroup --location eastus
 ```
 
-Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor `--custom-data cloud_init_hostname.txt` Cloud-init následujícím způsobem:
+Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor Cloud-init následujícím `--custom-data cloud_init_hostname.txt` způsobem:
 
 ```azurecli-interactive 
 az vm create \
@@ -49,7 +48,7 @@ Po vytvoření Azure CLI zobrazí informace o virtuálním počítači. Použijt
 ssh <publicIpAddress>
 ```
 
-Chcete-li zobrazit název virtuálního počítače, `hostname` použijte příkaz následujícím způsobem:
+Chcete-li zobrazit název virtuálního počítače, použijte `hostname` příkaz následujícím způsobem:
 
 ```bash
 hostname

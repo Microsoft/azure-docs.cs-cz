@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: 1247652e536042ee249054d86aed3c3f8e7aa7bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969208"
 ---
 # <a name="use-cloud-init-to-configure-a-swap-partition-on-a-linux-vm"></a>Použití Cloud-init ke konfiguraci odkládacího oddílu na virtuálním počítači se systémem Linux
@@ -22,7 +21,7 @@ Ve výchozím nastavení v Azure Image Galerie Ubuntu nevytváří swapové odd�
 
 ## <a name="create-swap-partition-for-red-hat-and-centos-based-images"></a>Vytvoření odkládacího oddílu pro image založené na Red Hat a CentOS
 
-V aktuálním prostředí vytvořte soubor s názvem *cloud_init_swappart. txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_swappart.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
+V aktuálním prostředí vytvořte soubor s názvem *cloud_init_swappart.txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_swappart.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
 
 ```yaml
 #cloud-config
@@ -47,7 +46,7 @@ Před nasazením této image je potřeba vytvořit skupinu prostředků pomocí 
 az group create --name myResourceGroup --location eastus
 ```
 
-Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor `--custom-data cloud_init_swappart.txt` Cloud-init následujícím způsobem:
+Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor Cloud-init následujícím `--custom-data cloud_init_swappart.txt` způsobem:
 
 ```azurecli-interactive 
 az vm create \

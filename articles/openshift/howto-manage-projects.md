@@ -9,10 +9,9 @@ ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
 ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79139109"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Správa projektů, šablon a datových proudů imagí v clusteru Azure Red Hat OpenShift 
@@ -37,7 +36,7 @@ Přístup k rozhraní API se uděluje vývojářům s vazbou role clusteru samoo
 
 ## <a name="modify-the-template-for-a-new-project"></a>Úprava šablony nového projektu 
 
-1. Přihlaste se jako uživatel `customer-admin` s oprávněními.
+1. Přihlaste se jako uživatel s `customer-admin` oprávněními.
 
 2. Upravte výchozí šablonu projekt – požadavek.
 
@@ -61,7 +60,7 @@ Přístup k rozhraní API se uděluje vývojářům s vazbou role clusteru samoo
 
 Ověřenou skupinu uživatelů můžete zabránit v samoobslužných zřizováních nových projektů.
 
-1. Přihlaste se jako uživatel `customer-admin` s oprávněními.
+1. Přihlaste se jako uživatel s `customer-admin` oprávněními.
 
 2. Upravte vazbu role clusteru samoobslužné zřizování.
 
@@ -69,7 +68,7 @@ Ověřenou skupinu uživatelů můžete zabránit v samoobslužných zřizován�
    oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
-3. Odeberte roli z procesu aktualizace ARO a přidejte následující poznámku: `openshift.io/reconcile-protect: "true"`.
+3. Odeberte roli z procesu aktualizace ARO a přidejte následující poznámku: `openshift.io/reconcile-protect: "true"` .
 
    ```
    ...
@@ -101,10 +100,10 @@ Ověřenou skupinu uživatelů můžete zabránit v samoobslužných zřizován�
 
 ## <a name="manage-default-templates-and-imagestreams"></a>Správa výchozích šablon a imageStreams
 
-V Azure Red Hat OpenShift můžete zakázat aktualizace pro jakékoli výchozí šablony a datové proudy imagí v `openshift` rámci oboru názvů.
+V Azure Red Hat OpenShift můžete zakázat aktualizace pro jakékoli výchozí šablony a datové proudy imagí v rámci `openshift` oboru názvů.
 Zakázání aktualizací pro všechny `Templates` a `ImageStreams` v `openshift` oboru názvů:
 
-1. Přihlaste se jako uživatel `customer-admin` s oprávněními.
+1. Přihlaste se jako uživatel s `customer-admin` oprávněními.
 
 2. Upravit `openshift` obor názvů:
 

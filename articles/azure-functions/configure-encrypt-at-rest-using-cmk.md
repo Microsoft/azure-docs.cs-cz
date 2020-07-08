@@ -4,10 +4,9 @@ description: Zašifrujte data aplikace v Azure Storage a nasaďte je jako soubor
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 62179e900ace0d6d7b8b1f07e8f0ab685508f991
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79408720"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Šifrování v klidovém formátu pomocí klíčů spravovaných zákazníkem
@@ -31,7 +30,7 @@ Dále pomocí Průzkumník služby Storage [vygenerujte SAS](../vs-azure-tools-s
 
 ### <a name="configure-running-from-a-package-from-your-storage-account"></a>Konfigurace spuštění z balíčku z účtu úložiště
   
-Po nahrání souboru do úložiště objektů BLOB a zadání adresy URL SAS pro tento soubor nastavte nastavení `WEBSITE_RUN_FROM_PACKAGE` aplikace na adresu URL SAS. V následujícím příkladu se používá Azure CLI:
+Po nahrání souboru do úložiště objektů BLOB a zadání adresy URL SAS pro tento soubor nastavte `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace na adresu URL SAS. V následujícím příkladu se používá Azure CLI:
 
 ```
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_RUN_FROM_PACKAGE="<your-SAS-URL>"
@@ -41,9 +40,9 @@ Přidáním tohoto nastavení aplikace dojde k restartování aplikace Function 
 
 ### <a name="encrypt-the-application-setting-using-key-vault-references"></a>Šifrování nastavení aplikace pomocí Key Vaultch odkazů
 
-Nyní můžete nahradit hodnotu nastavení `WEBSITE_RUN_FROM_PACKAGE` aplikace Key Vault odkazem na adresu URL KÓDOVANOU pomocí SAS. Tím se zachovává adresa URL SAS zašifrovaná v Key Vault, která poskytuje další vrstvu zabezpečení.
+Nyní můžete nahradit hodnotu `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace Key Vault odkazem na adresu URL kódovanou pomocí SAS. Tím se zachovává adresa URL SAS zašifrovaná v Key Vault, která poskytuje další vrstvu zabezpečení.
 
-1. K vytvoření instance [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create) Key Vault použijte následující příkaz.       
+1. [`az keyvault create`](/cli/azure/keyvault#az-keyvault-create)K vytvoření instance Key Vault použijte následující příkaz.       
 
     ```azurecli    
     az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus    
@@ -57,13 +56,13 @@ Nyní můžete nahradit hodnotu nastavení `WEBSITE_RUN_FROM_PACKAGE` aplikace K
     az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<SAS-URL>"    
     ```    
 
-1.  Pomocí následujícího [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkazu vytvořte nastavení `WEBSITE_RUN_FROM_PACKAGE` aplikace s hodnotou jako Key Vault odkaz na externí adresu URL:
+1.  Pomocí následujícího [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) příkazu vytvořte `WEBSITE_RUN_FROM_PACKAGE` nastavení aplikace s hodnotou jako Key Vault odkaz na externí adresu URL:
 
     ```azurecli    
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    `<secret-version>` Bude ve výstupu předchozího `az keyvault secret set` příkazu.
+    `<secret-version>`Bude ve výstupu předchozího `az keyvault secret set` příkazu.
 
 Aktualizace nastavení této aplikace způsobí, že se aplikace Function App restartuje. Až se aplikace restartuje, přejděte k ní a ujistěte se, že se správně spustila pomocí odkazu Key Vault.
 
@@ -71,7 +70,7 @@ Aktualizace nastavení této aplikace způsobí, že se aplikace Function App re
 
 Osvědčeným postupem je pravidelně střídat klíč SAS účtu úložiště. Pokud chcete zajistit, aby aplikace Function App nechtěně nevedla přístup, musíte taky aktualizovat adresu URL SAS v Key Vault.
 
-1. Otočte klíč SAS tak, že přejdete na svůj účet úložiště v Azure Portal. V části **Nastavení** > **přístupových klíčů**klikněte na ikonu pro otočení klíče SAS.
+1. Otočte klíč SAS tak, že přejdete na svůj účet úložiště v Azure Portal. V části **Nastavení**  >  **přístupových klíčů**klikněte na ikonu pro otočení klíče SAS.
 
 1. Zkopírujte adresu URL nového SAS a použijte následující příkaz k nastavení aktualizované adresy URL SAS ve vašem trezoru klíčů:
 
@@ -85,7 +84,7 @@ Osvědčeným postupem je pravidelně střídat klíč SAS účtu úložiště. 
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"    
     ```
 
-    `<secret-version>` Bude ve výstupu předchozího `az keyvault secret set` příkazu.
+    `<secret-version>`Bude ve výstupu předchozího `az keyvault secret set` příkazu.
 
 ## <a name="how-to-revoke-the-function-apps-data-access"></a>Jak odvolat přístup k datům aplikace Function App
 
@@ -113,11 +112,11 @@ Pokud potřebujete odvolat přístup aplikace Function App k vašemu účtu úlo
 
 ### <a name="how-does-running-from-the-deployment-package-affect-my-function-app"></a>Vliv fungování z balíčku pro nasazení na aplikaci Function App?
 
-- Spuštění aplikace z balíčku pro nasazení zpřístupňuje `wwwroot/` jen pro čtení. Vaše aplikace při pokusu o zápis do tohoto adresáře obdrží chybu.
+- Spuštění aplikace z balíčku pro nasazení zpřístupňuje jen `wwwroot/` pro čtení. Vaše aplikace při pokusu o zápis do tohoto adresáře obdrží chybu.
 - Formáty TAR a GZIP se nepodporují.
 - Tato funkce není kompatibilní s místní mezipamětí.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Key Vault odkazy na App Service](../app-service/app-service-key-vault-references.md)
-- [Azure Storage šifrování dat v klidovém umístění](../storage/common/storage-service-encryption.md)
+- [Šifrování služby Azure Storage pro neaktivní uložená data](../storage/common/storage-service-encryption.md)

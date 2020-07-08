@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367580"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Data geoprostorového a geografického umístění JSON v Azure Cosmos DB
@@ -38,7 +37,7 @@ Azure Cosmos DB podporuje následující prostorové datové typy:
 
 - Vyberte
 - LineString
-- Postupně
+- Mnohoúhelník
 - MultiPolygon
 
 ### <a name="points"></a>Points
@@ -156,9 +155,9 @@ Vzhledem k tomu, že tvar země je nepravidelný, jsou souřadnice geograficky g
 Nejoblíbenější počítačový systém používaný v současnosti dnes je World Geodetic System [WGS-84](https://earth-info.nga.mil/GandG/update/index.php). Zařízení GPS a mnoho služeb mapování, včetně rozhraní API Map Google a Bing Maps, používají WGS-84. Azure Cosmos DB podporuje indexování geograficky geoprostorového data a jejich dotazování jenom pomocí POČÍTAČového systému WGS-84.
 
 ## <a name="creating-documents-with-spatial-data"></a>Vytváření dokumentů s prostorovými daty
-Když vytváříte dokumenty, které obsahují hodnoty typu injson, jsou automaticky indexovány pomocí prostorového indexu v souladu se zásadami indexování kontejneru. Pokud pracujete se sadou Azure Cosmos DB SDK v dynamicky typovaném jazyce, jako je Python nebo Node. js, je nutné vytvořit platný typ injson.
+Když vytváříte dokumenty, které obsahují hodnoty typu injson, jsou automaticky indexovány pomocí prostorového indexu v souladu se zásadami indexování kontejneru. Pokud pracujete se sadou Azure Cosmos DB SDK v dynamicky typovaném jazyce, jako je Python nebo Node.js, je nutné vytvořit platný typ injson.
 
-**Vytvoření dokumentu s Geoprostorovémi daty v Node. js**
+**Vytvoření dokumentu se Geoprostorovémi daty v Node.js**
 
 ```javascript
 var userProfileDocument = {
@@ -174,7 +173,7 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Pokud pracujete s rozhraními API SQL, můžete `Point`použít `LineString` `Polygon` `MultiPolygon` třídy,, a v rámci `Microsoft.Azure.Cosmos.Spatial` oboru názvů pro vložení informací o poloze v objektech aplikace. Tyto třídy vám pomůžou zjednodušit serializaci a deserializaci prostorových dat do typu injson.
+Pokud pracujete s rozhraními API SQL, můžete použít `Point` `LineString` třídy,, a `Polygon` `MultiPolygon` v rámci `Microsoft.Azure.Cosmos.Spatial` oboru názvů pro vložení informací o poloze v objektech aplikace. Tyto třídy vám pomůžou zjednodušit serializaci a deserializaci prostorových dat do typu injson.
 
 **Vytváření dokumentů s Geoprostorovémi daty v .NET**
 

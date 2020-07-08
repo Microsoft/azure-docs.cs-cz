@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79117268"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk zabezpečení a ochrana dat
@@ -72,7 +71,7 @@ Azure Data Box Disk shromažďuje a zobrazuje osobní údaje v následujících 
 
   - Jméno kontaktu
   - Telefonní číslo
-  - E-mailu
+  - E-mail
   - Ulice a číslo
   - Město
   - PSČ

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968799"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Stažení virtuálního pevného disku se systémem Linux z Azure
@@ -48,7 +47,7 @@ Pokud chcete virtuální pevný disk použít jako image k vytvoření dalších
 
 Pokud chcete virtuální pevný disk použít jako disk pro novou instanci existujícího virtuálního počítače nebo datového disku, proveďte tyto kroky:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2.  V nabídce vlevo vyberte **Virtual Machines**.
 3.  V seznamu vyberte virtuální počítač.
 4.  Na stránce pro virtuální počítač vyberte **zastavit**.

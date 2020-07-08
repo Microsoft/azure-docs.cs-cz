@@ -16,10 +16,9 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
 ms.openlocfilehash: 052223f69fc1c1d59ec5f1bcbeb3746ef7122c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087042"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Kurz: Konfigurace RingCentral pro Automatické zřizování uživatelů
@@ -58,7 +57,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
     ![RingCentral přidat SCIM](media/ringcentral-provisioning-tutorial/scim.png)
 
-3.  Kontaktujte tým podpory RingCentral na matthew.hunt@ringcentral.com adrese pro **ověřovací token SCIM**. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace RingCentral ve Azure Portal.
+3.  Kontaktujte tým podpory RingCentral na adrese matthew.hunt@ringcentral.com pro **ověřovací token SCIM**. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace RingCentral ve Azure Portal.
 
 > [!NOTE]
 > Pokud chcete přiřadit licence uživatelům, přečtěte si [zde](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)odkaz na video.
@@ -82,7 +81,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro RingCentral ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -129,7 +128,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
    |název. rodina|Řetězec|
    |phoneNumbers [Type EQ "mobilní"]. Value|Řetězec|
    |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Odkaz|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
 
 10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 

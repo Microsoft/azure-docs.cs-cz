@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246107"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurace DNS pro překlad IP adres pro přístup k vCenter privátního cloudu z místních pracovních stanic
@@ -23,7 +22,7 @@ Pokud chcete získat přístup k serveru vCenter v privátním cloudu CloudSimpl
 
 1. Přihlaste se k [portálu CloudSimple](access-cloudsimple-portal.md).
 
-2. Přejděte na **prostředky** > **privátní cloudy** a vyberte privátní cloud, ke kterému se chcete připojit.
+2. Přejděte na **prostředky**  >  **privátní cloudy** a vyberte privátní cloud, ke kterému se chcete připojit.
 
 3. Na stránce **Souhrn** v privátním cloudu v části **základní informace**ZKOPÍRUJTE IP adresu serveru DNS privátního cloudu.
 

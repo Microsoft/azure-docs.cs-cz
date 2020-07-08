@@ -4,10 +4,9 @@ description: Úvod k ACR úlohám, sadě funkcí v Azure Container Registry, kte
 ms.topic: article
 ms.date: 01/22/2020
 ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087281"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatizace sestavení a údržby imagí kontejneru pomocí úloh ACR
@@ -22,7 +21,7 @@ Kontejnery poskytují nové úrovně virtualizace a izolují závislosti aplikac
 
 Úlohy ACR podporují několik scénářů pro sestavování a správu imagí kontejneru a další artefakty. Podrobnosti najdete v následujících částech tohoto článku.
 
-* **[Rychlé úlohy](#quick-task)** – Sestavte a nahrajte jednu Image kontejneru do registru kontejneru na vyžádání v Azure, aniž byste museli instalovat místní modul Docker. `docker push` V cloudu si myslíte. `docker build`
+* **[Rychlé úlohy](#quick-task)** – Sestavte a nahrajte jednu Image kontejneru do registru kontejneru na vyžádání v Azure, aniž byste museli instalovat místní modul Docker. `docker build` `docker push` V cloudu si myslíte.
 * **Automaticky aktivované úlohy** – povolením jedné nebo více *triggerů* sestavíte Image:
   * **[Aktivovat při aktualizaci zdrojového kódu](#trigger-task-on-source-code-update)** 
   * **[Aktivovat aktualizaci základní image](#automate-os-and-framework-patching)** 
@@ -58,8 +57,8 @@ Aktivovat sestavení image kontejneru nebo úlohu s více kroky, když je kód p
 
 | Trigger | Ve výchozím nastavení povolená |
 | ------- | ------------------ |
-| Potvrzení | Ano |
-| Žádost o přijetí změn | Ne |
+| Potvrzení | Yes |
+| Žádost o přijetí změn | No |
 
 Pokud chcete nakonfigurovat aktivační proceduru aktualizace zdrojového kódu, je nutné zadat úlohu pomocí tokenu PAT (Personal Access token) pro nastavení Webhooku ve veřejném nebo privátním úložišti GitHubu nebo Azure DevOps.
 
@@ -117,7 +116,7 @@ Následující tabulka ukazuje několik příkladů podporovaných umístění k
 
 ## <a name="image-platforms"></a>Image – platformy
 
-Ve výchozím nastavení ACR úlohy vytváří image pro Linux OS a amd64. Zadejte `--platform` značku pro vytváření imagí Windows nebo imagí Linux pro jiné architektury. Zadejte operační systém a volitelně podporovanou architekturu ve formátu operačního systému/architektury (například `--platform Linux/arm`). V případě architektur ARM můžete volitelně zadat variantu ve formátu OS/Architecture/variant (například `--platform Linux/arm64/v8`):
+Ve výchozím nastavení ACR úlohy vytváří image pro Linux OS a amd64. Zadejte `--platform` značku pro vytváření imagí Windows nebo imagí Linux pro jiné architektury. Zadejte operační systém a volitelně podporovanou architekturu ve formátu operačního systému/architektury (například `--platform Linux/arm` ). V případě architektur ARM můžete volitelně zadat variantu ve formátu OS/Architecture/variant (například `--platform Linux/arm64/v8` ):
 
 | Operační systém | Architektura|
 | --- | ------- | 

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78970277"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Vytvoření virtuálního počítače se systémem Linux, který používá ověřování pomocí protokolu SSH, s REST API
@@ -25,9 +24,9 @@ V tomto článku se dozvíte, jak pomocí REST API vytvořit virtuální počít
 
 Než vytvoříte a odešlete žádost, budete potřebovat:
 
-* `{subscription-id}` Pro vaše předplatné
+* `{subscription-id}`Pro vaše předplatné
   * Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) .
-* Vytvořili `{resourceGroupName}` jste předem čas
+* `{resourceGroupName}`Vytvořili jste předem čas
 * [Virtuální síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) ve stejné skupině prostředků
 * Pár klíčů SSH (můžete [vygenerovat nový](mac-create-ssh-keys.md) , pokud ho ještě nemáte)
 
@@ -39,7 +38,7 @@ Chcete-li vytvořit nebo aktualizovat virtuální počítač, použijte následu
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-Kromě parametrů `{subscription-id}` a `{resourceGroupName}` musíte zadat `{vmName}` (`api-version` je volitelný, ale tento článek byl testován pomocí `api-version=2017-12-01`).
+Kromě `{subscription-id}` parametrů a musíte `{resourceGroupName}` zadat `{vmName}` ( `api-version` je volitelný, ale tento článek byl testován pomocí `api-version=2017-12-01` ).
 
 Jsou vyžadovány následující hlavičky:
 
@@ -54,16 +53,16 @@ Obecné informace o práci s požadavky na REST API najdete v tématu [komponent
 
 Následující běžné definice se používají k sestavení textu žádosti:
 
-| Název                       | Požaduje se | Typ                                                                                | Popis  |
+| Name                       | Požaduje se | Typ                                                                                | Description  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | řetězec                                                                              | Umístění prostředku. |
-| jméno                       |          | řetězec                                                                              | Název virtuálního počítače |
+| name                       |          | řetězec                                                                              | Název virtuálního počítače |
 | Properties. položka hardwareprofile |          | [Položka hardwareprofile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Určuje nastavení hardwaru pro virtuální počítač. |
 | Properties. storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Určuje nastavení úložiště pro disky virtuálních počítačů. |
 | Properties. osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Určuje nastavení operačního systému pro virtuální počítač. |
 | Properties. networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Určuje síťová rozhraní virtuálního počítače. |
 
-Příklad textu žádosti je uvedený níže. Ujistěte se, že jste zadali název virtuálního počítače `{computerName}` v `{name}` parametrech a, název síťového rozhraní, které jste vytvořili v `networkInterfaces`části, své uživatelské `adminUsername` jméno `path`v a a *veřejnou* část svého souboru KeyPair SSH (například `~/.ssh/id_rsa.pub`) v. `keyData` Další parametry, které byste mohli chtít upravit `location` , `vmSize`zahrnují a.  
+Příklad textu žádosti je uvedený níže. Ujistěte se, že jste zadali název virtuálního počítače `{computerName}` v `{name}` parametrech a, název síťového rozhraní, které jste vytvořili v části `networkInterfaces` , své uživatelské jméno v `adminUsername` a a `path` *veřejnou* část svého souboru KeyPair SSH (například `~/.ssh/id_rsa.pub` ) v `keyData` . Další parametry, které byste mohli chtít upravit, zahrnují `location` a `vmSize` .  
 
 ```json
 {
@@ -124,11 +123,11 @@ Příklad textu žádosti je uvedený níže. Ujistěte se, že jste zadali náz
 
 K odeslání tohoto požadavku HTTP můžete použít klienta vaší předvolby. Můžete také použít [Nástroj v prohlížeči](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) kliknutím na tlačítko **vyzkoušet** .
 
-### <a name="responses"></a>Odezvy
+### <a name="responses"></a>Odpovědi
 
 Existují dvě úspěšné odpovědi, které by mohla operace vytvořit nebo aktualizovat virtuální počítač:
 
-| Název        | Typ                                                                              | Popis |
+| Name        | Typ                                                                              | Description |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 vytvořeno | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Vytvořeno     |

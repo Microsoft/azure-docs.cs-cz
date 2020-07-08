@@ -7,10 +7,9 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79087861"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
@@ -103,7 +102,7 @@ Chování Upsert je *vloženo nebo nahrazeno*.
 
 **Předchozí úrovně:** Nedošlo k žádné striktní kontrole prefixů funkcí.
 
-**úroveň 1,2:** Azure Stream Analytics má striktní ověření prefixů funkcí. Přidáním předpony k předdefinované funkci dojde k chybě. Například`myprefix.ABS(…)` není podporován.
+**úroveň 1,2:** Azure Stream Analytics má striktní ověření prefixů funkcí. Přidáním předpony k předdefinované funkci dojde k chybě. Například `myprefix.ABS(…)` není podporován.
 
 Přidání předpony k předdefinovaným agregacím také způsobí chybu. Například `myprefix.SUM(…)` není podporován.
 

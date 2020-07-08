@@ -8,10 +8,9 @@ ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: 001dfbc78c0027249143e933684523d47af383d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79096778"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>Příprava na změnu formátu Azure Monitor protokoly platformy archivované na účet úložiště
@@ -25,7 +24,7 @@ ms.locfileid: "79096778"
 Azure Monitor nabízí možnost, která umožňuje odesílat protokoly prostředků a protokoly aktivit do účtu služby Azure Storage, Event Hubs oboru názvů nebo do Log Analyticsho pracovního prostoru v Azure Monitor. Aby bylo možné vyřešit potíže s výkonem systému, **1. listopadu 2018 ve 12:00 půlnoci času UTC** se změnil formát data protokolu odeslání do úložiště objektů BLOB. Pokud máte nástroje, které čtou data z úložiště objektů blob, je potřeba aktualizovat nástroje, abyste pochopili nový formát dat.
 
 * Ve čtvrtek od 1. listopadu 2018 ve 12:00 půlnoci UTC se formát objektu BLOB změnil na [řádky JSON](http://jsonlines.org/). To znamená, že každý záznam bude oddělený novým řádkem, bez pole vnějších záznamů a žádné čárky mezi záznamy JSON.
-* Formát objektu BLOB se změnil pro všechna nastavení diagnostiky ve všech předplatných najednou. První soubor PT1H. JSON vydaný pro 1. listopadu použil tento nový formát. Názvy objektů BLOB a kontejnerů zůstávají stejné.
+* Formát objektu BLOB se změnil pro všechna nastavení diagnostiky ve všech předplatných najednou. První PT1H.jsv souboru vydaném pro 1. listopadu používal tento nový formát. Názvy objektů BLOB a kontejnerů zůstávají stejné.
 * Nastavení diagnostiky mezi před 1. listopadu pokračuje v generování dat v aktuálním formátu do 1. listopadu.
 * Tato změna nastala v rámci všech oblastí veřejné cloudové oblasti. Tato změna se neprojeví v Microsoft Azure provozovaných v cloudech 21Vianet, Azure Německo nebo Azure Government.
 * Tato změna má vliv na následující typy dat:
@@ -55,7 +54,7 @@ Pokud máte prostředky odesílající data do účtu úložiště pomocí těch
 
 ### <a name="details-of-the-format-change"></a>Podrobnosti změny formátu
 
-Aktuální formát souboru PT1H. JSON ve službě Azure Blob Storage používá pole JSON záznamů. Tady je ukázka souboru protokolu trezoru klíčů nyní:
+Aktuální formát PT1H.jsv souboru v úložišti objektů BLOB v Azure používá pole JSON záznamů. Tady je ukázka souboru protokolu trezoru klíčů nyní:
 
 ```json
 {
@@ -116,7 +115,7 @@ Aktuální formát souboru PT1H. JSON ve službě Azure Blob Storage používá 
 }
 ```
 
-Nový formát používá [řádky JSON](http://jsonlines.org/), kde každá událost je řádek a znak nového řádku indikuje novou událost. V tomto příkladu bude výše uvedený vzor vypadat jako v souboru PT1H. JSON po provedení změny:
+Nový formát používá [řádky JSON](http://jsonlines.org/), kde každá událost je řádek a znak nového řádku indikuje novou událost. V tomto příkladu bude výše uvedený vzor vypadat jako v PT1H.jssouboru po změně:
 
 ```json
 {"time": "2016-01-05T01:32:01.2691226Z","resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT","operationName": "VaultGet","operationVersion": "2015-06-01","category": "AuditEvent","resultType": "Success","resultSignature": "OK","resultDescription": "","durationMs": "78","callerIpAddress": "104.40.82.76","correlationId": "","identity": {"claim": {"http://schemas.microsoft.com/identity/claims/objectidentifier": "d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "live.com#username@outlook.com","appid": "1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},"properties": {"clientInfo": "azure-resource-manager/2.0","requestUri": "https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id": "https://contosokeyvault.vault.azure.net/","httpStatusCode": 200}}

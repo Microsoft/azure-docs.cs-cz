@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79253790"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Rozšíření agenta Stackify retracee pro Linux
@@ -43,7 +42,7 @@ Toto rozšíření poskytuje instalační cestu pro agenta pro Linux pro opětov
 
 Agenta přetrasování lze spustit pro tyto distribuce systému Linux.
 
-| Distribuce | Version |
+| Distribuce | Verze |
 |---|---|
 | Ubuntu | 16,04 LTS, 14,04 LTS, 16,10 a 17,04 |
 | Debian | 7.9 + a 8.2 +, 9 |
@@ -54,14 +53,14 @@ Agenta přetrasování lze spustit pro tyto distribuce systému Linux.
 
 Rozšíření agenta Stackify pro Linux vyžaduje, aby byl cílový virtuální počítač připojený k Internetu. 
 
-Možná budete muset upravit konfiguraci sítě, aby povolovala připojení k Stackify, viz https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Možná budete muset upravit konfiguraci sítě, aby povolovala připojení k Stackify, viz https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall . 
 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
 ---
 
-Následující JSON zobrazuje schéma pro rozšíření agenta Stackify Retrace. Přípona vyžaduje `environment` a `activationKey`.
+Následující JSON zobrazuje schéma pro rozšíření agenta Stackify Retrace. Přípona vyžaduje `environment` a `activationKey` .
 
 ```json
     {
@@ -95,7 +94,7 @@ JSON pro rozšíření virtuálního počítače se dá vnořit do prostředku v
 
 Následující příklad předpokládá, že rozšíření Stackify Retrace pro Linux je vnořeno do prostředku virtuálního počítače. Při vnořování prostředku rozšíření je kód JSON umístěn do objektu Resources: [] virtuálního počítače.
 
-Přípona vyžaduje `environment` a `activationKey`.
+Přípona vyžaduje `environment` a `activationKey` .
 
 ```json
     {
@@ -150,9 +149,9 @@ Při umístění JSON rozšíření v kořenovém adresáři šablony obsahuje n
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
 
-`Set-AzVMExtension` Příkaz se dá použít k nasazení rozšíření virtuálního počítače Stackify Retrace agenta pro Linux do existujícího virtuálního počítače. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu.
+`Set-AzVMExtension`Příkaz se dá použít k nasazení rozšíření virtuálního počítače Stackify Retrace agenta pro Linux do existujícího virtuálního počítače. Před spuštěním příkazu musí být veřejné a privátní konfigurace uložené v zatřiďovací tabulce PowerShellu.
 
-Přípona vyžaduje `environment` a `activationKey`.
+Přípona vyžaduje `environment` a `activationKey` .
 
 ```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
@@ -173,7 +172,7 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 Nástroj rozhraní příkazového řádku Azure je možné použít k nasazení rozšíření virtuálního počítače Stackify Retrace agenta pro Linux do existujícího virtuálního počítače.  
 
-Přípona vyžaduje `environment` a `activationKey`.
+Přípona vyžaduje `environment` a `activationKey` .
 
 ```azurecli
 az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --name 'StackifyLinuxAgentExtension' --protected-settings '{"activationKey":"myActivationKey"}' --settings '{"environment":"myEnvironment"}'  --resource-group 'myResourceGroup' --vm-name 'myVmName'
@@ -198,4 +197,4 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 | 110 | Zakázat chybu | Nepovedlo se odebrat službu. |
 | 120 | Chyba odinstalace | Zastavení služby se nezdařilo |
 
-Pokud potřebujete další pomoc, můžete kontaktovat podporu Stackify na adrese https://support.stackify.com.
+Pokud potřebujete další pomoc, můžete kontaktovat podporu Stackify na adrese https://support.stackify.com .

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282780"
 ---
 # <a name="create-a-basic-index-in-azure-cognitive-search"></a>Vytvoření základního indexu v Azure Kognitivní hledání
@@ -145,7 +144,7 @@ Schématem Azure Kognitivní hledání index se skládá z následujících prvk
 Při definování schématu musíte zadat název, typ a atributy každého pole v indexu. Typ pole klasifikuje data, která jsou v tomto poli uložená. Atributy se nastavují u jednotlivých polí a určují, jak se příslušné pole použije. Následující tabulky poskytují výčet typů a atributů, které můžete zadat.
 
 ### <a name="data-types"></a>Typy dat
-| Typ | Popis |
+| Typ | Description |
 | --- | --- |
 | *Edm.String* |Text, který lze volitelně použít pro fulltextové vyhledávání (dělení slov, odvozování a tak dále). |
 | *Collection(Edm.String)* |Seznam řetězců, které jde volitelně tokenizovat k fulltextovému hledání. Ačkoli neexistuje žádné teoretické omezení počtu položek v kolekci, na kolekce se vztahuje 16MB omezení velikosti datové části. |
@@ -153,7 +152,7 @@ Při definování schématu musíte zadat název, typ a atributy každého pole 
 | *Edm.Int32* |32bitové celočíselné hodnoty. |
 | *Edm.Int64* |64bitové celočíselné hodnoty. |
 | *Edm.Double* |Číselné údaje s dvojitou přesností. |
-| *Edm.DateTimeOffset* |Hodnoty data a času reprezentované ve formátu OData v4 (například `yyyy-MM-ddTHH:mm:ss.fffZ` nebo `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
+| *Edm.DateTimeOffset* |Hodnoty data a času reprezentované ve formátu OData v4 (například `yyyy-MM-ddTHH:mm:ss.fffZ` nebo `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` ). |
 | *Edm.GeographyPoint* |Bod představující geografické umístění na zeměkouli. |
 
 Podrobnější informace o [datových typech podporovaných](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)službou Azure kognitivní hledání najdete tady.
@@ -211,9 +210,9 @@ JavaScript na straně klienta nemůže ve výchozím nastavení volat žádná r
 
 Pro CORS se dají nastavit tyto možnosti:
 
-+ **allowedOrigins** (povinné): Jedná se o seznam původních zdrojů, kterým bude udělen přístup k vašemu indexu. To znamená, že jakýkoli JavaScriptový kód, který je obsluhován z těchto původu, bude moci dotazovat váš index (za předpokladu, že poskytuje správný klíč rozhraní API). Každý původ má obvykle tvar `protocol://<fully-qualified-domain-name>:<port>` , i když `<port>` je často vynechán. Další podrobnosti najdete v tématu [sdílení prostředků mezi zdroji (Wikipedii)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
++ **allowedOrigins** (povinné): Jedná se o seznam původních zdrojů, kterým bude udělen přístup k vašemu indexu. To znamená, že jakýkoli JavaScriptový kód, který je obsluhován z těchto původu, bude moci dotazovat váš index (za předpokladu, že poskytuje správný klíč rozhraní API). Každý původ má obvykle tvar, `protocol://<fully-qualified-domain-name>:<port>` i když `<port>` je často vynechán. Další podrobnosti najdete v tématu [sdílení prostředků mezi zdroji (Wikipedii)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) .
 
-  Pokud chcete povolený přístup ke všem počátkům, zahrňte `*` do pole **allowedOrigins** jako jednu položku. *Toto není doporučený postup pro služby vyhledávání v provozu* , ale je často užitečný pro vývoj a ladění.
+  Pokud chcete povolený přístup ke všem počátkům, zahrňte do `*` pole **allowedOrigins** jako jednu položku. *Toto není doporučený postup pro služby vyhledávání v provozu* , ale je často užitečný pro vývoj a ladění.
 
 + **maxAgeInSeconds** (volitelné): v prohlížečích se tato hodnota používá k určení doby (v sekundách), po kterou se budou odpovědi na kontrolu mezipaměti CORS ukládat do mezipaměti. Toto musí být nezáporné celé číslo. Čím větší je tato hodnota, tím vyšší bude výkon, tím déle bude trvat, než se změny zásad CORS projeví. Pokud není nastavená, použije se výchozí doba trvání 5 minut.
 

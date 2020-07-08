@@ -16,10 +16,9 @@ ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: 14ba5f270138db22a76fd697b264046e22577427
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79086732"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Kurz: použití dynamického šifrování DRM a služby doručování licencí
@@ -57,7 +56,7 @@ K dokončení kurzu potřebujete následující položky:
 * Nainstalujte Visual Studio Code nebo Visual Studio.
 * Vytvořit si nový účet služby Azure Media Services podle popisu [v tomto rychlém startu](create-account-cli-quickstart.md)
 * Získat přihlašovací údaje nutné k používání rozhraní API služby Media Services podle článku [Přístup k rozhraním API](access-api-cli-how-to.md)
-* Nastavte příslušné hodnoty v konfiguračním souboru aplikace (appSettings. JSON).
+* Nastavte příslušné hodnoty v konfiguračním souboru aplikace (appsettings.jszapnuto).
 
 ## <a name="download-code"></a>Stažení kódu
 
@@ -135,7 +134,7 @@ Po dokončení kódování a nastavení zásady symetrického klíče spočívá
 
 Proces vytvoření **lokátoru streamování** se nazývá publikování. Ve výchozím nastavení je **Lokátor streamování** platný ihned po volání rozhraní API. Bude trvat až do odstranění, pokud nenastavíte volitelné počáteční a koncové časy.
 
-Při vytváření **lokátoru streamování**je potřeba zadat požadované `StreamingPolicyName`. V tomto kurzu používáme jednu z předdefinovaných zásad streamování, která oznamuje Azure Media Services, jak publikovat obsah pro streamování. V tomto příkladu jsme nastavili název StreamingLocator.StreamingPolicyName na zásadu Predefined_MultiDrmCencStreaming. Šifry PlayReady a Widevine se aplikují a klíč se doručí klientovi pro přehrávání na základě konfigurovaných licencí DRM. Pokud zároveň chcete svůj stream zašifrovat pomocí CBCS (FairPlay), použijte zásadu Predefined_MultiDrmStreaming.
+Při vytváření **lokátoru streamování**je potřeba zadat požadované `StreamingPolicyName` . V tomto kurzu používáme jednu z předdefinovaných zásad streamování, která oznamuje Azure Media Services, jak publikovat obsah pro streamování. V tomto příkladu jsme nastavili název StreamingLocator.StreamingPolicyName na zásadu Predefined_MultiDrmCencStreaming. Šifry PlayReady a Widevine se aplikují a klíč se doručí klientovi pro přehrávání na základě konfigurovaných licencí DRM. Pokud zároveň chcete svůj stream zašifrovat pomocí CBCS (FairPlay), použijte zásadu Predefined_MultiDrmStreaming.
 
 > [!IMPORTANT]
 > Pokud používáte vlastní [zásady streamování](streaming-policy-concept.md), měli byste navrhnout určitou sadu takových zásad pro svůj účet Media Service a znovu je použít pro své StreamingLocators, kdykoli budete potřebovat stejné možnosti šifrování a protokoly. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet novou StreamingPolicy pro každou StreamingLocator.

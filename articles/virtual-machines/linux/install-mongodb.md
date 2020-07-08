@@ -12,10 +12,9 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: e1bc7c8a6f97d6dc6bb1d6cb54825425244b2158
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944886"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Jak nainstalovat a nakonfigurovat MongoDB na virtuálním počítači se systémem Linux
@@ -59,7 +58,7 @@ Chcete-li přidat zdroje instalace pro MongoDB, vytvořte soubor úložiště **
 sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 
-Otevřete soubor úložiště MongoDB pro úpravy, například s `vi` nebo. `nano` Přidejte následující řádky:
+Otevřete soubor úložiště MongoDB pro úpravy, například s `vi` nebo `nano` . Přidejte následující řádky:
 
 ```sh
 [mongodb-org-3.6]
@@ -143,7 +142,7 @@ SSH k VIRTUÁLNÍmu počítači pomocí vlastního uživatelského jména a veř
 ssh azureuser@mypublicdns.eastus.cloudapp.azure.com
 ```
 
-Pomocí místního `mongo` klienta ověřte instalaci MongoDB následujícím způsobem:
+Pomocí místního klienta ověřte instalaci MongoDB následujícím `mongo` způsobem:
 
 ```bash
 mongo
@@ -197,7 +196,7 @@ az group deployment create --resource-group myResourceGroup \
   --no-wait
 ```
 
-Nasazení a konfigurace všech instancí virtuálních počítačů může trvat až hodinu. `--no-wait` Příznak se používá na konci předchozího příkazu, který vrátí řízení do příkazového řádku, jakmile bude nasazení šablony přijato platformou Azure. Pak můžete zobrazit stav nasazení pomocí [AZ Group Deployment show](/cli/azure/group/deployment). V následujícím příkladu se zobrazí stav nasazení *myMongoDBCluster* ve skupině prostředků *myResourceGroup* :
+Nasazení a konfigurace všech instancí virtuálních počítačů může trvat až hodinu. `--no-wait`Příznak se používá na konci předchozího příkazu, který vrátí řízení do příkazového řádku, jakmile bude nasazení šablony přijato platformou Azure. Pak můžete zobrazit stav nasazení pomocí [AZ Group Deployment show](/cli/azure/group/deployment). V následujícím příkladu se zobrazí stav nasazení *myMongoDBCluster* ve skupině prostředků *myResourceGroup* :
 
 ```azurecli
 az group deployment show \

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 5b2801b0a71f04803955e9d8bc18a97133019996
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246549"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Práce s poli a objekty v Azure Cosmos DB
@@ -90,7 +89,7 @@ Výsledky jsou následující:
     ]
 ```
 
-Další dotaz provede iteraci `children` v `Families` kontejneru. Výstupní pole se liší od předchozího dotazu. Tento příklad rozdělí `children`a sloučí výsledky do jednoho pole:  
+Další dotaz provede iteraci `children` v `Families` kontejneru. Výstupní pole se liší od předchozího dotazu. Tento příklad rozdělí `children` a sloučí výsledky do jednoho pole:  
 
 ```sql
     SELECT *

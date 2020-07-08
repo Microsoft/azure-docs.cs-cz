@@ -9,15 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79367988"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Vizualizace interaktivních dotazů Apache Hive dat pomocí Microsoft Power BI pomocí přímého dotazování v HDInsight
 
-Tento článek popisuje, jak připojit Microsoft Power BI k clusterům s interaktivními dotazy Azure HDInsight a vizualizovat Apache Hive data pomocí přímých dotazů. Zadaný příklad načte data z tabulky `hivesampletable` podregistru do Power BI. Tabulka `hivesampletable` podregistru obsahuje data o využití mobilních telefonů. Pak vykreslíte data o využití na světové mapě:
+Tento článek popisuje, jak připojit Microsoft Power BI k clusterům s interaktivními dotazy Azure HDInsight a vizualizovat Apache Hive data pomocí přímých dotazů. Zadaný příklad načte data z `hivesampletable` tabulky podregistru do Power BI. `hivesampletable`Tabulka podregistru obsahuje data o využití mobilních telefonů. Pak vykreslíte data o využití na světové mapě:
 
 ![HDInsight Power BI sestavy mapy](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
@@ -31,11 +30,11 @@ Před provedením tohoto článku musíte mít následující položky:
 
 ## <a name="load-data-from-hdinsight"></a>Načtení dat ze služby HDInsight
 
-Tabulka `hivesampletable` podregistr je dodávána se všemi clustery HDInsight.
+`hivesampletable`Tabulka podregistr je dodávána se všemi clustery HDInsight.
 
 1. Spusťte Power BI Desktop.
 
-2. V řádku nabídek přejděte na **Domů** > **získat data** > **Další..**..
+2. V řádku nabídek přejděte na **Domů**  >  **získat data**  >  **Další..**..
 
     ![HDInsight Power BI získat data více](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 

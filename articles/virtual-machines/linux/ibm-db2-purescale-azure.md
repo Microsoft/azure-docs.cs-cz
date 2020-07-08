@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78945058"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale v Azure
@@ -73,13 +72,13 @@ Tato architektura spouští aplikaci, úložiště a datovou vrstvu na virtuáln
 
 -   DB2 CF používá paměťově optimalizované virtuální počítače, například E-series nebo L-series.
 
--   Sdílený cluster úložiště, který používá standardní\_virtuální\_počítače DS4 v2 se systémem Linux.
+-   Sdílený cluster úložiště, který používá standardní \_ \_ virtuální počítače DS4 v2 se systémem Linux.
 
--   JumpBox pro správu je standardní\_virtuální počítač\_DS2 v2 se systémem Linux.  Alternativou je Azure bastionu, což je služba, která poskytuje zabezpečené prostředí RDP/SSH pro všechny virtuální počítače ve vaší virtuální síti.
+-   JumpBox pro správu je standardní \_ \_ virtuální počítač DS2 v2 se systémem Linux.  Alternativou je Azure bastionu, což je služba, která poskytuje zabezpečené prostředí RDP/SSH pro všechny virtuální počítače ve vaší virtuální síti.
 
--   Klient je standardní\_virtuální počítač DS3\_v2 s Windows (používaný pro testování).
+-   Klient je standardní \_ \_ virtuální počítač DS3 v2 s Windows (používaný pro testování).
 
--   *Volitelné*. Server s kopií clusteru. To je potřeba jenom pro některé starší verze Db2 pureScale. V tomto příkladu se používá\_standardní\_virtuální počítač DS3 v2 se systémem Linux (používá se pro DB2 pureScale).
+-   *Volitelné*. Server s kopií clusteru. To je potřeba jenom pro některé starší verze Db2 pureScale. V tomto příkladu se používá \_ standardní \_ virtuální počítač DS3 v2 se systémem Linux (používá se pro DB2 pureScale).
 
 > [!NOTE]
 > Cluster DB2 pureScale vyžaduje aspoň dvě instance DB2. Vyžaduje také instanci mezipaměti a instanci Správce zámků.

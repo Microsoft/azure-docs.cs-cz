@@ -10,10 +10,9 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
 ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79213580"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics upgradovat na .NET Framework v 4.7.2
@@ -39,7 +38,7 @@ Zkontrolujte potenciální problémy s přerušením zpětné kompatibility tím
 1. Spusťte zpětnou kontrolu kompatibility vašich knihoven DLL .NET buď podle
    1. Používání rozšíření sady Visual Studio v [rozšíření .NET přenositelnost Analyzer pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
    1. Stažení a použití samostatného nástroje z [GitHubu dotnetapiport](https://github.com/microsoft/dotnet-apiport). Pokyny pro spuštění samostatného nástroje jsou k dispozici na webu [GitHub dotnetapiport – nejnovější změny](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)
-   1. Pro 4.7.2. Kompatibilita, `read isRetargeting == True` která identifikuje možné problémy.
+   1. Pro 4.7.2. Kompatibilita, která `read isRetargeting == True` identifikuje možné problémy.
 2. Pokud nástroj indikuje, jestli váš kód může být ovlivněný jakýmkoli z možných zpětných nekompatibilit (některé běžné příklady nekompatibility jsou uvedené níže), můžete další kontrolu provést
    1. Analýza kódu a identifikace, jestli váš kód předává hodnoty ovlivněným rozhraním API
    1. Proveďte kontrolu za běhu. Nasazení modulu runtime není provedeno souběžně v ADLA. Před upgradem je možné provést kontrolu za běhu, a to pomocí místního spuštění nástroje VisualStudio s místní .NET Framework 4.7.2 na zástupce sady dat.
@@ -65,19 +64,19 @@ Nejběžnější zpětně nekompatibility, které je pravděpodobné, že je kon
   - Navrhovaná akce: Ujistěte se, že TaskFactory. FromAsync vrátí hodnotu true správně.
 
 - DataObject. GetData teď načítá data jako UTF-8.
-  - Pro aplikace cílené na .NET Framework 4 nebo spuštěné v .NET Framework 4.5.1 nebo dřívějších verzích načítá DataObject. GetData data ve formátu HTML jako řetězec ASCII. V důsledku toho jsou znaky, které nejsou ASCII (znaky, jejichž kódy ASCII jsou větší než 0x7F), reprezentovány dvěma náhodnými znaky. #N # #N # pro aplikace cílené na .NET Framework 4,5 nebo novější a spuštěné v .NET Framework `DataObject.GetData` 4.5.2 NAČTE data ve formátu HTML jako UTF-8, která představuje znaky větší než 0x7F správně.
+  - Pro aplikace cílené na .NET Framework 4 nebo spuštěné v .NET Framework 4.5.1 nebo dřívějších verzích načítá DataObject. GetData data ve formátu HTML jako řetězec ASCII. V důsledku toho jsou znaky, které nejsou ASCII (znaky, jejichž kódy ASCII jsou větší než 0x7F), reprezentovány dvěma náhodnými znaky. #N # #N # pro aplikace cílené na .NET Framework 4,5 nebo novější a spuštěné v .NET Framework 4.5.2 `DataObject.GetData` načte data ve formátu HTML jako UTF-8, která představuje znaky větší než 0x7F správně.
   - Ovlivněné knihovny: GLO
   - Navrhovaná akce: Ujistěte se, že načtená data jsou ve formátu, který chcete.
 
 - Funkce XmlWriter vyvolá neplatné náhradní páry.
-  - Pro aplikace, které cílí na .NET Framework 4.5.2 nebo předchozí verze, zapisuje neplatnou náhradní dvojici pomocí zpracování záložního použití výjimek, vždy výjimku vyvolá. Pro aplikace cílené na .NET Framework 4,6 vyvolá pokus o zápis neplatného náhradního páru `ArgumentException`.
-  - Ovlivněné knihovny: System. XML, System. XML. ReaderWriter
+  - Pro aplikace, které cílí na .NET Framework 4.5.2 nebo předchozí verze, zapisuje neplatnou náhradní dvojici pomocí zpracování záložního použití výjimek, vždy výjimku vyvolá. Pro aplikace cílené na .NET Framework 4,6 vyvolá pokus o zápis neplatného náhradního páru `ArgumentException` .
+  - Ovlivněné knihovny: System.Xml, System.Xml. ReaderWriter
   - Navrhovaná akce: Ujistěte se, že nepíšete neplatný náhradní pár, který způsobí výjimku argumentu.
 
 - HtmlTextWriter nevykresluje `<br/>` element správně
-  - Počínaje .NET Framework 4,6, `HtmlTextWriter.RenderBeginTag()` volání a `HtmlTextWriter.RenderEndTag()` s `<BR />` elementem budou správně vložena pouze jedna `<BR />` (místo dvou).
+  - Počínaje .NET Framework 4,6, volání `HtmlTextWriter.RenderBeginTag()` a `HtmlTextWriter.RenderEndTag()` s `<BR />` elementem budou správně vložena pouze jedna `<BR />` (místo dvou).
   - Ovlivněné knihovny: System. Web
-  - Navrhovaná akce: Ujistěte se, že vkládáte `<BR />` očekávané množství, které byste měli vidět, takže se v produkční úloze nezobrazuje žádné náhodné chování.
+  - Navrhovaná akce: Ujistěte se, že vkládáte očekávané množství, které `<BR />` byste měli vidět, takže se v produkční úloze nezobrazuje žádné náhodné chování.
 
 - Volání CreateDefaultAuthorizationContext s argumentem null se změnilo.
   - Implementace AuthorizationContext, která byla vrácena voláním `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` s argumentem s hodnotou null authorizationPolicies, změnila jeho implementaci v .NET Framework 4,6.
@@ -85,7 +84,7 @@ Nejběžnější zpětně nekompatibility, které je pravděpodobné, že je kon
   - Navrhovaná akce: Ujistěte se, že zpracováváte nové očekávané chování v případě, že existují zásady autorizace s hodnotou null.
   
 - Algoritmem RSACng nyní správně načítá klíče RSA nestandardní velikosti klíče.
-  - V .NET Framework verzích starších než 4.6.2 zákazníci, kteří mají nestandardní velikosti klíčů pro certifikáty RSA, nemůžou získat přístup k těmto klíčům prostřednictvím rozšiřujících metod `GetRSAPublicKey()` a `GetRSAPrivateKey()` . A `CryptographicException` se zprávou, že požadovaná velikost klíče není podporována, je vyvolána. S .NET Framework 4.6.2 Tento problém byl vyřešen. Podobně `RSA.ImportParameters()` a `RSACng.ImportParameters()` teď můžete pracovat s nestandardními velikostmi klíčů bez `CryptographicException`vyvolání.
+  - V .NET Framework verzích starších než 4.6.2 zákazníci, kteří mají nestandardní velikosti klíčů pro certifikáty RSA, nemůžou získat přístup k těmto klíčům prostřednictvím `GetRSAPublicKey()` `GetRSAPrivateKey()` rozšiřujících metod a. A `CryptographicException` se zprávou, že požadovaná velikost klíče není podporována, je vyvolána. S .NET Framework 4.6.2 Tento problém byl vyřešen. Podobně `RSA.ImportParameters()` a `RSACng.ImportParameters()` teď můžete pracovat s nestandardními velikostmi klíčů bez vyvolání `CryptographicException` .
   - Ovlivněné knihovny: mscorlib, System. Core
   - Navrhovaná akce: Zajistěte, aby klíče RSA fungovaly podle očekávání.
 
@@ -95,11 +94,11 @@ Nejběžnější zpětně nekompatibility, které je pravděpodobné, že je kon
   - Navrhovaná akce:
 
 - Volání konstruktorů hodnota ClaimsIdentity
-  - Počínaje .NET Framework 4.6.2 dojde ke změně v tom, jak `T:System.Security.Claims.ClaimsIdentity` konstruktory s `T:System.Security.Principal.IIdentity` parametrem nastaví `P:System.Security.Claims.ClaimsIdentify.Actor` vlastnost. Pokud je `T:System.Security.Principal.IIdentity` argumentem `T:System.Security.Claims.ClaimsIdentity` objekt `P:System.Security.Claims.ClaimsIdentify.Actor` a vlastnost tohoto `T:System.Security.Claims.ClaimsIdentity` objektu není `null`, je `P:System.Security.Claims.ClaimsIdentify.Actor` vlastnost připojena pomocí `M:System.Security.Claims.ClaimsIdentity.Clone` metody. V rozhraní Framework 4.6.1 a starších verzích je `P:System.Security.Claims.ClaimsIdentify.Actor` vlastnost připojena jako stávající odkaz. Z důvodu `P:System.Security.Claims.ClaimsIdentify.Actor` této změny, počínaje .NET Framework 4.6.2, není vlastnost nového `T:System.Security.Claims.ClaimsIdentity` objektu shodná s `P:System.Security.Claims.ClaimsIdentify.Actor` vlastností `T:System.Security.Principal.IIdentity` argumentu konstruktoru. V .NET Framework 4.6.1 a dřívějších verzích se rovná.
+  - Počínaje .NET Framework 4.6.2 dojde ke změně v tom, jak `T:System.Security.Claims.ClaimsIdentity` konstruktory s `T:System.Security.Principal.IIdentity` parametrem nastaví `P:System.Security.Claims.ClaimsIdentify.Actor` vlastnost. Pokud `T:System.Security.Principal.IIdentity` je argumentem `T:System.Security.Claims.ClaimsIdentity` objekt a `P:System.Security.Claims.ClaimsIdentify.Actor` vlastnost tohoto objektu není, je `T:System.Security.Claims.ClaimsIdentity` `null` `P:System.Security.Claims.ClaimsIdentify.Actor` vlastnost připojena pomocí `M:System.Security.Claims.ClaimsIdentity.Clone` metody. V rozhraní Framework 4.6.1 a starších verzích `P:System.Security.Claims.ClaimsIdentify.Actor` je vlastnost připojena jako stávající odkaz. Z důvodu této změny, počínaje .NET Framework 4.6.2, není `P:System.Security.Claims.ClaimsIdentify.Actor` vlastnost nového `T:System.Security.Claims.ClaimsIdentity` objektu shodná s `P:System.Security.Claims.ClaimsIdentify.Actor` vlastností `T:System.Security.Principal.IIdentity` argumentu konstruktoru. V .NET Framework 4.6.1 a dřívějších verzích se rovná.
   - Ovlivněné knihovny: mscorlib
   - Navrhovaná akce: Ujistěte se, že hodnota ClaimsIdentity funguje podle očekávání pro nový modul runtime.
 
 - Serializace řídicích znaků pomocí DataContractJsonSerializer je teď kompatibilní s ECMAScript V6 a V8
   - V rozhraní .NET Framework 4.6.2 a starších verzích neserializace DataContractJsonSerializer některé speciální řídicí znaky, jako je například \b, \f a \t, způsobem, který byl kompatibilní s normami ECMAScript V6 a V8. Počínaje .NET Framework 4,7 jsou serializace těchto řídicích znaků kompatibilní s ECMAScript V6 a V8.
-  - Ovlivněné knihovny: System. Runtime. Serialization. JSON
+  - Ovlivněné knihovny: System.Runtime.Serialization.Jsna
   - Navrhovaná akce: zajištění stejného chování s DataContractJsonSerializer

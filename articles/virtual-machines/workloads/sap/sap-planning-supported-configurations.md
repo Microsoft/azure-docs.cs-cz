@@ -17,13 +17,12 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 564c648a550b41017ffc684ca19ff03612fc63d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79137624"
 ---
-# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Úlohy SAP na podporovaných scénářích virtuálních počítačů Azure
+# <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure
 Návrh architektury SAP NetWeaver, Business One `Hybris` nebo S/4HANA Systems v Azure otevírá spoustu různých příležitostí pro různé architektury a nástroje, které slouží k získání škálovatelného, efektivního a vysoce dostupného nasazení. I když závisí na operačním systému nebo používaném systému DBMS, existují omezení. Ne všechny podporované scénáře jsou také podporovány stejným způsobem v Azure. Tento dokument vás provede podporovanými konfiguracemi bez vysoké dostupnosti a konfigurací a architekturou s vysokou dostupností a s využitím výhradně virtuálních počítačů Azure. Scénáře podporované [velkými instancemi Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)najdete v článku [podporované scénáře pro velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario). 
 
 
@@ -63,11 +62,11 @@ Podobná konfigurace by mohla vypadat takto:
 
 Tento typ nasazení DBMS je podporovaný pro:
 
-- SQL Server ve Windows
+- SQL Server on Windows
 - IBM Db2. Hledání podrobností v článku [více instancí (Linux, UNIX)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)
 - Pro Oracle. Podrobnosti najdete v [poznámkách k podpoře sap #1778431](https://launchpad.support.sap.com/#/notes/1778431) a souvisejících poznámkách SAP.
 - V případě SAP HANA je podporována více instancí na jednom virtuálním počítači, SAP volá tuto metodu nasazení MCOS. Podrobnosti najdete v článku SAP [více SAP HANA systémů na jednom hostiteli (MCOS)] (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
-- /b2751fd43bec41a9a14e01913f1edf18.html)
+- Nebo b2751fd43bec41a9a14e01913f1edf18.html)
 
 Spuštění více instancí databáze na jednom hostiteli je nutné zajistit, aby různé instance nekonkurují prostředkům a aby překročily omezení fyzického prostředku virtuálního počítače. To platí zejména pro paměť, kde je třeba uvolnit paměť všech instancí, které může virtuální počítač sdílet, aby mohl být přidělen. To může být také pravdivé pro prostředky procesoru, které mohou využívat různé instance databáze. Všechny zmíněné systémy DBMS mají konfigurace, které umožňují omezit přidělování paměti a prostředky procesoru na úrovni instance.
 Aby bylo možné podporovat takovou konfiguraci pro virtuální počítače Azure, je třeba, aby byly disky nebo svazky používané pro soubory protokolů dat a log/znovu souborů databáze spravované různými instancemi oddělené. Nebo jinými slovy soubory protokolu nebo protokolů databáze, které spravuje jiná instance systému DBMS, nemusí sdílet stejné disky nebo svazky. 
@@ -79,7 +78,7 @@ Konfigurace disku pro velké instance HANA je dodána nakonfigurované a je podr
 
 
 ## <a name="multiple-sap-dialog-instances-in-one-vm"></a>Několik instancí dialogů SAP v jednom virtuálním počítači
-V mnoha případech byly na holé servery nasazené víc instancí dialogů, nebo dokonce i na virtuálních počítačích běžících v privátních cloudech. Důvodem takových konfigurací bylo přizpůsobení některých instancí dialogů SAP konkrétním úlohám, obchodním funkcím nebo typům úloh. Důvodem pro neizolaci těchto instancí na samostatné virtuální počítače bylo úsilí při údržbě a provozu operačního systému. Nebo v mnoha případech se jedná o náklady na případ, kdy hostitel nebo obsluha virtuálního počítače žádá o měsíční poplatek za každý virtuální počítač provozovaný a spravovaný. V Azure je scénář hostování více instancí dialogů SAP v jednom virtuálním počítači, který je podporovaný pro produkční a neprodukční účely v operačních systémech Windows, Red Hat, SUSE a Oracle Linux. V případě, že je na jednom virtuálním počítači spuštěno více instancí aplikačního serveru SAP, je třeba nastavit parametr jádra SAP PHYS_MEMSIZE, který je k dispozici v jádrech Windows a moderních systémech Linux. Doporučuje se také omezit rozšiřování rozšířené paměti SAP v operačních systémech, jako je například Windows, kde je implementován Automatický růst paměti rozšířené pro SAP. To se dá udělat s parametrem `em/max_size_MB`profilu SAP.
+V mnoha případech byly na holé servery nasazené víc instancí dialogů, nebo dokonce i na virtuálních počítačích běžících v privátních cloudech. Důvodem takových konfigurací bylo přizpůsobení některých instancí dialogů SAP konkrétním úlohám, obchodním funkcím nebo typům úloh. Důvodem pro neizolaci těchto instancí na samostatné virtuální počítače bylo úsilí při údržbě a provozu operačního systému. Nebo v mnoha případech se jedná o náklady na případ, kdy hostitel nebo obsluha virtuálního počítače žádá o měsíční poplatek za každý virtuální počítač provozovaný a spravovaný. V Azure je scénář hostování více instancí dialogů SAP v jednom virtuálním počítači, který je podporovaný pro produkční a neprodukční účely v operačních systémech Windows, Red Hat, SUSE a Oracle Linux. V případě, že je na jednom virtuálním počítači spuštěno více instancí aplikačního serveru SAP, je třeba nastavit parametr jádra SAP PHYS_MEMSIZE, který je k dispozici v jádrech Windows a moderních systémech Linux. Doporučuje se také omezit rozšiřování rozšířené paměti SAP v operačních systémech, jako je například Windows, kde je implementován Automatický růst paměti rozšířené pro SAP. To se dá udělat s parametrem profilu SAP `em/max_size_MB` .
 
 V případě konfigurace na 3 úrovni, kde se v rámci virtuálních počítačů Azure spouští víc instancí dialogů SAP, může vypadat takto:
 
@@ -150,21 +149,21 @@ Služba SAP Central Services je druhým jediným bodem selhání konfigurace SAP
     - [Příprava infrastruktury Azure na vysokou dostupnost pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složky pro instance SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
 - Cluster s podporou převzetí služeb při selhání systému Windows používající sdílenou složku SMB na základě [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) pro adresář sapmnt a globální přenos. Podrobnosti jsou uvedeny v článku:
     - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
-- Server clusteru s podporou převzetí služeb `Datakeeper`při selhání systému Windows založený na. I když jste si ho popsali od Microsoftu, potřebujete relaci podpory s s, takže můžete při používání tohoto řešení začít s podporou. Podrobnosti jsou popsány v článku:
+- Server clusteru s podporou převzetí služeb při selhání systému Windows založený na `Datakeeper` . I když jste si ho popsali od Microsoftu, potřebujete relaci podpory s s, takže můžete při používání tohoto řešení začít s podporou. Podrobnosti jsou popsány v článku:
     - [Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
     - [Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk)
-- Pacemaker v operačním systému SUSE s vytvořením vysoce dostupné sdílené složky NFS pomocí dvou virtuálních počítačů `drdb` SUSE a replikace souborů. Podrobnosti jsou popsány v článku.
+- Pacemaker v operačním systému SUSE s vytvořením vysoce dostupné sdílené složky NFS pomocí dvou virtuálních počítačů SUSE a `drdb` replikace souborů. Podrobnosti jsou popsány v článku.
     - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
     - [Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
 - Operační systém Pacemaker SUSE s využitím sdílených složek systému souborů NFS poskytovaných [Azure NetApp Files](https://azure.microsoft.com/services/netapp/). Podrobnosti jsou popsány v
     - [Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- Pacemaker na operační systém Red Hat se sdílenou složkou systému `glusterfs` souborů NFS, která je hostovaná v clusteru. Podrobnosti najdete v článcích.
+- Pacemaker na operační systém Red Hat se sdílenou složkou systému souborů NFS, která je hostovaná v `glusterfs` clusteru. Podrobnosti najdete v článcích.
     - [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)
     - [`GlusterFS`na virtuálních počítačích Azure v Red Hat Enterprise Linux pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
 - Pacemaker na operační systém Red Hat se sdílenou složkou systému souborů NFS, která je hostována na [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) Podrobnosti jsou popsány v článku.
     - [Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 
-V uvedených řešeních potřebujete relaci podpory s `Datakeeper` produktem s podporou pro podporu produktu a zapojení s s přímým výkonem v případě problémů. V závislosti na tom, jakým způsobem jste získali licenci na Windows, Red Hat a/nebo SUSE, můžete také vyžadovat, aby se svým poskytovatelem operačního systému nastavila plná podpora pro uvedené konfigurace s vysokou dostupností.
+V uvedených řešeních potřebujete relaci podpory s produktem s podporou pro podporu `Datakeeper` produktu a zapojení s s přímým výkonem v případě problémů. V závislosti na tom, jakým způsobem jste získali licenci na Windows, Red Hat a/nebo SUSE, můžete také vyžadovat, aby se svým poskytovatelem operačního systému nastavila plná podpora pro uvedené konfigurace s vysokou dostupností.
 
 Konfigurace může být také zobrazena jako:
 
@@ -181,7 +180,7 @@ Vzhledem k tomu, že pouze podmnožina typů úložiště Azure poskytuje vysoce
 
 - Cluster Windows s podporou převzetí služeb při selhání se souborovým serverem Windows se škálováním na více systémů se dá nasadit na všechny nativní typy úložiště Azure, kromě Azure NetApp Files. Doporučujeme ale využít Premium Storage v důsledku propustnosti a vstupně-výstupních smluv o úrovni služeb.
 - Clusterový server s podporou převzetí služeb při selhání ve Windows s SMB v Azure NetApp Files se podporuje v Azure NetApp Files. Sdílené složky SMB ve službě Azure File **Services nejsou v tuto chvíli podporované.**
-- Cluster s podporou převzetí služeb při selhání systému Windows se `Datakeeper` sdíleným diskem Windows na základě platformy je možné nasadit na všechny nativní typy úložiště Azure s výjimkou Azure NetApp Files. Doporučujeme ale využít Premium Storage v důsledku propustnosti a vstupně-výstupních smluv o úrovni služeb.
+- Cluster s podporou převzetí služeb při selhání systému Windows se sdíleným diskem Windows na základě platformy je `Datakeeper` možné nasadit na všechny nativní typy úložiště Azure s výjimkou Azure NetApp Files. Doporučujeme ale využít Premium Storage v důsledku propustnosti a vstupně-výstupních smluv o úrovni služeb.
 - SUSE nebo Red Hat Pacemaker, které používají sdílené složky NFS na Azure NetApp Files, jsou podporovány v Azure NetApp Files. 
 - SUSE Pacemaker s použitím `drdb` konfigurace mezi dvěma virtuálními počítači se podporuje pomocí nativních typů úložiště Azure, s výjimkou Azure NetApp Files. Doporučujeme ale využít Premium Storage v důsledku propustnosti a vstupně-výstupních smluv o úrovni služeb.
 - Red Hat Pacemaker využívající `glusterfs` pro poskytování sdílené složky NFS se podporuje pomocí nativních typů úložiště Azure, s výjimkou Azure NetApp Files. Doporučujeme ale využít Premium Storage v důsledku propustnosti a vstupně-výstupních smluv o úrovni služeb.
@@ -281,12 +280,12 @@ Clustery služby SAP Central Services, které používají sdílené disky (Wind
 Existuje seznam scénářů, které nejsou podporované pro úlohy SAP v architekturách Azure. **Nepodporováno** znamená, že SAP a Microsoft nebudou moci podporovat tyto konfigurace a musí se odložit na případnou dotčenou třetí stranu, která poskytla software k vytvoření takových architektur. Dvě kategorie jsou:
 
 - Softwarová zařízení pro úložiště: na Azure Marketplace je k dispozici několik softwarových zařízení pro úložiště. Někteří dodavatelé nabízejí vlastní dokumentaci, jak používat tato softwarová zařízení pro úložiště v Azure s využitím softwaru SAP. Podpora konfigurací nebo nasazení, která zahrnují taková zařízení pro dočasné úložiště, musí poskytnout dodavatel těchto softwarových zařízení úložiště. Tento fakt je také manifestovaná v [poznámce SAP support #2015553](https://launchpad.support.sap.com/#/notes/2015553)
-- Architektury s vysokou dostupností: pro úlohy SAP v Azure jsou podporované jenom Pacemaker a clustery s podporou převzetí služeb při selhání ve Windows serveru. Jak `Datakeeper` bylo zmíněno dříve, řešení systému s je popsané a dokumentováno společností Microsoft. Nicméně součásti nástroje s `Datakeeper` musí být podporovány prostřednictvím s jako dodavatel, který poskytuje tyto komponenty. SAP také uvedené v různých poznámkách SAP k dispozici pro certifikované architektury s vysokou dostupností. Některé z nich byly certifikovány od dodavatele třetí strany i pro Azure. Nicméně podpora konfigurací, které tyto produkty využívají, musí poskytnout dodavatel produktu. Různí dodavatelé mají jinou integraci do procesů podpory SAP. Než se rozhodnete použít produkt v konfiguracích SAP nasazených v Azure, měli byste objasnit, který proces podpory pro konkrétní dodavatele funguje nejlépe.
+- Architektury s vysokou dostupností: pro úlohy SAP v Azure jsou podporované jenom Pacemaker a clustery s podporou převzetí služeb při selhání ve Windows serveru. Jak bylo zmíněno dříve, řešení systému s `Datakeeper` je popsané a dokumentováno společností Microsoft. Nicméně součásti nástroje s `Datakeeper` musí být podporovány prostřednictvím s jako dodavatel, který poskytuje tyto komponenty. SAP také uvedené v různých poznámkách SAP k dispozici pro certifikované architektury s vysokou dostupností. Některé z nich byly certifikovány od dodavatele třetí strany i pro Azure. Nicméně podpora konfigurací, které tyto produkty využívají, musí poskytnout dodavatel produktu. Různí dodavatelé mají jinou integraci do procesů podpory SAP. Než se rozhodnete použít produkt v konfiguracích SAP nasazených v Azure, měli byste objasnit, který proces podpory pro konkrétní dodavatele funguje nejlépe.
 - Clustery sdílených disků, na kterých jsou umístěny soubory databáze na sdílených discích, nejsou podporovány výjimkou maxDB. Pro všechny ostatní databáze je podporované řešení samostatné umístění úložiště místo sdílené složky SMB nebo NFS nebo sdíleného disku ke konfiguraci scénářů s vysokou dostupností.
 
 Další scénáře, které nejsou podporované, jsou scénáře jako:
 
-- Scénáře nasazení, které představují větší latenci sítě mezi aplikační vrstvou SAP a vrstvou SAP DBMS v rámci běžné architektury SAP, jak je znázorněno v NetWeaver, S/4HANA `Hybris`a např. To zahrnuje:
+- Scénáře nasazení, které představují větší latenci sítě mezi aplikační vrstvou SAP a vrstvou SAP DBMS v rámci běžné architektury SAP, jak je znázorněno v NetWeaver, S/4HANA a `Hybris` např. Sem patří:
     - Nasazení jedné z místních vrstev, zatímco druhá vrstva je nasazená v Azure
     - Nasazení aplikační vrstvy SAP systému v jiné oblasti Azure, než je vrstva DBMS
     - Nasazení jedné úrovně v datových centrech, která jsou společně umístěná v Azure, a na druhé úrovni v Azure, s výjimkou toho, že tyto vzory architektury poskytuje nativní služba Azure

@@ -13,10 +13,9 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79281129"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat ze služby Salesforce pomocí Azure Data Factory
@@ -66,20 +65,20 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu Salesforce.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **Salesforce**. |Ano |
-| environmentUrl | Zadejte adresu URL instance Salesforce. <br><br> -Výchozí hodnota je https:\//Login.Salesforce.com. <br> – Chcete-li kopírovat data z izolovanéhohttps://test.salesforce.comprostoru, zadejte "". <br> – Chcete-li kopírovat data z vlastní domény, zadejte například "https://[doména]. my. Salesforce. com". |Ne |
-| uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Ano |
-| heslo |Zadejte heslo pro uživatelský účet. |Ano |
-| Element |Zadejte token zabezpečení pro uživatelský účet. Pokyny, jak resetovat nebo získat token zabezpečení, najdete v tématu [získání tokenu zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Obecné informace o tokenech zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Ano |
+| typ |Vlastnost Type musí být nastavená na: **Salesforce**. |Yes |
+| environmentUrl | Zadejte adresu URL instance Salesforce. <br><br> -Výchozí hodnota je https: \/ /Login.Salesforce.com. <br> – Chcete-li kopírovat data z izolovaného prostoru, zadejte " https://test.salesforce.com ". <br> – Chcete-li kopírovat data z vlastní domény, zadejte například "https://[doména]. my. Salesforce. com". |No |
+| uživatelské jméno |Zadejte uživatelské jméno pro uživatelský účet. |Yes |
+| heslo |Zadejte heslo pro uživatelský účet. |Yes |
+| Element |Zadejte token zabezpečení pro uživatelský účet. Pokyny, jak resetovat nebo získat token zabezpečení, najdete v tématu [získání tokenu zabezpečení](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) . Obecné informace o tokenech zabezpečení najdete v tématu [zabezpečení a rozhraní API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako je například struktura, dostupnost a zásada pro datovou sadu JSON, jsou podobné pro všechny typy datových sad (Azure SQL, Azure Blob, tabulka Azure atd.).
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu **relačního** typu má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
 | tableName |Název tabulky v Salesforce. |Ne (Pokud je zadán **dotaz** na **RelationalSource** ) |
 
@@ -95,7 +94,7 @@ Vlastnosti, které jsou k dispozici v části typeProperties aktivity, se liší
 
 Pokud je zdroj v aktivitě kopírování typu **RelationalSource** (který zahrnuje Salesforce), jsou v části typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | query |Pomocí vlastního dotazu můžete číst data. |Dotaz SQL-92 nebo dotaz na [SOQL (Salesforce Object Query Language)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Například: `select * from MyTable__c`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
@@ -114,10 +113,10 @@ Když zadáte SOQL nebo SQL dotaz, věnujte pozornost rozdílům ve formátu dat
     * **Použití úprav JSON k zadání dotazu (řídicí znak je řádně):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Načítání dat ze sestavy Salesforce
-Data ze sestav Salesforce můžete načíst zadáním dotazu jako `{call "<report name>"}`například. `"query": "{call \"TestReport\"}"`.
+Data ze sestav Salesforce můžete načíst zadáním dotazu jako například `{call "<report name>"}` . `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Načítání odstraněných záznamů ze odpadkového koše Salesforce
-Chcete-li zadat dotaz na nepodmíněné odstraněné záznamy ze složky Koš služby Salesforce, můžete v dotazu zadat **"IsDeleted" = 1** . Například:
+Chcete-li zadat dotaz na nepodmíněné odstraněné záznamy ze složky Koš služby Salesforce, můžete v dotazu zadat **"IsDeleted" = 1** . Třeba
 
 * Pokud chcete zadat dotaz jenom na odstraněné záznamy, zadejte SELECT * FROM MyTable__c, **kde IsDeleted = 1**.
 * Chcete-li zadat dotaz na všechny záznamy včetně existujících a odstraněných, zadejte "SELECT * FROM MyTable__c, **kde IsDeleted = 0 nebo IsDeleted = 1**"
@@ -289,21 +288,21 @@ Seznam vlastností, které jsou podporovány rozhraním RelationalSource, nalezn
 | Zaškrtávací políčko |Logická hodnota |
 | Měna |Desetinné číslo |
 | Datum |DateTime |
-| Datum/Čas |DateTime |
-| E-mailu |Řetězec |
+| Datum/čas |DateTime |
+| E-mail |Řetězec |
 | ID |Řetězec |
 | Relace vyhledávání |Řetězec |
 | Vícenásobný výběr rozevíracího seznamu |Řetězec |
 | Číslo |Desetinné číslo |
 | Procento |Desetinné číslo |
-| Telefon |Řetězec |
+| Rozložení |Řetězec |
 | Picklist |Řetězec |
 | Text |Řetězec |
 | Oblast textu |Řetězec |
 | Oblast textu (Long) |Řetězec |
 | Textová oblast (bohatá) |Řetězec |
 | Text (zašifrovaný) |Řetězec |
-| zprostředkovatele identity |Řetězec |
+| URL |Řetězec |
 
 > [!NOTE]
 > Chcete-li mapovat sloupce ze zdrojové datové sady na sloupce z datové sady jímky, přečtěte si téma [mapování sloupců datové sady v Azure Data Factory](data-factory-map-columns.md).

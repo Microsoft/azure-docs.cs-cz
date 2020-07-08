@@ -4,10 +4,9 @@ description: Modul runtime Azure Functions spouští vaše funkce připojením s
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79365267"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Spuštění Azure Functions ze souboru balíčku
@@ -33,11 +32,11 @@ Další informace najdete v [tomto oznámení](https://github.com/Azure/app-serv
 
 ## <a name="enabling-functions-to-run-from-a-package"></a>Povolení spouštění funkcí z balíčku
 
-Pokud chcete povolit spouštění aplikace Function App z balíčku, stačí přidat `WEBSITE_RUN_FROM_PACKAGE` nastavení do nastavení aplikace Function App. `WEBSITE_RUN_FROM_PACKAGE` Nastavení může mít jednu z následujících hodnot:
+Pokud chcete povolit spouštění aplikace Function App z balíčku, stačí přidat `WEBSITE_RUN_FROM_PACKAGE` nastavení do nastavení aplikace Function App. `WEBSITE_RUN_FROM_PACKAGE`Nastavení může mít jednu z následujících hodnot:
 
-| Hodnota  | Popis  |
+| Hodnota  | Description  |
 |---------|---------|
-| **`1`**  | Doporučuje se pro aplikace Function App běžící v systému Windows. Spusťte ze souboru balíčku ve `d:\home\data\SitePackages` složce aplikace Function App. Pokud nedojde k [nasazení pomocí nástroje zip Deploy](#integration-with-zip-deployment), tato možnost vyžaduje, aby složka měla také soubor `packagename.txt`s názvem. Tento soubor obsahuje pouze název souboru balíčku ve složce bez prázdných znaků. |
+| **`1`**  | Doporučuje se pro aplikace Function App běžící v systému Windows. Spusťte ze souboru balíčku ve `d:\home\data\SitePackages` složce aplikace Function App. Pokud nedojde k [nasazení pomocí nástroje zip Deploy](#integration-with-zip-deployment), tato možnost vyžaduje, aby složka měla také soubor s názvem `packagename.txt` . Tento soubor obsahuje pouze název souboru balíčku ve složce bez prázdných znaků. |
 |**`<URL>`**  | Umístění konkrétního souboru balíčku, který chcete spustit. Pokud používáte úložiště objektů blob, měli byste použít privátní kontejner se [sdíleným přístupovým podpisem (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) , aby modul runtime Functions mohl přistupovat k balíčku. Pomocí [Průzkumník služby Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md) můžete odeslat soubory balíčku do svého účtu BLOB Storage. Když zadáte adresu URL, musíte [triggery synchronizovat](functions-deployment-technologies.md#trigger-syncing) i po publikování aktualizovaného balíčku. |
 
 > [!CAUTION]
@@ -52,7 +51,7 @@ V následujícím příkladu je aplikace Function App nakonfigurovaná tak, aby 
 
 ## <a name="integration-with-zip-deployment"></a>Integrace s nasazením zip
 
-[Nasazení zip][Zip deployment for Azure Functions] je funkce Azure App Service, která umožňuje nasadit projekt Function App do `wwwroot` adresáře. Projekt je zabalen jako soubor nasazení. zip. Stejná rozhraní API je možné použít k nasazení balíčku do `d:\home\data\SitePackages` složky. S hodnotou `WEBSITE_RUN_FROM_PACKAGE` `1`nastavení aplikace nakopírují rozhraní API pro nasazení zip balíček do `d:\home\data\SitePackages` složky místo extrakce souborů do. `d:\home\site\wwwroot` Zároveň vytvoří `packagename.txt` soubor. Po restartování je balíček připojený k `wwwroot` systému souborů jen pro čtení. Další informace o nasazení zip najdete v tématu [nasazení zip pro Azure Functions](deployment-zip-push.md).
+[Nasazení zip][Zip deployment for Azure Functions] je funkce Azure App Service, která umožňuje nasadit projekt Function App do `wwwroot` adresáře. Projekt je zabalen jako soubor nasazení. zip. Stejná rozhraní API je možné použít k nasazení balíčku do `d:\home\data\SitePackages` složky. S `WEBSITE_RUN_FROM_PACKAGE` hodnotou nastavení aplikace `1` nakopírují rozhraní API pro nasazení zip balíček do `d:\home\data\SitePackages` složky místo extrakce souborů do `d:\home\site\wwwroot` . Zároveň vytvoří `packagename.txt` soubor. Po restartování je balíček připojený k `wwwroot` systému souborů jen pro čtení. Další informace o nasazení zip najdete v tématu [nasazení zip pro Azure Functions](deployment-zip-push.md).
 
 ## <a name="adding-the-website_run_from_package-setting"></a>Přidání nastavení WEBSITE_RUN_FROM_PACKAGE
 
@@ -61,11 +60,11 @@ V následujícím příkladu je aplikace Function App nakonfigurovaná tak, aby 
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-- Příkaz spustit z balíčku `wwwroot` zpřístupňuje jen pro čtení, takže při zápisu souborů do tohoto adresáře se zobrazí chyba.
+- Příkaz spustit z balíčku zpřístupňuje `wwwroot` jen pro čtení, takže při zápisu souborů do tohoto adresáře se zobrazí chyba.
 - Formáty tar a gzip se nepodporují.
 - Tato funkce nevytváří místní mezipaměť.
-- Pro zlepšení výkonu pro studený start použijte místní možnost zip (`WEBSITE_RUN_FROM_PACKAGE`= 1).
-- Příkaz spustit z balíčku není kompatibilní s možností přizpůsobení nasazení`SCM_DO_BUILD_DURING_DEPLOYMENT=true`(), krok sestavení se během nasazení ignoruje.
+- Pro zlepšení výkonu pro studený start použijte místní možnost zip ( `WEBSITE_RUN_FROM_PACKAGE` = 1).
+- Příkaz spustit z balíčku není kompatibilní s možností přizpůsobení nasazení ( `SCM_DO_BUILD_DURING_DEPLOYMENT=true` ), krok sestavení se během nasazení ignoruje.
 
 ## <a name="next-steps"></a>Další kroky
 

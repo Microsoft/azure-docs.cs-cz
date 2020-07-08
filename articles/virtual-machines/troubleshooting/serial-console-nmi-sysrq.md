@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79250085"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Použití sériové konzoly pro volání nemaskovaných přerušení a SysRq
@@ -25,13 +24,13 @@ ms.locfileid: "79250085"
 ## <a name="system-request-sysrq"></a>Požadavek na systém (SysRq)
 SysRq je posloupnost klíčů, které rozumí jádro operačního systému Linux, které může aktivovat sadu předem definovaných akcí. Tyto příkazy se často používají v případě, že řešení potíží s virtuálním počítačem nebo obnovení nelze provést pomocí tradiční správy (například pokud virtuální počítač neodpovídá). Použití funkce SysRq v konzole sériového kódu Azure napodobuje stisknutí klávesy SysRq a znaků, které jsou zadány na fyzické klávesnici.
 
-Po doručení sekvence SysRq bude konfigurace jádra řídit, jak systém reaguje. Informace o povolení a zakázání SysRq najdete v tématu *Příručka pro správu SysRq* – [text](https://aka.ms/kernelorgsysreqdoc) | [Markdownu](https://aka.ms/linuxsysrq).
+Po doručení sekvence SysRq bude konfigurace jádra řídit, jak systém reaguje. Informace o povolení a zakázání SysRq najdete v tématu *Příručka pro správu SysRq* – [text](https://aka.ms/kernelorgsysreqdoc)  |  [Markdownu](https://aka.ms/linuxsysrq).
 
 Pomocí ikony klávesnice na panelu příkazů, která se zobrazuje níže, můžete k odeslání SysRq na virtuální počítač Azure použít konzolu Azure Serial.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
-Když vyberete příkaz Odeslat SysRq, otevře se dialogové okno, ve kterém budou uvedeny běžné možnosti SysRq, nebo přijmout sekvenci SysRq příkazů zadaných do dialogového okna.  To umožňuje řadě SysRq provádět operace vysoké úrovně, jako je bezpečné restartování pomocí: `REISUB`.
+Když vyberete příkaz Odeslat SysRq, otevře se dialogové okno, ve kterém budou uvedeny běžné možnosti SysRq, nebo přijmout sekvenci SysRq příkazů zadaných do dialogového okna.  To umožňuje řadě SysRq provádět operace vysoké úrovně, jako je bezpečné restartování pomocí: `REISUB` .
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
@@ -59,7 +58,7 @@ V příručce pro správu SysRq výše:
 |``e``  |   Odešle SIGTERM všem procesům, s výjimkou init.
 |``f``  |   Zavolá OOM Killer, který ukončí proces HOG paměti, ale nejedná se o nemožnost, pokud by nebylo možné nic ukončit.
 |``g``  |   Používá se v kgdb (ladicí program jádra).
-|``h``  |   Zobrazí se vám také obrazovka (jakýkoli jiný klíč, než jaké jsou uvedeny v seznamu, ``h`` ale budete si moct snadno zapamatovat:-)).
+|``h``  |   Zobrazí se vám také obrazovka (jakýkoli jiný klíč, než jaké jsou uvedeny v seznamu, ale budete ``h`` si moct snadno zapamatovat:-)).
 |``i``  |    Odešle SIGKILL všem procesům, s výjimkou init.
 |``j``  |    Vynuceně "Stačí ho rozmrazit" – systémové systémy zmrazené FIFREEZE IOCTL.
 |``k``  |    Klíč zabezpečeného přístupu (SAK) ukončuje všechny programy v aktuální virtuální konzole. Poznámka: v části SAK se podívejte na důležité komentáře.
@@ -79,7 +78,7 @@ V příručce pro správu SysRq výše:
 |``x``  |    Používá se rozhraním xmon na platformách Pocket PC/PowerPC. Zobrazit globální Registry PMU v sparc64 Vypsat všechny položky TLB v MIPS
 |``y``  |    Zobrazit Registry globálních PROCESORů [specifické pro SPARC-64]
 |``z``  |    Výpis vyrovnávací paměti fTRACE
-|``0``-``9`` | Nastaví úroveň protokolu konzoly a řídí, které zprávy jádra budou vytištěny do konzoly. (``0``například by to vedlo k tomu, že by konzola měla dělat jenom nouzové zprávy, jako je například nouzové nebo nesmysly.)
+|``0``-``9`` | Nastaví úroveň protokolu konzoly a řídí, které zprávy jádra budou vytištěny do konzoly. ( ``0`` například by to vedlo k tomu, že by konzola měla dělat jenom nouzové zprávy, jako je například nouzové nebo nesmysly.)
 
 ### <a name="distribution-specific-documentation"></a>Dokumentace ke konkrétní distribuci ###
 Dokumentaci určenou pro distribuci na SysRq a postup pro konfiguraci systému Linux, aby při přijetí příkazu SysRq "Crash" vytvořily výpis stavu systému, naleznete v následujících odkazech:
@@ -111,7 +110,7 @@ Pro systémy Linux, které podporují sysctl pro konfiguraci parametrů jádra, 
 1. Restartování nebo aktualizace sysctl spuštěním <br>
     `sysctl -p`
 
-Další informace o konfiguracích jádra systému Linux, `unknown_nmi_panic`včetně `panic_on_io_nmi`, a `panic_on_unrecovered_nmi`, najdete v tématu: [dokumentace pro/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Dokumentaci určenou pro distribuci na NMI a postup pro konfiguraci systému Linux, aby při přijetí NMI mohl vytvořit výpis stavu systému, naleznete v následujících odkazech:
+Další informace o konfiguracích jádra systému Linux, včetně `unknown_nmi_panic` , `panic_on_io_nmi` a, `panic_on_unrecovered_nmi` najdete v tématu: [dokumentace pro/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Dokumentaci určenou pro distribuci na NMI a postup pro konfiguraci systému Linux, aby při přijetí NMI mohl vytvořit výpis stavu systému, naleznete v následujících odkazech:
 
 ### <a name="ubuntu"></a>Ubuntu
  - [Výpis stavu selhání jádra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

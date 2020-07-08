@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: c41292a05e5c857cd0b1c120784a400f2f5410ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78945356"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku Azure
@@ -67,7 +66,7 @@ Zaregistrujte se zprostředkovatelem prostředků migrace pomocí následující
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
-Počkejte prosím pět minut, než se registrace dokončí. Stav schválení můžete zjistit pomocí následujícího příkazu. Před pokračováním se ujistěte `Registered` , že je RegistrationState.
+Počkejte prosím pět minut, než se registrace dokončí. Stav schválení můžete zjistit pomocí následujícího příkazu. Před pokračováním se ujistěte, že je RegistrationState `Registered` .
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 

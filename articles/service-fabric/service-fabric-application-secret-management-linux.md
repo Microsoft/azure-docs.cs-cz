@@ -6,17 +6,16 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969037"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech se systémem Linux
 V tomto článku se dozvíte, jak nastavit šifrovací certifikát a použít ho k šifrování tajných klíčů v clusterech se systémem Linux. Clustery Windows najdete v tématech [Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech Windows][secret-management-windows-specific-link].
 
 ## <a name="obtain-a-data-encipherment-certificate"></a>Získání certifikátu pro zakódování dat
-Certifikát zašifrování dat se používá výhradně pro šifrování a dešifrování [parametrů][parameters-link] v nastavení služby. XML a [proměnných prostředí][environment-variables-link] v souboru ServiceManifest. XML služby. Nepoužívá se k ověřování nebo podepisování šifrovacího textu. Certifikát musí splňovat následující požadavky:
+Certifikát zašifrování dat se používá výhradně pro šifrování a dešifrování [parametrů][parameters-link] v Settings.xml služby a [proměnných prostředí][environment-variables-link] v ServiceManifest.xml služby. Nepoužívá se k ověřování nebo podepisování šifrovacího textu. Certifikát musí splňovat následující požadavky:
 
 * Certifikát musí obsahovat privátní klíč.
 * Použití klíče certifikátu musí zahrnovat zašifrování dat (10) a nemělo by zahrnovat ověřování serveru nebo ověřování klientů.
@@ -29,7 +28,7 @@ Certifikát zašifrování dat se používá výhradně pro šifrování a deši
   ```
 
 ## <a name="install-the-certificate-in-your-cluster"></a>Instalace certifikátu do clusteru
-Certifikát musí být nainstalovaný na všech uzlech v clusteru v části `/var/lib/sfcerts`. Uživatelský účet, pod kterým je služba spuštěna (ve výchozím nastavení sfuser), **by měl mít přístup pro čtení** nainstalovaného certifikátu (tj `/var/lib/sfcerts/TestCert.pem` . pro aktuální příklad).
+Certifikát musí být nainstalovaný na všech uzlech v clusteru v části `/var/lib/sfcerts` . Uživatelský účet, pod kterým je služba spuštěna (ve výchozím nastavení sfuser), **by měl mít přístup pro čtení** nainstalovaného certifikátu (tj `/var/lib/sfcerts/TestCert.pem` . pro aktuální příklad).
 
 ## <a name="encrypt-secrets"></a>Šifrování tajných kódů
 Následující fragment kódu lze použít k šifrování tajného klíče. Tento fragment kódu šifruje pouze hodnotu. **nepodepisuje** šifrovaný text. Pokud chcete pro tajné hodnoty vydávat šifrovaný text, **musíte použít** stejný certifikát zašifrování, který je nainstalovaný v clusteru.
@@ -39,7 +38,7 @@ user@linux:$ echo "Hello World!" > plaintext.txt
 user@linux:$ iconv -f ASCII -t UTF-16LE plaintext.txt | tr -d '\n' > plaintext_UTF-16.txt
 user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform der TestCert.pem | base64 > encrypted.txt
 ```
-Výsledný výstup řetězce s kódováním Base-64 na Encrypted. txt obsahuje tajný šifrovaný kód i informace o certifikátu, který se použil k zašifrování. Jeho platnost můžete ověřit tak, že ho dešifrujete pomocí OpenSSL.
+Výsledný výstup řetězce s kódováním Base-64 na encrypted.txt obsahuje šifrovaný šifrovaný kód i informace o certifikátu, který se použil k zašifrování. Jeho platnost můžete ověřit tak, že ho dešifrujete pomocí OpenSSL.
 ```console
 user@linux:$ cat encrypted.txt | base64 -d | openssl smime -decrypt -inform der -inkey TestCert.prv
 ```

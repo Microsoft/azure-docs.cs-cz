@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79274681"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí systému Windows v Azure Monitor
@@ -21,7 +20,7 @@ Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů
 ## <a name="configuring-windows-event-logs"></a>Konfigurace protokolů událostí systému Windows
 [V nabídce data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources)Nakonfigurujte protokoly událostí systému Windows.
 
-Azure Monitor shromažďuje pouze události z protokolů událostí systému Windows, které jsou zadány v nastavení.  Protokol událostí můžete přidat zadáním názvu protokolu a kliknutím **+**.  U každého protokolu se shromažďují jenom události s vybranými závažnostmi.  Ověřte závažnost konkrétního protokolu, který chcete shromáždit.  Nemůžete zadat žádná další kritéria pro filtrování událostí.
+Azure Monitor shromažďuje pouze události z protokolů událostí systému Windows, které jsou zadány v nastavení.  Protokol událostí můžete přidat zadáním názvu protokolu a kliknutím **+** .  U každého protokolu se shromažďují jenom události s vybranými závažnostmi.  Ověřte závažnost konkrétního protokolu, který chcete shromáždit.  Nemůžete zadat žádná další kritéria pro filtrování událostí.
 
 Při zadávání názvu protokolu událostí Azure Monitor poskytuje návrhy běžných názvů protokolů událostí. Pokud se v seznamu nezobrazí protokol, který chcete přidat, můžete ho přidat tak, že zadáte úplný název protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí otevřete stránku *vlastností* protokolu a zkopírujte řetězec z pole *celé jméno* .
 
@@ -60,7 +59,7 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 ## <a name="log-queries-with-windows-events"></a>Dotazy protokolu s událostmi systému Windows
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy událostí systému Windows.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:---|:---|
 | Událost |Všechny události systému Windows. |
 | Událost &#124;, kde EventLevelName = = "Error" |Všechny události systému Windows se závažností chyby. |

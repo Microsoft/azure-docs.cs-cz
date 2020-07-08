@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
 ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79366292"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informace o Plánovač nasazení služby Azure Site Recovery pro VMware do Azure
@@ -64,17 +63,17 @@ Nástroj poskytuje následující podrobnosti:
 
 | | **Z VMware do Azure** |**Z Hyper-V do Azure**|**Z Azure do Azure**|**Z Hyper-V do sekundární lokality**|**Z VMware do sekundární lokality**
 --|--|--|--|--|--
-Podporované scénáře |Ano|Ano|Ne|Ano*|Ne
-Podporovaná verze | vCenter 6,7, 6,5, 6,0 nebo 5,5| Windows Server 2016, Windows Server 2012 R2 | Není k dispozici |Windows Server 2016, Windows Server 2012 R2|Není k dispozici
-Podporovaná konfigurace|vCenter, ESXi| Cluster Hyper-V, hostitel Hyper-V|Není k dispozici|Cluster Hyper-V, hostitel Hyper-V|Není k dispozici|
-Počet serverů, které je možné profilovat, na spuštěnou instanci Plánovače nasazení služby Site Recovery |Jeden (virtuální počítače, které patří k jednomu vCenter Serveru nebo jednomu serveru ESXi, jde profilovat najednou)|Více (najednou je možné profilovat virtuální počítače napříč více hostiteli nebo hostitelskými clustery)| Není k dispozici |Více (najednou je možné profilovat virtuální počítače napříč více hostiteli nebo hostitelskými clustery)| Není k dispozici
+Podporované scénáře |Ano|Ano|No|Ano*|No
+Podporovaná verze | vCenter 6,7, 6,5, 6,0 nebo 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
+Podporovaná konfigurace|vCenter, ESXi| Cluster Hyper-V, hostitel Hyper-V|NA|Cluster Hyper-V, hostitel Hyper-V|NA|
+Počet serverů, které je možné profilovat, na spuštěnou instanci Plánovače nasazení služby Site Recovery |Jeden (virtuální počítače, které patří k jednomu vCenter Serveru nebo jednomu serveru ESXi, jde profilovat najednou)|Více (najednou je možné profilovat virtuální počítače napříč více hostiteli nebo hostitelskými clustery)| NA |Více (najednou je možné profilovat virtuální počítače napříč více hostiteli nebo hostitelskými clustery)| NA
 
 *Nástroj je primárně určen pro scénář zotavení po havárii z Hyper-V do Azure. Pro zotavení po havárii z Hyper-V do sekundární lokality je možné ho použít pouze k pochopení doporučení na straně zdroje, jako je požadovaná šířka pásma sítě, požadovaný prázdný prostor úložiště na každém ze zdrojových serverů Hyper-V a počet dávek počáteční replikace a definice dávek. Ignorujte doporučení Azure a náklady ze sestavy. Kromě toho není možné použít operaci Zjištění propustnosti pro scénář zotavení po havárii z Hyper-V do sekundární lokality.
 
 ## <a name="prerequisites"></a>Požadavky
 Nástroj má dvě hlavní fáze: profilace a generování sestav. Existuje také třetí možnost – výpočet pouze propustnosti. Požadavky na server, ze kterého se spouští profilace a měření propustnosti, jsou uvedené v následující tabulce.
 
-| Požadavek na server | Popis|
+| Požadavek na server | Description|
 |---|---|
 |Profilace a měření propustnosti| <ul><li>Operační systém: Windows Server 2016 nebo Windows Server 2012 R2<br>(Ideálně alespoň stejná velikost jako [doporučená velikost pro konfigurační server](https://aka.ms/asr-v2a-on-prem-components))</li><li>Konfigurace počítače: 8 virtuálních CPU, 16 GB paměti RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Distribuovatelné součásti Visual C++ pro Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internetový přístup k Azure (*. blob.core.windows.net) z tohoto serveru, port 443<br>[Toto je volitelné. K dispozici je možnost zadat dostupnou šířku pásma během generování sestavy ručně.]</li><li>Účet služby Azure Storage</li><li>Přístup správce na server</li><li>Volné místo na disku alespoň 100 GB (za předpokladu 1,000 virtuálních počítačů, každý průměrně se 3 disky a profilovaný po dobu 30 dnů)</li><li>Nastavení úrovně statistiky VMware vCenter může mít 1 nebo vyšší úroveň.</li><li>Povolený port vCenter (standardně 443): Site Recovery Plánovač nasazení používá tento port pro připojení k serveru vCenter nebo hostiteli ESXi.</ul></ul>|
 | Generování sestav | POČÍTAČ se systémem Windows nebo Windows Server s aplikací Excel 2013 nebo novější.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Distribuovatelné součásti Visual C++ pro Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) se vyžaduje jenom v případě, že jste v příkazu pro generování sestav načetli nejnovější informace o konfiguraci virtuálních počítačů z virtuálního počítače. Plánovač nasazení se připojuje k serveru vCenter. Povolte port vCenter port (standardně 443) pro připojení k serveru vCenter.</li>|
@@ -98,9 +97,9 @@ Nástroj můžete spustit z Windows Serveru 2012 R2, pokud má server přístup 
 Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
 
     Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej.
-    Nasazení E:\ASR Planner_v2.3. zip
+    Planner_v2.3.zip nasazení E:\ASR
 
-    Nasazení E:\ASR Planner_v2.3 \ ASRDeploymentPlanner. exe
+    Planner_v2.3\ASRDeploymentPlanner.exe nasazení E:\ASR
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Aktualizace na nejnovější verzi Plánovače nasazení
 

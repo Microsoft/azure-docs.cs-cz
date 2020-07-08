@@ -9,10 +9,9 @@ ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79164680"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Postup instalace agenta připojeného počítače pomocí Windows PowerShell DSC
@@ -29,7 +28,7 @@ Pomocí [Konfigurace požadovaného stavu Windows PowerShellu](https://docs.micr
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>Instalace modulu ConnectedMachine DSC
 
-1. Chcete-li ručně nainstalovat modul, Stáhněte zdrojový kód a rozbalte obsah adresáře projektu do `$env:ProgramFiles\WindowsPowerShell\Modules folder`. Nebo spusťte následující příkaz, který nainstalujete z Galerie prostředí PowerShell pomocí PowerShellGet (v PowerShellu 5,0):
+1. Chcete-li ručně nainstalovat modul, Stáhněte zdrojový kód a rozbalte obsah adresáře projektu do `$env:ProgramFiles\WindowsPowerShell\Modules folder` . Nebo spusťte následující příkaz, který nainstalujete z Galerie prostředí PowerShell pomocí PowerShellGet (v PowerShellu 5,0):
 
     ```powershell
     Find-Module -Name AzureConnectedMachineDsc -Repository PSGallery | Install-Module
@@ -47,9 +46,9 @@ Pomocí [Konfigurace požadovaného stavu Windows PowerShellu](https://docs.micr
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>Instalace agenta a připojení k Azure
 
-Prostředky v tomto modulu jsou navržené tak, aby spravovaly konfiguraci agenta počítače připojeného k Azure. Součástí je také skript `AzureConnectedMachineAgent.ps1`prostředí PowerShell, který se nachází `AzureConnectedMachineDsc\examples` ve složce. Používá komunitní zdroje k automatizaci stahování a instalace a navázání připojení pomocí ARC Azure. Tento skript provádí podobné kroky popsané v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) .
+Prostředky v tomto modulu jsou navržené tak, aby spravovaly konfiguraci agenta počítače připojeného k Azure. Součástí je také skript prostředí PowerShell `AzureConnectedMachineAgent.ps1` , který se nachází ve `AzureConnectedMachineDsc\examples` složce. Používá komunitní zdroje k automatizaci stahování a instalace a navázání připojení pomocí ARC Azure. Tento skript provádí podobné kroky popsané v tématu [připojení hybridních počítačů k Azure z Azure Portal](onboard-portal.md) .
 
-Pokud počítač potřebuje komunikovat prostřednictvím proxy server ke službě, po instalaci agenta musíte spustit příkaz, který je [zde](onboard-portal.md#configure-the-agent-proxy-setting)popsán. Tím se nastaví proměnná `https_proxy`prostředí proxy server systému. Místo ručního spuštění příkazu můžete tento krok provést s DSC pomocí modulu [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) .
+Pokud počítač potřebuje komunikovat prostřednictvím proxy server ke službě, po instalaci agenta musíte spustit příkaz, který je [zde](onboard-portal.md#configure-the-agent-proxy-setting)popsán. Tím se nastaví proměnná prostředí proxy server systému `https_proxy` . Místo ručního spuštění příkazu můžete tento krok provést s DSC pomocí modulu [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) .
 
 >[!NOTE]
 >Aby bylo možné spustit DSC, musí být systém Windows nakonfigurovaný tak, aby přijímal vzdálené příkazy PowerShellu i v případě, že používáte konfiguraci localhost. Pokud chcete prostředí snadno nakonfigurovat správně, stačí spustit `Set-WsManQuickConfig -Force` v terminálu PowerShellu se zvýšenými oprávněními.
@@ -79,7 +78,7 @@ Níže jsou uvedené parametry, které předáte skriptu PowerShellu, který se 
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
     ```
 
-3. Tím se vytvoří `localhost.mof file` nová složka s názvem `C:\dsc`.
+3. Tím se vytvoří `localhost.mof file` Nová složka s názvem `C:\dsc` .
 
 Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro servery (Preview), navštivte Azure Portal a ověřte, že se server úspěšně připojil. Zobrazte počítače v [Azure Portal](https://aka.ms/hybridmachineportal).
 

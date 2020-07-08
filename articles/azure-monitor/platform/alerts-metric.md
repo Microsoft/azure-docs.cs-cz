@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.subservice: alerts
 ms.openlocfilehash: cefccd08ea66638f08f00e280fe2704444a7f916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79369382"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor
@@ -43,7 +42,7 @@ Následující postup popisuje, jak vytvořit pravidlo upozornění na metriku v
 8. Pokud má metrika rozměry, zobrazí se tabulka Dimensions. Vyberte jednu nebo více hodnot na dimenzi.
     - Zobrazené hodnoty dimenzí jsou založené na datech metriky za poslední tři dny.
     - Pokud Hledaná hodnota dimenze není zobrazená, přidejte vlastní hodnotu kliknutím na "+".
-    - Můžete také **vybrat \* ** některou z dimenzí. **Možnost \* vybrat** bude dynamicky škálovat výběr na všechny aktuální a budoucí hodnoty pro dimenzi.
+    - Můžete také **vybrat \* ** některou z dimenzí. **Vybrat \* ** aplikace bude dynamicky škálovat výběr na všechny aktuální a budoucí hodnoty pro dimenzi.
 
     Pravidlo upozornění metriky vyhodnotí podmínku pro všechny kombinace hodnot, které jsou vybrány. [Přečtěte si další informace o tom, jak funguje upozorňování na multidimenzionální metriky](alerts-metric-overview.md).
 
@@ -94,7 +93,7 @@ Předchozí části popisují, jak vytvářet, zobrazovat a spravovat pravidla u
 
 1. Přejděte na Azure Portal a klikněte na **Cloud Shell**.
 
-2. V příkazovém řádku můžete k získání dalších informací o ``--help`` příkazu a jeho použití použít příkazy s možností. Například následující příkaz zobrazí seznam příkazů, které jsou k dispozici pro vytváření, zobrazování a správu upozornění na metriky.
+2. V příkazovém řádku můžete ``--help`` k získání dalších informací o příkazu a jeho použití použít příkazy s možností. Například následující příkaz zobrazí seznam příkazů, které jsou k dispozici pro vytváření, zobrazování a správu upozornění na metriky.
 
     ```azurecli
     az monitor metrics alert --help

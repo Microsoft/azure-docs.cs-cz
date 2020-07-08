@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79247485"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co je model cloudové služby a jak ho mám zabalit?
@@ -221,15 +220,15 @@ Konfiguraci cloudové služby můžete aktualizovat, když běží v Azure, ani�
 
 Pokud chcete nasadit aplikaci jako cloudovou službu v Azure, musíte nejdřív aplikaci zabalit v příslušném formátu. Pomocí nástroje příkazového řádku **CSPack** (nainstalovaného se sadou [Azure SDK](https://azure.microsoft.com/downloads/)) můžete vytvořit soubor balíčku jako alternativu k sadě Visual Studio.
 
-**CSPack** používá obsah souboru definice služby a konfiguračního souboru služby k definování obsahu balíčku. **CSPack** vygeneruje soubor balíčku aplikace (. cspkg), který můžete nahrát do Azure pomocí [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Ve výchozím nastavení je balíček pojmenován `[ServiceDefinitionFileName].cspkg`, ale můžete zadat jiný název pomocí `/out` možnosti **CSPack**.
+**CSPack** používá obsah souboru definice služby a konfiguračního souboru služby k definování obsahu balíčku. **CSPack** vygeneruje soubor balíčku aplikace (. cspkg), který můžete nahrát do Azure pomocí [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Ve výchozím nastavení je balíček pojmenován `[ServiceDefinitionFileName].cspkg` , ale můžete zadat jiný název pomocí `/out` možnosti **CSPack**.
 
 **CSPack** se nachází na  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
 
 > [!NOTE]
-> CSPack. exe (ve Windows) je k dispozici spuštěním zástupce **příkazového řádku Microsoft Azure** , který se instaluje se sadou SDK.  
+> CSPack.exe (ve Windows) je k dispozici spuštěním zástupce **příkazového řádku Microsoft Azure** , který se instaluje se sadou SDK.  
 > 
-> Spusťte program CSPack. exe sám o sobě a zobrazte si dokumentaci ke všem možným přepínačům a příkazům.
+> Spusťte program CSPack.exe sám sebou, abyste viděli dokumentaci o všech možných přepínačích a příkazech.
 > 
 > 
 
@@ -266,7 +265,7 @@ Kde proměnné jsou definovány takto:
 | --- | --- |
 | \[DirectoryName\] |Podadresář v kořenovém adresáři projektu, který obsahuje soubor. csdef projektu Azure. |
 | \[ServiceDefinition\] |Název definičního souboru služby. Ve výchozím nastavení má tento soubor název ServiceDefinition. csdef. |
-| \[OutputFileName\] |Název vygenerovaného souboru balíčku. Obvykle je tato nastavení nastavena na název aplikace. Pokud není zadán žádný název souboru, vytvoří se balíček aplikace jako \[ApplicationName\]. cspkg. |
+| \[OutputFileName\] |Název vygenerovaného souboru balíčku. Obvykle je tato nastavení nastavena na název aplikace. Pokud není zadán žádný název souboru, vytvoří se balíček aplikace jako \[ ApplicationName \] . cspkg. |
 | \[RoleName (Název role)\] |Název role definovaný v definičním souboru služby. |
 | \[RoleBinariesDirectory] |Umístění binárních souborů pro roli. |
 | \[VirtualPath\] |Fyzické adresáře pro každou virtuální cestu definovanou v části lokalita definice služby. |

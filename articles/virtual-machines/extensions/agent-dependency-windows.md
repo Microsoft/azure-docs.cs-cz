@@ -15,10 +15,9 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79250670"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače závislosti Azure Monitor pro Windows
@@ -71,11 +70,11 @@ Následující JSON zobrazuje schéma pro rozšíření agenta závislostí virt
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad |
+| Name | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | vydavatel | Microsoft. Azure. Monitoring. DependencyAgent |
-| type | DependencyAgentWindows |
+| typ | DependencyAgentWindows |
 | typeHandlerVersion | 9,5 |
 
 ## <a name="template-deployment"></a>Nasazení šablon

@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: cynthn
 ms.openlocfilehash: 7b7a03572a001fc6d5114635b33510f1a4b1bc70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78969145"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Použití Cloud-init k aktualizaci a instalaci balíčků na virtuálním počítači Linux v Azure
@@ -19,7 +18,7 @@ V tomto článku se dozvíte, jak pomocí [Cloud-init](https://cloudinit.readthe
 ## <a name="update-a-vm-with-cloud-init"></a>Aktualizace virtuálního počítače pomocí Cloud-init
 Z bezpečnostních důvodů možná budete chtít nakonfigurovat virtuální počítač tak, aby při prvním spuštění používal nejnovější aktualizace. Protože Cloud-init funguje v různých distribuceích Linux, není nutné zadávat `apt` ani `yum` pro správce balíčků. Místo toho definujete `package_upgrade` a povolíte procesu Cloud-init určení vhodného mechanismu pro distribuce, který se používá. Tento pracovní postup umožňuje použít stejné skripty Cloud-init napříč distribuce.
 
-Chcete-li zobrazit proces upgradu v akci, vytvořte v aktuálním prostředí soubor s názvem *cloud_init_upgrade. txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_upgrade.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
+Pokud chcete zobrazit proces upgradu v akci, vytvořte v aktuálním prostředí soubor s názvem *cloud_init_upgrade.txt* a vložte následující konfiguraci. V tomto příkladu vytvořte soubor v Cloud Shell ne na vašem místním počítači. Můžete použít libovolný editor podle svojí volby. Zadáním příkazu `sensible-editor cloud_init_upgrade.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Vyberte #1 pro použití editoru **nano** . Přesvědčte se, zda je celý soubor Cloud-init zkopírován správně, zejména první řádek.  
 
 ```yaml
 #cloud-config
@@ -34,7 +33,7 @@ Před nasazením této image je potřeba vytvořit skupinu prostředků pomocí 
 az group create --name myResourceGroup --location eastus
 ```
 
-Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor `--custom-data cloud_init_upgrade.txt` Cloud-init následujícím způsobem:
+Nyní vytvořte virtuální počítač pomocí příkazu [AZ VM Create](/cli/azure/vm) a zadejte soubor Cloud-init následujícím `--custom-data cloud_init_upgrade.txt` způsobem:
 
 ```azurecli-interactive 
 az vm create \
@@ -57,7 +56,7 @@ Spusťte nástroj pro správu balíčků a vyhledejte aktualizace.
 sudo yum update
 ```
 
-V případě, že je u Cloud-init zaškrtnuté a nainstalované aktualizace při spuštění, nemusíte používat žádné další aktualizace.  Uvidíte proces aktualizace, počet změněných balíčků a instalaci `httpd` nástroje spuštěním `yum history` a zkontrolujte výstup podobný tomu níže.
+V případě, že je u Cloud-init zaškrtnuté a nainstalované aktualizace při spuštění, nemusíte používat žádné další aktualizace.  Uvidíte proces aktualizace, počet změněných balíčků a instalaci nástroje spuštěním `httpd` `yum history` a zkontrolujte výstup podobný tomu níže.
 
 ```bash
 Loaded plugins: fastestmirror, langpacks

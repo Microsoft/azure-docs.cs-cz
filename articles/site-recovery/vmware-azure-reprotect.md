@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79257170"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Zpětná replikace z Azure do místního prostředí
 
 Po [převzetí služeb při selhání](site-recovery-failover.md) místních virtuálních počítačů VMware nebo fyzických serverů do Azure je prvním krokem při selhání zpět na místní lokalitu, aby se znovu chránily virtuální počítače Azure vytvořené během převzetí služeb při selhání. Tento článek popisuje, jak to provést. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 1. Postupujte podle kroků v [tomto článku](vmware-azure-prepare-failback.md) a připravte se na opětovnou ochranu a navrácení služeb po obnovení, včetně nastavení procesového serveru v Azure, místního hlavního cílového serveru a konfigurace sítě Site-to-Site VPN nebo ExpressRoute privátního partnerského vztahu pro navrácení služeb po obnovení.
 2. Ujistěte se, že místní konfigurační server běží a je připojený k Azure. Během převzetí služeb při selhání do Azure nemusí být místní lokalita přístupná a konfigurační server může být nedostupný nebo vypnutý. Během navrácení služeb po obnovení musí virtuální počítač existovat v databázi konfiguračního serveru. V opačném případě je navrácení služeb po obnovení neúspěšné.
@@ -55,7 +54,7 @@ Povolte replikaci. Můžete znovu chránit konkrétní virtuální počítače n
 
 Povolte znovu ochranu následujícím způsobem:
 
-1. Vyberte **úložiště** > **replikované položky**. Klikněte pravým tlačítkem na virtuální počítač, u kterého došlo k převzetí služeb při selhání, a pak vyberte **znovu zapnout ochranu**. Případně můžete z příkazových tlačítek vybrat počítač a pak vybrat možnost **znovu zapnout ochranu**.
+1. Vyberte **úložiště**  >  **replikované položky**. Klikněte pravým tlačítkem na virtuální počítač, u kterého došlo k převzetí služeb při selhání, a pak vyberte **znovu zapnout ochranu**. Případně můžete z příkazových tlačítek vybrat počítač a pak vybrat možnost **znovu zapnout ochranu**.
 2. Ověřte, že je vybraná možnost **Azure do místního** směru ochrany.
 3. Na **hlavním cílovém serveru** a **procesovém serveru**vyberte místní hlavní cílový server a procesový Server.  
 4. V části **úložiště dat**vyberte úložiště dat, do kterého chcete místně obnovit disky. Tato možnost se používá, když se místní virtuální počítač odstraní a potřebujete vytvořit nové disky. Tato možnost je ignorována, pokud již disky existují. Stále musíte zadat hodnotu.

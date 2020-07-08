@@ -9,10 +9,9 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79271938"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparkem s využitím služby Azure HDInsight
@@ -21,17 +20,17 @@ Přečtěte si o hlavních problémech a jejich řešení při práci s Apache S
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Jak na clusterech nakonfigurovat aplikaci Apache Spark pomocí Apache Ambari?
 
-Hodnoty konfigurace Sparku je možné vyladit tak, aby `OutofMemoryError` se zabránilo výjimce Apache Spark aplikace. Následující kroky ukazují výchozí hodnoty konfigurace Sparku ve službě Azure HDInsight:
+Hodnoty konfigurace Sparku je možné vyladit tak, aby se zabránilo `OutofMemoryError` výjimce Apache Spark aplikace. Následující kroky ukazují výchozí hodnoty konfigurace Sparku ve službě Azure HDInsight:
 
-1. Přihlaste se k `https://CLUSTERNAME.azurehdidnsight.net` Ambari s přihlašovacími údaji clusteru. Úvodní obrazovka zobrazuje řídicí panel přehled. Mezi HDInsight 3,6 a 4,0 jsou mírné rozdíly v kosmetických rozdílech.
+1. Přihlaste se k Ambari `https://CLUSTERNAME.azurehdidnsight.net` s přihlašovacími údaji clusteru. Úvodní obrazovka zobrazuje řídicí panel přehled. Mezi HDInsight 3,6 a 4,0 jsou mírné rozdíly v kosmetických rozdílech.
 
-1. Přejděte do **Spark2** > **Konfigurace**Spark2.
+1. Přejděte do **Spark2**  >  **Konfigurace**Spark2.
 
     ![Vyberte kartu konfigurace.](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
 1. V seznamu konfigurací vyberte a rozbalte **Custom-spark2-Defaults**.
 
-1. Vyhledejte nastavení hodnoty, které je potřeba upravit, jako je **Spark. exekutor. Memory**. V tomto případě je hodnota **9728m** příliš vysoká.
+1. Vyhledejte nastavení hodnoty, které je třeba upravit, například **spark.executor. Memory**. V tomto případě je hodnota **9728m** příliš vysoká.
 
     ![Výběr možnosti vlastní-Spark-výchozí](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
@@ -111,6 +110,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

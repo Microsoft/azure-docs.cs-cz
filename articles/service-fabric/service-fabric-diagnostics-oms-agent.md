@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79366734"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Sledování výkonu pomocí protokolů Azure Monitor
@@ -51,7 +50,7 @@ Nejlepším způsobem, jak přidat agenta Log Analytics do vašeho clusteru, je 
 
     ![Příkaz Log Analytics agenta CLI](media/service-fabric-diagnostics-oms-agent/cli-command.png)
 
-5. K úspěšnému přidání agenta do vašich uzlů byste měli mít méně než 15 minut. Pomocí `az vmss extension list` rozhraní API můžete ověřit, že se agenti přidali:
+5. K úspěšnému přidání agenta do vašich uzlů byste měli mít méně než 15 minut. Pomocí rozhraní API můžete ověřit, že se agenti přidali `az vmss extension list` :
 
     ```azurecli
     az vmss extension list --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType>
@@ -67,7 +66,7 @@ Tuto šablonu můžete stáhnout a upravit, abyste mohli nasadit cluster, který
 
 Teď, když jste přidali agenta Log Analytics, přecházíte na portál Log Analytics a zvolíte si čítače výkonu, které chcete shromažďovat.
 
-1. V Azure Portal přejdete do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics. Vyberte **ServiceFabric\<nameOfLog AnalyticsWorkspace\>**.
+1. V Azure Portal přejdete do skupiny prostředků, ve které jste vytvořili řešení Service Fabric Analytics. Vyberte **ServiceFabric \<nameOfLog AnalyticsWorkspace\> **.
 
 2. Klikněte na** Log Analytics**.
 

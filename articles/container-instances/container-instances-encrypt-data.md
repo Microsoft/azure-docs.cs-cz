@@ -6,10 +6,9 @@ ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79080356"
 ---
 # <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
@@ -55,7 +54,7 @@ Výstup z běhu tohoto příkazu by měl Ukázat instanční objekt, který se n
 
 V případě, že nemůžete úspěšně vytvořit instanční objekt:
 * Ověřte, že máte ve svém tenantovi oprávnění k tomu.
-* Zkontrolujte, jestli už ve vašem tenantovi neexistuje instanční objekt pro nasazení do ACI. Můžete to udělat tak, že `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` ho spustíte a použijete místo toho tento instanční objekt.
+* Zkontrolujte, jestli už ve vašem tenantovi neexistuje instanční objekt pro nasazení do ACI. Můžete to udělat tak, že ho spustíte `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` a použijete místo toho tento instanční objekt.
 
 ### <a name="create-a-key-vault-resource"></a>Vytvoření prostředku Key Vault
 
@@ -83,7 +82,7 @@ Vytvořte nové zásady přístupu, které umožní službě ACI přístup k va�
 
 * Po vygenerování klíče zpátky v okně prostředku trezoru klíčů v části Nastavení klikněte na **zásady přístupu**.
 * Na stránce zásady přístupu pro váš Trezor klíčů klikněte na **Přidat zásady přístupu**.
-* Nastavte *klíčová oprávnění* tak, aby zahrnovala oprávnění kláves **získat** a **Rozbalit** ![klíč sady klíčů.](./media/container-instances-encrypt-data/set-key-permissions.png)
+* Nastavte *klíčová oprávnění* tak, aby zahrnovala oprávnění kláves **získat** a **Rozbalit** klíč sady klíčů. ![](./media/container-instances-encrypt-data/set-key-permissions.png)
 * V případě *Vyberte objekt zabezpečení*vyberte **Azure Container instance Service** .
 * V dolní části klikněte na **Přidat** . 
 
@@ -97,12 +96,12 @@ Zásady přístupu by se teď měly zobrazit v zásadách přístupu trezoru kl�
 > Šifrování dat nasazení pomocí klíče spravovaného zákazníkem je dostupné v nejnovější verzi rozhraní API (2019-12-01), která se v tuto chvíli zavádí. Tuto verzi rozhraní API zadejte v šabloně nasazení. Pokud s tím máte nějaké problémy, obraťte se prosím na podporu Azure.
 
 Jakmile nastavíte klíč trezoru klíčů a zásadu přístupu, přidejte do šablony nasazení ACI následující vlastnosti. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* V `resources`části nastavte `apiVersion` na `2019-12-01`.
-* V části vlastnosti skupiny kontejnerů v šabloně nasazení přidejte `encryptionProperties`, který obsahuje následující hodnoty:
+* V části `resources` nastavte `apiVersion` na `2019-12-01` .
+* V části vlastnosti skupiny kontejnerů v šabloně nasazení přidejte `encryptionProperties` , který obsahuje následující hodnoty:
   * `vaultBaseUrl`: název DNS vašeho trezoru klíčů najdete v okně Přehled prostředku trezoru klíčů na portálu.
   * `keyName`: název klíče vygenerovaného dříve.
   * `keyVersion`: aktuální verze klíče. To můžete najít kliknutím na vlastní klíč (v části klíče v části nastavení v prostředku trezoru klíčů).
-* V části vlastnosti skupiny kontejnerů přidejte `sku` vlastnost s hodnotou. `Standard` `sku` Vlastnost je povinná v rozhraní API verze 2019-12-01.
+* V části vlastnosti skupiny kontejnerů přidejte `sku` vlastnost s hodnotou `Standard` . `sku`Vlastnost je povinná v rozhraní API verze 2019-12-01.
 
 Následující fragment šablony zobrazuje tyto další vlastnosti pro šifrování dat nasazení:
 

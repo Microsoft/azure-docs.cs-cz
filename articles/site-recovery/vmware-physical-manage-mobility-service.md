@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79256962"
 ---
 # <a name="manage-the-mobility-agent"></a>Správa agenta mobility 
@@ -66,7 +65,7 @@ Když nasadíte Site Recovery a povolíte nabízenou instalaci služby mobility,
 
 Odinstalujte z uživatelského rozhraní nebo z příkazového řádku.
 
-- **Z uživatelského rozhraní**: v Ovládacích panelech počítače vyberte **programy**. Vyberte Microsoft Azure**odinstalace** **služby mobility Site Recovery nebo hlavního cílového serveru** > .
+- **Z uživatelského rozhraní**: v Ovládacích panelech počítače vyberte **programy**. Vyberte **Microsoft Azure odinstalace služby mobility Site Recovery nebo hlavního cílového serveru**  >  **Uninstall**.
 - **Z příkazového řádku**: Otevřete okno příkazového řádku jako správce v počítači. Spusťte následující příkaz: 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"

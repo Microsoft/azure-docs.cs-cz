@@ -7,10 +7,9 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 42956d115590fd322d2851fd546c505a76a851fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79297036"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-mysql"></a>Řešení potíží s šifrováním dat v Azure Database for MySQL
@@ -21,7 +20,7 @@ Tento článek popisuje, jak identifikovat a vyřešit běžné problémy, ke kt
 
 Když nakonfigurujete šifrování dat pro použití klíče spravovaného zákazníkem v Azure Key Vault, vyžadují servery nepřetržitý přístup k tomuto klíči. Pokud server ztratí přístup k klíči spravovanému zákazníkem v Azure Key Vault, bude odepřít všechna připojení, vracet příslušnou chybovou zprávu a změnit její stav na ***nepřístupný*** v Azure Portal.
 
-Pokud už nepotřebujete nedostupný Azure Database for MySQL server, můžete ho odstranit, abyste se přestali náklady. Žádné další akce na serveru nejsou povoleny, dokud nebude obnoven přístup k trezoru klíčů a server je k dispozici. Není také možné změnit možnost šifrování dat z `Yes`(spravované zákazníkem) na `No` (spravované na základě služby) na nepřístupovém serveru, když je zašifrovaný pomocí klíče spravovaného zákazníkem. Abyste mohli znovu získat přístup k serveru, budete muset klíč znovu ověřit ručně. Tato akce je nutná k ochraně dat před neoprávněným přístupem, zatímco oprávnění k klíči spravovanému zákazníkem jsou odvolána.
+Pokud už nepotřebujete nedostupný Azure Database for MySQL server, můžete ho odstranit, abyste se přestali náklady. Žádné další akce na serveru nejsou povoleny, dokud nebude obnoven přístup k trezoru klíčů a server je k dispozici. Není také možné změnit možnost šifrování dat z `Yes` (spravované zákazníkem) na `No` (spravované na základě služby) na nepřístupovém serveru, když je zašifrovaný pomocí klíče spravovaného zákazníkem. Abyste mohli znovu získat přístup k serveru, budete muset klíč znovu ověřit ručně. Tato akce je nutná k ochraně dat před neoprávněným přístupem, zatímco oprávnění k klíči spravovanému zákazníkem jsou odvolána.
 
 ## <a name="common-errors-that-cause-the-server-to-become-inaccessible"></a>Běžné chyby, které způsobí, že server nebude přístupný
 

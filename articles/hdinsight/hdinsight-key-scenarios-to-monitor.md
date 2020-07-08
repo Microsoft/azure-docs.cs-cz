@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 75ac5a7fc352f877573d79a004d8da761c6f1cef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79082876"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Monitorování výkonu clusteru v Azure HDInsight
@@ -27,10 +26,10 @@ Clustery Hadoop můžou poskytovat optimální výkon, když je zatížení clus
 
 Pokud se chcete podívat na nejvyšší úroveň uzlů clusteru a jejich načítání, přihlaste se k [webovému uživatelskému rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)a pak vyberte kartu **hostitelé** . Vaši hostitelé jsou uvedeni podle jejich plně kvalifikovaného názvu domény. Stav provozu každého hostitele se zobrazuje pomocí barevného indikátoru stavu:
 
-| Barvy | Popis |
+| Barva | Description |
 | --- | --- |
 | Červený | Nejméně jedna hlavní součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
-| Orange | Nejméně jedna sekundární součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
+| Oranžový | Nejméně jedna sekundární součást v hostiteli je mimo provoz. Když najedete myší, zobrazí se popis, který obsahuje seznam ovlivněných součástí. |
 | Žlutý | Server Ambari nedostal od hostitele prezenční signál po dobu delší než 3 minuty. |
 | Green | Normální stav spuštění. |
 
@@ -95,7 +94,7 @@ V některých případech může Sluggishness vycházet z důvodu nedostatku mí
     du -h --max-depth=1 / | sort -h
     ```
 
-1. Zkontrolujte výstup a zkontrolujte přítomnost velkých souborů ve `mnt` složce nebo v jiných složkách. `usercache`Obvykle složky a `appcache` (mnt/Resource/Hadoop/nitě/Local/usercache/podregistr/APPCACHE/) obsahují velké soubory.
+1. Zkontrolujte výstup a zkontrolujte přítomnost velkých souborů ve `mnt` složce nebo v jiných složkách. Obvykle složky a `usercache` `appcache` (mnt/Resource/Hadoop/nitě/Local/usercache/podregistr/APPCACHE/) obsahují velké soubory.
 
 1. Pokud jsou velké soubory, je možné, že aktuální úloha způsobuje nárůst souboru nebo neúspěšná předchozí úloha mohla přispět k tomuto problému. Chcete-li zjistit, zda je toto chování způsobeno aktuální úlohou, spusťte následující příkaz:
 

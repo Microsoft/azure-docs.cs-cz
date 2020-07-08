@@ -8,10 +8,9 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79284912"
 ---
 # <a name="use-ip-filters"></a>Použití filtrů IP adres
@@ -48,7 +47,7 @@ Po výběru možnosti **Přidat pravidlo filtru protokolu IP**zadejte pole.
 
 ![Po výběru možnosti Přidat pravidlo filtru IP](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Zadejte **název** pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jsou přijímány pouze alfanumerické znaky ASCII a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` 7.
+* Zadejte **název** pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jsou přijímány pouze alfanumerické znaky ASCII a 7 `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` .
 
 * Zadejte jednu adresu IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 192.168.100.0/22 představuje adresy IPv4 1024 z 192.168.100.0 do 192.168.103.255.
 
@@ -135,8 +134,8 @@ Aktualizujte atributy pravidla filtru IP pro šablonu na základě vašich poža
 
 | Atribut                | Popis |
 | ------------------------ | ----------- |
-| **FilterName**           | Zadejte název pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jenom znaky ASCII 7 bitů plus {"-", ":", "/"\', ".", "+", "%", "_", "*", "*", "?",!, jsou přijaty tyto "(", ")", ",", "@", ";", "". |
-| **Akce**               | Přijaté hodnoty se **přijímají** nebo **zamítnou** jako akce pro pravidlo filtru IP. |
+| **FilterName**           | Zadejte název pravidla filtru IP. Musí se jednat o jedinečný řetězec bez rozlišení velkých a malých písmen, který je dlouhý až 128 znaků. Jenom znaky ASCII 7 bitů plus {"-", ":", "/", " \' .", "+", "%", "_", "*", "*", "?",!, jsou přijaty tyto "(", ")", ",", "@", ";", "". |
+| **Akce**               | Přijaté hodnoty se **přijímají**   nebo **zamítnou**   jako akce pro pravidlo filtru IP. |
 | **ipMask**               | Zadejte jednu adresu IPv4 nebo blok IP adres v zápisu CIDR. Například v zápisu CIDR 192.168.100.0/22 představuje adresy IPv4 1024 z 192.168.100.0 do 192.168.103.255. |
 
 

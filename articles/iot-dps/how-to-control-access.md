@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79285146"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Řízení přístupu k Azure IoT Hub Device Provisioning Service
@@ -75,16 +74,16 @@ Token zabezpečení má následující formát:
 
 Tady jsou očekávané hodnoty:
 
-| Hodnota | Popis |
+| Hodnota | Description |
 | --- | --- |
-| označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry`. **Důležité**: klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256.|
+| označení |Řetězec pro podpis HMAC-SHA256 ve formátu: `{URL-encoded-resourceURI} + "\n" + expiry` . **Důležité**: klíč se dekóduje z formátu Base64 a používá se jako klíč k provedení výpočtu HMAC-SHA256.|
 | vypršení platnosti |Řetězce UTF8 po dobu v sekundách od epocha 00:00:00 UTC dne 1. ledna 1970. |
 | {URL-Encoded-resourceURI} | Malá adresa URL – kódování identifikátoru URI pro malý případ prostředku. Předpona URI (podle segmentu) koncových bodů, ke kterým se dá dostat s tímto tokenem, počínaje názvem hostitele služby IoT Device Provisioning (bez protokolu). Například, `mydps.azure-devices-provisioning.net`. |
 | PolicyName |Název zásad sdíleného přístupu, na který tento token odkazuje |
 
-**Poznámka k předponě**: PŘEDPONa identifikátoru URI je vypočítána segmentem a nikoli znakem. Například `/a/b` je prefix pro `/a/b/c` , ale ne pro. `/a/bc`
+**Poznámka k předponě**: PŘEDPONa identifikátoru URI je vypočítána segmentem a nikoli znakem. Například `/a/b` je prefix pro `/a/b/c` , ale ne pro `/a/bc` .
 
-Následující fragment kódu Node. js ukazuje funkci nazvanou **generateSasToken** , která vypočítá token ze vstupů `resourceUri, signingKey, policyName, expiresInMins`. Další části podrobně popisují, jak inicializovat různé vstupy pro různé případy použití tokenu.
+Následující fragment Node.js ukazuje funkci nazvanou **generateSasToken** , která vypočítá token ze vstupů `resourceUri, signingKey, policyName, expiresInMins` . Další části podrobně popisují, jak inicializovat různé vstupy pro různé případy použití tokenu.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -150,9 +149,9 @@ Tady jsou funkce služby vystavené na koncových bodech:
 
 Například služba vygenerovaná pomocí předem vytvořených zásad sdíleného přístupu s názvem **enrollmentread** by vytvořila token s následujícími parametry:
 
-* identifikátor URI prostředku `{mydps}.azure-devices-provisioning.net`:,
+* identifikátor URI prostředku: `{mydps}.azure-devices-provisioning.net` ,
 * podpisový klíč: jeden z klíčů `enrollmentread` zásady,
-* Název zásady: `enrollmentread`,
+* Název zásady: `enrollmentread` ,
 * jakýkoli čas vypršení platnosti. backn
 
 ![Vytvoření zásad sdíleného přístupu pro instanci služby Device Provisioning na portálu][img-add-shared-access-policy]

@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
 ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79269481"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrace virtuálních počítačů VMware na virtuální počítače Azure s povoleným šifrováním na straně serveru a zákaznickými klíči
@@ -52,7 +51,7 @@ Prostředí portálu pro migraci serveru zjednodušuje přípravu infrastruktury
 
 1. Na Azure Portal otevřete stránku skupiny prostředků a vyberte skupinu prostředků, ve které byl vytvořen Azure Migrate projekt.
 2. V nabídce vlevo vyberte **nasazení** a vyhledejte název nasazení začínající řetězcem *"Microsoft. MigrateV2. VMwareV2EnableMigrate"*. Zobrazí se seznam šablon Správce prostředků vytvořených prostředím portálu pro nastavení replikace pro virtuální počítače v tomto projektu. Stáhneme jednu takovou šablonu a použijeme ji jako základ pro přípravu šablony pro replikaci pomocí CMK.
-3. Pokud chcete stáhnout šablonu, vyberte libovolné nasazení, které odpovídá vzoru řetězce v předchozím kroku > v nabídce vlevo vyberte **šablonu** > v horní nabídce klikněte na **Stáhnout** . Uložte soubor Template. JSON místně. Tento soubor šablony budete upravovat v posledním kroku.
+3. Pokud chcete stáhnout šablonu, vyberte libovolné nasazení, které odpovídá vzoru řetězce v předchozím kroku > v nabídce vlevo vyberte **šablonu** > v horní nabídce klikněte na **Stáhnout** . Uložit template.jsdo souboru lokálně. Tento soubor šablony budete upravovat v posledním kroku.
 
 ## <a name="create-a-disk-encryption-set"></a>Vytvoření sady šifrování disků
 

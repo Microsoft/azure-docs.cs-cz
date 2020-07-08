@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78968898"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení IBM DB2 pureScale v Azure
@@ -81,7 +80,7 @@ Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pure
 | Vlastník instance            | Stávající uživatel instance, uživatelské jméno        | DB2sdin1                                                                                              |
 | Uživatel s ochranou               | Existující uživatel, uživatelské jméno                     | DB2sdfe1                                                                                              |
 | Systém souborů clusteru       | Cesta k zařízení oddílu sdíleného disku            | /dev/dm-2                                                                                             |
-|                           | Přípojný bod                                  | /DB2sd\_1804a                                                                                         |
+|                           | Přípojný bod                                  | /DB2sd \_ 1804a                                                                                         |
 |                           | Sdílený disk pro data                         | /dev/dm-1                                                                                             |
 |                           | Přípojný bod (data)                           | /DB2fs/datafs1                                                                                        |
 |                           | Sdílený disk pro protokol                          | /dev/dm-0                                                                                             |
@@ -111,7 +110,7 @@ Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pure
 
 - Skripty pro instalaci používají aliasy pro disky iSCSI, aby se mohly snadno najít skutečné názvy.
 
-- Pokud je instalační skript spuštěn v D0, hodnoty **/dev/DM-\* ** se mohou lišit v sestavách D1, cf0 a CF1. Rozdíl v hodnotách nemá vliv na nastavení pureScale DB2.
+- Pokud je instalační skript spuštěn v D0, hodnoty **/dev/DM- \* ** se mohou lišit v sestavách D1, cf0 a CF1. Rozdíl v hodnotách nemá vliv na nastavení pureScale DB2.
 
 ## <a name="troubleshooting-and-known-issues"></a>Řešení potíží a známé problémy
 

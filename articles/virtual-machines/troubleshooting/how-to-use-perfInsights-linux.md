@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
 ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79266985"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
@@ -69,7 +68,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - Informace o ovladači
 
 - Hardware
-  - Zařízení PCI [`*`]
+  - Zařízení PCI [ `*` ]
 
 - Procesy a paměť
   - Seznam procesů (název úlohy, využitá paměť, otevřené soubory)
@@ -103,7 +102,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
   - /var/log/waagent.log
-  - /var/log/Azure/[složka rozšíření]/\*protokol\*
+  - /var/log/Azure/[složka rozšíření]/ \* protokol\*
   - /var/opt/microsoft/omsconfig/omsconfig.log
   - /var/opt/microsoft/omsagent/log/omsagent.log
   - /etc/waagent.config
@@ -112,7 +111,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
 - [Metadata instance virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 >[!Note]
->[`*`] Informace o PCI ještě nejsou shromážděny v Debian a SLES distribucích
+>[ `*` ] Informace o PCI ještě nejsou shromážděny v Debian a SLES distribucích
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>Spuštění PerfInsights Linux na vašem VIRTUÁLNÍm počítači
 
@@ -125,18 +124,18 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
 
 - V současné době jsou podporovány následující distribuce:
 
-    | Distribuce               | Version                                         |
+    | Distribuce               | Verze                                         |
     |----------------------------|-------------------------------------------------|
-    | Server Oracle Linux        | 6,10 [`*`], 7,3, 7,6, 7,5 (obrázek Oracle-Database-EE 13,8 Marketplace)|
-    | CentOS                     | 6,5 [`*`], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [`*`]                               |
+    | Server Oracle Linux        | 6,10 [ `*` ], 7,3, 7,6, 7,5 (obrázek Oracle-Database-Ee 13,8 Marketplace)|
+    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
     | Ubuntu                     | 14.04, 16.04, 18.04                               |
-    | Debian                     | 8, 9, 10 [`*`]                                    |
-    | SLES                       | 12 SP4 [`*`]                                      |
+    | Debian                     | 8, 9, 10 [ `*` ]                                    |
+    | SLES                       | 12 SP4 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
->[`*`] Podívejte se na část [známé problémy](#known-issues) .
+>[ `*` ] Podívejte se na část [známé problémy](#known-issues) .
 
 ### <a name="known-issues"></a>Známé problémy
 
@@ -173,7 +172,7 @@ Chcete-li spustit nástroj PerfInsights, postupujte podle následujících krok�
    tar xzvf PerfInsights.tar.gz
    ```
 
-2. Přejděte do složky, která obsahuje `perfinsights.py` soubor, a potom spusťte `perfinsights.py` příkaz pro zobrazení dostupných parametrů příkazového řádku.
+2. Přejděte do složky, která obsahuje `perfinsights.py` soubor, a potom spusťte příkaz `perfinsights.py` pro zobrazení dostupných parametrů příkazového řádku.
 
     ```bash
     cd <the path of PerfInsights folder>
@@ -205,11 +204,11 @@ Chcete-li spustit nástroj PerfInsights, postupujte podle následujících krok�
     >
     >Pokud máte aktivní lístek podpory s Microsoftem a provozujete PerfInsights na žádost pro inženýra podpory, se kterým pracujete, ujistěte se, že jste zadali číslo lístku podpory pomocí možnosti **-s nebo--support-Request** .
 
-Až se spuštění dokončí, ve stejné složce jako PerfInsights se zobrazí nový soubor tar, pokud není zadaná žádná výstupní složka. Název souboru je **PerformanceDiagnostics\_yyyy-MM-DD\_HH-MM-SS-FFF. tar. gz.** Tento soubor můžete poslat agentovi podpory k analýze nebo otevřít sestavu v souboru, abyste mohli zkontrolovat zjištění a doporučení.
+Až se spuštění dokončí, ve stejné složce jako PerfInsights se zobrazí nový soubor tar, pokud není zadaná žádná výstupní složka. Název souboru je **PerformanceDiagnostics \_ yyyy-MM-DD \_ HH-MM-SS-FFF. tar. gz.** Tento soubor můžete poslat agentovi podpory k analýze nebo otevřít sestavu v souboru, abyste mohli zkontrolovat zjištění a doporučení.
 
 ## <a name="review-the-diagnostics-report"></a>Kontrola diagnostické sestavy
 
-V rámci **souboru\_PERFORMANCEDIAGNOSTICS yyyy-mm-\_DD hh-mm-SS-FFF. tar. gz** můžete najít sestavu HTML, která podrobně popisuje nálezy PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte **soubor\_PERFORMANCEDIAGNOSTICS yyyy-mm-\_DD hh-mm-SS-FFF. tar. gz** a pak otevřete soubor **PerfInsights Report. html** .
+V rámci souboru **PerformanceDiagnostics \_ yyyy-MM-DD \_ HH-MM-SS-FFF. tar. gz** můžete najít sestavu HTML, která podrobně popisuje nálezy PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte soubor **PerformanceDiagnostics \_ yyyy-MM-DD \_ HH-MM-SS-FFF. tar. gz** a otevřete soubor **PerfInsights Report.html** .
 
 ### <a name="overview-tab"></a>Karta Přehled
 
@@ -254,4 +253,4 @@ Na následujícím snímku obrazovky se zobrazí zpráva podobná tomu, co se v�
 
 Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenosu souborů. Pro zvýšení zabezpečení je nutné při prvním použití změnit heslo.
 
-Po přihlášení se zobrazí dialogové okno pro nahrání souboru **PerformanceDiagnostics\_yyyy-MM-DD\_HH-MM-SS-FFF. tar. gz** , který byl shromážděn pomocí PerfInsights.
+Po přihlášení se zobrazí dialogové okno pro nahrání souboru **PerformanceDiagnostics \_ yyyy-MM-DD \_ HH-MM-SS-FFF. tar. gz** , který byl shromážděn pomocí PerfInsights.

@@ -4,10 +4,9 @@ description: Jak zobrazit a spravovat protokoly spuštění generované ACR úko
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79246965"
 ---
 # <a name="view-and-manage-task-run-logs"></a>Zobrazení a správa protokolů spuštění úloh
@@ -65,7 +64,7 @@ Pokud se úloha spustí automaticky, například při aktualizaci zdrojového k�
 Zobrazení protokolů spuštění na portálu:
 
 1. Přejděte do registru kontejneru.
-1. V **služby**vyberte možnost **Tasks** > **spuštěné**úlohy.
+1. V **služby**vyberte možnost **Tasks**  >  **spuštěné**úlohy.
 1. Vyberte **ID spuštění** pro zobrazení stavu spuštění a protokolů spuštění. Pokud je vygenerováno, protokol obsahuje stejné informace jako protokol streamování.
 
 ![Zobrazit portál pro přihlášení ke spuštění úlohy](./media/container-registry-tasks-logs/portal-task-run-logs.png)

@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
 ms.openlocfilehash: 802e76614f51e1f6479a311e61a49d83b8125546
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79282572"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certifikáty a zabezpečení v clusterech se systémem Linux
@@ -17,7 +16,7 @@ Tento článek poskytuje informace o konfiguraci certifikátů X. 509 v clustere
 
 ## <a name="location-and-format-of-x509-certificates-on-linux-nodes"></a>Umístění a formát certifikátů X. 509 na uzlech se systémem Linux
 
-Service Fabric obvykle očekává, že se v adresáři */var/lib/sfcerts* v uzlech clusteru se systémem Linux nacházejí certifikáty X. 509. To platí pro certifikáty clusteru, klientské certifikáty atd. V některých případech můžete pro certifikáty zadat jiné umístění, než je složka *var/lib/sfcerts* . Například pomocí Reliable Services sestaveného pomocí Service Fabric Java SDK můžete pro některé certifikáty specifické pro aplikaci zadat jiné umístění prostřednictvím konfiguračního balíčku (Settings. XML). Další informace najdete v tématu [certifikáty, na které se odkazuje v konfiguračním balíčku (Settings. XML)](#certificates-referenced-in-the-configuration-package-settingsxml).
+Service Fabric obvykle očekává, že se v adresáři */var/lib/sfcerts* v uzlech clusteru se systémem Linux nacházejí certifikáty X. 509. To platí pro certifikáty clusteru, klientské certifikáty atd. V některých případech můžete pro certifikáty zadat jiné umístění, než je složka *var/lib/sfcerts* . Například pomocí Reliable Services sestaveného pomocí Service Fabric Java SDK můžete pro některé certifikáty specifické pro aplikaci zadat jiné umístění prostřednictvím konfiguračního balíčku (Settings.xml). Další informace najdete v tématu [certifikáty, na které se odkazuje v konfiguračním balíčku (Settings.xml)](#certificates-referenced-in-the-configuration-package-settingsxml).
 
 U clusterů se systémem Linux Service Fabric očekává, že se certifikáty nacházejí jako soubor. pem, který obsahuje certifikát i privátní klíč, nebo jako soubor. CRT, který obsahuje certifikát a soubor. Key, který obsahuje soukromý klíč. Všechny soubory musí být ve formátu PEM. 
 
@@ -27,13 +26,13 @@ Pokud certifikát nainstalujete z Azure Key Vault pomocí [Správce prostředků
 
 Certifikáty, které jsou zadány v manifestu aplikace, například prostřednictvím prvků [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) nebo [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) , musí být přítomny v adresáři */var/lib/sfcerts* . Prvky, které slouží k zadání certifikátů v manifestu aplikace, nevezmou atribut path, takže certifikáty musí být přítomny ve výchozím adresáři. Tyto prvky pobírají volitelný atribut **X509StoreName** . Výchozí hodnota je "my", která odkazuje na adresář */var/lib/sfcerts* v uzlech systému Linux. Jakákoli jiná hodnota není definována v clusteru se systémem Linux. Doporučujeme vynechat atribut **X509StoreName** pro aplikace, které běží na clusterech se systémem Linux. 
 
-## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>Certifikáty, na které se odkazuje v konfiguračním balíčku (Settings. XML)
+## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>Certifikáty, na které se odkazuje v konfiguračním balíčku (Settings.xml)
 
-U některých služeb můžete nakonfigurovat certifikáty X. 509 v [ConfigPackage](./service-fabric-application-and-service-manifests.md) (ve výchozím nastavení soubor. XML). Jedná se například o případ, kdy deklarujete certifikáty používané k zabezpečení kanálů RPC pro Reliable Services služby vytvořené pomocí sady Service Fabric .NET Core nebo Java SDK. Existují dva způsoby, jak odkazovat na certifikáty v konfiguračním balíčku. Podpora se liší v různých sadách SDK .NET Core a Java.
+U některých služeb můžete nakonfigurovat certifikáty X. 509 v [ConfigPackage](./service-fabric-application-and-service-manifests.md) (ve výchozím nastavení Settings.xml). Jedná se například o případ, kdy deklarujete certifikáty používané k zabezpečení kanálů RPC pro Reliable Services služby vytvořené pomocí sady Service Fabric .NET Core nebo Java SDK. Existují dva způsoby, jak odkazovat na certifikáty v konfiguračním balíčku. Podpora se liší v různých sadách SDK .NET Core a Java.
 
 ### <a name="using-x509-securitycredentialstype"></a>Použití x509 SecurityCredentialsType
 
-Pomocí sad SDK pro .NET nebo Java můžete zadat **x509** pro **SecurityCredentialsType**. To odpovídá typu `X509Credentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java) systému](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
+Pomocí sad SDK pro .NET nebo Java můžete zadat **x509** pro **SecurityCredentialsType**. To odpovídá `X509Credentials` typu (.NET Java[.NET](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx) / [Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) systému `SecurityCredentials` ([.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx) / [Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
 
 Odkaz **x509** vyhledá certifikát v úložišti certifikátů. Následující kód XML ukazuje parametry používané k určení umístění certifikátu:
 
@@ -43,7 +42,7 @@ Odkaz **x509** vyhledá certifikát v úložišti certifikátů. Následující 
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-U služby spuštěné v systému Linux **LocalMachine**/**mé** body do výchozího umístění pro certifikáty, adresář */var/lib/sfcerts* . Pro Linux nejsou definovány žádné další kombinace **CertificateStoreLocation** a **CertificateStoreName** . 
+U služby spuštěné v systému Linux **LocalMachine** / **mé** body do výchozího umístění pro certifikáty, adresář */var/lib/sfcerts* . Pro Linux nejsou definovány žádné další kombinace **CertificateStoreLocation** a **CertificateStoreName** . 
 
 Pro parametr **CertificateStoreLocation** vždy zadejte **LocalMachine** . Není nutné zadat parametr **CertificateStoreName** , protože je nastaven na hodnotu My. S odkazem na **x509** se soubory certifikátů musí nacházet v adresáři */var/lib/sfcerts* na uzlu clusteru.  
 
@@ -64,7 +63,7 @@ Následující kód XML ukazuje oddíl **TransportSettings** na základě tohoto
 
 ### <a name="using-x509_2-securitycredentialstype"></a>Použití X509_2 SecurityCredentialsType
 
-Pomocí sady Java SDK můžete zadat **X509_2** pro **SecurityCredentialsType**. To odpovídá `X509Credentials2` [typu (Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
+Pomocí sady Java SDK můžete zadat **X509_2** pro **SecurityCredentialsType**. To odpovídá typu (Java `X509Credentials2` )[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2) `SecurityCredentials` ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
 
 Pomocí odkazu na **X509_2** určíte parametr cesty, takže můžete najít certifikát v jiném adresáři než */var/lib/sfcerts*.  Následující kód XML ukazuje parametry používané k určení umístění certifikátu: 
 
@@ -94,7 +93,7 @@ Následující kód XML ukazuje oddíl **TransportSettings** založený na tomto
 
 Sady SDK pro Service Fabric vám umožňují komunikovat s rozhraními API Service Fabric runtime, aby mohli využívat platformu. Když spustíte libovolnou aplikaci, která tuto funkci používá v systému zabezpečených clusterů systému Linux, je nutné aplikaci nakonfigurovat s certifikátem, který může použít k ověření pomocí modulu runtime Service Fabric. Tato konfigurace vyžaduje aplikace, které obsahují Service Fabric spolehlivých služeb služeb napsaných pomocí sad .NET Core nebo Java SDK. 
 
-Chcete-li nakonfigurovat aplikaci, přidejte do značky **certifikáty** element [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) , který je umístěn pod značkou **souboru ApplicationManifest** v souboru *souboru ApplicationManifest. XML* . Následující kód XML ukazuje certifikát, na který odkazuje jeho kryptografický otisk: 
+Chcete-li nakonfigurovat aplikaci, přidejte element [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) pod značku **certifikáty** , který je umístěn pod značkou **souboru ApplicationManifest** v souboru *ApplicationManifest.xml* . Následující kód XML ukazuje certifikát, na který odkazuje jeho kryptografický otisk: 
 
 ```xml
    <Certificates>

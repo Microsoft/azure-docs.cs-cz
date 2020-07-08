@@ -6,10 +6,9 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79275097"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správa a údržba agenta Log Analytics pro Windows a Linux
@@ -28,11 +27,11 @@ Agenta Log Analytics pro systém Windows a Linux lze upgradovat na nejnovější
 
 ### <a name="upgrade-windows-agent"></a>Upgradovat agenta Windows 
 
-Chcete-li aktualizovat agenta na virtuálním počítači s Windows na nejnovější verzi, která není nainstalovaná pomocí Log Analyticsho rozšíření virtuálního počítače, buď spusťte z příkazového řádku, skriptu nebo jiného řešení automatizace, nebo\<pomocí\>Průvodce instalací MMASetup-Platform. msi.  
+Chcete-li aktualizovat agenta na virtuálním počítači s Windows na nejnovější verzi, která není nainstalovaná pomocí Log Analyticsho rozšíření virtuálního počítače, buď spusťte z příkazového řádku, skriptu nebo jiného řešení automatizace, nebo pomocí \<platform\> Průvodce instalací MMASetup. msi.  
 
 Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prostoru Log Analytics, a to provedením následujících kroků.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
@@ -50,7 +49,7 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prost
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
-2. Spuštěním příkazu **MMASetup\<-\>Platform. exe** spusťte Průvodce instalací nástroje.
+2. Spusťte **MMASetup. \<platform\> exe** a spusťte Průvodce instalací nástroje.
 
 3. Na první stránce Průvodce instalací klikněte na tlačítko **Další**.
 
@@ -64,7 +63,7 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout z pracovního prost
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
-2. K extrakci instalačních souborů agenta se spustí `MMASetup-<platform>.exe /c` příkazový řádek se zvýšenými oprávněními a zobrazí výzvu k zadání cesty k extrakci souborů. Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>`.
+2. K extrakci instalačních souborů agenta se spustí příkazový řádek se zvýšenými oprávněními `MMASetup-<platform>.exe /c` a zobrazí výzvu k zadání cesty k extrakci souborů. Alternativně můžete zadat cestu předáním argumentů `MMASetup-<platform>.exe /c /t:<Full Path>` .
 
 3. Spusťte níže uvedený příkaz, přičemž D:\ označuje umístění souboru protokolu upgradu.
 
@@ -129,7 +128,7 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
->Pokud jste dříve používali příkazový řádek nebo skript pro instalaci nebo konfiguraci agenta, `EnableAzureOperationalInsights` byl nahrazen nástrojem `AddCloudWorkspace` a. `RemoveCloudWorkspace`
+>Pokud jste dříve používali příkazový řádek nebo skript pro instalaci nebo konfiguraci agenta, `EnableAzureOperationalInsights` byl nahrazen nástrojem `AddCloudWorkspace` a `RemoveCloudWorkspace` .
 >
 
 ### <a name="linux-agent"></a>Agent pro Linux
@@ -236,16 +235,16 @@ Pomocí jednoho z následujících postupů odinstalujte agenta systému Windows
 3. V nabídce **programy a funkce**klikněte na **Microsoft Monitoring Agent**, klikněte na **odinstalovat**a potom klikněte na **Ano**.
 
 >[!NOTE]
->Průvodce instalací agenta lze spustit také dvojitým kliknutím na **MMASetup-\<\>Platform. exe**, který je k dispozici ke stažení z pracovního prostoru v Azure Portal.
+>Průvodce instalací agenta lze spustit také dvojitým kliknutím na **MMASetup \<platform\> . exe**, který je k dispozici ke stažení z pracovního prostoru v Azure Portal.
 
 #### <a name="uninstall-from-the-command-line"></a>Odinstalace z příkazového řádku
 Stažený soubor pro agenta je samostatný instalační balíček vytvořený pomocí IExpress. Instalační program pro agenta a podpůrné soubory jsou obsaženy v balíčku a je třeba jej extrahovat, aby se správně odinstaloval pomocí příkazového řádku, který je znázorněn v následujícím příkladu.
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
-2. K extrakci instalačních souborů agenta se spustí `extract MMASetup-<platform>.exe` příkazový řádek se zvýšenými oprávněními a zobrazí výzvu k zadání cesty k extrakci souborů. Alternativně můžete zadat cestu předáním argumentů `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`. Další informace o přepínačích příkazového řádku podporovaných v IExpress najdete v tématech [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a pak aktualizujte příklad tak, aby odpovídal vašim potřebám.
+2. K extrakci instalačních souborů agenta se spustí příkazový řádek se zvýšenými oprávněními `extract MMASetup-<platform>.exe` a zobrazí výzvu k zadání cesty k extrakci souborů. Alternativně můžete zadat cestu předáním argumentů `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` . Další informace o přepínačích příkazového řádku podporovaných v IExpress najdete v tématech [přepínače příkazového řádku pro IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) a pak aktualizujte příklad tak, aby odpovídal vašim potřebám.
 
-3. Na příkazovém řádku zadejte `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.
+3. Na příkazovém řádku zadejte `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` .
 
 ### <a name="linux-agent"></a>Agent pro Linux
 Pokud chcete agenta odebrat, spusťte v počítači s Linuxem následující příkaz. Argument *--purge* úplně odebere agenta a jeho konfiguraci.
@@ -286,7 +285,7 @@ Provedením následujících kroků nakonfigurujte agenta Log Analytics pro syst
 
 1. Upravit soubor`/etc/opt/omi/conf/omiserver.conf`
 
-2. Zajistěte, aby řádek `httpsport=` začínající řetězcem definoval port 1270. Například:`httpsport=1270`
+2. Zajistěte, aby řádek začínající řetězcem `httpsport=` definoval port 1270. Například:`httpsport=1270`
 
 3. Restartujte server OMI:`sudo /opt/omi/bin/service_control restart`
 

@@ -8,10 +8,9 @@ ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79365504"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
@@ -23,7 +22,7 @@ Tento článek popisuje běžné problémy, alternativní řešení a diagnostic
 Aktivační událost Azure Functions a vazby pro Cosmos DB závisí na balíčcích rozšíření v rámci základního Azure Functions modulu runtime. Vždy udržujte tyto balíčky aktualizované, protože můžou zahrnovat opravy a nové funkce, které mohou řešit případné problémy, se kterými se můžete setkat:
 
 * Azure Functions v2 najdete v tématu [Microsoft. Azure. WebJobs. Extensions. CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB).
-* Azure Functions v1 najdete v tématu [Microsoft. Azure. WebJobs. Extensions. DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
+* Azure Functions v1 najdete v tématu [Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB).
 
 Tento článek se vždy odkazuje na Azure Functions v2 vždy, když je zmíněn modul runtime, pokud není explicitně zadán.
 
@@ -45,7 +44,7 @@ To znamená, že jeden nebo oba kontejnery Azure Cosmos, které má aktivační 
 
 1. Ověřte `ConnectionStringSetting` atribut, který **odkazuje na nastavení, které existuje ve vašem Azure Function App**. Hodnota tohoto atributu nesmí být samotný připojovací řetězec, ale název nastavení konfigurace.
 2. Ověřte, jestli `databaseName` v `collectionName` účtu Azure Cosmos existují a. Pokud používáte automatické nahrazení hodnoty (pomocí `%settingName%` vzorů), ujistěte se, že název nastavení existuje ve vašem Azure Function App.
-3. Pokud nezadáte a `LeaseCollectionName/leaseCollectionName`, výchozí hodnota je "zapůjčení". Ověřte, že tento kontejner existuje. Volitelně můžete nastavit `CreateLeaseCollectionIfNotExists` atribut v triggeru tak `true` , aby se automaticky vytvořil.
+3. Pokud nezadáte a `LeaseCollectionName/leaseCollectionName` , výchozí hodnota je "zapůjčení". Ověřte, že tento kontejner existuje. Volitelně můžete nastavit `CreateLeaseCollectionIfNotExists` atribut v triggeru tak, aby `true` se automaticky vytvořil.
 4. Ověřte [konfiguraci brány firewall účtu Azure Cosmos](how-to-configure-firewall.md) , abyste viděli, že neblokuje funkci Azure Functions.
 
 ### <a name="azure-function-fails-to-start-with-shared-throughput-collection-should-have-a-partition-key"></a>Funkci Azure Functions se nepodařilo spustit, protože sdílená kolekce propustnosti by měla mít klíč oddílu.
@@ -58,7 +57,7 @@ Tato chyba znamená, že aktuálně používáte dělenou kolekci zapůjčení s
 
 ### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Funkce Azure Function se nespustí s "kolekce zapůjčení, pokud je rozdělená na oddíly, musí mít klíč oddílu roven ID."
 
-Tato chyba znamená, že váš aktuální kontejner zapůjčení je rozdělený na oddíly, ale cesta ke klíči oddílu `/id`není. Chcete-li tento problém vyřešit, je nutné znovu vytvořit kontejner zapůjčení s `/id` klíčem oddílu.
+Tato chyba znamená, že váš aktuální kontejner zapůjčení je rozdělený na oddíly, ale cesta ke klíči oddílu není `/id` . Chcete-li tento problém vyřešit, je nutné znovu vytvořit kontejner zapůjčení s `/id` klíčem oddílu.
 
 ### <a name="you-see-a-value-cannot-be-null-parameter-name-o-in-your-azure-functions-logs-when-you-try-to-run-the-trigger"></a>Zobrazí se hodnota nemůže mít hodnotu null. Název parametru: o v protokolech Azure Functions při pokusu o spuštění triggeru
 
@@ -78,8 +77,8 @@ Pokud jde o sporadické změny, může docházet k určité prodlevě mezi uklá
 
 Koncept "změny" je operace na dokumentu. Nejběžnější scénáře, kdy se přijímají události pro stejný dokument, jsou:
 * Účet používá konečnou konzistenci. Při využívání kanálu změn v konečné úrovni konzistence může dojít k duplicitním událostem v-mezi následnými operacemi čtení změn kanálu (poslední událost operace čtení se zobrazí jako první z následujících).
-* Probíhá aktualizace dokumentu. Kanál změn může obsahovat více operací pro stejné dokumenty, pokud tento dokument přijímá aktualizace, může vybrat více událostí (jeden pro každou aktualizaci). Jedním z jednoduchých způsobů, jak rozlišovat mezi různými operacemi pro stejný dokument, je `_lsn` sledovat [vlastnost pro každou změnu](change-feed.md#change-feed-and-_etag-_lsn-or-_ts). Pokud se neshodují, jedná se o různé změny v rámci stejného dokumentu.
-* Pokud identifikujete dokumenty pouze pomocí `id`, pamatujte, že jedinečný identifikátor dokumentu je `id` a jeho klíč oddílu (může se jednat o dva dokumenty stejného `id` , ale s jiným klíčem oddílu).
+* Probíhá aktualizace dokumentu. Kanál změn může obsahovat více operací pro stejné dokumenty, pokud tento dokument přijímá aktualizace, může vybrat více událostí (jeden pro každou aktualizaci). Jedním z jednoduchých způsobů, jak rozlišovat mezi různými operacemi pro stejný dokument, je sledovat `_lsn` [vlastnost pro každou změnu](change-feed.md#change-feed-and-_etag-_lsn-or-_ts). Pokud se neshodují, jedná se o různé změny v rámci stejného dokumentu.
+* Pokud identifikujete dokumenty pouze pomocí `id` , pamatujte, že jedinečný identifikátor dokumentu je `id` a jeho klíč oddílu (může se jednat o dva dokumenty stejného, `id` ale s jiným klíčem oddílu).
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>V aktivační události chybí některé změny.
 
@@ -109,7 +108,7 @@ Chcete-li znovu zpracovat všechny položky v kontejneru od začátku:
 
 Nastavení [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) na hodnotu true oznámí službě Azure Function, aby začaly číst změny od začátku historie kolekce namísto aktuálního času. To funguje jenom v případě, že už nejsou vytvořená zapůjčení (to znamená dokumenty v kolekci zapůjčení). Nastavení této vlastnosti na hodnotu true, pokud jsou již vytvořené zapůjčené adresy nijak ovlivněny. v tomto scénáři se při zastavení a opětovném spuštění funkce začne číst z posledního kontrolního bodu, jak je definováno v kolekci zapůjčení. Chcete-li znovu zpracovat od začátku, postupujte podle výše uvedených kroků 1-4.  
 
-### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Vazbu lze provést pouze s dokumentem\<IReadOnlyList> nebo JArray
+### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Vazbu lze provést pouze s IReadOnlyList \<Document> nebo JArray
 
 K této chybě dochází, pokud váš Azure Functions projekt (nebo jakýkoli odkazovaný projekt) obsahuje ruční odkaz na sadu NuGet na Azure Cosmos DB SDK s jinou verzí, než je ta, kterou poskytuje [rozšíření Azure Functions Cosmos DB](./troubleshoot-changefeed-functions.md#dependencies).
 

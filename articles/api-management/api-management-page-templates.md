@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79249539"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Šablony stránek v Azure API Management
@@ -227,7 +226,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |referenceCode|řetězec|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  
 |errorCode|řetězec|Generuje se kód, pokud se tato stránka zobrazila jako výsledek vnitřní chyby.|  

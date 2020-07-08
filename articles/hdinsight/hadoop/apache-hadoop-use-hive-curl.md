@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "79298746"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Spouštění dotazů Apache Hive pomocí Apache Hadoop ve službě HDInsight pomocí REST
@@ -27,11 +26,11 @@ Naučte se používat REST API WebHCat ke spouštění dotazů Apache Hive s Apa
 
 * Klient REST. Tento dokument používá rutinu [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) ve Windows PowerShellu a [oblé](https://curl.haxx.se/) v [bash](https://docs.microsoft.com/windows/wsl/install-win10).
 
-* Pokud používáte bash, budete také potřebovat JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* Pokud používáte bash, budete také potřebovat JQ, procesor JSON příkazového řádku.  Viz [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) .
 
 ## <a name="base-uri-for-rest-api"></a>Základní identifikátor URI pro rozhraní REST API
 
-Základní identifikátor URI (Uniform Resource Identifier) pro REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena**.  I když název clusteru v části plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI`CLUSTERNAME.azurehdinsight.net`() rozlišuje velká a malá písmena, jiné výskyty v IDENTIFIKÁTORu URI rozlišují velká a malá písmena.
+Základní identifikátor URI (Uniform Resource Identifier) pro REST API v HDInsight je `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` , kde `CLUSTERNAME` je název vašeho clusteru.  Názvy clusterů v identifikátorech URI rozlišují **velká a malá písmena**.  I když název clusteru v části plně kvalifikovaného názvu domény (FQDN) v identifikátoru URI () rozlišuje velká a malá písmena `CLUSTERNAME.azurehdinsight.net` , jiné výskyty v identifikátoru URI rozlišují velká a malá písmena.
 
 ## <a name="authentication"></a>Authentication
 
@@ -42,7 +41,7 @@ Při použití kudrlinkou nebo jakékoli jiné komunikace REST s WebHCat je nutn
 Zachovejte přihlašovací údaje, abyste je nemuseli znovu zadávat pro každý příklad.  Název clusteru se zachová v samostatném kroku.
 
 **A. bash**  
-Následující skript upravte tak, že `PASSWORD` nahradíte vlastní heslo.  Pak zadejte příkaz.
+Následující skript upravte tak, že nahradíte `PASSWORD` vlastní heslo.  Pak zadejte příkaz.
 
 ```bash
 export password='PASSWORD'
@@ -101,7 +100,7 @@ $clusterName
     * `-u`– Uživatelské jméno a heslo použité k ověření žádosti.
     * `-G`– Označuje, že je tento požadavek operace GET.
 
-1. Začátek adresy URL `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1`je stejný pro všechny požadavky. Cesta `/status`, označuje, že požadavek má vrátit stav WebHCat (označovaný také jako Templeton) pro server. Verzi podregistru můžete požádat také pomocí následujícího příkazu:
+1. Začátek adresy URL `https://$CLUSTERNAME.azurehdinsight.net/templeton/v1` je stejný pro všechny požadavky. Cesta, `/status` označuje, že požadavek má vrátit stav WebHCat (označovaný také jako Templeton) pro server. Verzi podregistru můžete požádat také pomocí následujícího příkazu:
 
     ```bash
     curl -u admin:$password -G https://$clusterName.azurehdinsight.net/templeton/v1/version/hive
@@ -159,7 +158,7 @@ $clusterName
    * `SELECT`– Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]**. Tento příkaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.
 
      > [!NOTE]  
-     > Všimněte si, že mezery mezi příkazy HiveQL jsou nahrazeny `+` znakem při použití s kudrlinkou. Hodnoty v uvozovkách, které obsahují mezeru, jako je například oddělovač, by neměly být nahrazeny hodnotou `+`.
+     > Všimněte si, že mezery mezi příkazy HiveQL jsou nahrazeny `+` znakem při použití s kudrlinkou. Hodnoty v uvozovkách, které obsahují mezeru, jako je například oddělovač, by neměly být nahrazeny hodnotou `+` .
 
       Tento příkaz vrátí ID úlohy, která se dá použít ke kontrole stavu úlohy.
 
@@ -183,7 +182,7 @@ $clusterName
 
     Pokud se úloha dokončí, stav se **podařilo**.
 
-1. Jakmile se stav úlohy změní na **úspěch**, můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. `statusdir` Parametr předaný dotazu obsahuje umístění výstupního souboru. v tomto případě `/example/rest`. Tato adresa uchovává výstup v `example/curl` adresáři ve výchozím úložišti clusterů.
+1. Jakmile se stav úlohy změní na **úspěch**, můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. `statusdir`Parametr předaný dotazu obsahuje umístění výstupního souboru, v tomto případě `/example/rest` . Tato adresa uchovává výstup v `example/curl` adresáři ve výchozím úložišti clusterů.
 
     Tyto soubory můžete zobrazit a stáhnout pomocí rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Další informace o použití rozhraní příkazového řádku Azure s Azure Storage najdete v dokumentu [použití Azure CLI s Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli) .
 
