@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 15bdcbfc8e02ff06e09cb1e2a3d0621cb50e4da4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84466098"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java
@@ -29,7 +28,7 @@ V tomto článku se dozvíte, jak pomocí jazyka Java vytvářet a spravovat adr
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-Začněte tím, že otevřete [tuto stránku](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) a získáte nejnovější verzi knihovny Java. Pak otevřete soubor *pom. XML* v textovém editoru. Přidejte element závislosti, který odkazuje na tuto verzi.
+Začněte tím, že otevřete [tuto stránku](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) a získáte nejnovější verzi knihovny Java. Pak otevřete soubor *pom.xml* v textovém editoru. Přidejte element závislosti, který odkazuje na tuto verzi.
 
 Pokud plánujete ověřování klientské aplikace pomocí Azure Active Directory (AD), přidejte závislost do klientské knihovny tajného kódu Azure. Viz [Přidání balíčku tajné klientské knihovny do projektu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/identity/azure-identity#adding-the-package-to-your-project).
 

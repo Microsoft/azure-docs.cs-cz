@@ -11,10 +11,9 @@ author: lobrien
 ms.date: 11/12/2019
 ms.custom: tracking-python
 ms.openlocfilehash: 3fede6bf194d0dd6b18118df7a44b7ccd0224a25
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84552178"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí sady Azure Machine Learning SDK pro Python
@@ -146,7 +145,7 @@ Pokud pak znovu spustíte `Schedule.list(ws)` , měli byste mít prázdný sezna
 
 V tomto článku jste použili sadu SDK Azure Machine Learning pro Python k naplánování kanálu dvěma různými způsoby. Jeden plán se opakuje na základě uplynulých časových taktů. Druhý plán se spustí, pokud je soubor změněn na zadaném `Datastore` nebo v adresáři v daném úložišti. Zjistili jste, jak použít portál k prohlédnutí kanálu a jednotlivých spuštění. Nakonec jste zjistili, jak zakázat plán, aby kanál přestal běžet.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 > [!div class="nextstepaction"]
 > [Použití Azure Machine Learningch kanálů pro dávkové vyhodnocování](tutorial-pipeline-batch-scoring-classification.md)

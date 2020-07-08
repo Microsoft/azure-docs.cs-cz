@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484565"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indexování velkých datových sad v Azure Kognitivní hledání

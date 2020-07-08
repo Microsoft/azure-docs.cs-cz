@@ -6,10 +6,9 @@ author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
 ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84464568"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky

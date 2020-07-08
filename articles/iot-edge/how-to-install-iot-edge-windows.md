@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
 ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465554"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Instalace modulu runtime Azure IoT Edge ve Windows
@@ -78,7 +77,7 @@ Tento příklad ukazuje ruční instalaci pomocí kontejnerů Windows:
 
 1. Pokud jste to ještě neudělali, zaregistrujte nové zařízení IoT Edge a načtěte **připojovací řetězec zařízení**. Zkopírujte připojovací řetězec pro pozdější použití v této části. Tento krok můžete provést pomocí následujících nástrojů:
 
-   * [portál Azure](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
@@ -153,16 +152,16 @@ K aktualizaci IoT Edge můžete použít taky parametr cesty k instalaci offline
 
 2. Vyhledejte verzi, kterou chcete nainstalovat, a Stáhněte si následující soubory z části **assets (prostředky** ) poznámky k verzi do zařízení IoT:
 
-   * IoTEdgeSecurityDaemon. ps1
-   * Microsoft-Azure-IoTEdge-amd64. cab z verzí 1.0.9 nebo novější nebo Microsoft-Azure-IoTEdge. cab z verzí 1.0.8 a starší.
+   * IoTEdgeSecurityDaemon.ps1
+   * Microsoft-Azure-IoTEdge-amd64.cab z verzí 1.0.9 nebo novější, nebo Microsoft-Azure-IoTEdge.cab z verzí 1.0.8 a starších.
 
-   Microsoft-Azure-IotEdge-arm32. cab je také k dispozici na začátku v 1.0.9 pouze pro účely testování. IoT Edge se v současné době nepodporují na zařízeních s Windows ARM32.
+   Microsoft-Azure-IotEdge-arm32.cab je k dispozici také pro účely testování, od 1.0.9. IoT Edge se v současné době nepodporují na zařízeních s Windows ARM32.
 
    Je důležité použít skript prostředí PowerShell ze stejné verze, jako je soubor. cab, který používáte, protože funkce se mění tak, aby podporovaly funkce v jednotlivých vydaných verzích.
 
-3. Pokud má soubor. cab, který jste stáhli, příponu architektury, přejmenujte soubor na pouze **Microsoft-Azure-IoTEdge. cab**.
+3. Pokud má soubor. cab, který jste stáhli, příponu architektury, přejmenujte soubor na pouze **Microsoft-Azure-IoTEdge.cab**.
 
-4. Volitelně můžete stáhnout instalační program pro Visual C++ Redistributable. Například skript PowerShellu používá tuto verzi: [vc_redist. x64. exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Uložte instalační program do stejné složky v zařízení IoT jako soubory IoT Edge.
+4. Volitelně můžete stáhnout instalační program pro Visual C++ Redistributable. Například skript PowerShellu používá tuto verzi: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Uložte instalační program do stejné složky v zařízení IoT jako soubory IoT Edge.
 
 5. Chcete [-li nainstalovat](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) nástroje s offline komponentami, poznamenejte si místní kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Deploy-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Třeba
 
@@ -282,8 +281,8 @@ Příkaz Initialize-IoTEdge nakonfiguruje IoT Edge s připojovacím řetězcem z
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |
-| **Ruční** | Žádné | **Parametr Switch** Pokud není zadán žádný typ zřizování, je výchozí hodnota ruční.<br><br>Deklaruje, že budete zadat připojovací řetězec zařízení pro ruční zřízení zařízení. |
-| **DPS** | Žádné | **Parametr Switch** Pokud není zadán žádný typ zřizování, je výchozí hodnota ruční.<br><br>Deklarujete, že zadáte ID oboru služby Device Provisioning Service (DPS) a ID registrace vašeho zařízení, které se bude zřizovat prostřednictvím DPS.  |
+| **Ruční** | Žádná | **Parametr Switch** Pokud není zadán žádný typ zřizování, je výchozí hodnota ruční.<br><br>Deklaruje, že budete zadat připojovací řetězec zařízení pro ruční zřízení zařízení. |
+| **DPS** | Žádná | **Parametr Switch** Pokud není zadán žádný typ zřizování, je výchozí hodnota ruční.<br><br>Deklarujete, že zadáte ID oboru služby Device Provisioning Service (DPS) a ID registrace vašeho zařízení, které se bude zřizovat prostřednictvím DPS.  |
 | **DeviceConnectionString** | Připojovací řetězec ze zařízení IoT Edge zaregistrovaného v IoT Hub v jednoduchých uvozovkách | **Vyžaduje** se pro ruční zřizování. Pokud v parametrech skriptu nezadáte připojovací řetězec, zobrazí se výzva k zadání. |
 | **Objekt ScopeId** | ID oboru z instance služby Device Provisioning přidružené k vašemu IoT Hub. | **Vyžaduje** se pro zřizování DPS. Pokud nezadáte ID oboru v parametrech skriptu, budete vyzváni k jeho zadání. |
 | **RegistrationId** | ID registrace generované vaším zařízením | **Vyžaduje** se pro zřizování DPS, pokud používáte ověřování pomocí čipu TPM nebo symetrického klíče. **Nepovinné** , pokud se používá ověřování certifikátů X. 509. |

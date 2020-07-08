@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: ac4df0b63d48e590bfdfc49f1c8b5607b4651cd5
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84310185"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps povětrnostní pokrytí
@@ -45,7 +44,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Bonaire                                  | ✓ |   |  ✓| 
 | Brazílie                                   | ✓ |   |  ✓| 
 | Britské Panenské ostrovy                   | ✓ |   |  ✓| 
-| Canada                                   | ✓ | ✓ |  ✓| 
+| Kanada                                   | ✓ | ✓ |  ✓| 
 | Kajmanské ostrovy                           | ✓ |   |  ✓| 
 | Chile                                    | ✓ |   |  ✓| 
 | Kolumbie                                 | ✓ |   |  ✓| 
@@ -88,7 +87,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Ostrovy Turks a Caicos                 | ✓ |   |  ✓| 
 | Menší odlehlé ostrovy USA                    | ✓ |   |  ✓| 
 | Americké Panenské ostrovy                      | ✓ |   |  ✓| 
-| Česká republika                            | ✓ | ✓ |  ✓| 
+| USA                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
 
@@ -177,7 +176,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afghánistán                       | ✓ |   |  ✓| 
 | Americká Samoa                    | ✓ |   |  ✓| 
-| Australia                         | ✓ | ✓ |  ✓| 
+| Austrálie                         | ✓ | ✓ |  ✓| 
 | Bangladéš                        | ✓ |   |  ✓| 
 | Bhútán                            | ✓ |   |  ✓| 
 | Britské indickooceánské území    | ✓ |   |  ✓| 
@@ -192,9 +191,9 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Guam                              | ✓ |   |  ✓| 
 | Heardův ostrov a MacDonaldovy ostrovy | ✓ |   |  ✓| 
 | Hongkong – zvláštní administrativní oblast                     | ✓ |   |  ✓| 
-| India                             | ✓ |   |  ✓| 
+| Indie                             | ✓ |   |  ✓| 
 | Indonésie                         | ✓ |   |  ✓| 
-| Japan                             | ✓ | ✓ |  ✓| 
+| Japonsko                             | ✓ | ✓ |  ✓| 
 | Kazachstán                        | ✓ |   |  ✓| 
 | Kiribati                          | ✓ |   |  ✓| 
 | Jižní Korea                             | ✓ | ✓ |  ✓| 
@@ -238,7 +237,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Wallis a Futuna                 | ✓ |   |  ✓| 
 
 
-## <a name="europe"></a>Europe
+## <a name="europe"></a>Evropa
 
 | Země              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|

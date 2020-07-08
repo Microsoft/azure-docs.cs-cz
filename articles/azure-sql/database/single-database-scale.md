@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/30/2020
 ms.openlocfilehash: 84e9593884f40fce8affce628b7817c528b3c31d
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343281"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování jednoho databázového prostředku v Azure SQL Database
@@ -150,7 +149,7 @@ Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na ú
 - Scénáře aktivní geografické replikace:
   - Nastavení vztahu geografické replikace: Pokud je primární databáze P11 nebo P15, sekundární (y) musí být také P11 nebo P15. Nižší výpočetní velikost je odmítnuta jako sekundární, protože nepodporují více než 1 TB.
   - Upgrade primární databáze v relaci geografické replikace: Změna maximální velikosti na více než 1 TB v primární databázi spustí stejnou změnu v sekundární databázi. Aby se změny na primárním počítači projevily, musí být oba upgrady úspěšné. Omezení oblastí pro možnost použít více než 1 TB. Pokud je sekundární v oblasti, která nepodporuje více než 1 TB, primární upgrade se neupgraduje.
-- Používání služby Import/export pro načítání databází P11/P15 s více než 1 TB se nepodporuje. K [importu](database-import.md) a [exportu](database-export.md) dat použijte SqlPackage. exe.
+- Používání služby Import/export pro načítání databází P11/P15 s více než 1 TB se nepodporuje. K [importu](database-import.md) a [exportu](database-export.md) dat použijte SqlPackage.exe.
 
 ## <a name="next-steps"></a>Další kroky
 

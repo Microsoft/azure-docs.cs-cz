@@ -4,10 +4,9 @@ description: V tomto článku najdete odpovědi na běžné otázky týkající 
 ms.date: 04/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84488694"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
@@ -97,15 +96,15 @@ Tady je příklad toho, jak to funguje:
 
 |Typ uchování |Plán |Uchovávání  |
 |---------|---------|---------|
-|denně    |    Každý den v 8 ODP.    |  100 dní       |
+|Každý den    |    Každý den v 8 ODP.    |  100 dní       |
 
 #### <a name="new-policy-modified-p1"></a>Nové zásady [upraveno P1]
 
 | Typ uchování | Plán                       | Uchovávání |
 | -------------- | ------------------------------ | --------- |
-| denně          | Každý den v 9 ODP.              | 50 dní   |
+| Každý den          | Každý den v 9 ODP.              | 50 dní   |
 | Každý týden         | V neděli v 9 ODP.              | 3 týdny   |
-| Měsíčně        | Poslední pondělí v 9 ODP.         | 1 měsíc   |
+| měsíčně        | Poslední pondělí v 9 ODP.         | 1 měsíc   |
 | Roční         | V lednu na třetí neděli v 9 ODP. | 4 roky   |
 
 #### <a name="impact"></a>Dopad
@@ -131,16 +130,16 @@ Tady je příklad toho, jak to funguje:
 
 | Typ uchování | Plán           | Uchovávání |
 | -------------- | ------------------ | --------- |
-| denně          | Každý den v 8 ODP. | 50 dní   |
+| Každý den          | Každý den v 8 ODP. | 50 dní   |
 | Každý týden         | V pondělí po 8 ODP.  | 3 týdny   |
 
 #### <a name="new-policy-modified-p2"></a>Nové zásady [upraveno P2]
 
 | Typ uchování | Plán               | Uchovávání |
 | -------------- | ---------------------- | --------- |
-| denně          | Každý den v 9 ODP.     | 10 dní   |
+| Každý den          | Každý den v 9 ODP.     | 10 dní   |
 | Každý týden         | V pondělí v 9 ODP.      | 2 týdny   |
-| Měsíčně        | Poslední pondělí v 9 ODP. | 2 měsíce  |
+| měsíčně        | Poslední pondělí v 9 ODP. | 2 měsíce  |
 
 #### <a name="impact-of-change"></a>Dopad změny
 

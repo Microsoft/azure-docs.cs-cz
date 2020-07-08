@@ -7,10 +7,9 @@ ms.date: 05/12/2020
 ms.author: hazeng
 ms.custom: tracking-python
 ms.openlocfilehash: b2582caf407b3983b32c40482fa0f0275f00fb8d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84554759"
 ---
 # <a name="troubleshoot-python-module-errors-in-azure-functions"></a>Řešení chyb modulu Python v Azure Functions
@@ -86,9 +85,9 @@ Přečtěte si téma [aktualizace balíčku na nejnovější verzi](#update-your
 
 Otevřete `requirements.txt` s textovým editorem a podívejte se na balíček v `https://pypi.org/project/<package-name>` . Některé balíčky se spouští jenom na platformách Windows nebo macOS. Například pywin32 běží pouze v systému Windows.
 
-K této `Module Not Found` chybě může dojít při použití systému Windows nebo MacOS pro místní vývoj. Balíček se ale nepovede importovat na Azure Functions, který používá Linux za běhu. To je pravděpodobně způsobeno tím, že pomocí `pip freeze` exportu virtuálního prostředí do požadavků. txt z počítače s Windows nebo MacOS během inicializace projektu.
+K této `Module Not Found` chybě může dojít při použití systému Windows nebo MacOS pro místní vývoj. Balíček se ale nepovede importovat na Azure Functions, který používá Linux za běhu. To je pravděpodobně způsobeno použitím `pip freeze` exportu virtuálního prostředí do requirements.txt z počítače s Windows nebo MacOS během inicializace projektu.
 
-Přečtěte si téma [nahrazení balíčku ekvivalenty](#replace-the-package-with-equivalents) nebo [zpracovávají požadavky. txt](#handcraft-requirementstxt) pro zmírnění rizik.
+Přečtěte si téma [nahrazení balíčku ekvivalenty](#replace-the-package-with-equivalents) nebo [zpracovávají requirements.txt](#handcraft-requirementstxt) pro zmírnění rizik.
 
 ## <a name="mitigate-modulenotfounderror"></a>Zmírnit ModuleNotFoundError
 
@@ -119,19 +118,19 @@ Ujistěte se, že je nainstalovaná nejnovější verze **Docker** i [Azure Func
 
 Projděte si nejnovější verzi balíčku v `https://pypi.org/project/<package-name>` tématu a podívejte se do části **třídění:** oddíl. Balíček by měl být `OS Independent` nebo kompatibilní s `POSIX` `POSIX :: Linux` **operačním systémem**nebo. Programovací jazyk by měl také obsahovat `Python :: 3` , `Python :: 3.6` , `Python :: 3.7` , nebo `Python :: 3.8` .
 
-Pokud jsou tyto správné, můžete balíček aktualizovat na nejnovější verzi tak, že změníte řádek v části `<package-name>~=<latest-version>` požadavky. txt.
+Pokud jsou tyto správné, můžete balíček aktualizovat na nejnovější verzi tak, že změníte řádek `<package-name>~=<latest-version>` v requirements.txt.
 
-### <a name="handcraft-requirementstxt"></a>Zpracovávají požadavky. txt
+### <a name="handcraft-requirementstxt"></a>Zpracovávají requirements.txt
 
 Někteří vývojáři používají `pip freeze > requirements.txt` k vygenerování seznamu balíčků Pythonu pro vývojová prostředí. I když by tato pohodlí měla ve většině případů fungovat, můžou nastat problémy při nasazení různých platforem, jako je například vývoj funkcí místně ve Windows nebo macOS, ale publikování do aplikace Function App, která běží na Linux. V tomto scénáři `pip freeze` může aplikace zavádět neočekávané závislosti nebo závislosti specifické pro operační systém pro vaše místní vývojové prostředí. Tyto závislosti můžou narušit aplikaci funkcí Pythonu při spuštění v systému Linux.
 
-Osvědčeným postupem je ověřit příkaz Import z každého souboru. py ve zdrojovém kódu projektu a pouze vrátit se změnami tyto moduly v souboru. txt požadavky. To zaručuje, že řešení balíčků lze v různých operačních systémech správně zpracovat.
+Osvědčeným postupem je ověřit příkaz Import z každého souboru. py ve zdrojovém kódu projektu a pouze vrátit se změnami tyto moduly v souboru requirements.txt. To zaručuje, že řešení balíčků lze v různých operačních systémech správně zpracovat.
 
 ### <a name="replace-the-package-with-equivalents"></a>Nahradit balíček ekvivalenty
 
 Nejdřív byste se měli podívat na nejnovější verzi balíčku v `https://pypi.org/project/<package-name>` . Tento balíček má obvykle svou vlastní stránku GitHubu, přejít na oddíl **problémy** na GitHubu a vyhledat, zda byl problém vyřešen. Pokud ano, aktualizujte balíček na nejnovější verzi.
 
-V některých případech je možné, že je balíček integrovaný do [standardní knihovny Pythonu](https://docs.python.org/3/library/) (například pathlib). Pokud ano, protože poskytujeme určitou distribuci Pythonu v Azure Functions (Python 3,6, Python 3,7 a Python 3,8), balíček v požadavcích. txt by se měl odebrat.
+V některých případech je možné, že je balíček integrovaný do [standardní knihovny Pythonu](https://docs.python.org/3/library/) (například pathlib). Pokud ano, protože poskytujeme určitou distribuci Pythonu v Azure Functions (Python 3,6, Python 3,7 a Python 3,8), balíček v requirements.txt by měl být odebraný.
 
 Pokud máte ale k problému nějaký problém, který se nevyřešil, a jste na termínu. Doporučujeme udělat si nějakého výzkumu a najít podobný balíček pro váš projekt. Komunita Pythonu vám obvykle poskytne širokou škálu podobných knihoven, které můžete použít.
 

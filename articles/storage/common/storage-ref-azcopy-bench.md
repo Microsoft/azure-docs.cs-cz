@@ -9,10 +9,9 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 40ff6c6c76e255945681e678ef296ffcf9978f61
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485175"
 ---
 # <a name="azcopy-benchmark"></a>srovnávací AzCopy

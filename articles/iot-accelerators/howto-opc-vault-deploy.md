@@ -9,10 +9,9 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307924"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Sestavení a nasazení služby správy certifikátů úložiště OPC
@@ -88,7 +87,7 @@ Po úspěšném nasazení můžete začít používat služby. Viz [Správa slu�
 
 ## <a name="delete-the-services-from-the-subscription"></a>Odstranit služby z předplatného
 
-Zde je uveden postup:
+Jak na to:
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Přejít do skupiny prostředků, ve které byla služba nasazena.

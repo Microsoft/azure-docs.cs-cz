@@ -7,17 +7,16 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 3a813a9b8c2a81a85d1c4a96d5a4da2256832d3b
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84487980"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně ve službě Azure Database for PostgreSQL – Jeden server
 
 Server Azure Database for PostgreSQL můžete vytvořit v jedné ze tří různých cenových úrovní: optimalizováno Basic, Pro obecné účely a paměť. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru PostgreSQL. Server může mít jednu nebo více databází.
 
-|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+|    | **Základní** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 4, fin. 5 | Gen 4, fin. 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +28,7 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
+| Základní | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
 | Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
 | Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
@@ -43,7 +42,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for PostgreSQL. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru PostgreSQL. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
-|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+|    | **Základní** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |

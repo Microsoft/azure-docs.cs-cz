@@ -4,10 +4,9 @@ description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485172"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
@@ -104,9 +103,9 @@ Přihlášení Microsoftu, které jste naposledy použili ve výchozím prohlí�
 Pravděpodobná příčina:
 
 * Prostředek Application Insights pro vaši aplikaci byl odstraněn. ani
-* Klíč instrumentace se v souboru ApplicationInsights. config nastavil nebo změnil úpravou přímo, aniž by se musel aktualizovat soubor projektu.
+* Klíč instrumentace se nastavil nebo změnil v ApplicationInsights.config úpravou přímo, aniž by se musel aktualizovat soubor projektu.
 
-Klíč instrumentace v souboru ApplicationInsights. config ovládá, kde se telemetrie posílá. Řádek v souboru projektu řídí, který prostředek je otevřen při použití příkazu v aplikaci Visual Studio.
+Klíč instrumentace v ApplicationInsights.config řídí, kde se telemetrie posílá. Řádek v souboru projektu řídí, který prostředek je otevřen při použití příkazu v aplikaci Visual Studio.
 
 Opravit
 
@@ -127,14 +126,14 @@ Opravit
   ![](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Na portálu Application Insights otevřete [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md). Data se obvykle zobrazují jako první.
 * Klikněte na tlačítko Aktualizovat. Okno se pravidelně aktualizuje, ale můžete ho také provést ručně. Interval aktualizace je delší pro větší časové rozsahy.
-* Ověřte, zda se klíče instrumentace shodují. V hlavním okně aplikace na portále Application Insights v rozevíracím seznamu **základy** vyhledejte **klíč instrumentace**. Potom v projektu v aplikaci Visual Studio otevřete soubor ApplicationInsights. config a vyhledejte `<instrumentationkey>` . Ověřte, zda jsou oba klíče stejné. Pokud ne:  
+* Ověřte, zda se klíče instrumentace shodují. V hlavním okně aplikace na portále Application Insights v rozevíracím seznamu **základy** vyhledejte **klíč instrumentace**. Potom v projektu v aplikaci Visual Studio otevřete ApplicationInsights.config a vyhledejte `<instrumentationkey>` . Ověřte, zda jsou oba klíče stejné. Pokud ne:  
   * Na portálu klikněte na Application Insights a vyhledejte prostředek aplikace se správným klíčem. ani
   * V aplikaci Visual Studio Průzkumník řešení klikněte pravým tlačítkem myši na projekt a vyberte možnost Application Insights, konfigurovat. Resetujte aplikaci, aby odesílala telemetrii do správného prostředku.
   * Pokud nemůžete najít odpovídající klíče, ověřte, že používáte stejné přihlašovací údaje pro přihlášení v aplikaci Visual Studio jako v portálu.
 * Na [řídicím panelu domů Microsoft Azure](https://portal.azure.com)se podívejte na mapu Service Health. Pokud se zobrazí upozornění, počkejte, až se vrátí do OK, a pak zavřete a znovu otevřete okno aplikace Application Insights.
 * Projděte si také [náš stavový blog](https://blogs.msdn.microsoft.com/servicemap-status/).
 * Napsali jste jakýkoliv kód pro [sadu SDK na straně serveru](../../azure-monitor/app/api-custom-events-metrics.md) , která by mohla změnit klíč instrumentace v `TelemetryClient` instancích nebo v `TelemetryContext` ? Nebo jste napsali [konfiguraci filtru nebo vzorkování](../../azure-monitor/app/api-filtering-sampling.md) , které by mohly vyfiltrovat příliš mnoho?
-* Pokud jste upravovali ApplicationInsights. config, pečlivě zkontrolujte konfiguraci [TelemetryInitializers a TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md). Nesprávně pojmenovaný typ nebo parametr může způsobit, že sada SDK neposílá žádná data.
+* Pokud jste ApplicationInsights.config upravovali, pečlivě zkontrolujte konfiguraci [TelemetryInitializers a TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md). Nesprávně pojmenovaný typ nebo parametr může způsobit, že sada SDK neposílá žádná data.
 
 ## <a name="no-data-on-page-views-browsers-usage"></a><a name="q04"></a>Žádná data v zobrazeních stránky, v prohlížečích, použití
 *Zobrazují se data v grafech doba odezvy serveru a požadavky na server, ale neexistují žádná data v době načítání zobrazení stránky nebo v okně prohlížeče nebo použití.*
@@ -152,9 +151,9 @@ Viz [telemetrie závislostí](../../azure-monitor/app/asp-net-dependencies.md) a
 Údaje o výkonu (CPU, rychlost v/v a tak dále) jsou k dispozici pro [webové služby Java](../../azure-monitor/app/java-collectd.md), [desktopové aplikace Windows](../../azure-monitor/app/windows-desktop.md), [webové aplikace a služby IIS, pokud nainstalujete monitorování stavu](../../azure-monitor/app/monitor-performance-live-website-now.md)a [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md). najdete ho v části nastavení, servery.
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Žádná data (serveru) od publikování aplikace na mém serveru
-* Ověřte, že jste ve skutečnosti zkopírovali všechny společnosti Microsoft. ApplicationInsights knihovny DLL k serveru společně s Microsoft. Diagnostics. instrumentace. Extensions. Intercept. dll
+* Ověřte, že jste ve skutečnosti zkopírovali všechny společnosti Microsoft. ApplicationInsights knihovny DLL do serveru společně s Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
 * V bráně firewall možná budete muset [otevřít některé porty TCP](../../azure-monitor/app/ip-addresses.md).
-* Pokud k odeslání z vaší podnikové sítě používáte proxy server, nastavte [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) v souboru Web. config.
+* Pokud k odeslání z vaší podnikové sítě používáte proxy server, nastavte [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) v Web.config
 * Windows Server 2008: Ujistěte se, že máte nainstalované následující aktualizace: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Zobrazil (a) jsem data, ale zastavila se
@@ -187,7 +186,7 @@ Podle těchto pokynů zaznamenejte protokoly řešení potíží pro vaše rozhr
 
 1. Nainstalujte balíček [Microsoft. ASPNET. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) z NuGet. Verze, kterou nainstalujete, se musí shodovat s aktuálně nainstalovanou verzí nástroje.`Microsoft.ApplicationInsighs`
 
-2. Upravte soubor ApplicationInsights. config tak, aby obsahoval následující:
+2. Upravte soubor applicationinsights.config tak, aby zahrnoval následující:
 
     ```xml
     <TelemetryModules>

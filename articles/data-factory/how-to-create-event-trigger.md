@@ -12,10 +12,9 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84508892"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření triggeru, který spustí kanál v reakci na událost
@@ -73,7 +72,7 @@ V této části se dozvíte, jak vytvořit aktivační událost události v uži
 
     ![Mapování vlastností na parametry kanálu](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-V předchozím příkladu je aktivační událost nakonfigurovaná tak, aby se aktivovala v případě, že se ve složce – testování událostí v kontejnerech ve vzorových událostech vytvoří cesta objektu BLOB končící na. csv. Vlastnosti **FolderPath** a **filename** zachytí umístění nového objektu BLOB. Například když se MoviesDB. csv přidá do cesty Sample-data/Event-Tests, `@trigger().outputs.body.folderPath` má hodnotu `sample-data/event-testing` a `@trigger().outputs.body.fileName` má hodnotu `moviesDB.csv` . Tyto hodnoty jsou namapovány v příkladu na parametry kanálu `sourceFolder` a `sourceFile` lze je použít v rámci kanálu jako `@pipeline().parameters.sourceFolder` a v `@pipeline().parameters.sourceFile` uvedeném pořadí.
+V předchozím příkladu je aktivační událost nakonfigurovaná tak, aby se aktivovala v případě, že se ve složce – testování událostí v kontejnerech ve vzorových událostech vytvoří cesta objektu BLOB končící na. csv. Vlastnosti **FolderPath** a **filename** zachytí umístění nového objektu BLOB. Například při přidání MoviesDB.csv do cesty Sample-data/testování událostí `@trigger().outputs.body.folderPath` má hodnotu `sample-data/event-testing` a `@trigger().outputs.body.fileName` má hodnotu `moviesDB.csv` . Tyto hodnoty jsou namapovány v příkladu na parametry kanálu `sourceFolder` a `sourceFile` lze je použít v rámci kanálu jako `@pipeline().parameters.sourceFolder` a v `@pipeline().parameters.sourceFile` uvedeném pořadí.
 
 ## <a name="json-schema"></a>Schéma JSON
 
@@ -81,11 +80,11 @@ Následující tabulka poskytuje přehled prvků schématu, které souvisejí s 
 
 | **Element JSON** | **Popis** | **Typ** | **Povolené hodnoty** | **Požadováno** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **oboru** | ID prostředku Azure Resource Manager účtu úložiště. | Řetězec | ID Azure Resource Manager | Ano |
+| **oboru** | ID prostředku Azure Resource Manager účtu úložiště. | Řetězec | ID Azure Resource Manager | Yes |
 | **událost** | Typ událostí, které způsobují, že se aktivační událost aktivuje. | Pole    | Microsoft. Storage. BlobCreated, Microsoft. Storage. BlobDeleted | Ano, libovolná kombinace těchto hodnot. |
 | **blobPathBeginsWith** | Cesta objektu BLOB musí začínat vzorem poskytnutým pro aktivaci triggeru. Například `/records/blobs/december/` aktivuje Trigger jenom pro objekty blob ve složce v `december` `records` kontejneru. | Řetězec   | | Je nutné zadat hodnotu alespoň pro jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith` . |
 | **blobPathEndsWith** | Cesta objektu BLOB musí končit vzorem poskytnutým pro aktivaci triggeru. Například `december/boxes.csv` aktivuje Trigger jenom pro objekty BLOB s názvem `boxes` ve `december` složce. | Řetězec   | | Je nutné zadat hodnotu alespoň pro jednu z těchto vlastností: `blobPathBeginsWith` nebo `blobPathEndsWith` . |
-| **ignoreEmptyBlobs** | Bez ohledu na to, zda objekty BLOB s nulovým bajtem budou aktivovat spuštění kanálu. Ve výchozím nastavení je tato hodnota nastavena na true (pravda). | Logická hodnota | true nebo false | Ne |
+| **ignoreEmptyBlobs** | Bez ohledu na to, zda objekty BLOB s nulovým bajtem budou aktivovat spuštění kanálu. Ve výchozím nastavení je tato hodnota nastavena na true (pravda). | Logická hodnota | true nebo false | No |
 
 ## <a name="examples-of-event-based-triggers"></a>Příklady triggerů založených na událostech
 

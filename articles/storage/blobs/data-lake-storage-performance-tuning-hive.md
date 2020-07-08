@@ -9,10 +9,9 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 9a54565f320ae45a4a8297a40027c5e6b3b25202
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465962"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: podregistr, & HDInsight Azure Data Lake Storage Gen2
@@ -37,7 +36,7 @@ Tady je nejdůležitější nastavení pro optimalizaci pro zlepšení výkonu D
 
 * **TEZ. Grouping. Max-Size** – maximální velikost každého mapování
 
-* **podregistr. Exec. snižoval. bytes. per.** – velikost každého zmenšení
+* **hive.exec. snižovalo. bajtů. per.** – velikost každého zmenšení
 
 **podregistr. TEZ. Container. Size** – velikost kontejneru určuje, kolik paměti je k dispozici pro každý úkol.  Toto je hlavní vstup pro řízení souběžnosti v podregistru.  
 
@@ -45,11 +44,11 @@ Tady je nejdůležitější nastavení pro optimalizaci pro zlepšení výkonu D
 
 **TEZ. Grouping. Max-Size** – parametr umožňuje nastavit maximální velikost každého mapovače.  Pokud počet mapovačů, které tez zvolí, je větší než hodnota tohoto parametru, pak tez použije nastavenou hodnotu.
 
-**podregistr. Exec. snižoval. bytes. per. snižoval** – tento parametr nastavuje velikost každého zmenšení.  Ve výchozím nastavení má každý zpomalení 256 MB.  
+**hive.exec. snižoval. bytes. per.** – tento parametr nastaví velikost každého zmenšení.  Ve výchozím nastavení má každý zpomalení 256 MB.  
 
 ## <a name="guidance"></a>Pokyny
 
-**Nastavit podregistr. Exec. snižovalo. bytes. per.** – výchozí hodnota je vhodná, když jsou data nekomprimovaná.  Pro komprimovaná data byste měli zmenšit velikost zmenšení.  
+**Nastavit hive.exec.. bytes. per.** – výchozí hodnota je vhodná, pokud jsou data nekomprimovaná.  Pro komprimovaná data byste měli zmenšit velikost zmenšení.  
 
 **Nastavení podregistru. TEZ. Container. Size** – v každém uzlu je paměť určena pomocí příze. NodeManager. Resource. Memory-MB a měla by být ve výchozím nastavení správně nastavena v clusteru HDI.  Další informace o nastavení vhodné paměti v PŘÍZi najdete v tomto [příspěvku](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
 

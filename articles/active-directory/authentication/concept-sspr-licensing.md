@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 608c8206227a129a320a560e752cf31a4843dca3
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84321678"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licenční požadavky pro Azure Active Directory Samoobslužné resetování hesla
@@ -30,7 +29,7 @@ SSPR má licenci na uživatele. Aby bylo možné zajistit dodržování předpis
 
 Následující tabulka popisuje různé scénáře SSPR pro změnu hesla, resetování nebo místní zpětný zápis a které skladové položky tuto funkci poskytují.
 
-| Příznak | Azure AD Free | Microsoft 365 Business Standard | Microsoft 365 Business Premium | Azure AD Premium P1 nebo P2 |
+| Funkce | Azure AD Free | Microsoft 365 Business Standard | Microsoft 365 Business Premium | Azure AD Premium P1 nebo P2 |
 | --- |:---:|:---:|:---:|:---:|
 | **Změna hesla jenom pro Cloud uživatele**<br />Když uživatel ve službě Azure AD zná heslo a chce ho změnit na něco nového. | ● | ● | ● | ● |
 | **Resetování hesla uživatele jenom pro Cloud**<br />Když uživatel v Azure AD zapomněl heslo a potřebuje ho resetovat. | | ● | ● | ● |

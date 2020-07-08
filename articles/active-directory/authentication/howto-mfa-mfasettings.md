@@ -13,10 +13,9 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 3c16724dc3eb99549b692df93ee6cd5f1fc0bf30
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484038"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurace nastavení služby Azure Multi-Factor Authentication
@@ -25,7 +24,7 @@ Pokud chcete přizpůsobit činnost koncového uživatele pro Azure Multi-Factor
 
 V Azure Portal jsou k dispozici následující nastavení Azure Multi-Factor Authentication:
 
-| Příznak | Description |
+| Funkce | Description |
 | ------- | ----------- |
 | [Uzamčení účtu](#account-lockout) | Dočasné uzamčení účtů pomocí Azure Multi-Factor Authentication v případě, že je na řádku příliš mnoho zamítnutých pokusů o ověření. Tato funkce se vztahuje jenom na uživatele, kteří do ověřování zadají kód PIN. (MFA Server) |
 | [Blokovat/odblokovat uživatele](#block-and-unblock-users) | Zablokovat konkrétním uživatelům, aby mohli přijímat žádosti o Multi-Factor Authentication Azure Všechny pokusy o ověření zablokovaných uživatelů se automaticky zamítnou. Uživatelé zůstávají zablokovaný po dobu 90 dnů od doby, kdy jsou zablokované nebo jsou ručně odblokované. |
@@ -244,7 +243,7 @@ Pokud vaše organizace nasadí rozšíření serveru NPS za účelem poskytován
 
 | Typ tenanta Azure AD | Možnosti funkcí důvěryhodné IP adresy |
 |:--- |:--- |
-| Spravovaní |**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které můžou obejít dvoustupňové ověřování pro uživatele, kteří se přihlásí z intranetu společnosti. Lze nakonfigurovat maximálně 50 důvěryhodných rozsahů IP adres.|
+| Spravované |**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které můžou obejít dvoustupňové ověřování pro uživatele, kteří se přihlásí z intranetu společnosti. Lze nakonfigurovat maximálně 50 důvěryhodných rozsahů IP adres.|
 | Federovaní |**Všichni federované uživatelé**: všichni federované uživatelé, kteří se přihlásí v rámci organizace, můžou obejít dvoustupňové ověřování. Uživatel obejít ověřování pomocí deklarace identity, která je vydaná Active Directory Federation Services (AD FS) (AD FS).<br/>**Konkrétní rozsah IP adres**: Správci URČUJÍ rozsah IP adres, které můžou obejít dvoustupňové ověřování pro uživatele, kteří se přihlásí z intranetu společnosti. |
 
 Důvěryhodná IP adresa funguje jenom v intranetu společnosti. Pokud vyberete možnost **všechny federované uživatele** a uživatel se přihlásí mimo intranet společnosti, musí se uživatel ověřit pomocí dvoustupňového ověřování. Proces je stejný i v případě, že uživatel prezentuje AD FS deklarací identity.

@@ -9,10 +9,9 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 0c9ee65a50b9fff13fca7a1989e7bb8801e5f621
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465180"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Změna podpory kanálu v Azure Blob Storage (Preview)
@@ -108,7 +107,7 @@ Pomocí šablony Azure Resource Manager můžete povolit kanál změn na svém s
 
 1. V Azure Portal klikněte na možnost **vytvořit prostředek**.
 
-2. Do pole **Hledat na Marketplace** zadejte **template deployment** a stiskněte **ENTER**.
+2. V **části Hledat na Marketplace**zadejte **šablonu Deployment**a potom stiskněte **ENTER**.
 
 3. Zvolte **[nasadit vlastní šablonu](https://portal.azure.com/#create/Microsoft.Template)** a pak **v editoru zvolte sestavit vlastní šablonu**.
 
@@ -323,7 +322,7 @@ Tato část popisuje známé problémy a podmínky v současnosti ve verzi Publi
 - Změny záznamů událostí pro jednu změnu se můžou ve vašem kanálu změn objevit více než jednou.
 - Ještě nemůžete spravovat dobu života souborů protokolu kanálu změn nastavením časových zásad uchovávání na základě času a objekty blob nemůžete odstranit.
 - `url`Vlastnost souboru protokolu je nyní vždy prázdná.
-- `LastConsumable`Vlastnost souboru segmentes. JSON neobsahuje seznam velmi prvního segmentu, který dokončí kanál změn. K tomuto problému dochází až po finalizaci prvního segmentu. Všechny následné segmenty po první hodiny jsou přesně zachyceny ve `LastConsumable` Vlastnosti.
+- `LastConsumable`Vlastnost segments.jsv souboru neobsahuje seznam velmi prvního segmentu, který dokončí kanál změny. K tomuto problému dochází až po finalizaci prvního segmentu. Všechny následné segmenty po první hodiny jsou přesně zachyceny ve `LastConsumable` Vlastnosti.
 - V současné době nemůžete při volání rozhraní ListContainers API zobrazit kontejner **$blobchangefeed** a kontejner se nezobrazuje Azure Portal nebo Průzkumník služby Storage. Obsah můžete zobrazit pomocí volání rozhraní ListBlobs API přímo v kontejneru $blobchangefeed.
 - Účty úložiště, které dříve iniciovaly [převzetí služeb při selhání účtu](../common/storage-disaster-recovery-guidance.md) , můžou mít problémy se souborem protokolu, který se nezobrazuje. Při převzetí služeb při selhání v budoucnu může být soubor protokolu ovlivněn ve verzi Preview.
 

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84308774"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Správa certifikátů na zařízení IoT Edge
@@ -69,7 +68,7 @@ Pokud jste například použili ukázkové skripty k [Vytvoření ukázkových c
    * Systému`C:\ProgramData\iotedge\config.yaml`
    * Linux`/etc/iotedge/config.yaml`
 
-1. V souboru config. yaml nastavte vlastnosti **certifikátu** na cestu k identifikátoru URI souboru certifikátu a souborů klíčů na zařízení IoT Edge. Odeberte `#` znak předtím, než vlastnosti certifikátu Odkomentujte čtyři řádky. Ujistěte se, že **certifikáty:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny o dva mezery. Například:
+1. V souboru config. yaml nastavte vlastnosti **certifikátu** na cestu k identifikátoru URI souboru certifikátu a souborů klíčů na zařízení IoT Edge. Odeberte `#` znak předtím, než vlastnosti certifikátu Odkomentujte čtyři řádky. Ujistěte se, že **certifikáty:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny o dva mezery. Příklad:
 
    * Windows:
 

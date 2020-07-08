@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
 ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465214"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Integrace statického webu s Azure CDN
@@ -53,7 +52,7 @@ Azure CDN pro váš statický Web můžete povolit přímo z účtu úložiště
 
     ![Snímek obrazovky znázorňující přehled koncového bodu CDN](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 
-1. Po zřízení koncového bodu CDN se navigace do koncového bodu CDN zobrazuje obsah souboru index. html, který jste předtím nahráli na váš statický Web.
+1. Po zřízení koncového bodu CDN se navigace do koncového bodu CDN zobrazuje s obsahem index.html, který jste dříve nahráli na váš statický Web.
 
 1. Pokud chcete zkontrolovat nastavení zdroje pro koncový bod CDN, přejděte na **počátek** v části **Nastavení** pro koncový bod CDN. Uvidíte, že pole **Typ původu** je nastavené na *vlastní zdroj* a že se v poli **původní název hostitele** zobrazuje váš koncový bod statického webu.
 

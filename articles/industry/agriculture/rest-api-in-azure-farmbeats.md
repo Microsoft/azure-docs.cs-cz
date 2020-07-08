@@ -6,10 +6,9 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84488031"
 ---
 # <a name="references"></a>Odkazy
@@ -40,7 +39,7 @@ Zařízení  | Zařízení odpovídá fyzickému zařízení, které je ve farm�
 DeviceModel  | DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, který je buď bránou, nebo uzlem.
 Elektrické  | Senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
 SensorModel  | SensorModel odpovídá metadatům snímače, jako je výrobce, typ snímače, který je buď analogový, nebo digitální, a měření snímače, například okolní teplota a tlak.
-Telemetrická data  | Telemetrie nabízí možnost číst zprávy telemetrie pro určitý senzor a časový rozsah.
+Telemetrie  | Telemetrie nabízí možnost číst zprávy telemetrie pro určitý senzor a časový rozsah.
 Úloha  | Úloha odpovídá jakémukoli pracovnímu postupu aktivit, které jsou spuštěny v systému FarmBeats, aby získala požadovaný výstup. Každá úloha je přidružená k ID úlohy a typu úlohy.
 JobType  | JobType odpovídá různým typům úloh, které systém podporuje. Jsou zahrnuty typy úloh definovaných systémem a uživatelem definovaných typů.
 ExtendedType  | ExtendedType odpovídá seznamu typů systémem a uživatelem definovaných v systému. ExtendedType pomáhá nastavit nový senzor, scén nebo typ souboru scény v systému FarmBeats.
@@ -162,7 +161,7 @@ K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registra
     - Vraťte se zpět na **Přehled**a vyberte odkaz vedle **možnosti spravovat aplikaci v místním adresáři**.
     - Přejít na **vlastnosti** a zachytit **ID objektu**.
 
-4. Přejít do DataHub Swagger (https:// <yourdatahub> . azurewebsites.NET/Swagger/index.html) a udělejte toto:
+4. Přejít do DataHub Swagger (https:// <yourdatahub> . azurewebsites.net/swagger/index.html) a proveďte následující kroky:
     - Přejít na **rozhraní RoleAssignment API**.
     - Proveďte příspěvek pro vytvoření objektu **RoleAssignment** pro **ID objektu** , který jste právě vytvořili.
  

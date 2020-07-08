@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309777"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
@@ -199,7 +198,7 @@ A. Poskytněte zpětnou vazbu vytvořením problému GitHubu na adrese https://a
 
 **Otázka: podporuje konzola sériového kopírování/vkládání?**
 
-A. Yes. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
+A. Ano. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
 
 **Otázka. kdo může povolit nebo zakázat sériovou konzolu pro moje předplatné?**
 

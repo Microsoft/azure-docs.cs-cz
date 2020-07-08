@@ -4,10 +4,9 @@ description: Průvodce odstraňováním potíží – monitorování živých ap
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484786"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
@@ -22,13 +21,13 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 **Přidal (a) jsem Application Insights úspěšně a spustil jsem aplikaci, ale na portálu se nikdy nezobrazila žádná data.**
 
 * Počkejte minutu a klikněte na tlačítko Aktualizovat. Grafy se pravidelně aktualizují, ale můžete je také aktualizovat ručně. Interval aktualizace závisí na časovém rozsahu grafu.
-* Ověřte, že máte klíč instrumentace definovaný v souboru ApplicationInsights. XML (ve složce Resources ve vašem projektu), nebo nakonfigurovaný jako proměnná prostředí.
+* Ověřte, zda je v souboru ApplicationInsights.xml definován klíč instrumentace (ve složce Resources ve vašem projektu) nebo nakonfigurován jako proměnná prostředí.
 * Ověřte, že `<DisableTelemetry>true</DisableTelemetry>` soubor XML neobsahuje žádný uzel.
 * V bráně firewall možná budete muset pro odchozí přenosy na dc.services.visualstudio.com otevřít porty TCP 80 a 443. Zobrazit [úplný seznam výjimek brány firewall](../../azure-monitor/app/ip-addresses.md)
 * Na panelu Microsoft Azure Start se podívejte na mapu stavu služby. Pokud se zobrazí upozornění, počkejte, až se vrátí do OK, a pak zavřete a znovu otevřete okno aplikace Application Insights.
-* [Zapněte protokolování](#debug-data-from-the-sdk) přidáním `<SDKLogger />` elementu pod kořenovým uzlem v souboru ApplicationInsights. XML (ve složce Resources v projektu) a vyhledejte položky s AI: informace, varování/chyba pro všechny podezřelé protokoly. 
-* Ujistěte se, že soubor ApplicationInsights. XML byl úspěšně načten sadou Java SDK, a to tak, že prohlíží výstupní zprávy konzoly pro příkaz "konfigurační soubor byl úspěšně nalezen".
-* Pokud konfigurační soubor nebyl nalezen, zkontrolujte výstupní zprávy, zda je prohledáván konfigurační soubor, a ujistěte se, že ApplicationInsights. XML je umístěn v jednom z těchto umístění hledání. Jako pravidlo pro palec můžete umístit konfigurační soubor poblíž Application Insights SDK jar. Například: v Tomcat by to znamenalo složku WEB-INF/Classes. Během vývoje můžete umístit ApplicationInsights. XML do složky Resources vašeho webového projektu.
+* [Zapněte protokolování](#debug-data-from-the-sdk) přidáním `<SDKLogger />` prvku pod kořenovým uzlem v souboru ApplicationInsights.xml (ve složce Resources (prostředky) v projektu) a vyhledejte položky s AI: informace, varování/chyba pro všechny podezřelé protokoly. 
+* Ujistěte se, že sada Java SDK úspěšně zavedla správný soubor ApplicationInsights.xml. Podívejte se na výstupní zprávy konzoly pro příkaz "konfigurační soubor byl úspěšně nalezen".
+* Pokud konfigurační soubor nebyl nalezen, zkontrolujte výstupní zprávy, zda je prohledáván konfigurační soubor, a ujistěte se, že ApplicationInsights.xml je umístěn v jednom z těchto umístění hledání. Jako pravidlo pro palec můžete umístit konfigurační soubor poblíž Application Insights SDK jar. Například: v Tomcat by to znamenalo složku WEB-INF/Classes. Během vývoje můžete umístit ApplicationInsights.xml do složky Resources vašeho webového projektu.
 * Podívejte se také na [stránku problémy s GitHubem](https://github.com/Microsoft/ApplicationInsights-Java/issues) , kde najdete známé problémy se sadou SDK.
 * Abyste se vyhnuli jakýmkoli problémům se konflikty verzí, zajistěte, aby používaly stejnou verzi Application Insights Core, webu, agenta a přihlášení.
 
@@ -45,7 +44,7 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 
 ### <a name="java-agent-cannot-capture-dependency-data"></a>Agent Java nemůže zachytit data závislostí.
 * Nakonfigurovali jste agenta Java pomocí následujícího [Nastavení agenta Java](java-agent.md) ?
-* Zajistěte, aby byl jar agenta Java a soubor AI-Agent. XML umístěny do stejné složky.
+* Zajistěte, aby byl jar agenta Java i soubor AI-Agent.xml umístěn ve stejné složce.
 * Ujistěte se, že závislost, kterou se pokoušíte automaticky shromažďovat, je podporovaná pro automatické shromažďování. V současné době podporujeme pro kolekci závislostí Redis jenom MySQL, MsSQL, Oracle DB a Azure cache.
 
 ## <a name="no-usage-data"></a>Žádná data o využití
@@ -71,7 +70,7 @@ V kódu:
 
 **Ani**
 
-Aktualizujte soubor ApplicationInsights. XML (ve složce Resources ve vašem projektu). Do kořenového uzlu přidejte následující:
+Aktualizujte ApplicationInsights.xml (ve složce Resources ve vašem projektu). Do kořenového uzlu přidejte následující:
 
 ```XML
 
@@ -86,15 +85,15 @@ Pomocí metody XML je nutné restartovat aplikaci při změně hodnoty.
 * [Získejte klíč instrumentace nového prostředku.][java]
 * Pokud jste do projektu přidali Application Insights pomocí Azure Toolkit for Eclipse, klikněte pravým tlačítkem myši na svůj webový projekt, vyberte položku **Azure**, **nakonfigurujte Application Insights**a změňte klíč.
 * Pokud jste klíč instrumentace nakonfigurovali jako proměnnou prostředí, aktualizujte hodnotu proměnné prostředí pomocí New iKey.
-* V opačném případě aktualizujte klíč v souboru ApplicationInsights. XML ve složce Resources v projektu.
+* V opačném případě aktualizujte klíč v ApplicationInsights.xml ve složce Resources v projektu.
 
 ## <a name="debug-data-from-the-sdk"></a>Ladění dat ze sady SDK
 
 **Jak můžu zjistit, co dělá sada SDK?**
 
-Pokud chcete získat další informace o tom, co se děje v rozhraní API, přidejte do `<SDKLogger/>` kořenového uzlu konfiguračního souboru ApplicationInsights. XML.
+Pokud chcete získat další informace o tom, co se děje v rozhraní API, přidejte do `<SDKLogger/>` kořenového uzlu konfiguračního souboru ApplicationInsights.xml.
 
-### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
 
 Můžete také instruovat protokolovací nástroj na výstup do souboru:
 
@@ -125,7 +124,7 @@ azure.application-insights.logger.level=trace
 
 ### <a name="java-agent"></a>Agent Java
 
-Pokud chcete povolit protokolování agenta JVM, proveďte aktualizaci [souboru AI-agent. XML](java-agent.md):
+Pokud chcete povolit protokolování agenta JVM, aktualizujte [souborAI-Agent.xml](java-agent.md):
 
 ```xml
 <AgentLogger type="FILE"><!-- or "CONSOLE" to print to stderr -->

@@ -9,10 +9,9 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: 602053f7a52b9a46fa797bd1146cf63c02bb60d2
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465350"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2
@@ -63,7 +62,7 @@ Cluster An HDInsight se dodává s nástrojem DistCp, který se dá použít ke 
 
 Vzhledem k tomu, že je nejnižší členitost DistCp jediným souborem, je nastavení maximálního počtu souběžných kopií nejdůležitějším parametrem pro jejich optimalizaci proti Data Lake Storage. Počet souběžných kopií se rovná parametru počet mapovačů (**m**) na příkazovém řádku. Tento parametr určuje maximální počet mapovačů, které se použijí ke kopírování dat. Výchozí hodnota je 20.
 
-**Případě**
+**Příklad**
 
     hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
@@ -77,7 +76,7 @@ Tady je několik rad, kterými se můžete řídit.
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
-**Případě**
+**Příklad**
 
 Předpokládejme, že máte cluster s 4x D14v2s a snažíte se přenést 10 TB dat z 10 různých složek. Každá složka obsahuje různé objemy dat a velikosti souborů v jednotlivých složkách se liší.
 

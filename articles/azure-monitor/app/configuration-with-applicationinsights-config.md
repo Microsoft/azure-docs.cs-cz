@@ -1,27 +1,26 @@
 ---
-title: Odkaz na ApplicationInsights. config – Azure | Microsoft Docs
+title: Odkaz na ApplicationInsights.config – Azure | Microsoft Docs
 description: Povolte nebo zakažte moduly shromažďování dat a přidejte čítače výkonu a další parametry.
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
 ms.openlocfilehash: dde2cbf227f085b751f6ad22e1f2fa95f38c5915
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485136"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Sada Application Insights .NET SDK se skládá z řady balíčků NuGet. [Základní balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro posílání telemetrie do Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují *moduly* telemetrie a *Inicializátory* pro automatické sledování telemetrie z vaší aplikace a jejího kontextu. Úpravou konfiguračního souboru můžete povolit nebo zakázat moduly a Inicializátory telemetrie a nastavit parametry pro některé z nich.
 
-Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml` , v závislosti na typu vaší aplikace. Automaticky se přidá do projektu při [instalaci většiny verzí sady SDK][start]. Ve výchozím nastavení se při použití automatizovaného prostředí z projektů šablon sady Visual Studio, které podporují **přidání > telemetrie Application Insights**, vytvoří soubor ApplicationInsights. config v kořenové složce projektu a v případě, že je do složky bin zkopírována hodnota splněné. Také se přidá do webové aplikace [monitorování stavu na serveru služby IIS][redfield]. Konfigurační soubor se ignoruje, pokud se použije [rozšíření pro web Azure](azure-web-apps.md) nebo [rozšíření pro virtuální počítač Azure a sadu škálování virtuálního počítače](azure-vm-vmss-apps.md) .
+Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml` , v závislosti na typu vaší aplikace. Automaticky se přidá do projektu při [instalaci většiny verzí sady SDK][start]. Ve výchozím nastavení, při použití automatizovaného prostředí z projektů šablon sady Visual Studio, které podporují **přidání > telemetrie Application Insights**, se soubor ApplicationInsights.config vytvoří v kořenové složce projektu a při jeho splnění se zkopíruje do složky bin. Také se přidá do webové aplikace [monitorování stavu na serveru služby IIS][redfield]. Konfigurační soubor se ignoruje, pokud se použije [rozšíření pro web Azure](azure-web-apps.md) nebo [rozšíření pro virtuální počítač Azure a sadu škálování virtuálního počítače](azure-vm-vmss-apps.md) .
 
 Pro řízení [sady SDK na webové stránce][client]není k dispozici odpovídající soubor.
 
 Tento dokument popisuje oddíly, které vidíte v konfiguračním souboru, jak ovládají součásti sady SDK a které balíčky NuGet tyto součásti načítají.
 
 > [!NOTE]
-> Instrukce ApplicationInsights. config a. XML se nevztahují na .NET Core SDK. Pokud chcete konfigurovat aplikace .NET Core, postupujte podle pokynů v [tomto](../../azure-monitor/app/asp-net-core.md) průvodci.
+> Pokyny ApplicationInsights.config a. XML se nevztahují na .NET Core SDK. Pokud chcete konfigurovat aplikace .NET Core, postupujte podle pokynů v [tomto](../../azure-monitor/app/asp-net-core.md) průvodci.
 
 ## <a name="telemetry-modules-aspnet"></a>Moduly telemetrie (ASP.NET)
 Každý modul telemetrie shromažďuje konkrétní typ dat a používá základní rozhraní API k posílání dat. Moduly jsou nainstalovány různými balíčky NuGet, které také přidávají požadované řádky do souboru. config.
@@ -88,7 +87,7 @@ Oznamuje [dobu odezvy a kód výsledku](../../azure-monitor/app/asp-net.md) pož
 ### <a name="microsoftapplicationinsights"></a>Microsoft. ApplicationInsights
 Balíček Microsoft. ApplicationInsights poskytuje [základní rozhraní API](https://msdn.microsoft.com/library/mt420197.aspx) sady SDK. Ostatní moduly telemetrie tuto možnost používají a můžete [je také použít k definování vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md).
 
-* V souboru ApplicationInsights. config není žádná položka.
+* V ApplicationInsights.config není žádný záznam.
 * Balíček NuGet [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) Pokud nainstalujete jenom tento NuGet, nevytvoří se žádný soubor. config.
 
 ## <a name="telemetry-channel"></a>Kanál telemetrie
@@ -231,7 +230,7 @@ Tato třída má volitelnou vlastnost `ProfileQueryEndpoint` .
 Ve výchozím nastavení je tato hodnota nastavena na `https://dc.services.visualstudio.com/api/profiles/{0}/appId` .
 Pokud pro tuto konfiguraci potřebujete nakonfigurovat proxy server, doporučujeme, abyste použili proxy základní adresu a včetně "/API/Profiles/ {0} /appId". Všimněte si, že znak {0} "" je nahrazen za běhu na žádost s klíčem instrumentace.
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace prostřednictvím ApplicationInsights. config:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace prostřednictvím ApplicationInsights.config:
 ```xml
 <ApplicationInsights>
     ...
@@ -255,7 +254,7 @@ Tato třída má vlastnost `Defined` , která je slovníkem<řetězec, řetězec
 
 Tato třída má volitelnou vlastnost, `Next` která se dá použít ke konfiguraci jiného poskytovatele, který se použije, když se požaduje klíč instrumentace, který ve vaší konfiguraci neexistuje.
 
-#### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace prostřednictvím ApplicationInsights. config:
+#### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace prostřednictvím ApplicationInsights.config:
 ```xml
 <ApplicationInsights>
     ...

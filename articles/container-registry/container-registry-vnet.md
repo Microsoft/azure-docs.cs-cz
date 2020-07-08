@@ -4,10 +4,9 @@ description: Omezte přístup ke službě Azure Container Registry pomocí konco
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 0f320bb86549c801711cafdbce4500ff7737cb89
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84509283"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Omezení přístupu k registru kontejneru pomocí koncového bodu služby ve službě Azure Virtual Network

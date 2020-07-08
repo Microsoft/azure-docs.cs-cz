@@ -12,10 +12,9 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c7de0fdf6a22b1414be297b6958841ba5c251c4b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309216"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojení podřízeného zařízení k bráně služby Azure IoT Edge
@@ -130,9 +129,9 @@ Před použitím ukázek na úrovni aplikace jsou připravené dvě věci:
 
 V této části najdete ukázkovou aplikaci pro připojení klienta zařízení Azure IoT NodeJS k bráně IoT Edge. V případě aplikací NodeJS je nutné na úrovni aplikace nainstalovat certifikát kořenové certifikační autority, jak je znázorněno zde. NodeJS aplikace nepoužívají úložiště certifikátů systému.
 
-1. Získejte ukázku pro **edge_downstream_device. js** ze [sady SDK pro zařízení Azure IoT pro Node. js Samples](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples).
+1. Získejte ukázku pro **edge_downstream_device.js** ze [sady SDK pro zařízení Azure IoT pro Node.js ukázkové úložiště](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples).
 2. Ujistěte se, že máte všechny požadavky na spuštění ukázky, a to kontrolou souboru **Readme.MD** .
-3. V souboru edge_downstream_device. js aktualizujte proměnné **ConnectionString** a **edge_ca_cert_path** .
+3. V souboru edge_downstream_device.js aktualizujte proměnné **ConnectionString** a **edge_ca_cert_path** .
 4. Pokyny, jak spustit ukázku na vašem zařízení, najdete v dokumentaci k sadě SDK.
 
 Pro pochopení ukázky, kterou používáte, je následující fragment kódu způsob, jakým klientská sada SDK čte soubor certifikátu a používá ho k navázání zabezpečeného připojení TLS:
@@ -151,7 +150,7 @@ V této části se seznámíte s ukázkovou aplikací pro připojení klienta za
 
 1. Získejte ukázku pro **EdgeDownstreamDevice** ze [složky ukázek rozhraní .NET IoT Edge](https://github.com/Azure/iotedge/tree/master/samples/dotnet/EdgeDownstreamDevice).
 2. Ujistěte se, že máte všechny požadavky na spuštění ukázky, a to kontrolou souboru **Readme.MD** .
-3. V souboru **Properties/launchSettings. JSON** aktualizujte proměnné **DEVICE_CONNECTION_STRING** a **CA_CERTIFICATE_PATH** . Pokud chcete použít certifikát nainstalovaný v úložišti důvěryhodných certifikátů v hostitelském systému, ponechte tuto proměnnou prázdnou.
+3. V okně **vlastnosti/launchSettings.jsv** souboru aktualizujte proměnné **DEVICE_CONNECTION_STRING** a **CA_CERTIFICATE_PATH** . Pokud chcete použít certifikát nainstalovaný v úložišti důvěryhodných certifikátů v hostitelském systému, ponechte tuto proměnnou prázdnou.
 4. Pokyny, jak spustit ukázku na vašem zařízení, najdete v dokumentaci k sadě SDK.
 
 Chcete-li programově nainstalovat důvěryhodný certifikát do úložiště certifikátů prostřednictvím aplikace .NET, přečtěte si funkci **InstallCACert ()** v souboru **EdgeDownstreamDevice/program.cs** . Tato operace je idempotentní, takže ji můžete spustit vícekrát se stejnými hodnotami, a to bez dalšího efektu.

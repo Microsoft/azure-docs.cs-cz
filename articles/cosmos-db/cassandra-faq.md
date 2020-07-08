@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
 ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84449732"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API Cassandra v Azure Cosmos DB
@@ -109,7 +108,7 @@ Neexistuje žádný fyzický limit počtu prostorů klíčů, protože se jedná
 
 ### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>Můžu po spuštění z normální tabulky dostat spoustu dat?
 
-Yes. Za předpokladu stejnoměrně distribuovaných oddílů je kapacita úložiště automaticky spravovaná a při doručování do více dat se zvyšuje. Takže můžete bez obav naimportovat tolik dat, kolik potřebujete, aniž byste museli spravovat a zřizovat uzly a další. Pokud však očekáváte hodně bezprostředního nárůstu dat, je vhodnější přímo [zřídit předpokládanou propustnost](set-throughput.md) , a to ani začít rychleji a okamžitě zvýšit.
+Ano. Za předpokladu stejnoměrně distribuovaných oddílů je kapacita úložiště automaticky spravovaná a při doručování do více dat se zvyšuje. Takže můžete bez obav naimportovat tolik dat, kolik potřebujete, aniž byste museli spravovat a zřizovat uzly a další. Pokud však očekáváte hodně bezprostředního nárůstu dat, je vhodnější přímo [zřídit předpokládanou propustnost](set-throughput.md) , a to ani začít rychleji a okamžitě zvýšit.
 
 ### <a name="can-i-use-yaml-file-settings-to-configure-api-behavior"></a>Můžu použít nastavení souboru YAML ke konfiguraci chování rozhraní API?
 
@@ -169,7 +168,7 @@ Pro účet můžete přidat tolik oblastí, kolik chcete, a určit, kde při př
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Má rozhraní API Cassandra index všechny atributy entity ve výchozím nastavení?
 
-No. Rozhraní API Cassandra podporuje [sekundární indexy](cassandra-secondary-index.md), které se chovají podobně jako Apache Cassandra. Rozhraní API ve výchozím nastavení neindexuje každý atribut.  
+Ne. Rozhraní API Cassandra podporuje [sekundární indexy](cassandra-secondary-index.md), které se chovají podobně jako Apache Cassandra. Rozhraní API ve výchozím nastavení neindexuje každý atribut.  
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Můžu novou rozhraní API Cassandra sadu SDK použít lokálně s emulátorem?

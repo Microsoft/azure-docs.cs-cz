@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
 ms.openlocfilehash: a2fe0ffd5f8ac801d15dc08d027c9442c57ef2b9
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84457467"
 ---
 # <a name="create-system-topics-in-azure-event-grid-using-resource-manager-templates"></a>Vytváření systémových témat v Azure Event Grid pomocí šablon Správce prostředků

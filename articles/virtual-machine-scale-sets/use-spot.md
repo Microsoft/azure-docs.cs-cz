@@ -10,10 +10,9 @@ ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
 ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84310559"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure na místě pro Virtual Machine Scale Sets 
@@ -44,7 +43,7 @@ Uživatelé se můžou přihlásit k přijímání oznámení v rámci virtuáln
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Nasazení virtuálních počítačů na místě v sadách škálování
 
 Pokud chcete nasadit virtuální počítače na místě v sadě škálování, můžete nastavit příznak nové *priority* tak, aby byl *bodový*. Všechny virtuální počítače ve vaší sadě škálování budou nastavené na bodové. Pokud chcete vytvořit sadu škálování s virtuálními počítači, použijte jednu z následujících metod:
-- [portál Azure](#portal)
+- [Azure Portal](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Šablony Azure Resource Manageru](#resource-manager-templates)
@@ -156,11 +155,11 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 | Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
 |------------------------------|-----------------------------------|
-| Smlouva Enterprise         | Ano                               |
-| Pay As You Go                | Ano                               |
+| Smlouva Enterprise         | Yes                               |
+| Pay As You Go                | Yes                               |
 | Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Výhody                     | Není k dispozici                     |
-| Financovan                    | Ano                               |
+| Financovan                    | Yes                               |
 | Bezplatná zkušební verze                   | Není k dispozici                     |
 
 

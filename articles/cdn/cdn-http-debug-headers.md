@@ -15,10 +15,9 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343016"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC – ladění hlaviček protokolu HTTP pro modul pravidel Azure CDN
@@ -41,7 +40,7 @@ X-EC-ladění: x-EC-check-Cached | [Uložitelný](#cacheable-response-header)
 X-EC-ladění: x-EC-cache-Key | [Klíč mezipaměti](#cache-key-response-header)
 X-EC-ladění: x-EC-mezipaměť-State | [Stav mezipaměti](#cache-state-response-header)
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 Hlavičky odpovědí mezipaměti ladění mohou být požadovány vložením následující hlavičky a zadaných direktiv v žádosti:
 

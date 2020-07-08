@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84557322"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver
@@ -983,7 +982,7 @@ Existují dva způsoby, jak přidat .NET Framework 3,5:
 
   _**Obrázek 40:** Indikátor průběhu instalace při instalaci .NET Framework 3,5 pomocí Průvodce přidáním rolí a funkcí_
 
-- Použijte nástroj příkazového řádku DISM. exe. Pro tento typ instalace budete potřebovat přístup k adresáři SxS na instalačním médiu Windows. Na příkazovém řádku se zvýšenými oprávněními zadejte:
+- Použijte nástroj příkazového řádku dism.exe. Pro tento typ instalace budete potřebovat přístup k adresáři SxS na instalačním médiu Windows. Na příkazovém řádku se zvýšenými oprávněními zadejte:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess

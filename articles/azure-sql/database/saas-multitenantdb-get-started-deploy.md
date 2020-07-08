@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
 ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84310083"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace pro více tenantů
@@ -99,9 +98,9 @@ Při nasazení aplikace si Stáhněte zdrojový kód aplikace a skripty pro spr�
 1. Přejděte do [úložiště GitHub WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb).
 2. Klikněte na **klonovat nebo stáhnout**.
 3. Klikněte na **Stáhnout ZIP** a uložte soubor.
-4. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-MultiTenantDb-Master. zip** a vyberte **vlastnosti**.
+4. Klikněte pravým tlačítkem na soubor **WingtipTicketsSaaS-MultiTenantDb-master.zip** a vyberte **vlastnosti**.
 5. Na kartě **Obecné** vyberte **odblokovat**a klikněte na **použít**.
-6. Klikněte na tlačítko **OK**.
+6. Klikněte na **OK**.
 7. Extrahujte soubory.
 
 Skripty jsou umístěny v *.. \\ WingtipTicketsSaaS-MultiTenantDb – hlavní složka \\ výukových modulů \\ *
@@ -155,22 +154,22 @@ V produkčním prostředí obvykle vytvoříte záznam DNS CNAME k [nasměrován
 
 Teď, když je aplikace nasazená, Pojďme ji dát do práce! Skript prostředí PowerShell *demo-LoadGenerator* spustí úlohu spuštěnou pro každého tenanta. Reálné zatížení mnoha aplikací SaaS je obvykle občas a nepředvídatelné. Pro simulaci tohoto typu zatížení generátor vytvoří zatížení distribuované napříč všemi klienty. Zatížení zahrnuje náhodné shluky u každého tenanta, ke kterým dochází v náhodných intervalech. Spuštění vzorku zatížení trvá několik minut, takže je před monitorováním zatížení vhodné nechat generátor běžet aspoň tři nebo čtyři minuty.
 
-1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ nástroje \\ skript*demo-LoadGenerator. ps1* .
+1. V *prostředí POWERSHELL ISE*otevřete... \\ Výukové moduly \\ nástroje \\ *Demo-LoadGenerator.ps1* skriptem.
 2. Stisknutím **F5** spusťte skript s generátorem zatížení (zatím nechejte nastavené výchozí hodnoty parametrů).
 
-Skript *demo-LoadGenerator. ps1* otevře jinou relaci PowerShellu, ve které se spustí generátor zatížení. Generátor zatížení běží v této relaci jako úloha na popředí, která vyvolá úlohy generování zatížení na pozadí, jednu pro každého tenanta.
+Skript *Demo-LoadGenerator.ps1* otevře jinou relaci PowerShellu, ve které se spustí generátor zatížení. Generátor zatížení běží v této relaci jako úloha na popředí, která vyvolá úlohy generování zatížení na pozadí, jednu pro každého tenanta.
 
 Po spuštění úlohy na popředí zůstane ve stavu vyvolání úlohy. Tato úloha spustí další úlohy na pozadí pro všechny nové klienty, které jsou následně zřízeny.
 
 Zavřením relace PowerShellu se zastaví všechny úlohy.
 
-Můžete chtít restartovat relaci generátoru zatížení, aby bylo možné použít jiné hodnoty parametrů. Pokud ano, zavřete relaci generování PowerShellu a pak znovu spusťte *demo-LoadGenerator. ps1*.
+Můžete chtít restartovat relaci generátoru zatížení, aby bylo možné použít jiné hodnoty parametrů. Pokud ano, zavřete relaci generování PowerShellu a pak znovu spusťte *Demo-LoadGenerator.ps1*.
 
 ## <a name="provision-a-new-tenant-into-the-sharded-database"></a>Zřízení nového tenanta do databáze horizontálně dělené
 
 Počáteční nasazení zahrnuje tři ukázkové klienty v databázi *Tenants1* . Pojďme vytvořit jiného tenanta a sledovat jeho účinky na nasazené aplikaci. V tomto kroku vytvoříte nového tenanta stisknutím jednoho klávesy:
 
-1. Otevřít... \\ Výukové moduly \\ zřídí a Catalog \\ *demo-ProvisionTenants. ps1* v *prostředí PowerShell ISE*.
+1. Otevřít... \\ Výukové moduly \\ zřídí a \\ *Demo-ProvisionTenants.ps1* katalogu v *prostředí PowerShell ISE*.
 2. Stisknutím klávesy **F5** (ne **F8**) spusťte skript (ponechte výchozí hodnoty nyní).
 
    > [!NOTE]
@@ -193,7 +192,7 @@ Do databází s více klienty můžete umístit zákazníky s bezplatnou zkušeb
 
 V dalším kroku zřídíme dalšího tenanta, tentokrát ve své vlastní databázi:
 
-1. V... \\ Výukové \\ moduly zřídí a Catalog \\ *demo-ProvisionTenants. ps1*, upravují *$TenantName* pro **Salix Salsa**, *$VenueType* na **roztancoval** a *$Scenario* na **2**.
+1. V... \\ Výukové \\ moduly zřizování a katalog \\ *Demo-ProvisionTenants.ps1*, úpravy *$TenantName* na **Salix Salsa**, *$VenueType* na **roztancoval** a *$Scenario* na **2**.
 
 2. Stisknutím klávesy **F5** spusťte skript znovu.
     - Tím **F5** stisknete tlačítko zřídit nového tenanta v samostatné databázi. Databáze a tenant jsou zaregistrované v katalogu. Pak se prohlížeč otevře na stránce události v tenantovi.

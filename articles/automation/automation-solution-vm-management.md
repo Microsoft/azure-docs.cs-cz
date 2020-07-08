@@ -6,10 +6,9 @@ ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84424070"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
@@ -108,7 +107,7 @@ Všechny nadřazené Runbooky obsahují `WhatIf` parametr. Při nastavení na ho
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se z nadřazeného Runbooku. Tato sada Runbook vytváří výstrahy na základě jednotlivých prostředků pro scénář automatického zastavení.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> `VMList`je čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků), například `vm1,vm2,vm3` .<br> `WhatIf`povolí ověřování logiky sady Runbook bez provedení.|
-|AutoStop_Disable | Žádné | Zakáže automatické zastavení výstrah a výchozí plán.|
+|AutoStop_Disable | Žádná | Zakáže automatické zastavení výstrah a výchozí plán.|
 |AutoStop_VM_Child | WebHookData | Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila klasický virtuální počítač.|
 |AutoStop_VM_Child_ARM | WebHookData |Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila virtuální počítač.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Akce: spustit nebo zastavit<br> VMList  | Provede akci spustit nebo zastavit ve skupině klasických virtuálních počítačů Cloud Services. |

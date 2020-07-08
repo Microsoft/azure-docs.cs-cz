@@ -12,10 +12,9 @@ ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
 ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84484301"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Doporučení a osvědčené postupy pro Azure Active Directory B2C
@@ -43,7 +42,7 @@ Definujte architekturu aplikací a služeb, aktuální systémy inventáře a na
 | Vytvoření plánu migrace |Plánování se může udělat plynule, aby migrace proběhla rychleji. Přečtěte si další informace o [migraci uživatelů](user-migration.md).|
 | Použitelnost a zabezpečení | Vaše řešení musí mít správné rovnováhu mezi použitelností aplikace a přijatelnou úrovní rizika vaší organizace. |
 | Přesunutí místních závislostí do cloudu | Pro zajištění odolného řešení zvažte přesunutí stávajících závislostí aplikace do cloudu. |
-| Migrace stávajících aplikací na b2clogin.com | Vyřazení login.microsoftonline.com se projeví pro všechny klienty Azure AD B2C v 04. prosince 2020. [Přečtěte si další informace](b2clogin.md). |
+| Migrace stávajících aplikací na b2clogin.com | Vyřazení login.microsoftonline.com se projeví pro všechny klienty Azure AD B2C v 04. prosince 2020. [Další informace](b2clogin.md). |
 
 ## <a name="implementation"></a>Implementace
 

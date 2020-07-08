@@ -11,10 +11,9 @@ author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
 ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84556940"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Posílení učení (Preview) s Azure Machine Learning
@@ -425,7 +424,7 @@ Vyberte **kliknutím sem zobrazíte informace o spuštění v Azure Machine Lear
 
 **Episode_reward_mean** vykreslení znázorňuje průměrný počet bodů, které jsou vyhodnoceny na epocha školení. Vidíte, že se agent pro školení zpočátku vykonal, ztratí své shody bez bodování jednoho bodu (na reward_mean-21). V rámci 100 iterací se agent školení dozvěděl o tom, že má na začátku průměr 18 bodů.
 
-Pokud procházíte protokoly podřízeného spuštění, můžete zobrazit výsledky vyhodnocení zaznamenané v souboru driver_log. txt. Než budou tyto metriky k dispozici na stránce spuštění, možná budete muset počkat několik minut.
+Pokud procházíte protokoly podřízeného spuštění, můžete zobrazit výsledky vyhodnocení zaznamenané v souboru driver_log.txt. Než budou tyto metriky k dispozici na stránce spuštění, možná budete muset počkat několik minut.
 
 V krátké práci jste se naučili nakonfigurovat více výpočetních prostředků, aby se mohl naučit posílit výukový Agent na hraní pong.
 

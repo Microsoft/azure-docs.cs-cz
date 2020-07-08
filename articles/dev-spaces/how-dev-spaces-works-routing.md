@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: V této části najdete popis procesů, které Azure Dev Spaces výkonu a způsobu fungování směrování.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 ms.openlocfilehash: 126a534cec2ee4b07aa3a127fb3f47f9931f0031
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307414"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Jak funguje směrování s Azure Dev Spaces
@@ -55,7 +54,7 @@ Můžete také vytvořit nové vývojové místo, které je odvozeno z jiného v
 
 Odvozené místo pro vývoj také inteligentně směruje požadavky mezi vlastní aplikace a aplikace sdílené z jejího nadřazeného objektu. Směrování funguje tak, že se pokusí směrovat požadavek do aplikace v odvozeném vývojovém prostoru a vrátit se do sdílené aplikace z nadřazeného vývojového prostoru. Směrování se vrátí do sdílené aplikace v prostoru No, pokud aplikace není v nadřazeném prostoru.
 
-Například:
+Příklad:
 * *Výchozí* místo pro vývoj má aplikace *Service* a *serviceB*.
 * Vývojové místo *azureuser* je odvozeno od *výchozího nastavení*.
 * Do *azureuser*se nasadí aktualizovaná verze *služby Service* .

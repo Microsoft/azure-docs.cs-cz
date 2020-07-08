@@ -9,10 +9,9 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: f6cf551b95de8fc7fae83941e5109dfa823213af
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465979"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimalizuje Azure Data Lake Storage Gen2 pro výkon.

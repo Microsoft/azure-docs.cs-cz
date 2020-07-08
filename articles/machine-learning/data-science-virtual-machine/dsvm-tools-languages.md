@@ -12,10 +12,9 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84557472"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované v Data Science Virtual Machine 
@@ -197,12 +196,12 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
   Výchozí umístění Helena je globální prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Pro instalaci balíčků do globálního prostředí spusťte Helena pomocí jedné z předchozích metod. Pak můžete spustit příkazy správce balíčků Helena, jako je `Pkg.add()` instalace nebo aktualizace balíčků.
 
-## <a name="other-languages"></a>Jiné jazyky
+## <a name="other-languages"></a>Další jazyky
 
 **C#**: je k dispozici ve Windows a přístupný prostřednictvím sady Visual Studio Community Edition nebo v `Developer Command Prompt for Visual Studio` , kde můžete spustit `csc` příkaz.
 
 **Java**: OpenJDK je k dispozici v edicích systému Linux i Windows pro DSVM a je nastavena v cestě. Chcete-li použít jazyk Java, zadejte `javac` příkaz nebo na příkazovém `java` řádku ve Windows nebo v prostředí bash v systému Linux.
 
-**Node. js**: Node. js je k dispozici v edicích systému Linux i Windows pro DSVM a je nastavená v cestě. Chcete-li získat přístup k Node. js, zadejte `node` příkaz nebo na příkazovém `npm` řádku ve Windows nebo v prostředí bash v systému Linux. V systému Windows je k dispozici rozšíření sady Visual Studio pro nástroje Node. js, které poskytuje grafické rozhraní IDE pro vývoj aplikace Node. js.
+**Node.js**: Node.js je k dispozici v edicích systému Linux i Windows pro DSVM a je nastavena v cestě. Pokud chcete získat přístup k Node.js, zadejte `node` příkaz nebo na příkazovém `npm` řádku ve Windows nebo v prostředí bash v systému Linux. V systému Windows je nainstalováno rozšíření sady Visual Studio pro nástroje pro Node.js, které poskytuje grafické rozhraní IDE pro vývoj Node.js aplikace.
 
 **F #**: je k dispozici ve Windows a přístupný prostřednictvím sady Visual Studio Community Edition nebo na `Developer Command Prompt for Visual Studio` , kde můžete spustit `fsc` příkaz.

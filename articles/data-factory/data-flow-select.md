@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
 ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84322086"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>V toku mapování dat vyberte transformaci.
@@ -98,7 +97,7 @@ Pořadí mapování určuje pořadí výstupních sloupců. Pokud je vstupní sl
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 ```
 <incomingStream>

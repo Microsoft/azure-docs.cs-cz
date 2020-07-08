@@ -6,10 +6,9 @@ ms.topic: conceptual
 description: Popisuje procesy spuštění kódu ve službě Azure Kubernetes pomocí Azure Dev Spaces
 keywords: azds. yaml, Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers
 ms.openlocfilehash: 02b928009b1f82e2b6a193a41376265f8bfb9ea7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84307465"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Způsob spuštění kódu s Azure Dev Spaces funguje
@@ -157,7 +156,7 @@ configurations:
 
 Kontroler používá souboru Dockerfile k sestavení a spuštění vaší aplikace.
 
-Vlastnost *Build. Context* obsahuje adresář, ve kterém existuje fázemi. Vlastnost *Build. souboru Dockerfile* definuje název souboru Dockerfile pro sestavení produkční verze aplikace. Vlastnost *configurations. vývoj. Build. souboru Dockerfile* konfiguruje název souboru Dockerfile pro vývojovou verzi aplikace.
+Vlastnost *Build. Context* obsahuje adresář, ve kterém existuje fázemi. Vlastnost *build.dockerfile* definuje název souboru Dockerfile pro sestavení produkční verze aplikace. Vlastnost *configurations.develop.build.dockerfile* konfiguruje název souboru Dockerfile pro vývojovou verzi aplikace.
 
 Různé fázemi pro vývoj a produkci vám umožní povolit určité věci během vývoje a zakázat tyto položky pro produkční nasazení. Můžete například povolit ladění nebo podrobnější protokolování během vývoje a zakázat v produkčním prostředí. Tyto vlastnosti můžete také aktualizovat, pokud jsou fázemi pojmenované jinak nebo v jiném umístění.
 
@@ -205,7 +204,7 @@ Chcete-li začít používat Azure Dev Spaces ke spuštění projektu, přečtě
 
 * [Rychlé iterování a ladění pomocí Visual Studio Code a Java][quickstart-java]
 * [Rychlé iterování a ladění pomocí Visual Studio Code a .NET][quickstart-netcore]
-* [Rychlé iterace a ladění pomocí Visual Studio Code a Node. js][quickstart-node]
+* [Rychlé iterování a ladění pomocí Visual Studio Code a Node.js][quickstart-node]
 * [Rychlé iterace a ladění pomocí sady Visual Studio a .NET Core][quickstart-vs]
 * [Použití rozhraní příkazového řádku k vývoji aplikace v Kubernetes][quickstart-cli]
 

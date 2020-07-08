@@ -5,10 +5,9 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
 ms.openlocfilehash: 6d9cc071ad5d81a09a14b12fe2acdf564c2ea6c8
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84331776"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Nastavení zařízení pro fyzické servery
@@ -71,7 +70,7 @@ Skript instalačního programu provede následující akce:
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
 - Nainstalujte role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhněte a nainstalujte zapisovatelný modul IIS. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhněte a nainstalujte zapisovatelný modul IIS. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) o trvalé podrobnosti nastavení pro Azure Migrate.
 - Vytvoří následující soubory pod cestou:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -82,7 +81,7 @@ Spusťte skript následujícím způsobem:
 1. Extrahujte soubor zip do složky na serveru, který bude hostitelem zařízení.  Ujistěte se, že nespouštíte skript na počítači v existujícím zařízení Azure Migrate.
 2. Na výše uvedeném serveru s oprávněním správce (zvýšené) spusťte PowerShell.
 3. Změňte adresář PowerShellu na složku, do které byl obsah extrahován ze staženého souboru ZIP.
-4. Spusťte skript s názvem **AzureMigrateInstaller. ps1** spuštěním následujícího příkazu:
+4. Spusťte skript s názvem **AzureMigrateInstaller.ps1** spuštěním následujícího příkazu:
 
     - Pro veřejný cloud:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
     - Pro Azure Government:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```

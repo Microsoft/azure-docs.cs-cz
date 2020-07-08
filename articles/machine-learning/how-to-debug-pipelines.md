@@ -11,10 +11,9 @@ ms.author: keli19
 ms.date: 03/18/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84557437"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
@@ -89,7 +88,7 @@ Následující tabulka obsahuje běžné problémy při vývoji kanálů s poten
 
 Následující tabulka poskytuje informace o různých možnostech ladění pro kanály. Nejedná se o vyčerpávající seznam, protože další možnosti existují kromě pouze Azure Machine Learning, Pythonu a OpenCensus, které jsou zde uvedeny.
 
-| Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Zdroje a prostředky                                                                                                                                                                                                                                                                                                                    |
+| Knihovna                    | Typ   | Příklad                                                          | Cíl                                  | Prostředky                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Uživatelské rozhraní portálu Azure Machine Learning             | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br>[AzureML. Core. Run – třída](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
 | Tisk/protokolování v Pythonu    | Protokol    | `print(val)`<br>`logging.info(message)`                          | Protokoly ovladačů, Návrhář Azure Machine Learning | [Jak sledovat experimenty](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Protokolování Pythonu](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
@@ -137,7 +136,7 @@ Když odešlete spuštění kanálu a zůstanete na stránce vytváření obsahu
 
 1. Vyberte modul, který se dokončil na plátně pro tvorbu.
 1. V pravém podokně modulu otevřete kartu **výstupy + protokoly** .
-1. Rozbalte pravé podokno a vyberte soubor **70_driver_log. txt** pro zobrazení souboru v prohlížeči. Protokoly také můžete stahovat místně.
+1. Rozbalte pravé podokno a vyberte **70_driver_log.txt** pro zobrazení souboru v prohlížeči. Protokoly také můžete stahovat místně.
 
     ![Rozšířené podokno výstup v Návrháři](./media/how-to-debug-pipelines/designer-logs.png)
 
@@ -151,7 +150,7 @@ Soubory protokolů pro konkrétní spuštění můžete najít na stránce s pod
 
 1. Vyberte modul v podokně náhledu.
 1. V pravém podokně modulu otevřete kartu **výstupy + protokoly** .
-1. Rozbalením pravého podokna zobrazíte soubor **70_driver_log. txt** v prohlížeči nebo vyberte soubor pro místní stažení protokolů.
+1. Rozbalením pravého podokna zobrazte soubor **70_driver_log.txt** v prohlížeči nebo vyberte soubor pro místní stažení protokolů.
 
 > [!IMPORTANT]
 > Chcete-li aktualizovat kanál na stránce s podrobnostmi o spuštění kanálu, je nutné **naklonovat** spuštění kanálu do nové konceptu kanálu. Spuštění kanálu je snímek kanálu. Je podobný souboru protokolu a nedá se změnit. 
@@ -350,9 +349,9 @@ Uložte `ip_address` hodnotu. Používá se v další části.
 
 1. Chcete-li nakonfigurovat VS Code ke komunikaci s Azure Machine Learning výpočetní prostředí, které spouští ladicí program, vytvořte novou konfiguraci ladění:
 
-    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Otevře se soubor s názvem __Launch. JSON__ .
+    1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Soubor s názvem __launch.jspři__ otevření.
 
-    1. V souboru __Launch. JSON__ Najděte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text. Změňte `"host": "10.3.0.5"` položku na IP adresu vrácenou v protokolech z předchozí části. Změňte `"localRoot": "${workspaceFolder}/code/step"` položku na místní adresář, který obsahuje kopii laděného skriptu:
+    1. V __launch.jsv__ souboru vyhledejte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text. Změňte `"host": "10.3.0.5"` položku na IP adresu vrácenou v protokolech z předchozí části. Změňte `"localRoot": "${workspaceFolder}/code/step"` položku na místní adresář, který obsahuje kopii laděného skriptu:
 
         ```json
         {
@@ -379,7 +378,7 @@ Uložte `ip_address` hodnotu. Používá se v další části.
         >
         > Pokud ladíte více skriptů, v různých adresářích Vytvořte samostatný konfigurační oddíl pro každý skript.
 
-    1. Uložte soubor __Launch. JSON__ .
+    1. Uložte __launch.jsdo__ souboru.
 
 ### <a name="connect-the-debugger"></a>Připojit ladicí program
 

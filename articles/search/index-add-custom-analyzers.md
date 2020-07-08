@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84555235"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání vlastních analyzátorů do polí řetězců v indexu služby Azure Kognitivní hledání
@@ -371,7 +370,7 @@ V následující tabulce jsou filtry tokenů implementované pomocí Apache Luce
  <sup>1</sup> typy filtru tokenů jsou vždycky pevně uvedené v kódu s "#Microsoft. Azure. Search" tak, že "ArabicNormalizationTokenFilter" by ve skutečnosti byly zadané jako "#Microsoft. Azure. Search. ArabicNormalizationTokenFilter".  Odebrali jsme předponu, aby se snížila šířka tabulky, ale nezapomeňte ji zahrnout do kódu.  
 
 
-## <a name="see-also"></a>Viz také:  
+## <a name="see-also"></a>Viz také  
  [Rozhraní REST API pro Azure Kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/)   
  [Příklady analyzátorů v Azure Kognitivní hledání >](search-analyzers.md#examples)    
  [Vytvoření indexu &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

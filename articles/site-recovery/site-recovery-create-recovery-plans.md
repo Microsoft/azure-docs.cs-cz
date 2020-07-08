@@ -4,10 +4,9 @@ description: Naučte se vytvářet a přizpůsobovat plány obnovení pro zotave
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485328"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Vytváření a přizpůsobení plánů obnovení
@@ -53,7 +52,7 @@ Vytvoříte další skupiny a přidáte počítače do různých skupin, abyste 
 
 Plán obnovení můžete přizpůsobit přidáním skriptu nebo ruční akce. Poznámky:
 
-- Pokud provádíte replikaci do Azure, můžete do plánu obnovení integrovat Runbooky Azure Automation. [Přečtěte si další informace](site-recovery-runbook-automation.md).
+- Pokud provádíte replikaci do Azure, můžete do plánu obnovení integrovat Runbooky Azure Automation. [Další informace](site-recovery-runbook-automation.md).
 - Pokud provádíte replikaci virtuálních počítačů Hyper-V, které spravuje System Center VMM, můžete vytvořit skript na místním serveru VMM a zahrnout ho do plánu obnovení.
 - Když přidáte skript, přidá novou sadu akcí pro skupinu. Například sada předběžných kroků pro skupinu 1 se vytvoří se *skupinou název 1: předběžné kroky*. Všechny předběžné kroky jsou uvedeny v této sadě. Skript můžete do primární lokality přidat jenom v případě, že máte nasazený server VMM.
 - Pokud přidáte ruční akci, při spuštění plánu obnovení se zastaví v okamžiku, kdy jste vložili ruční akci. Zobrazí se dialogové okno s výzvou, abyste určili, že ruční akce byla dokončena.
@@ -76,7 +75,7 @@ Plán obnovení můžete přizpůsobit přidáním skriptu nebo ruční akce. Po
     1. Zadejte název akce a zadejte pokyny pro akci. Uživatel, který spustí převzetí služeb při selhání, uvidí tyto pokyny.
     1. Určete, jestli chcete přidat ruční akci pro všechny typy převzetí služeb při selhání (test, převzetí služeb při selhání, plánované převzetí služeb při selhání (Pokud je relevantní)). Pak klikněte na **OK**.
 4. Pokud chcete přidat skript, udělejte toto:
-    1. Pokud přidáváte skript VMM, vyberte **převzetí služeb při selhání do skriptu VMM**a v **cestě ke skriptu** zadejte relativní cestu ke sdílené složce. Pokud se například sdílená složka nachází na adrese \\ \<VMMServerName> \MSSCVMMLibrary\RPScripts, zadejte cestu: \RPScripts\RPScript.ps1.
+    1. Pokud přidáváte skript VMM, vyberte **převzetí služeb při selhání do skriptu VMM**a v **cestě ke skriptu** zadejte relativní cestu ke sdílené složce. Pokud se například sdílená složka nachází na adrese \\ \<VMMServerName> \MSSCVMMLibrary\RPScripts, zadejte cestu: \RPScripts\RPScript.PS1.
     1. Pokud přidáváte knihu Azure Automation Run, určete **účet Azure Automation** , ve kterém se sada Runbook nachází, a vyberte příslušný **skript Runbooku Azure**.
 5. Spusťte testovací převzetí služeb při selhání plánu obnovení, aby se zajistilo, že skript funguje podle očekávání.
 

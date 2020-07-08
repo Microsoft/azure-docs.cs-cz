@@ -11,10 +11,9 @@ ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
 ms.openlocfilehash: d31fd8cca9df2ea21bf19beed26810568fc6481e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84345304"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Použití OLTP v paměti ke zlepšení výkonu aplikace v Azure SQL Database a spravované instanci Azure SQL
@@ -80,7 +79,7 @@ Postup použití této možnosti migrace:
 2. V **Průzkumník objektů**klikněte pravým tlačítkem myši na tabulku a potom klikněte na možnost **Poradce optimalizace paměti**.
 
    Zobrazí se průvodce **poradcem pro optimalizaci paměti tabulky** .
-3. V průvodci klikněte na **Ověření migrace** (nebo na tlačítko **Další** ) a zjistěte, jestli má tabulka nějaké nepodporované funkce, které nejsou podporované v paměťově optimalizovaných tabulkách. Další informace naleznete v tématu:
+3. V průvodci klikněte na **Ověření migrace** (nebo na tlačítko **Další** ) a zjistěte, jestli má tabulka nějaké nepodporované funkce, které nejsou podporované v paměťově optimalizovaných tabulkách. Další informace naleznete v tématech:
 
    * *Kontrolní seznam optimalizace paměti* v [poradci optimalizace paměti](/sql/relational-databases/in-memory-oltp/memory-optimization-advisor).
    * [OLTP v paměti nepodporují konstrukce jazyka Transact-SQL](/sql/relational-databases/in-memory-oltp/transact-sql-constructs-not-supported-by-in-memory-oltp).

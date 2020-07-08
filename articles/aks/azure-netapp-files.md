@@ -5,17 +5,16 @@ services: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465639"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrace Azure NetApp Files se službou Azure Kubernetes
 
 [Azure NetApp Files][anf] je vysoce výkonná služba úložiště monitorovaných souborů na podnikové úrovni, která běží v Azure. V tomto článku se dozvíte, jak integrovat Azure NetApp Files se službou Azure Kubernetes Service (AKS).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
 > [!IMPORTANT]

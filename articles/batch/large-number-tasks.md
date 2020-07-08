@@ -5,10 +5,9 @@ ms.topic: how-to
 ms.date: 08/24/2018
 ms.custom: tracking-python
 ms.openlocfilehash: 73d81624eea43e85b7fb2526d922a34446610d84
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84553355"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Odeslání velkého počtu úkolů do dávkové úlohy
@@ -34,7 +33,7 @@ Maximální velikost kolekce úloh, kterou můžete přidat do jednoho volání,
 * Následující rozhraní API podporují mnohem větší kolekce úloh – omezené jenom při dostupnosti paměti RAM v odesílajícím klientovi. Tato rozhraní API transparentně nadělí kolekci úloh na "bloky" pro rozhraní API na nižší úrovni a pokusy se opakuje, pokud se nepovede přidání úkolů.
 
     * [.NET API](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet)
-    * [Java API](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync?view=azure-java-stable)
+    * [Rozhraní API Javy](/java/api/com.microsoft.azure.batch.protocol.tasks.addcollectionasync?view=azure-java-stable)
     * [Azure Batch rozšíření CLI](batch-cli-templates.md) pomocí šablon Batch CLI
     * [Rozšíření Python SDK](https://pypi.org/project/azure-batch-extensions/)
 

@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 9a95af730e8250539e8b33af4bd5a90dc3a604a2
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84466064"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí JavaScriptu
@@ -26,7 +25,7 @@ V tomto článku se dozvíte, jak pomocí JavaScriptu vytvářet a spravovat adr
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 > * Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](data-lake-storage-quickstart-create-account.md) pokynů.
-> * Pokud tento balíček používáte v aplikaci Node. js, budete potřebovat Node. js 8.0.0 nebo vyšší.
+> * Pokud tento balíček používáte v Node.js aplikaci, budete potřebovat Node.js 8.0.0 nebo vyšší.
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -67,7 +66,7 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 ```
 > [!NOTE]
-> Tato metoda autorizace funguje pouze pro aplikace Node. js. Pokud máte v úmyslu spustit kód v prohlížeči, můžete autorizovat pomocí Azure Active Directory (AD). 
+> Tato metoda autorizace funguje jenom pro Node.js aplikace. Pokud máte v úmyslu spustit kód v prohlížeči, můžete autorizovat pomocí Azure Active Directory (AD). 
 
 ### <a name="connect-by-using-azure-active-directory-ad"></a>Připojení pomocí Azure Active Directory (AD)
 
@@ -221,7 +220,7 @@ async function ManageDirectoryACLs(fileSystemClient) {
 
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře
 
-Nejprve si přečtěte soubor. V tomto příkladu se používá modul Node. js `fs` . Pak vytvořte odkaz na soubor v cílovém adresáři tak, že vytvoříte instanci **klienta** souborů a potom zavoláte metodu **klient. Create** . Nahrajte soubor voláním metody **klient. Append** . Ujistěte se, že jste dokončí nahrávání voláním metody **klient. Flush** .
+Nejprve si přečtěte soubor. V tomto příkladu se používá `fs` modul Node.js. Pak vytvořte odkaz na soubor v cílovém adresáři tak, že vytvoříte instanci **klienta** souborů a potom zavoláte metodu **klient. Create** . Nahrajte soubor voláním metody **klient. Append** . Ujistěte se, že jste dokončí nahrávání voláním metody **klient. Flush** .
 
 Tento příklad nahraje textový soubor do adresáře s názvem `my-directory` . '
 
@@ -303,10 +302,10 @@ await fileClient.setAccessControl(acl);
 
 ## <a name="download-from-a-directory"></a>Stažení z adresáře
 
-Nejprve vytvořte instanci **FileSystemClient** , která představuje soubor, který chcete stáhnout. K načtení souboru použijte metodu **FileSystemClient. Read** . Pak zapište soubor. Tento příklad používá modul Node. js `fs` k tomu. 
+Nejprve vytvořte instanci **FileSystemClient** , která představuje soubor, který chcete stáhnout. K načtení souboru použijte metodu **FileSystemClient. Read** . Pak zapište soubor. V tomto příkladu se `fs` k tomu používá modul Node.js. 
 
 > [!NOTE]
-> Tato metoda stažení souboru funguje pouze pro aplikace Node. js. Pokud máte v úmyslu spustit kód v prohlížeči, přečtěte si soubor [Azure Storage soubor Data Lake klientské knihovny pro JavaScript](https://www.npmjs.com/package/@azure/storage-file-datalake) Readme, kde najdete příklad toho, jak to provést v prohlížeči. 
+> Tato metoda stažení souboru funguje pouze pro Node.js aplikace. Pokud máte v úmyslu spustit kód v prohlížeči, přečtěte si soubor [Azure Storage soubor Data Lake klientské knihovny pro JavaScript](https://www.npmjs.com/package/@azure/storage-file-datalake) Readme, kde najdete příklad toho, jak to provést v prohlížeči. 
 
 ```javascript
 async function DownloadFile(fileSystemClient) {

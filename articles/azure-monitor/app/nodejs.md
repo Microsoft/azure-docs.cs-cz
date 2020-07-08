@@ -4,15 +4,14 @@ description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: bb6ef87c99cbeeed4e8f3e5f98b8c57ce8667a71
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309760"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) po nasazení monitorovat vaše back-end služby a komponenty, které vám pomůžou zjistit a rychle diagnostikovat výkon a další problémy. Application Insights můžete použít pro služby Node. js hostované ve vašem datovém centru, virtuální počítače Azure a webové aplikace a dokonce i v jiných veřejných cloudech.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) po nasazení monitorovat vaše back-end služby a komponenty, které vám pomůžou zjistit a rychle diagnostikovat výkon a další problémy. Application Insights můžete použít pro Node.js služby, které jsou hostované ve vašem datovém centru, virtuálních počítačích Azure a webových aplikací, a dokonce i v jiných veřejných cloudech.
 
 Pokud chcete přijímat, ukládat a prozkoumávat data monitorování, vložte do svého kódu sadu SDK a pak v Azure nastavte odpovídající prostředek Application Insights. Sada SDK do tohoto prostředku odesílá data pro další analýzy a prozkoumávání.
 
@@ -68,7 +67,7 @@ Vložte do své aplikace sadu SDK, aby mohla shromažďovat data.
 
 ### <a name="monitor-your-app"></a><a name="monitor"></a>Monitorování aplikace
 
-Sada SDK automaticky shromažďuje telemetrii o modulu runtime Node. js a některých běžných modulech třetích stran. Použijte svou aplikaci k vygenerování nějakých dat.
+Sada SDK automaticky shromažďuje telemetrii o modulu runtime Node.js a některých běžných modulech třetích stran. Použijte svou aplikaci k vygenerování nějakých dat.
 
 Potom na webu [Azure Portal][portal] přejděte k prostředku Application Insights, který jste vytvořili dříve. V části **Časová osa přehledu** vyhledejte vašich prvních pár datových bodů. Pokud chcete zobrazit podrobnější data, vyberte v grafech různé komponenty.
 
@@ -190,7 +189,7 @@ Pokud chcete povolit odesílání živých metrik z vaší aplikace do Azure, po
 > [!NOTE]
 > Do verze 1.4.0 se přidala možnost odesílat rozšířené nativní metriky.
 
-Pokud chcete povolit odesílání rozšířených nativních metrik z vaší aplikace do Azure, nainstalujte samostatný balíček s nativními metrikami. Sada SDK se automaticky načte při instalaci a spustí shromažďování nativních metrik Node. js.
+Pokud chcete povolit odesílání rozšířených nativních metrik z vaší aplikace do Azure, nainstalujte samostatný balíček s nativními metrikami. Sada SDK se automaticky načte při instalaci a začne shromažďovat Node.js nativní metriky.
 
 ```bash
 npm install applicationinsights-native-metrics
@@ -373,7 +372,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Můžete vytvořit několik prostředků Application Insights a do každého odeslat různá data pomocí příslušných klíčů instrumentace ("ikey").
 
- Například:
+ Příklad:
 
 ```javascript
 let appInsights = require("applicationinsights");

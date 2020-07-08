@@ -4,10 +4,9 @@ description: Vytvoření tokenu s oprávněním vymezeným pro konkrétní úlo�
 ms.topic: article
 ms.date: 05/27/2020
 ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84509402"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Vytvoření tokenu s oprávněními vymezenými úložištěm

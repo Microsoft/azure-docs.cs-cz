@@ -6,10 +6,9 @@ ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84309641"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
@@ -18,7 +17,7 @@ Tato příručka obsahuje informace o běžných problémech, které můžete m�
 
 Pokud máte problém s použitím Azure Dev Spaces, vytvořte [problém v úložišti Azure dev Spaces GitHubu](https://github.com/Azure/dev-spaces/issues).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud chcete řešit problémy efektivněji, může vám pomoct vytvořit podrobnější protokoly pro kontrolu.
 
@@ -60,13 +59,13 @@ Opětovné vytvoření kontroleru se dá provést z rozhraní příkazového ř�
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Řadič se nepodařilo vytvořit kvůli délce názvu kontroleru.
 
-Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Například:
+Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Příklad:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Například:
+Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Příklad:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -112,7 +111,7 @@ Zajistěte, aby byl server rozhraní API dostupný spuštěním příkazů kubec
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Běžné problémy při přípravě projektu na Azure Dev Spaces
 
 ### <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Upozornění "souboru Dockerfile nebylo možné vygenerovat z důvodu nepodporovaného jazyka"
-Azure Dev Spaces poskytuje nativní podporu pro C# a Node. js. Když pracujete `azds prep` v adresáři s kódem napsaným v jednom z těchto jazyků, Azure dev Spaces pro vás automaticky vytvoří odpovídající souboru Dockerfile.
+Azure Dev Spaces poskytuje nativní podporu pro C# a Node.js. Když pracujete `azds prep` v adresáři s kódem napsaným v jednom z těchto jazyků, Azure dev Spaces pro vás automaticky vytvoří odpovídající souboru Dockerfile.
 
 Azure Dev Spaces můžete dál používat s kódem napsaným v jiných jazycích, ale před prvním spuštěním musíte ručně vytvořit souboru Dockerfile `azds up` .
 
@@ -170,7 +169,7 @@ Předpokládejme například, že použijete příkaz Helm ke spuštění celé 
 
 Azure Dev Spaces lze nakonfigurovat tak, aby odkazovaly na konkrétní _souboru Dockerfile_ v projektu. Pokud se zobrazí Azure Dev Spaces nepoužívá _souboru Dockerfile_ , kterou očekáváte k sestavování kontejnerů, možná budete muset explicitně sdělit Azure dev Spaces které souboru Dockerfile se mají použít. 
 
-Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Například:
+Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Příklad:
 
 ```yaml
 ...
@@ -217,7 +216,7 @@ install:
 
 Tato chyba se může zobrazit, když se kód služby nepovede spustit. Příčinou je často v uživatelském kódu. Pokud chcete získat další diagnostické informace, při spouštění služby povolte podrobnější protokolování.
 
-Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output` . Například:
+Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output` . Příklad:
 
 ```cmd
 azds up --verbose --output json
@@ -278,7 +277,7 @@ Chcete-li například zastavit a zakázat službu *Windows BranchCache* :
 * Klikněte pravým tlačítkem na *BranchCache* a vyberte *vlastnosti*.
 * Klikněte na tlačítko *zastavit*.
 * Volitelně ho můžete zakázat nastavením *Typ spuštění* na *zakázáno*.
-* Klikněte na tlačítko *OK*.
+* Klikněte na *OK*.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Chyba "nenašel se žádný AzureAssignedIdentity pro pod: azds/azds-Webhook-nasazení- \<id\> v přiřazeném stavu"
 
@@ -328,7 +327,7 @@ Chcete-li zobrazit podrobnosti o spravované identitě, spusťte následující 
 az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
 ```
 
-Výše uvedený příkaz vypíše *ClientID* a *ResourceID* pro spravovanou identitu. Například:
+Výše uvedený příkaz vypíše *ClientID* a *ResourceID* pro spravovanou identitu. Příklad:
 
 ```json
 {
@@ -369,7 +368,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-Až nasadíte objekty *AzureIdentity* a *AzureIdentityBinding* , budou mít všechny úlohy s jmenovkou *aadpodidbinding: My-Label-Value* přístup ke spravované identitě clusteru. Přidejte tento popisek a znovu nasaďte všechny úlohy spuštěné v jakémkoli vývojovém prostoru. Například:
+Až nasadíte objekty *AzureIdentity* a *AzureIdentityBinding* , budou mít všechny úlohy s jmenovkou *aadpodidbinding: My-Label-Value* přístup ke spravované identitě clusteru. Přidejte tento popisek a znovu nasaďte všechny úlohy spuštěné v jakémkoli vývojovém prostoru. Příklad:
 
 ```yaml
 apiVersion: apps/v1
@@ -392,7 +391,7 @@ spec:
 ### <a name="error-required-tools-and-configurations-are-missing"></a>Chyba: chybí požadované nástroje a konfigurace.
 
 K této chybě může dojít při spuštění VS Code: "[Azure Dev Spaces] požadované nástroje a konfigurace pro sestavení a ladění [název projektu] chybí."
-Chyba znamená, že azds. exe není v proměnné prostředí PATH, jak je vidět v VS Code.
+Chyba znamená, že azds.exe není v proměnné prostředí PATH, jak je vidět v VS Code.
 
 Zkuste spustit VS Code z příkazového řádku, kde je správně nastavená proměnná prostředí PATH.
 
@@ -430,9 +429,9 @@ Tato chyba se může zobrazit při spuštění ladicího programu Visual Studio 
 
 Chcete-li tento problém vyřešit, zavřete a znovu otevřete Visual Studio Code. Restartujte ladicí program.
 
-### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Chyba "vnitřní kukátko se nezdařilo: Sledujte ENOSPC" při připojování ladění k aplikaci Node. js
+### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Chyba "vnitřní kukátko se nezdařilo: Sledujte ENOSPC" při připojování ladění k aplikaci Node.js
 
-K této chybě dochází, pokud uzel, na kterém je spuštěný, s aplikací Node. js, ke které se pokoušíte připojit pomocí ladicího programu, překročil hodnotu *FS. inotify. max_user_watches* . V některých případech [může být výchozí hodnota *FS. inotify. max_user_watches* příliš malá, aby bylo možné manipulovat s připojením ladicího programu přímo k poli pod](https://github.com/Azure/AKS/issues/772).
+K této chybě dojde, když uzel, na kterém je spuštěný, s aplikací Node.js, ke které se pokoušíte připojit pomocí ladicího programu, překročil hodnotu *FS. inotify. max_user_watches* . V některých případech [může být výchozí hodnota *FS. inotify. max_user_watches* příliš malá, aby bylo možné manipulovat s připojením ladicího programu přímo k poli pod](https://github.com/Azure/AKS/issues/772).
 
 Dočasným řešením tohoto problému je zvýšit hodnotu *FS. inotify. max_user_watches* v každém uzlu v clusteru a restartovat tento uzel, aby se změny projevily.
 
@@ -453,7 +452,7 @@ Pokud chcete tento problém vyřešit:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Chyba autorizace "Microsoft. DevSpaces/Register/Action"
 
-Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Například:
+Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Příklad:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
@@ -545,7 +544,7 @@ Pokud chcete tento problém vyřešit:
 1. Pokud je kontejner v procesu sestavení/nasazení, můžete počkat 2-3 sekund a pokusit se o přístup ke službě znovu. 
 1. Ověřte konfiguraci portů v následujících zdrojích:
     * ** [Graf Helm](https://docs.helm.sh):** Určené `service.port` `deployment.containerPort` hodnotami a v hodnotách. yaml vygenerované pomocí `azds prep` příkazu.
-    * Jakékoli porty, které jsou otevřeny v kódu aplikace, například v Node. js:`var server = app.listen(80, function () {...}`
+    * Jakékoli porty, které jsou otevřeny v kódu aplikace, například v Node.js:`var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Název typu nebo oboru názvů "MyLibrary" se nenašel.
 
@@ -613,7 +612,7 @@ Pokud chcete tento problém vyřešit:
 
 Po [otočení certifikátů v clusteru AKS](../aks/certificate-rotation.md)se některé operace, například `azds space list` a, `azds up` nezdaří. Po otočení certifikátů v clusteru je také potřeba aktualizovat certifikáty na řadiči Azure Dev Spaces.
 
-Pokud chcete tento problém vyřešit, ujistěte se, že vaše *kubeconfig* má aktualizované certifikáty, a `az aks get-credentials` pak `azds controller refresh-credentials` příkaz spusťte. Například:
+Pokud chcete tento problém vyřešit, ujistěte se, že vaše *kubeconfig* má aktualizované certifikáty, a `az aks get-credentials` pak `azds controller refresh-credentials` příkaz spusťte. Příklad:
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>

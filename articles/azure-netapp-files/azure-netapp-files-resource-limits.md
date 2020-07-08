@@ -15,10 +15,9 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: b-juche
 ms.openlocfilehash: 8b417559a17dc05a07467a28d37fec9b9a7c12cb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84553476"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
@@ -31,19 +30,19 @@ Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 
 |  Prostředek  |  Výchozí omezení  |  Nastavitelná prostřednictvím žádosti o podporu  |
 |----------------|---------------------|--------------------------------------|
-|  Počet účtů NetApp na oblast Azure   |  10    |  Ano   |
-|  Počet fondů kapacity na účet NetApp   |    25     |   Ano   |
-|  Počet svazků na fond kapacity     |    500   |    Ano     |
-|  Počet snímků na svazek       |    255     |    Ne        |
-|  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    Ne    |
-|  Počet využitých IP adres ve virtuální síti (včetně okamžitě virtuální sítě partnerských vztahů) s Azure NetApp Files   |    1000   |    Ne   |
-|  Minimální velikost jednoho fondu kapacity   |  4 TiB     |    Ne  |
-|  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   Ne   |
-|  Minimální velikost jednoho svazku    |    100 GiB    |    Ne    |
-|  Maximální velikost jednoho svazku     |    100 TiB    |    Ne    |
-|  Maximální velikost jednoho souboru     |    16 TiB    |    Ne    |    
-|  Maximální velikost metadat adresáře v jednom adresáři      |    320 MB    |    Ne    |    
-|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Ano    |    
+|  Počet účtů NetApp na oblast Azure   |  10    |  Yes   |
+|  Počet fondů kapacity na účet NetApp   |    25     |   Yes   |
+|  Počet svazků na fond kapacity     |    500   |    Yes     |
+|  Počet snímků na svazek       |    255     |    No        |
+|  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    No    |
+|  Počet využitých IP adres ve virtuální síti (včetně okamžitě virtuální sítě partnerských vztahů) s Azure NetApp Files   |    1000   |    No   |
+|  Minimální velikost jednoho fondu kapacity   |  4 TiB     |    No  |
+|  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   No   |
+|  Minimální velikost jednoho svazku    |    100 GiB    |    No    |
+|  Maximální velikost jednoho svazku     |    100 TiB    |    No    |
+|  Maximální velikost jednoho souboru     |    16 TiB    |    No    |    
+|  Maximální velikost metadat adresáře v jednom adresáři      |    320 MB    |    No    |    
+|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Yes    |    
 
 Další informace najdete v tématu [Nejčastější dotazy ke správě kapacity](azure-netapp-files-faqs.md#capacity-management-faqs).
 

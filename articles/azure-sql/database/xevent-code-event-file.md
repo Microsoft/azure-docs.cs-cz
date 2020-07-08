@@ -12,10 +12,9 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 06/06/2020
 ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84485466"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Cílový kód souboru události pro rozšířené události v Azure SQL Database
@@ -46,8 +45,8 @@ V tomto tématu se zobrazuje příklad dvoufázové fáze kódu:
   
   - Volitelně můžete [vytvořit ukázkovou databázi **AdventureWorksLT** ](single-database-create-quickstart.md) během několika minut.
 
-- SQL Server Management Studio (SSMS. exe), v ideálním případě podle nejnovější měsíční verze aktualizace.
-  Nejnovější SSMS. exe si můžete stáhnout z těchto:
+- SQL Server Management Studio (ssms.exe), v ideálním případě podle nejnovější měsíční verze aktualizace.
+  Nejnovější ssms.exe si můžete stáhnout z těchto:
   
   - Téma s názvem [stažení SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
   - [Přímý odkaz na stažení.](https://go.microsoft.com/fwlink/?linkid=616025)
@@ -62,7 +61,7 @@ Toto prostředí PowerShell je fáze 1 ukázky kódu ve dvou fázích.
 
 Skript začíná příkazy pro vyčištění po možném předchozím spuštění a je rerunnable.
 
-1. Vložte skript PowerShell do jednoduchého textového editoru, jako je například Notepad. exe, a tento skript uložte jako soubor s příponou **. ps1**.
+1. Vložte skript prostředí PowerShell do jednoduchého textového editoru, jako je například Notepad.exe, a tento skript uložte jako soubor s příponou **. ps1**.
 2. Spusťte PowerShell ISE jako správce.
 3. Na příkazovém řádku zadejte<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>a potom stiskněte klávesu ENTER.
 4. V prostředí PowerShell ISE otevřete soubor **. ps1** . Spusťte skript.
@@ -250,7 +249,7 @@ Skript začíná příkazy pro vyčištění po možném předchozím spuštěn�
 
 Skript prostředí PowerShell vytiskl po ukončení několik pojmenovaných hodnot. Chcete-li použít tyto hodnoty, je nutné upravit skript Transact-SQL. Vyhledá **body úprav ve skriptu** Transact-SQL.
 
-1. Otevřete SQL Server Management Studio (SSMS. exe).
+1. Otevřete SQL Server Management Studio (ssms.exe).
 2. Připojte se k databázi v Azure SQL Database.
 3. Kliknutím otevřete nové podokno dotazu.
 4. Do podokna dotazu vložte následující skript Transact-SQL.

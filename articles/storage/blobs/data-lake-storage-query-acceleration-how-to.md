@@ -9,10 +9,9 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84465860"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů (Preview)
@@ -81,7 +80,7 @@ Akcelerace dotazů (Preview) je nová funkce pro Azure Data Lake Storage, která
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. Vytvořte adresář v kořenu projektu. Kořenový adresář je adresář, který obsahuje soubor **pom. XML** .
+1. Vytvořte adresář v kořenu projektu. Kořenový adresář je adresář, který obsahuje soubor **pom.xml** .
 
    > [!NOTE]
    > V příkladech v tomto článku se předpokládá, že název adresáře je **lib**.
@@ -90,7 +89,7 @@ Akcelerace dotazů (Preview) je nová funkce pro Azure Data Lake Storage, která
 
 3. Extrahujte soubory v tomto souboru zip do adresáře, který jste vytvořili. V našem příkladu má tento adresář název **lib**. 
 
-4. V textovém editoru otevřete soubor *pom. XML* . Přidejte následující prvky závislosti do skupiny závislostí. 
+4. Otevřete *pom.xml* soubor v textovém editoru. Přidejte následující prvky závislosti do skupiny závislostí. 
 
    ```xml
    <!-- Request static dependencies from Maven -->
