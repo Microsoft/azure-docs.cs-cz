@@ -12,10 +12,9 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 386af46bbee623d37bc914d2ee9130c914c6c885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77620872"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-supported-topologies-and-scenarios"></a>Azure AD Connect podporované topologie a scénáře zřizování cloudu
@@ -50,7 +49,7 @@ Společná topologie je několik doménových struktur AD, s jednou nebo více d
 Tento scénář je podobný scénáři s více doménovými strukturami, ale ta zahrnuje existující prostředí Azure AD Connect a pak se přinášejí do nové doménové struktury pomocí Azure AD Connect zřizování cloudu.  Příklad tohoto scénáře najdete v tématu [kurz: existující doménová struktura s jedním klientem služby Azure AD.](tutorial-existing-forest.md)
 
 ## <a name="piloting-azure-ad-connect-cloud-provisioning-in-an-existing-hybrid-ad-forest"></a>Pilotní nasazení Azure AD Connect zřízení cloudu v existující hybridní doménové struktuře AD
-![Topologie pro jednu doménovou strukturu a jediného](media/plan-cloud-provisioning-topologies/migrate.png) tenanta, který pilotní scénář zahrnuje, je existence Azure AD Connect i Azure AD Connectho zřizování cloudu ve stejné doménové struktuře a určení oboru uživatelů a skupin. Poznámka: objekt by měl být v oboru pouze v jednom z nástrojů. 
+![Topologie pro jednu doménovou strukturu a jediného tenanta ](media/plan-cloud-provisioning-topologies/migrate.png) , který pilotní scénář zahrnuje, je existence Azure AD Connect i Azure AD Connectho zřizování cloudu ve stejné doménové struktuře a určení oboru uživatelů a skupin. Poznámka: objekt by měl být v oboru pouze v jednom z nástrojů. 
 
 Příklad tohoto scénáře najdete [v tématu Kurz: zřízení pilotního nasazení cloud Azure AD Connect v existující synchronizované doménové struktuře AD.](tutorial-pilot-aadc-aadccp.md)
 

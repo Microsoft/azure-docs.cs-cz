@@ -15,15 +15,14 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: cea7429ecea105355b0afe306bfa334e55d5d9c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77585103"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Kurz: vytvoření vlastních pravidel pro analytiky k detekci podezřelých hrozeb
 
-Po [připojení zdrojů](quickstart-onboard.md) dat ke službě Azure Sentinel můžete vytvořit vlastní pravidla, která budou vyhledávat konkrétní kritéria v rámci vašeho prostředí a generovat incidenty, když jsou kritéria shodná, abyste je mohli prozkoumat. Tento kurz vám pomůže vytvořit vlastní pravidla pro detekci hrozeb pomocí služby Azure Sentinel.
+Po [připojení zdrojů dat](quickstart-onboard.md)   ke službě Azure Sentinel můžete vytvořit vlastní pravidla, která budou vyhledávat konkrétní kritéria v rámci vašeho prostředí a generovat incidenty, když jsou kritéria shodná, abyste je mohli prozkoumat. Tento kurz vám pomůže vytvořit vlastní pravidla pro detekci hrozeb pomocí služby Azure Sentinel.
 
 Tento kurz vám pomůže detekovat hrozby pomocí služby Azure Sentinel.
 > [!div class="checklist"]
@@ -59,7 +58,7 @@ Můžete vytvořit vlastní analytická pravidla, která vám pomůžou vyhledat
      \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
       > [!NOTE]
-      > Délka dotazu by měla být mezi 1 a 10 000 znaky a nesmí obsahovat "Search \*" ani "Union \*".
+      > Délka dotazu by měla být mezi 1 a 10 000 znaky a nesmí obsahovat "Search \* " ani "Union" \* .
 
     1. Pomocí oddílu **mapové entity** můžete propojit parametry z výsledků dotazu do entit rozpoznaných pomocí služby Azure Sentinel. Tyto entity tvoří základ pro další analýzu, včetně seskupení výstrah na incidenty na kartě **Nastavení incidentu** .
     1. V části **plánování dotazů** nastavte následující parametry:

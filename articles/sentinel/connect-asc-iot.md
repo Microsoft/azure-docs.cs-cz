@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 3af51110a4c4604444573f62be65077c786db606
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588633"
 ---
 # <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel"></a>Připojení dat z Azure Security Center pro IoT do Azure Sentinel 
@@ -45,7 +44,7 @@ Použijte Azure Security Center pro IoT Connector ke streamování všech vašic
 1. V pravém dolním podokně klikněte na možnost **otevřít stránku konektoru**. 
 1. Klikněte na **připojit**a vedle každého předplatného IoT Hub, jejichž výstrahy a výstrahy zařízení chcete streamovat do Azure Sentinel. 
     - Pokud v tomto centru není povolená Azure Security Center pro IoT, zobrazí se vám zpráva s upozorněním na **Povolení** . Kliknutím na odkaz **Enable (Povolit** ) spusťte službu. 
-1. Můžete rozhodnout, jestli chcete, aby upozornění z Azure Security Center pro IoT automaticky generovala incidenty v Azure Sentinel. V části **vytvořit incidenty**vyberte **Povolit** , pokud chcete výchozí pravidlo pro analýzu povolit automatické vytváření incidentů z výstrah vygenerovaných v připojené službě zabezpečení. Toto pravidlo se dá změnit nebo upravit v části **Analýza** > **aktivní** pravidla.
+1. Můžete rozhodnout, jestli chcete, aby upozornění z Azure Security Center pro IoT automaticky generovala incidenty v Azure Sentinel. V části **vytvořit incidenty**vyberte **Povolit** , pokud chcete výchozí pravidlo pro analýzu povolit automatické vytváření incidentů z výstrah vygenerovaných v připojené službě zabezpečení. Toto pravidlo se dá změnit nebo upravit v části **Analýza**  >  **aktivní** pravidla.
 
 > [!NOTE]
 > Může trvat nějakou dobu, než se seznam centra aktualizuje po provedení změn připojení. 
@@ -54,7 +53,7 @@ Použijte Azure Security Center pro IoT Connector ke streamování všech vašic
 
 Chcete-li použít příslušné schéma v Log Analytics k zobrazení Azure Security Center pro výstrahy IoT:
 
-1. Otevřete **protokoly** > **SecurityInsights** > **SecurityAlert**, nebo vyhledejte **SecurityAlert**. 
+1. Otevřete **protokoly**  >  **SecurityInsights**  >  **SecurityAlert**, nebo vyhledejte **SecurityAlert**. 
 2. Filtr, aby se zobrazily pouze Azure Security Center upozornění vygenerovaných IoT pomocí následujícího filtru KQL:
 
 ```kusto

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: raynew
 ms.openlocfilehash: d345d707cbf58f48466c3bd830d93250d13397c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425849"
 ---
 # <a name="agent-based-migration-architecture"></a>Architektura migrace založené na agentech
@@ -38,7 +37,7 @@ Diagram znázorňuje komponenty, které jsou součástí migrace na základě ag
 
 Tabulka shrnuje součásti používané pro migraci na základě agenta.
 
-**Komponenta** | **Zobrazí** | **Instalace**
+**Komponenta** | **Podrobnosti** | **Instalace**
 --- | --- | ---
 **Replikační zařízení** | Zařízení replikace (konfigurační server/procesový Server) je místní počítač, který funguje jako most mezi místním prostředím a migrací serveru. Zařízení zjistí inventář místního počítače, aby migrace serveru mohla orchestrovat replikaci a migraci. Zařízení má dvě komponenty:<br/><br/> **Konfigurační server**: připojení k migraci serveru a koordinuje replikaci.<br/> **Procesový Server**: zpracovává replikaci dat. Procesový server přijímá data z počítačů, komprimuje je a šifruje a odesílá je do Azure. Migrace serveru v Azure zapisuje data na spravované disky. | Ve výchozím nastavení se procesový server instaluje společně s konfiguračním serverem na zařízení replikace.
 **Služba Mobility** | Služba mobility je agent nainstalovaný na každém počítači, který chcete replikovat a migrovat. Odesílá data replikace z počítače na procesový Server. | Instalační soubory pro různé verze služby mobility jsou umístěné na zařízení replikace. Můžete stáhnout a nainstalovat agenta, který potřebujete, v souladu s operačním systémem a verzí počítače, který chcete replikovat.
@@ -95,7 +94,7 @@ Pomocí hodnot v této tabulce můžete zjistit, jestli v nasazení potřebujete
 - Pokud je frekvence denních změn (četnost změn) větší než 2 TB, nasaďte další procesový Server.
 - Pokud provádíte replikaci více než 200 počítačů, nasaďte další replikační zařízení.
 
-**VČETNĚ** | **Rezident** | **Volné místo – ukládání dat do mezipaměti** | **Míra četnosti změn** | **Omezení replikace**
+**Procesor** | **Memory (Paměť)** | **Volné místo – ukládání dat do mezipaměti** | **Míra četnosti změn** | **Omezení replikace**
 --- | --- | --- | --- | ---
 8 vCPU (2 sokety × 4 jádra \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB nebo méně | Počítače s < 100 
 12 vCPU (2 sokety × 6 jader \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB až 1 TB | 100-150 počítačů.

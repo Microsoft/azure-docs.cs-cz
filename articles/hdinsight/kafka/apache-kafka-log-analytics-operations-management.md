@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
 ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471176"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka ve službě HDInsight
@@ -23,9 +22,9 @@ Naučte se používat protokoly Azure Monitor k analýze protokolů vygenerovan�
 
 ## <a name="logs-location"></a>Umístění protokolů
 
-Protokoly Apache Kafka v clusteru se nacházejí v umístění `/var/log/kafka`. Protokoly Kafka se neukládají ani neukládají mezi životním cyklům clusteru bez ohledu na to, jestli se používají spravované disky. V následující tabulce jsou uvedeny dostupné protokoly.
+Protokoly Apache Kafka v clusteru se nacházejí v umístění `/var/log/kafka` . Protokoly Kafka se neukládají ani neukládají mezi životním cyklům clusteru bez ohledu na to, jestli se používají spravované disky. V následující tabulce jsou uvedeny dostupné protokoly.
 
-|Protokol |Popis |
+|Protokol |Description |
 |---|---|
 |Kafka. out|stdout a stderr procesu Kafka V tomto souboru najdete protokoly spouštění a vypínání Kafka.|
 |Server. log|Hlavní protokol serveru Kafka Všechny protokoly služby Kafka Broker tady zakončí.|
@@ -94,11 +93,11 @@ Postup povolení protokolů Azure Monitor pro HDInsight je stejný pro všechny 
 
     Můžete také zadat `*` pro prohledávání všech protokolovaných typů. V současné době jsou k dispozici následující protokoly pro dotazy:
 
-    | Typ protokolu | Popis |
+    | Typ protokolu | Description |
     | ---- | ---- |
-    | protokol\_kafkaserver\_CL | Server služby Kafka Broker. log |
-    | protokol\_kafkacontroller\_CL | Protokol Kafka Broker Controller. log |
-    | metriky\_Kafka\_CL | Kafka JMX metriky |
+    | protokol \_ kafkaserver \_ CL | Server služby Kafka Broker. log |
+    | protokol \_ kafkacontroller \_ CL | Protokol Kafka Broker Controller. log |
+    | metriky \_ Kafka \_ CL | Kafka JMX metriky |
 
     ![Apache Kafka – využití procesoru Log Analytics](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
 

@@ -15,10 +15,9 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 8d82d8c5a76c34875e9a4aae22c547aec897c18a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588293"
 ---
 # <a name="connect-extrahop-revealx"></a>Připojení ExtraHop Reveal(x)
@@ -34,7 +33,7 @@ Konektor dat ExtraHop (x) umožňuje snadno připojit systém zobrazení (x) ke 
 
 ## <a name="connect-azure-sentinel-to-extrahop-revealx"></a>Připojit Azure Sentinel k ExtraHop odhalení (x)
 
-1. V Azure Portal přejděte k > **datovým konektorům** **Sentinel Azure**a pak vyberte konektor **x (ExtraHop)** .
+1. V Azure Portal přejděte k **Azure Sentinel**  >  **datovým konektorům** Sentinel Azure a pak vyberte konektor **x (ExtraHop)** .
 
 2. Vyberte **stránku otevřít konektor**.
 

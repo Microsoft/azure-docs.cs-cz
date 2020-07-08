@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617080"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>Sledování a řešení potíží na straně HANA
@@ -70,7 +69,7 @@ Podrobné kroky pro řešení potíží najdete v tématu [řešení potíží s
 
 Jednou z nejdůležitějších kontrol SAP HANA v systému Linux je ujistit se, že jsou transparentní velké stránky zakázané, viz téma [SAP Note #2131662 – průhledné velké stránky (THP) na SAP HANA serverech](https://launchpad.support.sap.com/#/notes/2131662).
 
-- Můžete kontrolovat, jestli jsou transparentní obrovský stránky povolené pomocí následujícího příkazu Linux: **Cat/sys/kernel/mm/Transparent\_hugepage/Enabled** .
+- Můžete kontrolovat, jestli jsou transparentní obrovský stránky povolené pomocí následujícího příkazu Linux: **Cat/sys/kernel/mm/Transparent \_ hugepage/Enabled** .
 - Pokud je _vždycky_ uzavřený v závorkách jako dole, znamená to, že jsou povolené průhledné velké stránky: [Always] madvise nikdy; Pokud _nikdy_ není uzavřený v závorkách jako dole, znamená to, že průhledné obrovský stránky jsou zakázané: vždycky madvise [nikdy].
 
 Následující příkaz pro Linux by neměl vracet hodnotu Nothing: **ot-QA | grep ulimit.** Pokud se zdá, že _ulimit_ je nainstalovaný, okamžitě ho odinstalujte.
@@ -93,10 +92,10 @@ Podrobné kroky pro řešení potíží najdete v tématu [řešení potíží s
 Přečtěte si informace v tématu [SAP note #2081065 – řešení potíží s SAP HANA sítě](https://launchpad.support.sap.com/#/notes/2081065) a postup řešení potíží se sítí v této poznámce SAP.
 
 1. Analyzuje se doba odezvy mezi serverem a klientem.
-  A. Spusťte [_\_\_síťové klienty_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
+  A. Spusťte [_ \_ síťové \_ klienty_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
   
 2. Analýza komunikace mezi uzly.
-  A. Spusťte [_\_\_síťové služby_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
+  A. Spusťte [_ \_ síťové \_ služby_](https://launchpad.support.sap.com/#/notes/1969700)SQL Script Hana _._
 
 3. Spusťte příkaz Linux Command **ifconfig** (výstup ukazuje, zda dochází ke ztrátám paketů).
 4. Spusťte příkaz **tcpdump**pro Linux.
@@ -119,15 +118,15 @@ Přečtěte si téma [řešení potíží s SAP HANA: hlavní příčiny a řeš
 
 ## <a name="diagnostic-tools"></a>Diagnostické nástroje
 
-Proveďte SAP HANA kontrolu stavu prostřednictvím služby HANA\_Configuration\_Minichecks. Tento nástroj vrátí potenciálně kritické technické problémy, které by měly být v SAP HANA studiu již vyvolány jako výstrahy.
+Proveďte SAP HANA kontrolu stavu prostřednictvím služby HANA \_ Configuration \_ Minichecks. Tento nástroj vrátí potenciálně kritické technické problémy, které by měly být v SAP HANA studiu již vyvolány jako výstrahy.
 
-Informace o SAP HANA a stažení souboru. zip s příkazy SQL, které jsou připojené k této poznámce, najdete v tématu [SAP Note #1969700 – kolekce příkazů SQL](https://launchpad.support.sap.com/#/notes/1969700) . Uložte tento soubor. zip na místní pevný disk.
+Přečtěte [si téma SAP Note #1969700 – kolekce příkazů SQL pro SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) a Stáhněte si soubor SQL Statements.zip připojený k této poznámce. Uložte tento soubor. zip na místní pevný disk.
 
 V SAP HANA studiu klikněte pravým tlačítkem na kartě **Systémové informace** na sloupec **název** a vyberte **importovat příkazy SQL**.
 
 ![V SAP HANA studiu klikněte pravým tlačítkem na kartě Systémové informace na sloupec název a vyberte Importovat příkazy SQL.](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-Vyberte soubor. zip s příkazy jazyka SQL uložený místně a složka s odpovídajícími příkazy SQL se naimportuje. V tomto okamžiku lze pomocí těchto příkazů SQL spustit i mnoho různých diagnostických kontrol.
+Vyberte soubor SQL Statements.zip uložený místně a složka s odpovídajícími příkazy SQL se naimportuje. V tomto okamžiku lze pomocí těchto příkazů SQL spustit i mnoho různých diagnostických kontrol.
 
 Pokud třeba chcete otestovat SAP HANA požadavky na šířku pásma replikace systému, klikněte pravým tlačítkem myši na příkaz **Šířka** pásma v části **replikace: šířka pásma** a v konzole SQL vyberte **otevřít** .
 
@@ -143,29 +142,29 @@ To má za následek informace, které pomáhají při řešení potíží:
 
 ![Výsledkem bude informace, které vám pomůžou při řešení potíží.](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-Proveďte stejnou konfiguraci pro Minichecks\_konfigurace\_Hana a ve sloupci _C_ (kritické) vyhledejte libovolné značky _X_ .
+Proveďte stejnou \_ konfiguraci pro Minichecks konfigurace Hana \_ a ve sloupci _C_ (kritické) vyhledejte libovolné značky _X_ .
 
 Ukázkové výstupy:
 
-**\_Konfigurace\_Hana MiniChecks\_rev 102.01 + 1** pro obecné SAP HANA kontroly.
+**Hana \_ Konfigurace \_ MiniChecks \_ REV 102.01 + 1** pro obecné SAP HANA kontroly.
 
-![Konfigurace\_\_Hana MiniChecks\_rev 102.01 + 1 pro obecné kontroly SAP HANA](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
+![\_Konfigurace Hana \_ MiniChecks \_ REV 102.01 + 1 pro obecné kontroly SAP HANA](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-**Přehled\_služeb\_pro službu Hana** , který nabízí přehled o tom, co jsou aktuálně spuštěné služby SAP HANA.
+**Hana \_ \_Přehled služeb** , které vám pomohou s přehledem o tom, co služba SAP HANA Services aktuálně běží.
 
-![Přehled\_služeb\_Hana a přehled o tom, co jsou aktuálně spuštěné služby SAP HANA](./media/troubleshooting-monitoring/image12-services-overview.png)
+![Přehled \_ služeb Hana \_ a přehled o tom, co jsou aktuálně spuštěné služby SAP HANA](./media/troubleshooting-monitoring/image12-services-overview.png)
 
-**Statistika\_služeb\_Hana** pro SAP HANA informace o službách (CPU, paměť atd.).
+**Hana \_ \_Statistika služby** SAP HANA informace o službě (CPU, paměť atd.).
 
-![Statistika\_služby\_Hana pro informace o službě SAP HANA](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![\_Statistika služby Hana \_ pro informace o službě SAP HANA](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-**\_Přehled\_konfigurace\_Hana Rev110 +** pro obecné informace o instanci SAP HANA.
+**Hana \_ \_Přehled konfigurace \_ Rev110 +** pro obecné informace o instanci SAP HANA.
 
-![Přehled\_\_konfigurace\_Hana Rev110 + pro obecné informace o instanci SAP HANA](./media/troubleshooting-monitoring/image14-configuration-overview.png)
+![\_Přehled konfigurace \_ Hana \_ Rev110 + pro obecné informace o instanci SAP HANA](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**\_Parametry\_konfigurace\_Hana Rev70 +** pro kontrolu parametrů SAP HANA.
+**Hana \_ \_Parametry konfigurace \_ Rev70 +** pro kontrolu parametrů SAP HANA.
 
-![Parametry\_\_konfigurace\_HANA Rev70 + pro kontrolu parametrů SAP HANA](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
+![\_Parametry konfigurace \_ Hana \_ Rev70 + pro kontrolu parametrů SAP HANA](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
 **Další kroky**
 

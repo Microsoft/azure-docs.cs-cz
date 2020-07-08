@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
 ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77212280"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure PowerShell
@@ -41,11 +40,11 @@ Získáte informace o těchto tématech:
 Než začnete, potřebujete:
 - Ujistěte se, že rozumíte [komponentám a architektuře řešení](azure-to-azure-architecture.md).
 - Zkontrolujte [požadavky na podporu](azure-to-azure-support-matrix.md) pro všechny komponenty.
-- Máte modul Azure PowerShell `Az` . Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
+- Máte `Az` modul Azure PowerShell. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Přihlaste se k předplatnému Microsoft Azure.
 
-Přihlaste se k předplatnému `Connect-AzAccount` Azure pomocí rutiny.
+Přihlaste se k předplatnému Azure pomocí `Connect-AzAccount` rutiny.
 
 ```azurepowershell
 Connect-AzAccount
@@ -59,7 +58,7 @@ Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 ## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>Získat podrobnosti o virtuálním počítači, který se má replikovat
 
-V tomto článku se virtuální počítač v Východní USA oblasti replikuje do Západní USA 2 oblasti a obnoví se. Replikovaný virtuální počítač má disk s operačním systémem a jeden datový disk. Název virtuálního počítače použitý v příkladu je `AzureDemoVM`.
+V tomto článku se virtuální počítač v Východní USA oblasti replikuje do Západní USA 2 oblasti a obnoví se. Replikovaný virtuální počítač má disk s operačním systémem a jeden datový disk. Název virtuálního počítače použitý v příkladu je `AzureDemoVM` .
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -115,7 +114,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-Vytvořte Trezor služby Recovery Services. V tomto příkladu je ve Západní USA 2 oblasti vytvořený `a2aDemoRecoveryVault` trezor Recovery Services s názvem.
+Vytvořte Trezor služby Recovery Services. V tomto příkladu `a2aDemoRecoveryVault` je ve západní USA 2 oblasti vytvořený trezor Recovery Services s názvem.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -170,7 +169,7 @@ Objekt Fabric v trezoru představuje oblast Azure. Vytvoří se primární objek
 - V jednotlivých oblastech se dá vytvořit jenom jeden objekt Fabric.
 - Pokud jste dříve povolili Site Recovery replikaci pro virtuální počítač v Azure Portal, Site Recovery vytvoří objekt Fabric automaticky. Pokud objekt Fabric pro oblast existuje, nemůžete vytvořit nový objekt.
 
-Než začnete, pochopte, že Site Recovery operace se provádějí asynchronně. Když zahájíte operaci, odešle se Azure Site Recovery úloha a vrátí se objekt sledování úlohy. Pomocí objektu sledování úlohy můžete získat nejnovější stav úlohy (`Get-AzRecoveryServicesAsrJob`) a monitorovat stav operace.
+Než začnete, pochopte, že Site Recovery operace se provádějí asynchronně. Když zahájíte operaci, odešle se Azure Site Recovery úloha a vrátí se objekt sledování úlohy. Pomocí objektu sledování úlohy můžete získat nejnovější stav úlohy ( `Get-AzRecoveryServicesAsrJob` ) a monitorovat stav operace.
 
 ```azurepowershell
 #Create Primary ASR fabric

@@ -16,10 +16,9 @@ ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
 ms.openlocfilehash: b41db629c5308348f632b3dc51c75822ba361c60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77591349"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure ve Windows pomocí protokolu SMB (Azure NetApp Files) pro aplikace SAP
@@ -80,7 +79,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 * [Architektura a scénáře s vysokou dostupností pro Azure Virtual Machines pro SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
 * [Přidat port sondy v konfiguraci clusteru ASCS](sap-high-availability-installation-wsfc-file-share.md)
 * [Instalace instance SCS (A) do clusteru s podporou převzetí služeb při selhání](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
-* [Vytvoření svazku SMB pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)
+* [Vytvoření svazku SMB pro službu Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)
 * [NetApp aplikace SAP na Microsoft Azure pomocí Azure NetApp Files][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Přehled
@@ -147,7 +146,7 @@ Od SAP budete potřebovat následující software:
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Instalace instance ASCS/SCS na prvním uzlu clusteru ASCS/SCS
 
-1. Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Spusťte instalační nástroj SAP SWPM a pak přejděte na: **produkt** > **DBMS** > instalace > aplikační server ABAP (nebo Java) > vysoce dostupného systému > ASCS/SCS instance > prvním uzlu clusteru.  
+1. Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Spusťte instalační nástroj SAP SWPM a pak přejděte na: **produkt**  >  **DBMS** > instalace > aplikační server ABAP (nebo Java) > vysoce dostupného systému > ASCS/SCS instance > prvním uzlu clusteru.  
 
 2. Jako konfiguraci sdílené složky clusteru v SWPM vyberte **cluster Shared File** .  
 3. Po zobrazení výzvy ke kroku o **parametrech systémového clusteru SAP**zadejte název hostitele pro sdílenou složku SMB Azure NetApp Files, kterou jste už vytvořili jako **název hostitele pro sdílení souborů**.  V tomto příkladu je název hostitele sdílené složky SMB **anfsmb-9562**. 
@@ -158,11 +157,11 @@ Od SAP budete potřebovat následující software:
 > [!TIP]
 > Pokud výsledky kontroly požadovaných součástí SWPM ukazují, že se podmínka změny velikosti nevyhověla, můžete velikost SWAPu upravit tak, že přejdete do složky počítač>vlastnosti systému>nastavení výkonu> Pokročilá> virtuální paměť> změnit.  
 
-4. Nakonfigurujte prostředek clusteru SAP, port `SAP-SID-IP` testu pomocí prostředí PowerShell. Tuto konfiguraci spusťte na jednom z uzlů clusteru SAP ASCS/SCS, jak je popsáno v tématu [Konfigurace portu testu paměti](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761).
+4. Nakonfigurujte prostředek clusteru SAP, `SAP-SID-IP` port testu pomocí prostředí PowerShell. Tuto konfiguraci spusťte na jednom z uzlů clusteru SAP ASCS/SCS, jak je popsáno v tématu [Konfigurace portu testu paměti](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk#10822f4f-32e7-4871-b63a-9b86c76ce761).
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>Instalace instance ASCS/SCS na druhý uzel clusteru ASCS/SCS
 
-1. Nainstalujte instanci SAP ASCS/SCS na druhý uzel clusteru. Spusťte nástroj pro instalaci SAP SWPM a pak přejděte na **produkt** > **DBMS** > instalaci > aplikační server ABAP (nebo Java) > vysoké dostupnosti > ASCS/SCS instance > další uzel clusteru.  
+1. Nainstalujte instanci SAP ASCS/SCS na druhý uzel clusteru. Spusťte nástroj pro instalaci SAP SWPM a pak přejděte na **produkt**  >  **DBMS** > instalaci > aplikační server ABAP (nebo Java) > vysoké dostupnosti > ASCS/SCS instance > další uzel clusteru.  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Instalace instance systému DBMS a aplikačních serverů SAP
 
@@ -177,9 +176,9 @@ Dokončete instalaci SAP tím, že nainstalujete:
 ### <a name="fail-over-from-cluster-node-a-to-cluster-node-b-and-back"></a>Převzetí služeb při selhání z uzlu clusteru A na uzel clusteru B a back
 V tomto scénáři testování odkazujeme na uzel clusteru sapascs1 jako Node A a na uzel Node sapascs2 jako uzel B.
 
-1. Ověřte, že prostředky clusteru běží na uzlu A. obrázek ![1: prostředky clusteru s podporou převzetí služeb při selhání Windows serveru spuštěné v uzlu a před testem převzetí služeb při selhání.](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
+1. Ověřte, zda jsou v uzlu A spuštěny prostředky clusteru. ![ Obrázek 1: prostředky clusteru s podporou převzetí služeb při selhání Windows serveru spuštěné v uzlu A před testem](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-1.png)  
 
-2. Restartujte uzel clusteru A. Prostředky clusteru SAP se přesunou na uzel clusteru B. ![obrázek 2: prostředky clusteru s podporou převzetí služeb při selhání Windows serveru spuštěné v uzlu B po provedení testu převzetí služeb při selhání](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
+2. Restartujte uzel clusteru A. Prostředky clusteru SAP se přesunou na uzel clusteru B. ![ Obrázek 2: prostředky clusteru s podporou převzetí služeb při selhání systému Windows Server spuštěné v uzlu B po dokončení testu](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-2.png)  
 
 
 ## <a name="lock-entry-test"></a>Test položky zámku

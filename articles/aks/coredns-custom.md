@@ -7,10 +7,9 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
 ms.openlocfilehash: 78132a53313f4a8ee5c10af340c8dab08c3e42c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595820"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Přizpůsobení CoreDNS pomocí služby Azure Kubernetes Service
@@ -24,7 +23,7 @@ V tomto článku se dozvíte, jak používat ConfigMaps pro základní možnosti
 > [!NOTE]
 > `kube-dns`k dispozici jsou různé [Možnosti přizpůsobení][kubednsblog] prostřednictvím mapy konfigurace Kubernetes. CoreDNS není **zpětně** kompatibilní s Kube-DNS. Všechna vlastní nastavení, která jste předtím použili, musíte aktualizovat pro použití s CoreDNS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -34,7 +33,7 @@ Podporují se všechny integrované moduly plug-in CoreDNS. Nepodporují se žá
 
 ## <a name="rewrite-dns"></a>Přepsat DNS
 
-Jedním z scénářů je provést přepisování názvů DNS průběžně. V následujícím příkladu nahraďte `<domain to be written>` svým vlastním plně kvalifikovaným názvem domény. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující příklad konfigurace:
+Jedním z scénářů je provést přepisování názvů DNS průběžně. V následujícím příkladu nahraďte svým `<domain to be written>` vlastním plně kvalifikovaným názvem domény. Vytvořte soubor s názvem `corednsms.yaml` a vložte následující příklad konfigurace:
 
 ```yaml
 apiVersion: v1
@@ -64,14 +63,14 @@ Chcete-li ověřit použití vlastních nastavení, použijte [kubectl Get confi
 kubectl get configmaps --namespace=kube-system coredns-custom -o yaml
 ```
 
-Nyní vynuťte CoreDNS znovu načíst ConfigMap. Příkaz [kubectl Delete pod][kubectl delete] není destruktivní a nezpůsobuje čas. `kube-dns` Lusky se odstraní a Plánovač Kubernetes je pak znovu vytvoří. Tyto nové lusky obsahují změnu hodnoty TTL.
+Nyní vynuťte CoreDNS znovu načíst ConfigMap. Příkaz [kubectl Delete pod][kubectl delete] není destruktivní a nezpůsobuje čas. `kube-dns`Lusky se odstraní a Plánovač Kubernetes je pak znovu vytvoří. Tyto nové lusky obsahují změnu hodnoty TTL.
 
 ```console
 kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> Výše uvedený příkaz je správný. I když se mění `coredns`, nasazení je pod názvem **Kube-DNS** .
+> Výše uvedený příkaz je správný. I když se mění `coredns` , nasazení je pod názvem **Kube-DNS** .
 
 ## <a name="custom-forward-server"></a>Vlastní server pro přeposílání
 

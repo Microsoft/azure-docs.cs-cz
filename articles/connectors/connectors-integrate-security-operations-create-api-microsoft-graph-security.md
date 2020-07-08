@@ -10,10 +10,9 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77598829"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zvyšte ochranu před hrozbami integrací operací zabezpečení pomocí Microsoft Graph zabezpečení & Azure Logic Apps
@@ -91,12 +90,12 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky, 
 
 1.  V aktivační události zadejte informace o výstrahách, které chcete monitorovat. Pro další vlastnosti otevřete seznam **Přidat nový parametr** a vyberte parametr pro přidání této vlastnosti aktivační události.
 
-   | Vlastnost | Property (JSON) | Požaduje se | Typ | Popis |
+   | Vlastnost | Property (JSON) | Požaduje se | Typ | Description |
    |----------|-----------------|----------|------|-------------|
-   | **Doba** | `interval` | Ano | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p><p>-Month: 1-16 měsíců <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
-   | **Frekvence** | `frequency` | Ano | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
-   | **Časové pásmo** | `timeZone` | Ne | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
-   | **Čas spuštění** | `startTime` | Ne | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p><p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Doba** | `interval` | Yes | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p><p>-Month: 1-16 měsíců <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
+   | **Frekvence** | `frequency` | Yes | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
+   | **Časové pásmo** | `timeZone` | No | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
+   | **Čas spuštění** | `startTime` | No | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p><p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
 1.  Až budete hotovi, na panelu nástrojů návrháře vyberte **Uložit**.
@@ -107,44 +106,44 @@ Tento příklad ukazuje, jak můžete spustit pracovní postup aplikace logiky, 
 
 Tady najdete konkrétnější podrobnosti o používání různých akcí, které jsou k dispozici u konektoru Microsoft Graph Security.
 
-### <a name="manage-alerts"></a>Správa upozornění
+### <a name="manage-alerts"></a>Správa výstrah
 
-Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/v1.0/security/alerts`, nebo. `GET` `PATCH` Tady je konkrétní příklad, který zobrazuje parametry pro akci **získat výstrahy** , když chcete zobrazit seznam s výstrahami s vysokou závažností:
+Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/v1.0/security/alerts` , nebo `GET` `PATCH` . Tady je konkrétní příklad, který zobrazuje parametry pro akci **získat výstrahy** , když chcete zobrazit seznam s výstrahami s vysokou závažností:
 
 `Filter alerts value as Severity eq 'high'`
 
 Další informace o dotazech, které můžete použít s tímto konektorem, najdete v [referenční dokumentaci k výstrahám zabezpečení Microsoft Graph](https://docs.microsoft.com/graph/api/alert-list). Pokud chcete s tímto konektorem vytvářet vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu výstrahy](https://docs.microsoft.com/graph/api/resources/alert) , které konektor podporuje.
 
-| Akce | Popis |
+| Akce | Description |
 |--------|-------------|
-| **Získat výstrahy** | Získejte filtrované výstrahy na základě jedné nebo více [vlastností výstrahy](https://docs.microsoft.com/graph/api/resources/alert), například `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. | 
+| **Získat výstrahy** | Získejte filtrované výstrahy na základě jedné nebo více [vlastností výstrahy](https://docs.microsoft.com/graph/api/resources/alert), například `Provider eq 'Azure Security Center' or 'Palo Alto Networks'` . | 
 | **Získat upozornění podle ID** | Získat konkrétní výstrahu na základě ID výstrahy. | 
 | **Aktualizovat upozornění** | Aktualizace konkrétní výstrahy na základě ID výstrahy. Chcete-li se ujistit, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti výstrah](https://docs.microsoft.com/graph/api/alert-update). Chcete-li například přiřadit upozornění analytikovi zabezpečení, aby bylo možné je prozkoumat, můžete aktualizovat vlastnost **přiřazeno pro** výstrahu. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Správa odběrů výstrah
 
-Microsoft Graph podporuje [*odběry*](https://docs.microsoft.com/graph/api/resources/subscription)nebo [*Webhooky*](https://docs.microsoft.com/graph/api/resources/webhooks). Chcete-li získat, aktualizovat nebo odstranit odběry, zadejte [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) do konstruktoru entity Microsoft Graph a zahrňte `security/alerts` a pak dotaz OData. *Nezahrnujte základní* adresu URL, například `https://graph.microsoft.com/v1.0`. Místo toho použijte formát v tomto příkladu:
+Microsoft Graph podporuje [*odběry*](https://docs.microsoft.com/graph/api/resources/subscription)nebo [*Webhooky*](https://docs.microsoft.com/graph/api/resources/webhooks). Chcete-li získat, aktualizovat nebo odstranit odběry, zadejte [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters) do konstruktoru entity Microsoft Graph a zahrňte a `security/alerts` pak dotaz OData. *Nezahrnujte základní* adresu URL, například `https://graph.microsoft.com/v1.0` . Místo toho použijte formát v tomto příkladu:
 
 `security/alerts?$filter=status eq 'New'`
 
-| Akce | Popis |
+| Akce | Description |
 |--------|-------------|
 | **Vytvoření předplatných** | [Vytvořte předplatné](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) , které vás upozorní na jakékoli změny. Toto předplatné můžete filtrovat pro konkrétní typy výstrah, které chcete. Můžete například vytvořit předplatné, které vás upozorní na upozornění s vysokou závažností. |
 | **Získat aktivní odběry** | [Získání neplatných odběrů](https://docs.microsoft.com/graph/api/subscription-list) | 
-| **Aktualizovat předplatné** | [Aktualizujte předplatné](https://docs.microsoft.com/graph/api/subscription-update) ZADÁNÍm ID předplatného. Pokud třeba chcete prodloužení předplatného, můžete aktualizovat `expirationDateTime` vlastnost předplatného. | 
+| **Aktualizovat předplatné** | [Aktualizujte předplatné](https://docs.microsoft.com/graph/api/subscription-update) ZADÁNÍm ID předplatného. Pokud třeba chcete prodloužení předplatného, můžete aktualizovat vlastnost předplatného `expirationDateTime` . | 
 | **Odstranění předplatného** | [Odstraňte předplatné](https://docs.microsoft.com/graph/api/subscription-delete) ZADÁNÍm ID předplatného. | 
 ||| 
 
 ### <a name="manage-threat-intelligence-indicators"></a>Spravovat indikátory logiky hrozeb
 
-Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/beta/security/tiIndicators`, nebo. `GET` `PATCH` Tady je konkrétní příklad, který zobrazuje parametry pro akci **Get tiIndicators** , když chcete zobrazit seznam s typem `DDoS` hrozby:
+Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/beta/security/tiIndicators` , nebo `GET` `PATCH` . Tady je konkrétní příklad, který zobrazuje parametry pro akci **Get tiIndicators** , když chcete zobrazit seznam s `DDoS` typem hrozby:
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
 Další informace o dotazech, které můžete použít s tímto konektorem, najdete [v části "volitelné parametry dotazu" v tématu Referenční dokumentace k nástroji Microsoft Graph Security Threat Intelligence](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http). Pokud chcete s tímto konektorem sestavovat vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu – indikátor analýzy hrozeb](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) , který konektor podporuje.
 
-| Akce | Popis |
+| Akce | Description |
 |--------|-------------|
 | **Získat indikátory pro analýzu hrozeb** | Získání tiIndicators filtrovaných na základě jedné nebo více [tiIndicator vlastností](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta), například`threatType eq 'MaliciousUrl' or 'DDoS'` |
 | **Získat indikátor analýzy hrozeb podle ID** | Získá konkrétní tiIndicator na základě ID tiIndicator. | 

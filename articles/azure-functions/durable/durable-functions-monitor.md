@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562118"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénář monitorování Durable Functions – ukázka sledovacích procesů počasí
@@ -38,7 +37,7 @@ Tato ukázka monitoruje aktuální povětrnostní podmínky umístění a upozor
 
 Tato ukázka zahrnuje použití povětrnostního rozhraní API ke kontrole aktuálních povětrnostních podmínek pro určité místo.
 
-První věc, kterou potřebujete, je účet v podzemních počasí. Můžete ho vytvořit zdarma na adrese [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Jakmile budete mít účet, budete muset získat klíč rozhraní API. Můžete to udělat tak, že [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)navštívíte a pak vyberete nastavení klíče. Plán pro vývojáře Stratus je zdarma a stačí ke spuštění této ukázky.
+První věc, kterou potřebujete, je účet v podzemních počasí. Můžete ho vytvořit zdarma na adrese [https://www.wunderground.com/signup](https://www.wunderground.com/signup) . Jakmile budete mít účet, budete muset získat klíč rozhraní API. Můžete to udělat tak, že navštívíte [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1) a pak vyberete nastavení klíče. Plán pro vývojáře Stratus je zdarma a stačí ke spuštění této ukázky.
 
 Jakmile budete mít klíč rozhraní API, přidejte do aplikace Function App následující **nastavení aplikace** .
 
@@ -50,7 +49,7 @@ Jakmile budete mít klíč rozhraní API, přidejte do aplikace Function App ná
 
 Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
-* `E3_Monitor`: [Funkce Orchestrator](durable-functions-bindings.md#orchestration-trigger) , která provádí `E3_GetIsClear` pravidelné volání. Volá `E3_SendGoodWeatherAlert` , pokud `E3_GetIsClear` vrátí hodnotu true.
+* `E3_Monitor`: [Funkce Orchestrator](durable-functions-bindings.md#orchestration-trigger) , která provádí `E3_GetIsClear` pravidelné volání. Volá, `E3_SendGoodWeatherAlert` Pokud `E3_GetIsClear` vrátí hodnotu true.
 * `E3_GetIsClear`: [Funkce Activity](durable-functions-bindings.md#activity-trigger) , která kontroluje aktuální povětrnostní podmínky pro určité místo.
 * `E3_SendGoodWeatherAlert`: Funkce aktivity, která odesílá zprávu SMS prostřednictvím Twilio.
 
@@ -64,7 +63,7 @@ Nástroj Orchestrator vyžaduje místo, kde se má monitorovat, a telefonní č�
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Funkce **E3_Monitor** používá standardní *funkci Function. JSON* pro funkce Orchestrator.
+Funkce **E3_Monitor** používá standardní *function.js* pro funkce nástroje Orchestrator.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/function.json)]
 
@@ -95,7 +94,7 @@ Stejně jako u jiných ukázek jsou funkce aktivity pomocníka běžné funkcemi
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-*Funkce Function. JSON* je definována takto:
+*function.jsv* je definován následujícím způsobem:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
@@ -114,11 +113,11 @@ Funkce **E3_SendGoodWeatherAlert** používá vazbu Twilio k odeslání zprávy 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
 
 > [!NOTE]
-> Pro spuštění ukázkového kódu budete `Microsoft.Azure.WebJobs.Extensions.Twilio` muset nainstalovat balíček NuGet.
+> `Microsoft.Azure.WebJobs.Extensions.Twilio`Pro spuštění ukázkového kódu budete muset nainstalovat balíček NuGet.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Jeho *Function. JSON* je jednoduchý:
+Jeho *function.jsv systému* je jednoduchý:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/function.json)]
 
@@ -169,7 +168,7 @@ Aktivitu orchestrace si můžete prohlédnout v protokolech funkce na portálu A
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Orchestrace se [ukončí](durable-functions-instance-management.md) po dosažení časového limitu nebo se zjistí vymazání Skies. Můžete také `TerminateAsync` použít (.NET) `terminate` nebo (JavaScript) uvnitř jiné funkce nebo vyvolat Webhook **terminatePostUri** http, na který se odkazuje v odpovědi 202, nahrazuje `{text}` se důvodem ukončení:
+Orchestrace se [ukončí](durable-functions-instance-management.md) po dosažení časového limitu nebo se zjistí vymazání Skies. Můžete také použít `TerminateAsync` (.NET) nebo `terminate` (JavaScript) uvnitř jiné funkce nebo vyvolat Webhook **terminatePostUri** http, na který se odkazuje v odpovědi 202, nahrazuje `{text}` se důvodem ukončení:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

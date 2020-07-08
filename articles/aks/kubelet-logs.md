@@ -5,19 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595378"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Získání protokolů kubelet z uzlů clusteru Azure Kubernetes Service (AKS)
 
 V rámci provozu clusteru AKS možná budete muset zkontrolovat protokoly a vyřešit problém. Integrovaná do Azure Portal je schopnost zobrazit protokoly pro [hlavní komponenty][aks-master-logs] a [kontejnery AKS v clusteru AKS][azure-container-logs]. V některých případech může být potřeba získat protokoly *kubelet* z uzlu AKS pro účely řešení potíží.
 
-V tomto článku se dozvíte, jak `journalctl` můžete pomocí nástroje zobrazit protokoly *KUBELET* v uzlu AKS.
+V tomto článku se dozvíte, jak můžete pomocí nástroje `journalctl` Zobrazit protokoly *kubelet* v uzlu AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 

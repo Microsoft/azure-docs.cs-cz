@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425880"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití nástroje MirrorMaker k replikaci témat Apache Kafka s využitím platformy Kafka ve službě HDInsight
@@ -81,7 +80,7 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 1. Vytvořte partnerské vztahy virtuálních sítí. V tomto kroku vytvoříte dvě partnerské vztahy: jednu z **Kafka-Primary-** VNet na **Kafka-Secondary-VNet** a jednu zpět od **Kafka-Secondary-VNet** až **Kafka-Primary-VNet**.
     1. Vyberte virtuální síť **Kafka-Primary-VNet** .
     1. V části **Nastavení**vyberte **partnerské vztahy** .
-    1. Vyberte **Přidat**.
+    1. Vyberte možnost **Přidat**.
     1. Na obrazovce **Přidat partnerský vztah** zadejte podrobnosti, jak je znázorněno na snímku obrazovky níže.
 
         ![HDInsight Kafka Přidání partnerského vztahu virtuální sítě](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
@@ -90,8 +89,8 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 
 Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adres zprostředkovatele místo názvů domén.
 
-1. Pro primární cluster přejít na řídicí panel Ambari: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`
-1. Vyberte **služby** > **Kafka**. CliSelectck kartu **Konfigurace** .
+1. Pro primární cluster přejít na řídicí panel `https://PRIMARYCLUSTERNAME.azurehdinsight.net` Ambari:
+1. Vyberte **služby**  >  **Kafka**. CliSelectck kartu **Konfigurace** .
 1. Do dolní části **šablony Kafka-ENV** přidejte následující konfigurační řádky. Vyberte **Uložit**.
 
     ```
@@ -105,13 +104,13 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 1. Na obrazovce **Uložit konfiguraci** zadejte poznámku a klikněte na **Uložit**.
 1. Pokud se zobrazí výzva s upozorněním konfigurace, klikněte **přesto na pokračovat**.
 1. V části **Uložit změny konfigurace**vyberte **OK** .
-1. Vyberte **restartovat** > restart**všech ovlivněných** v oznámení **požadovaná k restartování** . Vyberte **Potvrdit restartování vše**.
+1. Vyberte **restartovat**restart  >  **všech ovlivněných** v oznámení **požadovaná k restartování** . Vyberte **Potvrdit restartování vše**.
 
     ![Ambari restartování Apache All ovlivnilo](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Nakonfigurujte Kafka, aby naslouchal na všech síťových rozhraních.
     
-1. Zůstat na kartě **Konfigurace** v části **služby** > **Kafka**. V části **Kafka Broker** nastavte vlastnost **Listeners** na `PLAINTEXT://0.0.0.0:9092`.
+1. Zůstat na kartě **Konfigurace** v části **služby**  >  **Kafka**. V části **Kafka Broker** nastavte vlastnost **Listeners** na `PLAINTEXT://0.0.0.0:9092` .
 1. Vyberte **Uložit**.
 1. Vyberte **restartovat**a **potvrďte restart vše**.
 
@@ -136,14 +135,14 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Pomocí následujícího příkazu vytvořte proměnnou s hostiteli Apache Zookeeper pro primární cluster. Řetězce jako `ZOOKEEPER_IP_ADDRESS1` musí být nahrazeny skutečnými IP adresami zaznamenanými dříve, například `10.23.0.11` a `10.23.0.7`. Pokud používáte překlad plně kvalifikovaného názvu domény s vlastním serverem DNS, postupujte podle [těchto kroků](apache-kafka-get-started.md#getkafkainfo) a získejte názvy pro Broker a Zookeeper:
+1. Pomocí následujícího příkazu vytvořte proměnnou s hostiteli Apache Zookeeper pro primární cluster. Řetězce jako `ZOOKEEPER_IP_ADDRESS1` musí být nahrazeny skutečnými IP adresami zaznamenanými dříve, například `10.23.0.11` a `10.23.0.7` . Pokud používáte překlad plně kvalifikovaného názvu domény s vlastním serverem DNS, postupujte podle [těchto kroků](apache-kafka-get-started.md#getkafkainfo) a získejte názvy pro Broker a Zookeeper:
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-1. Chcete-li vytvořit téma `testtopic`s názvem, použijte následující příkaz:
+1. Chcete-li vytvořit téma s názvem `testtopic` , použijte následující příkaz:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
@@ -155,7 +154,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-    Odpověď obsahuje `testtopic`.
+    Odpověď obsahuje `testtopic` .
 
 1. K zobrazení informací o hostiteli Zookeeper pro tento ( **primární**) cluster použijte následující postup:
 
@@ -181,13 +180,13 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. `consumer.properties` Soubor se používá ke konfiguraci komunikace s **primárním** clusterem. Chcete-li vytvořit soubor, použijte následující příkaz:
+1. `consumer.properties`Soubor se používá ke konfiguraci komunikace s **primárním** clusterem. Chcete-li vytvořit soubor, použijte následující příkaz:
 
     ```bash
     nano consumer.properties
     ```
 
-    Jako obsah `consumer.properties` souboru použijte následující text:
+    Jako obsah souboru použijte následující text `consumer.properties` :
 
     ```yaml
     zookeeper.connect=PRIMARY_ZKHOSTS
@@ -210,13 +209,13 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-1. `producer.properties` Soubor se používá ke komunikaci **sekundárního** clusteru. Chcete-li vytvořit soubor, použijte následující příkaz:
+1. `producer.properties`Soubor se používá ke komunikaci **sekundárního** clusteru. Chcete-li vytvořit soubor, použijte následující příkaz:
 
     ```bash
     nano producer.properties
     ```
 
-    Jako obsah `producer.properties` souboru použijte následující text:
+    Jako obsah souboru použijte následující text `producer.properties` :
 
     ```yaml
     bootstrap.servers=SECONDARY_BROKERHOSTS
@@ -250,9 +249,9 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 
         Chcete-li nakonfigurovat sekundární cluster tak, aby automaticky vytvářel témata, proveďte tyto kroky:
 
-        1. Pro sekundární cluster přejít na řídicí panel Ambari: `https://SECONDARYCLUSTERNAME.azurehdinsight.net`
-        1. Klikněte na **služby** > **Kafka**. Klikněte na kartu **Konfigurace** .
-        1. Do pole __Filtr__ zadejte hodnotu `auto.create`. Tím se vyfiltruje seznam vlastností a zobrazí `auto.create.topics.enable` se nastavení.
+        1. Pro sekundární cluster přejít na řídicí panel `https://SECONDARYCLUSTERNAME.azurehdinsight.net` Ambari:
+        1. Klikněte na **služby**  >  **Kafka**. Klikněte na kartu **Konfigurace** .
+        1. Do pole __Filtr__ zadejte hodnotu `auto.create` . Tím se vyfiltruje seznam vlastností a zobrazí se `auto.create.topics.enable` nastavení.
         1. Změňte hodnotu `auto.create.topics.enable` na true a pak vyberte __Save (Uložit__). Přidejte poznámku a pak znovu vyberte __Uložit__ .
         1. Vyberte službu __Kafka__ , vyberte __restartovat__a pak vyberte __restartovat všechny ovlivněné__. Po zobrazení výzvy vyberte __Potvrdit restartování vše__.
 
@@ -270,8 +269,8 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 
     |Parametr |Popis |
     |---|---|
-    |--Consumer. config|Určuje soubor, který obsahuje vlastnosti příjemce. Tyto vlastnosti slouží k vytvoření příjemce, který čte z *primárního* clusteru Kafka.|
-    |--producent. config|Určuje soubor, který obsahuje vlastnosti výrobce. Tyto vlastnosti slouží k vytvoření producenta, který zapisuje do *sekundárního* clusteru Kafka.|
+    |--consumer.config|Určuje soubor, který obsahuje vlastnosti příjemce. Tyto vlastnosti slouží k vytvoření příjemce, který čte z *primárního* clusteru Kafka.|
+    |--producer.config|Určuje soubor, který obsahuje vlastnosti výrobce. Tyto vlastnosti slouží k vytvoření producenta, který zapisuje do *sekundárního* clusteru Kafka.|
     |--seznam povolených|Seznam témat, která nástroje MirrorMaker replikují z primárního clusteru do sekundárního.|
     |--NUM. Streams|Počet uživatelských vláken, která se mají vytvořit|
 
@@ -292,7 +291,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --bootstrap-server $SECONDARY_ZKHOSTS --topic testtopic --from-beginning
     ```
 
-    Seznam témat nyní zahrnuje `testtopic`, který se vytvoří, když MirrorMaster zrcadlí téma z primárního clusteru do sekundárního. Zprávy načtené z tématu jsou stejné jako ty, které jste zadali v primárním clusteru.
+    Seznam témat nyní zahrnuje `testtopic` , který se vytvoří, když MirrorMaster zrcadlí téma z primárního clusteru do sekundárního. Zprávy načtené z tématu jsou stejné jako ty, které jste zadali v primárním clusteru.
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 

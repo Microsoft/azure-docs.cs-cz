@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
 ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77468758"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
@@ -93,22 +92,22 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 - Změna stavu indexování: 
     - Vlastnosti:    
     
-        |Název|Popis|
+        |Name|Description|
         |---|---|
         |id|ID videa|
         |state|Stav videa|  
-    - Příklad: https:\//test.com/notifyme?ProjectName=MyProject&ID = 1234abcd&State = zpracovaná
+    - Příklad: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&State = zpracovaná
 - Osoba identifikovaná ve videu:
   - Vlastnosti
     
-      |Název|Popis|
+      |Name|Description|
       |---|---|
       |id| ID videa|
       |faceId|ID obličeje, které se zobrazí v indexu videa|
       |knownPersonId|Jedinečné ID osoby v rámci modelu obličeje|
       |personName|Jméno osoby|
         
-    - Příklad: https:\//test.com/notifyme?ProjectName=MyProject&ID = 1234abcd&FaceID = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&person = Inigo_Montoya 
+    - Příklad: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&FaceID = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&person = Inigo_Montoya 
 
 ##### <a name="notes"></a>Poznámky
 
@@ -126,7 +125,7 @@ Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují �
 
 > [!NOTE]
 > Video Indexer pokrývá až dvě stopy zvuku. Pokud je v souboru více zvukových stop, budou považovány za jednu stopu.<br/>
-Pokud chcete tyto stopy indexovat samostatně, budete si muset extrahovat relevantní zvukový soubor a indexovat ho jako `AudioOnly`.
+Pokud chcete tyto stopy indexovat samostatně, budete si muset extrahovat relevantní zvukový soubor a indexovat ho jako `AudioOnly` .
 
 Cena závisí na vybrané možnosti indexování.  
 
@@ -164,9 +163,9 @@ Po zkopírování tohoto kódu na vývojovou platformu budete muset zadat dva pa
 
     Pokud chcete získat klíč rozhraní API, Projděte si tento tok:
 
-    * Přejít nahttps://api-portal.videoindexer.ai/
+    * Přejděte na adresu https://api-portal.videoindexer.ai/.
     * Přihlásit
-    * Přejít na **Products** -> **Authorization** -> **předplatné autorizační autorizace** na produkty
+    * Přejít na **Products**  ->  **Authorization**  ->  **předplatné autorizační autorizace** na produkty
     * Zkopírování **primárního klíče**
 * Adresa URL videa – adresa URL videosouboru nebo zvukového souboru, který se má indexovat. Adresa URL musí odkazovat na soubor média (stránky HTML nejsou podporované). Soubor se dá chránit přístupovým tokenem poskytnutým jako součást identifikátoru URI a koncový bod poskytující soubor musí být zabezpečený pomocí protokolu TLS 1.2 nebo vyššího. Adresa URL musí být zakódovaná.
 
@@ -348,7 +347,7 @@ public class AccountContractSlim
 
 Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 
-|Kód stavu|ErrorType (v textu odpovědi)|Popis|
+|Stavový kód|ErrorType (v textu odpovědi)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|

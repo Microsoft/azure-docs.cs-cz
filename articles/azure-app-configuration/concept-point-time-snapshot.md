@@ -9,10 +9,9 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 1e2a4f7a7bc5db1b6a49f085821f7fa2bde54229
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523649"
 ---
 # <a name="point-in-time-snapshot"></a>Snímek k určitému časovému okamžiku
@@ -21,7 +20,7 @@ Konfigurace aplikace Azure udržuje záznam změn provedených u párů klíč-h
 
 ## <a name="key-value-retrieval"></a>Načtení hodnoty klíče
 
-Pomocí Azure PowerShell můžete načíst dřívější hodnoty klíčů.  Použijte `az appconfig revision list`, pokud chcete načíst požadované hodnoty, přidejte příslušné parametry.  Zadáním názvu úložiště (`--name {app-config-store-name}`) nebo pomocí připojovacího řetězce (`--connection-string {your-connection-string}`) zadejte instanci Azure App Configuration. Omezte výstup zadáním určitého bodu v čase (`--datetime`) a zadáním maximálního počtu položek, které se mají vrátit (`--top`).
+Pomocí Azure PowerShell můžete načíst dřívější hodnoty klíčů.  Použijte `az appconfig revision list` , pokud chcete načíst požadované hodnoty, přidejte příslušné parametry.  Zadáním názvu úložiště ( `--name {app-config-store-name}` ) nebo pomocí připojovacího řetězce () zadejte instanci Azure App Configuration `--connection-string {your-connection-string}` . Omezte výstup zadáním určitého bodu v čase ( `--datetime` ) a zadáním maximálního počtu položek, které se mají vrátit ( `--top` ).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -31,25 +30,25 @@ Načte všechny zaznamenané změny hodnot vašich klíčů.
 az appconfig revision list --name {your-app-config-store-name}.
 ```
 
-Načte všechny zaznamenané změny pro klíč `environment` a popisky `test` a `prod`.
+Načte všechny zaznamenané změny pro klíč `environment` a popisky `test` a `prod` .
 
 ```azurepowershell
 az appconfig revision list --name {your-app-config-store-name} --key environment --label test,prod
 ```
 
-Načte všechny zaznamenané změny v hierarchickém klíčovém prostoru `environment:prod`.
+Načte všechny zaznamenané změny v hierarchickém klíčovém prostoru `environment:prod` .
 
 ```azurepowershell
 az appconfig revision list --name {your-app-config-store-name} --key environment:prod:* 
 ```
 
-Načte všechny zaznamenané změny pro klíč `color` v určitém časovém okamžiku.
+Načte všechny zaznamenané změny pro klíč v `color` určitém časovém okamžiku.
 
 ```azurepowershell
 az appconfig revision list --connection-string {your-app-config-connection-string} --key color --datetime "2019-05-01T11:24:12Z" 
 ```
 
-Načte posledních 10 zaznamenaných změn hodnot klíč-hodnota a vrátí pouze hodnoty pro `key`, `label`a `last-modified` časové razítko.
+Načte posledních 10 zaznamenaných změn hodnot klíč-hodnota a vrátí pouze hodnoty pro `key` , `label` a `last-modified` časové razítko.
 
 ```azurepowershell
 az appconfig revision list --name {your-app-config-store-name} --top 10 --fields key,label,last-modified

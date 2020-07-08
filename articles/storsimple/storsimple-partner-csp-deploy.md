@@ -15,10 +15,9 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77466905"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Nasazení StorSimple Virtual Array pro program poskytovatele Cloud Solution Provider
@@ -81,7 +80,7 @@ V některých případech je možné, že máte existujícího zákazníka a pot
 
      ![Řídicí panel v partnerském centru](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. V levém podokně klikněte na **zákazníci**. Najděte zákazníka, kterému chcete přidat předplatné, nebo na něj přejděte. Kliknutím na ![](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) ikonu rozbalit kontrolu ikona rozbalte řádek pro název společnosti pro zákazníka. V části Podrobnosti klikněte na **Přidat odběry**.
+2. V levém podokně klikněte na **zákazníci**. Najděte zákazníka, kterému chcete přidat předplatné, nebo na něj přejděte. Kliknutím na ![ ikonu rozbalit kontrolu ikona ](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) rozbalte řádek pro název společnosti pro zákazníka. V části Podrobnosti klikněte na **Přidat odběry**.
 
     ![Zákazníci](./media/storsimple-partner-csp-deploy/image10.png)
 

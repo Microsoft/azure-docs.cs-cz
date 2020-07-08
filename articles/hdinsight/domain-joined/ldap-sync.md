@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 99bd1ac156b12a5be7b8c5c17eb5b568b7070a25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77463216"
 ---
 # <a name="ldap-sync-in-ranger-and-apache-ambari-in-azure-hdinsight"></a>Synchronizace protokolu LDAP v Ranger a Apache Ambari ve službě Azure HDInsight
@@ -33,9 +32,9 @@ Když se nasadí zabezpečený cluster, členové skupiny se budou synchronizova
 
 ## <a name="ambari-user-sync-and-configuration"></a>Synchronizace a konfigurace uživatelů Ambari
 
-Z hlavních uzlů se úloha `/opt/startup_scripts/start_ambari_ldap_sync.py`cron spouští každou hodinu a naplánuje synchronizaci uživatelů. Úloha cron volá rozhraní Ambari REST API k provedení synchronizace. Skript odešle seznam uživatelů a skupin, které se mají synchronizovat (protože uživatelé nepatří do zadaných skupin, obě jsou zadány jednotlivě). Ambari synchronizuje sAMAccountName jako uživatelské jméno a všechny členy skupiny.
+Z hlavních uzlů se úloha cron `/opt/startup_scripts/start_ambari_ldap_sync.py` spouští každou hodinu a naplánuje synchronizaci uživatelů. Úloha cron volá rozhraní Ambari REST API k provedení synchronizace. Skript odešle seznam uživatelů a skupin, které se mají synchronizovat (protože uživatelé nepatří do zadaných skupin, obě jsou zadány jednotlivě). Ambari synchronizuje sAMAccountName jako uživatelské jméno a všechny členy skupiny.
 
-Protokoly by měly být v `/var/log/ambari-server/ambari-server.log`. Další informace najdete v tématu [Konfigurace úrovně protokolování Ambari](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
+Protokoly by měly být v `/var/log/ambari-server/ambari-server.log` . Další informace najdete v tématu [Konfigurace úrovně protokolování Ambari](https://docs.cloudera.com/HDPDocuments/Ambari-latest/administering-ambari/content/amb_configure_ambari_logging_level.html).
 
 V Data Lakech clusterech se k vytváření domovských složek pro synchronizované uživatele a jejich nastavení jako vlastníci domovských složek používá zavěšení vytvoření uživatele. Pokud uživatel není synchronizovaný tak, aby se Ambari správně, mohl by se uživateli při přístupu k přípravné a jiné dočasné složce setkat chyba.
 
@@ -64,16 +63,16 @@ Přírůstková synchronizace funguje pouze pro uživatele, kteří jsou již sy
 
 ### <a name="update-ranger-sync-filter"></a>Aktualizovat filtr Ranger Sync
 
-Filtr protokolu LDAP najdete v uživatelském rozhraní Ambari v části Konfigurace Ranger uživatele – synchronizace. Existující filtr bude ve formuláři `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))`. Ujistěte se, že na konec přidáte predikát a otestujete filtr pomocí `net ads` příkazu Search nebo souboru Ldp. exe nebo podobného.
+Filtr protokolu LDAP najdete v uživatelském rozhraní Ambari v části Konfigurace Ranger uživatele – synchronizace. Existující filtr bude ve formuláři `(|(userPrincipalName=bob@contoso.com)(userPrincipalName=hdiwatchdog-core01@CONTOSO.ONMICROSOFT.COM)(memberOf:1.2.840.113556.1.4.1941:=CN=hadoopgroup,OU=AADDC Users,DC=contoso,DC=onmicrosoft,DC=com))` . Ujistěte se, že na konec přidáte predikát a otestujete filtr pomocí `net ads` příkazu Search nebo ldp.exe nebo podobného.
 
 ## <a name="ranger-user-sync-logs"></a>Protokoly synchronizace uživatelů Ranger
 
-K synchronizaci uživatelů Ranger může dojít z některého z hlavních. Protokoly jsou v `/var/log/ranger/usersync/usersync.log`. Chcete-li zvýšit úroveň podrobností protokolů, proveďte následující kroky:
+K synchronizaci uživatelů Ranger může dojít z některého z hlavních. Protokoly jsou v `/var/log/ranger/usersync/usersync.log` . Chcete-li zvýšit úroveň podrobností protokolů, proveďte následující kroky:
 
 1. Přihlaste se k Ambari.
 1. Přejít do konfiguračního oddílu Ranger.
 1. Přejít na oddíl Advanced **usersync-log4j** .
-1. `log4j.rootLogger` Změňte na `DEBUG` úroveň (po změně by měla vypadat podobně jako `log4j.rootLogger = DEBUG,logFile,FilterLog`).
+1. Změňte na `log4j.rootLogger` `DEBUG` úroveň (po změně by měla vypadat podobně jako `log4j.rootLogger = DEBUG,logFile,FilterLog` ).
 1. Uložte konfiguraci a restartuje Ranger.
 
 ## <a name="next-steps"></a>Další kroky

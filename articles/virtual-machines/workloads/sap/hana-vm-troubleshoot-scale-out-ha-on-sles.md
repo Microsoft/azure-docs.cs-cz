@@ -13,10 +13,9 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617128"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Ověření a řešení potíží SAP HANA nastavení vysoké dostupnosti škálování na SLES 12 SP3 
@@ -91,7 +90,7 @@ Po SAP HANA doporučení k síti se v jedné virtuální síti Azure vytvořily 
 - 10.0.1.0/24 pro replikaci systému SAP HANA (HSR)
 - 10.0.0.0/24 pro všechno ostatní
 
-Informace o konfiguraci SAP HANA souvisejících s používáním více sítí najdete v tématu [SAP HANA Global. ini](#sap-hana-globalini).
+Informace o konfiguraci SAP HANA souvisejících s používáním více sítí najdete v tématu [SAP HANA global.ini](#sap-hana-globalini).
 
 Každý virtuální počítač v clusteru má tři virtuální síťové AdaptéryY, které odpovídají počtu podsítí. [Postup vytvoření virtuálního počítače se systémem Linux v Azure s několika síťovými kartami][azure-linux-multiple-nics] popisuje potenciální problém s směrováním v Azure při nasazení virtuálního počítače se systémem Linux. Tento konkrétní článek směrování platí jenom pro použití víc virtuální síťové adaptéry. Problém je vyřešen SUSE na výchozí hodnotu v SLES 12 SP3. Další informace najdete v tématu [s více síťovými kartami s cloudovým netconfig v EC2 a Azure][suse-cloud-netconfig].
 
@@ -656,7 +655,7 @@ Waiting for 7 replies from the CRMd....... OK
 
 ## <a name="failover-or-takeover"></a>Převzetí služeb při selhání nebo převzetí
 
-Jak je popsáno v části [Důležité poznámky](#important-notes), neměli byste používat standardní bezproblémové vypnutí k otestování převzetí služeb při selhání clusteru nebo převzetí SAP HANA HSR. Místo toho doporučujeme, abyste aktivovali nouzové jádro, vynutili migraci prostředků nebo případně vypnuli všechny sítě na úrovni operačního systému virtuálního počítače. Další metodou je příkaz **v \<pohotovostním režimu\> uzlu CRM** . Podívejte se na [dokument SUSE][sles-12-ha-paper]. 
+Jak je popsáno v části [Důležité poznámky](#important-notes), neměli byste používat standardní bezproblémové vypnutí k otestování převzetí služeb při selhání clusteru nebo převzetí SAP HANA HSR. Místo toho doporučujeme, abyste aktivovali nouzové jádro, vynutili migraci prostředků nebo případně vypnuli všechny sítě na úrovni operačního systému virtuálního počítače. Další metodou je příkaz **CRM \<node\> Standby** . Podívejte se na [dokument SUSE][sles-12-ha-paper]. 
 
 Následující tři ukázkové příkazy můžou vynutit převzetí služeb při selhání clusteru:
 
@@ -682,7 +681,7 @@ Také pomáhá se zobrazením stavu SAP HANA na šířku ze skriptu SAP Python. 
 
 Dojde k několika opakovaným pokusům, aby nedocházelo k nepotřebným selháním. Cluster se chová jenom v případě, že se stav změní z **OK**, vrátí hodnotu **4**na **chybu**a vrátí hodnotu **1**. Takže je správné, pokud výstup z **SAPHanaSR-showAttr** zobrazuje virtuální počítač se stavem **offline**. Zatím ale neexistuje žádná aktivita pro přepnutí primárního a sekundárního. Žádná aktivita clusteru se neaktivuje, dokud SAP HANA nevrátí chybu.
 
-Můžete monitorovat stav SAP HANA na šířku jako formát ** \<SID\>uživatele Hana** pomocí volání skriptu SAP Python, a to následujícím způsobem. Možná budete muset přizpůsobit cestu:
+Můžete monitorovat stav SAP HANA krajiny na šířku jako text ** \<HANA SID\> ADM** , a to tak, že zavoláte skript SAP Python. Možná budete muset přizpůsobit cestu:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -900,10 +899,10 @@ Sep 13 07:38:02 [4184] hso-hana-vm-s2-0       crmd:     info: pcmk_cpg_membershi
 
 
 
-## <a name="sap-hana-globalini"></a>SAP HANA Global. ini
+## <a name="sap-hana-globalini"></a>SAP HANA global.ini
 
 
-Následující výňatky jsou ze souboru **Global. ini** SAP HANA v clusteru Server 2. Tento příklad ukazuje položky překladu názvů hostitelů pro používání různých sítí pro SAP HANA komunikaci mezi uzly a HSR:
+Následující výňatky jsou ze souboru SAP HANA **global.ini** v clusteru Server 2. Tento příklad ukazuje položky překladu názvů hostitelů pro používání různých sítí pro SAP HANA komunikaci mezi uzly a HSR:
 
 <pre><code>
 [communication]
@@ -945,7 +944,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 Řešení clusteru poskytuje rozhraní prohlížeče, které nabízí uživatelské rozhraní pro uživatele, kteří upřednostňují nabídky a grafiku pro všechny příkazy na úrovni prostředí.
-Chcete-li použít rozhraní prohlížeče, nahraďte ** \<uzel\> ** skutečným SAP HANAm uzlem v následující adrese URL. Pak zadejte přihlašovací údaje clusteru (uživatelský **cluster**):
+Chcete-li použít rozhraní prohlížeče, nahraďte **\<node\>** skutečným SAP HANAm uzlem v následující adrese URL. Pak zadejte přihlašovací údaje clusteru (uživatelský **cluster**):
 
 <pre><code>
 https://&ltnode&gt:7630

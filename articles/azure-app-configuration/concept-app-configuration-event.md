@@ -8,10 +8,9 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523794"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reakce na události konfigurace aplikace Azure
@@ -29,7 +28,7 @@ Podívejte se na stručný příklad [Směrování událostí konfigurace aplika
 ## <a name="available-azure-app-configuration-events"></a>Dostupné události konfigurace aplikace Azure
 Event Grid používá [odběry událostí](../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. Odběry událostí konfigurace aplikace Azure můžou zahrnovat dva typy událostí:  
 
-> |Název události|Popis|
+> |Název události|Description|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Je aktivována, když je vytvořena nebo nahrazena klíčová hodnota.|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Je aktivována, když se odstraní klíčová hodnota.|
@@ -37,7 +36,7 @@ Event Grid používá [odběry událostí](../event-grid/concepts.md#event-subsc
 ## <a name="event-schema"></a>Schéma událostí
 Události konfigurace aplikace Azure obsahují všechny informace, které potřebujete k reakci na změny ve vašich datech. Můžete identifikovat událost konfigurace aplikace, protože vlastnost eventType začíná na Microsoft. AppConfiguration. Další informace o použití vlastností události Event Grid najdete v části [Event Grid schéma událostí](../event-grid/event-schema.md).  
 
-> |Vlastnost|Typ|Popis|
+> |Vlastnost|Typ|Description|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |téma|řetězec|Úplné Azure Resource Manager ID konfigurace aplikace, která událost emituje.|
 > |závislosti|řetězec|Identifikátor URI klíč-hodnota, která je předmětem události.|
@@ -46,7 +45,7 @@ Události konfigurace aplikace Azure obsahují všechny informace, které potře
 > |ID|řetězec|Jedinečný identifikátor této události.|
 > |dataVersion|řetězec|Verze schématu datového objektu.|
 > |metadataVersion|řetězec|Verze schématu vlastností nejvyšší úrovně.|
-> |data|objekt|Kolekce dat událostí specifických pro konfiguraci aplikací Azure|
+> |data|odkazy objektů|Kolekce dat událostí specifických pro konfiguraci aplikací Azure|
 > |data. Key|řetězec|Klíč hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
 > |data. Label|řetězec|Popisek (pokud existuje) hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
 > |data. ETag|řetězec|Pro `KeyValueModified` ETag nového klíč-hodnota. Pro `KeyValueDeleted` značku ETag hodnoty klíč-hodnota, která byla odstraněna.|

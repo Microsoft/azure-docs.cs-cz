@@ -7,10 +7,9 @@ ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77482968"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizovat obsah z cloudové složky do Azure App Service
@@ -22,7 +21,7 @@ Nasazení synchronizace obsahu na vyžádání využívá [modul nasazení App S
 
 Pokud chcete povolit synchronizaci obsahu, přejděte na stránku aplikace App Service v [Azure Portal](https://portal.azure.com).
 
-V levé nabídce klikněte na **nasazení centra** > nasazení**OneDrive** nebo **Dropbox** > **autorizovat**. Postupujte podle výzev k autorizaci. 
+V levé nabídce klikněte na **nasazení centra nasazení**  >  **OneDrive** nebo **Dropbox**  >  **autorizovat**. Postupujte podle výzev k autorizaci. 
 
 ![](media/app-service-deploy-content-sync/choose-source.png)
 
@@ -54,7 +53,7 @@ Pokud chcete synchronizovat obsah ve složce cloudu pomocí App Service, vraťte
 
 Pokud chcete zakázat synchronizaci obsahu, přejděte na stránku aplikace App Service v [Azure Portal](https://portal.azure.com).
 
-V nabídce vlevo klikněte na **centrum** > nasazení**Odpojit**.
+V nabídce vlevo klikněte na **centrum nasazení**  >  **Odpojit**.
 
 ![](media/app-service-deploy-content-sync/disable.png)
 

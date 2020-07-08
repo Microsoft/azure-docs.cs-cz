@@ -14,10 +14,9 @@ ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 699a8a69621642d07d3547c07bb20c0d32ca7686
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616993"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Nastavení serveru SMT pro SUSE Linux
@@ -34,7 +33,7 @@ Požadavky pro instalaci serveru SMT, který plní úlohu pro velké instance HA
 
 Nejdřív se přihlaste do [centra pro zákazníky v SUSE](https://scc.suse.com/).
 
-Přejít na **Organization** > **přihlašovací údaje organizace**organizace. V této části byste měli najít přihlašovací údaje, které jsou nutné k nastavení serveru SMT.
+Přejít na **Organization**  >  **přihlašovací údaje organizace**organizace. V této části byste měli najít přihlašovací údaje, které jsou nutné k nastavení serveru SMT.
 
 Pak ve virtuální síti Azure nainstalujte virtuální počítač s SUSE Linux. Pokud chcete nasadit virtuální počítač, vezměte image z Galerie SLES 12 SP2 do Azure (vyberte BYOS SUSE image). V procesu nasazení nedefinujte název DNS a nepoužívejte statické IP adresy.
 
@@ -83,7 +82,7 @@ K instalaci balíčků SMT můžete použít také nástroj YAST. V YAST pokrač
 ![Snímek obrazovky SMT v YAST](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Přijměte výběr pro instalaci na smtserver. Po dokončení instalace přejdete do konfigurace serveru SMT. Zadejte přihlašovací údaje organizace z centra zákazníků SUSE, které jste získali dříve. Jako adresu URL serveru SMT zadejte taky název hostitele virtuálního počítače Azure. V této ukázce je to https:\//smtserver.
+Přijměte výběr pro instalaci na smtserver. Po dokončení instalace přejdete do konfigurace serveru SMT. Zadejte přihlašovací údaje organizace z centra zákazníků SUSE, které jste získali dříve. Jako adresu URL serveru SMT zadejte taky název hostitele virtuálního počítače Azure. V této ukázce je to https: \/ /smtserver.
 
 ![Snímek obrazovky s konfigurací serveru SMT](./media/hana-installation/image6_configuration_of_smtserver1.png)
 

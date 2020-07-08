@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 674ca8bea110d60557d1e50e7b68c9c3f7a92bf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564580"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Použití Azure AD jako zprostředkovatele identity pro vCenter v privátním cloudu CloudSimple
@@ -83,16 +82,16 @@ Volitelně můžete nakonfigurovat další funkce služby Azure AD.  Nevyžaduj�
 1. [Eskalace oprávnění](escalate-private-cloud-privileges.md) pro váš privátní cloud vCenter.
 2. Shromážděte konfigurační parametry požadované pro nastavení zdroje identity.
 
-    | **Možnost** | **Popis** |
+    | **Nastavení** | **Popis** |
     |------------|-----------------|
     | **Název** | Název zdroje identity |
-    | **Základní rozlišující název pro uživatele** | Základní rozlišující název pro uživatele  Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` příklad:. `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **Základní rozlišující název pro uživatele** | Základní rozlišující název pro uživatele  Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` Příklad: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com` .|
     | **Název domény** | Plně kvalifikovaný název domény pro doménu, například example.com. V tomto textovém poli nezadávejte IP adresu. |
     | **Alias domény** | *(volitelné)* Název domény pro rozhraní NetBIOS. Pokud používáte ověřování pomocí rozhraní SSPI, přidejte název domény služby Active Directory jako alias zdroje identity. |
-    | **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` příklad:`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
-    | **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát `ldaps://hostname:port`. Port je obvykle 636 pro připojení LDAPs. <br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPS serveru Active Directory, se vyžaduje při použití `ldaps://` v primární nebo sekundární adrese URL protokolu LDAP. |
+    | **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny Pro Azure AD použijte: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` Příklad:`OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
+    | **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát  `ldaps://hostname:port` . Port je obvykle 636 pro připojení LDAPs. <br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPs serveru Active Directory, se vyžaduje při použití  `ldaps://`   v primární nebo sekundární adrese URL protokolu LDAP. |
     | **Adresa URL sekundárního serveru** | Adresa serveru LDAP sekundárního řadiče domény, který se používá pro převzetí služeb při selhání. |
-    | **Zvolit certifikát** | Pokud chcete použít LDAPS se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání `ldaps://` v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
+    | **Zvolit certifikát** | Pokud chcete použít LDAPs se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání  `ldaps://`   v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
     | **Jmen** | ID uživatele v doméně, který má minimální přístup jen pro čtení k základnímu rozlišujícímu názvu pro uživatele a skupiny. |
     | **Heslo** | Heslo uživatele, který je určen uživatelským jménem. |
 

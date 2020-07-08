@@ -14,10 +14,9 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617006"
 ---
 # <a name="onboarding-requirements"></a>Požadavky na onboarding
@@ -50,7 +49,7 @@ Tento seznam uvádí požadavky na spouštění SAP HANA v Azure (větší insta
 - Správce předplatného Red Hat byl nasazený v Azure na virtuálním počítači. Správce předplatného Red Hat nabízí možnost SAP HANA v Azure (velké instance), která se má zaregistrovat a v aktualizovaném případě Red Hat. (Není k dispozici přímý přístup k Internetu z klienta nasazeného v rámci razítka velké instance Azure.)
 - SAP vyžaduje, abyste měli smlouvu o podpoře i s vaším poskytovatelem Linux. Tento požadavek se neodebere z řešení velké instance HANA ani ze skutečnosti, že na Azure spouštíte Linux. Na rozdíl od některých imagí z Galerie Azure pro Linux se v nabídce řešení velké instance HANA *nezahrne poplatek* za služby. Je vaší zodpovědností splnit požadavky SAP týkající se smluv o podpoře s distributorem Linux. 
    - V případě systému SUSE Linux vyhledejte požadavky na smlouvy o podpoře v části [SAP note #1984787-SUSE Linux Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787) a zpráva [SAP poznámky #1056161-SUSE priorita pro aplikace SAP](https://launchpad.support.sap.com/#/notes/1056161).
-   - V případě systému Red Hat Linux musíte mít správné úrovně předplatného, které zahrnují podporu a aktualizace služeb pro operační systémy velké instance HANA. Red Hat doporučuje Red Hat Enterprise Linux předplatné pro řešení SAP. Odkaz https://access.redhat.com/solutions/3082481. 
+   - V případě systému Red Hat Linux musíte mít správné úrovně předplatného, které zahrnují podporu a aktualizace služeb pro operační systémy velké instance HANA. Red Hat doporučuje Red Hat Enterprise Linux předplatné pro řešení SAP. Odkaz https://access.redhat.com/solutions/3082481 . 
 
 Pro matrici podpory různých verzí SAP HANA s různými verzemi systému Linux najdete informace v tématu [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
@@ -61,7 +60,7 @@ Pro matrici kompatibility operačního systému a verze firmwaru nebo ovladače 
 > Pro jednotky typu II se v tomto okamžiku podporuje pouze verze operačního systému SLES 12 SP2. 
 
 
-**Databáze**
+**Database**
 
 - Licence a součásti instalace softwaru pro SAP HANA (platforma nebo Enterprise Edition).
 

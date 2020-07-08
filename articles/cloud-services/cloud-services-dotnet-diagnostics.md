@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
 ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77469761"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Povolení Azure Diagnostics v Azure Cloud Services
@@ -136,12 +135,12 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Kliknutím pravým tlačítkem myši na projekt **WorkerRole1** a výběrem **Přidat** -> **novou položku** přidejte do projektu **WorkerRole1** soubor XML. -> **Visual C# items** -> **Data** -> **Soubor XML**s daty položek Visual C#. Pojmenujte soubor "WadExample. XML".
+2. Kliknutím pravým tlačítkem myši na projekt **WorkerRole1** a výběrem **Přidat**novou položku přidejte do projektu **WorkerRole1** soubor XML  ->  **.** -> **Položky**  ->  Visual C# **Data**  ->  **Soubor XML**. Pojmenujte soubor WadExample.xml.
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. Přidružte soubor WadConfig. xsd ke konfiguračnímu souboru. Ujistěte se, že okno Editor WadExample. XML je aktivní okno. Stisknutím klávesy **F4** otevřete okno **vlastnosti** . V okně **vlastnosti** klikněte na vlastnost **schémata** . Klikněte na **...** ve vlastnosti **schemas** . Klikněte na tlačítko **Přidat...** a přejděte do umístění, kam jste uložili soubor XSD, a vyberte soubor WadConfig. xsd. Klikněte na tlačítko **OK**.
+3. Přidružte soubor WadConfig. xsd ke konfiguračnímu souboru. Ujistěte se, že je okno Editor WadExample.xml aktivním oknem. Stisknutím klávesy **F4** otevřete okno **vlastnosti** . V okně **vlastnosti** klikněte na vlastnost **schémata** . Klikněte na **...** ve vlastnosti **schemas** . Klikněte na tlačítko **Přidat...** a přejděte do umístění, kam jste uložili soubor XSD, a vyberte soubor WadConfig. xsd. Klikněte na **OK**.
 
-4. Nahraďte obsah konfiguračního souboru WadExample. XML následujícím kódem XML a uložte soubor. Tento konfigurační soubor definuje několik čítačů výkonu, které se mají shromáždit: jeden pro využití CPU a jeden pro využití paměti. Konfigurace pak definuje čtyři události odpovídající metodám ve třídě SampleEventSourceWriter.
+4. Obsah konfiguračního souboru WadExample.xml nahraďte následujícím kódem XML a uložte soubor. Tento konfigurační soubor definuje několik čítačů výkonu, které se mají shromáždit: jeden pro využití CPU a jeden pro využití paměti. Konfigurace pak definuje čtyři události odpovídající metodám ve třídě SampleEventSourceWriter.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -170,7 +169,7 @@ namespace WorkerRole1
 Rutiny PowerShellu pro správu diagnostiky na webu nebo v roli pracovního procesu jsou: set-AzureServiceDiagnosticsExtension, Get-AzureServiceDiagnosticsExtension a Remove-AzureServiceDiagnosticsExtension.
 
 1. Otevřete Azure PowerShell.
-2. Spusťte skript pro instalaci diagnostiky do role pracovního procesu (nahraďte *StorageAccountKey* klíčem účtu úložiště pro účet úložiště wadexample a *config_path* s cestou k souboru *wadexample. XML* ):
+2. Spusťte skript pro instalaci diagnostiky do role pracovního procesu (nahraďte *StorageAccountKey* klíčem účtu úložiště pro účet úložiště wadexample a *config_path* cestou k souboru *WadExample.xml* ):
 
 ```powershell
 $storage_name = "wadexample"

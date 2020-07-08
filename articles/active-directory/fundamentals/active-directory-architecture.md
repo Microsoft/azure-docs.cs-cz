@@ -14,10 +14,9 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77368064"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Co je architektura Azure Active Directory?
@@ -79,7 +78,7 @@ Operace čtení (jejichž počet mnohonásobně převyšuje počet zápisů) jdo
 
 Zápis se trvale před potvrzením do alespoň dvou datových center. K tomu dochází, když nejdřív potvrdíte zápis na primárním počítači a pak hned znovu replikujte zápis do aspoň jednoho jiného datového centra. Tato akce zápisu zajišťuje, že potenciální závažná ztráta datacentra hostujícího primární službu nevede ke ztrátě dat.
 
-Azure AD udržuje [objektivní čas obnovení (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) , který neztratí data při převzetí služeb při selhání. To zahrnuje:
+Azure AD udržuje [objektivní čas obnovení (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) , který neztratí data při převzetí služeb při selhání. Sem patří:
 
 * Vystavení tokenu a čtení adresáře
 * Povoluje se jenom asi 5 minut RTO pro zápisy adresářů.

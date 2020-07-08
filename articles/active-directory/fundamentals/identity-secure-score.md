@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523100"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Jaké je bezpečné skóre identity v Azure Active Directory?
@@ -48,7 +47,7 @@ Provedením nápravných akcí můžete:
 
 ## <a name="how-do-i-get-my-secure-score"></a>Jak získám svoje bezpečnostní skóre?
 
-Hodnocení identity Secure je dostupné ve všech edicích služby Azure AD. Organizace mají přístup k zabezpečenému skóre identity z **Azure Portal** > **Azure Active Directory** > **Security** > **zabezpečeného skóre identity**zabezpečení.
+Hodnocení identity Secure je dostupné ve všech edicích služby Azure AD. Organizace mají přístup k zabezpečenému skóre identity z **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **zabezpečeného skóre identity**zabezpečení.
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 

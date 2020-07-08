@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
 ms.openlocfilehash: c1e5ca8b0bb828e5e8ce896bba6a5278266b118e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77560078"
 ---
 # <a name="apache-hadoop-clusters-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop clusterů s účty úložiště s bezpečným přenosem ve službě Azure HDInsight
@@ -32,13 +31,13 @@ Pokud chcete aktualizovat existující účet úložiště pomocí Azure Portal,
 
 ### <a name="powershell"></a>PowerShell
 
-Pro rutinu PowerShellu [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)ověřte, `-EnableHttpsTrafficOnly` že parametr je `1`nastavený na.
+Pro rutinu PowerShellu [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount)ověřte, že parametr `-EnableHttpsTrafficOnly` je nastavený na `1` .
 
 Pokud chcete aktualizovat existující účet úložiště pomocí PowerShellu, přečtěte si téma [vyžadování zabezpečeného přenosu pomocí PowerShellu](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-powershell).
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Pro příkaz Azure CLI [AZ Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create), ujistěte se, `--https-only` že parametr je `true`nastavený na.
+Pro příkaz Azure CLI [AZ Storage Account Create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create), ujistěte se, že parametr `--https-only` je nastavený na `true` .
 
 Pokud chcete aktualizovat existující účet úložiště pomocí Azure CLI, přečtěte si téma [vyžadování zabezpečeného přenosu pomocí Azure CLI](../storage/common/storage-require-secure-transfer.md#require-secure-transfer-with-azure-cli).
 

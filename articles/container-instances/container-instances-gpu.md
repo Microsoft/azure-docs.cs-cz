@@ -4,10 +4,9 @@ description: Naučte se nasazovat služby Azure Container Instances pro spoušt�
 ms.topic: article
 ms.date: 02/19/2020
 ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77525282"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instancí kontejnerů, které používají prostředky GPU
@@ -43,7 +42,7 @@ Chcete-li použít GPU v instanci kontejneru, zadejte *prostředek GPU* s násle
 * **Count** – počet GPU: **1**, **2**nebo **4**.
 * **SKU** – SKU GPU: **K80**, **P100**nebo **V100**. Každá SKU se mapuje na grafický procesor NVIDIA Tesla v jedné z následujících rodin virtuálních počítačů s podporou GPU Azure:
 
-  | Skladová jednotka (SKU) | Řada virtuálních počítačů |
+  | SKU | Řada virtuálních počítačů |
   | --- | --- |
   | K80 | [NC](../virtual-machines/nc-series.md) |
   | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
@@ -116,7 +115,7 @@ Done
 
 ## <a name="resource-manager-template-example"></a>Příklad šablony Správce prostředků
 
-Dalším způsobem, jak nasadit skupinu kontejnerů pomocí prostředků GPU, je použití [šablony Správce prostředků](container-instances-multi-container-group.md). Začněte vytvořením souboru s názvem `gpudeploy.json`a zkopírujte do něj následující kód JSON. Tento příklad nasadí instanci kontejneru s grafickým procesorem V100, který spouští školicí úlohu [TensorFlow](https://www.tensorflow.org/) s datovou sadou mnist ručně zapsaných. Požadavky na prostředky jsou dostačující ke spuštění úlohy.
+Dalším způsobem, jak nasadit skupinu kontejnerů pomocí prostředků GPU, je použití [šablony Správce prostředků](container-instances-multi-container-group.md). Začněte vytvořením souboru s názvem `gpudeploy.json` a zkopírujte do něj následující kód JSON. Tento příklad nasadí instanci kontejneru s grafickým procesorem V100, který spouští školicí úlohu [TensorFlow](https://www.tensorflow.org/) s datovou sadou mnist ručně zapsaných. Požadavky na prostředky jsou dostačující ke spuštění úlohy.
 
 ```JSON
 {

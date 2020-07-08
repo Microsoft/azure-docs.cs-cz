@@ -14,10 +14,9 @@ ms.date: 02/11/2020
 ms.author: bentrin
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fd1267711871b3e55f1a6229e46ae27b360322f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617044"
 ---
 # <a name="sap-hana-on-azure-large-instance-migration-to-azure-virtual-machines"></a>SAP HANA migrace velkých instancí Azure do Azure Virtual Machines
@@ -49,21 +48,21 @@ Společné modely nasazení s HLI zákazníky jsou shrnuté v následující tab
 
 | ID scénáře | Scénář HLI | Chcete migrovat na virtuální počítač v doslovném znění? | Přeznačit |
 | --- | --- | --- | --- |
-| 1 | [Jeden uzel s jedním identifikátorem SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Ano | - |
-| 2 | [Jeden uzel s MCOS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Ano | - |
-| 3 | [Jeden uzel se systémem DR pomocí replikace úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | Ne | Replikace úložiště není pro virtuální platformu Azure k dispozici, změňte aktuální řešení zotavení po havárii na HSR nebo zálohování nebo obnovení. |
-| 4 | [Jeden uzel se systémem DR (víceúčelový) pomocí replikace úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | Ne | Replikace úložiště není pro virtuální platformu Azure k dispozici, změňte aktuální řešení zotavení po havárii na HSR nebo zálohování nebo obnovení. |
-| 5 | [HSR s STONITH pro vysokou dostupnost](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Ano | Pro cílové virtuální počítače není k dispozici předkonfigurovaná SBD.  Vyberte a nasaďte řešení STONITH.  Možné možnosti: Agent služby Azure na úrovni služby (podporuje se pro [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)), SBD |
-| 6 | [HA s HSRem, DR s replikací úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | Ne | Nahraďte replikaci úložiště pro potřeby zotavení po havárii buď pomocí HSR, nebo zálohování nebo obnovení. |
-| 7 | [Automatické převzetí služeb při selhání hostitele (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Ano | Použití ANF pro sdílené úložiště s virtuálními počítači Azure |
-| 8 | [Horizontální navýšení kapacity pomocí úsporného režimu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Ano | ČERNOBÍLé a 4HANA s M128s, M416s, M416ms virtuálními počítači pomocí ANF jenom pro úložiště |
-| 9 | [Horizontální navýšení kapacity bez úsporného režimu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Ano | ČERNOBÍLé/4HANA s M128s, M416s, M416ms virtuálními počítači (s využitím nebo bez použití ANF pro úložiště) |
-| 10 | [Horizontální navýšení kapacity pomocí replikace úložiště v systému DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | Ne | Nahraďte replikaci úložiště pro potřeby zotavení po havárii buď pomocí HSR, nebo zálohování nebo obnovení. |
-| 11 | [Jeden uzel s DR pomocí HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Ano | - |
-| 12 | [HSR jednoho uzlu do DR (náklady optimalizované)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Ano | - |
-| 13 | [HA a DR s HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Ano | - |
-| 14 | [HA a DR s HSR (náklady optimalizované)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Ano | - |
-| 15 | [Horizontální navýšení kapacity pomocí HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Ano | ČERNOBÍLé/4HANA s M128s. Virtuální počítače s M416s, M416ms (s nebo bez použití ANF pro úložiště) |
+| 1 | [Jeden uzel s jedním identifikátorem SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-one-sid) | Yes | - |
+| 2 | [Jeden uzel s MCOS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-mcos) | Yes | - |
+| 3 | [Jeden uzel se systémem DR pomocí replikace úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-storage-replication) | No | Replikace úložiště není pro virtuální platformu Azure k dispozici, změňte aktuální řešení zotavení po havárii na HSR nebo zálohování nebo obnovení. |
+| 4 | [Jeden uzel se systémem DR (víceúčelový) pomocí replikace úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-multipurpose-using-storage-replication) | No | Replikace úložiště není pro virtuální platformu Azure k dispozici, změňte aktuální řešení zotavení po havárii na HSR nebo zálohování nebo obnovení. |
+| 5 | [HSR s STONITH pro vysokou dostupnost](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#hsr-with-stonith-for-high-availability) | Yes | Pro cílové virtuální počítače není k dispozici předkonfigurovaná SBD.  Vyberte a nasaďte řešení STONITH.  Možné možnosti: Agent služby Azure na úrovni služby (podporuje se pro [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker), [SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)), SBD |
+| 6 | [HA s HSRem, DR s replikací úložiště](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-with-hsr-and-dr-with-storage-replication) | No | Nahraďte replikaci úložiště pro potřeby zotavení po havárii buď pomocí HSR, nebo zálohování nebo obnovení. |
+| 7 | [Automatické převzetí služeb při selhání hostitele (1 + 1)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#host-auto-failover-11) | Yes | Použití ANF pro sdílené úložiště s virtuálními počítači Azure |
+| 8 | [Horizontální navýšení kapacity pomocí úsporného režimu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-standby) | Yes | ČERNOBÍLé a 4HANA s M128s, M416s, M416ms virtuálními počítači pomocí ANF jenom pro úložiště |
+| 9 | [Horizontální navýšení kapacity bez úsporného režimu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-without-standby) | Yes | ČERNOBÍLé/4HANA s M128s, M416s, M416ms virtuálními počítači (s využitím nebo bez použití ANF pro úložiště) |
+| 10 | [Horizontální navýšení kapacity pomocí replikace úložiště v systému DR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-storage-replication) | No | Nahraďte replikaci úložiště pro potřeby zotavení po havárii buď pomocí HSR, nebo zálohování nebo obnovení. |
+| 11 | [Jeden uzel s DR pomocí HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-with-dr-using-hsr) | Yes | - |
+| 12 | [HSR jednoho uzlu do DR (náklady optimalizované)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#single-node-hsr-to-dr-cost-optimized) | Yes | - |
+| 13 | [HA a DR s HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr) | Yes | - |
+| 14 | [HA a DR s HSR (náklady optimalizované)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#high-availability-and-disaster-recovery-with-hsr-cost-optimized) | Yes | - |
+| 15 | [Horizontální navýšení kapacity pomocí HSR](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-supported-scenario#scale-out-with-dr-using-hsr) | Yes | ČERNOBÍLé/4HANA s M128s. Virtuální počítače s M416s, M416ms (s nebo bez použití ANF pro úložiště) |
 
 
 ## <a name="source-hli-planning"></a>Zdroj (HLI) plánování

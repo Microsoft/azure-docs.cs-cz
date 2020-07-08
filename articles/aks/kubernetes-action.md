@@ -7,15 +7,14 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77595361"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>Akce GitHubu pro nasazení do služby Kubernetes
 
-[Akce GitHubu](https://help.github.com/en/articles/about-github-actions) vám nabízí flexibilitu při vytváření automatizovaného pracovního postupu životního cyklu vývoje softwaru. Akce [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) Kubernetes usnadňuje nasazení do clusterů služby Azure Kubernetes. Akce nastaví cílový kontext clusteru AKS, který můžou použít jiné akce jako [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/k8s – Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) atd., nebo spustit všechny příkazy kubectl.
+[Akce GitHubu](https://help.github.com/en/articles/about-github-actions) vám nabízí flexibilitu při vytváření automatizovaného pracovního postupu životního cyklu vývoje softwaru. Akce Kubernetes [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) usnadňuje nasazení do clusterů služby Azure Kubernetes. Akce nastaví cílový kontext clusteru AKS, který můžou použít jiné akce jako [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/k8s – Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) atd., nebo spustit všechny příkazy kubectl.
 
 Pracovní postup je definovaný souborem YAML (. yml) v `/.github/workflows/` cestě v úložišti. Tato definice obsahuje různé kroky a parametry, které tvoří pracovní postup.
 
@@ -25,7 +24,7 @@ Pro pracovní postup cílící na AKS má soubor tři části:
 |---------|---------|
 |**Authentication** | Přihlášení k privátnímu registru kontejnerů (ACR) |
 |**Sestavení** | Sestavení image kontejneru &m vložením  |
-|**Nasadit** | 1. nastavení cílového clusteru AKS |
+|**Nasazení** | 1. nastavení cílového clusteru AKS |
 | |2. vytvoření tajného kódu registru Generic/Docker-Registry v clusteru Kubernetes  |
 ||3. nasazení do clusteru Kubernetes|
 
@@ -73,9 +72,9 @@ Použijte postup konfigurace tajných kódů:
 
 Sestavení a vložení imagí kontejneru se provádí pomocí `Azure/docker-login@v1` akce. K nasazení image kontejneru do AKS budete muset použít `Azure/k8s-deploy@v1` akci. Tato akce má pět parametrů:
 
-| **Ukazatele**  | **Vysvětlení**  |
+| **Parametr**  | **Vysvětlení**  |
 |---------|---------|
-| **namespace** | Volitelné Vyberte cílový obor názvů Kubernetes. Pokud obor názvů není zadaný, příkazy se spustí ve výchozím oboru názvů. | 
+| **hosting** | Volitelné Vyberte cílový obor názvů Kubernetes. Pokud obor názvů není zadaný, příkazy se spustí ve výchozím oboru názvů. | 
 | **manifesty** |  Požadovanou Cesta k souborům manifestu, které se použijí pro nasazení |
 | **fotografií** | Volitelné Plně kvalifikovaná adresa URL pro obrázky, které se mají použít k nahrazení souborů manifestu |
 | **imagepullsecrets** | Volitelné Název tajného klíče registru Docker-Registry, který již byl nastaven v rámci clusteru. Každý z těchto tajných názvů se přidá do pole imagePullSecrets pro úlohy, které se nacházejí ve vstupních souborech manifestu. |

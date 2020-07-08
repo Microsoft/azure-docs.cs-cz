@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 4ac818cfd267b781366c0e32c9f93cc885dff99c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77566144"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Vytváření virtuálních počítačů VMware v privátním cloudu
@@ -96,7 +95,7 @@ Následující části obsahují volitelné informace o nastavení serverů DNS 
 
 ## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>Přidat uživatele a zdroje identity do vCenter (volitelné)
 
-CloudSimple přiřadí výchozímu uživatelskému účtu vCenter `cloudowner@cloudsimple.local`s uživatelským jménem. Není potřeba žádné další nastavení účtu, abyste mohli začít.  CloudSimple obvykle přiřazuje správcům oprávnění, která potřebují k provádění běžných operací.  Nastavte místní službu Active Directory nebo Azure AD jako [Další zdroj identity](set-vcenter-identity.md) v privátním cloudu.
+CloudSimple přiřadí výchozímu uživatelskému účtu vCenter s uživatelským jménem `cloudowner@cloudsimple.local` . Není potřeba žádné další nastavení účtu, abyste mohli začít.  CloudSimple obvykle přiřazuje správcům oprávnění, která potřebují k provádění běžných operací.  Nastavte místní službu Active Directory nebo Azure AD jako [Další zdroj identity](set-vcenter-identity.md) v privátním cloudu.
 
 ## <a name="create-a-dns-and-dhcp-server-optional"></a>Vytvoření serveru DNS a DHCP (volitelné)
 
@@ -200,7 +199,7 @@ Spusťte server http, který naslouchá na portu 80.
 python2.7 -m SimpleHTTPServer 80
 ```
 
-– nebo –
+nebo
 
 ```
 python3 -m http.server 80

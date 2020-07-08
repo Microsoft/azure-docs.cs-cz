@@ -7,10 +7,9 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523760"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odolnost a zotavení po havárii
@@ -60,7 +59,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 ```
 ---
 
-Všimněte si `optional` parametru předaného `AddAzureAppConfiguration` do funkce. Při nastavení na `true`hodnotu tento parametr brání aplikaci v neúspěšném pokračování, pokud funkce nemůže načíst konfigurační data.
+Všimněte si `optional` parametru předaného do `AddAzureAppConfiguration` funkce. Při nastavení na hodnotu `true` Tento parametr brání aplikaci v neúspěšném pokračování, pokud funkce nemůže načíst konfigurační data.
 
 ## <a name="synchronization-between-configuration-stores"></a>Synchronizace mezi úložišti konfigurací
 
@@ -68,7 +67,7 @@ Je důležité, aby úložiště geograficky redundantních konfigurací měla s
 
 Z Azure Portal můžete vložit změnu do jiného úložiště konfigurace pomocí následujících kroků.
 
-1. Otevřete kartu **Import/export** a vyberte **exportovat** > **cíl** > **Konfigurace** > aplikace**Vybrat prostředek**.
+1. Otevřete kartu **Import/export** a vyberte **exportovat**  >  **Cíl konfigurace aplikace**  >  **Target**  >  **Vybrat prostředek**.
 
 1. V novém okně, které se otevře, zadejte předplatné, skupinu prostředků a název prostředku svého sekundárního úložiště a pak vyberte **použít**.
 

@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539463"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Řešení potíží s připojením ke službě Azure Private Link
@@ -81,7 +80,7 @@ Pokud dojde k problémům s připojením k nastavení privátních odkazů, zkon
 
        ![Ověřit informace o viditelnosti](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g. Informace o **nástroji pro vyrovnávání zatížení** najdete na kartě **Přehled** .
+    například Informace o **nástroji pro vyrovnávání zatížení** najdete na kartě **Přehled** .
      - Můžete přejít do nástroje pro vyrovnávání zatížení tak, že vyberete odkaz služby Vyrovnávání zatížení.
 
        ![Ověření informací o nástroji pro vyrovnávání zatížení](./media/private-link-tsg/pls-overview-pane-ilb.png)

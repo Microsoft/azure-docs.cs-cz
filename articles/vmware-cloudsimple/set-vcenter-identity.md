@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564019"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Nastavení zdrojů identity vCenter pro používání služby Active Directory
@@ -51,16 +50,16 @@ Pokud chcete nastavit místní službu Active Directory jako zdroj identity jedn
 
 Při nastavování domény služby Active Directory použijte informace v následující tabulce.
 
-| **Možnost** | **Popis** |
+| **Nastavení** | **Popis** |
 |------------|-----------------|
 | **Název** | Název zdroje identity |
 | **Základní rozlišující název pro uživatele** | Základní rozlišující název pro uživatele |
 | **Název domény** | Plně kvalifikovaný název domény pro doménu, například example.com. V tomto textovém poli nezadávejte IP adresu. |
 | **Alias domény** | Název domény pro rozhraní NetBIOS. Pokud používáte ověřování pomocí rozhraní SSPI, přidejte název domény služby Active Directory jako alias zdroje identity. |
 | **Základní rozlišující název pro skupiny** | Základní rozlišující název pro skupiny |
-| **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát `ldap://hostname:port` nebo `ldaps://hostname:port`. Port je obvykle 389 pro připojení LDAP a 636 pro připojení LDAPs. Pro nasazení služby Active Directory Multi-Domain Controller je port obvykle 3268 pro LDAP a 3269 pro LDAPs.<br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPS serveru Active Directory, se vyžaduje při použití `ldaps://` v primární nebo sekundární adrese URL protokolu LDAP. |
+| **Adresa URL primárního serveru** | Server LDAP primárního řadiče domény pro doménu.<br><br>Použijte formát  `ldap://hostname:port`   nebo  `ldaps://hostname:port` . Port je obvykle 389 pro připojení LDAP a 636 pro připojení LDAPs. Pro nasazení služby Active Directory Multi-Domain Controller je port obvykle 3268 pro LDAP a 3269 pro LDAPs.<br><br>Certifikát, který vytváří vztah důvěryhodnosti pro koncový bod LDAPs serveru Active Directory, se vyžaduje při použití  `ldaps://`   v primární nebo sekundární adrese URL protokolu LDAP. |
 | **Adresa URL sekundárního serveru** | Adresa serveru LDAP sekundárního řadiče domény, který se používá pro převzetí služeb při selhání. |
-| **Zvolit certifikát** | Pokud chcete použít LDAPS se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání `ldaps://` v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
+| **Zvolit certifikát** | Pokud chcete použít LDAPs se serverem služby Active Directory LDAP nebo zdrojem identity serveru OpenLDAP, zobrazí se po zadání  `ldaps://`   v textovém poli Adresa URL tlačítko zvolit certifikát. Sekundární adresa URL není povinná. |
 | **Jmen** | ID uživatele v doméně, který má minimální přístup jen pro čtení k základnímu rozlišujícímu názvu pro uživatele a skupiny. |
 | **Heslo** | Heslo uživatele, který je určen uživatelským jménem. |
 

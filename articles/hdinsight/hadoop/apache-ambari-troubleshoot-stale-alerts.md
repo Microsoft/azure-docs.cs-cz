@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77539106"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Scénář: zastaralá upozornění Apache Ambari v Azure HDInsight
@@ -74,7 +73,7 @@ Pokud chcete zahodit zastaralou výstrahu, zakažte ji a pak ji znovu povolte:
 
 Před tím, než agent Ambari oznámí, že nakonfigurované upozornění nenalezlo svůj plán, je období odkladu. Pokud výstraha nepřinesla svůj plánovaný čas, ale běžela v období odkladu, negeneruje se zastaralá výstraha.
 
-Výchozí `alert_grace_period` hodnota je 5 sekund. Toto nastavení můžete nakonfigurovat v/etc/Ambari-agent/conf/Ambari-agent.ini. Pro hostitele, na kterých se v pravidelných intervalech vyskytují zastaralé výstrahy, zkuste zvýšit hodnotu na 10. Pak restartujte agenta Ambari.
+Výchozí `alert_grace_period` hodnota je 5 sekund. Toto nastavení můžete nakonfigurovat v/etc/Ambari-agent/conf/ambari-agent.ini. Pro hostitele, na kterých se v pravidelných intervalech vyskytují zastaralé výstrahy, zkuste zvýšit hodnotu na 10. Pak restartujte agenta Ambari.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -82,7 +81,7 @@ Pokud se tady problém nezmiňuje nebo ho nemůžete vyřešit, navštivte jeden
 
 * Získejte odpovědi od odborníků na Azure v [komunitní podpoře pro Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) pomocí na Twitteru. Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
+* Připojte se pomocí [@AzureSupport](https://twitter.com/azuresupport) na Twitteru. Jedná se o oficiální Microsoft Azure účet pro zlepšení prostředí pro zákazníky. Propojuje komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
 
 * Pokud potřebujete další pomoc, odešlete žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Tam si můžete vybrat nápovědu (**?**) z nabídky portál nebo otevřít podokno Nápověda a **Podpora** . Další informace najdete v tématu [Postup vytvoření žádosti o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
 

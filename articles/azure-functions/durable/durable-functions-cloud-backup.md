@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562186"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Scénář ventilátoru/ventilátoru – ve scénáři v Durable Functions-cloudové zálohování – příklad
@@ -31,7 +30,7 @@ Durable Functions přístup vám poskytne všechny uvedené výhody s velmi níz
 
 Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
-* `E2_BackupSiteContent`: [Funkce Orchestrator](durable-functions-bindings.md#orchestration-trigger) , která volá `E2_GetFileList` , aby získala seznam souborů, které se mají zálohovat, `E2_CopyFileToBlob` a pak volá k zálohování každého souboru.
+* `E2_BackupSiteContent`: [Funkce Orchestrator](durable-functions-bindings.md#orchestration-trigger) , která volá, `E2_GetFileList` aby získala seznam souborů, které se mají zálohovat, a pak volá `E2_CopyFileToBlob` k zálohování každého souboru.
 * `E2_GetFileList`: [Funkce Activity](durable-functions-bindings.md#activity-trigger) , která vrátí seznam souborů v adresáři.
 * `E2_CopyFileToBlob`: Funkce Activity, která zálohuje jeden soubor do Azure Blob Storage.
 
@@ -40,7 +39,7 @@ Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 Tato funkce nástroje Orchestrator má v podstatě následující:
 
 1. Přijímá `rootDirectory` hodnotu jako vstupní parametr.
-2. Volá funkci pro získání rekurzivního seznamu souborů v rámci `rootDirectory`.
+2. Volá funkci pro získání rekurzivního seznamu souborů v rámci `rootDirectory` .
 3. Umožňuje vícenásobné volání paralelních funkcí k nahrání každého souboru do Azure Blob Storage.
 4. Čeká na dokončení všech nahrávání.
 5. Vrátí celkový počet bajtů odeslaných do Azure Blob Storage.
@@ -51,13 +50,13 @@ Zde je kód, který implementuje funkci Orchestrator:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=16-42)]
 
-Všimněte si `await Task.WhenAll(tasks);` řádku. Žádná jednotlivá volání `E2_CopyFileToBlob` funkce *nebyla očekávána* , což umožňuje paralelní spuštění. Až do `Task.WhenAll`tohoto pole úkolů předáte, vrátíme úlohu, která nebude dokončena, *dokud nebudou dokončeny všechny operace kopírování*. Pokud jste obeznámeni s úlohou Parallel Library (TPL) v rozhraní .NET, pak to není pro vás novinkou. Rozdílem je, že tyto úlohy mohou být souběžně spuštěny na několika virtuálních počítačích a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné proti chybám.
+Všimněte si `await Task.WhenAll(tasks);` řádku. Žádná jednotlivá volání `E2_CopyFileToBlob` funkce nebyla očekávána, *not* což umožňuje paralelní spuštění. Až do tohoto pole úkolů předáte, vrátíme `Task.WhenAll` úlohu, která nebude dokončena, *dokud nebudou dokončeny všechny operace kopírování*. Pokud jste obeznámeni s úlohou Parallel Library (TPL) v rozhraní .NET, pak to není pro vás novinkou. Rozdílem je, že tyto úlohy mohou být souběžně spuštěny na několika virtuálních počítačích a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné proti chybám.
 
-Po očekávání od `Task.WhenAll`nás víme, že všechna volání funkcí jsou dokončená a vrátila hodnoty zpátky do nás. Každé volání `E2_CopyFileToBlob` funkce vrátí počet odeslaných bajtů, takže výpočet celkového počtu bajtů je v důsledku přidávání všech vrácených hodnot dohromady.
+Po očekávání od `Task.WhenAll` nás víme, že všechna volání funkcí jsou dokončená a vrátila hodnoty zpátky do nás. Každé volání `E2_CopyFileToBlob` funkce vrátí počet odeslaných bajtů, takže výpočet celkového počtu bajtů je v důsledku přidávání všech vrácených hodnot dohromady.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Funkce používá standardní *Function. JSON* pro funkce nástroje Orchestrator.
+Funkce používá standardní *function.js* pro funkce nástroje Orchestrator.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/function.json)]
 
@@ -65,18 +64,18 @@ Zde je kód, který implementuje funkci Orchestrator:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-Všimněte si `yield context.df.Task.all(tasks);` řádku. Všechna jednotlivá volání `E2_CopyFileToBlob` funkce *nebyla získána* , což umožňuje paralelní spuštění. Až do `context.df.Task.all`tohoto pole úkolů předáte, vrátíme úlohu, která nebude dokončena, *dokud nebudou dokončeny všechny operace kopírování*. Pokud jste obeznámeni s [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) jazykem JavaScript, pak to není novinkou. Rozdílem je, že tyto úlohy mohou být souběžně spuštěny na několika virtuálních počítačích a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné proti chybám.
+Všimněte si `yield context.df.Task.all(tasks);` řádku. Všechna jednotlivá volání `E2_CopyFileToBlob` funkce nebyla získána, *not* což umožňuje paralelní spuštění. Až do tohoto pole úkolů předáte, vrátíme `context.df.Task.all` úlohu, která nebude dokončena, *dokud nebudou dokončeny všechny operace kopírování*. Pokud jste obeznámeni s [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) jazykem JavaScript, pak to není novinkou. Rozdílem je, že tyto úlohy mohou být souběžně spuštěny na několika virtuálních počítačích a rozšíření Durable Functions zajišťuje, aby bylo kompletní provádění procesu recyklace odolné proti chybám.
 
 > [!NOTE]
-> Přestože jsou úkoly koncepčně podobné příslibů JavaScriptu, měly by funkce Orchestrator `context.df.Task.all` používat a `context.df.Task.any` místo `Promise.all` a `Promise.race` spravovat paralelní zpracování úkolů.
+> Přestože jsou úkoly koncepčně podobné příslibů JavaScriptu, měly by funkce Orchestrator používat `context.df.Task.all` a `context.df.Task.any` místo `Promise.all` a `Promise.race` Spravovat paralelní zpracování úkolů.
 
-Po získání od společnosti `context.df.Task.all`víme, že všechna volání funkcí jsou dokončená a vrátila hodnoty zpátky do nás. Každé volání `E2_CopyFileToBlob` funkce vrátí počet odeslaných bajtů, takže výpočet celkového počtu bajtů je v důsledku přidávání všech vrácených hodnot dohromady.
+Po získání od společnosti víme `context.df.Task.all` , že všechna volání funkcí jsou dokončená a vrátila hodnoty zpátky do nás. Každé volání `E2_CopyFileToBlob` funkce vrátí počet odeslaných bajtů, takže výpočet celkového počtu bajtů je v důsledku přidávání všech vrácených hodnot dohromady.
 
 ---
 
 ### <a name="helper-activity-functions"></a>Funkce aktivity pomocníka
 
-Funkce pomocné aktivity, jako u jiných ukázek, jsou pouze běžné funkce, které používají vazbu `activityTrigger` triggeru.
+Funkce pomocné aktivity, jako u jiných ukázek, jsou pouze běžné funkce, které používají `activityTrigger` vazbu triggeru.
 
 #### <a name="e2_getfilelist-activity-function"></a>Funkce aktivity E2_GetFileList
 
@@ -86,7 +85,7 @@ Funkce pomocné aktivity, jako u jiných ukázek, jsou pouze běžné funkce, kt
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Soubor *Function. JSON* pro `E2_GetFileList` vypadá takto:
+*function.jsv* souboru, aby `E2_GetFileList` vypadala takto:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/function.json)]
 
@@ -108,13 +107,13 @@ Funkce používá `readdirp` modul (verze 2. x) k rekurzivnímu čtení adresá�
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=56-81)]
 
 > [!NOTE]
-> Pro spuštění ukázkového kódu budete `Microsoft.Azure.WebJobs.Extensions.Storage` muset nainstalovat balíček NuGet.
+> `Microsoft.Azure.WebJobs.Extensions.Storage`Pro spuštění ukázkového kódu budete muset nainstalovat balíček NuGet.
 
 Funkce používá některé pokročilé funkce Azure Functions vazeb (to znamená použití [ `Binder` parametru](../functions-dotnet-class-library.md#binding-at-runtime)), ale nemusíte si dělat starosti s těmito podrobnostmi pro účely tohoto Názorného postupu.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Soubor *Function. JSON* pro `E2_CopyFileToBlob` je podobně jednoduchý:
+*function.jsv* souboru pro `E2_CopyFileToBlob` je podobně jednoduchá:
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/function.json)]
 
@@ -142,9 +141,9 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> `HttpStart` Funkce, kterou vyvoláte, funguje jenom s obsahem ve formátu JSON. Z tohoto důvodu je vyžadováno `Content-Type: application/json` záhlaví a cesta k adresáři je zakódována jako řetězec JSON. Fragment kódu HTTP navíc předpokládá, že v `host.json` souboru je položka, která odebere výchozí `api/` předponu ze všech adres URL funkcí triggeru protokolu HTTP. Značky pro tuto konfiguraci najdete v `host.json` souboru v ukázkách.
+> `HttpStart`Funkce, kterou vyvoláte, funguje jenom s obsahem ve formátu JSON. Z tohoto důvodu `Content-Type: application/json` je vyžadováno záhlaví a cesta k adresáři je zakódována jako řetězec JSON. Fragment kódu HTTP navíc předpokládá, že v souboru je položka, `host.json` která odebere výchozí `api/` předponu ze všech adres URL funkcí TRIGGERU protokolu HTTP. Značky pro tuto konfiguraci najdete v `host.json` souboru v ukázkách.
 
-Tento požadavek HTTP aktivuje `E2_BackupSiteContent` nástroj Orchestrator a předá `D:\home\LogFiles` řetězec jako parametr. Odpověď poskytuje odkaz na získání stavu operace zálohování:
+Tento požadavek HTTP aktivuje nástroj `E2_BackupSiteContent` Orchestrator a předá řetězec `D:\home\LogFiles` jako parametr. Odpověď poskytuje odkaz na získání stavu operace zálohování:
 
 ```
 HTTP/1.1 202 Accepted
@@ -170,7 +169,7 @@ Location: http://{host}/runtime/webhooks/durabletask/instances/b4e9bdcc435d460f8
 {"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2019-06-29T18:50:55Z","lastUpdatedTime":"2019-06-29T18:51:16Z"}
 ```
 
-V tomto případě je funkce stále spuštěná. Můžete zobrazit vstup uložený do stavu nástroje Orchestrator a čas poslední aktualizace. Hodnoty `Location` hlaviček můžete dál používat k dotazování na dokončení. Pokud je stav "dokončeno", zobrazí se hodnota odpovědi HTTP podobná následující:
+V tomto případě je funkce stále spuštěná. Můžete zobrazit vstup uložený do stavu nástroje Orchestrator a čas poslední aktualizace. Hodnoty hlaviček můžete dál používat `Location` k dotazování na dokončení. Pokud je stav "dokončeno", zobrazí se hodnota odpovědi HTTP podobná následující:
 
 ```
 HTTP/1.1 200 OK

@@ -6,10 +6,9 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77190729"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Řešení potíží s rozšířením virtuálních počítačů Azure
@@ -42,7 +41,7 @@ Kód chyby: "151099"
 
 K této chybě může dojít, pokud Agent hosta Azure ve virtuálním počítači není ve stavu připraveno.
 
-Stav agenta hosta Azure můžete zjistit v [Azure Portal](https://portal.azure.com/). Přejít na virtuální počítač, který se pokoušíte chránit, a zkontroluje stav ve**vlastnostech** > **Nastavení** >  **virtuálního počítače** > **Stav agenta**. Ve většině případů je stav agenta připravený po restartování virtuálního počítače. Pokud se ale nemůžete restartovat nebo máte problém, proveďte následující kroky pro řešení potíží:
+Stav agenta hosta Azure můžete zjistit v [Azure Portal](https://portal.azure.com/). Přejít na virtuální počítač, který se pokoušíte chránit, a zkontroluje stav ve vlastnostech nastavení **virtuálního počítače**  >  **Settings**  >  **Properties**  >  **Stav agenta**. Ve většině případů je stav agenta připravený po restartování virtuálního počítače. Pokud se ale nemůžete restartovat nebo máte problém, proveďte následující kroky pro řešení potíží:
 
 - [Agent je nainstalovaný na virtuálním počítači, ale nereaguje (pro virtuální počítače s Windows).](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 - [Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače se systémem Linux).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
@@ -105,7 +104,7 @@ Postup při odinstalaci rozšíření:
 1. Vyberte **Nastavení**.
 1. Vyberte **Extensions** (Rozšíření).
 1. Vyberte **rozšíření Site Recovery**.
-1. Vyberte **odinstalovat**.
+1. Vyberte **Odinstalovat**.
 
 Pokud se u virtuálního počítače se systémem Linux v Azure Portal nezobrazuje rozšíření VMSnapshot, [aktualizujte agenta Azure Linux](../virtual-machines/linux/update-agent.md). Pak spusťte ochranu.
 

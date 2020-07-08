@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
 ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77471019"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Při vytváření clusteru HDInsight přidat vlastní knihovny Apache Hive
@@ -41,7 +40,7 @@ Použití akce skriptu v tomto článku zpřístupňuje knihovny při použití 
 
 * Účet úložiště, který obsahuje knihovnu souborů JAR, se **musí** během vytváření propojit s clusterem HDInsight. Musí se jednat buď o výchozí účet úložiště, nebo o účet, který jste přidali prostřednictvím __Nastavení účtu úložiště__.
 
-* Cesta WASB k kontejneru musí být zadána jako parametr pro akci skriptu. Například pokud jsou jar uložené v kontejneru s názvem **knihovny** na účtu úložiště s názvem **mystorage**, parametr by byl `wasbs://libs@mystorage.blob.core.windows.net/`.
+* Cesta WASB k kontejneru musí být zadána jako parametr pro akci skriptu. Například pokud jsou jar uložené v kontejneru s názvem **knihovny** na účtu úložiště s názvem **mystorage**, parametr by byl `wasbs://libs@mystorage.blob.core.windows.net/` .
 
   > [!NOTE]  
   > V tomto dokumentu se předpokládá, že jste už vytvořili účet úložiště, kontejner objektů BLOB a nahráli do něj soubory.
@@ -59,13 +58,13 @@ Použití akce skriptu v tomto článku zpřístupňuje knihovny při použití 
     |Vlastnost |Hodnota |
     |---|---|
     |Typ skriptu|– Vlastní|
-    |Název|Knihovny |
+    |Name|Knihovny |
     |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |Typ (typy) uzlů|Vedoucí pracovník|
     |Parametry|Zadejte adresu WASB kontejneru a účtu úložiště, který obsahuje jar. Například, `wasbs://libs@mystorage.blob.core.windows.net/`.|
 
     > [!NOTE]
-    > Pro Apache Spark 2,1 použijte tento identifikátor URI bash skriptu: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`.
+    > Pro Apache Spark 2,1 použijte tento identifikátor URI bash skriptu: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh` .
 
 1. Pokračujte ve zřizování clusteru, jak je popsáno v tématu [zřizování clusterů HDInsight v systému Linux](hdinsight-hadoop-provision-linux-clusters.md).
 

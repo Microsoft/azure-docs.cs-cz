@@ -8,10 +8,9 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 5529989384df75b592afa8f5e4960eb9817fb2d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77472515"
 ---
 # <a name="manage-ssh-access-for-domain-accounts-in-azure-hdinsight"></a>Správa přístupu SSH pro účty domén ve službě Azure HDInsight
@@ -20,7 +19,7 @@ V zabezpečených clusterech se ve výchozím nastavení pro všechny uživatele
 
 ## <a name="manage-access"></a>Správa přístupu
 
-Chcete-li upravit přístup SSH ke konkrétním uživatelům nebo skupinám `/etc/ssh/sshd_config` , aktualizujte na všech uzlech.
+Chcete-li upravit přístup SSH ke konkrétním uživatelům nebo skupinám, aktualizujte `/etc/ssh/sshd_config` na všech uzlech.
 
 1. Připojte se ke clusteru pomocí [příkazu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) . Níže uvedený příkaz upravte tak, že ho nahradíte názvem clusteru a pak zadáte tento příkaz:
 
@@ -28,7 +27,7 @@ Chcete-li upravit přístup SSH ke konkrétním uživatelům nebo skupinám `/et
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Otevřete soubor `ssh_confi`g.
+1. Otevřete `ssh_confi` soubor g.
 
     ```bash
     sudo nano /etc/ssh/sshd_config
@@ -54,11 +53,11 @@ Chcete-li upravit přístup SSH ke konkrétním uživatelům nebo skupinám `/et
 
 ## <a name="ssh-authentication-log"></a>Protokol ověřování SSH
 
-Do `/var/log/auth.log`se zapisuje protokol ověřování SSH. Pokud se zobrazí chyba přihlášení prostřednictvím protokolu SSH pro místní nebo doménové účty, budete muset projít protokolem a ladit chyby. Problém se často může vztahovat na konkrétní uživatelské účty a obvykle se jedná o dobrý postup, jak vyzkoušet jiné uživatelské účty nebo SSH pomocí výchozího uživatele SSH (místní účet) a pak se pokusit o kinit.
+Do se zapisuje protokol ověřování SSH `/var/log/auth.log` . Pokud se zobrazí chyba přihlášení prostřednictvím protokolu SSH pro místní nebo doménové účty, budete muset projít protokolem a ladit chyby. Problém se často může vztahovat na konkrétní uživatelské účty a obvykle se jedná o dobrý postup, jak vyzkoušet jiné uživatelské účty nebo SSH pomocí výchozího uživatele SSH (místní účet) a pak se pokusit o kinit.
 
 ## <a name="ssh-debug-log"></a>Protokol ladění SSH
 
-Pokud chcete povolit podrobné protokolování, budete se muset restartovat `sshd` s `-d` možností. Podobně `/usr/sbin/sshd -d` jako můžete spustit `sshd` také na vlastním portu (například 2222), takže nemusíte zastavit hlavní démona SSH. Pomocí `-v` možnosti s klientem SSH můžete také získat další protokoly (zobrazení chyb na straně klienta).
+Pokud chcete povolit podrobné protokolování, budete se muset restartovat `sshd` s `-d` možností. Podobně jako můžete `/usr/sbin/sshd -d` spustit také `sshd` na vlastním portu (například 2222), takže nemusíte zastavit hlavní démona SSH. Pomocí `-v` Možnosti s klientem SSH můžete také získat další protokoly (zobrazení chyb na straně klienta).
 
 ## <a name="next-steps"></a>Další kroky
 

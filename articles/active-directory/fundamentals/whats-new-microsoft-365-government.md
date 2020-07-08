@@ -14,10 +14,9 @@ ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48a7e5e810e509a97b6010218532f6e7dff0b73f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425540"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Novinky Azure Active Directory v Microsoft 365 státní správě
@@ -34,9 +33,9 @@ Tento článek se nevztahuje na Microsoft 365 vládní organizace – RSZ pro z�
 
 ## <a name="changes-to-the-initial-domain-name"></a>Změny počátečního názvu domény
 
-Při počáteční registraci vaší organizace pro Microsoft 365 online státní správy jste požádáni o výběr názvu domény vaší organizace `<your-domain-name>.onmicrosoft.com`. Pokud už máte název domény s příponou. com, nic se nezmění.
+Při počáteční registraci vaší organizace pro Microsoft 365 online státní správy jste požádáni o výběr názvu domény vaší organizace `<your-domain-name>.onmicrosoft.com` . Pokud už máte název domény s příponou. com, nic se nezmění.
 
-Pokud si ale zaregistrujete novou Microsoft 365ovou službu pro státní správu, budete požádáni o výběr názvu domény pomocí této `.us` přípony. Bude to tedy `<your-domain-name>.onmicrosoft.us`.
+Pokud si ale zaregistrujete novou Microsoft 365ovou službu pro státní správu, budete požádáni o výběr názvu domény pomocí této `.us` přípony. Bude to tedy `<your-domain-name>.onmicrosoft.us` .
 
 >[!Note]
 >Tato změna se nevztahuje na žádné zákazníky, kteří spravují Poskytovatelé cloudových služeb (CSP).
@@ -51,7 +50,7 @@ Dřív se zákazníci mohli přihlásit pomocí celosvětových portálů Azure 
 
 V následující tabulce jsou uvedeny koncové body pro všechny zákazníky:
 
-| Název | Podrobnosti koncového bodu |
+| Name | Podrobnosti koncového bodu |
 |------|------------------|
 | Portals |Microsoft Azure Government:https://portal.azure.us<p>Microsoft 365 státní správy – RSZ – vysoká:https://portal.office365.us<p>Microsoft 365 státní správy – DoD:https://portal.apps.mil |
 | Koncový bod Azure Active Directory autority | https://login.microsoftonline.us |

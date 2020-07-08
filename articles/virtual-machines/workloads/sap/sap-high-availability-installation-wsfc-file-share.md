@@ -17,10 +17,9 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77617337"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Instalace vysoké dostupnosti SAP NetWeaver v clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složce pro instance SAP ASCS/SCS v Azure
@@ -231,13 +230,13 @@ Neexistují žádné zvláštní požadavky, pokud různé služby DBMS pracují
 
 V clusteru SOFS vytvořte následující svazek a sdílenou složku:
 
-* Struktura souborů `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` SAP GLOBALHOST na sdíleném svazku clusteru SOFS (CSV)
+* Struktura souborů SAP GLOBALHOST `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` na sdíleném svazku clusteru SOFS (CSV)
 
 * SAPMNT sdílená složka
 
 * Nastavte zabezpečení sdílené složky SAPMNT a složky s úplným řízením pro:
-    * \<Doména> \ SAP_\<SID>_GlobalAdmin skupina uživatelů
-    * Uzel clusteru SAP ASCS/SCS počítače objekty \<počítač> \clusternode1 $ a \<doména> \clusternode2 $
+    * \<DOMAIN> \<SID> Skupina uživatelů \ SAP_ _GlobalAdmin
+    * Objekty počítače uzlu clusteru SAP ASCS/SCS \<DOMAIN> \ClusterNode1 $ a \<DOMAIN> \ClusterNode2 $
 
 Pokud chcete vytvořit svazek SDÍLENÉHO svazku clusteru s odolností zrcadla, spusťte na jednom z uzlů clusteru SOFS následující rutinu PowerShellu:
 
@@ -299,7 +298,7 @@ Vytvořte název sítě s clustery SAP ASCS/SCS (například **PR1-ASCS [10.0.6.
 
 Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Chcete-li nainstalovat instanci, v instalačním nástroji SAP SWPM přejít na:
 
-**\<Produkt>**  >   >  ** \<DBMS>** >  **instalaci****serveru ABAP** (nebo **Java**>) s vysokou dostupností, která je**první uzel clusteru****ASCS/SCS instance** >  **s vysokou dostupností** > .
+**\<Product>** > **\<DBMS>** > **Instalace**  >  **Aplikační server ABAP** (nebo **Java**) > první uzel clusteru ASCS/SCS instance **systému s vysokou dostupností**  >  **ASCS/SCS instance**  >  **First cluster node**.
 
 ### <a name="add-a-probe-port"></a>Přidat port testu paměti
 
@@ -309,12 +308,12 @@ Nakonfigurujte prostředek clusteru SAP, port testu SAP-SID-IP pomocí prostřed
 
 Nainstalujte instanci SAP ASCS/SCS na druhý uzel clusteru. Chcete-li nainstalovat instanci, v instalačním nástroji SAP SWPM přejít na:
 
-**\<Produkt>**  >  >  **DBMS \<>** > **Application Server ABAP**  >  **Installation** **Java****Additional cluster node****ASCS/SCS instance** **High-Availability System**instalaci serveru ABAP (nebo  > Java >) s vysokou dostupností a další uzel clusteru ASCS/SCS s vysokou dostupností.
+**\<Product>** > **\<DBMS>** > **Instalace**  >  **Aplikační server ABAP** (nebo **Java**) > ASCS/SCS instance **systému s vysokou dostupností**  >  **a**  >  **Další uzel clusteru**.
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualizovat profil instance SAP ASCS/SCS
 
-Aktualizujte parametry v identifikátoru SID profilu \<instance SAP ASCS/SCS>_ASCS/SCS\<Nr>_ \<>.
+Aktualizujte parametry v profilu instance SAP ASCS/SCS \<SID> _ASCS/SCS \<Nr> _ \<Host> .
 
 
 | Název parametru | Hodnota parametru |

@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: yelevin
 ms.openlocfilehash: a5cef16694fa2cfae036152d22cfa4473956fc72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588174"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Připojení dat z firewallu webových aplikací Microsoftu
@@ -34,7 +33,7 @@ Jakmile je vaše brána firewall webových aplikací Microsoftu nasazená a nač
     
 1. Na portálu Sentinel Azure vyberte **datové konektory**.
 1. Na stránce datové konektory vyberte dlaždici **WAF** .
-1. Přejít na [Application Gateway prostředek](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) a vyberte WAF.
+1. Přejít na [Application Gateway prostředek](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways)   a vyberte WAF.
     1. Vyberte **nastavení diagnostiky**.
     1. V tabulce vyberte **+ Přidat nastavení diagnostiky** .
     1. Na stránce **nastavení diagnostiky** zadejte **název** a vyberte **Odeslat do Log Analytics**.

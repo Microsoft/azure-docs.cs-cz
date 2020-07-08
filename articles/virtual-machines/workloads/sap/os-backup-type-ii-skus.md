@@ -14,10 +14,9 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 100e1b974e54d8c0065194bc7beb18f458011434
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77616871"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus-of-revision-3-stamps"></a>Zálohování a obnovení operačního systému pro SKU typu II u razítek revize 3
@@ -31,7 +30,7 @@ Tento dokument popisuje kroky pro zálohování a obnovení na úrovni souborů 
 >[!NOTE]
 >Skripty pro zálohování operačního systému využívají zadní software, který je předem nainstalován na serveru.  
 
-Po dokončení zřizování týmem Microsoftu `Service Management` ve výchozím nastavení je server nakonfigurovaný se dvěma plány zálohování k zálohování na úrovni systému souborů zpátky v operačním systému. Plány úloh zálohování můžete kontrolovat pomocí následujícího příkazu:
+Po dokončení zřizování `Service Management` týmem Microsoftu ve výchozím nastavení je server nakonfigurovaný se dvěma plány zálohování k zálohování na úrovni systému souborů zpátky v operačním systému. Plány úloh zálohování můžete kontrolovat pomocí následujícího příkazu:
 ```
 #crontab –l
 ```
@@ -69,7 +68,7 @@ Následující příkaz ukazuje obnovení souboru */etc/fstabfrom* zálohy zálo
 
 Následující snímek obrazovky ukazuje obnovení úplné zálohy:
 
-![HowtoRestoreaBackup. PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
+![HowtoRestoreaBackup.PNG](media/HowToHLI/OSBackupTypeIISKUs/HowtoRestoreaBackup.PNG)
 
 ## <a name="how-to-install-the-rear-tool-and-change-the-configuration"></a>Jak nainstalovat zadní nástroj a změnit konfiguraci? 
 
@@ -99,4 +98,4 @@ EXCLUDE_VG=( vgHANA-data-HC2 vgHANA-data-HC3 vgHANA-log-HC2 vgHANA-log-HC3 vgHAN
 BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/crash' '/hana' '/usr/sap'  ‘/proc’)
 ```
 
-Následující snímek obrazovky ukazuje obnovení úplné zálohy: ![REARTOOLCONFIGURATION. png](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)
+Následující snímek obrazovky ukazuje obnovení úplné zálohy: ![RearToolConfiguration.PNG](media/HowToHLI/OSBackupTypeIISKUs/RearToolConfiguration.PNG)

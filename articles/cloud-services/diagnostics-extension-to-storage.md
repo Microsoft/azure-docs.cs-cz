@@ -9,10 +9,9 @@ ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 17430330d068fb55b45f073afecb8ba348286cb5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77472671"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Ukládání a zobrazení diagnostických dat v Azure Storage
@@ -33,12 +32,12 @@ V závislosti na typu diagnostických dat, která se shromažďují, Azure Diagn
 
 | Zdroj dat | Formát úložiště |
 | --- | --- |
-| Protokoly Azure |Table |
+| Protokoly Azure |Tabulka |
 | Protokoly IIS 7,0 |Objekt blob |
-| Protokolů infrastruktury Azure Diagnostics |Table |
+| Protokolů infrastruktury Azure Diagnostics |Tabulka |
 | Protokoly trasování neúspěšných požadavků |Objekt blob |
-| Protokoly událostí systému Windows |Table |
-| Čítače výkonu |Table |
+| Protokoly událostí systému Windows |Tabulka |
+| Čítače výkonu |Tabulka |
 | Výpisy stavu systému |Objekt blob |
 | Vlastní protokoly chyb |Objekt blob |
 

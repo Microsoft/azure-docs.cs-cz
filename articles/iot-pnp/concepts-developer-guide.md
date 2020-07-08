@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77605217"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Příručka pro vývojáře pro modelování IoT technologie Plug and Play Preview
@@ -97,7 +96,7 @@ Rozhraní má některá povinná pole:
 
 V tomto jednoduchém příkladu je k dispozici pouze jedno pole telemetrie. Minimální Popis pole má:
 
-- `@type`: Určuje typ schopnosti: `Telemetry`, `Property`nebo. `Command`
+- `@type`: Určuje typ schopnosti: `Telemetry` , `Property` nebo `Command` .
 - `name`: poskytuje název hodnoty telemetrie.
 - `schema`: Určuje datový typ telemetrie. Tato hodnota může být primitivní typ, například Double, Integer, Boolean nebo String. Podporují se také komplexní typy objektů, pole a mapy.
 
@@ -127,11 +126,11 @@ Příkazy jsou buď synchronní, nebo asynchronní. Synchronní příkaz se mus�
 
 Pro dlouhotrvající operace použijte asynchronní příkazy. Zařízení odesílá informace o průběhu pomocí zpráv telemetrie. Tyto zprávy o průběhu mají následující vlastnosti záhlaví:
 
-- `iothub-command-name`: název příkazu, například `UpdateFirmware`.
+- `iothub-command-name`: název příkazu, například `UpdateFirmware` .
 - `iothub-command-request-id`: ID žádosti vygenerované na straně serveru, které se odešle do zařízení při počátečním volání.
-- `iothub-interface-id`: ID rozhraní, ve kterém je tento příkaz definován, například `urn:example:AssetTracker:1`.
- `iothub-interface-name`: název instance tohoto rozhraní, například `myAssetTracker`.
-- `iothub-command-statuscode`: stavový kód vrácený ze zařízení, například `202`.
+- `iothub-interface-id`: ID rozhraní, ve kterém je tento příkaz definován, například `urn:example:AssetTracker:1` .
+ `iothub-interface-name`: název instance tohoto rozhraní, například `myAssetTracker` .
+- `iothub-command-statuscode`: stavový kód vrácený ze zařízení, například `202` .
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
@@ -182,23 +181,23 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 IoT technologie Plug and Play umožňuje používat zařízení, která zaregistrovala své možnosti ve službě IoT Hub. Můžete například získat přímý přístup k vlastnostem a příkazům zařízení.
 
-Pokud chcete používat technologie Plug and Play IoT, která je připojená ke službě IoT Hub, použijte buď IoT Hub REST API nebo jednu z jazykových sad IoT. V následujících příkladech se používá REST API IoT Hub. Aktuální verze rozhraní API je `2019-07-01-preview`. Připojí `?api-version=2019-07-01-preview` se k VOLÁNÍM REST PI.
+Pokud chcete používat technologie Plug and Play IoT, která je připojená ke službě IoT Hub, použijte buď IoT Hub REST API nebo jednu z jazykových sad IoT. V následujících příkladech se používá REST API IoT Hub. Aktuální verze rozhraní API je `2019-07-01-preview` . Připojí `?api-version=2019-07-01-preview` se k voláním REST PI.
 
-Chcete-li získat hodnotu vlastnosti zařízení, jako je například firmware verze (`fwVersion`) v `DeviceInformation` rozhraní ve termostatu, použijte digitální vlákna REST API.
+Chcete-li získat hodnotu vlastnosti zařízení, jako je například firmware verze ( `fwVersion` ) v `DeviceInformation` rozhraní ve termostatu, použijte digitální vlákna REST API.
 
-Pokud se zavolá `t-123`zařízení termostata, zobrazí se všechny vlastnosti všech rozhraní implementovaných vaším zařízením a volání REST API Get:
+Pokud se zavolá zařízení termostata `t-123` , zobrazí se všechny vlastnosti všech rozhraní implementovaných vaším zařízením a volání REST API Get:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Obecněji jsou k dispozici všechny vlastnosti ve všech rozhraních pomocí této šablony REST API `{device-id}` , kde je identifikátor zařízení:
+Obecněji jsou k dispozici všechny vlastnosti ve všech rozhraních pomocí této šablony REST API, kde `{device-id}` je identifikátor zařízení:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Pokud znáte název rozhraní, například `deviceInformation`a chcete získat vlastnosti pro toto konkrétní rozhraní, zajistěte obor žádosti na konkrétní rozhraní podle názvu:
+Pokud znáte název rozhraní, například `deviceInformation` a chcete získat vlastnosti pro toto konkrétní rozhraní, zajistěte obor žádosti na konkrétní rozhraní podle názvu:
 
 ```REST
 GET /digitalTwins/t-123/interfaces/deviceInformation

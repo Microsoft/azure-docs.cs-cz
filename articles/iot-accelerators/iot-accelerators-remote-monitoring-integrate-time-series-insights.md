@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77564640"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
@@ -49,9 +48,9 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 V dalším kroku nasaďte Time Series Insights jako další prostředek do řešení vzdáleného monitorování a připojte ho ke službě IoT Hub.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
-1. Vyberte **vytvořit prostředek** > **Internet věcí** > **Time Series Insights**.
+1. Vyberte **vytvořit prostředek**  >  **Internet věcí**  >  **Time Series Insights**.
 
     ![Nový Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights.png)
 
@@ -213,15 +212,15 @@ Nakonfigurujte prostředí `basic` nasazení pro aktualizované mikroslužby.
 
 1. Vyhledejte a klikněte na aplikaci **ContosoRM** .
 
-1. Přejděte na **Nastavení** > **klíče** a pak vytvořte nový klíč pro svou aplikaci. Nezapomeňte zkopírovat hodnotu klíče do bezpečného umístění.
+1. Přejděte na **Nastavení**  >  **klíče** a pak vytvořte nový klíč pro svou aplikaci. Nezapomeňte zkopírovat hodnotu klíče do bezpečného umístění.
 
 1. Pomocí nejnovější značky si z úložiště GitHubu [Stáhněte nejnovější soubor YAML Docker](https://github.com/Azure/pcs-cli/tree/5a9b4e0dbe313172eff19236e54a4d461d4f3e51/solutions/remotemonitoring/single-vm) . 
 
 1. Připojte se k virtuálnímu počítači přes SSH podle postupu popsaného v tématu [jak vytvářet a používat klíče SSH](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
 
-1. Po připojení zadejte `cd /app`.
+1. Po připojení zadejte `cd /app` .
 
-1. Přidejte následující proměnné prostředí pro každou mikroslužbu do souboru Docker YAML a ve `env-setup` skriptu ve virtuálním počítači:
+1. Přidejte následující proměnné prostředí pro každou mikroslužbu do souboru Docker YAML a `env-setup` ve skriptu ve virtuálním počítači:
 
     ```sh
     PCS_TELEMETRY_STORAGE_TYPE=tsi
@@ -233,7 +232,7 @@ Nakonfigurujte prostředí `basic` nasazení pro aktualizované mikroslužby.
 
 1. Přejděte do **služby telemetrie** a také upravte soubor s doplňováním Docker přidáním stejných proměnných prostředí výše.
 
-1. Přejděte do **služby správce ASA** a úpravou souboru Docker vytvořte soubor přidáním `PCS_TELEMETRY_STORAGE_TYPE`.
+1. Přejděte do **služby správce ASA** a úpravou souboru Docker vytvořte soubor přidáním `PCS_TELEMETRY_STORAGE_TYPE` .
 
 1. Restartujte kontejnery Docker pomocí `sudo ./start.sh` z virtuálního počítače.
 
@@ -244,7 +243,7 @@ Nakonfigurujte prostředí `basic` nasazení pro aktualizované mikroslužby.
 
 Konfigurace prostředí `standard` nasazení pro aktualizované mikroslužby výše
 
-1. Na příkazovém řádku spusťte `kubectl proxy`příkaz. Další informace najdete v tématu [přístup k rozhraní Kubernetes API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
+1. Na příkazovém řádku spusťte příkaz `kubectl proxy` . Další informace najdete v tématu [přístup k rozhraní Kubernetes API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
 
 1. Otevřete konzolu pro správu Kubernetes.
 

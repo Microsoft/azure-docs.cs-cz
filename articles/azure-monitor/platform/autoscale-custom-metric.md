@@ -5,10 +5,9 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 7758c440c75af5819099110dcbdaf5a86a1d2a04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77425115"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Začínáme s automatickým škálováním podle vlastní metriky v Azure
@@ -23,7 +22,7 @@ V tomto článku se předpokládá, že máte nakonfigurované webové aplikace 
 - Otevřít [Azure Portal][2]
 - V levém navigačním podokně klikněte na ikonu Azure Monitor.
   ![Spustit Azure Monitor][3]
-- Kliknutím na nastavení automatického škálování zobrazíte všechny prostředky, pro které se má použít automatické škálování, spolu s aktuálním stavem ![automatického škálování zjišťovat automatické škálování ve službě Azure monitor.][4]
+- Kliknutím na nastavení automatického škálování zobrazíte všechny prostředky, pro které se má použít automatické škálování, spolu s aktuálním stavem ![ automatického škálování zjišťovat automatické škálování ve službě Azure monitor.][4]
 - Otevřete okno Automatické škálování v Azure Monitor a vyberte prostředek, který chcete škálovat.
   > Poznámka: následující postup používá plán služby App Service přidružený k webové aplikaci, která má nakonfigurované App Insights.
 - V okně nastavení škálování pro prostředek si všimněte, že aktuální počet instancí je 1. Klikněte na Povolit automatické škálování.

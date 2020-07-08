@@ -13,10 +13,9 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 87ca322cbdfdd8a53a3ecefcb120a961ea1bb936
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77587919"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Rozšířená detekce útoků s více fázemi v Azure Sentinel
@@ -38,7 +37,7 @@ Tato detekce je ve výchozím nastavení povolená v Azure Sentinel. Pokud chcet
 
 1. Pokud jste to ještě neudělali, přihlaste se k [Portálu Azure](https://portal.azure.com).
 
-2. Přejít na **Azure Sentinel** > **Configuration** > **Analytics**
+2. Přejít na **Azure Sentinel**  >  **Configuration**  >  **Analytics**
 
 3. Vyberte **aktivní pravidla** a ve sloupci **název** vyhledejte **Pokročilé zjišťování útoků s více fázemi** . Zkontrolujte sloupec **stav** a potvrďte, jestli je toto zjišťování povolené nebo zakázané.
 
@@ -49,7 +48,7 @@ Tato detekce je ve výchozím nastavení povolená v Azure Sentinel. Pokud chcet
 Šablony pravidel nelze použít pro pokročilou detekci útoku na více fází.
 
 > [!NOTE]
-> Služba Azure Sentinel aktuálně používá ke studiu systémů strojového učení 30 dní historických dat. Tato data se vždycky šifrují pomocí klíčů Microsoftu při jejich předávání prostřednictvím kanálu strojového učení. Školicí data se ale nešifrují pomocí [zákaznických klíčů (CMK)](customer-managed-keys.md) , pokud jste v pracovním prostoru Sentinel Azure povolili CMK. Pokud se chcete odhlásit z fúze, přejděte na **Azure Sentinel** \> **Configuration** \> ** \> Analytics \> aktivní pravidla Upřesnit detekci útoků ve více fázích** a ve sloupci **stav** vyberte **zakázat.**
+> Služba Azure Sentinel aktuálně používá ke studiu systémů strojového učení 30 dní historických dat. Tato data se vždycky šifrují pomocí klíčů Microsoftu při jejich předávání prostřednictvím kanálu strojového učení. Školicí data se ale nešifrují pomocí [zákaznických klíčů (CMK)](customer-managed-keys.md) , pokud jste v pracovním prostoru Sentinel Azure povolili CMK. Pokud se chcete odhlásit z fúze, přejděte na **Azure Sentinel**   \>  **Configuration**   \>  **Analytics \> aktivní pravidla \> Upřesnit detekci útoků ve více fázích** a ve sloupci **stav** vyberte **zakázat.**
 
 ## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fúze pomocí Palo Alto Networks a ATP v programu Microsoft Defender
 
@@ -89,7 +88,7 @@ Pomocí pokročilé detekce útoků na více fází podporuje Azure Sentinel ná
 
 Je nutné mít nakonfigurované [konektory Azure AD Identity Protection data](connect-azure-ad-identity-protection.md) a [Cloud App Security](connect-cloud-app-security.md) .
 
-V popisech, které následují, zobrazí Azure Sentinel skutečnou hodnotu z dat, která se na této stránce reprezentují jako proměnné v závorkách. Například skutečný zobrazovaný název účtu místo \< *názvu účtu*> a skutečný počet, nikoli \< *číslo*>.
+V popisech, které následují, zobrazí Azure Sentinel skutečnou hodnotu z dat, která se na této stránce reprezentují jako proměnné v závorkách. Například skutečný zobrazovaný název účtu \<*account name*> , nikoli a skutečný počet, nikoli \<*number*> .
 
 ### <a name="impossible-travel-to-atypical-location-followed-by-anomalous-office-365-activity"></a>Nemožná cesta do neobvyklých umístění následovaných aktivitou neobvyklé Office 365
 
@@ -97,45 +96,45 @@ K dispozici je sedm možných incidentů Sentinel Azure, které spojují nepravd
 
 - **Nemožná cesta do netypických míst, která vedou k exfiltrace poštovní schránky Office 365**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z nemožného cestování do \< *umístění*>, neobvyklým umístěním, po kterém následuje pravidlo pro přesměrování doručené pošty, se nastavilo v doručené poště uživatele.
+    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých umístění, po kterém následuje pravidlo pro přeposílání podezřelé doručené pošty, které je nastaveno v doručené poště uživatele.
     
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Název uživatelského \< *účtu*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e- \<maily na externí adresu *e-mailové adresy*>.
+    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> .
 
 - **Nemožná cesta do netypických míst, která by vedla k podezřelé aktivitě správy Cloud**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z nemožného cestování do \< *umístění*> se neobvyklým umístěním.
+    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst.
     
-    V dalším kroku se \< *název* účtu účtu> provedl přes \< *číslo*> aktivity správy v jedné relaci.
+    Dále účet, který se \<*account name*> provádí \<*number*> v rámci aktivit správy v jedné relaci.
 
 - **Nemožná cesta do netypických umístění, což vede k hromadnému odstranění souborů**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> do \< *umístění*>, což je neobvyklá poloha. 
+    Tato výstraha je označením události přihlášení \<*account name*> do \<*location*> neobvyklých umístění. 
     
-    V dalším kroku \< *název účtu* účtu> odstranil \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
 
 - **Nemožná cesta do netypických míst, která vedou ke stažení hromadného souboru**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z nemožného cestování do \< *umístění*> se neobvyklým umístěním. 
+    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst. 
     
-    V dalším kroku se \< *název* účtu účtu> v \<jedné relaci stáhl přes *počet*> jedinečných souborů.
+    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
 
 - **Nemožná cesta k netypickým místům, které vede k zosobnění Office 365**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z nemožného cestování do \< *umístění*> se neobvyklým umístěním. 
+    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst. 
     
-    V dalším kroku \< *název účtu* účtu> provedl neobvyklé množství aktivit\<zosobnění v jedné relaci (*počet aktivit*>).
+    Dále účet \<*account name*> provedl neobvyklé množství ( \<*number of activities*> ) zosobněných aktivit v jedné relaci.
 
 - **Nemožná cesta do netypických míst, která vedou ke sdílení souborů**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z nemožného cestování do \< *umístění*> se neobvyklým umístěním. 
+    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst. 
     
-    Dále \< *název účtu* účtu> sdílet přes \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
 
 - **Nepovedlo se cestovat do neobvyklých míst, která ransomwarem v cloudové aplikaci.**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z nemožného cestování do \< *umístění*> se neobvyklým umístěním. 
+    Tato výstraha je označením události přihlášení \<*account name*> z nemožného cestování do \<*location*> neobvyklých míst. 
     
-    Dále \< *název účtu* účtu> nahrál \< *počet* souborů> a odstranil celkový \< *počet> souborů* . 
+    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
     
     Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
 
@@ -146,45 +145,45 @@ K dispozici je sedm možných incidentů Sentinel Azure, které spojují přihla
 
 - **Přihlašovací událost z neznámého umístění, které vede k Exchange Online Mailbox exfiltrace**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *umístění*>, neznámého umístění, po kterém následuje pravidlo pro přesměrování doručené pošty, bylo nastaveno v doručené poště uživatele.
+    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění, po kterém následuje pravidlo pro přeposílání podezřelé doručené pošty, které bylo nastaveno v doručené poště uživatele.
     
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Název uživatelského \< *účtu*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e- \<maily na externí adresu *e-mailové adresy*>. 
+    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> . 
 
 - **Přihlašovací událost z neznámého umístění vedoucí k podezřelé aktivitě správy cloudové aplikace**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *umístění*>, neznámého umístění. 
+    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
     
-    V dalším kroku se \< *název* účtu účtu> provedl v jedné relaci přes \< *počet*>ch aktivit správy.
+    Dále účet, který se \<*account name*> provádí \<*number of*> v rámci aktivit správy v jedné relaci.
 
 - **Událost přihlášení z neznámého umístění, které vede k odstranění souboru**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *umístění*>, neznámého umístění. 
+    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
     
-    V dalším kroku \< *název účtu* účtu> odstranil \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
 
 - **Událost přihlášení z neznámého umístění, které vede k hromadnému stažení souboru**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *umístění*>, neznámého umístění. 
+    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
     
-    V dalším kroku se \< *název* účtu účtu> v \<jedné relaci stáhl přes *počet*> jedinečných souborů.
+    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
 
 - **Přihlašovací událost z neznámého umístění, které vede k zosobnění Office 365**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *umístění*>, neznámého umístění.
+    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění.
     
-    V dalším kroku se \< *název* účtu účtu> zosobnit přes \< *počet*> různých účtů v jedné relaci.
+    V dalším kroku se účet \<*account name*> zosobňuje \<*number of*> v jedné relaci v rámci různých účtů.
 
 - **Událost přihlášení z neznámého umístění, které vede k hromadnému sdílení souborů**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *umístění*>, neznámého umístění. 
+    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
     
-    Dále \< *název účtu* účtu> sdílet přes \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
 
 - **Přihlašovací událost z neznámého umístění, které vede k ransomwarem v cloudové aplikaci**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *umístění*>, neznámého umístění. 
+    Tato výstraha je označením události přihlášení \<*account name*> z \<*location*> neznámého umístění. 
     
-    Dále \< *název účtu* účtu> nahrál \< *počet* souborů> a odstranil celkový \< *počet> souborů* . 
+    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
     
     Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
 
@@ -194,45 +193,45 @@ Existuje sedm možných incidentů Sentinel Azure, které spojují přihlašovac
 
 - **Přihlašovací událost z nakaženého zařízení, které vede k exfiltrace poštovní schránky Office 365**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> ze zařízení, které je potenciálně nakažené malwarem, po kterém následuje podezřelé pravidlo pro přesměrování doručené pošty nastavené na doručenou poštu uživatele.
+    Tato výstraha je označením události přihlášení \<*account name*> ze zařízení potenciálně nakaženého malwarem, po kterém následuje pravidlo pro přeposílání podezřelé doručené pošty, které je nastavené v doručené poště uživatele.
     
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Název uživatelského \< *účtu*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e- \<maily na externí adresu *e-mailové adresy*>. 
+    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> . 
 
 - **Přihlašovací událost z nakaženého zařízení vedoucí k podezřelé aktivitě správy cloudové aplikace**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> ze zařízení, které je potenciálně nakažené malwarem.
+    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem.
     
-    V dalším kroku se \< *název* účtu účtu> provedl v jedné relaci přes \< *počet*>ch aktivit správy.
+    Dále účet, který se \<*account name*> provádí \<*number of*> v rámci aktivit správy v jedné relaci.
 
 - **Událost přihlášení z nakaženého zařízení, které by vedlo k odstranění souboru**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> ze zařízení, které je potenciálně nakažené malwarem. 
+    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
     
-    V dalším kroku \< *název účtu* účtu> odstranil \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
 
 - **Událost přihlášení z nakaženého zařízení, které vede k hromadnému stažení souboru**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> ze zařízení, které je potenciálně nakažené malwarem. 
+    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
     
-    V dalším kroku se \< *název* účtu účtu> v \<jedné relaci stáhl přes *počet*> jedinečných souborů.
+    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
 
 - **Přihlašovací událost z nakaženého zařízení, které vede k zosobnění Office 365**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> ze zařízení, které je potenciálně nakažené malwarem. 
+    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
     
-    V dalším kroku se \< *název* účtu účtu> zosobnit přes \< *počet*> různých účtů v jedné relaci.
+    V dalším kroku se účet \<*account name*> zosobňuje \<*number of*> v jedné relaci v rámci různých účtů.
 
 - **Událost přihlášení z nakaženého zařízení, které vede k hromadnému sdílení souborů**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> ze zařízení, které je potenciálně nakažené malwarem. 
+    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
     
-    Dále \< *název účtu* účtu> sdílet přes \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
 
 - **Přihlašovací událost z nakaženého zařízení, které se ransomwarem v cloudové aplikaci**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> ze zařízení, které je potenciálně nakažené malwarem. 
+    Tato výstraha je označením události přihlášení ze zařízení, které \<*account name*> je potenciálně napadené malwarem. 
     
-    Dále \< *název účtu* účtu> nahrál \< *počet* souborů> a odstranil celkový \< *počet> souborů* . 
+    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
     
     Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
 
@@ -242,45 +241,45 @@ K dispozici je sedm možných incidentů ověřování Azure, které spojují p�
 
 - **Událost přihlášení z anonymní IP adresy, která vede k exfiltrace poštovní schránky Office 365**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *IP adresy* anonymního proxy serveru>, po kterých následuje pravidlo pro přesměrování doručené pošty, které se nastaví v doručené poště uživatele.
+    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> , po které následuje pravidlo pro přeposílání podezřelé doručené pošty, které je nastaveno v doručené poště uživatele.
     
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Název uživatelského \< *účtu*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e- \<maily na externí adresu *e-mailové adresy*>. 
+    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> . 
 
 - **Událost přihlášení z anonymní IP adresy, která vede k podezřelé aktivitě správy cloudové aplikace**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *IP adresy* anonymního proxy serveru>. 
+    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
     
-    V dalším kroku se \< *název* účtu účtu> provedl v jedné relaci přes \< *počet*>ch aktivit správy.
+    Dále účet, který se \<*account name*> provádí \<*number of*> v rámci aktivit správy v jedné relaci.
 
 - **Událost přihlášení z anonymní IP adresy, která vede k odstranění souboru**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *IP adresy* anonymního proxy serveru>. 
+    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
     
-    V dalším kroku \< *název účtu* účtu> odstranil \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
 
 - **Událost přihlášení z anonymní IP adresy, která vede ke stažení hromadného souboru**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *IP adresy* anonymního proxy serveru>. 
+    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
     
-    V dalším kroku se \< *název* účtu účtu> v \<jedné relaci stáhl přes *počet*> jedinečných souborů.
+    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
 
 - **Událost přihlášení z anonymní IP adresy, která vede k zosobnění systému Office 365**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *IP adresy* anonymního proxy serveru>. 
+    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
     
-    V dalším kroku se \< *název* účtu účtu> zosobnit přes \< *počet*> různých účtů v jedné relaci.
+    V dalším kroku se účet \<*account name*> zosobňuje \<*number of*> v jedné relaci v rámci různých účtů.
 
 - **Událost přihlášení z anonymní IP adresy, která vede ke sdílení souborů**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *IP adresy* anonymního proxy serveru>. 
+    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
     
-    Dále \< *název účtu* účtu> sdílet přes \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
 
 - **Událost přihlášení z anonymní IP adresy do ransomwarem v cloudové aplikaci**
     
-    Tato výstraha je označením přihlašovací události podle \< *názvu účtu*> z \< *IP adresy* anonymního proxy serveru>. 
+    Tato výstraha je označením události přihlášení \<*account name*> z IP adresy anonymního proxy serveru \<*IP address*> . 
     
-    Dále \< *název účtu* účtu> nahrál \< *počet* souborů> a odstranil celkový \< *počet> souborů* . 
+    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
     
     Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
 
@@ -290,45 +289,45 @@ Existuje sedm možných incidentů Sentinel Azure, které spojují přihlašovac
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k poštovní schránce Office 365 exfiltrace**
     
-    Tato výstraha je označením, že událost přihlášení podle \< *názvu účtu*> používala nevrácená pověření, po kterém následuje pravidlo pro přesměrování doručené pošty, které bylo nastaveno v doručené poště uživatele. 
+    Tato výstraha je označením, že přihlašovací událost, která po \<*account name*> odstraněných přihlašovacích údajích, následovaná pravidlem pro přesměrování doručené pošty, byla nastavena v doručené poště uživatele. 
     
-    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Název uživatelského \< *účtu*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e- \<maily na externí adresu *e-mailové adresy*>. 
+    To může znamenat, že došlo k ohrožení zabezpečení účtu a že se poštovní schránka používá k exfiltrovatí informací z vaší organizace. Uživatel \<*account name*> vytvořil nebo aktualizoval pravidlo přeposílání doručené pošty, které předává všechny příchozí e-maily na externí adresu \<*email address*> . 
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k podezřelé aktivitě správy cloudové aplikace**
     
-    Tato výstraha je označením, že událost přihlášení podle \< *názvu účtu*> používala nevrácená pověření.
+    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje.
     
-    V dalším kroku se \< *název* účtu účtu> provedl v jedné relaci přes \< *počet*>ch aktivit správy.
+    Dále účet, který se \<*account name*> provádí \<*number of*> v rámci aktivit správy v jedné relaci.
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k hromadnému odstranění souboru**
     
-    Tato výstraha je označením, že událost přihlášení podle \< *názvu účtu*> používala nevrácená pověření.
+    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje.
     
-    V dalším kroku \< *název účtu* účtu> odstranil \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> odstranil \<*number of*> v jedné relaci jedinečné soubory.
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucím ke stažení souboru**
     
-    Tato výstraha je označením, že událost přihlášení podle \< *názvu účtu*> používala nevrácená pověření.
+    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje.
     
-    V dalším kroku se \< *název* účtu účtu> v \<jedné relaci stáhl přes *počet*> jedinečných souborů.
+    V dalším kroku se účet \<*account name*> stáhl \<*number of*> v jedné relaci do jedinečných souborů.
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k zosobnění systému Office 365**
     
-    Tato výstraha je označením, že událost přihlášení podle \< *názvu účtu*> používala nevrácená pověření. 
+    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje. 
     
-    V dalším kroku se \< *název* účtu účtu> zosobnit přes \< *počet*> různých účtů v jedné relaci.
+    V dalším kroku se účet \<*account name*> zosobňuje \<*number of*> v jedné relaci v rámci různých účtů.
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji vedoucími k hromadnému sdílení souborů**
     
-    Tato výstraha je označením, že událost přihlášení podle \< *názvu účtu*> používala nevrácená pověření.
+    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje.
     
-    Dále \< *název účtu* účtu> sdílet přes \< *počet*> jedinečných souborů v jedné relaci.
+    Dále účet \<*account name*> sdílený přes \<*number of*> jedinečné soubory v jedné relaci.
 
 - **Přihlašovací událost od uživatele s nevrácenými přihlašovacími údaji do ransomwarem v cloudové aplikaci**
     
-    Tato výstraha je označením, že událost přihlášení podle \< *názvu účtu*> používala nevrácená pověření. 
+    Tato výstraha znamená, že přihlašovací událost \<*account name*> využívala nevyužité přihlašovací údaje. 
     
-    Dále \< *název účtu* účtu> nahrál \< *počet* souborů> a odstranil celkový \< *počet> souborů* . 
+    Dále účet \<*account name*> nahrál \<*number of*> soubory a odstranil celkem \<*number of*> souborů. 
     
     Tento vzor aktivity je indikativní pro potenciální útok ransomwarem.
 

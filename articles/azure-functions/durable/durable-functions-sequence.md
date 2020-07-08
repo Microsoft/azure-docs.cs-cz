@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 11/29/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8da4ce7801cc98f9ffb32eb7b506eaf1ccd877dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77562053"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Řetězení funkcí v ukázce sekvence Durable Functions-Hello
@@ -22,7 +21,7 @@ ms.locfileid: "77562053"
 
 Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
-* `E1_HelloSequence`: [Funkce Orchestrator](durable-functions-bindings.md#orchestration-trigger) , která v `E1_SayHello` sekvenci volá víckrát. Ukládá výstupy z `E1_SayHello` volání a zaznamenává výsledky.
+* `E1_HelloSequence`: [Funkce Orchestrator](durable-functions-bindings.md#orchestration-trigger) , která `E1_SayHello` v sekvenci volá víckrát. Ukládá výstupy z `E1_SayHello` volání a zaznamenává výsledky.
 * `E1_SayHello`: [Funkce Activity](durable-functions-bindings.md#activity-trigger) , která do řetězce přiřadí řetězec "Hello".
 * `HttpStart`: Funkce aktivovaná protokolem HTTP, která spouští instanci nástroje Orchestrator.
 
@@ -32,7 +31,7 @@ Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=13-25)]
 
-Všechny funkce orchestrace jazyka C# musí mít parametr typu `DurableOrchestrationContext`, který existuje v `Microsoft.Azure.WebJobs.Extensions.DurableTask` sestavení. Tento kontextový objekt umožňuje volat jiné funkce *aktivity* a předat vstupní parametry pomocí své `CallActivityAsync` metody.
+Všechny funkce orchestrace jazyka C# musí mít parametr typu `DurableOrchestrationContext` , který existuje v `Microsoft.Azure.WebJobs.Extensions.DurableTask` sestavení. Tento kontextový objekt umožňuje volat jiné funkce *aktivity* a předat vstupní parametry pomocí své `CallActivityAsync` metody.
 
 Kód volá `E1_SayHello` tři časy v pořadí s různými hodnotami parametrů. Návratová hodnota každého volání je přidána do `outputs` seznamu, který je vrácen na konci funkce.
 
@@ -43,16 +42,16 @@ Kód volá `E1_SayHello` tři časy v pořadí s různými hodnotami parametrů.
 
 #### <a name="functionjson"></a>function.json
 
-Pokud používáte Visual Studio Code nebo Azure Portal pro vývoj, tady je obsah souboru *Functions. JSON* pro funkci Orchestrator. Většina souborů *. JSON funkcí* Orchestrator vypadá téměř přesně takto.
+Pokud používáte Visual Studio Code nebo Azure Portal pro vývoj, tady je obsah *function.jsv* souboru pro funkci Orchestrator. Většina *function.js* Orchestrator se soubory vypadá téměř přesně takto.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
 
-Důležitou věcí je typ `orchestrationTrigger` vazby. Všechny funkce nástroje Orchestrator musí používat tento typ aktivační události.
+Důležitou věcí je `orchestrationTrigger` typ vazby. Všechny funkce nástroje Orchestrator musí používat tento typ aktivační události.
 
 > [!WARNING]
-> Chcete-li přidržet pravidlo "žádné I/O" funkcí nástroje Orchestrator, při použití vazby `orchestrationTrigger` triggeru nepoužívejte žádné vstupní ani výstupní vazby.  Pokud jsou vyžadovány jiné vstupní nebo výstupní vazby, měly by být použity místo toho v kontextu `activityTrigger` funkcí, které jsou volány nástrojem Orchestrator. Další informace naleznete v článku o [omezeních kódu funkce nástroje Orchestrator](durable-functions-code-constraints.md) .
+> Chcete-li přidržet pravidlo "žádné I/O" funkcí nástroje Orchestrator, při použití vazby triggeru nepoužívejte žádné vstupní ani výstupní vazby `orchestrationTrigger` .  Pokud jsou vyžadovány jiné vstupní nebo výstupní vazby, měly by být použity místo toho v kontextu `activityTrigger` funkcí, které jsou volány nástrojem Orchestrator. Další informace naleznete v článku o [omezeních kódu funkce nástroje Orchestrator](durable-functions-code-constraints.md) .
 
-#### <a name="indexjs"></a>index. js
+#### <a name="indexjs"></a>index.js
 
 Toto je funkce:
 
@@ -61,10 +60,10 @@ Toto je funkce:
 Všechny funkce orchestrace JavaScriptu musí obsahovat [ `durable-functions` modul](https://www.npmjs.com/package/durable-functions). Jedná se o knihovnu, která umožňuje psát Durable Functions v jazyce JavaScript. Existují tři významné rozdíly mezi funkcí Orchestrace a dalšími funkcemi jazyka JavaScript:
 
 1. Funkce je [generátorová funkce.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)..
-2. Funkce je zabalena do volání `durable-functions` `orchestrator` metody modulu (zde `df`).
+2. Funkce je zabalena do volání `durable-functions` `orchestrator` metody modulu (zde `df` ).
 3. Funkce musí být synchronní. Protože metoda ' Orchestrator ' zpracovává volání ' Context. hotov ', funkce by měla jednoduše ' Return '.
 
-`context` Objekt obsahuje objekt kontextu `df` trvalé orchestrace, který umožňuje volat jiné funkce *aktivity* a předat vstupní parametry pomocí své `callActivity` metody. Kód volá `E1_SayHello` třikrát tři časy v pořadí s různými hodnotami parametrů, které `yield` používají k určení, že by mělo být spuštěno volání funkce asynchronní aktivity, které se mají vrátit. Návratová hodnota každého volání je přidána do `outputs` pole, které je vráceno na konci funkce.
+`context`Objekt obsahuje `df` objekt kontextu trvalé orchestrace, který umožňuje volat jiné funkce *aktivity* a předat vstupní parametry pomocí své `callActivity` metody. Kód volá `E1_SayHello` třikrát tři časy v pořadí s různými hodnotami parametrů, `yield` které používají k určení, že by mělo být spuštěno volání funkce asynchronní aktivity, které se mají vrátit. Návratová hodnota každého volání je přidána do `outputs` pole, které je vráceno na konci funkce.
 
 ---
 
@@ -74,24 +73,24 @@ Všechny funkce orchestrace JavaScriptu musí obsahovat [ `durable-functions` mo
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=27-32)]
 
-Aktivity používají `ActivityTrigger` atribut. Použijte k provádění `IDurableActivityContext` akcí souvisejících s aktivitou, jako je například přístup k vstupní hodnotě `GetInput<T>`pomocí, poskytnuté aktivity.
+Aktivity používají `ActivityTrigger` atribut. Použijte `IDurableActivityContext` k provádění akcí souvisejících s aktivitou, jako je například přístup k vstupní hodnotě pomocí, poskytnuté aktivity `GetInput<T>` .
 
 Implementace `E1_SayHello` je poměrně operace formátování řetězce s jednoduchým řetězcem.
 
-Namísto vazby k objektu `IDurableActivityContext`lze vytvořit vazbu přímo na typ, který je předán funkci Activity. Příklad:
+Namísto vazby k objektu `IDurableActivityContext` lze vytvořit vazbu přímo na typ, který je předán funkci Activity. Příklad:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs?range=34-38)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/Function.JSON
+#### <a name="e1_sayhellofunctionjson"></a>E1_SayHello/function.jsna
 
-Soubor *Function. JSON* pro funkci `E1_SayHello` Activity je podobný tomu s `E1_HelloSequence` tím rozdílem, že používá typ `activityTrigger` vazby místo typu `orchestrationTrigger` vazby.
+*function.jsv* souboru pro funkci Activity `E1_SayHello` je podobný jako s `E1_HelloSequence` tím rozdílem, že používá `activityTrigger` typ vazby místo `orchestrationTrigger` typu vazby.
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/function.json)]
 
 > [!NOTE]
-> Každá funkce, která je volána funkcí orchestrace, musí `activityTrigger` používat vazbu.
+> Každá funkce, která je volána funkcí orchestrace, musí používat `activityTrigger` vazbu.
 
 Implementace `E1_SayHello` je poměrně operace formátování řetězce s jednoduchým řetězcem.
 
@@ -99,13 +98,13 @@ Implementace `E1_SayHello` je poměrně operace formátování řetězce s jedno
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-Na rozdíl od funkce orchestrace JavaScriptu nepotřebuje funkce aktivity žádné speciální nastavení. Vstup předaný do něj funkce Orchestrator je umístěn na `context.bindings` objektu pod názvem `activityTrigger` vazby – v tomto případě. `context.bindings.name` Název vazby lze nastavit jako parametr exportované funkce a získat k nim přímý pøístup, což je to, co dělá vzorový kód.
+Na rozdíl od funkce orchestrace JavaScriptu nepotřebuje funkce aktivity žádné speciální nastavení. Vstup předaný do něj funkce Orchestrator je umístěn na `context.bindings` objektu pod názvem `activityTrigger` vazby – v tomto případě `context.bindings.name` . Název vazby lze nastavit jako parametr exportované funkce a získat k nim přímý pøístup, což je to, co dělá vzorový kód.
 
 ---
 
 ### <a name="httpstart-client-function"></a>Klientská funkce HttpStart
 
-Můžete spustit instanci funkce Orchestrator pomocí klientské funkce. Pomocí funkce aktivované `HttpStart` protokolem HTTP spustíte instance `E1_HelloSequence`.
+Můžete spustit instanci funkce Orchestrator pomocí klientské funkce. Pomocí `HttpStart` funkce aktivované protokolem HTTP spustíte instance `E1_HelloSequence` .
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -115,13 +114,13 @@ Aby bylo možné pracovat s orchestrací, funkce musí zahrnovat `DurableClient`
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-#### <a name="httpstartfunctionjson"></a>HttpStart/Function. JSON
+#### <a name="httpstartfunctionjson"></a>HttpStart/function.jsna
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json?highlight=16-20)]
 
 Aby bylo možné pracovat s orchestrací, funkce musí zahrnovat `durableClient` vstupní vazbu.
 
-#### <a name="httpstartindexjs"></a>HttpStart/index. js
+#### <a name="httpstartindexjs"></a>HttpStart/index.js
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
@@ -131,14 +130,14 @@ Použijte `df.getClient` k získání `DurableOrchestrationClient` objektu. K za
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Chcete-li `E1_HelloSequence` spustit orchestraci, odešlete do `HttpStart` funkce následující požadavek HTTP POST.
+Chcete-li spustit `E1_HelloSequence` orchestraci, odešlete do funkce následující požadavek HTTP Post `HttpStart` .
 
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
 
 > [!NOTE]
-> Předchozí fragment kódu HTTP předpokládá, že v `host.json` souboru je položka, která odebere výchozí `api/` předponu ze všech adres URL funkcí triggeru protokolu HTTP. Značky pro tuto konfiguraci najdete v `host.json` souboru v ukázkách.
+> Předchozí fragment kódu HTTP předpokládá, že v souboru je položka, `host.json` která odebere výchozí `api/` předponu ze všech adres URL funkcí TRIGGERU protokolu HTTP. Značky pro tuto konfiguraci najdete v `host.json` souboru v ukázkách.
 
 Pokud například spustíte ukázku ve Function App s názvem "myfunctionapp", nahraďte "{host}" myfunctionapp.azurewebsites.net ".
 
@@ -172,9 +171,9 @@ Content-Type: application/json; charset=utf-8
 Jak vidíte, `runtimeStatus` instance je *dokončena* a `output` obsahuje výsledek serializace funkce Orchestrator ve formátu JSON.
 
 > [!NOTE]
-> Můžete implementovat podobnou počáteční logiku pro jiné typy triggerů, `queueTrigger` `eventHubTrigger`například, nebo `timerTrigger`.
+> Můžete implementovat podobnou počáteční logiku pro jiné typy triggerů, například, `queueTrigger` `eventHubTrigger` nebo `timerTrigger` .
 
-Podívejte se na protokoly spuštění funkce. `E1_HelloSequence` Funkce byla spuštěna a několikrát dokončena z důvodu chování opakovaného přehrávání popsaných v tématu [spolehlivost orchestrace](durable-functions-orchestrations.md#reliability) . Na druhé straně bylo k dispozici pouze tři spuštění, `E1_SayHello` protože se tyto provádění této funkce nezobrazují.
+Podívejte se na protokoly spuštění funkce. `E1_HelloSequence`Funkce byla spuštěna a několikrát dokončena z důvodu chování opakovaného přehrávání popsaných v tématu [spolehlivost orchestrace](durable-functions-orchestrations.md#reliability) . Na druhé straně bylo k dispozici pouze tři spuštění, `E1_SayHello` protože se tyto provádění této funkce nezobrazují.
 
 ## <a name="next-steps"></a>Další kroky
 

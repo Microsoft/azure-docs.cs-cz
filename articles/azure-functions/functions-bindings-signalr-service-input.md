@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77530260"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Vstupní vazba služby Signal pro Azure Functions
@@ -38,11 +37,11 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v souboru *Function. JSON* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu k vrácení informací o připojení.
+Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v *function.js* souboru a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu k vrácení informací o připojení.
 
-Tady je vazba dat v souboru *Function. JSON* :
+Tady je vazba dat v *function.js* souboru:
 
-Příklad Function. JSON:
+Příklad function.js:
 
 ```json
 {
@@ -68,11 +67,11 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu k vrácení informací o připojení.
+Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu k vrácení informací o připojení.
 
-Tady je vazba dat v souboru *Function. JSON* :
+Tady je vazba dat v *function.js* souboru:
 
-Příklad Function. JSON:
+Příklad function.js:
 
 ```json
 {
@@ -94,11 +93,11 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu k vrácení informací o připojení.
+Následující příklad ukazuje vstupní vazbu informace o připojení k signalizaci v *function.js* souboru a [funkci Pythonu](functions-reference-python.md) , která používá vazbu k vrácení informací o připojení.
 
-Tady je vazba dat v souboru *Function. JSON* :
+Tady je vazba dat v *function.js* souboru:
 
-Příklad Function. JSON:
+Příklad function.js:
 
 ```json
 {
@@ -147,11 +146,11 @@ public SignalRConnectionInfo negotiate(
 
 Pokud je funkce aktivována ověřeným klientem, můžete do vygenerovaného tokenu přidat deklaraci ID uživatele. Do aplikace Function App můžete snadno přidat ověřování pomocí [App Service ověřování](../app-service/overview-authentication-authorization.md).
 
-App Service Authentication nastaví hlavičky HTTP `x-ms-client-principal-id` s `x-ms-client-principal-name` názvem a, které obsahují ID a ID objektu zabezpečení klienta ověřeného uživatele v uvedeném pořadí.
+App Service Authentication nastaví hlavičky HTTP s názvem `x-ms-client-principal-id` a `x-ms-client-principal-name` , které obsahují ID a ID objektu zabezpečení klienta ověřeného uživatele v uvedeném pořadí.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `UserId`
+Vlastnost vazby můžete nastavit `UserId` na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` .
 
 ```cs
 [FunctionName("negotiate")]
@@ -168,9 +167,9 @@ public static SignalRConnectionInfo Negotiate(
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `userId`
+Vlastnost vazby můžete nastavit `userId` na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` .
 
-Příklad Function. JSON:
+Příklad function.js:
 
 ```json
 {
@@ -199,9 +198,9 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `userId`
+Vlastnost vazby můžete nastavit `userId` na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` .
 
-Příklad Function. JSON:
+Příklad function.js:
 
 ```json
 {
@@ -226,9 +225,9 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `userId`
+Vlastnost vazby můžete nastavit `userId` na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` .
 
-Příklad Function. JSON:
+Příklad function.js:
 
 ```json
 {
@@ -258,7 +257,7 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Vlastnost vazby můžete nastavit na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` `userId`
+Vlastnost vazby můžete nastavit `userId` na hodnotu z obou hlaviček pomocí [výrazu vazby](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` nebo `{headers.x-ms-client-principal-name}` .
 
 ```java
 @FunctionName("negotiate")

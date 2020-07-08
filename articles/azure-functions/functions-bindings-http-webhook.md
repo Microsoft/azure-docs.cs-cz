@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77462101"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Přehled aktivačních událostí a vazeb Azure Functions HTTP
@@ -25,7 +24,7 @@ Kód v tomto článku je ve výchozím nastavení syntaxe .NET Core, která se p
 
 ## <a name="add-to-your-functions-app"></a>Přidat do aplikace Functions
 
-### <a name="functions-2x-and-higher"></a>Functions 2. x a vyšší
+### <a name="functions-2x-and-higher"></a>Functions 2.x a novější
 
 Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
 

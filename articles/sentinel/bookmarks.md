@@ -11,10 +11,9 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
 ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77588684"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Udržujte si přehled o datech během přilovu k Azure Sentinel
@@ -36,7 +35,7 @@ Také ve verzi Preview můžete vizualizovat data v záložkách kliknutím na t
 
 ## <a name="add-a-bookmark"></a>Přidání záložky
 
-1. V Azure Portal přejděte do části **Sentinel** > **Threat Management** > **lovu** a spusťte dotazy pro podezřelé a neobvyklé chování.
+1. V Azure Portal přejděte do části **Sentinel**  >  **Threat Management**  >  **lovu** a spusťte dotazy pro podezřelé a neobvyklé chování.
 
 2. Vyberte jeden z loveckých dotazů a na pravé straně v části Podrobnosti o loveckém dotazu vyberte **Spustit dotaz**. 
 
@@ -67,11 +66,11 @@ Také ve verzi Preview můžete vizualizovat data v záložkách kliknutím na t
 
  
 > [!NOTE]
-> Výsledky dotazu protokolu podporují záložky vždy, když je toto podokno otevřeno z Azure Sentinel. Můžete například vybrat **Obecné** > **protokoly** z navigačního panelu, vybrat odkazy na události v grafu vyšetřování nebo vybrat ID výstrahy z úplných podrobností incidentu (aktuálně ve verzi Preview). Záložky nelze vytvořit, pokud je podokno **protokoly** otevřeno z jiných umístění, například přímo z Azure monitor.
+> Výsledky dotazu protokolu podporují záložky vždy, když je toto podokno otevřeno z Azure Sentinel. Můžete například vybrat **Obecné**  >  **protokoly** z navigačního panelu, vybrat odkazy na události v grafu vyšetřování nebo vybrat ID výstrahy z úplných podrobností incidentu (aktuálně ve verzi Preview). Záložky nelze vytvořit, pokud je podokno **protokoly** otevřeno z jiných umístění, například přímo z Azure monitor.
 
 ## <a name="view-and-update-bookmarks"></a>Zobrazení a aktualizace záložek 
 
-1. V Azure Portal přejděte do části **Sentinel** > **Threat Management** > **lov**. 
+1. V Azure Portal přejděte do části **Sentinel**  >  **Threat Management**  >  **lov**. 
 
 2. Vyberte kartu **záložky** a zobrazte tak seznam záložek.
 
@@ -88,7 +87,7 @@ Také ve verzi Preview můžete vizualizovat data v záložkách kliknutím na t
 > Tyto funkce se poskytují bez smlouvy o úrovni služeb a nedoporučují se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > – karta**lovecké** > **záložky** a vyberte záložku nebo záložky, které chcete prozkoumat.
+1. V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**–  >  karta**lovecké**  >  **záložky** a vyberte záložku nebo záložky, které chcete prozkoumat.
 
 2. V podrobnostech záložky se ujistěte, že je namapovaná aspoň jedna entita. Například u **entit**se zobrazí položky pro **IP adresu**, **počítač**nebo **účet**.
 
@@ -103,7 +102,7 @@ Pokyny k používání grafu šetření najdete v tématu [použití grafu šet�
 > Tato funkce se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > – karta**lovecké** > **záložky** a vyberte záložku nebo záložky, které chcete přidat k incidentu.
+1. V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**–  >  karta**lovecké**  >  **záložky** a vyberte záložku nebo záložky, které chcete přidat k incidentu.
 
 2. Na panelu příkazů vyberte **Akce incidentu (Preview)** :
     
@@ -115,20 +114,20 @@ Pokyny k používání grafu šetření najdete v tématu [použití grafu šet�
     - Pro nový incident: volitelně aktualizujte podrobnosti incidentu a potom vyberte **vytvořit**.
     - Přidání záložky do existujícího incidentu: vyberte jeden incident a pak vyberte **Přidat**. 
 
-Zobrazení záložky v rámci incidentu: přejděte na > **incidenty** se**správou hrozeb**s **ověřovacími** > hrozbami a vyberte incident s vaší záložkou. Vyberte **Zobrazit úplné podrobnosti**a potom vyberte kartu **záložky** .
+Zobrazení záložky v rámci incidentu: přejděte na incidenty se správou hrozeb s **ověřovacími**  >  **hrozbami**  >  **Incidents** a vyberte incident s vaší záložkou. Vyberte **Zobrazit úplné podrobnosti**a potom vyberte kartu **záložky** .
 
 > [!TIP]
 > Jako alternativu k možnosti **Akce incidentu (Preview)** na panelu příkazů můžete použít kontextovou nabídku (**...**) pro jednu nebo více záložek a vybrat možnosti pro **Vytvoření nového incidentu**, **přidání do existujícího incidentu**a **Odebrat z incidentu**. 
 
 ## <a name="view-bookmarked-data-in-logs"></a>Zobrazit data v záložkách v protokolech
 
-Pokud chcete zobrazit záložky, výsledky nebo jejich historii, vyberte záložku na kartě **lovecké** > **záložky** a použijte odkazy v podokně podrobností: 
+Pokud chcete zobrazit záložky, výsledky nebo jejich historii, vyberte záložku na kartě **lovecké**  >  **záložky** a použijte odkazy v podokně podrobností: 
 
 - **Zobrazit zdrojový dotaz** pro zobrazení zdrojového dotazu v podokně **protokoly** .
 
 - **Zobrazením protokolů záložky** zobrazíte všechna metadata záložky, včetně toho, kdo provedl aktualizaci, aktualizované hodnoty a čas, kdy k aktualizaci došlo.
 
-Nezpracované data záložky pro všechny záložky můžete zobrazit také tak, že na panelu příkazů na kartě **lovecké** > **záložky** vyberete možnost **protokoly záložek** :
+Nezpracované data záložky pro všechny záložky můžete zobrazit také tak, že na panelu příkazů na kartě **lovecké**záložky vyberete možnost **protokoly záložek**  >  **Bookmarks** :
 
 > [!div class="mx-imgBorder"]
 > ![Protokoly záložek](./media/bookmarks/bookmark-logs.png)
@@ -140,7 +139,7 @@ V tomto zobrazení se zobrazují všechny záložky s přidruženými metadaty. 
 
 ## <a name="delete-a-bookmark"></a>Odstranění záložky
  
-1.  V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > – karta**lovecké** > **záložky** a vyberte záložku nebo záložky, které chcete odstranit. 
+1.  V Azure Portal přejděte na kartu **Sentinel**  >  **Threat Management**–  >  karta**lovecké**  >  **záložky** a vyberte záložku nebo záložky, které chcete odstranit. 
 
 2. Klikněte pravým tlačítkem na své výběry a vyberte možnost odstranění záložky nebo záložek. Pokud jste například vybrali jenom jednu záložku, **odstraňte záložku** , a pokud jste vybrali dvě záložky, odstraňte **2 záložky** .
     

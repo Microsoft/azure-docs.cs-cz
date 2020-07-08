@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77561945"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Spuštění virtuálního počítače se systémem Linux pro grub záchranu
@@ -43,11 +42,11 @@ Postupujte podle následujících kroků pro zmírnění rizika v závislosti na
 
     * Pro chybějící soubor `/boot/grub2/grub.cfg` nebo `initrd/initramfs` pokračujte následujícím procesem:
 
-    1. Ujistěte `/etc/default/grub` se, že existuje a má správné nebo požadované nastavení. Pokud nevíte, které výchozí nastavení máte, můžete se podívat na funkční virtuální počítač.
+    1. Ujistěte se `/etc/default/grub` , že existuje a má správné nebo požadované nastavení. Pokud nevíte, které výchozí nastavení máte, můžete se podívat na funkční virtuální počítač.
 
     2. Potom spuštěním následujícího příkazu znovu vygenerujte svou konfiguraci:`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * `/boot/grub/menu.lst`Pokud je chybějící soubor, tato chyba je určena pro starší verze operačního systému (**RHEL 6. x**, **CentOS 6. x** a **Ubuntu 14,04**), takže se příkazy mohou lišit. Abyste měli jistotu, že jsou k dispozici správné příkazy, budete muset spustit starý server a otestovat test.
+   * Pokud je chybějící soubor `/boot/grub/menu.lst` , tato chyba je určena pro starší verze operačního systému (**RHEL 6. x**, **CentOS 6. x** a **Ubuntu 14,04**), takže se příkazy mohou lišit. Abyste měli jistotu, že jsou k dispozici správné příkazy, budete muset spustit starý server a otestovat test.
 
 ### <a name="error---no-such-partition"></a>Chyba – žádný takový oddíl
 
@@ -59,11 +58,11 @@ Postupujte podle následujících kroků pro zmírnění rizika v závislosti na
 
     * Pro chybějící soubor `/boot/grub2/grub.cfg` nebo `initrd/initramfs` pokračujte následujícím procesem:
 
-    1. Ujistěte `/etc/default/grub` se, že existuje a má správné nebo požadované nastavení. Pokud nevíte, které výchozí nastavení máte, můžete se podívat na funkční virtuální počítač.
+    1. Ujistěte se `/etc/default/grub` , že existuje a má správné nebo požadované nastavení. Pokud nevíte, které výchozí nastavení máte, můžete se podívat na funkční virtuální počítač.
 
-    2. Potom spuštěním následujícího příkazu znovu vygenerujte svou konfiguraci: `grub2-mkconfig -o /boot/grub2/grub.cfg`.
+    2. Potom spuštěním následujícího příkazu znovu vygenerujte svou konfiguraci: `grub2-mkconfig -o /boot/grub2/grub.cfg` .
 
-   * `/boot/grub/menu.lst`Pokud je chybějící soubor, tato chyba je určena pro starší verze operačního systému (**RHEL 6. x**, **CentOS 6. x** a **Ubuntu 14,04**), takže příkazy mohou odložit. Uvolněte původní server a otestujte ho, abyste zajistili, že jsou k dispozici správné příkazy.
+   * Pokud je chybějící soubor `/boot/grub/menu.lst` , tato chyba je určena pro starší verze operačního systému (**RHEL 6. x**, **CentOS 6. x** a **Ubuntu 14,04**), takže příkazy mohou odložit. Uvolněte původní server a otestujte ho, abyste zajistili, že jsou k dispozici správné příkazy.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,10 +9,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: fa8b2da683d68a337df38e13726f22c5af43540a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77565923"
 ---
 # <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Nastavení privátního cloudu jako cíle zotavení po havárii pomocí nástroje VMware Site Recovery Manager
@@ -146,7 +145,7 @@ Podrobné pokyny k instalaci pro vSphere Replication 6,5 najdete v VMware vSpher
 
 Přihlaste se k vCenter pomocí přihlašovacích údajů uživatele cloudowner po eskalaci oprávnění z portálu CloudSimple.
 
-Vytvořte nového uživatele, `srm-soln-admin`v vCenter a přidejte ho do skupiny Administrators v vCenter.
+Vytvořte nového uživatele, `srm-soln-admin` v vCenter a přidejte ho do skupiny Administrators v vCenter.
 Odhlaste se z vCenter jako uživatel cloudowner a přihlaste se jako uživatel *SRM-soln-admin* .
 
 #### <a name="cloudsimple-portal-configure-firewall-rules-for-vra"></a>Portál CloudSimple: Konfigurace pravidel brány firewall pro vRA
@@ -219,7 +218,7 @@ Máte plnou kontrolu nad replikací vSphere a SRM software ve vašem prostředí
 
  [Replikaci založené na poli a technologie vSphere replikace je možné používat společně s SRM](https://blogs.vmware.com/virtualblocks/2017/06/22/srm-array-based-replication-vs-vsphere-replication) ve stejnou dobu. Musí se ale použít pro samostatnou sadu virtuálních počítačů (daný virtuální počítač se dá chránit buď replikací založenými na poli, nebo replikací vSphere, ale ne oběma). Kromě toho je možné lokalitu CloudSimple nakonfigurovat jako lokalitu pro obnovení pro více chráněných webů. Informace o konfiguracích s více lokalitami najdete v tématu [SRM možnosti pro více lokalit](https://blogs.vmware.com/virtualblocks/2016/07/28/srm-multisite/) .
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 * [Dokumentace k VMware Site Recovery Manageru](https://docs.vmware.com/en/Site-Recovery-Manager/index.html)
 * [Provozní omezení pro Site Recovery Manager 6,5](https://kb.vmware.com/s/article/2147110)

@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77523032"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
@@ -23,7 +22,7 @@ Tato sada článků vysvětluje, jak ověřit a odeslat zprávy v reálném čas
 
 ## <a name="add-to-your-functions-app"></a>Přidat do aplikace Functions
 
-### <a name="functions-2x-and-higher"></a>Functions 2. x a vyšší
+### <a name="functions-2x-and-higher"></a>Functions 2.x a novější
 
 Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
 
@@ -43,7 +42,7 @@ Podrobnosti o tom, jak nakonfigurovat a používat službu signalizace a Azure F
 
 ### <a name="annotations-library-java-only"></a>Knihovna poznámek (jenom Java)
 
-Pokud chcete používat poznámky ke službě signalizace ve funkcích Java, musíte do souboru *pom. XML* přidat závislost do artefaktu *Azure-Functions-Java-Library-signal* (verze 1,0 nebo vyšší).
+Pokud chcete používat poznámky ke službě signalizace ve funkcích Java, musíte do souboru *pom.xml* přidat závislost na artefakt *Azure-Functions-Java-Library-signaler* (verze 1,0 nebo vyšší).
 
 ```xml
 <dependency>

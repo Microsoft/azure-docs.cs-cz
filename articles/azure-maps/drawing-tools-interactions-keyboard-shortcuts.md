@@ -9,10 +9,9 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "77198288"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Typy interakcí a klávesové zkratky v modulu nástrojů pro kreslení
@@ -38,15 +37,15 @@ Je-li správce kreslení v `draw-point` režimu kreslení, lze provést následu
 **Spustit kreslení**
  - Klikněte na levé tlačítko myši nebo najeďte na mapu, abyste přidali bod na mapu. 
  - Pokud se ukazatel myši nachází na mapě, stiskněte klávesu `F` a bod se přidá na souřadnici ukazatele myši. Tato metoda poskytuje vyšší přesnost pro přidání bodu na mapu. Z důvodu stisknutí levého tlačítka myši bude na myši menší pohyb.
- - Pokud chcete přidat další body na mapu `F` , pokračujte kliknutím na tlačítko, dotek nebo stisknutím klávesy.
+ - Pokud `F` chcete přidat další body na mapu, pokračujte kliknutím na tlačítko, dotek nebo stisknutím klávesy.
  
 **Dokončit kreslení**
  - Na panelu nástrojů kreslení klikněte na libovolné tlačítko. 
  - Programově nastavíte režim kreslení. 
- - `C` Stiskněte klávesu.
+ - Stiskněte klávesu `C` .
 
 **Zrušit kreslení**
- - `Escape` Stiskněte klávesu.
+ - Stiskněte klávesu `Escape` .
 
 ### <a name="how-to-draw-a-line"></a>Vykreslení čáry
 
@@ -58,7 +57,7 @@ Je-li správce kreslení v `draw-line` režimu, lze provést následující akce
    * Pokud se ukazatel myši nachází na mapě, stiskněte klávesu `F` a bod se přidá na souřadnici ukazatele myši. Tato metoda poskytuje vyšší přesnost pro přidání bodu na mapu. Z důvodu stisknutí levého tlačítka myši bude na myši menší pohyb.
    * Pokračujte v klikání, dokud se do řádku nepřidaly všechny požadované body.
  - Režim FreeHandu
-   * Stiskněte levé tlačítko myši nebo klepněte na mapu na mapě a přetáhněte ukazatel myši nebo dotykové ovládání kolem. Souřadnice jsou přidány na řádek, když se pohyb myši nebo dotykového bodu pohybuje kolem mapy. Po aktivaci události myši nebo dotykového ovládání se kreslení dokončí. Frekvence přidání souřadnic je definována možností manažeři `freehandInterval` kreslení.
+   * Stiskněte levé tlačítko myši nebo klepněte na mapu na mapě a přetáhněte ukazatel myši nebo dotykové ovládání kolem. Souřadnice jsou přidány na řádek, když se pohyb myši nebo dotykového bodu pohybuje kolem mapy. Po aktivaci události myši nebo dotykového ovládání se kreslení dokončí. Frekvence přidání souřadnic je definována možností manažeři kreslení `freehandInterval` .
  - Hybridní režim
    * Alternativním způsobem mezi jednotlivými metodami Click a FreeHand při sestavování jednoho řádku. Například klikněte na několik bodů, potom podržením a přetažením myši přidejte spoustu bodů a potom klikněte na několik dalších. 
 
@@ -69,10 +68,10 @@ Je-li správce kreslení v `draw-line` režimu, lze provést následující akce
    * Programově nastavíte režim kreslení. 
  - Režim FreeHandu
    * Uvolněte tlačítko myši nebo dotykového bodu.
- - `C` Stiskněte klávesu.
+ - Stiskněte klávesu `C` .
 
 **Zrušit kreslení**
- - `Escape` Stiskněte klávesu.
+ - Stiskněte klávesu `Escape` .
 
 ### <a name="how-to-draw-a-polygon"></a>Postup kreslení mnohoúhelníku
 
@@ -84,7 +83,7 @@ Je-li správce kreslení v `draw-polygon` režimu, lze provést následující a
    * Pokud se ukazatel myši nachází na mapě, stiskněte klávesu `F` a bod se přidá na souřadnici ukazatele myši. Tato metoda poskytuje vyšší přesnost pro přidání bodu na mapu. Z důvodu stisknutí levého tlačítka myši bude na myši menší pohyb.
    * Až do mnohoúhelníku přidáte všechny požadované body, klikněte na pokračovat.
  - Režim FreeHandu
-   * Stiskněte levé tlačítko myši nebo klepněte na mapu na mapě a přetáhněte ukazatel myši nebo dotykové ovládání kolem. Souřadnice se přidávají do mnohoúhelníku, když se pohybuje ukazatelem myši nebo dotykového bodu kolem mapy. Po aktivaci události myši nebo dotykového ovládání se kreslení dokončí. Frekvence přidání souřadnic je definována možností manažeři `freehandInterval` kreslení.
+   * Stiskněte levé tlačítko myši nebo klepněte na mapu na mapě a přetáhněte ukazatel myši nebo dotykové ovládání kolem. Souřadnice se přidávají do mnohoúhelníku, když se pohybuje ukazatelem myši nebo dotykového bodu kolem mapy. Po aktivaci události myši nebo dotykového ovládání se kreslení dokončí. Frekvence přidání souřadnic je definována možností manažeři kreslení `freehandInterval` .
  - Hybridní režim
    * Alternativním způsobem mezi jednotlivými metodami Click a FreeHand při vykreslování jednoho mnohoúhelníku. Například klikněte na několik bodů, potom podržením a přetažením myši přidejte spoustu bodů a potom klikněte na několik dalších. 
 
@@ -96,10 +95,10 @@ Je-li správce kreslení v `draw-polygon` režimu, lze provést následující a
    * Programově nastavíte režim kreslení. 
  - Režim FreeHandu
    * Uvolněte tlačítko myši nebo dotykového bodu.
- - `C` Stiskněte klávesu.
+ - Stiskněte klávesu `C` .
 
 **Zrušit kreslení**
- - `Escape` Stiskněte klávesu.
+ - Stiskněte klávesu `Escape` .
 
 ### <a name="how-to-draw-a-rectangle"></a>Vykreslení obdélníku
 
@@ -111,10 +110,10 @@ Je-li správce kreslení v `draw-rectangle` režimu, lze provést následující
 **Dokončit kreslení**
  - Uvolněte tlačítko myši nebo dotykového bodu.
  - Programově nastavíte režim kreslení. 
- - `C` Stiskněte klávesu.
+ - Stiskněte klávesu `C` .
 
 **Zrušit kreslení**
- - `Escape` Stiskněte klávesu.
+ - Stiskněte klávesu `Escape` .
 
 ### <a name="how-to-draw-a-circle"></a>Jak nakreslit kruh
 
@@ -126,16 +125,16 @@ Je-li správce kreslení v `draw-circle` režimu, lze provést následující ak
 **Dokončit kreslení**
  - Uvolněte tlačítko myši nebo dotykového bodu.
  - Programově nastavíte režim kreslení. 
- - `C` Stiskněte klávesu.
+ - Stiskněte klávesu `C` .
 
 **Zrušit kreslení**
- - `Escape` Stiskněte klávesu.
+ - Stiskněte klávesu `Escape` .
 
 ## <a name="keyboard-shortcuts"></a>Klávesové zkratky
 
 Nástroje pro kreslení podporují klávesové zkratky. Tyto klávesové zkratky jsou funkční, když je mapa aktivní.
 
-| Key      | Akce                            |
+| Klíč      | Akce                            |
 |----------|-----------------------------------|
 | `C` | Dokončí všechny probíhající kresby a nastaví režim kreslení na nečinný. Fokus se přesune na prvek mapy nejvyšší úrovně.  |
 | `Escape` | Zruší všechny probíhající kresby a nastaví režim kreslení na nečinný. Fokus se přesune na prvek mapy nejvyšší úrovně.  |
