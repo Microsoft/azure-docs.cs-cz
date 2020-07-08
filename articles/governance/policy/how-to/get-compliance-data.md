@@ -3,12 +3,12 @@ title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 53c946c59862451859616cb87d1101ae8fd5f15b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204833"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045191"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -34,7 +34,7 @@ K vyhodnocení přiřazených zásad a iniciativ dojde v důsledku různých ud�
 
 - Zásada nebo iniciativa, která je již přiřazena k oboru, je aktualizována. Cyklus hodnocení a časování pro tento scénář je stejný jako u nového přiřazení k oboru.
 
-- Prostředek se nasadí do oboru s přiřazením prostřednictvím Správce prostředků, REST, Azure CLI nebo Azure PowerShell. V tomto scénáři se na portálu budou k dispozici informace o vlivu události (připojení, audit, zamítnutí, nasazení) a odpovídajících informací o stavu pro jednotlivé prostředky na portálu a sady SDK o 15 minutách. Tato událost nezpůsobí vyhodnocení dalších prostředků.
+- Prostředek se nasadí do oboru s přiřazením prostřednictvím Azure Resource Manager, REST, Azure CLI nebo Azure PowerShell. V tomto scénáři se na portálu budou k dispozici informace o vlivu události (připojení, audit, zamítnutí, nasazení) a odpovídajících informací o stavu pro jednotlivé prostředky na portálu a sady SDK o 15 minutách. Tato událost nezpůsobí vyhodnocení dalších prostředků.
 
 - Standardní cyklus hodnocení dodržování předpisů. Každých 24 hodin se přiřazení automaticky přehodnotí. Velké zásady nebo podněty mnoha prostředků můžou nějakou dobu trvat, takže není k dispozici předem definovaná Očekávaná doba, po které se zkušební cyklus dokončí. Po dokončení budou aktualizované výsledky dodržování předpisů k dispozici na portálu a sadách SDK.
 
@@ -118,7 +118,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 V přiřazení je prostředek **nekompatibilní** , pokud nedodržuje pravidla zásad nebo iniciativ.
 Následující tabulka ukazuje, jak různé účinky zásad fungují s hodnocením podmínek pro výsledný stav dodržování předpisů:
 
-| Stav prostředku | Účinek | Vyhodnocení zásad | Stav dodržování předpisů |
+| Stav prostředku | Efekt | Vyhodnocení zásad | Stav dodržování předpisů |
 | --- | --- | --- | --- |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Neodpovídající |
 | Existuje | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Odpovídající |
@@ -429,7 +429,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-Pokud máte [pracovní prostor Log Analytics](../../../log-analytics/log-analytics-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log-collect.md) , které je svázáno s vaším předplatným, můžete také výsledky nedodržování předpisů zobrazit v rámci zkušebního cyklu pomocí jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
+Pokud máte [pracovní prostor Log Analytics](../../../azure-monitor/log-query/log-query-overview.md) s `AzureActivity` z [Activity log Analyticsho řešení](../../../azure-monitor/platform/activity-log.md) , které je svázáno s vaším předplatným, můžete také výsledky nedodržování předpisů zobrazit v rámci zkušebního cyklu pomocí jednoduchých dotazů Kusto a `AzureActivity` tabulky. S podrobnostmi v protokolech Azure Monitor můžete výstrahy nakonfigurovat tak, aby sledovaly nedodržování předpisů.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Azure Policy dodržování předpisů pomocí protokolů Azure Monitor" border="false":::
 

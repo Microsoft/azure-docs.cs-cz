@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak pomocí spravovaných identit ověřit
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: a8699b3942fe3a4b23f1d72036b7364cdab36f8e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651975"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045616"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Použití spravovaných identit pro přístup k Azure SQL Database z úlohy Azure Stream Analytics (Preview)
 
@@ -70,7 +70,7 @@ Po vytvoření spravované identity vyberete Správce služby Active Directory.
 
 Dále ve svém SQL Database vytvoříte uživatele databáze s omezením, který je namapován na Azure Active Directory identitu. Uživatel databáze s omezením nemá přihlášení k hlavní databázi, ale mapuje se na identitu v adresáři, který je přidružen k databázi. Azure Active Directory identitou může být individuální uživatelský účet nebo skupina. V takovém případě chcete pro úlohu Stream Analytics vytvořit uživatele databáze s omezením. 
 
-1. Připojte se k databázi SQL pomocí SQL Server Management Studio. **Uživatelské jméno** je Azure Active Directory uživatel s oprávněním **ALTER ANY User** . Příkladem je správce, který jste nastavili na SQL Server. Používejte **Azure Active Directory – Universal s** ověřováním MFA. 
+1. Připojení k SQL Database pomocí SQL Server Management Studio. **Uživatelské jméno** je Azure Active Directory uživatel s oprávněním **ALTER ANY User** . Příkladem je správce, který jste nastavili na SQL Server. Používejte **Azure Active Directory – Universal s** ověřováním MFA. 
 
    ![Připojení k SQL Serveru](./media/sql-db-output-managed-identity/connect-sql-server.png)
 
@@ -96,7 +96,7 @@ Dále ve svém SQL Database vytvoříte uživatele databáze s omezením, který
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
-1. Aby Azure Active Directory Microsoftu mohl ověřit, jestli má Stream Analytics úlohy přístup k SQL Database, musíme pro komunikaci s databází poskytnout Azure Active Directory oprávnění. Provedete to tak, že znovu přejdete na stránku brány firewall a virtuální síť na webu Azure Portal a povolíte možnost Povolit službám a prostředkům Azure přístup k tomuto serveru. 
+1. Aby Azure Active Directory Microsoftu mohl ověřit, jestli má Stream Analytics úlohy přístup k SQL Database, musíme pro komunikaci s databází poskytnout Azure Active Directory oprávnění. Provedete to tak, že přejdete na stránku brány firewall a virtuální síť v Azure Portal znovu a povolíte možnost Povolit službám a prostředkům Azure přístup k tomuto serveru. 
 
    ![Brána firewall a virtuální síť](./media/sql-db-output-managed-identity/allow-access.png)
 

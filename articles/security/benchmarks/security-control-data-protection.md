@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 035894c80e619851264aae91daa2d7852d156964
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89320807c6322120490db85100453edf593aded
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408549"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045531"
 ---
 # <a name="security-control-data-protection"></a>Řízení zabezpečení: Ochrana dat
 
@@ -34,7 +34,7 @@ Pomocí značek můžete posloužit ke sledování prostředků Azure, které uk
 |--|--|--|
 | 4.2 | 13,2, 2,10 | Zákazník |
 
-Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit pomocí Azure Active Directory řízení přístupu na základě role. 
+Implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím řízení přístupu na základě role Azure (RBAC). 
 
 - [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -76,7 +76,7 @@ Pokud není k dispozici žádná funkce pro konkrétní službu v Azure, použij
 
 K identifikaci citlivých informací v dokumentech Office 365 použijte Azure Information Protection.
 
-Využijte Azure SQL Information Protection pro pomoc při klasifikaci a označování informací uložených v databázích SQL Azure.
+Využijte Azure SQL Information Protection k usnadnění klasifikace a označování informací uložených v Azure SQL Database.
 
 - [Implementace zjišťování dat SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 

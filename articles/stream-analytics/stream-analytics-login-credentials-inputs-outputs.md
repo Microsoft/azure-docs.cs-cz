@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3154447e4df64b9b335beae99cfd208d1a21efc4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75425977"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044409"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Otočit přihlašovací údaje pro vstupy a výstupy Stream Analytics úlohy
 
@@ -49,13 +49,13 @@ V této části Vás provedeme procesem opětovného generování přihlašovac�
 
 ### <a name="sql-database"></a>Databáze SQL
 
-Aby bylo možné aktualizovat přihlašovací údaje stávajícího uživatele, je nutné se připojit k databázi SQL. Přihlašovací údaje můžete aktualizovat pomocí Azure Portal nebo nástroje na straně klienta, jako je například SQL Server Management Studio. Tato část demonstruje proces aktualizace přihlašovacích údajů pomocí Azure Portal.
+Abyste mohli aktualizovat přihlašovací údaje stávajícího uživatele, musíte se připojit k SQL Database. Přihlašovací údaje můžete aktualizovat pomocí Azure Portal nebo nástroje na straně klienta, jako je například SQL Server Management Studio. Tato část demonstruje proces aktualizace přihlašovacích údajů pomocí Azure Portal.
 
 1. Přihlaste se k Azure Portal > v databázi SQL vyhledejte, kterou jste použili jako výstup pro úlohu Stream Analytics.    
 2. V **Průzkumníku dat**se přihlaste nebo připojte k databázi > vyberte typ autorizace jako **ověřování serveru SQL** > v **přihlašovacích** údajích a **hesle** , > vyberte **OK**.  
    ![Znovu vygenerovat přihlašovací údaje pro SQL Database](media/stream-analytics-login-credentials-inputs-outputs/regenerate-sql-credentials.png)
 
-3. Na kartě dotaz změňte heslo pro jednoho z uživatelů spuštěním následujícího dotazu (Nezapomeňte nahradit `<user_name>` vaším uživatelským jménem a `<new_password>` novým heslem):  
+3. Na kartě dotaz změňte heslo pro jednoho z uživatelů spuštěním následujícího dotazu (Nezapomeňte nahradit vaším uživatelským `<user_name>` jménem a `<new_password>` novým heslem):  
 
    ```SQL
    Alter user `<user_name>` WITH PASSWORD = '<new_password>'
@@ -64,7 +64,7 @@ Aby bylo možné aktualizovat přihlašovací údaje stávajícího uživatele, 
 
 4. Poznamenejte si nové heslo.    
 5. V Azure Portal Projděte úlohu Stream Analytics > vyberte **zastavit** a počkejte, než se úloha zastaví.    
-6. Vyhledejte výstup databáze SQL, pro který chcete otočit přihlašovací údaje. Aktualizujte heslo a uložte změny.    
+6. Vyhledejte výstup SQL Database, pro který chcete otočit přihlašovací údaje. Aktualizujte heslo a uložte změny.    
 7. Test připojení se automaticky spustí při uložení změn, ujistěte se, že úspěšně proběhl.    
 8. Přejděte ke [spuštění úlohy z části čas posledního zastavení](#start-your-job-from-the-last-stopped-time) .
 

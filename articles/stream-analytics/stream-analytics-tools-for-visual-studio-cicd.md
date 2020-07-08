@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56fb677ca80c047fb90c58a3e0aedb41e6d4a3f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354443"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045089"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Použití balíčku NuGet Azure Stream Analytics CI/CD pro integraci a vývoj 
 Tento článek popisuje, jak použít balíček NuGet Azure Stream Analytics CI/CD, abyste nastavili proces průběžné integrace a nasazování.
@@ -34,15 +34,19 @@ Podobně jako standardní prostředí Visual Studio MSBuild pro sestavení proje
 
 Po úspěšném sestavení Stream Analytics projektu sady Visual Studio vygeneruje následující dva soubory šablon Azure Resource Manager ve složce **bin/[Debug/Retail]/Deploy** : 
 
-*  Soubor šablony Správce prostředků
+* Soubor šablony Správce prostředků
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Soubor parametrů Správce prostředků
+* Soubor parametrů Správce prostředků
+   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```
 
-       [ProjectName].JobTemplate.parameters.json   
-
-Výchozí parametry v souboru Parameters. JSON jsou z nastavení v projektu sady Visual Studio. Pokud chcete nasazení nasadit do jiného prostředí, nahraďte příslušné parametry odpovídajícím způsobem.
+Výchozí parametry v souboru parameters.json jsou z nastavení v projektu sady Visual Studio. Pokud chcete nasazení nasadit do jiného prostředí, nahraďte příslušné parametry odpovídajícím způsobem.
 
 > [!NOTE]
 > U všech přihlašovacích údajů jsou výchozí hodnoty nastavené na hodnotu null. Před nasazením do cloudu je **nutné** nastavit hodnoty.
@@ -60,7 +64,7 @@ Pokud chcete použít spravovanou identitu pro Azure Data Lake Store Gen1 jako v
 ## <a name="command-line-tool"></a>Nástroj pro příkazový řádek
 
 ### <a name="build-the-project"></a>Sestavení projektu
-Balíček NuGet má nástroj příkazového řádku s názvem **SA. exe**. Podporuje sestavení projektu a místní testování na libovolném počítači, který můžete použít v procesu kontinuální integrace a průběžného doručování. 
+Balíček NuGet má nástroj příkazového řádku s názvem **SA.exe**. Podporuje sestavení projektu a místní testování na libovolném počítači, který můžete použít v procesu kontinuální integrace a průběžného doručování. 
 
 Ve výchozím nastavení jsou soubory nasazení umístěny do aktuálního adresáře. Výstupní cestu můžete zadat pomocí následujícího parametru-OutputPath:
 

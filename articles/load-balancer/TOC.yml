@@ -66,6 +66,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Integrované ovládací prvky zabezpečení
       href: load-balancer-security-controls.md
+    - name: Správa back-endových fondů
+      href: backend-pool-management.md
 - name: Postup
   items:
     - name: Škálovací sady virtuálních počítačů

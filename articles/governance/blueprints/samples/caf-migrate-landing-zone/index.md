@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu Cílová zóna migrace CAF – přehled
 description: Přehled a architektura přechodu na cloud pro Azure (CAF) pro ukázkový podrobný plán Cílová zóna migrace.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: c4720ec3e94ee928553cd62017831e5158ac9b97
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 45479fd6fa3a49d2639e587d3dba2aaaf567d0b1
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459861"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044817"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Přehled architektury přechodu na cloud pro Azure od Microsoftu pro ukázkový podrobný plán Cílová zóna migrace
 
@@ -28,7 +28,7 @@ Toto prostředí je tvořené několika službami Azure, které se využívají 
 - Nasazení služby [Log Analytics](../../../../azure-monitor/overview.md) pro zajištění, že od okamžiku, kdy zahájíte migraci, se všechny akce a služby připojují k centrálnímu umístění.
 - Nasazení služby [Azure Security Center](../../../../security-center/security-center-intro.md) (standardní verze) zajišťující ochranu před hrozbami pro vaše migrované úlohy.
 - Nasazení služby [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md) poskytující izolovanou síť a podsítě pro váš virtuální počítač.
-- Nasazení [projektu Azure Migrate](../../../..//migrate/migrate-overview.md) pro zjišťování a hodnocení. Přidáváme nástroje pro vyhodnocování serverů, migraci serverů, vyhodnocení databází a migraci databází.  
+- Nasazení [projektu Azure Migrate](../../../../migrate/migrate-services-overview.md) pro zjišťování a hodnocení. Přidáváme nástroje pro vyhodnocování serverů, migraci serverů, vyhodnocení databází a migraci databází.  
 
 
 Všechny tyto prvky dodržují prověřené postupy publikované v článku zaměřeném na [Centrum architektury Azure – referenční architektury](/azure/architecture/reference-architectures/).

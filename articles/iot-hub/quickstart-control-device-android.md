@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: b9afd1c4ca5e4c652a03bc2ef652b8e43ea12787
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 3e5afae9421d13d986ad6c891c8e889f590f04a2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727195"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044715"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rychlý Start: řízení zařízení připojeného ke centru IoT (Android)
 
@@ -113,9 +113,7 @@ Obě ukázky pro tento rychlý Start jsou součástí úložiště Azure-IoT-Sam
 
 Ukázkovou aplikaci sady SDK pro zařízení můžete spustit na fyzickém zařízení s Androidem nebo v emulátoru Androidu. Ukázka se připojí ke koncovému bodu specifickému pro zařízení ve službě IoT Hub, pošle simulovanou telemetrii a naslouchá volání přímých metod z vašeho centra. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení po provedení přímé metody pošle potvrzení zpátky do vašeho centra.
 
-1. V Android Studio otevřete projekt GitHub Sample Android. Projekt je umístěný v následujícím adresáři naklonované nebo stažené kopie úložiště [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) .
-
-        \azure-iot-samples-java\iot-hub\Samples\device\AndroidSample
+1. V Android Studio otevřete projekt GitHub Sample Android. Projekt je umístěný v následujícím adresáři naklonované nebo stažené kopie úložiště [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) : *\azure-IoT-Samples-java\iot-hub\Samples\device\AndroidSample*.
 
 2. V Android Studio otevřete *Gradle. Properties* pro ukázkový projekt a nahraďte zástupný text **Device_Connection_String** pomocí připojovacího řetězce zařízení, který jste si poznamenali dříve.
 
@@ -165,9 +163,7 @@ Tuto aplikaci spusťte na samostatném fyzickém zařízení s Androidem nebo em
 
 Aplikace služby back-end IoT Hub obvykle běží v cloudu, kde je snazší zmírnit rizika spojená s citlivým připojovacím řetězcem, který řídí všechna zařízení v IoT Hub. V tomto příkladu ho používáme jako aplikaci pro Android jenom pro demonstrační účely. Jiné jazykové verze tohoto rychlého startu poskytují příklady, které úzce přizpůsobují typickou aplikaci back-end služby.
 
-1. V Android Studio otevřete vzorový projekt pro Android Service. Projekt je umístěný v následujícím adresáři naklonované nebo stažené kopie úložiště [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) .
-
-        \azure-iot-samples-java\iot-hub\Samples\service\AndroidSample
+1. V Android Studio otevřete vzorový projekt pro Android Service. Projekt je umístěný v následujícím adresáři naklonované nebo stažené kopie úložiště [Azure-IoT-Sample-Java](https://github.com/Azure-Samples/azure-iot-samples-java) : *\azure-IoT-Samples-java\iot-hub\Samples\service\AndroidSample*.
 
 2. V Android Studio otevřete *Gradle. Properties* pro ukázkový projekt. Aktualizujte hodnoty vlastností **ConnectionString** a **DeviceID** pomocí připojovacího řetězce služby, který jste si poznamenali dříve, a ID zařízení s Androidem, které jste si zaregistrovali.
 

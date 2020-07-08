@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 93d51681a703258477baa81cc8737fefd4955e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731674"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045463"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Sady Azure NetApp Files SDK a nástroje CLI
 
@@ -33,7 +33,7 @@ V následující tabulce jsou uvedeny podporované sady SDK.  Podrobnosti o podp
 |------------------|--------------------------------------------------------------|
 |    .NET  |    [Azure/Azure – sada SDK – pro-NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/netapp)    |
 |    Python  |  [Azure/Azure – SDK – for-Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/netapp)    |
-|    Go    |    [Azure/Azure – SDK – for-přejít](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
+|    Přejít    |    [Azure/Azure – SDK – for-přejít](https://github.com/Azure/azure-sdk-for-go/tree/master/services/netapp)       |
 |    Java |     [Azure/Azure – SDK – pro – Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/netapp) |
 |    JavaScript    |    [Azure/Azure – SDK – pro-js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/netapp/arm-netapp)    |
 |    Ruby   |    [Azure/Azure – SDK – pro – Ruby](https://github.com/Azure/azure-sdk-for-ruby/tree/master/management/azure_mgmt_netapp)    |
@@ -49,12 +49,7 @@ V následující tabulce jsou uvedené podporované nástroje CLI a jejich odkaz
 
 ## <a name="code-samples"></a>Ukázky kódů
 
-V následující tabulce jsou uvedeny ukázky kódu pro váš odkaz.   
-
-|    Jazyk/nástroj    |    Dokumentace k ukázce kódu    |
-|------------------|--------------------------------------------|
-|    .NET   |    [Ukázka Azure NetApp Files SDK pro. NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-net-core/) |    
-|    Python    |    [Ukázka sady SDK pro Azure NetApp Files pro Python](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+Viz [ukázky kódu pro Azure NetApp Files](https://docs.microsoft.com/samples/browse/?filter-products=netapp&products=azure-netapp-files).
 
 ## <a name="next-steps"></a>Další kroky   
  [Stáhnout sady Azure SDK](https://azure.microsoft.com/downloads/)

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření pracovních prostorů Azure Machine Learning na portálu
+title: Vytváření pracovních prostorů na portálu
 titleSuffix: Azure Machine Learning
 description: Naučte se vytvářet, zobrazovat a odstraňovat Azure Machine Learning pracovní prostory v Azure Portal.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: c729f59fbb92584ff613147577ab097e63307ace
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 71bb85c5812a3e779570cdd87c5092e5b0de52f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430438"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045701"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -64,9 +64,9 @@ K vytvoření pracovního prostoru potřebujete předplatné Azure. Pokud ješt�
 
 1. Pokud budete vytvářet [výpočetní instanci](tutorial-1st-experiment-sdk-setup.md#azure), tento krok přeskočte.
 
-1. Pokud plánujete použít kód v místním prostředí, které odkazuje na tento pracovní prostor, vyberte **Stáhnout soubor config. JSON** v části **Přehled** pracovního prostoru.  
+1. Pokud máte v úmyslu používat v místním prostředí kód, který odkazuje na tento pracovní prostor, vyberte **stáhnout config.jsv** části **Přehled** v pracovním prostoru.  
 
-   ![Stažení souboru config. JSON](./media/how-to-manage-workspace/configure.png)
+   ![Stáhnout config.js](./media/how-to-manage-workspace/configure.png)
    
    Soubor umístěte do struktury adresáře pomocí skriptů Pythonu nebo poznámkových bloků Jupyter. Může být ve stejném adresáři, v podadresáři s názvem *. AzureML*nebo v nadřazeném adresáři. Při vytváření výpočetní instance se tento soubor přidá do správného adresáře na virtuálním počítači za vás.
 

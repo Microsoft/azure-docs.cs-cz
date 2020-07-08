@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/22/2018
-ms.openlocfilehash: fa3990d2239da71fb27f4c9a06699f758fcfe7a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464e8fbf624dfa84ec54bf6a7e0ce202d047e15d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354369"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045106"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Nainstalovat Azure Stream Analytics nástroje pro Visual Studio
 
@@ -28,7 +28,7 @@ Doporučujeme Visual Studio 2019.
 
 ### <a name="install-for-visual-studio-2019-and-2017"></a>Instalace pro Visual Studio 2019 a 2017<a name="recommended-visual-studio-2019-and-2017"></a>
 
-Nástroje Azure Data Lake a Stream Analytics jsou součástí **vývoje Azure** a úloh **úložiště a zpracování dat** . Během instalace povolte buď jednu z těchto dvou úloh. Pokud je aplikace Visual Studio už nainstalovaná, vyberte **nástroje** > pro přidání úloh do nástrojů**získat nástroje a funkce** .
+Nástroje Azure Data Lake a Stream Analytics jsou součástí **vývoje Azure** a úloh **úložiště a zpracování dat** . Během instalace povolte buď jednu z těchto dvou úloh. Pokud je aplikace Visual Studio už nainstalovaná, vyberte **nástroje**  >  pro přidání úloh do nástrojů**získat nástroje a funkce** .
 
 Stáhněte si [Visual studio 2019 (Preview 2 nebo vyšší) nebo Visual Studio 2017 (15,3 nebo vyšší)](https://www.visualstudio.com/) a postupujte podle pokynů k instalaci.
 
@@ -42,7 +42,7 @@ Vyberte úlohu **vývoje Azure** , jak je znázorněno níže:
 
 Po přidání úlohy aktualizujte nástroje. Tento postup se týká sady Visual Studio 2019:
 
-1. Vyberte **rozšíření** > **Spravovat rozšíření**.
+1. Vyberte **rozšíření**  >  **Spravovat rozšíření**.
 
 1. V nabídce **Spravovat rozšíření**vyberte **aktualizace** a zvolte **Azure Data Lake a Stream Analytics nástroje**.
 
@@ -64,8 +64,8 @@ V případě sady Visual Studio 2019 a Visual Studio 2017 se nové připomenutí
 
 Pro Visual Studio 2015 a Visual Studio 2013 nástroje automaticky kontrolují nové verze. Postupujte podle pokynů a nainstalujte nejnovější verzi.
 
-## <a name="uninstall"></a>Odinstalovat
+## <a name="uninstall"></a>Odinstalace
 
-Nástroje Azure Data Lake a Stream Analytics můžete odinstalovat. V případě sady Visual Studio 2019 nebo Visual Studio 2017 vyberte **nástroje** > **získat nástroje a funkce**. V **úpravách**zrušte výběr **Azure Data Lake a Stream Analyticsch nástrojů**. Zobrazuje se v rámci úlohy **úložiště dat a zpracování** nebo úlohy **vývoje Azure** .
+Nástroje Azure Data Lake a Stream Analytics můžete odinstalovat. V případě sady Visual Studio 2019 nebo Visual Studio 2017 vyberte **nástroje**  >  **získat nástroje a funkce**. V **úpravách**zrušte výběr **Azure Data Lake a Stream Analyticsch nástrojů**. Zobrazuje se v rámci úlohy **úložiště dat a zpracování** nebo úlohy **vývoje Azure** .
 
-Chcete-li provést odinstalaci ze sady Visual Studio 2015 nebo Visual Studio 2013, použijte **ovládací panel** > **programy a funkce**. Odinstalujte **Microsoft Azure Data Lake a Stream Analytics nástrojů pro Visual Studio**.
+Chcete-li provést odinstalaci ze sady Visual Studio 2015 nebo Visual Studio 2013, použijte **ovládací panel**  >  **programy a funkce**. Odinstalujte **Microsoft Azure Data Lake a Stream Analytics nástrojů pro Visual Studio**.

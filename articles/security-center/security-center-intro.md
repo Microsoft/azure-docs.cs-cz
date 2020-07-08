@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: f437205ae76feb36596b05ee0e320aaed0a37184
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e9ed36971e157e67ede6573b9fdf9ff1fc6e05a0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846661"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044273"
 ---
 # <a name="what-is-azure-security-center"></a>Co je Azure Security Center?
 
@@ -47,7 +47,7 @@ Kvůli ochraně před těmito hrozbami poskytuje Security Center nástroje, kter
 
 ## <a name="architecture"></a>Architektura
 
-Vzhledem k tomu, že Security Center je nativně součástí Azure, služby PaaS v Azure – včetně Service Fabric, databází SQL a účtů úložiště – jsou monitorovány a chráněny Security Center bez nutnosti jakéhokoli nasazení.
+Vzhledem k tomu, že Security Center je nativně součástí Azure, služby PaaS v Azure – včetně Service Fabric, SQL Database, spravované instance SQL a účtů úložiště – jsou monitorovány a chráněny Security Center bez nutnosti jakéhokoli nasazení.
 
 Kromě toho Security Center pro servery s Windows i Linux chránit i servery a virtuální počítače, které nejsou na Azure, a to tak, že na ně nainstalujete agenta Log Analytics. Virtuální počítače Azure se automaticky zřídí v Security Center.
 
@@ -111,7 +111,7 @@ Ochrana před hrozbami Security Center zahrnuje analýzu dezaktivačního řetě
 
 Security Center zahrnuje automatickou nativní integraci s rozšířenou ochranou před internetovými útoky v programu Microsoft Defender. To znamená, že bez jakékoli konfigurace jsou počítače s Windows a Linux plně integrované s doporučeními a posouzením Security Center.
 
-Security Center navíc umožňuje automatizovat zásady řízení aplikací v prostředích serveru. Adaptivní řízení aplikací v Security Center umožní kompletní aplikaci, která je povolená pro všechny servery s Windows. Nemusíte vytvářet pravidla a kontrolovat porušení, je to vše hotovo automaticky za vás.
+Security Center navíc umožňuje automatizovat zásady řízení aplikací v prostředích serveru. Adaptivní řízení aplikací v Security Center umožňuje, aby se v rámci serverů Windows nastalo úplný seznam schválení aplikací. Nemusíte vytvářet pravidla a kontrolovat porušení, je to vše hotovo automaticky za vás.
 
 ### <a name="protect-paas"></a>Ochrana PaaS
 
@@ -147,6 +147,6 @@ Rozsáhlá kolekce protokolů – protokoly z Windows a Linux se využívají v 
 
 - Pokud chcete začít využívat Security Center, musíte mít předplatné Microsoft Azure. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 
-- Po prvním návštěvě Azure Security Center řídicího panelu na webu Azure Portal nebo v případě, že je povoleno prostřednictvím rozhraní API, je na všech vašich současných předplatných Azure povolená cenová úroveň Free Security Center. Aby bylo možné využít pokročilé možnosti správy zabezpečení a detekce hrozeb, je nutné upgradovat na cenovou úroveň Standard. Úroveň Standard se dá zdarma zkoušet po dobu 30 dnů. Další informace najdete na [stránce s cenami za Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+- Cenová úroveň Free Security Center je povolená ve všech vašich současných předplatných Azure, když navštívíte Azure Security Center řídicí panel v Azure Portal poprvé nebo pokud je povolený prostřednictvím rozhraní API. Aby bylo možné využít pokročilé možnosti správy zabezpečení a detekce hrozeb, je nutné upgradovat na cenovou úroveň Standard. Úroveň Standard se dá zdarma zkoušet po dobu 30 dnů. Další informace najdete na [stránce s cenami za Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 - Pokud jste připraveni povolit Security Center Standard nyní, [rychlý Start: připojení předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede jednotlivými kroky.

@@ -8,12 +8,12 @@ ms.author: thvankra
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: 56adfa2ddab011372783a7a7872b4f4c8d7fc050
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e30bee23b634db12def62e906183c6087c6613e6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118436"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044290"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Rychlý Start: sestavení aplikace Cassandra pomocí .NET Core a Azure Cosmos DB
 
@@ -133,7 +133,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 1. Na portálu [Azure Portal](https://portal.azure.com/) vyberte **Připojovací řetězec**.
 
-1. Pomocí tlačítka ![Tlačítko pro kopírování](./media/create-cassandra-dotnet/copy.png) na pravé straně obrazovky zkopírujte hodnotu UŽIVATELSKÉ JMÉNO.
+1. Pomocí :::image type="icon" source="./media/create-cassandra-dotnet/copy.png"::: tlačítka na pravé straně obrazovky Zkopírujte hodnotu uživatelské jméno.
 
    :::image type="content" source="./media/create-cassandra-dotnet/keys.png" alt-text="Zobrazení a zkopírování přístupového klíče na webu Azure Portal, stránka Připojovací řetězec":::
 

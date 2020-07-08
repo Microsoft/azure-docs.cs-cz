@@ -5,14 +5,14 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa1d8ff0743399d96436f33426ebc4c4ab4a29f6
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76834901"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045633"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Testování Stream Analytics dotazů v místním prostředí se sadou Visual Studio
 
@@ -36,7 +36,7 @@ V automaticky otevíraném okně vyberte ze své místní cesty možnost Ukázko
    
 ![Přidat místní vstup](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
-Do složky vstupy se automaticky přidá soubor s názvem **local_EntryStream. JSON** .
+Do složky vstupy se automaticky přidá soubor s názvem **local_EntryStream.js** .
    
 ![Seznam souborů místní vstupní složky](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-03.png)
    

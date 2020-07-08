@@ -1,16 +1,16 @@
 ---
-title: Postup vytvoření zásad konfigurace hostů pro Windows
+title: Postup vytváření zásad konfigurace hosta pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: a8231840cc20f03da44d489ae5226e7a0b4e0d48
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835950"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045123"
 ---
-# <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytvoření zásad konfigurace hostů pro Windows
+# <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytváření zásad konfigurace hosta pro Windows
 
 Než začnete vytvářet vlastní definice zásad, je vhodné si přečíst informace o koncepčním přehledu na stránce [Azure Policy konfiguraci hostů](../concepts/guest-configuration.md).
  
@@ -84,11 +84,14 @@ Přehled konceptů a terminologie DSC najdete v tématu [Přehled prostředí PO
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Způsob, jakým se v modulech konfigurace hosta liší od modulů Windows PowerShell DSC
 
-Když konfigurace hosta Audituje počítač:
+Když Audituje konfigurace hosta počítač, sekvence událostí se liší od rozhraní Windows PowerShell DSC.
 
 1. Agent se nejdřív spustí `Test-TargetResource` , aby zjistil, jestli je konfigurace ve správném stavu.
 1. Logická hodnota vrácená funkcí určuje, zda má být stav Azure Resource Manager pro přiřazení hostů kompatibilní/nekompatibilní.
 1. Zprostředkovatel spustí, `Get-TargetResource` aby vrátil aktuální stav každého nastavení, takže podrobnosti jsou k dispozici jak k tomu, proč počítač nedodržuje předpisy, a ověřil, zda je aktuální stav kompatibilní.
+
+Parametry v Azure Policy, které předávají hodnoty přiřazení konfigurace hosta musí být typu _řetězec_ .
+Není možné předat pole pomocí parametrů, i když prostředek DSC podporuje pole.
 
 ### <a name="get-targetresource-requirements"></a>Požadavky GET-TargetResource
 
@@ -138,7 +141,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="configuration-requirements"></a>Požadavky na konfiguraci
 
-Název vlastní konfigurace musí být konzistentní všude. Název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF a název přiřazení hosta v šabloně Správce prostředků musí být stejný.
+Název vlastní konfigurace musí být konzistentní všude. Název souboru. zip pro balíček obsahu, název konfigurace v souboru MOF a název přiřazení hosta v šabloně Azure Resource Manager (šablona ARM) musí být stejné.
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Generování uživatelského rozhraní projektu konfigurace hosta
 
@@ -163,7 +166,7 @@ Formát balíčku musí být soubor. zip.
 ### <a name="storing-guest-configuration-artifacts"></a>Ukládání artefaktů konfigurace hosta
 
 Balíček. zip musí být uložený v umístění, ke kterému mají přístup spravované virtuální počítače.
-Mezi příklady patří úložiště GitHub, úložiště Azure nebo Azure Storage. Pokud nechcete, aby balíček byl veřejný, můžete do adresy URL přidat [token SAS](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) .
+Mezi příklady patří úložiště GitHub, úložiště Azure nebo Azure Storage. Pokud nechcete, aby balíček byl veřejný, můžete do adresy URL přidat [token SAS](../../../storage/common/storage-sas-overview.md) .
 Můžete také implementovat [koncový bod služby](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) pro počítače v privátní síti, i když tato konfigurace platí pouze pro přístup k balíčku a nekomunikuje se službou.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Krok za krokem – vytvoření vlastní zásady auditu konfigurace hosta pro Windows
@@ -320,9 +323,9 @@ New-GuestConfigurationPolicy `
 
 Následující soubory vytvořil `New-GuestConfigurationPolicy` :
 
-- **auditIfNotExists. JSON**
-- **deployIfNotExists. JSON**
-- **Iniciativa. JSON**
+- **auditIfNotExists.jsna**
+- **deployIfNotExists.jsna**
+- **Initiative.jsna**
 
 Výstup rutiny vrátí objekt, který obsahuje zobrazovaný název iniciativy a cestu k souborům zásad.
 
@@ -408,7 +411,7 @@ Příklad fragmentu definice zásady, která filtruje značky, je uveden níže.
 
 Konfigurace hosta podporuje přepsání vlastností konfigurace v době běhu. Tato funkce znamená, že hodnoty v souboru MOF v balíčku není nutné považovat za statické. Hodnoty přepsání jsou poskytovány prostřednictvím Azure Policy a neovlivňují způsob, jakým jsou vytvořeny nebo kompilovány konfigurace.
 
-Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr s názvem **Parameters**. Tento parametr převezme definici zatřiďovací tabulky včetně všech podrobností o jednotlivých parametrech a vytvoří požadované oddíly každého souboru používaného pro definici Azure Policy.
+Rutiny `New-GuestConfigurationPolicy` a `Test-GuestConfigurationPolicyPackage` zahrnují parametr pojmenovaný **parametr**. Tento parametr převezme definici zatřiďovací tabulky včetně všech podrobností o jednotlivých parametrech a vytvoří požadované oddíly každého souboru používaného pro definici Azure Policy.
 
 Následující příklad vytvoří definici zásady pro audit služby, kde uživatel vybere ze seznamu v okamžiku přiřazení zásady.
 
@@ -431,15 +434,15 @@ New-GuestConfigurationPolicy
     -DisplayName 'Audit Windows Service.' `
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
     -Path '.\policyDefinitions' `
-    -Parameters $PolicyParameterInfo `
+    -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>Rozšíření konfigurace hostů pomocí nástrojů třetích stran
 
 > [!Note]
-> Tato funkce je ve verzi Preview a vyžaduje modul konfigurace hosta verze 1.20.1, který se dá nainstalovat pomocí nástroje `Install-Module GuestConfiguration -AllowPrerelease` .
-> Ve verzi 1.20.1 je tato funkce dostupná jenom pro definice zásad, které auditují počítače s Windows.
+> Tato funkce je ve verzi Preview a vyžaduje modul konfigurace hosta verze 1.20.3, který se dá nainstalovat pomocí nástroje `Install-Module GuestConfiguration -AllowPrerelease` .
+> Ve verzi 1.20.3 je tato funkce dostupná jenom pro definice zásad, které auditují počítače s Windows.
 
 Balíčky artefaktů pro konfiguraci hosta se dají rozšířit tak, aby zahrnovaly nástroje třetích stran.
 Rozšíření konfigurace hosta vyžaduje vývoj dvou součástí.
@@ -465,7 +468,14 @@ Pouze `New-GuestConfigurationPackage` rutina vyžaduje změnu z podrobných poky
 Nainstalujte požadované moduly do vývojového prostředí:
 
 ```azurepowershell-interactive
-Install-Module GuestConfiguration, gcInSpec
+# Update PowerShellGet if needed to allow installing PreRelease versions of modules
+Install-Module PowerShellGet -Force
+
+# Install GuestConfiguration module prerelease version
+Install-Module GuestConfiguration -allowprerelease
+
+# Install commmunity supported gcInSpec module
+Install-Module gcInSpec
 ```
 
 Nejprve vytvořte soubor YaML používaný nespecifikací. Soubor poskytuje základní informace o prostředí. Příklad je uveden níže:
@@ -482,7 +492,7 @@ supports:
   - os-family: windows
 ```
 
-Uložte tento soubor do složky s názvem `wmi_service` v adresáři projektu.
+Uložte tento soubor s názvem `wmi_service.yml` do složky s názvem `wmi_service` v adresáři projektu.
 
 Pak vytvořte soubor Ruby s abstrakcí jazyka INSPEC, který se používá k auditování počítače.
 
@@ -501,7 +511,7 @@ end
 
 ```
 
-Uložte tento soubor do nové složky s názvem v `controls` `wmi_service` adresáři.
+Uložte tento soubor `wmi_service.rb` do nové složky s názvem v `controls` `wmi_service` adresáři.
 
 Nakonec vytvořte konfiguraci, importujte modul prostředků **GuestConfiguration** a pomocí `gcInSpec` prostředku nastavte název INSPEC Profile.
 
@@ -509,7 +519,7 @@ Nakonec vytvořte konfiguraci, importujte modul prostředků **GuestConfiguratio
 # Define the configuration and import GuestConfiguration
 Configuration wmi_service
 {
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.0.0'}
+    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
     node 'wmi_service'
     {
         gcInSpec wmi_service
@@ -552,7 +562,8 @@ Spuštěním následujícího příkazu vytvořte balíček pomocí konfigurace 
 New-GuestConfigurationPackage `
   -Name 'wmi_service' `
   -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'
+  -FilesToInclude './wmi_service'  `
+  -Path './package' 
 ```
 
 ## <a name="policy-lifecycle"></a>Životní cyklus zásad

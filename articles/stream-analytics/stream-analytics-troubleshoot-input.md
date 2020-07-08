@@ -5,15 +5,15 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9d8d87e0a2fb21603802f533a3566aa6743a9a79
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3cac20e33ff865058ce41799ae8841a05716edc9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831887"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045072"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
 
@@ -138,6 +138,28 @@ FROM data
 ### <a name="ensure-that-inputs-bind-to-different-consumer-groups"></a>Zajistěte, aby vstupy byly vázány na různé skupiny příjemců.
 
 Pro dotazy, ve kterých jsou tři nebo více vstupů připojeni ke stejné Event Hubs skupině uživatelů, vytvořte samostatné skupiny příjemců. To vyžaduje vytvoření dalších vstupů Stream Analytics.
+
+### <a name="create-separate-inputs-with-different-consumer-groups"></a>Vytvoření různých vstupů s různými skupinami příjemců
+
+Pro stejné centrum událostí můžete vytvořit samostatné vstupy s různými skupinami uživatelů. Následující sjednocovací dotaz je příkladem, kde *InputOne* a *InputTwo* odkazují na stejný zdroj centra událostí. Každý dotaz může mít samostatné vstupy s různými skupinami uživatelů. SJEDNOCOVACÍ dotaz je pouze jeden příklad.
+
+```sql
+WITH 
+DataOne AS 
+(
+SELECT * FROM InputOne 
+),
+
+DataTwo AS 
+(
+SELECT * FROM InputTwo 
+),
+
+SELECT foo FROM DataOne
+UNION 
+SELECT foo FROM DataTwo
+
+```
 
 ## <a name="get-help"></a>Získání pomoci
 

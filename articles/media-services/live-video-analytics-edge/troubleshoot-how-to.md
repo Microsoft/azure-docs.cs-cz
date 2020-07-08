@@ -1,14 +1,16 @@
 ---
 title: Řešení potíží se službou Live video Analytics v IoT Edge – Azure
 description: Tento článek popisuje postup řešení potíží pro analýzy živých videí na IoT Edge.
+author: IngridAtMicrosoft
 ms.topic: how-to
+ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: c235dd27da1d370531c1668c40586d4ae479aec7
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: dd55050521a1791a11f220cd5617d9df2fa2d160
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261118"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045568"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Řešení potíží se službou Live video Analytics na IoT Edge
 
@@ -128,11 +130,11 @@ Pokud chcete tento problém vyřešit:
     ```
 1. Ujistěte se, že máte nainstalovanou následující rozšíření. V době psaní tohoto průvodce používala Tato verze rozšíření následující:
 
-    |||
+    | Linka | Verze |
     |---|---|
     |azure-cli   |      2.5.1|
     |příkazové moduly – nspkg         |   2.0.3|
-    |core  |    2.5.1|
+    |Core  |    2.5.1|
     |nspkg    | 3.0.4|
     |telemetrie| 1.0.4|
     |SND    ||
@@ -199,7 +201,7 @@ V rámci naší verze jsme získali nějaký ukázkový kód .NET, který získ�
     sudo iotedge support-bundle --since 2h
     ```
 1. Pokud získáte kód chybové odpovědi 400, ujistěte se, že datová část volání metody je ve správném formátu podle průvodce [přímými metodami](direct-methods.md) .
-1. Pokud obdržíte stav 200, znamená to, že vaše centrum funguje dobře a vaše nasazení modulu je správné a reaguje. Dalším krokem je ověřit, jestli jsou konfigurace aplikace přesné. Vaše konfigurace aplikace se skládá z následujících polí v souboru appSettings. JSON. Zkontrolujte prosím, že deviceId a moduleId jsou přesné. Snadný způsob, jak to zjistit, je prostřednictvím části rozšíření Azure IoT Hub v VSCode. Hodnoty v souboru appSettings. JSON a v sekci IoT Hub by se měly shodovat.
+1. Pokud obdržíte stav 200, znamená to, že vaše centrum funguje dobře a vaše nasazení modulu je správné a reaguje. Dalším krokem je ověřit, jestli jsou konfigurace aplikace přesné. Vaše konfigurace aplikace se skládá z následujících polí appsettings.jsv souboru. Zkontrolujte prosím, že deviceId a moduleId jsou přesné. Snadný způsob, jak to zjistit, je prostřednictvím části rozšíření Azure IoT Hub v VSCode. Hodnoty v appsettings.jssouboru a IoT Hub oddílu by se měly shodovat.
     
     ```
     {
@@ -211,7 +213,7 @@ V rámci naší verze jsme získali nějaký ukázkový kód .NET, který získ�
 
     ![CENTRUM IOT](./media/troubleshoot-how-to/iot-hub.png)
 
-1. Nakonec se ujistěte, že v souboru appSettings. JSON jste zadali IoT Hub připojovací řetězec, nikoli připojovací řetězec IoT Hub zařízení, protože jejich [formáty](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) se liší.
+1. Nakonec se ujistěte, že v rámci appsettings.jsjste zadali IoT Hub připojovací řetězec, nikoli připojovací řetězec IoT Hub zařízení, protože jejich [formáty](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/) se liší.
 
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live video Analytics pracuje s externími moduly
 
@@ -241,9 +243,94 @@ Live video Analytics prostřednictvím procesoru rozšíření HTTP může rozš
 
 Live video Analytics na IoT Edge poskytuje přímý programovací model založený na metodách, který umožňuje nastavit několik topologií a více instancí grafů. Jako součást nastavení topologie a grafu budete volat několik volání přímé metody v modulu Edge. Pokud vyvoláte tyto vícenásobná volání metody, zejména při spouštění a zastavování grafů, může docházet k nějakým chybám časového limitu, jako je například níže. 
 
-Metoda inicializace sestavení Microsoft. Media. LiveVideoAnalytics. test. Feature. Edge. AssemblyInitializer. InitializeAssemblyAsync vyvolala výjimku. Microsoft. Azure. Devices. Common. Exceptions. IotHubException: Microsoft. Azure. Devices. Common. Exceptions. IotHubException:<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
+Metoda inicializace sestavení Microsoft.Media.LiveVideoAnalytics.Test.Feature.Edge.AssemblyInitializer.InitializeAssemblyAsync vygenerovala výjimku. Microsoft. Azure. Devices. Common. Exceptions. IotHubException: Microsoft. Azure. Devices. Common. Exceptions. IotHubException:<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
 
-Doporučujeme, abyste nevolali přímé metody paralelně, ale provedete je sekvenčním způsobem, tj.  jedno přímé volání metody pouze po dokončení předchozí. 
+Doporučujeme, abyste nevolali přímé metody paralelně, ale provedete je sekvenčním způsobem, tj.  jedno přímé volání metody pouze po dokončení předchozí.
+
+### <a name="collecting-logs-for-submitting-a-support-ticket"></a>Shromažďování protokolů pro odeslání lístku podpory
+
+Když kroky pro řešení potíží s vlastním průvodcem nevyřeší vaše problémy, měli byste přejít na Azure Portal a [otevřít lístek podpory](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+Pomocí následujících kroků Shromážděte příslušné protokoly, které by se měly přidat k lístku. Soubory protokolů budete moct nahrát na kartě **Podrobnosti** žádosti o podporu.
+
+### <a name="support-bundle"></a>Podpora – sada
+
+Pokud potřebujete shromáždit protokoly ze zařízení IoT Edge, nejjednodušší způsob je použít `support-bundle` příkaz. Tento příkaz shromáždí:
+
+- Protokoly modulů
+- Protokoly IoT Edge Security Manager a modul kontejnerů
+- Výstup JSON pro kontrolu Iotedge
+- Užitečné informace o ladění
+
+#### <a name="use-the-iot-edge-security-manager"></a>Použití Správce zabezpečení IoT Edge
+ 
+IoT Edge Security Manager zodpovídá za operace, jako je inicializace IoT Edge systému při spuštění a zřizování zařízení. Pokud IoT Edge nezačnete, můžou vám poskytnout užitečné informace protokoly správce zabezpečení. Zobrazení podrobnějších protokolů IoT Edge Security Manageru:
+
+1. Upravte nastavení IoT Edge démona na zařízení IoT Edge:
+
+    ```
+    sudo systemctl edit iotedge.service
+    ```
+
+1. Aktualizujte následující řádky:
+
+    ```
+    [Service]
+    Environment=IOTEDGE_LOG=edgelet=debug
+    ```
+
+1. Restartujte IoT Edge démon zabezpečení spuštěním těchto příkazů:
+
+    ```
+    sudo systemctl cat iotedge.service
+    sudo systemctl daemon-reload
+    sudo systemctl restart iotedge
+    ```
+
+1. Spusťte `support-bundle` příkaz s příznakem--od, který určuje, jak dlouho od posledního chcete získat protokoly. Například 2 – 2. až za poslední dvě hodiny získají protokoly. Hodnotu tohoto příznaku můžete změnit tak, aby obsahovala protokoly pro jiné období.
+
+    ```
+    sudo iotedge support-bundle --since 2h
+    ```
+
+### <a name="lva-debug-logs"></a>Protokoly ladění LVA
+
+Pomocí těchto kroků nakonfigurujete modul LVA on IoT Edge pro generování protokolů ladění:
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a přejděte do služby IoT Hub.
+1. V nabídce vyberte **IoT Edge** .
+1. V seznamu zařízení klikněte na ID cílového zařízení.
+1. V horní nabídce klikněte na odkaz **nastavit moduly** .
+
+  ![nastavení modulů na portálu Azure Portal](media/troubleshoot-how-to/set-modules.png)
+
+5. V části IoT Edge moduly vyhledejte a klikněte na **lvaEdge**.
+1. Klikněte na **kontejner možnosti vytvoření kontejneru**.
+1. V části vazby přidejte následující příkaz:
+
+    `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
+
+    Tím se vytvoří vazba složek protokolů mezi hraničním zařízením a kontejnerem.
+
+1. Klikněte na tlačítko **aktualizovat** .
+1. V dolní části stránky klikněte na tlačítko **Revize + vytvořit** . Bude provedeno jednoduché ověření a zpráva o úspěšném ověření bude potištěna pod zelenou bannerovou zprávou.
+1. Klikněte na tlačítko **vytvořit** .
+1. Dále aktualizujte **vlákna identity modulu** , aby odkazovalo na parametr DebugLogsDirectory tak, aby odkazovalo na adresář, do kterého budou protokoly shromažďovány:
+    1. V tabulce **moduly** vyberte **lvaEdge** .
+    1. Klikněte na odkaz **Nevlákenovaná identita modulu** . Najdete ho v horní části stránky. Otevře se podokno upravitelný.
+    1. Do **požadovaného klíče**přidejte následující pár klíč-hodnota:
+
+        `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
+
+    1. Klikněte na **Uložit**.
+
+1. Reprodukujte problém.
+1. Připojte se k virtuálnímu počítači ze stránky IoT Hub na portálu.
+1. Přejděte do `/var/local/mediaservices/logs` složky a pak na zip obsah přihrádky této složky a sdílejte ji s námi. (Tyto soubory protokolu nejsou určeny pro samočinnou diagnostiku. Jsou určeny k analýze vašich problémů v rámci Azure.)
+
+1. Shromažďování protokolů je možné zastavit nastavením hodnoty v modulu na *hodnotu null* u **identity** . Vraťte se na stránku s **Nevlákenou identity modulu** a aktualizujte následující parametr jako:
+
+    `"DebugLogsDirectory": ""`
 
 ## <a name="next-steps"></a>Další kroky
 

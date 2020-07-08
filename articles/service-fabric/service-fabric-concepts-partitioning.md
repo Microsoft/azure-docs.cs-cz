@@ -3,12 +3,12 @@ title: Dělení Service Fabric služeb
 description: Popisuje, jak rozdělit Service Fabric stavové služby. Oddíly umožňují úložiště dat na místních počítačích, aby se data a výpočetní prostředky mohly škálovat dohromady.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e395fc31550dfdbedf963db0d648191453d016b2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115165"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045412"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Dělení spolehlivých služeb Service Fabric
 Tento článek poskytuje Úvod do základních konceptů vytváření oddílů služby Azure Service Fabric Reliable Services. Zdrojový kód používaný v článku je také k dispozici na [GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -21,11 +21,11 @@ U bezstavových služeb se můžete domnívat, že oddíl je logická jednotka, 
 
 ![Bezstavová služba](./media/service-fabric-concepts-partitioning/statelessinstances.png)
 
-Existují dva typy bezstavových řešení služby. První je služba, která uchovává svůj stav externě, například ve službě Azure SQL Database (jako je web, na kterém jsou uloženy informace o relaci a data). Druhá je jenom výpočetní služby (například Kalkulačka nebo miniatura obrázku), které nespravují žádný trvalý stav.
+Existují dva typy bezstavových řešení služby. První je služba, která uchovává svůj stav externě, například v databázi v Azure SQL Database (jako web, na kterém jsou uloženy informace o relaci a data). Druhá je jenom výpočetní služby (například Kalkulačka nebo miniatura obrázku), které nespravují žádný trvalý stav.
 
 V obou případech je vytváření oddílů bez stavové služby velmi výjimečný scénář – škálovatelnost a dostupnost se obvykle dosahují přidáním dalších instancí. Jediný čas, kdy chcete zvážit více oddílů pro instance bezstavových služeb, je třeba v případě, že potřebujete splnit speciální požadavky směrování.
 
-Příkladem může být případ, kdy uživatelé s ID v určitém rozsahu mají být obsluhováni pouze určitou instancí služby. Dalším příkladem, kdy můžete rozdělit bezstavovou službu, je, že máte skutečně dělenou back-end (například databázi SQL horizontálně dělené) a chcete určit, která instance služby by měla zapisovat do databáze horizontálních oddílů, nebo provést jinou přípravnou práci v rámci bezstavové služby, která vyžaduje stejné informace o dělení, jako se používá v back-endu. Tyto typy scénářů je také možné vyřešit různými způsoby a nemusí nutně vyžadovat dělení služby.
+Příkladem může být případ, kdy uživatelé s ID v určitém rozsahu mají být obsluhováni pouze určitou instancí služby. Dalším příkladem, kdy můžete rozdělit bezstavovou službu, je, že máte skutečně dělenou back-end (například databázi horizontálně dělené v SQL Database) a chcete určit, která instance služby by měla zapisovat do databáze horizontálních oddílů, nebo provést jinou přípravnou práci v rámci bezstavové služby, která vyžaduje stejné informace k dělení, jako se používá v back-endu. Tyto typy scénářů je také možné vyřešit různými způsoby a nemusí nutně vyžadovat dělení služby.
 
 Zbývající část tohoto Názorného postupu se zaměřuje na stavové služby.
 
@@ -115,17 +115,17 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
 > 
 > 
 
-1. Otevřete > **soubor** **aplikace Visual Studio** > **Nový** > **projekt**.
+1. Otevřete **soubor aplikace Visual Studio**  >  **File**  >  **Nový**  >  **projekt**.
 2. V dialogovém okně **Nový projekt** vyberte aplikaci Service Fabric.
 3. Zavolejte na projekt "AlphabetPartitions".
 4. V dialogovém okně **vytvořit službu** vyberte **stavová** služba a zavolejte ji "abecední. zpracování".
-5. Nastavte počet oddílů. Otevřete soubor souboru ApplicationManifest. XML umístěný ve složce ApplicationPackageRoot projektu AlphabetPartitions a aktualizujte parametr Processing_PartitionCount na 26, jak je znázorněno níže.
+5. Nastavte počet oddílů. Otevřete Applicationmanifest.xml soubor umístěný ve složce ApplicationPackageRoot projektu AlphabetPartitions a aktualizujte parametr Processing_PartitionCount na 26, jak je znázorněno níže.
    
     ```xml
     <Parameter Name="Processing_PartitionCount" DefaultValue="26" />
     ```
    
-    Také je třeba aktualizovat vlastnosti LowKey a HighKey elementu StatefulService v souboru souboru ApplicationManifest. XML, jak je znázorněno níže.
+    Také je třeba aktualizovat vlastnosti LowKey a HighKey elementu StatefulService v ApplicationManifest.xml, jak je znázorněno níže.
    
     ```xml
     <Service Name="Processing">
@@ -134,7 +134,7 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
       </StatefulService>
     </Service>
     ```
-6. Aby služba byla přístupná, otevřete koncový bod na portu přidáním prvku koncového bodu ServiceManifest. XML (umístěný ve složce PackageRoot) pro službu abecedy. Processing, jak je znázorněno níže:
+6. Aby služba byla přístupná, otevřete koncový bod na portu přidáním prvku koncového bodu ServiceManifest.xml (nachází se ve složce PackageRoot) pro službu abecedy pro zpracování abecedy, jak je znázorněno níže:
    
     ```xml
     <Endpoint Name="ProcessingServiceEndpoint" Port="8089" Protocol="http" Type="Internal" />
@@ -147,7 +147,7 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
    > V této ukázce předpokládáme, že používáte jednoduchý HttpCommunicationListener. Další informace o komunikaci spolehlivé služby najdete v tématu [komunikační model spolehlivé služby](service-fabric-reliable-services-communication.md).
    > 
    > 
-8. Doporučený vzor pro adresu URL, na které replika naslouchá, je následující formát: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}`.
+8. Doporučený vzor pro adresu URL, na které replika naslouchá, je následující formát: `{scheme}://{nodeIp}:{port}/{partitionid}/{replicaid}/{guid}` .
     Takže chcete naslouchací proces komunikace nakonfigurovat tak, aby naslouchal na správných koncových bodech a pomocí tohoto modelu.
    
     Více replik této služby může být hostováno ve stejném počítači, takže tato adresa musí být pro repliku jedinečná. To je důvod, proč ID oddílu + ID repliky jsou v adrese URL. HttpListener může naslouchat na více adresách na stejném portu, pokud je předpona adresy URL jedinečná.
@@ -224,14 +224,14 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
     }
     ```
    
-    `ProcessInternalRequest`přečte hodnoty parametru řetězce dotazu, který se používá k volání oddílu a volání `AddUserAsync` k přidání položky LastName do spolehlivého slovníku `dictionary`.
+    `ProcessInternalRequest`přečte hodnoty parametru řetězce dotazu, který se používá k volání oddílu a volání `AddUserAsync` k přidání položky LastName do spolehlivého slovníku `dictionary` .
 10. Pojďme do projektu přidat bezstavovou službu, abyste viděli, jak můžete volat konkrétní oddíl.
     
     Tato služba slouží jako jednoduché webové rozhraní, které přijímá hodnotu LastName jako parametr řetězce dotazu, Určuje klíč oddílu a odesílá je do služby abecedy. Processing pro zpracování.
 11. V dialogovém okně **vytvořit službu** vyberte **Bezstavová** služba a zavolejte na ni "abeceda. Web", jak je znázorněno níže.
     
     ![Snímek nestavové služby](./media/service-fabric-concepts-partitioning/createnewstateless.png).
-12. Aktualizujte informace o koncovém bodu v souboru ServiceManifest. XML služby abecedy. WebApi, aby se otevřel port, jak je znázorněno níže.
+12. Aktualizujte informace o koncovém bodu v ServiceManifest.xml služby abecedy. WebApi, abyste otevřeli port, jak je znázorněno níže.
     
     ```xml
     <Endpoint Name="WebApiServiceEndpoint" Protocol="http" Port="8081"/>
@@ -252,7 +252,7 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
         return new HttpCommunicationListener(uriPrefix, uriPublished, this.ProcessInputRequest);
     }
     ```
-14. Nyní je nutné implementovat logiku zpracování. HttpCommunicationListener volá `ProcessInputRequest` , když přichází požadavek. Pojďme tedy pokračovat a přidat kód níže.
+14. Nyní je nutné implementovat logiku zpracování. HttpCommunicationListener volá, `ProcessInputRequest` Když přichází požadavek. Pojďme tedy pokračovat a přidat kód níže.
     
     ```csharp
     private async Task ProcessInputRequest(HttpListenerContext context, CancellationToken cancelRequest)
@@ -298,7 +298,7 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
     }
     ```
     
-    Podívejme se na vás krok za krokem. Kód přečte první písmeno parametru `lastname` řetězce dotazu do znaku. Pak Určuje klíč oddílu pro toto písmeno odečtením hexadecimální hodnoty `A` z šestnáctkové hodnoty příjmení "první písmeno".
+    Podívejme se na vás krok za krokem. Kód přečte první písmeno parametru řetězce dotazu `lastname` do znaku. Pak Určuje klíč oddílu pro toto písmeno odečtením hexadecimální hodnoty `A` z šestnáctkové hodnoty příjmení "první písmeno".
     
     ```csharp
     string lastname = context.Request.QueryString["lastname"];
@@ -307,13 +307,13 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
     ```
     
     Nezapomeňte, že v tomto příkladu používáme 26 oddílů s jedním klíčem oddílu na oddíl.
-    Dále získáme oddíl `partition` služby pro tento klíč pomocí `ResolveAsync` metody `servicePartitionResolver` objektu. `servicePartitionResolver`je definován jako
+    Dále získáme oddíl služby `partition` pro tento klíč pomocí `ResolveAsync` metody `servicePartitionResolver` objektu. `servicePartitionResolver`je definován jako
     
     ```csharp
     private readonly ServicePartitionResolver servicePartitionResolver = ServicePartitionResolver.GetDefault();
     ```
     
-    `ResolveAsync` Metoda přijímá identifikátor URI služby, klíč oddílu a token zrušení jako parametry. Identifikátor URI služby pro službu zpracování je `fabric:/AlphabetPartitions/Processing`. Dále získáme koncový bod oddílu.
+    `ResolveAsync`Metoda přijímá identifikátor URI služby, klíč oddílu a token zrušení jako parametry. Identifikátor URI služby pro službu zpracování je `fabric:/AlphabetPartitions/Processing` . Dále získáme koncový bod oddílu.
     
     ```csharp
     ResolvedServiceEndpoint ep = partition.GetEndpoint()
@@ -343,7 +343,7 @@ Protože doslova chceme mít jeden oddíl na každé písmeno, můžeme jako ní
 16. Po dokončení nasazení můžete službu a všechny její oddíly na Service Fabric Explorer ověřit.
     
     ![Snímek obrazovky Service Fabric Explorer](./media/service-fabric-concepts-partitioning/sfxpartitions.png)
-17. V prohlížeči můžete otestovat logiku dělení zadáním `http://localhost:8081/?lastname=somename`. Uvidíte, že každý název, který začíná se stejným písmenem, je uložený ve stejném oddílu.
+17. V prohlížeči můžete otestovat logiku dělení zadáním `http://localhost:8081/?lastname=somename` . Uvidíte, že každý název, který začíná se stejným písmenem, je uložený ve stejném oddílu.
     
     ![Snímek obrazovky prohlížeče](./media/service-fabric-concepts-partitioning/samplerunning.png)
 

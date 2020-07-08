@@ -5,13 +5,13 @@ ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
-ms.topic: conceptual
-ms.openlocfilehash: c29d0d9ecd856ee9611df21d23b1b2b763e24652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: a47b641f4f5049beb605490122a33d407ac3e222
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75486466"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044358"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Test Stream Analytics dotazy místně s použitím ukázkových dat pomocí Visual Studio Code
 
@@ -35,7 +35,7 @@ Nejprve musíte připravit ukázkové vstupní datové soubory. Pokud již máte
 
 ## <a name="define-a-local-input"></a>Definování místního vstupu
 
-1. V Stream Analytics projektu klikněte na **input. JSON** ve složce Inputs. Pak na horním řádku vyberte **Přidat místní vstup** .
+1. Klikněte na **input.jsv** části vstupní složka v projektu Stream Analytics. Pak na horním řádku vyberte **Přidat místní vstup** .
 
     ![Přidat místní vstup z projektu](./media/quick-create-vs-code/add-input-from-project.png)
 
@@ -55,7 +55,7 @@ Nejprve musíte připravit ukázkové vstupní datové soubory. Pokud již máte
 
     ![Přidat nový alias místního vstupu pro ASA](./media/vscode-local-run/new-local-input-alias.png)
 
-5. V nově vygenerovaném souboru **LocalInput_Input. JSON** zadejte cestu k souboru, kde se nachází váš místní datový soubor.
+5. V nově vygenerovaném **LocalInput_Input.js** souboru zadejte cestu k souboru, kde se nachází váš místní datový soubor.
 
     ![Zadejte cestu k místnímu souboru v aplikaci Visual Studio](./media/vscode-local-run/local-file-path.png)
 

@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426446"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044579"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavte řešení IoT pomocí Stream Analytics
 
@@ -54,7 +54,7 @@ Datový proud záznamu obsahuje informace o automobilůch při zadávání telef
 
 Tady je krátký popis sloupců:
 
-| Sloupec | Popis |
+| Sloupec | Description |
 | --- | --- |
 | TollID |ID kabiny pro telefonní číslo, které jedinečně identifikuje telefonní kabinu |
 | EntryTime |Datum a čas vstupu vozidla na telefonní kabinu v UTC |
@@ -81,7 +81,7 @@ Výstupní datový proud obsahuje informace o vozidlech opouštějících telefo
 
 Tady je krátký popis sloupců:
 
-| Sloupec | Popis |
+| Sloupec | Description |
 | --- | --- |
 | TollID |ID kabiny pro telefonní číslo, které jedinečně identifikuje telefonní kabinu |
 | ExitTime |Datum a čas ukončení vozidla ze záplatku v UTC |
@@ -101,7 +101,7 @@ Tady je krátký popis sloupců:
 
 Tady je krátký popis sloupců:
 
-| Sloupec | Popis |
+| Sloupec | Description |
 | --- | --- |
 | LicensePlate |Číslo licenční tabulky vozidla |
 | RegistrationId |Registrační ID vozidla |
@@ -113,7 +113,7 @@ K dokončení tohoto řešení potřebujete Microsoft Azure předplatné. Pokud 
 Nezapomeňte postupovat podle kroků uvedených v části Vyčištění účtu Azure na konci tohoto článku, abyste mohli co nejlépe využít kredit Azure.
 
 ## <a name="deploy-the-sample"></a>Nasazení ukázky
-Existuje několik prostředků, které lze snadno nasadit ve skupině prostředků spolu s několika kliknutími. Definice řešení je hostována v úložišti GitHub na [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp)adrese.
+Existuje několik prostředků, které lze snadno nasadit ve skupině prostředků spolu s několika kliknutími. Definice řešení je hostována v úložišti GitHub na adrese [https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/TollApp) .
 
 ### <a name="deploy-the-tollapp-template-in-the-azure-portal"></a>Nasazení šablony TollApp do Azure Portal
 1. K nasazení prostředí TollApp do Azure použijte tento odkaz k [nasazení šablony Azure TollApp](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-stream-analytics%2Fmaster%2FSamples%2FTollApp%2FVSProjects%2FTollAppDeployment%2Fazuredeploy.json).
@@ -122,7 +122,7 @@ Existuje několik prostředků, které lze snadno nasadit ve skupině prostředk
 
 3. Vyberte předplatné, ve kterém se účtují různé prostředky.
 
-4. Zadejte novou skupinu prostředků s jedinečným názvem, například `MyTollBooth`.
+4. Zadejte novou skupinu prostředků s jedinečným názvem, například `MyTollBooth` .
 
 5. Vyberte umístění Azure.
 
@@ -168,7 +168,7 @@ Existuje několik prostředků, které lze snadno nasadit ve skupině prostředk
 3. Prověřte vstupy vzorové úlohy TollApp. V aktuálním dotazu se používá pouze vstup EntryStream.
    - **EntryStream** input je připojení centra událostí, které při každém vstupu automobilu do Tollbooth na dálnici zařadí data do fronty. Webová aplikace, která je součástí ukázky, vytváří události a tato data jsou zařazená do fronty v tomto centru událostí. Všimněte si, že tento vstup je dotazován v klauzuli FROM dotazu streamování.
    - **ExitStream** input je připojení centra událostí, které zařadí data do fronty pokaždé, když automobil ukončí Tollbooth na dálnici. Tento vstup streamování se používá v pozdějších variacích syntaxe dotazu.
-   - Vstup **registrace** je připojení úložiště objektů BLOB v Azure, které odkazuje na soubor statických registrací. JSON, který se používá pro hledání podle potřeby. Tento vstup referenčních dat se používá v pozdějších variacích syntaxe dotazu.
+   - Vstup **registrace** je připojení úložiště objektů BLOB v Azure, které odkazuje na statický registration.jsv souboru, který se používá pro hledání podle potřeby. Tento vstup referenčních dat se používá v pozdějších variacích syntaxe dotazu.
 
 4. Projděte si výstupy ukázkové úlohy TollApp.
    - **Cosmos DB** výstupem je kontejner databáze Cosmos, který přijímá výstupní události jímky. Všimněte si, že tento výstup se používá v klauzuli INTO dotazu streamování.
@@ -185,11 +185,11 @@ Pomocí těchto kroků spusťte úlohu streamování:
 ## <a name="review-the-cosmosdb-output-data"></a>Kontrola výstupních dat CosmosDB
 1. Vyhledejte skupinu prostředků, která obsahuje prostředky TollApp.
 
-2. Vyberte účet Azure Cosmos DB se vzorem názvu **tollapp\<\>Random-Cosmos**.
+2. Vyberte účet Azure Cosmos DB se vzorem názvu **tollapp \<random\> -Cosmos**.
 
 3. Vyberte záhlaví **Průzkumník dat** pro otevření stránky Průzkumník dat.
 
-4. Rozbalte dokumenty **tollAppDatabase** > **tollAppCollection** > **Documents**.
+4. Rozbalte dokumenty **tollAppDatabase**  >  **tollAppCollection**  >  **Documents**.
 
 5. V seznamu ID se několik dokumentů zobrazuje až po zpřístupnění výstupu.
 

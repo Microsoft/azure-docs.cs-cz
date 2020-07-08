@@ -6,21 +6,21 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e5e47b5822127bcd00fd2d67efff9a786f00a258
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: d177e7fd7d18b24f9d8fd7f3e6662abe16bba317
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306884"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045327"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Vytváření zobecněných imagí bez zřizovacího agenta
 
 Microsoft Azure poskytuje agenty zřizování pro virtuální počítače se systémem Linux ve formě [walinuxagent](https://github.com/Azure/WALinuxAgent) nebo [Cloud-init](https://github.com/canonical/cloud-init) (doporučeno). Nicméně může nastat situace, kdy nechcete použít některou z těchto aplikací pro vašeho agenta zřizování, například:
 
-- Distribuce/Version pro Linux nepodporuje Cloud-init.
+- Distribuce/Version pro Linux nepodporuje agenta Cloud-init/Linux.
 - Vyžadujete, aby byly nastavené konkrétní vlastnosti virtuálního počítače, třeba název hostitele.
 
 > [!NOTE] 
@@ -70,7 +70,7 @@ $ az vm create \
 Jakmile se virtuální počítač zřídí, můžete k němu přihlédnout a odebrat agenta pro Linux:
 
 ```bash
-$ sudo apt remove -y waagent
+$ sudo apt purge -y waagent
 $ sudo rm -rf /var/lib/waagent /etc/waagent.conf /var/log/waagent.log
 ```
 

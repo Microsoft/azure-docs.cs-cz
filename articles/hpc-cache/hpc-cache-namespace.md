@@ -1,17 +1,17 @@
 ---
-title: Vytvoření mezipaměti prostředí Azure HPC
+title: Vytvoření instance mezipaměti prostředí Azure HPC
 description: Vytvoření instance mezipaměti prostředí Azure HPC
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: aaa939051a1aeafdb0650119772fc7214506aa8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73582185"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045803"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Plánování agregovaného oboru názvů
 
@@ -29,14 +29,14 @@ Představte si třeba systém, kde se instance mezipaměti HPC Azure používá 
 
 Data šablony jsou uložena v datovém centru a informace potřebné pro tuto úlohu jsou uloženy v těchto podadresářích:
 
-    /goldline/templates/acme2017/sku798
-    /goldline/templates/acme2017/sku980 
+* */goldline/templates/acme2017/sku798*
+* */goldline/templates/acme2017/sku980* 
 
 Tyto exporty zpřístupňuje systém úložiště Datacenter:
 
-    /
-    /goldline
-    /goldline/templates
+* */*
+* */goldline*
+* */goldline/templates*
 
 Data, která se mají analyzovat, se zkopírovala do kontejneru úložiště objektů BLOB v Azure s názvem SourceCollection pomocí [nástroje CLFSLoad](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload).
 
@@ -57,7 +57,7 @@ Vzhledem k tomu, že zdrojové cesty NFS jsou podadresářům stejného exportu,
 | *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
 | *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
 
-Klientská aplikace může připojit mezipaměť a snadno získat přístup k agregovaným cestám ``/source`` ``/templates/sku798``k souborům oboru názvů ``/templates/sku980``, a.
+Klientská aplikace může připojit mezipaměť a snadno získat přístup k agregovaným cestám k souborům oboru názvů, ``/source`` ``/templates/sku798`` a ``/templates/sku980`` .
 
 ## <a name="next-steps"></a>Další kroky
 

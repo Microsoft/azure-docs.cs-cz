@@ -566,12 +566,12 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
-            - name: Konzola ASP.NET
-              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
-              href: app/console.md
             - name: Aplikace jiného typu než HTTP nebo aplikace na pozadí
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
+            - name: Konzola .NET
+              displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
+              href: app/console.md
             - name: Java
               items:
                 - name: Webové aplikace

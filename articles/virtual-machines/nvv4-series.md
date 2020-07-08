@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f9d55208e37ae7556e8adffaa26cadd782d53d70
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e12124ee2d87a14c6e7cb1704fbe50c6300c1240
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84738426"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045718"
 ---
 # <a name="nvv4-series"></a>Řada NVv4 
 
@@ -29,12 +29,12 @@ Migrace za provozu: nepodporováno
 
 Aktualizace pro zachování paměti: nepodporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 |
-| Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 |
-| Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 |
-| Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 |
+| Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 / 1 000 |
+| Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 / 2 000 |
+| Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 / 4 000 |
+| Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 / 8000 |
 
 <sup>1</sup> NVv4-Series virtuální počítače s technologií AMD s více vlákny
 

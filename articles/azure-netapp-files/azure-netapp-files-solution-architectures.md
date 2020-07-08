@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: 9d39a6d85f878b6d67ffbcc55f468ad6984eecab
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 23ec482de740cc1ac8800a5de1c0e3be1f055df7
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85260796"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045480"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Architektury řešení s využitím Azure NetApp Files
 Tento článek poskytuje odkazy na osvědčené postupy, které vám pomůžou pochopit architektury řešení pro použití Azure NetApp Files.  
@@ -49,6 +49,7 @@ Tato část poskytuje odkazy na aplikace systému Windows a SQL Server řešení
 ### <a name="sql-server"></a>SQL Server
 
 * [Nasazení SQL Server přes protokol SMB pomocí Azure NetApp Files](https://www.youtube.com/watch?v=x7udfcYbibs)
+* [Nasazení SQL Server vždy aktivního clusteru s podporou převzetí služeb při selhání přes protokol SMB s Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q)
 * [Nasazení skupin dostupnosti Always On s Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc)
 
 ## <a name="sap-on-azure-solutions"></a>Řešení SAP v Azure

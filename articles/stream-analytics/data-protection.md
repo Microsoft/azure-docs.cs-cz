@@ -4,14 +4,14 @@ description: Tento článek vysvětluje, jak šifrovat soukromá data používan
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/05/2020
-ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857282"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045344"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Ochrana dat v Azure Stream Analytics 
 
@@ -32,11 +32,11 @@ Aktualizace nebo otočení klíčů k účtu úložiště není možné pomocí 
 
 Pomocí následujícího postupu můžete nakonfigurovat účet úložiště pro soukromé datové prostředky. Tato konfigurace se provádí z vaší Stream Analytics úlohy, nikoli z vašeho účtu úložiště.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**. 
 
-1. V **Analytics** >seznamu výsledků vyberte **úlohu** Stream Analytics analýzy. 
+1.  **Analytics**   > V seznamu výsledků vyberte **úlohu Stream Analytics**analýzy   . 
 
 1. Vyplňte stránku úlohy Stream Analytics s potřebnými podrobnostmi, jako je název, oblast a škálování. 
 

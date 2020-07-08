@@ -3,12 +3,12 @@ title: Získání změn prostředků
 description: Pochopte, jak zjistit, kdy byl prostředek změněn, získat seznam vlastností, které se změnily, a vyhodnotit rozdíly.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 9e233ebbdd1d70d483af44eacf12cc924deaafac
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ace911361ccb96cab3d5c7557ba0e524dbf801d2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167158"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044987"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 
@@ -28,7 +28,7 @@ Zjišťování změn a podrobnosti jsou užitečné v následujících ukázkov�
 Tento článek ukazuje, jak shromáždit tyto informace prostřednictvím sady SDK pro graf prostředků. Pokud chcete zobrazit tyto informace v Azure Portal, přečtěte si téma historie [změn](../../policy/how-to/determine-non-compliance.md#change-history) v Azure Policy nebo [historie změn protokolu aktivit](../../../azure-monitor/platform/activity-log-view.md#azure-portal)Azure. Podrobnosti o změnách vašich aplikací z infrastruktury do nasazení aplikace najdete v tématu [použití analýzy změn aplikace (Preview)](../../../azure-monitor/app/change-analysis.md) v Azure monitor.
 
 > [!NOTE]
-> Podrobnosti o změně v grafu prostředků jsou pro Správce prostředků vlastnosti. Informace o sledování změn v rámci virtuálního počítače Azure Automation najdete v tématu Konfigurace služby [Change Tracking](../../../automation/automation-change-tracking.md) nebo [Host Azure Policy na virtuálních](../../policy/concepts/guest-configuration.md)počítačích.
+> Podrobnosti o změně v grafu prostředků jsou pro Správce prostředků vlastnosti. Informace o sledování změn v rámci virtuálního počítače Azure Automation najdete v tématu Konfigurace služby [Change Tracking](../../../automation/change-tracking.md) nebo [Host Azure Policy na virtuálních](../../policy/concepts/guest-configuration.md)počítačích.
 
 > [!IMPORTANT]
 > Historie změn v grafu prostředků Azure je Public Preview.

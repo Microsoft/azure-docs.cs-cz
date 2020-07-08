@@ -5,14 +5,14 @@ author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/28/2017
-ms.openlocfilehash: 58908b690464396f716801338cb22514ae4b5a66
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 74d3f154f9965e44c9fba42ec094b9240972b40d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831258"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044341"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Monitorování a správa úloh Stream Analytics pomocí rutin Azure PowerShell
 Naučte se monitorovat a spravovat Stream Analytics prostředky pomocí rutin Azure PowerShell a skriptování prostředí PowerShell, které spouští základní úlohy Stream Analytics.
@@ -242,7 +242,7 @@ Azure PowerShell 1,0:
 New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US -JobName StreamingJob -File "C:\Input.json" 
 ```
 
-Tento příkaz PowerShellu vytvoří nový vstup ze souboru Input. JSON. Je-li již existující vstup s názvem zadaným ve vstupním souboru definice již definován, rutina se zeptá, zda má být nahrazena.
+Tento příkaz prostředí PowerShell vytvoří nový vstup ze souboru Input.jsv. Je-li již existující vstup s názvem zadaným ve vstupním souboru definice již definován, rutina se zeptá, zda má být nahrazena.
 
 **Příklad 2**
 
@@ -301,7 +301,7 @@ Azure PowerShell 1,0:
 New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -File "C:\JobDefinition.json" 
 ```
 
-Tento příkaz PowerShellu vytvoří novou úlohu z definice v definice úkolu. JSON. Pokud je už existující úloha s názvem zadaným v souboru definice úlohy už definovaná, rutina se zeptá, jestli ji má nahradit.
+Tento příkaz PowerShellu vytvoří novou úlohu z definice v JobDefinition.js. Pokud je už existující úloha s názvem zadaným v souboru definice úlohy už definovaná, rutina se zeptá, jestli ji má nahradit.
 
 **Příklad 2**
 
@@ -541,7 +541,7 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 
 Tento příkaz prostředí PowerShell testuje stav připojení výstupního výstupu v StreamingJob.  
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 Pokud chcete získat další pomoc, vyzkoušejte si naši [stránku Microsoft Q&Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html). 
 
 ## <a name="next-steps"></a>Další kroky

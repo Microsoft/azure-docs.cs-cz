@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: 18831832f82cdbc8cec69e368f006f7acd4836c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb795a9d7100019b2b1820c592f87025b77f5878
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205258"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045854"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Řešení potíží s Apache Oozie v Azure HDInsight
 
@@ -32,7 +32,9 @@ Níže jsou uvedené konkrétní chyby, se kterými se můžete setkat, a jejich
 
 Stav úlohy se změní na **pozastaveno**. Podrobnosti úlohy zobrazují `RunHiveScript` stav **START_MANUAL**. Výběrem této akce se zobrazí následující chybová zpráva:
 
-    JA009: Cannot initialize Cluster. Please check your configuration for map
+```output
+JA009: Cannot initialize Cluster. Please check your configuration for map
+```
 
 ### <a name="cause"></a>Příčina
 
@@ -50,7 +52,9 @@ Změňte adresu úložiště objektů blob, kterou úloha používá.
 
 Stav úlohy se změní na **pozastaveno**. Podrobnosti úlohy zobrazují `RunHiveScript` stav **START_MANUAL**. Pokud vyberete akci, zobrazí se tato chybová zpráva:
 
-    JA002: User: oozie is not allowed to impersonate <USER>
+```output
+JA002: User: oozie is not allowed to impersonate <USER>
+```
 
 ### <a name="cause"></a>Příčina
 
@@ -60,7 +64,9 @@ Aktuální nastavení oprávnění nepovoluje Oozie zosobnit zadaný uživatelsk
 
 Oozie může zosobnit uživatele ve **`users`** skupině. Použijte `groups USERNAME` k zobrazení skupin, kterých je uživatelský účet členem. Pokud uživatel není členem **`users`** skupiny, přidejte uživatele do skupiny pomocí následujícího příkazu:
 
-    sudo adduser USERNAME users
+```bash
+sudo adduser USERNAME users
+```
 
 > [!NOTE]  
 > Může to trvat několik minut, než HDInsight rozpozná, že uživatel byl do skupiny přidaný.
@@ -73,7 +79,9 @@ Oozie může zosobnit uživatele ve **`users`** skupině. Použijte `groups USER
 
 Stav úlohy se změní na **ukončeno**. Podrobnosti úlohy zobrazují `RunSqoopExport` stav **Chyba**. Pokud vyberete akci, zobrazí se tato chybová zpráva:
 
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
+```output
+Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
+```
 
 ### <a name="cause"></a>Příčina
 

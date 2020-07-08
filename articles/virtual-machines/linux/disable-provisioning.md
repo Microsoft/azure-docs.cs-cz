@@ -6,15 +6,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 06/22/2020
+ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: d5d173e0b0204ee9e9dbe6e8b51d38d4e42d4fc2
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85306872"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045752"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Zakázání nebo odebrání agenta pro Linux z virtuálních počítačů a imagí
 
@@ -36,6 +36,9 @@ Existuje několik způsobů, jak zakázat zpracování rozšíření v závislos
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
+> [!Note]
+> 
+> Pokud to neuděláte výše, platforma se pokusí odeslat konfiguraci rozšíření a časový limit po 40min.
 
 ### <a name="disable-at-the-control-plane"></a>Zakázat na řídicí rovině
 Pokud si nejste jistí, jestli budete potřebovat rozšíření v budoucnu, můžete nechat nainstalovaného agenta pro Linux na virtuálním počítači a pak zakázat možnost zpracování rozšíření z platformy. Tato možnost je k dispozici v `Microsoft.Compute` rozhraní API verze `2018-06-01` nebo vyšší a nemá závislost na nainstalované verzi agenta pro Linux.
@@ -45,36 +48,13 @@ az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperat
 ```
 Toto zpracování rozšíření můžete snadno znovu povolit z platformy pomocí výše uvedeného příkazu, ale nastavte na hodnotu true.
 
-### <a name="optional---reduce-the-functionality"></a>Volitelné – snižte funkčnost 
-
-Můžete také umístit agenta pro Linux do režimu omezené funkčnosti. V tomto režimu Agent hosta stále komunikuje s prostředky infrastruktury Azure a oznamuje stav hosta na mnohem více, ale nezpracovává žádné aktualizace rozšíření. Pokud chcete snížit funkčnost, musíte provést změnu konfigurace v rámci virtuálního počítače. Pokud to chcete znovu povolit, museli jste se k virtuálnímu počítači přihlásili, ale pokud se z virtuálního počítače zamknete, nebudete moct znovu povolit zpracování rozšíření, což může být problém, pokud je potřeba provést resetování SSH nebo hesla.
-
-Chcete-li povolit tento režim, je požadován WALinuxAgent verze 2.2.32 nebo vyšší a v/etc/waagent.conf nastavte následující možnost:
-
-```bash
-Extensions.Enabled=n
-```
-
-To se **musí** udělat ve spojení s "zakázat na řídicí rovině".
-
 ## <a name="remove-the-linux-agent-from-a-running-vm"></a>Odebrání agenta pro Linux z běžícího virtuálního počítače
 
 Ujistěte se, že jste z virtuálního počítače **odebrali** všechna existující rozšíření, a to podle výše.
 
-### <a name="step-1-disable-extension-processing"></a>Krok 1: zákaz zpracování rozšíření
+### <a name="step-1-remove-the-azure-linux-agent"></a>Krok 1: odebrání agenta Azure Linux
 
-Je nutné zakázat zpracování rozšíření.
-
-```bash
-az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
-```
-> [!Note]
-> 
-> Pokud to neuděláte výše, platforma se pokusí odeslat konfiguraci rozšíření a časový limit po 40min.
-
-### <a name="step-2-remove-the-azure-linux-agent"></a>Krok 2: odebrání agenta Azure Linux
-
-Pro odebrání agenta Azure Linux spusťte jednu z následujících možností jako kořenovou složku:
+Pokud pouze odeberete agenta pro Linux a nikoli přidružené artefakty konfigurace, můžete ho později znovu nainstalovat. Pro odebrání agenta Azure Linux spusťte jednu z následujících možností jako kořenovou složku:
 
 #### <a name="for-ubuntu-1804"></a>Pro Ubuntu >= 18,04
 ```bash
@@ -91,17 +71,16 @@ yum -y remove WALinuxAgent
 zypper --non-interactive remove python-azure-agent
 ```
 
-### <a name="step-3-optional-remove-the-azure-linux-agent-artifacts"></a>Krok 3: (volitelné) odeberte artefakty agenta Azure Linux.
+### <a name="step-2-optional-remove-the-azure-linux-agent-artifacts"></a>Krok 2: (volitelné) odeberte artefakty agenta Azure Linux.
 > [!IMPORTANT] 
 >
-> Můžete odebrat všechny artefakty agenta pro Linux, ale to znamená, že ho nebude možné znovu nainstalovat později. Proto se důrazně doporučuje zvážit nejprve zakázání agenta pro Linux, odebrání agenta pro Linux pomocí výše uvedeného. 
+> Můžete odebrat všechny přidružené artefakty agenta pro Linux, ale to znamená, že ho nebude možné znovu nainstalovat později. Proto se důrazně doporučuje zvážit nejprve zakázání agenta pro Linux, odebrání agenta pro Linux pomocí výše uvedeného. 
 
 Pokud víte, že nebudete znovu instalovat agenta pro Linux, můžete spustit následující:
 
 #### <a name="for-ubuntu-1804"></a>Pro Ubuntu >= 18,04
 ```bash
-apt -y remove walinuxagent
-rm -f /etc/waagent.conf
+apt -y purge walinuxagent
 rm -rf /var/lib/waagent
 rm -f /var/log/waagent.log
 ```

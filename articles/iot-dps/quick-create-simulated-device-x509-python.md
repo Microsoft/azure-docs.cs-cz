@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 0c54b862704905b282869c5f2e9c374a173897ab
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 92e224448d26c24c073bd81b7f9e001fa8a09898
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609909"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044681"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení X. 509 pomocí sady SDK pro zařízení Python pro IoT Hub Device Provisioning Service
 
@@ -87,15 +87,17 @@ Tento článek ukazuje jednotlivé registrace.
 
 3. Po zobrazení výzvy zadejte v okně Výstup `i` pro jednotlivou registraci. V okně Výstup se zobrazí místně vygenerovaný certifikát X.509 pro vaše simulované zařízení. 
     
-    Nejprve zkopírujte certifikát do schránky. Začněte prvním výskytem tohoto řetězce:
+    ```output
+    Copy the first certificate to clipboard. Begin with the first occurrence of:
     
         -----BEGIN CERTIFICATE----- 
         
-    Kopírování ukončete po prvním výskytu řetězce:
+    End you copying after the first occurrence of:
     
         -----END CERTIFICATE-----
         
-    Nezapomeňte zahrnout i obě tyto čáry. 
+    Make sure to include both of those lines as well.
+    ``` 
 
     ![Aplikace pro registraci zařízení Dice](./media/python-quick-create-simulated-device-x509/dice-device-enrollment.png)
  

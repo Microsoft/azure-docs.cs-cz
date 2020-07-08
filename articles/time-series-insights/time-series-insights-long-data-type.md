@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: dpalled
-ms.openlocfilehash: b4ddff197ff41ee9ddee129fae4699e18af8d0d0
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: ebb62b67b56134902f2752b43dd25fb0a7c6ccd4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84898028"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045769"
 ---
 # <a name="adding-support-for-long-data-type"></a>Přidání podpory pro datový typ Long
 
@@ -211,4 +211,4 @@ Pokud jste uživatelem s vysokým počtem vlastností a domníváte se, že tato
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o podporovaných typech dat najdete v článku o příchozích [a úložištích](time-series-insights-update-storage-ingress.md) .
+* V [tomto](concepts-supported-data-types.md) článku se zobrazí úplný seznam podporovaných datových typů.

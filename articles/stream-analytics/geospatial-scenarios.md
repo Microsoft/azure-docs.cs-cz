@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak používat Azure Stream Analytics pro 
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443644"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045259"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Scénáře použití geografického a geoprostorového agregace pomocí Azure Stream Analytics
 
@@ -29,7 +29,7 @@ Referenční data použitá v tomto příkladu obsahují informace o geografick�
 
 ### <a name="define-geofences-in-reference-data"></a>Definice geografických zón v referenčních datech
 
-Geografické ohraničení lze definovat pomocí objektu geografické JSON. Pro úlohy s kompatibilitou verze 1,2 a vyšší lze geografické ploty definovat i pomocí známého textu (Well) jako `NVARCHAR(MAX)`. Well je standard pro Open Geospatial Consortium (OGC), který se používá k reprezentaci prostorových dat v textovém formátu.
+Geografické ohraničení lze definovat pomocí objektu geografické JSON. Pro úlohy s kompatibilitou verze 1,2 a vyšší lze geografické ploty definovat i pomocí známého textu (Well) jako `NVARCHAR(MAX)` . Well je standard pro Open Geospatial Consortium (OGC), který se používá k reprezentaci prostorových dat v textovém formátu.
 
 Předdefinované geoprostorové funkce mohou pomocí definovaných geografických zón zjistit, zda je prvek v nebo z konkrétního mnohoúhelníku geografické ploty.
 
@@ -43,7 +43,7 @@ Následující tabulka představuje příklad referenčních dat geografického 
 
 ### <a name="generate-alerts-with-geofence"></a>Generování výstrah s geografickou ochranou
 
-Zařízení mohou každou minutu vysílat své ID a umístění prostřednictvím datového `DeviceStreamInput`proudu. Následující tabulka je datový proud vstupu.
+Zařízení mohou každou minutu vysílat své ID a umístění prostřednictvím datového proudu `DeviceStreamInput` . Následující tabulka je datový proud vstupu.
 
 |DeviceID|Mikropozice|
 |--------|-----------|

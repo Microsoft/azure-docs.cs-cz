@@ -3,15 +3,15 @@ title: Kódy externích chyb – Azure Stream Analytics
 description: Řešení potíží s Azure Stream Analytics problémy s externími kódy chyb.
 ms.author: mamccrea
 author: mamccrea
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: fad0794a3628e6a89d1c2b2c80bb27d70937db95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f963f4c3538146b7f9929960092a18294659be5d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650033"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045242"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure Stream Analytics kódů externích chyb
 

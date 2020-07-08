@@ -5,14 +5,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/21/2019
-ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69824df1b84f6cdfafa08a662816281442ad44fd
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525528"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044375"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -117,7 +117,7 @@ Výkon těchto modelů závisí na velikosti historie, trvání okna, zatížen�
 * **Velikost historie** – tyto modely fungují lineárně s **velikostí historie**. Čím dál je velikost historie, tím déle bude trvat, než se v modelu vyhodnotí nová událost. Je to proto, že modely porovnávají novou událost s každou poslední událostí ve vyrovnávací paměti historie.
 * **Doba trvání okna** – **Doba trvání okna** by měla odrážet, jak dlouho trvá přijímání tolika událostí, kolik je určeno velikostí historie. Bez tohoto počtu událostí v okně Azure Stream Analytics by nedošlo ke imputaci chybějících hodnot. Proto je spotřeba procesoru funkcí velikosti historie.
 * **Zatížení událostí** – větší **zatížení události**, více práce prováděné modely, které mají dopad na spotřebu procesoru. Úlohu je možné škálovat tak, že ji zpracovatelné paralelně, což předpokládá, že obchodní logika bude používat víc vstupních oddílů.
-* **Function level partitioning** - **Dělení** na úrovni funkcí dělení na úrovni funkce se provádí pomocí ```PARTITION BY``` volání funkce detekce anomálií. Tento typ dělení přináší režii, protože stav musí být udržován pro více modelů současně. Dělení na úrovni funkcí se používá ve scénářích, jako je vytváření oddílů na úrovni zařízení.
+* Dělení na úrovni **funkcí**  -  **Dělení na úrovni funkcí** se provádí pomocí ```PARTITION BY``` volání funkce detekce anomálií. Tento typ dělení přináší režii, protože stav musí být udržován pro více modelů současně. Dělení na úrovni funkcí se používá ve scénářích, jako je vytváření oddílů na úrovni zařízení.
 
 ### <a name="relationship"></a>Relace
 Velikost historie, doba trvání okna a celková zátěž události jsou v souvislosti s následujícím způsobem:

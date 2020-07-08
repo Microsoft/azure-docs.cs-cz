@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76962155"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045820"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Nasazení úlohy Azure Stream Analytics pomocí balíčku CI/CD npm 
 
@@ -27,7 +27,7 @@ Můžete povolit průběžnou integraci a nasazení pro Azure Stream Analytics �
 
 Balíček si můžete [Stáhnout](https://www.npmjs.com/package/azure-streamanalytics-cicd) přímo nebo ho nainstalovat [globálně](https://docs.npmjs.com/downloading-and-installing-packages-globally) pomocí `npm install -g azure-streamanalytics-cicd` příkazu. Toto je doporučený postup, který se dá použít taky v úloze skriptu PowerShellu nebo Azure CLI kanálu sestavení v **Azure Pipelines**.
 
-Po instalaci balíčku použijte následující příkaz pro výstup šablon Azure Resource Manager. Argument **ScriptPath** je absolutní cesta k souboru **asaql** v projektu. Ujistěte se, že soubory asaproj. JSON a JobConfig. JSON jsou ve stejné složce se souborem skriptu. Pokud není zadán parametr **outputPath** , šablony budou umístěny do složky **Deploy** ve složce **bin** projektu.
+Po instalaci balíčku použijte následující příkaz pro výstup šablon Azure Resource Manager. Argument **ScriptPath** je absolutní cesta k souboru **asaql** v projektu. Ujistěte se, že asaproj.jsa JobConfig.jsna souborech jsou ve stejné složce se souborem skriptu. Pokud není zadán parametr **outputPath** , šablony budou umístěny do složky **Deploy** ve složce **bin** projektu.
 
 ```powershell
 azure-streamanalytics-cicd build -scriptPath <scriptFullPath> -outputPath <outputPath>
@@ -39,15 +39,19 @@ azure-streamanalytics-cicd build -scriptPath "/Users/roger/projects/samplejob/sc
 
 Po úspěšném sestavení Stream Analytics Visual Studio Code vygeneruje následující dva Azure Resource Manager soubory šablon ve složce **bin/[Debug/Retail]/Deploy** : 
 
-*  Soubor šablony Správce prostředků
+* Soubor šablony Správce prostředků
 
-       [ProjectName].JobTemplate.json 
+   ```
+   [ProjectName].JobTemplate.json 
+   ```
 
-*  Soubor parametrů Správce prostředků
+* Soubor parametrů Správce prostředků
 
-       [ProjectName].JobTemplate.parameters.json   
+   ```
+   [ProjectName].JobTemplate.parameters.json
+   ```   
 
-Výchozí parametry v souboru Parameters. JSON jsou z nastavení v projektu Visual Studio Code. Pokud chcete nasazení nasadit do jiného prostředí, nahraďte příslušné parametry odpovídajícím způsobem.
+Výchozí parametry v souboru parameters.json jsou z nastavení v projektu Visual Studio Code. Pokud chcete nasazení nasadit do jiného prostředí, nahraďte příslušné parametry odpovídajícím způsobem.
 
 > [!NOTE]
 > U všech přihlašovacích údajů jsou výchozí hodnoty nastavené na hodnotu null. Před nasazením do cloudu je **nutné** nastavit hodnoty.
@@ -155,8 +159,8 @@ Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics V
    |Skupina prostředků| Vyberte název testovací skupiny prostředků, která bude obsahovat vaši úlohu Stream Analytics.|
    |Umístění|Vyberte umístění testovací skupiny prostředků.|
    |Umístění šablony| *Propojený artefakt*|
-   |Šablona| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Parametry šablony|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Šablona| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.jsna |
+   |Parametry šablony|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.jsna|
    |Přepsání parametrů šablony|-Input_IoTHub1_iotHubNamespace $ (test_eventhubname)|
    |Režim nasazení|Přírůstkový|
 
@@ -172,8 +176,8 @@ Otevřete webový prohlížeč a přejděte do projektu Azure Stream Analytics V
    |Skupina prostředků| Vyberte název skupiny prostředků výroby, která bude obsahovat vaši úlohu Stream Analytics.|
    |Umístění|Vyberte umístění skupiny prostředků výroby.|
    |Umístění šablony| *Propojený artefakt*|
-   |Šablona| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.json |
-   |Parametry šablony|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.json|
+   |Šablona| $ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.jsna |
+   |Parametry šablony|($ (Build. ArtifactStagingDirectory) \drop\myASAJob.JobTemplate.parameters.jsna|
    |Přepsání parametrů šablony|-Input_IoTHub1_iotHubNamespace $ (eventhubname)|
    |Režim nasazení|Přírůstkový|
 

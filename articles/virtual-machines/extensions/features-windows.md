@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ff4fb08b1e627184760bb0a33797b2a324d4c55
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066842"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045905"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
 
@@ -150,7 +150,7 @@ Následující příklad ukazuje instalaci rozšíření Microsoft Antimalware z
 
 ### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 
-Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. Když nasadíte rozšíření s šablonou, můžete vytvořit plně nakonfigurovaná nasazení Azure. Například následující kód JSON je pořízený z Správce prostředků šablona nasadí sadu virtuálních počítačů s vyrovnáváním zatížení a Azure SQL Database a potom do každého virtuálního počítače nainstaluje aplikaci .NET Core. Rozšíření virtuálního počítače má za starosti instalaci softwaru.
+Rozšíření virtuálních počítačů lze přidat do šablony Azure Resource Manager a spustit s nasazením šablony. Když nasadíte rozšíření s šablonou, můžete vytvořit plně nakonfigurovaná nasazení Azure. Například následující kód JSON je pořízen z šablony Správce prostředků nasadí sadu virtuálních počítačů s vyrovnáváním zatížení a Azure SQL Database a potom do každého virtuálního počítače nainstaluje aplikaci .NET Core. Rozšíření virtuálního počítače má za starosti instalaci softwaru.
 
 Další informace najdete v tématu [úplná správce prostředků šablona](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows).
 
@@ -421,7 +421,7 @@ Můžete také odebrat rozšíření v Azure Portal následujícím způsobem:
 4. Vyberte možnost **odinstalovat**.
 
 ## <a name="common-vm-extensions-reference"></a>Referenční informace o běžných rozšířeních virtuálních počítačů
-| Název rozšíření | Popis | Další informace |
+| Název rozšíření | Description | Další informace |
 | --- | --- | --- |
 | Rozšíření vlastních skriptů pro virtuální počítače |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro virtuální počítače](custom-script-windows.md) |
 | Rozšíření DSC pro Windows |Rozšíření PowerShell DSC (Konfigurace požadovaného stavu) |[Rozšíření DSC pro Windows](dsc-overview.md) |

@@ -5,15 +5,15 @@ author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 44b84c03dd9c070fd7ca3764a0dc50e8caa9e1fc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75354569"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045157"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Vývoj úloh Stream Analytics Edge pomocí nástrojů sady Visual Studio
 
@@ -29,7 +29,7 @@ K dokončení tohoto kurzu potřebujete následující předpoklady:
  
 ## <a name="create-a-stream-analytics-edge-project"></a>Vytvoření projektu Stream Analytics Edge 
 
-V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**. Přejděte do seznamu **šablony** v levém > rozbalte **Azure Stream Analytics** > **Stream Analytics Edge** > **Azure Stream Analytics aplikaci Edge**. Zadejte název, umístění a název řešení pro svůj projekt a vyberte **OK**.
+V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. Přejděte do seznamu **šablony** v levém > rozbalte **Azure Stream Analytics**  >  **Stream Analytics Edge**  >  **Azure Stream Analytics aplikaci Edge**. Zadejte název, umístění a název řešení pro svůj projekt a vyberte **OK**.
 
 ![Nový projekt Stream Analytics Edge v aplikaci Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/new-stream-analytics-edge-project.png)
 
@@ -46,7 +46,7 @@ Po vytvoření projektu přejděte na **Průzkumník řešení** a zobrazte hier
 
 ## <a name="define-inputs"></a>Definice vstupů
 
-1. V **Průzkumník řešení**rozbalte uzel **vstupy** , měli byste vidět vstup s názvem **EdgeInput. JSON**. Dvojitým kliknutím zobrazíte její nastavení.  
+1. V **Průzkumník řešení**rozbalte uzel **vstupy** , ve kterém se zobrazí vstup s názvem **EdgeInput.js**. Dvojitým kliknutím zobrazíte její nastavení.  
 
 2. Nastavte typ zdroje na **datový proud**. Potom nastavte zdroj na **Edge hub**, formát serializace události na **JSON**a kódování na **UTF8**. Volitelně můžete přejmenovat **vstupní alias**. Pojďme ho nechat jako v tomto příkladu. V případě, že přejmenujete vstupní alias, použijte název, který jste zadali při definování dotazu. Vyberte **Uložit** a nastavení se uloží.  
    ![Konfigurace vstupu úlohy Stream Analytics](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-input-configuration.png)
@@ -55,7 +55,7 @@ Po vytvoření projektu přejděte na **Průzkumník řešení** a zobrazte hier
 
 ## <a name="define-outputs"></a>Definování výstupů
 
-1. V **Průzkumník řešení**rozbalte uzel **výstupy** , měli byste vidět výstup s názvem **EdgeOutput. JSON**. Dvojitým kliknutím zobrazíte její nastavení.  
+1. V **Průzkumník řešení**rozbalte uzel **výstupy** , ve kterém se zobrazí výstup s názvem **EdgeOutput.js**. Dvojitým kliknutím zobrazíte její nastavení.  
 
 2. Nezapomeňte nastavit jímku pro výběr **hraničního centra**, nastavit formát serializace události na **JSON**, nastavit kódování na **UTF8**a nastavit **pole**formátu. Volitelně můžete **alias pro výstup**přejmenovat, takže ho ponecháme v tomto příkladu. Pokud chcete alias pro výstup přejmenovat, použijte název, který jste zadali při definování dotazu. Vyberte **Uložit** a nastavení se uloží. 
    ![Konfigurace výstupu úlohy Stream Analytics](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
@@ -82,12 +82,12 @@ FROM EdgeInput
 
 K otestování dotazu místně byste měli nahrát ukázková data. Ukázková data můžete získat tak, že si stáhnete registrační data z [úložiště GitHubu](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/Registration.json) a uložíte je do místního počítače. 
 
-1. Pokud chcete načíst ukázková data, klikněte pravým tlačítkem na soubor **EdgeInput. JSON** a vyberte **Přidat místní vstup** .  
+1. Pokud chcete nahrát ukázková data, klikněte pravým tlačítkem na **EdgeInput.jsna** soubor a vyberte **Přidat místní vstup** .  
 
 2. V automaticky otevíraném okně > **přejděte** na ukázková data z místní cesty > vyberte **Uložit**.
    ![Konfigurace místního vstupu v aplikaci Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-local-input-configuration.png)
  
-3. Do složky vstupy se automaticky přidá soubor s názvem **local_EdgeInput. JSON** .  
+3. Do složky vstupy se automaticky přidá soubor s názvem **local_EdgeInput.js** .  
 4. Můžete ji buď spustit místně, nebo odeslat do Azure. Chcete-li otestovat dotaz, vyberte možnost **spustit místně**.  
    ![Možnosti spuštění úlohy Stream Analytics v aplikaci Visual Studio](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-visual-stuidio-run-options.png)
  
@@ -99,7 +99,7 @@ K otestování dotazu místně byste měli nahrát ukázková data. Ukázková d
 
 ## <a name="submit-the-job-to-azure"></a>Odeslat úlohu do Azure
 
-1. Před odesláním úlohy do Azure se musíte připojit k předplatnému Azure. Otevřete **Průzkumník serveru** > klikněte pravým tlačítkem na **Azure** > **Connect a Microsoft Azure předplatné** > Přihlaste se ke svému předplatnému Azure.  
+1. Před odesláním úlohy do Azure se musíte připojit k předplatnému Azure. Otevřete **Průzkumník serveru** > klikněte pravým tlačítkem na **Azure**  >  **Connect a Microsoft Azure předplatné** > Přihlaste se ke svému předplatnému Azure.  
 
 2. Pokud chcete odeslat úlohu do Azure, přejděte do editoru dotazů > vyberte **Odeslat do Azure**.  
 

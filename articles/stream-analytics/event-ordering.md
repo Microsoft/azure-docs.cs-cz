@@ -5,14 +5,14 @@ author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/12/2019
-ms.openlocfilehash: 4472909b731af5067b4d38c2a04a2d10a4039242
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559993"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044562"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurace zásad řazení událostí pro Azure Stream Analytics
 

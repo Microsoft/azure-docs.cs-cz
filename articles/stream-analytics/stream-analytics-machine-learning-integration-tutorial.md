@@ -5,15 +5,15 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c7a9a4c31ad7282782f45a8e2a4457cd159ee77
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80067095"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044443"
 ---
 # <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Provádění analýzy mínění s využitím Azure Stream Analytics a Azure Machine Learning Studio (Classic)
 
@@ -186,7 +186,7 @@ V této části kurzu definujete funkci v úloze Stream Analysis. Funkci lze vyv
    |---------|---------|
    | **Alias funkce** | Použijte název `sentiment` a vyberte možnost **zadat Azure Machine Learning nastavení funkce ručně** , což vám umožní zadat adresu URL a klíč.      |
    | **URL**| Vložte adresu URL webové služby.|
-   |**Zkrat** | Vložte klíč rozhraní API. |
+   |**Klíč** | Vložte klíč rozhraní API. |
   
    ![Nastavení pro přidání funkce Machine Learning pro Stream Analytics úlohy](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     

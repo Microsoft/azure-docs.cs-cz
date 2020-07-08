@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 04/30/2020
-ms.openlocfilehash: b7586fcd0a262fa325e171480ec0becc297f65fe
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.date: 07/06/2020
+ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483580"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045650"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem 
 
@@ -26,9 +26,9 @@ V případě potřeby můžete připojit nebo odpojit svazek pro virtuální po�
 
     ![Pokyny k připojení NFS](../media/azure-netapp-files/azure-netapp-files-mount-instructions-nfs.png)
 
-    ![Pokyny k připojení SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)
-    
-    Pokud používáte NFSv 4.1, připojte systém souborů pomocí následujícího příkazu:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
+    ![Pokyny k připojení SMB](../media/azure-netapp-files/azure-netapp-files-mount-instructions-smb.png)  
+    * Pokud připojujete svazek systému souborů NFS, nezapomeňte použít `vers` možnost v `mount` příkazu k určení verze protokolu NFS, která odpovídá svazku, který chcete připojit. 
+    * Pokud používáte NFSv 4.1, připojte systém souborů pomocí následujícího příkazu:`sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,tcp,sec=sys $MOUNTTARGETIPADDRESS:/$VOLUMENAME $MOUNTPOINT`  
 
 3. Pokud chcete připojit svazek systému souborů NFS automaticky při spuštění nebo restartování virtuálního počítače Azure, přidejte položku do `/etc/fstab` souboru na hostiteli. 
 

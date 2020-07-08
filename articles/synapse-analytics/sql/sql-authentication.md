@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7295bb2e87373a80c6b105ab7284a43e6f0804da
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 280fea29b79db58d0974aaba961db9c7a7df3dad
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020768"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045786"
 ---
 # <a name="sql-authentication"></a>Ověřování SQL
 
@@ -45,7 +45,7 @@ Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce
 - Jsou jedinými účty, které se můžou automaticky připojit k jakémukoli SQL Database na serveru. (Pro připojení k uživatelské databázi ostatní účty musí buď být vlastníkem databáze, nebo musí v uživatelské databázi mít uživatelský účet.)
 - Tyto účty přistupují k uživatelským databázím jako uživatel `dbo` a mají pro ně veškerá oprávnění. (Vlastník databáze také k databázi přistupuje jako uživatel `dbo`.)
 - Nezadávejte `master` databázi jako `dbo` uživatele a mít v hlavní databázi omezená oprávnění.
-- Nejsou **členy standardní** `sysadmin` role serveru SQL Server pevné, což není k dispozici ve službě SQL Database.  
+- Nejsou **členy standardní** `sysadmin` role serveru SQL Server pevné, což není v SQL Database k dispozici.  
 - Může vytvářet, měnit a odstraňovat databáze, přihlášení, uživatele v hlavní databázi a pravidla brány firewall na úrovni serveru.
 - Může přidat nebo odebrat členy do `dbmanager` rolí a `loginmanager` .
 - Může zobrazit `sys.sql_logins` systémovou tabulku.

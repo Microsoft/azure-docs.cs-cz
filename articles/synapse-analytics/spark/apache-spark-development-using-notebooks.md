@@ -1,5 +1,5 @@
 ---
-title: Vytváření, vývoj a údržba notebooků Azure synapse Studio (Preview)
+title: Poznámkové bloky synapse Studio
 description: V tomto článku se dozvíte, jak vytvořit a vyvíjet notebooky Azure synapse Studio (Preview), abyste mohli provádět přípravu a vizualizaci dat.
 services: synapse analytics
 author: ruixinxu
@@ -10,16 +10,16 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: tracking-python
-ms.openlocfilehash: 458cbe35e9d46b8a6afde399e20f3b484dfe6478
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373365"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045684"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Vytváření, vývoj a údržba notebooků Azure synapse Studio (Preview)
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Vytváření, vývoj a Správa poznámkových bloků synapse Studio (Preview) v Azure synapse Analytics
 
-Poznámkový blok Azure synapse Studio (Preview) je webové rozhraní, které umožňuje vytvářet soubory, které obsahují živý kód, vizualizace a mluvený text. Poznámkové bloky jsou vhodné místo pro ověřování nápadů a k získání přehledu z vašich dat můžete využít rychlé experimenty. Poznámkové bloky se také často používají při přípravě dat, vizualizaci dat, strojovém učení a dalších scénářích s velkými objemy dat.
+Poznámkový blok synapse Studio (Preview) je webové rozhraní, které umožňuje vytvářet soubory, které obsahují živý kód, vizualizace a mluvený text. Poznámkové bloky jsou vhodné místo pro ověřování nápadů a k získání přehledu z vašich dat můžete využít rychlé experimenty. Poznámkové bloky se také často používají při přípravě dat, vizualizaci dat, strojovém učení a dalších scénářích s velkými objemy dat.
 
 Pomocí poznámkového bloku Azure synapse Studio můžete:
 
@@ -110,7 +110,7 @@ V poznámkovém bloku synapse Studio nejde odkazovat na data ani proměnné př�
 
 ### <a name="ide-style-intellisense"></a>Vývojové prostředí – styly IntelliSense
 
-Poznámkové bloky Azure synapse Studio jsou integrované s editorem Monako a umožňují technologii IntelliSense ve stylu IDE pro Editor buněk. Zvýrazňování syntaxe, chyba maker a automatické dokončování kódu vám pomůžou psát kód a identifikovat problémy rychleji.
+Poznámkové bloky Azure synapse Studio jsou integrované s editorem Monako a umožňují technologii IntelliSense ve stylu IDE pro Editor buněk. Zvýrazňování syntaxe, značka chyby a automatické dokončování kódu vám pomůžou psát kód a identifikovat problémy rychleji.
 
 Funkce IntelliSense mají různé úrovně splatnosti pro různé jazyky. Pomocí následující tabulky můžete zjistit, co je podporováno.
 
@@ -159,7 +159,7 @@ Kliknutím na tlačítko **sbalit výstup** v levém horním rohu aktuální bu�
 
    ![sbalení – výstup z buňky](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
-## <a name="run-notebooks"></a>Spustit poznámkové bloky
+## <a name="run-notebooks"></a>Spouštění poznámkových bloků
 
 Buňky kódu můžete na svém poznámkovém bloku spustit jednotlivě nebo najednou. Stav a průběh každé buňky je reprezentován v poznámkovém bloku.
 

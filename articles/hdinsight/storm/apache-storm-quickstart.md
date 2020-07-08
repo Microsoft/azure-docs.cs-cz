@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 06/14/2019
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: 24173b553f30f652caf20b1ec7500fd9c4d2f7a0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8f13c813eee9bcfde578ba210c5aa2f2fe1cac2c
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73241220"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86045021"
 ---
 # <a name="quickstart-create-and-monitor-an-apache-storm-topology-in-azure-hdinsight"></a>Rychlý Start: vytvoření a monitorování topologie Apache Storm ve službě Azure HDInsight
 
@@ -35,7 +35,7 @@ V tomto rychlém startu použijete příklad z projektu Apache [-Starter](https:
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. **WORDCOUNT** příklad je součástí vašeho clusteru HDInsight na adrese `/usr/hdp/current/storm-client/contrib/storm-starter/`. Tato topologie vygeneruje náhodné věty a spočítá, kolikrát se slova vyskytují. K zahájení topologie **WORDCOUNT** v clusteru použijte následující příkaz:
+2. **WORDCOUNT** příklad je součástí vašeho clusteru HDInsight na adrese `/usr/hdp/current/storm-client/contrib/storm-starter/` . Tato topologie vygeneruje náhodné věty a spočítá, kolikrát se slova vyskytují. K zahájení topologie **WORDCOUNT** v clusteru použijte následující příkaz:
 
     ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology wordcount
@@ -82,16 +82,18 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
 
 4. Chcete-li zobrazit podrobnosti pro konkrétní instanci komponenty, při zobrazení podrobností o funkcích spout nebo bolt vyberte položku ze sloupce **Port** v oddílu **Vykonavatelé**.
 
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
-        2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [snow]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [snow, 747293]
-        2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [white]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [white, 747293]
-        2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
-        2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
+```output
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["with"]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: split default ["nature"]
+2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [snow]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [snow, 747293]
+2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [white]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [white, 747293]
+2015-01-27 14:18:02 b.s.d.executor [INFO] Processing received message source: split:21, stream: default, id: {}, [seven]
+2015-01-27 14:18:02 b.s.d.task [INFO] Emitting: count default [seven, 1493957]
+```
 
-    V tomto příkladu se slovo **seven** vyskytlo 1493957krát. Tolikrát bylo toto slovo zjištěno od spuštění této topologie.
+V tomto příkladu se slovo **seven** vyskytlo 1493957krát. Tolikrát bylo toto slovo zjištěno od spuštění této topologie.
 
 ## <a name="stop-the-topology"></a>Zastavení topologie
 

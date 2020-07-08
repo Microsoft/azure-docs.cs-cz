@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 46b78ca6f385f62d265210b41e634bbbd9a2041c
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2ad817afd8f4e80e99055646dca34b9bb05d100f
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262714"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044307"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Rozšířené zabezpečené skóre v Azure Security Center
 
@@ -132,7 +132,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Povolit šifrování v klidovém umístění (maximální skóre 4)</p></strong><a href="https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest">Šifrování v klidovém umístění</a> poskytuje ochranu dat pro uložená data. Mezi útoky na data v klidovém umístění patří pokusy o získání fyzického přístupu k hardwaru, na kterém jsou data uložená. Azure používají symetrické šifrování k šifrování a dešifrování velkých objemů dat v klidovém provozu. Symetrický šifrovací klíč se používá k šifrování dat při zápisu do úložiště. Tento šifrovací klíč se používá také k dešifrování těchto dat, protože jsou připravena k použití v paměti. Klíče musí být uloženy v zabezpečeném umístění s řízením přístupu na základě identity a zásadami auditování. Jedno takové zabezpečené umístění je Azure Key Vault. Pokud útočník získá šifrovaná data, ale ne šifrovací klíče, Útočník nemůže získat přístup k datům, aniž by bylo nutné zarušit šifrování.</td>
-    <td class="tg-lboi"; width=55%>-Na virtuálních počítačích by se mělo použít šifrování disku<br>-Je třeba povolit transparentní šifrování dat databází SQL.<br>-Proměnné účtu Automation by se měly šifrovat.<br>-Clustery Service Fabric musí mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.<br>-Ochrana TDE systému SQL Server by měla být zašifrovaná pomocí vlastního klíče</td>
+    <td class="tg-lboi"; width=55%>-Na virtuálních počítačích by se mělo použít šifrování disku<br>-transparentní šifrování dat na SQL Database by měla být povolená.<br>-Proměnné účtu Automation by se měly šifrovat.<br>-Clustery Service Fabric musí mít vlastnost ClusterProtectionLevel nastavenou na EncryptAndSign.<br>-Ochrana TDE systému SQL Server by měla být zašifrovaná pomocí vlastního klíče</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Šifrovat data při přenosu (maximální skóre 4)</p></strong>Data jsou přenášena při přenosu mezi součástmi, umístěními nebo programy. Organizace, které nechrání data při přenosu, jsou náchylné k útokům prostředníkem, odposlouchávání a zneužití relace. Protokoly SSL/TLS by se měly používat k výměně dat a doporučuje se síť VPN. Při odesílání šifrovaných dat mezi virtuálním počítačem Azure a místním umístěním přes Internet můžete k posílání šifrovaného provozu použít bránu virtuální sítě, jako je například <a href="https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways">Azure VPN Gateway</a> .</td>
@@ -151,7 +151,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
     <td class="tg-lboi"; width=55%>-Předávání IP na virtuálním počítači by mělo být zakázané.<br>-Pro služby Kubernetes Services (Preview) by měly být definované rozsahy povolených IP adres.<br>-ZASTARALÉ Přístup k App Services by měl být omezený (Preview)<br>-ZASTARALÉ Pravidla pro webové aplikace v IaaS skupin zabezpečení sítě by se měla posílit.<br>-Virtuální počítače by měly být přidružené ke skupině zabezpečení sítě.<br>-CORS by neměl umožňovat každému prostředku přístup k vaší aplikaci API.<br>-CORS by neměl umožňovat každému prostředku přístup k vašemu Function App<br>-CORS by neměl umožňovat každému prostředku přístup k vaší webové aplikaci<br>-Pro aplikaci API by mělo být vypnuto vzdálené ladění.<br>-Vzdálené ladění by mělo být pro Function App vypnuté.<br>-Vzdálené ladění by mělo být pro webovou aplikaci vypnuté.<br>-Přístup by měl být omezený na povolující skupiny zabezpečení sítě u virtuálních počítačů s přístupem k Internetu.<br>-Pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být zesílená.</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Použít adaptivní řízení aplikací (maximální skóre 3)</p></strong>Adaptivní řízení aplikací (AAC) je inteligentní, automatizované a ucelené řešení, které umožňuje řídit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure. Pomáhá také posílit zabezpečení vašich počítačů proti malwaru.<br>Security Center využívá Machine Learning k vytvoření seznamu povolených aplikací se známým zabezpečením pro skupinu počítačů.<br>Tento inovativní přístup k povolenému přidávání aplikací přináší výhody zabezpečení bez složitosti správy.<br>AAC je zvláště relevantní pro účelově sestavené servery, které potřebují spouštět konkrétní sadu aplikací.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Použít adaptivní řízení aplikací (maximální skóre 3)</p></strong>Adaptivní řízení aplikací (AAC) je inteligentní, automatizované a ucelené řešení, které umožňuje řídit, které aplikace se můžou spouštět na počítačích Azure a mimo Azure. Pomáhá také posílit zabezpečení vašich počítačů proti malwaru.<br>Security Center využívá Machine Learning k vytvoření seznamu aplikací se známým zabezpečením pro skupinu počítačů.<br>Tento inovativní přístup k seznamu schválených aplikací nabízí výhody zabezpečení bez složitosti správy.<br>AAC je zvláště relevantní pro účelově sestavené servery, které potřebují spouštět konkrétní sadu aplikací.</td>
     <td class="tg-lboi"; width=55%>-Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.<br>-Agent monitorování by měl být nainstalovaný na virtuálních počítačích<br>-Agent monitorování by měl být nainstalovaný na vašich počítačích.<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Windows Azure ARC (Preview).<br>-Agent Log Analytics musí být nainstalovaný na počítačích se systémem Linux (Preview).<br>-Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.</td>
   </tr>
   <tr>
