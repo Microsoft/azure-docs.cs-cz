@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: f4aa2c5aa3f40802db7be64eeb778866819bfe67
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84744217"
 ---
 # <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>Změnit na zobrazení na celé obrazovce pro relaci virtuálních počítačů: Azure bastionu

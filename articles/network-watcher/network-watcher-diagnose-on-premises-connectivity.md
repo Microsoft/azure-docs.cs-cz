@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 632a1eb7b7ac53bd3d7df3f2722d6e53277c7926
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84738749"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místního připojení prostřednictvím bran VPN
@@ -82,33 +82,33 @@ Funkce řešení potíží s Azure Network Watcher umožňuje diagnostikovat a �
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Pokud není zjištěna žádná chyba. |Ano|
-| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
-| PlannedMaintenance |  V instanci brány probíhá údržba.  |Ne|
-| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | Ne |
-| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
-| PlatformInActive | Došlo k problému s platformou. | Ne|
-| ServiceNotRunning | Podkladová služba není spuštěná. | Ne|
-| NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| Ne|
-| ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Ano|
-| GatewayCPUUsageExceeded | Aktuální využití procesoru využití brány je > 95%. | Ano |
+| NoFault | Pokud není zjištěna žádná chyba. |Yes|
+| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |No|
+| PlannedMaintenance |  V instanci brány probíhá údržba.  |No|
+| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti. | No |
+| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | No |
+| PlatformInActive | Došlo k problému s platformou. | No|
+| ServiceNotRunning | Podkladová služba není spuštěná. | No|
+| NoConnectionsFoundForGateway | V bráně neexistují žádná připojení. Toto je pouze upozornění.| No|
+| ConnectionsNotConnected | Žádná připojení nejsou připojená. Toto je pouze upozornění.| Yes|
+| GatewayCPUUsageExceeded | Aktuální využití procesoru využití brány je > 95%. | Yes |
 
 ### <a name="connection"></a>Připojení
 
 | Typ chyby | Důvod | Protokol|
 |---|---|---|
-| NoFault | Pokud není zjištěna žádná chyba. |Ano|
-| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |Ne|
-| PlannedMaintenance | V instanci brány probíhá údržba.  |Ne|
-| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | Ne |
-| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | Ne |
-| ConnectionEntityNotFound | Chybí konfigurace připojení. | Ne |
-| ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |Ne|
-| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Ano |
-| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Ano|
-| Ověřování | Neshoda s předsdíleným klíčem. | Ano|
-| PeerReachability | Partnerská brána není dostupná. | Ano|
-| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Ano|
+| NoFault | Pokud není zjištěna žádná chyba. |Yes|
+| GatewayNotFound | Nejde najít bránu nebo bránu není zřízená. |No|
+| PlannedMaintenance | V instanci brány probíhá údržba.  |No|
+| UserDrivenUpdate | V případě, že probíhá aktualizace uživatele. Může se jednat o operaci změny velikosti.  | No |
+| VipUnResponsive | Nelze se připojit k primární instanci brány. K tomu dojde, když sonda stavu neproběhne úspěšně. | No |
+| ConnectionEntityNotFound | Chybí konfigurace připojení. | No |
+| ConnectionIsMarkedDisconnected | Připojení je označeno jako odpojeno. |No|
+| ConnectionNotConfiguredOnGateway | V podkladové službě není nakonfigurované připojení. | Yes |
+| ConnectionMarkedStandby | Podkladová služba je označena jako pohotovostní.| Yes|
+| Authentication | Neshoda s předsdíleným klíčem. | Yes|
+| PeerReachability | Partnerská brána není dostupná. | Yes|
+| IkePolicyMismatch | Partnerská brána má zásady IKE, které Azure nepodporuje. | Yes|
 | Chyba WfpParse | Při analýze protokolu WFP došlo k chybě. |Ano|
 
 ## <a name="next-steps"></a>Další kroky

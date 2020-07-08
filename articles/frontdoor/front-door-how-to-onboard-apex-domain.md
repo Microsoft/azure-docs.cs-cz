@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 5/21/2019
 ms.author: sharadag
 ms.openlocfilehash: d8f08f7cde54aaf705872c8c45bc18eb4a27df77
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84743588"
 ---
-# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Připojit kořenovou nebo vrcholovou doménu na vaše přední dveře
+# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Onboarding kořenové nebo vrcholové domény ve službě Front Door
 Přední dveře Azure pomocí záznamů CNAME ověří vlastnictví domény pro připojování vlastních domén. Přední dveře také nezveřejňují front-end IP adresu přidruženou k profilu front-endu, takže nemůžete mapovat svou doménu vrcholu na IP adresu, pokud je cílem připojit se do front-endu Azure.
 
 Protokol DNS brání přiřazení záznamů CNAME ve vrcholu zóny. Pokud je vaše doména například, `contoso.com` můžete vytvořit záznamy CNAME pro `somelabel.contoso.com` , ale nemůžete vytvořit záznam CNAME pro `contoso.com` sebe samé. Toto omezení představuje problém pro vlastníky aplikace, kteří mají aplikace s vyrovnáváním zatížení za předními dveřmi Azure. Vzhledem k tomu, že použití profilu front-dveří vyžaduje vytvoření záznamu CNAME, není možné nasměrovat na přední profil od vrcholu zóny.
