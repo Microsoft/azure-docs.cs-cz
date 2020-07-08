@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 596374d4f3f188e08a10bd25b36b178cc79a6e57
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808956"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Monitorování a protokolování brány firewall webových aplikací Azure
@@ -43,7 +43,7 @@ WAF s předními dveřmi poskytuje podrobné hlášení o každé hrozbě, ktero
 || matchVariableName: název parametru http odpovídající žádosti, například názvy hlaviček|
 || matchVariableValue: hodnoty, které spouštějí shodu|
 | Hostitel | Hlavička hostitele porovnané žádosti |
-| Zásady | Název zásad WAF, které požadavek odpovídal. |
+| Zásada | Název zásad WAF, které požadavek odpovídal. |
 | PolicyMode | Režim operací zásad WAF Možné hodnoty jsou "prevence" a "detekce". |
 | RequestUri | Úplný identifikátor URI odpovídající žádosti. |
 | RuleName | Název pravidla WAF, které požadavek odpovídal. |

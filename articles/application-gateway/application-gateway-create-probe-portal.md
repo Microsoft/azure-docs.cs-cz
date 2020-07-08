@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bc599eef349c2d65483de18b0cc8c04c5c2e53ad
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808224"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Vytvoření vlastního testu pro Application Gateway pomocí portálu
 
 > [!div class="op_single_selector"]
-> * [portál Azure](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -34,7 +34,7 @@ Testy se konfigurují v procesu se dvěma kroky prostřednictvím portálu. Prvn
 
 ### <a name="enter-probe-properties"></a><a name="createprobe"></a>Zadat vlastnosti testu paměti
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
 
 2. Na webu Azure Portal v podokně Oblíbené klikněte na Všechny prostředky. V okně všechny prostředky klikněte na Aplikační brána. Pokud předplatné, které jste vybrali, již obsahovalo nějaké prostředky, můžete zadat partners.contoso.net do pole Filtrovat podle názvu... pro snadný přístup ke službě Application Gateway.
 
@@ -83,7 +83,7 @@ Testy se konfigurují v procesu se dvěma kroky prostřednictvím portálu. Prvn
 
 ### <a name="create-the-probe"></a><a name="createprobe"></a>Vytvoření testu paměti
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Pokud ještě nemáte účet, můžete si zaregistrovat [bezplatnou měsíční zkušební verzi](https://azure.microsoft.com/free) .
 
 2. Na webu Azure Portal v podokně Oblíbené vyberte **Všechny prostředky**. Na stránce **všechny prostředky** vyberte Aplikační brána. Pokud předplatné, které jste vybrali, již obsahovalo nějaké prostředky, můžete zadat partners.contoso.net do pole Filtrovat podle názvu... pro snadný přístup ke službě Application Gateway.
 

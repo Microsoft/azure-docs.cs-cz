@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.openlocfilehash: 92e39f128e90ba83a919388e217f0edc86f81770
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75769658"
 ---
 ## <a name="deploy-zip-file-with-rest-apis"></a><a name="rest"></a>Nasazení souboru ZIP s rozhraními REST API 
@@ -19,7 +19,7 @@ Pro základní ověřování HTTP budete potřebovat přihlašovací údaje pro 
 
 ### <a name="with-curl"></a>S kudrlinkou
 
-V následujícím příkladu je k nasazení souboru. zip použit nástroj kudrlinkou. Nahraďte `<deployment_user>`zástupné `<zip_file_path>`symboly, `<app_name>`a. Po zobrazení výzvy otočením zadejte heslo.
+V následujícím příkladu je k nasazení souboru. zip použit nástroj kudrlinkou. Nahraďte zástupné symboly `<deployment_user>` , `<zip_file_path>` a `<app_name>` . Po zobrazení výzvy otočením zadejte heslo.
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
@@ -33,7 +33,7 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>S využitím PowerShellu
 
-Následující příklad používá [Publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) nahrání souboru. zip. Nahraďte `<group-name>`zástupné `<app-name>`symboly, `<zip-file-path>`a.
+Následující příklad používá [Publish-AzWebapp](/powershell/module/az.websites/publish-azwebapp) nahrání souboru. zip. Nahraďte zástupné symboly `<group-name>` , `<app-name>` a `<zip-file-path>` .
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
@@ -41,7 +41,7 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 Tento požadavek spustí nasazení push z nahraného souboru. zip. 
 
-Chcete-li zkontrolovat aktuální nasazení a předchozí, spusťte následující příkazy. Znovu Nahraďte zástupné symboly `<deployment-user>`, `<deployment-password>`a `<app-name>` .
+Chcete-li zkontrolovat aktuální nasazení a předchozí, spusťte následující příkazy. Znovu nahraďte `<deployment-user>` `<deployment-password>` `<app-name>` zástupné symboly, a.
 
 ```bash
 $username = "<deployment-user>"

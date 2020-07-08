@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84808832"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
@@ -50,9 +50,9 @@ V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následuj
 1. Vybrat **soubor**  >  **Nový**  >  **projekt**
 2. Vybrat **Platform**  >  **okna** platformy
 3. Vyberte **Aplikace konzoly (.NET Framework)**.
-4. Vybrat **Další**
+4. Vyberte **Další**.
 5. Do pole **název projektu** zadejte název vaší aplikace.
-6. Vyberte **vytvořit** .
+6. Vyberte **Vytvořit**.
 
 Všechny příklady kódu v tomto kurzu můžete přidat do metody **Main ()** souboru **program.cs** vaší konzolové aplikace.
 
@@ -495,7 +495,7 @@ Teď, když jste se naučili základy používání služby Queue Storage, podí
 
 - Projděte si referenční dokumentaci ke Službě front, kde najdete úplné podrobnosti o dostupných rozhraních API:
   - [Klientská knihovna pro úložiště – referenční informace pro .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [Odkaz na REST API](https://msdn.microsoft.com/library/azure/dd179355)
+  - [REST API – referenční informace](https://msdn.microsoft.com/library/azure/dd179355)
 - Naučte se, jak zjednodušit psaní kódu pro práci s Azure Storage pomocí [sady Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 - Projděte si další průvodce funkcemi, kde najdete další informace o dalších možnostech pro ukládání dat v Azure.
   - [Začínáme s Azure Table Storage pomocí rozhraní .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) pro ukládání strukturovaných dat

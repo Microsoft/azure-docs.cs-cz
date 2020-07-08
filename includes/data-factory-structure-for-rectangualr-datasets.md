@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175677"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Určení definice struktury pro pravoúhlé datové sady
@@ -16,12 +16,12 @@ Oddíl Structure v datových sadách JSON je **volitelný** oddíl pro obdélní
 
 Každý sloupec obsahuje následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| jméno |Název sloupce |Ano |
-| type |Datový typ sloupce Další podrobnosti o tom, kdy byste měli zadat informace o typu, najdete v části převody typů níže. |Ne |
-| jazyková verze |Jazyková verze založená na rozhraní .NET, která se má použít při zadání typu a je typu DateTime nebo DateTimeOffset typu .NET. Výchozí hodnota je "en-US". |Ne |
-| formát |Řetězec formátu, který má být použit, pokud je zadán typ a je typu DateTime nebo DateTimeOffset typu .NET. |Ne |
+| name |Název sloupce |Yes |
+| typ |Datový typ sloupce Další podrobnosti o tom, kdy byste měli zadat informace o typu, najdete v části převody typů níže. |No |
+| jazyková verze |Jazyková verze založená na rozhraní .NET, která se má použít při zadání typu a je typu DateTime nebo DateTimeOffset typu .NET. Výchozí hodnota je "en-US". |No |
+| formát |Řetězec formátu, který má být použit, pokud je zadán typ a je typu DateTime nebo DateTimeOffset typu .NET. |No |
 
 Následující ukázka ukazuje JSON oddílu struktury pro tabulku, která má tři sloupce UserID, Name a LastLoginDate.
 
@@ -49,7 +49,7 @@ Data Factory podporuje následující hodnoty typů založené na specifikaci CL
 * Int16
 * Int32 
 * Int64
-* Single
+* Jeden
 * Double
 * Desetinné číslo
 * Byte []

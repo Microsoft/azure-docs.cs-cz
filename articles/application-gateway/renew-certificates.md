@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 8/15/2018
 ms.author: victorh
 ms.openlocfilehash: de57a58f7c891009d2e0cc43b351c2cad42a2766
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84807873"
 ---
 # <a name="renew-application-gateway-certificates"></a>Prodloužit platnost Application Gatewaych certifikátů

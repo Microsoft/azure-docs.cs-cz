@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 6d0392cd8e94ba8a9026f557b90e740fbed7f50c
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84809095"
 ---
 # <a name="check-the-encryption-status-of-a-blob"></a>Zkontroluje stav šifrování objektu BLOB.
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak zjistit, jestli je zadaný objekt BLOB zašifr
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete zjistit, jestli je objekt BLOB zašifrovaný bez kódu.
 
-### <a name="azure-portal"></a>[portál Azure](#tab/portal)
+### <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Chcete-li použít Azure Portal ke kontrole, zda byl objekt BLOB zašifrován, postupujte podle následujících kroků:
 
