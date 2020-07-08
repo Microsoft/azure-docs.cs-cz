@@ -11,10 +11,10 @@ ms.date: 10/25/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: f88993db2ca7fa697aadb584fdfcbd9fe200b11c
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85386058"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Model fakturace pro Azure Active Directory B2C
@@ -58,7 +58,7 @@ Tady je postup, jak převést MAU na fakturaci na stávající prostředek Azure
 
 Měření založené na MAU je povolené, jakmile budete vy, předplatné nebo vlastníka prostředků, potvrďte změnu. Vaše měsíční vyúčtování bude odrážet jednotky ověřování účtované do změny a nové jednotky MAU, které začínají změnou.
 
-Uživatelé se během přechodného měsíce nepočítají dvakrát. Jedinečným aktivním uživatelům, kteří se před změnou ověřují, se za kalendářní měsíc účtuje sazba za ověřování. Tyto stejné uživatele nejsou zahrnuté do výpočtu MAU pro zbývající část fakturačního cyklu předplatného. Například:
+Uživatelé se během přechodného měsíce nepočítají dvakrát. Jedinečným aktivním uživatelům, kteří se před změnou ověřují, se za kalendářní měsíc účtuje sazba za ověřování. Tyto stejné uživatele nejsou zahrnuté do výpočtu MAU pro zbývající část fakturačního cyklu předplatného. Příklad:
 
 * Tenant společnosti Contoso B2C má 1 000 uživatelů. 250 uživatelů v daném měsíci jsou aktivní. Správce předplatného se od desátého dne v měsíci změní z ověřování na měsíčně aktivních uživatelů (MAU).
 * Fakturace za 1. den se účtuje podle modelu ověřování.
@@ -91,10 +91,10 @@ Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci vyu�
 
 ### <a name="create-the-link"></a>Vytvořit odkaz
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a pak vyberte adresář, který obsahuje předplatné Azure, které chcete použít (*ne* adresář obsahující Azure AD B2C tenanta).
 1. Vyberte **vytvořit prostředek**, zadejte `Active Directory B2C` do pole **Hledat na Marketplace** a pak vyberte **Azure Active Directory B2C**.
-1. Vyberte **vytvořit** .
+1. Vyberte **Vytvořit**.
 1. Vyberte **propojit existujícího tenanta Azure AD B2C s předplatným Azure**.
 1. Z rozevíracího seznamu vyberte **klienta Azure AD B2C** . Zobrazují se jenom klienti, pro které jste globální správce a kteří ještě nejsou propojení s předplatným. Do pole **Azure AD B2C název prostředku** se naplní název domény Azure AD B2C tenanta, kterého jste vybrali.
 1. Vyberte aktivní **předplatné** Azure, které jste správcem.

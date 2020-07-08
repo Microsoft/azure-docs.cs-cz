@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85387010"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Udělení přístupu k místním aplikacím uživatelům B2B v Azure AD
@@ -61,7 +61,7 @@ Následující obrázek poskytuje podrobný přehled o tom, jak Azure Proxy apli
 
 ### <a name="lifecycle-management-policies"></a>Zásady správy životního cyklu
 
-Místní uživatelské objekty B2B můžete spravovat prostřednictvím zásad správy životního cyklu. Například:
+Místní uživatelské objekty B2B můžete spravovat prostřednictvím zásad správy životního cyklu. Příklad:
 
 - Pro uživatele typu Host můžete nastavit zásady MFA (Multi-Factor Authentication), aby se MFA používalo při ověřování proxy aplikací. Další informace najdete v tématu [podmíněný přístup pro uživatele spolupráce B2B](conditional-access.md).
 - Jakékoli sponsorships, kontroly přístupu, ověření účtu atd., které se provádějí na cloudu uživatele B2B, se vztahují na místní uživatele. Pokud se například uživatel cloudu odstraní pomocí zásad správy životního cyklu, místní uživatel je také odstraněn pomocí služby MIM Sync nebo pomocí Azure AD Connect synchronizace. Další informace najdete v tématu [Správa přístupu hostů pomocí kontrol přístupu Azure AD](../governance/manage-guest-access-with-access-reviews.md).

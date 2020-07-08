@@ -12,10 +12,10 @@ ms.date: 11/04/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: fad29c32731ee2470354a51acf32e350eb0c4cfc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384868"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Shromažďovat protokoly Azure Active Directory B2C pomocí Application Insights
@@ -31,7 +31,7 @@ Podrobné protokoly aktivit popsané tady by měly být povolené **jenom** běh
 
 Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insights.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vaše předplatné Azure (ne váš Azure AD B2C adresář).
 1. V navigační nabídce vlevo vyberte **vytvořit prostředek** .
 1. Vyhledejte a vyberte **Application Insights**a pak vyberte **vytvořit**.
@@ -61,7 +61,7 @@ Pokud ho ještě nemáte, vytvořte v předplatném instanci Application Insight
     * `ClientEnabled="true"`pošle skript ApplicationInsights na straně klienta pro sledování zobrazení stránky a chyby na straně klienta. Můžete je zobrazit v tabulce **browserTimings** na portálu Application Insights. Nastavením `ClientEnabled= "true"` přidáte Application Insights do skriptu stránky a získáte časování načtení stránky a volání AJAX, počty, podrobnosti výjimek prohlížeče a selhání AJAX a počty uživatelů a relací. Toto pole je **volitelné**a je nastavené na `false` výchozí hodnotu.
     * `ServerEnabled="true"`odešle existující UserJourneyRecorder JSON jako vlastní událost pro Application Insights.
 
-    Například:
+    Příklad:
 
     ```xml
     <TrustFrameworkPolicy

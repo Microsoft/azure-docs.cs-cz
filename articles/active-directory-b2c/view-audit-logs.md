@@ -13,10 +13,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85383933"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
@@ -39,7 +39,7 @@ Kategorie **B2C** v protokolech auditu obsahuje následující typy aktivit:
 |Aplikace | Operace vytvoření, čtení, aktualizace a odstranění (CRUD) v aplikacích B2C. |
 |Klíč |Operace CRUD na klíčích uložených v kontejneru klíčů B2C |
 |Prostředek |Operace CRUD u prostředků B2C Například zásady a zprostředkovatelé identity.
-|Ověřování |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
+|Authentication |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
 
 Pro aktivity objektů CRUD uživatele se podívejte do kategorie **základní adresář** .
 

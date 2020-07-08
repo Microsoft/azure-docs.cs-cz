@@ -12,10 +12,10 @@ ms.date: 02/11/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 165529697949bba0233567b89c5a8a077d48a28b
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384018"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurace požadavků na složitost pro hesla v Azure Active Directory B2C
@@ -37,7 +37,7 @@ Pokud používáte vlastní zásady, můžete ([nakonfigurovat složitost hesla 
 
 ## <a name="configure-password-complexity"></a>Konfigurace složitosti hesla
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 3. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů (zásady)**.

@@ -12,10 +12,10 @@ ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67ea7324419d86fa5b5c23a2f0aa5f8c057495d1
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385973"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Sledovat chování uživatele v Azure Active Directory B2C pomocí Application Insights
@@ -43,7 +43,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get
 
 Pokud používáte Application Insights s Azure AD B2C, stačí vytvořit prostředek a získat klíč instrumentace. Informace najdete v tématu [vytvoření prostředku Application Insights](../azure-monitor/app/create-new-resource.md) .
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a vyberete adresář, který obsahuje vaše předplatné. Tento tenant není vaším klientem Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** a pak vyhledejte a vyberte **Application Insights**.
 4. Klikněte na **Vytvořit**.

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174958"
 ---
 1. V Správce clusteru s podporou převzetí služeb při selhání rozbalte **role**a pak Zvýrazněte skupinu dostupnosti.  
@@ -17,7 +17,7 @@ ms.locfileid: "67174958"
 
 3. Klikněte na kartu **závislosti** . Pokud je v seznamu uvedeno více prostředků, ověřte, zda IP adresa obsahuje nebo, nikoli a, závislosti.  
 
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
 5. Klikněte pravým tlačítkem na název naslouchacího procesu a pak klikněte na **převést do režimu online**.
 
@@ -31,7 +31,7 @@ ms.locfileid: "67174958"
 
 8. Spusťte SQL Server Management Studio a pak se připojte k primární replice.
 
-9.  > **Availability Groups** > **V\<AvailabilityGroupName\>** naslouchací procesy**skupiny**dostupnosti **AlwaysOn vysoké dostupnosti AlwaysOn.** >   
+9. Přejít na **AlwaysOn High Availability**  >  **Availability Groups**  >  **\<AvailabilityGroupName\>**  >  **naslouchací procesy**skupin dostupnosti AlwaysOn vysoké dostupnosti  
     Měl by se zobrazit název naslouchacího procesu, který jste vytvořili v Správce clusteru s podporou převzetí služeb při selhání.
 
 10. Klikněte pravým tlačítkem myši na název naslouchacího procesu a pak klikněte na **vlastnosti**.

@@ -23,4 +23,4 @@ ms.locfileid: "84424713"
 | Maximální počet shlukových vstupně-výstupních operací na disk | 3 500 | 3 500 | 3 500 | 3 500 | 3 500 | 3 500 | 3 500 | 3 500 |
 | Maximální propustnost shluku na disk | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s | 170 MB/s |
 | Maximální doba trvání shluku | 30 min  | 30 min  | 30 min  | 30 min  | 30 min  | 30 min  | 30 min  | 30 min  |
-| Nárok na rezervaci | Ne  | Ne  | Ne  | Ne  | Ne  | Ne  | Ne  | Ne  | Ano, až jeden rok | Ano, až jeden rok | Ano, až jeden rok | Ano, až jeden rok | Ano, až jeden rok | Ano, až jeden rok |
+| Nárok na rezervaci | No  | No  | No  | No  | No  | No  | No  | No  | Ano, až jeden rok | Ano, až jeden rok | Ano, až jeden rok | Ano, až jeden rok | Ano, až jeden rok | Ano, až jeden rok |

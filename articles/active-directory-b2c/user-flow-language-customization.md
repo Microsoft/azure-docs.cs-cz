@@ -11,10 +11,10 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dd6e22052d2fab6d39382b21eec7a7bd379adb82
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85384069"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
@@ -254,5 +254,5 @@ Azure AD B2C zahrnuje podporu pro následující jazyky. Jazyky toku uživatelů
 | Turečtina               | recenzent            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Ukrajinština             | Velká Británie            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Vietnamština            | InterDev            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Čínština (zjednodušená)  | zh – Hans       | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Čínština (tradiční) | zh – Hant       | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Čínština – zjednodušená  | zh – Hans       | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Čínština – tradiční | zh – Hant       | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |

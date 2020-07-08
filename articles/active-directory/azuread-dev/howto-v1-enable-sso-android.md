@@ -16,10 +16,10 @@ ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 67378cd363e22351198389f4480e3f6792e885bc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85383678"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi v Androidu pomocí ADAL

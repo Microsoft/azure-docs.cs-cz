@@ -11,10 +11,10 @@ ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85385412"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpečení rozhraní API služby Azure API Management pomocí Azure AD B2C
@@ -39,7 +39,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 
 #### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte kartu **vlastněné aplikace** .
@@ -47,7 +47,7 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové j
 
 #### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **aplikace (starší verze)**.
@@ -73,7 +73,7 @@ Dále Získejte dobře známou adresu URL konfigurace pro některý z vašich Az
 
     Tuto hodnotu použijete v další části při konfiguraci rozhraní API v Azure API Management.
 
-Teď byste měli mít zaznamenané dvě adresy URL pro použití v další části: OpenID Connected a adresa URL koncového bodu konfigurace a identifikátor URI vystavitele. Například:
+Teď byste měli mít zaznamenané dvě adresy URL pro použití v další části: OpenID Connected a adresa URL koncového bodu konfigurace a identifikátor URI vystavitele. Příklad:
 
 ```
 https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_signupsignin1/v2.0/.well-known/openid-configuration
@@ -154,7 +154,7 @@ Klientská aplikace (v tomto případě), která volá publikované rozhraní AP
 
 Po nahrání přístupového tokenu a klíče předplatného APIM jste teď připraveni otestovat, jestli jste správně nakonfigurovali zabezpečený přístup k rozhraní API.
 
-1. Vytvoří novou `GET` žádost v [post](https://www.getpostman.com/). V poli Adresa URL požadavku Zadejte koncový bod seznamu mluvčího rozhraní API, které jste publikovali jako jeden z požadovaných součástí. Například:
+1. Vytvoří novou `GET` žádost v [post](https://www.getpostman.com/). V poli Adresa URL požadavku Zadejte koncový bod seznamu mluvčího rozhraní API, které jste publikovali jako jeden z požadovaných součástí. Příklad:
 
     `https://contosoapim.azure-api.net/conference/speakers`
 
