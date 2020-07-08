@@ -3,7 +3,7 @@ title: Konfigurace skupiny převzetí služeb při selhání
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Naučte se konfigurovat skupinu automatického převzetí služeb při selhání pro Azure SQL Database (jednu i sdruženou) i spravovanou instanci SQL, a to pomocí Azure Portal, rozhraní příkazového řádku Azure a PowerShellu.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 32543dffa492770d7217fb07652e41baf603ebcc
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 6c85fce45bcfa63d921297b068066b8f6e814223
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85250906"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987126"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -382,7 +382,7 @@ Vytvořte primární bránu virtuální sítě pomocí Azure Portal.
     | --- | --- |
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance. |
     | **Název** | Název brány virtuální sítě. |
-    | **Oblast** | Oblast, ve které je vaše primární spravovaná instance. |
+    | **Věřitel** | Oblast, ve které je vaše primární spravovaná instance. |
     | **Typ brány** | Vyberte **VPN**. |
     | **Typ sítě VPN** | Vybrat **na základě trasy** |
     | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |
@@ -444,7 +444,7 @@ V následující tabulce jsou uvedeny hodnoty nutné pro bránu sekundární spr
    | --- | --- |
    | **Předplatné** |  Předplatné, ve kterém je vaše sekundární spravovaná instance. |
    | **Název** | Název brány virtuální sítě, například `secondary-mi-gateway` . |
-   | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
+   | **Věřitel** | Oblast, ve které je vaše sekundární spravovaná instance. |
    | **Typ brány** | Vyberte **VPN**. |
    | **Typ sítě VPN** | Vybrat **na základě trasy** |
    | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |

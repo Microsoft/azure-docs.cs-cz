@@ -3,20 +3,20 @@ title: Zvýhodněné hybridní využití Azure
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Pro Azure SQL Database a slevy spravované instance SQL použijte existující licence SQL Server.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
+ms.subservice: features
 ms.custom: sqldbrb=4
-ms.subservice: service
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 9d8a973e04618e4223f90ffb9a3004d0fe40bbf7
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: b4af9fce3c5ca779866055d2835ebfebe9fbb9cf
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743486"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987004"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Zvýhodněné hybridní využití Azure-Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]

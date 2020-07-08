@@ -12,12 +12,12 @@ ms.date: 06/08/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1604e132cb77fbb2a2a1033a1f23f70dd3e6b8b9
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 3cee2b9a0ea32a3b331849263c8a97f55930542d
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85355960"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024227"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurace jednotného přihlašování k aplikacím mimo galerii založeného na SAML
 
@@ -42,7 +42,7 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
 3. V části **Spravovat** vyberte **jednotné přihlašování**. 
 
-   - Všimněte si, že existují některé scénáře, kdy možnost **jednotného přihlašování** nebude k dispozici. Pokud se například aplikace zaregistrovala pomocí **Registrace aplikací** pak je funkce jednotného přihlašování nakonfigurovaná na portálu pro **registraci aplikací** a v rámci **podnikových aplikací**se nezobrazí v navigaci. Další scénáře, kdy v navigaci chybí **jednotné přihlašování** , patří mezi ně, pokud je aplikace hostovaná v jiném tenantovi nebo pokud váš účet nemá požadovaná oprávnění (globální správce, správce cloudové aplikace, Správce aplikací nebo vlastník instančního objektu). Oprávnění mohou také způsobit situaci, kdy můžete otevřít **jednotné přihlašování** , ale nebudete je moci uložit. Další informace o rolích pro správu Azure AD najdete v tématu ( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
+   - Všimněte si, že existují některé scénáře, kdy možnost **jednotného přihlašování** nebude k dispozici. Pokud byla aplikace například zaregistrována pomocí **Registrace aplikací** pak je funkce jednotného přihlašování nastavená tak, aby ve výchozím nastavení používala protokol OAuth OIDC. V takovém případě se možnost **jednotného přihlašování** nezobrazí v části **podnikové aplikace**v navigaci. Když použijete **Registrace aplikací** k přidání vlastní aplikace, nakonfigurujete možnosti v souboru manifestu. Další informace o souboru manifestu naleznete v tématu ( https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) . Další informace o standardech jednotného přihlašování najdete v tématu ( https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform) . Další scénáře, kdy v navigaci chybí **jednotné přihlašování** , patří mezi ně, pokud je aplikace hostovaná v jiném tenantovi nebo pokud váš účet nemá požadovaná oprávnění (globální správce, správce cloudové aplikace, Správce aplikací nebo vlastník instančního objektu). Oprávnění mohou také způsobit situaci, kdy můžete otevřít **jednotné přihlašování** , ale nebudete je moci uložit. Další informace o rolích pro správu Azure AD najdete v tématu ( https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
 
 4. Vyberte **SAML**. Zobrazí se stránka **nastavit jednotné přihlašování pomocí SAML-Preview** .
 
@@ -52,7 +52,7 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
 1. Zadejte následující nastavení. Měli byste získat hodnoty od dodavatele aplikace. Můžete ručně zadat hodnoty nebo nahrát soubor metadat a extrahovat tak hodnotu polí.
 
-    | Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Popis |
+    | Základní nastavení konfigurace SAML | Iniciováno zprostředkovatelem přihlašování | Iniciováno pomocí IdP | Description |
     |:--|:--|:--|:--|
     | **Identifikátor (ID entity)** | Vyžaduje se pro některé aplikace | Vyžaduje se pro některé aplikace | Aplikace jednoznačně identifikuje. Azure AD odešle identifikátor do aplikace jako parametr cílové skupiny tokenu SAML. Očekává se, že aplikace ověří tuto aplikaci. Tato hodnota se také zobrazuje jako ID entity ve všech metadatech SAML poskytovaných aplikací. Zadejte adresu URL, která používá následující vzor: ' https:// <subdomain> . contoso.com ' *tuto hodnotu můžete najít jako element **vystavitele** v **AuthnRequest** (žádost SAML) odeslanou aplikací.* |
     | **Adresa URL odpovědi** | Vyžadováno | Vyžadováno | Určuje, kde aplikace očekává přijetí tokenu SAML. Adresa URL odpovědi se také označuje jako adresa URL ACS (Assertion Consumer Service). Pomocí polí další adresa URL odpovědi můžete zadat několik adres URL odpovědi. Můžete například potřebovat další adresy URL pro odpovědi pro více subdomén. Nebo pro účely testování můžete najednou zadat několik adres URL odpovědí (místní hostitel a veřejné adresy URL). |

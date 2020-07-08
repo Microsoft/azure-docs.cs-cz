@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7d71995e0e7a4b8cb7f6d80756f64cb6824c1ce9
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 0848d092c342b29c1839a4dd4cebd0bad62ea3ca
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374385"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023002"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Práce s velkými škálovacími sadami virtuálních počítačů
 Nyní můžete vytvořit [škálovací sady virtuálních počítačů](/azure/virtual-machine-scale-sets/) Azure s kapacitou až 1 000 virtuálních počítačů. V tomto dokumentu je _velká škálovací sada virtuálních počítačů_ definována jako škálovací sada umožňující škálování na více než 100 virtuálních počítačů. Tato funkce se nastavuje pomocí vlastnosti škálovací sady (_singlePlacementGroup=False_). 
@@ -33,6 +33,7 @@ Následující požadavky vám pomůžou rozhodnout, jestli vaše aplikace můž
 - Škálovací sady vytvořené z imagí Azure Marketplace je možné škálovat až na 1 000 virtuálních počítačů.
 - Škálovací sady vytvořené z vlastních imagí (image virtuálních počítačů, které si vytvoříte a nahrajete sami) je aktuálně možné škálovat až na 600 virtuálních počítačů.
 - Velké škálovací sady vyžadují Spravované disky Azure. Škálovací sady vytvořené bez Spravovaných disků vyžadují více účtů úložiště (jeden na každých 20 virtuálních počítačů). Velké škálovací sady jsou navržené pro práci výhradně se Spravovanými disky z důvodu snížení režijních nákladů na správu úložiště. Také se díky tomu vyhnete riziku, že narazíte na omezení předplatného pro účty úložiště. 
+- Velká škála (SPG = false) nepodporuje sítě InfiniBand.
 - Vyrovnávání zatížení úrovně 4 pomocí škálovacích sad, které se skládají z více skupin umístění, vyžaduje [skladovou položku služby Azure Load Balancer úrovně Standard](../load-balancer/load-balancer-standard-overview.md). Skladová položka služby Load Balancer úrovně Standard poskytuje další výhody, jako je například možnost vyrovnávat zatížení mezi několika škálovacími sadami. Standardní skladová položka také vyžaduje, aby škálovací sada byla přidružena ke skupině zabezpečení sítě, jinak fondy NAT nebudou správně fungovat. Pokud potřebujete použít skladovou položku služby Azure Load Balancer úrovně Basic, ujistěte se, že je škálovací sada nakonfigurována k používání jediné skupiny umístění, což je výchozí nastavení.
 - Vyrovnávání zatížení úrovně 7 pomocí služby Azure Application Gateway je podporováno pro všechny škálovací sady.
 - Škálovací sada je definována s jednou podsítí – ujistěte se, že má vaše podsíť dostatečně velký adresní prostor pro všechny požadované virtuální počítače. Škálovací sada ve výchozím nastavení provádí nadměrné zřizování (během nasazování nebo při horizontálním navyšováním kapacity vytváří virtuální počítače navíc, které se vám neúčtují) pro zvýšení spolehlivosti nasazení a výkonu. Počítejte s adresním prostorem o 20 % větším, než je počet virtuálních počítačů, na který plánujete škálovat.
@@ -42,7 +43,7 @@ Následující požadavky vám pomůžou rozhodnout, jestli vaše aplikace můž
 ## <a name="creating-a-large-scale-set"></a>Vytvoření velké škálovací sady
 Při vytváření škálovací sady na webu Azure Portal stačí zadat *Počet instancí* až do maximální hodnoty 1 000. Pokud bude počet instancí vyšší než 100, možnost *Povolit škálování nad 100 instancí* se nastaví na hodnotu *Ano*, což umožní škálování na více skupin umístění. 
 
-![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
+![Tento obrázek ukazuje okno instance webu Azure Portal. K dispozici jsou možnosti výběru počtu instancí a velikosti instance.](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
 K vytvoření velké škálovací sady virtuálních počítačů můžete použít příkaz [Azure CLI](https://github.com/Azure/azure-cli) _az vmss create_. Tento příkaz v závislosti na argumentu _instance-count_ nastaví inteligentní výchozí hodnoty, jako například velikost podsítě:
 

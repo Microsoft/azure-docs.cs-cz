@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6624c8072c60793771d4f4b9943e15f1b276cd34
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85604688"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023121"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>Ladění chyb při vytváření vlastní aplikace příkazů
 
@@ -32,20 +32,20 @@ Ujistěte se, že vybraný prostředek pro vytváření obsahu LUIS má méně n
 ### <a name="cant-delete-luis-application"></a>Nejde odstranit aplikaci LUIS.
 Při odstraňování vlastní aplikace příkazů se můžou vlastní příkazy také pokusit odstranit aplikaci LUIS přidruženou k aplikaci Custom Commands.
 
-Pokud se odstranění aplikace LUIS nepovedlo, přejděte prosím na svůj účet [Luis](https://www.luis.ai/) a odstraňte je ručně.
+Pokud se nepovedlo odstranit aplikaci LUIS, otevřete ji ručně tak, že přejdete na svůj účet [Luis](https://www.luis.ai/) .
 
 ### <a name="toomanyrequests"></a>TooManyRequests
-Když se pokusíte odstranit velké množství aplikací najednou, pravděpodobně se zobrazí chyby "TooManyRequests". To znamená, že vaše požadavky na odstranění získají omezení Azure. 
+Když se pokusíte odstranit velký počet aplikací najednou, pravděpodobně se zobrazí chyby "TooManyRequests". Tyto chyby znamenají, že Azure Získá omezení požadavků na odstranění. 
 
-Aktualizujte prosím svoji stránku a zkuste odstranit méně aplikací.
+Aktualizujte svou stránku a pokuste se odstranit méně aplikací.
 
 ## <a name="errors-when-modifying-an-application"></a>Chyby při úpravě aplikace
 
 ### <a name="cant-delete-a-parameter-or-a-web-endpoint"></a>Nejde odstranit parametr nebo webový koncový bod.
-Při použití nemůžete odstranit parametr. Odeberte prosím všechny odkazy tohoto parametru v jakékoli odpovědi na řeč, ukázkové věty, podmínky, akce a zkuste to znovu.
+Při použití nemůžete odstranit parametr. Odeberte všechny odkazy na parametr v jakékoli odpovědi na řeč, ukázkové věty, podmínky a akce a zkuste to znovu.
 
 ### <a name="cant-delete-a-web-endpoint"></a>Nejde odstranit webový koncový bod.
-Při použití nemůžete odstranit webový koncový bod. Odeberte prosím všechny akce **webového koncového bodu volání** , které používají tento koncový bod webu, před odebráním webového koncového bodu.
+Při použití nemůžete odstranit webový koncový bod. Před odebráním webového koncového bodu odeberte akci pro **webový koncový bod volání** , která používá tento koncový bod webu.
 
 ## <a name="errors-when-training-an-application"></a>Chyby při školení aplikace
 ### <a name="built-in-intents"></a>Předdefinované záměry
@@ -53,18 +53,18 @@ LUIS má integrované záměry ano/ne. V případě ukázkových vět, které ma
 
 | Klíčové slovo | Odchylky | 
 | ------- | --------- | 
-| Ano | Ujistěte se, OK |
-| Ne | Ne, ne | 
+| Yes | Ujistěte se, OK |
+| No | Ne, ne | 
 
 ### <a name="common-sample-sentences"></a>Společné ukázkové věty
 Vlastní příkazy neumožňují společné ukázkové věty sdílené mezi různými příkazy. Školení aplikace může selhat, pokud jsou některé ukázkové věty v jednom příkazu již definovány v jiném příkazu. 
 
-Ujistěte se prosím, že nemáte společné ukázkové věty sdílené mezi různými příkazy. 
+Ujistěte se, že nemáte společné ukázkové věty sdílené mezi různými příkazy. 
 
-Osvědčené postupy při vyrovnávání vzorových vět v různých příkazech najdete v [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
+Osvědčené postupy při vyrovnávání vzorových vět v různých příkazech najdete v tématu [osvědčené postupy pro Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
 
 ### <a name="empty-sample-sentences"></a>Prázdné ukázkové věty
-Pro každý příkaz musíte mít alespoň 1 ukázkovou větu.
+Pro každý příkaz musíte mít aspoň jednu ukázkovou větu.
 
 ### <a name="undefined-parameter-in-sample-sentences"></a>Nedefinovaný parametr v ukázkových větách
 V vzorových větách se používá minimálně jeden parametr, ale není definovaný.
@@ -82,13 +82,15 @@ Například můžete definovat parametr {vehikul} pro níže uvedené příklady
 | Kniha a letu | Kniha a {vehikulum} |
 | Kniha a taxislužby | Kniha a {vehikulum} |
 
-Osvědčené postupy pro LUIS školení najdete v [osvědčených postupech Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
+Osvědčeným postupem pro LUIS školení najdete v [Luis osvědčené postupy](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
 
 ## <a name="cant-update-luis-key"></a>Nejde aktualizovat klíč LUIS.
 ### <a name="reassign-to-e0-authoring-resource"></a>Znovu přiřadit k E0 prostředku pro vytváření obsahu
 LUIS nepodporuje změnu přiřazení aplikace LUIS k E0 vytváření prostředků.
 
-Pokud potřebujete změnit prostředek pro vytváření obsahu z F0 na E0 nebo změnit na jiný prostředek E0, vytvořte prosím aplikaci znovu.
+Pokud potřebujete změnit prostředek pro vytváření obsahu z F0 na E0 nebo změnit na jiný prostředek E0, znovu vytvořte aplikaci. 
+
+Pokud chcete rychle exportovat existující aplikaci a importovat ji do nové aplikace, přečtěte si téma [průběžné nasazování pomocí Azure DevOps](./how-to-custom-commands-deploy-cicd.md).
 
 ### <a name="save-button-is-disabled"></a>Tlačítko Uložit je zakázané.
 Pokud do vaší aplikace nikdy nepřiřadíte prostředek předpovědi LUIS, tlačítko Uložit by se při pokusu o změnu prostředku pro vytváření obsahu bez přidání předpovědi neaktivovalo.

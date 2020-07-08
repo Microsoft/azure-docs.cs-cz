@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 622950c394d59d8ba504901f5bb0eea6bc04707f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160711"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024438"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -32,6 +32,10 @@ Například při přístupu k citlivé aplikaci může správce kromě dalších
 
 Pro zákazníky s přístupem k [Identity Protection](../identity-protection/overview-identity-protection.md)je možné vyhodnotit riziko přihlášení v rámci zásad podmíněného přístupu. Riziko přihlášení představuje pravděpodobnost, že daný požadavek na ověření není autorizovaný vlastníkem identity. Další informace o riziku při přihlašování najdete v článcích, [co je to riziko](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) a [Postupy: konfigurace a povolení zásad rizik](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
+## <a name="user-risk"></a>Riziko uživatele 
+
+Pro zákazníky, kteří mají přístup k [Identity Protection](../identity-protection/overview-identity-protection.md), se dá vyhodnotit riziko uživatele v rámci zásad podmíněného přístupu. Riziko uživatele představuje pravděpodobnost, že dojde k ohrožení zabezpečení dané identity nebo účtu. Další informace o rizikech uživatelů najdete v článcích, [co je to riziko](../identity-protection/concept-identity-protection-risks.md#user-risk) a [Postupy: konfigurace a povolení zásad rizik](../identity-protection/howto-identity-protection-configure-risk-policies.md).
+
 ## <a name="device-platforms"></a>Platformy zařízení
 
 Platforma zařízení je charakterizována operačním systémem, který běží na zařízení. Azure AD identifikuje platformu pomocí informací poskytovaných zařízením, jako jsou řetězce uživatelských agentů. Vzhledem k tomu, že je možné upravit řetězce uživatelského agenta, tyto informace jsou neověřené. Platforma zařízení by měla být používána společně s Microsoft Intune zásadami dodržování předpisů zařízením nebo jako součást příkazu Block. Ve výchozím nastavení platí pro všechny platformy zařízení.
@@ -43,9 +47,6 @@ Podmíněný přístup Azure AD podporuje tyto platformy zařízení:
 - telefon se systémem Windows
 - Windows
 - macOS
-
-> [!WARNING]
-> Společnost Microsoft si je vědoma potíží se zásadami podmíněného přístupu a macOS zařízeními založenými na 10.15.4. Další informace najdete v blogovém příspěvku, [známý problém: podmíněný přístup neočekávaně blokující MacOS 10.15.4 Native mailový klient/další aplikace](https://techcommunity.microsoft.com/t5/intune-customer-success/known-issue-conditional-access-unexpectedly-blocking-macos-10-15/ba-p/1322283).
 
 Pokud zablokujete starší ověřování pomocí podmínky **ostatních klientů** , můžete také nastavit podmínku pro platformu zařízení.
 
@@ -95,7 +96,7 @@ Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zás
 | :-- | :-- |
 | Windows 10 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows 8/8,1 | Internet Explorer, Chrome |
-| Windows 7 | Internet Explorer, Chrome |
+| Windows 7 | Internet Explorer, Chrome |
 | iOS | Microsoft Edge, Intune Managed Browser, Safari |
 | Android | Microsoft Edge, Intune Managed Browser, Chrome |
 | telefon se systémem Windows | Microsoft Edge, Internet Explorer |
@@ -115,21 +116,17 @@ V případě podpory pro Chrome ve **Windows 10 Creators Update (verze 1703)** n
 
 Pokud chcete toto rozšíření automaticky nasadit do prohlížečů Chrome, vytvořte následující klíč registru:
 
-|    |    |
-| --- | --- |
-| Cesta | HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Název | 1 |
-| Typ | REG_SZ (String) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.Google.com/Service/Update2/CRX |
+- Cesta HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
+- Název 1
+- Typ REG_SZ (String)
+- Data ppnbnpeolgkicgegkbkbjmhlideopiji; https \: //clients2.Google.com/Service/Update2/CRX
 
 V případě podpory Chrome v **Windows 8.1 a 7**vytvořte následující klíč registru:
 
-|    |    |
-| --- | --- |
-| Cesta | HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Název | 1 |
-| Typ | REG_SZ (String) |
-| Data | {"vzor": "https://device.login.microsoftonline.com", "Filter": {"Issuer": {"CN": "MS-Organization-Access"}}} |
+- Cesta HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
+- Název 1
+- Typ REG_SZ (String)
+- Data {"vzor": " https://device.login.microsoftonline.com ", "Filter": {"Issuer": {"CN": "MS-Organization-Access"}}}
 
 Tyto prohlížeče podporují ověřování zařízení, což umožňuje, aby se zařízení identifikovalo a ověřilo na základě zásad. Pokud je prohlížeč spuštěný v privátním režimu, neproběhne jeho ověření.
 
@@ -155,7 +152,7 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 | Outlook 2016 (Office pro macOS) | Office 365 Exchange Online | macOS |
 | Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
 | Mobilní aplikace Outlook | Office 365 Exchange Online | Android, iOS |
-| Aplikace Power BI | službě Power BI | Windows 10, Windows 8.1, Windows 7, Android a iOS |
+| Aplikace Power BI | Služba Power BI | Windows 10, Windows 8.1, Windows 7, Android a iOS |
 | Skype pro firmy | Office 365 Exchange Online| Android, iOS |
 | Aplikace Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS a Android |
 
@@ -167,7 +164,7 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 
 Pokud řízení přístupu přiřazené k zásadám **vyžaduje schválení klientské aplikace**, uživatel se přesměruje na instalaci a používání mobilního klienta Outlooku. V případě, že je vyžadováno **ověřování Multi-Factor Authentication** , jsou ovlivněni uživatelé zablokováni, protože základní ověřování nepodporuje službu Multi-Factor Authentication.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Zablokovat starší ověřování pomocí podmíněného přístupu](block-legacy-authentication.md)
 - [Vyžadování schválených klientských aplikací s podmíněným přístupem](app-based-conditional-access.md)

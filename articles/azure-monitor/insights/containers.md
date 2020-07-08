@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/22/2019
-ms.openlocfilehash: 171f897f6e110e8f759281c139addab477ecede3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/06/2020
+ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77664690"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984620"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Řešení pro monitorování kontejnerů v Azure Monitor
 
@@ -45,7 +45,7 @@ Než začnete, Projděte si následující podrobnosti, abyste ověřili splněn
 
 Následující tabulka popisuje podporu pro orchestraci a monitorování operačního systému pro inventář kontejnerů, výkon a protokoly s Azure Monitor.   
 
-| | ACS | Linux | Windows | Kontejner<br>Inventarizace | Image<br>Inventarizace | Node<br>Inventarizace | Kontejner<br>Výkon | Kontejner<br>Událost | Událost<br>Protokol | Kontejner<br>Protokol |
+| | ACS | Linux | Windows | Kontejner<br>Inventory (Inventář) | Image<br>Inventory (Inventář) | Node<br>Inventory (Inventář) | Kontejner<br>Výkon | Kontejner<br>Událost | Událost<br>Protokol | Kontejner<br>Protokol |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -116,7 +116,7 @@ Další informace o tom, jak nainstalovat a nakonfigurovat moduly Docker v poč�
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Instalace a konfigurace hostitelů kontejnerů pro Linux
 
-Po instalaci Docker použijte následující nastavení pro hostitele kontejneru a nakonfigurujte agenta pro použití s Docker. Nejdřív potřebujete Log Analytics ID a klíč pracovního prostoru, který najdete v Azure Portal. V pracovním prostoru kliknutím na **rychlé zprovoznění** > **počítače** zobrazíte **ID vašeho pracovního prostoru** a **primární klíč**.  Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
+Po instalaci Docker použijte následující nastavení pro hostitele kontejneru a nakonfigurujte agenta pro použití s Docker. Nejdřív potřebujete Log Analytics ID a klíč pracovního prostoru, který najdete v Azure Portal. V pracovním prostoru kliknutím na **rychlé zprovoznění**  >  **počítače** zobrazíte **ID vašeho pracovního prostoru** a **primární klíč**.  Obě hodnoty zkopírujte a vložte do oblíbeného editoru.
 
 **Pro všechny hostitele kontejnerů pro Linux s výjimkou CoreOS:**
 
@@ -231,7 +231,7 @@ V této části se zabýváme kroky potřebnými k instalaci agenta Log Analytic
 Pokud chcete použít tajné klíče k zabezpečení Log Analytics ID a primárního klíče při použití souboru s démonem Log Analytics agenta, proveďte následující kroky.
 
 1. Přihlaste se k uzlu hlavní server OpenShift a zkopírujte soubor YAML [OCP-DS-omsagent. yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) a tajný kód pro generování skriptu [OCP-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) z GitHubu.  Tento skript vygeneruje soubor YAML tajných klíčů pro Log Analytics ID pracovního prostoru a primární klíč k zabezpečení informací o tajnosti.  
-2. Spuštěním následujících příkazů vytvořte projekt pro Azure Monitor a nastavte uživatelský účet. Skript pro generování tajného klíče požádá o vaše `<WSID>` ID pracovního prostoru `<KEY>` Log Analytics a primární klíč a po dokončení vytvoří soubor OCP-Secret. yaml.  
+2. Spuštěním následujících příkazů vytvořte projekt pro Azure Monitor a nastavte uživatelský účet. Skript pro generování tajného klíče požádá o vaše ID pracovního prostoru Log Analytics `<WSID>` a primární klíč `<KEY>` a po dokončení vytvoří soubor OCP-Secret. yaml.  
 
     ```
     oc adm new-project omslogging --node-selector='zone=default'  
@@ -535,7 +535,7 @@ Následující typy agentů shromažďují data každé tři minuty.
 
 V následující tabulce jsou uvedeny příklady záznamů shromážděných řešením monitorování kontejnerů a typy dat, které se zobrazí ve výsledcích prohledávání protokolu.
 
-| Datový typ | Datový typ v hledání v protokolu | Pole |
+| Datový typ | Datový typ v hledání v protokolu | Fields (Pole) |
 | --- | --- | --- |
 | Výkon pro hostitele a kontejnery | `Perf` | Počítač, ObjectName, CounterName &#40;% času procesoru, čtení z disku MB, zápisy na disk MB, využití paměti MB, počet přijatých bajtů sítě, počet bajtů pro odesílání, využití procesoru sec, síť&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem |
 | Inventář kontejneru | `ContainerInventory` | TimeGenerated, počítač, název kontejneru, ContainerHostname, image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
@@ -547,7 +547,7 @@ V následující tabulce jsou uvedeny příklady záznamů shromážděných ře
 | Kontejnerový proces | `ContainerProcess_CL` | TimeGenerated, počítač, Pod_s, Namespace_s, ClassName_s, InstanceID_s, Uid_s, PID_s, PPID_s, C_s, STIME_s, Tty_s, TIME_s, Cmd_s, Id_s, Name_s, SourceSystem |
 | Události Kubernetes | `KubeEvents_CL` | TimeGenerated, počítač, Name_s, ObjectKind_s, Namespace_s, Reason_s, Type_s, SourceComponent_s, SourceSystem, zpráva |
 
-Popisky připojené k datovým typům *PodLabel* jsou vlastní popisky. Příklady přidaných popisků PodLabel jsou uvedené v tabulce. `PodLabel_deployment_s`Takže,, `PodLabel_deploymentconfig_s`, `PodLabel_docker_registry_s` se bude lišit v sadě dat vašeho prostředí a obecně se bude podobat `PodLabel_yourlabel_s`.
+Popisky připojené k datovým typům *PodLabel* jsou vlastní popisky. Příklady přidaných popisků PodLabel jsou uvedené v tabulce. Takže, `PodLabel_deployment_s` , `PodLabel_deploymentconfig_s` , se `PodLabel_docker_registry_s` bude lišit v sadě dat vašeho prostředí a obecně se bude podobat `PodLabel_yourlabel_s` .
 
 ## <a name="monitor-containers"></a>Monitorování kontejnerů
 Po povolení řešení v Azure Portal dlaždice **kontejnery** zobrazí souhrnné informace o hostitelích kontejnerů a kontejnerech spuštěných v hostitelích.
@@ -618,7 +618,6 @@ Při odstraňování potíží s konkrétní chybou vám může pomáhat zjistit
 - **KubeEvents_CL**  Pomocí tohoto typu můžete zobrazit události Kubernetes.
 - **KubePodInventory_CL**  Tento typ použijte, pokud chcete pochopit informace o hierarchii clusteru.
 
-
 ### <a name="to-query-logs-for-container-data"></a>Dotazování protokolů na data kontejneru
 
 * Vyberte bitovou kopii, která se nedávno nezdařila, a vyhledejte v ní protokoly chyb. Začněte hledáním názvu kontejneru, na kterém je spuštěná tato image, pomocí hledání **ContainerInventory** . Vyhledejte například`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
@@ -628,7 +627,7 @@ Při odstraňování potíží s konkrétní chybou vám může pomáhat zjistit
 
 ## <a name="example-log-queries"></a>Příklady dotazů protokolu
 
-Často je užitečné vytvářet dotazy počínaje příkladem nebo dvěma a pak je upravit tak, aby vyhovovaly vašemu prostředí. Jako výchozí bod můžete experimentovat s oblastí **vzorových dotazů** , které vám pomůžou sestavovat pokročilejší dotazy.
+Často je užitečné vytvářet dotazy počínaje příkladem nebo dvěma a pak je upravit tak, aby vyhovovaly vašemu prostředí. Jako výchozí bod můžete experimentovat s oblastí **vzorových dotazů** na pravé straně stránky řešení, která vám umožní sestavovat pokročilejší dotazy.
 
 ![Dotazy na kontejnery](./media/containers/containers-queries.png)
 

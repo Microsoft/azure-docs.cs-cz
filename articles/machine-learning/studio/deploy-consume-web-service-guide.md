@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: ecc38633d8081f9060f2c1877f129378fac68f6e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 5077e71eda42aa3b48cda2b39b60efc19bddd8a5
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84696259"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985529"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webové služby Azure Machine Learning Studio (Classic): nasazení a spotřeba
 
@@ -53,7 +53,9 @@ Pokud chcete rutiny použít, musíte se nejdřív přihlásit k účtu Azure z 
 
 K exportu prediktivní experimentu použijte [Tento vzorový kód](https://github.com/ritwik20/AzureML-WebServices). Po vytvoření souboru. exe z kódu můžete zadat:
 
-    C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```azurepowershell
+C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
+```
 
 Spuštění aplikace vytvoří šablonu JSON webové služby. Chcete-li použít šablonu k nasazení webové služby, je nutné přidat následující informace:
 
@@ -68,13 +70,15 @@ Přidejte je do šablony JSON jako podřízené položky uzlu *vlastnosti* na st
 
 Tady je příklad:
 
-    "StorageAccount": {
-            "name": "YourStorageAccountName",
-            "key": "YourStorageAccountKey"
-    },
-    "CommitmentPlan": {
-        "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
-    }
+```json
+"StorageAccount": {
+        "name": "YourStorageAccountName",
+        "key": "YourStorageAccountKey"
+},
+"CommitmentPlan": {
+    "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
+}
+```
 
 Další podrobnosti najdete v následujících článcích a vzorovém kódu:
 

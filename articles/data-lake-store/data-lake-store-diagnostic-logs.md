@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 479b227a9144604d3bd0116a60de751189376b5f
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: e50091750e01435912a2a5163cc786e79dc09f5c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85511456"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985060"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Přístup k diagnostickým protokolům pro Azure Data Lake Storage Gen1
 Naučte se, jak povolit protokolování diagnostiky pro váš účet Azure Data Lake Storage Gen1 a jak zobrazit protokoly shromážděné pro váš účet.
@@ -91,29 +91,31 @@ Protokoly auditu a požadavků jsou ve formátu JSON. V této části se podív�
 ### <a name="request-logs"></a>Protokoly žádostí
 Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objekt BLOB má jeden kořenový objekt nazvaný **záznam** , který obsahuje pole objektů log.
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Requests",
-             "operationName": "GETCustomerIngressEgress",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-07T21:02:53.456Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Requests",
+        "operationName": "GETCustomerIngressEgress",
+        "resultType": "200",
+        "callerIpAddress": "::ffff:1.1.1.1",
+        "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+        "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+        "properties": {"HttpMethod":"GET","Path":"/webhdfs/v1/Samples/Outputs/Drivers.csv","RequestContentLength":0,"ClientRequestId":"3b7adbd9-3519-4f28-a61c-bd89506163b8","StartTime":"2016-07-07T21:02:52.472Z","EndTime":"2016-07-07T21:02:53.456Z"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="request-log-schema"></a>Schéma protokolu žádostí
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -126,7 +128,7 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="request-log-properties-schema"></a>Vlastnosti protokolu žádosti – schéma
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | HttpMethod |Řetězec |Metoda HTTP použitá pro operaci Například GET. |
 | Cesta |Řetězec |Cesta, na které byla operace provedena |
@@ -138,29 +140,31 @@ Zde je ukázkový záznam v protokolu žádostí ve formátu JSON. Každý objek
 ### <a name="audit-logs"></a>Protokoly auditu
 Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BLOB má jeden kořenový objekt nazvaný **záznam** , který obsahuje pole objektů log.
 
+```json
+{
+"records": 
+  [        
+    . . . .
+    ,
     {
-    "records": 
-      [        
-        . . . .
-        ,
-        {
-             "time": "2016-07-08T19:08:59.359Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
-             "category": "Audit",
-             "operationName": "SeOpenStream",
-             "resultType": "0",
-             "resultSignature": "0",
-             "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
-             "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
-             "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
-        }
-        ,
-        . . . .
-      ]
+        "time": "2016-07-08T19:08:59.359Z",
+        "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKESTORE/ACCOUNTS/<data_lake_storage_gen1_account_name>",
+        "category": "Audit",
+        "operationName": "SeOpenStream",
+        "resultType": "0",
+        "resultSignature": "0",
+        "correlationId": "381110fc03534e1cb99ec52376ceebdf;Append_BrEKAmg;25.66.9.145",
+        "identity": "A9DAFFAF-FFEE-4BB5-A4A0-1B6CBBF24355",
+        "properties": {"StreamName":"adl://<data_lake_storage_gen1_account_name>.azuredatalakestore.net/logs.csv"}
     }
+    ,
+    . . . .
+  ]
+}
+```
 
 #### <a name="audit-log-schema"></a>Schéma protokolu auditu
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | time |Řetězec |Časové razítko (v UTC) protokolu |
 | resourceId |Řetězec |ID prostředku, na kterém byla operace provedena |
@@ -173,7 +177,7 @@ Zde je ukázkový záznam v protokolu auditu ve formátu JSON. Každý objekt BL
 | properties |JSON |Podrobnosti najdete níže. |
 
 #### <a name="audit-log-properties-schema"></a>Schéma vlastností protokolu auditu
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | --- | --- | --- |
 | StreamName |Řetězec |Cesta, na které byla operace provedena |
 

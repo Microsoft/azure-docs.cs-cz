@@ -1,8 +1,9 @@
 ---
 title: Transparentní šifrování dat spravované zákazníkem (TDE)
 description: Podpora Bring Your Own Key (BYOK) pro transparentní šifrování dat (TDE) s Azure Key Vault pro SQL Database a Azure synapse Analytics. TDE s BYOK přehledem, výhodami, jak funguje, požadavky a doporučení.
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
@@ -11,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 51187a81865d9efa098e2c25cccdead01ed6dc74
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321304"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985305"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -29,6 +30,9 @@ Pro Azure SQL Database a Azure synapse Analytics se ochrana TDE nastaví na úro
 
 > [!IMPORTANT]
 > Pro ty, kteří používají TDE spravované službou, kteří chtějí začít používat TDE spravované zákazníkem, zůstanou data během přepínání přešifrovaná a nedochází k výpadkům a opětovnému šifrování souborů databáze. Přepnutí z klíče spravovaného službou na klíč spravovaný zákazníkem vyžaduje jenom opětovné šifrování klíč DEK, což je rychlá a online operace.
+
+> [!NOTE]
+> Pokud chcete zákazníkům Azure SQL poskytovat dvě úrovně šifrování neaktivních dat, zavádějí se do provozu šifrování infrastruktury (pomocí šifrovacího algoritmu AES-256) se spravovanými klíči platformy. To poskytuje dodatečnou vrstvu šifrování v klidovém formátu spolu s TDE s klíči spravovanými zákazníkem, který je už dostupný. V tuto chvíli musí zákazníci požádat o přístup k této funkci. Pokud vás zajímá Tato možnost, obraťte se na AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Výhody TDE spravovaného zákazníkem
 
@@ -127,7 +131,7 @@ Po obnovení přístupu k tomuto klíči bude zálohování databáze zpět onli
 
 - Pokud se přístup k klíči obnoví do 8 hodin, bude databáze automaticky zacelená během příští hodiny.
 
-- Pokud je přístup k klíči obnoven po více než 8 hodin, automatické zacelení není možné a uvedení databáze na portál vyžaduje další kroky na portálu a může trvat poměrně dlouhou dobu v závislosti na velikosti databáze. Jakmile je databáze znovu online, dříve konfigurovaná nastavení na úrovni serveru, jako je například konfigurace [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) , historie obnovení bodu v čase a značky, **bude ztracena**. Proto se doporučuje implementovat systém oznámení, který vám umožní identifikovat a vyřešit problémy s přístupem k základnímu klíči během 8 hodin.
+- Pokud se přístup ke klíči obnoví za více než 8 hodin, automatická oprava není možná a vrácení databáze vyžaduje provedení dalších kroků na portálu a v závislosti na velikosti databáze může trvat poměrně dlouhou dobu. Jakmile je databáze znovu online, dříve konfigurovaná nastavení na úrovni serveru, jako je například konfigurace [skupiny převzetí služeb při selhání](auto-failover-group-overview.md) , historie obnovení bodu v čase a značky, **bude ztracena**. Proto se doporučuje implementovat systém oznámení, který vám umožní identifikovat a vyřešit problémy s přístupem k základnímu klíči během 8 hodin.
 
 ### <a name="accidental-tde-protector-access-revocation"></a>Odvolání přístupu k nechtěně TDE ochraně
 

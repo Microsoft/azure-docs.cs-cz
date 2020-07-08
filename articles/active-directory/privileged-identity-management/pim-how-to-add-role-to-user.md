@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 07/01/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06dbb985ece8e5b6df3ef3f29a997af5212404ad
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 7cdea30e7b630b2fa62b004f98cb67fd1994f915
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84742671"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024154"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Přiřazení rolí Azure AD v Privileged Identity Management
 
@@ -53,15 +53,13 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
     ![Role Azure AD](./media/pim-how-to-add-role-to-user/roles-list.png)
 
-1. Vyberte **Přidat člena** a otevřete tak **novou stránku přiřazení** .
+1. Výběrem **Přidat přiřazení** otevřete stránku **Přidat přiřazení** .
 
-1. Vyberte **Vybrat roli** a otevřete stránku vybrat roli.
+1. Vyberte **Vybrat roli** a otevřete stránku **Vybrat roli** .
 
     ![Podokno nového přiřazení](./media/pim-how-to-add-role-to-user/select-role.png)
 
-1. Vyberte roli, kterou chcete přiřadit, a potom klikněte na **Vybrat**.
-
-1. Vyberte člena, kterému chcete přiřadit roli, a pak vyberte **Vybrat**.
+1. Vyberte roli, kterou chcete přiřadit, vyberte člena, kterému chcete přiřadit roli, a pak vyberte **Další**.
 
 1. V seznamu **Typ přiřazení** v podokně **nastavení členství** vyberte možnost **oprávněné** nebo **aktivní**.
 
@@ -69,15 +67,11 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
     - **Aktivní** přiřazení nevyžadují, aby člen prováděl žádnou akci pro použití role. Členové přiřazení jako aktivní mají vždy přiřazená oprávnění k této roli.
 
-1. Pokud má být přiřazení trvalé (trvale oprávněné nebo trvale přiřazené), zaškrtněte políčko **trvale** .
-
-    V závislosti na nastavení role se nemusí toto zaškrtávací políčko zobrazovat nebo může být neměnitelné.
-
-1. Chcete-li zadat konkrétní dobu trvání přiřazení, zrušte zaškrtnutí políčka a upravte pole počáteční a/nebo koncové datum a čas. Po dokončení vyberte **Hotovo**.
+1. Chcete-li zadat konkrétní dobu trvání přiřazení, přidejte pole počáteční a koncové datum a čas. Až budete hotovi, vyberte **přiřadit** a vytvořte nové přiřazení role.
 
     ![Nastavení členství – datum a čas](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
-1. Chcete-li vytvořit nové přiřazení role, vyberte **Přidat**. Zobrazí se oznámení o stavu.
+1. Po přiřazení role se zobrazí oznámení o stavu přiřazení.
 
     ![Nové přiřazení – oznámení](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
@@ -129,7 +123,7 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
 1. Teď, když má uživatel nárok na roli, dejte jim jistotu, že ho můžou aktivovat podle pokynů v tématu [Aktivace rolí Azure AD v Privileged Identity Management](pim-how-to-activate-role.md).
 
-    Způsobilí správci jsou během aktivace požádáni o registraci k Azure Multi-Factor Authentication (MFA). Pokud se uživatel nemůže zaregistrovat pro MFA nebo používá účet Microsoft (například @outlook.com ), musíte je v všech svých rolích nastavit jako trvalé.
+    Způsobilí správci jsou požádáni o registraci k Azure Multi-Factor Authentication během aktivace. Pokud se uživatel nemůže zaregistrovat pro MFA nebo používá účet Microsoft (například @outlook.com ), musíte je v všech svých rolích nastavit jako trvalé.
 
 ## <a name="make-a-role-assignment-permanent"></a>Nastavit trvalé přiřazení role
 

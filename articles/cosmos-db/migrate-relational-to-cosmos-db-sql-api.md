@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: thvankra
-ms.openlocfilehash: f79ad56d8083e7ef75279eb2a07e1d35a50c45b5
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 860b78df8df0d3c6946785a94e40141689278cd0
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85261099"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023138"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Migrace relačních dat 1:1 do Azure Cosmos DB účtu rozhraní SQL API
 
@@ -48,8 +48,7 @@ FROM Orders o;
 
 Výsledky tohoto dotazu by vypadaly takto: 
 
-![Podrobnosti objednávky](./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png#lightbox)
-
+:::image type="content" source="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png" alt-text="Podrobnosti objednávky" lightbox="./media/migrate-relational-to-cosmos-sql-api/for-json-query-result.png":::
 
 V ideálním případě chcete použít aktivitu kopírování s jednou Azure Data Factory (ADF) k dotazování dat SQL jako zdroje a zapsat výstup přímo do Azure Cosmos DB jímky jako správné objekty JSON. V současné době není možné provést nezbytnou transformaci JSON v jedné aktivitě kopírování. Pokud se pokusíte zkopírovat výsledky výše uvedeného dotazu do kontejneru rozhraní SQL API Azure Cosmos DB, zobrazí se pole OrderDetails jako řetězcová vlastnost našeho dokumentu namísto očekávaného pole JSON.
 

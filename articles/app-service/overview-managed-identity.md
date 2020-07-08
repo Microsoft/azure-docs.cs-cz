@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: 3be41014c315a5820add3407ca0e4cbdb5a5e23e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 87e4d67086ea9f260becb2d63765e807e2b73546
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559702"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985748"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -43,7 +43,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, nejdřív vytvořte apli
 
 
 > [!NOTE] 
-> Pokud chcete najít spravovanou identitu pro vaši webovou aplikaci nebo aplikaci slotu v Azure Portal, v části podnikové aplikace otevřete oddíl uživatelská nastavení.
+> Pokud chcete najít spravovanou identitu pro vaši webovou aplikaci nebo aplikaci slotu v Azure Portal v části **podnikové aplikace**, podívejte se do části **uživatelská nastavení** . Název slotu je obvykle podobný `<app name>/slots/<slot name>` .
 
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI

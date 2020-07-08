@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 52b97e772897289f0c54c4520da7d7af80f44dc3
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.date: 06/17/2020
+ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213705"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984266"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
-Tento článek popisuje, jak publikovat konzultační nabídku služby buď [Microsoft AppSource](https://appsource.microsoft.com/) , nebo [Azure Marketplace](https://azuremarketplace.microsoft.com/). Seznamte se s nabídkami konzultačních služeb založenými na Microsoft [Dynamics 365](https://dynamics.microsoft.com/) a Power platformou v AppSource. Seznamte se s nabídkami konzultačních služeb na základě Microsoft Azure Azure Marketplace. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
+Tento článek popisuje, jak publikovat konzultační nabídku služby buď [Microsoft AppSource](https://appsource.microsoft.com/) , nebo [Azure Marketplace](https://azuremarketplace.microsoft.com/). Seznamte se s nabídkami konzultačních služeb založenými na Microsoft [Dynamics 365](https://dynamics.microsoft.com/) a Power platformou v AppSource. Seznamte se s nabídkami konzultačních služeb na základě Microsoft Azure Azure Marketplace. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
-Před vytvořením nabídky si přečtěte předpoklady v části [požadavky na konzultační služby](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites).
+Před vytvořením nabídky si přečtěte předpoklady v části [požadavky na konzultační služby](consulting-service-prerequisites.md).
 
 ## <a name="publishing-benefits"></a>Výhody publikování
 
@@ -63,12 +63,12 @@ Když publikujete nabídku na webu Marketplace s partnerským centrem, _musíte_
 
 1. Vyberte **připojit** a určete, kam chcete posílat potenciální zákazníky. Partnerské centrum podporuje následující systémy:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) pro zákaznickou zapojení
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) pro zákaznickou zapojení
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Pokud váš systém CRM není uvedený výše, použijte [koncový bod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) nebo HTTPS k uložení zákaznických dat a pak EXPORTUJTE data do systému CRM.
+    > Pokud váš systém CRM není uvedený výše, použijte [koncový bod](commercial-marketplace-lead-management-instructions-https.md) [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) nebo HTTPS k uložení zákaznických dat a pak EXPORTUJTE data do systému CRM.
 
 2. Připojte svoji nabídku k cíli realizace při publikování v partnerském centru.
 3. Potvrďte, že je správně nakonfigurované připojení k cíli realizace. Po publikování v partnerském centru ověříme připojení a pošleme vám testovacího vedoucího. I když náhled nabídky před tím, než začne fungovat, můžete také otestovat své zájemce tím, že se pokusíte nabídku koupit v prostředí verze Preview.
@@ -76,9 +76,9 @@ Když publikujete nabídku na webu Marketplace s partnerským centrem, _musíte_
 
 Tady jsou některé další zdroje informací o vedoucím řízení:
 
-- [Přehled řízení vedoucích](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Nejčastější dotazy ke správě potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
+- [Přehled řízení vedoucích](commercial-marketplace-get-customer-leads.md)
+- [Nejčastější dotazy ke správě potenciálních zákazníků](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [Běžné chyby konfigurace zájemce](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken)
 
 Než budete pokračovat, vyberte **Uložit koncept** .
@@ -96,10 +96,19 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
     - **Ověření koncepce**: implementace omezeného rozsahu, která určuje, jestli řešení splňuje požadavky zákazníků.
     - **Workshop**: interaktivní zapojení v místním prostředí zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky založené na datech a prostředí zákazníka.
 
-3. Pokud jste vybrali primární produkt **Azure**, vyberte až tři **oblasti řešení**. To usnadňuje zákazníkům v Azure Marketplace najít vaši nabídku. Pokud jste nezvolili Azure, přeskočte tento krok.
-4. Pokud jste vybrali _jiný_ produkt než Azure, vyberte až tři produkty, které jsou k **dispozici**. To usnadňuje zákazníkům v AppSource najít vaši nabídku. Podrobnosti najdete v tématu [Microsoft AppSource konzultačních pokynů pro výpisy služby](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
-5. Vyberte až šest **odvětví** , na které se vaše nabídka vztahuje. To zákazníkům usnadní nalezení vaší nabídky.
-6. Přidejte až tři **kompetence** , které vaše společnost získala, aby se zobrazila v seznamu nabídek konzultačních služeb. Vyžaduje se aspoň jedna kompetence s výjimkou služeb Azure expert účastníci programu MSP a Azure Networking účastníci programu MSP.
+3. Pokud jste jako primární produkt vybrali **Azure** , vyberte až tři **oblasti řešení**. To usnadňuje zákazníkům v Azure Marketplace najít vaši nabídku. Pokud jste nezvolili Azure, přeskočte tento krok.
+
+    | Oblast řešení | | | |
+    | --- | --- | --- | --- |
+    | Analýzy | Backup | DevOps | Migrace |
+    | Modernizace aplikací | Velký objem dat | Zotavení po havárii | Sítě |
+    | Archiv | Datová platforma | Identita | Zabezpečení |
+    | AI a Machine Learning | Správa Datacenter | Internet věcí | Storage |
+
+1. Pokud jste jako primární produkt vybrali **Azure** , máte možnost vybrat až šest **oborů**. To usnadňuje zákazníkům v Azure Marketplace najít vaši nabídku. Seznamte se s [osvědčenými postupy v nabídce](../gtm-offer-listing-best-practices.md), kde najdete úplný seznam oborů. Pokud jste nezvolili Azure, přeskočte tento krok.
+1. Pokud jste vybrali *jiný* produkt než Azure, vyberte až tři produkty, které jsou k **dispozici**. To usnadňuje zákazníkům v AppSource najít vaši nabídku. Podrobnosti najdete v tématu [Microsoft AppSource konzultačních pokynů pro výpisy služby](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
+1. Pokud jste vybrali *jiný* produkt než Azure, máte možnost vybrat si až dva **obory** a dvě **svislé** oblasti pro každý obor. To usnadňuje zákazníkům v AppSource najít vaši nabídku. Seznamte se s [osvědčenými postupy v nabídce](../gtm-offer-listing-best-practices.md)s úplným seznamem odvětví a svislých.
+1. Přidejte až tři **kompetence** , které vaše společnost získala, aby se zobrazila v seznamu nabídek konzultačních služeb. Vyžaduje se aspoň jedna kompetence s výjimkou služeb Azure expert účastníci programu MSP a Azure Networking účastníci programu MSP.
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
@@ -230,8 +239,8 @@ Po dokončení všech požadovaných částí nabídky můžete odeslat nabídku
 4. Až budete připraveni, vyberte **Odeslat**.
 5. Stránka s **přehledem nabídky** zobrazuje, ve které fázi publikování vaše nabídka probíhá.
 
-Další informace o tom, jak dlouho můžete očekávat, že vaše nabídka je v každé fázi publikování, najdete v tématu o tom, jak [zjistit stav publikování nabídky na komerčním webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status).
+Další informace o tom, jak dlouho můžete očekávat, že vaše nabídka je v každé fázi publikování, najdete v tématu o tom, jak [zjistit stav publikování nabídky na komerčním webu Marketplace](publishing-status.md).
 
 ## <a name="update-your-existing-consulting-service-offers"></a>Aktualizace stávajících nabídek konzultačních služeb
 
-- [Aktualizace stávající nabídky na komerčním webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Aktualizace stávající nabídky na komerčním webu Marketplace](update-existing-offer.md)

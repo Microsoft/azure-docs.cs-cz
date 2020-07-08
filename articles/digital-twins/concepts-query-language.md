@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: e4952bc3df2b5b164038654f5d77f4c352827463
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3196004015046b4d3d2789745c80d323bacdced9
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726802"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985237"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>O dotazovacím jazyku pro digitální vlákna Azure
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Odvolat, že střed digitálních vláken Azure je [**dvojitým grafem**](concepts-twins-graph.md)vytvořeným z **digitálních vláken** a **vztahů**. Tento graf se dá dotázat, aby se získaly informace o digitálních vztazích a vztazích, které obsahuje. Tyto dotazy se napíší ve vlastním dotazovacím jazyce podobném SQL s názvem **jazyk úložiště dotazů digitálních vláken Azure**.
 
@@ -25,7 +22,7 @@ K odeslání dotazu do služby z klientské aplikace použijete **rozhraní API 
 
 ## <a name="query-language-features"></a>Funkce jazyka dotazů
 
-Digitální vlákna Azure poskytuje rozsáhlé možnosti dotazování pro dvojitou graf. Dotazy jsou popsány pomocí syntaxe podobné SQL jako nadmnožina možností [dotazovacího jazyka IoT Hub](../iot-hub/iot-hub-devguide-query-language.md).
+Digitální vlákna Azure poskytuje rozsáhlé možnosti dotazování pro dvojitou graf. Dotazy jsou popsány pomocí syntaxe jako v jazyce SQL, podobně jako [dotazovací jazyk IoT Hub](../iot-hub/iot-hub-devguide-query-language.md) s mnoha srovnatelnými funkcemi.
 
 Tady jsou dostupné operace v jazyce úložiště dotazů digitálních vláken Azure:
 * Získejte vlákna podle vlastností digitálních vláken.

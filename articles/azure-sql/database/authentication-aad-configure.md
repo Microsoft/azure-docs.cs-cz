@@ -3,7 +3,7 @@ title: Konfigurace ověřování Azure Active Directory
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Po nakonfigurování služby Azure AD se naučíte připojit se k SQL Database, spravované instanci SQL a Azure synapse Analytics pomocí ověřování Azure Active Directory.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, has-adal-ref, sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: eaad361ba82ee6adf139174c728c2ef9ffa94849
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f5ef4c701cab8b9e94f89607bf643699e95ccad0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310899"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984896"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
@@ -188,7 +188,7 @@ Pokud chcete zřídit správce Azure AD, spusťte následující příkazy Azure
 
 Rutiny používané ke zřízení a správě správce Azure AD pro vaši spravovanou instanci SQL jsou uvedené v následující tabulce:
 
-| Název rutiny | Popis |
+| Název rutiny | Description |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Zřídí správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. (Musí být z aktuálního předplatného)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Odebere správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. |
@@ -216,7 +216,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 Správce Azure AD pro spravovanou instanci SQL můžete také zřídit voláním následujících příkazů rozhraní příkazového řádku:
 
-| Příkaz | Popis |
+| Příkaz | Description |
 | --- | --- |
 |[AZ SQL mi AD-admin Create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Zřídí správce Azure Active Directory pro spravovanou instanci SQL (musí být z aktuálního předplatného). |
 |[AZ SQL mi AD-admin DELETE](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Odebere správce Azure Active Directory pro spravovanou instanci SQL. |
@@ -279,7 +279,7 @@ Pokud chcete spustit rutiny PowerShellu, musíte mít Azure PowerShell nainstalo
 
 Rutiny používané ke zřízení a správě správce Azure AD pro SQL Database a Azure synapse:
 
-| Název rutiny | Popis |
+| Název rutiny | Description |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Zřídí správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. (Musí být z aktuálního předplatného) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Odebere správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse.|
@@ -293,7 +293,7 @@ Následující skript zřídí skupinu správců Azure AD s názvem **DBA_Group*
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-Vstupní parametr **DisplayName** přijímá buď zobrazované jméno Azure AD, nebo hlavní název uživatele. Například ``DisplayName="John Smith"`` a ``DisplayName="johns@contoso.com"`` . Pro skupiny Azure AD se podporuje jenom zobrazované jméno Azure AD.
+Vstupní parametr **DisplayName** přijímá buď zobrazované jméno Azure AD, nebo hlavní název uživatele. Příklad: ``DisplayName="John Smith"`` a ``DisplayName="johns@contoso.com"``. Pro skupiny Azure AD se podporuje jenom zobrazované jméno Azure AD.
 
 > [!NOTE]
 > Příkaz Azure PowerShell ```Set-AzSqlServerActiveDirectoryAdministrator``` nebrání zřizování správců Azure AD pro nepodporované uživatele. Můžete zřídit nepodporovaného uživatele, ale nemůžete se připojit k databázi.
@@ -324,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 Správce Azure AD můžete zřídit voláním následujících příkazů rozhraní příkazového řádku:
 
-| Příkaz | Popis |
+| Příkaz | Description |
 | --- | --- |
 |[AZ SQL Server AD-admin Create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Zřídí správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. (Musí být z aktuálního předplatného) |
 |[AZ SQL Server AD – odstranění správce](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Odebere správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. |
@@ -343,7 +343,7 @@ Další informace o příkazech rozhraní příkazového řádku najdete v téma
 Na všech klientských počítačích, ze kterých se vaše aplikace nebo uživatelé připojují k SQL Database nebo Azure synapse pomocí identit Azure AD, musíte nainstalovat následující software:
 
 - .NET Framework 4,6 nebo novější z [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx) .
-- Knihovna ověřování Azure Active Directory pro SQL Server (*ADAL. DLL*). Níže jsou uvedené odkazy ke stažení pro instalaci nejnovějšího ovladače SSMS, ODBC a OLE DB, který obsahuje *ADAL. Knihovna DLL* .
+- Azure Active Directory knihovny ověřování pro SQL Server (*ADAL.DLL*). Níže jsou uvedené odkazy ke stažení pro instalaci nejnovějšího ovladače SSMS, ODBC a OLE DB, který obsahuje knihovnu *ADAL.DLL* .
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
   - [ODBC Driver 17 pro SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
   - [OLE DB ovladače 18 pro SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
@@ -351,9 +351,9 @@ Na všech klientských počítačích, ze kterých se vaše aplikace nebo uživa
 Tyto požadavky můžete splnit:
 
 - Instalace nejnovější verze [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) nebo [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) splňuje požadavky .NET Framework 4,6.
-  - SSMS nainstaluje verzi x86 knihovny *ADAL. Knihovna DLL*:
-  - SSDT nainstaluje verzi knihovny *ADAL. Knihovna DLL*:
-  - Nejnovější verze sady Visual Studio ze sady [Visual Studio ke stažení](https://www.visualstudio.com/downloads/download-visual-studio-vs) splňuje požadavek .NET Framework 4,6, ale neinstaluje požadovanou verzi amd64 knihovny *ADAL. Knihovna DLL*:
+  - SSMS nainstaluje verzi x86 *ADAL.DLL*.
+  - SSDT nainstaluje *ADAL.DLL*verze amd64.
+  - Nejnovější verze sady Visual Studio ze sady [Visual Studio ke stažení](https://www.visualstudio.com/downloads/download-visual-studio-vs) splňuje požadavek .NET Framework 4,6, ale neinstaluje požadovanou verzi amd64 *ADAL.DLL*.
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Vytvoření obsažených uživatelů mapovaných na identity Azure AD
 

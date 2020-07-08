@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71058001"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985802"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Řešení obecné chyby protokolu RDP na virtuálním počítači Azure
 
@@ -60,13 +60,13 @@ Naslouchací proces RDP je nesprávně nakonfigurovaný.
 
 ## <a name="solution"></a>Řešení
 
-Pokud chcete tento problém vyřešit, [zazálohujte disk operačního systému](../windows/snapshot-copy-managed-disk.md)a [Připojte disk s operačním systémem k záchrannému virtuálnímu počítači](troubleshoot-recovery-disks-portal-windows.md)a pak postupujte podle pokynů.
+Než budete postupovat podle těchto kroků, pořiďte si snímek disku s operačním systémem ovlivněného virtuálního počítače jako záložního. Chcete-li tento problém vyřešit, použijte ovládací prvek sériového čísla nebo opravte virtuální počítač v režimu offline.
 
 ### <a name="serial-console"></a>Sériová konzola
 
 #### <a name="step-1-open-cmd-instance-in-serial-console"></a>Krok 1: otevření instance CMD v Sériová konzola
 
-1. Přístup ke [konzole sériového portu](serial-console-windows.md) výběrem možnosti **Podpora & řešení potíží** > **sériová konzola (Preview)**. Pokud je funkce na virtuálním počítači povolená, můžete virtuální počítač úspěšně připojit.
+1. Přístup ke [konzole sériového portu](serial-console-windows.md) výběrem možnosti **Podpora & řešení potíží**  >  **sériová konzola (Preview)**. Pokud je funkce na virtuálním počítači povolená, můžete virtuální počítač úspěšně připojit.
 
 2. Vytvoří nový kanál pro instanci CMD. Zadáním **příkazu cmd** spusťte kanál a získejte název kanálu.
 
@@ -78,29 +78,37 @@ Pokud chcete tento problém vyřešit, [zazálohujte disk operačního systému]
 
 #### <a name="step-2-check-the-values-of-rdp-registry-keys"></a>Krok 2: ověřte hodnoty klíčů registru RDP:
 
-1. Ověřte, jestli jsou zásady zakázané protokolem RDP zakázané.
+1. Ověřte, jestli je protokol RDP zakázaný pomocí zásad skupiny.
 
-      ```
-      REM Get the local policy 
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server " /v fDenyTSConnections
+    ```
+    REM Get the group policy 
+    reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
+    ```
+    Pokud zásada skupiny uvádí, že je protokol RDP zakázán (hodnota fDenyTSConnections je 0x1), spusťte následující příkaz, který povolí službu TermService. Pokud se klíč registru nenajde, není pro zakázání protokolu RDP nakonfigurovaná žádná zásada skupiny. Můžete přejít k dalšímu kroku.
 
-      REM Get the domain policy if any
-      reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
-      ```
+    ```
+    REM update the fDenyTSConnections value to enable TermService service
+    reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+    ```
+    > [!NOTE]
+    > Tento krok dočasně povolí službu TermService. Tato změna se obnoví po obnovení nastavení zásad skupiny. Pokud chcete tento problém vyřešit, musíte ověřit, jestli je služba TermService zakázaná místními zásadami skupiny nebo zásadami skupiny domény, a pak nastavení zásad aktualizovat odpovídajícím způsobem.
+    
+2. Ověřte aktuální konfiguraci vzdáleného připojení.
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections
+    ```
+    Pokud příkaz vrátí 0x1, virtuální počítač nepovoluje vzdálené připojení. Pak povolte vzdálené připojení pomocí následujícího příkazu:
+     ```
+     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+     ```
+    
+1. Ověřte aktuální konfiguraci terminálového serveru.
 
-      - Pokud zásady domény existují, nastavení místní zásady se přepíše.
-      - Pokud zásada domény uvádí, že je zakázaný protokol RDP (1), aktualizujte zásady služby AD z řadiče domény.
-      - Pokud zásada domény uvádí, že je povolený protokol RDP (0), není potřeba žádná aktualizace.
-      - Pokud zásady domény neexistují a místní zásady mají stav zakázáno RDP (1), povolte protokol RDP pomocí následujícího příkazu: 
-      
-            reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
-                  
-
-2. Ověřte aktuální konfiguraci terminálového serveru.
-
-      ```
-      reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
-      ```
+    ```
+    REM Get the local remote connection setting
+    reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v TSEnabled
+    ```
 
       Pokud příkaz vrátí hodnotu 0, je terminálový server zakázán. Potom povolte Terminálový Server následujícím způsobem:
 
@@ -157,9 +165,9 @@ Pokud chcete tento problém vyřešit, [zazálohujte disk operačního systému]
 
 7. Restartujte virtuální počítač.
 
-8. Ukončete instanci CMD zadáním `exit`a potom stiskněte dvakrát klávesu **ENTER** .
+8. Ukončete instanci CMD zadáním `exit` a potom stiskněte dvakrát klávesu **ENTER** .
 
-9. Restartujte virtuální počítač zadáním `restart`a pak se připojte k virtuálnímu počítači.
+9. Restartujte virtuální počítač zadáním `restart` a pak se připojte k virtuálnímu počítači.
 
 Pokud problém přetrvává, přejděte ke kroku 2.
 

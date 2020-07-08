@@ -9,18 +9,18 @@ ms.date: 06/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: sandeo
+ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9d8c0cd803424e117bd4dc7a3382b7b32df2d05
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 149b01401cd6feb7610510efeb1ad9a3c69f3ecf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672702"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024039"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Jak funguje jednotné přihlašování k místním prostředkům na zařízeních připojených k Azure AD
 
-Pravděpodobně se nejedná o neočekávaně, že zařízení připojené k Azure Active Directory (Azure AD) poskytuje prostředí s jednotným přihlašováním k cloudovým aplikacím vašeho tenanta. Pokud má vaše prostředí místní službu Active Directory (AD), můžete na ně na těchto zařízeních rozmístit možnosti jednotného přihlašování.
+Pravděpodobně se nejedná o neočekávaně, že zařízení připojené k Azure Active Directory (Azure AD) poskytuje prostředí s jednotným přihlašováním k cloudovým aplikacím vašeho tenanta. Pokud má vaše prostředí místní službu Active Directory (AD), můžete na těchto zařízeních rozmístit možnosti jednotného přihlašování (SSO) na prostředky a aplikace, které se spoléhají i na místní AD. 
 
 Tento článek vysvětluje, jak to funguje.
 
@@ -30,19 +30,19 @@ Tento článek vysvětluje, jak to funguje.
 
 ## <a name="how-it-works"></a>Jak to funguje 
 
-Vzhledem k tomu, že potřebujete pamatovat jenom jedno uživatelské jméno a heslo, jednotné přihlašování zjednodušuje přístup k vašim prostředkům a zlepší zabezpečení vašeho prostředí. U zařízení připojeného k Azure AD už uživatelé mají v prostředí cloudové aplikace i možnost jednotného přihlašování. Pokud má vaše prostředí Azure AD a místní AD, pravděpodobně budete chtít rozšířit rozsah možností jednotného přihlašování na místní obchodní aplikace, sdílené složky a tiskárny.
+U zařízení připojeného k Azure AD už uživatelé mají v prostředí cloudové aplikace i možnost jednotného přihlašování. Pokud má vaše prostředí Azure AD a místní službu AD, můžete chtít rozšířit rozsah možností jednotného přihlašování na vaše místní obchodní aplikace, sdílené složky a tiskárny.
 
 Zařízení připojená k Azure AD nemají žádné znalosti o místním prostředí služby AD, protože k němu nejsou připojená. K těmto zařízením ale můžete pomocí Azure AD Connect zadat další informace o vaší místní službě AD.
 
 Také známé prostředí, které obsahuje službu Azure AD i místní službu AD, má hybridní prostředí. Pokud máte hybridní prostředí, je možné, že už máte Azure AD Connect nasazené, abyste mohli synchronizovat vaše místní informace o identitě do cloudu. V rámci procesu synchronizace Azure AD Connect synchronizuje místní informace o uživatelích s Azure AD. Když se uživatel přihlásí k zařízení připojenému k Azure AD v hybridním prostředí:
 
-1. Azure AD pošle název místní domény, kterou uživatel je členem zpátky do zařízení.
-1. Služba místního úřadu zabezpečení (LSA) umožňuje ověřování pomocí protokolu Kerberos na zařízení.
+1. Azure AD pošle podrobnosti o místní doméně uživatele zpátky do zařízení společně s [primárním aktualizačním tokenem](concept-primary-refresh-token.md) .
+1. Služba místního úřadu zabezpečení (LSA) umožňuje ověřování pomocí protokolu Kerberos a NTLM na zařízení.
 
-Během pokusu o přístup k prostředku požadujícímu protokol Kerberos v místním prostředí uživatele Toto zařízení:
+Během pokusu o přístup k prostředku požadujícímu protokol Kerberos nebo NTLM v místním prostředí uživatele Toto zařízení:
 
 1. Odešle informace o místní doméně a přihlašovací údaje uživatele k umístěnému řadiči domény, aby se získal ověřený uživatel.
-1. Přijímá [lístek TGT (Ticket-Granting Ticket)](/windows/desktop/secauthn/ticket-granting-tickets) , který se používá pro přístup k prostředkům připojeným k AD. Pokud se pokus o získání lístku TGT pro doménu služby AAD Connect nezdaří (související časový limit DCLocator může způsobit zpoždění), dojde k pokusu o odeslání záznamů správce přihlašovacích údajů nebo může uživatel obdržet místní nabídku ověřování požadující přihlašovací údaje pro cílový prostředek.
+1. Přijme [lístek TGT (Ticket-Granting Ticket)](/windows/desktop/secauthn/ticket-granting-tickets) protokolu Kerberos nebo token NTLM založený na protokolu, který podporuje místní prostředek nebo aplikace. Pokud se pokus o získání lístku TGT protokolu Kerberos nebo tokenu NTLM pro doménu nezdaří (související časový limit DCLocator může způsobit zpoždění), dojde k pokusu o odeslání záznamů správce přihlašovacích údajů nebo může uživatel obdržet místní nabídku ověřování požadující přihlašovací údaje pro cílový prostředek.
 
 Všechny aplikace, které jsou nakonfigurované pro **ověřování integrované v systému Windows** , bez problémů získají jednotné přihlašování, když se k nim uživatel pokusí získat přístup.
 

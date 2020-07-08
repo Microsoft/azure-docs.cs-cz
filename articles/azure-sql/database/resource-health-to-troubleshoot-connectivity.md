@@ -2,7 +2,7 @@
 title: Monitorování stavu databáze pomocí Azure Resource Health
 description: Pomocí Azure Resource Health můžete monitorovat stav služby Azure SQL Database a Azure SQL Managed instance, což vám pomůže diagnostikovat a získat podporu v případě, že problém Azure ovlivňuje vaše prostředky SQL.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
-ms.openlocfilehash: 6ea7709d1385eff3d538d69b25a9b31b88e7b904
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 27865afd356be9eac64083c1ebdeb6ced43dbd18
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84717998"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986938"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database-and-azure-sql-managed-instance"></a>Řešení potíží s připojením pro Azure SQL Database a spravovanou instanci SQL Azure pomocí Resource Health
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

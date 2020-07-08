@@ -2,7 +2,7 @@
 title: PlayBook pro adresování běžných požadavků na zabezpečení
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Tento článek poskytuje běžné požadavky na zabezpečení a osvědčené postupy pro Azure SQL Database a Azure SQL Managed instance.
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
 author: VanMSFT
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 5a35d9f9ff611576f26a55cb5792bc4b1718bee0
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 8104302afa84446e2d57c7156f33bc0160e31472
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323837"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85986773"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,11 +60,9 @@ Pokud není uvedeno jinak, doporučujeme, abyste provedli všechny osvědčené 
 - [NIST speciální publikace 800-53 řízení zabezpečení](https://nvd.nist.gov/800-53): AC-5, AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library): 6.3.2, 6.4.2
 
-### <a name="feedback"></a>Váš názor
-
 Chystáme se dál aktualizovat doporučení a osvědčené postupy, které jsou tady uvedené. Zadáním odkazu na **zpětnou vazbu** na konci tohoto článku zadejte nebo opravte tento dokument.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database a spravovaná instance SQL podporují dva typy ověřování:
 
@@ -141,7 +139,7 @@ Azure Multi-Factor Authentication pomáhá zvýšit zabezpečení tím, že vyž
   - Použijte interaktivní ověřování podporované v nástroji SQL Server Data Tools (SSDT). Přečtěte si článek [Azure Active Directory podpora SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current).
   - Použijte další nástroje SQL podporující Multi-Factor Authentication.
     - Podpora průvodce SSMS pro export/extrakci/nasazení databáze  
-    - [SqlPackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage): možnost '/UA '
+    - [sqlpackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage): možnost '/UA '
     - [Nástroj Sqlcmd](https://docs.microsoft.com/sql/tools/sqlcmd-utility): možnost-G (interaktivní)
     - [nástroj BCP](https://docs.microsoft.com/sql/tools/bcp-utility): možnost-G (interaktivní)
 

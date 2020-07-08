@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 1349ec3fc0fe9b5db60af883558a9d0aed5ee612
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c851a172fcfe89e6e7aa31c298a5b3d7931a528
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392178"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023580"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům ve službě Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Tento článek poskytuje přehled zabezpečení přístupu k datům uloženým v
 
 Azure Cosmos DB používá dva typy klíčů k ověřování uživatelů a poskytování přístupu k jeho datům a prostředkům. 
 
-|Typ klíče|Zdroje a prostředky|
+|Typ klíče|Prostředky|
 |---|---|
 |[Hlavní klíče](#master-keys) |Používá se pro prostředky pro správu: databázové účty, databáze, uživatele a oprávnění.|
 |[Tokeny prostředků](#resource-tokens)|Používá se pro prostředky aplikace: kontejnery, dokumenty, přílohy, uložené procedury, triggery a UDF.|
@@ -41,7 +41,7 @@ Kromě dvou hlavních klíčů pro účet Cosmos DB jsou k dispozici dva klíče
 
 Hlavní klíče primární, sekundární, jen pro čtení a pro čtení i zápis se dají načíst a znovu vygenerovat pomocí Azure Portal. Pokyny najdete v tématu [zobrazení, kopírování a obnovení přístupových klíčů](manage-with-cli.md#regenerate-account-key).
 
-![Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+:::image type="content" source="./media/secure-access-to-data/nosql-database-security-master-key-portal.png" alt-text="Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze NoSQL":::
 
 ### <a name="key-rotation"></a>Střídání klíčů<a id="key-rotation"></a>
 

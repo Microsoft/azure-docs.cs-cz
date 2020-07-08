@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbf4d7b9f622ff590eee401544bf62655fd8d096
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295303"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024379"
 ---
 # <a name="common-conditional-access-policies"></a>Běžné zásady podmíněného přístupu
 
-[Výchozí nastavení zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) je skvělé pro některé, ale mnoho organizací potřebuje větší flexibilitu než nabídky. Mnoho z nich třeba umožňuje vyloučit konkrétní účty, jako jsou jejich nouzový přístup nebo účty pro správu ze skla, od zásad podmíněného přístupu, které vyžadují vícefaktorové ověřování. Pro tyto organizace se můžou použít běžné zásady, na které se odkazuje v tomto článku.
+[Výchozí nastavení zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) je skvělé pro některé, ale mnoho organizací potřebuje větší flexibilitu než nabídky. Mnoho organizací například potřebuje možnost vyloučit konkrétní účty, jako jsou jejich nouzový přístup nebo účty pro správu se zábrusem ze zásad podmíněného přístupu, které vyžadují vícefaktorové ověřování. Pro tyto organizace se můžou použít běžné zásady, na které se odkazuje v tomto článku.
 
 ![Zásady podmíněného přístupu v Azure Portal](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 
@@ -38,11 +38,12 @@ Další informace o účtech pro nouzový přístup a o tom, proč jsou důleži
 * [Vyžadovat vícefaktorové ověřování pro správu Azure](howto-conditional-access-policy-azure-management.md)\*
 * [Vyžadovat MFA pro všechny uživatele](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*Tyto čtyři zásady, pokud jsou nakonfigurované společně, by mohly napodobovat funkce aktivované [výchozími hodnotami zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md).
+\*Tyto čtyři zásady se nakonfigurují společně a napodobují funkce, které jsou povolené ve [výchozím nastavení zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="additional-policies"></a>Další zásady
 
-* [Podmíněný přístup podle rizika (vyžaduje Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
+* [Podmíněný přístup na základě rizik přihlašování (vyžaduje Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
+* [Podmíněný přístup na základě rizika uživatele (vyžaduje Azure AD Premium P2)](howto-conditional-access-policy-risk-user.md)
 * [Vyžadování důvěryhodného umístění pro registraci MFA](howto-conditional-access-policy-registration.md)
 * [Blokovat přístup podle umístění](howto-conditional-access-policy-location.md)
 * [Vyžadování zařízení, které splňuje požadavky](howto-conditional-access-policy-compliant-device.md)

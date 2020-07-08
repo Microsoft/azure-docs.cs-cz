@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/28/2019
+ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 203b09ab7287d148b4a5e613b6198b6ad44c7234
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 433ccecdc5eee5314114d020571761ee82afd6b9
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743962"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024093"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivace mých rolí Azure AD v PIM
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) zjednodušuje způsob, jakým podniky spravují privilegovaný přístup k prostředkům v Azure AD a dalších online služby Microsoftu, jako je například sada Office 365 nebo Microsoft Intune.  
 
-Pokud jste nastavili nárok na roli správce, to znamená, že tuto roli můžete aktivovat, když potřebujete provést privilegované akce. Pokud například občas spravujete funkce sady Office 365, správci privilegovaných rolí vaší organizace nemůžou mít trvalého globálního správce, protože tato role má dopad i na jiné služby. Místo toho vám budou mít nárok na role Azure AD, jako je třeba správce Exchange Online. Můžete požádat o aktivaci této role, když budete potřebovat její oprávnění, a pak budete mít kontrolu nad tím, jak bude mít správce na předstanovenou dobu.
+Pokud jste nastavili nárok na roli správce, musíte přiřazení role aktivovat, když potřebujete provést privilegované akce. Pokud například občas spravujete funkce sady Office 365, správci privilegovaných rolí vaší organizace nemůžou mít trvalého globálního správce, protože tato role má dopad i na jiné služby. Místo toho vám budou mít nárok na role Azure AD, jako je třeba správce Exchange Online. Můžete požádat o aktivaci této role, když budete potřebovat její oprávnění, a pak budete mít kontrolu nad tím, jak bude mít správce na předstanovenou dobu.
 
 Tento článek je určen pro správce, kteří potřebují aktivovat roli Azure AD v Privileged Identity Management.
 
@@ -42,9 +42,9 @@ Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktu
 
 ## <a name="activate-a-role"></a>Aktivace role
 
-Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci pomocí možnosti navigace **Moje role** v Privileged Identity Management.
+Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci otevřením **Moje role** v Privileged Identity Management.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**. Informace o tom, jak přidat dlaždici Privileged Identity Management do řídicího panelu, najdete v tématu [Začínáme používat Privileged Identity Management](pim-getting-started.md).
 
@@ -56,7 +56,7 @@ Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci pomoc�
 
     ![Role Azure AD – seznam oprávněných rolí](./media/pim-how-to-activate-role/activate-link.png)
 
-1. Výběrem **aktivovat** otevřete podokno aktivace.
+1. Kliknutím na tlačítko **aktivovat** otevřete stránku aktivovat.
 
     ![Role Azure AD – stránka Aktivace obsahuje dobu trvání a rozsah.](./media/pim-how-to-activate-role/activate-page.png)
 
@@ -76,29 +76,9 @@ Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci pomoc�
 
 1. Vyberte **aktivovat**.
 
-    Pokud role nevyžaduje schválení, je aktivována a přidána do seznamu aktivních rolí. Chcete-li použít roli, postupujte podle pokynů v následující části.
-
-    ![Dokončená aktivace podokna s oborem, časem spuštění, dobou trvání a důvodem](./media/pim-how-to-activate-role/azure-ad-activation-status.png)
-
     Pokud [role vyžaduje schválení](pim-resource-roles-approval-workflow.md) , v pravém horním rohu prohlížeče se zobrazí oznámení o tom, že žádost čeká na schválení.
 
     ![Žádost o aktivaci čeká na oznámení o schválení.](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Použití role ihned po aktivaci
-
-V případě jakékoli prodlevy po aktivaci použijte následující postup po aktivaci pro okamžité použití rolí Azure AD.
-
-1. Otevřete Azure AD Privileged Identity Management.
-
-1. Výběrem **Moje role** zobrazíte seznam oprávněných rolí Azure AD a rolí prostředků Azure.
-
-1. Vyberte **role Azure AD**.
-
-1. Vyberte kartu **aktivní role** .
-
-1. Jakmile je role aktivní, odhlaste se z portálu a znovu se přihlaste.
-
-    Role by teď měla být dostupná pro použití.
 
 ## <a name="view-the-status-of-your-requests"></a>Zobrazení stavu vašich žádostí
 
@@ -134,8 +114,6 @@ Když v Privileged Identity Management aktivujete roli, aktivace se nemusí okam
 
 1. Odhlaste se z webu Azure Portal a pak se znovu přihlaste.
 
-    Při aktivaci role Azure AD se zobrazí fáze aktivace. Po dokončení všech fází se zobrazí odkaz **Odhlásit se**. Tento odkaz můžete použít k odhlášení. Tato akce vyřeší většinu případů zpoždění aktivace.
-
 1. V Privileged Identity Management ověřte, že jste uvedeni jako člen role.
 
 # <a name="previous-version"></a>[Předchozí verze](#tab/previous)
@@ -144,7 +122,7 @@ Když v Privileged Identity Management aktivujete roli, aktivace se nemusí okam
 
 Pokud potřebujete převzít roli Azure AD, můžete požádat o aktivaci pomocí možnosti navigace **Moje role** v Privileged Identity Management.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**. Informace o tom, jak přidat dlaždici Privileged Identity Management do řídicího panelu, najdete v tématu [Začínáme používat Privileged Identity Management](pim-getting-started.md).
 

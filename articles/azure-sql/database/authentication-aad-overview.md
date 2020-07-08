@@ -2,7 +2,7 @@
 title: Ověřování pomocí Azure Active Directory
 description: Přečtěte si, jak používat Azure Active Directory k ověřování pomocí Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: azure-synapse, sqldbrb=1
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 04/23/2020
-ms.openlocfilehash: b89e86a50bc3d248cf1278c3f36d2ed945fead2b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e1f97b1a29681a65cddf3a5904020555e903fe63
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195535"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85984771"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Použití ověřování Azure Active Directory
 

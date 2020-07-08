@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 05298ac0b76f93ba8249cc72910d33b58a9889e4
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 2ccd352950117d8427809616f78f4a0691319cdf
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85263122"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023665"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Připojení aplikace Node.js Mongoose k Azure Cosmos DB
 
@@ -194,7 +194,7 @@ V této části se seznámíte s tím, jak toho dosáhnout pomocí rozhraní Azu
 
 1. Nyní se v Azure Portal stanete dvěma kolekcemi vytvořenými v Cosmos DB.
 
-    ![Kurz Node.js – snímek obrazovky Azure Portal se zobrazeným účtem Azure Cosmos DB se zvýrazněnými názvy více kolekcí – databáze Node][multiple-coll]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-mutliple-collections.png" alt-text="KurzNode.js – snímek obrazovky Azure Portal se zobrazeným účtem Azure Cosmos DB se zvýrazněnými názvy více kolekcí – databáze Node":::
 
 1. Nakonec načteme data z Cosmos DB. Vzhledem k tomu, že používáme výchozí provozní model Mongoose, probíhá čtení stejným způsobem jako jakákoli jiná čtení pomocí Mongoose.
 
@@ -299,7 +299,7 @@ Tady vytvoříme základní objektový model, nadefinujeme odlišující klíč 
 
 1. Pokud se teď vrátíte na web Azure Portal, zjistíte, že máte pouze jednu kolekci ```alldata``` obsahující data modelů Family i VacationDestinations.
 
-    ![Kurz Node.js – snímek obrazovky Azure Portal se zobrazeným účtem Azure Cosmos DB s názvem kolekce zvýrazněný – databáze Node][alldata]
+   :::image type="content" source="./media/mongodb-mongoose/mongo-collections-alldata.png" alt-text="KurzNode.js – snímek obrazovky Azure Portal se zobrazeným účtem Azure Cosmos DB s názvem kolekce zvýrazněný – databáze Node":::
 
 1. Všimněte si také, že každý objekt má jiný atribut ```__type```, který pomáhá s odlišováním těchto dvou různých objektových modelů.
 
@@ -323,6 +323,4 @@ Jak vidíte, pracovat s diskriminátory Mongoose je snadné. Takže pokud máte 
 - Naučte se [používat Robo 3T](mongodb-robomongo.md) s rozhraním API Azure Cosmos DB pro MongoDB.
 - Prozkoumejte [ukázky](mongodb-samples.md) MONGODB s rozhraním API Azure Cosmos DB pro MongoDB.
 
-[alldata]: ./media/mongodb-mongoose/mongo-collections-alldata.png
-[multiple-coll]: ./media/mongodb-mongoose/mongo-mutliple-collections.png
 [dbleveltp]: ./media/mongodb-mongoose/db-level-throughput.png

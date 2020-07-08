@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dceb7dc6ce6f2b97bbaad0b2db129611833eb30f
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.openlocfilehash: 985342b19baad8b9210e985c9c7dfb9482708a0c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743826"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023707"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Přiřazení rolí prostředků Azure v Privileged Identity Management
 
@@ -47,33 +47,31 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění k roli prost�
 
 1. Vyberte **prostředky Azure**.
 
-1. Pomocí **filtru prostředků** vyfiltrujte seznam spravovaných prostředků.
+1. Pomocí filtru prostředků Najděte spravované prostředky, které hledáte.
 
     ![Seznam prostředků Azure, které se mají spravovat](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. Vyberte prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
+1. Vyberte prostředek, který chcete spravovat, a otevřete stránku Přehled prostředků.
 
-1. V části Spravovat vyberte **role** , abyste viděli seznam rolí pro prostředky Azure.
+1. V části **Spravovat**vyberte **role** , abyste viděli seznam rolí pro prostředky Azure.
 
     ![Role prostředků Azure](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. Vyberte **Přidat člena** a otevřete tak podokno nové přiřazení.
+1. Výběrem **Přidat přiřazení** otevřete podokno **Přidat přiřazení** .
 
-1. Vyberte **Vybrat roli** a otevřete tak podokno vybrat roli.
+1. Vyberte **Vybrat roli** a otevřete stránku **Vybrat roli** .
 
     ![Podokno nového přiřazení](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
 1. Vyberte roli, kterou chcete přiřadit, a potom klikněte na **Vybrat**.
 
-    Otevře se podokno vybrat člena nebo skupinu.
+    Otevře se podokno **Vybrat člena nebo skupinu** .
 
 1. Vyberte člena nebo skupinu, které chcete přiřadit k roli, a potom klikněte na **Vybrat**.
 
     ![Vybrat člena nebo podokno skupiny](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-    Otevře se podokno nastavení členství.
-
-1. V seznamu **Typ přiřazení** vyberte možnost **oprávněné** nebo **aktivní**.
+1. Na kartě **Nastavení** v seznamu **Typ přiřazení** vyberte možnost **oprávněné** nebo **aktivní**.
 
     ![Podokno nastavení členství](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
@@ -83,19 +81,11 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění k roli prost�
 
     - **Aktivní** přiřazení nevyžadují, aby člen prováděl žádnou akci pro použití role. Členové přiřazení jako aktivní mají vždy přiřazená oprávnění k této roli.
 
-1. Pokud má být přiřazení trvalé (trvale oprávněné nebo trvale přiřazené), zaškrtněte políčko **trvale** .
+1. Chcete-li zadat konkrétní dobu trvání přiřazení, změňte počáteční a koncové datum a čas.
 
-    V závislosti na nastavení role se nemusí toto zaškrtávací políčko zobrazovat nebo může být neměnitelné.
+1. Po dokončení vyberte **přiřadit**.
 
-1. Chcete-li zadat konkrétní dobu trvání přiřazení, zrušte zaškrtnutí políčka a upravte pole počáteční a/nebo koncové datum a čas.
-
-    ![Nastavení členství – datum a čas](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. Po dokončení vyberte **Hotovo**.
-
-    ![Nové přiřazení – přidat](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
-
-1. Chcete-li vytvořit nové přiřazení role, vyberte **Přidat**. Zobrazí se oznámení o stavu.
+1. Po vytvoření nového přiřazení role se zobrazí oznámení o stavu.
 
     ![Nové přiřazení – oznámení](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
@@ -107,9 +97,9 @@ Pomocí těchto kroků aktualizujete nebo odeberete existující přiřazení ro
 
 1. Vyberte **prostředky Azure**.
 
-1. Vyberte prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
+1. Vyberte prostředek, který chcete spravovat, a otevřete jeho stránku Přehled.
 
-1. V části Spravovat vyberte **role** , abyste viděli seznam rolí pro prostředky Azure.
+1. V části **Spravovat**vyberte **role** , abyste viděli seznam rolí pro prostředky Azure.
 
     ![Role prostředků Azure – vybrat roli](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 

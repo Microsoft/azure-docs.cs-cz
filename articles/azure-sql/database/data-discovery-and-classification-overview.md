@@ -2,7 +2,7 @@
 title: Zjišťování a klasifikace dat
 description: Klasifikace dat & klasifikace pro Azure SQL Database, spravovaná instance Azure SQL a Azure synapse Analytics
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=1
 titleSuffix: Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse
@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 0f1e43e4300cff6fba1c71d2b7740a3b2b678253
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 8e04cb87895f00e1ee992745c43a884596bd8398
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218941"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85987261"
 ---
 # <a name="data-discovery--classification"></a>Zjišťování a klasifikace dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

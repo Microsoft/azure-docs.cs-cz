@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 49b159434497d4b455a338ba88058d73d7de10ee
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773130"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85985422"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Řešení na virtuálních počítačích Azure
 
@@ -69,6 +69,9 @@ az vm list-skus
     --size dc 
     --query "[?family=='standardDCSv2Family']"
 ```
+### <a name="dedicated-host-requirements"></a>Požadavky na vyhrazený hostitel
+Nasazení **Standard_DC8_v2** velikosti virtuálního počítače ve skupině virtuálních počítačů řady DCSv2-Series zachová celý hostitel a nebude se sdílet s ostatními klienty nebo předplatnými. Tato rodina SKU virtuálního počítače poskytuje izolaci, kterou možná budete potřebovat, aby splňovala zákonné požadavky na dodržování předpisů a zabezpečení, které jsou obvykle splněné pomocí vyhrazené hostitelské služby. Když zvolíte **Standard_DC8_v2** SKU, fyzický hostitelský server bude přidělovat všechny dostupné hardwarové prostředky, včetně paměti EPC jenom pro virtuální počítač. Upozorňujeme, že tato funkce existuje v rámci návrhu infrastruktury a všechny funkce **Standard_DC8_v2** budou podporované. Toto nasazení není stejné jako služba [vyhrazeného hostitele Azure](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) , kterou poskytují jiné rodiny virtuálních počítačů Azure.
+
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 

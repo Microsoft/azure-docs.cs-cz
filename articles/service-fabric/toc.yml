@@ -278,6 +278,8 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: Zálohování oddílu na vyžádání
               href: service-fabric-backup-restore-service-ondemand-backup.md
+            - name: Zobrazení a úprava zálohy spolehlivé kolekce v režimu offline
+              href: backup-explorer.md
         - name: Balíčky kódu inicializátoru
           href: initializer-codepackages.md
         - name: Spuštění až do konce

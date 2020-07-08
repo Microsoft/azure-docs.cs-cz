@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 2032ba11c307adda7035d64828d5089da49bedba
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307583"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86023019"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Ladění chyb při spuštění vlastní aplikace příkazů
 
@@ -27,9 +27,8 @@ Pokud vaše aplikace spouštět vlastní příkazy z [klientské aplikace (se sa
 
 | Kód chyby | Podrobnosti |
 | ------- | -------- |
-| 401 | AuthenticationFailure: upgrade WebSocket se nezdařil s chybou ověřování. |
-| 1000 | Překročila se maximální doba nečinnosti připojení protokolu WebSocket (> 300 000 ms). |
-| 1002 | Server vrátil stavový kód "404", když byl očekáván stavový kód "101". |
+| [401](#error-401) | AuthenticationFailure: upgrade WebSocket se nezdařil s chybou ověřování. |
+| [1002](#error-1002)] | Server vrátil stavový kód "404", když byl očekáván stavový kód "101". |
 
 ### <a name="error-401"></a>Chyba 401
 - Oblast zadaná v klientské aplikaci se neshoduje s oblastí vlastní aplikace příkazu.
@@ -37,9 +36,6 @@ Pokud vaše aplikace spouštět vlastní příkazy z [klientské aplikace (se sa
 - Klíč prostředku řeči je neplatný.
     
     Ujistěte se, že je klíč prostředku pro rozpoznávání řeči správný.
-
-### <a name="error-1000"></a>Chyba 1000 
-Nečinné připojení je serverem ukončeno po 5 minutách. Zkuste se znovu připojit.
 
 ### <a name="error-1002"></a>Chyba 1002 
 - Vaše aplikace vlastního příkazu není publikovaná.
@@ -49,10 +45,12 @@ Nečinné připojení je serverem ukončeno po 5 minutách. Zkuste se znovu při
 - Vaše vlastní příkaz applicationId není platný.
 
     Ujistěte se, že je ID aplikace vlastního příkazu správné.
-
-- Pokoušíte se o přístup k aplikaci vlastního příkazu mimo prostředek řeči.
+ aplikace vlastního příkazu mimo prostředek řeči
 
     Ujistěte se, že je v prostředku rozpoznávání řeči vytvořená aplikace vlastního příkazu.
+
+Další informace o řešení potíží s připojením najdete v referenčních [potížích klienta Windows Voice Assistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/clients/csharp-wpf#troubleshooting) .
+
 
 ## <a name="dialog-is-canceled"></a>Dialogové okno se zrušilo.
 
@@ -70,14 +68,14 @@ Událost CancelledDialog se skládá z kódu a popisu zrušení, jak je uvedeno 
 
 | Kód zrušení | Popis zrušení |
 | ------- | --------------- | ----------- |
-| MaxTurnThresholdReached | Po maximálním počtu zapínání se neudělal žádný pokrok. |
-| RecognizerQuotaExceeded | Překročila se kvóta využití nástroje pro rozpoznávání |
-| RecognizerConnectionFailed | Nepovedlo se připojit k nástroji pro rozpoznávání. |
-| RecognizerUnauthorized | K této aplikaci nelze přidružit z aktuálního předplatného. |
-| RecognizerInputExceededAllowedLength | Vstup překračuje maximální podporovanou délku pro nástroj pro rozpoznávání. |
-| RecognizerNotFound | Nástroj pro rozpoznávání nebyl nalezen |
-| RecognizerInvalidQuery | Neplatný dotaz pro nástroj pro rozpoznávání |
-| RecognizerError | Funkce rozpoznávání vrátí chybu. |
+| [MaxTurnThresholdReached](#no-progress-was-made-after-the-max-number-of-turns-allowed) | Po maximálním počtu zapínání se neudělal žádný pokrok. |
+| [RecognizerQuotaExceeded](#recognizer-usage-quota-exceeded) | Překročila se kvóta využití nástroje pro rozpoznávání |
+| [RecognizerConnectionFailed](#connection-to-the-recognizer-failed) | Nepovedlo se připojit k nástroji pro rozpoznávání. |
+| [RecognizerUnauthorized](#this-application-cannot-be-accessed-with-the-current-subscription) | K této aplikaci nelze přidružit z aktuálního předplatného. |
+| [RecognizerInputExceededAllowedLength](#input-exceeds-the-maximum-supported-length) | Vstup překračuje maximální podporovanou délku pro nástroj pro rozpoznávání. |
+| [RecognizerNotFound](#recognizer-not-found) | Nástroj pro rozpoznávání nebyl nalezen |
+| [RecognizerInvalidQuery](#invalid-query-for-the-recognizer) | Neplatný dotaz pro nástroj pro rozpoznávání |
+| [RecognizerError](#recognizer-return-an-error) | Funkce rozpoznávání vrátí chybu. |
 
 ### <a name="no-progress-was-made-after-the-max-number-of-turns-allowed"></a>Po maximálním počtu zapínání se neudělal žádný pokrok.
 Dialog se zruší, když se požadovaná patice po určitém počtu kláves úspěšně neaktualizovala. Maximální číslo buildu je 3.

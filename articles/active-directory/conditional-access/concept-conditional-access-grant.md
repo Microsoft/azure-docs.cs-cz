@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 07/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1dcc91c6a7b823cd89b3ce4bf4d611b9923f87d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558733"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86024441"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -39,6 +39,7 @@ Správci se můžou rozhodnout vyhovět jednomu nebo více ovládacím prvkům p
 - [Vyžadovat zařízení připojené k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md)
 - [Vyžadovat klientskou aplikaci schválenou](app-based-conditional-access.md)
 - [Vyžadování zásad ochrany aplikací](app-protection-based-conditional-access.md)
+- [Vyžadovat změnu hesla](#require-password-change)
 
 Když se správci rozhodnou tyto možnosti kombinovat, můžou zvolit následující metody:
 
@@ -134,6 +135,21 @@ Toto nastavení platí pro následující klientské aplikace:
     - K registraci zařízení se vyžaduje aplikace zprostředkovatele. V systému iOS je aplikace zprostředkovatele Microsoft Authenticator a v Androidu je Portál společnosti Intune aplikace.
 
 Informace najdete v článku [Postupy: vyžadování zásad ochrany aplikací a schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu](app-protection-based-conditional-access.md) pro příklady konfigurace.
+
+### <a name="require-password-change"></a>Vyžadovat změnu hesla 
+
+Když se zjistí riziko uživatele, použije se podmínky zásad rizika pro uživatele, kteří můžou správci bezpečně měnit heslo pomocí samoobslužného resetování hesla služby Azure AD. Pokud se zjistí riziko pro uživatele, můžou uživatelé provést Samoobslužné resetování hesla, aby mohli správci zabránit zbytečným hluku pro správce. 
+
+Když se uživateli zobrazí výzva ke změně hesla, bude se nejdřív vyžadovat ověření Multi-Factor Authentication. Budete chtít zajistit, aby všichni vaši uživatelé zaregistrovali službu Multi-Factor Authentication, takže budou připravené na případ, že se pro svůj účet zjistí riziko.  
+
+> [!WARNING]
+> Před aktivací zásad rizika uživatele musí být uživatelé předtím registrováni pro Samoobslužné resetování hesla. 
+
+Při konfiguraci zásady pomocí ovládacího prvku změny hesla existuje několik omezení.  
+
+1. Zásada musí být přiřazená ke všem cloudovým aplikacím. Tím zabráníte útočníkovi v použití jiné aplikace ke změně uživatelského hesla a resetování rizika účtu, a to pouhým přihlášením do jiné aplikace. 
+1. Vyžadování změny hesla nelze použít s jinými ovládacími prvky, jako je třeba vyhovující zařízení.  
+1. Ovládací prvek změny hesla se dá použít jenom s podmínkou přiřazení uživatele a skupiny, podmínky přiřazení cloudové aplikace (která musí být nastavená na všechny) a na rizikové podmínky uživatele. 
 
 ### <a name="terms-of-use"></a>Podmínky použití
 
