@@ -11,10 +11,9 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75864277"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Úlohy týmu vedoucích k týmovému zpracování týmových dat
@@ -77,7 +76,7 @@ Názvy zadané pro úložiště a adresáře v tomto kurzu předpokládají, že
 - Malá skupina pro datové vědy, která nemá více týmů pro datové vědy. 
 - Širší skupina pro datové vědy s více týmy pro datové vědy, které si ale přeje optimalizovat spolupráci s aktivitami, jako je plánování sprintů na úrovni skupiny. 
 
-Pokud se týmy rozhodnou, že mají svá vlastní úložiště v rámci jedné skupiny projektů, vedoucí týmu by měl vytvořit úložiště s názvy, jako * \<je název týmu>Template* a * \<>nástrojů týmu*. Např.: *TeamATemplate* a *TeamAUtilities*. 
+Pokud se týmy rozhodnou, že mají svá vlastní úložiště v rámci jedné skupiny projektů, vedoucí týmu by měl vytvořit úložiště s názvy, jako je * \<TeamName> Šablona* a * \<TeamName> nástroje*. Např.: *TeamATemplate* a *TeamAUtilities*. 
 
 V každém případě vedoucí týmu potřebuje nechat své členy týmu, aby věděli, které šablony a úložiště nástrojů se mají nastavit a klonovat. Vedoucí projektu by měli postupovat podle [úkolů vedoucího týmu pro datové vědy](project-lead-tasks.md) k vytváření úložišť projektů, ať už v samostatných projektech nebo v jednom projektu. 
 
@@ -85,17 +84,17 @@ V každém případě vedoucí týmu potřebuje nechat své členy týmu, aby v�
 
 Vytvoření samostatného projektu pro váš tým:
 
-1. Ve webovém prohlížeči přejdete na domovskou stránku organizace Azure DevOps ve vaší skupině na adrese URL *https\//\<: název serveru>\</název organizace>* a vyberte **Nový projekt**. 
+1. Ve webovém prohlížeči přejdete na domovskou stránku organizace Azure DevOps, na adrese URL *https: \/ / \<server name> / \<organization name> *a vyberte **Nový projekt**. 
    
    ![Vybrat nový projekt](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
 1. V dialogovém okně **vytvořit projekt** zadejte do pole **název projektu**název svého týmu, například *myTeam*, a pak vyberte **Upřesnit**. 
    
-1. V části **Správa verzí**vyberte **Git**a v části **proces pracovní položky**vyberte **agilní**. Pak vyberte **vytvořit**. 
+1. V části **Správa verzí**vyberte **Git**a v části **proces pracovní položky**vyberte **agilní**. Potom vyberte **Vytvořit**. 
    
    ![Vytvoření projektu](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-Otevře se stránka **se souhrnem** týmového projektu s adresou URL stránky *https\//\<: název\<serveru>/název\<organizace>/název týmu>*.
+Otevře se stránka s **přehledem** týmového projektu s adresou URL stránky *https: \/ / \<server name> / \<organization name> / \<team name> *.
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Přejmenujte výchozí úložiště MyTeam na TeamUtilities
 
@@ -140,7 +139,7 @@ Pokud chcete naplnit svá úložiště v týmu obsahem společných úložišť 
    
    ![Vybrat Import](./media/team-lead-tasks/import-repo.png)
    
-1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a v části **Adresa URL klonu**zadejte adresu URL pro úložiště šablon společné šablony. Adresa URL je *https:\//\<název serveru>/\<název organizace>/_git/\<název úložiště>*. Příklad: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. V dialogovém okně **importovat úložiště Git** jako **typ zdroje**vyberte **Git** a v části **Adresa URL klonu**zadejte adresu URL pro úložiště šablon společné šablony. Adresa URL je *https: \/ / \<server name> / \<organization name> /_git/ \<repository name> *. Příklad: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Vyberte **Importovat**. Obsah úložiště šablony skupiny se importuje do vašeho týmového úložiště šablony. 
    
@@ -199,7 +198,7 @@ Klonování úložišť:
    
 1. Přejděte do adresáře, který jste vytvořili.
    
-1. V Gitu bash spusťte příkaz `git clone <clone URL>`, kde \<adresa URL klonování> je adresa URL, kterou jste zkopírovali z dialogového okna **klonování** .
+1. V Gitu bash spusťte příkaz `git clone <clone URL>` , kde \<clone URL> je adresa URL, kterou jste zkopírovali z dialogového okna **klonování** .
    
    Například pomocí jednoho z následujících příkazů naklonujte úložiště **TeamUtilities** do adresáře *myTeam* na místním počítači. 
    

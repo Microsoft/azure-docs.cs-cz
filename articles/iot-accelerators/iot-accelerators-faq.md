@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75647709"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
@@ -30,7 +29,7 @@ Zdrojový kód je uložený v následujících úložištích GitHub:
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Jaké sady SDK můžu použít k vývoji klientů zařízení pro akcelerátory řešení?
 
-Odkazy na sady SDK zařízení IoT pro jazyky (C, .NET, Java, Node. js, Python) můžete najít v úložištích [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub.
+Odkazy na sady SDK pro zařízení IoT v různých jazycích (C, .NET, Java, Node.js, Python) najdete v úložištích [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) GitHub.
 
 Pokud používáte zařízení DevKit, můžete najít materiály a ukázky v úložišti GitHub [sady IoT DevKit SDK](https://github.com/Microsoft/devkit-sdk) .
 
@@ -65,7 +64,7 @@ Pokud jste si jisti, že máte předplatné Azure, ověřte mapování tenanta p
 
 ### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Kde najdu informace o předchozí verzi řešení vzdáleného monitorování?
 
-Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+Předchozí verze akcelerátoru řešení vzdáleného monitorování byla známá jako předkonfigurované řešení vzdáleného monitorování IoT Suite. Archivovanou dokumentaci najdete na adrese [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/) .
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Je nový akcelerátor řešení dostupný ve stejné geografické oblasti jako stávající řešení?
 
@@ -108,6 +107,6 @@ V současné době nemůžete vytvořit akcelerátor řešení s [Microsoft Azur
 Můžete si také prostudovat některé další funkce a možnosti akcelerátorů řešení IoT:
 
 * [Prozkoumejte možnosti akcelerátoru řešení vzdáleného monitorování](quickstart-remote-monitoring-deploy.md)
-* [Přehled akcelerátorů řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
+* [Přehled akcelerátoru řešení prediktivní údržby](iot-accelerators-predictive-overview.md)
 * [Nasadit akcelerátor řešení propojené továrny](quickstart-connected-factory-deploy.md)
 * [Zabezpečení IoT od počátku](/azure/iot-fundamentals/iot-security-ground-up)

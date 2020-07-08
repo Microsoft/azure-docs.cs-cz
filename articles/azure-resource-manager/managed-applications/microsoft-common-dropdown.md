@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652382"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown – element uživatelského rozhraní
@@ -55,9 +54,9 @@ Ovládací prvek výběru s rozevíracím seznamem.
 ## <a name="remarks"></a>Poznámky
 
 - Popisek pro `constraints.allowedValues` je zobrazený text pro položku a její hodnota je výstupní hodnota prvku, když je vybraná.
-- Je-li tento parametr zadán, výchozí hodnota musí být popisek `constraints.allowedValues`přítomný v. Pokud není zadán, je vybrána první položka `constraints.allowedValues` v. Výchozí hodnota je **null**.
+- Je-li tento parametr zadán, výchozí hodnota musí být popisek přítomný v `constraints.allowedValues` . Pokud není zadán, je vybrána první položka v `constraints.allowedValues` . Výchozí hodnota je **null**.
 - `constraints.allowedValues`musí mít alespoň jednu položku.
-- Chcete-li emulovat hodnotu, která není požadována, přidejte položku s popiskem a hodnotou `""` (prázdný řetězec) do. `constraints.allowedValues`
+- Chcete-li emulovat hodnotu, která není požadována, přidejte položku s popiskem a hodnotou `""` (prázdný řetězec) do `constraints.allowedValues` .
 
 ## <a name="next-steps"></a>Další kroky
 

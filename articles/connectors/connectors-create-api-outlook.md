@@ -8,15 +8,14 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75707182"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Správa e-mailů, kalendářů a kontaktů v Outlook.com pomocí Azure Logic Apps
 
-Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Outlook.com](/connectors/outlook/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují svůj @outlook.com účet @hotmail.com nebo pomocí vytváření Logic Apps. Tyto úlohy můžete automatizovat například takto:
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Outlook.com](/connectors/outlook/)můžete vytvářet automatizované úlohy a pracovní postupy, které spravují svůj @outlook.com @hotmail.com účet nebo pomocí vytváření Logic Apps. Tyto úlohy můžete automatizovat například takto:
 
 * Získání, odeslání a odpověď na e-mail.
 * Naplánujte schůzky v kalendáři.
@@ -25,7 +24,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Ou
 Můžete použít libovolný Trigger ke spuštění pracovního postupu, například při přijetí nového e-mailu, při aktualizaci položky kalendáře nebo v případě, že dojde k události v rozdílové službě. Můžete použít akce, které reagují na událost triggeru, například odeslat e-mail nebo vytvořit novou událost v kalendáři.
 
 > [!NOTE]
-> K automatizaci úloh pro pracovní účet Microsoft @fabrikam.onmicrosoft.com, jako je například, použijte [konektor Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md).
+> K automatizaci úloh pro pracovní účet Microsoft, jako @fabrikam.onmicrosoft.com je například, použijte [konektor Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -61,7 +60,7 @@ Pokud chcete na Trigger reagovat, přidejte další akci. Můžete například p
 
 1. Pokud chcete přidat akci jako poslední krok pracovního postupu, vyberte **Nový krok**. 
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte "outlook.com" jako filtr. V tomto příkladu vyberte **Odeslat e-mail**. 
 

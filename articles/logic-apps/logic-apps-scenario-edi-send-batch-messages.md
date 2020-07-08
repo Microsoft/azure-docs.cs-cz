@@ -8,10 +8,9 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666665"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Zprávy EDI Exchange jako dávky nebo skupiny mezi obchodními partnery v Azure Logic Apps
@@ -98,7 +97,7 @@ Pro tohoto přijímače Batch zadáte režim dávky, název, kritéria pro vydá
       | **Název smlouvy X12** | Otevřete seznam a vyberte svou stávající smlouvu. <p>Pokud je seznam prázdný, ujistěte se, že jste provedli [propojení aplikace logiky s účtem pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account) s požadovanou smlouvou. | 
       | **Batch** | Klikněte do tohoto pole a po zobrazení seznamu dynamický obsah vyberte token pro **název dávky** . | 
       | **PartitionName** | Klikněte do tohoto pole a po zobrazení seznamu dynamický obsah vyberte možnost token **názvu oddílu** . | 
-      | **Items** | Zavřete pole podrobnosti položky a potom klikněte do tohoto pole. Až se zobrazí seznam dynamického obsahu, vyberte token **dávkových položek** . | 
+      | **Položky** | Zavřete pole podrobnosti položky a potom klikněte do tohoto pole. Až se zobrazí seznam dynamického obsahu, vyberte token **dávkových položek** . | 
       ||| 
 
       ![Podrobnosti o akci dávkového kódování](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-details.png)

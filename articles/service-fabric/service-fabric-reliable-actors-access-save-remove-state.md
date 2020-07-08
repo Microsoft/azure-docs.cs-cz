@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645629"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Přístup, uložení a odebrání stavu Reliable Actors
@@ -28,7 +27,7 @@ Stav je k dispozici prostřednictvím Správce stavu pomocí klíče. Metody spr
 * Objekt actor se znovu aktivuje buď po deaktivaci, nebo po selhání.
 * Stav stránek poskytovatele stavu na disk. Toto chování závisí na implementaci zprostředkovatele stavu. Výchozí zprostředkovatel stavu pro `Persisted` nastavení má toto chování.
 
-Stav můžete načíst pomocí standardní operace *Get* , která vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java), pokud pro tento klíč neexistuje položka:
+Stav můžete načíst pomocí standardní operace *Get* , která vyvolá `KeyNotFoundException` (C#) nebo `NoSuchElementException` (Java), pokud pro tento klíč neexistuje položka:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -139,7 +138,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Můžete přidat stav pomocí metody *Add* . Tato metoda vyvolá `InvalidOperationException`(C#) nebo `IllegalStateException`(Java), když se pokusí přidat klíč, který již existuje.
+Můžete přidat stav pomocí metody *Add* . Tato metoda vyvolá `InvalidOperationException` (C#) nebo `IllegalStateException` (Java), když se pokusí přidat klíč, který již existuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -239,7 +238,7 @@ interface MyActor {
 ```
 
 ## <a name="remove-state"></a>Odebrat stav
-Stav můžete trvale odebrat ze Správce stavu objektu actor voláním metody *Remove* . Tato metoda vyvolá `KeyNotFoundException`(C#) nebo `NoSuchElementException`(Java), když se pokusí odebrat klíč, který neexistuje.
+Stav můžete trvale odebrat ze Správce stavu objektu actor voláním metody *Remove* . Tato metoda vyvolá `KeyNotFoundException` (C#) nebo `NoSuchElementException` (Java), když se pokusí odebrat klíč, který neexistuje.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]

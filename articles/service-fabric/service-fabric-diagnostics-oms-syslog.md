@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
 ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645748"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric Linux v protokolu syslog
@@ -28,11 +27,11 @@ Každá událost syslog má 4 součásti
 * Zpráva
 * Severity
 
-SyslogConsumer zapisuje všechny události platforem pomocí zařízení `Local0`. Změnou konfigurace konfigurace můžete aktualizovat na jakékoli platné zařízení. Použitá identita je `ServiceFabric`. Pole zpráva obsahuje celou událost serializovanou ve formátu JSON, aby mohla být dotazována a spotřebována řadou nástrojů. 
+SyslogConsumer zapisuje všechny události platforem pomocí zařízení `Local0` . Změnou konfigurace konfigurace můžete aktualizovat na jakékoli platné zařízení. Použitá identita je `ServiceFabric` . Pole zpráva obsahuje celou událost serializovanou ve formátu JSON, aby mohla být dotazována a spotřebována řadou nástrojů. 
 
 ## <a name="enable-syslogconsumer"></a>Povolit SyslogConsumer
 
-Pokud chcete SyslogConsumer povolit, musíte provést upgrade clusteru. `fabricSettings` Oddíl je třeba aktualizovat pomocí následujícího kódu. Všimněte si, že tento kód obsahuje jenom oddíly týkající se SyslogConsumer.
+Pokud chcete SyslogConsumer povolit, musíte provést upgrade clusteru. `fabricSettings`Oddíl je třeba aktualizovat pomocí následujícího kódu. Všimněte si, že tento kód obsahuje jenom oddíly týkající se SyslogConsumer.
 
 ```json
     "fabricSettings": [
@@ -75,9 +74,9 @@ Pokud chcete SyslogConsumer povolit, musíte provést upgrade clusteru. `fabricS
 ```
 
 Tady jsou změny, které se mají zavolat.
-1. V části Common se používá nový parametr `LinuxStructuredTracesEnabled`. **To je nutné, aby při odeslání do protokolu syslog byly strukturované a serializované události systému Linux.**
+1. V části Common se používá nový parametr `LinuxStructuredTracesEnabled` . **To je nutné, aby při odeslání do protokolu syslog byly strukturované a serializované události systému Linux.**
 2. V části Diagnostika byl přidán nový ConsumerInstance: SyslogConsumer. To oznamuje platformě další příjemce událostí. 
-3. Nový oddíl SyslogConsumer musí mít `IsEnabled` jako. `true` Je nakonfigurovaná tak, aby se zařízení Local0 automaticky používalo. To můžete přepsat přidáním dalšího parametru.
+3. Nový oddíl SyslogConsumer musí mít `IsEnabled` jako `true` . Je nakonfigurovaná tak, aby se zařízení Local0 automaticky používalo. To můžete přepsat přidáním dalšího parametru.
 
 ```json
     {
@@ -89,7 +88,7 @@ Tady jsou změny, které se mají zavolat.
 ## <a name="azure-monitor-logs-integration"></a>Integrace protokolů Azure Monitor
 Tyto události syslog můžete číst v monitorovacím nástroji, jako jsou protokoly Azure Monitor. Pracovní prostor Log Analytics můžete vytvořit pomocí Azure Marketplace pomocí těchto [pokynů]. (.. /Azure-monitor/Learn/Quick-Create-Workspace.MD) je také potřeba přidat agenta Log Analytics do clusteru, aby bylo možné tato data shromažďovat a odesílat do pracovního prostoru. To je stejný agent, který se používá ke shromažďování čítačů výkonu. 
 
-1. Přejít na `Advanced Settings` okno
+1. Přejít `Advanced Settings` na okno
 
     ![Nastavení pracovního prostoru](media/service-fabric-diagnostics-oms-syslog/workspace-settings.png)
 
@@ -101,7 +100,7 @@ Tyto události syslog můžete číst v monitorovacím nástroji, jako jsou prot
 5. Přejděte do Průzkumníku dotazů kliknutím `Logs` do nabídky prostředku v pracovním prostoru a spusťte dotazování.
 
     ![Protokoly pracovního prostoru](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
-6. Můžete zadávat dotazy na `Syslog` tabulku, která je `ServiceFabric` v podobě procesu. Níže uvedený dotaz ukazuje, jak analyzovat JSON v události a zobrazit jeho obsah.
+6. Můžete zadávat dotazy na tabulku, která je v `Syslog` `ServiceFabric` podobě procesu. Níže uvedený dotaz ukazuje, jak analyzovat JSON v události a zobrazit jeho obsah.
 
 ```kusto
     Syslog | where ProcessName == "ServiceFabric" | extend $payload = parse_json(SyslogMessage) | project $payload

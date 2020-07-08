@@ -9,10 +9,9 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: 1c79d0390a80a1358ddb09707fbabf6a5a2affdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75660235"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Řešení Azure Storage pro služby ML ve službě Azure HDInsight
@@ -41,7 +40,7 @@ Pokud jste při vytváření clusteru služby ML zadali více než jeden účet 
 
 1. Pomocí klienta SSH se připojte k hraničnímu uzlu clusteru. Informace o použití SSH s clustery HDInsight najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
   
-2. Zkopírujte ukázkový soubor mysamplefile. CSV do adresáře/Share.
+2. Zkopírujte ukázkový soubor mysamplefile.csv do adresáře/Share.
 
     ```bash
     hadoop fs –mkdir /share
@@ -70,11 +69,11 @@ Pokud jste při vytváření clusteru služby ML zadali více než jeden účet 
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
     ```
 
-Všechny odkazy adresáře a souborů odkazují na účet `wasbs://container1@storage1.blob.core.windows.net`úložiště. Toto je **výchozí účet úložiště** , který je přidružený ke clusteru HDInsight.
+Všechny odkazy adresáře a souborů odkazují na účet úložiště `wasbs://container1@storage1.blob.core.windows.net` . Toto je **výchozí účet úložiště** , který je přidružený ke clusteru HDInsight.
 
 ### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>Použití dalšího úložiště se službami ML v HDInsight
 
-Nyní předpokládejme, že chcete zpracovat soubor s názvem mysamplefile1. csv, který je umístěn v adresáři/Private **container2** v **storage2**.
+Nyní předpokládejme, že chcete zpracovat soubor s názvem mysamplefile1.csv, který je umístěn v adresáři/Private **container2** v **storage2**.
 
 V kódu R nastavte odkaz na uzel název na účet úložiště **storage2** .
 
@@ -98,7 +97,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 ```
 
-Všechny odkazy adresáře a souborů teď odkazují na účet `wasbs://container2@storage2.blob.core.windows.net`úložiště. Toto je **název uzlu** , který jste zadali.
+Všechny odkazy adresáře a souborů teď odkazují na účet úložiště `wasbs://container2@storage2.blob.core.windows.net` . Toto je **název uzlu** , který jste zadali.
 
 Nakonfigurujte `/user/RevoShare/<SSH username>` adresář v **storage2** následujícím způsobem:
 
@@ -169,7 +168,7 @@ hadoop fs –ls adl://rkadl1.azuredatalakestore.net/share
 
 K dispozici je také vhodná možnost úložiště dat pro použití na hraničním uzlu s názvem [soubory Azure](https://azure.microsoft.com/services/storage/files/). Umožňuje připojení sdílené složky souborů Azure Storage k systému souborů Linux. Tato možnost může být užitečná pro ukládání datových souborů, skriptů R a objektů výsledků, které může být potřeba později, zejména v případě, kdy je vhodné použít nativní souborový systém na hraničním uzlu místo HDFS.
 
-Hlavní výhodou souborů Azure je, že sdílené složky je možné připojit a používat v jakémkoli systému, který má podporovaný operační systém, jako je Windows nebo Linux. Můžete ho například použít v jiném clusteru HDInsight, který vy nebo někdo z týmu používá virtuální počítač Azure, nebo dokonce místní systém. Další informace naleznete v tématu:
+Hlavní výhodou souborů Azure je, že sdílené složky je možné připojit a používat v jakémkoli systému, který má podporovaný operační systém, jako je Windows nebo Linux. Můžete ho například použít v jiném clusteru HDInsight, který vy nebo někdo z týmu používá virtuální počítač Azure, nebo dokonce místní systém. Další informace naleznete v tématech:
 
 - [Jak používat Azure File Storage s Linuxem](../../storage/files/storage-how-to-use-files-linux.md)
 - [Jak používat službu Azure File Storage ve Windows](../../storage/files/storage-dotnet-how-to-use-files.md)

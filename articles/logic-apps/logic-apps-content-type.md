@@ -7,10 +7,9 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666869"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Zpracování typů obsahu v Azure Logic Apps
@@ -99,7 +98,7 @@ Logic Apps poskytuje možnost generovat uživatelsky přívětivé tokeny, kter�
      }
      ```
 
-  3. V žádosti se ujistěte, že jste zahrnuli `Content-Type` hlavičku a nastavili hodnotu hlavičky na `application/json`.
+  3. V žádosti se ujistěte, že jste zahrnuli `Content-Type` hlavičku a nastavili hodnotu hlavičky na `application/json` .
 
 * **Analyzovat akci JSON**
 
@@ -113,14 +112,14 @@ Logic Apps poskytuje možnost generovat uživatelsky přívětivé tokeny, kter�
 
 ## <a name="textplain"></a>Text/prostý
 
-Když aplikace logiky obdrží zprávy HTTP s `Content-Type` hlavičkou nastavenou na `text/plain`, vaše aplikace logiky ukládá tyto zprávy v nezpracované podobě. Pokud zahrnete tyto zprávy do následujících akcí bez přetypování, žádosti dostanou `Content-Type` s hlavičkou `text/plain`nastavenou na. 
+Když aplikace logiky obdrží zprávy HTTP s `Content-Type` hlavičkou nastavenou na `text/plain` , vaše aplikace logiky ukládá tyto zprávy v nezpracované podobě. Pokud zahrnete tyto zprávy do následujících akcí bez přetypování, žádosti dostanou s `Content-Type` hlavičkou nastavenou na `text/plain` . 
 
 Například když pracujete s plochým souborem, můžete získat požadavek HTTP s `Content-Type` hlavičkou nastavenou na `text/plain` typ obsahu:
 
 `Date,Name,Address`</br>
 `Oct-1,Frank,123 Ave`
 
-Pokud pak tuto žádost odešlete v pozdější akci jako tělo jiné žádosti, například `@body('flatfile')`, tento druhý požadavek má také `Content-Type` záhlaví, které je nastaveno na. `text/plain` Pokud pracujete s daty, která jsou prostého textu, ale nezadali jste záhlaví, můžete tato data ručně přetypovat na text pomocí [funkce String ()](../logic-apps/workflow-definition-language-functions-reference.md#string) , jako je tento výraz: 
+Pokud pak tuto žádost odešlete v pozdější akci jako tělo jiné žádosti, například `@body('flatfile')` , tento druhý požadavek má také `Content-Type` záhlaví, které je nastaveno na `text/plain` . Pokud pracujete s daty, která jsou prostého textu, ale nezadali jste záhlaví, můžete tato data ručně přetypovat na text pomocí [funkce String ()](../logic-apps/workflow-definition-language-functions-reference.md#string) , jako je tento výraz: 
 
 `@string(triggerBody())`
 
@@ -128,11 +127,11 @@ Pokud pak tuto žádost odešlete v pozdější akci jako tělo jiné žádosti,
 
 ## <a name="applicationxml-and-applicationoctet-stream"></a>Application/XML a Application/oktet-Stream
 
-Logic Apps vždy zachová `Content-Type` v přijatém požadavku nebo odpovědi HTTP. Takže pokud vaše aplikace logiky obdrží obsah `Content-Type` s nastavením `application/octet-stream`na, a tento obsah zahrnete do pozdější akce bez přetypování, odchozí požadavek má `Content-Type` také nastaven na `application/octet-stream`. Tímto způsobem Logic Apps můžou zaručit, že se data během přesouvání přes pracovní postup nebudou ztratit. Stav akce nebo vstupy a výstupy jsou však uloženy v objektu JSON při přesunu stavu prostřednictvím pracovního postupu. 
+Logic Apps vždy zachová `Content-Type` v přijatém požadavku nebo odpovědi HTTP. Takže pokud vaše aplikace logiky obdrží obsah s `Content-Type` nastavením na `application/octet-stream` , a tento obsah zahrnete do pozdější akce bez přetypování, odchozí požadavek má také `Content-Type` nastaven na `application/octet-stream` . Tímto způsobem Logic Apps můžou zaručit, že se data během přesouvání přes pracovní postup nebudou ztratit. Stav akce nebo vstupy a výstupy jsou však uloženy v objektu JSON při přesunu stavu prostřednictvím pracovního postupu. 
 
 ## <a name="converter-functions"></a>Funkce převaděče
 
-Aby bylo možné zachovat některé typy dat, Logic Apps převede obsah na binární řetězec s kódováním base64 s odpovídajícími metadaty, `$content` která zachovává `$content-type`jak datovou část, tak i, které jsou automaticky převedeny. 
+Aby bylo možné zachovat některé typy dat, Logic Apps převede obsah na binární řetězec s kódováním base64 s odpovídajícími metadaty, která zachovává jak `$content` datovou část, tak i `$content-type` , které jsou automaticky převedeny. 
 
 Tento seznam popisuje, jak Logic Apps převádí obsah při použití těchto [funkcí](../logic-apps/workflow-definition-language-functions-reference.md):
 
@@ -147,20 +146,20 @@ Tento seznam popisuje, jak Logic Apps převádí obsah při použití těchto [f
 * `dataUriToBinary()`: Převede identifikátor URI dat na binární řetězec.
 * `dataUriToString()`: Převede identifikátor URI dat na řetězec.
 
-Pokud například obdržíte požadavek HTTP, kde `Content-Type` je nastaveno na `application/xml`, například tento obsah:
+Pokud například obdržíte požadavek HTTP, kde je `Content-Type` nastaveno na `application/xml` , například tento obsah:
 
 ```html
 <?xml version="1.0" encoding="UTF-8" ?>
 <CustomerName>Frank</CustomerName>
 ```
 
-Tento obsah můžete přetypovat pomocí `@xml(triggerBody())` výrazu s funkcemi `xml()` a `triggerBody()` a pak později použít tento obsah. Nebo můžete použít `@xpath(xml(triggerBody()), '/CustomerName')` výraz s funkcemi `xpath()` a. `xml()` 
+Tento obsah můžete přetypovat pomocí `@xml(triggerBody())` výrazu s `xml()` `triggerBody()` funkcemi a a pak později použít tento obsah. Nebo můžete použít `@xpath(xml(triggerBody()), '/CustomerName')` výraz s `xpath()` `xml()` funkcemi a. 
 
 ## <a name="other-content-types"></a>Další typy obsahu
 
 Logic Apps pracuje s a podporuje další typy obsahu, ale může vyžadovat, abyste ručně získali tělo zprávy dekódováním `$content` proměnné.
 
-Předpokládejme například, že vaše aplikace logiky bude aktivována žádostí s typem `application/x-www-url-formencoded` obsahu. Chcete-li zachovat všechna data, `$content` proměnná v textu požadavku má datovou část, která je zakódována jako řetězec Base64:
+Předpokládejme například, že vaše aplikace logiky bude aktivována žádostí s `application/x-www-url-formencoded` typem obsahu. Chcete-li zachovat všechna data, `$content` Proměnná v textu požadavku má datovou část, která je zakódována jako řetězec Base64:
 
 `CustomerName=Frank&Address=123+Avenue`
 
@@ -184,4 +183,4 @@ Nebo můžete ručně získat přístup k datům pomocí výrazu, jako je např�
 
 `@string(body('formdataAction'))` 
 
-Pokud jste chtěli, aby odchozí požadavek měl stejné `application/x-www-url-formencoded` záhlaví typu obsahu, můžete žádost přidat do těla akce bez přetypování pomocí výrazu, jako je. `@body('formdataAction')` Tato metoda však funguje pouze v případě, že je text jediným parametrem ve `body` vstupu. Pokud se pokusíte použít `@body('formdataAction')` výraz v `application/json` žádosti, zobrazí se chyba za běhu, protože tělo je odesláno jako kódované.
+Pokud jste chtěli, aby odchozí požadavek měl stejné `application/x-www-url-formencoded` záhlaví typu obsahu, můžete žádost přidat do těla akce bez přetypování pomocí výrazu, jako je `@body('formdataAction')` . Tato metoda však funguje pouze v případě, že je text jediným parametrem ve `body` vstupu. Pokud se pokusíte použít `@body('formdataAction')` výraz v `application/json` žádosti, zobrazí se chyba za běhu, protože tělo je odesláno jako kódované.

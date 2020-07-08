@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 03/30/2017
 ms.openlocfilehash: 0f20bb5fb249ad6bac862afe2b0e8eee4b32e2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666546"
 ---
 # <a name="azure-serverless-overview-for-building-cloud-based-apps-and-solutions-with-azure-logic-apps-and-azure-functions"></a>Azure bez serveru: Přehled vytváření cloudových aplikací a řešení s využitím Azure Logic Apps a Azure Functions
@@ -33,7 +32,7 @@ Pokud chcete začít s Logic Apps, začněte [vytvořením první aplikace logik
 
 ## <a name="what-is-azure-functions"></a>Co je služba Azure Functions?
 
-Azure Functions je služba, která umožňuje snadno spouštět části kódu nebo funkce v cloudu. Můžete napsat jenom kód, který je nezbytný pro aktuální problém, aniž byste se museli starat o celou aplikaci nebo požadovanou infrastrukturu. Funkce můžou zvýšit produktivitu vývoje a můžete použít svůj vývojářský jazyk podle vlastního výběru, jako je C#, F #, Node. js, Python nebo PHP. Platíte jenom za čas, kdy váš kód běží, a Azure podle potřeby škáluje.
+Azure Functions je služba, která umožňuje snadno spouštět části kódu nebo funkce v cloudu. Můžete napsat jenom kód, který je nezbytný pro aktuální problém, aniž byste se museli starat o celou aplikaci nebo požadovanou infrastrukturu. Funkce můžou zvýšit produktivitu vývoje a můžete použít vývojářský jazyk podle vlastního výběru, jako je C#, F #, Node.js, Python nebo PHP. Platíte jenom za čas, kdy váš kód běží, a Azure podle potřeby škáluje.
 
 Pokud chcete začít s Azure Functions, začněte s [vytvořením první funkce Azure Functions](../azure-functions/functions-create-first-azure-function.md). Další technické informace o funkcích najdete v [referenčních](../azure-functions/functions-reference.md)informacích pro vývojáře.
 

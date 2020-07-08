@@ -6,10 +6,9 @@ ms.topic: reference
 ms.date: 12/07/2017
 ms.author: mikhegn
 ms.openlocfilehash: b13522b1d9f2acd2aa3f7923c1b623fab696056d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645680"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric proměnných prostředí
@@ -19,13 +18,13 @@ Service Fabric má pro každou instanci služby nastavenou předdefinované prom
 | Proměnná prostředí                         | Popis                                                            | Příklad                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | Název identifikátoru URI prostředků infrastruktury aplikace                                 | Fabric:/MyApplication                                                |
-| Fabric_CodePackageName                       | Název balíčku kódu, ke kterému patří proces              | kód                                                                 |
-| Fabric_Endpoint\_IPOrFQDN\_.*ServiceEndpoint*     | IP adresa nebo plně kvalifikovaný název domény koncového bodu                                 | 10.0.0.1                                                     |
-| Fabric\_–\_*koncový bod koncového* bodu              | Číslo portu pro koncový bod                                  | 8234                                                                 |
-| Fabric_Folder_App_Log                        | Složka protokolu                                                             | C:\\\\datový\\\\_App\\\\_Node_0 MyApplicationType_App12\\protokolu\\\\\\      |
-| Fabric_Folder_App_Temp                       | Dočasná složka                                                            | C:\\\\data\\\\_App\\\\_Node_0 MyApplicationType_App12\\Temp\\\\\\     |
-| Fabric_Folder_App_Work                       | Pracovní složka                                                            | C:\\\\data\\\\_App\\\\_Node_0 MyApplicationType_App12\\práci\\\\\\     |
-| Fabric_Folder_Application                    | Domovská složka aplikací                                           | C:\\\\data\\\\\\_App\\_Node_0\\MyApplicationType_App12\\             |
+| Fabric_CodePackageName                       | Název balíčku kódu, ke kterému patří proces              | Kód                                                                 |
+| Fabric_Endpoint \_ IPOrFQDN. \_ *ServiceEndpoint*     | IP adresa nebo plně kvalifikovaný název domény koncového bodu                                 | 10.0.0.1                                                     |
+| Fabric – \_ koncový bod koncového bodu \_ *ServiceEndpointName*              | Číslo portu pro koncový bod                                  | 8234                                                                 |
+| Fabric_Folder_App_Log                        | Složka protokolu                                                             | C: \\ \\ datový \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ protokolu      |
+| Fabric_Folder_App_Temp                       | Dočasná složka                                                            | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ TEMP     |
+| Fabric_Folder_App_Work                       | Pracovní složka                                                            | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12 \\ \\ práci     |
+| Fabric_Folder_Application                    | Domovská složka aplikací                                           | C: \\ \\ Data \\ \\ _App \\ \\ _Node_0 \\ \\ MyApplicationType_App12             |
 | Fabric_IsContainerHost                       | Logická hodnota určující, zda je proces kontejner                   | false (nepravda)                                                                |
 | Fabric_NodeId                                | ID uzlu, na kterém je spuštěný proces                            | bf865279ba277deb864a976fbf4c200e                                     |
 | Fabric_NodeIPOrFQDN                          | IP adresa nebo plně kvalifikovaný název domény uzlu, jak je uvedeno v souboru manifestu clusteru. | localhost nebo 10.0.0.1                                                |

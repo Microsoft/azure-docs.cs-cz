@@ -16,10 +16,9 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75749951"
 ---
 # <a name="azure-operational-security"></a>Provozní zabezpečení Azure
@@ -31,7 +30,7 @@ Víme, že zabezpečení je úloha v cloudu a jak důležité je, že najdete p�
 Abychom zákazníkům pomohli lépe pochopit pole bezpečnostních mechanismů implementovaných v rámci Microsoft Azure z provozních perspektiv od zákazníka i od Microsoftu, je tento dokument white paper "provozní zabezpečení Azure" napsán, který poskytuje komplexní přehled o provozním zabezpečení, které je k dispozici v systému Windows Azure.
 
 ### <a name="azure-platform"></a>Platforma Azure
-Azure je platforma veřejné cloudové služby, která podporuje širokou škálu operačních systémů, programovacích jazyků, architektur, nástrojů, databází a zařízení. Může spouštět kontejnery Linux s integrací Docker. Vytvářejte aplikace pomocí jazyků JavaScript, Python, .NET, PHP, Java a Node. js; Vytvořte back-endy pro zařízení s iOS, Androidem a Windows. Cloudová služba Azure podporuje stejné technologie jako miliony pro vývojáře a odborníky na IT, kteří už využívají a důvěřují jim.
+Azure je platforma veřejné cloudové služby, která podporuje širokou škálu operačních systémů, programovacích jazyků, architektur, nástrojů, databází a zařízení. Může spouštět kontejnery Linux s integrací Docker. Vytvářejte aplikace pomocí jazyků JavaScript, Python, .NET, PHP, Java a Node.js; Vytvořte back-endy pro zařízení s iOS, Androidem a Windows. Cloudová služba Azure podporuje stejné technologie jako miliony pro vývojáře a odborníky na IT, kteří už využívají a důvěřují jim.
 
 Když vytváříte nebo migrujete prostředky IT na, poskytovatele veřejné cloudové služby, kterého se spoléháte na schopnosti této organizace chránit vaše aplikace a data službami a ovládacími prvky, které poskytují ke správě zabezpečení cloudových prostředků.
 
@@ -66,7 +65,7 @@ Díky protokolům Azure Monitor můžete spravovat libovolnou instanci v jakémk
 
 Základní funkce protokolů Azure Monitor poskytují sady služeb, které běží v Azure. Každá služba poskytuje specifickou funkci správy a kombinováním služeb je možné dosahovat různých scénářů správy.
 
-| Služba  | Popis|
+| Služba  | Description|
 | :------------- | :-------------|
 | Protokoly služby Azure Monitor | Monitorování a analýza dostupnosti a výkonu různých prostředků včetně fyzických a virtuálních počítačů |
 |Automation | Automatizace ručních procesů a vynucení konfigurací pro fyzické a virtuální počítače |

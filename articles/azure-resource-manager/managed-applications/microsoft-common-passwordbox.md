@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 5f7d3a47482ccec9778b102d3509b5f8ef343185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652304"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft. Common. PasswordBox – element uživatelského rozhraní
@@ -52,7 +51,7 @@ Ovládací prvek, který lze použít k zadání a potvrzení hesla.
 ## <a name="remarks"></a>Poznámky
 
 - Tento prvek nepodporuje `defaultValue` vlastnost.
-- Podrobnosti `constraints`o implementaci nástroje naleznete v tématu [Microsoft. Common. TextBox](microsoft-common-textbox.md).
+- Podrobnosti o implementaci nástroje naleznete `constraints` v tématu [Microsoft. Common. TextBox](microsoft-common-textbox.md).
 - Pokud `options.hideConfirmation` je nastavená **hodnota true**, druhé textové pole pro potvrzení hesla uživatele je skryté. Výchozí hodnota je **false** (nepravda).
 
 ## <a name="next-steps"></a>Další kroky

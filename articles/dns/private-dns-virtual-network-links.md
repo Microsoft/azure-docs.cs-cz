@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75646757"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Co je propojení virtuální sítě?
@@ -35,7 +34,7 @@ Jedna privátní zóna DNS může mít více virtuálních sítí pro řešení 
 
 Informace o tom, kolik sítí pro registraci a rozlišení, můžete propojit s privátními zónami DNS, najdete v tématu [omezení Azure DNS](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) .
 
-## <a name="other-considerations"></a>Další aspekty
+## <a name="other-considerations"></a>Další důležité informace
 
 * Virtuální sítě nasazené pomocí modelu nasazení Classic nejsou podporované.
 

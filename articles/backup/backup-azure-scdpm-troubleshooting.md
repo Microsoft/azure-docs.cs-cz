@@ -4,10 +4,9 @@ description: V tomto článku zjistíte řešení problémů, se kterými se mů
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75664750"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Řešení potíží se System Center Data Protection Managerem
@@ -32,7 +31,7 @@ Chcete-li vyřešit tento problém, proveďte následující akce:
 - Chcete-li odebrat nekonzistentní stav, spusťte kontrolu konzistence ručně nebo naplánujte každodenní kontrolu konzistence.
 - Ujistěte se, že používáte nejnovější verzi Microsoft Azure Backup serveru a Data Protection Manager.
 - Ujistěte se, že je povolené nastavení **Automatické konzistence** .
-- Zkuste restartovat služby z příkazového řádku. Použijte `net stop dpmra` příkaz následovaný `net start dpmra`.
+- Zkuste restartovat služby z příkazového řádku. Použijte `net stop dpmra` příkaz následovaný `net start dpmra` .
 - Ujistěte se, že splňujete síťové připojení a požadavky na šířku pásma.
 - Ověřte, zda byl zdrojový počítač neočekávaně vypnut.
 - Ujistěte se, že je disk v pořádku a že je k dispozici dostatek místa pro repliku.
@@ -58,7 +57,7 @@ Chcete-li vyřešit tento problém, proveďte následující akce:
 
 - Ujistěte se, že používáte nejnovější verzi agenta Azure Backup.
 - Ujistěte se, že mezi serverem Data Protection Manager a chráněným serverem je připojení (síť/brána firewall/proxy server).
-- Pokud chráníte SQL Server, zajistěte, aby vlastnost **přihlášení** > **NT AUTHORITY\SYSTEM** zobrazila povolené nastavení **sysadmin** .
+- Pokud chráníte SQL Server, zajistěte, aby vlastnost **přihlášení**  >  **NT AUTHORITY\SYSTEM** zobrazila povolené nastavení **sysadmin** .
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Chyba: Server není zaregistrován tak, jak je uveden v souboru přihlašovacích údajů trezoru.
 

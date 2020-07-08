@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
 ms.openlocfilehash: 182b35194a647f5de706f9ada07b8e9db51bb4c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645578"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurace nastavení FabricTransport pro Reliable Actors
@@ -49,9 +48,9 @@ K úpravě výchozí konfigurace můžete použít [konfigurační balíček](se
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Konfigurace nastavení FabricTransport pro službu objektu actor
 
-Přidejte část TransportSettings do souboru Settings. XML.
+Přidejte část TransportSettings do souboru settings.xml.
 
-Ve výchozím nastavení kód objektu actor hledá položku sectionGroup jako "&lt;&gt;TransportSettings jméno". Pokud se tato možnost nenajde, zkontroluje se v části "TransportSettings".
+Ve výchozím nastavení kód objektu actor hledá položku sectionGroup jako " &lt; TransportSettings jméno" &gt; . Pokud se tato možnost nenajde, zkontroluje se v části "TransportSettings".
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -70,7 +69,7 @@ Ve výchozím nastavení kód objektu actor hledá položku sectionGroup jako "&
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Konfigurace nastavení FabricTransport pro klientské sestavení objektu actor
 
-Pokud klient neběží jako součást služby, můžete vytvořit soubor&lt;Client exe name&gt;. Settings. XML ve stejném umístění jako soubor Client. exe. Pak do tohoto souboru přidejte část TransportSettings. Třída sectionGroup by měla být "TransportSettings".
+Pokud klient neběží jako součást služby, můžete vytvořit &lt; &gt; soubor.settings.xml název souboru klienta ve stejném umístění, ve kterém se nachází soubor Client. exe. Pak do tohoto souboru přidejte část TransportSettings. Třída sectionGroup by měla být "TransportSettings".
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

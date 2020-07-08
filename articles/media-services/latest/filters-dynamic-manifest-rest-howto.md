@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75780330"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>Vytváření filtrů pomocí Media Services REST API
@@ -83,7 +82,7 @@ Následuje příklad **těla žádosti** , který definuje podmínky pro výběr
 
 ## <a name="create-account-filters"></a>Vytváření filtrů účtů
 
-V stažené kolekci po výběru vyberte **filtry**->účtu**vytvořit nebo aktualizovat filtr účtu**.
+V stažené kolekci po výběru vyberte **filtry účtu** -> **vytvořit nebo aktualizovat filtr účtu**.
 
 Metoda **Put** http je podobná:
 
@@ -101,7 +100,7 @@ Další informace najdete v tématu věnovaném [Vytvoření nebo aktualizaci](h
 
 ## <a name="create-asset-filters"></a>Vytváření filtrů assetů  
 
-V stažených kolekcích "Media Services V3", které jste stáhli, vyberte **assety**->**vytvořit nebo aktualizovat filtr assetů**.
+V stažených kolekcích "Media Services V3", které jste stáhli, vyberte **assety** -> **vytvořit nebo aktualizovat filtr assetů**.
 
 Metoda **Put** http je podobná:
 
@@ -121,7 +120,7 @@ Podrobnosti o tom, jak vytvořit nebo aktualizovat filtry assetu, najdete v tém
 
 Můžete určit seznam filtrů Asset nebo Account, které se vztahují na Lokátor streamování. [Dynamický balíček (koncový bod streamování)](dynamic-packaging-overview.md) používá tento seznam filtrů společně s nastavením, které klient ZADÁ v adrese URL. Tato kombinace generuje [dynamický manifest](filters-dynamic-manifest-overview.md), který je založen na filtrech v URL + filtry, které zadáte na lokátoru streamování. Tuto funkci doporučujeme používat, pokud chcete použít filtry, ale nechcete vystavit názvy filtrů v adrese URL.
 
-Pokud chcete vytvořit a přidružit filtry k lokátoru streamování pomocí REST, použijte [Lokátory streamování – vytvořit](https://docs.microsoft.com/rest/api/media/streaminglocators/create) rozhraní API a v `properties.filters` [textu žádosti](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)zadejte.
+Pokud chcete vytvořit a přidružit filtry k lokátoru streamování pomocí REST, použijte [Lokátory streamování – vytvořit](https://docs.microsoft.com/rest/api/media/streaminglocators/create) rozhraní API a `properties.filters` v [textu žádosti](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)zadejte.
                                 
 ## <a name="stream-using-filters"></a>Streamování pomocí filtrů
 

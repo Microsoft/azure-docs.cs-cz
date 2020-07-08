@@ -4,10 +4,9 @@ description: Service Fabric podporuje použití souborů Azure k zálohování s
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75750038"
 ---
 # <a name="azure-files-volume-driver-for-service-fabric"></a>Ovladač svazku souborů Azure pro Service Fabric
@@ -29,7 +28,7 @@ Ovladač svazku souborů Azure je [modul plug-in Docker Volume](https://docs.doc
 
 * Budete potřebovat [PowerShell s nainstalovaným modulem Service Fabric](/azure/service-fabric/service-fabric-get-started) nebo [SFCTL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) .
 
-* Pokud používáte kontejnery Hyper-V, je třeba přidat následující fragmenty kódu do části manifestem clusteru (místní cluster) nebo fabricSettings v šabloně Azure Resource Manager (cluster Azure) nebo ClusterConfig. JSON (samostatný cluster).
+* Pokud používáte kontejnery Hyper-V, je třeba přidat následující fragmenty kódu do manifestem clusteru (místní cluster) nebo fabricSettings v šabloně Azure Resource Manager (cluster Azure) nebo ClusterConfig.jsv (samostatném clusteru).
 
 V manifestem clusteru je nutné přidat následující v části hosting. V tomto příkladu je název svazku **sfazurefile** a port, na který naslouchá na clusteru, je **19100**. Nahraďte je správnými hodnotami pro váš cluster.
 
@@ -39,7 +38,7 @@ V manifestem clusteru je nutné přidat následující v části hosting. V tomt
 </Section>
 ```
 
-V části fabricSettings v šabloně Azure Resource Manager (pro nasazení Azure) nebo ClusterConfig. JSON (pro samostatná nasazení) je potřeba přidat následující fragment kódu. Znovu nahraďte hodnoty název svazku a port vlastními.
+V části fabricSettings v šabloně Azure Resource Manager (pro nasazení Azure) nebo ClusterConfig.jsv (pro samostatná nasazení) je potřeba přidat následující fragment kódu. Znovu nahraďte hodnoty název svazku a port vlastními.
 
 ```json
 "fabricSettings": [
@@ -235,7 +234,7 @@ Při zadávání modulu plug-in svazku Service Fabric automaticky vytvoří svaz
 </Volume>
 ```
 
-Parametry aplikace jsou podporovány pro svazky, jak je znázorněno v předchozím fragmentu manifestu `MyStorageVar` (hledejte pro příklad použití).
+Parametry aplikace jsou podporovány pro svazky, jak je znázorněno v předchozím fragmentu manifestu (hledejte `MyStorageVar` pro příklad použití).
 
 Pokud je zadán ovladač protokolu Docker, je nutné nasadit agenty (nebo kontejnery) pro zpracování protokolů v clusteru. Pomocí značky **DriverOption** lze zadat možnosti pro ovladač protokolu.
 

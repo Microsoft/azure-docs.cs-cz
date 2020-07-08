@@ -8,10 +8,9 @@ ms.topic: article
 ms.date: 01/08/2020
 tags: connectors
 ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75732665"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Správa e-mailů, kontaktů a kalendářů v Office 365 Outlooku s využitím Azure Logic Apps
@@ -25,7 +24,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [konektoru Of
 Libovolný Trigger můžete použít ke spuštění pracovního postupu, například při přijetí nového e-mailu, při aktualizaci položky kalendáře nebo při výskytu události v rozdílové službě, jako je například Salesforce. Můžete použít akce, které reagují na událost triggeru, například odeslat e-mail nebo vytvořit novou událost v kalendáři. 
 
 > [!NOTE]
-> K automatizaci úloh pro @outlook.com účet @hotmail.com nebo použijte [konektor Outlook.com](../connectors/connectors-create-api-outlook.md).
+> K automatizaci úloh pro @outlook.com @hotmail.com účet nebo použijte [konektor Outlook.com](../connectors/connectors-create-api-outlook.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +52,7 @@ Libovolný Trigger můžete použít ke spuštění pracovního postupu, napří
 
 1. V aktivační události nastavte hodnoty **frekvence** a **interval** . Chcete-li přidat další dostupné vlastnosti triggeru, jako je například **časové pásmo**, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** .
 
-   Například pokud chcete, aby Trigger kontroloval kalendář každých 15 minut, nastavte **četnost** na **minuty**a nastavte **interval** na `15`. 
+   Například pokud chcete, aby Trigger kontroloval kalendář každých 15 minut, nastavte **četnost** na **minuty**a nastavte **interval** na `15` . 
 
    ![Nastavte četnost a interval pro aktivační událost.](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
@@ -69,7 +68,7 @@ Teď přidejte akci, která se spustí po aktivování triggeru. Můžete např�
 
 1. Pokud chcete přidat akci jako poslední krok pracovního postupu, vyberte **Nový krok**. 
 
-   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus (**+**), který se zobrazí, a pak vyberte **přidat akci**.
+   Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku mezi těmito kroky. Vyberte symbol plus ( **+** ), který se zobrazí, a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte `office 365 outlook` jako filtr. Tento příklad vybere **vytvořit kontakt**.
 

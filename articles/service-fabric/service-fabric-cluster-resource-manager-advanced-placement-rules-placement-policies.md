@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9aea157d03f344e07a81f0588d3e0127f17ca75d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75834419"
 ---
 # <a name="placement-policies-for-service-fabric-services"></a>Zásady umístění pro služby Service Fabric
@@ -101,7 +100,7 @@ Repliky jsou _obvykle_ distribuovány mezi selhání a upgradovací domény, kdy
 > Další informace o omezeních a prioritách omezení obvykle najdete v [tomto tématu](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
 >
 
-Pokud jste někdy viděli zprávu o stavu, například "`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`", pak jste narazili na tuto podmínku nebo něco podobného. Obvykle se dočasně balí jenom jedna nebo dvě repliky. Pokud je v dané doméně méně než kvorum replik, budete v bezpečí. Balení je zřídka, ale může se stát, ale tyto situace jsou obvykle přechodné, protože se uzly vrátí zpět. Pokud uzly zůstanou mimo provoz a cluster Správce prostředků musí nastavovat náhrady, obvykle jsou v ideálních doménách selhání k dispozici další uzly.
+Pokud jste někdy viděli zprávu o stavu, například " `The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain` ", pak jste narazili na tuto podmínku nebo něco podobného. Obvykle se dočasně balí jenom jedna nebo dvě repliky. Pokud je v dané doméně méně než kvorum replik, budete v bezpečí. Balení je zřídka, ale může se stát, ale tyto situace jsou obvykle přechodné, protože se uzly vrátí zpět. Pokud uzly zůstanou mimo provoz a cluster Správce prostředků musí nastavovat náhrady, obvykle jsou v ideálních doménách selhání k dispozici další uzly.
 
 Některé úlohy by preferovat vždycky mít cílový počet replik, i když se zabalí do méně domén. Tyto úlohy se sází proti celkovému počtu současných trvalých selhání domény a obvykle můžou obnovit místní stav. Jiné úlohy by místo toho mohly trvat výpadky před rizikem nebo ztrátou dat. Většina produkčních úloh běží s více než třemi replikami, více než třemi doménami selhání a řadou platných uzlů na doménu selhání. Z tohoto důvodu výchozí chování umožňuje dobalení domény ve výchozím nastavení. Výchozí chování umožňuje normální vyrovnávání a převzetí služeb při selhání při zpracování těchto extrémních případů, i když to znamená dočasná dobalení domény.
 

@@ -4,10 +4,9 @@ description: Tento článek popisuje, jak vytvořit vlastní výstrahy na zákla
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75730921"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Jak nastavit výstrahy pro problémy s výkonem ve službě Azure Monitor pro kontejnery
@@ -100,7 +99,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->Následující dotazy používají zástupné hodnoty \<, které jsou vaší clusterem a \<řadičem v názvu clusteru> a>. Nahraďte je hodnotami specifickými pro vaše prostředí při nastavování výstrah.
+>Následující dotazy používají zástupné hodnoty \<your-cluster-name> a \<your-controller-name> reprezentují svůj cluster a kontroler. Nahraďte je hodnotami specifickými pro vaše prostředí při nastavování výstrah.
 
 Následující dotaz vypočítá průměrné využití procesoru u všech kontejnerů v řadiči jako průměrnou hodnotu využití procesoru každé instance kontejneru v řadiči v každé minutě. Měření je procento limitu nastaveného pro kontejner.
 
@@ -283,13 +282,13 @@ Pomocí těchto kroků vytvořte v Azure Monitor upozornění protokolu pomocí 
 >Následující postup vytvoření pravidla výstrahy pro využití prostředků kontejneru vyžaduje, abyste přešli na nové rozhraní API upozornění protokolu, jak je popsáno v tématu [předvoleb rozhraní API pro protokolování výstrah](../platform/alerts-log-api-switch.md).
 >
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V Azure Portal vyhledejte a vyberte **Log Analytics pracovní prostory**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor podporující Azure Monitor pro kontejnery. 
 4. V podokně na levé straně vyberte **protokoly** a otevřete stránku Azure monitor protokoly. Tato stránka slouží k zápisu a provádění dotazů Azure Log Analytics.
 5. Na stránce **protokoly** vložte jeden z [dotazů](#resource-utilization-log-search-queries) , které jste zadali dříve do pole **vyhledávací dotaz** , a pak výběrem **příkazu Spustit** Ověřte výsledky. Pokud tento krok neprovedete, možnost **+ nová výstraha** není dostupná k výběru.
 6. Vyberte **+ nová výstraha** a vytvořte výstrahu protokolu.
-7. V části **Podmínka** vyberte **pokaždé, \<když je hledání vlastního protokolu>logiku nedefinované** předem definovaný vlastní podmínka protokolu. Vlastní typ signálu **hledání vlastního protokolu** se vybere automaticky, protože vytváříme pravidlo upozornění přímo ze stránky Azure monitor protokoly.  
+7. V části **Podmínka** vyberte **vždy, když je \<logic undefined> vlastní prohledávání protokolu** předem definovaný vlastní podmínka protokolu. Vlastní typ signálu **hledání vlastního protokolu** se vybere automaticky, protože vytváříme pravidlo upozornění přímo ze stránky Azure monitor protokoly.  
 8. Vložte jeden z [dotazů](#resource-utilization-log-search-queries) , které byly zadány dříve, do pole **vyhledávacího dotazu** .
 9. Výstrahy nakonfigurujte následujícím způsobem:
 

@@ -9,10 +9,9 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75666682"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>Chyby a řešení B2B pro Azure Logic Apps
@@ -60,7 +59,7 @@ Tento článek vám pomůže řešit chyby, ke kterým může dojít v Logic App
 |   |   | 
 |---|---|
 | Popis chyby |  [zpracováno/Chyba: dešifrování – neúspěšné] | 
-| Akce uživatele | Před @base64ToBinary odesláním partnerovi přidejte do AS2Message. |
+| Akce uživatele | @base64ToBinaryPřed odesláním partnerovi přidejte do AS2Message. |
 |||
 
 Příklad:
@@ -80,7 +79,7 @@ Příklad:
 |   |   | 
 |---|---|
 | Popis chyby |  [zpracováno/Chyba: dešifrování – neúspěšné] | 
-| Akce uživatele | Před @base64ToBinary odesláním partnerovi přidejte do MDN. | 
+| Akce uživatele | @base64ToBinaryPřed odesláním partnerovi přidejte do MDN. | 
 |||
 
 Příklad:

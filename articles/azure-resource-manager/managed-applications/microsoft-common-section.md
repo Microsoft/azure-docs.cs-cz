@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75652252"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. Section – element uživatelského rozhraní
@@ -45,11 +44,11 @@ Ovládací prvek, který seskupí jeden nebo více prvků pod záhlavím.
 
 ## <a name="remarks"></a>Poznámky
 
-- `elements`musí mít alespoň jeden element a může mít všechny typy elementů s výjimkou `Microsoft.Common.Section`.
+- `elements`musí mít alespoň jeden element a může mít všechny typy elementů s výjimkou `Microsoft.Common.Section` .
 - Tento prvek nepodporuje `toolTip` vlastnost.
 
 ## <a name="sample-output"></a>Ukázkový výstup
-Pro přístup k výstupním hodnotám prvků `elements`v použijte funkce [základní ()](create-uidefinition-functions.md#basics) nebo [kroky ()](create-uidefinition-functions.md#steps) a zápis tečky:
+Pro přístup k výstupním hodnotám prvků v `elements` použijte funkce [základní ()](create-uidefinition-functions.md#basics) nebo [kroky ()](create-uidefinition-functions.md#steps) a zápis tečky:
 
 ```json
 steps('configuration').section1.text1

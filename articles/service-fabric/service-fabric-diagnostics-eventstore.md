@@ -6,10 +6,9 @@ ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
 ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75645731"
 ---
 # <a name="eventstore-overview"></a>Eventstoru – přehled
@@ -48,13 +47,13 @@ Služba Eventstoru se dá dotazovat na události, které jsou k dispozici pro ka
 
 Další informace o rozhraní API najdete v referenčních informacích k [rozhraní eventstoru API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
 
-Služba Eventstoru má taky možnost korelovat události v clusteru. Když prohlížíte události, které byly zapsané současně z různých entit, které by mohly mít vliv na sebe navzájem, služba Eventstoru je schopná propojit tyto události s cílem identifikovat příčiny aktivit ve vašem clusteru. Například pokud dojde k tomu, že jedna z vašich aplikací přestane být v pořádku bez jakýchkoli nevolaných změn, Eventstoru se také podívat na další události vystavené platformou a může je korelovat událostmi `Error` nebo `Warning` . To pomáhá s rychlejší detekcí selhání a hlavními příčinami při analýze.
+Služba Eventstoru má taky možnost korelovat události v clusteru. Když prohlížíte události, které byly zapsané současně z různých entit, které by mohly mít vliv na sebe navzájem, služba Eventstoru je schopná propojit tyto události s cílem identifikovat příčiny aktivit ve vašem clusteru. Například pokud dojde k tomu, že jedna z vašich aplikací přestane být v pořádku bez jakýchkoli nevolaných změn, Eventstoru se také podívat na další události vystavené platformou a může je korelovat `Error` `Warning` událostmi nebo. To pomáhá s rychlejší detekcí selhání a hlavními příčinami při analýze.
 
 ## <a name="enable-eventstore-on-your-cluster"></a>Povolení Eventstoru v clusteru
 
 ### <a name="local-cluster"></a>Místní cluster
 
-V [fabricSettings. JSON v clusteru](service-fabric-cluster-fabric-settings.md)přidejte EventStoreService jako funkci addOn a proveďte upgrade clusteru.
+V [fabricSettings.jsv clusteru](service-fabric-cluster-fabric-settings.md)přidejte EventStoreService jako funkci addOn a proveďte upgrade clusteru.
 
 ```json
     "addOnFeatures": [

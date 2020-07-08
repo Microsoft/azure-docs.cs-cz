@@ -8,10 +8,9 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75768482"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Osvědčené postupy pro Azure App Service
@@ -26,7 +25,7 @@ Když jsou prostředky Azure, které vytváří řešení, jako je webová aplik
 Společné umístění ve stejné oblasti je nejvhodnější pro prostředky Azure, které tvoří řešení, jako je webová aplikace a databáze nebo účet úložiště, který slouží k ukládání obsahu nebo dat. Při vytváření prostředků se ujistěte, že jsou ve stejné oblasti Azure, pokud nemáte konkrétní obchodní nebo návrhový důvod pro tyto účely. Aplikaci App Service můžete přesunout do stejné oblasti, ve které je vaše databáze, pomocí [funkce klonování App Service](app-service-web-app-cloning.md) , která je aktuálně dostupná pro aplikace Premium App Service Plan.   
 
 ## <a name="when-apps-consume-more-memory-than-expected"></a><a name="memoryresources"></a>Když aplikace spotřebovávají více paměti, než se očekávalo
-Pokud si všimnete, že aplikace spotřebovává více paměti, než se očekávalo, jak je uvedeno v doporučeních pro monitorování nebo služby, zapamatujte si [funkci App Service automatické](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites)opravy. Jedna z možností funkce Automatické opravy přijímá vlastní akce založené na prahové hodnotě paměti. Akce vychází z e-mailových oznámení do šetření prostřednictvím výpisu paměti při zmírnění omezení na místě tím, že se pracovní proces recykluje. Automatické opravy se dají nakonfigurovat přes web. config a prostřednictvím popisného uživatelského rozhraní popsaného v tomto příspěvku blogu pro [rozšíření webu podpory App Service](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
+Pokud si všimnete, že aplikace spotřebovává více paměti, než se očekávalo, jak je uvedeno v doporučeních pro monitorování nebo služby, zapamatujte si [funkci App Service automatické](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites)opravy. Jedna z možností funkce Automatické opravy přijímá vlastní akce založené na prahové hodnotě paměti. Akce vychází z e-mailových oznámení do šetření prostřednictvím výpisu paměti při zmírnění omezení na místě tím, že se pracovní proces recykluje. Automatické opravy se dají konfigurovat prostřednictvím web.config a prostřednictvím popisného uživatelského rozhraní popsaného v tomto příspěvku blogu pro [rozšíření webu podpora App Service](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
 
 ## <a name="when-apps-consume-more-cpu-than-expected"></a><a name="CPUresources"></a>Když aplikace spotřebovávají více PROCESORů, než se očekávalo
 Když si všimnete, že aplikace spotřebovává více PROCESORů, než se očekávala, nebo se pokusíte o opakované využití procesoru, jak je uvedeno v doporučení týkající se monitorování nebo služby, zvažte možnost škálovat škálování nebo škálovat App Service plánu. Pokud je vaše aplikace stavová, je jedinou možností horizontální navýšení kapacity, pokud je vaše aplikace Bezstavová, nabízí větší flexibilitu a vyšší škálovatelnost. 
@@ -36,12 +35,12 @@ Další informace o stavových a bezstavových aplikacích můžete sledovat v t
 ## <a name="when-socket-resources-are-exhausted"></a><a name="socketresources"></a>Při vyčerpání prostředků soketu
 Běžným důvodem pro vyčerpání odchozích připojení TCP je použití klientských knihoven, které nejsou implementované k opakovanému použití připojení TCP, nebo když se nepoužívá protokol vyšší úrovně, jako je třeba HTTP-Keep-Alive. Přečtěte si dokumentaci ke každé knihovně, na kterou odkazují aplikace v plánu App Service, abyste se ujistili, že jsou ve vašem kódu nakonfigurované nebo používané pro efektivní opakované použití odchozích připojení. Dále postupujte podle pokynů v dokumentaci ke knihovně pro správné vytvoření a vystavení nebo vyčištění, abyste zabránili nevracení připojení. I když tyto klientské knihovny probíhá šetření, dopad může být omezen škálováním na více instancí.
 
-### <a name="nodejs-and-outgoing-http-requests"></a>Node. js a odchozí požadavky http
-Při práci s Node. js a mnoho odchozích požadavků HTTP, které je potřeba řešit pomocí protokolu HTTP-Keep-Alive, je důležité. Pomocí balíčku [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` můžete usnadnit práci s vaším kódem.
+### <a name="nodejs-and-outgoing-http-requests"></a>Node.js a odchozí požadavky http
+Při práci s Node.js a mnoho odchozích požadavků HTTP, které řeší protokol HTTP – Keep-Alive, je důležité. Pomocí balíčku agentkeepalive můžete [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` usnadnit práci s vaším kódem.
 
 Vždy zpracujte `http` odpověď, i když neuděláte nic v obslužné rutině. Pokud odpověď nezpracujete správně, vaše aplikace se zablokuje, protože už nejsou k dispozici žádné další sokety.
 
-Například při práci s balíčkem `http` nebo: `https`
+Například při práci s `http` `https` balíčkem nebo:
 
 ```javascript
 const request = https.request(options, function(response) {
@@ -49,7 +48,7 @@ const request = https.request(options, function(response) {
 });
 ```
 
-Pokud používáte App Service v systému Linux na počítači s více jádry, další osvědčeným postupem je použití konfiguračního PM2 ke spuštění více procesů Node. js pro spuštění aplikace. Můžete to provést zadáním spouštěcího příkazu do kontejneru.
+Pokud používáte App Service v systému Linux na počítači s více jádry, další osvědčeným postupem je použití konfiguračního PM2 ke spuštění více procesů Node.js ke spuštění aplikace. Můžete to provést zadáním spouštěcího příkazu do kontejneru.
 
 Pokud například chcete spustit čtyři instance:
 
@@ -62,8 +61,8 @@ Mezi nejčastější důvody, proč se zálohování aplikace nezdařily, patř�
 
 Pokud dojde k selhání zálohování, Projděte si nejnovější výsledky, abyste zjistili, jaký typ selhání se děje. V případě selhání přístupu k úložišti zkontrolujte a aktualizujte nastavení úložiště použité v konfiguraci zálohování. V případě selhání přístupu k databázi zkontrolujte a aktualizujte řetězce připojení jako součást nastavení aplikace. pak pokračujte v aktualizaci konfigurace zálohování tak, aby správně zahrnovala požadované databáze. Další informace o zálohování aplikací najdete v tématu [zálohování webové aplikace v Azure App Service](manage-backup.md).
 
-## <a name="when-new-nodejs-apps-are-deployed-to-azure-app-service"></a><a name="nodejs"></a>Když jsou nové aplikace Node. js nasazeny na Azure App Service
-Azure App Service výchozí konfigurace pro aplikace Node. js má za cíl nejlépe vyhovovat potřebám většiny běžných aplikací. Pokud by konfigurace aplikace Node. js mohla těžit z přizpůsobeného ladění za účelem zlepšení výkonu nebo optimalizace využití prostředků procesoru, paměti nebo síťových prostředků, přečtěte si téma [osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Tento článek popisuje nastavení iisnode, která může být potřeba nakonfigurovat pro aplikaci Node. js, popisuje různé scénáře nebo problémy, na které vaše aplikace může být vystavena, a ukazuje, jak tyto problémy vyřešit.
+## <a name="when-new-nodejs-apps-are-deployed-to-azure-app-service"></a><a name="nodejs"></a>Při nasazení nových aplikací Node.js do Azure App Service
+Azure App Service výchozí konfigurace pro Node.js aplikace má za cíl nejlépe vyhovovat potřebám nejběžnějších aplikací. Pokud by konfigurace aplikace Node.js mohla těžit z přizpůsobeného ladění za účelem zlepšení výkonu nebo optimalizace využití prostředků procesoru/paměti nebo síťových prostředků, přečtěte si téma [osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). Tento článek popisuje nastavení iisnode, která může být potřeba nakonfigurovat pro aplikaci Node.js, popisuje různé scénáře nebo problémy, se kterými se vaše aplikace může nacházet, a ukazuje, jak tyto problémy vyřešit.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -74,4 +73,4 @@ Další informace o osvědčených postupech najdete v [App Service Diagnostics]
 - Vyberte dlaždici domovské stránky s **doporučenými postupy** .
 - Pokud chcete zobrazit aktuální stav aplikace v souvislosti s těmito osvědčenými postupy, klikněte na **osvědčené postupy pro dostupnost & výkon** nebo **osvědčené postupy pro optimální konfiguraci** .
 
-Tento odkaz můžete použít také k přímému otevření App Service diagnostiky pro váš prostředek `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`:.
+Tento odkaz můžete použít také k přímému otevření App Service diagnostiky pro váš prostředek: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot` .

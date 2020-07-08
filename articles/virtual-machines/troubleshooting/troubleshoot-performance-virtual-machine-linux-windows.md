@@ -14,10 +14,9 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75772614"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Řešení potíží s výkonem virtuálních počítačů Azure v systému Linux nebo Windows
@@ -139,7 +138,7 @@ Využití paměti ukazuje, kolik paměti je ve virtuálním počítači spotřeb
 
 Neustálé zvyšování spotřeby – možná aplikace "zahřívání", tato spotřeba je společná mezi databázovými moduly, které se spouštějí. Ale může jít také o signál nevrácení paměti v aplikaci. Identifikujte aplikaci a zjistěte, jestli je očekávané chování.
 
-Použití stránky nebo odkládacího souboru – ověřte, jestli se používá stránkovací soubor systému Windows (umístěný na\) D: nebo na zákrytém `/dev/sdb`souboru (umístěný na platformě). Pokud na těchto svazcích nemáte nic s výjimkou těchto souborů, vyhledejte na těchto discích vysokou čitelnost a zápis. Tento problém je informativní v podmínkách nedostatku paměti.
+Použití stránky nebo odkládacího souboru – ověřte, jestli se používá stránkovací soubor systému Windows (umístěný na D: nebo na zákrytém \) souboru (umístěný na platformě `/dev/sdb` ). Pokud na těchto svazcích nemáte nic s výjimkou těchto souborů, vyhledejte na těchto discích vysokou čitelnost a zápis. Tento problém je informativní v podmínkách nedostatku paměti.
 
 ### <a name="high-memory-utilization-remediation"></a>Náprava využití vysoké paměti
 
@@ -210,7 +209,7 @@ S novými nabídkami disků v rámci standardního úložiště se limity IOPS a
 
 * [Škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů ve Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
-#### <a name="references"></a>Odkazy
+#### <a name="references"></a>Reference
 
 * [Škálovatelnost a výkonnostní cíle pro účty úložiště objektů blob stránky úrovně Premium](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 

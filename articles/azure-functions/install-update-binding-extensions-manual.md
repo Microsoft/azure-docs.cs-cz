@@ -4,10 +4,9 @@ description: Přečtěte si, jak nainstalovat nebo aktualizovat rozšíření va
 ms.topic: reference
 ms.date: 09/26/2018
 ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "75768856"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ruční instalace nebo aktualizace rozšíření vazby Azure Functions z portálu
@@ -22,9 +21,9 @@ Pomocí následujícího postupu můžete ručně nainstalovat nebo aktualizovat
 
 1. V [Azure Portal](https://portal.azure.com)Najděte aplikaci Function App a vyberte ji. Zvolte kartu **Přehled** a vyberte **zastavit**.  Zastavení aplikace Function App odemkne soubory, aby bylo možné provádět změny.
 
-1. Zvolte kartu **funkce platformy** a v části **vývojové nástroje** vyberte **Rozšířené nástroje (Kudu)**. Koncový bod Kudu (`https://<APP_NAME>.scm.azurewebsites.net/`) se otevře v novém okně.
+1. Zvolte kartu **funkce platformy** a v části **vývojové nástroje** vyberte **Rozšířené nástroje (Kudu)**. Koncový bod Kudu ( `https://<APP_NAME>.scm.azurewebsites.net/` ) se otevře v novém okně.
 
-1. V okně Kudu vyberte **ladit konzolu** > **cmd**.  
+1. V okně Kudu vyberte **ladit konzolu**  >  **cmd**.  
 
 1. V příkazovém okně přejděte na `D:\home\site\wwwroot` a vyberte ikonu Odstranit vedle `bin` pro odstranění složky. Kliknutím na **OK** potvrďte odstranění.
 
