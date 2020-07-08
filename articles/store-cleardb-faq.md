@@ -13,10 +13,10 @@ ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
 ms.openlocfilehash: ced4e920936ad94c3d4140d51d5e7d4e867ee848
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84196076"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím MySql v ClearDB s Azure App Service
@@ -75,7 +75,7 @@ Pokud jste databázi ClearDB vytvořili v klasickém prostředí, nebudete moci 
 Kontaktujte [podporu ClearDB](https://www.cleardb.com/developers/help/support) pro všechny problémy související s databází. Připravte se na poskytování informací o předplatném Azure.
 
 ## <a name="can-i-create-additional-users-for-my-cleardb-mysql-database-cluster-solution"></a>Můžu vytvořit další uživatele pro moje řešení clusteru databáze MySQL ClearDB?
-No. Nemůžete vytvořit další uživatele, ale v clusteru databáze ClearDB můžete vytvořit další databáze.  
+Ne. Nemůžete vytvořit další uživatele, ale v clusteru databáze ClearDB můžete vytvořit další databáze.  
 
 ## <a name="can-basicpro-series-databases-be-upgraded-in-place-similar-to-planetary-plans-today-on-cleardb-portal"></a>Můžou se databáze řady Basic/pro na portálu ClearDB upgradovat na místě, podobně jako plány Planetary.
 Ano, základní databáze řady lze upgradovat místně (Basic 60 až Basic 500). Řadu sady pro je možné upgradovat místně (pro 125 až pro 1000) s výjimkou pro 60 pro. Momentálně nepodporujeme upgrade databáze pro 60. 

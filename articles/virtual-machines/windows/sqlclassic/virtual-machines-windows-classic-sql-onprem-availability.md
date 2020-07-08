@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.openlocfilehash: 928162282ca973811315728a07b4fbe40100324e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84017575"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Rozšíření místních skupin dostupnosti Always On do Azure
@@ -65,7 +65,7 @@ V této části se dozvíte, jak pomocí **Průvodce přidáním repliky Azure**
    | **Potvrzení hesla** |Potvrďte heslo k novému účtu. |
    | **Virtual Network** |Zadejte virtuální síť Azure, kterou má nový virtuální počítač použít. Další informace o virtuálních sítích najdete v tématu [přehled Virtual Network](../../../virtual-network/virtual-networks-overview.md). |
    | **Virtual Network podsíť** |Zadejte podsíť virtuální sítě, kterou má nový virtuální počítač použít. |
-   | **Domain** |Potvrďte, že předem vyplněná hodnota pro doménu je správná. |
+   | **Domain (Doména)** |Potvrďte, že předem vyplněná hodnota pro doménu je správná. |
    | **Uživatelské jméno domény** |Zadejte účet, který je v místní skupině Administrators na místních uzlech clusteru. |
    | **Heslo** |Zadejte heslo pro uživatelské jméno domény. |
 8. Kliknutím na **OK** ověřte nastavení nasazení.

@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "73034542"
 ---
 Při navrhování systému je důležité pochopit potenciální hrozby pro daný systém a odpovídajícím způsobem přidat patřičnou ochranu, protože systém je navržený a navržený. Je důležité navrhnout produkt od začátku s ohledem na zabezpečení, protože porozumět tomu, jak útočník může ohrozit zabezpečení systému, pomáhá zajistit, aby byla na začátku vhodná omezení.
@@ -177,7 +177,7 @@ V každé z kategorií uvedených v architektuře Azure IoT se tento příklad s
 
 **Zvýšení oprávnění (E)**: zařízení, které má konkrétní funkci, může být vynucené dělat něco jiného. Například ventil, který je naprogramován na otevřený poloviční způsob, může být obtížné otevřít, aby se otevřel celý způsob.
 
-| **Komponenta** | **Nebezpečí** | **Omezení rizik** | **Riziko** | **Implementace** |
+| **Komponenta** | **Hrozba** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
 | Zařízení |S |Přiřazení identity k zařízení a ověřování zařízení |Zařízení nebo část zařízení se nahrazuje jiným zařízením. Jak víte, že mluvíte se správným zařízením? |Ověřování zařízení pomocí protokolu TLS (Transport Layer Security) nebo IPSec. Infrastruktura by měla podporovat použití předsdíleného klíče (PSK) na zařízeních, která nemůžou zpracovávat úplný asymetrický kryptografii. Využijte Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
 || TRID |Aplikujte na zařízení mechanismy tamperproof, například tím, že nebudete moct z zařízení extrahovat klíče a další kryptografické materiály. |Riziko je v případě, že někdo zaznamená manipulaci se zařízením (při fyzickém rušení). V takovém případě jste si jisti, že zařízení nebylo manipulováno. |Nejúčinnější zmírnění je funkce čipu TPM (Trusted Platform Module), která umožňuje ukládat klíče ve zvláštních mezičipuch, ze kterých klíče nelze číst, ale lze je použít pouze pro kryptografické operace, které používají klíč, ale nikdy nezavřou klíč. Šifrování paměti zařízení. Správa klíčů pro zařízení. Podpis kódu. |
@@ -220,7 +220,7 @@ Tady jsou některé příklady hrozeb v této kategorii:
 
 Hrozby kolem komunikačních cest mezi zařízeními, zařízeními a branami polí a zařízeními a cloudovou bránou. Následující tabulka obsahuje pokyny k otevřeným soketům na zařízení/síti VPN:
 
-| **Komponenta** | **Nebezpečí** | **Omezení rizik** | **Riziko** | **Implementace** |
+| **Komponenta** | **Hrozba** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
 | IoT Hub zařízení |IDENTIFIKÁTORY |Trojrozměrné TLS (PSK/RSA) pro šifrování provozu |Odposlouchávání a narušování komunikace mezi zařízením a bránou |Zabezpečení na úrovni protokolu. S vlastními protokoly potřebujete zjistit, jak je chránit. Ve většině případů je komunikace provedena ze zařízení do IoT Hub (zařízení iniciuje připojení). |
 | Zařízení do zařízení |IDENTIFIKÁTORY |Trojrozměrné TLS (PSK/RSA) pro šifrování provozu. |Čtení dat při přenosu mezi zařízeními. Manipulace s daty. Přetížení zařízení s novými připojeními |Zabezpečení na úrovni protokolu (MQTT/AMQP/HTTP/CoAP. S vlastními protokoly potřebujete zjistit, jak je chránit. Zmírnění hrozby DoS je rovnocenným zařízením přes bránu cloudu nebo poli a má je fungovat jenom jako klienti směrem k síti. Partnerský vztah může mít za následek přímé připojení mezi partnerskými uzly poté, co je brána zprostředkovaná bránou. |
@@ -244,7 +244,7 @@ Tady jsou některé příklady hrozeb v této kategorii:
 
 Každé zařízení a brána pole mají určitou formu úložiště (dočasné pro řazení dat do fronty, úložiště imagí operačního systému (OS)).
 
-| **Komponenta** | **Nebezpečí** | **Omezení rizik** | **Riziko** | **Implementace** |
+| **Komponenta** | **Hrozba** | **Omezení rizik** | **Riziko** | **Implementace** |
 | --- | --- | --- | --- | --- |
 | Úložiště zařízení |TRID |Šifrování úložiště, podepisování protokolů |Čtení dat z úložiště (dat PII), manipulace s daty telemetrie. Manipulace s daty řízení příkazů ve frontě nebo v mezipaměti Manipulace s balíčky aktualizací konfigurace nebo firmware při ukládání do mezipaměti nebo v místním prostředí mohou vést k ohrožení zabezpečení operačního systému nebo systémových komponent. |Šifrování, ověřovací kód zprávy (MAC) nebo digitální podpis. Pokud je to možné, silné řízení přístupu prostřednictvím seznamů řízení přístupu (ACL) prostředků nebo oprávnění. |
 | Bitová kopie operačního systému zařízení |TRID | |Manipulace s operačním systémem/Replacing součástem operačního systému |Oddíl s operačním systémem jen pro čtení, podepsaná bitová kopie operačního systému, šifrování |
@@ -265,7 +265,7 @@ Mezi mezilehlé fyzické povrchy řízení patří takové, kde řízení logiky
 
 ## <a name="additional-resources"></a>Další zdroje
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 * [Threat Modeling Tool SDL](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
 * [Referenční architektura IoT Microsoft Azure](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)

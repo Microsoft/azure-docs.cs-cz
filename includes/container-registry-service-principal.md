@@ -9,19 +9,19 @@ ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 9e4f2e355240ba8682cbe9f86f2be94e7dd0d92d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "70032353"
 ---
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 Pokud chcete vytvořit instanční objekt s přístupem k registru kontejneru, spusťte následující skript v [Azure Cloud Shell](../articles/cloud-shell/overview.md) nebo místní instalaci rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). Skript je naformátován pro prostředí bash shell.
 
-Před spuštěním skriptu aktualizujte `ACR_NAME` proměnnou názvem registru kontejneru. `SERVICE_PRINCIPAL_NAME` Hodnota musí být jedinečná v rámci vašeho tenanta Azure Active Directory. Pokud se zobrazí`'http://acr-service-principal' already exists.`chyba, zadejte jiný název instančního objektu.
+Před spuštěním skriptu aktualizujte `ACR_NAME` proměnnou názvem registru kontejneru. `SERVICE_PRINCIPAL_NAME`Hodnota musí být jedinečná v rámci vašeho tenanta Azure Active Directory. Pokud se zobrazí `'http://acr-service-principal' already exists.` Chyba, zadejte jiný název instančního objektu.
 
-V případě, že chcete `--role` udělit různá oprávnění, můžete volitelně upravit hodnotu v příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Úplný seznam rolí najdete v tématu [ACR role a oprávnění](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md).
+`--role`V případě, že chcete udělit různá oprávnění, můžete volitelně upravit hodnotu v příkazu [AZ AD SP Create-for-RBAC][az-ad-sp-create-for-rbac] . Úplný seznam rolí najdete v tématu [ACR role a oprávnění](https://github.com/Azure/acr/blob/master/docs/roles-and-permissions.md).
 
 Po spuštění skriptu si poznamenejte **ID** a **heslo**instančního objektu. Jakmile budete mít své přihlašovací údaje, můžete nakonfigurovat své aplikace a služby pro ověřování v registru kontejneru jako instanční objekt.
 
