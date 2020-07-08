@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 491a8f00de2fcd4c977a1856005b4358a4b62bd6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85359785"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807583"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
 
@@ -86,15 +86,10 @@ Tento instalační program vytvoří v systému zařízení naplánovanou úlohu
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. konfigurace zásad skupiny pro povolení registrace zařízení
 
-* Vytvořte objekt zásad skupiny ve službě Active Directory – Pokud ještě není vytvořený.
-* Pojmenujte ji (připojení ke službě Azure AD Hybrid).
-* Upravit & přejít na: Konfigurace počítače > zásady > Šablony pro správu > součásti systému Windows > registrace zařízení
-* Povolit: Zaregistrujte počítače připojené k doméně jako zařízení.
-* Použijte a klikněte na OK.
-* Propojte objekt zásad skupiny s vámi zvoleným umístěním (organizační jednotka, skupina zabezpečení nebo doména pro všechna zařízení).
+Informace o tom, jak pro jednotlivá zařízení dovolit hybridní připojení ke službě Azure AD, najdete v tématu [řízené ověřování hybridního připojení k Azure AD](../devices/hybrid-azuread-join-control.md).
 
->[!NOTE]
->2012R2 nastavení zásad v části **Konfigurace počítače zásady > > Šablony pro správu > součásti systému Windows > Workplace Join > automatické připojení klientských počítačů k síti na pracovišti**
+> [!NOTE]
+> Nastavení zásad pro 2012 R2 jsou v **konfiguraci počítačů > zásady > Šablony pro správu > součásti Windows > Workplace Join > automatické připojení klientských počítačů k síti na pracovišti**.
 
 ## <a name="next-steps"></a>Další kroky
 [Konfigurace zpětného zápisu zařízení](how-to-connect-device-writeback.md)

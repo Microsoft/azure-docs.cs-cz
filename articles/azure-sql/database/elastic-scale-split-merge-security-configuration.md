@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: e1fdf219d09148d47759652e97797b569e265fa4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041907"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829429"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,8 +38,8 @@ Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty pod
 
 ## <a name="tools-to-generate-certificates"></a>Nástroje pro generování certifikátů
 
-* [Makecert. exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
-* [Pvk2Pfx. exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
+* [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
+* [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Spuštění nástrojů
 
@@ -47,7 +47,10 @@ Pokud tyto možnosti nejsou k dispozici, můžete vygenerovat **certifikáty pod
   
     Pokud je nainstalován, přejít na:
   
-        %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```console
+    %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
+    ```
+
 * Získat WDK z [Windows 8.1: stažení sad a nástrojů](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-tlsssl-certificate"></a>Konfigurace certifikátu TLS/SSL
@@ -193,12 +196,14 @@ Toto téma je pouze pro referenci. Postupujte podle kroků konfigurace popsanýc
 ## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 Spustit
 
-    makecert ^
-      -n "CN=myservice.cloudapp.net" ^
-      -e MM/DD/YYYY ^
-      -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha256 -len 2048 ^
-      -sv MySSL.pvk MySSL.cer
+```console
+makecert ^
+  -n "CN=myservice.cloudapp.net" ^
+  -e MM/DD/YYYY ^
+  -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
+  -a sha256 -len 2048 ^
+  -sv MySSL.pvk MySSL.cer
+```
 
 Přizpůsobení:
 
@@ -208,7 +213,9 @@ Přizpůsobení:
 ## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>Vytvořit soubor PFX pro certifikát TLS/SSL podepsaný svým držitelem
 Spustit
 
-        pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```console
+pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
+```
 
 Zadejte heslo a pak exportujte certifikát s těmito možnostmi:
 
@@ -230,7 +237,9 @@ Nahrajte certifikát s existující nebo vygenerovanou. Soubor PFX s dvojicí kl
 ## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>Aktualizace certifikátu TLS/SSL v konfiguračním souboru služby
 Aktualizujte hodnotu kryptografického otisku následujícího nastavení v konfiguračním souboru služby pomocí kryptografického otisku certifikátu nahraného do cloudové služby:
 
-    <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```console
+<Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="import-tlsssl-certification-authority"></a>Importovat certifikační autoritu TLS/SSL
 Postupujte podle těchto kroků u všech účtů a počítačů, které budou komunikovat se službou:
@@ -258,13 +267,15 @@ Pak zkopírujte stejný kryptografický otisk jako certifikát TLS/SSL v nastave
 ## <a name="create-a-self-signed-certification-authority"></a>Vytvoření certifikační autority podepsané svým držitelem
 Provedením následujících kroků vytvořte certifikát podepsaný svým držitelem, který bude sloužit jako certifikační autorita:
 
-    makecert ^
-    -n "CN=MyCA" ^
-    -e MM/DD/YYYY ^
-     -r -cy authority -h 1 ^
-     -a sha256 -len 2048 ^
-      -sr localmachine -ss my ^
-      MyCA.cer
+```console
+makecert ^
+-n "CN=MyCA" ^
+-e MM/DD/YYYY ^
+ -r -cy authority -h 1 ^
+ -a sha256 -len 2048 ^
+  -sr localmachine -ss my ^
+  MyCA.cer
+```
 
 Přizpůsobení
 
@@ -311,13 +322,15 @@ Každý jednotlivec autorizovaný pro přístup ke službě by měl mít klients
 
 Následující kroky musí být spuštěny ve stejném počítači, ve kterém byl vytvořen a uložen certifikát certifikační autority podepsané svým držitelem:
 
-    makecert ^
-      -n "CN=My ID" ^
-      -e MM/DD/YYYY ^
-      -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha256 -len 2048 ^
-      -in "MyCA" -ir localmachine -is my ^
-      -sv MyID.pvk MyID.cer
+```console
+makecert ^
+  -n "CN=My ID" ^
+  -e MM/DD/YYYY ^
+  -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
+  -a sha256 -len 2048 ^
+  -in "MyCA" -ir localmachine -is my ^
+  -sv MyID.pvk MyID.cer
+```
 
 Customiz
 
@@ -330,11 +343,15 @@ Tento příkaz zobrazí výzvu k vytvoření a následnému použití hesla. Pou
 ## <a name="create-pfx-files-for-client-certificates"></a>Vytvořit soubory PFX pro klientské certifikáty
 Pro každý generovaný klientský certifikát spusťte:
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 Customiz
 
-    MyID.pvk and MyID.cer with the filename for the client certificate
+```console
+MyID.pvk and MyID.cer with the filename for the client certificate
+```
 
 Zadejte heslo a pak exportujte certifikát s těmito možnostmi:
 
@@ -352,7 +369,7 @@ Každý jednotlivec, pro který byl klientský certifikát vystaven, by měl imp
 ## <a name="copy-client-certificate-thumbprints"></a>Kopírovat kryptografické otisky klientského certifikátu
 Každý jednotlivec, pro který byl klientský certifikát vystaven, musí při získání kryptografického otisku certifikátu, který se přidá do konfiguračního souboru služby, použít následující postup:
 
-* Spuštění certmgr. exe
+* Spustit certmgr.exe
 * Vyberte kartu osobní.
 * Poklikejte na certifikát klienta, který se má použít k ověřování.
 * V dialogu s certifikátem, který se otevře, vyberte kartu Podrobnosti.
@@ -379,11 +396,15 @@ Výchozí nastavení nekontroluje u certifikační autority stav odvolání cert
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>Vytvořit soubor PFX pro šifrovací certifikáty podepsané svým držitelem
 Pro šifrovací certifikát spusťte:
 
-    pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```console
+pvk2pfx -pvk MyID.pvk -spc MyID.cer
+```
 
 Customiz
 
-    MyID.pvk and MyID.cer with the filename for the encryption certificate
+```console
+MyID.pvk and MyID.cer with the filename for the encryption certificate
+```
 
 Zadejte heslo a pak exportujte certifikát s těmito možnostmi:
 
@@ -418,13 +439,13 @@ Aktualizujte hodnotu kryptografického otisku následujícího nastavení v konf
 ## <a name="find-certificate"></a>Najít certifikát
 Postupujte následovně:
 
-1. Spusťte MMC. exe.
+1. Spusťte mmc.exe.
 2. Soubor – > přidat nebo odebrat modul snap-in...
 3. Vyberte **certifikáty**.
 4. Klikněte na tlačítko **Add** (Přidat).
 5. Vyberte umístění úložiště certifikátů.
 6. Klikněte na **Finish** (Dokončit).
-7. Klikněte na tlačítko **OK**.
+7. Klikněte na **OK**.
 8. Rozbalte položku **certifikáty**.
 9. Rozbalte uzel úložiště certifikátů.
 10. Rozbalte uzel podřízený certifikát.
@@ -444,7 +465,7 @@ V **Průvodci exportem certifikátu**:
 9. Zadejte nebo vyhledejte název souboru, kam se má certifikát Uložit (použijte. Přípona PFX).
 10. Klikněte na **Další**.
 11. Klikněte na **Finish** (Dokončit).
-12. Klikněte na tlačítko **OK**.
+12. Klikněte na **OK**.
 
 ## <a name="import-certificate"></a>Import certifikátu
 V Průvodci importem certifikátu:

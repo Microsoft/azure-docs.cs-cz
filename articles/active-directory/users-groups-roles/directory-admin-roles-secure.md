@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b448ef83752c3ffd7be992bc5fc3c376a641101
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84729213"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807855"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD
 
@@ -90,8 +90,8 @@ Po zapnutí Azure AD Privileged Identity Management se podívejte na uživatele,
 
 * Globální správce
 * Správce privilegovaných rolí
-* Správce Exchange Online
-* Správce SharePointu Online
+* Správce Exchange
+* Správce SharePointu
 
 Pokud ve vaší organizaci nemáte Azure AD Privileged Identity Management, můžete použít [rozhraní PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0). Začněte s rolí globálního správce, protože globální správce má stejná oprávnění pro všechny cloudové služby, pro které má vaše organizace předplacené předplatné. Tato oprávnění se udělují bez ohledu na to, kam byla přiřazena: v centru pro správu Microsoft 365, Azure Portal nebo modulu Azure AD pro Microsoft PowerShell.
 
@@ -114,7 +114,7 @@ Vyhodnoťte účty, které jsou přiřazeny nebo mají nárok na roli globální
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Zapnutí vícefaktorového ověřování a registrace všech dalších vysoce privilegovaných účtů pro jednoho uživatele, kteří nejsou federované
 
-Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlašování pro všechny uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, správce privilegovaných rolí, správce Exchange Online a správce SharePointu Online. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé byli zaregistrovaní v [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Vyžadovat Azure Multi-Factor Authentication (MFA) při přihlašování pro všechny jednotlivé uživatele, kteří jsou trvale přiřazeni k jedné nebo více rolím správce Azure AD: globální správce, privilegovaný správce, správce Exchange a správce služby SharePoint. Pomocí průvodce povolte [vícefaktorové ověřování (MFA) pro účty správců](../authentication/howto-mfa-userstates.md) a zajistěte, aby všichni uživatelé byli zaregistrovaní v [https://aka.ms/mfasetup](https://aka.ms/mfasetup) . Další informace najdete v části Krok 2 a 3. krok příručky průvodce [chránit přístup k datům a službám v Office 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>Fáze 2: zmírnění často používaných útoků
 
@@ -358,7 +358,7 @@ Fáze 4 plánu by se měla implementovat po dobu šesti měsíců a později. Do
 
 Zabezpečení privilegovaného přístupu je důležité pro zajištění bezpečnostních ujištění vašich obchodních prostředků. Měl by však být součástí kompletního programu zabezpečení, který poskytuje průběžné záruky zabezpečení. Tento program by měl obsahovat tyto prvky:
 
-* Zásady
+* Zásada
 * Operace
 * Zabezpečení informací
 * Servery

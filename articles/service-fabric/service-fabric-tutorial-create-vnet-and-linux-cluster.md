@@ -4,12 +4,12 @@ description: Naučte se nasadit cluster Service Fabric s Linuxem do existující
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411013"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611692"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Nasazení clusteru se systémem Linux Service Fabric do virtuální sítě Azure
 
@@ -34,12 +34,12 @@ Stáhněte si následující soubory šablon Resource Manageru:
 Pro Ubuntu 16,04 LTS:
 
 * [AzureDeploy.json][template]
-* [AzureDeploy. Parameters. JSON][parameters]
+* [AzureDeploy.Parameters.jsna][parameters]
 
 Pro Ubuntu 18,04 LTS:
 
 * [AzureDeploy.json][template2]
-* [AzureDeploy. Parameters. JSON][parameters2]
+* [AzureDeploy.Parameters.jsna][parameters2]
 
 Rozdíl mezi těmito dvěma šablonami je atribut **vmImageSku** nastaven na hodnotu "18,04-LTS" a **typeHandlerVersion** každého uzlu je nastavena na 1,1.
 
@@ -54,8 +54,8 @@ V prostředku **Microsoft.ServiceFabric/clusters** se nasazuje cluster s Linuxem
 * OS: (Ubuntu 16,04 LTS/Ubuntu 18,04 LTS) (konfigurovatelné v parametrech šablony)
 * zabezpečení pomocí certifikátu (možnost konfigurace v parametrech šablony)
 * [služba DNS](service-fabric-dnsservice.md) je povolena
-* bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
-* stříbrná [úroveň spolehlivosti](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
+* bronzová [úroveň odolnosti](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
+* stříbrná [úroveň spolehlivosti](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) (možnost konfigurace v parametrech šablony)
 * koncový bod připojení klienta: 19000 (možnost konfigurace v parametrech šablony)
 * koncový bod brány HTTP: 19080 (možnost konfigurace v parametrech šablony)
 
@@ -88,7 +88,7 @@ Soubor **AzureDeploy. Parameters** deklaruje mnoho hodnot, které se používaj�
 |clusterName|mysfcluster123| Název clusteru. |
 |location|southcentralus| Umístění clusteru. |
 |certificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který se dříve odeslal do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu SHA1. Příklad: „6190390162C988701DB5676EB81083EA608DCCF3“. </p>|
-|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https:\//mykeyvault.Vault.Azure.NET:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
+|certificateUrlValue|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte URL certifikátu. Například "https: \/ /mykeyvault.Vault.Azure.NET:443/Secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346".</p>|
 |sourceVaultValue||<p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který byl dříve odeslán do trezoru klíčů, vyplňte hodnotu zdrojového trezoru. Například: /subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT</p>|
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>

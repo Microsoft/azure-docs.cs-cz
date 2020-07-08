@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3684b9b87dce24ba7ac1a9b672f7fd6dd446ab46
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 257b1e26127186fce07e402e58f98660005a97fb
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213903"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85800762"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Statistiky tabulek v synapse fondu SQL
 
@@ -97,14 +97,60 @@ V následující části jsou doporučení aktualizující statistiky:
 
 Jedna z prvních otázek, které je třeba položit při řešení potíží s dotazem, **jsou statistiky aktuální? "**
 
-Tato otázka není ta, kterou by bylo možné zodpovědět o stáří dat. Aktuální objekt statistiky může být starý, pokud nedošlo ke změně materiálu podkladových dat.
+Tato otázka není ta, kterou by bylo možné zodpovědět o stáří dat. Aktuální objekt statistiky může být starý, pokud nedošlo ke změně materiálu podkladových dat. Když se počet řádků podstatně změnil, nebo dojde ke změně v rozdělení hodnot pro *sloupec, je* čas aktualizovat statistiku. 
 
-> [!TIP]
-> Když se počet řádků podstatně změnil, nebo dojde ke změně v rozdělení hodnot pro *sloupec, je* čas aktualizovat statistiku.
+Neexistuje žádné zobrazení dynamické správy, abyste zjistili, jestli se data v tabulce od poslední aktualizace statistiky změnila.  Následující dva dotazy vám pomohou určit, zda jsou vaše statistiky zastaralé.
 
-Neexistuje žádné zobrazení dynamické správy, abyste zjistili, jestli se data v tabulce od poslední aktualizace statistiky změnila. Znalost stáří statistik vám může poskytnout část obrázku.
+**Dotaz 1:**  Zjistí rozdíl mezi počtem řádků z statistiky (**stats_row_count**) a skutečným počtem řádků (**actual_row_count**). 
 
-Pomocí následujícího dotazu můžete určit, kdy se vaše Statistika v každé tabulce aktualizovala.
+```sql
+select 
+objIdsWithStats.[object_id], 
+actualRowCounts.[schema], 
+actualRowCounts.logical_table_name, 
+statsRowCounts.stats_row_count, 
+actualRowCounts.actual_row_count,
+row_count_difference = CASE
+    WHEN actualRowCounts.actual_row_count >= statsRowCounts.stats_row_count THEN actualRowCounts.actual_row_count - statsRowCounts.stats_row_count
+    ELSE statsRowCounts.stats_row_count - actualRowCounts.actual_row_count
+END,
+percent_deviation_from_actual = CASE
+    WHEN actualRowCounts.actual_row_count = 0 THEN statsRowCounts.stats_row_count
+    WHEN statsRowCounts.stats_row_count = 0 THEN actualRowCounts.actual_row_count
+    WHEN actualRowCounts.actual_row_count >= statsRowCounts.stats_row_count THEN CONVERT(NUMERIC(18, 0), CONVERT(NUMERIC(18, 2), (actualRowCounts.actual_row_count - statsRowCounts.stats_row_count)) / CONVERT(NUMERIC(18, 2), actualRowCounts.actual_row_count) * 100)
+    ELSE CONVERT(NUMERIC(18, 0), CONVERT(NUMERIC(18, 2), (statsRowCounts.stats_row_count - actualRowCounts.actual_row_count)) / CONVERT(NUMERIC(18, 2), actualRowCounts.actual_row_count) * 100)
+END
+from
+(
+    select distinct object_id from sys.stats where stats_id > 1
+) objIdsWithStats
+left join
+(
+    select object_id, sum(rows) as stats_row_count from sys.partitions group by object_id
+) statsRowCounts
+on objIdsWithStats.object_id = statsRowCounts.object_id 
+left join
+(
+    SELECT sm.name [schema] ,
+    tb.name logical_table_name ,
+    tb.object_id object_id ,
+    SUM(rg.row_count) actual_row_count
+    FROM sys.schemas sm
+    INNER JOIN sys.tables tb ON sm.schema_id = tb.schema_id
+    INNER JOIN sys.pdw_table_mappings mp ON tb.object_id = mp.object_id
+    INNER JOIN sys.pdw_nodes_tables nt ON nt.name = mp.physical_name
+    INNER JOIN sys.dm_pdw_nodes_db_partition_stats rg
+    ON rg.object_id = nt.object_id
+    AND rg.pdw_node_id = nt.pdw_node_id
+    AND rg.distribution_id = nt.distribution_id
+    WHERE 1 = 1
+    GROUP BY sm.name, tb.name, tb.object_id
+) actualRowCounts
+on objIdsWithStats.object_id = actualRowCounts.object_id
+
+```
+
+**Dotaz 2:** Zjistěte stáří statistik tím, že zkontrolujete čas poslední aktualizace statistiky na každé tabulce. 
 
 > [!NOTE]
 > Pokud dojde ke změně v distribuci hodnot pro sloupec, měli byste aktualizovat statistiku bez ohledu na čas poslední aktualizace.

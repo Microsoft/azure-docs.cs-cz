@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e47cb1180bbc6eaaaffd79b78563ab1b1d5e016a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79456195"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611811"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
@@ -24,7 +24,7 @@ Pomocí tohoto modulu můžete načíst data do kanálu strojového učení z ex
 
 > [!Note]
 > Všechny funkce, které tento modul poskytuje, může udělat **úložiště dat** a **datové sady** na úvodní stránce pracovního prostoru. Doporučujeme používat **úložiště** dat a **datovou sadu** , které zahrnují další funkce, jako je monitorování dat. Další informace najdete v článku [Jak získat přístup k datům](../how-to-access-data.md) a [jak zaregistrovat datové sady](../how-to-create-register-datasets.md) .
-> Po registraci můžete datovou sadu najít v -> kategorii DataSets moje **Datasets**datové**sady** v rozhraní návrháře. Tento modul je vyhrazený pro uživatele v rámci studia (Classic) pro známé prostředí. 
+> Po registraci můžete datovou sadu najít v kategorii **DataSets**  ->  **Moje datové sady** v rozhraní návrháře. Tento modul je vyhrazený pro uživatele v rámci studia (Classic) pro známé prostředí. 
 >
 
 Modul **Import dat** podporuje čtení dat z následujících zdrojů:
@@ -44,6 +44,10 @@ Jakmile definujete požadovaná data a připojíte se ke zdroji, **[importujte d
 
 Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a přidat nová data tak, že znovu spustíte [importovaná data](./import-data.md).
 
+> [!WARNING]
+> Pokud je váš pracovní prostor ve virtuální síti, musíte nakonfigurovat úložiště dat tak, aby používalo funkce vizualizace dat daného návrháře. Další informace o tom, jak používat úložiště dat a datové sady ve virtuální síti, najdete v tématu [izolace sítě během školení & odvození s privátními virtuálními sítěmi](../how-to-enable-virtual-network.md#machine-learning-studio).
+
+
 ## <a name="how-to-configure-import-data"></a>Jak konfigurovat importovaná data
 
 1. Přidejte do svého kanálu modul **Import dat** . Tento modul můžete najít v kategorii **vstup a výstup dat** v návrháři.
@@ -52,7 +56,7 @@ Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a při
 
 1. Vyberte **zdroj dat**a vyberte typ zdroje dat. Může se jednat o protokol HTTP nebo úložiště dat.
 
-    Pokud zvolíte úložiště dat, můžete vybrat existující úložiště dat, která jsou už zaregistrovaná v pracovním prostoru Azure Machine Learning, nebo vytvořit nové úložiště dat. Pak definujte cestu k datům, která chcete importovat do úložiště dat. Cestu můžete snadno procházet kliknutím na **Procházet cesta** ![import-data-cesta.](media/module/import-data-path.png)
+    Pokud zvolíte úložiště dat, můžete vybrat existující úložiště dat, která jsou už zaregistrovaná v pracovním prostoru Azure Machine Learning, nebo vytvořit nové úložiště dat. Pak definujte cestu k datům, která chcete importovat do úložiště dat. Cestu můžete snadno procházet kliknutím na **Procházet cesta** ![ import-data-cesta.](media/module/import-data-path.png)
 
 1. Vyberte schéma verze Preview pro filtrování sloupců, které chcete zahrnout. V možnostech analýzy můžete také definovat upřesňující nastavení, jako je oddělovač.
 

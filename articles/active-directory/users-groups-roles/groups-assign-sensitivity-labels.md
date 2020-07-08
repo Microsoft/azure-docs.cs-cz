@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32dad942cf79933b2c44d3bc2d23581ead1238d6
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 63097ac520f1d49098054d64ceae614036f59df3
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84732748"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807800"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Přiřazení popisků citlivosti skupinám Office 365 v Azure Active Directory (Preview)
+# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory"></a>Přiřazení popisků citlivosti skupinám Office 365 v Azure Active Directory
 
-Azure Active Directory (Azure AD) podporuje použití popisků citlivostí publikovaných [centrem dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage) do skupin Office 365. Popisky citlivosti se vztahují na skupinu napříč službami, jako je Outlook, Microsoft teams a SharePoint. Tato funkce je aktuálně ve verzi Public Preview. Další informace o podpoře aplikací Office 365 najdete v článku [Podpora sady office 365 pro popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD) podporuje použití popisků citlivostí publikovaných [centrem dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage) do skupin Office 365. Popisky citlivosti se vztahují na skupinu napříč službami, jako je Outlook, Microsoft teams a SharePoint. Tato funkce je aktuálně ve veřejném GA. Další informace o podpoře aplikací Office 365 najdete v článku [Podpora sady office 365 pro popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Pokud chcete tuto funkci nakonfigurovat, musí být ve vaší organizaci Azure AD aspoň jedna licence Active Azure Active Directory Premium P1.

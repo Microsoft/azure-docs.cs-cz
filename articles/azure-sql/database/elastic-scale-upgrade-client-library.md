@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
-ms.openlocfilehash: 8610342c1d01deceebaf1f4998dd04181e5ddc21
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3bc575dfd815ce4d967fb4328a0a412fce1e8d81
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050825"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829495"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade aplikace na použití nejnovější klientské knihovny pro elastickou databázi
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -57,6 +57,7 @@ Provedení těchto kroků v pořadí zajistí, že starší verze klientské kni
 
 Případně můžete vytvořit aplikaci Visual Studio, která otevře vaši ShardMapManager, iterovat všechny horizontálních oddílů a provede upgrade metadat voláním metod [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) a [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) jako v tomto příkladu:
 
+```csharp
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager
        (connStr, ShardMapManagerLoadPolicy.Lazy);
@@ -67,6 +68,7 @@ Případně můžete vytvořit aplikaci Visual Studio, která otevře vaši Shar
     {
        smm.UpgradeLocalStore(loc);
     }
+```
 
 Tyto techniky pro upgrady metadat lze použít několikrát bez poškození. Pokud například starší verze klienta neúmyslně vytvoří horizontálních oddílů po aktualizaci, můžete znovu spustit upgrade napříč všemi horizontálních oddílů a zajistit, aby byla v celé infrastruktuře k dispozici nejnovější verze metadat.
 

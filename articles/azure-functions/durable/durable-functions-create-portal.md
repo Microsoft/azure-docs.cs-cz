@@ -4,12 +4,12 @@ description: Naučte se, jak nainstalovat rozšíření Durable Functions pro Az
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: a1d0e428da18d44705f4deaf6da3299957076d87
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171391"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807957"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Vytvoření Durable Functions pomocí Azure Portal
 
@@ -52,7 +52,7 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
     }
     ```
 
-   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu nahrát soubor Package. JSON":::
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Nahrávání package.jsKudu":::
 
 4. Po `package.json` nahrání spusťte `npm install` příkaz z konzoly pro vzdálené spuštění Kudu.
 
@@ -83,7 +83,7 @@ Pokud vytváříte Durable Functions JavaScriptu, budete muset nainstalovat [ `d
 1. K odeslání požadavku POST na adresu URL, kterou jste zkopírovali, použijte nástroj HTTP, například post nebo kudrlinkou. Následující příklad je příkaz složeného příkazu, který odesílá požadavek POST do trvalé funkce:
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence --header "Content-Length: 0"
     ```
 
     V tomto příkladu `{your-function-app-name}` je doménou název vaší aplikace Function App. Zpráva odpovědi obsahuje sadu koncových bodů URI, které můžete použít k monitorování a správě spouštění. Může vypadat jako v následujícím příkladu:

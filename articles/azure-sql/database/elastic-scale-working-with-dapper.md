@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 95723bbcfc5573567bee4a433b9d33908b91f5f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b1bba5c4ff71806ac054b4d16585881570cf589a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045246"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829359"
 ---
 # <a name="using-the-elastic-database-client-library-with-dapper"></a>Použití klientské knihovny elastické databáze s Dapperem
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,6 +64,7 @@ Tyto poznámky zjednodušují použití připojení, která jsou zprostředkovan
 
 Tento příklad kódu (z doprovodné ukázky) ilustruje přístup, kde horizontálního dělení klíč poskytuje aplikace do knihovny za účelem zprostředkovatele připojení ke správnému horizontálních oddílů.   
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                      key: tenantId1,
                      connectionString: connStrBldr.ConnectionString,
@@ -76,6 +77,7 @@ Tento příklad kódu (z doprovodné ukázky) ilustruje přístup, kde horizont�
                             VALUES (@name)", new { name = blog.Name }
                         );
     }
+```
 
 Volání rozhraní [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) API nahrazuje výchozí vytváření a otevírání připojení klienta SQL. Volání [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) přijímá argumenty, které jsou požadovány pro směrování závislé na datech: 
 
@@ -87,6 +89,7 @@ Objekt mapy horizontálních oddílů vytvoří připojení k horizontálních o
 
 Dotazy fungují velmi stejným způsobem – nejprve otevřete připojení pomocí [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) z klientského rozhraní API. Pak použijete regulární metody rozšíření Dapperem k namapování výsledků dotazu SQL do objektů .NET:
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId1,
                     connectionString: connStrBldr.ConnectionString,
@@ -104,6 +107,7 @@ Dotazy fungují velmi stejným způsobem – nejprve otevřete připojení pomoc
                 Console.WriteLine(item.Name);
             }
     }
+```
 
 Všimněte si, že blok **using** s připojením DDR je oborem všech databázových operací v rámci bloku do jedné horizontálních oddílů, kde se udržuje tenantId1. Dotaz vrátí pouze Blogy uložené na aktuální horizontálních oddílů, ale ne ty, které jsou uložené na všech ostatních horizontálních oddílů. 
 
@@ -112,6 +116,7 @@ Dapperem obsahuje ekosystém dalších rozšíření, která poskytují lepší 
 
 Použití DapperExtensions ve vaší aplikaci nemění způsob vytváření a správy připojení k databázi. Je stále zodpovědností aplikace otevírat připojení a metody rozšíření očekávají běžné objekty připojení klienta SQL. Můžeme spoléhat na [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) , jak je uvedeno výše. Jak ukazuje následující ukázka kódu, jedinou změnou je, že již nemusíte psát příkazy T-SQL:
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -120,9 +125,11 @@ Použití DapperExtensions ve vaší aplikaci nemění způsob vytváření a sp
            var blog = new Blog { Name = name2 };
            sqlconn.Insert(blog);
     }
+```
 
 A zde je ukázka kódu pro dotaz: 
 
+```csharp
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
                     key: tenantId2,
                     connectionString: connStrBldr.ConnectionString,
@@ -136,12 +143,14 @@ A zde je ukázka kódu pro dotaz:
                Console.WriteLine(item.Name);
            }
     }
+```
 
 ### <a name="handling-transient-faults"></a>Zpracování přechodných chyb
 Tým Microsoft Patterns & Practices publikoval [přechodný blok aplikace pro zpracování přechodných chyb](https://msdn.microsoft.com/library/hh680934.aspx) , který vývojářům aplikací umožní zmírnit při spuštění v cloudu časté problémy s přechodnými chybami. Další informace najdete v tématu [Perseverance, tajný klíč všech Triumphs: použití bloku přechodné aplikace pro zpracování chyb](https://msdn.microsoft.com/library/dn440719.aspx).
 
 Ukázka kódu spoléhá na přechodovou knihovnu selhání k ochraně proti přechodným chybám. 
 
+```csharp
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
        using (SqlConnection sqlconn =
@@ -151,6 +160,7 @@ Ukázka kódu spoléhá na přechodovou knihovnu selhání k ochraně proti pře
               sqlconn.Insert(blog);
           }
     });
+```
 
 **SqlDatabaseUtils. SqlRetryPolicy** ve výše uvedeném kódu je definováno jako **SqlDatabaseTransientErrorDetectionStrategy** s počtem opakování 10 a 5 sekund čekací doba mezi opakovanými pokusy. Pokud používáte transakce, ujistěte se, že se váš rozsah opakování vrátí zpět na začátek transakce v případě přechodného selhání.
 

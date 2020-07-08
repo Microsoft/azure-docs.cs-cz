@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710282"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85611726"
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
 
@@ -116,7 +116,7 @@ Další informace o nasazování aplikací do služby Image Store najdete v čl�
 
 **Služba Repair Manager**: Jedná se o volitelnou systémovou službu, která umožňuje provádět akce oprav v clusteru způsobem, který je bezpečný, automatizovaný a transparentní. Správce oprav se používá v:
 
-   - Provádění oprav v rámci údržby Azure u clusterů Azure Service Fabric v [stříbrné a zlaté odolnosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)
+   - Provádění oprav v rámci údržby Azure u clusterů Azure Service Fabric v [stříbrné a zlaté odolnosti](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)
    - Provádění opravných akcí pro [aplikaci orchestrace oprav](service-fabric-patch-orchestration-application.md)
 
 ## <a name="deployment-and-application-models"></a>Modely nasazení a aplikace

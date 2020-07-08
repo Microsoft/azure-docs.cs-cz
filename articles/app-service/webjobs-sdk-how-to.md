@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 28d3aae402a7d091fdcbe07dd4699a6fd44b5b25
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456891"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807974"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak použít sadu Azure WebJobs SDK k událostmi řízenému zpracování na pozadí
 
@@ -39,11 +39,11 @@ Pokud je to možné, jsou k dispozici příklady pro obě verze 3. *x* a verze 2
 
 Hostitel je kontejner modulu runtime pro funkce.  Naslouchá triggerům a volání funkcí. Ve verzi 3. *x*, hostitel je implementace `IHost` . Ve verzi 2. *x*, můžete použít `JobHost` objekt. Vytvoříte instanci hostitele v kódu a napíšete kód pro přizpůsobení jeho chování.
 
-Jedná se o klíčový rozdíl mezi použitím sady WebJobs SDK přímo a jejím přímým použitím prostřednictvím Azure Functions. V Azure Functions služba řídí hostitele a nemůžete přizpůsobit hostitele pomocí psaní kódu. Azure Functions umožňuje přizpůsobit chování hostitele prostřednictvím nastavení v souboru Host. JSON. Tato nastavení jsou řetězce, nikoli kód a tato omezení omezují typy úprav, které lze provést.
+Jedná se o klíčový rozdíl mezi použitím sady WebJobs SDK přímo a jejím přímým použitím prostřednictvím Azure Functions. V Azure Functions služba řídí hostitele a nemůžete přizpůsobit hostitele pomocí psaní kódu. Azure Functions umožňuje přizpůsobit chování hostitele prostřednictvím nastavení host.jsv souboru. Tato nastavení jsou řetězce, nikoli kód a tato omezení omezují typy úprav, které lze provést.
 
 ### <a name="host-connection-strings"></a>Připojovací řetězce hostitele
 
-Sada WebJobs SDK hledá Azure Storage a Azure Service Bus připojovací řetězce v souboru Local. Settings. JSON při spuštění místně nebo v prostředí úlohy WebJob při spuštění v Azure. Ve výchozím nastavení se vyžaduje nastavení připojovacího řetězce úložiště s názvem `AzureWebJobsStorage` .  
+Sada WebJobs SDK hledá Azure Storage a Azure Service Bus připojovací řetězce v local.settings.jszapnutém souboru při spuštění místně nebo v prostředí úlohy WebJob při spuštění v Azure. Ve výchozím nastavení se vyžaduje nastavení připojovacího řetězce úložiště s názvem `AzureWebJobsStorage` .  
 
 Verze 2. *x* sady SDK umožňuje používat pro tyto připojovací řetězce vlastní názvy nebo je ukládat jinde. Můžete nastavit názvy v kódu pomocí [`JobHostConfiguration`] , jak je znázorněno zde:
 
@@ -358,7 +358,7 @@ Můžete nakonfigurovat chování některých triggerů a vazeb. Proces konfigur
 * **Verze 3. *x*:** nastavte konfiguraci při `Add<Binding>` volání metody v `ConfigureWebJobs` .
 * **Verze 2. *x*:** nastavte konfiguraci nastavením vlastností v objektu konfigurace, který předáte do `JobHost` .
 
-Tato nastavení specifická pro vazbu jsou ekvivalentní nastavení v [souboru projektu Host. JSON](../azure-functions/functions-host-json.md) v Azure Functions.
+Tato nastavení specifická pro vazbu jsou ekvivalentní nastavení v [host.jssouboru projektu](../azure-functions/functions-host-json.md) v Azure Functions.
 
 Můžete nakonfigurovat následující vazby:
 
@@ -470,7 +470,7 @@ static void Main(string[] args)
 }
 ```
 
-Další podrobnosti najdete v referenčních informacích k [hostiteli. JSON v1. x](../azure-functions/functions-host-json-v1.md#queues).
+Další podrobnosti najdete v referenčních informacích o [host.jsv v1. x](../azure-functions/functions-host-json-v1.md#queues).
 
 ### <a name="sendgrid-binding-configuration-version-3x"></a>Konfigurace vazeb SendGrid (verze 3* ) ×*)
 
@@ -827,12 +827,12 @@ Každý protokol vytvořený `ILogger` instancí má přidruženou `Category` a 
 |LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladění       | 1 |
+|Ladit       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
 |Kritické    | 5 |
-|Žádné        | 6 |
+|Žádná        | 6 |
 
 Jednotlivé kategorie můžete filtrovat nezávisle na konkrétním [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Můžete například chtít zobrazit všechny protokoly pro zpracování triggerů objektů blob, ale jenom `Error` a vyšší pro všechno ostatní.
 
@@ -959,7 +959,7 @@ Ve verzi 3. *x*, už nemusíte [`TelemetryClient`] při zastavení hostitele vyp
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
-Ve verzi 2. *x*, která je [`TelemetryClient`] vytvořena interně poskytovatelem Application Insights pro sadu WebJobs SDK používá [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) . Pokud Application Insights koncový bod není k dispozici nebo omezuje příchozí požadavky, tento kanál [uloží požadavky v systému souborů webové aplikace a znovu je odešle](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+Ve verzi 2. *x*, která je [`TelemetryClient`] vytvořena interně poskytovatelem Application Insights pro sadu WebJobs SDK používá [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll) . Pokud Application Insights koncový bod není k dispozici nebo omezuje příchozí požadavky, tento kanál [uloží požadavky v systému souborů webové aplikace a znovu je odešle](https://apmtips.com/posts/2015-09-03-more-telemetry-channels/).
 
 [`TelemetryClient`]Je vytvořen třídou, která implementuje `ITelemetryClientFactory` . Ve výchozím nastavení je to [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/) .
 

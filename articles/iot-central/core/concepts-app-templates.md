@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 244de9a3236977308a9f7bcaf5106e86a0984201
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b581242ad5a23072731fc7d30e09e461590ec1ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024672"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801321"
 ---
 # <a name="what-are-application-templates"></a>Co jsou šablony aplikací?
 
@@ -56,6 +56,10 @@ Azure IoT Central je nezávislá aplikační platforma pro odvětví. Šablony a
   - Monitorování kvality vody
 - [Zdravotní péče](../healthcare/overview-iot-central-healthcare.md).
   - Nepřetržité monitorování pacientů
+
+## <a name="application-versions"></a>Verze aplikace
+
+Šablony jsou spojeny s konkrétními verzemi aplikace IoT Central. Verzi aplikace můžete najít na stránce [o aplikaci](./howto-get-app-info.md) na webu s odkazem na **nápovědu** .
 
 ## <a name="next-steps"></a>Další kroky
 

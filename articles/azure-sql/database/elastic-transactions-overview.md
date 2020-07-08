@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: cd0116a417d2710d330c4be406a5d9d770f76461
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 5c94234644fcefb70a40ba0b2c21e6e205be0e65
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344539"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829410"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,7 +38,7 @@ Transakce elastické databáze cílí na následující scénáře:
 
 ## <a name="installation-and-migration"></a>Instalace a migrace
 
-Funkce pro transakce elastické databáze v SQL Database jsou k dispozici prostřednictvím aktualizací knihoven .NET System. data. dll a System. Transactions. dll. Knihovny DLL zajišťují, že se v případě potřeby použije dvoufázové potvrzení, aby se zajistila nedělitelnost. Chcete-li začít vyvíjet aplikace pomocí transakcí elastické databáze, nainstalujte [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) nebo novější verzi. Při spuštění v dřívější verzi rozhraní .NET Framework se transakce nezdaří povýšit na distribuovanou transakci a vyvolá se výjimka.
+Funkce pro transakce elastické databáze v SQL Database jsou k dispozici prostřednictvím aktualizací knihoven .NET System.Data.dll a System.Transactions.dll. Knihovny DLL zajišťují, že se v případě potřeby použije dvoufázové potvrzení, aby se zajistila nedělitelnost. Chcete-li začít vyvíjet aplikace pomocí transakcí elastické databáze, nainstalujte [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) nebo novější verzi. Při spuštění v dřívější verzi rozhraní .NET Framework se transakce nezdaří povýšit na distribuovanou transakci a vyvolá se výjimka.
 
 Po instalaci můžete použít rozhraní API distribuovaných transakcí v System. Transactions s připojeními k SQL Database. Pokud máte pomocí těchto rozhraní API existující aplikace MSDTC, jednoduše po instalaci rozhraní 4.6.1 Framework znovu sestavte své stávající aplikace pro .NET 4,6. Pokud vaše projekty cílí na .NET 4,6, budou automaticky používat aktualizované knihovny DLL z nové verze rozhraní a volání rozhraní API distribuované transakce v kombinaci s připojením k SQL Database budou nyní úspěšná.
 
@@ -50,6 +50,7 @@ Pamatujte, že transakce elastické databáze nevyžadují instalaci MSDTC. Mís
 
 Následující vzorový kód používá známé programovací prostředí s .NET System. Transactions. Třída TransactionScope vytváří okolí transakce v .NET. ("Ambientní transakce" je ta, která žije v aktuálním vlákně.) Všechna připojení otevřená v rámci objektu TransactionScope se účastní transakce. Pokud se v různých databázích účastní, transakce se automaticky nazvyšuje na distribuovanou transakci. Výsledek transakce je řízen nastavením rozsahu, který bude dokončen k označení potvrzení.
 
+```csharp
     using (var scope = new TransactionScope())
     {
         using (var conn1 = new SqlConnection(connStrDb1))
@@ -70,12 +71,14 @@ Následující vzorový kód používá známé programovací prostředí s .NET
 
         scope.Complete();
     }
+```
 
 ### <a name="sharded-database-applications"></a>Databázové aplikace horizontálně dělené
 
 Transakce elastické databáze pro SQL Database také podporují koordinaci distribuovaných transakcí, kde použijete metodu OpenConnectionForKey klientské knihovny elastické databáze k otevření připojení pro datovou vrstvu s možností horizontálního rozšíření kapacity. Zvažte případy, kdy potřebujete zaručit konzistenci transakcí pro změny v několika různých hodnotách horizontálního dělení klíče. Připojení k horizontálních oddílů, které hostují různé hodnoty klíčů horizontálního dělení, se účtují pomocí OpenConnectionForKey. V obecném případě může být připojení k různým horizontálních oddílůům, aby bylo zajištěno, že transakční záruky vyžadují distribuovanou transakci.
 Tento přístup je znázorněn v následujícím příkladu kódu. Předpokládá, že proměnná s názvem shardmap se používá k reprezentaci mapy horizontálních oddílů z klientské knihovny elastické databáze:
 
+```csharp
     using (var scope = new TransactionScope())
     {
         using (var conn1 = shardmap.OpenConnectionForKey(tenantId1, credentialsStr))
@@ -96,6 +99,7 @@ Tento přístup je znázorněn v následujícím příkladu kódu. Předpoklád�
 
         scope.Complete();
     }
+```
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Instalace rozhraní .NET pro Azure Cloud Services
 
@@ -105,6 +109,7 @@ Pro Azure App Service se v současné době nepodporují upgrady hostovaného op
 
 Všimněte si, že instalační program pro .NET 4.6.1 může vyžadovat další dočasné úložiště během zaváděcího procesu ve službě Azure Cloud Services, než je instalační program pro .NET 4,6. Aby se zajistila úspěšná instalace, musíte pro cloudovou službu Azure zvětšit dočasné úložiště v souboru ServiceDefinition. csdef v části LocalResources a nastavení prostředí úlohy po spuštění, jak je znázorněno v následující ukázce:
 
+```xml
     <LocalResources>
     ...
         <LocalStorage name="TEMP" sizeInMB="5000" cleanOnRoleRecycle="false" />
@@ -123,6 +128,7 @@ Všimněte si, že instalační program pro .NET 4.6.1 může vyžadovat další
             </Environment>
         </Task>
     </Startup>
+```
 
 ## <a name="transactions-across-multiple-servers"></a>Transakce napříč několika servery
 

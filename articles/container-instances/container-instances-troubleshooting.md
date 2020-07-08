@@ -2,14 +2,14 @@
 title: Řešení běžných potíží
 description: Naučte se řešit běžné problémy při nasazení, spuštění nebo správě Azure Container Instances
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 06/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeb4517f5be7fff9c29487d6521f80ee697c0e96
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533395"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807838"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží se službou Azure Container Instances
 
@@ -20,20 +20,21 @@ Pokud potřebujete další podporu, přečtěte si část dostupná podpora a mo
 ## <a name="issues-during-container-group-deployment"></a>Problémy během nasazování skupiny kontejnerů
 ### <a name="naming-conventions"></a>Zásady vytváření názvů
 
-Při definování specifikace kontejneru vyžadují některé parametry dodržování omezení pojmenování. Níže je tabulka se specifickými požadavky na vlastnosti skupiny kontejnerů. Další informace o zásadách vytváření názvů pro Azure najdete v tématu [konvence pojmenování][azure-name-restrictions] v cetrum architektury Azure.
+Při definování specifikace kontejneru vyžadují některé parametry dodržování omezení pojmenování. Níže je tabulka se specifickými požadavky na vlastnosti skupiny kontejnerů. Další informace najdete v tématu [konvence pojmenování][azure-name-restrictions] v cetrum architektury Azure a [pravidla pro pojmenování a omezení pro prostředky Azure][naming-rules].
 
 | Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný vzor | Příklad |
 | --- | --- | --- | --- | --- | --- |
-| Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Název kontejneru<sup>1</sup> | 1–63 |Malá písmena | Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>-<role>-container<number>` |`web-batch-container1` |
 | Porty kontejneru | Mezi 1 a 65535 |Integer |Celé číslo od 1 do 65535 |`<port-number>` |`443` |
 | Popisek názvu DNS | 5-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`frontend-site1` |
 | Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a podtržítka (_) kdekoli s výjimkou prvního nebo posledního znaku |`<name>` |`MY_VARIABLE` |
-| Název svazku | 5-63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a pomlčky kdekoli kromě prvního nebo posledního znaku. Nemůže obsahovat dvě po sobě jdoucí spojovníky. |`<name>` |`batch-output-volume` |
+| Název svazku | 5-63 |Malá písmena |Alfanumerické znaky a pomlčky kdekoli s výjimkou prvního nebo posledního znaku. Nemůže obsahovat dvě po sobě jdoucí spojovníky. |`<name>` |`batch-output-volume` |
+
+<sup>1</sup> Omezení také pro názvy skupin kontejnerů, pokud nejsou zadány nezávisle na instancích kontejnerů, například pomocí `az container create` nasazení příkazů.
 
 ### <a name="os-version-of-image-not-supported"></a>Verze operačního systému image není podporovaná.
 
-Pokud zadáte obrázek, který Azure Container Instances nepodporuje, vrátí se `OsVersionNotSupported` chyba. Tato chyba je podobná následujícímu, `{0}` kde je název bitové kopie, kterou jste se pokusili nasadit:
+Pokud zadáte obrázek, který Azure Container Instances nepodporuje, `OsVersionNotSupported` vrátí se chyba. Tato chyba je podobná následujícímu, kde `{0}` je název bitové kopie, kterou jste se pokusili nasadit:
 
 ```json
 {
@@ -48,7 +49,7 @@ K této chybě nejčastěji dochází při nasazování bitových kopií Windows
 
 ### <a name="unable-to-pull-image"></a>Nelze načíst obrázek.
 
-Pokud Azure Container Instances nedokáže načíst vaši image, opakuje se v časovém intervalu. Pokud dojde k selhání operace vyžádání image, ACI nakonec selže nasazení a může se zobrazit `Failed to pull image` chyba.
+Pokud Azure Container Instances nedokáže načíst vaši image, opakuje se v časovém intervalu. Pokud dojde k selhání operace vyžádání image, ACI nakonec selže nasazení a může se zobrazit `Failed to pull image` Chyba.
 
 Chcete-li tento problém vyřešit, odstraňte instanci kontejneru a opakujte nasazení. Ujistěte se, že bitová kopie existuje v registru a že jste správně zadali název bitové kopie.
 
@@ -96,7 +97,7 @@ Tato chyba označuje, že kvůli vysokému zatížení v oblasti, ve které se p
 * Nasazení později
 
 ## <a name="issues-during-container-group-runtime"></a>Problémy při běhu skupiny kontejnerů
-### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontejner se průběžně ukončuje a restartuje (bez dlouhotrvajícího procesu).
+### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Kontejner se průběžně zastavuje a restartuje (bez dlouhotrvajícího procesu)
 
 Skupiny kontejnerů jsou standardně nastavené na [zásady restartování](container-instances-restart-policy.md) **vždy**, takže kontejnery ve skupině kontejnerů se po spuštění po dokončení vždy restartují. Je možné, že tuto změnu budete muset změnit na **neúspěšné** nebo **nikdy** , pokud máte v úmyslu spouštět kontejnery založené na úlohách. Pokud zadáte **chybu** a stále se zobrazuje nepřetržité restartování, může se jednat o problém s aplikací nebo skriptem provedeným ve vašem kontejneru.
 
@@ -156,7 +157,7 @@ Rozhraní Container Instances API a Azure Portal obsahuje `restartCount` vlastno
 > [!NOTE]
 > Většina imagí kontejneru pro distribuce systému Linux jako výchozí příkaz nastaví prostředí, jako je například bash. Vzhledem k tomu, že vlastní prostředí nepředstavuje dlouhotrvající službu, tyto kontejnery se okamžitě ukončí a přejdou do smyčky restartu, pokud je nakonfigurovaná s výchozí zásadou **vždy** restartovat.
 
-### <a name="container-takes-a-long-time-to-start"></a>Spuštění kontejneru trvá dlouhou dobu.
+### <a name="container-takes-a-long-time-to-start"></a>Spuštění kontejneru trvá dlouhou dobu
 
 Tři primární faktory, které přispívají k času spuštění kontejneru v Azure Container Instances jsou:
 
@@ -186,7 +187,7 @@ Dalším způsobem, jak snížit dopad navýšení obrázku na dobu spuštění 
 
 #### <a name="cached-images"></a>Obrázky v mezipaměti
 
-Azure Container Instances používá mechanismus ukládání do mezipaměti, který urychluje čas spuštění kontejneru pro image vytvořené na běžných [obrázcích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported) `nanoserver:1809`, `servercore:ltsc2019`včetně, `servercore:1809`a. Běžně používané image Linux, například `ubuntu:1604` a `alpine:3.6` , jsou také uloženy v mezipaměti. Aktuální seznam imagí a značek uložených v mezipaměti najdete v rozhraní API pro [vypsání imagí v mezipaměti][list-cached-images] .
+Azure Container Instances používá mechanismus ukládání do mezipaměti, který urychluje čas spuštění kontejneru pro image vytvořené na běžných [obrázcích Windows Base](container-instances-faq.md#what-windows-base-os-images-are-supported), včetně `nanoserver:1809` , `servercore:ltsc2019` a `servercore:1809` . Běžně používané image Linux, například `ubuntu:1604` a, `alpine:3.6` jsou také uloženy v mezipaměti. Aktuální seznam imagí a značek uložených v mezipaměti najdete v rozhraní API pro [vypsání imagí v mezipaměti][list-cached-images] .
 
 > [!NOTE]
 > Používání imagí založených na Windows serveru 2019 v Azure Container Instances je ve verzi Preview.
@@ -199,11 +200,11 @@ Při počátečním vytváření nemusí kontejnery Windows mít žádná příc
 
 Azure Container Instances nevystavuje přímý přístup k podkladové infrastruktuře, která je hostitelem skupin kontejnerů. To zahrnuje přístup k rozhraní API Docker běžícímu na hostiteli kontejneru a spouštění privilegovaných kontejnerů. Pokud potřebujete interakci Docker, podívejte se do [Referenční dokumentace REST](https://aka.ms/aci/rest) a podívejte se, co podporuje rozhraní ACI API. Pokud chybí nějaký objekt, odešlete žádost ve [fórech ACI Feedback](https://aka.ms/aci/feedback).
 
-### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>IP adresa skupiny kontejnerů možná není dostupná kvůli neshodě portů.
+### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>IP adresa skupiny kontejnerů nemusí být dostupná kvůli neshodě portů
 
-Azure Container Instances ještě nepodporuje mapování portů jako s normální konfigurací Docker. Pokud zjistíte, že IP adresa skupiny kontejnerů není dostupná, pokud se domníváte, že by měla být, ujistěte se, že jste nakonfigurovali image kontejneru, aby naslouchala stejným portům `ports` , které zveřejníte ve skupině kontejnerů s vlastností.
+Azure Container Instances ještě nepodporuje mapování portů jako s normální konfigurací Docker. Pokud zjistíte, že IP adresa skupiny kontejnerů není dostupná, pokud se domníváte, že by měla být, ujistěte se, že jste nakonfigurovali image kontejneru, aby naslouchala stejným portům, které zveřejníte ve skupině kontejnerů s `ports` vlastností.
 
-Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu, který jste nakonfigurovali v imagi kontejneru, otestujte nasazení `aci-helloworld` image, která port zveřejňuje. `aci-helloworld` Aplikaci také spusťte, aby naslouchala na portu. `aci-helloworld`přijme volitelnou proměnnou `PORT` prostředí pro přepsání výchozího portu 80, na kterém naslouchá. Například pro otestování portu 9000 nastavte [proměnnou prostředí](container-instances-environment-variables.md) při vytváření skupiny kontejnerů:
+Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu, který jste nakonfigurovali v imagi kontejneru, otestujte nasazení `aci-helloworld` image, která port zveřejňuje. Aplikaci také spusťte `aci-helloworld` , aby naslouchala na portu. `aci-helloworld`přijme volitelnou proměnnou prostředí `PORT` pro přepsání výchozího portu 80, na kterém naslouchá. Například pro otestování portu 9000 nastavte [proměnnou prostředí](container-instances-environment-variables.md) při vytváření skupiny kontejnerů:
 
 1. Nastavte skupinu kontejnerů k vystavení portu 9000 a předejte číslo portu jako hodnotu proměnné prostředí. Příklad je naformátován pro prostředí bash shell. Pokud dáváte přednost jinému prostředí, například PowerShellu nebo příkazovému řádku, budete muset odpovídajícím způsobem upravit přiřazení proměnné.
     ```azurecli
@@ -212,8 +213,8 @@ Pokud chcete potvrdit, že Azure Container Instances může naslouchat na portu,
     --ip-address Public --ports 9000 \
     --environment-variables 'PORT'='9000'
     ```
-1. Ve výstupu příkazu vyhledejte IP adresu skupiny kontejnerů `az container create`. Vyhledejte hodnotu **IP**. 
-1. Po úspěšném zřízení kontejneru přejděte na adresu IP a port aplikace kontejneru v prohlížeči, například: `192.0.2.0:9000`. 
+1. Ve výstupu příkazu vyhledejte IP adresu skupiny kontejnerů `az container create` . Vyhledejte hodnotu **IP**. 
+1. Po úspěšném zřízení kontejneru přejděte na adresu IP a port aplikace kontejneru v prohlížeči, například: `192.0.2.0:9000` . 
 
     Měla by se zobrazit zpráva "Vítá vás Azure Container Instances!" zpráva zobrazená webovou aplikací
 1. Až budete s kontejnerem hotovi, odeberte ho pomocí `az container delete` příkazu:
@@ -228,6 +229,7 @@ Naučte se, jak [načíst protokoly a události kontejneru](container-instances-
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
+[naming-rules]: ../azure-resource-manager/management/resource-name-rules.md
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore
@@ -235,4 +237,4 @@ Naučte se, jak [načíst protokoly a události kontejneru](container-instances-
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
-[list-cached-images]: /rest/api/container-instances/listcachedimages
+[list-cached-images]: /rest/api/container-instances/location/listcachedimages

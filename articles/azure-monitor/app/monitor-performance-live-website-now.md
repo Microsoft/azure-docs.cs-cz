@@ -3,12 +3,12 @@ title: Monitorování živé webové aplikace v ASP.NET pomocí Azure Applicatio
 description: Monitorování výkonu webu bez opětovného nasazení. Funguje s ASP.NET webovými aplikacemi hostovanými místně nebo na virtuálních počítačích.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 874069ec9ce9870c3deba37387ee470de1d1699f
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 2892cb40f0b00b468ef0b8a4ffe60c1158ad068a
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079088"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85807260"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
@@ -40,13 +40,13 @@ Tady je rekapitulace toho, co každý způsob přináší:
 |  | Při sestavení | Za běhu |
 | --- | --- | --- |
 | Požadavky a výjimky |Ano |Ano |
-| [Podrobnější výjimky](../../azure-monitor/app/asp-net-exceptions.md) | |Ano |
+| [Podrobnější výjimky](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
 | [Diagnostika závislostí](../../azure-monitor/app/asp-net-dependencies.md) |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
 | [Čítače výkonu systému](../../azure-monitor/app/performance-counters.md) |Ano |Ano |
-| [Rozhraní API pro vlastní telemetrii][api] |Ano |Ne |
-| [Integrace protokolu trasování](../../azure-monitor/app/asp-net-trace-logs.md) |Ano |Ne |
-| [Zobrazení stránky a uživatelská data](../../azure-monitor/app/javascript.md) |Ano |Ne |
-| Nutnost znovu sestavit kód |Ano | Ne |
+| [Rozhraní API pro vlastní telemetrii][api] |Yes |No |
+| [Integrace protokolu trasování](../../azure-monitor/app/asp-net-trace-logs.md) |Yes |No |
+| [Zobrazení stránky a uživatelská data](../../azure-monitor/app/javascript.md) |Yes |No |
+| Nutnost znovu sestavit kód |Yes | No |
 
 
 
@@ -84,7 +84,7 @@ Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu
 4. Obnovte veškeré úpravy, které jste provedli v souboru .config.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Poradce při potížích
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="confirm-a-valid-installation"></a>Potvrďte platnou instalaci. 
 
@@ -298,7 +298,7 @@ Pro aplikace již instrumentované v době kompilace:
  * Volání závislostí (.NET 4.5); návratové hodnoty ve voláních závislostí (.NET 4.6)
  * Hodnoty trasování zásobníku výjimek
 
-[Další informace](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[Další informace](https://apmtips.com/posts/2016-11-18-how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>Video
 

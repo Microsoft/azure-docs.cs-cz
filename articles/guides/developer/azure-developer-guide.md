@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 38e93585c2d9fd3c9cf6e4affdfd1b0a250fedc4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321911"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85829393"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -198,7 +198,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHub
+* GitHubu
 * Puppet
 * Chef
 * TeamCity
@@ -255,7 +255,7 @@ Azure je založený na sadě rozhraní REST API, které podporují uživatelské
 Spolu s rozhraními REST API vám řada služeb Azure také umožňuje programově spravovat prostředky z vašich aplikací pomocí sad Azure SDK specifických pro konkrétní platformy, včetně sad SDK pro následující vývojové platformy:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/azure/javascript/)
+-   [Node.js](https://docs.microsoft.com/azure/developer/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 4487d1452611b269eec756cdbc76e8e55c466cd2
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612788"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85801134"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgradovat na úroveň Standard pro rozšířené zabezpečení
 
@@ -63,7 +63,9 @@ Security Center nabízí vylepšené zabezpečení a ochranu před hrozbami pro 
 - **Výstrahy zabezpečení** – pomocí pokročilých analýz a Microsoft Intelligent Security Graph můžete získat hraniční přístup k nově vznikajícím internetovým útokům. Využijte integrované analýzy chování a strojové učení k identifikaci útoků a využívání funkce Zero Day. Monitorujte sítě, počítače a cloudové služby pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte šetření pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
 - **Kontrola ohrožení zabezpečení pro virtuální počítače** – snadno nasadíte skener na všechny virtuální počítače, které poskytují špičkové řešení pro správu ohrožení zabezpečení. Zobrazit, prozkoumat a opravit zjištění přímo v rámci Security Center. 
 - **Řízení přístupu a aplikací** – zablokuje malware a další nežádoucí aplikace pomocí doporučení pro používání služby Machine Learning, která jsou přizpůsobená konkrétním úlohám. Snižte úroveň útoku na síť pomocí řízeného přístupu za běhu k portům pro správu virtuálních počítačů Azure. To významně snižuje riziko útoků hrubou silou a dalších sítí.
-- **Funkce zabezpečení kontejnerů** – výhody správy ohrožení zabezpečení a ochrany před hrozbami v reálném čase ve vašich kontejnerových prostředích. Při povolování prostředku registrů kontejnerů může trvat až 12hrs, než se povolí všechny funkce.
+- **Funkce zabezpečení kontejnerů** – výhody správy ohrožení zabezpečení a ochrany před hrozbami v reálném čase ve vašich kontejnerových prostředích. Při povolování prostředku registrů kontejnerů může trvat až 12hrs, než se povolí všechny funkce. Poplatky vycházejí z počtu jedinečných imagí kontejnerů, které jsou vloženy do připojeného registru. Po prohledání obrazu se tato image nebude účtovat znovu, pokud se neupraví a znovu nevloží. 
+
+
 
 
 ## <a name="next-steps"></a>Další kroky
