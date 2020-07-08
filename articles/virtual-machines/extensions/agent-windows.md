@@ -14,10 +14,9 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
 ms.openlocfilehash: a002479375d835f7fafe031517e5b2fe61b77b5b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608685"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled agenta virtuálního počítače Azure
@@ -107,14 +106,14 @@ foreach ($vm in $vms) {
 
 ### <a name="manual-detection"></a>Ruční zjišťování
 
-Když se přihlásíte k virtuálnímu počítači s Windows, můžete ke kontrole spuštěných procesů použít Správce úloh. Pokud chcete zkontrolovat agenta virtuálního počítače Azure, otevřete Správce úloh, klikněte na kartu *Podrobnosti* a vyhledejte název procesu **WindowsAzureGuestAgent. exe**. Přítomnost tohoto procesu indikuje, že je agent virtuálního počítače nainstalovaný.
+Když se přihlásíte k virtuálnímu počítači s Windows, můžete ke kontrole spuštěných procesů použít Správce úloh. Pokud chcete zkontrolovat agenta virtuálního počítače Azure, otevřete Správce úloh, klikněte na kartu *Podrobnosti* a vyhledejte název procesu **WindowsAzureGuestAgent.exe**. Přítomnost tohoto procesu indikuje, že je agent virtuálního počítače nainstalovaný.
 
 
 ## <a name="upgrade-the-vm-agent"></a>Upgrade agenta virtuálního počítače
 Agent virtuálního počítače Azure pro Windows se upgraduje automaticky. Když se do Azure nasadí nové virtuální počítače, dostanou nejnovějšího agenta virtuálního počítače při zřizování virtuálních počítačů. Vlastní image virtuálních počítačů by se měly aktualizovat ručně, aby se při vytváření image zahrnul nový agent virtuálního počítače.
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Kolekce automatických protokolů agenta hosta systému Windows
-Agent hosta systému Windows obsahuje funkci pro automatické shromáždění některých protokolů. Tato funkce je řadičem procesu CollectGuestLogs. exe. Existuje jak pro PaaS Cloud Services, tak pro IaaS Virtual Machines a jejím cílem je rychle & automaticky shromažďovat některé diagnostické protokoly z virtuálního počítače, aby se mohly použít pro offline analýzu. Shromážděné protokoly jsou protokoly událostí, protokoly operačního systému, protokoly Azure a některé klíče registru. Vytvoří soubor ZIP, který se přenese na hostitele virtuálního počítače. Tento soubor ZIP si pak můžete prověřit technickými týmy a odborníky na podporu a prozkoumat problémy na žádost zákazníka, který vlastní virtuální počítač.
+Agent hosta systému Windows obsahuje funkci pro automatické shromáždění některých protokolů. Tato funkce je řadičem procesu CollectGuestLogs.exe. Existuje jak pro PaaS Cloud Services, tak pro IaaS Virtual Machines a jejím cílem je rychle & automaticky shromažďovat některé diagnostické protokoly z virtuálního počítače, aby se mohly použít pro offline analýzu. Shromážděné protokoly jsou protokoly událostí, protokoly operačního systému, protokoly Azure a některé klíče registru. Vytvoří soubor ZIP, který se přenese na hostitele virtuálního počítače. Tento soubor ZIP si pak můžete prověřit technickými týmy a odborníky na podporu a prozkoumat problémy na žádost zákazníka, který vlastní virtuální počítač.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o rozšíření virtuálních počítačů najdete v tématu [Přehled rozšíření a funkcí virtuálních počítačů Azure](overview.md).

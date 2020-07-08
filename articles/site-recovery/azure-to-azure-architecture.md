@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
 ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84629709"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
@@ -62,7 +61,7 @@ Cílové prostředky můžete spravovat následujícím způsobem:
 
 Když povolíte replikaci virtuálních počítačů Azure, Site Recovery ve výchozím nastavení vytvoří novou zásadu replikace s výchozími nastaveními shrnutými v tabulce.
 
-**Nastavení zásad** | **Zobrazí** | **Výchozí**
+**Nastavení zásad** | **Podrobnosti** | **Výchozí**
 --- | --- | ---
 **Uchování bodu obnovení** | Určuje, jak dlouho Site Recovery udržuje body obnovení. | 24 hodin
 **Frekvence snímků konzistentní vzhledem k aplikacím** | Jak často Site Recovery přebírá snímek konzistentní vzhledem k aplikacím. | Každé čtyři hodiny
@@ -96,13 +95,13 @@ Následující tabulka vysvětluje různé typy konzistence.
 
 ### <a name="crash-consistent"></a>Konzistentní vzhledem k selháním
 
-**Popis** | **Zobrazí** | **Doporučení**
+**Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
 Snímek konzistentní se selháním zachycuje data, která byla na disku při pořízení snímku. Neobsahuje žádné množství paměti.<br/><br/> Obsahuje ekvivalent dat na disku, která by byla k dispozici v případě, že došlo k chybě virtuálního počítače nebo napájecí kabel byl získán ze serveru v okamžiku, kdy se snímek povedl.<br/><br/> Konzistentní se selháním nezaručuje konzistenci dat pro operační systém nebo pro aplikace na virtuálním počítači. | Ve výchozím nastavení vytvoří Site Recovery body obnovení konzistentní vzhledem k chybě každých pět minut. Toto nastavení nelze změnit.<br/><br/>  | V současné době se většina aplikací může obnovovat i z bodů konzistentních vzhledem k selháním.<br/><br/> Body obnovení konzistentní vzhledem k havárii jsou obvykle dostačující pro replikaci operačních systémů a aplikace, jako jsou servery DHCP a tiskové servery.
 
 ### <a name="app-consistent"></a>Konzistentní vzhledem k aplikacím
 
-**Popis** | **Zobrazí** | **Doporučení**
+**Popis** | **Podrobnosti** | **Doporučení**
 --- | --- | ---
 Body obnovení konzistentní vzhledem k aplikacím se vytvářejí z snímků konzistentních vzhledem k aplikacím.<br/><br/> Snímek konzistentní vzhledem k aplikacím obsahuje všechny informace v snímku konzistentním s chybou a také všechna data v paměti a probíhajících transakcích. | Snímky konzistentní vzhledem k aplikacím používají služba Stínová kopie svazku (VSS):<br/><br/>   1) když se spustí snímek, služba VSS provede na svazku operaci kopírování na zápis (KRÁVy).<br/><br/>   2) před provedením KRÁVy vytvoří služba Stínová kopie svazku každou aplikaci v počítači, kterou potřebuje k vyprázdnit data rezidentní paměti na disk.<br/><br/>   3) služba VSS pak umožní aplikaci pro zálohování nebo zotavení po havárii (v tomto případě Site Recovery) ke čtení dat snímku a pokračování. | Snímky konzistentní vzhledem k aplikacím jsou pořízeny podle četnosti, kterou zadáte. Tato frekvence by měla být vždy menší než nastavení pro zachování bodů obnovení. Pokud například zachováte body obnovení s použitím výchozího nastavení 24 hodin, měli byste nastavit četnost na méně než 24 hodin.<br/><br/>Jsou složitější a jejich dokončení trvá déle než snímky konzistentní se selháním.<br/><br/> Mají vliv na výkon aplikací spuštěných na virtuálním počítači, který je povolen pro replikaci. 
 
@@ -128,7 +127,7 @@ Pokud povolíte replikaci pro virtuální počítač Azure, dojde k následujíc
 
 Pokud se odchozí přístup pro virtuální počítače ovládá pomocí adres URL, povolte tyto adresy URL.
 
-| **URL** | **Zobrazí** |
+| **URL** | **Podrobnosti** |
 | ------- | ----------- |
 | *.blob.core.windows.net | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
 | login.microsoftonline.com | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
@@ -144,7 +143,7 @@ Podrobnosti o požadavcích na připojení k síti najdete v [dokumentu White pa
 
 #### <a name="source-region-rules"></a>Pravidla zdrojové oblasti
 
-**Pravidlo** |  **Zobrazí** | **Značka služby**
+**Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště ve zdrojové oblasti. | Pamì.\<region-name>
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Active Directory (Azure AD).  | Azureactivedirectory selhala
@@ -155,7 +154,7 @@ Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azur
 
 #### <a name="target-region-rules"></a>Pravidla cílové oblasti
 
-**Pravidlo** |  **Zobrazí** | **Značka služby**
+**Pravidlo** |  **Podrobnosti** | **Značka služby**
 --- | --- | --- 
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště v cílové oblasti. | Pamì.\<region-name>
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.  | Azureactivedirectory selhala

@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: eba63ff500aad4538f5b30f11bac168cf14816c0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558165"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
@@ -55,7 +54,7 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 | database | Název databáze, ke které chcete získat přístup. | Yes |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -83,7 +82,7 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 | typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbV2Collection** . | Yes |
 | collectionName |Název kolekce v databázi MongoDB |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -123,7 +122,7 @@ V části **zdroj** aktivity kopírování jsou podporovány následující vlas
 >[!TIP]
 >Podpora ADF spotřebovává BSON dokument ve **striktním režimu**. Zajistěte, aby byl dotaz filtru v režimu Strict, nikoli v režimu Shell. Další popis najdete na adrese [MongoDB ručně](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

@@ -7,17 +7,16 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
 ms.openlocfilehash: 4759541966de1d436c72cce4aaa46c2bd1235599
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559918"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Aktivační událost služby Azure Queue Storage pro Azure Functions
 
 Aktivační událost Queue Storage spustí funkci při přidání zpráv do úložiště Azure Queue Storage.
 
-## <a name="encoding"></a>Kódování
+## <a name="encoding"></a>Encoding
 
 Funkce očekávají řetězec kódovaný v *kódování Base64* . Jakékoli úpravy typu kódování (aby bylo možné připravit data jako řetězec kódovaný v *kódování Base64* ), je nutné implementovat do volající služby.
 
@@ -44,9 +43,9 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje vazbu triggeru fronty v souboru *Function. JSON* a [skriptu jazyka C# (. csx)](functions-reference-csharp.md) , který používá vazbu. Funkce dotazuje `myqueue-items` frontu a zapisuje protokol pokaždé, když je zpracována položka fronty.
+Následující příklad ukazuje vazbu triggeru fronty v *function.js* kódu souboru a [skriptu jazyka C# (. csx)](functions-reference-csharp.md) , který používá vazbu. Funkce dotazuje `myqueue-items` frontu a zapisuje protokol pokaždé, když je zpracována položka fronty.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.js* souboru:
 
 ```json
 {
@@ -95,13 +94,13 @@ public static void Run(CloudQueueMessage myQueueItem,
 }
 ```
 
-Část [použití](#usage) vysvětluje `myQueueItem` , která je pojmenována `name` vlastností v Function. JSON.  [Část metadata zprávy](#message-metadata) vysvětluje všechny zobrazené proměnné.
+Část [použití](#usage) vysvětluje `myQueueItem` , která je pojmenována `name` vlastností v function.jsna.  [Část metadata zprávy](#message-metadata) vysvětluje všechny zobrazené proměnné.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje vazbu triggeru fronty v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce dotazuje `myqueue-items` frontu a zapisuje protokol pokaždé, když je zpracována položka fronty.
+Následující příklad ukazuje vazbu triggeru fronty v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce dotazuje `myqueue-items` frontu a zapisuje protokol pokaždé, když je zpracována položka fronty.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.js* souboru:
 
 ```json
 {
@@ -140,13 +139,13 @@ module.exports = async function (context, message) {
 };
 ```
 
-Část [použití](#usage) vysvětluje `myQueueItem` , která je pojmenována `name` vlastností v Function. JSON.  [Část metadata zprávy](#message-metadata) vysvětluje všechny zobrazené proměnné.
+Část [použití](#usage) vysvětluje `myQueueItem` , která je pojmenována `name` vlastností v function.jsna.  [Část metadata zprávy](#message-metadata) vysvětluje všechny zobrazené proměnné.
 
 # <a name="python"></a>[Python](#tab/python)
 
 Následující příklad ukazuje, jak číst zprávu fronty předanou funkci prostřednictvím triggeru.
 
-Aktivační událost fronty úložiště je definována v souboru *Function. JSON* , kde *typ* je nastaven na `queueTrigger` .
+Aktivační událost fronty úložiště je definována v *function.jsna* místě, kde je *typ* nastaven na `queueTrigger` .
 
 ```json
 {
@@ -309,12 +308,12 @@ public class QueueTriggerDemo {
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `QueueTrigger` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `QueueTrigger` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**typ** | Není k dispozici| Musí být nastaven na hodnotu `queueTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**direction**| Není k dispozici | Pouze v souboru *Function. JSON* . Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**textový** | Není k dispozici| Musí být nastaven na hodnotu `queueTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**direction**| Není k dispozici | V *function.jspouze v* souboru. Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
 |**Jméno** | Není k dispozici |Název proměnné, která obsahuje datovou část položky fronty v kódu funkce.  |
 |**Proměnné QueueName** | **Proměnné QueueName**| Název fronty, která se má dotazovat. |
 |**vázán** | **Připojení** |Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "MyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .|
@@ -336,7 +335,7 @@ Pokud se pokusíte vytvořit navázání `CloudQueueMessage` a získat chybovou 
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Přístup k datům zprávy pomocí parametru metody, jako je například `string paramName` . `paramName`Je hodnota zadaná ve `name` vlastnosti *Function. JSON*. Můžete vytvořit propojení s některým z následujících typů:
+Přístup k datům zprávy pomocí parametru metody, jako je například `string paramName` . `paramName`Je hodnota zadaná ve `name` vlastnosti *function.jsv*. Můžete vytvořit propojení s některým z následujících typů:
 
 * Object – modul runtime funkcí deserializace datovou část JSON do instance libovolné třídy definované ve vašem kódu. 
 * `string`
@@ -347,7 +346,7 @@ Pokud se pokusíte vytvořit navázání `CloudQueueMessage` a získat chybovou 
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Datová část položky fronty je dostupná přes `context.bindings.<NAME>` , kde se `<NAME>` shoduje s názvem definovaným v *Function. JSON*. Pokud je datová část JSON, hodnota je deserializována do objektu.
+Datová část položky fronty je k dispozici prostřednictvím `context.bindings.<NAME>` , kde se `<NAME>` shoduje s názvem definovaným v *function.js*. Pokud je datová část JSON, hodnota je deserializována do objektu.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -365,7 +364,7 @@ Aktivační událost fronty poskytuje několik [vlastností metadat](./functions
 
 |Vlastnost|Typ|Description|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Datová část fronty (Pokud platný řetězec). Pokud je datová část zprávy fronty řetězec, `QueueTrigger` má stejnou hodnotu jako proměnná s názvem `name` vlastností v *Function. JSON*.|
+|`QueueTrigger`|`string`|Datová část fronty (Pokud platný řetězec). Pokud je datová část zprávy fronty řetězec, `QueueTrigger` má stejnou hodnotu jako proměnná s názvem `name` vlastností v *function.js*.|
 |`DequeueCount`|`int`|Počet, kolikrát byla tato zpráva odstraněna z fronty.|
 |`ExpirationTime`|`DateTimeOffset`|Čas vypršení platnosti zprávy|
 |`Id`|`string`|ID zprávy fronty|
@@ -388,7 +387,7 @@ Algoritmus používá následující logiku:
 - Když se najde zpráva, modul runtime počká dvě sekundy a pak zkontroluje další zprávu.
 - Pokud se nenajde žádná zpráva, před opakováním počkejte přibližně čtyři sekundy.
 - Po následném neúspěšném pokusu o získání zprávy fronty se doba čekání zvětšuje, dokud nedosáhne maximální čekací doby, která je ve výchozím nastavení jedna minuta.
-- Maximální čekací dobu lze konfigurovat prostřednictvím `maxPollingInterval` vlastnosti v [souboru Host. JSON](functions-host-json.md#queues).
+- Maximální čekací dobu lze konfigurovat prostřednictvím `maxPollingInterval` vlastnosti v [host.jsv souboru](functions-host-json.md#queues).
 
 Pro místní vývoj je maximální interval cyklického dotazování ve výchozím nastavení na dvě sekundy.
 
@@ -398,13 +397,13 @@ V souvislosti s fakturací je čas strávený při cyklickém dotazování modul
 
 Pokud se čeká více zpráv ve frontách, aktivační událost fronty načte dávku zpráv a současně vyvolá instance funkcí, aby je mohla zpracovat. Ve výchozím nastavení je velikost dávky 16. Když se zpracovávané číslo dostane do 8, modul runtime získá další dávku a začne tyto zprávy zpracovávat. Takže maximální počet souběžných zpráv zpracovávaných na jednu funkci na jednom virtuálním počítači (VM) je 24. Toto omezení platí samostatně u každé funkce aktivované frontou na každém virtuálním počítači. Pokud vaše aplikace Functions škáluje na více virtuálních počítačů, bude každý virtuální počítač čekat na triggery a pokusí se spustit funkce. Například pokud se aplikace funkcí škáluje na 3 virtuální počítače, výchozí maximální počet souběžných instancí jedné funkce aktivované frontou je 72.
 
-Velikost dávky a prahová hodnota pro získání nové dávky jsou konfigurovatelné v [souboru Host. JSON](functions-host-json.md#queues). Pokud chcete minimalizovat paralelní spouštění funkcí aktivovaných frontou ve Function App, můžete nastavit velikost dávky na 1. Toto nastavení eliminuje souběžnost, pokud vaše aplikace Function App běží na jednom virtuálním počítači (VM). 
+Velikost dávky a prahová hodnota pro získání nové dávky lze konfigurovat v [host.jsv souboru](functions-host-json.md#queues). Pokud chcete minimalizovat paralelní spouštění funkcí aktivovaných frontou ve Function App, můžete nastavit velikost dávky na 1. Toto nastavení eliminuje souběžnost, pokud vaše aplikace Function App běží na jednom virtuálním počítači (VM). 
 
 Aktivační událost fronty automaticky zabrání funkci ve zpracování zprávy fronty vícekrát. funkce není nutné zapisovat, aby bylo možné je idempotentní.
 
-## <a name="hostjson-properties"></a>vlastnosti Host. JSON
+## <a name="hostjson-properties"></a>host.jsvlastností
 
-Soubor [Host. JSON](functions-host-json.md#queues) obsahuje nastavení, která řídí chování aktivace fronty. Podrobnosti o dostupných nastaveních najdete v části [Nastavení Host. JSON](functions-bindings-storage-queue-output.md#hostjson-settings) .
+[host.jsv](functions-host-json.md#queues) souboru obsahuje nastavení, která řídí chování fronty při spouštění. Podrobnosti o dostupných nastaveních najdete v části [host.jsv nastavení](functions-bindings-storage-queue-output.md#hostjson-settings) .
 
 ## <a name="next-steps"></a>Další kroky
 

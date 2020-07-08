@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: femila
 ms.openlocfilehash: bd8cebaad27857dbd2fe3c5ed61be63d3700a688
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560752"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>Integrace Azure Event Grid s Auth0

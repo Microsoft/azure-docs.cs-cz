@@ -9,10 +9,9 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: femila
 ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559419"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid schéma událostí

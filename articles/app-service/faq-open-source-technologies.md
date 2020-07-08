@@ -10,10 +10,9 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18, tracking-python
 ms.openlocfilehash: 82bdf4cd25d486d48f4f2adda222197a600434d8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559575"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se technologie Open source pro Web Apps v Azure
@@ -31,8 +30,8 @@ Zapnutí protokolování PHP:
 3. Vyberte složku **webu** .
 4. Vyberte složku **wwwroot** .
 5. Vyberte **+** ikonu a pak vyberte **nový soubor**.
-6. Nastavte název souboru na **. User. ini**.
-7. Vyberte ikonu tužky vedle souboru **. User. ini**.
+6. Nastavte název souboru na **.user.ini**.
+7. Vyberte ikonu tužky vedle **.user.ini**.
 8. Do souboru přidejte tento kód:`log_errors=on`
 9. Vyberte **Uložit**.
 10. Vyberte ikonu tužky vedle **wp-config. php**.
@@ -48,31 +47,31 @@ Další informace najdete v tématu [Povolení protokolů chyb služby WordPress
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Návody protokolovat chyby aplikace Python v aplikacích, které jsou hostovány v App Service?
 [!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
-## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Návody změnit verzi aplikace Node. js, která je hostována v App Service?
+## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Návody změnit verzi aplikace Node.js, která je hostovaná v App Service?
 
-Chcete-li změnit verzi aplikace Node. js, můžete použít jednu z následujících možností:
+Chcete-li změnit verzi aplikace Node.js, můžete použít jednu z následujících možností:
 
 * V Azure Portal použijte **nastavení aplikace**.
   1. V Azure Portal přejdete do své webové aplikace.
   2. V okně **Nastavení** vyberte **nastavení aplikace**.
-  3. V **nastavení aplikace**můžete zahrnout WEBSITE_NODE_DEFAULT_VERSION jako klíč a verzi Node. js, kterou chcete použít jako hodnotu.
+  3. Do **nastavení aplikace**můžete zahrnout WEBSITE_NODE_DEFAULT_VERSION jako klíč a Node.js, kterou chcete jako hodnotu.
   4. Přejít na **konzolu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
-  5. Chcete-li zjistit verzi Node. js, zadejte následující příkaz:  
+  5. Chcete-li zjistit verzi Node.js, zadejte následující příkaz:  
      ```
      node -v
      ```
-* Upravte soubor iisnode. yml. Změna verze Node. js v souboru iisnode. yml nastaví pouze běhové prostředí, které iisnode používá. Vaše Kudu cmd a jiné pořád používají verzi Node. js, která je nastavena v **nastavení aplikace** v Azure Portal.
+* Upravte soubor iisnode. yml. Změna verze Node.js v souboru iisnode. yml nastaví pouze běhové prostředí, které iisnode používá. Vaše Kudu cmd a jiné pořád používají verzi Node.js, která je nastavená v **nastavení aplikace** v Azure Portal.
 
   Pokud chcete ručně nastavit iisnode. yml, vytvořte v kořenové složce aplikace soubor iisnode. yml. Do souboru zadejte následující řádek:
   ```yml
   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
   ```
    
-* Během nasazování správy zdrojových kódů nastavte soubor iisnode. yml pomocí souboru Package. JSON.
+* Nastavte soubor iisnode. yml pomocí package.jsv průběhu nasazení správy zdrojového kódu.
   Proces nasazení správy zdrojových kódů Azure zahrnuje následující kroky:
   1. Přesune obsah do webové aplikace Azure.
   2. Vytvoří výchozí skript nasazení, pokud v kořenové složce webové aplikace není jeden (nasadit soubory. cmd,. nasazení).
-  3. Spustí skript nasazení, ve kterém vytvoří soubor iisnode. yml, pokud zmiňujete verzi Node. js v souboru Package. JSON > Engine`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Spustí skript nasazení, ve kterém vytvoří soubor iisnode. yml, pokud zmiňujete Node.js verzi v modulu package.jssouboru >.`"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Soubor iisnode. yml má následující řádek kódu:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -89,11 +88,11 @@ Když jsou protokoly povolené, reprodukuje chybu a pak zkontrolujte protokoly, 
 
 Pokud se tato chyba zobrazuje v souborech Debug. log nebo php_errors. log, vaše aplikace překračuje počet připojení. Pokud jste hostitelem na ClearDB, ověřte počet připojení, která jsou k dispozici v [plánu služby](https://www.cleardb.com/pricing.view).
 
-## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Návody ladit aplikaci Node. js, která je hostovaná v App Service?
+## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Návody ladit aplikaci Node.js, která je hostovaná v App Service?
 
 1.  Přejít na **konzolu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole` ).
 2.  Přejít do složky protokoly aplikací (D:\home\LogFiles\Application).
-3.  V souboru logging_errors. txt vyhledejte obsah.
+3.  V souboru logging_errors.txt vyhledejte obsah.
 
 ## <a name="how-do-i-install-native-python-modules-in-an-app-service-web-app-or-api-app"></a>Návody nainstalovat nativní moduly Pythonu do webové aplikace App Service nebo do aplikace API?
 
@@ -138,7 +137,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. Odstraňte soubor Sqljdbc*. jar ze složky App/lib.
 2. Pokud používáte vlastní webový server Tomcat nebo Azure Marketplace Tomcat, zkopírujte tento soubor. jar do složky Tomcat lib.
-3. Pokud povolíte Java z Azure Portal (vyberte Tomcat server **Java 1,8**  >  **Tomcat server**), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru Web. config:
+3. Pokud povolíte Java z Azure Portal (vyberte Tomcat server **Java 1,8**  >  **Tomcat server**), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru web.config:
 
     ```xml
     <httpPlatform>
@@ -206,7 +205,7 @@ Další informace o osvědčených postupech zabezpečení pro WordPress najdete
 
 ## <a name="i-am-trying-to-use-phpmyadmin-and-i-see-the-message-access-denied-how-do-i-resolve-this"></a>Snažím se používat PHPMyAdmin a zobrazí se zpráva "přístup byl odepřen". Jak to můžu vyřešit?
 
-K tomuto problému může dojít, pokud funkce MySQL v aplikaci v této instanci App Service ještě není spuštěná. Problém vyřešíte tak, že se pokusíte o přístup k webu. Tím se spustí požadované procesy, včetně procesu MySQL v aplikaci. Chcete-li ověřit, zda je spuštěn MySQL v aplikaci, v Průzkumníkovi procesů ověřte, zda je v procesech uveden seznam MySQL. exe.
+K tomuto problému může dojít, pokud funkce MySQL v aplikaci v této instanci App Service ještě není spuštěná. Problém vyřešíte tak, že se pokusíte o přístup k webu. Tím se spustí požadované procesy, včetně procesu MySQL v aplikaci. Chcete-li ověřit, zda je spuštěn MySQL v aplikaci, v Průzkumníkovi procesů ověřte, zda je v rámci procesů uvedena mysqld.exe.
 
 Až se ujistíte, že je spuštěný MySQL v aplikaci, zkuste použít PHPMyAdmin.
 

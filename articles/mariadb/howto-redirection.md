@@ -7,10 +7,9 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
 ms.openlocfilehash: ae61f58f2ac44db77db496dd5d3e38fad268129f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84613051"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Připojení k Azure Database for MariaDB pomocí přesměrování

@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608243"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
@@ -100,13 +99,13 @@ Než začnete, ujistěte se, že se v zařízení dokončilo **Příprava k odes
 
     |Název souboru  |Typ Azure Storage  |Použitý protokol připojení |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob. txt     |Objekty blob bloku         |SMB/NFS         |
-    |databoxe2etest_PageBlob. txt     |Objekty blob stránky         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM. txt    |Soubory Azure         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM. txt     |Objekty blob stránky         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM. txt    |Objekty blob bloku         |REST         |
-    |mydbmdrg1_MDisk-BOM. txt    |Spravovaný disk         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM. txt     |Spravovaný disk         |SMB/NFS         |
+    |databoxe2etest_BlockBlob.txt     |Objekty blob bloku         |SMB/NFS         |
+    |databoxe2etest_PageBlob.txt     |Objekty blob stránky         |SMB/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Soubory Azure         |SMB/NFS         |
+    |databoxe2etest_PageBlock_Rest-BOM.txt     |Objekty blob stránky         |REST        |
+    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Objekty blob bloku         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |Spravovaný disk         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |Spravovaný disk         |SMB/NFS         |
 
 Pomocí tohoto seznamu ověříte soubory nahrané do Azure Storage účtu poté, co se Data Box vrátí do datacentra Azure. Ukázkový soubor manifestu je uveden níže.
 

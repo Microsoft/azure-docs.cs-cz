@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558189"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Kopírování dat z MongoDB pomocí Azure Data Factory (starší verze)
@@ -57,19 +56,19 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ |Vlastnost Type musí být nastavená na: **MongoDB** . |Ano |
-| server |IP adresa nebo název hostitele serveru MongoDB |Ano |
+| typ |Vlastnost Type musí být nastavená na: **MongoDB** . |Yes |
+| server |IP adresa nebo název hostitele serveru MongoDB |Yes |
 | port |Port TCP, který server MongoDB používá k naslouchání klientským připojením. |Ne (výchozí hodnota je 27017) |
-| Databáze |Název databáze MongoDB, ke které chcete získat přístup. |Ano |
-| authenticationType | Typ ověřování, který se používá pro připojení k databázi MongoDB.<br/>Povolené hodnoty jsou: **Basic**a **Anonymous**. |Ano |
+| Databáze |Název databáze MongoDB, ke které chcete získat přístup. |Yes |
+| authenticationType | Typ ověřování, který se používá pro připojení k databázi MongoDB.<br/>Povolené hodnoty jsou: **Basic**a **Anonymous**. |Yes |
 | uživatelské jméno |Uživatelský účet pro přístup k MongoDB. |Ano (Pokud se používá základní ověřování). |
 | heslo |Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano (Pokud se používá základní ověřování). |
 | authSource |Název databáze MongoDB, kterou chcete použít ke kontrole vašich přihlašovacích údajů pro ověřování. |Ne. Pro základní ověřování se ve výchozím nastavení používá účet správce a databáze určená pomocí vlastnosti databaseName. |
-| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | Ne |
-| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
+| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | No |
+| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | No |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -100,10 +99,10 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbCollection** . | Ano |
-| collectionName |Název kolekce v databázi MongoDB |Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbCollection** . | Yes |
+| collectionName |Název kolekce v databázi MongoDB |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -131,10 +130,10 @@ V části **zdroj** aktivity kopírování jsou podporovány následující vlas
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbSource** . | Yes |
 | query |Pro čtení dat použijte vlastní dotaz SQL-92. Příklad: SELECT * FROM MyTable. |Ne (Pokud je zadaná položka "CollectionName" v sadě dat.) |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[

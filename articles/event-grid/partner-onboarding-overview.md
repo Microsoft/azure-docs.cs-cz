@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: femila
 ms.openlocfilehash: 47576feb7f3e4f2794aa06d52b4f5504c633ce96
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560318"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Připojení jako Azure Event Grid partner
@@ -154,7 +153,7 @@ Po odeslání do koncového bodu partnerNamespace obdržíte odpověď. Odpově�
 | Nesprávný koncový bod                 | 404 Nenalezeno         |
 | Pole nebo událost překračuje omezení velikosti. | datová část 413 je moc velká. |
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [Šablona ARM](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)

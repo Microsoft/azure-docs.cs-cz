@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
 ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84610215"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Ověření konzistence dat v aktivitě kopírování (Preview)
@@ -96,7 +95,7 @@ cesta | Cesta souborů protokolu. | Zadejte cestu, do které chcete ukládat sou
 >- Při kopírování souborů z nebo do objektů BLOB nebo Azure Data Lake Storage Gen2 v Azure, ADF provede ověřování kontrolního součtu MD5 na úrovni bloku s využitím [rozhraní Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) a [Azure Data Lake Storage Gen2 API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers). Pokud se ContentMD5 soubory v objektu blob Azure nebo Azure Data Lake Storage Gen2 jako zdroje dat, ADF provede ověření kontrolního součtu MD5 na úrovni souboru i po přečtení souborů. Po zkopírování souborů do objektu blob Azure nebo Azure Data Lake Storage Gen2 jako cíle dat zapíše ADF ContentMD5 do Azure Blob nebo Azure Data Lake Storage Gen2, které se můžou dál využívat pro ověřování konzistence dat v podřízených aplikacích.
 >- ADF zajišťuje ověřování velikosti souboru při kopírování souborů mezi libovolnými úložišti úložiště.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 ### <a name="output-from-copy-activity"></a>Výstup aktivity kopírování
 Po úplném spuštění aktivity kopírování se můžete podívat na výsledek ověření konzistence dat z výstupu každého spuštění aktivity kopírování:
@@ -136,7 +135,7 @@ Pokud nakonfigurujete, aby protokoloval nekonzistentní soubor, můžete najít 
 
 Schéma souboru protokolu je následující:
 
-Sloupec | Popis 
+Sloupec | Description 
 -------- | -----------  
 Časové razítko | Časové razítko, když ADF přeskočí soubory, které nejsou konzistentní
 Úroveň | Úroveň protokolu této položky. U položky, která zobrazuje přeskočení souboru, bude na úrovni upozornění.
@@ -149,7 +148,7 @@ Příklad souboru protokolu je následující:
 Timestamp, Level, OperationName, OperationItem, Message
 2020-02-26 06:22:56.3190846, Warning, FileSkip, "sample1.csv", "File is skipped after read 548000000 bytes: ErrorCode=DataConsistencySourceDataChanged,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Source file 'sample1.csv' is changed by other clients during the copy activity run.,Source=,'." 
 ```
-V souboru protokolu výše vidíte, že sample1. CSV se přeskočil, protože se nepovedlo ověřit, jestli se nezdařila konzistence mezi zdrojovým a cílovým úložištěm. Můžete získat další podrobnosti o tom, proč se sample1. csv neshoduje, protože se změnily jinými aplikacemi při kopírování aktivity kopírování ADF. 
+V souboru protokolu výše vidíte, že sample1.csv bylo přeskočeno, protože se nepodařilo ověřit, zda se nezdařila konzistence mezi zdrojovým a cílovým úložištěm. Můžete získat další podrobnosti o tom, proč se sample1.csv nekonzistence, protože se změnily jinými aplikacemi při kopírování aktivity kopírování ADF. 
 
 
 

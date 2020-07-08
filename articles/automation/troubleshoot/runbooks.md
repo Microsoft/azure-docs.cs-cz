@@ -10,10 +10,9 @@ ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
 ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84606883"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
@@ -625,7 +624,7 @@ Když se váš Runbook nebo aplikace pokusí spustit v izolovaném prostoru Azur
 
 ### <a name="cause"></a>Příčina
 
-K tomuto problému může dojít, protože sandboxy Azure brání přístupu ke všem nezpracovaným serverům COM. Například aplikace nebo sada Runbook v izolovaném prostoru nemůže volat do rozhraní WMI (Windows Management Instrumentation) (WMI) nebo do služby Instalační služba systému Windows (msiserver. exe). 
+K tomuto problému může dojít, protože sandboxy Azure brání přístupu ke všem nezpracovaným serverům COM. Například aplikace nebo sada Runbook v izolovaném prostoru nemůže volat do rozhraní WMI (Windows Management Instrumentation) (WMI) nebo do služby Instalační služba systému Windows (msiserver.exe). 
 
 ### <a name="resolution"></a>Řešení
 

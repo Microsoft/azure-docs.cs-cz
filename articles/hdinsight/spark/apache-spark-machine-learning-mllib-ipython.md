@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
 ms.openlocfilehash: c67e8a79e2339c4a329e276c52703bd749137037
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608413"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k vytvoření aplikace Machine Learning a analýze datové sady
@@ -38,7 +37,7 @@ V souhrnu proces logistické regrese vytváří *logistickou funkci*. Použijte 
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>Příklad prediktivní analýzy pro data kontroly potravin
 
-V tomto příkladu pomocí Sparku provedete určitou prediktivní analýzu dat kontroly potravin (**Food_Inspections1. csv**). Data získaná prostřednictvím [portálu dat města Chicago](https://data.cityofchicago.org/). Tato datová sada obsahuje informace o inspekcích, které byly prováděny v Chicagu. Včetně informací o jednotlivých závodech, zjištěných porušeních (pokud existují) a výsledcích kontroly. Datový soubor CSV je už dostupný v účtu úložiště přidruženém ke clusteru na adrese **/hdisamples/hdisamples/foodinspectiondata/Food_Inspections1. csv**.
+V tomto příkladu pomocí Sparku provedete určitou prediktivní analýzu dat kontroly potravin (**Food_Inspections1.csv**). Data získaná prostřednictvím [portálu dat města Chicago](https://data.cityofchicago.org/). Tato datová sada obsahuje informace o inspekcích, které byly prováděny v Chicagu. Včetně informací o jednotlivých závodech, zjištěných porušeních (pokud existují) a výsledcích kontroly. Datový soubor CSV je už dostupný v účtu úložiště přidruženém ke clusteru na adrese **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**.
 
 V následujících krocích vytvoříte model, abyste viděli, co je potřeba k předání nebo selhání kontroly potravin.
 
@@ -252,7 +251,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Vyhodnocení modelu pomocí jiné datové sady
 
-Pomocí modelu, který jste vytvořili dříve, můžete *předpovědět* , co budou výsledky nových kontrol. Předpovědi vycházejí z porušení zásad, které byly pozorovány. Tento model jste vyškolei na datové sadě **Food_Inspections1. csv**. K *vyhodnocení* síly tohoto modelu u nových dat můžete použít druhou datovou sadu **Food_Inspections2. csv**. Tato druhá datová sada (**Food_Inspections2. csv**) je ve výchozím kontejneru úložiště přidruženém ke clusteru.
+Pomocí modelu, který jste vytvořili dříve, můžete *předpovědět* , co budou výsledky nových kontrol. Předpovědi vycházejí z porušení zásad, které byly pozorovány. Tento model jste vyškolei **Food_Inspections1.csv**datové sady. Druhou datovou sadu můžete použít **Food_Inspections2.csv**k *vyhodnocení* síly tohoto modelu u nových dat. Tato druhá datová sada (**Food_Inspections2.csv**) je ve výchozím kontejneru úložiště přidruženém ke clusteru.
 
 1. Spusťte následující kód, který vytvoří nový datový rámec **predictionsDf** , který obsahuje předpověď vygenerovanou modelem. Fragment kódu také vytvoří dočasnou tabulku s názvem **předpovědi** založenou na dataframe.
 

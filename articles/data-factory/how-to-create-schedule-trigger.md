@@ -13,10 +13,9 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.custom: tracking-python
 ms.openlocfilehash: 360d01d01c163e494340c2da3182192dc15612a2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560802"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Vytvoření triggeru, který spustí kanál podle plánu
@@ -81,7 +80,7 @@ Můžete vytvořit **aktivační událost plánovače** a naplánovat pravideln�
 
 V této části se dozvíte, jak pomocí Azure PowerShell vytvořit, spustit a monitorovat aktivační událost plánovače. Pokud si chcete prohlédnout tuto ukázkovou práci, Projděte si nejprve kurz [rychlý Start: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md). Potom do metody Main přidejte následující kód, který vytvoří a spustí aktivační událost Schedule, která se spouští každých 15 minut. Aktivační událost je přidružená k kanálu s názvem **Adfv2QuickStartPipeline** , který vytvoříte jako součást rychlého startu.
 
-1. Ve složce C:\ADFv2QuickStartPSH\ vytvořte soubor JSON s názvem **MyTrigger. JSON** s následujícím obsahem:
+1. Ve složce C:\ADFv2QuickStartPSH\ vytvořte soubor JSON s názvem **MyTrigger.js** s následujícím obsahem:
 
     > [!IMPORTANT]
     > Před uložením souboru JSON nastavte hodnotu elementu **StartTime** na aktuální čas UTC. Nastavte hodnotu elementu **čas_ukončení** na jednu hodinu po aktuálním čase UTC.
@@ -326,7 +325,7 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 | **endTime** | Koncové datum a čas pro aktivační událost. Aktivační událost se nebude spouštět po zadaném koncovém datu a času. Hodnota této vlastnosti nemůže být v minulosti. Tato vlastnost je nepovinná. |
 | **timeZone** | Časové pásmo. V současné době se podporuje pouze časové pásmo UTC. |
 | **vzorec** | Objekt recurrence, který určuje pravidla opakování aktivační události. Objekt recurrence podporuje elementy **frequency** (frekvence), **interval** (interval), **endTime** (koncový čas), **count** (počet) a **schedule** (plán). Když je definovaný objekt recurrence, vyžaduje se element **frequency** (frekvence). Další elementy objektu recurrence jsou volitelné. |
-| **frequency** | Jednotka frekvence, s jakou se aktivační událost opakuje. Mezi podporované hodnoty patří „minute“ (minuta), „hour“ (hodina), „day“ (den), „week“ (týden) a „month“ (měsíc). |
+| **opakování** | Jednotka frekvence, s jakou se aktivační událost opakuje. Mezi podporované hodnoty patří „minute“ (minuta), „hour“ (hodina), „day“ (den), „week“ (týden) a „month“ (měsíc). |
 | **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frequency** hodnotu „week“ (týden), aktivační událost se opakuje každé 3 týdny. |
 | **CXL** | Plán opakování pro aktivační událost. Aktivační události se zadanou hodnotou **frequency** mění své opakování na základě plánu opakování. Vlastnost **schedule** obsahuje úpravy opakování na základě minut, hodin, dní v týdnu, dní v měsíci a čísla týdne.
 
@@ -335,11 +334,11 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 | Vlastnost JSON | Typ | Vyžadováno | Výchozí hodnota | Platné hodnoty | Příklad |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Řetězec | Ano | Žádné | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **vzorec** | Objekt | Ano | Žádné | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Číslo | Ne | 1 | 1 až 1 000 | `"interval":10` |
-| **endTime** | Řetězec | Ano | Žádné | Hodnota data a času představující čas v budoucnosti. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **CXL** | Objekt | Ne | Žádné | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | Řetězec | Yes | Žádná | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **vzorec** | Objekt | Yes | Žádná | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | Číslo | No | 1 | 1 až 1 000 | `"interval":10` |
+| **endTime** | Řetězec | Yes | Žádná | Hodnota data a času představující čas v budoucnosti. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **CXL** | Objekt | No | Žádná | Objekt plánu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>Vlastnost startTime
 Následující tabulka ukazuje, jakým způsobem vlastnost **startTime** ovládá spouštění aktivační události:

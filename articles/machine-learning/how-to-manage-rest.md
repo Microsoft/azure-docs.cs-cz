@@ -11,10 +11,9 @@ ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
 ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560165"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
@@ -271,7 +270,7 @@ curl -X PUT \
 
 ### <a name="create-an-experimental-run"></a>Vytvoření experimentálního spuštění
 
-K zahájení běhu v experimentu potřebujete složku zip, která obsahuje školicí skript a související soubory, a soubor JSON s definicí spuštění. Složka zip musí mít v kořenovém adresáři vstupní soubor Pythonu. Například ZIP program triviálního Pythonu, jako je například následující, do složky s názvem **výuka. zip**.
+K zahájení běhu v experimentu potřebujete složku zip, která obsahuje školicí skript a související soubory, a soubor JSON s definicí spuštění. Složka zip musí mít v kořenovém adresáři vstupní soubor Pythonu. Například ZIP program triviálního Pythonu, jako je například následující, do složky s názvem **train.zip**.
 
 ```python
 # hello.py
@@ -279,7 +278,7 @@ K zahájení běhu v experimentu potřebujete složku zip, která obsahuje škol
 print("Hello, REST!")
 ```
 
-Uloží tento další fragment kódu jako **definice. JSON**. Potvrďte, že hodnota "skript" odpovídá názvu souboru Pythonu, který jste právě nastavili. Potvrďte, že hodnota Target odpovídá názvu dostupného výpočetního prostředku. 
+Tento další fragment kódu uložte jako **definition.jsna**. Potvrďte, že hodnota "skript" odpovídá názvu souboru Pythonu, který jste právě nastavili. Potvrďte, že hodnota Target odpovídá názvu dostupného výpočetního prostředku. 
 
 ```json
 {

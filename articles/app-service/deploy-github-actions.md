@@ -8,10 +8,9 @@ ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: tracking-python
 ms.openlocfilehash: b40da0c8746bc63a99394027b61d777a611727e3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559596"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
@@ -194,7 +193,7 @@ K nasazení kódu do aplikace App Service použijte `azure/webapps-deploy@v2` ak
 
 ### <a name="deploy-using-publish-profile"></a>Nasadit pomocí profilu publikování
 
-Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node. js do Azure pomocí publikačního profilu.
+Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do Azure pomocí profilu publikování.
 
 ```yaml
 # File: .github/workflows/workflow.yml
@@ -228,7 +227,7 @@ jobs:
 
 ### <a name="deploy-using-azure-service-principal"></a>Nasazení s použitím instančního objektu Azure
 
-Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node. js do Azure pomocí instančního objektu Azure.
+Níže je ukázkový pracovní postup pro sestavení a nasazení aplikace Node.js do Azure pomocí instančního objektu Azure.
 
 ```yaml
 on: [push]

@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558921"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Webová aplikace, která přihlašuje uživatele: přihlášení a odhlášení
@@ -74,7 +73,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-V našem rychlém startu Java se v souboru [Main/Resources/Templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html) nachází tlačítko pro přihlášení.
+V našem rychlém startu Java se přihlašovací tlačítko nachází v souboru [Main/Resources/Templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/resources/templates/index.html) .
 
 ```html
 <!DOCTYPE html>
@@ -291,7 +290,7 @@ else
 
 # <a name="java"></a>[Java](#tab/java)
 
-V našem rychlém startu Java se v souboru main/resources/templates/auth_page.html nachází tlačítko pro odhlášení.
+V našem rychlém startu Java se tlačítko pro odhlášení nachází v souboru Main/Resources/Templates/auth_page.html.
 
 ```html
 <!DOCTYPE html>
@@ -306,7 +305,7 @@ V našem rychlém startu Java se v souboru main/resources/templates/auth_page.ht
 
 # <a name="python"></a>[Python](#tab/python)
 
-V rychlém startu Pythonu se tlačítko pro odhlášení nachází v souboru [Templates/index. html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) .
+V rychlém startu Pythonu se tlačítko pro odhlášení nachází v souboru [Templates/index.html # L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) .
 
 ```html
 <!DOCTYPE html>
@@ -335,7 +334,7 @@ V předchozích verzích základních šablon ASP.NET `Account` byl kontroler vl
 - Volání `Signout()` , která umožňují middlewaru OpenID Connect, se obrátit na koncový bod Microsoft Identity Platform `logout` . Koncový bod pak:
 
   - Vymaže soubor cookie relace z prohlížeče.
-  - Volá zpět adresu URL pro odhlášení. Ve výchozím nastavení zobrazí adresa URL pro odhlášení stránku zobrazení se znaménkem [. html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml). Tato stránka je také k dispozici jako součást MIcrosoft. identity. Web.
+  - Volá zpět adresu URL pro odhlášení. Ve výchozím nastavení zobrazuje adresa URL pro odhlášení stránku zobrazení se znaménkem [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml). Tato stránka je také k dispozici jako součást MIcrosoft. identity. Web.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -418,11 +417,11 @@ public class AccountController : Controller
 
 # <a name="java"></a>[Java](#tab/java)
 
-V rychlém startu Java se k identifikátoru URI přesměrování po odhlášení zobrazí jenom stránka index. html.
+V rychlém startu v Java se identifikátor URI přesměrování po odhlášení zobrazí jenom stránka index.html.
 
 # <a name="python"></a>[Python](#tab/python)
 
-V rychlém startu Pythonu se k identifikátoru URI přesměrování po odhlášení zobrazí jenom stránka index. html.
+V rychlém startu Pythonu se identifikátor URI přesměrování po odhlášení zobrazí jenom stránka index.html.
 
 ---
 
@@ -433,4 +432,4 @@ Pokud chcete získat další informace o odhlášení, přečtěte si dokumentac
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přechod k produkčnímu prostředí](scenario-web-app-sign-user-production.md)
+> [Přesunout do produkčního prostředí](scenario-web-app-sign-user-production.md)

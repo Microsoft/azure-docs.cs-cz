@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 06/09/2020
 tags: connectors
 ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609507"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps
@@ -253,14 +252,14 @@ Další informace o parametrech Trigger a Action najdete v těchto částech:
 
 Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací tyto informace:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 |----------|------|-------------|
 | `headers` | Objekt JSON | Hlavičky z požadavku |
 | `body` | Objekt JSON | Objekt s obsahem textu z požadavku |
 | `status code` | Integer | Stavový kód z požadavku |
 |||
 
-| Stavový kód | Popis |
+| Stavový kód | Description |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Přijato |

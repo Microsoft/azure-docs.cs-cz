@@ -12,10 +12,9 @@ author: sanpil
 ms.date: 11/11/2019
 ms.custom: tracking-python
 ms.openlocfilehash: a519519d5728307847b5d92f9ae5ce3e739e3ba6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560953"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definování kanálů strojového učení v YAML
@@ -26,17 +25,17 @@ Následující tabulka uvádí, co je a není aktuálně podporováno při defin
 
 | Typ kroku | Podporované? |
 | ----- | :-----: |
-| PythonScriptStep | Ano |
-| ParallelRunStep | Ano |
-| AdlaStep | Ano |
-| AzureBatchStep | Ano |
-| DatabricksStep | Ano |
-| DataTransferStep | Ano |
-| AutoMLStep | Ne |
-| HyperDriveStep | Ne |
-| ModuleStep | Ano |
-| MPIStep | Ne |
-| EstimatorStep | Ne |
+| PythonScriptStep | Yes |
+| ParallelRunStep | Yes |
+| AdlaStep | Yes |
+| AzureBatchStep | Yes |
+| DatabricksStep | Yes |
+| DataTransferStep | Yes |
+| AutoMLStep | No |
+| HyperDriveStep | No |
+| ModuleStep | Yes |
+| MPIStep | No |
+| EstimatorStep | No |
 
 ## <a name="pipeline-definition"></a>Definice kanálu
 
@@ -230,7 +229,7 @@ pipeline:
 | `run_name` | Název v datacihlách pro tento běh. |
 | `source_directory` | Adresář, který obsahuje skript a další soubory. |
 | `num_workers` | Statický počet pracovníků pro spuštění clusteru datacihly. |
-| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) . Další informace o struktuře tohoto souboru naleznete v tématu [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
+| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) . Další informace o struktuře tohoto souboru najdete v tématu [runconfigschema.js](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
 | `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
 Následující příklad obsahuje krok datacihly:
@@ -326,7 +325,7 @@ pipeline:
 | `outputs` | Výstupy můžou být buď [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
 | `script_name` | Název skriptu Pythonu (relativní vzhledem k `source_directory` ) |
 | `source_directory` | Adresář, který obsahuje skript, prostředí conda atd. |
-| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) . Další informace o struktuře tohoto souboru naleznete v tématu [RunConfig. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
+| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) . Další informace o struktuře tohoto souboru najdete v tématu [runconfig.js](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
 | `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
 Následující příklad obsahuje krok skriptu Pythonu:

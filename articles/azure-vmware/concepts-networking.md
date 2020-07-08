@@ -4,10 +4,9 @@ description: Seznamte se s klíčovými aspekty a případy použití sítě a v
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 35d886fe0f6a68e522d7f2cf20b450b5d9afc199
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84629212"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Solution (AVS) Preview sítě a vzájemné propojení koncepty

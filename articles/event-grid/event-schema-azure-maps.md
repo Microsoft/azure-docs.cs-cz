@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: femila
 ms.openlocfilehash: f015bf682d7ce3475aba5baa73ab72b1426691fe
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84560676"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Azure Maps jako zdroj Event Grid

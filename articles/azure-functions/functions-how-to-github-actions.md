@@ -7,10 +7,9 @@ ms.date: 04/16/2020
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559096"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu

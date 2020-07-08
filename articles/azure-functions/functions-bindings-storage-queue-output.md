@@ -7,10 +7,9 @@ ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
 ms.openlocfilehash: eb61cad5f505e6895b550adca3e9f156222d6d30
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559958"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Výstupní vazby Azure Queue Storage pro Azure Functions
@@ -41,9 +40,9 @@ public static class QueueFunctions
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje vazbu triggeru protokolu HTTP v souboru *Function. JSON* a v kódu [skriptu jazyka C# (. csx)](functions-reference-csharp.md) , který používá vazbu. Funkce vytvoří položku fronty s datovou částí objektu **CustomQueueMessage** pro každý PŘIJATÝ požadavek HTTP.
+Následující příklad ukazuje vazbu triggeru protokolu HTTP v *function.js* kódu souboru a [skriptu jazyka C# (. csx)](functions-reference-csharp.md) , který používá vazbu. Funkce vytvoří položku fronty s datovou částí objektu **CustomQueueMessage** pro každý PŘIJATÝ požadavek HTTP.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.js* souboru:
 
 ```json
 {
@@ -102,9 +101,9 @@ public static void Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje vazbu triggeru protokolu HTTP v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce vytvoří položku fronty pro každý přijatý požadavek HTTP.
+Následující příklad ukazuje vazbu triggeru protokolu HTTP v *function.js* souboru a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce vytvoří položku fronty pro každý přijatý požadavek HTTP.
 
-Tady je soubor *Function. JSON* :
+Tady je *function.js* souboru:
 
 ```json
 {
@@ -153,9 +152,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje, jak vymezit výstup jedné a více hodnot do front úložiště. Konfigurace potřebná pro *funkci Function. JSON* je stejná jako v obou případech.
+Následující příklad ukazuje, jak vymezit výstup jedné a více hodnot do front úložiště. Konfigurace potřebná pro *function.js* je stejná jako jedna.
 
-Vazba fronty úložiště je definována v *Function. JSON* , kde *typ* je nastaven na `queue` .
+Vazba fronty úložiště je definována v *function.jsna* místě, kde je *typ* nastaven na `queue` .
 
 ```json
 {
@@ -313,9 +312,9 @@ Parametr přidružený k `QueueOutput` poznámce je zadán jako instance [Output
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `Queue` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Queue` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastaven na hodnotu `queue` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**direction** | Není k dispozici | Musí být nastaven na hodnotu `out` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
@@ -345,7 +344,7 @@ V jazyce C# a C# zapište více zpráv fronty pomocí jednoho z následujících
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Zápis jedné zprávy fronty pomocí parametru metody jako `out T paramName` . `paramName`Je hodnota zadaná ve `name` vlastnosti *Function. JSON*. Místo parametru můžete použít návratový typ metody `out` a `T` může to být kterýkoli z následujících typů:
+Zápis jedné zprávy fronty pomocí parametru metody jako `out T paramName` . `paramName`Je hodnota zadaná ve `name` vlastnosti *function.jsv*. Místo parametru můžete použít návratový typ metody `out` a `T` může to být kterýkoli z následujících typů:
 
 * Objekt serializovatelný jako JSON
 * `string`
@@ -361,13 +360,13 @@ V jazyce C# a C# zapište více zpráv fronty pomocí jednoho z následujících
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Položka výstupní fronta je k dispozici prostřednictvím `context.bindings.<NAME>` , kde `<NAME>` odpovídá názvu definovanému v *Function. JSON*. Pro datovou část položky fronty lze použít řetězec nebo objekt s možností serializace JSON.
+Položka výstupní fronta je k dispozici prostřednictvím `context.bindings.<NAME>` , kde `<NAME>` odpovídá názvu definovanému v *function.js*. Pro datovou část položky fronty lze použít řetězec nebo objekt s možností serializace JSON.
 
 # <a name="python"></a>[Python](#tab/python)
 
 K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce:
 
-- **Návratová hodnota**: nastavte `name` vlastnost v *Function. JSON* na `$return` . V této konfiguraci je návratová hodnota funkce trvalá jako zpráva úložiště fronty.
+- **Návratová hodnota**: nastavte `name` vlastnost v *function.jsna* `$return` . V této konfiguraci je návratová hodnota funkce trvalá jako zpráva úložiště fronty.
 
 - **Imperativní**: předejte hodnotu metodě [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru deklarovaného jako typ [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) . Předaná hodnota `set` je trvalá jako zpráva úložiště fronty.
 
@@ -391,12 +390,12 @@ K dispozici jsou dvě možnosti pro výstup zprávy centra událostí z funkce p
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>nastavení Host. JSON
+## <a name="hostjson-settings"></a>host.jsnastavení
 
-Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Ukázkový soubor host. JSON níže obsahuje pouze nastavení verze 2. x + pro tuto vazbu. Další informace o globálních nastaveních konfigurace ve verzích 2. x a novějších naleznete v tématu [reference Host. JSON pro Azure Functions](functions-host-json.md).
+Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Příklad host.jsv souboru níže obsahuje pouze nastavení verze 2. x + pro tuto vazbu. Další informace o globálních nastaveních konfigurace ve verzích 2. x a novějších naleznete v tématu [host.jsv referenčních informacích pro Azure Functions](functions-host-json.md).
 
 > [!NOTE]
-> Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
+> Odkaz na host.jspro ve funkcích 1. x naleznete v tématu [host.json reference for Azure Functions 1. x](functions-host-json-v1.md).
 
 ```json
 {

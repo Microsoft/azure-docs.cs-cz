@@ -14,10 +14,9 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 300b7e4fe3e3c150a78fee5b63458feab266aafe
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558679"
 ---
 # <a name="logging-in-msal-applications"></a>Protokolování aplikací MSAL
@@ -126,7 +125,7 @@ Logger.getInstance().setEnableLogcatLog(true);
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
- Povolte protokolování v MSAL. js (JavaScript) předáním objektu protokolovacího nástroje během konfigurace pro vytvoření `UserAgentApplication` instance. Tento objekt protokolovacího nástroje má následující vlastnosti:
+ Povolit protokolování v MSAL.js (JavaScript) předáním objektu protokolovacího nástroje během konfigurace pro vytvoření `UserAgentApplication` instance. Tento objekt protokolovacího nástroje má následující vlastnosti:
 
 - `localCallback`: instance zpětného volání, kterou může vývojář poskytnout pro využívání a publikování protokolů vlastním způsobem. Implementujte metodu localCallback v závislosti na tom, jak chcete přesměrovat protokoly.
 - `level`(volitelné): konfigurovatelná úroveň protokolu. Podporované úrovně protokolu jsou: `Error` , `Warning` , a `Info` `Verbose` . Výchozí formát je `Info`.

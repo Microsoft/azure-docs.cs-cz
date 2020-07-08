@@ -7,10 +7,9 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: 1dbd3765b691d1ba7b958d765a59f6451f380a2e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559075"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Vstupní vazba Azure Blob Storage pro Azure Functions
@@ -40,9 +39,9 @@ public static void Run(
 
 <!--Same example for input and output. -->
 
-Následující příklad ukazuje vstupní a výstupní vazby objektu BLOB v souboru *Function. JSON* a v kódu [skriptu C# (. csx)](functions-reference-csharp.md) , který používá vazby. Funkce vytvoří kopii textového objektu BLOB. Funkce je aktivována zprávou fronty obsahující název objektu BLOB ke zkopírování. Nový objekt BLOB má název *{originalblobname} – kopírování*.
+Následující příklad ukazuje vstupní a výstupní vazby objektů BLOB v *function.js* kódu a [skriptu C# (. csx)](functions-reference-csharp.md) , který používá vazby. Funkce vytvoří kopii textového objektu BLOB. Funkce je aktivována zprávou fronty obsahující název objektu BLOB ke zkopírování. Nový objekt BLOB má název *{originalblobname} – kopírování*.
 
-V souboru *Function. JSON* se `queueTrigger` vlastnost metadata používá k určení názvu objektu BLOB ve `path` vlastnostech:
+V *function.jsv* souboru se `queueTrigger` vlastnost metadata používá k určení názvu objektu BLOB ve `path` vlastnostech:
 
 ```json
 {
@@ -89,9 +88,9 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-Následující příklad ukazuje vstupní a výstupní vazby objektů BLOB v souboru *Function. JSON* a [kódu JavaScriptu](functions-reference-node.md) , který používá vazby. Funkce vytvoří kopii objektu BLOB. Funkce je aktivována zprávou fronty obsahující název objektu BLOB ke zkopírování. Nový objekt BLOB má název *{originalblobname} – kopírování*.
+Následující příklad ukazuje vstupní a výstupní vazby objektu BLOB v *function.js* souboru a [kódu JavaScriptu](functions-reference-node.md) , který používá vazby. Funkce vytvoří kopii objektu BLOB. Funkce je aktivována zprávou fronty obsahující název objektu BLOB ke zkopírování. Nový objekt BLOB má název *{originalblobname} – kopírování*.
 
-V souboru *Function. JSON* se `queueTrigger` vlastnost metadata používá k určení názvu objektu BLOB ve `path` vlastnostech:
+V *function.jsv* souboru se `queueTrigger` vlastnost metadata používá k určení názvu objektu BLOB ve `path` vlastnostech:
 
 ```json
 {
@@ -138,9 +137,9 @@ module.exports = function(context) {
 
 <!--Same example for input and output. -->
 
-Následující příklad ukazuje vstupní a výstupní vazby objektů BLOB v souboru *Function. JSON* a [kódu Pythonu](functions-reference-python.md) , který používá vazby. Funkce vytvoří kopii objektu BLOB. Funkce je aktivována zprávou fronty obsahující název objektu BLOB ke zkopírování. Nový objekt BLOB má název *{originalblobname} – kopírování*.
+Následující příklad ukazuje vstupní a výstupní vazby objektu BLOB v *function.js* souboru a [kódu Pythonu](functions-reference-python.md) , který používá vazby. Funkce vytvoří kopii objektu BLOB. Funkce je aktivována zprávou fronty obsahující název objektu BLOB ke zkopírování. Nový objekt BLOB má název *{originalblobname} – kopírování*.
 
-V souboru *Function. JSON* se `queueTrigger` vlastnost metadata používá k určení názvu objektu BLOB ve `path` vlastnostech:
+V *function.jsv* souboru se `queueTrigger` vlastnost metadata používá k určení názvu objektu BLOB ve `path` vlastnostech:
 
 ```json
 {
@@ -300,9 +299,9 @@ Python nepodporuje atributy.
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `Blob` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Blob` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastaven na hodnotu `blob` . |
 |**direction** | Není k dispozici | Musí být nastaven na hodnotu `in` . Výjimky jsou uvedeny v části [použití](#usage) . |
@@ -325,7 +324,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Přístup k datům objektů BLOB pomocí `context.bindings.<NAME>` Where `<NAME>` odpovídá hodnotě definované v *Function. JSON*.
+Přístup k datům objektů BLOB pomocí `context.bindings.<NAME>` , kde `<NAME>` se shoduje s hodnotou definovanou v *function.js*.
 
 # <a name="python"></a>[Python](#tab/python)
 

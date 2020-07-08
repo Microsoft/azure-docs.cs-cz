@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: femila
 ms.openlocfilehash: 87d436024dae21b0122bf6b861b8a3ae4299db73
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559015"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Autorizace přístupu k prostředkům Event Grid
@@ -112,7 +111,7 @@ Pokud potřebujete zadat oprávnění, která se liší od předdefinovaných ro
 
 Níže jsou uvedené ukázkové Event Grid definice rolí, které umožňují uživatelům provádět různé akce. Tyto vlastní role se liší od předdefinovaných rolí, protože udělují širší přístup než jenom odběry událostí.
 
-**EventGridReadOnlyRole. JSON**: povoluje jenom operace jen pro čtení.
+**EventGridReadOnlyRole.js**: povoluje pouze operace jen pro čtení.
 
 ```json
 {
@@ -131,7 +130,7 @@ Níže jsou uvedené ukázkové Event Grid definice rolí, které umožňují u�
 }
 ```
 
-**EventGridNoDeleteListKeysRole. JSON**: povolí omezené akce příspěvku, ale zakáže akce odstranění.
+**EventGridNoDeleteListKeysRole.jszapnuto**: Povolit omezené akce příspěvku, ale zakázat akce odstranění.
 
 ```json
 {
@@ -154,7 +153,7 @@ Níže jsou uvedené ukázkové Event Grid definice rolí, které umožňují u�
 }
 ```
 
-**EventGridContributorRole. JSON**: umožňuje všechny akce v mřížce událostí.
+**EventGridContributorRole.jszapnuto**: umožňuje všechny akce v mřížce událostí.
 
 ```json
 {

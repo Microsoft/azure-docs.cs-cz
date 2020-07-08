@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 32af8c1b19d57fdba58ce27700e5d1e7a34f9c64
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604979"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Formát Avro v Azure Data Factory
@@ -91,7 +90,7 @@ V části mapování toků dat můžete číst a zapisovat do formátu Avro v n�
 
 V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Avro. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
 
-| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Cesty k zástupným kartám | Budou zpracovány všechny soubory, které odpovídají zástupné cestě. Přepíše složku a cestu k souboru nastavenou v datové sadě. | ne | Řetězec [] | wildcardPaths |
 | Kořenová cesta oddílu | Pro souborová data, která jsou rozdělená na oddíly, můžete zadat kořenovou cestu oddílu, aby bylo možné číst rozdělené složky jako sloupce. | ne | Řetězec | partitionRootPath |
@@ -104,7 +103,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Avro. Tyt
 
 V níže uvedené tabulce jsou uvedeny vlastnosti, které Avro jímka podporuje. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
 
-| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
 | Možnost názvu souboru | Formát názvů zapsaných dat. Ve výchozím nastavení je jeden soubor na oddíl ve formátu`part-#####-tid-<guid>` | ne | Vzor: řetězec <br> Na oddíl: řetězec [] <br> Jako data ve sloupci: String <br> Výstup do jednoho souboru:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

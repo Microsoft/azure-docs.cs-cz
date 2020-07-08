@@ -10,10 +10,9 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636236"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Konfigurace Edge Azure SQL (Preview)
@@ -32,7 +31,7 @@ Azure SQL Edge zpřístupňuje několik různých proměnných prostředí, kter
 
 Následující proměnná prostředí SQL Server on Linux pro Azure SQL Edge podporována. Pokud je tato proměnná prostředí definována, bude při inicializaci kontejneru ignorována.
 
-| Proměnná prostředí | Popis |
+| Proměnná prostředí | Description |
 |-----|-----|
 | **MSSQL_ENABLE_HADR** | Povolte skupinu dostupnosti. Například hodnota **1** je povolena a **hodnota 0** je zakázána. |
 
@@ -73,7 +72,7 @@ Azure SQL Edge neobsahuje [konfigurační nástroj MSSQL-conf](/sql/linux/sql-se
 
 Následující možnosti MSSQL. conf se nevztahují na SQL Edge:
 
-|Možnost|Popis|
+|Možnost|Description|
 |:---|:---|
 |**Názory zákazníků** | Vyberte, zda SQL Server odesílá zpětnou vazbu společnosti Microsoft. |
 |**Profil databázového e-mailu** | Nastavte výchozí profil databázového e-mailu pro SQL Server on Linux. |

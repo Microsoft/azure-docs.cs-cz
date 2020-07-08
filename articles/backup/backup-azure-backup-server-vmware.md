@@ -4,10 +4,9 @@ description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálo
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84628441"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
@@ -62,7 +61,7 @@ Zabezpečený kanál nastavte následujícím způsobem:
 
 4. Uložte soubor na Azure Backup Server počítači s příponou. zip.
 
-5. Klikněte pravým tlačítkem na **Stáhnout. zip**  >  **Extrahovat vše**. Soubor. zip extrahuje obsah do složky **certifikáty** , která obsahuje:
+5. Klikněte pravým tlačítkem **download.zip**  >  **Extrahovat vše**. Soubor. zip extrahuje obsah do složky **certifikáty** , která obsahuje:
    - Soubor kořenového certifikátu s příponou začínající číslovanou sekvencí, například. 0 a. 1.
    - Soubor CRL má příponu, která začíná sekvencí, jako je například. r0 nebo. R1. Soubor CRL je přidružený k certifikátu.
 
@@ -136,7 +135,7 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 
 | Oprávnění pro uživatelský účet vCenter 6,7                     | Oprávnění pro uživatelský účet vCenter 6,5                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Cluster úložiště dat. Konfigurace clusteru datatstore            | Cluster úložiště dat. Konfigurace clusteru datatstore            |
+| Úložiště dat cluster.Configurovat clusteru datatstore            | Úložiště dat cluster.Configurovat clusteru datatstore            |
 | Úložiště dat. AllocateSpace                                      | Úložiště dat. AllocateSpace                                      |
 | Úložiště dat. procházet úložiště dat                                   | Úložiště dat. procházet úložiště dat                                   |
 | Úložiště dat. operace se soubory na nízké úrovni                          | Úložiště dat. operace se soubory na nízké úrovni                          |
@@ -152,15 +151,15 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 | vApp. Add – virtuální počítač                                     | vApp. Add – virtuální počítač                                     |
 | vApp. Assign – fond zdrojů                                    | vApp. Assign – fond zdrojů                                    |
 | vApp. Unregister                                              | vApp. Unregister                                              |
-| VirtualMachine. Configuration. Přidat nebo odebrat zařízení          | VirtualMachine. Configuration. Přidat nebo odebrat zařízení          |
-| Virtuální počítač. Konfigurace. získání zapůjčení disku            | Virtuální počítač. Konfigurace. zapůjčení disku                     |
-| Virtuální počítač. Konfigurace. Přidat nový disk                   | Virtuální počítač. Konfigurace. Přidat nový disk                   |
-| Virtuální počítač. Konfigurace. Pokročilá konfigurace        | Virtuální počítač. Konfigurace. rozšířené                       |
-| Virtuální počítač. Konfigurace. přepínací sledování změn disku   | Virtuální počítač. Konfigurace. sledování změn disku          |
-| Virtuální počítač. Konfigurace. konfigurace zařízení USB hostitele     | Virtuální počítač. Configuration. Host – zařízení USB               |
-| Virtuální počítač. Konfigurace. rozšíří se virtuální disk           | Virtuální počítač. Konfigurace. rozšíří se virtuální disk           |
-| Virtuální počítač. Konfigurace. dotazování nevlastněných souborů           | Virtuální počítač. Konfigurace. dotazování nevlastněných souborů           |
-| Virtuální počítač. Konfigurace. Změna umístění swapfile     | Virtuální počítač. Umístění Configuration. swapfile            |
+| VirtualMachine.Configuration. Přidat nebo odebrat zařízení          | VirtualMachine.Configuration. Přidat nebo odebrat zařízení          |
+| Virtuální machine.Configuration. Získání zapůjčení disku            | Virtuální machine.Configuration. Zapůjčení disku                     |
+| Virtuální machine.Configuration. Přidat nový disk                   | Virtuální machine.Configuration. Přidat nový disk                   |
+| Virtuální machine.Configuration. Pokročilá konfigurace        | Virtuální machine.Configuration. Upřesnit                       |
+| Virtuální machine.Configuration. Přepnout sledování změn disků   | Virtuální machine.Configuration. Sledování změn disků          |
+| Zařízení USB hostitele Virtual machine.Configuration.Configurovat     | Virtuální machine.Configuration. Hostitelské zařízení USB               |
+| Virtuální machine.Configuration. Zvětšit virtuální disk           | Virtuální machine.Configuration. Zvětšit virtuální disk           |
+| Virtuální machine.Configuration. Dotazování nevlastněných souborů           | Virtuální machine.Configuration. Dotazování nevlastněných souborů           |
+| Virtuální machine.Configuration. Změnit umístění swapfile     | Virtuální machine.Configuration. Umístění swapfile            |
 | Virtuální počítač. Operace hosta. spuštění programu operace hosta | Virtuální počítač. Operace hosta. spuštění programu operace hosta |
 | Virtuální počítač. Operace hosta. změny operací hosta | Virtuální počítač. Operace hosta. změny operací hosta |
 | Virtuální počítač. Operace hosta. dotazy operace hosta    | Virtuální počítač. Operace hosta. dotazy operace hosta    |
@@ -184,16 +183,16 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 | ---------------------------------------------------------- | ------------------------------------------- |
 | Úložiště dat. AllocateSpace                                    | Síť. přiřadit                              |
 | Globální. Správa vlastních atributů                           | Úložiště dat. AllocateSpace                     |
-| Global. set – vlastní atribut                               | VirtualMachine. config. sledování změn ve        |
+| Global. set – vlastní atribut                               | VirtualMachine.Config. Sledování změn ve        |
 | Host. Local – operace. Vytvořit virtuální počítač              | VirtualMachine. State. RemoveSnapshot         |
 | Sítě.  Přiřadit síť                                   | VirtualMachine. State. CreateSnapshot         |
 | Partner.  Přiřadit virtuální počítač k fondu zdrojů         | VirtualMachine. Provisioning. DiskRandomRead  |
-| Virtuální počítač. Konfigurace. Přidat nový disk                | VirtualMachine. interaktivně. stavu poweroff            |
-| Virtuální počítač. Konfigurace. rozšířené                    | VirtualMachine. Inventory. Create             |
-| Virtuální počítač. Konfigurace. sledování změn disku        | VirtualMachine. config. AddNewDisk            |
-| Virtuální počítač. Configuration. Host – zařízení USB             | VirtualMachine. config. HostUSBDevice         |
-| Virtuální počítač. Konfigurace. dotazování nevlastněných souborů         | VirtualMachine. config. AdvancedConfig        |
-| Virtuální počítač. Umístění Configuration. swapfile          | VirtualMachine. config. SwapPlacement         |
+| Virtuální machine.Configuration. Přidat nový disk                | VirtualMachine. interaktivně. stavu poweroff            |
+| Virtuální machine.Configuration. Upřesnit                    | VirtualMachine. Inventory. Create             |
+| Virtuální machine.Configuration. Sledování změn disků        | VirtualMachine.Config. AddNewDisk            |
+| Virtuální machine.Configuration. Hostitelské zařízení USB             | VirtualMachine.Config. HostUSBDevice         |
+| Virtuální machine.Configuration. Dotazování nevlastněných souborů         | VirtualMachine.Config. AdvancedConfig        |
+| Virtuální machine.Configuration. Umístění swapfile          | VirtualMachine.Config. SwapPlacement         |
 | Virtuální počítač. Interakce. vypnutí                     | Global. ManageCustomFields                   |
 | Virtuální počítač. Inventáře. Vytvořit nový                     |                                             |
 | Virtuální počítač. Zřizování. povolení přístupu k disku            |                                             |
@@ -422,7 +421,7 @@ Windows Registry Editor Version 5.00
 > [!NOTE]
 > Tato funkce se vztahuje na MABS V3 UR1.
 
-S MABS V3 UR1 můžete konkrétní disk vyloučit ze zálohy virtuálního počítače VMware. Konfigurační skript **ExcludeDisk. ps1** je umístěný v `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
+S MABS V3 UR1 můžete konkrétní disk vyloučit ze zálohy virtuálního počítače VMware. Konfigurační skript **ExcludeDisk.ps1** se nachází v `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
 
 Pokud chcete nakonfigurovat vyloučení disku, postupujte podle následujících kroků:
 
@@ -479,7 +478,7 @@ Přejděte na server MABS, kde je virtuální počítač VMware nakonfigurovaný
         Vcentervm1   TestVM4   VMware
         ```
 
-  4. Pokud chcete disk vyloučit, přejděte do `Bin` složky a spusťte skript *ExcludeDisk. ps1* s následujícími parametry:
+  4. Pokud chcete disk vyloučit, přejděte do `Bin` složky a spusťte skript *ExcludeDisk.ps1* s následujícími parametry:
 
         > [!NOTE]
         > Před spuštěním tohoto příkazu zastavte službu DPMRA na serveru MABS. V opačném případě skript vrátí úspěch, ale neaktualizuje seznam vyloučení. Před zastavením služby zajistěte, aby neprobíhaly žádné úlohy.

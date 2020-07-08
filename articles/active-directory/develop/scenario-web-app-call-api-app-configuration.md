@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 3a6f92022a4e26c84efc2d5f68c3aad8b4685d30
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558795"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webová aplikace, která volá webová rozhraní API: Konfigurace kódu
@@ -95,7 +94,7 @@ Microsoft. identity. Web zjednodušuje váš kód nastavením správných nastav
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET zpracovává podobně ASP.NET Core, s tím rozdílem, že konfigurace OpenID připojení a odběr k `OnAuthorizationCodeReceived` události dochází v souboru [app_start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Koncepty jsou také podobné těm v ASP.NET Core, s výjimkou toho, že v ASP.NET je nutné zadat `RedirectUri` v souboru [Web. config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Tato konfigurace je trochu méně robustní než ta v ASP.NET Core, protože ji budete muset při nasazení aplikace změnit.
+ASP.NET zpracovává podobně ASP.NET Core, s tím rozdílem, že konfigurace OpenID připojení a odběr k `OnAuthorizationCodeReceived` události dochází v souboru [app_start \Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) . Koncepty jsou také podobné těm v ASP.NET Core, s výjimkou toho, že v ASP.NET je nutné zadat `RedirectUri` v [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15). Tato konfigurace je trochu méně robustní než ta v ASP.NET Core, protože ji budete muset při nasazení aplikace změnit.
 
 Zde je kód pro Startup.Auth.cs:
 

@@ -8,10 +8,9 @@ ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
 ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559781"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
@@ -137,7 +136,7 @@ public void ConfigureServices(IServiceCollection services)
 #### <a name="java-sdk"></a>Java SDK
 - **Příchozí konfigurace**
 
-  - Pro aplikace v jazyce Java EE přidejte následující značku do `<TelemetryModules>` značky v souboru ApplicationInsights. XML:
+  - Pro aplikace v jazyce Java EE přidejte do `<TelemetryModules>` značky v ApplicationInsights.xml následující:
 
     ```xml
     <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule>
@@ -153,7 +152,7 @@ public void ConfigureServices(IServiceCollection services)
 
 - **Odchozí konfigurace**
 
-  Do souboru AI-Agent. xml přidejte následující:
+  Přidejte následující AI-Agent.xml:
 
   ```xml
   <Instrumentation>
@@ -353,7 +352,7 @@ Možná budete chtít přizpůsobit způsob, jakým se názvy komponent zobrazuj
     ```
     Název cloudové role můžete také nastavit pomocí proměnné prostředí `APPLICATIONINSIGHTS_ROLE_NAME` .
 
-- S Application Insights Java SDK 2.5.0 a novější můžete zadat `cloud_RoleName` přidáním `<RoleName>` do souboru ApplicationInsights. XML:
+- S Application Insights Java SDK 2.5.0 a novější můžete zadat `cloud_RoleName` přidáním `<RoleName>` do ApplicationInsights.xml souboru:
 
   ```XML
   <?xml version="1.0" encoding="utf-8"?>

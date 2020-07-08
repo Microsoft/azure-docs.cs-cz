@@ -7,10 +7,9 @@ author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
 ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84608362"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
@@ -39,7 +38,7 @@ Pro agenta Log Analytics se neúčtují žádné náklady, ale za ingestování 
 ## <a name="data-collected"></a>Shromažďovaná data
 Následující tabulka uvádí typy dat, které můžete nakonfigurovat Log Analytics pracovní prostor pro shromažďování ze všech připojených agentů. Podívejte se na téma [co je monitorované pomocí Azure monitor?](../monitor-reference.md) v seznamu přehledů, řešení a dalších řešení, která používají agenta Log Analytics ke shromažďování dalších typů dat.
 
-| Zdroj dat | Popis |
+| Zdroj dat | Description |
 | --- | --- |
 | [Protokoly událostí systému Windows](data-sources-windows-events.md) | Informace odesílané systému protokolování událostí systému Windows. |
 | [Syslog](data-sources-syslog.md)                     | Informace odesílané systému protokolování událostí pro Linux. |
@@ -70,7 +69,7 @@ Pokud používáte System Center Operations Manager 2012 R2 nebo novější:
 
 Existuje několik metod, jak nainstalovat agenta Log Analytics a připojit počítač k Azure Monitor v závislosti na vašich požadavcích. Následující tabulka zvýrazňuje jednotlivé metody, abyste zjistili, které funkce ve vaší organizaci nejlépe vyhovuje.
 
-|Zdroj | Metoda | Popis|
+|Zdroj | Metoda | Description|
 |-------|-------------|-------------|
 |Virtuální počítač Azure| [Ručně z Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | Zadejte virtuální počítače, které chcete nasadit z pracovního prostoru Log Analytics. |
 | | Log Analytics rozšíření virtuálního počítače pro [Windows](../../virtual-machines/extensions/oms-windows.md) nebo [Linux](../../virtual-machines/extensions/oms-linux.md) pomocí Azure CLI nebo šablony Azure Resource Manager | Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje je do existujícího pracovního prostoru Azure Monitor. |
@@ -148,7 +147,7 @@ Pro agenta pro Linux jsou oficiálně podporované následující verze operačn
 
 V následující tabulce jsou vysvětlené balíčky požadované pro podporované distribuce Linux, na které se agent nainstaluje.
 
-|Požadovaný balíček |Popis |Minimální verze |
+|Požadovaný balíček |Description |Minimální verze |
 |-----------------|------------|----------------|
 |Glibc |    Knihovna GNU C | 2.5-12 
 |Openssl    | Knihovny OpenSSL | 1,0. x nebo 1.1. x |

@@ -4,10 +4,9 @@ description: Seznamte se s možnostmi úložiště klíčů ve službě Azure VM
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604112"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Koncepty úložiště Azure VMware Solution (AVS) Preview
@@ -21,7 +20,7 @@ Místní úložiště v každém hostiteli clusteru se používá jako součást
 Místní úložiště v hostitelích clusteru se používá v síti vSAN úložiště dat v úrovni clusteru. Všechna úložiště dat jsou vytvořena jako součást nasazení privátního cloudu a jsou k dispozici pro okamžité použití. Cloudadmin uživatel a všichni uživatelé ve skupině CloudAdmin mohou spravovat úložiště dat pomocí těchto oprávnění síti vSAN:
 - Úložiště dat. AllocateSpace
 - Datastore.Browse
-- Úložiště dat. config
+- Datastore.Config
 - Úložiště dat. DeleteFile
 - Úložiště dat. Správa
 - Úložiště dat. UpdateVirtualMachineMetadata

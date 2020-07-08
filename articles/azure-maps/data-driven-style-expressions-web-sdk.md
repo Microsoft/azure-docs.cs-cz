@@ -10,10 +10,9 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: 79f1188665208ec95e5d1d855d2247858e98653c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84561653"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
@@ -85,11 +84,11 @@ Datové výrazy poskytují přístup k datům vlastností ve funkci.
 |------------|-------------|-------------|
 | `['at', number, array]` | odkazy objektů | Načte položku z pole. |
 | `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
-| `['get', string]` | value | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
-| `['get', string, object]` | value | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string]` | hodnota | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
+| `['get', string, object]` | hodnota | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['has', string]` | Boolean | Určuje, zda vlastnosti funkce mají zadanou vlastnost. |
 | `['has', string, object]` | Boolean | Určuje, zda vlastnosti objektu mají zadanou vlastnost. |
-| `['id']` | value | Získá ID funkce, pokud má jednu. |
+| `['id']` | hodnota | Získá ID funkce, pokud má jednu. |
 | `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
 | `['in', boolean | string | number, array]` | Boolean | Určuje, jestli položka existuje v poli. |
 | `['in', substring, string]` | Boolean | Určuje, zda podřetězec existuje v řetězci. |
@@ -232,7 +231,7 @@ Následující pseudokódu definuje strukturu `case` výrazu.
 ]
 ```
 
-**Případě**
+**Příklad**
 
 Následující příklad provádí v rámci různých logických podmínek, dokud nenajde ten, který je vyhodnocen jako `true` a následně vrací přidruženou hodnotu. Pokud se vyhodnotí žádná logická podmínka `true` , vrátí se záložní hodnota. 
 
@@ -354,7 +353,7 @@ Následující pseudokódu definuje strukturu `coalesce` výrazu.
 ]
 ```
 
-**Případě**
+**Příklad**
 
 Následující příklad používá `coalesce` výraz pro nastavení `textField` Možnosti pro vrstvu symbolů. Pokud `title` vlastnost ve funkci chybí nebo je nastavená na `null` , výraz se pak pokusí vyhledat `subtitle` vlastnost, pokud chybí, nebo se `null` vrátí do prázdného řetězce. 
 
@@ -441,7 +440,7 @@ Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 | `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené*, *zelené*a *modré* komponenty, která musí být v rozsahu od do `0` `255` a. alfa komponenta v rámci rozsahu `0` a `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
 | `['to-rgba']` | \[číslo, číslo, číslo, číslo\] | Vrátí pole se čtyřmi prvky obsahující *červenou*, *zelenou*, *modrou*a *alfa* komponentu vstupní barvy v tomto pořadí. |
 
-**Případě**
+**Příklad**
 
 Následující příklad vytvoří hodnotu barvy RGB s *červenou* hodnotou `255` a *zelenou* a *modrou* hodnotou, která je vypočítána vynásobením `2.5` hodnotou `temperature` Vlastnosti. Při změně teploty se barva změní na různé odstíny *červené*.
 
@@ -469,7 +468,7 @@ Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako
 | `['downcase', string]` | řetězec | Převede zadaný řetězec na malá písmena. |
 | `['upcase', string]` | řetězec | Převede zadaný řetězec na velká písmena. |
 
-**Případě**
+**Příklad**
 
 Následující příklad převede `temperature` vlastnost bodu na řetězec a poté zřetězí "°F" na konci.
 
@@ -527,7 +526,7 @@ Následující pseudokódu definuje strukturu `interpolate` výrazu.
 ]
 ```
 
-**Případě**
+**Příklad**
 
 Následující příklad používá `linear interpolate` výraz pro nastavení `color` vlastnosti bublinové vrstvy na základě `temperature` vlastnosti funkce Point. Pokud `temperature` je hodnota menší než 60, bude vrácena "modrá". Pokud je mezi 60 a menší než 70, vrátí se žlutá. Pokud je mezi 70 a menší než 80, bude vrácena "oranžová". Pokud je 80 nebo větší, vrátí se "Red".
 
@@ -576,7 +575,7 @@ Následující pseudokódu definuje strukturu `step` výrazu.
 
 Výrazy kroku vracejí výstupní hodnotu ukončení těsně před vstupní hodnotou nebo první vstupní hodnotu, pokud je vstup menší než první zarážka. 
 
-**Případě**
+**Příklad**
 
 Následující příklad používá `step` výraz pro nastavení `color` vlastnosti bublinové vrstvy na základě `temperature` vlastnosti funkce Point. Pokud `temperature` je hodnota menší než 60, bude vrácena "modrá". Pokud je mezi 60 a menší než 70, vrátí se "žlutá". Pokud je mezi 70 a menší než 80, bude vrácena "oranžová". Pokud je 80 nebo větší, vrátí se "Red".
 
@@ -614,7 +613,7 @@ Výraz hustoty tepelné mapy načte hodnotu hustoty tepelné mapy pro každý pi
 > [!TIP]
 > Barva v indexu 0, ve výrazu interpolace nebo ve výchozí barvě barvy kroku, definuje barvu oblasti, kde nejsou žádná data. Barva na indexu 0 se dá použít k definování barvy pozadí. Mnoho preferuje nastavení této hodnoty na transparentní nebo částečně průhlednou černou.
 
-**Případě**
+**Příklad**
 
 Tento příklad používá výraz interpolace linie k vytvoření hladkého barevného přechodu pro vykreslování Heat mapy. 
 
@@ -658,7 +657,7 @@ Výraz průběhu řádku načítá průběh čáry přechodu v čárové vrstvě
 > [!NOTE]
 > `strokeGradient`Možnost čáry spojnice vyžaduje `lineMetrics` možnost nastavení zdroje dat na hodnotu `true` .
 
-**Případě**
+**Příklad**
 
 V tomto příkladu se používá `['line-progress']` výraz pro použití barevného přechodu na tah čáry.
 
@@ -709,7 +708,7 @@ Následující pseudokódu definuje strukturu výrazu formátu textového pole.
 ]
 ```
 
-**Případě**
+**Příklad**
 
 Následující příklad formátuje textové pole přidáním tučného písma a vertikálního navýšení velikosti písma `title` vlastnosti funkce. Tento příklad také přidá `subtitle` vlastnost funkce na nový řádek, se zvětšenou velikostí písma a barvou červenou.
 
@@ -769,7 +768,7 @@ Následující pseudokódu definuje strukturu výrazu formátu textového pole.
 ]
 ```
 
-**Případě**
+**Příklad**
 
 Následující příklad používá `number-format` výraz pro úpravu způsobu, jakým `revenue` je vlastnost bodu vykreslena v `textField` Možnosti vrstvy symbolů tak, aby se zobrazila hodnota US dolar.
 
@@ -797,7 +796,7 @@ Tato vrstva bude vykreslovat funkci bodu, jak je znázorněno na následujícím
 
 Výraz obrázku lze použít s `image` možnostmi a v rámci `textField` vrstvy symbolů a `fillPattern` možností mnohoúhelníkové vrstvy. Tento výraz kontroluje, zda požadovaný obrázek existuje ve stylu a vrátí buď název přeložené bitové kopie, nebo v `null` závislosti na tom, zda je obrázek aktuálně ve stylu. Tento proces ověřování je synchronní a vyžaduje, aby byl obrázek přidán do stylu před vyžádáním v argumentu obrázku.
 
-**Případě**
+**Příklad**
 
 Následující příklad používá `image` výraz pro přidání ikony vložené s textem do vrstvy symbolů. 
 
@@ -835,7 +834,7 @@ Tato vrstva vykreslí textové pole v symbolové vrstvě, jak je znázorněno na
 
 `zoom`Výraz se používá k načtení aktuální úrovně přiblížení mapy v době vykreslování a je definován jako `['zoom']` . Tento výraz vrací číslo mezi minimálním a maximálním rozsahem úrovně přiblížení mapy. Azure Maps interaktivní ovládací prvky mapování pro web a Android podporují 25 úrovní přiblížení s čísly 0 až 24. Použití `zoom` výrazu umožňuje dynamicky upravovat styly při změně úrovně přiblížení mapy. `zoom`Výraz lze použít pouze s `interpolate` `step` výrazy a.
 
-**Případě**
+**Příklad**
 
 Ve výchozím nastavení mají poloměry datových bodů vykreslených v vrstvě Heat mapy u všech úrovní přiblížení pevný obraz v pixelech. Jak je mapa zvětšena, agregace dat a vrstva Heat mapy vypadá jinak. `zoom`Výraz lze použít k horizontálnímu škálování poloměru pro každou úroveň přiblížení tak, že každý datový bod pokrývá stejnou fyzickou oblast mapy. Vrstva Heat mapy bude mít víc statických a konzistentních. Každá úroveň přiblížení mapy má dvakrát a vodorovně tolik pixelů jako předchozí úroveň přiblížení. Změna velikosti poloměru, například při zdvojnásobení s každou úrovní přiblížení, vytvoří Heat mapu, která bude vypadat konzistentně na všech úrovních přiblížení. Dá se to provést pomocí `zoom` výrazu s `base 2 exponential interpolation` výrazem, který má nastavené poloměru pixelů pro minimální úroveň přiblížení a poloměr škálování pro maximální úroveň přiblížení, jak je `2 * Math.pow(2, minZoom - maxZoom)` znázorněno níže.
 
@@ -866,7 +865,7 @@ Výrazy vazeb proměnných ukládají výsledky výpočtu v proměnné. Takže j
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;let,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název1: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Hodnota1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název2: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Ukládá jednu nebo více hodnot jako proměnné pro použití `var` výrazem v podřízeném výrazu, který vrací výsledek. |
 | `['var', name: string]` | Libovolný | Odkazuje na proměnnou, která byla vytvořena pomocí `let` výrazu. |
 
-**Případě**
+**Příklad**
 
 V tomto příkladu se používá výraz, který vypočítá tržby vzhledem k poměru teploty a pak použije `case` výraz k vyhodnocení různých logických operací s touto hodnotou. `let`Výraz se používá k uložení výnosů vzhledem k poměru teploty, aby jej bylo nutné vypočítat pouze jednou. `var`Výraz odkazuje na tuto proměnnou tak často, jak je potřeba, aniž by bylo nutné je přepočítat.
 

@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: tisande
 ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84636321"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
@@ -123,7 +122,7 @@ Když v zásadách indexování definujete prostorovou cestu, měli byste defino
 
 * Vyberte
 
-* Postupně
+* Mnohoúhelník
 
 * MultiPolygon
 

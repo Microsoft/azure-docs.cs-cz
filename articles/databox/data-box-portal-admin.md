@@ -9,10 +9,9 @@ ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 22fd67797bbec516317aadaa4b33371c5d335b36
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609450"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí Azure Portal můžete spravovat Azure Data Box a Azure Data Box Heavy
@@ -197,7 +196,7 @@ Můžete také zobrazit řetězec protokolů opatrovnictví, mezi které patří
 
 Když se stav zařízení na portálu změní, dostanete upozornění prostřednictvím e-mailu.
 
-|Stav objednávky |Popis |
+|Stav objednávky |Description |
 |---------|---------|
 |Objednáno     | Došlo k úspěšnému zadání objednávky. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není dostupné okamžitě, bude objednávka zpracována, až bude zařízení dostupné. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka zrušena a budete upozorněni.         |
 |Zpracováno     | Proběhlo zpracování objednávky. Zařízení je připravené k odeslání v datovém centru podle objednávky.         |

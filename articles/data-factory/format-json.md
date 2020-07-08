@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 7fd8fd35ee411d929843be81a1daaa512e0b3ca1
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84611040"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Formát JSON v Azure Data Factory
@@ -200,7 +199,7 @@ V části mapování toků dat můžete číst a zapisovat do formátu JSON v n�
 
 V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem JSON. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
 
-| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Cesty k zástupným kartám | Budou zpracovány všechny soubory, které odpovídají zástupné cestě. Přepíše složku a cestu k souboru nastavenou v datové sadě. | ne | Řetězec [] | wildcardPaths |
 | Kořenová cesta oddílu | Pro souborová data, která jsou rozdělená na oddíly, můžete zadat kořenovou cestu oddílu, aby bylo možné číst rozdělené složky jako sloupce. | ne | Řetězec | partitionRootPath |
@@ -295,7 +294,7 @@ Vyberte **zpětné lomítko** , které se řídí zpětným lomítkem, aby se v 
 
 V níže uvedené tabulce jsou uvedeny vlastnosti, které jímka JSON podporuje. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
 
-| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
 | Možnost názvu souboru | Formát názvů zapsaných dat. Ve výchozím nastavení je jeden soubor na oddíl ve formátu`part-#####-tid-<guid>` | ne | Vzor: řetězec <br> Na oddíl: řetězec [] <br> Jako data ve sloupci: String <br> Výstup do jednoho souboru:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: femila
 ms.openlocfilehash: dd7535030ea4f6d6769630e463618faab62944a0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558473"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
@@ -32,7 +31,7 @@ Pokud vyvíjíte v rozhraní .NET, [přidejte závislost](../azure-functions/fun
 
 Sady SDK pro jiné jazyky jsou k dispozici prostřednictvím odkazu [publikovat sady SDK](./sdk-overview.md#data-plane-sdks) . Tyto balíčky mají modely pro nativní typy událostí, jako jsou `EventGridEvent` , `StorageBlobCreatedEventData` a `EventHubCaptureFileCreatedEventData` .
 
-Klikněte na odkaz Zobrazit soubory v Azure Function (napravo od pravého podokna na portálu Azure Functions) a vytvořte soubor s názvem Project. JSON. Do souboru přidejte následující obsah `project.json` a uložte ho:
+Klikněte na odkaz Zobrazit soubory v Azure Function (napravo od pravého podokna na portálu Azure Functions) a vytvořte soubor s názvem project.js. Do souboru přidejte následující obsah `project.json` a uložte ho:
 
  ```json
 {

@@ -9,10 +9,9 @@ ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
 ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84634995"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data Box

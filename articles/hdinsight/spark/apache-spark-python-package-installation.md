@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
 ms.openlocfilehash: f1ed0ae33d1f83fd77adb337aded95605c17f38b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84607308"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
@@ -33,7 +32,7 @@ Služba Microsoft Azure HDInsight používá prostředí Open Source technologi�
 
 Existují dva typy open source komponent, které jsou k dispozici ve službě HDInsight:
 
-|Součást |Popis |
+|Součást |Description |
 |---|---|
 |Integrované|Tyto komponenty jsou předem nainstalované v clusterech HDInsight a poskytují základní funkce clusteru. Do této kategorie patří například Apache Hadoop nitě Správce prostředků, HiveQL (Apache Hive Query Language) a Mahout Library. Úplný seznam součástí clusteru je k dispozici v [části Co je nového ve verzích Apache Hadoop clusteru poskytovaných službou HDInsight](../hdinsight-component-versioning.md).|
 |Vlastní|Vy, jako uživatel clusteru, můžete nainstalovat nebo používat ve svých úlohách libovolnou komponentu dostupnou ve komunitě nebo vytvořenou vámi.|

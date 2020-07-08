@@ -15,10 +15,9 @@ ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: tracking-python
 ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559342"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Šablony rozhraní API v Azure API Management
@@ -718,7 +717,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 }  
 ```  
   
-### <a name="c"></a><a name="CSharp"></a>R #  
+### <a name="c"></a><a name="CSharp"></a> C#  
  Šablona **DocumentationSamplesCsharp** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  

@@ -4,10 +4,9 @@ description: Tento článek obsahuje matrici ochrany, kde najdete seznam všech 
 ms.date: 11/13/2018
 ms.topic: conceptual
 ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84632084"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM – matice ochrany

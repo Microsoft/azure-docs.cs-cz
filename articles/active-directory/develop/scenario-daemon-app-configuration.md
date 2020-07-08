@@ -12,10 +12,9 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
 ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558550"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
@@ -57,7 +56,7 @@ Konfigurační soubor definuje:
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-[appSettings. JSON](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) z ukázky [procesu démona konzoly .NET Core](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+[appsettings.js](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/appsettings.json) z ukázky [procesu démona konzoly .NET Core](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) .
 
 ```json
 {
@@ -73,7 +72,7 @@ Zadáte buď `ClientSecret` nebo `CertificateName` . Tato nastavení jsou exkluz
 
 # <a name="python"></a>[Python](#tab/python)
 
-Když vytváříte důvěrného klienta s klientskými tajnými kódy, konfigurační soubor [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) v ukázce [démona Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon) je následující:
+Když vytváříte důvěrného klienta s klientskými tajnými kódy, [parameters.js](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) v souboru config v ukázce [démona Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon) je následující:
 
 ```Json
 {
@@ -85,7 +84,7 @@ Když vytváříte důvěrného klienta s klientskými tajnými kódy, konfigura
 }
 ```
 
-Když vytváříte důvěrného klienta s certifikáty, konfigurační soubor [Parameters. JSON](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) v ukázce [démona Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon) je následující:
+Když vytváříte důvěrného klienta s certifikáty, [parameters.js](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) v souboru config v ukázce [démona Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon) je následující:
 
 ```Json
 {

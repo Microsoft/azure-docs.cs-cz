@@ -12,17 +12,16 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 53a84bd970d564411ec9a56b54159e5a96717a6e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84558763"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Jednostránkové aplikace: přihlášení a odhlášení
 
 Naučte se, jak přidat přihlášení k kódu pro aplikaci s jednou stránkou.
 
-Než budete moct získat tokeny pro přístup k rozhraním API ve vaší aplikaci, potřebujete kontext ověřeného uživatele. Uživatele můžete do aplikace v MSAL. js přihlašovat dvěma způsoby:
+Než budete moct získat tokeny pro přístup k rozhraním API ve vaší aplikaci, potřebujete kontext ověřeného uživatele. Uživatele můžete přihlašovat do aplikace v MSAL.js dvěma způsoby:
 
 * [Místní okno](#sign-in-with-a-pop-up-window)pomocí `loginPopup` metody
 * [Přesměrování](#sign-in-with-redirect)pomocí `loginRedirect` metody
@@ -30,7 +29,7 @@ Než budete moct získat tokeny pro přístup k rozhraním API ve vaší aplikac
 Volitelně můžete také předávat obory rozhraní API, pro které budete potřebovat souhlas uživatele v době přihlášení.
 
 > [!NOTE]
-> Pokud má vaše aplikace již přístup k kontextu ověřeného uživatele nebo ID tokenu, můžete přeskočit krok přihlášení a přímo získat tokeny. Podrobnosti najdete v tématu [SSO bez přihlášení MSAL. js](msal-js-sso.md#sso-without-msaljs-login).
+> Pokud má vaše aplikace již přístup k kontextu ověřeného uživatele nebo ID tokenu, můžete přeskočit krok přihlášení a přímo získat tokeny. Podrobnosti najdete v tématu [SSO bez MSAL.js přihlášení](msal-js-sso.md#sso-without-msaljs-login).
 
 ## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Volba mezi prostředím pro místní nebo přesměrování
 

@@ -7,10 +7,9 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: tracking-python
 ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84559983"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Aktivační událost Azure Blob Storage pro Azure Functions
@@ -59,9 +58,9 @@ Další informace o atributu naleznete `BlobTrigger` v tématu [atributy a pozn�
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje vazbu triggeru objektu BLOB v souboru *Function. JSON* a kódu, který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+Následující příklad ukazuje vazbu triggeru objektu BLOB v *function.js* souboru a kódu, který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json
 {
@@ -80,7 +79,7 @@ Tady jsou data vazby v souboru *Function. JSON* :
 
 Řetězec `{name}` v cestě triggeru objektu BLOB `samples-workitems/{name}` vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
 
-Další informace o vlastnostech souboru *Function. JSON* najdete v části [Konfigurace](#configuration) vysvětlení těchto vlastností.
+Další informace o *function.js* vlastností souboru naleznete v části [Konfigurace](#configuration) vysvětlení těchto vlastností.
 
 Tady je kód skriptu C#, který se váže k `Stream` :
 
@@ -106,9 +105,9 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje vazbu triggeru objektu BLOB v souboru *Function. JSON* a [kódu JavaScriptu](functions-reference-node.md) , který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` .
+Následující příklad ukazuje vazbu triggeru objektu BLOB v *function.js* souboru a [kódu JavaScriptu](functions-reference-node.md) , který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` .
 
-Tady je soubor *Function. JSON* :
+Tady je *function.js* souboru:
 
 ```json
 {
@@ -127,7 +126,7 @@ Tady je soubor *Function. JSON* :
 
 Řetězec `{name}` v cestě triggeru objektu BLOB `samples-workitems/{name}` vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
 
-Další informace o vlastnostech souboru *Function. JSON* najdete v části [Konfigurace](#configuration) vysvětlení těchto vlastností.
+Další informace o *function.js* vlastností souboru naleznete v části [Konfigurace](#configuration) vysvětlení těchto vlastností.
 
 Tady je kód JavaScriptu:
 
@@ -140,9 +139,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje vazbu triggeru objektu BLOB v souboru *Function. JSON* a [kódu Pythonu](functions-reference-python.md) , který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+Následující příklad ukazuje vazbu triggeru objektu BLOB v *function.js* souboru a [kódu Pythonu](functions-reference-python.md) , který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
-Tady je soubor *Function. JSON* :
+Tady je *function.js* souboru:
 
 ```json
 {
@@ -162,7 +161,7 @@ Tady je soubor *Function. JSON* :
 
 Řetězec `{name}` v cestě triggeru objektu BLOB `samples-workitems/{name}` vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
 
-Další informace o vlastnostech souboru *Function. JSON* najdete v části [Konfigurace](#configuration) vysvětlení těchto vlastností.
+Další informace o *function.js* vlastností souboru naleznete v části [Konfigurace](#configuration) vysvětlení těchto vlastností.
 
 Tady je kód Pythonu:
 
@@ -273,9 +272,9 @@ Python nepodporuje atributy.
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `BlobTrigger` atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `BlobTrigger` atribut.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastaven na hodnotu `blobTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
 |**direction** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. Výjimky jsou uvedeny v části [použití](#usage) . |
@@ -297,7 +296,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Přístup k datům objektů BLOB pomocí `context.bindings.<NAME>` Where `<NAME>` odpovídá hodnotě definované v *Function. JSON*.
+Přístup k datům objektů BLOB pomocí `context.bindings.<NAME>` , kde `<NAME>` se shoduje s hodnotou definovanou v *function.js*.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -311,7 +310,7 @@ Přístup k datům objektů BLOB prostřednictvím parametru zadaného jako [Inp
 
 ## <a name="blob-name-patterns"></a>Vzory názvů objektů BLOB
 
-Můžete zadat vzor názvu objektu BLOB ve `path` vlastnosti v *Function. JSON* nebo v `BlobTrigger` konstruktoru atributu. Vzor názvu může být [filtr nebo výraz vazby](./functions-bindings-expressions-patterns.md). V následujících částech jsou uvedeny příklady.
+Můžete určit vzor názvu objektu BLOB ve `path` vlastnosti v *function.jsna* nebo v `BlobTrigger` konstruktoru atributu. Vzor názvu může být [filtr nebo výraz vazby](./functions-bindings-expressions-patterns.md). V následujících částech jsou uvedeny příklady.
 
 ### <a name="get-file-name-and-extension"></a>Získat název a příponu souboru
 
@@ -321,7 +320,7 @@ Následující příklad ukazuje, jak vytvořit nezávisle s názvem a přípono
 "path": "input/{blobname}.{blobextension}",
 ```
 
-Pokud je objekt BLOB pojmenovaný *Original-Blob1. txt*, hodnoty `blobname` `blobextension` proměnných a v kódu funkce jsou *původní – Blob1* a *txt*.
+Pokud je objekt BLOB pojmenovaný *original-Blob1.txt*, hodnoty `blobname` `blobextension` proměnných a v kódu funkce jsou *původní – Blob1* a *txt*.
 
 ### <a name="filter-on-blob-name"></a>Filtrovat podle názvu objektu BLOB
 
@@ -331,7 +330,7 @@ Následující příklad aktivuje pouze objekty BLOB v `input` kontejneru, kter�
 "path": "input/original-{name}",
 ```
 
-Pokud je název objektu BLOB *Original-Blob1. txt*, hodnota `name` proměnné v kódu funkce je `Blob1` .
+Pokud je název objektu BLOB *original-Blob1.txt*, hodnota `name` proměnné v kódu funkce je `Blob1` .
 
 ### <a name="filter-on-file-type"></a>Filtrovat podle typu souboru
 
@@ -349,7 +348,7 @@ Chcete-li vyhledat složené závorky v názvech souborů, vydejte závorky pomo
 "path": "images/{{20140101}}-{name}",
 ```
 
-Pokud je objekt BLOB pojmenovaný * {20140101} -soundfile. mp3*, `name` hodnota proměnné v kódu funkce je *soundfile. mp3*.
+Pokud je objekt BLOB pojmenovaný * {20140101}-soundfile.mp3*, `name` hodnota proměnné v kódu funkce je *soundfile.mp3*.
 
 ## <a name="metadata"></a>Metadata
 
@@ -408,7 +407,7 @@ Pokud dojde k selhání všech 5 pokusů, Azure Functions přidá zprávu do fro
 
 ## <a name="concurrency-and-memory-usage"></a>Souběžnost a využití paměti
 
-Trigger objektu BLOB používá interně frontu, takže maximální počet souběžných volání funkcí je řízený [konfigurací front v Host. JSON](functions-host-json.md#queues). Výchozí nastavení omezují souběžné navýšení na 24 volání. Toto omezení se vztahuje odděleně na jednotlivé funkce, které používají Trigger objektu BLOB.
+Trigger objektu BLOB používá interně frontu, takže maximální počet souběžných volání funkcí je řízený [konfigurací front v host.jszapnuté](functions-host-json.md#queues). Výchozí nastavení omezují souběžné navýšení na 24 volání. Toto omezení se vztahuje odděleně na jednotlivé funkce, které používají Trigger objektu BLOB.
 
 [Plán spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work) omezuje aplikaci funkcí na jednom virtuálním počítači na 1,5 GB paměti. Paměť je používána každou souběžně spuštěnou instancí funkce a samotným modulem runtime Functions. Pokud funkce aktivovaná objektem BLOB načte celý objekt blob do paměti, maximální velikost paměti, kterou tato funkce používá jenom pro objekty blob, je 24 * maximální velikost objektu BLOB. Například aplikace funkcí se třemi funkcemi aktivovanými pro objekty BLOB a výchozími nastaveními může být maximální souběžnost na virtuálním počítači 3 * 24 = 72 volání funkcí.
 

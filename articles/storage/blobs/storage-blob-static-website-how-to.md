@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84609926"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostování statického webu v Azure Storage
@@ -34,11 +33,11 @@ Hostování statického webu je funkce, kterou musíte povolit v účtu úloži�
 
 4. Vyberte **povoleno** , pokud chcete povolit statické hostování webů pro účet úložiště.
 
-5. V poli **název dokumentu indexu** zadejte výchozí stránku indexu (například *index. html*). 
+5. V poli **název dokumentu indexu** zadejte výchozí stránku indexu (například: *index.html*). 
 
    Výchozí stránka indexu se zobrazí, když uživatel přejde do kořenového adresáře vašeho statického webu.  
 
-6. V poli **cesta k chybovému dokumentu** zadejte výchozí chybovou stránku (například *404. html*). 
+6. V poli **cesta k chybovému dokumentu** zadejte výchozí chybovou stránku (například: *404.html*). 
 
    Výchozí chybová stránka se zobrazí, když se uživatel pokusí přejít na stránku, která na vašem statickém webu neexistuje.
 
@@ -72,7 +71,7 @@ Můžete povolit hostování statického webu pomocí [rozhraní příkazového 
 
    * `<error-document-name>`Zástupný symbol nahraďte názvem dokumentu chyby, který se zobrazí uživatelům, když prohlížeč požaduje stránku na vašem webu, který neexistuje.
 
-   * `<index-document-name>`Zástupný symbol nahraďte názvem dokumentu indexu. Tento dokument je běžně "index. html".
+   * `<index-document-name>`Zástupný symbol nahraďte názvem dokumentu indexu. Tento dokument je běžně "index.html".
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -124,7 +123,7 @@ Hostování statického webu můžete povolit pomocí modulu Azure PowerShell.
 
    * `<error-document-name>`Zástupný symbol nahraďte názvem dokumentu chyby, který se zobrazí uživatelům, když prohlížeč požaduje stránku na vašem webu, který neexistuje.
 
-   * `<index-document-name>`Zástupný symbol nahraďte názvem dokumentu indexu. Tento dokument je běžně "index. html".
+   * `<index-document-name>`Zástupný symbol nahraďte názvem dokumentu indexu. Tento dokument je běžně "index.html".
 
 ---
 

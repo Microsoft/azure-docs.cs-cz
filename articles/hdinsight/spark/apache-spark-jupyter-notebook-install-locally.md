@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020, tracking-python
 ms.date: 04/23/2020
 ms.openlocfilehash: 2084bf136300126e56414599caa63d24c98f4542
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84604231"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Instalace poznámkového bloku Jupyter na vašem počítači a připojení k Apache Spark v HDInsight
@@ -100,7 +99,7 @@ V této části nakonfigurujete Spark Magic, který jste nainstalovali dříve, 
     exit()
     ```
 
-3. V rámci složky `.sparkmagic` vytvořte soubor s názvem **config. JSON** a přidejte do něj následující fragment kódu JSON.  
+3. V rámci složky `.sparkmagic` vytvořte soubor s názvem **config.jsna** a přidejte do něj následující fragment kódu JSON.  
 
     ```json
     {
@@ -135,7 +134,7 @@ V této části nakonfigurujete Spark Magic, který jste nainstalovali dříve, 
     |{BASE64ENCODEDPASSWORD}|Heslo kódované v kódování Base64 pro vaše skutečné heslo.  Můžete vygenerovat heslo Base64 na adrese [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) .|
     |`"livy_server_heartbeat_timeout_seconds": 60`|Používejte při použití `sparkmagic 0.12.7` (clustery v 3.5 a v 3.6).  Pokud používáte `sparkmagic 0.2.3` (clustery v 3.4), nahraďte parametr `"should_heartbeat": true` .|
 
-    Úplný ukázkový soubor můžete zobrazit v [ukázce config. JSON](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
+    Úplný ukázkový soubor můžete zobrazit v [ukázce config.jsna](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
 
    > [!TIP]  
    > Odesílají se prezenční signály, aby se zajistilo, že nedojde k úniku relací. Když počítač přejde do režimu spánku nebo se vypne, prezenční signál se nepošle, takže se vyčistí relace. U clusterů v 3.4, pokud chcete toto chování zakázat, můžete nastavit konfiguraci Livy `livy.server.interactive.heartbeat.timeout` na `0` z uživatelského rozhraní Ambari. Pokud v části clustery v 3.5 nenastavíte výše uvedenou konfiguraci 3,5, relace se neodstraní.
@@ -164,7 +163,7 @@ V této části nakonfigurujete Spark Magic, který jste nainstalovali dříve, 
 
     Pokud můžete výstup úspěšně načíst, otestuje se připojení ke clusteru HDInsight.
 
-    Pokud chcete aktualizovat konfiguraci poznámkového bloku pro připojení k jinému clusteru, aktualizujte config. JSON novou sadou hodnot, jak je znázorněno v kroku 3 výše.
+    Pokud chcete aktualizovat konfiguraci poznámkového bloku pro připojení k jinému clusteru, aktualizujte config.jsna novou sadu hodnot, jak je znázorněno v kroku 3 výše.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Proč mám na svém počítači instalovat Jupyter?
 

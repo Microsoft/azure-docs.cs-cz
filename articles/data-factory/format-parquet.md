@@ -10,10 +10,9 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 9ad0ccdabd0320d8821d0760ca9802db37049149
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84611020"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Formát Parquet v Azure Data Factory
@@ -90,7 +89,7 @@ V části mapování toků dat můžete číst a zapisovat do formátu Parquet v
 
 V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Parquet. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
 
-| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být`parquet` | ano | `parquet` | formát |
 | Cesty k zástupným kartám | Budou zpracovány všechny soubory, které odpovídají zástupné cestě. Přepíše složku a cestu k souboru nastavenou v datové sadě. | ne | Řetězec [] | wildcardPaths |
@@ -119,7 +118,7 @@ source(allowSchemaDrift: true,
 
 V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Parquet. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
 
-| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být`parquet` | ano | `parquet` | formát |
 | Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
@@ -156,7 +155,7 @@ Parquet komplexní datové typy se momentálně nepodporují (např. MAP, LIST, 
 Pro kopírování běžící v prostředí IR v místním prostředí s Parquet serializací/deserializace vyhledá ADF modul runtime Java tím, že se nejprve zkontroluje registr *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* pro JRE, pokud se nenajde, druhá kontroluje proměnnou systému *`JAVA_HOME`* pro OpenJDK.
 
 - **Použití JRE**: 64-bit IR vyžaduje 64-bit JRE. Můžete ho najít [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit soubor JVM. dll se všemi ostatními požadovanými sestaveními OpenJDK do místního počítače IR a nastavte proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
+- **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit jvm.dll se všemi ostatními požadovanými sestaveními OpenJDK do místně hostovaného počítače IR a nastavit proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
 - **Instalace balíčku Visual C++ 2010 Redistributable**: Visual C++ 2010 Distribuovatelný balíček není nainstalovaný s instalacemi v místním prostředí IR. Můžete ho najít [tady](https://www.microsoft.com/download/details.aspx?id=14632).
 
 > [!TIP]
