@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356861"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect synchronizace: pochopení a přizpůsobení synchronizace
@@ -62,7 +62,7 @@ Synchronizační služba se skládá ze dvou součástí: místní **Azure AD Co
 | **Jak...** | |
 | [Resetování účtu Azure AD](how-to-connect-azureadaccount.md) |Postup resetování přihlašovacích údajů účtu služby použitého pro připojení z Azure AD Connect synchronizaci do Azure AD. |
 | **Další informace a odkazy** | |
-| [Porty](reference-connect-ports.md) |Zobrazuje seznam portů, které je třeba otevřít mezi synchronizačním modulem a místními adresáři a službou Azure AD. |
+| [Přístavu](reference-connect-ports.md) |Zobrazuje seznam portů, které je třeba otevřít mezi synchronizačním modulem a místními adresáři a službou Azure AD. |
 | [Atributy synchronizované se službou Azure Active Directory](reference-connect-sync-attributes-synchronized.md) |Zobrazí seznam všech synchronizovaných atributů mezi místními službami AD a Azure AD. |
 | [Reference k funkcím](reference-connect-sync-functions-reference.md) |Zobrazí seznam všech funkcí dostupných v deklarativních zřizováních. |
 

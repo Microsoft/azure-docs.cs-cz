@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ea7f2fbd910f574a6486f1db2eaa9b99a4e3ca3e
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357864"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
@@ -264,8 +264,8 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
-    | Popis | *Zadejte popis.* |  |
+    | Name | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
+    | Description | *Zadejte popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby AD* |  |
     | Typ připojeného systémového objektu | **Uživatel** |  |
     | Typ objektu úložiště metaverse | **Person (Osoba)** |  |
@@ -306,8 +306,8 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Název | *Zadat název* | Například pro *AAD – uživatel – usertype* |
-    | Popis | *Zadejte popis.* ||
+    | Name | *Zadat název* | Například pro *AAD – uživatel – usertype* |
+    | Description | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor AAD.* ||
     | Typ připojeného systémového objektu | **Uživatel** ||
     | Typ objektu úložiště metaverse | **Person (Osoba)** ||

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 597e322536703560fad8a0ba562cc70ce3aa1775
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357405"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronizace: konfigurace upřednostňovaného umístění dat pro prostředky Office 365
@@ -142,8 +142,8 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
 
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
-    | Název | *Zadat název* | Například "in from AD – User preferredDataLocation" |
-    | Popis | *Zadejte vlastní popis.* |  |
+    | Name | *Zadat název* | Například "in from AD – User preferredDataLocation" |
+    | Description | *Zadejte vlastní popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby Active Directory* |  |
     | Typ připojeného systémového objektu | **Uživatel** |  |
     | Typ objektu úložiště metaverse | **Person (Osoba)** |  |
@@ -171,8 +171,8 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
 
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
-    | Název | *Zadat název* | Například "odchozí do Azure AD – User preferredDataLocation" |
-    | Popis | *Zadejte popis.* ||
+    | Name | *Zadat název* | Například "odchozí do Azure AD – User preferredDataLocation" |
+    | Description | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor Azure AD.* ||
     | Typ připojeného systémového objektu | **Uživatel** ||
     | Typ objektu úložiště metaverse | **Person (Osoba)** ||

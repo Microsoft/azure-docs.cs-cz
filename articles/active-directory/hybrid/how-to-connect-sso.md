@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: caf7db5f27ed6f612d0896bff0899feda3311883
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85357745"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
@@ -63,12 +63,12 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Ano|Yes|Ano\*\*\*|–
-|Windows 8.1|Ano\*|–|Yes|Ano\*\*\*|–
-|Windows 8|Ano\*|–|Yes|Ano\*\*\*|–
-|Windows 7|Ano\*|–|Yes|Ano\*\*\*|–
-|Windows Server 2012 R2 nebo novější|Ano\*\*|–|Yes|Ano\*\*\*|–
-|Mac OS X|–|–|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
+|Windows 10|Ano\*|Ano|Yes|Ano\*\*\*|Není k dispozici
+|Windows 8.1|Yes\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
+|Windows 8|Yes\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
+|Windows 7|Ano\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
+|Windows Server 2012 R2 nebo novější|Ano\*\*|Není k dispozici|Yes|Ano\*\*\*|Není k dispozici
+|Mac OS X|Není k dispozici|Není k dispozici|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 
 \*Vyžaduje Internet Explorer verze 10 nebo vyšší.
