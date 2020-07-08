@@ -4,12 +4,11 @@ description: Popisuje, jak nasadit službu ve více oblastech pomocí Azure Depl
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: a91623d22a921b6285723af2b4ca1411b9cf0bab
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
-ms.translationtype: MT
+ms.openlocfilehash: 006c123dfbb682ff5c498872d7f717a4a09e0bb5
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677878"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057921"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolení postupů bezpečného nasazení pomocí Azure Deployment Manager (Public Preview)
 
@@ -30,7 +29,7 @@ Chcete-li použít Deployment Manager, je nutné vytvořit čtyři soubory:
 
 Další prostředky:
 
-- [Reference k Azure Deployment Manager REST API](https://docs.microsoft.com/rest/api/deploymentmanager/).
+- [Reference k Azure Deployment Manager REST API](/rest/api/deploymentmanager/).
 - [Kurz: použití Deployment Manager Azure se šablonami správce prostředků](./deployment-manager-tutorial.md).
 - [Kurz: použití kontroly stavu v Azure Deployment Manager](./deployment-manager-tutorial-health-check.md).
 - [Ukázka Azure Deployment Manager](https://github.com/Azure-Samples/adm-quickstart).

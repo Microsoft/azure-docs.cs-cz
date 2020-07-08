@@ -7,10 +7,9 @@ author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.openlocfilehash: 0256e5c60a417cec47f90cd6ec30fe9208f47f7f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83738281"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>Nastavení platebního účtu a daňových formulářů
@@ -146,9 +145,9 @@ Běžné dotazy týkající se používání služby PayPal jako způsobu platby
 
 - **Je moje země/oblast podporovaná?** V tématu [prahové hodnoty plateb, metody a časové rámce](payment-thresholds-methods-timeframes.md) zjistíte, kde je PayPal podporovaným způsobem platby.
 
-- **Musí se můj účet PayPal zaregistrovat ve stejné zemi nebo oblasti jako účet partnerského centra?** No. Při nastavování účtu PayPal můžete přijmout výchozí konfiguraci. Pokud jste v některých měnách neblokovali platbu, neměli byste mít žádné problémy s jinými zeměmi nebo oblastmi a měnami. Toto nastavení se spravuje na stránce předvolby pro příjem plateb v PayPal.
+- **Musí se můj účet PayPal zaregistrovat ve stejné zemi nebo oblasti jako účet partnerského centra?** Ne. Při nastavování účtu PayPal můžete přijmout výchozí konfiguraci. Pokud jste v některých měnách neblokovali platbu, neměli byste mít žádné problémy s jinými zeměmi nebo oblastmi a měnami. Toto nastavení se spravuje na stránce předvolby pro příjem plateb v PayPal.
 
-- **Musím platby přes PayPal akceptovat ručně?** No. Účty PayPal se ve výchozím nastavení nastavují tak, aby uživatelé mohli platby přijmout ručně. to znamená, že platbu nepřijmete do 30 dnů, která se vrátí. Toto nastavení můžete změnit vypnutím možnosti zeptat se na stránce další nastavení PayPal.
+- **Musím platby přes PayPal akceptovat ručně?** Ne. Účty PayPal se ve výchozím nastavení nastavují tak, aby uživatelé mohli platby přijmout ručně. to znamená, že platbu nepřijmete do 30 dnů, která se vrátí. Toto nastavení můžete změnit vypnutím možnosti zeptat se na stránce další nastavení PayPal.
 
 - **Jaké měny podporuje PayPal?** Aktuální seznam najdete na [stránce podpory pro PayPal](https://developer.paypal.com/docs/classic/api/currency-codes/#paypal) .
 

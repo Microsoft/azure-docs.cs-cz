@@ -13,10 +13,9 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85249274"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nový DBA v cloudu – Správa Azure SQL Database po migraci
@@ -65,7 +64,7 @@ Nevytváříte zálohy na Azure SQL Database a je to proto, že je nemusíte mí
 
 |Úroveň služeb|Doba uchování ve dnech|
 |---|:---:|
-|Basic|7|
+|Základní|7|
 |Standard|35|
 |Premium|35|
 |||
@@ -170,7 +169,7 @@ V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Da
 |**Vlastnosti**|**Funkce Always Encrypted**|**transparentní šifrování dat**|
 |---|---|---|
 |**Rozsah šifrování**|Od začátku do konce|Data na REST|
-|**Server má přístup k citlivým datům**|Ne|Ano, protože šifrování je pro neaktivní neaktivní data|
+|**Server má přístup k citlivým datům**|No|Ano, protože šifrování je pro neaktivní neaktivní data|
 |**Povolené operace T-SQL**|Porovnání rovnosti|Dostupná je celá oblast T-SQL Surface.|
 |**Změny aplikací, které jsou nutné k použití této funkce**|Minimální|Velmi minimální|
 |**Členitost šifrování**|Úroveň sloupce|úrovni databáze|
@@ -214,7 +213,7 @@ Následující diagram znázorňuje možnosti úložiště klíčů pro hlavní 
 Síťový provoz mezi vaší organizací a SQL Database by byl obecně směrován přes veřejnou síť. Pokud se ale rozhodnete tuto cestu optimalizovat a zvýšit zabezpečení, můžete se podívat do Azure ExpressRoute. ExpressRoute v podstatě umožňuje, aby se vaše firemní síť rozšířila na platformu Azure prostřednictvím privátního připojení. Provedete to tak, že nebudete přecházet přes veřejný Internet. Získáte také vyšší úroveň zabezpečení, spolehlivosti a směrování, která překládá na nižší latenci sítě a mnohem rychlejší, než byste normálně procházíte přes veřejný Internet. Pokud plánujete přenos významného bloku dat mezi vaší organizací a Azure, můžete využít výhod služby ExpressRoute. Pro připojení z vaší organizace k Azure si můžete vybrat ze tří různých modelů připojení:
 
 - [Společné umístění cloudového systému Exchange](../../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [Any-to-Any](../../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [Mezi libovolnými prostředky](../../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Point-to-Point](../../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 ExpressRoute také umožňuje zvýšit až dvojnásobek limitu šířky pásma, který zakoupíte bez dalších poplatků. Je také možné nakonfigurovat připojení mezi oblastmi pomocí ExpressRoute. Pokud chcete zobrazit seznam zprostředkovatelů připojení ExpressRoute, přečtěte si téma: [partneři ExpressRoute a umístění partnerských vztahů](../../expressroute/expressroute-locations.md). Následující články popisují Express Route podrobněji:
@@ -301,7 +300,7 @@ SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Na ka�
 
 |**Úroveň služby**|**Běžné scénáře použití**|
 |---|---|
-|**Basic**|Aplikace s uživateli několik a databází, které nemají vysoké požadavky na souběžnost, škálování a výkon. |
+|**Základní**|Aplikace s uživateli několik a databází, které nemají vysoké požadavky na souběžnost, škálování a výkon. |
 |**Standard**|Aplikace se značnými požadavky na souběžnost, škálování a výkon, které jsou v případě požadavků s nízkým až středním vstupem/výstupem. |
 |**Premium**|Aplikace s velkým počtem souběžných uživatelů, vysokým PROCESORem/pamětí a vysokými nároky na vstupně-výstupní operace. Vysoká úroveň souběžnosti, vysoké propustnosti a aplikace citlivé na latenci můžou využívat úrovně Premium. |
 |||

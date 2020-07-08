@@ -8,10 +8,9 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: ARO, OpenShift, soukromý cluster, Red Hat
 ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83727645"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Vytvoření privátního clusteru pomocí Azure Red Hat OpenShift 3,11
@@ -21,7 +20,7 @@ Soukromé clustery poskytují následující výhody:
 * Soukromé clustery nezveřejňují komponenty roviny řízení clusteru (například servery rozhraní API) na veřejné IP adrese.
 * Virtuální síť privátního clusteru je konfigurovatelná pro zákazníky, což umožňuje nastavit síť tak, aby umožňovala vytváření partnerských vztahů s ostatními virtuálními sítěmi, včetně ExpressRoutech prostředí. Ve virtuální síti můžete také nakonfigurovat vlastní DNS pro integraci s interními službami.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pole v následujícím fragmentu konfigurace jsou nová a musí být zahrnutá v konfiguraci clusteru. `managementSubnetCidr`musí se nacházet v rámci virtuální sítě clusteru a služba Azure ji používá ke správě clusteru.
 
@@ -62,7 +61,7 @@ export CLIENT_ID=
 export SECRET=
 ```
 
-### <a name="private-clusterjson"></a>Private-cluster. JSON
+### <a name="private-clusterjson"></a>private-cluster.jsna
 
 Pomocí proměnných prostředí definovaných výše je tady uvedená Ukázková konfigurace clusteru s povoleným privátním clusterem.
 

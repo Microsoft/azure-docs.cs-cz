@@ -12,12 +12,11 @@ ms.date: 05/22/2019
 ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e2436175fc68d76dabb98fb8ca4c9c27cde007b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.openlocfilehash: 3c758e90548dd22b5abfb731f674f83dfbde9819
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763308"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955977"
 ---
 # <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Vytvoření a publikování dokumentace jednotného přihlašování pro vaši aplikaci   
 
@@ -61,4 +60,4 @@ Při vytváření seznamu aplikací pomocí Azure Active Directory Galerie aplik
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vypsání aplikace v galerii aplikací Azure AD](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[Vypsání aplikace v galerii aplikací Azure AD](https://docs.microsoft.com/Azure/active-directory/develop/howto-app-gallery-listing)

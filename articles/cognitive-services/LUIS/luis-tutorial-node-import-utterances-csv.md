@@ -1,5 +1,5 @@
 ---
-title: Import projevy pomocí Node. js – LUIS
+title: Import projevy pomocí Node.js-LUIS
 titleSuffix: Azure Cognitive Services
 description: Naučte se vytvářet aplikace LUIS programově z existujících dat ve formátu CSV pomocí rozhraní API pro vytváření LUIS.
 services: cognitive-services
@@ -11,14 +11,13 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7b9646f2bab4c17449c6683ae7924af87b184167
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 69eb6c5e5d0139049e252b0a22fefad747429068
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340177"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057734"
 ---
-# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programové vytvoření aplikace v LUIS pomocí Node. js
+# <a name="build-a-luis-app-programmatically-using-nodejs"></a>Programové vytvoření aplikace v LUIS pomocí Node.js
 
 LUIS poskytuje programové rozhraní API, které provádí všechny weby [Luis](luis-reference-regions.md) . To může ušetřit čas i v případě, že máte již existující data a je rychlejší vytvořit aplikaci LUIS programově, než zadáním informací ručně.
 
@@ -26,10 +25,10 @@ LUIS poskytuje programové rozhraní API, které provádí všechny weby [Luis](
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Přihlaste se k webu [Luis](luis-reference-regions.md) a vyhledejte svůj [klíč pro vytváření obsahu](luis-concept-keys.md#authoring-key) v nastavení účtu. Tento klíč použijete k volání rozhraní API pro vytváření obsahu.
+* Přihlaste se k webu [Luis](luis-reference-regions.md) a vyhledejte svůj [klíč pro vytváření obsahu](luis-how-to-azure-subscription.md#authoring-key) v nastavení účtu. Tento klíč použijete k volání rozhraní API pro vytváření obsahu.
 * Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 * Tento článek začíná na CSV pro soubory protokolu hypotetické společnosti pro požadavky uživatelů. Stáhněte si ho [sem](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv).
-* Nainstalujte nejnovější Node. js pomocí NPM. Stáhněte [si ho odsud.](https://nodejs.org/en/download/)
+* Nainstalujte nejnovější Node.js pomocí nástroje NPM. Stáhněte [si ho odsud.](https://nodejs.org/en/download/)
 * **[Doporučeno]** Visual Studio Code pro IntelliSense a ladění, Stáhněte si ho [odsud zdarma](https://code.visualstudio.com/) .
 
 Veškerý kód v tomto článku je k dispozici v [úložišti Azure-samples Language Understanding GitHubu](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv).
@@ -118,17 +117,17 @@ Po definování entit a záměrů v aplikaci LUIS můžete přidat projevy. Nás
 ## <a name="run-the-code"></a>Spuštění kódu
 
 
-### <a name="install-nodejs-dependencies"></a>Nainstalovat závislosti Node. js
-Nainstalujte závislosti Node. js z NPM do terminálu nebo příkazového řádku.
+### <a name="install-nodejs-dependencies"></a>Nainstalovat Node.js závislosti
+Nainstalujte Node.js závislosti z NPM do terminálu nebo příkazového řádku.
 
 ```console
 > npm install
 ```
 
 ### <a name="change-configuration-settings"></a>Změnit nastavení konfigurace
-Aby bylo možné tuto aplikaci používat, je nutné změnit hodnoty v souboru index. js na svůj vlastní klíč koncového bodu a zadat název, který má aplikace mít. Můžete také nastavit jazykovou verzi aplikace nebo změnit číslo verze.
+Aby bylo možné tuto aplikaci používat, je třeba změnit hodnoty v souboru index.js na vlastní klíč koncového bodu a zadat název, který má aplikace mít. Můžete také nastavit jazykovou verzi aplikace nebo změnit číslo verze.
 
-Otevřete soubor index. js a změňte hodnoty v horní části souboru.
+Otevřete soubor index.js a změňte hodnoty v horní části souboru.
 
 
 ```javascript
@@ -140,7 +139,7 @@ const LUIS_versionId = "0.1";
 ```
 
 ### <a name="run-the-script"></a>Spuštění skriptu
-Spusťte skript z terminálu nebo příkazového řádku s Node. js.
+Spusťte skript z terminálu nebo příkazového řádku s Node.js.
 
 ```console
 > node index.js

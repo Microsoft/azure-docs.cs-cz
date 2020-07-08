@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83742997"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
@@ -59,7 +58,7 @@ A. Data Box se podporuje pro všechny oblasti v USA, Západní Evropa, Severní 
 A. V případě potíží s Data Boxem se prosím [obraťte na podporu Microsoftu](data-box-disk-contact-microsoft-support.md).
 
 ### <a name="q-i-have-lost-my-data-box-is-there-a-lost-device-charge"></a>Otázka: Ztratil jsem Data Box. Dojde ke ztrátě poplatků za zařízení?
-A. Yes. Účtuje se ztracený nebo poškozený poplatek za zařízení. Tento poplatek se účtuje na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/databox/) a také v [licenčních podmínkami produktu](https://www.microsoft.com/licensing/product-licensing/products).
+A. Ano. Účtuje se ztracený nebo poškozený poplatek za zařízení. Tento poplatek se účtuje na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage/databox/) a také v [licenčních podmínkami produktu](https://www.microsoft.com/licensing/product-licensing/products).
 
 
 ## <a name="order-device"></a>Objednání zařízení
@@ -92,16 +91,16 @@ A. Můžete svoji předchozí objednávku naklonovat. Naklonováním se vytvoř�
 A.  Na webu Azure Portal přejděte k objednávce zařízení Data Box a otevřete **Detaily zařízení**. Zkopírujte si heslo pro odemčení. Toto heslo použijte při přihlášení k místnímu webovému uživatelskému rozhraní Data Boxu. Další informace najdete v [kurzu věnovanému rozbalení, zapojení a připojení k Azure Data Boxu](data-box-deploy-set-up.md).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box"></a>Otázka: Můžu se k zařízení Data Box připojit a kopírovat do něj data z hostitelského počítače s Linuxem?
-A.  Yes. Data Box můžete připojit ke klientům SMB a NFS. Další informace získáte, když přejdete na seznam [podporovaných operačních systémů](data-box-system-requirements.md) hostitelského počítače.
+A.  Ano. Data Box můžete připojit ke klientům SMB a NFS. Další informace získáte, když přejdete na seznam [podporovaných operačních systémů](data-box-system-requirements.md) hostitelského počítače.
 
 ### <a name="q-my-data-box-is-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>Otázka: Data Box jsme odeslali, ale rozhodli jsme se objednávku zrušit. Proč není dostupné tlačítko pro zrušení?
 A.  Objednávka se dá zrušit po objednání zařízení Data Box, dokud není objednávka zpracovaná. Zpracovanou objednávku zařízení Data Box nemůžete zrušit. 
 
 ### <a name="q-can-i-connect-a-data-box-at-the-same-to-multiple-host-computers-to-transfer-data"></a>Otázka: Můžu Data Box současně připojit k více hostitelským počítačům, ze kterých chci přenášet data?
-A. Yes. K zařízení Data Box může být připojených více hostitelských počítačů, ze kterých budete přenášet data, a několik úloh kopírování může běžet současně. Další informace nejdete v [kurzu o kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
+A. Ano. K zařízení Data Box může být připojených více hostitelských počítačů, ze kterých budete přenášet data, a několik úloh kopírování může běžet současně. Další informace nejdete v [kurzu o kopírování dat do služby Azure Data Box](data-box-deploy-copy-data.md).
 
 ### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>Otázka: Můžu se k přenosu dat připojit k rozhraní 10 GbE na Data Box?
-A. Yes. Rozhraní 10 GbE lze v Data Box připojit ke kopírování dat současně. Další informace o tom, jak kopírovat data, najdete v tématu [kurz: kopírování dat do Azure Data box](data-box-deploy-copy-data.md).
+A. Ano. Rozhraní 10 GbE lze v Data Box připojit ke kopírování dat současně. Další informace o tom, jak kopírovat data, najdete v tématu [kurz: kopírování dat do Azure Data box](data-box-deploy-copy-data.md).
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -170,7 +169,7 @@ A.  To speed up the copy process:
 
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box"></a>Otázka: Můžu se zařízením Data Box používat více účtů úložiště?
-A.  Yes. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro obecné účely, klasických úložišť nebo úložišť objektů blob. Podporují se horké i studené objekty blob. 
+A.  Ano. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro obecné účely, klasických úložišť nebo úložišť objektů blob. Podporují se horké i studené objekty blob. 
 
 
 ## <a name="ship-device"></a>Dodání zařízení
@@ -181,7 +180,7 @@ A.  Yes. Data Box podporuje maximálně 10 účtů úložišť, úložišť pro 
 A. Pokud zařízení přišlo poškozené nebo s ním někdo nedovoleným způsobem manipuloval, nepoužívejte ho. [Obraťte se na podporu Microsoftu](data-box-disk-contact-microsoft-support.md) a co nejdříve zařízení vraťte. Můžete také vystavit novou objednávku náhradního zařízení Data Box. V uvedeném případě vám náhradní zařízení nebudeme účtovat.
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Otázka: Můžu Data Box objednávku vybrat? Můžu Data Box vrátit přes dopravce, který zvolím?
-A. Yes. Microsoft taky nabízí samostatně spravovanou expedici jenom v US Gov oblasti. Při umísťování Data Box pořadí můžete zvolit možnost samostatně spravovaná dodávka. Pokud chcete Data Box zařízení, proveďte následující kroky:
+A. Ano. Microsoft taky nabízí samostatně spravovanou expedici jenom v US Gov oblasti. Při umísťování Data Box pořadí můžete zvolit možnost samostatně spravovaná dodávka. Pokud chcete Data Box zařízení, proveďte následující kroky:
     
 1. Po umístění objednávky se zpracuje objednávka a připraví se Data Box. Pošleme vám e-mail s oznámením, že je vaše objednávka připravená na vyzvednutí. 
 2. Jakmile bude objednávka připravena k vyzvednutí, přejděte do objednávky v Azure Portal a přejděte do okna **Přehled** . 
@@ -214,7 +213,7 @@ A.  Během přepravy jsou data v zařízení Data Box chráněná následující
 Další informace najdete v části o [bezpečnostních funkcích zařízení Data Box](data-box-security.md).  
 
 ### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Otázka: Dokončili jsme přípravu zařízení k odeslání a zařízení jsme vypnuli. Můžeme do Data Boxu přidat další data?
-A. Yes. Zařízení můžete znovu zapnout a přidat do něj další data. Až data nakopírujete, budete muset znovu spustit **přípravu k odeslání**.
+A. Ano. Zařízení můžete znovu zapnout a přidat do něj další data. Až data nakopírujete, budete muset znovu spustit **přípravu k odeslání**.
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Otázka: Zobrazil jsem jsem moje zařízení a nespouští se? Návody zařízení odeslat zpátky?
 A. Pokud se vaše zařízení nespouští, v Azure Portal pokračujte na objednávku. Stáhněte si expediční štítek a přihlaste se k němu na zařízení. Další informace najdete v článku o [stažení expedičního štítku](data-box-portal-admin.md#download-shipping-label).
@@ -261,7 +260,7 @@ A.  Řetězec opatrovnictví podporují následující sestavy:
 A.  Protokoly dopravců o sledování zásilky jsou zaznamenané v historii objednávky Data Boxu. Tuto sestavu máte k dispozici po vrácení zařízení do datacentra Azure a vymazání dat z disků zařízení. Pro okamžité potřeby můžete také přejít přímo na web dopravce s číslem sledování objednávky a získat informace o sledování.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Můžu dopravit Data Box do datacentra Azure? 
-A.  No. V současné době Azure datacentra nepřijímá doručování Data Box od zákazníků nebo od jiných dopravců než UPS.
+A.  Ne. V současné době Azure datacentra nepřijímá doručování Data Box od zákazníků nebo od jiných dopravců než UPS.
 
 
 ## <a name="next-steps"></a>Další kroky

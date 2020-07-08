@@ -13,10 +13,9 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: f1bf8eff4a6f518fc24c87c5fbd24984ef8f8b29
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84718882"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání
@@ -431,7 +430,7 @@ Pokud chcete vytvořit virtuální síť, postupujte takto:
     | **Název** |  Název virtuální sítě, která se má použít u sekundární spravované instance, například `vnet-sql-mi-secondary` . |
     | **Adresní prostor** | Adresní prostor pro virtuální síť, například `10.128.0.0/16` . | 
     | **Předplatné** | Předplatné, ve kterém se nachází vaše primární spravovaná instance a skupina prostředků |
-    | **Oblast** | Umístění, do kterého budete nasazovat sekundární spravovanou instanci. |
+    | **Věřitel** | Umístění, do kterého budete nasazovat sekundární spravovanou instanci. |
     | **Podsíť** | Název vaší podsítě. `default`je ve výchozím nastavení k dispozici pro vás. |
     | **Rozsah adres**| Rozsah adres pro vaši podsíť. Musí se lišit od rozsahu adres podsítě používaného virtuální sítí vaší primární spravované instance, například `10.128.0.0/24` .  |
     | &nbsp; | &nbsp; |
@@ -470,7 +469,7 @@ Pomocí Azure Portal Vytvořte sekundární spravovanou instanci.
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance. |
     | **Skupina prostředků**| Skupina prostředků, ve které je vaše primární spravovaná instance. |
     | **Název spravované instance SQL** | Název vaší nové sekundární spravované instance, například `sql-mi-secondary` .  | 
-    | **Oblast**| Umístění sekundární spravované instance.  |
+    | **Věřitel**| Umístění sekundární spravované instance.  |
     | **Přihlašovací jméno správce spravované instance SQL** | Přihlašovací jméno, které chcete použít pro novou sekundární spravovanou instanci, například `azureuser` . |
     | **Heslo** | Složitá hesla, která budou používána přihlášením správce pro novou sekundární spravovanou instanci.  |
     | &nbsp; | &nbsp; |
@@ -763,7 +762,7 @@ Vytvořte bránu pro virtuální síť vaší primární spravované instance po
     | --- | --- |
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance. |
     | **Název** | Název brány virtuální sítě, například `primary-mi-gateway` . | 
-    | **Oblast** | Oblast, ve které je vaše primární spravovaná instance. |
+    | **Věřitel** | Oblast, ve které je vaše primární spravovaná instance. |
     | **Typ brány** | Vyberte **VPN**. |
     | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |
     | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |
@@ -845,7 +844,7 @@ Pomocí Azure Portal vytvořte podsíť virtuální sítě a bránu pro sekundá
    | --- | --- |
    | **Předplatné** |  Předplatné, ve kterém je vaše sekundární spravovaná instance. |
    | **Název** | Název brány virtuální sítě, například `secondary-mi-gateway` . | 
-   | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance. |
+   | **Věřitel** | Oblast, ve které je vaše sekundární spravovaná instance. |
    | **Typ brány** | Vyberte **VPN**. |
    | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |
    | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |

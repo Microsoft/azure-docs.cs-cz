@@ -12,10 +12,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
 ms.openlocfilehash: 1922e92f9314e48ae4e3106a53cf750da5daf5e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84049831"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Úrovně služby v nákupním modelu založeném na DTU
@@ -34,7 +33,7 @@ ms.locfileid: "84049831"
 
 Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinuitu, úložiště a výkon.
 
-||Základní|Standard|Premium|
+||Basic|Standard|Premium|
 | :-- | --: |--:| --:|
 |Cílové zatížení|Vývoj a produkce|Vývoj a produkce|Vývoj a produkce|
 |Smlouva SLA pro dobu provozu|99,99 %|99,99 %|99,99 %|
@@ -42,8 +41,8 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 |Procesor|Nízká|Nízká, střední, vysoká|Střední, vysoká|
 |Propustnost vstupně-výstupních operací (přibližná) |1-5 IOPS na DTU| 1-5 IOPS na DTU | 25 IOPS na DTU|
 |Latence v/v (přibližná)|5 ms (čtení), 10 ms (zápis)|5 ms (čtení), 10 ms (zápis)|2 ms (čtení a zápis)|
-|Indexování columnstore |–|S3 a vyšší|Podporuje se|
-|OLTP v paměti|–|–|Podporuje se|
+|Indexování columnstore |Není k dispozici|S3 a vyšší|Podporuje se|
+|OLTP v paměti|Není k dispozici|Není k dispozici|Podporuje se|
 |||||
 
 > [!IMPORTANT]
@@ -59,7 +58,7 @@ Výběr úrovně služeb závisí hlavně na požadavcích na provozní kontinui
 
 Velikosti výpočetních hodnot se vyjadřují v souvislosti s jednotkami DTU (Database Transaction units) pro izolované databáze a jednotkami elastické databázové transakce (eDTU) pro elastické fondy. Další informace o DTU a eDTU najdete v tématu [nákupní model založený na DTU](purchasing-models.md#dtu-based-purchasing-model).
 
-||Základní|Standard|Premium|
+||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
 | Maximální velikost úložiště | 2 GB | 1 TB | 4 TB  |
 | Maximální DTU | 5 | 3000 | 4000 | 

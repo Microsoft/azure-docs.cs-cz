@@ -9,10 +9,9 @@ ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85242103"
 ---
 | Prostředek | Basic | Standard | Premium |
@@ -25,15 +24,15 @@ ms.locfileid: "85242103"
 | Šířka pásma pro stažení<sup>2</sup> MB/s | 30 | 60 | 100 |
 | Šířka pásma při nahrávání<sup>2</sup> MB/s | 10 | 20 | 50 |
 | Webhooky | 2 | 10 | 500 |
-| Geografická replikace | – | – | [Doložen][geo-replication] |
-| Důvěryhodnost obsahu | – | – | [Doložen][content-trust] |
-| Privátní odkaz s privátními koncovými body | – | – | [Doložen][plink] |
-| Přístup k virtuální síti koncového bodu služby | – | – | [Preview][vnet] |
-| Klíče spravované zákazníkem | – | – | [Doložen][cmk] |
-| Oprávnění rozsahu úložiště | – | – | [Preview][token]|
-| &bull;Klíčov | – | – | 20 000 |
-| &bull;Mapy oboru | – | – | 20 000 |
-| &bull;Mapování úložišť na obor | – | – | 500 |
+| Geografická replikace | Není k dispozici | Není k dispozici | [Doložen][geo-replication] |
+| Důvěryhodnost obsahu | Není k dispozici | Není k dispozici | [Doložen][content-trust] |
+| Privátní odkaz s privátními koncovými body | Není k dispozici | Není k dispozici | [Doložen][plink] |
+| Přístup k virtuální síti koncového bodu služby | Není k dispozici | Není k dispozici | [Preview][vnet] |
+| Klíče spravované zákazníkem | Není k dispozici | Není k dispozici | [Doložen][cmk] |
+| Oprávnění rozsahu úložiště | Není k dispozici | Není k dispozici | [Preview][token]|
+| &bull;Klíčov | Není k dispozici | Není k dispozici | 20 000 |
+| &bull;Mapy oboru | Není k dispozici | Není k dispozici | 20 000 |
+| &bull;Mapování úložišť na obor | Není k dispozici | Není k dispozici | 500 |
 
 
 <sup>1</sup> úložiště zahrnuté do denní sazby pro každou úroveň. V případě dalšího úložiště se vám bude účtovat další denní sazba za GiB, a to až do limitu úložiště. Informace o sazbách najdete v tématu [Azure Container Registry ceny][pricing].

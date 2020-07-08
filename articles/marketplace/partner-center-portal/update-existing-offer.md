@@ -7,12 +7,11 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 8b8362a4d5ad742f29637ed03133bc6983bd5dd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eca054d2db5eca1948d1085e105e91af19fc132e
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80285142"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057955"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizace stávající nabídky na komerčním marketplace
 
@@ -37,20 +36,29 @@ Až budete připraveni publikovat aktualizovanou nabídku, vyberte **publikovat*
 > [!IMPORTANT]
 > Abyste mohli publikovat aktualizovanou nabídku vaší zamýšlené cílové skupině (veřejné nebo soukromé), musíte si prohlédnout svou nabídku Preview a vybrat **Přejít do živého** .
 
+## <a name="add-a-plan-to-an-existing-offer"></a>Přidat plán do existující nabídky
+
+Chcete-li přidat nový plán v rámci existující nabídky, kterou jste již publikovali:
+
+1. Na stránce s **přehledem nabídky** pro existující nabídku otevřená klikněte na stránku **Přehled plánu** a pak vyberte **vytvořit nový plán**.
+1. Vytvořte nový plán podle [pokynů](./create-new-saas-offer.md#plan-overview) s použitím **stávajícího cenového modelu plánů**.
+1. Po změně názvu plánu vyberte **Uložit koncept** . 
+1. Až budete připraveni publikovat aktualizace, vyberte **publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a zobrazí se stav dokončení vašich aktualizací.
+
 ## <a name="update-a-plan-within-an-existing-offer"></a>Aktualizace plánu v rámci stávající nabídky
 
 Chcete-li provést změny v plánu v rámci stávající nabídky, kterou jste již publikovali:
 
-- Po otevření stránky s **přehledem nabídky** pro existující nabídku vyberte plán, který chcete změnit. Pokud plán není dostupný ze seznamu **Přehled plánů** , vyberte **Zobrazit všechny plány**.
-- Můžete vybrat **název**plánu, **cenový model**nebo **dostupnost**. *V současné době jsou plány k dispozici pouze v angličtině (USA)*.
-- Po provedení všech nutných změn názvu plánu, popisu, ceny nebo dostupnosti cílové skupiny vyberte **Uložit** . 
-- Až budete připraveni publikovat aktualizace, vyberte **publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a poskytne se stav dokončení vašich aktualizací.
+1. Na stránce s **přehledem nabídky** pro existující nabídku otevřené vyberte plán, který chcete změnit. Pokud plán není dostupný ze seznamu **Přehled plánů** , vyberte **Zobrazit všechny plány**.
+1. Můžete vybrat **název**plánu, **cenový model**nebo **dostupnost**. *V současné době jsou plány k dispozici pouze v angličtině (USA)*.
+1. Po provedení všech nutných změn názvu plánu, popisu nebo dostupnosti cílové skupiny vyberte **Uložit** . 
+1. Až budete připraveni publikovat aktualizace, vyberte **publikovat** . Otevře se stránka **[Kontrola a publikování](#review-and-publish-an-updated-offer)** a zobrazí se stav dokončení vašich aktualizací.
 
 ## <a name="compare-changes-to-marketplace-offers"></a>Porovnat změny nabídek Marketplace
 
 Změny, které provedete v nabídce [Publikováno](#compare-changes-to-published-offer) nebo ve [verzi Preview](#compare-changes-to-a-preview-offer) , můžete auditovat ještě před tím, než je provedete pomocí **porovnání**.
 
->[!NOTE]
+> [!NOTE]
 > Publikovaná nabídka je nabídka, která byla úspěšně publikována ve verzi Preview nebo v reálném čase.
 
 Obecné informace o auditování najdete níže:
@@ -122,9 +130,9 @@ Až ověříte, že chcete odstranit plán konceptu, plán už nebude viditelný
 
 Zrušení nabídky se stavem **publikování** probíhá:
 
-- Vyberte název nabídky a otevřete stránku **Přehled nabídky** .
-- V pravém horním rohu stránky vyberte **Zrušit publikování** .
-- Potvrďte, že chcete zastavit nabídku publikováním.
+1. Vyberte název nabídky a otevřete stránku **Přehled nabídky** .
+1. Vyberte **Zrušit publikování** v pravém horním rohu stránky.
+1. Potvrďte, že chcete zastavit nabídku publikováním.
 
 Pokud chcete nabídku publikovat později, budete muset spustit proces publikování.
 

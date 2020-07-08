@@ -4,12 +4,11 @@ description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure R
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
-ms.translationtype: MT
+ms.openlocfilehash: 2cd536e191702e2619030c2e0fa06262d2e004ee
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248596"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057819"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -167,6 +166,27 @@ K šifrování a dešifrování dat se používá přístupové heslo při zálo
 
     ![Vygenerujte heslo.](./media/backup-azure-manage-mars/passphrase2.png)
 - Ujistěte se, že je přístupové heslo bezpečně uložené v alternativním umístění (jiné než zdrojový počítač), nejlépe v Azure Key Vault. Pokud máte více počítačů zálohovaných pomocí agentů MARS, Sledujte všechna hesla.
+
+## <a name="managing-backup-data-for-unavailable-machines"></a>Správa zálohovaných dat pro nedostupné počítače
+
+Tato část popisuje situaci, kdy váš zdrojový počítač chráněný službou MARS už není dostupný, protože byl odstraněný, poškozený, nakažený malwarem/ransomwarem nebo vyřazený z provozu.
+
+Pro tyto počítače služba Azure Backup zajišťuje, že poslední bod obnovení nevyprší (tj. nebude vysušen) podle pravidel uchovávání informací uvedených v zásadách zálohování. Proto můžete počítač bezpečně obnovit.  Vezměte v úvahu následující scénáře, které můžete provádět u zálohovaných dat:
+
+### <a name="scenario-1-the-source-machine-is-unavailable-and-you-no-longer-need-to-retain-backup-data"></a>Scénář 1: zdrojový počítač není k dispozici a už nemusíte uchovávat data záloh.
+
+- Zálohovaná data můžete z Azure Portal odstranit pomocí kroků uvedených v [tomto článku](backup-azure-delete-vault.md#delete-protected-items-on-premises).
+
+### <a name="scenario-2-the-source-machine-is-unavailable-and-you-need-to-retain-backup-data"></a>Scénář 2: zdrojový počítač není k dispozici a je třeba zachovat data záloh.
+
+Správa zásad zálohování pro MARS se provádí prostřednictvím konzoly MARS a nikoli prostřednictvím portálu. Pokud potřebujete pro existující body obnovení před vypršením platnosti zvětšit nastavení uchovávání, pak je potřeba obnovit počítač, nainstalovat konzolu MARS a tuto zásadu napřed.
+
+- Chcete-li obnovit počítač, proveďte následující kroky:
+  - [Obnovení virtuálního počítače do alternativního cílového počítače](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)
+  - Vytvořte znovu cílový počítač se stejným názvem hostitele, jako má zdrojový počítač.
+  - Nainstalujte agenta a znovu ho zaregistrujte do stejného trezoru a se stejným heslem.
+  - Spusťte klienta MARS a prodlužte dobu uchovávání podle vašich požadavků.
+- Váš nově obnovený počítač chráněný pomocí MARS bude i nadále provádět zálohování.  
 
 ## <a name="next-steps"></a>Další kroky
 

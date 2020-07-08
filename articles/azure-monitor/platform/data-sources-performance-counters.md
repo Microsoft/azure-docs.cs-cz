@@ -6,12 +6,11 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
-ms.translationtype: MT
+ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739360"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85955484"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Zdroje dat o výkonu pro Windows a Linux v Azure Monitor
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v častých intervalech pro analýzu téměř v reálném čase (NRT) Kromě agregace dat výkonu pro dlouhodobé analýzy a generování sestav.
@@ -25,7 +24,7 @@ Při první konfiguraci čítačů výkonu systému Windows nebo Linux pro nový
 
 V případě čítačů výkonu systému Windows můžete zvolit konkrétní instanci pro každý čítač výkonu. Pro čítače výkonu Linux se instance každého čítače, kterou zvolíte, vztahuje na všechny podřízené čítače nadřazeného čítače. V následující tabulce jsou uvedeny běžné instance dostupné pro čítače výkonu pro systémy Linux a Windows.
 
-| Název instance | Popis |
+| Název instance | Description |
 | --- | --- |
 | \_Celkem |Celkem všech instancí |
 | \* |Všechny instance |
@@ -39,7 +38,7 @@ Pomocí tohoto postupu můžete přidat nový čítač výkonu systému Windows,
 
 1. Do textového pole ve formátu *objekt (instance) \counter*zadejte název čítače.  Když začnete psát, zobrazí se seznam s vyhovujícími společnými čítači.  Můžete buď vybrat čítač ze seznamu, nebo zadat jednu z nich.  Můžete také vrátit všechny instance pro konkrétní čítač zadáním *object\counter*.  
 
-    Když shromažďujete čítače výkonu SQL Server z pojmenovaných instancí, všechny pojmenované čítače instancí začínají na *MSSQL $* a za názvem instance.  Například pro shromáždění čítače poměru přístupů do mezipaměti protokolu pro všechny databáze z objektu výkonu databáze pro pojmenovanou instanci SQL INST2 zadejte `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
+    Když shromažďujete čítače výkonu SQL Server z pojmenovaných instancí, všechny pojmenované čítače instancí začínají na *MSSQL $* a za názvem instance.  Například pro shromáždění čítače poměru přístupů do mezipaměti protokolu pro všechny databáze z objektu výkonu databáze pro pojmenovanou instanci SQL INST2 zadejte `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio` .
 
 2. Chcete **+** -li přidat čítač do seznamu, klikněte nebo stiskněte klávesu **ENTER** .
 3. Když přidáte čítač, použije se výchozí hodnota 10 sekund pro svůj **interval vzorkování**.  Pokud chcete snížit požadavky na úložiště shromážděných dat o výkonu, můžete to změnit na vyšší hodnotu až na 1800 sekund (30 minut).
@@ -58,26 +57,28 @@ Pomocí tohoto postupu můžete přidat nový čítač výkonu pro Linux, který
 5. Až budete s přidáváním čítačů hotovi, kliknutím na tlačítko **Uložit** v horní části obrazovky uložte konfiguraci.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurace čítačů výkonu systému Linux v konfiguračním souboru
-Místo konfigurace čítačů výkonu systému Linux pomocí Azure Portal máte možnost upravovat konfigurační soubory v agentovi systému Linux.  Metriky výkonu ke shromáždění se řídí konfigurací v **ID\<\>pracovního prostoru/etc/opt/Microsoft/omsagent//conf/omsagent.conf**.
+Místo konfigurace čítačů výkonu systému Linux pomocí Azure Portal máte možnost upravovat konfigurační soubory v agentovi systému Linux.  Metriky výkonu ke shromáždění se řídí konfigurací v **/etc/opt/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.conf**.
 
 Každý objekt nebo kategorie metriky výkonu ke shromáždění by měly být definovány v konfiguračním souboru jako jeden `<source>` prvek. Syntaxe následuje níže uvedený vzor.
 
-    <source>
-      type oms_omi  
-      object_name "Processor"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+```xml
+<source>
+    type oms_omi  
+    object_name "Processor"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 
 Parametry v tomto elementu jsou popsány v následující tabulce.
 
-| Parametry | Popis |
+| Parametry | Description |
 |:--|:--|
-| název\_objektu | Název objektu pro kolekci |
-| regulární\_výraz instance |  *Regulární výraz* definující, které instance se mají shromažďovat Hodnota: `.*` určuje všechny instance. Pokud chcete shromáždit metriky procesoru jenom pro \_celkovou instanci, můžete zadat `_Total`. Pokud chcete shromáždit metriky procesu jenom pro instance crond nebo sshd, můžete zadat: `(crond\|sshd)`. |
-| název\_\_čítače regulárního výrazu | *Regulární výraz* definující, které čítače (pro objekt) se mají shromáždit. Chcete-li shromáždit všechny čítače pro objekt, zadejte `.*`:. Chcete-li shromažďovat pouze čítače odkládacích míst pro objekt paměti, například můžete zadat:`.+Swap.+` |
+| \_název objektu | Název objektu pro kolekci |
+| \_regulární výraz instance |  *Regulární výraz* definující, které instance se mají shromažďovat Hodnota: `.*` Určuje všechny instance. Pokud chcete shromáždit metriky procesoru jenom pro \_ celkovou instanci, můžete zadat `_Total` . Pokud chcete shromáždit metriky procesu jenom pro instance crond nebo sshd, můžete zadat: `(crond\|sshd)` . |
+| \_název čítače \_ regulárního výrazu | *Regulární výraz* definující, které čítače (pro objekt) se mají shromáždit. Chcete-li shromáždit všechny čítače pro objekt, zadejte: `.*` . Chcete-li shromažďovat pouze čítače odkládacích míst pro objekt paměti, například můžete zadat:`.+Swap.+` |
 | interval | Frekvence, s níž jsou shromažďovány čítače objektu. |
 
 
@@ -142,37 +143,39 @@ V následující tabulce jsou uvedeny objekty a čítače, které lze zadat v ko
 
 Následuje výchozí konfigurace pro metriky výkonu.
 
-    <source>
-      type oms_omi
-      object_name "Physical Disk"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+```xml
+<source>
+    type oms_omi
+    object_name "Physical Disk"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Logical Disk"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 5m
-    </source>
+<source>
+    type oms_omi
+    object_name "Logical Disk"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 5m
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Processor"
-      instance_regex ".*
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Processor"
+    instance_regex ".*
+    counter_name_regex ".*"
+    interval 30s
+</source>
 
-    <source>
-      type oms_omi
-      object_name "Memory"
-      instance_regex ".*"
-      counter_name_regex ".*"
-      interval 30s
-    </source>
+<source>
+    type oms_omi
+    object_name "Memory"
+    instance_regex ".*"
+    counter_name_regex ".*"
+    interval 30s
+</source>
+```
 
 ## <a name="data-collection"></a>Shromažďování dat
 Azure Monitor shromažďuje všechny zadané čítače výkonu v zadaném vzorkovacím intervalu u všech agentů, u kterých je nainstalovaný tento čítač.  Data nejsou agregovaná a nezpracovaná data jsou k dispozici ve všech zobrazeních dotazu protokolu po dobu určenou v pracovním prostoru Log Analytics.
@@ -184,7 +187,7 @@ Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tab
 |:--- |:--- |
 | Počítač |Počítač, ze kterého byla událost shromážděna. |
 | CounterName |Název čítače výkonu |
-| CounterPath |\\ \\ \<Úplná cesta čítače ve formuláři počítač>\\objekt (instance).\\ |
+| CounterPath |Úplná cesta čítače v \\ \\ \<Computer> \\ čítači objektu formuláře (instance) \\ . |
 | CounterValue |Číselná hodnota čítače. |
 | InstanceName |Název instance události  Prázdné, pokud není instance. |
 | ObjectName |Název objektu výkonu |
@@ -194,12 +197,12 @@ Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tab
 ## <a name="sizing-estimates"></a>Odhady velikosti
  Hrubý odhad pro shromažďování určitého čítače v intervalu 10 sekund je přibližně 1 MB za den na instanci.  Požadavky na úložiště určitého čítače můžete odhadnout pomocí následujícího vzorce.
 
-    1 MB x (number of counters) x (number of agents) x (number of instances)
+> 1 MB x (počet čítačů) x (počet agentů) x (počet instancí)
 
 ## <a name="log-queries-with-performance-records"></a>Dotazy protokolu se záznamy o výkonu
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy o výkonu.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:--- |:--- |
 | Výkon |Všechna data o výkonu |
 | &#124; výkonu, kde Computer = = "MyComputer" |Všechna data o výkonu z konkrétního počítače |

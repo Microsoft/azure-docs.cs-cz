@@ -15,10 +15,9 @@ ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: f3c7009e5ecb43a809b9a3f703fc5ba289a2fd00
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669269"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Představení skupin dostupnosti Always On SQL Server v Azure Virtual Machines
@@ -41,8 +40,8 @@ Aby bylo možné zvýšit redundanci a vysokou dostupnost, musí být virtuáln�
 
 |  | Verze Windows serveru | Verze SQL Server | Edice SQL Server | Konfigurace kvora služby WSFC | DR s více oblastmi | Podpora více podsítí | Podpora pro existující službu AD | DR se stejnou oblastí ve více zónách | Podpora balíčku DIST-AG bez domény AD | Podpora balíčku DIST-AG bez clusteru |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [VIRTUÁLNÍ POČÍTAČ CLI SQL](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | No | Ano | Ano | Ano | Ne | Ne |
-| [Šablony pro rychlý Start](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | Rozlehlé | Disk s kopií cloudu | No | Ano | Ano | Ano | Ne | Ne |
+| [VIRTUÁLNÍ POČÍTAČ CLI SQL](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | Rozlehlé | Disk s kopií cloudu | No | Ano | Ano | Ano | No | No |
+| [Šablony pro rychlý Start](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | Rozlehlé | Disk s kopií cloudu | No | Ano | Ano | Ano | No | No |
 | [Ruční](availability-group-manually-configure-prerequisites-tutorial.md) | Vše | Vše | Vše | Vše | Ano | Ano | Ano | Ano | Ano | Ano |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
 

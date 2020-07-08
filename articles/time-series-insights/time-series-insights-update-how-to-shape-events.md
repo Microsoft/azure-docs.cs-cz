@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99a2f32c3f76d7fec475c9b299f7208b4db29cfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fd2c58b07f3be5d5fa6d99d0c8c64906b81e7de4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650919"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036980"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Události obrazce s Azure Time Series Insights Preview
 
@@ -33,7 +32,7 @@ Obecné osvědčené postupy zahrnují:
 Pro dosažení nejlepšího výkonu dotazů je nutné dodržovat následující pravidla pro palec:
 
 * Neodesílat nepotřebné vlastnosti. Time Series Insights verze Preview podle využití. Je nejvhodnější ukládat a zpracovávat pouze data, která budete dotazovat.
-* Použijte pole instance pro statická data. Tento postup pomáhá vyhnout se posílání statických dat přes síť. Pole instancí – komponenta modelu časové řady, která funguje jako referenční data ve službě Time Series Insights všeobecně dostupná. Další informace o polích instance získáte v [modelu časové řady](./time-series-insights-update-tsm.md)pro čtení.
+* Použijte pole instance pro statická data. Tento postup pomáhá vyhnout se posílání statických dat přes síť. Pole instancí – komponenta modelu časové řady, která funguje jako referenční data ve službě Time Series Insights všeobecně dostupná. Další informace o polích instance získáte v [modelu časové řady](./concepts-model-overview.md)pro čtení.
 * Sdílení vlastností dimenze mezi dvěma nebo více událostmi. Tento postup vám pomůže rychleji odesílat data z sítě.
 * Nepoužívejte vnořování hlubokých polí. Time Series Insights Preview podporuje až dvě úrovně vnořených polí, která obsahují objekty. Time Series Insights Preview sloučí pole ve zprávách do více událostí s páry hodnot vlastností.
 * Pokud pro všechny nebo většinu událostí existuje jenom několik měr, je lepší posílat tyto míry jako samostatné vlastnosti v rámci stejného objektu. Jejich odeslání samostatně snižuje počet událostí a může zlepšit výkon dotazů, protože je potřeba zpracovat méně událostí.
@@ -53,8 +52,8 @@ Během ingestování budou datové části obsahující vnořené objekty shrnut
    Bude: `data_flow` při sloučení.
 
 > [!IMPORTANT]
-> * Azure Time Series Insights Preview používá pro delineing`_`sloupce podtržítka ().
-> * Všimněte si rozdílů od všeobecné dostupnosti, která místo`.`toho používá tečky ().
+> * Azure Time Series Insights Preview používá `_` pro delineing sloupce podtržítka ().
+> * Všimněte si rozdílů od všeobecné dostupnosti, která místo toho používá tečky ( `.` ).
 
 Složitější scénáře jsou znázorněny níže.
 
@@ -95,7 +94,7 @@ Byla odeslána jedna zpráva Azure IoT Hub, kde vnější pole obsahuje sdílen�
 
 **Poznatky**
 
-* Vzorový kód JSON má vnější pole, které používá data [instance časové řady](./time-series-insights-update-tsm.md#time-series-model-instances) k zvýšení efektivity zprávy. I když instance časových řad nemění metadata zařízení, často poskytuje užitečné vlastnosti pro analýzu dat.
+* Vzorový kód JSON má vnější pole, které používá data [instance časové řady](./concepts-model-overview.md#time-series-model-instances) k zvýšení efektivity zprávy. I když instance časových řad nemění metadata zařízení, často poskytuje užitečné vlastnosti pro analýzu dat.
 
 * JSON kombinuje dvě nebo více zpráv (jedno ze zařízení) do jedné datové části, která v průběhu času ukládá šířku pásma.
 
@@ -106,7 +105,7 @@ Byla odeslána jedna zpráva Azure IoT Hub, kde vnější pole obsahuje sdílen�
 
 #### <a name="time-series-instance"></a>Instance časové řady 
 
-Pojďme se podíváme na to, jak používat [instanci časové řady](./time-series-insights-update-tsm.md#time-series-model-instances) k lepšímu tvarování JSON. 
+Pojďme se podíváme na to, jak používat [instanci časové řady](./concepts-model-overview.md#time-series-model-instances) k lepšímu tvarování JSON. 
 
 > [!NOTE]
 > Níže uvedená [ID časových řad](./time-series-insights-update-how-to-id.md) jsou *DeviceID*.

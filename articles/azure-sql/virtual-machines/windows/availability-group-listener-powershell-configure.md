@@ -14,10 +14,9 @@ ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8f2a2ecb499a88ac8e33b6d281ccde4e5adffebd
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669373"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurace jednoho nebo více naslouchacích skupin dostupnosti Always On – Správce prostředků
@@ -73,7 +72,7 @@ Příklady v tomto článku určují standardní nástroj pro vyrovnávání zat
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Pokud chcete vytvořit nástroj pro vyrovnávání zatížení Basic, odeberte `-sku Standard` z řádku, který vytváří nástroj pro vyrovnávání zatížení. Například:
+Pokud chcete vytvořit nástroj pro vyrovnávání zatížení Basic, odeberte `-sku Standard` z řádku, který vytváří nástroj pro vyrovnávání zatížení. Příklad:
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe

@@ -10,10 +10,9 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81869030"
 ---
 # <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Klíčové koncepty pro správu řešení Azure VMware podle CloudSimple
@@ -58,7 +57,7 @@ Služba CloudSimple poskytuje síť pro každou oblast, ve které je nasazená v
 
 Pomocí služby CloudSimple můžete spravovat virtuální počítače VMware z Azure Portal. Jeden nebo více clusterů nebo fondů prostředků z prostředí vSphere lze namapovat na předplatné, ve kterém je služba vytvořená.
 
-Další informace:
+Přečtěte si další informace:
 
 * [Virtuální počítače s CloudSimple](cloudsimple-virtual-machines.md)
 * [Mapování předplatného Azure](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)

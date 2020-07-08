@@ -3,12 +3,11 @@ title: Přesunutí prostředků do nového předplatného nebo skupiny prostřed
 description: K přesunutí prostředků do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 036def01ef8ae5732d372dd995ad8f425c36cad9
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631509"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057836"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Přesun prostředků do nové skupiny prostředků nebo předplatného
 
@@ -53,7 +52,7 @@ Před přesunem prostředků je potřeba provést několik důležitých kroků.
 
    Pokud se ID klientů pro zdrojové a cílové odběry neshodují, použijte k sjednocení ID klientů následující metody:
 
-   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../../billing/billing-subscription-transfer.md)
+   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../../cost-management-billing/manage/billing-subscription-transfer.md)
    * [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. V takovém případě se zobrazí chyba s oznámením, že **předplatné není zaregistrované pro typ prostředku**. Tato chyba se může zobrazit při přesunu prostředku do nového předplatného, ale toto předplatné se pro tento typ prostředku nikdy nepoužilo.

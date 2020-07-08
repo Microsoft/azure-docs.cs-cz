@@ -5,12 +5,11 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 58757dba9a8956d97c19269c2ac913d801f73746
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
-ms.translationtype: MT
+ms.openlocfilehash: cf74322725c6e86ee455f83aadc4aade07000835
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844501"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057666"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Vytvoření účtu Azure Remote Renderingu
 
@@ -28,20 +27,24 @@ Pro vytvoření účtu pro službu Azure Remote rendering je potřeba provést t
     1. Nastavte název prostředku na název účtu.
     1. Pokud je to potřeba, aktualizujte předplatné.
     1. Nastavte skupinu prostředků na skupinu prostředků podle vašeho výběru.
+    1. V rozevíracím seznamu umístění vyberte oblast, ve které se má prostředek vytvořit. Podívejte se na části poznámky v níže uvedených [oblastech účtů](create-an-account.md#account-regions) .
 1. Po vytvoření účtu přejděte k němu a:
     1. Na kartě *Přehled* si poznamenejte "ID účtu".
     1. Na kartě *nastavení > přístupové klíče* si poznamenejte "primární klíč" – Jedná se o klíč tajného účtu účtu.
 
+### <a name="account-regions"></a>Oblasti účtů
+Umístění, které je zadáno během vytváření účtu, určuje, ke které oblasti je přiřazen prostředek účtu. Tuto změnu nelze po vytvoření změnit. Účet se ale dá použít pro připojení k relaci vzdáleného vykreslování v libovolné [podporované oblasti](./../reference/regions.md)bez ohledu na umístění účtu.
+
 ### <a name="retrieve-the-account-information"></a>Načtení informací o účtu
 
-Ukázky a kurzy vyžadují, abyste zadali ID účtu a klíč. Například v souboru **ARRConfig. JSON** , který se používá pro ukázkové skripty prostředí PowerShell:
+Ukázky a kurzy vyžadují, abyste zadali ID účtu a klíč. Například v **arrconfig.js** souboru, který se používá pro ukázkové skripty prostředí PowerShell:
 
 ```json
-    "accountSettings": {
-        "arrAccountId": "<fill in the account ID from the Azure portal>",
-        "arrAccountKey": "<fill in the account key from the Azure portal>",
-        "region": "<select from available regions>"
-    },
+"accountSettings": {
+    "arrAccountId": "<fill in the account ID from the Azure portal>",
+    "arrAccountKey": "<fill in the account key from the Azure portal>",
+    "region": "<select from available regions>"
+},
 ```
 
 Projděte si [seznam dostupných oblastí](../reference/regions.md) pro vyplňování možnosti *region* .
@@ -89,6 +92,7 @@ Nyní se předpokládá, že máte účet úložiště. Přejděte na portál na
 > V případě, že váš účet vzdáleného vykreslování není uveden, přečtěte si [téma věnované tomuto problému](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
 Pro odpovídající výběry v rozevírací nabídce **role** znovu přidejte další nové role:
+
 * **Přispěvatel účtů úložiště**
 * **Přispěvatel dat objektu BLOB služby Storage**
 
@@ -98,6 +102,6 @@ Pokud jste přidali všechny tři role, má účet vzdáleného vykreslování A
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přihlašovací](authentication.md)
+* [Authentication](authentication.md)
 * [Použití rozhraní API Azure front-endu k ověřování](frontend-apis.md)
 * [Ukázkové skripty PowerShellu](../samples/powershell-example-scripts.md)

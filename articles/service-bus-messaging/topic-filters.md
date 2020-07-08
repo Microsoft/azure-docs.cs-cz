@@ -4,10 +4,9 @@ description: Tento článek vysvětluje, jak můžou předplatitelé definovat, 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85339956"
 ---
 # <a name="topic-filters-and-actions"></a>Akce a filtry témat

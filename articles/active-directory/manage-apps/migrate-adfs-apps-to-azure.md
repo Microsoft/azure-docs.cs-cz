@@ -14,12 +14,11 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03fe49456ac49e0e81c108198584a2c4d8eab884
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.openlocfilehash: 33b67c836be3395061e33b5988a4bb06fa5ee20f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84763223"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85608547"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Přesunutí ověřování aplikace z Active Directory Federation Services (AD FS) na Azure Active Directory
 
@@ -199,13 +198,13 @@ Následující tabulka popisuje některé nejběžnější mapování nastavení
 
 | Nastavení konfigurace| AD FS| Jak konfigurovat v Azure AD| Token SAML |
 | - | - | - | - |
-| **Přihlašovací adresa URL aplikace** <p>Adresa URL pro uživatele, který se má přihlašovat k aplikaci v toku SAML iniciované poskytovatelem služeb (SP).| –| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| – |
+| **Přihlašovací adresa URL aplikace** <p>Adresa URL pro uživatele, který se má přihlašovat k aplikaci v toku SAML iniciované poskytovatelem služeb (SP).| Není k dispozici| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Není k dispozici |
 | **Adresa URL odpovědi aplikace** <p>Adresa URL aplikace z perspektivy poskytovatele identity (IdP). IdP odesílá uživatele a token, když se uživatel přihlásí k IdP.  Toto je také známé jako **koncový bod příjemce kontrolního výrazu SAML**.| Vyberte kartu **koncové body** .| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Cílový element v tokenu SAML. Příklad hodnoty: `https://contoso.my.salesforce.com` |
-| **Adresa URL pro odhlášení z aplikace** <p>Toto je adresa URL, na kterou se odesílají žádosti o vyčištění odhlášení, když se uživatel z aplikace odhlásí. IdP odešle požadavek na odhlášení uživatele ze všech ostatních aplikací.| Vyberte kartu **koncové body** .| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| – |
+| **Adresa URL pro odhlášení z aplikace** <p>Toto je adresa URL, na kterou se odesílají žádosti o vyčištění odhlášení, když se uživatel z aplikace odhlásí. IdP odešle požadavek na odhlášení uživatele ze všech ostatních aplikací.| Vyberte kartu **koncové body** .| Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Není k dispozici |
 | **Identifikátor aplikace** <p>Toto je identifikátor aplikace z perspektivy IdP. Hodnota adresy URL pro přihlášení se často používá pro identifikátor (ale ne vždycky).  Někdy aplikace volá toto ID entity.| Vyberte kartu **identifikátory** .|Otevře základní konfiguraci SAML z přihlašování založené na SAML.| Provede mapování na element **cílové skupiny** v tokenu SAML. |
-| **Federační metadata aplikace** <p>Toto je umístění federačních metadat aplikace. Zprostředkovatel identity je používá k automatické aktualizaci konkrétních nastavení konfigurace, jako jsou koncové body nebo šifrovací certifikáty.| Vyberte kartu **monitorování** .| Není k dispozici. Azure AD nepodporuje přímé využívání federačních metadat aplikace. Federační metadata můžete ručně importovat.| – |
+| **Federační metadata aplikace** <p>Toto je umístění federačních metadat aplikace. Zprostředkovatel identity je používá k automatické aktualizaci konkrétních nastavení konfigurace, jako jsou koncové body nebo šifrovací certifikáty.| Vyberte kartu **monitorování** .| Není k dispozici. Azure AD nepodporuje přímé využívání federačních metadat aplikace. Federační metadata můžete ručně importovat.| Není k dispozici |
 | **Identifikátor uživatele/ID názvu** <p>Atribut sloužící k jedinečné identifikaci identity uživatele ze služby Azure AD nebo AD FS ve vaší aplikaci.  Tento atribut je obvykle buď hlavní název uživatele, nebo e-mailová adresa uživatele.| Pravidla deklarací identity. Ve většině případů pravidlo deklarace identity vydá deklaraci identity s typem, který končí na NameIdentifier.| Identifikátor najdete pod nadpisem **atributy uživatele a deklarace identity**. Ve výchozím nastavení se používá hlavní název uživatele (UPN).| Provede mapování na element **NameId** v tokenu SAML. |
-| **Další deklarace identity** <p>Příklady dalších informací o deklaraci identity, které se obvykle odesílají z IdP do aplikace, zahrnují křestní jméno, příjmení, e-mailovou adresu a členství ve skupinách.| Ve službě AD FS se nachází v podobě dalších pravidel deklarace identity na přijímající straně.| Identifikátor můžete najít pod nadpisy **atributy uživatele & deklarace identity**. Vyberte **Zobrazit** a upravte všechny ostatní atributy uživatele.| – |
+| **Další deklarace identity** <p>Příklady dalších informací o deklaraci identity, které se obvykle odesílají z IdP do aplikace, zahrnují křestní jméno, příjmení, e-mailovou adresu a členství ve skupinách.| Ve službě AD FS se nachází v podobě dalších pravidel deklarace identity na přijímající straně.| Identifikátor můžete najít pod nadpisy **atributy uživatele & deklarace identity**. Vyberte **Zobrazit** a upravte všechny ostatní atributy uživatele.| Není k dispozici |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>Nastavení IdP (map identity Provider)
@@ -398,7 +397,7 @@ K implementaci integrovaných zásad v Azure AD můžete použít [nové zásady
 V této tabulce uvádíme několik užitečných povolení a s výjimkou možností a způsobu jejich mapování na službu Azure AD. 
 
 
-| | Jak nakonfigurovat možnost povolit ve službě Azure AD?| Jak nakonfigurovat s výjimkou možnosti ve službě Azure AD? |
+| Možnost | Jak nakonfigurovat možnost povolit ve službě Azure AD?| Jak nakonfigurovat s výjimkou možnosti ve službě Azure AD? |
 | - | - | - |
 | Z určité sítě| Mapuje se k [pojmenovanému umístění](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) ve službě Azure AD.| Použití možnosti **vyloučit** pro [důvěryhodná umístění](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) |
 | Z konkrétních skupin| [Nastavení přiřazení uživatelů nebo skupin](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| Použití možnosti **vyloučit** v uživatelích a skupinách |
@@ -463,7 +462,7 @@ V závislosti na konfiguraci aplikace ověřte, že jednotné přihlašování f
 ‎ |
 | Jednotné přihlašování založené na heslech| Stáhněte a nainstalujte si rozšíření pro [zabezpečené přihlašování](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [-](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction) [aplikace](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)MyApp. Toto rozšíření vám pomůže začít používat cloudové aplikace vaší organizace, které vyžadují použití procesu jednotného přihlašování.  
 ‎ |
-| Proxy aplikací| Ujistěte se, že váš konektor je spuštěný a přiřazený k vaší aplikaci. Další pomoc najdete v[ ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) [Průvodci odstraňováním potíží s proxy aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) .  
+| Proxy aplikací| Ujistěte se, že váš konektor je spuštěný a přiřazený k vaší aplikaci. Další pomoc najdete v [Průvodci odstraňováním potíží s proxy aplikací](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-troubleshoot) .  
 ‎ |
 
 > [!NOTE]

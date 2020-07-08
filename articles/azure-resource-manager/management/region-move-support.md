@@ -6,12 +6,11 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 05/31/2020
 ms.author: raynew
-ms.openlocfilehash: 71c5c5881ab34dd9bc1a4da9e097b46ec21dcea1
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
-ms.translationtype: MT
+ms.openlocfilehash: 0510df504c8de70cfb6a486f394db6da65dbfce2
+ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85124217"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86057683"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Podpora přesunu prostředků Azure napříč oblastmi
 
@@ -256,7 +255,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | existující | No <br/><br/> Služba Azure Batch AI je [vyřazena](https://docs.microsoft.com/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
+> | existující | No <br/><br/> Služba Azure Batch AI je [vyřazena](/previous-versions/azure/batch-ai/overview-what-happened-batch-ai).
 > | servery | No | 
 > | úlohy | No | 
 > | pracovní prostory | No | 
@@ -1011,7 +1010,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | trezory | Ne.<br/><br/> Přesunutí Recovery Services trezorů pro Azure Backup napříč oblastmi Azure se nepodporuje.<br/><br/> V Recovery Services trezory pro Azure Site Recovery můžete [trezor zakázat a znovu vytvořit](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) v cílové oblasti. | 
+> | trezory | Ne.<br/><br/> Přesunutí Recovery Services trezorů pro Azure Backup napříč oblastmi Azure se nepodporuje.<br/><br/> V Recovery Services trezory pro Azure Site Recovery můžete [trezor zakázat a znovu vytvořit](../../site-recovery/move-vaults-across-regions.md) v cílové oblasti. | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay

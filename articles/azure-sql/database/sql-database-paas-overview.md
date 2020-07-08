@@ -13,10 +13,9 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
 ms.openlocfilehash: fcad4f02f3fdfcbdc95617da7344d06feb70d1af
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84343247"
 ---
 # <a name="what-is-azure-sql-database"></a>Co je Azure SQL Database?
@@ -198,7 +197,7 @@ SQL Database zjednodušuje a zefektivňuje vytváření a správu aplikací. SQL
 |[Nástroje pro SQL Server dat v aplikaci Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Bezplatná klientská aplikace ke stažení pro vývoj SQL Server relačních databází, databází v Azure SQL Database, balíčků integračních služeb, Analysis Services datových modelů a sestav služby Reporting Services.|
 |[Visual Studio Code](https://code.visualstudio.com/docs)|Bezplatný a Open Source Editor kódu pro Windows, macOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure SQL Data Warehouse.|
 
-SQL Database podporuje vytváření aplikací pomocí jazyků Python, Java, Node. js, PHP, Ruby a .NET v systémech macOS, Linux a Windows. SQL Database podporuje stejné [knihovny připojení](connect-query-content-reference-guide.md#libraries) jako SQL Server.
+SQL Database podporuje vytváření aplikací pomocí jazyků Python, Java, Node.js, PHP, Ruby a .NET v systémech macOS, Linux a Windows. SQL Database podporuje stejné [knihovny připojení](connect-query-content-reference-guide.md#libraries) jako SQL Server.
 
 [!INCLUDE [sql-database-create-manage-portal](../includes/sql-database-create-manage-portal.md)]
 
@@ -206,7 +205,7 @@ SQL Database podporuje vytváření aplikací pomocí jazyků Python, Java, Node
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>Můžu řídit, kdy dochází k výpadkům při opravování?
 
-No. Pokud ve své aplikaci použijete [logiku opakování](develop-overview.md#resiliency) , nemusíte mít dopad na opravy. Další informace najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](planned-maintenance.md).
+Ne. Pokud ve své aplikaci použijete [logiku opakování](develop-overview.md#resiliency) , nemusíte mít dopad na opravy. Další informace najdete v tématu [plánování událostí údržby Azure v Azure SQL Database](planned-maintenance.md).
 
 
 

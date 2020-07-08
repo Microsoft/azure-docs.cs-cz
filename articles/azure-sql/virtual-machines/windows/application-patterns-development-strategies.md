@@ -14,10 +14,9 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
 ms.openlocfilehash: b77756f81eb5085b9c1d386b7c59d5aae03d1fb8
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84669490"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Modely aplikací a vývojové strategie pro SQL Server v Azure Virtual Machines
@@ -45,7 +44,7 @@ Můžete vyvíjet mnoho typů n-vrstvých aplikací oddělením komponent různ�
 
 Typická *n-vrstvá* aplikace zahrnuje prezentační vrstvu, obchodní vrstvu a datovou vrstvu:
 
-| Úroveň | Popis |
+| Úroveň | Description |
 | --- | --- |
 | **Zobrazení** |*Prezentační vrstva* (webová vrstva, front-end úroveň) je vrstva, ve které uživatelé pracují s aplikací. |
 | **Firemní** |*Obchodní vrstva* (střední vrstva) je vrstva, kterou prezentační vrstva a Datová vrstva používá ke komunikaci mezi sebou a zahrnuje základní funkce systému. |
