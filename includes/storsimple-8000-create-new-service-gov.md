@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 6939553206fe223d8166368d2963f03b32d2629e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175061"
 ---
 #### <a name="to-create-a-new-service"></a>Vytvoření nové služby
 1. Pomocí přihlašovacích údajů pro účet Microsoft se přihlaste k [portálu Microsoft Azure Government](https://portal.azure.us/).
-2. Na portálu státní správy klikněte **+** na a pak na webu Marketplace klikněte na **Zobrazit vše**. Vyhledejte _Fyzické zařízení StorSimple_. Vyberte a klikněte na **Řada fyzických zařízení StorSimple** a pak klikněte na **Vytvořit**. Případně můžete na portálu pro státní správu kliknout **+** na a potom v části **úložiště**kliknout na **řady fyzických zařízení StorSimple**.
+2. Na portálu státní správy klikněte na **+** a pak na webu Marketplace klikněte na **Zobrazit vše**. Vyhledejte _Fyzické zařízení StorSimple_. Vyberte a klikněte na **Řada fyzických zařízení StorSimple** a pak klikněte na **Vytvořit**. Případně můžete na portálu pro státní správu kliknout na **+** a potom v části **úložiště**kliknout na **řady fyzických zařízení StorSimple**.
 3. V okně **Správce zařízení StorSimple** proveďte následující kroky:
    
    1. Zadejte pro službu jedinečný **Název prostředku**. Tento název je popisný název, který můžete použít k identifikaci služby. Název může být tvořen 2 až 50 písmeny, číslicemi a spojovníky. Název musí začínat a končit písmenem nebo číslicí.

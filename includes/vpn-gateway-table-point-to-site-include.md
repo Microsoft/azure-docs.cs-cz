@@ -9,22 +9,22 @@ ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 59ba66fb013a4ea6aebd40164ca252447876053d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174884"
 ---
 **Nativní ověřování certifikátů Azure**
 
-**Model/metoda nasazení** | **portál Azure** | **PowerShell** |
+**Model/metoda nasazení** | **Azure Portal** | **PowerShell** |
 |---|---|---|
-| Resource Manager | [Tutoriál](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) | [Tutoriál](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)|
-| Classic | [Tutoriál](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) | Podporuje se |
+| Resource Manager | [Kurz](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) | [Kurz](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)|
+| Klasický | [Kurz](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md) | Podporuje se |
 
-**Ověřování RADIUS**
+**Ověřování pomocí protokolu RADIUS**
 
-**Model/metoda nasazení** | **portál Azure** | **PowerShell** |
+**Model/metoda nasazení** | **Azure Portal** | **PowerShell** |
 |---|---|---|
-| Resource Manager | Podporuje se | [Tutoriál](../articles/vpn-gateway/point-to-site-how-to-radius-ps.md)|
-| Classic | Nepodporuje se | Nepodporuje se |
+| Resource Manager | Podporuje se | [Kurz](../articles/vpn-gateway/point-to-site-how-to-radius-ps.md)|
+| Klasický | Nepodporuje se | Nepodporuje se |

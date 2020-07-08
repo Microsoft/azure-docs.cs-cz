@@ -9,10 +9,10 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174946"
 ---
 Azure Virtual Machines (virtuální počítače) procházejí různými stavy, které je možné zařadit do stavu *zřizování* a *napájení* . Účelem tohoto článku je popsání těchto stavů a konkrétně zdůraznění, kdy se zákazníkům účtuje použití instance. 
@@ -29,7 +29,7 @@ Následující tabulka obsahuje popis každého stavu instance a označuje, zda 
 <table>
 <tr>
 <th>
-Stav
+State
 </th>
 <th>
 Popis
@@ -40,7 +40,7 @@ Fakturace využití instancí
 </tr>
 <tr>
 <td>
-<p><b>Začátek</b></p>
+<p><b>Spouštění</b></p>
 </td>
 <td>
 <p>Spouští se virtuální počítač.</p>
@@ -178,7 +178,7 @@ Zde jsou přechodné stavy operace poté, co platforma přijala akci iniciované
 <p><b>Stavy</b></p>
 </td>
 <td width="366">
-<p>Popis</p>
+<p>Description</p>
 </td>
 </tr>
 <tr>
@@ -210,7 +210,7 @@ Zde jsou přechodné stavy operace poté, co platforma přijala akci iniciované
 </tr>
 <tr>
 <td width="162">
-<p><b>Odstraňuje</b></p>
+<p><b>odstraňování</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>
@@ -228,7 +228,7 @@ Zde jsou přechodné stavy operace poté, co platforma přijala akci iniciované
 </td>
 <td width="366">
 <p>Pokud se vytvoří virtuální počítač s bitovou kopií operačního systému, a ne s specializovanou imagí, můžete dodržovat tyto podstavy:</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; , že virtuální počítač běží a probíhá instalace hostovaného operačního systému. <p /> 
+<p>1. <b>OSProvisioningInprogress</b> &ndash; Virtuální počítač je spuštěný a probíhá instalace hostovaného operačního systému. <p /> 
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
@@ -236,7 +236,7 @@ Zde jsou přechodné stavy operace poté, co platforma přijala akci iniciované
  "displayStatus": "OS Provisioning In progress"<br>
  }<br>
 ]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; krátkodobý stav. Virtuální počítač se rychle přepřechodem na **úspěch** , pokud není potřeba instalovat nějaká rozšíření. Instalace rozšíření může chvíli trvat. <br />
+<p>2. <b>OSProvisioningComplete</b> &ndash; Krátkodobý stav. Virtuální počítač se rychle přepřechodem na **úspěch** , pokud není potřeba instalovat nějaká rozšíření. Instalace rozšíření může chvíli trvat. <br />
 <code> "statuses": [<br>
  {<br>
  "code": "ProvisioningState/creating/OSProvisioningComplete",<br>

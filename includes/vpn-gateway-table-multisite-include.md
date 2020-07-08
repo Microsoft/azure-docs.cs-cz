@@ -9,13 +9,13 @@ ms.date: 04/26/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 7ff633b33a800e1dfe28c63b6ba880233e2b4a1c
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67174845"
 ---
-| **Model/metoda nasazení** | **portál Azure** | **Prostředí** |
+| **Model/metoda nasazení** | **Azure Portal** | **PowerShell** |
 | --- | --- | --- |
-| Resource Manager |[Tutoriál](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |Podporuje se |
-| Classic | Nepodporuje se | [Tutoriál](../articles/vpn-gateway/vpn-gateway-multi-site.md) |
+| Resource Manager |[Kurz](../articles/vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) |Podporuje se |
+| Klasický | Nepodporuje se | [Kurz](../articles/vpn-gateway/vpn-gateway-multi-site.md) |

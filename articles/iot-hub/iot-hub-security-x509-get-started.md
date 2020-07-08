@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81759646"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Nastavení zabezpečení X.509 ve službě Azure IoT Hub
@@ -47,7 +47,7 @@ Pro získání certifikátů můžete zvolit některý z následujících způso
 
 Tyto kroky ukazují, jak přidat novou certifikační autoritu do služby IoT Hub prostřednictvím portálu.
 
-1. V Azure Portal přejděte do svého centra IoT a vyberte **Nastavení** > **certifikáty** pro centrum.
+1. V Azure Portal přejděte do svého centra IoT a vyberte **Nastavení**  >  **certifikáty** pro centrum.
 
 1. Vyberte **Přidat** a přidejte nový certifikát.
 
@@ -73,7 +73,7 @@ Tyto kroky ukazují, jak přidat novou certifikační autoritu do služby IoT Hu
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>Vytvoření zařízení X. 509 pro Centrum IoT
 
-1. V Azure Portal přejděte do svého centra IoT a pak vyberte **Průzkumník** > **zařízení IoT**.
+1. V Azure Portal přejděte do svého centra IoT a pak vyberte **Průzkumník**  >  **zařízení IoT**.
 
 1. Pokud chcete přidat nové zařízení, vyberte **Nový** .
 
@@ -95,7 +95,7 @@ V dalším kroku vám ukážeme, jak vytvořit aplikaci v jazyce C#, která simu
 
 1. V Průzkumník řešení klikněte pravým tlačítkem na projekt **SimulateX509Device** a pak vyberte **Spravovat balíčky NuGet**.
 
-1. V okně **Správce balíčků NuGet**vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Install** (Nainstalovat).
+1. V okně **Správce balíčků NuGet**vyberte **Procházet** a vyhledejte a vyberte **Microsoft. Azure. Devices. Client**. Vyberte **Nainstalovat**.
 
    ![Přidat balíček NuGet sady SDK pro zařízení v sadě Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
@@ -181,7 +181,7 @@ V dalším kroku vám ukážeme, jak vytvořit aplikaci v jazyce C#, která simu
 
    1. Přejděte do složky, která obsahuje vaše řešení, a pak přejděte na *přihrádku/cestu ladění* ve složce řešení.
 
-   1. Spusťte aplikaci **SimulateX509Device. exe** z příkazového řádku.
+   1. Spusťte aplikaci **SimulateX509Device.exe** z příkazového řádku.
 
    Měli byste vidět, že vaše zařízení se úspěšně připojilo k centru a odesílá události.
 

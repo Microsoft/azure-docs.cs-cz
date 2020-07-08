@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 4cffbb1aaa438bac08ec77f576b32a901abacabd
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175053"
 ---
 > [!NOTE] 
@@ -30,7 +30,7 @@ ms.locfileid: "67175053"
       
        ![Změnit nastavení šířky pásma](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
-   2.  Klikněte na tlačítko **OK**.
+   2.  Klikněte na **OK**.
 4. Na další stránce dialogového okna **Upravit kontejner svazků** :
    
    1. V rozevíracím seznamu vyberte existující šablonu šířky pásma.

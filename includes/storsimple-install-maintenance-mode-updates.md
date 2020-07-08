@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 720288aff462b0590bb9da509096a9305b9b6cc7
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175042"
 ---
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Instalace aktualizací režimu údržby prostřednictvím Windows PowerShell pro StorSimple
@@ -24,7 +24,7 @@ ms.locfileid: "67175042"
    
     `Get-HcsUpdateStatus`
    
-    Pokud `RunInProgress` je `True`, aktualizace stále probíhá. Pokud `RunInProgress` je `False`, znamená to, že se aktualizace dokončila.  
+    Pokud `RunInProgress` je `True` , aktualizace stále probíhá. Pokud `RunInProgress` je `False` , znamená to, že se aktualizace dokončila.  
 8. Když je aktualizace na aktuálním řadiči nainstalována a je restartována, připojte se k druhému kontroleru a proveďte kroky 1 až 6.
 9. Po aktualizaci obou řadičů se režim údržby ukončí. Pokyny najdete v části [Krok 4: ukončení režimu údržby](../articles/storsimple/storsimple-update-device.md#step4) .
 

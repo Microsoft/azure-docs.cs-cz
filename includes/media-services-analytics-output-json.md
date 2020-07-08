@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175421"
 ---
 Úloha vytvoří výstupní soubor JSON obsahující metadata o zjištěných a sledovaných plochách. Metadata obsahují souřadnice označující umístění obličeje a také číslo ID obličeje, které signalizuje sledování daného jednotlivce. Pokud dojde ke ztrátě nebo překrytí čelní plochy v rámci tohoto rámce, je pro ně možné resetovat čísla ID obličeje. Výsledkem je, že někteří jednotlivci mají přiřazené více ID.
@@ -17,9 +17,9 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="root-json-elements"></a>Kořenové elementy JSON
 
-| Prvek | Popis |
+| Prvek | Description |
 | --- | --- |
-| version |To odkazuje na verzi rozhraní API pro video. |
+| verze |To odkazuje na verzi rozhraní API pro video. |
 | měřítk |"Takty" za sekundu videa. |
 | posun |Toto je časový posun pro časová razítka. Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. V budoucích scénářích, které podporujeme, se tato hodnota může změnit. |
 | Šířka, vysoká |Šířka a výška výstupního snímku videa v pixelech.|
@@ -28,7 +28,7 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="fragments-json-elements"></a>Fragmenty – elementy JSON
 
-|Prvek|Popis|
+|Prvek|Description|
 |---|---|
 | start |Čas zahájení první události v "taktech". |
 | doba trvání |Délka fragmentu v "taktech". |

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "67175041"
 ---
 #### <a name="to-attach-the-sas-cables"></a>Připojení kabelů SAS
@@ -18,7 +18,7 @@ ms.locfileid: "67175041"
    
     **Pohled zpět na primární a EBOD skříně**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |Primární skříň |
    | 2 |EBOD skříň |
@@ -28,7 +28,7 @@ ms.locfileid: "67175041"
    
     **Umístění nálepky sériových čísel**
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |Ušní skříň |
 3. Pomocí zadaných kabelů SAS připojte skříň EBOD k primární skříni následujícím způsobem:
@@ -41,7 +41,7 @@ ms.locfileid: "67175041"
       
       **Kabeláž SAS**
       
-      | Popisek | Popis |
+      | Popisek | Description |
       |:--- |:--- |
       | A |Primární skříň |
       | B |EBOD skříň |
