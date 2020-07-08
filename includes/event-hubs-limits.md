@@ -9,10 +9,10 @@ ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84317720"
 ---
 Následující tabulky poskytují kvóty a omezení specifické pro [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Informace o cenách Event Hubs najdete v článku [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/).
@@ -33,7 +33,7 @@ Následující omezení jsou společná napříč úrovněmi Basic a Standard.
 | Počet pravidel virtuální sítě (VNet) a konfigurace protokolu IP | Entita | - | 128 | 
 
 ### <a name="event-hubs-basic-and-standard---quotas-and-limits"></a>Event Hubs úrovně Basic a Standard-kvóty a omezení
-| Omezení | Rozsah | Poznámky | Základní | Standard |
+| Omezení | Rozsah | Poznámky | Basic | Standard |
 | --- | --- | --- | -- | --- |
 | Maximální velikost události Event Hubs|Entita | &nbsp; | 256 kB | 1 MB |
 | Počet skupin uživatelů na centrum událostí |Entita | &nbsp; |1 |20 |
@@ -46,7 +46,7 @@ Následující omezení jsou společná napříč úrovněmi Basic a Standard.
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs úrovně Dedicated – kvóty a omezení
 V nabídce Event Hubs úrovně Dedicated se účtuje pevná měsíční cena s minimálním počtem 4 hodin využití. Vyhrazená úroveň nabízí všechny funkce plánu Standard, ale kapacitu a omezení na úrovni podniku pro zákazníky s náročnými úlohami. 
 
-| Příznak | Omezení |
+| Funkce | Omezení |
 | --- | ---|
 | Šířka pásma |  20 kapacitní jednotky |
 | Obory názvů | 50 za CU |

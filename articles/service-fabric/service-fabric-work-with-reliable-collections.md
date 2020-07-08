@@ -4,10 +4,10 @@ description: Seznamte se s osvědčenými postupy pro práci s spolehlivými kol
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85374691"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections

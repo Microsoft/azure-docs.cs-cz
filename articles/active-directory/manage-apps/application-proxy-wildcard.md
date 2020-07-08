@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b566081459b0bab0aae9831e128ffbee0efaf4e2
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85367729"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikace Azure Active Directory
@@ -45,7 +45,7 @@ Můžete publikovat aplikace se zástupnými znaky, pokud jsou obě, interní i 
 
 > http (s)://*.\<domain\>
 
-Příklad: `http(s)://*.adventure-works.com`.
+Například: `http(s)://*.adventure-works.com`.
 
 I když interní a externí adresy URL můžou používat jiné domény, doporučuje se, aby byly stejné. Při publikování aplikace se zobrazí chyba, pokud jedna z adres URL neobsahuje zástupný znak.
 
@@ -74,7 +74,7 @@ Při použití vlastních domén potřebujete vytvořit záznam DNS s záznamem 
 
 Pokud chcete potvrdit, že jste svůj záznam CNAME správně nakonfigurovali, můžete použít nástroj [nslookup](https://docs.microsoft.com/windows-server/administration/windows-commands/nslookup) v jednom z cílových koncových bodů, například `expenses.adventure-works.com` .  Vaše odpověď by měla zahrnovat už zmíněný alias ( `<yourAADTenantId>.tenant.runtime.msappproxy.net` ).
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 Tady je několik důležitých informací, které byste měli vzít v úvahu pro aplikace se zástupnými znaky.
 
