@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: bd5ae5c60530890f65f8cc9a98171c29820a7762
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85202853"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
@@ -63,7 +63,7 @@ Element **ContentDefinition** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
+| ID | Yes | Identifikátor definice obsahu. Hodnota je jedna zadaná v oddílu **ID definice obsahu** dále na této stránce. |
 
 Element **ContentDefinition** obsahuje následující prvky:
 
@@ -139,7 +139,7 @@ Element **Item** elementu **metadata** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Klíč | Ano | Klíč metadat.  |
+| Klíč | Yes | Klíč metadat.  |
 
 #### <a name="metadata-keys"></a>Klíče metadat
 
@@ -147,7 +147,7 @@ Definice obsahu podporuje následující položky metadat:
 
 | Klíč | Povinné | Popis |
 | --------- | -------- | ----------- |
-| DisplayName | Ne | Řetězec, který obsahuje název definice obsahu. |
+| DisplayName | No | Řetězec, který obsahuje název definice obsahu. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -161,8 +161,8 @@ Element **LocalizedResourcesReference** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Jazyk | Ano | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
-| LocalizedResourcesReferenceId | Ano | Identifikátor elementu **LocalizedResources** |
+| Jazyk | Yes | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
+| LocalizedResourcesReferenceId | Yes | Identifikátor elementu **LocalizedResources** |
 
 Následující příklad ukazuje definici obsahu pro registraci nebo přihlašování s odkazem na lokalizaci pro angličtinu, francouzštinu a španělštinu:
 

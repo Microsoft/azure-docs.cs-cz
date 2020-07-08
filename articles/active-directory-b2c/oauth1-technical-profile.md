@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d570ddbcf974936bbaa78be5799e7bd42fa6d514
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85204077"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OAuth1 v Azure Active Directory B2C vlastní zásady
@@ -70,13 +70,13 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_id | Ano | Identifikátor aplikace zprostředkovatele identity |
-| ProviderName | Ne | Název zprostředkovatele identity |
-| request_token_endpoint | Ano | Adresa URL koncového bodu tokenu žádosti na základě RFC 5849. |
-| authorization_endpoint | Ano | Adresa URL koncového bodu autorizace na základě RFC 5849. |
-| access_token_endpoint | Ano | Adresa URL koncového bodu tokenu na základě RFC 5849. |
-| ClaimsEndpoint | Ne | Adresa URL koncového bodu informací o uživateli |
-| ClaimsResponseFormat | Ne | Formát odpovědi na deklarace identity.|
+| client_id | Yes | Identifikátor aplikace zprostředkovatele identity |
+| ProviderName | No | Název zprostředkovatele identity |
+| request_token_endpoint | Yes | Adresa URL koncového bodu tokenu žádosti na základě RFC 5849. |
+| authorization_endpoint | Yes | Adresa URL koncového bodu autorizace na základě RFC 5849. |
+| access_token_endpoint | Yes | Adresa URL koncového bodu tokenu na základě RFC 5849. |
+| ClaimsEndpoint | No | Adresa URL koncového bodu informací o uživateli |
+| ClaimsResponseFormat | No | Formát odpovědi na deklarace identity.|
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -84,7 +84,7 @@ Element **CryptographicKeys** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity.   |
+| client_secret | Yes | Tajný kód klienta aplikace zprostředkovatele identity.   |
 
 ## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 

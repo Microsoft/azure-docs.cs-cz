@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85202955"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -160,7 +160,7 @@ Můžete například uložit poslední verzi vašich podmínek služby, kterou u
 Příklady transformací deklarací identity najdete na následujících odkazových stránkách:
 
 - [Logická hodnota](boolean-transformations.md)
-- [Date](date-transformations.md)
+- [Date](date-transformations.md) (Datum)
 - [Integer](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Telefonní číslo](phone-number-claims-transformations.md)

@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8e575cf9bba02a59179cc70870fb680a27648963
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85201171"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
@@ -66,16 +66,16 @@ Následující části uvádějí dostupné překladače deklarací identity.
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
-| {OIDC: AuthenticationContextReferences} |`acr_values`Parametr řetězce dotazu. | – |
+| {OIDC: AuthenticationContextReferences} |`acr_values`Parametr řetězce dotazu. | Není k dispozici |
 | {OIDC: ClientId} |`client_id`Parametr řetězce dotazu. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC: DomainHint} |`domain_hint`Parametr řetězce dotazu. | facebook.com |
 | {OIDC: LoginHint} |  `login_hint`Parametr řetězce dotazu. | someone@contoso.com |
-| {OIDC: MaxAge} | Hodnota `max_age` | – |
+| {OIDC: MaxAge} | Hodnota `max_age` | Není k dispozici |
 | {OIDC: nonce} |`Nonce`Parametr řetězce dotazu. | defaultNonce |
 | {OIDC: heslo}| Heslo uživatele [toku přihlašovacích údajů pro heslo vlastníka prostředku](ropc-custom.md) .| Heslo1| 
 | {OIDC: prompt} | `prompt`Parametr řetězce dotazu. | přihlášení |
 | {OIDC: RedirectUri} |`redirect_uri`Parametr řetězce dotazu. | https://jwt.ms |
-| {OIDC: Resource} |`resource`Parametr řetězce dotazu. | – |
+| {OIDC: Resource} |`resource`Parametr řetězce dotazu. | Není k dispozici |
 | {OIDC: Scope} |`scope`Parametr řetězce dotazu. | OpenID |
 | {OIDC: username}| Uživatelské jméno uživatele [toku přihlašovacích údajů pro heslo vlastníka prostředku](ropc-custom.md) .| emily@contoso.com| 
 
@@ -106,13 +106,13 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {OAUTH-KV: campaignId} | Parametr řetězce dotazu. | Hawaii |
 | {OAUTH-KV: app_session} | Parametr řetězce dotazu. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr řetězce dotazu. | 1 234 |
-| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | – |
+| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není k dispozici |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Přístupový token | – |
+| {OAuth2: access_token} | Přístupový token | Není k dispozici |
 
 
 ### <a name="saml"></a>SAML

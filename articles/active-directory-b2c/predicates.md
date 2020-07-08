@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85203805"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikáty a PredicateValidations
@@ -44,9 +44,9 @@ Element **predikátu** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro predikát. Ostatní elementy můžou tento identifikátor v zásadách použít. |
-| Metoda | Ano | Typ metody, který se má použít pro ověření. Možné hodnoty: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)nebo [IsDateRange](#isdaterange).  |
-| HelpText | Ne | Chybová zpráva pro uživatele, pokud se ověření nepovede. Tento řetězec se dá lokalizovat pomocí [přizpůsobení jazyka](localization.md) . |
+| ID | Yes | Identifikátor, který se používá pro predikát. Ostatní elementy můžou tento identifikátor v zásadách použít. |
+| Metoda | Yes | Typ metody, který se má použít pro ověření. Možné hodnoty: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)nebo [IsDateRange](#isdaterange).  |
+| HelpText | No | Chybová zpráva pro uživatele, pokud se ověření nepovede. Tento řetězec se dá lokalizovat pomocí [přizpůsobení jazyka](localization.md) . |
 
 Element **predikát** obsahuje následující prvky:
 
@@ -75,8 +75,8 @@ Metoda IsLengthRange ověřuje, zda délka hodnoty deklarace řetězce spadá do
 
 | Parametr | Povinné | Popis |
 | ------- | ----------- | ----------- |
-| Maximum | Ano | Maximální počet znaků, které lze zadat. |
-| Minimální | Ano | Minimální počet znaků, které je třeba zadat. |
+| Maximum | Yes | Maximální počet znaků, které lze zadat. |
+| Minimální | Yes | Minimální počet znaků, které je třeba zadat. |
 
 
 Následující příklad ukazuje metodu IsLengthRange s parametry `Minimum` a `Maximum` , která určuje rozsah délky řetězce:
@@ -96,7 +96,7 @@ Metoda MatchesRegex ověří, zda hodnota deklarace řetězce odpovídá regulá
 
 | Parametr | Povinné | Popis |
 | ------- | ----------- | ----------- |
-| RegularExpression | Ano | Vzorek regulárního výrazu, který se má shodovat. |
+| RegularExpression | Yes | Vzorek regulárního výrazu, který se má shodovat. |
 
 Následující příklad ukazuje `MatchesRegex` metodu s parametrem `RegularExpression` , který určuje regulární výraz:
 
@@ -114,7 +114,7 @@ Metoda IncludesCharacters ověří, zda hodnota deklarace řetězce obsahuje zna
 
 | Parametr | Povinné | Popis |
 | ------- | ----------- | ----------- |
-| CharacterSet | Ano | Sada znaků, které lze zadat. Například malými písmeny `a-z` , velkými písmeny `A-Z` , číslicemi `0-9` nebo seznamem symbolů, jako je například `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
+| CharacterSet | Yes | Sada znaků, které lze zadat. Například malými písmeny `a-z` , velkými písmeny `A-Z` , číslicemi `0-9` nebo seznamem symbolů, jako je například `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
 
 Následující příklad ukazuje `IncludesCharacters` metodu s parametrem `CharacterSet` , který určuje množinu znaků:
 
@@ -132,8 +132,8 @@ Metoda IsDateRange ověří, zda je hodnota deklarace data v rozsahu zadaného m
 
 | Parametr | Povinné | Popis |
 | ------- | ----------- | ----------- |
-| Maximum | Ano | Největší možné datum, které lze zadat. Formát data následuje po `yyyy-mm-dd` konvenci nebo `Today` . |
-| Minimální | Ano | Nejnižší možné datum, které lze zadat. Formát data následuje po `yyyy-mm-dd` konvenci nebo `Today` .|
+| Maximum | Yes | Největší možné datum, které lze zadat. Formát data následuje po `yyyy-mm-dd` konvenci nebo `Today` . |
+| Minimální | Yes | Nejnižší možné datum, které lze zadat. Formát data následuje po `yyyy-mm-dd` konvenci nebo `Today` .|
 
 Následující příklad ukazuje `IsDateRange` metodu s parametry `Minimum` a `Maximum` , která určuje rozsah kalendářních dat formátu `yyyy-mm-dd` a `Today` .
 
@@ -180,7 +180,7 @@ Element **PredicateValidation** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro ověření predikátu. Element **ClaimType** může použít tento identifikátor v zásadách. |
+| ID | Yes | Identifikátor, který se používá pro ověření predikátu. Element **ClaimType** může použít tento identifikátor v zásadách. |
 
 Element **PredicateValidation** obsahuje následující element:
 
@@ -198,7 +198,7 @@ Element **predikátu** obsahuje následující atribut:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro skupinu predikátů.  |
+| ID | Yes | Identifikátor, který se používá pro skupinu predikátů.  |
 
 Element **predikátu** obsahuje následující prvky:
 
@@ -211,7 +211,7 @@ Element **PredicateReferences** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Ne | Určuje, že hodnota se musí shodovat s minimálním počtem definic predikátu, aby bylo možné vstup přijmout. Pokud není zadán, hodnota musí odpovídat všem definicím predikátu. |
+| MatchAtLeast | No | Určuje, že hodnota se musí shodovat s minimálním počtem definic predikátu, aby bylo možné vstup přijmout. Pokud není zadán, hodnota musí odpovídat všem definicím predikátu. |
 
 Element **PredicateReferences** obsahuje následující prvky:
 
@@ -223,7 +223,7 @@ Element **PredicateReference** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který se používá pro ověření predikátu.  |
+| ID | Yes | Identifikátor, který se používá pro ověření predikátu.  |
 
 
 ## <a name="configure-password-complexity"></a>Konfigurace složitosti hesla

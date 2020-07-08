@@ -11,10 +11,10 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 69368ecd7234912bcaf5eb606545f62ddb7b30a0
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85204179"
 ---
 # <a name="localization"></a>Lokalizace
@@ -41,7 +41,7 @@ Element **Localization** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Povoleno | Ne | Možné hodnoty: `true` nebo `false` . |
+| Povoleno | No | Možné hodnoty: `true` nebo `false` . |
 
 Element **Localization** obsahuje následující elementy XML
 
@@ -56,8 +56,8 @@ Element **SupportedLanguages** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| DefaultLanguage | Ano | Jazyk, který má být použit jako výchozí pro lokalizované prostředky. |
-| MergeBehavior | Ne | Hodnoty výčtu hodnot, které jsou sloučeny spolu s jakýmkoli objektem ClaimType přítomným v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základních zásadách. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota určuje, že se má na konec kolekce zadané v nadřazené zásadě připojit kolekce dat. `Prepend`Hodnota určuje, že kolekce přítomných dat by měla být přidána před kolekci určenou v nadřazené zásadě. `ReplaceAll`Hodnota určuje, že kolekce dat definovaná v nadřazené zásadě by měla být použita jako místo dat definovaných v aktuálních zásadách. |
+| DefaultLanguage | Yes | Jazyk, který má být použit jako výchozí pro lokalizované prostředky. |
+| MergeBehavior | No | Hodnoty výčtu hodnot, které jsou sloučeny spolu s jakýmkoli objektem ClaimType přítomným v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základních zásadách. Možné hodnoty: `Append` , `Prepend` , nebo `ReplaceAll` . `Append`Hodnota určuje, že se má na konec kolekce zadané v nadřazené zásadě připojit kolekce dat. `Prepend`Hodnota určuje, že kolekce přítomných dat by měla být přidána před kolekci určenou v nadřazené zásadě. `ReplaceAll`Hodnota určuje, že kolekce dat definovaná v nadřazené zásadě by měla být použita jako místo dat definovaných v aktuálních zásadách. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
@@ -73,7 +73,7 @@ Element **LocalizedResources** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| ID | Ano | Identifikátor, který slouží k jednoznačné identifikaci lokalizovaných prostředků. |
+| ID | Yes | Identifikátor, který slouží k jednoznačné identifikaci lokalizovaných prostředků. |
 
 Element **LocalizedResources** obsahuje následující prvky:
 
@@ -96,9 +96,9 @@ Element **LocalizedCollections** obsahuje následující prvky:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Deklarován | Ano | Odkazuje na element ClaimType nebo na prvek uživatelského rozhraní v souboru zásad. |
-| ElementId | Ano | Řetězec, který obsahuje odkaz na typ deklarace, který je již definován v části ClaimsSchema, která je použita, pokud je typ **ElementType** nastaven na typ ClaimType. |
-| Cílovácollection | Ano | Cílová kolekce. |
+| Deklarován | Yes | Odkazuje na element ClaimType nebo na prvek uživatelského rozhraní v souboru zásad. |
+| ElementId | Yes | Řetězec, který obsahuje odkaz na typ deklarace, který je již definován v části ClaimsSchema, která je použita, pokud je typ **ElementType** nastaven na typ ClaimType. |
+| Cílovácollection | Yes | Cílová kolekce. |
 
 **Lokalizovaný** ElementCollection obsahuje následující prvky:
 
@@ -110,9 +110,9 @@ Element **Item** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Text | Ano | Uživatelsky přívětivý řetězec zobrazení, který by měl být zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
-| Hodnota | Ano | Hodnota deklarace řetězce přidružená k výběru této možnosti |
-| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
+| Text | Yes | Uživatelsky přívětivý řetězec zobrazení, který by měl být zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
+| Hodnota | Yes | Hodnota deklarace řetězce přidružená k výběru této možnosti |
+| SelectByDefault | No | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
 
 Následující příklad ukazuje použití elementu **LocalizedCollections** . Obsahuje dva **lokalizované** prvkycollection, jeden pro angličtinu a druhý pro španělštinu. Nastavte kolekci **omezení** deklarace identity `Gender` se seznamem položek pro angličtinu a španělštinu.
 
@@ -146,9 +146,9 @@ Element **LocalizedString** obsahuje následující atributy:
 
 | Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Deklarován | Ano | Možné hodnoty: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [predikát](#predicate), [InputValidation](#inputvalidation)nebo [UxElement](#uxelement).   | 
-| ElementId | Ano | Pokud je typ **ElementType** nastaven na `ClaimType` , `Predicate` nebo `InputValidation` , obsahuje tento element odkaz na typ deklarace identity, který je již definován v části ClaimsSchema. |
-| StringId | Ano | Pokud je vlastnost **ElementType** nastavena na `ClaimType` , tento prvek obsahuje odkaz na atribut typu deklarace. Možné hodnoty: `DisplayName` , `AdminHelpText` , nebo `PatternHelpText` . `DisplayName`Hodnota se používá k nastavení zobrazovaného názvu deklarace identity. `AdminHelpText`Hodnota slouží k nastavení názvu textu v nápovědě pro uživatele s deklarací identity. `PatternHelpText`Hodnota se používá k nastavení textu v nápovědě ke vzorci deklarace identity. Pokud je vlastnost **ElementType** nastavena na `UxElement` , tento prvek obsahuje odkaz na atribut prvku uživatelského rozhraní. Pokud je typ **ElementType** nastaven na `ErrorMessage` , tento prvek určuje identifikátor chybové zprávy. Úplný seznam identifikátorů naleznete v tématu [lokalizace ID řetězců](localization-string-ids.md) `UxElement` .|
+| Deklarován | Yes | Možné hodnoty: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [predikát](#predicate), [InputValidation](#inputvalidation)nebo [UxElement](#uxelement).   | 
+| ElementId | Yes | Pokud je typ **ElementType** nastaven na `ClaimType` , `Predicate` nebo `InputValidation` , obsahuje tento element odkaz na typ deklarace identity, který je již definován v části ClaimsSchema. |
+| StringId | Yes | Pokud je vlastnost **ElementType** nastavena na `ClaimType` , tento prvek obsahuje odkaz na atribut typu deklarace. Možné hodnoty: `DisplayName` , `AdminHelpText` , nebo `PatternHelpText` . `DisplayName`Hodnota se používá k nastavení zobrazovaného názvu deklarace identity. `AdminHelpText`Hodnota slouží k nastavení názvu textu v nápovědě pro uživatele s deklarací identity. `PatternHelpText`Hodnota se používá k nastavení textu v nápovědě ke vzorci deklarace identity. Pokud je vlastnost **ElementType** nastavena na `UxElement` , tento prvek obsahuje odkaz na atribut prvku uživatelského rozhraní. Pokud je typ **ElementType** nastaven na `ErrorMessage` , tento prvek určuje identifikátor chybové zprávy. Úplný seznam identifikátorů naleznete v tématu [lokalizace ID řetězců](localization-string-ids.md) `UxElement` .|
 
 ## <a name="elementtype"></a>Deklarován
 
