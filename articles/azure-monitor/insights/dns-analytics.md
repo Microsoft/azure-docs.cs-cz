@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 2471c29f559df5c347c62ceb4c7fd9b4ae1e5eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 385f4a9ff1c299f49a514ad63bb3c8d633d8c191
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552807"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.
 
@@ -35,10 +35,10 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../platform/agent-windows.md) | Ano | Řešení shromažďuje informace o DNS z agentů Windows. |
-| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | Ano | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet služby Azure Storage](../platform/collect-azure-metrics-logs.md) | Ne | Řešení Azure Storage se v řešení nepoužívá. |
+| [Agenti systému Windows](../platform/agent-windows.md) | Yes | Řešení shromažďuje informace o DNS z agentů Windows. |
+| [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
+| [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | Yes | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Účet úložiště Azure](../platform/collect-azure-metrics-logs.md) | No | Řešení Azure Storage se v řešení nepoužívá. |
 
 ### <a name="data-collection-details"></a>Podrobnosti shromažďování dat
 
@@ -74,7 +74,7 @@ Pokud používáte Microsoft Monitoring Agent pro připojení k pracovnímu pros
 Pokud je vaše skupina pro správu Operations Manager připojená k pracovnímu prostoru Log Analytics, po přidání tohoto řešení se do Operations Manager nainstalují následující sady Management Pack. Není nutná žádná konfigurace ani údržba těchto sad Management Pack:
 
 - Sada Microsoft DNS data collector Intelligence Pack (Microsoft. IntelligencePacks. DNS)
-- Konfigurace nástroje Microsoft System Center Advisor DNS Analytics (Microsoft. IntelligencePack. DNS. Configuration)
+- Konfigurace nástroje Microsoft System Center Advisor DNS Analytics (Microsoft.IntelligencePack.Dns.Configuration)
 
 Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../platform/om-agents.md).
 
@@ -159,7 +159,7 @@ Tyto dotazy můžete použít jako výchozí bod pro vytváření vlastních dot
 
 Na stránce prohledávání protokolu můžete vytvořit dotaz. Výsledky hledání můžete filtrovat pomocí ovládacích prvků omezující vlastnosti. Můžete také vytvořit rozšířené dotazy pro transformaci, filtrování a vytváření sestav výsledků. Začněte tím, že použijete následující dotazy:
 
-1. Do **pole vyhledávací dotaz**zadejte `DnsEvents` , pokud chcete zobrazit všechny události DNS vygenerované servery DNS spravovanými řešením. Výsledky uvádějí data protokolu pro všechny události související s vyhledávacími dotazy, dynamickými registracemi a změnami konfigurace.
+1. Do **pole vyhledávací dotaz**zadejte, pokud `DnsEvents` chcete zobrazit všechny události DNS vygenerované servery DNS spravovanými řešením. Výsledky uvádějí data protokolu pro všechny události související s vyhledávacími dotazy, dynamickými registracemi a změnami konfigurace.
 
     ![Hledání protokolu DnsEvents](./media/dns-analytics/log-search-dnsevents.png)  
 
@@ -169,7 +169,7 @@ Na stránce prohledávání protokolu můžete vytvořit dotaz. Výsledky hledá
 
     c. Chcete-li zobrazit data protokolu pro změny konfigurace, vyberte **ConfigurationChange** jako filtr **podtypu** z ovládacího prvku omezující vlastnost na levé straně. Zobrazí se tabulka se seznamem všech událostí změny konfigurace pro vybrané časové období.
 
-1. Do **pole vyhledávací dotaz**zadejte `DnsInventory` , chcete-li zobrazit všechna data týkající se inventarizace DNS pro servery DNS spravované řešením. Výsledky uvádějí data protokolu pro servery DNS, zóny DNS a záznamy prostředků.
+1. Do **pole vyhledávací dotaz**zadejte, `DnsInventory` Chcete-li zobrazit všechna data týkající se inventarizace DNS pro servery DNS spravované řešením. Výsledky uvádějí data protokolu pro servery DNS, zóny DNS a záznamy prostředků.
 
     ![Hledání protokolu DnsInventory](./media/dns-analytics/log-search-dnsinventory.png)
     
@@ -179,7 +179,7 @@ Běžné kroky při řešení potíží:
 
 1. Chybějící data vyhledávání DNS – Chcete-li tento problém vyřešit, zkuste resetovat konfiguraci nebo načíst stránku konfigurace jenom jednou na portálu. Pro obnovení stačí změnit nastavení na jinou hodnotu a pak ho změnit zpátky na původní hodnotu a uložit konfiguraci.
 
-## <a name="feedback"></a>Váš názor
+## <a name="suggestions"></a>Návrhy
 
 Pokud chcete poskytnout zpětnou vazbu, přejděte na [stránku Log Analytics UserVoice](https://aka.ms/dnsanalyticsuservoice) , kde najdete nápady, jak pracovat s funkcemi DNS Analytics. 
 

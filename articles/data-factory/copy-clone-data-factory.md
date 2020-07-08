@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: chez-charlie
+ms.author: chez
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 01/09/2019
-ms.openlocfilehash: 5e44bda8648fbf26487b04cf36a8fd0ec085c411
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/30/2020
+ms.openlocfilehash: 304c39f4b6f7852068d4e72adfad2d41eeefc26c
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414108"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552962"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Kopírování nebo klonování datové továrny v Azure Data Factory
 
@@ -28,25 +28,28 @@ Tento článek popisuje, jak zkopírovat nebo klonovat datovou továrnu v Azure 
 
 Tady jsou některé okolnosti, za kterých může být užitečné zkopírovat nebo klonovat datovou továrnu:
 
--   **Přejmenování prostředků**. Azure nepodporuje přejmenování prostředků. Pokud chcete objekt pro vytváření dat přejmenovat, můžete objekt pro vytváření dat naklonovat s jiným názvem a pak odstranit stávající.
+- **Přesuňte data Factory** do nové oblasti. Pokud chcete přesunout Data Factory do jiné oblasti, nejlepším způsobem je vytvořit kopii v cílové oblasti a odstranit tu existující.
 
--   **Ladění změn** , když funkce ladění nestačí. V některých případech můžete chtít změny otestovat v jiném továrně, než je použijete na svou hlavní. Ve většině scénářů můžete použít ladění. Změny v aktivačních událostech, například jak se chovají změny při automatickém vyvolání triggeru nebo v časovém intervalu, nemusí být testovatelné snadno bez vrácení se změnami. V těchto případech se klonuje továrna a uplatní se vaše změny a přináší spoustu smyslů. Vzhledem k tomu, že se Azure Data Factory poplatky primárně podle počtu spuštění, druhá továrna nevede k žádným dalším poplatkům.
+- **Přejmenování Data Factory**. Azure nepodporuje přejmenování prostředků. Pokud chcete objekt pro vytváření dat přejmenovat, můžete objekt pro vytváření dat naklonovat s jiným názvem a odstranit existující.
+
+- **Ladění změn** , když funkce ladění nestačí. Ve většině scénářů můžete použít [ladění](iterative-development-debugging.md). Při testování změn v naklonovaném prostředí izolovaného prostoru (sandbox) je lepší smysl. Například způsob, jakým se parametrizované kanály ETL budou chovat, když se Trigger aktivuje při příchodu souboru versus překročení časového období, nemusí být snadno testovatelné prostřednictvím samotného ladění. V těchto případech může být vhodné klonovat prostředí izolovaného prostoru (sandbox) pro experimentování. Vzhledem k tomu, že se Azure Data Factory poplatky primárně podle počtu spuštění, druhá továrna nevede na žádné další poplatky.
 
 ## <a name="how-to-clone-a-data-factory"></a>Jak klonovat datovou továrnu
 
-1. Uživatelské rozhraní Data Factory v Azure Portal umožňuje exportovat celou datovou část datové továrny do šablony Správce prostředků spolu se souborem parametrů, který vám umožní změnit hodnoty, které chcete změnit při klonování objektu pro vytváření.
+1. Jako součást je nejdřív potřeba vytvořit cílovou datovou továrnu z Azure Portal.
 
-1. Jako součást je potřeba vytvořit cílovou datovou továrnu z Azure Portal.
+1. Pokud jste v režimu GIT:
+    1. Pokaždé, když publikujete z portálu, šablona Správce prostředků továrny se uloží do GITU ve \_ větvi publikování ADF.
+    1. Připojte novou továrnu ke _stejnému_ úložišti a sestavte z \_ větve publikování ADF. Prostředky, jako jsou kanály, datové sady a triggery, se provedou prostřednictvím
 
-1. Pokud máte ve zdrojové továrně SelfHosted IntegrationRuntime, musíte ho v cílové továrně vytvořit se stejným názvem. Pokud chcete sdílet SelfHosted finanční úřad mezi různými továrnami, můžete použít vzor publikovaný [zde](source-control.md#best-practices-for-git-integration).
+1. Pokud jste v živém režimu:
+    1. Data Factory uživatelské rozhraní umožňuje exportovat celou datovou část vaší datové továrny do souboru šablony Správce prostředků a souboru parametrů. Jsou k nim přistupované na portálu **ARM šablona \ exportovat správce prostředků šablonu** na portálu.
+    1. Můžete provést příslušné změny v souboru parametrů a prohodit nové hodnoty pro novou továrnu.
+    1. V dalším kroku je můžete nasadit pomocí standardních metod nasazení Správce prostředků šablon.
 
-1. Pokud jste v režimu GIT, pokaždé, když publikujete z portálu, se šablona Správce prostředků továrny uloží do GITU ve větvi adf_publish úložiště.
+1. Pokud máte ve zdrojové továrně SelfHosted IntegrationRuntime, musíte ho v cílové továrně vytvořit se stejným názvem. Pokud chcete sdílet SelfHosted Integration Runtime mezi různými továrnami, můžete použít vzor publikovaný [tady](create-shared-self-hosted-integration-runtime-powershell.md) při sdílení SelfHosted IR.
 
-1. Pro jiné scénáře můžete šablonu Správce prostředků stáhnout kliknutím na tlačítko **Exportovat šablonu správce prostředků** na portálu.
-
-1. Po stažení šablony Správce prostředků ji můžete nasadit pomocí standardních metod nasazení Správce prostředků Template.
-
-1. Z bezpečnostních důvodů vygenerovaná Správce prostředků šablona neobsahuje žádné tajné informace, jako jsou hesla pro propojené služby. V důsledku toho je nutné zadat tato hesla jako parametry nasazení. Pokud zadání parametrů není žádoucí, musíte získat připojovací řetězce a hesla propojených služeb od Azure Key Vault.
+1. Z bezpečnostních důvodů nebudou generované šablony Správce prostředků obsahovat žádné tajné informace, například hesla pro propojené služby. Proto je nutné zadat přihlašovací údaje jako parametry nasazení. Pokud nechcete, aby se přihlašovací údaje pro vaše nastavení zadaly ručně, zvažte prosím, že se místo toho načítají připojovací řetězce a hesla z Azure Key Vault. [Další informace](store-credentials-in-key-vault.md)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 68a17b8b3587077222a9ed2057927c8f16253c1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a4c862cd6b6f9b01c0b56c2a21e228fdfd0f6e8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794374"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553348"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Vytváření a Správa klíčů rozhraní API pro službu Azure Kognitivní hledání
 
@@ -29,23 +29,23 @@ Klíč rozhraní API je řetězec tvořený náhodně generovanými čísly a p�
 
 Pro přístup k vaší vyhledávací službě se používají dva typy klíčů: správce (čtení i zápis) a dotaz (jen pro čtení).
 
-|Key|Popis|Omezení|  
+|Klíč|Description|Omezení|  
 |---------|-----------------|------------|  
 |Správce|Udělí úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat.<br /><br /> Dva klíče správce, které se v portálu označují jako *primární* a *sekundární* klíče, se generují při vytvoření služby a dají se jednotlivě znovu vygenerovat na vyžádání. Použití dvou klíčů vám umožní přenášet jeden klíč při použití druhého klíče pro pokračování přístupu ke službě.<br /><br /> Klíče správce se zadává jenom v hlavičkách požadavku HTTP. Do adresy URL nemůžete umístit klíč rozhraní API pro správu.|Maximálně 2 na službu|  
-|Dotaz|Uděluje přístup k indexům a dokumentům jen pro čtení a jsou obvykle distribuovány klientským aplikacím, které vydávají požadavky na hledání.<br /><br /> Klíče dotazů se vytvářejí na vyžádání. Můžete je vytvořit ručně na portálu nebo programově prostřednictvím [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Klíče dotazů lze zadat v hlavičce požadavku HTTP pro hledání, návrh nebo operaci vyhledávání. Případně můžete klíč dotazu předat jako parametr na adrese URL. V závislosti na tom, jak vaše klientská aplikace tento požadavek formuluje, může být snazší klíč předat jako parametr dotazu:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06&api-key=[query key]`|50 na službu|  
+|Dotaz|Uděluje přístup k indexům a dokumentům jen pro čtení a jsou obvykle distribuovány klientským aplikacím, které vydávají požadavky na hledání.<br /><br /> Klíče dotazů se vytvářejí na vyžádání. Můžete je vytvořit ručně na portálu nebo programově prostřednictvím [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Klíče dotazů lze zadat v hlavičce požadavku HTTP pro hledání, návrh nebo operaci vyhledávání. Případně můžete klíč dotazu předat jako parametr na adrese URL. V závislosti na tom, jak vaše klientská aplikace tento požadavek formuluje, může být snazší klíč předat jako parametr dotazu:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|50 na službu|  
 
  Vizuálně nerozlišuje klíč správce nebo klíč dotazu. Oba klíče jsou řetězce složené z 32 náhodně generovaných alfanumerických znaků. Pokud ztratíte přehled o tom, jaký typ klíče je zadán v aplikaci, můžete [zjistit hodnoty klíčů na portálu](https://portal.azure.com) nebo použít [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) k vrácení hodnoty a typu klíče.  
 
 > [!NOTE]  
->  Považuje se za špatný bezpečnostní postup pro předávání citlivých dat, jako `api-key` je například v identifikátoru URI požadavku. Z tohoto důvodu Azure Kognitivní hledání akceptuje klíč dotazu jenom jako `api-key` v řetězci dotazu a měli byste tomu předejít, pokud by obsah vašeho indexu neměl být veřejně dostupný. Jako obecné pravidlo doporučujeme předat `api-key` jako hlavičku požadavku.  
+>  Považuje se za špatný bezpečnostní postup pro předávání citlivých dat, jako je například `api-key` v identifikátoru URI požadavku. Z tohoto důvodu Azure Kognitivní hledání akceptuje klíč dotazu jenom jako `api-key` v řetězci dotazu a měli byste tomu předejít, pokud by obsah vašeho indexu neměl být veřejně dostupný. Jako obecné pravidlo doporučujeme předat `api-key` jako hlavičku požadavku.  
 
 ## <a name="find-existing-keys"></a>Najít existující klíče
 
 Přístupové klíče můžete získat na portálu nebo prostřednictvím [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/). Další informace najdete v tématu [Správa klíčů rozhraní API pro správu a dotazy](search-security-api-keys.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vypíše [služby vyhledávání](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pro vaše předplatné.
-3. Vyberte službu a na stránce Přehled klikněte na možnost klíče **Nastavení** >**Keys** . zobrazí se klíče pro správu a dotazy.
+3. Vyberte službu a na stránce Přehled klikněte na možnost klíče **Nastavení**  > **Keys** . zobrazí se klíče pro správu a dotazy.
 
    ![Stránka portálu, nastavení, sekce klíče](media/search-security-overview/settings-keys.png)
 
@@ -55,9 +55,9 @@ Klíče dotazů jsou používány pro přístup jen pro čtení k dokumentům v 
 
 Omezení přístupu a operací v klientských aplikacích je nezbytné pro zabezpečení prostředků vyhledávání ve vaší službě. Vždy používejte klíč dotazu spíše než klíč správce pro jakýkoli dotaz pocházející z klientské aplikace.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Vypíše [služby vyhledávání](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pro vaše předplatné.
-3. Vyberte službu a na stránce Přehled klikněte na **Nastavení** >**klíče**.
+3. Vyberte službu a na stránce Přehled klikněte na **Nastavení**  > **klíče**.
 4. Klikněte na **Správa klíčů dotazů**.
 5. Použijte klíč dotazu, který jste už vygenerovali pro vaši službu, nebo vytvořte až 50 nových klíčů dotazů. Výchozí klíč dotazu není pojmenován, ale další klíče dotazu lze pojmenovat pro spravovatelnost.
 
@@ -72,7 +72,7 @@ Omezení přístupu a operací v klientských aplikacích je nezbytné pro zabez
 
 Pro každou službu se vytvoří dva klíče správce, abyste mohli otočit primární klíč pomocí sekundárního klíče pro provozní kontinuitu.
 
-1. Na stránce **Settings** >**klíče** nastavení zkopírujte sekundární klíč.
+1. Na stránce **Settings**  > **klíče** nastavení zkopírujte sekundární klíč.
 2. U všech aplikací aktualizujte nastavení klíče rozhraní API tak, aby používalo sekundární klíč.
 3. Znovu vygenerujte primární klíč.
 4. Aktualizujte všechny aplikace tak, aby používaly nový primární klíč.

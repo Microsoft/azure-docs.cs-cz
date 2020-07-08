@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 195d9f6da88639cc3b4299519e90bf682bc743d9
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 102808d716c080102cce4c02921637101da9fab7
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888592"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553081"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -24,7 +24,8 @@ Služba Azure Instance Metadata Service (IMDS) poskytuje informace o aktuálně 
 Tyto informace zahrnují SKU, úložiště, konfigurace sítě a nadcházející události údržby. Úplný seznam dat, která jsou k dispozici, najdete v tématu [rozhraní API pro metadata](#metadata-apis).
 Instance Metadata Service je k dispozici jak pro instance virtuálních počítačů, tak pro instance sady škálování virtuálních počítačů. Je k dispozici pouze pro spuštěné virtuální počítače vytvořené nebo spravované pomocí [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/).
 
-Instance Metadata Service Azure je koncový bod REST, který je dostupný na dobře známé IP adrese, která není směrovatelný ( `169.254.169.254` ), dá se k němu získat přístup jenom z virtuálního počítače.
+Azure IMDS je koncový bod REST, který je dostupný na dobře známé IP adrese, která není směrovatelný ( `169.254.169.254` ), dá se k němu získat přístup jenom z virtuálního počítače. Komunikace mezi virtuálním počítačem a IMDS nikdy neopustí hostitele.
+Osvědčeným postupem je, že klienti HTTP při dotazování na IMDS a považovat za stejné jako při dotazování na webové proxy servery v rámci virtuálního počítače `169.254.169.254` [`168.63.129.16`](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) .
 
 ## <a name="security"></a>Zabezpečení
 
@@ -46,7 +47,7 @@ Níže je uvedený ukázkový kód pro načtení všech metadat pro instanci, pr
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance?api-version=2019-06-01
 ```
 
 **Základě**
@@ -181,7 +182,7 @@ Rozhraní API | Výchozí formát dat | Jiné formáty
 Pokud chcete získat přístup k nevýchozímu formátu odpovědi, v žádosti určete požadovaný formát jako parametr řetězce dotazu. Příklad:
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
 > [!NOTE]
@@ -205,7 +206,7 @@ Pokud není zadána žádná verze, je vrácena chyba se seznamem nejnovějšíc
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance
 ```
 
 **Základě**
@@ -271,7 +272,7 @@ Jako poskytovatel služeb budete možná potřebovat sledovat počet virtuální
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-08-01&format=text"
 ```
 
 **Základě**
@@ -289,7 +290,7 @@ Tato data můžete zadávat přímo prostřednictvím Instance Metadata Service.
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-08-01&format=text"
 ```
 
 **Základě**
@@ -305,7 +306,7 @@ Jako poskytovatel služeb můžete obdržet volání podpory, kde byste chtěli 
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01
 ```
 
 **Základě**
@@ -405,7 +406,7 @@ Azure má různé cloudy svrchovan jako [Azure Government](https://azure.microso
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **Základě**
@@ -444,7 +445,7 @@ macAddress | Adresa MAC virtuálního počítače | 2017-04-02
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/network?api-version=2017-08-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/network?api-version=2017-08-01
 ```
 
 **Základě**
@@ -483,7 +484,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.
 #### <a name="sample-2-retrieving-public-ip-address"></a>Ukázka 2: načtení veřejné IP adresy
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-08-01&format=text"
 ```
 
 ## <a name="storage-metadata"></a>Metadata úložiště
@@ -539,7 +540,7 @@ Následující příklad ukazuje, jak zadat dotaz na informace o úložišti vir
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01
 ```
 
 **Základě**
@@ -611,7 +612,7 @@ Na VIRTUÁLNÍm počítači Azure možná byly aplikovány značky, aby je bylo 
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
 ```
 
 **Základě**
@@ -625,7 +626,7 @@ Department:IT;Environment:Test;Role:WebRole
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04
 ```
 
 **Základě**
@@ -659,7 +660,7 @@ Součástí scénáře, který obsluhuje Instance Metadata Service, je poskytnou
 **Žádost**
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 ```
 
 > [!NOTE]
@@ -698,7 +699,7 @@ Dodavatelé na webu Marketplace chtějí zajistit, aby byl software licencován 
 
 ```powershell
 # Get the signature
-$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.254/metadata/attested/document?api-version=2019-04-30
+$attestedDoc = Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -NoProxy -Uri http://169.254.169.254/metadata/attested/document?api-version=2019-04-30
 # Decode the signature
 $signature = [System.Convert]::FromBase64String($attestedDoc.signature)
 ```

@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 548ebf5b0d5836383b74326516fbe47b1b25f60f
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: f6bda61960efd9a5e176f8792601e315ba96bcca
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080184"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553292"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Šifrování v klidovém formátu obsahu v Azure Kognitivní hledání používání klíčů spravovaných zákazníkem v Azure Key Vault
 
@@ -26,7 +26,7 @@ Ve výchozím nastavení služba Azure Kognitivní hledání šifruje indexovan�
 Klíče nemusí být ve stejném Key Vault. Jedna vyhledávací služba může hostovat víc šifrovaných indexů nebo synonym, která se zašifrují vlastními šifrovacími klíči spravovanými zákazníky uloženými v různých trezorech klíčů.  Můžete mít také indexy a mapy synonym ve stejné službě, které nejsou šifrovány pomocí klíčů spravovaných zákazníkem. 
 
 > [!IMPORTANT] 
-> Tato funkce je k dispozici na [REST API verze 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) a [.net SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md). V tuto chvíli není v Azure Portal žádná podpora ke konfiguraci šifrovacích klíčů spravovaných zákazníkem. Vyhledávací služba musí být vytvořená po 2019. lednu a nemůže být volná (sdílená) služba.
+> Tato funkce je k dispozici na [REST API](https://docs.microsoft.com/rest/api/searchservice/) a [.net SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md). V tuto chvíli není v Azure Portal žádná podpora ke konfiguraci šifrovacích klíčů spravovaných zákazníkem. Vyhledávací služba musí být vytvořená po 2019. lednu a nemůže být volná (sdílená) služba.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -236,4 +236,4 @@ Vytvoření aplikace AAD na portálu:
 Pokud nejste obeznámeni s architekturou zabezpečení Azure, přečtěte si [dokumentaci k zabezpečení Azure](https://docs.microsoft.com/azure/security/)a zejména tento článek:
 
 > [!div class="nextstepaction"]
-> [Šifrování dat v klidovém případě](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+> [Šifrování neaktivních dat](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

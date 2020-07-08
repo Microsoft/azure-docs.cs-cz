@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 26899d629661fbf3a4f48ac09fa9fd3ee806bdb4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 06/30/2020
+ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321138"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85554253"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Přehled importu dat – Azure Kognitivní hledání
 
@@ -52,7 +52,7 @@ V REST API vystavte žádosti HTTP POST s texty požadavku JSON na adresu URL ko
 V sadě .NET SDK vytvořte balíček dat do `IndexBatch` objektu. `IndexBatch`Zapouzdřuje kolekci `IndexAction` objektů, z nichž každý obsahuje dokument a vlastnost, která oznamuje službě Azure kognitivní hledání, jakou akci má tento dokument dělat. Příklad kódu naleznete v tématu [rychlý Start pro C#](search-get-started-dotnet.md).
 
 
-| @search.action | Popis | Potřebná pole pro každý dokument | Poznámky |
+| @search.action | Description | Potřebná pole pro každý dokument | Poznámky |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Akce `upload` je podobná akci „upsert“, kdy je dokument vložený, pokud je nový a aktualizovaný nebo nahrazený, pokud již existuje. |klíč a další pole, která si přejete definovat |Pokud aktualizujete nebo nahrazujete stávající dokument, bude každé pole, které není zadané v žádosti, nastavené na `null`. K tomu dojde i v případě, že bylo pole dříve nastavené na nenulovou hodnotu. |
 | `merge` |Aktualizuje stávající dokument se zadanými poli. Pokud dokument v indexu neexistuje, sloučení selže. |klíč a další pole, která si přejete definovat |Každé pole zadané ve sloučení nahradí stávající pole v dokumentu. V sadě .NET SDK obsahuje pole typu `DataType.Collection(DataType.String)` . V REST API obsahuje pole typu `Collection(Edm.String)` . Například pokud dokument obsahuje pole `tags` s hodnotou `["budget"]` a vy spustíte sloučení s polem `tags` s hodnotou `["economy", "pool"]`, konečná hodnota pole `tags` bude `["economy", "pool"]`. Hodnota nebude `["budget", "economy", "pool"]`. |
@@ -63,11 +63,13 @@ V sadě .NET SDK vytvořte balíček dat do `IndexBatch` objektu. `IndexBatch`Za
 
 Existují dva způsoby [vyhledávání v indexu pomocí REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). První způsob je vydání požadavku HTTP POST, kde parametry dotazu jsou určené v objektu JSON v textu požadavku. Druhý způsob je vydání požadavku HTTP GET, kde parametry dotazu jsou určené v rámci URL požadavku. Metoda POST má [mírnější omezení](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) velikosti parametrů dotazu než metoda GET. Z tohoto důvodu doporučujeme používat metodu POST, pokud pro vás neplatí zvláštní podmínky, kdy by bylo pohodlnější použití metody GET.
 
-U metody POST i GET budete muset v URL požadavku poskytnout *název služby*, *název indexu* a správnou *verzi rozhraní API* (v době publikování tohoto dokumentu je aktuální verze rozhraní API `2019-05-06`). U metody GET zadáte parametry dotazu v rámci *řetězce dotazu* na konci adresy URL. Formát URL vidíte níže:
+Pro POST i GET musíte zadat *název služby*, *název indexu*a *verzi rozhraní API* v adrese URL požadavku. 
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+U metody GET zadáte parametry dotazu v rámci *řetězce dotazu* na konci adresy URL. Formát URL vidíte níže:
 
-Formát pro metodu POST je stejný, ale jako parametr řetězce dotazu obsahuje pouze api-version.
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
+
+Formát pro POST je stejný, ale `api-version` v parametrech řetězce dotazu.
 
 ## <a name="pulling-data-into-an-index"></a>Přetáhnutí dat do indexu
 

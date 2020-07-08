@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bcf971b56aa0dc343fdfaf34b329e49a82bba9a8
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 9e653469eb5bffbf81a0e09982edcbd1e937ba61
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771516"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85553536"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
@@ -61,7 +61,7 @@ Existují dva případy, v závislosti na tom, jestli se klientská aplikace roz
 
 Při použití sdíleného tajného klíče obsahuje požadavek na přístupový token služby na službu následující parametry:
 
-| Parametr |  | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | `grant_type` | Vyžadováno | Typ žádosti o token Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Vyžadováno | ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |
@@ -93,7 +93,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 Požadavek na přístupový token služby na službu s certifikátem obsahuje následující parametry:
 
-| Parametr |  | Popis |
+| Parametr | Typ | Description |
 | --- | --- | --- |
 | `grant_type` | Vyžadováno | Typ požadavku tokenu Pro požadavek používající token JWT musí být hodnota `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Vyžadováno |  ID aplikace (klienta), které stránka [Azure Portal-registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřadila k vaší aplikaci. |

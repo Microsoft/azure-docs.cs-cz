@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85552525"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Monitorování požadavků na dotazy v Azure Kognitivní hledání
 
@@ -36,7 +36,7 @@ Svazek se měří jako **vyhledávací dotazy za sekundu** (QPS), vestavěnou me
 
 Je běžné, že dotazy se mají spouštět v milisekundách, takže se v metrikách zobrazí jenom dotazy, které měří jenom sekundy.
 
-| Typ agregace | Popis |
+| Typ agregace | Description |
 |------------------|-------------|
 | Průměr | Průměrný počet sekund během minuty, během kterých došlo k provedení dotazu.|
 | Počet | Počet metrik, které byly vygenerovány do protokolu v rámci intervalu 1 – minut. |
@@ -128,11 +128,11 @@ Když povolíte protokolování prostředků, systém zachytí požadavky na dot
    AzureDiagnostics
    | project OperationName, Query_s, IndexName_s, Documents_d
    | where OperationName == "Query.Search"
-   | where Query_s != "?api-version=2019-05-06&search=*"
+   | where Query_s != "?api-version=2020-06-30&search=*"
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. Volitelně můžete nastavit filtr sloupce pro *Query_s* a vyhledat konkrétní syntaxi nebo řetězec. Například můžete filtrovat přes *je rovno* `?api-version=2019-05-06&search=*&%24filter=HotelName`).
+1. Volitelně můžete nastavit filtr sloupce pro *Query_s* a vyhledat konkrétní syntaxi nebo řetězec. Například můžete filtrovat přes *je rovno* `?api-version=2020-06-30&search=*&%24filter=HotelName` ).
 
    ![Řetězce dotazů v protokolu](./media/search-monitor-usage/log-query-strings.png "Řetězce dotazů v protokolu")
 
@@ -181,7 +181,7 @@ Při nahrávání omezení konkrétní konfigurace oddílu repliky je také uži
 
    ![Podrobnosti výstrahy](./media/search-monitor-usage/alert-details.png "Podrobnosti upozornění")
 
-Pokud jste zadali e-mailové oznámení, obdržíte e-mailovou zprávu od "Microsoft Azure" s řádkem předmětu "Azure: aktivované `<your rule name>`závažnost: 3".
+Pokud jste zadali e-mailové oznámení, obdržíte e-mailovou zprávu od "Microsoft Azure" s řádkem předmětu "Azure: aktivované závažnost: 3 `<your rule name>` ".
 
 <!-- ## Report query data
 
