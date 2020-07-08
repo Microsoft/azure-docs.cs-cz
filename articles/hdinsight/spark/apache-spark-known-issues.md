@@ -8,12 +8,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: eec5de7521c98e8147a8439844fd2a2a6b1bd2bc
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73494530"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037490"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Známé problémy pro cluster Apache Spark v HDInsight
 
@@ -30,13 +29,17 @@ Problém můžete vyřešit pomocí následujícího postupu:
 
 2. Spuštěním následujícího příkazu Najděte ID aplikací interaktivních úloh spouštěných prostřednictvím Livy.
 
-        yarn application –list
+   ```bash
+   yarn application –list
+   ```
 
     Výchozí názvy úloh budou Livy, pokud byly úlohy spuštěny s relací Livy Interactive bez zadání explicitních názvů. Pro relaci Livy spuštěnou v [Jupyter notebook](https://jupyter.org/)začíná název úlohy `remotesparkmagics_*` .
 
 3. Spuštěním následujícího příkazu tyto úlohy ukončete.
 
-        yarn application –kill <Application ID>
+   ```bash
+   yarn application –kill <Application ID>
+   ```
 
 Nové úlohy začínají běžet.
 
@@ -115,7 +118,7 @@ Pokud má cluster Spark dostatek prostředků, při pokusu o vytvoření relace 
 
 2. Restartujte Poznámkový blok, který jste se pokusili spustit. K dispozici je dostatek prostředků, aby bylo možné nyní vytvořit relaci.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 

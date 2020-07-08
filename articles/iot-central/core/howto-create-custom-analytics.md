@@ -10,10 +10,9 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84660123"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
@@ -62,7 +61,7 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Název    | Zvolit název oboru názvů |
-| Cenová úroveň | Basic |
+| Cenová úroveň | Základní |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | IoTCentralAnalysis |
 | Umístění | USA – východ |

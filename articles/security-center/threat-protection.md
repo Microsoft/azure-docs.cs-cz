@@ -8,14 +8,13 @@ manager: rkarlin
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 03/15/2020
+ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: MT
+ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267150"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037184"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -106,36 +105,18 @@ Další informace o plánech App Service najdete v tématu [plány App Service](
 
 
 
-## <a name="threat-protection-for-azure-containers"></a>Ochrana před hrozbami pro kontejnery Azure<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>Ochrana před hrozbami pro kontejnery<a name="azure-containers"></a>
 
-> [!NOTE]
-> Tato služba není aktuálně dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
+### <a name="availability"></a>Dostupnost
 
-Security Center poskytuje ochranu před internetovými útoky v reálném čase pro vaše kontejnerová prostředí a generuje výstrahy pro podezřelé aktivity. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
+- Stav vydání: **Obecná dostupnost**
+- Požadované role: **Správce zabezpečení** může zrušit výstrahy. **Čtenář zabezpečení** může zobrazit zjištění.
+- Cloud<br>
+    ✔ Komerční cloudy<br>
+    ✘ US Gov<br>
+    ✘ Čína gov, ostatní gov
 
-Security Center poskytuje ochranu před hrozbami na různých úrovních: 
-
-* Agent Security Center **úrovně hostitele** (dostupný na úrovni Standard, viz [ceny](security-center-pricing.md) ) monitoruje Linux pro podezřelé aktivity. Agent aktivuje výstrahy pro podezřelé aktivity pocházející z uzlu nebo kontejneru, který je v něm spuštěný. Příklady takových aktivit zahrnují detekci webového prostředí a připojení se známými podezřelými IP adresami.
-
-    Pro lepší přehled o zabezpečení vašich kontejnerových prostředí agent sleduje analýzu specifickou pro kontejnery. Aktivuje výstrahy pro události, jako je vytvoření privilegovaného kontejneru, podezřelý přístup k serverům rozhraní API a servery Secure Shell (SSH) běžící uvnitř kontejneru Docker.
-
-    >[!IMPORTANT]
-    > Pokud se rozhodnete neinstalovat agenty na hostitele, obdržíte pouze podmnožinu výhod ochrany před hrozbami a výstrahy zabezpečení. Pořád budete dostávat výstrahy týkající se analýzy sítě a komunikace se škodlivými servery.
-
-    Seznam výstrah na úrovni hostitele najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-containerhost).
-
-
-* Na **úrovni clusteru AKS**je ochrana před hrozbami založená na analýze protokolů auditu Kubernetes. Pokud chcete toto monitorování bez **agentů** povolit, přidejte na stránce s **nastavením cenové &** možnost Kubernetes (podívejte se na [ceny](security-center-pricing.md)). Pokud chcete na této úrovni generovat výstrahy, Security Center monitorovat služby spravované AKS pomocí protokolů načtených pomocí AKS. Mezi příklady událostí na této úrovni patří exponované řídicí panely Kubernetes, vytváření vysoce privilegovaných rolí a vytváření citlivých připojení.
-
-    >[!NOTE]
-    > Security Center vygeneruje výstrahy zabezpečení pro akce a nasazení služby Azure Kubernetes, ke kterým dochází po povolení možnosti Kubernetes v nastaveních předplatného. 
-
-    Seznam výstrah na úrovni clusteru AKS najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-akscluster).
-
-Náš globální tým výzkumných pracovníků pro zabezpečení nepřetržitě monitoruje i na šířku hrozby. Přidávají výstrahy a chyby specifické pro kontejner při jejich zjištění.
-
-> [!TIP]
-> Pomocí pokynů v [tomto blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)můžete simulovat výstrahy kontejneru.
+[!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
 
 
@@ -150,9 +131,9 @@ Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuj
 
 Výstrahy se zobrazí, když dojde k podezřelým databázovým aktivitám, potenciálním ohrožením zabezpečení nebo útokům prostřednictvím injektáže SQL a k neobvyklé přístupu k databázi a ke vzorům dotazů.
 
-Rozšířená ochrana před internetovými útoky pro Azure SQL Database a SQL je součástí jednotného balíčku [ADS (Advanced Data Security)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) pro pokročilé funkce zabezpečení SQL, zahrnující databáze SQL Azure, Azure SQL Database spravované instance, Azure SQL Data Warehouse databáze a SQL servery na Azure Virtual Machines.
+Rozšířená ochrana před internetovými útoky pro Azure SQL Database a SQL je součástí sjednoceného balíčku [zabezpečení dat (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) pro pokročilé funkce zabezpečení SQL, zahrnující Azure SQL Database, spravované instance Azure SQL, Azure SQL Data Warehouse databáze a SQL servery na Virtual Machines Azure.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Jak povolit rozšířenou ochranu před internetovými útoky pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [Jak povolit rozšířenou ochranu před internetovými útoky pro SQL servery na Azure Virtual Machines](security-center-iaas-advanced-data.md)
@@ -162,25 +143,58 @@ Další informace naleznete v tématu:
 
 ## <a name="threat-protection-for-azure-storage"></a>Ochrana před hrozbami pro Azure Storage<a name="azure-storage"></a>
 
-Rozšířená ochrana před internetovými útoky pro Azure Storage detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby, aniž byste museli být odborníkem na zabezpečení a pomáhají spravovat systémy monitorování zabezpečení. 
+### <a name="availability"></a>Dostupnost
 
-Výstrahy zabezpečení se aktivují, když dojde k podezřelým aktivitám vašeho účtu úložiště nebo když se zjistí chování neobvyklé. Podezřelé aktivity můžou zahrnovat nahrávání objektu blob, který je podezřelý z obsahujícího malwaru. Výstrahy chování neobvyklé obsahují změny ve vzoru přístupu k účtu úložiště.
+- Stav vydaných verzí:
+    - [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/) (Obecná dostupnost)
+    - [Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (Preview)
+    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (Preview)
+- Cloud<br>
+    ✔ Komerční cloudy<br>
+    ✔ US Gov<br>
+    ✘ Čína gov, ostatní gov
 
-Výstrahy obsahují podrobnosti o incidentu, který je aktivoval, a také doporučení k tomu, jak tyto hrozby prozkoumat a opravit.
+### <a name="whats-protected"></a>Co je chráněno?
 
-Ochrana před hrozbami pro Azure Storage je aktuálně dostupná jenom pro [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/). 
+Ochrana před hrozbami pro Azure Storage detekuje na vašich Azure Storage účtech potenciálně škodlivé aktivity. Data je možné chránit bez ohledu na to, jestli jsou uložená jako kontejnery objektů blob, sdílené složky nebo datová jezera.
 
-Tato služba je dostupná ve všech veřejných cloudech a v cloudech USA, ale ne v oblastech cloudových nebo Azure Governmentch cloudových oblastí. 
+Tato vrstva ochrany umožňuje řešit hrozby, *aniž* byste museli být odborníkem na zabezpečení a pomáhají spravovat systémy monitorování zabezpečení.
+
+Vaše účty úložiště jsou chráněné 
+
+### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Jaký typ výstrah ochrana před hrozbami pro Azure Storage poskytnout?
+
+Výstrahy zabezpečení se aktivují, když dojde k těmto akcím:
+
+- **Podezřelá aktivita** – například účet úložiště byl úspěšně ZÍSKÁN z IP adresy, která se označuje jako aktivní uzel ukončení systému.
+- **Neobvyklé chování** – například změny ve vzoru přístupu k účtu úložiště
+- **Potenciální nahraný malware** – analýza reputace hodnoty hash indikuje, že nahraný soubor obsahuje malware.
+
+Výstrahy obsahují podrobnosti o incidentu, který je aktivoval, a doporučení ohledně toho, jak tyto hrozby prozkoumat a opravit.
+
+### <a name="what-is-hash-reputation-analysis-for-malware"></a>Co je analýza reputace hodnot hash pro malware?
+
+Pokud chcete zjistit, jestli je nahraný soubor podezřelý, ochrana před hrozbami pro Azure Storage používá analýzu reputace hodnoty hash, kterou podporuje [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684). Nástroje ochrany před internetovými útoky neskenují nahrané soubory, ale prozkoumají protokoly úložiště a porovnávají hodnoty hash nově nahraných souborů o známých virech, trojských koním, spywaru a ransomwarem. 
+
+Pokud je podezření, že se jedná o malware, Security Center zobrazí výstrahu a může volitelně poslat e-mail vlastníkovi úložiště k odstranění podezřelého souboru. Chcete-li nastavit automatické odebrání souborů, které analýza reputace hodnot hash indikuje jako malware, nasaďte [automatizaci pracovního postupu, která aktivuje výstrahy obsahující "potenciální malware nahraný do účtu úložiště"](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005).
+
+
+
+### <a name="next-steps"></a>Další kroky 
 
 Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na stránce s [cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Jak povolit rozšířenou ochranu před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Seznam výstrah ochrany před hrozbami pro Azure Storage](alerts-reference.md#alerts-azurestorage)
+* [Možnosti logiky hrozeb Microsoftu](https://go.microsoft.com/fwlink/?linkid=2128684)
 
 > [!TIP]
-> Výstrahy Azure Storage můžete simulovat podle pokynů v [tomto blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131).
+> Výstrahy úložiště můžete simulovat podle pokynů v [tomto blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131).
+
+
+
 
 
 
@@ -189,7 +203,7 @@ Další informace naleznete v tématu:
 
 Výstrahy Azure Cosmos DB jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití.
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 * [Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Seznam výstrah ochrany před hrozbami pro Azure Cosmos DB (Preview)](alerts-reference.md#alerts-azurecosmos)
@@ -228,14 +242,17 @@ Seznam výstrah Azure Resource Manager (Preview) najdete v [referenční tabulce
 >[!NOTE]
 > Některé z předchozích analýz jsou napájené z Microsoft Cloud App Security. Pokud chcete tyto analýzy využít, musíte aktivovat licenci Cloud App Security. Pokud máte licenci Cloud App Security, jsou tyto výstrahy ve výchozím nastavení povolené. Zakázání výstrah:
 >
-> 1. V okně **Security Center** vyberte **zásady zabezpečení**. U předplatného, které chcete změnit, vyberte **Upravit nastavení**.
-> 2. Vyberte **detekci hrozeb**.
-> 3. V části **Povolit integrace**zrušte zaškrtnutí políčka **Povolit Microsoft Cloud App Security k přístupu k datům**a vyberte **Uložit**.
+> 1. V nabídce Security Center vyberte **cenové & nastavení**.
+> 1. Vyberte předplatné, které chcete změnit.
+> 1. Vyberte **detekci hrozeb**.
+> 1. Zrušte zaškrtnutí políčka **Allow Microsoft Cloud App Security pro přístup k datům**a vyberte **Uložit**.
 
 >[!NOTE]
 >Security Center ukládá zákaznická data týkající se zabezpečení ve stejné geografické podobě jako její prostředek. Pokud společnost Microsoft ještě nebyla nasazena Security Center v geografickém prostředku, uloží data do USA. Pokud je povolená Cloud App Security, ukládají se tyto informace v souladu s pravidly geografického umístění Cloud App Security. Další informace najdete v tématu [úložiště dat pro jiné než regionální služby](https://azuredatacentermap.azurewebsites.net/).
 
+1. Nastavte pracovní prostor, do kterého instalujete agenta. Ujistěte se, že je pracovní prostor ve stejném předplatném, které používáte v Security Center a máte oprávnění ke čtení a zápisu v pracovním prostoru.
 
+1. Nastavte cenovou úroveň Standard a vyberte **Uložit**.
 
 
 

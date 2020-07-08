@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 794c88556fb69aae11c582afd03f548480469e34
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83684706"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Shromažďování dat telemetrie pro vyhledávání analýz provozu
@@ -52,7 +51,7 @@ Zástupce, který funguje pro některé typy projektů aplikace Visual Studio, s
 
 1. Klikněte **na Začínáme.**
 
-1. Zaregistrujte svou aplikaci poskytnutím účet Microsoft, předplatným Azure a prostředku Application Insights (výchozí prostředek je výchozí). Klikněte na **zaregistrovat**.
+1. Zaregistrujte svou aplikaci poskytnutím účet Microsoft, předplatným Azure a prostředku Application Insights (výchozí prostředek je výchozí). Klikněte na **Zaregistrovat**.
 
 V tuto chvíli je vaše aplikace nastavená pro monitorování aplikací, což znamená, že všechny načtené stránky jsou sledovány s výchozími metrikami. Další informace o předchozích krocích najdete v tématu [Povolení telemetrie Application Insights na straně serveru](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio).
 
@@ -70,7 +69,7 @@ Na straně klienta můžete mít další kód, který zpracovává vstupy dotaz�
 
 **Použití jazyka C#**
 
-V jazyce C# je **InstrumentationKey** nalezen v konfiguraci aplikace, například appSettings. JSON, pokud je projekt ASP.NET. Pokud si nejste jisti klíčem umístění, přečtěte si pokyny k registraci.
+V jazyce C# je **InstrumentationKey** nalezen v konfiguraci aplikace, například appsettings.jsv případě, že je projekt ASP.NET. Pokud si nejste jisti klíčem umístění, přečtěte si pokyny k registraci.
 
 ```csharp
 private static TelemetryClient _telemetryClient;

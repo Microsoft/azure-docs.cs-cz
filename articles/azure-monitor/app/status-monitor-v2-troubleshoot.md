@@ -6,10 +6,9 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81732940"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Řešení potíží s agentem Application Insights (dříve s názvem Monitorování stavu v2)
@@ -24,9 +23,9 @@ Pokud se jedná o problém, který zde není uveden, můžete nás kontaktovat n
 
 Pokud je některá z těchto knihoven DLL přítomna v adresáři bin, může monitorování selhat:
 
-- Microsoft. ApplicationInsights. dll
-- Microsoft. AspNet. TelemetryCorrelation. dll
-- System. Diagnostics. DiagnosticSource. dll
+- Microsoft.ApplicationInsights.dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
+- System.Diagnostics.DiagnosticSource.dll
 
 Některé z těchto knihoven DLL jsou součástí šablon výchozích aplikací sady Visual Studio, a to i v případě, že je vaše aplikace nepoužívá.
 Pomocí nástrojů pro řešení potíží se můžete podívat na příznaky chování:
@@ -42,7 +41,7 @@ Pomocí nástrojů pro řešení potíží se můžete podívat na příznaky ch
     FormattedMessage="Found 'System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' assembly, skipping attaching redfield binaries" 
     ```
 
-- Zaiisreset a zatížení aplikace (bez telemetrie). Prozkoumejte pomocí Sysinternals (Handle. exe a ListDLLs. exe):
+- Zaiisreset a zatížení aplikace (bez telemetrie). Prozkoumejte se na Sysinternals (Handle.exe a ListDLLs.exe):
     ```
     .\handle64.exe -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
     E54: File  (R-D)   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll
@@ -60,7 +59,7 @@ Do této sdílené konfigurace nelze vložit modul HTTP.
 Spusťte příkaz Enable na každém webovém serveru pro instalaci knihovny DLL do mezipaměti GAC každého serveru.
 
 Po spuštění příkazu Enable proveďte tyto kroky:
-1. Přejít do sdíleného konfiguračního adresáře a najít soubor applicationHost. config.
+1. Přejít do sdíleného konfiguračního adresáře a najít soubor applicationHost.config.
 2. Přidejte tento řádek do části moduly v konfiguraci:
     ```
     <modules>
@@ -124,7 +123,7 @@ Podrobný popis způsobu použití této rutiny najdete v [referenčních inform
 Můžete zkontrolovat procesy v počítači instrumentace a zjistit, jestli jsou všechny knihovny DLL načtené.
 Pokud monitorování funguje, měli byste načíst aspoň 12 knihoven DLL.
 
-K zkontrolování knihoven DLL použijte `Get-ApplicationInsightsMonitoringStatus -InspectProcess` příkaz.
+`Get-ApplicationInsightsMonitoringStatus -InspectProcess`K zkontrolování knihoven DLL použijte příkaz.
 
 Podrobný popis způsobu použití této rutiny najdete v [referenčních informacích k rozhraní API](status-monitor-v2-api-reference.md) .
 
@@ -133,8 +132,8 @@ Podrobný popis způsobu použití této rutiny najdete v [referenčních inform
 
 #### <a name="setup"></a>Nastavení
 
-1. Stáhněte si PerfView. exe a PerfView64. exe z [GitHubu](https://github.com/Microsoft/perfview/releases).
-2. Spusťte PerfView64. exe.
+1. Stáhněte si PerfView.exe a PerfView64.exe z [GitHubu](https://github.com/Microsoft/perfview/releases).
+2. Spusťte PerfView64.exe.
 3. Rozbalte položku **Pokročilá nastavení**.
 4. Zrušte zaškrtnutí políček:
     - **Věřitel**

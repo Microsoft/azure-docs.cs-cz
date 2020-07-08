@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
 ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83664988"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Řešení potíží s Windows Boot Managerem – chyba – 0xC0000225 "status nenalezen"
@@ -108,11 +107,11 @@ Poškození podregistru může mít následující příčiny:
 1. Klikněte na soubor pravým tlačítkem, vyberte **vlastnosti**a pak vyberte kartu **Podrobnosti** a zobrazte informace o souboru.
    1. Poznamenejte si verzi souboru, jak je znázorněno na následujícím obrázku:
 
-      ![Okno vlastností souboru CNG. sys se zvýrazněnou verzí souboru.](./media/troubleshoot-boot-error-status-not-found/5.png)
+      ![Okno vlastností souboru ' cng.sys ' se zvýrazněnou verzí souboru.](./media/troubleshoot-boot-error-status-not-found/5.png)
 
-1. Přejmenujte soubor na **< binární. SYS >. old**, nahrazuje **< binární. SYS >** s názvem souboru.
+1. Přejmenujte soubor na **< BINARY.SYS >. old**a nahraďte **< BINARY.SYS >** názvem souboru.
 
-   V případě obrázku v kroku výše by se soubor **CNG. sys** přejmenoval na **CNG. sys. old.**
+   V případě obrázku v kroku výše by se **cng.sys** souboru přejmenoval na **cng.sys. old.**
 
    > [!NOTE]
    > Pokud se pokusíte přejmenovat soubor a dostat zprávu "soubor je poškozen a nečitelný", [požádejte o pomoc podporu](https://azure.microsoft.com/support/create-ticket/), protože toto řešení nebude fungovat.
@@ -127,7 +126,7 @@ Poškození podregistru může mít následující příčiny:
 
       Tento příkaz zobrazí seznam všech verzí souboru, které má počítač, a poskytuje tak historii cest této součásti.
       
-      Například **dir CNG. sys** se přejmenuje na **dir CNG. sys/s.**
+      Například **dir cng.sys** by se přejmenovala **dir cng.sys/s**
 
    1. V seznamu vyberte nejnovější verzi souboru (nebo všechny, které dáváte přednost), a zkopírujte soubor do složky **Windows\System32** pomocí předchozí cesty a následujícího příkazu:
 
@@ -136,9 +135,9 @@ Poškození podregistru může mít následující příčiny:
       > [!NOTE]
       > Pokud poslední binární soubor nefungoval, vyzkoušejte verzi před tím, nebo kteroukoli z nich, na které víte, že je stabilní soubor, třeba verze před opravou.
 
-      Pokud má například binární soubor hodnotu **cmimcext. sys**, vadná jednotka je jednotka **F:** a právě jste spustili hledání nejnovější verze, zobrazí se následující obrázek, ve kterém dotaz na příkazovém řádku `dir cmim* /s` vyhledá nejnovější verzi souboru cmimcext. sys.
+      Například pokud je binární soubor, který hledáte, **cmimcext.sys**, vadná jednotka je jednotka **F:** a právě jste spustili hledání nejnovější verze, zobrazí se následující obrázek, ve kterém dotaz na příkazovém řádku `dir cmim* /s` vyhledá nejnovější verzi cmimcext.sys souboru.
 
-      ![Dotaz na příkazovém řádku příkazu DIR CMIM */s pro vyhledání nejnovější verze souboru cmimcext. sys.](./media/troubleshoot-boot-error-status-not-found/6.png)
+      ![Dotaz na příkazovém řádku příkazu DIR CMIM */s pro vyhledání nejnovější verze cmimcext.sys souboru.](./media/troubleshoot-boot-error-status-not-found/6.png)
 
       Na výše uvedeném obrázku se dotaz prováděl v **C:**, zatímco písmeno jednotky by mělo být na vadné jednotce **F:**, což je disk s operačním systémem připojený jako datový disk na opravném virtuálním počítači.
 
@@ -160,7 +159,7 @@ Pokud tato kolekce informací obsahuje chybu, pokud není k dispozici žádný s
 
    ![Spouštěcí zavaděč Windows zobrazený ve virtuálním počítači 1. generace s zvýrazněným atributem identifikátoru Zvýrazněný atribut identifikátoru ukazuje jedinečný alfanumerický řetězec.](./media/troubleshoot-boot-error-status-not-found/7.png)
 
-   Poznamenejte si identifikátor zaváděcího programu pro spouštění systému Windows, jehož cesta je **\Windows\system32\winload.exe**.
+   Poznamenejte si identifikátor zaváděcího nástroje pro spouštění systému Windows, jehož cesta je **\windows\system32\winload.exe**.
 
 1. U virtuálních počítačů 2. generace ověřte, že je disk s operačním systémem online a že byla přiřazena písmena jednotek oddílů. Po ověření Shromážděte informace o instalaci spuštění.
    1. Ve **Windows Search**zadejte **Správa disků** a otevřete konzolu Správa disků. Pomocí této konzoly můžete identifikovat číslo disku připojené k opravnému VIRTUÁLNÍmu počítači a oddíl EFI (Extensible Firmware Interface), který obsahuje úložiště BCD.

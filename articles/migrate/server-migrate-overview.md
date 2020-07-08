@@ -4,10 +4,9 @@ description: Poskytuje přehled možností migrace virtuálních počítačů VM
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 56398f8bf78cb48b6cfe7a90ffdcbdb72743dc93
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84769621"
 ---
 # <a name="select-a-vmware-migration-option"></a>Vybrat možnost migrace VMware

@@ -9,10 +9,9 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 35cac2c05a8603313bb2bbe1bde3817dc88c6ed2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682619"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Limity služby ve službě Azure Cognitive Search
@@ -50,7 +49,7 @@ Maximální limity pro úložiště, úlohy a množství indexů a dalších obj
 
 <sup>1</sup> základní služby vytvořené před prosince 2017 mají nižší limity (5 namísto 15) na indexech. Úroveň Basic je jediná SKU s nižším limitem 100 polí na jeden index.
 
-<sup>2</sup> má velký počet prvků v komplexních kolekcích pro každý dokument v současné době způsobuje vysoké využití úložiště. Jde o známý problém. Do té doby je limit 3000 bezpečný horní mez pro všechny úrovně služeb. Tento limit se vynutil jenom pro operace indexování, které využívají nejstarší dostupnou verzi rozhraní API GA (GA), která podporuje pole komplexního typu ( `2019-05-06` ) a vyšší. Aby nedošlo k přerušení klientů, kteří používají dřívější verze Preview rozhraní API (které podporují pole komplexních typů), nebudeme toto omezení vynucovat pro operace indexování, které používají tyto verze rozhraní API Preview. Verze Preview rozhraní API není určena k použití v produkčních scénářích a důrazně doporučujeme zákazníkům přejít na nejnovější verzi rozhraní API GA.
+<sup>2</sup> má velký počet prvků v komplexních kolekcích pro každý dokument v současné době způsobuje vysoké využití úložiště. Jedná se o známý problém. Do té doby je limit 3000 bezpečný horní mez pro všechny úrovně služeb. Tento limit se vynutil jenom pro operace indexování, které využívají nejstarší dostupnou verzi rozhraní API GA (GA), která podporuje pole komplexního typu ( `2019-05-06` ) a vyšší. Aby nedošlo k přerušení klientů, kteří používají dřívější verze Preview rozhraní API (které podporují pole komplexních typů), nebudeme toto omezení vynucovat pro operace indexování, které používají tyto verze rozhraní API Preview. Verze Preview rozhraní API není určena k použití v produkčních scénářích a důrazně doporučujeme zákazníkům přejít na nejnovější verzi rozhraní API GA.
 
 <a name="document-limits"></a>
 
@@ -78,15 +77,15 @@ Pro zajištění rovnováhy a stability služby jako celku existovala maximáln�
 
 | Prostředek | Zdarma &nbsp; <sup>1</sup> | Základní &nbsp; <sup>2</sup>| S1 | S2 | S3 | S3 &nbsp; HD &nbsp; <sup>3</sup>|L1 |Paměť |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |– |10 |10 |
-| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |– |10 |10 |
-| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |– |10 |10 |
-| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |– |Bez omezení |Bez omezení |
+| Maximální počet indexerů |3 |5 nebo 15|50 |200 |200 |Není k dispozici |10 |10 |
+| Maximální počet zdrojů dat |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
+| Maximální dovednosti <sup>4</sup> |3 |5 nebo 15 |50 |200 |200 |Není k dispozici |10 |10 |
+| Maximální zatížení indexování na vyvolání |dokumenty 10 000 |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Omezeno pouze na maximum dokumentů |Není k dispozici |Bez omezení |Bez omezení |
 | Minimální plán | 5 minut |5 minut |5 minut |5 minut |5 minut |5 minut |5 minut | 5 minut |
-| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |–  |24 hodin |24 hodin |
-| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |–  |2 hodiny |2 hodiny |
-| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |–  |256 |256 |
-| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4 &nbsp; miliony |8 &nbsp; milionů |16 &nbsp; milionů |– |4 &nbsp; miliony |4 &nbsp; miliony |
+| Maximální doba běhu <sup>5</sup> | 1-3 minut |24 hodin |24 hodin |24 hodin |24 hodin |Není k dispozici  |24 hodin |24 hodin |
+| Maximální doba spuštění pro rozpoznávání dovednosti nebo indexování objektů BLOB s analýzou obrázku <sup>5</sup> | 3-10 minut |2 hodiny |2 hodiny |2 hodiny |2 hodiny |Není k dispozici  |2 hodiny |2 hodiny |
+| Indexer objektů BLOB: maximální velikost objektu blob, MB |16 |16 |128 |256 |256 |Není k dispozici  |256 |256 |
+| Indexer objektů BLOB: maximální počet znaků obsahu extrahovaných z objektu BLOB |32 000 |64 000 |4 &nbsp; miliony |8 &nbsp; milionů |16 &nbsp; milionů |Není k dispozici |4 &nbsp; miliony |4 &nbsp; miliony |
 
 <sup>1</sup> bezplatné služby mají maximální dobu provádění indexeru 3 minuty pro zdroje objektů BLOB a 1 minutu pro všechny ostatní zdroje dat. V případě indexování AI, který volá Cognitive Services, jsou bezplatné služby omezené na 20 bezplatných transakcí za den, kde transakce je definovaná jako dokument, který úspěšně projde kanálem pro obohacení.
 

@@ -4,10 +4,9 @@ description: Monitorovat systémové a vlastní čítače výkonu rozhraní .NET
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701479"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému v Application Insights
@@ -41,9 +40,9 @@ Pokud požadovaný čítač výkonu není zahrnutý v seznamu metrik, můžete h
     `Get-Counter -ListSet *`
 
     (Viz [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx) .)
-2. Otevřete soubor ApplicationInsights. config.
+2. Otevřete ApplicationInsights.config.
 
-   * Pokud jste během vývoje přidali Application Insights do vaší aplikace, upravte soubor ApplicationInsights. config v projektu a pak ho znovu nasaďte na své servery.
+   * Pokud jste během vývoje přidali Application Insights do vaší aplikace, upravte ApplicationInsights.config v projektu a pak ji znovu nasaďte na své servery.
 3. Úprava direktivy sběrače výkonu:
 
     ```XML
@@ -146,7 +145,7 @@ Podpora čítačů výkonu v ASP.NET Core je omezená:
 * Pro aplikace cílené na .NET Framework všechny verze sady SDK podporují čítače výkonu.
 * Verze sady SDK 2.8.0 a novější podporují čítač procesorů a paměti v systému Linux. V systému Linux není podporován žádný jiný čítač. Doporučený způsob, jak získat systémové čítače v systémech Linux (a dalších prostředích mimo Windows), je použití [EventCounters](eventcounters.md)
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 Podobně jako u jiných metrik můžete [nastavit výstrahu](../../azure-monitor/platform/alerts-log.md) , která vás upozorní, pokud počítadlo výkonu dosáhne mimo zadaný limit. Otevřete podokno výstrahy a klikněte na Přidat výstrahu.
 
 ## <a name="next-steps"></a><a name="next"></a>Další kroky

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83683364"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Transformace spojení v toku dat mapování
@@ -61,7 +60,7 @@ Pokud chcete explicitně vytvořit úplný kartézském produkt, použijte trans
 1. Vyberte **typ spojení**
 1. Vyberte, na které klíčové sloupce se má shoda při spojování podmínky připojit. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Pro porovnání přes vypočítanou hodnotu umístěte ukazatel myši na rozevírací seznam sloupec a vyberte **vypočítaný sloupec**.
 
-![Transformace spojení](media/data-flow/join.png "Připojení")
+![Transformace spojení](media/data-flow/join.png "Spojit")
 
 ### <a name="non-equi-joins"></a>Spojení nepoužívající operátora
 
@@ -91,7 +90,7 @@ Při testování transformací spojení s náhledem dat v režimu ladění použ
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
-### <a name="syntax"></a>Syntaxe
+### <a name="syntax"></a>Syntax
 
 ```
 <leftStream>, <rightStream>

@@ -13,10 +13,9 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84764889"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Nastavení souborů cookie pro přístup k místním aplikacím v Azure Active Directory
@@ -48,7 +47,7 @@ Navíc platí, že pokud vaše back-end aplikace obsahuje soubory cookie, které
 ## <a name="set-the-cookie-settings---azure-portal"></a>Nastavení souborů cookie – Azure Portal
 Nastavení souborů cookie pomocí Azure Portal:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
 2. Přejděte na **Azure Active Directory**   >  **podnikové aplikace**   >  **všechny aplikace**.
 3. Vyberte aplikaci, pro kterou chcete povolit nastavení souborů cookie.
 4. Klikněte na **proxy aplikace**.

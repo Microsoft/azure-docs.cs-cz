@@ -10,10 +10,9 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83682473"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Datové vědy s Data Science Virtual Machine pro Linux v Azure
@@ -313,7 +312,7 @@ predictSpam.service(1, 1, 1)
 
 ### <a name="jupyterhub"></a>JupyterHub
 
-Anaconda distribuce v DSVM se dodává s Jupyter Notebook, prostředím pro různé platformy pro sdílení kódu Python, R nebo Helena a analýzy. K Jupyter Notebook k dispozici prostřednictvím JupyterHub. Přihlašujete se pomocí místního uživatelského jména a hesla pro Linux na adrese https:// \< DSVM DNS nebo IP adrese \> : 8000/. Všechny konfigurační soubory pro JupyterHub se nacházejí v/etc/jupyterhub.
+Anaconda distribuce v DSVM se dodává s Jupyter Notebook, prostředím pro různé platformy pro sdílení kódu Python, R nebo Helena a analýzy. K Jupyter Notebook k dispozici prostřednictvím JupyterHub. Přihlašujete se pomocí místního uživatelského jména a hesla pro Linux na adrese https:// \<DSVM DNS name or IP address\> : 8000/. Všechny konfigurační soubory pro JupyterHub se nacházejí v/etc/jupyterhub.
 
 > [!NOTE]
 > Chcete-li použít Správce balíčků Pythonu (prostřednictvím `pip` příkazu) z Jupyter notebook v aktuálním jádru, použijte tento příkaz v buňce kódu:
@@ -508,7 +507,7 @@ Nastavení připojení k místnímu serveru:
 1. Zadejte uživatelské jméno a heslo.
 1. Vyberte **OK**.
 1. Okno **připojení** otevřete dvojitým kliknutím na alias **databáze spamu** .
-1. Vyberte **Connect** (Připojit).
+1. Vyberte **Připojit**.
 
 Spuštění některých dotazů:
 

@@ -9,10 +9,9 @@ ms.topic: article
 ms.date: 03/13/2020
 ms.author: v-grpr
 ms.openlocfilehash: c22ba44c3d567d363b1fec702fecb81ca203a48b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322468"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-1911-release-notes"></a>Zpráva k vydání verze Azure Stack Edge a Azure Data Box Gateway 1911

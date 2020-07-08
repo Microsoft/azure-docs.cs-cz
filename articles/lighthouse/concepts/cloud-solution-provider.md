@@ -3,25 +3,24 @@ title: Aspekty programu Cloud Solution Provider
 description: Pro partnery CSP pomáhá Správa delegovaných prostředků Azure zdokonalit zabezpečení a řízení tím, že umožňuje podrobná oprávnění.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 66ea74751f12a499a1e2d9e083497da31746e3c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 15b66568ae468d772c0fb7141a10e336cd94afc3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921610"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Program Azure Lighthouse a Cloud Solution Provider
 
-Pokud jste partnerem [CSP (Cloud Solution Provider)](https://docs.microsoft.com/partner-center/csp-overview) , můžete již přístup k předplatným Azure vytvořeným pro vaše zákazníky prostřednictvím programu CSP použít pomocí funkce [Spravovat za uživatele (administrate)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) . Tento přístup umožňuje přímou podporu, konfiguraci a správu předplatných vašich zákazníků.
+Pokud jste partnerem [CSP (Cloud Solution Provider)](/partner-center/csp-overview) , můžete již přístup k předplatným Azure vytvořeným pro vaše zákazníky prostřednictvím programu CSP použít pomocí funkce [Spravovat za uživatele (administrate)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) . Tento přístup umožňuje přímou podporu, konfiguraci a správu předplatných vašich zákazníků.
 
 Pomocí [Azure Lighthouse](../overview.md)můžete využít správu delegovaných prostředků Azure spolu s administrate. To pomáhá zvýšit zabezpečení a omezuje zbytečný přístup tím, že umožňuje uživatelům přesnější oprávnění. Umožňuje taky zvýšit efektivitu a škálovatelnost, protože uživatelé můžou pracovat na několika zákaznických předplatných pomocí jediného přihlášení ve vašem tenantovi.
 
 > [!TIP]
-> Pokud chcete zajistit ochranu zákaznických prostředků, Projděte si [Doporučené postupy zabezpečení](recommended-security-practices.md) spolu s [požadavky na zabezpečení partnerů](https://docs.microsoft.com/partner-center/partner-security-requirements).
+> Pokud chcete zajistit ochranu zákaznických prostředků, Projděte si [Doporučené postupy zabezpečení](recommended-security-practices.md) spolu s [požadavky na zabezpečení partnerů](/partner-center/partner-security-requirements).
 
 ## <a name="administer-on-behalf-of-aobo"></a>Správa jménem (ADMINISTRATE)
 
-V ADMINISTRATE bude mít každý uživatel s rolí [agenta správce](https://docs.microsoft.com/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ve vašem tenantovi administrate přístup k předplatným Azure, která vytvoříte prostřednictvím programu CSP. Všichni uživatelé, kteří potřebují přístup k předplatným zákazníků, musí být členy této skupiny. ADMINISTRATE neumožňuje flexibilní vytváření různých skupin, které pracují s různými zákazníky, nebo pro povolení různých rolí pro skupiny nebo uživatele.
+V ADMINISTRATE bude mít každý uživatel s rolí [agenta správce](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) ve vašem tenantovi administrate přístup k předplatným Azure, která vytvoříte prostřednictvím programu CSP. Všichni uživatelé, kteří potřebují přístup k předplatným zákazníků, musí být členy této skupiny. ADMINISTRATE neumožňuje flexibilní vytváření různých skupin, které pracují s různými zákazníky, nebo pro povolení různých rolí pro skupiny nebo uživatele.
 
 ![Správa tenanta pomocí ADMINISTRATE](../media/csp-1.jpg)
 
@@ -34,7 +33,7 @@ Registrace předplatného, které jste vytvořili prostřednictvím programu CSP
 ![Správa tenanta pomocí ADMINISTRATE a správy delegovaných prostředků Azure](../media/csp-2.jpg)
 
 > [!NOTE]
-> Stránka [ **moji zákazníci** v Azure Portal](../how-to/view-manage-customers.md) teď obsahuje oddíl **Cloud Solution Provider (Preview)** , který zobrazuje informace o fakturaci a prostředky pro zákazníky CSP, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](https://docs.microsoft.com/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](https://docs.microsoft.com/partner-center/azure-plan-get-started). Další informace najdete v tématu [Začínáme s fakturačním účtem Microsoft Partner Agreement](../../billing/mpa-overview.md).
+> Stránka [ **moji zákazníci** v Azure Portal](../how-to/view-manage-customers.md) teď obsahuje oddíl **Cloud Solution Provider (Preview)** , který zobrazuje informace o fakturaci a prostředky pro zákazníky CSP, kteří [podepsali smlouvu o zákaznících Microsoftu (MCA)](/partner-center/confirm-customer-agreement) a jsou [v rámci plánu Azure](/partner-center/azure-plan-get-started). Další informace najdete v tématu [Začínáme s fakturačním účtem Microsoft Partner Agreement](../../billing/mpa-overview.md).
 >
 > Zákazníci CSP se můžou v této části Zobrazit bez ohledu na to, jestli jsou taky připojené ke správě delegovaných prostředků Azure. Pokud jsou, zobrazí se také v části **zákazníci** , jak je popsáno v tématu [zobrazení a Správa zákazníků a delegovaných prostředků](../how-to/view-manage-customers.md). Obdobně se zákazník CSP nemusí zobrazit v části **Poskytovatel řešení cloudu (Preview)** ve **svých zákaznících** , aby je bylo možné integrovat do správy delegovaných prostředků Azure.
 
@@ -42,4 +41,4 @@ Registrace předplatného, které jste vytvořili prostřednictvím programu CSP
 
 - Přečtěte si o [prostředích pro správu mezi klienty](cross-tenant-management-experience.md).
 - Naučte se, jak připojit [předplatné ke správě delegovaných prostředků Azure](../how-to/onboard-customer.md).
-- Přečtěte si o [programu Cloud Solution Provider](https://docs.microsoft.com/partner-center/csp-overview).
+- Přečtěte si o [programu Cloud Solution Provider](/partner-center/csp-overview).

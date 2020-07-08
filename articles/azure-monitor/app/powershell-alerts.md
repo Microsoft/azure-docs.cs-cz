@@ -4,10 +4,9 @@ description: Automatizujte konfiguraci Application Insights, abyste získali e-m
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.openlocfilehash: f35658b08eff7574448e3c72b103178b66acbbe0
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83701828"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
@@ -89,7 +88,7 @@ Mám aplikaci, ve které používám [TrackMetric ()](../../azure-monitor/app/ap
 Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měření](../../azure-monitor/app/api-custom-events-metrics.md#properties) jiného sledovacího volání, jako je například TrackEvent nebo trackPageView.
 
 ## <a name="metric-names"></a>Názvy metrik
-| Název metriky | Název obrazovky | Popis |
+| Název metriky | Název obrazovky | Description |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Výjimky prohlížečů |Počet nezachycených výjimek vyvolaných v prohlížeči |
 | `basicExceptionServer.count` |Výjimky serveru |Počet neošetřených výjimek vyvolaných aplikací |

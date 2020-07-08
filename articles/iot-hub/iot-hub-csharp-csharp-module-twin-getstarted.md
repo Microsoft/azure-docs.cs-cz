@@ -10,10 +10,9 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: amqp
 ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81733389"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Začínáme s identitou modulu IoT Hub a modulem s dvojitou identitou (.NET)
@@ -54,11 +53,11 @@ Na konci tohoto kurzu budete mít dvě konzolové aplikace .NET:
 
 V této části vytvoříte na simulovaném zařízení konzolovou aplikaci .NET, která aktualizuje hlášené vlastnosti dvojčete modulu.
 
-Než začnete, Získejte připojovací řetězec modulu. Přihlaste se k webu [Azure Portal](https://portal.azure.com/). Přejděte do svého centra a vyberte **zařízení IoT**. Vyhledejte **myFirstDevice**. Vyberte **myFirstDevice** a otevřete ho tak, že vyberete **myFirstModule** . V **podrobnostech o identitě modulu**zkopírujte **připojovací řetězec (primární klíč)** , pokud je to potřeba v následujícím postupu.
+Než začnete, Získejte připojovací řetězec modulu. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/). Přejděte do svého centra a vyberte **zařízení IoT**. Vyhledejte **myFirstDevice**. Vyberte **myFirstDevice** a otevřete ho tak, že vyberete **myFirstModule** . V **podrobnostech o identitě modulu**zkopírujte **připojovací řetězec (primární klíč)** , pokud je to potřeba v následujícím postupu.
 
    ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 
-1. V aplikaci Visual Studio přidejte do svého řešení nový projekt tak, že vyberete **soubor** > **Nový** > **projekt**. V v vytvořit nový projekt vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
+1. V aplikaci Visual Studio přidejte do svého řešení nový projekt tak, že vyberete **soubor**  >  **Nový**  >  **projekt**. V v vytvořit nový projekt vyberte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
 1. Pojmenujte projekt *UpdateModuleTwinReportedProperties*. V případě **řešení**vyberte možnost **Přidat do řešení**. Ujistěte se, že máte .NET Framework verze 4.6.1 nebo novější.
 
@@ -66,7 +65,7 @@ Než začnete, Získejte připojovací řetězec modulu. Přihlaste se k webu [A
 
 1. Vyberte **vytvořit** a vytvořte tak projekt.
 
-1. V > aplikaci Visual Studio otevřete **nástroje** > **Správce balíčků NuGet****Spravovat balíčky NuGet pro řešení**. Vyberte kartu **Procházet**.
+1. V aplikaci Visual Studio otevřete **nástroje**  >  **Správce balíčků NuGet**  >  **Spravovat balíčky NuGet pro řešení**. Vyberte kartu **Procházet**.
 
 1. Vyhledejte a vyberte **Microsoft. Azure. Devices. Client**a pak vyberte **nainstalovat**.
 

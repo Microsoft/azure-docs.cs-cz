@@ -8,12 +8,11 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
-ms.translationtype: MT
+ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310121"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920075"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
 Tento článek popisuje několik příkladů běžných úloh po spuštění, které můžete chtít provést ve své cloudové službě. Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu. 
@@ -51,23 +50,23 @@ Proměnné můžou použít taky [platnou hodnotu XPath Azure](cloud-services-ro
 ```
 
 
-## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurace spouštění služby IIS pomocí nástroje AppCmd. exe
-Nástroj příkazového řádku [Appcmd. exe](https://technet.microsoft.com/library/jj635852.aspx) se dá použít ke správě nastavení IIS při spuštění v Azure. *Appcmd. exe* poskytuje pohodlný přístup k příkazovému řádku pro nastavení konfigurace pro použití v úlohách po spuštění v Azure. Pomocí nástroje *Appcmd. exe*lze nastavení webu přidat, upravit nebo odebrat pro aplikace a weby.
+## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurace spouštění služby IIS pomocí AppCmd.exe
+Nástroj příkazového řádku [AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) můžete použít ke správě nastavení IIS při spuštění v Azure. *AppCmd.exe* poskytuje pohodlný přístup k nastavení konfigurace pro použití v úlohách po spuštění v Azure, a to prostřednictvím příkazového řádku. Pomocí *AppCmd.exe*můžete přidat, upravit nebo odebrat nastavení webu pro aplikace a weby.
 
-Existuje však několik věcí, které je třeba využít při použití nástroje *Appcmd. exe* jako úlohy po spuštění:
+K dispozici je ale několik věcí, které můžete využít při použití *AppCmd.exe* jako úlohy po spuštění:
 
 * Úlohy po spuštění lze spustit více než jednou mezi restartováními. Například při recyklaci role.
-* Pokud se akce *Appcmd. exe* provádí více než jednou, může to způsobit chybu. Například pokus o přidání oddílu do *souboru Web. config* dvakrát může vygenerovat chybu.
-* Úlohy po spuštění selžou, pokud vrátí nenulový ukončovací kód nebo hodnotu **errorlevel**. Například když *Appcmd. exe* vygeneruje chybu.
+* Pokud je akce *AppCmd.exe* provedena více než jednou, může dojít k chybě. Například pokus o přidání oddílu *Web.config* dvakrát může vygenerovat chybu.
+* Úlohy po spuštění selžou, pokud vrátí nenulový ukončovací kód nebo hodnotu **errorlevel**. Například když *AppCmd.exe* vygeneruje chybu.
 
-Je vhodné **ověřit po volání** příkazu *Appcmd. exe*, což je snadné, pokud zabalíte volání souboru *Appcmd. exe* se souborem *. cmd* . Pokud zjistíte známou odpověď **errorlevel** , můžete ji ignorovat nebo ji předat zpátky.
+Je vhodné kontrolovat hodnotu **errorlevel** po volání *AppCmd.exe*, což je snadné, pokud zabalíte volání *AppCmd.exe* se souborem *. cmd* . Pokud zjistíte známou odpověď **errorlevel** , můžete ji ignorovat nebo ji předat zpátky.
 
-Příkaz "Appcmd. exe" vrácený funkcí *Appcmd. exe* je uveden v souboru WinError. h a lze jej také zobrazit na [webu MSDN](/windows/desktop/Debug/system-error-codes--0-499-).
+Hodnota ERRORLEVEL vrácená funkcí *AppCmd.exe* je uvedena v souboru WinError. h a lze ji také zobrazit na [webu MSDN](/windows/desktop/Debug/system-error-codes--0-499-).
 
 ### <a name="example-of-managing-the-error-level"></a>Příklad správy úrovně chyby
-Tento příklad přidá kompresní oddíl a položku komprese pro JSON do souboru *Web. config* s zpracováním a protokolováním chyb.
+Tento příklad přidá kompresní oddíl a položku komprese pro JSON do souboru *Web.config* s chybami zpracování a protokolování.
 
-Zde jsou uvedeny relevantní oddíly souboru [ServiceDefinition. csdef] , které zahrnují nastavení atributu [ExecutionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) pro `elevated` udělení oprávnění *Appcmd. exe* pro změnu nastavení v souboru *Web. config* :
+Zde jsou uvedeny relevantní oddíly souboru [ServiceDefinition. csdef] , které zahrnují nastavení atributu [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) pro `elevated` udělení *AppCmd.exe* dostatečná oprávnění ke změně nastavení v souboru *Web.config* :
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -80,7 +79,7 @@ Zde jsou uvedeny relevantní oddíly souboru [ServiceDefinition. csdef] , které
 </ServiceDefinition>
 ```
 
-Soubor *Startup. cmd* používá nástroj *Appcmd. exe* pro přidání kompresního oddílu a položku komprese pro JSON do souboru *Web. config* . Očekávaná hodnota **errorlevel** 183 je nastavena na hodnotu nula pomocí ověření. Program příkazového řádku EXE. Do StartupErrorLog. txt jsou protokolována neočekávaná ERRORLEVEL.
+*Spouštěcí soubor. cmd* batch používá *AppCmd.exe* k přidání kompresního oddílu a položky komprese pro JSON do souboru *Web.config* . Očekávaná hodnota **parametru errorlevel** 183 je nastavena na hodnotu nula pomocí VERIFY.EXE programu příkazového řádku. K StartupErrorLog.txt jsou protokolovány neočekávané ERRORLEVEL.
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -151,9 +150,9 @@ EXIT /B %errorlevel%
 ```
 
 ## <a name="block-a-specific-ip-address"></a>Blokování konkrétní IP adresy
-Úpravou souboru **Web. config** služby IIS můžete omezit přístup webové role Azure na sadu zadaných IP adres. Také je nutné použít soubor příkazů, který odemkne část **IPSecurity** souboru **ApplicationHost. config** .
+Úpravou souboru **web.config** služby IIS můžete omezit přístup webové role Azure na sadu zadaných IP adres. Také je nutné použít soubor příkazů, který odemkne část **IPSecurity** souboru **ApplicationHost.config** .
 
-Chcete-li odemknout část **IPSecurity** souboru **ApplicationHost. config** , vytvořte soubor příkazů, který se spustí při spuštění role. Vytvořte složku na kořenové úrovni webové role s názvem **Startup** a v rámci této složky vytvořte dávkový soubor s názvem **Startup. cmd**. Přidejte tento soubor do projektu sady Visual Studio a nastavte vlastnosti na **Kopírovat vždy** , abyste měli jistotu, že je zahrnutý do balíčku.
+Chcete-li odemknout část **IPSecurity** souboru **ApplicationHost.config** , vytvořte soubor příkazů, který se spouští při spuštění role. Vytvořte složku na kořenové úrovni webové role s názvem **Startup** a v rámci této složky vytvořte dávkový soubor s názvem **Startup. cmd**. Přidejte tento soubor do projektu sady Visual Studio a nastavte vlastnosti na **Kopírovat vždy** , abyste měli jistotu, že je zahrnutý do balíčku.
 
 Přidejte následující úlohu po spuštění do souboru [ServiceDefinition. csdef] .
 
@@ -180,7 +179,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 Tato úloha způsobí, že se **spouštěcí soubor Startup. cmd** spustí pokaždé, když se inicializuje webová role, a zajistí odemčení požadovaného oddílu **IPSecurity** .
 
-Nakonec v [oddílu System. webServer](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) v souboru **Web. config** webové role přidejte seznam IP adres, kterým je udělen přístup, jak je znázorněno v následujícím příkladu:
+Nakonec upravte [oddíl System. webserver](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) **web.config** souboru webové role a přidejte seznam IP adres, kterým je udělen přístup, jak je znázorněno v následujícím příkladu:
 
 Tato ukázková konfigurace **umožňuje** všem IP adresám přístup k serveru s výjimkou definovaných dvou.
 
@@ -272,7 +271,7 @@ Relevantní části souboru **ServiceDefinition. csdef** jsou uvedeny zde:
 </ServiceDefinition>
 ```
 
-Například tento soubor **. cmd** Batch používá proměnnou prostředí **PathToStartupStorage** k vytvoření souboru **MyTest. txt** v umístění místního úložiště.
+Příklad: Tento spouštěcí dávkový soubor **. cmd** používá proměnnou prostředí **PathToStartupStorage** k vytvoření souboru **MyTest.txt** v umístění místního úložiště.
 
 ```cmd
 REM   Create a simple text file.
@@ -377,15 +376,13 @@ EXIT /B 0
 Tady jsou některé osvědčené postupy, které byste měli dodržovat při konfiguraci úlohy pro webovou roli nebo roli pracovního procesu.
 
 ### <a name="always-log-startup-activities"></a>Vždy protokolovat aktivity při spuštění
-Visual Studio neposkytuje ladicí program pro procházení souborů Batch, takže je dobré získat co nejvíce dat o fungování dávkových souborů. Protokolování výstupu dávkových souborů, **stdout** a **stderr**, vám může poskytnout důležité informace při pokusu o ladění a opravě dávkových souborů. Pokud chcete protokolovat **stdout** a **stderr** do souboru StartupLog. txt v adresáři, na který ukazuje proměnná prostředí **% TEMP%** , přidejte text `>>  "%TEMP%\\StartupLog.txt" 2>&1` na konec konkrétních řádků, které chcete protokolovat. Například pro spuštění souboru Setup. exe v adresáři **% PathToApp1Install%** :
-
-    "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
+Visual Studio neposkytuje ladicí program pro procházení souborů Batch, takže je dobré získat co nejvíce dat o fungování dávkových souborů. Protokolování výstupu dávkových souborů, **stdout** a **stderr**, vám může poskytnout důležité informace při pokusu o ladění a opravě dávkových souborů. Pokud chcete protokolovat **stdout** a **stderr** do souboru StartupLog.txt v adresáři, na který odkazovala proměnná prostředí **% TEMP%** , přidejte text `>>  "%TEMP%\\StartupLog.txt" 2>&1` na konec konkrétních řádků, které chcete protokolovat. Chcete-li například provést setup.exe v adresáři **% PathToApp1Install%** :`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 Chcete-li zjednodušit XML, můžete vytvořit soubor *cmd cmd* , který volá všechny úlohy po spuštění společně s protokolováním a zajišťuje, že každá podřízená úloha sdílí stejné proměnné prostředí.
 
-Může se stát, že na `>> "%TEMP%\StartupLog.txt" 2>&1` konci každé úlohy po spuštění bude aplikace nepříjemné. Protokolování úloh můžete vynutil vytvořit obálku, která vám zpracuje protokolování. Tato obálka volá skutečný dávkový soubor, který chcete spustit. Libovolný výstup z cílového dávkového souboru bude přesměrován do souboru *Startuplog. txt* .
+Může se stát, že na `>> "%TEMP%\StartupLog.txt" 2>&1` konci každé úlohy po spuštění bude aplikace nepříjemné. Protokolování úloh můžete vynutil vytvořit obálku, která vám zpracuje protokolování. Tato obálka volá skutečný dávkový soubor, který chcete spustit. Libovolný výstup z cílového dávkového souboru bude přesměrován do souboru *Startuplog.txt* .
 
-Následující příklad ukazuje, jak přesměrovat všechny výstupy z spouštěcího dávkového souboru. V tomto příkladu vytvoří soubor ServerDefinition. csdef úlohu po spuštění, která volá *logwrap. cmd*. *logwrap. cmd* volá *Startup2. cmd*a přesměruje veškerý výstup do **% TEMP% \\ StartupLog. txt**.
+Následující příklad ukazuje, jak přesměrovat všechny výstupy z spouštěcího dávkového souboru. V tomto příkladu vytvoří soubor ServerDefinition. csdef úlohu po spuštění, která volá *logwrap. cmd*. *logwrap. cmd* volá *Startup2. cmd*a přesměruje veškerý výstup do **% TEMP% \\StartupLog.txt**.
 
 ServiceDefinition. cmd:
 
@@ -447,7 +444,7 @@ ECHO [%date% %time%] Some more log information about this task
 EXIT %ERRORLEVEL%
 ```
 
-Ukázkový výstup v souboru **StartupLog. txt** :
+Ukázkový výstup v souboru **StartupLog.txt** :
 
 ```txt
 [Mon 10/17/2016 20:24:46.75] == START logwrap.cmd ============================================== 
@@ -459,7 +456,7 @@ Ukázkový výstup v souboru **StartupLog. txt** :
 ```
 
 > [!TIP]
-> Soubor **StartupLog. txt** je umístěný ve složce *C:\Resources\temp \\ {identifikátor role} \RoleTemp* .
+> Soubor **StartupLog.txt** je umístěný ve složce *C:\Resources\temp \\ {role} \RoleTemp* .
 > 
 > 
 
@@ -468,7 +465,7 @@ Nastavte patřičná oprávnění pro úlohu po spuštění. Někdy se úlohy po
 
 Atribut [executionContext][Task] ExecutionContext nastaví úroveň oprávnění pro úlohu po spuštění. Použití `executionContext="limited"` znamená, že úloha po spuštění má stejnou úroveň oprávnění jako role. Použití `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, což umožňuje, aby úloha po spuštění prováděla úlohy správce bez udělení oprávnění správce vaší roli.
 
-Příkladem úlohy po spuštění, která vyžaduje zvýšená oprávnění, je úloha po spuštění, která používá nástroj **Appcmd. exe** ke konfiguraci služby IIS. Soubor **Appcmd. exe** vyžaduje `executionContext="elevated"` .
+Příkladem úlohy po spuštění, která vyžaduje zvýšená oprávnění, je úloha po spuštění, která používá **AppCmd.exe** ke konfiguraci služby IIS. **AppCmd.exe** vyžaduje `executionContext="elevated"` .
 
 ### <a name="use-the-appropriate-tasktype"></a>Použijte odpovídající taskType
 Atribut [taskType][úlohy] taskType určuje způsob, jakým je spouštěn úkol při spuštění. Existují tři hodnoty: **jednoduché**, **pozadí**a **popředí**. Úlohy na pozadí a na popředí jsou spouštěny asynchronně a jednoduché úkoly jsou spouštěny synchronně po jednom.

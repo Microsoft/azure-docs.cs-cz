@@ -4,10 +4,9 @@ description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů V
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 00f35f6b3848dcd590a9dbcd864c0ca62c1673bc
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84770233"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
