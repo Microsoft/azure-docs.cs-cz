@@ -10,10 +10,9 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 51abfd1cbb438d0987554040867625f7fb71630b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "81758231"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Nasazení kontejnerové platformy OpenShift nebo OKD v Azure Stack
@@ -28,7 +27,7 @@ K nasazení OpenShift kontejnerové platformy nebo OKD v Azure Stack můžete po
 - Můžete také použít stávající [šablonu správce prostředků](https://github.com/Microsoft/openshift-container-platform/) , která zjednodušuje nasazení clusteru OpenShift Container Platform.
 - Můžete také použít stávající [šablonu správce prostředků](https://github.com/Microsoft/openshift-origin) , která zjednodušuje nasazení clusteru OKD.
 
-Pokud používáte šablonu Správce prostředků, vyberte správnou větev (azurestack-Release-3. x). Šablony pro Azure nebudou fungovat, protože verze rozhraní API se v Azure a Azure Stack liší. Odkaz na obrázek RHEL je v současné době pevně kódovaný jako proměnná v souboru azuredeploy. JSON a bude muset být změněn tak, aby odpovídal vašemu obrázku.
+Pokud používáte šablonu Správce prostředků, vyberte správnou větev (azurestack-Release-3. x). Šablony pro Azure nebudou fungovat, protože verze rozhraní API se v Azure a Azure Stack liší. Odkaz na obrázek RHEL je v současné době pevně zakódovaný jako proměnná v souboru azuredeploy.jsa bude nutné ji změnit tak, aby odpovídala vašemu obrázku.
 
 ```json
 "imageReference": {
@@ -40,7 +39,7 @@ Pokud používáte šablonu Správce prostředků, vyberte správnou větev (azu
 ```
 
 Pro všechny možnosti se vyžaduje předplatné Red Hat. Během nasazování je instance Red Hat Enterprise Linux zaregistrovaná v rámci předplatného Red Hat a připojená k ID fondu, které obsahuje nároky na OpenShift kontejnerové platformy.
-Ujistěte se, že máte platné uživatelské jméno, heslo a ID fondu pro Red Hat Subscription Manager (RHSM). Alternativně můžete použít aktivační klíč, ID organizace a ID fondu.  Tyto informace můžete ověřit tak, že se přihlásíte k https://access.redhat.com.
+Ujistěte se, že máte platné uživatelské jméno, heslo a ID fondu pro Red Hat Subscription Manager (RHSM). Alternativně můžete použít aktivační klíč, ID organizace a ID fondu.  Tyto informace můžete ověřit tak, že se přihlásíte k https://access.redhat.com .
 
 ## <a name="azure-stack-prerequisites"></a>Azure Stack předpoklady
 
@@ -56,10 +55,10 @@ Chcete-li nasadit pomocí šablony Správce prostředků, použijte soubor param
 
 Mezi běžné možnosti přizpůsobení patří, ale nejsou omezené na:
 
-- Velikost virtuálního počítače bastionu (proměnná v azuredeploy. JSON)
-- Zásady vytváření názvů (proměnné v azuredeploy. JSON)
+- Velikost virtuálního počítače bastionu (proměnná v azuredeploy.jszapnutá)
+- Zásady vytváření názvů (proměnné v azuredeploy.jszapnuté)
 - OpenShift konkrétní clustery, upravené prostřednictvím souboru Hosts (deployOpenShift.sh)
-- Odkaz na obrázek RHEL (proměnná v azuredeploy. JSON)
+- Odkaz na obrázek RHEL (proměnná v azuredeploy.jszapnutá)
 
 Postup nasazení pomocí Azure CLI najdete v příslušné části v části [OpenShift Container Platform](./openshift-container-platform-3x.md) nebo v části [OKD](./openshift-okd.md) .
 

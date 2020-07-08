@@ -4,13 +4,12 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se, jak nainstalovat a nakonfigurovat řadič NGINX příchozího přenosu dat, který používá vaše vlastní certifikáty v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: e909a65488ff2651ed3a16943a81747fac6ece0f
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
-ms.translationtype: MT
+ms.date: 07/02/2020
+ms.openlocfilehash: 4e87a4005a2f6428123b852c2ff505a30c7e36fd
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298527"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85920318"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat protokolu HTTPS a použití vlastních certifikátů TLS ve službě Azure Kubernetes Service (AKS)
 
@@ -46,6 +45,9 @@ Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu
 ```console
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
+
+# Add the official stable repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 
 # Use Helm to deploy an NGINX ingress controller
 helm install nginx-ingress stable/nginx-ingress \

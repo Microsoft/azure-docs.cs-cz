@@ -8,10 +8,9 @@ ms.topic: how-to
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: 00291373ae1e30eca2fdf5f9435fc2201a492e40
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84988071"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Přehled konfigurací partnerských zařízení sítě VPN

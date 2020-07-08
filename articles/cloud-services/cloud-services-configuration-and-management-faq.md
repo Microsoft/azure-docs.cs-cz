@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921576"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: nejčastější dotazy
 
@@ -97,11 +96,13 @@ CSR je jenom textový soubor. Nemusí být vytvořen z počítače, ve kterém b
 
 K obnovení certifikátů pro správu můžete použít následující příkazy PowerShellu:
 
-    Add-AzureAccount
-    Select-AzureSubscription -Current -SubscriptionName <your subscription name>
-    Get-AzurePublishSettingsFile
+```powershell
+Add-AzureAccount
+Select-AzureSubscription -Current -SubscriptionName <your subscription name>
+Get-AzurePublishSettingsFile
+```
 
-**Příkaz Get-AzurePublishSettingsFile** vytvoří nový certifikát pro správu v**certifikátech správy** **předplatných** > v Azure Portal. Název nového certifikátu vypadá jako "YourSubscriptionNam]-[CurrentDate]-přihlašovací údaje".
+**Příkaz Get-AzurePublishSettingsFile** vytvoří nový certifikát pro správu v certifikátech správy **předplatných**  >  **Management Certificates** v Azure Portal. Název nového certifikátu vypadá jako "YourSubscriptionNam]-[CurrentDate]-přihlašovací údaje".
 
 ### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Jak automatizovat instalaci hlavního certifikátu TLS/SSL (. pfx) a zprostředkujícího certifikátu (. P7B)?
 
@@ -111,7 +112,7 @@ Tuto úlohu můžete automatizovat pomocí spouštěcího skriptu (Batch/cmd/Pow
 
 Tento certifikát se používá k šifrování klíčů počítačů ve webových rolích Azure. Pokud se chcete dozvědět víc, podívejte se na [Tento informační zpravodaj](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 - [Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Běžné úlohy po spuštění cloudové služby](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
@@ -189,14 +190,14 @@ Microsoft nepřetržitě monitoruje servery, sítě a aplikace a detekuje hrozby
 
 Systémy Windows 10 a Windows Server 2016 obsahují podporu protokolu HTTP/2 na straně klienta i serveru. Pokud se klient (prohlížeč) připojuje k serveru IIS přes TLS, který vyjednává HTTP/2 přes rozšíření TLS, nemusíte provádět žádnou změnu na straně serveru. Důvodem je, že přes TLS se ve výchozím nastavení pošle hlavička H2-14 určující použití HTTP/2. Pokud na druhé straně váš klient posílá hlavičku upgradu pro upgrade na HTTP/2, pak je potřeba provést změnu níže na straně serveru, aby se zajistilo, že upgrade funguje a že skončíte s připojením HTTP/2. 
 
-1. Spusťte program regedit. exe.
+1. Spusťte regedit.exe.
 2. Přejděte do klíče registru: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Vytvořte novou hodnotu DWORD s názvem **DuoEnabled**.
 4. Nastavte jeho hodnotu na 1.
 5. Restartujte server.
 6. Ve svém **výchozím** webu a v části **Bindings (vazby**) vytvořte novou vazbu TLS s právě vytvořeným certifikátem podepsaným svým držitelem. 
 
-Další informace naleznete v tématu:
+Další informace naleznete v tématech:
 
 - [HTTP/2 ve službě IIS](https://blogs.iis.net/davidso/http2)
 - [Video: HTTP/2 ve Windows 10: prohlížeč, aplikace a webový server](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -253,7 +254,7 @@ Další informace o tom, jak povolit protokolování Azure Diagnostics pro Cloud
 ## <a name="generic"></a>Obecné
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Návody do svého webu přidat "insniffer"?
-Chcete-li klientům zabránit v sledování typů MIME, přidejte do souboru *Web. config* nastavení.
+Chcete-li klientům zabránit v sledování typů MIME, přidejte do souboru *web.config* nastavení.
 
 ```xml
 <configuration>
@@ -282,7 +283,7 @@ Viz [omezení pro konkrétní služby](../azure-resource-manager/management/azur
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Proč jednotka na virtuálním počítači cloudové služby zobrazuje hodně volného místa na disku?
 Jedná se o očekávané chování, které by nemělo způsobovat žádné potíže s vaší aplikací. Deník je zapnutý pro jednotku% AppRoot% ve virtuálních počítačích Azure PaaS, která v podstatě spotřebovává dvojnásobek velikosti místa, které soubory obvykle zabírají. Existuje však několik věcí, které je třeba si uvědomit, že v podstatě tuto chybu zapínají na neproblém.
 
-Velikost jednotky% AppRoot% se počítá jako \<velikost. cspkg + maximální velikost deníku a velikost volného místa> nebo 1,5 GB, podle toho, co je větší. Velikost virtuálního počítače nemá žádný vliv na tento výpočet. (Velikost virtuálního počítače ovlivňuje pouze velikost dočasné jednotky C:.) 
+Velikost jednotky% AppRoot% se počítá jako \<size of .cspkg + max journal size + a margin of free space> nebo 1,5 GB, podle toho, co je větší. Velikost virtuálního počítače nemá žádný vliv na tento výpočet. (Velikost virtuálního počítače ovlivňuje pouze velikost dočasné jednotky C:.) 
 
 Zápis na jednotku% AppRoot% není podporován. Pokud píšete do virtuálního počítače Azure, musíte to udělat v dočasném prostředku LocalStorage (nebo jiné možnosti, jako je BLOB Storage, soubory Azure atd.). Takže množství volného místa ve složce% AppRoot% není smysluplné. Pokud si nejste jistí, jestli vaše aplikace zapisuje na jednotku% AppRoot%, můžete vždycky nechat službu běžet po dobu několika dní a pak porovnat velikosti před a po. 
 
@@ -306,9 +307,11 @@ SNI můžete povolit v Cloud Services pomocí jedné z následujících metod:
 **Metoda 1: použití PowerShellu**
 
 Vazbu SNI můžete nakonfigurovat pomocí rutiny prostředí PowerShell **New-webbinding** v úloze po spuštění pro instanci role cloudové služby, jak je uvedeno níže:
-    
-    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
-    
+
+```powershell
+New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags
+```
+
 Jak je popsáno [zde](https://technet.microsoft.com/library/ee790567.aspx), $sslFlags může být jednou z následujících hodnot:
 
 |Hodnota|Význam|
@@ -322,14 +325,15 @@ Jak je popsáno [zde](https://technet.microsoft.com/library/ee790567.aspx), $ssl
 
 Vazbu SNI můžete také nakonfigurovat prostřednictvím kódu ve spuštění role, jak je popsáno v tomto [blogovém příspěvku](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/):
 
-    
-    //<code snip> 
-                    var serverManager = new ServerManager(); 
-                    var site = serverManager.Sites[0]; 
-                    var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
-                    binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
-                    serverManager.CommitChanges(); 
-    //</code snip> 
+```csharp
+//<code snip> 
+                var serverManager = new ServerManager(); 
+                var site = serverManager.Sites[0]; 
+                var binding = site.Bindings.Add(":443:www.test1.com", newCert.GetCertHash(), "My"); 
+                binding.SetAttributeValue("sslFlags", 1); //enables the SNI 
+                serverManager.CommitChanges(); 
+    //</code snip>
+```
     
 Pomocí některého z výše uvedených přístupů musí být příslušné certifikáty (*. pfx) pro konkrétní názvy hostitelů napřed v instancích role nainstalovaná pomocí úlohy po spuštění nebo prostřednictvím kódu, aby vazba SNI mohla platit.
 
@@ -341,7 +345,9 @@ Cloudová služba je klasický prostředek. Značky podporují jenom prostředky
 
 Pracujeme na uvedení této funkce na Azure Portal. Mezitím můžete použít následující příkazy PowerShellu k získání verze sady SDK:
 
-    Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```powershell
+Get-AzureService -ServiceName "<Cloud Service name>" | Get-AzureDeployment | Where-Object -Property SdkVersion -NE -Value "" | select ServiceName,SdkVersion,OSVersion,Slot
+```
 
 ### <a name="i-want-to-shut-down-the-cloud-service-for-several-months-how-to-reduce-the-billing-cost-of-cloud-service-without-losing-the-ip-address"></a>Chci po několik měsíců vypnout cloudovou službu. Jak snížit náklady na vyúčtování cloudové služby bez ztráty IP adresy?
 

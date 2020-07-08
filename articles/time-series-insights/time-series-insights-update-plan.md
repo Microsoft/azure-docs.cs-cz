@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4b61df52df45cb2ee01407390ce3e34d86350ef7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b57a7c04db0e601b90bc19059df70e63795784bf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189245"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86036946"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Plánování prostředí pro Azure Time Series Insights Preview
 
@@ -41,7 +40,7 @@ Azure Time Series Insights využívá obchodní model s průběžnými platbami.
 Když zřizujete prostředí Time Series Insights Preview, vytvoříte dva prostředky Azure:
 
 * Prostředí Azure Time Series Insights Preview
-* Účet Azure Storage pro obecné účely v1
+* Účet Azure Storage
 
 V rámci procesu zřizování určíte, jestli chcete povolit teplé úložiště. Úložiště pro poskytování vrstvených dotazů vám poskytuje vícevrstvé možnosti. Pokud je povoleno, je nutné zadat dobu uchování mezi 7 a 30 dny. Dotazy spouštěné v období uchovávání teplého úložiště obecně poskytují rychlejší odezvy. Když dotaz pokrývá dobu uchovávání teplého úložiště, je obsluhován z chladírenského skladu.
 
@@ -52,7 +51,7 @@ Dotazy na teplém úložišti jsou bezplatné, zatímco dotazy na chladírenský
 
 Začněte tím, že budete potřebovat tři další položky:
 
-* [Model časové řady](./time-series-insights-update-tsm.md)
+* [Model časové řady](./concepts-model-overview.md)
 * [Zdroj události připojený k Time Series Insights](./time-series-insights-how-to-add-an-event-source-iothub.md)
 * Události se přenášejí [do zdroje událostí](./time-series-insights-send-events.md) , které jsou namapované na model a jsou v platném formátu JSON.
 
@@ -67,7 +66,7 @@ Pokud chcete vytvořit nové prostředí Time Series Insights, vyberte ID časov
 > [!IMPORTANT]
 > ID časových řad *nelze později změnit*. Ověřte každý z nich před konečným výběrem a prvním použitím.
 
-Můžete vybrat až tři klíče a jednoznačně odlišit vaše prostředky. Další informace najdete v článku [osvědčené postupy pro výběr ID](./time-series-insights-update-how-to-id.md) a [úložiště](./time-series-insights-update-storage-ingress.md)časových řad a příchozího přenosu dat.
+Můžete vybrat až tři klíče a jednoznačně odlišit vaše prostředky. Další informace najdete v tématu [osvědčené postupy pro výběr ID časových řad](./time-series-insights-update-how-to-id.md) a [pravidel pro přijímání](concepts-json-flattening-escaping-rules.md).
 
 Vlastnost **časového razítka** je také důležitá. Tuto vlastnost můžete určit při přidávání zdrojů událostí. Každý zdroj události má volitelnou vlastnost časového razítka, která se používá ke sledování zdrojů událostí v průběhu času. Hodnoty časového razítka rozlišují velká a malá písmena a musí být formátovány na jednotlivé specifikace jednotlivých zdrojů událostí.
 
@@ -78,7 +77,7 @@ Pokud je ponecháno prázdné, použije se čas zařazení do fronty události j
 
 ## <a name="understand-the-time-series-model"></a>Pochopení modelu časové řady
 
-Nyní můžete nakonfigurovat model časové řady Time Series Insightsho prostředí. Nový model usnadňuje hledání a analýzu dat IoT. Umožňuje léčební, údržbu a obohacení dat časových řad a pomáhá připravit datové sady připravené pro uživatele. Model používá ID časových řad, které se mapují na instanci, která přidruží jedinečný prostředek k proměnným, označovaným jako typy a hierarchie. Přečtěte si o novém [modelu časové řady](./time-series-insights-update-tsm.md).
+Nyní můžete nakonfigurovat model časové řady Time Series Insightsho prostředí. Nový model usnadňuje hledání a analýzu dat IoT. Umožňuje léčební, údržbu a obohacení dat časových řad a pomáhá připravit datové sady připravené pro uživatele. Model používá ID časových řad, které se mapují na instanci, která přidruží jedinečný prostředek k proměnným, označovaným jako typy a hierarchie. Přečtěte si o novém [modelu časové řady](./concepts-model-overview.md).
 
 Model je dynamický, takže se dá vytvořit kdykoli. Aby bylo možné rychle začít, sestavte a nahrajte ho před vložením dat do Time Series Insights. Při sestavování modelu si přečtěte část [použití modelu časové řady](./time-series-insights-update-how-to-tsm.md).
 
@@ -100,5 +99,6 @@ Další informace najdete v tématu čtení [událostí obrazce](./time-series-i
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si [Azure Advisor](../advisor/advisor-overview.md) a naplánujte si možnosti konfigurace pro obnovení firmy.
-- Přečtěte si další informace o službě [Storage a](./time-series-insights-update-storage-ingress.md) příchozím přenosu ve službě Time Series Insights Preview.
-- Přečtěte si o [modelování dat](./time-series-insights-update-tsm.md) ve verzi Preview Time Series Insights.
+- Přečtěte si další informace o [přijímání dat](./concepts-ingestion-overview.md).
+- Přečtěte si článek o [úložišti dat](./concepts-storage.md)
+- Přečtěte si o [modelování dat](./concepts-model-overview.md) ve verzi Preview Time Series Insights.

@@ -9,12 +9,11 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: ffa09293ad2ff02e104ce285b6b0aaca7d4744a2
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.openlocfilehash: c6780d952b9ce6ea58fc6c8a2509a4526add7149
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212662"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86028264"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Sestavení sady školicích dat pro vlastní model
 
@@ -26,7 +25,7 @@ Pokud chcete použít manuálně popsání školicích dat, musíte začínat as
 
 ## <a name="training-data-tips"></a>Tipy k datům školení
 
-Je důležité použít datovou sadu optimalizovanou pro školení. Následující tipy vám pomohou zajistit, abyste získali nejlepší výsledky z operace [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) :
+Je důležité použít datovou sadu optimalizovanou pro školení. Následující tipy vám pomohou zajistit, abyste získali nejlepší výsledky z operace [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) :
 
 * Pokud je to možné, používejte textové dokumenty PDF namísto dokumentů na základě obrázků. Naskenované soubory PDF jsou zpracovávány jako obrázky.
 * Pro vyplněné formuláře použijte příklady, které mají všechna jejich pole vyplněna.
@@ -48,7 +47,7 @@ Pokud chcete použít ručně označené údaje, budete také muset nahrát *.la
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Uspořádání dat v podsložkách (volitelné)
 
-Ve výchozím nastavení budou rozhraní API pro [vlastní model výuky](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) používat jenom dokumenty formuláře, které jsou umístěné v kořenovém adresáři kontejneru úložiště. Můžete však s daty v podsložkách vlaky, pokud ji zadáte v volání rozhraní API. Obvykle tělo volání [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-previewoperations/TrainCustomModelAsync) má následující formát, kde `<SAS URL>` je adresa URL sdíleného přístupového podpisu vašeho kontejneru:
+Ve výchozím nastavení budou rozhraní API pro [vlastní model výuky](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) používat jenom dokumenty formuláře, které jsou umístěné v kořenovém adresáři kontejneru úložiště. Můžete však s daty v podsložkách vlaky, pokud ji zadáte v volání rozhraní API. Obvykle tělo volání [vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) má následující formát, kde `<SAS URL>` je adresa URL sdíleného přístupového podpisu vašeho kontejneru:
 
 ```json
 {

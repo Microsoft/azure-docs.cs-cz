@@ -5,10 +5,9 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85336632"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
@@ -36,7 +35,7 @@ Cluster Kubernetes je rozdělen do dvou součástí:
 
 ![Rovina ovládacího prvku Kubernetes a součásti uzlu](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 
-## <a name="control-plane"></a>Rovina ovládacího prvku
+## <a name="control-plane"></a>Řídicí rovina
 
 Při vytváření clusteru AKS se automaticky vytvoří a nakonfiguruje rovina ovládacího prvku. Tato Řídicí rovina je k dispozici jako spravovaný prostředek Azure, který je z uživatele abstraktní. Pro plochu ovládacího prvku se neúčtují žádné náklady, jenom uzly, které jsou součástí clusteru AKS.
 

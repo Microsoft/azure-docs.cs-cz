@@ -14,10 +14,9 @@ ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 0f2bcb78b1a998c1b335a5757b832fbb1d3fc7fb
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85412494"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a odběry
@@ -272,7 +271,7 @@ V tomto kurzu se pro každé předplatné používá jiný účet. Pokud použí
 ## <a name="delete-resources"></a><a name="delete"></a>Odstranění prostředků
 Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které jste v tomto kurzu vytvořili, takže se vám neúčtují poplatky za využití. Odstraněním skupiny prostředků se odstraní také všechny prostředky, které jsou ve skupině prostředků.
 
-### <a name="azure-portal"></a><a name="delete-portal"></a>Azure Portal
+### <a name="azure-portal"></a><a name="delete-portal"></a>portál Azure
 
 1. Do vyhledávacího pole portálu zadejte **myResourceGroupA**. Ve výsledcích hledání klikněte na **myResourceGroupA**.
 2. V okně **myResourceGroupA** klikněte na ikonu **Odstranit** .

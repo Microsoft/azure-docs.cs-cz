@@ -4,10 +4,9 @@ description: Tento článek popisuje úrovně Standard a Premium Azure Service B
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337418"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Úrovně zasílání zpráv Service Bus Premium a Standard
@@ -23,7 +22,7 @@ V následující tabulce je zvýrazněno několik nejvýraznějších rozdílů.
 | Vysoká propustnost |Variabilní propustnost |
 | Předvídatelný výkon |Variabilní latence |
 | Pevné ceny |Variabilní průběžná cena  |
-| Možnost vertikálně navýšit a snížit kapacitu |– |
+| Možnost vertikálně navýšit a snížit kapacitu |Není k dispozici |
 | Velikost zprávy do 1 MB |Velikost zprávy do 256 kB |
 
 **Zasílání zpráv Service Bus Premium** zajišťuje izolaci prostředků na úrovni CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium si můžete koupit 1, 2, 4 nebo 8 jednotek zasílání zpráv. Jedna úloha nebo entita může zabírat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv se dá změnit na. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus.

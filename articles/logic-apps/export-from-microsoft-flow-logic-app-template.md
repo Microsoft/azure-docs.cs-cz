@@ -7,10 +7,9 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84324817"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Export toků z Power Automate a nasazení do Azure Logic Apps
@@ -120,13 +119,13 @@ Pokud jste nastavili sadu Visual Studio s [požadavky](../logic-apps/quickstart-
 
    ![Vytvoření projektu skupiny prostředků Azure](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. Po vytvoření řešení v Průzkumník řešení otevřete soubor **LogicApp. JSON** , pokud soubor ještě není otevřený.
+1. Po vytvoření řešení v Průzkumník řešení otevřete **LogicApp.jsv** souboru, pokud soubor ještě není otevřený.
 
-1. Zkopírujte obsah z exportované šablony a přepište obsah v souboru **LogicApp. JSON** .
+1. Zkopírujte obsah z exportované šablony a přepište obsah v **LogicApp.js** souboru.
 
 1. Před nasazením aplikace logiky autorizujte všechna nová připojení pomocí následujících kroků:
 
-   1. Otevřete místní nabídku **LogicApp. JSON** a potom vyberte **otevřít v návrháři aplikace logiky**.
+   1. Otevřete místní nabídku **LogicApp.js** a pak vyberte **otevřít v návrháři aplikace logiky**.
 
       ![Otevření šablony pomocí návrháře aplikace logiky](./media/export-from-microsoft-flow-logic-app-template/open-logic-app-designer.png)
 

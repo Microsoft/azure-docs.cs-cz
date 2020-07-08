@@ -7,12 +7,11 @@ ms.date: 01/17/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 03ec0b41ad910ff0d1dcdc17148e01ec94ea9fb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: e49f71c100911d9186a0e4693ef133f548e7bc66
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78674519"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037966"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Jak používat rozhraní příkazového řádku Azure a rozšíření IoT ke správě IoT Hub Device Provisioning Service
 
@@ -48,41 +47,55 @@ Než začnete, dokončete výše popsané kroky instalace. Pokud ještě nemáte
 
 ### <a name="1-log-in-to-the-azure-account"></a>1. Přihlaste se k účtu Azure.
   
-    az login
+```azurecli
+az login
+```
 
 ![přihlášení](./media/how-to-manage-dps-with-cli/login.jpg)
 
 ### <a name="2-create-a-resource-group-iothubblogdemo-in-eastus"></a>2. Vytvoření skupiny prostředků IoTHubBlogDemo v eastus
 
-    az group create -l eastus -n IoTHubBlogDemo
+```azurecli
+az group create -l eastus -n IoTHubBlogDemo
+```
 
 ![Vytvoření skupiny prostředků](./media/how-to-manage-dps-with-cli/create-resource-group.jpg)
 
 
 ### <a name="3-create-two-device-provisioning-services"></a>3. vytvoření dvou služeb Device Provisioning
 
-    az iot dps create --resource-group IoTHubBlogDemo --name demodps
+```azurecli
+az iot dps create --resource-group IoTHubBlogDemo --name demodps
+```
 
 ![Vytvořit službu Device Provisioning Service](./media/how-to-manage-dps-with-cli/create-dps.jpg)
 
-    az iot dps create --resource-group IoTHubBlogDemo --name demodps2
+```azurecli
+az iot dps create --resource-group IoTHubBlogDemo --name demodps2
+```
 
 ### <a name="4-list-all-the-existing-device-provisioning-services-under-this-resource-group"></a>4. vypíše všechny existující služby Device Provisioning v rámci této skupiny prostředků.
 
-    az iot dps list --resource-group IoTHubBlogDemo
+```azurecli
+az iot dps list --resource-group IoTHubBlogDemo
+```
 
 ![Vypsat službu Device Provisioning Services](./media/how-to-manage-dps-with-cli/list-dps.jpg)
 
 
 ### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5. vytvoření IoT Hub blogDemoHub v rámci nově vytvořené skupiny prostředků
 
-    az iot hub create --name blogDemoHub --resource-group IoTHubBlogDemo
+```azurecli
+az iot hub create --name blogDemoHub --resource-group IoTHubBlogDemo
+```
 
 ![Vytvoření IoT Hubu](./media/how-to-manage-dps-with-cli/create-hub.jpg)
 
 ### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. Propojte jeden existující IoT Hub se službou Device Provisioning Service
 
-    az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l westus
+```azurecli
+az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l westus
+```
 
 ![Propojení centra](./media/how-to-manage-dps-with-cli/create-hub.jpg)
 

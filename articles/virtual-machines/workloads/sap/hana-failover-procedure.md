@@ -14,10 +14,9 @@ ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83660578"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Postup převzetí služeb při selhání pro zotavení po havárii
@@ -56,7 +55,7 @@ Pokud chcete otestovat více instancí SAP HANA, spusťte skript několikrát. V
 
       Výstup by měl Ukázat **hdbdaemon** proces v zastaveném stavu a žádné další procesy Hana ve spuštěném nebo spuštěném stavu.
 1. Určete, který název snímku nebo ID zálohy SAP HANA chcete obnovit lokalitu pro zotavení po havárii. V reálných případech zotavení po havárii je tento snímek obvykle posledním snímkem. Pokud potřebujete obnovit ztracená data, vyberte předchozí snímek.
-1. Kontaktujte podporu Azure prostřednictvím vysoce prioritní žádosti o podporu. Požádejte o obnovení tohoto snímku s názvem a datem snímku nebo ID zálohy HANA na webu DR. Ve výchozím nastavení se na straně operace obnoví pouze svazek/Hana/data. Pokud chcete, aby svazky/Hana/logbackups byly také, je nutné, abyste je konkrétně nastavili. *Neobnovujte svazek/Hana/Shared.* Místo toho můžete po opětovném připojení svazku/Hana/Shared pro PRD zvolit konkrétní soubory, jako je soubor Global. ini, z adresáře **. Snapshot** a jeho podadresáře. 
+1. Kontaktujte podporu Azure prostřednictvím vysoce prioritní žádosti o podporu. Požádejte o obnovení tohoto snímku s názvem a datem snímku nebo ID zálohy HANA na webu DR. Ve výchozím nastavení se na straně operace obnoví pouze svazek/Hana/data. Pokud chcete, aby svazky/Hana/logbackups byly také, je nutné, abyste je konkrétně nastavili. *Neobnovujte svazek/Hana/Shared.* Místo toho po opětovném připojení svazku/Hana/Shared pro PRD vyberte konkrétní soubory, například global.ini ven z adresáře **. Snapshot** a jejích podadresářů. 
 
    Na straně operací dojde k následujícím krokům:
 
@@ -88,7 +87,7 @@ Následující kroky ukazují, jak obnovit SAP HANA instanci výroby na základ�
 
    ![Nastavení oblasti inicializovat protokol](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
-1. Vyberte **Finish** (Dokončit).
+1. Vyberte **Dokončit**.
 
    ![Dokončení obnovení DR](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 

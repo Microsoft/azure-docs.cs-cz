@@ -1,7 +1,7 @@
 ---
 title: Integrace s klientskou aplikací s využitím sady Speech SDK
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se naučíte, jak pomocí sady Speech SDK spuštěné v aplikaci pro UWP dělat požadavky na publikovanou aplikaci Custom Commands.
+description: Jak vytvářet požadavky na publikované aplikace vlastních příkazů ze sady Speech SDK spuštěné v aplikaci UWP.
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,16 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6aa63c49328848ca707e938dada6ce3af9f75694
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
-ms.translationtype: MT
+ms.openlocfilehash: 1d84646fcb6769b7489cc0e03085e95fc47ef56c
+ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85414351"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86027626"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integrace s klientskou aplikací pomocí sady Speech SDK
 
-V tomto článku se naučíte, jak pomocí sady Speech SDK spuštěné v aplikaci pro UWP dělat požadavky na publikovanou aplikaci Custom Commands. Aby bylo možné navázat spojení s aplikací Custom Commands, provedete následující úlohy:
+V tomto článku se naučíte, jak pomocí sady Speech SDK spuštěné v aplikaci UWP vytvořit požadavky na publikovanou aplikaci Custom Commands. Aby bylo možné navázat připojení k aplikaci Custom Commands, budete potřebovat:
 
 - Publikování vlastní aplikace příkazů a získání identifikátoru aplikace (ID aplikace)
 - Vytvoření klientské aplikace Univerzální platforma Windows (UWP) pomocí sady Speech SDK, která vám umožní komunikovat s vlastními aplikacemi příkazů
@@ -32,13 +31,19 @@ K dokončení tohoto článku je nutná vlastní aplikace příkazů. Pokud jste
 
 Budete také potřebovat:
 > [!div class = "checklist"]
-> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) nebo vyšší. Tato příručka je založená na aplikaci Visual Studio 2019.
 > * Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
 > * [Povolení vývoje zařízení](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>Krok 1: publikování aplikace Custom Commands
 
-1. Otevřete dříve vytvořenou aplikaci Custom Commands a vyberte **publikovat** .
+1. Otevřete dříve vytvořenou aplikaci Custom Commands
+1. Přejít na **Nastavení**, vyberte **prostředek Luis** .
+1. Pokud není **prostředek předpovědi** přiřazený, vyberte klíč předpovědi dotazu nebo vytvořte nový.
+
+    Klíč předpovědi dotazu se vždy vyžaduje před publikováním aplikace. Další informace o prostředcích LUIS najdete v referenčních informacích k [vytvoření prostředku Luis](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription) .
+
+1. Vraťte se zpět na příkazy pro úpravy, vyberte **publikovat** .
 
    > [!div class="mx-imgBorder"]
    > ![Publikování aplikace](media/custom-commands/setup-speech-sdk-publish-application.png)
@@ -131,11 +136,8 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
    using Microsoft.CognitiveServices.Speech.Audio;
    using Microsoft.CognitiveServices.Speech.Dialog;
    using System;
-   using System.Diagnostics;
    using System.IO;
    using System.Text;
-   using Windows.Foundation;
-   using Windows.Storage.Streams;
    using Windows.UI.Xaml;
    using Windows.UI.Xaml.Controls;
    using Windows.UI.Xaml.Media;
@@ -324,7 +326,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
-   connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
+   connector.ActivityReceived += (sender, activityReceivedEventArgs) =>
    {
        NotifyUser(
            $"Activity received, hasAudio={activityReceivedEventArgs.HasAudio} activity={activityReceivedEventArgs.Activity}");

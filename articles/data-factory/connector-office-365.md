@@ -12,10 +12,9 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: dda761e12abe7ec866ad9426982563b6f629f6b2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85513302"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopírování dat z Office 365 do Azure pomocí Azure Data Factory
@@ -64,7 +63,7 @@ Pokud se ADF vytvoří jako součást spravované aplikace a přiřazení zásad
 
 Kanál s aktivitou kopírování můžete vytvořit pomocí jednoho z následujících nástrojů nebo sad SDK. Vyberte odkaz pro přechod na kurz s podrobnými pokyny k vytvoření kanálu s aktivitou kopírování. 
 
-- [portál Azure](quickstart-create-data-factory-portal.md)
+- [Azure Portal](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
@@ -91,7 +90,7 @@ Pro propojenou službu Office 365 jsou podporovány následující vlastnosti:
 >- Pokud jste podnikovým vývojářem, který vyvíjí aplikaci proti datům Office 365 pro použití vaší vlastní organizace, měli byste pro obě vlastnosti dodat stejné ID tenanta, což je ID tenanta AAD vaší organizace.
 >- Pokud jste vývojář ISV, který vyvíjí aplikaci pro vaše zákazníky, pak bude office365TenantId jako ID tenanta AAD vašeho zákazníka (instalační program aplikace) a servicePrincipalTenantId bude ID tenanta AAD vaší společnosti.
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -161,7 +160,7 @@ Pokud chcete kopírovat data ze sady Office 365, v části **zdroje** aktivity k
 | endTime | Koncová hodnota DateTime, která se má filtrovat | Ano, pokud `dateFilterColumn` je zadána |
 | outputColumns | Pole sloupců, které mají být zkopírovány do jímky. | No |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities": [

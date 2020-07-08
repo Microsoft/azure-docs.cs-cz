@@ -7,18 +7,20 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626679"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921555"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformační funkce v toku dat tahání
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tahání data flow v Azure Data Factory umožňuje provádět přípravu agilních dat a tahání v cloudovém měřítku bez kódu. Tahání data Flow se integruje s [Power Query online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) a zpřístupňuje Power Query M funkcí pro data tahání prostřednictvím spuštění Sparku. 
+
+> [!NOTE]
+> Tok dat tahání je aktuálně dostupných ve verzi Public Preview.
 
 V současné době nejsou všechny funkce Power Query M podporovány pro tahání dat, přestože jsou k dispozici při vytváření obsahu. Při sestavování datových toků tahání se zobrazí výzva s následující chybovou zprávou, pokud funkce není podporována:
 
@@ -39,7 +41,7 @@ K filtrování následujících podmínek použijte funkci M Functions [Table. S
 
 * Rovnost a nerovnost
 * Porovnávání čísel, textů a kalendářních dat (ale ne hodnoty DateTime)
-* Číselné informace, jako je [číslo. sudé](https://docs.microsoft.com/powerquery-m/number-iseven)/[liché](https://docs.microsoft.com/powerquery-m/number-iseven)
+* Číselné informace, jako je [číslo. sudé](https://docs.microsoft.com/powerquery-m/number-iseven) / [liché](https://docs.microsoft.com/powerquery-m/number-iseven)
 * Text je obsažený pomocí [textu. obsahuje](https://docs.microsoft.com/powerquery-m/text-contains), [text. StartsWith](https://docs.microsoft.com/powerquery-m/text-startswith)nebo [text. EndsWith](https://docs.microsoft.com/powerquery-m/text-endswith) .
 * Rozsahy dat včetně všech funkcí IsIn' [Date](https://docs.microsoft.com/powerquery-m/date-functions) 
 * Kombinace těchto podmínek pomocí a, nebo nebo not
@@ -55,7 +57,7 @@ Následující funkce M přidají nebo transformují sloupce: [Table. AddColumn]
 * Většina standardních, vědeckých a trigonometrických numerických funkcí (všechny funkce v rámci [operací](https://docs.microsoft.com/powerquery-m/number-functions#operations), [zaokrouhlování](https://docs.microsoft.com/powerquery-m/number-functions#rounding)a [trigonometrické](https://docs.microsoft.com/powerquery-m/number-functions#trigonometry) *s výjimkou* Number. faktoriál, Number. permutaces a Number. kombinací)
 * Náhrada ([replacer. ReplaceText](https://docs.microsoft.com/powerquery-m/replacer-replacetext), [replacer. ReplaceValue](https://docs.microsoft.com/powerquery-m/replacer-replacevalue), [text. Replace](https://docs.microsoft.com/powerquery-m/text-replace), [text. Remove](https://docs.microsoft.com/powerquery-m/text-remove))
 * Extrakce umístění textu ([text. PositionOf](https://docs.microsoft.com/powerquery-m/text-positionof), [text. Length](https://docs.microsoft.com/powerquery-m/text-length), [text. Start](https://docs.microsoft.com/powerquery-m/text-start), [text. end](https://docs.microsoft.com/powerquery-m/text-end), [text. Middle](https://docs.microsoft.com/powerquery-m/text-middle), [text. ReplaceRange](https://docs.microsoft.com/powerquery-m/text-replacerange), [text. RemoveRange](https://docs.microsoft.com/powerquery-m/text-removerange))
-* Základní formátování textu ([text. Lower](https://docs.microsoft.com/powerquery-m/text-lower), [text. Upper](https://docs.microsoft.com/powerquery-m/text-upper), [text. trim](https://docs.microsoft.com/powerquery-m/text-trim)/[počáteční](https://docs.microsoft.com/powerquery-m/text-trimstart)/[konec](https://docs.microsoft.com/powerquery-m/text-trimend), [text. PadStart](https://docs.microsoft.com/powerquery-m/text-padstart)/[End](https://docs.microsoft.com/powerquery-m/text-padend), [text. Reverted](https://docs.microsoft.com/powerquery-m/text-reverse))
+* Základní formátování textu ([text. Lower](https://docs.microsoft.com/powerquery-m/text-lower), [text. Upper](https://docs.microsoft.com/powerquery-m/text-upper), [text. trim](https://docs.microsoft.com/powerquery-m/text-trim) / [počáteční](https://docs.microsoft.com/powerquery-m/text-trimstart) / [konec](https://docs.microsoft.com/powerquery-m/text-trimend), [text. PadStart](https://docs.microsoft.com/powerquery-m/text-padstart) / [End](https://docs.microsoft.com/powerquery-m/text-padend), [text. Reverted](https://docs.microsoft.com/powerquery-m/text-reverse))
 * Funkce data a času ([datum. den](https://docs.microsoft.com/powerquery-m/date-day), [datum. měsíc](https://docs.microsoft.com/powerquery-m/date-month), [datum. rok](https://docs.microsoft.com/powerquery-m/date-year) [čas. hodina](https://docs.microsoft.com/powerquery-m/time-hour), [čas. minute](https://docs.microsoft.com/powerquery-m/time-minute), [čas. sekund](https://docs.microsoft.com/powerquery-m/time-second), [datum. DayOfWeek](https://docs.microsoft.com/powerquery-m/date-dayofweek), [datum. DAYOFYEAR](https://docs.microsoft.com/powerquery-m/date-dayofyear), [datum. DAYSINMONTH](https://docs.microsoft.com/powerquery-m/date-daysinmonth))
 * Výrazy if (ale větve musí mít stejné typy)
 * Filtry řádků jako logický sloupec

@@ -3,14 +3,13 @@ title: Zálohování počítačů s Windows pomocí agenta MARS
 description: K zálohování počítačů s Windows použijte agenta Microsoft Azure Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 002f4cd2e0582fb87af622f721f286bd78920350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193288"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85604841"
 ---
-# <a name="back-up-windows-machines-by-using-the-azure-backup-mars-agent"></a>Zálohování počítačů s Windows pomocí agenta Azure Backup MARS
+# <a name="back-up-windows-server-files-and-folders-to-azure"></a>Zálohování souborů a složek Windows serveru do Azure
 
 Tento článek vysvětluje, jak zálohovat počítače s Windows pomocí služby [Azure Backup](backup-overview.md) a agenta Microsoft Azure Recovery Services (MARS). MARS se také označuje jako agent Azure Backup.
 
@@ -43,7 +42,7 @@ Vytvoření zásady zálohování:
 1. V části **Akce**vyberte **naplánovat zálohování**.
 
     ![Naplánování zálohování Windows Serveru](./media/backup-configure-vault/schedule-first-backup.png)
-1. V Průvodci plánováním **zálohování vyberte** > začít**dál**.
+1. V Průvodci plánováním **zálohování vyberte začít**  >  **dál**.
 1. V části **Vybrat položky k zálohování**vyberte **Přidat položky**.
 
     ![Přidat položky k zálohování](./media/backup-azure-manage-mars/select-item-to-backup.png)
@@ -79,7 +78,7 @@ Vytvoření zásady zálohování:
 
         ![Příklad zásady uchovávání informací](./media/backup-configure-vault/retention-example.png)
 
-1. Na stránce **zvolit typ prvotní zálohy** rozhodněte, jestli chcete provést prvotní zálohování přes síť, nebo použijte offline zálohování. Chcete-li provést prvotní zálohování sítě, vyberte možnost **automaticky v síti** > **Další**.
+1. Na stránce **zvolit typ prvotní zálohy** rozhodněte, jestli chcete provést prvotní zálohování přes síť, nebo použijte offline zálohování. Chcete-li provést prvotní zálohování sítě, vyberte možnost **automaticky v síti**  >  **Další**.
 
     Další informace o offline zálohování najdete v tématu [použití Azure Data box pro zálohování offline](offline-backup-azure-data-box.md).
 

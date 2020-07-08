@@ -7,10 +7,9 @@ ms.reviewer: apseth, divswa, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: bd6b05489d13f835de4dce2aa3d885132285efca
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84987615"
 ---
 # <a name="send-related-messages-in-order-by-using-a-sequential-convoy-in-azure-logic-apps-with-azure-service-bus"></a>Odeslání souvisejících zpráv v pořadí pomocí sekvenčního convoyu v Azure Logic Apps s Azure Service Bus
@@ -47,7 +46,7 @@ Další informace najdete v tématu [sekvenční convoy vzor – vzory návrhu c
 
 Pokud si nejste jistí, jestli má aplikace logiky oprávnění pro přístup k vašemu oboru názvů Service Bus, potvrďte tato oprávnění.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte svůj *obor názvů*Service Bus.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyhledejte a vyberte svůj *obor názvů*Service Bus.
 
 1. V nabídce obor názvů v části **Nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**ověřte, že máte oprávnění ke **správě** tohoto oboru názvů.
 
@@ -195,11 +194,11 @@ Pokud chcete zadat hodnoty pro aktivační událost a akce v rámci **korelačn�
 
   | Vlastnost | Vyžadováno pro tento scénář | Hodnota | Description |
   |----------|----------------------------|-------|-------------|
-  | **Název fronty** | Ano | <*název fronty*> | Název pro dříve vytvořenou frontu Service Bus. V tomto příkladu se používá "Fabrikam-Service-Bus-Queue". |
-  | **Typ fronty** | Ano | **Hlavní** | Vaše primární Service Bus fronta |
-  | **ID relace** | Ano | **Další k dispozici** | Tato možnost načte relaci každého spuštění triggeru na základě ID relace ze zprávy ve frontě Service Bus. Relace je taky zamčená, takže žádná jiná aplikace logiky ani jiný klient nemůže zpracovat zprávy, které se vztahují k této relaci. Následující akce pracovního postupu zpracovávají všechny zprávy, které jsou přidružené k této relaci, jak je popsáno dále v tomto článku. <p><p>Zde jsou další informace o možnostech dalších **ID relace** : <p>- **None**: výchozí možnost, která nemá žádné relace a nedá se použít pro implementaci sekvenčního vzoru convoy. <p>- **Zadejte vlastní hodnotu**: tuto možnost použijte, pokud znáte ID relace, které chcete použít, a pro ID relace vždy chcete spustit Trigger. <p>**Poznámka**: konektor Service Bus může současně uložit omezený počet jedinečných relací z Azure Service Bus do mezipaměti konektoru. Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další informace najdete v tématu [zprávy Exchange v cloudu s Azure Logic Apps a Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
-  | **Doba** | Ano | <*počet intervalů*> | Počet časových jednotek mezi opakováními před vrácením zprávy se změnami. |
-  | **Frekvence** | Ano | **Sekundy**, **minuty**, **hodiny**, **den**, **týden**nebo **měsíc** | Jednotka času, kterou má opakování použít při kontrole zprávy <p>**Tip**: Pokud chcete přidat **časové pásmo** nebo **čas spuštění**, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** . |
+  | **Název fronty** | Yes | <*název fronty*> | Název pro dříve vytvořenou frontu Service Bus. V tomto příkladu se používá "Fabrikam-Service-Bus-Queue". |
+  | **Typ fronty** | Yes | **Hlavní** | Vaše primární Service Bus fronta |
+  | **ID relace** | Yes | **Další k dispozici** | Tato možnost načte relaci každého spuštění triggeru na základě ID relace ze zprávy ve frontě Service Bus. Relace je taky zamčená, takže žádná jiná aplikace logiky ani jiný klient nemůže zpracovat zprávy, které se vztahují k této relaci. Následující akce pracovního postupu zpracovávají všechny zprávy, které jsou přidružené k této relaci, jak je popsáno dále v tomto článku. <p><p>Zde jsou další informace o možnostech dalších **ID relace** : <p>- **None**: výchozí možnost, která nemá žádné relace a nedá se použít pro implementaci sekvenčního vzoru convoy. <p>- **Zadejte vlastní hodnotu**: tuto možnost použijte, pokud znáte ID relace, které chcete použít, a pro ID relace vždy chcete spustit Trigger. <p>**Poznámka**: konektor Service Bus může současně uložit omezený počet jedinečných relací z Azure Service Bus do mezipaměti konektoru. Pokud počet relací překročí tento limit, staré relace budou odebrány z mezipaměti. Další informace najdete v tématu [zprávy Exchange v cloudu s Azure Logic Apps a Azure Service Bus](../connectors/connectors-create-api-servicebus.md#connector-reference). |
+  | **Doba** | Yes | <*počet intervalů*> | Počet časových jednotek mezi opakováními před vrácením zprávy se změnami. |
+  | **Frekvence** | Yes | **Sekundy**, **minuty**, **hodiny**, **den**, **týden**nebo **měsíc** | Jednotka času, kterou má opakování použít při kontrole zprávy <p>**Tip**: Pokud chcete přidat **časové pásmo** nebo **čas spuštění**, vyberte tyto vlastnosti ze seznamu **Přidat nový parametr** . |
   |||||
 
   Další informace o aktivačních událostech najdete [v tématu Service Bus – při přijetí zprávy ve frontě (prohlížení zámku)](https://docs.microsoft.com/connectors/servicebus/#when-a-message-is-received-in-a-queue-(peek-lock)). Aktivační událost výstupuje [ServiceBusMessage](https://docs.microsoft.com/connectors/servicebus/#servicebusmessage).

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření interního základního Load Balancer – Azure CLI
+title: Vytvoření interního Load Balancer – Azure CLI
 titleSuffix: Azure Load Balancer
 description: V tomto článku se dozvíte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí Azure CLI.
 services: load-balancer
@@ -11,14 +11,13 @@ ms.topic: how-to
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/27/2018
+ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: 9bcd476f0e1418227f6ab290ad84ac9737e52bbd
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
-ms.translationtype: MT
+ms.openlocfilehash: 2557ac6f3fb8e9091faad5c9c219db529838495d
+ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808557"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85921720"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Vytvoření interního nástroje pro vyrovnávání zatížení virtuálních počítačů pomocí Azure CLI
 
@@ -52,7 +51,7 @@ Pomocí příkazu [az network vnet create](https://docs.microsoft.com/cli/azure/
     --subnet-name mySubnet
 ```
 
-## <a name="create-basic-load-balancer"></a>Vytvoření Load Balanceru úrovně Basic
+## <a name="create-standard-load-balancer"></a>Vytvoření Load Balanceru úrovně Standard
 
 Tato část podrobně popisuje vytvoření a konfiguraci následujících komponent nástroje pro vyrovnávání zatížení:
   - Konfigurace front-endových IP adres, které přijímají příchozí síťový provoz do nástroje pro vyrovnávání zatížení.
@@ -62,12 +61,15 @@ Tato část podrobně popisuje vytvoření a konfiguraci následujících kompon
 
 ### <a name="create-the-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
-Vytvořte interní Load Balancer pomocí [AZ Network](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) Create s názvem **myLoadBalancer** , který obsahuje konfiguraci protokolu IP front-endu s názvem **myFrontEnd**, fondu back-end s názvem **myBackEndPool** , který je přidružený k privátní IP adrese * * 10.0.0.7.
+Vytvořte interní Load Balancer pomocí [AZ Network](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) Create s názvem **myLoadBalancer** , který obsahuje konfiguraci protokolu IP front-endu s názvem **myFrontEnd**, fondu back-end s názvem **myBackEndPool** , který je přidružený k privátní IP adrese **10.0.0.7**. 
+
+Slouží `--sku basic` k vytvoření základního Load Balancer. Microsoft doporučuje pro produkční úlohy standardní SKU.
 
 ```azurecli-interactive
   az network lb create \
     --resource-group myResourceGroupILB \
     --name myLoadBalancer \
+    --sku standard \
     --frontend-ip-name myFrontEnd \
     --private-ip-address 10.0.0.7 \
     --backend-pool-name myBackEndPool \
@@ -85,7 +87,7 @@ Sonda stavu kontroluje všechny instance virtuálních počítačů a ověřuje,
     --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
-    --port 80   
+    --port 80
 ```
 
 ### <a name="create-the-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
@@ -103,6 +105,12 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje konfiguraci front-end
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
     --probe-name myHealthProbe  
+```
+
+Můžete také vytvořit pravidlo nástroje pro vyrovnávání zatížení s [porty ha](load-balancer-ha-ports-overview.md) pomocí konfigurace níže pomocí Standard Load Balancer.
+
+```azurecli-interactive
+az network lb rule create --resource-group myResourceGroupILB --lb-name myLoadBalancer --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name myFrontEnd --backend-address-pool-name myBackEndPool
 ```
 
 ## <a name="create-servers-for-the-backend-address-pool"></a>Vytvoření serverů pro back-endový fond adres

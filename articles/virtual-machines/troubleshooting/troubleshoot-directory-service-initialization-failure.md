@@ -15,10 +15,9 @@ ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
 ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "83665135"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>Řešení potíží s Windows stop – Chyba při inicializaci adresářové služby
@@ -35,7 +34,7 @@ Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtua
 
 Kód chyby **0xC00002E2** představuje **STATUS_DS_INIT_FAILURE**a kód chyby **0xC00002E1** představuje **STATUS_DS_CANT_START**. K oběma chybám dochází, když dojde k potížím s adresářovou službou.
 
-Při spuštění operačního systému se pak vynuceně automaticky restartuje místní Server Security Authentication (**Lsass. exe**), který ověřuje přihlášení uživatelů. Ověřování se nemůže stát, když je operační systém na virtuálním počítači řadič domény, který nemá přístup pro čtení a zápis do místní databáze služby Active Directory. Z důvodu nedostatku přístupu ke **službě Active Directory (AD) se služba**Lsass. exe nemůže ověřit a je vynucena RESTARTOVÁNÍ operačního systému.
+Při spuštění operačního systému se pak vynuceně automaticky restartuje místní server pro ověření zabezpečení (**LSASS.exe**), který ověřuje přihlášení uživatelů. Ověřování se nemůže stát, když je operační systém na virtuálním počítači řadič domény, který nemá přístup pro čtení a zápis do místní databáze služby Active Directory. Z důvodu nedostatku přístupu ke **službě Active Directory (AD)**, LSASS.exe nelze ověřit a je vynuceno restartovat operační systém.
 
 Tato chyba může být způsobena některou z následujících podmínek:
 

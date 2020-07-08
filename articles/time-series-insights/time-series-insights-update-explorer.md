@@ -10,12 +10,11 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 06f235b7f1c20681beee1f5be4c18de60d53a690
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75861757"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037303"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Průzkumník Preview Azure Time Series Insights
 
@@ -75,11 +74,11 @@ Azure Time Series Insights Preview podporuje operace úplného vytváření, čt
 * **Hierarchie modelu časové řady**: hierarchie jsou systematické organizace vašich dat. Hierarchie znázorňuje vztahy mezi různými entitami ve vašich Time Series Insightsch datech.
 * **Instance modelu časové řady**: instance jsou samotné časové řady. Ve většině případů se jedná o **DeviceID** nebo **AssetID**, což je jedinečný identifikátor assetu v prostředí.
 
-Pokud chcete získat další informace o modelu časové řady, pročtěte si [modely časů řady](./time-series-insights-update-tsm.md).
+Pokud chcete získat další informace o modelu časové řady, pročtěte si [modely časů řady](./concepts-model-overview.md).
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. strom hierarchie a panel hledání
 
-Strom a panel hledání hierarchie vám umožní snadno vyhledat a procházet hierarchii [modelu časové řady](./time-series-insights-update-tsm.md) a najít konkrétní instance časových řad, které chcete zobrazit v grafu. Když vyberete své instance, nebudou přidány pouze do aktuálního grafu, ale budou také přidány do datového zásobníku. 
+Strom a panel hledání hierarchie vám umožní snadno vyhledat a procházet hierarchii [modelu časové řady](./concepts-model-overview.md) a najít konkrétní instance časových řad, které chcete zobrazit v grafu. Když vyberete své instance, nebudou přidány pouze do aktuálního grafu, ale budou také přidány do datového zásobníku. 
 
 [![Strom hierarchie a panel hledání](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
@@ -171,7 +170,7 @@ V horní části aplikace Time Series Insights se zobrazí navigační panel Tim
 
 ### <a name="current-session-share-link-control"></a>Ovládací prvek odkazu na sdílenou složku aktuální relace
 
-  [![Ikona sdílení](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
+  [![Ikona Sdílet](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
 
 Vyberte ikonu nové **sdílené složky** a sdílejte odkaz na adresu URL s týmem.
 
@@ -240,8 +239,10 @@ Prvky na panelu grafu můžete zobrazit a skrýt tak, že vyberete ikonu Visible
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o službě [Storage a](./time-series-insights-update-storage-ingress.md) příchozím přenosu ve službě Azure Time Series Insights Preview.
+- Přečtěte si informace o ingestování [dat](./concepts-ingestion-overview.md) do vašeho prostředí.
 
-- Přečtěte si dokument Time Series Insights Preview při [modelování dat](./time-series-insights-update-tsm.md).
+- Podívejte se na článek [úložiště](concepts-storage.md)
+
+- Přečtěte si dokument Time Series Insights Preview při [modelování dat](./concepts-model-overview.md).
 
 - Naučte [se diagnostikovat a řešit potíže s](./time-series-insights-update-how-to-troubleshoot.md) instancí Time Series Insights.

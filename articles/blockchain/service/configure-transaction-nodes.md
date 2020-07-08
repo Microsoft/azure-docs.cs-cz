@@ -5,10 +5,9 @@ ms.date: 11/20/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 90836ad94410dfec5caa32275362f1407c9f5b1a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85212560"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurace uzlů transakcí služby Azure blockchain
@@ -17,7 +16,7 @@ Uzly transakce slouží k posílání transakcí blockchain do služby Azure blo
 
 Zobrazení podrobností o výchozích uzlech transakce:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Přejděte ke členu služby Azure blockchain. Vyberte **uzly transakce**.
 
     ![Vybrat výchozí uzel transakce](./media/configure-transaction-nodes/nodes.png)

@@ -4,10 +4,9 @@ description: Popisuje funkce, které se použijí v šabloně Azure Resource Man
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "84331402"
 ---
 # <a name="arm-template-functions"></a>Funkce šablon ARM
@@ -66,8 +65,8 @@ Správce prostředků poskytuje několik funkcí pro práci s poli.
 Správce prostředků poskytuje několik funkcí pro porovnávání v šablonách.
 
 * [COALESCE](template-functions-comparison.md#coalesce)
-* [equals](template-functions-comparison.md#equals)
-* [less](template-functions-comparison.md#less)
+* [rovná se](template-functions-comparison.md#equals)
+* [tolik](template-functions-comparison.md#less)
 * [lessOrEquals](template-functions-comparison.md#lessorequals)
 * [greater](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
@@ -104,7 +103,7 @@ Správce prostředků poskytuje následující funkce pro práci s logickými po
 
 * [a](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
-* [if](template-functions-logical.md#if)
+* [Přestože](template-functions-logical.md#if)
 * [mění](template-functions-logical.md#not)
 * [nebo](template-functions-logical.md#or)
 
