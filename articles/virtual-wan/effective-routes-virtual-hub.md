@@ -1,72 +1,68 @@
 ---
 title: 'Zobrazení efektivních tras virtuálního rozbočovače: Azure Virtual WAN | Microsoft Docs'
-description: Vyhledáte efektivní trasy k virtuálnímu rozbočovači v Azure Virtual WAN.
+description: Postup zobrazení efektivních tras pro virtuální rozbočovač ve službě Azure Virtual WAN
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: c7d436f2aecb021a7848ef0455a3f1c834cc38c1
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84750552"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037762"
 ---
-# <a name="view-effective-routes-of-a-virtual-hub"></a>Zobrazení efektivních tras virtuálního rozbočovače
+# <a name="view-virtual-hub-effective-routes"></a>Zobrazení efektivních tras virtuálního centra
 
-Všechny trasy k virtuálnímu rozbočovači WAN můžete zobrazit v Azure Portal. Pokud chcete zobrazit trasy, přejděte do virtuálního centra a pak vyberte **Směrování-> zobrazit efektivní trasy**.
+Všechny trasy vašeho virtuálního rozbočovače WAN můžete zobrazit v Azure Portal. Tento článek vás provede kroky k zobrazení efektivních tras. Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
-## <a name="understanding-routes"></a><a name="understand"></a>Principy tras
+> [!NOTE]
+> Na Azure Portal mohou být některé z těchto funkcí stále zavedené a nejsou k dispozici až do týdne od 3. srpna. 
+>
 
-Následující příklad vám pomůže lépe pochopit, jak se bude zobrazovat směrování virtuální sítě WAN.
+## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Výběr připojení nebo směrovacích tabulek
 
-V tomto příkladu máme virtuální síť WAN se třemi rozbočovači. První centrum je v oblasti Východní USA, druhý rozbočovač je v oblasti Západní Evropa a třetí centrum je v oblasti Západní USA. Ve virtuální síti WAN jsou všechna centra propojena. V tomto příkladu budeme předpokládat, že centra Východní USA a Západní Evropa mají připojení z místních větví (paprsky) a virtuálních sítí Azure (paprsky).
+1. Přejděte do svého virtuálního centra a pak vyberte **Směrování**. Na stránce směrování vyberte **platné trasy**.
+1. Z rozevíracího seznamu můžete vybrat **Typ připojení** nebo **směrovací tabulku**. Pokud nevidíte možnost směrovací tabulky, znamená to, že v tomto virtuálním centru nemáte nastavenou vlastní nebo výchozí směrovací tabulku.
+1. Z rozevíracího seznamu pro **tabulky připojení/směrování**můžete vybrat z následujících položek:
 
-Koncová síť Azure (10.4.0.0/16) s virtuálním síťovým zařízením (10.4.0.6) je dále partnerského vztahu k virtuální síti (10.5.0.0/16). Další informace o tabulce směrování centra najdete v části [Další informace](#abouthubroute) dále v tomto článku.
+   * Virtual Network připojení
+   * Připojení k síti VPN
+   * Připojení ExpressRoute
+   * Připojení Point-to-site
+   * Tabulka směrování
 
-V tomto příkladu předpokládáme, že Západní Evropa větev 1 je připojená k centru Východní USA a také k rozbočovači Západní Evropa. Okruh ExpressRoute v Východní USA připojuje větev 2 k centru Východní USA.
+   :::image type="content" source="./media/effective-routes-virtual-hub/routing.png" alt-text="Směrování":::
 
-![znázorňuje](./media/effective-routes-virtual-hub/diagram.png)
+## <a name="view-output"></a><a name="output"></a>Zobrazit výstup
 
-## <a name="view-effective-routes"></a><a name="view"></a>Zobrazit efektivní trasy
+Výstup stránky zobrazuje následující pole:
 
-Když na portálu vyberete Zobrazit efektivní trasy, vytvoří se výstup zobrazený v [tabulce směrování centra](#routetable) pro centrum východní USA.
+* **Prefix**: Předpona adresy známá aktuální entitě.
+* **Typ dalšího segmentu směrování**: může být Virtual Network připojení, VPN_S2S_Gateway, ExpressRouteGateway, vzdáleného rozbočovače nebo Azure firewall.
+* **Další segment směrování**: Jedná se o IP adresu, nebo jenom v případě, že se na odkaz ukáže aktuální centrum.
+* **Původ**: ID prostředku zdroje směrování.
+* **Jako cesta**: atribut BGP jako (autonomní systém) cesta uvádí všechny hodnoty, které je třeba procházet, aby se dosáhlo místa, odkud je inzerována předpona, ke které je připojena cesta.
 
-V perspektivě to první řádek znamená, že centrum Východní USA zjistilo trasu 10.20.1.0/24 (větev 1) z důvodu připojení *typu dalšího segmentu směrování* sítě VPN (' Next hop ' VPN Gateway Instance0 IP 10.1.0.6, položku instance1 IP 10.1.0.7). *Počátek směrování* odkazuje na ID prostředku. *Jako cesta* označuje cestu pro větev 1.
+### <a name="example"></a><a name="example"></a>Případě
 
-### <a name="hub-route-table"></a><a name="routetable"></a>Tabulka směrování centra
+Hodnoty v následující ukázkové tabulce naznačují, že připojení nebo směrovací tabulka virtuálního rozbočovače se naučila trasa 10.2.0.0/24 (předpona větve). Zjistila se trasa z důvodu **typu dalšího segmentu směrování sítě VPN** VPN_S2S_GATEWAY s ID prostředku **dalšího segmentu směrování** VPN Gateway. Body **původu trasují** k ID prostředku, který pochází z brány VPN/tabulky nebo připojení směrování. **Jako cesta** označuje cestu pro větev.
 
 Pomocí posuvníku v dolní části tabulky zobrazte "AS Path".
 
 | **Předpona** |  **Typ dalšího segmentu** | **Další směrování** |  **Původ trasy** |**JAKO cesta** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|Síť VPN |10.1.0.6, 10.1.0.7| /Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW| 20000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-GW|21000|
-|10.23.1.0/24| Síť VPN |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-GW|23000|
-|10.4.0.0/16|Virtual Network připojení| Odkaz na linku |  |  |
-|10.5.0.0/16| IP adresa| 10.4.0.6|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|0.0.0.0/0| IP adresa| `<Azure Firewall IP>` |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|10.22.1.0/16| Vzdálené centrum|10.8.0.6, 10.8.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_| 4848-22000 |
-|10.9.0.0/16| Vzdálené centrum|  Odkaz na linku |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_1| |
+| 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
->[!NOTE]
-> Pokud Východní USA a centra Západní Evropa vzájemně nekomunikovala v příkladu topologie, získaná trasa (10.9.0.0/16) neexistuje. Rozbočovače inzerují jenom sítě, které jsou k nim přímo připojené.
->
+**Odůvodněn**
 
-## <a name="additional-information"></a><a name="additional"></a>Další informace
+* Pokud se ve výstupu **získat efektivní trasy** zobrazí hodnota 0.0.0.0/0, znamená to, že trasa existuje v jedné z směrovacích tabulek. Pokud se ale tato trasa nastavila pro Internet, pro připojení se vyžaduje další příznak **"enableInternetSecurity": true** . V případě, že je příznak "enableInternetSecurity" u připojení "NEPRAVDA", nebude cesta platná v síťovém adaptéru virtuálního počítače ukazovat.
 
-### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>Tabulka směrování centra
-
-Můžete vytvořit trasu virtuálního rozbočovače a použít ji pro směrovací tabulku virtuálního rozbočovače. V uvedené tabulce můžete použít více tras. To vám umožní nastavit trasu pro cílovou virtuální síť prostřednictvím IP adresy (obvykle síťové virtuální zařízení (síťové virtuální zařízení) ve virtuální síti paprsků). Další informace o síťová virtuální zařízení najdete v tématu [směrování provozu z virtuálního rozbočovače do síťové virtuální zařízení](virtual-wan-route-table-portal.md). Pamatujte na to, že tyto trasy nebudou zobrazeny v efektivní tabulce směrování. Tabulka efektivní trasy obsahuje jenom předpony pro místní a vzdálené centra plus připojené Virtual Network adresní prostor a trasy získané prostřednictvím protokolu BGP.
-
-### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>Výchozí trasa (0.0.0.0/0)
-
-Virtuální rozbočovač má schopnost rozšířit získanou výchozí trasu na virtuální síť, síť VPN typu Site-to-site a připojení ExpressRoute, pokud je příznak povoleno u připojení. Tento příznak se zobrazí při úpravě připojení k virtuální síti, připojení k síti VPN nebo připojení ExpressRoute. Ve výchozím nastavení je v připojeních virtuální sítě, ExpressRoute a VPN typu "EnableInternetSecurity" vždy false.
-
-Výchozí trasa nepochází do virtuálního centra WAN. Výchozí trasa je šířena v případě, že ji již služba Virtual WAN hub vyvolala v důsledku nasazení brány firewall v centru nebo v případě, že je povoleno vynucené tunelování na jiném připojeném serveru.
+* Pole **rozšířit výchozí trasu** se zobrazuje na portálu Azure Virtual WAN při úpravě připojení k virtuální síti, připojení k síti VPN nebo připojení ExpressRoute. Toto pole indikuje příznak **enableInternetSecurity** , který je vždycky ve výchozím nastavení false pro připojení EXPRESSROUTE a VPN, ale pro připojení k virtuální síti je nastavená hodnota true.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o službě Virtual WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
+* Další informace o službě Virtual WAN najdete v tématu [Přehled služby Virtual WAN](virtual-wan-about.md).
+* Další informace o směrování virtuálních rozbočovačů najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).

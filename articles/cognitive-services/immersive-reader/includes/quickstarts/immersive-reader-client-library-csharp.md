@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2b6f4bb707d6c5c07dd6a1205ce7be542a220f17
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a5bd7b3e6262fa21865f04a6b65d1a75faafefa4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268732"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038186"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
@@ -41,7 +41,7 @@ Vytvořte nový projekt v aplikaci Visual Studio pomocí šablony ASP.NET Core w
 
 ### <a name="configure-authentication-values"></a>Konfigurovat hodnoty ověřování
 
-V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vyberte možnost **spravovat tajné klíče uživatele**. Tím se otevře soubor s názvem _tajných_kódů. JSON. Tento soubor není zkontrolován do správy zdrojového kódu. Další informace najdete [tady](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Obsah _tajných kódů. JSON_ nahraďte následujícím kódem a zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
+V _Průzkumník řešení_ klikněte pravým tlačítkem myši na projekt a vyberte možnost **spravovat tajné klíče uživatele**. Tím se otevře soubor s názvem _secrets.js_. Tento soubor není zkontrolován do správy zdrojového kódu. Další informace najdete [tady](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows). Nahraďte obsah _secrets.jsv_ následujícím textu zadejte hodnoty, které jste zadali při vytváření prostředku pro moderní čtečku.
 
 ```json
 {
@@ -70,7 +70,7 @@ Otevřete _souboru controllers\homecontroller.cs_a za příkazy _using_ v horní
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Teď nakonfigurujeme kontroler tak, aby získal hodnoty Azure AD z _tajných kódů. JSON_. V horní části třídy _HomeController_ ```public class HomeController : Controller {``` přidejte následující kód.
+Teď nakonfigurujeme kontroler tak, aby získal hodnoty Azure AD od _secrets.js_. V horní části třídy _HomeController_ ```public class HomeController : Controller {``` přidejte následující kód.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -305,7 +305,8 @@ Po kliknutí na tlačítko "moderní čtečka" se zobrazí moderní čtečka, kt
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se na úvodní seznam pro [Node. js](../../quickstart-nodejs.md) , kde vidíte, co dalšího můžete dělat s klientskou knihovnou moderního čtecího zařízení pomocí Node. js.
+* Zobrazte si [rychlý startNode.js](../../tutorial-nodejs.md) , abyste viděli, co dalšího můžete dělat s klientskou knihovnou pro moderní čtenáře pomocí Node.js
+* Podívejte se na [kurz pro Android](../../tutorial-android.md) , kde najdete další informace, které můžete dělat v sadě moderní čtečky pomocí Java nebo Kotlin pro Android.
+* Podívejte se na [kurz pro iOS](../../tutorial-ios.md) , kde najdete další informace, které můžete dělat v sadě pro moderní čtečku pomocí SWIFT pro iOS.
 * Podívejte se na [kurz Pythonu](../../tutorial-python.md) , abyste viděli, co dalšího můžete dělat s klientskou knihovnou moderního čtenáře pomocí Pythonu.
-* Podívejte se na [kurz pro iOS](../../tutorial-ios-picture-immersive-reader.md) , abyste viděli, co dalšího můžete dělat s klientskou knihovnou moderního čtecího zařízení pomocí SWIFT.
 * Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../../reference.md)

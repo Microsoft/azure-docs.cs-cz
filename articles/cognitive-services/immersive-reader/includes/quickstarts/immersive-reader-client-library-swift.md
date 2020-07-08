@@ -1,7 +1,7 @@
 ---
 title: Rychlý Start knihovny pro moderní čtečku SWIFT
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vytvoříte webovou aplikaci od začátku a přidáte funkce rozhraní API pro moderní čtečku.
+description: V tomto rychlém startu vytvoříte aplikaci pro iOS od začátku a přidáte funkce rozhraní API pro moderní čtečku.
 services: cognitive-services
 author: pasta
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 191d802064d477babd8aa1f782ad15876b821d11
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3d0a8444312f37b1f59817d50bdc50d3aff22164
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268746"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038189"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
@@ -527,7 +527,7 @@ public func launchImmersiveReader(navController: UINavigationController, token: 
 }
 ```
 
-Přidejte soubor do složky *Resources* s názvem *iFrameMessaging. js* a přidejte následující kód.
+Přidejte soubor do složky *Resources* s názvem *iFrameMessaging.js* a přidejte následující kód.
 
 ```javascript
 window.addEventListener("message", function(message) {
@@ -573,4 +573,4 @@ Po kliknutí na tlačítko pro **moderní čtečku** se zobrazí moderní čteč
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [referenční materiály k sadě pro moderní čtečku](../../reference.md)
+* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../../reference.md)

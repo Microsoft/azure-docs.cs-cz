@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 4e827c5f6eedc819bc3635cb09a28f65df51312c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75862573"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037830"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Řešení potíží: připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat.
 
@@ -46,7 +46,7 @@ Porovnejte sdílený klíč pro místní zařízení VPN s Azure Virtual Network
 
 Pokud chcete zobrazit sdílený klíč pro připojení Azure VPN, použijte jednu z následujících metod:
 
-**portál Azure**
+**Azure Portal**
 
 1. Přejít na připojení typu Site-to-site brány VPN, které jste vytvořili.
 
@@ -60,11 +60,15 @@ Pokud chcete zobrazit sdílený klíč pro připojení Azure VPN, použijte jedn
 
 Pro model nasazení Azure Resource Manager:
 
-    Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```azurepowershell
+Get-AzVirtualNetworkGatewayConnectionSharedKey -Name <Connection name> -ResourceGroupName <Resource group name>
+```
 
 Pro model nasazení Classic:
 
-    Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```azurepowershell
+Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
+```
 
 ### <a name="step-3-verify-the-vpn-peer-ips"></a>Krok 3. Ověření IP adresy partnerského uzlu sítě VPN
 
