@@ -4,10 +4,10 @@ description: Tento článek poskytuje přehled všech provozních a diagnostick�
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85337539"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Povolit protokoly diagnostiky pro Service Bus
@@ -25,7 +25,7 @@ Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON) 
 
 Řetězce JSON provozního protokolu obsahují prvky uvedené v následující tabulce:
 
-| Název | Popis |
+| Name | Description |
 | ------- | ------- |
 | ActivityId | Interní ID, které slouží k identifikaci zadané aktivity |
 | EventName | Název operace |

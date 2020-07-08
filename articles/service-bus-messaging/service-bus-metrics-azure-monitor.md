@@ -4,10 +4,10 @@ description: Tento článek vysvětluje, jak pomocí Azure Monitor monitorovat S
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 57b791e67157908447956a14fae99545843f3bc0
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85340288"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metriky v Azure Monitor
@@ -54,7 +54,7 @@ Všechny hodnoty metrik jsou odesílány do Azure Monitor každou minutu. Časov
 
 Spočítá počet požadavků na data a operace správy.
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 | Příchozí žádosti| Počet požadavků provedených ve službě Service Bus v zadaném období. <br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |Úspěšné požadavky|Počet úspěšných požadavků provedených ve službě Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -72,7 +72,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 ## <a name="message-metrics"></a>Metriky zpráv
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |Příchozí zprávy|Počet událostí nebo zpráv odeslaných do Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |Odchozí zprávy|Počet událostí nebo zpráv přijatých z Service Bus v zadaném období.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -90,7 +90,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 ## <a name="connection-metrics"></a>Metriky připojení
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |ActiveConnections|Počet aktivních připojení v oboru názvů i u entity.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
 |Otevřená připojení |Počet otevřených připojení.<br/><br/> Jednotka: počet <br/> Typ agregace: celkem <br/> Dimenze: EntityName|
@@ -105,7 +105,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 > 
 > Další metrikou, kterou můžete monitorovat: **omezené požadavky**. Nemělo by se jednat o problém, dokud obor názvů zůstane v rámci omezení paměti, procesoru a zprostředkovaných připojení. Další informace najdete v tématu [omezování v Azure Service Bus úrovně Premium](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier) .
 
-| Název metriky | Popis |
+| Název metriky | Description |
 | ------------------- | ----------------- |
 |Využití CPU na obor názvů|Procento využití procesoru oboru názvů.<br/><br/> Jednotka: procenta <br/> Typ agregace: maximum <br/> Dimenze: EntityName|
 |Využití velikosti paměti na obor názvů|Procento využití paměti oboru názvů.<br/><br/> Jednotka: procenta <br/> Typ agregace: maximum <br/> Dimenze: EntityName|
@@ -114,7 +114,7 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 
 Azure Service Bus podporuje následující dimenze pro metriky v Azure Monitor. Přidávání dimenzí do metrik je volitelné. Pokud dimenze nepřidáte, jsou metriky zadány na úrovni oboru názvů. 
 
-|Název dimenze|Popis|
+|Název dimenze|Description|
 | ------------------- | ----------------- |
 |EntityName| Service Bus podporuje entity zasílání zpráv pod oborem názvů.|
 

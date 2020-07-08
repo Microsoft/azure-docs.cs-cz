@@ -4,10 +4,10 @@ description: Popisuje, jak rozdělit Service Bus fronty a témata pomocí více 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 6ea0bee255f489355056f91d82195382153786bb
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85339642"
 ---
 # <a name="partitioned-queues-and-topics"></a>Dělené fronty a témata

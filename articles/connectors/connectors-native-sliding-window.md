@@ -7,10 +7,10 @@ ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 103805fbf395dc120acc96fbcee273abcf14939d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322115"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>Naplánujte a spusťte úkoly pro souvislé data pomocí posuvné aktivační události okna v Azure Logic Apps
@@ -30,7 +30,7 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 > [!TIP]
 > Pokud chcete aktivovat aplikaci logiky a spustit ji jenom jednou v budoucnu, Projděte si téma [Spustit úlohy jenom jednou](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#run-once).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -38,7 +38,7 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 
 ## <a name="add-sliding-window-trigger"></a>Přidat aktivační událost posuvných oken
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
 1. Po zobrazení návrháře aplikace logiky zadejte do vyhledávacího pole `sliding window` jako filtr. V seznamu triggery vyberte aktivační událost **posuvných oken** jako první krok v pracovním postupu aplikace logiky.
 
@@ -48,7 +48,7 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 
    ![Nastavení intervalu a frekvence](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | Vlastnost | Název JSON | Požaduje se | Typ | Popis |
+   | Vlastnost | Název JSON | Požaduje se | Typ | Description |
    |----------|----------|-----------|------|-------------|
    | **Doba** | `interval` | Yes | Integer | Kladné celé číslo, které popisuje, jak často se pracovní postup spouští na základě frekvence. Tady jsou minimální a maximální intervaly: <p>-Month: 1-16 měsíců <br>-Week: 1-71 týdnů <br>Denní: 1-500 dní <br>-Hodina: 1 – 12000 hodin <br>-Minute: 1 – 72000 minut <br>-Sekunda: 1 – 9999999 sekund <p>Pokud má například interval hodnotu 6 a frekvence je "Month" (měsíc), opakování je každých 6 měsíců. |
    | **Frekvence** | `frequency` | Yes | Řetězec | Jednotka času pro opakování: **sekunda**, **minuta**, **hodina**, **den**, **týden**nebo **měsíc** |
@@ -58,7 +58,7 @@ Rozdíly mezi touto triggerem a triggerem opakování nebo další informace o p
 
    Pro další možnosti opakování otevřete seznam **Přidat nový parametr** . Všechny možnosti, které vyberete, se zobrazí na triggeru po výběru.
 
-   | Vlastnost | Požaduje se | Název JSON | Typ | Popis |
+   | Vlastnost | Požaduje se | Název JSON | Typ | Description |
    |----------|----------|-----------|------|-------------|
    | **Zpoždění** | No | způsobené | Řetězec | Doba, po kterou se má zpozdit každé opakování, pomocí [specifikace data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) |
    | **Časové pásmo** | No | timeZone | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |

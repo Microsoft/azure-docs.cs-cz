@@ -4,10 +4,10 @@ description: Tento článek poskytuje návod pro vytvoření aplikace .NET Core,
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: bd8476c89fea94a9d1b4a101841c11137d4dd5be
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320784"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Odesílání událostí do nebo příjem událostí z Azure Event Hubs pomocí .NET Core (Microsoft. Azure. EventHubs)
@@ -16,7 +16,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 > [!WARNING]
 > V tomto rychlém startu se používá starý balíček **Microsoft. Azure. EventHubs** . Pro rychlý Start, který používá nejnovější knihovnu **Azure. Messaging. EventHubs** , najdete informace v tématu [posílání a přijímání událostí pomocí knihovny Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md). Pokud chcete aplikaci přesunout z používání staré knihovny na novou, přečtěte si [příručku k migraci z Microsoft. Azure. EventHubs do Azure. Messaging. EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:

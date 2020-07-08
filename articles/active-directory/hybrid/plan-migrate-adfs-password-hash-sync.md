@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fe9fe10b66aa6eb5fcdaafbf8e0132918e9645c
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356675"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrace z federace na synchronizaci hodnot hash hesel pro Azure Active Directory
@@ -59,7 +59,7 @@ Teď je vhodná doba k ověření, že jsou tato oprávnění platná pro všech
 
 Můžete si vybrat ze dvou způsobů migrace ze správy federovaných identit na synchronizaci hodnot hash hesel a bezproblémového jednotného přihlašování (SSO). Použitá metoda závisí na tom, jak byla instance AD FS původně nakonfigurovaná.
 
-* **Azure AD Connect** . Pokud jste původně nakonfigurovali AD FS pomocí Azure AD Connect, *musíte* pomocí Průvodce Azure AD Connect změnit na synchronizaci hodnot hash hesel.
+* **Azure AD Connect**. Pokud jste původně nakonfigurovali AD FS pomocí Azure AD Connect, *musíte* pomocí Průvodce Azure AD Connect změnit na synchronizaci hodnot hash hesel.
 
    Když změníte metodu přihlašování uživatele, Azure AD Connect automaticky spustí rutinu **set-MsolDomainAuthentication** . Azure AD Connect automaticky unfederates všechny ověřené federované domény v tenantovi Azure AD.
 

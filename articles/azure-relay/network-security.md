@@ -4,10 +4,10 @@ description: Tento článek popisuje, jak nakonfigurovat přístup z privátníc
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: a1ade21df39890b7f1c31a81fca1fffafe2acaa0
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85322155"
 ---
 # <a name="network-security-for-azure-relay"></a>Zabezpečení sítě pro Azure Relay 

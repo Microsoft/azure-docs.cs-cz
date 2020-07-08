@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85321302"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Příklad: Vytvoření vlastní dovednosti pro rozpoznávání formulářů
 
 V tomto příkladu Azure Kognitivní hledání dovednosti se dozvíte, jak vytvořit vlastní dovednosti pro rozpoznávání formulářů pomocí C# a Visual studia. Nástroj pro rozpoznávání formulářů analyzuje dokumenty a extrahuje páry klíč/hodnota a tabulková data. Když rozbalíte Nástroj pro rozpoznávání formulářů do [vlastního rozhraní dovedností](cognitive-search-custom-skill-interface.md), můžete tuto funkci přidat jako krok v rámci kompletního kanálu pro rozšíření. Kanál pak může načíst dokumenty a dělat další transformace.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (libovolná edice).
 - Nejméně pět forem stejného typu. Můžete použít ukázková data uvedená v této příručce.

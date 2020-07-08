@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 626bc12b01428b90de1cbafe28bd7493e7ed1743
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85356640"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrace z federace na předávací ověřování pro Azure Active Directory
@@ -52,7 +52,7 @@ Pro většinu zákazníků stačí dva nebo tři ověřovací agenty k zajiště
 
 Můžete si vybrat ze dvou metod migrace ze správy federovaných identit do předávacího ověřování a bezproblémového jednotného přihlašování (SSO). Použitá metoda závisí na tom, jak byla instance AD FS původně nakonfigurovaná.
 
-* **Azure AD Connect** . Pokud jste původně nakonfigurovali AD FS pomocí Azure AD Connect, *musíte* se pomocí Průvodce Azure AD Connect změnit na předávací ověřování.
+* **Azure AD Connect**. Pokud jste původně nakonfigurovali AD FS pomocí Azure AD Connect, *musíte* se pomocí Průvodce Azure AD Connect změnit na předávací ověřování.
 
    Když změníte metodu přihlašování uživatele, Azure AD Connect automaticky spustí rutinu **set-MsolDomainAuthentication** . Azure AD Connect automaticky unfederates všechny ověřené federované domény v tenantovi Azure AD.
 

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
 ms.openlocfilehash: 92df0a7919a7d01b062356bfa4d32cc701e1e6f4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85341282"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení zabezpečení – referenční příručka
