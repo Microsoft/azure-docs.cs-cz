@@ -12,10 +12,9 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ad76835b0c72b691e1ef8810f2c58dedb8f597d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672381"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
@@ -76,8 +75,8 @@ V listopadu 2015 nebo novějších verzích Windows 10 se Enterprise State Roami
 
 Pokud jsou na stejném zařízení víc účtů Azure AD z různých tenantů Azure AD, musíte aktualizovat registr zařízení, aby komunikoval se službou Azure Rights Management pro každého tenanta Azure AD.  
 
-1. Vyhledejte identifikátor GUID pro každého tenanta Azure AD. Otevřete Azure Portal a vyberte tenanta Azure AD. Identifikátor GUID pro tenanta se nachází na stránce vlastností vybraného tenanta (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)s popiskem **ID adresáře**. 
-2. Po identifikátoru GUID budete muset přidat klíč registru **HKEY_LOCAL_MACHINE identifikátor GUID ID tenanta \software\microsoft\windows\settingsync\winmsipc\<>**.
+1. Vyhledejte identifikátor GUID pro každého tenanta Azure AD. Otevřete Azure Portal a vyberte tenanta Azure AD. Identifikátor GUID pro tenanta se nachází na stránce vlastností vybraného tenanta ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) s popiskem **ID adresáře**. 
+2. Po identifikátoru GUID budete muset přidat klíč registru **HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc \<tenant ID GUID> **.
    Z klíče **GUID ID tenanta** vytvořte novou hodnotu s více řetězci (reg-multi-SZ) s názvem **AllowedRMSServerUrls**. Pro svá data zadejte adresy URL distribučního bodu pro licencování ostatních tenantů Azure, ke kterým zařízení přistupuje.
 3. Adresy URL distribučního bodu licencování můžete najít spuštěním rutiny **Get-AadrmConfiguration** z modulu aadrm. Pokud se hodnoty pro **LicensingIntranetDistributionPointUrl** a **LicensingExtranetDistributionPointUrl** liší, zadejte obě hodnoty. Pokud jsou hodnoty stejné, zadejte hodnotu pouze jednou.
 
@@ -112,7 +111,7 @@ Ve Windows 10 neexistuje nastavení MDM ani Zásady skupiny pro zákaz roamingu 
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>Jak můžu povolit nebo zakázat roaming?
 
-V aplikaci **Nastavení** pokračujte na **účty** > **synchronizovat nastavení**. Na této stránce můžete zjistit, který účet se používá k nastavení roamingu, a můžete povolit nebo zakázat jednotlivé skupiny nastavení, které se mají přenášet do roamingu.
+V aplikaci **Nastavení** pokračujte na **účty**  >  **synchronizovat nastavení**. Na této stránce můžete zjistit, který účet se používá k nastavení roamingu, a můžete povolit nebo zakázat jednotlivé skupiny nastavení, které se mají přenášet do roamingu.
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Co je doporučení Microsoftu pro povolení roamingu ve Windows 10?
 

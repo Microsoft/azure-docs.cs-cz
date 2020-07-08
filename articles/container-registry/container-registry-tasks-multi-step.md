@@ -4,10 +4,9 @@ description: Seznámení s více kroky – funkce ACR úloh v Azure Container Re
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78399696"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Spouštění úloh s více kroky sestavení, testování a oprav v úlohách ACR
@@ -43,9 +42,9 @@ Všechny kroky se provádějí v rámci Azure, přesměrování práce do výpo�
 
 Úloha s více kroky v úlohách ACR je definována jako série kroků v souboru YAML. Každý krok může určovat závislosti po úspěšném dokončení jednoho nebo více předchozích kroků. K dispozici jsou následující typy kroků úlohy:
 
-* [`build`](container-registry-tasks-reference-yaml.md#build): Sestavte jednu nebo více imagí kontejneru `docker build` pomocí známé syntaxe, v řadě nebo paralelně.
+* [`build`](container-registry-tasks-reference-yaml.md#build): Sestavte jednu nebo více imagí kontejneru pomocí známé `docker build` syntaxe, v řadě nebo paralelně.
 * [`push`](container-registry-tasks-reference-yaml.md#push): Push images do registru kontejneru. Soukromé Registry, jako je Azure Container Registry, jsou podporovány jako veřejné Docker Hub.
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Spusťte kontejner, aby mohl fungovat jako funkce v kontextu běžící úlohy. Můžete předat parametry kontejneru a zadat vlastnosti `[ENTRYPOINT]`, jako jsou ENV, detach a další známé `docker run` parametry. Typ `cmd` kroku povoluje jednotky a funkční testování se souběžným spouštěním kontejneru.
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Spusťte kontejner, aby mohl fungovat jako funkce v kontextu běžící úlohy. Můžete předat parametry kontejneru `[ENTRYPOINT]` a zadat vlastnosti, jako jsou ENV, detach a další známé `docker run` parametry. `cmd`Typ kroku povoluje jednotky a funkční testování se souběžným spouštěním kontejneru.
 
 Následující fragmenty kódu ukazují, jak kombinovat tyto typy kroků úloh. Úlohy s více kroky můžou být jednoduché, protože sestavování jedné image z souboru Dockerfile a jejich vkládání do registru se souborem YAML podobným:
 
@@ -87,13 +86,13 @@ V tématu [Příklady úloh](container-registry-tasks-samples.md) pro více krok
 
 Pokud chcete spustit úlohu, nejdřív definujte kroky úkolu v souboru YAML a pak spusťte příkaz Azure CLI [AZ ACR Run][az-acr-run].
 
-Tady je příklad příkazu rozhraní příkazového řádku Azure CLI, který spouští úlohu pomocí ukázkového souboru YAML úlohy. Postup sestaví a potom nahraje obrázek. Před `\<acrName\>` spuštěním příkazu aktualizujte s názvem vlastního služby Azure Container Registry.
+Tady je příklad příkazu rozhraní příkazového řádku Azure CLI, který spouští úlohu pomocí ukázkového souboru YAML úlohy. Postup sestaví a potom nahraje obrázek. `\<acrName\>`Před spuštěním příkazu aktualizujte s názvem vlastního služby Azure Container Registry.
 
 ```azurecli
 az acr run --registry <acrName> -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-Při spuštění úlohy by měl výstup zobrazit průběh každého kroku definovaného v souboru YAML. V následujícím výstupu se kroky zobrazí jako `acb_step_0` a. `acb_step_1`
+Při spuštění úlohy by měl výstup zobrazit průběh každého kroku definovaného v souboru YAML. V následujícím výstupu se kroky zobrazí jako `acb_step_0` a `acb_step_1` .
 
 ```azurecli
 az acr run --registry myregistry -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: abc3cc8c526e37e18f1e67b109a9a8e15ff8c989
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302708"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spouštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí REST
@@ -57,7 +56,7 @@ Buď:
    * **-u**: označuje uživatelské jméno a heslo použité k ověření žádosti.
    * **-G**: označuje, že tato operace je žádostí o získání.
 
-   Začátek identifikátoru URI `https://CLUSTERNAME.azurehdinsight.net/templeton/v1`je stejný pro všechny požadavky.
+   Začátek identifikátoru URI `https://CLUSTERNAME.azurehdinsight.net/templeton/v1` je stejný pro všechny požadavky.
 
     Dostanete odpověď podobnou následujícímu formátu JSON:
 
@@ -167,9 +166,9 @@ Buď:
 
 ### <a name="both-methods"></a>Obě metody
 
-1. Pokud je úloha dokončena, je `SUCCEEDED`vrácen stav.
+1. Pokud je úloha dokončena, je vrácen stav `SUCCEEDED` .
 
-1. Když se stav úlohy změní na `SUCCEEDED`, můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. `statusdir` Parametr, který je předán s dotazem, obsahuje umístění výstupního souboru. V tomto příkladu je `/example/curl`umístění. Tato adresa ukládá výstup úlohy do výchozího úložiště clusterů na adrese `/example/curl`.
+1. Když se stav úlohy změní na `SUCCEEDED` , můžete načíst výsledky úlohy z úložiště objektů BLOB v Azure. `statusdir`Parametr, který je předán s dotazem, obsahuje umístění výstupního souboru. V tomto příkladu je umístění `/example/curl` . Tato adresa ukládá výstup úlohy do výchozího úložiště clusterů na adrese `/example/curl` .
 
 Tyto soubory můžete zobrazit a stáhnout pomocí rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli). Další informace o použití rozhraní příkazového řádku Azure pro práci s úložištěm objektů BLOB v Azure najdete v tématu [rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI](../../storage/blobs/storage-quickstart-blobs-cli.md).
 

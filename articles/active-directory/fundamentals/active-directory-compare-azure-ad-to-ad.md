@@ -12,10 +12,9 @@ ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
 ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78926888"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>Porovnat službu Active Directory s Azure Active Directory
@@ -26,7 +25,7 @@ Azure AD tento přístup přináší na další úroveň tím, že poskytuje org
 
 Většina správců IT je obeznámená s Active Directory Domain Services koncepty. Následující tabulka popisuje rozdíly a podobnosti mezi koncepty a Azure Active Directory služby Active Directory.
 
-|Koncept|Služba Active Directory (AD)|Azure Active Directory |
+|Koncepce|Služba Active Directory (AD)|Azure Active Directory |
 |:-|:-|:-|
 |**Uživatelé**|||
 |Zřizování: uživatelé | Organizace vytváří interní uživatele ručně nebo používá integrovaný nebo automatizovaný systém zřizování, jako je například Microsoft Identity Manager, pro integraci se systémem HR.|Stávající organizace služby AD používají [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) k synchronizaci identit do cloudu.</br> Azure AD přidává podporu pro automatické vytváření uživatelů ze [systémů cloudového HR](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial). </br>Azure AD může zřídit identity v aplikacích SaaS s [povoleným SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) , aby automaticky poskytovaly aplikace s potřebnými podrobnostmi pro povolení přístupu pro uživatele. |
@@ -37,7 +36,7 @@ Většina správců IT je obeznámená s Active Directory Domain Services koncep
 | **Aplikace**|||
 | Aplikace infrastruktury|Služba Active Directory je základem pro mnoho místních komponent infrastruktury, například DNS, DHCP, IPSec, Wi-Fi, NPS a VPN Access.|V novém cloudovém světě je Azure AD novou rovinou ovládacích prvků pro přístup k aplikacím, které se spoléhají na řízení sítě. Když se uživatelé ověřují[, podmíněný přístup (CA)](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)bude řídit, kteří uživatelé budou mít přístup k aplikacím, které jsou v požadovaných podmínkách.|
 | Tradiční a starší aplikace| Většina místních aplikací používá protokol LDAP, integrované ověřování systému Windows (NTLM a Kerberos) nebo ověřování na základě hlaviček k řízení přístupu uživatelům.| Azure AD může poskytovat přístup k těmto typům místních aplikací pomocí agentů [proxy aplikací služby Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) místně běžících v místním prostředí. Pomocí této metody může Azure AD ověřovat uživatele Active Directory místně pomocí protokolu Kerberos při migraci nebo nutnosti koexistovat se staršími aplikacemi. |
-| Aplikace SaaS|Služba Active Directory nepodporuje aplikace SaaS nativně a vyžaduje federační systém, například AD FS.|Aplikace SaaS podporující OAuth2, SAML a WS-\* Authentication lze integrovat pro ověřování pomocí služby Azure AD. |
+| Aplikace SaaS|Služba Active Directory nepodporuje aplikace SaaS nativně a vyžaduje federační systém, například AD FS.|Aplikace SaaS podporující OAuth2, SAML a WS- \* Authentication lze integrovat pro ověřování pomocí služby Azure AD. |
 | Obchodní aplikace (LOB) s moderním ověřováním|Organizace můžou použít AD FS se službou Active Directory k podpoře obchodních aplikací vyžadujících moderní ověřování.| Obchodní aplikace vyžadující moderní ověřování se dají nakonfigurovat tak, aby pro ověřování používaly službu Azure AD. |
 | Služby střední vrstvy/démona|Služby běžící v místních prostředích obvykle používají účty služby AD nebo skupinové účty spravované služby (gMSA) ke spuštění. Tyto aplikace pak zdědí oprávnění k účtu služby.| Azure AD poskytuje [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index) pro spouštění dalších úloh v cloudu. Životní cyklus těchto identit spravuje Azure AD a je vázaný na poskytovatele prostředků se nedá použít k získání přístupu zadní vrátka k jiným účelům.|
 | **Zařízení**|||

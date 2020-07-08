@@ -4,10 +4,9 @@ description: Popisuje, jak vyřešit chybu SKU, která není k dispozici při na
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 3dcc26f2d74799a6d282ee4bd733d36bec7b05e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78942718"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>Řešení chyb kvůli nedostupné skladové položce
@@ -40,7 +39,7 @@ K určení, které skladové jednotky jsou k dispozici v oblasti nebo zóně, po
 Get-AzComputeResourceSku | where {$_.Locations -icontains "centralus"}
 ```
 
-Výsledky obsahují seznam SKU pro umístění a veškerá omezení pro danou skladovou jednotku. Všimněte si, že položka SKU může být `NotAvailableForSubscription`uvedena jako.
+Výsledky obsahují seznam SKU pro umístění a veškerá omezení pro danou skladovou jednotku. Všimněte si, že položka SKU může být uvedena jako `NotAvailableForSubscription` .
 
 ```output
 ResourceType          Name           Locations   Zone      Restriction                      Capability           Value
@@ -62,7 +61,7 @@ Připojení "FC" na konci vrátí další podrobnosti.
 
 ## <a name="solution-2---azure-cli"></a>Řešení 2 – Azure CLI
 
-K určení, které SKU jsou k dispozici v určité oblasti `az vm list-skus` , použijte příkaz. Použijte `--location` parametr k filtrování výstupu do umístění, které používáte. Použijte `--size` parametr pro hledání podle názvu částečné velikosti.
+K určení, které SKU jsou k dispozici v určité oblasti, použijte `az vm list-skus` příkaz. Použijte `--location` parametr k filtrování výstupu do umístění, které používáte. Použijte `--size` parametr pro hledání podle názvu částečné velikosti.
 
 ```azurecli-interactive
 az vm list-skus --location southcentralus --size Standard_F --output table

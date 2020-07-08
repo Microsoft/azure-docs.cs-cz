@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: ae1371a8f025fd5e5722d483323fbe937538eb15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78939215"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Implementace streamování převzetí služeb při selhání s Media Services V2
@@ -62,8 +61,8 @@ Platí následující důležité informace:
 V této části vytvoříte a nastavíte projekt konzolové aplikace v jazyce C#.
 
 1. Pomocí sady Visual Studio vytvořte nové řešení, které obsahuje projekt konzolové aplikace jazyka C#. Jako název zadejte **HandleRedundancyForOnDemandStreaming** a pak klikněte na **OK**.
-2. Vytvořte složku **SupportFiles** na stejné úrovni jako soubor projektu **HandleRedundancyForOnDemandStreaming. csproj** . Ve složce **SupportFiles** vytvořte složky **OutputFiles** a **MP4Files** . Zkopírujte soubor. mp4 do složky **MP4Files** . (V tomto příkladu se používá soubor **Ignite. mp4** .) 
-3. Pomocí **NuGet** přidejte odkazy na knihovny DLL týkající se Media Services. V **hlavní nabídce aplikace Visual Studio**vyberte **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure. MediaServices**a stiskněte klávesu ENTER.
+2. Vytvořte složku **SupportFiles** na stejné úrovni jako soubor projektu **HandleRedundancyForOnDemandStreaming. csproj** . Ve složce **SupportFiles** vytvořte složky **OutputFiles** a **MP4Files** . Zkopírujte soubor. mp4 do složky **MP4Files** . (V tomto příkladu se používá soubor **ignite.mp4** .) 
+3. Pomocí **NuGet** přidejte odkazy na knihovny DLL týkající se Media Services. V **hlavní nabídce aplikace Visual Studio**vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure. MediaServices**a stiskněte klávesu ENTER.
 4. Přidejte další odkazy, které jsou požadovány pro tento projekt: System. Runtime. Serialization a System. Web.
 5. Nahraďte **pomocí** příkazy, které byly přidány do souboru **Programs.cs** ve výchozím nastavení, následující:
 

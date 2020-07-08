@@ -8,10 +8,9 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78302912"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
@@ -37,7 +36,7 @@ StringToArray(<str_expr>)
   
 ## <a name="examples"></a>Příklady
   
-  Následující příklad ukazuje, jak `StringToArray` se chová v různých typech. 
+  Následující příklad ukazuje, jak se `StringToArray` chová v různých typech. 
   
  Níže jsou uvedeny příklady s platným vstupem.
 
@@ -59,7 +58,7 @@ Zde je sada výsledků.
 Následuje příklad neplatného vstupu. 
    
  Jednoduché uvozovky v rámci pole nejsou platné JSON.
-I když jsou v rámci dotazu platné, nebudou analyzovány na platná pole. Řetězce v řetězci pole musí být buď uvozeny řídicím znakem "[\\"\\"]", nebo okolní uvozovka musí být jednoduché "[" "]".
+I když jsou v rámci dotazu platné, nebudou analyzovány na platná pole. Řetězce v řetězci pole musí být buď uvozeny řídicím znakem "[ \\ " \\ "]", nebo okolní uvozovka musí být jednoduché "[" "]".
 
 ```sql
 SELECT

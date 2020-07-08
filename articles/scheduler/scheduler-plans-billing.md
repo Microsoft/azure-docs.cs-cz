@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898479"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Plány a fakturace pro Azure Scheduler

@@ -10,10 +10,9 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.openlocfilehash: 7cc2e346a35cd1cdf1278b527dc451a903d60f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78402824"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Integrace Gitu pro Azure Machine Learning
@@ -26,7 +25,7 @@ Při odesílání úlohy do Azure Machine Learning, pokud jsou zdrojové soubory
 
 Vzhledem k tomu, že Azure Machine Learning sleduje informace z místního úložiště Git, není svázán s žádným konkrétním centrálním úložištěm. Vaše úložiště je možné klonovat z GitHubu, GitLab, BitBucket, Azure DevOps nebo jakékoli jiné služby kompatibilní s Git.
 
-## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Klonovat úložiště Git do systému souborů pracovního prostoru
+## <a name="clone-git-repositories-into-your-workspace-file-system"></a>Klonování úložišť Git do systému souborů vlastního pracovního prostoru
 Azure Machine Learning poskytuje sdílený systém souborů pro všechny uživatele v pracovním prostoru.
 K naklonování úložiště Git do této sdílené složky doporučujeme vytvořit výpočetní instanci & otevřete terminál.
 Po otevření terminálu máte přístup k plnému klientovi Git a budete moct pomocí prostředí Git CLI klonovat a pracovat s ním.
@@ -39,9 +38,9 @@ Návod, jak používat rozhraní příkazového řádku Git, [si můžete přeč
 
 ## <a name="track-code-that-comes-from-git-repositories"></a>Sledovat kód, který pochází z úložišť Git
 
-Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, soubory potřebné pro výuku modelu se nahrají do vašeho pracovního prostoru. Pokud je `git` příkaz k dispozici ve vašem vývojovém prostředí, proces nahrávání je používá ke kontrole, zda jsou soubory uloženy v úložišti Git. V takovém případě jsou informace z úložiště Git také nahrány v rámci školicího běhu. Tyto informace jsou uloženy v následujících vlastnostech pro školicí běh:
+Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, soubory potřebné pro výuku modelu se nahrají do vašeho pracovního prostoru. Pokud `git` je příkaz k dispozici ve vašem vývojovém prostředí, proces nahrávání je používá ke kontrole, zda jsou soubory uloženy v úložišti Git. V takovém případě jsou informace z úložiště Git také nahrány v rámci školicího běhu. Tyto informace jsou uloženy v následujících vlastnostech pro školicí běh:
 
-| Vlastnost | Příkaz git použitý k získání hodnoty | Popis |
+| Vlastnost | Příkaz git použitý k získání hodnoty | Description |
 | ----- | ----- | ----- |
 | `azureml.git.repository_uri` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
 | `mlflow.source.git.repoURL` | `git ls-remote --get-url` | Identifikátor URI, ze kterého bylo úložiště naklonováno. |
@@ -49,7 +48,7 @@ Když odešlete školicí běh ze sady Python SDK nebo Machine Learning CLI, sou
 | `mlflow.source.git.branch` | `git symbolic-ref --short HEAD` | Aktivní větev při odeslání běhu. |
 | `azureml.git.commit` | `git rev-parse HEAD` | Hodnota hash potvrzení kódu, který byl odeslán pro spuštění. |
 | `mlflow.source.git.commit` | `git rev-parse HEAD` | Hodnota hash potvrzení kódu, který byl odeslán pro spuštění. |
-| `azureml.git.dirty` | `git status --porcelain .` | `True`, pokud je větev/potvrzení nečistá; v opačném případě `false`. |
+| `azureml.git.dirty` | `git status --porcelain .` | `True`, pokud je větev/potvrzení nečistá; v opačném případě `false` . |
 
 Tyto informace se odesílají pro běhy, které používají Estimator, kanál strojového učení nebo spuštění skriptu.
 
@@ -62,7 +61,7 @@ Pokud vaše školicí soubory nejsou umístěny v úložišti Git ve vašem výv
 > git --version
 > ```
 >
-> V případě instalace a v cestě obdržíte odpověď podobnou této `git version 2.4.1`. Další informace o instalaci Gitu do vývojového prostředí najdete na [webu Git](https://git-scm.com/).
+> V případě instalace a v cestě obdržíte odpověď podobnou této `git version 2.4.1` . Další informace o instalaci Gitu do vývojového prostředí najdete na [webu Git](https://git-scm.com/).
 
 ## <a name="view-the-logged-information"></a>Zobrazit protokolované informace
 
@@ -73,7 +72,7 @@ Informace Git se ukládají do vlastností pro školicí běh. Tyto informace m�
 1. V [Azure Portal](https://portal.azure.com)vyberte svůj pracovní prostor.
 1. Vyberte __experimenty__a pak vyberte jeden z experimentů.
 1. Vyberte jedno z běhů ze sloupce __číslo běhu__ .
-1. Vyberte __protokoly__a potom rozbalte položky __protokoly__ a __AzureML__ . Vyberte odkaz, který začíná __ ### \_na Azure__.
+1. Vyberte __protokoly__a potom rozbalte položky __protokoly__ a __AzureML__ . Vyberte odkaz, který začíná na __ ### \_ Azure__.
 
     ![Položka # # #_azure na portálu](./media/concept-train-model-git-integration/azure-machine-learning-logs.png)
 
@@ -98,7 +97,7 @@ Protokolované informace obsahují text podobný následujícímu formátu JSON:
 
 ### <a name="python-sdk"></a>Python SDK
 
-Po odeslání školicího běhu se vrátí objekt [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) . `properties` Atribut tohoto objektu obsahuje protokolované informace Gitu. Například následující kód načte hodnotu hash potvrzení:
+Po odeslání školicího běhu se vrátí objekt [Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) . `properties`Atribut tohoto objektu obsahuje protokolované informace Gitu. Například následující kód načte hodnotu hash potvrzení:
 
 ```python
 run.properties['azureml.git.commit']
@@ -106,7 +105,7 @@ run.properties['azureml.git.commit']
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
 
-Příkaz `az ml run` CLI lze použít k načtení vlastností z běhu. Například následující příkaz vrátí vlastnosti posledního spuštění v experimentu s názvem `train-on-amlcompute`:
+`az ml run`Příkaz CLI lze použít k načtení vlastností z běhu. Například následující příkaz vrátí vlastnosti posledního spuštění v experimentu s názvem `train-on-amlcompute` :
 
 ```azurecli-interactive
 az ml run list -e train-on-amlcompute --last 1 -w myworkspace -g myresourcegroup --query '[].properties'

@@ -9,10 +9,9 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 2ed7a5b9c81d1b50f80f379a88688b69c49ed382
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78897920"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
@@ -63,13 +62,13 @@ Pomocí následujících dokumentů se naučíte, jak vytvořit Virtual Network 
 
 Tyto kroky používají [Azure Portal](https://portal.azure.com) k vytvoření virtuálního počítače Azure. Další způsoby vytvoření virtuálního počítače najdete v tématu [Vytvoření virtuálního počítače – Azure CLI](../virtual-machines/linux/quick-create-cli.md) a [Vytvoření virtuálního počítače – Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md).  K vytvoření virtuálního počítače se systémem Linux, který používá software DNS [BIND](https://www.isc.org/downloads/bind/) , použijte následující postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
   
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
     ![Vytvoření virtuálního počítače s Ubuntu](./media/connect-on-premises-network/azure-portal-create-resource.png)
 
-1. Vyberte **COMPUTE** > **virtuální počítač** a přejdete na stránku **vytvořit virtuální počítač** .
+1. Vyberte **COMPUTE**  >  **virtuální počítač** a přejdete na stránku **vytvořit virtuální počítač** .
 
 1. Na kartě __základy__ zadejte následující informace:  
   
@@ -129,7 +128,7 @@ Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném
     sudo apt-get install bind9 -y
     ```
 
-3. Chcete-li konfigurovat službu BIND pro přeposílání požadavků na překlad názvů na místní server DNS, použijte jako obsah `/etc/bind/named.conf.options` souboru následující text:
+3. Chcete-li konfigurovat službu BIND pro přeposílání požadavků na překlad názvů na místní server DNS, použijte jako obsah souboru následující text `/etc/bind/named.conf.options` :
 
         acl goodclients {
             10.0.0.0/16; # Replace with the IP address range of the virtual network
@@ -180,9 +179,9 @@ Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném
     dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net
     ```
 
-    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` Text je __přípona DNS__ pro tuto virtuální síť. Tuto hodnotu uložte, protože se používá později.
+    `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net`Text je __přípona DNS__ pro tuto virtuální síť. Tuto hodnotu uložte, protože se používá později.
 
-5. Pokud chcete nakonfigurovat službu BIND k překladu názvů DNS pro prostředky v rámci virtuální sítě, jako obsah `/etc/bind/named.conf.local` souboru použijte následující text:
+5. Pokud chcete nakonfigurovat službu BIND k překladu názvů DNS pro prostředky v rámci virtuální sítě, jako obsah souboru použijte následující text `/etc/bind/named.conf.local` :
 
         // Replace the following with the DNS suffix for your virtual network
         zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
@@ -234,7 +233,7 @@ Po vytvoření virtuálního počítače se zobrazí oznámení o **úspěšném
 
 Pokud chcete virtuální síť nakonfigurovat tak, aby místo rekurzivního překladače Azure používala vlastní server DNS, použijte následující postup [Azure Portal](https://portal.azure.com):
 
-1. V nabídce vlevo přejděte na **všechny služby** > **sítě** > **virtuální sítě**.
+1. V nabídce vlevo přejděte na **všechny služby**  >  **sítě**  >  **virtuální sítě**.
 
 2. Vyberte ze seznamu svou virtuální síť, čímž otevřete výchozí zobrazení vaší virtuální sítě.  
 
@@ -269,7 +268,7 @@ Po nakonfigurování místního serveru DNS můžete použít `nslookup` z míst
 nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.4
 ```
 
-V tomto příkladu se k překladu názvu vlastního serveru DNS používá místní server DNS na adrese 196.168.0.4. Nahraďte IP adresu druhou pro místní server DNS. `dnsproxy` Adresu nahraďte plně kvalifikovaným názvem domény vlastního serveru DNS.
+V tomto příkladu se k překladu názvu vlastního serveru DNS používá místní server DNS na adrese 196.168.0.4. Nahraďte IP adresu druhou pro místní server DNS. Adresu nahraďte `dnsproxy` plně kvalifikovaným názvem domény vlastního serveru DNS.
 
 ## <a name="optional-control-network-traffic"></a>Volitelné: řízení síťového provozu
 

@@ -11,10 +11,9 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
 ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78944578"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalace MySQL na virtuálním počítači se systémem OpenSUSE Linux v Azure
@@ -98,7 +97,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>Heslo MySQL
 
-Po instalaci je kořenové heslo MySQL ve výchozím nastavení prázdné. Spusťte skript **zabezpečené\_\_instalace MySQL** a zabezpečte MySQL. Skript vás vyzve ke změně kořenového hesla MySQL, odebrání anonymních uživatelských účtů, zakázání vzdáleného kořenového přihlášení, odebrání testovacích databází a načtení tabulky oprávnění. 
+Po instalaci je kořenové heslo MySQL ve výchozím nastavení prázdné. Spusťte skript ** \_ zabezpečené \_ Instalace MySQL** a zabezpečte MySQL. Skript vás vyzve ke změně kořenového hesla MySQL, odebrání anonymních uživatelských účtů, zakázání vzdáleného kořenového přihlášení, odebrání testovacích databází a načtení tabulky oprávnění. 
 
 Po restartování serveru se znovu připojte k virtuálnímu počítači přes SSH.
 
@@ -133,7 +132,7 @@ Střední dvojtečka (;) na konci řádku je rozhodující pro ukončení přík
 ## <a name="create-a-database"></a>Vytvoření databáze
 
 
-Vytvořte databázi a udělte jí oprávnění `mysqluser` uživatele.
+Vytvořte databázi a udělte jí `mysqluser` oprávnění uživatele.
 
 ```sql
 CREATE DATABASE testdatabase;

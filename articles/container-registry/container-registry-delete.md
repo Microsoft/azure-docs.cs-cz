@@ -4,10 +4,9 @@ description: Podrobné informace o tom, jak efektivně spravovat velikost regist
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78403336"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Odstranění imagí kontejneru v Azure Container Registry pomocí rozhraní příkazového řádku Azure
@@ -101,20 +100,20 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): 
 ```
 
-`acr-helloworld:v2` Obrázek je odstraněn z registru, stejně jako jakákoli data vrstvy, která jsou pro tento obrázek jedinečná. Pokud je manifest spojen s více značkami, jsou odstraněny také všechny přidružené značky.
+`acr-helloworld:v2`Obrázek je odstraněn z registru, stejně jako jakákoli data vrstvy, která jsou pro tento obrázek jedinečná. Pokud je manifest spojen s více značkami, jsou odstraněny také všechny přidružené značky.
 
 ## <a name="delete-digests-by-timestamp"></a>Odstranit výtahy podle časového razítka
 
 Aby se zachovala velikost úložiště nebo registru, možná budete muset pravidelně odstranit výtahy manifestů starší než určité datum.
 
-Následující příkaz Azure CLI vypíše všechny hodnoty Digest manifestu v úložišti starším než zadané časové razítko ve vzestupném pořadí. Hodnoty `<acrName>` a `<repositoryName>` nahraďte hodnotami, které jsou vhodné pro vaše prostředí. Časové razítko může být úplný výraz data a času nebo datum, jako v tomto příkladu.
+Následující příkaz Azure CLI vypíše všechny hodnoty Digest manifestu v úložišti starším než zadané časové razítko ve vzestupném pořadí. `<acrName>`Hodnoty a nahraďte hodnotami, které `<repositoryName>` jsou vhodné pro vaše prostředí. Časové razítko může být úplný výraz data a času nebo datum, jako v tomto příkladu.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> \
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
 
-Po identifikaci zastaralých výtahů manifestů můžete spuštěním následujícího skriptu bash odstranit výtahy manifestu starší než zadané časové razítko. Vyžaduje rozhraní příkazového řádku Azure a **xargs**. Ve výchozím nastavení skript neprovede žádné odstranění. Pokud chcete `ENABLE_DELETE` Povolit odstranění `true` obrázku, změňte hodnotu na.
+Po identifikaci zastaralých výtahů manifestů můžete spuštěním následujícího skriptu bash odstranit výtahy manifestu starší než zadané časové razítko. Vyžaduje rozhraní příkazového řádku Azure a **xargs**. Ve výchozím nastavení skript neprovede žádné odstranění. Pokud chcete `ENABLE_DELETE` `true` Povolit odstranění obrázku, změňte hodnotu na.
 
 > [!WARNING]
 > Použijte následující vzorový skript s varováním – data odstraněná v obrazech je možné obnovit. Pokud máte systémy, které vyžádají image podle výtahu manifestu (na rozdíl od názvu bitové kopie), neměli byste tyto skripty spouštět. Odstraněním výtahů manifestu zabráníte těmto systémům v navrácení imagí z registru. Místo toho, aby se vybral manifest, zvažte přijetí *jedinečného schématu označování* , což je [doporučený osvědčený postup](container-registry-image-tag-version.md). 
@@ -203,7 +202,7 @@ Jak vidíte ve výstupu posledního kroku v sekvenci, je teď osamocený manifes
 
 ## <a name="delete-all-untagged-images"></a>Odstranit všechny neoznačené obrázky
 
-Pomocí následujícího příkazu rozhraní příkazového řádku Azure můžete zobrazit seznam všech netagovaných imagí v úložišti. Hodnoty `<acrName>` a `<repositoryName>` nahraďte hodnotami, které jsou vhodné pro vaše prostředí.
+Pomocí následujícího příkazu rozhraní příkazového řádku Azure můžete zobrazit seznam všech netagovaných imagí v úložišti. `<acrName>`Hodnoty a nahraďte hodnotami, které `<repositoryName>` jsou vhodné pro vaše prostředí.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
@@ -216,7 +215,7 @@ Pomocí tohoto příkazu ve skriptu můžete odstranit všechny neoznačené obr
 
 **Rozhraní příkazového řádku Azure v bash**
 
-Následující skript bash odstraní všechny neoznačené image z úložiště. Vyžaduje rozhraní příkazového řádku Azure a **xargs**. Ve výchozím nastavení skript neprovede žádné odstranění. Pokud chcete `ENABLE_DELETE` Povolit odstranění `true` obrázku, změňte hodnotu na.
+Následující skript bash odstraní všechny neoznačené image z úložiště. Vyžaduje rozhraní příkazového řádku Azure a **xargs**. Ve výchozím nastavení skript neprovede žádné odstranění. Pokud chcete `ENABLE_DELETE` `true` Povolit odstranění obrázku, změňte hodnotu na.
 
 ```bash
 #!/bin/bash
@@ -246,7 +245,7 @@ fi
 
 **Rozhraní příkazového řádku Azure v PowerShellu**
 
-Následující skript PowerShellu odstraní všechny neoznačené image z úložiště. Vyžaduje prostředí PowerShell a rozhraní příkazového řádku Azure CLI. Ve výchozím nastavení skript neprovede žádné odstranění. Pokud chcete `$enableDelete` Povolit odstranění `$TRUE` obrázku, změňte hodnotu na.
+Následující skript PowerShellu odstraní všechny neoznačené image z úložiště. Vyžaduje prostředí PowerShell a rozhraní příkazového řádku Azure CLI. Ve výchozím nastavení skript neprovede žádné odstranění. Pokud chcete `$enableDelete` `$TRUE` Povolit odstranění obrázku, změňte hodnotu na.
 
 ```powershell
 # WARNING! This script deletes data!

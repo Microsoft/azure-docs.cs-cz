@@ -9,10 +9,9 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: 577e2128cf7e4e9f914ec5504917053acb3c19d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898485"
 ---
 # <a name="powershell-cmdlets-reference-for-azure-scheduler"></a>Referenční informace k rutinám PowerShellu pro Azure Scheduler
@@ -26,7 +25,7 @@ Pokud chcete vytvářet skripty pro vytváření a správu úloh a kolekcí úlo
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-| Rutina | Popis |
+| Rutina | Description |
 |--------|-------------|
 | [Disable-AzSchedulerJobCollection](/powershell/module/azurerm.scheduler/disable-azurermschedulerjobcollection) |Zakáže kolekci úloh. |
 | [Enable-AzureRmSchedulerJobCollection](/powershell/module/azurerm.scheduler/enable-azurermschedulerjobcollection) |Povolí kolekci úloh. |

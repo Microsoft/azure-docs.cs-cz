@@ -5,21 +5,20 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
 ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78403232"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Rychlý Start: odeslání událostí z privátního registru kontejneru do Event Grid
 
-Azure Event Grid je plně spravovaná služba Směrování událostí, která poskytuje jednotnou spotřebu událostí pomocí modelu publikování a odběru. V tomto rychlém startu pomocí Azure CLI vytvoříte registr kontejnerů, přihlásíte se k odběru událostí registru a pak nasadíte ukázkovou webovou aplikaci pro příjem událostí. Nakonec můžete aktivovat image `push` kontejneru a `delete` události a zobrazit datovou část události v ukázkové aplikaci.
+Azure Event Grid je plně spravovaná služba Směrování událostí, která poskytuje jednotnou spotřebu událostí pomocí modelu publikování a odběru. V tomto rychlém startu pomocí Azure CLI vytvoříte registr kontejnerů, přihlásíte se k odběru událostí registru a pak nasadíte ukázkovou webovou aplikaci pro příjem událostí. Nakonec můžete aktivovat image kontejneru `push` a `delete` události a zobrazit datovou část události v ukázkové aplikaci.
 
 Po dokončení kroků v tomto článku se v ukázkové webové aplikaci zobrazí události odeslané z registru kontejneru, které se Event Grid.
 
 ![Webový prohlížeč, který vykresluje ukázkovou webovou aplikaci se třemi přijatými událostmi][sample-app-01]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet][azure-account] před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet][azure-account], ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -73,7 +72,7 @@ Po vytvoření registru vrátí Azure CLI podobný výstup jako v následující
 
 V této části použijete šablonu Správce prostředků umístěnou v úložišti GitHub k nasazení předem připravené ukázkové webové aplikace do Azure App Service. Později se přihlásíte k odběru událostí Event Grid registru a tuto aplikaci určíte jako koncový bod, do kterého se události odesílají.
 
-Pokud chcete ukázkovou aplikaci nasadit, `SITE_NAME` nastavte na jedinečný název vaší webové aplikace a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože tvoří součást plně kvalifikovaného názvu domény (FQDN) webové aplikace. V pozdější části přejdete do plně kvalifikovaného názvu domény aplikace ve webovém prohlížeči a zobrazíte události v registru.
+Pokud chcete ukázkovou aplikaci nasadit, nastavte `SITE_NAME` na jedinečný název vaší webové aplikace a spusťte následující příkazy. Název webu musí být v rámci Azure jedinečný, protože tvoří součást plně kvalifikovaného názvu domény (FQDN) webové aplikace. V pozdější části přejdete do plně kvalifikovaného názvu domény aplikace ve webovém prohlížeči a zobrazíte události v registru.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -141,7 +140,7 @@ Teď, když je ukázková aplikace spuštěná a že jste se k odběru svého re
 
 ### <a name="build-and-push-image"></a>Sestavit a vložit obrázek
 
-Spuštěním následujícího příkazu Azure CLI sestavíte image kontejneru z obsahu úložiště GitHub. Ve výchozím nastavení ACR úlohy automaticky do registru vloží úspěšně sestavenou image, která `ImagePushed` událost vygeneruje.
+Spuštěním následujícího příkazu Azure CLI sestavíte image kontejneru z obsahu úložiště GitHub. Ve výchozím nastavení ACR úlohy automaticky do registru vloží úspěšně sestavenou image, která událost vygeneruje `ImagePushed` .
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
@@ -194,13 +193,13 @@ Are you sure you want to continue? (y/n):
 
 ## <a name="view-registry-events"></a>Zobrazení událostí registru
 
-Nyní jste do svého registru vložili image a pak jste ji odstranili. Přejděte do webové aplikace v prohlížeči Event Grid a měli byste vidět události `ImageDeleted` a. `ImagePushed` Můžete také zobrazit událost ověření odběru vygenerovanou spuštěním příkazu v části [přihlášení k odběru událostí registru](#subscribe-to-registry-events) .
+Nyní jste do svého registru vložili image a pak jste ji odstranili. Přejděte do webové aplikace v prohlížeči Event Grid a měli byste vidět `ImageDeleted` `ImagePushed` události a. Můžete také zobrazit událost ověření odběru vygenerovanou spuštěním příkazu v části [přihlášení k odběru událostí registru](#subscribe-to-registry-events) .
 
 Na následujícím snímku obrazovky vidíte ukázkovou aplikaci se třemi událostmi a `ImageDeleted` událost je rozbalená tak, aby zobrazovala její podrobnosti.
 
 ![Webový prohlížeč, který zobrazuje ukázkovou aplikaci s ImagePushed a ImageDeletedmi událostmi][sample-app-03]
 
-Blahopřejeme! Pokud se zobrazí události `ImagePushed` a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
+Gratulujeme! Pokud se zobrazí `ImagePushed` události a `ImageDeleted` , registr odesílá události do Event Grid a Event Grid předává tyto události do koncového bodu webové aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

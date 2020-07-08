@@ -4,10 +4,9 @@ description: Přečtěte si, jak upgradovat agenta Microsoft Azure Recovery Serv
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: 49daf438b855d19961519d93b6c3ec535de4756f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78672937"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Upgrade agenta Microsoft Azure Recovery Services (MARS)
@@ -56,7 +55,7 @@ Jakmile identifikujete servery, které vyžadují aktualizaci agenta Azure Backu
 
 1. Pokud má server proxy serveru nebo serveru omezený přístup k Internetu, ujistěte se, že nastavení brány firewall na serveru nebo proxy serveru umožňují, aby byla adresa URL vhodná pro cloud Azure, který používáte:
 
-    Cloud Azure | zprostředkovatele identity
+    Cloud Azure | URL
     -- | ---
     Cloud Azure (veřejný) |   `https://login.windows.net`
     Cloud pro Azure Čína 21Vianet   | `https://login.chinacloudapi.cn`

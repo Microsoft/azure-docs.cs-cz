@@ -7,15 +7,14 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78898786"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Klauzule WHERE v Azure Cosmos DB
 
-Volitelná klauzule WHERE (`WHERE <filter_condition>`) určuje podmínky, které musí zdrojové položky JSON splňovat, aby se dotaz zahrnul do výsledků. Položka JSON musí vyhodnotit zadané podmínky, `true` které mají být pro výsledek zváženy. Vrstva indexu používá klauzuli WHERE k určení nejmenší podmnožiny zdrojových položek, které mohou být součástí výsledku.
+Volitelná klauzule WHERE ( `WHERE <filter_condition>` ) určuje podmínky, které musí zdrojové položky JSON splňovat, aby se dotaz zahrnul do výsledků. Položka JSON musí vyhodnotit zadané podmínky, které mají `true` být pro výsledek zváženy. Vrstva indexu používá klauzuli WHERE k určení nejmenší podmnožiny zdrojových položek, které mohou být součástí výsledku.
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -39,11 +38,11 @@ WHERE <filter_condition>
   
   Aby bylo možné dokument vrátit, je nutné vyhodnotit výraz zadaný jako podmínka filtru na hodnotu true. Pouze logická hodnota `true` bude vyhovovat podmínkám, jakákoli jiná hodnota: undefined, null, false, Number, Array nebo Object nesplňuje podmínky.
 
-  Pokud zahrnete klíč oddílu do `WHERE` klauzule v rámci filtru rovnosti, dotaz se automaticky vyfiltruje jenom na relevantní oddíly.
+  Pokud zahrnete klíč oddílu do klauzule v `WHERE` rámci filtru rovnosti, dotaz se automaticky vyfiltruje jenom na relevantní oddíly.
 
 ## <a name="examples"></a>Příklady
 
-Následující dotaz vyžádá položky, které obsahují `id` vlastnost, jejíž hodnota `AndersenFamily`je. Vyloučí žádnou položku, která nemá `id` vlastnost nebo jejíž hodnota neodpovídá. `AndersenFamily`
+Následující dotaz vyžádá položky, které obsahují `id` vlastnost, jejíž hodnota je `AndersenFamily` . Vyloučí žádnou položku, která nemá `id` vlastnost nebo jejíž hodnota neodpovídá `AndersenFamily` .
 
 ```sql
     SELECT f.address
@@ -74,7 +73,7 @@ Můžete použít následující podporované binární operátory:
 |Průměr | +,-,*,/,% |
 |Číslo2    | \|, &, ^,  <<,  >>  >>>  (s nulovou výplní vpravo Shift) |
 |Logické    | A, NEBO, NOT      |
-|Srovnání | =,! =, &lt;, &gt;, &lt;=, &gt;=,  <> |
+|Porovnání | =,! =, &lt; , &gt; , &lt; =, &gt; =,  <> |
 |Řetězec     |  \|\|zřetězit |
 
 Následující dotazy používají binární operátory:
@@ -105,7 +104,7 @@ Můžete také použít unární operátory +,-, ~ a ne v dotazech, jak je znáz
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující Vlastnost `isRegistered` s hodnotou rovnou. `true` Jakákoli jiná hodnota `false`, například `null` `Undefined`,,, `<number>`, `<string>`, `<object>`, nebo `<array>`, vyloučí položku z výsledku.
+Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující Vlastnost `isRegistered` s hodnotou rovnou `true` . Jakákoli jiná hodnota, například,,, `false` `null` `Undefined` `<number>` , `<string>` , `<object>` , nebo `<array>` , vyloučí položku z výsledku.
 
 ## <a name="next-steps"></a>Další kroky
 

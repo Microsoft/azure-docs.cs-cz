@@ -14,10 +14,9 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78926713"
 ---
 # <a name="import-the-postman-environment"></a>Import prostředí post  
@@ -25,7 +24,7 @@ ms.locfileid: "78926713"
 Tento článek obsahuje definici proměnných prostředí **post** , které používají [kolekci post](postman-collection.md) , která obsahuje seskupené požadavky HTTP, které volají Media Services rozhraní REST API. Soubory prostředí a kolekcí používá kurz [Konfigurace post pro Media Services REST API volání](media-rest-apis-with-postman.md) .
 
 > [!NOTE]
-> `AzureADSTSEndpoint `  = Hodnota `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`. Pokud chcete získat ID tenanta, můžete ukazatel myši umístit na své uživatelské jméno na portálu (v pravém horním rohu) a bude v adresáři "adresář: Microsoft ({{TENANTID}}).
+> Hodnota `AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token` . Pokud chcete získat ID tenanta, můžete ukazatel myši umístit na své uživatelské jméno na portálu (v pravém horním rohu) a bude v adresáři "adresář: Microsoft ({{TENANTID}}).
 
 ```
 {

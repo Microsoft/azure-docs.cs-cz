@@ -7,10 +7,9 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78933748"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Správa služby StorSimple Data Manager v Azure Portal
@@ -104,7 +103,7 @@ K vytvoření definice úlohy proveďte následující kroky.
 
    4. Služba transformace dat funguje jenom na posledním snímku dat, která se odešlou do Azure.
 
-   5. Klikněte na tlačítko **OK**.
+   5. Klikněte na **OK**.
 
       ![Konfigurace zdrojového datového úložiště 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -121,7 +120,7 @@ K vytvoření definice úlohy proveďte následující kroky.
     
     1. V rozevíracím seznamu v **názvu cílového účtu**vyberte úložiště, které jste vytvořili jako cíl.
 
-    2. Jako objekty blob nebo soubory vyberte typ úložiště. Zadejte název kontejneru úložiště, ve kterém se transformovaná data nacházejí. Klikněte na tlačítko **OK**.
+    2. Jako objekty blob nebo soubory vyberte typ úložiště. Zadejte název kontejneru úložiště, ve kterém se transformovaná data nacházejí. Klikněte na **OK**.
 
         ![Konfigurace účtu úložiště cílového datového úložiště](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 

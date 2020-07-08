@@ -4,10 +4,9 @@ description: V tomto kurzu se dozvíte, jak spustit úlohu Azure Container Regis
 ms.topic: article
 ms.date: 06/27/2019
 ms.openlocfilehash: 3202b5d8c426165d81129f1affa69b3a3d515ce9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78402875"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Spuštění úlohy ACR podle definovaného plánu
@@ -32,7 +31,7 @@ Příklady v tomto článku můžete spustit pomocí Azure Cloud Shell nebo mís
 
 * **Aktivační událost s výrazem cron** – aktivační událost časovače pro úlohu používá *výraz cron*. Výraz je řetězec s pěti poli, které určují minuty, hodinu, den, měsíc a den v týdnu, kdy se má úkol aktivovat. Frekvence se podporuje až jednou za minutu.
 
-  Výraz `"0 12 * * Mon-Fri"` například aktivuje úlohu v poledne standardu UTC každého dne v týdnu. Další [informace najdete v části dále](#cron-expressions) v tomto článku.
+  Výraz například `"0 12 * * Mon-Fri"` aktivuje úlohu v poledne standardu UTC každého dne v týdnu. Další [informace najdete v části dále](#cron-expressions) v tomto článku.
 * **Více triggerů časovače** – přidávání více časovačů k úkolu je povoleno, pokud se plány liší.
     * Při vytváření úlohy zadejte více triggerů časovače nebo je přidejte později.
     * Volitelně můžete pojmenovat triggery pro snadnější správu, jinak budou ACR úlohy poskytovat výchozí názvy aktivačních událostí.
@@ -174,17 +173,17 @@ ACR úlohy používají knihovnu [NCronTab](https://github.com/atifaziz/NCrontab
 Časové pásmo používané s výrazy cron je koordinovaný světový čas (UTC). Hodiny jsou ve 24hodinovém formátu.
 
 > [!NOTE]
-> ACR úkoly nepodporují pole `{second}` ani `{year}` ve výrazech cron. Pokud zkopírujete výraz cron používaný v jiném systému, nezapomeňte tato pole odebrat, pokud se používají.
+> ACR úkoly nepodporují `{second}` `{year}` pole ani ve výrazech cron. Pokud zkopírujete výraz cron používaný v jiném systému, nezapomeňte tato pole odebrat, pokud se používají.
 
 Každé pole může mít jeden z následujících typů hodnot:
 
 |Typ  |Příklad  |Při aktivaci  |
 |---------|---------|---------|
 |Konkrétní hodnota |<nobr>`"5 * * * *"`</nobr>|každou hodinu 5 minut po hodině|
-|Všechny hodnoty (`*`)|<nobr>`"* 5 * * *"`</nobr>|každou minutu hodiny začínající 5:00 UTC (60 krát den)|
-|Rozsah (`-` operátor)|<nobr>`"0 1-3 * * *"`</nobr>|3 časy za den, v 1:00, 2:00 a 3:00 UTC|
-|Sada hodnot (`,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 časy za hodinu, 20 minut, 30 minut a 40 minut po hodině|
-|Hodnota intervalu (`/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|6 časů za hodinu, 10 minut, 20 minut atd., po celou hodinu
+|Všechny hodnoty ( `*` )|<nobr>`"* 5 * * *"`</nobr>|každou minutu hodiny začínající 5:00 UTC (60 krát den)|
+|Rozsah ( `-` operátor)|<nobr>`"0 1-3 * * *"`</nobr>|3 časy za den, v 1:00, 2:00 a 3:00 UTC|
+|Sada hodnot ( `,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 časy za hodinu, 20 minut, 30 minut a 40 minut po hodině|
+|Hodnota intervalu ( `/` operátor)|<nobr>`"*/10 * * * *"`</nobr>|6 časů za hodinu, 10 minut, 20 minut atd., po celou hodinu
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 

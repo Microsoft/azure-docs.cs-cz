@@ -14,10 +14,9 @@ ms.custom: ''
 ms.date: 02/24/2020
 ms.author: juliako
 ms.openlocfilehash: afaa7545fbcbab016249e73a2247817310c5cdfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78934190"
 ---
 # <a name="media-services-high-availability-encoding"></a>Media Services kódování s vysokou dostupností 
@@ -34,7 +33,7 @@ Podle pokynů a osvědčených postupů popsaných v článku snížíte riziko 
 * Nahrajte médium do stejné oblasti, ze které plánujete úlohu odeslat. Další informace o tom, jak spustit kódování, najdete v tématu [Vytvoření vstupu úlohy z adresy URL https](job-input-from-http-how-to.md) nebo [Vytvoření vstupu úlohy z místního souboru](job-input-from-local-file-how-to.md).
 
     Pokud budete později potřebovat [úlohu](transforms-jobs-concept.md) znovu odeslat do jiné oblasti, můžete pomocí JobInputHttp nebo pomocí funkce [copy-BLOB](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob) zkopírovat data z kontejneru zdrojových prostředků do kontejneru assetů v alternativní oblasti.
-* Přihlaste se k odběru zpráv JobStateChange v každém účtu prostřednictvím Azure Event Grid. Další informace naleznete v tématu:
+* Přihlaste se k odběru zpráv JobStateChange v každém účtu prostřednictvím Azure Event Grid. Další informace naleznete v tématech:
 
     * [Ukázka zvukové analýzy](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer) , která ukazuje, jak monitorovat úlohu pomocí Azure Event Grid, včetně přidání náhradního zařízení pro případ, že Azure Event Grid zprávy z nějakého důvodu jsou zpožděny.
     * [Azure Event Grid schémat pro události Media Services](media-services-event-schemas.md)

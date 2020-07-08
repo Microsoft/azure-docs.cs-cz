@@ -10,10 +10,9 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "78399097"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Azure Machine Learning monitorování
@@ -50,7 +49,7 @@ Všechny metriky pro Azure Machine Learning jsou v oboru názvů **Machine Learn
 
 ### <a name="filtering-and-splitting"></a>Filtrování a rozdělování
 
-Pro metriky, které podporují dimenze, můžete použít filtry pomocí hodnoty dimenze. Například filtrování **aktivních jader** pro **název clusteru** `cpu-cluster`. 
+Pro metriky, které podporují dimenze, můžete použít filtry pomocí hodnoty dimenze. Například filtrování **aktivních jader** pro **název clusteru** `cpu-cluster` . 
 
 Metriku můžete také rozdělit podle dimenzí, abyste vizualizují, jak různé segmenty metriky jsou vzájemně porovnány. Například rozdělením **typu kroku kanálu** zobrazíte počet typů kroků použitých v kanálu.
 
@@ -62,7 +61,7 @@ Výstrahy pro Azure Machine Learning můžete zpřístupnit otevřením **výstr
 
 V následující tabulce jsou uvedeny běžné a doporučené pravidla upozorňujících na metriky pro Azure Machine Learning:
 
-| Typ upozornění | Podmínka | Popis |
+| Typ upozornění | Podmínka | Description |
 |:---|:---|:---|
 | Nasazení modelu se nezdařilo | Typ agregace: celkem, operátor: větší než, prahová hodnota: 0 | V případě neúspěchu jednoho nebo více nasazení modelů |
 | Procento využití kvóty | Typ agregace: průměr, operátor: větší než, prahová hodnota: 90| Pokud je procento využití kvóty větší než 90% |
@@ -85,7 +84,7 @@ Další informace o vytváření nastavení diagnostiky najdete v tématu [Vytvo
 
 Pro Azure Machine Learning můžete nakonfigurovat následující protokoly:
 
-| Kategorie | Popis |
+| Kategorie | Description |
 |:---|:---|
 | AmlComputeClusterEvent | Události z Azure Machine Learning výpočetních clusterů. |
 | AmlComputeClusterNodeEvent | Události z uzlů v rámci Azure Machine Learning výpočetního clusteru. |
@@ -100,7 +99,7 @@ Použití Azure Monitor Log Analytics vyžaduje, abyste vytvořili konfiguraci d
 
 Data v Azure Monitor protokoly se ukládají v tabulkách, přičemž každá tabulka má vlastní sadu jedinečných vlastností. Azure Machine Learning ukládá data v následujících tabulkách:
 
-| Table | Popis |
+| Tabulka | Popis |
 |:---|:---|
 | AmlComputeClusterEvent | Události z Azure Machine Learning výpočetních clusterů. |
 | AmlComputeClusterNodeEvent | Události z uzlů v rámci Azure Machine Learning výpočetního clusteru. |
