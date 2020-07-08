@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258743"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847854"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integrace správce prostředků clusteru s Service Fabric správu clusterů
 Cluster Service Fabric Správce prostředků nereaguje na inovace v Service Fabric, ale je součástí této služby. První způsob, jakým cluster Správce prostředků pomáhá se správou, je sledovat požadovaný stav clusteru a služby uvnitř něj. Cluster Správce prostředků odesílá zprávy o stavu, když nedokáže cluster vložit do požadované konfigurace. Pokud například není dostatečná kapacita, cluster Správce prostředků odesílá upozornění na stav a chyby, které signalizují problém. Další integrací se musí udělat s tím, jak upgrade funguje. Cluster Správce prostředků během upgradu mírně mění jeho chování.  
@@ -18,7 +18,7 @@ Cluster Service Fabric Správce prostředků nereaguje na inovace v Service Fabr
 ## <a name="health-integration"></a>Integrace stavu
 Cluster Správce prostředků stále sleduje pravidla, která jste definovali pro umístění služeb. Sleduje také zbývající kapacitu pro každou metriku v uzlech a v clusteru a v clusteru jako celek. Pokud zařízení nesplňuje tato pravidla, nebo pokud není dostatečná kapacita, budou generována upozornění na stav a chyby. Například pokud uzel překročí kapacitu a Správce prostředků clusteru se pokusí tuto situaci opravit přesunutím služeb. Pokud to nedokáže opravit situaci, vygeneruje upozornění na stav označující, který uzel je nad kapacitou, a pro které metriky.
 
-Dalším příkladem upozornění na stav Správce prostředků je porušení omezení umístění. Pokud jste například definovali omezení umístění (například `“NodeColor == Blue”`) a správce prostředků zjistí porušení tohoto omezení, vygeneruje upozornění na stav. To platí pro vlastní omezení a výchozí omezení (například pro doménu selhání a omezení domény upgradu).
+Dalším příkladem upozornění na stav Správce prostředků je porušení omezení umístění. Pokud jste například definovali omezení umístění (například `“NodeColor == Blue”` ) a správce prostředků zjistí porušení tohoto omezení, vygeneruje upozornění na stav. To platí pro vlastní omezení a výchozí omezení (například pro doménu selhání a omezení domény upgradu).
 
 Tady je příklad jedné takové sestavy o stavu. V tomto případě je sestava stavu určena pro jeden z oddílů systémové služby. Zpráva o stavu znamená, že repliky tohoto oddílu jsou dočasně zabaleny do příliš málo domén upgradu.
 
@@ -68,7 +68,7 @@ Tady je tato zpráva o stavu, kterou nám řekne:
 2. V tuto chvíli je porušené omezení distribuce domény upgradu. To znamená, že konkrétní upgradovací doména má více replik z tohoto oddílu, než by měl.
 3. Který uzel obsahuje repliku, která způsobuje narušení. V tomto případě je to uzel s názvem Node. 8.
 4. Zda aktuálně probíhá upgrade pro tento oddíl (aktuálně probíhá upgrade--false)
-5. Zásady distribuce pro tuto službu: "zásady distribuce--balení". Řídí `RequireDomainDistribution` se [zásadami umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Balení" značí, že v tomto případě DomainDistribution _nebylo vyžadováno,_ takže víme, že pro tuto službu nebyly zadány zásady umístění. 
+5. Zásady distribuce pro tuto službu: "zásady distribuce--balení". Řídí se `RequireDomainDistribution` [zásadami umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Balení" značí, že v tomto případě DomainDistribution _nebylo vyžadováno,_ takže víme, že pro tuto službu nebyly zadány zásady umístění. 
 6. Když se nastala sestava-8/10/2015 7:13:02 ODP.
 
 Takové informace, jako jsou tyto výzvy, upozorňují na to, že se něco pokazilo a že se také používá ke zjištění a zastavení chybných upgradů. V takovém případě chceme zjistit, proč Správce prostředků musela zabalit repliky do upgradovací domény. Balení je obvykle přechodný, protože uzly v jiných doménách upgradu byly mimo provoz, například.
@@ -122,7 +122,7 @@ V pokročilých situacích můžete změnit priority omezení. Řekněme napří
 
 Výchozí hodnoty priorit pro různá omezení jsou uvedeny v následující konfiguraci:
 
-Manifestem clusteru. XML
+ClusterManifest.xml
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">
@@ -135,7 +135,7 @@ Manifestem clusteru. XML
         </Section>
 ```
 
-přes ClusterConfig. JSON pro samostatná nasazení nebo šablonu Template. JSON pro hostované clustery Azure:
+prostřednictvím ClusterConfig.jsv pro samostatná nasazení nebo Template.jsv případě hostovaných clusterů Azure:
 
 ```json
 "fabricSettings": [

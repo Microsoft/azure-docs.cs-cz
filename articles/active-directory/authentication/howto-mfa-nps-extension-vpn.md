@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28467dbaabb0b84bf7da9f2ae28d6405699b2c6b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845742"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848727"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrujte svoji infrastrukturu VPN s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Azure.
 
@@ -228,9 +228,9 @@ V této části nakonfigurujete server VPN tak, aby používal ověřování pom
 
 2. V Správce serveru vyberte **nástroje**a pak vyberte **Směrování a vzdálený přístup**.
 
-3. V okně **Směrování a vzdálený přístup** klikněte pravým tlačítkem na ** \< název serveru> (místní)** a pak vyberte **vlastnosti**.
+3. V okně **Směrování a vzdálený přístup** klikněte pravým tlačítkem na ** \<server name> (místní)** a pak vyberte **vlastnosti**.
 
-4. V okně ** \< název serveru> (místní) vlastnosti** vyberte kartu **zabezpečení** .
+4. V okně ** \<server name> (místní) vlastnosti** vyberte kartu **zabezpečení** .
 
 5. Na kartě **zabezpečení** v části **Zprostředkovatel ověřování**vyberte **ověřování RADIUS**a pak vyberte **Konfigurovat**.
 
@@ -320,19 +320,15 @@ Vytvořte novou řetězcovou hodnotu s názvem _REQUIRE_USER_MATCH v HKLM\SOFTWA
 
 Pokud je hodnota nastavená na *true* nebo je prázdná, budou se všechny žádosti o ověření vztahovat na výzvu MFA. Pokud je hodnota nastavená na *false*, budou se problémy MFA vydávat jenom uživatelům, kteří jsou zaregistrovaní v Azure Multi-Factor Authentication. Použijte nastavení *false* pouze při testování nebo v produkčním prostředí během období připojování.
 
-### <a name="obtain-the-azure-active-directory-guid-id"></a>Získat ID Azure Active Directory identifikátor GUID
+### <a name="obtain-the-azure-active-directory-tenant-id"></a>Získat ID tenanta Azure Active Directory
 
-V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací údaje správce a ID vašeho tenanta Azure AD. Získejte ID následujícím způsobem:
+V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací údaje správce a ID vašeho tenanta Azure AD. Chcete-li získat ID tenanta, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce tenanta Azure.
+1. V nabídce Azure Portal vyberte **Azure Active Directory**nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
+1. Na stránce **Přehled** se zobrazí *informace o tenantovi* . Vedle *ID tenanta*vyberte ikonu **kopírování** , jak je znázorněno na následujícím ukázkovém snímku obrazovky:
 
-2. V nabídce Azure Portal vyberte **Azure Active Directory**nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
-
-3. Vyberte **Vlastnosti**.
-
-4. Pokud chcete zkopírovat ID služby Azure AD, vyberte tlačítko **Kopírovat** .
-
-    ![ID adresáře Azure AD v Azure Portal](./media/howto-mfa-nps-extension-vpn/azure-active-directory-id-in-azure-portal.png)
+   ![Získává se ID tenanta z Azure Portal.](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>Instalace rozšíření serveru NPS
 
@@ -340,9 +336,9 @@ Rozšíření serveru NPS musí být nainstalováno na serveru, který má nains
 
 1. Stáhněte si rozšíření serveru NPS z [webu Microsoft Download Center](https://aka.ms/npsmfa).
 
-2. Zkopírujte spustitelný soubor instalačního programu (*NpsExtnForAzureMfaInstaller. exe*) na server NPS.
+2. Zkopírujte spustitelný soubor instalačního programu (*NpsExtnForAzureMfaInstaller.exe*) na server NPS.
 
-3. Na serveru NPS poklikejte na **NpsExtnForAzureMfaInstaller. exe** a pokud se zobrazí výzva, vyberte **Spustit**.
+3. Na serveru NPS poklikejte na **NpsExtnForAzureMfaInstaller.exe** a pokud se zobrazí výzva, vyberte **Spustit**.
 
 4. V okně **rozšíření serveru NPS pro instalaci Azure MFA** si přečtěte licenční podmínky pro software, zaškrtněte políčko Souhlasím **s licenčními podmínkami a ujednání** a pak vyberte **nainstalovat**.
 
@@ -374,7 +370,7 @@ Chcete-li použít skript, zadejte rozšíření s přihlašovacími údaji spr�
 
 3. Na dalším příkazovém řádku zadejte **.\AzureMfaNpsExtnConfigSetup.ps1**a pak vyberte Enter. Skript zkontroluje, jestli je nainstalovaný modul Azure AD PowerShell. Pokud není nainstalovaný, skript nainstaluje modul za vás.
 
-    ![Spuštění konfiguračního skriptu AzureMfsNpsExtnConfigSetup. ps1](./media/howto-mfa-nps-extension-vpn/image38.png)
+    ![Spuštění konfiguračního skriptu AzureMfsNpsExtnConfigSetup.ps1](./media/howto-mfa-nps-extension-vpn/image38.png)
 
     Pokud se v důsledku TLS zobrazí chyba zabezpečení, povolte TLS 1,2 pomocí `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12` příkazu z příkazového řádku PowerShellu.
     
@@ -386,7 +382,7 @@ Chcete-li použít skript, zadejte rozšíření s přihlašovacími údaji spr�
 
 5. Na příkazovém řádku Vložte ID tenanta, které jste zkopírovali dříve, a pak vyberte zadat.
 
-    ![Zadejte ID adresáře služby Azure AD, které jste zkopírovali dříve.](./media/howto-mfa-nps-extension-vpn/image40.png)
+    ![Zadejte ID tenanta služby Azure AD, které jste zkopírovali dřív.](./media/howto-mfa-nps-extension-vpn/image40.png)
 
     Skript vytvoří certifikát podepsaný svým držitelem a provede další změny konfigurace. Výstup je podobný jako na následujícím obrázku:
 
@@ -412,7 +408,9 @@ Po úspěšném ověření pomocí sekundární metody získáte přístup k vir
 
 Pokud chcete zobrazit úspěšné události přihlášení v protokolech Windows Prohlížeč událostí, zadejte na server NPS dotaz na protokol zabezpečení systému Windows, a to tak, že zadáte následující příkaz prostředí PowerShell:
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![Prohlížeč událostí zabezpečení PowerShellu](./media/howto-mfa-nps-extension-vpn/image44.png)
 
@@ -422,7 +420,9 @@ Můžete také zobrazit protokol zabezpečení nebo vlastní zobrazení služby 
 
 Na serveru, na který jste nainstalovali rozšíření serveru NPS pro Azure Multi-Factor Authentication, najdete Prohlížeč událostí protokoly aplikací, které jsou specifické pro rozšíření na stránce *Application and Services Logs\Microsoft\AzureMfa*.
 
-    `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
+```powershell
+Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
+```
 
 ![Příklad Prohlížeč událostí podokně protokolu AuthZ](./media/howto-mfa-nps-extension-vpn/image46.png)
 

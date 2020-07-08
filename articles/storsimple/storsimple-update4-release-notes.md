@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
 ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254583"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847283"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Zpráva k vydání verze pro StorSimple 8000 Series Update 4
 
@@ -66,10 +66,10 @@ V Update 4 byly provedeny následující hlavní vylepšení a opravy chyb.
 
 Následující tabulka poskytuje souhrn problémů, které byly opraveny v Update 4.    
 
-| Ne | Funkce | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
+| No | Funkce | Problém | Platí pro fyzické zařízení | Platí pro virtuální zařízení |
 | --- | --- | --- | --- | --- |
 | 1 |Převzetí služeb při selhání |V dřívější verzi se po převzetí služeb při selhání objevil problém týkající se vyčištění na webu zákazníka. Tento problém je opravený v této verzi. |Ano |Ano |
-| 2 |Místně připojené svazky |V předchozí verzi došlo k potížím se souvisejícím vytvářením svazků pro místně připnuté svazky, které by způsobily selhání vytvoření svazku. Tento problém byl způsobený kořenem a opravil v této verzi. |Ano |Ne |
+| 2 |Místně připojené svazky |V předchozí verzi došlo k potížím se souvisejícím vytvářením svazků pro místně připnuté svazky, které by způsobily selhání vytvoření svazku. Tento problém byl způsobený kořenem a opravil v této verzi. |Yes |No |
 | 3 |Balíček pro podporu |V předchozí verzi byly problémy související s balíčkem podpory, které by způsobily výjimku System. OutOfMemory nebo jiné chyby, což vedlo k chybě při vytváření balíčku pro podporu. Tyto chyby jsou v této verzi opravené. |Ano |Ano |
 | 4 |Monitorování |V předchozí verzi došlo k potížím souvisejícím s monitorováním grafů pro místně připnuté svazky, ve kterých se spotřeba zobrazila v EB. Tato chyba je vyřešena v této verzi. |Ano |Ano |
 | 5 |Migrace |V předchozí verzi bylo k dispozici několik problémů souvisejících s spolehlivostí migrace z 5000-7000 řad na zařízení 8000 series. Tyto problémy byly řešeny v této verzi. |Ano |Ano |

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267778"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847108"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Nasazení služby StorSimple Device Manager pro zařízení řady StorSimple 8000
 
@@ -134,7 +134,7 @@ Správce zařízení obvykle vyžádá, aby správce služby schvaloval zaříze
 
 Tento krok se provádí pomocí skriptu založeného na Azure Resource Manager. Správce služeb může vybrat zařízení, která mají nárok na autorizaci. Zařízení je pak autorizováno ke spuštění procesu změny šifrovacího klíče dat služby. 
 
-Další informace o použití skriptu najdete v části [Authorize-ServiceEncryptionRollover. ps1.](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
+Další informace o použití skriptu najdete v části [Authorize-ServiceEncryptionRollover.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Authorize-ServiceEncryptionRollover.ps1)
 
 #### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>Která zařízení mohou být autorizována pro změnu klíčů šifrování dat služby?
 Aby bylo možné iniciovat změny šifrovacího klíče dat služby, musí zařízení splňovat následující kritéria:
@@ -181,7 +181,7 @@ Provedením následujících kroků aktualizujte šifrování dat služby na va�
 3. Zadejte šifrovací klíč dat služby, který jste získali v [kroku 2: použití Windows PowerShell pro StorSimple k inicializaci změny šifrovacího klíče dat služby](#to-initiate-the-service-data-encryption-key-change).
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>Aktualizace šifrovacího klíče dat služby ve všech cloudových zařízeních 8010/8020
-1. Stáhněte a nastavte skript prostředí PowerShell [Update-CloudApplianceServiceEncryptionKey. ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) . 
+1. Stáhněte a nastavte [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) powershellový skript. 
 2. Otevřete PowerShell a na příkazovém řádku zadejte:`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Tento skript zajistí, aby se šifrovací klíč dat služby nastavil na všech cloudových zařízeních 8010/8020 ve Správci zařízení.
@@ -191,23 +191,23 @@ V Azure Portal se podporují jenom zařízení StorSimple, která používají a
 
 | Operace                                                                                                                       | Podporuje se      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Registrování zařízení                                                                                                               | Ano            |
-| Konfigurace nastavení zařízení, jako jsou obecné, síť a zabezpečení                                                                | Ano            |
-| Hledání, stahování a instalace aktualizací                                                                                             | Ano            |
-| Deaktivovat zařízení                                                                                                               | Ano            |
-| Odstranění zařízení                                                                                                                   | Ano            |
-| Vytvoření, úprava a odstranění kontejneru svazků                                                                                   | Ne             |
-| Vytvoření, úprava a odstranění svazku                                                                                             | Ne             |
-| Vytváření, úpravy a odstraňování zásad zálohování                                                                                      | Ne             |
-| Provedení ručního zálohování                                                                                                            | Ne             |
-| Proveďte naplánované zálohování.                                                                                                         | Neuvedeno |
-| Obnovení ze sady záloh                                                                                                        | Ne             |
-| Klonování na zařízení se systémem Update 3,0 a novějším <br> Na zdrojovém zařízení je spuštěná verze před aktualizací 3,0.                                | Ano            |
-| Klonování na zařízení s verzemi staršími než aktualizace 3,0                                                                          | Ne             |
-| Převzetí služeb při selhání jako zdrojové zařízení <br> (ze zařízení, na kterém běží verze před aktualizací 3,0 na zařízení se systémem Update 3,0 a novějším)                                                               | Ano            |
-| Převzetí služeb při selhání jako cílové zařízení <br> (do zařízení, na kterém běží verze softwaru před aktualizací 3,0)                                                                                   | Ne             |
-| Vymazat výstrahu                                                                                                                  | Ano            |
-| Zobrazit zásady zálohování, katalog záloh, svazky, kontejnery svazků, grafy monitorování, úlohy a výstrahy vytvořené na portálu Classic | Ano            |
+| Registrování zařízení                                                                                                               | Yes            |
+| Konfigurace nastavení zařízení, jako jsou obecné, síť a zabezpečení                                                                | Yes            |
+| Hledání, stahování a instalace aktualizací                                                                                             | Yes            |
+| Deaktivovat zařízení                                                                                                               | Yes            |
+| Odstranění zařízení                                                                                                                   | Yes            |
+| Vytvoření, úprava a odstranění kontejneru svazků                                                                                   | No             |
+| Vytvoření, úprava a odstranění svazku                                                                                             | No             |
+| Vytváření, úpravy a odstraňování zásad zálohování                                                                                      | No             |
+| Provedení ručního zálohování                                                                                                            | No             |
+| Proveďte naplánované zálohování.                                                                                                         | Nelze použít |
+| Obnovení ze sady záloh                                                                                                        | No             |
+| Klonování na zařízení se systémem Update 3,0 a novějším <br> Na zdrojovém zařízení je spuštěná verze před aktualizací 3,0.                                | Yes            |
+| Klonování na zařízení s verzemi staršími než aktualizace 3,0                                                                          | No             |
+| Převzetí služeb při selhání jako zdrojové zařízení <br> (ze zařízení, na kterém běží verze před aktualizací 3,0 na zařízení se systémem Update 3,0 a novějším)                                                               | Yes            |
+| Převzetí služeb při selhání jako cílové zařízení <br> (do zařízení, na kterém běží verze softwaru před aktualizací 3,0)                                                                                   | No             |
+| Vymazat výstrahu                                                                                                                  | Yes            |
+| Zobrazit zásady zálohování, katalog záloh, svazky, kontejnery svazků, grafy monitorování, úlohy a výstrahy vytvořené na portálu Classic | Yes            |
 | Zapnutí a vypnutí řadičů zařízení                                                                                              | Ano            |
 
 

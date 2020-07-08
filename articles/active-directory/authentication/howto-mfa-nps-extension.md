@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 681b81fa7f6ce74f7e48eb518a2c951e94c4b00d
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789528"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848471"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication
 
@@ -73,9 +73,13 @@ Je nutné ručně nainstalovat následující knihovnu:
 
 Každý, kdo používá rozšíření serveru NPS, musí být synchronizovaný Azure Active Directory pomocí Azure AD Connect a musí být registrovaný pro MFA.
 
-Když nainstalujete rozšíření, budete potřebovat ID adresáře a přihlašovací údaje správce pro vašeho tenanta Azure AD. ID vašeho adresáře najdete v [Azure Portal](https://portal.azure.com). Přihlaste se jako správce. Vyhledejte a vyberte **Azure Active Directory**a pak vyberte **vlastnosti**. Zkopírujte identifikátor GUID do pole **ID adresáře** a uložte ho. Tento identifikátor GUID použijete jako ID tenanta při instalaci rozšíření serveru NPS.
+Když nainstalujete rozšíření, budete potřebovat *ID tenanta* a přihlašovací údaje správce pro vašeho TENANTA Azure AD. Chcete-li získat ID tenanta, proveďte následující kroky:
 
-![V části vlastnosti Azure Active Directory Najděte ID vašeho adresáře.](./media/howto-mfa-nps-extension/properties-directory-id.png)
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce tenanta Azure.
+1. Vyhledejte a vyberte **Azure Active Directory**.
+1. Na stránce **Přehled** se zobrazí *informace o tenantovi* . Vedle *ID tenanta*vyberte ikonu **kopírování** , jak je znázorněno na následujícím ukázkovém snímku obrazovky:
+
+   ![Získává se ID tenanta z Azure Portal.](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="network-requirements"></a>Požadavky sítě
 
@@ -206,7 +210,7 @@ Pokud nechcete používat vlastní certifikáty (místo certifikátů podepsaný
    ```
 
 4. Přihlaste se k Azure AD jako správce.
-5. PowerShell zobrazí výzvu k zadání ID tenanta. Použijte identifikátor GUID ID adresáře, který jste zkopírovali z Azure Portal v části požadavky.
+5. PowerShell zobrazí výzvu k zadání ID tenanta. Použijte identifikátor GUID *ID tenanta* , který jste zkopírovali z Azure Portal v části požadavky.
 6. Po dokončení skriptu zobrazí prostředí PowerShell zprávu o úspěchu.  
 
 Opakujte tyto kroky na všech dalších serverech NPS, které chcete nastavit pro vyrovnávání zatížení.
@@ -280,7 +284,7 @@ Pokud máte uživatele, kteří nejsou zaregistrovaní pro MFA, můžete určit,
 
 Můžete zvolit vytvoření tohoto klíče a jeho nastavení na hodnotu NEPRAVDA, pokud se vaši uživatelé chtějí zaregistrovat a nemusí se ještě registrovat pro Azure MFA. Vzhledem k tomu, že nastavení klíče umožňuje uživatelům, kteří nejsou zaregistrovaní pro MFA, přihlásit se, měli byste tento klíč před zahájením provozu odebrat.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="nps-extension-health-check-script"></a>Skript kontroly stavu rozšíření serveru NPS
 

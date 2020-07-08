@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: f3c1e7337c0ce07b7fbebb9f954deeb75f0b9584
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84d14d63cd7bb96a7a4f37d2a6c29f09a50b2420
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80246649"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848695"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Kurz: Konfigurace konektoru OnAir identity Brivo pro Automatické zřizování uživatelů
 
@@ -54,17 +54,17 @@ Před konfigurací a povolením automatického zřizování uživatelů byste se
 
 ## <a name="setup-brivo-onair-identity-connector-for-provisioning"></a>Nastavení Brivo OnAir identity Connector pro zřizování
 
-1.    Přihlaste se ke [konzole pro správu konektoru Brivo OnAir identity](https://acs.brivo.com/login/). Přejděte na **účet > nastavení účtu**.
+1. Přihlaste se ke [konzole pro správu konektoru Brivo OnAir identity](https://acs.brivo.com/login/). Přejděte na **účet > nastavení účtu**.
 
-    ![Konzola správce Brivo OnAir identity Connector](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
+   ![Konzola správce Brivo OnAir identity Connector](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2.  Klikněte na kartu **Azure AD** . Na stránce s podrobnostmi **služby Azure AD** znovu zadejte heslo účtu správce vyšších účtů. Klikněte na **Odeslat**.
+2. Klikněte na kartu **Azure AD** . Na stránce s podrobnostmi **služby Azure AD** znovu zadejte heslo účtu správce vyšších účtů. Klikněte na **Odeslat**.
 
-    ![Brivo OnAir identity Connector Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
+   ![Brivo OnAir identity Connector Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
-3.    Klikněte na tlačítko **Kopírovat token** a uložte **tajný token**. Tato hodnota se zadá do pole token tajného klíče na kartě zřizování aplikace Brivo OnAir identity Connector ve Azure Portal.
+3. Klikněte na tlačítko **Kopírovat token** a uložte **tajný token**. Tato hodnota se zadá do pole token tajného klíče na kartě zřizování aplikace Brivo OnAir identity Connector ve Azure Portal.
 
-    ![Token konektoru Brivo OnAir identity](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
+   ![Token konektoru Brivo OnAir identity](media/brivo-onair-identity-connector-provisioning-tutorial/token.png)
 
 ## <a name="add-brivo-onair-identity-connector-from-the-gallery"></a>Přidání konektoru Brivo OnAir identity z Galerie
 
@@ -94,7 +94,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-brivo-onair-identity-connector-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro konektor Brivo OnAir identity ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 

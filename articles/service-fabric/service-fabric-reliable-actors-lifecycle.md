@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
 ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258314"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847866"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Životní cyklus objektu actor, automatické uvolňování paměti a ruční odstranění
 Objekt actor se aktivuje při prvním volání jakékoli z jeho metod. Objekt actor se deaktivuje (uvolňování paměti modulem Actors), pokud se nepoužívá pro konfigurovatelnou dobu. Objekt actor a jeho stav lze také kdykoli odstranit ručně.
@@ -20,14 +20,14 @@ Při aktivaci objektu actor dojde k následujícímu:
 
 * Pokud se pro objekt actor dostane volání a jedna z nich ještě není aktivní, vytvoří se nový objekt actor.
 * Stav objektu actor je načten, pokud udržuje stav.
-* Je `OnActivateAsync` volána metoda (C# `onActivateAsync` ) nebo (Java) (která může být přepsána v implementaci objektu actor).
+* `OnActivateAsync`Je volána metoda (C#) nebo `onActivateAsync` (Java) (která může být přepsána v implementaci objektu actor).
 * Objekt actor je nyní považován za aktivní.
 
 ## <a name="actor-deactivation"></a>Deaktivace objektu actor
 Při deaktivaci objektu actor dojde k následujícímu:
 
 * Pokud se objekt actor nepoužívá v určitém časovém období, je odebrán z tabulky aktivních aktérů.
-* Je `OnDeactivateAsync` volána metoda (C# `onDeactivateAsync` ) nebo (Java) (která může být přepsána v implementaci objektu actor). Tím se vymažou všechny časovače objektu actor. Z této metody by neměly být volány operace objektu actor, jako jsou změny stavu.
+* `OnDeactivateAsync`Je volána metoda (C#) nebo `onDeactivateAsync` (Java) (která může být přepsána v implementaci objektu actor). Tím se vymažou všechny časovače objektu actor. Z této metody by neměly být volány operace objektu actor, jako jsou změny stavu.
 
 > [!TIP]
 > Modul runtime Fabric Actors generuje některé [události související s aktivací a deaktivací objektu actor](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters). Jsou užitečné v monitorování diagnostiky a výkonu.
@@ -85,9 +85,9 @@ public class Program
     }
 }
 ```
-Pro každý aktivní objekt actor sleduje modul runtime objektu actor množství času, který je nečinný (tj. nepoužitý). Modul runtime objektu actor zkontroluje každý z objektů actor `ScanIntervalInSeconds` každý, aby zjistil, zda může být uvolněna z paměti a zda byla označena `IdleTimeoutInSeconds`jako nečinná pro.
+Pro každý aktivní objekt actor sleduje modul runtime objektu actor množství času, který je nečinný (tj. nepoužitý). Modul runtime objektu actor zkontroluje každý z objektů actor každý `ScanIntervalInSeconds` , aby zjistil, zda může být uvolněna z paměti a zda byla označena jako nečinná pro `IdleTimeoutInSeconds` .
 
-Kdykoli je použit objekt actor, jeho doba nečinnosti je nastavena na hodnotu 0. V takovém případě může být objekt actor uvolněn z paměti pouze v případě, že `IdleTimeoutInSeconds`opět zůstane nečinný pro. Odvolání, že se objekt actor považuje za použitý, pokud je spuštěná metoda rozhraní objektu actor nebo zpětné volání připomenutí objektu actor. Objekt actor není **považován za** použitý, pokud je provedeno zpětné volání časovače.
+Kdykoli je použit objekt actor, jeho doba nečinnosti je nastavena na hodnotu 0. V takovém případě může být objekt actor uvolněn z paměti pouze v případě, že opět zůstane nečinný pro `IdleTimeoutInSeconds` . Odvolání, že se objekt actor považuje za použitý, pokud je spuštěná metoda rozhraní objektu actor nebo zpětné volání připomenutí objektu actor. Objekt actor není **považován za** použitý, pokud je provedeno zpětné volání časovače.
 
 Následující diagram znázorňuje životní cyklus jednoho objektu actor k ilustraci těchto konceptů.
 

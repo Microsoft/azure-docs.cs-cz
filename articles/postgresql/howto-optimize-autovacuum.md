@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 1917bd6744e100db54fe959292e29486f8a1784b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dcc6f9ece407bee20ed344d91ee95e34f8f4c0a
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74770182"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848205"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimalizujte autovaku na Azure Database for PostgreSQL – jeden server
 Tento článek popisuje, jak efektivně optimalizovat autovaku na Azure Database for PostgreSQL serveru.
@@ -47,7 +47,7 @@ Tady je několik parametrů autovaku pro konfiguraci, které můžete aktualizov
 Parametr|Popis|Výchozí hodnota
 ---|---|---
 autovacuum_vacuum_threshold|Určuje minimální počet aktualizovaných nebo odstraněných řazených kolekcí členů potřebných pro aktivaci vakuové operace v libovolné tabulce. Výchozí hodnota je 50 n-tice. Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru. Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky.|50
-autovacuum_vacuum_scale_factor|Určuje zlomek velikosti tabulky, která se má přidat do autovacuum_vacuum_threshold při rozhodování, jestli se má aktivovat vakuová operace. Výchozí hodnota je 0,2, což je 20 procent velikosti tabulky. Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru. Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky.|5 procent
+autovacuum_vacuum_scale_factor|Určuje zlomek velikosti tabulky, která se má přidat do autovacuum_vacuum_threshold při rozhodování, jestli se má aktivovat vakuová operace. Výchozí hodnota je 0,2, což je 20 procent velikosti tabulky. Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru. Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky.|0.2
 autovacuum_vacuum_cost_limit|Určuje hodnotu limitu nákladů používané při automatickém vakuových operací. Je-li zadána hodnota-1, což je výchozí hodnota, použije se běžná hodnota vacuum_cost_limit. Pokud je k dispozici více než jeden pracovní proces, je hodnota rozdělena mezi běžící pracovní procesy autoformování. Součet omezení pro každý pracovní proces nepřekračuje hodnotu této proměnné. Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru. Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky.|-1
 autovacuum_vacuum_cost_delay|Určuje hodnotu zpoždění nákladů použitou při automatickém vakuových operací. Je-li zadán parametr-1, je použita běžná hodnota vacuum_cost_delay. Výchozí hodnota je 20 milisekund. Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru. Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky.|20 MS
 autovacuum_nap_time|Určuje minimální prodlevu mezi autovakuy spuštěnými na všech daných databázích. V každém zaokrouhlení démon vyhledá databázi a problémy v podtlaku a ANALYZUJe příkazy podle potřeby pro tabulky v této databázi. Zpoždění se měří v sekundách a výchozí hodnota je jedna minuta (1 min). Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru.|15 s

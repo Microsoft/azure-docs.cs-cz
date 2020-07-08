@@ -13,11 +13,11 @@ ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d298c83c0c1a0f33f28644e2e467ad5035300221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265932"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847603"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopírování dat do a z místního systému souborů pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -70,24 +70,24 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Místní systém souborů můžete propojit s objektem pro vytváření dat Azure pomocí místní propojené služby **souborového serveru** . Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu místního souborového serveru.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| type |Ujistěte se, že vlastnost Type je nastavená na **OnPremisesFileServer**. |Ano |
-| host |Určuje kořenovou cestu ke složce, kterou chcete zkopírovat. Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Příklady najdete v tématu [Ukázka propojené služby a definice datových sad](#sample-linked-service-and-dataset-definitions) . |Ano |
+| typ |Ujistěte se, že vlastnost Type je nastavená na **OnPremisesFileServer**. |Yes |
+| host |Určuje kořenovou cestu ke složce, kterou chcete zkopírovat. Pro speciální znaky v řetězci použijte řídicí znak ' \ '. Příklady najdete v tématu [Ukázka propojené služby a definice datových sad](#sample-linked-service-and-dataset-definitions) . |Yes |
 | UserID |Zadejte ID uživatele, který má přístup k serveru. |Ne (Pokud zvolíte encryptedCredential) |
 | heslo |Zadejte heslo uživatele (UserID). |Ne (Pokud zvolíte encryptedCredential |
 | encryptedCredential |Zadání šifrovaných přihlašovacích údajů, které můžete získat spuštěním rutiny New-AzDataFactoryEncryptValue. |Ne (Pokud se rozhodnete zadat ID uživatele a heslo jako prostý text) |
-| gatewayName |Určuje název brány, kterou Data Factory použít pro připojení k místnímu souborovému serveru. |Ano |
+| gatewayName |Určuje název brány, kterou Data Factory použít pro připojení k místnímu souborovému serveru. |Yes |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Ukázka propojené služby a definic datových sad
 | Scénář | Hostitel v definici propojené služby | folderPath v definici datové sady |
 | --- | --- | --- |
-| Místní složka na počítači Správa dat brány: <br/><br/>Příklady: D:\\ \* nebo D:\folder\subfolder\\\* |D:\\ \\ (pro Správa dat Gateway 2,0 a novější verze) <br/><br/> localhost (pro starší verze než Správa dat brána 2,0) |. nebo podsložek\\\\složky (pro Správa dat bránu 2,0 a novější verze) \\ \\ <br/><br/>D:\\ \\ nebo d:\\\\podsložka složky\\\\(pro verzi brány nižší než 2,0) |
-| Vzdálená sdílená složka: <br/><br/>Příklady: \\ \\MyServer\\Share\\ \* nebo \\\\\\sdílená složka MyServer sdílené složky\\ \\\\\* |\\\\\\\\MyServer\\\\sdílená složka |. nebo podsložek\\\\složky \\ \\ |
+| Místní složka na počítači Správa dat brány: <br/><br/>Příklady: D: \\ \* nebo D:\folder\subfolder\\\* |D: \\ \\ (pro Správa dat Gateway 2,0 a novější verze) <br/><br/> localhost (pro starší verze než Správa dat brána 2,0) |.\\\\ nebo \\ \\ podsložek složky (pro Správa dat bránu 2,0 a novější verze) <br/><br/>D: \\ \\ nebo d: \\ \\ \\ \\ podsložka složky (pro verzi brány nižší než 2,0) |
+| Vzdálená sdílená složka: <br/><br/>Příklady: \\ \\ MyServer \\ share nebo sdílená \\ \* \\ \\ \\ Složka MyServer sdílené \\ složky \\\\\* |\\\\\\\\MyServer \\ \\ sdílená složka |.\\\\ nebo \\ \\ podsložek složky |
 
 >[!NOTE]
->Při vytváření pomocí uživatelského rozhraní nemusíte zadávat dvojité zpětné lomítko (`\\`) pro řídicí panel, jako je například pomocí JSON, zadejte jednoduché zpětné lomítko.
+>Při vytváření pomocí uživatelského rozhraní nemusíte zadávat dvojité zpětné lomítko ( `\\` ) pro řídicí panel, jako je například pomocí JSON, zadejte jednoduché zpětné lomítko.
 
 ### <a name="example-using-username-and-password-in-plain-text"></a>Příklad: použití uživatelského jména a hesla v prostém textu
 
@@ -127,14 +127,14 @@ Místní systém souborů můžete propojit s objektem pro vytváření dat Azur
 
 Oddíl typeProperties se liší pro každý typ datové sady. Poskytuje informace, jako je umístění a formát dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **Shared** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| folderPath |Určuje podcestu ke složce. Použijte řídicí znak\' pro speciální znaky v řetězci. Filtr zástupných znaků se nepodporuje. Příklady najdete v tématu [Ukázka propojené služby a definice datových sad](#sample-linked-service-and-dataset-definitions) .<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě data a času začátku a konce řezu. |Ano |
-| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a **preserveHierarchy** není zadán v jímky aktivity, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt`(Příklad: data. 0a405f8a-93ff-4c6f-B3BE-f69616f1df7a. txt) |Ne |
-| fileFilter |Určete filtr, který se použije k výběru podmnožiny souborů v folderPath, nikoli všech souborů. <br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: "FileFilter": "*. log"<br/>Příklad 2: "FileFilter": 2014-1-?. txt<br/><br/>Všimněte si, že tento filtr souborů je použitelný pro sadu vstupních souborů Shared. |Ne |
-| partitionedBy |Pomocí partitionedBy můžete zadat dynamický folderPath/fileName pro data časových řad. Příkladem je folderPath parametrizované pro každou hodinu dat. |Ne |
-| formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |Ne |
-| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. zobrazení [souborů a kompresních formátů v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
+| folderPath |Určuje podcestu ke složce. Použijte řídicí znak \' pro speciální znaky v řetězci. Filtr zástupných znaků se nepodporuje. Příklady najdete v tématu [Ukázka propojené služby a definice datových sad](#sample-linked-service-and-dataset-definitions) .<br/><br/>Tuto vlastnost můžete kombinovat s **partitionBy** a mít tak cesty ke složkám na základě data a času začátku a konce řezu. |Yes |
+| fileName |Pokud chcete, aby tabulka odkazovala na konkrétní soubor ve složce, zadejte název souboru do **FolderPath** . Pokud pro tuto vlastnost nezadáte žádnou hodnotu, odkazuje tabulka na všechny soubory ve složce.<br/><br/>Pokud není zadán **název souboru** pro výstupní datovou sadu a **preserveHierarchy** není zadán v jímky aktivity, název generovaného souboru je v následujícím formátu: <br/><br/>`Data.<Guid>.txt`(Příklad: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
+| fileFilter |Určete filtr, který se použije k výběru podmnožiny souborů v folderPath, nikoli všech souborů. <br/><br/>Povolené hodnoty jsou: `*` (více znaků) a `?` (jeden znak).<br/><br/>Příklad 1: "FileFilter": "*. log"<br/>Příklad 2: "FileFilter": 2014-1-?. txt<br/><br/>Všimněte si, že tento filtr souborů je použitelný pro sadu vstupních souborů Shared. |No |
+| partitionedBy |Pomocí partitionedBy můžete zadat dynamický folderPath/fileName pro data časových řad. Příkladem je folderPath parametrizované pro každou hodinu dat. |No |
+| formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |No |
+| komprese | Zadejte typ a úroveň komprese dat. Podporované typy jsou: **gzip**, **Deflate**, **bzip2**a **ZipDeflate**. Podporované úrovně: **optimální** a **nejrychlejší**. zobrazení [souborů a kompresních formátů v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 > [!NOTE]
 > Nemůžete současně použít fileName a FileFilter.
@@ -179,15 +179,15 @@ U aktivity kopírování se liší v závislosti na typech zdrojů a jímky. Pok
 
 **FileSystemSource** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| zahrnout |Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. |True, false (výchozí) |Ne |
+| zahrnout |Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. |True, false (výchozí) |No |
 
 **FileSystemSink** podporuje následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo FileSystem. |**PreserveHierarchy:** Zachová hierarchii souborů v cílové složce. To znamená, že relativní cesta ke zdrojovému souboru ke zdrojové složce je stejná jako relativní cesta cílového souboru k cílové složce.<br/><br/>**FlattenHierarchy:** Všechny soubory ze zdrojové složky se vytvoří v první úrovni cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles:** Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadaný název souboru nebo název objektu blob, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky generovaný název souboru. |Ne |
+| copyBehavior |Definuje chování kopírování, pokud je zdroj BlobSource nebo FileSystem. |**PreserveHierarchy:** Zachová hierarchii souborů v cílové složce. To znamená, že relativní cesta ke zdrojovému souboru ke zdrojové složce je stejná jako relativní cesta cílového souboru k cílové složce.<br/><br/>**FlattenHierarchy:** Všechny soubory ze zdrojové složky se vytvoří v první úrovni cílové složky. Cílové soubory se vytvoří s automaticky generovaným názvem.<br/><br/>**MergeFiles:** Sloučí všechny soubory ze zdrojové složky do jednoho souboru. Pokud je zadaný název souboru nebo název objektu blob, Název sloučeného souboru je zadaný název. V opačném případě se jedná o automaticky generovaný název souboru. |No |
 
 ### <a name="recursive-and-copybehavior-examples"></a>Příklady rekurzivních a copyBehavior
 Tato část popisuje výsledné chování operace kopírování pro různé kombinace hodnot pro rekurzivní a copyBehavior vlastnosti.

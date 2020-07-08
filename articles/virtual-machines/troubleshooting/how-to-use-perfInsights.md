@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250124"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847442"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -65,7 +65,7 @@ V tomto scénáři se spustí srovnávací test [DiskSpd](https://github.com/Mic
 
 ### <a name="performance-analysis"></a>Analýza výkonu
 
-Tento scénář spustí trasování [čítače výkonu](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) pomocí čítačů, které jsou zadány v souboru RuleEngineConfig. JSON. Pokud je virtuální počítač identifikovaný jako server, na kterém běží SQL Server, spustí se trasování čítače výkonu. K tomu slouží čítače, které se nacházejí v souboru RuleEngineConfig. JSON. Tento scénář také zahrnuje data diagnostiky výkonu.
+Tento scénář spustí trasování [čítače výkonu](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) pomocí čítačů, které jsou zadány v RuleEngineConfig.jsv souboru. Pokud je virtuální počítač identifikovaný jako server, na kterém běží SQL Server, spustí se trasování čítače výkonu. K tomu slouží čítače, které se nacházejí v RuleEngineConfig.jsv souboru. Tento scénář také zahrnuje data diagnostiky výkonu.
 
 ### <a name="azure-files-analysis"></a>Analýza souborů Azure
 
@@ -119,12 +119,12 @@ Shromažďují se informace o virtuálním počítači s Windows, discích nebo 
 | Konfigurace SQL Serveru          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Trasování diagnostiky výkonu *  | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Trasování čítače výkonu * *      |                            |                                    | Ano                      |                      | Ano                  |
-| Trasování čítače SMB * *              |                            |                                    |                          | Ano                  |                      |
+| Trasování čítače SMB * *              |                            |                                    |                          | Yes                  |                      |
 | Trasování čítače SQL Server * *       |                            |                                    | Ano                      |                      | Ano                  |
-| Xperf trasování                       |                            |                                    |                          |                      | Ano                  |
-| Trasování StorPort                    |                            |                                    |                          |                      | Ano                  |
+| Xperf trasování                       |                            |                                    |                          |                      | Yes                  |
+| Trasování StorPort                    |                            |                                    |                          |                      | Yes                  |
 | Trasování sítě                     |                            |                                    |                          | Ano                  | Ano                  |
-| Sledování srovnávacích testů DiskSpd * * *       |                            | Ano                                |                          |                      |                      |
+| Sledování srovnávacích testů DiskSpd * * *       |                            | Yes                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Trasování diagnostiky výkonu (*)
@@ -189,15 +189,15 @@ Další informace o této možnosti najdete v tématu [Instalace rozšíření v
 Chcete-li spustit nástroj PerfInsights, postupujte podle následujících kroků:
 
 
-1. Stáhněte si soubor [PerfInsights. zip](https://aka.ms/perfinsightsdownload).
+1. Stáhněte si [PerfInsights.zip](https://aka.ms/perfinsightsdownload).
 
-2. Odblokujte soubor PerfInsights. zip. Provedete to tak, že kliknete pravým tlačítkem na soubor PerfInsights. zip a vyberete **vlastnosti**. Na kartě **Obecné** vyberte **odblokovat**a pak vyberte **OK**. Tím se zajistí, že se nástroj spustí bez dalších výzev zabezpečení.  
+2. Odblokuje soubor PerfInsights.zip. Provedete to tak, že kliknete pravým tlačítkem na soubor PerfInsights.zip a vyberete **vlastnosti**. Na kartě **Obecné** vyberte **odblokovat**a pak vyberte **OK**. Tím se zajistí, že se nástroj spustí bez dalších výzev zabezpečení.  
 
     ![Snímek obrazovky s vlastnostmi PerfInsights se zvýrazněným odblokem](media/how-to-use-perfInsights/pi-unlock-file.png)
 
-3.  Rozbalte komprimovaný soubor PerfInsights. zip na dočasnou jednotku (ve výchozím nastavení je to obvykle jednotka D). 
+3.  Rozbalte komprimovaný soubor PerfInsights.zip na dočasnou jednotku (ve výchozím nastavení je to obvykle jednotka D). 
 
-4.  Otevřete příkazový řádek systému Windows jako správce a pak spusťte PerfInsights. exe, abyste zobrazili dostupné parametry příkazového řádku.
+4.  Otevřete příkazový řádek systému Windows jako správce a pak spusťte PerfInsights.exe, abyste zobrazili dostupné parametry příkazového řádku.
 
     ```
     cd <the path of PerfInsights folder>
@@ -244,16 +244,16 @@ Chcete-li spustit nástroj PerfInsights, postupujte podle následujících krok�
     >
     >Pokud není zadaný přepínač trvání **/d** , PerfInsights vás vyzve k reprodukci problému při spouštění vmslow, azurefiles a pokročilých scénářů. 
 
-Po dokončení trasování nebo operací se ve stejné složce jako PerfInsights zobrazí nový soubor. Název souboru je **PerformanceDiagnostics\_yyyy-MM-DD\_HH-MM-SS-FFF. zip.** Tento soubor můžete poslat agentovi podpory pro účely analýzy nebo otevřít sestavu v souboru zip a zkontrolovat si závěry a doporučení.
+Po dokončení trasování nebo operací se ve stejné složce jako PerfInsights zobrazí nový soubor. Název souboru je **PerformanceDiagnostics \_ yyyy-MM-DD \_hh-mm-ss-fff.zip.** Tento soubor můžete poslat agentovi podpory pro účely analýzy nebo otevřít sestavu v souboru zip a zkontrolovat si závěry a doporučení.
 
 ## <a name="review-the-diagnostics-report"></a>Kontrola diagnostické sestavy
 
-V souboru **PerformanceDiagnostics\_yyyy-MM-DD\_HH-MM-SS-FFF. zip** můžete najít sestavu HTML, která podrobně popisuje zjištění PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte **soubor\_PERFORMANCEDIAGNOSTICS yyyy-mm-\_DD hh-mm-SS-FFF. zip** a otevřete soubor **PerfInsights Report. html** .
+V **PerformanceDiagnostics souboru \_ RRRR-MM- \_hh-mm-ss-fff.zipDD** můžete najít sestavu HTML, která podrobně popisuje závěry PerfInsights. Chcete-li sestavu zkontrolovat, rozbalte soubor **PerformanceDiagnostics \_ yyyy-MM-DD \_hh-mm-ss-fff.zip** a pak otevřete soubor **PerfInsights Report.html** .
 
 Vyberte kartu **zjištění** .
 
-![Snímek obrazovky sestavy](media/how-to-use-perfInsights/pi-finding-tab.png)
-![PerfInsights na snímku sestavy PerfInsights](media/how-to-use-perfInsights/pi-findings.png)
+![Snímek obrazovky sestavy PerfInsights ](media/how-to-use-perfInsights/pi-finding-tab.png)
+ ![ na snímku sestavy PerfInsights](media/how-to-use-perfInsights/pi-findings.png)
 
 > [!NOTE] 
 > Nálezy zařazené do kategorie vysoká jsou známé problémy, které mohou způsobit problémy s výkonem. Nálezy kategorizované jako střední představuje neoptimální konfigurace, které nemusí nutně způsobovat problémy s výkonem. Nálezy zařazené do kategorie nízká jsou informativní pouze informativní příkazy.
@@ -270,7 +270,7 @@ V perspektivě fyzického disku (mapa disku) zobrazuje tabulka všechny logické
 
 ![Snímek obrazovky s kartou disk](media/how-to-use-perfInsights/pi-disk-tab.png)
 
-V perspektivě svazku (mapa svazků) jsou v tabulkách zobrazeny všechny fyzické disky v rámci jednotlivých logických svazků. Všimněte si, že u polí RAID/dynamic disks můžete spustit logický svazek na více fyzických discích. V následujícím příkladu je *C:\\Mount* přípojný bod nakonfigurovaný jako *SpannedDisk* na fyzických discích 2 a 3:
+V perspektivě svazku (mapa svazků) jsou v tabulkách zobrazeny všechny fyzické disky v rámci jednotlivých logických svazků. Všimněte si, že u polí RAID/dynamic disks můžete spustit logický svazek na více fyzických discích. V následujícím příkladu je *C: \\ Mount* přípojný bod nakonfigurovaný jako *SpannedDisk* na fyzických discích 2 a 3:
 
 ![Snímek obrazovky s kartou Volume](media/how-to-use-perfInsights/pi-volume-tab.png)
 
@@ -313,5 +313,5 @@ Na následujícím snímku obrazovky se zobrazí zpráva podobná tomu, co se v�
 
 Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenosu souborů. Pro zvýšení zabezpečení je nutné při prvním použití změnit heslo.
 
-Po přihlášení se zobrazí dialogové okno pro nahrání souboru **\_PERFORMANCEDIAGNOSTICS yyyy-MM-DD\_HH-MM-SS-FFF. zip** , který byl shromážděn nástrojem PerfInsights.
+Po přihlášení se zobrazí dialogové okno pro nahrání souboru ** \_ \_hh-mm-ss-fff.ziprrrr-mm-dd** , který byl shromážděn nástrojem PerfInsights.
 

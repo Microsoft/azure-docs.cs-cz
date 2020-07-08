@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273095"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847253"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Seznámení s monitorováním cloudové služby
 
-Můžete monitorovat klíčové metriky výkonu pro libovolnou cloudovou službu. Každá role cloudové služby shromažďuje minimální data: využití CPU, využití sítě a využití disku. Pokud má cloudová služba u `Microsoft.Azure.Diagnostics` role použité rozšíření, může tato role shromažďovat další body dat. Tento článek poskytuje Úvod do Azure Diagnostics Cloud Services.
+Můžete monitorovat klíčové metriky výkonu pro libovolnou cloudovou službu. Každá role cloudové služby shromažďuje minimální data: využití CPU, využití sítě a využití disku. Pokud má cloudová služba `Microsoft.Azure.Diagnostics` u role použité rozšíření, může tato role shromažďovat další body dat. Tento článek poskytuje Úvod do Azure Diagnostics Cloud Services.
 
 Díky základnímu monitorování jsou data čítače výkonu z instancí rolí ve vzorku a shromažďována v intervalech po dobu 3 minut. Tato základní data monitorování se ve vašem účtu úložiště neukládají a nevztahují se na ně žádné další náklady.
 
@@ -54,7 +54,7 @@ Při vytvoření každé role Visual Studio přidá k němu rozšíření Azure 
 
 Za prvé, pokud nemáte účet **klasického** úložiště, [vytvořte ho](../storage/common/storage-account-create.md). Ujistěte se, že je účet úložiště vytvořený s uvedeným **modelem nasazení Classic** .
 
-Potom přejděte do prostředku **účtu úložiště (Classic)** . Vyberte **Nastavení** > **přístupové klíče** a zkopírujte hodnotu **primárního připojovacího řetězce** . Tuto hodnotu budete potřebovat pro cloudovou službu. 
+Potom přejděte do prostředku **účtu úložiště (Classic)** . Vyberte **Nastavení**  >  **přístupové klíče** a zkopírujte hodnotu **primárního připojovacího řetězce** . Tuto hodnotu budete potřebovat pro cloudovou službu. 
 
 Existují dva konfigurační soubory, které je třeba změnit, aby bylo možné povolit pokročilou diagnostiku, **ServiceDefinition. csdef** a **ServiceConfiguration. cscfg**.
 
@@ -71,7 +71,7 @@ V souboru **ServiceDefinition. csdef** přidejte nové nastavení s názvem `Mic
 
 Tím se definuje nové nastavení, které se musí přidat ke každému **ServiceConfiguration souboru. cscfg** . 
 
-Pravděpodobně máte dva soubory **. cscfg** , jednu s názvem **ServiceConfiguration. Cloud. cscfg** pro nasazení do Azure a jednu s názvem **ServiceConfiguration. Local. cscfg** , která se používá pro místní nasazení v emulovaném prostředí. Otevřete a změňte každý soubor **. cscfg** . Přidejte nastavení s názvem `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`. Nastavte hodnotu na **primární připojovací řetězec** klasického účtu úložiště. Pokud chcete použít místní úložiště ve vývojovém počítači, použijte `UseDevelopmentStorage=true`.
+Pravděpodobně máte dva soubory **. cscfg** , jednu s názvem **ServiceConfiguration. Cloud. cscfg** pro nasazení do Azure a jednu s názvem **ServiceConfiguration. Local. cscfg** , která se používá pro místní nasazení v emulovaném prostředí. Otevřete a změňte každý soubor **. cscfg** . Přidejte nastavení s názvem `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` . Nastavte hodnotu na **primární připojovací řetězec** klasického účtu úložiště. Pokud chcete použít místní úložiště ve vývojovém počítači, použijte `UseDevelopmentStorage=true` .
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">

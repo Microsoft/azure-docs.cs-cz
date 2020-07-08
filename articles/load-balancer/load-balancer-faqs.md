@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 4ae15d0898cedb0ed17dc308584769395aa819c2
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079468"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848208"
 ---
-# <a name="frequently-asked-questions"></a>Nejčastější dotazy
+# <a name="load-balancer-frequently-asked-questions"></a>Load Balancer nejčastějších dotazech
 
 ## <a name="what-types-of-load-balancer-exist"></a>Jaké typy Load Balancer existují?
 Interní nástroje pro vyrovnávání zatížení, které vyrovnávají provoz v rámci virtuální sítě a externích nástrojů pro vyrovnávání zatížení, které vyrovnávají provoz z koncového bodu připojeného k Další informace najdete v tématu [typy Load Balancer](components.md#frontend-ip-configurations). 
@@ -36,8 +36,18 @@ Pravidla překladu adres (NAT) slouží k určení prostředku back-end pro smě
 ## <a name="what-is-ip-1686312916"></a>Co je IP 168.63.129.16?
 Virtuální IP adresa hostitele označeného jako infrastruktura Azure Load Balancer, kde se nacházely sondy stavu Azure. Při konfiguraci back-end instancí musí umožňovat provoz z této IP adresy úspěšné reakce na sondy stavu. Toto pravidlo nekomunikuje s přístupem k front-endu Load Balancer. Pokud Azure Load Balancer nepoužíváte, můžete toto pravidlo přepsat. Další informace o značkách služby najdete [tady](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
 
-## <a name="can-i-use-global-vnet-peering-with-basic-load-blancer"></a>Můžu použít globální VNET peering se základními Blancer zatížení?
+## <a name="can-i-use-global-vnet-peering-with-basic-load-balancer"></a>Můžu použít globální VNET peering se základními Load Balancer?
 Ne. Základní Load Balancer nepodporuje globální partnerský vztah virtuální sítě. Místo toho můžete použít Standard Load Balancer. Projděte si článek [upgrade ze základního na standardní](upgrade-basic-standard.md) článek pro bezproblémové upgradu.
+
+## <a name="how-can-i-discover-the-public-ip-that-an-azure-vm-uses"></a>Jak můžu zjistit veřejnou IP adresu, kterou virtuální počítač Azure používá?
+
+Existuje mnoho způsobů, jak určit veřejnou zdrojovou IP adresu odchozího připojení. OpenDNS poskytuje službu, která vám umožní zobrazit veřejnou IP adresu vašeho virtuálního počítače.
+Pomocí příkazu nslookup můžete odeslat dotaz DNS pro název myip.opendns.com do překladače OpenDNS. Služba vrátí zdrojovou IP adresu, která se použila k odeslání dotazu. Když z virtuálního počítače spustíte následující dotaz, odpověď je veřejná IP adresa používaná pro tento virtuální počítač:
+
+ ```nslookup myip.opendns.com resolver1.opendns.com```
+
+## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Jak funguje připojení k Azure Storage ve stejné oblasti?
+Pro připojení k úložišti ve stejné oblasti jako virtuální počítač není nutné mít odchozí připojení prostřednictvím výše uvedených scénářů. Pokud to nechcete, použijte skupiny zabezpečení sítě (skupin zabezpečení sítě), jak je vysvětleno výše. Připojení k úložišti v jiných oblastech vyžaduje odchozí připojení. Pamatujte na to, že při připojování k úložišti z virtuálního počítače ve stejné oblasti bude zdrojová IP adresa v diagnostických protokolech úložiště interní adresa poskytovatele, nikoli veřejná IP adresa vašeho virtuálního počítače. Pokud chcete omezit přístup k účtu úložiště na virtuální počítače v jedné nebo více Virtual Networkch podsítích ve stejné oblasti, při konfiguraci brány firewall účtu úložiště použijte [koncové body služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) a nemusíte mít veřejnou IP adresu. Po nakonfigurování koncových bodů služby se v diagnostických protokolech úložiště zobrazí vaše Virtual Network privátní IP adresa, nikoli adresa interního poskytovatele.
 
 ## <a name="next-steps"></a>Další kroky
 Pokud Váš dotaz není uvedený výše, pošlete nám prosím svůj názor na tuto stránku s vaším dotazem. Tím se vytvoří problém GitHubu pro produktový tým, aby se zajistila odpověď na všechny naše oceněné dotazy zákazníků.

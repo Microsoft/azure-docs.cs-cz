@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260329"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847822"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu ve službě Azure Data Lake Storage Gen1
 
@@ -45,7 +45,7 @@ Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
 
 Pro objekt systému souborů jsou definována oprávnění **Číst**, **Zapisovat** a **Provést** a pro soubory a složky je lze používat podle následující tabulky:
 
-|            |    File     |   Složka |
+|            |    Soubor     |   Složka |
 |------------|-------------|----------|
 | **Číst (R)** | Může číst obsah souboru | Pro vypsání obsahu složky jsou vyžadována oprávnění **Číst** a **Provést**.|
 | **Zapisovat (W)** | Může zapisovat do souboru nebo k němu připojovat data | Pro vytváření podřízených položek ve složce jsou vyžadována oprávnění **Zapisovat** a **Provést**. |
@@ -71,12 +71,12 @@ V modelu stylu POSIX, který používá Data Lake Storage Gen1, jsou oprávněn�
 
 Níže jsou uvedeny některé běžné scénáře, které vám pomohou pochopit, která oprávnění jsou nutná k provádění určitých operací s účtem Data Lake Storage Gen1.
 
-| Operace | Objekt              |    /      | Síti   | Portland   | Data. txt       |
+| Operace | Objekt              |    /      | Síti   | Portland   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
-| Čtení      | Data. txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Připojit k | Data. txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Odstranit    | Data. txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Vytvořit    | Data. txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Čtení      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Připojit k | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Odstranit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Vytvořit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Seznam      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
 | Seznam      | Síti           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Seznam      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
@@ -214,7 +214,7 @@ Při vytvoření nového souboru nebo složky v rámci existující složky se p
 - Výchozí seznam ACL a přístupový seznam ACL podřízené složky.
 - Přístupový seznam ACL podřízeného souboru (pro soubory není definován výchozí seznam ACL).
 
-### <a name="umask"></a>Vlastnost umask
+### <a name="umask"></a>umask
 
 Při vytváření souboru nebo složky se umask používá k úpravě způsobu nastavení výchozích seznamů ACL pro podřízenou položku. umask je 9 bitová hodnota u nadřazených složek, které obsahují hodnotu RWX pro **vlastnícího uživatele**, **vlastnící skupinu**a **Další**.
 

@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611377"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848683"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
 
-Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication, použijte tento článek k rychlejšímu dosažení řešení. Protokoly rozšíření NPS se nacházejí v Prohlížeč událostí v části **vlastní zobrazení** > **role** > serveru**zásady sítě a přístup** na serveru, na kterém je nainstalovaná přípona NPS.
+Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication, použijte tento článek k rychlejšímu dosažení řešení. Protokoly rozšíření NPS se nacházejí v Prohlížeč událostí v části **vlastní zobrazení**  >  **role serveru**  >  **zásady sítě a přístup** na serveru, na kterém je nainstalovaná přípona NPS.
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Postup řešení běžných chyb
 
@@ -31,7 +31,7 @@ Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication
 | **CLIENT_CERT_INSTALL_ERROR** | Může se jednat o problém s tím, jak byl klientský certifikát nainstalován nebo přidružen k vašemu tenantovi. Postupujte podle pokynů v tématu [řešení potíží s rozšířením MFA NPS](howto-mfa-nps-extension.md#troubleshooting) a prozkoumejte problémy s certifikátem klienta. |
 | **ESTS_TOKEN_ERROR** | Postupujte podle pokynů v tématu [řešení potíží s rozšířením MFA NPS](howto-mfa-nps-extension.md#troubleshooting) a prozkoumejte problémy klienta a tokenu ADAL. |
 | **HTTPS_COMMUNICATION_ERROR** | Server NPS nemůže přijmout odpovědi z Azure MFA. Ověřte, že brány firewall jsou otevřené obousměrně pro provoz do a z.https://adnotifications.windowsazure.com |
-| **HTTP_CONNECT_ERROR** | Na serveru, na kterém je spuštěno rozšíření serveru NPS, ověřte, `https://adnotifications.windowsazure.com` že `https://login.microsoftonline.com/`máte přístup k a. Pokud se tyto lokality nenačte, vyřešte potíže s připojením na tomto serveru. |
+| **HTTP_CONNECT_ERROR** | Na serveru, na kterém je spuštěno rozšíření serveru NPS, ověřte, že máte přístup k `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com/` . Pokud se tyto lokality nenačte, vyřešte potíže s připojením na tomto serveru. |
 | **Rozšíření serveru NPS pro Azure MFA:** <br> Rozšíření serveru NPS pro Azure MFA provádí sekundární ověřování pouze pro žádosti RADIUS ve stavu AccessAccept. Byl přijat požadavek na uživatelské jméno uživatele se stavem odpovědi AccessReject, ignorování požadavku. | Tato chyba obvykle odráží selhání ověřování ve službě AD nebo to, že server NPS nemůže přijímat odpovědi z Azure AD. Ověřte, že brány firewall jsou pro přenos do a z `https://adnotifications.windowsazure.com` a `https://login.microsoftonline.com` pomocí portů 80 a 443 obousměrné. Je také důležité ověřit, že na kartě Telefonické připojení v části oprávnění k přístupu k síti je nastavení nastaveno na možnost řídit přístup prostřednictvím zásad sítě NPS. Tato chyba se může také aktivovat, pokud uživatel nemá přiřazenou licenci. |
 | **REGISTRY_CONFIG_ERROR** | V registru aplikace chybí klíč, což může být způsobeno tím, že se [powershellový skript](howto-mfa-nps-extension.md#install-the-nps-extension) po instalaci nespustil. Chybová zpráva by měla obsahovat chybějící klíč. Ujistěte se, že máte klíč pod HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
 | **REQUEST_FORMAT_ERROR** <br> Požadavek protokolu RADIUS neobsahuje povinný atribut userName\Identifier protokolu RADIUS. Ověření, že server NPS přijímá žádosti RADIUS | Tato chyba obvykle odráží problém instalace. Rozšíření serveru NPS musí být nainstalováno na servery NPS, které mohou přijímat žádosti RADIUS. Servery NPS, které se instalují jako závislosti pro služby, jako je RDG a RRAS, neobdrží žádosti RADIUS. Rozšíření serveru NPS nefunguje při instalaci těchto instalací a chybách, protože nemůže přečíst podrobnosti žádosti o ověření. |
@@ -60,7 +60,7 @@ Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication
 | **OathCodePinIncorrect** | Byl zadán nesprávný kód a kód PIN. | Tato chyba se v rozšíření serveru NPS neočekává. Pokud k tomu dojde, obraťte se na [podporu](#contact-microsoft-support) pro pomoc s řešením potíží. |
 | **ProofDataNotFound** | Pro zadanou metodu ověřování nebyla konfigurována data kontroly. | Požádejte uživatele, aby si vyzkoušeli jinou metodu ověřování, nebo přidejte nové metody ověřování podle pokynů v tématu [Správa nastavení pro dvoustupňové ověřování](../user-help/multi-factor-authentication-end-user-manage-settings.md). Pokud uživatel tuto chybu stále uvidí po potvrzení, že je správně nastavená metoda ověřování, obraťte se na [podporu](#contact-microsoft-support). |
 | **SMSAuthFailedWrongCodePinEntered** | Byl zadán nesprávný kód a kód PIN. (OneWaySMS) | Tato chyba se v rozšíření serveru NPS neočekává. Pokud k tomu dojde, obraťte se na [podporu](#contact-microsoft-support) pro pomoc s řešením potíží. |
-| **TenantIsBlocked** | Tenant je zablokovaný. | [Kontaktujte podporu](#contact-microsoft-support) s ID adresáře na stránce vlastností Azure AD v Azure Portal. |
+| **TenantIsBlocked** | Tenant je zablokovaný. | [Obraťte](#contact-microsoft-support) se na podporu s *ID tenanta* ze stránky vlastností Azure AD v Azure Portal. |
 | **UserNotFound** | Zadaný uživatel nebyl nalezen. | Tenant už není ve službě Azure AD viditelný jako aktivní. Ověřte, že je vaše předplatné aktivní a že máte požadované aplikace první strany. Také se ujistěte, že je tenant v předmětu certifikátu podle očekávání a že certifikát je stále platný a registrovaný v instančním objektu. |
 
 ## <a name="messages-your-users-may-encounter-that-arent-errors"></a>Zprávy, se kterými se uživatelé můžou setkat, že nejsou chyby
@@ -81,7 +81,7 @@ Pokud narazíte na jednu z těchto chyb, doporučujeme, abyste [kontaktovali pod
 | ---------- | ------------- |
 | **InvalidParameter** | Požadavek nesmí mít hodnotu null. |
 | **InvalidParameter** | ObjectId nesmí mít hodnotu null ani být prázdné pro ReplicationScope:{0} |
-| **InvalidParameter** | Délka CompanyName \{0} je delší, než je maximální povolená délka.{1} |
+| **InvalidParameter** | Délka CompanyName \{ 0} je delší, než je maximální povolená délka.{1} |
 | **InvalidParameter** | Atribut UserPrincipalName nesmí mít hodnotu null ani být prázdný. |
 | **InvalidParameter** | Zadaný TenantId nemá správný formát. |
 | **InvalidParameter** | Identifikátor SessionId nesmí mít hodnotu null ani být prázdný. |

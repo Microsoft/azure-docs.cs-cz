@@ -9,17 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 01b8e1dbc290bed86ccfc3c7016e8bd9168e427a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049071"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848378"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Jak ukončit používání rozšíření spravované identity virtuálních počítačů a začít používat Azure Instance Metadata Service
 
@@ -35,7 +35,7 @@ Kvůli několika omezením, které jsou uvedené v následující části, se ro
 
 ### <a name="provision-the-extension"></a>Zřídit rozšíření 
 
-Když nakonfigurujete virtuální počítač nebo sadu škálování virtuálního počítače tak, aby měly spravovanou identitu, můžete se případně rozhodnout zřídit rozšíření spravované identity pro prostředky Azure s použitím `-Type` parametru rutiny [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux`, v závislosti na typu virtuálního počítače a pojmenovat ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
+Když nakonfigurujete virtuální počítač nebo sadu škálování virtuálního počítače tak, aby měly spravovanou identitu, můžete se případně rozhodnout zřídit rozšíření spravované identity pro prostředky Azure s použitím `-Type` parametru rutiny [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux` , v závislosti na typu virtuálního počítače a pojmenovat ho pomocí `-Name` parametru. `-Settings`Parametr určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -44,29 +44,29 @@ Když nakonfigurujete virtuální počítač nebo sadu škálování virtuální
 
 Pomocí šablony nasazení Azure Resource Manager můžete také zřídit rozšíření virtuálního počítače přidáním následujícího JSON do `resources` oddílu do šablony (použijte `ManagedIdentityExtensionForLinux` pro název a elementy typu pro verzi systému Linux).
 
-    ```json
-    {
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2018-06-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.ManagedIdentity",
-            "type": "ManagedIdentityExtensionForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "port": 50342
-            }
+```json
+{
+    "type": "Microsoft.Compute/virtualMachines/extensions",
+    "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
+    "apiVersion": "2018-06-01",
+    "location": "[resourceGroup().location]",
+    "dependsOn": [
+        "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.ManagedIdentity",
+        "type": "ManagedIdentityExtensionForWindows",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+            "port": 50342
         }
     }
-    ```
+}
+```
     
     
-Pokud pracujete se sadami škálování virtuálních počítačů, můžete taky zřídit spravované identity pro rozšíření Azure Resource Scale set pomocí rutiny [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) . Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux`, v závislosti na typu sady škálování virtuálního počítače a pojmenovat ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
+Pokud pracujete se sadami škálování virtuálních počítačů, můžete taky zřídit spravované identity pro rozšíření Azure Resource Scale set pomocí rutiny [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) . Můžete předat buď `ManagedIdentityExtensionForWindows` nebo `ManagedIdentityExtensionForLinux` , v závislosti na typu sady škálování virtuálního počítače a pojmenovat ho pomocí `-Name` parametru. `-Settings`Parametr určuje port používaný koncovým bodem tokenu OAuth pro získání tokenu:
 
    ```powershell
    $setting = @{ "port" = 50342 }
@@ -75,28 +75,28 @@ Pokud pracujete se sadami škálování virtuálních počítačů, můžete tak
    ```
 Pokud chcete zřídit rozšíření sady škálování virtuálního počítače s Azure Resource Manager šablonou nasazení, přidejte následující JSON do `extensionpProfile` oddílu do šablony (použijte `ManagedIdentityExtensionForLinux` pro název a elementy typu pro verzi pro Linux).
 
-    ```json
-    "extensionProfile": {
-        "extensions": [
-            {
-                "name": "ManagedIdentityWindowsExtension",
-                "properties": {
-                    "publisher": "Microsoft.ManagedIdentity",
-                    "type": "ManagedIdentityExtensionForWindows",
-                    "typeHandlerVersion": "1.0",
-                    "autoUpgradeMinorVersion": true,
-                    "settings": {
-                        "port": 50342
-                    },
-                    "protectedSettings": {}
-                }
+```json
+"extensionProfile": {
+    "extensions": [
+        {
+            "name": "ManagedIdentityWindowsExtension",
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+                },
+                "protectedSettings": {}
             }
-    ```
+        }
+```
 
 Zřizování rozšíření virtuálního počítače může selhat z důvodu selhání vyhledávání DNS. Pokud k tomu dojde, restartujte virtuální počítač a zkuste to znovu. 
 
 ### <a name="remove-the-extension"></a>Odebrání rozšíření 
-Pokud chcete rozšíření odebrat, použijte `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` přepněte (v závislosti na typu virtuálního počítače) pomocí [AZ VM Extension Delete](https://docs.microsoft.com/cli/azure/vm/)nebo [AZ VMSS Extension Delete](https://docs.microsoft.com/cli/azure/vmss) pro Virtual Machine Scale Sets pomocí Azure CLI nebo `Remove-AzVMExtension` PowerShellu:
+Pokud chcete rozšíření odebrat, použijte `-n ManagedIdentityExtensionForWindows` nebo `-n ManagedIdentityExtensionForLinux` Přepněte (v závislosti na typu virtuálního počítače) pomocí [AZ VM Extension Delete](https://docs.microsoft.com/cli/azure/vm/)nebo [AZ VMSS Extension Delete](https://docs.microsoft.com/cli/azure/vmss) pro Virtual Machine Scale Sets pomocí Azure CLI nebo `Remove-AzVMExtension` PowerShellu:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -119,11 +119,11 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| Prvek | Popis |
+| Prvek | Description |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
 | `http://localhost:50342/oauth2/token` | Spravované identity pro koncové body prostředků Azure, kde 50342 je výchozí port a dá se konfigurovat. |
-| `resource` | Parametr řetězce dotazu, který označuje identifikátor URI ID aplikace cílového prostředku. Také se zobrazí v deklaraci identity `aud` (cílová skupina) vydaného tokenu. Tento příklad vyžaduje token pro přístup k Azure Resource Manager, která má identifikátor URI ID aplikace `https://management.azure.com/`. |
+| `resource` | Parametr řetězce dotazu, který označuje identifikátor URI ID aplikace cílového prostředku. Také se zobrazí v `aud` deklaraci identity (cílová skupina) vydaného tokenu. Tento příklad vyžaduje token pro přístup k Azure Resource Manager, která má identifikátor URI ID aplikace `https://management.azure.com/` . |
 | `Metadata` | Pole hlavičky požadavku HTTP, které vyžadují spravované identity prostředků Azure jako zmírnění útoků na straně serveru (SSRF). Tato hodnota musí být nastavená na "true", a to u všech malých písmen.|
 | `object_id` | Volitelné Parametr řetězce dotazu, který označuje object_id spravované identity, pro kterou chcete vytvořit token. Vyžaduje se, pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem.|
 | `client_id` | Volitelné Parametr řetězce dotazu, který označuje client_id spravované identity, pro kterou chcete vytvořit token. Vyžaduje se, pokud má váš virtuální počítač více spravovaných identit přiřazených uživatelem.|
@@ -145,14 +145,14 @@ Content-Type: application/json
 }
 ```
 
-| Prvek | Popis |
+| Prvek | Description |
 | ------- | ----------- |
-| `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do pole hlavička `Authorization` požadavku jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
+| `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do `Authorization` pole Hlavička požadavku jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
 | `refresh_token` | Nepoužívá se spravovanými identitami pro prostředky Azure. |
 | `expires_in` | Doba v sekundách, po kterou je přístupový token nadále platný, před vypršením platnosti, od doby vystavení. Čas vystavení se dá najít v `iat` deklaraci identity tokenu. |
 | `expires_on` | Časový interval pro přístup k vypršení platnosti přístupového tokenu Datum se reprezentuje jako počet sekund od "1970-01-01T0:0: 0Z UTC" (odpovídá `exp` deklaraci identity tokenu). |
 | `not_before` | Časové rozpětí, kdy se přístupový token projeví a lze jej přijmout. Datum se reprezentuje jako počet sekund od "1970-01-01T0:0: 0Z UTC" (odpovídá `nbf` deklaraci identity tokenu). |
-| `resource` | Prostředek, pro který byl požadován přístupový token, který odpovídá parametru `resource` řetězce dotazu žádosti. |
+| `resource` | Prostředek, pro který byl požadován přístupový token, který odpovídá `resource` parametru řetězce dotazu žádosti. |
 | `token_type` | Typ tokenu, což je přístupový token "nosiče", což znamená, že prostředek může udělit přístup k nosiči tohoto tokenu. |
 
 
@@ -194,9 +194,9 @@ Pro používání rozšíření virtuálního počítače je k dispozici několi
  * Nasazení virtuálních počítačů se spravovanými identitami má dopad na výkon, protože je taky potřeba zřídit rozšíření virtuálního počítače. 
  * Nakonec může rozšíření virtuálního počítače podporovat jenom 32 uživatelem přiřazených spravovaných identit na virtuální počítač. 
 
-## <a name="azure-instance-metadata-service"></a>Instance Metadata Service Azure
+## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-[Azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) je koncový bod REST, který poskytuje informace o spuštěných instancích virtuálních počítačů, které se dají použít ke správě a konfiguraci virtuálních počítačů. Koncový bod je k dispozici na dobře známé IP adrese, která není směrovatelný`169.254.169.254`(), ke které se dá získat přístup jenom z virtuálního počítače.
+[Azure instance metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) je koncový bod REST, který poskytuje informace o spuštěných instancích virtuálních počítačů, které se dají použít ke správě a konfiguraci virtuálních počítačů. Koncový bod je k dispozici na dobře známé IP adrese, která není směrovatelný ( `169.254.169.254` ), ke které se dá získat přístup jenom z virtuálního počítače.
 
 Použití Azure IMDS k vyžádání tokenů má několik výhod. 
 
@@ -212,4 +212,4 @@ Z těchto důvodů bude služba Azure IMDS ze seznamu odebraná způsob, jak vy�
 ## <a name="next-steps"></a>Další kroky
 
 * [Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure k získání přístupového tokenu](how-to-use-vm-token.md)
-* [Instance Metadata Service Azure](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)

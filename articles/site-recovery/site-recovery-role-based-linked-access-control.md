@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257573"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847900"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu Site Recovery pomocí řízení přístupu na základě role (RBAC)
 
@@ -47,7 +47,7 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 |  |  | Microsoft. COMPUTE/virtualMachines/Read |
 |  |  | Microsoft. COMPUTE/virtualMachines/Write |
 |  |  | Microsoft. COMPUTE/virtualMachines/DELETE |
-|  | Classic | Microsoft. ClassicCompute/domainNames/Read |
+|  | Klasický | Microsoft. ClassicCompute/domainNames/Read |
 |  |  | Microsoft. ClassicCompute/domainNames/Write |
 |  |  | Microsoft. ClassicCompute/domainNames/DELETE |
 |  |  | Microsoft. ClassicCompute/virtualMachines/Read |
@@ -60,11 +60,11 @@ K dokončení replikace nového virtuálního počítače potřebuje uživatel n
 |  |  | Microsoft. Network/virtualNetworks/Read |
 |  |  | Microsoft. Network/virtualNetworks/podsítí/čtení |
 |  |  | Microsoft. Network/virtualNetworks/subnets/JOIN/Action |
-|  | Classic | Microsoft. ClassicNetwork/virtualNetworks/Read |
+|  | Klasický | Microsoft. ClassicNetwork/virtualNetworks/Read |
 |  |  | Microsoft. ClassicNetwork/virtualNetworks/JOIN/Action |
 | Storage | Resource Manager | Microsoft. Storage/storageAccounts/Read |
 |  |  | Microsoft. Storage/storageAccounts/klíče listkey/Action |
-|  | Classic | Microsoft. ClassicStorage/storageAccounts/Read |
+|  | Klasický | Microsoft. ClassicStorage/storageAccounts/Read |
 |  |  | Microsoft. ClassicStorage/storageAccounts/klíče listkey/Action |
 | Skupina prostředků | Resource Manager | Microsoft. Resources/nasazení/* |
 |  |  | Microsoft. Resources/Subscriptions/resourceGroups/Read |
@@ -74,7 +74,7 @@ Zvažte použití [předdefinovaných rolí](../role-based-access-control/built-
 ## <a name="next-steps"></a>Další kroky
 * [Access Control založené na rolích](../role-based-access-control/role-assignments-portal.md): Začínáme s RBAC v Azure Portal.
 * Naučte se spravovat přístup pomocí:
-  * [Prostředí](../role-based-access-control/role-assignments-powershell.md)
+  * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
   * [REST API](../role-based-access-control/role-assignments-rest.md)
 * [Řešení potíží s Access Control na základě rolí](../role-based-access-control/troubleshooting.md): Získejte návrhy pro řešení běžných problémů.

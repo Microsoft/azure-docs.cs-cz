@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277853"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847309"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v Durable Functions (Azure Functions)
 
@@ -17,7 +17,7 @@ Trvalé orchestrace funkcí je implementována v kódu a může používat integ
 
 ## <a name="errors-in-activity-functions"></a>Chyby v aktivitách funkcí
 
-Veškerá výjimka, která je vyvolána ve funkci aktivity, je zařazena zpět do funkce Orchestrator a vyvolána jako `FunctionFailedException`. Můžete zapsat zpracování chyb a kód kompenzace, který vyhovuje vašim potřebám ve funkci Orchestrator.
+Veškerá výjimka, která je vyvolána ve funkci aktivity, je zařazena zpět do funkce Orchestrator a vyvolána jako `FunctionFailedException` . Můžete zapsat zpracování chyb a kód kompenzace, který vyhovuje vašim potřebám ve funkci Orchestrator.
 
 Zvažte například následující funkci Orchestrator, která přenáší prostředky z jednoho účtu na jiný:
 
@@ -60,7 +60,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> Předchozí příklady jazyka C# jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklady jazyka C# jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -123,7 +123,7 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> Předchozí příklady jazyka C# jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklady jazyka C# jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -156,7 +156,7 @@ Volání funkce Activity v předchozím příkladu přijímá parametr pro konfi
 
 ## <a name="function-timeouts"></a>Vypršení časových limitů funkcí
 
-Je možné, že budete chtít opustit volání funkce ve funkci Orchestrator, pokud dokončení trvá příliš dlouho. Vhodným způsobem, jak to provést dnes, je vytvoření [trvalého časovače](durable-functions-timers.md) pomocí `context.CreateTimer` (.NET `context.df.createTimer` ) nebo (JavaScript) ve `Task.WhenAny` spojení s (.NET `context.df.Task.any` ) nebo (JavaScript), jako v následujícím příkladu:
+Je možné, že budete chtít opustit volání funkce ve funkci Orchestrator, pokud dokončení trvá příliš dlouho. Vhodným způsobem, jak to provést dnes, je vytvoření [trvalého časovače](durable-functions-timers.md) pomocí `context.CreateTimer` (.NET) nebo `context.df.createTimer` (JavaScript) ve spojení s `Task.WhenAny` (.NET) nebo `context.df.Task.any` (JavaScript), jako v následujícím příkladu:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -189,7 +189,7 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 ```
 
 > [!NOTE]
-> Předchozí příklady jazyka C# jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo. `IDurableOrchestrationContext` Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
+> Předchozí příklady jazyka C# jsou pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableOrchestrationContext` místo `IDurableOrchestrationContext` . Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

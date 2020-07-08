@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5ef454871f242adb9de5e5c567c1a76e00478cc
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84789935"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848756"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -115,16 +115,15 @@ Postupujte podle kroků v části [co Azure Multi-Factor Authentication znamená
 
 V této části najdete pokyny ke konfiguraci infrastruktury služby RDS pro použití Azure MFA pro ověřování klientů pomocí Brána vzdálené plochy.
 
-### <a name="acquire-azure-active-directory-guid-id"></a>Získat ID Azure Active Directory GUID
+### <a name="acquire-azure-active-directory-tenant-id"></a>Získat ID tenanta Azure Active Directory
 
-V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací údaje správce a ID Azure AD pro vašeho tenanta Azure AD. Následující kroky ukazují, jak získat ID tenanta.
+V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací údaje správce a ID Azure AD pro vašeho tenanta Azure AD. Chcete-li získat ID tenanta, proveďte následující kroky:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako globální správce tenanta Azure.
 1. V nabídce Azure Portal vyberte **Azure Active Directory**nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
-1. Vyberte **Vlastnosti**.
-1. V okně Vlastnosti vedle ID adresáře klikněte na ikonu **Kopírovat** , jak je vidět níže, a zkopírujte ID do schránky.
+1. Na stránce **Přehled** se zobrazí *informace o tenantovi* . Vedle *ID tenanta*vyberte ikonu **kopírování** , jak je znázorněno na následujícím ukázkovém snímku obrazovky:
 
-   ![Získává se ID adresáře z Azure Portal.](./media/howto-mfa-nps-extension-rdg/azure-active-directory-id-in-azure-portal.png)
+   ![Získává se ID tenanta z Azure Portal.](./media/howto-mfa-nps-extension-rdg/azure-active-directory-tenant-id-portal.png)
 
 ### <a name="install-the-nps-extension"></a>Instalace rozšíření serveru NPS
 
@@ -167,9 +166,9 @@ Pokud chcete použít skript, zadejte rozšíření s přihlašovacími údaji s
 
    ![Ověřování ve službě Azure AD v prostředí PowerShell](./media/howto-mfa-nps-extension-rdg/image5.png)
 
-1. Po zobrazení výzvy vložte ID adresáře, které jste zkopírovali do schránky dříve, a stiskněte klávesu **ENTER**.
+1. Po zobrazení výzvy vložte *ID tenanta* , které jste zkopírovali do schránky dříve, a stiskněte klávesu **ENTER**.
 
-   ![Vložení ID adresáře do PowerShellu](./media/howto-mfa-nps-extension-rdg/image6.png)
+   ![Vložení ID tenanta do PowerShellu](./media/howto-mfa-nps-extension-rdg/image6.png)
 
 1. Skript vytvoří certifikát podepsaný svým držitelem a provede další změny konfigurace. Výstup by měl vypadat podobně jako obrázek uvedený níže.
 

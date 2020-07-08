@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248915"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846931"
 ---
 # <a name="best-practices-for-autoscale"></a>Osvědčené postupy pro automatické škálování
 Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -31,7 +31,7 @@ Při použití automatického škálování používejte následující osvědč
 
 ### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Ujistěte se, že se maximální hodnota liší od minimální hodnoty a že mezi nimi je přiměřené rozpětí
 
-Pokud máte nastavení, které má minimální = 2, maximum = 2 a aktuální počet instancí je 2, může dojít k žádné akci škálování. Zachování odpovídajícího okraje mezi maximálními a minimálními počty instancí, které jsou včetně. Automatické škálování se vždycky škáluje mezi těmito limity.
+Pokud máte nastavení minimum=2 a maximum=2 a aktuální počet instancí je 2, k žádné akci škálování nemůže dojít. Udržujte přiměřené rozpětí mezi maximálním a minimálním počtem instancí. Automatické škálování vždy provádí škálování mezi těmito limity.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Ruční škálování se resetuje podle minimální a maximální hodnoty automatického škálování
 
@@ -48,8 +48,8 @@ Doporučujeme pečlivě zvolit různé prahové hodnoty pro horizontální navý
 
 V níže uvedených příkladech *nedoporučujeme* nastavení automatického škálování, jako jsou následující příklady, a to s použitím stejných nebo podobných mezních hodnot a v podmínkách:
 
-* Zvýšit počet instancí o 1, když počet vláken >= 600
-* Snížit počet instancí o 1, když počet vláken <= 600
+* Zvýšení počtu instancí o 1, když je počet vláken vyšší nebo roven 600
+* Snížení počtu instancí o 1, když je počet vláken nižší nebo roven 600
 
 Pojďme se podívat na příklad toho, co může vést k chování, které se může zdát matoucí. Vezměte v úvahu následující pořadí.
 

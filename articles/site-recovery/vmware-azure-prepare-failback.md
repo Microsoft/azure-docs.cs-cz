@@ -4,11 +4,11 @@ description: Příprava na vrácení back-VM virtuálních počítačů VMware p
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257183"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847739"
 ---
 # <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>Příprava na přeochranu a navrácení služeb po obnovení virtuálních počítačů VMware
 
@@ -21,7 +21,7 @@ Než budete pokračovat, získáte rychlý přehled s tímto videem o tom, jak n
 
 Než začnete znovu chránit a navracet služby po obnovení z Azure, budete potřebovat několik součástí a nastavení.
 
-**Komponenta**| **Zobrazí**
+**Komponenta**| **Podrobnosti**
 --- | ---
 **Lokální konfigurační server** | Místní konfigurační server musí být spuštěný a připojený k Azure.<br/><br/> Virtuální počítač, na který se nedaří přejít, musí existovat v databázi konfiguračního serveru. Pokud by havárie měla vliv na konfigurační server, obnovte ji se stejnou IP adresou, abyste zajistili, že navrácení služeb po obnovení funguje.<br/><br/>  Pokud se IP adresy replikovaných počítačů zachovaly při převzetí služeb při selhání, je třeba vytvořit připojení typu Site-to-Site (nebo připojení ExpressRoute) mezi virtuálními počítači Azure a síťovou kartou pro navrácení služeb po obnovení konfiguračního serveru. Pro zachované IP adresy konfigurační server potřebuje dvě síťové karty – jeden pro připojení ke zdrojovému počítači a jeden pro připojení k Azure navrácení služeb po obnovení. Tím předejdete překrytí rozsahů adres podsítí pro zdroj a virtuální počítače při selhání.
 **Procesový Server v Azure** | Před navrácením služeb po obnovení do místní lokality budete potřebovat procesový Server v Azure.<br/><br/> Procesový server přijímá data z chráněného virtuálního počítače Azure a odesílá je do místní lokality.<br/><br/> Mezi procesovým serverem a chráněným virtuálním počítačem budete potřebovat síť s nízkou latencí, proto doporučujeme nasadit procesový Server v Azure pro vyšší výkon replikace.<br/><br/> Pro účely ověření konceptu můžete použít místní procesový Server a ExpressRoute se soukromým partnerským vztahem.<br/><br/> Procesový Server by měl být v síti Azure, ve které se nachází virtuální počítač, u kterého došlo k převzetí služeb při selhání. Procesový Server musí být také schopný komunikovat s místním konfiguračním serverem a hlavním cílovým serverem.

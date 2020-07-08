@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252555"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847345"
 ---
 # <a name="get-help-with-your-system"></a>Získejte pomoc s vaším systémem.
 
@@ -27,7 +27,7 @@ Pokud narazíte na problémy při nasazování nebo používání avere vFXT, po
 
 Pomocí těchto kroků se ujistěte, že je váš lístek podpory označený prostředkem z vašeho clusteru. Označení lístku vám pomůže nám ho směrovat na správný prostředek podpory.
 
-1. V [https://portal.azure.com](https://portal.azure.com)nástroji vyberte **skupiny prostředků**. Přejděte do skupiny prostředků, která obsahuje cluster vFXT, ve kterém došlo k problému, a klikněte na jeden z virtuálních počítačů clusteru avere.
+1. V nástroji [https://portal.azure.com](https://portal.azure.com) Vyberte **skupiny prostředků**. Přejděte do skupiny prostředků, která obsahuje cluster vFXT, ve kterém došlo k problému, a klikněte na jeden z virtuálních počítačů clusteru avere.
 
     ![snímek obrazovky s Azure Portalou skupinou prostředků "Přehled" s konkrétním virtuálním počítačem v kruhu](media/avere-vfxt-ticket-vm.png)
 

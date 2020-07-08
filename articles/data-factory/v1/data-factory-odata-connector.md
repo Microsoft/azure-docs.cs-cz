@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265906"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847565"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Přesunutí dat ze zdroje OData pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -60,15 +60,15 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou službu OData.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| type |Vlastnost Type musí být nastavená na: **OData** . |Ano |
-| url |Adresa URL služby OData. |Ano |
-| authenticationType |Typ ověřování, který se používá pro připojení ke zdroji OData <br/><br/> Pro Cloud OData jsou možné hodnoty anonymní, základní a OAuth (Poznámka Azure Data Factory aktuálně podporuje jenom Azure Active Directory OAuth). <br/><br/> Pro místní OData jsou možné hodnoty anonymní, základní a Windows. |Ano |
+| typ |Vlastnost Type musí být nastavená na: **OData** . |Yes |
+| url |Adresa URL služby OData. |Yes |
+| authenticationType |Typ ověřování, který se používá pro připojení ke zdroji OData <br/><br/> Pro Cloud OData jsou možné hodnoty anonymní, základní a OAuth (Poznámka Azure Data Factory aktuálně podporuje jenom Azure Active Directory OAuth). <br/><br/> Pro místní OData jsou možné hodnoty anonymní, základní a Windows. |Yes |
 | uživatelské jméno |Pokud používáte základní ověřování, zadejte uživatelské jméno. |Ano (pouze pokud používáte základní ověřování) |
 | heslo |Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. |Ano (pouze pokud používáte základní ověřování) |
 | authorizedCredential |Pokud používáte OAuth, klikněte na tlačítko **autorizovat** v průvodci kopírováním Data Factory nebo v editoru a zadejte své přihlašovací údaje. hodnota této vlastnosti se vygeneruje automaticky. |Ano (jenom v případě, že používáte ověřování OAuth) |
-| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní službě OData. Zadejte pouze v případě, že kopírujete data z místního zdroje OData. |Ne |
+| gatewayName |Název brány, kterou by služba Data Factory měla použít pro připojení k místní službě OData. Zadejte pouze v případě, že kopírujete data z místního zdroje OData. |No |
 
 ### <a name="using-basic-authentication"></a>Použití základního ověřování
 ```json
@@ -145,9 +145,9 @@ Následující tabulka uvádí popis pro prvky JSON specifické pro propojenou s
 
 Oddíl **typeProperties** se liší pro každý typ datové sady a poskytuje informace o umístění dat v úložišti dat. Oddíl typeProperties pro datovou sadu typu **ODataResource** (která zahrnuje datovou sadu OData) má následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| cesta |Cesta k prostředku OData |Ne |
+| cesta |Cesta k prostředku OData |No |
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 Úplný seznam sekcí & vlastností dostupných pro definování aktivit najdete v článku [vytvoření kanálů](data-factory-create-pipelines.md) . Pro všechny typy aktivit jsou k dispozici vlastnosti, jako je název, popis, vstupní a výstupní tabulka a zásada.
@@ -156,9 +156,9 @@ Vlastnosti, které jsou k dispozici v části typeProperties aktivity, se liší
 
 Pokud je zdroj typu **RelationalSource** (který zahrnuje OData), jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Příklad | Požaduje se |
+| Vlastnost | Popis | Příklad | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |"? $select = název, popis&$top = 5" |Ne |
+| query |Pomocí vlastního dotazu můžete číst data. |"? $select = název, popis&$top = 5" |No |
 
 ## <a name="type-mapping-for-odata"></a>Mapování typů pro OData
 Jak je uvedeno v článku [aktivity přesunu dat](data-factory-data-movement-activities.md) , aktivita kopírování provádí automatické převody typů ze zdrojových typů do typů jímky s následujícím dvěma kroky.
@@ -176,7 +176,7 @@ Při přesunu dat z OData se z typů OData do typu .NET používají následují
 | EDM. DateTime |DateTime |
 | EDM. Decimal |Desetinné číslo |
 | Edm.Double |Double |
-| EDM. Single |Single |
+| EDM. Single |Jeden |
 | EDM. GUID |Identifikátor GUID |
 | EDM. Int16 |Int16 |
 | Edm.Int32 |Int32 |

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274720"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847418"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Zdroje dat Syslogu ve službě Azure Monitor
 Syslog je protokol protokolování událostí, který je společný pro Linux. Aplikace budou odesílat zprávy, které mohou být uloženy v místním počítači nebo doručeny do kolekce syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.  
@@ -47,7 +47,7 @@ Agent Log Analytics pro Linux bude shromažďovat jenom události se zařízení
 ### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurace syslogu v Azure Portal
 Nakonfigurujte syslog z [nabídky data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources). Tato konfigurace se doručuje do konfiguračního souboru každého agenta pro Linux.
 
-Nové zařízení můžete přidat tak, že nejprve vyberete možnost **použít níže konfiguraci na moje počítače** a potom zadat název a kliknete **+** na. Pro každé zařízení budou shromažďovány pouze zprávy s vybranými závažnostmi.  Ověřte závažnost konkrétního zařízení, které chcete shromáždit. Nemůžete zadat žádná další kritéria pro filtrování zpráv.
+Nové zařízení můžete přidat tak, že nejprve vyberete možnost **použít níže konfiguraci na moje počítače** a potom zadat název a kliknete na **+** . Pro každé zařízení budou shromažďovány pouze zprávy s vybranými závažnostmi.  Ověřte závažnost konkrétního zařízení, které chcete shromáždit. Nemůžete zadat žádná další kritéria pro filtrování zpráv.
 
 ![Konfigurace protokolu syslog](media/data-sources-syslog/configure.png)
 
@@ -154,7 +154,7 @@ Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 2
 
 Číslo portu můžete změnit vytvořením dvou konfiguračních souborů: v závislosti na procesu démona syslog, který jste nainstalovali, můžete změnit soubor s mikroprotokolem a souborem rsyslog nebo syslog-ng.  
 
-* V tomto souboru by měl být soubor s přístavou, který `/etc/opt/microsoft/omsagent/conf/omsagent.d` se nachází v umístění: a nahradit hodnotu v položce **port** vlastním číslem portu.
+* V tomto souboru by měl být soubor s přístavou, který se nachází v umístění: `/etc/opt/microsoft/omsagent/conf/omsagent.d` a nahradit hodnotu v položce **port** vlastním číslem portu.
 
         <source>
           type syslog
@@ -170,7 +170,7 @@ Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 2
 * V případě rsyslog byste měli vytvořit nový konfigurační soubor v umístění: `/etc/rsyslog.d/` a nahradit hodnotu% SYSLOG_PORT% vlastním číslem portu.  
 
     > [!NOTE]
-    > Pokud tuto hodnotu upravíte v konfiguračním souboru `95-omsagent.conf`, bude přepsána, když Agent použije výchozí konfiguraci.
+    > Pokud tuto hodnotu upravíte v konfiguračním souboru `95-omsagent.conf` , bude přepsána, když Agent použije výchozí konfiguraci.
     >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
@@ -179,7 +179,7 @@ Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 2
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* Konfigurace syslog-ng by se měla upravit zkopírováním ukázkové konfigurace uvedené níže a přidáním vlastního upraveného nastavení na konec konfiguračního souboru syslog-ng. conf, který se nachází v `/etc/syslog-ng/`. Nepoužívejte **výchozí** popisek **% WORKSPACE_ID% _oms** ani **% WORKSPACE_ID_OMS**, definujte vlastní popisek, který bude lépe odlišit vaše změny.  
+* Konfigurace syslog-ng by se měla upravit zkopírováním ukázkové konfigurace uvedené níže a přidáním vlastního upraveného nastavení na konec konfiguračního souboru syslog-ng. conf, který se nachází v `/etc/syslog-ng/` . Nepoužívejte **výchozí** popisek **% WORKSPACE_ID% _oms** ani **% WORKSPACE_ID_OMS**, definujte vlastní popisek, který bude lépe odlišit vaše změny.  
 
     > [!NOTE]
     > Pokud upravíte výchozí hodnoty v konfiguračním souboru, budou přepsány, když Agent použije výchozí konfiguraci.
@@ -208,7 +208,7 @@ Záznamy syslog mají typ **SYSLOG** a mají vlastnosti v následující tabulce
 ## <a name="log-queries-with-syslog-records"></a>Dotazy protokolu se záznamy syslog
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy syslog.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 |:--- |:--- |
 | Syslog |Všechny Syslogy. |
 | Syslog &#124;, kde SeverityLevel = = "Error" |Všechny záznamy syslog se závažností chyby. |

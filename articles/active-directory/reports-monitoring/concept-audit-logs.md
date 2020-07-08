@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253231"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85846976"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -30,7 +30,7 @@ Pomocí sestav Azure Active Directory (Azure AD) můžete získat informace, kte
 
 Architektura vytváření sestav se skládá z následujících součástí:
 
-- **Akce** 
+- **Aktivita** 
     - **Přihlášení** – [Sestava přihlášení](concept-sign-ins.md) poskytuje informace o použití spravovaných aplikací a aktivitách přihlašování uživatelů.
     - **Protokoly auditu** – Zajišťuje sledovatelnost prostřednictvím protokolů všech změn provedených různými funkcemi v rámci Azure AD. Mezi příklady protokolů auditu patří změny provedené u všech prostředků v rámci Azure AD, jako je přidávání nebo odebírání uživatelů, aplikací, skupin, rolí a zásad.
 - **Zabezpečení** 
@@ -89,11 +89,11 @@ Data auditu můžete filtrovat v následujících polích:
 
 Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující služby:
 
-- Všechny
+- Vše
 - UX pro správu AAD
 - Kontroly přístupu
 - Zřizování účtů
-- Proxy soubory aplikace
+- Proxy aplikací
 - Metody ověřování
 - B2C
 - Podmíněný přístup
@@ -111,7 +111,7 @@ Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující slu�
 
 Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 
-- Všechny
+- Vše
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
@@ -125,7 +125,7 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - KerberosDomain
 - Správa
 - Popisek
-- Ostatní
+- Jiné
 - PermissionGrantPolicy
 - Zásada
 - ResourceManagement
@@ -138,7 +138,7 @@ Seznam všech aktivit auditu můžete získat pomocí Graph API:`https://graph.w
 
 Filtr **stavu** vám umožňuje filtrovat na základě stavu operace auditu. Stav může být jedna z následujících:
 
-- Všechny
+- Vše
 - Úspěch
 - Selhání
 

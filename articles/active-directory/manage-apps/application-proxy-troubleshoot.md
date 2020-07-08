@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ac046f3480b08fdc3b8d582d9e724f4b9b93d5
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975431"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85848449"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Řešení potíží s Proxy aplikací a souvisejícími chybovými zprávami
 
@@ -43,7 +43,9 @@ Například pokud cestu publikujete, `https://yourapp/app` ale aplikace volá ob
 
 Pokud se registrace nezdaří během instalace Průvodce konektorem, existují dva způsoby, jak zobrazit důvod selhání. Podívejte se do protokolu událostí v části **aplikace a služby Logs\Microsoft\AadApplicationProxy\Connector\Admin**nebo spusťte následující příkaz Windows PowerShellu:
 
-    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```powershell
+Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
+```
 
 Po nalezení chyby konektoru z protokolu událostí použijte tuto tabulku běžných chyb k vyřešení problému:
 

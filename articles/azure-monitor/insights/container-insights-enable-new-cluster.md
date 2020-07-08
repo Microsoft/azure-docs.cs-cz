@@ -4,11 +4,11 @@ description: Naučte se, jak povolit monitorování pro nový cluster Azure Kube
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275435"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847217"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Povolit monitorování nového clusteru Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Monitorování clusteru AKS můžete povolit pomocí jedné z podporovaných met
 Pokud chcete povolit monitorování nového clusteru AKS vytvořeného pomocí Azure CLI, postupujte podle kroků v článku rychlý Start v části [Vytvoření clusteru AKS](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.74 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Pokud máte nainstalovanou verzi rozšíření AKS-Preview CLI 0.4.12 nebo vyšší, odeberte všechny provedené změny, aby bylo možné povolit rozšíření verze Preview, protože funkce AKS Preview nejsou dostupné v cloudu Azure US governmnet.
+>Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.74 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Pokud máte nainstalovanou verzi rozšíření AKS-Preview CLI 0.4.12 nebo vyšší, odeberte všechny provedené změny, aby bylo možné povolit rozšíření verze Preview, protože funkce AKS Preview nejsou dostupné v cloudu Azure US governmnet.
 
 ## <a name="enable-using-terraform"></a>Povolit pomocí Terraformu
 

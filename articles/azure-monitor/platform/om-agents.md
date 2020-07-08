@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
 ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274343"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85847393"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
@@ -71,16 +71,16 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 
 |Prostředek | Číslo portu| Obejití kontroly protokolu HTTP|  
 |---------|------|-----------------------|  
-|**Agent**|||  
-|\*.ods.opinsights.azure.com| 443 |Ano|  
-|\*.oms.opinsights.azure.com| 443|Ano|  
-|\*.blob.core.windows.net| 443|Ano|  
-|\*.azure-automation.net| 443|Ano|  
+|**Agenta**|||  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Server pro správu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Ano|  
-|\*.ods.opinsights.azure.com| 443| Ano|  
-|*.azure-automation.net | 443| Ano|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Operations Manager konzolu pro Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -163,14 +163,14 @@ Pokud vaše proxy server vyžaduje ověření, proveďte následující kroky, a
 Po vytvoření připojení a nakonfigurujete, kteří agenti budou shromažďovat a hlásit data protokolu pro Azure Monitor, ve skupině pro správu se použije následující konfigurace, ne nutně v uvedeném pořadí:
 
 * Vytvoří se účet Spustit jako **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate**. Je přidružený k profilu Spustit jako **Objekt blob profilu Spustit jako služby Microsoft System Center Advisor** a je zacílený na dvě třídy: **Server kolekcí** a **Skupina správy nástroje Operations Manager**.
-* Vytvoří se dva konektory.  První má název **Microsoft. SystemCenter. Advisor. DataConnect** a je automaticky nakonfigurovaný s předplatným, které přepošle všechny výstrahy generované z instancí všech tříd ve skupině pro správu na Azure monitor. Druhý konektor je **konektor služby Advisor**, který zodpovídá za komunikaci s Azure monitor a sdílení dat.
+* Vytvoří se dva konektory.  První s názvem **Microsoft.SystemCenter. Advisor. Dataconnecter** a automaticky se konfiguruje s předplatným, které přepošle všechny výstrahy generované z instancí všech tříd ve skupině pro správu do Azure monitor. Druhý konektor je **konektor služby Advisor**, který zodpovídá za komunikaci s Azure monitor a sdílení dat.
 * Agenti a skupiny, které jste vybrali pro shromažďování dat ve skupině pro správu, budou přidáni do **Skupiny monitorovacích serverů služby Microsoft System Center Advisor**.
 
 ## <a name="management-pack-updates"></a>Aktualizace sad Management Pack
 
 Po dokončení konfigurace Operations Manager skupina pro správu naváže spojení s Azure Monitor. Server pro správu se synchronizuje s webovou službou a přijímá aktualizované konfigurační informace ve formě sad Management Pack pro vámi povolená řešení, která se integrují s nástrojem Operations Manager. Operations Manager kontroluje aktualizace těchto sad Management Pack a automaticky je stáhne a naimportuje, jakmile jsou k dispozici. Toto chování řídí obzvláště dvě pravidla:
 
-* **Microsoft. SystemCenter. Advisor. MPUpdate** – aktualizuje základní sady management Pack Azure monitor. Ve výchozím nastavení se spouští každých 12 hodin.
+* **Microsoft.SystemCenter. Advisor. MPUpdate** – aktualizuje základní sady management Pack Azure monitor. Ve výchozím nastavení se spouští každých 12 hodin.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** – Aktualizuje sady Management Pack řešení, které jsou povolené ve vašem pracovním prostoru. Ve výchozím nastavení se spouští každých pět (5) minut.
 
 Tato dvě pravidla můžete přepsat tak, aby se zabránilo automatickému stahování, a to tak, že je zakážete nebo upravíte frekvenci, jak často se management server synchronizuje s Azure Monitor, abyste zjistili, jestli je k dispozici nový Management Pack a že se má stáhnout. Podle kroků [pro přepsání pravidla nebo monitorování](https://technet.microsoft.com/library/hh212869.aspx) změňte parametr **Frekvence** na jinou hodnotou v sekundách (pokud chcete změnit plán synchronizace) nebo přepněte parametr **Povoleno** (pokud chcete pravidla zakázat). Přepsané hodnoty zacilte na všechny objekty třídy Skupina správy nástroje Operations Manager.
@@ -347,10 +347,10 @@ Pokud chcete odstranit oba konektory (Microsoft.SystemCenter.Advisor.DataConnect
     Remove-Connector $connectorName
 ```
 
-Pokud plánujete znovu připojit skupinu pro správu k pracovnímu prostoru Log Analytics, je potřeba znovu naimportovat soubor `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` Management Pack. V závislosti na verzi nástroje System Center Operations Manager nasazené ve vašem prostředí ho najdete v následujícím umístění:
+Pokud plánujete znovu připojit skupinu pro správu k pracovnímu prostoru Log Analytics, je potřeba znovu naimportovat `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` soubor Management Pack. V závislosti na verzi nástroje System Center Operations Manager nasazené ve vašem prostředí ho najdete v následujícím umístění:
 
 * Na zdrojovém médiu ve složce `\ManagementPacks` pro System Center 2016 – Operations Manager a vyšší.
-* V nejnovější kumulativní aplikaci použité u vaší skupiny pro správu. V případě Operations Manager 2012 je zdrojová složka `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` a pro 2012 R2 v `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`umístění.
+* V nejnovější kumulativní aplikaci použité u vaší skupiny pro správu. V případě Operations Manager 2012 je zdrojová složka `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` a pro 2012 R2 v umístění `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` .
 
 ## <a name="next-steps"></a>Další kroky
 
