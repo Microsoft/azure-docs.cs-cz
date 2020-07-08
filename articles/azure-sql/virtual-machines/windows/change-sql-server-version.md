@@ -14,14 +14,14 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 70085cda4252e5435c450ae80dae2e49829b1474
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 63c4c7b596a32901d127642118d224c2b318510f
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101796"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963015"
 ---
-# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Místní změna verze SQL Server na virtuálním počítači Azure
+# <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Místní změna verze SQL Serveru na virtuálním počítači Azure
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
@@ -107,7 +107,7 @@ Po změně verze SQL Server Zaregistrujte SQL Server virtuálního počítače p
 :::image type="content" source="./media/change-sql-server-version/verify-portal.png" alt-text="Ověřit verzi":::
 
 > [!NOTE]
-> Pokud již máte nainstalovaného poskytovatele prostředků, zrušte [registraci prostředku virtuálního počítače SQL](sql-vm-resource-provider-register.md#unregister-from-the-resource-provider) a pak znovu [Zaregistrujte prostředek virtuálního počítače SQL](sql-vm-resource-provider-register.md#register-a-subscription-with-the-resource-provider) , aby zjistil správnou verzi a edici SQL Server, která je na virtuálním počítači nainstalovaná. Tím se aktualizují metadata a fakturační informace, které jsou přidruženy k tomuto virtuálnímu počítači.
+> Pokud jste už zaregistrovali u poskytovatele prostředků virtuálního počítače SQL, zrušte [registraci z RP](sql-vm-resource-provider-register.md#unregister-from-rp) a pak znovu [Zaregistrujte prostředek SQL VM](sql-vm-resource-provider-register.md#register-with-rp) , aby zjistil správnou verzi a edici SQL Server, která je na virtuálním počítači nainstalovaná. Tím se aktualizují metadata a fakturační informace, které jsou přidruženy k tomuto virtuálnímu počítači.
 
 ## <a name="remarks"></a>Poznámky
 

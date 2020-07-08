@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 4/6/2020
-ms.openlocfilehash: a2c376ec2bd1f03b626c11b0d6a6c3850c9ef8c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 7/1/2020
+ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804584"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964511"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – možnosti konfigurace Citus (AutoScale)
 
@@ -20,7 +20,7 @@ ms.locfileid: "80804584"
  
 Nastavení výpočtů a úložiště můžete vybrat nezávisle pro pracovní uzly a uzel koordinátora ve skupině serverů Citus (velká škála).  Výpočetní prostředky se poskytují jako virtuální jádra, což představuje logický procesor základního hardwaru. Velikost úložiště pro zřizování odkazuje na kapacitu dostupnou pro koordinátora a pracovní uzly ve skupině serverů Citus (s vaším škálováním). Úložiště zahrnuje soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru Postgres.
  
-|                       | Pracovní uzel           | Uzel koordinátora      |
+| Prostředek              | Pracovní uzel           | Uzel koordinátora      |
 |-----------------------|-----------------------|-----------------------|
 | COMPUTE, virtuální jádra       | 4, 8, 16, 32, 64      | 4, 8, 16, 32, 64      |
 | Paměť na vCore, GiB | 8                     | 4                     |
@@ -91,6 +91,33 @@ Skupiny serverů Citus () jsou k dispozici v následujících oblastech Azure:
     * Západní Evropa
 
 Některé z těchto oblastí se nemusí zpočátku aktivovat ve všech předplatných Azure. Pokud chcete použít oblast ze seznamu výše a nevidíte ji v předplatném, nebo pokud chcete použít oblast, která není v tomto seznamu, otevřete [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+## <a name="limits-and-limitations"></a>Omezení
+
+Následující část popisuje kapacitu a funkční omezení služby Citus (The scaleing).
+
+### <a name="maximum-connections"></a>Maximální počet připojení
+
+Každé připojení PostgreSQL (dokonce nečinné) využívá alespoň 10 MB paměti, takže je důležité omezit souběžná připojení. Tady jsou limity, které jsme zvolili pro udržení uzlů v pořádku:
+
+* Uzel koordinátora
+   * Maximální počet připojení: 300
+   * Maximální počet uživatelských připojení: 297
+* Pracovní uzel
+   * Maximální počet připojení: 600
+   * Maximální počet uživatelských připojení: 597
+
+Pokusy o připojení nad rámec těchto limitů selžou a dojde k chybě. Systém vyhrazuje tři připojení pro uzly monitorování, což je důvod, proč jsou k dispozici tři méně připojení pro uživatelské dotazy než celkem připojení.
+
+Vytváření nových připojení trvá déle. Který funguje u většiny aplikací, které vyžadují mnoho krátkodobých připojení. Doporučujeme použít Pooler připojení, aby se snížily nečinné transakce a znovu opakovaně používaly existující připojení. Další informace najdete v našem [blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
+
+### <a name="storage-scaling"></a>Škálování úložiště
+
+Úložiště v koordinátoru a uzlech pracovních procesů je možné škálovat nahoru (vyšší), ale nedá se škálovat dolů (zmenšeno).
+
+### <a name="storage-size"></a>Velikost úložiště
+
+V koordinátorech a uzlech pracovních procesů je podporováno až 2 TiB úložiště. V části dostupné možnosti úložiště a výpočet IOPS [výše](#compute-and-storage) najdete pro velikost uzlů a clusterů.
 
 ## <a name="pricing"></a>Ceny
 Nejaktuálnější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/)služeb.

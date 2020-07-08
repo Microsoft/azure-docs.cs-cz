@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 01/18/2019
 ms.author: evansma
-ms.openlocfilehash: 3d250ce3960bdc7687babb08ee6a6c52bb2cd15d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cbd1cc5e9eb85cb9814eb135234315ec29ea668
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196345"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963049"
 ---
 # <a name="marketplace-rewards"></a>Ceny Marketplace
 
@@ -21,7 +21,7 @@ Ceny na Marketplace jsou navržené tak, aby vám podporovaly v konkrétní fáz
 
 Program vytvoří pozitivní smyčku zpětné vazby: výhody v jednotlivých fázích růstu jsou navržené tak, aby vás pokračovaly v další fázi, což vám umožní rozšířit vaši firmu na zákazníky Microsoftu, pole Microsoftu a prostřednictvím kanálu Microsoftu prostřednictvím komerčního tržiště, které využijí vaší platformy. 
 
-Vaše výhody se liší v závislosti na tom, jestli je vaše nabídka [seznam, zkušební verze nebo transakční](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option).
+Vaše výhody se liší v závislosti na tom, jestli je vaše nabídka [seznam, zkušební verze nebo Transact](../determine-your-listing-type.md#choose-a-publishing-option)).
 
 Na základě vašich nároků vám bude kontaktován člen týmu útraty, pokud vaše nabídka bude živá. 
 
@@ -37,13 +37,13 @@ Postup, jak začít, je snadné:
 
 1. Publikování nabídky buď Microsoft AppSource, nebo Azure Marketplace.
 2. Přejděte na [řídicí panel](https://partner.microsoft.com/dashboard/directory)partnerského centra, na stránce ceny na webu Marketplace vyberte kartu **výhody prodeje a marketingu** , abyste viděli seznam výhod.
-3. Pokud chcete aktivovat prodejní a marketingové výhody, musíte nejdřív přiřadit marketingový kontakt společnosti. Tento kontakt vám pošle následnou komunikaci o vašich vzhráčích na webu Marketplace.
+3. Pokud chcete aktivovat prodejní a marketingové výhody, musíte nejdřív přiřadit marketingový kontakt společnosti. Tato kontaktní osoba následně bude dostávat zprávy ohledně programu Marketplace Rewards.
 4. Pokud chcete přidat nebo aktualizovat svoje marketingové kontaktní údaje, přejděte na stránku s výhodami prodeje a marketingu na stránce výhody Marketplace a pak vyberte **Přidat, aktualizovat nebo změnit**.  Dále postupujte následovně:
 
     1. Vyberte uživatele ze seznamu. Pokud se uživatel, kterého chcete přiřadit, nenachází v seznamu, můžete přidat nové uživatele v **Nastavení účtu**.
-    1. Zadejte e-mailovou adresu uživatele, která se liší od e-mailové adresy přidružené k účtu partnerského centra vaší společnosti. Budeme vám poslat e-mail s pokyny pro použití vašeho webu Marketplace pro vaši e-mailovou adresu vašeho dodavatele.
-    1. Zadejte kontaktní telefon a preferovaný jazyk pro tento marketingový kontakt. Po dokončení zadávání těchto informací vyberte **přiřadit uživatele**.
-    1. Po aktualizaci marketingového kontaktu vyberte možnost **aktivovat** pro zvýhodnění, které chcete začít používat. Po aktivaci výhody bude váš marketingový kontakt kontaktován členem týmu, který je v týdnu.
+    1. Zadejte e-mailovou adresu uživatele, která se liší od e-mailové adresy přidružené k účtu partnerského centra vaší společnosti. Na e-mailovou adresu určené kontaktní osoby pro marketing odešleme e-mail s pokyny k využívání výhody programu Marketplace Rewards.
+    1. Zadejte kontaktní telefon a upřednostňovaný jazyk této kontaktní osoby pro marketing. Po zadání těchto informací vyberte **Přiřadit uživatele**.
+    1. Po aktualizaci marketingového kontaktu vyberte možnost **aktivovat** pro zvýhodnění, které chcete začít používat. Po aktivaci výhody bude vaši kontaktní osobu pro marketing do týdne kontaktovat člen týmu programu Rewards.
 
 **Technické výhody**
 
@@ -54,6 +54,6 @@ Postup, jak začít, je snadné:
 >Pokud je vaše nabídka živá déle než čtyři týdny a neobdrželi jste zprávu, zkontrolujte prosím v organizaci, která je vlastníkem příslušné nabídky, a to buď pomocí portál partnerů cloudu nebo v partnerském centru. Měly by mít komunikaci a další kroky.
 
 >[!Note] 
->Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na adrese https://aka.ms/marketplacepublishersupport.
+>Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na adrese https://aka.ms/marketplacepublishersupport .
 
 Rozsah aktivit, které jsou k dispozici, se rozšíří při zvětšování nabídek na webu Marketplace. Všechny výpisy obdrží základní úroveň doporučení optimalizace a povýšení v rámci samoobslužného e-mailu s prostředky a osvědčenými postupy.

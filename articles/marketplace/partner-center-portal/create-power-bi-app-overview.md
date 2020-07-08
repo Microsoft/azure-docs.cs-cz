@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 82e131b0e6209089b658c622b415e997b40e9e4b
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837834"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964647"
 ---
 # <a name="power-bi-app-creation-overview"></a>Přehled vytváření aplikací Power BI
 
@@ -42,7 +42,7 @@ Toto jsou klíčové kroky pro publikování:
 7. Po certifikaci si aplikaci přečtěte v testovacím prostředí a uvolněte ji. Tato možnost zobrazí seznam na AppSource (bude to živě).
 8. V Power BI odešlete balíček do produkčního prostředí. Podrobnosti najdete v tématu [Správa verze aplikace Power BI](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Přečtěte si níže uvedené odkazy, které poskytují šablony, tipy a ukázky.
 
@@ -66,16 +66,16 @@ Power BI aplikaci můžete vytvořit pouze v rámci [Power BI](https://powerbi.m
 2. Vytvoření a otestování aplikace v Power BI.
 3. Když obdržíte webovou adresu instalace aplikace, přidejte ji na stránku **technické konfigurace** v partnerském centru.
 
-Po vytvoření a otestování aplikace v Power BI uložte webovou adresu instalace aplikace, protože ji budete potřebovat k [Vytvoření nabídky aplikace Power BI](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer).
+Po vytvoření a otestování aplikace v Power BI uložte webovou adresu instalace aplikace, protože ji budete potřebovat k [Vytvoření nabídky aplikace Power BI](create-power-bi-app-offer.md).
 
 ### <a name="business-requirements"></a>Podnikové požadavky
 
 Mezi obchodní požadavky patří procedurální, smluvní a právní závazky. Musíte:
 
-- Být registrovaným vydavatelem komerčního obchodu na webu Marketplace. Pokud nejste registrováni, postupujte podle kroků v části [se stane komerční Vydavatel na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher).
+- Být registrovaným vydavatelem komerčního obchodu na webu Marketplace. Pokud nejste registrováni, postupujte podle kroků v části [Vytvoření účtu komerčního tržiště v partnerském centru](create-account.md).
 - Poskytněte obsah, který splňuje kritéria pro uvedení vaší nabídky na AppSource. Další informace najdete v tématu [seznam aplikací pro AppSource? Tady je postup](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
 - Odsouhlaste se a postupujte podle [prohlášení Microsoftu o zásadách ochrany osobních údajů](https://privacy.microsoft.com/privacystatement).
 
 ## <a name="next-step"></a>Další krok
 
-- [Vytvoření nabídky aplikace Power BI v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [Vytvoření nabídky aplikace Power BI v partnerském centru](create-power-bi-app-offer.md)

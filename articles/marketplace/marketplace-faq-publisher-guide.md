@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 79ca7381c1d06d897202320632b55f91e4a50d91
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 985a8ac83d48de11ac134bc9a942c766e4ff5d32
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340466"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963593"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -67,7 +67,7 @@ Způsoby použití vaší komerční nabídky na webu Marketplace závisí na to
 
 Po registraci a přijetí smlouvy vydavatele budete mít přístup na stránku komerčního tržiště v partnerském centru. Tady je místo, kde můžete vytvářet a spravovat nabídky a kde se zobrazují analytické sestavy. U Microsoft 365ch aplikací musíte také aktivovat program Office Store v rámci partnerského centra.
 
-Další informace najdete v tématu [Vítejte na komerčním webu Marketplace](https://docs.microsoft.com/azure/marketplace/) a [monetizovat doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
+Další informace najdete v tématu [Vítejte na komerčním webu Marketplace](index.yml) a [monetizovat doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
 ### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Návody získat pomoc s pracovníky na komerčním webu Marketplace?
 
@@ -77,7 +77,7 @@ Pokud se chcete dozvědět o osvědčených postupech a sdílet informace, můž
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>Jaké analýzy jsou k dispozici pro moji organizaci z komerčního tržiště?
 
-Poskytujeme vytváření sestav o vašich nabídkách v rámci našeho komerčního tržiště. Pokud chcete získat přístup k datům na zákaznících, objednávkách, zapojení do Storu a další, přejděte na [Web Analytics pro komerční tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics).
+Poskytujeme vytváření sestav o vašich nabídkách v rámci našeho komerčního tržiště. Pokud chcete získat přístup k datům na zákaznících, objednávkách, zapojení do Storu a další, přejděte na [Web Analytics pro komerční tržiště v partnerském centru](partner-center-portal/analytics.md).
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Co je vztah Microsoftu k mým zákazníkům?
 
@@ -89,7 +89,7 @@ Jako vydavatel nastavíte podmínky použití pro vaše softwarové řešení, k
 
 Můžete vytvořit změny, které platí pro všechny zákazníky, nebo můžete provést změny specifické pro určité zákazníky. Můžete také plně přizpůsobit podmínky a ujednání, které lze zadat do textového pole nebo hostovat na webu, který se zobrazí jako webová adresa.
 
-Další informace najdete v tématu [standardní smlouva o komerčním tržišti společnosti Microsoft](https://docs.microsoft.com/azure/marketplace/standard-contract).
+Další informace najdete v tématu [standardní smlouva o komerčním tržišti společnosti Microsoft](standard-contract.md).
 
 ### <a name="is-azure-marketplace-available-in-azure-government"></a>Je Azure Marketplace k dispozici v Azure Government?
 
@@ -126,7 +126,7 @@ Abychom mohli dokončit nákup za velmi nízkou cenu, doporučujeme publikovat s
 
 Když zákazníci použijí vaše nabídky na Microsoft AppSource a Azure Marketplace prodejní místa, zachytí se informace. Jakmile si zákazníci dokáže dostatek zájmů, vytvoří se zájemce a příležitost se pošle do systému podle vašeho výběru. Vydavatelé, kteří mají k naší komerčnímu tržišti přístup, často využívají zájemce, vyvíjí vztahy a zajímají zájem o obchody.
 
-Další informace najdete v tématu [zájemci zákazníků z vaší nabídky na webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads).
+Další informace najdete v tématu [zájemci zákazníků z vaší nabídky na webu Marketplace](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 ### <a name="why-arent-my-changes-reflected-in-the-offer-on-microsoft-appsource-or-azure-marketplace"></a>Proč se moje změny neprojevily v nabídce Microsoft AppSource nebo Azure Marketplace?
 
@@ -146,7 +146,7 @@ Microsoft AppSource je cílem pro obchodní a Oborová řešení a Azure Marketp
 
 Naše globální síť prodejců zahrnuje desítky tisíc organizací, které se účastní programu Cloud Solution Provider. Program CSP umožňuje organizacím znovu prodávat naše produkty a nabídky z komerčního tržiště a poskytnou jim nástroje, aby to provedli úspěšně.
 
-Další informace najdete v tématu [Poskytovatelé cloudových řešení](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
+Další informace najdete v tématu [Poskytovatelé cloudových řešení](cloud-solution-providers.md).
 
 ### <a name="how-can-i-find-resellers-to-establish-partnerships"></a>Jak najdu prodejce k navázání partnerství?
 
@@ -156,7 +156,7 @@ Pomocí [adresáře poskytovatele řešení](https://www.microsoft.com/solution-
 
 Ano, můžete zpřístupnit nabídky všem prodejcům v programu Cloud Solution Provider nebo jenom uživatelům, které zadáte.
 
-Další informace najdete v tématu [Poskytovatelé cloudových řešení](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
+Další informace najdete v tématu [Poskytovatelé cloudových řešení](cloud-solution-providers.md).
 
 ### <a name="how-can-i-pay-margin-to-resellers"></a>Jak mám platit marži prodejcům?
 
@@ -229,7 +229,7 @@ Uživatelský účet musí mít oprávnění *vlastníka* nebo *přispěvatele* 
 
 Zákazníci mohou získat řešení z komerčního tržiště v 141 místech po celém světě.
 
-Pokud si chcete prohlédnout seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions).
+Pokud si chcete prohlédnout seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](partner-center-portal/tax-details-paid-transactions.md).
 
 ### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Jaké měny podporuje komerční tržiště?
 
@@ -252,7 +252,7 @@ Transakce lze zpracovat v následujících 17 měnách:
 - TWD
 - USD
 
-Pokud si chcete prohlédnout seznam měn, Projděte si [geografickou dostupnost a podporu měny pro komerční web Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Pokud si chcete prohlédnout seznam měn, Projděte si [geografickou dostupnost a podporu měny pro komerční web Marketplace](marketplace-geo-availability-currencies.md).
 
 ### <a name="can-customers-change-subscriptions-or-license-volumes-mid-term"></a>Můžou zákazníci změnit předplatné nebo objemy licencí v polovině období?
 
@@ -274,38 +274,38 @@ Zákazníci se obvykle účtují měsíčně za všechny nákupy v předchozím 
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Jak často budu dostávat výběry pro prodej prostřednictvím komerčního tržiště?
 
-Výběry se vyskytují měsíčně. Podrobnosti o platebních plánech, hledání nadcházejících výběrů v partnerském centru a o tom, jak se zabývat zákazníky neplatbami, najdete v [podrobnostech o vyřazení podrobností o zásadách](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-policy-details).
+Výběry se vyskytují měsíčně. Podrobnosti o platebních plánech, hledání nadcházejících výběrů v partnerském centru a o tom, jak se zabývat zákazníky neplatbami, najdete v [podrobnostech o vyřazení podrobností o zásadách](partner-center-portal/payout-policy-details.md).
 
 - V případě transakcí, kde zákazník použil smlouva Enterprise, jsou vydávány výběry v dalším cyklu vydaných po 30 dnech odeslání faktury zákazníkovi. 
 - V případě transakcí, kde zákazník použil platební kartu, je po obdržení platby k dispozici další 30denní v úschově období, po kterém se doručí za to, že prostředky budou jasné a nehrozí žádné vratek nebo podezření na podvod.
 
 Výběry se vydávají jenom v případě, že prodeje dosáhly minimální kombinované hodnoty $50,00.
 
-Další informace najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes).
+Další informace najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](partner-center-portal/payment-thresholds-methods-timeframes.md).
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>V jakých zemích nebo oblastech jsou daně spravovány mým jménem?
 
 Zákazníci můžou najít řešení z našeho komerčního tržiště po celém světě a spravovat daně v mnoha umístěních. 
 
-Pokud si chcete projít úplný seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions).
+Pokud si chcete projít úplný seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](partner-center-portal/tax-details-paid-transactions.md).
 
 ### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Kde najdu sestavy výběrů pro komerční tržiště?
 
 V rámci partnerského centra může uživatel s oprávněním *vlastníka* nebo *finančního přispěvatele* zobrazit sestavy výběrů. Tito uživatelé mají přístup k sestavám vpravo nahoře tím, že si vyberete ikonu ukazující ruku.
 
-Další informace najdete v tématu [vytváření sestav pro výběr](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-summary).
+Další informace najdete v tématu [vytváření sestav pro výběr](partner-center-portal/payout-summary.md).
 
 ### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Návody nakonfigurovat metodu a cíl pro výběr?
 
 S partnerským centrem může uživatel s oprávněním *vlastníka* nastavit účet výběr a daňové formuláře. Uživatelé to můžou udělat tak, že v pravém horním rohu vyberete tlačítko **Nastavení** (ikona ozubeného kolečka).
 
-Další informace najdete na webu [Výběr účtu a daňové formuláře](https://docs.microsoft.com/azure/marketplace/partner-center-portal/set-up-your-payout-account-tax-forms).
+Další informace najdete na webu [Výběr účtu a daňové formuláře](partner-center-portal/set-up-your-payout-account-tax-forms.md).
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Jsou vracené a refundace podporované na komerčním webu Marketplace?
 
 Zákazníci můžou v rámci určeného časového období zrušit odběry, aby mohli získat refundaci. U měsíčních předplatných je to 24 hodin a pro roční předplatné je 14 dní. Nabídky, které se účtují podle spotřeby po použití řešení, nejsou způsobilé k refundaci.
 
-## <a name="resources"></a>Zdroje a prostředky
+## <a name="resources"></a>Prostředky
 
 ### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 
@@ -313,7 +313,7 @@ Tady je několik zdrojů, které vám pomohou začít:
 
 - [Úvod do komerčního tržiště Microsoftu](/azure/marketplace/marketplace-publishers-guide)
 - [Centrum partnerů Microsoftu pro komerční web Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
-- [Vítá vás komerční marketplace](https://docs.microsoft.com/azure/marketplace/)
+- [Vítá vás komerční marketplace](index.yml)
 
 ### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Jak se můžu zapojit do Microsoftu a dalších partnerů?
 
@@ -325,7 +325,7 @@ Doporučujeme tyto prostředky:
 ### <a name="where-can-i-learn-more-about-partner-center"></a>Kde se mohu dozvědět více o partnerském centru?
 
 - [Dokumentace k partnerskému centru](https://docs.microsoft.com/partner-center/)
-- [Vítá vás komerční marketplace](https://docs.microsoft.com/azure/marketplace/)
+- [Vítá vás komerční marketplace](index.yml)
 
 ### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Kde se mohu dozvědět více o centru pro správu Microsoftu?
 
@@ -333,14 +333,14 @@ Informace o centru pro správu Microsoftu najdete v tématu [Správa předplatn�
 
 ### <a name="where-can-i-learn-more-about-azure-billing"></a>Kde se dozvím Další informace o fakturaci Azure?
 
-- [Dokumentace ke Cost Managementu a fakturaci Azure](https://docs.microsoft.com/azure/cost-management-billing/)
-- [Vysvětlení poplatků za Azure Marketplace na faktuře za Azure](https://docs.microsoft.com/azure/cost-management-billing/understand/understand-azure-marketplace-charges)
-- [Převod předplatného Azure na platbu faktury](https://docs.microsoft.com/azure/cost-management-billing/manage/pay-by-invoice)
+- [Dokumentace ke Cost Managementu a fakturaci Azure](../cost-management-billing/index.yml)
+- [Vysvětlení poplatků za Azure Marketplace na faktuře za Azure](../cost-management-billing/understand/understand-azure-marketplace-charges.md)
+- [Převod předplatného Azure na platbu faktury](../cost-management-billing/manage/pay-by-invoice.md)
 
 ### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Kde můžu získat informace o Azure Government a na webu Azure Government Marketplace?
 
 - [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
 - [Centrum zabezpečení Microsoftu](https://www.microsoft.com/trust-center)
-- [Dokumentace k Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure Government Marketplace](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace)
-- [Azure Government dodržování předpisů](https://docs.microsoft.com/azure/azure-government/documentation-government-plan-compliance)
+- [Dokumentace k Azure Government](../azure-government/index.yml)
+- [Azure Government Marketplace](../azure-government/documentation-government-manage-marketplace.md)
+- [Azure Government dodržování předpisů](../azure-government/documentation-government-plan-compliance.md)

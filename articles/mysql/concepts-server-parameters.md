@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: e147e896966f88f05f60732da9d85308b8e4bd0f
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85389628"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963202"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Parametry serveru v Azure Database for MySQL
 
@@ -28,6 +28,32 @@ Azure Database for MySQL zpřístupňuje možnost změnit hodnotu různých para
 Seznam podporovaných parametrů serveru se neustále zvětšuje. Pomocí karty parametry serveru v Azure Portal zobrazte úplný seznam a nakonfigurujte hodnoty parametrů serveru.
 
 Další informace o omezeních několika běžně aktualizovaných parametrů serveru najdete v následujících částech. Omezení se určují podle cenové úrovně a virtuální jádra serveru.
+
+### <a name="thread-pools"></a>Fondy vláken
+
+MySQL tradičně přiřadí vlákno pro každé připojení klienta. Jak roste počet souběžných uživatelů, existuje odpovídající pokles výkonu. Mnoho aktivních vláken může ovlivnit výkon významně kvůli zvýšenému přepínání kontextu, kolize vláken a špatnému prostředí mezipamětí procesoru.
+
+Fondy vláken, což je funkce na straně serveru a odlišná od sdružování připojení, maximalizují výkon tím, že zavedou dynamický fond pracovních vláken, který se dá použít k omezení počtu aktivních vláken spuštěných na serveru a minimalizaci změn vláken. To pomáhá zajistit, že shluky připojení nezpůsobí, že dojde k vystavení prostředků nebo selhání serveru s chybou při nedostatku paměti. Fondy vláken jsou nejúčinnější pro krátké dotazy a úlohy náročné na procesor, například OLTP úlohy.
+
+Další informace o fondech vláken najdete v tématu [Představujeme fondy vláken v Azure Database for MySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/introducing-thread-pools-in-azure-database-for-mysql-service/ba-p/1504173)
+
+> [!NOTE]
+> Funkce fondu vláken není pro verzi MySQL 5,6 podporovaná. 
+
+### <a name="configuring-the-thread-pool"></a>Konfigurace fondu vláken
+Chcete-li povolit fond vláken, aktualizujte `thread_handling` parametr serveru na "Pool-of-Threads". Ve výchozím nastavení je tento parametr nastaven na hodnotu `one-thread-per-connection` , což znamená, že MySQL vytvoří nové vlákno pro každé nové připojení. Všimněte si, že toto je statický parametr a vyžaduje, aby bylo restartování serveru použito.
+
+Můžete také nakonfigurovat maximální a minimální počet vláken ve fondu nastavením následujících parametrů serveru: 
+- `thread_pool_max_threads`: Tato hodnota zajistí, že nebude existovat více než tento počet vláken ve fondu.
+- `thread_pool_min_threads`: Tato hodnota nastaví počet vláken, která budou rezervována i po zavření připojení.
+
+Aby bylo možné vylepšit výkon krátkých dotazů ve fondu vláken, Azure Database for MySQL vám umožní povolit dávkové zpracování, kde místo návratu do fondu vláken ihned po provedení dotazu budou vlákna zůstat aktivní, aby čekala na další dotaz prostřednictvím tohoto připojení. Vlákno následně provede dotaz rychle a po dokončení, počká na další, dokud celková spotřebovaná doba tohoto procesu nepřekročí prahovou hodnotu. Chování dávkového spuštění je určeno pomocí následujících parametrů serveru:  
+
+-  `thread_pool_batch_wait_timeout`: Tato hodnota určuje dobu, po kterou vlákno čeká na zpracování jiného dotazu.
+- `thread_pool_batch_max_time`: Tato hodnota určuje maximální dobu, po kterou vlákno zopakuje cyklus provádění dotazů a čeká na další dotaz.
+
+> [!IMPORTANT]
+> Před zapnutím v produkčním prostředí prosím otestujte fond vláken. 
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -84,8 +110,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|262144|128|268435455|
 |Pro obecné účely|4|262144|128|536870912|
 |Pro obecné účely|8|262144|128|1073741824|
@@ -133,8 +159,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|16777216|16384|268435455|
 |Pro obecné účely|4|16777216|16384|536870912|
 |Pro obecné účely|8|16777216|16384|1073741824|
@@ -158,8 +184,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|* * Maximální hodnota * *|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|0|0|16777216|
 |Pro obecné účely|4|0|0|33554432|
 |Pro obecné účely|8|0|0|67108864|
@@ -178,8 +204,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|524288|32768|4194304|
 |Pro obecné účely|4|524288|32768|8388608|
 |Pro obecné účely|8|524288|32768|16777216|
@@ -198,8 +224,8 @@ Další informace o tomto parametru najdete v [dokumentaci k MySQL](https://dev.
 
 |**Cenová úroveň**|**vCore (celkem)**|**Výchozí hodnota (bajty)**|**Minimální hodnota (bajty)**|**Maximální hodnota (v bajtech)**|
 |---|---|---|---|---|
-|Základní|1|Nekonfigurovatelné na úrovni Basic|–|–|
-|Základní|2|Nekonfigurovatelné na úrovni Basic|–|–|
+|Základní|1|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
+|Základní|2|Nekonfigurovatelné na úrovni Basic|Není k dispozici|Není k dispozici|
 |Pro obecné účely|2|16777216|1024|67108864|
 |Pro obecné účely|4|16777216|1024|134217728|
 |Pro obecné účely|8|16777216|1024|268435456|

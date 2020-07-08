@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2a7f15eb7e90ba4dec9bc614a45d2de46c07bdfd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: d75ba63955deb3fb6ef4a1207754097b0b3be532
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "64868110"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85962675"
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Použití Azure Queue Storage k monitorování Media Servicesch oznámení úloh pomocí .NET 
 
@@ -34,7 +34,7 @@ Jedním z běžných scénářů, jak naslouchat oznámením Media Services, je,
 
 Tento článek ukazuje, jak získat oznamovací zprávy z fronty úložiště.  
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 Při vývoji Media Services aplikací, které používají úložiště Queue, zvažte následující:
 
 * Queue Storage neposkytuje záruku pro objednané doručení FIFO (First-in-first-out). Další informace najdete v tématu [porovnání a srovnání front Azure a front Azure Service Bus](https://msdn.microsoft.com/library/azure/hh767287.aspx).
@@ -47,13 +47,16 @@ Při vývoji Media Services aplikací, které používají úložiště Queue, z
 Příklad kódu v této části provede následující:
 
 1. Definuje třídu **EncodingJobMessage** , která se mapuje na formát zprávy s oznámením. Kód deserializace zprávy přijímané z fronty do objektů typu **EncodingJobMessage** .
-2. Načte informace o Media Services a účtu úložiště ze souboru App. config. Příklad kódu používá tyto informace k vytvoření objektů **CloudMediaContext** a **CloudQueue** .
+2. Načte informace o Media Services a účtu úložiště ze souboru app.config. Příklad kódu používá tyto informace k vytvoření objektů **CloudMediaContext** a **CloudQueue** .
 3. Vytvoří frontu, která přijímá zprávy s oznámením o úloze kódování.
 4. Vytvoří koncový bod oznámení, který je namapován na frontu.
 5. Připojí koncový bod oznámení k úloze a odešle úlohu kódování. K úloze můžete připojit více koncových bodů oznámení.
 6. Předá **NotificationJobState. FinalStatesOnly** metodě **AddNew** . (V tomto příkladu zajímáme jenom poslední stavy zpracování úloh.)
 
-        job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```csharp
+    job.JobNotificationSubscriptions.AddNew(NotificationJobState.FinalStatesOnly, _notificationEndPoint);
+    ```
+
 7. Pokud předáte **NotificationJobState. All**, dostanete všechna následující oznámení o změně stavu: zařazeno do fronty, naplánované, zpracování a dokončení. Jak je uvedeno výše, úložiště front ale nezaručuje objednané doručení. Chcete-li seřadit zprávy, použijte vlastnost **timestamp** (definovaná v typu **EncodingJobMessage** v příkladu níže). Je možné vytvořit duplicitní zprávy. Chcete-li vyhledat duplicity, použijte **vlastnost ETag** (definovanou pro typ **EncodingJobMessage** ). Je také možné, že některá oznámení o změně stavu se přeskočí.
 8. Počká, až se úloha dokončí do stavu dokončeno, a to zaškrtnutím fronty každých 10 sekund. Odstraní zprávy po jejich zpracování.
 9. Odstraní frontu a koncový bod oznámení.
@@ -71,7 +74,7 @@ Příklad kódu v této části provede následující:
 2. Vytvořte novou složku (složka může být kdekoli na místním disku) a zkopírujte soubor. mp4, který chcete kódovat a streamovat nebo postupně stahovat. V tomto příkladu se používá cesta "C:\Media".
 3. Přidejte odkaz na knihovnu **System. Runtime. Serialization** .
 
-### <a name="code"></a>kód
+### <a name="code"></a>Kód
 
 ```csharp
 using System;
@@ -344,31 +347,32 @@ namespace JobNotification
 
 Předchozí příklad vytvořil následující výstup: vaše hodnoty se budou lišit.
 
-    Created assetFile BigBuckBunny.mp4
-    Upload BigBuckBunny.mp4
-    Done uploading of BigBuckBunny.mp4
+```output
+Created assetFile BigBuckBunny.mp4
+Upload BigBuckBunny.mp4
+Done uploading of BigBuckBunny.mp4
 
-    EventType: NotificationEndPointRegistration
-    MessageVersion: 1.0
-    ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
-    TimeStamp: 2013-05-14T20:22:37
-        NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
-        State: Registered
-        Name: dde957b2-006e-41f2-9869-a978870ac620
-        Created: 2013-05-14T20:22:35
+EventType: NotificationEndPointRegistration
+MessageVersion: 1.0
+ETag: e0238957a9b25bdf3351a88e57978d6a81a84527fad03bc23861dbe28ab293f6
+TimeStamp: 2013-05-14T20:22:37
+    NotificationEndPointId: nb:nepid:UUID:d6af9412-2488-45b2-ba1f-6e0ade6dbc27
+    State: Registered
+    Name: dde957b2-006e-41f2-9869-a978870ac620
+    Created: 2013-05-14T20:22:35
 
-    EventType: JobStateChange
-    MessageVersion: 1.0
-    ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
-    TimeStamp: 2013-05-14T20:24:40
-        JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
-        JobName: My MP4 to Smooth Streaming encoding job
-        NewState: Finished
-        OldState: Processing
-        AccountName: westeuropewamsaccount
-    job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
-    State: Finished
-
+EventType: JobStateChange
+MessageVersion: 1.0
+ETag: 4e381f37c2d844bde06ace650310284d6928b1e50101d82d1b56220cfcb6076c
+TimeStamp: 2013-05-14T20:24:40
+    JobId: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54
+    JobName: My MP4 to Smooth Streaming encoding job
+    NewState: Finished
+    OldState: Processing
+    AccountName: westeuropewamsaccount
+job with Id: nb:jid:UUID:526291de-f166-be47-b62a-11ffe6d4be54 reached expected
+State: Finished
+```
 
 ## <a name="next-step"></a>Další krok
 Prohlédněte si mapy kurzů k Media Services.

@@ -5,16 +5,16 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 21ae6e0a190875e3e541eb858ec38658ce191ee6
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726498"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964868"
 ---
 # <a name="rendering-applications"></a>Vykreslování aplikací
 
-Vykreslování aplikací se používá při vytváření úloh a úloh Batch. Vlastnost příkazového řádku úlohy určuje příslušný příkazový řádek a parametry.  Nejjednodušší způsob, jak vytvořit úlohy úlohy, je použití šablon Batch Explorer, jak je uvedeno v [tomto článku](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer).  V případě potřeby lze v šablonách zobrazit a upravit verze, které byly vytvořeny.
+Vykreslování aplikací se používá při vytváření úloh a úloh Batch. Vlastnost příkazového řádku úlohy určuje příslušný příkazový řádek a parametry.  Nejjednodušší způsob, jak vytvořit úlohy úlohy, je použití šablon Batch Explorer, jak je uvedeno v [tomto článku](./batch-rendering-using.md#using-batch-explorer).  V případě potřeby lze v šablonách zobrazit a upravit verze, které byly vytvořeny.
 
 Tento článek poskytuje stručný popis spuštění jednotlivých aplikací pro vykreslování.
 
@@ -31,7 +31,7 @@ Kromě vykreslovacích modulů integrovaných do aplikace 3ds Max jsou k dispozi
 
 Vyvolat `3dsmaxcmdio.exe` aplikaci k provedení vykreslování příkazového řádku na uzlu fondu.  Tato aplikace se nachází na cestě při spuštění úlohy. `3dsmaxcmdio.exe`Aplikace má stejné dostupné parametry jako `3dsmaxcmd.exe` aplikace, která je popsána v dokumentaci k nástroji [3ds Max](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (rendering | Oddíl vykreslování příkazového řádku).
 
-Například:
+Příklad:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"

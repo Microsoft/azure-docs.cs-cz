@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658277"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965029"
 ---
 # <a name="workbook-drop-down-parameters"></a>Parametry rozevíracího seznamu sešitu
 
@@ -31,7 +31,7 @@ Nejjednodušší způsob, jak určit rozevírací seznam, je poskytnutím static
     1. Název parametru:`Environment`
     2. Typ parametru:`Drop down`
     3. Požadovanou`checked`
-    4. Povolení `multiple selection`:`unchecked`
+    4. Povolení `multiple selection` :`unchecked`
     5. Získat data z:`JSON`
 5. Do textového bloku JSON Input vložte tento fragment kódu JSON:
     ```json
@@ -48,7 +48,9 @@ Nejjednodušší způsob, jak určit rozevírací seznam, je poskytnutím static
     ![Obrázek znázorňující vytvoření statického drowN](./media/workbook-dropdowns/dropdown-create.png)
 
 ## <a name="creating-a-static-dropdown-with-groups-of-items"></a>Vytvoření statického rozevíracího seznamu se skupinami položek
+
 Pokud výsledek dotazu/JSON obsahuje pole "skupina", zobrazí se v rozevíracím seznamu skupiny hodnot. Postupujte podle výše uvedeného příkladu, ale místo toho použijte následující kód JSON:
+
 ```json
 [
     { "value":"dev", "label":"Development", "group":"Development" },
@@ -59,7 +61,8 @@ Pokud výsledek dotazu/JSON obsahuje pole "skupina", zobrazí se v rozevíracím
     { "value":"prod2", "label":"Prod 2", "group":"Production" }
 ]
 ```
-    ![Image showing an example of a grouped dropdown](./media/workbook-dropdowns/grouped-dropDown.png)
+
+![Obrázek znázorňující příklad seskupeného rozevíracího seznamu](./media/workbook-dropdowns/grouped-dropDown.png)
 
 
 ## <a name="creating-a-dynamic-drop-down-parameter"></a>Vytvoření dynamického rozevíracího parametru
@@ -70,7 +73,7 @@ Pokud výsledek dotazu/JSON obsahuje pole "skupina", zobrazí se v rozevíracím
     1. Název parametru:`RequestName`
     2. Typ parametru:`Drop down`
     3. Požadovanou`checked`
-    4. Povolení `multiple selection`:`unchecked`
+    4. Povolení `multiple selection` :`unchecked`
     5. Získat data z:`Query`
 5. Do textového bloku JSON Input vložte tento fragment kódu JSON:
 
@@ -86,6 +89,7 @@ Pokud výsledek dotazu/JSON obsahuje pole "skupina", zobrazí se v rozevíracím
     ![Obrázek znázorňující vytvoření dynamického rozevíracího seznamu](./media/workbook-dropdowns/dropdown-dynamic.png)
 
 ## <a name="referencing-drop-down-parameter"></a>Odkazování na parametr rozevíracího seznamu
+
 ### <a name="in-kql"></a>V KQL
 1. Přidejte do sešitu ovládací prvek dotazu a vyberte prostředek Application Insights.
 2. V editoru KQL zadejte tento fragment kódu.
@@ -122,7 +126,8 @@ dependencies
 | serialize Rank = row_number()
 | project value = name, label = strcat('🌐 ', name), selected = iff(Rank == 1, true, false), group = operation_Name
 ```
-    ![Image showing a drop-down parameter using value, label, selection and group options](./media/workbook-dropdowns/dropdown-more-options.png)
+
+![Obrázek znázorňující parametr rozevíracího seznamu pomocí možností hodnot, popisků, výběru a skupin](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
 ## <a name="drop-down-parameter-options"></a>Parametry rozevíracího seznamu
@@ -133,9 +138,9 @@ dependencies
 | `{DependencyName:value}` | Vybraná hodnota | ZÍSKAT fabrikamaccount |
 
 ## <a name="multiple-selection"></a>Vícenásobný výběr
-Příklady, které byly doposud explicitně nastaveny tak, aby v rozevíracím seznamu vybrali pouze jednu hodnotu. Parametry rozevíracího seznamu podporují `multiple selection` také – povolení této `Allow multiple selection` možnosti je jednoduché. 
+Příklady, které byly doposud explicitně nastaveny tak, aby v rozevíracím seznamu vybrali pouze jednu hodnotu. Parametry rozevíracího seznamu podporují také `multiple selection` – Povolení této možnosti je jednoduché `Allow multiple selection` . 
 
-Uživatel má také možnost zadat formát sady výsledků prostřednictvím nastavení `delimiter` a. `quote with` Výchozí hodnota vrátí hodnoty jako kolekci v tomto formátu: "a", "b", "c". Mají taky možnost omezit počet výběrů.
+Uživatel má také možnost zadat formát sady výsledků prostřednictvím `delimiter` `quote with` nastavení a. Výchozí hodnota vrátí hodnoty jako kolekci v tomto formátu: "a", "b", "c". Mají taky možnost omezit počet výběrů.
 
 KQL odkazující na parametr bude muset změnit na práci s formátem výsledku. Nejběžnější způsob, jak ho povolit, je prostřednictvím `in` operátoru.
 

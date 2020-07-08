@@ -7,16 +7,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 58bfe5cdc58c41c2ead82ac2d280629e4fec9bcd
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 633656af72790c7dfebeee567713875ce0d609b4
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798138"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964205"
 ---
 # <a name="cloud-solution-provider-program"></a>Program Cloud Solution Provider
 
-Tento článek vysvětluje, jak nakonfigurovat nabídku, která bude k dispozici pro program poskytovatele Cloud Solution Provider (CSP). Kromě publikování vašich nabídek prostřednictvím [komerčního webového prodejní místau](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)na webu Marketplace můžete také prodávat prostřednictvím programu CSP a oslovit miliony kvalifikovaných zákazníků Microsoftu, které tento program obsluhuje.
+Tento článek vysvětluje, jak nakonfigurovat nabídku, která bude k dispozici pro program poskytovatele Cloud Solution Provider (CSP). Kromě publikování vašich nabídek prostřednictvím [komerčního webového prodejní místau](comparing-appsource-azure-marketplace.md)na webu Marketplace můžete také prodávat prostřednictvím programu CSP a oslovit miliony kvalifikovaných zákazníků Microsoftu, které tento program obsluhuje.
 
 Můžete nakonfigurovat nové nebo existující nabídky k dostupnosti v programu CSP na základě výslovného souhlasu, který partnerům CSP umožní prodávat vaše produkty a vytvářet řešení pro zákazníky.
 
@@ -191,7 +191,7 @@ Pokud jste se rozhodli do kanálu CSP v portál partnerů cloudu, vydavatelé mu
 
 ## <a name="next-steps"></a>Další kroky
 
-Navštivte [příručku pro vydavatele Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+Navštivte [příručku pro vydavatele Azure Marketplace a AppSource](marketplace-publishers-guide.md).
 
 Další informace o službách GTM na webu Marketplace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
 

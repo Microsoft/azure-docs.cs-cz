@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: fe04cb12dc1afea78b023eab623927a07224888c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 63f18556847a717322b00092b973f59877102a1d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726141"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963899"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Certifikace imagí virtuálních počítačů Azure
 
@@ -42,7 +42,7 @@ Pro tuto práci můžete použít buď novou, nebo existující skupinu prostře
 
 Úpravou a spuštěním následujícího skriptu Azure PowerShell vytvořte soubor certifikátu (. pfx) v místní složce. Nahraďte hodnoty parametrů, které jsou uvedeny v následující tabulce.
 
-| **Ukazatele** | **Popis** |
+| **Parametr** | **Popis** |
 | --- | --- |
 | $certroopath | Místní složka, do které se uloží soubor. pfx |
 | $location | Jedno ze standardních zeměpisných míst Azure. |
@@ -183,12 +183,12 @@ Zkopírujte obsah šablony níže do souboru na místním počítači. V násled
 
 Úpravou a spuštěním následujícího skriptu Azure PowerShell vytvořte Azure Key Vault a přidruženou skupinu prostředků. Nahraďte hodnoty parametrů, které jsou uvedeny v následující tabulce.
 
-| **Ukazatele** | **Popis** |
+| **Parametr** | **Popis** |
 | --- | --- |
 | $postfix | Náhodný numerický řetězec připojený k identifikátorům nasazení. |
 | $rgName | Název skupiny prostředků Azure (RG), která se má vytvořit |
 | $location | Jedno ze standardních zeměpisných míst Azure. |
-| $kvTemplateJson | Cesta k souboru (Trezor klíčů. JSON), který obsahuje šablonu Správce prostředků pro Trezor klíčů. |
+| $kvTemplateJson | Cesta k souboru (keyvault.json), který obsahuje šablonu Správce prostředků pro Trezor klíčů. |
 | $kvname | Název nového trezoru klíčů|
 |   |   |
 
@@ -320,7 +320,7 @@ Tato část popisuje, jak nasadit zobecněnou image virtuálního pevného disku
 
 ### <a name="prepare-an-azure-resource-manager-template"></a>Příprava šablony Azure Resource Manager
 
-Zkopírujte následující šablonu Azure Resource Manager pro nasazení VHD do místního souboru s názvem VHDtoImage. JSON. Další skript požádá o umístění v místním počítači, aby se tento kód JSON použil.
+Zkopírujte následující šablonu Azure Resource Manager pro nasazení VHD do místního souboru s názvem VHDtoImage.jsv. Další skript požádá o umístění v místním počítači, aby se tento kód JSON použil.
 
 ```JSON
 {
@@ -557,10 +557,10 @@ Zkopírujte následující šablonu Azure Resource Manager pro nasazení VHD do 
 
 Upravte tento soubor a zadejte hodnoty pro tyto parametry:
 
-| **Ukazatele** | **Popis** |
+| **Parametr** | **Popis** |
 | --- | --- |
 | ResourceGroupName | Název existující skupiny prostředků Azure Obvykle používejte stejný RG jako Trezor klíčů. |
-| TemplateFile | Úplná cesta k souboru VHDtoImage. JSON. |
+| TemplateFile | Úplná cesta k souboru VHDtoImage.jsv. |
 | userStorageAccountName | Název účtu úložiště |
 | sNameForPublicIP | Název DNS pro veřejnou IP adresu; musí být malými písmeny. |
 | subscriptionId | Identifikátor předplatného Azure. |
@@ -649,4 +649,4 @@ Nakonec vyberte možnost **Generovat sestavu** pro stažení výsledků testů a
 
 ## <a name="next-step"></a>Další krok
 
-- [Vygenerujte identifikátory URI (Uniform Resource Identifier) pro každý virtuální pevný disk.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [Běžné problémy s identifikátorem URI SAS a opravy](common-sas-uri-issues.md)

@@ -6,18 +6,18 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: baff2806b1a8c3c99546365c2496238c24b2b243
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429951"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964987"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql"></a>Použití smyček T-SQL v synapse SQL
+# <a name="use-t-sql-loops-in-synapse-sql"></a>Použití smyček T-SQL v synapse SQL
 Tento článek vám poskytne základní tipy pro používání smyček T-SQL, nahrazení kurzorů a vývoj souvisejících řešení s fondem SQL ve synapse SQL.
 
 ## <a name="purpose-of-while-loops"></a>Účel smyčky WHILe

@@ -7,25 +7,25 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: dcb9d43b228428379414ca5d7688cff709a9959e
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 6fff0e224aaa6bb247543282ac16fbb33fe7e904
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726413"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965259"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Možnosti úložiště a přesunu dat pro vykreslování assetů a výstupních souborů
 
 K dispozici je několik možností, jak zpřístupnit soubory scény a assetů pro vykreslování aplikací na virtuálních počítačích fondu:
 
-* [Úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction):
+* [Úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md):
   * Scény a soubory prostředků se nahrají do úložiště objektů BLOB z místního systému souborů. Když je aplikace spuštěná úlohou, pak se požadované soubory zkopírují z úložiště objektů blob na virtuální počítač, aby k nim bylo možné přistupovat z aplikace pro vykreslování. Výstupní soubory jsou zapsány aplikací pro vykreslování na disk virtuálního počítače a následně zkopírovány do úložiště objektů BLOB.  V případě potřeby lze výstupní soubory stáhnout ze služby Blob Storage do místního systému souborů.
   * Úložiště objektů BLOB v Azure je jednoduchá a cenově výhodná možnost pro menší projekty.  Vzhledem k tomu, že všechny soubory assetů se vyžadují na každém virtuálním počítači fondu, pak se po počtu a velikosti souborů assetu postará o péči, aby bylo zajištěno co nejefektivnější přenos souborů.  
-* Úložiště Azure jako systém souborů pomocí [blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux):
+* Úložiště Azure jako systém souborů pomocí [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md):
   * Pro virtuální počítače se systémem Linux se dá účet úložiště vystavit a použít jako systém souborů, když se použije ovladač virtuálního systému souborů blobfuse.
   * Tato možnost má výhodu, že je velmi nákladově efektivní, protože systém souborů nevyžaduje žádné virtuální počítače, a mezipaměť blobfuse u virtuálních počítačů vyloučí opakované stahování stejných souborů pro více úloh a úloh.  Přesun dat je také jednoduchý, protože soubory jsou jednoduše objekty BLOB a standardní rozhraní API a nástroje, jako je AzCopy, je možné použít ke kopírování souborů mezi místními systémy souborů a Azure Storage.
 * Systém souborů nebo sdílená složka:
-  * V závislosti na operačním systému virtuálního počítače a požadavcích na výkon a škálování pak možnosti zahrnují [soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction), použití virtuálního počítače s připojenými disky pro systém souborů NFS, použití několika virtuálních počítačů s připojenými disky pro distribuovaný systém souborů, jako je GlusterFS nebo použití nabídky třetí strany.
+  * V závislosti na operačním systému virtuálního počítače a požadavcích na výkon a škálování pak možnosti zahrnují [soubory Azure](../storage/files/storage-files-introduction.md), použití virtuálního počítače s připojenými disky pro systém souborů NFS, použití několika virtuálních počítačů s připojenými disky pro distribuovaný systém souborů, jako je GlusterFS nebo použití nabídky třetí strany.
   * [Systémy avere](https://www.averesystems.com/) je teď součástí Microsoftu a v blízké budoucnosti budou mít řešení, která jsou ideální pro velké a vysoce výkonné vykreslování.  Řešení avere umožní vytvořit mezipaměť systému souborů NFS nebo SMB založenou na Azure, která bude fungovat ve spojení s úložištěm objektů BLOB nebo s místními zařízeními NAS.
   * Se systémem souborů lze soubory číst nebo zapisovat přímo do systému souborů nebo je lze zkopírovat mezi systémem souborů a virtuálními počítači fondu.
   * Sdílený systém souborů umožňuje využít velký počet prostředků, které se sdílejí mezi projekty a úlohami, které se mají použít, a úlohy vykreslování přistupují pouze k tomu, co je potřeba.
@@ -36,7 +36,7 @@ Měl by se použít účet úložiště BLOB nebo účet úložiště pro obecn�
 
 ### <a name="copying-files-between-client-and-blob-storage"></a>Kopírování souborů mezi klientem a úložištěm objektů BLOB
 
-Pokud chcete kopírovat soubory do a z úložiště Azure Storage, můžete použít různé mechanismy, včetně rozhraní API pro úložiště objektů blob, [Azure Storage knihovny pro přesun dat](https://github.com/Azure/azure-storage-net-data-movement), nástroje příkazového řádku AzCopy pro [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) nebo [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux), [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)a [Azure Batch Explorer](https://azure.github.io/BatchExplorer/).
+Pokud chcete kopírovat soubory do a z úložiště Azure Storage, můžete použít různé mechanismy, včetně rozhraní API pro úložiště objektů blob, [Azure Storage knihovny pro přesun dat](https://github.com/Azure/azure-storage-net-data-movement), nástroje příkazového řádku AzCopy pro [Windows](../storage/common/storage-use-azcopy-v10.md) nebo [Linux](../storage/common/storage-use-azcopy-v10.md), [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/)a [Azure Batch Explorer](https://azure.github.io/BatchExplorer/).
 
 Pomocí AzCopy můžete například přenést všechny prostředky ve složce následujícím způsobem:
 
@@ -52,8 +52,8 @@ K zkopírování pouze změněných souborů lze použít parametr/XO:
 Existuje několik různých přístupů ke kopírování souborů s nejlepším přístupem určeným velikostí assetů úloh.
 Nejjednodušším přístupem je zkopírovat všechny soubory assetů do fondu virtuálních počítačů pro každou úlohu:
 
-* Pokud jsou soubory jedinečné pro úlohu, ale jsou požadovány pro všechny úlohy úlohy, je možné určit [úkol přípravy úlohy](https://docs.microsoft.com/rest/api/batchservice/job/add#jobpreparationtask) pro zkopírování všech souborů.  Úkol přípravy úlohy se spustí jednou, když se na virtuálním počítači spustí první úloha úlohy, ale pro další úlohy úlohy se znovu nespustí.
-* Po dokončení úlohy by měl být zadán [úkol uvolnění úlohy](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask) pro odebrání souborů jednotlivých úloh. Tím se vyhnete vyplňování disků virtuálního počítače všemi soubory prostředků úlohy.
+* Pokud jsou soubory jedinečné pro úlohu, ale jsou požadovány pro všechny úlohy úlohy, je možné určit [úkol přípravy úlohy](/rest/api/batchservice/job/add#jobpreparationtask) pro zkopírování všech souborů.  Úkol přípravy úlohy se spustí jednou, když se na virtuálním počítači spustí první úloha úlohy, ale pro další úlohy úlohy se znovu nespustí.
+* Po dokončení úlohy by měl být zadán [úkol uvolnění úlohy](/rest/api/batchservice/job/add#jobreleasetask) pro odebrání souborů jednotlivých úloh. Tím se vyhnete vyplňování disků virtuálního počítače všemi soubory prostředků úlohy.
 * Pokud existuje více úloh využívajících stejné prostředky, přičemž pouze přírůstkové změny prostředků pro každou úlohu, pak jsou všechny soubory prostředků stále zkopírovány i v případě, že byla aktualizována pouze podmnožina.  To by bylo neefektivní, pokud máte spoustu velkých souborů prostředků.
 
 Při opětovném použití souborů assetů mezi úlohami, s pouze přírůstkovým změnám mezi úlohami, je efektivnější, ale ještě mírně spojený přístup, ukládat prostředky do sdílené složky na virtuálním počítači a synchronizovat změněné soubory.
@@ -61,11 +61,11 @@ Při opětovném použití souborů assetů mezi úlohami, s pouze přírůstkov
 * Úkol přípravy úlohy by provedl kopii pomocí AzCopy s parametrem/XO pro sdílenou složku virtuálního počítače určenou proměnnou prostředí AZ_BATCH_NODE_SHARED_DIR.  Tím se zkopírují pouze změněné soubory do každého virtuálního počítače.
 * V myšlenkách se bude muset předávat velikost všech prostředků, aby se zajistilo, že se budou vejít na dočasné jednotky virtuálních počítačů fondu.
 
-Azure Batch má integrovanou podporu pro kopírování souborů mezi účtem úložiště a virtuálními počítači fondu služby Batch.  [Soubory prostředků](https://docs.microsoft.com/rest/api/batchservice/job/add#resourcefile) úlohy kopírují soubory z úložiště do fondu virtuálních počítačů a dají se zadat pro úkol přípravy úlohy.  V případě, že existují stovky souborů, je možné dosáhnout limitu a úlohy, které selžou.  V případě velkého počtu prostředků se doporučuje použít příkazový řádek AzCopy v úloze přípravy úlohy, která může používat zástupné znaky a nemá žádné omezení.
+Azure Batch má integrovanou podporu pro kopírování souborů mezi účtem úložiště a virtuálními počítači fondu služby Batch.  [Soubory prostředků](/rest/api/batchservice/job/add#resourcefile) úlohy kopírují soubory z úložiště do fondu virtuálních počítačů a dají se zadat pro úkol přípravy úlohy.  V případě, že existují stovky souborů, je možné dosáhnout limitu a úlohy, které selžou.  V případě velkého počtu prostředků se doporučuje použít příkazový řádek AzCopy v úloze přípravy úlohy, která může používat zástupné znaky a nemá žádné omezení.
 
 ### <a name="copying-output-files-to-blob-storage-from-batch-pool-vms"></a>Kopírování výstupních souborů do úložiště objektů BLOB z virtuálních počítačů fondu Batch
 
-[Výstupní soubory](https://docs.microsoft.com/rest/api/batchservice/task/add#outputfile) se dají použít ke kopírování souborů z virtuálního počítače fondu do úložiště.  Po dokončení úlohy se dá zkopírovat jeden nebo víc souborů z virtuálního počítače do zadaného účtu úložiště.  Vykreslený výstup by měl být zkopírován, ale také může být žádoucí ukládat soubory protokolu.
+[Výstupní soubory](/rest/api/batchservice/task/add#outputfile) se dají použít ke kopírování souborů z virtuálního počítače fondu do úložiště.  Po dokončení úlohy se dá zkopírovat jeden nebo víc souborů z virtuálního počítače do zadaného účtu úložiště.  Vykreslený výstup by měl být zkopírován, ale také může být žádoucí ukládat soubory protokolu.
 
 ## <a name="using-a-blobfuse-virtual-file-system-for-linux-vm-pools"></a>Použití virtuálního systému souborů blobfuse pro fondy virtuálních počítačů se systémem Linux
 
@@ -85,9 +85,9 @@ Protože soubory jsou v Azure Storage objekty blob, pak je možné pomocí stand
 
 ## <a name="using-azure-files-with-windows-vms"></a>Používání souborů Azure s virtuálními počítači s Windows
 
-[Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím protokolu SMB.  Soubory Azure jsou založené na službě Azure Blob Storage; je to [nákladově efektivní](https://azure.microsoft.com/pricing/details/storage/files/) a je možné ji nakonfigurovat s replikací dat do jiné oblasti, aby byla globálně redundantní.  [Cíle škálování](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets) by se měly zkontrolovat, aby se zjistilo, jestli se soubory Azure mají použít pro velikost fondu prognóz a počet souborů assetů.
+[Soubory Azure](../storage/files/storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím protokolu SMB.  Soubory Azure jsou založené na službě Azure Blob Storage; je to [nákladově efektivní](https://azure.microsoft.com/pricing/details/storage/files/) a je možné ji nakonfigurovat s replikací dat do jiné oblasti, aby byla globálně redundantní.  [Cíle škálování](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) by se měly zkontrolovat, aby se zjistilo, jestli se soubory Azure mají použít pro velikost fondu prognóz a počet souborů assetů.
 
-K dispozici je [Blogový příspěvek](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) a [dokumentace](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) , která popisuje, jak připojit sdílenou složku Azure.
+K dispozici je [Blogový příspěvek](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) a [dokumentace](../storage/files/storage-how-to-use-files-windows.md) , která popisuje, jak připojit sdílenou složku Azure.
 
 ### <a name="mounting-an-azure-files-share"></a>Připojení sdílené složky služby soubory Azure
 
@@ -126,12 +126,12 @@ Příklad příkazového řádku úlohy úlohy:
 
 Služba soubory Azure je podporovaná všemi hlavními rozhraními API a nástroji, které Azure Storage podporu podporují. např. AzCopy, Azure CLI, Průzkumník služby Storage, Azure PowerShell, Batch Explorer atd.
 
-K dispozici je [Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) k automatické synchronizaci souborů mezi místním systémem souborů a sdílenou složkou Azure.
+K dispozici je [Azure File Sync](../storage/files/storage-sync-files-planning.md) k automatické synchronizaci souborů mezi místním systémem souborů a sdílenou složkou Azure.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o možnostech úložiště najdete v podrobné dokumentaci:
 
-* [Úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
-* [Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)
-* [Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)
+* [Úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md)
+* [Blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)
+* [Soubory Azure](../storage/files/storage-files-introduction.md)

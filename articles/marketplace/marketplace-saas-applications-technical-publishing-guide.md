@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46f8da8b2b688900e50548bbece01117a7a47e24
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657829"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963831"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Průvodce publikováním nabídek aplikací SaaS
 
@@ -28,9 +28,9 @@ SaaS aplikace jsou k dispozici v Microsoft AppSource a Azure Marketplace.  Prode
 
 | Nabídka aplikací pro SaaS | Podnikové požadavky | Technické požadavky |  
 | --- | --- | --- |  
-| **Kontaktujte nás** | Ano | Ne |  
-| **Power BI/Dynamics** | Ano | Ano (Integrace Azure AD) |  
-| **Aplikace SaaS**| Ano | Ano (Integrace Azure AD) |     
+| **Kontaktujte nás** | Ano | No |  
+| **Power BI/Dynamics** | Yes | Ano (Integrace Azure AD) |  
+| **Aplikace SaaS**| Yes | Ano (Integrace Azure AD) |     
 
 ## <a name="saas-list"></a>Seznam SaaS
 
@@ -62,11 +62,9 @@ Pro začátek doporučujeme, abyste měli k dispozici předplatné vyhrazené pr
 
 Nejlepší Azure Active Directory dokumentaci, ukázky a pokyny najdete v následujících lokalitách: 
 
-* [Azure Active Directory příručka pro vývojáře](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+* [Azure Active Directory příručka pro vývojáře](../active-directory/develop/index.yml)
 
-* [Integrace s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-to-integrate)
-
-* [Integrace aplikací s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
+* [Integrace se službou Azure Active Directory](../active-directory/develop/active-directory-how-to-integrate.md)
 
 * [Plán Azure – zabezpečení a identita](https://azure.microsoft.com/roadmap/?category=security-identity)
 
@@ -90,7 +88,7 @@ Kromě toho Azure Active Directory poskytuje lokalitu pro kontrolu aktualizací 
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Povolení zkušebních verzí pomocí Azure Active Directory  
 
-Microsoft ověřuje všechny uživatele na webu Marketplace pomocí Azure AD, takže když ověřený uživatel klikne na webu Marketplace na základě zkušebního výpisu a přesměruje se na vaše zkušební prostředí, můžete uživatele zřídit přímo do zkušební verze bez nutnosti dalšího kroku přihlášení. Token, který vaše aplikace obdrží z Azure AD během ověřování, zahrnuje cenné uživatelské informace, pomocí kterých můžete v aplikaci vytvořit uživatelský účet, který vám umožní automatizovat prostředí pro zřizování a zvýšit pravděpodobnost převodu. Další informace o tokenu najdete v tématu [ukázkové tokeny](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) .
+Microsoft ověřuje všechny uživatele na webu Marketplace pomocí Azure AD, takže když ověřený uživatel klikne na webu Marketplace na základě zkušebního výpisu a přesměruje se na vaše zkušební prostředí, můžete uživatele zřídit přímo do zkušební verze bez nutnosti dalšího kroku přihlášení. Token, který vaše aplikace obdrží z Azure AD během ověřování, zahrnuje cenné uživatelské informace, pomocí kterých můžete v aplikaci vytvořit uživatelský účet, který vám umožní automatizovat prostředí pro zřizování a zvýšit pravděpodobnost převodu. Další informace o tokenu najdete v tématu [ukázkové tokeny](../active-directory/develop/active-directory-token-and-claims.md) .
 
 Pomocí Azure AD můžete pro aplikaci nebo zkušební verzi povolit ověřování 1 kliknutím na toto:  
 * Zjednodušuje uživatelské prostředí z webu Marketplace až po zkušební období.  
@@ -106,15 +104,15 @@ V závislosti na tom, jestli je vaše aplikace založená na jednom tenantovi ne
 
 Pokud už Azure AD podporujete, udělejte toto:
 1.    Registrace aplikace v Azure Portal
-2.    Ve službě Azure AD povolte funkci podpory více tenantů, abyste získali zkušební prostředí jedním kliknutím. Konkrétnější informace najdete [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
+2.    Ve službě Azure AD povolte funkci podpory více tenantů, abyste získali zkušební prostředí jedním kliknutím. Konkrétnější informace najdete [tady](../active-directory/develop/active-directory-integrating-applications.md).  
 
 Pokud pro federované jednotné přihlašování Azure AD začínáte, postupujte takto: 
 1.  Registrace aplikace v Azure Portal
-2.  K vývoji jednotného přihlašování použijte Azure AD pomocí [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) nebo [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
-3.  Povolení podpory více tenantů v AAD Chcete-li získat další informace o zkušebním prostředí jedním kliknutím, najdete je [tady](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified).  
+2.  K vývoji jednotného přihlašování použijte Azure AD pomocí [OpenID Connect](../active-directory/develop/active-directory-protocols-openid-connect-code.md) nebo [OAuth 2,0](../active-directory/develop/active-directory-protocols-oauth-code.md).
+3.  Povolení podpory více tenantů v AAD Chcete-li získat další informace o zkušebním prostředí jedním kliknutím, najdete je [tady](../active-directory/develop/active-directory-devhowto-appsource-certified.md).  
 
 **V případě aplikace pro jednoho tenanta použijte některou z následujících možností:**  
-* Přidání uživatelů do adresáře jako uživatelů typu Host pomocí [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+* Přidání uživatelů do adresáře jako uživatelů typu Host pomocí [Azure B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)
 * Ruční zřízení zkušebních verzí pro zákazníky pomocí ' kontaktujte mě '
 * Vývoj testovacích jednotek pro jednotlivé zákazníky
 * Sestavte ukázkovou ukázkovou aplikaci pro více tenantů pomocí jednotného přihlašování.

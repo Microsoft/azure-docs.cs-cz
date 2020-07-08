@@ -4,21 +4,21 @@ description: Vytvořte úkoly, které závisí na dokončení dalších úloh pr
 ms.topic: how-to
 ms.date: 05/22/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42cf24758c64f107723ae0907db08bd4b757a15a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4aad67b4537befd251798aac7601bc4efcc276f2
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726379"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965225"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytváření závislostí úloh pro spouštění úloh, které jsou závislé na jiných úkolech
 
 Můžete definovat závislosti úkolů pro spuštění úlohy nebo sady úkolů až po dokončení nadřazené úlohy. Mezi scénáře, kdy jsou užitečné závislosti úloh, patří:
 
-* MapReduce úlohy ve stylu v cloudu.
-* Úlohy, jejichž úlohy zpracování dat lze vyjádřit jako orientovaný acyklického graf (DAG).
-* Procesy před vykreslením a následným vykreslením, kde každý úkol musí být dokončen před zahájením další úlohy.
-* Jakákoli jiná úloha, ve které jsou podřízené úlohy závislé na výstupu nadřazených úloh.
+- MapReduce úlohy ve stylu v cloudu.
+- Úlohy, jejichž úlohy zpracování dat lze vyjádřit jako orientovaný acyklického graf (DAG).
+- Procesy před vykreslením a následným vykreslením, kde každý úkol musí být dokončen před zahájením další úlohy.
+- Jakákoli jiná úloha, ve které jsou podřízené úlohy závislé na výstupu nadřazených úloh.
 
 Pomocí závislostí úkolů služby Batch můžete vytvořit úlohy, u kterých je naplánováno spouštění na výpočetních uzlech po dokončení jedné nebo více nadřazených úloh. Můžete například vytvořit úlohu, která vykreslí každý snímek 3D videa s oddělenými paralelními úkoly. Finální úkol – "úloha sloučení" – sloučí vykreslené snímky do kompletního filmu až po úspěšném vykreslení všech rámců.
 
@@ -27,9 +27,11 @@ Ve výchozím nastavení jsou závislé úlohy naplánované pro provádění po
 Můžete vytvořit úkoly, které jsou závislé na jiných úkolech v relaci 1:1 nebo 1: n. Můžete také vytvořit závislost rozsahu, kde úloha závisí na dokončení skupiny úkolů v rámci zadaného rozsahu ID úloh. Tyto tři základní scénáře můžete kombinovat a vytvořit tak relace m:n.
 
 ## <a name="task-dependencies-with-batch-net"></a>Závislosti úkolů pomocí batch .NET
+
 V tomto článku se zabýváme konfigurací závislostí úloh pomocí knihovny [Batch .NET][net_msdn] . Nejprve vám ukážeme, jak [Povolit závislosti úkolů](#enable-task-dependencies) na vašich úlohách, a pak Ukázat, jak [nakonfigurovat úlohu se závislostmi](#create-dependent-tasks). Také popíšeme, jak zadat akci závislosti pro spuštění závislých úloh, pokud nadřazený objekt neproběhne úspěšně. Nakonec se podíváme na [scénáře závislosti](#dependency-scenarios) , které tato dávková podpora podporuje.
 
 ## <a name="enable-task-dependencies"></a>Povolit závislosti úkolů
+
 Chcete-li použít závislosti úkolů v aplikaci Batch, je nutné nejprve nakonfigurovat úlohu, aby používala závislosti úkolů. V rozhraní Batch .NET ho povolte na [vlastnosti cloudjob][net_cloudjob] nastavením jeho vlastnosti [UsesTaskDependencies][net_usestaskdependencies] na `true` :
 
 ```csharp
@@ -43,6 +45,7 @@ unboundJob.UsesTaskDependencies = true;
 V předchozím fragmentu kódu je "batchClient" instancí třídy [batchClient][net_batchclient] .
 
 ## <a name="create-dependent-tasks"></a>Vytváření závislých úloh
+
 Chcete-li vytvořit úkol, který závisí na dokončení jedné nebo více nadřazených úloh, můžete určit, že úkol závisí na dalších úkolech. V rozhraní Batch .NET nakonfigurujte [CloudTask][net_cloudtask]. Vlastnost [DependsOn][net_dependson] s instancí třídy [TaskDependencies][net_taskdependencies] :
 
 ```csharp
@@ -58,13 +61,12 @@ Tento fragment kódu vytvoří závislý úkol s ID úlohy "květiny". Úloha "k
 
 > [!NOTE]
 > Ve výchozím nastavení se úkol považuje za úspěšně dokončený, když je ve stavu **dokončeno** a jeho **ukončovací kód** je `0` . V dávce .NET to znamená [CloudTask][net_cloudtask]. Hodnota vlastnosti [State][net_taskstate] `Completed` a CloudTask [TaskExecutionInformation][net_taskexecutioninformation].[ ][net_exitcode]Hodnota vlastnosti ExitCode je `0` . Informace o tom, jak to změnit, najdete v části [Akce závislosti](#dependency-actions) .
-> 
-> 
 
 ## <a name="dependency-scenarios"></a>Scénáře závislosti
+
 Existují tři základní scénáře závislosti úloh, které můžete použít v Azure Batch: 1:1, 1:1 a rozsah ID úlohy. Je možné je kombinovat tak, aby poskytovaly čtvrtý scénář, mnoho až mnoho.
 
-| Případě&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Příklad |  |
+| Případě&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Příklad | Obrázek |
 |:---:| --- | --- |
 |  [Relace jednoho k jednomu jinému](#one-to-one) |*úkolb* závisí na *úloze* <p/> *úkolb* nebude naplánováno na spuštění, dokud se *úloha* ' úspěšně nedokončila. |![Diagram: závislost mezi jednotlivými úkoly][1] |
 |  [1: n](#one-to-many) |*úkolc* závisí na *úloze* a na *úkolb* <p/> *úkolc* nebude naplánováno na spuštění, dokud se úspěšně nedokončí *úlohy Task* a *úkolb* . |![Diagram: závislost úlohy 1: n][2] |
@@ -76,6 +78,7 @@ Existují tři základní scénáře závislosti úloh, které můžete použít
 > V příkladech v této části se závislá úloha spustí až po úspěšném dokončení nadřazených úloh. Toto chování je výchozím chováním závislé úlohy. Závislý úkol můžete spustit po chybě nadřazené úlohy zadáním akce závislosti pro přepsání výchozího chování. Podrobnosti najdete v části [Akce závislosti](#dependency-actions) .
 
 ### <a name="one-to-one"></a>Relace jednoho k jednomu jinému
+
 V relaci 1:1 závisí úkol na úspěšném dokončení jedné nadřazené úlohy. Pokud chcete vytvořit závislost, poskytněte [TaskDependencies][net_taskdependencies]jedno ID úlohy. [OnId][net_onid] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 ```csharp
@@ -90,6 +93,7 @@ new CloudTask("taskB", "cmd.exe /c echo taskB")
 ```
 
 ### <a name="one-to-many"></a>1: n
+
 V relaci 1: n závisí úkol na dokončení více nadřazených úkolů. Chcete-li vytvořit závislost, poskytněte [TaskDependencies][net_taskdependencies]kolekci ID úloh. [OnIds][net_onids] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 ```csharp
@@ -106,17 +110,16 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 ``` 
 
 ### <a name="task-id-range"></a>Rozsah ID úlohy
+
 V závislosti na rozsahu nadřazených úkolů závisí úkol na dokončení úloh, jejichž ID leží v rámci určitého rozsahu.
 Chcete-li vytvořit závislost, zadejte ID první a poslední úlohy v rozsahu pro [TaskDependencies][net_taskdependencies]. [OnIdRange][net_onidrange] statická metoda, když naplníte vlastnost [DependsOn][net_dependson] třídy [CloudTask][net_cloudtask].
 
 > [!IMPORTANT]
 > Pokud pro závislosti použijete rozsah ID úkolu, budou rozsahem vybrány pouze úlohy s ID reprezentujícími celočíselné hodnoty. Rozsah pak `1..10` bude vybírat úlohy `3` `7` , ale ne `5flamingoes` . 
-> 
+>
 > Úvodní nuly nejsou významné při vyhodnocování závislostí rozsahu, takže úkoly s identifikátory řetězců `4` `04` a `004` budou všechny *v* rozsahu a všechny budou považovány za úlohu `4` , takže první z nich bude vyhovovat závislosti.
-> 
+>
 > Každý úkol v rozsahu musí splňovat závislosti, a to buď pomocí úspěšného dokončení, nebo dokončením selhání namapovaného na akci závislosti nastavenou na hodnotu **vyhovující**. Podrobnosti najdete v části [Akce závislosti](#dependency-actions) .
->
->
 
 ```csharp
 // Tasks 1, 2, and 3 don't depend on any other tasks. Because
@@ -193,6 +196,7 @@ new CloudTask("B", "cmd.exe /c echo B")
 ```
 
 ## <a name="code-sample"></a>Ukázka kódu
+
 Vzorový projekt [TaskDependencies][github_taskdependencies] je jednou z [Azure Batch ukázek kódu][github_samples] na GitHubu. Toto řešení sady Visual Studio ukazuje:
 
 - Postup povolení závislosti úloh na úloze
@@ -200,31 +204,29 @@ Vzorový projekt [TaskDependencies][github_taskdependencies] je jednou z [Azure 
 - Jak spouštět tyto úlohy ve fondu výpočetních uzlů.
 
 ## <a name="next-steps"></a>Další kroky
-### <a name="application-deployment"></a>Nasazení aplikací
-Funkce [balíčků aplikací](batch-application-packages.md) služby Batch poskytuje snadný způsob nasazení a verze aplikací, které vaše úkoly spouštějí na výpočetních uzlech.
 
-### <a name="installing-applications-and-staging-data"></a>Instalace aplikací a pracovních dat
-Přehled metod pro přípravu vašich uzlů ke spouštění úkolů najdete v tématu [instalace aplikací a přípravných dat na výpočetních uzlech služby Batch][forum_post] na Azure Batch fóru. V rámci jednoho z Azure Batch členů týmu je tento příspěvek dobrým aspektem různých způsobů kopírování aplikací, vstupních dat úkolů a dalších souborů do výpočetních uzlů.
+- Funkce [balíčků aplikací](batch-application-packages.md) služby Batch poskytuje snadný způsob nasazení a verze aplikací, které vaše úkoly spouštějí na výpočetních uzlech.
+- Přehled metod pro přípravu vašich uzlů ke spouštění úkolů najdete v tématu [instalace aplikací a přípravných dat na výpočetních uzlech služby Batch][forum_post] na Azure Batch fóru. V rámci jednoho z Azure Batch členů týmu je tento příspěvek dobrým aspektem různých způsobů kopírování aplikací, vstupních dat úkolů a dalších souborů do výpočetních uzlů.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
 [github_taskdependencies]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
-[net_dependson]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.dependson.aspx
-[net_exitcode]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskexecutioninformation.exitcode.aspx
-[net_exitconditions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitconditions
-[net_exitoptions]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
-[net_dependencyaction]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.exitoptions
-[net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[net_onid]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onid.aspx
-[net_onids]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onids.aspx
-[net_onidrange]: https://msdn.microsoft.com/library/microsoft.azure.batch.taskdependencies.onidrange.aspx
-[net_taskexecutioninformation]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskexecutioninformation.aspx
-[net_taskstate]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.common.taskstate.aspx
-[net_usestaskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.usestaskdependencies.aspx
-[net_taskdependencies]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.taskdependencies.aspx
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_dependson]: /dotnet/api/microsoft.azure.batch.cloudtask
+[net_exitcode]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
+[net_exitconditions]: /dotnet/api/microsoft.azure.batch.exitconditions
+[net_exitoptions]: /dotnet/api/microsoft.azure.batch.exitoptions
+[net_dependencyaction]: /dotnet/api/microsoft.azure.batch.exitoptions
+[net_msdn]: /dotnet/api/microsoft.azure.batch
+[net_onid]: /dotnet/api/microsoft.azure.batch.taskdependencies
+[net_onids]: /dotnet/api/microsoft.azure.batch.taskdependencies
+[net_onidrange]: /dotnet/api/microsoft.azure.batch.taskdependencies
+[net_taskexecutioninformation]: /dotnet/api/microsoft.azure.batch.taskexecutioninformation
+[net_taskstate]: /dotnet/api/microsoft.azure.batch.common.taskstate
+[net_usestaskdependencies]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_taskdependencies]: /dotnet/api/microsoft.azure.batch.taskdependencies
 
 [1]: ./media/batch-task-dependency/01_one_to_one.png "Diagram: závislost 1:1"
 [2]: ./media/batch-task-dependency/02_one_to_many.png "Diagram: závislost 1: n"

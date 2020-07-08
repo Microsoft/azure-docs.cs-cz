@@ -7,19 +7,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: dd1c4e724e70507816aa4b6ba652adfb998a8cc0
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 0f8078c52945b52a27144c1f73ea4a136bf536d8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783397"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963151"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Strategie ověřování služby měření na Marketplace
 
 Služba měření na Marketplace podporuje dvě strategie ověřování:
 
-* [Token zabezpečení Azure AD](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)
-* [Spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) 
+* [Token zabezpečení Azure AD](../../active-directory/develop/access-tokens.md)
+* [Spravované identity](../../active-directory/managed-identities-azure-resources/overview.md) 
 
 Vysvětlíme, kdy a jak používat různé strategie ověřování k bezpečnému odesílání vlastních měřičů pomocí služby měření na webu Marketplace.
 
@@ -38,7 +38,7 @@ Pro aplikace Azure s plánem spravované aplikace byste měli zvážit použití
 
 Po zaregistrování aplikace můžete programově požádat o token zabezpečení Azure AD. Očekává se, že vydavatel použije tento token a vytvoří požadavek na jeho vyřešení.
 
-Další informace o těchto tokenech naleznete v tématu [Azure Active Directory Access tokens](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
+Další informace o těchto tokenech naleznete v tématu [Azure Active Directory Access tokens](../../active-directory/develop/access-tokens.md).
 
 ### <a name="get-a-token-based-on-the-azure-ad-app"></a>Získání tokenu založeného na aplikaci Azure AD
 
@@ -106,17 +106,17 @@ Použití tohoto přístupu umožní, aby se identita nasazených prostředků o
 >[!Note]
 >Vydavatel by měl zajistit, aby prostředky, které emitují použití, byly uzamčené, takže nebude manipulováno.
 
-Vaše spravovaná aplikace může obsahovat jiný typ prostředků, od Virtual Machines po Azure Functions.  Další informace o tom, jak ověřit pomocí spravovaných identit pro různé služby, najdete v tématu [Jak používat spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-can-i-use-managed-identities-for-azure-resources).
+Vaše spravovaná aplikace může obsahovat jiný typ prostředků, od Virtual Machines po Azure Functions.  Další informace o tom, jak ověřit pomocí spravovaných identit pro různé služby, najdete v tématu [Jak používat spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md#how-can-i-use-managed-identities-for-azure-resources).
 
 Například použijte následující postup k ověření pomocí virtuálního počítače s Windows.
 
 1. Ujistěte se, že je spravovaná identita nakonfigurovaná pomocí jedné z metod:
-    * [Azure Portal UI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-    * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Šablona Azure Resource Manager](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-    * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
-    * [Sady Azure SDK](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+    * [Azure Portal UI](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+    * [Rozhraní příkazového řádku](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+    * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+    * [Šablona Azure Resource Manager](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [REST](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
+    * [Sady Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 1. Získejte přístupový token pro ID aplikace služby na webu Marketplace ( `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` ) pomocí identity systému, na virtuálním počítači RDP, otevřete konzolu PowerShellu a spusťte příkaz níže.
 

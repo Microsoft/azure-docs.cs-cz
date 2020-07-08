@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 3c0ee2f8d5291f7904435dea32d913adeaaf25c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27a51a1203b0c25474bdb292c467a40b67309757
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262362"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964426"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Pracovní účty společnosti a partnerské Centrum
 
@@ -23,7 +23,7 @@ Partnerské centrum používá pracovní účty společnosti, označované také
 Pokud se vaše společnost přihlásila k odběru cloudové služby Microsoftu, jako je Azure, Microsoft Intune nebo Office 365, pak už máte pracovní e-mailový účet (označovaný také jako Azure Active Directory tenant), který se dá použít s partnerským centrem.
 
 Pomocí těchto kroků zkontrolujete:
-1. Přihlaste se na portál pro správu https://portal.azure.comAzure na adrese.
+1. Přihlaste se na portál pro správu Azure na adrese https://portal.azure.com .
 2. V navigační nabídce vlevo vyberte **Azure Active Directory** a pak vyberte **vlastní názvy domén**.
 3. Pokud již máte pracovní účet, bude uveden název vaší domény.
 
@@ -38,13 +38,13 @@ Než se rozhodnete použít stávající pracovní účet, vezměte v úvahu, ko
 Chcete-li vytvořit nový pracovní účet pro vaši společnost, postupujte podle následujících kroků. Možná budete muset požádat o pomoc od osoby, která má oprávnění správce na účtu Microsoft Azure vaší společnosti.
 
 1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
-2. V navigační nabídce vlevo vyberte **Azure Active Directory** -> **Uživatelé**.
+2. V navigační nabídce vlevo vyberte **Azure Active Directory**  ->  **Uživatelé**.
 3. Vyberte **Nový uživatel** a vytvořte nový pracovní účet Azure zadáním jména a e-mailové adresy. Ujistěte se, že je **role adresáře** nastavená na hodnotu **uživatel** a v dolní části zaškrtněte políčko **Zobrazit heslo** , a poznamenejte si automaticky vygenerované heslo.
 4. Výběrem **vytvořit** uložte nového uživatele.
 
-E-mailová adresa uživatelského účtu musí být ověřený název domény v adresáři. Všechny ověřené domény v adresáři můžete zobrazit tak, že v nabídce vlevo vyberete **Azure Active Directory** -> **vlastní názvy domén** .
+E-mailová adresa uživatelského účtu musí být ověřený název domény v adresáři. Všechny ověřené domény v adresáři můžete zobrazit tak, že v nabídce vlevo vyberete **Azure Active Directory**  ->  **vlastní názvy domén** .
 
-Další informace o přidávání vlastních domén v Azure Active Directory najdete v tématu [Přidání nebo přidružení domény ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-add-domain).
+Další informace o přidávání vlastních domén v Azure Active Directory najdete v tématu [Přidání nebo přidružení domény ve službě Azure AD](../../active-directory/active-directory-add-domain.md).
 
 ## <a name="troubleshoot-work-email-sign-in"></a>Řešení potíží s přihlášením k pracovnímu e-mailu
 

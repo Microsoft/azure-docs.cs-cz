@@ -3,12 +3,12 @@ title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 46c78fe1c45d2effe03008667dd424d943d75ec4
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: f71be75c0358dbc7f76a61680df2c54f44bc4173
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888379"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964038"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -80,7 +80,7 @@ Podobně jako u rolí pracovního procesu v rámci služby Cloud Services může
 
 ### <a name="node-agent-skus"></a>SKU agenta uzlu
 
-Když vytvoříte fond, je nutné vybrat odpovídající **nodeAgentSkuId**, v závislosti na operačním systému základní image vašeho disku VHD. Můžete získat mapování dostupných ID SKU agenta uzlu na odkazy na image operačního systému voláním operace [seznam podporovaných SKU agenta uzlu](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus) .
+Když vytvoříte fond, je nutné vybrat odpovídající **nodeAgentSkuId**, v závislosti na operačním systému základní image vašeho disku VHD. Můžete získat mapování dostupných ID SKU agenta uzlu na odkazy na image operačního systému voláním operace [seznam podporovaných SKU agenta uzlu](/rest/api/batchservice/list-supported-node-agent-skus) .
 
 ### <a name="custom-images-for-virtual-machine-pools"></a>Vlastní image pro fondy virtuálních počítačů
 
@@ -129,7 +129,7 @@ Vzorec škálování může být založen na následujících metrikách:
 - **Metriky prostředků** jsou založeny na využití procesoru, šířky pásma a paměti a na počtu uzlů.
 - **Metriky úkolů** jsou založeny na stavu úkolů, jako je například *Aktivní* (zařazený do fronty), *Spuštěný* nebo *Dokončený*.
 
-Když automatické škálování snižuje počet výpočetních uzlů ve fondu, je nutné zvážit, jak naložit s úkoly, které v okamžiku snižování již běží. V rámci této služby poskytuje funkce Batch [*možnost zrušení přidělení uzlu*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) , kterou můžete zahrnout do vzorců. Můžete například zadat, že spuštěné úkoly se mají okamžitě zastavit a pak znovu zařadit do fronty pro provedení na jiném uzlu, nebo nechat dokončit před odebráním uzlu z fondu. Všimněte si, že nastavení možnosti zrušení přidělení uzlu jako `taskcompletion` nebo `retaineddata` zabrání operacím změny velikosti fondu, dokud nebudou dokončeny všechny úlohy nebo dokud nevyprší platnost všech dob uchovávání úkolů.
+Když automatické škálování snižuje počet výpočetních uzlů ve fondu, je nutné zvážit, jak naložit s úkoly, které v okamžiku snižování již běží. V rámci této služby poskytuje funkce Batch [*možnost zrušení přidělení uzlu*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption) , kterou můžete zahrnout do vzorců. Můžete například zadat, že spuštěné úkoly se mají okamžitě zastavit a pak znovu zařadit do fronty pro provedení na jiném uzlu, nebo nechat dokončit před odebráním uzlu z fondu. Všimněte si, že nastavení možnosti zrušení přidělení uzlu jako `taskcompletion` nebo `retaineddata` zabrání operacím změny velikosti fondu, dokud nebudou dokončeny všechny úlohy nebo dokud nevyprší platnost všech dob uchovávání úkolů.
 
 Další informace o automatickém škálování aplikace naleznete v tématu [Automatické škálování výpočetních uzlů ve fondu Azure Batch](batch-automatic-scaling.md).
 
@@ -189,7 +189,7 @@ Kombinovaný přístup se obvykle používá ke zpracování proměnné, ale pr�
 
 Při šifrování nebo dešifrování citlivých informací pro úkoly, jako je klíč pro [účet Azure Storage](accounts.md#azure-storage-accounts), je obvykle třeba použít certifikáty. Z toho důvodu můžete na uzly nainstalovat certifikáty. Šifrované tajné klíče jsou předány na úkoly prostřednictvím parametrů příkazového řádku nebo vložené v jednom prostředků úkolu a nainstalované certifikáty lze použít pro jejich dešifrování.
 
-K přidání certifikátu do účtu služby Batch můžete použít operaci [Přidat certifikát](https://docs.microsoft.com/rest/api/batchservice/certificate/add) (Batch REST) nebo metodu [CertificateOperations.CreateCertificate](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.certificateoperations) (Batch .NET). Poté můžete certifikát přidružit k novému nebo existujícímu fondu.
+K přidání certifikátu do účtu služby Batch můžete použít operaci [Přidat certifikát](/rest/api/batchservice/certificate/add) (Batch REST) nebo metodu [CertificateOperations.CreateCertificate](/dotnet/api/microsoft.azure.batch.certificateoperations) (Batch .NET). Poté můžete certifikát přidružit k novému nebo existujícímu fondu.
 
 Pokud je certifikát přidružený k fondu, služba Batch nainstaluje certifikát na každý uzel ve fondu. Služba Batch nainstaluje příslušné certifikáty při spuštění uzlu před spuštěním jakékoli úlohy (včetně úlohy [Spustit úlohu](jobs-and-tasks.md#start-task) a [Správce úloh](jobs-and-tasks.md#job-manager-task)).
 

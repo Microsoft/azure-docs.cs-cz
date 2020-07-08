@@ -7,16 +7,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 856555008f5edb04c167e00f3db49abc9e5e6402
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b83b6fc0da6a8b2016676d7fb748fc87880868f3
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740005"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964562"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>Služba pro detekci anomálií pro účtované měřené platby
 
-[Služba měření na webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis-faq) umožňuje vytvářet nabídky v programu komerčního tržiště, které se účtují podle nestandardních jednotek. S měřením fakturace odesíláte do Microsoftu události využití vašeho zákazníka a na základě tohoto využití připravujeme fakturaci.
+[Služba měření na webu Marketplace](marketplace-metering-service-apis-faq.md) umožňuje vytvářet nabídky v programu komerčního tržiště, které se účtují podle nestandardních jednotek. S měřením fakturace odesíláte do Microsoftu události využití vašeho zákazníka a na základě tohoto využití připravujeme fakturaci.
 
 Nesprávná data o využití můžou pocházet z nejrůznějších příčin, jako jsou chyby, chybné konfigurace při sledování spotřeby nebo podvod. Nesprávná data o použití by způsobila nesprávné poplatky za zákazníky a případné spory.
 
@@ -74,8 +74,8 @@ Odeslání lístku:
     - **Komerční tržiště**  >  **Měřené fakturace**  >  **Nesprávné použití odeslané pro nabídku SaaS**
 3. V části **Další krok**vyberte tlačítko **revidovat řešení** , které se má směrovat, abyste se přihlásili do partnerského centra pro odeslání lístku podpory.
 
-Další možnosti podpory vydavatelů najdete [v tématu Podpora programu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support).
+Další možnosti podpory vydavatelů najdete [v tématu Podpora programu komerčního tržiště v partnerském centru](support.md).
 
 ## <a name="next-step"></a>Další krok
 
-- Seznamte se s [rozhraním API služby pro měření na webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis).
+- Seznamte se s [rozhraním API služby pro měření na webu Marketplace](marketplace-metering-service-apis.md).

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 5bd89e406c3067585595479dc1d8351e9ea7eea8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: a4b788749e6178c49010b153fb5caae35b79abf9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856114"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963576"
 ---
 # <a name="publishing-guide-for-azure-managed-applications"></a>Průvodce publikováním pro spravované aplikace Azure
 
@@ -34,7 +34,7 @@ Typ nabídky spravovaných aplikací použijte při těchto podmínkách:
 |---------|---------|
 |Předplatné Azure | Spravované aplikace musí být nasazeny do předplatného zákazníka, ale mohou být spravovány třetí stranou. |
 |Fakturace a měření    |  Prostředky jsou k dispozici v předplatném Azure zákazníka. Virtuální počítače, které používají platební model průběžných plateb, se účtují u zákazníka přes Microsoft a účtují se prostřednictvím předplatného Azure zákazníka. <br><br> V případě virtuálních počítačů využívajících vlastní licenci společnost Microsoft účtuje náklady na infrastrukturu, které se účtují v rámci předplatného zákazníka, ale poplatky za licence na software se zákazníky účtují přímo.        |
-|Virtuální pevný disk kompatibilní s Azure (VHD)    |   Virtuální počítače musí být postavené na Windows nebo Linux.<br><br>Další informace o vytvoření virtuálního pevného disku se systémem Linux najdete v tématu [distribuce systému Linux schválené v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).<br><br>Další informace o vytvoření virtuálního pevného disku s Windows najdete v tématu věnovaném [Vytvoření nabídky aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md). |
+|Virtuální pevný disk kompatibilní s Azure (VHD)    |   Virtuální počítače musí být postavené na Windows nebo Linux.<br><br>Další informace o vytvoření virtuálního pevného disku se systémem Linux najdete v tématu [distribuce systému Linux schválené v Azure](../virtual-machines/linux/endorsed-distros.md).<br><br>Další informace o vytvoření virtuálního pevného disku s Windows najdete v tématu věnovaném [Vytvoření nabídky aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md). |
 
 ---
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 609b5903d02e9265e211cf25606ae3852e03e913
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 6138dc06e8ed70ba85f4ccfc3370c044f34bd1f1
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254017"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963950"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Kurz: nastavení Synchronizace dat SQL mezi databázemi v Azure SQL Database a SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -63,7 +63,7 @@ Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat S
    | **Řešení konfliktů** | Vyberte možnost **Win hub** nebo **Member Win**.<br/><br/>**Výher centra** znamená, že když dojde ke konfliktům, data v databázi centra přepíší konfliktní data v členské databázi.<br/><br/>**Člen výher** znamená, že když dojde ke konfliktům, data v členské databázi přepíší konfliktní data v databázi centra. |
 
    > [!NOTE]
-   > Společnost Microsoft doporučuje vytvořit novou, prázdnou databázi pro použití jako **databázi metadat synchronizace**. Synchronizace dat vytvoří tabulky v této databázi a spustí časté úlohy. Tato databáze je sdílená jako **databáze metadat synchronizace** pro všechny skupiny synchronizace ve vybrané oblasti a databázi ani její název nemůžete změnit, aniž byste museli odstranit všechny skupiny synchronizace a agenty synchronizace v této oblasti.
+   > Společnost Microsoft doporučuje vytvořit novou, prázdnou databázi pro použití jako **databázi metadat synchronizace**. Synchronizace dat vytvoří tabulky v této databázi a spustí časté úlohy. Tato databáze je sdílená jako **databáze metadat synchronizace** pro všechny skupiny synchronizace ve vybrané oblasti a předplatném. Nemůžete změnit databázi ani její název, aniž byste odebrali všechny skupiny synchronizace a agenty synchronizace v oblasti.
 
    Vyberte **OK** a počkejte, než se skupina synchronizace vytvoří a nasadí.
 

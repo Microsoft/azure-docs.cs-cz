@@ -7,20 +7,20 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 6a5335a1048adaa50344e75662b4ad593955f34d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7bc5dc0e21bc9218c0e67b4e8e96299d73628e97
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84694939"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963168"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Rozhraní API pro fakturaci měření na webu Marketplace
 
 Rozhraní API měřeného účtování by se měla použít, když Vydavatel vytvoří vlastní rozměry měření pro nabídku, která se má publikovat v partnerském centru. Pro všechny koupené nabídky, které mají jeden nebo více plánů s vlastními dimenzemi k vygenerování událostí využití, se vyžaduje integrace s použitím rozhraní API pro účtované účtování.
 
-Další informace o vytváření vlastních dimenzí měření pro SaaS najdete v tématu [SaaS měřených faktur](https://docs.microsoft.com/azure/marketplace/partner-center-portal/saas-metered-billing).
+Další informace o vytváření vlastních dimenzí měření pro SaaS najdete v tématu [SaaS měřených faktur](saas-metered-billing.md).
 
-Další informace o vytváření vlastních dimenzí měření pro nabídku aplikací Azure s plánem spravované aplikace najdete v [části technická konfigurace v tématu Vytvoření nové nabídky aplikací Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer#technical-configuration-managed-application-plans-only).
+Další informace o vytváření vlastních dimenzí měření pro nabídku aplikací Azure s plánem spravované aplikace najdete v [části technická konfigurace v tématu Vytvoření nové nabídky aplikací Azure](create-new-azure-apps-offer.md#technical-configuration).
 
 ## <a name="enforcing-tls-12-note"></a>Poznámka k vynucení TLS 1,2
 
@@ -38,14 +38,14 @@ Pro každou hodinu kalendářního dne a prostředku se dá vygenerovat jenom je
 
 *Parametry dotazu:*
 
-|            |          |
+| Parametru | Doporučení          |
 | ---------- | ---------------------- |
 | `ApiVersion` | Použijte 2018-08-31. |
 | | |
 
 *Hlavičky žádosti:*
 
-| Typ obsahu       | `application/json`    |
+| Typ obsahu       | Použití `application/json`  |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe pro identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
 | `x-ms-correlationid` | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |
@@ -151,13 +151,13 @@ Rozhraní API události využití dávky umožňuje generovat události využit�
 
 *Parametry dotazu:*
 
-|            |     |
+| Parametr  | Doporučení     |
 | ---------- | -------------------- |
 | `ApiVersion` | Použijte 2018-08-31. |
 
 *Hlavičky žádosti:*
 
-| Typ obsahu       | `application/json`       |
+| Typ obsahu       | Použití `application/json`       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | Jedinečná řetězcová hodnota pro sledování požadavku z klienta, nejlépe pro identifikátor GUID. Pokud tato hodnota není zadána, bude vygenerována a uvedena v hlavičkách odpovědi. |
 | `x-ms-correlationid` | Jedinečná řetězcová hodnota pro operaci na klientovi. Tento parametr koreluje všechny události z klientské operace s událostmi na straně serveru. Pokud tato hodnota není k dispozici, bude vygenerována a uvedena v hlavičkách odpovědi. |

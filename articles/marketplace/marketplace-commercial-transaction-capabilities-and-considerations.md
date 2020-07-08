@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: dsindona
-ms.openlocfilehash: b190f2392fae11b074b2ee90a1c89f272b88818d
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: c7b13f74e63b9e74924efb70e7c9a70f6fda2d3c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84790293"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964460"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -176,7 +176,7 @@ V této části jsou popsány požadavky na transakční pro různé typy nabíd
 - Pro možnost publikování v režimu Transact se vyžadují účet Microsoft a finanční informace, bez ohledu na cenový model nabídky.
 - Povinné finanční informace zahrnují účet výběr a daňový profil.
 
-Další informace o nastavení těchto účtů najdete v tématu [Správa účtu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).
+Další informace o nastavení těchto účtů najdete v tématu [Správa účtu komerčního tržiště v partnerském centru](partner-center-portal/manage-account.md).
 
 ### <a name="requirements-for-specific-offer-types"></a>Požadavky na konkrétní typy nabídek
 

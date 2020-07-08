@@ -4,12 +4,12 @@ description: Naučte se, jak pomocí Azure Batch knihovny konvencí souborů pro
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8dea7f503536a4eb2b0c36db7b3d35b70eb8a67
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726328"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965191"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Trvalá data úloh a úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET
 
@@ -153,7 +153,7 @@ using (ITrackedSaveOperation stdout =
 
 Oddíl s komentářem `Code to process data and produce output file(s)` je zástupný symbol pro kód, který by úkol normálně prováděl. Například můžete mít kód, který stáhne data z Azure Storage a provede transformaci nebo výpočet. Důležitou součástí tohoto fragmentu kódu je demonstrace, jak můžete tento kód v bloku zabalit `using` , aby se soubor pravidelně aktualizoval pomocí [SaveTrackedAsync][net_savetrackedasync].
 
-Agent uzlu je program, který běží na všech uzlech ve fondu a poskytuje rozhraní příkazového a řídicího prostředí mezi uzlem a službou Batch. `Task.Delay`Volání je vyžadováno na konci tohoto `using` bloku, aby bylo zajištěno, že agent Node bude časem vyprázdnit obsah standardního souboru STDOUT. txt na uzlu. Bez této prodlevy je možné vymezit několik posledních sekund výstupu. Toto zpoždění nemusí být vyžadováno pro všechny soubory.
+Agent uzlu je program, který běží na všech uzlech ve fondu a poskytuje rozhraní příkazového a řídicího prostředí mezi uzlem a službou Batch. `Task.Delay`Volání je vyžadováno na konci tohoto `using` bloku, aby bylo zajištěno, že agent Node má čas vyprázdnit obsah standardu na stdout.txt souboru na uzlu. Bez této prodlevy je možné vymezit několik posledních sekund výstupu. Toto zpoždění nemusí být vyžadováno pro všechny soubory.
 
 > [!NOTE]
 > Když povolíte sledování souborů pomocí **SaveTrackedAsync**, budou trvale *připojeny* jenom ke sledovanému souboru, aby se Azure Storage. Tuto metodu použijte pouze pro sledování nerotujících souborů protokolu nebo jiných souborů, které jsou zapsány do nástroje pomocí operací Append na konec souboru.
@@ -198,7 +198,7 @@ Pokud chcete zobrazit výstupní soubory úlohy a protokoly v Azure Portal, pře
 Vzorový projekt [PersistOutputs][github_persistoutputs] je jednou z [Azure Batch ukázek kódu][github_samples] na GitHubu. Toto řešení sady Visual Studio ukazuje, jak použít knihovnu Azure Batchch konvencí souborů k trvalému uložení výstupu úlohy do trvalého úložiště. Chcete-li spustit ukázku, postupujte podle následujících kroků:
 
 1. Otevřete projekt v **aplikaci Visual Studio 2019**.
-2. Přidejte **přihlašovací údaje** služby Batch a účtu úložiště do **AccountSettings. Settings** v projektu Microsoft. Azure. batch. Samples. Common.
+2. Přidejte **přihlašovací údaje** služby Batch a účtu úložiště do **AccountSettings. settings** v projektu Microsoft.Azure.Batch. Samples. Common.
 3. **Sestavte** (ale nespouštějte) řešení. Pokud se zobrazí výzva, obnovte případné balíčky NuGet.
 4. Pomocí Azure Portal nahrajte [balíček aplikace](batch-application-packages.md) pro **PersistOutputsTask**. Zahrňte `PersistOutputsTask.exe` a jeho závislá sestavení v balíčku. zip, nastavte ID aplikace na "PersistOutputsTask" a verzi balíčku aplikace na "1,0".
 5. **Spusťte** (spusťte) projekt **PersistOutputs** .
@@ -208,7 +208,7 @@ Vzorový projekt [PersistOutputs][github_persistoutputs] je jednou z [Azure Batc
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>Získání knihovny pro konvence souborů Batch pro .NET
 
-Knihovna konvence souborů služby Batch pro .NET je dostupná na [NuGet][nuget_package]. Knihovna rozšiřuje třídy [vlastnosti cloudjob][net_cloudjob] a [CloudTask][net_cloudtask] novými metodami. Podívejte se také na [referenční dokumentaci](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files) knihovny pro konvence souborů.
+Knihovna konvence souborů služby Batch pro .NET je dostupná na [NuGet][nuget_package]. Knihovna rozšiřuje třídy [vlastnosti cloudjob][net_cloudjob] a [CloudTask][net_cloudtask] novými metodami. Podívejte se také na [referenční dokumentaci](/dotnet/api/microsoft.azure.batch.conventions.files) knihovny pro konvence souborů.
 
 [Zdrojový kód][github_file_conventions] knihovny pro konvence souborů je k dispozici na GitHubu v úložišti Microsoft Azure SDK pro .NET. 
 
@@ -222,20 +222,20 @@ Knihovna konvence souborů služby Batch pro .NET je dostupná na [NuGet][nuget_
 [github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
-[net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
-[net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.cloudstorageaccount
-[net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
+[net_batchclient]: /dotnet/api/microsoft.azure.batch.batchclient
+[net_cloudjob]: /dotnet/api/microsoft.azure.batch.cloudjob
+[net_cloudstorageaccount]: /java/api/com.microsoft.azure.storage.cloudstorageaccount
+[net_cloudtask]: /dotnet/api/microsoft.azure.batch.cloudtask
 [net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
-[net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
-[net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
-[net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx
-[net_msdn]: https://msdn.microsoft.com/library/azure/mt348682.aspx
-[net_prepareoutputasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync.aspx
-[net_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx
-[net_savetrackedasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync.aspx
-[net_taskoutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputkind.aspx
-[net_taskoutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx
+[net_joboutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputkind
+[net_joboutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage
+[net_joboutputstorage_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync
+[net_msdn]: /dotnet/api/microsoft.azure.batch
+[net_prepareoutputasync]: /dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.prepareoutputstorageasync
+[net_saveasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync
+[net_savetrackedasync]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.savetrackedasync
+[net_taskoutputkind]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputkind
+[net_taskoutputstorage]: /dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage
 [nuget_manager]: https://docs.nuget.org/consume/installing-nuget
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [portal]: https://portal.azure.com

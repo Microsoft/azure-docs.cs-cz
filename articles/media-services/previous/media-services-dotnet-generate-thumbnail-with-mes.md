@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6bc29c098bcf7ef1d1a2e2532a00c95f0ec7e927
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 3c5e22c14d0df46ddac9a503f43df8d54c3c93d5
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "61244225"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964749"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Postup generování miniatur pomocí kodéru Media Encoder Standard a .NET 
 
@@ -408,9 +408,12 @@ Následující příklad kódu používá sadu Media Services .NET SDK k provád
 * Vytvořte úlohu kódování.
 * Získejte odkaz na kodér Media Encoder Standard.
 * Načtěte přednastavený [soubor XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) , který obsahuje přednastavení kódování, i informace potřebné k vygenerování miniatur. Tento soubor [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) nebo [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) můžete uložit do souboru a použít následující kód k načtení souboru.
-  
-        // Load the XML (or JSON) from the local file.
-        string configuration = File.ReadAllText(fileName);  
+
+    ```csharp
+    // Load the XML (or JSON) from the local file.
+    string configuration = File.ReadAllText(fileName);  
+    ```
+
 * Přidejte do úlohy jednu úlohu kódování. 
 * Určete vstupní Asset, který se má zakódovat.
 * Vytvořte výstupní Asset, který obsahuje kódovaný Asset.
@@ -545,7 +548,7 @@ namespace EncodeAndGenerateThumbnails
 }
 ```
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 Platí následující důležité informace:
 
 * Použití explicitních časových razítek pro počátek/krok/rozsah předpokládá, že vstupní zdroj je alespoň 1 minuta dlouhý.

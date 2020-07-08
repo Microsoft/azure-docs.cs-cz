@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 49f86a79eb5358d27c15d93004db396436c3e680
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9783eb1dbcbfc3ee01008dfa33ff2429a87cf62a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657954"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963372"
 ---
 # <a name="iot-edge-modules"></a>Moduly IoT Edge
 
@@ -30,7 +30,7 @@ S [IoT Edge moduly v Azure Marketplace](https://azuremarketplace.microsoft.com/m
 
 ## <a name="what-is-an-iot-edge-module"></a>Co je modul IoT Edge?
 
-Azure IoT Edge umožňuje nasadit a spravovat obchodní logiku na hraničních zařízeních ve formě modulů. Azure IoT Edge moduly jsou nejmenší výpočetní jednotky spravované IoT Edge a můžou obsahovat služby Microsoftu (například Azure Stream Analytics), služby třetích stran nebo vlastní kód specifický pro řešení. Další informace o IoT Edgech modulech najdete v tématu [principy Azure IoT Edgech modulů](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules).
+Azure IoT Edge umožňuje nasadit a spravovat obchodní logiku na hraničních zařízeních ve formě modulů. Azure IoT Edge moduly jsou nejmenší výpočetní jednotky spravované IoT Edge a můžou obsahovat služby Microsoftu (například Azure Stream Analytics), služby třetích stran nebo vlastní kód specifický pro řešení. Další informace o IoT Edgech modulech najdete v tématu [principy Azure IoT Edgech modulů](../iot-edge/iot-edge-modules.md).
 
 **Jaký je rozdíl mezi typem nabídky kontejneru a typem nabídky modulu IoT Edge?**
 
@@ -40,7 +40,7 @@ Typ nabídky IoT Edge modul je konkrétní typ kontejneru, který je spuštěný
 
 **Výběr pravého prezentaceu**
 
-IoT Edge moduly jsou publikovány pouze do Azure Marketplace, AppSource se nevztahují.  Další informace o rozdílech a cílové skupině v různých prodejní místa najdete v tématu [Určení možnosti publikování pro vaše řešení](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
+IoT Edge moduly jsou publikovány pouze do Azure Marketplace, AppSource se nevztahují.  Další informace o rozdílech a cílové skupině v různých prodejní místa najdete v tématu [Určení možnosti publikování pro vaše řešení](determine-your-listing-type.md).
  
 **Možnosti fakturace**
 
@@ -48,7 +48,7 @@ Web Marketplace v současnosti podporuje **bezplatné** možnosti fakturace a p�
  
 **Možnosti publikování**
 
-Ve všech případech by IoT Edge moduly měly vybrat možnost publikování v režimu **Transact** .  Další podrobnosti o možnostech publikování najdete v tématu Volba [Možnosti publikování](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) .  
+Ve všech případech by IoT Edge moduly měly vybrat možnost publikování v režimu **Transact** .  Další podrobnosti o možnostech publikování najdete v tématu Volba [Možnosti publikování](determine-your-listing-type.md) .  
 
 ## <a name="eligibility-criteria"></a>Kritéria způsobilosti
 
@@ -58,7 +58,7 @@ Všechny podmínky Microsoft Azure Marketplace smluv a zásad se vztahují na na
 
 Chcete-li publikovat modul IoT Edge do Azure Marketplace, je nutné splnit následující požadavky:
 
-- Přístup k partnerskému centru. Další informace najdete v tématu [Příručka pro publikování Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+- Přístup k partnerskému centru. Další informace najdete v tématu [Příručka pro publikování Azure Marketplace a AppSource](marketplace-publishers-guide.md).
 - Hostování modulu IoT Edge v Azure Container Registry. 
 - Připravte si metadata modulu IoT Edge, například (nevyčerpávající seznam): 
     - Název

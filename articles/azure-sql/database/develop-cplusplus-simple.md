@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: 62e3eb73b165a190e9234470471bd699141e8a5f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 610e21064c26734461ba8fd6639868dc930f926c
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050489"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963933"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Připojení k SQL Database pomocí jazyka C a C++
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +55,7 @@ V [Azure Portal](https://portal.azure.com/)do Azure SQL Database připojovacího
 
 ![ODBCConnectionStringProps](./media/develop-cplusplus-simple/dbconnection.png)
 
-Zkopírujte obsah řetězce **ODBC (včetně Node. js) [ověřování SQL]** . Tento řetězec používáme později pro připojení z našeho překladače příkazového řádku C++ ODBC. Tento řetězec poskytuje podrobnosti, jako jsou například ovladače, server a další parametry připojení databáze.
+Zkopírujte obsah **rozhraní ODBC (zahrnuje Node.js) řetězec [ověřování SQL]** . Tento řetězec používáme později pro připojení z našeho překladače příkazového řádku C++ ODBC. Tento řetězec poskytuje podrobnosti, jako jsou například ovladače, server a další parametry připojení databáze.
 
 ## <a name="step-3--add-your-ip-to-the-firewall"></a><a id="Firewall"></a>Krok 3: Přidání IP adresy do brány firewall
 
@@ -91,12 +91,14 @@ Pro účely tohoto kurzu můžeme předpokládat, že máte nastavenou distribuc
 
 Následující postup nainstaluje knihovny potřebné pro SQL a ODBC pro distribuce:
 
+```console
     sudo su
     sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/mssql-ubuntu-test/ xenial main" > /etc/apt/sources.list.d/mssqlpreview.list'
     sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
     apt-get update
     apt-get install msodbcsql
     apt-get install unixodbc-dev-utf16 #this step is optional but recommended*
+```
 
 Spusťte Visual Studio. V nabídce nástroje – > možnosti – > Správce připojení pro různé platformy > přidejte připojení do pole Linux:
 
@@ -109,11 +111,13 @@ Po navázání připojení přes SSH vytvořte prázdnou šablonu projektu (Linu
 Pak můžete přidat [nový zdrojový soubor C a nahradit ho tímto obsahem](https://github.com/Microsoft/VCSamples/blob/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29/odbcconnector/odbcconnector.c). Pomocí rozhraní ODBC API SQLAllocHandle, SQLSetConnectAttr a SQLDriverConnect byste měli být schopni inicializovat a navázat připojení k databázi.
 Podobně jako u ukázky rozhraní ODBC systému Windows je třeba nahradit volání SQLDriverConnect podrobnostmi z parametrů připojovacího řetězce databáze zkopírovaných z Azure Portal dříve.
 
+```c
      retcode = SQLDriverConnect(
         hdbc, NULL, "Driver=ODBC Driver 13 for SQL"
                     "Server;Server=<yourserver>;Uid=<yourusername>;Pwd=<"
                     "yourpassword>;database=<yourdatabase>",
         SQL_NTS, outstr, sizeof(outstr), &outstrlen, SQL_DRIVER_NOPROMPT);
+```
 
 Poslední věc, kterou je třeba provést před kompilací, je přidat **rozhraní ODBC** jako závislost knihovny:
 

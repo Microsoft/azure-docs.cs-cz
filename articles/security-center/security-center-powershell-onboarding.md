@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ca5cdcb0410d52f40e28c66a839bddcb34cc8a8
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80435483"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963355"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace připojování Azure Security Center pomocí prostředí PowerShell
 
@@ -45,54 +45,55 @@ V tomto příkladu povolíme Security Center v předplatném s ID: d07c0080-170c
 
 Tyto kroky je potřeba provést před spuštěním rutin Security Center:
 
-1.  Spusťte PowerShell jako správce.
-2.  V prostředí PowerShell spusťte následující příkazy:
+1. Spusťte PowerShell jako správce.
+
+1. V prostředí PowerShell spusťte následující příkazy:
       
-        Set-ExecutionPolicy -ExecutionPolicy AllSigned
-        Install-Module -Name Az.Security -Force
+    ```Set-ExecutionPolicy -ExecutionPolicy AllSigned```
+
+    ```Install-Module -Name Az.Security -Force```
 
 ## <a name="onboard-security-center-using-powershell"></a>Připojení Security Center s využitím PowerShellu
 
-1.  Zaregistrujte své odběry do poskytovatele prostředků Security Center:
+1. Zaregistrujte své odběry do poskytovatele prostředků Security Center:
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-2.  Volitelné: Nastavte úroveň pokrytí (cenová úroveň) předplatných (Pokud není definována, cenová úroveň je nastavená na volná):
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security'```
 
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
-        Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
+1. Volitelné: Nastavte úroveň pokrytí (cenová úroveň) předplatných (Pokud není definována, cenová úroveň je nastavená na volná):
 
-3.  Nakonfigurujte Log Analytics pracovní prostor, do kterého budou agenti hlásit. Musíte mít Log Analytics pracovní prostor, který jste už vytvořili, aby se virtuální počítače pro odběr nahlásily. Můžete definovat více předplatných pro sestavu do stejného pracovního prostoru. Pokud není definován, použije se výchozí pracovní prostor.
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
 
-        Set-AzSecurityWorkspaceSetting -Name "default" -Scope
-        "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
+    ```Set-AzSecurityPricing -Name "default" -PricingTier "Standard"```
 
-4.  Automatické zřizování instalace agenta Log Analytics na virtuálních počítačích Azure:
+1. Nakonfigurujte Log Analytics pracovní prostor, do kterého budou agenti hlásit. Musíte mít Log Analytics pracovní prostor, který jste už vytvořili, aby se virtuální počítače pro odběr nahlásily. Můžete definovat více předplatných pro sestavu do stejného pracovního prostoru. Pokud není definován, použije se výchozí pracovní prostor.
+
+    ```Set-AzSecurityWorkspaceSetting -Name "default" -Scope "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"```
+
+1. Automatické zřizování instalace agenta Log Analytics na virtuálních počítačích Azure:
     
-        Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+    ```Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"```
     
-        Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
+    ```Set-AzSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision```
 
     > [!NOTE]
     > Doporučuje se povolit Automatické zřizování, aby se zajistilo, že se virtuální počítače Azure automaticky chrání pomocí Azure Security Center.
     >
 
-5.  Volitelné: Důrazně doporučujeme, abyste definovali informace o kontaktu zabezpečení pro předplatná, která se budou používat jako příjemci výstrah a oznámení vygenerovaných Security Center:
+1. Volitelné: Důrazně doporučujeme, abyste definovali informace o kontaktu zabezpečení pro předplatná, která se budou používat jako příjemci výstrah a oznámení vygenerovaných Security Center:
 
-        Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
+    ```Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert```
 
-6.  Přiřaďte výchozí iniciativu zásad Security Center:
+1. Přiřaďte výchozí iniciativu zásad Security Center:
 
-        Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
-        $Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ '[Preview]: Enable Monitoring in Azure Security Center'}
-        New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
+    ```Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'```
 
-V prostředí PowerShell jste teď úspěšně připojili Azure Security Center.
+    ```$Policy = Get-AzPolicySetDefinition | where {$_.Properties.displayName -EQ 'Enable Monitoring in Azure Security Center'} New-AzPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'```
+
+Úspěšně jste připojili Azure Security Center k PowerShellu.
 
 Tyto rutiny PowerShellu teď můžete používat se skripty pro automatizaci k programové iteraci mezi předplatnými a prostředky. Tím ušetříte čas a snížíte pravděpodobnost lidské chyby. Tento [ukázkový skript](https://github.com/Microsoft/Azure-Security-Center/blob/master/quickstarts/ASC-Samples.ps1) můžete použít jako referenci.
-
-
 
 
 
@@ -100,7 +101,7 @@ Tyto rutiny PowerShellu teď můžete používat se skripty pro automatizaci k p
 ## <a name="see-also"></a>Viz také
 Další informace o tom, jak můžete pomocí PowerShellu automatizovat připojování k Security Center, najdete v následujícím článku:
 
-* [AZ. Security](https://docs.microsoft.com/powershell/module/az.security).
+* [AZ. Security](https://docs.microsoft.com/powershell/module/az.security)
 
 Další informace o Security Center najdete v následujícím článku:
 

@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: df9d1989253bd1e6b168aa00dad941917ca2dfd3
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85412477"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964630"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Cenový model pro Azure Logic Apps
 
@@ -49,7 +49,7 @@ Přečtěte si další informace o tom, jak účtování funguje na úrovních [
 
 * **Vývojář** ISE: Tato SKU neobsahuje žádné možnosti pro vertikální navýšení kapacity, žádnou smlouvu o úrovni služeb (SLA) a žádné publikované limity. Tuto SKU použijte pouze pro experimentování, vývoj a testování, nikoli pro produkční nebo výkonnostní testování.
 
-Pro aplikace logiky, které vytvoříte a spustíte v ISE, platíte za tyto funkce [pevnou měsíční cenu](https://azure.microsoft.com/pricing/details/logic-apps) :
+Pro aplikace logiky, které vytvoříte a spustíte v ISE, platíte za tyto funkce [pevnou cenu](https://azure.microsoft.com/pricing/details/logic-apps) (oproti platbám za použití):
 
 * [Předdefinované](../connectors/apis-list.md#built-in) triggery a akce
 
@@ -57,7 +57,7 @@ Pro aplikace logiky, které vytvoříte a spustíte v ISE, platíte za tyto funk
 
 * [Standardní](../connectors/apis-list.md#managed-connectors) konektory a [podnikové](../connectors/apis-list.md#enterprise-connectors) konektory, které umožňují mít tolik podnikových připojení, kolik potřebujete
 
-   Konektory Standard a Enterprise, které zobrazují popisek **ISE** , se spouštějí ve stejném ISE jako vaše aplikace logiky. Konektory, které neobsahují ISE, běží ve veřejné, víceklientské Logic Apps službě. Pevné měsíční ceny platí i pro konektory, které běží ve víceklientské službě, když je používáte s Logic Apps, které běží v ISE.
+   Konektory Standard a Enterprise, které zobrazují popisek **ISE** , se spouštějí ve stejném ISE jako vaše aplikace logiky. Konektory, které neobsahují ISE, běží ve veřejné, víceklientské Logic Apps službě. Pevné ceny platí taky pro konektory, které běží ve víceklientské službě, když je používáte s Logic Apps, které běží v ISE.
 
 * Využití [účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) bez dalších poplatků na základě [SKU ISE](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level):
 

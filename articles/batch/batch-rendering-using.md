@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5a37ebba7dd0622db7e76ecef1c3eda24d72b27
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726396"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965242"
 ---
 # <a name="using-azure-batch-rendering"></a>Použití vykreslování Azure Batch
 
@@ -19,8 +19,8 @@ K dispozici je několik způsobů, jak Azure Batch vykreslování použít:
 * Rozhraní API:
   * Pište kód pomocí kterékoli z rozhraní API pro Batch.  Vývojáři mohou integrovat Azure Batch možností do svých stávajících aplikací nebo pracovních postupů, ať už v cloudu, nebo na základě místního prostředí.
 * Nástroje příkazového řádku:
-  * Ke skriptování dávkového použití můžete použít [příkazový řádek Azure](https://docs.microsoft.com/cli/azure/) nebo [PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
-  * Konkrétně [Podpora šablon Batch CLI](https://docs.microsoft.com/azure/batch/batch-cli-templates) zjednodušuje vytváření fondů a odesílání úloh.
+  * Ke skriptování dávkového použití můžete použít [příkazový řádek Azure](/cli/azure/) nebo [PowerShell](/powershell/azure/overview) .
+  * Konkrétně [Podpora šablon Batch CLI](./batch-cli-templates.md) zjednodušuje vytváření fondů a odesílání úloh.
 * Batch Explorer uživatelské rozhraní:
   * [Batch Explorer](https://github.com/Azure/BatchLabs) je klientský nástroj pro různé platformy, který umožňuje spravovat a monitorovat účty Batch.
   * Pro každou aplikaci vykreslování je k dispozici řada šablon fondů a úloh, které lze použít ke snadnému vytváření fondů a odesílání úloh.  Sada šablon je uvedena v uživatelském rozhraní aplikace s soubory šablon, ke kterým se přistupoval z GitHubu.
@@ -32,7 +32,7 @@ Nejlepším způsobem, jak vyzkoušení Azure Batch pro koncové uživatele, kte
 
 ## <a name="using-batch-explorer"></a>Použití Batch Explorer
 
-Podrobný kurz pro použití Batch Explorer k provedení vykreslování najdete v [kurzu Blendu](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender).
+Podrobný kurz pro použití Batch Explorer k provedení vykreslování najdete v [kurzu Blendu](./tutorial-rendering-batchexplorer-blender.md).
 
 ### <a name="download-and-install"></a>Stáhnout a nainstalovat
 
@@ -65,5 +65,5 @@ Moduly plug-in jsou k dispozici pro některé klientské aplikace.  Moduly plug-
 
 Příklady dávkového vykreslování si můžete vyzkoušet v těchto dvou kurzech:
 
-* [Vykreslování pomocí Azure CLI](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)
-* [Vykreslování scén s využitím Batch Exploreru](https://docs.microsoft.com/azure/batch/tutorial-rendering-batchexplorer-blender)
+* [Vykreslování pomocí Azure CLI](./tutorial-rendering-cli.md)
+* [Vykreslování scén s využitím Batch Exploreru](./tutorial-rendering-batchexplorer-blender.md)

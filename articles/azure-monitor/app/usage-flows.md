@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892440"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963415"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analýza uživatelských vzorů navigace pomocí Toky uživatelů v Application Insights
 
-![Nástroj Application Insights Toky uživatelů](./media/usage-flows/00001-flows.png)
+![Nástroj Application Insights Toky uživatelů](./media/usage-flows/flows.png)
 
 Nástroj Toky uživatelů vizualizuje, jak uživatelé pohybují mezi stránkami a funkcemi vaší lokality. Je skvělé pro zodpovězení otázek, jako jsou:
 
@@ -33,7 +33,7 @@ Nástroj Toky uživatelů začíná od počátečního zobrazení stránky, vlas
 
 ## <a name="start-by-choosing-an-initial-event"></a>Začněte tím, že vyberete počáteční událost.
 
-![Vyberte počáteční událost pro Toky uživatelů](./media/usage-flows/00002-flows-initial-event.png)
+![Vyberte počáteční událost pro Toky uživatelů](./media/usage-flows/initial-event.png)
 
 Chcete-li začít s odpovědí na dotazy pomocí nástroje Toky uživatelů, vyberte počáteční zobrazení stránky, vlastní událost nebo výjimku, která slouží jako výchozí bod pro vizualizaci:
 
@@ -58,7 +58,7 @@ Pokud chcete zobrazit další kroky ve vizualizaci, použijte v rozevíracích s
 
 ## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Po navštívení stránky nebo funkce, kde uživatelé přejdou a co na ně klikne?
 
-![Použití Toky uživatelů k pochopení, kde uživatel klikne](./media/usage-flows/00003-flows-one-step.png)
+![Použití Toky uživatelů k pochopení, kde uživatel klikne](./media/usage-flows/one-step.png)
 
 Pokud vaše počáteční událost představuje zobrazení stránky, je prvním sloupcem ("krok 1") vizualizace rychlý způsob, jak zjistit, co uživatelé ihned po návštěvě stránky navštívili. Zkuste otevřít web v okně vedle Toky uživatelů vizualizace. Porovnejte vaše očekávání, jak uživatelé pracují se stránkou, do seznamu událostí ve sloupci "krok 1". Často je prvek uživatelského rozhraní na stránce, který se jeví jako nevýznamný pro váš tým, může vycházet z nejvíce používaného na stránce. Může se jednat o skvělý výchozí bod pro vylepšení návrhu webu.
 

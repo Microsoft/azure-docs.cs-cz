@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e850f719f64d1d845ca11ccefeefea2c8dc7fa26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 76312a55262d316c679bde2a69e8b98844addcb0
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195651"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963865"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Základní hodnoty zabezpečení Azure pro Batch
 
 Základní plán zabezpečení Azure pro službu Batch obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](../security/benchmarks/overview.md), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
 
@@ -140,7 +140,7 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: Udržujte standardní konfigurace zabezpečení pro síťová zařízení.
 
-**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky přidružené k vašim Azure Batch fondům s Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft. Batch a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich Azure Batch fondů.
+**Pokyny**: definování a implementace standardních konfigurací zabezpečení pro síťové prostředky přidružené k vašim Azure Batch fondům s Azure Policy. Pomocí aliasů Azure Policy v oborech názvů Microsoft.Batch a Microsoft. Network můžete vytvářet vlastní zásady pro auditování nebo vymáhání konfigurace sítě vašich fondů Azure Batch.
 
 Jak nakonfigurovat a spravovat Azure Policy:
 
@@ -188,7 +188,7 @@ Postup při vytváření výstrah v Azure Monitor:https://docs.microsoft.com/azu
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
@@ -312,7 +312,7 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a Access Control](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -510,7 +510,7 @@ Seznam podporovaných služeb Customer Lockbox:https://docs.microsoft.com/azure/
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
@@ -656,7 +656,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](../security/benchmarks/security-control-vulnerability-management.md)zabezpečení.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
@@ -704,7 +704,7 @@ Volitelně, pokud máte Rapid7, Qualys nebo jakékoli jiné předplatné platfor
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
 
@@ -871,11 +871,11 @@ Neplatí to Azure Batch, protože uživatelé (bez správců) fondů Azure Batch
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
-**Doprovodné**materiály: použijte aliasy Azure Policy v oboru názvů Microsoft. Batch k vytvoření vlastních zásad pro auditování nebo vystavování konfigurace Azure Batch účtů a fondů.
+**Pokyny**: použijte aliasy Azure Policy v oboru názvů "Microsoft.Batch" k vytváření vlastních zásad pro auditování nebo prosazování konfigurace Azure Batch účtů a fondů.
 
 Jak zobrazit dostupné aliasy Azure Policy:
 
@@ -958,7 +958,7 @@ https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-rol
 
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: nasazení nástrojů pro správu konfigurace systému
 
-**Doprovodné**materiály: Používejte předdefinované definice Azure Policy pro upozornění, audit a prosazování konfigurací prostředků souvisejících s Azure Batch.  Použijte aliasy Azure Policy v oboru názvů Microsoft. Batch k vytvoření vlastních zásad pro účty Azure Batch a fondy. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
+**Doprovodné**materiály: Používejte předdefinované definice Azure Policy pro upozornění, audit a prosazování konfigurací prostředků souvisejících s Azure Batch.  Použijte aliasy Azure Policy v oboru názvů "Microsoft.Batch" k vytváření vlastních zásad pro Azure Batch účty a fondy. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
 Jak nakonfigurovat a spravovat Azure Policy:
 
@@ -979,7 +979,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Implementujte automatizované monitorování konfigurace pro služby Azure.
 
-**Pokyny**: použijte aliasy Azure Policy v oboru názvů Microsoft. Batch k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace vaší instance Azure Batch. Můžete použít také všechny předdefinované zásady vytvořené speciálně pro Azure Batch nebo prostředky používané Azure Batch, například:
+**Pokyny**: použijte aliasy Azure Policy v oboru názvů "Microsoft.Batch" k vytvoření vlastních zásad pro auditování nebo prosazování konfigurace instance Azure Batch. Můžete použít také všechny předdefinované zásady vytvořené speciálně pro Azure Batch nebo prostředky používané Azure Batch, například:
 
 - Podsítě by měly být přidružené ke skupině zabezpečení sítě.
 
@@ -1047,7 +1047,7 @@ Jak nastavit skener přihlašovacích údajů:https://secdevtools.azurewebsites.
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
@@ -1083,7 +1083,7 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
@@ -1143,7 +1143,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -1175,7 +1175,7 @@ Přečtěte si téma publikace NIST: Průvodce pro testování, školení a cvi�
 
 **Zodpovědnost**: zákazník
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace &nbsp;oznámení o výstrahách pro incidenty zabezpečení
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: zadání podrobností o kontaktu incidentu zabezpečení a konfigurace oznámení o výstrahách &nbsp; pro incidenty zabezpečení
 
 **Doprovodné**materiály: kontaktní údaje incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že vaše data jsou přístupná z nezákonných nebo neoprávněných stran.
 
@@ -1217,7 +1217,7 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a ujistěte se, že máte v 60 dnech opravit všechny důležité výsledky zabezpečení.
 
@@ -1235,5 +1235,5 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: ae482a4c7b656a4bc84895501c49bf0a98517acc
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 89a60016f8f4496e44c138a79a3864782791d1db
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800644"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963287"
 ---
 # <a name="microsoft-commercial-marketplace-resources"></a>Prostředky komerčního tržiště Microsoftu
 
@@ -28,9 +28,8 @@ Informace o nejnovějších verzích a dalších aktualizacích od komerčního 
 * [Analýzy pro komerční tržiště v partnerském centru](./partner-center-portal/analytics.md)
 * [Blog Microsoft Build Marketplace](https://aka.ms/marketplacebuildblog)
 * [Web Marketplace může aktualizovat blog](https://azure.microsoft.com/blog/microsoft-commercial-marketplace-updates-may-2019/)
-* Partnerské centrum: [Vytvoření účtu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)  /  [Správa](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)  /  [migrace účtu z cpp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/account-migration-from-cpp-to-pc)
-* Partnerské centrum: [Vytvoření SaaS nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer)  /  aktualizovat[stav publikování](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status
-)  /  [existující nabídka](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)  /  [Analýza](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics)
-* [Získat podporu pro Marketplace v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)
+* Partnerské centrum: [Vytvoření účtu](partner-center-portal/create-account.md)  /  [Správa](partner-center-portal/manage-account.md)  /  [migrace účtu z cpp](partner-center-portal/account-migration-from-cpp-to-pc.md)
+* Partnerské centrum: [Vytvoření](partner-center-portal/create-new-saas-offer.md)  /  [stavu publikování](partner-center-portal/publishing-status.md) nabídky SaaS)/ [aktualizace stávajících](partner-center-portal/update-existing-offer.md)nabídek –  /  [Analýza](partner-center-portal/analytics.md)
+* [Získat podporu pro Marketplace v partnerském centru](partner-center-portal/support.md)
 
 Vítáme vaše návrhy! Připojte se ke konverzaci v [komunitě partnerů Microsoftu](https://www.microsoftpartnercommunity.com/) , abyste získali nejnovější aktualizace nových funkcí, programů a událostí.

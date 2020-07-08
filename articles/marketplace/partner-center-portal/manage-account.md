@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 76eb0638d2b67e7859b25cdda8a6f4cbda285920
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 6dbadee427abfa82fb32ebb7db85adf627dd5e0a
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800226"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964834"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Správa účtu komerčního tržiště v partnerském centru
 
@@ -24,7 +24,7 @@ V tomto článku se podrobně, jak spravovat účet partnerského centra, včetn
 - [Vyhledejte ID vydavatele, ID Symantec, ID prodejce, ID uživatele, ID MPN a klienty Azure AD.](#account-details)
 - [Aktualizovat kontaktní informace](#contact-info)
 - [Nastavení sledovacích identifikátorů GUID pro sledování využití zákazníky](#tracking-guids)
-- [Spravovat uživatele](#manage-users)
+- [Správa uživatelů](#manage-users)
 - [Správa skupin](#manage-groups)
 - [Správa aplikací Azure AD](#manage-azure-ad-applications)
 - [Definování rolí a oprávnění uživatelů](#define-user-roles-and-permissions)
@@ -128,7 +128,7 @@ Pokud nasadíte produkt pomocí šablony a je k dispozici na Azure Marketplace i
 
 Vytváření sestav se provádí na základě hodnoty partnera (ID partnera Microsoftu) a identifikátorů GUID. Můžete také sledovat identifikátory GUID na podrobnější úrovni, které odpovídají každému plánu v rámci vaší nabídky.
 
-Další informace najdete v tématu [sledování zákaznického využití Azure pomocí nejčastějších dotazů k identifikátorům GUID](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq).
+Další informace najdete v tématu [sledování zákaznického využití Azure pomocí nejčastějších dotazů k identifikátorům GUID](../azure-partner-customer-usage-attribution.md#faq)).
 
 ## <a name="create-a-billing-profile"></a>Vytvořit fakturační profil
 
@@ -138,7 +138,7 @@ Fakturační adresa je předem vyplněná z vaší právnické osoby a tuto adre
 
 ## <a name="multi-user-account-management"></a>Správa účtů s více uživateli
 
-Partnerské centrum využívá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) pro přístup a správu účtu s více uživateli. Služba Azure AD vaší organizace se v rámci procesu registrace automaticky přidruží k vašemu účtu partnerského centra.
+Partnerské centrum využívá [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) pro přístup a správu účtu s více uživateli. Služba Azure AD vaší organizace se v rámci procesu registrace automaticky přidruží k vašemu účtu partnerského centra.
 
 ## <a name="manage-users"></a>Správa uživatelů
 
@@ -168,7 +168,7 @@ Pokud chcete přidat uživatele k vašemu účtu partnerského centra, který u�
 
 ### <a name="create-new-users"></a>Vytvoření nových uživatelů
 
-Chcete-li vytvořit nové uživatelské účty, musíte mít účet s oprávněními [**globálního správce**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) . 
+Chcete-li vytvořit nové uživatelské účty, musíte mít účet s oprávněními [**globálního správce**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) . 
 
 1. V nabídce **Uživatelé** (v části **Nastavení účtu**) vyberte **Přidat uživatele**a pak zvolte **vytvořit nové uživatele**.
 1. Zadejte jméno, příjmení a uživatelské jméno pro každého nového uživatele. 
@@ -182,7 +182,7 @@ Vytvořením nového uživatele v partnerském centru se taky vytvoří účet p
 
 ### <a name="invite-new-users-by-email"></a>Pozvat nové uživatele e-mailem
 
-Pokud chcete pozvat uživatele, kteří nejsou aktuálně součástí pracovního účtu vaší společnosti (tenant Azure AD) prostřednictvím e-mailu, musíte mít účet s oprávněními [**globálního správce**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) .
+Pokud chcete pozvat uživatele, kteří nejsou aktuálně součástí pracovního účtu vaší společnosti (tenant Azure AD) prostřednictvím e-mailu, musíte mít účet s oprávněními [**globálního správce**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) .
 
 1. Přejít na **uživatele** (v části **Nastavení účtu**) vyberte **Přidat uživatele**a pak zvolte **pozvat uživatele e-mailem**.
 2. Zadejte jednu nebo více e-mailových adres (až deset), které jsou odděleny čárkami nebo středníkem.
@@ -202,7 +202,7 @@ Pokud chcete odebrat uživatele z pracovního účtu (tenant Azure AD), pokraču
 
 ### <a name="change-a-user-password"></a>Změna hesla uživatele
 
-Pokud některý z uživatelů potřebuje změnit heslo, může to udělat sami, pokud jste při vytváření uživatelského účtu zadali **e-mail pro obnovení hesla** . Pomocí následujících kroků můžete také aktualizovat heslo uživatele. Pokud chcete změnit heslo uživatele v pracovním účtu vaší společnosti (tenant Azure AD), musíte být přihlášeni pomocí účtu s oprávněními [**globálního správce**](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) . Všimněte si, že tato akce změní heslo uživatele v tenantovi Azure AD spolu s heslem, které používají pro přístup k partnerskému centru.
+Pokud některý z uživatelů potřebuje změnit heslo, může to udělat sami, pokud jste při vytváření uživatelského účtu zadali **e-mail pro obnovení hesla** . Pomocí následujících kroků můžete také aktualizovat heslo uživatele. Pokud chcete změnit heslo uživatele v pracovním účtu vaší společnosti (tenant Azure AD), musíte být přihlášeni pomocí účtu s oprávněními [**globálního správce**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Všimněte si, že tato akce změní heslo uživatele v tenantovi Azure AD spolu s heslem, které používají pro přístup k partnerskému centru.
 
 1. Na stránce **Uživatelé** (v části **Nastavení účtu**) vyberte název uživatelského účtu, který chcete upravit.
 2. V dolní části stránky vyberte tlačítko **resetovat heslo** .
@@ -264,7 +264,7 @@ Pokud chcete partnerskému centru udělit přístup k novému účtu aplikace sl
 1. Na stránce **Uživatelé** (v části **Nastavení účtu**) vyberte **Přidat aplikace Azure AD**.
 2. Na další stránce vyberte **Nová aplikace Azure AD**.
 3. Zadejte **adresu URL odpovědi** pro novou aplikaci Azure AD. Toto je adresa URL, kde se uživatelé můžou přihlásit a používat vaši aplikaci Azure AD (někdy taky označovanou jako adresa URL aplikace nebo adresa URL pro přihlášení). **Adresa URL odpovědi** nemůže být delší než 256 znaků a musí být v rámci vašeho adresáře jedinečná.
-4. Zadejte **identifikátor URI ID aplikace** pro novou aplikaci Azure AD. Toto je logický identifikátor aplikace Azure AD, který se zobrazí při odeslání žádosti o jednotné přihlašování do Azure AD. Všimněte si, že **identifikátor URI ID aplikace** musí být pro každou aplikaci Azure AD ve vašem adresáři jedinečný. Toto ID nemůže být delší než 256 znaků. Další informace o identifikátoru URI ID aplikace najdete v tématu [integrování aplikací pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-modify-supported-accounts#change-the-application-registration-to-support-different-accounts).
+4. Zadejte **identifikátor URI ID aplikace** pro novou aplikaci Azure AD. Toto je logický identifikátor aplikace Azure AD, který se zobrazí při odeslání žádosti o jednotné přihlašování do Azure AD. Všimněte si, že **identifikátor URI ID aplikace** musí být pro každou aplikaci Azure AD ve vašem adresáři jedinečný. Toto ID nemůže být delší než 256 znaků. Další informace o identifikátoru URI ID aplikace najdete v tématu [integrování aplikací pomocí Azure Active Directory](../../active-directory/develop/quickstart-modify-supported-accounts.md#change-the-application-registration-to-support-different-accounts)).
 5. V části **role** určete role nebo přizpůsobená oprávnění pro aplikaci Azure AD.
 6. Vyberte **Uložit**.
 
@@ -328,7 +328,7 @@ Pokud chcete vytvořit značku nového tenanta Azure AD s vaším účtem partne
 3. Vyberte **vytvořit** a potvrďte informace o nové doméně a účtu.
 4. Přihlaste se pomocí svého nového uživatelského jména a hesla globálního správce služby Azure AD, abyste mohli začít [přidávat a spravovat uživatele](#manage-users).
 
-Další informace o vytváření nových klientů v rámci Azure Portal a nikoli prostřednictvím portálu pro Partnerský portál najdete v článku [Vytvoření nového tenanta v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+Další informace o vytváření nových klientů v rámci Azure Portal a nikoli prostřednictvím portálu pro Partnerský portál najdete v článku [Vytvoření nového tenanta v Azure Active Directory](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 ### <a name="remove-a-tenant"></a>Odebrání tenanta
 

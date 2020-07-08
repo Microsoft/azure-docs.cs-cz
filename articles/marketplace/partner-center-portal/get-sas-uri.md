@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: 42e2419301b282685b2afe13782c2deb4f52823c
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 24ba593a56d4d12211d10f143261caaf6d901bfc
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725869"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964664"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače
 
@@ -124,6 +124,6 @@ Zkontrolujte každý vytvořený identifikátor URI SAS pomocí následujícího
 
 ## <a name="next-step"></a>Další krok
 
-Pokud máte potíže s vytvořením identifikátoru URI SAS, přečtěte si téma [běžné problémy s adresou URL SAS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues). V opačném případě uložte identifikátory URI SAS do zabezpečeného umístění pro pozdější použití. Budete ho potřebovat k publikování nabídky virtuálních počítačů v partnerském centru.
+Pokud máte potíže s vytvořením identifikátoru URI SAS, přečtěte si téma [běžné problémy s adresou URL SAS](common-sas-uri-issues.md). V opačném případě uložte identifikátory URI SAS do zabezpečeného umístění pro pozdější použití. Budete ho potřebovat k publikování nabídky virtuálních počítačů v partnerském centru.
 
-* [Vytvoření nabídky virtuálních počítačů Azure](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer)
+* [Vytvoření nabídky virtuálních počítačů Azure](azure-vm-create-offer.md)

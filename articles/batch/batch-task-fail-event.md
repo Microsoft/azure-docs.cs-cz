@@ -3,12 +3,12 @@ title: Událost selhání úlohy Azure Batch
 description: Referenční informace pro událost selhání úlohy Batch Tato událost bude vygenerována kromě události dokončení úkolu a lze ji použít k detekci, kdy se úloha nezdařila.
 ms.topic: reference
 ms.date: 08/15/2019
-ms.openlocfilehash: 54a6965fbefeaf502372c611c2b3152dc43b0efe
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: fbd0e5f2397fffce654d64a0e95a115b861db680
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726345"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965157"
 ---
 # <a name="task-fail-event"></a>Událost selhání úlohy
 
@@ -45,12 +45,12 @@ ms.locfileid: "83726345"
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|`jobId`|String|ID úlohy obsahující úlohu.|
-|`id`|String|ID úkolu|
-|`taskType`|String|Typ úkolu. Může to být buď "JobManager", což značí, že se jedná o úkol správce úloh nebo "uživatel", což značí, že se nejedná o úkol správce úloh. Tato událost není vygenerována pro úlohy přípravy úlohy, úkoly uvolnění úlohy ani pro úlohy zahájení.|
+|`jobId`|Řetězec|ID úlohy obsahující úlohu.|
+|`id`|Řetězec|ID úkolu|
+|`taskType`|Řetězec|Typ úkolu. Může to být buď "JobManager", což značí, že se jedná o úkol správce úloh nebo "uživatel", což značí, že se nejedná o úkol správce úloh. Tato událost není vygenerována pro úlohy přípravy úlohy, úkoly uvolnění úlohy ani pro úlohy zahájení.|
 |`systemTaskVersion`|Int32|Toto je interní čítač opakování na úkolu. Interně může služba Batch Opakovat úlohu, aby se zohlednila přechodná chyba. Tyto problémy mohou zahrnovat interní chyby plánování nebo se pokusí o zotavení z výpočetních uzlů ve špatném stavu.|
 |[`nodeInfo`](#nodeInfo)|Komplexní typ|Obsahuje informace o výpočetním uzlu, na kterém byl úkol spuštěn.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Komplexní typ|Určuje, že úkol je úloha s více instancemi vyžadující více výpočetních uzlů.  Podrobnosti najdete v tématu [`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) .|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Komplexní typ|Určuje, že úkol je úloha s více instancemi vyžadující více výpočetních uzlů.  Podrobnosti najdete v tématu [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task) .|
 |[`constraints`](#constraints)|Komplexní typ|Omezení provádění, která se vztahují na tento úkol.|
 |[`executionInfo`](#executionInfo)|Komplexní typ|Obsahuje informace o provedení úlohy.|
 
@@ -58,8 +58,8 @@ ms.locfileid: "83726345"
 
 |Název elementu|Typ|Poznámky|
 |------------------|----------|-----------|
-|`poolId`|String|ID fondu, ve kterém byl úkol spuštěn.|
-|`nodeId`|String|ID uzlu, na kterém byl úkol spuštěn.|
+|`poolId`|Řetězec|ID fondu, ve kterém byl úkol spuštěn.|
+|`nodeId`|Řetězec|ID uzlu, na kterém byl úkol spuštěn.|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a>multiInstanceSettings
 

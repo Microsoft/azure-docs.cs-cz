@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/10/2020
-ms.openlocfilehash: 6683dd445b4d209a6420c7490216b8e325b34c91
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 5078e625f86affb8d16ffab538d11b839d2d7bda
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669966"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85965004"
 ---
 # <a name="edit-metadata-module"></a>Upravit modul metadat
 
@@ -55,8 +55,8 @@ Typické změny metadat mohou zahrnovat:
     + Typ sloupce a hodnoty se po provedení operace Upravit metadata změní. Původní datový typ můžete kdykoli obnovit pomocí Upravit metadata a obnovit datový typ sloupce.  
 
     > [!NOTE]
-        > **Formát data a času** odpovídá [vestavěnému formátu data a času Pythonu](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior).  
-        > Pokud změníte libovolný typ čísla na typ **DateTime** , ponechte pole **formát data a času** prázdné. V současné době není možné zadat cílový formát dat.
+    > **Formát data a času** odpovídá [vestavěnému formátu data a času Pythonu](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior).  
+    > Pokud změníte libovolný typ čísla na typ **DateTime** , ponechte pole **formát data a času** prázdné. V současné době není možné zadat cílový formát dat.
 
 1. Vyberte možnost **kategorií** a určete tak, že hodnoty ve vybraných sloupcích by měly být považovány za kategorie.
 

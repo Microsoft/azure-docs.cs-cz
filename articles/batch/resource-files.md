@@ -3,12 +3,12 @@ title: Vytváření a používání souborů prostředků
 description: Naučte se vytvářet soubory prostředků služby Batch z různých vstupních zdrojů. Tento článek obsahuje několik běžných metod, jak je vytvořit a umístit na virtuální počítač.
 ms.date: 03/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ea349c3a190b78297d9ad4555258d0cfd8828ed4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 481ac8843f871f9f1eaa61e782e273e27715a473
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723455"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964018"
 ---
 # <a name="creating-and-using-resource-files"></a>Vytváření a používání souborů prostředků
 
@@ -50,7 +50,7 @@ SharedAccessBlobPolicy sasConstraints = new SharedAccessBlobPolicy
 > [!NOTE]
 > Pro přístup k kontejneru musíte mít obojí `Read` i `List` oprávnění, zatímco s přístupem k objektu BLOB budete potřebovat jenom `Read` oprávnění.
 
-Po nakonfigurování oprávnění vytvořte token SAS a naformátujte adresu URL SAS pro přístup k kontejneru úložiště. Pomocí formátované adresy URL SAS kontejneru úložiště vygenerujte soubor prostředků s [`FromStorageContainerUrl`](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) .
+Po nakonfigurování oprávnění vytvořte token SAS a naformátujte adresu URL SAS pro přístup k kontejneru úložiště. Pomocí formátované adresy URL SAS kontejneru úložiště vygenerujte soubor prostředků s [`FromStorageContainerUrl`](/dotnet/api/microsoft.azure.batch.resourcefile.fromstoragecontainerurl?view=azure-dotnet) .
 
 ```csharp
 CloudBlobContainer container = blobClient.GetContainerReference(containerName);
@@ -99,7 +99,7 @@ Pokud každý úkol má pro daný úkol jedinečný počet souborů, považují 
 
 Pokud je v úloze několik stovek souborů prostředků, může dávka úlohu odmítnout, protože je příliš velká. Je nejlepší zajistit, aby vaše úkoly byly malé tím, že minimalizují počet souborů prostředků na samotném úkolu.
 
-Pokud neexistuje žádný způsob, jak minimalizovat počet souborů, které váš úkol potřebuje, můžete optimalizovat úlohu vytvořením jednoho souboru prostředků, který odkazuje na kontejner úložiště souborů prostředků. Provedete to tak, že zadáte soubory prostředků do kontejneru Azure Storage a použijete různé [metody](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) kontejneru pro soubory prostředků. Pomocí možností předpony objektů BLOB určete kolekce souborů, které se mají stáhnout pro vaše úkoly.
+Pokud neexistuje žádný způsob, jak minimalizovat počet souborů, které váš úkol potřebuje, můžete optimalizovat úlohu vytvořením jednoho souboru prostředků, který odkazuje na kontejner úložiště souborů prostředků. Provedete to tak, že zadáte soubory prostředků do kontejneru Azure Storage a použijete různé [metody](/dotnet/api/microsoft.azure.batch.resourcefile?view=azure-dotnet#methods) kontejneru pro soubory prostředků. Pomocí možností předpony objektů BLOB určete kolekce souborů, které se mají stáhnout pro vaše úkoly.
 
 ## <a name="next-steps"></a>Další kroky
 

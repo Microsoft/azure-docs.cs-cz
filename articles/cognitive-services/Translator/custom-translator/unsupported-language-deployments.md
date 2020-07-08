@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: ea2761712e4bbb7a3abd1483766f4eae47b7c350
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b6214ebfaf4b9ed6dd97f6a6ac2f5c4ae164a59
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996359"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964681"
 ---
 # <a name="unsupported-language-deployments"></a>Nasazení nepodporovaného jazyka
 
@@ -47,7 +47,7 @@ Po odeslání nebude model na kartě **nevyžádaných** **školení** dostupný
 
 ## <a name="whats-next"></a>Co dále?
 
-Modely, které jste vybrali pro nasazení, se uloží až po vyřazení centra a všechny modely se odsadí.  Dokud nebudete moct odesílat žádosti o nasazení nepodporovaných modelů, budete muset 24.  Tyto modely budeme nasazovat do 15. června, od tohoto okamžiku budou přístupné prostřednictvím rozhraní API pro překladatele v3.  Kromě toho budou k dispozici prostřednictvím rozhraní v2 API až do 1. července.  
+Modely, které jste vybrali pro nasazení, se uloží až po vyřazení centra a všechny modely se odsadí.  Dokud nebudete moct odesílat žádosti o nasazení nepodporovaných modelů, budete muset 24.  Tyto modely budeme nasazovat do 15. června, od tohoto okamžiku budou přístupné prostřednictvím překladatele v3.  Kromě toho budou k dispozici prostřednictvím aplikace Translator v2 až do 1. července.  
 
 Další informace o důležitých datech v vyřazení centra najdete [tady](https://www.microsoft.com/translator/business/hub/).
 Po nasazení budou platit normální poplatky za hostování.  Podrobnosti najdete v tématu [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .  

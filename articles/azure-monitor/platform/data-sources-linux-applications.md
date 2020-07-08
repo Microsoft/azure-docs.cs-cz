@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670555"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963236"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Shromažďování čítačů výkonu pro aplikace pro Linux v Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -28,16 +28,16 @@ Poskytovatel MySQL OMI vyžaduje předem nakonfigurovanýho uživatele MySQL a n
 
 Během instalace agenta Log Analytics pro Linux bude poskytovatel MySQL OMI kontrolovat konfigurační soubory MySQL my. CNF (výchozí umístění) pro adresu BIND a port a částečně nastavili soubor s ověřováním MySQL OMI.
 
-Ověřovací soubor MySQL je uložen na adrese `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth`.
+Ověřovací soubor MySQL je uložen na adrese `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth` .
 
 
 ### <a name="authentication-file-format"></a>Formát ověřovacího souboru
 Toto je formát souboru OMI pro ověřování MySQL.
 
-    [Port]=[Bind-Address], [username], [Base64 encoded Password]
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    (Port)=(Bind-Address), (username), (Base64 encoded Password)
-    AutoUpdate=[true|false]
+> [Port] = [BIND-address]; [UserName]; [heslo kódované v kódování Base64]  
+> (Port) = (vazba-Address), (uživatelské jméno), (heslo kódované pomocí Base64)  
+> (Port) = (vazba-Address), (uživatelské jméno), (heslo kódované pomocí Base64)  
+> AutoUpdate = [true | false]  
 
 Položky v ověřovacím souboru jsou popsány v následující tabulce.
 
@@ -54,7 +54,7 @@ Soubor s ověřováním MySQL OMI může definovat výchozí instanci a číslo 
 
 Následující tabulka obsahuje příklad nastavení instance. 
 
-| Popis | File |
+| Description | Soubor |
 |:--|:--|
 | Výchozí instance a instance s portem 3308. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | Výchozí instance a instance s portem 3308 a jiným uživatelským jménem a heslem. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -63,14 +63,14 @@ Následující tabulka obsahuje příklad nastavení instance.
 ### <a name="mysql-omi-authentication-file-program"></a>Program pro ověřování MySQL OMI
 Součástí instalace poskytovatele MySQL OMI je programový soubor MySQL OMI Authentication, který se dá použít k úpravě souboru MySQL OMI Authentication. Ověřovací soubor aplikace najdete v následujícím umístění.
 
-    /opt/microsoft/mysql-cimprov/bin/mycimprovauth
+`/opt/microsoft/mysql-cimprov/bin/mycimprovauth`
 
 > [!NOTE]
 > Účet omsagent musí číst soubor s přihlašovacími údaji. Spouští se příkaz mycimprovauth, protože se doporučuje omsgent.
 
 Následující tabulka uvádí podrobnosti o syntaxi pro použití mycimprovauth.
 
-| Operace | Příklad | Popis
+| Operace | Příklad | Description
 |:--|:--|:--|
 | AutoUpdate *false nebo true* | mycimprovauth AutoUpdate – NEPRAVDA | Nastaví, jestli se má soubor ověření automaticky aktualizovat při restartování nebo aktualizaci. |
 | výchozí *přihlašovací heslo pro adresu BIND* | mycimprovauth výchozí adresa 127.0.0.1 root PWD | Nastaví výchozí instanci v souboru OMI pro ověřování MySQL.<br>Pole heslo by mělo být zadáno v prostém textu – heslo v souboru OMI pro ověřování MySQL bude obsahovat kódování Base 64. |
@@ -81,15 +81,18 @@ Následující tabulka uvádí podrobnosti o syntaxi pro použití mycimprovauth
 
 Následující příklady příkazů definují výchozí uživatelský účet pro server MySQL na localhost.  Pole heslo by mělo být zadáno jako prostý text – heslo v souboru OMI pro ověřování MySQL bude obsahovat kódování Base 64
 
-    sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
-    sudo /opt/omi/bin/service_control restart
+```console
+sudo su omsagent -c '/opt/microsoft/mysql-cimprov/bin/mycimprovauth default 127.0.0.1 <username> <password>'
+sudo /opt/omi/bin/service_control restart
+```
 
 ### <a name="database-permissions-required-for-mysql-performance-counters"></a>Oprávnění databáze požadovaná pro čítače výkonu MySQL
 Uživatel MySQL vyžaduje přístup k následujícím dotazům pro shromáždění dat o výkonu serveru MySQL. 
 
-    SHOW GLOBAL STATUS;
-    SHOW GLOBAL VARIABLES:
-
+```sql
+SHOW GLOBAL STATUS;
+SHOW GLOBAL VARIABLES:
+```
 
 Uživatel MySQL také vyžaduje, abyste vybrali přístup k následujícím výchozím tabulkám.
 
@@ -98,9 +101,10 @@ Uživatel MySQL také vyžaduje, abyste vybrali přístup k následujícím výc
 
 Tato oprávnění se dají udělit spuštěním následujících příkazů pro udělení.
 
-    GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
-    GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
-
+```sql
+GRANT SELECT ON information_schema.* TO ‘monuser’@’localhost’;
+GRANT SELECT ON mysql.* TO ‘monuser’@’localhost’;
+```
 
 > [!NOTE]
 > Chcete-li udělit oprávnění uživateli pro monitorování MySQL, musí mít uživatel grant oprávnění pro udělení oprávnění a také pro udělená oprávnění.
@@ -132,12 +136,14 @@ Jakmile nakonfigurujete Log Analytics agenta pro Linux, aby odesílal data do Az
 
 ## <a name="apache-http-server"></a>Server Apache HTTP 
 Pokud se v počítači při instalaci balíčku omsagent zjistí server Apache HTTP, automaticky se nainstaluje poskytovatel monitorování výkonu pro server Apache HTTP. Tento zprostředkovatel spoléhá na modul Apache, který musí být načten do serveru protokolu HTTP Apache, aby bylo možné získat přístup k datům o výkonu. Modul lze načíst pomocí následujícího příkazu:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -c
 ```
 
 Chcete-li uvolnit modul monitorování Apache, spusťte následující příkaz:
-```
+
+```console
 sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 ```
 

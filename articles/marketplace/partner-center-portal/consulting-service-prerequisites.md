@@ -7,20 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: mingshen
-ms.openlocfilehash: 81d047424144b4ad6191bcfb005a422a9ab2fd03
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 42bf538ebb78b6b0786a985ed6a32a312db44992
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996382"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964392"
 ---
 # <a name="consulting-service-prerequisites"></a>Požadavky na konzultační služby
 
-Informace o nabídce konzultační služby, včetně požadavků na tento typ nabídky, najdete v tématu [konzultační služby pro Microsoft AppSource a Azure Marketplace](https://docs.microsoft.com/azure/marketplace/consulting-services). Následující tabulka uvádí další požadavky na konkrétní typy konzultačních služeb.
+Informace o nabídce konzultační služby, včetně požadavků na tento typ nabídky, najdete v tématu [konzultační služby pro Microsoft AppSource a Azure Marketplace](../consulting-services.md). Následující tabulka uvádí další požadavky na konkrétní typy konzultačních služeb.
 
 | Téma konzultační služby | Primární produkt, který se má vybrat v partnerském centru | Požadavek |
 |---------|---------|---------|
-| Produkty Azure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Azure | Nabídka musí vypsat alespoň jednu z následujících plně získaných kompetencí: <ul><li>Vývoj aplikací</li><li>Integrace aplikací</li><li>Správa životního cyklu aplikací</li><li>Cloudová platforma</li><li>Analýza dat</li><li>Data Center</li><li>Datová platforma</li><li>DevOps|
+| Produkty Azure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Azure | Nabídka musí vypsat alespoň jednu z následujících plně získaných kompetencí: <ul><li>Vývoj aplikací</li><li>Integrace aplikací</li><li>Správa životního cyklu aplikací</li><li>Cloudová platforma</li><li>Datové analýzy</li><li>Data Center</li><li>Datová platforma</li><li>DevOps|
 | Dynamics 365 Sales<br>Dynamics 365 marketing<br>Zákaznická služba Dynamics 365<br>Služba pole Dynamics 365<br>Lidské zdroje pro Dynamics 365 | Aplikace Customer Engagement | Musí se jednat o Gold nebo stříbrné certifikaci v rámci možnosti služby [Cloud Business Applications kompetence](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro zapojení do služby Customer Engagement nebo mít nabídku pro prodej na primární produkt, ke které se vztahuje. |
 | Dynamics 365 – finance<br>Správa dodavatelských řetězců Dynamics 365<br>Dynamics 365 – obchod<br>Lidské zdroje pro Dynamics 365<br>Automatizace služby projektu Dynamics 365 | Finance a provozní aplikace | Musí se jednat o Gold nebo stříbrné certifikaci pro možnost Unified Operations [Business Applications kompetence](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro sjednocení operací nebo musí mít k primárnímu produktu, ke kterému je služba přidružená nabídka pro spoluprodej. |
 | Dynamics 365 Customer Insights | Dynamics 365 Customer Insights | Musí mít aspoň jednu úspěšnou implementaci v produkčním prostředí [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) s aspoň pěti mírami a pěti segmenty nebo musí mít nabídku pro prodej primárního produktu, ke kterému se služba vztahuje. |

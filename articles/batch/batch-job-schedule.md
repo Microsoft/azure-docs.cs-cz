@@ -4,12 +4,12 @@ description: Pomocí plánování úloh můžete spravovat úkoly.
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: c75f635a937dcddd2c1c02cc717f96f1441efe81
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 89881808e48b3fbe44fbcd5352a15afc4eb427ef
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726634"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85964341"
 ---
 # <a name="schedule-jobs-for-efficiency"></a>Plánování úloh pro zajištění efektivity
 
@@ -21,7 +21,7 @@ Výhodou plánování úloh je, že můžete zadat plán pro vytvoření úlohy.
 
 ## <a name="use-the-portal-to-schedule-a-job"></a>Naplánování úlohy pomocí portálu
 
-   1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+   1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 
    2. Vyberte účet Batch, ve kterém chcete úlohy naplánovat.
 
@@ -67,7 +67,7 @@ Pokud v levém navigačním panelu kliknete **na možnost** **Uložit**, můžet
 
 ## <a name="for-more-information"></a>Další informace
 
-Pokud chcete spravovat úlohu pomocí Azure CLI, přečtěte si téma [AZ batch job-Schedule](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest).
+Pokud chcete spravovat úlohu pomocí Azure CLI, přečtěte si téma [AZ batch job-Schedule](/cli/azure/batch/job-schedule?view=azure-cli-latest).
 
 ## <a name="next-steps"></a>Další kroky
 

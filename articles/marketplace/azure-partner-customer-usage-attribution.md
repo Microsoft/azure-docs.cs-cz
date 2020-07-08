@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 9c70f8d728786e8aff8da33f9a39b8c2cfaafdc4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 7a48da25c60eb2db3b918ebe9523440c49ed9693
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295571"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963797"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Obchodní partneři na webu Marketplace a přidělení zákaznického využití
 
@@ -66,7 +66,7 @@ Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a reg
 
 1. Zaregistrujte se jako [komerční Vydavatel na webu Marketplace](https://aka.ms/JoinMarketplace).
 
-   * Partneři musí [mít profil v partnerském centru](https://docs.microsoft.com/azure/marketplace/become-publisher). Doporučujeme zobrazit seznam nabídek v Azure Marketplace nebo AppSource.
+   * Partneři musí [mít profil v partnerském centru](become-publisher.md). Doporučujeme zobrazit seznam nabídek v Azure Marketplace nebo AppSource.
    * Partneři můžou registrovat víc identifikátorů GUID.
    * Partneři můžou registrovat GUID pro šablony řešení mimo Marketplace a nabídky.
 
@@ -74,7 +74,7 @@ Po přidání identifikátoru GUID do šablony nebo uživatelského agenta a reg
 
 1. Na **stránce nastavení účtu**vyberte **Přidat identifikátor GUID sledování.**
 
-1. Do pole **identifikátor GUID** zadejte identifikátor GUID sledování. Zadejte jenom identifikátor GUID bez předpony **PID-** prefix. Do pole **Popis** zadejte název nebo popis vaší nabídky.
+1. Do pole **identifikátor GUID** zadejte identifikátor GUID sledování. Zadejte pouze identifikátor GUID bez `pid-` předpony. Do pole **Popis** zadejte název nebo popis vaší nabídky.
 
 1. Pokud chcete zaregistrovat více než jeden identifikátor GUID, vyberte znovu **Přidat identifikátor GUID sledování** . Na stránce se zobrazí další pole.
 
@@ -85,7 +85,7 @@ Mnohé z partnerských řešení se nasazují pomocí Azure Resource Manager ša
 
 > [!NOTE]
 > Další informace o vytváření a publikování šablon řešení najdete v tématu.
-> * [Vytvořte a nasaďte první šablonu správce prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+> * [Vytvořte a nasaďte první šablonu správce prostředků](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 >* [Nabídka aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md)
 >* Video: [sestavování šablon řešení a spravovaných aplikací pro Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
@@ -96,9 +96,9 @@ Chcete-li přidat globálně jedinečný identifikátor (GUID), proveďte jednu 
 
 1. Otevřete šablonu Správce prostředků.
 
-1. Přidejte nový prostředek do hlavního souboru šablony. Prostředek musí být v souboru **mainTemplate. JSON** nebo **azuredeploy. JSON** , a ne v žádné vnořené nebo propojené šabloně.
+1. Přidejte nový prostředek do hlavního souboru šablony. Prostředek musí být v **mainTemplate.js** nebo **azuredeploy.jspouze v** souboru, a ne v žádné vnořené nebo propojené šabloně.
 
-1. Zadejte hodnotu identifikátoru GUID za předponou **PID-** prefix (např. PID-eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. Zadejte hodnotu identifikátoru GUID za `pid-` předponou (například PID-eb7927c8-dd66-43e1-b0cf-c346a422063).
 
 1. V šabloně vyhledejte případné chyby.
 
@@ -109,7 +109,7 @@ Chcete-li přidat globálně jedinečný identifikátor (GUID), proveďte jednu 
 ### <a name="sample-resource-manager-template-code"></a>Ukázka kódu Správce prostředků šablony
 
 Chcete-li povolit sledování prostředků pro šablonu, je třeba přidat následující další prostředek do části prostředky. Nezapomeňte prosím, abyste při přidávání do hlavního souboru šablony upravili následující vzorový kód s vlastními vstupy.
-Prostředek se musí přidat jenom v souboru **mainTemplate. JSON** nebo **azuredeploy. JSON** , a ne v žádné vnořené nebo propojené šabloně.
+Prostředek se musí přidat do **mainTemplate.js** nebo **azuredeploy.jsjenom v** souboru, a ne v žádné vnořené nebo propojené šabloně.
 
 ```
 // Make sure to modify this sample code with your own inputs where applicable
@@ -137,12 +137,12 @@ Pokud používáte šablonu Správce prostředků, měli byste označit své ře
 
 ### <a name="tag-a-deployment-with-the-resource-manager-apis"></a>Označení nasazení pomocí Správce prostředků rozhraní API
 
-Pokud chcete při návrhu volání rozhraní API povolit jeho přihlašování, uveďte v žádosti identifikátor GUID v hlavičce uživatelského agenta. Přidejte identifikátor GUID pro každou nabídku nebo SKU. Naformátujte řetězec pomocí předpony **PID-** prefix a ZAHRŇTE identifikátor GUID generovaný partnerem. Tady je příklad formátu identifikátoru GUID pro vložení do uživatelského agenta:
+Pokud chcete při návrhu volání rozhraní API povolit jeho přihlašování, uveďte v žádosti identifikátor GUID v hlavičce uživatelského agenta. Přidejte identifikátor GUID pro každou nabídku nebo SKU. Naformátujte řetězec `pid-` předponou a zahrňte identifikátor GUID generovaný partnerem. Tady je příklad formátu identifikátoru GUID pro vložení do uživatelského agenta:
 
 ![Příklad formátu GUID](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
 > [!NOTE]
-> Formát řetězce je důležitý. Pokud není k dispozici předpona **PID-** prefix, není možné zadat dotaz na data. Různé sady SDK sledují různě. Pokud chcete implementovat tuto metodu, přečtěte si přístup k podpoře a sledování pro preferovanou sadu Azure SDK.
+> Formát řetězce je důležitý. Pokud `pid-` Předpona není zahrnutá, není možné zadat dotaz na data. Různé sady SDK sledují různě. Pokud chcete implementovat tuto metodu, přečtěte si přístup k podpoře a sledování pro preferovanou sadu Azure SDK.
 
 #### <a name="example-the-python-sdk"></a>Příklad: sada Python SDK
 
@@ -168,7 +168,7 @@ Když k připojení svého GUID použijete rozhraní příkazového řádku Azur
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-Další informace najdete v tématu [Azure SDK pro go](https://docs.microsoft.com/azure/go/).
+Další informace najdete v tématu [Azure SDK pro go](https://docs.microsoft.com/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Použití Terraformu
 
@@ -251,13 +251,13 @@ Když tuto šablonu nasadíte, Microsoft dokáže identifikovat instalaci \<PART
 
 Když nasadíte \<PARTNER> software, společnost Microsoft dokáže identifikovat instalaci \<PARTNER> softwaru s nasazenými prostředky Azure. Společnost Microsoft je schopná korelovat prostředky Azure, které se používají k podpoře softwaru. Společnost Microsoft tyto informace shromažďuje, aby poskytovala co nejvíc zkušeností s produkty a pracovala s jejich podnikáním. Data se shromažďují a řídí zásadami ochrany osobních údajů od Microsoftu, které najdete na adrese https://www.microsoft.com/trustcenter .
 
-## <a name="get-support"></a>Získat podporu
+## <a name="get-support"></a>Získání podpory
 
 Existují dva kanály podpory v závislosti na problémech, které máte k dispozici.
 
 Pokud narazíte na nějaké problémy v partnerském centru, jako je například zobrazení sestavy týkající se zákaznického používání nebo přihlašování, vytvořte žádost o podporu pomocí týmu podpory partnerského centra, který najdete tady:[https://partner.microsoft.com/support](https://partner.microsoft.com/support)
 
-![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
+![Snímek obrazovky se stránkou pro získání podpory](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 
 Pokud potřebujete pomoc s registrací na tržišti a/nebo s uvedením údajů o využití zákazníka, jako je například nastavení označení zákaznického využití, postupujte podle následujících kroků:
 
@@ -332,7 +332,7 @@ Je zaručeno, že formulář generátoru GUID Azure Storage vygeneruje identifik
 
 **Můžu použít privátní vlastní virtuální pevný disk pro nabídku šablony řešení v Azure Marketplace?**
 
-Ne, nemůžete. Image virtuálního počítače musí pocházet z Azure Marketplace, viz: [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .
+Ne, nemůžete. Image virtuálního počítače musí pocházet z Azure Marketplace, přečtěte si téma: [Průvodce publikováním pro nabídky virtuálních počítačů na Azure Marketplace](marketplace-virtual-machines.md).
 
 Nabídku virtuálních počítačů můžete na webu Marketplace vytvořit pomocí vlastního virtuálního pevného disku a označit ji jako soukromou, takže ji nikdo neuvidí. Pak na tento virtuální počítač na šablonu řešení odkazujte.
 

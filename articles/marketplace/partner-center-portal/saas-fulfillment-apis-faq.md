@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: ba746710227cba95dc4c73a910c22bb6cdaae0ed
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792900"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85963746"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Běžné otázky k rozhraní API pro plnění SaaS
 
@@ -46,7 +46,7 @@ Když se uživatel Azure přesměruje na cílovou stránku, přidá se do adresy
 
 ![Tok zákaznického předplatného](media/saas-metering-service-integration-flow-a.png)
 
-Další informace o kontraktu rozhraní API pro zpracování scénářů Transact-in v životním cyklu nabídky SaaS najdete v tématu [rozhraní API pro doplňování SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
+Další informace o kontraktu rozhraní API pro zpracování scénářů Transact-in v životním cyklu nabídky SaaS najdete v tématu [rozhraní API pro doplňování SaaS](pc-saas-fulfillment-api-v2.md).
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Jak poznáte nabídku SaaS, ke které se uživatel přihlašuje v Azure?
 
