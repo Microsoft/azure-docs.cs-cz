@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85318905"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – ukázky
@@ -26,7 +26,7 @@ ms.locfileid: "85318905"
 ## <a name="samples-on-github"></a>Ukázky na GitHubu
 [Úložiště GitHub Azure-DataFactory](https://github.com/azure/azure-datafactory) obsahuje několik ukázek, které vám pomůžou rychle zvýšit úroveň pomocí služby Azure Data Factory (nebo) změnit skripty a použít je v vlastní aplikaci. Složka Samples\JSON obsahuje fragmenty JSON pro běžné scénáře.
 
-| Ukázka | Popis |
+| Ukázka | Description |
 |:--- |:--- |
 | [Návod k ADF](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Tato ukázka poskytuje ucelený návod ke zpracování souborů protokolu pomocí Azure Data Factory k přepínání dat ze souborů protokolů v nástroji na přehledy. <br/><br/>V tomto návodu kanál Data Factory shromažďuje ukázkové protokoly, zpracovává a vylepšuje data z protokolů pomocí referenčních dat a transformuje je k vyhodnocení efektivity marketingové kampaně, která se nedávno spustila. |
 | [Ukázky JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Tato ukázka poskytuje příklady JSON pro běžné scénáře. |
@@ -46,7 +46,7 @@ ms.locfileid: "85318905"
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 Následující šablony Azure Resource Manager můžete najít Data Factory na GitHubu.
 
-| Šablona | Popis |
+| Šablona | Description |
 | --- | --- |
 | [Kopírování z Azure Blob Storage do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Při nasazení této šablony se vytvoří objekt pro vytváření dat Azure s kanálem, který kopíruje data ze zadaného úložiště objektů BLOB v Azure do Azure SQL Database. |
 | [Kopírování z Salesforce do Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Při nasazení této šablony se vytvoří objekt pro vytváření dat Azure s kanálem, který kopíruje data ze zadaného účtu Salesforce do úložiště objektů BLOB v Azure. |
@@ -75,7 +75,7 @@ Dlaždici **ukázkové kanály** na domovské stránce vaší datové továrny m
     ![Okno Objekt pro vytváření dat](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="samples-in-visual-studio"></a>Ukázky v aplikaci Visual Studio
-### <a name="prerequisites"></a>Požadované součásti
+### <a name="prerequisites"></a>Požadavky
 Na počítači musíte mít nainstalované tyto položky:
 
 * Visual Studio 2013 nebo Visual Studio 2015.

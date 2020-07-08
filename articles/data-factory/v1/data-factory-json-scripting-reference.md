@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9b5a2bb939384ff06423693c8e4a788b80f3908c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85318888"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – reference skriptování JSON
@@ -83,7 +83,7 @@ Struktura vysoké úrovně pro aktivitu v rámci definice kanálu (element Activ
 
 Následující tabulka popisuje vlastnosti v rámci definice JSON aktivity:
 
-| Značka | Popis | Vyžadováno |
+| Značka | Description | Vyžadováno |
 | --- | --- | --- |
 | name |Název aktivity. Zadejte název, který představuje akci, na kterou je aktivita nakonfigurována.<br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&" \\ , ":", ""</li></ul> |Yes |
 | description |Text popisující, k čemu se aktivita používá |No |
@@ -98,7 +98,7 @@ Následující tabulka popisuje vlastnosti v rámci definice JSON aktivity:
 ### <a name="policies"></a>Zásady
 Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
 
-| Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
+| Vlastnost | Povolené hodnoty | Výchozí hodnota | Description |
 | --- | --- | --- | --- |
 | souběžnost |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet paralelních spuštění aktivit, ke kterým může dojít v různých řezech. Například pokud aktivita potřebuje projít velkou sadou dostupných dat, větší hodnota souběžnosti zrychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datových řezů, které jsou zpracovávány.<br/><br/>Například pokud máte 2 řezy (jedna se děje na 16:00 a druhý na 17:00), a obě jsou vyřízeny. Pokud nastavíte executionPriorityOrder na NewestFirst, řez se nejprve zpracuje v 5 odp. Podobně pokud nastavíte executionPriorityORder na OldestFIrst, bude zpracován řez ve 4 PM. |
@@ -334,12 +334,12 @@ Následující oddíl dostupnosti určuje, že výstupní datová sada je buď v
 
 Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kterou musí řezy datové sady splňovat.
 
-| Název zásady | Popis | Použito pro | Vyžadováno | Výchozí |
+| Název zásady | Description | Použito pro | Vyžadováno | Výchozí |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |Ověří, jestli data v **objektu blob Azure** splňují požadavky na minimální velikost (v megabajtech). |Azure Blob |No |NA |
 | minimumRows |Ověří, jestli data v **Azure SQL Database** nebo **tabulce Azure** obsahují minimální počet řádků. |<ul><li>Azure SQL Database</li><li>Tabulka Azure</li></ul> |No |NA |
 
-**Případě**
+**Příklad:**
 
 ```json
 "policy":
@@ -354,7 +354,7 @@ Oddíl **Policy** v definici datové sady definuje kritéria nebo podmínku, kte
 
 Pokud není datová sada vytvářena Azure Data Factory, měla by být označena jako **externí**. Toto nastavení se obecně vztahuje na vstupy první aktivity v kanálu, pokud se nepoužívá aktivita nebo řetězení kanálu.
 
-| Název | Popis | Vyžadováno | Výchozí hodnota |
+| Name | Description | Vyžadováno | Výchozí hodnota |
 | --- | --- | --- | --- |
 | Zpoždění datadelay |Čas pro zpoždění kontroly dostupnosti externích dat pro daný řez. Například pokud jsou data k dispozici každou hodinu, zkontrolujte, že je k dispozici externí data a že odpovídající řez je připravený, a to pomocí datadelay.<br/><br/>Platí pouze pro aktuální čas.  Například pokud je 1:00 PM hned teď a tato hodnota je 10 minut, ověření začíná na 1:10 odp.<br/><br/>Toto nastavení nemá vliv na řezy v minulosti (řezy s koncovým časem řezu + zpoždění < nyní) jsou zpracovávány bez jakéhokoli zpoždění.<br/><br/>Čas delší než 23:59 hodin musí být zadán pomocí `day.hours:minutes:seconds` formátu. Pokud například chcete zadat 24 hodin, nepoužívejte 24:00:00; místo toho použijte 1,00:00:00. Pokud používáte 24:00:00, je zpracována jako 24 dní (24.00:00:00). 1 den a 4 hodiny zadejte 1:04:00:00. |No |0 |
 | retryInterval |Čekací doba mezi selháním a dalším pokusem o opakování. Pokud se pokus nezdařil, další pokus je po retryInterval. <br/><br/>Pokud teď 1:00 odp., zahájíme první pokus. Pokud je doba, po kterou má být první kontrola ověření dokončená, 1 minutu a operace se nezdařila, příští opakování bude 1:00 + 1 min (doba trvání) + 1 min (interval opakování) = 1:02 ODP. <br/><br/>U řezů v minulosti nedochází k žádnému zpoždění. Opakování proběhne okamžitě. |No |00:01:00 (1 minuta) |
@@ -1169,7 +1169,7 @@ Pokud kopírujete data z Azure SQL Data Warehouse, nastavte **typ zdroje** aktiv
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |No |
+| sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `select * from MyTable`. |No |
 | sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury |No |
 | storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |No |
 
@@ -1287,7 +1287,7 @@ K definování propojené služby Azure Kognitivní hledání nastavte **typ** p
 | Vlastnost | Popis | Vyžadováno |
 | -------- | ----------- | -------- |
 | url | Adresa URL služby vyhledávání | Yes |
-| Klíč | Klíč správce pro vyhledávací službu. | Yes |
+| key | Klíč správce pro vyhledávací službu. | Yes |
 
 #### <a name="example"></a>Příklad
 
@@ -1401,7 +1401,7 @@ Pokud chcete účet Azure Storage propojit s datovou továrnou pomocí **klíče
 | typ |Vlastnost Type musí být nastavená na: **AzureStorage** . |Yes |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k úložišti Azure pro vlastnost connectionString. |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -1423,7 +1423,7 @@ Propojená služba Azure Storage SAS umožňuje propojit účet Azure Storage s 
 | typ |Vlastnost Type musí být nastavená na: **AzureStorageSas** . |Yes |
 | sasUri |Zadejte identifikátor URI sdíleného přístupového podpisu k prostředkům Azure Storage, jako je například objekt blob, kontejner nebo tabulka. |Yes |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -1652,7 +1652,7 @@ Pokud kopírujete data z Amazon RedShift, nastavte **typ zdroje** aktivity kopí
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `select * from MyTable`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 #### <a name="example"></a>Příklad
 
@@ -1771,7 +1771,7 @@ Pokud kopírujete data z IBM DB2, nastavte **typ zdroje** aktivity kopírování
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `"query": "select * from "MySchema"."MyTable""`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 #### <a name="example"></a>Příklad
 ```json
@@ -1889,7 +1889,7 @@ Pokud kopírujete data z databáze MySQL, nastavte **typ zdroje** aktivity kopí
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `select * from MyTable`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 
 #### <a name="example"></a>Příklad
@@ -2541,7 +2541,7 @@ Pokud kopírujete data z databáze SQL Server, nastavte **typ zdroje** aktivity 
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. Může odkazovat na více tabulek z databáze, na kterou odkazuje vstupní datová sada. Pokud není zadaný, provede se příkaz SQL: vyberte z MyTable. |No |
+| sqlReaderQuery |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `select * from MyTable`. Může odkazovat na více tabulek z databáze, na kterou odkazuje vstupní datová sada. Pokud není zadaný, provede se příkaz SQL: vyberte z MyTable. |No |
 | sqlReaderStoredProcedureName |Název uložené procedury, která čte data ze zdrojové tabulky. |Název uložené procedury |No |
 | storedProcedureParameters |Parametry pro uloženou proceduru. |Páry název-hodnota. Názvy a malá písmena parametrů se musí shodovat s názvy a písmeny parametrů uložené procedury. |No |
 
@@ -2738,7 +2738,7 @@ Pokud kopírujete data z databáze Sybase, nastavte **typ zdroje** aktivity kop�
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `select * from MyTable`. |Ne (Pokud je zadaný **TableName** **objektu DataSet** ) |
 
 #### <a name="example"></a>Příklad
 
@@ -2848,7 +2848,7 @@ Pokud kopírujete data z databáze Teradata, nastavte **typ zdroje** aktivity ko
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |Yes |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `select * from MyTable`. |Yes |
 
 #### <a name="example"></a>Příklad
 
@@ -3097,7 +3097,7 @@ Pokud kopírujete data z MongoDB, nastavte **typ zdroje** aktivity kopírování
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL-92 Příklad: `select * from MyTable`. |Ne (Pokud je zadán parametr **CollectionName** pro **sadu dat** ) |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL-92 Například: `select * from MyTable`. |Ne (Pokud je zadán parametr **CollectionName** pro **sadu dat** ) |
 
 #### <a name="example"></a>Příklad
 
@@ -3176,7 +3176,7 @@ Pokud chcete definovat datovou sadu Amazon S3, nastavte **typ** datové sady na 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
 | interval intervalu |Název intervalu S3. |Řetězec |Yes |
-| Klíč |Klíč objektu S3. |Řetězec |No |
+| key |Klíč objektu S3. |Řetězec |No |
 | směr |Prefix pro klíč objektu S3 Jsou vybrány objekty, jejichž klíče začínají touto předponou. Platí pouze v případě, že klíč je prázdný. |Řetězec |No |
 | verze |Verze objektu S3, pokud je povolená Správa verzí S3 |Řetězec |No |
 | formát | Podporovány jsou následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. V části formát nastavte vlastnost **typ** na jednu z těchto hodnot. Další informace najdete v částech [Formát textu](data-factory-supported-file-and-compression-formats.md#text-format), [formát JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Formát ORC](data-factory-supported-file-and-compression-formats.md#orc-format)a formátování [Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Pokud chcete **Kopírovat soubory** mezi úložišti na základě souborů (binární kopie), přeskočte oddíl formát v definicích vstupní i výstupní datové sady. |No | |
@@ -4539,7 +4539,7 @@ Pokud kopírujete data z úložiště dat ODBC, nastavte **typ zdroje** aktivity
 
 | Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | --- | --- | --- | --- |
-| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Příklad: `select * from MyTable`. |Yes |
+| query |Pomocí vlastního dotazu můžete číst data. |Řetězec dotazu SQL. Například: `select * from MyTable`. |Yes |
 
 #### <a name="example"></a>Příklad
 
@@ -5057,7 +5057,7 @@ Další informace najdete v článku [konektor SQL Server](data-factory-sqlserve
 
 ## <a name="data-transformation-activities"></a>AKTIVITY TRANSFORMACE DAT
 
-Aktivita | Popis
+Aktivita | Description
 -------- | -----------
 [Aktivita v podregistru HDInsight](#hdinsight-hive-activity) | Aktivita podregistru HDInsight v Data Factoryovém kanálu spouští dotazy na podregistry ve vašem clusteru HDInsight založeném na systému Windows/Linux nebo na vyžádání.
 [Aktivita prasete v HDInsight](#hdinsight-pig-activity) | Aktivita prasete v HDInsight v kanálu Data Factory spouští dotazy na prasaty na vašem clusteru HDInsight založeném na systému Windows/Linux nebo na vyžádání.
@@ -5076,7 +5076,7 @@ V definici JSON aktivity podregistru můžete zadat následující vlastnosti. V
 
 | Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| . |Zadat vložený skript podregistru |No |
+| script |Zadat vložený skript podregistru |No |
 | Cesta ke skriptu |Uložte skript podregistru do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |No |
 | definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro podregistr pomocí příkazu ' hiveconf '. |No |
 
@@ -5122,7 +5122,7 @@ V definici JSON aktivity prasete můžete zadat následující vlastnosti. Vlast
 
 | Vlastnost | Popis | Vyžadováno |
 | --- | --- | --- |
-| . |Zadat vložený skript prasete |No |
+| script |Zadat vložený skript prasete |No |
 | Cesta ke skriptu |Uložte skript prasete do úložiště objektů BLOB v Azure a zadejte cestu k souboru. Použijte vlastnost Script nebo scriptPath. Nelze použít současně. V názvu souboru se rozlišují malá a velká písmena. |No |
 | definuje |Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu pro vepřové prostředí. |No |
 
@@ -5476,7 +5476,7 @@ V definici JSON aktivity U-SQL můžete zadat následující vlastnosti. Vlastno
 |:--- |:--- |:--- |
 | scriptPath |Cesta ke složce, která obsahuje skript U-SQL. Název souboru rozlišuje velká a malá písmena. |Ne (Pokud používáte skript) |
 | scriptLinkedService |Propojená služba, která propojuje úložiště obsahující skript s datovou továrnou |Ne (Pokud používáte skript) |
-| . |Místo zadání scriptPath a scriptLinkedService zadejte vložený skript. Například: "skript": "vytvořit databázi test". |Ne (Pokud používáte scriptPath a scriptLinkedService) |
+| script |Místo zadání scriptPath a scriptLinkedService zadejte vložený skript. Například: "skript": "vytvořit databázi test". |Ne (Pokud používáte scriptPath a scriptLinkedService) |
 | degreeOfParallelism |Maximální počet uzlů současně použitých ke spuštění úlohy. |No |
 | upřednostněn |Určuje, které úlohy ze všech, které jsou zařazené do fronty, by měly být vybrány pro první spuštění. Čím nižší číslo, tím vyšší Priorita. |No |
 | parameters |Parametry pro skript U-SQL |No |

@@ -4,10 +4,10 @@ description: Tento článek poskytuje pokyny pro získání připojovacího řet
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 271d4dcc1f2fab08dc7f625ce36e021eda225b87
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85320489"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Získání připojovacího řetězce Event Hubs
@@ -30,7 +30,7 @@ Příklad připojovacího řetězce může vypadat takto.`Endpoint=sb://dummynam
 Tento článek vás provede různými způsoby získání připojovacího řetězce.
 
 ## <a name="get-connection-string-from-the-portal"></a>Získání připojovacího řetězce z portálu
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). 
+1. Přihlaste se k [Azure Portal](https://portal.azure.com). 
 2. V levé navigační nabídce vyberte **všechny služby** . 
 3. V části **Analýza** vyberte **Event Hubs** . 
 4. V seznamu Center událostí vyberte centrum událostí.

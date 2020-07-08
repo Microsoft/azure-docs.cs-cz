@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.openlocfilehash: 4f1154b994e512521edf22a3b8dc5819a93a5249
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85319204"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
@@ -44,7 +44,7 @@ Použijte hodnoty v tabulce níže. Nahraďte `SQLSERVERNAME DATABASENAME USERNA
 |Vlastnost | Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Název|Upgrade podregistru|
+|Name|Upgrade podregistru|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Typ (typy) uzlů|Head|
 |Parametry|SQLSERVER HESLO K UŽIVATELSKÉMU JMÉNU \ DATABASENAME|
@@ -217,7 +217,7 @@ V HDInsight 3,6 je klient grafického uživatelského rozhraní pro interakci se
 |Vlastnost | Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Název|DAS|
+|Name|DAS|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Typ (typy) uzlů|Head|
 

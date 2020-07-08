@@ -4,10 +4,10 @@ description: Monitorování výkonu aplikací pro aplikace Java spuštěné v ja
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85319699"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Monitorování aplikací nezaložených na kódu Java Azure Monitor Application Insights – Public Preview
@@ -20,7 +20,7 @@ Přidání sady Application Insights Java SDK do vaší aplikace už není potř
 
 Z aplikace můžete stále odesílat vlastní telemetrie. Agent 3,0 bude sledovat a koreluje spolu se všemi všemi shromažďovanými telemetriemi.
 
-## <a name="quickstart"></a>Rychlý start
+## <a name="quickstart"></a>Rychlé zprovoznění
 
 **1. Stáhněte agenta.**
 
