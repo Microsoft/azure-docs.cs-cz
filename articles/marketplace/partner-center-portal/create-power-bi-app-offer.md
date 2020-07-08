@@ -6,19 +6,19 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 0a247626566a4b0156d879954bf6734d248f01d8
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.date: 06/17/2020
+ms.openlocfilehash: 8a4ff5c5bce7774f805130f68d7418a73cb751f8
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513520"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980339"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Vytvoření aplikace Power BI pro Microsoft AppSource
 
 Tento článek popisuje, jak vytvořit a publikovat nabídku aplikace Power BI do Microsoft [AppSource](https://appsource.microsoft.com/).
 
-Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
+Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](create-account.md) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
@@ -53,12 +53,12 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 Tato stránka zobrazuje vizuální znázornění kroků požadovaných k publikování této nabídky (dokončené i nadcházející) a jak dlouho by měly být jednotlivé kroky dokončeny.
 
-Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Například:
+Obsahuje odkazy na provádění operací s touto nabídkou na základě vámi provedeného výběru. Příklad:
 
-- Pokud je nabídka nabídkou konceptu a [odstranění konceptu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#delete-a-draft-offer)
-- Pokud je nabídka živá, [přestanou prodávat nabídku](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#stop-selling-an-offer-or-plan) .
-- Pokud je nabídka ve verzi Preview – [Přejít do provozu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status#publisher-approval)
-- Pokud jste nedokončili registraci vydavatele, [zrušte publikování](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer#cancel-publishing)
+- Pokud je nabídka koncept – odstranění konceptu [nabídky](update-existing-offer.md#delete-a-draft-offer))
+- Pokud je nabídka živá, [přestanou prodávat nabídku](update-existing-offer.md#stop-selling-an-offer-or-plan).)
+- Pokud je nabídka ve verzi Preview – [Přejít na Live](publishing-status.md#publisher-approval))
+- Pokud jste nedokončili registraci vydavatele, [zrušte publikování](update-existing-offer.md#cancel-publishing).)
 
 ## <a name="offer-setup"></a>Nastavení nabídky
 
@@ -68,12 +68,12 @@ Když publikujete nabídku na webu Marketplace s partnerským centrem, musíte j
 
 1. Vyberte cíl zájemců, kam chcete, abychom posílali potenciální zákazníky. Partnerské centrum podporuje následující systémy CRM:
 
-    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) pro zákaznickou zapojení
-    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Dynamics 365](commercial-marketplace-lead-management-instructions-dynamics.md) pro zákaznickou zapojení
+    - [Marketo](commercial-marketplace-lead-management-instructions-marketo.md)
+    - [Salesforce](commercial-marketplace-lead-management-instructions-salesforce.md)
 
     > [!NOTE]
-    > Pokud váš systém CRM není uvedený výše, použijte [koncový bod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) nebo HTTPS k uložení zákaznických údajů o potenciálních zákaznících. Pak exportujte data do systému CRM.
+    > Pokud váš systém CRM není uvedený výše, použijte [koncový bod](commercial-marketplace-lead-management-instructions-https.md) [Azure Table](commercial-marketplace-lead-management-instructions-azure-table.md) nebo HTTPS k uložení zákaznických údajů o potenciálních zákaznících. Pak exportujte data do systému CRM.
 
 2. Připojte svoji nabídku k cíli realizace při publikování v partnerském centru.
 3. Potvrďte, že je správně nakonfigurované připojení k cíli realizace. Po publikování v partnerském centru ověříme připojení a pošleme vám testovacího vedoucího. I když náhled nabídky před tím, než začne fungovat, můžete také otestovat své zájemce tím, že se pokusíte nabídku koupit v prostředí verze Preview.
@@ -81,9 +81,9 @@ Když publikujete nabídku na webu Marketplace s partnerským centrem, musíte j
 
 Tady jsou některé další zdroje informací o vedoucím řízení:
 
-- [Přehled řízení vedoucích](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
-- [Nejčastější dotazy ke správě potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Přehled řízení vedoucích](commercial-marketplace-get-customer-leads.md)
+- [Nejčastější dotazy ke správě potenciálních zákazníků](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [Běžné chyby konfigurace zájemce](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken)
 
 Než budete pokračovat, vyberte **Uložit koncept** .
@@ -94,33 +94,16 @@ Tato stránka vám umožní definovat kategorie a odvětví používané k sesku
 
 ### <a name="category"></a>Kategorie
 
-Vyberte minimálně jednu a maximálně tři kategorie. Tyto kategorie slouží k umístění vaší nabídky do příslušných oblastí hledání na webu Marketplace a zobrazují se na stránce s podrobnostmi o vaší nabídce. V popisu nabídky vysvětlete, jak vaše nabídka tyto kategorie podporuje.
+Vyberte kategorie a podkategorie a vložte nabídku do příslušných oblastí hledání na webu Marketplace. Nezapomeňte popsat, jak vaše nabídka podporuje tyto kategorie v popisu nabídky. Vyberte:
+
+- Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
+- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
+
+Úplný seznam kategorií a podkategorií v nabídce, kde najdete [Doporučené postupy](../gtm-offer-listing-best-practices.md).
 
 ### <a name="industry"></a>Obor
 
-Volitelně můžete v rámci každého odvětví vybrat až dva obory a dvě svislá. Kategorie se používají k zobrazení vaší nabídky, a proto se ve vyhledávacích filtrech používá obor a svislá a používají se v prezentace. Pokud vaše nabídka cílí na konkrétní odvětví a/nebo vertikálně, použijte popis nabídky a vysvětlete, jak vaše nabídka podporuje vybrané obory nebo svislé hodnoty. Pokud vaše nabídka není specifická pro konkrétní obor, ponechte tuto část prázdnou.
-
-> [!NOTE]
-> Vzhledem k tomu, že pracujeme na zavedení nových odvětví a vertikálních vylepšení prostředí pro vyhledávání nabídek, nemusí být některé obory nebo svislé prvky na prezentace ještě viditelné. Obory a svislé označení označené symbolem (*) budou k dispozici v budoucím datu. Všechny publikované nabídky jsou zjistitelné přes hledání klíčových slov.
-<p>&nbsp;
-
-| **Obor** | **Subobory** |
-| --- | --- |
-| * Automobilový | * Automobilový |
-| Zemědělství | * Jiné – nesegmentované |
-| Distribuce | * Velkoobchod<br>Zásilka a odeslání balíčku |
-| Vzdělávání | *Vyšší vzdělávání <br> * Primární a sekundární vzdělávání/K-12<br>* Knihovny a muzeí |
-| Finanční služby | *Bankovní a kapitálové <br> trhy* Pojišťovací |
-| Státní správa | *Obrana a inteligentní informace (používá se pro volání vnitrostátního a veřejného <br> zabezpečení)* Veřejné zabezpečení a spravedlnosti<br>* Civilní samospráva |
-| Zdravotní péče (používá se pro volání stavu) | *Plátce <br> stavu* Poskytovatel stavu<br>* Farmaceutické výrobky |
-| Výroba a prostředky (používané pro volání výroby) | *Chemické a Agrochemical <br> * Diskrétní výroba<br>* Energie |
-| Maloobchodní a spotřební zboží (používá se pro volání maloobchodního prodeje) | *Spotřební zboží <br> * Maloobchodní |
-| * Média a komunikace (používá se pro volání médií a zábavy) | *Média a zábava <br> * Telekomunikace |
-| Professional Services | *Právní <br> * informace Profesionální služby partnerů |
-| * Architektura a konstrukce (používá se pro volání technologie pro vytváření architektury) | * Jiné – nesegmentované |
-| * Pohostinství a cestování | *Hotely a volný <br> čas* Cestovné a přeprava<br>* Restaurace a potravinové služby |
-| * Ostatní odvětví veřejného sektoru | *Lesnictví a rybolov <br> * Neziskové organizace |
-| * Nemovitosti | * Jiné – nesegmentované |
+[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
 
 ### <a name="legal"></a>Právní informace
 
@@ -160,10 +143,10 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 7. Zásady ochrany osobních údajů
 8. Název nabídky
 9. Souhrn
-10. Popis
+10. Description
 11. Snímky obrazovky a videa
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -177,7 +160,7 @@ Název:
 
 Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Popis
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -240,7 +223,7 @@ Přidejte až pět videí, která předvádí vaši nabídku. Zadejte název vid
 
 #### <a name="additional-marketplace-listing-resources"></a>Další prostředky pro výpis Marketplace
 
-Další informace o vytváření seznamů nabídek najdete v tématu [nabídky Doporučené postupy](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
+Další informace o vytváření seznamů nabídek najdete v tématu [nabídky Doporučené postupy](../gtm-offer-listing-best-practices.md).
 
 ## <a name="technical-configuration"></a>Technická konfigurace
 

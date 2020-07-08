@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: 253ea748462ec09cd9cf4eab14c05be678cfb82d
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 36c3515bbdd0f08063ecad2ba26fc7b92a5f0e19
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860898"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970684"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archivujte, co je nového v Azure Security Center?
 
@@ -29,9 +29,37 @@ Tato stránka poskytuje informace o:
 - Opravy chyb
 - Zastaralé funkce
 
+
+## <a name="january-2020"></a>Leden 2020
+
+### <a name="enhanced-secure-score-preview"></a>Rozšířené zabezpečené skóre (Preview)
+
+Vylepšená verze funkce zabezpečeného skóre Azure Security Center je teď dostupná ve verzi Preview. V této verzi se více doporučení seskupují do ovládacích prvků zabezpečení, které lépe odráží zranitelné plochy pro útoky (například omezují přístup k portům pro správu).
+
+Seznamte se se změnami se zabezpečeným skóre ve fázi Preview a zjistěte další nápravy, které vám pomůžou lépe zabezpečit vaše prostředí.
+
+Přečtěte si další informace o [rozšířeném zabezpečeném skóre (Preview)](secure-score-security-controls.md).
+
+
+
 ## <a name="november-2019"></a>Listopad 2019
 
-### <a name="threat-protection-for-azure-key-vault-in-public-preview-in-north-america-regions"></a>Ochrana před hrozbami pro Azure Key Vault v Public Preview v Severní Amerika oblastech
+Aktualizace v listopadu zahrnují:
+ - [Ochrana před hrozbami pro Azure Key Vault v oblasti Severní Amerika (Preview)](#threat-protection-for-azure-key-vault-in-north-america-regions-preview)
+ - [Ochrana před hrozbami pro Azure Storage zahrnuje šetření reputace malwaru](#threat-protection-for-azure-storage-includes-malware-reputation-screening)
+ - [Automatizace pracovního postupu pomocí Logic Apps (Preview)](#workflow-automation-with-logic-apps-preview)
+ - [Rychlá oprava pro hromadné prostředky je všeobecně dostupná](#quick-fix-for-bulk-resources-generally-available)
+ - [Skenovat image kontejneru pro ohrožení zabezpečení (Preview)](#scan-container-images-for-vulnerabilities-preview)
+ - [Další standardy dodržování předpisů v legislativě (Preview)](#additional-regulatory-compliance-standards-preview)
+ - [Ochrana před hrozbami pro službu Azure Kubernetes (Preview)](#threat-protection-for-azure-kubernetes-service-preview)
+ - [Posouzení ohrožení zabezpečení pro virtuální počítače (Preview)](#virtual-machine-vulnerability-assessment-preview)
+ - [Pokročilé zabezpečení dat pro SQL servery na Azure Virtual Machines (Preview)](#advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview)
+ - [Podpora vlastních zásad (Preview)](#support-for-custom-policies-preview)
+ - [Rozšíření pokrytí Azure Security Center s platformou pro komunitu a partnery](#extending-azure-security-center-coverage-with-platform-for-community-and-partners)
+ - [Pokročilá integrace s exportem doporučení a výstrah (Preview)](#advanced-integrations-with-export-of-recommendations-and-alerts-preview)
+ - [Připojování Prem serverů k Security Center z centra pro správu Windows (Preview)](#onboard-on-prem-servers-to-security-center-from-windows-admin-center-preview)
+
+### <a name="threat-protection-for-azure-key-vault-in-north-america-regions-preview"></a>Ochrana před hrozbami pro Azure Key Vault v oblasti Severní Amerika (Preview)
 
 Azure Key Vault je zásadní služba pro ochranu dat a zlepšení výkonu cloudových aplikací tím, že nabízí možnost centrálně spravovat klíče, tajné klíče, kryptografické klíče a zásady v cloudu. Vzhledem k tomu, že Azure Key Vault ukládá citlivá a důležitá firemní data, vyžaduje maximální zabezpečení pro trezory klíčů a data, která jsou v nich uložená.
 
@@ -146,6 +174,11 @@ Díky této nové službě se uživatelé budou moci připojit k Azure Security 
 
 ## <a name="september-2019"></a>Září 2019
 
+Aktualizace v září zahrnují:
+
+ - [Správa pravidel pomocí adaptivních vylepšení řízení aplikací](#managing-rules-with-adaptive-application-controls-improvements)
+ - [Řízení doporučení zabezpečení kontejneru pomocí Azure Policy](#control-container-security-recommendation-using-azure-policy)
+
 ### <a name="managing-rules-with-adaptive-application-controls-improvements"></a>Správa pravidel pomocí adaptivních vylepšení řízení aplikací
 
 Prostředí pro správu pravidel pro virtuální počítače, které používá adaptivní řízení aplikací, se zlepšilo. Adaptivní řízení aplikací Azure Security Center vám pomůžou řídit, které aplikace se můžou na virtuálních počítačích spouštět. Kromě obecného vylepšení správy pravidel vám nová výhoda umožní řídit, které typy souborů budou chráněné při přidávání nového pravidla.
@@ -161,6 +194,12 @@ Pokud chcete zobrazit povolené zásady zabezpečení, z Security Center otevře
 
 
 ## <a name="august-2019"></a>Srpen 2019
+
+Aktualizace v srpnu zahrnují:
+
+ - [Přístup k virtuálnímu počítači JIT (just-in-time) pro Azure Firewall](#just-in-time-jit-vm-access-for-azure-firewall)
+ - [Zvýšení zabezpečení stav (Preview) jedním kliknutím na nápravu](#single-click-remediation-to-boost-your-security-posture-preview)
+ - [Správa napříč tenanty](#cross-tenant-management)
 
 ### <a name="just-in-time-jit-vm-access-for-azure-firewall"></a>Přístup k virtuálnímu počítači JIT (just-in-time) pro Azure Firewall 
 

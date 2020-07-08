@@ -3,16 +3,16 @@ title: Funkce Azure modrotisky
 description: Popisuje funkce, které jsou k dispozici pro použití s artefakty podrobného plánu v definicích a přiřazeních Azure modrotisky.
 ms.date: 05/22/2020
 ms.topic: reference
-ms.openlocfilehash: e804cc98f7bd6d3e94e6b518f0ed0575f9f8f440
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c402075aa9f6beb52e72454179c2e96d148c271f
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834777"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970871"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funkce pro použití s plány Azure
 
-Azure modrotisky nabízí funkce, které mají dynamičtější definice podrobného plánu. Tyto funkce jsou pro použití s definicemi podrobného plánu a s artefakty podrobného plánu. Artefakt šablony Správce prostředků podporuje kromě získání dynamické hodnoty prostřednictvím parametru podrobného plánu i úplné použití funkcí Správce prostředků.
+Azure modrotisky nabízí funkce, které mají dynamičtější definice podrobného plánu. Tyto funkce jsou pro použití s definicemi podrobného plánu a s artefakty podrobného plánu. Artefakt šablony Azure Resource Manager (šablona ARM) podporuje kromě získání dynamické hodnoty prostřednictvím parametru podrobného plánu úplné použití funkcí Správce prostředků.
 
 Podporovány jsou následující funkce:
 
@@ -30,13 +30,13 @@ Podporovány jsou následující funkce:
 Vrátí objekt vlastností naplněný pomocí tohoto výstupu artefaktů podrobného plánu.
 
 > [!NOTE]
-> `artifacts()`Funkci nelze použít v rámci šablony Správce prostředků. Funkci lze použít pouze v kódu JSON definice podrobného plánu nebo v kódu JSON artefaktu při správě [podrobného](https://github.com/Azure/azure-blueprints/blob/master/README.md)plánu pomocí Azure PowerShell nebo REST API jako součást podrobných plánů kódu.
+> `artifacts()`Funkci nelze použít v rámci šablony ARM. Funkci lze použít pouze v kódu JSON definice podrobného plánu nebo v kódu JSON artefaktu při správě [podrobného](https://github.com/Azure/azure-blueprints/blob/master/README.md)plánu pomocí Azure PowerShell nebo REST API jako součást podrobných plánů kódu.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| artefakt |Ano |řetězec |Název artefaktu podrobného plánu |
+| artefakt |Yes |řetězec |Název artefaktu podrobného plánu |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -60,9 +60,9 @@ Objekt vlastností výstupu. Vlastnosti **výstupy** jsou závislé na typu odka
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Artefakt šablony Správce prostředků
+#### <a name="arm-template-artifact"></a>Artefakt šablony ARM
 
-Vlastnosti **výstupů** vráceného objektu jsou definovány v rámci šablony Správce prostředků a jsou vráceny nasazením.
+Vlastnosti **výstupů** vráceného objektu jsou definovány v rámci šablony ARM a vráceny v nasazení.
 
 #### <a name="role-assignment-artifact"></a>Artefakt přiřazení role
 
@@ -78,7 +78,7 @@ Vlastnosti **výstupů** vráceného objektu jsou definovány v rámci šablony 
 
 ### <a name="example"></a>Příklad
 
-Artefakt šablony Správce prostředků s ID _myTemplateArtifact_ obsahující následující ukázkovou vlastnost output:
+Artefakt šablony ARM s ID _myTemplateArtifact_ obsahující následující ukázkovou vlastnost output:
 
 ```json
 {
@@ -109,10 +109,10 @@ Některé příklady načítání dat z ukázky _myTemplateArtifact_ jsou:
 | Výraz | Typ | Hodnota |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Pole | \["First"; "Second"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | první |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "moje hodnota řetězce" |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | Řetězec | první |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | Řetězec | "moje hodnota řetězce" |
 |`[artifacts("myTemplateArtifact").outputs.myObject]` | Objekt | {"MyProperty": "moje hodnota", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "moje hodnota" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | Řetězec | "moje hodnota" |
 |`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Logická hodnota | True |
 
 ## <a name="concat"></a>concat
@@ -123,10 +123,10 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| řetězec1 |Ano |řetězec |První hodnota pro zřetězení |
-| Další argumenty |Ne |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
+| řetězec1 |Yes |řetězec |První hodnota pro zřetězení |
+| Další argumenty |No |řetězec |Další hodnoty v sekvenčním pořadí pro zřetězení |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -134,7 +134,7 @@ Kombinuje více řetězcových hodnot a vrátí zřetězený řetězec.
 
 ### <a name="remarks"></a>Poznámky
 
-Funkce Azure Blueprint se liší od Azure Resource Manager funkce šablony v tom, že funguje pouze s řetězci.
+Funkce Azure Blueprint se liší od funkce šablony ARM v tom, že funguje pouze s řetězci.
 
 ### <a name="example"></a>Příklad
 
@@ -148,9 +148,9 @@ Vrátí hodnotu parametru podrobného plánu. Zadaný název parametru musí bý
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -158,7 +158,7 @@ Hodnota zadaného parametru artefaktu podrobného plánu nebo podrobného plánu
 
 ### <a name="remarks"></a>Poznámky
 
-Funkce Azure Blueprint se liší od funkce šablony Azure Resource Manager v tom, že funguje pouze s parametry podrobného plánu.
+Funkce Azure Blueprint se liší od funkce šablony ARM v tom, že funguje pouze s parametry podrobného plánu.
 
 ### <a name="example"></a>Příklad
 
@@ -218,7 +218,7 @@ Vrácený objekt je v následujícím formátu:
 
 ### <a name="remarks"></a>Poznámky
 
-Funkce Azure Blueprint se liší od Azure Resource Manager funkce šablony. `resourceGroup()`Funkci nelze použít v artefaktu na úrovni předplatného nebo v definici podrobného plánu. Dá se použít jenom v artefaktech podrobného plánu, které jsou součástí artefaktu skupiny prostředků.
+Funkce Azure Blueprint se liší od funkce šablony ARM. `resourceGroup()`Funkci nelze použít v artefaktu na úrovni předplatného nebo v definici podrobného plánu. Dá se použít jenom v artefaktech podrobného plánu, které jsou součástí artefaktu skupiny prostředků.
 
 Běžným použitím `resourceGroup()` funkce je vytvořit prostředky ve stejném umístění jako artefakt skupiny prostředků.
 
@@ -269,9 +269,9 @@ Vrátí objekt, který představuje zadaný artefakt skupiny prostředků. Na ro
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
-| zástupný znak |Ano |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
+| zástupný znak |Yes |řetězec |Zástupný název artefaktu skupiny prostředků, který se má vrátit |
 
 ### <a name="return-value"></a>Vrácená hodnota
 

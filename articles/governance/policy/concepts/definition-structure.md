@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a70534f91584f72ad81b71913c48062e51a324d3
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 28f4e3a99b7241711e46ce92fdfd2d7689b4527b
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052734"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971109"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -287,7 +287,7 @@ Při použití podmínek **Match** a **notMatch** zadejte, `#` aby odpovídaly �
 
 V hodnotě pole ** \[ \* \] alias** pole je každý prvek v poli vyhodnocen individuálně pomocí logických prvků **a** mezi prvky. Další informace najdete v tématu [vyhodnocení \[ \* \] aliasu](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-### <a name="fields"></a>Pole
+### <a name="fields"></a>Fields (Pole)
 
 Podmínky jsou tvořeny pomocí polí. Pole odpovídá vlastnostem v datové části požadavku prostředku a popisuje stav prostředku.
 
@@ -603,9 +603,9 @@ Pro použití v rámci pravidla zásad jsou k dispozici všechny [funkce šablon
 > [!NOTE]
 > Tyto funkce jsou stále k dispozici v rámci `details.deployment.properties.template` nasazení šablony v definici zásady **deployIfNotExists** .
 
-Tato funkce je k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager:
+Tato funkce je k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager (šablona ARM):
 
-- `utcNow()`Na rozdíl od šablony Správce prostředků lze tuto vlastnost použít mimo vlastnost _DefaultValue_.
+- `utcNow()`-Na rozdíl od šablony ARM lze tuto vlastnost použít mimo vlastnost _DefaultValue_.
   - Vrátí řetězec, který je nastaven na aktuální datum a čas ve formátu Universal ISO 8601 DateTime yyyy-MM-ddTHH: mm: ss. fffffffZ.
 
 Následující funkce jsou dostupné jenom v pravidlech zásad:

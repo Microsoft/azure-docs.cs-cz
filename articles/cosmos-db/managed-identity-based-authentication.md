@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: d5aef82fe29ec544e29d7c65950e719110ad276a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391855"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970956"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
 
@@ -43,7 +43,7 @@ V tomto kroku přiřadíte roli spravované identitě přiřazené k systému ap
 |Předdefinovaná role  |Description  |
 |---------|---------|
 |[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB. Umožňuje načtení klíčů pro čtení i zápis. |
-|[Čtečka účtů Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu. Umožňuje načtení klíčů pro čtení. |
+|[Role čtečky účtu Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu. Umožňuje načtení klíčů pro čtení. |
 
 > [!IMPORTANT]
 > Podpora řízení přístupu založeného na rolích v Azure Cosmos DB platí jenom pro řízení operací roviny. Operace roviny dat jsou zabezpečeny prostřednictvím hlavních klíčů nebo tokenů prostředků. Další informace najdete v článku [zabezpečený přístup k datům](secure-access-to-data.md) .

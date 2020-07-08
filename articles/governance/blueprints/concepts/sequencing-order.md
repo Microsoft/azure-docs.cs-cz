@@ -3,12 +3,12 @@ title: Pochopení pořadí sekvence nasazení
 description: Přečtěte si o výchozím pořadí, během kterého jsou v průběhu přiřazení podrobného plánu nasazeny artefakty podrobného plánu a jak přizpůsobit pořadí nasazení.
 ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 91e11f8127ba2532ad48362de1689f4be2b6f935
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864517"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970616"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Porozumění sekvenci nasazení v Azure modrotisky
 
@@ -28,21 +28,21 @@ Pokud definice podrobného plánu neobsahuje žádnou direktivu, aby bylo možn�
 
 - Artefakty **přiřazení role** na úrovni předplatného seřazené podle názvu artefaktu
 - Artefakty **přiřazení zásad** na úrovni předplatného seřazené podle názvu artefaktu
-- Artefakty **šablony Azure Resource Manager** na úrovni předplatného seřazené podle názvu artefaktu
+- Artefakty **Azure Resource Manager šablon** (šablon ARM) na úrovni předplatného seřazené podle názvu artefaktu
 - Artefakty **skupiny prostředků** (včetně podřízených artefaktů) seřazené podle názvu zástupného symbolu
 
 V rámci každého artefaktu **skupiny prostředků** se pro artefakty, které se vytvářejí v rámci této skupiny prostředků, používá následující pořadí:
 
 - Artefakty **přiřazení podřízené role** skupiny prostředků seřazené podle názvu artefaktu
 - Artefakty přiřazení podřízených **zásad** skupiny prostředků seřazené podle názvu artefaktu
-- Artefakty **šablony Azure Resource Manager** podřízené skupiny prostředků seřazené podle názvu artefaktu
+- Odvození artefaktů skupiny prostředků **Azure Resource Manager šablon** (šablon ARM) seřazené podle názvu artefaktu
 
 > [!NOTE]
 > Použití [artefaktů ()](../reference/blueprint-functions.md#artifacts) vytvoří implicitní závislost na artefaktu, na který je odkazováno.
 
 ## <a name="customizing-the-sequencing-order"></a>Přizpůsobení pořadí sekvencování
 
-Při sestavování velkých podrobných definic podrobného plánu může být potřeba, aby se prostředky vytvořily v určitém pořadí. Nejběžnějším vzorem použití tohoto scénáře je, že definice podrobného plánu obsahuje několik šablon Azure Resource Manager. Azure Modrotiskys zpracovává tento model tím, že umožňuje definovat pořadí sekvencování.
+Při sestavování velkých podrobných definic podrobného plánu může být potřeba, aby se prostředky vytvořily v určitém pořadí. Nejběžnějším vzorem použití tohoto scénáře je, že definice podrobného plánu obsahuje několik šablon ARM. Azure Modrotiskys zpracovává tento model tím, že umožňuje definovat pořadí sekvencování.
 
 Řazení je provedeno definováním `dependsOn` vlastnosti ve formátu JSON. Tato vlastnost podporuje definici podrobného plánu, pro skupiny prostředků a objekty artefaktů. `dependsOn`je pole řetězců názvů artefaktů, které musí být před vytvořením vytvořen konkrétní artefakt.
 
@@ -51,7 +51,7 @@ Při sestavování velkých podrobných definic podrobného plánu může být p
 
 ### <a name="example---ordered-resource-group"></a>Příklad – seřazená skupina prostředků
 
-Tato příklad definice podrobného plánu má skupinu prostředků, která definovala vlastní pořadí sekvencování, deklarováním hodnoty `dependsOn`pro, společně se standardní skupinou prostředků. V tomto případě se artefakt s názvem **assignPolicyTags** zpracuje před **seřazenou** skupinou prostředků RG.
+Tato příklad definice podrobného plánu má skupinu prostředků, která definovala vlastní pořadí sekvencování, deklarováním hodnoty pro `dependsOn` , společně se standardní skupinou prostředků. V tomto případě se artefakt s názvem **assignPolicyTags** zpracuje před **seřazenou** skupinou prostředků RG.
 **Standard-RG** se zpracuje podle výchozího pořadí sekvencování.
 
 ```json
@@ -81,7 +81,7 @@ Tato příklad definice podrobného plánu má skupinu prostředků, která defi
 
 ### <a name="example---artifact-with-custom-order"></a>Příklad – artefakt s vlastním pořadím
 
-Tento příklad je artefaktem zásad, který závisí na šabloně Azure Resource Manager. Ve výchozím nastavení je artefakt zásad vytvořen před šablonou Azure Resource Manager. Toto řazení umožňuje artefaktu zásad počkat na vytvoření šablony Azure Resource Manager.
+Tento příklad je artefaktem zásad, který závisí na šabloně ARM. Ve výchozím nastavení je artefakt zásad vytvořen před šablonou ARM. Toto řazení umožňuje artefaktu zásad počkat na vytvoření šablony ARM.
 
 ```json
 {
@@ -100,7 +100,7 @@ Tento příklad je artefaktem zásad, který závisí na šabloně Azure Resourc
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>Příklad – artefakt šablony na úrovni předplatného v závislosti na skupině prostředků
 
-Tento příklad je pro šablonu Správce prostředků nasazenou na úrovni předplatného tak, aby byla závislá na skupině prostředků. Ve výchozím pořadí se artefakty na úrovni předplatného vytvoří před všemi skupinami prostředků a podřízenými artefakty v těchto skupinách prostředků. Skupina prostředků je definovaná v definici podrobného plánu, jako je tato:
+V tomto příkladu pro šablonu ARM nasazenou na úrovni předplatného závisí na skupině prostředků. Ve výchozím pořadí se artefakty na úrovni předplatného vytvoří před všemi skupinami prostředků a podřízenými artefakty v těchto skupinách prostředků. Skupina prostředků je definovaná v definici podrobného plánu, jako je tato:
 
 ```json
 "resourceGroups": {
@@ -137,7 +137,7 @@ Artefakt šablony na úrovni předplatného v závislosti na skupině prostředk
 Během procesu vytváření se k vytvoření grafu závislostí artefaktů modrotisky používá topologické řazení. Tato kontrolu zajišťuje, aby se podporovaly jednotlivé úrovně závislostí mezi skupinami prostředků a artefakty.
 
 Pokud je deklarována závislost artefaktu, která by nezměnila výchozí pořadí, nebude provedena žádná změna.
-Příkladem je skupina prostředků, která závisí na zásadě na úrovni předplatného. Dalším příkladem je přiřazení podřízené zásady skupiny prostředků ' standard-RG ', které závisí na přiřazení podřízené role skupiny prostředků ' standard-RG '. V obou případech `dependsOn` se nezměnila výchozí pořadí sekvencování a neudělaly se žádné změny.
+Příkladem je skupina prostředků, která závisí na zásadě na úrovni předplatného. Dalším příkladem je přiřazení podřízené zásady skupiny prostředků ' standard-RG ', které závisí na přiřazení podřízené role skupiny prostředků ' standard-RG '. V obou případech se `dependsOn` nezměnila výchozí pořadí sekvencování a neudělaly se žádné změny.
 
 ## <a name="next-steps"></a>Další kroky
 

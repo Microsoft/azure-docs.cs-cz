@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 9ef38829a18f9e43f38cbdb291a799110d710cd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834726"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971075"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Řešení chyb při převzetí služeb při selhání virtuálního počítače VMware nebo fyzického počítače do Azure
 
@@ -74,6 +74,10 @@ Chcete-li ručně změnit typ spouštění ovladačů pro **hostovaný operačn�
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nepovedlo se připojit/RDP/SSH k virtuálnímu počítači převzetí služeb při selhání kvůli šedě připojenému tlačítku připojení na virtuálním počítači.
 
+Podrobné pokyny pro řešení potíží s protokolem RDP najdete v naší [dokumentaci.](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)
+
+Podrobné pokyny k odstraňování potíží s SSH najdete v [naší dokumentaci.](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)
+
 Pokud se tlačítko **připojit** na virtuálním počítači služby převzít služby při selhání v Azure zobrazuje šedě a nejste k Azure připojeni přes Express Route nebo připojení VPN typu Site-to-site,
 
 1. Přejděte na **síť virtuálních počítačů**  >  **Networking**, klikněte na název požadovaného síťového rozhraní.  ![síťové rozhraní](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
@@ -130,7 +134,7 @@ Tento problém je uveden, pokud se nemůžete podívat na úložiště dat v Azu
 
 Další informace o opětovném zapnutí ochrany virtuálního počítače najdete v tématu o [opětovném zapnutí a navrácení služeb po obnovení do Azure do místní lokality](vmware-azure-reprotect.md).
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
 
 Ručně vytvořte hlavní cíl v vCenter, který spravuje zdrojový počítač. Úložiště dat bude k dispozici po dalších operacích zjišťování vCenter a aktualizaci prostředků infrastruktury.
 
@@ -148,7 +152,7 @@ Tato chyba je uvedena v protokolu instalace v následujících řetězcích:
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
 ```
 
-Problém vyřešíte takto:
+Řešení tohoto problému:
  
 1. Na virtuálním počítači konfiguračního serveru otevřete příkazový řádek a ověřte nastavení proxy pomocí následujících příkazů:
 

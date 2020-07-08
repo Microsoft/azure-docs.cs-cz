@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: f214dbbc1991e64f86890687523be256c69e46d3
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.date: 06/17/2020
+ms.openlocfilehash: 3393fb6e33cbf80db68c49ac31edb54de35bae64
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374266"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85980592"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Vytvoření nové nabídky SaaS na komerčním webu Marketplace
 
@@ -76,7 +76,7 @@ Prodej prostřednictvím Microsoftu poskytuje lepší zjišťování a nabýván
 K vypsání nabídek SaaS (software jako služba) s komerčním Marketplace v partnerském centru je potřeba splnit následující kritéria:
 
 - Vaše nabídka musí používat [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) pro správu identit a ověřování.
-- Vaše nabídka musí používat [rozhraní API pro splnění SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) pro integraci s Azure Marketplace.
+- Vaše nabídka musí používat [rozhraní API pro splnění SaaS](pc-saas-fulfillment-api-v2.md) pro integraci s Azure Marketplace.
 
 #### <a name="saas-pricing-and-billing-options"></a>Ceny SaaS a možnosti fakturace
 
@@ -96,10 +96,9 @@ Toto je ukázkový rozpis nákladů a výběrů za účelem předvedení modelu 
 |Společnost Microsoft vám zaplatí 80% vašich licenčních nákladů. <br>**Pro kvalifikované aplikace SaaS přináší společnost Microsoft 90% vašich licenčních nákladů.*|$80,00 za měsíc <br>*$* 90,00 za měsíc *|
 
 - V tomto příkladu vám Microsoft účtuje $100,00 pro zákazníka za softwarovou licenci a vyplatí $80,00 pro vydavatele.
-- Partneři, kteří mají nárok na **snížený poplatek za službu Marketplace** , uvidí za snížený poplatek za transakce SaaS z května 2019 do června 2020. V tomto scénáři Microsoft účtuje $100,00 pro vaši softwarovou licenci a vyplatí $90,00 vydavateli.
 
 > [!NOTE]
-> **Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na našem komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Aby vaše nabídka mohla být kvalifikována, musí být alespoň jedna z vašich nabídek označena Microsoftem jako přizpůsobená priorita nebo prodej IP. Aby bylo možné získat tento snížený poplatek za službu Marketplace na daný měsíc, musí být nárok splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce.  Snížený poplatek za službu Marketplace se nevztahuje na virtuální počítače, spravované aplikace ani žádné jiné produkty, které jsou dostupné prostřednictvím našeho komerčního tržiště. Snížený poplatek za službu Marketplace bude dostupný jenom pro kvalifikované nabídky pro poplatky za licence shromážděné Microsoftem mezi 1. května 2019 a 30. června 2020. Po uplynutí této doby se poplatek za službu Marketplace vrátí do normálního množství.
+> **Omezený poplatek za službu Marketplace** – u některých nabídek SaaS, které jste publikovali na komerčním tržišti, společnost Microsoft sníží poplatek za službu Marketplace z 20% (jak je popsáno v tématu smlouva Microsoft Publisher Agreement) na 10%. Pro vaše nabídky, které mají být kvalifikovány, je nutné, aby vaše nabídky označila společnost Microsoft jako nabízené prioritní IP adresy nebo spoluprodejní IP adresy. Nárok na získání omezeného servisního poplatku za měsíc musí být splněn nejméně pět (5) pracovních dnů před koncem každého kalendářního měsíce. Snížený poplatek za službu Marketplace se nevztahuje na virtuální počítače, spravované aplikace ani žádné jiné produkty, které jsou dostupné prostřednictvím komerčního tržiště.
 
 ### <a name="list-through-microsoft"></a>Seznam prostřednictvím Microsoftu
 
@@ -109,11 +108,11 @@ Vytvořte seznam na webu Marketplace a zvyšte své podnikání pomocí Microsof
 
 #### <a name="get-it-now-free"></a>Získat hned (zdarma)
 
-Seznamte se svým zákazníkům zdarma tím, že poskytnete platnou adresu (počínaje *protokolem HTTP* nebo *https*), kde můžou získat zkušební verzi prostřednictvím [ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials). Například, `https://contoso.com/saas-app`.
+Seznamte se svým zákazníkům zdarma tím, že poskytnete platnou adresu (počínaje *protokolem HTTP* nebo *https*), kde můžou získat zkušební verzi prostřednictvím [ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD)](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)). Například, `https://contoso.com/saas-app`.
 
 #### <a name="free-trial-listing"></a>Bezplatná zkušební verze (výpis)
 
-Seznamte se s vaší nabídkou pro zákazníky s odkazem na bezplatnou zkušební verzi tím, že zadáte platnou adresu (počínaje *protokolem HTTP* nebo *https*), kde můžou získat zkušební verzi přes [ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials). Například, `https://contoso.com/trial/saas-app`. Nabídka pro výpis bezplatných zkušebních verzí se vytváří, spravuje a konfiguruje pomocí vaší služby a nemá předplatné spravované Microsoftem.
+Seznamte se s vaší nabídkou pro zákazníky s odkazem na bezplatnou zkušební verzi tím, že zadáte platnou adresu (počínaje *protokolem HTTP* nebo *https*), kde můžou získat zkušební verzi přes [ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD)](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)). Například, `https://contoso.com/trial/saas-app`. Nabídka pro výpis bezplatných zkušebních verzí se vytváří, spravuje a konfiguruje pomocí vaší služby a nemá předplatné spravované Microsoftem.
 
 > [!NOTE]
 > Tokeny, které vaše aplikace získá prostřednictvím zkušebního připojení, se dají použít jenom k získání informací o uživateli přes Azure AD k automatizaci vytváření účtů ve vaší aplikaci. Pro ověřování pomocí tohoto tokenu se nepodporují účty Microsoft (MSA).
@@ -157,15 +156,15 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSo
 
 ## <a name="enable-a-test-drive"></a>Povolit testovací jednotku
 
-Testovací jednotka je skvělým způsobem, jak předvést vaši nabídku potenciálním zákazníkům tím, že jim nabídne možnost vyzkoušet si předplatné před nákupem. Výsledkem je zvýšená konverze a generace vysoce kvalifikovaných potenciálních zákazníků. [Přečtěte si další informace o testovacích jednotkách](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
+Testovací jednotka je skvělým způsobem, jak předvést vaši nabídku potenciálním zákazníkům tím, že jim nabídne možnost vyzkoušet si předplatné před nákupem. Výsledkem je zvýšená konverze a generace vysoce kvalifikovaných potenciálních zákazníků. [Přečtěte si další informace o testovacích jednotkách](../what-is-test-drive.md).
 
 Pokud chcete pro pevný časový úsek povolit testovací jednotku, zaškrtněte políčko **Povolit testovací jednotku** . Chcete-li odebrat testovací verzi z nabídky, zrušte zaškrtnutí tohoto políčka.
 
-Další informace najdete v tématu [Test Drive vaší nabídky na komerčním webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive).
+Další informace najdete v tématu [Test Drive vaší nabídky na komerčním webu Marketplace](test-drive.md).
 
 ### <a name="test-drive-resources"></a>Prostředky testovacích jednotek
 
-- [Marketingové osvědčené postupy](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Co je testovací verze?](../what-is-test-drive.md)
 - [Technické osvědčené postupy](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Přehled](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; Ujistěte se, že je blokování automaticky otevíraných oken vypnuté)
 
@@ -174,8 +173,8 @@ Další informace najdete v tématu [Test Drive vaší nabídky na komerčním w
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>Další zdroje informací o vedoucím řízení
-- [Nejčastější dotazy ke správě potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Nejčastější dotazy ke správě potenciálních zákazníků](../lead-management-for-cloud-marketplace.md#frequently-asked-questions))
+- [Běžné chyby konfigurace zájemce](../lead-management-for-cloud-marketplace.md#publishing-config-errors)
 - [Přehled řízení vedoucích – jeden pager](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 Než budete pokračovat, vyberte **Uložit koncept** .
@@ -186,11 +185,18 @@ Tato stránka vás vyzve k definování kategorií a odvětví používaných k 
 
 ### <a name="category"></a>Kategorie
 
-Vyberte alespoň jednu a až tři kategorie pro seskupení nabídky do příslušných oblastí hledání na webu Marketplace. Popište, jak vaše nabídka podporuje tyto kategorie v popisu nabídky.
+Vaše nabídka bude publikována do AppSource nebo Azure Marketplace v závislosti na transakčních funkcích přidružených k vaší nabídce a výběru kategorií. Podrobnosti najdete v tématu [porovnání Microsoft AppSource a Azure Marketplace](../comparing-appsource-azure-marketplace.md) . Vyberte kategorie a podkategorie, které nejlépe zarovnejte s vaší nabídkou a zamýšlenou cílovou skupinou. Vyberte:
+
+- Aspoň jedna a až dvě kategorie, včetně primární a sekundární kategorie (volitelné).
+- Až dvě podkategorie pro každou primární nebo sekundární kategorii. Pokud není pro vaši nabídku k dispozici žádná podkategorie, vyberte možnost **Nepoužito**.
+
+V [nabídce Doporučené postupy](../gtm-offer-listing-best-practices.md)najdete úplný seznam kategorií a podkategorií, které platí pro jednotlivé prezentace.
 
 ### <a name="industries"></a>Odvětví
 
 [!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+
+Výběr v odvětví se vztahuje jenom na nabídky publikované do AppSource.
 
 ### <a name="app-version"></a>verze aplikace
 
@@ -252,7 +258,7 @@ Zadejte podrobnosti, které se mají zobrazit na webu Marketplace, včetně popi
 
 - **Název** (povinné) – zde definovaný název se zobrazí jako název vaší nabídky na webu Marketplace, který jste zvolili. Název je předem vyplněný na základě vaší předchozí **nové položky nabídky** . Název může být ve vaší společnosti. Nemůže obsahovat Emoji (Pokud se nejedná o symboly ochranné známky a copyrightu) a musí být omezený na 50 znaků.
 - **Souhrn** (povinné) – zadejte krátký popis vaší nabídky, která se má použít ve výsledcích hledání seznamů Marketplace. Do tohoto pole lze zadat až 100 znaků textu.
-- **Popis** (povinné) – zadejte popis nabídky, která se má zobrazit v seznamech Marketplace. Vezměte v úvahu zahrnutí hodnot do kategorií, klíčových výhod, jakékoli kategorie nebo přidružení oboru, možností nákupu v aplikaci, všech potřebných zveřejnění a odkazu na Další informace. Do tohoto pole lze zadat až 3 000 znaků textu, včetně značek. Další tipy najdete v tématu [Vytvoření skvělého popisu aplikace](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
+- **Popis** (povinné) – zadejte popis nabídky, která se má zobrazit v seznamech Marketplace. Vezměte v úvahu zahrnutí hodnot do kategorií, klíčových výhod, jakékoli kategorie nebo přidružení oboru, možností nákupu v aplikaci, všech potřebných zveřejnění a odkazu na Další informace. Do tohoto pole lze zadat až 3 000 znaků textu, včetně značek. Další tipy najdete v tématu [Vytvoření skvělého popisu aplikace](/windows/uwp/publish/write-a-great-app-description).
 - **Hledaná klíčová slova** – zadejte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky na webu Marketplace.
 - Úvodní **pokyny** (povinné) – Vysvětlete, jak nakonfigurovat a začít používat vaši aplikaci pro potenciální zákazníky.  Tento rychlý Start může obsahovat odkazy na podrobnější online dokumentaci. Do tohoto pole lze zadat až 3 000 znaků textu.
 
@@ -267,7 +273,7 @@ Toto pole je vyžadováno.
 #### <a name="links"></a>Odkazy
 
 - **Zásady ochrany osobních údajů** (povinné) – odkaz na zásady ochrany osobních údajů vaší organizace. Zodpovídáte za to, že vaše aplikace vyhovuje předpisům a zákonům o ochraně osobních údajů a poskytuje platné zásady ochrany osobních údajů.
-- **Marketingové materiály programu CSP** (volitelné) – Poskytněte odkaz na marketingové materiály, pokud se rozhodnete tuto nabídku rozšíříte do programu [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . CSP rozšiřuje vaši nabídku na širší škálu kvalifikovaných zákazníků tím, že umožňuje partnerům CSP, aby si mohli seskupit, uvádět na trh a prodávat vaše nabídky. Tito prodejci budou potřebovat přístup k materiálům pro účely marketingu vaší nabídky. Další informace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
+- **Marketingové materiály programu CSP** (volitelné) – Poskytněte odkaz na marketingové materiály, pokud se rozhodnete tuto nabídku rozšíříte do programu [Cloud Solution Provider (CSP)](../cloud-solution-providers.md) . CSP rozšiřuje vaši nabídku na širší škálu kvalifikovaných zákazníků tím, že umožňuje partnerům CSP, aby si mohli seskupit, uvádět na trh a prodávat vaše nabídky. Tito prodejci budou potřebovat přístup k materiálům pro účely marketingu vaší nabídky. Další informace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
 - **Užitečné odkazy** (volitelné) – volitelné doplňkové online dokumenty týkající se vaší aplikace nebo související služby uvedené zadáním **názvu** a **adresy URL**. Přidejte další užitečné odkazy kliknutím na **+ Přidat adresu URL**.
 
 #### <a name="contact-information"></a>Kontaktní informace
@@ -296,7 +302,7 @@ Toto pole je vyžadováno.
 
 #### <a name="additional-marketplace-listing-resources"></a>Další prostředky pro výpis Marketplace
 
-- [Osvědčené postupy pro výpisy nabídky na webu Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Osvědčené postupy pro výpisy nabídky na webu Marketplace](../gtm-offer-listing-best-practices.md)
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
@@ -327,11 +333,11 @@ Diagramy a podrobná vysvětlení popisující použití shromážděných polí
 
 - **Adresa URL cílové stránky** (požadováno) – definujte adresu URL webu SaaS (například `https://contoso.com/signup` ), kterou budou koncoví zákazníci uvádět po získání nabídky z webu Marketplace a aktivaci procesu konfigurace z nově vytvořeného předplatného SaaS.  Tato adresa URL bude volána parametrem identifikačního tokenu nákupu na webu Marketplace, který jednoznačně identifikuje konkrétní nákup SaaS zákazníka.  Tento token musíte vyměňovat pro příslušné podrobnosti o předplatném SaaS pomocí rozhraní [Resolve](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) API.  Tyto podrobnosti a všechny ostatní, které chcete shromažďovat, by se měly používat jako součást interaktivní webové stránky zákazníka, která je integrovaná s vaším prostředím, k dokončení registrace koncových zákazníků a k aktivaci jejich nákupu.  Na této stránce by se měl uživatel zaregistrovat přes ověřování jedním kliknutím pomocí Azure Active Directory (Azure AD). <br> <br> Tato adresa URL s parametrem identifikačního tokenu nákupu na webu Marketplace bude taky volána, když koncový zákazník spustí spravované prostředí SaaS Azure Portal z centra pro správu M365. Oba toky byste měli zpracovávat, když se token poskytne poprvé po nákupu pro nové zákazníky a když je poskytnutý pro stávající zákazníky, kteří spravují jeho SaaS. <br> <br> Cílová stránka, kterou zde nakonfigurujete, by měla být spuštěná a musí běžet 24/7. Toto je jediný způsob, jakým se dozvíte o nových nákupech nabídek SaaS provedených na webu Marketplace nebo o požadavcích na konfiguraci aktivního předplatného nabídky.
 
-- **Webhook připojení** (povinné) – pro všechny asynchronní události, které Microsoft potřebuje odeslat (například předplatné SaaS se zrušilo), budeme potřebovat zadat adresu URL Webhooku připojení. Budeme zavolat tuto adresu URL a upozorníme vás na událost. <br> <br> Webhook, který zadáte, by měl být v provozu a musí běžet 24/7, protože se jedná o jediný způsob, jakým se dozvíte o aktualizacích předplatných SaaS vašich zákazníků prostřednictvím Marketplace.  Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které jsou do ní odesílány, a pak je správně zpracovat (například `https://prod-1westus.logic.azure.com:443/work` ). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Webhook připojení** (povinné) – pro všechny asynchronní události, které Microsoft potřebuje odeslat (například předplatné SaaS se zrušilo), budeme potřebovat zadat adresu URL Webhooku připojení. Budeme zavolat tuto adresu URL a upozorníme vás na událost. <br> <br> Webhook, který zadáte, by měl být v provozu a musí běžet 24/7, protože se jedná o jediný způsob, jakým se dozvíte o aktualizacích předplatných SaaS vašich zákazníků prostřednictvím Marketplace.  Pokud ještě nemáte systém Webhooku, nejjednodušší konfigurace bude mít aplikaci logiky koncového bodu HTTP, která bude naslouchat všem událostem, které jsou do ní odesílány, a pak je správně zpracovat (například `https://prod-1westus.logic.azure.com:443/work` ). Další informace najdete v tématu [pracovní postupy volání, triggeru nebo vnoření pracovních postupů s koncovými body HTTP v Logic Apps](../../logic-apps/logic-apps-http-endpoint.md).
 
-- **ID tenanta Azure AD** (povinné) – uvnitř Azure Portal musíme [vytvořit aplikaci Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , abyste mohli ověřit, že připojení mezi našimi dvěma službami je za ověřenou komunikací. [ID tenanta](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e).
+- **ID tenanta Azure AD** (povinné) – uvnitř Azure Portal musíme [vytvořit aplikaci Azure Active Directory (AD)](../../active-directory/develop/howto-create-service-principal-portal.md) , abyste mohli ověřit, že připojení mezi našimi dvěma službami je za ověřenou komunikací. [ID tenanta](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)zjistíte tak, že přejdete na Azure Active Directory a vyberete **vlastnosti**a pak vyhledáte uvedené číslo **ID adresáře** (například 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **ID aplikace Azure AD** (požadováno) – budete také potřebovat [ID aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Pokud chcete získat jeho hodnotu, vyberte Azure Active Directory a vyberte **Registrace aplikací**a vyhledejte číslo **ID aplikace** uvedené (například `50c464d3-4930-494c-963c-1e951d15360e` ).
+- **ID aplikace Azure AD** (požadováno) – budete také potřebovat [ID aplikace](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in). Pokud chcete získat jeho hodnotu, vyberte Azure Active Directory a vyberte **Registrace aplikací**a vyhledejte číslo **ID aplikace** uvedené (například `50c464d3-4930-494c-963c-1e951d15360e` ).
 
 >[!Note]
 >ID aplikace Azure AD je přidruženo k vašemu ID vydavatele v účtu partnerského centra.  Ujistěte se, že se stejné ID aplikace používá ve všech vašich nabídkách.
@@ -423,7 +429,7 @@ Můžete nakonfigurovat bezplatnou zkušební verzi pro každý plán v nabídce
 >[!NOTE]
 >Jakmile je vaše nabídka s podporou transakcí publikovaná s bezplatnou zkušební verzí, nejde ji pro tento plán zakázat. Ujistěte se, že toto nastavení je pro první publikování správné, aby se nemuselo znovu vytvářet plán.
 
-Pokud chcete získat informace o zákaznických předplatných, která se aktuálně účastní bezplatné zkušební verze, použijte novou vlastnost rozhraní API `isFreeTrial` , která bude označená jako true nebo false. Další informace najdete v tématu [rozhraní API pro SaaS získat předplatné](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
+Pokud chcete získat informace o zákaznických předplatných, která se aktuálně účastní bezplatné zkušební verze, použijte novou vlastnost rozhraní API `isFreeTrial` , která bude označená jako true nebo false. Další informace najdete v tématu [rozhraní API pro SaaS získat předplatné](pc-saas-fulfillment-api-v2.md#get-subscription).
 
 >[!NOTE]
 >Bezplatné zkušební verze se nepodporují pro plány, které využívají službu měření na webu Marketplace.

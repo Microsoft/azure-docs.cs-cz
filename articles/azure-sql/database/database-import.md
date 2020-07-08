@@ -2,8 +2,8 @@
 title: Import souboru BACPAC pro vytvoření databáze v Azure SQL Database
 description: Vytvoří novou databázi v Azure SQL Database nebo spravované instanci Azure SQL ze souboru BACPAC.
 services: sql-database
-ms.service: sql-database
-ms.subservice: migration
+ms.service: sql-db-mi
+ms.subservice: migrate
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 81a77e3a5fac19b4d6116a74221d3506d603bff9
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 7bca179f3140a64923af71199fe4a1db48d2065c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218812"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982333"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: Import souboru BACPAC do databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,7 @@ Podívejte se na toto video, kde se dozvíte, jak naimportovat ze souboru BACPAC
 K migraci databáze do [spravované instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) ze souboru BACPAC použijte SQL Server Management Studio nebo SQLPackage, použití Azure Portal nebo Azure PowerShell není momentálně podporované.
 
 > [!NOTE]
-> Počítače zpracovávající požadavky na Import a export odeslané prostřednictvím Azure Portal nebo PowerShellu musí ukládat soubor BACPAC a také dočasné soubory generované rozhraním Application Framework (DacFX) na datové vrstvě. Požadované místo na disku se výrazně liší mezi databázemi se stejnou velikostí a může vyžadovat místo na disku až třikrát velikosti databáze. Počítače, na kterých běží požadavek import/export, mají 450GB místo na místním disku. V důsledku toho se může stát, že některé požadavky selžou s chybou `There is not enough space on the disk` . V takovém případě je alternativním řešením spustit SqlPackage. exe na počítači s dostatečným místem na místním disku. K tomu, abyste se vyhnuli tomuto problému, doporučujeme používat SqlPackage k importu a exportu databází větších než 150 GB.
+> Počítače zpracovávající požadavky na Import a export odeslané prostřednictvím Azure Portal nebo PowerShellu musí ukládat soubor BACPAC a také dočasné soubory generované rozhraním Application Framework (DacFX) na datové vrstvě. Požadované místo na disku se výrazně liší mezi databázemi se stejnou velikostí a může vyžadovat místo na disku až třikrát velikosti databáze. Počítače, na kterých běží požadavek import/export, mají 450GB místo na místním disku. V důsledku toho se může stát, že některé požadavky selžou s chybou `There is not enough space on the disk` . V takovém případě je možné alternativní řešení spustit sqlpackage.exe v počítači s dostatečným místem na disku. K tomu, abyste se vyhnuli tomuto problému, doporučujeme používat SqlPackage k importu a exportu databází větších než 150 GB.
 
 1. Pro import ze souboru BACPAC do nové izolované databáze pomocí Azure Portal otevřete příslušnou stránku serveru a pak na panelu nástrojů vyberte **importovat databázi**.  
 
@@ -52,7 +52,7 @@ K migraci databáze do [spravované instance Azure SQL](../managed-instance/sql-
 
    ![Import2 databáze](./media/database-import/sql-server-import-database-settings.png)
 
-1. Klikněte na tlačítko **OK**.
+1. Klikněte na **OK**.
 
 1. Chcete-li monitorovat průběh importu, otevřete stránku serveru databáze a v části **Nastavení**vyberte **Historie importu a exportu**. Po úspěšném dokončení importu bude **dokončený** stav.
 
@@ -87,7 +87,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [Spravovaná instance SQL](../managed-instance/sql-managed-instance-paas-overview.md) v současné době nepodporuje migraci databáze do databáze instancí ze souboru BACPAC pomocí Azure PowerShell. Pro import do spravované instance SQL použijte SQL Server Management Studio nebo SQLPackage.
 
 > [!NOTE]
-> Počítače zpracovávající požadavky import/export odeslané prostřednictvím portálu nebo PowerShellu musí ukládat soubor BacPac a také dočasné soubory vygenerované rozhraním Application Framework (DacFX) na datové vrstvě. Požadované místo na disku se výrazně liší mezi databáze se stejnou velikostí a může trvat až 3 časy velikosti databáze. Počítače, na kterých běží požadavek import/export, mají 450GB místo na místním disku. V důsledku toho se může stát, že některé žádosti selžou a na disku není dost místa. V takovém případě je alternativním řešením spustit SqlPackage. exe na počítači s dostatečným místem na místním disku. Při importu a exportu databází větších než 150 GB použijte SqlPackage, abyste se tomuto problému vyhnuli.
+> Počítače zpracovávající požadavky import/export odeslané prostřednictvím portálu nebo PowerShellu musí ukládat soubor BacPac a také dočasné soubory vygenerované rozhraním Application Framework (DacFX) na datové vrstvě. Požadované místo na disku se výrazně liší mezi databáze se stejnou velikostí a může trvat až 3 časy velikosti databáze. Počítače, na kterých běží požadavek import/export, mají 450GB místo na místním disku. V důsledku toho se může stát, že některé žádosti selžou a na disku není dost místa. V takovém případě je možné alternativní řešení spustit sqlpackage.exe v počítači s dostatečným místem na disku. Při importu a exportu databází větších než 150 GB použijte SqlPackage, abyste se tomuto problému vyhnuli.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -146,7 +146,7 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 ## <a name="limitations"></a>Omezení
 
 - Import do databáze v elastickém fondu se nepodporuje. Můžete importovat data do jednoúčelové databáze, kterou pak můžete přesunout do elastického fondu.
-- Služba import exportu nefunguje, když je povolený přístup ke službám Azure. Problém ale můžete obejít tak, že ručně spustíte SqlPackage. exe z virtuálního počítače Azure nebo exportujete přímo do kódu pomocí rozhraní DACFx API.
+- Služba import exportu nefunguje, když je povolený přístup ke službám Azure. Problém ale můžete obejít tak, že ručně spustíte sqlpackage.exe z virtuálního počítače Azure nebo exportujete přímo do kódu pomocí rozhraní API DACFx.
 
 ## <a name="import-using-wizards"></a>Import pomocí průvodců
 

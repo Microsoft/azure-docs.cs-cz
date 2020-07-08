@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování virtuálních počítačů Azure
 description: Poskytuje souhrn nastavení podpory a omezení při zálohování virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b331fe757fc18029aa270f805c72150161a38f47
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 904240e066a83fa1278d663b8614b5b9269ba4d3
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849412"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970667"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -24,7 +24,7 @@ Další matrice podpory:
 
 Tady je postup, jak můžete zálohovat a obnovovat virtuální počítače Azure pomocí služby Azure Backup.
 
-**Scénář** | **Backup** | **Agent** |**Obnovení**
+**Scénář** | **Backup** | **Agenta** |**Obnovení**
 --- | --- | --- | ---
 Přímé zálohování virtuálních počítačů Azure  | Zálohujte celý virtuální počítač.  | Na virtuálním počítači Azure není potřeba žádný další agent. Azure Backup nainstaluje a použije rozšíření pro [agenta virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) , který běží na virtuálním počítači. | Obnovte následujícím způsobem:<br/><br/> - **Vytvořte základní virtuální počítač**. To je užitečné v případě, že virtuální počítač nemá žádnou speciální konfiguraci, třeba více IP adres.<br/><br/> - **Obnovte disk virtuálního počítače**. Obnovte disk. Pak ho připojte k existujícímu virtuálnímu počítači nebo vytvořte nový virtuální počítač z disku pomocí PowerShellu.<br/><br/> - **Nahraďte disk virtuálního počítače**. Pokud virtuální počítač existuje a používá spravované disky (nešifrované), můžete disk obnovit a použít ho k nahrazení stávajícího disku na virtuálním počítači.<br/><br/> - **Obnovte konkrétní soubory/složky**. Můžete obnovit soubory nebo složky z virtuálního počítače místo z celého virtuálního počítače.
 Přímá záloha virtuálních počítačů Azure (jenom Windows)  | Zálohujte konkrétní soubory/složky/svazky. | Nainstalujte [agenta Azure Recovery Services](backup-azure-file-folder-backup-faq.md).<br/><br/> Agenta MARS můžete spustit vedle záložního rozšíření pro agenta virtuálního počítače Azure, aby se virtuální počítač mohl zálohovat na úrovni souboru nebo složky. | Obnovte konkrétní složky nebo soubory.
@@ -63,7 +63,7 @@ Následující tabulka shrnuje podporované operační systémy při zálohován
 
 **Scénář** | **Podpora operačního systému**
 --- | ---
-Zálohování pomocí rozšíření agenta virtuálního počítače Azure | – Klient Windows 10 (jenom bit 64) <br/><br/>– Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> – Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> – Windows Server 2008 R2 (RTM a SP1 Standard)  <br/><br/> – Windows Server 2008 (pouze bit 64)
+Zálohování pomocí rozšíření agenta virtuálního počítače Azure | – Klient Windows 10 (jenom bit 64) <br/><br/>– Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> – Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> – Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> – Windows Server 2012 (Datacenter/Standard) <br/><br/> – Windows Server 2008 R2 (RTM a SP1 Standard)  <br/><br/> – Windows Server 2008 (pouze bit 64)
 Zálohování pomocí agenta MARS | [Podporované](backup-support-matrix-mars-agent.md#supported-operating-systems) operační systémy.
 Zálohování pomocí DPM/MABS | Podporované operační systémy pro zálohování pomocí [MABS](backup-mabs-protection-matrix.md) a [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807).
 
@@ -153,12 +153,13 @@ Zálohování konzistence s více virtuálními počítači | Azure Backup nepos
 Zálohování s [nastavením diagnostiky](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)  | Neplatné. <br/><br/> Pokud je obnovení virtuálního počítače Azure s diagnostickým nastavením aktivované pomocí možnosti [vytvořit novou](backup-azure-arm-restore-vms.md#create-a-vm) , obnovení se nepovede.
 Obnovení virtuálních počítačů připojených k zóně | Podporováno (pro virtuální počítač, který je zálohovaný po lednu 2019 a kde je dostupná [zóna dostupnosti](https://azure.microsoft.com/global-infrastructure/availability-zones/) ).<br/><br/>V současné době podporujeme obnovení do stejné zóny, která je připnuté na virtuální počítače. Pokud však zóna není k dispozici, obnovení se nezdařilo.
 Virtuální počítače s Gen2 | Podporuje se <br> Azure Backup podporuje zálohování a obnovení [virtuálních počítačů s Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Když se tyto virtuální počítače obnoví z bodu obnovení, obnoví se jako [virtuální počítače Gen2](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/).
+Zálohování virtuálních počítačů Azure s zámky | Nepodporované pro nespravované virtuální počítače. <br><br> Podporováno pro spravované virtuální počítače.
 
 ## <a name="vm-storage-support"></a>Podpora úložiště virtuálních počítačů
 
 **Komponenta** | **Podpora**
 --- | ---
-Datové disky virtuálních počítačů Azure | Podpora pro zálohování virtuálních počítačů Azure s až 32 disky je ve verzi Public Preview v [těchto oblastech](#backup-of-azure-virtual-machines-with-up-to-32-disks).<br><br> Podpora zálohování virtuálních počítačů Azure s nespravovanými disky nebo klasickými virtuálními počítači je jenom na 16 disků.
+Datové disky virtuálních počítačů Azure | Podpora pro zálohování virtuálních počítačů Azure s až 32 disky je ve verzi Public Preview ve všech oblastech s výjimkou národních cloudů (Azure Government, Azure Čína a Azure Německo).<br><br> Podpora zálohování virtuálních počítačů Azure s nespravovanými disky nebo klasickými virtuálními počítači je jenom na 16 disků.
 Velikost datového disku | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
 Typ úložiště | HDD úrovně Standard, SSD úrovně Standard SSD úrovně Premium.
 Spravované disky | Podporuje se.
@@ -169,13 +170,6 @@ Přidat disk k chráněnému virtuálnímu počítači | Podporuje se.
 Změna velikosti disku na chráněném virtuálním počítači | Podporuje se.
 Sdílené úložiště| Zálohování virtuálních počítačů pomocí sdílený svazek clusteru (CSV) nebo Souborový server se škálováním na více systémů se nepodporuje. Při zálohování pravděpodobně dojde k chybě zapisovačů sdílených svazků clusteru. Při obnovení se nemusí nacházet disky obsahující svazky sdíleného svazku clusteru.
 [Sdílené disky](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Není podporováno.
-
-### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>Zálohování virtuálních počítačů Azure s až 32 disky
-
-Azure Backup teď podporuje zálohování virtuálních počítačů Azure s až 32 připojenými disky.  Tato funkce je ve verzi Public Preview v Středozápadní USA, Kanadě Central, Asie – jihovýchod, Brazílie – jih, Kanada – východ, východní oblast, Francie – jih, Indie – jih, Indie – jih, Japonsko – východ, Japonsko – západ, Korea – jih, Jižní Afrika – sever, Velká Británie – jih, Velká Británie – západ, Austrálie – východ.  Pokud vás zajímá Tato funkce v jiných oblastech, zaregistrujte se do verze s omezeným náhledem zapsáním do nás na adrese AskAzureBackupTeam@microsoft.com .  
-
->[!NOTE]
->Azure Backup podporuje až 16 disků pro virtuální počítače Azure s nespravovanými disky nebo klasickými virtuálními počítači.
 
 ## <a name="vm-network-support"></a>Podpora sítě virtuálních počítačů
 
@@ -231,10 +225,10 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 
 **Počítač** | **Komprimovat do MABS/DPM (TCP)** | **Komprimovat do trezoru (HTTPS)**
 --- | --- | ---
-Místní počítače s Windows bez DPM/MABS | NA | ![Ano][green]
+Místní počítače s Windows bez DPM/MABS | NA | ![Yes][green]
 Virtuální počítače Azure | NA | NA
-Místní nebo virtuální počítače Azure s DPM | ![Ano][green] | ![Ano][green]
-Místní nebo virtuální počítače Azure s MABS | ![Ano][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s DPM | ![Yes][green] | ![Ano][green]
+Místní nebo virtuální počítače Azure s MABS | ![Yes][green] | ![Ano][green]
 
 ## <a name="next-steps"></a>Další kroky
 

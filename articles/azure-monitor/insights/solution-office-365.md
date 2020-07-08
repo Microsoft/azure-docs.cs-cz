@@ -1,17 +1,17 @@
 ---
-title: Řešení pro správu Office 365 v Azure | Microsoft Docs
+title: Řešení pro správu Office 365 v Azure
 description: Tento článek poskytuje podrobné informace o konfiguraci a použití řešení Office 365 v Azure.  Obsahuje podrobný popis záznamů Office 365 vytvořených v Azure Monitor.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d89c64b7ceea730dab61ffe1254d838d219b785
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82023601"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971041"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -19,7 +19,7 @@ ms.locfileid: "82023601"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Aktualizace řešení
-> Toto řešení bylo nahrazeno řešením obecné dostupnosti [Office 365](../../sentinel/connect-office-365.md) ve [službě Azure Sentinel](../../sentinel/overview.md) a v [řešení pro vytváření sestav a monitorování Azure AD](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Společně poskytují aktualizovanou verzi předchozího řešení Azure Monitor Office 365 s vylepšeným prostředím pro konfiguraci. Stávající řešení můžete dál používat až do 30. července 2020.
+> Toto řešení bylo nahrazeno řešením obecné dostupnosti [Office 365](../../sentinel/connect-office-365.md) ve [službě Azure Sentinel](../../sentinel/overview.md) a v [řešení pro vytváření sestav a monitorování Azure AD](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md). Společně poskytují aktualizovanou verzi předchozího řešení Azure Monitor Office 365 s vylepšeným prostředím pro konfiguraci. Stávající řešení můžete dál používat do 31. října 2020.
 > 
 > Azure Sentinel je nativní cloudové informace o zabezpečení a řešení pro správu událostí, které ingestují protokoly a poskytuje další funkce SIEM, včetně detekce, šetření, loveckí a řízené přehledy na základě strojového učení. Použití služby Azure Sentinel vám teď poskytne příjem aktivit Office 365 SharePoint a protokolů správy Exchange.
 > 
@@ -35,8 +35,8 @@ ms.locfileid: "82023601"
 >
 > ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>Otázka: je možné začlenit řešení Office 365 Azure Monitor mezi teď a Červenec 30?
-> Ne, skripty pro připojování řešení Azure Monitor Office 365 už nejsou k dispozici. Řešení bude odstraněno 30. července.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-october-31"></a>Otázka: je možné začlenit řešení Office 365 Azure Monitor mezi dnes a 31. října?
+> Ne, skripty pro připojování řešení Azure Monitor Office 365 už nejsou k dispozici. Řešení bude odstraněno 31. října.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>Otázka: budou se tabulky a schémata měnit?
 > Název a schéma **OfficeActivity** tabulky zůstane stejné jako v aktuálním řešení. V novém řešení můžete pokračovat v používání stejných dotazů, kromě dotazů, které odkazují na data Azure AD.
@@ -102,11 +102,11 @@ ms.locfileid: "82023601"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>Otázka: umožňuje službě Azure Sentinel v rámci řešení přidat další konektory?
 > Ano, další informace najdete v tématu [zdroje dat služby Azure Sentinel Connect](../../sentinel/connect-data-sources.md).
 > 
-> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>Otázka: co se stane 30. července? Musím odpojení předem?
+> ###    <a name="q-what-will-happen-on-october-31-do-i-need-to-offboard-beforehand"></a>Otázka: co se stane 31. října Musím odpojení předem?
 > 
 > - Nebudete moct přijímat data z řešení **Office 365** . Řešení už nebude dostupné na webu Marketplace.
 > - Pro zákazníky s Sentinelem v Azure se v řešení **Office 365** pro **SecurityInsights** pro Azure sentinel bude zahrnout řešení Log Analytics pracovního prostoru.
-> - Pokud vaše řešení neodpojení ručně, budou se data automaticky odpojí od 30. července.
+> - Pokud vaše řešení neodpojení ručně, vaše data se automaticky odpojí od 31. října.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>Otázka: budou moje data přenesena do nového řešení?
 > Ano. Když odeberete řešení **Office 365** z pracovního prostoru, jeho data budou dočasně nedostupná, protože schéma se odebere. Pokud povolíte nový konektor **sady Office 365** v nástroji Sentinel, obnoví se schéma do pracovního prostoru a veškerá shromážděná data budou k dispozici. 
@@ -121,11 +121,11 @@ ms.locfileid: "82023601"
 - Řešení potíží s operačním systémem pomocí [dotazů protokolu](../log-query/log-query-overview.md) na data o aktivitách vaší organizace v Office 365.
 
 
-## <a name="uninstall"></a>Odinstalovat
+## <a name="uninstall"></a>Odinstalace
 
 Řešení pro správu Office 365 můžete odebrat pomocí procesu v části [Odebrání řešení pro správu](solutions.md#remove-a-monitoring-solution). Tím se nezastaví shromažďování dat ze sady Office 365 do Azure Monitor i když. Pomocí níže uvedeného postupu můžete zrušit odběr Office 365 a zastavit shromažďování dat.
 
-1. Uložte následující skript jako *office365_unsubscribe. ps1*.
+1. Následující skript uložte jako *office365_unsubscribe.ps1*.
 
     ```powershell
     param (
@@ -243,7 +243,7 @@ Kliknutím na dlaždici **office 365** otevřete řídicí panel **Office 365** 
 
 Řídicí panel obsahuje sloupce v následující tabulce. V každém sloupci je uveden seznam deseti výstrah podle počtu odpovídající kritériím daného sloupce pro zadaný obor a časový rozsah. Hledání v protokolu, které poskytuje celý seznam, můžete spustit kliknutím na Zobrazit vše v dolní části sloupce nebo kliknutím na záhlaví sloupce.
 
-| Sloupec | Popis |
+| Sloupec | Description |
 |:--|:--|
 | Operace | Poskytuje informace o aktivních uživatelích z monitorovaných předplatných Office 365. Uvidíte také počet aktivit, ke kterým dojde v průběhu času.
 | Výměna | Zobrazuje rozpis aktivit systému Exchange Server, jako je například oprávnění k přidání a poštovní schránce, nebo nastavit poštovní schránku. |
@@ -270,7 +270,7 @@ Následující vlastnosti jsou společné pro všechny záznamy sady Office 365.
 | OrganizationId | Identifikátor GUID klienta Office 365 vaší organizace. Tato hodnota bude pro vaši organizaci vždycky stejná, bez ohledu na službu Office 365, ve které se vyskytuje. |
 | RecordType | Typ operace byl proveden. |
 | ResultStatus | Určuje, jestli byla akce (zadaná ve vlastnosti Operation) úspěšná, nebo ne. Možné hodnoty jsou úspěšné, pravdivé hodnotě stavem nebo selhaly. V případě aktivity správce serveru Exchange je hodnota buď true, nebo false. |
-| UserId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name. Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
+| UserId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name . Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti UserId.  Tato vlastnost se například naplní jedinečným IDENTIFIKÁTORem (PUID) služby Passport pro události prováděné uživateli na SharePointu, OneDrivu pro firmy a Exchange. Tato vlastnost může taky určovat stejnou hodnotu jako vlastnost UserID pro události, ke kterým dochází v jiných službách a událostech, které provádí systémové účty.|
 | UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Regular<br>Vyhrazeno<br>ServicePrincipal<br>Systém |
 
@@ -462,7 +462,7 @@ Tyto záznamy jsou vytvořeny v reakci na operace se soubory ve službě SharePo
 
 Následující tabulka uvádí Ukázky dotazů protokolu pro záznamy aktualizací shromážděné tímto řešením.
 
-| Dotaz | Popis |
+| Dotaz | Description |
 | --- | --- |
 |Počet všech operací v předplatném sady Office 365 |OfficeActivity &#124; souhrnu počtu () podle operace |
 |Použití webů SharePointu|OfficeActivity &#124; WHERE OfficeWorkload = ~ "SharePoint" &#124; Shrnutí Count () pomocí řazení SiteUrl \| podle Count ASC|

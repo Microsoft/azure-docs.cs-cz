@@ -3,18 +3,18 @@ title: Návrh pracovních postupů pro zásady jako kód
 description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy definic jako kódu a automatické ověřování prostředků.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 04ec27216a3e9d59da21ef80948ef8620234e575
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194412"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970939"
 ---
 # <a name="design-policy-as-code-workflows"></a>Návrh pracovních postupů pro zásady jako kód
 
 Jak budete postupovat na cestě pomocí zásad správného řízení cloudu, budete chtít posunout z ruční správy každé definice zásad v Azure Portal nebo prostřednictvím různých sad SDK na něco mnohem spravovatelnou a opakovat v podnikovém měřítku. Mezi dva z převládajících přístupů ke správě systémů ve velkém měřítku v cloudu patří:
 
-- Infrastruktura jako kód: postupy pro zpracování obsahu definujícího vaše prostředí, vše od Správce prostředků šablon Azure Policy definic do Azure modrotisky jako zdrojový kód.
+- Infrastruktura jako kód: postupy pro zpracování obsahu definujícího vaše prostředí, vše od Azure Resource Manager šablon (šablony ARM), které Azure Policy definice do Azure modrotisky jako zdrojový kód.
 - DevOps: sjednocení lidí, procesů a produktů umožní průběžné doručování hodnot našim koncovým uživatelům.
 
 Zásada jako kód je kombinací těchto nápadů. V podstatě Udržujte definice zásad ve správě zdrojového kódu a pokaždé, když provedete změnu, otestujete a ověříte tuto změnu. Nicméně by neměl být rozsahem zapojení zásad s infrastrukturou jako Code nebo DevOps.
@@ -115,7 +115,7 @@ Po dokončení všech bran ověřování aktualizujte přiřazení tak, aby bylo
 
 ## <a name="process-integrated-evaluations"></a>Zpracování integrovaných vyhodnocení
 
-Obecný pracovní postup pro zásady jako kód je určen pro vývoj a nasazování zásad a iniciativ do prostředí ve velkém měřítku. Vyhodnocení zásad by ale mělo být součástí procesu nasazení pro libovolný pracovní postup, který nasazuje nebo vytváří prostředky v Azure, jako je nasazení aplikací nebo spouštění šablon Správce prostředků k vytvoření infrastruktury.
+Obecný pracovní postup pro zásady jako kód je určen pro vývoj a nasazování zásad a iniciativ do prostředí ve velkém měřítku. Vyhodnocení zásad by ale mělo být součástí procesu nasazení pro libovolný pracovní postup, který nasazuje nebo vytváří prostředky v Azure, jako je nasazení aplikací nebo spouštění šablon ARM, aby bylo možné vytvořit infrastrukturu.
 
 V těchto případech platí, že po nasazení aplikace nebo infrastruktury do testovacího předplatného nebo skupiny prostředků by se mělo provést vyhodnocení zásad pro tento rozsah ověřování všech stávajících zásad a iniciativ. I když můžou být v takovém prostředí nakonfigurované jako **enforcementMode** _zakázané_ , je užitečné znát počáteční informace v případě, že nasazení aplikace nebo infrastruktury v brzké době neporušila definice zásad. Toto vyhodnocení zásad by proto mělo být krok v těchto pracovních postupech a neúspěšné nasazení, které vytváří nekompatibilní prostředky.
 

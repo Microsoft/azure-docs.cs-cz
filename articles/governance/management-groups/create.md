@@ -3,12 +3,12 @@ title: Vytvoření skupin pro správu pro uspořádání prostředků – zásad
 description: Naučte se vytvářet skupiny pro správu Azure pro správu více prostředků pomocí portálu, Azure PowerShell a Azure CLI.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0abecf02062dd4461274a9bc3722d46e6e7cc3d1
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 6fe7f2ea74c697701084321e068042b36acbdb11
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220756"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971131"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci a správu prostředků
 
@@ -21,7 +21,7 @@ První skupina pro správu vytvořená v adresáři může trvat až 15 minut, n
 Libovolný uživatel služby Azure AD v tenantovi může vytvořit skupinu pro správu bez oprávnění k zápisu skupiny pro správu přiřazeného tomuto uživateli. Tato nová skupina pro správu bude podřízenou skupinou kořenové skupiny pro správu a tvůrci bude přiřazeno přiřazení role "vlastník". Služba skupiny pro správu umožňuje této možnosti, aby přiřazení rolí nebylo nutné na kořenové úrovni. Žádní uživatelé nemají přístup ke kořenové skupině pro správu při jejím vytvoření. Aby nedocházelo k tomu, že by globální Správci služby Azure AD mohli začít používat skupiny pro správu, umožníme vytváření počátečních skupin pro správu v kořenu.  
 obsah.
 
-Skupinu pro správu můžete vytvořit pomocí portálu, [Správce prostředků šablony](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), PowerShellu nebo rozhraní příkazového řádku Azure CLI.
+Skupinu pro správu můžete vytvořit pomocí portálu, [Azure Resource Manager šablony](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
 ### <a name="create-in-portal"></a>Vytvořit na portálu
 

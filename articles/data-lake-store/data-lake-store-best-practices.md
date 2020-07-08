@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638931"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981431"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen1
 
@@ -23,7 +23,7 @@ ms.locfileid: "75638931"
 
 V tomto článku se seznámíte s osvědčenými postupy a pokyny pro práci s Azure Data Lake Storage Gen1. Tento článek poskytuje informace o zabezpečení, výkonu, odolnosti a monitorování pro Data Lake Storage Gen1. Před Data Lake Storage Gen1 práce s skutečně velkými objemy dat ve službách, jako je Azure HDInsight, byla složitá. Museli jste horizontálních oddílů data napříč několika účty BLOB Storage, aby bylo možné dosáhnout úložiště řádu petabajtů a optimálního výkonu v tomto rozsahu. Při Data Lake Storage Gen1 se většina pevných omezení velikosti a výkonu odebere. Existují však i některé okolnosti, které tento článek popisuje, abyste dosáhli nejlepšího výkonu s použitím Data Lake Storage Gen1.
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Azure Data Lake Storage Gen1 nabízí řízení přístupu POSIX a podrobné auditování pro uživatele, skupiny a instanční objekty služby Azure Active Directory (Azure AD). Tyto ovládací prvky přístupu můžou být nastavené na existující soubory a složky. Ovládací prvky přístupu lze také použít k vytvoření výchozích hodnot, které lze použít pro nové soubory nebo složky. Pokud jsou oprávnění nastavena na existující složky a podřízené objekty, musí být oprávnění šířena rekurzivně u každého objektu. Pokud existuje velký počet souborů, může rozšíření oprávnění trvat dlouhou dobu. Doba trvání může být v rozsahu od 30-50 objektů zpracovaných za sekundu. Proto Naplánujte strukturu složek a skupiny uživatelů odpovídajícím způsobem. V opačném případě může dojít k neočekávaným zpožděním a problémům při práci s daty.
 
@@ -45,7 +45,7 @@ Služby, jako je Azure HDInsight, se obvykle používají pro přístup k datům
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>Povolit bránu Data Lake Storage Gen1 firewall s přístupem ke službě Azure
 
-Data Lake Storage Gen1 podporuje možnost zapnout bránu firewall a omezit přístup jenom na služby Azure, což se doporučuje pro menší vektory útoku mimo neoprávněné vniknutí. Bránu firewall lze povolit na účtu Data Lake Storage Gen1 v Azure Portal prostřednictvím **Firewall** > brány firewall**Povolit bránu firewall (zapnuto)** > **Povolit přístup k možnostem služeb Azure** .
+Data Lake Storage Gen1 podporuje možnost zapnout bránu firewall a omezit přístup jenom na služby Azure, což se doporučuje pro menší vektory útoku mimo neoprávněné vniknutí. Bránu firewall lze povolit na účtu Data Lake Storage Gen1 v Azure Portal prostřednictvím **brány firewall**  >  **Povolit bránu firewall (zapnuto)**  >  **Povolit přístup k možnostem služeb Azure** .
 
 ![Nastavení brány firewall v Data Lake Storage Gen1](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Nastavení brány firewall v Data Lake Storage Gen1")
 
@@ -101,10 +101,10 @@ Níže jsou uvedené hlavní tři Doporučené možnosti pro orchestraci replika
 |  |Distcp  |Azure Data Factory  |AdlCopy  |
 |---------|---------|---------|---------|
 |**Omezení škálování**     | Ohraničené uzly pracovního procesu        | Omezeno maximálními jednotkami pohybu cloudových dat        | Svázáno podle analytických jednotek        |
-|**Podporuje kopírování rozdílových souborů.**     |   Ano      | Ne         | Ne         |
-|**Integrovaná orchestrace**     |  Ne (použití Oozieho toku nebo úloh cron)       | Ano        | Ne (použít Azure Automation nebo Windows Plánovač úloh)         |
+|**Podporuje kopírování rozdílových souborů.**     |   Ano      | No         | No         |
+|**Integrovaná orchestrace**     |  Ne (použití Oozieho toku nebo úloh cron)       | Yes        | Ne (použít Azure Automation nebo Windows Plánovač úloh)         |
 |**Podporované systémy souborů**     | ADL, HDFS, WASB, S3, GS, CFS        |Množství, viz [konektory](../data-factory/connector-azure-blob-storage.md).         | ADL na ADL, WASB na ADL (jenom stejná oblast)        |
-|**Podpora operačního systému**     |Libovolný operační systém se systémem Hadoop         | –          | Windows 10         |
+|**Podpora operačního systému**     |Libovolný operační systém se systémem Hadoop         | Není k dispozici          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Použití Distcp k přesunu dat mezi dvěma místy
 
@@ -126,7 +126,9 @@ Podobně jako Distcp musí být AdlCopy orchestrace, například Azure Automatio
 
 Data Lake Storage Gen1 poskytuje podrobné diagnostické protokoly a auditování. Data Lake Storage Gen1 poskytuje základní metriky v Azure Portal pod účtem Data Lake Storage Gen1 a v Azure Monitor. V Azure Portal se zobrazí dostupnost Data Lake Storage Gen1. Tato metrika se ale aktualizuje každých sedm minut a nedá se dotazovat prostřednictvím veřejně vystaveného rozhraní API. Chcete-li získat nejaktuálnější dostupnost účtu Data Lake Storage Gen1, je nutné spustit vlastní syntetické testy k ověření dostupnosti. Další metriky, jako je například celkové využití úložiště, požadavky na čtení a zápis a příchozí nebo odchozí přenos dat, může trvat až 24 hodin, než se aktualizuje. Další aktuální metriky proto musí být vypočítávány ručně prostřednictvím nástrojů příkazového řádku Hadoop nebo agregací informací o protokolu. Nejrychlejší způsob, jak získat nejnovější využití úložiště, je spuštění tohoto příkazu HDFS z uzlu clusteru Hadoop (například hlavní uzel):
 
-    hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```console
+hdfs dfs -du -s -h adl://<adlsg1_account_name>.azuredatalakestore.net:443/
+```
 
 ### <a name="export-data-lake-storage-gen1-diagnostics"></a>Exportovat diagnostiku Data Lake Storage Gen1
 
@@ -136,11 +138,11 @@ Pro další upozorňování v reálném čase a lepší kontrolu nad tím, kde s
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>Zapnutí protokolování na úrovni ladění v HDInsight
 
-Pokud Data Lake Storage Gen1 přesouvání protokolu není zapnuté, Azure HDInsight také poskytuje způsob, jak zapnout [protokolování na straně klienta pro data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md) prostřednictvím log4j. V konfiguraci **Ambari** > **nitě** >  > **Konfigurace****Advanced nitě-log4j**musíte nastavit následující vlastnost:
+Pokud Data Lake Storage Gen1 přesouvání protokolu není zapnuté, Azure HDInsight také poskytuje způsob, jak zapnout [protokolování na straně klienta pro data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md) prostřednictvím log4j. V konfiguraci **Ambari**  >  **nitě**  >  **Konfigurace**  >  **Advanced nitě-log4j**musíte nastavit následující vlastnost:
 
-    log4j.logger.com.microsoft.azure.datalake.store=DEBUG
+`log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 
-Jakmile je vlastnost nastavena a uzly restartovány, Data Lake Storage Gen1 Diagnostika je zapsána do protokolů PŘÍZe na uzlech (/TMP/\<User\>/YARN.log) a důležité podrobnosti, jako jsou chyby nebo omezování (kód chyby HTTP 429), lze monitorovat. Stejné informace je také možné monitorovat v protokolech Azure Monitor nebo kdykoli jsou do okna [Diagnostika](data-lake-store-diagnostic-logs.md) účtu Data Lake Storage Gen1 odesílány protokoly. Doporučuje se aspoň zapnout protokolování na straně klienta nebo využít možnost přesouvání protokolu s Data Lake Storage Gen1 pro provozní viditelnost a snazší ladění.
+Jakmile je vlastnost nastavená a uzly se restartují, Data Lake Storage Gen1 diagnostika se zapisuje do protokolů PŘÍZe na uzlech (/TMP/ \<user\> /YARN.log) a důležité podrobnosti, jako jsou chyby nebo omezování (kód chyby HTTP 429), se dají monitorovat. Stejné informace je také možné monitorovat v protokolech Azure Monitor nebo kdykoli jsou do okna [Diagnostika](data-lake-store-diagnostic-logs.md) účtu Data Lake Storage Gen1 odesílány protokoly. Doporučuje se aspoň zapnout protokolování na straně klienta nebo využít možnost přesouvání protokolu s Data Lake Storage Gen1 pro provozní viditelnost a snazší ladění.
 
 ### <a name="run-synthetic-transactions"></a>Spouštění syntetických transakcí
 
@@ -154,11 +156,15 @@ Při vykládku dat do data Lake je důležité předem naplánovat strukturu dat
 
 V úlohách IoT se můžete setkat s daty vydanými v úložišti dat, která se nacházejí v různých produktech, zařízeních, organizacích a zákaznících. Je důležité předem naplánovat rozložení adresáře pro organizaci, zabezpečení a efektivní zpracování dat pro uživatele se vzdálení datovými proudy. Obecná šablona, kterou je třeba zvážit, může být následující rozložení:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Například vykládka telemetrie pro stroj v letadle v rámci Velké Británie může vypadat jako tato struktura:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+```console
+UK/Planes/BA1293/Engine1/2017/08/11/12/
+```
 
 Je důležité důvod, abyste datum umístili na konec struktury složek. Pokud chcete některé oblasti nebo věci v předmětech uzamknout pro uživatele nebo skupiny, můžete k tomu snadno využít oprávnění POSIX. V opačném případě, pokud je potřeba omezit určitou skupinu zabezpečení, aby se zobrazila pouze data o Spojeném království nebo určité rovině, musí se v každé složce v rámci každé hodiny vyžadovat samostatné oprávnění. Kromě toho struktura data v popředí by měla exponenciálně zvýšit počet složek v době, kdy se provedla.
 
@@ -168,14 +174,18 @@ Z vysoké úrovně se běžně používaným přístupem v dávkovém zpracován
 
 Občas se zpracování souborů nezdařilo z důvodu poškození dat nebo neočekávaných formátů. V takových případech by adresářová struktura mohla těžit ze složky **/Bad** , aby se soubory přesunuly pro další kontrolu. Úloha služby Batch může také zpracovávat zprávy a oznámení těchto *neplatných* souborů pro ruční zásah. Vezměte v úvahu následující strukturu šablon:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```console
+{Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
+{Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+```
 
 Například marketingový firmu obdrží denní datové výtažky aktualizací zákazníků od jejich klientů v Severní Amerika. Může vypadat jako následující fragment kódu před a po zpracování:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```console
+NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
+NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+```
 
 V běžném případě zpracování dat služby Batch přímo do databází, jako je například podregistr nebo tradiční databáze SQL, není nutné mít složku **/in** nebo **/out** , protože výstup již patří do samostatné složky pro tabulku podregistru nebo externí databázi. Například denní extrakce od zákazníků by se mohla zakládat do příslušných složek a orchestrace podle něčeho, jako je Azure Data Factory, Apache Oozie nebo Apache flow, může aktivovat denní podregistr nebo úlohu Sparku, která zpracuje data a zapíše je do tabulky podregistru.
 

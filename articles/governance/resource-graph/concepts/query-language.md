@@ -1,14 +1,14 @@
 ---
 title: Principy dotazovacího jazyka
 description: Popisuje tabulky grafů prostředků a dostupné Kusto datové typy, operátory a funkce použitelné pro Azure Resource Graph.
-ms.date: 03/07/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 944d0f2676f1a82c80be33a6c1a91d34bc8a32f7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654453"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970446"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Principy dotazovacího jazyka grafu prostředků Azure
 
@@ -17,14 +17,15 @@ Dotazovací jazyk pro graf prostředků Azure podporuje řadu operátorů a funk
 Tento článek se zabývá jazykovými součástmi, které podporuje graf prostředků:
 
 - [Tabulky grafů prostředků](#resource-graph-tables)
+- [Prvky vlastního jazyka grafu prostředků](#resource-graph-custom-language-elements)
 - [Podporované prvky jazyka KQL](#supported-kql-language-elements)
 - [Řídicí znaky](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Tabulky grafů prostředků
 
-Graf prostředků poskytuje několik tabulek pro data, která uchovává o Správce prostředků typech prostředků a jejich vlastnostech. Tyto tabulky lze použít s `join` operátory nebo `union` k získání vlastností ze souvisejících typů prostředků. Tady je seznam tabulek dostupných v grafu prostředků:
+Graf prostředků poskytuje několik tabulek pro data, která uchovává o Azure Resource Manager typech prostředků a jejich vlastnostech. Tyto tabulky lze použít s `join` operátory nebo `union` k získání vlastností ze souvisejících typů prostředků. Tady je seznam tabulek dostupných v grafu prostředků:
 
-|Tabulky grafů prostředků |Popis |
+|Tabulky grafů prostředků |Description |
 |---|---|
 |Prostředky |Výchozí tabulka, pokud není v dotazu definována. Většina Správce prostředkůch typů prostředků a vlastností je tady. |
 |ResourceContainers |Zahrnuje předplatné (ve verzi Preview- `Microsoft.Resources/subscriptions` ) a `Microsoft.Resources/subscriptions/resourcegroups` typy prostředků a data skupiny prostředků (). |
@@ -62,6 +63,33 @@ Resources
 > [!NOTE]
 > Při omezení `join` výsledků pomocí `project` vlastnosti, kterou používá `join` pro relaci obou tabulek, je nutné v rámci výše uvedeného příkladu použít vlastnost _SubscriptionId_ `project` .
 
+## <a name="resource-graph-custom-language-elements"></a>Prvky vlastního jazyka grafu prostředků
+
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>Syntaxe sdíleného dotazu (Preview)
+
+Ve verzi Preview se ke [sdílenému dotazu](../tutorials/create-share-query.md) dá získat přímý dotaz přímo v dotazu grafu prostředků. V tomto scénáři je možné vytvářet standardní dotazy jako sdílené dotazy a znovu je použít. Chcete-li volat sdílený dotaz v dotazu grafu prostředku, použijte `{{shared-query-uri}}` syntaxi. Identifikátor URI sdíleného dotazu je _ID prostředku_ pro sdílený dotaz na stránce **Nastavení** daného dotazu. V tomto příkladu je náš identifikátor URI sdíleného dotazu `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` .
+Tento identifikátor URI odkazuje na předplatné, skupinu prostředků a celé jméno sdíleného dotazu, na který chcete odkazovat v jiném dotazu. Tento dotaz je stejný jako ten, který jste vytvořili v [kurzu: vytvoření a sdílení dotazu](../tutorials/create-share-query.md).
+
+> [!NOTE]
+> Dotaz, který odkazuje na sdílený dotaz, nelze uložit jako sdílený dotaz.
+
+Příklad 1: použití pouze sdíleného dotazu
+
+Výsledky dotazu tohoto grafu prostředku jsou stejné jako dotaz uložený ve sdíleném dotazu.
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+```
+
+Příklad 2: zahrnutí sdíleného dotazu jako části většího dotazu
+
+Tento dotaz nejprve používá sdílený dotaz a následně používá `limit` k dalšímu omezení výsledků.
+
+```kusto
+{{/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS}}
+| where properties_storageProfile_osDisk_osType =~ 'Windows'
+```
+
 ## <a name="supported-kql-language-elements"></a>Podporované prvky jazyka KQL
 
 Graf prostředků podporuje všechny KQL [datové typy](/azure/kusto/query/scalar-data-types/), [skalární funkce](/azure/kusto/query/scalarfunctions), [skalární operátory](/azure/kusto/query/binoperators)a [agregační funkce](/azure/kusto/query/any-aggfunction). Graf prostředků podporuje konkrétní [tabulkové operátory](/azure/kusto/query/queries) , některé z nich mají různé chování.
@@ -87,7 +115,7 @@ Tady je seznam KQL tabulkových operátorů podporovaných grafem prostředků s
 |[nezbytná](/azure/kusto/query/takeoperator) |[Seznam všech veřejných IP adres](../samples/starter.md#list-publicip) |Synonymum`limit` |
 |[vrchol](/azure/kusto/query/topoperator) |[Zobrazit prvních pět virtuálních počítačů podle názvu a jejich typu operačního systému](../samples/starter.md#show-sorted) | |
 |[sjednocovací](/azure/kusto/query/unionoperator) |[Kombinování výsledků ze dvou dotazů do jednoho výsledku](../samples/advanced.md#unionresults) |Povolena jedna tabulka: _T_ `| union` \[ `kind=` `inner` \| `outer` \] \[ `withsource=` _ColumnName_ \] _Table_. Omezení 3 `union` ramen v jednom dotazu. Přibližné rozlišení `union` tabulek nohy není povoleno. Dá se použít v jedné tabulce nebo mezi tabulkami _Resources_ a _ResourceContainers_ . |
-|[where](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
+|[,](/azure/kusto/query/whereoperator) |[Zobrazit prostředky, které obsahují úložiště](../samples/starter.md#show-storage) | |
 
 ## <a name="escape-characters"></a>Řídicí znaky
 

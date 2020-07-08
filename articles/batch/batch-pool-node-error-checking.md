@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: how-to
-ms.openlocfilehash: 5ac3991a52ab75dccd0033160d6e972d155a882b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723914"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85979913"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Vyhledat chyby fondu a uzlů
 
@@ -24,9 +24,9 @@ Tento článek popisuje operace na pozadí, ke kterým může dojít pro fondy a
 
 ### <a name="resize-timeout-or-failure"></a>Změnit časový limit nebo selhání
 
-Při vytváření nového fondu nebo změně velikosti existujícího fondu zadejte cílový počet uzlů.  Operace vytvoření nebo změny velikosti se okamžitě dokončí, ale skutečné přidělení nových uzlů nebo odebrání stávajících uzlů může trvat několik minut.  Časový limit pro změnu velikosti můžete zadat v rozhraní API pro [Vytvoření](https://docs.microsoft.com/rest/api/batchservice/pool/add) nebo [změnu velikosti](https://docs.microsoft.com/rest/api/batchservice/pool/resize) . Pokud dávka nemůže získat cílový počet uzlů během časového limitu změny velikosti, fond přejde do stabilního stavu a sestavy změní velikost.
+Při vytváření nového fondu nebo změně velikosti existujícího fondu zadejte cílový počet uzlů.  Operace vytvoření nebo změny velikosti se okamžitě dokončí, ale skutečné přidělení nových uzlů nebo odebrání stávajících uzlů může trvat několik minut.  Časový limit pro změnu velikosti můžete zadat v rozhraní API pro [Vytvoření](/rest/api/batchservice/pool/add) nebo [změnu velikosti](/rest/api/batchservice/pool/resize) . Pokud dávka nemůže získat cílový počet uzlů během časového limitu změny velikosti, fond přejde do stabilního stavu a sestavy změní velikost.
 
-Vlastnost [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) pro nejnovější hodnocení vypíše seznam chyb, ke kterým došlo.
+Vlastnost [ResizeError](/rest/api/batchservice/pool/get#resizeerror) pro nejnovější hodnocení vypíše seznam chyb, ke kterým došlo.
 
 Mezi běžné příčiny chyb změny velikosti patří:
 
@@ -34,31 +34,31 @@ Mezi běžné příčiny chyb změny velikosti patří:
   - Ve většině případů je výchozí časový limit 15 minut dostatečně dlouhý pro přidělení nebo odebrání uzlů fondu.
   - Pokud přidělujete velký počet uzlů, doporučujeme nastavit časový limit pro změnu velikosti na 30 minut. Například když měníte velikost na více než 1 000 uzlů z bitové kopie Azure Marketplace nebo na více než 300 uzlů z vlastní image virtuálního počítače.
 - Nedostatečná kvóta jádra
-  - Účet Batch je omezený počtem jader, které může přidělit napříč všemi fondy. Dávka ukončí přidělování uzlů po dosažení této kvóty. [Můžete zvýšit](https://docs.microsoft.com/azure/batch/batch-quota-limit) základní kvótu, aby dávka mohla přidělit více uzlů.
-- Nedostatečné IP adresy podsítě [, pokud je fond ve virtuální síti](https://docs.microsoft.com/azure/batch/batch-virtual-network)
+  - Účet Batch je omezený počtem jader, které může přidělit napříč všemi fondy. Dávka ukončí přidělování uzlů po dosažení této kvóty. [Můžete zvýšit](./batch-quota-limit.md) základní kvótu, aby dávka mohla přidělit více uzlů.
+- Nedostatečné IP adresy podsítě [, pokud je fond ve virtuální síti](./batch-virtual-network.md)
   - Podsíť virtuální sítě musí mít dostatek nepřiřazených IP adres, které by bylo možné přidělit každému požadovanému uzlu fondu. V opačném případě nelze uzly vytvořit.
-- Nedostatek prostředků, pokud [je fond ve virtuální síti](https://docs.microsoft.com/azure/batch/batch-virtual-network)
+- Nedostatek prostředků, pokud [je fond ve virtuální síti](./batch-virtual-network.md)
   - V rámci stejného předplatného jako účet Batch můžete vytvořit prostředky, jako jsou třeba nástroje pro vyrovnávání zatížení, veřejné IP adresy a skupiny zabezpečení sítě. Ověřte, jestli jsou pro tyto prostředky dostatečné kvóty předplatného.
 - Velké fondy s vlastními imagemi virtuálních počítačů
   - U velkých fondů, které používají vlastní image virtuálních počítačů, může docházet k přidělení a změně velikosti časových limitů.  Doporučení týkající se omezení a konfigurace najdete v tématu [Vytvoření fondu pomocí Galerie sdílených imagí](batch-sig-images.md) .
 
 ### <a name="automatic-scaling-failures"></a>Automatické škálování – chyby
 
-Můžete také nastavit Azure Batch pro automatické škálování počtu uzlů ve fondu. Definujete parametry pro [vzorec automatického škálování pro fond](https://docs.microsoft.com/azure/batch/batch-automatic-scaling). Služba Batch používá vzorec k pravidelnému vyhodnocení počtu uzlů ve fondu a k nastavení nového cílového čísla. Může dojít k následujícím typům problémů:
+Můžete také nastavit Azure Batch pro automatické škálování počtu uzlů ve fondu. Definujete parametry pro [vzorec automatického škálování pro fond](./batch-automatic-scaling.md). Služba Batch používá vzorec k pravidelnému vyhodnocení počtu uzlů ve fondu a k nastavení nového cílového čísla. Může dojít k následujícím typům problémů:
 
 - Automatické vyhodnocení měřítka se nezdařilo.
 - Výsledkem operace změny velikosti je chyba a vypršel časový limit.
 - Problém se vzorcem automatického škálování vede k neplatným cílovým hodnotám uzlů. Velikost buď funguje, nebo je mimo časový limit.
 
-Informace o posledním automatickém vyhodnocení měřítka můžete získat pomocí vlastnosti [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) . Tato vlastnost oznamuje dobu hodnocení, hodnoty a výsledek a všechny chyby výkonu.
+Informace o posledním automatickém vyhodnocení měřítka můžete získat pomocí vlastnosti [autoScaleRun](/rest/api/batchservice/pool/get#autoscalerun) . Tato vlastnost oznamuje dobu hodnocení, hodnoty a výsledek a všechny chyby výkonu.
 
-[Událost dokončení změny velikosti fondu](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) zachycuje informace o všech hodnoceních.
+[Událost dokončení změny velikosti fondu](./batch-pool-resize-complete-event.md) zachycuje informace o všech hodnoceních.
 
 ### <a name="delete"></a>Odstranit
 
 Když odstraníte fond, který obsahuje uzly, první Batch tyto uzly odstraní. Pak odstraní samotný objekt fondu. Odstranění uzlů fondu může trvat několik minut.
 
-Batch nastaví [stav fondu](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) na **odstranění** během procesu odstranění. Volající aplikace může zjistit, zda odstranění fondu trvá příliš dlouho pomocí vlastností **State** a **stateTransitionTime** .
+Batch nastaví [stav fondu](/rest/api/batchservice/pool/get#poolstate) na **odstranění** během procesu odstranění. Volající aplikace může zjistit, zda odstranění fondu trvá příliš dlouho pomocí vlastností **State** a **stateTransitionTime** .
 
 ## <a name="pool-compute-node-errors"></a>Chyby výpočetního uzlu fondu
 
@@ -131,7 +131,7 @@ Pro každý úkol, který běží na uzlu, jako je stdout a stderr, se zapisují
 Velikost dočasné jednotky závisí na velikosti virtuálního počítače. Jediným aspektem při výběru velikosti virtuálního počítače je zajistit, aby na dočasném disku bylo dost místa.
 
 - V Azure Portal při přidávání fondu je možné zobrazit úplný seznam velikostí virtuálních počítačů a sloupec "velikost disku prostředku".
-- Články popisující všechny velikosti virtuálních počítačů mají tabulky se sloupcem dočasné úložiště; například [výpočetní optimalizované velikosti virtuálních počítačů](/azure/virtual-machines/windows/sizes-compute)
+- Články popisující všechny velikosti virtuálních počítačů mají tabulky se sloupcem dočasné úložiště; například [výpočetní optimalizované velikosti virtuálních počítačů](../virtual-machines/sizes-compute.md)
 
 Pro soubory vytvářené jednotlivými úlohami je možné určit dobu uchovávání dat pro každou úlohu, která určuje, jak dlouho jsou soubory úlohy zachované, než se automaticky vyčistí. Dobu uchovávání můžete snížit, abyste snížili požadavky na úložiště.
 
@@ -140,17 +140,17 @@ Pokud dojde volné místo na dočasném disku (nebo se velmi blízko z místa), 
 
 ### <a name="what-to-do-when-a-disk-is-full"></a>Co dělat, když je disk plný
 
-Určete, proč je disk plný: Pokud si nejste jistí, co zabírá místo v uzlu, doporučujeme vzdálené řízení s uzlem a prozkoumat ručně, kde se místo dokončí. Můžete také využít [rozhraní API soubory služby Batch](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) k prohlédnutí souborů ve spravovaných složkách služby Batch (například výstupy úloh). Všimněte si, že toto rozhraní API obsahuje jenom soubory ve spravovaných adresářích Batch, a pokud vaše úkoly vytvořily soubory jinde, neuvidíte je.
+Určete, proč je disk plný: Pokud si nejste jistí, co zabírá místo v uzlu, doporučujeme vzdálené řízení s uzlem a prozkoumat ručně, kde se místo dokončí. Můžete také využít [rozhraní API soubory služby Batch](/rest/api/batchservice/file/listfromcomputenode) k prohlédnutí souborů ve spravovaných složkách služby Batch (například výstupy úloh). Všimněte si, že toto rozhraní API obsahuje jenom soubory ve spravovaných adresářích Batch, a pokud vaše úkoly vytvořily soubory jinde, neuvidíte je.
 
 Ujistěte se, že všechna data, která potřebujete, byla načtena z uzlu nebo odeslána do trvalého úložiště. Veškerá zmírnění problému s plným diskem zahrnuje odstranění dat, aby se uvolnilo místo.
 
 ### <a name="recovering-the-node"></a>Obnovování uzlu
 
-1. Pokud je váš fond fondem [C. loudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) , můžete uzel znovu vytvořit pomocí [rozhraní API služby Batch pro opětovné](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage)vytvoření bitové kopie. Tím se vyčistí celý disk. Pro [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) fondy se v současné době nepodporuje znovu image.
+1. Pokud je váš fond fondem [C. loudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) , můžete uzel znovu vytvořit pomocí [rozhraní API služby Batch pro opětovné](/rest/api/batchservice/computenode/reimage)vytvoření bitové kopie. Tím se vyčistí celý disk. Pro [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) fondy se v současné době nepodporuje znovu image.
 
-2. Pokud je váš fond [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration), můžete odebrat uzel z fondu pomocí [rozhraní API odebrat uzly](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes). Pak můžete znovu zvětšit fond a nahradit špatný uzel jeho novou.
+2. Pokud je váš fond [VirtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration), můžete odebrat uzel z fondu pomocí [rozhraní API odebrat uzly](/rest/api/batchservice/pool/removenodes). Pak můžete znovu zvětšit fond a nahradit špatný uzel jeho novou.
 
-3.  Odstraňte staré dokončené úlohy nebo staré dokončené úlohy, jejichž data úkolů jsou stále na uzlech. V případě, že jsou data úloh a úkolů na uzlech, která jsou na uzlech, můžete hledat v [kolekci RecentTasks](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) v uzlu nebo v [souborech na uzlu](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode). Odstraněním úlohy dojde k odstranění všech úkolů v úloze a odstranění úloh v úloze aktivuje data v adresářích úloh na uzlu, aby se odstranila. tím se uvolní místo. Až uvolníte dostatek místa, restartujte uzel a měl by přesunout nečinný stav a nečinné znovu.
+3.  Odstraňte staré dokončené úlohy nebo staré dokončené úlohy, jejichž data úkolů jsou stále na uzlech. V případě, že jsou data úloh a úkolů na uzlech, která jsou na uzlech, můžete hledat v [kolekci RecentTasks](/rest/api/batchservice/computenode/get#taskinformation) v uzlu nebo v [souborech na uzlu](/rest/api/batchservice/file/listfromcomputenode). Odstraněním úlohy dojde k odstranění všech úkolů v úloze a odstranění úloh v úloze aktivuje data v adresářích úloh na uzlu, aby se odstranila. tím se uvolní místo. Až uvolníte dostatek místa, restartujte uzel a měl by přesunout nečinný stav a nečinné znovu.
 
 ## <a name="next-steps"></a>Další kroky
 

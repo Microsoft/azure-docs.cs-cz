@@ -3,16 +3,16 @@ title: Použití parametrů k vytváření dynamických modrotisky
 description: Přečtěte si o statických a dynamických parametrech a jejich použití k vytváření zabezpečených a dynamických modrotisky.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 831dd69f58130247518ee7465bc1059aed61b319
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458484"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970633"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Vytváření dynamických modrotisky prostřednictvím parametrů
 
-Plně definovaný podrobný plán s různými artefakty (jako jsou skupiny prostředků, Správce prostředků šablony, zásady nebo přiřazení rolí) nabízí rychlé vytváření a konzistentní vytváření objektů v rámci Azure. Aby bylo možné povolit flexibilní používání těchto opakovaně použitelných vzorů a kontejnerů, Azure modrotisky podporuje parametry. Parametr vytvoří flexibilitu v rámci definice i přiřazení pro změnu vlastností artefaktů nasazených podrobným plánem.
+Plně definovaný podrobný plán s různými artefakty, jako jsou skupiny prostředků, šablony Azure Resource Manager (šablony ARM), zásady nebo přiřazení rolí, nabízí rychlé vytváření a konzistentní vytváření objektů v rámci Azure. Aby bylo možné povolit flexibilní používání těchto opakovaně použitelných vzorů a kontejnerů, Azure modrotisky podporuje parametry. Parametr vytvoří flexibilitu v rámci definice i přiřazení pro změnu vlastností artefaktů nasazených podrobným plánem.
 
 Jednoduchým příkladem je artefakt skupiny prostředků. Při vytvoření skupiny prostředků mají dvě požadované hodnoty, které musí být poskytnuty: název a umístění. Při přidávání skupiny prostředků do podrobného plánu, pokud parametry neexistují, byste tento název a umístění definovali pro každé použití podrobného plánu. Toto opakování způsobí, že každé použití podrobného plánu vytvoří artefakty ve stejné skupině prostředků. Prostředky v této skupině prostředků by se staly duplicitními a způsobily konflikt.
 
@@ -28,7 +28,7 @@ Prostřednictvím REST API lze parametry vytvořit přímo v podrobném plánu. 
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>Použití parametrů secureString a secureObject
 
-I když _artefakt_ šablony Správce prostředků podporuje parametry typů **secureString** a **secureObject** , musí být každý z nich spojen s Azure Key Vault. Tato míra zabezpečení zabraňuje nebezpečným postupům ukládání tajných kódů spolu s podrobným plánem a podporuje práci se zabezpečenými vzory. Azure modrotisky podporují toto opatření zabezpečení a zjišťují zahrnutí buď zabezpečeného parametru v _artefaktu_šablony Správce prostředků. Služba pak vyzve během přiřazování pro následující Key Vault vlastnosti podle zjištěného zabezpečeného parametru:
+I když _artefakt_ šablony ARM podporuje parametry typů **secureString** a **secureObject** , musí být každý z nich spojen s Azure Key Vault. Tato míra zabezpečení zabraňuje nebezpečným postupům ukládání tajných kódů spolu s podrobným plánem a podporuje práci se zabezpečenými vzory. Azure modrotisky podporují toto opatření zabezpečení a zjišťují zahrnutí zabezpečeného parametru v _artefaktu_šablony ARM. Služba pak vyzve během přiřazování pro následující Key Vault vlastnosti podle zjištěného zabezpečeného parametru:
 
 - ID prostředku Key Vault
 - Key Vault název tajného klíče
@@ -84,7 +84,7 @@ Při vytváření podrobného plánu prostřednictvím REST API je možné vytvo
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
-- Text žádosti
+- Text požadavku
 
   ```json
   {
@@ -117,7 +117,7 @@ Následující REST API příklad vytvoří artefakt přiřazení role v podrobn
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
   ```
 
-- Text žádosti
+- Text požadavku
 
   ```json
   {
@@ -130,7 +130,7 @@ Následující REST API příklad vytvoří artefakt přiřazení role v podrobn
   }
   ```
 
-V tomto příkladu vlastnost **principalIds** používá parametr na úrovni podrobného plánu **Owners** pomocí hodnoty `[parameters('owners')]`. Nastavení parametru pro artefakt pomocí parametru úrovně podrobného plánu je stále příkladem **statického parametru**. Parametr úrovně podrobného plánu nelze nastavit během přiřazení podrobného plánu a bude mít stejnou hodnotu u každého přiřazení.
+V tomto příkladu vlastnost **principalIds** používá parametr na úrovni podrobného plánu **Owners** pomocí hodnoty `[parameters('owners')]` . Nastavení parametru pro artefakt pomocí parametru úrovně podrobného plánu je stále příkladem **statického parametru**. Parametr úrovně podrobného plánu nelze nastavit během přiřazení podrobného plánu a bude mít stejnou hodnotu u každého přiřazení.
 
 ##### <a name="artifact-level-parameter"></a>Parametr úrovně artefaktu
 
@@ -142,7 +142,7 @@ Vytváření **statických parametrů** na artefaktu je podobné, ale přebírá
   PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
   ```
 
-- Text žádosti
+- Text požadavku
 
   ```json
   {
@@ -180,7 +180,7 @@ Opakem statického parametru je **dynamický parametr**. Tento parametr není de
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Nastavení dynamických parametrů z REST API
 
-Nastavení **dynamických parametrů** během přiřazování je provedeno přímým zadáním hodnoty. Namísto použití funkce, jako jsou například [parametry ()](../reference/blueprint-functions.md#parameters), je poskytnutá hodnota vhodný řetězec. Artefakty pro skupinu prostředků jsou definované s vlastnostmi název šablony, **název**a **umístění** . Všechny ostatní parametry zahrnutého artefaktu jsou definovány v části **parametry** s dvojicí klíče ** \<název\> ** a **hodnota** . Pokud je podrobný plán konfigurován pro dynamický parametr, který není k dispozici během přiřazení, přiřazení se nezdaří.
+Nastavení **dynamických parametrů** během přiřazování je provedeno přímým zadáním hodnoty. Namísto použití funkce, jako jsou například [parametry ()](../reference/blueprint-functions.md#parameters), je poskytnutá hodnota vhodný řetězec. Artefakty pro skupinu prostředků jsou definované s vlastnostmi název šablony, **název**a **umístění** . Všechny ostatní parametry zahrnutého artefaktu jsou definovány v části **parametry** s **\<name\>** dvojicí klíčů a a **hodnot** . Pokud je podrobný plán konfigurován pro dynamický parametr, který není k dispozici během přiřazení, přiřazení se nezdaří.
 
 - Identifikátor URI v REST API
 
@@ -188,7 +188,7 @@ Nastavení **dynamických parametrů** během přiřazování je provedeno pří
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-- Text žádosti
+- Text požadavku
 
   ```json
   {

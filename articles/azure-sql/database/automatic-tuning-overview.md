@@ -2,7 +2,7 @@
 title: Přehled automatického ladění
 description: Azure SQL Database a Azure Managed instance SQL analyzují dotaz SQL a automaticky se přizpůsobí uživatelskému zatížení.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: performance
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/30/2020
-ms.openlocfilehash: d8f70cc30ea1230deef686d8e8433bb4e2d83ce5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d2a00be4d08a7a2dfa8e11a22593d017d184a368
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189991"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982707"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatické ladění v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -63,8 +63,8 @@ K dispozici jsou možnosti automatického ladění Azure SQL Database a Azure SQ
 
 | Možnost automatického ladění | Podpora jedné databáze a databáze ve fondu | Podpora databáze instancí |
 | :----------------------------- | ----- | ----- |
-| **Vytvořit index** – identifikuje indexy, které mohou zlepšit výkon úloh, vytváří indexy a automaticky ověřuje, zda se zvýšil výkon dotazů. | Ano | Ne |
-| **Drop index** – identifikuje redundantní a duplicitní indexy denně, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Ano | Ne |
+| **Vytvořit index** – identifikuje indexy, které mohou zlepšit výkon úloh, vytváří indexy a automaticky ověřuje, zda se zvýšil výkon dotazů. | Yes | No |
+| **Drop index** – identifikuje redundantní a duplicitní indexy denně, s výjimkou jedinečných indexů a indexů, které se nepoužívaly dlouhou dobu (>90 dní). Upozorňujeme, že tato možnost není kompatibilní s aplikacemi, které používají přepínání oddílů a parametry indexu. Vyřazování nepoužívaných indexů se u úrovní služeb Premium a Pro důležité obchodní informace nepodporuje. | Yes | No |
 | **Vynutit poslední dobrý dobrý plán** (automatický opravný plán) – identifikuje dotazy Azure SQL pomocí plánu spuštění, který je pomalejší než předchozí plán, a dotazuje se pomocí posledního známého funkčního plánu místo navýšení plánu. | Ano | Ano |
 
 ### <a name="automatic-tuning-for-sql-database"></a>Automatické ladění pro SQL Database

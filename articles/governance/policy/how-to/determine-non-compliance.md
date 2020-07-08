@@ -1,22 +1,21 @@
 ---
 title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Přečtěte si, jak zjistit, co způsobilo nedodržení předpisů.
-ms.date: 05/20/2020
+ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 05405671900e8734ee1536cfc00fd5203a145124
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168552"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970769"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
 Pokud je u prostředku Azure zjištěno, že není kompatibilní s pravidlem zásad, je užitečné pochopit, na které straně pravidla prostředek není kompatibilní. Je také užitečné pochopit, jakou změnu změnil dříve kompatibilní prostředek, aby nesplňovala předpisy. Existují dva způsoby, jak najít tyto informace:
 
-> [!div class="checklist"]
-> - [Podrobnosti o kompatibilitě](#compliance-details)
-> - [Historie změn (Preview)](#change-history)
+- [Podrobnosti o kompatibilitě](#compliance-details)
+- [Historie změn (Preview)](#change-history)
 
 ## <a name="compliance-details"></a>Podrobnosti o kompatibilitě
 
@@ -190,7 +189,7 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="change-history-preview"></a><a name="change-history"></a>Historie změn (Preview)
 
-V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k dispozici pro všechny prostředky Azure, které podporují [odstranění režimu úplného režimu](../../../azure-resource-manager/templates/complete-mode-deletion.md). Historie změn poskytuje podrobnosti o tom, kdy byla zjištěna změna, a _vizuální rozdíl_ pro každou změnu. Detekce změn se aktivuje, když se přidají, odeberou nebo změní vlastnosti Správce prostředků.
+V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k dispozici pro všechny prostředky Azure, které podporují [odstranění režimu úplného režimu](../../../azure-resource-manager/templates/complete-mode-deletion.md). Historie změn poskytuje podrobnosti o tom, kdy byla zjištěna změna, a _vizuální rozdíl_ pro každou změnu. Detekce změn se aktivuje, když se přidají, odeberou nebo změní vlastnosti Azure Resource Manager.
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 

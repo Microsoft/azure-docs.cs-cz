@@ -2,7 +2,7 @@
 title: Dynamické maskování dat
 description: Dynamické maskování dat omezuje vystavení citlivých dat jejich maskováním uživatelům, kteří nejsou privilegovanými oprávněními, pro Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synpase
-ms.openlocfilehash: b7e5c9b1a602bf2d6ecfbfd9b2d95900d3b56ef4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4a6de0b2067cdc847b830fba7607be8cb8f265ab
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050188"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981384"
 ---
 # <a name="dynamic-data-masking"></a>Dynamické maskování dat 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

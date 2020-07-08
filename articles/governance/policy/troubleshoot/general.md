@@ -3,12 +3,12 @@ title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s vytvářením definic zásad, různých SDK a doplňku pro Kubernetes.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 868b8c53a120ebdb6a35806538e02af39e25c338
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234172"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970837"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
@@ -28,7 +28,7 @@ Umístění podrobností o chybě závisí na akci, která způsobuje chybu.
 
 #### <a name="issue"></a>Problém
 
-Azure Policy používá k mapování Správce prostředků vlastností [aliasy](../concepts/definition-structure.md#aliases) .
+Azure Policy používá k mapování Azure Resource Manager vlastností [aliasy](../concepts/definition-structure.md#aliases) .
 
 #### <a name="cause"></a>Příčina
 
@@ -103,7 +103,7 @@ Chybová zpráva z přiřazení zásady odepření zahrnuje ID přiřazení defi
 
 #### <a name="issue"></a>Problém
 
-Azure Policy podporuje řadu Správce prostředků funkcí šablon a funkcí, které jsou k dispozici pouze v definici zásady. Správce prostředků tyto funkce zpracovává jako součást nasazení, ne jako součást definice zásady.
+Azure Policy podporuje řadu funkcí a funkcí šablony Azure Resource Manager (šablony ARM), které jsou k dispozici pouze v definici zásady. Správce prostředků tyto funkce zpracovává jako součást nasazení, ne jako součást definice zásady.
 
 #### <a name="cause"></a>Příčina
 
@@ -152,6 +152,6 @@ Postupujte podle pokynů k [odebrání Azure Policy pro doplněk Kubernetes](../
 
 Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-- Získejte odpovědi od odborníků prostřednictvím [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-policy.html).
+- Získejte odpovědi od odborníků prostřednictvím [Microsoft Q&A](/answers/topics/azure-policy.html).
 - Spojte se s nástrojem [@AzureSupport](https://twitter.com/azuresupport) – oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure s správnými zdroji: odpověďmi, podporou a odborníky.
 - Pokud potřebujete další pomoc, můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.

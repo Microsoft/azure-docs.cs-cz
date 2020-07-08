@@ -6,19 +6,19 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: bc3411a926e71c88f0b4e4f84fcdf083b519f46a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: c30faa31f6f733f80d4bfd5184c09d9fdbd6f389
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323548"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85971177"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.
 Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MySQL
 - Výpis a obnovení z příkazového řádku (pomocí mysqldump) 
 - Výpis a obnovení pomocí PHPMyAdmin 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 Pokud chcete projít tento průvodce, musíte mít:
 - [Vytvoření serveru Azure Database for MySQL – Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - na počítači je nainstalovaný nástroj příkazového řádku [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) .
@@ -67,7 +67,11 @@ K dispozici jsou následující parametry:
 - [souborzálohy. SQL] název souboru pro zálohování databáze 
 - [--opt] Možnost mysqldump 
 
-Pokud například chcete zálohovat databázi s názvem ' TestDB ' na serveru MySQL s uživatelským jménem ' testuser ' a bez hesla k souboru testdb_backup. SQL, použijte následující příkaz. Příkaz zálohuje `testdb` databázi do souboru s názvem `testdb_backup.sql` , který obsahuje všechny příkazy SQL potřebné k opětovnému vytvoření databáze. 
+Pokud například chcete zálohovat databázi s názvem ' TestDB ' na serveru MySQL s uživatelským jménem ' testuser ' a bez hesla k souboru testdb_backup. SQL, použijte následující příkaz. Příkaz zálohuje `testdb` databázi do souboru s názvem `testdb_backup.sql` , který obsahuje všechny příkazy SQL potřebné k opětovnému vytvoření databáze. Ujistěte se, že uživatelské jméno testuser má alespoň oprávnění SELECT pro dumpingové tabulky, zobrazit zobrazení pro dumpingové pohledy, aktivovat pro dumpingové triggery a UZAMKNOUT tabulky, pokud není použita možnost--Single-Transaction.
+
+```bash
+GRANT SELECT, LOCK TABLES, SHOW VIEW ON *.* TO 'testuser'@'hostname' IDENTIFIED BY 'password';
+```
 
 ```bash
 $ mysqldump -u root -p testdb > testdb_backup.sql

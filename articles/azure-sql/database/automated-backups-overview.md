@@ -3,7 +3,7 @@ title: Automatické, geograficky redundantní zálohy
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Azure SQL Database a Azure SQL Managed instance automaticky vytvoří zálohování místní databáze každých pár minut a pro geografickou redundanci použije geograficky redundantní úložiště s přístupem pro čtení z Azure.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: backup-restore
 ms.custom: sqldbrb=2
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 06/04/2020
-ms.openlocfilehash: 41df5190f2a7435ad91de94cb6f407037e1783a2
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 340f4310da5131ea0d2576e7c77d8f6cd0a731b3
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667824"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983100"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -52,11 +52,11 @@ Operaci konfigurace zálohování a obnovení můžete vyzkoušet v následujíc
 
 | | portál Azure | Azure PowerShell |
 |---|---|---|
-| Změna uchovávání záloh | [Samostatná databáze](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Spravovaná instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Samostatná databáze](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| Změna dlouhodobého uchovávání záloh | [Samostatná databáze](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Samostatná databáze](long-term-backup-retention-configure.md)<br/>Spravovaná instance – není k dispozici  |
-| Obnovení databáze z určitého bodu v čase | [Samostatná databáze](recovery-using-backups.md#point-in-time-restore) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Obnovení odstraněné databáze | [Samostatná databáze](recovery-using-backups.md) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| Obnovení databáze ze služby Azure Blob Storage | Izolovaná databáze – není k dispozici <br/>Spravovaná instance – není k dispozici  | Izolovaná databáze – není k dispozici <br/>[Spravovaná instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **Změna uchovávání záloh** | [Samostatná databáze](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Spravovaná instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Samostatná databáze](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **Změna dlouhodobého uchovávání záloh** | [Samostatná databáze](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Samostatná databáze](long-term-backup-retention-configure.md)<br/>Spravovaná instance – není k dispozici  |
+| **Obnovení databáze z určitého bodu v čase** | [Samostatná databáze](recovery-using-backups.md#point-in-time-restore) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **Obnovení odstraněné databáze** | [Samostatná databáze](recovery-using-backups.md) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **Obnovení databáze ze služby Azure Blob Storage** | Izolovaná databáze – není k dispozici <br/>Spravovaná instance – není k dispozici  | Izolovaná databáze – není k dispozici <br/>[Spravovaná instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-scheduling"></a>Plánování zálohování
 

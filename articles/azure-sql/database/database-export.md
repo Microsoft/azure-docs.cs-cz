@@ -3,7 +3,7 @@ title: Export Azure SQL Database do souboru BACPAC (Azure Portal)
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Exportujte databázi do souboru BACPAC pomocí Azure Portal.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: data-movement
 author: stevestein
 ms.custom: sqldbrb=2
@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: a8fb5675f086402bd5e5970fd856fce51220e8f4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 10d10ccfbd04a52f6d522700d66d2c959fed24ee
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253507"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982412"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Export do souboru BACPAC-Azure SQL Database a Azure SQL Managed instance
 
@@ -24,7 +24,7 @@ ms.locfileid: "85253507"
 
 Pokud potřebujete exportovat databázi k archivaci nebo přesunout na jinou platformu, můžete exportovat schéma databáze a data do souboru [BacPac](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) . Soubor BACPAC je soubor ZIP s příponou BACPAC obsahující metadata a data z databáze. Soubor BACPAC může být uložený v úložišti objektů BLOB v Azure nebo v místním úložišti v místním umístění a později se importuje zpátky do Azure SQL Database, spravované instance Azure SQL nebo instance SQL Server.
 
-## <a name="considerations"></a>Požadavky
+## <a name="considerations"></a>Důležité informace
 
 - Aby bylo možné export provést bez zásahu, je nutné zajistit, aby během exportu nedošlo k žádné aktivitě zápisu nebo zda exportujete z převedené [kopie](database-copy.md) vaší databáze.
 - Pokud exportujete do úložiště objektů blob, maximální velikost souboru BACPAC je 200 GB. Pokud chcete archivovat větší soubor BACPAC, exportujte ho do místního úložiště.

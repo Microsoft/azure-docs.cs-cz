@@ -10,14 +10,14 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 02/20/2020
+ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: c9304f4a958360d01d404d9b510feb5659e5436d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746753"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85983301"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Změna metody a nastavení dvou faktorů ověřování
 
@@ -88,7 +88,7 @@ Na stránce **Další ověření zabezpečení** můžete přidat nová telefonn
 
 1. V části **jak chcete reagovat?** na stránce **Další ověření zabezpečení** aktualizujte informace o telefonním číslu pro váš **telefon pro ověření** (vaše primární mobilní zařízení) a **telefon do kanceláře**.
 
-1. Zaškrtněte políčko vedle možnosti **telefon alternativního ověřování** a potom zadejte sekundární telefonní číslo, kde můžete přijímat textové zprávy nebo telefonní hovory, pokud nemůžete získat přístup k primárnímu zařízení.
+1. Zaškrtněte políčko vedle možnosti **telefon alternativního ověřování** a potom zadejte sekundární telefonní číslo, kde můžete přijímat telefonní hovory, pokud nemůžete získat přístup k primárnímu zařízení.
 
 1. Vyberte **Uložit**.
 

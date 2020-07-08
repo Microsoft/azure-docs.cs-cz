@@ -4,7 +4,7 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Přečtěte si, jak Azure SQL Database a SQL Managed instance podporují cloudovou provozní kontinuitu a obnovení databáze a pomůžou udržet důležité cloudové aplikace spuštěné.
 keywords: provozní kontinuita, provozní kontinuita v cloudu, zotavení databáze po havárii, obnovení databáze
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8312fe1370ded990bd3523d531d168fd2cac5564
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 8ceef173e33c3603d9bc5d6ef217d54eef88609c
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189763"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982468"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,14 +65,14 @@ Pokud není maximální podporovaná doba uchovávání záloh pro obnovení k u
 
 |                                              | Geografická replikace | Skupiny převzetí služeb při selhání  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Automatické převzetí služeb při selhání                           |     No          |      Ano         |
-| Převzetí služeb při selhání více databází současně  |     No          |      Ano         |
-| Uživatel musí po převzetí služeb při selhání aktualizovat připojovací řetězec.      |     Ano         |      Ne          |
-| Podpora spravované instance SQL                   |     No          |      Ano         |
-| Může být ve stejné oblasti jako primární             |     Ano         |      Ne          |
-| Více replik                            |     Ano         |      Ne          |
-| Podporuje čtení i škálování.                          |     Ano         |      Ano         |
-| &nbsp; | &nbsp; | &nbsp; |
+| **Automatické převzetí služeb při selhání**                          |     No          |      Yes         |
+| **Převzetí služeb při selhání více databází současně**  |     No          |      Yes         |
+| **Uživatel musí po převzetí služeb při selhání aktualizovat připojovací řetězec.**      |     Yes         |      No          |
+| **Podpora spravované instance SQL**                   |     No          |      Yes         |
+| **Může být ve stejné oblasti jako primární**             |     Yes         |      No          |
+| **Více replik**                            |     Yes         |      No          |
+| **Podporuje čtení i škálování.**                          |     Ano         |      Ano         |
+
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Obnovení databáze na existujícím serveru
 

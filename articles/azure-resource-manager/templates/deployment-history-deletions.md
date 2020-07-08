@@ -2,19 +2,19 @@
 title: Odstranění historie nasazení
 description: Popisuje, jak Azure Resource Manager automaticky odstranit nasazení z historie nasazení. Nasazení se odstraní, když se historie blíží k překročení limitu 800.
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 1ae0512f1d82da09c9e77b43ba57acb0cde11f5a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.date: 07/06/2020
+ms.openlocfilehash: 70730ce814ebc689d9672952bad7c3dd39b5a7f1
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391192"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981652"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatické odstraňování z historie nasazení
 
 Pokaždé, když nasadíte šablonu, informace o nasazení se zapisují do historie nasazení. Každá skupina prostředků je v historii nasazení omezená na 800 nasazení.
 
-Azure Resource Manager se brzy začnou automaticky odstraňovat nasazení z historie, protože se blíží limitu. Automatické odstranění je změna oproti dřívějšímu chování. Dřív jste museli ručně odstranit nasazení z historie nasazení, aby nedošlo k chybě.
+Azure Resource Manager se brzy začnou automaticky odstraňovat nasazení z historie, protože se blíží limitu. Automatické odstranění je změna oproti dřívějšímu chování. Dřív jste museli ručně odstranit nasazení z historie nasazení, aby nedošlo k chybě. **Tato funkce ještě nebyla do Azure přidána. Oznamujeme vám tuto nadcházející změnu, pokud se chcete odhlásit.**
 
 > [!NOTE]
 > Odstranění nasazení z historie neovlivní žádné z nasazených prostředků.
@@ -38,7 +38,7 @@ Když zadáte stejnému nasazení stejný název jako v historii, resetujete jeh
 
 Automatické odstranění můžete odhlásit z historie. **Tuto možnost použijte pouze v případě, že chcete historii nasazení spravovat sami.** Limit nasazení 800 v historii se pořád vynutil. Pokud překročíte 800 nasazení, obdržíte chybu a nasazení se nezdaří.
 
-Chcete-li zakázat automatické odstranění, zaregistrujte `Microsoft.Resources/DisableDeploymentGrooming` příznak funkce. Při registraci příznaku funkce se odhlásíte k automatickým odstraněním pro celé předplatné Azure. Nemůžete odhlásit jenom konkrétní skupinu prostředků.
+Chcete-li zakázat automatické odstranění, zaregistrujte `Microsoft.Resources/DisableDeploymentGrooming` příznak funkce. Při registraci příznaku funkce se odhlásíte k automatickým odstraněním pro celé předplatné Azure. Nemůžete odhlásit jenom konkrétní skupinu prostředků. Chcete-li znovu povolit automatické odstranění, zrušte registraci příznaku funkce.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -54,6 +54,8 @@ Pokud chcete zobrazit aktuální stav předplatného, použijte:
 Get-AzProviderFeature -ProviderNamespace Microsoft.Resources -FeatureName DisableDeploymentGrooming
 ```
 
+Pokud chcete znovu povolit automatické odstranění, použijte Azure REST API nebo Azure CLI.
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pro rozhraní příkazového řádku Azure CLI použijte [AZ Feature Registry](/cli/azure/feature#az-feature-register).
@@ -68,6 +70,12 @@ Pokud chcete zobrazit aktuální stav předplatného, použijte:
 az feature show --namespace Microsoft.Resources --name DisableDeploymentGrooming
 ```
 
+Chcete-li znovu povolit automatické odstranění, použijte příkaz [AZ Feature Unregister](/cli/azure/feature#az-feature-unregister).
+
+```azurecli-interactive
+az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGrooming
+```
+
 # <a name="rest"></a>[REST](#tab/rest)
 
 Pro REST API použijte [funkce – registrovat](/rest/api/resources/features/register).
@@ -80,6 +88,12 @@ Pokud chcete zobrazit aktuální stav předplatného, použijte:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
+```
+
+Chcete-li znovu povolit automatické odstranění, použijte [funkce – zrušit registraci](/rest/api/resources/features/unregister)
+
+```rest
+POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01
 ```
 
 ---

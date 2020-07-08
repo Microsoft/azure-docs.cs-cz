@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 99c9a9ac742981734daf107d73c9cec8777dc642
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85257529"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970803"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky v programu Microsoft Defender pomocí Azure Security Center
 
@@ -46,8 +46,14 @@ Integrací služby Defender ATP s Azure Security Center můžete také využít 
 
 ATP Microsoft Defender v Security Center podporuje detekci v systému Windows Server 2016, 2012 R2 a 2008 R2 SP1. Pro virtuální počítače Azure potřebujete předplatné úrovně Standard a pro virtuální počítače mimo Azure budete potřebovat úroveň Standard jenom na úrovni pracovního prostoru.
 
-> [!NOTE]
-> Když použijete Azure Security Center k monitorování serverů, automaticky se vytvoří tenant Microsoft Defender ATP a data ATP programu Microsoft Defender se ve výchozím nastavení uloží do Evropy. Pokud potřebujete přesunout data do jiného umístění, musíte kontaktovat podpora Microsoftu pro resetování tenanta. Monitorování koncového bodu serveru, který využívá tuto integraci, je pro zákazníky Office 365 RSZ zakázané.
+Monitorování koncového bodu serveru pomocí této integrace bylo pro zákazníky Office 365 RSZ zakázané.
+
+## <a name="data-storage-location"></a>Umístění úložiště dat
+
+Když použijete Azure Security Center k monitorování serverů, vytvoří se automaticky tenant Microsoft Defender ATP. Data shromažďovaná ATP programu Microsoft Defender se ukládají do geografického umístění tenanta, jak je uvedeno během zřizování. Zákaznická data v nepseudonymních formulářích můžou být uložená také v centrálním systému úložiště a zpracování v USA. 
+
+Po nakonfigurování nebudete moct změnit umístění, kde jsou data uložená. Pokud potřebujete přesunout data do jiného umístění, kontaktujte podpora Microsoftu pro resetování tenanta.
+
 
 ## <a name="onboarding-servers-to-security-center"></a>Připojení serverů ke službě Security Center 
 

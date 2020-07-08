@@ -3,7 +3,7 @@ title: Skupiny automatického převzetí služeb při selhání
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Skupiny s automatickým převzetím služeb při selhání umožňují spravovat replikaci a automatické nebo koordinované převzetí služeb při selhání skupiny databází na serveru nebo ve všech databázích ve spravované instanci.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: 7552cb3889b73604563758a97ae8a59960f6a906
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658016"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85982975"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Skupiny s automatickým převzetím služeb při selhání poskytují koncové b
 
 Pokud používáte skupiny s automatickým převzetím služeb při selhání se zásadami automatického převzetí služeb při selhání, dojde při jakémkoli výpadku, který ovlivňuje databáze na serveru nebo spravované instanci, na automatické převzetí Skupinu automatického převzetí služeb při selhání můžete spravovat pomocí:
 
-- [portál Azure](geo-distributed-application-configure-tutorial.md)
+- [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: Skupina převzetí služeb při selhání](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: Skupina převzetí služeb při selhání](scripts/add-database-to-failover-group-powershell.md)
 - [REST API: Skupina převzetí služeb při selhání](/rest/api/sql/failovergroups).
@@ -404,7 +404,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Rutina | Popis |
+| Rutina | Description |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -415,7 +415,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Příkaz | Popis |
+| Příkaz | Description |
 | --- | --- |
 | [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -425,7 +425,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="rest-api"></a>[Rozhraní REST API](#tab/rest-api)
 
-| Rozhraní API | Popis |
+| Rozhraní API | Description |
 | --- | --- |
 | [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání. |
 | [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -442,7 +442,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Rutina | Popis |
+| Rutina | Description |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární instanci.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání.|
@@ -453,7 +453,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Příkaz | Popis |
+| Příkaz | Description |
 | --- | --- |
 | [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -463,7 +463,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="rest-api"></a>[Rozhraní REST API](#tab/rest-api)
 
-| Rozhraní API | Popis |
+| Rozhraní API | Description |
 | --- | --- |
 | [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Vytvoří nebo aktualizuje konfiguraci skupiny převzetí služeb při selhání. |
 | [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Odebere skupinu převzetí služeb při selhání z instance. |

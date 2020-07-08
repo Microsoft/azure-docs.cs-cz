@@ -1,14 +1,15 @@
 ---
-title: Podporované typy prostředků Správce prostředků
-description: Poskytněte seznam Správce prostředků typů prostředků, které podporuje Azure Resource Graph, a historii změn.
+title: Podporované typy prostředků Azure Resource Manager
+description: Poskytněte seznam Azure Resource Manager typů prostředků, které podporuje Azure Resource Graph, a historii změn.
 ms.date: 06/04/2020
 ms.topic: reference
-ms.openlocfilehash: a4679c9e1ecaef34445a7283e0d58ab78cb61ab0
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.custom: generated
+ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424291"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970565"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -87,11 +88,11 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. baremetal/consoleconnections
 - Microsoft. baremetal/crayservers
 - Microsoft. baremetal/monitoringservers
-- Microsoft. Batch/batchaccounts
-- Microsoft. batchai/clustery
-- Microsoft. batchai/\ servery
-- Microsoft. batchai/Jobs
-- Microsoft. batchai/pracovní prostory
+- microsoft.batch/batchaccounts
+- microsoft.batChai/Clusters
+- microsoft.batChai/se servery
+- microsoft.batChai/Jobs
+- microsoft.batChai/Workspaces
 - Microsoft. BingMaps/mapapis
 - Microsoft. biztalkservices/BizTalk
 - Microsoft. blockchain/blockchainmembers
@@ -196,7 +197,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. devtestlab/Labs/VirtualMachines
 - Microsoft. devtestlab/plánuje
 - Microsoft. digitaltwins/digitaltwinsinstances
-- Microsoft. DocumentDB/databaseaccounts
+- microsoft.documentdb/databaseaccounts
 - Microsoft. domainregistration/domény
 - Microsoft. enterpriseknowledgegraph/Services
 - Microsoft. eventgrid/domény

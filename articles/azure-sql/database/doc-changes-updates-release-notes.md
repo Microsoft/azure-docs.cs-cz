@@ -4,19 +4,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Přečtěte si o nových funkcích a vylepšeních dokumentace pro Azure SQL Database & spravované instance SQL.
 services: sql-database
 author: stevestein
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 04442d7c82b463c0cfa5813bd4b20554b57ec950
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: ed6f164adb9e0a6daf24342021087b2cede3289d
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323232"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981369"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 |**Azure SQL Database**|Azure SQL Database *samostatná databáze*| Pokud není výslovně uvedeno jinak, název produktu Azure SQL Database zahrnuje jak izolované databáze, tak databáze nasazené do elastického fondu. |
 |**Azure SQL Database**|Azure SQL Database *elastický fond*| Pokud není výslovně uvedeno jinak, název produktu Azure SQL Database zahrnuje jak izolované databáze, tak databáze nasazené do elastického fondu.  |
 |**Azure SQL Database** |Azure SQL Database | I když termín zůstává stejný, vztahuje se nyní jenom na nasazení s izolovanými databázemi a elastickými fondy a nezahrnuje spravovanou instanci. |
-| **Azure SQL**| – | To se týká řady SQL Serverch produktů databázového stroje, které jsou k dispozici v Azure: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálních počítačích Azure. | 
+| **Azure SQL**| Není k dispozici | To se týká řady SQL Serverch produktů databázového stroje, které jsou k dispozici v Azure: Azure SQL Database, Azure SQL Managed instance a SQL Server na virtuálních počítačích Azure. | 
 
 ## <a name="features-in-public-preview"></a>Funkce ve verzi Public Preview
 

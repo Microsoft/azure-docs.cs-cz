@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4f7c83df738b72d57719de9b9ef650d119ac5dc4
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
+ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255156"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85970480"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -27,7 +27,7 @@ K jednomu trezoru můžete zaregistrovat až 1000 počítačů. Pokud používá
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Kolik zdrojů dat nebo položek je možné chránit v jednom trezoru?
 
 V jednom trezoru můžete chránit až 2000 zdrojů dat / položek napříč všemi úlohami (virtuální počítače IaaS, SQL, AFS atd.).
-Pokud v trezoru například chráníte 500 virtuálních počítačů a 400 sdílených složek Azure Files, můžete v něm chránit jenom 1 100 databází SQL.
+Pokud jste například už chránili 500 virtuálních počítačů a 400 sdílené složky Azure Files v trezoru, můžete v ní 1100 chránit jenom databáze SQL.
 
 ### <a name="how-many-policies-can-i-create-per-vault"></a>Kolik zásad je možné vytvořit pro každý trezor?
 
@@ -47,7 +47,11 @@ Ne. Zálohovaná data uložená v trezoru se nedají přesunout do jiného trezo
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>Můžu po vytvoření zálohy změnit obnovení z GRS na LRS?
 
-Ne. Trezor Recovery Services může měnit možnosti úložiště jenom před uložením jakýchkoli záloh.
+Typ replikace úložiště je ve výchozím nastavení nastaven na geograficky redundantní úložiště (GRS). Po konfiguraci zálohování je možnost upravit zakázána a nelze ji změnit.
+
+![Typ replikace úložiště](./media/backup-azure-backup-faq/storage-replication-type.png)
+
+Pokud jste už zálohu nakonfigurovali a musíte se přesunout z GRS na LRS, přečtěte si téma [Jak změnit z GRS na LRS po konfiguraci zálohování](backup-create-rs-vault.md#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Dá se pro virtuální počítače zálohované v trezoru služby Recovery Services použít obnovování na úrovni položek (Item Level Restore, ILR)?
 

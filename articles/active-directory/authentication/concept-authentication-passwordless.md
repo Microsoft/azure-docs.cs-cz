@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de359f60b556390b8271b728580ef66ae53ffa
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201716"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981851"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
 Multi-Factor Authentication (MFA) je skvělý způsob, jak zabezpečit vaši organizaci, ale uživatelé často získají frustrovaní s dodatečnou vrstvou zabezpečení, a to nad tím, že si hesla zapamatují. Metody ověřování bez hesla jsou pohodlnější, protože heslo se odebírá a nahrazuje něco, co máte, a něco vás nebo něco znáte.
 
-|   | Něco, co máte | Něco, co se vám nebo znáte |
+| Authentication  | Něco, co máte | Něco, co se vám nebo znáte |
 | --- | --- | --- |
 | Bez hesla | Bezpečnostní klíč zařízení, telefonu nebo Windows 10 | Biometrika nebo PIN |
 
@@ -116,7 +116,7 @@ Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých 
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
-| eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
+| Řešení TrustKey | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Identita Gemalto (skupina Thales) | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
 | OneSpan Inc. | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
@@ -125,7 +125,7 @@ Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých 
 > [!NOTE]
 > Pokud si koupíte a plánujete používat klíče zabezpečení založené na technologii NFC, budete pro klíč zabezpečení potřebovat podporovanou čtečku NFC. Čtečka NFC není požadavkem nebo omezením Azure. Seznam podporovaných čtecích zařízení NFC vám poskytne dodavatel s klíčem zabezpečení na NFC.
 
-Pokud jste dodavatel a chcete v tomto seznamu podporovaných zařízení získat svoje zařízení, kontaktujte [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
+Pokud jste dodavatel a chcete v tomto seznamu podporovaných zařízení získat svoje zařízení, kontaktujte [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) .
 
 ## <a name="what-scenarios-work-with-the-preview"></a>Jaké scénáře fungují s verzí Preview?
 
@@ -147,7 +147,7 @@ Tady je několik faktorů, které je potřeba vzít v úvahu při volbě technol
 |**Před požadavky**| Windows 10 verze 1809 nebo novější<br>Azure Active Directory| Aplikace Microsoft Authenticator<br>Telefon (zařízení s iOS a Androidem se systémem Android 6,0 nebo vyšším)|Windows 10 verze 1809 nebo novější<br>Azure Active Directory|
 |**Mode**|Platforma|Software|Hardware|
 |**Systémy a zařízení**|POČÍTAČ s integrovaným čipem TPM (Trusted Platform Module)<br>Připnutí a biometrika rozpoznávání |Připnutí a biometrika rozpoznávání na telefonu|FIDO2 zabezpečení zařízení, která jsou kompatibilní s Microsoftem|
-|**Činnost koncového uživatele**|Přihlaste se pomocí PIN nebo biometrického rozpoznávání (obličeje, Iris nebo otisk prstu) pomocí zařízení s Windows.<br>Ověřování Windows Hello je vázané na zařízení; pro přístup k firemním prostředkům potřebuje uživatel zařízení i přihlašovací komponentu, jako je PIN nebo biometrické faktor.|Přihlaste se pomocí mobilního telefonu pomocí skenování otisků prstů, obličeje nebo Iris nebo PIN kódu.<br>Uživatelé se přihlásí k pracovnímu nebo osobnímu účtu na svém počítači nebo mobilním telefonu.|Přihlášení pomocí zařízení zabezpečení FIDO2 (biometrika, PIN a NFC)<br>Uživatel může získat přístup k zařízení na základě organizačních ovládacích prvků a ověřování na základě kódu PIN, biometrika pomocí zařízení, jako jsou klíče zabezpečení USB a čipové karty, klíče nebo wearables s podporou NFC.|
+|**Uživatelské prostředí**|Přihlaste se pomocí PIN nebo biometrického rozpoznávání (obličeje, Iris nebo otisk prstu) pomocí zařízení s Windows.<br>Ověřování Windows Hello je vázané na zařízení; pro přístup k firemním prostředkům potřebuje uživatel zařízení i přihlašovací komponentu, jako je PIN nebo biometrické faktor.|Přihlaste se pomocí mobilního telefonu pomocí skenování otisků prstů, obličeje nebo Iris nebo PIN kódu.<br>Uživatelé se přihlásí k pracovnímu nebo osobnímu účtu na svém počítači nebo mobilním telefonu.|Přihlášení pomocí zařízení zabezpečení FIDO2 (biometrika, PIN a NFC)<br>Uživatel může získat přístup k zařízení na základě organizačních ovládacích prvků a ověřování na základě kódu PIN, biometrika pomocí zařízení, jako jsou klíče zabezpečení USB a čipové karty, klíče nebo wearables s podporou NFC.|
 |**Povolené scénáře**| Heslo – bez možnosti použití zařízení s Windows<br>Platí pro vyhrazený pracovní počítač s možností jednotného přihlašování k zařízením a aplikacím.|Řešení bez hesla odkudkoli pomocí mobilního telefonu.<br>Platí pro přístup k pracovním nebo osobním aplikacím na webu z libovolného zařízení.|Prostředí bez hesla pro pracovní procesy s využitím biometrika, kódu PIN a NFC.<br>Platí pro sdílené počítače a v případě, že mobilní telefon není možnost životaschopnosti (například pro pracovníky helpdesku, veřejný terminál nebo tým v nemocnicích).|
 
 Pomocí následující tabulky vyberte, kterou metodu budou podporovat vaše požadavky a uživatele.

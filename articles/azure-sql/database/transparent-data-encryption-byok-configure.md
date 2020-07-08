@@ -1,9 +1,9 @@
 ---
 title: Povolit SQL TDE s Azure Key Vault
-titleSuffix: Azure SQL Database & Azure Synapse Analytics
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 description: Naučte se konfigurovat Azure SQL Database a Azure synapse Analytics, abyste mohli začít používat transparentní šifrování dat (TDE) pro šifrování v klidovém prostředí pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: seo-lt-2019 sqldbrb=1
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 136bea5ffa33210362e4785f8f3003f5cd5cc8fa
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
+ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321406"
+ms.lasthandoff: 07/06/2020
+ms.locfileid: "85981324"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku Azure CLI: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -217,7 +217,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 * * *
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud dojde k problému, podívejte se na následující:
 
