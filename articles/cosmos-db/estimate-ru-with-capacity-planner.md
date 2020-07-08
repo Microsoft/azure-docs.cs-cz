@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
 ms.openlocfilehash: 6a30535ac3aaa90dc3553f6901a83ab300546fb5
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261847"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>Odhad RU/s pomocí plánovače kapacity Azure Cosmos DB
@@ -23,8 +23,8 @@ Plánovač kapacity se dá použít ve dvou režimech.
 
 |**Mode**  |**Popis**  |
 |---------|---------|
-|Basic|Poskytuje rychlý, vysoce na vysoké úrovni RU/s a odhad nákladů. Tento režim předpokládá výchozí nastavení Azure Cosmos DB pro indexování zásad, konzistence a dalších parametrů. <br/><br/>Základní režim můžete použít pro rychlý odhad na nejvyšší úrovni při vyhodnocování potenciálního zatížení pro spuštění na Azure Cosmos DB.|
-|Upřesnit|Poskytuje podrobnější informace o RU/s a odhad nákladů s možností optimalizace dalších nastavení – zásad indexování, úrovně konzistence a dalších parametrů, které mají vliv na náklady a propustnost. <br/><br/>Pokročilý režim použijte při odhadování RU/s pro nový projekt nebo chcete podrobnější odhad. |
+|Základní|Poskytuje rychlý, vysoce na vysoké úrovni RU/s a odhad nákladů. Tento režim předpokládá výchozí nastavení Azure Cosmos DB pro indexování zásad, konzistence a dalších parametrů. <br/><br/>Základní režim můžete použít pro rychlý odhad na nejvyšší úrovni při vyhodnocování potenciálního zatížení pro spuštění na Azure Cosmos DB.|
+|Pokročilý|Poskytuje podrobnější informace o RU/s a odhad nákladů s možností optimalizace dalších nastavení – zásad indexování, úrovně konzistence a dalších parametrů, které mají vliv na náklady a propustnost. <br/><br/>Pokročilý režim použijte při odhadování RU/s pro nový projekt nebo chcete podrobnější odhad. |
 
 
 ## <a name="estimate-provisioned-throughput-and-cost-using-basic-mode"></a>Odhad zajištěné propustnosti a nákladů pomocí základního režimu

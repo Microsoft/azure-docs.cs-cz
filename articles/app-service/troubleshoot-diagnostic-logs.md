@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8b415c9582af2303451a8076307f07ee92ac08d0
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261337"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Povolit protokolování diagnostiky pro aplikace v Azure App Service
@@ -62,7 +62,7 @@ Vyberte **úroveň**nebo úroveň podrobností, které se mají protokolovat. V 
 
 | Úroveň | Zahrnuté kategorie |
 |-|-|
-|**Disabled** (Zakázáno) | Žádné |
+|**Disabled** (Zakázáno) | Žádná |
 |**Chyba** | Chyba, kritická |
 |**Upozornění** | Upozornění, chyba, kritická|
 |**Informace** | Informace, varování, chyba, kritické|
@@ -187,14 +187,14 @@ Následující tabulka uvádí podporované typy a popisy protokolů:
 
 | Typ protokolu | Podpora Windows | Podpora pro Linux (Docker) | Description |
 |-|-|-|
-| AppServiceConsoleLogs | TBA | Ano | Standardní výstup a standardní chyba |
+| AppServiceConsoleLogs | TBA | Yes | Standardní výstup a standardní chyba |
 | AppServiceHTTPLogs | Ano | Ano | Protokoly webového serveru |
 | AppServiceEnvironmentPlatformLogs | Ano | Ano | App Service Environment: škálování, změny konfigurace a protokoly stavu|
 | AppServiceAuditLogs | Ano | Ano | Přihlašovací aktivita prostřednictvím FTP a Kudu |
-| AppServiceFileAuditLogs | Ano | Bude doplněno | Změny souborů prostřednictvím FTP a Kudu |
+| AppServiceFileAuditLogs | Yes | Bude doplněno | Změny souborů prostřednictvím FTP a Kudu |
 | AppServiceAppLogs | TBA | Java SE & Tomcat | Protokoly aplikací |
 | AppServiceIPSecAuditLogs  | Ano | Ano | Žádosti z pravidel IP adres |
-| AppServicePlatformLogs  | TBA | Ano | Protokoly kontejneru |
+| AppServicePlatformLogs  | TBA | Yes | Protokoly kontejneru |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Další kroky
 * [Dotazování protokolů pomocí Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

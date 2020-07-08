@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/9/2019
 ms.author: tvoellm
 ms.openlocfilehash: 88899dc697839b16c2b0cd24ac9233f87da26b41
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 07/02/2020
 ms.locfileid: "85261218"
 ---
 # <a name="restrict-user-access-to-data-operations-only"></a>Omezení přístupu uživatelů jenom na datové operace
@@ -35,10 +35,10 @@ Další části tohoto článku ukazují, jak provést tyto kroky.
 > Aby bylo možné spustit příkazy v dalších částech, je nutné nainstalovat Azure PowerShell modulu 3.0.0 nebo novějším a také [roli vlastníka Azure](../role-based-access-control/built-in-roles.md#owner) v předplatném, které chcete upravit.
 
 V skriptech PowerShell v dalších částech nahraďte následující zástupné symboly hodnotami, které jsou specifické pro vaše prostředí:
-- `$MySubscriptionId`– ID předplatného, které obsahuje účet Azure Cosmos, u kterého chcete omezit oprávnění. Příklad: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
-- `$MyResourceGroupName`– Skupina prostředků obsahující účet Azure Cosmos. Příklad: `myresourcegroup`.
-- `$MyAzureCosmosDBAccountName`– Název vašeho účtu Azure Cosmos. Příklad: `mycosmosdbsaccount`.
-- `$MyUserName`– Přihlášení ( username@domain ) uživatele, pro kterého chcete omezit přístup. Příklad: `cosmosdbuser@contoso.com`.
+- `$MySubscriptionId`– ID předplatného, které obsahuje účet Azure Cosmos, u kterého chcete omezit oprávnění. Například: `e5c8766a-eeb0-40e8-af56-0eb142ebf78e`.
+- `$MyResourceGroupName`– Skupina prostředků obsahující účet Azure Cosmos. Například: `myresourcegroup`.
+- `$MyAzureCosmosDBAccountName`– Název vašeho účtu Azure Cosmos. Například: `mycosmosdbsaccount`.
+- `$MyUserName`– Přihlášení ( username@domain ) uživatele, pro kterého chcete omezit přístup. Například: `cosmosdbuser@contoso.com`.
 
 ## <a name="select-your-azure-subscription"></a>Vyberte své předplatné Azure.
 
