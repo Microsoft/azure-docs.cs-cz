@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 5f9774dd65587c364c90d346f17ed508a263c954
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c729645eadc192dba4d7bb4f2c346d7b9d36434a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961267"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132675"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -70,7 +70,7 @@ Tato tabulka shrnuje podporu účtu úložiště mezipaměti používaného Site
 --- | --- | ---
 Účty úložiště pro obecné účely v2 (horká a studená vrstva) | Podporuje se | Použití GPv2 se nedoporučuje, protože náklady na transakce pro v2 jsou podstatně vyšší než V1 účty úložiště.
 Premium Storage | Nepodporuje se | Účty úložiště úrovně Standard se používají pro úložiště mezipaměti, které vám pomůžou optimalizovat náklady.
-Azure Storage brány firewall pro virtuální sítě  | Podporuje se | Pokud používáte účet úložiště mezipaměti s povolenou bránou firewall nebo cílový účet úložiště, zajistěte, abyste [povolili důvěryhodné služby Microsoftu](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).<br></br>Také se ujistěte, že máte povolený přístup k alespoň jedné podsíti zdrojové virtuální sítě.
+Azure Storage brány firewall pro virtuální sítě  | Podporuje se | Pokud používáte účet úložiště mezipaměti s povolenou bránou firewall nebo cílový účet úložiště, zajistěte, abyste [povolili důvěryhodné služby Microsoftu](../storage/common/storage-network-security.md#exceptions).<br></br>Také se ujistěte, že máte povolený přístup k alespoň jedné podsíti zdrojové virtuální sítě.
 
 
 ## <a name="replicated-machine-operating-systems"></a>Operační systémy replikovaných počítačů
@@ -229,7 +229,7 @@ GRS | Podporuje se |
 RA-GRS | Podporuje se |
 ZRS | Nepodporuje se |
 Studené a horké úložiště | Nepodporuje se | Disky virtuálních počítačů se ve studeném a horkém úložišti nepodporují.
-Azure Storage brány firewall pro virtuální sítě  | Podporuje se | Pokud omezíte přístup k účtu úložiště přes virtuální síť, povolte možnost [Povolit důvěryhodné služby společnosti Microsoft](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+Azure Storage brány firewall pro virtuální sítě  | Podporuje se | Pokud omezíte přístup k účtu úložiště přes virtuální síť, povolte možnost [Povolit důvěryhodné služby společnosti Microsoft](../storage/common/storage-network-security.md#exceptions).
 Účty úložiště pro obecné účely v2 (horká a studená vrstva) | Podporuje se | Náklady transakce se podstatně zvyšují v porovnání s účty úložiště pro obecné účely v1.
 Generace 2 (spuštění UEFI) | Podporuje se
 NVMe disky | Nepodporuje se
@@ -270,10 +270,10 @@ Několik IP adres | Nepodporuje se | Při převzetí služeb při selhání virt
 Traffic Manager     | Podporuje se | Můžete předem nakonfigurovat Traffic Manager tak, aby se provoz směroval do koncového bodu ve zdrojové oblasti v pravidelných intervalech, a v případě převzetí služeb při selhání do koncového bodu v cílové oblasti.
 Azure DNS | Podporuje se |
 Vlastní DNS    | Podporuje se |
-Neověřený proxy server | Podporuje se | [Další informace](site-recovery-azure-to-azure-networking-guidance.md)
+Neověřený proxy server | Podporuje se | [Další informace](./azure-to-azure-about-networking.md)
 Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač používá pro odchozí připojení ověřený proxy server, nedá se replikovat pomocí Azure Site Recovery.
-Připojení VPN typu Site-to-site k místnímu prostředí<br/><br/>(s ExpressRoute nebo bez něj)| Podporuje se | Ujistěte se, že jsou udr a skupin zabezpečení sítě nakonfigurované tak, aby se provoz Site Recovery nesměroval do místního prostředí. [Další informace](site-recovery-azure-to-azure-networking-guidance.md)
-Připojení virtuální sítě k virtuální síti    | Podporuje se | [Další informace](site-recovery-azure-to-azure-networking-guidance.md)
+Připojení VPN typu Site-to-site k místnímu prostředí<br/><br/>(s ExpressRoute nebo bez něj)| Podporuje se | Ujistěte se, že jsou udr a skupin zabezpečení sítě nakonfigurované tak, aby se provoz Site Recovery nesměroval do místního prostředí. [Další informace](./azure-to-azure-about-networking.md)
+Připojení virtuální sítě k virtuální síti    | Podporuje se | [Další informace](./azure-to-azure-about-networking.md)
 Koncové body služby pro virtuální síť | Podporuje se | Pokud omezíte přístup k virtuální síti k účtům úložiště, ujistěte se, že důvěryhodné služby Microsoftu mají povolený přístup k účtu úložiště.
 Urychlení sítě | Podporuje se | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Síťové zařízení Palo Alto | Nepodporuje se | U zařízení třetích stran se v rámci virtuálního počítače často ukládají omezení poskytovatele. Azure Site Recovery potřebuje k dispozici agenta, rozšíření a odchozí připojení. Zařízení ale neumožňuje konfigurovat žádné odchozí aktivity uvnitř virtuálního počítače.
@@ -282,5 +282,5 @@ IPv6  | Nepodporuje se | Současně se nepodporují i smíšené konfigurace, kt
 
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si [pokyny k síti](site-recovery-azure-to-azure-networking-guidance.md) pro replikaci virtuálních počítačů Azure.
-- Nasazení zotavení po havárii [replikací virtuálních počítačů Azure](site-recovery-azure-to-azure.md).
+- Přečtěte si [pokyny k síti](./azure-to-azure-about-networking.md) pro replikaci virtuálních počítačů Azure.
+- Nasazení zotavení po havárii [replikací virtuálních počítačů Azure](./azure-to-azure-quickstart.md).

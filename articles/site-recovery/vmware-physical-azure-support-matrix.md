@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 8e1fd7e839c50458ddcfc9f83d152d7b45cd6672
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ff99fd1dd1710cd96f6257096b97ae1912a61dc6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956249"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131886"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -50,8 +50,8 @@ Operační systém  | Windows Server 2012 R2 nebo Windows Server 2016 s desktopo
 Národní prostředí operačního systému | Angličtina (en-us)
 [PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Není nutné pro konfigurační server verze [9,14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) nebo novější.
 Role Windows Serveru | Nepovolujte Active Directory Domain Services; Internetová informační služba (IIS) nebo Hyper-V.
-Zásady skupiny| – Zabraňte přístupu k příkazovému řádku. <br/> – Zabraňte přístup k nástrojům pro úpravu registru. <br/> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br/> -Zapnout provádění skriptu. <br/> - [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Ujistěte se, že:<br/><br/> – Nemáte již existující výchozí web. <br/> -Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br/> – Už nemusíte na portu 443 naslouchat předem existující web nebo aplikaci.<br/>
+Zásady skupiny| – Zabraňte přístupu k příkazovému řádku. <br/> – Zabraňte přístup k nástrojům pro úpravu registru. <br/> – Logika vztahu důvěryhodnosti pro přílohy souborů. <br/> -Zapnout provádění skriptu. <br/> - [Další informace](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+IIS | Ujistěte se, že:<br/><br/> – Nemáte již existující výchozí web. <br/> -Povolit [anonymní ověřování](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> -Povolit nastavení [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))  <br/> – Už nemusíte na portu 443 naslouchat předem existující web nebo aplikaci.<br/>
 Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware)
 Typ IP adresy | Static
 Porty | 443 použito pro orchestraci řídicích kanálů<br/>9443 pro přenos dat
@@ -67,7 +67,7 @@ Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném po�
 --- | ---
 Nastavení počítače | Počítače, které se replikují do Azure, musí splňovat [požadavky Azure](#azure-vm-requirements).
 Zatížení počítače | Site Recovery podporuje replikaci všech úloh spuštěných v podporovaném počítači. [Další informace](https://aka.ms/asr_workload).
-Název počítače | Ujistěte se, že zobrazované názvy počítačů nespadají do [rezervovaných názvů prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/templates/error-reserved-resource-name) .<br/><br/> V názvech logických svazků se nerozlišují velká a malá písmena. Zajistěte, aby žádné dva svazky v zařízení neměly stejný název. Např. svazky s názvy "voLUME1", "voLUME1" nelze chránit prostřednictvím Azure Site Recovery.
+Název počítače | Ujistěte se, že zobrazované názvy počítačů nespadají do [rezervovaných názvů prostředků Azure](../azure-resource-manager/templates/error-reserved-resource-name.md) .<br/><br/> V názvech logických svazků se nerozlišují velká a malá písmena. Zajistěte, aby žádné dva svazky v zařízení neměly stejný název. Např. svazky s názvy "voLUME1", "voLUME1" nelze chránit prostřednictvím Azure Site Recovery.
 
 ### <a name="for-windows"></a>Pro Windows
 
@@ -224,7 +224,7 @@ Host/Server – vyloučit disk | Yes
 Funkce Multipath Host/Server (MPIO) | No
 Oddíly GPT/Server GPT | Z [kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) (verze 9,25 služby mobility) (verze) a vyšší je podporované pět oddílů. Dříve byly podporovány předchozí čtyři.
 ReFS | Odolný systém souborů je podporován se službou mobility verze 9,23 nebo vyšší.
-Spuštění hosta/serveru EFI/UEFI | – Podporováno pro Windows Server 2012 nebo novější, SLES 12 SP4 a RHEL 8,0 s agentem mobility verze 9,30 a vyšší<br/> -Typ spouštění zabezpečeného rozhraní UEFI není podporován. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
+Spuštění hosta/serveru EFI/UEFI | – Podporováno pro Windows Server 2012 nebo novější, SLES 12 SP4 a RHEL 8,0 s agentem mobility verze 9,30 a vyšší<br/> -Typ spouštění zabezpečeného rozhraní UEFI není podporován. [Další informace](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Kanály replikace
 
@@ -280,7 +280,7 @@ název virtuálního počítače | Od 1 do 63 znaků.<br/><br/> Pouze písmena, 
 
 ## <a name="resource-group-limits"></a>Omezení skupiny prostředků
 
-Informace o počtu virtuálních počítačů, které lze chránit v rámci jedné skupiny prostředků, najdete v článku [omezení a kvóty předplatného](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits).
+Informace o počtu virtuálních počítačů, které lze chránit v rámci jedné skupiny prostředků, najdete v článku [omezení a kvóty předplatného](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).
 
 ## <a name="churn-limits"></a>Omezení četnosti změn
 

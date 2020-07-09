@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704433"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132146"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -39,7 +39,7 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
 1. Aby uživatel mohl vytvořit aplikaci, musí mít roli vývojář aplikace.
     - Pokud se chcete ověřit, přihlaste se k Azure Portal.</br>
     - Přejít na **Azure Active Directory**  >  **rolí a správců**.</br>
-    - Ověřte, zda je role vývojář aplikace přiřazena uživateli. Pokud ne, použijte uživatele s tímto oprávněním nebo se obraťte na [správce, aby oprávnění povolil](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+    - Ověřte, zda je role vývojář aplikace přiřazena uživateli. Pokud ne, použijte uživatele s tímto oprávněním nebo se obraťte na [správce, aby oprávnění povolil](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Pokud se role vývojáře aplikace nedá přiřadit, ujistěte se, že příznak **Uživatelé můžou registrovat aplikace** nastavené na **hodnotu true** , aby uživatel mohl vytvořit identitu. Povolení těchto oprávnění:
     - Přihlaste se k portálu Azure.
@@ -49,7 +49,7 @@ K registraci konfiguračního serveru pomocí služeb Azure Site Recovery musít
       ![AD_application_permission Azure](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
 
 > [!NOTE]
-> Active Directory Federation Services (AD FS) se *nepodporuje*. Použijte účet spravovaný prostřednictvím [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
+> Active Directory Federation Services (AD FS) se *nepodporuje*. Použijte účet spravovaný prostřednictvím [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md).
 
 ## <a name="download-the-template"></a>Stažení šablony
 

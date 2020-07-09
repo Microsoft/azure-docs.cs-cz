@@ -3,11 +3,12 @@ title: Běžné dotazy k zotavení po havárii technologie Hyper-V pomocí Azure
 description: Tento článek shrnuje běžné otázky týkající se nastavení zotavení po havárii pro místní virtuální počítače Hyper-V do Azure pomocí Azure Site Recovery lokality.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b175e7157364f0471192dd713db8767e074dd483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195257"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132664"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Časté dotazy – Zotavení po havárii Hyper-V do Azure
 
@@ -31,17 +32,17 @@ Obvykle se vám bude zvyšovat náklady na transakce, které se účtují na ú�
 
 U hostitelských serverů Hyper-V se vaše potřeby odvíjí od scénáře nasazení. Požadavky pro Hyper-V si můžete projít v těchto tématech:
 
-* [Replikace virtuálních počítačů Hyper-V (bez VMM) do Azure](site-recovery-hyper-v-site-to-azure.md)
-* [Replikace virtuálních počítačů Hyper-V (s VMM) do Azure](site-recovery-vmm-to-azure.md)
-* [Replikace virtuálních počítačů Hyper-V do sekundárního datacentra](site-recovery-vmm-to-vmm.md)
-* Pokud provádíte replikaci do sekundárního datového centra, přečtěte si o [podporovaných hostovaných operačních systémech pro virtuální počítače Hyper-V](https://technet.microsoft.com/library/mt126277.aspx).
-* Pokud provádíte replikaci do Azure, Site Recovery podporuje všechny hostované operační systémy, které [Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)podporuje.
+* [Replikace virtuálních počítačů Hyper-V (bez VMM) do Azure](./hyper-v-azure-tutorial.md)
+* [Replikace virtuálních počítačů Hyper-V (s VMM) do Azure](./hyper-v-vmm-disaster-recovery.md)
+* [Replikace virtuálních počítačů Hyper-V do sekundárního datacentra](./hyper-v-vmm-disaster-recovery.md)
+* Pokud provádíte replikaci do sekundárního datového centra, přečtěte si o [podporovaných hostovaných operačních systémech pro virtuální počítače Hyper-V](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/mt126277(v=ws.11)).
+* Pokud provádíte replikaci do Azure, Site Recovery podporuje všechny hostované operační systémy, které [Azure](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10))podporuje.
 
 ### <a name="can-i-protect-vms-when-hyper-v-is-running-on-a-client-operating-system"></a>Můžu chránit virtuální počítače v případě, že je technologie Hyper-V spuštěná v klientském operačním systému?
-Ne, virtuální počítače se musí nacházet na hostitelském serveru Hyper-V, který běží na podporovaném serveru s Windows. Pokud potřebujete chránit klientský počítač, můžete ho replikovat jako fyzický počítač do [Azure](site-recovery-vmware-to-azure.md) nebo do [sekundárního datacentra](site-recovery-vmware-to-vmware.md).
+Ne, virtuální počítače se musí nacházet na hostitelském serveru Hyper-V, který běží na podporovaném serveru s Windows. Pokud potřebujete chránit klientský počítač, můžete ho replikovat jako fyzický počítač do [Azure](./vmware-azure-tutorial.md) nebo do [sekundárního datacentra](./vmware-physical-secondary-disaster-recovery.md).
 
 ### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>Musí být hostitelé Hyper-V v cloudech VMM?
-Pokud chcete replikovat do sekundárního datového centra, musí být virtuální počítače Hyper-v na serverech hostitele Hyper-V umístěných v cloudu VMM. Pokud chcete replikovat do Azure, můžete replikovat virtuální počítače s cloudy VMM nebo bez nich. [Přečtěte si další](tutorial-hyper-v-to-azure.md) informace o replikaci Hyper-V do Azure.
+Pokud chcete replikovat do sekundárního datového centra, musí být virtuální počítače Hyper-v na serverech hostitele Hyper-V umístěných v cloudu VMM. Pokud chcete replikovat do Azure, můžete replikovat virtuální počítače s cloudy VMM nebo bez nich. [Přečtěte si další](./hyper-v-azure-tutorial.md) informace o replikaci Hyper-V do Azure.
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>Mohu do Azure replikovat virtuální počítače Hyper-V generace 2?
@@ -70,7 +71,7 @@ Site Recovery je ISO 27001:2013, 27018, HIPAA, DPA Certified a je v procesu SOC2
 Ano. Při vytváření trezoru v oblasti zajišťujeme, aby všechna metadata používaná Site Recovery zůstala v rámci geografické hranice této oblasti.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Šifruje Site Recovery replikaci?
-Ano, podporuje se šifrování i přenos v [Azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) .
+Ano, podporuje se šifrování i přenos v [Azure](../storage/common/storage-service-encryption.md) .
 
 
 ## <a name="deployment"></a>Nasazení

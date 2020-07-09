@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: da2cc3dade843b1ea207eb4ec5bf33a41a289d7e
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851480"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132400"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -48,7 +48,7 @@ Následující tabulka shrnuje podporu virtuálních počítačů. Site Recovery
  **Komponenta** | **Podrobnosti**
 --- | ---
 Konfigurace virtuálního počítače | Virtuální počítače, které se replikují do Azure, musí splňovat [požadavky Azure](#azure-vm-requirements).
-Hostovaný operační systém | Libovolný hostovaný operační systém [podporovaný pro Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)...<br/><br/> Windows Server 2016 nano Server se nepodporuje.
+Hostovaný operační systém | Libovolný hostovaný operační systém [podporovaný pro Azure](../cloud-services/cloud-services-guestos-update-matrix.md#family-5-releases)...<br/><br/> Windows Server 2016 nano Server se nepodporuje.
 
 
 ## <a name="vmdisk-management"></a>Správa virtuálních počítačů a disků
@@ -157,7 +157,7 @@ Místní virtuální počítače, které se replikují do Azure, musí splňovat
 
 **Komponenta** | **Požadavky** | **Podrobnosti**
 --- | --- | ---
-Hostovaný operační systém | Site Recovery podporuje všechny operační systémy, které [Azure podporuje](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Nepodporovaná Chyba kontroly požadovaných součástí
+Hostovaný operační systém | Site Recovery podporuje všechny operační systémy, které [Azure podporuje](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794868(v=ws.10)).  | Nepodporovaná Chyba kontroly požadovaných součástí
 Architektura hostovaného operačního systému | 32 – bit (Windows Server 2008)/64-bit | Nepodporovaná Chyba kontroly požadovaných součástí
 Velikost disku s operačním systémem | Až 2 048 GB pro virtuální počítače 1. generace.<br/><br/> Až 300 GB pro virtuální počítače 2. generace.  | Nepodporovaná Chyba kontroly požadovaných součástí
 Počet disků s operačním systémem | 1 | Nepodporovaná Chyba kontroly požadovaných součástí

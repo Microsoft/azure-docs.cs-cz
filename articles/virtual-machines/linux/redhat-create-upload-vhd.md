@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: 4140f9f07a0fd653c8e0370d017cbae7effd0a07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 647171414bc667613dbaabdfeca6552b9444363b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82084307"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133057"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na Red Hat pro Azure
 V tomto článku se dozvíte, jak připravit virtuální počítač s Red Hat Enterprise Linux (RHEL) pro použití v Azure. Verze RHEL, které jsou pokryté v tomto článku, jsou 6.7 + a 7.1 +. Hypervisory pro přípravu, které jsou pokryté v tomto článku, jsou Hyper-V, virtuální počítač založený na jádrech (KVM) a VMware. Další informace o požadavcích na způsobilost pro účast v programu cloudového přístupu Red Hat najdete na [webu Cloud Access Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) a [na platformě Azure s RHEL](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Způsob automatizace vytváření RHEL imagí najdete v tématu [Azure image Builder](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
@@ -40,64 +40,86 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 1. Kliknutím na **připojit** otevřete okno konzoly pro virtuální počítač.
 
 1. V RHEL 6 může NetworkManager kolidovat s agentem Azure Linux. Tento balíček odinstalujte spuštěním následujícího příkazu:
-   
-        # sudo rpm -e --nodeps NetworkManager
+
+    ```console
+    # sudo rpm -e --nodeps NetworkManager
+    ```
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network` soubor a přidejte následující text:
-   
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+
+    ```config
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network-scripts/ifcfg-eth0` soubor a přidejte následující text:
-   
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
+
+    ```config
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    ```
 
 1. Přesuňte (nebo odeberte) pravidla udev, abyste se vyhnuli generování statických pravidel pro rozhraní sítě Ethernet. Tato pravidla způsobují problémy při klonování virtuálního počítače v Microsoft Azure nebo Hyper-V:
 
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
-        
-        # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    ```console
+    # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+
+    # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    ```
 
 1. Spuštěním následujícího příkazu zajistěte, aby se síťová služba spouštěla v době spuštění:
 
-        # sudo chkconfig network on
+    ```console
+    # sudo chkconfig network on
+    ```
 
 1. Zaregistrujte své předplatné Red Hat, abyste mohli povolit instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
 
-        # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```console
+    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
 
 1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
-        # subscription-manager repos --enable=rhel-6-server-extras-rpms
+    ```console
+    # subscription-manager repos --enable=rhel-6-server-extras-rpms
+    ```
 
 1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Tuto úpravu provedete tak, `/boot/grub/menu.lst` že otevřete v textovém editoru a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
-    
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
-    
+
+    ```config-grub
+    console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+    ```
+
     Tím se také zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění.
     
     Kromě toho doporučujeme odebrat následující parametry:
-    
-        rhgb quiet crashkernel=auto
+
+    ```config-grub
+    rhgb quiet crashkernel=auto
+    ```
     
     Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port.  Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více. Tato konfigurace může být problematická na menších velikostech virtuálních počítačů.
 
 
 1. Ujistěte se, že je server Secure Shell (SSH) nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění, což je obvykle výchozí. Upravte/etc/ssh/sshd_config tak, aby zahrnovala následující řádek:
 
-        ClientAliveInterval 180
+    ```config
+    ClientAliveInterval 180
+    ```
 
 1. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu:
 
-        # sudo yum install WALinuxAgent
+    ```console
+    # sudo yum install WALinuxAgent
 
-        # sudo chkconfig waagent on
+    # sudo chkconfig waagent on
+    ```
 
     Při instalaci balíčku WALinuxAgent se odstraní balíčky NetworkManager a NetworkManager-GNOME, pokud už se v kroku 3 neodebraly.
 
@@ -105,25 +127,31 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
     Agent Azure Linux může automaticky nakonfigurovat odkládací místo pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Všimněte si, že místní disk prostředků je dočasný disk a je možné ho vyprázdnit, pokud dojde k zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku upravte odpovídajícím způsobem následující parametry v/etc/waagent.conf:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```config-cong
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
 
 1. Zrušení registrace předplatného (v případě potřeby) spuštěním následujícího příkazu:
 
-        # sudo subscription-manager unregister
+    ```console
+    # sudo subscription-manager unregister
+    ```
 
 1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
-        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-        # skip the deprovision step
-        # sudo waagent -force -deprovision
+    ```console
+    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+    # skip the deprovision step
+    # sudo waagent -force -deprovision
 
-        # export HISTSIZE=0
+    # export HISTSIZE=0
 
-        # logout
+    # logout
+    ```
 
 1. Klikněte na **Akce**  >  **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
@@ -135,80 +163,107 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 1. Kliknutím na **připojit** otevřete okno konzoly pro virtuální počítač.
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network` soubor a přidejte následující text:
-   
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+
+    ```config
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network-scripts/ifcfg-eth0` soubor a přidejte následující text:
-   
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
-    PERSISTENT_DHCLIENT = Ano NM_CONTROLLED = Ano
+
+    ```config
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    PERSISTENT_DHCLIENT=yes
+    NM_CONTROLLED=yes
+    ```
 
 1. Spuštěním následujícího příkazu zajistěte, aby se síťová služba spouštěla v době spuštění:
 
-        # sudo systemctl enable network
+    ```console
+    # sudo systemctl enable network
+    ```
 
 1. Zaregistrujte své předplatné Red Hat, abyste mohli povolit instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
 
-        # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```console
+    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
 
 1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
-   
-        GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    ```
    
    Tím se také zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění. Tato konfigurace také vypne nové zásady vytváření názvů v RHEL 7 pro síťové karty. Kromě toho doporučujeme odebrat následující parametry:
-   
-        rhgb quiet crashkernel=auto
+
+    ```config
+    rhgb quiet crashkernel=auto
+    ```
    
     Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
 1. Po dokončení úprav `/etc/default/grub` Spusťte následující příkaz pro opětovné sestavení konfigurace grub:
 
-        # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```console
+    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
 
 1. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění, což je obvykle výchozí. Upravte `/etc/ssh/sshd_config` , aby obsahovala následující řádek:
 
-        ClientAliveInterval 180
+    ```config
+    ClientAliveInterval 180
+    ```
 
 1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
-        # subscription-manager repos --enable=rhel-7-server-extras-rpms
+    ```console
+    # subscription-manager repos --enable=rhel-7-server-extras-rpms
+    ```
 
 1. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu:
 
-        # sudo yum install WALinuxAgent
+    ```console
+    # sudo yum install WALinuxAgent
 
-        # sudo systemctl enable waagent.service
+    # sudo systemctl enable waagent.service
+    ```
 
 1. Nevytvářejte odkládací místo na disku s operačním systémem.
 
     Agent Azure Linux může automaticky nakonfigurovat odkládací místo pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Všimněte si, že místní disk prostředků je dočasný disk a může být vyprázdněný, pokud dojde k zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku upravte `/etc/waagent.conf` správným způsobem následující parametry:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```console
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
 
 1. Pokud chcete zrušit registraci předplatného, spusťte následující příkaz:
 
-        # sudo subscription-manager unregister
+    ```console
+    # sudo subscription-manager unregister
+    ```
 
 1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
-        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-        # skip the deprovision step
-        # sudo waagent -force -deprovision
+    ```console
+    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+    # skip the deprovision step
+    # sudo waagent -force -deprovision
 
-        # export HISTSIZE=0
+    # export HISTSIZE=0
 
-        # logout
+    # logout
+    ```
 
 1. Klikněte na **Akce**  >  **vypnout** ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 
@@ -222,60 +277,78 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
     Vygenerujte šifrované heslo a zkopírujte výstup příkazu:
 
-        # openssl passwd -1 changeme
+    ```console
+    # openssl passwd -1 changeme
+    ```
 
     Nastavte kořenové heslo pomocí guestfish:
-        
-        # guestfish --rw -a <image-name>
-        > <fs> run
-        > <fs> list-filesystems
-        > <fs> mount /dev/sda1 /
-        > <fs> vi /etc/shadow
-        > <fs> exit
+
+    ```console
+    # guestfish --rw -a <image-name>
+    > <fs> run
+    > <fs> list-filesystems
+    > <fs> mount /dev/sda1 /
+    > <fs> vi /etc/shadow
+    > <fs> exit
+    ```
 
    Změňte druhé pole uživatele root z "!!" do šifrovaného hesla.
 
 1. Z image QCOW2 vytvořte virtuální počítač v KVM. Nastavte typ disku na **QCOW2**a nastavte model zařízení rozhraní virtuální sítě na **virtio**. Pak spusťte virtuální počítač a přihlaste se jako kořenový adresář.
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network` soubor a přidejte následující text:
-   
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+
+    ```config
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network-scripts/ifcfg-eth0` soubor a přidejte následující text:
-   
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
+
+    ```config
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    ```
 
 1. Přesuňte (nebo odeberte) pravidla udev, abyste se vyhnuli generování statických pravidel pro rozhraní sítě Ethernet. Tato pravidla způsobují problémy při klonování virtuálního počítače v Azure nebo Hyper-V:
 
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    ```console
+    # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
-        # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    ```
 
 1. Spuštěním následujícího příkazu zajistěte, aby se síťová služba spouštěla v době spuštění:
 
-        # chkconfig network on
+    ```console
+    # chkconfig network on
+    ```
 
 1. Zaregistrujte své předplatné Red Hat, abyste mohli povolit instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
 
-        # subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```console
+    # subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
 
 1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Tuto konfiguraci provedete tak, `/boot/grub/menu.lst` že otevřete v textovém editoru a zajistěte, aby výchozí jádro zahrnovalo následující parametry:
-    
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
-    
+
+    ```config-grub
+    console=ttyS0 earlyprintk=ttyS0 rootdelay=300
+    ```
+
     Tím se také zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění.
     
     Kromě toho doporučujeme odebrat následující parametry:
-    
-        rhgb quiet crashkernel=auto
-    
+
+    ```config-grub
+    rhgb quiet crashkernel=auto
+    ```
+
     Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
 
@@ -283,86 +356,113 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
     Upravte `/etc/dracut.conf` a přidejte následující obsah:
 
-        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+    ```config-conf
+    add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+    ```
 
     Znovu sestavte initramfs:
 
-        # dracut -f -v
+    ```config-conf
+    # dracut -f -v
+    ```
 
 1. Odinstalace cloudu – Init:
 
-        # yum remove cloud-init
+    ```console
+    # yum remove cloud-init
+    ```
 
 1. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění:
 
-        # chkconfig sshd on
+    ```console
+    # chkconfig sshd on
+    ```
 
     Upravte/etc/ssh/sshd_config tak, aby obsahovala tyto řádky:
 
-        PasswordAuthentication yes
-        ClientAliveInterval 180
+    ```config
+    PasswordAuthentication yes
+    ClientAliveInterval 180
+    ```
 
 1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
-        # subscription-manager repos --enable=rhel-6-server-extras-rpms
+    ```console
+    # subscription-manager repos --enable=rhel-6-server-extras-rpms
+    ```
 
 1. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu:
 
-        # yum install WALinuxAgent
+    ```console
+    # yum install WALinuxAgent
 
-        # chkconfig waagent on
+    # chkconfig waagent on
+    ```
 
 1. Agent Azure Linux může automaticky nakonfigurovat odkládací místo pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Všimněte si, že místní disk prostředků je dočasný disk a může být vyprázdněný, pokud dojde k zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku upravte odpovídajícím způsobem následující parametry v **/etc/waagent.conf** :
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```config-conf
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
 
 1. Zrušení registrace předplatného (v případě potřeby) spuštěním následujícího příkazu:
 
-        # subscription-manager unregister
+    ```console-conf
+    # subscription-manager unregister
+    ```
 
 1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
-        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-        # skip the deprovision step
-        # waagent -force -deprovision
+    ```console
+    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+    # skip the deprovision step
+    # waagent -force -deprovision
 
-        # export HISTSIZE=0
+    # export HISTSIZE=0
 
-        # logout
+    # logout
+    ```
 
 1. Vypněte virtuální počítač v KVM.
 
 1. Převeďte image QCOW2 na formát VHD.
 
-> [!NOTE]
-> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
->
+    > [!NOTE]
+    > Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
+    >
 
+    Nejprve převeďte obrázek do nezpracovaného formátu:
 
-    First convert the image to raw format:
+    ```console
+    # qemu-img convert -f qcow2 -O raw rhel-6.9.qcow2 rhel-6.9.raw
+    ```
 
-        # qemu-img convert -f qcow2 -O raw rhel-6.9.qcow2 rhel-6.9.raw
+    Ujistěte se, že velikost nezpracovaného obrázku je zarovnána s 1 MB. V opačném případě zarovnejte velikost podle velikosti 1 MB:
 
-    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
+    ```console
+    # MB=$((1024*1024))
+    # size=$(qemu-img info -f raw --output json "rhel-6.9.raw" | \
+      gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
-        # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.9.raw" | \
-          gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+    # rounded_size=$((($size/$MB + 1)*$MB))
+    # qemu-img resize rhel-6.9.raw $rounded_size
+    ```
 
-        # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.9.raw $rounded_size
+    Převeďte nezpracovaný disk na virtuální pevný disk s pevnou velikostí:
 
-    Convert the raw disk to a fixed-sized VHD:
+    ```console
+    # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
+    ```
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
+    Nebo s qemu verze **2.6 +** včetně `force_size` Možnosti:
 
-    Or, with qemu version **2.6+** include the `force_size` option:
-
-        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
+    ```console
+    # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
+    ```
 
         
 ### <a name="prepare-a-rhel-7-virtual-machine-from-kvm"></a>Příprava virtuálního počítače s RHEL 7 z KVM
@@ -373,148 +473,195 @@ V této části se předpokládá, že už jste získali soubor ISO z webu Red H
 
     Vygenerujte šifrované heslo a zkopírujte výstup příkazu:
 
-        # openssl passwd -1 changeme
+    ```console
+    # openssl passwd -1 changeme
+    ```
 
     Nastavte kořenové heslo pomocí guestfish:
 
-        # guestfish --rw -a <image-name>
-        > <fs> run
-        > <fs> list-filesystems
-        > <fs> mount /dev/sda1 /
-        > <fs> vi /etc/shadow
-        > <fs> exit
+    ```console
+    # guestfish --rw -a <image-name>
+    > <fs> run
+    > <fs> list-filesystems
+    > <fs> mount /dev/sda1 /
+    > <fs> vi /etc/shadow
+    > <fs> exit
+    ```
 
    Změnit druhé pole kořenového uživatele z "!!" do šifrovaného hesla.
 
 1. Z image QCOW2 vytvořte virtuální počítač v KVM. Nastavte typ disku na **QCOW2**a nastavte model zařízení rozhraní virtuální sítě na **virtio**. Pak spusťte virtuální počítač a přihlaste se jako kořenový adresář.
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network` soubor a přidejte následující text:
-   
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+
+    ```config
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network-scripts/ifcfg-eth0` soubor a přidejte následující text:
-   
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
-    PERSISTENT_DHCLIENT = Ano NM_CONTROLLED = Ano
+
+    ```config
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    PERSISTENT_DHCLIENT=yes
+    NM_CONTROLLED=yes
+    ```
 
 1. Spuštěním následujícího příkazu zajistěte, aby se síťová služba spouštěla v době spuštění:
 
-        # sudo systemctl enable network
+    ```console
+    # sudo systemctl enable network
+    ```
 
 1. Zaregistrujte své předplatné Red Hat, abyste povolili instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
 
-        # subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```console
+    # subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
 
 1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li tuto konfiguraci provést, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
-   
-        GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
-   
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    ```
+
    Tento příkaz také zajistí, aby byly všechny zprávy konzoly odesílány do prvního sériového portu, což může pomoct podpoře Azure s problémy ladění. Příkaz také vypne nové zásady vytváření názvů pro síťové adaptéry v RHEL 7. Kromě toho doporučujeme odebrat následující parametry:
-   
-        rhgb quiet crashkernel=auto
-   
+
+    ```config-grub
+    rhgb quiet crashkernel=auto
+    ```
+
     Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
 1. Po dokončení úprav `/etc/default/grub` Spusťte následující příkaz pro opětovné sestavení konfigurace grub:
 
-        # grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```console
+    # grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
 
 1. Přidejte moduly technologie Hyper-V do initramfs.
 
     Upravit `/etc/dracut.conf` a přidat obsah:
 
-        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+    ```config-conf
+    add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+    ```
 
     Znovu sestavte initramfs:
 
-        # dracut -f -v
+    ```config-conf
+    # dracut -f -v
+    ```
 
 1. Odinstalace cloudu – Init:
 
-        # yum remove cloud-init
+    ```console
+    # yum remove cloud-init
+    ```
 
 1. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění:
 
-        # systemctl enable sshd
+    ```console
+    # systemctl enable sshd
+    ```
 
     Upravte/etc/ssh/sshd_config tak, aby obsahovala tyto řádky:
 
-        PasswordAuthentication yes
-        ClientAliveInterval 180
+    ```config
+    PasswordAuthentication yes
+    ClientAliveInterval 180
+    ```
 
 1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
-        # subscription-manager repos --enable=rhel-7-server-extras-rpms
+    ```config
+    # subscription-manager repos --enable=rhel-7-server-extras-rpms
+    ```
 
 1. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu:
 
-        # yum install WALinuxAgent
+    ```console
+    # yum install WALinuxAgent
+    ```
 
     Povolit službu waagent:
 
-        # systemctl enable waagent.service
+    ```console
+    # systemctl enable waagent.service
+    ```
 
 1. Nevytvářejte odkládací místo na disku s operačním systémem.
 
     Agent Azure Linux může automaticky nakonfigurovat odkládací místo pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Všimněte si, že místní disk prostředků je dočasný disk a může být vyprázdněný, pokud dojde k zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku upravte `/etc/waagent.conf` správným způsobem následující parametry:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```config-conf
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
 
 1. Zrušení registrace předplatného (v případě potřeby) spuštěním následujícího příkazu:
 
-        # subscription-manager unregister
+    ```console
+    # subscription-manager unregister
+    ```
 
 1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
-        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-        # skip the deprovision step
-        # sudo waagent -force -deprovision
+    ```console
+    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+    # skip the deprovision step
+    # sudo waagent -force -deprovision
 
-        # export HISTSIZE=0
+    # export HISTSIZE=0
 
-        # logout
+    # logout
+    ```
 
 1. Vypněte virtuální počítač v KVM.
 
 1. Převeďte image QCOW2 na formát VHD.
 
-> [!NOTE]
-> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
->
+    > [!NOTE]
+    > Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
+    >
 
+    Nejprve převeďte obrázek do nezpracovaného formátu:
 
-    First convert the image to raw format:
+    ```console
+    # qemu-img convert -f qcow2 -O raw rhel-7.4.qcow2 rhel-7.4.raw
+    ```
 
-        # qemu-img convert -f qcow2 -O raw rhel-7.4.qcow2 rhel-7.4.raw
+    Ujistěte se, že velikost nezpracovaného obrázku je zarovnána s 1 MB. V opačném případě zarovnejte velikost podle velikosti 1 MB:
 
-    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
+    ```console
+    # MB=$((1024*1024))
+    # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
+      gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
-        # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
-          gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+    # rounded_size=$((($size/$MB + 1)*$MB))
+    # qemu-img resize rhel-7.4.raw $rounded_size
+    ```
 
-        # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-7.4.raw $rounded_size
+    Převeďte nezpracovaný disk na virtuální pevný disk s pevnou velikostí:
 
-    Convert the raw disk to a fixed-sized VHD:
+    ```console
+    # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+    ```
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+    Nebo s qemu verze **2.6 +** včetně `force_size` Možnosti:
 
-    Or, with qemu version **2.6+** include the `force_size` option:
-
-        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
-
+    ```console
+    # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
+    ```
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>Příprava virtuálního počítače založeného na Red Hat z VMware
 ### <a name="prerequisites"></a>Požadavky
@@ -526,49 +673,67 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
 ### <a name="prepare-a-rhel-6-virtual-machine-from-vmware"></a>Příprava virtuálního počítače s RHEL 6 z VMware
 1. V RHEL 6 může NetworkManager kolidovat s agentem Azure Linux. Tento balíček odinstalujte spuštěním následujícího příkazu:
-   
-        # sudo rpm -e --nodeps NetworkManager
+
+    ```console
+    # sudo rpm -e --nodeps NetworkManager
+    ```
 
 1. V adresáři/etc/sysconfig/vytvořte soubor s názvem **Network** , který obsahuje následující text:
 
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+    ```console
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network-scripts/ifcfg-eth0` soubor a přidejte následující text:
-   
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
+
+    ```config
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    ```
 
 1. Přesuňte (nebo odeberte) pravidla udev, abyste se vyhnuli generování statických pravidel pro rozhraní sítě Ethernet. Tato pravidla způsobují problémy při klonování virtuálního počítače v Azure nebo Hyper-V:
 
-        # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
+    ```console
+    # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
-        # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
+    ```
 
 1. Spuštěním následujícího příkazu zajistěte, aby se síťová služba spouštěla v době spuštění:
 
-        # sudo chkconfig network on
+    ```console
+    # sudo chkconfig network on
+    ```
 
 1. Zaregistrujte své předplatné Red Hat, abyste mohli povolit instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
 
-        # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```console
+    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
 
 1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
-        # subscription-manager repos --enable=rhel-6-server-extras-rpms
+    ```console
+    # subscription-manager repos --enable=rhel-6-server-extras-rpms
+    ```
 
 1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Provedete to tak, `/etc/default/grub` že otevřete v textovém editoru a upravíte `GRUB_CMDLINE_LINUX` parametr. Příklad:
-   
-        GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
-   
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
+    ```
+
    Tím se také zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct podpoře Azure s problémy ladění. Kromě toho doporučujeme odebrat následující parametry:
-   
-        rhgb quiet crashkernel=auto
+
+    ```config-grub
+    rhgb quiet crashkernel=auto
+    ```
    
     Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
@@ -576,313 +741,374 @@ V této části se předpokládá, že jste už nainstalovali virtuální počí
 
     Upravte `/etc/dracut.conf` a přidejte následující obsah:
 
-        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+    ```config-conf
+    add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+    ```
 
     Znovu sestavte initramfs:
 
-        # dracut -f -v
+    ```config-cong
+    # dracut -f -v
+    ```
 
 1. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění, což je obvykle výchozí. Upravte `/etc/ssh/sshd_config` , aby obsahovala následující řádek:
 
+    ```config
     ClientAliveInterval 180
+    ```
 
 1. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu:
 
-        # sudo yum install WALinuxAgent
+    ```console
+    # sudo yum install WALinuxAgent
 
-        # sudo chkconfig waagent on
+    # sudo chkconfig waagent on
+    ```
 
 1. Nevytvářejte odkládací místo na disku s operačním systémem.
 
     Agent Azure Linux může automaticky nakonfigurovat odkládací místo pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Všimněte si, že místní disk prostředků je dočasný disk a může být vyprázdněný, pokud dojde k zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku upravte `/etc/waagent.conf` správným způsobem následující parametry:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```config-conf
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
 
 1. Zrušení registrace předplatného (v případě potřeby) spuštěním následujícího příkazu:
 
-        # sudo subscription-manager unregister
+    ```console
+    # sudo subscription-manager unregister
+    ```
 
 1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
-        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-        # skip the deprovision step
-        # sudo waagent -force -deprovision
+    ```console
+    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+    # skip the deprovision step
+    # sudo waagent -force -deprovision
 
-        # export HISTSIZE=0
+    # export HISTSIZE=0
 
-        # logout
+    # logout
+    ```
 
 1. Vypněte virtuální počítač a převeďte soubor VMDK na soubor. VHD.
 
-> [!NOTE]
-> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
->
+    > [!NOTE]
+    > Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
+    >
 
+    Nejprve převeďte obrázek do nezpracovaného formátu:
 
-    First convert the image to raw format:
+    ```console
+    # qemu-img convert -f vmdk -O raw rhel-6.9.vmdk rhel-6.9.raw
+    ```
 
-        # qemu-img convert -f vmdk -O raw rhel-6.9.vmdk rhel-6.9.raw
+    Ujistěte se, že velikost nezpracovaného obrázku je zarovnána s 1 MB. V opačném případě zarovnejte velikost podle velikosti 1 MB:
 
-    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
+    ```console
+    # MB=$((1024*1024))
+    # size=$(qemu-img info -f raw --output json "rhel-6.9.raw" | \
+      gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
-        # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-6.9.raw" | \
-          gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+    # rounded_size=$((($size/$MB + 1)*$MB))
+    # qemu-img resize rhel-6.9.raw $rounded_size
+    ```
 
-        # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-6.9.raw $rounded_size
+    Převeďte nezpracovaný disk na virtuální pevný disk s pevnou velikostí:
 
-    Convert the raw disk to a fixed-sized VHD:
+    ```console
+    # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
+    ```
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-6.9.raw rhel-6.9.vhd
+    Nebo s qemu verze **2.6 +** včetně `force_size` Možnosti:
 
-    Or, with qemu version **2.6+** include the `force_size` option:
-
-        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
-
+    ```console
+    # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-6.9.raw rhel-6.9.vhd
+    ```
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-vmware"></a>Příprava virtuálního počítače s RHEL 7 z VMware
 1. Vytvořte nebo upravte `/etc/sysconfig/network` soubor a přidejte následující text:
-   
-        NETWORKING=yes
-        HOSTNAME=localhost.localdomain
+
+    ```config
+    NETWORKING=yes
+    HOSTNAME=localhost.localdomain
+    ```
 
 1. Vytvořte nebo upravte `/etc/sysconfig/network-scripts/ifcfg-eth0` soubor a přidejte následující text:
-   
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
-    PERSISTENT_DHCLIENT = Ano NM_CONTROLLED = Ano
+
+    ```config
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    PERSISTENT_DHCLIENT=yes
+    NM_CONTROLLED=yes
+    ```
 
 1. Spuštěním následujícího příkazu zajistěte, aby se síťová služba spouštěla v době spuštění:
 
-        # sudo systemctl enable network
+    ```console
+    # sudo systemctl enable network
+    ```
 
 1. Zaregistrujte své předplatné Red Hat, abyste mohli povolit instalaci balíčků z úložiště RHEL spuštěním následujícího příkazu:
 
-        # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```console
+    # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
+    ```
 
 1. Upravte spouštěcí řádek jádra v konfiguraci GRUB tak, aby zahrnoval další parametry jádra pro Azure. Chcete-li provést tuto úpravu, otevřete `/etc/default/grub` v textovém editoru a upravte `GRUB_CMDLINE_LINUX` parametr. Příklad:
-   
-        GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
-   
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
+    ```
+
    Tato konfigurace taky zajišťuje, že se všechny zprávy konzoly odesílají na první sériový port, což může pomoct podpoře Azure s problémy ladění. Také vypne nové zásady vytváření názvů pro síťové karty v RHEL 7. Kromě toho doporučujeme odebrat následující parametry:
-   
-        rhgb quiet crashkernel=auto
-   
+
+    ```config-grub
+    rhgb quiet crashkernel=auto
+    ```
+
     Grafické a tiché spouštění nejsou užitečné v cloudovém prostředí, kde chceme, aby se všechny protokoly odesílaly na sériový port. Možnost můžete nechat `crashkernel` nakonfigurovanou v případě potřeby. Všimněte si, že tento parametr snižuje množství dostupné paměti ve virtuálním počítači o 128 MB nebo více, což může být problematické u menších velikostí virtuálních počítačů.
 
 1. Po dokončení úprav `/etc/default/grub` Spusťte následující příkaz pro opětovné sestavení konfigurace grub:
 
-        # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```console
+    # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
 
 1. Přidejte moduly technologie Hyper-V do initramfs.
 
     Upravit `/etc/dracut.conf` , přidat obsah:
 
-        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+    ```config-conf
+    add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+    ```
 
     Znovu sestavte initramfs:
 
-        # dracut -f -v
+    ```console
+    # dracut -f -v
+    ```
 
 1. Ujistěte se, že je server SSH nainstalovaný a nakonfigurované tak, aby se spouštěl při spuštění. Toto nastavení je obvykle výchozí. Upravte `/etc/ssh/sshd_config` , aby obsahovala následující řádek:
 
-        ClientAliveInterval 180
+    ```config
+    ClientAliveInterval 180
+    ```
 
 1. Balíček WALinuxAgent byl `WALinuxAgent-<version>` vložen do úložiště Red Hat Extras. Povolte úložiště Extras spuštěním následujícího příkazu:
 
-        # subscription-manager repos --enable=rhel-7-server-extras-rpms
+    ```console
+    # subscription-manager repos --enable=rhel-7-server-extras-rpms
+    ```
 
 1. Nainstalujte agenta Azure Linux spuštěním následujícího příkazu:
 
-        # sudo yum install WALinuxAgent
+    ```console
+    # sudo yum install WALinuxAgent
 
-        # sudo systemctl enable waagent.service
+    # sudo systemctl enable waagent.service
+    ```
 
 1. Nevytvářejte odkládací místo na disku s operačním systémem.
 
     Agent Azure Linux může automaticky nakonfigurovat odkládací místo pomocí disku místního prostředku, který je připojený k virtuálnímu počítači po zřízení virtuálního počítače v Azure. Všimněte si, že místní disk prostředků je dočasný disk a může být vyprázdněný, pokud dojde k zrušení zřízení virtuálního počítače. Po instalaci agenta Azure Linux v předchozím kroku upravte `/etc/waagent.conf` správným způsobem následující parametry:
 
-        ResourceDisk.Format=y
-        ResourceDisk.Filesystem=ext4
-        ResourceDisk.MountPoint=/mnt/resource
-        ResourceDisk.EnableSwap=y
-        ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```config-conf
+    ResourceDisk.Format=y
+    ResourceDisk.Filesystem=ext4
+    ResourceDisk.MountPoint=/mnt/resource
+    ResourceDisk.EnableSwap=y
+    ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
+    ```
 
 1. Pokud chcete zrušit registraci předplatného, spusťte následující příkaz:
 
-        # sudo subscription-manager unregister
+    ```console
+    # sudo subscription-manager unregister
+    ```
 
 1. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
-        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
-        # skip the deprovision step
-        # sudo waagent -force -deprovision
+    ```console
+    # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+    # skip the deprovision step
+    # sudo waagent -force -deprovision
 
-        # export HISTSIZE=0
+    # export HISTSIZE=0
 
-        # logout
+    # logout
+    ```
 
 1. Vypněte virtuální počítač a převeďte soubor VMDK na formát VHD.
 
-> [!NOTE]
-> Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
->
+    > [!NOTE]
+    > Verze qemu-img obsahuje známou chybu >= 2.2.1, která má za následek nesprávně naformátovaný virtuální pevný disk. Tento problém byl opravený v QEMU 2,6. Doporučuje se použít buď qemu, img 2.2.0 nebo Lower, nebo aktualizovat na 2,6 nebo vyšší. Odkaz: https://bugs.launchpad.net/qemu/+bug/1490611 .
+    >
 
+    Nejprve převeďte obrázek do nezpracovaného formátu:
 
-    First convert the image to raw format:
+    ```console
+    # qemu-img convert -f vmdk -O raw rhel-7.4.vmdk rhel-7.4.raw
+    ```
 
-        # qemu-img convert -f vmdk -O raw rhel-7.4.vmdk rhel-7.4.raw
+    Ujistěte se, že velikost nezpracovaného obrázku je zarovnána s 1 MB. V opačném případě zarovnejte velikost podle velikosti 1 MB:
 
-    Make sure that the size of the raw image is aligned with 1 MB. Otherwise, round up the size to align with 1 MB:
+    ```console
+    # MB=$((1024*1024))
+    # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
+      gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
 
-        # MB=$((1024*1024))
-        # size=$(qemu-img info -f raw --output json "rhel-7.4.raw" | \
-          gawk 'match($0, /"virtual-size": ([0-9]+),/, val) {print val[1]}')
+    # rounded_size=$((($size/$MB + 1)*$MB))
+    # qemu-img resize rhel-7.4.raw $rounded_size
+    ```
 
-        # rounded_size=$((($size/$MB + 1)*$MB))
-        # qemu-img resize rhel-7.4.raw $rounded_size
+    Převeďte nezpracovaný disk na virtuální pevný disk s pevnou velikostí:
 
-    Convert the raw disk to a fixed-sized VHD:
+    ```console
+    # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+    ```
 
-        # qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
+    Nebo s qemu verze **2.6 +** včetně `force_size` Možnosti:
 
-    Or, with qemu version **2.6+** include the `force_size` option:
-
-        # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
-
+    ```console
+    # qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
+    ```
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-an-iso-by-using-a-kickstart-file-automatically"></a>Příprava virtuálního počítače založeného na Red Hat z ISO pomocí souboru Kickstart automaticky
 ### <a name="prepare-a-rhel-7-virtual-machine-from-a-kickstart-file"></a>Příprava virtuálního počítače s RHEL 7 ze souboru Kickstart
 
 1.  Vytvořte soubor Kickstart, který obsahuje následující obsah, a uložte soubor. Podrobnosti o instalaci Kickstart najdete v [Průvodci instalací Kickstart](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).
 
-        # Kickstart for provisioning a RHEL 7 Azure VM
+    ```text
+    # Kickstart for provisioning a RHEL 7 Azure VM
 
-        # System authorization information
-          auth --enableshadow --passalgo=sha512
+    # System authorization information
+      auth --enableshadow --passalgo=sha512
 
-        # Use graphical install
-        text
+    # Use graphical install
+    text
 
-        # Do not run the Setup Agent on first boot
-        firstboot --disable
+    # Do not run the Setup Agent on first boot
+    firstboot --disable
 
-        # Keyboard layouts
-        keyboard --vckeymap=us --xlayouts='us'
+    # Keyboard layouts
+    keyboard --vckeymap=us --xlayouts='us'
 
-        # System language
-        lang en_US.UTF-8
+    # System language
+    lang en_US.UTF-8
 
-        # Network information
-        network  --bootproto=dhcp
+    # Network information
+    network  --bootproto=dhcp
 
-        # Root password
-        rootpw --plaintext "to_be_disabled"
+    # Root password
+    rootpw --plaintext "to_be_disabled"
 
-        # System services
-        services --enabled="sshd,waagent,NetworkManager"
+    # System services
+    services --enabled="sshd,waagent,NetworkManager"
 
-        # System timezone
-        timezone Etc/UTC --isUtc --ntpservers 0.rhel.pool.ntp.org,1.rhel.pool.ntp.org,2.rhel.pool.ntp.org,3.rhel.pool.ntp.org
+    # System timezone
+    timezone Etc/UTC --isUtc --ntpservers 0.rhel.pool.ntp.org,1.rhel.pool.ntp.org,2.rhel.pool.ntp.org,3.rhel.pool.ntp.org
 
-        # Partition clearing information
-        clearpart --all --initlabel
+    # Partition clearing information
+    clearpart --all --initlabel
 
-        # Clear the MBR
-        zerombr
+    # Clear the MBR
+    zerombr
 
-        # Disk partitioning information
-        part /boot --fstype="xfs" --size=500
-        part / --fstyp="xfs" --size=1 --grow --asprimary
+    # Disk partitioning information
+    part /boot --fstype="xfs" --size=500
+    part / --fstyp="xfs" --size=1 --grow --asprimary
 
-        # System bootloader configuration
-        bootloader --location=mbr
+    # System bootloader configuration
+    bootloader --location=mbr
 
-        # Firewall configuration
-        firewall --disabled
+    # Firewall configuration
+    firewall --disabled
 
-        # Enable SELinux
-        selinux --enforcing
+    # Enable SELinux
+    selinux --enforcing
 
-        # Don't configure X
-        skipx
+    # Don't configure X
+    skipx
 
-        # Power down the machine after install
-        poweroff
+    # Power down the machine after install
+    poweroff
 
-        %packages
-        @base
-        @console-internet
-        chrony
-        sudo
-        parted
-        -dracut-config-rescue
+    %packages
+    @base
+    @console-internet
+    chrony
+    sudo
+    parted
+    -dracut-config-rescue
 
-        %end
+    %end
 
-        %post --log=/var/log/anaconda/post-install.log
+    %post --log=/var/log/anaconda/post-install.log
 
-        #!/bin/bash
+    #!/bin/bash
 
-        # Register Red Hat Subscription
-        subscription-manager register --username=XXX --password=XXX --auto-attach --force
+    # Register Red Hat Subscription
+    subscription-manager register --username=XXX --password=XXX --auto-attach --force
 
-        # Install latest repo update
-        yum update -y
+    # Install latest repo update
+    yum update -y
 
-        # Enable extras repo
-        subscription-manager repos --enable=rhel-7-server-extras-rpms
+    # Enable extras repo
+    subscription-manager repos --enable=rhel-7-server-extras-rpms
 
-        # Install WALinuxAgent
-        yum install -y WALinuxAgent
+    # Install WALinuxAgent
+    yum install -y WALinuxAgent
 
-        # Unregister Red Hat subscription
-        subscription-manager unregister
+    # Unregister Red Hat subscription
+    subscription-manager unregister
 
-        # Enable waaagent at boot-up
-        systemctl enable waagent
+    # Enable waaagent at boot-up
+    systemctl enable waagent
 
-        # Disable the root account
-        usermod root -p '!!'
+    # Disable the root account
+    usermod root -p '!!'
 
-        # Configure swap in WALinuxAgent
-        sed -i 's/^\(ResourceDisk\.EnableSwap\)=[Nn]$/\1=y/g' /etc/waagent.conf
-        sed -i 's/^\(ResourceDisk\.SwapSizeMB\)=[0-9]*$/\1=2048/g' /etc/waagent.conf
+    # Configure swap in WALinuxAgent
+    sed -i 's/^\(ResourceDisk\.EnableSwap\)=[Nn]$/\1=y/g' /etc/waagent.conf
+    sed -i 's/^\(ResourceDisk\.SwapSizeMB\)=[0-9]*$/\1=2048/g' /etc/waagent.conf
 
-        # Set the cmdline
-        sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"/g' /etc/default/grub
+    # Set the cmdline
+    sed -i 's/^\(GRUB_CMDLINE_LINUX\)=".*"$/\1="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"/g' /etc/default/grub
 
-        # Enable SSH keepalive
-        sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
+    # Enable SSH keepalive
+    sed -i 's/^#\(ClientAliveInterval\).*$/\1 180/g' /etc/ssh/sshd_config
 
-        # Build the grub cfg
-        grub2-mkconfig -o /boot/grub2/grub.cfg
+    # Build the grub cfg
+    grub2-mkconfig -o /boot/grub2/grub.cfg
 
-        # Configure network
-        cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0
-        DEVICE=eth0
-        ONBOOT=yes
-        BOOTPROTO=dhcp
-        TYPE=Ethernet
-        USERCTL=no
-        PEERDNS=yes
-        IPV6INIT=no
-    PERSISTENT_DHCLIENT = Yes NM_CONTROLLED = Yes EOF
+    # Configure network
+    cat << EOF > /etc/sysconfig/network-scripts/ifcfg-eth0
+    DEVICE=eth0
+    ONBOOT=yes
+    BOOTPROTO=dhcp
+    TYPE=Ethernet
+    USERCTL=no
+    PEERDNS=yes
+    IPV6INIT=no
+    PERSISTENT_DHCLIENT=yes
+    NM_CONTROLLED=yes
+    EOF
 
-        # Deprovision and prepare for Azure if you are creating a generalized image
-        waagent -force -deprovision
+    # Deprovision and prepare for Azure if you are creating a generalized image
+    waagent -force -deprovision
 
-        %end
+    %end
+    ```
 
 1. Umístěte soubor Kickstart, ke kterému má instalační systém přístup.
 
@@ -913,11 +1139,15 @@ Pokud chcete tento problém vyřešit, přidejte moduly technologie Hyper-V tak,
 
 Upravte `/etc/dracut.conf` a přidejte následující obsah:
 
-        add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+```config-conf
+add_drivers+=" hv_vmbus hv_netvsc hv_storvsc "
+```
 
 Znovu sestavte initramfs:
 
-        # dracut -f -v
+```console
+# dracut -f -v
+```
 
 Další podrobnosti najdete v informacích o opakovaném [sestavování initramfs](https://access.redhat.com/solutions/1958).
 

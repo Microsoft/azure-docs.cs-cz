@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
-ms.openlocfilehash: 2cf4f22be2a4407d73fcc7bb340fad647c8aa145
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 528a24bb64aa8d323b5d63a27af0a52ccdf1abb6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546520"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132325"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Nastavení zotavení po havárii pro služby Active Directory a DNS
 
@@ -25,7 +25,7 @@ Tento článek vysvětluje, jak vytvořit řešení zotavení po havárii pro sl
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud provádíte replikaci do Azure, [připravíte prostředky Azure](tutorial-prepare-azure.md), včetně předplatného, Virtual Network Azure, účtu úložiště a trezoru Recovery Services.
-- Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-azure.md) pro všechny komponenty.
+- Zkontrolujte [požadavky na podporu](./vmware-physical-azure-support-matrix.md) pro všechny komponenty.
 
 ## <a name="replicate-the-domain-controller"></a>Replikace řadiče domény
 

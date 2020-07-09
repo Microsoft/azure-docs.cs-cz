@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2020
 ms.author: sedusch
-ms.openlocfilehash: 758e79109d6cf0d41e5e5981168b0eed9f9928d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6a284d13d0d737eca65b2593813b3d1b999cfdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361383"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133159"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -211,6 +211,7 @@ ms.locfileid: "85361383"
 [planning-guide-5.4.2]:planning-guide.md#9789b076-2011-4afa-b2fe-b07a8aba58a1 (Kopírování disků mezi Azure Storage účty)
 [planning-guide-5.5.1]:planning-guide.md#4efec401-91e0-40c0-8e64-f2dceadff646 (Struktura virtuálních počítačů/VHD pro nasazení SAP)
 [planning-guide-5.5.3]:planning-guide.md#17e0d543-7e8c-4160-a7da-dd7117a1ad9d (Nastavení automatického připojení pro připojené disky)
+[planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Řešení Azure Monitoring pro SAP)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -369,7 +370,7 @@ Pro určení velikosti SAP si můžete sdělit následující informace:
 
 V Azure Resource Manager můžete použít skupiny prostředků ke správě všech prostředků aplikace ve vašem předplatném Azure. Další informace naleznete v tématu [Přehled Azure Resource Manager][resource-group-overview].
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 ### <a name="sap-resources"></a><a name="42ee2bdb-1efc-4ec7-ab31-fe4c22769b94"></a>Prostředky SAP
 
@@ -913,7 +914,7 @@ Další informace o trasách definovaných uživatelem najdete v tématu [trasy 
 > Obecný příkaz podpory: Pokud potřebujete podporu pro rozšíření Azure pro SAP, vždy prosím otevřete incident pomocí SAP pro komponentu BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR.
 > V systému podpory SAP existují vyhrazení technici podpory Microsoftu, které vám pomůžou s našimi společnými zákazníky.
 
-Po přípravě virtuálního počítače, jak je popsáno v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], je na virtuálním počítači nainstalovaný agent virtuálního počítače Azure. Dalším krokem je nasazení rozšíření Azure pro SAP, které je k dispozici v úložišti rozšíření Azure v globálních datacentrech Azure. Další informace najdete v tématu [plánování a implementace Azure Virtual Machines pro SAP NetWeaver] [Planning-Guide-9,1].
+Po přípravě virtuálního počítače, jak je popsáno v tématu [scénáře nasazení virtuálních počítačů pro SAP v Azure][deployment-guide-3], je na virtuálním počítači nainstalovaný agent virtuálního počítače Azure. Dalším krokem je nasazení rozšíření Azure pro SAP, které je k dispozici v úložišti rozšíření Azure v globálních datacentrech Azure. Další informace najdete v tématu [plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver][planning-guide-9.1].
 
 Právě probíhá vydání nové verze rozšíření Azure pro SAP. Nové rozšíření používá systémem přiřazenou identitu virtuálního počítače k získání informací o připojených discích, síťových rozhraních a samotném virtuálním počítači. Aby bylo možné získat přístup k těmto prostředkům, musí systémová identita virtuálního počítače mít oprávnění ke čtení pro virtuální počítač, disk s operačním systémem, datové disky a síťová rozhraní. V současné době doporučujeme instalovat pouze nové rozšíření v následujících scénářích:
 

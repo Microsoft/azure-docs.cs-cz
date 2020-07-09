@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a3b07dadba17f72f6f4c5765787c7122eebaa89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7947b6c04ade1fd6a5d9032f05cb6ec56e7a1f5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361400"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132087"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
 
@@ -353,7 +353,7 @@ V celém dokumentu používáme následující výrazy:
 
 
 
-### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Prostředky
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Zdroje a prostředky
 V dokumentaci k vstupnímu bodu pro úlohu SAP v Azure najdete [tady](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). Počínaje tímto vstupním bodem najdete mnoho článků týkajících se těchto témat:
 
 - SAP NetWeaver a Business One v Azure
@@ -544,7 +544,7 @@ V rámci účtu úložiště máte typ konceptu s názvem Containers, který se 
 
 V rámci Azure se název disku/virtuálního pevného disku řídí následujícím připojením k pojmenování, které musí v Azure zadat jedinečný název VHD:
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 Výše uvedený řetězec musí jednoznačně identifikovat disk nebo virtuální pevný disk, který je uložený v Azure Storage.
 
@@ -999,7 +999,7 @@ Systém SAP nebo dokonce vyhrazený server DBMS, který podporuje aplikační vr
 
 Datové disky se dají ukládat jako soubory VHD v účtu Azure Storage a dají se přímo připojit k virtuálnímu počítači nebo použít jako image. V takovém případě se virtuální pevný disk před připojením k virtuálnímu počítači zkopíruje do jiného umístění. Úplný název souboru VHD v Azure musí být v rámci Azure jedinečný. Jak už bylo zmíněno dříve, název je druh názvu se třemi částmi, který vypadá nějak takto:
 
-    http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>
+`http(s)://<storage account name>.blob.core.windows.net/<container name>/<vhd name>`
 
 Datové disky je také možné Managed Disks. V takovém případě se ke vytvoření nového spravovaného disku před připojením k virtuálnímu počítači používá spravovaný disk. Název spravovaného disku musí být v rámci skupiny prostředků jedinečný.
 
@@ -1430,7 +1430,7 @@ $vm = Get-AzVM -ResourceGroupName $rgName -Name SAPERPDemo
 Add-AzVMDataDisk -VM $vm -Name datadisk -DiskSizeInGB 1023 -CreateOption empty -Lun 0 | Update-AzVM
 ```
 
-##### <a name="cli"></a>Rozhraní příkazového řádku
+##### <a name="cli"></a>CLI
 
 V systému Linux lze použít následující vzorový kód. V případě systému Windows buď použijte prostředí PowerShell, jak je popsáno výše, nebo tento příklad Přizpůsobte, aby místo $rgName používal% rgName%, a nastavte proměnnou prostředí pomocí *sady*příkazů systému Windows.
 
@@ -1926,7 +1926,7 @@ Architektura pro SAP HA v systému Linux v Azure je v podstatě stejná jako pro
 
 SAP nabízí funkci pro spuštění instancí SAP ihned po spuštění operačního systému v rámci virtuálního počítače. Přesné kroky byly popsané v článku znalostní báze SAP znalostní báze [1909114]. SAP ale nedoporučuje používat toto nastavení, protože v pořadí restartování není žádné řízení, za předpokladu, že byl ovlivněn více než jeden virtuální počítač, nebo se na virtuální počítač spustilo víc instancí. Za předpokladu, že Typický scénář Azure jedné instance aplikačního serveru SAP na virtuálním počítači a v případě jednoho virtuálního počítače se nakonec znovu nepoužívá, není automatické spuštění důležité a dá se povolit přidáním tohoto parametru:
 
-    Autostart = 1
+`Autostart = 1`
 
 Do počátečního profilu instance SAP ABAP a/nebo Java.
 

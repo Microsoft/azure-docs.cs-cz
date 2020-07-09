@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954396"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132127"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>O zotavení po havárii virtuálních počítačů VMware do Azure
 
@@ -20,7 +21,7 @@ Tento článek poskytuje přehled zotavení po havárii pro místní virtuální
 
 Strategie pro provozní kontinuitu a zotavení po havárii (BCDR) pomáhá udržet vaše podnikání v provozu. Při plánovaném výpadku a neočekávaných výpadkech udržuje BCDR data bezpečná a dostupná a zajišťuje, aby aplikace pokračovaly v běhu. Kromě funkcí BCDR platforem, jako jsou místní párování a úložiště s vysokou dostupností, poskytuje Azure Recovery Services jako nedílnou součást vašeho řešení BCDR. Služba Recovery Services zahrnuje: 
 
-- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) zálohuje vaše místní a data virtuálních počítačů Azure. Můžete zálohovat soubor a složky, konkrétní úlohy nebo celý virtuální počítač. 
+- [Azure Backup](../backup/backup-overview.md) zálohuje vaše místní a data virtuálních počítačů Azure. Můžete zálohovat soubor a složky, konkrétní úlohy nebo celý virtuální počítač. 
 - [Azure Site Recovery](site-recovery-overview.md) poskytuje odolnost a zotavení po havárii pro aplikace a úlohy běžící na místních počítačích nebo virtuálních počítačích Azure IaaS. Site Recovery orchestruje replikaci a zpracovává převzetí služeb při selhání do Azure, pokud dojde k výpadku. Také zpracovává obnovení z Azure do primární lokality. 
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Jak Site Recovery zotavení po havárii?

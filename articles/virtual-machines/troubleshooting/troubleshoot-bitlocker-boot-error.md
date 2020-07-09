@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e0e0d9bfe46a473210b89701b5a8c56e999771d3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201344"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132956"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Chyby spuštění nástroje BitLocker na virtuálním počítači Azure
 
@@ -136,11 +136,15 @@ Pokud tato metoda problém nevyřeší, postupujte podle těchto kroků a obnovt
 
     - Pozastavení ochrany pro dočasné zapnutí nástroje BitLocker spuštěním následujícího:
 
-                    manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - Jednotku úplně dešifrujte. Provedete to spuštěním následujícího příkazu:
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
 
 ### <a name="key-encryption-key-scenario"></a>Scénář šifrovacího klíče klíče
 
@@ -237,17 +241,17 @@ V případě scénáře použití klíčového šifrovacího klíče postupujte 
 
 4. Po zahájení skriptu se zobrazí následující výstup:
 
-        GAC    Version        Location                                                                              
-        ---    -------        --------                                                                              
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
+    Umístění verze GAC                                                                              
+    ---    -------        --------                                                                              
+    False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. ..  False v 4.0.30319 C:\Program Files\WindowsPowerShell\Modules\Az.Accounts \. ..
 
     Po dokončení skriptu se zobrazí následující výstup:
 
-        VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
-        version=2015-06-01 with -1-byte payload
-        VERBOSE: received 360-byte response of content type application/json; charset=utf-8
-
+    ```output
+    VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
+    version=2015-06-01 with -1-byte payload
+    VERBOSE: received 360-byte response of content type application/json; charset=utf-8
+    ```
 
 5. K odemknutí připojeného disku pomocí souboru klíče bek spusťte následující příkaz:
 
@@ -265,11 +269,16 @@ V případě scénáře použití klíčového šifrovacího klíče postupujte 
 
     - Pozastavení ochrany pro dočasné zapnutí nástroje BitLocker spuštěním následujícího příkazu:
 
-             manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - Jednotku úplně dešifrujte. Provedete to spuštěním následujícího příkazu:
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
+
 ## <a name="script-troubleshooting"></a>Odstraňování potíží se skripty
 
 **Chyba: nepovedlo se načíst soubor nebo sestavení.**

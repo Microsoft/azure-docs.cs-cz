@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478962"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132498"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
@@ -35,8 +35,8 @@ Tabulka shrnuje předpoklady pro nasazení místního počítače konfigurační
 | Národní prostředí operačního systému | Angličtina (USA)|
 | Verze VMware vSphere PowerCLI | Není požadováno|
 | Role Windows Serveru | Nepovolujte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V |
-| Zásady skupiny| Nepovolujte tyto zásady skupiny: <br> -Zakázat přístup k příkazovému řádku <br> – Zakázat přístup k nástrojům pro úpravu registru <br> – Logika vztahu důvěryhodnosti pro přílohy souborů <br> -Zapnout provádění skriptu <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | -Žádný předdefinovaný výchozí web <br> -Povolit [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Povolit nastavení [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443.<br>|
+| Zásady skupiny| Nepovolujte tyto zásady skupiny: <br> -Zakázat přístup k příkazovému řádku <br> – Zakázat přístup k nástrojům pro úpravu registru <br> – Logika vztahu důvěryhodnosti pro přílohy souborů <br> -Zapnout provádění skriptu <br> [Další informace](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))|
+| IIS | -Žádný předdefinovaný výchozí web <br> -Povolit [anonymní ověřování](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br> -Povolit nastavení [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10))  <br> -Žádný existující web nebo aplikace nenaslouchá na portu 443.<br>|
 | Typ síťové karty | VMXNET3 (při nasazení jako virtuální počítač VMware) |
 | Typ IP adresy | Static |
 | Přístup k internetu | Server potřebuje přístup k těmto adresám URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> – *. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi(nevyžaduje se pro procesové servery se škálováním na více instancí) <br> - time.nist.gov <br> - time.windows.com |
@@ -108,7 +108,7 @@ Spusťte instalační soubor následujícím způsobem:
 
 ### <a name="parameters"></a>Parametry
 
-|Název parametru| Typ | Popis| Hodnoty|
+|Název parametru| Typ | Description| Hodnoty|
 |-|-|-|-|
 | /ServerMode|Vyžadováno|Určuje, jestli se má nainstalovat konfigurační i procesový server, nebo jenom procesový server.|CS<br>PS|
 |/InstallLocation|Vyžadováno|Složka, ve které jsou nainstalované komponenty| Libovolná složka v počítači|
@@ -267,7 +267,7 @@ Proveďte upgrade serveru následujícím způsobem:
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Odstranění nebo zrušení registrace konfiguračního serveru (PowerShell)
 
-1. [Nainstalovat](https://docs.microsoft.com/powershell/azure/install-Az-ps) Modul Azure PowerShell
+1. [Nainstalovat](/powershell/azure/install-Az-ps) Modul Azure PowerShell
 2. Přihlaste se k účtu Azure pomocí příkazu
     
     `Connect-AzAccount`
@@ -315,5 +315,4 @@ U nasazení konfiguračního serveru do května 2016 se platnost certifikátu na
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si kurzy k nastavení zotavení po havárii [fyzických serverů](tutorial-physical-to-azure.md) do Azure.
-
+Přečtěte si kurzy k nastavení zotavení po havárii [fyzických serverů](./physical-azure-disaster-recovery.md) do Azure.

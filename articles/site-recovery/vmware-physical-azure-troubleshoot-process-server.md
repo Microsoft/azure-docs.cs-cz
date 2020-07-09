@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7657d614645bb00235db2701773bc15fa260b70d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835797"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131990"
 ---
 # <a name="troubleshoot-the-process-server"></a>Řešení potíží s procesovým serverem
 
@@ -48,7 +49,7 @@ Prvním krokem při řešení potíží je kontrolu stavu a stavu procesového s
 
 Procesový Server vygeneruje množství upozornění na stav. Tyto výstrahy a doporučené akce jsou shrnuty v následující tabulce.
 
-**Typ upozornění** | **Chyba** | **Řešení potíží**
+**Typ upozornění** | **Chyba** | **Odstranit potíže**
 --- | --- | --- 
 ![V pořádku][green] | Žádná  | Procesový Server je připojený a v pořádku.
 ![Upozornění][yellow] | Zadané služby nejsou spuštěny. | 1. Ověřte, zda jsou služby spuštěny.<br/> 2. Pokud služby běží podle očekávání, postupujte podle pokynů níže a odstraňte potíže s [připojením a replikací](#check-connectivity-and-replication).
@@ -95,7 +96,7 @@ Pokud z procesového serveru není žádný prezenční signál (kód chyby 806)
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>Krok 4: ověření času synchronizace na zdrojovém počítači
 
-Ujistěte se, že je systémové datum a čas pro replikovaný počítač synchronizovaný. [Další informace](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+Ujistěte se, že je systémové datum a čas pro replikovaný počítač synchronizovaný. [Další informace](/windows-server/networking/windows-time-service/accurate-time)
 
 ## <a name="step-5-check-anti-virus-software-on-source-machine"></a>Krok 5: Ověřte antivirový software na zdrojovém počítači
 
@@ -104,7 +105,7 @@ Ověřte, že Site Recovery žádný antivirový software na replikovaném poč�
 ## <a name="step-6-check-connectivity-from-source-machine"></a>Krok 6: ověření připojení ze zdrojového počítače
 
 
-1. V případě potřeby nainstalujte [klienta služby Telnet](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) na zdrojový počítač. Nepoužívejte Příkazy k zadání příkazů.
+1. V případě potřeby nainstalujte [klienta služby Telnet](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771275(v=ws.10)) na zdrojový počítač. Nepoužívejte Příkazy k zadání příkazů.
 2. Na zdrojovém počítači otestujte procesový Server na portu HTTPS pomocí protokolu Telnet. Standardně 9443 je port HTTPS pro provoz replikace.
 
     `telnet <process server IP address> <port>`
@@ -245,7 +246,7 @@ Zvyšte šířku pásma mezi procesovým serverem a Azure a potom zkontrolujte, 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další nápovědu, vystavte svůj dotaz na [stránce s dotazem Microsoft Q&Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
+Pokud potřebujete další nápovědu, vystavte svůj dotaz na [stránce s dotazem Microsoft Q&Azure Site Recovery](/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png
