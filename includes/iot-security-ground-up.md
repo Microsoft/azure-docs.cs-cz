@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 128a2e8b200f1323b88aad635f27c1b686ecbed2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72789729"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86050382"
 ---
 Internet věcí (IoT) představuje jedinečné problémy se zabezpečením, ochranou osobních údajů a dodržováním předpisů pro firmy po celém světě. Na rozdíl od tradičních počítačové technologie, kde se tyto problémy dotýkají softwaru a způsobu jeho implementace, se v IoT projeví, co se stane, když se světů na internetu a fyzickou akci sblížení. Ochrana řešení IoT vyžaduje zajištění zabezpečeného zřizování zařízení, zabezpečení připojení mezi těmito zařízeními a cloudem a zabezpečení ochrany dat v cloudu během zpracování a ukládání. Práce s těmito funkcemi je však omezená na prostředky, geografickou distribuci nasazení a velký počet zařízení v rámci řešení.
 
@@ -89,7 +89,7 @@ Pomocí Azure Active Directory (AAD) pro ověřování a autorizaci uživatelů 
 
 Jakmile jsou data v cloudu, můžete je zpracovat a uložit v jakémkoli uživatelsky definovaném pracovním postupu. Přístup ke každé části dat se řídí Azure Active Directory v závislosti na použité službě úložiště.
 
-Všechny klíče používané infrastrukturou IoT jsou uložené v cloudu v zabezpečeném úložišti, a díky tomu je možné převádět i v případě, že klíče je potřeba znovu zřídit. Data mohou být uložena v [Azure Cosmos DB](../articles/cosmos-db/introduction.md) nebo v [databázích SQL](../articles/sql-database/sql-database-faq.md), což umožňuje definici požadované úrovně zabezpečení. Kromě toho Azure poskytuje způsob, jak monitorovat a auditovat veškerý přístup k vašim datům, abyste mohli upozorňovat na případné vniknutí nebo neoprávněný přístup.
+Všechny klíče používané infrastrukturou IoT jsou uložené v cloudu v zabezpečeném úložišti, a díky tomu je možné převádět i v případě, že klíče je potřeba znovu zřídit. Data je možné uložit v [Azure Cosmos DB](../articles/cosmos-db/introduction.md) nebo v [SQL Database](../articles/sql-database/sql-database-faq.md)a povolit definici požadované úrovně zabezpečení. Kromě toho Azure poskytuje způsob, jak monitorovat a auditovat veškerý přístup k vašim datům, abyste mohli upozorňovat na případné vniknutí nebo neoprávněný přístup.
 
 ## <a name="conclusion"></a>Závěr
 
@@ -107,7 +107,7 @@ Každý akcelerátor řešení vytváří instance služeb Azure, například:
 
 * [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): zpracování datových proudů v reálném čase v cloudu, které vám umožní rychle vyvíjet a nasazovat řešení s nízkými náklady, abyste mohli získat přehled o zařízeních, senzorech, infrastruktuře a aplikacích v reálném čase. Data z této plně spravované služby se můžou škálovat na libovolný svazek a přitom pořád dosahovat vysoké propustnosti, nízké latence a odolnosti.
 
-* [**Azure App Services**](https://azure.microsoft.com/services/app-service/): cloudová platforma pro vytváření výkonných webových a mobilních aplikací, které se připojují k datům kdekoli; v cloudu nebo v místním prostředí. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integraci s vaším softwarem jako služby (SaaS) a podnikovými aplikacemi s okamžitým připojením k desítkám cloudových služeb a podnikových aplikací. Kód ve vašem oblíbeném jazyce a integrovaném vývojovém prostředí (IDE) – .NET, Node. js, PHP, Python nebo Java – k vytváření webových aplikací a rozhraní API rychleji než kdy dřív.
+* [**Azure App Services**](https://azure.microsoft.com/services/app-service/): cloudová platforma pro vytváření výkonných webových a mobilních aplikací, které se připojují k datům kdekoli; v cloudu nebo v místním prostředí. Vytvářejte poutavé mobilní aplikace pro iOS, Android a Windows. Integraci s vaším softwarem jako služby (SaaS) a podnikovými aplikacemi s okamžitým připojením k desítkám cloudových služeb a podnikových aplikací. Kód ve vašem oblíbeném jazyce a integrovaném vývojovém prostředí (IDE) – .NET, Node.js, PHP, Python nebo Java – k vytváření webových aplikací a rozhraní API rychleji než kdy dřív.
 
 * [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): funkce Logic Apps Azure App Service pomáhá integrovat vaše řešení IoT do stávajících obchodních systémů a automatizovat pracovní postupy. Logic Apps umožňuje vývojářům navrhovat pracovní postupy, které začínají triggerem, a pak provádět řadu kroků – pravidla a akce, které používají výkonné konektory pro integraci s vašimi podnikovými procesy. Logic Apps nabízí předem dostupné možnosti připojení k rozsáhlému ekosystému SaaS, cloudových a místních aplikací.
 
