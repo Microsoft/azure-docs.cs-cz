@@ -9,20 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702133"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108909"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalace a spuštění kontejnerů Analýzy textu
 
 > [!NOTE]
 > * Kontejner pro Analýza mínění v3 je teď všeobecně dostupný. Extrakce klíčových frází a kontejnery pro detekci jazyka jsou k dispozici jako nebraná verze Public Preview.
 > * Entity Linking a NER nejsou aktuálně k dispozici jako kontejner.
+> * V současné době se vám nebudou účtovat Analýza textu pro využití kontejneru stavů.
 
 Kontejnery umožňují spouštět text analytická rozhraní API ve vašem vlastním prostředí a jsou skvělé pro konkrétní požadavky na zabezpečení a zabezpečení dat. Kontejnery Analýza textu poskytují pokročilé zpracování přirozeného jazyka v nezpracovaném textu a zahrnují tři hlavní funkce: analýzu mínění, extrakci klíčových frází a detekci jazyka. 
 
@@ -59,6 +60,8 @@ V následující tabulce jsou popsány minimální a doporučené specifikace pr
 |---|---------|-------------|--|--|
 | **Detekce jazyka, extrakce klíčových frází**   | 1 jádro, 2 GB paměti | 1 jádro, 4GB paměti |15 | 30|
 | **Analýza mínění V3**   | 1 jádro, 2 GB paměti | 4 jádra, 8 GB paměti |15 | 30|
+| **Analýza textu pro stav-1 dokument/požadavek**   |  4 jádra, 10 GB paměti | 6 jader, 12GB paměť |15 | 30|
+| **Analýza textu pro stav – 10 dokumentů/žádostí**   |  6 jader, 16GB paměť | 8 jader, 20 GB paměť |15 | 30|
 
 Jádro procesoru a paměť odpovídají `--cpus` `--memory` nastavení a, která se používají jako součást `docker run` příkazu.
 
@@ -80,6 +83,10 @@ Image kontejneru pro Analýza textu jsou k dispozici na Container Registry Micro
 
 [!INCLUDE [docker-pull-language-detection-container](../includes/docker-pull-language-detection-container.md)]
 
+# <a name="text-analytics-for-health-preview"></a>[Analýza textu pro stav (Preview)](#tab/healthcare)
+
+[!INCLUDE [docker-pull-health-container](../includes/docker-pull-health-container.md)]
+
 ***
 
 ## <a name="how-to-use-the-container"></a>Jak používat kontejner
@@ -92,13 +99,6 @@ Jakmile je kontejner na [hostitelském počítači](#the-host-computer), použij
 ## <a name="run-the-container-with-docker-run"></a>Spusťte kontejner s`docker run`
 
 Pomocí příkazu [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) spusťte kontejnery. Kontejner bude nadále běžet, dokud jej nezastavíte.
-
-Nahraďte níže uvedené zástupné symboly vlastními hodnotami:
-
-| Zástupný symbol | Hodnota | Formát nebo příklad |
-|-------------|-------|---|
-| **{API_KEY}** | Klíč pro prostředek Analýza textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-| **{ENDPOINT_URI}** | Koncový bod pro přístup k rozhraní API pro analýzu textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
 > [!IMPORTANT]
 > * Příkazy Docker v následujících částech používají zpětné lomítko, `\` jako znak pro pokračování řádku. Tuto položku nahraďte nebo odeberte na základě požadavků vašich hostitelských operačních systémů. 
@@ -116,6 +116,10 @@ Nahraďte níže uvedené zástupné symboly vlastními hodnotami:
 # <a name="language-detection-preview"></a>[Rozpoznávání jazyka (Preview)](#tab/language)
 
 [!INCLUDE [docker-run-language-detection-container](../includes/docker-run-language-detection-container.md)]
+
+# <a name="text-analytics-for-health-preview"></a>[Analýza textu pro stav (Preview)](#tab/healthcare)
+
+[!INCLUDE [docker-run-health-container](../includes/docker-run-health-container.md)]
 
 ***
 
@@ -161,8 +165,8 @@ V tomto článku jste zjistili koncepty a pracovní postupy pro stažení, insta
    * *Analýza mínění*
    * *Extrakce klíčových frází (Preview)* 
    * *Rozpoznávání jazyka (Preview)*
-   
-* Image kontejneru se stáhnou z Microsoft Container Registry (MCR) v Azure.
+   * *Analýza textu pro stav (Preview)*
+* Image kontejneru se stáhnou ze služby Microsoft Container Registry (MCR) nebo z úložiště kontejnerů ve verzi Preview.
 * Image kontejneru se spouštějí v Docker.
 * Můžete použít REST API nebo SDK pro volání operací v kontejnerech Analýza textu zadáním identifikátoru URI hostitele kontejneru.
 * Při vytváření instance kontejneru je nutné zadat informace o fakturaci.

@@ -3,12 +3,12 @@ title: Monitorování živé webové aplikace v ASP.NET pomocí Azure Applicatio
 description: Monitorování výkonu webu bez opětovného nasazení. Funguje s ASP.NET webovými aplikacemi hostovanými místně nebo na virtuálních počítačích.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 2892cb40f0b00b468ef0b8a4ffe60c1158ad068a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30700deaa0121fbe473580d868a79d75a899a1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807260"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107474"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
@@ -98,7 +98,8 @@ Tady je několik kroků, pomocí kterých můžete ověřit, že se instalace ú
   ```
 
 - Pokud potřebujete potvrdit, že Application Insights úspěšně připojen, můžete spustit [popisovač Sysinternals](https://docs.microsoft.com/sysinternals/downloads/handle) v příkazovém okně a ověřit tak, že služba IIS načetla applicationinsights.dll.
-  ```cmd
+
+  ```console
   handle.exe /p w3wp.exe
   ```
 
@@ -109,7 +110,7 @@ Tady je několik kroků, pomocí kterých můžete ověřit, že se instalace ú
 
 ### <a name="unable-to-login"></a>Nelze se přihlásit
 
-* Pokud se Monitorování stavu nemůže přihlásit, proveďte místo toho instalaci příkazového řádku. Monitorování stavu se pokusí přihlásit ke shromáždění vašich Ikey, ale můžete ho zadat ručně pomocí příkazu:
+Pokud se Monitorování stavu nemůže přihlásit, proveďte místo toho instalaci příkazového řádku. Monitorování stavu se pokusí přihlásit ke shromáždění vašich Ikey, ale můžete ho zadat ručně pomocí příkazu:
 
 ```powershell
 Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
@@ -192,7 +193,9 @@ K zahájení a spuštění monitorování můžete na serveru služby IIS použ�
 
 Nejdřív importujte modul Application Insights:
 
-`Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'`
+```powershell
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
+```
 
 Zjistěte, které aplikace se monitorují:
 
@@ -221,12 +224,14 @@ Zjistěte, které aplikace se monitorují:
     Chcete-li stáhnout poslední verzi, použijte příkaz Update-ApplicationInsightsVersion.
 * V případě úspěchu vrátí `ApplicationInsightsApplication`. Pokud se nezdaří, zaprotokoluje trasování do stderr.
 
-          Name                      : Default Web Site/WebApp1
-          InstrumentationKey        : 00000000-0000-0000-0000-000000000000
-          ProfilerState             : ApplicationInsights
-          SdkState                  : EnabledAfterDeployment
-          SdkVersion                : 1.2.1
-          LatestAvailableSdkVersion : 1.2.3
+   ```output
+   Name                      : Default Web Site/WebApp1
+   InstrumentationKey        : 00000000-0000-0000-0000-000000000000
+   ProfilerState             : ApplicationInsights
+   SdkState                  : EnabledAfterDeployment
+   SdkVersion                : 1.2.1
+   LatestAvailableSdkVersion : 1.2.3
+   ```
 
 `Stop-ApplicationInsightsMonitoring [-Name appName | -All]`
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 9800eb9ec8ae9aa800e5281131148b600e42725f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: e36a69be19844a75562f87d3c195494e3ef148a9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140910"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108483"
 ---
-# <a name="supported-entity-categories-in-named-entity-recognition-v3"></a>Podporované kategorie entit ve funkci rozpoznávání pojmenovaných entit V3
+# <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Podporované kategorie entit v rozhraní API pro analýzu textu V3
 
-Pomocí tohoto článku můžete najít kategorie entit, které mohou být vráceny funkcí [rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (ner). K dispozici je také verze Preview NER verze 3.1, která zahrnuje schopnost zjišťovat osobní údaje ( `PII` ) a `PHI` informace o stavu ().
+Pomocí tohoto článku můžete najít kategorie entit, které mohou být vráceny funkcí [rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (ner). K dispozici je také verze Preview NER verze 3.1, která zahrnuje schopnost zjišťovat osobní údaje ( `PII` ) a `PHI` informace o stavu (). Kromě toho klikněte na kartu **stav** a zobrazte seznam podporovaných kategorií v analýza textu pro stav.
 
 ## <a name="entity-categories"></a>Kategorie entit
 
@@ -27,9 +27,13 @@ Pomocí tohoto článku můžete najít kategorie entit, které mohou být vrác
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-and-health"></a>[Osobní a zdravotní stav](#tab/personal)
+#### <a name="personal"></a>[Osobní](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
+
+#### <a name="health"></a>[Zdravotnictví](#tab/health)
+
+[!INCLUDE [biomedical entity types](./includes/entity-types/health-entities.md)]
 
 ***
 

@@ -3,11 +3,12 @@ title: Export pomocí Stream Analytics z Azure Application Insights | Microsoft 
 description: Stream Analytics může průběžně transformovat, filtrovat a směrovat data, která exportujete z Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536875"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110483"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Použití Stream Analytics k zpracování exportovaných dat z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovaných z Application Insights](export-telemetry.md). Stream Analytics může vyžádat data z nejrůznějších zdrojů. Může data transformovat a filtrovat a pak je směrovat na celou řadu umyvadel.
@@ -92,7 +93,7 @@ Teď budete potřebovat primární přístupový klíč z účtu úložiště, k
 
 Vzor předpony cesty určuje, kde Stream Analytics najde vstupní soubory v úložišti. Musíte ho nastavit tak, aby odpovídal způsobu průběžného exportu uložených dat. Nastavte to takto:
 
-    webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
+`webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}`
 
 V tomto příkladu:
 
@@ -124,16 +125,15 @@ Pomocí funkce test zkontrolujte, zda se zobrazí správný výstup. Poskytněte
 Vložit tento dotaz:
 
 ```SQL
-
-    SELECT
-      flat.ArrayValue.name,
-      count(*)
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.[event]) as flat
-    GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
+SELECT
+  flat.ArrayValue.name,
+  count(*)
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.[event]) as flat
+GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 ```
 
 * Export-vstup je alias, který jsme přiřadili vstupu datového proudu.
@@ -141,40 +141,38 @@ Vložit tento dotaz:
 * Použijeme [vnější prvky Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) , protože název události je ve vnořeném poli JSON. Pak příkaz SELECT vybere název události spolu s počtem instancí s tímto názvem v daném časovém období. Klauzule [Group by](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) seskupuje prvky do časových období jedné minuty.
 
 ### <a name="query-to-display-metric-values"></a>Dotaz pro zobrazení hodnot metriky
+
 ```SQL
-
-    SELECT
-      A.context.data.eventtime,
-      avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
-    INTO
-      [pbi-output]
-    FROM
-      [export-input] A
-    OUTER APPLY GetElements(A.context.custom.metrics) as flat
-    GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
-
-``` 
+SELECT
+  A.context.data.eventtime,
+  avg(CASE WHEN flat.arrayvalue.myMetric.value IS NULL THEN 0 ELSE  flat.arrayvalue.myMetric.value END) as myValue
+INTO
+  [pbi-output]
+FROM
+  [export-input] A
+OUTER APPLY GetElements(A.context.custom.metrics) as flat
+GROUP BY TumblingWindow(minute, 1), A.context.data.eventtime
+```
 
 * Tento dotaz přejde do telemetrie metrik a získá čas události a hodnotu metriky. Hodnoty metriky jsou uvnitř pole, takže pro extrakci řádků používáme vzor VNĚJŠÍho prvku APPLy. "myMetric" je název metriky v tomto případě. 
 
 ### <a name="query-to-include-values-of-dimension-properties"></a>Dotaz na zahrnutí hodnot vlastností dimenze
+
 ```SQL
-
-    WITH flat AS (
-    SELECT
-      MySource.context.data.eventTime as eventTime,
-      InstanceId = MyDimension.ArrayValue.InstanceId.value,
-      BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
-    FROM MySource
-    OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
-    )
-    SELECT
-     eventTime,
-     InstanceId,
-     BusinessUnitId
-    INTO AIOutput
-    FROM flat
-
+WITH flat AS (
+SELECT
+  MySource.context.data.eventTime as eventTime,
+  InstanceId = MyDimension.ArrayValue.InstanceId.value,
+  BusinessUnitId = MyDimension.ArrayValue.BusinessUnitId.value
+FROM MySource
+OUTER APPLY GetArrayElements(MySource.context.custom.dimensions) MyDimension
+)
+SELECT
+  eventTime,
+  InstanceId,
+  BusinessUnitId
+INTO AIOutput
+FROM flat
 ```
 
 * Tento dotaz zahrnuje hodnoty vlastností dimenze bez závislosti na konkrétní dimenzi v pevně daném indexu v poli dimenzí.

@@ -9,11 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 9c5b1d38e32ff0a0d0954064c8a2511d898d16e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462919"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109446"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Použití rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
@@ -45,7 +46,7 @@ Připojovací řetězec najdete v okně clusteru HDInsight v Azure Portal v čá
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
+`hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
 * `<container-name>`Zástupný symbol nahraďte názvem, který chcete poskytnout kontejneru.
 
@@ -53,7 +54,7 @@ Připojovací řetězec najdete v okně clusteru HDInsight v Azure Portal v čá
 
 ## <a name="get-a-list-of-files-or-directories"></a>Získání seznamu souborů nebo adresářů
 
-    hdfs dfs -ls <path>
+`hdfs dfs -ls <path>`
 
 `<path>`Zástupný text nahraďte identifikátorem URI kontejneru nebo složky kontejneru.
 
@@ -61,7 +62,7 @@ Příklad: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
 
-    hdfs dfs -mkdir [-p] <path>
+`hdfs dfs -mkdir [-p] <path>`
 
 Nahraďte `<path>` zástupný symbol názvem kořenového kontejneru nebo složky ve vašem kontejneru.
 
@@ -69,7 +70,7 @@ Příklad: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.wind
 
 ## <a name="delete-a-file-or-directory"></a>Odstranění souboru nebo adresáře
 
-    hdfs dfs -rm <path>
+`hdfs dfs -rm <path>`
 
 `<path>`Zástupný text nahraďte identifikátorem URI souboru nebo složky, kterou chcete odstranit.
 
@@ -77,7 +78,7 @@ Příklad: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.wind
 
 ## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Zobrazit seznamy Access Control (seznamy ACL) souborů a adresářů
 
-    hdfs dfs -getfacl [-R] <path>
+`hdfs dfs -getfacl [-R] <path>`
 
 Příklad:
 
@@ -87,7 +88,7 @@ Viz [getfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-c
 
 ## <a name="set-acls-of-files-and-directories"></a>Nastavení seznamů ACL souborů a adresářů
 
-    hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
+`hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]`
 
 Příklad:
 
@@ -97,19 +98,19 @@ Viz [setfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-c
 
 ## <a name="change-the-owner-of-files"></a>Změna vlastníků souborů
 
-    hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
+`hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>`
 
 Viz [chown](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)
 
 ## <a name="change-group-association-of-files"></a>Změna přidružení skupin souborů
 
-    hdfs dfs -chgrp [-R] <group> <URI>
+`hdfs dfs -chgrp [-R] <group> <URI>`
 
 Viz [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
 
 ## <a name="change-the-permissions-of-files"></a>Změna oprávnění souborů
 
-    hdfs dfs -chmod [-R] <mode> <URI>
+`hdfs dfs -chmod [-R] <mode> <URI>`
 
 Viz [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod)
 

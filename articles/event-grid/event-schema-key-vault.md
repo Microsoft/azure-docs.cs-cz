@@ -1,18 +1,14 @@
 ---
 title: Azure Key Vault jako zdroj Event Grid
 description: V této části najdete popis vlastností a schématu poskytnutých pro Azure Key Vault události Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 1f9cbe85de9423484343e4054be8d2d58c6c5e7e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458245"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109429"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Azure Key Vault jako zdroj Event Grid
 
@@ -24,7 +20,7 @@ Tento článek poskytuje vlastnosti a schéma pro události v [Azure Key Vault](
 
 Účet Azure Key Vault generuje následující typy událostí:
 
-| Úplný název události | Zobrazovaný název události | Popis |
+| Úplný název události | Zobrazovaný název události | Description |
 | ---------- | ----------- |---|
 | Microsoft. klíčů trezor. CertificateNewVersionCreated | Nově vytvořená verze certifikátu | Aktivuje se při vytvoření nového certifikátu nebo verze nového certifikátu. |
 | Microsoft. klíčů trezor. CertificateNearExpiry | Brzo vyprší platnost certifikátu | Aktivuje se v případě vypršení platnosti aktuální verze certifikátu. (Událost se aktivuje 30 dní před datem vypršení platnosti.) |

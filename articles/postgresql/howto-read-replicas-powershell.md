@@ -4,14 +4,14 @@ description: Naučte se, jak nastavit a spravovat repliky pro čtení v Azure Da
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 082a4e863760d4b327e00de2e6721e306ebb9d78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45876c8e176a4f81abfd927b0e2a8df8fc26ac25
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84740089"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106828"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>Jak vytvářet a spravovat repliky pro čtení v Azure Database for PostgreSQL pomocí prostředí PowerShell
 

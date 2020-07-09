@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: raynew
-ms.openlocfilehash: 55842d36cddb2a7851ff5bd7002c20e9873158f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fd6285c3d22c8e0bdddbbe47366e6ae9428e7d8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73512727"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109871"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Odstranění projektu Azure Migrate
 
-Tento článek popisuje, jak odstranit [Azure Migrate](migrate-overview.md) projekt.
+Tento článek popisuje, jak odstranit [Azure Migrate](./migrate-services-overview.md) projekt.
 
 
 ## <a name="before-you-start"></a>Než začnete

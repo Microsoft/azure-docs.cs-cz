@@ -5,14 +5,14 @@ keywords: připojení PostgreSQL, připojovací řetězec, problémy s připojen
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: c0011889e59470d94e650a19c6713074155c63fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c97e8e0d55a99e0b022bdc6e97edc778d7b6588a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106547"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107593"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Řešení potíží s připojením pro Azure Database for PostgreSQL – jeden server
 

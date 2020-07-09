@@ -3,16 +3,16 @@ title: Přidání nástrojů pro migraci do Azure Migrate
 description: Naučte se přidávat nástroje pro migraci do Azure Migrate.
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195825"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109803"
 ---
 # <a name="add-migration-tools"></a>Přidání nástrojů pro migraci
 
-Tento článek popisuje, jak přidat nástroje pro migraci do [Azure Migrate](migrate-overview.md).
+Tento článek popisuje, jak přidat nástroje pro migraci do [Azure Migrate](./migrate-services-overview.md).
 
 - Pokud chcete přidat nástroj pro migraci, který ještě nevytvořil projekt Azure Migrate, postupujte podle pokynů v tomto [článku](how-to-add-tool-first-time.md).
 - Pokud jste přidali nástroj ISV pro migraci, [postupujte podle kroků](prepare-isv-movere.md)a připravte se na práci s nástrojem.

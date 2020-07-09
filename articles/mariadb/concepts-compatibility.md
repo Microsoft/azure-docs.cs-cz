@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79c91fff837e3869eda0f45ce892e63b6611a1d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532344"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107202"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>Ovladače a nástroje pro správu MariaDB kompatibilní s Azure Database for MariaDB
 
@@ -37,7 +37,7 @@ Java | https://downloads.mariadb.org/connector-java/ | 2,1, 2,0, 1,6 | 1.5.5 a p
 
 Výhoda kompatibility se rozšiřuje i na nástroje pro správu databáze. Stávající nástroje by měly nadále fungovat s Azure Database for MariaDB, pokud manipulace s databází funguje v rámci omezeného počtu uživatelských oprávnění. Tři běžné nástroje pro správu databáze, které byly testovány a shledány jako kompatibilní s Azure Database for MariaDB 10,2, jsou uvedeny v následující tabulce:
 
-| | **MySQL Workbench 6. x a více** | **Navicat 12** | **PHPMyAdmin 4. x a více**
+| Akce | **MySQL Workbench 6. x a více** | **Navicat 12** | **PHPMyAdmin 4. x a více**
 ---|---|---|---
 Vytvořit, aktualizovat, číst, zapsat, odstranit | X | X | X
 Připojení SSL | X | X | X

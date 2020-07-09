@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 602053f7a52b9a46fa797bd1146cf63c02bb60d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4930d99c4175126ffba65598bd6b33e973ba1c44
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109497"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2
 
@@ -36,25 +37,33 @@ Cluster An HDInsight se dodává s nástrojem DistCp, který se dá použít ke 
 
 2. Ověřte, jestli máte přístup k vašemu stávajícímu účtu pro obecné účely v2 (bez povoleného hierarchického oboru názvů).
 
-        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```bash
+    hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    ```
 
    Výstup by měl poskytnout seznam obsahu v kontejneru.
 
 3. Podobně ověřte, zda máte přístup k účtu úložiště s povoleným hierarchickým oborem názvů z clusteru. Spusťte následující příkaz:
 
-        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```bash
+    hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
+    ```
 
     Výstup by měl poskytnout seznam souborů nebo složek v účtu úložiště Data Lake.
 
 4. Pomocí DistCp můžete kopírovat data z WASB na účet Data Lake Storage.
 
-        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```bash
+    hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+    ```
 
     Příkaz zkopíruje obsah složky **/example/data/Gutenberg/** v úložišti objektů blob do **/myFolder** účtu Data Lake Storage.
 
 5. Podobně použijte DistCp ke zkopírování dat z Data Lake Storage účtu do Blob Storage (WASB).
 
-        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```bash
+    hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
+    ```
 
     Příkaz zkopíruje obsah **/myFolder** v účtu Data Lake Store do složky **/example/data/Gutenberg/** v WASB.
 
@@ -64,7 +73,9 @@ Vzhledem k tomu, že je nejnižší členitost DistCp jediným souborem, je nast
 
 **Příklad**
 
-    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```bash
+hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
+```
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Návody určit počet mapovačů, které se mají použít?
 
@@ -74,7 +85,7 @@ Tady je několik rad, kterými se můžete řídit.
 
 * **Krok 2: výpočet počtu mapovačů** – hodnota **m** se rovná PODÍLu celkové paměti příze DĚLENé velikostí kontejneru příze. Informace o velikosti kontejneru PŘÍZe jsou k dispozici také na portálu Ambari. Přejděte na PŘÍZe a zobrazte kartu konfigurace. V tomto okně se zobrazí velikost kontejneru PŘÍZe. Rovnice pro doručení do počtu mapovačů (**m**) je
 
-        m = (number of nodes * YARN memory for each node) / YARN container size
+    m = (počet uzlů × paměť PŘÍZe pro každý uzel)/velikost kontejneru PŘÍZe
 
 **Příklad**
 
@@ -82,11 +93,11 @@ Předpokládejme, že máte cluster s 4x D14v2s a snažíte se přenést 10 TB d
 
 * **Celková paměť příze**: z portálu Ambari zjistíte, že paměť příze je 96 GB pro uzel D14. Proto je celková paměť PŘÍZe pro cluster se čtyřmi uzly: 
 
-        YARN memory = 4 * 96GB = 384GB
+    Paměť PŘÍZ = 4 * 96GB = 384GB
 
 * **Počet mapovačů**: na portálu Ambari zjistíte, že velikost kontejneru příze je 3 072 MB pro uzel clusteru D14. Proto je počet mapovačů:
 
-        m = (4 nodes * 96GB) / 3072MB = 128 mappers
+    m = (4 uzly * 96GB)/3072MB = mapovače 128
 
 Pokud jiné aplikace používají paměť, můžete zvolit, že chcete použít jenom část paměti PŘÍZe clusteru pro DistCp.
 

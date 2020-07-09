@@ -3,11 +3,12 @@ title: Návody... v Azure Application Insights | Microsoft Docs
 description: Nejčastější dotazy v Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701953"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110228"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získat e-mail, když...
@@ -32,17 +33,23 @@ Pokud chcete nastavit výstrahu pro **serverové výjimky**, možná budete muse
 
 Výstrahy je možné nastavit na [vlastní metriky](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric), ale ne na vlastní události. Napsání kódu pro zvýšení metriky, když dojde k události:
 
-    telemetry.TrackMetric("Alarm", 10);
+```csharp
+telemetry.TrackMetric("Alarm", 10);
+```
 
 nebo:
 
-    var measurements = new Dictionary<string,double>();
-    measurements ["Alarm"] = 10;
-    telemetry.TrackEvent("status", null, measurements);
+```csharp
+var measurements = new Dictionary<string,double>();
+measurements ["Alarm"] = 10;
+telemetry.TrackEvent("status", null, measurements);
+```
 
 Vzhledem k tomu, že výstrahy mají dva stavy, je nutné při zvážení výstrahy na ukončení odeslat nízkou hodnotu:
 
-    telemetry.TrackMetric("Alarm", 0.5);
+```csharp
+telemetry.TrackMetric("Alarm", 0.5);
+```
 
 V [Průzkumníkovi metriky](../../azure-monitor/platform/metrics-charts.md) vytvořte graf, ve kterém se zobrazí upozornění:
 
@@ -130,9 +137,9 @@ Chcete-li **dynamicky zastavit a spustit** shromažďování a přenos telemetri
 ### <a name="aspnet-classic-applications"></a>Klasické aplikace ASP.NET
 
 ```csharp
-    using  Microsoft.ApplicationInsights.Extensibility;
+using  Microsoft.ApplicationInsights.Extensibility;
 
-    TelemetryConfiguration.Active.DisableTelemetry = true;
+TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
 ### <a name="other-applications"></a>Další aplikace

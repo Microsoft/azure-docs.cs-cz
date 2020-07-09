@@ -9,14 +9,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 253c391b222c757a367bd5cd39939052cc697b00
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 459ab7a254994929174e4f81ad25f0729f43fa0b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588371"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108907"
 ---
-Pokud chcete spustit kontejner *Analýza mínění V3* , spusťte následující `docker run` příkaz.
+Pokud chcete spustit kontejner *Analýza mínění V3* , spusťte následující `docker run` příkaz. Nahraďte níže uvedené zástupné symboly vlastními hodnotami:
+
+| Zástupný symbol | Hodnota | Formát nebo příklad |
+|-------------|-------|---|
+| **{API_KEY}** | Klíč pro prostředek Analýza textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | Koncový bod pro přístup k rozhraní API pro analýzu textu. Můžete ji najít na stránce **klíč a koncový bod** prostředku na Azure Portal. | `https://<your-custom-subdomain>.cognitiveservices.azure.com` |
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 \

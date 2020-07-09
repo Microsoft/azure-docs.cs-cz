@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: de526da255d0ffb2d4c8f13d87d9b9e230c8bbd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561824"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109718"
 ---
 # <a name="customize-an-assessment"></a>Přizpůsobení posouzení
 
@@ -28,7 +28,7 @@ Posouzení, která vytvoříte pomocí posouzení serveru, jsou snímkem dat k u
 **Typ posouzení** | **Podrobnosti**
 --- | --- 
 **Virtuální počítač Azure** | Posouzení migrace vašich místních serverů do virtuálních počítačů Azure. <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure. (concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Posouzení virtuálního počítače Azure v posouzení serveru poskytuje dvě možnosti pro kritéria změny velikosti:
 
@@ -40,7 +40,7 @@ Posouzení virtuálního počítače Azure v posouzení serveru poskytuje dvě m
 
 ## <a name="how-is-an-assessment-done"></a>Jak se provádí posouzení?
 
-Posouzení provedené v Azure Migrate posouzení serveru má tři fáze. Posouzení začíná analýzou vhodnosti, za kterou následuje Změna velikosti a nakonec, Odhad měsíčních nákladů. Počítač se přesune pouze do pozdější fáze, pokud předá předchozí. Pokud například počítač nepovede kontrolu vhodnosti Azure, je označený jako nevhodný pro Azure a změna velikosti a oceňování se neprovede. [Další informace](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation)
+Posouzení provedené v Azure Migrate posouzení serveru má tři fáze. Posouzení začíná analýzou vhodnosti, za kterou následuje Změna velikosti a nakonec, Odhad měsíčních nákladů. Počítač se přesune pouze do pozdější fáze, pokud předá předchozí. Pokud například počítač nepovede kontrolu vhodnosti Azure, je označený jako nevhodný pro Azure a změna velikosti a oceňování se neprovede. [Další informace](./concepts-assessment-calculation.md)
 
 ## <a name="whats-in-an-azure-vm-assessment"></a>Co je ve službě Azure VM Assessment?
 
@@ -70,7 +70,7 @@ Co je je součástí posouzení služby AVS při vyhodnocování serveru:
 | **Cílové umístění** | Určuje umístění privátního cloudu AVS, do kterého chcete migrovat.<br/><br/> Posouzení pro funkci AVS v nástroji Server Assessment aktuálně podporuje tyto cílové oblasti: Východní USA, Západní Evropa Západní USA. |
 | **Typ úložiště** | Určuje modul úložiště, který se má používat v rámci služby AVS.<br/><br/> Služba AVS Assessments podporuje jenom síti vSAN jako výchozí typ úložiště. |
 **Rezervované instance (RIs)** | Tato vlastnost vám pomůže určit rezervované instance v funkci AVS. Pro uzly služby AVS se aktuálně nepodporují rezervované instance. |
-**Typ uzlu** | Určuje [typ uzlu AVS](https://docs.microsoft.com/azure/azure-vmware/concepts-private-clouds-clusters) , který se používá k mapování místních virtuálních počítačů. Všimněte si, že výchozí typ uzlu je AV36. <br/><br/> Azure Migrate doporučí, aby se virtuální počítače přenesly do služby AVS požadovaným počtem uzlů. |
+**Typ uzlu** | Určuje [typ uzlu AVS](../azure-vmware/concepts-private-clouds-clusters.md) , který se používá k mapování místních virtuálních počítačů. Všimněte si, že výchozí typ uzlu je AV36. <br/><br/> Azure Migrate doporučí, aby se virtuální počítače přenesly do služby AVS požadovaným počtem uzlů. |
 **Nastavení FTT, úroveň RAID** | Určuje použitou chybu při tolerování a kombinacích RAID. Vybraná možnost FTT v kombinaci s požadavkem na místní disk virtuálních počítačů určí celkové úložiště síti vSAN, které se v prostředí AVS vyžaduje. |
 **Kritérium určení velikosti** | Nastaví kritéria, která se mají použít ke _správné velikosti_ virtuálních počítačů pro funkci AVS. Můžete se rozhodnout pro přizpůsobení velikosti na _základě výkonu_ nebo _jako místní,_ aniž byste museli zvážit historii výkonu. |
 **Historie výkonu** | Nastaví dobu trvání, která se má vzít v úvahu při vyhodnocování dat výkonu počítačů. Tato vlastnost je platná pouze v případě, že kritéria změny velikosti jsou _založená na výkonu_. |

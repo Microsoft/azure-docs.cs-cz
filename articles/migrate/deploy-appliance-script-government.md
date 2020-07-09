@@ -3,15 +3,16 @@ title: Nastavení zařízení Azure Migrate v Azure Government
 description: Přečtěte si, jak nastavit zařízení Azure Migrate v Azure Government
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: c8bcecd7cca78a24d9dbf18e185c9362ed712b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ebc882646b5ff3f62ddddf91cffc85cb5e0da6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052489"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109973"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Nastavení zařízení v Azure Government 
 
-Podle tohoto článku nasaďte [Azure Migrate zařízení](deploy-appliance.md) pro virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery v cloudu Azure Government. Spustíte skript pro vytvoření zařízení a ověříte, že se může připojit k Azure. Pokud chcete nastavit zařízení ve veřejném cloudu, postupujte podle pokynů v [tomto článku](deploy-appliance-script.md).
+Podle tohoto článku nasaďte [Azure Migrate zařízení](./migrate-appliance-architecture.md) pro virtuální počítače VMware, virtuální počítače Hyper-V a fyzické servery v cloudu Azure Government. Spustíte skript pro vytvoření zařízení a ověříte, že se může připojit k Azure. Pokud chcete nastavit zařízení ve veřejném cloudu, postupujte podle pokynů v [tomto článku](deploy-appliance-script.md).
 
 
 > [!NOTE]

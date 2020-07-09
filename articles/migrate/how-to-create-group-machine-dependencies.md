@@ -3,11 +3,12 @@ title: Nastavení analýzy závislostí na základě agenta v serveru Azure Migr
 description: Tento článek popisuje, jak nastavit analýzu závislostí založenou na agentech v serveru Azure Migrate Assessment.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a656ec734ff098dd5835f653010c7f298c13b38
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770573"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109990"
 ---
 # <a name="set-up-dependency-visualization"></a>Nastavení Vizualizace závislostí
 
@@ -56,7 +57,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí bez agentů v Azure 
 V každém počítači, který chcete analyzovat, nainstalujte agenty.
 
 > [!NOTE]
-> Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není nutné instalovat agenta MMA. Service Map se integruje s Operations Manager. [Postupujte podle](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) pokynů pro integraci.
+> Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není nutné instalovat agenta MMA. Service Map se integruje s Operations Manager. [Postupujte podle](../azure-monitor/insights/service-map-scom.md#prerequisites) pokynů pro integraci.
 
 1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
 2. Pro každý počítač, který chcete analyzovat pomocí vizualizace závislosti, ve sloupci **závislosti** klikněte na **vyžaduje instalaci agenta**.
@@ -83,7 +84,7 @@ Instalace agenta na počítač s Windows:
 Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager nebo [Intigua](https://www.intigua.com/intigua-for-azure-migration).
 - [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) o použití těchto metod k instalaci agenta MMA.
 - Agenta MMA je možné nainstalovat také pomocí tohoto [skriptu](https://go.microsoft.com/fwlink/?linkid=2104394).
-- [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) o operačních systémech Windows podporovaných nástrojem MMA.
+- [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) o operačních systémech Windows podporovaných nástrojem MMA.
 
 ### <a name="install-mma-on-a-linux-machine"></a>Instalace MMA do počítače se systémem Linux
 
@@ -94,7 +95,7 @@ Instalace nástroje MMA do počítače se systémem Linux:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-[Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-linux-operating-systems) o seznamu operačních systémů Linux, které podporuje MMA. 
+[Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) o seznamu operačních systémů Linux, které podporuje MMA. 
 
 ## <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 
@@ -103,8 +104,8 @@ Instalace nástroje MMA do počítače se systémem Linux:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-hybrid-cloud#installation-script-examples) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
-- [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#supported-operating-systems) o operačních systémech podporovaných agentem závislostí.
+- [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) o tom, jak můžete pomocí skriptů nainstalovat agenta závislostí.
+- [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) o operačních systémech podporovaných agentem závislostí.
 
 
 ## <a name="create-a-group-using-dependency-visualization"></a>Vytvoření skupiny pomocí Vizualizace závislostí
@@ -161,8 +162,8 @@ Spusťte dotaz na data závislostí následujícím způsobem:
 Tady je několik ukázkových dotazů, které můžete použít k extrakci dat závislostí.
 
 - Můžete upravit dotazy pro extrakci preferovaných datových bodů.
-- [Prohlédněte si](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) úplný seznam záznamů dat závislosti.
-- [Projděte si](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches) další Ukázkové dotazy.
+- [Prohlédněte si](../azure-monitor/insights/service-map.md#log-analytics-records) úplný seznam záznamů dat závislosti.
+- [Projděte si](../azure-monitor/insights/service-map.md#sample-log-searches) další Ukázkové dotazy.
 
 #### <a name="sample-review-inbound-connections"></a>Ukázka: Kontrola příchozích připojení
 
@@ -170,7 +171,7 @@ Zkontrolujte příchozí připojení pro sadu virtuálních počítačů.
 
 - Záznamy v tabulce pro metriky připojení (VMConnection) nepředstavují jednotlivá fyzická síťová připojení.
 - Několik fyzických síťových připojení se seskupí do logického připojení.
-- [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections) o tom, jak se data fyzického připojení k síti agreguje v VMConnection.
+- [Přečtěte si další informace](../azure-monitor/insights/service-map.md#connections) o tom, jak se data fyzického připojení k síti agreguje v VMConnection.
 
 ```
 // the machines of interest

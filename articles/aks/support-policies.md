@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: 775992d090b951c8de6fce36377dc91d6e017399
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558085"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106981"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -52,7 +52,7 @@ Vzhledem k tomu, že jsou pracovní uzly citlivé, společnost Microsoft má skv
 Společnost Microsoft poskytuje technickou podporu pro následující:
 
 > [!NOTE]
-> Všechny akce clusteru, které povede podpora Microsoftu, se zavedou s souhlasem uživatele v rámci předdefinované role Kubernetes ["Upravit"](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) v názvu `aks-support-rolebinding` . Díky této podpoře rolí AKS je povoleno upravovat konfiguraci clusteru a prostředky pro řešení problémů s clustery, ale role nemůže měnit oprávnění ani vytvářet role nebo vazby rolí. Přístup k rolím je povolený jenom v aktivních lístkech podpory s přístupem JIT (just-in-time).
+> Všechny akce clusteru prováděné Microsoftem a AKS se provádí s souhlasem uživatele v rámci předdefinované Kubernetes role `aks-service` a předdefinované vazby role `aks-service-rolebinding` . Tato role umožňuje AKS řešit a diagnostikovat problémy s clustery, ale nemůže měnit oprávnění ani vytvářet role nebo vazby rolí ani jiné akce s vysokou úrovní oprávnění. Přístup k rolím je povolený jenom v aktivních lístkech podpory s přístupem JIT (just-in-time).
 
 * Připojení ke všem součástem Kubernetes, které poskytuje a podporuje služba Kubernetes, jako je třeba server rozhraní API.
 * Správa, doba provozu, technologie QoS a operace Kubernetesch řídicích rovin služeb (například hlavní uzly Kubernetes, Server rozhraní API, etcd a Kube-DNS).

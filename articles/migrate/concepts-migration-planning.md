@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: a7d22a6a2f7100826c865beec0d1cff09fc39660
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043236"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107695"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Sestavení plánu migrace s využitím Azure Migrate
 
@@ -24,7 +24,7 @@ Tento článek poskytuje stručnou příručku, která vám pomůže vytvořit p
 
 ## <a name="define-the-goals-of-cloud-migration"></a>Definování cílů migrace do cloudu
 
-Než začnete s plánem migrace, je důležité pochopit a vyhodnotit [motivaci](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/motivations) , která vám umožní přejít na Cloud, který vám pomůže dosáhnout více úspěšných obchodních výsledků. V [rámci architektury pro přijetí do cloudu pro Azure](https://docs.microsoft.com/azure/cloud-adoption-framework) se může jednat o různé triggery a přístupy k migraci, které jsou vhodné pro vaši firmu:  
+Než začnete s plánem migrace, je důležité pochopit a vyhodnotit [motivaci](/azure/cloud-adoption-framework/strategy/motivations) , která vám umožní přejít na Cloud, který vám pomůže dosáhnout více úspěšných obchodních výsledků. V [rámci architektury pro přijetí do cloudu pro Azure](/azure/cloud-adoption-framework) se může jednat o různé triggery a přístupy k migraci, které jsou vhodné pro vaši firmu:  
 
 **Kritické obchodní události** | **Výsledek migrace**
 --- | ---
@@ -147,7 +147,7 @@ Před dokončením plánu migrace zajistěte, aby tyto klíčové předpoklady m
 
 - Zkontrolujte doporučená oprávnění Azure a role serveru/databáze přístupu a model oprávnění potřebné pro migraci.
 
-- Připravte svoji organizaci a zajistěte, aby se zaměstnanci mohli přizpůsobovat digitální transformaci. Základní nadace pro školení je důležitá pro úspěšnou změnu organizace. Podívejte se na bezplatné školení dostupné na [Microsoft Learn](https://docs.microsoft.com/learn/azure/?ocid=CM_Discovery_Checklist_PDF), včetně kurzů pro základy Azure, architekturu řešení a zabezpečení. Požádejte tým, aby prozkoumal i [certifikaci Azure](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)   .  
+- Připravte svoji organizaci a zajistěte, aby se zaměstnanci mohli přizpůsobovat digitální transformaci. Základní nadace pro školení je důležitá pro úspěšnou změnu organizace. Podívejte se na bezplatné školení dostupné na [Microsoft Learn](/learn/azure/?ocid=CM_Discovery_Checklist_PDF), včetně kurzů pro základy Azure, architekturu řešení a zabezpečení. Požádejte tým, aby prozkoumal i [certifikaci Azure](https://www.microsoft.com/learning/certification-overview.aspx?ocid=CM_Discovery_Checklist_PDF)   .  
 
 - V případě potřeby získáte podporu pro vaši implementaci. Mnoho organizací si pro podporu migrace do cloudu vyžádá externí pomoc. Pokud chcete rychle a bez obav přejít na Azure s přizpůsobenou asistencí, vezměte v úvahu [poskytovatele spravované služby Azure expert](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)   nebo [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF).  
 
@@ -164,6 +164,6 @@ Až budete připraveni k migraci, použijte *Nástroj pro migraci serveru* Azure
 
 ## <a name="next-steps"></a>Další kroky
 
-- Prozkoumejte [cestu k migraci do cloudu](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/migrate)   v rozhraní Azure cloudu pro přijetí.
+- Prozkoumejte [cestu k migraci do cloudu](/azure/architecture/cloud-adoption/getting-started/migrate)   v rozhraní Azure cloudu pro přijetí.
 - [Začínáme](https://youtu.be/wFfq3YPxYHE) s Azure Migrate.
 - Vytvořte posouzení pro [virtuální počítače VMware](tutorial-assess-vmware.md) nebo [virtuální počítače Hyper-V](tutorial-assess-hyper-v.md).

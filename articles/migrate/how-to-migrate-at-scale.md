@@ -6,17 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74196369"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86109837"
 ---
 # <a name="scale-migration-of-vms"></a>Škálování migrace virtuálních počítačů 
 
 Tento článek vám pomůže pochopit, jak používat skripty k migraci velkého počtu virtuálních počítačů (VM). K škálování migrace slouží [Azure Site Recovery](../site-recovery/site-recovery-overview.md). 
 
-Skripty Site Recovery jsou k dispozici ke stažení na [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) na GitHubu. Skripty se dají použít k migraci virtuálních počítačů VMware, AWS, GCP a fyzických serverů na spravované disky v Azure. Tyto skripty můžete také použít k migraci virtuálních počítačů Hyper-V, pokud virtuální počítače migrujete jako fyzické servery. Skripty, které využívají Azure Site Recovery PowerShell, jsou popsané [tady](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+Skripty Site Recovery jsou k dispozici ke stažení na [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) na GitHubu. Skripty se dají použít k migraci virtuálních počítačů VMware, AWS, GCP a fyzických serverů na spravované disky v Azure. Tyto skripty můžete také použít k migraci virtuálních počítačů Hyper-V, pokud virtuální počítače migrujete jako fyzické servery. Skripty, které využívají Azure Site Recovery PowerShell, jsou popsané [tady](../site-recovery/vmware-azure-disaster-recovery-powershell.md).
 
 ## <a name="current-limitations"></a>Aktuální omezení
 - Podpora zadání statické IP adresy jenom pro primární síťovou kartu cílového virtuálního počítače
@@ -68,4 +69,4 @@ Ve výchozím nastavení skript migruje virtuální počítače na spravované d
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) o migraci serverů do Azure pomocí Azure Site Recovery
+[Další informace](../site-recovery/migrate-tutorial-on-premises-azure.md) o migraci serverů do Azure pomocí Azure Site Recovery

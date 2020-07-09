@@ -4,14 +4,14 @@ description: Naučte se, jak nastavit a spravovat repliky pro čtení v Azure Da
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: d772e98032a29a93527359335a13d7b37e020e50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1df590bcec4dfed08dea81c60738a40ca9be8bee
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706949"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86108732"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure a REST API
 
@@ -113,7 +113,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>Rozhraní REST API
 Repliky pro čtení můžete vytvářet a spravovat pomocí [REST API Azure](/rest/api/azure/).
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení

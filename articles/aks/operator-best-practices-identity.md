@@ -4,12 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Seznamte se s osvědčenými postupy pro postupy, jak spravovat ověřování a autorizaci pro clustery ve službě Azure Kubernetes (AKS).
 services: container-service
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: e02b542f74a2dd7b7e88f1fa075ad6a736895e76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: c7e8cd28380a86a671c74af03fa479abce5cfe25
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020043"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107134"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ověřování a autorizaci ve službě Azure Kubernetes (AKS)
 
@@ -20,8 +23,9 @@ Tento článek o osvědčených postupech se zaměřuje na to, jak operátor clu
 > [!div class="checklist"]
 >
 > * Ověřování uživatelů clusteru AKS pomocí Azure Active Directory
-> * Řízení přístupu k prostředkům pomocí řízení přístupu na základě role (RBAC)
-> * Použití spravované identity k ověřování s ostatními službami
+> * Řízení přístupu k prostředkům pomocí Kubernetes řízení přístupu na základě role (RBAC)
+> * Využijte Azure RBAC k podrobnému řízení přístupu k AKS prostředku a škálování Kubernetes API a také ke kubeconfig.
+> * Použití spravované identity k ověřování lusků s ostatními službami
 
 ## <a name="use-azure-active-directory"></a>Použití Azure Active Directory
 
@@ -35,18 +39,18 @@ Clustery s integrovanými službami Azure AD v AKS vám umožní vytvořit *role
 
 1. Vývojář se ověřuje pomocí Azure AD.
 1. Koncový bod pro vystavení tokenu Azure AD vydá přístupový token.
-1. Vývojář provede akci pomocí tokenu Azure AD, například`kubectl create pod`
+1. Vývojář provede akci, která používá token Azure AD, například`kubectl create pod`
 1. Kubernetes ověří token pomocí Azure Active Directory a načte členství ve skupině vývojářů.
 1. Použije se Kubernetes řízení přístupu na základě role (RBAC) a zásady clusteru.
 1. Žádost vývojáře je úspěšná nebo není založená na předchozím ověření členství ve skupině Azure AD a Kubernetes RBAC a zásady.
 
 Pokud chcete vytvořit cluster AKS, který používá Azure AD, přečtěte si téma věnované [integraci Azure Active Directory s AKS][aks-aad].
 
-## <a name="use-role-based-access-controls-rbac"></a>Použití řízení přístupu na základě rolí (RBAC)
+## <a name="use-kubernetes-role-based-access-controls-rbac"></a>Použití řízení přístupu na základě role (RBAC) Kubernetes
 
 **Doprovodné materiály k osvědčeným postupům** – pomocí Kubernetes RBAC Definujte oprávnění, která uživatelé nebo skupiny mají k prostředkům v clusteru. Vytvořte role a vazby, které přiřadí minimální počet požadovaných oprávnění. Integrace se službou Azure AD, takže jakákoli změna stavu uživatele nebo členství ve skupině se automaticky aktualizuje a přístup k prostředkům clusteru je aktuální.
 
-V Kubernetes můžete poskytovat podrobnou kontrolu přístupu k prostředkům v clusteru. Oprávnění se dají definovat na úrovni clusteru nebo na konkrétní obory názvů. Můžete definovat, které prostředky se dají spravovat, a s jakými oprávněními. Tyto role se pak aplikují na uživatele nebo skupiny s vazbou. Další informace o *rolích*, *ClusterRoles*a *vazbách*najdete v tématu [Možnosti přístupu a identit pro Azure Kubernetes Service (AKS)][aks-concepts-identity].
+V Kubernetes můžete poskytovat podrobnou kontrolu nad přístupem k prostředkům v clusteru. Oprávnění jsou definována na úrovni clusteru nebo konkrétní obory názvů. Můžete definovat, které prostředky se dají spravovat, a s jakými oprávněními. Tyto role se pak aplikují na uživatele nebo skupiny s vazbou. Další informace o *rolích*, *ClusterRoles*a *vazbách*najdete v tématu [Možnosti přístupu a identit pro Azure Kubernetes Service (AKS)][aks-concepts-identity].
 
 Jako příklad můžete vytvořit roli, která udělí úplný přístup k prostředkům v oboru názvů s názvem *finance-App*, jak je znázorněno v následujícím příkladu manifestu YAML:
 
@@ -83,6 +87,16 @@ roleRef:
 Pokud se *developer1 \@ contoso.com* ověřuje v rámci clusteru AKS, mají úplná oprávnění k prostředkům v oboru názvů *finance-aplikace* . Tímto způsobem můžete logicky oddělit a řídit přístup k prostředkům. Kubernetes RBAC by se měla používat ve spojení s integrací Azure AD, jak je popsáno v předchozí části.
 
 Pokud chcete zjistit, jak používat skupiny Azure AD k řízení přístupu k prostředkům Kubernetes pomocí RBAC, přečtěte si téma [řízení přístupu k prostředkům clusteru pomocí řízení přístupu na základě rolí a Azure Active Directory identit v AKS][azure-ad-rbac].
+
+## <a name="use-azure-rbac"></a>Použití Azure RBAC 
+**Doprovodné materiály k osvědčeným postupům** – pomocí Azure RBAC definujte minimální požadovaná oprávnění, která uživatelé nebo skupiny musí AKS k prostředkům v jednom nebo několika předplatných.
+
+Existují dvě úrovně přístupu, které jsou potřeba k plnému provozu clusteru AKS: 
+1. Přístup k prostředku AKS ve vašem předplatném Azure. Tato úroveň přístupu vám umožní řídit, jak škálovat nebo upgradovat cluster pomocí rozhraní AKS API, a také načíst vaše kubeconfig.
+Pokud chcete zjistit, jak řídit přístup k AKS prostředku a kubeconfig, přečtěte si téma [omezení přístupu ke konfiguračnímu souboru clusteru](control-kubeconfig-access.md).
+
+2. Přístup k rozhraní Kubernetes API. Tato úroveň přístupu se řídí buď [KUBERNETES RBAC](#use-kubernetes-role-based-access-controls-rbac) (tradičně), nebo integrací Azure RBAC s AKS pro autorizaci Kubernetes.
+Postup při podrobném udělení oprávnění k rozhraní Kubernetes API pomocí Azure RBAC najdete v tématu [použití Azure RBAC pro autorizaci Kubernetes](manage-azure-rbac.md).
 
 ## <a name="use-pod-identities"></a>Použití identity pod
 

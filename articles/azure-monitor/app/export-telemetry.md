@@ -3,11 +3,12 @@ title: Průběžný export telemetrie z Application Insights | Microsoft Docs
 description: Exportujte data o využití a diagnostiku do úložiště v Microsoft Azure a Stáhněte si z něj.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 91bce217b1b8d7c86c7d75ecd4ce6b698019e169
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147966"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110211"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Export telemetrie z Application Insights
 Chcete udržet telemetrii déle než standardní doba uchovávání? Nebo ji zpracujete specializovaným způsobem? Pro tuto dobu je ideální pro průběžný export. Události, které vidíte na portálu Application Insights, se dají exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud si můžete stáhnout svá data a napsat kód, který budete potřebovat k jeho zpracování.  
@@ -107,7 +108,9 @@ Datum a čas jsou UTC a jsou v době, kdy byla telemetrie uložena do úložišt
 
 Tady je forma cesty:
 
-    $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```console
+$"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}/{ blobDeliveryTimeUtc:HH}/{blobId}_{blobCreationTimeUtc:yyyyMMdd_HHmmss}.blob"
+```
 
 Kde
 
@@ -117,37 +120,41 @@ Kde
 ## <a name="data-format"></a><a name="format"></a>Formát dat
 * Každý objekt BLOB je textový soubor, který obsahuje více řádků oddělených znakem \n. Obsahuje telemetrii zpracovávanou za časové období zhruba půl minuty.
 * Každý řádek představuje datový bod telemetrie, jako je například požadavek nebo zobrazení stránky.
-* Každý řádek je neformátovaný dokument JSON. Pokud chcete na svém místě, otevřete ho v aplikaci Visual Studio a vyberte upravit, Upřesnit, formát souboru:
+* Každý řádek je neformátovaný dokument JSON. Chcete-li zobrazit řádky, otevřete objekt BLOB v aplikaci Visual Studio a vyberte možnost **Upravit**  >  **Rozšířené**  >  **soubory formátu**:
 
-![Zobrazení telemetrie s vhodným nástrojem](./media/export-telemetry/06-json.png)
+   ![Zobrazení telemetrie s vhodným nástrojem](./media/export-telemetry/06-json.png)
 
 Doba trvání se nachází v taktech, kde 10 000 taktes = 1 ms. Například tyto hodnoty zobrazují čas 1 MS k odeslání požadavku z prohlížeče, 3 MS pro příjem a 1,8 s pro zpracování stránky v prohlížeči:
 
-    "sendRequest": {"value": 10000.0},
-    "receiveRequest": {"value": 30000.0},
-    "clientProcess": {"value": 17970000.0}
+```json
+"sendRequest": {"value": 10000.0},
+"receiveRequest": {"value": 30000.0},
+"clientProcess": {"value": 17970000.0}
+```
 
 [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Zpracování dat
 V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Příklad:
 
-    private IEnumerable<T> DeserializeMany<T>(string folderName)
-    {
-      var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
-      foreach (var file in files)
+```csharp
+private IEnumerable<T> DeserializeMany<T>(string folderName)
+{
+   var files = Directory.EnumerateFiles(folderName, "*.blob", SearchOption.AllDirectories);
+   foreach (var file in files)
+   {
+      using (var fileReader = File.OpenText(file))
       {
-         using (var fileReader = File.OpenText(file))
+         string fileContent = fileReader.ReadToEnd();
+         IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
+         foreach (var entity in entities)
          {
-            string fileContent = fileReader.ReadToEnd();
-            IEnumerable<string> entities = fileContent.Split('\n').Where(s => !string.IsNullOrWhiteSpace(s));
-            foreach (var entity in entities)
-            {
-                yield return JsonConvert.DeserializeObject<T>(entity);
-            }
+            yield return JsonConvert.DeserializeObject<T>(entity);
          }
       }
-    }
+   }
+}
+```
 
 Větší ukázku kódu najdete v tématu [použití role pracovního procesu][exportasa].
 

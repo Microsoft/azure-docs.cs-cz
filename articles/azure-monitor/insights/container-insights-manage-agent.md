@@ -3,12 +3,12 @@ title: Jak spravovat agenta Azure Monitor for Containers | Microsoft Docs
 description: Tento článek popisuje, jak spravovat nejběžnější úlohy údržby pomocí kontejnerového Log Analyticsho agenta používaného Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: ca0fa88cf27db15d45a2c855a1af351764c48fde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc5bc0d60cb4ef1e375a997cbb3fe4bd2aed3235
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887501"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86107406"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>Správa Azure Monitor pro agenta kontejnerů
 
@@ -34,24 +34,27 @@ Po opětovném povolení monitorování může trvat přibližně 15 minut, než
 
 Stav by měl vypadat podobně jako v následujícím příkladu, kde hodnota pro *OMI* a *omsagent* by měla odpovídat nejnovější verzi zadané v [historii vydání verze agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod).  
 
-    User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
-    :
-    :
-    instance of Container_HostInventory
-    {
-        [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
-        Computer=aks-nodepool1-39773055-0
-        DockerVersion=1.13.1
-        OperatingSystem=Ubuntu 16.04.3 LTS
-        Volume=local
-        Network=bridge host macvlan null overlay
-        NodeRole=Not Orchestrated
-        OrchestratorType=Kubernetes
-    }
-    Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc    Status: Onboarded(OMSAgent Running)
-    omi 1.4.2.5
-    omsagent 1.6.0-163
-    docker-cimprov 1.0.0.31
+```console
+User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
+:
+:
+instance of Container_HostInventory
+{
+    [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
+    Computer=aks-nodepool1-39773055-0
+    DockerVersion=1.13.1
+    OperatingSystem=Ubuntu 16.04.3 LTS
+    Volume=local
+    Network=bridge host macvlan null overlay
+    NodeRole=Not Orchestrated
+    OrchestratorType=Kubernetes
+}
+Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc
+Status: Onboarded(OMSAgent Running)
+omi 1.4.2.5
+omsagent 1.6.0-163
+docker-cimprov 1.0.0.31
+```
 
 ### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>Upgrade agenta na hybridním clusteru Kubernetes
 
@@ -63,21 +66,21 @@ Proveďte následující kroky k upgradu agenta v clusteru Kubernetes se systém
 
 Pokud je pracovní prostor Log Analytics v komerčním Azure, spusťte následující příkaz:
 
-```
+```console
 $ helm upgrade --name myrelease-1 \
 --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
 ```
 
 Pokud je pracovní prostor Log Analytics v Azure Čína 21Vianet, spusťte následující příkaz:
 
-```
+```console
 $ helm upgrade --name myrelease-1 \
 --set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
 ```
 
 Pokud je pracovní prostor Log Analytics ve vládě Azure USA, spusťte následující příkaz:
 
-```
+```console
 $ helm upgrade --name myrelease-1 \
 --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
 ```
@@ -90,7 +93,7 @@ Proveďte následující kroky k upgradu agenta v clusteru Kubernetes běžící
 >Azure Red Hat OpenShift verze 4. x podporuje spouštění jenom v komerčním cloudu Azure.
 >
 
-```
+```console
 $ helm upgrade --name myrelease-1 \
 --set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<azureAroV4ResourceId> incubator/azuremonitor-containers
 ```
@@ -99,14 +102,14 @@ $ helm upgrade --name myrelease-1 \
 
 Provedením následujícího příkazu Upgradujte agenta v clusteru Kubernetes s povoleným ARC Azure bez koncového bodu proxy serveru.
 
-```
+```console
 $ helm upgrade --install azmon-containers-release-1  –set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
 ```
 
 Provedením následujícího příkazu Upgradujte agenta, když je zadaný koncový bod proxy serveru. Další informace o koncovém bodu proxy serveru najdete v tématu [Konfigurace koncového bodu proxy serveru](container-insights-enable-arc-enabled-clusters.md#configure-proxy-endpoint).
 
-```
-helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
+```console
+$ helm upgrade –name azmon-containers-release-1 –set omsagent.proxy=<proxyEndpoint>,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterId=<resourceIdOfAzureArcK8sCluster>
 ```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Postup zakázání shromažďování proměnných prostředí v kontejneru
@@ -115,14 +118,14 @@ Azure Monitor for Containers shromažďuje proměnné prostředí z kontejnerů 
 
 Chcete-li zakázat shromažďování proměnných prostředí v novém nebo existujícím kontejneru, nastavte proměnnou **AZMON_COLLECT_ENV** s hodnotou **false** v konfiguračním souboru YAML nasazení Kubernetes. 
 
-```  
+```yaml
 - name: AZMON_COLLECT_ENV  
   value: "False"  
-```  
+```
 
 Spusťte následující příkaz, který aplikuje změnu na jiné clustery Kubernetes než Azure Red Hat OpenShift): `kubectl apply -f  <path to yaml file>` . Pokud chcete upravit ConfigMap a použít tuto změnu pro clustery Azure Red Hat OpenShift, spusťte příkaz:
 
-``` bash
+```bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 ```
 
@@ -132,7 +135,7 @@ Chcete-li ověřit vliv změny konfigurace, vyberte kontejner v zobrazení **kon
 
 Chcete-li znovu povolit zjišťování proměnných prostředí, použijte stejný proces dříve a změňte hodnotu z **false** na **true**a pak znovu spusťte `kubectl` příkaz pro aktualizaci kontejneru.  
 
-```  
+```yaml
 - name: AZMON_COLLECT_ENV  
   value: "True"  
 ```  
