@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190729"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133752"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Řešení potíží s rozšířením virtuálních počítačů Azure
 
@@ -68,14 +69,14 @@ Je možné, že agent virtuálního počítače je poškozený nebo se služba z
 1. Ověřte, že se v části služby zobrazuje služba agenta hosta systému Windows Azure.
 1. Restartujte úlohu ochrany.
 
-Ověřte také, že na virtuálním počítači [je nainstalováno rozhraní Microsoft .net 4,5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) . Pro komunikaci s touto službou potřebujete .NET 4,5 pro agenta virtuálního počítače.
+Ověřte také, že na virtuálním počítači [je nainstalováno rozhraní Microsoft .net 4,5](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) . Pro komunikaci s touto službou potřebujete .NET 4,5 pro agenta virtuálního počítače.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače se systémem Linux).
 
 #### <a name="solution"></a>Řešení
 Většina selhání souvisejících s agentem nebo rozšířeními pro virtuální počítače se systémem Linux je způsobena problémy, které mají vliv na zastaralého agenta virtuálního počítače. Pokud chcete tento problém vyřešit, postupujte podle následujících obecných pokynů:
 
-1. Postupujte podle pokynů pro [aktualizaci agenta virtuálního počítače se systémem Linux](../virtual-machines/linux/update-agent.md).
+1. Postupujte podle pokynů pro [aktualizaci agenta virtuálního počítače se systémem Linux](../virtual-machines/extensions/update-linux-agent.md).
 
    > [!NOTE]
    > *Důrazně doporučujeme* , abyste agenta aktualizovali pouze prostřednictvím distribučního úložiště. Nedoporučujeme stahovat kód agenta přímo z GitHubu a aktualizovat ho. Pokud není k dispozici nejnovější agent pro distribuci, obraťte se na podporu distribuce, kde najdete pokyny k jeho instalaci. Chcete-li zjistit nejnovějšího agenta, v úložišti GitHubu, navštivte stránku [agenta Windows Azure Linux](https://github.com/Azure/WALinuxAgent/releases) .
@@ -106,6 +107,6 @@ Postup při odinstalaci rozšíření:
 1. Vyberte **rozšíření Site Recovery**.
 1. Vyberte **Odinstalovat**.
 
-Pokud se u virtuálního počítače se systémem Linux v Azure Portal nezobrazuje rozšíření VMSnapshot, [aktualizujte agenta Azure Linux](../virtual-machines/linux/update-agent.md). Pak spusťte ochranu.
+Pokud se u virtuálního počítače se systémem Linux v Azure Portal nezobrazuje rozšíření VMSnapshot, [aktualizujte agenta Azure Linux](../virtual-machines/extensions/update-linux-agent.md). Pak spusťte ochranu.
 
 Po dokončení těchto kroků dojde k přeinstalování rozšíření během ochrany.

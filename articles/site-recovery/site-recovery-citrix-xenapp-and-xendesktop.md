@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90d54a8ded99dd8ab43aed688036add6aede20ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74084542"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134843"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>nastavení zotavení po havárii pro multi-vrstvou Citrix XenApp a XenDesktop Deployment
 
@@ -29,8 +30,8 @@ Tento dokument poskytuje podrobné pokyny pro vytvoření řešení zotavení po
 
 Než začnete, ujistěte se, že rozumíte následujícímu:
 
-1. [Replikace virtuálního počítače do Azure](site-recovery-vmware-to-azure.md)
-1. [Návrh sítě pro obnovení](site-recovery-network-design.md)
+1. [Replikace virtuálního počítače do Azure](./vmware-azure-tutorial.md)
+1. [Návrh sítě pro obnovení](./concepts-on-premises-to-azure-networking.md)
 1. [Test převzetí služeb při selhání do Azure](site-recovery-test-failover-to-azure.md)
 1. [Převzetí služeb při selhání do Azure](site-recovery-failover.md)
 1. Postup [replikace řadiče domény](site-recovery-active-directory.md)
@@ -95,7 +96,7 @@ Pokyny pro replikaci a konfiguraci řadiče domény v Azure najdete v tématu v�
 
 Podrobné technické pokyny týkající se doporučených možností pro ochranu SQL serveru najdete v tématu [ochrana SQL Server v SQL Server zotavení po havárii a Azure Site Recovery](site-recovery-sql.md) .
 
-Postupujte podle [těchto pokynů](site-recovery-vmware-to-azure.md) a začněte replikovat ostatní virtuální počítače součástí do Azure.
+Postupujte podle [těchto pokynů](./vmware-azure-tutorial.md) a začněte replikovat ostatní virtuální počítače součástí do Azure.
 
 ![Ochrana součástí XenApp](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-enablereplication.png)
 

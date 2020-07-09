@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 967df2022166936df71b30fbe9d49798663ce962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccb6bbcddaa5ce76e9dbb04d737830fbaf5c2d9f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783600"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134321"
 ---
 # <a name="ev4-and-esv4-series"></a>Řada Ev4 a Esv4
 
@@ -30,7 +30,7 @@ Velikosti řady Ev4-Series běží na Intel Xeon &reg; Platinum 8272CL (Cascade 
 Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů. Pokud chcete použít disky Premium Storage, použijte velikosti Esv4. Měřiče cen a účtování pro velikosti Esv4 jsou stejné jako pro Ev4-Series.
 
 > [!IMPORTANT]
-> Tyto nové velikosti jsou momentálně pod Public Preview. K těmto dv4 a Dsv4-Series se můžete zaregistrovat [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u). 
+> Tyto nové velikosti jsou momentálně pod Public Preview. K těmto Ev4 a Esv4-Series se můžete zaregistrovat [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u). 
 
 ACU: 195-210
 
@@ -59,7 +59,7 @@ Aktualizace pro zachování paměti: podporováno
 Velikosti řady Esv4-Series běží na Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake). Instance Esv4-Series jsou ideální pro podnikové aplikace náročné na paměť. Virtuální počítače Evs4-Series mají &reg; technologii Intel Hyper-Threading. Úložiště vzdálených datových disků se fakturuje odděleně od virtuálních počítačů.
 
 > [!IMPORTANT]
-> Tyto nové velikosti jsou momentálně pod Public Preview. K těmto dv4 a Dsv4-Series se můžete zaregistrovat [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u). 
+> Tyto nové velikosti jsou momentálně pod Public Preview. K těmto Ev4 a Esv4-Series se můžete zaregistrovat [tady](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u). 
 
 ACU: 195-210
 
