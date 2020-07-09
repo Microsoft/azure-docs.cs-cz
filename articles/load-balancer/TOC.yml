@@ -12,18 +12,21 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Vytvoření nástroje pro vyrovnávání zatížení – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: Vytvoření nástroje pro vyrovnávání zatížení – PowerShell
+    - name: Vytvoření nástroje pro vyrovnávání zatížení – Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
     - name: Vytvoření nástroje pro vyrovnávání zatížení – šablona ARM
-      displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
+    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – portál
+      href: tutorial-load-balancer-standard-internal-portal.md
+    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure CLI
+      href: load-balancer-get-started-ilb-arm-cli.md
+    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure PowerShell
+      href: load-balancer-get-started-ilb-arm-ps.md
+    - name: Vytvoření interního nástroje pro vyrovnávání zatížení – šablona ARM
+      href: load-balancer-get-started-ilb-arm-template.md
   expanded: true
 - name: Kurzy
   items:
-    - name: Vyrovnávání zatížení internetového provozu do virtuálních počítačů
-      href: tutorial-load-balancer-standard-manage-portal.md
-    - name: Vyrovnávání zatížení interního provozu do virtuálních počítačů
-      href: tutorial-load-balancer-standard-internal-portal.md
     - name: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Vyrovnávání zatížení virtuálního počítače v konkrétní zóně dostupnosti
@@ -78,17 +81,17 @@
           href: configure-vm-scale-set-powershell.md
         - name: Použití s existujícím Azure Load Balancerem – CLI
           href: configure-vm-scale-set-cli.md
-    - name: Upgrade nástroje pro vyrovnávání zatížení verze Basic na verzi Standard Load Balancer
+    - name: Upgrade Load Balanceru z úrovně Basic na Standard
       items:
         - name: Upgrade veřejného nástroje pro vyrovnávání zatížení verze Basic
           href: upgrade-basic-standard.md
-        - name: Upgrade interního nástroje pro vyrovnávání zatížení verze Basic – nevyžaduje se odchozí připojení
+        - name: Upgrade interního nástroje pro vyrovnávání zatížení – nevyžaduje se odchozí připojení
           href: upgrade-basicInternal-standard.md
-        - name: Upgrade interního nástroje pro vyrovnávání zatížení verze Basic – vyžaduje se odchozí připojení
+        - name: Upgrade interního nástroje pro vyrovnávání zatížení – vyžaduje se odchozí připojení
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Konfigurace odchozích pravidel
       items:
-        - name: portál Azure
+        - name: Portál
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
@@ -103,35 +106,25 @@
         - name: Šablona Azure Resource Manageru
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
           displayName: ARM
-    - name: Konfigurace interního nástroje pro vyrovnávání zatížení
-      items:
-        - name: portál Azure
-          href: tutorial-load-balancer-standard-internal-portal.md
-        - name: Azure CLI
-          href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Šablona Azure Resource Manageru
-          href: load-balancer-get-started-ilb-arm-template.md
-          displayName: ARM
     - name: Konfigurace časového limitu nečinnosti protokolu TCP nástroje Load Balancer
       href: load-balancer-tcp-idle-timeout.md
     - name: Konfigurace distribučního režimu Load Balanceru
       href: load-balancer-distribution-mode.md
     - name: Použití několika konfigurací IP
-      href: load-balancer-multiple-ip.md
       items:
+        - name: Portál
+          href: load-balancer-multiple-ip.md
         - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
     - name: Přesun mezi oblastmi
       items:
-        - name: Externí nástroj pro vyrovnávání zatížení – portál
+        - name: Veřejný nástroj pro vyrovnávání zatížení – portál
           href: move-across-regions-external-load-balancer-portal.md
-        - name: Externí nástroj pro vyrovnávání zatížení – PowerShell
+        - name: Veřejný nástroj pro vyrovnávání zatížení – PowerShell
           href: move-across-regions-external-load-balancer-powershell.md
-        - name: Interní nástroj pro vyrovnávání zatížení – portál
+        - name: Veřejný nástroj pro vyrovnávání zatížení – portál
           href: move-across-regions-internal-load-balancer-portal.md
         - name: Interní nástroj pro vyrovnávání zatížení – PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md

@@ -228,6 +228,8 @@
           href: control-kubeconfig-access.md
         - name: Zabezpečení provozu podů s využitím zásad sítě
           href: use-network-policies.md
+        - name: Zabezpečené pody s využitím Azure Policy (Preview)
+          href: use-pod-security-on-azure-policy.md
         - name: Použití zásad zabezpečení podu (Preview)
           href: use-pod-security-policies.md
         - name: Definování rozsahů IP adres autorizovaných serverem podporujícím rozhraní API
@@ -244,6 +246,8 @@
               href: managed-aad.md
             - name: Použití Azure CLI
               href: azure-ad-integration-cli.md
+        - name: Použití Azure RBAC pro autorizaci Kubernetes (Preview)
+          href: manage-azure-rbac.md
         - name: Použití Kubernetes RBAC s integrací Azure AD
           href: azure-ad-rbac.md
           maintainContext: true

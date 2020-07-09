@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 82cdd8519f1e3fce80aaf051d6bc5fc40a9b8be9
+ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219117"
+ms.lasthandoff: 07/05/2020
+ms.locfileid: "85959575"
 ---
 ::: zone target="docs"
 
@@ -62,7 +62,7 @@ Ve sdílených složkách objektů blob bloku a objektů blob stránky jsou enti
 
 Následující tabulka uvádí cestu UNC ke sdíleným složkám ve vašem Data Boxu a adresu URL cesty ke službě Azure Storage, ve které jsou data nahraná. Konečnou adresu URL cesty ke službě Azure Storage je možné odvodit z cesty UNC ke sdílené složce.
  
-|                   |                                                            |
+|Typy úložišť v Azure  | Sdílené složky Data Boxů            |
 |-------------------|--------------------------------------------------------------------------------|
 | Objekty blob bloku Azure | <li>Cesta UNC ke sdíleným složkám: `\\<DeviceIPAddress>\<StorageAccountName_BlockBlob>\<ContainerName>\files\a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Objekty blob stránky Azure  | <li>Cesta UNC ke sdíleným složkám: `\\<DeviceIPAddres>\<StorageAccountName_PageBlob>\<ContainerName>\files\a.txt`</li><li>Adresa URL služby Azure Storage: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
@@ -70,32 +70,32 @@ Následující tabulka uvádí cestu UNC ke sdíleným složkám ve vašem Data 
 
 Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Data Boxu pomocí následujícího postupu.
 
-1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Kliknutím na **Získat přihlašovací údaje** získejte přihlašovací údaje pro přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště. 
+1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Výběrem **SMB** získáte přihlašovací údaje pro přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště. 
 
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Klikněte na **OK**.
+2. V dialogovém okně Přístup ke sdílené složce a kopírování dat zkopírujte **Uživatelské jméno** a **Heslo** odpovídající sdílené složce. Vyberte **OK**.
     
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
-3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (*devicemanagertest1* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
+3. Pokud chcete získat přístup ke sdíleným složkám přidruženým k vašemu účtu úložiště (*utsac1* v následujícím příkladu) z hostitelského počítače, otevřete okno příkazového řádku. Na příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
     V závislosti na formátu vašich dat budou sdílené cesty vypadat podobně jako níže:
-    - Objekt blob bloku Azure – `\\10.126.76.172\devicemanagertest1_BlockBlob`
-    - Objekt blob stránky Azure – `\\10.126.76.172\devicemanagertest1_PageBlob`
-    - Soubory Azure – `\\10.126.76.172\devicemanagertest1_AzFile`
+    - Objekt blob bloku Azure – `\\10.126.76.138\utSAC1_202006051000_BlockBlob`
+    - Objekt blob stránky Azure – `\\10.126.76.138\utSAC1_202006051000_PageBlob`
+    - Soubory Azure – `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
 4. Po zobrazení výzvy zadejte heslo ke sdílené složce. Následující příklad ukazuje připojení ke sdílené složce pomocí předchozího příkazu.
 
     ```
-    C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
-    Enter the password for 'devicemanagertest1' to connect to '10.126.76.172':
+    C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
+    Enter the password for 'testuser1' to connect to '10.126.76.138':
     The command completed successfully.
     ```
 
-4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Kliknutím na **OK** otevřete Průzkumníka souborů.
+4. Stiskněte Windows + R. V okně **Spustit** zadejte `\\<device IP address>`. Výběrem **OK** otevřete Průzkumníka souborů.
     
     ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
@@ -107,7 +107,7 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     
 Pokud používáte klienta Linuxu, připojte sdílenou složku SMB pomocí následujícího příkazu. Níže uvedený parametr vers představuje verzi protokolu SMB, kterou podporuje váš hostitel s Linuxem. Do následujícího příkazu vložte odpovídající verzi. Verze protokolu SMB, které Data Box podporuje, najdete v tématu věnovaném [podporovaným systémům souborů pro klienty Linuxu](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients). 
 
-    `sudo mount -t nfs -o vers=2.1 10.126.76.172:/devicemanagertest1_BlockBlob /home/databoxubuntuhost/databox`
+    `sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox`
 
 ## <a name="copy-data-to-data-box"></a>Kopírování dat do Data Boxu
 
@@ -215,11 +215,23 @@ Pokud chcete optimalizovat výkon, použijte při kopírování dat následujíc
 
 Další informace o příkazu Robocopy najdete v článku [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Robocopy a několik příkladů).
 
-Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem](data-box-troubleshoot.md).
+Pokud během procesu kopírování dojde k nějakým chybám, zobrazí se oznámení.
+
+![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-1.png)
+
+Vyberte **Stáhnout seznam problémů**.
+
+![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-2.png)
+
+Otevřete tento seznam, projděte si podrobnosti o chybě a vyberte adresu URL pro zobrazení doporučeného řešení.
+
+![Stažení a zobrazení chyb pro operaci Připojit a kopírovat](media/data-box-deploy-copy-data/view-errors-3.png)
+
+Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem](data-box-troubleshoot.md).
 
 Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
 
-   ![Kontrola volného a využitého místa na řídicím panelu](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
+![Kontrola volného a využitého místa na řídicím panelu](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
 

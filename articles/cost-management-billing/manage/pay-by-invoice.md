@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: banders
-ms.openlocfilehash: 8552b6732736d1d10711479639fa45114f8b039b
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 5fb8a9cd5e00bf3a6ebeddaf44a09ac48b94fe7c
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85298000"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849085"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Úhrada předplatných Azure pomocí faktury
 
@@ -42,28 +42,28 @@ Pokud přepnete na platby pomocí faktur, znamená to, že budete hradit faktury
 
 5. Do pole **Podrobnosti** zadejte následující informace a potom vyberte **Další**.
 
-         New or existing customer:
-         If existing, current payment method:
-         Order ID (requesting for invoice option):
-         Account Admins Live ID (or Org ID) (should be company domain):
-         Commerce Account ID:
-         Company Name (as registered under VAT or Government Website):
-         Company Address (as registered under VAT or Government Website):
-         Company Website:
-         Country:
-         TAX ID/ VAT ID:
-         Company Established on (Year):
-         Any prior business with Microsoft:
-         Contact Name:
-         Contact Phone:
-         Contact Email:
-         Justification on why you prefer Invoice option over credit card:
+     Nový nebo stávající zákazník:<br>
+     Pokud stávající, aktuální způsob platby:<br>
+     ID objednávky (žádost o možnost platby pomocí faktur):<br>
+     Live ID (nebo ID organizace) správců účtu (měla by být doména společnosti):<br>
+     ID obchodního účtu:<br>
+     Název společnosti (uvedený v registraci k DPH nebo na webu státní správy):<br>
+     Adresa společnosti (uvedená v registraci k DPH nebo na webu státní správy)<br>
+     Web společnosti:<br>
+     Země:<br>
+     DIČ:<br>
+     Datum založení společnosti (rok):<br>
+     Předchozí podnikání s Microsoftem:<br>
+     Kontaktní osoba:<br>
+     Kontaktní telefon:<br>
+     Kontaktní e-mail:<br>
+     Odůvodnění, proč dáváte přednost platbě pomocí faktur před platební kartou:<br>
 
-         For cores increase, provide the following additional information:
+     V případě zvyšování počtu jader zadejte následující další informace:<br>
 
-         (Old quota) Existing Cores:
-         (New quota) Requested cores:
-         Specific region & series of Subscription:
+     (Původní kvóta) Stávající počet jader:<br>
+     (nová kvóta) Požadovaný počet jader:<br>
+     Konkrétní oblast a řada předplatného:<br>
 
     - Položky **Company name** (Název společnosti) a **Company address** (Adresa společnosti) by se měly shodovat s informacemi, které jste zadali v účtu Azure. Pokud chcete informace zobrazit nebo aktualizovat, přečtěte si téma [Změna informací o profilu účtu Azure](change-azure-account-profile.md).
     - Před schválením kreditního limitu je potřeba přidat na webu Azure Portal kontaktní údaje pro fakturaci. Mělo by se jednat o údaje oddělení závazků nebo financí vaší společnosti. Pokud chcete kontaktní údaje pro fakturaci aktualizovat, přejděte do [centra účtů Azure](https://account.azure.com/Profile).

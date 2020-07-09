@@ -68,6 +68,8 @@
       href: How-tos/text-analytics-how-to-keyword-extraction.md
     - name: Rozpoznávání pojmenovaných entit
       href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: Analýza textu pro zdravotnictví
+      href: How-tos/text-analytics-for-health.md
     - name: Použití kontejnerů
       items:
         - name: Instalace a spuštění kontejnerů

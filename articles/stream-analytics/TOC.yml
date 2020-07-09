@@ -88,7 +88,7 @@
           href: stream-analytics-edge-csharp-udf-methods.md
         - name: Uživatelsky definovaná funkce v pro strojové učení
           href: machine-learning-udf.md
-        - name: Ladění uživatelsky definovaných funkcí a aktualizací
+        - name: Ladění uživatelsky definovaných funkcí
           href: debug-user-defined-functions.md
     - name: Optimalizace úlohy Stream Analytics
       items:

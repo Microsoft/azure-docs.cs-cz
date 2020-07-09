@@ -3,23 +3,25 @@ title: Začínáme se službou Azure Cost Management pro partnery
 description: V tomto článku je vysvětlené, jak partneři používají funkce služby Azure Cost Management a jak k ní umožní přístup svým zákazníkům.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 07/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
+ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554559"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "85849862"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
-Azure Cost Management mají přirozeně k dispozici přímí partneři, jejichž zákazníci přešli na Smlouvu se zákazníkem Microsoftu a mají [koupený plán Azure](/partner-center/purchase-azure-plan). V tomto článku je vysvětlené, jak můžou partneři používat funkce služby [Azure Cost Management](../index.yml) k zobrazení nákladů na předplatné v plánu Azure. V článku je také popsané, jak můžou partneři umožnit přístup ke službě Cost Management svým zákazníkům.
+Azure Cost Management mají přirozeně k dispozici přímí partneři, jejichž zákazníci přešli na Smlouvu se zákazníkem Microsoftu a mají [koupený plán Azure](/partner-center/purchase-azure-plan). V tomto článku je vysvětlené, jak můžou partneři používat funkce služby [Azure Cost Management](../index.yml) k zobrazení nákladů na předplatné v plánu Azure. V článku je také popsané, jak můžou partneři umožnit přístup ke službě Cost Management svým zákazníkům za maloobchodní ceny.
 
-V případě přímých partnerů a nepřímých poskytovatelů mají agenti pro správu a globální správu nepřímých poskytovatelů přístup ke službě Cost Management v tenantovi partnera. Prodejci a zákazníci mají přístup ke službě Cost Management v tenantovi zákazníka a vidí náklady pro předplatná, kde se náklady vypočítávají a zobrazují v maloobchodních sazbách. K zobrazení nákladů ale musí mít přístup RBAC k předplatnému v tenantovi zákazníka. Pro tenanta zákazníka je potřeba povolit zásadu viditelnosti nákladů.
+V případě přímých partnerů a nepřímých poskytovatelů mají globální správci a agenti správy přístup ke službě Cost Management v tenantovi partnera a spravovat náklady na úrovni s fakturovaných cen.
+
+Prodejci a zákazníci mají přístup ke službě Cost Management v tenantovi zákazníka a vidí náklady pro předplatná, kde se náklady vypočítávají a zobrazují v maloobchodních sazbách. K zobrazení nákladů ale musí mít přístup RBAC k předplatnému v tenantovi zákazníka. Pro tenanta zákazníka je potřeba povolit zásadu viditelnosti nákladů.
 
 Zákazníci můžou používat funkce služby Cost Management, pokud jim ji zpřístupní jejich partner CSP.
 
@@ -33,10 +35,12 @@ Jak partneři CSP používají Cost Management:
 - K exportu svých dat o nákladech a využití do úložiště objektů blob s předplatným založeným na průběžných platbách.
 
 V tomto příkladu se zobrazují náklady za všechny zákazníky.
-![Příklad nákladů za všechny zákazníky](./media/get-started-partners/customer-costs1.png)
+
+[![Příklad nákladů za všechny zákazníky](./media/get-started-partners/customer-costs1.png)](./media/get-started-partners/customer-costs1.png#lightbox)
 
 V tomto příkladu se zobrazují náklady jednoho zákazníka.
-![Příklad nákladů jednoho zákazníka](./media/get-started-partners/customer-costs2.png)
+
+[![Příklad nákladů pro jednoho zákazníka](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
 Všechny funkce, které jsou dostupné ve službě Azure Cost Management, jsou také k dispozici v rozhraních REST API. Tato rozhraní API můžete použít k automatizaci úloh při řízení nákladů.
 
@@ -50,8 +54,7 @@ Azure Cost Management vyžaduje přístup pro čtení fakturačního účtu nebo
 
 Další informace o tom, jak službě Azure Cost Management povolit a přiřadit přístup k fakturačnímu účtu, najdete v tématu o [přiřazení uživatelských rolí a oprávnění](/partner-center/permissions-overview). Ve fakturačním účtu smí náklady spravovat role **globálního správce** a **agenta správy**.
 
-Přístup ke službě Azure Cost Management v rozsahu předplatného může mít každý uživatel, který má k předplatnému přístup RBAC. Takový uživatel může prohlížet náklady odpovídající maloobchodním tarifům (průběžné platby). Pro zákaznického tenanta je ale potřeba povolit zásadu viditelnosti nákladů. Kompletní seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md).
-
+Přístup ke službě Azure Cost Management v rozsahu předplatného může mít každý uživatel, který má k předplatnému přístup RBAC. Takový uživatel může prohlížet náklady odpovídající maloobchodním tarifům (průběžné platby). Pro tenanty zákazníků je ale potřeba povolit [zásadu viditelnosti nákladů](#enable-the-policy-to-view-azure-usage-charges). Kompletní seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md).
 
 ## <a name="how-cost-management-uses-scopes"></a>Jak Cost Management používá rozsahy
 
@@ -108,15 +111,15 @@ Rozsah zákazníka nezahrnuje zákazníky, kteří využívají aktuální nabí
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Přístup partnerů k rozsahům fakturace ve službě Cost Management
 
-Spravovat a zobrazovat náklady za fakturační účty, fakturační profily a zákazníky přímo v partnerském tenantovi Azure můžou jenom uživatelé s oprávněním **globálního správce** nebo **agenta správy**. Další informace o rolích v centru pro partnery najdete v tématu [Přiřazení uživatelských rolí a oprávnění](/partner-center/permissions-overview).
+Spravovat a zobrazovat náklady za fakturační účty, fakturační profily a zákazníky přímo v partnerském tenantovi Azure můžou jenom uživatelé s oprávněním **globálního správce** nebo **agenta správy**. Další informace o rolích Partnerského centra najdete v tématu [Přiřazení uživatelských rolí a oprávnění](/partner-center/permissions-overview).
 
-## <a name="enable-cost-management-in-the-customer-tenant"></a>Povolení správy nákladů v zákaznickém tenantovi
+## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Povolení správy nákladů pro předplatná tenantů zákazníků
 
-Partneři můžou zákazníkům umožnit přístup ke službě Cost Management, až když podepíšou smlouvu se zákazníkem Microsoftu. Partneři pak můžou povolit zásadu, která zákazníkům umožní zobrazovat vlastní náklady vypočítané podle maloobchodních tarifů s průběžnými platbami. Náklady se zobrazují ve fakturační měně zákazníka. Jsou to náklady na využití v rozsahu spotřebovaného předplatného RBAC a spotřebovaných rozsahů skupin prostředků.
+Partneři můžou zákazníkům umožnit přístup ke službě Cost Management, až když podepíšou smlouvu se zákazníkem Microsoftu. Partneři potom mohou povolit zásadu, která zákazníkům umožní zobrazovat náklady na využití služeb Azure vypočítané podle maloobchodních tarifů s průběžnými platbami. Náklady se zobrazují ve fakturační měně zákazníka. Jsou to náklady na využití v rozsahu spotřebovaného předplatného RBAC a spotřebovaných rozsahů skupin prostředků.
 
 Pokud partner povolí zásadu viditelnosti nákladů, může kterýkoli uživatel, který má v Azure Resource Manageru přístup k předplatnému, spravovat a analyzovat náklady podle tarifů s průběžnými platbami. V podstatě to znamená, že prodejci a zákazníci, kteří mají příslušný přístup RBAC k předplatným Azure, uvidí náklady.
 
-Bez ohledu na zásadu můžou i partneři prohlížet náklady, pokud mají přístup k předplatnému a skupině prostředků.
+Pokud globální správci a agenti správy mají přístup k předplatnému a skupině prostředků, mohou zobrazovat náklady na předplatná bez ohledu na zásady.
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>Povolení zásady zobrazovat poplatky za použití Azure
 
@@ -126,7 +129,7 @@ Na webu Azure Portal se přihlaste k partnerskému tenantovi a vyberte **Správa
 
 V seznamu zákazníků vyberte zákazníka, kterému chcete povolit prohlížet náklady.
 
-![Výběr zákazníků ve službě Cost Management](./media/get-started-partners/customer-list.png)
+[![Výběr zákazníků ve službě Cost Management](./media/get-started-partners/customer-list.png)](./media/get-started-partners/customer-list.png#lightbox)
 
 V části **Nastavení** vyberte **Zásady**.
 
@@ -139,16 +142,17 @@ Pokud je nákladová zásada nastavená na **Ano**, můžou uživatelé předpla
 
 Pokud je zásada viditelnosti nákladů povolená, zobrazí se u všech služeb, které využívají předplatné, náklady podle tarifů s průběžnými platbami. U využitých rezervací se zobrazí nulové poplatky, a to jak u skutečných, tak u amortizovaných nákladů. Nákupy a nároky nejsou přidružené ke konkrétnímu předplatnému. To znamená, že se nákupy v rozsahu předplatného nezobrazují.
 
+### <a name="view-subscription-costs-in-the-customer-tenant"></a>Zobrazení nákladů na předplatná v tenantovi zákazníka
 
-### <a name="view-customer-costs"></a>Zobrazení nákladů zákazníka
+Pokud chcete zobrazit náklady pro předplatné, otevřete v Azure tenanta **Správa nákladů a fakturace** příslušného zákazníka. Pokud chcete začít s kontrolou nákladů, pro požadované předplatné vyberte **Analýza nákladů**. V tenantovi zákazníka si můžete zobrazit náklady pro jednotlivá předplatná samostatně.
 
-Pokud chcete zobrazit náklady na tenanta zákazníka, otevřete **Cost Management a fakturace**. Vyberte **Analýza nákladů**, změňte rozsah na předplatné tenanta zákazníka a můžete začít prohlížet náklady.
-
-![Zobrazení analýzy nákladů zákazníkem ](./media/get-started-partners/customer-tenant-view-cost-analysis.png)
+[![Zobrazení analýzy nákladů jako zákazník ](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
 Analýza nákladů, rozpočty a upozornění jsou k dispozici pro rozsahy RBAC předplatného a skupin prostředků. Použijí se náklady podle tarifů s průběžnými platbami.
 
 V amortizačních zobrazeních a ve skutečných nákladech na rezervované instance v rozsazích RBAC se zobrazí nulové poplatky. Náklady na rezervované instance se zobrazují jenom v těch rozsazích fakturace, kde došlo k nákupu.
+
+Maloobchodní ceny použité pro výpočet nákladů uvedených v tomto zobrazení jsou stejné jako ceny uváděné v cenové kalkulačce Azure pro všechny zákazníky. Uvedené náklady nezahrnují slevy ani kredity, které partner může mít, například získané partnerské kredity, slevy založené na úrovni a globální slevy za služby.
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analýza nákladů
 

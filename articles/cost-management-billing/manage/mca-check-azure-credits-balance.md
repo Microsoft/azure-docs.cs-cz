@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 06/24/2019
 ms.author: banders
-ms.openlocfilehash: e65637f20d14b93c212b1af2f20695ff5dfeb350
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e238a409adda674e1182c0ffd40a4f666d362731
+ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199683"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85361502"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Sledování zůstatku kreditu Azure u smlouvy se zákazníkem Microsoftu
 
@@ -21,7 +21,10 @@ Zůstatek kreditů Azure u fakturačního účtu pro smlouvu se zákazníkem Mic
 
 V rámci fakturačního účtu pro smlouvu se zákazníkem Microsoftu se kredity přiřazují k fakturačnímu profilu. Každý fakturační profil má své vlastní kredity, které se automaticky uplatní u poplatků na příslušné faktuře. K zobrazení zůstatku kreditu Azure u fakturačního profilu musíte mít roli vlastníka, přispěvatele, čtenáře nebo správce faktur daného fakturačního profilu nebo roli vlastníka, přispěvatele nebo čtenáře u fakturačního účtu. Další informace o rolích najdete v tématu [Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure](understand-mca-roles.md).
 
-Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
+> [!NOTE]
+> Může trvat až 24 hodin, než se nový kredit zobrazí na webu Azure Portal. Pokud získáte nový kredit a nevidíte ho na portálu, počkejte 24 hodin.
+
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-access-to-a-microsoft-customer-agreement).
 
 ## <a name="check-your-credit-balance"></a>Kontrola zůstatku kreditu
 
@@ -29,7 +32,7 @@ Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Micros
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte položku **Správa nákladů a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
@@ -53,7 +56,7 @@ Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Micros
 
    ![Snímek obrazovky se zůstatkem kreditů pro fakturační profil](./media/mca-check-azure-credits-balance/mca-credit-balance.png)
 
-   | Období               | Definice                           |
+   | Označení               | Definice                           |
    |--------------------|--------------------------------------------------------|
    | Odhadovaný zůstatek  | Odhadované množství vašich kreditů po zvážení všech fakturovaných a nevyřízených transakcí |
    | Aktuální zůstatek    | Množství kreditů podle vaší poslední faktury. Nezahrnuje žádné nevyřízené transakce |
@@ -66,7 +69,7 @@ Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Micros
 
    ![Snímek obrazovky se seznamy kreditů pro určitý fakturační profil](./media/mca-check-azure-credits-balance/mca-credits-list.png)
 
-   | Období | Definice |
+   | Označení | Definice |
    |---|---|
    | Zdroj | Zdroj pořízení kreditu |
    | Počáteční datum | Datum získání kreditu |
@@ -81,7 +84,7 @@ Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Micros
 
    ![Snímek obrazovky s kreditními transakcemi pro fakturační profil](./media/mca-check-azure-credits-balance/mca-credits-transactions.png)
 
-   | Období | Definice |
+   | Označení | Definice |
    |---|---|
    | Datum transakce | Datum uskutečnění transakce |
    | Popis | Popis transakce |

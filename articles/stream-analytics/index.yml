@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Stream Analytics
-summary: Azure Stream Analytics je plně spravovaná služba analýz v reálném čase navržená tak, aby vám pomohla analyzovat a zpracovávat rychlé streamy dat, která se dají použít k aktivaci výstrah a akcí. Naučte se používat službu Azure Stream Analytics prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.
+summary: Azure Stream Analytics je plně spravovaná služba analýz v reálném čase navržená tak, aby vám pomohla analyzovat a zpracovávat rychlé streamy dat, která se dají použít získávání přehledů, vytváření sestav nebo aktivaci výstrah a akcí. Naučte se používat službu Azure Stream Analytics prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.
 metadata:
   title: Dokumentace ke službě Azure Stream Analytics
-  description: Azure Stream Analytics je plně spravovaná služba analýz v reálném čase navržená tak, aby vám pomohla analyzovat a zpracovávat rychlé streamy dat, která se dají použít k aktivaci výstrah a akcí. Naučte se používat službu Azure Stream Analytics prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.
+  description: Azure Stream Analytics je plně spravovaná služba analýz v reálném čase navržená tak, aby vám pomohla analyzovat a zpracovávat rychlé streamy dat, která se dají použít získávání přehledů, vytváření sestav nebo aktivaci výstrah a akcí. Naučte se používat službu Azure Stream Analytics prostřednictvím našich rychlých zprovoznění, kurzů a ukázek.
   services: service
   ms.service: stream-analytics
   ms.topic: landing-page
   author: mamccrea
   ms.author: mamccrea
   ms.date: 09/16/2019
-  ms.openlocfilehash: 757c60487e4c4c7fedca4824cd40e86cbd9ca465
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.openlocfilehash: 2ef6663ce3ebf21227635fff763d45391281c955
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82130951"
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86119646"
 landingContent:
 - title: Informace o službě Azure Stream Analytics
   linkLists:

@@ -216,8 +216,8 @@
               href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
             - name: Stavové kódy
               href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: Stav publikování
-      href: ./partner-center-portal/publishing-status.md
+    - name: Kontrola a publikování
+      href: review-publish-offer.md
     - name: Aktualizace stávajících nabídek
       href: ./partner-center-portal/update-existing-offer.md
     - name: Aktivace výhod

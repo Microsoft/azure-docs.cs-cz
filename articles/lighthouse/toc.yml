@@ -41,7 +41,7 @@
       href: ./concepts/managed-applications.md
 - name: Návody
   items:
-    - name: Nasazení zákazníků do správy delegovaných prostředků Azure
+    - name: Onboarding zákazníků do služby Azure Lighthouse
       displayName: resource management
       href: ./how-to/onboard-customer.md
     - name: Publikování nabídek spravovaných služeb na Azure Marketplace

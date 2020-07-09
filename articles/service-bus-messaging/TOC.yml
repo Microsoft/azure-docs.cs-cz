@@ -182,6 +182,10 @@
           href: service-bus-nodejs-how-to-use-queues.md
         - name: Publikování a přihlášení k odběru zpráv(starší verze azure-sb)
           href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+    - name: Migrace
+      items:
+        - name: Migrace z ActiveMQ do služby Azure Service Bus
+          href: migrate-jms-activemq-to-servicebus.md
     - name: Integrace
       items:
         - name: Integrace s RabbitMQ

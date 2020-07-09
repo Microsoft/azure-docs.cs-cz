@@ -3,16 +3,16 @@ title: Začínáme s portálem Azure Enterprise
 description: Tento článek vysvětluje, jak zákazníci se smlouvou Azure Enterprise (Azure EA) používají portál Azure Enterprise.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 06/29/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7983afa32ff8104d181fbcdc75a50d12e2240128
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
+ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298104"
+ms.lasthandoff: 06/30/2020
+ms.locfileid: "85560363"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Začínáme s portálem Azure Enterprise
 
@@ -471,6 +471,7 @@ Portál Azure Enterprise vyfiltruje neaktivní registrace, aby nebyly vidět. Ab
 
 ### <a name="enrollment-statuses"></a>Stavy registrace
 
+- **Nová:** Tento stav je vytvořené rezervaci přiřazený po dobu 24 hodin a během dalších 24 hodin se aktualizuje na Čeká na vyřízení.
 - **Čeká na vyřízení:** Správce registrace se musí přihlásit k portálu Azure Enterprise. Po přihlášení se stav registrace přepne na Aktivní.
 - **Aktivní:** Registrace je aktivní a na portálu Azure Enterprise je možné vytvářet účty a předplatná. Registrace zůstane aktivní až do koncového data smlouvy Enterprise.
 - **Neurčené období prodloužení:** Stav Neurčené období prodloužení nastane po uplynutí koncového data smlouvy Enterprise. Umožňuje zákazníkům Azure EA, kteří jsou výslovně přihlášeni k období prodloužení, aby po skončení platnosti jejich smlouvy Enterprise pokračovali v používání služeb Azure po neomezenou dobu.

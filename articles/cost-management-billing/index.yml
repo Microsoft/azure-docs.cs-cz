@@ -1,152 +1,161 @@
-### YamlMime:Hub
+### YamlMime:Landing
 title: Dokumentace ke Cost Managementu a fakturaci Azure
-summary: Cost Management a fakturace Azure vám pomohou seznámit se s fakturací Azure, spravovat váš účet a předplatná, monitorovat a řídit útraty za Azure a optimalizovat využití prostředků. Naučíte se analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
+summary: Cost Management a fakturace Azure vám pomůže seznámit se s fakturací Azure, spravovat váš účet a předplatná, monitorovat a řídit útraty za Azure a optimalizovat využití prostředků. Naučíte se analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
 metadata:
+  title: Cost Management a fakturace
+  description: Cost Management a fakturace Azure vám pomůže seznámit se s fakturací Azure, spravovat váš účet a předplatná, monitorovat a řídit útraty za Azure a optimalizovat využití prostředků. Naučíte se analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
   ms.service: cost-management-billing
-  description: Cost Management a fakturace Azure vám pomohou seznámit se s fakturací Azure, spravovat váš účet a předplatná, monitorovat a řídit útraty za Azure a optimalizovat využití prostředků. Naučíte se analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat doporučení a reagovat na ně.
-  ms.topic: hub-page
+  ms.topic: landing-page
+  ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 01/24/2019
-  ms.openlocfilehash: c1fbce7ba94ad097f948a36f93b1f997225c7086
-  ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+  ms.date: 06/01/2020
+  ms.openlocfilehash: 04b52a6aff1a8a24f2aa9988afec60c69c88c138
+  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/25/2020
-  ms.locfileid: "83833598"
-highlightedContent:
-  items:
-  - title: Co je Cost Management a fakturace?
-    itemType: overview
-    url: cost-management-billing-overview.md
-  - title: Analýza nákladů a vytváření rozpočtů
-    itemType: learn
-    url: https://docs.microsoft.com/learn/modules/analyze-costs-create-budgets-azure-cost-management/?WT.mc_id=costmanagementcontent_docsazurebilling_-inproduct-learn
-  - title: Osvědčené postupy Cost Managementu
-    itemType: concept
-    url: ./costs/cost-mgt-best-practices.md
-conceptualContent:
-  items:
-  - title: Začínáme se službou Azure Billing
+  ms.lasthandoff: 07/08/2020
+  ms.locfileid: "86113390"
+landingContent:
+- title: Analýza nákladů
+  linkLists:
+  - linkListType: overview
     links:
-    - url: ./understand/review-individual-bill.md
-      itemType: tutorial
-      text: Kontrola jednotlivého vyúčtování
-    - url: ./understand/review-customer-agreement-bill.md
-      itemType: tutorial
-      text: Kontrola vyúčtování Smlouvy se zákazníkem
-    - url: ./understand/review-partner-agreement-bill.md
-      itemType: tutorial
-      text: Kontrola vyúčtování Smlouvy s partnerem
-    - url: ./understand/review-enterprise-agreement-bill.md
-      itemType: tutorial
-      text: Kontrola vyúčtování smlouvy Enterprise
-    footerLink:
-      text: Další informace
-      url: ./understand/index.yml
-  - title: Bezplatný účet
+    - text: Co je Cost Management a fakturace?
+      url: cost-management-billing-overview.md
+  - linkListType: get-started
     links:
-    - url: ./manage/create-free-services.md
-      itemType: concept
-      text: Vytvoření bezplatných služeb
-    - url: ./manage/avoid-charges-free-account.md
-      itemType: concept
-      text: Jak se vyhnout poplatkům
-    - url: ./manage/check-free-service-usage.md
-      itemType: concept
-      text: Kontrola využití
-    - url: ./manage/upgrade-azure-subscription.md
-      itemType: concept
-      text: Upgrade předplatného
-  - title: Správa využití a nákladů na Azure
+    - text: Učte se tempem, které vám vyhovuje
+      url: https://aka.ms/costmgmt/learn
+    - text: Videa k Azure Cost Managementu
+      url: https://www.youtube.com/c/AzureCostManagement
+    - text: Začínáme s analýzou nákladů
+      url: costs/quick-acm-cost-analysis.md
+  - linkListType: how-to-guide
     links:
-    - url: ./costs/quick-acm-cost-analysis.md
-      itemType: quickstart
-      text: Začínáme s analýzou nákladů
-    - url: ./costs/tutorial-acm-create-budgets.md
-      itemType: tutorial
-      text: Vytváření a správa rozpočtů
-    - url: ./costs/tutorial-export-acm-data.md
-      itemType: tutorial
-      text: Export dat o nákladech a využití
-    - url: ./costs/tutorial-acm-opt-recommendations.md
-      itemType: tutorial
-      text: Využití doporučení pro úsporu nákladů
-    - url: ./costs/cost-analysis-common-uses.md
-      itemType: how-to-guide
-      text: Použití analýzy nákladů pro běžné úlohy
-    footerLink:
-      text: Další informace
-      url: ./costs/index.yml
-  - title: Správa účtů a předplatných Azure
+    - text: Použití analýzy nákladů pro běžné úlohy
+      url: costs/cost-analysis-common-uses.md
+    - text: Analýza nákladů s využitím aplikace šablony Power BI
+      url: https://docs.microsoft/azure/cost-management-billing/costs/analyze-cost-data-azure-cost-management-power-bi-template-app
+    - text: Propojení s Power BI Desktopem
+      url: /power-bi/desktop-connect-azure-cost-management
+  - linkListType: tutorial
     links:
-    - url: ./manage/manage-billing-access.md
-      itemType: how-to-guide
-      text: Udělení přístupu k fakturaci
-    - url: ./manage/change-azure-account-profile.md
-      itemType: how-to-guide
-      text: Úprava profilu
-    - url: ./manage/resolve-past-due-balance.md
-      itemType: how-to-guide
-      text: Řešení zůstatku po splatnosti
-    - url: ./manage/subscription-disabled.md
-      itemType: how-to-guide
-      text: Opětovná aktivace předplatného
-    - url: ./manage/billing-subscription-transfer.md
-      itemType: how-to-guide
-      text: Převod vlastnictví
-    - url: ./manage/cancel-azure-subscription.md
-      itemType: how-to-guide
-      text: Zrušení předplatného
-    - url: ./manage/change-credit-card.md
-      itemType: how-to-guide
-      text: Změna platební karty
-    - url: ./manage/add-change-subscription-administrator.md
-      itemType: how-to-guide
-      text: Změna správce
-    - url: ./manage/create-subscription.md
-      itemType: how-to-guide
-      text: Vytvoření dalších předplatných
-    footerLink:
-      text: Další informace
-      url: ./manage/index.yml
-  - title: Úspory s využitím rezervací Azure
+    - text: Kontrola vyúčtování jednotlivého účtu
+      url: understand/review-individual-bill.md
+    - text: Kontrola vyúčtování Smlouvy se zákazníkem Microsoftu
+      url: understand/review-customer-agreement-bill.md
+    - text: Kontrola vyúčtování smlouvy Enterprise
+      url: understand/review-enterprise-agreement-bill.md
+- title: Správa nákladů
+  linkLists:
+  - linkListType: tutorial
     links:
-    - url: ./reservations/save-compute-costs-reservations.md
-      itemType: concept
-      text: Co jsou rezervace Azure?
-    - url: ./reservations/manage-reserved-vm-instance.md
-      itemType: how-to-guide
-      text: Správa rezervací Azure
-    - url: ./reservations/monthly-payments-reservations.md
-      itemType: how-to-guide
-      text: Nákup rezervace s měsíčními platbami
-    - url: ./reservations/reservation-renew.md
-      itemType: how-to-guide
-      text: Obnovení rezervací
-    - url: ./reservations/exchange-and-refund-azure-reservations.md
-      itemType: how-to-guide
-      text: Výměny rezervací a vrácení peněz
-    footerLink:
-      text: Další informace
-      url: ./reservations/index.yml
-  - title: Zapojení
+    - text: Vytváření a správa rozpočtů
+      url: costs/tutorial-acm-create-budgets.md
+    - text: Export dat o nákladech a využití
+      url: costs/tutorial-export-acm-data.md
+  - linkListType: concept
     links:
-    - url: https://feedback.azure.com/forums/906772-cost-management
-      itemType: how-to-guide
-      text: Zpětná vazba ke Cost Managementu
-    - url: https://twitter.com/azurecostmgmt
-      itemType: how-to-guide
-      text: Cost Management na Twitteru
-    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22cost%20management%22&location=category:Azure&collapse_discussion=true
-      itemType: how-to-guide
-      text: Technická komunita Azure Cost Management
-    - url: https://feedback.azure.com/forums/170030-signup-and-billing
-      itemType: how-to-guide
-      text: Žádost o funkci služby fakturace
-    - url: https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=%22billing%22&noSynonym=false&location=category:Azure&collapse_discussion=true
-      itemType: how-to-guide
-      text: Technická komunita fakturace Azure
-    - url: https://docs.microsoft.com/answers/topics/azure-cost-management.html
-      itemType: how-to-guide
-      text: Dotaz na fóru Cost Managementu a fakturace
+    - text: Správa nákladů s využitím automatizace
+      url: https://docs.microsoft/azure/cost-management-billing/costs/manage-automation
+    - text: Vysvětlení podmínek použití
+      url: understand/understand-usage.md
+    - text: Vysvětlení podmínek fakturace
+      url: understand/understand-invoice.md
+    - text: Podmínky využití Smlouvy se zákazníkem Microsoftu
+      url: understand/mca-understand-your-usage.md
+    - text: Fakturační podmínky Smlouvy se zákazníkem Microsoftu
+      url: understand/mca-understand-your-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Použití upozornění na náklady
+      url: costs/cost-mgt-alerts-monitor-usage-spending.md
+    - text: Zobrazení a stažení faktury za Azure
+      url: understand/download-azure-invoice.md
+    - text: Zobrazení a stažení informací o využití a poplatcích za Azure
+      url: understand/download-azure-daily-usage.md
+    - text: Zobrazení poplatků za externí služby
+      url: understand/understand-azure-marketplace-charges.md
+- title: Optimalizace nákladů
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Osvědčené postupy ve službě Azure Cost Management
+      url: costs/cost-mgt-best-practices.md
+    - text: Úspory s využitím rezervací Azure
+      url: reservations/save-compute-costs-reservations.md
+  - linkListType: tutorial
+    links:
+    - text: Využití doporučení
+      url: costs/tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Jak zabránit neočekávaným poplatkům
+      url: manage/getting-started.md
+  - linkListType: learn
+    links:
+    - text: Začněte s optimalizací nákladů ještě dnes
+      url: https://azure.microsoft/overview/cost-optimization/
+    - text: Predikce nákladů a optimalizace útraty pro Azure
+      url: https://docs.microsoft/learn/modules/predict-costs-and-optimize-spending/
+    - text: Dobře navržená architektura Microsoft Azure – optimalizace nákladů
+      url: https://docs.microsoft/learn/modules/azure-well-architected-cost-optimization/
+- title: Konfigurace správy nákladů a fakturace
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Vysvětlení a práce s rozsahy
+      url: costs/understand-work-scopes.md
+    - text: Vysvětlení dat služby Cost Management
+      url: costs/understand-cost-mgt-data.md
+    - text: Role EA v Azure
+      url: manage/understand-ea-roles.md
+    - text: Role Smlouvy se zákazníkem Microsoftu v Azure
+      url: manage/understand-mca-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Přiřazení přístupu k datům služby Cost Management
+      url: costs/assign-access-acm-data.md
+    - text: Zobrazení fakturačních účtů
+      url: manage/view-all-accounts.md
+    - text: Vytvoření dalšího předplatného
+      url: manage/create-subscription.md
+    - text: Změna platební karty
+      url: manage/change-credit-card.md
+    - text: Změna správce
+      url: manage/add-change-subscription-administrator.md
+    - text: Platba na základě faktury
+      url: manage/pay-by-invoice.md
+- title: Kontrola účtů Smlouvy se zákazníkem Microsoftu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Fakturační účty pro smlouvu se zákazníkem Microsoftu
+      url: understand/mca-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zobrazení a stažení daňových dokumentů
+      url: understand/mca-download-tax-document.md
+    - text: Platba vyúčtování Smlouvy se zákazníkem Microsoftu
+      url: understand/pay-bill.md
+- title: Nákup rezervací
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Volba rezervace k zakoupení
+      url: reservations/determine-reservation-purchase.md
+    - text: Výměny rezervací a vrácení peněz
+      url: reservations/exchange-and-refund-azure-reservations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Nákup rezervace
+      url: reservations/prepare-buy-reservation.md
+    - text: Správa rezervací
+      url: reservations/manage-reserved-vm-instance.md
+    - text: Zobrazení nákupů rezervací
+      url: reservations/view-purchase-refunds.md
+    - text: Zpětné vyúčtování rezervací
+      url: reservations/charge-back-usage.md
+    - text: Obnovení rezervací
+      url: reservations/reservation-renew.md

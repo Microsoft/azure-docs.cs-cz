@@ -520,6 +520,8 @@
         - name: Konfigurace kontejnerů služby Speech
           displayName: 'containers,configure containers,container config,configuration'
           href: speech-container-configuration.md
+        - name: Dávkové zpracování s využitím kontejnerů služby Speech
+          href: speech-container-batch-processing.md
         - name: Kontejnery služby Speech s Kubernetes a Helmem
           displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
           href: speech-container-howto-on-premises.md
