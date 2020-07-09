@@ -1,18 +1,18 @@
 ---
 title: Sestavení cílové stránky v Azure Marketplace | Azure
 description: Naučte se, jak vytvořit cílovou stránku v Azure Marketplace a Microsoft AppSource, pro vydavatele aplikací a služeb.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 06/04/2018
-ms.author: dsindona
-ms.openlocfilehash: 0952c1d4b6955ff20f06afc6eaded18fbd105708
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7f80910e19348dfa3540f141424205a7531f5e7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80387797"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102816"
 ---
 # <a name="build-your-landing-page"></a>Sestavení cílové stránky
 

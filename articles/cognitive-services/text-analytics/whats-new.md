@@ -8,18 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 7ab886b65e665bdd38e2461e49fa051213602f0e
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462786"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103394"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Co je nového v rozhraní API pro analýzu textu?
 
 Rozhraní API pro analýzu textu se aktualizuje průběžně. V tomto článku najdete informace o nových vydaných verzích a funkcích, abyste měli přehled o aktuálním vývoji.
+
+## <a name="july-2020"></a>Červenec 2020
+
+### <a name="text-analytics-for-health-container-public-gated-preview"></a>Analýza textu pro veřejný ověřovaný náhled kontejneru stavu
+
+Analýza textu pro kontejner Health je nyní ve veřejné službě gated Preview, která umožňuje extrakci informací z nestrukturovaného textu v angličtině v klinických dokumentech, jako jsou například formuláře pro příjem pacientů, lékařské poznámky, výzkumné doklady a souhrny vypouštění. V současné době se vám nebudou účtovat Analýza textu pro využití kontejneru stavů. 
+
+Kontejner nabízí následující funkce:
+
+* Rozpoznávání pojmenovaných entit
+* Extrakce vztahu
+* Propojení entit
+* Opačné číslo
+
+
+> [!div class="nextstepaction"]
+> [Další informace o Analýza textu pro kontejner stavu](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>Květen 2020
 
@@ -61,9 +78,6 @@ V případě potřeby se změnily názvy následujících vlastností v odpověd
 ### <a name="text-analytics-api-v31-public-preview"></a>Rozhraní API pro analýzu textu v 3.1 Public Preview
    * Nové Analýza mínění dolování funkcí – [názory](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
    * Nový [ `PII` Filtr domény Personal ()](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) pro chráněné informace o stavu ( `PHI` ).
-   * Nové kategorie osobní ( `PII` ):
-      * Mezinárodní klasifikace nemocí (ICD – 9-CM)
-      * Mezinárodní klasifikace nemocí (ICD – 10 – CM)
 
 > [!div class="nextstepaction"]
 > [Další informace o rozhraní API pro analýzu textu v 3.1 verze Preview](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -75,7 +89,7 @@ V případě potřeby se změnily názvy následujících vlastností v odpověd
 V rámci [sjednocené verze sady Azure SDK](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)je teď sada rozhraní API pro analýzu textu V3 SDK dostupná jako verze Public Preview pro následující programovací jazyky:
    * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
    * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
-   * [JavaScript (Node. js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
+   * [JavaScript (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
    * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
    
    > [!div class="nextstepaction"]
@@ -94,7 +108,7 @@ Další typy entit jsou teď dostupné ve službě pro rozpoznávání pojmenova
 
 * Rozpoznávání následujících typů entit osobních informací (jenom v angličtině):
     * Person (Osoba)
-    * Má organizace
+    * Organizace
     * Stáří jako podtyp v rámci množství
     * Datum jako podtyp v hodnotě DateTime
     * E-mail 

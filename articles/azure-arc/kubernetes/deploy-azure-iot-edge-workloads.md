@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Nasazení Azure IoT Edgech úloh
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 2a688a221b2f4865d51bca2ebf4aaa0b1f714290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193783"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103972"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Nasazení Azure IoT Edgech úloh (Preview)
 
@@ -25,7 +25,7 @@ Azure ARC a Azure IoT Edge společně doplňují možnosti. Azure ARC poskytuje 
 
 ## <a name="pre-requisites"></a>Požadavky
 
-* [Zaregistrujte IoT Edge zařízení](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#register-an-iot-edge-device) a [Nasaďte modul simulovaného senzoru teploty](https://docs.microsoft.com/azure/iot-edge/quickstart-linux#deploy-a-module). Nezapomeňte si poznamenat připojovací řetězec zařízení.
+* [Zaregistrujte IoT Edge zařízení](../../iot-edge/quickstart-linux.md#register-an-iot-edge-device) a [Nasaďte modul simulovaného senzoru teploty](../../iot-edge/quickstart-linux.md#deploy-a-module). Nezapomeňte si poznamenat připojovací řetězec zařízení.
 
 * Použijte [podporu IoT Edge pro Kubernetes](https://aka.ms/edgek8sdoc) k jejímu nasazení prostřednictvím operátoru toku služby Azure ARC.
 

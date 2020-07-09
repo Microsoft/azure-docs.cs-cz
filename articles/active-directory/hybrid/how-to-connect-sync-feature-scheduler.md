@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f5cf9487f6f10ce661009e5e504be51a098b7e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357388"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103547"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Plánovač
 Toto téma popisuje integrovaný Plánovač v Azure AD Connect Sync (synchronizační modul).
@@ -39,6 +39,10 @@ Scheduler zodpovídá za dvě úlohy:
 * **Úlohy údržby**. Obnovení klíčů a certifikátů pro resetování hesla a službu Device Registration Service (DRS). Vyprázdnit staré položky v protokolu operací.
 
 Samotný Plánovač je vždycky spuštěný, ale dá se nakonfigurovat tak, aby se spouštěl jenom jeden nebo žádný z těchto úkolů. Například pokud potřebujete mít vlastní proces synchronizačního cyklu, můžete tuto úlohu v Plánovači zakázat, ale úlohu údržby pořád spustit.
+
+>[!IMPORTANT]
+>Bude nutné zajistit, aby byl cyklus synchronizace spuštěn alespoň každých 7 dní. V takovém případě může dojít k problémům s synchronizací, které budou vyžadovat, abyste spustili úplnou synchronizaci, která se má vyřešit.
+
 
 ## <a name="scheduler-configuration"></a>Konfigurace Scheduleru
 Pokud chcete zobrazit aktuální konfigurační nastavení, přejděte do PowerShellu a spusťte `Get-ADSyncScheduler` . Zobrazuje se vám obrázek podobný tomuto:

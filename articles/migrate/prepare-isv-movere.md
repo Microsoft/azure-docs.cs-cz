@@ -3,11 +3,12 @@ title: Příprava Azure Migrate pro práci s nástrojem/stěhovací společnosti
 description: Tento článek popisuje, jak připravit Azure Migrate pro práci s nástrojem ISV nebo stěhovací společnosti a jak začít používat nástroj.
 ms.topic: how-to
 ms.date: 06/10/2020
-ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7652cb34705bac56a79b5c30e6bda3dac69af0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770369"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103921"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Příprava na práci s nástrojem ISV nebo jeho stěhovací pracovníky
 
@@ -35,7 +36,7 @@ Ve vašem předplatném Azure vyžaduje váš účet **Microsoft. Authorization/
 1. Na webu Azure Portal otevřete **Předplatná**.
 2. Vyberte příslušné předplatné. Pokud ho nevidíte, vyberte **Filtr globálních předplatných**. 
 3. Vyberte **Moje oprávnění**. Pak vyberte **kliknutím sem zobrazíte informace o úplných přístupech k tomuto předplatnému**.
-4. V **zobrazení přiřazení rolí**  >  **View**Zkontrolujte oprávnění. Pokud váš účet nemá oprávnění, požádejte správce předplatného, aby vás přidal do role [Správce přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) nebo role [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) .
+4. V **zobrazení přiřazení rolí**  >  **View**Zkontrolujte oprávnění. Pokud váš účet nemá oprávnění, požádejte správce předplatného, aby vás přidal do role [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) nebo role [vlastníka](../role-based-access-control/built-in-roles.md#owner) .
 
 ## <a name="allow-access-to-urls"></a>Povolení přístupu k adresám URL
 

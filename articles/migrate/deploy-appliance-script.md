@@ -3,15 +3,16 @@ title: Nastavení zařízení Azure Migrate pomocí skriptu
 description: Naučte se, jak nastavit zařízení Azure Migrate pomocí skriptu.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: d5603aaef0a1c3e784f455777302c23e6724fbe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052462"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102442"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Nastavení zařízení pomocí skriptu
 
-Podle tohoto článku vytvořte [zařízení Azure Migrate](deploy-appliance.md) pro účely posouzení/migrace virtuálních počítačů VMware a virtuálních počítačů Hyper-V. Spustíte skript pro vytvoření zařízení a ověříte, že se může připojit k Azure. 
+Podle tohoto článku vytvořte [zařízení Azure Migrate](./migrate-appliance-architecture.md) pro účely posouzení/migrace virtuálních počítačů VMware a virtuálních počítačů Hyper-V. Spustíte skript pro vytvoření zařízení a ověříte, že se může připojit k Azure. 
 
 Zařízení pro virtuální počítače VMware a Hyper-V můžete nasadit pomocí skriptu nebo pomocí šablony, kterou stáhnete z Azure Portal. Použití skriptu je užitečné, pokud nemůžete vytvořit virtuální počítač pomocí stažené šablony.
 

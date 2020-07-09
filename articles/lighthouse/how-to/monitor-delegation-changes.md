@@ -1,18 +1,18 @@
 ---
 title: Sledování změn delegování ve vašem tenantovi pro správu
 description: Přečtěte si, jak monitorovat aktivitu delegování z klientů zákazníka do vašeho spravovaného tenanta.
-ms.date: 03/30/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 9a772cc577392558f050211b7f767928ecbb707b
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b30cbc025f97ab76be55f0f83e15603b40092ce3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919144"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105162"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Sledování změn delegování ve vašem tenantovi pro správu
 
-Jako poskytovatel služeb možná budete chtít vědět, že předplatná zákazníka nebo skupiny prostředků jsou delegovány do vašeho tenanta prostřednictvím [delegované správy prostředků Azure](../concepts/azure-delegated-resource-management.md)nebo když se odebraly dřív delegované prostředky.
+Jako poskytovatel služeb možná budete chtít vědět, že předplatná zákazníků nebo skupiny prostředků jsou delegovaná na vašeho tenanta prostřednictvím [Azure Lighthouse](../overview.md)nebo když se odebraly dřív delegované prostředky.
 
 V rámci správy tenanta sleduje [Protokol aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) aktivitu delegování na úrovni tenanta. Tato zaznamenaná aktivita zahrnuje všechny přidané nebo odebrané delegace ze všech zákaznických klientů.
 
@@ -158,5 +158,5 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak začlenit zákazníky do [správy delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md).
+- Naučte se začlenit zákazníky do [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
 - Přečtěte si o [Azure monitor](../../azure-monitor/index.yml) a [protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md).

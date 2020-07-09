@@ -1,20 +1,16 @@
 ---
-title: Stav asynchronních operací
-description: Popisuje, jak sledovat asynchronní operace v Azure. Zobrazuje hodnoty, které použijete k získání stavu dlouhotrvající operace.
-services: event-grid
-author: spelluru
-ms.service: event-grid
+title: Stav Event Grid asynchronních operací
+description: Popisuje, jak sledovat Event Grid asynchronní operace v Azure. Zobrazuje hodnoty, které použijete k získání stavu dlouhotrvající operace.
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.author: spelluru
-ms.openlocfilehash: fb3479271733ee218da8a842956f3a8996e07f61
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 07/07/2020
+ms.openlocfilehash: 621490a9f56e88baaf343c1c2a072ab84aa7d3ef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82892014"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103326"
 ---
-# <a name="track-asynchronous-azure-operations"></a>Sledování asynchronních operací Azure
+# <a name="track-event-grid-asynchronous-azure-operations"></a>Sledování Event Grid asynchronních operací Azure
 Některé operace Azure REST běží asynchronně, protože operaci nejde dokončit rychle. Tento článek popisuje, jak sledovat stav asynchronních operací prostřednictvím hodnot vrácených v odpovědi.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Stavové kódy pro asynchronní operace
@@ -69,11 +65,11 @@ Tělo odpovědi z této operace obsahuje informace o operaci. Následující př
 }
 ```
 
-Vrátí `status` se jenom pro všechny odpovědi. Objekt Error se vrátí, když se stav nezdařil nebo byl zrušen. Všechny ostatní hodnoty jsou volitelné; Proto se odpověď, kterou dostanete, může zobrazit jinak než v příkladu.
+`status`Vrátí se jenom pro všechny odpovědi. Objekt Error se vrátí, když se stav nezdařil nebo byl zrušen. Všechny ostatní hodnoty jsou volitelné; Proto se odpověď, kterou dostanete, může zobrazit jinak než v příkladu.
 
 ## <a name="provisioningstate-values"></a>hodnoty provisioningState
 
-Operace, které vytvářejí, aktualizují nebo odstraňují (PUT, PATCH, DELETE) prostředek, obvykle `provisioningState` vracejí hodnotu. Po dokončení operace se vrátí jedna z následujících tří hodnot: 
+Operace, které vytvářejí, aktualizují nebo odstraňují (PUT, PATCH, DELETE) prostředek, obvykle vracejí `provisioningState` hodnotu. Po dokončení operace se vrátí jedna z následujících tří hodnot: 
 
 * Úspěch
 * Failed

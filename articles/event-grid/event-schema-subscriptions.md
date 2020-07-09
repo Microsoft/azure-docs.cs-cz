@@ -1,18 +1,14 @@
 ---
 title: Předplatné Azure jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro události předplatného s Azure Event Grid
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: reference
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 72b1a73bf418b417cd29f88063781e7b45979998
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393228"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105893"
 ---
 # <a name="azure-subscription-as-an-event-grid-source"></a>Předplatné Azure jako zdroj Event Grid
 
@@ -35,7 +31,7 @@ Předmět události je ID prostředku prostředku, který je cílem operace. Chc
 
 Předplatné Azure generuje události správy z Azure Resource Manager, například když se vytvoří virtuální počítač nebo se odstraní účet úložiště.
 
-| Typ události | Popis |
+| Typ události | Description |
 | ---------- | ----------- |
 | Microsoft. Resources. ResourceActionCancel | Je aktivována při zrušení akce u prostředku. |
 | Microsoft. Resources. ResourceActionFailure | Vyvolá se v případě, že akce u prostředku není úspěšná. |
@@ -235,7 +231,7 @@ Následující příklad ukazuje schéma pro událost **ResourceActionSuccess** 
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
@@ -248,7 +244,7 @@ Událost má následující data nejvyšší úrovně:
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | autorizace | odkazy objektů | Požadovaná autorizace pro operaci. |
 | podpory | odkazy objektů | Vlastnosti deklarací identity. Další informace najdete v tématu [specifikace JWT](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |

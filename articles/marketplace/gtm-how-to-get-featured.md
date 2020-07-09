@@ -1,17 +1,18 @@
 ---
 title: Služby pro uvedení na trh – jak získat vybrané na webu Marketplace | Azure Marketplace
 description: Služby pro uvedení na trh – v této části se dozvíte, jak získat seznam doporučený pro Azure Marketplace
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: aac3f87c642559b0dfa13c38da448e425df3ffa2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 09f5d61984d5802184d70867f94815fac8fe2b7d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103564"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>Jak získat Doporučené informace v AppSource a Azure Marketplace
 

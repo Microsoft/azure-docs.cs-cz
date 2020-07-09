@@ -3,11 +3,12 @@ title: Příprava serverů Windows Server 2003 na migraci pomocí Azure Migrate
 description: Přečtěte si, jak připravit servery Windows Server 2003 na migraci pomocí Azure Migrate.
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 33519764b138c7711e6c03a85aa33ec6f936a748
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e33742d59972d491c1efb8d0f1453c1226d4625
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84172281"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103938"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Příprava počítačů s Windows serverem 2003 k migraci
 
@@ -24,7 +25,7 @@ Tento článek popisuje, jak připravit počítače s Windows serverem 2003 pro 
 
 Před migrací zkontrolujte, jestli je nainstalovaná služba Hyper-V Integration Services, a pak v případě potřeby nainstalujte.
 
-1. Postupujte podle [těchto pokynů](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) a ověřte, zda je nainstalována.
+1. Postupujte podle [těchto pokynů](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#turn-an-integration-service-on-or-off-using-hyper-v-manager) a ověřte, zda je nainstalována.
 2. Pokud není nainstalovaný, přihlaste se k počítači se systémem Windows Server 2012 R2/Windows Server 2012 s rolí Hyper-V.
 3. Přejděte do instalačního souboru na adrese **C:\Windows\System32\vmguest.ISO**a soubor připojte.
 2. Zkopírujte instalační složku na počítač s Windows serverem 2003 a nainstalujte integrační služby.

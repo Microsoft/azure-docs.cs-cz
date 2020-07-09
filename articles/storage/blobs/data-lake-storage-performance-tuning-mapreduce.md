@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f5de8da90ac3356480fd809af68ab2c8b30540aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e4030583ac902093c30374c24b877e3f089eb02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465945"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106216"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: MapReduce, HDInsight & Azure Data Lake Storage Gen2
 
@@ -56,7 +57,7 @@ Velikost paměti pro mapu a omezení úloh bude závislá na konkrétní úloze.
 
 Pro účely ladění MapReduce. job. map/MapReduce. job. redukuje byste měli zvážit množství celkové dostupné paměti PŘÍZe k použití.  Tyto informace jsou k dispozici v Ambari.  Přejděte na PŘÍZe a zobrazte kartu konfigurace.  V tomto okně se zobrazí paměť PŘÍZe.  Paměť PŘÍZe byste měli vynásobit počtem uzlů v clusteru, aby se získala celková paměť PŘÍZe.
 
-    Total YARN memory = nodes * YARN memory per node
+Celková paměť PŘÍZ = uzly * PŘÍZe paměť na uzel
 
 Pokud používáte prázdný cluster, může být paměť celkovou paměti PŘÍZí pro váš cluster.  Pokud jiné aplikace používají paměť, můžete zvolit, že se má použít jenom část paměti clusteru, a to snížením počtu mapovačů nebo reduktorů počtu kontejnerů, které chcete použít.  
 
@@ -64,7 +65,7 @@ Pokud používáte prázdný cluster, může být paměť celkovou paměti PŘÍ
 
 Kontejnery PŘÍZe určují množství souběžnosti, které je k dispozici pro úlohu.  Využijte celkovou paměť PŘÍZe a rozdělte ji pomocí MapReduce. map. Memory.  
 
-    # of YARN containers = total YARN memory / mapreduce.map.memory
+\#kontejnery PŘÍZ = celková paměť PŘÍZe/MapReduce. map. Memory
 
 **Krok 5: nastavte MapReduce. job. Maps/MapReduce. job. redukujes**
 
@@ -84,18 +85,19 @@ V tomto příkladu předpokládáme, že naše úloha je jedinou úlohou, která
 
 V tomto příkladu je spuštěná úloha náročné na vstupně-výstupní operace a rozhodnete, že povolenou paměti pro úlohy mapy budou dostačující.
 
-    mapreduce.map.memory = 3GB
+MapReduce. map. Memory = povolenou
 
 **Krok 3: určení celkové paměti PŘÍZe**
 
-    Total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
+Celková paměť z clusteru je 8 uzlů * 96GB paměti PŘÍZe D14 = 768GB
+
 **Krok 4: výpočet počtu kontejnerů PŘÍZe**
 
-    # of YARN containers = 768GB of available memory / 3 GB of memory =   256
+\#kontejnerů PŘÍZ = 768GB dostupné paměti/3 GB paměti = 256
 
 **Krok 5: nastavte MapReduce. job. Maps/MapReduce. job. redukujes**
 
-    mapreduce.map.jobs = 256
+mapreduce.map.jobs = 256
 
 ## <a name="examples-to-run"></a>Příklady spuštění
 
@@ -108,12 +110,18 @@ Tady je několik ukázkových příkazů pro výchozí bod, které spouští Map
 
 **Teragen**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 abfs://example/data/1TB-sort-input
+```
 
 **Terasort**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 abfs://example/data/1TB-sort-input abfs://example/data/1TB-sort-output
+```
 
 **Teravalidate**
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```cmd
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 abfs://example/data/1TB-sort-output abfs://example/data/1TB-sort-validate
+```

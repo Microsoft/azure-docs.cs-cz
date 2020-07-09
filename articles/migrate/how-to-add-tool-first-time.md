@@ -3,15 +3,16 @@ title: Přidání nástroje pro vyhodnocení/migraci do Azure Migrate
 description: Popisuje, jak vytvořit projekt Azure Migrate a přidat nástroj pro vyhodnocení/migraci.
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a94e3cc18f46c457d6ed54ef88c62adefb07c5b9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82901199"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102527"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>První přidání nástroje pro vyhodnocení/migraci
 
-Tento článek popisuje, jak poprvé přidat nástroj pro vyhodnocení nebo migraci do projektu [Azure Migrate](migrate-overview.md) .  
+Tento článek popisuje, jak poprvé přidat nástroj pro vyhodnocení nebo migraci do projektu [Azure Migrate](./migrate-services-overview.md) .  
 Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a virtuálních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci a také další [nabídky](migrate-services-overview.md#isv-integration) nástrojů a nezávislí výrobci softwaru (ISV). 
 
 ## <a name="check-permissions-to-create-project"></a>Ověřit oprávnění pro vytvoření projektu

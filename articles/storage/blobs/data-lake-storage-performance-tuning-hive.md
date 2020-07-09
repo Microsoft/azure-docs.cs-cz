@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 9a54565f320ae45a4a8297a40027c5e6b3b25202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 522f9215a0b66c5e6bec5abf41e45489efec19ac
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465962"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106307"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: podregistr, & HDInsight Azure Data Lake Storage Gen2
 
@@ -56,17 +57,18 @@ Tady je nejdůležitější nastavení pro optimalizaci pro zlepšení výkonu D
 
 Souběžný počet probíhajících úloh nebo paralelismu bude svázán s celkovou pamětí PŘÍZe.  Počet kontejnerů PŘÍZe určí, kolik souběžných úloh může být spuštěno.  Pro nalezení paměti PŘÍZe na uzel můžete přejít na Ambari.  Přejděte na PŘÍZe a zobrazte kartu konfigurace.  V tomto okně se zobrazí paměť PŘÍZe.  
 
-        Total YARN memory = nodes * YARN memory per node
-        # of YARN containers = Total YARN memory / Tez container size
+- Celková paměť PŘÍZ = uzly * PŘÍZe paměť na uzel
+- \#kontejnerů PŘÍZ = celková paměť PŘÍZe/velikost kontejneru tez
+
 Klíčem ke zvýšení výkonu pomocí Data Lake Storage Gen2 je co nejvíc zvýšit souběžnost.  Tez automaticky vypočítá počet úloh, které by se měly vytvořit, takže je nemusíte nastavovat.   
 
 ## <a name="example-calculation"></a>Příklad výpočtu
 
 Řekněme, že máte cluster D14 s 8 uzly.  
 
-    Total YARN memory = nodes * YARN memory per node
-    Total YARN memory = 8 nodes * 96GB = 768GB
-    # of YARN containers = 768GB / 3072MB = 256
+- Celková paměť PŘÍZ = uzly * PŘÍZe paměť na uzel
+- Celková paměť PŘÍZ = 8 uzlů * 96GB = 768GB
+- \#kontejnerů PŘÍZ = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>Další informace o optimalizaci podregistru
 

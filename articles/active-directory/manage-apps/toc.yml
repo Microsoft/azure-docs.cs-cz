@@ -105,12 +105,8 @@
       items:
         - name: Přidání cloudové aplikace
           items:
-            - name: Přidání galerie v galerii
-              href: add-gallery-app.md
             - name: Přidání galerie mimo galerii
               href: add-non-gallery-app.md
-            - name: Změna názvu nebo loga aplikace
-              href: change-name-or-logo-portal.md
         - name: Konfigurace jednotného přihlašování
           items:
             - name: Konfigurace jednotného přihlašování pomocí SAML

@@ -4,16 +4,16 @@ description: Přečtěte si, jak nastavit Azure Active Directory (AAD) pro ově�
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/04/2019
-ms.openlocfilehash: 7df9c40980d7a35c1eab0f892c3aca0a30938f57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e813459ddf516b170e7f429646dad38452188335
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194106"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86102374"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
+# <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
 
 Tento článek vás provede jednotlivými kroky konfigurace Azure Active Directory přístupu pomocí Azure Database for PostgreSQL a o tom, jak se připojit pomocí tokenu Azure AD.
 

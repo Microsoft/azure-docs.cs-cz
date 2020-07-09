@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e008bad2043d8cd633f0849aefc62c4ed7a7e89d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857877"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104873"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen2
 
 V tomto článku se seznámíte s osvědčenými postupy a pokyny pro práci s Azure Data Lake Storage Gen2. Tento článek poskytuje informace o zabezpečení, výkonu, odolnosti a monitorování pro Data Lake Storage Gen2. Před Data Lake Storage Gen2 práce s skutečně velkými objemy dat ve službách, jako je Azure HDInsight, byla složitá. Museli jste horizontálních oddílů data napříč několika účty BLOB Storage, aby bylo možné dosáhnout úložiště řádu petabajtů a optimálního výkonu v tomto rozsahu. Data Lake Storage Gen2 podporuje jednotlivé velikosti souborů tak vysoké jako 5 TB a většina pevných limitů pro výkon se odebrala. Existují však i některé okolnosti, které tento článek popisuje, abyste dosáhli nejlepšího výkonu s použitím Data Lake Storage Gen2.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 Azure Data Lake Storage Gen2 nabízí řízení přístupu POSIX pro uživatele, skupiny a instanční objekty služby Azure Active Directory (Azure AD). Tyto ovládací prvky přístupu můžou být nastavené na existující soubory a adresáře. Ovládací prvky přístupu lze také použít k vytvoření výchozích oprávnění, která lze automaticky použít pro nové soubory nebo adresáře. Další podrobnosti o Data Lake Storage Gen2ech ACL jsou k dispozici v [řízení přístupu v Azure Data Lake Storage Gen2](storage-data-lake-storage-access-control.md).
 
@@ -76,11 +77,11 @@ Při vykládku dat do data Lake je důležité předem naplánovat strukturu dat
 
 V úlohách IoT se můžete setkat s daty vydanými v úložišti dat, která se nacházejí v různých produktech, zařízeních, organizacích a zákaznících. Je důležité předem naplánovat rozložení adresáře pro organizaci, zabezpečení a efektivní zpracování dat pro uživatele se vzdálení datovými proudy. Obecná šablona, kterou je třeba zvážit, může být následující rozložení:
 
-    {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/
+*Počet/{SubjectMatter: {region}}/{yyyy}/{MM}/{DD}/{hh}/*
 
 Například vykládka telemetrie pro stroj v letadle v rámci Velké Británie může vypadat jako tato struktura:
 
-    UK/Planes/BA1293/Engine1/2017/08/11/12/
+*Velká Británie/roviny/BA1293/Engine1/2017/08/11/12/*
 
 Na konci adresářové struktury je důležitý důvod, jak umístit datum. Pokud chcete některé oblasti nebo věci v předmětech uzamknout pro uživatele nebo skupiny, můžete k tomu snadno využít oprávnění POSIX. V opačném případě, pokud je potřeba omezit určitou skupinu zabezpečení, aby se zobrazila pouze data o Spojeném království nebo určité rovině, musí se v rámci každého adresáře v každém z hodin vyžadovat samostatné oprávnění. Kromě toho by měla struktura data předem exponenciálně zvýšit počet adresářů jako čas.
 
@@ -90,13 +91,13 @@ Z vysoké úrovně se běžně používaným přístupem v dávkovém zpracován
 
 Občas se zpracování souborů nezdařilo z důvodu poškození dat nebo neočekávaných formátů. V takových případech by adresářová struktura mohla těžit ze složky **/Bad** , aby se soubory přesunuly pro další kontrolu. Úloha služby Batch může také zpracovávat zprávy a oznámení těchto *neplatných* souborů pro ruční zásah. Vezměte v úvahu následující strukturu šablon:
 
-    {Region}/{SubjectMatter(s)}/In/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/
-    {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/
+*Počet/{SubjectMatter: {region}}/in/{yyyy}/{MM}/{DD}/{hh}/*\
+*Počet/{SubjectMatter: {region}}/out/{yyyy}/{MM}/{DD}/{hh}/*\
+*Počet/{SubjectMatter: {region}}/Bad/{yyyy}/{MM}/{DD}/{hh}/*
 
 Například marketingový firmu obdrží denní datové výtažky aktualizací zákazníků od jejich klientů v Severní Amerika. Může vypadat jako následující fragment kódu před a po zpracování:
 
-    NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv
-    NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv
+*NA/extrahuje/ACMEPaperCo/v/2017/08/14/updates_08142017.csv*\
+*NA/extrahuje/ACMEPaperCo/out/2017/08/8/processed_updates_08142017.csv*
 
 V běžném případě zpracování dat služby Batch přímo do databází, jako je například podregistr nebo tradiční databáze SQL, není nutné mít složku **/in** nebo **/out** , protože výstup již patří do samostatné složky pro tabulku podregistru nebo externí databázi. Například denní extrakce od zákazníků by se mohla zakládat do příslušných složek a orchestrace podle něčeho, jako je Azure Data Factory, Apache Oozie nebo Apache flow, může aktivovat denní podregistr nebo úlohu Sparku, která zpracuje data a zapíše je do tabulky podregistru.

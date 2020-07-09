@@ -8,15 +8,16 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1fb64463b0372202adb04c2deb304c389c7773b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79164680"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86104006"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Postup instalace agenta připojeného počítače pomocí Windows PowerShell DSC
 
-Pomocí [Konfigurace požadovaného stavu Windows PowerShellu](https://docs.microsoft.com/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) můžete automatizovat instalaci a konfiguraci softwaru pro počítač se systémem Windows. Tento článek popisuje, jak použít DSC k instalaci agenta Azure ARC pro servery připojené Machine Agent na hybridních počítačích s Windows.
+Pomocí [Konfigurace požadovaného stavu Windows PowerShellu](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) můžete automatizovat instalaci a konfiguraci softwaru pro počítač se systémem Windows. Tento článek popisuje, jak použít DSC k instalaci agenta Azure ARC pro servery připojené Machine Agent na hybridních počítačích s Windows.
 
 ## <a name="requirements"></a>Požadavky
 
@@ -72,7 +73,7 @@ Níže jsou uvedené parametry, které předáte skriptu PowerShellu, který se 
 
 1. V konzole PowerShellu přejděte do složky, kam jste `.ps1` soubor uložili.
 
-2. Spusťte následující příkazy PowerShellu pro zkompilování dokumentu MOF (informace o kompilaci konfigurací DSC najdete v tématu [Konfigurace DSC](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations?view=powershell-7)):
+2. Spusťte následující příkazy PowerShellu pro zkompilování dokumentu MOF (informace o kompilaci konfigurací DSC najdete v tématu [Konfigurace DSC](/powershell/scripting/dsc/configurations/configurations?view=powershell-7)):
 
     ```powershell
     .\`AzureConnectedMachineAgent.ps1 -TenantId <TenantId GUID> -SubscriptionId <SubscriptionId GUID> -ResourceGroup '<ResourceGroupName>' -Location '<LocationName>' -Tags '<Tag>' -Credential <psCredential>
@@ -86,7 +87,7 @@ Po nainstalování agenta a jeho konfiguraci pro připojení k Azure ARC pro ser
 
 Tento prostředek se dá přidat do stávajících konfigurací DSC, které budou představovat ucelenou konfiguraci pro počítač. Můžete například chtít přidat tento prostředek do konfigurace, která nastaví zabezpečené nastavení operačního systému.
 
-Modul [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) z Galerie prostředí PowerShell lze použít k vytvoření [složeného prostředku](https://docs.microsoft.com/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) ukázkové konfigurace, aby bylo možné dále zjednodušit kombinování konfigurací.
+Modul [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) z Galerie prostředí PowerShell lze použít k vytvoření [složeného prostředku](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) ukázkové konfigurace, aby bylo možné dále zjednodušit kombinování konfigurací.
 
 ## <a name="next-steps"></a>Další kroky
 

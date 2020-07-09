@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024434"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103700"
 ---
 # <a name="what-is-a-device-identity"></a>Co je identita zařízení?
 
@@ -45,7 +45,7 @@ Pokud chcete v Azure AD získat zařízení, máte několik možností:
 - **Připojené k Azure AD**
    - Zařízení, která jsou připojená k Azure AD, jsou vlastněna organizací a jsou přihlášená pomocí účtu Azure AD patřícího do této organizace. Existují jenom v cloudu.
       - Windows 10 
-      - Windows Server 2019 (jádro serveru není podporováno)
+      - [Windows Server 2019 Virtual Machines běžící v Azure] (./howto-vm-sign-in-azure-ad-windows.md) (Jádro serveru není podporované.)
 - **k hybridní službě Azure AD**.
    - Zařízení, která jsou připojená k hybridní službě Azure AD, jsou vlastněna organizací a jsou přihlášená pomocí účtu Azure AD patřícího do této organizace. Existují v cloudu i v místním prostředí.
       - Windows 7, 8,1 nebo 10

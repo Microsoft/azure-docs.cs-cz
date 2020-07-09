@@ -5,15 +5,15 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 12/19/2019
+ms.date: 07/07/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: f4e2395659659781da49159247991d0711491ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7da1a3501d74cc7f46d35597df5a985c3e571388
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76846029"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86106049"
 ---
 > [!NOTE]
-> Tato služba podporuje [správu delegovaných prostředků Azure](../articles/lighthouse/concepts/azure-delegated-resource-management.md), která umožňuje poskytovatelům služeb přihlašovat se ke svému vlastnímu tenantovi ke správě předplatných a skupin prostředků, které zákazníci delegovani. Další informace najdete v tématu [Azure Lighthouse](../articles/lighthouse/overview.md).
+> Tato služba podporuje [Azure Lighthouse](../articles/lighthouse/overview.md), která umožňuje poskytovatelům služeb přihlásit se ke svému vlastnímu tenantovi ke správě předplatných a skupin prostředků, které zákazníci delegovani.

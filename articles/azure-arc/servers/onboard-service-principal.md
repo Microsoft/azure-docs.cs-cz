@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 45a61b5bc6f1082b84bf94db7e8ad5ce49ec068f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648070"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103785"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Připojení hybridních počítačů k Azure ve velkém měřítku
 
@@ -85,7 +86,7 @@ Níže jsou uvedené nastavení, pomocí kterého nakonfigurujete `azcmagent` p�
 * `location`: Viz [podporované oblasti Azure](overview.md#supported-regions). Toto umístění může být stejné nebo jiné jako umístění skupiny prostředků.
 * `resource-name`: (*Volitelné*) používá se pro reprezentaci prostředků Azure vašeho místního počítače. Pokud tuto hodnotu nezadáte, použije se název hostitele počítače.
 
-Další informace o `azcmagent` nástroji příkazového řádku najdete v [referenčních](azcmagent-reference.md)informacích k Azcmagent.
+Další informace o `azcmagent` nástroji příkazového řádku najdete v [referenčních](./manage-agent.md)informacích k Azcmagent.
 
 ### <a name="windows-installation-script"></a>Instalační skript Windows
 

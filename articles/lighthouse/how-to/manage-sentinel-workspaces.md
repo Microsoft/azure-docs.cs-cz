@@ -3,16 +3,16 @@ title: Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 description: Zjistěte, jak efektivně spravovat Sentinel Azure na delegovaných zákaznických zdrojích.
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bca5b6fdc84fa5a7a5553fe64c0218c5f0b44aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268985"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86105264"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Správa pracovních prostorů Sentinel Azure ve velkém měřítku
 
-Jako poskytovatel služeb můžete mít k dispozici více zákazníků pro správu delegovaných prostředků Azure. Azure Lighthouse umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty Azure Active Directory (Azure AD) najednou a díky tomu se úlohy správy zefektivňují efektivněji.
+Jako poskytovatel služeb můžete mít k [Azure Lighthouse](../overview.md)k dispozici několik klientů pro zákazníky. Azure Lighthouse umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty Azure Active Directory (Azure AD) najednou a díky tomu se úlohy správy zefektivňují efektivněji.
 
 Služba Azure Sentinel zajišťuje analýzy zabezpečení a analýzu hrozeb a poskytuje jedno řešení pro detekci výstrah, viditelnost hrozeb, proaktivní lov a reakci na hrozby. Pomocí Azure Lighthouse můžete spravovat víc pracovních prostorů služby Azure Sentinel napříč klienty ve velkém měřítku. To umožňuje scénářům, jako je spouštění dotazů napříč několika pracovními prostory, nebo vytváření sešitů pro vizualizaci a monitorování dat z připojených zdrojů dat, abyste získali přehledy. IP adresy, jako jsou dotazy a playbooky, zůstanou ve vašem spravovaném tenantovi, ale dají se použít k provádění správy zabezpečení v klientech zákazníka.
 
@@ -35,7 +35,7 @@ Tento centralizovaný model nasazení má následující výhody:
 
 ## <a name="granular-role-based-access-control-rbac"></a>Podrobné řízení přístupu na základě role (RBAC)
 
-Každé předplatné zákazníka, které bude spravovat MSSP, musí být zavedené [pro správu delegovaných prostředků Azure](onboard-customer.md). To umožňuje určeným uživatelům v tenantovi spravovat přístup a provádět operace správy v pracovních prostorech Azure Sentinel nasazených v klientech zákazníků.
+Každé předplatné zákazníka, které bude spravovat MSSP, musí být připojené [do Azure Lighthouse](onboard-customer.md). To umožňuje určeným uživatelům v tenantovi spravovat přístup a provádět operace správy v pracovních prostorech Azure Sentinel nasazených v klientech zákazníků.
 
 Při vytváření autorizací můžete přiřadit předdefinované role služby Azure Sentinel uživatelům, skupinám nebo instančním objektům ve vašem tenantovi pro správu:
 

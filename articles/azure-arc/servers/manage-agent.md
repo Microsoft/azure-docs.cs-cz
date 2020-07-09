@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 086491484592c8015bdb519bb498e73da3836f6f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648105"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86103904"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
@@ -45,7 +46,7 @@ Agenta je možné upgradovat podle různých metod, aby bylo možné podporovat 
 > * Chcete-li upgradovat agenta, je nutné mít oprávnění *správce* .
 > * Pokud chcete upgradovat ručně, musíte nejdřív stáhnout a zkopírovat instalační balíček do složky na cílovém serveru nebo ze sdílené síťové složky. 
 
-Pokud neznáte možnosti příkazového řádku pro Instalační služba systému Windows balíčky, Projděte si možnosti příkazového řádku nástroje [msiexec Standard](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) a [Možnosti příkazového](https://docs.microsoft.com/windows/win32/msi/command-line-options)řádku programu Msiexec.
+Pokud neznáte možnosti příkazového řádku pro Instalační služba systému Windows balíčky, Projděte si možnosti příkazového řádku nástroje [msiexec Standard](/windows/win32/msi/standard-installer-command-line-options) a [Možnosti příkazového](/windows/win32/msi/command-line-options)řádku programu Msiexec.
 
 #### <a name="to-upgrade-using-the-setup-wizard"></a>Upgrade pomocí Průvodce instalací
 
