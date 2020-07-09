@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
-ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a21460279420c46b11c43615ae5ecc7bfa81de4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75973679"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135811"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Vyloučení disků z replikace PowerShellu virtuálních počítačů Azure
 
@@ -24,14 +25,14 @@ Než začnete, potřebujete:
 
 - Ujistěte se, že rozumíte [architektuře a komponentám zotavení po havárii](azure-to-azure-architecture.md).
 - Zkontrolujte [požadavky na podporu](azure-to-azure-support-matrix.md) pro všechny komponenty.
-- Ujistěte se, že máte modul PowerShell AzureRm "AZ". Pokud chcete nainstalovat nebo aktualizovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Ujistěte se, že máte modul PowerShell AzureRm "AZ". Pokud chcete nainstalovat nebo aktualizovat PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 - Ujistěte se, že jste aspoň jednou vytvořili trezor služby Recovery Services a chráněné virtuální počítače. Pokud jste tyto věci neudělali, postupujte podle pokynů v části [Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure PowerShell](azure-to-azure-powershell.md).
 - Pokud hledáte informace o přidávání disků do virtuálního počítače Azure, který je k dispozici pro replikaci, [Přečtěte si tento článek](azure-to-azure-enable-replication-added-disk.md).
 
 ## <a name="why-exclude-disks-from-replication"></a>Důvody vyloučení disků z replikace
 Je možné, že budete chtít vyloučit disky z replikace z těchto důvodů:
 
-- Virtuální počítač dosáhl [Azure Site Recovery omezení pro replikaci sazeb změny dat](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
+- Virtuální počítač dosáhl [Azure Site Recovery omezení pro replikaci sazeb změny dat](./azure-to-azure-support-matrix.md).
 
 - Data, která jsou stejná na vyloučeném disku, nejsou důležitá nebo nemusí být replikována.
 

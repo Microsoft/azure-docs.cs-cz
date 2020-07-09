@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 58ddb7363ece5ebdb06df29c27ff76b27da627a4
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 3a1ac6dd940ea5d31adae45a435c5425497362b1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851174"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135778"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -50,7 +50,7 @@ Povolte replikaci. Tento postup předpokládá, že primární oblast Azure je V
        - Pokud skupina prostředků vytvořená Site Recovery už existuje, použije se znovu.
        - Můžete přizpůsobit nastavení skupiny prostředků.
        - Umístění cílové skupiny prostředků může být libovolná oblast Azure, s výjimkou oblasti, ve které jsou hostované zdrojové virtuální počítače.
-   - **Cílová virtuální síť**: ve výchozím nastavení Site Recovery vytvoří novou virtuální síť v cílové oblasti s příponou ASR v názvu. To je namapováno na vaši zdrojovou síť a používá se pro jakoukoliv budoucí ochranu. [Přečtěte si další informace](site-recovery-network-mapping-azure-to-azure.md) o mapování sítě.
+   - **Cílová virtuální síť**: ve výchozím nastavení Site Recovery vytvoří novou virtuální síť v cílové oblasti s příponou ASR v názvu. To je namapováno na vaši zdrojovou síť a používá se pro jakoukoliv budoucí ochranu. [Přečtěte si další informace](./azure-to-azure-network-mapping.md) o mapování sítě.
    - **Cílové účty úložiště (zdrojový virtuální počítač nepoužívá spravované disky)**: ve výchozím nastavení Site Recovery vytvoří nový cílový účet úložiště mimicking konfiguraci úložiště zdrojového virtuálního počítače. V případě, že účet úložiště již existuje, bude znovu použit.
    - **Disky spravované replikou (zdrojový virtuální počítač používá spravované disky)**: Site Recovery vytvoří nové disky spravované replikou v cílové oblasti pro zrcadlení spravovaných disků zdrojového virtuálního počítače se stejným typem úložiště (Standard nebo Premium) jako spravovaný disk zdrojového virtuálního počítače.
    - **Účty úložiště mezipaměti**: Site Recovery potřebuje další účet úložiště, který se označuje jako úložiště mezipaměti ve zdrojové oblasti. Všechny změny, které probíhají ve zdrojových virtuálních počítačích, se sledují a odesílají do účtu úložiště mezipaměti, než se replikují do cílového umístění. Tento účet úložiště by měl být standardní.

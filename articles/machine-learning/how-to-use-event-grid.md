@@ -1,5 +1,5 @@
 ---
-title: Aktivovat události v pracovních postupech ML
+title: Aktivovat události v pracovních postupech ML (Preview)
 titleSuffix: Azure Machine Learning
 description: V Azure Machine Learning nastavte aplikace řízené událostmi, procesy nebo CI/CD Machine Learning.
 services: machine-learning
@@ -10,11 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5aeec1c2dae1d8a8cc11b5e8b3181d9b22069a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338307"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135964"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
 

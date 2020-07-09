@@ -9,11 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: d86e42dcc16d108cc82c9d245c7919145cef365f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6efc8a7e6478ed874caf925e10ef43c04343d254
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759334"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133242"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je pokročilá open source databáze podobná Oracle a DB2. Zahrnuje funkce připravené pro podnikové prostředí, jako je plně KYSELé dodržování předpisů, spolehlivé zpracování transakcí a řízení souběžnosti s více verzemi. Podporuje také standardy, jako je ANSI SQL a SQL/MED (včetně obálek cizích dat pro Oracle, MySQL, MongoDB a mnoho dalších). Je vysoce rozšiřitelná s podporou více než 12 procedurálních jazyků, GIN a registrových indexů, podpory prostorových dat a několika NoSQL funkcí podobných funkcím pro aplikace založené na formátu JSON nebo klíč-hodnota.
@@ -32,90 +33,135 @@ V takovém případě jako port PostgreSQL použijte port 1999.
 Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvořili prostřednictvím výstupu. Pokud používáte virtuální počítač Azure Linux poprvé, přečtěte si téma [Použití SSH se systémem Linux v Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a Naučte se používat výstupy pro připojení k virtuálnímu počítači Linux.
 
 1. Spusťte následující příkaz, který přepne do kořenového adresáře (správce):
-   
-        # sudo su -
+
+    ```console
+    # sudo su -
+    ```
+
 2. Některé distribuce mají závislosti, které je třeba nainstalovat před instalací PostgreSQL. V tomto seznamu vyhledejte distribuce a spusťte příslušný příkaz:
    
    * Základní operační systém Red Hat:
-     
-           # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
+
+        ```console
+        # yum install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        ```
+
    * Debian Base Linux:
-     
-            # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y  
+
+        ```console
+        # apt-get install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam libxslt-devel tcl-devel python-devel -y
+        ```
+
    * SUSE Linux:
-     
-           # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y  
+
+        ```console
+        # zypper install readline-devel gcc make zlib-devel openssl openssl-devel libxml2-devel pam-devel pam  libxslt-devel tcl-devel python-devel -y
+        ```
+
 3. Stáhněte si PostgreSQL do kořenového adresáře a potom balíček rozbalte:
-   
-        # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
-   
-        # tar jxvf  postgresql-9.3.5.tar.bz2
-   
+
+    ```console
+    # wget https://ftp.postgresql.org/pub/source/v9.3.5/postgresql-9.3.5.tar.bz2 -P /root/
+
+    # tar jxvf  postgresql-9.3.5.tar.bz2
+    ```
+
     Výše je příklad. Podrobnější adresu ke stažení najdete v [indexu/Pub/source/](https://ftp.postgresql.org/pub/source/).
+
 4. Chcete-li spustit sestavení, spusťte tyto příkazy:
-   
-        # cd postgresql-9.3.5
-   
-        # ./configure --prefix=/opt/postgresql-9.3.5
+
+    ```console
+    # cd postgresql-9.3.5
+
+    # ./configure --prefix=/opt/postgresql-9.3.5
+    ```
+
 5. Pokud chcete sestavit všechno, co se dá sestavit, včetně dokumentace (HTML a Man Pages) a dalších modulů ( `contrib` ), spusťte následující příkaz:
-   
-        # gmake install-world
-   
+
+    ```console
+    # gmake install-world
+    ```
+
     Měla by se zobrazit následující potvrzovací zpráva:
-   
-        PostgreSQL, contrib, and documentation successfully made. Ready to install.
+
+    ```output
+    PostgreSQL, contrib, and documentation successfully made. Ready to install.
+    ```
 
 ## <a name="configure-postgresql"></a>Konfigurace PostgreSQL
 1. Volitelné Vytvořte symbolický odkaz, který zkrátí odkaz na PostgreSQL, aby neobsahoval číslo verze:
-   
-        # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+
+    ```console
+    # ln -s /opt/postgresql-9.3.5 /opt/pgsql
+    ```
+
 2. Vytvořte adresář pro databázi:
-   
-        # mkdir -p /opt/pgsql_data
+
+    ```console
+    # mkdir -p /opt/pgsql_data
+    ```
+
 3. Vytvoření nekořenového uživatele a změna profilu daného uživatele. Pak v našem příkladu přepněte na tohoto nového uživatele (s názvem *Postgres* ):
+
+    ```console
+    # useradd postgres
    
-        # useradd postgres
+    # chown -R postgres.postgres /opt/pgsql_data
    
-        # chown -R postgres.postgres /opt/pgsql_data
-   
-        # su - postgres
+    # su - postgres
+    ```
    
    > [!NOTE]
    > Z bezpečnostních důvodů používá PostgreSQL k inicializaci, spuštění nebo vypnutí databáze uživatele, který není rootem.
    > 
    > 
 4. Zadáním následujících příkazů upravte soubor *bash_profile* . Tyto řádky budou přidány na konec souboru *bash_profile* :
-   
-        cat >> ~/.bash_profile <<EOF
-        export PGPORT=1999
-        export PGDATA=/opt/pgsql_data
-        export LANG=en_US.utf8
-        export PGHOME=/opt/pgsql
-        export PATH=\$PATH:\$PGHOME/bin
-        export MANPATH=\$MANPATH:\$PGHOME/share/man
-        export DATA=`date +"%Y%m%d%H%M"`
-        export PGUSER=postgres
-        alias rm='rm -i'
-        alias ll='ls -lh'
-        EOF
+
+    ```config
+    cat >> ~/.bash_profile <<EOF
+    export PGPORT=1999
+    export PGDATA=/opt/pgsql_data
+    export LANG=en_US.utf8
+    export PGHOME=/opt/pgsql
+    export PATH=\$PATH:\$PGHOME/bin
+    export MANPATH=\$MANPATH:\$PGHOME/share/man
+    export DATA=`date +"%Y%m%d%H%M"`
+    export PGUSER=postgres
+    alias rm='rm -i'
+    alias ll='ls -lh'
+    EOF
+    ```
+
 5. Spusťte soubor *bash_profile* :
-   
-        $ source .bash_profile
+
+    ```console
+    $ source .bash_profile
+    ```
+
 6. Ověřte instalaci pomocí následujícího příkazu:
-   
-        $ which psql
-   
+
+    ```console
+    $ which psql
+    ```
+
     Pokud je instalace úspěšná, zobrazí se následující odpověď:
-   
-        /opt/pgsql/bin/psql
+
+    ```output
+    /opt/pgsql/bin/psql
+    ```
+
 7. Můžete také zjistit verzi PostgreSQL:
-   
-        $ psql -V
+
+    ```sql
+    $ psql -V
+    ```
 
 8. Inicializovat databázi:
-   
-        $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
-   
+
+    ```console
+    $ initdb -D $PGDATA -E UTF8 --locale=C -U postgres -W
+    ```
+
     Měl by se zobrazit následující výstup:
 
 ![image](./media/postgresql-install/no1.png)
@@ -125,29 +171,39 @@ Připojte se k virtuálnímu počítači se systémem Linux, který jste vytvoř
 
 Spusťte následující příkazy:
 
-    # cd /root/postgresql-9.3.5/contrib/start-scripts
+```console
+# cd /root/postgresql-9.3.5/contrib/start-scripts
 
-    # cp linux /etc/init.d/postgresql
+# cp linux /etc/init.d/postgresql
+```
 
 Upravte v souboru/etc/init.d/PostgreSQL dvě proměnné. Předpona je nastavena na instalační cestu PostgreSQL: **/opt/PgSQL**. PGDATA je nastavená na cestu úložiště dat PostgreSQL: **/opt/pgsql_data**.
 
-    # sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
+```config
+# sed -i '32s#usr/local#opt#' /etc/init.d/postgresql
 
-    # sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+# sed -i '35s#usr/local/pgsql/data#opt/pgsql_data#' /etc/init.d/postgresql
+```
 
 ![image](./media/postgresql-install/no2.png)
 
 Změňte soubor tak, aby byl spustitelný jako spustitelný:
 
-    # chmod +x /etc/init.d/postgresql
+```console
+# chmod +x /etc/init.d/postgresql
+```
 
 Spustit PostgreSQL:
 
-    # /etc/init.d/postgresql start
+```console
+# /etc/init.d/postgresql start
+```
 
 Ověřte, zda je koncový bod PostgreSQL zapnutý:
 
-    # netstat -tunlp|grep 1999
+```console
+# netstat -tunlp|grep 1999
+```
 
 Měl by se zobrazit následující výstup:
 
@@ -156,22 +212,30 @@ Měl by se zobrazit následující výstup:
 ## <a name="connect-to-the-postgres-database"></a>Připojení k databázi Postgres
 Přepněte znovu na uživatele Postgres:
 
-    # su - postgres
+```console
+# su - postgres
+```
 
 Vytvořte databázi Postgres:
 
-    $ createdb events
+```console
+$ createdb events
+```
 
 Připojte se k databázi událostí, kterou jste právě vytvořili:
 
-    $ psql -d events
+```console
+$ psql -d events
+```
 
 ## <a name="create-and-delete-a-postgres-table"></a>Vytvoření a odstranění tabulky Postgres
 Teď, když jste se připojili k databázi, můžete v ní vytvořit tabulky.
 
 Vytvořte například novou ukázkovou tabulku Postgres pomocí následujícího příkazu:
 
-    CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1), signup_date DATE);
+```sql
+CREATE TABLE potluck (name VARCHAR(20),    food VARCHAR(30),    confirmed CHAR(1), signup_date DATE);
+```
 
 Nyní jste nastavili tabulku se čtyřmi sloupci s následujícími názvy a omezeními:
 
@@ -191,7 +255,9 @@ Strukturu tabulky můžete také ověřit pomocí následujícího příkazu:
 ### <a name="add-data-to-a-table"></a>Přidání dat do tabulky
 Nejprve vložte informace do řádku:
 
-    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
+```sql
+INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
+```
 
 Měli byste vidět tento výstup:
 
@@ -199,16 +265,20 @@ Měli byste vidět tento výstup:
 
 Do tabulky můžete přidat i několik dalších lidí. Tady je několik možností, nebo můžete vytvořit vlastní:
 
-    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Sandy', 'Key Lime Tarts', 'N', '2012-04-14');
+```sql
+INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Sandy', 'Key Lime Tarts', 'N', '2012-04-14');
 
-    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES ('Tom', 'BBQ','Y', '2012-04-18');
+INSERT INTO potluck (name, food, confirmed, signup_date) VALUES ('Tom', 'BBQ','Y', '2012-04-18');
 
-    INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Tina', 'Salad', 'Y', '2012-04-18');
+INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('Tina', 'Salad', 'Y', '2012-04-18');
+```
 
 ### <a name="show-tables"></a>Zobrazit tabulky
 Tabulku můžete zobrazit pomocí následujícího příkazu:
 
-    select * from potluck;
+```sql
+select * from potluck;
+```
 
 Výstup bude následující:
 
@@ -217,7 +287,9 @@ Výstup bude následující:
 ### <a name="delete-data-in-a-table"></a>Odstranění dat v tabulce
 Pomocí následujícího příkazu odstraňte data v tabulce:
 
-    delete from potluck where name=’John’;
+```sql
+delete from potluck where name=’John’;
+```
 
 Tím se odstraní všechny informace v řádku "Jan". Výstup bude následující:
 
@@ -226,9 +298,9 @@ Tím se odstraní všechny informace v řádku "Jan". Výstup bude následujíc�
 ### <a name="update-data-in-a-table"></a>Aktualizace dat v tabulce
 K aktualizaci dat v tabulce použijte následující příkaz. V takovém případě Oranžovohnědá potvrdí, že se účastní, takže změníme protokol RSVP z "N" na "Y":
 
-     UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
-
+```sql
+UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
+```
 
 ## <a name="get-more-information-about-postgresql"></a>Získat další informace o PostgreSQL
 Teď, když jste dokončili instalaci PostgreSQL na virtuálním počítači Azure Linux, můžete využít jeho používání v Azure. Další informace o PostgreSQL najdete na [webu PostgreSQL](https://www.postgresql.org/).
-

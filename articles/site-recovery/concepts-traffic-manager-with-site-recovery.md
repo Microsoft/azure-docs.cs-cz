@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 6c77cd43231d4596535c11564313a0fe90633cdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb112e0b2d1c64e65ecaf6749a25707d8632c0cb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60947742"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134950"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager se službou Azure Site Recovery
 
@@ -30,7 +30,7 @@ V prvním scénáři zvažte **Společnost A** , která má veškerou její apli
 **Společnost A** provozuje aplikace s veřejnými koncovými body a chce schopnost plynule přesměrovat provoz do Azure v případě havárie. Metoda [prioritního](../traffic-manager/traffic-manager-configure-priority-routing-method.md) směrování provozu v Azure Traffic Manager umožňuje společnosti a snadno implementovat tento vzor převzetí služeb při selhání.
 
 Nastavení je následující:
-- **Společnost A** vytvoří [profil Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
+- **Společnost A** vytvoří [profil Traffic Manager](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - S využitím metody směrování **priority** **Společnost A** vytvoří dva koncové body – **primární** pro místní prostředí a **převzetí služeb při selhání** pro Azure. K **primární** je přiřazena priorita 1 a pro **převzetí služeb při selhání** je přiřazena Priorita 2.
 - Vzhledem k tomu, že je **primární** koncový bod hostovaný mimo Azure, je koncový bod vytvořený jako [externí](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) koncový bod.
 - V Azure Site Recovery nemá lokalita Azure žádné virtuální počítače ani aplikace spuštěné před převzetím služeb při selhání. Proto se koncový bod **převzetí služeb při selhání** vytvoří také jako **externí** koncový bod.
@@ -65,7 +65,7 @@ V tomto příkladu zvažte **Společnost C** , která má veškerou svoji aplika
 **Společnost C** spouští aplikace s veřejnými koncovými body a chce schopnost plynule přesměrovat provoz do jiné oblasti Azure v události po havárii. Metoda [Priorita](../traffic-manager/traffic-manager-configure-priority-routing-method.md) přenosu dat umožňuje **společnosti C** snadno implementovat tento vzor převzetí služeb při selhání.
 
 Nastavení je následující:
-- **Společnost C** vytvoří [profil Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
+- **Společnost C** vytvoří [profil Traffic Manager](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - Při použití metody směrování **priority** **Společnost C** vytvoří dva koncové body – **primární** pro zdrojovou oblast (Azure východní Asie) a **převzetí služeb při selhání** pro oblast obnovení (Azure jihovýchodní Asie). K **primární** je přiřazena priorita 1 a pro **převzetí služeb při selhání** je přiřazena Priorita 2.
 - Vzhledem k tomu, že je **primární** koncový bod hostovaný v Azure, může být koncový bod jako koncový bod [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) .
 - V Azure Site Recovery nemá lokalita Azure Recovery žádné virtuální počítače ani aplikace spuštěné před převzetím služeb při selhání. Koncový bod **převzetí služeb při selhání** se proto dá vytvořit jako [externí](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) koncový bod.

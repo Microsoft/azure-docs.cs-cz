@@ -11,20 +11,20 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: 2975b98306b7019022799d5ba69b9d7af5797a2b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a766d61c49fe23645c232432198eb4aa0eedb98b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368035"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135633"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý Start: vytvoření jedné databáze v Azure SQL Database pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Rychlý Start: vytvoření jedné databáze v Azure SQL Database pomocí šablony ARM
 
-Vytvoření [jedné databáze](single-database-overview.md) je nejrychlejší a nejjednodušší možnost pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit jedinou databázi pomocí šablony Azure Resource Manager.
+Vytvoření [jedné databáze](single-database-overview.md) je nejrychlejší a nejjednodušší možnost pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit samostatnou databázi pomocí šablony Azure Resource Manager (šablona ARM).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko nasadit do Azure. Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
 
 [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-database%2Fazuredeploy.json)
 
@@ -36,7 +36,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 Jedna databáze má definovanou sadu výpočetních, paměťových, vstupně-výstupních prostředků a prostředků úložiště pomocí jednoho ze dvou [nákupních modelů](purchasing-models.md). Když vytvoříte izolovanou databázi, nadefinujete taky [Server](logical-servers.md) pro správu a umístění v rámci [skupiny prostředků Azure](../../active-directory-b2c/overview.md) v zadané oblasti.
 
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-sql-logical-server/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-sql-database/).
 
 :::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 
@@ -88,4 +88,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
   - [Připojení a dotazování pomocí Azure Data Studia](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Pokud chcete vytvořit izolovanou databázi pomocí Azure CLI, přečtěte si [ukázky v Azure CLI](az-cli-script-samples-content-guide.md).
 - Chcete-li vytvořit izolovanou databázi pomocí Azure PowerShell, přečtěte si téma [Azure PowerShell Samples](powershell-script-content-guide.md).
-- Další informace o vytváření šablon Správce prostředků najdete v tématu [Vytvoření první šablony](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).
+- Další informace o tom, jak vytvořit šablony ARM, najdete v tématu [Vytvoření první šablony](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).

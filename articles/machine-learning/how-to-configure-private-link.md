@@ -1,5 +1,5 @@
 ---
-title: Konfigurace privátního odkazu Azure
+title: Konfigurace privátního koncového bodu (Preview)
 titleSuffix: Azure Machine Learning
 description: Pomocí privátního odkazu Azure získáte zabezpečený přístup k pracovnímu prostoru Azure Machine Learning z virtuální sítě.
 services: machine-learning
@@ -10,11 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 49565624cee70e40141ca7e8b57b2c26b950d20b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84666925"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134869"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning (Preview)
 

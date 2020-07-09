@@ -3,11 +3,12 @@ title: Běžné dotazy týkající se zotavení po havárii VMware pomocí Azure
 description: Získejte odpovědi na běžné dotazy týkající se zotavení po havárii místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259506"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135169"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Běžné otázky týkající se replikace z VMware do Azure
 
@@ -121,7 +122,7 @@ Replikace nových virtuálních počítačů do účtu úložiště je k dispozi
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>Můžu po ochraně počítače změnit typ spravovaného disku?
 
-Ano, pro průběžné replikace můžete snadno [změnit typ spravovaného disku](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) . Před změnou typu zajistěte, aby na spravovaném disku nebyla vygenerována adresa URL sdíleného přístupového podpisu:
+Ano, pro průběžné replikace můžete snadno [změnit typ spravovaného disku](../virtual-machines/windows/convert-disk-storage.md) . Před změnou typu zajistěte, aby na spravovaném disku nebyla vygenerována adresa URL sdíleného přístupového podpisu:
 
 1. Přejděte na prostředek **spravovaného disku** na Azure Portal a ověřte, jestli máte v okně **Přehled** hlavičku adresy URL sdíleného přístupového podpisu.
 1. Pokud je hlavička k dispozici, vyberte ji pro zrušení probíhajícího exportu.

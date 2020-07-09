@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299778"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134032"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -88,7 +89,7 @@ Site Recovery nepodporuje "Hot Remove" disku z replikovaného virtuálního poč
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Jak často je možné replikovat do Azure?
 
-Replikace je nepřetržitá, když provádíte replikaci virtuálních počítačů Azure do jiné oblasti Azure. Další informace najdete v tématu [Architektura replikace z Azure do Azure](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process).
+Replikace je nepřetržitá, když provádíte replikaci virtuálních počítačů Azure do jiné oblasti Azure. Další informace najdete v tématu [Architektura replikace z Azure do Azure](./azure-to-azure-architecture.md#replication-process).
 
 ### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-functionality-to-migrate-vms"></a>Můžu replikovat virtuální počítače v nějaké oblasti? Potřebuji tuto funkci k migraci virtuálních počítačů.
 
@@ -96,17 +97,17 @@ K replikaci virtuálních počítačů v rámci jedné oblasti nemůžete použ�
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>Můžu replikovat instance virtuálních počítačů do jakékoli oblasti Azure?
 
-Pomocí Site Recovery můžete replikovat a obnovovat virtuální počítače mezi dvěma oblastmi v rámci stejného geografického clusteru. Geografické clustery jsou definovány s latencí a suverenitou dat. Další informace najdete v tématu [matice podpory Site Recovery oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support).
+Pomocí Site Recovery můžete replikovat a obnovovat virtuální počítače mezi dvěma oblastmi v rámci stejného geografického clusteru. Geografické clustery jsou definovány s latencí a suverenitou dat. Další informace najdete v tématu [matice podpory Site Recovery oblasti](./azure-to-azure-support-matrix.md#region-support).
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Vyžaduje Site Recovery připojení k Internetu?
 
-Ne, Site Recovery nevyžaduje připojení k Internetu. Ale vyžaduje přístup k adresám URL Site Recovery a rozsahům IP adres, jak je uvedeno v článku [sítě v zotavení po havárii virtuálních počítačů Azure](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls).
+Ne, Site Recovery nevyžaduje připojení k Internetu. Ale vyžaduje přístup k adresám URL Site Recovery a rozsahům IP adres, jak je uvedeno v článku [sítě v zotavení po havárii virtuálních počítačů Azure](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls).
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Můžu replikovat aplikaci, která má samostatnou skupinu prostředků pro samostatné úrovně?
 
 Ano, můžete replikovat aplikaci a zachovat konfiguraci zotavení po havárii v samostatné skupině prostředků.
 
-Pokud má vaše aplikace například aplikaci, databázi a web jednotlivých vrstev v samostatné skupině prostředků, je nutné vybrat [Průvodce replikací](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) třikrát pro ochranu všech vrstev. Site Recovery budou tyto tři vrstvy replikovat do tří různých skupin prostředků.
+Pokud má vaše aplikace například aplikaci, databázi a web jednotlivých vrstev v samostatné skupině prostředků, je nutné vybrat [Průvodce replikací](./azure-to-azure-how-to-enable-replication.md#enable-replication) třikrát pro ochranu všech vrstev. Site Recovery budou tyto tři vrstvy replikovat do tří různých skupin prostředků.
 
 ### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Můžu přesouvat účty úložiště mezi skupinami prostředků?
 
@@ -121,7 +122,7 @@ Zásady replikace definují nastavení pro historii uchovávání bodů obnoven�
 - 24 hodin pro historii uchovávání bodů obnovení.
 - 60 minut pro četnost snímků konzistentních vzhledem k aplikacím.
 
-[Přečtěte si další informace o nastavení replikace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
+[Přečtěte si další informace o nastavení replikace](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Co je bod obnovení konzistentní vzhledem k selháním?
 
@@ -182,7 +183,7 @@ Ano, Pokud zvýšíte dobu uchovávání dat z 24 hodin na 72 hodin, Site Recove
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Můžu povolit replikaci s konzistencí aplikací na serverech se systémem Linux?
 
-Ano. Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s předchozími a post-možnostmi bude používat agent Azure Site Recovery mobility během konzistence aplikací. [Další informace](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
+Ano. Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s předchozími a post-možnostmi bude používat agent Azure Site Recovery mobility během konzistence aplikací. [Další informace](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>Konzistence s více virtuálními počítači
 
@@ -194,7 +195,7 @@ Site Recovery poskytuje možnost **konzistence s více virtuálními počítači
 
 Při převzetí služeb při selhání virtuálních počítačů budou mít sdílené body obnovení konzistentní se selháním a konzistentní vzhledem k aplikacím.
 
-Projděte si kurz a [Povolte konzistenci pro více virtuálních počítačů](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm).
+Projděte si kurz a [Povolte konzistenci pro více virtuálních počítačů](./azure-to-azure-tutorial-enable-replication.md#enable-replication-for-a-vm).
 
 ### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Můžu převzít služby při selhání jediného virtuálního počítače ve skupině replikace konzistence pro víc virtuálních počítačů?
 
@@ -290,11 +291,11 @@ Ano, do svého plánu obnovení můžete integrovat Azure Automation Runbooky. P
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Převzetí služeb při selhání z primární oblasti do oblasti zotavení po havárii. Jsou virtuální počítače v oblasti DR chráněné automaticky?
 
-Ne. Při [převzetí služeb při selhání](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) virtuálních počítačů Azure z jedné oblasti do druhé se virtuální počítače spustí v oblasti zotavení po havárii v nechráněném stavu. K navrácení služeb virtuálních počítačů do primární oblasti je potřeba znovu nastavit [ochranu](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect) virtuálních počítačů v sekundární oblasti.
+Ne. Při [převzetí služeb při selhání](./azure-to-azure-tutorial-failover-failback.md) virtuálních počítačů Azure z jedné oblasti do druhé se virtuální počítače spustí v oblasti zotavení po havárii v nechráněném stavu. K navrácení služeb virtuálních počítačů do primární oblasti je potřeba znovu nastavit [ochranu](./azure-to-azure-how-to-reprotect.md) virtuálních počítačů v sekundární oblasti.
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>V době ochrany Site Recovery replikuje úplná data ze sekundární oblasti do primární oblasti?
 
-Záleží na situaci. Pokud virtuální počítač oblasti zdroje existuje, synchronizují se jenom změny mezi zdrojovým diskem a cílovým diskem. Site Recovery vypočítá rozdíly porovnáním disků a poté převede data. Tento proces obvykle trvá několik hodin. Další informace o tom, co se děje během opětovné ochrany, najdete v tématu o opětovném zapnutí [ochrany instancí virtuálních počítačů Azure v primární oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
+Záleží na situaci. Pokud virtuální počítač oblasti zdroje existuje, synchronizují se jenom změny mezi zdrojovým diskem a cílovým diskem. Site Recovery vypočítá rozdíly porovnáním disků a poté převede data. Tento proces obvykle trvá několik hodin. Další informace o tom, co se děje během opětovné ochrany, najdete v tématu o opětovném zapnutí [ochrany instancí virtuálních počítačů Azure v primární oblasti](./azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection).
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Jak dlouho trvá navrácení služeb po obnovení?
 
@@ -320,10 +321,10 @@ Site Recovery je ISO 27001:2013, 27018, HIPAA a DPA Certified. Služba se přesm
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Šifruje Site Recovery replikaci?
 
-Ano, podporuje se jak šifrování, tak [šifrování v klidovém režimu v Azure](https://docs.microsoft.com/azure/storage/storage-service-encryption) .
+Ano, podporuje se jak šifrování, tak [šifrování v klidovém režimu v Azure](../storage/common/storage-service-encryption.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Projděte si požadavky na podporu pro Azure do Azure](azure-to-azure-support-matrix.md).
 - [Nastavte replikaci z Azure do Azure](azure-to-azure-tutorial-enable-replication.md).
-- Pokud máte dotazy i po přečtení tohoto článku, pošlete je na [stránce s dotazem na Microsoft Q&pro Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
+- Pokud máte dotazy i po přečtení tohoto článku, pošlete je na [stránce s dotazem na Microsoft Q&pro Azure Recovery Services](/answers/topics/azure-site-recovery.html).

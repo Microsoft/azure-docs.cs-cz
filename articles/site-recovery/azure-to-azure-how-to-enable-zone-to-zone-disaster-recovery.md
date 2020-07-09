@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488932"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135719"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Povolení zotavení po havárii zóny pro virtuální počítače Azure
 
@@ -97,7 +98,7 @@ Přihlaste se k Azure Portal.
 
 5. Pokud chcete provést změny nastavení replikace, klikněte na tlačítko Další: Upřesnit nastavení.
 
-6. Kdykoli je to vhodné, změňte nastavení mimo výchozí nastavení. Pro uživatele z Azure do Azure zotavení po havárii se může tato stránka zdát dobře seznámit. Další podrobnosti o možnostech zobrazených v tomto [okně najdete tady](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) .
+6. Kdykoli je to vhodné, změňte nastavení mimo výchozí nastavení. Pro uživatele z Azure do Azure zotavení po havárii se může tato stránka zdát dobře seznámit. Další podrobnosti o možnostech zobrazených v tomto [okně najdete tady](./azure-to-azure-tutorial-enable-replication.md) .
 
     ![Stránka Upřesnit nastavení](./media/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery/zonal-disaster-recovery-advanced-settings-blade.png)
 
@@ -115,7 +116,7 @@ Smlouva SLA pro RTO je stejná jako u Site Recovery celkové. Proslibujte RTO po
 Tým Site Recovery týmu a Azure Capacity Management plánuje dostatečnou kapacitu infrastruktury. Když spustíte převzetí služeb při selhání, týmy také pomůžou zajistit, aby se instance virtuálních počítačů, které jsou chráněné nástrojem Site Recovery, nasadily do cílové zóny.
 
 **4. které operační systémy se podporují?**
-Zotavení po havárii zóny do zóny podporuje stejné operační systémy jako Azure až Azure pro zotavení po havárii. Další informace najdete v [tématu](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)věnovaném matici podpory.
+Zotavení po havárii zóny do zóny podporuje stejné operační systémy jako Azure až Azure pro zotavení po havárii. Další informace najdete v [tématu](./azure-to-azure-support-matrix.md)věnovaném matici podpory.
 
 **5. může se jednat o stejné zdrojové a cílové skupiny prostředků?**
 Ne, je nutné převzít služeb při selhání do jiné skupiny prostředků.
@@ -124,8 +125,8 @@ Ne, je nutné převzít služeb při selhání do jiné skupiny prostředků.
 
 Kroky, které je třeba dodržovat při spuštění postupu zotavení po havárii, převzetí služeb při selhání, opětovné ochrany a navrácení služeb po obnovení, jsou stejné jako kroky ve scénáři zotavení po havárii v Azure do Azure.
 
-Pokud chcete provést postup zotavení po havárii, postupujte prosím podle kroků uvedených [tady](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-dr-drill).
+Pokud chcete provést postup zotavení po havárii, postupujte prosím podle kroků uvedených [tady](./azure-to-azure-tutorial-dr-drill.md).
 
-Pokud chcete provést převzetí služeb při selhání a znovu nastavit ochranu virtuálních počítačů v sekundární zóně, postupujte podle kroků popsaných [tady](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback).
+Pokud chcete provést převzetí služeb při selhání a znovu nastavit ochranu virtuálních počítačů v sekundární zóně, postupujte podle kroků popsaných [tady](./azure-to-azure-tutorial-failover-failback.md).
 
-Pokud chcete navrátit služby po obnovení primární zóně, postupujte podle kroků popsaných [tady](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failback).
+Pokud chcete navrátit služby po obnovení primární zóně, postupujte podle kroků popsaných [tady](./azure-to-azure-tutorial-failback.md).

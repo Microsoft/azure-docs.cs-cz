@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: site-recovery
 ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417850"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133807"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Historie verze Plánovač nasazení služby Azure Site Recovery
 
@@ -168,7 +169,7 @@ Další informace o [podpoře velkých disků v Azure Site Recovery](https://azu
 
 **Známá omezení:**
 
-- Podporuje se jenom pro scénáře zotavení po havárii z VMware do Azure. Pro scénáře zotavení po havárii z Hyper-V do Azure použijte [Nástroj pro plánování kapacity technologie Hyper-v](./site-recovery-capacity-planning-for-hyper-v-replication.md).
+- Podporuje se jenom pro scénáře zotavení po havárii z VMware do Azure. Pro scénáře zotavení po havárii z Hyper-V do Azure použijte [Nástroj pro plánování kapacity technologie Hyper-v](./hyper-v-deployment-planner-overview.md).
 - Nepodporuje operaci getpropustnosti pro oblasti státní správy USA a Číny Microsoft Azure.
 - Nástroj cann't Profile virtuální počítače, pokud Server vCenter obsahuje dva nebo více virtuálních počítačů se stejným názvem nebo IP adresou v různých hostitelích ESXi.
 V této verzi nástroj při zjištění duplicitních výskytů názvů nebo IP adres virtuálních počítačů v souboru VMListFile profilaci takových virtuálních počítačů přeskočí. Alternativním řešením je profilování virtuálních počítačů pomocí hostitele ESXi namísto serveru vCenter. Zajistěte, aby pro každého hostitele ESXi běžela jedna instance.

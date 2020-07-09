@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f41e1d8843783addf601becfda87607253e0a18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014515"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135913"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -458,7 +459,9 @@ Proces by měl trvat jen několik minut. Chcete-li se ujistit, zda byl krok doko
 
 Požadovaný výsledek by měl vypadat takto:
 
-    Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```output
+Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```
 
 Pokud je výsledek jiný, ukončete nasazení SAP a zjistěte, proč příkaz setup nefungoval podle očekávání. Nasazení aplikací SAP NetWeaver do instance SQL Server s jinou znakovou stránkou SQL Server, než je uvedená výše, **není** podporováno.
 

@@ -1,27 +1,30 @@
 ---
-title: Nasazení zákazníků do správy delegovaných prostředků Azure
-description: Naučte se, jak začlenit správu delegovaných prostředků do Azure, aby k nim bylo možné získat a spravovat jejich prostředky prostřednictvím vašeho vlastního tenanta.
+title: Zprovoznění zákazníka na Azure Lighthouse
+description: Naučte se, jak začlenit zákazníka do Azure Lighthouse, který umožňuje získat a spravovat jejich prostředky prostřednictvím vlastního tenanta pomocí delegované správy prostředků Azure.
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 149398a822d5aa21335be4122e92c96800d94255
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920913"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133468"
 ---
-# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
+# <a name="onboard-a-customer-to-azure-lighthouse"></a>Zprovoznění zákazníka na Azure Lighthouse
 
-V tomto článku se dozvíte, jak můžete jako poskytovatel služeb připojit zákazníka k delegované správě prostředků Azure a povolit, aby jejich delegované prostředky (předplatná a/nebo skupiny prostředků) byly dostupné a spravované prostřednictvím vašeho vlastního tenanta Azure Active Directory (Azure AD). V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které [spravují víc tenantů](../concepts/enterprise.md) , můžou stejný postup použít k nastavení Azure Lighthouse a konsolidaci prostředí pro správu.
+V tomto článku se dozvíte, jak jako poskytovatel služeb můžete zákazníka připojit do Azure Lighthouse. V takovém případě se delegované prostředky zákazníka (předplatná a skupiny prostředků) dají a spravují prostřednictvím vlastního tenanta Azure Active Directory (Azure AD) pomocí [delegované správy prostředků Azure](../concepts/azure-delegated-resource-management.md).
 
-Tento postup můžete opakovat, pokud spravujete prostředky pro více zákazníků. Když se pak ověřený uživatel přihlásí k vašemu tenantovi, může být tento uživatel autorizovaný v rámci oborů zákaznických tenantů, aby mohl provádět operace správy, aniž by se musel přihlašovat ke každému tenantovi zákazníka.
+Tento postup můžete opakovat, pokud spravujete prostředky pro více zákazníků. Když se pak ověřený uživatel přihlásí k vašemu tenantovi, může být tento uživatel autorizovaný v rámci oborů zákaznických tenantů, aby mohl provádět operace správy, aniž by se musel přihlašovat ke každému klientovi v jednotlivých zákaznících.
 
-Pokud chcete sledovat svůj dopad napříč zapojením zákazníků a získávat rozpoznávání, přidružte své ID Microsoft Partner Network (MPN) k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich integrovaných předplatných. Všimněte si, že budete muset toto přidružení provést v tenantovi poskytovatele služeb. Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, který je přidružený k vašemu ID MPN, a udělit každému zákazníkovi přístup ke čtečce IT. Další informace najdete v tématu [propojení ID partnera s účty Azure](../../billing/billing-partner-admin-link-started.md). 
+Pokud chcete sledovat svůj dopad napříč zapojením zákazníků a získávat rozpoznávání, přidružte své ID Microsoft Partner Network (MPN) k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich integrovaných předplatných. Všimněte si, že budete muset toto přidružení provést v tenantovi poskytovatele služeb. Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, který je přidružený k vašemu ID MPN, a udělit každému zákazníkovi přístup ke čtečce IT. Další informace najdete v tématu [propojení ID partnera s účty Azure](../../cost-management-billing/manage/link-partner-id.md). 
 
 > [!NOTE]
-> Při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou jste publikovali do Azure Marketplace, je také možné připojit zákazníky. Další informace najdete v tématu [publikování nabídek spravovaných služeb na Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění popsaný tady spolu s nabídkou publikovanou do Azure Marketplace.
+> Zákazníci se také můžou připojit k Azure Lighthouse při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou jste publikovali do Azure Marketplace. Další informace najdete v tématu [publikování nabídek spravovaných služeb na Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění popsaný tady spolu s nabídkou publikovanou do Azure Marketplace.
 
 Proces zprovoznění vyžaduje akce, které se mají provést v rámci tenanta poskytovatele služeb i z tenanta zákazníka. Všechny tyto kroky jsou popsány v tomto článku.
+
+> [!TIP]
+> I když v tomto tématu odkazujeme na poskytovatele služeb a zákazníky, můžou podniky, které [spravují víc tenantů](../concepts/enterprise.md) , použít stejný postup k nastavení Azure Lighthouse a konsolidovat prostředí pro správu.
 
 ## <a name="gather-tenant-and-subscription-details"></a>Získat podrobnosti o klientovi a předplatném
 
@@ -193,7 +196,7 @@ Poslední autorizace v předchozím příkladu přidá **principalId** s rolí s
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Nasazení šablon Azure Resource Manager
 
-Po aktualizaci souboru parametrů musí uživatel v tenantovi zákazníka nasadit šablonu Azure Resource Manager v rámci svého tenanta jako nasazení na úrovni předplatného. Pro každé předplatné, které chcete připojit ke správě delegovaných prostředků Azure (nebo pro každé předplatné, které obsahuje skupiny prostředků, které chcete připojit, je potřeba samostatné nasazení).
+Po aktualizaci souboru parametrů musí uživatel v tenantovi zákazníka nasadit šablonu Azure Resource Manager v rámci svého tenanta jako nasazení na úrovni předplatného. Pro každé předplatné, které chcete připojit, je potřeba samostatné nasazení (nebo pro každé předplatné, které obsahuje skupiny prostředků, které chcete připojit).
 
 Vzhledem k tomu, že se jedná o nasazení na úrovni předplatného, nejde ho iniciovat v Azure Portal. Nasazení se dá provést pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI, jak vidíte níže.
 
@@ -244,7 +247,7 @@ az deployment create --name <deploymentName> \
 
 ## <a name="confirm-successful-onboarding"></a>Potvrzení úspěšného zprovoznění
 
-Po úspěšném připojení zákaznického předplatného do Azure delegované správy prostředků uvidí uživatelé v tenantovi poskytovatele služeb předplatné a jeho prostředky (pokud jim k ní byl udělen přístup prostřednictvím výše uvedeného procesu), a to buď jednotlivě, nebo jako člen skupiny Azure AD s příslušnými oprávněními. Potvrďte to tak, že zkontrolujete, že se odběr zobrazuje jedním z následujících způsobů:  
+Po úspěšném připojení zákaznického předplatného do Azure Lighthouse uvidí uživatelé v tenantovi poskytovatele služeb předplatné a jeho prostředky (pokud jim k ní byl udělen přístup prostřednictvím výše uvedeného procesu), a to buď jednotlivě, nebo jako člen skupiny Azure AD s příslušnými oprávněními. Potvrďte to tak, že zkontrolujete, že se odběr zobrazuje jedním z následujících způsobů:  
 
 ### <a name="azure-portal"></a>portál Azure
 
@@ -255,7 +258,7 @@ V tenantovi poskytovatele služeb:
 3. Potvrďte, že si můžete zobrazit odběry s názvem nabídky, který jste zadali v šabloně Správce prostředků.
 
 > [!IMPORTANT]
-> Aby bylo možné zobrazit delegované předplatné ve [svých zákaznících](view-manage-customers.md), uživatelé v tenantovi poskytovatele služeb musí mít přiřazenou roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům), pokud bylo předplatné pro správu delegovaných prostředků Azure zaregistrované.
+> Aby bylo možné zobrazit delegované předplatné ve [svých zákaznících](view-manage-customers.md), uživatelé v tenantovi poskytovatele služeb musí mít přiřazenou roli [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup čtenářů) při registraci předplatného.
 
 V tenantovi zákazníka:
 

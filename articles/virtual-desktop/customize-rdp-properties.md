@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207205"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135113"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů
 
@@ -53,7 +53,7 @@ Konfigurace vlastností protokolu RDP v Azure Portal:
 4. Na stránce virtuální počítač s Windows vyberte **fondy hostitelů** v nabídce na levé straně obrazovky.
 5. Vyberte **název hostitelského fondu** , který chcete aktualizovat.
 6. V nabídce na levé straně obrazovky vyberte **vlastnosti** .
-7. Na kartě **vlastnosti** otevřete **Nastavení RDP** a začněte upravovat vlastnosti protokolu RDP. Vlastnosti by měly být ve formátu odděleném čárkou, jako jsou příklady PowerShellu.
+7. Na kartě **vlastnosti** otevřete **Nastavení RDP** a začněte upravovat vlastnosti protokolu RDP. Vlastnosti by měly být ve formátu odděleném středníkem, jako jsou příklady PowerShellu.
 8. Až budete hotovi, vyberte **Uložit** a uložte provedené změny.
 
 V dalších částech se dozvíte, jak ručně upravit vlastní vlastnosti protokolu RDP v prostředí PowerShell.

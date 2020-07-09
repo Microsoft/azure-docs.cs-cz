@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263309"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135071"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -391,7 +391,8 @@ Soubory v úpravách souborů je možné stáhnout z Azure Storage pomocí [MSI]
 
 ### <a name="windows-update-customizer"></a>web Windows Update úprav
 Tento úprav je postaven na [komunitě web Windows Update zřídí](https://packer.io/docs/provisioners/community-supported.html) pro balírnu, což je open source projekt udržovaný komunitou pro balení. Společnost Microsoft testuje a ověřuje ve službě image Builder službu pro vytváření imagí a bude podporovat zkoumání problémů s IT a řešení problémů, ale open source projekt není oficiálně podporován společností Microsoft. Podrobnou dokumentaci a nápovědu k web Windows Update zřídíte v úložišti projektu.
- 
+
+```json
      "customize": [
             {
                 "type": "WindowsUpdate",
@@ -403,7 +404,8 @@ Tento úprav je postaven na [komunitě web Windows Update zřídí](https://pack
                 "updateLimit": 20
             }
                ], 
-Podpora OS: Windows
+OS support: Windows
+```
 
 Přizpůsobení vlastností:
 - **typ** – windowsupdate.

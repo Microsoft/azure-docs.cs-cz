@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672737"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134814"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače nebo fyzického serveru VMware
 
@@ -21,7 +22,7 @@ Místní konfigurační server nastavíte při použití [Azure Site Recovery](s
 
 ## <a name="update-windows-license"></a>Aktualizovat licenci Windows
 
-Licence, která je součástí šablony OVF, je zkušební licence platná po dobu 180 dnů. V případě nepřerušovaného využití musíte aktivovat Windows pomocí předem získané licence. Aktualizace licencí se dá provést buď pomocí samostatného klíče, nebo standardního klíče služby správy klíčů. Doprovodné materiály k dispozici na [příkazovém řádku Windows DISM pro běžící operační](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)systém. Pokud chcete získat klíče, přečtěte si téma [nastavení klienta služby správy klíčů](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys).
+Licence, která je součástí šablony OVF, je zkušební licence platná po dobu 180 dnů. V případě nepřerušovaného využití musíte aktivovat Windows pomocí předem získané licence. Aktualizace licencí se dá provést buď pomocí samostatného klíče, nebo standardního klíče služby správy klíčů. Doprovodné materiály k dispozici na [příkazovém řádku Windows DISM pro běžící operační](/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options)systém. Pokud chcete získat klíče, přečtěte si téma [nastavení klienta služby správy klíčů](/windows-server/get-started/kmsclientkeys).
 
 ## <a name="access-configuration-server"></a>Přístup ke konfiguračnímu serveru
 
@@ -265,7 +266,7 @@ ProxyPassword="Password"
 
 Volitelně můžete konfigurační server odstranit pomocí prostředí PowerShell.
 
-1. [Nainstalujte](https://docs.microsoft.com/powershell/azure/install-Az-ps) modul Azure PowerShell.
+1. [Nainstalujte](/powershell/azure/install-Az-ps) modul Azure PowerShell.
 2. Přihlaste se ke svému účtu Azure pomocí tohoto příkazu:
 
     `Connect-AzAccount`

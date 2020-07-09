@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 78b38f5059d50d56158e31c65299e5f747c8c073
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: fd560658a20a5b58d582332a88bf031d0e56ac91
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323590"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134115"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for MariaDB
 
-Azure Database for MariaDB je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MariaDB v cloudu. V tomto rychlém startu použijete šablonu ARM k vytvoření serveru Azure Database for MariaDB v Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
+Azure Database for MariaDB je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MariaDB v cloudu. V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření Azure Database for MariaDBho serveru v Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,11 +42,9 @@ Azure Database for MariaDB je spravovaná služba, pomocí které můžete spou�
 
 ---
 
-## <a name="create-an-azure-database-for-mariadb-server"></a>Vytvoření serveru Azure Database for MariaDB
+## <a name="review-the-template"></a>Kontrola šablony
 
 Server Azure Database for MariaDB vytvoříte s definovanou sadou výpočetních prostředků a prostředků úložiště. Další informace najdete v tématu [Azure Database for MariaDB cenové úrovně](concepts-pricing-tiers.md). Server vytvoříte v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md).
-
-### <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/).
 
@@ -58,7 +60,7 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou výpočetních
 
 Další ukázky šablon Azure Database for MariaDB najdete v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
@@ -207,7 +209,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
+Podrobný kurz, který vás provede procesem vytvoření šablony ARM, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Kurz: vytvoření a nasazení první šablony ARM](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

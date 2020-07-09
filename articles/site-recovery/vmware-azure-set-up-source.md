@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: ff01aed92669acb193ff149ea9298550134f42a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 095e837043e6322cf85aeaa732f5bcbf7c0fa098
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699545"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135385"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Nastavení zdrojového prostředí pro replikaci z VMware do Azure
 
@@ -36,7 +37,7 @@ Tento článek popisuje, jak nastavit zdrojové místní prostředí pro replika
 
 ## <a name="set-up-the-configuration-server"></a>Nastavení konfiguračního serveru
 
-Konfigurační server můžete nastavit jako místní virtuální počítač VMware prostřednictvím šablony aplikace virtualizace (Open Virtualization Application). [Přečtěte si další informace](concepts-vmware-to-azure-architecture.md) o součástech, které se nainstalují na virtuálním počítači VMware.
+Konfigurační server můžete nastavit jako místní virtuální počítač VMware prostřednictvím šablony aplikace virtualizace (Open Virtualization Application). [Přečtěte si další informace](./vmware-azure-architecture.md) o součástech, které se nainstalují na virtuálním počítači VMware.
 
 1. Přečtěte si informace o [požadavcích](vmware-azure-deploy-configuration-server.md#prerequisites) pro nasazení konfiguračního serveru.
 2. [Ověřte čísla kapacity](vmware-azure-deploy-configuration-server.md#sizing-and-capacity-requirements) pro nasazení.

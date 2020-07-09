@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74133011"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133907"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektura – replikace Hyper-V do sekundární lokality
 
@@ -35,7 +36,7 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 
 ## <a name="replication-process"></a>Proces replikace
 
-1. Při spuštění počáteční replikace se pořídí snímek [virtuálního počítače Hyper-V](https://technet.microsoft.com/library/dd560637.aspx) .
+1. Při spuštění počáteční replikace se pořídí snímek [virtuálního počítače Hyper-V](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) .
 2. Virtuální pevné disky virtuálního počítače se replikují po jednom do sekundárního umístění.
 3. Pokud dojde ke změnám na disku v době, kdy probíhá počáteční replikace, sledování replikace repliky technologie Hyper-V sleduje změny jako protokoly replikace technologie Hyper-V (. hrl). Tyto soubory protokolu jsou umístěné ve stejné složce jako disky. Každý disk má přidružený soubor. hrl, který se odesílá do sekundárního umístění. Soubory snímků a protokolů spotřebovávají prostředky disku v době, kdy probíhá počáteční replikace.
 4. Po dokončení počáteční replikace se snímek virtuálního počítače odstraní a spustí se rozdílová replikace.

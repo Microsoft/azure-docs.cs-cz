@@ -4,12 +4,12 @@ description: Tento článek popisuje oblíbené obecné otázky týkající se A
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 9eceb9643a5e8f8eab6b68bb04b322a099b715f3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057428"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133663"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Obecné otázky týkající se Azure Site Recovery
 
@@ -56,7 +56,7 @@ Ne, data se replikují do úložiště Azure v rámci vašeho předplatného. Kd
 Ano.
 
 ### <a name="what-platforms-do-you-currently-support"></a>Jaké platformy aktuálně podporujete?
-Podporujeme nasazení pro Azure Pack, Cloud Platform System a System Center (2012 a vyšší). [Přečtěte si další informace](https://technet.microsoft.com/library/dn850370.aspx) o sadě Azure Pack a Site Recovery integraci.
+Podporujeme nasazení pro Azure Pack, Cloud Platform System a System Center (2012 a vyšší). [Přečtěte si další informace](/previous-versions/azure/windows-server-azure-pack/dn850370(v=technet.10)) o sadě Azure Pack a Site Recovery integraci.
 
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>Podporujete nasazení s jediným Azure Packem a jediným serverem VMM?
 Ano, virtuální počítače Hyper-V můžete replikovat do Azure nebo mezi lokalitami poskytovatele služeb.  Pamatujte na to, že pokud provádíte replikaci mezi lokalitami poskytovatele služeb, Integrace Azure Runbook není k dispozici.
@@ -105,7 +105,7 @@ Site Recovery je ISO 27001:2013, 27018, HIPAA, DPA Certified a je v procesu SOC2
 Ano. Když vytvoříte trezor Site Recovery v oblasti, zajišťujeme, aby všechna metadata, která potřebujeme k povolení a orchestraci replikace a převzetí služeb při selhání, zůstala v rámci geografické hranice této oblasti.
 
 ### <a name="does-site-recovery-encrypt-replication"></a>Šifruje Site Recovery replikaci?
-V případě virtuálních počítačů a fyzických serverů se podporuje replikace mezi místními lokalitami – přenos v provozu. Pro virtuální počítače a fyzické servery, které se replikují do Azure, se podporují jak šifrování, tak i [šifrování v klidovém režimu (v Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) .
+V případě virtuálních počítačů a fyzických serverů se podporuje replikace mezi místními lokalitami – přenos v provozu. Pro virtuální počítače a fyzické servery, které se replikují do Azure, se podporují jak šifrování, tak i [šifrování v klidovém režimu (v Azure)](../storage/common/storage-service-encryption.md) .
 
 ### <a name="does-azure-to-azure-site-recovery-use-tls-12-for-all-communications-across-microservices-of-azure"></a>Používá Azure-to-Azure Site Recovery TLS 1,2 pro veškerou komunikaci napříč mikroslužbami Azure?
 Ano, protokol TLS 1,2 se ve výchozím nastavení vynutil pro scénář Azure-to-Azure Site Recovery. 
@@ -198,7 +198,7 @@ Dynamické disky se podporují při replikaci virtuálních počítačů Hyper-V
 Ano. Další informace o omezování šířky pásma najdete v těchto článcích:
 
 * [Plánování kapacity pro replikaci virtuálních počítačů VMware a fyzických serverů](site-recovery-plan-capacity-vmware.md)
-* [Plánování kapacity pro replikaci virtuálních počítačů Hyper-V do Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [Plánování kapacity pro replikaci virtuálních počítačů Hyper-V do Azure](./hyper-v-deployment-planner-overview.md)
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Můžu povolit replikaci s konzistencí aplikací na serverech se systémem Linux? 
 Ano. Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s předchozími a post-možnostmi bude používat agent Azure Site Recovery mobility během konzistence aplikací. Níže jsou uvedené kroky, jak je povolit.
@@ -254,7 +254,7 @@ K automatizaci můžete použít místní Orchestrator nebo Operations Manager k
 
 * [Přečtěte si další](site-recovery-create-recovery-plans.md) informace o plánech obnovení.
 * [Přečtěte si více](site-recovery-failover.md) o převzetí služeb při selhání.
-* [Přečtěte si další](site-recovery-failback-azure-to-vmware.md) informace o selhání back-VM virtuálních počítačů a fyzických serverů VMware.
+* [Přečtěte si další](./vmware-azure-failback.md) informace o selhání back-VM virtuálních počítačů a fyzických serverů VMware.
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-fail-back-to-a-different-host"></a>Pokud můj místní hostitel neodpovídá nebo selhal, můžu se vrátit na jiného hostitele?
 Ano, můžete použít obnovení do alternativního umístění pro navrácení služeb po obnovení na jiného hostitele z Azure.
@@ -279,4 +279,3 @@ Ano. Postupy workflow Site Recovery je možné automatizovat pomocí rozhraní R
 
 ## <a name="next-steps"></a>Další kroky
 * Projděte si [přehled Site Recovery](site-recovery-overview.md).
-

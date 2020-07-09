@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345134"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134813"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání runbooků Azure Automation do plánů obnovení
 
@@ -128,7 +129,7 @@ Blog Aman Sharma v rámci [sběru cloudů](http://harvestingclouds.com) má uži
 
 Můžete použít jeden skript Runbooku v několika plánech obnovení, a to pomocí externích proměnných. 
 
-- [Proměnné Azure Automation](../automation/automation-variables.md) slouží k uložení parametrů pro spuštění plánu obnovení.
+- [Proměnné Azure Automation](../automation/shared-resources/variables.md) slouží k uložení parametrů pro spuštění plánu obnovení.
 - Přidáním názvu plánu obnovení jako předpony proměnné můžete pro každý plán obnovení vytvořit jednotlivé proměnné. Pak použijte proměnné jako parametry.
 - Můžete změnit parametr bez změny skriptu, ale stále měnit způsob, jakým funguje skript.
 
@@ -198,7 +199,7 @@ V některých případech možná nebudete moci vytvořit samostatné proměnné
 - Například obnovení služby SharePoint má dva front-endy. Základní obchodní aplikace (LOB) má pouze jeden front-end.
 - V tomto scénáři nemůžete pro každý plán obnovení vytvořit samostatné proměnné.
 
-V následujícím příkladu vytvoříme [komplexní proměnnou](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable) v účtu Azure Automation.
+V následujícím příkladu vytvoříme [komplexní proměnnou](/powershell/module/servicemanagement/azure/set-azureautomationvariable) v účtu Azure Automation.
 
 Provedeme to zadáním více hodnot pomocí Azure PowerShell.
 
@@ -263,9 +264,6 @@ Toto video poskytuje další příklad. Ukazuje, jak obnovit dvě vícevrstvé a
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [Azure Automation účtu Spustit jako](../automation/automation-create-runas-account.md)
+- Další informace o [Azure Automation účtu Spustit jako](../automation/manage-runas-account.md)
 - Zkontrolujte [Azure Automation ukázkové skripty](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team).
 - [Přečtěte si další informace](site-recovery-failover.md) o spuštění převzetí služeb při selhání.
-
-
-

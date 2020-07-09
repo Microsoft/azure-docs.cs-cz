@@ -1,15 +1,14 @@
 ---
 title: Řešení potíží s pomalým zálohováním souborů a složek
 description: Poskytuje pokyny k odstraňování potíží, které vám pomůžou diagnostikovat příčinu potíží s výkonem Azure Backup.
-ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: d65eca685748499f52a990c7ac588bf44cbbba31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194021"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135036"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Řešení potíží s pomalým zálohováním souborů a složek ve službě Azure Backup
 
@@ -50,13 +49,13 @@ Tady jsou některé čítače a rozsahy výkonu, které mohou být užitečné p
 
 | Čítač | Status |
 | --- | --- |
-| Logický disk (fyzický disk) –% nečinný |* 100% nečinných až 50% nečinných = v pořádku</br>* 49% nečinných až 20% nečinných = Warning nebo monitor</br>* 19% nečinných po 0% nečinných = kritická nebo mimo specifikaci |
-| Logický disk (fyzický disk) –% střední doba disku pro čtení nebo zápis |* 0,001 MS až 0,015 MS = v pořádku</br>* 0,015 ms až 0,025 MS = upozornění nebo monitorování</br>* 0,026 MS nebo delší = kritická nebo mimo specifikaci |
+| Logický disk (fyzický disk) –% nečinný |<li> 100% nečinných až 50% nečinných = v pořádku</br><li> 49% nečinných až 20% nečinných = Warning nebo monitor</br><li> 19% nečinných po 0% nečinných = kritická nebo mimo specifikaci |
+| Logický disk (fyzický disk) –% střední doba disku pro čtení nebo zápis |<li> 0,001 MS až 0,015 MS = v pořádku</br><li> 0,015 ms až 0,025 MS = Warning nebo monitor</br><li> 0,026 MS nebo delší = kritická nebo mimo specifikaci |
 | Logický disk (fyzický disk) – aktuální délka fronty disku (pro všechny instance) |80 požadavků po dobu více než 6 minut |
-| Paměť – fond bez stránkovaného fondu |* Méně než 60% spotřebovaného fondu = v pořádku<br>* 61% až 80% spotřebovaného fondu = upozornění nebo monitorování</br>* Větší než 80% spotřebovaného fondu = kritické nebo mimo specifikaci |
-| Paměť – bajty stránkovaného fondu |* Méně než 60% spotřebovaného fondu = v pořádku</br>* 61% až 80% spotřebovaného fondu = upozornění nebo monitorování</br>* Větší než 80% spotřebovaného fondu = kritické nebo mimo specifikaci |
-| Paměť – dostupné megabajty |* 50% volné paměti je k dispozici nebo je více = v pořádku</br>* k dispozici je 25% volné paměti = monitor</br>* 10% volné paměti k dispozici = upozornění</br>* Je k dispozici méně než 100 MB nebo 5% volné paměti = kritické nebo mimo specifikaci. |
-| Procesor – \% čas procesoru (všechny instance) |* Méně než 60% spotřebované = v pořádku</br>* 61% až 90% spotřebované = monitor nebo upozornění</br>* 91% až 100% spotřebované = kritické |
+| Paměť – fond bez stránkovaného fondu |<li> Méně než 60% spotřebovaného fondu = v pořádku<br><li> 61% až 80% spotřebovaného fondu = upozornění nebo monitorování</br><li> Je větší než 80% spotřebovaného fondu = kritické nebo mimo specifikaci. |
+| Paměť – bajty stránkovaného fondu |<li> Méně než 60% spotřebovaného fondu = v pořádku</br><li> 61% až 80% spotřebovaného fondu = upozornění nebo monitorování</br><li> Je větší než 80% spotřebovaného fondu = kritické nebo mimo specifikaci. |
+| Paměť – dostupné megabajty |<li> 50% volné paměti je k dispozici nebo je více = v pořádku</br><li> k dispozici je 25% volné paměti = monitor</br><li>10% dostupné volné paměti = upozornění</br><li> Je k dispozici méně než 100 MB nebo 5% volné paměti = kritické nebo mimo specifikaci. |
+| Procesor – \% čas procesoru (všechny instance) |<li> Méně než 60% spotřebované = v pořádku</br><li> 61% až 90% spotřebované = monitor nebo upozornění</br><li> 91% až 100% spotřebované = kritické |
 
 > [!NOTE]
 > Pokud zjistíte, že infrastruktura je příčinou, doporučujeme pravidelně defragmentovat disky pro lepší výkon.

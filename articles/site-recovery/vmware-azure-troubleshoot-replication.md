@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9e66cbb024aa64e8c4cb5db9fc1c172fdc573fc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197047"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135359"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení potíží s replikací pro virtuální počítače VMware a fyzické servery
 
@@ -94,16 +95,16 @@ Pokud chcete problém vyřešit, pomocí následujícího postupu ověřte síť
    - InMage Scout Application Service
 4. Na zdrojovém počítači prohlédněte protokoly v umístění, kde najdete podrobnosti o chybě:
 
-       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    *C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\svagents \* . log*
 
 ### <a name="process-server-with-no-heartbeat-error-806"></a>Procesový Server bez prezenčního signálu [Chyba 806]
 V případě, že není k dispozici žádný prezenční signál z procesového serveru (PS), ověřte, že:
 1. Virtuální počítač PS je v provozu.
 2. Podrobnosti o chybě najdete v následujících protokolech PS:
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    *C:\ProgramData\ASR\home\svsystems\eventmanager \* . log*\
+    ani
+    *C:\ProgramData\ASR\home\svsystems\ monitor_protection \* . log*
 
 ### <a name="master-target-server-with-no-heartbeat-error-78022"></a>Hlavní cílový server bez prezenčního signálu [Chyba 78022]
 
@@ -116,7 +117,7 @@ Problém vyřešíte tak, že pomocí následujícího postupu ověříte stav s
     - Ověřte, zda je spuštěna služba svagents. Pokud je spuštěný, restartujte službu.
     - Podrobnosti o chybě najdete v protokolech v umístění:
 
-          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+        *C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\svagents \* . log*
 3. Pokud chcete zaregistrovat hlavní cíl s konfiguračním serverem, přejděte do složky **%ProgramData%\ASR\Agent**a spusťte na příkazovém řádku následující příkaz:
    ```
    cmd
@@ -146,25 +147,25 @@ Níže jsou uvedené některé z nejběžnějších problémů.
 **Jak opravit** : Přečtěte si [článek](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) znalostní báze
 
 #### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Příčina 4: konzistence aplikací není na serverech se systémem Linux povolena
-**Oprava** : Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s možnostmi před a po odeslání bude použit agentem Azure Site Recovery mobility pro konzistenci aplikací. [Tady](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) je postup, jak ho povolit.
+**Oprava** : Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s možnostmi před a po odeslání bude použit agentem Azure Site Recovery mobility pro konzistenci aplikací. [Tady](./site-recovery-faq.md#replication) je postup, jak ho povolit.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>Další příčiny v důsledku potíží souvisejících se službou VSS:
 
 Pokud chcete problém vyřešit, Projděte si soubory na zdrojovém počítači, abyste získali přesný kód chyby pro selhání:
 
-    C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
+*C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log*
 
 Jak najít chyby v souboru?
 Vyhledejte řetězec "vacpError" otevřením souboru vacp. log v editoru.
 
-    Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
+`Ex: `**`vacpError`**`:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|`
 
 Ve výše uvedeném příkladu **2147754994** je kód chyby, který vám oznamuje selhání, jak je uvedeno níže.
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>Zapisovač VSS není nainstalovaný – chyba 2147221164
 
 *Jak opravit*: vygeneruje se značka konzistence aplikace Azure Site Recovery používá službu Microsoft Volume stín Copy Service (VSS). Nainstaluje poskytovatele služby VSS, aby jeho operace mohla provádět snímky konzistence aplikací. Tento zprostředkovatel služby Stínová kopie svazku je nainstalován jako služba. V případě, že není nainstalovaná služba poskytovatele VSS, vytvoření snímku konzistence aplikací se nepovede s ID chyby 0x80040154 "třída není zaregistrovaná". </br>
-Přečtěte si [článek pro řešení potíží s instalací zapisovače VSS](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures)
+Přečtěte si [článek pro řešení potíží s instalací zapisovače VSS](./vmware-azure-troubleshoot-push-install.md#vss-installation-failures)
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>Zapisovač VSS je zakázaný – chyba 2147943458
 
@@ -194,4 +195,4 @@ Ověřte, zda je typ spouštění služby VSS Provider nastaven na hodnotu **aut
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud potřebujete další nápovědu, vystavte svůj dotaz na [stránce s dotazem Microsoft Q&Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). Máme aktivní komunitu a jeden z našich technik vám může pomoct.
+Pokud potřebujete další nápovědu, vystavte svůj dotaz na [stránce s dotazem Microsoft Q&Azure Site Recovery](/answers/topics/azure-site-recovery.html). Máme aktivní komunitu a jeden z našich technik vám může pomoct.

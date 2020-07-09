@@ -4,12 +4,12 @@ description: Poskytuje přehled služby Azure Site Recovery a shrnuje scénáře
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: ee387682e935522b37a5b4f9f32e53712bfb9150
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067544"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135224"
 ---
 # <a name="about-site-recovery"></a>O službě Azure Site Recovery
 
@@ -20,7 +20,7 @@ Jako organizace potřebujete, abyste přijali strategii pro provozní kontinuitu
 Azure Recovery Services přispívá ke strategii BCDR:
 
 - **Služba Site Recovery:** Site Recovery pomáhá zajistit kontinuitu podnikových procesů tím, že zajišťuje provoz obchodních aplikací a úloh během výpadků. Site Recovery replikuje úlohy spuštěné na fyzických a virtuálních počítačích z primární lokality do sekundárního umístění. Když dojde k výpadku v primární lokalitě, převezme služby při selhání sekundární lokalita a přistupujete k aplikacím z ní. Po opětovném zprovoznění můžete navrátit služby do primární lokality.
-- **Služba zálohování**: Služba [Azure Backup](/azure/backup/) udržuje vaše data bezpečná a obnovitelná.
+- **Služba zálohování**: Služba [Azure Backup](../backup/index.yml) udržuje vaše data bezpečná a obnovitelná.
 
 Site Recovery může spravovat replikaci pro:
 
@@ -29,7 +29,7 @@ Site Recovery může spravovat replikaci pro:
 
 ## <a name="what-does-site-recovery-provide"></a>Co Site Recovery poskytuje?
 
-**Funkce** | **Zobrazí**
+**Funkce** | **Podrobnosti**
 --- | ---
 **Jednoduché řešení BCDR** | Pomocí Site Recovery můžete nastavit a spravovat replikaci, převzetí služeb při selhání a navrácení služeb po obnovení z jednoho místa na webu Azure Portal.
 **Replikace virtuálních počítačů Azure** | Můžete nastavit zotavení po havárii virtuálních počítačů Azure z primární oblasti do sekundární.
@@ -47,7 +47,7 @@ Site Recovery může spravovat replikaci pro:
 
 ## <a name="what-can-i-replicate"></a>Co mohu replikovat?
 
-**Doložen** | **Zobrazí**
+**Doložen** | **Podrobnosti**
 --- | ---
 **Scénáře replikace** | Replikace virtuálních počítačů Azure z jedné oblasti Azure do jiné<br/><br/>  Replikace místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, fyzických serverů (Windows a Linux) Azure Stack virtuálních počítačů do Azure.<br/><br/> Replikace instancí Windows AWS do Azure<br/><br/> Replikace místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V, které spravuje System Center VMM, a fyzických serverů do sekundární lokality
 **Oblasti** | Prohlédněte si [podporované oblasti](https://azure.microsoft.com/regions/services/) pro Site Recovery. |

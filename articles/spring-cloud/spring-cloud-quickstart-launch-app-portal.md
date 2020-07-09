@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 9cd59fdf81e9b5d56872d20c76e8ea177b3c8577
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0637716b5f9970ff8c6d550f138fb7d21a26b81a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79470890"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134459"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění stávající cloudové aplikace Azure na jaře pomocí Azure Portal
 
@@ -43,14 +43,6 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 3. [Nainstalujte Maven 3,0 nebo novější.](https://maven.apache.org/download.cgi)
 4. [Instalace rozhraní příkazového řádku Azure CLI 2.0.67 nebo vyšší verze](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Registrace předplatného Azure](https://azure.microsoft.com/free/)
-
-## <a name="install-the-azure-cli-extension"></a>Instalace rozšíření Azure CLI
-
-Pomocí následujícího příkazu nainstalujte rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure.
-
-```azurecli
-az extension add --name spring-cloud
-```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Zřízení instance služby na Azure Portal
 
@@ -101,7 +93,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Přejít na stránku **Přehled** služby a vyberte možnost **konfigurační server**.
 
-2. V části **výchozí úložiště** nastavte možnost **URI** na "https://github.com/Azure-Samples/piggymetrics-config".
+2. V části **výchozí úložiště** nastavte možnost **URI** na " https://github.com/Azure-Samples/piggymetrics-config ".
 
 3. Výběrem možnosti **Použít** změny uložte.
 
@@ -112,7 +104,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 ## <a name="build-and-deploy-microservice-applications"></a>Sestavování a nasazování aplikací mikroslužeb
 
-1. Otevřete [Azure Cloud Shell](https://shell.azure.com) a naklonujte úložiště ukázkové aplikace do místního počítače.  Tady před klonováním aplikace vytvoříme dočasný adresář `source-code` s názvem.
+1. Otevřete [Azure Cloud Shell](https://shell.azure.com) nebo místní prostředí s nainstalovaným rozhraním Azure CLI. Tady před klonováním ukázkové aplikace vytvoříme dočasný adresář s názvem `source-code` .
 
     ```console
     mkdir source-code
@@ -127,21 +119,33 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
     mvn clean package -DskipTests
     ```
 
-3. Přiřaďte názvy ke svojí skupině prostředků a službě. Nezapomeňte nahradit níže uvedené zástupné symboly názvem skupiny prostředků a názvem služby, který jste zřídili dříve v tomto kurzu.
+3. Pomocí následujícího příkazu nainstalujte rozšíření Azure jaře Cloud pro rozhraní příkazového řádku Azure.
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+4. Přiřaďte názvy ke svojí skupině prostředků a službě. Nezapomeňte nahradit níže uvedené zástupné symboly názvem skupiny prostředků a názvem služby, který jste zřídili dříve v tomto kurzu.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-4. Vytvořte `gateway` aplikaci a nasaďte soubor JAR.
+5. Vytvořte `gateway` aplikaci a nasaďte soubor JAR.  Následující kroky vyžadují rozšíření jarního cloudu. Pokud jste ho neinstalovali pomocí požadovaných součástí, spusťte následující příkaz:
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+    Pomocí rozšíření jarní cloud vytvořte aplikaci:
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-5. Podle stejného vzoru vytvořte aplikace `account-service` a `auth-service` a nasaďte jejich soubory jar.
+6. Podle stejného vzoru vytvořte `account-service` `auth-service` aplikace a a nasaďte jejich soubory jar.
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -150,7 +154,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-6. Dokončení nasazování aplikací trvá několik minut. Pokud chcete potvrdit, že se nasadili, vyberte v Azure Portal okno **aplikace** . Mělo by se zobrazit řádek každé ze tří aplikací.
+7. Dokončení nasazování aplikací trvá několik minut. Pokud chcete potvrdit, že se nasadili, vyberte v Azure Portal okno **aplikace** . Mělo by se zobrazit řádek každé ze tří aplikací.
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e971e52f994ec5fa5663708fa9f173daf33d80
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74706368"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135403"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
@@ -37,8 +38,8 @@ Můžete se podívat na následující video o obnovování vícevrstvé aplikac
 
 Než začnete, ujistěte se, že rozumíte následujícímu:
 
-1. [Replikace virtuálního počítače do Azure](site-recovery-vmware-to-azure.md)
-2. [Návrh sítě pro obnovení](site-recovery-network-design.md)
+1. [Replikace virtuálního počítače do Azure](./vmware-azure-tutorial.md)
+2. [Návrh sítě pro obnovení](./concepts-on-premises-to-azure-networking.md)
 3. [Test převzetí služeb při selhání do Azure](site-recovery-test-failover-to-azure.md)
 4. [Převzetí služeb při selhání do Azure](site-recovery-failover.md)
 5. Postup [replikace řadiče domény](site-recovery-active-directory.md)
@@ -46,7 +47,7 @@ Než začnete, ujistěte se, že rozumíte následujícímu:
 
 ## <a name="sharepoint-architecture"></a>Architektura služby SharePoint
 
-Službu SharePoint lze nasadit na jeden nebo více serverů pomocí vrstvené topologie a role serveru pro implementaci návrhu farmy, který splňuje určité cíle a cíle. Typickou velkou, vysoce potřebnou farmou serveru SharePoint, která podporuje vysoký počet souběžných uživatelů a velký počet položek obsahu, používá seskupení služeb jako součást strategie škálovatelnosti. Tento přístup zahrnuje spuštěné služby na vyhrazených serverech, seskupovat tyto služby dohromady a potom škálovat servery jako skupinu. Následující topologie znázorňuje seskupení služeb a serverů pro farmu serveru SharePoint Server na třetí úrovni. Podrobné pokyny k různým topologiím SharePointu najdete v dokumentaci k SharePointu a architekturách produktového řádku. Další podrobnosti o nasazení SharePoint 2013 najdete v [tomto dokumentu](https://technet.microsoft.com/library/cc303422.aspx).
+Službu SharePoint lze nasadit na jeden nebo více serverů pomocí vrstvené topologie a role serveru pro implementaci návrhu farmy, který splňuje určité cíle a cíle. Typickou velkou, vysoce potřebnou farmou serveru SharePoint, která podporuje vysoký počet souběžných uživatelů a velký počet položek obsahu, používá seskupení služeb jako součást strategie škálovatelnosti. Tento přístup zahrnuje spuštěné služby na vyhrazených serverech, seskupovat tyto služby dohromady a potom škálovat servery jako skupinu. Následující topologie znázorňuje seskupení služeb a serverů pro farmu serveru SharePoint Server na třetí úrovni. Podrobné pokyny k různým topologiím SharePointu najdete v dokumentaci k SharePointu a architekturách produktového řádku. Další podrobnosti o nasazení SharePoint 2013 najdete v [tomto dokumentu](/SharePoint/sharepoint-server).
 
 
 
@@ -73,7 +74,7 @@ Pokud v aplikaci používáte sdílený cluster založený na discích jako libo
 
 ## <a name="replicating-virtual-machines"></a>Replikace virtuálních počítačů
 
-Podle [těchto pokynů](site-recovery-vmware-to-azure.md) spusťte replikaci virtuálního počítače do Azure.
+Podle [těchto pokynů](./vmware-azure-tutorial.md) spusťte replikaci virtuálního počítače do Azure.
 
 * Po dokončení replikace se ujistěte, že jste přešli na všechny virtuální počítače každé úrovně, a v části replikovaná položka > nastavení vyberte stejnou skupinu dostupnosti > vlastnosti > COMPUTE a Network. Pokud má vaše webová vrstva například 3 virtuální počítače, zajistěte, aby všechny 3 virtuální počítače byly nakonfigurované jako součást stejné sady dostupnosti v Azure.
 
@@ -98,7 +99,7 @@ Podle [těchto pokynů](site-recovery-vmware-to-azure.md) spusťte replikaci vir
 
 ### <a name="dns-and-traffic-routing"></a>Směrování DNS a provozu
 
-Pro internetové weby vytvořte v předplatném Azure [profil Traffic Manager typu priorita](../traffic-manager/traffic-manager-create-profile.md) . Pak následujícím způsobem nakonfigurujte DNS a profil Traffic Manager.
+Pro internetové weby vytvořte v předplatném Azure [profil Traffic Manager typu priorita](../traffic-manager/quickstart-create-traffic-manager-profile.md) . Pak následujícím způsobem nakonfigurujte DNS a profil Traffic Manager.
 
 
 | **,** | **Zdroj** | **Cílové**|
@@ -162,7 +163,7 @@ Nejčastěji používané Azure Site Recovery skripty můžete nasadit do svého
     * Tato metoda předpokládá, že záloha aplikace Search Service byla provedena před závažnou událostí a že záloha je k dispozici na webu DR.
     * To je možné snadno dosáhnout naplánováním zálohování (například jednou za den) a použitím postupu kopírování k umístění zálohy na webu DR. Procedury kopírování můžou zahrnovat skriptované programy, jako je například AzCopy (Azure Copy) nebo nastavení služby DFSR (replikace distribuovaných souborových služeb).
     * Teď, když je farma služby SharePoint spuštěná, přejděte do centrální správy, zálohování a obnovení a vyberte obnovit. Obnovení interrogates zadané umístění zálohy (možná budete muset hodnotu aktualizovat). Vyberte zálohu Search Service aplikace, kterou chcete obnovit.
-    * Hledání je obnoveno. Mějte na paměti, že obnovení očekává vyhledání stejné topologie (stejného počtu serverů) a stejných písmen pevného disku přiřazených k těmto serverům. Další informace najdete v dokumentu ["obnovení aplikace Vyhledávací služby v SharePoint 2013"](https://technet.microsoft.com/library/ee748654.aspx) .
+    * Hledání je obnoveno. Mějte na paměti, že obnovení očekává vyhledání stejné topologie (stejného počtu serverů) a stejných písmen pevného disku přiřazených k těmto serverům. Další informace najdete v dokumentu ["obnovení aplikace Vyhledávací služby v SharePoint 2013"](/SharePoint/administration/restore-a-search-service-application) .
 
 
 6. Pokud chcete začít s novou aplikací Vyhledávací služby, postupujte podle následujících kroků.

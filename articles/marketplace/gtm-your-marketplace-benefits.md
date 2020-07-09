@@ -1,18 +1,18 @@
 ---
 title: Služby pro uvedení na trh – výhody komerčního tržiště, Azure Marketplace
 description: Služby pro uvedení na trh – prostředky společnosti Microsoft, které mohou vydavatelé používat, jsou popsány v této části.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 7de2e36edbcd0b55facae89be477ac0d334dae49
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: keferna
+ms.author: keferna
+ms.openlocfilehash: c954e3c685a795942f78bdb19b59ca817252d26b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085680"
+ms.locfileid: "86135525"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Výhody vašeho komerčního tržiště
 
@@ -34,15 +34,15 @@ U partnerů pro Transact-to, jak budete rozšiřovat účtované prodeje prostř
 
 Minimálním požadavkem pro publikování v prodejní místa je MPNID, takže tyto výhody jsou dostupné všem partnerům bez ohledu na stav kompetence MPN nebo partnerský typ. Každý partner je oprávněn rozšířit svou firmu na webu Marketplace jako platformu.
 
-Získáte podporu při porozumění dostupných zdrojích a implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
+Získáte podporu při porozumění dostupným prostředkům a při implementaci osvědčených postupů, které můžete také [zkontrolovat sami](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
-Podrobné popisy všech výhod programu najdete na [webu Marketplace](https://aka.ms/marketplacerewards)– výhody programu.
+Podrobné popisy všech výhod programu najdete v této [prezentaci programu Marketplace](https://aka.ms/marketplacerewards).
 
-Postup, jak začít, je snadné:
+Začínáme je snadné:
 
 1. Publikování nabídky buď Microsoft AppSource, nebo Azure Marketplace.
-2. Přejděte na [řídicí panel](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)partnerského centra, otevřete **komerční web Marketplace** v nabídce vlevo, vyberte možnost výhody **webu Marketplace**a pak vyberte kartu **prodejní a marketingové výhody** , abyste viděli seznam výhod.
-3. Pokud chcete aktivovat prodejní a marketingové výhody, musíte nejdřív přiřadit marketingový kontakt společnosti. Tato kontaktní osoba následně bude dostávat zprávy ohledně programu Marketplace Rewards.
+2. Projděte si [ceny na webu Marketplace](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace) v partnerském centru a vyberte možnost **registrovat v programu Marketplace**.
+3. Pokud chcete aktivovat prodejní a marketingové výhody, přiřaďte firemní marketingový kontakt. Tato kontaktní osoba následně bude dostávat zprávy ohledně programu Marketplace Rewards.
 4. Pokud chcete přidat nebo aktualizovat svoje marketingové kontaktní údaje, přejděte na stránku s výhodami prodeje a marketingu na stránce výhody Marketplace a pak vyberte **Přidat, aktualizovat nebo změnit**.  Dále postupujte následovně:
 
     1. Vyberte uživatele ze seznamu. Pokud se uživatel, kterého chcete přiřadit, nenachází v seznamu, můžete přidat nové uživatele v **Nastavení účtu**.
@@ -56,7 +56,7 @@ Postup, jak začít, je snadné:
 2. Používání výhod sponzorství Azure bude při odemčení těchto výhod sdíleno prostřednictvím e-mailu.
 
 >[!NOTE]
->Pokud byla nabídka živá po dobu více než čtyř týdnů a neobdrželi jste zprávu, zkontrolujte v partnerském centru v organizaci, která je vlastníkem příslušné nabídky. Měly by mít komunikaci a další kroky. <br> <br> Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na stránce [pomoc a podpora](https://aka.ms/marketplacepublishersupport).
+>Pokud byla nabídka živá po dobu více než čtyř týdnů a neobdrželi jste zprávu, zkontrolujte v partnerském centru v organizaci, která je vlastníkem příslušné nabídky. Měly by mít komunikaci a další kroky.<br><br>Pokud nemůžete určit vlastníka nebo pokud vlastník opustil vaši společnost, můžete lístek podpory vyvolat na stránce [pomoc a podpora](https://aka.ms/marketplacepublishersupport).
 
 Rozsah aktivit, které jsou k dispozici, se rozšíří při zvětšování nabídek na webu Marketplace. Všechny výpisy obdrží základní úroveň doporučení optimalizace a povýšení v rámci samoobslužného e-mailu s prostředky a osvědčenými postupy.
 
@@ -75,7 +75,7 @@ Podrobné popisy všech těchto výhod najdete na [webu Marketplace](https://aka
 Až budete pracovat s podporou transakcí v Azure Marketplace nebo Microsoft AppSource, budete mít přístup k dalším výhodám při růstu fakturovaných prodejních transakcí nebo míst prodávaných prostřednictvím komerčního tržiště. 
 
 >[!NOTE]
->Prahová hodnota počtu vydaných míst se vztahuje jenom na Microsoft 365 aplikace (SaaS aplikace, které mají integrace s Microsoft teams, Office, Outlookem nebo SharePointem) a výhody se musí dokončit 30. června 2020.
+>Prahová hodnota pro vydaná místa se vztahuje pouze na aplikace Microsoft 365 (aplikace SaaS, které mají integrace s Microsoft teams, Office, Outlook nebo SharePoint) a výhody se musí dokončit 30. června 2020.
 
 Tyto výhody jsou navržené tak, aby vám podporovaly marketing, prodej a technické aktivity a tím vám pomohly získat další návštěvníky, získat větší potenciální zákazníky a převést více firmy.
 

@@ -8,11 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: c41292a05e5c857cd0b1c120784a400f2f5410ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5a9ace105e56d9db61470c35f665954812c3825
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945356"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134265"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí rozhraní příkazového řádku Azure
 
@@ -49,11 +50,15 @@ Pro scénáře migrace je potřeba nastavit prostředí pro klasický i Správce
 
 Přihlaste se ke svému účtu.
 
-    azure login
+```azurecli
+azure login
+```
 
 Vyberte předplatné Azure pomocí následujícího příkazu.
 
-    azure account set "<azure-subscription-name>"
+```azurecli
+azure account set "<azure-subscription-name>"
+```
 
 > [!NOTE]
 > Registrace je jednorázový krok, ale před pokusem o migraci je potřeba ji udělat znovu. Bez registrace se zobrazí následující chybová zpráva. 
@@ -64,42 +69,53 @@ Vyberte předplatné Azure pomocí následujícího příkazu.
 
 Zaregistrujte se zprostředkovatelem prostředků migrace pomocí následujícího příkazu. Všimněte si, že v některých případech vypršel časový limit tohoto příkazu. Registrace bude ale úspěšná.
 
-    azure provider register Microsoft.ClassicInfrastructureMigrate
+```azurecli
+azure provider register Microsoft.ClassicInfrastructureMigrate
+```
 
 Počkejte prosím pět minut, než se registrace dokončí. Stav schválení můžete zjistit pomocí následujícího příkazu. Před pokračováním se ujistěte, že je RegistrationState `Registered` .
 
-    azure provider show Microsoft.ClassicInfrastructureMigrate
+```azurecli
+azure provider show Microsoft.ClassicInfrastructureMigrate
+```
 
 Teď přepněte CLI do `asm` režimu.
 
-    azure config mode asm
+```azurecli
+azure config mode asm
+```
 
 ## <a name="step-3-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Krok 3: Ujistěte se, že máte dostatek Azure Resource Manager vCPU virtuálních počítačů v oblasti Azure vašeho aktuálního nasazení nebo virtuální sítě.
 V tomto kroku budete muset přepnout do `arm` režimu. Udělejte to pomocí následujícího příkazu.
 
-```
+```azurecli
 azure config mode arm
 ```
 
 Pomocí následujícího příkazu rozhraní příkazového řádku můžete kontrolovat aktuální počet vCPU, které máte v Azure Resource Manager. Další informace o kvótách vCPU najdete v tématu [omezení a Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits).
 
-```
+```azurecli
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
 Po ověření tohoto kroku můžete přepnout zpátky do `asm` režimu.
 
-    azure config mode asm
-
+```azurecli
+azure config mode asm
+```
 
 ## <a name="step-4-option-1---migrate-virtual-machines-in-a-cloud-service"></a>Krok 4: možnost 1 – migrace virtuálních počítačů v cloudové službě
 Seznam cloudových služeb získáte pomocí následujícího příkazu a pak vyberte cloudovou službu, kterou chcete migrovat. Všimněte si, že pokud jsou virtuální počítače v cloudové službě ve virtuální síti, nebo pokud mají webové a pracovní role, zobrazí se chybová zpráva.
 
-    azure service list
+```azurecli
+azure service list
+```
 
 Spusťte následující příkaz, který získá název nasazení pro cloudovou službu z podrobného výstupu. Ve většině případů je název nasazení stejný jako název cloudové služby.
 
-    azure service show <serviceName> -vv
+```azurecli
+azure service show <serviceName> -vv
+```
 
 Nejdřív ověřte, jestli můžete migrovat cloudovou službu pomocí následujících příkazů:
 
@@ -111,32 +127,42 @@ Připravte virtuální počítače v cloudové službě pro migraci. Máte dvě 
 
 Pokud chcete migrovat virtuální počítače na virtuální síť vytvořenou platformou, použijte následující příkaz.
 
-    azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
+```azurecli
+azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
+```
 
 Pokud chcete migrovat do existující virtuální sítě v modelu nasazení Správce prostředků, použijte následující příkaz.
 
-    azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
+```azurecli
+azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> <subnetName> <vnetName>
+```
 
 Po úspěšném dokončení operace přípravy můžete projít podrobný výstup a získat tak stav migrace virtuálních počítačů a ujistit se, že jsou ve `Prepared` stavu.
 
-    azure vm show <vmName> -vv
+```azurecli
+azure vm show <vmName> -vv
+```
 
 Ověřte konfiguraci pro připravené prostředky pomocí rozhraní příkazového řádku nebo Azure Portal. Pokud nejste připraveni na migraci a chcete se vrátit k původnímu stavu, použijte následující příkaz.
 
-    azure service deployment abort-migration <serviceName> <deploymentName>
+```azurecli
+azure service deployment abort-migration <serviceName> <deploymentName>
+```
 
 Pokud je připravená konfigurace dobrá, můžete přesunout prostředky vpřed a potvrdit je pomocí následujícího příkazu.
 
-    azure service deployment commit-migration <serviceName> <deploymentName>
-
-
+```azurecli
+azure service deployment commit-migration <serviceName> <deploymentName>
+```
 
 ## <a name="step-4-option-2----migrate-virtual-machines-in-a-virtual-network"></a>Krok 4: možnost 2 – migrace virtuálních počítačů ve virtuální síti
 Vyberte virtuální síť, kterou chcete migrovat. Všimněte si, že pokud virtuální síť obsahuje webové a pracovní role nebo virtuální počítače s nepodporovanými konfiguracemi, zobrazí se chybová zpráva ověření.
 
 Všechny virtuální sítě v rámci předplatného získáte pomocí následujícího příkazu.
 
-    azure network vnet list
+```azurecli
+azure network vnet list
+```
 
 Výstup bude vypadat zhruba takto:
 
@@ -152,30 +178,42 @@ azure network vnet validate-migration <virtualNetworkName>
 
 Připravte virtuální síť podle vašeho výběru pro migraci pomocí následujícího příkazu.
 
-    azure network vnet prepare-migration <virtualNetworkName>
+```azurecli
+azure network vnet prepare-migration <virtualNetworkName>
+```
 
 Ověřte konfiguraci připravených virtuálních počítačů pomocí rozhraní příkazového řádku nebo Azure Portal. Pokud nejste připraveni na migraci a chcete se vrátit k původnímu stavu, použijte následující příkaz.
 
-    azure network vnet abort-migration <virtualNetworkName>
+```azurecli
+azure network vnet abort-migration <virtualNetworkName>
+```
 
 Pokud je připravená konfigurace dobrá, můžete přesunout prostředky vpřed a potvrdit je pomocí následujícího příkazu.
 
-    azure network vnet commit-migration <virtualNetworkName>
+```azurecli
+azure network vnet commit-migration <virtualNetworkName>
+```
 
 ## <a name="step-5-migrate-a-storage-account"></a>Krok 5: Migrace účtu úložiště
 Po dokončení migrace virtuálních počítačů doporučujeme migrovat účet úložiště.
 
 Připravte účet úložiště pro migraci pomocí následujícího příkazu.
 
-    azure storage account prepare-migration <storageAccountName>
+```azurecli
+azure storage account prepare-migration <storageAccountName>
+```
 
 Ověřte konfiguraci připraveného účtu úložiště pomocí rozhraní příkazového řádku nebo Azure Portal. Pokud nejste připraveni na migraci a chcete se vrátit k původnímu stavu, použijte následující příkaz.
 
-    azure storage account abort-migration <storageAccountName>
+```azurecli
+azure storage account abort-migration <storageAccountName>
+```
 
 Pokud je připravená konfigurace dobrá, můžete přesunout prostředky vpřed a potvrdit je pomocí následujícího příkazu.
 
-    azure storage account commit-migration <storageAccountName>
+```azurecli
+azure storage account commit-migration <storageAccountName>
+```
 
 ## <a name="next-steps"></a>Další kroky
 

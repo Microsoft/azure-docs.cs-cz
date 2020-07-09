@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: abd357808cd0213e92eaba478fb861110bcf9f39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c70a6049596aa38e9ae6118517fc471becbc1676
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84666719"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134639"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Ubuntu pro Azure
 
@@ -42,31 +43,36 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
 2. Kliknutím na **připojit** otevřete okno pro virtuální počítač.
 
 3. Nahraďte aktuální úložiště v imagi a použijte úložiště Azure Ubuntu.
-   
+
     Před úpravou `/etc/apt/sources.list` doporučujeme vytvořit zálohu:
-   
-        # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+
+    ```console
+    # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    ```
 
     Ubuntu 16,04 a Ubuntu 18,04:
-   
-        # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
-        # sudo sed -i 's/http:\/\/[a-z][a-z]\.archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
-        # sudo apt-get update
 
+    ```console
+    # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+    # sudo sed -i 's/http:\/\/[a-z][a-z]\.archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+    # sudo apt-get update
+    ```
 
 4. Image Azure Ubuntu teď používají [jádro Azure](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel), které se přizpůsobí. Aktualizujte operační systém na nejnovější jádro s upraveným prostředím Azure a nainstalujte nástroje Azure Linux (včetně závislostí technologie Hyper-V) spuštěním následujících příkazů:
 
     Ubuntu 16,04 a Ubuntu 18,04:
 
-        # sudo apt update
-        # sudo apt install linux-azure linux-image-azure linux-headers-azure linux-tools-common linux-cloud-tools-common linux-tools-azure linux-cloud-tools-azure
-        (recommended) # sudo apt full-upgrade
+    ```console
+    # sudo apt update
+    # sudo apt install linux-azure linux-image-azure linux-headers-azure linux-tools-common linux-cloud-tools-common linux-tools-azure linux-cloud-tools-azure
+    (recommended) # sudo apt full-upgrade
 
-        # sudo reboot
+    # sudo reboot
+    ```
 
 5. Upravte spouštěcí řádek jádra pro GRUB tak, aby zahrnoval další parametry jádra pro Azure. Pokud to chcete otevřít `/etc/default/grub` v textovém editoru, najděte proměnnou s názvem `GRUB_CMDLINE_LINUX_DEFAULT` (nebo ji přidejte v případě potřeby) a upravte ji tak, aby zahrnovala následující parametry:
-   
-    ```
+
+    ```text
     GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"
     ```
 
@@ -76,21 +82,25 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
 
 7. Nainstalujte Cloud-init (zřizovací Agent) a agenta Azure Linux (obslužná rutina rozšíření hosta). Cloud-init používá netplan ke konfiguraci systémové konfigurace sítě během zřizování a při každém následném spuštění.
 
-        # sudo apt update
-        # sudo apt install cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
+    ```console
+    # sudo apt update
+    # sudo apt install cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
+    ```
 
    > [!Note]
    >  `walinuxagent`Balíček může odebrat `NetworkManager` `NetworkManager-gnome` balíčky a, pokud jsou nainstalované.
 
 8. Odeberte výchozí konfigurace Cloud-init a zbylé netplan artefakty, které můžou být v konfliktu s zřizováním Cloud-init v Azure:
 
-        # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
-        # rm -f /etc/cloud/ds-identify.cfg
-        # rm -f /etc/netplan/*.yaml
+    ```console
+    # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
+    # rm -f /etc/cloud/ds-identify.cfg
+    # rm -f /etc/netplan/*.yaml
+    ```
 
 9. Konfigurace Cloud-init pro zřízení systému pomocí zdroje dat Azure:
 
-    ```
+    ```console
     # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
     datasource_list: [ Azure ]
     EOF
@@ -123,27 +133,31 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
 
 10. Nakonfigurujte agenta Azure Linux tak, aby se při zřizování spoléhal na Cloud-init. Další informace o těchto možnostech najdete v [projektu WALinuxAgent](https://github.com/Azure/WALinuxAgent) .
 
-        sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
-        sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
-        sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
-        sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```console
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
 
-        cat >> /etc/waagent.conf << EOF
-        # For Azure Linux agent version >= 2.2.45, this is the option to configure,
-        # enable, or disable the provisioning behavior of the Linux agent.
-        # Accepted values are auto (default), waagent, cloud-init, or disabled.
-        # A value of auto means that the agent will rely on cloud-init to handle
-        # provisioning if it is installed and enabled, which in this case it will.
-        Provisioning.Agent=auto
-        EOF
+    cat >> /etc/waagent.conf << EOF
+    # For Azure Linux agent version >= 2.2.45, this is the option to configure,
+    # enable, or disable the provisioning behavior of the Linux agent.
+    # Accepted values are auto (default), waagent, cloud-init, or disabled.
+    # A value of auto means that the agent will rely on cloud-init to handle
+    # provisioning if it is installed and enabled, which in this case it will.
+    Provisioning.Agent=auto
+    EOF
+    ```
 
 11. Vyčištění artefaktů a protokolů runtime pro Cloud-init a Azure Linux agentů:
 
-        # sudo cloud-init clean --logs --seed
-        # sudo rm -rf /var/lib/cloud/
-        # sudo systemctl stop walinuxagent.service
-        # sudo rm -rf /var/lib/waagent/
-        # sudo rm -f /var/log/waagent.log
+    ```console
+    # sudo cloud-init clean --logs --seed
+    # sudo rm -rf /var/lib/cloud/
+    # sudo systemctl stop walinuxagent.service
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+    ```
 
 12. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
 
@@ -153,10 +167,12 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
     > [!WARNING]
     > Zrušení zřízení pomocí příkazu výše nezaručuje, že se image vymaže ze všech citlivých informací a je vhodná pro redistribuci.
 
-        # sudo waagent -force -deprovision+user
-        # rm -f ~/.bash_history
-        # export HISTSIZE=0
-        # logout
+    ```console
+    # sudo waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    # export HISTSIZE=0
+    # logout
+    ```
 
 13. Klikněte na **Akce – > vypnout** ve Správci technologie Hyper-V.
 

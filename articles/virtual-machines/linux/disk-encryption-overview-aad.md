@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc9f3b54d427a30b587d8335f6ce9b013f407374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd44c5a90a656b804ff4e3bb9984a059ec3a89a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792560"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135421"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption s Azure AD (předchozí verze)
 
@@ -34,16 +35,17 @@ Pokud chcete funkci Azure Disk Encryption povolit pomocí starší syntaxe param
   - Virtuální počítač IaaS musí být schopný se připojit ke koncovému bodu Azure Storage, který hostuje úložiště rozšíření Azure a účet úložiště Azure, který hostuje soubory VHD.
   -  Pokud vaše zásada zabezpečení omezuje přístup z virtuálních počítačů Azure na Internet, můžete přeložit předchozí identifikátor URI a nakonfigurovat konkrétní pravidlo tak, aby umožňovalo odchozí připojení k IP adresám. Další informace najdete v tématu [Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
   - Pokud je v systému Windows explicitně zakázán protokol TLS 1,0 a verze rozhraní .NET není aktualizována na 4,6 nebo novější, umožňuje následující změna registru Azure Disk Encryption vybrat novější verzi protokolu TLS:
+
+  ```config-registry
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+  "SystemDefaultTlsVersions"=dword:00000001
+  "SchUseStrongCrypto"=dword:00000001
     
-            [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-            "SystemDefaultTlsVersions"=dword:00000001
-            "SchUseStrongCrypto"=dword:00000001
-    
-            [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-            "SystemDefaultTlsVersions"=dword:00000001
-            "SchUseStrongCrypto"=dword:00000001` 
-         
-    
+  [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+  "SystemDefaultTlsVersions"=dword:00000001
+  "SchUseStrongCrypto"=dword:00000001` 
+  ```
+
 ### <a name="group-policy"></a>Zásady skupiny
  - Řešení Azure Disk Encryption využívá ochranu pomocí nástroje BitLocker pro virtuální počítače s Windows IaaS. Pro virtuální počítače připojené k doméně neinstalujte žádné zásady skupiny, které vynutily ochranu čipem TPM. Informace o Zásady skupiny možnosti **Povolení BitLockeru bez kompatibilního čipu TPM**najdete v tématu [Zásady skupiny BitLockeru](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 

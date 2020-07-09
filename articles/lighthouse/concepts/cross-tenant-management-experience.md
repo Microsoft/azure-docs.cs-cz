@@ -3,15 +3,16 @@ title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
 ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ef2fe2ecd72234312a750e206b8920f4ea7eaa02
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5e8a678530d9cf334d89091e7f23191ae8613737
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920604"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135492"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
-Jako poskytovatel služeb můžete použít [správu delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md) ke správě prostředků Azure pro více zákazníků v rámci vašeho vlastního tenanta v [Azure Portal](https://portal.azure.com). Většinu úkolů a služeb je možné provádět u delegovaných prostředků Azure ve spravovaných klientech. Tento článek popisuje některé z rozšířených scénářů, ve kterých může být efektivní správa delegovaných prostředků Azure.
+Jako poskytovatel služeb můžete pomocí [Azure Lighthouse](../overview.md) spravovat prostředky pro více zákazníků v rámci vašeho vlastního tenanta v [Azure Portal](https://portal.azure.com). U delegovaných prostředků Azure ve spravovaných klientech se dá provádět celá řada úloh a služeb s využitím [delegované správy prostředků Azure](../concepts/azure-delegated-resource-management.md).
 
 > [!NOTE]
 > Správu delegovaných prostředků Azure je možné použít i [v rámci podniku, který má více tenantů Azure AD vlastní](enterprise.md) pro zjednodušení správy mezi klienty.
@@ -22,9 +23,9 @@ Tenant Azure Active Directory (Azure AD) je zastoupení organizace. Jedná se o 
 
 Aby bylo možné spravovat prostředky Azure pro zákazníka, poskytovatelé služeb by se museli přihlašovat k Azure Portal pomocí účtu přidruženého k tenantovi daného zákazníka a vyžadovat od správce v tenantovi zákazníka vytváření a správu uživatelských účtů pro poskytovatele služeb.
 
-Pomocí delegované správy prostředků Azure určí proces zprovoznění uživatele v tenantovi poskytovatele služeb, kteří budou mít přístup k předplatným, skupinám prostředků a prostředkům v tenantovi zákazníka. Tito uživatelé se pak mohou přihlašovat k Azure Portal pomocí vlastních přihlašovacích údajů. V rámci Azure Portal mohou spravovat prostředky patřící všem zákazníkům, ke kterým mají přístup. To se dá udělat tak, že navštívíte stránku [moji Customers](../how-to/view-manage-customers.md) v Azure Portal, nebo přímo v rámci svého předplatného daného zákazníka, a to buď v Azure Portal nebo prostřednictvím rozhraní API.
+Pomocí Azure Lighthouse proces připojování Určuje uživatele v rámci tenanta poskytovatele služeb, kteří budou mít přístup k předplatným, skupinám prostředků a prostředkům v tenantovi zákazníka. Tito uživatelé se pak mohou přihlašovat k Azure Portal pomocí vlastních přihlašovacích údajů. V rámci Azure Portal mohou spravovat prostředky patřící všem zákazníkům, ke kterým mají přístup. To se dá udělat tak, že navštívíte stránku [moji Customers](../how-to/view-manage-customers.md) v Azure Portal, nebo přímo v rámci svého předplatného daného zákazníka, a to buď v Azure Portal nebo prostřednictvím rozhraní API.
 
-Správa delegovaných prostředků Azure umožňuje větší flexibilitu při správě prostředků pro více zákazníků bez nutnosti přihlašovat se k různým účtům v různých klientech. Poskytovatel služeb může mít například dva zákazníky s různými zodpovědnostmi a úrovněmi přístupu. Pomocí delegované správy prostředků Azure se oprávnění uživatelé můžou přihlásit k tenantovi poskytovatele služeb, aby měli přístup k těmto prostředkům.
+Azure Lighthouse umožňuje větší flexibilitu při správě prostředků pro různé zákazníky bez nutnosti přihlašovat se k různým účtům v různých klientech. Poskytovatel služeb může mít například dva zákazníky s různými zodpovědnostmi a úrovněmi přístupu. Pomocí Azure Lighthouse se autorizovaní uživatelé můžou přihlásit k tenantovi poskytovatele služeb, aby měli přístup k těmto prostředkům.
 
 ![Prostředky zákazníka spravované prostřednictvím jednoho tenanta poskytovatele služeb](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
@@ -39,15 +40,15 @@ Podobně příkazy rozhraní příkazového řádku Azure, jako [AZ Account list
 > [!TIP]
 > Pokud nevidíte tyto hodnoty při použití rozhraní příkazového řádku Azure, zkuste vyprázdnit mezipaměť spuštěním příkazu `az account clear` a `az login --identity` .
 
-Poskytujeme také rozhraní API, která jsou specifická pro provádění úloh správy delegovaných prostředků Azure. Další informace najdete v části **reference** .
+Poskytujeme také rozhraní API, která jsou specifická pro provádění úloh Azure Lighthouse. Další informace najdete v části **reference** .
 
 ## <a name="enhanced-services-and-scenarios"></a>Rozšířené služby a scénáře
 
-Většinu úkolů a služeb je možné provádět na delegovaných prostředcích ve spravovaných klientech. Níže jsou uvedeny některé z klíčových scénářů, ve kterých může být Správa mezi klienty efektivní.
+Většinu úkolů a služeb je možné provádět na delegovaných prostředcích ve spravovaných klientech. Níže jsou uvedeny některé z klíčových scénářů, ve kterých může být Správa mezi klienty obzvláště efektivní.
 
 [Azure ARC pro servery (Preview)](../../azure-arc/servers/overview.md):
 
-- [Připojení počítačů se systémem Windows Server nebo Linux mimo Azure](../../azure-arc/servers/quickstart-onboard-portal.md) k delegovaným předplatným nebo skupinám prostředků v Azure
+- [Připojení počítačů se systémem Windows Server nebo Linux mimo Azure](../../azure-arc/servers/onboard-portal.md) k delegovaným předplatným nebo skupinám prostředků v Azure
 - Spravujte připojené počítače pomocí konstrukcí Azure, například Azure Policy a označování.
 
 [Azure Automation](../../automation/index.yml):

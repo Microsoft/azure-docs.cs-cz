@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 0ba4531ed15630a8887cb7be843a00ba23a439cc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0eaa4a828716f1a52161726e768acc817d1fde17
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682019"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134179"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu v JavaScriptu pomocí toku kódu ověřování
 
@@ -26,7 +26,7 @@ ms.locfileid: "83682019"
 
 V tomto rychlém startu spustíte ukázku kódu, která předvádí, jak se jednostránkové aplikace v JavaScriptu (SPA) může přihlašovat uživatelům osobních účtů, pracovních účtů a školních účtů pomocí toku autorizačního kódu. Ukázka kódu také ukazuje získání přístupového tokenu pro volání webového rozhraní API, v tomto případě rozhraní Microsoft Graph API. Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.
 
-V tomto rychlém startu se používá MSAL. js 2,0 s tokem autorizačního kódu. Podobný rychlý Start, který používá MSAL. js 1,0 s implicitním tokem, najdete v tématu [rychlý Start: přihlášení uživatelů v JavaScriptu jednostránkovéch aplikacích](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
+Tento rychlý Start používá MSAL.js 2,0 s tokem autorizačního kódu. Podobného rychlému startu, který používá MSAL.js 1,0 s implicitním tokem, najdete v tématu [rychlý Start: přihlášení uživatelů v aplikacích JavaScript Single-Page](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -76,10 +76,10 @@ V tomto rychlém startu se používá MSAL. js 2,0 s tokem autorizačního kódu
 #### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
 
 > [!div renderon="docs"]
-> Chcete-li spustit projekt s webovým serverem pomocí Node. js, [Stáhněte si základní soubory projektu](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip).
+> Chcete-li spustit projekt s webovým serverem pomocí Node.js, [Stáhněte si základní soubory projektu](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> Spustit projekt s webovým serverem pomocí Node. js
+> Spustit projekt s webovým serverem pomocí Node.js
 
 > [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
 > [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip)
@@ -87,7 +87,7 @@ V tomto rychlém startu se používá MSAL. js 2,0 s tokem autorizačního kódu
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurace aplikace JavaScriptu
 >
-> Ve složce *aplikace* otevřete soubor *authConfig. js* a aktualizujte `clientID` hodnoty, a `authority` `redirectUri` v `msalConfig` objektu.
+> Ve složce *aplikace* otevřete soubor *authConfig.js* a aktualizujte `clientID` hodnoty, a `authority` `redirectUri` v `msalConfig` objektu.
 >
 > ```javascript
 > // Config object to be passed to Msal on creation
@@ -121,7 +121,7 @@ V tomto rychlém startu se používá MSAL. js 2,0 s tokem autorizačního kódu
 >   - Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu hodnotou `consumers` .
 > - `Enter_the_Redirect_Uri_Here` je `http://localhost:3000/`.
 >
-> `authority`Pokud používáte hlavní (globální) cloud Azure, měla by být hodnota v *authConfig. js* podobná následující:
+> `authority`Pokud používáte hlavní (globální) cloud Azure, měla by být hodnota v *authConfig.js* podobná následující:
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
@@ -136,7 +136,7 @@ V tomto rychlém startu se používá MSAL. js 2,0 s tokem autorizačního kódu
 
 > [!div renderon="docs"]
 >
-> Potom stále ve stejné složce upravte soubor *graphConfig. js* a aktualizujte `graphMeEndpoint` `graphMailEndpoint` hodnoty a v `apiConfig` objektu.
+> Potom stále ve stejné složce upravte soubor *graphConfig.js* a aktualizujte `graphMeEndpoint` `graphMailEndpoint` hodnoty a v `apiConfig` objektu.
 >
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -155,7 +155,7 @@ V tomto rychlém startu se používá MSAL. js 2,0 s tokem autorizačního kódu
 >
 > `Enter_the_Graph_Endpoint_Here`je koncový bod, na který se bude volat volání rozhraní API. U hlavní (globální) Microsoft Graph služby API zadejte `https://graph.microsoft.com/` (včetně koncového lomítka). Další informace o Microsoft Graph v národních cloudech najdete v tématu věnovaném [národním cloudovým nasazením](https://docs.microsoft.com/graph/deployments).
 >
-> `graphMeEndpoint`Hodnoty a `graphMailEndpoint` v souboru *graphConfig. js* by měly být podobné následujícímu, pokud používáte službu API main (Global) Microsoft Graph:
+> `graphMeEndpoint`Hodnoty a `graphMailEndpoint` v souboru *graphConfig.js* by měly být podobné následujícímu, pokud používáte hlavní (globální) Microsoft Graph službu API:
 >
 > ```javascript
 > graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
@@ -164,7 +164,7 @@ V tomto rychlém startu se používá MSAL. js 2,0 s tokem autorizačního kódu
 >
 > #### <a name="step-4-run-the-project"></a>Krok 4: spuštění projektu
 
-Spusťte projekt s webovým serverem pomocí Node. js:
+Spusťte projekt s webovým serverem pomocí Node.js:
 
 1. Chcete-li spustit server, spusťte v adresáři projektu následující příkazy:
     ```console
@@ -181,18 +181,18 @@ Spusťte projekt s webovým serverem pomocí Node. js:
 
 ### <a name="how-the-sample-works"></a>Jak ukázka funguje
 
-:::image type="content" source="media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Diagram znázorňující tok autorizačního kódu pro jednostránkovou aplikaci":::
+![Diagram znázorňující tok autorizačního kódu pro jednostránkovou aplikaci.](media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png)
 
-### <a name="msaljs"></a>msal. js
+### <a name="msaljs"></a>msal.js
 
-Knihovna MSAL. js podepisuje uživatele a žádá o tokeny, které se používají pro přístup k rozhraní API, které je chráněno platformou Microsoft identity. Soubor *index. html* v ukázce obsahuje odkaz na knihovnu:
+Knihovna MSAL.js přihlašuje uživatele a požádá o tokeny, které se používají pro přístup k rozhraní API, které je chráněno platformou Microsoft Identity Platform. Soubor *index.htm* v ukázce obsahuje odkaz na knihovnu:
 
 ```html
 <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.0.0-beta.0/js/msal-browser.js" integrity=
 "sha384-r7Qxfs6PYHyfoBR6zG62DGzptfLBxnREThAlcJyEfzJ4dq5rqExc1Xj3TPFE/9TH" crossorigin="anonymous"></script>
 ```
 
-Pokud máte nainstalovanou aplikaci Node. js, můžete si stáhnout nejnovější verzi pomocí Správce balíčků Node. js (npm):
+Pokud máte nainstalovanou Node.js, můžete si nejnovější verzi stáhnout pomocí Node.js správce balíčků (npm):
 
 ```console
 npm install @azure/msal-browser

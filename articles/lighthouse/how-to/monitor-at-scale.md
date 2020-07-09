@@ -1,17 +1,18 @@
 ---
 title: Monitorování delegovaných prostředků ve velkém měřítku
 description: Naučte se efektivně používat Azure Monitor protokoly škálovatelným způsobem napříč klienty zákazníka, které spravujete.
-ms.date: 02/03/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: bdd91cec650d6810d1d62230219f840a172141d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be7494f929fc91e2b01bde0b4f26f7c2e4b907b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634111"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133477"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Monitorování delegovaných prostředků ve velkém měřítku
 
-Jako poskytovatel služeb můžete mít k dispozici více zákazníků pro správu delegovaných prostředků Azure. [Azure Lighthouse](../overview.md) umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty najednou, což usnadňuje úlohy správy.
+Jako poskytovatel služeb můžete mít k [Azure Lighthouse](../overview.md)k dispozici několik klientů pro zákazníky. Azure Lighthouse umožňuje poskytovatelům služeb provádět operace ve velkém měřítku napříč několika klienty najednou, což usnadňuje úlohy správy.
 
 V tomto tématu se dozvíte, jak používat [Azure monitor protokoly](../../azure-monitor/platform/data-platform-logs.md) škálovatelným způsobem napříč klienty zákazníka, které spravujete.
 
@@ -21,7 +22,7 @@ Aby bylo možné shromažďovat data, budete muset vytvořit Log Analytics praco
 
 Tyto pracovní prostory doporučujeme vytvořit přímo v klientech zákazníka. Tímto způsobem jejich data zůstanou ve svých klientech a nebudete je exportovat do vašich představ. Díky tomu je možné centralizované monitorování všech prostředků nebo služeb, které Log Analytics podporuje, a poskytuje větší flexibilitu v tom, jaké typy dat sledujete.
 
-Pracovní prostor Log Analytics můžete vytvořit pomocí [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md), pomocí rozhraní příkazového [řádku Azure](../../azure-monitor/learn/quick-create-workspace-cli.md)nebo pomocí [Azure PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md).
+Pracovní prostor Log Analytics můžete vytvořit pomocí [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md), pomocí rozhraní příkazového [řádku Azure](../../azure-monitor/learn/quick-create-workspace-cli.md)nebo pomocí [Azure PowerShell](../../azure-monitor/platform/powershell-workspace-configuration.md).
 
 ## <a name="deploy-policies-that-log-data"></a>Nasazení zásad, které protokolují data
 

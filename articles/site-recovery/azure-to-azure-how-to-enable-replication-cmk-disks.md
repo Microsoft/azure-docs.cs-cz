@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: mayg
-ms.openlocfilehash: 367f29237a3f2a634f209026df47b0cbd6ffc97c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4dcd8847d7d79d816d80b453a37f58c45417fd
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75897959"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135736"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Replikace počítačů s disky s podporou Customer-Managed Key (CMK)
 
@@ -39,7 +40,7 @@ V tomto příkladu je primární oblast Azure Východní Asie a sekundární obl
     - **Cílové umístění**: umístění, kam se budou replikovat vaše zdrojová data virtuálního počítače. Site Recovery poskytuje seznam vhodných cílových oblastí na základě umístění vybraného počítače. Doporučujeme použít stejné umístění jako v umístění trezoru Recovery Services.
     - **Cílové předplatné**: cílové předplatné, které se používá pro zotavení po havárii. Ve výchozím nastavení je cílové předplatné stejné jako zdrojové předplatné.
     - **Cílová skupina prostředků**: Skupina prostředků, do které patří všechny replikované virtuální počítače. Ve výchozím nastavení Site Recovery vytvoří novou skupinu prostředků v cílové oblasti. Název získá `asr` příponu. Pokud již existuje skupina prostředků, která byla vytvořena Azure Site Recovery, je znovu použita. Můžete ji také přizpůsobit, jak je znázorněno v následující části. Umístění cílové skupiny prostředků může být libovolná oblast Azure s výjimkou oblasti, ve které jsou hostované zdrojové virtuální počítače.
-    - **Cílová virtuální síť**: ve výchozím nastavení Site Recovery vytvoří novou virtuální síť v cílové oblasti. Název získá `asr` příponu. Je namapována na vaši zdrojovou síť a používá se pro jakoukoliv budoucí ochranu. [Přečtěte si další informace](site-recovery-network-mapping-azure-to-azure.md) o mapování sítě.
+    - **Cílová virtuální síť**: ve výchozím nastavení Site Recovery vytvoří novou virtuální síť v cílové oblasti. Název získá `asr` příponu. Je namapována na vaši zdrojovou síť a používá se pro jakoukoliv budoucí ochranu. [Přečtěte si další informace](./azure-to-azure-network-mapping.md) o mapování sítě.
     - **Cílové účty úložiště (Pokud zdrojový virtuální počítač nepoužívá spravované disky)**: ve výchozím nastavení Site Recovery vytvoří nový cílový účet úložiště tím, že mimicking konfiguraci úložiště zdrojového virtuálního počítače. Pokud účet úložiště již existuje, bude znovu použit.
     - **Repliky spravovaných disků (Pokud zdrojový virtuální počítač používá spravované disky)**: Site Recovery v cílové oblasti vytvoří nové repliky spravované disky pro zrcadlení spravovaných disků zdrojového virtuálního počítače stejného typu úložiště (Standard nebo Premium) jako spravované disky zdrojového virtuálního počítače.
     - **Účty úložiště mezipaměti**: Site Recovery potřebuje další účet úložiště s názvem *úložiště mezipaměti* ve zdrojové oblasti. Všechny změny ve zdrojových virtuálních počítačích jsou sledovány a odesílány do účtu úložiště mezipaměti. Pak se replikují do cílového umístění.
@@ -80,4 +81,3 @@ Pomocí těchto kroků upravíte Site Recovery výchozí nastavení cíle.
 * Přidal (a) jsem nový disk s podporou CMK do replikované položky. Jak mohu tento disk replikovat pomocí Azure Site Recovery?
 
     Přidání nového disku s povoleným CMK do existující replikované položky není podporováno. Zakažte replikaci a znovu povolte replikaci pro virtuální počítač.
-

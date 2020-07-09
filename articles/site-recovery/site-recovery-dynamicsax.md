@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75941596"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133823"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro aplikaci s více vrstvami Dynamics AX   
 
@@ -68,7 +69,7 @@ Zákazník má velký počet aplikací a provozuje doménovou strukturu služby 
 Technické pokyny týkající se Doporučené možnosti ochrany úrovně SQL najdete v tématu věnovaném [replikaci aplikací pomocí SQL Server a Azure Site Recovery](site-recovery-sql.md).
 
 ### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. povolení ochrany pro virtuální počítače klienta Dynamics AX a server aplikačního objektu aplikace
-Proveďte relevantní konfiguraci Site Recovery na základě toho, jestli jsou virtuální počítače nasazené na [Hyper-V](site-recovery-hyper-v-site-to-azure.md) nebo [VMware](site-recovery-vmware-to-azure.md).
+Proveďte relevantní konfiguraci Site Recovery na základě toho, jestli jsou virtuální počítače nasazené na [Hyper-V](./hyper-v-azure-tutorial.md) nebo [VMware](./vmware-azure-tutorial.md).
 
 > [!TIP]
 > Doporučujeme nakonfigurovat frekvenci konzistentní vzhledem k selháním na 15 minut.
@@ -175,7 +176,7 @@ Informace specifické pro SQL Server během navrácení služeb po obnovení naj
 6. Vyberte **✓** a spusťte proces navrácení služeb po obnovení.
 
 
-Další informace o navrácení služeb po obnovení najdete v tématu [navrácení služeb po obnovení VMware z Azure do místního](site-recovery-failback-azure-to-vmware.md)prostředí.
+Další informace o navrácení služeb po obnovení najdete v tématu [navrácení služeb po obnovení VMware z Azure do místního](./vmware-azure-failback.md)prostředí.
 
 ## <a name="summary"></a>Souhrn
 Pomocí Site Recovery můžete pro aplikaci Dynamics AX vytvořit úplný automatizovaný plán zotavení po havárii. V případě přerušení můžete převzít služby při selhání v řádu sekund odkudkoli a spustit aplikaci v řádu minut.

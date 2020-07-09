@@ -13,11 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 0264ad93eb53e27d1dc76f2b20ad175a6ee2f8de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8ffadb8d54db0c2a99dc12e45b5990155a0505e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688683"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135068"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Konfigurace zón zpětného vyhledávání pro kontrolu banneru SMTP
 
@@ -37,10 +38,12 @@ Ke konfiguraci záznamů PTR ve vlastněných zónách Microsoftu použijte vlas
 
 Když nakonfigurujete záznamy PTR, ujistěte se, že předplatné vlastní IP adresa a reverzní plně kvalifikovaný název domény. Pokud se pokusíte nastavit reverzní plně kvalifikovaný název domény, který nepatří do předplatného, zobrazí se tato chybová zpráva:
 
-    Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
-                        
-    1) ReverseFqdn odpovídá plně kvalifikovanému názvu domény každého prostředku veřejné IP adresy v rámci předplatného;
-    2) ReverseFqdn se překládá na plně kvalifikovaný název domény (prostřednictvím řetězce záznamů CName) libovolného prostředku veřejné IP adresy v rámci předplatného.
-    3) V rámci předplatného se přeloží na IP adresu (prostřednictvím CName a řetězce záznamů) statického prostředku veřejné IP adresy.
+```output
+Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
+                    
+1) ReverseFqdn matches fqdn of any public ip resource under the subscription;
+2) ReverseFqdn resolves to the fqdn (through CName records chain) of any public ip resource under the subscription;
+3) It resolves to the ip address (through CName and A records chain) of a static public ip resource under the subscription.
+```
 
 Pokud si hlavičku protokolu SMTP ručně změníte tak, aby odpovídala naší výchozí reverzní doméně, může se stát, že vzdálený poštovní server selže, protože by mohl očekávat, že hostitel banneru protokolu SMTP bude odpovídat záznamu MX pro doménu.

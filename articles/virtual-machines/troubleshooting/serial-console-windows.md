@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309777"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135241"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
 
@@ -101,15 +102,15 @@ Pokud potřebujete povolit zobrazování výzev pro spouštěcí zavaděč Windo
 
     ![Připojení k konzole SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    Zadejte `cmd` pro vytvoření kanálu, který má instanci cmd.
+1. Zadejte `cmd` pro vytvoření kanálu, který má instanci cmd.
 
-1.    Zadejte `ch -si 1` nebo stiskněte klávesovou `<esc>+<tab>` zkratku pro přepnutí na kanál, na kterém je spuštěná instance cmd.
+1. Zadejte `ch -si 1` nebo stiskněte klávesovou `<esc>+<tab>` zkratku pro přepnutí na kanál, na kterém je spuštěná instance cmd.
 
-1.    Stiskněte klávesu **ENTER**a potom zadejte přihlašovací údaje s oprávněními správce.
+1. Stiskněte klávesu **ENTER**a potom zadejte přihlašovací údaje s oprávněními správce.
 
-1.    Po zadání platných přihlašovacích údajů se otevře instance CMD.
+1. Po zadání platných přihlašovacích údajů se otevře instance CMD.
 
-1.    Pokud chcete spustit instanci prostředí PowerShell, zadejte `PowerShell` v instanci cmd a potom stiskněte klávesu **ENTER**.
+1. Pokud chcete spustit instanci prostředí PowerShell, zadejte `PowerShell` v instanci cmd a potom stiskněte klávesu **ENTER**.
 
     ![Otevřít instanci prostředí PowerShell](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

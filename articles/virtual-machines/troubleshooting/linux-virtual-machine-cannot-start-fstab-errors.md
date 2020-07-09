@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: f68221666f370f87af7539d9302aaa3ed472d5e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daf3e3aaa95734c79e513c16e5d41aeb0bf894dc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82883137"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135266"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Řešení potíží se spouštěním virtuálních počítačů s Linuxem z důvodu chyb fstab
 
@@ -191,16 +192,16 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
 
 2. Jakmile připojíte systémový disk jako datový disk na virtuálním počítači pro obnovení, před provedením změn zálohujte soubor fstab a pak postupujte podle dalších kroků a opravte soubor fstab.
 
-3.    Vyhledejte chybu, která indikuje, že disk není připojený. V následujícím příkladu se systém pokusil připojit disk, který již není přítomen:
+3. Vyhledejte chybu, která indikuje, že disk není připojený. V následujícím příkladu se systém pokusil připojit disk, který již není přítomen:
 
-    ```
-    [DEPEND] Dependency failed for /datadisk1.
-    [DEPEND] Dependency failed for Local File Systems.
-    [DEPEND] Dependency failed for Relabel all filesystems, if necessary.
-    [DEPEND] Dependency failed for Migrate local... structure to the new structure.
-    Welcome to emergency mode! After logging in, type "journalctl -xb" to view system logs, "systemctl reboot" to reboot, "systemctl default" or ^D to try again to boot into default mode.
-    Give root password for maintenance (or type Control-D to continue):
-    ```
+   ```output
+   [DEPEND] Dependency failed for /datadisk1.
+   [DEPEND] Dependency failed for Local File Systems.
+   [DEPEND] Dependency failed for Relabel all filesystems, if necessary.
+   [DEPEND] Dependency failed for Migrate local... structure to the new structure.
+   Welcome to emergency mode! After logging in, type "journalctl -xb" to view system logs, "systemctl reboot" to reboot, "systemctl default" or ^D to try again to boot into default mode.
+   Give root password for maintenance (or type Control-D to continue):
+   ```
 
 4. Připojte se k virtuálnímu počítači pomocí kořenového hesla (virtuální počítače se systémem Red Hat).
 

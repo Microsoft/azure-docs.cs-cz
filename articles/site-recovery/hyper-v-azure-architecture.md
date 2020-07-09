@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74082669"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134920"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Hyper-V do Azure
 
@@ -66,14 +67,14 @@ Následující tabulka a grafika obsahují podrobný pohled na součásti použ�
 ### <a name="enable-protection"></a>Povolení ochrany
 
 1. Po povolení ochrany pro virtuální počítače Hyper-V (na webu Azure Portal nebo místně) se spustí **Povolení ochrany**.
-2. Úloha zkontroluje, zda počítač splňuje požadavky, a potom vyvolá metodu [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx), která nastaví replikaci s nastavením, které jste nakonfigurovali.
-3. Úloha spustí počáteční replikaci vyvoláním metody [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx), která zahájí úplnou replikaci virtuálního počítače a odešle virtuální disky virtuálního počítače do Azure.
+2. Úloha zkontroluje, zda počítač splňuje požadavky, a potom vyvolá metodu [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice), která nastaví replikaci s nastavením, které jste nakonfigurovali.
+3. Úloha spustí počáteční replikaci vyvoláním metody [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice), která zahájí úplnou replikaci virtuálního počítače a odešle virtuální disky virtuálního počítače do Azure.
 4. Úlohu můžete sledovat na kartě **úlohy** .      ![ ](media/hyper-v-azure-architecture/image1.png) Seznam ![ úloh Zapnout přecházení k ochraně](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Počáteční replikace dat
 
-1. Při spuštění počáteční replikace se pořídí snímek [virtuálního počítače Hyper-V](https://technet.microsoft.com/library/dd560637.aspx) .
+1. Při spuštění počáteční replikace se pořídí snímek [virtuálního počítače Hyper-V](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) .
 2. Virtuální pevné disky virtuálního počítače se replikují jednou po jednom, dokud se všechny nezkopírují do Azure. Tato situace může chvíli trvat, v závislosti na velikosti virtuálního počítače a šířce pásma sítě. [Přečtěte si, jak](https://support.microsoft.com/kb/3056159) zvýšit šířku pásma sítě.
 3. Pokud dojde ke změnám na disku v době, kdy probíhá počáteční replikace, sledování replikace repliky technologie Hyper-V sleduje změny jako protokoly replikace technologie Hyper-V (. hrl). Tyto soubory protokolu jsou umístěné ve stejné složce jako disky. Každý disk má přidružený soubor. hrl, který se odesílá do sekundárního úložiště. Soubory snímků a protokolů spotřebovávají prostředky disku v době, kdy probíhá počáteční replikace.
 4. Po dokončení počáteční replikace se snímek virtuálního počítače odstraní.

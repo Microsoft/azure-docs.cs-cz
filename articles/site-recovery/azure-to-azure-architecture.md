@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629709"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135867"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -166,11 +167,11 @@ Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azur
 
 #### <a name="control-access-with-nsg-rules"></a>Řízení přístupu pomocí pravidel NSG
 
-Pokud ovládáte připojení virtuálních počítačů pomocí filtrování síťového provozu do a z sítí nebo podsítí Azure pomocí [pravidel NSG](https://docs.microsoft.com/azure/virtual-network/security-overview), vezměte v vědomí následující požadavky:
+Pokud ovládáte připojení virtuálních počítačů pomocí filtrování síťového provozu do a z sítí nebo podsítí Azure pomocí [pravidel NSG](../virtual-network/security-overview.md), vezměte v vědomí následující požadavky:
 
 - Pravidla NSG pro zdrojovou oblast Azure by měla umožňovat odchozí přístup pro provoz replikace.
 - Před vložením do produkčního prostředí doporučujeme vytvořit pravidla v testovacím prostředí.
-- Místo povolování jednotlivých IP adres používejte [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) .
+- Místo povolování jednotlivých IP adres používejte [značky služeb](../virtual-network/security-overview.md#service-tags) .
     - Značky služby reprezentují skupinu předpon IP adres shromážděných dohromady, aby se při vytváření pravidel zabezpečení minimalizovala složitost.
     - Microsoft automaticky aktualizuje značky služeb v průběhu času. 
  

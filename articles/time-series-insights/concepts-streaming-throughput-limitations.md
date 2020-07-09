@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a82aa3aca55622308cae5816c95df9766048da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: baa132589f5242ab480c9caa55ca793e0652ad6e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049822"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135005"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Omezení propustnosti příjmu streamování
 
 Omezení příchozího přenosu dat Azure Time Series Insights streamování jsou popsány níže.
 
 > [!TIP]
-> Podrobný seznam všech omezení pro verzi Preview najdete v tématu [Naplánování prostředí Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) . **TODO** odstraní slovo "Preview", jakmile se nadpis článku aktualizoval.
+> Podrobný seznam všech omezení pro verzi Preview najdete v tématu [Naplánování prostředí Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) .
 
 ## <a name="per-environment-limitations"></a>Omezení podle prostředí
 

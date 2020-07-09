@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641716"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135309"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překladu názvů DNS pro virtuální počítače se systémem Linux v Azure
 Azure poskytuje překlad názvů DNS standardně pro všechny virtuální počítače, které jsou v jedné virtuální síti. Můžete implementovat vlastní řešení překladu názvů DNS tak, že na virtuálních počítačích, které hostují Azure, nakonfigurujete vlastní služby DNS. Následující scénáře vám pomůžou vybrat ten, který bude fungovat pro vaši situaci.
@@ -91,7 +92,9 @@ DNS je primárně protokol UDP. Vzhledem k tomu, že protokol UDP nezaručí dor
 
 Chcete-li zkontrolovat aktuální nastavení na virtuálním počítači se systémem Linux, ' Cat/etc/resolv.conf ' a podívejte se na řádek ' Options ', například:
 
-    options timeout:1 attempts:5
+```config-conf
+options timeout:1 attempts:5
+```
 
 Soubor soubor resolv. conf se vygeneruje automaticky a neměl by se upravovat. Konkrétní kroky, které přidávají řádek ' Options ', se liší podle distribuce:
 

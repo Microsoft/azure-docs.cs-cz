@@ -3,11 +3,12 @@ title: Vyloučení disků z replikace pomocí Azure Site Recovery
 description: Postup vyloučení disků z replikace do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740514"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135685"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Vyloučení disků z zotavení po havárii
 
@@ -259,7 +260,6 @@ Nastavení stránkovacího souboru na virtuálním počítači Azure je následu
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další informace o pokynech pro dočasný disk úložiště:
-    - [Další informace o](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) použití SSD ve virtuálních počítačích Azure k ukládání SQL serverch rozšíření tempdb a fondu vyrovnávací paměti
-    - [Projděte si](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance) osvědčené postupy výkonu pro SQL Server ve virtuálních počítačích Azure.
+    - [Další informace o](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) použití SSD ve virtuálních počítačích Azure k ukládání SQL serverch rozšíření tempdb a fondu vyrovnávací paměti
+    - [Projděte si](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) osvědčené postupy výkonu pro SQL Server ve virtuálních počítačích Azure.
 - Po nasazení a zprovoznění nasazení si můžete přečíst [další informace](failover-failback-overview.md) o různých typech převzetí služeb při selhání.
-

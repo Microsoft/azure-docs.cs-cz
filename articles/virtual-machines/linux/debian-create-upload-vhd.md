@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebd20b6187fd4f04ac525e0152d805d9d81de3ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134599"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Příprava virtuálního pevného disku Debian pro Azure
 ## <a name="prerequisites"></a>Požadavky
@@ -27,16 +27,18 @@ V této části se předpokládá, že jste už nainstalovali operační systém
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Použití Azure-Manage k vytváření virtuálních pevných disků Debian
 K dispozici jsou nástroje pro generování Debian VHD pro Azure, například skripty [Azure-Manage](https://github.com/credativ/azure-manage) z [credativ](https://www.credativ.com/). Toto je doporučený přístup a vytvoření obrázku od začátku. Pokud třeba chcete vytvořit virtuální pevný disk Debian 8, spusťte následující příkazy ke stažení `azure-manage` nástroje (a závislostí) a spusťte tento `azure_build_image` skript:
 
-    # sudo apt-get update
-    # sudo apt-get install git qemu-utils mbr kpartx debootstrap
+```console
+# sudo apt-get update
+# sudo apt-get install git qemu-utils mbr kpartx debootstrap
 
-    # sudo apt-get install python3-pip python3-dateutil python3-cryptography
-    # sudo pip3 install azure-storage azure-servicemanagement-legacy azure-common pytest pyyaml
-    # git clone https://github.com/credativ/azure-manage.git
-    # cd azure-manage
-    # sudo pip3 install .
+# sudo apt-get install python3-pip python3-dateutil python3-cryptography
+# sudo pip3 install azure-storage azure-servicemanagement-legacy azure-common pytest pyyaml
+# git clone https://github.com/credativ/azure-manage.git
+# cd azure-manage
+# sudo pip3 install .
 
-    # sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+# sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+```
 
 
 ## <a name="manually-prepare-a-debian-vhd"></a>Ruční Příprava virtuálního pevného disku Debian
@@ -45,56 +47,70 @@ K dispozici jsou nástroje pro generování Debian VHD pro Azure, například sk
 3. Pokud jste operační systém nainstalovali s použitím ISO, pak zakomentujte všechny řádky týkající se " `deb cdrom` " v tématu `/etc/apt/source.list` .
 
 4. Upravte `/etc/default/grub` soubor a upravte parametr **GRUB_CMDLINE_LINUX** následujícím způsobem, aby se zahrnuly další parametry jádra pro Azure.
-   
-        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
+    ```
 
 5. Znovu sestavte grub a spusťte:
 
-        # sudo update-grub
+    ```console
+    # sudo update-grub
+    ```
 
 6. Přidejte Debian úložiště Azure do/etc/apt/sources.list pro Debian 8 nebo 9:
 
     **Debian 8. x "Jessie"**
 
-        deb http://debian-archive.trafficmanager.net/debian jessie main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie main
-        deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
-        deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
-        deb http://debian-archive.trafficmanager.net/debian jessie-updates main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
-        deb http://debian-archive.trafficmanager.net/debian jessie-backports main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian jessie main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie main
+    deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
+    deb http://debian-archive.trafficmanager.net/debian jessie-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
+    deb http://debian-archive.trafficmanager.net/debian jessie-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+    ```
 
     **Debian 9. x "Stretch"**
 
-        deb http://debian-archive.trafficmanager.net/debian stretch main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch main
-        deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-        deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-        deb http://debian-archive.trafficmanager.net/debian stretch-updates main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
-        deb http://debian-archive.trafficmanager.net/debian stretch-backports main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian stretch main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch main
+    deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+    deb http://debian-archive.trafficmanager.net/debian stretch-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
+    deb http://debian-archive.trafficmanager.net/debian stretch-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
+    ```
 
 
 7. Instalace agenta Azure Linux:
-   
-        # sudo apt-get update
-        # sudo apt-get install waagent
+
+    ```console
+    # sudo apt-get update
+    # sudo apt-get install waagent
+    ```
 
 8. Pro Debian 9 + se doporučuje používat pro použití s virtuálními počítači v Azure nové jádro cloudu Debian. Chcete-li nainstalovat toto nové jádro, nejprve vytvořte soubor s názvem/etc/apt/Preferences.d/Linux.PREF s následujícím obsahem:
-   
-        Package: linux-* initramfs-tools
-        Pin: release n=stretch-backports
-        Pin-Priority: 500
-   
+
+    ```config-pref
+    Package: linux-* initramfs-tools
+    Pin: release n=stretch-backports
+    Pin-Priority: 500
+    ```
+
     Pak spuštěním příkazu "sudo apt-get install linux-image-Cloud-amd64" nainstalujte novou Debian cloudové jádro.
 
 9. Zrušení zřízení virtuálního počítače a jeho příprava pro zřizování v Azure a spuštění:
-   
-        # sudo waagent –force -deprovision
-        # export HISTSIZE=0
-        # logout
+
+    ```console
+    # sudo waagent –force -deprovision
+    # export HISTSIZE=0
+    # logout
+    ```
 
 10. Klikněte na **Akce** – > vypnout ve Správci technologie Hyper-V. Virtuální pevný disk se systémem Linux je teď připravený k nahrání do Azure.
 

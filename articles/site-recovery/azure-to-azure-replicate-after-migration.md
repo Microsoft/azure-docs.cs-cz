@@ -8,16 +8,17 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a71e476a214c44514c7d57c54a09a38218ad6d2a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74159108"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135673"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure 
 
 
-Postupujte podle tohoto článku, pokud jste [migrovali místní počítače do virtuálních počítačů Azure](tutorial-migrate-on-premises-to-azure.md) pomocí služby [Site Recovery](site-recovery-overview.md) a teď chcete získat virtuální počítače nastavené pro zotavení po havárii do sekundární oblasti Azure. Tento článek popisuje, jak zajistit, že agent virtuálního počítače Azure je nainstalovaný na migrovaných virtuálních počítačích a jak odebrat službu Site Recovery mobility, kterou už po migraci nepotřebujete.
+Postupujte podle tohoto článku, pokud jste [migrovali místní počítače do virtuálních počítačů Azure](./migrate-tutorial-on-premises-azure.md) pomocí služby [Site Recovery](site-recovery-overview.md) a teď chcete získat virtuální počítače nastavené pro zotavení po havárii do sekundární oblasti Azure. Tento článek popisuje, jak zajistit, že agent virtuálního počítače Azure je nainstalovaný na migrovaných virtuálních počítačích a jak odebrat službu Site Recovery mobility, kterou už po migraci nepotřebujete.
 
 
 
@@ -48,14 +49,14 @@ Chcete-li ověřit, zda je agent nainstalován:
 2. Klikněte na soubor pravým tlačítkem a v okně **vlastnosti**vyberte kartu **Podrobnosti** .
 3. Ověřte, že se v poli **verze produktu** zobrazuje 2.6.1198.718 nebo vyšší.
 
-[Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) o instalaci agenta pro Windows.
+[Přečtěte si další informace](../virtual-machines/extensions/agent-windows.md) o instalaci agenta pro Windows.
 
 ### <a name="install-the-agent-on-linux-vms"></a>Instalace agenta na virtuální počítače se systémem Linux
 
 Nainstalujte agenta [virtuálního počítače Azure Linux](../virtual-machines/extensions/agent-linux.md) ručně následujícím způsobem:
 
 1. Ujistěte se, že máte na počítači oprávnění správce.
-2. Důrazně doporučujeme nainstalovat agenta virtuálního počítače se systémem Linux pomocí balíčku ot./min. nebo balíčku DEB z úložiště balíčků distribuce. Všichni [poskytovatelé schválené distribuce](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrují balíček agenta Azure Linux do svých imagí a úložišť.
+2. Důrazně doporučujeme nainstalovat agenta virtuálního počítače se systémem Linux pomocí balíčku ot./min. nebo balíčku DEB z úložiště balíčků distribuce. Všichni [poskytovatelé schválené distribuce](../virtual-machines/linux/endorsed-distros.md) integrují balíček agenta Azure Linux do svých imagí a úložišť.
     - Důrazně doporučujeme, abyste agenta aktualizovali pouze prostřednictvím distribučního úložiště.
     - Nedoporučujeme instalovat agenta virtuálního počítače se systémem Linux přímo z GitHubu a aktualizovat ho.
     -  Pokud není k dispozici nejnovější agent pro distribuci, obraťte se na podporu distribuce, kde najdete pokyny k jeho instalaci. 

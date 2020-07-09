@@ -15,11 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd913b597e52f81c19b9c6bb20e83be23e5b35bd
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338403"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134702"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Automatizace úloh správy v Azure Virtual Machines s rozšířením agenta SQL Server (Classic)
 > [!div class="op_single_selector"]
@@ -40,7 +41,7 @@ Rozšíření agenta SQL Server IaaS podporuje následující úlohy správy:
 | --- | --- |
 | **Automatizované zálohování SQL** |Automatizuje plánování záloh pro všechny databáze pro výchozí instanci SQL Server ve virtuálním počítači. Další informace najdete v tématu [automatizované zálohování pro SQL Server v Azure Virtual Machines (Classic)](../classic/sql-automated-backup.md). |
 | **Automatizované opravy pro SQL Server** |Nakonfiguruje časový interval pro správu a údržbu, během kterého může probíhat důležitá aktualizace Windows pro váš virtuální počítač, takže se můžete vyhnout aktualizacím během špičky pro vaše zatížení. Další informace najdete v tématu [automatizované opravy pro SQL Server v Azure Virtual Machines (Classic)](../classic/sql-automated-patching.md). |
-| **Integrace Azure Key Vault** |Umožňuje automaticky nainstalovat a nakonfigurovat Azure Key Vault na VIRTUÁLNÍm počítači s SQL Server. Další informace najdete v tématu [Konfigurace integrace Azure Key Vault pro SQL Server na virtuálních počítačích Azure (Classic)](../classic/ps-sql-keyvault.md). |
+| **Integrace se službou Azure Key Vault** |Umožňuje automaticky nainstalovat a nakonfigurovat Azure Key Vault na VIRTUÁLNÍm počítači s SQL Server. Další informace najdete v tématu [Konfigurace integrace Azure Key Vault pro SQL Server na virtuálních počítačích Azure (Classic)](../classic/ps-sql-keyvault.md). |
 
 ## <a name="prerequisites"></a>Požadavky
 Požadavky na používání rozšíření agenta SQL Server IaaS na vašem VIRTUÁLNÍm počítači:
@@ -60,20 +61,28 @@ Požadavky na používání rozšíření agenta SQL Server IaaS na vašem VIRTU
 
 Spusťte Windows PowerShell a připojte ho k předplatnému Azure pomocí příkazu **Add-AzureAccount** .
 
-    Add-AzureAccount
+```azurepowershell
+Add-AzureAccount
+```
 
 Pokud máte více předplatných, pomocí **Select-AzureSubscription** vyberte předplatné, které obsahuje váš cílový klasický virtuální počítač.
 
-    Select-AzureSubscription -SubscriptionName <subscriptionname>
+```azurepowershell
+Select-AzureSubscription -SubscriptionName <subscriptionname>
+```
 
 V tomto okamžiku můžete získat seznam klasických virtuálních počítačů a jejich přidružených názvů služeb pomocí příkazu **Get-AzureVM** .
 
-    Get-AzureVM
+```azurepowershell
+Get-AzureVM
+```
 
 ## <a name="installation"></a>Instalace
 U klasických virtuálních počítačů musíte pomocí PowerShellu nainstalovat rozšíření agenta SQL Server IaaS a nakonfigurovat jeho přidružené služby. K instalaci rozšíření použijte rutinu PowerShellu **set-AzureVMSqlServerExtension** . Například následující příkaz nainstaluje rozšíření na virtuální počítač s Windows serverem (Classic) a pojmenuje ho "SQLIaaSExtension".
 
-    Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+```azurepowershell
+Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
+```
 
 Pokud aktualizujete na nejnovější verzi rozšíření agenta SQL IaaS, musíte po aktualizaci rozšíření restartovat virtuální počítač.
 
@@ -90,7 +99,9 @@ Jedním ze způsobů, jak ověřit, že je rozšíření nainstalované, je zobr
 
 Můžete také použít rutinu **Get-AzureVMSqlServerExtension** prostředí Azure PowerShell.
 
-    Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
+```azurepowershell
+Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
+```
 
 ## <a name="removal"></a>Instalační
 Na webu Azure Portal můžete rozšíření odinstalovat kliknutím na tři tečky v okně **rozšíření** ve vlastnostech virtuálního počítače. Pak klikněte na **odinstalovat**.
@@ -99,7 +110,9 @@ Na webu Azure Portal můžete rozšíření odinstalovat kliknutím na tři teč
 
 Můžete také použít rutinu PowerShellu **Remove-AzureVMSqlServerExtension** .
 
-    Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
+```azurepowershell
+Get-AzureVM –ServiceName "service" –Name "vmname" | Remove-AzureVMSqlServerExtension | Update-AzureVM
+```
 
 ## <a name="next-steps"></a>Další kroky
 Začněte používat jednu ze služeb, které rozšíření podporuje. Další podrobnosti najdete v tématech uvedených v části věnované [podporovaným službám](#supported-services) tohoto článku.

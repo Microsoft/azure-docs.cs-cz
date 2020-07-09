@@ -4,12 +4,12 @@ description: K rychlému nastavení zotavení po havárii do jiné oblasti Azure
 ms.topic: quickstart
 ms.date: 03/27/2020
 ms.custom: mvc
-ms.openlocfilehash: e26c2a1f24a88dc979f4ec68de65afc618740c00
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8681ccaac30402927005e5e8802d7da2bddc2c5c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371881"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135706"
 ---
 # <a name="quickstart-set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Rychlý Start: nastavení zotavení po havárii do sekundární oblasti Azure pro virtuální počítač Azure
 
@@ -22,19 +22,19 @@ V tomto rychlém startu se dozvíte, jak nastavit zotavení po havárii pro virt
 K dokončení tohoto kurzu potřebujete předplatné Azure a virtuální počítač.
 
 - Pokud nemáte účet Azure s aktivním předplatným, můžete si [účet zdarma vytvořit](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Doporučuje se virtuální počítač s minimálně 1 GB paměti RAM. [Přečtěte si další informace](/azure/virtual-machines/windows/quick-create-portal) o tom, jak vytvořit virtuální počítač.
+- Doporučuje se virtuální počítač s minimálně 1 GB paměti RAM. [Přečtěte si další informace](../virtual-machines/windows/quick-create-portal.md) o tom, jak vytvořit virtuální počítač.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Povolení replikace virtuálního počítače Azure
 
 Následující kroky umožňují replikaci virtuálních počítačů do sekundárního umístění.
 
-1. V nabídce Azure Portal z nabídky **domácí** > **virtuální počítače** vyberte virtuální počítač, který chcete replikovat.
+1. V nabídce Azure Portal z nabídky **domácí**  >  **virtuální počítače** vyberte virtuální počítač, který chcete replikovat.
 1. V případě **operací** vyberte **zotavení po havárii**.
-1. V **Basics** > **cílové oblasti**základy vyberte cílovou oblast.
+1. V **Basics**  >  **cílové oblasti**základy vyberte cílovou oblast.
 1. Pokud chcete zobrazit nastavení replikace, vyberte **zkontrolovat a spustit replikaci**. Pokud potřebujete změnit výchozí nastavení, vyberte **Upřesnit nastavení**.
 1. Pokud chcete spustit úlohu, která umožňuje replikaci virtuálních počítačů, vyberte **spustit replikaci**.
 
@@ -63,7 +63,7 @@ Pokud chcete zakázat replikaci, proveďte tyto kroky:
 1. V nabídce Azure Portal vyberte **virtuální počítače** a vyberte virtuální počítač, který jste replikoval.
 1. V případě **operací** vyberte **zotavení po havárii**.
 1. V **přehledu**vyberte **Zakázat replikaci**.
-1. Pokud chcete odinstalovat rozšíření Site Recovery, přečtěte si**rozšíření** **Nastavení** > virtuálního počítače.
+1. Pokud chcete odinstalovat rozšíření Site Recovery, přečtěte si rozšíření **Nastavení**virtuálního počítače  >  **Extensions**.
 
    :::image type="content" source="media/azure-to-azure-quickstart/disable2-replication.png" alt-text="Zakažte replikaci.":::
 

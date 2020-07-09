@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: 88c0349ce220229920a39ba4cb6640f3d4dde93b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e1fdcbbdefb9c36d84b345d422d49f088077954
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871935"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133488"
 ---
 # <a name="find-identity-object-ids-for-authentication-configuration"></a>Vyhledat ID objektů identity pro konfiguraci ověřování
 
@@ -30,7 +30,7 @@ $(Get-AzureADUser -Filter "UserPrincipalName eq 'myuser@consoso.com'").ObjectId
 nebo můžete použít rozhraní příkazového řádku Azure:
 
 ```azurecli-interactive
-az ad user show --upn-or-object-id myuser@consoso.com | jq -r .objectId
+az ad user show --id myuser@consoso.com --query objectId --out tsv
 ```
 
 ## <a name="find-service-principal-object-id"></a>Najít ID instančního objektu služby
@@ -50,7 +50,7 @@ $(Get-AzureADServicePrincipal -Filter "DisplayName eq 'testapp'").ObjectId
 Pokud používáte Azure CLI, můžete použít:
 
 ```azurecli-interactive
-az ad sp show --id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX | jq -r .objectId
+az ad sp show --id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX --query objectId --out tsv
 ```
 
 ## <a name="find-a-security-group-object-id"></a>Najít ID objektu skupiny zabezpečení
@@ -65,7 +65,7 @@ Kde `mygroup` je název skupiny, které vás zajímá.
 Pokud používáte Azure CLI, můžete použít:
 
 ```azurecli-interactive
-az ad group show --group "mygroup" | jq -r .objectId
+az ad group show --group "mygroup" --query objectId --out tsv
 ```
 
 ## <a name="next-steps"></a>Další kroky

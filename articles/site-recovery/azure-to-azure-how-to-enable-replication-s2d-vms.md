@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4f18c32639ceb2084febe210a8cfd4c423a0cf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75973652"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135758"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replikace virtuálních počítačů Azure s Prostory úložiště s přímým přístupem do jiné oblasti
 
@@ -19,7 +20,7 @@ Tento článek popisuje, jak povolit zotavení po havárii virtuálních počít
 >Pro clustery prostorů úložiště s přímým přístupem jsou podporovány pouze body obnovení konzistentní vzhledem k selháním.
 >
 
-[Prostory úložiště s přímým přístupem (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) jsou softwarově definované úložiště, které poskytuje způsob, jak vytvořit [clustery hostů](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure) v Azure.  Cluster hostů v Microsoft Azure je cluster s podporou převzetí služeb při selhání tvořený IaaS virtuálními počítači. Umožňuje, aby hostované úlohy virtuálních počítačů převzaly služby při selhání napříč clustery hostů a dosáhly se smlouvy SLA pro vyšší dostupnost pro aplikace, než může poskytnout jeden virtuální počítač Azure. To je užitečné ve scénářích, kdy virtuální počítač hostuje kritickou aplikaci, jako je SQL nebo souborový server se škálováním na více systémů.
+[Prostory úložiště s přímým přístupem (S2D)](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) jsou softwarově definované úložiště, které poskytuje způsob, jak vytvořit [clustery hostů](https://techcommunity.microsoft.com/t5/failover-clustering/bg-p/FailoverClustering) v Azure.  Cluster hostů v Microsoft Azure je cluster s podporou převzetí služeb při selhání tvořený IaaS virtuálními počítači. Umožňuje, aby hostované úlohy virtuálních počítačů převzaly služby při selhání napříč clustery hostů a dosáhly se smlouvy SLA pro vyšší dostupnost pro aplikace, než může poskytnout jeden virtuální počítač Azure. To je užitečné ve scénářích, kdy virtuální počítač hostuje kritickou aplikaci, jako je SQL nebo souborový server se škálováním na více systémů.
 
 ## <a name="disaster-recovery-with-storage-spaces-direct"></a>Zotavení po havárii pomocí prostorů úložiště s přímým přístupem
 
@@ -37,14 +38,14 @@ Pod diagramem je znázorněn cluster s podporou převzetí služeb při selhán�
 
 **Požadavky na zotavení po havárii**
 
-1. Při nastavování [cloudového](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) clusteru pro cluster udržujte v oblasti zotavení po havárii složku s kopií clusteru.
-2. Pokud převezmete služby virtuálních počítačů při selhání k podsíti v oblasti zotavení po havárii, která se liší od zdrojové oblasti, po převzetí služeb při selhání musí být IP adresa clusteru změněna.  Pokud chcete změnit IP adresu clusteru, musíte použít [skript plánu obnovení Site Recovery.](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
+1. Při nastavování [cloudového](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp) clusteru pro cluster udržujte v oblasti zotavení po havárii složku s kopií clusteru.
+2. Pokud převezmete služby virtuálních počítačů při selhání k podsíti v oblasti zotavení po havárii, která se liší od zdrojové oblasti, po převzetí služeb při selhání musí být IP adresa clusteru změněna.  Pokud chcete změnit IP adresu clusteru, musíte použít [skript plánu obnovení Site Recovery.](./site-recovery-runbook-automation.md)</br>
 [Ukázkový skript](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) pro provedení příkazu uvnitř virtuálního počítače pomocí rozšíření vlastních skriptů 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>Povolování Site Recovery pro cluster S2D:
 
 1. V trezoru služby Recovery Services klikněte na + replikovat.
-1. Vybrat všechny uzly v clusteru a nastavit je jako součást [skupiny konzistence s více virtuálními počítači](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)
+1. Vybrat všechny uzly v clusteru a nastavit je jako součást [skupiny konzistence s více virtuálními počítači](./azure-to-azure-common-questions.md#multi-vm-consistency)
 1. Vyberte zásadu replikace s vypnutou konzistencí aplikace * (k dispozici je jenom podpora konzistence selhání).
 1. Povolení replikace
 
@@ -69,7 +70,7 @@ Aby vaše aplikace fungovaly správně, možná budete muset provést některé 
 
 
 ### <a name="failover-of-the-virtual-machines"></a>Převzetí služeb při selhání virtuálních počítačů 
-Uzly virtuálních počítačů musí při převzetí služeb při selhání použít [plán obnovení](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) Site Recovery. 
+Uzly virtuálních počítačů musí při převzetí služeb při selhání použít [plán obnovení](./site-recovery-create-recovery-plans.md) Site Recovery. 
 
 ![Ochrana storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 
@@ -93,4 +94,4 @@ Další informace najdete v tématu [testování převzetí služeb při selhán
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) o spuštění navrácení služeb po obnovení.
+[Další informace](./azure-to-azure-tutorial-failover-failback.md) o spuštění navrácení služeb po obnovení.

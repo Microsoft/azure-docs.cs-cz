@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 607f622bc484883ecbeae0552eecc9561cf4c3ef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969598"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134623"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor klíč spravovaný zákazníkem 
 
@@ -461,26 +461,27 @@ Rotace CMK vyžaduje explicitní aktualizaci prostředku *clusteru* s novou verz
 
 Všechna vaše data zůstanou po operaci střídání klíčů přístupná, protože data vždycky zašifrovaná pomocí šifrovacího klíče účtu (AEK), zatímco AEK se teď šifruje pomocí nového klíče KEK (Key Encryption Key) v Key Vault.
 
-## <a name="saving-queries-protected-with-cmk"></a>Ukládání dotazů chráněných pomocí CMK
+## <a name="cmk-for-queries"></a>CMK pro dotazy
 
-Dotazovací jazyk používaný v Log Analytics je výrazná a může obsahovat citlivé informace v komentářích přidaných do dotazů nebo v syntaxi dotazu. Některé organizace vyžadují, aby tyto informace byly chráněny jako součást zásad CMK a vy budete potřebovat ukládat dotazy zašifrované s vaším klíčem. Azure Monitor vám umožní ukládat *uložená hledání* a dotazy na *výstrahy protokolu* ve vlastním účtu úložiště, který se připojujete k vašemu pracovnímu prostoru. 
+Dotazovací jazyk používaný v Log Analytics je výrazná a může obsahovat citlivé informace v komentářích přidaných do dotazů nebo v syntaxi dotazu. Některé organizace vyžadují, aby tyto informace byly chráněny jako součást zásad CMK a vy budete potřebovat ukládat dotazy zašifrované s vaším klíčem. Azure Monitor vám umožní ukládat do svého pracovního prostoru dotazy *uložené – prohledávání* a *protokolování výstrah* šifrovaných pomocí vašeho klíče ve vlastním účtu úložiště. 
 
-> Poznámka CMK pro dotazy použité v sešitech a řídicích panelech Azure se zatím nepodporují. Tyto dotazy zůstanou šifrované pomocí klíče Microsoft.  
+> [!NOTE]
+> CMK pro dotazy použité v sešitech a řídicích panelech Azure se zatím nepodporují. Tyto dotazy zůstanou šifrované pomocí klíče Microsoft.  
 
-S využitím vlastního úložiště (BYOS) odesílá služba dotazy do účtu úložiště, který ovládáte. To znamená, že [zásady šifrování na](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) místě můžete řídit buď pomocí stejného klíče, který používáte k šifrování dat v log Analyticsm clusteru, nebo v jiném klíči. Budete ale odpovědní za náklady spojené s tímto účtem úložiště. 
+Když zadáte [vlastní úložiště](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) a přidružíte ho k pracovnímu prostoru, služba nahraje dotazy na *uložené výsledky hledání* a *protokolování výstrah* do vašeho účtu úložiště. To znamená, že můžete řídit účet úložiště a [zásady šifrování v REST](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) buď pomocí stejného klíče, který používáte k šifrování dat v log Analyticsm clusteru, nebo v jiném klíči. Budete ale odpovědní za náklady spojené s tímto účtem úložiště. 
 
 **Otázky před nastavením CMK pro dotazy**
 * Musíte mít oprávnění Write k vašemu pracovnímu prostoru i účtu úložiště.
 * Ujistěte se, že jste svůj účet úložiště vytvořili ve stejné oblasti, ve které se nachází Log Analytics pracovní prostor.
 * *Uložení hledání* v úložišti se považuje za artefakty služby a jejich formát se může změnit.
-* Existující *hledání* budou odebrána z pracovního prostoru. Zkopírujte a všechna *hledání* , která budete potřebovat před konfigurací. *Uložená hledání* můžete zobrazit pomocí tohoto [prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch?view=azps-4.2.0) .
+* Existující *hledání* budou odebrána z pracovního prostoru. Zkopírujte a všechna *hledání* , která budete potřebovat před konfigurací. *Uložená hledání* můžete zobrazit pomocí [prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch) .
 * Historie dotazů není podporovaná a nebudete moct zobrazit dotazy, které jste spustili.
-* Pro účely ukládání dotazů můžete přidružit jeden účet úložiště k pracovnímu prostoru, ale je možné ho použít jak v *uložených hledání* , tak i v dotazech *na protokolování výstrah* .
+* K pracovnímu prostoru můžete přidružit jeden účet úložiště pro účely ukládání dotazů, ale dá se použít k dotazům na *uložená hledání* i *protokolování výstrah* .
 * Připnutí na řídicí panel se nepodporuje.
 
-**Konfigurace BYOS pro dotazy**
+**Konfigurace BYOS pro uložená hledání dotazů**
 
-Přidružte k vašemu pracovnímu prostoru účet úložiště s *dotazem* DataSourceType. 
+Přidružit účet úložiště pro *dotaz* k vašemu pracovnímu prostoru – dotazy *uložené při hledání* se ukládají do svého účtu úložiště. 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
@@ -505,9 +506,9 @@ Content-type: application/json
 
 Po dokončení konfigurace budou všechny nové *uložené vyhledávací* dotazy uloženy v úložišti.
 
-**Konfigurace BYOS pro protokol – výstrahy**
+**Konfigurace BYOS pro dotazy log-Alerts**
 
-Přidružte účet úložiště ke službě *výstrahy* DataSourceType k vašemu pracovnímu prostoru. 
+Přidružte účtu úložiště *výstrahy* k vašemu pracovnímu prostoru – dotazy *protokolu výstrahy* se ukládají do svého účtu úložiště. 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"

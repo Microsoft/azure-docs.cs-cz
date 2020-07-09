@@ -7,22 +7,27 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261b288154dddacf91f3cb3ba6dec99e3a3534cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135875"
 ---
-# <a name="create-custom-sdks-for-azure-digital-twins-with-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure s využitím AutoRest
+# <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Vytváření vlastních sad SDK pro digitální vlákna Azure pomocí AutoRest
 
 Teď jediná publikovaná sada SDK pro datovou rovinu pro interakci s rozhraními API digitálních vláken Azure je určena pro .NET (C#). V tématu [Postupy: použití rozhraní API a sad SDK pro digitální vlákna Azure](how-to-use-apis-sdks.md)si můžete přečíst o sadě .NET SDK a obecně o rozhraních API. Pokud pracujete v jiném jazyce, v tomto článku se dozvíte, jak vygenerovat vlastní sadu SDK v jazyce podle vašeho výběru pomocí funkce AutoRest.
 
-## <a name="set-up-the-sdk"></a>Nastavení sady SDK
+## <a name="set-up-your-machine"></a>Nastavení počítače
 
 K vygenerování sady SDK budete potřebovat:
 * [AutoRest](https://github.com/Azure/autorest), verze 2.0.4413 (verze 3 není momentálně podporovaná)
 * [Node.js](https://nodejs.org) jako předpoklad pro AutoRest
-* [Soubor openapi digitálního vlákna (Swagger) pro Azure](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview/digitaltwins.json)
+* [Soubor Swagger (openapi) služby Azure](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) s názvem, který je *digitaltwins.jsv a v*doprovodné složce příkladů. Stáhněte si soubor Swagger a jeho složku s příklady do svého místního počítače.
+
+Jakmile je počítač vybavený vše ze seznamu výše, jste připraveni použít k vytvoření sady SDK sadu AutoRest.
+
+## <a name="create-the-sdk-with-autorest"></a>Vytvoření sady SDK pomocí programu AutoRest 
 
 Pokud máte Node.js nainstalované, můžete spustit tento příkaz, abyste se ujistili, že máte nainstalovanou správnou verzi AutoRest:
 ```cmd/sh
@@ -30,31 +35,33 @@ npm install -g autorest@2.0.4413
 ```
 
 Pokud chcete spustit AutoRest proti souboru Swagger digitálních vláken Azure, použijte následující postup:
-1. Zkopírujte soubor Swagger digitálních vláken Azure do pracovního adresáře.
-2. Na příkazovém řádku přepněte do tohoto pracovního adresáře.
-3. Spusťte AutoRest pomocí následujícího příkazu.
+1. Zkopírujte soubor Swagger digitálních vláken Azure a jeho doprovodnou složku příkladů do pracovního adresáře.
+2. Pomocí okna příkazového řádku přepněte do tohoto pracovního adresáře.
+3. Spusťte AutoRest pomocí následujícího příkazu. `<language>`Zástupný text nahraďte vaším jazykem podle vlastního výběru: `--python` ,, atd `--java` `--go` . (úplný seznam možností najdete v [souboru Readme pro AutoRest](https://github.com/Azure/autorest).)
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --csharp --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *ADTApi* . Vygenerované soubory sady SDK budou mít *ADTApi*oboru názvů, který budete dál používat ve zbývajících příkladech.
+V důsledku toho se v pracovním adresáři zobrazí nová složka s názvem *ADTApi* . Vygenerované soubory sady SDK budou mít *ADTApi*oboru názvů, který budete dál používat v ostatních příkladech použití v tomto článku.
 
 AutoRest podporuje široké spektrum generátorů kódů jazyka.
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>Přidat sadu SDK do projektu sady Visual Studio
 
-Můžete zahrnout soubory generované AutoRest přímo do řešení .NET. Stejně jako budete ale pravděpodobně potřebovat sadu SDK pro Azure Digital revlákens v několika samostatných projektech (klientské aplikace, Azure Functionsch aplikacích atd.), doporučujeme sestavit samostatný projekt (knihovny tříd .NET) ze generovaných souborů. Pak můžete zahrnout tento projekt knihovny tříd do jiných řešení jako odkaz na projekt.
+Můžete zahrnout soubory generované AutoRest přímo do řešení .NET. Vzhledem k tomu, že budete pravděpodobně potřebovat sadu SDK digitálních vláken Azure v několika samostatných projektech (klientské aplikace, Azure Functions aplikace atd.), může být užitečné sestavit samostatný projekt (knihovnu tříd .NET) ze generovaných souborů. Pak můžete zahrnout tento projekt knihovny tříd do několika řešení jako odkaz na projekt.
 
-V této části jsou uvedeny pokyny k sestavení sady SDK jako knihovny tříd, což je vlastní projekt a lze je zahrnout do jiných projektů. Postupujte takto:
+V této části jsou uvedeny pokyny k sestavení sady SDK jako knihovny tříd, což je vlastní projekt a lze je zahrnout do jiných projektů. Tyto kroky spoléhají na **Visual Studio** ( [tady](https://visualstudio.microsoft.com/downloads/)si můžete nainstalovat nejnovější verzi).
+
+Postupujte takto:
 
 1. Vytvoření nového řešení sady Visual Studio pro knihovnu tříd
-2. Jako název projektu použijte název "ADTApi".
+2. Jako název projektu použijte *ADTApi*
 3. V Průzkumníku řešení klikněte pravým tlačítkem na projekt *ADTApi* vygenerovaného řešení a zvolte *Přidat > existující položku...*
 4. Najděte složku, do které jste sadu SDK vygenerovali, a vyberte soubory na kořenové úrovni.
 5. Stiskněte OK
 6. Přidejte do projektu složku (kliknutím pravým tlačítkem vyberte projekt v Průzkumník řešení a zvolte *přidat > nová složka*).
-7. Pojmenování složky "modely"
+7. Pojmenování *modelů* složek
 8. V Průzkumníku řešení klikněte pravým tlačítkem na složku *modely* a vyberte *Přidat > existující položka...*
 9. Vyberte soubory ve složce *modely* VYGENEROVANÉ sady SDK a stiskněte OK.
 

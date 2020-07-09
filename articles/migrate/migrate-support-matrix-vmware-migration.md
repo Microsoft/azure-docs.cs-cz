@@ -3,11 +3,12 @@ title: Podpora pro migraci VMware v Azure Migrate
 description: Přečtěte si o podpoře migrace virtuálních počítačů VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: c4184628739b6c47b35263fe99285b05b9e0a190
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b026d07c6ac1630048d8aee6778215f3a99dddb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769723"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134996"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -50,7 +51,7 @@ Tabulka shrnuje požadavky na migraci bez agenta pro virtuální počítače VMw
 
 **Podpora** | **Podrobnosti**
 --- | ---
-**Podporované operační systémy** | Můžete migrovat operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , které podporuje Azure.
+**Podporované operační systémy** | Můžete migrovat operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](../virtual-machines/linux/endorsed-distros.md) , které podporuje Azure.
 **Virtuální počítače s Windows v Azure** | Před migrací možná budete muset [provést nějaké změny](prepare-for-migration.md#verify-required-changes-before-migrating) virtuálních počítačů. 
 **Virtuální počítače se systémem Linux v Azure** | Některé virtuální počítače můžou vyžadovat změny, aby je bylo možné spouštět v Azure.<br/><br/> Pro Linux Azure Migrate provede změny automaticky pro tyto operační systémy:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> – CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> – Debian 7, 8. Pro jiné operační systémy provedete [požadované změny](prepare-for-migration.md#verify-required-changes-before-migrating) ručně.
 **Spouštění ze systému Linux** | Pokud je/Boot ve vyhrazeném oddílu, měl by být umístěn na disku s operačním systémem a nesmí být rozložen na více disků.<br/> Pokud je/Boot součástí kořenového oddílu (/), musí být oddíl '/' na disku s operačním systémem a nesmí zabírat jiné disky.
@@ -85,7 +86,7 @@ Migrace bez agentů používá [zařízení Azure Migrate](migrate-appliance.md)
 --- | ---
 Náplně | Odchozí připojení na portu 443 pro nahrání replikovaných dat do Azure a komunikaci s Azure Migrate službami orchestrace replikace a migrace.
 Server vCenter | Příchozí připojení na portu 443, aby zařízení mohla orchestrovat replikaci – vytvářet snímky, kopírovat data, snímky verzí
-Hostitel vSphere/EXSI | Příchozí na portu TCP 902, aby zařízení mohl replikovat data ze snímků.
+Hostitel vSphere/ESXI | Příchozí na portu TCP 902, aby zařízení mohl replikovat data ze snímků.
 
 ## <a name="agent-based-migration"></a>Migrace založená na agentovi 
 

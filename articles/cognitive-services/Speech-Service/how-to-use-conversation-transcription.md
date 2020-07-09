@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: b8b874888d3a46a855c3d76d520d390725c40898
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: fc22dea201ccd19c4e7bee92a1092b4ff50117db
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735398"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134942"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Přepis konverzace v reálném čase (Preview)
 
-Rozhraní **ConversationTranscriber** API sady Speech SDK umožňuje přepisovat schůzky a další konverzace s možností přidávat, odebírat a identifikovat více účastníků streamování zvuku do služby Speech pomocí `PullStream` nebo. `PushStream` V tomto tématu se dozvíte, jak používat převod řeči na text pomocí sady Speech SDK (verze 1.8.0 nebo novější). Další informace najdete v tématu [co jsou hlasové služby](overview.md).
+Rozhraní **ConversationTranscriber** API sady Speech SDK umožňuje přepisovat schůzky a další konverzace s možností přidávat, odebírat a identifikovat více účastníků streamování zvuku do služby Speech pomocí `PullStream` nebo `PushStream` . V tomto tématu se dozvíte, jak používat převod řeči na text pomocí sady Speech SDK (verze 1.8.0 nebo novější). Další informace najdete v tématu [co jsou hlasové služby](overview.md).
 
 ## <a name="limitations"></a>Omezení
 
@@ -50,7 +50,7 @@ Prvním krokem je vytvoření hlasových podpisů účastníkům konverzace za �
 
 ### <a name="sample-code"></a>Ukázka kódu
 
-Následující příklad ukazuje dva různé způsoby vytvoření hlasového podpisu [pomocí REST API](https://aka.ms/cts/signaturegenservice) v jazyce C#. Všimněte si, že budete muset nahradit skutečné informace o "YourSubscriptionKey", názvu souboru Wave pro "speakerVoice. wav" a vaší oblasti `{region}` "YourServiceRegion" (_centralus_ nebo _eastasia_).
+Následující příklad ukazuje dva různé způsoby vytvoření hlasového podpisu [pomocí REST API](https://aka.ms/cts/signaturegenservice) v jazyce C#. Všimněte si, že budete muset nahradit skutečné informace o "YourSubscriptionKey", názvu souboru Wave pro "speakerVoice. wav" a vaší oblasti " `{region}` YourServiceRegion" (_centralus_ nebo _eastasia_).
 
 ```csharp
 class Program
@@ -113,7 +113,7 @@ Příklady ukázek kódu zahrnují:
 - Registrace událostí zájmu
 - Přidání nebo odebrání účastníků konverzace pomocí objektu konverzace
 - Streamování zvuku
-- V sadě Speech SDK verze 1.9.0 a vyšší jsou podporovány `int` i `string` typy hodnot v poli verze hlasového podpisu.
+- V sadě Speech SDK verze 1.9.0 a vyšší `int` `string` jsou podporovány i typy hodnot v poli verze hlasového podpisu.
 
 Přepis a identifikátor mluvčího se vrátí do registrovaných událostí.
 
@@ -140,7 +140,7 @@ public class MyConversationTranscriber
             using (var conversation = await Conversation.CreateConversationAsync(config, meetingId).ConfigureAwait(false))
             {
                 // Create a conversation transcriber using audio stream input
-                using (var conversationTranscriber = new ConversationTranscriber    (audioInput))
+                using (var conversationTranscriber = new ConversationTranscriber(audioInput))
                 {
                     await conversationTranscriber.JoinConversationAsync(conversation);
 

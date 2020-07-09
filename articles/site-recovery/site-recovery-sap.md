@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190795"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133699"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení aplikace NetWeaver SAP ve více vrstvách
 
@@ -27,9 +28,9 @@ Nasazení aplikací SAP NetWeaver můžete chránit pomocí [Azure Site Recovery
 
 Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
-* [Replikace virtuálního počítače do Azure](azure-to-azure-walkthrough-enable-replication.md)
-* [Návrh sítě pro obnovení](site-recovery-azure-to-azure-networking-guidance.md)
-* [Provedení testovacího převzetí služeb při selhání do Azure](azure-to-azure-walkthrough-test-failover.md)
+* [Replikace virtuálního počítače do Azure](./azure-to-azure-tutorial-enable-replication.md)
+* [Návrh sítě pro obnovení](./azure-to-azure-about-networking.md)
+* [Provedení testovacího převzetí služeb při selhání do Azure](./azure-to-azure-tutorial-dr-drill.md)
 * [Provedení převzetí služeb při selhání do Azure](site-recovery-failover.md)
 * [Replikace řadiče domény](site-recovery-active-directory.md)
 * [Replikace instance SQL Server](site-recovery-sql.md)
@@ -110,7 +111,7 @@ Následuje doporučení pro zotavení po havárii jednotlivých vrstev používa
 
 ## <a name="replicate-virtual-machines"></a>Replikace virtuálních počítačů
 
-Pokud chcete zahájit replikaci všech virtuálních počítačů aplikace SAP do datacentra pro zotavení po havárii v Azure, postupujte podle pokynů v části [replikace virtuálního počítače do Azure](azure-to-azure-walkthrough-enable-replication.md).
+Pokud chcete zahájit replikaci všech virtuálních počítačů aplikace SAP do datacentra pro zotavení po havárii v Azure, postupujte podle pokynů v části [replikace virtuálního počítače do Azure](./azure-to-azure-tutorial-enable-replication.md).
 
 * Pokyny k ochraně služby Active Directory a DNS najdete v článku [jak chránit službu Active Directory a DNS](site-recovery-active-directory.md).
 

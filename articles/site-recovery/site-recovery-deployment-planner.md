@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71f4209b4af9c5bb5f171cf3c8e35b0fbc05fac9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366292"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134780"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Informace o Plánovač nasazení služby Azure Site Recovery pro VMware do Azure
 Tento článek představuje uživatelskou příručku k Plánovači nasazení služby Azure Site Recovery pro produkční nasazení VMware do Azure.
@@ -119,7 +120,7 @@ Pokud máte předchozí verzi Plánovače nasazení, proveďte jednu z následuj
 
 ## <a name="version-history"></a>Historie verzí
 Nejnovější verze nástroje Site Recovery Plánovač nasazení je 2,5.
-Opravy přidané v jednotlivých aktualizacích najdete na stránce [Historie verzí Plánovače nasazení služby Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history).
+Opravy přidané v jednotlivých aktualizacích najdete na stránce [Historie verzí Plánovače nasazení služby Site Recovery](./site-recovery-deployment-planner-history.md).
 
 ## <a name="next-steps"></a>Další kroky
 [Spuštění Plánovače nasazení služby Site Recovery](site-recovery-vmware-deployment-planner-run.md)

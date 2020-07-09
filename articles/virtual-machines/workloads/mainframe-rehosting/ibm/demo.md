@@ -12,11 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68841389"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135936"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Nastavení vývojářů aplikací řízených distribucí (ADCD) v IBM zD&T V1
 
@@ -75,7 +76,7 @@ Teď, když máte balíčky, musíte je nahrát do svého virtuálního počíta
 
 4. Po přihlášení vytvořte adresář pro nahrání balíčků IBM. Mějte na paměti, že Linux rozlišuje velká a malá písmena. Například Tato ukázka předpokládá, že balíčky jsou nahrány do:
 
-        /home/MyUserID/ZDT/adcd/nov2017/volumes
+    `/home/MyUserID/ZDT/adcd/nov2017/volumes`
 
 5. Nahrajte soubory pomocí klienta SSH, jako je[WinSCP](https://winscp.net/eng/index.php). Vzhledem k tomu, že spojovací bod služby je součástí SSH, používá port 22, který používá protokol SSH. Pokud Váš místní počítač není Windows, můžete do relace SSH zadat [příkaz SCP](http://man7.org/linux/man-pages/man1/scp.1.html) .
 
@@ -88,8 +89,8 @@ Teď, když máte balíčky, musíte je nahrát do svého virtuálního počíta
 
 8. Po dokončení nahrávání přejděte do adresáře svazků a dekomprimujte všechny **GZ** svazky:
 
-    ```
-        gunzip \*.gz
+    ```console
+    gunzip \*.gz
     ```
     
 ![Průzkumník souborů zobrazující dekomprimované svazky GZ](media/01-gunzip.png)
@@ -99,9 +100,9 @@ Teď, když máte balíčky, musíte je nahrát do svého virtuálního počíta
 Dalším krokem je konfigurace zD&T, aby se používaly nahrané balíčky. Proces úložiště imagí v rámci zD&T umožňuje připojení a používání imagí. Může použít SSH nebo FTP.
 
 1. Spusťte **zDTServer**. Chcete-li to provést, musíte být na kořenové úrovni. V uvedeném pořadí zadejte následující dva příkazy:
-    ```
-        sudo su -
-        /opt/ibm/zDT/bin/startServer
+    ```console
+    sudo su -
+    /opt/ibm/zDT/bin/startServer
     ```
 2. Poznamenejte si výstup adresy URL příkazem a použijte tuto adresu URL pro přístup k webovému serveru. Vypadá nějak takto:
      > https://(název nebo IP adresa virtuálního počítače): 9443/ZDTMC/index.html

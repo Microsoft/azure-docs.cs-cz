@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71057542"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135285"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Rozšíření virtuálních počítačů pro Windows pro diagnostiku výkonu Azure
 
@@ -253,6 +253,6 @@ Soubor zip byste si měli také stáhnout přímo z portálu tak, že vyberete r
     Tento problém se dá bezpečně ignorovat, pokud stav rozšíření indikuje, že se rozšíření úspěšně zřídilo.
 - Během instalace můžete vyřešit některé problémy pomocí protokolů rozšíření. Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujícím adresáři:
 
-        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
+    `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>`
 
 Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
