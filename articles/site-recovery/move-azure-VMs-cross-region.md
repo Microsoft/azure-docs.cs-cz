@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: dc37cb6fa05a2be56de7bf5536d7274190257d85
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 463bd290c304d9436316c9e08778f37ce8bd0b55
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78303915"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135426"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -35,7 +35,7 @@ Možná budete chtít přesunout virtuální počítače infrastruktury Azure ja
 ## <a name="prerequisites"></a>Požadavky
 
 - Ujistěte se, že máte virtuální počítače Azure ve zdrojové oblasti Azure, *ze*které chcete přejít.
-- Ověřte, zda [je podporována kombinace zdrojové oblasti a cílové](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support)oblasti a pečlivě vyberte cílovou oblast.
+- Ověřte, zda [je podporována kombinace zdrojové oblasti a cílové](./azure-to-azure-support-matrix.md#region-support)oblasti a pečlivě vyberte cílovou oblast.
 - Ujistěte se, že rozumíte [komponentám a architektuře řešení](azure-to-azure-architecture.md).
 - Zkontrolujte [omezení podpory a požadavky](azure-to-azure-support-matrix.md).
 - Ověřte oprávnění účtu. Pokud jste právě vytvořili bezplatný účet Azure, *jste* správcem předplatného. Pokud nejste správcem, můžete ve spolupráci se správcem získat potřebná oprávnění:
@@ -66,25 +66,25 @@ Možná budete chtít přesunout virtuální počítače infrastruktury Azure ja
 
    Azure Site Recovery automaticky zjistí a vytvoří virtuální síť a účet úložiště, když povolíte replikaci pro zdrojový virtuální počítač. Tyto prostředky můžete také předem vytvořit a přiřadit k virtuálnímu počítači jako součást kroku povolení a replikace. Je však nutné ručně vytvořit všechny další prostředky v cílové oblasti. Informace o tom, jak vytvořit nejčastěji používané síťové prostředky v závislosti na konfiguraci zdrojového virtuálního počítače, najdete v následujících dokumentech:
 
-   - [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-   - [Služby vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer)
+   - [Skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md)
+   - [Služby vyrovnávání zatížení](../load-balancer/index.yml)
    - [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md)
     
-   Další síťové součásti najdete v [dokumentaci k síti Azure](https://docs.microsoft.com/azure/?pivot=products&panel=network). 
+   Další síťové součásti najdete v [dokumentaci k síti Azure](../index.yml?pivot=products&panel=network). 
 
-4. Chcete-li před provedením přesunutí otestovat konfiguraci, [vytvořte ručně neprodukční síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) v cílové oblasti. Testování instalačního programu vytváří minimální interference s produkčním prostředím a doporučujeme ho.
+4. Chcete-li před provedením přesunutí otestovat konfiguraci, [vytvořte ručně neprodukční síť](../virtual-network/quick-create-portal.md) v cílové oblasti. Testování instalačního programu vytváří minimální interference s produkčním prostředím a doporučujeme ho.
     
 ## <a name="copy-data-to-the-target-region"></a>Kopírovat data do cílové oblasti
 Následující kroky používají Azure Site Recovery ke kopírování dat do cílové oblasti.
 
 ### <a name="create-the-vault-in-any-region-except-the-source"></a>Vytvoření trezoru v libovolné oblasti s výjimkou zdroje
 
-1. Přihlaste se k**Recovery Services** [Azure Portal](https://portal.azure.com) > .
-2. Vyberte **vytvořit** > **nástroje** > pro správu prostředků**zálohování a Site Recovery**.
+1. Přihlaste se [Azure portal](https://portal.azure.com)k  >  **Recovery Services**Azure Portal.
+2. Vyberte **vytvořit**  >  **Nástroje pro správu**prostředků  >  **zálohování a Site Recovery**.
 3. Do pole **název**zadejte popisný název **ContosoVMVault**. Pokud máte více předplatných, vyberte příslušné předplatné.
 4. Vytvořte skupinu prostředků **ContosoRG**.
 5. Zadejte oblast Azure. Pokud chcete zjistit podporované oblasti, přečtěte si téma [Podrobnosti o cenách Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-6. Pro Recovery Services trezory vyberte **Přehled** > **ConsotoVMVault** > **+ replikovat**.
+6. Pro Recovery Services trezory vyberte **Přehled**  >  **ConsotoVMVault**  >  **+ replikovat**.
 7. Jako **zdroj**vyberte **Azure**.
 8. V poli **zdrojové umístění**vyberte zdrojovou oblast Azure, ve které jsou aktuálně spuštěné vaše virtuální počítače.
 9. Vyberte model nasazení Azure Resource Manager. Pak vyberte **zdrojové předplatné** a **skupinu prostředků zdroje**.
@@ -96,7 +96,7 @@ Site Recovery načte seznam virtuálních počítačů, které jsou přidružen�
 
 1. Vyberte virtuální počítač, který chcete přesunout, a pak vyberte **OK**.
 2. V **Nastavení**vyberte **zotavení po havárii**.
-3. V části konfigurovat > **cílovou oblast** **zotavení po havárii**vyberte cílovou oblast, do které se do ní budete replikovat.
+3. V části konfigurovat cílovou oblast **zotavení po havárii**  >  **Target region**vyberte cílovou oblast, do které se do ní budete replikovat.
 4. Vyberte, jestli se mají používat výchozí cílové prostředky nebo ty, které jste vytvořili předem.
 5. Chcete-li spustit úlohu, vyberte možnost **Povolit replikaci** .
 
@@ -107,7 +107,7 @@ Site Recovery načte seznam virtuálních počítačů, které jsou přidružen�
 ## <a name="test-the-configuration"></a>Otestování konfigurace
 
 
-1. Přejít do trezoru. V **Nastavení** > **replikované položky**vyberte virtuální počítač, který chcete přesunout do cílové oblasti. Pak vyberte **Test převzetí služeb při selhání**.
+1. Přejít do trezoru. V **Nastavení**  >  **replikované položky**vyberte virtuální počítač, který chcete přesunout do cílové oblasti. Pak vyberte **Test převzetí služeb při selhání**.
 2. V části **testovací převzetí služeb při selhání**vyberte bod obnovení, který chcete použít pro převzetí služeb při selhání:
 
    - **Nejnovější zpracovaný:** Vrátí virtuální počítač k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Zobrazí se časové razítko. Žádná doba nestrávila zpracováním dat, takže tato možnost poskytuje cíl s nízkou dobou obnovení (RTO).
@@ -119,15 +119,15 @@ Site Recovery načte seznam virtuálních počítačů, které jsou přidružen�
    > [!IMPORTANT]
    > Doporučujeme použít samostatnou síť virtuálních počítačů Azure pro testovací převzetí služeb při selhání, nikoli produkční síť v cílové oblasti.
 
-4. Chcete-li zahájit testování přesunu, vyberte **OK**. Pokud chcete sledovat průběh, vyberte virtuální počítač a otevřete jeho **Vlastnosti.** Případně vyberte úlohu **testovací převzetí služeb při selhání** v trezoru. Pak vyberte **Nastavení** > **úlohy** > **Site Recovery úlohy**.
+4. Chcete-li zahájit testování přesunu, vyberte **OK**. Pokud chcete sledovat průběh, vyberte virtuální počítač a otevřete jeho **Vlastnosti.** Případně vyberte úlohu **testovací převzetí služeb při selhání** v trezoru. Pak vyberte **Nastavení**  >  **úlohy**  >  **Site Recovery úlohy**.
 5. Po dokončení převzetí služeb při selhání se na portálu Azure Portal v části **Virtuální počítače** objeví replika virtuálního počítače Azure. Ujistěte se, že je virtuální počítač spuštěný, má odpovídající velikost a je připojený k odpovídající síti.
 6. Pokud chcete odstranit virtuální počítač, který jste vytvořili pro testování, vyberte možnost **vyčistit testovací převzetí služeb při selhání** u replikované položky. Z **poznámek**, záznam a uložení jakýchkoli pozorování souvisejících s testem.
 
 ## <a name="perform-the-move-and-confirm"></a>Provedení přesunutí a potvrzení
 
-1. V **Nastavení** > **replikované položky**v části nastavení úložiště vyberte virtuální počítač a pak vyberte **převzetí služeb při selhání**.
+1. V **Nastavení**  >  **replikované položky**v části nastavení úložiště vyberte virtuální počítač a pak vyberte **převzetí služeb při selhání**.
 1. V případě **převzetí služeb při selhání**vyberte **nejnovější**. 
-2. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Site Recovery se před aktivací převzetí služeb při selhání pokusí vypnout zdrojový virtuální počítač. Ale převzetí služeb při selhání pokračuje i v případě selhání vypnutí. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
+2. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Site Recovery se před aktivací převzetí služeb při selhání pokusí vypnout zdrojový virtuální počítač. Ale převzetí služeb při selhání pokračuje i v případě selhání vypnutí. Průběh převzetí služeb při selhání můžete sledovat na stránce **úlohy** .
 3. Až se úloha dokončí, ověřte, že se virtuální počítač zobrazuje v cílové oblasti Azure podle očekávání.
 4. V části **replikované položky**klikněte pravým tlačítkem na virtuální počítač a vyberte **Potvrdit**. Tím se přesun dokončí. Počkejte, než se dokončí úloha potvrzení změn.
 
@@ -149,4 +149,3 @@ V tomto kurzu jste zjistili, jak přesunout virtuální počítače Azure do jin
 
 > [!div class="nextstepaction"]
 > [Nastavení zotavení po havárii po migraci](azure-to-azure-quickstart.md)
-

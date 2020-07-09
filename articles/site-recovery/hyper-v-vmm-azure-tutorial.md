@@ -4,12 +4,12 @@ description: Naučte se, jak nastavit zotavení po havárii místních virtuáln
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: a391d8eb3cf7bc43b52883cbf2e76170338c44c6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f32103adce184a67cec9e5a778ac1d1e6f330f4d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067580"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130230"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 > * Povolit replikaci virtuálního počítače.
 
 > [!NOTE]
-> Kurzy ukazují nejjednodušší cestu k nasazení scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v článcích v [dokumentaci k Site Recovery](/azure/site-recovery/)v části **návody** .
+> Kurzy ukazují nejjednodušší cestu k nasazení scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Podrobné pokyny najdete v článcích v [dokumentaci k Site Recovery](./index.yml)v části **návody** .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,8 +37,8 @@ V tomto kurzu se předpokládá, že jste už dokončili následující kurzy:
 ## <a name="select-a-replication-goal"></a>Výběr cíle replikace
 
 1. V Azure Portal přejdete do **Recovery Services trezorů** a vyberete trezor **ContosoVMVault** , který byl vytvořen v kurzu [Příprava Azure](tutorial-prepare-azure.md#create-a-recovery-services-vault) .
-1. Z **Začínáme**vyberte **Site Recovery** > **připravit infrastrukturu** a nakonfigurujte následující nastavení:
-    1. **Cíl** > ochrany,**kde jsou vaše počítače umístěné?** vyberte **místní**.
+1. Z **Začínáme**vyberte **Site Recovery**  >  **připravit infrastrukturu** a nakonfigurujte následující nastavení:
+    1. **Cíl ochrany**  >  **Kde jsou vaše počítače umístěné?** vyberte **místní**.
     1. **Kam chcete počítače replikovat?**, vyberte **do Azure**.
     1. **Jsou vaše počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
     1. Používáte **System Center VMM ke správě hostitelů Hyper-V?** vyberte **Ano**.
@@ -90,7 +90,7 @@ V Průvodci instalací agenta Microsoft Azure Recovery Services nakonfigurujte t
 
 ## <a name="set-up-the-target-environment"></a>Nastavení cílového prostředí
 
-1. Vyberte **připravit** > **cíl**infrastruktury.
+1. Vyberte **připravit**  >  **cíl**infrastruktury.
 1. Vyberte předplatné a skupinu prostředků (**ContosoRG**), ve kterých se po převzetí služeb při selhání vytvoří virtuální počítače Azure.
 1. Vyberte model nasazení **Správce prostředků** .
 
@@ -98,7 +98,7 @@ Site Recovery kontroluje, jestli existuje minimálně jeden kompatibilní účet
 
 ## <a name="configure-network-mapping"></a>Konfigurace mapování sítě
 
-1. **Mapování sítě Site Recovery infrastruktura** > **Network mappings** > **Network Mapping**mapování sítě. Vyberte ikonu **+ mapování sítě** .
+1. **Site Recovery infrastruktura**  >  **Mapování sítě**  >  **Mapování sítě**. Vyberte ikonu **+ mapování sítě** .
 1. **Přidejte mapování sítě**. Vyberte **zdrojový Server System Center VMM** . Jako **cíl**vyberte Azure.
 1. Ověřte předplatné a model nasazení po převzetí služeb při selhání.
 1. **Zdrojová síť**. Vyberte zdroj místní sítě virtuálních počítačů.
@@ -108,7 +108,7 @@ Site Recovery kontroluje, jestli existuje minimálně jeden kompatibilní účet
 
 ## <a name="set-up-a-replication-policy"></a>Nastavení zásady replikace
 
-1. Vyberte **připravit** > **Nastavení** > replikace infrastruktury **+ vytvořit a přidružit**.
+1. Vyberte **připravit**  >  **nastavení replikace**infrastruktury  >  **+ vytvořit a přidružit**.
 1. V nastavení **vytvořit a přidružit zásady**zadejte název zásady. Používáme **ContosoReplicationPolicy**.
 1. Přijměte výchozí nastavení a vyberte **OK**:
    - **Frekvence kopírování** znamená, že po počáteční replikaci se rozdílová data replikují každých pět minut.
@@ -124,7 +124,7 @@ Site Recovery kontroluje, jestli existuje minimálně jeden kompatibilní účet
 1. **Zdroj**. Vyberte Cloud VMM. Pak vyberte **OK**.
 1. **Cíl**. Ověřte cíl (Azure), předplatné trezoru a vyberte model **Správce prostředků** .
 1. Vyberte účet úložiště **contosovmsacct1910171607** a síť Azure **ContosoASRnet** .
-1. **Vyberte virtuální počítače** > **Select**. Vyberte virtuální počítač, který chcete replikovat. Pak vyberte **OK**.
+1. **Virtuální počítače**  >  **Vyberte**. Vyberte virtuální počítač, který chcete replikovat. Pak vyberte **OK**.
 
    Průběh akce **Povolení ochrany** můžete sledovat v části **Úlohy** > **Úlohy Site Recovery**. Po dokončení úlohy **dokončení ochrany** se počáteční replikace dokončí a virtuální počítač je připravený na převzetí služeb při selhání.
 

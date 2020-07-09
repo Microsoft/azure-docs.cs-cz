@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbe6aed8ae0403f6ab4a7f9e0ba8b9a2c5d61617
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68347794"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168554"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Kurz: integrace cloudu SAP Analytics s Azure Active Directory
 
@@ -85,17 +85,13 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:
 
-    | |
-    |-|-|
-    | `https://<sub-domain>.sapanalytics.cloud/` |
-    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
+    - `https://<sub-domain>.sapanalytics.cloud/`
+    - `https://<sub-domain>.sapbusinessobjects.cloud/`
 
     b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:
-    
-    | |
-    |-|-|
-    | `<sub-domain>.sapbusinessobjects.cloud` |
-    | `<sub-domain>.sapanalytics.cloud` |
+
+    - `<sub-domain>.sapbusinessobjects.cloud`
+    - `<sub-domain>.sapanalytics.cloud`
 
     > [!NOTE] 
     > Hodnoty v těchto adresách URL jsou pouze pro ukázku. Aktualizujte hodnoty pomocí skutečné přihlašovací adresy URL a adresy URL identifikátoru. Pokud chcete získat přihlašovací adresu URL, obraťte se na [tým podpory pro cloudové klienty SAP Analytics](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/). Adresu URL identifikátoru můžete získat stažením metadat cloudu SAP Analytics z konzoly pro správu. To je vysvětleno dále v tomto kurzu.
@@ -112,7 +108,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V jiném okně webového prohlížeče se přihlaste k webu SAP Analytics Cloud společnosti jako správce.
 
-2. Vyberte možnost**Správa****systému** > v **nabídce** > .
+2. Vyberte **Menu**možnost  >  **System**  >  **Správa**systému v nabídce.
     
     ![Vyberte nabídku, pak systém a potom na Správa.](./media/sapboc-tutorial/config1.png)
 
@@ -152,7 +148,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -182,11 +178,11 @@ Zřízení uživatelského účtu:
 
 1. Přihlaste se k webu SAP Analytics Cloud Company jako správce.
 
-2. Vyberte možnost**Uživatelé****zabezpečení** >  **nabídky** > .
+2. Vyberte **Menu**možnost  >  **Security**  >  **Uživatelé**zabezpečení nabídky.
 
     ![Přidat zaměstnance](./media/sapboc-tutorial/user1.png)
 
-3. Na stránce **Uživatelé** přidejte podrobnosti o novém uživateli výběrem **+**. 
+3. Na stránce **Uživatelé** přidejte podrobnosti o novém uživateli výběrem **+** . 
 
     ![Stránka Přidat uživatele](./media/sapboc-tutorial/user4.png)
 
@@ -200,13 +196,13 @@ Zřízení uživatelského účtu:
 
     d. Do pole **ZOBRAZOVANÝ název** zadejte jméno a příjmení uživatele, například **B. Simon**.
 
-    e. Do pole **e-mail** zadejte e-mailovou adresu uživatele, třeba `b.simon@contoso.com`.
+    e. Do pole **e-mail** zadejte e-mailovou adresu uživatele, třeba `b.simon@contoso.com` .
 
     f. Na stránce **Vybrat role** vyberte příslušnou roli pro uživatele a pak vyberte **OK**.
 
-      ![Výběr role](./media/sapboc-tutorial/user3.png)
+      ![Vybrat roli](./media/sapboc-tutorial/user3.png)
 
-    g. Vyberte ikonu **Uložit** .
+    například Vyberte ikonu **Uložit** .
 
 ### <a name="test-sso"></a>Test SSO 
 

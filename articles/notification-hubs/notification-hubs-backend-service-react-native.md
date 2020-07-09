@@ -6,11 +6,12 @@ ms.service: notification-hubs
 ms.topic: tutorial
 ms.date: 06/11/2020
 ms.author: alstrakh
-ms.openlocfilehash: 30cf22d99a675d4525d972aeb889cec30a2e9b94
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 007be386b7b64fd3461fa508d35a4ef9be377c1f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060491"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170904"
 ---
 # <a name="tutorial-send-push-notifications-to-react-native-apps-using-azure-notification-hubs-via-a-backend-service"></a>Kurz: odeslání nabízených oznámení, která reagují na nativní aplikace s využitím Azure Notification Hubs přes back-end službu  
 
@@ -19,7 +20,8 @@ ms.locfileid: "86060491"
 > [!div class="op_single_selector"]
 >
 > * [Xamarin.Forms](notification-hubs-backend-service-xamarin-forms.md)
-> * [Reagovat nativní](notification-hubs-backend-service-react-native.md)
+> * [Flutter](notification-hubs-backend-service-flutter.md)
+> * [React Native](notification-hubs-backend-service-react-native.md)
 
 V tomto kurzu použijete [Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-overview) k odesílání oznámení do nativní aplikace s [reakci](https://reactnative.dev/) , která cílí na **Android** a **iOS**.  
 
@@ -61,8 +63,8 @@ Můžete postupovat podle kroků v tomto příkladě tohoto příkladu bez před
 
 * [Portál pro vývojáře Apple](https://developer.apple.com)
 * [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1)
+* [Azure Notification Hubs](notification-hubs-push-notification-overview.md)
 * [Konzola Google Firebase](https://console.firebase.google.com/u/0/)
-* [Microsoft Azure](https://portal.azure.com) a [Posílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs](ios-sdk-get-started.md).
 * [React Native](https://reactnative.dev/docs/getting-started)
 
 Výše uvedené kroky jsou určené pro [Visual Studio pro Mac](https://visualstudio.microsoft.com/vs/mac/) a [Visual Studio Code](https://code.visualstudio.com/download) , ale je možné postupovat i s použitím sady [Visual Studio 2019](https://visualstudio.microsoft.com/vs).
@@ -115,7 +117,7 @@ Teď byste měli mít základní aplikaci s reakci, která je připojená k cent
 
 [!INCLUDE [Next steps](../../includes/notification-hubs-backend-service-next-steps.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 [!INCLUDE [Troubleshooting](../../includes/notification-hubs-backend-service-troubleshooting.md)]
 

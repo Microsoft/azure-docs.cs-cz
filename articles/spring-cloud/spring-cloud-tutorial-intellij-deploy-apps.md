@@ -1,17 +1,17 @@
 ---
-title: Kurz – použití IntelliJ k nasazování aplikací pro jarní cloudy Azure
+title: 'Kurz: použití IntelliJ k nasazení aplikací pro jarní cloudy Azure'
 description: Pomocí IntelliJ nasaďte aplikace do Azure jarního cloudu.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 8e473a5692c3fa2be3b0f2d823d2a36ba768d661
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec78b62f15851c41a3b9759f32d9c35c189f72c4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81731361"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142032"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Použití IntelliJ k nasazování aplikací Azure Spring Cloudu
 Modul plug-in IntelliJ pro jarní cloud Azure podporuje nasazení aplikací z NÁPADu IntelliJ.  
@@ -53,7 +53,7 @@ Následující postupy nasadí Hello World aplikace s využitím NÁPADu Intelli
 ## <a name="deploy-to-azure-spring-cloud"></a>Nasazení do jarního cloudu Azure
 Aby bylo možné nasadit nástroj do Azure, musíte se přihlásit pomocí účtu Azure a vybrat své předplatné.  Podrobnosti o přihlášení najdete v tématu [instalace a přihlášení](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. V Project Exploreru klikněte pravým tlačítkem na projekt a vyberte **Azure** -> **Deploy do Azure jaře Cloud**.
+1. V Project Exploreru klikněte pravým tlačítkem na projekt a vyberte **Azure**  ->  **Deploy do Azure jaře Cloud**.
 
     ![Nasazení do Azure 1](media/spring-cloud-intellij-howto/deploy-to-azure-1.png)
 

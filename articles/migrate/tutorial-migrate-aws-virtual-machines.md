@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat virtuální počítače s AWS
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5d697c2146144ca7f4b9a8739b6863ba31845f4e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102799"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165426"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Zjišťování, posouzení a migrace virtuálních počítačů Amazon Web Services (AWS) do Azure
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte, jak:
 > * Spusťte test migrace a ujistěte se, že vše funguje podle očekávání.
 > * Spusťte úplnou migraci do Azure.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="discover-and-assess-aws-vms"></a>Zjišťování a posouzení virtuálních počítačů s AWS  
 
@@ -60,7 +60,7 @@ Zkontrolujte změny v [systému Windows](prepare-for-migration.md#windows-machin
 
 Připravte Azure pro migraci pomocí Azure Migrate: Server Migration Tool.
 
-**Úkol** | **Podrobnosti**
+**Úloha** | **Podrobnosti**
 --- | ---
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka.
 **Ověření oprávnění pro účet Azure** | Váš účet Azure potřebuje oprávnění k vytvoření virtuálního počítače a zápis na spravovaný disk Azure.
@@ -77,9 +77,9 @@ Připravte Azure pro migraci pomocí Azure Migrate: Server Migration Tool.
 
 Přiřaďte roli Přispěvatel virtuálních počítačů k účtu Azure. To poskytuje oprávnění k těmto akcím:
 
-    - Vytvoření virtuálního počítače ve vybrané skupině prostředků
-    - Vytvoření virtuálního počítače ve vybrané virtuální síti
-    - Zapište na spravovaný disk Azure. 
+- Vytvoření virtuálního počítače ve vybrané skupině prostředků
+- Vytvoření virtuálního počítače ve vybrané virtuální síti
+- Zapište na spravovaný disk Azure. 
 
 ### <a name="create-an-azure-network"></a>Vytvoření sítě Azure
 

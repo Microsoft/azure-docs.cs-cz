@@ -1,17 +1,17 @@
 ---
-title: Kurz – vytvoření vazby mezipaměti Azure pro Redis do vaší aplikace založené na jarním cloudu Azure
-description: V tomto kurzu se dozvíte, jak vytvořit vazby Azure cache pro Redis do vaší aplikace pro jarní Cloud v Azure.
+title: Vytvoření vazby mezipaměti Azure pro Redis do vaší aplikace pro jarní Cloud v Azure
+description: Naučte se navazovat Azure cache pro Redis do vaší aplikace pro jarní cloudy v Azure.
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
-ms.openlocfilehash: 94f7b5a2363b7c53e0f70500e5a0a8cb6f64e611
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ddf239fc6415b3dbee6051d4199cd29e5244e4d2
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277504"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142139"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Vytvoření vazby mezipaměti Azure pro Redis do vaší aplikace pro jarní Cloud v Azure 
 
@@ -27,7 +27,7 @@ Pokud nemáte nasazenou instanci Azure jaře cloudu, postupujte podle kroků v [
 
 ## <a name="bind-azure-cache-for-redis"></a>Vytvoření vazby mezipaměti Azure pro Redis
 
-1. Do souboru pom. XML projektu přidejte následující závislost:
+1. Do souboru pom.xml projektu přidejte následující závislost:
 
     ```xml
     <dependency>
@@ -37,7 +37,7 @@ Pokud nemáte nasazenou instanci Azure jaře cloudu, postupujte podle kroků v [
     ```
 1. Odebrat všechny `spring.redis.*` vlastnosti ze `application.properties` souboru
 
-1. Aktualizujte aktuální nasazení pomocí `az spring-cloud app update` nebo vytvořte nové nasazení pomocí `az spring-cloud app deployment create`.
+1. Aktualizujte aktuální nasazení pomocí `az spring-cloud app update` nebo vytvořte nové nasazení pomocí `az spring-cloud app deployment create` .
 
 1. V Azure Portal přejdete na stránku služby jarní cloud Azure. Přejít na **řídicí panel aplikace** a vybrat aplikaci, která se váže k Azure cache pro Redis. Tato aplikace je stejná jako ta, kterou jste aktualizovali nebo nasadili v předchozím kroku.
 
@@ -45,7 +45,7 @@ Pokud nemáte nasazenou instanci Azure jaře cloudu, postupujte podle kroků v [
 
 1. Restartujte aplikaci. Vazba by teď měla fungovat.
 
-1. Chcete-li zajistit, aby vazba služby byla správná, vyberte název vazby a ověřte jeho podrobnosti. `property` Pole by mělo vypadat takto:
+1. Chcete-li zajistit, aby vazba služby byla správná, vyberte název vazby a ověřte jeho podrobnosti. `property`Pole by mělo vypadat takto:
     ```
     spring.redis.host=some-redis.redis.cache.windows.net
     spring.redis.port=6380
@@ -55,7 +55,4 @@ Pokud nemáte nasazenou instanci Azure jaře cloudu, postupujte podle kroků v [
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit datovou aplikaci v Azure jaře pro službu Azure cache pro Redis. Další informace o vázání služeb pro vaši aplikaci najdete v kurzu týkajícím se vazby aplikace na instanci Azure Database for MySQL.
-
-> [!div class="nextstepaction"]
-> [Naučte se vytvořit instanci Azure Database for MySQL instance.](spring-cloud-tutorial-bind-mysql.md)
+V tomto článku jste zjistili, jak vytvořit datovou aplikaci v Azure jaře pro službu Azure cache pro Redis. Další informace o vázání služeb pro vaši aplikaci najdete v tématu [vazba na instanci Azure Database for MySQL](spring-cloud-tutorial-bind-mysql.md).
