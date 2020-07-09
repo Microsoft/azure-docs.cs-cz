@@ -1,17 +1,17 @@
 ---
-title: Kurz – použití distribuovaného trasování u jarního cloudu Azure
-description: V tomto kurzu se dozvíte, jak používat distribuované trasování jarního cloudu prostřednictvím Azure Application Insights
+title: Použití distribuovaného trasování u jarního cloudu Azure
+description: Naučte se používat distribuované trasování jarního cloudu prostřednictvím Azure Application Insights
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 0815aa084462d1b829d64cd7c5d6fa7cebf534fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccaf58465c1ade0228daea2b535d06fb6168d64f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78273215"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142120"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Použití distribuovaného trasování u jarního cloudu Azure
 
@@ -27,7 +27,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete [rychlý Start při nasazení aplikace přes Azure CLI](spring-cloud-quickstart-launch-app-cli.md) a zřiďte a spusťte cloudovou službu Azure na jaře.
+Pokud chcete postupovat podle těchto pokynů, potřebujete službu pružinové cloudové služby Azure, která je už zřízená a spuštěná. Dokončete [rychlý Start při nasazení aplikace přes Azure CLI](spring-cloud-quickstart-launch-app-cli.md) a zřiďte a spusťte cloudovou službu Azure na jaře.
     
 ## <a name="add-dependencies"></a>Přidat závislosti
 
@@ -39,7 +39,7 @@ K dokončení tohoto kurzu potřebujete službu pružinové cloudové služby Az
 
    Po této změně může odesílatel Zipkin odeslat na web.
 
-1. Tento krok přeskočte, pokud jste postupovali [podle našeho průvodce pro přípravu aplikace Azure jaře Cloud](spring-cloud-tutorial-prepare-app-deployment.md). V opačném případě přejdete do svého místního vývojového prostředí a upravíte soubor pom. XML tak, aby zahrnoval následující Sleuth závislost pružinového cloudu:
+1. Tento krok přeskočte, pokud jste postupovali [podle našeho průvodce pro přípravu aplikace Azure jaře Cloud](spring-cloud-tutorial-prepare-app-deployment.md). V opačném případě přejdete do místního vývojového prostředí a upravíte soubor pom.xml tak, aby zahrnoval následující Sleuth závislost na jaře cloudu:
 
     ```xml
     <dependencyManagement>
@@ -102,7 +102,4 @@ Application Insights poskytuje kromě funkcí mapa aplikace a funkce hledání i
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak povolit a pochopit distribuované trasování v Azure jarním cloudu. Další informace o tom, jak vytvořit vazby aplikace k databázi Azure Cosmos DB, najdete v dalším kurzu.
-
-> [!div class="nextstepaction"]
-> [Naučte se navazovat databáze Azure Cosmos DB.](spring-cloud-tutorial-bind-cosmos.md)
+V tomto článku jste zjistili, jak povolit a pochopit distribuované trasování v Azure jarním cloudu. Další informace o vázání služby na aplikaci najdete v tématu [vázání databáze Azure Cosmos DB k aplikaci Azure jaře Cloud](spring-cloud-tutorial-bind-cosmos.md).

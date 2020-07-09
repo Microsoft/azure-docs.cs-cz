@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db2e583515d948f455e1d2129684f97347a07403
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 2a2db9f7342b984a8c539a345f8e5038caf5ff85
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594929"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170271"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Kurz: odesílání nabízených oznámení do Windows Phone aplikací pomocí Notification Hubs
 
@@ -84,9 +84,12 @@ V této části vytvoříte aplikaci pro Windows Phone, která k registraci pou�
     ![Visual Studio – Správce balíčků NuGet][20]
 4. Otevřete soubor App.xaml.cs a přidejte následující příkazy `using`:
 
-        using Microsoft.Phone.Notification;
-        using Microsoft.WindowsAzure.Messaging;
-5. Přidejte následující kód na začátek `Application_Launching` metody v: `App.xaml.cs`
+    ```csharp
+    using Microsoft.Phone.Notification;
+    using Microsoft.WindowsAzure.Messaging;
+    ```
+
+5. Přidejte následující kód na začátek `Application_Launching` metody v `App.xaml.cs` :
 
     ```csharp
     private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -116,11 +119,11 @@ V této části vytvoříte aplikaci pro Windows Phone, která k registraci pou�
    > [!NOTE]
    > Hodnota `MyPushChannel` je index, který se používá k vyhledání existujícího kanálu v kolekci [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) . Pokud zde není k dispozici, vytvořte novou položku s tímto názvem.
 
-    Vložte název vašeho centra a připojovací řetězec s názvem `DefaultListenSharedAccessSignature` , který jste si poznamenali v předchozí části.
+    Vložte název vašeho centra a připojovací řetězec `DefaultListenSharedAccessSignature` s názvem, který jste si poznamenali v předchozí části.
     Tento kód načte identifikátor URI kanálu pro aplikaci z MPNS a pak zaregistruje tento kanál URI pomocí centra oznámení. Také zaručuje, že kanál URI je registrován v centru oznámení pokaždé, když je aplikace spuštěna.
 
    > [!NOTE]
-   > V tomto kurzu se odešle informační zpráva do zařízení. Když odešlete oznámení na dlaždici, musíte místo toho zavolat `BindToShellTile` metodu na kanál. Chcete-li podporovat informační zprávy a oznámení dlaždic, `BindToShellTile` zavolejte `BindToShellToast`jak a.
+   > V tomto kurzu se odešle informační zpráva do zařízení. Když odešlete oznámení na dlaždici, musíte místo toho zavolat `BindToShellTile` metodu na kanál. Chcete-li podporovat informační zprávy a oznámení dlaždic, zavolejte jak `BindToShellTile` a `BindToShellToast` .
 
 6. V Průzkumníku řešení rozbalte **Vlastnosti**, otevřete soubor `WMAppManifest.xml`, klikněte na kartu **Možnosti** a ujistěte se, že je zaškrtnuta schopnost **ID_CAP_PUSH_NOTIFICATION**. Vaše aplikace teď přijímá nabízená oznámení.
 

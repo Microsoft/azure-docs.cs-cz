@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f6cb87cf7628c48ce6adf12336c4b712dc0ff9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b31bc86554998295bc97352d28fa3b3d4b330abe
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202549"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146569"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Kurz: Azure Active Directory integrace se službou SAML SSO pro JIRA podle rezoluce GmbH
 
@@ -33,7 +33,7 @@ Integrace jednotného přihlašování SAML pro JIRA podle rezoluce GmbH s Azure
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, nejdříve si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -117,7 +117,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pomocí jednotného přih
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/plugins/servlet/samlsso`
 
     > [!NOTE]
-    > V poli identifikátor, adresa URL odpovědi a adresa URL pro přihlášení nahraďte ** \<Server-Base-URL>** základní adresou URL vaší instance JIRA. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal. Pokud máte nějaký problém, kontaktujte nás na [webu SAML SSO pro JIRA od týmu podpory pro řešení GmbH](https://www.resolution.de/go/support).
+    > Pro identifikátor, adresu URL odpovědi a adresu URL pro přihlášení nahraďte **\<server-base-url>** základní adresou URL vaší instance JIRA. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal. Pokud máte nějaký problém, kontaktujte nás na [webu SAML SSO pro JIRA od týmu podpory pro řešení GmbH](https://www.resolution.de/go/support).
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** stáhněte **XML federačních metadat** a uložte ho do svého počítače.
 
@@ -219,7 +219,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     a. Do pole **název** zadejte **Britta Simon**.
   
-    b. Do pole **uživatelské jméno** zadejte <b>BrittaSimon@contoso.com</b>.
+    b. Do pole **uživatelské jméno** zadejte <b>BrittaSimon@contoso.com</b> .
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
@@ -275,11 +275,11 @@ Aby se uživatelé Azure AD mohli přihlašovat k JEDNOTNÉmu přihlašování S
 
     ![Přidat zaměstnance](./media/samlssojira-tutorial/user4-new.png) 
 
-    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu <b>BrittaSimon@contoso.com</b>uživatele:.
+    a. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele: <b>BrittaSimon@contoso.com</b> .
 
     b. Do textového pole **celé jméno** zadejte jméno a příjmení uživatele: **Britta Simon**.
 
-    c. Do textového pole **uživatelské jméno** zadejte e-mailovou adresu uživatele: <b>BrittaSimon@contoso.com</b>. 
+    c. Do textového pole **uživatelské jméno** zadejte e-mailovou adresu uživatele: <b>BrittaSimon@contoso.com</b> . 
 
     d. Do textového pole **heslo** zadejte heslo uživatele.
 
@@ -291,7 +291,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici SSO SSO pro JIRA podle rezoluce GmbH, měli byste se automaticky přihlásit k rozhraní SAML SSO pro JIRA, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Můžete také otestovat jednotné přihlašování, pokud přejdete na `https://<server-base-url>/plugins/servlet/samlsso`. ** \<Adresu serveru-Base-URL>** nahraďte základní adresou URL vaší instance JIRA.
+Můžete také otestovat jednotné přihlašování, pokud přejdete na `https://<server-base-url>/plugins/servlet/samlsso` . Nahraďte **\<server-base-url>** základní adresou URL vaší instance JIRA.
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Povolit přesměrování jednotného přihlašování pro JIRA
@@ -304,17 +304,19 @@ Pokud chcete aktivovat přesměrování jednotného přihlašování, proveďte 
 
 1. Přejděte na stránku konfigurace modulu plug-in SAML SSO v JIRA.
 1. Na levém panelu klikněte na **přesměrování** .
-![](./media/samlssojira-tutorial/ssore1.png)
+
+   ![Částečný snímek obrazovky se stránkou konfigurace modulu plug-in JIRA SAML SingleSignOn zvýraznění odkazu přesměrování v levém navigačním panelu.](./media/samlssojira-tutorial/ssore1.png)
 
 1. **Zapněte přesměrování jednotného přihlašování**.
-![](./media/samlssojira-tutorial/ssore2.png) 
+
+   ![Částečný snímek obrazovky JIRA konfigurace modulu plug-in SAML SingleSignOn, který zvýrazní vybrané zaškrtávací políčko Povolit přesměrování jednotného přihlašování (SSO)](./media/samlssojira-tutorial/ssore2.png) 
 
 1. V pravém horním rohu stiskněte tlačítko **Uložit nastavení** .
 
-Po aktivaci možnosti se zobrazí výzva k zadání uživatelského jména a hesla, pokud je možnost **Povolit Nosso** zapnutá přechodem na `https://\<server-base-url>/login.jsp?nosso`. Stejně jako vždy nahraďte ** \<Server-Base-URL>** základní adresou URL.
+Po aktivaci možnosti se zobrazí výzva k zadání uživatelského jména a hesla, pokud je možnost **Povolit Nosso** zapnutá přechodem na `https://\<server-base-url>/login.jsp?nosso` . Jako vždy nahraďte **\<server-base-url>** základní adresou URL.
 
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -11,12 +11,12 @@ ms.date: 05/19/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 835eb66444dd9f4c4da7689196c759621cfef999
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: fd9eff90f144909b9746e85a9c42aae2fdf02ed6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85360754"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146805"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
@@ -164,19 +164,19 @@ Při konfiguraci zřizování použijte následující postup:
  1. Přihlaste se k portálu Azure AD.
  2. Klikněte na **Azure Active Directory**
  3. Klikněte na **Azure AD Connect**
- 4. Vyberte **Spravovat zřizování (Preview)** .
- ![](media/how-to-configure/manage1.png)</br>
- 5.  Klikněte na **Nová konfigurace** .
- ![](media/tutorial-single-forest/configure1.png)</br>
+ 4. Vyberte možnost **Spravovat zřizování (Preview)** 
+  ![ snímek obrazovky s odkazem spravovat zřizování (Preview).](media/how-to-configure/manage1.png)</br>
+ 5.  Klikněte na **Nový** 
+  ![ snímek obrazovky konfigurace na obrazovce zřizování služby Azure AD (Preview) s zvýrazněným odkazem nová konfigurace.](media/tutorial-single-forest/configure1.png)</br>
  6.  Na obrazovce konfigurace zadejte **e-mailové oznámení**, přesuňte selektor, který chcete **Povolit** , a klikněte na **Uložit**.
- ![](media/tutorial-single-forest/configure2.png)</br>
+ ![Obrazovka Konfigurace obrazovky s vyplněným e-mailem oznámení a vybraným povolením](media/tutorial-single-forest/configure2.png)</br>
  7. V části **Konfigurovat**vyberte možnost **Všichni uživatelé** a změňte rozsah pravidla konfigurace.
- ![](media/how-to-configure/scope2.png)</br>
+ ![Snímek obrazovky s konfigurací "Všichni uživatelé", který je zvýrazněný vedle možnosti "uživatelé oboru".](media/how-to-configure/scope2.png)</br>
  8. Napravo změňte obor tak, aby zahrnoval konkrétní organizační jednotku, kterou jste právě vytvořili "OU = procesory, DC = contoso, DC = com".
- ![](media/tutorial-existing-forest/scope2.png)</br>
+ ![Snímek obrazovky s oborem, ve kterém se zvýrazní rozsah, který se změnil na organizační jednotku, kterou jste vytvořili.](media/tutorial-existing-forest/scope2.png)</br>
  9.  Klikněte na **Hotovo** a **Uložit**.
  10. Rozsah by teď měl být nastavený na jednu organizační jednotku. 
- ![](media/tutorial-existing-forest/scope3.png)</br>
+ ![Snímek obrazovky s konfigurací "1 organizační jednotka" označená vedle možnosti "uživatelé oboru".](media/tutorial-existing-forest/scope3.png)</br>
  
 
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>Ověření uživatelů zajištěných zřizováním cloudu

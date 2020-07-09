@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b36e4688ebd6e929a56869a6bb191d98b2f1f432
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84691097"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135656"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů Hyper-V na zotavení po havárii do Azure
 
@@ -56,12 +56,12 @@ Pokud jsou hostitelé Hyper-V spravováni nástrojem VMM, je nutné připravit m
 
 ### <a name="prepare-vmm-for-network-mapping"></a>Příprava VMM pro mapování sítě
 
-Pokud používáte VMM, [mapování sítě](site-recovery-network-mapping.md) se mapují mezi místní sítě virtuálních počítačů VMM a virtuální sítě Azure. Mapování zajišťuje, že se virtuální počítače Azure připojí ke správné síti při jejich vytvoření po převzetí služeb při selhání.
+Pokud používáte VMM, [mapování sítě](./hyper-v-vmm-network-mapping.md) se mapují mezi místní sítě virtuálních počítačů VMM a virtuální sítě Azure. Mapování zajišťuje, že se virtuální počítače Azure připojí ke správné síti při jejich vytvoření po převzetí služeb při selhání.
 
 Připravte VMM na mapování sítě následujícím způsobem:
 
-1. Ujistěte se, že máte [logickou síť VMM](https://docs.microsoft.com/system-center/vmm/network-logical) , která je přidružená ke cloudu, ve kterém jsou umístění hostitelé Hyper-V.
-2. Ujistěte se, že máte [síť virtuálních počítačů](https://docs.microsoft.com/system-center/vmm/network-virtual) propojenou s logickou sítí.
+1. Ujistěte se, že máte [logickou síť VMM](/system-center/vmm/network-logical) , která je přidružená ke cloudu, ve kterém jsou umístění hostitelé Hyper-V.
+2. Ujistěte se, že máte [síť virtuálních počítačů](/system-center/vmm/network-virtual) propojenou s logickou sítí.
 3. V nástroji VMM Připojte virtuální počítače k síti virtuálních počítačů.
 
 ## <a name="verify-internet-access"></a>Ověřit přístup k Internetu
@@ -86,7 +86,7 @@ Pokud se chcete po převzetí služeb při selhání připojit k virtuálním po
 
 1. Pokud chcete mít přístup přes internet, před převzetím služeb při selhání povolte na místním virtuálním počítači protokol RDP. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejný** profil a že protokol RDP je povolený v povolených aplikacích **brány Windows Firewall**  >  **Allowed Apps** pro všechny profily.
 2. Pokud chcete mít přístup přes síť VPN typu Site-to-Site, povolte na místním počítači protokol RDP. Protokol RDP by měl být povolený v **bráně Windows Firewall**  ->  **povolené aplikace a funkce** pro **domény a privátní** sítě.
-   Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/kb/3031135). Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. V takovém případě se k virtuálnímu počítači nebudete moct přihlásit, dokud se aktualizace nedokončí.
+   Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135). Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. V takovém případě se k virtuálnímu počítači nebudete moct přihlásit, dokud se aktualizace nedokončí.
 3. Po převzetí služeb při selhání na virtuálním počítači Azure s Windows zkontrolujte **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy pro řešení potíží](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Po převzetí služeb při selhání získáte přístup k virtuálním počítačům Azure pomocí stejné IP adresy jako replikovaný místní virtuální počítač nebo jiná IP adresa. [Přečtěte si další informace](concepts-on-premises-to-azure-networking.md) o nastavení adresování IP pro převzetí služeb při selhání.
@@ -94,5 +94,5 @@ Po převzetí služeb při selhání získáte přístup k virtuálním počíta
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nastavení zotavení po havárii do Azure pro virtuální počítače](tutorial-hyper-v-to-azure.md) 
->  Hyper-V [Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V v cloudech VMM](tutorial-hyper-v-vmm-to-azure.md)
+> [Nastavení zotavení po havárii do Azure pro virtuální počítače](./hyper-v-azure-tutorial.md) 
+>  Hyper-V [Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V v cloudech VMM](./hyper-v-vmm-azure-tutorial.md)

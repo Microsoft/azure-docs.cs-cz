@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.custom: MVC
-ms.openlocfilehash: 8501bb1a998eb08984a118bfa5d52d1e3f3e4f84
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf47f08ac555cf60f59ba2b1a84750b6a9e2e0a1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75498083"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86132002"
 ---
 # <a name="fail-over--vmware-vms"></a>Převzetí služeb při selhání pro virtuální počítače VMware
 
@@ -64,14 +64,14 @@ Ověřte vlastnosti následujícím způsobem:
 
 ## <a name="run-a-failover-to-azure"></a>Spuštění převzetí služeb při selhání do Azure
 
-1. V **Nastavení** > **replikované položky**vyberte virtuální počítač, u kterého chcete převzít služby při selhání, a pak vyberte **převzetí služeb při selhání**.
+1. V **Nastavení**  >  **replikované položky**vyberte virtuální počítač, u kterého chcete převzít služby při selhání, a pak vyberte **převzetí služeb při selhání**.
 2. V části **převzetí služeb při selhání**vyberte **bod obnovení** pro převzetí služeb při selhání. Můžete použít jednu z následujících možností:
    * **Nejnovější:** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože virtuální počítač Azure, který se vytvořil po převzetí služeb při selhání, má všechna data, která se replikují do Site Recovery při aktivaci převzetí služeb při selhání.
    * **Poslední zpracování**: Tato možnost nefunguje pro virtuální počítač do nejnovějšího bodu obnovení zpracovaného Site Recovery. Tato možnost poskytuje nízkou RTO (cíl doby obnovení), protože nestráví zpracováním nezpracovaných dat žádného času.
    * **Nejnovější konzistentní vzhledem k aplikacím**: pomocí této možnosti se virtuální počítač nezdařil do posledního bodu obnovení konzistentního vzhledem k aplikacím zpracovaného pomocí Site Recovery.
    * **Vlastní**: Tato možnost umožňuje zadat bod obnovení.
 
-3. Před spuštěním **převzetí služeb při selhání vyberte vypnout počítač** , aby se před aktivací převzetí služeb při selhání ukončily zdrojové virtuální počítače. Převzetí služeb při selhání pokračuje i v případě, že vypnutí selhalo. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
+3. Před spuštěním **převzetí služeb při selhání vyberte vypnout počítač** , aby se před aktivací převzetí služeb při selhání ukončily zdrojové virtuální počítače. Převzetí služeb při selhání pokračuje i v případě, že vypnutí selhalo. Průběh převzetí služeb při selhání můžete sledovat na stránce **úlohy** .
 
 V některých scénářích převzetí služeb při selhání vyžaduje další zpracování, které trvá přibližně 8 až 10 minut. Můžete si všimnout delší doby testovacího převzetí služeb při selhání pro:
 
@@ -87,7 +87,7 @@ V některých scénářích převzetí služeb při selhání vyžaduje další 
 
 ## <a name="connect-to-failed-over-vm"></a>Připojení k virtuálnímu počítači s podporou převzetí služeb při selhání
 
-1. Pokud se chcete připojit k virtuálním počítačům Azure po převzetí služeb při selhání pomocí protokol RDP (Remote Desktop Protocol) (RDP) a Secure Shell (SSH), [ověřte splnění požadavků] ((Ailover-navrácení služeb po obnovení-přehled. MD # Connect-to-Azure-po převzetí služeb při selhání).
+1. Pokud se chcete připojit k virtuálním počítačům Azure po převzetí služeb při selhání pomocí protokol RDP (Remote Desktop Protocol) (RDP) a Secure Shell (SSH), [Ověřte, že jsou splněné požadavky](failover-failback-overview.md#connect-to-azure-after-failover).
 2. Po převzetí služeb při selhání přejdete na virtuální počítač a ověříte ho [připojením](../virtual-machines/windows/connect-logon.md) .
 3. Použijte **změnu bodu obnovení** , pokud chcete po převzetí služeb při selhání použít jiný bod obnovení. Po potvrzení převzetí služeb při selhání v dalším kroku už tato možnost nebude dostupná.
 4. Po ověření vyberte **Potvrdit** a dokončete bod obnovení virtuálního počítače po převzetí služeb při selhání.
@@ -101,5 +101,5 @@ V některých scénářích převzetí služeb při selhání vyžaduje další 
 Po převzetí služeb při selhání znovu nastavte ochranu virtuálních počítačů Azure do místního prostředí. Až budou virtuální počítače znovu chráněny a replikovány na místní lokalitu, po dokončení navrácení služeb po obnovení z Azure.
 
 > [!div class="nextstepaction"]
-> [Opětovné zapnutí ochrany virtuálních počítačů](vmware-azure-reprotect.md)
-> Azure[po převzetí služeb při selhání z Azure](vmware-azure-failback.md)
+> Znovu [zapnout ochranu virtuálních počítačů Azure](vmware-azure-reprotect.md) 
+>  [Navrácení služeb po obnovení z Azure](vmware-azure-failback.md)

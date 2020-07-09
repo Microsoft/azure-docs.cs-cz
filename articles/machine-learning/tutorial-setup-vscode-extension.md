@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 04/13/2020
-ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/08/2020
+ms.openlocfilehash: 9d85e59e003cffdbe6fe6abe7bb053ae4c574b78
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272902"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143435"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Nastavení rozšíření Azure Machine Learning Visual Studio Code
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte provádět následující úlohy:
 1. Otevřete Visual Studio Code.
 1. Kliknutím na ikonu **rozšíření** na **řádku aktivity** otevřete zobrazení rozšíření.
 1. V zobrazení rozšíření vyhledejte "Azure Machine Learning".
-1. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Nainstalovat**.
 
     > [!div class="mx-imgBorder"]
     > ![Nainstalovat rozšíření Azure Machine Learning VS Code](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
@@ -69,27 +69,30 @@ Teď, když jste se k Azure přihlásili pomocí přihlašovacích údajů k ú�
 
 1. Po rozbalení palety příkazů postupujte podle zobrazených výzev.
 
+    > [!NOTE]
+    > Pokud již máte zřízeny stávající prostředky Azure Machine Learning, přečtěte si téma [Jak spustit experimenty v průvodci vs Code](./how-to-manage-resources-vscode.md#run-experiment).
+
     1. Vyberte své předplatné Azure.
     1. V seznamu prostředí vyberte **soubor conda závislosti**.
-    1. Stiskněte klávesu **ENTER** pro procházení souboru závislostí conda. Tento soubor obsahuje závislosti potřebné ke spuštění vašeho skriptu. V tomto případě je soubor závislostí `env.yml` souborem v `mnist-vscode-docs-sample` adresáři.
+    1. Stiskněte klávesu **ENTER** pro procházení souboru závislostí conda. Tento soubor obsahuje závislosti potřebné ke spuštění vašeho skriptu. V tomto případě je soubor závislostí souborem v `env.yml` `mnist-vscode-docs-sample` adresáři.
     1. Pro procházení souboru školicího skriptu stiskněte klávesu **ENTER** . Jedná se o soubor, který obsahuje kód pro model strojového učení, který zařadí obrázky psaných číslic do kategorií. V tomto případě skript pro výuku modelu je `train.py` soubor v `mnist-vscode-docs-sample` adresáři.
 
 1. V tomto okamžiku se v textovém editoru zobrazí konfigurační soubor podobný tomu níže. Tato konfigurace obsahuje informace potřebné ke spuštění školicí úlohy, jako je soubor, který obsahuje kód pro výuku modelu a jakékoli závislosti Pythonu zadané v předchozím kroku.
 
     ```json
     {
-        "workspace": "WS04131142",
-        "resourceGroup": "WS04131142-rg1",
+        "workspace": "WS06271500",
+        "resourceGroup": "WS06271500-rg2",
         "location": "South Central US",
-        "experiment": "WS04131142-exp1",
+        "experiment": "WS06271500-exp1",
         "compute": {
-            "name": "WS04131142-com1",
+            "name": "WS06271500-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS04131142-com1-rc1",
+            "filename": "WS06271500-com1-rc1",
             "environment": {
-                "name": "WS04131142-env1",
+                "name": "WS06271500-env1",
                 "conda_dependencies": [
                     "python=3.6.2",
                     "tensorflow=1.15.0",

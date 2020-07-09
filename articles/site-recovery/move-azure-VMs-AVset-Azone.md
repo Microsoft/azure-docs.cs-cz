@@ -7,15 +7,15 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3efa8da87ac15495900dd264a9c37143f5e08181
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7d92311dfa699247995c7ded3e3930e19a9a537a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84699715"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135461"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Přesun virtuálních počítačů Azure do zón dostupnosti
-Zóny dostupnosti v Azure vám pomůžou chránit vaše aplikace a data při selhání datacentra. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti pomáhá chránit aplikace a data při selhání datacentra. V Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99% po dobu provozu virtuálních počítačů. Zóny dostupnosti jsou podporovány ve vybraných oblastech, jak je uvedeno v [oblastech, které podporují zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-region).
+Zóny dostupnosti v Azure vám pomůžou chránit vaše aplikace a data při selhání datacentra. Každou zónu dostupnosti tvoří jedno nebo několik datových center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení Zóny dostupnosti v rámci oblasti pomáhá chránit aplikace a data při selhání datacentra. V Zóny dostupnosti nabízí Azure smlouvu o úrovni služeb (SLA) 99,99% po dobu provozu virtuálních počítačů. Zóny dostupnosti jsou podporovány ve vybraných oblastech, jak je uvedeno v [oblastech, které podporují zóny dostupnosti](../availability-zones/az-region.md).
 
 V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instance* do konkrétní oblasti a chcete zlepšit dostupnost tím, že tyto virtuální počítače přesunete do zóny dostupnosti, můžete to udělat pomocí Azure Site Recovery. Tuto akci je dále možné rozdělit do kategorií:
 
@@ -23,11 +23,11 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
 - Přesun virtuálních počítačů ve skupině dostupnosti do Zóny dostupnosti v cílové oblasti
 
 > [!IMPORTANT]
-> V současné době Azure Site Recovery podporuje přesun virtuálních počítačů z jedné oblasti do druhé. Podporuje pouze přesun mezi zónami v rámci oblasti v několika oblastech. [Přečtěte si další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery).
+> V současné době Azure Site Recovery podporuje přesun virtuálních počítačů z jedné oblasti do druhé. Podporuje pouze přesun mezi zónami v rámci oblasti v několika oblastech. [Další informace](./azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md).
 
 ## <a name="check-prerequisites"></a>Kontrola požadavků
 
-- Ověřte, zda je v cílové oblasti [podporovaná zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-region). Ověřte, že [je podporovaná kombinace zdrojové oblasti/cílové oblasti](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support). Zajistěte si rozhodnutí o tom, co je v cílové oblasti.
+- Ověřte, zda je v cílové oblasti [podporovaná zóny dostupnosti](../availability-zones/az-region.md). Ověřte, že [je podporovaná kombinace zdrojové oblasti/cílové oblasti](./azure-to-azure-support-matrix.md#region-support). Zajistěte si rozhodnutí o tom, co je v cílové oblasti.
 - Ujistěte se, že rozumíte [komponentám a architektuře řešení](azure-to-azure-architecture.md).
 - Zkontrolujte [omezení podpory a požadavky](azure-to-azure-support-matrix.md).
 - Ověřte oprávnění účtu. Pokud jste si právě vytvořili bezplatný účet Azure, jste správcem předplatného. Pokud nejste správcem předplatného, ve spolupráci se správcem přiřaďte potřebná oprávnění. Pokud chcete pro virtuální počítač povolit replikaci a nakonec zkopírovat data do cíle pomocí Azure Site Recovery, musíte mít:
@@ -41,7 +41,7 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
 
 ## <a name="prepare-the-source-vms"></a>Příprava zdrojových virtuálních počítačů
 
-1. Pokud je chcete přesunout do zóny dostupnosti pomocí Site Recovery, vaše virtuální počítače by měly používat spravované disky. Stávající virtuální počítače s Windows, které používají nespravované disky, můžete převést na používání spravovaných disků. Postupujte podle kroků v části [převedení virtuálního počítače s Windows z nespravovaných disků na Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks). Ujistěte se, že je skupina dostupnosti nakonfigurovaná jako *spravovaná*.
+1. Pokud je chcete přesunout do zóny dostupnosti pomocí Site Recovery, vaše virtuální počítače by měly používat spravované disky. Stávající virtuální počítače s Windows, které používají nespravované disky, můžete převést na používání spravovaných disků. Postupujte podle kroků v části [převedení virtuálního počítače s Windows z nespravovaných disků na Managed disks](../virtual-machines/windows/convert-unmanaged-to-managed-disks.md). Ujistěte se, že je skupina dostupnosti nakonfigurovaná jako *spravovaná*.
 2. Ověřte, že se na virtuálních počítačích Azure, které chcete přesunout, nachází všechny nejnovější kořenové certifikáty. Pokud nejsou k dispozici nejnovější kořenové certifikáty, nelze v důsledku omezení zabezpečení povolit kopírování dat do cílové oblasti.
 
 3. U virtuálních počítačů s Windows zajistíte přítomnost všech důvěryhodných kořenových certifikátů tím, že na ně nainstalujete všechny nejnovější aktualizace Windows. V odpojeném prostředí použijte standardní procesy služby Windows Update a aktualizace certifikátů ve vaší organizaci.
@@ -66,16 +66,16 @@ V situaci, kdy jsou vaše virtuální počítače nasazené jako *jediná instan
 
      V následujících dokumentech se dozvíte, jak vytvořit nejčastěji používané síťové prostředky, které jsou pro vás relevantní, na základě konfigurace zdrojového virtuálního počítače.
 
-    - [Skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Služby vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer)
+    - [Skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md)
+    - [Služby vyrovnávání zatížení](../load-balancer/index.yml)
     - [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md)
     
-   Další síťové součásti najdete v [dokumentaci](https://docs.microsoft.com/azure/?pivot=products&panel=network)k síti.
+   Další síťové součásti najdete v [dokumentaci](../index.yml?pivot=products&panel=network)k síti.
 
     > [!IMPORTANT]
-    > Ujistěte se, že v cíli používáte redundantní Nástroj pro vyrovnávání zatížení v zóně. Další informace najdete na [Standard Load Balancer a zóny dostupnosti](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones).
+    > Ujistěte se, že v cíli používáte redundantní Nástroj pro vyrovnávání zatížení v zóně. Další informace najdete na [Standard Load Balancer a zóny dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md).
 
-4. Ruční [Vytvoření neprodukční sítě](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) v cílové oblasti, pokud chcete otestovat konfiguraci před tím, než budete přecházet do cílové oblasti. Doporučujeme tento přístup, protože způsobuje minimální rušení s produkčním prostředím.
+4. Ruční [Vytvoření neprodukční sítě](../virtual-network/quick-create-portal.md) v cílové oblasti, pokud chcete otestovat konfiguraci před tím, než budete přecházet do cílové oblasti. Doporučujeme tento přístup, protože způsobuje minimální rušení s produkčním prostředím.
 
 ## <a name="enable-replication"></a>Povolení replikace
 Následující kroky vás provedou při použití Azure Site Recovery k povolení replikace dat do cílové oblasti, než je nakonec přesunete do Zóny dostupnosti.
@@ -85,7 +85,7 @@ Následující kroky vás provedou při použití Azure Site Recovery k povolen�
 
 1. V Azure Portal vyberte **virtuální počítače**a vyberte virtuální počítač, do kterého chcete přejít zóny dostupnosti.
 2. V části **Operace** vyberte **Zotavení po havárii**.
-3. V části **Konfigurovat zotavení po havárii**  >  **cílová oblast**vyberte cílovou oblast, do které budete replikovat. Ujistěte se, že tato oblast [podporuje](https://docs.microsoft.com/azure/availability-zones/az-region) zóny dostupnosti.
+3. V části **Konfigurovat zotavení po havárii**  >  **cílová oblast**vyberte cílovou oblast, do které budete replikovat. Ujistěte se, že tato oblast [podporuje](../availability-zones/az-region.md) zóny dostupnosti.
 
     ![Výběr cílové oblasti](media/azure-vms-to-zones/enable-rep-1.PNG)
 
@@ -149,5 +149,3 @@ V tomto kurzu jste zvýšili dostupnost virtuálního počítače Azure tak, že
 
 > [!div class="nextstepaction"]
 > [Nastavení zotavení po havárii po migraci](azure-to-azure-quickstart.md)
-
-

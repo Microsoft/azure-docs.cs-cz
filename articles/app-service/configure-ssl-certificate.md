@@ -6,14 +6,14 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81453893"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146414"
 ---
-# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS/SSL v Azure App Service
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Přidání certifikátu TLS nebo SSL ve službě Azure App Service
 
 [Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. V tomto článku se dozvíte, jak vytvořit, nahrát nebo importovat privátní certifikát nebo veřejný certifikát do App Service. 
 
@@ -34,7 +34,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 Postup při použití tohoto průvodce:
 
 - [Vytvořte aplikaci App Service](/azure/app-service/).
-- Jenom bezplatný certifikát: namapujte subdoménu (například `www.contoso.com`) na App Service se [záznamem CNAME](app-service-web-tutorial-custom-domain.md#map-a-cname-record).
+- Jenom bezplatný certifikát: namapujte subdoménu (například `www.contoso.com` ) na App Service se [záznamem CNAME](app-service-web-tutorial-custom-domain.md#map-a-cname-record).
 
 ## <a name="private-certificate-requirements"></a>Požadavky na privátní certifikát
 
@@ -64,17 +64,17 @@ Bezplatný App Service spravovaný certifikát představuje řešení pro zabezp
 - Nepodporuje certifikáty se zástupnými znaky.
 - Nepodporuje holé domény.
 - Nelze exportovat.
-- Nepodporuje DNS A-záznam.
+- Nepodporuje záznamy. Automatické obnovování například nefunguje se záznamy.
 
 > [!NOTE]
-> Bezplatný certifikát vystaví DigiCert. U některých domén nejvyšší úrovně musíte explicitně dovolit DigiCert jako vystavitele certifikátu vytvořením [záznamu domény CAA](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) s hodnotou: `0 issue digicert.com`.
+> Bezplatný certifikát vystaví DigiCert. U některých domén nejvyšší úrovně musíte explicitně dovolit DigiCert jako vystavitele certifikátu vytvořením [záznamu domény CAA](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) s hodnotou: `0 issue digicert.com` .
 > 
 
 Chcete-li vytvořit bezplatný App Service spravovaný certifikát:
 
-V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services** > **\<název aplikace>**.
+V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
-V levém navigačním panelu aplikace > vyberte **Nastavení TLS/SSL****certifikáty privátních klíčů (. pfx)** > **vytvořit App Service spravovaný certifikát**.
+V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL**  >  **certifikáty privátních klíčů (. pfx)**  >  **vytvořit App Service spravovaný certifikát**.
 
 ![Vytvoření bezplatného certifikátu v App Service](./media/configure-ssl-certificate/create-free-cert.png)
 
@@ -116,7 +116,7 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 | Nastavení | Popis |
 |-|-|
 | Název | Popisný název certifikátu App Service. |
-| Název hostitele holé domény | Sem zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou `www` *doménu i* subdoménu. V vystaveném certifikátu obsahuje pole běžný název kořenovou doménu a pole Alternativní název subjektu obsahuje `www` doménu. Chcete-li zabezpečit všechny subdomény, zadejte plně kvalifikovaný název domény (například `mysubdomain.contoso.com`).|
+| Název hostitele holé domény | Sem zadejte kořenovou doménu. Vydaný certifikát zabezpečuje kořenovou *doménu i* `www` subdoménu. V vystaveném certifikátu obsahuje pole běžný název kořenovou doménu a pole Alternativní název subjektu obsahuje `www` doménu. Chcete-li zabezpečit všechny subdomény, zadejte plně kvalifikovaný název domény (například `mysubdomain.contoso.com` ).|
 | Předplatné | Odběr, který bude obsahovat certifikát. |
 | Skupina prostředků | Skupina prostředků, která bude obsahovat certifikát. Můžete použít novou skupinu prostředků nebo vybrat stejnou skupinu prostředků jako aplikace App Service, například. |
 | SKU certifikátu | Určuje typ certifikátu, který se má vytvořit, zda se jedná o standardní certifikát nebo [certifikát se zástupným znakem](https://wikipedia.org/wiki/Wildcard_certificate). |
@@ -126,7 +126,7 @@ Pomocí následující tabulky můžete nakonfigurovat certifikát. Jakmile bude
 
 Po dokončení procesu nákupu certifikátů je potřeba provést několik dalších kroků, než budete moct tento certifikát začít používat. 
 
-Vyberte certifikát na stránce [App Service certifikáty](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) a pak klikněte na **Konfigurace** > certifikátu**Krok 1: Store**.
+Vyberte certifikát na stránce [App Service certifikáty](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) a pak klikněte na **Konfigurace certifikátu**  >  **Krok 1: Store**.
 
 ![Konfigurace Key Vaultho úložiště certifikátu App Service](./media/configure-ssl-certificate/configure-key-vault.png)
 
@@ -163,9 +163,9 @@ Vyberte **ověřování App Service**. Vzhledem k tomu, že jste už namapovali 
 
 ### <a name="import-certificate-into-app-service"></a>Importovat certifikát do App Service
 
-V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services** > **\<název aplikace>**.
+V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
-V levém navigačním panelu aplikace vyberte možnost >  **Nastavení TLS/SSL**importovat**certifikát privátního klíče (. pfx)** > **App Service Certificate**.
+V levém navigačním panelu aplikace vyberte možnost **Nastavení TLS/SSL**  >  importovat**certifikát privátního klíče (. pfx)**  >  **App Service Certificate**.
 
 ![Importovat certifikát App Service v App Service](./media/configure-ssl-certificate/import-app-service-cert.png)
 
@@ -183,9 +183,9 @@ Po dokončení operace se certifikát zobrazí v seznamu **certifikáty privátn
 
 Pokud používáte Azure Key Vault ke správě certifikátů, můžete importovat certifikát PKCS12 z Key Vault do App Service, pokud [splňuje požadavky](#private-certificate-requirements).
 
-V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services** > **\<název aplikace>**.
+V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
-V levém navigačním panelu aplikace vyberte > možnost **Nastavení TLS/SSL**importovat**certifikáty privátního klíče (. pfx)** > **Key Vault certifikát**.
+V levém navigačním panelu aplikace vyberte možnost **Nastavení TLS/SSL**  >  importovat**certifikáty privátního klíče (. pfx)**  >  **Key Vault certifikát**.
 
 ![Importovat certifikát Key Vault v App Service](./media/configure-ssl-certificate/import-key-vault-cert.png)
 
@@ -239,7 +239,7 @@ Vytvořte soubor _mergedcertificate.crt_ pro sloučený certifikát. V textovém
 
 Exportujte sloučený certifikát TLS/SSL s privátním klíčem, se kterým se vygenerovala vaše žádost o certifikát.
 
-Pokud jste žádost o certifikát vygenerovali pomocí OpenSSL, vytvořili jste i soubor privátního klíče. Exportujte certifikát do formátu PFX spuštěním následujícího příkazu. Nahraďte zástupné symboly _ &lt;Private-Key-File>_ a _ &lt;Merge-Certificate-File>_ cestami k vašemu privátnímu klíči a souboru sloučeného certifikátu.
+Pokud jste žádost o certifikát vygenerovali pomocí OpenSSL, vytvořili jste i soubor privátního klíče. Exportujte certifikát do formátu PFX spuštěním následujícího příkazu. Nahraďte zástupné symboly _ &lt; Private-Key-File>_ a _ &lt; merge-Certificate-File>_ cestami k vašemu privátnímu klíči a souboru sloučeného certifikátu.
 
 ```bash
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
@@ -253,9 +253,9 @@ Pokud jste k vygenerování žádosti o certifikát použili službu IIS nebo n�
 
 Nyní jste si certifikát nahráli do App Service.
 
-V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services** > **\<název aplikace>**.
+V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
-V levém navigačním panelu aplikace vyberte >  **Nastavení TLS/SSL****certifikát pro odeslání certifikátu****privátního klíče (. pfx)** > .
+V levém navigačním panelu aplikace vyberte **Nastavení TLS/SSL**  >  certifikát pro odeslání certifikátu**privátního klíče (. pfx)**  >  **Upload Certificate**.
 
 ![Nahrání privátního certifikátu v App Service](./media/configure-ssl-certificate/upload-private-cert.png)
 
@@ -273,9 +273,9 @@ Po dokončení operace se certifikát zobrazí v seznamu **certifikáty privátn
 
 Veřejné certifikáty jsou podporovány ve formátu *. cer* . 
 
-V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services** > **\<název aplikace>**.
+V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>v nabídce vlevo vyberte **App Services**  >  **\<app-name>** .
 
-V levém navigačním panelu aplikace klikněte na >  **Nastavení TLS/SSL****veřejné certifikáty (. cer)** > **nahrát certifikát veřejného klíče**.
+V levém navigačním panelu aplikace klikněte na **Nastavení TLS/SSL**  >  **veřejné certifikáty (. cer)**  >  **nahrát certifikát veřejného klíče**.
 
 Do pole **název**zadejte název certifikátu. V **souboru certifikátu CER**vyberte svůj soubor CER.
 
@@ -357,7 +357,7 @@ Najděte zámek certifikátu pomocí typu zámku **Delete**. Napravo od něj vyb
 
 ![Odstranit zámek pro App Service certifikát](./media/configure-ssl-certificate/delete-lock-app-service-cert.png)
 
-Nyní můžete certifikát App Service odstranit. V levém navigačním panelu vyberte **Přehled** > **Odstranit**. V potvrzovacím dialogovém okně zadejte název certifikátu a vyberte **OK**.
+Nyní můžete certifikát App Service odstranit. V levém navigačním panelu vyberte **Přehled**  >  **Odstranit**. V potvrzovacím dialogovém okně zadejte název certifikátu a vyberte **OK**.
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 

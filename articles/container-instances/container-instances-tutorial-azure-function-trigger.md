@@ -2,14 +2,14 @@
 title: Kurz – spuštění skupiny kontejnerů podle funkce Azure Functions
 description: Vytvoření funkce PowerShellu bez serveru aktivovaného protokolem HTTP pro automatizaci vytváření instancí služby Azure Container Instances
 ms.topic: tutorial
-ms.date: 09/20/2019
+ms.date: 06/10/2020
 ms.custom: ''
-ms.openlocfilehash: 9dbb22a2449e4c41bff802ab827da4489fc7ffeb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5fa4acf7ac5a7d0b9103458636adff4befcc3d9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78331021"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144881"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Kurz: použití funkce Azure aktivované protokolem HTTP k vytvoření skupiny kontejnerů
 
@@ -25,14 +25,11 @@ Získáte informace o těchto tématech:
 > * Upravte a znovu publikujte funkci PowerShellu pro automatizaci nasazení skupiny kontejnerů s jedním kontejnerem.
 > * Ověřte nasazení kontejneru aktivovaného protokolem HTTP.
 
-> [!IMPORTANT]
-> PowerShell pro Azure Functions je momentálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
-
 ## <a name="prerequisites"></a>Požadavky
 
-Požadavky na instalaci a použití Visual Studio Code s Azure Functions v operačním systému najdete v tématu [Vytvoření první funkce v Azure](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment) .
+V tématu [Vytvoření první funkce v Azure použijte Visual Studio Code](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment) pro požadavky na instalaci a použití Visual Studio Code s rozšířením Azure Functions v operačním systému.
 
-Některé kroky v tomto článku používají rozhraní příkazového řádku Azure CLI. K provedení těchto kroků můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure CLI. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Další kroky v tomto článku se používají Azure PowerShell. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure PowerShell][azure-powershell-install] a [přihlášení do Azure](/powershell/azure/get-started-azureps#sign-in-to-azure).
 
 ## <a name="create-a-basic-powershell-function"></a>Vytvoření základní funkce PowerShellu
 
@@ -42,21 +39,22 @@ V tomto článku se předpokládá, že publikujete projekt pomocí názvu *myfu
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>Povolení identity spravované v Azure v aplikaci Function App
 
-Teď ve vaší aplikaci Function App povolte [spravovanou identitu](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) přiřazenou systémem. Hostitel PowerShellu, na kterém běží aplikace, se může automaticky ověřit pomocí této identity a povolit funkce pro provádění akcí se službami Azure, ke kterým má identita udělený přístup. V tomto kurzu udělíte oprávnění spravovaných identit k vytváření prostředků ve skupině prostředků aplikace Function App. 
+V následujících příkazech je ve vaší aplikaci Function App povolená [spravovaná identita](../app-service/overview-managed-identity.md?toc=/azure/azure-functions/toc.json#add-a-system-assigned-identity) přiřazená systémem. Hostitel PowerShellu, na kterém běží aplikace, se může automaticky ověřit v Azure pomocí této identity a povolit funkce pro provádění akcí se službami Azure, ke kterým má identita udělený přístup. V tomto kurzu udělíte oprávnění spravovaných identit k vytváření prostředků ve skupině prostředků aplikace Function App. 
 
-Nejprve pomocí příkazu [AZ Group show][az-group-show] Získejte ID skupiny prostředků aplikace Function App a uložte ji do proměnné prostředí. V tomto příkladu se předpokládá, že spustíte příkaz v prostředí bash.
+[Přidejte](../app-service/overview-managed-identity.md?tabs=dotnet#using-azure-powershell-1) do aplikace Function App identitu:
 
-```azurecli
-rgID=$(az group show --name myfunctionapp --query id --output tsv)
+```powershell
+Update-AzFunctionApp -Name myfunctionapp `
+    -ResourceGroupName myfunctionapp `
+    -IdentityType SystemAssigned
 ```
 
-Spuštěním [AZ functionapp identity App Assign][az-functionapp-identity-app-assign] přiřaďte k aplikaci Functions místní identitu a přiřaďte jí roli přispěvatele k této skupině prostředků. Tato role umožňuje identitě vytvořit další prostředky, jako jsou například skupiny kontejnerů ve skupině prostředků.
+Přiřaďte identitu role přispěvatele v oboru pro skupinu prostředků:
 
-```azurecli
-az functionapp identity assign \
-  --name myfunctionapp \
-  --resource-group myfunctionapp \
-  --role contributor --scope $rgID
+```powershell
+$SP=(Get-AzADServicePrincipal -DisplayName myfunctionapp).Id
+$RG=(Get-AzResourceGroup -Name myfunctionapp).ResourceId
+New-AzRoleAssignment -ObjectId $SP -RoleDefinitionName "Contributor" -Scope $RG
 ```
 
 ## <a name="modify-httptrigger-function"></a>Upravit funkci HttpTrigger
@@ -66,8 +64,7 @@ Upravte kód PowerShellu pro funkci **HttpTrigger** , aby se vytvořila skupina 
 ```powershell
 [...]
 if ($name) {
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
+    $body = "Hello, $name. This HTTP triggered function executed successfully."
 }
 [...]
 ```
@@ -77,31 +74,30 @@ Nahraďte tento kód následujícím příkladem bloku. Zde platí, že pokud je
 ```powershell
 [...]
 if ($name) {
-    $status = [HttpStatusCode]::OK
     New-AzContainerGroup -ResourceGroupName myfunctionapp -Name $name `
         -Image alpine -OsType Linux `
         -Command "echo 'Hello from an Azure container instance triggered by an Azure function'" `
         -RestartPolicy Never
-    $body = "Started container group $name"
-}
+    if ($?) {
+        $body = "This HTTP triggered function executed successfully. Started container group $name"
+    }
+    else  {
+        $body = "There was a problem starting the container group."
+    }
 [...]
 ```
 
-Tento příklad vytvoří skupinu kontejnerů skládající se z jedné instance kontejneru, která `alpine` spouští image. Kontejner spustí jediný `echo` příkaz a potom ukončí. V reálných příkladech můžete aktivovat vytvoření jedné nebo více skupin kontejnerů pro spuštění úlohy služby Batch.
+Tento příklad vytvoří skupinu kontejnerů skládající se z jedné instance kontejneru, která spouští `alpine` image. Kontejner spustí jediný `echo` příkaz a potom ukončí. V reálných příkladech můžete aktivovat vytvoření jedné nebo více skupin kontejnerů pro spuštění úlohy služby Batch.
  
 ## <a name="test-function-app-locally"></a>Místní test aplikace Function App
 
-Před opětovným publikováním projektu Function App do Azure zajistěte, aby se funkce spouštěla správně místně. Jak je znázorněno v [rychlém startu PowerShellu](../azure-functions/functions-create-first-function-powershell.md), vložte do skriptu PowerShellu místní `Wait-Debugger` zarážku a zavolejte na něj výše. Pokyny k ladění najdete v tématu [ladění powershellu Azure Functions místně](../azure-functions/functions-debug-powershell-local.md).
-
+Před opětovným publikováním projektu Function App do Azure zajistěte, aby se funkce spouštěla místně. Při místním spuštění funkce nevytváří prostředky Azure. Můžete ale testovat tok funkcí s a bez předávání hodnoty názvu do řetězce dotazu. Chcete-li ladit funkci, přečtěte si téma [ladění powershellu Azure Functions místně](../azure-functions/functions-debug-powershell-local.md).
 
 ## <a name="republish-azure-function-app"></a>Opětovné publikování aplikace funkce Azure Functions
 
-Po ověření, že se funkce v místním počítači spustí správně, je čas publikovat projekt znovu do existující aplikace Function App v Azure.
+Po ověření, že se funkce spustí místně, znovu publikujte projekt do existující aplikace Function App v Azure.
 
-> [!NOTE]
-> Nezapomeňte `Wait-Debugger` před publikováním funkcí do Azure odebrat jakákoli volání.
-
-1. V Visual Studio Code otevřete paletu příkazů. Vyhledejte a vyberte `Azure Functions: Deploy to function app...`.
+1. V Visual Studio Code otevřete paletu příkazů. Vyhledejte a vyberte `Azure Functions: Deploy to Function App...` .
 1. Vyberte aktuální pracovní složku pro zip a nasazení.
 1. Vyberte předplatné a pak název existující aplikace Function App (*myfunctionapp*). Potvrďte, že chcete přepsat předchozí nasazení.
 
@@ -109,72 +105,74 @@ Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí ozn�
 
 ## <a name="run-the-function-in-azure"></a>Spuštění funkce v Azure
 
-Po úspěšném dokončení nasazení získáte adresu URL funkce. Například použijte oblast **Azure: Functions** v nástroji Visual Studio Code ke ZKOPÍROVÁNÍ adresy URL funkce **HttpTrigger** nebo získání adresy URL funkce v [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
+Po úspěšném dokončení nasazení získáte adresu URL funkce. Například můžete použít oblast **Azure: Functions** v Visual Studio Code ke ZKOPÍROVÁNÍ adresy URL funkce **HttpTrigger** nebo získat adresu URL funkce v [Azure Portal](../azure-functions/functions-create-first-azure-function.md#test-the-function).
 
-Adresa URL funkce zahrnuje jedinečný kód a má tvar:
+Adresa URL funkce má formu:
 
 ```
-https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==
+https://myfunctionapp.azurewebsites.net/api/HttpTrigger
 ```
 
 ### <a name="run-function-without-passing-a-name"></a>Spustit funkci bez předání názvu
 
-Jako první test spusťte `curl` příkaz a předejte adresu URL funkce bez připojení řetězce `name` dotazu. Ujistěte se, že jste zahrnuli jedinečný kód vaší funkce.
+Jako první test spusťte `curl` příkaz a předejte adresu URL funkce bez připojení `name` řetězce dotazu. 
 
 ```bash
-curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M=="
+curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger"
 ```
 
-Funkce vrátí stavový kód 400 a text `Please pass a name on the query string or in the request body`:
+Funkce vrátí stavový kód 200 a text `This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response` :
 
 ```
 [...]
-> GET /api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M== HTTP/2
+> GET /api/HttpTrigger? HTTP/1.1
 > Host: myfunctionapp.azurewebsites.net
-> User-Agent: curl/7.54.0
+> User-Agent: curl/7.64.1
 > Accept: */*
 > 
 * Connection state changed (MAX_CONCURRENT_STREAMS updated)!
-< HTTP/2 400 
-< content-length: 62
-< content-type: text/plain; charset=utf-8
-< date: Mon, 05 Aug 2019 22:08:15 GMT
+< HTTP/1.1 200 OK
+< Content-Length: 135
+< Content-Type: text/plain; charset=utf-8
+< Request-Context: appId=cid-v1:d0bd0123-f713-4579-8990-bb368a229c38
+< Date: Wed, 10 Jun 2020 17:50:27 GMT
 < 
 * Connection #0 to host myfunctionapp.azurewebsites.net left intact
-Please pass a name on the query string or in the request body.
+This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.* Closing connection 0
 ```
 
 ### <a name="run-function-and-pass-the-name-of-a-container-group"></a>Spustit funkci a předat název skupiny kontejnerů
 
-Nyní spusťte `curl` příkaz připojením názvu skupiny kontejnerů (*mycontainergroup*) jako řetězce `&name=mycontainergroup`dotazu:
+Nyní spusťte `curl` příkaz a přidejte název skupiny kontejnerů (*mycontainergroup*) jako řetězec dotazu `?name=mycontainergroup` :
 
 ```bash
-curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?code=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup"
+curl --verbose "https://myfunctionapp.azurewebsites.net/api/HttpTrigger?name=mycontainergroup"
 ```
 
 Funkce vrátí stavový kód 200 a aktivuje vytvoření skupiny kontejnerů:
 
 ```
 [...]
-> GET /api/HttpTrigger?ode=bmF/GljyfFWISqO0GngDPCtCQF4meRcBiHEoaQGeRv/Srx6dRcrk2M==&name=mycontainergroup HTTP/2
+> GET /api/HttpTrigger1?name=mycontainergroup HTTP/1.1
 > Host: myfunctionapp.azurewebsites.net
-> User-Agent: curl/7.54.0
+> User-Agent: curl/7.64.1
 > Accept: */*
 > 
-* Connection state changed (MAX_CONCURRENT_STREAMS updated)!
-< HTTP/2 200 
-< content-length: 28
-< content-type: text/plain; charset=utf-8
-< date: Mon, 05 Aug 2019 22:15:30 GMT
+< HTTP/1.1 200 OK
+< Content-Length: 92
+< Content-Type: text/plain; charset=utf-8
+< Request-Context: appId=cid-v1:d0bd0123-f713-4579-8990-bb368a229c38
+< Date: Wed, 10 Jun 2020 17:54:31 GMT
 < 
 * Connection #0 to host myfunctionapp.azurewebsites.net left intact
-Started container group mycontainergroup
+This HTTP triggered function executed successfully. Started container group mycontainergroup* Closing connection 0
 ```
 
-Ověřte, že se kontejner spustil pomocí příkazu [AZ Container logs][az-container-logs] :
+Pomocí příkazu [Get-AzContainerInstanceLog][get-azcontainerinstancelog] ověřte, že byl kontejner spuštěný:
 
 ```azurecli
-az container logs --resource-group myfunctionapp --name mycontainergroup
+Get-AzContainerInstanceLog -ResourceGroupName myfunctionapp `
+  -ContainerGroupName mycontainergroup 
 ```
 
 Ukázkový výstup:
@@ -185,7 +183,7 @@ Hello from an Azure container instance triggered by an Azure function
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete žádné prostředky, které jste vytvořili v tomto kurzu, můžete spuštěním příkazu [AZ Group Delete][az-group-delete] odebrat skupinu prostředků a všechny prostředky, které obsahuje. Tento příkaz odstraní vytvořený registr kontejneru, spuštěný kontejner i všechny související prostředky.
+Pokud už nepotřebujete žádné prostředky, které jste vytvořili v tomto kurzu, můžete spuštěním příkazu [az Group Delete] [az-Group-Delete] odebrat skupinu prostředků a všechny prostředky, které obsahuje. Tento příkaz odstraní aplikaci funkcí, kterou jste vytvořili, a také spuštěný kontejner a všechny související prostředky.
 
 ```azurecli-interactive
 az group delete --name myfunctionapp
@@ -212,10 +210,6 @@ Podrobné pokyny k vytváření funkcí Azure functions a publikování projekt�
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - internal -->
-
-[azure-cli-install]: /cli/azure/install-azure-cli
-[az-group-show]: /cli/azure/group#az-group-show
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-functionapp-identity-app-assign]: /cli/azure/functionapp/identity#az-functionapp-identity-assign
+[azure-powershell-install]: /powershell/azure/install-az-ps
 [new-azcontainergroup]: /powershell/module/az.containerinstance/new-azcontainergroup
-[az-container-logs]: /cli/azure/container#az-container-logs
+[get-azcontainerinstancelog]: /powershell/module/az.containerinstance/get-azcontainerinstancelog

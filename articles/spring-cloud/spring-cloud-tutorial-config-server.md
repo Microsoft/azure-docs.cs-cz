@@ -1,26 +1,26 @@
 ---
-title: Kurz – nastavení instance konfiguračního serveru v Azure jaře cloudu
-description: V tomto kurzu se naučíte, jak nastavit instanci jarního cloudového konfiguračního serveru pro váš jarní cloud Azure na Azure Portal
+title: Nastavení instance konfiguračního serveru v Azure jaře cloudu
+description: Naučte se nastavit instanci jarního cloudového konfiguračního serveru pro váš jarní cloud Azure na Azure Portal
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 4c8b2e92cd7e88dde434e42971d091db689bfbc9
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: bfce1ce54da9d9e8e7feaa8e8eb5cd676866a1cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791295"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142193"
 ---
-# <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Kurz: nastavení instance jarního cloudového konfiguračního serveru pro vaši službu
+# <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Nastavení instance jarního cloudového konfiguračního serveru pro vaši službu
 
 V tomto článku se dozvíte, jak připojit instanci jarního cloudového konfiguračního serveru k vaší jarní cloudové službě Azure.
 
 Jarní cloudová konfigurace poskytuje podporu na straně serveru a klienta pro externou konfiguraci v distribuovaném systému. V případě instance konfiguračního serveru máte centrální místo pro správu externích vlastností pro aplikace ve všech prostředích. Další informace najdete v tématu [Reference k serveru pro konfiguraci jarního cloudu](https://spring.io/projects/spring-cloud-config).
 
 ## <a name="prerequisites"></a>Požadavky
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 * Již zřízené a běžící cloudová služba Azure. Pokud chcete nastavit a spustit službu jarních cloudů Azure, přečtěte si [rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure](spring-cloud-quickstart-launch-app-cli.md).
 
 ## <a name="restriction"></a>Omezení
@@ -190,7 +190,4 @@ Po uložení konfiguračního souboru se na kartě **Konfigurace** zobrazí tla�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak povolit a nakonfigurovat instanci jarního konfiguračního serveru v cloudu. Další informace o správě vaší aplikace najdete v kurzu ručního škálování aplikace.
-
-> [!div class="nextstepaction"]
-> [Kurz: škálování aplikace ve jarním cloudu Azure](spring-cloud-tutorial-scale-manual.md)
+V tomto článku jste zjistili, jak povolit a nakonfigurovat instanci jarního cloudového serveru pro konfiguraci. Další informace o správě aplikace najdete v tématu [škálování aplikace v Azure jarním cloudu](spring-cloud-tutorial-scale-manual.md).

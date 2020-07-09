@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74084175"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130972"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Příprava prostředků Azure pro zotavení po havárii technologie Hyper-V
 
@@ -32,9 +32,9 @@ V tomto kurzu se dozvíte, jak připravit komponenty Azure v případě, že chc
 > * Vytvořte Recovery Services trezor, ve kterém se uchovávají informace o metadatech a konfiguraci pro virtuální počítače a další komponenty replikace.
 > * Nastavit síť Azure. Když se po převzetí služeb při selhání vytvoří virtuální počítače Azure, připojí se k této síti.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="sign-in"></a>Přihlášení
+## <a name="sign-in"></a>Přihlásit se
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -52,7 +52,7 @@ K dokončení těchto úloh by měl být vašemu účtu přiřazená předdefino
 
 Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Virtuální počítače Azure se vytvoří z úložiště, když převezmete služby při selhání z místní lokality do Azure. Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
 
-1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek** > **Storage** > úložiště**účet úložiště – objekt blob, soubor, tabulka, fronta**.
+1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek**úložiště  >  **Storage**  >  **účet úložiště – objekt blob, soubor, tabulka, fronta**.
 2. V části **Vytvořit účet úložiště** zadejte název účtu.  Název, který zvolíte, musí být v rámci Azure jedinečný, musí být dlouhý 3 až 24 znaků a obsahovat pouze malá písmena a číslice. Pro tento kurz použijte **contosovmsacct1910171607**.
 3. V části **Model nasazení** vyberte **Resource Manager**.
 4. V rozevíracím rámečku **druh účtu**vyberte **úložiště (pro obecné účely V1)**. Nevybírejte úložiště objektů blob.
@@ -72,11 +72,11 @@ Bitové kopie replikovaných počítačů jsou uložené v úložišti Azure. Vi
 1. V **trezoru služby Recovery services > název**zadejte popisný název pro identifikaci trezoru. Pro účely tohoto kurzu použijte **ContosoVMVault**.
 2. V **skupiny prostředků**vyberte existující skupinu prostředků nebo vytvořte novou. Pro tento kurz použijte **contosoRG**.
 3. V části **umístění**vyberte oblast, ve které se má Trezor nacházet. Pro tento kurz použijte **západní Evropa**.
-4. Chcete-li rychle získat přístup k trezoru z řídicího panelu, vyberte možnost **Připnout na řídicí panel** > **vytvořit**.
+4. Chcete-li rychle získat přístup k trezoru z řídicího panelu, vyberte možnost **Připnout na řídicí panel**  >  **vytvořit**.
 
 ![Vytvoření nového trezoru](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-Nový trezor se zobrazí v části **řídicí panel** > **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .
+Nový trezor se zobrazí v části **řídicí panel**  >  **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .
 
 ## <a name="set-up-an-azure-network"></a>Nastavení sítě Azure
 
@@ -98,8 +98,8 @@ Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí
 ## <a name="useful-links"></a>Užitečné odkazy
 
 Projdeme si tyto možnosti:
-- [Sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Spravované disky](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)
+- [Sítě Azure](../virtual-network/virtual-networks-overview.md)
+- [Spravované disky](../virtual-machines/windows/managed-disks-overview.md)
 
 
 

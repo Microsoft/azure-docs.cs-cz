@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c27b7bf29e5f124fdcfb886b658fd8e9d4cc48fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74091350"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134448"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Navrácení služeb po obnovení virtuálního počítače Azure mezi oblastmi Azure
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak provést převzetí služeb při selhání jednoh
 > 
 > [!NOTE]
 > 
-> Tento kurz vám pomůže převzít služby při selhání několika virtuálních počítačů do cílové oblasti a zpátky do zdrojové oblasti s minimálními úpravami. Podrobnější informace najdete v tématu [návody k virtuálním počítačům Azure](https://docs.microsoft.com/azure/virtual-machines/windows/).
+> Tento kurz vám pomůže převzít služby při selhání několika virtuálních počítačů do cílové oblasti a zpátky do zdrojové oblasti s minimálními úpravami. Podrobnější informace najdete v tématu [návody k virtuálním počítačům Azure](../virtual-machines/windows/index.yml).
 
 ## <a name="before-you-start"></a>Než začnete
 

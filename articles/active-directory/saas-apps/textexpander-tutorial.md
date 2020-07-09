@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77bd880bbbc1d600ca21e058993102d69b417f41
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: aecb235006752096c6040066cb9b96fcfa709363
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84764090"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86167245"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textexpander"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s TextExpander
 
@@ -97,11 +97,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho očekává aplikace TextExpander několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
     
-    | Name | |  Zdrojový atribut|
-    | ---------------| --------------- | --------- |
-    | e-mail | | uživatel. e-mail |
-    | firstName | | User. křestní jméno |
-    | lastName | | User. příjmení |
+    | Název | Zdrojový atribut|
+    | ---- | --------------- |
+    | e-mail | uživatel. e-mail |
+    | firstName | User. křestní jméno |
+    | lastName | User. příjmení |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 

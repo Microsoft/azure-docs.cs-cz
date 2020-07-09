@@ -2,19 +2,20 @@
 title: Označení obrázků v projektu s popisem
 title.suffix: Azure Machine Learning
 description: Naučte se používat nástroje pro označování dat v Azure Machine Learning projektu značení.
-author: lobrien
-ms.author: laobri
+author: sdgilley
+ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 0421e5ad164c440c1b841cae66e7dafc5deadb81
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025127"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147019"
 ---
-# <a name="tag-images-in-a-labeling-project-preview"></a>Označení obrázků v projektu s popisem (Preview)
+# <a name="tag-images-in-a-labeling-project"></a>Označení obrázků v projektu s popisem 
 
 Poté, co správce projektu [vytvoří projekt označování](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) v Azure Machine Learning, můžete použít nástroj pro označování (Public Preview) k rychlé přípravě dat pro projekt Machine Learning. Tento článek popisuje:
 
@@ -63,7 +64,7 @@ Azure povolí tlačítko **Odeslat** , když jste označili všechny obrázky na
 
 Po odeslání značek pro data v Azure aktualizuje stránku pomocí nové sady imagí z pracovní fronty.
 
-### <a name="assisted-machine-learning"></a>Strojové učení s asistencí 
+### <a name="assisted-machine-learning-preview"></a>Strojové učení s asistencí (Preview) 
 
 Můžou se aktivovat algoritmy strojového učení. Pokud jsou tyto algoritmy v projektu povolené, může se zobrazit následující:
 

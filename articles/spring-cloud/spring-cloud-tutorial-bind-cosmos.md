@@ -1,17 +1,17 @@
 ---
-title: Kurz – vytvoření vazby Azure Cosmos DB k aplikaci Azure jaře Cloud
-description: V tomto kurzu se naučíte vytvořit vazby Azure Cosmos DB k aplikaci Azure pro jarní Cloud.
+title: Svázání Azure Cosmos DB s aplikací Azure Spring Cloudu
+description: Přečtěte si, jak vytvořit vazby Azure Cosmos DB k aplikaci Azure jaře Cloud.
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
-ms.openlocfilehash: 1566b6ab59e858217adcf6818e1d62f851f37eb1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 083c67184c6b039303b29119261a6967306a1447
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277571"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142222"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Vytvoření vazby databáze Azure Cosmos DB k aplikaci Azure jaře Cloud
 
@@ -30,7 +30,7 @@ Azure Cosmos DB má pět různých typů rozhraní API, které podporují vazby.
 
 1. Poznamenejte si název vaší databáze. Pro tento postup je název databáze **TestDB**.
 
-1. Přidejte jednu z následujících závislostí do souboru pom. XML vaší aplikace vaší jarní cloudové služby Azure. Vyberte závislost, která je vhodná pro váš typ rozhraní API.
+1. Přidejte jednu z následujících závislostí do souboru pom.xml svojí cloudové aplikace Azure na jaře. Vyberte závislost, která je vhodná pro váš typ rozhraní API.
 
     * Typ rozhraní API: jádro (SQL)
 
@@ -95,7 +95,7 @@ Azure Cosmos DB má pět různých typů rozhraní API, které podporují vazby.
 
 1. Restartujte aplikaci tak, že na stránce aplikace vyberete **restartovat** .
 
-1. Chcete-li zajistit správnou vazbu služby, vyberte název vazby a ověřte jeho podrobnosti. Pole `property` by mělo být podobné jako v tomto příkladu:
+1. Chcete-li zajistit správnou vazbu služby, vyberte název vazby a ověřte jeho podrobnosti. `property`Pole by mělo být podobné jako v tomto příkladu:
 
     ```
     azure.cosmosdb.uri=https://<some account>.documents.azure.com:443
@@ -105,7 +105,4 @@ Azure Cosmos DB má pět různých typů rozhraní API, které podporují vazby.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit datovou aplikaci v Azure pružině v databázi Azure Cosmos DB. Další informace o tom, jak vytvořit propojení aplikace s mezipamětí Azure cache pro Redis Cache, najdete v dalším kurzu.
-
-> [!div class="nextstepaction"]
-> [Naučte se vytvořit službu Azure cache pro Redis Cache.](spring-cloud-tutorial-bind-redis.md)
+V tomto článku jste zjistili, jak vytvořit datovou aplikaci v Azure pružině v databázi Azure Cosmos DB. Další informace o vázání služeb pro vaši aplikaci najdete v tématu [vazba na mezipaměť Azure pro Redis Cache](spring-cloud-tutorial-bind-redis.md).

@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c922b95154f16a199660bcd5e58f792e46eade7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4fbfe9222971ccd1d28ceaddc91b137c6106e12
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360601"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146737"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Kurz: integrace jedné doménové struktury s jedním tenant Azure AD
 
@@ -55,7 +55,7 @@ Prostředí, které vytvoříte v tomto kurzu, můžete použít pro testování
 2. Přihlaste se k Azure Portal pomocí přihlašovacích údajů globálního správce jenom pro Cloud.
 3. Na levé straně vyberte **Azure Active Directory**, klikněte na **Azure AD Connect**a ve středu vyberte **Spravovat zřizování (Preview)**.
 
-   ![portál Azure](media/how-to-install/install6.png)
+   ![Portál Azure Portal](media/how-to-install/install6.png)
 
 4. Klikněte na **Stáhnout agenta**.
 5. Spusťte agenta zřizování Azure AD Connect.
@@ -107,14 +107,14 @@ Pokud chcete ověřit, jestli je agent spuštěný, postupujte takto:
 1.  Přihlaste se k portálu Azure AD.
 2.  Klikněte na **Azure Active Directory**
 3.  Klikněte na **Azure AD Connect**
-4.  Vyberte **Spravovat zřizování (Preview)** .
-![](media/how-to-configure/manage1.png)
-5.  Klikněte na **Nová konfigurace** .
-![](media/tutorial-single-forest/configure1.png)
+4.  Vyberte možnost **Spravovat zřizování (Preview)** 
+ ![ snímek obrazovky s odkazem spravovat zřizování (Preview).](media/how-to-configure/manage1.png)
+5.  Klikněte na **Nový** 
+ ![ snímek obrazovky konfigurace na obrazovce zřizování služby Azure AD (Preview) s zvýrazněným odkazem nová konfigurace.](media/tutorial-single-forest/configure1.png)
 7.  Na obrazovce konfigurace zadejte **e-mailové oznámení**, přesuňte selektor, který chcete **Povolit** , a klikněte na **Uložit**.
-![](media/tutorial-single-forest/configure2.png)
+![Obrazovka Konfigurace obrazovky s vyplněným e-mailem oznámení a vybraným povolením](media/tutorial-single-forest/configure2.png)
 1.  Stav konfigurace by teď měl být **v pořádku**.
-![](media/how-to-configure/manage4.png)
+![Obrazovka obrazovky zřizování služby Azure AD (Preview) zobrazující stav v pořádku](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>Ověřte, že se vytvářejí uživatelé a dochází k synchronizaci.
 Nyní ověříte, že uživatelé, kteří byli v místním adresáři, byli synchronizováni a nyní existují v našem tenantovi služby Azure AD.  Mějte na paměti, že dokončení tohoto může trvat několik hodin.  Chcete-li ověřit, zda jsou uživatelé synchronizováni, postupujte následovně.

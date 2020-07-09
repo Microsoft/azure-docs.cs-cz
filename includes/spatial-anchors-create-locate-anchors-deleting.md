@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 9e50caeac5c52b9f2309448e2bb0b760f533fb6c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec78ffd1fbc1f77a7b1e1467df1c2303e7d5daf1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67174724"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156518"
 ---
 ## <a name="delete-anchors"></a>Odstranit kotvy
 
-Pokud chcete odstranit prostorovou kotvu v cloudu `DeleteAnchor()` , použijte metodu. Odstranění kotev, pokud už se nepoužívají, je dobrým zvykem, jak v procesu vývoje a postupech vymezit. Provedete to tak, aby se prostředky vyčistily. I když můžete použít prostorové kotvy Azure zdarma, ceny se můžou v budoucnu změnit. Podrobnosti o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/spatial-anchors/)ve verzi Preview.
+Pokud chcete odstranit prostorovou kotvu v cloudu, použijte `DeleteAnchor()` metodu. Odstranění kotev, pokud už se nepoužívají, je dobrým zvykem při vývoji procesu a postupů vývoje, aby se vaše prostředky Azure vyčistily. 

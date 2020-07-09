@@ -3,12 +3,12 @@ title: Kurz – obnovení služby SAP HANA DB v Azure pomocí rozhraní příkaz
 description: V tomto kurzu se dozvíte, jak obnovit SAP HANA databáze běžící na virtuálním počítači Azure z trezoru služby Azure Backup Recovery Services pomocí Azure CLI.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6dbe0c4382b648506d853feb281c70a8e8401595
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14e5023bf79e3e20f96c00fdc73f19c8cd095b73
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75472069"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170577"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: obnovení databází SAP HANA ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -109,10 +109,10 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 Odpověď na výše uvedený dotaz bude objekt konfigurace obnovení, který vypadá přibližně takto:
 
 ```output
-"{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
+{"restore_mode": "AlternateLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "7660777527047692711", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}
 ```
 
-Nyní obnovte databázi spuštěním rutiny [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Chcete-li použít tento příkaz, zadáte výše uvedený výstup JSON, který bude uložen do souboru s názvem *recoveryconfig. JSON*.
+Nyní obnovte databázi spuštěním rutiny [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Pokud chcete tento příkaz použít, zadáte výše uvedený výstup JSON, který se uloží do souboru s názvem *recoveryconfig.js*.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -150,10 +150,10 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 Odpověď na výše uvedený dotaz bude objekt konfigurace obnovení, který vypadá takto:
 
 ```output
-"{\"restore_mode\": \"OriginalLocation\", \"container_uri\": \" VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \", \"item_uri\": \"SAPHanaDatabase;hxe;hxe\", \"recovery_point_id\": \"DefaultRangeRecoveryPoint\", \"log_point_in_time\": \"28-11-2019-09:53:00\", \"item_type\": \"SAPHana\", \"source_resource_id\": \"/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm\", \"database_name\": null, \"container_id\": null, \"alternate_directory_paths\": null}"
+{"restore_mode": "OriginalLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "DefaultRangeRecoveryPoint", "log_point_in_time": "28-11-2019-09:53:00", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}"
 ```
 
-Nyní obnovte databázi spuštěním rutiny [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Chcete-li použít tento příkaz, zadáte výše uvedený výstup JSON, který bude uložen do souboru s názvem *recoveryconfig. JSON*.
+Nyní obnovte databázi spuštěním rutiny [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Pokud chcete tento příkaz použít, zadáte výše uvedený výstup JSON, který se uloží do souboru s názvem *recoveryconfig.js*.
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -171,6 +171,177 @@ Name                                  Resource
 ```
 
 Odpověď vám poskytne název úlohy. Tento název úlohy můžete použít ke sledování stavu úlohy pomocí rutiny [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+
+## <a name="restore-as-files"></a>Obnovit jako soubory
+
+K obnovení zálohovaných dat jako souborů místo databáze použijeme **RestoreAsFiles** jako režim obnovení. Pak zvolte bod obnovení, který může být buď předchozí bod v čase, nebo kterýkoli z předchozích bodů obnovení. Jakmile jsou soubory v zadané cestě, můžete tyto soubory převést na libovolný SAP HANA počítač, ve kterém je chcete obnovit jako databázi. Vzhledem k tomu, že můžete tyto soubory přesunout na libovolný počítač, teď můžete data obnovit v rámci předplatných a oblastí.
+
+Pro tento kurz si vybereme předchozí bod obnovení, který se má `28-11-2019-09:53:00` obnovit, a umístění pro výpis záložních souborů jako `/home/saphana/restoreasfiles` na stejném serveru SAP HANA. Tento bod obnovení můžete zadat v jednom z následujících formátů: **dd-mm-rrrr** nebo **dd-mm-rrrr-hh: mm: SS**. Chcete-li zvolit platný bod v čase obnovení do, použijte rutinu [AZ Backup RecoveryPoint show-log-řetěz](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) , která uvádí intervaly nepřerušených záloh řetězů protokolů.
+
+Pomocí rutiny [AZ Backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) vytvořte objekt konfigurace obnovení a použijte přitom výše uvedený název bodu obnovení a režim obnovení. Pojďme se podívat, jak každý ze zbývajících parametrů v této rutině znamená:
+
+* **--target-kontejner-Name** Jedná se o název serveru SAP HANA, který se úspěšně zaregistroval v trezoru služby Recovery Services a nachází se ve stejné oblasti jako databáze, která se má obnovit. Pro tento kurz obnovíme databázi jako soubory na stejný SAP HANA Server, který jsme chránili, s názvem *hxehost*.
+* **--RP – název** Pro obnovení bodu v čase bude název bodu obnovení **DefaultRangeRecoveryPoint** .
+
+```azurecli-interactive
+az backup recoveryconfig show --resource-group saphanaResourceGroup \
+    --vault-name saphanaVault \
+    --container-name VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \
+    --item-name saphanadatabase;hxe;hxe \
+    --restore-mode RestoreAsFiles \
+    --log-point-in-time 28-11-2019-09:53:00 \
+    --rp-name DefaultRangeRecoveryPoint \
+    --target-container-name VMAppContainer;Compute;saphanaResourceGroup;saphanaVM \
+    --filepath /home/saphana/restoreasfiles \
+    --output json
+```
+
+Odpověď na výše uvedený dotaz bude objekt konfigurace obnovení, který vypadá takto:
+
+```output
+{
+  "alternate_directory_paths": null,
+  "container_id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.RecoveryServices/vaults/SAPHANAVault/backupFabrics/Azure/protectionContainers/VMAppContainer;Compute;SAPHANA;hanamachine",
+  "container_uri": "VMAppContainer;compute;saphana;hanamachine",
+  "database_name": null,
+  "filepath": "/home/",
+  "item_type": "SAPHana",
+  "item_uri": "SAPHanaDatabase;hxe;hxe",
+  "log_point_in_time": "04-07-2020-09:53:00",
+  "recovery_mode": "FileRecovery",
+  "recovery_point_id": "DefaultRangeRecoveryPoint",
+  "restore_mode": "AlternateLocation",
+  "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/hanamachine"
+}
+```
+
+Nyní k obnovení databáze jako souborů spusťte rutinu [AZ Restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) . Pokud chcete tento příkaz použít, zadáte výstup JSON, který je uvedený výše, který se uloží do souboru s názvem *recoveryconfig.js*.
+
+```azurecli-interactive
+az backup restore restore-azurewl --resource-group saphanaResourceGroup \
+    --vault-name saphanaVault \
+    --restore-config recoveryconfig.json \
+    --output json
+```
+
+Výstup bude vypadat nějak takto:
+
+```output
+{
+  "eTag": null,
+  "id": "/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/SAPHANARESOURCEGROUP/providers/Microsoft.RecoveryServices/vaults/SAPHANAVault/backupJobs/608e737e-c001-47ca-8c37-57d909c8a704",
+  "location": null,
+  "name": "608e737e-c001-47ca-8c37-57d909c8a704",
+  "properties": {
+    "actionsInfo": [
+      "Cancellable"
+    ],
+    "activityId": "7ddd3c3a-c0eb-11ea-a5f8-54ee75ec272a",
+    "backupManagementType": "AzureWorkload",
+    "duration": "0:00:01.781847",
+    "endTime": null,
+    "entityFriendlyName": "HXE [hxehost]",
+    "errorDetails": null,
+    "extendedInfo": {
+      "dynamicErrorMessage": null,
+      "propertyBag": {
+        "Job Type": "Restore as files"
+      },
+      "tasksList": [
+        {
+          "status": "InProgress",
+          "taskId": "Transfer data from vault"
+        }
+      ]
+    },
+    "jobType": "AzureWorkloadJob",
+    "operation": "Restore",
+    "startTime": "2020-07-08T07:20:29.336434+00:00",
+    "status": "InProgress",
+    "workloadType": "SAPHanaDatabase"
+  },
+  "resourceGroup": "saphanaResourceGroup",
+  "tags": null,
+  "type": "Microsoft.RecoveryServices/vaults/backupJobs"
+}
+```
+
+Odpověď vám poskytne název úlohy. Tento název úlohy můžete použít ke sledování stavu úlohy pomocí rutiny [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+
+Soubory, které jsou dumpingové do cílového kontejneru, jsou:
+
+* Soubory zálohy databáze
+* Soubory katalogu
+* Soubory metadat JSON (pro každý záložní soubor, který je součástí)
+
+Cesta ke sdílené složce v síti, nebo cesta připojené sdílené složky Azure, pokud je zadaná jako cílová cesta, umožňuje snazší přístup k těmto souborům jiným počítačům ve stejné síti nebo se stejnou sdílenou složkou Azure, která je v nich namontovaná.
+
+>[!NOTE]
+>Pokud chcete obnovit záložní soubory databáze ve sdílené složce Azure připojené k cílovému zaregistrovanému virtuálnímu počítači, ujistěte se, že má kořenový účet oprávnění ke čtení a zápisu ve sdílené složce Azure.
+
+V závislosti na typu vybraného bodu obnovení (**bodu v čase** nebo **úplném & rozdílu**) uvidíte v cílové cestě jednu nebo více složek. Jedna z složek s názvem `Data_<date and time of restore>` obsahuje úplné a rozdílové zálohy a další složka s názvem `Log` obsahuje zálohy protokolu.
+
+Přesuňte obnovené soubory na Server SAP HANA, kde je chcete obnovit jako databázi. Pak postupujte podle těchto kroků a obnovte databázi:
+
+1. Nastavte oprávnění pro složku nebo adresář, ve kterém se záložní soubory ukládají, pomocí následujícího příkazu:
+
+    ```bash
+    chown -R <SID>adm:sapsys <directory>
+    ```
+
+1. Spusťte další sadu příkazů jako`<SID>adm`
+
+    ```bash
+    su - <sid>adm
+    ```
+
+1. Vygenerujte soubor katalogu pro obnovení. Extrahujte **BackupId** ze souboru metadat JSON pro úplnou zálohu, která bude později použita v rámci operace obnovení. Zajistěte, aby úplné zálohy a zápisy protokolů byly v různých složkách a odstranily soubory katalogu a soubory metadat JSON v těchto složkách.
+
+    ```bash
+    hdbbackupdiag --generate --dataDir <DataFileDir> --logDirs <LogFilesDir> -d <PathToPlaceCatalogFile>
+    ```
+
+    Ve výše uvedeném příkazu:
+
+    * `<DataFileDir>`– Složka obsahující úplné zálohy
+    * `<LogFilesDir>`– Složka, která obsahuje zálohy protokolu
+    * `<PathToPlaceCatalogFile>`– Složka, ve které se musí umístit vygenerovaný katalogový soubor
+
+1. Obnovte pomocí nově vygenerovaného souboru katalogu přes HANA Studio nebo spusťte dotaz HDBSQL Restore s tímto nově vygenerovaným katalogem. Dotazy na HDBSQL jsou uvedeny níže:
+
+    * Obnovení k určitému bodu v čase:
+
+        Pokud vytváříte novou obnovenou databázi, spusťte příkaz HDBSQL a vytvořte novou databázi `<DatabaseName>` a potom zastavte databázi pro obnovení. Pokud však obnovujete pouze existující databázi, zastavte databázi spuštěním příkazu HDBSQL.
+
+        Pak spusťte následující příkaz pro obnovení databáze:
+
+        ```hdbsql
+        RECOVER DATABASE FOR <DatabaseName> UNTIL TIMESTAMP '<TimeStamp>' CLEAR LOG USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING LOG PATH (' <LogFileDir>') USING DATA PATH ('<DataFileDir>') USING BACKUP_ID <BackupIdFromJsonFile> CHECK ACCESS USING FILE
+        ```
+
+        * `<DatabaseName>`– Název nové databáze nebo existující databáze, kterou chcete obnovit.
+        * `<Timestamp>`– Přesné časové razítko obnovení bodu v čase
+        * `<DatabaseName@HostName>`– Název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém je umístěna Tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Proto není nutné zadávat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
+        * `<PathToGeneratedCatalogInStep3>`-Cesta k souboru katalogu vygenerovanému v **kroku 3**
+        * `<DataFileDir>`– Složka obsahující úplné zálohy
+        * `<LogFilesDir>`– Složka, která obsahuje zálohy protokolu
+        * `<BackupIdFromJsonFile>`– **BackupId** extrahovaný v **kroku 3**
+
+    * Postup obnovení do konkrétního úplného nebo rozdílového zálohování:
+
+        Pokud vytváříte novou obnovenou databázi, spusťte příkaz HDBSQL a vytvořte novou databázi `<DatabaseName>` a potom zastavte databázi pro obnovení. Pokud však obnovujete pouze existující databázi, zastavte databázi spuštěním příkazu HDBSQL:
+
+        ```hdbsql
+        RECOVER DATA FOR <DatabaseName> USING BACKUP_ID <BackupIdFromJsonFile> USING SOURCE '<DatabaseName@HostName>'  USING CATALOG PATH ('<PathToGeneratedCatalogInStep3>') USING DATA PATH ('<DataFileDir>')  CLEAR LOG
+        ```
+
+        * `<DatabaseName>`– název nové databáze nebo existující databáze, kterou chcete obnovit.
+        * `<Timestamp>`– přesné časové razítko obnovení bodu v čase
+        * `<DatabaseName@HostName>`– název databáze, jejíž zálohování se používá k obnovení, a název **hostitelského** /SAP HANA serveru, na kterém se nachází tato databáze. `USING SOURCE <DatabaseName@HostName>`Možnost určuje, že zálohování dat (používané pro obnovení) je databáze s jiným identifikátorem SID nebo názvem, než je cílový SAP HANA počítač. Proto není nutné zadávat pro obnovení na stejném serveru HANA, ze kterého se provádí zálohování.
+        * `<PathToGeneratedCatalogInStep3>`– Cesta k souboru katalogu vygenerovanému v **kroku 3**
+        * `<DataFileDir>`– Složka obsahující úplné zálohy
+        * `<LogFilesDir>`– Složka, která obsahuje zálohy protokolu
+        * `<BackupIdFromJsonFile>`– **BackupId** extrahovaný v **kroku 3**
 
 ## <a name="next-steps"></a>Další kroky
 

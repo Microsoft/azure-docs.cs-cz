@@ -4,18 +4,18 @@ description: Naučte se migrovat vlastní kontejner Windows do Azure App Service
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 8e755c5b9a57eb66fc47364fb2fcdcbe30c2d09e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 8f2f4f707300e3ebe31f059c65492247befe324a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205618"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169948"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrace aplikace ASP.NET do služby Azure App Service pomocí kontejneru Windows (verze Preview)
 
 [Azure App Service](overview.md) poskytuje předdefinované zásobníky aplikací ve Windows, jako je ASP.NET nebo Node.js, které běží ve službě IIS. Předkonfigurované prostředí Windows uzamkne přístup k operačnímu systému pro správu a zamezí instalaci softwaru, změnám globální mezipaměti sestavení (GAC) atd. (viz [Funkce operačního systému ve službě Azure App Service](operating-system-functionality.md)). Použití vlastního kontejneru Windows ve službě App Service vám ale umožňuje udělat změny operačního systému, které vaše aplikace potřebuje, takže migrace místní aplikace, která vyžaduje vlastní konfiguraci operačního systému a softwaru, je snadná. Tento kurz ukazuje, jak do služby App Service migrovat aplikaci ASP.NET, která využívá vlastní písma nainstalovaná v knihovně písem Windows. Do služby [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nasadíte vlastní nakonfigurovanou image Windows ze sady Visual Studio a pak ji spustíte ve službě App Service.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Zobrazuje webovou aplikaci spuštěnou v kontejneru Windows.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -115,8 +115,8 @@ Nakonfigurujte nový registr kontejneru podle navržených hodnot v následujíc
 | ----------------- | ------------ | ----|
 |**Předpona DNS**| Ponechejte vygenerovaný název registru nebo ho změňte na jiný jedinečný název. |  |
 |**Skupina prostředků**| Klikněte na **Nový**, zadejte **myResourceGroup** a klikněte na **OK**. |  |
-|**SKU**| Basic | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
-|**Umístění registru**| Západní Evropa | |
+|**SKU**| Základní | [Cenové úrovně](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**Umístění registru**| West Europe | |
 
 ![Konfigurace Azure Container Registry](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
 
@@ -141,12 +141,12 @@ Na kartě **základy** nakonfigurujte nastavení podle následující tabulky a 
 |**Název**| Zadejte jedinečný název. | Adresa URL webové aplikace je `http://<app-name>.azurewebsites.net`, kde `<app-name>` je název vaší aplikace. |
 |**Publikování**| Kontejner Docker | |
 |**Operační systém**| Windows | |
-|**Oblast**| Západní Evropa | |
+|**Region (Oblast)**| West Europe | |
 |**Plán Windows**| Vyberte **vytvořit nový**, zadejte **myAppServicePlan**a klikněte na **OK**. | |
 
 Karta **základy** by měla vypadat takto:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
+![Zobrazuje kartu základy, která slouží ke konfiguraci webové aplikace.](media/app-service-web-tutorial-windows-containers-custom-fonts/configure-app-basics.png)
 
 ### <a name="configure-windows-container"></a>Konfigurace kontejneru Windows
 
@@ -167,7 +167,7 @@ Klikněte na **Vytvořit** a počkejte, až Azure vytvoří požadované prostř
 
 Po dokončení operace Azure se zobrazí okno s oznámením.
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
+![Ukazuje, že se operace Azure dokončila.](media/app-service-web-tutorial-windows-containers-custom-fonts/portal-create-finished.png)
 
 1. Klikněte na **Přejít k prostředku**.
 
@@ -175,13 +175,13 @@ Po dokončení operace Azure se zobrazí okno s oznámením.
 
 Na nové stránce prohlížeče se otevře následující stránka:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
+![Zobrazuje novou stránku prohlížeče pro webovou aplikaci.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-starting.png)
 
 Počkejte pár minut a zkuste to znovu, dokud se nedostanete na domovskou stránku s písmem, které očekáváte:
 
-![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
+![Zobrazuje domovskou stránku s nakonfigurovaným písmem.](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
-**Gratulujeme!** Migrovali jste aplikaci ASP.NET do služby Azure App Service v kontejneru Windows.
+**Blahopřejeme!** Migrovali jste aplikaci ASP.NET do služby Azure App Service v kontejneru Windows.
 
 ## <a name="see-container-start-up-logs"></a>Zobrazení protokolů spuštění kontejneru
 

@@ -1,21 +1,21 @@
 ---
-title: Kurz – vytvoření vazby instance Azure Database for MySQL k aplikaci Azure jaře Cloud
-description: V tomto kurzu se dozvíte, jak vytvořit instanci instance Azure Database for MySQL k aplikaci Azure jaře Cloud.
+title: Vytvoření vazby instance Azure Database for MySQL k aplikaci Azure jaře Cloud
+description: Přečtěte si, jak vytvořit instanci Azure Database for MySQL k aplikaci Azure jaře Cloud.
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 657aa70d77fd1af9fd2121a3e98ea3aca7773642
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6f2c9a46d8b17a53d2dc43c0c8313c9357f502a1
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76277541"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142174"
 ---
-# <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Kurz: vytvoření vazby instance Azure Database for MySQL k aplikaci Azure jaře Cloud 
+# <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Navázání instance Azure Database for MySQL k aplikaci Azure jaře Cloud 
 
-Pomocí Azure jarního cloudu můžete automaticky navazovat vybrané služby Azure na své aplikace, místo abyste museli konfigurovat aplikaci pružinového spouštění ručně. V tomto kurzu se dozvíte, jak vytvořit propojení aplikace s instancí Azure Database for MySQL.
+Pomocí Azure jarního cloudu můžete automaticky navazovat vybrané služby Azure na své aplikace, místo abyste museli konfigurovat aplikaci pružinového spouštění ručně. V tomto článku se dozvíte, jak vytvořit propojení aplikace s instancí Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ Pokud nemáte nasazenou instanci cloudového cloudu Azure, postupujte podle poky
 
 1. Připojte se k serveru, vytvořte databázi s názvem **TestDB** z klienta MySQL a pak vytvořte nový účet bez oprávněními správce.
 
-1. V souboru *pom. XML* projektu přidejte následující závislost:
+1. Do souboru *pom.xml* projektu přidejte následující závislost:
 
     ```xml
     <dependency>
@@ -39,9 +39,9 @@ Pokud nemáte nasazenou instanci cloudového cloudu Azure, postupujte podle poky
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
     ```
-1. V souboru *Application. Properties* odeberte všechny `spring.datasource.*` vlastnosti.
+1. V souboru *Application. Properties* odeberte všechny `spring.datasource.*` Vlastnosti.
 
-1. Aktualizujte aktuální nasazení `az spring-cloud app update`spuštěním nebo vytvořte nové nasazení pro tuto změnu spuštěním `az spring-cloud app deployment create`.  Tyto příkazy buď aktualizují, nebo vytvoří aplikaci s novou závislostí.
+1. Aktualizujte aktuální nasazení spuštěním `az spring-cloud app update` nebo vytvořte nové nasazení pro tuto změnu spuštěním `az spring-cloud app deployment create` .  Tyto příkazy buď aktualizují, nebo vytvoří aplikaci s novou závislostí.
 
 1. V Azure Portal na stránce služby **jarní cloudová služba Azure** vyhledejte **řídicí panel aplikace**a pak vyberte aplikaci, kterou chcete vytvořit jako instanci Azure Database for MySQL.  Jedná se o stejnou aplikaci, kterou jste aktualizovali nebo nasadili v předchozím kroku. 
 
@@ -51,7 +51,7 @@ Pokud nemáte nasazenou instanci cloudového cloudu Azure, postupujte podle poky
 
 1. Restartujte aplikaci a tato vazba by teď měla fungovat.
 
-1. Chcete-li zkontrolovat, zda je vazba služby správná, vyberte název vazby a ověřte jeho podrobnosti. `property` Pole by mělo vypadat takto:
+1. Chcete-li zkontrolovat, zda je vazba služby správná, vyberte název vazby a ověřte jeho podrobnosti. `property`Pole by mělo vypadat takto:
     ```
     spring.datasource.url=jdbc:mysql://some-server.mysql.database.azure.com:3306/testdb?useSSL=true&requireSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
     spring.datasource.username=admin@some-server
@@ -61,7 +61,4 @@ Pokud nemáte nasazenou instanci cloudového cloudu Azure, postupujte podle poky
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, jak vytvořit instanci cloudové aplikace Azure ve vaší jarní službě Azure Database for MySQL.  Další informace o správě vaší jarní cloudové služby Azure najdete v článku o zjišťování a registraci služby.
-
-> [!div class="nextstepaction"]
-> [Povolení zjišťování a registrace služeb pomocí registru jarní cloudové služby](spring-cloud-service-registration.md)
+V tomto článku jste se dozvěděli, jak navazovat cloudovou aplikaci Azure na jaře na instanci Azure Database for MySQL. Další informace o vázání služeb na aplikaci najdete v tématu [vázání databáze Azure Cosmos DB k aplikaci Azure jaře Cloud](spring-cloud-tutorial-bind-cosmos.md).

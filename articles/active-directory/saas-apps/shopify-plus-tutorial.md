@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18dc2e4393175751f5ac52d53e0c331c82fce7e8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f3740415652407c834ec258730f89e46398a9f79
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078092"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170475"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Shopify plus
 
@@ -99,9 +99,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě toho aplikace Shopify plus očekává, že se v odpovědi SAML vrátí další atributy, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
 
-    | Name |  |  Zdrojový atribut|
-    | ---------------| --------------- | --------- |
-    | e-mail | | uživatel. pošta |
+    | Název | Zdrojový atribut|
+    | ---- | --------------- |
+    | e-mail | uživatel. pošta |
 
 1. Změňte formát **ID pro název** na **trvalá**. Vyberte možnost **jedinečný identifikátor uživatele (název ID)** a pak vyberte formát **identifikátoru názvu** . Pro tuto možnost vyberte možnost **trvalá** . Uložte provedené změny.
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte tlačítko Kopírovat a zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.

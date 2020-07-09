@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 2398bfa2ce828e716831cc7ce438bd1c241ca5f8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 067a0383c90ce42120269ff40f910805dacfd11a
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75378530"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143867"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop. [Stáhněte si ho zdarma](https://powerbi.microsoft.com/get-started/).
-- Účet Microsoft Azure. [Začněte s bezplatnou zkušební verzí](https://azure.microsoft.com/free/) nebo se [přihlaste](https://portal.azure.com/).
+- Účet Microsoft Azure. [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/) nebo se [přihlaste](https://portal.azure.com/).
 - Účet rozhraní API služby Cognitive Services s rozhraním API pro analýzu textu. Pokud ho nemáte, můžete se [zaregistrovat](../../cognitive-services-apis-create-account.md) a použít pro tento kurz bezplatnou vrstvu 5000 transakcí/měsíc (viz [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)).
 - [Přístupový klíč k Analýze textu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) vygenerovaný během registrace.
 - Komentáře zákazníků. Můžete použít [naše ukázková data](https://aka.ms/cogsvc/ta) nebo vlastní data. V tomto kurzu se předpokládá, že použijete ukázková data.
@@ -114,7 +114,7 @@ V seznamu dotazů se zobrazí nový dotaz s počátečním názvem `Query1`. Dva
 Na pásu karet **Domů** ve skupině **Dotaz** klikněte na **Rozšířený editor**. Otevře se okno rozšířeného editoru. Odstraňte kód, který okno už obsahuje, a vložte následující kód. 
 
 > [!NOTE]
-> Nahraďte níže uvedený ukázkový koncový bod `<your-custom-subdomain>`(obsahující) koncovým bodem vygenerovaným pro váš analýza textu prostředek. Tento koncový bod můžete najít tak, že se přihlásíte k [Azure Portal](https://azure.microsoft.com/features/azure-portal/), vyberete předplatné analýza textu a `Quick start`vyberete.
+> Nahraďte níže uvedený ukázkový koncový bod (obsahující `<your-custom-subdomain>` ) koncovým bodem vygenerovaným pro váš analýza textu prostředek. Tento koncový bod můžete najít tak, že se přihlásíte k [Azure Portal](https://azure.microsoft.com/features/azure-portal/), vyberete předplatné analýza textu a vyberete `Quick start` .
 
 
 ```fsharp
@@ -145,7 +145,7 @@ V Power BI Desktopu se v okně Editoru dotazů vraťte zpět k dotazu `FabrikamC
 
 Zobrazí se dialogové okno Vyvolat vlastní funkci. Do pole **Nový název sloupce** zadejte `keyphrases`. V poli **Dotaz na funkci** vyberte vlastní funkci `KeyPhrases`, kterou jste vytvořili.
 
-V dialogovém okně se zobrazí nové pole **text (volitelné)**. Toto pole se ptá, jaký sloupec chcete použít k zadání hodnot parametru `text` rozhraní API pro klíčové fráze (Nezapomeňte, že již pevně zakódujete hodnoty pro parametry `language` a `id` .) Vyberte `Merged` (sloupec, který jste [předtím](#PreparingData) vytvořili, sloučením polí předmět a zpráva) z rozevírací nabídky.
+V dialogovém okně se zobrazí nové pole **text (volitelné)**. Toto pole se ptá, jaký sloupec chcete použít k zadání hodnot parametru `text` rozhraní API pro klíčové fráze (Nezapomeňte, že již pevně zakódujete hodnoty pro `language` parametry a `id` .) Vyberte `Merged` (sloupec, který jste [předtím](#PreparingData) vytvořili, sloučením polí předmět a zpráva) z rozevírací nabídky.
 
 ![[Vyvolání vlastní funkce]](../media/tutorials/power-bi/invoke-custom-function.png)
 

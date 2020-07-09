@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ba5ecc29edbcd69324500e87add846e4395ce0a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067569"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130917"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Příprava Azure na místní zotavení po havárii do Azure
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 - Projděte si architekturu pro zotavení po havárii [VMware](vmware-azure-architecture.md), [Hyper-V](hyper-v-azure-architecture.md)a [fyzického serveru](physical-azure-architecture.md) .
 - Čtení běžných otázek pro [VMware](vmware-azure-common-questions.md) a [Hyper-V](hyper-v-azure-common-questions.md)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete. Pak se přihlaste k [Azure Portal](https://portal.azure.com).
+Pokud ještě nemáte předplatné Azure, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/). Pak se přihlaste k [Azure Portal](https://portal.azure.com).
 
 
 ## <a name="verify-account-permissions"></a>Ověření oprávnění k účtu
@@ -64,7 +64,7 @@ K provedení těchto úloh by váš účet měl mít přiřazenou předdefinovan
 
    ![Vytvoření nového trezoru](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   Nový trezor se teď zobrazí v části **řídicí panel** > **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .
+   Nový trezor se teď zobrazí v části **řídicí panel**  >  **všechny prostředky**a na hlavní stránce **Recovery Services trezory** .
 
 ## <a name="set-up-an-azure-network"></a>Nastavení sítě Azure
 
@@ -90,8 +90,8 @@ Vytvoření virtuální sítě trvá několik sekund. Po vytvoření se zobrazí
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pro zotavení po havárii VMware [Připravte místní infrastrukturu VMware](tutorial-prepare-on-premises-vmware.md).
+- Pro zotavení po havárii VMware [Připravte místní infrastrukturu VMware](./vmware-azure-tutorial-prepare-on-premises.md).
 - Pro zotavení po havárii technologie Hyper-V [Připravte místní servery Hyper-v](hyper-v-prepare-on-premises-tutorial.md).
 - Pro zotavení po havárii fyzického serveru [nastavte konfigurační server a zdrojové prostředí](physical-azure-disaster-recovery.md) .
-- Informace o [sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
-- [Přečtěte si o](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) spravovaných discích.
+- Informace o [sítích Azure](../virtual-network/virtual-networks-overview.md)
+- [Přečtěte si o](../virtual-machines/windows/managed-disks-overview.md) spravovaných discích.
