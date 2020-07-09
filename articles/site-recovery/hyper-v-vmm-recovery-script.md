@@ -7,17 +7,18 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 14c2a9a2ad818cc358535a91f9a6813ec7b91a6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb690dfb90c0f7b8216368cb6b26a9af7d895d18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826277"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130126"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Přidání skriptu VMM do plánu obnovení
 
 Tento článek popisuje, jak vytvořit skript System Center Virtual Machine Manager (VMM) a přidat ho do plánu obnovení v [Azure Site Recovery](site-recovery-overview.md).
 
-Všechny komentáře nebo dotazy můžete vystavit na konci tohoto článku nebo na [stránce s dotazem Microsoft Q&pro Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
+Všechny komentáře nebo dotazy můžete vystavit na konci tohoto článku nebo na [stránce s dotazem Microsoft Q&pro Azure Recovery Services](/answers/topics/azure-site-recovery.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +38,7 @@ V plánech obnovení můžete použít skripty prostředí PowerShell. Aby bylo 
 
     `Import-Module -Name virtualmachinemanager`
 
-    Další informace najdete v tématu [Začínáme s prostředím Windows PowerShell a nástrojem VMM](https://technet.microsoft.com/library/hh875013.aspx).
+    Další informace najdete v tématu [Začínáme s prostředím Windows PowerShell a nástrojem VMM](/previous-versions/system-center/system-center-2012-R2/hh875013(v=sc.12)).
 * Ujistěte se, že máte ve svém nasazení VMM aspoň jeden server knihovny. Ve výchozím nastavení je cesta ke sdílené složce knihovny pro server VMM místně umístěná na serveru VMM. Název složky je MSCVMMLibrary.
 
   Pokud je vaše cesta ke sdílené složce knihovny vzdálená (nebo pokud je místní, ale není sdílená s MSCVMMLibrary), nakonfigurujte sdílenou složku následujícím způsobem, a \\ to pomocí libserver2. contoso. com\share\ jako příklad:
@@ -50,7 +51,7 @@ V plánech obnovení můžete použít skripty prostředí PowerShell. Aby bylo 
 
      a. Otevřete konzolu **prostředí Windows PowerShell 64** jako správce.
      
-     b. Zadejte **Set-ExecutionPolicy bypass**. Další informace najdete v tématu [použití rutiny Set-ExecutionPolicy](https://technet.microsoft.com/library/ee176961.aspx).
+     b. Zadejte **Set-ExecutionPolicy bypass**. Další informace najdete v tématu [použití rutiny Set-ExecutionPolicy](/previous-versions/windows/it-pro/windows-powershell-1.0/ee176961(v=technet.10)).
 
      > [!IMPORTANT]
      > Nastavte **vynechání Set-ExecutionPolicy** pouze v konzole powershellu 64. Pokud ho nastavíte pro konzoli PowerShellu 32, skripty se nespustí.

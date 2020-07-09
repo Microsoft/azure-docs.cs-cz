@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921449"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129850"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Při spuštění virtuálního počítače Azure se v systému Windows zobrazí modrá obrazovka "KRITICKá služba neúspěšná"
 Tento článek popisuje chybu "KRITICKá služba neúspěšná", která se může vyskytnout při spuštění virtuálního počítače s Windows v Microsoft Azure. Poskytuje kroky pro řešení potíží, které vám pomůžou tyto problémy vyřešit. 
@@ -83,11 +84,15 @@ Pokud chcete povolit protokoly výpisu paměti a sériovou konzolu, spusťte ná
 
 1. Na virtuálním počítači pro obnovení spusťte z příkazového řádku se zvýšenými oprávněními následující příkaz. Tento příkaz nastaví ovlivněný disk s operačním systémem na spuštění v nouzovém režimu při příštím spuštění:
 
-        bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store <OS DISK you attached>:\boot\bcd /set {default} safeboot minimal
+    ```
 
     Pokud je například disk s operačním systémem, který jste připojili, jednotku F, spusťte následující příkaz:
 
-        bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```console
+    bcdedit /store F: boot\bcd /set {default} safeboot minimal
+    ```
 
 2. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](troubleshoot-recovery-disks-portal-windows.md). Virtuální počítač se spustí v bezpečném režimu. Pokud stále dochází k chybě, Projděte si volitelný krok.
 3. Otevřete okno **Run** a spusťte **Ověřovač** a spusťte nástroj Správce ověřovače ovladačů.
@@ -97,7 +102,10 @@ Pokud chcete povolit protokoly výpisu paměti a sériovou konzolu, spusťte ná
 
 7. Odeberte nastavení bezpečného spuštění:
 
-        bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```console
+    bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
+    ```
+
 8.  Restartujte virtuální počítač. 
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Volitelné: Analýza protokolů výpisu paměti v režimu zotavení po havárii

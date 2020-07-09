@@ -324,7 +324,7 @@
           href: how-to-use-secrets-in-runs.md
         - name: Zpětnovazební učení
           href: how-to-use-reinforcement-learning.md
-    - name: Automatizace strojového učení
+    - name: Automatizované strojové učení
       displayName: 'automl, auto ml'
       items:
         - name: Použití automatizovaného strojového učení (Python)

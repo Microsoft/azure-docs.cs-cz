@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91aaedba13dfd9c0a3ea06b3460beaa8ead20233
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738112"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130454"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Řešení chyb replikace virtuálních počítačů z Azure do Azure
 
@@ -36,7 +36,7 @@ Replication couldn't be enabled for the virtual machine <VmName>.
 
 ### <a name="fix-the-problem"></a>Oprava problému
 
-Obraťte se na [podporu fakturace Azure](/azure/azure-portal/supportability/resource-manager-core-quotas-request) a umožněte vašemu předplatnému vytváření virtuálních počítačů požadovaných velikostí v cílovém umístění. Pak zkuste neúspěšnou operaci zopakovat.
+Obraťte se na [podporu fakturace Azure](../azure-portal/supportability/resource-manager-core-quotas-request.md) a umožněte vašemu předplatnému vytváření virtuálních počítačů požadovaných velikostí v cílovém umístění. Pak zkuste neúspěšnou operaci zopakovat.
 
 Pokud má cílové umístění omezení kapacity, zakažte replikaci do tohoto umístění. Potom povolte replikaci do jiného umístění, kde má vaše předplatné dostatečnou kvótu pro vytvoření virtuálních počítačů požadovaných velikostí.
 
@@ -202,7 +202,7 @@ Nejde navázat připojení k ověřování Office 365 a koncovým bodům IP4 ide
 #### <a name="fix-the-problem"></a>Oprava problému
 
 Azure Site Recovery požadovaný přístup k rozsahům IP adres Office 365 pro ověřování.
-Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, ujistěte se, že používáte pro povolení přístupu k AAD pravidlo NSG na základě [značky služby Azure Active Directory (AAD)](/azure/virtual-network/security-overview#service-tags) . Už nepodporujeme pravidla NSG založená na IP adresách.
+Pokud k řízení odchozího připojení k síti na virtuálním počítači používáte pravidla skupiny zabezpečení sítě Azure (NSG) nebo proxy serveru brány firewall, ujistěte se, že používáte pro povolení přístupu k AAD pravidlo NSG na základě [značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) . Už nepodporujeme pravidla NSG založená na IP adresách.
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problém 3: Konfigurace Site Recovery se nezdařila (151197)
 
@@ -260,8 +260,8 @@ Azure data disk <DiskName> <DiskURI> with logical unit number <LUN> <LUNValue> w
 
 Zajistěte, aby byly datové disky inicializovány, a potom operaci opakujte.
 
-- **Windows**: [připojte a inicializujte nový disk](/azure/virtual-machines/windows/attach-managed-disk-portal).
-- **Linux**: [inicializujte nový datový disk v systému Linux](/azure/virtual-machines/linux/add-disk).
+- **Windows**: [připojte a inicializujte nový disk](../virtual-machines/windows/attach-managed-disk-portal.md).
+- **Linux**: [inicializujte nový datový disk v systému Linux](../virtual-machines/linux/add-disk.md).
 
 Pokud se problém opakuje, obraťte se na podporu.
 

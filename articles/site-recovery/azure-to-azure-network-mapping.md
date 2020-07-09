@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11cc71a05fb95453553223dcb34839e8a5fc6a3a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691199"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130428"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Nastavení mapování sítě a adresování IP pro virtuální sítě
 
@@ -93,5 +94,5 @@ Cílová síť není virtuální síť převzetí služeb při selhání. | -Cí
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [pokyny k síti](site-recovery-azure-to-azure-networking-guidance.md) pro zotavení po havárii virtuálního počítače Azure.
+- Přečtěte si [pokyny k síti](./azure-to-azure-about-networking.md) pro zotavení po havárii virtuálního počítače Azure.
 - [Přečtěte si další informace](site-recovery-retain-ip-azure-vm-failover.md) o zachování IP adres po převzetí služeb při selhání.

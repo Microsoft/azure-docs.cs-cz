@@ -57,7 +57,11 @@
             - name: Dynamické maskování dat
               href: database/dynamic-data-masking-overview.md
             - name: Posouzení ohrožení zabezpečení SQL
-              href: database/sql-vulnerability-assessment.md
+              items:
+                - name: Posouzení ohrožení zabezpečení SQL
+                  href: database/sql-vulnerability-assessment.md
+                - name: Pravidla posouzení ohrožení zabezpečení
+                  href: database/sql-database-vulnerability-assessment-rules.md
             - name: 'Přihlášení, uživatelské účty, role a oprávnění'
               href: database/logins-create-manage.md
             - name: Ověřování Azure AD
@@ -606,6 +610,9 @@
           href: database/powershell-script-content-guide.md?tabs=single-database
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: Ukázky kódů
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Spravovaná instance SQL (SQL MI)
@@ -833,6 +840,9 @@
           href: database/powershell-script-content-guide.md?tabs=managed-instance
         - name: Azure Resource Manager
           href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ./database/policy-samples.md
         - name: Ukázky kódů
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL Server na virtuálním počítači Azure
@@ -974,8 +984,6 @@
                       items:
                         - name: Vytvoření DNN pro FCI
                           href: virtual-machines/windows/hadr-distributed-network-name-dnn-configure.md
-                        - name: Interoperabilita funkcí s využitím DNN
-                          href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                         - name: DNN FCI a funkce SQL Serveru
                           href: virtual-machines/windows/failover-cluster-instance-dnn-interoperability.md
                 - name: Konfigurace možností připojení

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: ab3ae45081ecc481cb90af8961174e23c86e84b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83841349ec7563231653cd063791e19ae2af4857
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71056805"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130667"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Řešení potíží s připojením mezi virtuálními počítači Azure
 
@@ -81,11 +81,15 @@ Pomocí jedné z následujících metod můžete zjistit, jestli aplikace virtu�
 
 **Virtuální počítač s Windows**
 
-    netstat –ano
+```console
+netstat –ano
+```
 
 **Virtuální počítači s Linuxem**
 
-    netstat -l
+```console
+netstat -l
+```
 
 - Spusťte na virtuálním počítači příkaz **Telnet** pro otestování portu. Pokud se test nezdařil, aplikace nebo služba není nakonfigurována pro naslouchání na tomto portu.
 

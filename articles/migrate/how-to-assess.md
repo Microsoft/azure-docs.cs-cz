@@ -3,15 +3,16 @@ title: Přidat nástroje pro posouzení do Azure Migrate
 description: Naučte se přidávat nástroje pro posouzení do Azure Migrate.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5151135a57b7c2780485d85299ead5df83ea851e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195638"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122111"
 ---
 # <a name="add-assessment-tools"></a>Přidání nástrojů pro vyhodnocení
 
-Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate](migrate-overview.md). 
+Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate](./migrate-services-overview.md). 
 
 - Pokud chcete přidat nástroj pro posouzení a ještě nemáte Azure Migrate projekt, postupujte podle tohoto [článku](how-to-add-tool-first-time.md).-
 - Pokud jste přidali nástroj ISV nebo pracovníka pro posouzení, [postupujte podle kroků](prepare-isv-movere.md)a připravte se na práci s nástrojem.

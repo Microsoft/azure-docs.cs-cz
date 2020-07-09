@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de25a3f9df04b09a7337dc889a688a171d98db28
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704376"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129913"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Nastavení zotavení po havárii virtuálních počítačů VMware do Azure pomocí PowerShellu
 
@@ -36,7 +36,7 @@ Získáte informace o těchto tématech:
 Než začnete, potřebujete:
 
 - Ujistěte se, že rozumíte [komponentám a architektuře řešení](vmware-azure-architecture.md).
-- Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-azure.md) pro všechny komponenty.
+- Zkontrolujte [požadavky na podporu](./vmware-physical-azure-support-matrix.md) pro všechny komponenty.
 - Máte `Az` modul Azure PowerShell. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Přihlášení k Azure
@@ -351,7 +351,7 @@ K ochraně zjištěného virtuálního počítače budete potřebovat následuj�
 Teď replikujte následující virtuální počítače pomocí nastavení zadaných v této tabulce.
 
 
-|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásada           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
+|Virtuální počítač  |Procesový Server        |Účet úložiště              |Účet úložiště protokolů  |Zásady           |Účet pro instalaci služby mobility|Cílová skupina prostředků  | Cílová virtuální síť  |Cílová podsíť  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |CentOSVM1       |ConfigurationServer   |Není k dispozici| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |
 |Win2K12VM1       |Škálování – ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – VNet                 |Podsíť – 1       |   
@@ -497,4 +497,4 @@ V tomto kroku provedeme převzetí služeb při selhání virtuálního počíta
 2. Po úspěšném selhání můžete operaci převzetí služeb při selhání potvrdit a nastavit zpětnou replikaci z Azure zpátky na místní lokalitu VMware.
 
 ## <a name="next-steps"></a>Další kroky
-Naučte se automatizovat další úlohy pomocí [Azure Site Recovery referenčních informací prostředí PowerShell](https://docs.microsoft.com/powershell/module/Az.RecoveryServices).
+Naučte se automatizovat další úlohy pomocí [Azure Site Recovery referenčních informací prostředí PowerShell](/powershell/module/Az.RecoveryServices).

@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74132961"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131165"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality
 
@@ -35,8 +36,8 @@ Následující tabulka shrnuje podporu operačních systémů pro počítače re
 
 **Verze Windows** | **Hyper-V (s VMM)**
 --- | ---
-Windows Server 2016 | Libovolný hostovaný operační systém [, který podporuje technologie Hyper-v](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) v systému Windows Server 2016 
-Windows Server 2012 R2 | Libovolný hostovaný operační systém [, který podporuje technologie Hyper-v](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) v systému Windows Server 2012 R2
+Windows Server 2016 | Libovolný hostovaný operační systém [, který podporuje technologie Hyper-v](/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) v systému Windows Server 2016 
+Windows Server 2012 R2 | Libovolný hostovaný operační systém [, který podporuje technologie Hyper-v](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) v systému Windows Server 2012 R2
 
 ## <a name="linux-machine-storage"></a>Úložiště počítačů se systémem Linux
 
@@ -113,5 +114,4 @@ Poskytovatel koordinuje komunikaci mezi servery VMM.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Replikace virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality](tutorial-vmm-to-vmm.md)
-
+[Replikace virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality](./hyper-v-vmm-disaster-recovery.md)

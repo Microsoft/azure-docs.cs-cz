@@ -428,8 +428,6 @@
               href: ./spark/apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
             - name: Selhání úlohy Apache Sparku – InvalidClassException
               href: ./spark/apache-spark-troubleshoot-job-fails-invalidclassexception.md
-            - name: Pomalé úlohy Apache Sparku – listStatus
-              href: ./spark/apache-spark-troubleshoot-job-slowness-liststatus.md
             - name: Pomalé úlohy Apache Sparku – kontejner úložiště
               href: ./spark/apache-spark-troubleshoot-job-slowness-container.md
             - name: Výjimka IllegalArgumentException
@@ -723,8 +721,6 @@
               href: ./hbase/hbase-troubleshoot-pegged-cpu-region-server.md
             - name: Časové limity s příkazem hbase hbck
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
-            - name: Řešení potíží s Apache HBase
-              href: ./hbase/apache-troubleshoot-hbase.md
             - name: REST API pro dotazování Apache HBase
               href: ./hbase/troubleshoot-rest-api.md
 - name: Interaktivní dotaz

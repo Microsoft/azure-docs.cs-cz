@@ -4,12 +4,12 @@ description: Přečtěte si o službě Azure Migrate.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 41fcf1c4a9a59ad0cea89c8b44374cef6444558e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 72f2dfb3e5e05466892d838af4e1c84c855b94a9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564110"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122077"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -34,11 +34,11 @@ Centrum Azure Migrate zahrnuje tyto nástroje:
 --- | --- | ---
 **Azure Migrate: posouzení serveru** | Vyhodnoťte servery. | Zjišťování a posouzení místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V a fyzických serverů v přípravě na migraci do Azure
 **Azure Migrate: Migrace serveru** | Migrujte servery. | Migrujte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery, další virtualizované počítače a veřejné cloudové virtuální počítače do Azure.
-**Data Migration Assistant** | Vyhodnoťte SQL Server databáze pro migraci do Azure SQL Database, spravované instance Azure SQL nebo virtuálních počítačů Azure se systémem SQL Server. | Data Migration Assistant pomáhá identifikovat potenciální problémy blokující migraci. Identifikuje nepodporované funkce, nové funkce, které vám po migraci můžou těžit, a správnou cestu k migraci databáze. [Další informace](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
-**Azure Database Migration Service** | Migrace místních databází do virtuálních počítačů Azure s SQL Server, Azure SQL Database nebo spravovanými instancemi SQL. | [Přečtěte si další informace](https://docs.microsoft.com/azure/dms/dms-overview) o Database Migration Service.
+**Data Migration Assistant** | Vyhodnoťte SQL Server databáze pro migraci do Azure SQL Database, spravované instance Azure SQL nebo virtuálních počítačů Azure se systémem SQL Server. | Data Migration Assistant pomáhá identifikovat potenciální problémy blokující migraci. Identifikuje nepodporované funkce, nové funkce, které vám po migraci můžou těžit, a správnou cestu k migraci databáze. [Další informace](/sql/dma/dma-overview?view=sql-server-2017).
+**Azure Database Migration Service** | Migrace místních databází do virtuálních počítačů Azure s SQL Server, Azure SQL Database nebo spravovanými instancemi SQL. | [Přečtěte si další informace](../dms/dms-overview.md) o Database Migration Service.
 **Movere** | Vyhodnoťte servery. | [Přečtěte si další informace](#movere) o stěhovací společnosti.
 **Pomocník s migrací webové aplikace** | Vyhodnoťte místní webové aplikace a migrujte je do Azure. |  K vyhodnocení místních webů pro migraci na Azure App Service použijte Azure App Service Pomocník s migrací.<br/><br/> Pomocí Pomocník s migrací můžete migrovat webové aplikace .NET a PHP do Azure. [Přečtěte si další informace](https://appmigration.microsoft.com/) o Azure App Service Pomocník s migrací.
-**Azure Data Box** | Migrujte offline data. | Pomocí Azure Data Box produktů můžete do Azure přesunout velké objemy dat offline. [Další informace](https://docs.microsoft.com/azure/databox/).
+**Azure Data Box** | Migrujte offline data. | Pomocí Azure Data Box produktů můžete do Azure přesunout velké objemy dat offline. [Další informace](../databox/index.yml).
 
 > [!NOTE]
 > Pokud jste v Azure Government, externí integrované nástroje a nabídky ISV nemůžou odesílat data do Azure Migratech projektů. Nástroje můžete používat nezávisle.

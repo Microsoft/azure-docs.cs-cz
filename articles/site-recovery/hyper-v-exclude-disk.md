@@ -6,11 +6,12 @@ manager: rochakm
 ms.topic: conceptual
 ms.author: mayg
 ms.date: 11/12/2019
-ms.openlocfilehash: 50fb6da2905b2ae27547f25cce3d7a76ca7976b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 373cffe96119af4a2fc0d74e2090e6cc24dcaf8f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498133"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131246"
 ---
 # <a name="exclude-disks-from-replication"></a>Vyloučení disků z replikace
 
@@ -40,7 +41,7 @@ Než začnete, vezměte na vědomí následující:
 
 ## <a name="exclude-disks"></a>Vyloučení disků
 
-1. Pokud chcete vyloučit disky při [Povolení replikace](site-recovery-hyper-v-site-to-azure.md) pro virtuální počítač Hyper-V, pak po výběru virtuálních počítačů, které chcete replikovat, na stránce **Povolit**  >  **vlastnosti**replikace  >  **Konfigurovat vlastnosti** zkontrolujte sloupec **disky, které chcete replikovat** . Ve výchozím nastavení jsou pro replikaci vybrány všechny disky.
+1. Pokud chcete vyloučit disky při [Povolení replikace](./hyper-v-azure-tutorial.md) pro virtuální počítač Hyper-V, pak po výběru virtuálních počítačů, které chcete replikovat, na stránce **Povolit**  >  **vlastnosti**replikace  >  **Konfigurovat vlastnosti** zkontrolujte sloupec **disky, které chcete replikovat** . Ve výchozím nastavení jsou pro replikaci vybrány všechny disky.
 2. Pokud nechcete replikovat určitý disk, na **discích pro replikaci** zrušte výběr pro všechny disky, které chcete vyloučit. 
 
     ![Vyloučení disků z replikace](./media/hyper-v-exclude-disk/enable-replication6-with-exclude-disk.png)

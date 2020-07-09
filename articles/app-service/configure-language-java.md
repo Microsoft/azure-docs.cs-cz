@@ -9,11 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa6e3edf2c02cad34cbe9b1f9ac82517823caa8e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891469"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130548"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Windows Java pro Azure App Service
 
@@ -321,7 +322,7 @@ Podporované sady JDK se na čtvrtletní bázi automaticky opravují v lednu, du
 
 ### <a name="security-updates"></a>Aktualizace zabezpečení
 
-Opravy a opravy pro hlavní slabá místa zabezpečení budou vydány, jakmile budou dostupné ze systémů Azul. "Hlavní" ohrožení zabezpečení je definováno základním skóre 9,0 nebo vyšším v [systému NIST Common zranitelnost Standard, verze 2](https://nvd.nist.gov/cvss.cfm).
+Opravy a opravy pro hlavní slabá místa zabezpečení budou vydány, jakmile budou dostupné ze systémů Azul. "Hlavní" ohrožení zabezpečení je definováno základním skóre 9,0 nebo vyšším v [systému NIST Common zranitelnost Standard, verze 2](https://nvd.nist.gov/vuln-metrics/cvss).
 
 Tomcat 8,0 dosáhl [konce životnosti (konce řádku) až do 30. září 2018](https://tomcat.apache.org/tomcat-80-eol.html). I když je modul runtime stále avialable na Azure App Service, Azure nebude používat aktualizace zabezpečení Tomcat 8,0. Pokud je to možné, migrujte své aplikace na Tomcat 8,5 nebo 9,0. V Azure App Service jsou k dispozici obě Tomcat 8,5 a 9,0. Další informace najdete v [oficiální lokalitě Tomcat](https://tomcat.apache.org/whichversion.html) . 
 

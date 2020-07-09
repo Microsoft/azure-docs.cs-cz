@@ -7,11 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048604"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130213"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Nastavení zotavení po havárii virtuálních počítačů Hyper-V do sekundární lokality pomocí prostředí PowerShell (Správce prostředků)
 
@@ -22,9 +23,9 @@ Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních po�
 ## <a name="prerequisites"></a>Požadavky
 
 - Prostudujte si [architekturu a komponenty scénáře](hyper-v-vmm-architecture.md).
-- Zkontrolujte [požadavky na podporu](site-recovery-support-matrix-to-sec-site.md) pro všechny komponenty.
-- Ujistěte se, že servery Virtual Machine Manager a hostitelé Hyper-V splňují [požadavky na podporu](site-recovery-support-matrix-to-sec-site.md).
-- Ověřte, že virtuální počítače, které chcete replikovat, vyhovují [podpoře replikovaných počítačů](site-recovery-support-matrix-to-sec-site.md).
+- Zkontrolujte [požadavky na podporu](./vmware-physical-secondary-support-matrix.md) pro všechny komponenty.
+- Ujistěte se, že servery Virtual Machine Manager a hostitelé Hyper-V splňují [požadavky na podporu](./vmware-physical-secondary-support-matrix.md).
+- Ověřte, že virtuální počítače, které chcete replikovat, vyhovují [podpoře replikovaných počítačů](./vmware-physical-secondary-support-matrix.md).
 
 ## <a name="prepare-for-network-mapping"></a>Příprava mapování sítě
 
@@ -36,10 +37,10 @@ Tento článek popisuje, jak automatizovat kroky pro replikaci virtuálních po�
 
 Připravte Virtual Machine Manager následujícím způsobem:
 
-- Ujistěte se, že na zdrojovém a cílovém Virtual Machine Managerm serveru máte [Virtual Machine Manager logické sítě](https://docs.microsoft.com/system-center/vmm/network-logical) :
+- Ujistěte se, že na zdrojovém a cílovém Virtual Machine Managerm serveru máte [Virtual Machine Manager logické sítě](/system-center/vmm/network-logical) :
   - Logická síť na zdrojovém serveru musí být přidružená ke zdrojovému cloudu, ve kterém se nacházejí hostitelé Hyper-V.
   - Logická síť na cílovém serveru musí být přidružená k cílovému cloudu.
-- Ujistěte se, že máte [sítě virtuálních počítačů](https://docs.microsoft.com/system-center/vmm/network-virtual) na zdrojovém a cílovém Virtual Machine Managerch serverech. Sítě virtuálních počítačů musí být v obou umístěních propojené s logickou sítí.
+- Ujistěte se, že máte [sítě virtuálních počítačů](/system-center/vmm/network-virtual) na zdrojovém a cílovém Virtual Machine Managerch serverech. Sítě virtuálních počítačů musí být v obou umístěních propojené s logickou sítí.
 - Připojte virtuální počítače na zdrojových hostitelích Hyper-V ke zdrojové síti virtuálních počítačů.
 
 ## <a name="prepare-for-powershell"></a>Příprava pro PowerShell

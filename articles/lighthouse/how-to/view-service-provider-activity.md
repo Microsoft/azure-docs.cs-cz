@@ -1,31 +1,32 @@
 ---
 title: Zobrazení aktivity poskytovatele služeb
 description: Zákazníci si můžou zobrazit protokolované aktivity a zobrazit akce provedené poskytovateli služeb prostřednictvím delegované správy prostředků Azure.
-ms.date: 01/15/2020
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 42af2aa7fca5031eb50bd421a5207320858b70cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636440"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131468"
 ---
 # <a name="view-service-provider-activity"></a>Zobrazení aktivity poskytovatele služeb
 
-Zákazníci, kteří mají delegované předplatné pro správu delegovaných prostředků Azure, můžou [Zobrazit data protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) , aby viděli všechny akce, které provedli. Díky tomu mohou zákazníci plně zobrazit operace, které poskytovatelé služeb provádějí prostřednictvím správy delegovaných prostředků Azure, spolu s operacemi provedenými uživateli v rámci vlastního Azure Active Directoryho tenanta zákazníka (Azure AD).
+Zákazníci, kteří mají delegované předplatné pro [Azure Lighthouse](../overview.md) , mohou [Zobrazit data protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) , aby viděli všechny akce, které provedli. Díky tomu mohou zákazníci plně zobrazit operace, které poskytovatelé služeb provádějí prostřednictvím [správy delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md), spolu s operacemi provedenými uživateli v rámci vlastního Azure Active Directoryho tenanta zákazníka (Azure AD).
 
 > [!TIP]
 > Poskytujeme také Azure Policy vestavěnou definici zásad pro auditování delegování oborů do spravovaného tenanta. Další informace najdete v tématu [auditování delegování ve vašem prostředí](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
 ## <a name="view-activity-log-data"></a>Zobrazit data protokolu aktivit
 
-[Protokol aktivit můžete zobrazit](../../azure-monitor/platform/activity-log-view.md) v nabídce **monitorování** v Azure Portal. Pokud chcete výsledky omezit na konkrétní předplatné, použijte filtry k výběru konkrétního předplatného. [Události protokolu aktivit můžete také zobrazit a načíst](../../azure-monitor/platform/activity-log-view.md) programově.
+[Protokol aktivit můžete zobrazit](../../azure-monitor/platform/activity-log.md#view-the-activity-log) v nabídce **monitorování** v Azure Portal. Pokud chcete výsledky omezit na konkrétní předplatné, použijte filtry k výběru konkrétního předplatného. [Události protokolu aktivit můžete také zobrazit a načíst](../../azure-monitor/platform/activity-log.md#view-the-activity-log) programově.
 
 > [!NOTE]
-> Uživatelé v tenantovi poskytovatele služeb můžou zobrazit výsledky protokolu aktivit delegovaného předplatného v tenantovi zákazníka, pokud jim byla udělena role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jiná předdefinovaná role, která zahrnuje přístup čtenářů) při registraci tohoto předplatného pro správu delegovaných prostředků Azure.
+> Uživatelé v tenantovi poskytovatele služeb můžou zobrazit výsledky protokolu aktivit delegovaného předplatného v tenantovi zákazníka, pokud jim byla udělena role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jiná předdefinovaná role, která zahrnuje přístup čtenářů) při připojení tohoto předplatného do Azure Lighthouse.
 
-V protokolu aktivit uvidíte název operace a její stav spolu s datem a časem, kdy byla provedena. **Událost iniciovaná ve** sloupci zobrazuje, který uživatel provedl operaci, ať už se jedná o uživatele v tenantovi poskytovatele služeb, který působí prostřednictvím správy delegovaných prostředků Azure, nebo uživatel ve vlastním tenantovi zákazníka. Všimněte si, že se zobrazuje jméno uživatele, nikoli tenant nebo role, které uživatel přiřadil k tomuto předplatnému.
+V protokolu aktivit uvidíte název operace a její stav spolu s datem a časem, kdy byla provedena. **Událost iniciovaná ve** sloupci zobrazuje, který uživatel provedl operaci, ať už se jedná o uživatele v tenantovi poskytovatele služeb, který působí prostřednictvím Azure Lighthouse nebo uživatel ve vlastním tenantovi zákazníka. Všimněte si, že se zobrazuje jméno uživatele, nikoli tenant nebo role, které uživatel přiřadil k tomuto předplatnému.
 
-Protokolovaná aktivita je v Azure Portal k dispozici po dobu posledních 90 dnů. Informace o tom, jak ukládat tato data déle než 90 dní, najdete [v tématu shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics](../../azure-monitor/platform/activity-log-collect.md).
+Protokolovaná aktivita je v Azure Portal k dispozici po dobu posledních 90 dnů. Informace o tom, jak ukládat tato data déle než 90 dní, najdete [v tématu shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics](../../azure-monitor/platform/activity-log.md).
 
 > [!NOTE]
 > Uživatelé od poskytovatele služeb se zobrazí v protokolu aktivit, ale tito uživatelé a jejich přiřazení rolí se v **Access Control (IAM)** nezobrazuje ani při načítání informací o přiřazení rolí přes rozhraní API.

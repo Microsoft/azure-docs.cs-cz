@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 9ab4db53086046ff831fe91d003599841aa8148c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 281743268364b0e9d39c7bea28afc17d753db2f6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83829779"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130155"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro účely navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure můžete navrátit služby virtuálních počítačů na místní lokalitu. Pro navrácení služeb po obnovení musíte virtuální počítač znovu ochránit z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server pro příjem provozu. 
@@ -26,7 +27,7 @@ Pokud je váš chráněný virtuální počítač virtuálním počítačem s Wi
 ## <a name="overview"></a>Přehled
 Tento článek poskytuje pokyny k instalaci hlavního cíle systému Linux.
 
-Komentáře nebo dotazy můžete vystavit na konci tohoto článku nebo na [stránce s dotazy k Microsoft Q&pro Azure Recovery Services](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
+Komentáře nebo dotazy můžete vystavit na konci tohoto článku nebo na [stránce s dotazy k Microsoft Q&pro Azure Recovery Services](/answers/topics/azure-site-recovery.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,6 +37,9 @@ Komentáře nebo dotazy můžete vystavit na konci tohoto článku nebo na [str�
 * Hlavní cíl by měl být v síti, která může komunikovat s procesovým serverem a konfiguračním serverem.
 * Verze hlavního cíle musí být stejná nebo nižší než verze procesového serveru a konfiguračního serveru. Pokud je například verze konfiguračního serveru 9,4, verze hlavního cíle může být 9,4 nebo 9,3, ale ne 9,5.
 * Hlavním cílem může být pouze virtuální počítač VMware, nikoli fyzický server.
+
+> [!NOTE]
+> Ujistěte se, že jste vMotion úložiště nepnuli na žádné součásti pro správu, jako je například hlavní cíl. Pokud se hlavní cíl přesune po úspěšném opětovném zapnutí ochrany, disky virtuálních počítačů (VMDK) se nedají odpojit. V tomto případě se navrácení služeb po obnovení nezdařilo.
 
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Pokyny pro změnu velikosti pro vytvoření hlavního cílového serveru
 
@@ -273,16 +277,22 @@ K vytvoření disku pro uchovávání informací použijte následující postup
 > [!NOTE]
 > Než nainstalujete hlavní cílový server, ověřte, že soubor **/etc/hosts** ve virtuálním počítači obsahuje položky, které mapují místní název hostitele na IP adresy, které jsou přidružené ke všem síťovým adaptérům.
 
-1. Zkopírujte heslo z **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** na konfiguračním serveru. Pak ho uložte jako **passphrase.txt** do stejného místního adresáře spuštěním následujícího příkazu:
+1. Spusťte následující příkaz, který nainstaluje hlavní cíl.
+
+    ```
+    ./install -q -d /usr/local/ASR -r MT -v VmWare
+    ```
+
+2. Zkopírujte heslo z **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** na konfiguračním serveru. Pak ho uložte jako **passphrase.txt** do stejného místního adresáře spuštěním následujícího příkazu:
 
     `echo <passphrase> >passphrase.txt`
 
     Příklad: 
 
-       `echo itUx70I47uxDuUVY >passphrase.txt`
+    `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. Poznamenejte si IP adresu konfiguračního serveru. Spusťte následující příkaz k instalaci hlavního cílového serveru a registraci serveru pomocí konfiguračního serveru.
+3. Poznamenejte si IP adresu konfiguračního serveru. Spuštěním následujícího příkazu zaregistrujte Server s konfiguračním serverem.
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -313,16 +323,10 @@ Po dokončení instalace Zaregistrujte konfigurační server pomocí příkazov�
 
 1. Poznamenejte si IP adresu konfiguračního serveru. Budete ho potřebovat v dalším kroku.
 
-2. Spusťte následující příkaz k instalaci hlavního cílového serveru a registraci serveru pomocí konfiguračního serveru.
+2. Spuštěním následujícího příkazu zaregistrujte Server s konfiguračním serverem.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
-    ```
-    Příklad: 
-
-    ```
-    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
+    /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh
     ```
 
      Počkejte, než se skript dokončí. Pokud je hlavní cíl úspěšně zaregistrován, je hlavní cíl uveden na stránce **infrastruktura Site Recovery** na portálu.
@@ -347,9 +351,13 @@ Uvidíte, že pole **verze** obsahuje číslo verze hlavního cíle.
 
 * Hlavní cíl by neměl obsahovat žádné snímky na virtuálním počítači. Pokud existují snímky, navrácení služeb po obnovení selhalo.
 
-* Vzhledem k některým vlastním konfiguracím síťových adaptérů je síťové rozhraní při spuštění zakázané a hlavní cílový Agent se nedá inicializovat. Ujistěte se, že jsou správně nastavené následující vlastnosti. Tyto vlastnosti ověřte v/etc/sysconfig/Network-Scripts/ifcfg-ETH * souboru karty Ethernet.
-    * BOOTPROTO = DHCP
-    * Při spuštění = Ano
+* Vzhledem k některým vlastním konfiguracím síťových adaptérů je síťové rozhraní při spuštění zakázané a hlavní cílový Agent se nedá inicializovat. Ujistěte se, že jsou správně nastavené následující vlastnosti. Tyto vlastnosti ověřte v/etc/Network/Interfaces. souboru karty Ethernet.
+    * Automatické eth0
+    * iface eth0 inet DHCP <br>
+
+    Restartujte síťovou službu pomocí následujícího příkazu: <br>
+
+`sudo systemctl restart networking`
 
 
 ## <a name="next-steps"></a>Další kroky

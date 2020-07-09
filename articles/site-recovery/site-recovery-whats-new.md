@@ -3,11 +3,12 @@ title: Co je nového v Azure Site Recovery
 description: Obsahuje souhrn nových funkcí a nejnovější aktualizace služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259214"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131085"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -21,6 +22,7 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 **Aktualizace** |  **Sjednocené nastavení** | **Vajíčka konfiguračního serveru** | **Agent služby mobility** | **Poskytovatel Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
+[Kumulativní aktualizace 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | 2.0.9183.0
 [Kumulativní aktualizace 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [Kumulativní aktualizace 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [Kumulativní aktualizace 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
@@ -31,6 +33,17 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 > [!NOTE]
 > Kumulativní aktualizace 44 není v tabulce zobrazená, protože neobsahovala aktualizace pro poskytovatele Site Recovery a agenty.
+
+## <a name="updates-june-2020"></a>Aktualizace (červen 2020)
+
+### <a name="update-rollup-47"></a>Kumulativní aktualizace 47
+
+[Kumulativní aktualizace 47](https://support.microsoft.com/help/4570609/update-rollup-47-for-azure-site-recovery) poskytuje následující aktualizace:
+
+**Aktualizace** | **Podrobnosti**
+--- | ---
+**Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů, jak je popsáno v souhrnu.
+**Opravy a vylepšení problémů** | Řada oprav a vylepšení, jak je popsáno v souhrnu.
 
 ## <a name="updates-june-2020"></a>Aktualizace (červen 2020)
 
@@ -345,8 +358,8 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 **Funkce** | **Podrobnosti**
 --- | ---
 **Mapování sítě** | Pro zotavení po havárii virtuálního počítače Azure teď můžete použít jakoukoli dostupnou cílovou síť, když povolíte replikaci.
-**SSD úrovně Standard** | Nyní můžete nastavit zotavení po havárii pro virtuální počítače Azure pomocí [SSD úrovně Standard disků](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd).
-**Prostory úložiště – přímé** | Zotavení po havárii pro aplikace běžící na Azure VM Apps můžete nastavit pomocí [prostory úložiště s přímým přístupem](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) pro vysokou dostupnost.  Použití Prostory úložiště s přímým přístupem (S2D) společně s Site Recovery poskytuje komplexní ochranu úloh virtuálních počítačů Azure. S2D umožňuje hostovat hostovaný cluster v Azure. To je užitečné hlavně v případě, že virtuální počítač je hostitelem kritické aplikace, například SAP ASCS Layer, SQL Server nebo souborového serveru se škálováním na více systémů.
+**SSD úrovně Standard** | Nyní můžete nastavit zotavení po havárii pro virtuální počítače Azure pomocí [SSD úrovně Standard disků](../virtual-machines/windows/disks-types.md#standard-ssd).
+**Prostory úložiště – přímé** | Zotavení po havárii pro aplikace běžící na Azure VM Apps můžete nastavit pomocí [prostory úložiště s přímým přístupem](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) pro vysokou dostupnost.  Použití Prostory úložiště s přímým přístupem (S2D) společně s Site Recovery poskytuje komplexní ochranu úloh virtuálních počítačů Azure. S2D umožňuje hostovat hostovaný cluster v Azure. To je užitečné hlavně v případě, že virtuální počítač je hostitelem kritické aplikace, například SAP ASCS Layer, SQL Server nebo souborového serveru se škálováním na více systémů.
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>Zotavení po havárii VMware/fyzický server
@@ -364,7 +377,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 ### <a name="accelerated-networking-azure-vms"></a>Akcelerované síťové služby (virtuální počítače Azure)
 
-Akcelerované síťové služby umožňují virtuálnímu počítači pomocí rozhraní SR-IOV (single-root I/O Virtualization), což zvyšuje výkon sítě. Pokud povolíte replikaci pro virtuální počítač Azure, Site Recovery zjistí, jestli je povolené urychlené síťové služby. Pokud je, po převzetí služeb při selhání Site Recovery automaticky nakonfiguruje akcelerované sítě na virtuálním počítači Azure v cílové replice pro [Windows](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell#enable-accelerated-networking-on-existing-vms) i [Linux](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli#enable-accelerated-networking-on-existing-vms).
+Akcelerované síťové služby umožňují virtuálnímu počítači pomocí rozhraní SR-IOV (single-root I/O Virtualization), což zvyšuje výkon sítě. Pokud povolíte replikaci pro virtuální počítač Azure, Site Recovery zjistí, jestli je povolené urychlené síťové služby. Pokud je, po převzetí služeb při selhání Site Recovery automaticky nakonfiguruje akcelerované sítě na virtuálním počítači Azure v cílové replice pro [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
 [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
@@ -426,7 +439,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 **Podpora Linuxu** | Byla přidána podpora pro Oracle Linux 6,8, Oracle Linux 6,9 a Oracle Linux 7,0 s jádrem kompatibilním s Red Hat a pro UEK (Enterprise kernel kernel) verze 5.
 **Systém souborů Linux BRTFS** | Podporováno pro virtuální počítače Azure.
 **Virtuální počítače Azure v zónách dostupnosti** | Replikaci můžete povolit do jiné oblasti pro virtuální počítače Azure nasazené v zónách dostupnosti. Teď můžete povolit replikaci pro virtuální počítač Azure a nastavit cíl pro převzetí služeb při selhání na jednu instanci virtuálního počítače, virtuální počítač ve skupině dostupnosti nebo virtuální počítač v zóně dostupnosti. Nastavení nemá vliv na replikaci. [Přečtěte](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region/) si oznámení.
-**Úložiště s podporou brány firewall (portál/PowerShell)** | Byla přidána podpora pro [účty úložiště s povoleným bránou firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security).<br/><br/> Můžete replikovat virtuální počítače Azure s nespravovanými disky v účtech úložiště s povolenými firewally do jiné oblasti Azure pro zotavení po havárii.<br/><br/> Účty úložiště s povoleným firewallem můžete používat jako cílové účty úložiště pro nespravované disky.<br/><br/> Podporováno na portálu a pomocí PowerShellu.
+**Úložiště s podporou brány firewall (portál/PowerShell)** | Byla přidána podpora pro [účty úložiště s povoleným bránou firewall](../storage/common/storage-network-security.md).<br/><br/> Můžete replikovat virtuální počítače Azure s nespravovanými disky v účtech úložiště s povolenými firewally do jiné oblasti Azure pro zotavení po havárii.<br/><br/> Účty úložiště s povoleným firewallem můžete používat jako cílové účty úložiště pro nespravované disky.<br/><br/> Podporováno na portálu a pomocí PowerShellu.
 
 ## <a name="updates-december-2018"></a>Aktualizace (prosince 2018)
 
@@ -467,7 +480,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 **Podpora oblastí** | Přibyla Site Recovery podpora pro Austrálie – střed 1 a Austrálie – střed 2.
 **Podpora pro šifrování disků** | Byla přidána podpora pro zotavení po havárii virtuálních počítačů Azure šifrovaných pomocí Azure Disk Encryption (ADE) s aplikací Azure AD. [Další informace](azure-to-azure-how-to-enable-replication-ade-vms.md).
 **Vyloučení disku** | Během replikace virtuálních počítačů Azure se teď automaticky vyloučí neinicializované disky.
-**Úložiště s podporou brány firewall (PowerShell)** | Byla přidána podpora pro [účty úložiště s povoleným bránou firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security).<br/><br/> Můžete replikovat virtuální počítače Azure s nespravovanými disky v účtech úložiště s povolenými firewally do jiné oblasti Azure pro zotavení po havárii.<br/><br/> Účty úložiště s povoleným firewallem můžete používat jako cílové účty úložiště pro nespravované disky.<br/><br/> Podporováno pouze pomocí prostředí PowerShell.
+**Úložiště s podporou brány firewall (PowerShell)** | Byla přidána podpora pro [účty úložiště s povoleným bránou firewall](../storage/common/storage-network-security.md).<br/><br/> Můžete replikovat virtuální počítače Azure s nespravovanými disky v účtech úložiště s povolenými firewally do jiné oblasti Azure pro zotavení po havárii.<br/><br/> Účty úložiště s povoleným firewallem můžete používat jako cílové účty úložiště pro nespravované disky.<br/><br/> Podporováno pouze pomocí prostředí PowerShell.
 
 
 ### <a name="update-rollup-29"></a>Kumulativní aktualizace 29
@@ -505,7 +518,7 @@ Funkce přidané v tomto měsíci jsou shrnuté v tabulce.
 
 **Funkce** | **Podrobnosti**
 --- | ---
-**Podpora Linuxu** | Byla přidána podpora pro RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Virtuální počítače se systémem Linux, které používají styl oddílu tabulka oddílů GUID (GPT) v režimu kompatibility se starším systémem BIOS, jsou nyní podporovány. Další informace najdete v tématu [Nejčastější dotazy k virtuálním počítačům Azure](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) .
+**Podpora Linuxu** | Byla přidána podpora pro RedHat Enterprise Linux 6,10, CentOS 6,10.<br/><br/> Virtuální počítače se systémem Linux, které používají styl oddílu tabulka oddílů GUID (GPT) v režimu kompatibility se starším systémem BIOS, jsou nyní podporovány. Další informace najdete v tématu [Nejčastější dotazy k virtuálním počítačům Azure](../virtual-machines/linux/faq-for-disks.md) .
 **Zotavení po havárii pro virtuální počítače po migraci** | Podpora pro povolení zotavení po havárii do sekundární oblasti pro místní virtuální počítač VMware migrované do Azure, aniž byste před povolením replikace museli odinstalovat službu mobility na virtuálním počítači.
 **Windows Server 2008** | Podpora pro migraci počítačů se systémem Windows Server 2008 R2/2008 64-bit a 32-bit.<br/><br/> Jenom migrace (replikace a převzetí služeb při selhání). Navrácení služeb po obnovení se nepodporuje.
 

@@ -1,18 +1,18 @@
 ---
 title: zahrnout soubor
 description: " – soubor"
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
+author: anbene
+ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: 744d7f49ee12e5f74eb2ae599d640ed658680c6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf56e9760970a0d9a71d1e94949c36baeb278ee9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84752534"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121829"
 ---
 Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
 

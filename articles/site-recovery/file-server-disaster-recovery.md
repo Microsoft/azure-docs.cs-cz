@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 59541c568c1d5341375236f9f074b7f82e1a6f94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4b6d583c2dd3d54c6201917a40fa6165efac18f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82858748"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131268"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrana souborového serveru pomocí Azure Site Recovery 
 
@@ -44,7 +45,7 @@ V předchozím diagramu se na replikaci souborů napříč skupinou replikace ak
 
     * Tento přístup můžete využít v případě, že vaše virtuální počítače obsahují konfigurace, které Site Recovery nepodporuje. Příkladem je sdílený disk clusteru, který se občas běžně používá v prostředích souborových serverů. Replikace systému souborů DFS funguje dobře také v prostředích s nízkou šířkou pásma se středním podílem výpovědí. Je potřeba zvážit dodatečné náklady na neustálý provoz virtuálního počítače Azure. 
 
-* **K replikaci souborů použijte Azure File Sync**: Pokud plánujete použít Cloud nebo už používáte virtuální počítač Azure, můžete použít Azure File Sync. Azure File Sync nabízí synchronizaci plně spravovaných sdílených složek v cloudu, které jsou přístupné přes standardní protokol SMB ( [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) ). Sdílené složky Azure je pak možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. 
+* **K replikaci souborů použijte Azure File Sync**: Pokud plánujete použít Cloud nebo už používáte virtuální počítač Azure, můžete použít Azure File Sync. Azure File Sync nabízí synchronizaci plně spravovaných sdílených složek v cloudu, které jsou přístupné přes standardní protokol SMB ( [Server Message Block](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ). Sdílené složky Azure je pak možné připojit současně do cloudových i místních nasazení systémů Windows, Linux a macOS. 
 
 Následující diagram vám pomůže určit, jakou strategii použít pro vaše prostředí souborového serveru.
 
@@ -76,13 +77,13 @@ Vzhledem k tomu, že je replikace Site Recovery nezávislá na aplikaci, očeká
 
 
 
-**Připojení typu Site-to-Site:** Je potřeba navázat přímé připojení mezi místní lokalitou a sítí Azure, aby byla možná komunikace mezi servery. Použijte zabezpečené připojení VPN typu Site-to-Site k virtuální síti Azure, která slouží jako lokalita pro zotavení po havárii. Další informace najdete v tématu [Navázání připojení VPN typu Site-to-Site mezi místní lokalitou a virtuální sítí Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
+**Připojení typu Site-to-Site:** Je potřeba navázat přímé připojení mezi místní lokalitou a sítí Azure, aby byla možná komunikace mezi servery. Použijte zabezpečené připojení VPN typu Site-to-Site k virtuální síti Azure, která slouží jako lokalita pro zotavení po havárii. Další informace najdete v tématu [Navázání připojení VPN typu Site-to-Site mezi místní lokalitou a virtuální sítí Azure](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-**Active Directory:** Replikace systému souborů DFS závisí na službě Active Directory. To znamená, že se doménová struktura Active Directory s místními řadiči domény rozšíří do lokality pro zotavení po havárii v Azure. Pokud je potřeba udělit přístup nebo ověřit přístup uživatelů, musíte tyto kroky provést i v případě, že nevyužíváte replikaci systému souborů DFS. Další informace najdete v tématu [Rozšíření místní služby Active Directory do Azure](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory).
+**Active Directory:** Replikace systému souborů DFS závisí na službě Active Directory. To znamená, že se doménová struktura Active Directory s místními řadiči domény rozšíří do lokality pro zotavení po havárii v Azure. Pokud je potřeba udělit přístup nebo ověřit přístup uživatelů, musíte tyto kroky provést i v případě, že nevyužíváte replikaci systému souborů DFS. Další informace najdete v tématu [Rozšíření místní služby Active Directory do Azure](./site-recovery-active-directory.md).
 
 ## <a name="disaster-recovery-recommendation-for-azure-iaas-virtual-machines"></a>Doporučení k zotavení po havárii pro virtuální počítače Azure IaaS
 
-Pokud konfigurujete a spravujete zotavení po havárii souborových serverů hostovaných na virtuálních počítačích Azure IaaS, máte na výběr ze dvou možností podle toho, jestli chcete provést přesun do služby [Soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction):
+Pokud konfigurujete a spravujete zotavení po havárii souborových serverů hostovaných na virtuálních počítačích Azure IaaS, máte na výběr ze dvou možností podle toho, jestli chcete provést přesun do služby [Soubory Azure](../storage/files/storage-files-introduction.md):
 
 * [Použití Synchronizace souborů Azure](#use-file-sync-to-replicate-files-hosted-on-an-iaas-virtual-machine)
 * [Použití Site Recovery](#replicate-an-iaas-file-server-virtual-machine-by-using-site-recovery)
@@ -92,16 +93,16 @@ Pokud konfigurujete a spravujete zotavení po havárii souborových serverů hos
 Službu Soubory Azure je možné použít k úplnému nahrazení nebo doplnění tradičních místních souborových serverů nebo zařízení NAS. Sdílené složky Azure je také možné pomocí Synchronizace souborů replikovat na místní nebo cloudové servery Windows. Tím se zajistí výkonné a distribuované ukládání dat do mezipaměti v místě, kde se tato data používají. Následující kroky popisují doporučení k zotavení po havárii pro virtuální počítače Azure, které provádějí stejné funkce jako tradiční souborové servery:
 * Ochrana počítačů pomocí Site Recovery. Postupujte podle kroků v tématu [Replikace virtuálního počítače Azure do jiné oblasti Azure](azure-to-azure-quickstart.md).
 * Replikace souborů z virtuálního počítače, který pro cloud funguje jako souborový server, pomocí Synchronizace souborů.
-* Pomocí funkce [plánu obnovení](site-recovery-create-recovery-plans.md) v Site Recovery můžete přidat skripty pro [připojení sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) a získat tak přístup ke sdílené složce na svém virtuálním počítači.
+* Pomocí funkce [plánu obnovení](site-recovery-create-recovery-plans.md) v Site Recovery můžete přidat skripty pro [připojení sdílené složky Azure](../storage/files/storage-how-to-use-files-windows.md) a získat tak přístup ke sdílené složce na svém virtuálním počítači.
 
 Následující kroky stručně popisují, jak používat Synchronizaci souborů:
 
-1. [Vytvořte účet úložiště v Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Pokud jste pro své účty úložiště zvolili geograficky redundantní úložiště jen pro čtení, v případě havárie získáte ke svým datům přístup pro čtení ze sekundární oblasti. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
-2. [Vytvořte sdílenou složku](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
-3. Na svém souborovém serveru Azure [spusťte Synchronizaci souborů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide).
+1. [Vytvořte účet úložiště v Azure](../storage/common/storage-account-create.md?toc=/azure/storage/files/toc.json). Pokud jste pro své účty úložiště zvolili geograficky redundantní úložiště jen pro čtení, v případě havárie získáte ke svým datům přístup pro čtení ze sekundární oblasti. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
+2. [Vytvořte sdílenou složku](../storage/files/storage-how-to-create-file-share.md).
+3. Na svém souborovém serveru Azure [spusťte Synchronizaci souborů](../storage/files/storage-sync-files-deployment-guide.md).
 4. Vytvořte skupinu synchronizace. Koncové body v rámci skupiny synchronizace se mezi sebou synchronizují. Skupina synchronizace musí obsahovat alespoň jeden koncový bod cloudu, který představuje sdílenou složku Azure. Skupina synchronizace musí obsahovat také jeden koncový bod serveru, který představuje cestu na serveru Windows.
 5. Vaše soubory se teď synchronizují mezi sdílenou složkou Azure a místním serverem.
-6. V případě havárie v místním prostředí proveďte převzetí služeb při selhání s využitím [plánu obnovení](site-recovery-create-recovery-plans.md). Přidejte skript pro [připojení sdílené složky Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) a získejte ke sdílené složce přístup na svém virtuálním počítači.
+6. V případě havárie v místním prostředí proveďte převzetí služeb při selhání s využitím [plánu obnovení](site-recovery-create-recovery-plans.md). Přidejte skript pro [připojení sdílené složky Azure](../storage/files/storage-how-to-use-files-windows.md) a získejte ke sdílené složce přístup na svém virtuálním počítači.
 
 ### <a name="replicate-an-iaas-file-server-virtual-machine-by-using-site-recovery"></a>Replikace virtuálního počítače souborového serveru IaaS pomocí Site Recovery
 
@@ -112,42 +113,42 @@ Pokud k virtuálnímu počítači souborového serveru IaaS přistupují místn�
 3. Pro počítač souborového serveru IaaS [nastavte zotavení po havárii](azure-to-azure-tutorial-enable-replication.md) do sekundární oblasti.
 
 
-Další informace o zotavení po havárii do sekundární oblasti najdete v [tomto článku](concepts-azure-to-azure-architecture.md).
+Další informace o zotavení po havárii do sekundární oblasti najdete v [tomto článku](./azure-to-azure-architecture.md).
 
 
 ## <a name="replicate-an-on-premises-file-server-by-using-site-recovery"></a>Replikace místního souborového serveru pomocí Site Recovery
 
-Následující kroky popisují replikaci virtuálního počítače VMware. Pokyny k replikaci virtuálního počítače Hyper-V najdete v [tomto kurzu](tutorial-hyper-v-to-azure.md).
+Následující kroky popisují replikaci virtuálního počítače VMware. Pokyny k replikaci virtuálního počítače Hyper-V najdete v [tomto kurzu](./hyper-v-azure-tutorial.md).
 
 1. [Připravte prostředky Azure](tutorial-prepare-azure.md) na replikaci místních počítačů.
 2. Navažte připojení VPN typu Site-to-Site mezi místní lokalitou a sítí Azure. 
 3. Rozšiřte místní službu Active Directory.
-4. [Připravte místní servery VMware](tutorial-prepare-on-premises-vmware.md).
-5. Pro místní virtuální počítače [nastavte zotavení po havárii](tutorial-vmware-to-azure.md) do Azure.
+4. [Připravte místní servery VMware](./vmware-azure-tutorial-prepare-on-premises.md).
+5. Pro místní virtuální počítače [nastavte zotavení po havárii](./vmware-azure-tutorial.md) do Azure.
 
 ## <a name="extend-dfsr-to-an-azure-iaas-virtual-machine"></a>Rozšíření replikace systému souborů DFS na virtuální počítač Azure IaaS
 
 1. Navažte připojení VPN typu Site-to-Site mezi místní lokalitou a sítí Azure. 
 2. Rozšiřte místní službu Active Directory.
-3. Ve virtuální síti Azure [vytvořte a zřiďte virtuální počítač souborového serveru](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
+3. Ve virtuální síti Azure [vytvořte a zřiďte virtuální počítač souborového serveru](../virtual-machines/windows/quick-create-portal.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
 Ujistěte se, že se virtuální počítač přidá do stejné virtuální sítě Azure, která má křížové připojení s místním prostředím. 
 4. Na Windows Serveru nainstalujte a nakonfigurujte [replikaci systému souborů DFS](https://techcommunity.microsoft.com/t5/storage-at-microsoft/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of/ba-p/424877).
-5. [Implementujte obor názvů DFS](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces).
+5. [Implementujte obor názvů DFS](/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces).
 6. Díky implementaci oboru názvů DFS je možné provést převzetí služeb při selhání sdílených složek z produkčních lokalit do lokalit pro zotavení po havárii prostřednictvím aktualizace cílů složek v oboru názvů DFS. Po replikaci těchto změn oboru názvů DFS přes Active Directory se uživatelé transparentně připojí k odpovídajícím cílům složek.
 
 ## <a name="use-file-sync-to-replicate-your-on-premises-files"></a>Replikace místních souborů pomocí Synchronizace souborů
 Pomocí Synchronizace souborů můžete replikovat soubory do cloudu. V případě havárie a nedostupnosti místního souborového serveru můžete připojit požadovaná umístění souborů z cloudu a pokračovat v obsluze požadavků z klientských počítačů.
 Integrace Synchronizace souborů se Site Recovery:
 
-* Zajistěte ochranu počítačů souborového serveru pomocí Site Recovery. Postupujte podle kroků v [tomto kurzu](tutorial-vmware-to-azure.md).
+* Zajistěte ochranu počítačů souborového serveru pomocí Site Recovery. Postupujte podle kroků v [tomto kurzu](./vmware-azure-tutorial.md).
 * Použijte Synchronizaci souborů k replikaci souborů z počítače, který pro cloud funguje jako souborový server.
 * Pomocí funkce plánu obnovení v Site Recovery přidejte skripty pro připojení sdílené složky Azure na virtuálním počítači v Azure, u kterého došlo k převzetí služeb při selhání.
 
 Podle následujícího postupu použijte Synchronizaci souborů:
 
-1. [Vytvořte účet úložiště v Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Pokud jste pro své účty úložiště zvolili geograficky redundantní úložiště jen pro čtení (doporučeno), v případě havárie máte ke svým datům přístup pro čtení ze sekundární oblasti. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
-2. [Vytvořte sdílenou složku](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
-3. Na místní souborový server [nasaďte Synchronizaci souborů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide).
+1. [Vytvořte účet úložiště v Azure](../storage/common/storage-account-create.md?toc=/azure/storage/files/toc.json). Pokud jste pro své účty úložiště zvolili geograficky redundantní úložiště jen pro čtení (doporučeno), v případě havárie máte ke svým datům přístup pro čtení ze sekundární oblasti. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
+2. [Vytvořte sdílenou složku](../storage/files/storage-how-to-create-file-share.md).
+3. Na místní souborový server [nasaďte Synchronizaci souborů](../storage/files/storage-sync-files-deployment-guide.md).
 4. Vytvořte skupinu synchronizace. Koncové body v rámci skupiny synchronizace se mezi sebou synchronizují. Skupina synchronizace musí obsahovat alespoň jeden koncový bod cloudu, který představuje sdílenou složku Azure. Skupina synchronizace musí obsahovat také jeden koncový bod serveru, který představuje cestu na místním serveru Windows.
 5. Vaše soubory se teď synchronizují mezi sdílenou složkou Azure a místním serverem.
 6. V případě havárie v místním prostředí proveďte převzetí služeb při selhání s využitím [plánu obnovení](site-recovery-create-recovery-plans.md). Přidejte skript pro připojení sdílené složky Azure a získejte ke sdílené složce přístup na svém virtuálním počítači.

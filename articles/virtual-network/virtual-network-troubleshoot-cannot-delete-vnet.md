@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2a64f42c8672972939bb2870ba40876e5cc8d855
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8942e9180e87552ec64e0e848751f492778c9993
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83591943"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131662"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Řešení potíží: Nepodařilo se odstranit virtuální síť v Azure.
 
@@ -87,7 +88,9 @@ Ujistěte se, že virtuální počítač není ve virtuální síti.
 
 Pokud je virtuální síť zablokovaná v rámci stavu migrace, nedá se odstranit. Spusťte následující příkaz k přerušení migrace a pak virtuální síť odstraňte.
 
-    Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
+```azurepowershell
+Move-AzureVirtualNetwork -VirtualNetworkName "Name" -Abort
+```
 
 ## <a name="next-steps"></a>Další kroky
 

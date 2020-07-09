@@ -3,12 +3,12 @@ title: Replikace Azure Stackch virtuálních počítačů do Azure pomocí Azure
 description: Naučte se, jak nastavit zotavení po havárii do Azure pro Azure Stack virtuálních počítačů pomocí služby Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 873b9c5efc2a89d3cda1bfe14a7518e6786a6870
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478508"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131609"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replikace virtuálních počítačů Azure Stack do Azure
 
@@ -262,7 +262,7 @@ Před spuštěním testovacího převzetí služeb při selhání ověřte vlast
 2. V podokně **Replikovaná položka** se zobrazí souhrn informací o virtuálním počítači, jeho stav a nejnovější dostupné body obnovení. Kliknutím na **Vlastnosti** zobrazíte další podrobnosti.
 3. V **COMPUTE a síti**podle potřeby upravte nastavení.
 
-    - Můžete upravit název virtuálního počítače Azure, skupinu prostředků, cílovou velikost, skupinu [dostupnosti](/azure/virtual-machines/windows/tutorial-availability-sets)a nastavení spravovaného disku.
+    - Můžete upravit název virtuálního počítače Azure, skupinu prostředků, cílovou velikost, skupinu [dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md)a nastavení spravovaného disku.
     - Můžete také zobrazit a upravit nastavení sítě. Patří mezi ně síť nebo podsíť, ke které je virtuální počítač Azure připojený po převzetí služeb při selhání, a IP adresa, která se přiřadí k virtuálnímu počítači.
 1. V části **disky**si prohlédněte informace o operačním systému a datových discích na virtuálním počítači.
 

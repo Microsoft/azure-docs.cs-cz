@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aece41329d6481b8ad15090a834c8758f86abdc2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478287"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131341"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro webovou aplikaci založenou na službě IIS
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak chránit webovou aplikaci, která je založená na 
 Než začnete, ujistěte se, že víte, jak provádět následující úlohy:
 
 * [Replikace virtuálního počítače do Azure](vmware-azure-tutorial.md)
-* [Návrh sítě pro obnovení](site-recovery-network-design.md)
+* [Návrh sítě pro obnovení](./concepts-on-premises-to-azure-networking.md)
 * [Provedení testovacího převzetí služeb při selhání do Azure](site-recovery-test-failover-to-azure.md)
 * [Provedení převzetí služeb při selhání do Azure](site-recovery-failover.md)
 * [Replikace řadiče domény](site-recovery-active-directory.md)
@@ -62,8 +62,8 @@ Scénář | Do sekundární lokality | Do Azure
 --- | --- | ---
 Hyper-V | Ano | Ano
 VMware | Ano | Ano
-Fyzický server | Ne | Ano
-Azure|NA|Ano
+Fyzický server | No | Yes
+Azure|NA|Yes
 
 ## <a name="replicate-virtual-machines"></a>Replikace virtuálních počítačů
 
@@ -92,7 +92,7 @@ Další informace najdete v tématu [přizpůsobení plánu obnovení](site-reco
 
 
 ### <a name="add-a-script-to-the-recovery-plan"></a>Přidání skriptu do plánu obnovení
-Aby webová farma služby IIS fungovala správně, možná budete muset provést některé operace na virtuálním počítači Azure po převzetí služeb při selhání nebo během testovacího převzetí služeb při selhání. Některé operace po převzetí služeb při selhání můžete automatizovat. Můžete například aktualizovat položku DNS, změnit vazbu webu nebo změnit připojovací řetězec přidáním odpovídajících skriptů do plánu obnovení. [Přidání skriptu VMM do plánu obnovení](site-recovery-how-to-add-vmmscript.md) popisuje, jak nastavit automatizované úlohy pomocí skriptu.
+Aby webová farma služby IIS fungovala správně, možná budete muset provést některé operace na virtuálním počítači Azure po převzetí služeb při selhání nebo během testovacího převzetí služeb při selhání. Některé operace po převzetí služeb při selhání můžete automatizovat. Můžete například aktualizovat položku DNS, změnit vazbu webu nebo změnit připojovací řetězec přidáním odpovídajících skriptů do plánu obnovení. [Přidání skriptu VMM do plánu obnovení](./hyper-v-vmm-recovery-script.md) popisuje, jak nastavit automatizované úlohy pomocí skriptu.
 
 #### <a name="dns-update"></a>Aktualizace DNS
 Pokud je pro dynamickou aktualizaci DNS nakonfigurovaný DNS, virtuální počítače při jejich spuštění obvykle aktualizují DNS novou IP adresou. Pokud chcete přidat explicitní krok pro aktualizaci DNS s novými IP adresami virtuálních počítačů, přidejte [skript, který aktualizuje IP adresu v DNS](https://aka.ms/asr-dns-update) jako akci po převzetí služeb při selhání u skupin plánů obnovení.  

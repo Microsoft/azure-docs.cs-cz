@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01c2f61dcf024e8c9dbbd5b2ee11a479b3c16305
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712169"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130285"
 ---
 # <a name="set-up-public-ip-addresses-after-failover"></a>Nastavení veřejných IP adres po převzetí služeb při selhání
 
@@ -47,7 +48,7 @@ Přečtěte si víc o scénářích převzetí služeb při selhání pomocí Tr
 2. [Převzetí služeb při selhání Azure do Azure](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) pomocí Traffic Manager 
 
 Nastavení je následující:
-- Vytvořte [profil Traffic Manager](../traffic-manager/traffic-manager-create-profile.md).
+- Vytvořte [profil Traffic Manager](../traffic-manager/quickstart-create-traffic-manager-profile.md).
 - S využitím metody směrování **priority** vytvořte dva koncové body – **primární** pro zdroj a **převzetí služeb při selhání** pro Azure. K **primární** je přiřazena priorita 1 a pro **převzetí služeb při selhání** je přiřazena Priorita 2.
 - **Primární** koncový bod může být [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) nebo [externě](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) v závislosti na tom, jestli je vaše zdrojové prostředí v Azure nebo mimo něj.
 - Koncový bod **převzetí služeb při selhání** se vytvoří jako koncový bod **Azure** . Použijte **statickou veřejnou IP adresu** , protože se jedná o vnější koncový bod pro Traffic Manager v události po havárii.

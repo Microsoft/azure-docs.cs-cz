@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 353ab1f15a6df8700a9abda22233dc052aa10095
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71056839"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130704"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Problémy se síťovými virtuálními zařízení v Azure
 
@@ -103,11 +103,15 @@ Použití prostředí PowerShell
 
     Ve Windows:
 
-        netstat -an
+    ```console
+   netstat -an
+    ```
 
     Pro Linux:
 
-        netstat -an | grep -i listen
+    ```console
+   netstat -an | grep -i listen
+    ```
 2. Pokud nevidíte port TCP, který je používán softwarem síťové virtuální zařízení, který je uvedený ve výsledcích, musíte nakonfigurovat aplikaci na síťové virtuální zařízení a virtuálním počítači, aby naslouchaly a reagovaly na provoz, který dosahuje těchto portů. Pokud potřebujete [pomoc, obraťte se na dodavatele síťové virtuální zařízení](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
 
 ## <a name="check-nva-performance"></a>Kontrolovat výkon síťové virtuální zařízení

@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73936045"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86129959"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálního počítače Hyper-V 
 
@@ -38,7 +39,7 @@ Nástroj můžete spustit ve dvou režimech:
 ## <a name="before-you-start"></a>Než začnete
 
 * Shromážděte informace o vašem prostředí, včetně virtuálních počítačů, disků na virtuální počítač, úložiště na disk.
-* Identifikujte míru denní změny (změn) pro replikovaná data. Stáhněte si [Nástroj pro plánování kapacity technologie Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) , abyste získali rychlost změny. [Přečtěte si další informace](site-recovery-capacity-planning-for-hyper-v-replication.md) o tomto nástroji. Pro zachycení průměrů doporučujeme spustit tento nástroj za týden.
+* Identifikujte míru denní změny (změn) pro replikovaná data. Stáhněte si [Nástroj pro plánování kapacity technologie Hyper-V](https://www.microsoft.com/download/details.aspx?id=39057) , abyste získali rychlost změny. [Přečtěte si další informace](./hyper-v-deployment-planner-overview.md) o tomto nástroji. Pro zachycení průměrů doporučujeme spustit tento nástroj za týden.
 
 
 ## <a name="run-the-quick-planner"></a>Spuštění rychlého plánovače
@@ -52,7 +53,7 @@ Nástroj můžete spustit ve dvou režimech:
 
    a. V **Možnosti vyberte svůj scénář**zvolte možnost **Hyper-V do Azure** nebo **VMware/fyzický do Azure**.
 
-   b. V části **Průměrná denní četnost změn dat (%)** zadejte informace, které shromažďujete, pomocí [Nástroje pro plánování kapacity technologie Hyper-V](site-recovery-capacity-planning-for-hyper-v-replication.md) nebo [Site Recovery Plánovač nasazení](./site-recovery-deployment-planner.md).
+   b. V části **Průměrná denní četnost změn dat (%)** zadejte informace, které shromažďujete, pomocí [Nástroje pro plánování kapacity technologie Hyper-V](./hyper-v-deployment-planner-overview.md) nebo [Site Recovery Plánovač nasazení](./site-recovery-deployment-planner.md).
 
    c. Nastavení **Komprese** se nepoužívá při replikaci virtuálních počítačů Hyper-V do Azure. Pro kompresi použijte zařízení třetí strany, například Riverbed.
 
@@ -146,4 +147,4 @@ Po zadání všech informací vyberte **Odeslat data do nástroje Planner** a ot
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>Další kroky
-[Přečtěte si, jak spustit](site-recovery-capacity-planning-for-hyper-v-replication.md) Nástroj pro plánování kapacity.
+[Přečtěte si, jak spustit](./hyper-v-deployment-planner-overview.md) Nástroj pro plánování kapacity.

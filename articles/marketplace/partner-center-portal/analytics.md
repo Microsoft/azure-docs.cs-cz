@@ -1,18 +1,18 @@
 ---
 title: Analýzy pro komerční tržiště Microsoftu v partnerském centru
 description: Naučte se, jak získat přístup k analytickým sestavám a monitorovat prodej, hodnotit výkon a optimalizovat nabídky Marketplace v partnerském centru Microsoftu.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: rajap
+ms.author: rajap
 ms.date: 12/11/2019
-ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fd42e7661e04b6eab35e3b076e9c8c2fb55a363
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744911"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86122009"
 ---
 # <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>Přístup k analytickým sestavám pro komerční tržiště v partnerském centru
 

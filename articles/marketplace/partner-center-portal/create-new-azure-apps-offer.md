@@ -1,18 +1,16 @@
 ---
 title: Vytvoření nabídky aplikací Azure – Microsoft Commercial Marketplace
 description: Přečtěte si postup a požadavky pro vytvoření nové nabídky aplikací Azure na portálu pro komerční tržišti v partnerském centru. Nabídku aplikací Azure můžete zobrazit nebo prodávat v Azure Marketplace nebo prostřednictvím programu Cloud Solution Provider (CSP).
-author: qianw211
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: cf44e50f7d8cc0dbf94c5313373bbd8080baa176
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984366"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121962"
 ---
 # <a name="create-an-azure-application-offer"></a>Vytvoření nabídky aplikací Azure
 

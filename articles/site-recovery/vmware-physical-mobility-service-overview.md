@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: ec4d1cfbe0c76c8245c4beeaa7c044d76d917a7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259784"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131800"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>O službě mobility pro virtuální počítače VMware a fyzické servery
 
@@ -128,7 +129,7 @@ Během nabízené instalace služby mobility se provádí následující kroky:
 
 Nastavení | Podrobnosti
 --- | ---
-Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
+Syntaxe | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Instalační protokoly | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 `/InstallLocation`| Volitelný parametr. Určuje umístění instalace služby mobility (všechny složky).
@@ -139,7 +140,7 @@ Instalační protokoly | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.lo
 
 Nastavení | Podrobnosti
 --- | ---
-Syntax | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
+Syntaxe | `UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>`
 Protokoly konfigurace agenta | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log`
 `/CSEndPoint` | Povinný parametr. `<CSIP>`Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
 `/PassphraseFilePath` |  Povinné. Umístění přístupového hesla Použijte jakoukoli platnou cestu UNC nebo místní cestu k souboru.
@@ -169,7 +170,7 @@ Protokoly konfigurace agenta | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfig
 
 Nastavení | Podrobnosti
 --- | ---
-Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
+Syntaxe | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 `-r` | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 `-d` | Volitelný parametr. Určuje umístění instalace služby mobility: `/usr/local/ASR` .
 `-v` | Povinné. Určuje platformu, na které je nainstalovaná služba mobility. <br/> **VMware** pro virtuální počítače VMware nebo fyzické servery. <br/> **Azure** pro virtuální počítače Azure.
@@ -179,14 +180,14 @@ Syntax | `./install -d \<Install Location> -r \<MS/MT> -v VmWare -q`
 
 Nastavení | Podrobnosti
 --- | ---
-Syntax | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
+Syntaxe | `cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>`
 `-i` | Povinný parametr. `<CSIP>`Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
 `-P` |  Povinné. Úplná cesta k souboru, ve kterém se heslo ukládá Použijte libovolnou platnou složku.
 
 ## <a name="azure-virtual-machine-agent"></a>Agent virtuálního počítače Azure
 
-- **Virtuální počítače s Windows**: od verze 9.7.0.0 služby mobility se [Agent virtuálního počítače Azure](/azure/virtual-machines/extensions/features-windows#azure-vm-agent) nainstaluje pomocí instalačního programu služby mobility. Tím se zajistí, že při převzetí služeb při selhání počítače do Azure bude virtuální počítač Azure splňovat požadavky na instalaci agenta pro použití libovolného rozšíření virtuálního počítače.
-- **Virtuální počítače se systémem Linux**: [WALinuxAgent](/azure/virtual-machines/extensions/update-linux-agent) musí být po převzetí služeb při selhání na virtuálním počítači Azure nainstalovaný ručně.
+- **Virtuální počítače s Windows**: od verze 9.7.0.0 služby mobility se [Agent virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent) nainstaluje pomocí instalačního programu služby mobility. Tím se zajistí, že při převzetí služeb při selhání počítače do Azure bude virtuální počítač Azure splňovat požadavky na instalaci agenta pro použití libovolného rozšíření virtuálního počítače.
+- **Virtuální počítače se systémem Linux**: [WALinuxAgent](../virtual-machines/extensions/update-linux-agent.md) musí být po převzetí služeb při selhání na virtuálním počítači Azure nainstalovaný ručně.
 
 ## <a name="locate-installer-files"></a>Vyhledání instalačních souborů
 

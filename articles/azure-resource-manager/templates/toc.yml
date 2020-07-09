@@ -222,12 +222,6 @@
         - name: Použití kontroly stavu v Deployment Manageru
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-- name: ukázky
-  items:
-    - name: Šablony rychlého zprovoznění pro Azure
-      href: 'https://azure.microsoft.com/resources/templates/'
-    - name: Ukázky šablon
-      href: template-samples.md
 - name: Koncepty
   items:
     - name: Osvědčené postupy pro šablony
@@ -299,16 +293,6 @@
             - name: Výstupy
               displayName: 'iteration,copy'
               href: copy-outputs.md
-    - name: Použití nástrojů pro vytváření
-      items:
-        - name: VS Code
-          href: use-vs-code-to-create-template.md
-        - name: Visual Studio
-          href: create-visual-studio-deployment-project.md
-        - name: Aktualizace skriptu nasazení VS na modul AZ
-          href: update-visual-studio-deployment-script.md
-        - name: IntelliJ IDEA
-          href: create-templates-use-intellij.md
     - name: Zjištění vlastností šablon
       items:
         - name: Export šablony
@@ -344,6 +328,8 @@
           href: rollback-on-error.md
         - name: Zabezpečení šablony s tokenem SAS
           href: secure-template-with-sas-token.md
+        - name: Zobrazení historie nasazení
+          href: deployment-history.md
     - name: Nasazení s vymezeným oborem
       items:
         - name: Předplatné
@@ -367,8 +353,14 @@
           href: add-template-to-azure-pipelines.md
         - name: Nasazení – GitHub Actions
           href: deploy-github-actions.md
-    - name: Zobrazení historie nasazení
-      href: deployment-history.md
+    - name: Použití nástrojů pro vytváření
+      items:
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: Aktualizace skriptu nasazení VS na modul AZ
+          href: update-visual-studio-deployment-script.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Řešení potíží s nasazeními
       items:
         - name: Řešení potíží s chybami nasazení
@@ -441,6 +433,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: Zdroje a prostředky
   items:
+    - name: Šablony rychlého zprovoznění pro Azure
+      href: 'https://azure.microsoft.com/resources/templates/'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: Cenová kalkulačka

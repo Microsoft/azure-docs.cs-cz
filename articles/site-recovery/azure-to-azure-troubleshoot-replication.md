@@ -5,15 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196096"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130396"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Řešení potíží s replikací v zotavení po havárii virtuálního počítače Azure
 
-Tento článek popisuje běžné problémy v Azure Site Recovery při replikaci a obnovování virtuálních počítačů Azure z jedné oblasti do jiné oblasti. Vysvětluje také, jak řešit běžné problémy. Další informace o podporovaných konfiguracích najdete v [matrici podpory pro replikaci virtuálních počítačů Azure](site-recovery-support-matrix-azure-to-azure.md).
+Tento článek popisuje běžné problémy v Azure Site Recovery při replikaci a obnovování virtuálních počítačů Azure z jedné oblasti do jiné oblasti. Vysvětluje také, jak řešit běžné problémy. Další informace o podporovaných konfiguracích najdete v [matrici podpory pro replikaci virtuálních počítačů Azure](./azure-to-azure-support-matrix.md).
 
 Azure Site Recovery konzistentně replikuje data ze zdrojové oblasti do oblasti zotavení po havárii. Zároveň vytvoří bod obnovení konzistentní vzhledem k selháním každých 5 minut. Pokud Site Recovery nemůžou vytvářet body obnovení po dobu 60 minut, upozorní vás na tyto informace:
 
@@ -77,7 +78,7 @@ Azure Site Recovery má omezení rychlosti změny dat v závislosti na typu disk
 
 Site Recovery odesílá replikovaná data do účtu úložiště mezipaměti. Může dojít k latenci sítě, pokud je nahrávání dat z virtuálního počítače do účtu úložiště mezipaměti pomalejší než 4 MB během 3 sekund.
 
-Pokud chcete zjistit problém týkající se latence, použijte [AzCopy](/azure/storage/common/storage-use-azcopy). Tento nástroj příkazového řádku můžete použít k nahrání dat z virtuálního počítače do účtu úložiště mezipaměti. Pokud je latence vysoká, ověřte, jestli k řízení odchozího síťového provozu z virtuálních počítačů používáte síťové virtuální zařízení (síťové virtuální zařízení). Zařízení může být omezené, pokud se veškerý provoz replikace projde přes síťové virtuální zařízení.
+Pokud chcete zjistit problém týkající se latence, použijte [AzCopy](../storage/common/storage-use-azcopy-v10.md). Tento nástroj příkazového řádku můžete použít k nahrání dat z virtuálního počítače do účtu úložiště mezipaměti. Pokud je latence vysoká, ověřte, jestli k řízení odchozího síťového provozu z virtuálních počítačů používáte síťové virtuální zařízení (síťové virtuální zařízení). Zařízení může být omezené, pokud se veškerý provoz replikace projde přes síťové virtuální zařízení.
 
 Doporučujeme vytvořit koncový bod síťové služby ve virtuální síti pro úložiště, aby provoz replikace nepřešel do síťové virtuální zařízení. Další informace najdete v tématu [Konfigurace síťového virtuálního zařízení](azure-to-azure-about-networking.md#network-virtual-appliance-configuration).
 
@@ -107,7 +108,7 @@ Níže jsou uvedené některé z nejběžnějších problémů.
 
 ### <a name="app-consistency-not-enabled-on-linux-servers"></a>Konzistence aplikací není povolena na serverech se systémem Linux
 
-**Oprava** : Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s možnostmi před a po odeslání bude použit agentem Azure Site Recovery mobility pro konzistenci aplikací. [Tady](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) je postup, jak ho povolit.
+**Oprava** : Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s možnostmi před a po odeslání bude použit agentem Azure Site Recovery mobility pro konzistenci aplikací. [Tady](./site-recovery-faq.md#replication) je postup, jak ho povolit.
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>Další příčiny v důsledku potíží souvisejících se službou VSS:
 

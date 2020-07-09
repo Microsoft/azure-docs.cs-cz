@@ -1,7 +1,5 @@
 - name: Dokumentace ke službě Media Services
   href: ./index.yml
-- name: Přepnout na dokumentaci k analýze živého videa ve službě IoT Edge
-  href: ../live-video-analytics-edge/overview.md
 - name: Přehled
   items:
     - name: Informace o Media Services
