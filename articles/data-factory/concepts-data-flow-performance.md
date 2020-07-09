@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 07/06/2020
-ms.openlocfilehash: 1c63568418f21da0556ced0d004e04e7909118fb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042624"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114376"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -35,7 +35,7 @@ Při návrhu toků mapování dat můžete každou transformaci otestovat tak, �
 
 ![Sledování toku dat](media/data-flow/mon003.png "Monitor toku dat 3")
 
- V případě spuštění ladění kanálu se v případě teplého clusteru vyžaduje asi jedna minuta času nastavení clusteru v celkových výpočtech výkonu. Pokud inicializujete výchozí Azure Integration Runtime, může to trvat přibližně 5 minut.
+ V případě spuštění ladění kanálu se v případě teplého clusteru vyžaduje asi jedna minuta času nastavení clusteru v celkových výpočtech výkonu. Pokud inicializujete výchozí Azure Integration Runtime, může čas aktivace trvat přibližně 4 minuty.
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Zvýšení výpočetní velikosti v Azure Integration Runtime
 
@@ -55,7 +55,7 @@ Při zapnutí ladění se ve výchozím nastavení použije výchozí prostřed�
 
 ### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>Snižte čas spuštění výpočetního clusteru s hodnotou TTL.
 
-V Azure IR v části vlastnosti toku dat je vlastnost, která vám umožní vytvořit fond výpočetních prostředků clusteru pro vaši továrnu. S tímto fondem můžete postupně odesílat aktivity toku dat ke spuštění. Po navázání fondu bude každá další úloha trvat 1-2 minut, než se v clusteru Spark na vyžádání spustí vaše úloha. Počáteční nastavení fondu zdrojů bude trvat přibližně 6 minut. Zadejte dobu, po kterou chcete spravovat fond zdrojů v nastavení TTL (Time to Live).
+V Azure IR v části vlastnosti toku dat je vlastnost, která vám umožní vytvořit fond výpočetních prostředků clusteru pro vaši továrnu. S tímto fondem můžete postupně odesílat aktivity toku dat ke spuštění. Po navázání fondu bude každá další úloha trvat 1-2 minut, než se v clusteru Spark na vyžádání spustí vaše úloha. Počáteční nastavení fondu zdrojů bude trvat přibližně 4 minuty. Zadejte dobu, po kterou chcete spravovat fond zdrojů v nastavení TTL (Time to Live).
 
 ## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimalizace pro Azure SQL Database a Azure SQL Data Warehouse synapse
 
@@ -145,7 +145,7 @@ Když použijete zástupné znaky, kanál bude obsahovat jenom jednu aktivitu to
 
 Kanál každého v paralelním režimu spustí více clusterů, a to tak, že clustery úloh rozcházejí na každou spuštěnou aktivitu toku dat. To může způsobit omezení služby Azure s vysokým počtem souběžných spuštění. Nicméně použití toku dat spouštění uvnitř a pro každý s sekvenčním nastavením v kanálu se vyhne omezení a vyčerpání prostředků. Tím vynutíte Data Factory, aby se jednotlivé soubory v toku dat prováděly postupně.
 
-Doporučuje se, abyste při použití pro každý z nich s tokem dat využívali nastavení TTL v Azure Integration Runtime. Důvodem je to, že každý soubor bude v rámci vašeho iterátoru zabývat celým časem spuštění clusteru za 5 minut.
+Doporučuje se, abyste při použití pro každý z nich s tokem dat využívali nastavení TTL v Azure Integration Runtime. Důvodem je to, že každý soubor bude v rámci vašeho iterátoru zabývat úplným časem spuštění clusteru.
 
 ### <a name="optimizing-for-cosmosdb"></a>Optimalizace pro CosmosDB
 

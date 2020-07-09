@@ -8,11 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 74ac991eb40864aeb4ac42d4774d9ab61fb14c36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3d3521cfb3d3b0c6659013922ab11fe765af882
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807668"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111248"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Přehled agenta Azure ARC pro servery
 
@@ -184,7 +185,7 @@ Abychom zajistili zabezpečení dat při přenosu do Azure, důrazně doporučuj
 |Platforma/jazyk | Podpora | Další informace |
 | --- | --- | --- |
 |Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2. | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
-| Windows Server 2012 R2 a vyšší | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).|
+| Windows Server 2012 R2 a vyšší | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](/windows-server/security/tls/tls-registry-settings).|
 
 ### <a name="networking-configuration"></a>Konfigurace sítě
 
@@ -208,7 +209,7 @@ Adrese
 |* – agentservice-prod-1.azure-automation.net|Konfigurace hosta|
 |*. his.arc.azure.com|Služba hybridní identity|
 
-Seznam IP adres pro jednotlivé značky nebo oblasti služby najdete v souboru JSON – [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft publikuje týdenní aktualizace obsahující každou službu Azure a rozsahy IP adres, které používá. Další informace najdete v přehledu [značek služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Seznam IP adres pro jednotlivé značky nebo oblasti služby najdete v souboru JSON – [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft publikuje týdenní aktualizace obsahující každou službu Azure a rozsahy IP adres, které používá. Další informace najdete v přehledu [značek služeb](../../virtual-network/security-overview.md#service-tags).
 
 Adresy URL v předchozí tabulce jsou nutné kromě informací o rozsahu IP adres značky služby, protože většina služeb aktuálně nemá registraci značky služby. V takovém případě se tyto IP adresy mohou změnit. Pokud se pro konfiguraci brány firewall vyžadují rozsahy IP adres, měla by se tato značka služby **AzureCloud** použít k povolení přístupu ke všem službám Azure. Nepovolujte monitorování zabezpečení ani kontrolu těchto adres URL. Povolte je stejně jako jiný internetový provoz.
 

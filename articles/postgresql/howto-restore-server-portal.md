@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak obnovit server v Azure Database for Po
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/30/2020
-ms.openlocfilehash: 056962483fe10e8b6558d2ca0aeb92d1ec970734
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7683d3472d382707de538874035c8448f589bf82
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830981"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110806"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Postup zálohování a obnovení serveru v Azure Database for PostgreSQL-Single server pomocí Azure Portal
 

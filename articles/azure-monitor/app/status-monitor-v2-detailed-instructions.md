@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 8f6134e8f8fdb9af3f578afaf0670c32a3896e01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c74d4f0b2e0b2d8ca09c9b2c1f1091594f5657dc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81766860"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111010"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Agent Application Insights (dřív pojmenovaný Monitorování stavu v2): podrobné pokyny
 
@@ -37,10 +38,10 @@ https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-e
 
 **Příklady chyb**
 
-```
+```output
 Install-Module : The 'Install-Module' command was found in the module 'PowerShellGet', but the module could not be
 loaded. For more information, run 'Import-Module PowerShellGet'.
-    
+
 Import-Module : File C:\Program Files\WindowsPowerShell\Modules\PackageManagement\1.3.1\PackageManagement.psm1 cannot
 be loaded because running scripts is disabled on this system. For more information, see about_Execution_Policies at
 https:/go.microsoft.com/fwlink/?LinkID=135170.
@@ -52,8 +53,7 @@ https:/go.microsoft.com/fwlink/?LinkID=135170.
 Pomocí příkazu proveďte audit své instance prostředí PowerShell `$PSVersionTable` .
 Tento příkaz vytvoří následující výstup:
 
-
-```
+```output
 Name                           Value
 ----                           -----
 PSVersion                      5.1.17763.316
@@ -87,15 +87,17 @@ Pomocí těchto kroků připravíte server tak, aby stahoval moduly z Galerie pr
         - `-Force`. Obchází výzvu k potvrzení.
     
     Tato výzva se zobrazí, pokud není nastavená sada NuGet:
-        
-        NuGet provider is required to continue
-        PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet
-         provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
-        'C:\Users\t\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by running
-        'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install and import
-         the NuGet provider now?
-        [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
-    
+
+    ```output
+    NuGet provider is required to continue
+    PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. 
+    The NuGet provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
+    'C:\Users\t\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by running
+    'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install and import
+    the NuGet provider now?
+    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
+    ```    
+
 3. Nakonfigurujte Galerie prostředí PowerShell jako důvěryhodné úložiště.
     - Popis: ve výchozím nastavení je Galerie prostředí PowerShell nedůvěryhodné úložiště.
     - Reference: [set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
@@ -105,11 +107,14 @@ Pomocí těchto kroků připravíte server tak, aby stahoval moduly z Galerie pr
 
     Tato výzva se zobrazí, pokud Galerie prostředí PowerShell není důvěryhodná:
 
-        Untrusted repository
-        You are installing the modules from an untrusted repository. If you trust this repository, change its
-        InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from
-        'PSGallery'?
-        [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+    ```output
+    Untrusted repository
+    You are installing the modules from an untrusted repository. 
+    If you trust this repository, change its InstallationPolicy value 
+    by running the Set-PSRepository cmdlet. Are you sure you want to 
+    install the modules from 'PSGallery'?
+    [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"):
+    ```
 
     Tuto změnu můžete potvrdit a auditovat všechny PSRepositories spuštěním `Get-PSRepository` příkazu.
 
@@ -122,14 +127,16 @@ Pomocí těchto kroků připravíte server tak, aby stahoval moduly z Galerie pr
         - `-Force`. Obchází upozornění "už nainstalovaného" a nainstaluje nejnovější verzi.
 
     Tato chyba se zobrazí, pokud nepoužíváte nejnovější verzi PowerShellGet:
-    
-        Install-Module : A parameter cannot be found that matches parameter name 'AllowPrerelease'.
-        At line:1 char:20
-        Install-Module abc -AllowPrerelease
-                           ~~~~~~~~~~~~~~~~
-            CategoryInfo          : InvalidArgument: (:) [Install-Module], ParameterBindingException
-            FullyQualifiedErrorId : NamedParameterNotFound,Install-Module
-    
+
+    ```output
+    Install-Module : A parameter cannot be found that matches parameter name 'AllowPrerelease'.
+    At line:1 char:20
+    Install-Module abc -AllowPrerelease
+                   ~~~~~~~~~~~~~~~~
+    CategoryInfo          : InvalidArgument: (:) [Install-Module], ParameterBindingException
+    FullyQualifiedErrorId : NamedParameterNotFound,Install-Module
+    ```
+
 5. Restartujte PowerShell. V aktuální relaci nelze načíst novou verzi. Nové relace PowerShellu budou načítat nejnovější verzi PowerShellGet.
 
 ## <a name="download-and-install-the-module-via-powershell-gallery"></a>Stáhněte a nainstalujte modul pomocí Galerie prostředí PowerShell
@@ -168,7 +175,7 @@ Další informace najdete v tématu [Instalace modulu PowerShellu](/powershell/s
 - Referenční informace: [expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
 - Systému
 
-    ```
+    ```console
     $pathToNupkg = "C:\az.applicationmonitor.0.3.0-alpha.nupkg"
     $pathToZip = ([io.path]::ChangeExtension($pathToNupkg, "zip"))
     $pathToNupkg | rename-item -newname $pathToZip
@@ -182,7 +189,7 @@ Další informace najdete v tématu [Instalace modulu PowerShellu](/powershell/s
 - Referenční informace: [expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) a [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Systému
 
-    ```
+    ```console
     $pathToNupkg = "C:\az.applicationmonitor.0.2.1-alpha.nupkg"
     $pathInstalledModule = "$Env:ProgramFiles\WindowsPowerShell\Modules\az.applicationmonitor"
     Expand-Archive -LiteralPath $pathToNupkg -DestinationPath $pathInstalledModule

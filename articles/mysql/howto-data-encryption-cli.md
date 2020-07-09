@@ -4,14 +4,14 @@ description: Naučte se, jak nastavit a spravovat šifrování dat pro váš Azu
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 3c33fdb114356af7707c1aae2eddefd81bf10b9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6cb3e5db1c7fae3b0542557d2dae8239e0624f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82185825"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86114614"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for MySQL pomocí rozhraní příkazového řádku Azure
 
@@ -22,17 +22,18 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
 * Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
 * Vytvořte Trezor klíčů a klíč, který se použije pro klíč spravovaný zákazníkem. V trezoru klíčů taky povolte možnost Vymazat ochranu a obnovitelné odstranění.
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+  ```azurecli-interactive
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  ```
 
 * Ve vytvořeném Azure Key Vault vytvořte klíč, který bude použit pro šifrování dat Azure Database for MySQL.
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+  ```azurecli-interactive
+  az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+  ```
 
 * Aby bylo možné použít existující Trezor klíčů, musí mít následující vlastnosti, které se mají použít jako klíč spravovaný zákazníkem:
+
   * [Obnovitelné odstranění](../key-vault/general/overview-soft-delete.md)
 
     ```azurecli-interactive
@@ -54,17 +55,17 @@ Naučte se používat rozhraní příkazového řádku Azure k nastavení a spr�
 
 1. Existují dva způsoby, jak získat spravovanou identitu pro váš Azure Database for MySQL.
 
-    ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Vytvořte nový server Azure Database for MySQL se spravovanou identitou.
+   ### <a name="create-an-new-azure-database-for-mysql-server-with-a-managed-identity"></a>Vytvořte nový server Azure Database for MySQL se spravovanou identitou.
 
-    ```azurecli-interactive
-    az mysql server create --name -g <resource_group> --location <locations> --storage-size <size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> --geo-redundant-backup <Enabled/Disabled>  --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server create --name -g <resource_group> --location <locations> --storage-size size>  -u <user>-p <pwd> --backup-retention <7> --sku-name <sku name> -geo-redundant-backup <Enabled/Disabled>  --assign-identity
+   ```
 
-    ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Aktualizujte existující server Azure Database for MySQL, aby získal spravovanou identitu.
+   ### <a name="update-an-existing-the-azure-database-for-mysql-server-to-get-a-managed-identity"></a>Aktualizujte existující server Azure Database for MySQL, aby získal spravovanou identitu.
 
-    ```azurecli-interactive
-    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
-    ```
+   ```azurecli-interactive
+   az mysql server update --name  <server name>  -g <resource_group> --assign-identity
+   ```
 
 2. Nastavte **klíčová oprávnění** (**získání**, **zabalení**, **rozbalení**) pro **objekt zabezpečení**, což je název serveru MySQL.
 
@@ -88,36 +89,36 @@ Když je Azure Database for MySQL zašifrovaný pomocí spravovaného klíče z�
 
 ### <a name="creating-a-restoredreplica-server"></a>Vytvoření obnoveného serveru nebo serveru repliky
 
-  *  [Vytvoření serveru pro obnovení](howto-restore-server-cli.md) 
-  *  [Vytvoření serveru repliky pro čtení](howto-read-replicas-cli.md) 
+* [Vytvoření serveru pro obnovení](howto-restore-server-cli.md) 
+* [Vytvoření serveru repliky pro čtení](howto-read-replicas-cli.md) 
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>Po obnovení serveru se znovu ověří šifrování dat obnoveného serveru.
 
-    ```azurecli-interactive
-    az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az mysql server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-mysql"></a>Další funkce pro klíč, který se používá pro Azure Database for MySQL
 
 ### <a name="get-the-key-used"></a>Získat použitý klíč
 
-    ```azurecli-interactive
-    az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Adresa URL klíče:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>Vypíše použitý klíč.
 
-    ```azurecli-interactive
-    az mysql server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az mysql server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>Vyřadit použitý klíč
 
-    ```azurecli-interactive
-    az mysql server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az mysql server key delete -g <resource_group> --kid <key url>
+```
 
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Použití šablony Azure Resource Manager k povolení šifrování dat
 
@@ -130,6 +131,7 @@ Použijte jednu z předem vytvořených šablon Azure Resource Manager k zříze
 Tato šablona Azure Resource Manager vytvoří server Azure Database for MySQL a použije **trezor** **klíčů a klíč** předaný jako parametry pro povolení šifrování dat na serveru.
 
 ### <a name="for-an-existing-server"></a>Pro existující server
+
 Kromě toho můžete pomocí Azure Resource Manager šablon povolit šifrování dat na stávajících serverech Azure Database for MySQL.
 
 * Předejte ID prostředku Azure Key Vaultho klíče, který jste zkopírovali dříve pod `Uri` vlastností v objektu Properties (vlastnosti).

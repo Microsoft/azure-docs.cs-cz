@@ -1,17 +1,14 @@
 ---
 title: Vytváření, zobrazování a Správa systémových témat v Azure Event Grid (portál)
 description: V tomto článku se dozvíte, jak zobrazit existující systémové téma, vytváření Azure Event Grid systémových témat pomocí Azure Portal.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.author: spelluru
-ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 2dbb0893668d72cfebf2d64e6515ff6ab6fed9bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84457231"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115107"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Vytváření, zobrazování a Správa systémových témat Event Grid v Azure Portal
 V tomto článku se dozvíte, jak vytvořit a spravovat systémová témata pomocí Azure Portal. Přehled systémových témat najdete v tématu [Systémová témata](system-topics.md).

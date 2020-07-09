@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: a005b6cec811b8a584123dc4c8abab77766961e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689006"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112108"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Skupiny počítačů v Azure Monitor dotazy protokolu
 Skupiny počítačů v Azure Monitor umožňují oborovat [dotazy protokolu](../log-query/log-query-overview.md) na konkrétní sadu počítačů.  Každá skupina se naplní počítači pomocí dotazu, který definujete, nebo importováním skupin z různých zdrojů.  Pokud je skupina zahrnutá v dotazu protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačům ve skupině.
@@ -33,7 +34,9 @@ Skupiny počítačů vytvořené z dotazu protokolu obsahují všechny počíta�
 
 Můžete použít libovolný dotaz pro skupinu počítačů, ale musí vrátit jinou sadu počítačů pomocí `distinct Computer` .  Následuje typický příklad dotazu, který můžete použít jako skupinu počítačů.
 
-    Heartbeat | where Computer contains "srv" | distinct Computer
+```kusto
+Heartbeat | where Computer contains "srv" | distinct Computer
+```
 
 Následující postup slouží k vytvoření skupiny počítačů z prohledávání protokolu v Azure Portal.
 
@@ -93,26 +96,28 @@ Kliknutím na **x** ve sloupci **Odebrat** odstraňte skupinu počítačů.  Kli
 ## <a name="using-a-computer-group-in-a-log-query"></a>Použití skupiny počítačů v dotazu protokolu
 Můžete použít skupinu počítačů vytvořenou z dotazu protokolu v dotazu, a to tak, že se její alias považuje za funkci, obvykle s následující syntaxí:
 
-  `Table | where Computer in (ComputerGroup)`
+```kusto
+Table | where Computer in (ComputerGroup)`
+```
 
 Například můžete použít následující pro vrácení záznamů UpdateSummary pouze pro počítače ve skupině počítačů s názvem mycomputergroup.
- 
-  `UpdateSummary | where Computer in (mycomputergroup)`
 
+```kusto
+UpdateSummary | where Computer in (mycomputergroup)`
+```
 
 Importované skupiny počítačů a jejich zahrnuté počítače jsou uložené v tabulce skupiny **počítačů** .  Následující dotaz například vrátí seznam počítačů ve skupině Domain Computers ze služby Active Directory. 
 
-  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+```kusto
+ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer
+```
 
 Následující dotaz vrátí záznamy UpdateSummary pouze pro počítače v doménových počítačích.
 
-  ```
-  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+```kusto
+let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
   UpdateSummary | where Computer in (ADComputers)
-  ```
-
-
-
+```
 
 ## <a name="computer-group-records"></a>Záznamy skupiny počítačů
 V pracovním prostoru Log Analytics se vytvoří záznam pro každé členství ve skupině počítačů vytvořené ze služby Active Directory nebo WSUS.  Tyto záznamy mají typ **počítač** a mají vlastnosti uvedené v následující tabulce.  Pro skupiny počítačů na základě dotazů protokolu nejsou vytvořeny záznamy.

@@ -5,14 +5,14 @@ author: tremansdoerfer
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 4c1fd53eb6ebf1f1aebdfba99b736e26bd6cff2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12ad18edbb434bdfaec2ae817ea079a843661ef6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85306880"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111336"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Firewall webových aplikací Azure a Azure Policy
 
@@ -22,9 +22,13 @@ Firewall webových aplikací Azure (WAF) v kombinaci s Azure Policy může pomá
 
 K dispozici je několik integrovaných zásad Azure pro správu prostředků WAF. Členění zásad a jejich funkce jsou následující:
 
-1. **Brána Firewall webových aplikací by měla být povolená pro službu Azure front-dvířks nebo Application Gateway**: služby Azure front-WAF a aplikační brány se vyhodnocují v případě, že k vytvoření prostředku existuje. Zásady mají tři důsledky: audit, DENY a Disable. Audit sleduje, když služba nebo Application Gateway služby front-end v Azure nemá WAF a umožňuje uživatelům zjistit, co služba Azure front dveří nebo Application Gateway v současnosti nedodržuje. Při odepření se zabrání tomu, aby se vytvořila služba Azure front-dveří nebo Application Gateway, pokud není WAF připojené. Disabled vypne tuto zásadu.
+1. **Firewall webových aplikací (WAF) by měl být povolený pro službu Azure front-dveří**: služby Azure front-dveří jsou vyhodnoceny, pokud existuje WAF při vytváření prostředků. Zásady mají tři důsledky: audit, DENY a Disable. Audit sleduje, když služba Azure front-dveří nemá WAF a umožňuje uživatelům zjistit, co služba Azure front dveří nedodržuje. Při odepření se zabrání vytvoření služby Azure front-dveří, pokud není WAF připojené. Disabled vypne tuto zásadu.
 
-2. **Firewall webových aplikací by měl být režim nastavení pro Application Gateway a službu Azure front-dveří**: Brána Firewall webových aplikací se vyhodnocuje v tom, v jakém režimu je, buď prevence, nebo detekce. Zásada zajišťuje konzistenci režimu napříč firewally webových aplikací. Zásady mají tři důsledky: audit, DENY a Disable. Audit sleduje, když se WAF nevejde do zadaného režimu. Deny zabrání v vytváření jakýchkoli WAF, pokud není ve správném režimu. Disabled vypne tuto zásadu.
+2. **Firewall webových aplikací (WAF) by měla být povolená pro Application Gateway**: aplikační brány se vyhodnocují, pokud existuje WAF při vytváření prostředků. Zásady mají tři důsledky: audit, DENY a Disable. Audit sleduje, když Application Gateway nemá WAF a umožňuje uživatelům zjistit, co Application Gateway nedodržuje. Deny zabrání v vytváření jakýchkoli Application Gateway, pokud není připojen WAF. Disabled vypne tuto zásadu.
+
+3. **Firewall webových aplikací (WAF) by měl používat zadaný režim pro službu Azure front-dveří**: vyžaduje, aby bylo použití režimu detekce nebo prevence aktivní ve všech zásadách firewallu webových aplikací pro službu Azure front-dveří. Zásady mají tři důsledky: audit, DENY a Disable. Audit sleduje, když se WAF nevejde do zadaného režimu. Deny zabrání v vytváření jakýchkoli WAF, pokud není ve správném režimu. Disabled vypne tuto zásadu.
+
+4. **Firewall webových aplikací (WAF) by měl používat zadaný režim pro Application Gateway**: v zásadách firewallu webových aplikací pro Application Gateway musí být použití režimu detekce nebo prevence aktivní. Zásady mají tři důsledky: audit, DENY a Disable. Audit sleduje, když se WAF nevejde do zadaného režimu. Deny zabrání v vytváření jakýchkoli WAF, pokud není ve správném režimu. Disabled vypne tuto zásadu.
 
 
 ## <a name="launch-an-azure-policy"></a>Spustit Azure Policy
@@ -45,7 +49,7 @@ K dispozici je několik integrovaných zásad Azure pro správu prostředků WAF
     2.  **Vyloučení**: vyberte všechny prostředky z oboru, které se mají vyloučit ze zásad. 
     3.  **Definice zásady**: vyberte Azure Policy, který se má použít u oboru s vyloučeními. Na panelu hledání zadejte "Firewall webových aplikací" a vyberte odpovídající Azure Policy firewallu webových aplikací.
 
-![Firewall webových aplikací Azure](../media/waf-azure-policy/policy-listings.png)
+![Firewall webových aplikací Azure](../media/waf-azure-policy/policy-listing.png)
 
 
 5.  Vyberte kartu **parametry** a aktualizujte parametry zásad. Pro lepší objasnění toho, co parametr dělá, najeďte myší na ikonu informace vedle názvu parametru pro další objasnění.

@@ -1,17 +1,18 @@
 ---
 title: Odebrání přístupu k delegování
-description: Naučte se, jak odebrat přístup k prostředkům, které byly delegované pro poskytovatele služeb pro správu delegovaných prostředků Azure.
-ms.date: 04/24/2020
+description: Naučte se, jak odebrat přístup k prostředkům, které byly delegované pro poskytovatele služeb pro Azure Lighthouse.
+ms.date: 07/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 2a8024a47b3f7ea461e4ea7648db7003889552cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636491"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111724"
 ---
 # <a name="remove-access-to-a-delegation"></a>Odebrání přístupu k delegování
 
-Po delegování předplatného nebo skupiny prostředků zákazníka k poskytovateli služeb pro [správu delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md)můžete delegování v případě potřeby odebrat. Po odebrání delegování už nebude platit přístup k uživatelům v tenantovi poskytovatele služeb.
+Po delegování předplatného nebo skupiny prostředků zákazníka k poskytovateli služeb pro [Azure Lighthouse](../overview.md)se delegování dá v případě potřeby odebrat. Po odebrání delegace se už nebude vztahovat přístup [správy delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md) , který byl dříve udělen uživatelům v tenantovi poskytovatele služeb.
 
 Odebrání delegování může provést uživatel v tenantovi zákazníka nebo v tenantovi poskytovatele služeb, pokud má uživatel příslušná oprávnění.
 

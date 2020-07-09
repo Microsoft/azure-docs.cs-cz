@@ -3,11 +3,12 @@ title: Vytváření a správa projektů Azure Migrate
 description: Umožňuje najít, vytvořit, spravovat a odstranit projekty v Azure Migrate.
 ms.topic: how-to
 ms.date: 04/19/2020
-ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676396"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113424"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Vytváření a správa projektů Azure Migrate
 
@@ -82,7 +83,7 @@ Poznámky:
        
     - Pokud jste již Azure Migrate projekt odstranili, vyberte **skupiny prostředků** v levém podokně Azure Portal a vyhledejte pracovní prostor.
        
-2. [Podle pokynů](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) odstraňte pracovní prostor.
+2. [Podle pokynů](../azure-monitor/platform/delete-workspace.md) odstraňte pracovní prostor.
 
 ## <a name="next-steps"></a>Další kroky
 

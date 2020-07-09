@@ -1,19 +1,14 @@
 ---
 title: Azure Container Registry jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro Container Registry události s Azure Event Grid
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113713"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry jako zdroj Event Grid
 
@@ -25,7 +20,7 @@ Tento článek poskytuje vlastnosti a schéma pro události Container Registry.�
 
 Azure Container Registry emituje následující typy událostí:
 
-| Typ události | Popis |
+| Typ události | Description |
 | ---------- | ----------- |
 | Microsoft. ContainerRegistry. ImagePushed | Je aktivována, když je vložen obrázek. |
 | Microsoft. ContainerRegistry. ImageDeleted | Je aktivována, když dojde k odstranění obrázku. |
@@ -157,7 +152,7 @@ Schéma pro událost odstranění grafu se podobá schématu pro odstraněnou ud
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
@@ -170,7 +165,7 @@ Událost má následující data nejvyšší úrovně:
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | id | řetězec | ID události |
 | časové razítko | řetězec | Čas, kdy došlo k události. |
@@ -180,7 +175,7 @@ Datový objekt má následující vlastnosti:
 
 Cílový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | Média | řetězec | Typ MIME odkazovaného objektu |
 | velikost | celé číslo | Počet bajtů obsahu. Stejné jako pole length. |

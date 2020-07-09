@@ -1,89 +1,162 @@
 ---
 title: Správa fondu back-endu
-description: Průvodce konfigurací back-end fondu Load Balancer
+titleSuffix: Azure Load Balancer
+description: Začněte s učením, jak nakonfigurovat a spravovat back-end fond Azure Load Balancer.
 services: load-balancer
-author: erichrt
+author: asudbring
 ms.service: load-balancer
 ms.topic: overview
-ms.date: 07/06/2020
-ms.author: errobin
-ms.openlocfilehash: 6d9700e134a9e3d6c53524d15c8b3503cf5773c7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/07/2020
+ms.author: allensu
+ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050184"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113968"
 ---
 # <a name="backend-pool-management"></a>Správa fondu back-endu
-Back-end fond je základní součástí Load Balancer, který definuje skupinu výpočetních prostředků, která bude obsluhovat provoz pro dané pravidlo vyrovnávání zatížení. Když nakonfigurujete fond back-end serveru správně, budete mít k dispozici skupinu oprávněných počítačů pro obsluhu provozu. Existují dva způsoby konfigurace fondu back-endu, síťové karty a kombinace IP adresy a Virtual Network (VNET) ID prostředku. 
+Back-end fond je kritickou součástí nástroje pro vyrovnávání zatížení. Back-end fond definuje skupinu prostředků, které budou obsluhovat provoz pro dané pravidlo vyrovnávání zatížení.
 
-Ve většině scénářů, které zahrnují Virtual Machines a Virtual Machine Scale Sets, se doporučuje nakonfigurovat fond back-end podle síťových adaptérů, protože tato metoda vytvoří nejvíce přímé propojení mezi vaším prostředkem a back-end fondem. V případě scénářů týkajících se kontejnerů a Kubernetes lusků, které nemají síťovou kartu ani pro předběžné přidělení rozsahu IP adres pro back-end prostředky, můžete nakonfigurovat fond back-end podle kombinace IP adresy a ID virtuální sítě.
+Existují dva způsoby konfigurace fondu back-endu:
+* Síťová karta (NIC)
+* ID prostředku kombinované IP adresy a Virtual Network (VNET)
 
-Při konfiguraci buď pomocí síťového rozhraní nebo IP adresy a ID virtuální sítě prostřednictvím portálu vás uživatelské rozhraní provede jednotlivými kroky a všechny aktualizace konfigurace se budou zpracovávat v back-endu. Konfigurační oddíly tohoto článku se soustředí na šablony Azure PowerShell, CLI, REST API a ARM, které vám poskytnou přehled o tom, jak jsou pro jednotlivé možnosti konfigurace strukturované back-endové fondy.
+Při použití virtuálních počítačů a sady škálování virtuálních počítačů nakonfigurujte back-end fond podle síťových adaptérů. Tato metoda vytváří nejpřímější propojení mezi vaším prostředkem a back-end fondem. 
+
+Ve scénářích, kdy není k dispozici síťové rozhraní, jako jsou kontejnery nebo Kubernetes lusky, nakonfigurujte svůj fond back-end podle kombinace IP adresy a ID virtuální sítě.
+
+Konfigurační oddíly tohoto článku se zaměří na:
+
+* Azure PowerShell
+* Azure CLI
+* REST API
+* Šablony Azure Resource Manageru 
+
+Tyto části poskytují přehled o struktuře back-end fondů pro každou možnost konfigurace.
 
 ## <a name="configuring-backend-pool-by-nic"></a>Konfigurace fondu back-endu podle síťové karty
-Když konfigurujete fond back-end podle síťových adaptérů, je důležité mít na paměti, že back-end fond je vytvořen jako součást operace Load Balancer a členové budou přidáni do fondu back-endu jako součást vlastnosti konfigurace protokolu IP jejich síťového rozhraní během operace síťového rozhraní. Následující příklady jsou zaměřené na operace vytvoření a naplnění fondu back-end pro zdůraznění tohoto pracovního postupu a vztahu.
+Back-end fond je vytvořen jako součást operace nástroje pro vyrovnávání zatížení. Vlastnost konfigurace protokolu IP síťového rozhraní se používá k přidání členů fondu back-end.
+
+Následující příklady jsou zaměřené na operace vytvoření a naplnění fondu back-end pro zdůraznění tohoto pracovního postupu a vztahu.
 
   >[!NOTE] 
   >Je důležité si uvědomit, že back-endové fondy nakonfigurované přes síťové rozhraní se nedají aktualizovat v rámci operace ve fondu back-endu. Jakékoli přidání nebo odstranění prostředků back-endu se musí objevit v síťovém rozhraní prostředku.
 
 ### <a name="powershell"></a>PowerShell
-Vytvořit nový back-end fond: 
-```powershell
-$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup   -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+Vytvořit nový back-end fond:
+ 
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+
+$backendPool = 
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
 Vytvořte nové síťové rozhraní a přidejte ho do fondu back-end:
-```powershell
-$nic = New-AzNetworkInterface -ResourceGroupName $rgName -Location $location `
-  -Name 'MyNic' -LoadBalancerBackendAddressPool $bepool -Subnet $vnet.Subnets[0]
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+$nicname = "myNic"
+$location = "eastus"
+$vnetname = <your-vnet-name>
+
+$vnet = 
+Get-AzVirtualNetwork -Name $vnetname -ResourceGroupName $resourceGroup
+
+$nic = 
+New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicname -LoadBalancerBackendAddressPool $backendPoolName -Subnet $vnet.Subnets[0]
 ```
 
-Načtěte informace o fondu back-endu pro Load Balancer a ověřte, že se toto síťové rozhraní přidalo do back-endu fondu:
-```powershell
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool  $bePool  
+Načtěte informace o fondu back-end pro nástroj pro vyrovnávání zatížení, abyste potvrdili, že toto síťové rozhraní je přidané do fondu back-endu:
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+
+$lb =
+Get-AzLoadBalancer -ResourceGroupName $res
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName 
 ```
 
 Vytvořte nový virtuální počítač a připojte síťové rozhraní k umístění do back-endu fondu:
-```powershell
+
+```azurepowershell-interactive
 # Create a username and password for the virtual machine
 $cred = Get-Credential
 
 # Create a virtual machine configuration
-$vmConfig = New-AzVMConfig -VMName 'myVM1' -VMSize Standard_DS1_v2 `
- | Set-AzVMOperatingSystem -Windows -ComputerName 'myVM1' -Credential $cred `
- | Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version latest `
- | Add-AzVMNetworkInterface -Id $nicVM1.Id
+$vmname = "myVM1"
+$vmsize = "Standard_DS1_v2"
+$pubname = "MicrosoftWindowsServer"
+$nicname = "myNic"
+$off = "WindowsServer"
+$sku = "2019-Datacenter"
+$resourceGroup = "myResourceGroup"
+$location = "eastus"
+
+$nic =
+Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
+
+$vmConfig = 
+New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
  
 # Create a virtual machine using the configuration
-$vm1 = New-AzVM -ResourceGroupName $rgName -Zone 1 -Location $location -VM $vmConfig
+$vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
-
-  
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 Vytvořte back-end fond:
-```bash
-az network lb address-pool create --resourceGroup myResourceGroup --lb-name myLB --name myBackendPool 
+
+```azurecli-interactive
+az network lb address-pool create \
+--resourceGroup myResourceGroup \
+--lb-name myLB \
+--name myBackendPool 
 ```
 
 Vytvořte nové síťové rozhraní a přidejte ho do fondu back-end:
-```bash
-az network nic create --resource-group myResourceGroup --name myNic --vnet-name myVnet --subnet mySubnet --network-security-group myNetworkSecurityGroup --lb-name myLB --lb-address-pools myBackEndPool
+
+```azurecli-interactive
+az network nic create \
+--resource-group myResourceGroup \
+--name myNic \
+--vnet-name myVnet \
+--subnet mySubnet \
+--network-security-group myNetworkSecurityGroup \
+--lb-name myLB \
+--lb-address-pools myBackEndPool
 ```
 
 Načtěte back-end fond pro potvrzení, že se IP adresa přidala správně:
-```bash
-az network lb address-pool show -g MyResourceGroup --lb-name MyLb -n MyBackendPool
+
+```azurecli-interactive
+az network lb address-pool show \
+--resource-group myResourceGroup \
+--lb-name myLb \
+--name myBackendPool
 ```
 
 Vytvořte nový virtuální počítač a připojte síťové rozhraní k umístění do back-endu fondu:
-```bash
-az vm create --resource-group myResourceGroup --name myVM --nics myNic --image UbuntuLTS --admin-username azureuser --generate-ssh-keys
+
+```azurecli-interactive
+az vm create \
+--resource-group myResourceGroup \
+--name myVM \
+--nics myNic \
+--image UbuntuLTS \
+--admin-username azureuser \
+--generate-ssh-keys
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 Vytvořte back-end fond:
+
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
 ```
@@ -117,7 +190,7 @@ Text požadavku JSON:
 }
 ```
 
-Načtěte informace o fondu back-endu pro Load Balancer a ověřte, že se toto síťové rozhraní přidalo do back-endu fondu:
+Načtěte informace o fondu back-end pro nástroj pro vyrovnávání zatížení, abyste potvrdili, že toto síťové rozhraní je přidané do fondu back-endu:
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name/providers/Microsoft.Network/loadBalancers/{load-balancer-name/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
@@ -172,72 +245,111 @@ Text požadavku JSON:
 }
 ```
 
-### <a name="arm-template"></a>Šablona ARM
-Pomocí této [rychlé zprovoznění šablony ARM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) nasaďte Load Balancer a Virtual Machines a přidejte Virtual Machines do fondu back-end prostřednictvím síťového rozhraní.
+### <a name="resource-manager-template"></a>Šablona Resource Manageru
+Podle tohoto [rychlého startu správce prostředků šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) nasaďte Nástroj pro vyrovnávání zatížení a virtuální počítače a přidejte virtuální počítače do back-endového fondu prostřednictvím síťového rozhraní.
 
-## <a name="configuring-backend-pool-by-ip-address-and-virtual-network"></a>Konfiguruje se back-end fond podle IP adresy a Virtual Network
-Pokud vyrovnáváte zatížení prostředků kontejnerů nebo předvyplnění back-end fondu s rozsahem IP adres, můžete využít IP adresu a Virtual Network k směrování na libovolný platný prostředek bez ohledu na to, jestli má síťové rozhraní. Při konfiguraci přes IP adresu a virtuální síť se veškerá správa back-end fondu provádí přímo na objektu back-endu, který je zvýrazněný v níže uvedených příkladech.
+## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>Konfigurace fondu back-endu podle IP adresy a virtuální sítě
+Ve scénářích s kontejnery nebo předem vyplněný fond back-end s IP adresami použijte IP a virtuální síť.
+
+Veškerá správa back-end fondu se provádí přímo na objektu back-end fondu, který je zvýrazněný v níže uvedených příkladech.
 
   >[!IMPORTANT] 
   >Tato funkce je aktuálně ve verzi Preview a má následující omezení:
   >* Limit 100 IP adres, které se přidávají
-  >* Back-endové prostředky musí být ve stejném Virtual Network jako Load Balancer
-  >* Tato funkce momentálně není v uživatelském prostředí portálu podporována.
-  >* Toto je dostupné jenom pro standardní nástroje pro vyrovnávání zatížení.
+  >* Back-endové prostředky musí být ve stejné virtuální síti jako nástroj pro vyrovnávání zatížení.
+  >* Tato funkce se v současnosti v Azure Portal nepodporuje.
+  >* Jenom standardní nástroj pro vyrovnávání zatížení
   
 ### <a name="powershell"></a>PowerShell
-Vytvořit nový back-end fond: 
-```powershell
-$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup   -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPooName  
+Vytvořit nový back-end fond:
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$loadBalancerName = "myLoadBalancer"
+$backendPoolName = "myBackendPool"
+$vnetName = "myVnet"
+$location = "eastus"
+$nicName = "myNic"
+
+$backendPool = 
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
-Aktualizujte tento fond back-end s novou IP adresou z existující virtuální sítě:  
-```powershell
-$virtualNetwork = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
+Aktualizovat back-end fond s novou IP adresou z existující virtuální sítě:
  
-$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+```azurepowershell-interactive
+$virtualNetwork = 
+Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
+ 
+$ip1 = 
+New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
  
 $backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
-Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool  $backendPool  
+Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
 ```
 
-Načtěte informace o fondu back-endu pro Load Balancer a ověřte, že se back-endové adresy přidávají do back-endu.
-```powershell
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool  $backendPool  
+Načtěte informace o fondu back-end pro nástroj pro vyrovnávání zatížení, abyste ověřili, že se back-endové adresy přidávají do back-endu.
+
+```azurepowershell-interactive
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
 ```
-Vytvořte síťové rozhraní a přidejte ho do fondu back-end nastavením IP adresy na jednu z back-endové adresy:
-```
-$nic = New-AzNetworkInterface -ResourceGroupName $rgName -Location $location `
-  -Name 'MyNic' -PrivateIpAddress 10.0.0.4 -Subnet $vnet.Subnets[0]
+Vytvořte síťové rozhraní a přidejte ho do fondu back-end. Nastavte IP adresu na jednu z back-endové adresy:
+
+```azurepowershell-interactive
+$nic = 
+New-AzNetworkInterface -ResourceGroupName $resourceGroup -Location $location -Name $nicName -PrivateIpAddress 10.0.0.4 -Subnet $virtualNetwork.Subnets[0]
 ```
 
 Vytvořte virtuální počítač a připojte síťovou kartu s IP adresou ve fondu back-endu:
-```powershell
+```azurepowershell-interactive
 # Create a username and password for the virtual machine
 $cred = Get-Credential
 
 # Create a virtual machine configuration
-$vmConfig = New-AzVMConfig -VMName 'myVM' -VMSize Standard_DS1_v2 `
- | Set-AzVMOperatingSystem -Windows -ComputerName 'myVM' -Credential $cred `
- | Set-AzVMSourceImage -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2019-Datacenter -Version latest `
- | Add-AzVMNetworkInterface -Id $nic.Id
- 
+$vmname = "myVM1"
+$vmsize = "Standard_DS1_v2"
+$pubname = "MicrosoftWindowsServer"
+$nicname = "myNic"
+$off = "WindowsServer"
+$sku = "2019-Datacenter"
+$resourceGroup = "myResourceGroup"
+$location = "eastus"
+
+$nic =
+Get-AzNetworkInterface -Name $nicname -ResourceGroupName $resourceGroup
+
+$vmConfig = 
+New-AzVMConfig -VMName $vmname -VMSize $vmsize | Set-AzVMOperatingSystem -Windows -ComputerName $vmname -Credential $cred | Set-AzVMSourceImage -PublisherName $pubname -Offer $off -Skus $sku -Version latest | Add-AzVMNetworkInterface -Id $nic.Id
+
 # Create a virtual machine using the configuration
-$vm = New-AzVM -ResourceGroupName $rgName -Zone 1 -Location $location -VM $vmConfig
+$vm1 = New-AzVM -ResourceGroupName $resourceGroup -Zone 1 -Location $location -VM $vmConfig
 ```
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 Pomocí rozhraní příkazového řádku můžete buď naplnit back-end fond prostřednictvím parametrů příkazového řádku nebo pomocí konfiguračního souboru JSON. 
 
 Vytvořte a naplňte back-end fond prostřednictvím parametrů příkazového řádku:
-```bash
-az network lb address-pool create --lb-name myLB --name myBackendPool --vnet {VNET resource ID} --backend-address name=addr1 ip-address=10.0.0.4 --backend-address name=addr2 ip-address=10.0.0.5
+
+```azurecli-interactive
+az network lb address-pool create \
+--resource-group myResourceGroup \
+--lb-name myLB \
+--name myBackendPool \
+--vnet {VNET resource ID} \
+--backend-address name=addr1 ip-address=10.0.0.4 \
+--backend-address name=addr2 ip-address=10.0.0.5
 ```
 
 Vytvořte a naplňte back-end fond prostřednictvím konfiguračního souboru JSON:
-```bash
-az network lb address-pool create --lb-name myLB --name myBackendPool --vnet {VNET resource ID} --backend-address-config-file @config_file.json
+
+```azurecli-interactive
+az network lb address-pool create \
+--resource-group myResourceGroup \
+--lb-name myLB \
+--name myBackendPool \
+--vnet {VNET resource ID} \
+--backend-address-config-file @config_file.json
 ```
 
 Konfigurační soubor JSON:
@@ -256,13 +368,18 @@ Konfigurační soubor JSON:
         ]
 ```
 
-Načtěte informace o fondu back-endu pro Load Balancer a ověřte, že se back-endové adresy přidávají do back-endu.
-```bash
-az network lb address-pool show -g MyResourceGroup --lb-name MyLb -n MyBackendPool
+Načtěte informace o fondu back-end pro nástroj pro vyrovnávání zatížení, abyste ověřili, že se back-endové adresy přidávají do back-endu.
+
+```azurecli-interactive
+az network lb address-pool show \
+--resource-group myResourceGroup \
+--lb-name MyLb \
+--name MyBackendPool
 ```
 
-Vytvořte síťové rozhraní a přidejte ho do fondu back-end nastavením IP adresy na jednu z back-endové adresy:
-```bash
+Vytvořte síťové rozhraní a přidejte ho do fondu back-end. Nastavte IP adresu na jednu z back-endové adresy:
+
+```azurecli-interactive
 az network nic create \
   --resource-group myResourceGroup \
   --name myNic \
@@ -274,7 +391,8 @@ az network nic create \
 ```
 
 Vytvořte virtuální počítač a připojte síťovou kartu s IP adresou ve fondu back-endu:
-```bash
+
+```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVM \
@@ -284,10 +402,13 @@ az vm create \
   --generate-ssh-keys
 ```
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
+Vytvořte back-end fond a definujte back-end adresy prostřednictvím žádosti o back-end fondu. Nakonfigurujte back-end adresy v těle JSON žádosti o vložení:
 
-Vytvořte back-end fond a definujte back-end adresy prostřednictvím žádosti o back-end fondu. Nakonfigurujte back-end adresy, které chcete přidat přes název adresy, IP adresu a ID Virtual Network v těle JSON žádosti o vložení:
+* Název adresy
+* IP adresa
+* ID virtuální sítě 
 
 ```
 PUT https://management.azure.com/subscriptions/subid/resourceGroups/testrg/providers/Microsoft.Network/loadBalancers/lb/backendAddressPools/backend?api-version=2020-05-01
@@ -321,12 +442,12 @@ Text požadavku JSON:
 }
 ```
 
-Načtěte informace o fondu back-endu pro Load Balancer a ověřte, že se back-endové adresy přidávají do back-endu.
+Načtěte informace o fondu back-end pro nástroj pro vyrovnávání zatížení, abyste ověřili, že se back-endové adresy přidávají do back-endu.
 ```
 GET https://management.azure.com/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}?api-version=2020-05-01
 ```
 
-Vytvořte síťové rozhraní a přidejte ho do fondu back-end nastavením IP adresy na jednu z back-endové adresy:
+Vytvořte síťové rozhraní a přidejte ho do fondu back-end. Nastavte IP adresu na jednu z back-endové adresy:
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/networkInterfaces/{nic-name}?api-version=2020-05-01
 ```
@@ -401,8 +522,8 @@ Text požadavku JSON:
 }
 ```
 
-### <a name="arm-template"></a>Šablona ARM
-Vytvořte Load Balancer, back-end fond a naplňte back-end fond s back-end adresami:
+### <a name="resource-manager-template"></a>Šablona Resource Manageru
+Vytvořte Nástroj pro vyrovnávání zatížení, fond back-end a naplňte back-end fond s back-end adresami:
 ```
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -719,3 +840,7 @@ Vytvořte virtuální počítač a připojené síťové rozhraní. Nastavte IP 
   ]
 }
 ```
+## <a name="next-steps"></a>Další kroky
+V tomto článku jste se dozvěděli o Azure Load Balancer správě fondu back-endu a o tom, jak nakonfigurovat back-end fond podle IP adresy a virtuální sítě.
+
+Přečtěte si další informace o [Azure Load Balancer](load-balancer-overview.md).

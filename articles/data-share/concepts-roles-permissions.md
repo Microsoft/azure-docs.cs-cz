@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 85b680aafd822b80edf543ca39787848129f1930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322046"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86110993"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Role a požadavky pro Azure Data Share 
 
@@ -30,9 +30,8 @@ Aby uživatel mohl sdílet nebo přijímat data z úložiště dat Azure, potře
 
 Níže je uveden souhrn rolí přiřazených k spravované identitě prostředku sdílení dat:
 
-| |  |  |
-|---|---|---|
 |**Typ úložiště dat**|**Zdrojové úložiště dat Zprostředkovatel dat**|**Datové úložiště cílových uživatelů dat**|
+|---|---|---|
 |Azure Blob Storage| Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
 |Azure Data Lake Gen1 | Vlastník | Nepodporuje se
 |Azure Data Lake Gen2 | Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
@@ -42,9 +41,8 @@ Níže je uveden souhrn rolí přiřazených k spravované identitě prostředku
 
 Pro sdílení založené na SQL je potřeba vytvořit uživatele SQL z externího poskytovatele v Azure SQL Database se stejným názvem jako prostředek sdílené složky Azure. Níže je uveden souhrn oprávnění vyžadovaných uživatelem SQL.
 
-| |  |  |
-|---|---|---|
 |**Typ SQL Database**|**Oprávnění uživatele Zprostředkovatel dat SQL**|**Oprávnění uživatele SQL pro příjemce dat**|
+|---|---|---|
 |Azure SQL Database | db_datareader | db_datareader, db_datawriter db_ddladmin
 |Azure Synapse Analytics (dříve SQL DW) | db_datareader | db_datareader, db_datawriter db_ddladmin
 |
@@ -103,4 +101,3 @@ Pokud chcete ve svém tenantovi Azure zobrazit pozvání ke sdílení dat Azure 
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o rolích v Azure – [pochopení definic rolí](../role-based-access-control/role-definitions.md)
-

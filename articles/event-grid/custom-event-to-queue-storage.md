@@ -1,20 +1,14 @@
 ---
 title: 'Rychlý Start: odesílání vlastních událostí do fronty úložiště – Event Grid, Azure CLI'
 description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI můžete publikovat téma a přihlásit se k odběru této události. Pro koncový bod se používá fronta úložiště.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: 44ffa570cfda39c186966866ee5755ab090083a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 18f2bf42941ddd8f71f70b132ad52a47a62fc854
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73721450"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112098"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Rychlý Start: směrování vlastních událostí do Azure Queue Storage pomocí rozhraní příkazového řádku Azure a Event Grid
 

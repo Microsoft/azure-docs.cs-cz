@@ -4,11 +4,12 @@ description: REST API výstrahy Log Analytics umožňuje vytvářet a spravovat 
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ab2a1369fc4902afec7d62e44ef8e947864167f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664996"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112047"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytváření a Správa pravidel výstrah v Log Analytics s využitím REST API 
 
@@ -37,25 +38,29 @@ Můžete například zvážit dotaz na událost s intervalem 15 minut a časový
 ### <a name="retrieving-schedules"></a>Načítají se plány
 K načtení všech plánů uloženého hledání použijte metodu get.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
+```
 
 Použijte metodu Get s ID plánu k načtení konkrétního plánu pro uložené hledání.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
+```
 
 Následuje ukázková odpověď pro plán.
 
 ```json
 {
-    "value": [{
-        "id": "subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/sampleRG/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace/savedSearches/0f0f4853-17f8-4ed1-9a03-8e888b0d16ec/schedules/a17b53ef-bd70-4ca4-9ead-83b00f2024a8",
-        "etag": "W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\"",
-        "properties": {
-            "Interval": 15,
-            "QueryTimeSpan": 15,
-            "Enabled": true,
-        }
-    }]
+   "value": [{
+      "id": "subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/sampleRG/providers/Microsoft.OperationalInsights/workspaces/MyWorkspace/savedSearches/0f0f4853-17f8-4ed1-9a03-8e888b0d16ec/schedules/a17b53ef-bd70-4ca4-9ead-83b00f2024a8",
+      "etag": "W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\"",
+      "properties": {
+         "Interval": 15,
+         "QueryTimeSpan": 15,
+         "Enabled": true,
+      }
+   }]
 }
 ```
 
@@ -65,21 +70,25 @@ Pomocí metody PUT s jedinečným ID plánu vytvořte nový plán.  Dva plány n
 > [!NOTE]
 > Název všech uložených hledání, plánů a akcí vytvořených pomocí rozhraní Log Analytics API musí být malými písmeny.
 
-    $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'true' } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+```powershell
+$scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'true' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+```
 
 ### <a name="editing-a-schedule"></a>Úprava plánu
 Pro úpravu tohoto plánu použijte metodu PUT s existujícím ID plánu pro stejné uložené hledání. v následujícím příkladu je plán zakázán. Tělo žádosti musí obsahovat *značku ETag* plánu.
 
-      $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
-      armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
-
+```powershell
+$scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Enabled':'false' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
+```
 
 ### <a name="deleting-schedules"></a>Odstraňují se plány
 K odstranění plánu použijte metodu DELETE s ID plánu.
 
-    armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
-
+```powershell
+armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
+```
 
 ## <a name="actions"></a>Akce
 Plán může mít několik akcí. Akce může definovat jeden nebo více procesů, které mají být provedeny jako odeslání e-mailu nebo spuštění Runbooku, nebo může definovat prahovou hodnotu, která určuje, kdy výsledky hledání odpovídají určitým kritériím.  Některé akce budou definovat obojí, aby byly procesy provedeny při splnění prahové hodnoty.
@@ -96,11 +105,15 @@ Všechny akce mají vlastnosti v následující tabulce.  Různé typy výstrah 
 
 Použijte metodu Get k načtení všech akcí pro plán.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
+```
 
 Použijte metodu Get s ID akce k načtení konkrétní akce pro plán.
 
-    armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
+```powershell
+armclient get /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
+```
 
 ### <a name="creating-or-editing-actions"></a>Vytvoření nebo úprava akcí
 Použijte metodu PUT s ID akce, které je jedinečné pro plán pro vytvoření nové akce.  Při vytváření akce v konzole Log Analytics je identifikátor GUID pro ID akce.
@@ -116,7 +129,9 @@ Formát žádosti o vytvoření nové akce se liší podle typu akce, takže tyt
 
 Akci odstraňte pomocí metody Delete s ID akce.
 
-    armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
+```powershell
+armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
+```
 
 ### <a name="alert-actions"></a>Akce výstrah
 Plán by měl mít jednu a jenom jednu akci výstrahy.  Akce výstrahy mají jednu nebo více částí v následující tabulce.  Každá je podrobněji popsána níže.
@@ -143,26 +158,32 @@ Můžete například zvážit dotaz na událost v intervalu 15 minut, rozpětí 
 
 Následuje ukázková odpověď pro akci s pouze prahovou hodnotou.  
 
-    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
-    "properties": {
-        "Type": "Alert",
-        "Name": "My threshold action",
-        "Threshold": {
-            "Operator": "gt",
-            "Value": 10
-        },
-        "Version": 1
-    }
+```json
+"etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "My threshold action",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 10
+   },
+   "Version": 1
+}
+```
 
 Pro vytvoření nové prahové hodnoty pro plán použijte metodu PUT s jedinečným ID akce.  
 
-    $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```powershell
+$thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```
 
 Pro úpravu prahové hodnoty pro plán použijte metodu PUT s existujícím ID akce.  Tělo žádosti musí obsahovat značku ETag akce.
 
-    $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```powershell
+$thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
+```
 
 #### <a name="severity"></a>Severity
 Log Analytics umožňuje klasifikovat výstrahy do kategorií a umožnit tak snazší správu a třídění. Definovaná Závažnost výstrahy je: informativní, varovná a kritická. Ty jsou namapovány na normalizované měřítko závažnosti výstrah Azure jako:
@@ -175,26 +196,33 @@ Log Analytics umožňuje klasifikovat výstrahy do kategorií a umožnit tak sna
 
 Následuje ukázková odpověď pro akci s pouze prahovou hodnotou a závažností. 
 
-    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
-    "properties": {
-        "Type": "Alert",
-        "Name": "My threshold action",
-        "Threshold": {
-            "Operator": "gt",
-            "Value": 10
-        },
-        "Severity": "critical",
-        "Version": 1    }
+```json
+"etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "My threshold action",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 10
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 Pomocí metody PUT s jedinečným ID akce vytvořte novou akci pro plán se závažností.  
 
-    $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```powershell
+$thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```
 
 Pro úpravu akce závažnosti pro plán použijte metodu PUT s existujícím ID akce.  Tělo žádosti musí obsahovat značku ETag akce.
 
-    $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```powershell
+$thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+```
 
 #### <a name="suppress"></a>Potlačit
 Výstrahy dotazování založené na Log Analytics se spustí při každém splnění nebo překročení prahové hodnoty. V závislosti na logice odvozené v dotazu to může vést k tomu, že se aktivuje výstraha pro řadu intervalů, takže oznámení se taky odesílají trvale. Aby se takovému scénáři zabránilo, může uživatel nastavit možnost potlačit Log Analytics, aby čekala na stanovenou dobu, než se na základě pravidla výstrahy spustí oznámení za sekundu. Takže pokud je potlačení nastaveno na 30 minut; pak se výstraha aktivuje poprvé a pošle se nakonfigurovaná oznámení. Ale potom počkejte 30 minut, než se znovu použije oznámení pro pravidlo upozornění. V průběžném období bude pravidlo výstrahy i nadále používat oznámení, že Log Analytics po zadanou dobu, a to bez ohledu na to, kolikrát se pravidlo výstrahy vyvolalo v tomto období.
@@ -203,29 +231,36 @@ Vlastnost potlačit Log Analytics pravidlo výstrahy je určena pomocí hodnoty 
 
 Následuje ukázková odpověď pro akci, která má jenom vlastnost Threshold, závažnost a potlačení.
 
-    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
-    "properties": {
-        "Type": "Alert",
-        "Name": "My threshold action",
-        "Threshold": {
-            "Operator": "gt",
-            "Value": 10
-        },
-        "Throttling": {
-          "DurationInMinutes": 30
-        },
-        "Severity": "critical",
-        "Version": 1    }
+```json
+"etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "My threshold action",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 10
+   },
+   "Throttling": {
+   "DurationInMinutes": 30
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 Pomocí metody PUT s jedinečným ID akce vytvořte novou akci pro plán se závažností.  
 
-    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```powershell
+$AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```
 
 Pro úpravu akce závažnosti pro plán použijte metodu PUT s existujícím ID akce.  Tělo žádosti musí obsahovat značku ETag akce.
 
-    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```powershell
+$AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+```
 
 #### <a name="action-groups"></a>Skupiny akcí
 Všechny výstrahy v Azure používají jako výchozí mechanismus pro zpracování akcí skupinu akcí. Pomocí skupiny akcí můžete zadat akce jednou a potom přidružit skupinu akcí k několika výstrahám – napříč Azure. Bez nutnosti opakovaně deklarovat stejné akce před a znovu. Skupiny akcí podporují více akcí – včetně e-mailu, SMS, hlasového hovoru, připojení ITSM, sady Automation Runbook, identifikátoru URI Webhooku a dalších. 
@@ -234,33 +269,39 @@ Pro uživatele, kteří rozšířili své výstrahy do Azure – by měl nyní m
 
 Chcete-li přidat přidružení skupiny akcí k výstraze, zadejte jedinečné ID Azure Resource Manager skupiny akcí v definici výstrahy. Ukázka ilustrace je k dispozici níže:
 
-     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
-      "properties": {
-        "Type": "Alert",
-        "Name": "test-alert",
-        "Description": "I need to put a description here",
-        "Threshold": {
-          "Operator": "gt",
-          "Value": 12
-        },
-        "AzNsNotification": {
-          "GroupIds": [
-            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ]
-        },
-        "Severity": "critical",
-        "Version": 1
-      },
+```json
+"etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "test-alert",
+   "Description": "I need to put a description here",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 12
+   },
+   "AzNsNotification": {
+      "GroupIds": [
+         "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+      ]
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 K přidružení již existující skupiny akcí pro plán použijte metodu PUT s jedinečným ID akce.  Následuje ukázka ilustrace použití.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 Použijte metodu PUT s existujícím ID akce a upravte skupinu akcí přidruženou k plánu.  Tělo žádosti musí obsahovat značku ETag akce.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 #### <a name="customize-actions"></a>Přizpůsobení akcí
 Ve výchozím nastavení postupuje pro oznámení standardní šablonu a formát. Uživatel ale může přizpůsobit některé akce, i když je řídí skupiny akcí. V současné době je přizpůsobení možné pro předmět e-mailu a datovou část Webhooku.
@@ -268,70 +309,81 @@ Ve výchozím nastavení postupuje pro oznámení standardní šablonu a formát
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Přizpůsobení předmětu e-mailu pro skupinu akcí
 Ve výchozím nastavení je předmět e-mailu pro výstrahy: upozornění výstrahy `<AlertName>` pro `<WorkspaceName>` . To ale můžete přizpůsobit, abyste mohli určit určitá slova nebo značky – abyste mohli pravidla filtru snadno využívat ve své doručené poště. Podrobnosti hlavičky přizpůsobení e-mailu se musí posílat společně s podrobnostmi o členovi akce, jak je uvedeno níže v ukázce.
 
-     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
-      "properties": {
-        "Type": "Alert",
-        "Name": "test-alert",
-        "Description": "I need to put a description here",
-        "Threshold": {
-          "Operator": "gt",
-          "Value": 12
-        },
-        "AzNsNotification": {
-          "GroupIds": [
-            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ],
-          "CustomEmailSubject": "Azure Alert fired"
-        },
-        "Severity": "critical",
-        "Version": 1
-      },
+```json
+"etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "test-alert",
+   "Description": "I need to put a description here",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 12
+   },
+   "AzNsNotification": {
+      "GroupIds": [
+         "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+      ],
+      "CustomEmailSubject": "Azure Alert fired"
+   },
+   "Severity": "critical",
+   "Version": 1
+}
+```
 
 K přidružení již existující skupiny akcí s přizpůsobením plánu použijte metodu PUT s jedinečným ID akce.  Následuje ukázka ilustrace použití.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 Použijte metodu PUT s existujícím ID akce a upravte skupinu akcí přidruženou k plánu.  Tělo žádosti musí obsahovat značku ETag akce.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>Přizpůsobení datové části Webhooku pro skupinu akcí
 Ve výchozím nastavení má Webhook odeslaný přes skupinu akcí pro Log Analytics pevnou strukturu. Ale jedna může přizpůsobit datovou část JSON pomocí konkrétních podporovaných proměnných, aby splňovala požadavky koncového bodu Webhooku. Další informace najdete v tématu [Akce Webhooku pro pravidla upozornění protokolu](../../azure-monitor/platform/alerts-log-webhook.md). 
 
 Přizpůsobování podrobností Webhooku se musí posílat společně s podrobnostmi o skupině akcí a budou se používat pro všechny identifikátory URI Webhooku zadané uvnitř skupiny akcí. jako v ukázce níže.
 
-     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
-      "properties": {
-        "Type": "Alert",
-        "Name": "test-alert",
-        "Description": "I need to put a description here",
-        "Threshold": {
-          "Operator": "gt",
-          "Value": 12
-        },
-        "AzNsNotification": {
-          "GroupIds": [
-            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ],
-          "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
-          "CustomEmailSubject": "Azure Alert fired"
-        },
-        "Severity": "critical",
-        "Version": 1
-      },
+```json
+"etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+"properties": {
+   "Type": "Alert",
+   "Name": "test-alert",
+   "Description": "I need to put a description here",
+   "Threshold": {
+      "Operator": "gt",
+      "Value": 12
+   },
+   "AzNsNotification": {
+      "GroupIds": [
+         "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+      ],
+   "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
+   "CustomEmailSubject": "Azure Alert fired"
+   },
+   "Severity": "critical",
+   "Version": 1
+},
+```
 
 K přidružení již existující skupiny akcí s přizpůsobením plánu použijte metodu PUT s jedinečným ID akce.  Následuje ukázka ilustrace použití.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```powershell
+$AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 Použijte metodu PUT s existujícím ID akce a upravte skupinu akcí přidruženou k plánu.  Tělo žádosti musí obsahovat značku ETag akce.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
-    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
-
+```powershell
+$AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
+armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+```
 
 ## <a name="next-steps"></a>Další kroky
 

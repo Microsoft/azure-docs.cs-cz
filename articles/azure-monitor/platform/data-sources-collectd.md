@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 488f273336da05738609333f911fe3a90ba59496
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186420"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111979"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná v agentech Linux v Azure Monitor
 [Shromažďováno](https://collectd.org/) je open source démon pro Linux, který pravidelně shromažďuje metriky výkonu z aplikací a informací na úrovni systému. Příklady aplikací zahrnují prostředí Java Virtual Machine (JVM), MySQL server a Nginx. Tento článek poskytuje informace o shromažďování údajů o výkonu ze sběru Azure Monitor.
@@ -24,26 +24,30 @@ Následující shromážděná konfigurace je součástí agenta Log Analytics p
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-    LoadPlugin write_http
+```xml
+LoadPlugin write_http
 
-    <Plugin write_http>
-         <Node "oms">
-         URL "127.0.0.1:26000/oms.collectd"
-         Format "JSON"
-         StoreRates true
-         </Node>
-    </Plugin>
+<Plugin write_http>
+   <Node "oms">
+      URL "127.0.0.1:26000/oms.collectd"
+      Format "JSON"
+      StoreRates true
+   </Node>
+</Plugin>
+```
 
 Kromě toho, pokud použijete verze shromážděné před 5,5, použijte místo toho následující konfiguraci.
 
-    LoadPlugin write_http
+```xml
+LoadPlugin write_http
 
-    <Plugin write_http>
-       <URL "127.0.0.1:26000/oms.collectd">
-        Format "JSON"
-         StoreRates true
-       </URL>
-    </Plugin>
+<Plugin write_http>
+   <URL "127.0.0.1:26000/oms.collectd">
+      Format "JSON"
+      StoreRates true
+   </URL>
+</Plugin>
+```
 
 Shromážděná konfigurace používá výchozí `write_http` modul plug-in k odesílání dat metrik výkonu přes port 26000 pro Log Analytics agenta pro Linux. 
 
@@ -52,15 +56,17 @@ Shromážděná konfigurace používá výchozí `write_http` modul plug-in k od
 
 Agent Log Analytics pro Linux také naslouchá na portu 26000 pro shromážděné metriky a pak je převede na Azure Monitor metriky schématu. Následuje Log Analytics agenta pro konfiguraci systému Linux `collectd.conf` .
 
-    <source>
-      type http
-      port 26000
-      bind 127.0.0.1
-    </source>
+```xml
+<source>
+   type http
+   port 26000
+   bind 127.0.0.1
+</source>
 
-    <filter oms.collectd>
-      type filter_collectd
-    </filter>
+<filter oms.collectd>
+   type filter_collectd
+</filter>
+```
 
 > [!NOTE]
 > Shromažďováno ve výchozím nastavení je nastaveno na hodnotu číst hodnoty v [intervalu](https://collectd.org/wiki/index.php/Interval)10 sekund. Vzhledem k tomu, že se má přímý vliv na objem dat odesílaných do Azure Monitor protokolů, možná budete muset tento interval vyladit v rámci shromážděné konfigurace, aby bylo dobré vyvážit rovnováhu mezi požadavky monitorování a přidruženými náklady a využitím pro Azure Monitor protokoly.
@@ -83,11 +89,15 @@ Níže jsou uvedené základní kroky ke konfiguraci shromažďování shromáž
 
     Pokud je váš adresář shromážděné konfigurace umístěný v/etc/collectd.d/:
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
+    ```
 
     Pokud je váš adresář shromážděné konfigurace umístěný v/etc/collectd/collectd.conf.d/:
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
+    ```
 
     >[!NOTE]
     >Pro shromážděné verze před 5,5 bude nutné upravit značky v `oms.conf` , jak je uvedeno výše.
@@ -95,13 +105,17 @@ Níže jsou uvedené základní kroky ke konfiguraci shromažďování shromáž
 
 2. Zkopírujte shromážděný. conf do konfiguračního adresáře omsagent požadovaného pracovního prostoru.
 
-        sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
-        sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
+    ```console
+    sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
+    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
+    ```
 
 3. Pomocí následujících příkazů restartujte shromáždit a Log Analytics agenta pro Linux.
 
-        sudo service collectd restart
-        sudo /opt/microsoft/omsagent/bin/service_control restart
+    ```console
+    sudo service collectd restart
+    sudo /opt/microsoft/omsagent/bin/service_control restart
+    ```
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>Shromážděné metriky pro převod schématu Azure Monitor
 Aby bylo možné udržovat známý model mezi metrikami infrastruktury již shromážděnými nástrojem Log Analytics Agent pro Linux a nové metriky shromážděné pomocí následujícího mapování schématu, je použito:

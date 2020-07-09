@@ -1,19 +1,14 @@
 ---
 title: 'Rychlý Start: odeslání vlastních událostí do funkce Azure Function-Event Grid'
 description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI nebo portálu můžete publikovat téma a přihlásit se k odběru této události. Pro koncový bod se používá funkce Azure Functions.'
-services: event-grid
-keywords: ''
-author: femila
-ms.author: femila
-ms.date: 11/15/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.openlocfilehash: cc429fd38fc3322887affb72e71e0f583823c297
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 26ddfd1aeb61d3786edcdfca1acf5e293e4145ae
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557865"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115085"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Rychlý Start: směrování vlastních událostí do funkce Azure pomocí Event Grid
 
@@ -37,7 +32,7 @@ Po instalaci rozšíření klikněte na pokračovat, zadejte název funkce a pot
 
 Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého odesíláte události. 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. V levém navigačním panelu vyberte **všechny služby** , vyhledejte **Event Grid**a vyberte **Event Grid témata**. 
 
     ![Vybrat Event Grid témata](./media/custom-event-to-function/select-event-grid-topics.png)

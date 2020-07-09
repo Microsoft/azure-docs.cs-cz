@@ -1,20 +1,14 @@
 ---
 title: 'Rychlý Start: odesílání vlastních událostí do webového koncového bodu – Event Grid, PowerShell'
 description: 'Rychlý Start: použití Azure Event Grid a PowerShellu k publikování vlastního tématu a přihlášení k odběru událostí pro toto téma. Události jsou zpracovávány webovou aplikací.'
-services: event-grid
-keywords: ''
-author: spelluru
-ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 07/07/2020
 ms.topic: quickstart
-ms.service: event-grid
-ms.custom: seodec18
-ms.openlocfilehash: bc92e0cf579bc008fdb09c9cbb576d8cac0191cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4dbed993b4123045ae6233466cd9ca0565465a1e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73721429"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115022"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-powershell-and-event-grid"></a>Rychlý Start: směrování vlastních událostí do webového koncového bodu pomocí PowerShellu a Event Grid
 

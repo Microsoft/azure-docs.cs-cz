@@ -1,20 +1,14 @@
 ---
 title: Azure IoT Hub jako zdroj Event Grid
 description: Tento článek poskytuje vlastnosti a schéma pro události Azure IoT Hub. Obsahuje seznam dostupných typů událostí, příklad události a vlastností události.
-services: iot-hub
-documentationcenter: ''
-author: spelluru
-editor: ''
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: spelluru
-ms.openlocfilehash: f9bf807884ab5592fa320532f3ca10a223081263
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81393331"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86113645"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure IoT Hub jako zdroj Event Grid
 Tento článek poskytuje vlastnosti a schéma pro události Azure IoT Hub. Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md). 
@@ -25,7 +19,7 @@ Tento článek poskytuje vlastnosti a schéma pro události Azure IoT Hub. Úvod
 
 Azure IoT Hub emituje následující typy událostí:
 
-| Typ události | Popis |
+| Typ události | Description |
 | ---------- | ----------- |
 | Microsoft. Devices. DeviceCreated | Publikováno, když je zařízení zaregistrované do služby IoT Hub. |
 | Microsoft. Devices. DeviceDeleted | Publikováno při odstranění zařízení ze služby IoT Hub. | 
@@ -146,7 +140,7 @@ Schéma pro události DeviceCreated a DeviceDeleted mají stejnou strukturu. Tat
 
 Všechny události obsahují stejná data nejvyšší úrovně: 
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | id | řetězec | Jedinečný identifikátor události |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
@@ -159,7 +153,7 @@ Všechny události obsahují stejná data nejvyšší úrovně:
 
 Pro všechny události IoT Hub datový objekt obsahuje následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | hubName | řetězec | Název IoT Hub, kde se zařízení vytvořilo nebo odstranilo |
 | deviceId | řetězec | Jedinečný identifikátor zařízení Tento řetězec, který rozlišuje velká a malá písmena, může být dlouhý až 128 znaků a podporuje i 7 bitů alfanumerických znaků a navíc následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
@@ -168,7 +162,7 @@ Obsah datového objektu se u každého vydavatele události liší.
 
 Pro události **připojené k zařízení** a **odpojení zařízení** IoT Hub datový objekt obsahuje následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | moduleId | řetězec | Jedinečný identifikátor modulu Toto pole je výstupní jenom pro zařízení modulu. Tento řetězec, který rozlišuje velká a malá písmena, může být dlouhý až 128 znaků a podporuje i 7 bitů alfanumerických znaků a navíc následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
 | deviceConnectionStateEventInfo | odkazy objektů | Informace o událostech stavu připojení zařízení
@@ -176,7 +170,7 @@ Pro události **připojené k zařízení** a **odpojení zařízení** IoT Hub 
 
 V případě **telemetrie zařízení** IoT Hub událost obsahuje datový objekt zprávu zařízení-Cloud ve [formátu zprávy služby IoT Hub](../iot-hub/iot-hub-devguide-messages-construct.md) a má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | text | řetězec | Obsah zprávy ze zařízení. |
 | properties | řetězec | Vlastnosti aplikace jsou uživatelsky definované řetězce, které lze přidat do zprávy. Tato pole jsou volitelná. |

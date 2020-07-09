@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c4e9668459856af52ae1a905de8ba76dc36758fd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086282"
+ms.locfileid: "86112982"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -24,7 +24,7 @@ ms.locfileid: "86086282"
 
 ### <a name="new-features"></a>Nové funkce
 
-* **Neuronové TTS, 15 novinek neuronové**– nové hlasy přidané do portfolia neuronové TTS jsou Salma v arabštině (Egypt), Zariyah v arabštině (Saúdská Arábie), alba v Katalánština (Španělsko), Christel v dánštině (Dánsko), Neerja v angličtině (Indie), Swara v hindštině (Indie), Colette v holandštině (Nizozemsko), Zofia v polštině (Polsko), Fernanda v portugalštině (Portugalsko), Dariya v ruštině (Rusko), Hillevi v švédském (Švédsku), Achara v thajštině (Thajsko), Iselin Norština (Bokmål), HiuGaai v čínštině (Hongkong) a HsiaoYu v čínštině (Tchaj-wan). Zkontroluje všechny [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices).  
+* **Neuronové TTS, 15 novinek neuronové**– nové hlasy přidané do portfolia neuronové TTS jsou Salma v `ar-EG` arabštině (Egypt), Zariyah v `ar-SA` arabštině (Saúdská Arábie), alba v `ca-ES` Katalánština (Španělsko), Christel v dánštině ( `da-DK` Dánsko), Neerja v `es-IN` angličtině (Indie), Noora ve `fi-FI` finštině (Finsko), Swara v `hi-IN` hindštině (Indie), Colette v `nl-NL` holandštině (Netherland), Zofia v `pl-PL` polštině (Polsko), Fernanda v `pt-PT` portugalštině (Portugalsko), Dariya v `ru-RU` ruštině (Rusko), Hillevi v ruštině (Švédsku), Achara v thajštině (Thajsku), HiuGaai v `sv-SE` `th-TH` `zh-HK` čínštině (kantonština, tradiční) a HsiaoYu v `zh-TW` čínštině (tchajwanských mandarincích Zkontroluje všechny [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices).  
 
 * **Vlastní hlas, zjednodušené hlasové testování s výukovým tokem pro zjednodušení uživatelského prostředí**: Díky nové funkci testování se každý hlas automaticky testuje pomocí předdefinované testovací sady optimalizované pro jednotlivé jazyky, které budou pokrývat scénáře obecného a hlasového asistenta. Tyto sady testů pečlivě vyberou a testují, aby zahrnovaly typické případy použití a fonémy v jazyce. Kromě toho mohou uživatelé i nadále vybrat nahrávání vlastních testovacích skriptů při výuce modelu.
 
@@ -46,23 +46,23 @@ ms.locfileid: "86086282"
 
 * Vylepšený TTS vocoder v pro vyšší věrnost a nižší latenci.
 
-    * Aktualizovali jsme Elsa v italštině na nový vocoder, který dosáhl + 0,464 paměti CMOS (srovnávací průměrné skóre názoru) v kvalitě hlasu, 40% rychlejší v syntézě a 30% snížení latence při první byte. 
-    * Aktualizovali jsme Xiaoxiao v čínštině na nový vocoder s využitím + 0148 paměti CMOS pro obecné domény, + 0,348 pro styl newscast a + 0,195 pro styl Lyrical. 
+    * Aktualizovali jsme Elsa na `it-IT` nové vocoder, které dosáhlo + 0,464 paměti CMOS (srovnávací průměrné skóre názoru) v kvalitě hlasu, 40% rychlejší v syntéze a 30% snížení při první latenci bajtů. 
+    * Aktualizovali jsme Xiaoxiao na `zh-CN` nové vocoder s + 0148 paměti CMOS pro obecné domény, + 0,348 pro styl newscast a + 0,195 pro styl Lyrical. 
 
 * Aktualizované `de-DE` a `ja-JP` hlasové modely, aby byl výstup TTS více přirozený.
     
-    * Aktualizovaný Katja v němčině s nejnovější metodou modelování Prosody, MOS (střední skóre stanoviska) je + 0,13. 
-    * Aktualizovaný Nanami v japonštině s novým zvýrazňujícím modelem Prosody, MOS (znamenající skóre stanoviska) je + 0,19;  
+    * Aktualizace Katja v `de-DE` nástroji pomocí nejnovější metody modelování Prosody, MOS (střední skóre stanoviska) je + 0,13. 
+    * Aktualizovali jsme Nanami v `ja-JP` rámci nového sklonu pro zdůraznění Prosody, MOS (střední skóre stanoviska) je + 0,19;  
 
 * Vylepšená přesnost výslovnosti na úrovni aplikace v 5 jazycích.
 
     | Jazyk | Omezení chyby výslovnosti |
     |---|---|
-    | en-GB | 51% |
-    | ko-KR | sedmnáct |
-    | pt-BR | 39% |
-    | pt-PT | 77% |
-    | id-ID | 46% |
+    | `en-GB` | 51% |
+    | `ko-KR` | sedmnáct |
+    | `pt-BR` | 39% |
+    | `pt-PT` | 77% |
+    | `id-ID` | 46% |
 
 ### <a name="bug-fixes"></a>Opravy chyb
 
@@ -71,8 +71,8 @@ ms.locfileid: "86086282"
      
     | Jazyk | Vstup | Přečtení po vylepšení |
     |---|---|---|
-    | ES – MX | $1,58 | un Peso cincuenta y Ocho centavos |
-    | es-ES | $1,58 | dólar cincuenta y Ocho centavos |
+    | `es-MX` | $1,58 | un Peso cincuenta y Ocho centavos |
+    | `es-ES` | $1,58 | dólar cincuenta y Ocho centavos |
 
     * Podpora pro zápornou měnu (například-€325) v následujících národních prostředích: `en-US` , `en-GB` , `fr-FR` , `it-IT` , `en-AU` , `en-CA` .
 
@@ -105,7 +105,7 @@ ms.locfileid: "86086282"
 -   Oprava chyby narušení přístupu ověřovatele aplikace systému Windows v přepisu konverzace při použití streamu s 8 kanály.
 -   Oprava chyby narušení přístupu ověřovače aplikací systému Windows v překladu konverzací na více zařízení.
 
-**ukázky**
+**Ukázky**
 -   **C#**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/speaker-recognition) pro rozpoznávání mluvčího.
 -   **C++**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/speaker-recognition) pro rozpoznávání mluvčího.
 -   **Java**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/intent-recognition) pro rozpoznávání záměrů v Androidu. 
@@ -140,7 +140,7 @@ Buďte v pořádku!
 - Opravili spor, ve kterém se sada SDK pokoušela Odeslat síťovou zprávu před otevřením připojení protokolu WebSocket. Bylo reprodukovatelné `TranslationRecognizer` při přidávání účastníků.
 - Pevná nevracení paměti v modulu pro rozpoznávání klíčových slov.
 
-**ukázky**
+**Ukázky**
 - **Přejít**: Přidali jsme rychlé starty pro [rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) a [vlastního hlasového asistenta](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go). [Zde](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)najdete vzorový kód. 
 - **JavaScript**: Přidali jsme rychlé starty pro převod [textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript), [překlady](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript)a [rozpoznávání záměru](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript).
 - Ukázky rozpoznávání klíčových slov pro jazyky [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) a [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android).  
@@ -166,7 +166,7 @@ Buďte v pořádku!
 - JavaScript: Přidání podpory pro oblasti v Číně s `fromSubscription` rozhraním API. Podrobnosti [.](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-) 
 - JavaScript: přidejte další informace o chybě pro chyby připojení z NodeJS.
         
-**ukázky**
+**Ukázky**
 - Unity: veřejná ukázka rozpoznávání záměrů je pevná, kde se LUIS import JSON nezdařil. Podrobnosti [.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369)
 - Python: byla přidána ukázka pro `Language ID` . Podrobnosti [.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)
     
@@ -196,7 +196,7 @@ Buďte v pořádku!
  - Použití koncového bodu bez oblasti způsobí selhání USP pro překladatele konverzace.
  - Generování ID v univerzálních aplikacích pro Windows teď používá vhodně jedinečný algoritmus GUID; dřív a záměrně neúmyslně nastavily implementaci podložit, která často produkuje kolizí v rámci velkých sad interakcí.
  
- **ukázky**
+ **Ukázky**
  
  - Ukázka Unity pro použití sady Speech SDK s [mikrofonem Unity a streamování přes nabízený režim](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)
 
@@ -237,7 +237,7 @@ Buďte v pořádku!
 - JavaScript: Přidání podpory pro nastavení vlastností služby, jak je přidáno v 1,7.
 - JavaScript: Opravili jsme problém, kdy by chyba připojení mohla způsobit průběžné pokusy o opětovné připojení k soketu WebSocket.
 
-**ukázky**
+**Ukázky**
 
 - [Sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)přidejte ukázku rozpoznávání klíčových slov pro Android.
 - [Sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)přidejte ukázku TTS pro scénář serveru.
@@ -268,7 +268,7 @@ Buďte v pořádku!
 
 - Opravit pro chybu, pokud `KeywordRecognizer` je místní použití bez platného klíče předplatného služby Speech
 
-**ukázky**
+**Ukázky**
 
 - Ukázka Xamarin pro`KeywordRecognizer`
 - Ukázka Unity pro`KeywordRecognizer`
@@ -299,7 +299,7 @@ Buďte v pořádku!
 - `DialogServiceConnector`spuštění relace nyní bude správně poskytovat události, včetně při volání `ListenOnceAsync()` během aktivní`StartKeywordRecognitionAsync()`
 - Vyřešená havárie přidružená k `DialogServiceConnector` přijatým aktivitám
 
-**ukázky**
+**Ukázky**
 
 - Rychlý Start pro Xamarin
 - Aktualizovaný rychlý Start pro CPP s ARM64 informacemi pro Linux
@@ -307,7 +307,7 @@ Buďte v pořádku!
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Sada Speech SDK 1.6.0:2019 – červenou verzi
 
-**ukázky**
+**Ukázky**
 
 - Ukázky rychlý Start pro převod textu na řeč pro UWP a Unity
 - Ukázka rychlého startu pro SWIFT v iOS
@@ -356,7 +356,7 @@ Toto je vydání opravy chyby a ovlivňuje pouze nativní/spravované sady SDK. 
 - Funkce přepisu konverzace je k dispozici prostřednictvím sady SDK. Podívejte se [sem](conversation-transcription-service.md).
 - Přidejte podporu pro hlasové asistenty pomocí kanálu Direct line Speech.
 
-**ukázky**
+**Ukázky**
 
 - Byly přidány ukázky pro nové funkce nebo nové služby, které sada SDK podporuje.
 
@@ -392,7 +392,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 - JavaScript: podpora pro jiný než výchozí mikrofon jako vstupní zařízení.
 - JavaScript: podpora proxy serveru pro Node.js.
 
-**ukázky**
+**Ukázky**
 
 - Byly přidány ukázky pro použití sady Speech SDK s C++ a s cílem-C v macOS.
 - Byly přidány ukázky demonstrující použití služby převodu textu na řeč.
@@ -425,7 +425,7 @@ Toto je vydání opravy chyby a ovlivňuje pouze nativní/spravované sady SDK. 
 - Sada Speech SDK teď ve verzi beta verze podporuje Unity. Poskytněte zpětnou vazbu v části problém v [ukázkovém úložišti GitHubu](https://aka.ms/csspeech/samples). Tato verze podporuje Unity v systémech Windows x86 a x64 (desktopové nebo Univerzální platforma Windows aplikace) a Androidu (ARM32/64, x86). Další informace najdete v našem [rychlém](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)startu pro Unity.
 - Soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dodán v předchozích verzích) už není potřeba. Tato funkce je teď integrovaná do základní sady SDK.
 
-**ukázky**
+**Ukázky**
 
 V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)je k dispozici následující nový obsah:
 
@@ -508,7 +508,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 - JavaScript: Nastavte výchozí výstupní formát na možnost "jednoduchý" v `SpeechConfig` .
 - JavaScript: odebrání nekonzistence mezi vlastnostmi objektu konfigurace v jazyce JavaScript a dalších jazycích.
 
-**ukázky**
+**Ukázky**
 
 - Aktualizovali a opravili jsme několik ukázek (například výstupní hlasy pro překlad atd.).
 - Do [ukázkového úložiště](https://aka.ms/csspeech/samples)se přidaly Node.js ukázky.
@@ -540,7 +540,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 - Opravili jsme chybu, která brání v nastavení `EndpointId` (v některých případech) v JavaScriptu.
 - Změnili jsme pořadí parametrů v AddIntent v JavaScriptu a Přidali jste chybějící `AddIntent` podpis JavaScriptu.
 
-**ukázky**
+**Ukázky**
 
 - Přidány ukázky jazyka C++ a C# pro použití pro vyžádání obsahu a nabízené vysílání do [vzorového úložiště](https://aka.ms/csspeech/samples).
 

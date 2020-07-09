@@ -1,18 +1,14 @@
 ---
 title: Vytváření, zobrazování a Správa systémových témat Azure Event Grid pomocí rozhraní příkazového řádku
 description: Tento článek popisuje, jak pomocí Azure CLI vytvářet, zobrazovat a odstraňovat systémová témata.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.author: spelluru
-ms.openlocfilehash: d9ba83d12e73b3ebceaee3167cdcf7f27922b686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 354afb89b145e288f525e40ad700e8f8a67c6dad
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84885247"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115039"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Vytváření, zobrazování a Správa systémových témat Event Grid pomocí Azure CLI
 V tomto článku se dozvíte, jak vytvořit a spravovat systémová témata pomocí Azure CLI. Přehled systémových témat najdete v tématu [Systémová témata](system-topics.md).

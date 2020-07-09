@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640978"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111061"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core webové aplikace Azure Linux pomocí Application Insights Profiler
 
@@ -34,17 +35,17 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
 
 1. Vytvoření webové aplikace ASP.NET Core MVC:
 
-    ```
-    dotnet new mvc -n LinuxProfilerTest
-    ```
+   ```console
+   dotnet new mvc -n LinuxProfilerTest
+   ```
 
 1. Změňte pracovní adresář na kořenovou složku projektu.
 
 1. Přidejte balíček NuGet pro shromáždění trasování profileru:
 
-    ```shell
-    dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
-    ```
+   ```console
+   dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
+   ```
 
 1. Povolit Application Insights v Program.cs:
 
@@ -54,7 +55,7 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
             .UseApplicationInsights() // Add this line of code to Enable Application Insights
             .UseStartup<Startup>();
     ```
-    
+
 1. Povolit Profiler v Startup.cs:
 
     ```csharp
@@ -68,24 +69,24 @@ Následující pokyny platí pro všechna prostředí pro vývoj pro Windows, Li
 1. Do části **HomeController.cs** přidejte řádek kódu pro náhodné zpoždění několika sekund:
 
     ```csharp
-        using System.Threading;
-        ...
+    using System.Threading;
+    ...
 
-        public IActionResult About()
-            {
-                Random r = new Random();
-                int delay = r.Next(5000, 10000);
-                Thread.Sleep(delay);
-                return View();
-            }
+    public IActionResult About()
+        {
+            Random r = new Random();
+            int delay = r.Next(5000, 10000);
+            Thread.Sleep(delay);
+            return View();
+        }
     ```
 
 1. Uložte změny v místním úložišti a potvrďte je:
 
-    ```
-        git init
-        git add .
-        git commit -m "first commit"
+    ```console
+    git init
+    git add .
+    git commit -m "first commit"
     ```
 
 ## <a name="create-the-linux-web-app-to-host-your-project"></a>Vytvoření webové aplikace pro Linux pro hostování projektu
@@ -111,7 +112,7 @@ Další možnosti nasazení najdete v [tomto článku](https://docs.microsoft.co
 
 1. V okně příkazového řádku přejděte do kořenové složky vašeho projektu. Přidejte vzdálené úložiště Git, které bude odkazovat na úložiště v App Service:
 
-    ```
+    ```console
     git remote add azure https://<username>@<app_name>.scm.azurewebsites.net:443/<app_name>.git
     ```
 
@@ -120,13 +121,13 @@ Další možnosti nasazení najdete v [tomto článku](https://docs.microsoft.co
 
 2. Nasaďte projekt vložením změn do Azure:
 
-    ```
+    ```console
     git push azure master
     ```
 
-Měl by se zobrazit výstup podobný následujícímu příkladu:
+    Měl by se zobrazit výstup podobný následujícímu příkladu:
 
-    ```
+    ```output
     Counting objects: 9, done.
     Delta compression using up to 8 threads.
     Compressing objects: 100% (8/8), done.
@@ -143,8 +144,7 @@ Měl by se zobrazit výstup podobný následujícímu příkladu:
     remote: .
     remote:   Installing Newtonsoft.Json 10.0.3.
     remote:   Installing Microsoft.ApplicationInsights.Profiler.Core 1.1.0-LKG
-    …
-
+    ...
     ```
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>Přidání Application Insights pro monitorování webových aplikací
@@ -153,9 +153,7 @@ Měl by se zobrazit výstup podobný následujícímu příkladu:
 
 2. Zkopírujte hodnotu **ikey** prostředku Application Insights a ve svých webových aplikacích nastavte následující nastavení:
 
-    ```
-    APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ```
+    `APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]`
 
     Po změně nastavení aplikace se web automaticky restartuje. Po použití nového nastavení se Profiler spustí hned po dvou minutách. Profiler se pak spustí každou hodinu za dvě minuty.
 

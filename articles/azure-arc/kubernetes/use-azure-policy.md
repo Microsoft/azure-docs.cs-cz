@@ -8,11 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
-ms.openlocfilehash: 4c013fe562d89bff4d1ce9c9f3e832e1b51c70f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86111265"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Použití Azure Policy k aplikování konfigurace clusteru ve velkém měřítku (Preview)
 
@@ -34,7 +35,7 @@ Pokud používáte více úložišť Git jako zdroje pravdy pro každý cluster 
 8. Nastavte hodnoty parametrů, které budou použity při vytváření `sourceControlConfiguration` .
 9. Vyberte **Další**.
 10. Povolte možnost **vytvořit úlohu nápravy**.
-11. Zajistěte, aby se ověřilo, že je zaškrtnuté políčko **vytvořit spravovanou identitu** a že identita bude mít oprávnění **přispěvatele** . Další informace o oprávněních, která potřebujete, najdete v [tomto dokumentu](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) a v [komentáři v tomto dokumentu](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) .
+11. Zajistěte, aby se ověřilo, že je zaškrtnuté políčko **vytvořit spravovanou identitu** a že identita bude mít oprávnění **přispěvatele** . Další informace o oprávněních, která potřebujete, najdete v [tomto dokumentu](../../governance/policy/assign-policy-portal.md) a v [komentáři v tomto dokumentu](../../governance/policy/how-to/remediate-resources.md) .
 12. Vyberte **Zkontrolovat a vytvořit**.
 
 Po vytvoření přiřazení zásady se použije pro všechny nové `connectedCluster` prostředky (nebo `managedCluster` prostředky s nainstalovanými agenty GitOps), které se nacházejí v rámci rozsahu přiřazení `sourceControlConfiguration` . U existujících clusterů budete muset ručně spustit úlohu nápravy. Aby se přiřazení zásad projevilo, obvykle trvá 10-20 minut.
@@ -50,4 +51,4 @@ Po vytvoření přiřazení zásady se použije pro všechny nové `connectedClu
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení Azure Monitor pro kontejnery s povolenými clustery Kubernetes s obloukem](./deploy-azure-monitor-for-containers.md)
+* [Nastavení Azure Monitor pro kontejnery s povolenými clustery Kubernetes s obloukem](../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md)

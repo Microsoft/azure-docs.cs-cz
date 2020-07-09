@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate pro VMware
 description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů VMware.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538252"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112812"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Nastavení zařízení pro virtuální počítače VMware
 
@@ -33,8 +33,8 @@ K nastavení zařízení pomocí šablony vajíček:
 
 ## <a name="download-the-ova-template"></a>Stažení šablony pro VAJÍČKy
 
-1. V Azure Migrate **cíle** > migrace na**servery** > **: vyhodnocování serveru**klikněte na **zjistit**.
-2. V nabídce **zjistit** > počítače**jsou vaše počítače virtualizované?** klikněte na **Ano a hypervisor VMware vSphere**.
+1. V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+2. V nabídce **zjistit**počítače  >  **jsou vaše počítače virtualizované?** klikněte na **Ano a hypervisor VMware vSphere**.
 3. Pokud si chcete stáhnout soubor šablony .OVA, klikněte na **Stáhnout**.
 
   ![Výběry pro stažení souboru vajíček](./media/tutorial-assess-vmware/download-ova.png)
@@ -47,7 +47,7 @@ Před nasazením ověřte, zda je soubor sady vajíček zabezpečený.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro VAJÍČKu:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Pro nejnovější verzi zařízení by se vygenerovaná hodnota hash měla shodovat s tímto [nastavením](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security).
+3. Pro nejnovější verzi zařízení by se vygenerovaná hodnota hash měla shodovat s tímto [nastavením](./tutorial-assess-vmware.md#verify-security).
 
 
 
@@ -55,7 +55,7 @@ Před nasazením ověřte, zda je soubor sady vajíček zabezpečený.
 
 Naimportujte stažený soubor a vytvořte virtuální počítač.
 
-1. V klientské konzole vSphere klikněte na **soubor** > **nasadit šablonu OVF**.
+1. V klientské konzole vSphere klikněte na **soubor**  >  **nasadit šablonu OVF**.
 ![Příkaz nabídky pro nasazení šablony OVF](./media/tutorial-assess-vmware/deploy-ovf.png)
 
 2. V Průvodci nasazením šablony OVF > **zdroj**zadejte umístění souboru vajíček.
@@ -84,7 +84,7 @@ Nastavte zařízení poprvé. Pokud zařízení nasadíte pomocí skriptu místo
 4. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
     - **Licence**: přijměte licenční podmínky a přečtěte si informace třetích stran.
     - **Připojení**: aplikace kontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
-        - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN.
+        - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN .
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
         - Podporuje se jen proxy protokolu HTTP.
     - **Časová synchronizace**: čas je ověřený. Čas na zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování fungovalo správně.
@@ -102,7 +102,7 @@ Nastavte zařízení poprvé. Pokud zařízení nasadíte pomocí skriptu místo
 3. Po úspěšném přihlášení se vraťte k webové aplikaci.
 2. Vyberte předplatné, ve kterém byl vytvořen Azure Migrate projekt. Pak vyberte projekt.
 3. Zadejte název zařízení. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
-4. Klikněte na **zaregistrovat**.
+4. Klikněte na **Zaregistrovat**.
 
 
 ## <a name="start-continuous-discovery-by-providing-vcenter-server-and-vm-credential"></a>Spustit průběžné zjišťování poskytnutím vCenter Server a přihlašovacích údajů k virtuálnímu počítači
@@ -115,7 +115,7 @@ Aby bylo možné zjistit konfiguraci a údaje o výkonu virtuálních počítač
 3. Klikněte na **ověřit připojení** a ujistěte se, že se zařízení může připojit k vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>Zadat přihlašovací údaje virtuálního počítače
-Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtuálních počítačů můžete zadat přihlašovací údaje k virtuálnímu počítači, které mají přístup k virtuálním počítačům VMware. Můžete přidat jednu přihlašovací údaje pro virtuální počítače s Windows a jedno přihlašovací údaje pro virtuální počítače se systémem Linux. [Přečtěte si další informace](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) o požadovaných oprávněních pro přístup.
+Pro zjišťování aplikací, rolí a funkcí a vizualizací závislostí virtuálních počítačů můžete zadat přihlašovací údaje k virtuálnímu počítači, které mají přístup k virtuálním počítačům VMware. Můžete přidat jednu přihlašovací údaje pro virtuální počítače s Windows a jedno přihlašovací údaje pro virtuální počítače se systémem Linux. [Přečtěte si další informace](./migrate-support-matrix-vmware.md) o požadovaných oprávněních pro přístup.
 
 > [!NOTE]
 > Tento vstup je nepovinný a je potřeba, aby se povolilo zjišťování aplikací a vizualizace závislostí bez agentů.

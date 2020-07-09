@@ -4,12 +4,12 @@ description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak 
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 573567386ba9cbaf8b36440fda5073f899fcdfc7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80618987"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86112336"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -104,7 +104,7 @@ Pokud vyberete možnost **Skupina akcí** v přepínači, buď přidejte existuj
 Nakonec pro pravidlo akce nakonfigurujte následující podrobnosti:
 * Name
 * Skupina prostředků, ve které je uložená
-* Popis 
+* Description 
 
 ## <a name="example-scenarios"></a>Ukázkové scénáře
 
@@ -196,23 +196,26 @@ Potlačení vždy má přednost na stejném oboru.
 
 ### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>Co se stane, když mám prostředek monitorovaný ve dvou samostatných pravidlech akcí? Získám jedno nebo dvě oznámení? Například **VM2** v následujícím scénáři:
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1
-      action rule AR2 defined for VM2 and VM3 with action group AG1
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with action group AG1`
 
 Pro každou výstrahu v VM1 a VM3 se aktivuje skupina akcí AG1. Pro každé upozornění v **VM2**se skupina akcí AG1 spustí dvakrát, protože pravidla akcí neodstraňují duplicitní akce. 
 
 ### <a name="what-happens-if-i-have-a-resource-monitored-in-two-separate-action-rules-and-one-calls-for-action-while-another-for-suppression-for-example-vm2-in-the-following-scenario"></a>Co se stane, když mám prostředek monitorovaný ve dvou samostatných pravidlech akce a jednom volání akce, zatímco další pro potlačení? Například **VM2** v následujícím scénáři:
 
-      action rule AR1 defined for VM1 and VM2 with action group AG1 
-      action rule AR2 defined for VM2 and VM3 with suppression
+   `action rule AR1 defined for VM1 and VM2 with action group AG1`
+
+   `action rule AR2 defined for VM2 and VM3 with suppression`
 
 Pro každé upozornění v VM1 se aktivuje skupina akcí AG1. Akce a oznámení pro každou výstrahu v VM2 a VM3 se potlačí. 
 
 ### <a name="what-happens-if-i-have-an-alert-rule-and-an-action-rule-defined-for-the-same-resource-calling-different-action-groups-for-example-vm1-in-the-following-scenario"></a>Co se stane, když mám pravidlo výstrahy a pravidlo akce definované pro stejný prostředek, který volá různé skupiny akcí? Například **VM1** v následujícím scénáři:
 
-      alert rule rule1 on VM1 with action group AG2
-      action rule AR1 defined for VM1 with action group AG1 
- 
+   `alert rule rule1 on VM1 with action group AG2`
+
+   `action rule AR1 defined for VM1 with action group AG1`
+
 Pro každé upozornění v VM1 se aktivuje skupina akcí AG1. Pokaždé, když se aktivuje pravidlo upozornění "rule1", bude také aktivovat AG2. Skupiny akcí definované v rámci pravidel akcí a pravidel výstrah pracují nezávisle bez odstranění duplicit. 
 
 ## <a name="next-steps"></a>Další kroky
