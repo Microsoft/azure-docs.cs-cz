@@ -1,18 +1,16 @@
 ---
 title: Vytvoření nebo úprava nabídky – Azure Marketplace
 description: Rozhraní API k vytvoření nové nebo aktualizace stávající nabídky.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/19/2020
-ms.author: dsindona
-ms.openlocfilehash: 7b04046f1c6e29a46584094fb08fafbf287ea121
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5104d11c1eaf9641f1d631db97dcca036308cd45
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516201"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115719"
 ---
 <a name="create-or-modify-an-offer"></a>Vytvoření nebo úprava nabídky
 =========================

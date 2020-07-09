@@ -1,20 +1,14 @@
 ---
 title: Co je Azure Event Grid?
 description: Odešle data události ze zdroje do obslužných rutin pomocí Azure Event Grid. Sestavujte aplikace založené na událostech a integrujte je se službami Azure.
-services: event-grid
-author: femila
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 02/20/2020
-ms.author: femila
-ms.custom: seodec18
-ms.openlocfilehash: 4ae40c37d42848cc2ac726694e32df621996df03
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.date: 07/07/2020
+ms.openlocfilehash: 95deeddbd7ae3f5ee07bef0c4ac73559d208c352
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321321"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116127"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -60,7 +54,7 @@ V současné době podporují odesílání událostí do Event Gridu následují
 * [Automatizace (dříve označované jako Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Service Bus](handler-service-bus.md)
 * [Queue Storage](handler-storage-queues.md)
-* [WebHooky](handler-webhooks.md)
+* [Webhooky](handler-webhooks.md)
 
 ## <a name="concepts"></a>Koncepty
 

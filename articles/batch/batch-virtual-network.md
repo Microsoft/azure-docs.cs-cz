@@ -4,12 +4,12 @@ description: Vytvoření fondu služby Batch ve službě Azure Virtual Network, 
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3ff8995217521199436e0924acc691dab7c4baef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506585"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115407"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
 
@@ -62,7 +62,7 @@ Když přidáte UDR, definujte trasu pro každou související předponu IP adre
 ![Trasa definovaná uživatelem](./media/batch-virtual-network/user-defined-route.png)
 
 > [!WARNING]
-> IP adresy služby Batch se můžou v průběhu času měnit. Aby nedocházelo k výpadkům z důvodu změny IP adresy, vytvořte proces pro automatické aktualizace IP adres služby Batch a udržujte je v tabulce směrování v aktuálním stavu. Alternativně můžete [vytvořit fond se zadanými IP adresami, které ovládáte](create-pool-public-ip.md).
+> IP adresy služby Batch se můžou v průběhu času měnit. Aby nedocházelo k výpadkům z důvodu změny IP adresy, vytvořte proces pro automatické aktualizace IP adres služby Batch a udržujte je v tabulce směrování v aktuálním stavu.
 
 ## <a name="next-steps"></a>Další kroky
 

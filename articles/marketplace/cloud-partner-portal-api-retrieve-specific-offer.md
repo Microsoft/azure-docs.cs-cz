@@ -1,18 +1,16 @@
 ---
 title: Načtení konkrétního rozhraní API nabídky – Azure Marketplace
 description: Rozhraní API pro načtení zadané nabídky v rámci oboru názvů vydavatele.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/19/2020
-ms.author: dsindona
-ms.openlocfilehash: 771c103b535c09f8481c2b01328078504b8633aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4bbe133d8b223bf717597467336eb486f432380
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85516173"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86115532"
 ---
 <a name="retrieve-a-specific-offer"></a>Načíst konkrétní nabídku
 =========================

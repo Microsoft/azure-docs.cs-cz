@@ -1,18 +1,18 @@
 ---
 title: Podrobnosti o zásadách vyvýběru – Azure Marketplace
 description: Podrobnosti o zásadách pro výběr, včetně plánů a recoupment.
-author: mingshen
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: mingshen
+ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: cb939d223d0aa91b6da62d3045ccad919f1bd277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f26e006998b0818ba84fa23ee1941a1033ef205b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887929"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118286"
 ---
 # <a name="payout-policy-details"></a>Podrobnosti zásad plateb
 

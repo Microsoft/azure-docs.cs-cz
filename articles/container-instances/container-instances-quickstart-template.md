@@ -1,33 +1,33 @@
 ---
-title: Rychlý Start – vytvoření geograficky replikované šablony registru-Správce prostředků
+title: Rychlý Start – vytvoření instance kontejneru – Azure Resource Manager šablona
 description: V tomto rychlém startu použijete šablonu Azure Resource Manager k rychlému nasazení kontejnerové webové aplikace, která běží v izolované instanci kontejneru Azure.
 services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
-ms.openlocfilehash: 17f71d1c383c72fab748a9bdb789158095616f2d
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 64f86611e8a60cd3d1463cd2845c034551277bb2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779877"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118456"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí šablony Správce prostředků
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-an-arm-template"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí šablony ARM
 
-Použijte Azure Container Instances ke spouštění kontejnerů Docker bez serveru v Azure s využitím jednoduchosti a rychlosti. Pokud nepotřebujete úplnou platformu orchestrace kontejnerů, jako je třeba služba Azure Kubernetes, nasaďte aplikaci na vyžádání do instance kontejneru na vyžádání. V tomto rychlém startu použijete šablonu Azure Resource Manager k nasazení izolovaného kontejneru Docker a zpřístupnění jeho webové aplikace pomocí veřejné IP adresy.
+Použijte Azure Container Instances ke spouštění kontejnerů Docker bez serveru v Azure s využitím jednoduchosti a rychlosti. Pokud nepotřebujete úplnou platformu orchestrace kontejnerů, jako je třeba služba Azure Kubernetes, nasaďte aplikaci na vyžádání do instance kontejneru na vyžádání. V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k nasazení izolovaného kontejneru Docker a zpřístupnění jeho webové aplikace pomocí veřejné IP adresy.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="create-a-container-instance"></a>Vytvoření instance kontejneru
-
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/).
 
@@ -39,7 +39,7 @@ Následující prostředek je definován v šabloně:
 
 Další příklady šablon Azure Container Instances najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
  1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří registr a repliku v jiném umístění.
 
@@ -51,7 +51,7 @@ Další příklady šablon Azure Container Instances najdete v [galerii šablon 
     * **Skupina prostředků**: vyberte **vytvořit novou**, zadejte jedinečný název pro skupinu prostředků a pak vyberte **OK**.
     * **Umístění:**: Vyberte umístění pro skupinu prostředků. Příklad: **střed USA**.
     * **Název**: přijměte vygenerovaný název instance nebo zadejte název.
-    * **Image**: přijměte výchozí název Image. Tato ukázková bitová kopie systému Linux zapisuje malou webovou aplikaci napsanou v Node. js, která slouží ke statické stránce HTML. 
+    * **Image**: přijměte výchozí název Image. Tato ukázková bitová kopie systému Linux zapisuje malou webovou aplikaci napsanou v Node.js, která slouží jako statická stránka HTML. 
 
     Přijměte výchozí hodnoty pro zbývající vlastnosti.
 
@@ -63,7 +63,7 @@ Další příklady šablon Azure Container Instances najdete v [galerii šablon 
 
     ![Oznámení portálu](media/container-instances-quickstart-template/deployment-notification.png)
 
- Azure Portal slouží k nasazení šablony. Kromě Azure Portal můžete použít Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-cli.md).
+ K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-cli.md).
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
@@ -73,7 +73,7 @@ Pomocí Azure Portal nebo nástroje, jako je [Azure CLI](container-instances-qui
 
 1. Na stránce **Přehled** si poznamenejte **stav** instance a její **IP adresa**.
 
-    ![Přehled instance](media/container-instances-quickstart-template/aci-overview.png)
+    ![Přehled instancí](media/container-instances-quickstart-template/aci-overview.png)
 
 2. Jakmile je jeho stav *spuštěný*, přejděte v prohlížeči na IP adresu. 
 
@@ -101,4 +101,4 @@ V tomto rychlém startu jste vytvořili službu Azure Container instance z veře
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Kurz: vytvoření a nasazení první šablony ARM](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

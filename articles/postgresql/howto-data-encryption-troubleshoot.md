@@ -4,13 +4,14 @@ description: Přečtěte si, jak řešit potíže s šifrováním dat na vašem 
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/13/2020
-ms.openlocfilehash: 2902ff17ac14a48f1a11259339c2ab1bc4595980
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee0a1ebe483dd4719fd1a84fec37906329116eba
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79299256"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86117895"
 ---
 # <a name="troubleshoot-data-encryption-in-azure-database-for-postgresql---single-server"></a>Řešení potíží s šifrováním dat v Azure Database for PostgreSQL – jeden server
 

@@ -1,25 +1,21 @@
 ---
 title: Metriky podporované aplikací Azure Event Grid
 description: Tento článek poskytuje Azure Monitor metriky, které služba Azure Event Grid podporuje.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 643df2f4cc6347e0fd56f9124b68f1888ab85e26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 3b22beafc9f88d2d95b25fd7ad2f2308a4df9097
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82630132"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116416"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Metriky podporované aplikací Azure Event Grid
 Tento článek obsahuje seznam Event Gridch metrik, které jsou zařazené do kategorií podle oborů názvů. 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/domény
 
-|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Téma|
 |PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|Téma, ErrorType, chyba|
@@ -33,7 +29,7 @@ Tento článek obsahuje seznam Event Gridch metrik, které jsou zařazené do ka
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témata
 
-|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádná|
 |PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|ErrorType, chyba|
@@ -48,7 +44,7 @@ Tento článek obsahuje seznam Event Gridch metrik, které jsou zařazené do ka
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádná|
 |PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|ErrorType, chyba|
@@ -63,7 +59,7 @@ Tento článek obsahuje seznam Event Gridch metrik, které jsou zařazené do ka
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/eventSubscriptions
 
-|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |MatchedEventCount|Spárované události|Počet|Celkem|Celkový počet událostí odpovídajících tomuto odběru události|Žádná|
 |DeliveryAttemptFailCount|Doručení – neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných doručování do tohoto odběru události|Chyba, ErrorType|
@@ -74,7 +70,7 @@ Tento článek obsahuje seznam Event Gridch metrik, které jsou zařazené do ka
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/extensionTopics
 
-|Metric|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádná|
 |PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|ErrorType, chyba|

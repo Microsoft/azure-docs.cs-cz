@@ -3,12 +3,12 @@ title: Šifrování v Azure Backup
 description: Přečtěte si, jak funkce šifrování v Azure Backup pomůžou chránit zálohovaná data a plnit požadavky na zabezpečení vaší firmy.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0a3f4db4d248d2534cfebd617be0f3ccc9647f15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca570cfdc6e78e712715ba075168f4b06c55e4af
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807734"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116552"
 ---
 # <a name="encryption-in-azure-backup"></a>Šifrování v Azure Backup
 
@@ -32,6 +32,13 @@ Při zálohování Virtual Machines Azure teď můžete data šifrovat pomocí k
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Zálohování virtuálních počítačů se spravovanými disky šifrovaných pomocí klíčů spravovaných zákazníkem
 
 Azure Backup taky umožňuje zálohovat virtuální počítače Azure, které používají váš klíč pro [šifrování služby Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). Klíč, který se používá k šifrování disků, je uložený v Azure Key Vault a spravuje vám. Šifrování služby Storage (SSE) pomocí klíčů spravovaných zákazníkem se liší od Azure Disk Encryption, protože ADE využívá BitLocker (pro Windows) a DM-crypt (pro Linux) k provádění šifrování v rámci hosta, SSE šifruje data ve službě úložiště a umožňuje pro vaše virtuální počítače používat libovolný operační systém nebo Image. Další podrobnosti najdete v tématu [šifrování spravovaných disků pomocí zákaznických spravovaných klíčů](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) .
+
+## <a name="infrastructure-level-encryption-for-backup-data"></a>Šifrování na úrovni infrastruktury pro zálohovaná data
+
+Kromě šifrování dat v úložišti Recovery Services pomocí klíčů spravovaných zákazníkem můžete také zvolit, aby byla na infrastruktuře úložiště nakonfigurovaná další vrstva šifrování. Toto šifrování infrastruktury je spravováno platformou a společně s šifrováním v klidovém formátu pomocí klíčů spravovaných zákazníkem umožňuje použití dvou vrstev šifrování zálohovaných dat. Je potřeba si uvědomit, že šifrování infrastruktury se dá nakonfigurovat jenom v případě, že se nejdřív rozhodnete používat vlastní klíče pro šifrování v klidovém umístění. Šifrování infrastruktury používá pro šifrování dat klíče spravované platformou.
+
+>[!NOTE]
+>Šifrování infrastruktury je momentálně ve verzi omezené verze Preview a je k dispozici ve USA – východ, USA a oblasti USA (střed) – jih. Pokud chcete funkci používat v některé z těchto oblastí, vyplňte prosím [Tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) a pošlete nám e-mail na adresu [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>Zálohování virtuálních počítačů šifrovaných pomocí ADE
 

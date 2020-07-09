@@ -1,18 +1,18 @@
 ---
 title: Nabídka s doporučenými postupy – komerční tržiště Microsoftu
 description: Přečtěte si o osvědčených postupech pro uvedení na trh pro váš Microsoft AppSource a Azure Marketplace nabídek.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 07/06/2020
-ms.author: dsindona
-ms.openlocfilehash: 60f9630b58250bdae4c382e61697f7abd53e036d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027065"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118388"
 ---
 # <a name="offer-listing-best-practices"></a>Osvědčené postupy nabídky
 
@@ -31,7 +31,7 @@ Tabulky v této části obsahují návrhy na vytváření a poutavé nabídky Ma
 
 Kategorie a odvětví pro různé prezentace budou platit pro různé typy nabídek.
 
-|  | **Kategorie <br> podle prezentace** |  | **Odvětví <br> pro AppSource** |
+| Prezentace | Kategorie <br>od prezentace | Kategorie <br>od prezentace | Odvětví <br> pro AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Typ nabídky**   |  **Azure Marketplace**  | **AppSource**  |
 | Aplikace Azure | × | |
@@ -61,10 +61,10 @@ Vyberte kategorie a podkategorie, které nejlépe zarovnejte s vaší nabídkou 
 |**Analýzy** | **Analýzy** |
 | &nbsp;&nbsp;Přehledy dat | &nbsp;&nbsp;Pokročilá analýza  |
 | &nbsp;&nbsp;Analýza dat |  &nbsp;&nbsp;Vytváření sestav & vizualizace |
-| &nbsp;&nbsp;Velké objemy dat | **AI a strojové učení**  |
+| &nbsp;&nbsp;Velké objemy dat | **AI a Machine Learning**  |
 | &nbsp;&nbsp;Prediktivní analýza | &nbsp;&nbsp;AI pro firmy |
 | &nbsp;&nbsp;Analýzy v reálném čase/streamování | &nbsp;&nbsp;Robot – aplikace |
-| **AI a strojové učení** | **Spolupráce** |
+| **AI a Machine Learning** | **Spolupráce** |
 | &nbsp;&nbsp;Robot – služba | &nbsp;&nbsp;Kontaktování & lidí |
 | &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Správa schůzek |
 | &nbsp;&nbsp;Služba ML | &nbsp;&nbsp;Správa & pro návrh webu |
@@ -118,7 +118,7 @@ Vyberte kategorie a podkategorie, které nejlépe zarovnejte s vaší nabídkou 
 | **Monitorování diagnostiky &**  | **Operace & zásobovacího řetězce** |
 | **Migrace**  | &nbsp;&nbsp;Správa produkčního prostředí Asset & |
 | &nbsp;&nbsp;Migrace dat | &nbsp;&nbsp;Prognózování poptávky |
-| **Hybridní realita**  | &nbsp;&nbsp;Správa informací & připojení |
+| **Smíšená realita**  | &nbsp;&nbsp;Správa informací & připojení |
 | **Sítě**  | &nbsp;&nbsp;Plánování, nákup & vytváření sestav |
 | &nbsp;&nbsp;Správci zařízení | &nbsp;&nbsp;Správa kvality & služeb |
 | &nbsp;&nbsp;Komunikační | &nbsp;&nbsp;Správa objednávek prodejních & |
@@ -144,7 +144,7 @@ Vyberte kategorie a podkategorie, které nejlépe zarovnejte s vaší nabídkou 
 
 Konkrétní podrobnosti o tom, jak mohou možnosti jazyka Transact ovlivnit zobrazení a nákup zákazníků z webu Marketplace, najdete v [příručce podle typu nabídky](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) . V případě nabídek SaaS, funkce transakce nabídky a výběr kategorie určí prezentace, kde se vaše nabídka publikuje:
 
-| Nabídka SaaS    |     |          |           |    |    |     | Příslušné prezentace |              |
+| Nabídka SaaS    | Nabídka SaaS   | Nabídka SaaS  | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS   | Nabídka SaaS    | Příslušné prezentace | Příslušné prezentace |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | Měřené fakturace | Microsoft 365 Doplňky | Kontaktujte mě | Transact (minimálně 1 plán) | Pouze soukromý plán | Pouze veřejný plán | Veřejné & soukromé plány | AppSource | Azure Marketplace |
 |  | X |  |  |  |  |  | X |  |

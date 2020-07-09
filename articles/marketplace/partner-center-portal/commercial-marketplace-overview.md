@@ -1,17 +1,18 @@
 ---
 title: Přehled portálu pro komerční marketplace v Partnerském centru
 description: Přečtěte si další informace o portálu pro komerční tržiště v partnerském centru a o tom, jak vypisovat a prodávat nabídky Azure Marketplace, AppSource a prostřednictvím programu Cloud Solution Provider (CSP).
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 2d506656343df6eaa58975bfeb921423c2e3314b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954127"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116688"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Přehled portálu komerčního tržiště v partnerském centru
 

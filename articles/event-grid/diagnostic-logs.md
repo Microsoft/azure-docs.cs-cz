@@ -1,18 +1,14 @@
 ---
 title: Azure Event Grid – protokoly diagnostiky pro témata nebo domény
 description: Tento článek obsahuje koncepční informace o diagnostických protokolech k tématu a doméně služby Azure Event Grid.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: spelluru
-ms.openlocfilehash: 93e7e47cbcc1ab9542ba333b89f7dd655a412489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: c8f6734d9d43887d0eb0bb90bb08f727732feac3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82630249"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116739"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Diagnostické protokoly pro Azure Event Grid témata/domény
 Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit protokoly **selhání publikování a doručení** v účtu úložiště, v centru událostí nebo v pracovním prostoru Log Analytics. Tento článek poskytuje schéma pro protokoly a příklad položky protokolu.
@@ -20,7 +16,7 @@ Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit pr
 
 ## <a name="schema-for-publishdelivery-failure-logs"></a>Schéma pro protokoly selhání publikování a doručení
 
-| Název vlastnosti | Datový typ | Popis |
+| Název vlastnosti | Datový typ | Description |
 | ------------- | --------- | ----------- | 
 | Čas | DateTime | Čas, kdy byla položka protokolu vygenerována <p>**Příklad hodnoty:** 01-29-2020 09:52:02.700</p> |
 | EventSubscriptionName | Řetězec | Název odběru události <p>**Ukázková hodnota:** "EVENTSUB1"</p> <p>Tato vlastnost existuje pouze pro protokoly selhání doručení.</p>  |

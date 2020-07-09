@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak optimalizovat dobu dotazování s vyu�
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: ac1dc43a2b89bc1cc748947ec08e6ada87edbfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1fa0affb821b00d4f5529841533e854e634377
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "65066983"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116178"
 ---
 # <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>Optimalizace času dotazu pomocí strategie ukládání tabulek informační služby 
 Tento článek popisuje, jak optimalizovat dobu dotazování s využitím strategie úložiště tabulek s neoptimalizovanými atributy (informační technika).

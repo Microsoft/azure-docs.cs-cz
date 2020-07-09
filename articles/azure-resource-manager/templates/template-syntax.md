@@ -3,12 +3,12 @@ title: Struktura a syntaxe šablon
 description: Popisuje strukturu a vlastnosti šablon Azure Resource Manager pomocí deklarativní syntaxe JSON.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 4fdf386aa3b17f46589183706b2a91637acacdb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae2c5a5fe1440c3adbae475cd4c7652a3b01c285
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208820"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86116535"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Pochopení struktury a syntaxe šablon ARM
 
@@ -35,7 +35,7 @@ V nejjednodušší struktuře má šablona následující prvky:
 
 | Název elementu | Povinné | Popis |
 |:--- |:--- |:--- |
-| $schema |Yes |Umístění souboru schématu JSON, který popisuje verzi jazyka šablony. Číslo verze, které použijete, závisí na rozsahu nasazení a editoru JSON.<br><br>Pokud používáte [vs Code s rozšířením Azure Resource Manager Tools](use-vs-code-to-create-template.md), použijte nejnovější verzi pro nasazení skupin prostředků:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Jiné editory (včetně sady Visual Studio) nemusí být schopné zpracovat toto schéma. Pro tyto editory použijte:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Pro nasazení předplatných použijte:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Pro nasazení skupin pro správu použijte:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Pro nasazení klientů použijte:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| $schema |Yes |Umístění souboru schématu JSON, který popisuje verzi jazyka šablony. Číslo verze, které použijete, závisí na rozsahu nasazení a editoru JSON.<br><br>Pokud používáte [vs Code s rozšířením Azure Resource Manager Tools](quickstart-create-templates-use-visual-studio-code.md), použijte nejnovější verzi pro nasazení skupin prostředků:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Jiné editory (včetně sady Visual Studio) nemusí být schopné zpracovat toto schéma. Pro tyto editory použijte:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Pro nasazení předplatných použijte:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Pro nasazení skupin pro správu použijte:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Pro nasazení klientů použijte:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | Contentversion – |Yes |Verze šablony (například 1.0.0.0). Pro tento prvek můžete zadat libovolnou hodnotu. Tuto hodnotu použijte k dokumentování významných změn v šabloně. Při nasazování prostředků pomocí šablony můžete tuto hodnotu použít k tomu, abyste se ujistili, že je používána pravá šablona. |
 | apiProfile |No | Verze rozhraní API, která slouží jako kolekce verzí rozhraní API pro typy prostředků. Tuto hodnotu použijte, chcete-li se vyhnout nutnosti zadávat verze rozhraní API pro každý prostředek v šabloně. Když zadáte verzi profilu rozhraní API a nezadáte verzi rozhraní API pro typ prostředku, Správce prostředků používá verzi rozhraní API pro tento typ prostředku, který je definovaný v profilu.<br><br>Vlastnost profil rozhraní API je užitečná hlavně při nasazení šablony do různých prostředí, jako je Azure Stack a globální Azure. Pomocí verze profilu rozhraní API se ujistěte, že vaše šablona automaticky používá verze, které jsou v obou prostředích podporované. Seznam aktuálních verzí profilů rozhraní API a verzí rozhraní API prostředků definovaných v profilu najdete v tématu [profil rozhraní API](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Další informace najdete v tématu [sledování verzí pomocí profilů rozhraní API](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [ukazatelů](#parameters) |No |Hodnoty, které jsou k dispozici při spuštění nasazení za účelem přizpůsobení nasazení prostředků. |
@@ -175,7 +175,7 @@ Při definování uživatelské funkce existují určitá omezení:
 
 Příklady použití vlastních funkcí naleznete [v tématu uživatelsky definované funkce v šabloně Azure Resource Manager](template-user-defined-functions.md).
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 V části Resources (prostředky) definujete prostředky, které jsou nasazené nebo aktualizované.
 
@@ -307,7 +307,7 @@ Pro vložené komentáře můžete použít buď nebo, `//` `/* ... */` ale tato
   ],
 ```
 
-V Visual Studio Code může [rozšíření Azure Resource Manager nástrojů](use-vs-code-to-create-template.md#install-resource-manager-tools-extension) automaticky detekovat šablonu správce prostředků a odpovídajícím způsobem změnit jazykový režim. Pokud vidíte **Azure Resource Manager šablonu** v pravém dolním rohu vs Code, můžete použít vložené komentáře. Vložené komentáře již nejsou označeny jako neplatné.
+V Visual Studio Code může [rozšíření Azure Resource Manager nástrojů](quickstart-create-templates-use-visual-studio-code.md) automaticky detekovat šablonu správce prostředků a odpovídajícím způsobem změnit jazykový režim. Pokud vidíte **Azure Resource Manager šablonu** v pravém dolním rohu vs Code, můžete použít vložené komentáře. Vložené komentáře již nejsou označeny jako neplatné.
 
 ![Režim šablony Visual Studio Code Azure Resource Manager](./media/template-syntax/resource-manager-template-editor-mode.png)
 
