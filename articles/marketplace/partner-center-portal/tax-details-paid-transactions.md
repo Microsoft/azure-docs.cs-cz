@@ -2,15 +2,14 @@
 title: Podrobnosti o daních pro komerční tržiště Microsoftu
 Description: Pokud chcete pochopit finanční požadavky na výběr ceny, důsledky výběru a finanční zodpovědnost, přečtěte si v následujících tabulkách země a oblasti distribuce.
 ms.topic: conceptual
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.date: 05/04/2020
-ms.openlocfilehash: c58f66ac06cca7146a28813406e74932046f6ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0949bd1234b28a9683e194d3b3f08511f7f17a26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746683"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120683"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Podrobnosti o daních pro komerční vydavatele na webu Marketplace
 

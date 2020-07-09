@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – vytvoření geograficky replikované šablony registru-Správce prostředků
+title: Rychlý Start – vytvoření geograficky replikované šablony registru-Azure Resource Manager
 description: Naučte se vytvářet geograficky replikovaný registr kontejnerů Azure pomocí šablony Azure Resource Manager.
 services: azure-resource-manager
 author: dlepow
@@ -8,28 +8,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: c94cd3b4b455691e85e7525007fcdf7a056a2b28
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3ed160780e15cc36648f7e2ad77e726901ee86c3
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558085"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119850"
 ---
-# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-a-resource-manager-template"></a>Rychlý Start: vytvoření geograficky replikovaného registru kontejnerů pomocí šablony Správce prostředků
+# <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Rychlý Start: vytvoření geograficky replikovaného registru kontejnerů pomocí šablony ARM
 
-V tomto rychlém startu se dozvíte, jak vytvořit instanci Azure Container Registry pomocí Azure Resource Manager šablony. Šablona nastaví [geograficky replikovaný](container-registry-geo-replication.md) registr, který automaticky synchronizuje obsah registru ve více než jedné oblasti Azure. Geografická replikace umožňuje přístup k obrázkům z regionálních nasazení v rámci sítě a současně zajišťuje jednotné prostředí pro správu. Je to funkce úrovně služby [Premium](container-registry-skus.md) Registry. 
+V tomto rychlém startu se dozvíte, jak vytvořit instanci Azure Container Registry pomocí šablony Azure Resource Manager (šablona ARM). Šablona nastaví [geograficky replikovaný](container-registry-geo-replication.md) registr, který automaticky synchronizuje obsah registru ve více než jedné oblasti Azure. Geografická replikace umožňuje přístup k obrázkům z regionálních nasazení v rámci sítě a současně zajišťuje jednotné prostředí pro správu. Je to funkce úrovně služby [Premium](container-registry-skus.md) Registry.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="create-a-geo-replicated-registry"></a>Vytvoření geograficky replikovaného registru
-
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/). Šablona nastaví registr a dodatečnou místní repliku.
 
@@ -42,7 +42,7 @@ V šabloně jsou definované následující prostředky:
 
 Další příklady šablon Azure Container Registry najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerregistry&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
  1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu.
 
@@ -86,7 +86,7 @@ Pokud je už nepotřebujete, odstraňte skupinu prostředků, registr a repliku 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Azure Container Registry se šablonou Správce prostředků a nakonfigurovali jste repliku registru v jiném umístění. Pokračujte Azure Container Registry výukové kurzy, kde najdete hlubší přehled na ACR.
+V tomto rychlém startu jste vytvořili Azure Container Registry se šablonou ARM a nakonfigurovali repliku registru v jiném umístění. Pokračujte Azure Container Registry výukové kurzy, kde najdete hlubší přehled na ACR.
 
 > [!div class="nextstepaction"]
 > [Kurzy Azure Container Registry](container-registry-tutorial-prepare-registry.md)
@@ -94,4 +94,4 @@ V tomto rychlém startu jste vytvořili Azure Container Registry se šablonou Sp
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Kurz: vytvoření a nasazení první šablony ARM](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

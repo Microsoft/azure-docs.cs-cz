@@ -1,19 +1,14 @@
 ---
 title: Kvóty a omezení – Azure Event Grid | Microsoft Docs
 description: Tento článek poskytuje omezení a kvóty pro Azure Event Grid. Například počet předplatných pro téma, počet vlastních témat na předplatné atd.
-services: event-grid
-author: spelluru
-editor: ''
-ms.service: event-grid
-ms.devlang: na
 ms.topic: reference
-ms.date: 05/12/2020
-ms.author: shvija
-ms.openlocfilehash: decfc6659ea38ea35ab41615ff5077492cfa03b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 78fb18f579eb1fa0c032b72c6d32bf56a7f0c8f4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83598098"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120428"
 ---
 # <a name="azure-event-grid-quotas-and-limits"></a>Azure Event Grid kvóty a omezení
 V tomto článku jsou uvedené kvóty a omezení v Azure Event Grid. 

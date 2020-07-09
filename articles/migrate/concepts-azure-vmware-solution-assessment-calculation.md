@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 200a6ba333d283b6a82f1eb228a0fc586b5b1fab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568351"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118813"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Posuzování pro funkci AVS v Azure Migrate: posouzení serveru
 
@@ -29,7 +29,7 @@ Posouzení, která vytvoříte pomocí posouzení serveru, jsou snímkem dat k u
 **Typ posouzení** | **Podrobnosti**
 --- | --- 
 **Virtuální počítač Azure** | Posouzení migrace vašich místních serverů do virtuálních počítačů Azure. <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci do Azure. [Další informace](concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | Posouzení migrace místních serverů do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md). <br/><br/> Pomocí tohoto typu posouzení můžete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do řešení Azure VMware (AVS). [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Posouzení řešení Azure VMware (AVS) v posouzení serveru poskytuje dvě možnosti pro kritéria změny velikosti:
 
@@ -121,7 +121,7 @@ Co je je součástí posouzení služby AVS při vyhodnocování serveru:
 | **Cílové umístění** | Určuje umístění privátního cloudu AVS, do kterého chcete migrovat.<br/><br/> Posouzení pro funkci AVS v nástroji Server Assessment aktuálně podporuje tyto cílové oblasti: Východní USA, Západní Evropa Západní USA. 
 | **Typ úložiště** | Určuje modul úložiště, který se má používat v rámci služby AVS.<br/><br/> Posouzení služby AVS podporuje pouze síti vSAN jako výchozí typ úložiště. 
 **Rezervované instance (RIs)** | Tato vlastnost vám pomůže určit rezervované instance v funkci AVS. Pro uzly služby AVS se aktuálně nepodporují rezervované instance. 
-**Typ uzlu** | Určuje [typ uzlu AVS](https://docs.microsoft.com/azure/azure-vmware/concepts-private-clouds-clusters) , který se používá k mapování místních virtuálních počítačů. Výchozí typ uzlu je AV36. <br/><br/> Azure Migrate doporučí, aby se virtuální počítače přenesly do služby AVS požadovaným počtem uzlů. 
+**Typ uzlu** | Určuje [typ uzlu AVS](../azure-vmware/concepts-private-clouds-clusters.md) , který se používá k mapování místních virtuálních počítačů. Výchozí typ uzlu je AV36. <br/><br/> Azure Migrate doporučí, aby se virtuální počítače přenesly do služby AVS požadovaným počtem uzlů. 
 **Nastavení FTT, úroveň RAID** | Určuje použitou chybu při tolerování a kombinacích RAID. Vybraná možnost FTT v kombinaci s požadavkem na místní disk virtuálních počítačů určí celkové úložiště síti vSAN, které se v prostředí AVS vyžaduje. 
 **Kritérium určení velikosti** | Nastaví kritéria, která se mají použít ke *správné velikosti* virtuálních počítačů pro funkci AVS. Můžete se rozhodnout pro přizpůsobení velikosti na *základě výkonu* nebo *jako místní,* aniž byste museli zvážit historii výkonu. 
 **Historie výkonu** | Nastaví dobu trvání, která se má vzít v úvahu při vyhodnocování dat výkonu počítačů. Tato vlastnost je platná pouze v případě, že kritéria změny velikosti jsou *založená na výkonu*. 
@@ -249,14 +249,14 @@ Po dokončení doporučení pro změny velikosti Azure Migrate vypočítá celko
 - Agreguje náklady napříč všemi uzly a vypočítá celkové měsíční náklady.
 - Náklady se zobrazují v měně určené v nastavení hodnocení.
 
-Jelikož jsou ceny za Azure VMware Solution (AVS) na jeden uzel, celkové náklady na výpočetní náklady a distribuci nákladů na úložiště se nepočítají. [Další informace](https://docs.microsoft.com/azure/azure-vmware/introduction)
+Jelikož jsou ceny za Azure VMware Solution (AVS) na jeden uzel, celkové náklady na výpočetní náklady a distribuci nákladů na úložiště se nepočítají. [Další informace](../azure-vmware/introduction.md)
 
 Všimněte si, že jako Azure VMware Solution (AVS) je ve verzi Preview, ceny za uzel v hodnocení jsou ve verzi Preview. Pokyny najdete v místním týmu MSFT AVS GBB.
 
 ## <a name="migration-tool-guidance"></a>Pokyny k nástroji pro migraci
 
 V sestavě připravenosti Azure pro posouzení řešení Azure VMware (AVS) můžete vidět následující navrhované nástroje: 
-- **VMware HCX nebo Enterprise**: pro počítače VMware je řešení Azure Hybrid Cloud Extension (HCX) navrhovaným nástrojem pro migraci, který vaše místní úlohy migruje do privátního cloudu řešení Azure VMware (AVS). [Další informace](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)
+- **VMware HCX nebo Enterprise**: pro počítače VMware je řešení Azure Hybrid Cloud Extension (HCX) navrhovaným nástrojem pro migraci, který vaše místní úlohy migruje do privátního cloudu řešení Azure VMware (AVS). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
 - **Neznámé**: u počítačů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci známý. I když používáte počítače VMware, doporučuje se použít řešení VMWare Hybrid Cloud Extension (HCX).
 
 ## <a name="next-steps"></a>Další kroky

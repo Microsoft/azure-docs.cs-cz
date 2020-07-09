@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace nabídky a požadavky na výpis služby
 description: Tento článek vysvětluje požadavky a pokyny pro výpis nových nabídek a služeb v Azure Marketplace.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 06/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 6c95f510ce83f924a58b0844285f4142131db3eb
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2b0954941ba6b6b7ce3697889305dc5bbd299590
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027133"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119374"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Pokyny pro výpis Azure Marketplace
 
@@ -28,7 +28,7 @@ Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní s
 
 ## <a name="listing-requirements-for-all-offers"></a>Výpis požadavků pro všechny nabídky
 
-|  | Výpis elementu | Základní požadavek | Optimální požadavek |
+| Číslo | Výpis elementu | Základní požadavek | Optimální požadavek |
 |:--- |:--- |:--- |:--- |
 | 1 | Cíl zájemce | Má nakonfigurovaný cíl zájemce.| Katalog s jedním komerčním partnerem (OCP) obsahuje informace o cíli CRM, které jsou také uvedeny na kartě Partnerská řešení. | 
 | 2 | Název nabídky | Stručně popisuje nabídku řešení. Odpovídá online podpoře řešení na webu partnera. | Obsahuje hledaná klíčová slova. |
@@ -47,15 +47,15 @@ Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní s
 
 ## <a name="trial-offer-requirements"></a>Požadavky na nabídku zkušební verze
 
-|  | Výpis elementu | Základní požadavek | Optimální požadavek | 
+| Číslo | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
-|  | Stav seznamu (volání akce) | Odkaz musí vést k *vyzkoušení* zkušeností zákazníků. | K dispozici jsou také další volání akce (například *koupit nyní*). | 
+| 1 | Stav seznamu (volání akce) | Odkaz musí vést k *vyzkoušení* zkušeností zákazníků. | K dispozici jsou také další volání akce (například *koupit nyní*). | 
 
 ---
 
 ## <a name="saas-application-requirements"></a>Požadavky aplikace SaaS
 
-|  | Výpis elementu | Základní požadavek | Optimální požadavek | 
+| Číslo | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
 | 1 | Název nabídky |<ul><li>Musí obsahovat jenom malá písmena, alfanumerické znaky, pomlčky nebo podtržítka. Po publikování se název nedá změnit.</li><li>Popisuje nabídku řešení.</li><li>Odpovídá online podpoře řešení na webu partnera. | Obsahuje hledaná klíčová slova. |
 | 2 | Technické informace: Konfigurace |<ul><li>V případě aplikací SaaS (software jako služba) vyberte, jestli chcete zobrazit jenom seznam aplikací, nebo pokud chcete, aby si zákazníci mohli koupit aplikaci prostřednictvím Azure.</li><li>Vyberte požadovaný text na tlačítku pro získání nabídky: *zdarma*, *bezplatná zkušební verze*nebo *kontaktujte mě*.</li><li>V automaticky otevíraném okně vyberte jenom jeden příslušný produkt, pokud vaše aplikace využívá technologii: Cortana Intelligence, Power BI šablony řešení nebo Power Apps. |  |
@@ -73,7 +73,7 @@ Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní s
 
 ## <a name="container-offer-requirements"></a>Požadavky na nabídky kontejneru
 
-|  | Výpis elementu | Základní požadavek | Optimální požadavek | 
+| Číslo | Výpis elementu | Základní požadavek | Optimální požadavek | 
 |:--- |:--- |:--- |:--- |
 |1 |Nastavení nabídky | <ul><li>ID nabídky: max. 50 znaků.</li><li>ID vydavatele: vyberte ho v rozevíracím seznamu.</li><li>Název: max. 50 znaků. | Zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy. | 
 | 2 | Skladové položky | Partner vybere nové SKU.| Nadpis zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy.  |
@@ -84,7 +84,7 @@ Pro konkrétní typy seznamů jsou k dispozici další požadavky a kontrolní s
 
 ## <a name="consulting-offer-requirements"></a>Požadavky na konzultační nabídky
 
-|  | Výpis elementu | Základní požadavek | Optimální požadavek |
+| Číslo | Výpis elementu | Základní požadavek | Optimální požadavek |
 |:--- |:--- |:--- |:--- |
 | 1 | Název nabídky  |  Musí jasně vypsat typ služby a dobu trvání v *názvu formátu: typ trvání* (například "nabídka zapojení: 1-týden).  | <ul><li>Neopakuje název vydavatele.</li><li>Nadpis zrcadlí styl nadpisu, který je již k dispozici v popisu. Nepoužívejte dlouhé názvy. | 
 | 2 | Popis nabídky  |<ul><li>Zajistěte správné použití [názvů produktů společnosti Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx).</li><li>Nabídky označené jako *Price: odhad* musí obsahovat poznámku na nejvyšší nebo nejnižší úrovni, která vysvětlí proměnlivost (cestovné na klienta, počet migrovaných serverů atd.).</li><li>Každý typ nabídky má požadavky na popis, jak je znázorněno níže: <ul><li>Pro krátké potřeby je potřeba mít aspoň čtyři nebo pět odrážek s informacemi o tématech, která se mají pokrýt.</li><li>Všechny semináře potřebují agendu.</li><li>Všechny agendy musí být rozdělené podle dne nebo týdne v závislosti na době trvání dílny.</li><li>Posouzení, posuzování koncepce, neškolicí semináře a implementace nabídky vyžadují dodávky.</li><li>Školicí semináře nepotřebují dodávky, ale potřebují podrobnější agendu s tématy, která se potýkají.</li></ul></ul> | <ul><li>Každá nabídka obsahuje agendu a dodávky.</li><li>Nabídka obsahuje odstavec s kontextem o společnosti, která poskytuje službu v horní části.</li><li>Nabídka obsahuje odstavec týkající se hodnoty samotné služby jako horní části. |

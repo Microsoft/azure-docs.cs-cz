@@ -4,13 +4,14 @@ description: Naučte se, jak nastavit a spravovat šifrování dat pro váš Azu
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: f7621867aad6baf517462983e35afb0b28223756
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 731827fb63f8b23d21ea2eddaef3fa9b796d14bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341300"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119578"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Šifrování dat pro Azure Database for PostgreSQL jeden server pomocí Azure CLI
 
@@ -21,28 +22,28 @@ Naučte se používat Azure CLI k nastavení a správě šifrování dat pro vá
 * Musíte mít předplatné Azure a mít oprávnění správce k tomuto předplatnému.
 * Vytvořte Trezor klíčů a klíč, který se použije pro klíč spravovaný zákazníkem. V trezoru klíčů taky povolte možnost Vymazat ochranu a obnovitelné odstranění.
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+   ```azurecli-interactive
+   az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
+   ```
 
 * Ve vytvořeném Azure Key Vault vytvořte klíč, který se použije pro šifrování dat Azure Database for PostgreSQL jednoho serveru.
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+   ```azurecli-interactive
+   az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+   ```
 
 * Aby bylo možné použít existující Trezor klíčů, musí mít následující vlastnosti, které se mají použít jako klíč spravovaný zákazníkem:
   * [Obnovitelné odstranění](../key-vault/general/overview-soft-delete.md)
 
-    ```azurecli-interactive
-    az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
-    ```
+      ```azurecli-interactive
+      az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+      ```
 
   * [Vyprázdnit chráněné](../key-vault/general/overview-soft-delete.md#purge-protection)
 
-    ```azurecli-interactive
-    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
-    ```
+      ```azurecli-interactive
+      az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
+      ```
 
 * Klíč musí obsahovat následující atributy, které se použijí jako klíč spravovaný zákazníkem:
   * Žádné datum vypršení platnosti
@@ -87,36 +88,37 @@ Po zašifrování Azure Database for PostgreSQL jednoho serveru pomocí spravova
 
 ### <a name="creating-a-restoredreplica-server"></a>Vytvoření obnoveného serveru nebo serveru repliky
 
-  *  [Vytvoření serveru pro obnovení](howto-restore-server-cli.md) 
-  *  [Vytvoření serveru repliky pro čtení](howto-read-replicas-cli.md) 
+* [Vytvoření serveru pro obnovení](howto-restore-server-cli.md)
+* [Vytvoření serveru repliky pro čtení](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>Po obnovení serveru se znovu ověří šifrování dat obnoveného serveru.
 
-    ```azurecli-interactive
-    az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-postgresql-single-server"></a>Další funkce pro klíč, který se používá pro Azure Database for PostgreSQL jeden server
 
 ### <a name="get-the-key-used"></a>Získat použitý klíč
 
-    ```azurecli-interactive
-    az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Adresa URL klíče:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>Vypíše použitý klíč.
 
-    ```azurecli-interactive
-    az postgres server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az postgres server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>Vyřadit použitý klíč
 
-    ```azurecli-interactive
-    az postgres server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az postgres server key delete -g <resource_group> --kid <key url> 
+```
+
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Použití šablony Azure Resource Manager k povolení šifrování dat
 
 Kromě Azure Portal můžete taky povolit šifrování dat na Azure Database for PostgreSQL jednom serveru pomocí šablon Azure Resource Manager pro nový i existující server.

@@ -1,17 +1,14 @@
 ---
 title: Nastavení upozornění pro Azure Event Grid metriky a operace protokolu aktivit
 description: Tento článek popisuje, jak vytvořit výstrahy pro Azure Event Grid metriky a operace protokolu aktivit.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 1a2eacb5fa03ea2a5a8ba2d38d9b3e7dea315890
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 615ebef749be49822a09470eb0d47d8eb31b9a5a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412834"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119136"
 ---
 # <a name="set-alerts-on-azure-event-grid-metrics-and-activity-logs"></a>Nastavení upozornění na Azure Event Grid metriky a protokoly aktivit
 Tento článek popisuje, jak vytvořit výstrahy pro Azure Event Grid metriky a operace protokolu aktivit. Můžete vytvářet upozornění na metriky publikování i doručování pro Azure Event Grid prostředky (témata a domény). Pro systémová témata [vytvořte výstrahy pomocí stránky **metriky** ](#create-alerts-using-the-metrics-page).

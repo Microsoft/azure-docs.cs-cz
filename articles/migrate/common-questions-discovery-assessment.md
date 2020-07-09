@@ -3,12 +3,12 @@ title: Dotazy týkající se zjišťování, hodnocení a analýzy závislostí 
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7d42de52d35d5a3c5e9a54673d8cd933fbee04aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610298"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118830"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Analýzy zjišťování, hodnocení a závislostí – běžné otázky
 
@@ -33,7 +33,7 @@ Můžete zjistit až 10 000 virtuálních počítačů VMware, až 5 000 virtuá
 
 - **Posouzení virtuálních počítačů Azure** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md), [virtuální počítače Hyper-V](how-to-set-up-appliance-hyper-v.md)a [fyzické servery](how-to-set-up-appliance-physical.md) pro migraci na virtuální počítače Azure. [Další informace](concepts-assessment-calculation.md)
 
-- Posouzení **Řešení Azure VMware (AVS)** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do [Řešení Azure VMware (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction) pomocí tohoto typu posouzení. [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
+- Posouzení **Řešení Azure VMware (AVS)** použijte, když chcete vyhodnotit místní [virtuální počítače VMware](how-to-set-up-appliance-vmware.md) pro migraci do [Řešení Azure VMware (AVS)](../azure-vmware/introduction.md) pomocí tohoto typu posouzení. [Další informace](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - Společnou skupinu s počítači VMware můžete použít jenom ke spouštění obou typů posouzení. Všimněte si, že pokud spouštíte posouzení služby AVS v Azure Migrate poprvé, je vhodné vytvořit novou skupinu počítačů VMware.
 
@@ -113,7 +113,7 @@ Posouzení virtuálních počítačů Azure založené na importech jsou vyhodno
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Proč je navrhovaný Nástroj pro migraci v rámci vyhodnocení pro funkci AVS na základě importu označený jako neznámý?
 
-V případě počítačů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci v posouzení služby AVS známý. U počítačů VMware se ale doporučuje použít řešení VMWare Hybrid Cloud Extension (HCX). [Další informace](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)
+V případě počítačů importovaných prostřednictvím souboru CSV není výchozí nástroj pro migraci v posouzení služby AVS známý. U počítačů VMware se ale doporučuje použít řešení VMWare Hybrid Cloud Extension (HCX). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
 
 
 ## <a name="what-is-dependency-visualization"></a>Co je Vizualizace závislostí?
@@ -130,9 +130,9 @@ Rozdíly mezi vizualizacemi bez agentů a vizualizací na základě agentů jsou
 **Požadavek** | **Bez agenta** | **Založené na agentovi**
 --- | --- | ---
 Podpora | Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware. [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy. | Obecně dostupná (GA).
-Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)a [Agent závislostí](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+Agent | Není nutné instalovat agenty na počítačích, které chcete křížově kontrolovat. | Agenti, kteří se mají nainstalovat na každý místní počítač, který chcete analyzovat: [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)a [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent). 
 Požadavky | [Projděte si](concepts-dependency-visualization.md#agentless-analysis) požadavky a požadavky na nasazení. | [Projděte si](concepts-dependency-visualization.md#agent-based-analysis) požadavky a požadavky na nasazení.
-Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) v [protokolech Azure monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#agent-based-analysis).
+Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service map](../azure-monitor/insights/service-map.md) v [protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md) pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#agent-based-analysis).
 Jak to funguje | Zachycuje data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 Data | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
 Vizualizace | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapu lze zobrazit pouze za hodinu.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.
@@ -151,7 +151,7 @@ Ne. Přečtěte si další informace o [cenách Azure Migrate](https://azure.mic
 
 Chcete-li použít vizualizaci závislostí založenou na agentech, Stáhněte a nainstalujte agenty na každý místní počítač, který chcete vyhodnotit:
 
-- [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)
+- [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)
 - [Agent závislostí](../azure-monitor/platform/agents-overview.md#dependency-agent)
 - Pokud máte počítače, které nemají připojení k Internetu, Stáhněte a nainstalujte na ně bránu Log Analytics.
 
@@ -163,7 +163,7 @@ Ano, pro vizualizaci závislostí založenou na agentech můžete existující p
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>Můžu exportovat sestavu vizualizace závislostí?
 
-Ne, sestavu vizualizace závislosti v rámci vizualizace založenou na agentech nelze exportovat. Azure Migrate však používá Service Map a můžete použít [REST API Service map](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) k načtení závislostí ve formátu JSON.
+Ne, sestavu vizualizace závislosti v rámci vizualizace založenou na agentech nelze exportovat. Azure Migrate však používá Service Map a můžete použít [REST API Service map](/rest/api/servicemap/machines/listconnections) k načtení závislostí ve formátu JSON.
 
 ## <a name="can-i-automate-agent-installation"></a>Můžu automatizovat instalaci agenta?
 
@@ -175,18 +175,18 @@ Pro vizualizaci závislostí založenou na agentech:
 
 ## <a name="what-operating-systems-does-mma-support"></a>Jaké operační systémy MMA podporuje?
 
-- Prohlédněte si seznam [operačních systémů Windows, které podporuje MMA](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
-- Prohlédněte si seznam [operačních systémů Linux, které podporuje MMA](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
+- Prohlédněte si seznam [operačních systémů Windows, které podporuje MMA](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems).
+- Prohlédněte si seznam [operačních systémů Linux, které podporuje MMA](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems).
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>Je možné vizualizovat závislosti po dobu více než jedné hodiny?
 
-Pro vizualizaci založenou na agentech můžete vizualizovat závislosti po dobu až jedné hodiny. Můžete se vrátit do konkrétního data v historii, a to až do jednoho měsíce, ale maximální doba trvání vizualizace je jedna hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale můžete zobrazit závislosti pouze pro jedno hodinové okno. Můžete ale použít protokoly Azure Monitor k [dotazování na data závislostí](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) po delší dobu trvání.
+Pro vizualizaci založenou na agentech můžete vizualizovat závislosti po dobu až jedné hodiny. Můžete se vrátit do konkrétního data v historii, a to až do jednoho měsíce, ale maximální doba trvání vizualizace je jedna hodina. Například můžete použít dobu trvání na mapě závislostí k zobrazení závislostí včera, ale můžete zobrazit závislosti pouze pro jedno hodinové okno. Můžete ale použít protokoly Azure Monitor k [dotazování na data závislostí](./how-to-create-group-machine-dependencies.md) po delší dobu trvání.
 
 U vizualizace bez agentů můžete zobrazit mapu závislostí jednoho serveru po dobu od 1 hodiny do 30 dnů.
 
 ## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>Můžu vizualizovat závislosti pro skupiny více než 10 virtuálních počítačů?
 
-Můžete [vizualizovat závislosti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) pro skupiny, které mají až 10 virtuálních počítačů. Pokud máte skupinu s více než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.
+Můžete [vizualizovat závislosti](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) pro skupiny, které mají až 10 virtuálních počítačů. Pokud máte skupinu s více než 10 virtuálními počítači, doporučujeme rozdělit skupinu do menších skupin a potom tyto závislosti vizualizovat.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68297788"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120275"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Ladění výkonu protokolu TCP/IP pro virtuální počítače Azure
 
@@ -136,7 +136,7 @@ Tato tabulka zobrazuje vzdálenost mezi dvěma místy v přímém směru. V sít
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-Pro rychlost šíření můžete použít 200. To je vzdálenost (v metrech), kterou světlo rozchází za 1 milisekundu.
+Pro rychlost šíření můžete použít 200. Jedná se o vzdálenost v kilometrech, která se v kilometrech prochází za 1 milisekundu.
 
 Pojďme jako příklad využít New York do sítě San Francisco. Lineární vzdálenost je 4 148 km. Když se tato hodnota připojíte k rovnici, získáme následující:
 

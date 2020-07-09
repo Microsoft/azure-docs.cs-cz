@@ -3,11 +3,12 @@ title: Neplatné chyby šablony
 description: Popisuje způsob řešení neplatných chyb šablon při nasazení Azure Resource Manager šablon.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324058"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118881"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Řešení chyb kvůli neplatné šabloně
 
@@ -47,7 +48,7 @@ Tato chyba se dá snadno vytvořit, protože výrazy šablon můžou být kompli
 
 Pokud neposkytnete odpovídající syntaxi, šablona vytvoří hodnotu, která se liší od vašeho záměru.
 
-Pokud obdržíte tento typ chyby, pečlivě zkontrolujte syntaxi výrazu. Zvažte použití editoru JSON, jako je například [Visual Studio](create-visual-studio-deployment-project.md) nebo [Visual Studio Code](use-vs-code-to-create-template.md), což vám může upozorňovat na chyby syntaxe.
+Pokud obdržíte tento typ chyby, pečlivě zkontrolujte syntaxi výrazu. Zvažte použití editoru JSON, jako je například [Visual Studio](create-visual-studio-deployment-project.md) nebo [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md), což vám může upozorňovat na chyby syntaxe.
 
 <a id="incorrect-segment-lengths"></a>
 

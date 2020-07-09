@@ -1,17 +1,18 @@
 ---
 title: Správa delegovaných prostředků Azure
-description: Spravované služby umožňují poskytovatelům služeb prodávat nabídky správy prostředků zákazníkům v Azure Marketplace.
+description: Správa delegovaných prostředků Azure je klíčovou součástí Azure Lighthouse, která umožňuje poskytovatelům služeb spravovat delegované prostředky ve velkém měřítku s flexibilitou a přesností.
 ms.date: 05/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: e6f741ccbf0d52e0859722aa304aa6c273fb5acf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbe3c28cdcd252755b8350eaa5d2e72044981174
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219076"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120887"
 ---
 # <a name="azure-delegated-resource-management"></a>Správa delegovaných prostředků Azure
 
-Správa delegovaných prostředků Azure je jednou z klíčových součástí Azure Lighthouse. Pomocí delegované správy prostředků Azure můžou poskytovatelé služeb zjednodušit zapojení zákazníků a zprovoznění při správě delegovaných prostředků s flexibilitou a přesností.
+Správa delegovaných prostředků Azure je jednou z klíčových součástí [Azure Lighthouse](../overview.md). Pomocí delegované správy prostředků Azure můžou poskytovatelé služeb zjednodušit zapojení zákazníků a zprovoznění při správě delegovaných prostředků s flexibilitou a přesností.
 
 ## <a name="what-is-azure-delegated-resource-management"></a>Co je Správa prostředků delegovaná Azure?
 
@@ -24,7 +25,7 @@ Se správou delegovaných prostředků Azure můžou autorizovaní uživatelé p
 
 [Prostředí pro správu mezi klienty](cross-tenant-management-experience.md) pomáhá efektivněji pracovat s Azure Management Services, jako je Azure Policy, Azure Security Center a další. Aktivita všechny poskytovatele služeb se sleduje v protokolu aktivit, který je uložený v tenantovi zákazníka (a může je zobrazit uživatelé ve správě tenanta). To znamená, že zákazník i poskytovatel služeb můžou snadno identifikovat uživatele přidruženého k jakýmkoli změnám.
 
-Když zařadíte zákazníka do správy delegovaných prostředků Azure, budou mít přístup k nové stránce **poskytovatelé služeb** v Azure Portal, kde můžou [Potvrdit a spravovat své nabídky, poskytovatele služeb a delegované prostředky](../how-to/view-manage-service-providers.md). Pokud zákazník někdy chce odvolat přístup pro poskytovatele služeb, může to udělat kdykoli.
+Když zařadíte zákazníka do správy delegovaných prostředků Azure, budou mít přístup ke stránce **poskytovatelé služeb** v Azure Portal, kde můžou [Potvrdit a spravovat své nabídky, poskytovatele služeb a delegované prostředky](../how-to/view-manage-service-providers.md). Pokud zákazník někdy chce odvolat přístup pro poskytovatele služeb, může to udělat kdykoli.
 
 [Nový typ nabídky spravované služby můžete publikovat do Azure Marketplace](../how-to/publish-managed-services-offers.md) , abyste mohli snadno připojit zákazníky do správy delegovaných prostředků Azure. Alternativně můžete [dokončit proces připojování nasazením Azure Resource Manager šablon](../how-to/onboard-customer.md).
 

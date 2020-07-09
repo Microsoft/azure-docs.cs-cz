@@ -1,17 +1,16 @@
 ---
 title: Řídicí panel využití v Microsoft Commercial Marketplace Analytics
 description: Přečtěte si, jak získat přístup ke všem VIRTUÁLNÍm počítačům nabízí metriky fakturace využití a měření. V partnerském centru v části komerční web Marketplace přejdete na řídicí panel využití.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746668"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120666"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Řídicí panel využití v Microsoft Commercial Marketplace Analytics
 

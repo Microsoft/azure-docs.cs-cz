@@ -1,16 +1,15 @@
 ---
 title: Platba na komerční tržiště Microsoftu
 description: Přečtěte si, jak přijímat platby za vaše tržby na komerčním webu Microsoft Marketplace.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 57a5f3046ce7a1f968bb823a0e13008d076b78c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 604d5c93ca87831b1feb76095da694b4be402ad9
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636559"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121686"
 ---
 # <a name="getting-paid-in-the-commercial-marketplace"></a>Platba na komerčním webu Marketplace
 

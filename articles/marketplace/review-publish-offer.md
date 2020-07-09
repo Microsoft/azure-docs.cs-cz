@@ -1,19 +1,19 @@
 ---
 title: Kontrola a publikování nabídky na komerčním webu Microsoft Marketplace
 description: Použijte Partnerské centrum k odeslání nabídky do verze Preview, zobrazení náhledu vaší nabídky a její následné publikování na komerčním webu Microsoft Marketplace.
-author: mingshen-ms
-ms.author: mingshen
 ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/05/2020
-ms.openlocfilehash: 910a886f02b386d7242bdd5e85f0710baa25408e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 34e56e5d92526cbf46408c670127e87781e342cd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090919"
+ms.locfileid: "86119731"
 ---
 # <a name="review-and-publish-an-offer-to-commercial-marketplace"></a>Kontrola a publikování nabídky na komerčním webu Marketplace
 

@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 44923a124b864083b1badfc617ce0303be66a10e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c826f5e0e36d693dd3ba98640bceae228ba34e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84985356"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119204"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Podrobný postup: vytváření a Správa klíčů SSH pro ověřování na virtuálním počítači Linux v Azure 
 Pomocí páru klíčů SSH (Secure Shell) můžete vytvořit virtuální počítač se systémem Linux v Azure, který bude standardně používat klíče SSH pro ověřování. tím se eliminuje nutnost přihlášení hesel. Virtuální počítače vytvořené pomocí Azure Portal, Azure CLI, šablony Správce prostředků nebo jiné nástroje můžou jako součást nasazení zahrnovat veřejný klíč SSH, který nastavuje ověřování pomocí klíče SSH pro připojení SSH. 
@@ -40,7 +41,7 @@ Klíče SSH jsou ve výchozím nastavení v adresáři `~/.ssh`.  Pokud adresá�
 
 ### <a name="basic-example"></a>Základní příklad
 
-Následující `ssh-keygen` příkaz generuje ve výchozím nastavení v adresáři soubory veřejného a privátního klíče SSH RSA standardně 2048 `~/.ssh` . Pokud pár klíčů SSH existuje v aktuálním umístění, tyto soubory se přepíší.
+Následující `ssh-keygen` příkaz generuje ve výchozím nastavení v adresáři soubory veřejného a privátního klíče SSH RSA standardně 4096 `~/.ssh` . Pokud pár klíčů SSH existuje v aktuálním umístění, tyto soubory se přepíší.
 
 ```bash
 ssh-keygen -m PEM -t rsa -b 4096

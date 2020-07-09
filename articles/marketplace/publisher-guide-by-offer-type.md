@@ -1,17 +1,18 @@
 ---
 title: Průvodce publikováním podle typu nabídky – komerční tržiště Microsoftu
 description: Tento článek popisuje typy nabídek, které jsou k dispozici na komerčním webu Microsoft Marketplace.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 6e889fef16d8ad80d52810207f0328a765ca9cfe
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 72acd5c3c5fbab08b2e97421689b4f562b2ae2e8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958493"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119714"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 

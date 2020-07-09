@@ -1,17 +1,18 @@
 ---
 title: Integrovaná řešení – komerční tržiště Microsoftu
 description: Přečtěte si o výhodách, prostředcích a dalších krocích pro poskytování integrovaných řešení na komerčním webu Marketplace.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: bf20473b407db1804a4275fdc6dd3d528de1f189
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e029d888b963fd10e7198486a973766755c9812
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83657991"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119510"
 ---
 # <a name="integrated-solutions-in-the-commercial-marketplace"></a>Integrovaná řešení na komerčním webu Marketplace
 Integrované řešení přináší dohromady špičkové technologie od partnerů Microsoftu, společně s konzultacemi, nasazením a podporou poskytovanou odborníky z odborníků na služby.

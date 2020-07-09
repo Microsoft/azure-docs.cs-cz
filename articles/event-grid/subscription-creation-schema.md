@@ -1,17 +1,14 @@
 ---
 title: Schéma předplatného Azure Event Grid
 description: Tento článek popisuje vlastnosti pro přihlášení k odběru události s Azure Event Grid. Schéma předplatného Event Grid.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: reference
-ms.date: 01/23/2020
-ms.author: femila
-ms.openlocfilehash: 933987f405b306607ae36c3f7b626108d641abf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558983"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119068"
 ---
 # <a name="event-grid-subscription-schema"></a>Schéma předplatného Event Grid
 

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611369"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121669"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -36,10 +36,10 @@ Vyžaduje předplatné Microsoft Visual Studio. | Počítač používá klientsk
 Pro požadovaný výkon úložiště se nenašel virtuální počítač. | Výkon úložiště (vstupně-výstupní operace za sekundu [IOPS] a propustnost) požadovaná pro tento počítač překračuje podporu virtuálních počítačů Azure. Před migrací snižte požadavky na úložiště pro daný počítač.
 Pro požadovaný výkon sítě se nenašel virtuální počítač. | Výkon sítě (v/v) vyžadovaný pro tento počítač překračuje podporu virtuálních počítačů Azure. Snižte požadavky na síť pro daný počítač.
 Virtuální počítač se nenašel v zadaném umístění. | Před migrací použijte jiné cílové umístění.
-Jeden nebo více nevhodných disků | Jeden nebo více disků připojených k virtuálnímu počítači nesplňuje požadavky Azure. Určitého<br/><br/> Azure Migrate: posouzení serveru aktuálně nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě limitů disku pro spravované disky úrovně Premium (32 TB).<br/><br/> U každého disku připojeného k virtuálnímu počítači se ujistěte, že je velikost disku < 64 TB (podporuje disky SSD úrovně Ultra).<br/><br/> Pokud ne, snižte velikost disku před migrací na Azure nebo použijte více disků v Azure a propojte [je dohromady](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , abyste dosáhli vyšších limitů úložiště. Ujistěte se, že [disky virtuálních počítačů spravované](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits)službou Azure podporují výkon (IOPS a propustnost), které potřebuje každý disk.
+Jeden nebo více nevhodných disků | Jeden nebo více disků připojených k virtuálnímu počítači nesplňuje požadavky Azure. Určitého<br/><br/> Azure Migrate: posouzení serveru aktuálně nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě limitů disku pro spravované disky úrovně Premium (32 TB).<br/><br/> U každého disku připojeného k virtuálnímu počítači se ujistěte, že je velikost disku < 64 TB (podporuje disky SSD úrovně Ultra).<br/><br/> Pokud ne, snižte velikost disku před migrací na Azure nebo použijte více disků v Azure a propojte [je dohromady](../virtual-machines/windows/premium-storage-performance.md#disk-striping) , abyste dosáhli vyšších limitů úložiště. Ujistěte se, že [disky virtuálních počítačů spravované](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)službou Azure podporují výkon (IOPS a propustnost), které potřebuje každý disk.
 Jeden nebo více nevhodných síťových adaptérů. | Před migrací odeberte nepoužívané síťové adaptéry z počítače.
 Počet disků překračuje limit. | Před migrací z počítače odeberte nepoužívané disky.
-Velikost disku překračuje limit. | Azure Migrate: posouzení serveru aktuálně nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě limitů disků Premium (32 TB).<br/><br/> Azure ale podporuje disky s velikostí až 64 TB (Podporované disky SSD úrovně Ultra). Zmenšete disky na méně než 64 TB před migrací nebo použijte více disků v Azure a propojte [je dohromady](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , abyste dosáhli vyšších limitů úložiště.
+Velikost disku překračuje limit. | Azure Migrate: posouzení serveru aktuálně nepodporuje SSD úrovně Ultra disky a posuzuje disky na základě limitů disků Premium (32 TB).<br/><br/> Azure ale podporuje disky s velikostí až 64 TB (Podporované disky SSD úrovně Ultra). Zmenšete disky na méně než 64 TB před migrací nebo použijte více disků v Azure a propojte [je dohromady](../virtual-machines/windows/premium-storage-performance.md#disk-striping) , abyste dosáhli vyšších limitů úložiště.
 Disk není v zadaném umístění k dispozici. | Před migrací zajistěte, aby byl disk v cílovém umístění.
 Disk není pro zadanou redundanci k dispozici. | Disk by měl používat typ úložiště redundance definovaný v nastavení hodnocení (ve výchozím nastavení LRS).
 Nebylo možné určit vhodnost disku z důvodu vnitřní chyby. | Zkuste vytvořit nové vyhodnocení pro skupinu.
@@ -52,7 +52,7 @@ Podmíněně připravené Internet Protocol | Platí jenom pro posouzení řeše
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Navrhovaný Nástroj pro migraci v hodnocení AVS založeném na importu, který je označený jako neznámý
 
-U počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci v nástroji a hodnocení služby AVS neznámý. Ale u počítačů VMware se doporučuje použít řešení VMWare Hybrid Cloud Extension (HCX). [Další informace](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation)
+U počítačů importovaných prostřednictvím souboru CSV je výchozí nástroj pro migraci v nástroji a hodnocení služby AVS neznámý. Ale u počítačů VMware se doporučuje použít řešení VMWare Hybrid Cloud Extension (HCX). [Další informace](../azure-vmware/hybrid-cloud-extension-installation.md)
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Virtuální počítače se systémem Linux jsou podmíněně připravené ve službě Azure VM Assessment
 
@@ -64,7 +64,7 @@ V případě virtuálních počítačů VMware a Hyper-V vyznačuje vyhodnocová
 - Můžete zjistit, jestli operační systém Linux běžící na místním virtuálním počítači je v Azure schválený, a to kontrolou [podpory Azure Linux](https://aka.ms/migrate/selfhost/azureendorseddistros).
 -  Po ověření schválené distribuce můžete toto upozornění ignorovat.
 
-Tuto mezeru můžete vyřešit povolením [zjišťování aplikací](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) na virtuálních počítačích VMware. Posouzení serveru používá k dispozici operační systém zjištěný z virtuálního počítače pomocí zadaných přihlašovacích údajů hosta. Tato data operačního systému identifikují správné informace o operačním systému v případě virtuálních počítačů se systémem Windows i Linux.
+Tuto mezeru můžete vyřešit povolením [zjišťování aplikací](./how-to-discover-applications.md) na virtuálních počítačích VMware. Posouzení serveru používá k dispozici operační systém zjištěný z virtuálního počítače pomocí zadaných přihlašovacích údajů hosta. Tato data operačního systému identifikují správné informace o operačním systému v případě virtuálních počítačů se systémem Windows i Linux.
 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Skladové jednotky Azure větší než místní ve službě Azure VM Assessment
@@ -101,7 +101,7 @@ Sestavy posouzení serveru "PercentageOfCoresUtilizedMissing" nebo "PercentageOf
 - Tato situace může nastat, pokud jsou virtuální počítače vypnuté během doby hodnocení. Zařízení nemůže shromažďovat údaje o výkonu pro virtuální počítač, když je vypnutý.
 - Pokud nechybí pouze čítače paměti a snažíte se vyhodnotit virtuální počítače Hyper-V, ověřte, zda je na těchto virtuálních počítačích povolena dynamická paměť. K dispozici je známý problém jenom pro virtuální počítače Hyper-V, ve kterém Azure Migrate zařízení nemůže shromažďovat data o využití paměti pro virtuální počítače, které nemají povolenou dynamickou paměť.
 - Pokud některý z čítačů výkonu chybí, Azure Migrate posouzení serveru se vrátí k přiděleným jádrům a paměti a doporučí odpovídající velikost virtuálního počítače.
-- Pokud chybí všechny čítače výkonu, zajistěte, aby byly splněny požadavky na přístup k portu pro posouzení. Přečtěte si další informace o požadavcích na přístup k portu pro [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) a posouzení [fyzického](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) serveru.
+- Pokud chybí všechny čítače výkonu, zajistěte, aby byly splněny požadavky na přístup k portu pro posouzení. Přečtěte si další informace o požadavcích na přístup k portu pro [VMware](./migrate-support-matrix-vmware.md#port-access-requirements), [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access) a posouzení [fyzického](./migrate-support-matrix-physical.md#port-access) serveru.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Je licence k operačnímu systému zahrnutá v posouzení virtuálního počítače Azure?
 
@@ -120,11 +120,11 @@ K tomu může dojít, pokud má fyzický server zapnutou virtualizaci Hyper-V. V
 
 ## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>Doporučená skladová položka virtuálního počítače Azure pro můj fyzický server má větší velikost
 
-K tomu může dojít, pokud má fyzický server zapnutou virtualizaci Hyper-V. Na těchto serverech Azure Migrate aktuálně zjišťují fyzické i virtuální síťové adaptéry. Proto ne. zjištěné síťové adaptéry jsou vyšší než skutečné. Protože vyhodnocování serveru vybere virtuální počítač Azure, který podporuje požadovaný počet síťových adaptérů, může to potenciálně způsobit, že dojde k virtuálnímu počítači se stejnou velikostí. [Přečtěte si další](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) informace o dopadu ne. síťových adaptérů při změně velikosti. Jedná se o produktovou mezeru, která se bude řešit dál.
+K tomu může dojít, pokud má fyzický server zapnutou virtualizaci Hyper-V. Na těchto serverech Azure Migrate aktuálně zjišťují fyzické i virtuální síťové adaptéry. Proto ne. zjištěné síťové adaptéry jsou vyšší než skutečné. Protože vyhodnocování serveru vybere virtuální počítač Azure, který podporuje požadovaný počet síťových adaptérů, může to potenciálně způsobit, že dojde k virtuálnímu počítači se stejnou velikostí. [Přečtěte si další](./concepts-assessment-calculation.md#calculating-sizing) informace o dopadu ne. síťových adaptérů při změně velikosti. Jedná se o produktovou mezeru, která se bude řešit dál.
 
 ## <a name="readiness-category-not-ready-for-my-physical-server"></a>Kategorie připravenosti "není připravena" pro fyzický server
 
-Kategorie připravenosti v případě fyzického serveru s povolenou virtualizací technologie Hyper-V může být nesprávně označena jako nepřipravená. Na těchto serverech se kvůli přípravku produktu Azure Migrate v současné době zjišťují fyzické i virtuální adaptéry. Proto ne. zjištěné síťové adaptéry jsou vyšší než skutečné. V místním i vyhodnocování na základě výkonu vybírá Server vyhodnocování virtuálního počítače Azure, který podporuje požadovaný počet síťových adaptérů. Pokud je zjištěno, že počet síťových adaptérů bude vyšší než 32, maximální počet. u síťových adaptérů podporovaných na virtuálních počítačích Azure je počítač označený jako "Nepřipraveno".  [Přečtěte si další](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) informace o dopadu ne. Síťových adaptérů pro změnu velikosti.
+Kategorie připravenosti v případě fyzického serveru s povolenou virtualizací technologie Hyper-V může být nesprávně označena jako nepřipravená. Na těchto serverech se kvůli přípravku produktu Azure Migrate v současné době zjišťují fyzické i virtuální adaptéry. Proto ne. zjištěné síťové adaptéry jsou vyšší než skutečné. V místním i vyhodnocování na základě výkonu vybírá Server vyhodnocování virtuálního počítače Azure, který podporuje požadovaný počet síťových adaptérů. Pokud je zjištěno, že počet síťových adaptérů bude vyšší než 32, maximální počet. u síťových adaptérů podporovaných na virtuálních počítačích Azure je počítač označený jako "Nepřipraveno".  [Přečtěte si další](./concepts-assessment-calculation.md#calculating-sizing) informace o dopadu ne. Síťových adaptérů pro změnu velikosti.
 
 
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Počet zjištěných síťových adaptérů vyšších než skutečný pro fyzické servery
@@ -154,18 +154,18 @@ Pro virtuální počítače se systémem Linux se ujistěte, že instalační p�
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)a [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) .
+- **Agent MMS**: Zkontrolujte podporované operační systémy [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)a [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) .
 - **Agent závislostí**: podporované operační systémy [Windows a Linux](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) .
 
 ## <a name="visualize-dependencies-for--hour"></a>Vizualizace závislostí pro > hodinu
 
 S analýzou závislostí bez agentů můžete vizualizovat závislosti nebo je exportovat v mapě po dobu až 30 dnů.
 
-S analýzou závislostí na základě agenta, i když Azure Migrate umožňuje přejít zpět k určitému datu v posledním měsíci, maximální doba, po kterou je možné vizualizovat závislosti, je jedna hodina. Například můžete použít funkci časového trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v jednom hodinovém období. Můžete ale použít protokoly Azure Monitor k [dotazování dat závislosti](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) v delší době trvání.
+S analýzou závislostí na základě agenta, i když Azure Migrate umožňuje přejít zpět k určitému datu v posledním měsíci, maximální doba, po kterou je možné vizualizovat závislosti, je jedna hodina. Například můžete použít funkci časového trvání na mapě závislostí k zobrazení závislostí včera, ale můžete je zobrazit pouze v jednom hodinovém období. Můžete ale použít protokoly Azure Monitor k [dotazování dat závislosti](./how-to-create-group-machine-dependencies.md) v delší době trvání.
 
 ## <a name="visualized-dependencies-for--10-machines"></a>Vizuální závislosti pro počítače s > 10
 
-V Azure Migrate posouzení serveru s analýzou závislostí založenou na agentech můžete [vizualizovat závislosti pro skupiny](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) s až 10 virtuálními počítači. U větších skupin doporučujeme, abyste virtuální počítače rozdělili do menších skupin pro vizualizaci závislostí.
+V Azure Migrate posouzení serveru s analýzou závislostí založenou na agentech můžete [vizualizovat závislosti pro skupiny](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) s až 10 virtuálními počítači. U větších skupin doporučujeme, abyste virtuální počítače rozdělili do menších skupin pro vizualizaci závislostí.
 
 
 ## <a name="machines-show-install-agent"></a>Počítače zobrazují "instalovat agenta"

@@ -1,17 +1,18 @@
 ---
 title: Správa zájemců pomocí služby Azure Table Storage – komerční tržiště Microsoftu
 description: Naučte se používat službu Azure Table Storage ke konfiguraci zájemců pro Microsoft AppSource a Azure Marketplace
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: fb53b0fe28f48f5f240e470aa5256ac1c277686e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957337"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120836"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Použití služby Azure Table Storage ke správě zájemců komerčních webů na webu Marketplace
 

@@ -7,26 +7,28 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722452"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119493"
 ---
-# <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>Rychlý Start: Vytvoření clusteru Service Fabric pomocí šablony Správce prostředků
+# <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Rychlý Start: Vytvoření clusteru Service Fabric pomocí šablony ARM
 
-Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb a kontejnerů. *Cluster* Service Fabric je sada virtuálních počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují.
+Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb a kontejnerů. *Cluster* Service Fabric je sada virtuálních počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Tento článek popisuje, jak nasadit testovací Cluster Service Fabric v Azure pomocí šablony Azure Resource Manager (šablony ARM).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Tento článek popisuje, jak nasadit testovací Cluster Service Fabric v Azure pomocí Správce prostředků. Tento cluster Windows s pěti uzly je zabezpečený pomocí certifikátu podepsaného svým držitelem, který je proto určený jenom pro instruktážní účely (nikoli pro produkční úlohy).
+Tento cluster Windows s pěti uzly je zabezpečený pomocí certifikátu podepsaného svým držitelem, který je proto určený jenom pro instruktážní účely (nikoli pro produkční úlohy). K nasazení šablony použijeme Azure PowerShell. Kromě Azure PowerShell můžete použít také Azure Portal, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-portal.md).
 
-K nasazení šablony použijeme Azure PowerShell. Kromě Azure PowerShell můžete použít také Azure Portal, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-portal.md).
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ### <a name="install-service-fabric-sdk-and-powershell-modules"></a>Instalace Service Fabric SDK a modulů PowerShellu
 
@@ -40,8 +42,8 @@ K dokončení tohoto rychlého startu budete potřebovat:
 
 Naklonujte nebo Stáhněte úložiště [šablon pro rychlý start Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates) . Další možností je zkopírovat místně následující soubory, které budeme používat ze složky *Service-Fabric-Secure-cluster-5-Node-1-NodeType* :
 
-* [New-ServiceFabricClusterCertificate. ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/New-ServiceFabricClusterCertificate.ps1)
-* [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
+* [New-ServiceFabricClusterCertificate.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/New-ServiceFabricClusterCertificate.ps1)
+* [azuredeploy.jsna](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
 * [azuredeploy.parameters.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.parameters.json)
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -87,11 +89,9 @@ $certUrlValue = "<Certificate URL>"
 $certThumbprint = "<Certificate Thumbprint>"
 ```
 
-## <a name="create-a-service-fabric-cluster"></a>Vytvoření clusteru Service Fabric
+## <a name="review-the-template"></a>Kontrola šablony
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). Šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit šablonu, přečtěte si soubor [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) .
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). Šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit šablonu, přečtěte si [azuredeploy.jsv](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json) souboru.
 
 V šabloně bylo definováno více prostředků Azure:
 
@@ -106,14 +106,14 @@ Další šablony, které souvisejí s Azure Service Fabric, najdete v tématu [�
 
 ### <a name="customize-the-parameters-file"></a>Přizpůsobení souboru parametrů
 
-Otevřete *azuredeploy. Parameters. JSON* a upravte hodnoty parametrů tak, aby:
+Otevřete *azuredeploy.parameters.js* a upravte hodnoty parametrů tak, aby:
 
 * název **clusteru** odpovídá hodnotě, kterou jste zadali pro *CertDNSName* při vytváření certifikátu clusteru.
 * **adminUserName** je jiná hodnota než výchozí *gen – jedinečný* token.
 * hodnota **adminPassword** je jinou hodnotou než výchozí token *pro obecné heslo* .
 * **certificateThumbprint**, **sourceVaultResourceId**a **certificateUrlValue** jsou všechny prázdné řetězce ( `""` ).
 
-Například:
+Příklad:
 
 ```json
 {
@@ -144,7 +144,7 @@ Například:
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Uložte cesty k šabloně Správce prostředků a souborům parametrů v proměnných a pak šablonu nasaďte.
+Uložte cesty vaší šablony ARM a souborů parametrů do proměnných a pak šablonu nasaďte.
 
 ```powershell
 $templateFilePath = "<full path to azuredeploy.json>"

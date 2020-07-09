@@ -1,17 +1,18 @@
 ---
 title: Upřednostňovaná řešení Azure Marketplace a AppSource – Microsoft Commercial Marketplace
 description: Upřednostňovaná řešení v rámci Marketplace a jejich výběr
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 06/27/2018
-ms.author: dsindona
-ms.openlocfilehash: 690ee5ed332c7ed342f786e1a9889746054834fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7574406037bdfb2e9b2c76a3c38293a065028ed2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82872365"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121023"
 ---
 # <a name="preferred-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Upřednostňovaná řešení v Microsoft AppSource a Azure Marketplace
 
