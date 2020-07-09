@@ -8,38 +8,41 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: cde8d6932400966ae22720b1e86f3c5164f25b30
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd3e541624c2375ed71fb9768bb0c42ec101f47b
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81603430"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087703"
 ---
-# <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý Start: Vytvoření clusteru služeb ML ve službě Azure HDInsight pomocí šablony Správce prostředků
+# <a name="quickstart-create-ml-services-cluster-in-azure-hdinsight-using-arm-template"></a>Rychlý Start: Vytvoření clusteru služeb ML ve službě Azure HDInsight pomocí šablony ARM
 
-V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření clusteru [služby ml Services](./r-server-overview.md) ve službě Azure HDInsight. Microsoft Machine Learning Server je k dispozici jako možnost nasazení při vytváření clusterů HDInsight v Azure. Typ clusteru, který poskytuje tuto možnost, se nazývá ML Services. Tato funkce poskytuje odborníkům na data, statistiku a programátory R s přístupem na vyžádání ke škálovatelným distribuovaným metodám analýz v HDInsight.
+V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření clusteru [služby ml](./r-server-overview.md) ve službě Azure HDInsight. Microsoft Machine Learning Server je k dispozici jako možnost nasazení při vytváření clusterů HDInsight v Azure. Typ clusteru, který poskytuje tuto možnost, se nazývá ML Services. Tato funkce poskytuje odborníkům na data, statistiku a programátory R s přístupem na vyžádání ke škálovatelným distribuovaným metodám analýz v HDInsight.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
 
-## <a name="create-an-ml-services-cluster"></a>Vytvoření clusteru služby ML Services
+[![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-rserver%2Fazuredeploy.json)
 
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="prerequisites"></a>Požadavky
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-rserver).
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-:::code language="json" source="~/quickstart-templates/101-hdinsight-rserver/azuredeploy.json" range="1-171":::
+## <a name="review-the-template"></a>Kontrola šablony
 
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/).
+
+:::code language="json" source="~/quickstart-templates/101-hdinsight-rserver/azuredeploy.json" range="1-171" highlight="49-85":::
 
 V šabloně jsou definované dva prostředky Azure:
 
-* [Microsoft. Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): vytvořte účet Azure Storage.
-* [Microsoft. HDInsight/cluster](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/clusters): Vytvořte cluster HDInsight.
+* [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): vytvořte účet Azure Storage.
+* [Microsoft. HDInsight/cluster](/azure/templates/microsoft.hdinsight/clusters): Vytvořte cluster HDInsight.
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Kliknutím na tlačítko **nasadit do Azure** níže se přihlaste k Azure a otevřete šablonu správce prostředků.
+1. Kliknutím na tlačítko **nasadit do Azure** níže se přihlaste k Azure a otevřete šablonu ARM.
 
     [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-rserver%2Fazuredeploy.json)
 
@@ -76,7 +79,7 @@ Můžete také výběrem názvu skupiny prostředků otevřít stránku skupiny 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste zjistili, jak vytvořit cluster služby ML v HDInsight pomocí šablony Správce prostředků. V dalším článku se dozvíte, jak spustit skript R s RStudio serverem, který ukazuje použití Sparku pro distribuované výpočty R.
+V tomto rychlém startu jste zjistili, jak vytvořit cluster služeb v HDInsight pomocí šablony ARM. V dalším článku se dozvíte, jak spustit skript R s RStudio serverem, který ukazuje použití Sparku pro distribuované výpočty R.
 
 > [!div class="nextstepaction"]
 > [Spuštění skriptu R v clusteru služby ML ve službě Azure HDInsight pomocí serveru RStudio](./machine-learning-services-quickstart-job-rstudio.md)

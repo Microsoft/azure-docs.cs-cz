@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: 8b340bdbd4bea4fcd865d6c27d688e5dbed86bb8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a449c078b18b5bc9e005a873c51d92ad29417f6
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054297"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86084983"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-using-the-azure-portal"></a>Rychlý Start: vytvoření pravidla brány firewall na úrovni serveru pomocí Azure Portal
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,12 +33,12 @@ Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Vytvoření pravidla brány firewall protokolu IP na úrovni serveru
 
- SQL Database vytvoří bránu firewall na úrovni serveru pro databáze s jednou a ve fondu. Tato brána firewall zabraňuje klientským aplikacím v připojení k serveru nebo žádné z databází v jedné nebo sdružené databázi, pokud nevytvoříte pravidlo brány firewall protokolu IP pro otevření brány firewall. Pro připojení z IP adresy mimo Azure vytvořte pravidlo brány firewall pro konkrétní IP adresu nebo rozsah adres, ke kterým se chcete připojit. Další informace o pravidlech brány firewall na úrovni serveru a databáze najdete v článku [pravidla brány firewall protokolu IP na úrovni serveru a databáze](firewall-configure.md).
+ SQL Database vytvoří bránu firewall na úrovni serveru pro databáze s jednou a ve fondu. Tato brána firewall zabraňuje klientským aplikacím v připojení k serveru nebo libovolné databázi, pokud nevytvoříte pravidlo brány firewall protokolu IP pro otevření brány firewall. Pro připojení z IP adresy mimo Azure vytvořte pravidlo brány firewall pro konkrétní IP adresu nebo rozsah adres, ke kterým se chcete připojit. Další informace o pravidlech brány firewall na úrovni serveru a databáze najdete v článku [pravidla brány firewall protokolu IP na úrovni serveru a databáze](firewall-configure.md).
 
 > [!NOTE]
 > Azure SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, vaše brána firewall možná nepovoluje odchozí přenosy přes port 1433. Pokud ano, nemůžete se připojit k serveru, dokud vaše IT oddělení neotevře port 1433.
 > [!IMPORTANT]
-> Pravidlo brány firewall s hodnotou 0.0.0.0 umožňuje všem službám Azure projít pravidlo brány firewall na úrovni serveru a pokusit se o připojení k jedné nebo sdružené databázi prostřednictvím serveru.
+> Pravidlo brány firewall s hodnotou 0.0.0.0 umožňuje všem službám Azure projít pravidlo brány firewall na úrovni serveru a pokusit se připojit k databázi prostřednictvím serveru.
 
 Postupujte podle těchto kroků a vytvořte pravidlo brány firewall protokolu IP na úrovni serveru pro IP adresu vašeho klienta a povolte externí připojení přes bránu Azure SQL Database firewall pouze pro vaši IP adresu.
 

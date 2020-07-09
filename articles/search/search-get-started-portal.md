@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 28eb88a40139352b475851003a1092954a97ef64
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954311"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083555"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
@@ -158,7 +158,7 @@ Teď už byste měli mít vyhledávací index, který je připravený na dotazov
 
    ![Řetězec dotazu a tlačítko Hledat](media/search-get-started-portal/search-explorer-query-string-example.png)
 
-## <a name="example-queries"></a>Příklady dotazů
+## <a name="example-queries"></a>Ukázky dotazů
 
 Můžete zadat podmínky a fráze, podobně jako na to, co můžete dělat v Bingu nebo Google Search, nebo plně určené výrazy dotazu. Výsledky se vrátí jako podrobné dokumenty JSON.
 
@@ -276,3 +276,8 @@ Pomocí Průvodce portálem vygenerujte webovou aplikaci připravenou k použit�
 
 > [!div class="nextstepaction"]
 > [Vytvoření ukázkové aplikace na portálu](search-create-app-portal.md)
+
+Chcete optimalizovat a uložit své útraty do cloudu?
+
+> [!div class="nextstepaction"]
+> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

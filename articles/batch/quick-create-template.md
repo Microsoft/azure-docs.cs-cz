@@ -4,18 +4,22 @@ description: Můžete se rychle naučit, jak pomocí Azure CLI spustit úlohu sl
 ms.topic: quickstart
 ms.date: 05/19/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5f26aeead41fa1ffcebefdeaabae84490dfdae2b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d92751d1463a20c8fb0cb83fe678789860957189
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959819"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086122"
 ---
-# <a name="quickstart-create-a-batch-account-by-using-azure-resource-manager-template"></a>Rychlý Start: vytvoření účtu Batch pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-batch-account-by-using-arm-template"></a>Rychlý Start: vytvoření účtu Batch pomocí šablony ARM
 
-Účet Batch potřebujete k vytváření výpočetních prostředků (fondy výpočetních uzlů) a dávkových úloh. Můžete propojit účet Azure Storage s účtem Batch, který je užitečný pro nasazení aplikací a ukládání vstupních a výstupních dat pro většinu reálných úloh. V tomto rychlém startu se dozvíte, jak použít šablonu Azure Resource Manager k vytvoření účtu Batch, včetně úložiště. Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
+Účet Batch potřebujete k vytváření výpočetních prostředků (fondy výpočetních uzlů) a dávkových úloh. Můžete propojit účet Azure Storage s účtem Batch, který je užitečný pro nasazení aplikací a ukládání vstupních a výstupních dat pro většinu reálných úloh. V tomto rychlém startu se dozvíte, jak použít šablonu Azure Resource Manager (šablonu ARM) k vytvoření účtu Batch, včetně úložiště. Po dokončení tohoto rychlého startu budete rozumět klíčovým konceptům služby Batch a budete moct službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-batchaccount-with-storage%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -23,9 +27,7 @@ Musíte mít aktivní předplatné Azure.
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-batch-account-with-storage"></a>Vytvoření účtu Batch s úložištěm
-
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-batchaccount-with-storage/).
 
@@ -36,7 +38,7 @@ V šabloně jsou definované dva prostředky Azure:
 - [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): vytvoří účet úložiště.
 - [Microsoft.Batch/batchAccounts](/azure/templates/microsoft.batch/batchaccounts): vytvoří účet Batch.
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří účet Azure Batch a účet úložiště.
 

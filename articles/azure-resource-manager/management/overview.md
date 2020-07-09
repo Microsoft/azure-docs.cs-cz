@@ -1,14 +1,14 @@
 ---
-title: Přehled
+title: Přehled Azure Resource Manageru
 description: Popisuje, jak Azure Resource Manager využívat k nasazení, správě a řízení přístupu k prostředkům v Azure.
 ms.topic: overview
 ms.date: 04/21/2020
-ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81870491"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86087023"
 ---
 # <a name="what-is-azure-resource-manager"></a>Co je Azure Resource Manager?
 
@@ -68,7 +68,7 @@ Nastavení správy můžete použít na jakékoli z těchto úrovní rozsahu. Vy
 
 Při definování skupin prostředků byste měli vzít v úvahu některé důležité faktory:
 
-* Všechny prostředky ve skupině by měly sdílet stejný životní cyklus. Nasazujete, aktualizujete a odstraňujete je společně. Pokud některý z prostředků, například databázový server, musí mít jiný cyklus nasazení, měl by být v jiné skupině prostředků.
+* Všechny prostředky ve skupině by měly sdílet stejný životní cyklus. Nasazujete, aktualizujete a odstraňujete je společně. Pokud jeden prostředek, třeba server, musí existovat v jiném cyklu nasazení, měl by být v jiné skupině prostředků.
 
 * Každý prostředek může být jenom v jedné skupině prostředků.
 

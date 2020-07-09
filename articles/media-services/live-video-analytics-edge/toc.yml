@@ -1,7 +1,5 @@
 - name: Dokumentace k analýze živého videa ve službě IoT Edge (Preview)
   href: index.yml
-- name: Přepnout na dokumentaci ke službě Azure Media Services v3
-  href: ../latest/index.yml
 - name: Přehled
   items:
     - name: Informace k analýze živého videa ve službě IoT Edge
@@ -34,7 +32,7 @@
       href: playback-multi-day-recordings-tutorial.md
 - name: ukázky
   items:
-    - name: 'Ukázky v C# pro analýzu živého videa ve službě IoT Edge'
+    - name: Ukázky v C# pro analýzu živého videa ve službě IoT Edge
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
 - name: Koncepty
   items:
