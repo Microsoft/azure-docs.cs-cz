@@ -1,16 +1,16 @@
 ---
 title: Rozhraní a vlastní modely
 description: Přidání řadičů zobrazení a ingestování vlastních modelů, které se mají vykreslovat pomocí vzdáleného vykreslování Azure
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: a3a4892400daa229f5f91d3cc22a9be80cf868c6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569529"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200754"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Kurz: rozhraní a vlastní modely
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace služby Azure Blob Storage pro ingestování modelů
 > * Nahrávání a zpracování modelů pro vykreslování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento kurz sestaví [kurz: zobrazení vzdáleně vykresleného modelu](../view-remote-models/view-remote-models.md).
 

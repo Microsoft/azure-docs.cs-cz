@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71212054"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220146"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Kurz: Zasílání oznámení konkrétním uživatelům službou Azure Notification Hubs
 
@@ -46,7 +46,7 @@ V tomto kurzu provedete následující kroky:
 > * Aktualizace kódu klientského projektu
 > * Testování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se používá centrum oznámení a projekt sady Visual Studio, které jste vytvořili v [kurzu Zasílání oznámení do aplikací pro Univerzální platformu Windows službou Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md). Proto ho dokončete před zahájením tohoto kurzu.
 
@@ -66,7 +66,7 @@ V této části aktualizujete kód v projektu, který jste vytvořili v [kurzu Z
 5. V seznamu výsledků klikněte na **System.Net.Http** a pak klikněte na **Nainstalovat**. Dokončete instalaci.
 6. Vraťte se do pole **Hledat** pro balíčky NuGet a zadejte **Json.net**. Nainstalujte balíček **Newtonsoft.json** a pak zavřete okno Správce balíčků NuGet.
 7. V Průzkumníku řešení v projektu **WindowsApp** dvakrát klikněte na soubor **MainPage.xaml** a otevřete ho v editoru Visual Studio.
-8. V kódu `MainPage.xaml` XML nahraďte `<Grid>` oddíl následujícím kódem: Tento kód přidá textové pole uživatelské jméno a heslo, se kterým se uživatel ověřuje. Také přidá textová pole pro zprávu oznámení a značku uživatelského jména, které by měly dostávat oznámení:
+8. V `MainPage.xaml` kódu XML nahraďte `<Grid>` oddíl následujícím kódem: Tento kód přidá textové pole uživatelské jméno a heslo, se kterým se uživatel ověřuje. Také přidá textová pole pro zprávu oznámení a značku uživatelského jména, které by měly dostávat oznámení:
 
     ```xml
     <Grid>
@@ -128,7 +128,7 @@ V této části aktualizujete kód v projektu, který jste vytvořili v [kurzu Z
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-10. V `MainPage.xaml.cs` nástroji pro projekt **WindowsApp** přidejte do `MainPage` třídy následující člen. Nezapomeňte nahradit `<Enter Your Backend Endpoint>` skutečným koncovým bodem vašeho back-endu, který jste předtím získali. Například, `http://mybackend.azurewebsites.net`.
+10. V nástroji `MainPage.xaml.cs` pro projekt **WindowsApp** přidejte do třídy následující člen `MainPage` . Nezapomeňte nahradit `<Enter Your Backend Endpoint>` skutečným koncovým bodem vašeho back-endu, který jste předtím získali. Například `http://mybackend.azurewebsites.net`.
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
@@ -215,14 +215,14 @@ V této části aktualizujete kód v projektu, který jste vytvořili v [kurzu Z
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-12. Otevřete `App.xaml.cs` a vyhledejte volání `InitNotificationsAsync()` v obslužné rutině `OnLaunched()` události. Okomentujte nebo odstraňte volání metody `InitNotificationsAsync()`. Obslužná rutina tlačítka inicializuje registrace oznámení.
+12. Otevřete `App.xaml.cs` a vyhledejte volání `InitNotificationsAsync()` v `OnLaunched()` obslužné rutině události. Okomentujte nebo odstraňte volání metody `InitNotificationsAsync()`. Obslužná rutina tlačítka inicializuje registrace oznámení.
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         //InitNotificationsAsync();
     ```
-13. Klikněte pravým tlačítkem na projekt **WindowsApp**, **Přidat** a potom na **Třída**. Pojmenujte `RegisterClient.cs`třídu a potom kliknutím na tlačítko **OK** vygenerujte třídu.
+13. Klikněte pravým tlačítkem na projekt **WindowsApp**, **Přidat** a potom na **Třída**. Pojmenujte třídu `RegisterClient.cs` a potom kliknutím na tlačítko **OK** vygenerujte třídu.
 
     Tato třída zabalí potřebná volání REST ke kontaktování back-endu aplikace za účelem registrace nabízených oznámení. Kromě toho místně ukládá *ID registrací* vytvořená centrem oznámení, jak je podrobně popsáno v tématu popisujícím [registraci z back-endu aplikace](https://msdn.microsoft.com/library/dn743807.aspx). Po kliknutí na tlačítko **Login and register** (Přihlášení a registrace) použije autorizační token uložený v místním úložišti.
 14. Na začátek souboru RegisterClient.cs přidejte následující příkazy `using`:
@@ -331,11 +331,11 @@ V této části aktualizujete kód v projektu, který jste vytvořili v [kurzu Z
 2. Zadejte **Username** (Uživatelské jméno) a **Password** (Heslo), jak je znázorněno na následující obrazovce. Zadané hodnoty by se měly lišit od uživatelského jména a hesla, které jste zadali na Windows Phone.
 3. Klikněte na **Login and register** (Přihlášení a registrace) a ověřte, že se zobrazí dialogové okno s oznámením o přihlášení. Tento kód také aktivuje tlačítko **Send Push** (Odeslat nabízené oznámení).
 
-    ![][14]
+    ![Snímek obrazovky aplikace Notification Hubs zobrazující uživatelské jméno a heslo vyplněné.][14]
 5. Dále do pole **Recipient Username Tag** (Značka uživatelského jména příjemce) zadejte zaregistrované uživatelské jméno. Zadejte zprávu oznámení a klikněte na **Send Push** (Odeslat nabízené oznámení).
 6. Zprávu oznámení obdrží pouze zařízení, která se zaregistrovala s použitím odpovídající značky uživatelského jména.
 
-    ![][15]
+    ![Snímek obrazovky Notification Hubs aplikace ukazující zprávu, která byla vložena.][15]
 
 ## <a name="next-steps"></a>Další kroky
 

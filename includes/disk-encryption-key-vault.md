@@ -33,7 +33,7 @@ az group create --name "myResourceGroup" --location eastus
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ```
 
-## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
+## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
 *Pokud už máte Trezor klíčů, můžete přeskočit k [nastavení zásad pokročilého přístupu trezoru klíčů](#set-key-vault-advanced-access-policies).*
 

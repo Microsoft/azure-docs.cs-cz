@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/29/2020
+ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 6c6620a83be2eade3b449553824116a4bea7e4d8
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144103"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220593"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Kurz: Vytvoření připojení typu site-to-site pomocí služby Azure Virtual WAN
 
@@ -57,7 +57,7 @@ V prohlížeči přejděte na web Azure Portal a přihlaste se pomocí svého ú
 2. Z výsledků vyberte **virtuální síť WAN** . Na stránce virtuální síť WAN kliknutím na **vytvořit** otevřete stránku vytvořit síť WAN.
 3. Na stránce **vytvořit síť WAN** na kartě **základy** vyplňte následující pole:
 
-   ![Virtuální síť WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
+   ![Virtual WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
    * **Subscription** (Předplatné) – vyberte předplatné, které chcete použít.
    * **Skupina prostředků** – vytvořte nové nebo použijte existující.
@@ -87,17 +87,7 @@ V tomto kroku připojíte síť VPN k centru.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>Připojení virtuální sítě k centru
 
-V tomto kroku vytvoříte připojení mezi rozbočovačem a virtuální sítí. Uvedený postup zopakujte pro všechny virtuální sítě, které chcete připojit.
-
-1. Na stránce vaší virtuální sítě WAN klikněte na **Připojení k virtuální síti**.
-2. Na stránce připojení k virtuální síti klikněte na **+Add connection** (Přidat připojení).
-3. Na stránce **Add connection** (Přidat připojení) zadejte údaje do následujících polí:
-
-    * **Connection name** (Název připojení) – zadejte název připojení.
-    * **Hubs** (Rozbočovače) – vyberte rozbočovač, který chcete k tomuto připojení přidružit.
-    * **Subscription** (Předplatné) – ověřte předplatné.
-    * **Virtual network** (Virtuální síť) – vyberte virtuální síť, kterou chcete připojit k tomuto rozbočovači. Virtuální síť nesmí mít existující bránu virtuální sítě.
-4. Kliknutím na tlačítko **OK** vytvořte připojení k virtuální síti.
+[!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
 ## <a name="download-vpn-configuration"></a><a name="device"></a>Stažení konfigurace zařízení VPN
 

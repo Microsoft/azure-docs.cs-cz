@@ -7,12 +7,12 @@ keywords: Změna, sledování, sledování změn, inventář, automatizace
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 211b34b4424fa5bc9b82dc1cc2a2da574ffc5d96
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 63fe36a51b69648039c3a16be4267fc0c72e8a58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743692"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185802"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Řešení potíží se změnami na virtuálním počítači Azure
 
@@ -30,12 +30,12 @@ Co se v tomto kurzu naučíte:
 > * Zobrazení změn
 > * Konfigurace upozornění
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Automation](automation-offering-get-started.md) , který bude obsahovat sledovací proces a runbooky akcí a úlohu sledovacího procesu.
+* [Účet Automation](./index.yml) , který bude obsahovat sledovací proces a runbooky akcí a úlohu sledovacího procesu.
 * [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md) , který má být pro funkci povolen.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -54,7 +54,7 @@ Nejdřív musíte pro tento kurz povolit Change Tracking a inventář. Pokud jst
 
     ![Povolit změnu](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
 
-3. Vyberte pracovní prostor [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) . Tento pracovní prostor shromažďuje data generovaná funkcemi, jako jsou Change Tracking a inventář. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
+3. Vyberte pracovní prostor [Log Analytics](../azure-monitor/log-query/log-query-overview.md) . Tento pracovní prostor shromažďuje data generovaná funkcemi, jako jsou Change Tracking a inventář. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 
     [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -238,4 +238,4 @@ V tomto kurzu jste se naučili:
 Pokračujte na Přehled funkce Change Tracking a inventáře a získejte další informace o této funkci.
 
 > [!div class="nextstepaction"]
-> [Přehled Change Tracking a inventáře](automation-change-tracking.md)
+> [Přehled Change Tracking a inventáře](./change-tracking.md)

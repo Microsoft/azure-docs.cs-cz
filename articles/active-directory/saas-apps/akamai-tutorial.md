@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026810"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Akamai
 
@@ -60,13 +61,13 @@ Akamai EAA je nakonfigurovaný jako jediná aplikace v Azure AD. Správce může
 
 **Profesionály**:
 
-• Musíte jenom nakonfigurovat IDP jenom jednou.
+* Musíte nakonfigurovat IDP jenom jednou.
 
 **Nevýhody**:
 
-• Uživatelé mají na portále dva aplikace
+* Uživatelé mají dva portály aplikací.
 
-• Jednotné společné pokrytí zásad certifikační autority pro všechny aplikace.
+* Jednotné pokrytí zásad certifikační autority pro všechny aplikace.
 
 ![Scénář integrace 1](./media/header-akamai-tutorial/scenario1.png)
 
@@ -76,17 +77,18 @@ Aplikace Akamai EAA se nastavuje individuálně na portálu Azure AD. Správce m
 
 **Profesionály**:
 
-• Můžete definovat jednotlivé zásady certifikační autority.
+* Můžete definovat jednotlivé zásady certifikační autority.
 
-• Všechny aplikace jsou reprezentovány na panelu O365 dlaždice a myApps.microsoft.com.
+* Všechny aplikace jsou reprezentovány na panelu 0365 dlaždice a myApps.microsoft.com.
+
 
 **Nevýhody**:
 
-• Je potřeba nakonfigurovat víc IDP.
+* Je potřeba nakonfigurovat víc IDP.
 
 ![Scénář integrace 2](./media/header-akamai-tutorial/scenario2.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -169,7 +171,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -279,7 +281,7 @@ Akamai ověřování na základě hlaviček
 
     ![Konfigurace Akamai](./media/header-akamai-tutorial/configure08.png)
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Ověřování
 
 1. Vyberte kartu **ověřování** .
 
@@ -343,7 +345,7 @@ Klikněte na Uložit a přejděte na ověřování.
 
     ![Konfigurace Akamai](./media/header-akamai-tutorial/configure19.png)
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Ověřování
 
 Klikněte na **Uložit a přejděte na služby**.
 
@@ -405,7 +407,7 @@ Klikněte na **Uložit a přejděte na Upřesnit nastavení**.
 
     e. Zadejte umístění konektoru a zvolte konektor.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Ověřování
 
 Klikněte na **Uložit a přejděte na služby**.
 
@@ -449,7 +451,7 @@ Kliknutím na Uložit a přejít na nasazení
 
 ### <a name="kerberos-authentication"></a>Ověřování protokolu Kerberos
 
-V následujícím příkladu budeme publikovat interní webový server [http://frp-app1.superdemo.live](http://frp-app1.superdemo.live/) a povolit jednotné přihlašování pomocí KCD.
+V následujícím příkladu budeme publikovat interní webový server <code>http://frp-app1.superdemo.live</code> a povolit jednotné přihlašování pomocí KCD.
 
 #### <a name="general-tab"></a>Karta Obecné
 
@@ -593,7 +595,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Akamai, měli byste se automaticky přihlásit k Akamai, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

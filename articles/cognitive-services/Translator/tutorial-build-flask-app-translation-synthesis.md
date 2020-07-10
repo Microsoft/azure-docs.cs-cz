@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: tracking-python
-ms.openlocfilehash: 6621967584ee79dd514b6d9d4a9d0e2d240e7905
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: b70ac801765461401a7bfa1d2f251fb41176dccb
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608107"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232759"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 
@@ -36,7 +36,7 @@ V tomto kurzu se dozvíte, co tento kurz popisuje:
 > [!TIP]
 > Pokud byste chtěli přeskočit a podívat se na všechny kódy najednou, celá ukázka, společně s pokyny pro sestavení, jsou k dispozici na [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
 
-## <a name="what-is-flask"></a>Co je to baňka?
+## <a name="what-is-flask"></a>Co je Flask?
 
 Baňka je mikrorozhraní pro vytváření webových aplikací. To znamená, že v baňce získáte nástroje, knihovny a technologie, které vám umožní vytvořit webovou aplikaci. Tato webová aplikace může být některé webové stránky, blog, wikiweb nebo jít jako podstatné jako webové aplikace kalendáře nebo komerční web.
 
@@ -45,7 +45,7 @@ Pro ty, které chcete podrobně po tomto kurzu, je zde několik užitečných od
 * [Dokumentace k baňce](http://flask.pocoo.org/)
 * [Baňka pro Dummies – příručka pro začátečníky do baňky](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pojďme si projít klíče softwaru a předplatného, které pro tento kurz budete potřebovat.
 
@@ -62,7 +62,7 @@ Pojďme si projít klíče softwaru a předplatného, které pro tento kurz bude
 Jak už jsme uvedli, budete pro tento kurz potřebovat tři klíče předplatného. To znamená, že je potřeba vytvořit prostředek v rámci účtu Azure pro:
 * Translator
 * Analýza textu
-* Služby Speech
+* Hlasové služby
 
 Pro podrobné pokyny k vytváření prostředků použijte [v Azure Portal vytvořit účet Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) .
 
@@ -778,7 +778,7 @@ Teď, když máte funkci pro převod textu na řeč a trasu v aplikaci, abyste j
        <option value="(zh-CN, Kangkang, Apollo)">Chinese (Mainland) | Male | Kangkang, Apollo</option>
        <option value="(zh-HK, Tracy, Apollo)">Chinese (Hong Kong)| Female | Tracy, Apollo</option>
        <option value="(zh-HK, Danny, Apollo)">Chinese (Hong Kong) | Male | Danny, Apollo</option>
-       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
+       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yating, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
        <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
@@ -798,7 +798,7 @@ Teď, když máte funkci pro převod textu na řeč a trasu v aplikaci, abyste j
        <option value="(it-IT, Cosimo, Apollo)">Italian | Male | Cosimo, Apollo</option>
        <option value="(ja-JP, Ichiro, Apollo)">Japanese | Male | Ichiro</option>
        <option value="(ja-JP, HarukaRUS)">Japanese | Female | HarukaRUS</option>
-       <option value="(ko-KR, HeamiRUS)">Korean | Female | Haemi</option>
+       <option value="(ko-KR, HeamiRUS)">Korean | Female | Heami</option>
        <option value="(pt-BR, HeloisaRUS)">Portuguese (Brazil) | Female | HeloisaRUS</option>
        <option value="(pt-BR, Daniel, Apollo)">Portuguese (Brazil) | Male | Daniel, Apollo</option>
        <option value="(pt-PT, HeliaRUS)">Portuguese (Portugal) | Female | HeliaRUS</option>

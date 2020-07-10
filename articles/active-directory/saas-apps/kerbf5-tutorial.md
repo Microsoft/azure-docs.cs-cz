@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a24ec98e9d5978a6f896715b25bd6b08d4a0262d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75431461"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232181"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte integrovat F5 s Azure Active Directory (Azure AD). P�
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -42,11 +42,11 @@ Chcete-li začít, potřebujete následující položky:
 * Předplatné s povoleným jednotným přihlašováním (SSO).
 
 * Nasazení společného řešení vyžaduje následující licenci:
-    * ® Nejlepší sada pro BIG-IP
+    * Nejlepší sada pro BIG-IP &reg; (nebo) F5
 
-    * F5 – samostatná licence pro správce zásad pro BIG-IP Access™ (APM)
+    * Verze F5 – samostatná licence pro správce zásad přístupu &trade; (APM) pro velké IP adresy
 
-    * F5 licence na™ (APM) pro správce zásad pro Big-IP Access v existující® místní Traffic Manager™ (LTM).
+    * F5 licence na doplněk pro správce zásad pro Big-IP Access Manager &trade; (APM) ve stávajícím místním Traffic Manager pro Big-IP F5 s velkým IP adresou &reg; &trade; (LTM).
 
     * Kromě výše uvedených licencí může být systém F5 také licencován:
 
@@ -177,7 +177,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -223,7 +223,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. Kromě toho budete vyžadovat **certifikát SSL pro název hostitele aplikace. Přejděte do seznamu certifikát > Správa certifikátů > přenos provozu > seznam certifikátů protokolu SSL**. V pravém horním rohu vyberte **importovat** . **Typ importu** bude **PKCS 12 (IIS)**. Zadejte **název klíče** (bude odkazován později v konfiguraci) a zadejte soubor PFX. Zadejte **heslo** pro PFX. Klikněte na **importovat**.
 
     >[!NOTE]
-    >V příkladu našeho názvu `Kerbapp.superdemo.live`aplikace používáme certifikát se zástupnými kartami. naše KeyName je`WildCard-SuperDemo.live`
+    >V příkladu našeho názvu aplikace `Kerbapp.superdemo.live` používáme certifikát se zástupnými kartami. naše KeyName je`WildCard-SuperDemo.live`
 
     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure02.png) 
  
@@ -248,7 +248,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure07.png)  
 
-1. V části **Vybrat fond**zadejte **vytvořit novou** (případně vyberte fond, který už existuje). Nechte výchozí hodnotu. V části servery fondů zadejte IP adresu do pole **IP adresa/název uzlu**. Zadejte **port**. Klikněte na **uložit & další**.
+1. V části **Vybrat fond**zadejte **vytvořit novou** (případně vyberte fond, který už existuje). Nechte výchozí hodnotu.    V části servery fondů zadejte IP adresu do pole **IP adresa/název uzlu**. Zadejte **port**. Klikněte na **uložit & další**.
  
     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure08.png)
 
@@ -282,23 +282,23 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (APM) a určíte řadiče domény a přihlašovací údaje, které se mají použít k ověřování uživatelů.
 
-1.  Na hlavní kartě klikněte na **zásady přístupu > AAA servery > Active Directory**. Otevře se obrazovka seznam serverů služby Active Directory.
+1.    Na hlavní kartě klikněte na **zásady přístupu > AAA servery > Active Directory**. Otevře se obrazovka seznam serverů služby Active Directory.
 
-2.  Klikněte na **Vytvořit**. Otevře se obrazovka nové vlastnosti serveru.
+2.    Klikněte na **Vytvořit**. Otevře se obrazovka nové vlastnosti serveru.
 
-3.  Do pole **název** zadejte jedinečný název pro Server ověřování.
+3.    Do pole **název** zadejte jedinečný název pro Server ověřování.
 
-4.  Do pole **název domény** zadejte název domény systému Windows.
+4.    Do pole **název domény** zadejte název domény systému Windows.
 
-5.  V nastavení **připojení k serveru** vyberte jednu z těchto možností:
+5.    V nastavení **připojení k serveru** vyberte jednu z těchto možností:
 
     * Vyberte možnost **použít fond** pro nastavení vysoké dostupnosti pro Server AAA.
 
     * Vyberte **přímo** a nastavte Server AAA pro samostatnou funkci.
 
-6.  Pokud jste vybrali možnost **přímý**, zadejte název do pole **řadič domény** .
+6.    Pokud jste vybrali možnost **přímý**, zadejte název do pole **řadič domény** .
 
-7.  Pokud jste vybrali možnost použít **fond**, nakonfigurujte fond:
+7.    Pokud jste vybrali možnost použít **fond**, nakonfigurujte fond:
 
     * Do pole **název fondu řadičů domény** zadejte název.
 
@@ -306,21 +306,21 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
     * Chcete-li monitorovat stav serveru AAA, máte možnost vybrat monitorování stavu: v tomto případě je vhodný pouze monitor **gateway_icmp** . můžete ji vybrat ze seznamu **monitorování fondu serverů** .
 
-8.  V poli **název správce** zadejte pro správce, který má oprávnění správce služby Active Directory, název s rozlišováním velkých a malých písmen. Funkce APM používá informace v polích **jméno správce** a **heslo správce** pro dotaz AD. Pokud je pro anonymní dotazy nakonfigurovaná služba Active Directory, nemusíte zadávat jméno správce. V opačném případě funkce APM potřebuje účet s dostatečným oprávněním k vytvoření vazby na server služby Active Directory, načtení informací o skupině uživatelů a načtení zásad hesel služby Active Directory pro podporu funkcí souvisejících s heslem. (Funkce APM musí načítat zásady hesel, například pokud v akci dotazu AD vyberete možnost Výzva uživatele na změnu hesla před vypršením platnosti.) Pokud v této konfiguraci neposkytnete informace o účtu správce, funkce APM použije uživatelský účet k načtení informací. Tato funkce funguje, pokud má uživatelský účet dostatečná oprávnění.
+8.    V poli **název správce** zadejte pro správce, který má oprávnění správce služby Active Directory, název s rozlišováním velkých a malých písmen. Funkce APM používá informace v polích **jméno správce** a **heslo správce** pro dotaz AD. Pokud je pro anonymní dotazy nakonfigurovaná služba Active Directory, nemusíte zadávat jméno správce. V opačném případě funkce APM potřebuje účet s dostatečným oprávněním k vytvoření vazby na server služby Active Directory, načtení informací o skupině uživatelů a načtení zásad hesel služby Active Directory pro podporu funkcí souvisejících s heslem. (Funkce APM musí načítat zásady hesel, například pokud v akci dotazu AD vyberete možnost Výzva uživatele na změnu hesla před vypršením platnosti.) Pokud v této konfiguraci neposkytnete informace o účtu správce, funkce APM použije uživatelský účet k načtení informací. Tato funkce funguje, pokud má uživatelský účet dostatečná oprávnění.
 
-9.  Do pole **heslo správce** zadejte heslo správce přidružené k názvu domény.
+9.    Do pole **heslo správce** zadejte heslo správce přidružené k názvu domény.
 
-10. V poli **ověřit heslo správce** zadejte heslo správce přidružené k nastavení **název domény** .
+10.    V poli **ověřit heslo správce** zadejte heslo správce přidružené k nastavení **název domény** .
 
-11. Do pole **Doba života mezipaměti skupiny** zadejte počet dní. Výchozí doba platnosti je 30 dní.
+11.    Do pole **Doba života mezipaměti skupiny** zadejte počet dní. Výchozí doba platnosti je 30 dní.
 
-12. Do pole **Doba platnosti mezipaměti objektu zabezpečení hesla** zadejte počet dní. Výchozí doba platnosti je 30 dní.
+12.    Do pole **Doba platnosti mezipaměti objektu zabezpečení hesla** zadejte počet dní. Výchozí doba platnosti je 30 dní.
 
-13. V seznamu **typ šifrování předběžného ověření protokolu Kerberos** vyberte typ šifrování. Výchozí hodnota je **none**. Pokud zadáte typ šifrování, systém BIG-IP obsahuje data předběžného ověření protokolu Kerberos v rámci prvního paketu žádosti ověřovací služby (AS-REQ).
+13.    V seznamu **typ šifrování předběžného ověření protokolu Kerberos** vyberte typ šifrování. Výchozí hodnota je **none**. Pokud zadáte typ šifrování, systém BIG-IP obsahuje data předběžného ověření protokolu Kerberos v rámci prvního paketu žádosti ověřovací služby (AS-REQ).
 
-14. Do pole **časový limit** zadejte časový interval (v sekundách) pro Server AAA. (Toto nastavení je volitelné.)
+14.    Do pole **časový limit** zadejte časový interval (v sekundách) pro Server AAA. (Toto nastavení je volitelné.)
 
-15. Klikněte na **Hotovo**. Nový server se zobrazí v seznamu. Tím se nový server služby Active Directory přidá do seznamu serverů služby Active Directory.
+15.    Klikněte na **Hotovo**. Nový server se zobrazí v seznamu. Tím se nový server služby Active Directory přidá do seznamu serverů služby Active Directory.
 
     ![F5 (Kerberos) – konfigurace](./media/kerbf5-tutorial/configure17.png)
 
@@ -347,7 +347,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 1. Pokud chcete nastavit službu SAML SP, přejděte k části **přístup > federaci > poskytovatele služby saml > místní služby SP** a klikněte na **vytvořit**. Vyplňte následující informace a klikněte na tlačítko **OK**.
 
     * Název typu: KerbApp200SAML
-    * ID entity *:https://kerbapp200.superdemo.live
+    * ID entity *:https://kerb-app.com.cutestat.com
     * Nastavení názvu SP
     * Schéma: https
     * Host: kerbapp200. demo. Live
@@ -370,7 +370,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
     >[!Note]
     > Budete potřebovat vytvořit a zadat účet delegování protokolu Kerberos. Odkazování na oddíl KCD (viz příloha odkazy na proměnné)
 
-    * **Username source**: Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenName
+    * **Username source**: Session. SAML. Last. attr. Name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/identity/claims/givenName
 
     * **Zdroj sféry uživatele**: Session. Logon. Last. Domain
 
@@ -456,7 +456,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 *  **Krok 1:** Vytvoření účtu delegování
 
-    **Případě**
+    **Příklad:**
     * Název domény: **Ukázka. Live**
 
     * Název účtu SAM: **Big-ipuser**
@@ -465,7 +465,7 @@ Server služby Active Directory AAA nakonfigurujete v Access Policy Manageru (AP
 
 * **Krok 2:** Nastavit hlavní název služby (SPN) (na účtu delegování APM)
 
-    **Případě**
+    **Příklad:**
     * setspn – A **Host/Big-ipuser. demo. Live** Big-ipuser
 
 * **Krok 3:** Delegování hlavního názvu služby (pro účet App Service) nastaví příslušné delegování pro účet delegace F5.
@@ -485,7 +485,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: předpověď cen automobilů pomocí návrháře'
+title: 'Kurz: předpověď cen automobilů pomocí návrháře (Preview)'
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak pomocí rozhraní přetažení využít výuku, skóre a nasazení modelu strojového učení. Tento kurz je první částí série dvou částí pro předpověď cen automobilů pomocí lineární regrese.
 author: peterclu
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 7068c1e795e7a607776c48d1b026562a1be6b25d
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 2922b5d3aa6cee0f1222c041a0e9728936754c21
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517596"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200040"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ V první části kurzu se dozvíte, jak:
 > [!div class="checklist"]
 > * Vytvořte nový kanál.
 > * Importujte data.
-> * Připravte data.
+> * Příprava dat.
 > * Naučte se model strojového učení.
 > * Vyhodnoťte model strojového učení.
 

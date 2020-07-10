@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 92b3489113aff9d48940131c80df00aedcf45325
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172768"
+ms.locfileid: "86205209"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Kurz: komplexní ochrana obsahu pomocí Azure AD
 
@@ -39,7 +39,7 @@ Pokud nemáte předplatné Azure Media Services, vytvořte [bezplatný zkušebn�
 ### <a name="duration"></a>Doba trvání
 Tento kurz by měl trvat přibližně dvě hodiny, než se dokončí, když máte připravenou technologii, kterou si můžete projít.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Použijí se následující nejnovější technologické verze a koncepty. Před zahájením tohoto kurzu se jim doporučujeme seznámit s nimi.
 
@@ -61,7 +61,7 @@ Je volitelné, ale doporučujeme, abyste před zahájením tohoto kurzu seznámi
 * Vzorový kód. Stáhněte si [vzorový kód](https://github.com/Azure-Samples/media-services-content-protection-azure-ad).
 * Instalace Visual Studio Code. Stáhněte si Visual Studio Code sem [https://code.visualstudio.com/download](https://code.visualstudio.com/download) .
 * Instalace Node.js. Stáhněte si Node.js sem [https://nodejs.org](https://nodejs.org) . NPM je součástí instalace.
-* [Předplatné Azure](https://azure.microsoft.com/free/).
+* [Předplatné Azure](https://azure.microsoft.com/free/)
 * Účet Azure Media Services (AMS).
 * @azure/msal-browserv 2.0 jeden z členů sady SDK [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) pro různé klientské platformy
 * Nejnovější verze [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)(obsažená v ukázce)
@@ -120,18 +120,17 @@ Aplikace Player pro SPA se dokončí následujícími akcemi:
 * Dešifrování, dekódování a zobrazení.
 * Microsoft Graph volání rozhraní API pro účely řešení potíží. <!--See more details in the subsection Shortest path: testing my protected asset in my subscription with your hosted player app and underlying tenant. -->
 
-<!--
-The screen for sign-in, token acquisition, token renewal, and token display:
+Obrazovka pro přihlášení, získání tokenu, obnovení tokenu a zobrazení tokenu:
 
- ![Screen for sign in, token acquisition, token renewal, and token display](media/aad-ams-content-protection/token-acquisition2.png)
+ ![Obrazovka pro přihlášení, získání tokenu, obnovení tokenu a zobrazení tokenu](media/aad-ams-content-protection/token-acquisition.png)
 
-The screen for parsing JWT tokens (access_token or id_token):
+Obrazovka pro analýzu tokenů JWT (access_token nebo id_token):
 
-![screen for parsing JWT tokens](media/aad-ams-content-protection/parsing-jwt-tokens2.png)
+![obrazovka pro analýzu tokenů JWT](media/aad-ams-content-protection/parsing-jwt-tokens.png)
 
-The screen for testing protected content with different combinations of DRM/AES vs Streaming Protocols vs Container Format:
+Obrazovka pro testování chráněného obsahu s různými kombinacemi protokolů DRM/AES vs streaming a formátu kontejneru:
 
-![screen for parsing JWT tokens](media/aad-ams-content-protection/testing-protected-content2.png)
+![obrazovka pro analýzu tokenů JWT](media/aad-ams-content-protection/testing-protected-content.png)
 -->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
@@ -171,7 +170,7 @@ Vyberte tenanta Azure AD, který se použije pro ucelenou ukázku. Máte dvě mo
 | Popis souhlasu správce * * | *Obor prostředku back-endu doručování licencí DRM* | Podrobný popis oboru, který se zobrazí, když správci tenanta rozbalí obor na obrazovce pro vyjádření souhlasu. |
 | Zobrazovaný název souhlasu uživatele | *Digitálních. Licence. doručení* | Jaký rozsah bude vyvolán na obrazovce pro vyjádření souhlasu uživatele, pokud uživatel souhlasí s tímto oborem. |
 | Popis souhlasu uživatele | *Obor prostředku back-endu doručování licencí DRM* | Toto je podrobný popis oboru, který se zobrazí, když uživatel rozbalí obor na obrazovce pro vyjádření souhlasu. |
-| Stav | *Enabled* (Povoleno) | Určuje, jestli je tento obor dostupný pro klienty k vyžádání. Nastavte ji na Disabled (zakázáno) pro obory, které nechcete zobrazovat klientům. Odstranit lze pouze zakázané obory a doporučujeme počkat aspoň týden po zakázání rozsahu před jeho odstraněním, aby se zajistilo, že ho žádní klienti stále nepoužívají. |
+| Stav | *Povoleno* | Určuje, jestli je tento obor dostupný pro klienty k vyžádání. Nastavte ji na Disabled (zakázáno) pro obory, které nechcete zobrazovat klientům. Odstranit lze pouze zakázané obory a doporučujeme počkat aspoň týden po zakázání rozsahu před jeho odstraněním, aby se zajistilo, že ho žádní klienti stále nepoužívají. |
 
 ## <a name="register-the-client-app"></a>Registrace klientské aplikace
 
@@ -261,7 +260,7 @@ Máte dvě možnosti, jak nastavit aplikaci přehrávače:
 
 ### <a name="option-1"></a>Možnost 1
 
-1. Spusťte Visual Studio Code.
+1. Spuštění nástroje Visual Studio Code
 1. Chcete-li projekt otevřít, klikněte na položku soubor-> otevřít složku – > vyhledejte a vyberte nadřazenou složku *package.jsv* souboru.
 1. Otevřete JavaScriptový soubor *Public/JavaScript/constants.js*.
 1. Nahraďte `OAUTH2_CONST.CLIENT_ID` `client_id` vaší registrovanou klientskou aplikací v tenantovi AAD.  Najdete ho v `client_id` části Přehled registrované aplikace v Azure Portal. Poznámka: Toto je ID klienta, nikoli ID objektu.

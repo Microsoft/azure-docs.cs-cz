@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 067a0383c90ce42120269ff40f910805dacfd11a
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4bf2f12ef79f8551291316b5446121f2735d9347
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143867"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206577"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Kurz: Integrace Power BI do Analýzy textu službou Cognitive Service
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte:
 > * Používat rozhraní API pro analýzu klíčových frází v textu k extrakci nejdůležitějších frází z připomínek zákazníků
 > * Vytvořit z připomínek zákazníků Word Cloud
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 <a name="Prerequisites"></a>
 
 - Microsoft Power BI Desktop. [Stáhněte si ho zdarma](https://powerbi.microsoft.com/get-started/).
@@ -91,7 +91,7 @@ Můžete také vyfiltrovat prázdné zprávy filtrem Odebrat prázdné nebo odeb
 
 [Rozhraní API Klíčové fráze](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) služby Analýza textu dokáže v jednom požadavku HTTP zpracovat až tisíc textových dokumentů. Power BI ale upřednostňuje postupné zpracování jednotlivých záznamů. V tomto kurzu bude ve voláních rozhraní API vždy jen jeden dokument. Rozhraní API Klíčové fráze vyžaduje, aby každý zpracovávaný dokument obsahoval následující pole.
 
-| | |
+| Pole | Popis |
 | - | - |
 | `id`  | Jedinečný identifikátor tohoto dokumentu v rámci požadavku. Odpověď také obsahuje toto pole. Tímto způsobem můžete v případě zpracování více dokumentů snadno přidružit extrahované klíčové fráze k dokumentu, ze kterého pocházejí. V tomto kurzu zpracováváte pro každou žádost jenom jeden dokument. Proto můžete hodnotu `id` pevně zadat, aby byla pro všechny požadavky stejná.|
 | `text`  | Text, který se má zpracovat. Hodnota tohoto pole pochází ze sloupce `Merged` vytvořeného v [předchozím oddílu](#PreparingData). V tomto sloupci je sloučený řádek předmětu s textem komentáře. Rozhraní API pro klíčové fráze vyžaduje, aby tato data nebyla delší než 5 120 znaků.|
@@ -174,7 +174,7 @@ Dále se může zobrazit banner s výzvou k zadání informací o ochraně osobn
 
 ![[Banner s výzvou k zadání informací o ochraně osobních údajů]](../media/tutorials/power-bi/privacy-banner.png)
 
-Klikněte na **Pokračovat** a pro každý zdroj dat v dialogu zvolte `Public`. Potom klikněte na **Uložit**.
+Klikněte na **Pokračovat** a pro každý zdroj dat v dialogu zvolte `Public`. Pak klikněte na **Uložit.**
 
 ![[Nastavení ochrany osobních údajů u zdrojů dat]](../media/tutorials/power-bi/privacy-dialog.png)
 

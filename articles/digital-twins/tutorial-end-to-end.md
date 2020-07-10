@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391923"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206573"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Sestavení kompletního řešení
 
@@ -120,7 +120,7 @@ V *Function App (Windows) – vytvořit nové* okno vyplňte pole následující
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Publikování funkce Azure v aplikaci Visual Studio: Function App (Windows) – vytvořit nový":::
 
-Pak vyberte **vytvořit**.
+Potom vyberte **Vytvořit**.
 
 To by mělo vrátit se zpátky na stránku *instance Functions* , kde je vaše nová aplikace Functions teď viditelná pod vaší skupinou prostředků. *Zakončete*volání.
 
@@ -205,8 +205,9 @@ Tím se zobrazí stránka *vytvořit odběr události* .
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure Portal: Vytvoření odběru událostí":::
 
-Vyplňte pole následujícím způsobem:
+Vyplňte pole následujícím způsobem (ve výchozím nastavení se nezobrazují pole, která jsou vyplněna):
 * *Podrobnosti*  >  odběru události **Název**: zadejte název předplatného události.
+* *Podrobnosti o tématu*  >  **Název systémového tématu**: zadejte název, který se má použít pro systémové téma. 
 * *typy událostí*  >  **Filtrovat na typy událostí**: z možností nabídky vyberte *telemetrie zařízení* .
 * Podrobnosti koncového *bodu*  >  **Typ koncového bodu**: z možností nabídky vyberte *Azure Function* .
 * Podrobnosti koncového *bodu*  >  **Koncový bod**: stiskněte odkaz *Vybrat koncový bod* . Otevře se okno *Vybrat funkci Azure* : :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure Portal odběr událostí: vybrat funkci Azure Functions" border="false":::
@@ -361,11 +362,9 @@ V [Azure Portal](https://portal.azure.com/)přejděte na téma Event gridu tak, 
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure Portal: odběr událostí Event Grid":::
 
-Postup vytvoření odběru událostí je podobný jako při přihlášení k odběru první funkce Azure, která IoT Hub dříve v tomto kurzu. Rozdíl je v tom, že nemusíte zadávat *telemetrie zařízení* jako typ události, která se má naslouchat, a Vy se připojíte k jiné funkci Azure Functions.
+Postup vytvoření odběru událostí je podobný jako při přihlášení k odběru první funkce Azure, která IoT Hub dříve v tomto kurzu. Tentokrát nemusíte zadávat *telemetrii zařízení* jako typ události, která se má naslouchat, a Vy se připojíte k jiné funkci Azure Functions.
 
-Tady jsou kroky pro předplatné znovu:
-
-Na stránce *vytvořit odběr události* vyplňte pole následujícím způsobem:
+Na stránce *vytvořit odběr události* vyplňte pole následujícím způsobem (pole vyplněná ve výchozím nastavení nejsou zmíněná):
 * *Podrobnosti*  >  odběru události **Název**: zadejte název předplatného události.
 * Podrobnosti koncového *bodu*  >  **Typ koncového bodu**: z možností nabídky vyberte *Azure Function* .
 * Podrobnosti koncového *bodu*  >  **Koncový bod**: stiskněte odkaz *Vybrat koncový bod* . Otevře se okno *Vybrat Azure Function* :
@@ -398,7 +397,7 @@ Měli byste vidět živá aktualizované teploty *z instance digitálních vlák
 
 Jakmile ověříte, že toto ověření funguje úspěšně, můžete zastavit spouštění obou projektů. Okna sady Visual Studio můžete také zavřít, protože kurz je nyní dokončen.
 
-## <a name="review"></a>Revize
+## <a name="review"></a>Opakování
 
 Tady je přehled scénáře, který jste vytvořili v tomto kurzu.
 

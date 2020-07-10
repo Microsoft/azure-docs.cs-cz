@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ae6ddac61ecbcef41704f71ed5188fc547a996a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f98df33b3efc697e349ddeae31439dd2fb701d91
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81616588"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202027"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat obnovitelné odstranění Key Vaultu s využitím CLI
 
@@ -23,7 +23,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 - Podpora obnovitelného odstranění trezoru klíčů
 - Podpora obnovitelného mazání objektů trezoru klíčů; klíče, tajné klíče a certifikáty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure CLI – Pokud nemáte toto nastavení pro vaše prostředí, přečtěte si téma [správa Key Vault pomocí](manage-with-cli2.md)rozhraní příkazového řádku Azure.
 
@@ -33,7 +33,7 @@ Informace o Key Vault specifických referenčních informacích pro rozhraní p�
 
 Operace Key Vault se samostatně spravují prostřednictvím oprávnění řízení přístupu na základě role (RBAC) následujícím způsobem:
 
-| Operace | Popis | Oprávnění uživatele |
+| Operace | Description | Oprávnění uživatele |
 |:--|:--|:--|
 |Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft. deletedVaults trezor//Read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Trezor Microsoft. a trezory/zápis|
@@ -207,7 +207,7 @@ Totéž platí pro Trezor klíčů. Aby bylo možné trvale odstranit dočasně 
 
 ### <a name="purging-a-key-vault"></a>Vyprazdňování trezoru klíčů
 
-Když se odstraní Trezor klíčů, veškerý obsah se trvale odstraní, včetně klíčů, tajných klíčů a certifikátů. K vymazání trezoru klíčů odstraněného pomocí `az keyvault purge` příkazu použijte příkaz. Umístění trezoru klíčů, které vaše předplatné odstranilo, můžete najít pomocí příkazu `az keyvault list-deleted`.
+Když se odstraní Trezor klíčů, veškerý obsah se trvale odstraní, včetně klíčů, tajných klíčů a certifikátů. K vymazání trezoru klíčů odstraněného pomocí `az keyvault purge` příkazu použijte příkaz. Umístění trezoru klíčů, které vaše předplatné odstranilo, můžete najít pomocí příkazu `az keyvault list-deleted` .
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault
@@ -229,7 +229,7 @@ Výpis odstraněných objektů trezoru klíčů se zobrazí také v případě, 
 
 Pokud je zapnutá ochrana vyprázdnění, trezor nebo objekt v odstraněném stavu nelze odstranit, dokud neuplyne doba uchování 90 dnů. Tento trezor nebo objekt je stále možné obnovit. Tato funkce poskytuje přidanou jistotu, že trezor nebo objekt nikdy nebude možné trvale odstranit, dokud neuplyne doba uchování.
 
-Ochranu vyprázdnění můžete povolit jenom v případě, že je povolené i obnovitelné odstranění. 
+Ochranu vyprázdnění můžete povolit jenom v případě, že je povolené i obnovitelné odstranění. Zakázání ochrany vyprázdnění se nepodporuje.
 
 Pokud chcete při vytváření trezoru zapnout ochranu pomocí obnovitelného odstranění i vymazání, použijte příkaz [AZ klíčů trezor Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) :
 

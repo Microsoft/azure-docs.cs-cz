@@ -3,7 +3,7 @@ title: Kurz pro jednořádkový jednostránkové aplikaci – Azure
 titleSuffix: Microsoft identity platform
 description: Přečtěte si, jak se v aplikacích úhlového ověřování můžou volat rozhraní API, které vyžaduje přístupové tokeny z koncového bodu Microsoft Identity Platform.
 services: active-directory
-author: hahamil
+author: hamiltonha
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322766"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231688"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové aplikace s jednou stránkou
 
@@ -35,7 +35,7 @@ V tomto kurzu se dozvíte, jak může jednorozměrná aplikace s jednou stránko
 
 ### <a name="more-information"></a>Další informace
 
-Ukázková aplikace vytvořená v tomto kurzu umožňuje použití úhlového hesla pro dotazování rozhraní Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny z koncového bodu Microsoft Identity Platform. MSAL pro úhlovou knihovnu je obálkou základní knihovny MSAL. js. Umožňuje, aby se k ověřování podnikových uživatelů používaly úhlové (6 +) aplikace pomocí Microsoft Azure Active Directory, účet Microsoft uživatelů a uživatelů sociálních identit (například Facebooku, Google a LinkedIn). Knihovna také umožňuje aplikacím získat přístup k cloudovým službám nebo Microsoft Graph Microsoftu.
+Ukázková aplikace vytvořená v tomto kurzu umožňuje použití úhlového hesla pro dotazování rozhraní Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny z koncového bodu Microsoft Identity Platform. MSAL pro úhlovou knihovnu je obálkou základní knihovny MSAL.js. Umožňuje, aby se k ověřování podnikových uživatelů používaly úhlové (6 +) aplikace pomocí Microsoft Azure Active Directory, účet Microsoft uživatelů a uživatelů sociálních identit (například Facebooku, Google a LinkedIn). Knihovna také umožňuje aplikacím získat přístup k cloudovým službám nebo Microsoft Graph Microsoftu.
 
 V tomto scénáři se po přihlášení uživatele vyžádá přístupový token a přidá se do požadavků HTTP prostřednictvím autorizační hlavičky. Získání a obnovení tokenu jsou zpracovávány pomocí MSAL.
 
@@ -45,18 +45,18 @@ V tomto kurzu se používá následující knihovna:
 
 |Knihovna|Description|
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript – úhlová obálka|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript – úhlová obálka|
 
-Zdrojový kód knihovny MSAL. js najdete v úložišti [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) na GitHubu.
+Zdrojový kód knihovny MSAL.js můžete najít v úložišti [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) na GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro spuštění tohoto kurzu budete potřebovat:
 
-* Místní webový server, jako je [Node. js](https://nodejs.org/en/download/). Pokyny v tomto kurzu jsou založené na Node. js.
+* Místní webový server, například [Node.js](https://nodejs.org/en/download/). Pokyny v tomto kurzu jsou založené na Node.js.
 * Integrované vývojové prostředí (IDE), jako je například [Visual Studio Code](https://code.visualstudio.com/download), pro úpravu souborů projektu.
 
-## <a name="create-your-project"></a>Vytvořit projekt
+## <a name="create-your-project"></a>Vytvoření projektu
 
 Vygenerujte novou úhlovou aplikaci pomocí následujících příkazů npm:
 
@@ -68,7 +68,7 @@ npm install msal @azure/msal-angular             # Install MSAL and MSAL Angular
 ng generate component page-name                  # To add a new page (such as a home or profile page)
 ```
 
-## <a name="register-your-application"></a>Registrace vaší aplikace
+## <a name="register-your-application"></a>Registrace aplikace
 
 Postupujte podle [pokynů k registraci jednostránkové aplikace](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) v Azure Portal.
 
@@ -138,7 +138,7 @@ Zaregistrujte hodnotu **identifikátoru URI přesměrování** jako **http://loc
 3. Přidejte následující příkazy pro import do horní části `src/app/app.component.ts` :
 
     ```javascript
-    import { MsalService } from '@azure/msal-angular';
+    import { MsalService, BroadcastService } from '@azure/msal-angular';
     import { Component, OnInit } from '@angular/core';
     ```
 ## <a name="sign-in-a-user"></a>Přihlášení uživatele
@@ -148,6 +148,8 @@ Přidejte následující kód pro `AppComponent` přihlášení uživatele:
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
+    
+    ngOnInit() { }
 
     login() {
         const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -262,14 +264,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 V tomto kódu `scopes` obsahuje obory, které jsou požadovány k vrácení do přístupového tokenu pro rozhraní API.
 
-Příklad:
+Zde je příklad:
 
 * `["user.read"]`pro Microsoft Graph
 * `["<Application ID URL>/scope"]`pro vlastní webová rozhraní API (tj. `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Identity Platform. Příklad:
+Někdy potřebujete, aby uživatel spolupracoval s koncovým bodem Microsoft Identity Platform. Zde je příklad:
 
 * Uživatelé možná budou muset znovu zadat svoje přihlašovací údaje, protože vypršela platnost hesla.
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.

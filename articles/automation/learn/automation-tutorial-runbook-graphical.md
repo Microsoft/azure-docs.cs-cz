@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 3cd5db3736d5eda88e7cad7bda1966efb2b00977
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 53031efa831f788fe0fe58146496b427f4cfb4db
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744744"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185530"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Kurz: Vytvoření grafického Runbooku
 
 V tomto kurzu se seznámíte s vytvořením [grafického runbooku](../automation-runbook-types.md#graphical-runbooks) ve službě Azure Automation. Můžete vytvářet a upravovat grafické a grafické Runbooky pracovních postupů PowerShellu pomocí grafického editoru v Azure Portal. 
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření jednoduché grafické sady Runbook
@@ -25,12 +25,12 @@ V tomto kurzu:
 > * Spuštění a sledování stavu úlohy Runbooku
 > * Aktualizace Runbooku na spuštění virtuálního počítače Azure s parametry Runbooku a podmíněnými odkazy
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Automation](../automation-offering-get-started.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
+* [Účet Automation](../index.yml), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure. Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
 * Virtuální počítač Azure. Vzhledem k tomu, že tento počítač zastavíte a spustíte, neměli by se jednat o produkční virtuální počítač.
 
 ## <a name="step-1---create-runbook"></a>Krok 1 – vytvoření runbooku
@@ -146,7 +146,7 @@ Runbook jste otestovali a publikovali, ale zatím neděláme žádnou užitečno
 
 ## <a name="step-6---add-authentication"></a>Krok 6 – přidání ověřování
 
-Teď, když máte proměnnou, která bude uchovávat ID předplatného, můžete sadu Runbook nakonfigurovat tak, aby se ověřovala pomocí přihlašovacích údajů spustit jako pro vaše předplatné. Provedete to přidáním připojení spustit jako pro Azure jako prostředku. Musíte také přidat rutinu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) a rutinu [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) na plátno.
+Teď, když máte proměnnou, která bude uchovávat ID předplatného, můžete sadu Runbook nakonfigurovat tak, aby se ověřovala pomocí přihlašovacích údajů spustit jako pro vaše předplatné. Provedete to přidáním připojení spustit jako pro Azure jako prostředku. Musíte také přidat rutinu [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) a rutinu [set-AzContext](/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) na plátno.
 
 >[!NOTE]
 >Pro PowerShellové Runbooky `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro `Connect-AzAccount` . Všimněte si, že tyto aliasy nejsou k dispozici pro vaše grafické Runbooky. Grafická sada Runbook může používat pouze `Connect-AzAccount` sebe sama.
@@ -213,7 +213,7 @@ Teď, když máte proměnnou, která bude uchovávat ID předplatného, můžete
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>Krok 7 – přidání aktivity pro spuštění virtuálního počítače
 
-Nyní musíte přidat `Start-AzVM` aktivitu pro spuštění virtuálního počítače. V předplatném Azure si můžete vybrat libovolný virtuální počítač a teď jste zakódujeme jeho název do rutiny [Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm?view=azps-3.5.0) .
+Nyní musíte přidat `Start-AzVM` aktivitu pro spuštění virtuálního počítače. V předplatném Azure si můžete vybrat libovolný virtuální počítač a teď jste zakódujeme jeho název do rutiny [Start-AzVM](/powershell/module/az.compute/start-azvm?view=azps-3.5.0) .
 
 1. V ovládacím prvku knihovna zadejte `Start-Az` do vyhledávacího pole.
 
@@ -225,9 +225,9 @@ Nyní musíte přidat `Start-AzVM` aktivitu pro spuštění virtuálního počí
 
 5. Jako sadu parametrů vyberte **ResourceGroupNameParameterSetName** . Pole **ResourceGroupName** a **Name** obsahují vykřičník vedle sebe, aby označovali, že se jedná o požadované parametry. Všimněte si, že obě pole očekávají hodnoty řetězce.
 
-6. Vyberte **Název**. V poli **zdroj dat** vyberte **powershellový výraz** . Pro virtuální počítač, který používáte ke spuštění této sady Runbook, zadejte název počítače, který je ohraničený dvojitými uvozovkami. Klikněte na tlačítko **OK**.
+6. Vyberte **Název**. V poli **zdroj dat** vyberte **powershellový výraz** . Pro virtuální počítač, který používáte ke spuštění této sady Runbook, zadejte název počítače, který je ohraničený dvojitými uvozovkami. Klikněte na **OK**.
 
-7. Vyberte **ResourceGroupName**. Pro pole **zdroje dat** použijte **výraz PowerShell** Value a zadejte název skupiny prostředků, která je ohraničená dvojitými uvozovkami. Klikněte na tlačítko **OK**.
+7. Vyberte **ResourceGroupName**. Pro pole **zdroje dat** použijte **výraz PowerShell** Value a zadejte název skupiny prostředků, která je ohraničená dvojitými uvozovkami. Klikněte na **OK**.
 
 8. Klikněte na **testovací podokno** , abyste mohli Runbook otestovat.
 
@@ -270,7 +270,7 @@ Runbook aktuálně spouští virtuální počítač ve skupině prostředků, kt
 
 ## <a name="step-9---create-a-conditional-link"></a>Krok 9 – vytvoření podmíněného propojení
 
-Nyní můžete sadu Runbook upravit tak, aby se pokusila spustit virtuální počítač pouze v případě, že ještě není spuštěn. Udělejte to přidáním rutiny [Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) , která načte stav na úrovni instance virtuálního počítače. Pak můžete přidat modul kódu pracovního postupu PowerShellu `Get Status` s názvem fragment kódu PowerShellu k určení, jestli je stav virtuálního počítače spuštěný nebo zastavený. Podmíněné propojení z modulu se `Get Status` spustí pouze `Start-AzVM` v případě, že je aktuální stav spuštění zastaveno. Na konci tohoto postupu sada Runbook používá `Write-Output` rutinu k výstupu zprávy, která vás informuje o tom, jestli byl virtuální počítač úspěšně spuštěn.
+Nyní můžete sadu Runbook upravit tak, aby se pokusila spustit virtuální počítač pouze v případě, že ještě není spuštěn. Udělejte to přidáním rutiny [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) , která načte stav na úrovni instance virtuálního počítače. Pak můžete přidat modul kódu pracovního postupu PowerShellu `Get Status` s názvem fragment kódu PowerShellu k určení, jestli je stav virtuálního počítače spuštěný nebo zastavený. Podmíněné propojení z modulu se `Get Status` spustí pouze `Start-AzVM` v případě, že je aktuální stav spuštění zastaveno. Na konci tohoto postupu sada Runbook používá `Write-Output` rutinu k výstupu zprávy, která vás informuje o tom, jestli byl virtuální počítač úspěšně spuštěn.
 
 1. V grafickém editoru otevřete **MyFirstRunbook-Graphics** .
 
@@ -284,11 +284,11 @@ Nyní můžete sadu Runbook upravit tak, aby se pokusila spustit virtuální po�
 
 6. Vyberte sadu parametrů **GetVirtualMachineInResourceGroupNameParamSet**. Pole **ResourceGroupName** a **Name** obsahují vykřičník vedle sebe, což značí, že určují požadované parametry. Všimněte si, že obě pole očekávají hodnoty řetězce.
 
-7. V části **zdroj dat** pro **název**vyberte **vstup ze sady Runbook**a pak **VMName**. Klikněte na tlačítko **OK**.
+7. V části **zdroj dat** pro **název**vyberte **vstup ze sady Runbook**a pak **VMName**. Klikněte na **OK**.
 
-8. V části **zdroj dat** pro **ResourceGroupName**vyberte **vstup ze sady Runbook**a pak **ResourceGroupName**. Klikněte na tlačítko **OK**.
+8. V části **zdroj dat** pro **ResourceGroupName**vyberte **vstup ze sady Runbook**a pak **ResourceGroupName**. Klikněte na **OK**.
 
-9. V části **zdroj dat** pro **stav**vyberte **konstantní hodnota**a potom na **true (pravda**). Klikněte na tlačítko **OK**.
+9. V části **zdroj dat** pro **stav**vyberte **konstantní hodnota**a potom na **true (pravda**). Klikněte na **OK**.
 
 10. Vytvořte odkaz z `Specify Subscription Id` na `Get-AzVM` .
 
@@ -354,5 +354,4 @@ Nyní můžete sadu Runbook upravit tak, aby se pokusila spustit virtuální po�
 * Další informace o vytváření grafického obsahu najdete [v tématu Vytvoření grafického Runbooku v Azure Automation](../automation-graphical-authoring-intro.md).
 * Pokud chcete začít pracovat s Runbooky PowerShellu, přečtěte si téma [Vytvoření Runbooku PowerShellu](automation-tutorial-runbook-textual-powershell.md).
 * Informace o tom, jak začít s Runbooky pracovních postupů PowerShellu, najdete v tématu [Vytvoření Runbooku pracovního postupu PowerShellu](automation-tutorial-runbook-textual.md).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

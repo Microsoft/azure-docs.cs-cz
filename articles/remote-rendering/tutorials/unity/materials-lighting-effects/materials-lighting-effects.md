@@ -1,16 +1,16 @@
 ---
-title: Rafinace materiálů, osvětlení a efektů
+title: Zpřesňování materiálů, osvětlení a efektů
 description: Úprava modelů modelu a osvětlení. Přidejte další efekty, jako je sbalení a vyjmuté plochy.
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0379fe460d2bb90d28999a139e3ca9c8b7110eca
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39560966b542999b2c0c3472075c7497f2146455
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569557"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207346"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Kurz: rafinace materiálů, osvětlení a efektů
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > * Vytváření řezů prostřednictvím modelů s vyjmutými rovinami
 > * Přidat jednoduché animace pro vzdáleně vykreslené objekty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento kurz sestaví [kurz: manipulace s modely](..\manipulate-models\manipulate-models.md).
 

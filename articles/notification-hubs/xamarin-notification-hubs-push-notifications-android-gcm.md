@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5f1d12081591b180acca8ee35ecc5a5bf202211e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308128"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223937"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. Android pomocí Notification Hubs
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující kroky:
 > * Vytvoříte aplikaci pro Xamarin.Android a připojíte ji k centru oznámení
 > * Odešlete z webu Azure Portal zkušební oznámení
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 * [Visual Studio s Xamarinem] ve Windows nebo [Visual Studio pro Mac] v systému OS X.
@@ -60,7 +60,7 @@ V tomto kurzu provedete následující kroky:
 2. Zadejte **klávesu serveru** , kterou jste si poznamenali v konzole Google Firebase.
 3. Na panelu nástrojů vyberte **Uložit**.
 
-    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+    ![Snímek centra oznámení na webu Azure Portal s zvýrazněnou možností Google G C M F M a označená červeně](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zároveň máte připojovací řetězce, pomocí kterých můžete svou aplikaci zaregistrovat pro příjem oznámení a odesílání nabízených oznámení.
 

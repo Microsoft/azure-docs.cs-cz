@@ -1,16 +1,16 @@
 ---
 title: Úvodní stránka kurzu vzdáleného vykreslování Azure
 description: Přehled a navigace v kurzu ARR
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 6501508940672f5506d84ee32821730f7c28d5fb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e9bcabc05f0a967c788c5811dce0d99dc5cf38c9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569646"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207696"
 ---
 # <a name="azure-remote-rendering-tutorials"></a>Kurzy pro vzdálené vykreslování Azure
 
@@ -32,16 +32,16 @@ V dalším kroku se dozvíte, jak načíst vlastní modely do vzdáleného vykre
 
 V tomto kurzu budete pracovat s vašimi vzdáleně generovanými modely a pracovat s nimi. Doporučujeme, abyste před tímto kurzem dokončili [prohlížení vzdáleného vykresleného modelu](view-remote-models/view-remote-models.md) a [rozhraní a vlastních modelů](custom-models/custom-models.md) .
 
-#### <a name="refining-materials-lighting-and-effects"></a>[Rafinace materiálů, osvětlení a efektů](materials-lighting-effects/materials-lighting-effects.md)
+#### <a name="refining-materials-lighting-and-effects"></a>[Zpřesňování materiálů, osvětlení a efektů](materials-lighting-effects/materials-lighting-effects.md)
 
 V dalším kroku se podíváme na důležité koncepty, jako je úprava materiálů, změna osvětlení a uplatnění efektů na vzdáleně vykreslené modely. Pro tento kurz jsou doporučené požadavky na [vzdáleně vykreslený model](view-remote-models/view-remote-models.md), [rozhraní a vlastní modely](custom-models/custom-models.md)a [manipulaci s modely](manipulate-models/manipulate-models.md) .
 
-#### <a name="securing-azure-remote-rendering-and-model-storage"></a>[Zabezpečení vzdáleného vykreslování Azure a úložiště modelu](security/security.md)
+#### <a name="securing-azure-remote-rendering-and-model-storage"></a>[Zabezpečení služby Securing Azure Remote Rendering a úložiště modelů](security/security.md)
 
 Tady se dozvíte, jak zabezpečit účet vzdáleného vykreslování Azure a úložiště objektů BLOB. Popisuje první kroky pro vydání komerční aplikace, která používá vzdálené vykreslování Azure. V tomto kurzu se předpokládá, že jste dokončili výše uvedené lekce.
 
 
-#### <a name="creating-a-commercial-ready-azure-remote-rendering-application"></a>[Vytváření aplikace pro vzdálené vykreslování Azure připravené pro komerční zpracování](commercial-ready/commercial-ready.md)
+#### <a name="creating-a-commercial-ready-azure-remote-rendering-application"></a>[Vytvoření aplikace Azure Remote Rendering připravené pro komerční využití](commercial-ready/commercial-ready.md)
 
 Nakonec probereme několik důležitých doporučení a tipů pro přípravu komerční aplikace pomocí vzdáleného vykreslování Azure. Je užitečné, pokud jste před rezervací tohoto prostředku dokončili všechny kurzy vzdáleného vykreslování Azure.
 

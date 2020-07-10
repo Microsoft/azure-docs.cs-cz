@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6727a2c45187e0e6bb583bb65e176024067d81e2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80064421"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219979"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Kurz: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play (Preview) a jeho připojení k aplikaci IoT Central
 
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Spusťte kód zařízení ve Windows a podívejte se, jak se připojí k vaší IoT Central aplikaci.
 > * Podívejte se na simulovanou telemetrii, kterou zařízení odesílá.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md) pro vytvoření IoT Central aplikace pomocí vlastní šablony **aplikace > vlastní** .
 
@@ -39,7 +39,7 @@ K dokončení tohoto kurzu potřebujete na svém místním počítači nainstalo
 * [Cmake](https://cmake.org/download/) – při instalaci **cmake**vyberte možnost **Přidat cmake do systémové cesty**.
 * [Visual Studio Code](https://code.visualstudio.com/).
 * [Node.js](https://nodejs.org/)
-* `dps-keygen` Nástroj:
+* `dps-keygen`Nástroj:
 
     ```cmd/sh
     npm i -g dps-keygen
@@ -86,7 +86,9 @@ Pokud chcete zařízení připojit k IoT Central aplikaci, budete potřebovat kl
 
 1. Přejít na stránku **Správa** a vyberte **připojení zařízení**.
 
-1. Poznamenejte si **Rozsah ID** a **primární klíč** , který se zobrazí, když vyberete možnost **Zobrazit klíče**. Tyto hodnoty použijete později v tomto kurzu.
+1. Poznamenejte si **Rozsah ID**. Tuto hodnotu použijete později v tomto kurzu.
+
+1. Vyberte skupinu pro zápis **SAS-IoT-Device** . Poznamenejte si **primární klíč**. Tuto hodnotu použijete později v tomto kurzu.
 
     ![Připojení zařízení](./media/tutorial-connect-pnp-device/device-connection.png)
 
@@ -106,7 +108,7 @@ V tomto kurzu použijete veřejný DCM pro zařízení MxChip IoT DevKit. Pro sp
 
 1. Stisknutím **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte **IoT technologie Plug and Play**a vyberte **Otevřít úložiště modelu**. Vyberte **veřejné úložiště**. VS Code zobrazuje seznam DCMs ve veřejném úložišti modelu.
 
-1. Vyberte **MXChip IoT DevKit** DCM s ID `urn:mxchip:mxchip_iot_devkit:1`. Pak vyberte **Stáhnout**. Nyní máte kopii DCM ve `central_app` složce.
+1. Vyberte **MXChip IoT DevKit** DCM s ID `urn:mxchip:mxchip_iot_devkit:1` . Pak vyberte **Stáhnout**. Nyní máte kopii DCM ve `central_app` složce.
 
 ![Úložiště modelu a DCM](./media/tutorial-connect-pnp-device/public-repository.png)
 
@@ -134,7 +136,7 @@ Teď máte **MXChip IoT DevKit** DCM a jeho přidružená rozhraní, můžete vy
 
 1. Vyberte **prostřednictvím Vcpkg** jako způsob, jak zahrnout sadu SDK.
 
-1. VS Code otevře nové okno s generovanými zástupnými soubory kódu zařízení `devkit_device` ve složce.
+1. VS Code otevře nové okno s generovanými zástupnými soubory kódu zařízení ve `devkit_device` složce.
 
 ![Generovaný kód zařízení](./media/tutorial-connect-pnp-device/generated-code.png)
 
@@ -166,13 +168,13 @@ Pomocí sady SDK pro zařízení sestavíte nevygenerovanou zástupné kódy za�
     cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. Po úspěšném dokončení sestavení ve stejném příkazovém řádku spusťte aplikaci. Hodnoty `<scopeid>` a `<devicekey>` nahraďte hodnotami, které jste si poznamenali dříve:
+1. Po úspěšném dokončení sestavení ve stejném příkazovém řádku spusťte aplikaci. `<scopeid>`Hodnoty a nahraďte `<devicekey>` hodnotami, které jste si poznamenali dříve:
 
     ```cmd
     .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
     ```
 
-1. Aplikace zařízení spouští odesílání dat do IoT Hub. Někdy se chyba `Error registering device for DPS` zobrazí při prvním spuštění předchozího příkazu. Pokud se zobrazí tato chyba, zkuste příkaz zopakovat.
+1. Aplikace zařízení spouští odesílání dat do IoT Hub. Někdy se chyba zobrazí při `Error registering device for DPS` prvním spuštění předchozího příkazu. Pokud se zobrazí tato chyba, zkuste příkaz zopakovat.
 
 ## <a name="view-the-device"></a>Zobrazit zařízení
 

@@ -1,16 +1,16 @@
 ---
 title: Zobrazení vzdáleně vykresleného modelu
 description: Kurz "Hello World vzdáleného vykreslování Azure" ukazuje, jak zobrazit model vygenerovaný vzdáleně pomocí Azure
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: f0b9bf1c7e085efd86f70f8246214d366265036a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bd9e9b6754c8626a8d858b9832a8e3547b72352d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569572"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231896"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Kurz: zobrazení vzdáleného vykresleného modelu
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Připojení a odpojení od relací
 > * Načtení modelů do relace vykreslování
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro tento kurz potřebujete:
 
@@ -101,7 +101,7 @@ Následující kroky zajišťují, aby projekt používal nejnovější verzi ba
 
 1. Nastavit **clear Flags** na *plnou barvu*
 
-1. Nastavit **pozadí** na *černou* (#000000) s plnou (255) alfa (A)
+1. Nastavit **pozadí** na *černou* (#000000) s plně transparentní (0) alfa (A)
 
     ![Barevné kolo](./media/color-wheel-black.png)
 

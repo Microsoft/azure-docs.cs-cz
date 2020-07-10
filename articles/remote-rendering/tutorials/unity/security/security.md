@@ -1,16 +1,16 @@
 ---
-title: Zabezpečení vzdáleného vykreslování Azure a úložiště modelu
+title: Zabezpečení služby Securing Azure Remote Rendering a úložiště modelů
 description: Posílení zabezpečení pro vzdálenou aplikaci pro vykreslování při zabezpečení obsahu
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa9bc317203a28d8c4302c89ddf536507d747e82
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569550"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207809"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Kurz: zabezpečení vzdáleného vykreslování a úložiště modelu Azure
 
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte:
 > * Ověření ve službě Azure AD pro přístup k instanci vzdáleného vykreslování Azure
 > * Použití přihlašovacích údajů Azure pro ověřování vzdáleného vykreslování Azure
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Tento kurz sestaví [kurz: rafinace materiálů, osvětlení a efektů](..\materials-lighting-effects\materials-lighting-effects.md).
 

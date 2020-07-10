@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 16c14774b1b032132040ea3fdcf810a4f9de8f18
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 38b723cb823547d4737a68576575c2b629f5eb67
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077350"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206268"
 ---
 # <a name="import-and-publish-your-first-api"></a>Import a publikování vašeho prvního rozhraní API
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 ![Nové rozhraní API](./media/api-management-import-and-publish/created-api.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vysvětlení [terminologie Azure API Management](api-management-terminology.md).
 - [Vytvořte instanci služby Azure API Management](get-started-create-service-instance.md).
@@ -53,10 +53,10 @@ V této části se dozvíte, jak importovat a publikovat rozhraní API pro back-
 
    ![Vytvoření rozhraní API](./media/api-management-import-and-publish/create-api.png)
 
-   |Nastavení|Hodnota|Description|
+   |Nastavení|Hodnota|Popis|
    |-------|-----|-----------|
    |**Specifikace OpenAPI**|*https: \/ /conferenceapi.azurewebsites.NET? Format = JSON*|Služba implementující rozhraní API. Služba API Management na tuto adresu směruje požadavky.|
-   |**Zobrazované jméno**|Po zadání předchozí adresy URL služby API Management vyplní toto pole na základě formátu JSON.|Název zobrazený na portálu pro vývojáře|
+   |**Zobrazovaný název**|Po zadání předchozí adresy URL služby API Management vyplní toto pole na základě formátu JSON.|Název zobrazený na portálu pro vývojáře|
    |**Název**|Po zadání předchozí adresy URL služby API Management vyplní toto pole na základě formátu JSON.|Jedinečný název rozhraní API.|
    |**Popis**|Po zadání předchozí adresy URL služby API Management vyplní toto pole na základě formátu JSON.|Volitelný popis rozhraní API.|
    |**Schéma URL**|**HTTPS**|Které protokoly je možné použít pro přístup k rozhraní API.|
@@ -97,8 +97,3 @@ Přejděte k dalšímu kurzu, kde se dozvíte, jak vytvořit a publikovat produk
 
 > [!div class="nextstepaction"]
 > [Vytvoření a publikování produktu](api-management-howto-add-products.md)
-
-Chcete optimalizovat a uložit své útraty do cloudu?
-
-> [!div class="nextstepaction"]
-> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

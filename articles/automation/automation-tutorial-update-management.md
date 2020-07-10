@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a701a5a9fd77bd801bb535fe1f26bfa17c97757b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204884"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185785"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -61,7 +61,7 @@ Pomocí následujících kroků nastavte výstrahy, které vám pomůžou zjisti
 
 5. Klikněte na **Přidat podmínku** a vyberte signál, který je vhodný pro nasazení aktualizace. V následující tabulce jsou uvedeny podrobnosti o dvou dostupných signálech.
 
-    |Název signálu|Dimenze|Popis
+    |Název signálu|Dimenze|Description
     |---|---|---|
     |`Total Update Deployment Runs`|– Název nasazení aktualizace<br>-Status    |Upozorní na celkový stav nasazení aktualizace.|
     |`Total Update Deployment Machine Runs`|– Název nasazení aktualizace</br>-Status</br>– Cílový počítač</br>– Aktualizovat ID běhu nasazení    |Upozorní na stav nasazení aktualizace zaměřeného na konkrétní počítače.|
@@ -151,7 +151,7 @@ Naplánování nového nasazení aktualizace:
     > [!NOTE]
     > Aby se aktualizace nepoužívaly mimo časové období údržby v Ubuntu, překonfigurujte `Unattended-Upgrade` balíček pro zákaz automatických aktualizací. Informace o tom, jak nakonfigurovat balíček, najdete v tématu [věnovaném automatickým aktualizacím v příručce k serveru Ubuntu](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-12. V poli **Možnosti restartování** můžete určit způsob, jakým se má při nasazení zpracovávat restarty. K dispozici jsou následující možnosti: 
+12. V poli **Možnosti restartování** můžete určit způsob, jakým se má při nasazení zpracovávat restarty. Dostupné jsou tyto možnosti: 
     * V případě potřeby restartování (výchozí)
     * Vždy restartovat
     * Nikdy nerestartovat
@@ -206,7 +206,7 @@ Po dokončení nasazení aktualizace obdržíte výstrahu, kterou jste zadali b�
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o konfiguracích oboru najdete v tématu [omezení rozsahu nasazení Update Management](automation-scope-configurations-update-management.md).
-* Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [prohledávání protokolů v](../log-analytics/log-analytics-log-searches.md)protokolech Azure monitor.
+* Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [prohledávání protokolů v](../azure-monitor/log-query/log-query-overview.md)protokolech Azure monitor.
 * Pokud jste dokončili nasazení, přečtěte si téma [zrušení propojení pracovního prostoru s účtem Automation pro Update Management](automation-unlink-workspace-update-management.md).
 * Pokud chcete virtuální počítače odstranit z Update Management, přečtěte si téma [Odebrání virtuálních počítačů z Update Management](automation-remove-vms-from-update-management.md).
 * Pokud chcete řešit obecné chyby Update Management, přečtěte si téma [řešení potíží s Update Management](troubleshoot/update-management.md).

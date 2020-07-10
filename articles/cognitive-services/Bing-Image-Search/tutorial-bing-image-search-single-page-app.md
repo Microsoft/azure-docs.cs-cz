@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6a88ca1f028efcb3b9614df532b6d2dcc9dcfac8
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 3d4ccc6ecf18eb2eecc3ccc69ed97bf1094b2035
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800900"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206459"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Kurz: Vytvoření jednostránkové aplikace pomocí rozhraní API Bingu pro vyhledávání obrázků
 
@@ -31,7 +31,7 @@ Ukázková aplikace předvádí, jak:
 
 Úplný zdrojový kód k tomuto kurzu je dostupný na [Githubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nejnovější verze [Node.js](https://nodejs.org/)
 * Architektura [Express.js](https://expressjs.com/) pro Node.js. Pokyny k instalaci zdrojového kódu jsou k dispozici v ukázkovém souboru Readme pro GitHub.
@@ -118,7 +118,7 @@ Ve výchozím nastavení obslužná rutina `onsubmit` vrátí `false`, což zabr
 
 Rozhraní API Bingu pro vyhledávání obrázků nabízí několik [parametrů pro filtrování dotazů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), které umožňují zúžit a filtrovat výsledky hledání. Formulář HTML v této aplikaci používá a zobrazuje následující parametry:
 
-|              |                                                                                                                                                                                    |
+| Možnost | Popis |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `where`      | Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání.                                                                                             |
 | `query`      | Textové pole pro zadání hledaných termínů.                                                                                                                                 |
@@ -316,7 +316,7 @@ function renderImageResults(items) {
 
 Rozhraní API Bingu pro vyhledávání obrázků může vrátit čtyři typy návrhů vyhledávání, které pomáhají uživatelům s vyhledáváním, každý ve vlastním objektu nejvyšší úrovně:
 
-| Návrh         | Popis                                                                                                                                                                                                         |
+| Návrh         | Description                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | Dotazy, které nahradí pivotové slovo v původním vyhledávání jiným. Pokud třeba vyhledáváte „červené květiny“, pivotové slovo může být „červené“ a pivotový návrh může být „žluté květiny“. |
 | `queryExpansions`  | Dotazy, které původní hledání zúží přidáním dalších výrazů. Pokud třeba vyhledáváte „Microsoft Surface“, rozšíření dotazu může být „Microsoft Surface Pro“.                                   |
@@ -338,7 +338,7 @@ searchItemRenderers = {
 
 Funkce rendereru může přijímat tyto parametry:
 
-| Parametr         | Popis                                                                                              |
+| Parametr         | Description                                                                                              |
 |---------|----------------------------------------------------------------------------------------------|
 | `item`  | Objekt JavaScriptu obsahující vlastnosti položky, jako je její adresa URL a popis. |
 | `index` | Index položky výsledků v rámci jeho kolekce.                                          |
@@ -410,6 +410,6 @@ Při používání ukázkové aplikace nechte příkazové okno otevřené. Zav�
 > [!div class="nextstepaction"]
 > [Extrahování podrobností o obrázku pomocí rozhraní API Bingu pro vyhledávání obrázků](tutorial-image-post.md)
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

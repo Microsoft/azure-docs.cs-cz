@@ -10,20 +10,20 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: aahi
-ms.openlocfilehash: ad24a8a194a11c3fd5f7f77ea8c52197d5438edc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a867560edfb66527c09e349328246a8fc24dbbd3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80477919"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207242"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Kurz: Vyhledání podobných imagí z předchozích hledání pomocí tokenu pro Image Insights
 
-Klientská knihovna Vizuální vyhledávání umožňuje najít image online z předchozích hledání, která vrací `ImageInsightsToken`. Tato aplikace získá `ImageInsightsToken` a použije token v následném hledání. Pak pošle `ImageInsightsToken` službě Bing a vrátí výsledky, které zahrnují vyhledávání Bingu adresy URL a adresy URL podobných imagí, které byly online.
+Klientská knihovna Vizuální vyhledávání umožňuje najít image online z předchozích hledání, která vrací `ImageInsightsToken` . Tato aplikace získá `ImageInsightsToken` a použije token v následném hledání. Pak pošle `ImageInsightsToken` službě Bing a vrátí výsledky, které zahrnují vyhledávání Bingu adresy URL a adresy URL podobných imagí, které byly online.
 
 Úplný zdrojový kód pro tento kurz najdete v části Další zpracování chyb a poznámky na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Všechny edice sady [Visual Studio 2019](https://www.visualstudio.com/downloads/).
 * Pokud používáte Linux/MacOS, můžete tuto aplikaci spustit pomocí [mono](https://www.mono-project.com/).
@@ -38,7 +38,7 @@ Klientská knihovna Vizuální vyhledávání umožňuje najít image online z p
 
 ## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>Získat ImageInsightsToken z klientské knihovny Vyhledávání obrázků Bingu
 
-Tato aplikace využívá `ImageInsightsToken` získanou prostřednictvím [klientské knihovny vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). V nové konzolové aplikaci v jazyce C# vytvořte klienta, který bude volat rozhraní `ImageSearchClient()`API pomocí. Pak použijte `SearchAsync()` s dotazem:
+Tato aplikace využívá `ImageInsightsToken` získanou prostřednictvím [klientské knihovny vyhledávání obrázků Bingu](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart). V nové konzolové aplikaci v jazyce C# vytvořte klienta, který bude volat rozhraní API pomocí `ImageSearchClient()` . Pak použijte `SearchAsync()` s dotazem:
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));
@@ -46,7 +46,7 @@ var imageResults = client.Images.SearchAsync(query: "canadian rockies").Result;
 Console.WriteLine("Search images for query \"canadian rockies\"");
 ```
 
-Uložte si první výsledky hledání pomocí `imageResults.Value.First()`a pak uložte pohled na obrázek `ImageInsightsToken`.
+Uložte si první výsledky hledání pomocí `imageResults.Value.First()` a pak uložte pohled na obrázek `ImageInsightsToken` .
 
 ```csharp
 String insightTok = "None";
@@ -62,7 +62,7 @@ else
 }
 ```
 
-`ImageInsightsToken` Pošle se vizuální vyhledávání Bingu v žádosti.
+`ImageInsightsToken`Pošle se vizuální vyhledávání Bingu v žádosti.
 
 ## <a name="add-the-imageinsightstoken-to-a-visual-search-request"></a>Přidání ImageInsightsToken do žádosti o Vizuální vyhledávání
 
@@ -74,7 +74,7 @@ ImageInfo ImageInfo = new ImageInfo(imageInsightsToken: insightsTok);
 
 ## <a name="use-bing-visual-search-to-find-images-from-an-imageinsightstoken"></a>Hledání imagí z ImageInsightsToken pomocí Vizuální vyhledávání Bingu
 
-`VisualSearchRequest` Objekt obsahuje informace o obrázku ve `ImageInfo` službě, který má být prohledán. Metoda `VisualSearchMethodAsync()` získá výsledky. Není nutné zadávat binární soubor obrázku, protože je obrázek reprezentován tokenem.
+`VisualSearchRequest`Objekt obsahuje informace o obrázku ve `ImageInfo` službě, který má být prohledán. Metoda `VisualSearchMethodAsync()` získá výsledky. Není nutné zadávat binární soubor obrázku, protože je obrázek reprezentován tokenem.
 
 ```csharp
 VisualSearchRequest VisualSearchRequest = new VisualSearchRequest(ImageInfo);
@@ -85,7 +85,7 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ## <a name="iterate-through-the-visual-search-results"></a>Iterace prostřednictvím výsledků Vizuální vyhledávání
 
-Výsledky Vizuálního vyhledávání jsou objekty `ImageTag`. Každá značka obsahuje seznam objektů `ImageAction`. Každý `ImageAction` obsahuje `Data` pole, což je seznam hodnot, které závisí na typu akce. Můžete iterovat `ImageTag` objekty v `visualSearchResults.Tags`, instance a získat `ImageAction` značku v ní. Následující ukázka vytiskne podrobnosti o `PagesIncluding` akcích:
+Výsledky Vizuálního vyhledávání jsou objekty `ImageTag`. Každá značka obsahuje seznam objektů `ImageAction`. Každý `ImageAction` obsahuje `Data` pole, což je seznam hodnot, které závisí na typu akce. Můžete iterovat `ImageTag` objekty v `visualSearchResults.Tags` , instance a získat `ImageAction` značku v ní. Následující ukázka vytiskne podrobnosti o `PagesIncluding` akcích:
 
 ```csharp
 if (visualSearchResults.Tags.Count > 0)
@@ -111,7 +111,7 @@ if (visualSearchResults.Tags.Count > 0)
 
 ### <a name="pagesincluding-actiontypes"></a>PagesIncluding ActionTypes
 
-Získání skutečných adres URL obrázků z typů akcí vyžaduje přetypování, které čte `ActionType` jako `ImageModuleAction`, který obsahuje `Data` prvek se seznamem hodnot. Každá hodnota je adresa URL obrázku.  Následující přetypování typu `PagesIncluding` akce na `ImageModuleAction` a přečte hodnoty:
+Získání skutečných adres URL obrázků z typů akcí vyžaduje přetypování, které čte `ActionType` jako `ImageModuleAction` , který obsahuje `Data` prvek se seznamem hodnot. Každá hodnota je adresa URL obrázku.  Následující přetypování `PagesIncluding` typu akce na `ImageModuleAction` a přečte hodnoty:
 
 ```csharp
     if (i.ActionType == "PagesIncluding")
@@ -129,17 +129,17 @@ Další informace o těchto typech dat najdete v článku [Obrázky – Vizuáln
 
 Úplná aplikace vrátí následující adresy URL:
 
-|ActionType  |zprostředkovatele identity  | |
-|---------|---------|---------|
+|ActionType  |URL  |
+|---------|---------|
 |MoreSizes-> WebSearchUrl     |         |
 |VisualSearch-> WebSearchUrl     |         |
 |ImageById-> WebSearchUrl    |         |
 |RelatedSearches-> WebSearchUrl:    |         |
 |DocumentLevelSuggestions-> WebSearchUrl:     |         |
-|TopicResults-> WebSearchUrl    | https:\//www.Bing.com/CR?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID = 1BA795A21EAF6A63175699B71FC36B7C&RD = 1&h = BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fdiscover% 2fcanadian% 2brocky&p = DevEx, 5823.1       |
-|ImageResults-> WebSearchUrl    |  https:\//www.Bing.com/CR?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID = 1BA795A21EAF6A63175699B71FC36B7C&RD = 1&h = PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fimages% 2fsearch% 3fq% 3doutdoor&p = DevEx, 5831.1       |
+|TopicResults-> WebSearchUrl    | https: \/ /www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID = 1BA795A21EAF6A63175699B71FC36B7C&RD = 1&h = BcQifmzdKFyyBusjLxxgO42kzq1Geh7RucVVqvH-900&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fdiscover% 2fcanadian% 2brocky&p = DevEx, 5823.1       |
+|ImageResults-> WebSearchUrl    |  https: \/ /www.bing.com/cr?IG=3E32CC6CA5934FBBA14ABC3B2E4651F9&CID = 1BA795A21EAF6A63175699B71FC36B7C&RD = 1&h = PV9GzMFOI0AHZp2gKeWJ8DcveSDRE3fP2jHDKMpJSU8&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fimages% 2fsearch% 3fq% 3doutdoor&p = DevEx, 5831.1       |
 
-Jak je uvedeno výše, `TopicResults` obsahují `ImageResults` typy a dotazy pro související obrázky. Adresy URL odkazují na výsledky vyhledávání Bingu.
+Jak je uvedeno výše, `TopicResults` `ImageResults` obsahují typy a dotazy pro související obrázky. Adresy URL odkazují na výsledky vyhledávání Bingu.
 
 ## <a name="next-steps"></a>Další kroky
 

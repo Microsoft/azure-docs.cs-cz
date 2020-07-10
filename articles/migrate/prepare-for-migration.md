@@ -4,11 +4,12 @@ description: Přečtěte si, jak připravit místní počítače na migraci pomo
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: e6840b75d58bf19f742f94caad74e10aebe24666
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: aec2e95b65be2e3c69b2d29111fa1cfdbd66674e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044154"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223614"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Příprava místních počítačů na migraci do Azure
 
@@ -121,7 +122,7 @@ Pro jiné verze připravte počítače podle souhrnu v tabulce.
 --- | --- | ---
 **Nainstalovat integrační služby Hyper-V Linux** | Znovu sestavte inicializační image Linux, aby obsahovala potřebné ovladače technologie Hyper-V. Když znovu sestavíte inicializační image, zajistíte, že se virtuální počítač spustí v Azure. | Ve výchozím nastavení je k dispozici většina nových verzí distribucí systému Linux.<br/><br/> Pokud není zahrnutý, nainstalujte je ručně pro všechny verze kromě těch, které jsou uvedeny výše.
 **Povolit protokolování na sériové konzole Azure** | Povolení protokolování konzoly vám pomůže při odstraňování potíží. Nemusíte restartovat virtuální počítač. Virtuální počítač Azure se spustí pomocí image disku. Spuštění bitové kopie disku je ekvivalentní restartování nového virtuálního počítače.<br/><br/> Pokud chcete povolit, postupujte podle [těchto pokynů](../virtual-machines/troubleshooting/serial-console-linux.md) .
-**Aktualizovat soubor mapování zařízení** | Aktualizujte soubor mapování zařízení pomocí přidružení typu název zařízení-svazek, aby se používaly trvalé identifikátory zařízení. | Nainstalujte ručně pro všechny verze kromě těch, které jsou uvedené výše.
+**Aktualizovat soubor mapování zařízení** | Aktualizujte soubor mapování zařízení pomocí přidružení typu název zařízení-svazek, aby se používaly trvalé identifikátory zařízení. | Nainstalujte ručně pro všechny verze kromě těch, které jsou uvedené výše. (Dá se použít jenom ve scénáři VMware založeného na agentech)
 **Aktualizovat položky fstab** |  Aktualizujte položky tak, aby používaly trvalé identifikátory svazků.    | Aktualizovat ručně pro všechny verze kromě těch, které jsou vyvolány výše.
 **Odebrat pravidlo udev** | Odeberte všechna udev pravidla, která vyhradí názvy rozhraní na základě adresy Mac atd. | Odeberte ručně pro všechny verze kromě těch, které jsou vyvolány výše.
 **Aktualizace síťových rozhraní** | Aktualizace síťových rozhraní pro příjem IP adres na základě protokolu DHCP. NST | Aktualizovat ručně pro všechny verze kromě těch, které jsou vyvolány výše.

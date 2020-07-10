@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: výuka & nasazení modelů: VS Code'
+title: 'Kurz: výuka & nasazení modelů: VS Code (Preview)'
 titleSuffix: Azure Machine Learning
 description: Naučte se naučit a nasazovat model klasifikace imagí pomocí TensorFlow a rozšíření Azure Machine Learning Visual Studio Code.
 services: machine-learning
@@ -8,16 +8,16 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/08/2020
+ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 1d7b712e27ad73516606564ea125298cb3dea314
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143325"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203561"
 ---
-# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Výuka a nasazení modelu TensorFlow pro klasifikaci imagí pomocí rozšíření Azure Machine Learning Visual Studio Code
+# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Výuka a nasazení modelu TensorFlow pro klasifikaci imagí pomocí rozšíření Azure Machine Learning Visual Studio Code (Preview)
 
 Naučte se, jak naučit a nasazovat model klasifikace imagí pro rozpoznávání ručně psaných čísel pomocí TensorFlow a rozšíření Azure Machine Learning Visual Studio Code.
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte provádět následující úlohy:
 > * Registrace modelu
 > * Nasazení modelu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ho ještě nemáte, zaregistrujte se a vyzkoušejte si [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 - Nainstalujte [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview), odlehčený Editor kódu pro různé platformy.

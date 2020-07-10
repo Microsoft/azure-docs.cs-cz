@@ -7,18 +7,18 @@ ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7510b0243db25752a61d3711c88a250b7ae3b576
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fcae37da3ef9c5b2b7633db1dd16cec247a782af
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75867233"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203824"
 ---
 # <a name="azure-powershell-samples-for-vpn-gateway"></a>Ukázky Azure PowerShellu pro VPN Gateway
 
 Následující tabulka obsahuje odkazy na skripty Azure PowerShellu:
 
-| | |
+| Skript | Description |
 |----|----|
 | [Vytvoření brány VPN](./scripts/vpn-gateway-sample-create-vpn-gateway-powershell.md) | Vytvoření brány VPN založené na směrování |
 | [Vytvoření brány VPN a konfigurace P2S – RADIUS](./scripts/vpn-gateway-sample-point-to-site-radius-authentication-powershell.md) | Vytvoří bránu VPN založenou na směrování a konfiguraci P2S s ověřováním pomocí přihlašovacích údajů k serveru RADIUS. |

@@ -17,12 +17,12 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 273827e68a81e87dcff15760f0b400b2d5ce8723
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80126879"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220860"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Kurz: posílání oznámení na konkrétní zařízení pomocí Notification Hubs a Firebase cloudového zasílání zpráv Google
 
@@ -40,9 +40,9 @@ V tomto kurzu provedete následující akce:
 > * Přidáte do mobilní aplikace výběr kategorií.
 > * Registrováno pro oznámení pomocí značek.
 > * Odešlete označená oznámení.
-> * Otestování aplikace
+> * Testování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Tento kurz sestaví na aplikaci, kterou jste vytvořili v [kurzu: nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md). Před zahájením tohoto kurzu dokončete [kurz: nabízená oznámení na zařízení s Androidem pomocí služby Azure Notification Hubs a Firebase cloudového zasílání zpráv](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
@@ -50,7 +50,7 @@ Tento kurz sestaví na aplikaci, kterou jste vytvořili v [kurzu: nabízená ozn
 
 První krok spočívá v přidání prvků uživatelského rozhraní do stávající třídy MainActivity, aby si uživatel mohl vybrat kategorie, které si zaregistruje. Kategorie, které uživatel vybere, jsou uložené v zařízení. Při spuštění aplikace se v centru oznámení provede registrace zařízení s vybranými kategoriemi ve formě značek.
 
-1. `res/layout/activity_main.xml file`Otevřete a nahraďte obsah následujícím:
+1. Otevřete `res/layout/activity_main.xml file` a nahraďte obsah následujícím:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -117,7 +117,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
 
     Vaše `main_activity.xml` grafické rozložení by mělo vypadat jako na následujícím obrázku:
 
-    ![][A1]
+    ![Snímek obrazovky s emulátorem znázorňující, jak bude vypadat hlavní aktivita X M L grafického rozložení.][A1]
 3. Vytvořte třídu `Notifications` ve stejném balíčku jako svou `MainActivity` třídu.
 
     ```java
@@ -204,7 +204,7 @@ První krok spočívá v přidání prvků uživatelského rozhraní do stávaj�
     ```
 
     Tato třída uloží kategorie novinek, které bude zařízení dostávat, do místního úložiště. Obsahuje také metody registrace kategorií.
-4. Do `MainActivity` třídy přidejte pole pro `Notifications`:
+4. Do `MainActivity` třídy přidejte pole pro `Notifications` :
 
     ```java
     private Notifications notifications;
@@ -316,7 +316,7 @@ Hotová aplikace teď do místního úložiště v zařízení uloží sadu kate
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="test-the-app"></a>Otestování aplikace
+## <a name="test-the-app"></a>Testování aplikace
 
 1. V Android Studiu spusťte aplikaci buď na zařízení s Androidem, nebo v emulátoru. Uživatelské rozhraní aplikace nabízí sadu přepínačů, kterými můžete vybrat odebírané kategorie.
 2. Zapněte jeden nebo více přepínačů kategorií a klikněte na **Přihlásit k odběru**. Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o registraci nových zařízení. Zaregistrované kategorie se vrátí a zobrazí se v informační zprávě.
