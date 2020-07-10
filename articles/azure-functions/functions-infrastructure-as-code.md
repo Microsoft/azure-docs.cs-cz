@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382524"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170390"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -26,12 +26,12 @@ Ukázkové šablony naleznete zde:
 
 Nasazení Azure Functions se typicky skládá z těchto prostředků:
 
-| Prostředek                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |   |
-|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Aplikace Function App                                                                     | Vyžadováno    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |   |
-| Účet [Azure Storage](../storage/index.yml)                                   | Vyžadováno    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Volitelné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |   |
-| [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Prostředek                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |
+|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
+| Aplikace Function App                                                                     | Povinné    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |
+| Účet [Azure Storage](../storage/index.yml)                                   | Povinné    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Volitelné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |
+| [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup> Plán hostování se vyžaduje jenom v případě, že se rozhodnete spustit aplikaci Function App na [plánu Premium](./functions-premium-plan.md) nebo v [plánu App Service](../app-service/overview-hosting-plans.md).
 
@@ -114,7 +114,7 @@ Definice plánu hostování se liší a může to být jedna z následujících:
 * [Plán Premium](#premium)
 * [Plán App Service](#app-service-plan)
 
-### <a name="function-app"></a>Function App
+### <a name="function-app"></a>Aplikace funkcí
 
 Prostředek Function App je definován pomocí prostředku typu **Microsoft. Web/Sites** a druhu **functionapp**:
 
@@ -210,7 +210,7 @@ Plán spotřeby je speciální typ prostředku "serverová farma". V případě 
 
 Pokud budete plán spotřeby explicitně definovat, budete muset nastavit `serverFarmId` vlastnost v aplikaci tak, aby odkazovala na ID prostředku plánu. Měli byste se ujistit, že aplikace Function App má `dependsOn` také nastavení pro plán.
 
-### <a name="create-a-function-app"></a>Vytvoření Function App
+### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 #### <a name="windows"></a>Windows
 
@@ -332,7 +332,7 @@ Plán Premium je zvláštní typ prostředku "serverová farma". Můžete ji zad
 }
 ```
 
-### <a name="create-a-function-app"></a>Vytvoření Function App
+### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 Aplikace funkcí v plánu Premium musí mít `serverFarmId` vlastnost nastavenou na ID prostředku plánu, který jste vytvořili dříve. Plán Premium navíc vyžaduje dvě další nastavení v konfiguraci lokality: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` a `WEBSITE_CONTENTSHARE` . Tyto vlastnosti nakonfigurují účet úložiště a cestu k souboru, kde se ukládají kód a konfigurace aplikace Function App.
 
@@ -429,7 +429,7 @@ Chcete-li spustit aplikaci v systému Linux, je nutné také nastavit na `kind` 
 }
 ```
 
-### <a name="create-a-function-app"></a>Vytvoření Function App
+### <a name="create-a-function-app"></a>Vytvoření aplikace funkcí
 
 Aplikace funkcí v plánu App Service musí mít `serverFarmId` vlastnost nastavenou na ID prostředku plánu, který jste vytvořili dříve.
 

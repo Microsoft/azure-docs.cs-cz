@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201697"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181331"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Pokyny k návrhu pro použití replikovaných tabulek ve fondu SQL synapse
 
@@ -24,7 +24,7 @@ Tento článek obsahuje doporučení pro návrh replikovaných tabulek ve schém
 
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat ve fondu SQL.Další informace najdete v článku o [architektuře](massively-parallel-processing-mpp-architecture.md) .
 
@@ -149,9 +149,9 @@ Při načítání dat do replikovaných tabulek se pokuste minimalizovat sestave
 
 Například tento vzor zatížení načte data ze čtyř zdrojů a vyvolá čtyři opětovná sestavení.
 
-        Load from source 1.
+- Zatížení ze zdroje 1.
 - Příkaz SELECT Trigger spustí znovu sestavení 1.
-        Zatížení ze zdroje 2.
+- Zatížení ze zdroje 2.
 - Příkaz SELECT Trigger znovu sestaví 2.
 - Zatížení ze zdroje 3.
 - Příkaz SELECT Triggers spustí znovu sestavení 3.

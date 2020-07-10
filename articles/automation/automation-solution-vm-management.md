@@ -5,17 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424070"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185870"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
 
 Funkce Start/Stop VMs during off-hours spustí nebo zastaví povolený virtuální počítač Azure. Spouští nebo zastavuje počítače na uživatelem definovaných plánech, poskytuje přehledy prostřednictvím protokolů Azure Monitor a odesílá volitelné e-maily pomocí [skupin akcí](../azure-monitor/platform/action-groups.md). Tuto funkci můžete pro většinu scénářů povolit na obou Azure Resource Manager i v klasických virtuálních počítačích. 
 
-Tato funkce používá ke spuštění virtuálních počítačů rutinu [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) . Pro zastavování virtuálních počítačů používá [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) .
+Tato funkce používá ke spuštění virtuálních počítačů rutinu [Start-AzVm](/powershell/module/az.compute/start-azvm) . Pro zastavování virtuálních počítačů používá [stop-AzVM](/powershell/module/az.compute/stop-azvm) .
 
 > [!NOTE]
 > I když byly Runbooky aktualizované, aby používaly nové rutiny AZ modul pro Azure, používají alias předpony AzureRM.
@@ -36,7 +37,7 @@ U aktuální funkce platí následující omezení:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Sady Runbook pro spouštění/zastavování virtuálních počítačů v době mimo špičku fungují s [účtem spustit jako pro Azure](automation-create-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože místo hesla, jehož platnost může vypršet nebo často se mění, používá ověřování certifikátů.
+Sady Runbook pro spouštění/zastavování virtuálních počítačů v době mimo špičku fungují s [účtem spustit jako pro Azure](./manage-runas-account.md). Účet Spustit jako je upřednostňovanou metodou ověřování, protože místo hesla, jehož platnost může vypršet nebo často se mění, používá ověřování certifikátů.
 
 Pro práci s virtuálními počítači povolenými pro funkci Start/Stop VMs during off-hours doporučujeme použít samostatný účet Automation. Verze modulů Azure se často upgradují a jejich parametry se můžou změnit. Tato funkce není upgradována na stejném tempo a nemusí fungovat s novějšími verzemi rutin, které používá. Doporučuje se testovat aktualizace modulu v účtu testovací automatizace před jejich importem do vašich provozních účtů služby Automation.
 
@@ -50,7 +51,7 @@ Pokud jste přispěvatelem předplatného a globálním správcem v tenantovi Az
 
 Pokud chcete povolit virtuální počítače pro funkci Start/Stop VMs during off-hours pomocí existujícího účtu Automation a pracovního prostoru Log Analytics, budete potřebovat následující oprávnění pro rozsah skupiny prostředků. Další informace o rolích najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).
 
-| Oprávnění | Rozsah|
+| Oprávnění | Obor|
 | --- | --- |
 | Microsoft. Automation/automationAccounts/Read | Skupina prostředků |
 | Microsoft. Automation/automationAccounts/Variables/Write | Skupina prostředků |
@@ -79,7 +80,7 @@ Virtuální počítače pro funkci Start/Stop VMs during off-hours můžete povo
 - Členství v roli vývojář aplikace [služby Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) . Další informace o konfiguraci účtů spustit jako najdete v tématu [oprávnění ke konfiguraci účtů spustit jako](manage-runas-account.md#permissions).
 - Přispěvatel v rámci předplatného nebo následujících oprávnění
 
-| Oprávnění |Rozsah|
+| Oprávnění |Obor|
 | --- | --- |
 | Microsoft. Authorization/Operations/Read | Předplatné|
 | Microsoft. Authorization/oprávnění/čtení |Předplatné|
@@ -103,11 +104,11 @@ V následující tabulce jsou uvedeny Runbooky, které funkce nasadí do vašeho
 
 Všechny nadřazené Runbooky obsahují `WhatIf` parametr. Při nastavení na hodnotu true podporuje parametr podrobné informace o přesném chování, které sada Runbook provede, když se spustí bez parametru a ověří, jestli jsou cílové správné virtuální počítače. Sada Runbook provede pouze své definované akce, pokud `WhatIf` je parametr nastaven na hodnotu false.
 
-|Runbook | Parametry | Description|
+|Runbook | Parametry | Popis|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se z nadřazeného Runbooku. Tato sada Runbook vytváří výstrahy na základě jednotlivých prostředků pro scénář automatického zastavení.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> `VMList`je čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků), například `vm1,vm2,vm3` .<br> `WhatIf`povolí ověřování logiky sady Runbook bez provedení.|
-|AutoStop_Disable | Žádná | Zakáže automatické zastavení výstrah a výchozí plán.|
+|AutoStop_Disable | Žádné | Zakáže automatické zastavení výstrah a výchozí plán.|
 |AutoStop_VM_Child | WebHookData | Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila klasický virtuální počítač.|
 |AutoStop_VM_Child_ARM | WebHookData |Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila virtuální počítač.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Akce: spustit nebo zastavit<br> VMList  | Provede akci spustit nebo zastavit ve skupině klasických virtuálních počítačů Cloud Services. |
@@ -121,9 +122,9 @@ Všechny nadřazené Runbooky obsahují `WhatIf` parametr. Při nastavení na ho
 V následující tabulce jsou uvedeny proměnné vytvořené v účtu Automation. Upravovat pouze proměnné s předponou `External` . Modifikace proměnných s předponou `Internal` způsobuje nežádoucí účinky.
 
 > [!NOTE]
-> Omezení pro název virtuálního počítače a skupinu prostředků jsou z velké části výsledkem proměnné velikosti. Viz [variabilní prostředky v Azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables).
+> Omezení pro název virtuálního počítače a skupinu prostředků jsou z velké části výsledkem proměnné velikosti. Viz [variabilní prostředky v Azure Automation](./shared-resources/variables.md).
 
-|Proměnná | Description|
+|Proměnná | Popis|
 |---------|------------|
 |External_AutoStop_Condition | Podmíněný operátor vyžadovaný pro konfiguraci podmínky před aktivací výstrahy. Přijatelné hodnoty jsou `GreaterThan` , `GreaterThanOrEqual` , `LessThan` a `LessThanOrEqual` .|
 |External_AutoStop_Description | Výstraha, která zastaví virtuální počítač, pokud procento procesoru překročí prahovou hodnotu.|
@@ -155,7 +156,7 @@ V následující tabulce jsou uvedeny všechny výchozí plány vytvořené v ú
 
 Nepovolujte všechny plány, protože se tak můžou vytvořit překrývající se akce plánování. Nejvhodnější je určit, které optimalizace chcete provést, a odpovídajícím způsobem je upravit. Další vysvětlení najdete v ukázkových scénářích v části Přehled.
 
-|Název plánu | Frekvence | Description|
+|Název plánu | Frekvence | Popis|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Spouští sadu Runbook **AutoStop_CreateAlert_Parent** každých 8 hodin, která zase zastavuje hodnoty založené na virtuálním počítači v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných, a `External_ExcludeVMNames` . Případně můžete pomocí parametru zadat čárkami oddělený seznam virtuálních počítačů `VMList` .|
 |Scheduled_StopVM | Uživatelem definované, denní | Spustí **ScheduledStopStart_Parent** sadu Runbook s parametrem `Stop` každý den v zadaném čase.Automaticky zastaví všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků.Povolte související plán **naplánované – StartVM**.|
@@ -176,7 +177,7 @@ Pokud máte více než 20 virtuálních počítačů na cloudovou službu, tady 
 
 V opačném případě, pokud se úloha automatizace pro tuto funkci spustí déle než tři hodiny, dočasně se uvolní nebo zastaví na základě [spravedlivého](automation-runbook-execution.md#fair-share) limitu sdílení.
 
-Předplatné služby Azure CSP podporuje pouze model Azure Resource Manager. V programu nejsou k dispozici služby, které nejsou Azure Resource Manager. Když se spustí funkce Start/Stop VMs during off-hours, může docházet k chybám, protože mají rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupné služby v předplatných CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services). Pokud používáte předplatné CSP, měli byste nastavit [External_EnableClassicVMs](#variables) proměnnou na hodnotu false po nasazení.
+Předplatné služby Azure CSP podporuje pouze model Azure Resource Manager. V programu nejsou k dispozici služby, které nejsou Azure Resource Manager. Když se spustí funkce Start/Stop VMs during off-hours, může docházet k chybám, protože mají rutiny pro správu klasických prostředků. Další informace o CSP najdete v tématu [dostupné služby v předplatných CSP](/azure/cloud-solution-provider/overview/azure-csp-available-services). Pokud používáte předplatné CSP, měli byste nastavit [External_EnableClassicVMs](#variables) proměnnou na hodnotu false po nasazení.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
