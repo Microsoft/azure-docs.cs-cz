@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f196c21869f4a2f12e28bc4d6c42b8c945ddde71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603668"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170441"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -259,10 +259,9 @@ Zavedli jsme novou vlastnost riskEventsTypes_v2 (String) na rozhraní API pro ne
 **Schopnost produktu:** Zabezpečení identity & ochrana
  
 
-Pro Cloud MFA i MFA Server provádíme následující změny e-mailových oznámení MFA:
+U e-mailových oznámení MFA pro MFA provádíme tyto změny:
 
-E-mailová oznámení budou odesílána z následující adresy: azure-noreply@microsoft.com .
-Aktualizujeme obsah e-mailů s výstrahou týkající se podvodů, aby lépe označovaly požadované kroky odblokování použití.
+E-mailová oznámení budou odesílána z následující adresy: azure-noreply@microsoft.com a msonlineservicesteam@microsoftonline.com . Aktualizujeme obsah e-mailů s výstrahou týkající se podvodů, aby lépe označovaly požadované kroky odblokování použití.
 
 ---
 

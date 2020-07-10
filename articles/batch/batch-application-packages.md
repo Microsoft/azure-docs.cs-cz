@@ -4,12 +4,12 @@ description: Pomocí funkce balíčky aplikací Azure Batch můžete snadno spra
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cebb7bf001d16e1024ed466268758f0b1bc92c6c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955026"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147221"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací Batch
 
@@ -57,7 +57,7 @@ Balíčky aplikací můžete zadat na úrovni fondu a úloh. Při vytváření f
 ### <a name="benefits-of-application-packages"></a>Výhody balíčků aplikací
 Balíčky aplikací můžou zjednodušit kód v řešení Batch a snížit režii potřebnou ke správě aplikací, které vaše úkoly spouštějí.
 
-U balíčků aplikací nemusí spouštěcí úkol fondu určovat dlouhý seznam jednotlivých souborů prostředků, které se mají na uzlech nainstalovat. Nemusíte ručně spravovat více verzí souborů aplikace v Azure Storage nebo na vašich uzlech. A nemusíte se starat o generování [adres URL SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) , abyste mohli poskytovat přístup k souborům v účtu úložiště. Batch funguje na pozadí s Azure Storage k ukládání balíčků aplikací a jejich nasazování do výpočetních uzlů.
+U balíčků aplikací nemusí spouštěcí úkol fondu určovat dlouhý seznam jednotlivých souborů prostředků, které se mají na uzlech nainstalovat. Nemusíte ručně spravovat více verzí souborů aplikace v Azure Storage nebo na vašich uzlech. A nemusíte se starat o generování [adres URL SAS](../storage/common/storage-sas-overview.md) , abyste mohli poskytovat přístup k souborům v účtu úložiště. Batch funguje na pozadí s Azure Storage k ukládání balíčků aplikací a jejich nasazování do výpočetních uzlů.
 
 > [!NOTE] 
 > Celková velikost spouštěcího úkolu nesmí přesahovat 32768 znaků, včetně souborů prostředků a proměnných prostředí. Pokud spouštěcí úkol tento limit překročí, pak je použití balíčků aplikací Další možností. Můžete také vytvořit archiv ZIP obsahující soubory prostředků, nahrát ho jako objekt BLOB a Azure Storage a pak ho rozbalit z příkazového řádku spouštěcího úkolu. 
