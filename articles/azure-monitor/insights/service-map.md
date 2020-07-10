@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 217b15b4004b1f06ef63414adc25890d4d87b027
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557578"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203125"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Používání řešení Service Map v Azure
 
@@ -154,7 +154,7 @@ V seznamu skupin klikněte na nabídku se třemi tečkami vedle názvu skupiny.
 
 Některé procesy obsluhují konkrétní role na počítačích: webové servery, aplikační servery, databáze a tak dále. Service Map v oknech procesu a počítače s ikonami rolí, které vám pomůžou identifikovat na první pohled roli a proces, který server hraje.
 
-| Ikona role | Description |
+| Ikona role | Popis |
 |:--|:--|
 | ![Webový server](media/service-map/role-web-server.png) | Webový server |
 | ![Aplikační server](media/service-map/role-application-server.png) | Aplikační server |
@@ -457,43 +457,43 @@ Záznamy s typem *ServiceMapProcess_CL* mají data inventáře pro procesy přip
 
 ### <a name="list-all-known-machines"></a>Zobrazit seznam všech známých počítačů
 
-ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Vypíše kapacitu fyzické paměti pro všechny spravované počítače.
 
-ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId | PhysicalMemory_d projektu, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Vypíše název počítače, DNS, IP adresu a operační systém.
 
-ServiceMapComputer_CL | shrnout arg_max (TimeGenerated, *) podle ResourceId | ComputerName_s projektu, OperatingSystemFullName_s, DnsNames_s Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Najde všechny procesy pomocí SQL na příkazovém řádku.
 
-ServiceMapProcess_CL | kde CommandLine_s contains_cs "SQL" | shrnout arg_max (TimeGenerated, *) podle ResourceId
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Vyhledání počítače (nejaktuálnější záznam) podle názvu prostředku
 
-Hledat v (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | shrnout arg_max (TimeGenerated, *) podle ResourceId
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Vyhledání počítače (nejaktuálnější záznam) podle IP adresy
 
-Hledat v (ServiceMapComputer_CL) "10.229.243.232" | shrnout arg_max (TimeGenerated, *) podle ResourceId
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Vypíše všechny známé procesy v zadaném počítači.
 
-ServiceMapProcess_CL | kde MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | shrnout arg_max (TimeGenerated, *) podle ResourceId
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>Vypsat všechny počítače se systémem SQL
 
-ServiceMapComputer_CL | kde ResourceName_s in ((hledání v (ServiceMapProcess_CL) " \* SQL \* " | odlišné MachineResourceName_s) | DISTINCT ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Vypíše všechny jedinečné verze produktu ve vaší datacentru.
 
-ServiceMapProcess_CL | kde ExecutableName_s = = "kudrlinkou" | jedinečné ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Vytvoření skupiny počítačů na všech počítačích se systémem CentOS
 
-ServiceMapComputer_CL | kde OperatingSystemFullName_s contains_cs "CentOS" | jedinečné ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Shrnutí odchozích připojení ze skupiny počítačů
 
@@ -571,7 +571,7 @@ Může být užitečné nejprve nainstalovat [nejnovější knihovny modulu runt
 
 V následující tabulce jsou uvedena čísla kódů a navrhovaná řešení.
 
-| Kód | Description | Řešení |
+| Kód | Popis | Řešení |
 |:--|:--|:--|
 | 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která není nainstalovaná. | Projděte si nejnovější protokol instalačního programu knihovny.<br><br>Pokud odkaz na `Windows8.1-KB2999226-x64.msu` je následovaný řádkem, nemáte `Error 0x80240017: Failed to execute MSU package,` požadavky na instalaci KB2999226. Postupujte podle pokynů v části Požadavky v článku věnovaném komponentě [Universal C Runtime ve Windows](https://support.microsoft.com/kb/2999226). Instalace požadovaných součástí možná bude vyžadovat několik spuštění služby Windows Update a restartování.<br><br>Znovu spusťte instalační program Microsoft Dependency Agenta. |
 

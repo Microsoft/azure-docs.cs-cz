@@ -6,13 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 496069ebf64340bc55f03df8dc15304b4888bec0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79259952"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200286"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure Data Box požadavky na systém
 
@@ -32,13 +33,19 @@ Požadavky na software zahrnují informace o podporovaných operačních systém
 
 [!INCLUDE [data-box-supported-os-clients](../../includes/data-box-supported-os-clients.md)]
 
-### <a name="supported-file-systems-for-linux-clients"></a>Podporované systémy souborů pro klienty se systémem Linux
+
+### <a name="supported-filesystems-for-linux-clients"></a>Podporované systémy souborů pro klienty se systémem Linux
 
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
+
+
+> [!IMPORTANT] 
+> Připojení k Data Box sdíleným složkám není podporováno pro objednávky exportu prostřednictvím REST. 
 
 ### <a name="supported-storage-accounts"></a>Podporované účty úložiště
 
 [!INCLUDE [data-box-supported-storage-accounts](../../includes/data-box-supported-storage-accounts.md)]
+
 
 ### <a name="supported-storage-types"></a>Podporované typy úložiště
 

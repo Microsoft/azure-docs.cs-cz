@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610645"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202872"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním pomocí certifikátů v Azure Active Directory
 
@@ -69,6 +69,7 @@ Ke konfiguraci certifikačních autorit v Azure Active Directory pro každou cer
 
 Schéma certifikační autority vypadá takto:
 
+```csharp
     class TrustedCAsForPasswordlessAuth
     {
        CertificateAuthorityInformation[] certificateAuthorities;
@@ -90,53 +91,66 @@ Schéma certifikační autority vypadá takto:
         RootAuthority = 0,
         IntermediateAuthority = 1
     }
+```
 
 Pro konfiguraci můžete použít [Azure Active Directory PowerShell verze 2](/powershell/azure/install-adv2?view=azureadps-2.0):
 
 1. Spusťte prostředí Windows PowerShell s oprávněními správce.
 2. Nainstalujte modul Azure AD verze [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) nebo novější.
 
-        Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```powershell
+    Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```
 
 Jako první krok konfigurace musíte navázat spojení s vaším klientem. Jakmile existuje připojení k vašemu tenantovi, můžete si prohlédnout, přidat, odstranit a upravit důvěryhodné certifikační autority, které jsou definovány ve vašem adresáři.
 
-### <a name="connect"></a>Připojit
+### <a name="connect"></a>Připojení
 
 K navázání spojení s vaším klientem použijte rutinu [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) :
 
+```azurepowershell
     Connect-AzureAD
+```
 
 ### <a name="retrieve"></a>Stahovat
 
 K načtení důvěryhodných certifikačních autorit, které jsou definovány ve vašem adresáři, použijte rutinu [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) .
 
+```azurepowershell
     Get-AzureADTrustedCertificateAuthority
+```
 
 ### <a name="add"></a>Přidat
 
-Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) a nastavte atribut **crlDistributionPoint** na správnou hodnotu:
+Chcete-li vytvořit důvěryhodnou certifikační autoritu, použijte rutinu [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) a nastavte atribut **crlDistributionPoint** na správnou hodnotu:
 
+```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
     $new_ca.AuthorityType=0
     $new_ca.TrustedCertificate=$cert
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
+```
 
 ### <a name="remove"></a>Odebrat
 
 K odebrání důvěryhodné certifikační autority použijte rutinu [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) :
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
+```
 
 ### <a name="modify"></a>Modify
 
 Chcete-li upravit důvěryhodnou certifikační autoritu, použijte rutinu [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) :
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
+```
 
 ## <a name="step-3-configure-revocation"></a>Krok 3: konfigurace odvolání
 
@@ -152,17 +166,23 @@ Následující kroky popisují proces aktualizace a devalidace autorizačního t
 
 1. Připojte se s přihlašovacími údaji správce ke službě MSOL:
 
+```powershell
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
+```
 
 2. Načíst aktuální hodnotu StsRefreshTokensValidFrom pro uživatele:
 
+```powershell
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
+```
 
 3. Nakonfigurujte novou hodnotu StsRefreshTokensValidFrom pro uživatele, která se rovná aktuálnímu časovému razítku:
 
+```powershell
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+```
 
 Datum, které nastavíte, musí být v budoucnosti. Pokud datum není v budoucnu, vlastnost **StsRefreshTokensValidFrom** není nastavena. Pokud je datum v budoucnosti, **StsRefreshTokensValidFrom** je nastaveno na aktuální čas (nikoli datum uvedené v příkazu set-MsolUser).
 

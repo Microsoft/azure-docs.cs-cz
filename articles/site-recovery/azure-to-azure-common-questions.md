@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134032"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201199"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -120,7 +120,7 @@ Ne, jedná se o nepodporovaný scénář. Pokud ale omylem přesunete účty úl
 Zásady replikace definují nastavení pro historii uchovávání bodů obnovení. Zásady také definují četnost snímků konzistentních vzhledem k aplikacím. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozími nastaveními:
 
 - 24 hodin pro historii uchovávání bodů obnovení.
-- 60 minut pro četnost snímků konzistentních vzhledem k aplikacím.
+- 4 hodiny pro četnost snímků konzistentních vzhledem k aplikacím.
 
 [Přečtěte si další informace o nastavení replikace](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 

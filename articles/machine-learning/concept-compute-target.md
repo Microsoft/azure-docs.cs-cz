@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 06/26/2020
-ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95177282ad5b07a600f11f72789e0fc08f4b52c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483274"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199815"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -48,9 +48,9 @@ Naučte se [, jak a jak model nasadit do cílového výpočetního prostředí](
 
 Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure Machine Learning. Tato výpočetní prostředí jsou optimalizovaná pro úlohy strojového učení. Jediným spravovaným výpočetním prostředím jsou Azure Machine Learning výpočetní clustery a [výpočetní instance](concept-compute-instance.md) . V budoucnu může být přidáno více spravovaných výpočetních prostředků.
 
-Můžete vytvořit Azure Machine Learning výpočetních instancí (Preview) nebo výpočetních clusterů z:
+Můžete vytvořit Azure Machine Learning výpočetní instance nebo výpočetní clustery z:
 * Azure Machine Learning Studio
-* portál Azure
+* Azure Portal
 * Třídy Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) a [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Preview)
 * Šablona Resource Manageru
@@ -82,17 +82,17 @@ Další informace o podporovaných řadách a omezeních najdete v následujíc�
 
 | **Podporovaná řada virtuálních počítačů**  | **Omezení** |
 |------------|------------|
-| D | Žádná |
-| Dv2 | Žádná |  
-| DSv2 | Žádná |  
-| FSv2 | Žádná |  
+| D | Žádné |
+| Dv2 | Žádné |  
+| DSv2 | Žádné |  
+| FSv2 | Žádné |  
 | M | Vyžaduje schválení |
-| NC | Žádná |    
+| NC | Žádné |    
 | NCsv2 | Vyžaduje schválení |
 | NCsv3 | Vyžaduje schválení |  
 | NDs | Vyžaduje schválení |
 | NDv2 | Vyžaduje schválení |
-| NV | Žádná |
+| NV | Žádné |
 | NVv3 | Vyžaduje schválení | 
 
 

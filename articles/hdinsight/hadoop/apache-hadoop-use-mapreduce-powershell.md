@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: 2eb5817a3339494417bb426bfdccb09ae3ac7230
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bd6d02ce1cd60a6d54047139f06fa59f359f9da9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087771"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202422"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Spuštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí PowerShellu
 
@@ -33,7 +33,7 @@ Azure PowerShell poskytuje *rutiny* , které umožňují vzdáleně spouštět �
 
 Při spouštění úloh MapReduce ve vzdáleném clusteru HDInsight se používají následující rutiny.
 
-|Rutina | Description |
+|Rutina | Popis |
 |---|---|
 |Connect – AzAccount|Ověří Azure PowerShell předplatného Azure.|
 |New-AzHDInsightMapReduceJobDefinition|Vytvoří novou *definici úlohy* pomocí zadaných informací MapReduce.|
@@ -49,21 +49,25 @@ Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v cluste
 
 2. Otevřete nový příkazový řádek **Azure PowerShell** . Změňte adresáře na umístění souboru **mapreducejob.ps1** a potom spusťte skript pomocí následujícího příkazu:
 
-        .\mapreducejob.ps1
+    ```azurepowershell
+    .\mapreducejob.ps1
+    ```
 
     Po spuštění skriptu budete vyzváni k zadání názvu clusteru HDInsight a přihlášení ke clusteru. Můžete být také vyzváni k ověření předplatného Azure.
 
 3. Po dokončení úlohy se zobrazí výstup podobný následujícímu textu:
 
-        Cluster         : CLUSTERNAME
-        ExitCode        : 0
-        Name            : wordcount
-        PercentComplete : map 100% reduce 100%
-        Query           :
-        State           : Completed
-        StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
-        SubmissionTime  : 12/5/2014 8:34:09 PM
-        JobId           : job_1415949758166_0071
+    ```output
+    Cluster         : CLUSTERNAME
+    ExitCode        : 0
+    Name            : wordcount
+    PercentComplete : map 100% reduce 100%
+    Query           :
+    State           : Completed
+    StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
+    SubmissionTime  : 12/5/2014 8:34:09 PM
+    JobId           : job_1415949758166_0071
+    ```
 
     Tento výstup indikuje, že se úloha úspěšně dokončila.
 
@@ -79,7 +83,7 @@ Chcete-li zobrazit slova a počty vytvářené úlohou, otevřete soubor **outpu
 > [!NOTE]  
 > Výstupní soubory úlohy MapReduce jsou neměnné. Takže pokud tuto ukázku znovu spustíte, musíte změnit název výstupního souboru.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se po dokončení úlohy nevrátí žádné informace, zobrazte chyby úlohy. Chcete-li zobrazit informace o chybě pro tuto úlohu, přidejte na konec souboru **mapreducejob.ps1** následující příkaz. Pak soubor uložte a znovu spusťte skript.
 

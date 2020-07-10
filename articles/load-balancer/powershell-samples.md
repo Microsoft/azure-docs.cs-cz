@@ -12,17 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/10/2018
 ms.author: allensu
-ms.openlocfilehash: 4311c1dca2ad299ac8b064769db5eb928e6a4513
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bb42bf1a1a7e80a141d2476ead62a29f8c7188c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74048711"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201556"
 ---
 # <a name="azure-powershell-samples-for-load-balancer"></a>Ukázky Azure PowerShell pro Load Balancer
 
 Následující tabulka obsahuje odkazy na skripty vytvořené pomocí Azure PowerShell.
 
-| | |
+| Script | Popis |
 |-|-|
 | [Vyrovnávání zatížení provozu do virtuálních počítačů pro zajištění vysoké dostupnosti](./scripts/load-balancer-windows-powershell-sample-nlb.md) | Vytvoří několik virtuálních počítačů s vysokou dostupností a konfigurací s vyrovnáváním zatížení. |
 | [Vyrovnávání zatížení více webů na virtuálních počítačích](./scripts/load-balancer-windows-powershell-load-balance-multiple-websites-vm.md) | Vytvoří dva virtuální počítače s několika konfiguracemi IP adres, které jsou připojené k sadě dostupnosti Azure přístupné prostřednictvím Azure Load Balancer. |

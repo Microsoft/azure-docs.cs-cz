@@ -1,5 +1,5 @@
 ---
-title: Sestavení modelů ML pomocí návrháře
+title: Sestavení modelů ML pomocí návrháře (Preview)
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o pojmech, konceptech a pracovních postupech, které tvoří návrháře pro Azure Machine Learning.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517358"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199977"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Co je návrhář služby Azure Machine Learning (Preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -26,7 +26,7 @@ Azure Machine Learning Designer vám umožňuje vizuálně propojit [datové sad
 
 Návrhář používá [pracovní prostor](concept-workspace.md) Azure Machine Learning k uspořádání sdílených prostředků, jako jsou:
 
-+ [Pipelines](#pipeline)
++ [Kanály](#pipeline)
 + [Datové sady](#datasets)
 + [Výpočetní prostředky](#compute)
 + [Registrované modely](concept-azure-machine-learning-architecture.md#models)
@@ -90,7 +90,7 @@ Další nápovědu k dispozici v knihovně strojového učení, najdete v témat
 
 Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kanál a hostovat nasazené modely jako koncové body v reálném čase nebo koncové body kanálu (pro odvození dávky). Podporované cíle výpočtů:
 
-| Cílový výpočetní objekt | Školení | Nasazení |
+| Cílový výpočetní objekt | Probíhá trénování | Nasazení |
 | ---- |:----:|:----:|
 | Azure Machine Learning COMPUTE | ✓ | |
 | Azure Machine Learning výpočetní instance | ✓ | |
@@ -106,7 +106,7 @@ Koncové body v reálném čase musí být nasazeny do clusteru služby Azure Ku
 
 Informace o tom, jak model nasadit, najdete v tématu [kurz: nasazení modelu strojového učení pomocí návrháře](tutorial-designer-automobile-price-deploy.md).
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 Kanál můžete také publikovat na **koncový bod kanálu**. Podobně jako koncový bod v reálném čase umožňuje koncový bod kanálu odeslat z externích aplikací spuštění nového kanálu pomocí volání REST. Pomocí koncového bodu kanálu ale nemůžete data odesílat nebo přijímat v reálném čase.
 

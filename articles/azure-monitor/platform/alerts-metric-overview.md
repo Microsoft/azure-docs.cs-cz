@@ -1,14 +1,15 @@
 ---
 title: Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.
 description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a jak fungují v Azure Monitor.
-ms.date: 03/17/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248817"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187519"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -125,18 +126,22 @@ Zatím jste viděli, jak se dá jedna výstraha metriky použít k monitorován�
 
 Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastní metriky) pro následující služby v následujících cloudech Azure:
 
-| Služba | Veřejné Azure | Státní správa | Čína |
+| Service | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
-| Virtuální počítače  | **Ano** | No | No |
-| Databáze systému SQL Server | **Ano** | **Ano** | No |
-| Elastické fondy SQL serveru | **Ano** | **Ano** | No |
-| Hraniční zařízení datového boxu | **Ano** | **Ano** | No |
+| Virtuální počítače  | **Ano** | Ne | Ne |
+| Databáze systému SQL Server | **Ano** | **Ano** | Ne |
+| Elastické fondy SQL serveru | **Ano** | **Ano** | Ne |
+| Hraniční zařízení datového boxu | **Ano** | **Ano** | Ne |
 
 Můžete určit rozsah monitorování jedním pravidlem výstrahy metriky jedním ze tří způsobů. Například u virtuálních počítačů můžete obor zadat jako:  
 
-- Seznam virtuálních počítačů v jedné oblasti Azure v rámci předplatného
+- Seznam virtuálních počítačů (v jedné oblasti Azure) v rámci předplatného
 - všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků v rámci předplatného
-- všechny virtuální počítače (v jedné oblasti Azure) v jednom předplatném
+- všechny virtuální počítače (v jedné oblasti Azure) v předplatném
+
+> [!NOTE]
+>
+> Obor pravidla upozornění na více prostředků musí obsahovat alespoň jeden prostředek vybraného typu prostředku.
 
 Vytváření pravidel upozornění na metriky, které monitorují více prostředků, je jako [Vytvoření jakékoli jiné výstrahy metriky](alerts-metric.md) , která monitoruje jeden prostředek. Jediným rozdílem je, že byste vybrali všechny prostředky, které chcete monitorovat. Tato pravidla můžete také vytvořit prostřednictvím [šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U každého monitorovaného prostředku budete dostávat jednotlivá oznámení.
 

@@ -1,5 +1,5 @@
 ---
-title: Zodpovědné Machine Learning (ML)
+title: Odpovědní za Machine Learning (ML) Preview
 titleSuffix: Azure Machine Learning
 description: Seznamte se s tím, co je odpovědné ML a jak ho používat v Azure Machine Learning
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 05/08/2020
-ms.openlocfilehash: 09bb7710df19482e9625c1834d2646f70368fc1d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.date: 07/09/2020
+ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920357"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201944"
 ---
-# <a name="responsible-machine-learning-ml"></a>Zodpovědné Machine Learning (ML)
+# <a name="responsible-machine-learning-ml-preview"></a>Odpovědní za Machine Learning (ML) Preview
 
 V tomto článku se dozvíte, co je odpovědná ML, a způsoby, kterými se dá dát do praxe Azure Machine Learning.
 
@@ -80,7 +81,7 @@ Některé informace o modelu, které byste mohli chtít dokumentovat jako souč�
 
 V následující ukázce se dozvíte, jak použít sadu SDK Azure Machine Learning k implementaci [datových listů pro modely](https://github.com/microsoft/MLOps/blob/master/pytorch_with_datasheet/model_with_datasheet.ipynb).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 - K [nasazení šifrované webové služby Inferencing](how-to-homomorphic-encryption-seal.md)použijte šifrování homomorphic.
 - Přečtěte si další informace o pokynech pro dokumentaci k systému Machine Learning [o ml](https://www.partnershiponai.org/about-ml/) .

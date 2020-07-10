@@ -8,18 +8,19 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 14b26c4c5a72ef2919aca1f872b198257b9f37f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83713450"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187366"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Správa modulů ve službě Azure Automation
 
 Azure Automation využívá řadu modulů PowerShellu k povolení rutin v sadách Runbook a prostředky DSC v konfiguracích DSC. Mezi podporované moduly patří:
 
 * [Azure PowerShell AZ. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
-* [Azure PowerShell AzureRM. Automation](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0).
+* [Azure PowerShell AzureRM. Automation](/powershell/module/azurerm.automation/?view=azurermps-6.13.0).
 * Jiné moduly prostředí PowerShell.
 * Interní `Orchestrator.AssetManagement.Cmdlets` modul.
 * Moduly Python 2.
@@ -79,7 +80,7 @@ Azure Automation podporuje interní `Orchestrator.AssetManagement.Cmdlets` modul
 >[!NOTE]
 >Interní rutiny jsou dostupné, jenom když spouštíte Runbooky v prostředí Azure izolovaného prostoru (sandbox) nebo ve Windows Hybrid Runbook Worker. 
 
-|Name|Description|
+|Název|Popis|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -105,7 +106,7 @@ Azure Automation může importovat vlastní modul, aby byly dostupné jeho rutin
 
 ## <a name="migrate-to-az-modules"></a>Migrace na az moduls
 
-V této části se dozvíte, jak migrovat do modulů AZ modules in Automation. Další informace najdete v tématu [migrace Azure PowerShell z AzureRM na az](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0). 
+V této části se dozvíte, jak migrovat do modulů AZ modules in Automation. Další informace najdete v tématu [migrace Azure PowerShell z AzureRM na az](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.7.0). 
 
 Nedoporučujeme spouštět moduly AzureRM a AZ modules ve stejném účtu Automation. Pokud jste si jisti, že chcete migrovat z AzureRM na AZ, je nejlepší provést úplné dokončení migrace. Automatizace často znovu používá sandboxy v rámci účtu Automation, aby se uložily při spuštění. Pokud neprovedete úplnou migraci modulu, můžete spustit úlohu, která používá pouze AzureRM moduly, a pak spustit jinou úlohu, která používá pouze příkaz AZ Modules. Izolovaný prostor (sandbox) brzy selže a zobrazí se chyba oznamující, že moduly nejsou kompatibilní. Tato situace vede k náhodnému výskytu chyb pro konkrétní Runbook nebo konfiguraci. 
 
@@ -120,18 +121,18 @@ Před migrací na moduly AZ modules nezapomeňte všechny Runbooky a konfigurace
 
 Abyste se ujistili, že nespouštíte žádné existující Runbooky nebo konfigurace DSC, které používají moduly AzureRM, musíte zastavit a zrušit plán všech ovlivněných runbooků a konfigurací. Nejdřív se ujistěte, že každé z těchto sad Runbook nebo konfigurace DSC a jejich plány se samostatně kontrolují, aby v případě potřeby bylo možné položku v budoucnu znovu naplánovat. 
 
-Až budete připraveni k odebrání plánů, můžete použít rutinu Azure Portal nebo rutinu [Remove-AzureRmAutomationSchedule](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) . Viz [Odebrat plán](schedules.md#remove-a-schedule).
+Až budete připraveni k odebrání plánů, můžete použít rutinu Azure Portal nebo rutinu [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule?view=azurermps-6.13.0) . Viz [Odebrat plán](schedules.md#remove-a-schedule).
 
 ### <a name="remove-azurerm-modules"></a>Odebrat moduly AzureRM
 
-Moduly AzureRM je možné odebrat předtím, než naimportujete moduly AZ. Nicméně, pokud to uděláte, můžete přerušit synchronizaci správy zdrojového kódu a způsobit, že všechny skripty, u kterých stále naplánujete selhání. Pokud se rozhodnete moduly odebrat, přečtěte si téma [Uninstall AzureRM](https://docs.microsoft.com/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm).
+Moduly AzureRM je možné odebrat předtím, než naimportujete moduly AZ. Nicméně, pokud to uděláte, můžete přerušit synchronizaci správy zdrojového kódu a způsobit, že všechny skripty, u kterých stále naplánujete selhání. Pokud se rozhodnete moduly odebrat, přečtěte si téma [Uninstall AzureRM](/powershell/azure/migrate-from-azurerm-to-az?view=azps-3.8.0#uninstall-azurerm).
 
 ### <a name="import-az-modules"></a>Import AZ modules
 
 Import modulu AZ Module do účtu Automation neprovede automatický import modulu do relace prostředí PowerShell, kterou používají Runbooky. Moduly se importují do relace PowerShellu v následujících situacích:
 
 * Když sada Runbook vyvolá rutinu z modulu.
-* Když sada Runbook importuje modul explicitně pomocí rutiny [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) .
+* Když sada Runbook importuje modul explicitně pomocí rutiny [Import-Module](/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) .
 * Když sada Runbook importuje jiný závislý modul.
 
 Do Azure Portal můžete importovat moduly AZ Modules. Nezapomeňte importovat jenom moduly AZ, které potřebujete, a ne celý modul AZ. Automation. Vzhledem k tomu, že [AZ. Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) je závislost pro ostatní moduly AZ, nezapomeňte tento modul naimportovat před všemi ostatními.
@@ -155,7 +156,7 @@ Po importu modulů AZ modules do účtu Automation můžete začít upravovat sv
 
 Při vytváření vlastního modulu PowerShellu pro použití v Azure Automation doporučujeme postupovat podle pokynů v této části. Pokud chcete připravit modul pro import, musíte vytvořit alespoň soubor psd1, psm1 nebo modul prostředí PowerShell **. dll** se stejným názvem, jako má složka modulu. Pak zazálohujte složku modulu tak, aby ji Azure Automation mohli importovat jako jeden soubor. Balíček **. zip** by měl mít stejný název jako složka s uvedeným modulem. 
 
-Další informace o vytváření modulu PowerShellu najdete v tématu [Postup zápisu modulu skriptu PowerShellu](https://docs.microsoft.com/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7).
+Další informace o vytváření modulu PowerShellu najdete v tématu [Postup zápisu modulu skriptu PowerShellu](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module?view=powershell-7).
 
 ### <a name="version-folder"></a>Složka verze
 
@@ -314,7 +315,7 @@ Import modulu v Azure Portal:
 
 ### <a name="import-modules-by-using-powershell"></a>Import modulů pomocí PowerShellu
 
-K importu modulu do svého účtu Automation můžete použít rutinu [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) . Rutina převezme adresu URL pro balíček Module. zip.
+K importu modulu do svého účtu Automation můžete použít rutinu [New-AzAutomationModule](/powershell/module/az.automation/new-azautomationmodule?view=azps-3.7.0) . Rutina převezme adresu URL pro balíček Module. zip.
 
 ```azurepowershell-interactive
 New-AzAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
@@ -371,5 +372,5 @@ Remove-AzAutomationModule -Name <moduleName> -AutomationAccountName <automationA
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o použití Azure PowerShellch modulů najdete v tématu [Začínáme s Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-3.7.0).
-* Další informace o vytváření modulů PowerShellu najdete v tématu vytvoření [modulu Windows PowerShellu](https://docs.microsoft.com/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7).
+* Další informace o použití Azure PowerShellch modulů najdete v tématu [Začínáme s Azure PowerShell](/powershell/azure/get-started-azureps?view=azps-3.7.0).
+* Další informace o vytváření modulů PowerShellu najdete v tématu vytvoření [modulu Windows PowerShellu](/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7).

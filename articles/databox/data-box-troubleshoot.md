@@ -6,24 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 07/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558545"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200139"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Řešení potíží souvisejících se Azure Data Box a Azure Data Box Heavy
 
-Tento článek podrobně popisuje, jak řešit problémy, které se mohou zobrazit při použití Azure Data Box nebo Azure Data Box Heavy. Článek obsahuje seznam možných chyb, ke kterým dochází při kopírování dat do Data Box nebo při nahrávání dat z Data Box.
+Tento článek podrobně popisuje, jak řešit problémy, které se mohou zobrazit při použití Azure Data Box nebo Azure Data Box Heavy pro import objednávek. Článek obsahuje seznam možných chyb, ke kterým dochází, když se data zkopírují do Data Box nebo když se data nahrají z Data Box pro pořadí importu.
+
+Informace v tomto článku se nevztahují na objednávky exportu vytvořené pro Data Box.
 
 ## <a name="error-classes"></a>Třídy chyb
 
 Chyby v Data Box a Data Box Heavy jsou shrnuty takto:
 
-| Kategorie chyby *        | Description        | Doporučená akce    |
+| Kategorie chyby *        | Popis        | Doporučená akce    |
 |----------------------------------------------|---------|--------------------------------------|
 | Názvy kontejnerů nebo sdílených složek | Názvy kontejnerů nebo sdílených složek nedodržují pravidla pro pojmenování Azure.  |Stažení seznamů chyb. <br> Přejmenujte kontejnery nebo sdílené složky. [Další informace](#container-or-share-name-errors).  |
 | Omezení velikosti kontejneru nebo sdílení | Celkový objem dat v kontejnerech nebo sdílených složkách překračuje limit Azure.   |Stažení seznamů chyb. <br> Snižte celkový objem dat v kontejneru nebo sdílené složce. [Další informace](#container-or-share-size-limit-errors).|

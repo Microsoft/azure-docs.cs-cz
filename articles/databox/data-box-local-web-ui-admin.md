@@ -5,14 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 06/03/2019
+ms.topic: article
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608243"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202535"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Použití místního webového uživatelského rozhraní ke správě Data Box a Data Box Heavy
 
@@ -27,6 +28,8 @@ Tento článek obsahuje následující návody:
 - Stažení souboru kusovníku nebo manifestu
 - Zobrazení dostupné kapacity zařízení
 - Přeskočení ověření kontrolního součtu
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Generování balíčku pro podporu
 
@@ -79,9 +82,9 @@ Při restartování Data Boxu postupujte podle následujících pokynů.
 
 ## <a name="download-bom-or-manifest-files"></a>Stažení souboru kusovníku nebo manifestu
 
-Kusovník nebo soubory manifestu obsahují seznam souborů, které jsou zkopírovány do Data Box nebo Data Box Heavy. Tyto soubory jsou vygenerovány při přípravě zařízení k odeslání.
+Kusovník nebo soubory manifestu obsahují seznam souborů, které jsou zkopírovány do Data Box nebo Data Box Heavy. Tyto soubory jsou vygenerovány pro pořadí importu při přípravě zařízení k odeslání.
 
-Než začnete, ujistěte se, že se v zařízení dokončilo **Příprava k odeslání** krok. Chcete-li stáhnout soubory kusovníku nebo manifestu, postupujte podle následujících kroků:
+Než začnete, ujistěte se, že se v zařízení dokončilo **Příprava k odeslání** krok. Pomocí těchto kroků stáhnete soubory kusovníku nebo manifestu pro vaše pořadí importu:
 
 1. Přejít k místnímu webovému uživatelskému rozhraní pro vaše zařízení. Uvidíte, že zařízení dokončilo Příprava na odeslání. Až se dokončí příprava zařízení, zobrazí se stav zařízení jako **připravený k odeslání**.
 
@@ -101,7 +104,7 @@ Než začnete, ujistěte se, že se v zařízení dokončilo **Příprava k odes
     |---------|---------|---------|
     |databoxe2etest_BlockBlob.txt     |Objekty blob bloku         |SMB/NFS         |
     |databoxe2etest_PageBlob.txt     |Objekty blob stránky         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Soubory Azure         |SMB/NFS         |
+    |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Objekty blob stránky         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Objekty blob bloku         |REST         |
     |mydbmdrg1_MDisk-BOM.txt    |Spravovaný disk         |SMB/NFS         |
@@ -167,6 +170,8 @@ Dostupnou a využitou kapacitu zařízení můžete zobrazit na řídicím panel
 
 Při přípravě na dodávání se pro vaše data generují kontrolní součty ve výchozím nastavení. Ve výjimečných případech v závislosti na datovém typu (malé velikosti souborů) může být výkon pomalý. V takových případech můžete kontrolní součet přeskočit.
 
+Výpočet kontrolního součtu během Příprava na odeslání je proveden pouze pro objednávky importu, nikoli pro objednávky exportu. 
+
 Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovlivňuje výkon.
 
 1. V pravém horním rohu místního webového uživatelského rozhraní vašeho zařízení, přejít na **Nastavení**.
@@ -176,7 +181,8 @@ Důrazně doporučujeme kontrolní součet nezakazovat, pokud to výrazně neovl
 2. **Zakázání** ověření kontrolního součtu
 3. Klikněte na **Použít**.
 
-## <a name="next-steps"></a>Další kroky
+> [!NOTE]
+> Možnost přeskočit výpočet kontrolního součtu je k dispozici, pouze pokud je Azure Data Box odemčená. Tato možnost se nezobrazuje, když je zařízení zamčené.
 
 - Naučte se [spravovat data box a data box Heavy prostřednictvím Azure Portal](data-box-portal-admin.md).
 

@@ -8,11 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78196922"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202588"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurace zásad Apache Hivu ve službě HDInsight s balíčkem zabezpečení podniku
 
@@ -55,7 +56,7 @@ V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable.
     |---|---|
     |Název zásady|Read-hivesampletable – vše|
     |Databáze podregistru|default|
-    |tabulka|hivesampletable|
+    |table|hivesampletable|
     |Sloupec podregistr|*|
     |Vybrat uživatele|hiveuser1|
     |Oprávnění|vybrali|
@@ -73,7 +74,7 @@ V této části vytvoříte dvě zásady Ranger pro přístup k hivesampletable.
     |---|---|
     |Název zásady|Read-hivesampletable-devicemake|
     |Databáze podregistru|default|
-    |tabulka|hivesampletable|
+    |table|hivesampletable|
     |Sloupec podregistr|ClientID, devicemake|
     |Vybrat uživatele|hiveuser2|
     |Oprávnění|vybrali|
@@ -120,7 +121,9 @@ V poslední části jste nakonfigurovali dvě zásady.  Uživatel hiveuser1 má 
 
 1. Vyberte kartu **definice** . Text příkazu je:
 
-       SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"`
+    ```
 
    Podle zásad Ranger, které jste nadefinovali, má uživatel hiveuser1 oprávnění Vybrat na všech sloupcích.  Proto tento dotaz funguje s přihlašovacími údaji uživatele hiveuser1, ale tento dotaz nefunguje s přihlašovacími údaji uživatele hiveuser2.
 
@@ -135,15 +138,21 @@ Otestování druhé zásady (Read-hivesampletable-devicemake), kterou jste vytvo
 1. Přidejte v Excelu nový list.
 2. K importu dat použijte předchozí postup.  Jediná změna, kterou uděláte, je použití přihlašovacích údajů uživatele hiveuser2 místo uživatele hiveuser1. Tato operace se nezdařila, protože hiveuser2 má oprávnění pouze k zobrazení dvou sloupců. Měla by se zobrazit následující chyba:
 
-        [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
-        
+    ```output
+    [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
+    ```
+
 3. K importu dat použijte stejný postup. Tentokrát použijte přihlašovací údaje uživatele hiveuser2 a také změňte příkaz SELECT z:
 
-        SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```
 
     na
 
-        SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```
 
     Až to bude hotové, zobrazí se dva sloupce importovaných dat.
 

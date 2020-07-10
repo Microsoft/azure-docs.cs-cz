@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09e492ae950003f97ed86355257c97777cd71c1a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113177"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202009"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Geografické prostorové funkce OData v Azure Kognitivní hledání – `geo.distance` a`geo.intersects`
 
@@ -34,7 +35,7 @@ Azure Kognitivní hledání podporuje geografické prostorové dotazy ve [výraz
 > [!NOTE]
 > Při použití `geo.distance` v parametru **$OrderBy** musí pole, které předáte funkci, obsahovat pouze jeden geografický bod. Jinými slovy, musí být typu `Edm.GeographyPoint` a ne `Collection(Edm.GeographyPoint)` . Pro pole kolekce v Azure Kognitivní hledání není možné řadit.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku `geo.distance` `geo.intersects` funkcí a i geografické hodnoty, na kterých pracují:
 
@@ -104,21 +105,29 @@ Stejně jako všechna ostatní pole, která nejsou v kolekci v Azure Kognitivní
 
 Najde všechny hotely v průběhu 10 km od daného referenčního bodu (kde umístění je pole typu `Edm.GeographyPoint` ):
 
+```odata-filter-expr
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
 Najde všechny hotely v daném zobrazení, které jsou popsány jako mnohoúhelník (umístění je pole typu `Edm.GeographyPoint` ). Všimněte si, že mnohoúhelník je uzavřený (nastavení prvního a posledního bodu musí být stejné) a [body musí být uvedené v pořadí zprava doleva](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1).
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 ### <a name="order-by-examples"></a>Příklady pořadí
 
 Seřadit hotely sestupně podle `rating` vzdálenosti od daných souřadnic a vzestupně od nich:
 
+```odata-filter-expr
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 Seřadit hotely v sestupném pořadí podle `search.score` a a `rating` potom ve vzestupném pořadí podle vzdálenosti od daných souřadnic, takže mezi dvěma hotely a identickým hodnocením je nejbližší, který je uveden jako první:
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>Další kroky  
 

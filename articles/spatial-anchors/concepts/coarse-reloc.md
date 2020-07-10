@@ -8,11 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ed1a7cacc6c40cb12976c8703164d46e0dc0458
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844390"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202386"
 ---
 # <a name="coarse-relocalization"></a>Přibližná relokalizace
 
@@ -119,13 +120,11 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 V dalším kroku se budete muset rozhodnout, jaké senzory chcete použít pro hrubou reprostředí. Toto rozhodnutí je specifické pro aplikaci, kterou vyvíjíte, ale doporučení v následující tabulce by vám měla poskytnout dobrý výchozí bod:
 
-
-|             | Nedvířka | Otevřené |
-|-------------|---------|----------|
-| GPS         | Vypnout | Zapnout |
-| WiFi        | Zapnout | Zapnuto (volitelné) |
-| Majáky v/v | Zapnuto (volitelné s upozorněními, viz níže) | Vypnout |
-
+|                 | Nedvířka | Otevřené |
+|-----------------|---------|----------|
+| **GPS**         | Vypnuto | Zapnout |
+| **WiFi**        | Zapnout | Zapnuto (volitelné) |
+| **Majáky v/v** | Zapnuto (volitelné s upozorněními, viz níže) | Vypnuto |
 
 ### <a name="enabling-gps"></a>Povolení GPS
 
@@ -657,12 +656,11 @@ Následující tabulka odhadne očekávaný hledaný prostor pro každý typ sen
 
 Následující tabulka shrnuje data senzorů shromážděná na jednotlivých podporovaných platformách spolu s případnými výstrahami specifickými pro konkrétní platformu:
 
-
-|             | HoloLens | Android | iOS |
-|-------------|----------|---------|-----|
-| GPS         | Není k dispozici | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
-| WiFi        | Podporuje se rychlostí přibližně jedné kontroly každé 3 sekundy. | Podporuje se. Počínaje rozhraním API Level 28 jsou kontroly Wi-Fi omezené na 4 volání každé 2 minuty. Z Androidu 10 se omezování dá zakázat v nabídce nastavení pro vývojáře. Další informace najdete v [dokumentaci k Androidu][5]. | Není k dispozici žádné veřejné rozhraní API |
-| Majáky v/v | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] |
+|                 | HoloLens | Android | iOS |
+|-----------------|----------|---------|-----|
+| **GPS**         | Nelze použít | Podporováno prostřednictvím rozhraní [LocationManager][3] API (GPS i síť) | Podporováno prostřednictvím rozhraní [CLLocationManager][4] API |
+| **WiFi**        | Podporuje se rychlostí přibližně jedné kontroly každé 3 sekundy. | Podporuje se. Počínaje rozhraním API Level 28 jsou kontroly Wi-Fi omezené na 4 volání každé 2 minuty. Z Androidu 10 se omezování dá zakázat v nabídce nastavení pro vývojáře. Další informace najdete v [dokumentaci k Androidu][5]. | Není k dispozici žádné veřejné rozhraní API |
+| **Majáky v/v** | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] | Omezeno na [Eddystone][1] a [blokovat iBeacon u][2] |
 
 ## <a name="next-steps"></a>Další kroky
 

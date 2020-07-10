@@ -5,19 +5,20 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6bf0010ddc7be2cb9e250f8b1beba28e0494ee1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891731"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187740"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
-| Průvodci odstraňováním <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">potíží</a>  
-|  <a href="https://github.com/Azure/service-fabric-issues" target="blank">Sledování problémů</a>  
-|  <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Možnosti podpory</a>  
-|  <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Podporované verze</a>  
-|  <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Ukázky kódu</a>
+- <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">Průvodci odstraňováním potíží</a> 
+- <a href="https://github.com/Azure/service-fabric-issues" target="blank">Sledování problémů</a> 
+- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-support" target="blank">Možnosti podpory</a> 
+- <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-versions" target="blank">Podporované verze</a> 
+- <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">Ukázky kódu</a>
 
 V tomto článku najdete další informace o nejnovějších vydáních a aktualizacích Service Fabric runtime a sadách SDK.
 

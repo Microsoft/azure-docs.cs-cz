@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828929"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187332"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Použití integrace správy zdrojového kódu v Azure Automation – starší verze
 
@@ -55,7 +56,7 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
 5. Po kliknutí na **OK**se integrace správy zdrojového kódu teď nakonfigurovala pro váš účet Automation a měla by se aktualizovat s informacemi z GitHubu. Nyní můžete kliknutím na tuto část zobrazit veškerou historii úloh synchronizace správy zdrojového kódu.  
 
     ![Hodnoty pro aktuálně konfigurovanou konfiguraci správy zdrojového kódu](media/source-control-integration-legacy/automation-RepoValues.png)
-6. Po nastavení správy zdrojového kódu se ve vašem účtu Automation vytvoří dva [prostředky s proměnnými](automation-variables.md) . Do vašeho účtu GitHubu se navíc přidá autorizovaná aplikace.
+6. Po nastavení správy zdrojového kódu se ve vašem účtu Automation vytvoří dva [prostředky s proměnnými](./shared-resources/variables.md) . Do vašeho účtu GitHubu se navíc přidá autorizovaná aplikace.
 
    * Proměnná **Microsoft. Azure. Automation. SourceControl. Connection** obsahuje hodnoty připojovacího řetězce, jak je znázorněno níže.  
 
@@ -83,7 +84,7 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
 
 Vrácení se změnami Runbooku vám umožní nasdílet změny, které jste provedli v sadě Runbook, v Azure Automation do úložiště správy zdrojového kódu. Níže jsou uvedené kroky pro vrácení sady Runbook se změnami:
 
-1. Z účtu Automation [vytvořte novou textovou sadu](automation-first-runbook-textual.md)Runbook nebo [upravte existující textový Runbook](automation-edit-textual-runbook.md). Tato sada Runbook může být buď pracovní postup PowerShellu, nebo PowerShellový Runbook skriptu.  
+1. Z účtu Automation [vytvořte novou textovou sadu](./learn/automation-tutorial-runbook-textual.md)Runbook nebo [upravte existující textový Runbook](automation-edit-textual-runbook.md). Tato sada Runbook může být buď pracovní postup PowerShellu, nebo PowerShellový Runbook skriptu.  
 2. Po úpravě Runbooku ji uložte a klikněte na tlačítko **vrátit se změnami** na stránce Upravit.  
 
     ![Okno zobrazující vrácení se změnami na tlačítko GitHub](media/source-control-integration-legacy/automation-CheckinButton.png)

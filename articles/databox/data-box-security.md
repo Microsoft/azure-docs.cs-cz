@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817717"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200402"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpečení a ochrana dat v zařízení Azure Data Box
 
@@ -30,11 +30,14 @@ Data Box představuje bezpečné řešení pro přenos dat díky tomu, že prohl
 - **Klienti/hostitelé připojení k zařízení** – klienti ve vaší infrastruktuře připojující se k zařízení Data Box a obsahující data, která je třeba přenést a chránit.
 - **Cloudové úložiště** – umístění v cloudu Azure, kam se data uloží. Typicky jde o účet úložiště spojený s prostředkem Azure Data Box, který jste vytvořili.
 
-Následující schéma představuje tok dat přes řešení Azure Data Box od místních systémů až do Azure.
+Následující schéma představuje tok dat přes řešení Azure Data Box od místních systémů až do Azure. Tento tok je určen pro pořadí importu Data Box.
 
 ![Zabezpečení zařízení Data Box](media/data-box-security/data-box-security-2.png)
 
-Jak data přecházejí přes toto řešení, události se zaznamenávají a generují se protokoly. Další informace najdete na webu [sledování a protokolování událostí pro Azure Data box](data-box-logs.md).
+Jak data přecházejí přes toto řešení, události se zaznamenávají a generují se protokoly. Další informace najdete tady:
+
+- [Sledování a protokolování událostí pro Azure Data box importu objednávek](data-box-logs.md).
+- [Sledování a protokolování událostí pro Azure Data Box exportní objednávky](data-box-export-logs.md)
 
 ## <a name="security-features"></a>Funkce zabezpečení
 
@@ -81,7 +84,7 @@ Azure Data Box shromažďuje a zobrazuje osobní údaje v následujících klí�
   - Telefonní číslo
   - E-mail
   - Ulice a číslo
-  - Město
+  - City (Město)
   - PSČ
   - Stav
   - Provincie/kraj/oblast
@@ -99,7 +102,7 @@ Další informace najdete v Zásadách ochrany osobních údajů společnosti Mi
 
 V zařízení Data Box jsou implementovány následující pokyny pro zabezpečení: 
 
-|Pokyn   |Description   |
+|Pokyn   |Popis   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Ochrana před vodou a prachem         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Odolnost před nešetrným zacházením při přepravě          |

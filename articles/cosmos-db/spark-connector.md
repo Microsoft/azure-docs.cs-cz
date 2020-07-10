@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262221"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203164"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýz velkých objemů dat pomocí Apache Spark pro Azure Cosmos DB konektor
 
@@ -19,7 +19,7 @@ Můžete spouštět úlohy [Spark](https://spark.apache.org/) s daty uloženými
 
 Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/services/databricks) nebo [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/), který poskytuje spravované Clustery Spark v Azure. V následující tabulce jsou uvedeny podporované verze Sparku.
 
-| Součást | Verze |
+| Komponenta | Verze |
 |---------|-------|
 | Apache Spark | 2.4. x, 2.3. x, 2.2. x a 2.1. x |
 | Scala | 2,11 |
@@ -31,7 +31,7 @@ Můžete použít konektor s [Azure Databricks](https://azure.microsoft.com/serv
 > Pro Cosmos DB rozhraní API Cassandra použijte [konektor Cassandra Spark](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Rychlé zprovoznění
+## <a name="quickstart"></a>Rychlý start
 
 * Postupujte podle kroků v [části Začínáme se sadou Java SDK](sql-api-async-java-get-started.md) a nastavte účet Cosmos DB a naplňte data.
 * Postupujte podle kroků v [Azure Databricks Začínáme](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) s nastavením pracovního prostoru Azure Databricks a clusteru.
@@ -233,7 +233,7 @@ Konektor můžete vytvořit ze zdroje na GitHubu nebo stáhnout Uber jar z Maven
 Vytvořte knihovnu pomocí pracovního prostoru datacihly podle pokynů v příručce Azure Databricks > [použijte konektor Azure Cosmos DB Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html) .
 
 > [!NOTE]
-> Všimněte si, že stránka **použít konektor Azure Cosmos DB Spark** není aktuálně aktuální. Místo stažení šesti samostatných jar do šesti různých knihoven si můžete stáhnout Uber jar z Maven https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) a nainstalovat tuto jednu sklenici nebo knihovnu.
+> Stránka **použít konektor Azure Cosmos DB Spark** aktuálně není aktuální. Místo stažení šesti samostatných jar do šesti různých knihoven si můžete stáhnout Uber jar z Maven v [Azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) a nainstalovat tuto jednu sklenici nebo knihovnu.
 > 
 
 ### <a name="using-spark-cli"></a>Použití Spark-CLI

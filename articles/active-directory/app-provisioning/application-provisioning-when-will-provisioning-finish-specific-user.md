@@ -11,11 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782020"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203011"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
@@ -76,12 +77,11 @@ Následující tabulka shrnuje časy synchronizace pro běžné scénáře zřiz
 | Synchronizovat všechny uživatele v Azure AD|  < 1 000  | < 30 minut | < 30 minut |
 | Synchronizovat všechny uživatele v Azure AD | 1 000 – 10 000  | 43 – 86 minut | < 30 minut |
 
-
 U **přiřazených uživatelů a skupin konfigurace synchronizace**konfigurací můžete pomocí následujících vzorců určit přibližné minimální a maximální očekávané **počáteční časy cyklů** :
 
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
+- Minimální počet minut = 0,01 x [počet přiřazených uživatelů, skupin a členů skupiny]
+- Maximální počet minut = 0,08 x [počet přiřazených uživatelů, skupin a členů skupiny]
+
 Souhrn faktorů, které mají vliv na dobu potřebnou k dokončení **počátečního cyklu**:
 
 - Celkový počet uživatelů a skupin v oboru pro zřizování.

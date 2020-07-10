@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703991"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201019"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportování skupin prostředků, které obsahují rozšíření virtuálních počítačů
 
@@ -32,18 +33,7 @@ K dispozici je řada rozšíření virtuálních počítačů. Do šablony Sprá
 
 Následující rozšíření lze exportovat pomocí funkce skriptu automatizace.
 
-| Linka ||||
-|---|---|---|---|
-| Zálohování Acronis | Služby Datadog agenta pro Windows | Opravy operačního systému pro Linux | Snímek virtuálního počítače Linux
-| Acronis Backup Linux | Rozšíření Docker | Agent Puppet |
-| BG – informace | Rozšíření DSC | Přehled o nepřetržitém řízení APM webu |
-| BMC CTM agent Linux | DynaTrace Linux | Lokalita nepřetržitého Linux serveru |
-| Okna agenta BMC CTM | DynaTrace okna | Nepřetržitý Windows Server v lokalitě |
-| Klient pro klienta | HPE Security Application Defender | Trend Micro DSA |
-| Vlastní skript | IaaS antimalware | Trend Micro DSA Linux |
-| Rozšíření vlastních skriptů | Diagnostika IaaS | Přístup k virtuálnímu počítači pro Linux |
-| Vlastní skript pro Linux | Klient pro Linux | Přístup k virtuálnímu počítači pro Linux |
-| Agent služby Datadog Linux | Diagnostika Linux | VM Snapshot |
+> Acronis Backup, Acronis Backup Linux, BG info, BMC CTM agent Linux, BMC CTM agenti, Windows, vlastní skript, rozšíření vlastních skriptů, vlastní skript pro Linux, služby Datadog Linux agent, služby Datadog Windows Agent, Docker Extension, rozšíření DSC, dynaTrace Linux, dynaTrace Windows, HPE zabezpečení aplikace Defender, IaaS antimalware, IaaS Diagnostics, Linux , Neizolovaný Server Linux serveru, web s nepřetržitými systémy Windows Server, Trend Micro DSA, Trend Micro DSA, Linux, přístup k virtuálnímu počítači pro Linux, přístup k VIRTUÁLNÍm počítačům pro Linux, snímek virtuálního počítače
 
 ## <a name="export-the-resource-group"></a>Export skupiny prostředků
 

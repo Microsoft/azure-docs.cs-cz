@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 4a8353cf38c63e2642c7f76d05b4b7a2764e0706
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2c02f6858711173a2ddd2217bbb9e241a5a2109d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117377"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201460"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s aplikací .NET Core
 
@@ -125,7 +125,7 @@ K souboru *Program.cs* přidejte následující příkaz `using`:
 using StackExchange.Redis;
 ```
 
-Připojení k mezipaměti Azure pro Redis je spravováno `ConnectionMultiplexer` třídou. Tato třída by se měla v rámci klientské aplikace sdílet a opakovaně používat. Nevytvářejte pro každou operaci nové připojení. 
+Připojení k mezipaměti Azure pro Redis je spravováno `ConnectionMultiplexer` třídou. V klientské aplikaci byste měli tuto třídu sdílet a opakovaně používat. Nevytvářejte pro každou operaci nové připojení. 
 
 V souboru *Program.cs* přidejte k třídě `Program` konzolové aplikace následující členy:
 
@@ -315,6 +315,7 @@ V tomto rychlém startu jste zjistili, jak používat Azure cache pro Redis z ap
 > [!div class="nextstepaction"]
 > [Vytvořte webovou aplikaci ASP.NET, která používá Azure cache pro Redis.](./cache-web-app-howto.md)
 
+Chcete optimalizovat a uložit své útraty do cloudu?
 
-
-
+> [!div class="nextstepaction"]
+> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

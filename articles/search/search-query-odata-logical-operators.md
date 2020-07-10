@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113181"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201993"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logické operátory OData v Azure Kognitivní hledání – `and` , `or` ,`not`
 
@@ -35,7 +36,7 @@ ms.locfileid: "74113181"
 
 Spolu s [operátory kolekce `any` a `all` ](search-query-odata-collection-operators.md)umožňují vytvářet filtry, které mohou vyjádřit velmi složitá kritéria hledání.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá logické operátory.
 
@@ -92,19 +93,27 @@ Pokud se pole Boolean `b` zobrazí ve výrazu filtru samostatně, chová se, jak
 
 Porovnává dokumenty `rating` , kde je pole mezi 3 a 5 včetně:
 
+```odata-filter-expr
     rating ge 3 and rating le 5
+```
 
 Porovnává dokumenty, kde jsou všechny prvky `ratings` pole menší než 3 nebo větší než 5:
 
+```odata-filter-expr
     ratings/all(r: r lt 3 or r gt 5)
+```
 
 Porovnává dokumenty `location` , kde je pole v daném mnohoúhelníku, a dokument neobsahuje pojem "public".
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
+```
 
 Porovnává dokumenty pro hotely v Vancouver, Kanada, kde je Deluxe místnost se základní sazbou nižší než 160:
 
+```odata-filter-expr
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
+```
 
 ## <a name="next-steps"></a>Další kroky  
 
