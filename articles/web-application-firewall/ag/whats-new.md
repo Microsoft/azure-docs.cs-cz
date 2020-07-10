@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 10/24/2019
 ms.author: victorh
-ms.openlocfilehash: 11212c931e38b1c6319c7c3554155d9d17a1080c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5033d19de2321e0dfd3b6d89d2da3306b1723bd0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745144"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146591"
 ---
 # <a name="whats-new-in-azure-web-application-firewall"></a>Co je nového v bráně firewall webových aplikací Azure?
 
@@ -27,6 +27,7 @@ Firewall webových aplikací Azure se průběžně aktualizuje. V tomto článku
 
 |Funkce  |Popis  |Datum přidání  |
 |---------|---------|---------|
+|Zásady pro jednotlivé lokality GA| Zásady pro jednotlivé lokality jsou teď všeobecně dostupné. | Červenec 2020 |
 |RuleSet zmírnění hrozeb (Preview)|Můžete povolit RuleSet zmírnění hrozeb, a to i v případě, že jste si RuleSet počítačový počítač. | Listopad 2019 |
 |Integrace GeoDB (Preview)|Nyní můžete vytvořit vlastní pravidla, která omezují provoz podle země nebo oblasti původu. | Listopad 2019 |
 |Zásady WAF podle lokality/podle identifikátoru URI (Preview)|WAF-v2 teď podporuje aplikování zásad na naslouchací procesy a také pravidla na základě cest. Viz [Create WAF Policy](create-waf-policy-ag.md). | Listopad 2019 |

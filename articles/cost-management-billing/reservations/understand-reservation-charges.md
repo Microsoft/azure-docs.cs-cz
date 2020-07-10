@@ -1,22 +1,22 @@
 ---
-title: Vysvětlení slev za rezervaci ve službě Azure SQL Databases | Microsoft Docs
-description: Zjistěte, jak se na spuštěné databáze služby Azure SQL Database uplatňuje sleva za rezervaci.
+title: Vysvětlení slev za rezervaci ve službě Azure SQL Database | Microsoft Docs
+description: Zjistěte, jak se na spuštěné služby Azure SQL Database uplatňuje sleva za rezervaci.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: e402eabce5fd7af6ca9f51a1d67175cd8e5e1ce4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 736e046b5254de9aa18c898994d7df11efc98a9a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726056"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037983"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Způsob uplatňování slev za rezervaci na databáze služby Azure SQL Database
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Způsob uplatňování slev za rezervaci na služby Azure SQL Database
 
-Když si zakoupíte rezervovanou kapacitu služby Azure SQL Database, na prostředky SQL Database, které vyhovují příslušným atributům a množství rezervace, se automaticky uplatňuje sleva za rezervaci. Rezervace pokrývá náklady na výpočetní prostředky služby SQL Database. Poplatky za software, úložiště a sítě se vám budou účtovat za použití normálních sazeb. Licenční náklady na databáze SQL Database můžete pokrýt pomocí [zvýhodněného hybridního využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
+Když si zakoupíte rezervovanou kapacitu služby Azure SQL Database, na databáze SQL, které vyhovují příslušným atributům a množství rezervace, se automaticky uplatňuje sleva za rezervaci. Rezervace pokrývá náklady na výpočetní prostředky služby SQL Database. Poplatky za software, úložiště a sítě se vám budou účtovat za použití normálních sazeb. Licenční náklady na SQL Database můžete pokrýt pomocí [Zvýhodněného hybridního využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Upozorňujeme, že slevy za rezervace se nevztahují na bezserverovou variantu Azure SQL Database.
 
@@ -28,9 +28,9 @@ Informace o rezervovaných instancích virtuálních počítačů najdete v tém
 
 Když vypnete určitý prostředek, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny *přijdete*.
 
-## <a name="discount-applied-to-sql-databases"></a>Sleva uplatněná na databáze SQL
+## <a name="discount-applied-to-running-sql-databases"></a>Sleva uplatněná na spuštěné databáze SQL
 
- Sleva za rezervovanou kapacitu databází SQL se na spuštěné databáze SQL uplatňuje po hodinách. Rezervace, kterou si zakoupíte, se přiřadí k využívání výpočetních prostředků spuštěnými databázemi SQL. V případě databází SQL, které neběží celou hodinu, se rezervace automaticky využije pro ostatní databáze SQL odpovídající atributům rezervace. Vaše sleva se použije také pro databáze SQL, které běží současně. Pokud nemáte databáze SQL, které běží celou hodinu a odpovídají atributům rezervace, nezískáte pro danou hodinu celou výhodu slevy za rezervaci.
+ Sleva za rezervovanou kapacitu SQL Database se na spuštěné databáze SQL uplatňuje po hodinách. Rezervace, kterou si zakoupíte, se přiřadí k využívání výpočetních prostředků spuštěnými databázemi SQL. V případě databází SQL, které neběží celou hodinu, se rezervace automaticky využije pro ostatní databáze SQL odpovídající atributům rezervace. Tato sleva se použije také pro databáze SQL, které běží současně. Pokud nemáte databáze SQL, které běží celou hodinu a odpovídají atributům rezervace, nezískáte pro danou hodinu celou výhodu slevy za rezervaci.
 
 Následující příklady ukazují, jak se sleva za rezervovanou kapacitu služby SQL Database uplatňuje v závislosti na počtu zakoupených jader a na tom, kdy jsou tato jádra spuštěná.
 
@@ -38,7 +38,7 @@ Následující příklady ukazují, jak se sleva za rezervovanou kapacitu služb
 
 U ostatních příkladů předpokládejme, že si zakoupíte rezervovanou kapacitu SQL Database pro databázi SQL se 16 jádry a spuštěné databáze SQL vyhovují všem zbývajícím atributům rezervace.
 
-- Scénář 2: Spustíte dvě databáze SQL, které mají každá 8 jader a každá běží jednu hodinu. Na využití výpočetních prostředků pro obě databáze SQL s 8 jádry se uplatní sleva za rezervaci 16 jader.
+- Scénář 2: Spustíte dvě databáze SQL, které mají každá 8 jader a běží jednu hodinu. Na využití výpočetních prostředků pro obě databáze SQL s 8 jádry se uplatní sleva za rezervaci 16 jader.
 - Scénář 3: Od 13:00 do 13:30 máte spuštěnou jednu databázi SQL se 16 jádry. Od 13:30 do 14:00 spustíte jinou databázi SQL se 16 jádry. Na obě se bude vztahovat sleva za rezervaci.
 - Scénář 4: Od 13:00 do 13:45 máte spuštěnou jednu databázi SQL se 16 jádry. Od 13:30 do 14:00 spustíte jinou databázi SQL se 16 jádry. Za 15 minut, kdy se doba chodu obou databází překrývá, zaplatíte průběžnou platbu. Po zbytek doby se na využití výpočetních prostředků uplatňuje sleva za rezervaci.
 

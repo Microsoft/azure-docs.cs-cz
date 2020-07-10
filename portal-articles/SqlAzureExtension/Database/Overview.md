@@ -1,6 +1,6 @@
 ---
-title: Přehled databází SQL | Dokumentace Microsoftu
-description: Přehled obsahu nápovědy pro databáze SQL na webu Azure Portal
+title: Přehled služby SQL Database | Microsoft Docs
+description: Přehled obsahu nápovědy pro SQL Database na webu Azure Portal
 services: sql-database
 author: sewatson
 manager: lwelicki
@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 04/09/2019
 ms.author: ninarn
-ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6d4f0c50f57661576f97ddd3772d78b9fa293153
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "61244455"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040516"
 ---
 # <a name="sql-database-documentation"></a>Dokumentace ke službě SQL Database
 
@@ -29,7 +29,7 @@ Azure SQL Database umožňuje snadno provádět základní úlohy správy pomoc�
 
 ## <a name="step-by-step-tutorials"></a>Podrobné kurzy
 
-Zjistěte, jak vytvářet, spravovat a migrovat databáze s využitím databáze SQL.
+Zjistěte, jak vytvářet, spravovat a migrovat databáze s využitím SQL Database.
 
 - Naši průvodci rychlým zprovozněním vám pomohou začít s [jednoúčelovými databázemi](/azure/sql-database/sql-database-single-database-quickstart-guide).
 - Vytvoření a návrh schématu pro novou izolovanou databázi s využitím [SSMS](/azure/sql-database/sql-database-design-first-database) nebo [.NET](/azure/sql-database/sql-database-design-first-database-csharp)
@@ -42,7 +42,7 @@ Zjistěte, jak vytvářet, spravovat a migrovat databáze s využitím databáze
 
 - [Vývoj v .NET](https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
 
-## <a name="samples"></a>Ukázky
+## <a name="samples"></a>ukázky
 
 Vyhledání skriptů pro správu běžných úkolů
 

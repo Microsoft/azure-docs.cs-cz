@@ -3,16 +3,16 @@ title: Rezervované instance virtuálních počítačů Azure EA
 description: Tento článek shrnuje, jak vám rezervace Azure umožní ušetřit peníze za rezervované instance virtuálních počítačů v rámci smlouvy Enterprise.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b78abeaac3066839636918923636f4b7bdf9ee35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735417"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044851"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Rezervované instance virtuálních počítačů Azure EA
 
@@ -83,9 +83,9 @@ Pokud jste k nákupu rezervovaných instancí virtuálních počítačů Azure n
 
 ### <a name="reserved-instance-billing"></a>Fakturace rezervovaných instancí
 
-U podnikových zákazníků se k nákupu rezervovaných instancí virtuálních počítačů Azure používá peněžní závazek. Pokud je u vaší registrace dostatečný zůstatek peněžního závazku na pokrytí nákupu rezervované instance, příslušná částka se odečte od zůstatku peněžního závazku a za nákup neobdržíte fakturu.
+U podnikových zákazníků se k nákupu rezervovaných instancí virtuálních počítačů Azure používá záloha na Azure. Pokud je u vaší registrace dostatečný zůstatek zálohy na Azure na pokrytí nákupu rezervované instance, příslušná částka se odečte od zůstatku zálohy Azure a za nákup neobdržíte fakturu.
 
-Pokud zákazníci se smlouvou Azure Enterprise využijí celý svůj peněžní závazek, stále si můžou koupit rezervované instance, ale tyto nákupy se budou fakturovat na další faktuře za nadlimitní využití. Případné nadlimitní využití rezervovaných instancí bude součástí normální faktury za nadlimitní využití.
+Pokud zákazníci se smlouvou Azure Enterprise využijí celou svoji zálohu na Azure, stále si můžou koupit rezervované instance, ale tyto nákupy se budou fakturovat na další faktuře za nadlimitní využití. Případné nadlimitní využití rezervovaných instancí bude součástí normální faktury za nadlimitní využití.
 
 ### <a name="reserved-instance-expiration"></a>Vypršení platnosti rezervované instance
 

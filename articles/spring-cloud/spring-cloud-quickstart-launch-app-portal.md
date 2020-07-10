@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 0637716b5f9970ff8c6d550f138fb7d21a26b81a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 118e1e49393a797a065f1e9968a83a6d4464868e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134459"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171036"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění stávající cloudové aplikace Azure na jaře pomocí Azure Portal
 
@@ -132,11 +132,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-5. Vytvořte `gateway` aplikaci a nasaďte soubor JAR.  Následující kroky vyžadují rozšíření jarního cloudu. Pokud jste ho neinstalovali pomocí požadovaných součástí, spusťte následující příkaz:
-
-    ```azurecli
-    az extension add --name spring-cloud
-    ```
+5. Vytvořte `gateway` aplikaci a nasaďte soubor JAR.
 
     Pomocí rozšíření jarní cloud vytvořte aplikaci:
 

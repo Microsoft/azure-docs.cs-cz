@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 5ad92fe9f243cf9884f29536cf6ebb66202338d5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d205f3ccc0adef7e2390274bb7f4511c6f994027
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299957"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038000"
 ---
 # <a name="azure-ea-pricing"></a>Ceny Azure EA
 
@@ -24,7 +24,7 @@ V této části najdete podrobné informace o tom, jak se počítá využití. N
 
 ### <a name="price-protection"></a>Ochrana cen
 
-Jako zákazník nebo distribuční partner máte garantované ceny na úrovni nebo pod úrovní cen zobrazených v ceníku zákazníka (CPS) nebo ceny platné k datu platnosti vašeho nákupu Azure. Tato cena se označuje jako základní cena. V případě služeb zavedených po vašem nákupu Azure se vám účtuje cena s odpovídající úrovní slevy platnou při prvním představení dané služby. Ochrana cen platí pro celé období závazku, které může v závislosti na smlouvě Enterprise Agreement trvat jeden nebo tři roky.
+Jako zákazník nebo distribuční partner máte garantované ceny na úrovni nebo pod úrovní cen zobrazených v ceníku zákazníka (CPS) nebo ceny platné k datu platnosti vašeho nákupu Azure. Tato cena se označuje jako základní cena. V případě služeb zavedených po vašem nákupu Azure se vám účtuje cena s odpovídající úrovní slevy platnou při prvním představení dané služby. Ochrana cen platí pro celé období zálohy, které může v závislosti na smlouvě Enterprise Agreement trvat jeden nebo tři roky.
 
 ### <a name="price-changes"></a>Změny cen
 

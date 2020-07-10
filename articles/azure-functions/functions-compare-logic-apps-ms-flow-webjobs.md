@@ -4,12 +4,12 @@ description: 'Porovnání cloudových služeb Microsoftu, které jsou optimalizo
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9d7531fac9610b357adb37d28f5d5e90a7e4b108
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878132"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169863"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Volba správných služeb integrace a automatizace v Azure
 
@@ -53,10 +53,10 @@ Při sestavování orchestrace lze služby kombinovat, takže je možné volat f
 
 |  | Odolná služba Functions | Logic Apps |
 | --- | --- | --- |
-| **Vývoj** | Založeno na kódu (závazné) | Založeno na návrháři (deklarativní) |
-| **Připojení** | [Zhruba tucet předdefinovaných typů vazeb](functions-triggers-bindings.md#supported-bindings), zápis kódu pro vlastní vazby | [Rozsáhlá kolekce konektorů](../connectors/apis-list.md), [Enterprise Integration Pack pro scénáře B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [sestavení vlastních konektorů](../logic-apps/custom-connector-overview.md) |
+| **Vývoj** | Založeno na kódu (imperativní) | Založeno na návrháři (deklarativní) |
+| **Připojení** | [O tucet vestavěných typů vazeb](functions-triggers-bindings.md#supported-bindings), psaní kódu pro vlastní vazby | [Velká kolekce konektorů](../connectors/apis-list.md), [Enterprise Integration Pack pro scénáře B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [sestavení vlastních konektorů](../logic-apps/custom-connector-overview.md) |
 | **Akce** | Každá aktivita je funkce Azure; zápis kódu pro funkce aktivity |[Rozsáhlá kolekce předdefinovaných akcí](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **Monitorování** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [protokoly Azure monitor](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| **Sledovaný** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [protokoly Azure monitor](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | **správy** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | **Kontext spuštění** | Může běžet [místně](functions-runtime-overview.md) nebo v cloudu. | Spouští se jenom v cloudu.|
 
@@ -76,21 +76,21 @@ Služba WebJobs a sada WebJobs SDK fungují nejlépe společně, ale můžete po
 
 Služba Azure Functions je postavená na sadě WebJobs SDK, takže sdílí řadu stejných aktivačních událostí a připojení k dalším službám Azure. Tady je několik faktorů, které je potřeba vzít v úvahu při výběru mezi Azure Functions a WebJobs se sadou WebJobs SDK:
 
-|  | Functions | Služba WebJobs se sadou WebJobs SDK |
+|  | Funkce | Služba WebJobs se sadou WebJobs SDK |
 | --- | --- | --- |
-|[Model aplikace bez serveru](https://azure.microsoft.com/solutions/serverless/) s [automatickým škálováním](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
-|[Vývoj a testování v prohlížeči](functions-create-first-azure-function.md) |✔||
-|[Ceny s platbami za použití](functions-scale.md#consumption-plan)|✔||
-|[Integrace s Logic Apps](functions-twitter-email.md)|✔||
-| Aktivační události |[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/Webhook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Systém souborů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Podporované jazyky  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |Jazyk C#<sup>1</sup>|
-|Správci balíčků|NPM a NuGet|NuGet<sup>2</sup>|
+|**[Model aplikace bez serveru](https://azure.microsoft.com/solutions/serverless/) s [automatickým škálováním](functions-scale.md#how-the-consumption-and-premium-plans-work)**|✔||
+|**[Vývoj a testování v prohlížeči](functions-create-first-azure-function.md)** |✔||
+|**[Ceny s platbami za použití](functions-scale.md#consumption-plan)**|✔||
+|**[Integrace s Logic Apps](functions-twitter-email.md)**|✔||
+| **Aktivační události** |[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/Webhook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Časovač](functions-bindings-timer.md)<br>[Fronty a objekty blob služby Azure Storage](functions-bindings-storage-blob.md)<br>[Fronty a témata služby Azure Service Bus](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Systém souborů](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+| **Podporované jazyky**  |C#<br>F#<br>JavaScript<br>Java<br>Python<br>PowerShell |Jazyk C#<sup>1</sup>|
+|**Správci balíčků**|NPM a NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> WebJobs (bez sady WebJobs SDK) podporuje jazyky C#, Java, JavaScript, bash,. cmd,. bat, POWERSHELL, php, TypeScript, Python a další. Nejedná se o vyčerpávající seznam. Ve webové úloze je možné spustit jakýkoli program nebo skript, který je možné spustit v sandboxu služby App Service.
 
 <sup>2</sup> webové úlohy (bez sady WebJobs SDK) podporují npm a NuGet.
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Azure Functions nabízí větší produktivitu vývojářů než Azure App Service WebJobs. Nabízí také více možností pro programovací jazyky, vývojová prostředí, integraci služeb Azure a ceny. Pro většinu scénářů se jedná o nejlepší volbu.
 

@@ -4,22 +4,21 @@ description: Nakonfigurujte protokoly rozhraní API, které jsou vystavené Even
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
-ms.reviewer: ''
-ms.date: 10/03/2019
+ms.reviewer: spelluru
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 908bc941ee7379de067621e10adf5fd6ee6df559
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 801a320fbd66b4b8a46757ba90881da54b2721de
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841806"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171716"
 ---
 # <a name="configure-event-grid-api-protocols"></a>Konfigurace Event Gridch protokolů rozhraní API
 
 Tato příručka obsahuje příklady možných konfigurací protokolu Event Grid modulu. Modul Event Grid zpřístupňuje rozhraní API pro své operace správy a běhu. Následující tabulka zachycuje protokoly a porty.
 
-| Protocol (Protokol) | Port | Description |
+| Protokol | Port | Popis |
 | ---------------- | ------------ | ------------ |
 | HTTP | 5888 | Ve výchozím nastavení vypnuté. Užitečné jenom při testování. Není vhodné pro produkční úlohy.
 | HTTPS | 4438 | Výchozí

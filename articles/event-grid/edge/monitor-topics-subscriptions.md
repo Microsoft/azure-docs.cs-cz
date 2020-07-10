@@ -1,18 +1,14 @@
 ---
 title: Sledovat témata a odběry událostí – Azure Event Grid IoT Edge | Microsoft Docs
 description: Sledovat témata a odběry událostí
-author: femila
-ms.author: femila
-ms.reviewer: spelluru
-ms.date: 01/09/2020
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: d4fbc5232722bfb08bde9be51d44e8e8d7514570
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d230be4f74abd61ad7b7f0fdb3facb32ee63da73
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84554359"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171529"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Sledovat témata a odběry událostí
 
@@ -47,7 +43,7 @@ Témata a odběry událostí generují metriky, které vám poskytnou přehled o
 
 ### <a name="topic-metrics"></a>Metriky témat
 
-| Metric | Popis |
+| Metrika | Popis |
 | ------ | ----------- |
 | EventsReceived | Počet událostí publikovaných do tématu
 | UnmatchedEvents | Počet událostí publikovaných do tématu, které nesouhlasí s odběrem události a jsou vyřazeny
@@ -59,7 +55,7 @@ Témata a odběry událostí generují metriky, které vám poskytnou přehled o
 
 ### <a name="event-subscription-metrics"></a>Metriky odběru událostí
 
-| Metric | Popis |
+| Metrika | Popis |
 | ------ | ----------- |
 | DeliverySuccessCounts | Počet událostí úspěšně doručených do nakonfigurovaného koncového bodu
 | DeliveryFailureCounts | Počet událostí, které se nepodařilo doručit do nakonfigurovaného koncového bodu

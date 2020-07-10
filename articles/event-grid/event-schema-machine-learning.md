@@ -3,12 +3,12 @@ title: Azure Machine Learning jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro pracovní prostor Machine Learning události s Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102493"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181518"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning jako zdroj Event Grid
 
@@ -20,13 +20,13 @@ Tento článek poskytuje informace o vlastnostech a schématu pro události prac
 
 Azure Machine Learning emituje následující typy událostí:
 
-| Typ události | Description |
+| Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft. MachineLearningServices. ModelRegistered | Vyvolá se v případě, že byl úspěšně registrován nový model nebo verze modelu. |
 | Microsoft. MachineLearningServices. ModelDeployed | Vyvolá se při úspěšném nasazení modelů do koncového bodu. |
 | Microsoft. MachineLearningServices. RunCompleted | Vyvolá se při úspěšném dokončení běhu. |
 | Microsoft. MachineLearningServices. DatasetDriftDetected | Vyvolá se v případě, že dojde ke sledování posunu datové sady. |
-| Microsoft. MachineLearningServices. RunStatusChanged | Vyvolá se při změně stavu spuštění na Failed. |
+| Microsoft. MachineLearningServices. RunStatusChanged | Vyvolá se při změně stavu spuštění. |
 
 ### <a name="the-contents-of-an-event-response"></a>Obsah odpovědi na událost
 
@@ -186,11 +186,11 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
 | data | odkazy objektů | Data události služby Blob Storage. |
@@ -201,7 +201,7 @@ Datový objekt má pro každý typ události následující vlastnosti:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | ModelName | řetězec | Název modelu, který byl zaregistrován. |
 | ModelVersion | řetězec | Verze modelu, který byl zaregistrován. |
@@ -210,7 +210,7 @@ Datový objekt má pro každý typ události následující vlastnosti:
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | ServiceName | řetězec | Název nasazené služby. |
 | ServiceComputeType | řetězec | Výpočetní typ (např. ACI, AKS) nasazené služby. |
@@ -255,7 +255,7 @@ Datový objekt má pro každý typ události následující vlastnosti:
 | RunStatus | řetězec | Stav spuštění. |
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
-| Nadpis | Popis |
+| Název | Popis |
 | ----- | ----- |
 | [Využívání Azure Machine Learningch událostí](../machine-learning/concept-event-grid-integration.md) | Přehled Integrace Azure Machine Learning s Event Grid |
 

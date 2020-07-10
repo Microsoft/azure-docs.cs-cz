@@ -3,16 +3,16 @@ title: Faktury za smlouvu Azure Enterprise
 description: V tomto článku je vysvětlená správa faktury za Azure Enterprise a její další použití.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 5276780d06671b8358f615b1fcb6447c8e1310f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807800"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044868"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 
@@ -46,14 +46,14 @@ Portál Azure Enterprise Portal automaticky generuje výchozí číslo nákupní
 
 ## <a name="azure-enterprise-billing-frequency"></a>Četnost fakturace Azure Enterprise
 
-Microsoft fakturuje všechny závazné nákupy služeb Microsoft Azure na roční bázi, a to k datu vstoupení smlouvy v platnost. Veškeré využití nad rámec závazku účtuje Microsoft v nedoplatcích.
+Microsoft fakturuje všechny nákupy záloh na služby Microsoft Azure na roční bázi, a to k datu vstoupení smlouvy v platnost. Veškeré využití nad rámec výše zálohy vyúčtovává Microsoft zpětně.
 
-- Poplatky související se závazky se uvádějí na základě měsíční sazby a fakturují se předem za nadcházející rok.
+- Poplatky za zálohu se uvádějí na základě měsíční sazby a fakturují se ročně předem.
 - Poplatky za nadlimitní využití se počítají každý měsíc a fakturují se zpětně na konci fakturačního období.
 
 ### <a name="billing-intervals"></a>Fakturační intervaly
 
-Fakturační interval závisí na tom, jak se rozhodnete provádět závazné nákupy. Váš roční závazek se kryje s:
+Fakturační interval závisí na tom, jak se rozhodnete provádět nákupy záloh. Vaše roční záloha se kryje s:
 
 - datem výročí registrace,
 - datem platnosti jednoročního doplňujícího předplatného.
@@ -62,12 +62,12 @@ Datum, kdy obdržíte fakturu za nadlimitní využití, závisí na počátečn�
 
 - **Přímé registrace s počátečním datem před 1. květnem 2018:**
   - Pokud jste přímým zákazníkem Enterprise Agreement (EA), máte pro služby Azure (kromě Azure Marketplace) nastavené roční fakturační období. Fakturační cyklus vychází z data výročí, což je datum, kdy vaše smlouva začala platit.
-  - Pokud překročíte 150 % prahové hodnoty peněžního závazku smlouvy EA, budete automaticky převedeni na čtvrtletní fakturační cyklus, který je založený na vašem datu výročí. Obdržíte také fakturu za nadlimitní využití služeb Azure.
-  - Pokud nepřekročíte 150 % prahové hodnoty peněžního závazku, zůstane registrace v ročním fakturačním cyklu. Fakturu za nadlimitní využití obdržíte na konci roku tohoto závazku.
+  - Pokud překročíte 150 % prahové hodnoty zálohy na Azure se smlouvou EA, budete automaticky převedeni na čtvrtletní fakturační cyklus, který je založený na vašem datu výročí. Obdržíte také fakturu za nadlimitní využití služeb Azure.
+  - Pokud nepřekročíte 150 % prahové hodnoty zálohy na Azure, zůstane registrace v ročním fakturačním cyklu. Fakturu za nadlimitní využití obdržíte na konci roku zálohy.
 
 - **Přímé registrace s počátečním datem po 1. květnu 2018:**
   - Pro faktury za využití Azure a poplatky fakturované samostatně platí měsíční fakturační období.
-  - Jakékoli poplatky, které nejsou pokryté vaším peněžním závazkem, jsou splatné jako poplatek za nadlimitní využití.  
+  - Jakékoli poplatky, které nejsou pokryté vaší zálohou na Azure, jsou splatné jako poplatek za nadlimitní využití.  
 
 - **Nepřímé registrace s počátečním datem před 1. květnem 2018:**
 
@@ -77,21 +77,21 @@ Datum, kdy obdržíte fakturu za nadlimitní využití, závisí na počátečn�
 
   Máte měsíční fakturační cyklus.  
 
-### <a name="increase-your-monetary-commitment"></a>Zvýšení peněžního závazku
+### <a name="increase-your-azure-prepayment"></a>Zvýšení zálohy na Azure
 
-Závazek můžete kdykoli zvýšit. Bude se vám účtovat počet měsíců zbývajících v období závazku daného roku. Například pokud si zaregistrujete roční doplňující předplatné a v šestém měsíci zvýšíte svůj závazek, bude se vám toto zvýšení fakturovat za zbývajících šest měsíců daného období. Na posledních šest měsíců období vašeho závazku se pak aktualizuje výše vašeho závazku. Tato nová množství se použijí pro stanovení poplatků za nadlimitní využití.
+Zálohu můžete kdykoli zvýšit. Bude se vám účtovat počet měsíců zbývajících v období zálohy daného roku. Pokud si například zaregistrujete roční doplňující předplatné a v šestém měsíci zvýšíte svoji zálohu, bude se vám toto zvýšení fakturovat za zbývajících šest měsíců daného období. Na posledních šest měsíců období vaší zálohy se pak výše zálohy aktualizuje. Tato nová množství se použijí pro stanovení poplatků za nadlimitní využití.
 
 ### <a name="overage"></a>Překročení
 
-Jako nadlimitní využití se vám bude fakturovat využití rezervací, které během daného fakturačního období překročí váš závazek. Pokud chcete zobrazit rozpis výpočtu nadlimitního využití jednotlivých položek, projděte si sestavu souhrnu využití nebo se obraťte na svého distribučního partnera.
+Jako nadlimitní využití se vám bude fakturovat využití rezervací, které během daného fakturačního období překročí výši vaší zálohy. Pokud chcete zobrazit rozpis výpočtu nadlimitního využití jednotlivých položek, projděte si sestavu souhrnu využití nebo se obraťte na svého distribučního partnera.
 
 U každé položky na faktuře uvidíte položky:
 
 - **Rozšířená částka:** poplatky celkem
-- **Využití závazku:** množství závazku použité na uhrazení poplatků
-- **Čistá částka**: poplatky, které překračují váš závazek
+- **Využití zálohy:** Výše zálohy využitá k uhrazení poplatků
+- **Čistá částka:** Poplatky, které překračují výši vaší zálohy
 
-Příslušné daně se počítají pouze z čisté částky nad rámec závazku.
+Příslušné daně se počítají pouze z čisté částky nad rámec zálohy.
 
 Fakturace nadlimitního využití je automatizovaná. Načasování oznámení a faktur závisí na koncovém datu fakturačního období.
 
@@ -130,18 +130,18 @@ Zobrazení kreditů:
 1. Na [portálu Azure Enterprise Portal](https://ea.azure.com) vyberte část **Reports** (Sestavy).
 1. Vyberte **Usage Summary** (Souhrn využití).
 1. V pravém horním rohu změňte zobrazení z **M** na **C**.
-1. V tabulce závazku služby Azure rozšiřte pole pro úpravy.
+1. V tabulce záloha na služby Azure rozšiřte pole pro úpravy.
 1. Zobrazí se kredity, které se vztahují k vaší registraci, a krátké vysvětlení. Příklad: Kredit smlouvy SLA
 
-## <a name="pay-your-overage-with-your-monetary-commitment"></a>Úhrada nadlimitního využití pomocí peněžního závazku
+## <a name="pay-your-overage-with-your-azure-prepayment"></a>Úhrada nadlimitního využití pomocí zálohy na Azure
 
-Pokud chcete peněžní závazek použít na nadlimitní využití, musíte splnit následující podmínky:
+Pokud chcete zálohu na Azure použít na nadlimitní využití, musíte splnit následující podmínky:
 
 - Musíte mít neuhrazené poplatky za nadlimitní využití, které nejsou starší než jeden rok od data ukončení fakturované služby.
-- Dostupný peněžní závazek pokrývá celou částku účtovaných poplatků, včetně všech předchozích neuhrazených faktur za Azure.
+- Dostupná záloha na Azure pokrývá celou částku účtovaných poplatků, včetně všech předchozích neuhrazených faktur za Azure.
 - Termín fakturace, který chcete dokončit, musí být plně uzavřený. Fakturace se plně uzavírá po pátém dni v měsíci.
 - Fakturační období, které chcete posunout, musí být plně uzavřené.
-- Sleva ACD (Azure Commitment Discount) vychází ze skutečného nového závazku po odečtení prostředků naplánovaných k předchozí spotřebě. Tento požadavek se týká jenom skutečně vzniklých poplatků za nadlimitní využití. Je platný jenom u služeb, které vyžadují peněžní závazek, takže ho nemůžete použít na poplatky za Azure Marketplace. Poplatky za Azure Marketplace se fakturují zvlášť.
+- Sleva ACD (Azure Prepayment Discount) vychází ze skutečné nové zálohy po odečtení prostředků naplánovaných k předchozí spotřebě. Tento požadavek se týká jenom skutečně vzniklých poplatků za nadlimitní využití. Je platný jenom u služeb, které využívají zálohu na Azure, takže ho nemůžete použít na poplatky za Azure Marketplace. Poplatky za Azure Marketplace se fakturují zvlášť.
 
 Pokud chcete vyrovnat nadlimitní využití, můžete vy nebo tým účtu otevřít žádost o podporu. Požaduje se e-mail se schválením od vašeho podnikového správce nebo příjemce faktury.
 
@@ -178,13 +178,13 @@ V následující tabulce najdete excelové vzorce, které můžete použít k mo
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Převod mezi sestavou podrobností o využití a stránkou souhrnu využití
 
-V sestavě údajů o využití ke stažení můžete vidět nezpracované využití prostředků s až šesti desetinnými místy. Portál Azure Enterprise Portal ale údaje o využití zaokrouhluje na čtyři desetinná čísla v případě jednotek závazku a zkracuje na nula desetinných míst v případě jednotek nadlimitního využití. Nezpracované údaje o využití se před převodem na jednotky používané na portálu Azure Enterprise nejprve zaokrouhlí na čtyři číslice. Převedené jednotky Enterprise se pak znovu zaokrouhlí na čtyři číslice. Skutečně využité hodiny před převodem můžete zobrazit pouze v sestavě údajů o využití ke stažení, a nikoli na portálu Azure Enterprise Portal.
+V sestavě údajů o využití ke stažení můžete vidět nezpracované využití prostředků s až šesti desetinnými místy. Portál Azure Enterprise Portal ale údaje o využití zaokrouhluje na čtyři desetinná čísla v případě jednotek zálohy a ořízne na nula desetinných míst v případě jednotek nadlimitního využití. Nezpracované údaje o využití se před převodem na jednotky používané na portálu Azure Enterprise nejprve zaokrouhlí na čtyři číslice. Převedené jednotky Enterprise se pak znovu zaokrouhlí na čtyři číslice. Skutečně využité hodiny před převodem můžete zobrazit pouze v sestavě údajů o využití ke stažení, a nikoli na portálu Azure Enterprise Portal.
 
 Příklad: V sestavě podrobností o využití je uvedeno 694,533404 skutečných hodin SQL Serveru. Tyto jednotky se pak převedou na 6,94533404 100 výpočetních hodin, které se pak zaokrouhlí na 6,9453 a zobrazí se na portálu Azure Enterprise Portal.
 
-- K určení rozšířené fakturované částky se pak tyto jednotky vynásobí cenou jednotky závazku a výsledek se zkrátí na dvě desetinná místa. V případě japonského jenu (JPY) a korejského wonu (KRW) se rozšířená částka zaokrouhlí na nula desetinných míst.
+- K určení rozšířené fakturované částky se pak tyto jednotky vynásobí cenou jednotky zálohy a výsledek se ořízne na dvě desetinná místa. V případě japonského jenu (JPY) a korejského wonu (KRW) se rozšířená částka zaokrouhlí na nula desetinných míst.
 - V případě nadlimitního využití se rozšířená fakturovaná částka určí tak, že se fakturovatelné jednotky zkrátí na šest číslic a pak se vynásobí cenou jednotky nadlimitního využití.
-- Pro účely fakturace poskytovatelů spravovaných služeb (MSP) se veškeré využití přidružené k oddělení a označené jako MSP po převodu na měrnou jednotku smlouvy Enterprise zkrátí na nula desetinných míst. V důsledku toho by součet tohoto využití mohl být nižší než celkový součet veškerého využití vykázaného na portálu Azure Enterprise Portal. Záleží na tom, jestli je MSP v rámci zůstatku peněžního závazku nebo se nachází v nadlimitním využití.
+- Pro účely fakturace poskytovatelů spravovaných služeb (MSP) se veškeré využití přidružené k oddělení a označené jako MSP po převodu na měrnou jednotku smlouvy Enterprise zkrátí na nula desetinných míst. V důsledku toho by součet tohoto využití mohl být nižší než celkový součet veškerého využití vykázaného na portálu Azure Enterprise Portal. Záleží na tom, jestli je MSP v rámci zůstatku zálohy na Azure, nebo jestli jde o nadlimitní využití.
 
 ### <a name="graduated-pricing"></a>Odstupňované ceny
 
@@ -226,13 +226,13 @@ Následující tabulka ukazuje mapování geografických oblastí a oblastí pro
 
 Za výchozí přenos dat mezi službami hostovanými ve stejném datacentru se neúčtují žádné poplatky. Například Microsoft 365 a Azure.
 
-### <a name="monetary-commitment-and-unbilled-usage"></a>Peněžní závazek a nefakturované použití
+### <a name="azure-prepayment-and-unbilled-usage"></a>Záloha na Azure a nevyfakturované využití
 
-Peněžní závazek za Azure je částka, která se za služby Azure platí předem. Peněžní závazek se spotřebovává používáním služeb. Peněžní závazek se účtuje u vlastních služeb Azure. Některé poplatky se ale účtují samostatně a služby Azure Marketplace peněžní závazek nespotřebovávají.
+Záloha na Azure je částka, která se za služby Azure platí předem. Záloha na Azure se spotřebovává používáním služeb. Záloha na Azure se používá k účtování vlastních služeb Azure. Některé poplatky se ale účtují samostatně a služby Azure Marketplace nespotřebovávají zálohu na Azure.
 
 ### <a name="charges-billed-separately"></a>Poplatky fakturované samostatně
 
-Některé produkty a služby od třetích stran nespotřebovávají peněžní závazek Azure. Místo toho se tyto položky fakturují samostatně v rámci standardní faktury za nadlimitní využití ve fakturačním období.
+Některé produkty a služby od třetích stran nespotřebovávají zálohu na Azure. Místo toho se tyto položky fakturují samostatně v rámci standardní faktury za nadlimitní využití ve fakturačním období.
 
 Všechny poplatky za Azure a Azure Marketplace jsme zkombinovali do jedné faktury, která odpovídá fakturačnímu období registrace. Kombinovaná faktura se netýká zákazníků v Austrálii, Japonsku a Singapuru.
 
@@ -265,7 +265,7 @@ Tyto faktury se vystaví následující měsíc po skončení fakturačního obd
 
    | Nadpis | Popis | Název souboru |
    | --- | --- | --- |
-   | [Friendly Service Names](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) (Popisné názvy služeb) | Obsahuje seznam všech aktivních služeb a zahrnuje: <br>  <ul><li>kagorii služby</li>   <li>popisný název služby</li>   <li>název závazku a číslo součásti</li> <li>název spotřeby a číslo součásti</li>   <li>měrné jednotky</li>   <li>faktory převodu mezi vykázaným využitím a využitím zobrazeným na portálu Enterprise</li></ul> | Friendly\_Service\_Names.xlsx |
+   | [Friendly Service Names](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) (Popisné názvy služeb) | Obsahuje seznam všech aktivních služeb a zahrnuje: <br>  <ul><li>kagorii služby</li>   <li>popisný název služby</li>   <li>název zálohy a číslo součásti</li> <li>název spotřeby a číslo součásti</li>   <li>měrné jednotky</li>   <li>faktory převodu mezi vykázaným využitím a využitím zobrazeným na portálu Enterprise</li></ul> | Friendly\_Service\_Names.xlsx |
    | [Service Download Fields](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) (Pole ve stažených informacích o službách) | Tato tabulka obsahuje seznam všech možných kombinací polí souvisejících se službami v sestavě využití ke stažení. | Service\_Download\_Fields.xlsx |
 
 - Informace, které vysvětlují fakturu a poplatky, najdete v tématu, ve kterém [je vysvětlená faktura ke smlouvě Azure Enterprise](../understand/review-enterprise-agreement-bill.md).

@@ -6,15 +6,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74129430"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184969"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Jak nastavit geografickou replikaci pro Azure cache pro Redis
 
-Geografická replikace poskytuje mechanismus pro propojení dvě mezipaměti Azure úrovně Premium pro instance Redis. Jedna mezipaměť je zvolena jako primární propojená mezipaměť a druhá jako sekundární propojená mezipaměť. Sekundární propojená mezipaměť se bude jen pro čtení a data zapsaná do primární mezipaměti se replikují do sekundární propojené mezipaměti. Tato funkce se dá použít k replikaci mezipaměti napříč oblastmi Azure. Tento článek poskytuje návod ke konfiguraci geografické replikace pro Azure cache úrovně Premium pro instance Redis.
+Geografická replikace poskytuje mechanismus pro propojení dvě mezipaměti Azure úrovně Premium pro instance Redis. Jedna mezipaměť je zvolena jako primární propojená mezipaměť a druhá jako sekundární propojená mezipaměť. Sekundární propojená mezipaměť se bude jen pro čtení a data zapsaná do primární mezipaměti se replikují do sekundární propojené mezipaměti. Přenos dat mezi primárními a sekundárními instancemi mezipaměti je zabezpečený pomocí protokolu TLS. Geografickou replikaci lze použít k nastavení mezipaměti, která zahrnuje dvě oblasti Azure. Tento článek poskytuje návod ke konfiguraci geografické replikace pro Azure cache úrovně Premium pro instance Redis.
+
+> [!NOTE]
+> Geografická replikace je navržená jako řešení zotavení po havárii. Ve výchozím nastavení bude vaše aplikace zapisovat do primární oblasti a číst z ní. Volitelně je možné ji nakonfigurovat pro čtení ze sekundární oblasti. Geografická replikace neposkytuje automatické převzetí služeb při selhání kvůli problémům s přidáním latence sítě mezi oblastmi, pokud zbývající část aplikace zůstane v primární oblasti. Převzetí služeb při selhání budete muset spravovat a iniciovat tak, že odpojíte sekundární mezipaměť. Tím se zvýší úroveň této nové primární instance.
 
 ## <a name="geo-replication-prerequisites"></a>Předpoklady geografické replikace
 

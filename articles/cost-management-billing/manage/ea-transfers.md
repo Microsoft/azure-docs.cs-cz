@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: a0846a07fd8107a87483753c8dbff1301fda4a0c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ff10d9ec9b92b85d057e556a21c144b9e8f155cf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299906"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043270"
 ---
 # <a name="azure-enterprise-transfers"></a>Převody Azure Enterprise
 
@@ -49,7 +49,7 @@ Další body, na které je potřeba myslet před převodem účtu:
 
 Převod registrace se bere v úvahu v těchto případech:
 
-- Skončilo období závazku aktuální registrace.
+- Skončilo období záloh pro aktuální registraci.
 - Registrace je ve stavu vypršení platnosti nebo prodloužení a dojednává se nová smlouva.
 - Máte více registrací a chcete zkombinovat všechny účty a fakturaci v rámci jediné registrace.
 
@@ -60,7 +60,7 @@ Pokud požádáte o převod celé podnikové registrace do jiné registrace, pro
 - Na novou registraci se převedou všechny služby Azure, všechna předplatná, účty, oddělení a celá struktura registrace, včetně všech správců oddělení EA.
 - U registrace se nastaví stav _Přenesené_. Přenesená registrace bude k dispozici jenom pro sestavy, které se týkají historie použití.
 - Do přenesené registrace už nemůžete přidávat role ani předplatná. Přenesený stav brání dalšímu použití této registrace.
-- Zbývající zůstatek peněžního závazku ve smlouvě se ruší, včetně budoucích podmínek.
+- Zbývající zůstatek zálohy na Azure ve smlouvě se ruší, včetně budoucích podmínek.
 -    Pokud registrace, ze které provádíte převod, obsahuje zakoupené rezervované instance, kupní cena rezervovaných instancí zůstane ve zdrojové registraci, ale všechny výhody rezervovaných instancí se převedou do nové registrace.
 -    Jednorázový poplatek za nákup na marketplace ani žádné měsíční paušální poplatky již vzniklé ve staré registraci se do nové registrace nepřevedou. Poplatky za marketplace na základě spotřeby se převedou.
 
@@ -68,7 +68,7 @@ Pokud požádáte o převod celé podnikové registrace do jiné registrace, pro
 
 Platným datem převodu může být datum, které je stejné nebo následuje po počátečním datu cílové registrace.
 
-Využití zdrojové registrace se odečte z peněžního závazku nebo se účtuje jako nadlimitní využití. Využití, ke kterému dojde po platném datu převodu, se přenese do nové registrace, kde se odpovídajícím způsobem odúčtuje.
+Využití zdrojové registrace se odečte od zálohy na Azure nebo se účtuje jako nadlimitní využití. Využití, ke kterému dojde po platném datu převodu, se přenese do nové registrace, kde se odpovídajícím způsobem odúčtuje.
 
 ### <a name="prerequisites"></a>Požadavky
 
@@ -84,9 +84,9 @@ Další body, na které je potřeba myslet před převodem registrace:
 - Pokud převod registrace vašim požadavkům nevyhovuje, zvažte možnost převodu účtu.
 - Stav zdrojové registrace se změní na Převedeno nesený a bude k dispozici jenom pro účely generování sestav historie využití.
 
-### <a name="monetary-commitment"></a>Peněžní závazek
+### <a name="azure-prepayment"></a>Záloha na Azure
 
-Peněžní závazek nejde mezi registracemi převést. Zůstatky peněžních závazků jsou smluvně vázány na registraci, kde byly objednány. V rámci převodu účtu nebo registrace se peněžní závazek nepřevádí.
+Zálohu na Azure nejde převést mezi registracemi. Zůstatky zálohy na Azure jsou smluvně vázány na registraci, kde byly objednány. V rámci převodu účtu nebo registrace se záloha na Azure nepřevádí.
 
 ### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Převody účtů a registrací nemají vliv na služby
 

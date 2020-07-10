@@ -1,18 +1,14 @@
 ---
 title: Architektury řízené událostmi na Edge – Azure Event Grid na IoT Edge
 description: Pro přeposílání událostí mezi moduly, hraničními zařízeními a cloudem použijte Azure Event Grid jako modul IoT Edge.
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: overview
-ms.date: 10/22/2019
-ms.author: femila
-ms.openlocfilehash: d569a4be6c9747dea4280d17ed2f888c3bed9936
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 07/08/2020
+ms.openlocfilehash: 82a68f6ab32d8ad18c3af506c810b01d12cf794d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561687"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171512"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Co je Azure Event Grid v Azure IoT Edge?
 Event Grid v IoT Edge přináší výkon a flexibilitu Azure Event Grid na hraničních zařízeních. Vytvářejte témata, publikujte události a přihlaste se k odběru více míst, ať už jsou moduly na stejném zařízení, v jiných hraničních zařízeních nebo službách v cloudu.
@@ -55,7 +51,7 @@ Event Grid na IoT Edge je sestavená tak, aby odesílala události kdekoli, kde 
 
 * Další moduly zahrnující IoT Hub, funkce a vlastní moduly
 * Jiná hraniční zařízení
-* Webhooky
+* WebHooky
 * Cloudová služba Azure Event Grid
 * Event Hubs
 * Fronty služby Service Bus
@@ -79,7 +75,7 @@ V Azure Event Grid existuje pět konceptů, které vám umožní začít:
 
 Event Grid v IoT Edge je ve verzi Public Preview zdarma.
 
-## <a name="issues"></a>Issues (Problémy)
+## <a name="issues"></a>Problémy
 Nahlaste všechny problémy pomocí Event Grid v IoT Edge na [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues) .
 
 ## <a name="next-steps"></a>Další kroky

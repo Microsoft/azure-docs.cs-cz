@@ -5,16 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea36c40f2038d016afb0c45944a98d4d90df6240
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73242463"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171563"
 ---
 # <a name="event-schemas"></a>Schémata událostí
 
@@ -54,11 +52,11 @@ Schéma EventGrid se skládá ze sady požadovaných vlastností, které musí e
 
 Všechny události mají následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Vyžadováno | Popis |
+| Vlastnost | Typ | Povinné | Popis |
 | -------- | ---- | ----------- |-----------
 | téma | řetězec | No | By se mělo shodovat s tématem, na kterém je publikovaná. Event Grid ji naplní názvem tématu, na kterém je publikovaná, pokud není zadaný. |
 | závislosti | řetězec | Ano | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Ano | Typ události pro tento zdroj události, například BlobCreated. |
+| eventType | řetězec | Ano | Typ události pro tento zdroj události, například BlobCreated. |
 | eventTime | řetězec | Ano | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | ID | řetězec | No | Jedinečný identifikátor události |
 | data | odkazy objektů | Ne | Slouží k zaznamenání dat události, která jsou specifická pro entitu publikování. |

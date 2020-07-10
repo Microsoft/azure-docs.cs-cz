@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 2906734a37fbb5516596d456386929c11c8dc1e4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f45cf27f427625571a58022c199391cac9a05bd2
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588288"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146935"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
@@ -25,9 +25,9 @@ Azure Cognitive Services jsou dostupná rozhraní API, sady SDK a služby, kter�
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Počítačové zpracování obrazu")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací.|
-|[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Custom Vision Service umožňuje vytvářet vlastní klasifikátory obrázků.|
-|[Rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "Rozpoznávání tváře")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
+|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací.|
+|[Služba Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Služba Custom Vision")|Custom Vision Service umožňuje vytvářet vlastní klasifikátory obrázků.|
+|[Tvář](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
 |[Nástroj pro rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Rozpoznávání formulářů") (Preview)|Nástroj pro rozpoznávání formulářů identifikuje a extrahuje páry klíč-hodnota a tabulková data z dokumentů formulářů; pak výstup strukturovaných dat včetně relací v původním souboru.|
 |[Nástroj pro rozpoznávání rukopisu](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Rozpoznávání rukopisu") (Preview)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy.|
@@ -36,7 +36,7 @@ Azure Cognitive Services jsou dostupná rozhraní API, sady SDK a služby, kter�
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Služba řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči.|
+|[Služba Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Služba Speech")|Služba Speech přidává do aplikací funkce podporující rozpoznávání řeči.|
 |[Rozhraní API pro rozpoznávání mluvčího](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Rozhraní API pro rozpoznání mluvčího") (Preview)|Rozhraní API pro rozpoznávání mluvčího poskytuje algoritmy pro identifikaci a ověřování mluvčího.|
 |[Zpracování řeči Bingu](https://docs.microsoft.com/azure/cognitive-services/speech/home "Zpracování řeči Bingu") (vyřazení z provozu)|Rozhraní API pro zpracování řeči Bingu poskytuje snadný způsob, jak ve svých aplikacích vytvářet funkce podporující rozpoznávání řeči.|
 |[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (vyřazení z provozu)|Translator Speech je služba strojového překladu.|
@@ -52,7 +52,7 @@ Azure Cognitive Services jsou dostupná rozhraní API, sady SDK a služby, kter�
 |[Language Understanding LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co osoba chce, podle svých vlastních slov.|
 |[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker vám umožní vytvořit službu otázek a odpovědí z částečně strukturovaného obsahu.|
 |[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Analýza textu")|Analýza textu poskytuje zpracování v přirozeném jazyce přes nezpracovaný text pro analýzu míněníí, extrakci klíčových frází a rozpoznání jazyka.|
-|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Translator")|Překladatel poskytuje textový překlad založený na počítačích téměř v reálném čase.|
+|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Překladač")|Překladatel poskytuje textový překlad založený na počítačích téměř v reálném čase.|
 
 
 ## <a name="search-apis"></a>Rozhraní API pro vyhledávání
@@ -78,17 +78,13 @@ Azure Cognitive Services jsou dostupná rozhraní API, sady SDK a služby, kter�
 |[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Content Moderator poskytuje monitorování možného urážlivého, nežádoucího a rizikového obsahu.|
 |[Personalizace](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalizace")|Přizpůsobování umožňuje vybrat nejlepší možnosti, které se uživatelům zobrazí, a naučit se jejich chování v reálném čase.|
 
-## <a name="use-free-trials"></a>Použití bezplatných zkušebních verzí
-
-[Registrace do bezplatných zkušebních verzí](https://azure.microsoft.com/try/cognitive-services/ "Přihlašovací informace") bere jenom e-mail a několik jednoduchých kroků. Pokud ještě nemáte účet Microsoft, potřebujete ho. Pro každé požadované rozhraní API obdržíte jedinečnou dvojici klíčů. Druhá je jenom náhradní. Nesdílejte tajné klíče s kýmkoli. Zkušební verze mají omezení četnosti, transakce za sekundu nebo minutu a měsíční limit využití. Transakce je jednoduše volání rozhraní API. Omezení můžete odemknout tak, že upgradujete na placené úrovně.
-
 ## <a name="subscription-management"></a>Správa předplatného
 
 Jakmile se přihlásíte pomocí svého účtu Microsoft, můžete získat přístup k [předplatným](https://www.microsoft.com/cognitive-services/subscriptions "Moje předplatné") , abyste viděli používané produkty, zbývající kvótu a možnost přidávat do předplatného další produkty.
 
 ## <a name="upgrade-to-unlock-limits"></a>Upgradovat na omezení odemčení
 
-Všechna rozhraní API mají bezplatný zkušební plán, který má omezení využití a propustnosti.  Tyto limity můžete zvýšit pomocí placené nabídky a výběrem vhodné cenové úrovně při nasazení služby v Azure Portal. [Přečtěte si další informace o nabídkách a cenách](https://azure.microsoft.com/pricing/details/cognitive-services/ "nabídky a ceny"). Budete muset nastavit účet předplatitele Azure pomocí platební karty a telefonního čísla. Pokud máte zvláštní požadavek nebo chcete mluvit jenom na prodej, klikněte na tlačítko "kontaktujte nás" v horní části stránky s cenami.
+Všechna rozhraní API mají úroveň Free, která má omezení využití a propustnosti.  Tyto limity můžete zvýšit pomocí placené nabídky a výběrem vhodné cenové úrovně při nasazení služby v Azure Portal. [Přečtěte si další informace o nabídkách a cenách](https://azure.microsoft.com/pricing/details/cognitive-services/ "nabídky a ceny"). Budete muset nastavit účet předplatitele Azure pomocí platební karty a telefonního čísla. Pokud máte zvláštní požadavek nebo chcete mluvit jenom na prodej, klikněte na tlačítko "kontaktujte nás" v horní části stránky s cenami.
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
@@ -122,4 +118,4 @@ Cognitive Services poskytují několik [možností podpory](cognitive-services-s
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytvoření účtu služeb Cognitive Services](cognitive-services-apis-create-account.md)
+* [Vytvoření účtu Cognitive Services](cognitive-services-apis-create-account.md)

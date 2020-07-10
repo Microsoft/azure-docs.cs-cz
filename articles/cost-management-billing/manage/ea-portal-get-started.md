@@ -3,16 +3,16 @@ title: Začínáme s portálem Azure Enterprise
 description: Tento článek vysvětluje, jak zákazníci se smlouvou Azure Enterprise (Azure EA) používají portál Azure Enterprise.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/29/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2d4fbf90afa93f3dbde12a3bc5ce02f9a60b6c5d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560363"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044953"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Začínáme s portálem Azure Enterprise
 
@@ -372,7 +372,7 @@ Pokud vaše smlouva Enterprise nemá předplatné podpory a přidáte stávajíc
 
 ## <a name="view-usage-summary-and-download-reports"></a>Zobrazení souhrnu využití a stahování sestav
 
-Podnikoví správci si na portálu Azure Enterprise můžou zobrazit souhrnné údaje o využití, výši spotřebovaného peněžního závazku a poplatky za další využití. Poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
+Podnikoví správci si na portálu Azure Enterprise Portal můžou zobrazit souhrnné údaje o využití, výši spotřebované zálohy na Azure a poplatky za další využití. Poplatky jsou vyjádřené souhrnně za všechny účty a všechna předplatná.
 
 Pokud se chcete podívat na podrobné využití u konkrétních účtů, stáhněte si sestavu s podrobnostmi o využití:
 
@@ -388,9 +388,9 @@ Pokud se chcete podívat na podrobné využití u konkrétních účtů, stáhn�
 
 Zobrazení sestav a grafů se souhrnem využití:
 
-1. Přihlaste se k portálu Azure Enterprise.
+1. Přihlaste se k portálu Azure Enterprise Portal.
 
-1. Vyberte období závazku.
+1. Vyberte období zálohy.
 
    Pokud chcete změnit rozsah data pro **Usage Summary** (Souhrn využití), můžete vpravo nahoře na stránce přepnout z **M** (Monthly) (Měsíčně) na **C** (Custom) (Vlastní) a zadat vlastní počáteční a koncové datum.
 
@@ -455,7 +455,7 @@ Portál Azure Enterprise vyfiltruje neaktivní registrace, aby nebyly vidět. Ab
 - **Účet:** Organizační jednotka na portálu Azure Enterprise. Slouží ke správě předplatných a ke generování sestav.
 - **Vlastník účtu:** Osoba, která spravuje předplatná a správce služeb v Azure. Může zobrazit data o využití tohoto účtu a přidružených předplatných.
 - **Doplňující předplatné:** Roční nebo překrývající se předplatné na základě dodatku k registraci.
-- **Závazek:** Závazek roční útraty určité peněžní částky za služby Azure se zvýhodněnou sazbu závazku za využití při předplacení.
+- **Záloha:** Záloha určité roční peněžní částky za služby Azure se zvýhodněnou sazbou za využití při předplacení.
 - **Správce oddělení:** Osoba, která spravuje oddělení, vytváří nové účty a vlastníky účtů, zobrazuje podrobnosti o využití pro oddělení, která spravuje, a může zobrazit náklady (když k tomu má udělená oprávnění).
 - **Číslo registrace:** Jedinečný identifikátor od Microsoftu, který umožňuje identifikovat konkrétní registraci přidruženou ke smlouvě Enterprise.
 - **Podnikový správce:** Osoba, která spravuje oddělení, vlastníky oddělení, účty a vlastníky účtů v Azure. Můžou spravovat podnikové správce a zobrazit data o využití, fakturovaná množství a nefakturované poplatky napříč všemi účty a předplatnými přidruženými k dané podnikové registraci.
@@ -478,7 +478,7 @@ Portál Azure Enterprise vyfiltruje neaktivní registrace, aby nebyly vidět. Ab
 
    Než registrace Azure EA dosáhne koncového data smlouvy Enterprise, měl by se správce registrace rozhodnout pro jednu z těchto variant:
 
-  - Prodloužení registrace přidáním dalšího peněžního závazku
+  - Prodloužení registrace přidáním další zálohy na Azure
   - Přenos na novou registraci
   - Migrace do programu Microsoft Online Subscription (MOSP)
   - Potvrzení deaktivace všech služeb přidružených k registraci

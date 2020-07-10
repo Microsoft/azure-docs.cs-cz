@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: e4ee37c00778d239c8481392ce9231b2dda7c6e3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 363da0f528444ab45784beb43d3590b50c0cb71f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606521"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144320"
 ---
 # <a name="quickstart-use-the-translator-to-translate-text"></a>Rychlý Start: použití překladatele k překladu textu
 
 V tomto rychlém startu se dozvíte, jak přeložit textový řetězec z angličtiny do němčiny, italštiny, japonštiny a thajštiny pomocí REST API překladatele.
 
-Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem překladatele. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
+Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem překladatele. 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/translate-csharp.md)]

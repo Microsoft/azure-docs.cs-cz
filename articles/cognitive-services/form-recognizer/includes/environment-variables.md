@@ -9,21 +9,21 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 8bcce81808530c124b73b3527609a08f869b99c4
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: d63e902a59411a549235c955a39d7dbc4be068ba
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997606"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156621"
 ---
 Pomocí klíče a koncového bodu z prostředku, který jste vytvořili, vytvořte dvě proměnné prostředí pro ověřování:
 
 * `FORM_RECOGNIZER_KEY`– Klíč prostředku pro ověření vašich požadavků.
 * `FORM_RECOGNIZER_ENDPOINT`– Koncový bod prostředku pro odesílání požadavků rozhraní API. Bude vypadat takto: 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+  * `https://<your-custom-subdomain>.cognitiveservices.azure.com`
 
 >[!NOTE]
-> Koncové body pro prostředky nevyužívající zkušební verzi vytvořené po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
+> Koncové body prostředků vytvořených po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
 
 K nastavení proměnných prostředí v operačním systému použijte následující pokyny.
 

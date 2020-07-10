@@ -6,11 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba0430461df5ce1a2d615b819dbe5e8a36ae52b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83699222"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184527"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Řešení potíží se ztrátou dat ve službě Azure Cache for Redis
 
@@ -22,11 +23,11 @@ Tento článek popisuje, jak diagnostikovat skutečné nebo zjištěné ztráty 
 
 ## <a name="partial-loss-of-keys"></a>Částečná ztráta klíčů
 
-Azure cache pro Redis po uložení do paměti náhodně neodstraní klíče. Odebere ale klíče v reakci na zásady vypršení platnosti nebo vyřazení a explicitní příkazy pro odstraňování klíčů. Klíče, které byly zapsány do hlavního uzlu v mezipaměti Azure Premium nebo standard pro instanci Redis, nemusí být okamžitě k dispozici v replice. Data se replikují z hlavního serveru do repliky v asynchronním a neblokujícím způsobu.
+Azure cache pro Redis po uložení do paměti náhodně neodstraní klíče. Odebere ale klíče v reakci na zásady vypršení platnosti nebo vyřazení a explicitní příkazy pro odstraňování klíčů. Klíče, které byly zapsány do primárního uzlu v mezipaměti Azure Premium nebo standard pro instanci Redis, nemusí být okamžitě k dispozici v replice. Data se replikují z primárního do repliky v asynchronním a neblokujícím způsobu.
 
 Pokud zjistíte, že klíče z mezipaměti zmizely, podívejte se na tyto možné příčiny:
 
-| Příčina | Description |
+| Příčina | Popis |
 |---|---|
 | [Vypršení platnosti klíče](#key-expiration) | Klíče se odeberou kvůli časovým limitům nastaveným pro ně. |
 | [Vyřazení klíčů](#key-eviction) | Klíče jsou odebrány v části tlak paměti. |
@@ -79,13 +80,13 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Asynchronní replikace
 
-Jakákoli instance Azure cache for Redis v úrovni Standard nebo Premium je nakonfigurovaná s hlavním uzlem a aspoň jednou replikou. Data jsou zkopírována z hlavního serveru do repliky asynchronně pomocí procesu na pozadí. Web [Redis.IO](https://redis.io/topics/replication) popisuje, jak obecně funguje replikace dat Redis. Pro scénáře, kdy klienti zapisují do Redis často, může dojít k částečné ztrátě dat, protože tato replikace není zaručená okamžitá. Pokud se například hlavní uzel *po* zapsání klíče do něj zapíše, ale *před tím, než* bude moci proces na pozadí odeslat tento klíč do repliky, dojde ke ztrátě klíče, když replika převezme novou hlavní databázi.
+Jakákoli instance Azure cache for Redis v úrovni Standard nebo Premium je nakonfigurovaná s primárním uzlem a aspoň jednou replikou. Data jsou kopírována z primárního do repliky asynchronně pomocí procesu na pozadí. Web [Redis.IO](https://redis.io/topics/replication) popisuje, jak obecně funguje replikace dat Redis. Pro scénáře, kdy klienti zapisují do Redis často, může dojít k částečné ztrátě dat, protože tato replikace není zaručená okamžitá. Pokud se například primární operace nahraje *po* zapsání klíče do něj, ale *před tím, než* bude mít proces na pozadí možnost Odeslat tento klíč do repliky, bude klíč ztracen, když replika převezme nové primární.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Hlavní nebo úplná ztráta klíčů
 
 Pokud z mezipaměti nezmizí většina nebo všechny klíče, podívejte se na tyto možné příčiny:
 
-| Příčina | Description |
+| Příčina | Popis |
 |---|---|
 | [Vyprazdňování klíče](#key-flushing) | Klíče byly vymazány ručně. |
 | [Nesprávný výběr databáze](#incorrect-database-selection) | Mezipaměť Azure pro Redis je nastavená na použití jiné než výchozí databáze. |
@@ -111,7 +112,7 @@ Azure cache pro Redis ve výchozím nastavení používá databázi **DB0** . Po
 
 Redis je úložiště dat v paměti. Data se uchovávají na fyzických nebo virtuálních počítačích, které hostují mezipaměť Redis Cache. Instance Azure cache for Redis se v úrovni Basic spouští jenom na jednom virtuálním počítači (VM). Pokud je tento virtuální počítač vypnutý, ztratí se všechna data uložená v mezipaměti. 
 
-Mezipamětí v úrovních Standard a Premium nabízejí mnohem větší odolnost proti ztrátě dat pomocí dvou virtuálních počítačů v replikované konfiguraci. V případě selhání hlavního uzlu v takové mezipaměti převezme uzel repliky automaticky data. Tyto virtuální počítače se nacházejí v samostatných doménách pro chyby a aktualizace, aby se minimalizovala pravděpodobnost, že se současně stane nedostupnými. Pokud se ale dojde k výpadku velkých Datacenter, virtuální počítače se ale pořád rozstanou pohromadě. V těchto vzácných případech dojde ke ztrátě vašich dat.
+Mezipamětí v úrovních Standard a Premium nabízejí mnohem větší odolnost proti ztrátě dat pomocí dvou virtuálních počítačů v replikované konfiguraci. Pokud primární uzel v takové mezipaměti neproběhne úspěšně, převezme uzel repliky automaticky data do obsluhy. Tyto virtuální počítače se nacházejí v samostatných doménách pro chyby a aktualizace, aby se minimalizovala pravděpodobnost, že se současně stane nedostupnými. Pokud se ale dojde k výpadku velkých Datacenter, virtuální počítače se ale pořád rozstanou pohromadě. V těchto vzácných případech dojde ke ztrátě vašich dat.
 
 Zvažte použití [Trvalost dat Redis](https://redis.io/topics/persistence) a [geografické replikace](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) k vylepšení ochrany vašich dat před těmito selháními infrastruktury.
 

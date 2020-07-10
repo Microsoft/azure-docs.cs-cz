@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c7511279e66ab598e4ae3c26f053915b7393b39d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f583e7956cba0de06e5b3277bfea13c463019d9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74978386"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171971"
 ---
 # <a name="widevine-license-template-overview"></a>Přehled šablon licencování Widevine 
 K nakonfigurování a vyžádání licencí Google Widevine můžete použít Azure Media Services. Když se hráč pokusí přehrát obsah chráněný Widevine, pošle se do služby doručování licencí požadavek, aby získal licenci. Pokud licenční služba žádost schválí, služba vydá licenci. Odesílá se klientovi a používá se k dešifrování a přehrávání zadaného obsahu.
@@ -28,37 +29,39 @@ K nakonfigurování a vyžádání licencí Google Widevine můžete použít Az
 >[!NOTE]
 > Můžete vytvořit prázdnou zprávu bez hodnot, stačí " {} ." Pak se vytvoří šablona licence s výchozími hodnotami. Výchozí hodnota funguje ve většině případů. Scénáře pro doručování licencí založené na Microsoftu by měly vždycky používat výchozí hodnoty. Pokud potřebujete nastavit hodnoty "Provider" a "content_id", poskytovatel musí odpovídat přihlašovacím údajům Widevine.
 
-    {  
-       "payload": "<license challenge>",
-       "content_id": "<content id>" 
-       "provider": "<provider>"
-       "allowed_track_types": "<types>",
-       "content_key_specs": [  
-          {  
-             "track_type": "<track type 1>"
-          },
-          {  
-             "track_type": "<track type 2>"
-          },
-          …
-       ],
-       "policy_overrides": {  
-          "can_play": <can play>,
-          "can persist": <can persist>,
-          "can_renew": <can renew>,
-          "rental_duration_seconds": <rental duration>,
-          "playback_duration_seconds": <playback duration>,
-          "license_duration_seconds": <license duration>,
-          "renewal_recovery_duration_seconds": <renewal recovery duration>,
-          "renewal_server_url": "<renewal server url>",
-          "renewal_delay_seconds": <renewal delay>,
-          "renewal_retry_interval_seconds": <renewal retry interval>,
-          "renew_with_usage": <renew with usage>
-       }
-    }
+```json
+{  
+   "payload": "<license challenge>",
+   "content_id": "<content id>" 
+   "provider": "<provider>"
+   "allowed_track_types": "<types>",
+   "content_key_specs": [  
+      {  
+         "track_type": "<track type 1>"
+      },
+      {  
+         "track_type": "<track type 2>"
+      },
+      …
+   ],
+   "policy_overrides": {  
+      "can_play": <can play>,
+      "can persist": <can persist>,
+      "can_renew": <can renew>,
+      "rental_duration_seconds": <rental duration>,
+      "playback_duration_seconds": <playback duration>,
+      "license_duration_seconds": <license duration>,
+      "renewal_recovery_duration_seconds": <renewal recovery duration>,
+      "renewal_server_url": "<renewal server url>",
+      "renewal_delay_seconds": <renewal delay>,
+      "renewal_retry_interval_seconds": <renewal retry interval>,
+      "renew_with_usage": <renew with usage>
+   }
+}
+```
 
 ## <a name="json-message"></a>Zpráva JSON
-| Name | Hodnota | Description |
+| Název | Hodnota | Popis |
 | --- | --- | --- |
 | payload |Řetězec s kódováním base64 |Žádost o licenci odeslanou klientem |
 | content_id |Řetězec s kódováním base64 |Identifikátor použitý k odvození ID klíče a klíče obsahu pro každý content_key_specs. track_type |
@@ -76,7 +79,7 @@ Pokud existují existující zásady, není nutné zadávat žádné hodnoty ve 
 
 Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohledu na možnost use_policy_overrides_exclusively. 
 
-| Name | Hodnota | Description |
+| Název | Hodnota | Popis |
 | --- | --- | --- |
 | content_key_specs. track_type |řetězec |Název typu stopy. Je-li v žádosti o licenci zadán content_key_specs, nezapomeňte explicitně zadat všechny typy sledování. V důsledku tohoto selhání dojde k selhání při přehrání posledních 10 sekund. |
 | content_key_specs  <br/> security_level |UInt32 |Definuje požadavky na odolnost klienta pro přehrávání. <br/> – Vyžaduje se softwarově vycházející kryptografický modul s prázdným polem. <br/> – Vyžaduje se softwarová kryptografie a zakódováný dekodér. <br/> – Operace klíčového materiálu a kryptografie se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním. <br/> – Kryptografie a dekódování obsahu se musí provádět v rámci důvěryhodného spouštěcího prostředí s hardwarovým zálohováním.  <br/> – Kryptografie, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) se musí zpracovat v rámci důvěryhodného spouštěcího prostředí pro hardware. |
@@ -85,7 +88,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 | content_key_specs. key_id |Binární soubor řetězce kódovaný v kódování Base64, 16 bajtů |Jedinečný identifikátor pro klíč |
 
 ## <a name="policy-overrides"></a>Přepsání zásad
-| Name | Hodnota | Description |
+| Název | Hodnota | Popis |
 | --- | --- | --- |
 | policy_overrides. can_play |Logická hodnota, true nebo false |Indikuje, že přehrávání obsahu je povolené. Výchozí hodnota je false. |
 | policy_overrides. can_persist |Logická hodnota, true nebo false |Označuje, že licence může být trvalá pro nestálé úložiště pro použití v offline režimu. Výchozí hodnota je false. |
@@ -100,7 +103,7 @@ Každá hodnota content_key_specs musí být zadána pro všechny stopy bez ohle
 | policy_overrides. renew_with_usage |Logická hodnota, true nebo false |Indikuje, že licence se posílá k obnovení při zahájení používání. Toto pole se používá pouze v případě, že je can_renew true. |
 
 ## <a name="session-initialization"></a>Inicializace relace
-| Name | Hodnota | Description |
+| Název | Hodnota | Popis |
 | --- | --- | --- |
 | provider_session_token |Řetězec s kódováním base64 |Tento token relace se předává zpátky v licenci a existuje v následných obnoveních. Token relace není po relacích zachován. |
 | provider_client_token |Řetězec s kódováním base64 |Token klienta k odeslání zpět v odpovědi na licenci Pokud žádost o licenci obsahuje token klienta, tato hodnota se ignoruje. Token klienta přetrvá nad rámec licenčních relací. |
@@ -112,81 +115,85 @@ Media Services poskytuje rozhraní API .NET, která můžete použít ke konfigu
 ### <a name="classes-as-defined-in-the-media-services-net-sdk"></a>Třídy definované v sadě Media Services .NET SDK
 Následující třídy jsou definice těchto typů:
 
-    public class WidevineMessage
-    {
-        public WidevineMessage();
+```dotnetcli
+public class WidevineMessage
+{
+    public WidevineMessage();
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public AllowedTrackTypes? allowed_track_types { get; set; }
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public ContentKeySpecs[] content_key_specs { get; set; }
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public object policy_overrides { get; set; }
-    }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public AllowedTrackTypes? allowed_track_types { get; set; }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public ContentKeySpecs[] content_key_specs { get; set; }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public object policy_overrides { get; set; }
+}
 
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum AllowedTrackTypes
-    {
-        SD_ONLY = 0,
-        SD_HD = 1
-    }
-    public class ContentKeySpecs
-    {
-        public ContentKeySpecs();
+[JsonConverter(typeof(StringEnumConverter))]
+public enum AllowedTrackTypes
+{
+    SD_ONLY = 0,
+    SD_HD = 1
+}
+public class ContentKeySpecs
+{
+    public ContentKeySpecs();
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string key_id { get; set; }
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public RequiredOutputProtection required_output_protection { get; set; }
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public int? security_level { get; set; }
-        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string track_type { get; set; }
-    }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public string key_id { get; set; }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public RequiredOutputProtection required_output_protection { get; set; }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public int? security_level { get; set; }
+    [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+    public string track_type { get; set; }
+}
 
-    public class RequiredOutputProtection
-    {
-        public RequiredOutputProtection();
+public class RequiredOutputProtection
+{
+    public RequiredOutputProtection();
 
-        public Hdcp hdcp { get; set; }
-    }
+    public Hdcp hdcp { get; set; }
+}
 
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum Hdcp
-    {
-        HDCP_NONE = 0,
-        HDCP_V1 = 1,
-        HDCP_V2 = 2
-    }
+[JsonConverter(typeof(StringEnumConverter))]
+public enum Hdcp
+{
+    HDCP_NONE = 0,
+    HDCP_V1 = 1,
+    HDCP_V2 = 2
+}
+```
 
 ### <a name="example"></a>Příklad
 Následující příklad ukazuje, jak použít rozhraní API .NET ke konfiguraci jednoduché licence Widevine:
 
-    private static string ConfigureWidevineLicenseTemplate()
+```dotnetcli
+private static string ConfigureWidevineLicenseTemplate()
+{
+    var template = new WidevineMessage
     {
-        var template = new WidevineMessage
+        allowed_track_types = AllowedTrackTypes.SD_HD,
+        content_key_specs = new[]
         {
-            allowed_track_types = AllowedTrackTypes.SD_HD,
-            content_key_specs = new[]
+            new ContentKeySpecs
             {
-                new ContentKeySpecs
-                {
-                    required_output_protection = new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
-                    security_level = 1,
-                    track_type = "SD"
-                }
-            },
-            policy_overrides = new
-            {
-                can_play = true,
-                can_persist = true,
-                can_renew = false
+                required_output_protection = new RequiredOutputProtection { hdcp = Hdcp.HDCP_NONE},
+                security_level = 1,
+                track_type = "SD"
             }
-        };
+        },
+        policy_overrides = new
+        {
+            can_play = true,
+            can_persist = true,
+            can_renew = false
+        }
+    };
 
-        string configuration = JsonConvert.SerializeObject(template);
-        return configuration;
-    }
+    string configuration = JsonConvert.SerializeObject(template);
+    return configuration;
+}
+```
 
 ## <a name="additional-notes"></a>Další poznámky
 

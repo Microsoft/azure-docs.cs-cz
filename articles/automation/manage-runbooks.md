@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9202eae49175615c4fffcd0b006ddda6e8281292
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718304"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185241"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -34,7 +35,7 @@ Pomocí Azure Portal nebo Windows PowerShellu vytvořte nový Runbook v Azure Au
 
 ### <a name="create-a-runbook-with-powershell"></a>Vytvoření Runbooku pomocí PowerShellu
 
-K vytvoření prázdné sady Runbook použijte rutinu [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) . Pomocí `Type` parametru zadejte jeden z typů runbooků definovaných pro `New-AzAutomationRunbook` .
+K vytvoření prázdné sady Runbook použijte rutinu [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) . Pomocí `Type` parametru zadejte jeden z typů runbooků definovaných pro `New-AzAutomationRunbook` .
 
 Následující příklad ukazuje, jak vytvořit novou prázdnou sadu Runbook.
 
@@ -76,7 +77,7 @@ Pomocí následujícího postupu můžete do Azure Automation importovat soubor 
 
 ### <a name="import-a-runbook-with-windows-powershell"></a>Import Runbooku pomocí Windows PowerShellu
 
-Pomocí rutiny [Import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) importujte soubor skriptu jako koncept Runbooku. Pokud sada Runbook již existuje, import se nepovede, pokud nepoužijete `Force` parametr s rutinou.
+Pomocí rutiny [Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) importujte soubor skriptu jako koncept Runbooku. Pokud sada Runbook již existuje, import se nepovede, pokud nepoužijete `Force` parametr s rutinou.
 
 Následující příklad ukazuje, jak importovat soubor skriptu do sady Runbook.
 
@@ -191,7 +192,7 @@ Pokud se sada Runbook obvykle spouští v rámci časového omezení, skript imp
 
 ## <a name="work-with-multiple-subscriptions"></a>Práce s několika předplatnými
 
-Sada Runbook musí umožňovat práci s [předplatnými](automation-runbook-execution.md#subscriptions). Například pro zpracování více předplatných sada Runbook používá rutinu [Disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) . Tato rutina zajišťuje, že se kontext ověřování nenačte z jiné sady Runbook spuštěné ve stejném izolovaném prostoru (sandbox). Sada Runbook také používá `Get-AzContext` rutinu k načtení kontextu aktuální relace a přiřadí ji k proměnné `$AzureContext` .
+Sada Runbook musí umožňovat práci s [předplatnými](automation-runbook-execution.md#subscriptions). Například pro zpracování více předplatných sada Runbook používá rutinu [Disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) . Tato rutina zajišťuje, že se kontext ověřování nenačte z jiné sady Runbook spuštěné ve stejném izolovaném prostoru (sandbox). Sada Runbook také používá `Get-AzContext` rutinu k načtení kontextu aktuální relace a přiřadí ji k proměnné `$AzureContext` .
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -256,7 +257,7 @@ Když vytváříte nebo importujete novou sadu Runbook, je nutné ji publikovat,
 
 ### <a name="publish-a-runbook-using-powershell"></a>Publikování Runbooku pomocí PowerShellu
 
-K publikování Runbooku použijte rutinu [Publish-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) . 
+K publikování Runbooku použijte rutinu [Publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) . 
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -304,7 +305,7 @@ Případně můžete zobrazit souhrn podrobností úlohy pro konkrétní Runbook
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Načtení stavů úloh pomocí PowerShellu
 
-Pomocí rutiny [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) můžete načíst úlohy vytvořené pro Runbook a podrobnosti konkrétní úlohy. Pokud spustíte sadu Runbook pomocí nástroje `Start-AzAutomationRunbook` , vrátí výslednou úlohu. K načtení výstupu úlohy použijte [příkaz Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) .
+Pomocí rutiny [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) můžete načíst úlohy vytvořené pro Runbook a podrobnosti konkrétní úlohy. Pokud spustíte sadu Runbook pomocí nástroje `Start-AzAutomationRunbook` , vrátí výslednou úlohu. K načtení výstupu úlohy použijte [příkaz Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) .
 
 Následující příklad načte poslední úlohu ukázkového Runbooku a zobrazí její stav, hodnoty zadané pro parametry Runbooku a výstup úlohy.
 

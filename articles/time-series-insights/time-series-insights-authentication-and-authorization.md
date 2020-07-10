@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 94fef951bf1c5c9d69a9b49cd9465d7d248c74a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9668307047771304c2d3785dc7ff3f760171a43f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099217"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181994"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
@@ -91,7 +91,7 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
 > [!IMPORTANT]
 > Pokud Azure Active Directory používáte MSAL [Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/azuread-dev/active-directory-authentication-libraries) , přečtěte si o [migraci do](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration).
 
-    See our [Manage GA reference data for an Azure Time Series Insights environment using C#](time-series-insights-manage-reference-data-csharp.md) article to learn more.
+   Další informace najdete v tématu [Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocí článku jazyka C#](time-series-insights-manage-reference-data-csharp.md) .
 
 ## <a name="common-headers-and-parameters"></a>Společné hlavičky a parametry
 
@@ -100,7 +100,7 @@ Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP
 > [!TIP]
 > Další informace o tom, jak využívat rozhraní REST API, dělat požadavky HTTP a zpracovávat odpovědi HTTP, najdete v referenčních informacích k [Azure REST API](https://docs.microsoft.com/rest/api/azure/) .
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování uživatelů
 
 Aby bylo možné provádět ověřené dotazy proti [Time Series Insights rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/), musí se v [autorizační hlavičce](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) předávat platný token OAuth 2,0 s použitím klienta REST podle vašeho výběru (post, JavaScript, C#).
 
@@ -111,7 +111,7 @@ Aby bylo možné provádět ověřené dotazy proti [Time Series Insights rozhra
 
 Požadované hlavičky požadavku jsou popsány níže.
 
-| Požadovaná hlavička žádosti | Description |
+| Požadovaná hlavička žádosti | Popis |
 | --- | --- |
 | Autorizace | Chcete-li provést ověření pomocí Time Series Insights, musí být do **autorizační** hlavičky předána platný nosný token OAuth 2,0. |
 
@@ -122,7 +122,7 @@ Požadované hlavičky požadavku jsou popsány níže.
 
 Volitelné hlavičky požadavku jsou popsány níže.
 
-| Nepovinná hlavička požadavku | Description |
+| Nepovinná hlavička požadavku | Popis |
 | --- | --- |
 | Typ obsahu | `application/json`podporuje se jenom. |
 | x-MS-Client-Request-ID | ID žádosti klienta. Služba zaznamená tuto hodnotu. Umožňuje službě sledovat operace napříč službami. |
@@ -131,7 +131,7 @@ Volitelné hlavičky požadavku jsou popsány níže.
 
 Volitelné, ale Doporučené hlavičky odpovědí jsou popsány níže.
 
-| Hlavička odpovědi | Description |
+| Hlavička odpovědi | Popis |
 | --- | --- |
 | Typ obsahu | `application/json`Podporuje se jenom. |
 | x-MS-Request-ID | ID žádosti generované serverem Dá se použít ke kontaktování žádosti Microsoftu o vyšetření žádosti. |

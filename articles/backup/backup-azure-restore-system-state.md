@@ -1,25 +1,24 @@
 ---
 title: Obnovení stavu systému na Windows Server
-description: Podrobný popis postupu obnovení stavu systému Windows Server ze zálohy v Azure.
-ms.reviewer: saurse
+description: Podrobné vysvětlení obnovení stavu systému Windows Server ze zálohy v Azure.
 ms.topic: conceptual
-ms.date: 08/18/2017
-ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610781"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184450"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
-Tento článek vysvětluje, jak obnovit zálohy stavu systému Windows Server z trezoru služby Azure Recovery Services. Chcete-li obnovit stav systému, je nutné mít zálohu stavu systému (vytvořenou pomocí pokynů v části [stav systému zálohování](backup-azure-system-state.md#back-up-windows-server-system-state)) a ujistěte se, že máte nainstalovanou [nejnovější verzi agenta Microsoft Azure Recovery Services (MARS)](https://aka.ms/azurebackup_agent). Obnova dat stavu systému Windows Server z trezoru služby Azure Recovery Services je proces se dvěma kroky:
+Tento článek vysvětluje, jak obnovit zálohy stavu systému Windows Server z trezoru služby Azure Recovery Services. Chcete-li obnovit stav systému, je nutné mít zálohu stavu systému (vytvořenou pomocí pokynů v části [stav systému zálohování](backup-azure-system-state.md#back-up-windows-server-system-state)) a ujistěte se, že jste nainstalovali [nejnovější verzi agenta Microsoft Azure Recovery Services (MARS)](https://aka.ms/azurebackup_agent). Obnova dat stavu systému Windows Server z trezoru služby Azure Recovery Services je proces se dvěma kroky:
 
 1. Obnoví stav systému jako soubory z Azure Backup. Když obnovujete stav systému jako soubory z Azure Backup, můžete:
    * Obnovte stav systému na stejný server, na kterém byly zálohy pořízeny, nebo
    * Obnovte soubor stavu systému na alternativním serveru.
 
-2. Použijte obnovené soubory stavu systému na Windows Server.
+2. Pomocí nástroje Zálohování Windows Serveru použijte obnovené soubory stavu systému na Windows Server.
 
 ## <a name="recover-system-state-files-to-the-same-server"></a>Obnovení souborů se stavem systému na stejný server
 
@@ -51,7 +50,7 @@ Následující postup vysvětluje, jak vrátit konfiguraci Windows serveru do p�
 
     Azure Backup připojí místní bod obnovení a použije ho jako svazek pro obnovení.
 
-7. V dalším podokně určete cílové umístění obnovených souborů stavu systému a kliknutím na tlačítko **Procházet** otevřete Průzkumníka Windows a vyhledejte soubory a složky, které chcete použít. Možnost **vytvoří kopie, takže máte obě verze**, vytvoří kopie jednotlivých souborů v existujícím archivu souborů stavu systému místo vytvoření kopie celého archivu stavu systému.
+7. V dalším podokně určete cílové umístění obnovených souborů stavu systému. Pak klikněte na tlačítko **Procházet** a otevřete Průzkumníka Windows a vyhledejte soubory a složky, které chcete. Možnost **vytvoří kopie, takže máte obě verze**, vytvoří kopie jednotlivých souborů v existujícím archivu souborů stavu systému místo vytvoření kopie celého archivu stavu systému.
 
     ![Možnosti obnovení](./media/backup-azure-restore-system-state/recover-as-files.png)
 
@@ -61,7 +60,7 @@ Následující postup vysvětluje, jak vrátit konfiguraci Windows serveru do p�
 
 9. Zkopírujte adresář *WindowsImageBackup* do umístění pro obnovení do nedůležitého svazku serveru. Nepostradatelným svazkem je obvykle svazek operačního systému Windows.
 
-10. Po úspěšném obnovení postupujte podle kroků v části, [použijte obnovené soubory stavu systému na Windows Server](backup-azure-restore-system-state.md), abyste mohli dokončit proces obnovení stavu systému.
+10. Po úspěšném obnovení postupujte podle kroků v části, [použijte obnovený stav systému na Windows serveru](#apply-restored-system-state-on-a-windows-server), abyste mohli dokončit proces obnovení stavu systému.
 
 ## <a name="recover-system-state-files-to-an-alternate-server"></a>Obnovení souborů stavu systému na alternativním serveru
 
@@ -71,7 +70,7 @@ Terminologie použitá v těchto krocích zahrnuje:
 
 * *Zdrojový počítač* – původní počítač, ze kterého byla provedena záloha, a který aktuálně není k dispozici.
 * *Cílový počítač* – počítač, na který se data obnovují.
-* *Vzorový trezor* – Recovery Services trezor, ke kterému jsou zaregistrované *zdrojový počítač* a *cílový počítač* . <br/>
+* *Vzorový trezor* – Recovery Services trezor, ke kterému jsou zaregistrované *zdrojový počítač* a *cílový počítač* .
 
 > [!NOTE]
 > Zálohy provedené z jednoho počítače nelze obnovit do počítače, na kterém je spuštěna dřívější verze operačního systému. Například zálohy pořízené z počítače se systémem Windows Server 2016 nelze obnovit do systému Windows Server 2012 R2. Je však možné, že se jedná o funkci INVERT. K obnovení systému Windows Server 2016 můžete použít zálohy z Windows Serveru 2012 R2.
@@ -115,6 +114,61 @@ Terminologie použitá v těchto krocích zahrnuje:
 
 Jakmile obnovíte Stav systému jako soubory pomocí služby Azure Recovery Services agent, použijte nástroj Zálohování Windows Serveru a nainstalujte obnovený stav systému na Windows Server. Nástroj Zálohování Windows Serveru je již na serveru k dispozici. Následující kroky vysvětlují, jak použít obnovený stav systému.
 
+1. Otevřete modul snap-in Zálohování Windows Serveru. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **zálohování Windows serveru**v počítači nebo na serveru.
+
+    Aplikace klasické pracovní plochy se zobrazí ve výsledcích hledání. Pokud se nezobrazí nebo dojde k chybám při otevření aplikace, je třeba nainstalovat **funkce zálohování Windows serveru**a závislé komponenty pod ní, které jsou k dispozici v **Průvodci přidáním funkcí** v **Správce serveru**.
+
+1. V modulu snap-in vyberte **místní zálohování**.
+
+    ![Vyberte místní zálohování, ze kterého se má obnovit.](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
+
+1. V konzole místní zálohování klikněte v **podokně akce**na **obnovit** a otevřete Průvodce obnovením.
+
+1. Vyberte možnost **zálohování uložené v jiném umístění**a klikněte na tlačítko **Další**.
+
+   ![Výběr obnovení na jiný server](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
+
+1. Když zadáte typ umístění, vyberte **Vzdálená sdílená složka** , pokud se vaše záloha stavu systému obnovila na jiný server. Pokud se stav systému obnovil místně, vyberte **místní jednotky**.
+
+    ![Vyberte, jestli se má obnovení z místního serveru nebo jiného.](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
+
+1. Zadejte cestu k adresáři *WindowsImageBackup* nebo vyberte místní jednotku obsahující tento adresář (například D:\WindowsImageBackup), která se obnovila jako součást obnovení souborů stavu systému pomocí agenta Azure Recovery Services a klikněte na **Další**.
+
+    ![Cesta ke sdílenému souboru](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
+
+1. Vyberte verzi stavu systému, kterou chcete obnovit, a klikněte na tlačítko **Další**.
+
+1. V podokně vybrat typ obnovení vyberte možnost **stav systému** a klikněte na tlačítko **Další**.
+
+1. Pro umístění obnovení stavu systému vyberte možnost **původní umístění**a klikněte na tlačítko **Další**.
+
+    Pokud obnovujete řadič domény, zobrazí se následující další možnost:
+
+    ![Umístění pro obnovení stavu systému](./media/backup-azure-restore-system-state/location-for-system-state-recovery.png)
+
+    >[!NOTE]
+    >Pokud výslovně chcete provést autoritativní obnovení všech dat služby Active Directory, vyberte možnost provést autoritativní obnovení souborů služby Active Directory.
+
+1. Zkontrolujte podrobnosti o potvrzení, ověřte nastavení restartování a kliknutím na **obnovit** použijte obnovené soubory stavu systému.
+
+    ![Spustit obnovení souborů stavu systému](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
+
+    >[!NOTE]
+    >Nevybírejte možnost **automaticky restartovat server** , pokud provádíte obnovení v režimu DSRM.
+
+1. Po úspěšném dokončení obnovení je nutné restartovat server v normálním režimu. Otevřete příkazový řádek a zadejte následující příkaz:`bcdedit /deletevalue safeboot`
+1. Restartujte server.
+
+## <a name="special-considerations-for-system-state-recovery-on-a-domain-controller"></a>Zvláštní požadavky na obnovení stavu systému v řadiči domény
+
+Zálohování stavu systému zahrnuje data služby Active Directory. Pomocí následujících kroků obnovte Doména služby Active Directory služby (služba AD DS) z aktuálního stavu do předchozího stavu. Tento typ obnovení je možné provést ve dvou scénářích:
+
+* Obnova všech dat služby Active Directory, když v doménové struktuře nejsou žádné funkční řadiče domény
+* Obnovení části dat služby Active Directory, když jsou tyto objekty smazány nebo poškozeny
+
+Tento článek bude projednávat jenom první scénář, který volá nonauthorative obnovení služba AD DS a autoritativní obnovení složky SYSVOL.  Pokud potřebujete provést druhý scénář (kde jsou stále funkční řadiče domény, ale potřebujete obnovit konkrétní objekty služby AD), podívejte se na [tyto pokyny](https://support.microsoft.com/help/840001/how-to-restore-deleted-user-accounts-and-their-group-memberships-in-ac).
+
+1. Pomocí následujících kroků [obnovte soubory stavu systému na alternativním serveru](#recover-system-state-files-to-an-alternate-server).
 1. Následující příkazy použijte k restartování serveru v *režimu opravy adresářových služeb*. Na příkazovém řádku se zvýšenými oprávněními:
 
     ```cmd
@@ -122,44 +176,31 @@ Jakmile obnovíte Stav systému jako soubory pomocí služby Azure Recovery Serv
     Shutdown /r /t 0
     ```
 
-2. Po restartování otevřete modul snap-in Zálohování Windows Serveru. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **zálohování Windows serveru**v počítači nebo na serveru.
+1. Chcete-li obnovit službu Active Directory jako součást obnovení stavu systému, můžete zvolit jednu ze dvou metod:
 
-    Aplikace klasické pracovní plochy se zobrazí ve výsledcích hledání. Pokud se nezobrazí nebo dojde k chybám při otevírání aplikace, je třeba nainstalovat **funkce zálohování Windows serveru**a závislé komponenty pod ní, které jsou k dispozici v **Průvodci přidáním funkcí** v **Správce serveru**.
+    * Podle výše uvedených pokynů [použijte obnovený stav systému na Windows serveru](#apply-restored-system-state-on-a-windows-server) s nástrojem zálohování Windows serveru.
 
-3. V modulu snap-in vyberte **místní zálohování**.
+        >[!NOTE]
+        >Pokud obnovujete všechna data služby Active Directory (a v doménové struktuře nezbývá žádné funkční řadiče domény), v kroku 9 výše se ujistěte, že jste vybrali **provést autoritativní obnovení souborů služby Active Directory**.
 
-    ![Vyberte místní zálohování, ze kterého se má obnovit.](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
+    * K provedení obnovení z příkazového řádku použijte nástroj [Wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) .
 
-4. V konzole místní zálohování klikněte v **podokně akce**na **obnovit** a otevřete Průvodce obnovením.
+        Budete potřebovat identifikátor verze zálohy, kterou chcete použít. Seznam identifikátorů verzí můžete získat spuštěním tohoto příkazu:
 
-5. Vyberte možnost **zálohování uložené v jiném umístění**a klikněte na tlačítko **Další**.
+        ```cmd
+        wbadmin get versions -backuptarget <servername\sharename>
+        ```
 
-   ![Výběr obnovení na jiný server](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
+        Pak použijte tento identifikátor verze ke spuštění obnovení.
 
-6. Když zadáte typ umístění, vyberte **Vzdálená sdílená složka** , pokud se vaše záloha stavu systému obnovila na jiný server. Pokud se stav systému obnovil místně, vyberte **místní jednotky**.
+        Pokud například chcete provést [nonauthorative obnovení služba AD DS a autoritativní obnovení složky SYSVOL](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) pomocí zálohy od 04/30/2020 v 9:00 am, která je uložená ve sdíleném prostředku `\\servername\share` pro `server01` , zadejte:
 
-    ![Vyberte, jestli se má obnovení z místního serveru nebo jiného.](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
+        ```cmd
+        wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol
+        ```
 
-7. Zadejte cestu k adresáři *WindowsImageBackup* nebo vyberte místní jednotku obsahující tento adresář (například D:\WindowsImageBackup), která se obnovila jako součást obnovení souborů stavu systému pomocí agenta Azure Recovery Services a klikněte na **Další**.
-
-    ![Cesta ke sdílenému souboru](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
-
-8. Vyberte verzi stavu systému, kterou chcete obnovit, a klikněte na tlačítko **Další**.
-
-9. V podokně vybrat typ obnovení vyberte možnost **stav systému** a klikněte na tlačítko **Další**.
-
-10. Pro umístění obnovení stavu systému vyberte možnost **původní umístění**a klikněte na tlačítko **Další**.
-
-11. Zkontrolujte podrobnosti o potvrzení, ověřte nastavení restartování a kliknutím na **obnovit** použijte obnovené soubory stavu systému.
-
-    ![Spustit obnovení souborů stavu systému](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
-
-## <a name="special-considerations-for-system-state-recovery-on-active-directory-server"></a>Zvláštní požadavky na obnovení stavu systému na serveru služby Active Directory
-
-Zálohování stavu systému zahrnuje data služby Active Directory. Pomocí následujících kroků obnovte Doména služby Active Directory služby (služba AD DS) z aktuálního stavu do předchozího stavu.
-
-1. Restartujte řadič domény v režimu obnovení adresářových služeb (DSRM).
-2. Použijte [následující postup k](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) obnovení služba AD DS pomocí rutin zálohování Windows serveru.
+1. Po úspěšném dokončení obnovení byste měli restartovat server v normálním režimu. Otevřete příkazový řádek a zadejte následující příkaz:`bcdedit /deletevalue safeboot`
+1. Restartujte server.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Řešení potíží s nezdařeným obnovením stavu systému
 

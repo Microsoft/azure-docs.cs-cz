@@ -5,11 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 95e3fc12a77124c32e220d700a112f52cbad08fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801882"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183150"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
@@ -52,7 +53,7 @@ K této chybě může dojít z následujících důvodů:
 
 ### <a name="issue"></a>Problém
 
-Pro účet Automation se zobrazí staré aktualizace, které chybí, i když byly nahrazené. Nahrazená aktualizace je ta, kterou nemusíte instalovat, protože je k dispozici pozdější aktualizace, která opravuje stejnou chybu zabezpečení. Update Management ignoruje nahrazenou aktualizaci, takže ji nelze použít ve prospěch nahrazující aktualizace. Informace o souvisejícím problému najdete v tématu [aktualizace je nahrazená](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+Pro účet Automation se zobrazí staré aktualizace, které chybí, i když byly nahrazené. Nahrazená aktualizace je ta, kterou nemusíte instalovat, protože je k dispozici pozdější aktualizace, která opravuje stejnou chybu zabezpečení. Update Management ignoruje nahrazenou aktualizaci, takže ji nelze použít ve prospěch nahrazující aktualizace. Informace o souvisejícím problému najdete v tématu [aktualizace je nahrazená](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
 
 ### <a name="cause"></a>Příčina
 
@@ -155,7 +156,7 @@ Chcete-li zaregistrovat poskytovatele prostředků služby Automation, postupujt
 
 4. V seznamu poskytovatelů prostředků ověřte, že je zaregistrován poskytovatel prostředků Microsoft. Automation.
 
-5. Pokud není v seznamu uveden, zaregistrujte poskytovatele Microsoft. Automation podle kroků v části [řešení chyb pro registraci poskytovatele prostředků](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+5. Pokud není v seznamu uveden, zaregistrujte poskytovatele Microsoft. Automation podle kroků v části [řešení chyb pro registraci poskytovatele prostředků](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>Scénář: naplánovaná aktualizace s dynamickým plánem nenalezla některé počítače.
 
@@ -177,7 +178,7 @@ Tento problém může mít jednu z následujících příčin:
 
 Pokud vaše předplatné není pro poskytovatele prostředků služby Automation nakonfigurované, nemůžete na počítače v tomto předplatném dotazovat ani načítat informace. K ověření registrace předplatného použijte následující postup.
 
-1. V [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)přejděte na seznam služeb Azure.
+1. V [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)přejděte na seznam služeb Azure.
 
 2. Vyberte **všechny služby**a potom vyberte **předplatná** ve skupině obecné služby. 
 
@@ -187,7 +188,7 @@ Pokud vaše předplatné není pro poskytovatele prostředků služby Automation
 
 5. Ověřte, že je zaregistrován poskytovatel prostředků Microsoft. Automation.
 
-6. Pokud není v seznamu uveden, zaregistrujte poskytovatele Microsoft. Automation podle kroků v části [řešení chyb pro registraci poskytovatele prostředků](/azure/azure-resource-manager/resource-manager-register-provider-errors).
+6. Pokud není v seznamu uveden, zaregistrujte poskytovatele Microsoft. Automation podle kroků v části [řešení chyb pro registraci poskytovatele prostředků](../../azure-resource-manager/templates/error-register-resource-provider.md).
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Počítače nejsou k dispozici nebo nejsou při spuštění plánu správně označeny.
 
@@ -195,9 +196,9 @@ Následující postup použijte v případě, že je vaše předplatné nakonfig
 
 1. V Azure Portal otevřete účet Automation a vyberte **Update Management**.
 
-2. Zkontrolujte [historii Update Management](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment) a určete přesný čas spuštění nasazení aktualizace. 
+2. Zkontrolujte [historii Update Management](../manage-update-multi.md#view-results-of-an-update-deployment) a určete přesný čas spuštění nasazení aktualizace. 
 
-3. Pro počítače, u kterých se domníváte, že Update Management, použijte k [Vyhledání změn počítačů](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details)službu Azure Resource Graph (ARG). 
+3. Pro počítače, u kterých se domníváte, že Update Management, použijte k [Vyhledání změn počítačů](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details)službu Azure Resource Graph (ARG). 
 
 4. Před spuštěním nasazení aktualizace hledejte změny po značnou dobu, například jeden den.
 
@@ -225,13 +226,13 @@ Tady jsou možné příčiny tohoto problému:
 
 #### <a name="incorrect-access-on-selected-scopes"></a>Nesprávný přístup pro vybrané obory
 
-Azure Portal zobrazí jenom počítače, pro které máte v daném oboru přístup pro zápis. Pokud nemáte správný přístup k oboru, přečtěte si téma [kurz: udělení přístupu uživatelům k prostředkům Azure pomocí RBAC a Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+Azure Portal zobrazí jenom počítače, pro které máte v daném oboru přístup pro zápis. Pokud nemáte správný přístup k oboru, přečtěte si téma [kurz: udělení přístupu uživatelům k prostředkům Azure pomocí RBAC a Azure Portal](../../role-based-access-control/quickstart-assign-role-user-portal.md).
 
 #### <a name="arg-query-doesnt-return-expected-machines"></a>ARG dotaz nevrací očekávané počítače
 
 Použijte následující postup, chcete-li zjistit, zda dotazy fungují správně.
 
-1. Spusťte dotaz ARG, který je uveden níže v okně Průzkumník diagramů prostředků v Azure Portal. Tento dotaz napodobá filtrům, které jste vybrali při vytváření dynamické skupiny v Update Management. Viz [použití dynamických skupin s Update Management](https://docs.microsoft.com/azure/automation/automation-update-management-groups). 
+1. Spusťte dotaz ARG, který je uveden níže v okně Průzkumník diagramů prostředků v Azure Portal. Tento dotaz napodobá filtrům, které jste vybrali při vytváření dynamické skupiny v Update Management. Viz [použití dynamických skupin s Update Management](../automation-update-management-groups.md). 
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -266,7 +267,7 @@ Počítače se zobrazí ve výsledcích dotazu ARG, ale ve verzi Preview dynamic
 
 4. Ověřte, jestli je hybridní pracovní proces pro tento počítač přítomen.
 
-5. Pokud počítač není nastavený jako hybridní pracovní proces, proveďte úpravy pomocí pokynů v tématu [Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker).
+5. Pokud počítač není nastavený jako hybridní pracovní proces, proveďte úpravy pomocí pokynů v tématu [Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md).
 
 6. Připojte počítač ke skupině Hybrid Runbook Worker.
 
@@ -342,7 +343,7 @@ K této chybě dojde, když vytvoříte nasazení aktualizace, které obsahuje v
 
 ### <a name="resolution"></a>Řešení
 
-K naplánování těchto položek použijte následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) s `ForUpdateConfiguration` parametrem. Pak použijte rutinu [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) a předejte do parametru počítače v druhém tenantovi `NonAzureComputer` . Následující příklad ukazuje, jak to provést:
+K naplánování těchto položek použijte následující alternativní řešení. K vytvoření plánu můžete použít rutinu [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) s `ForUpdateConfiguration` parametrem. Pak použijte rutinu [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) a předejte do parametru počítače v druhém tenantovi `NonAzureComputer` . Následující příklad ukazuje, jak to provést:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -420,7 +421,7 @@ Ve Windows se aktualizace nainstalují automaticky, jakmile budou k dispozici. T
 
 U Update Management klientů doporučujeme nastavit tento klíč na 3: `auto download but do not auto install` .
 
-Další informace najdete v tématu [Konfigurace automatických aktualizací](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
+Další informace najdete v tématu [Konfigurace automatických aktualizací](/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
 
 ## <a name="scenario-machine-is-already-registered-to-a-different-account"></a><a name="machine-already-registered"></a>Scénář: počítač je už zaregistrovaný na jiný účet.
 
@@ -574,9 +575,9 @@ Pokud nemůžete vyřešit problém s opravou, vytvořte kopii souboru **/var/op
 
 ### <a name="machines-dont-install-updates"></a>Na počítačích se neinstalují aktualizace
 
-Zkuste aktualizace spustit přímo na počítači. Pokud počítač nemůže aktualizace použít, Projděte si [seznam potenciálních chyb v Průvodci odstraňováním potíží](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult).
+Zkuste aktualizace spustit přímo na počítači. Pokud počítač nemůže aktualizace použít, Projděte si [seznam potenciálních chyb v Průvodci odstraňováním potíží](#hresult).
 
-Pokud se aktualizace spouštějí místně, zkuste odebrat a znovu nainstalovat agenta v počítači podle pokynů uvedených v části [Odebrání virtuálního počítače z Update Management](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-browse#clean-up-resources).
+Pokud se aktualizace spouštějí místně, zkuste odebrat a znovu nainstalovat agenta v počítači podle pokynů uvedených v části [Odebrání virtuálního počítače z Update Management](../automation-remove-vms-from-update-management.md).
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Ví, že aktualizace jsou k dispozici, ale nezobrazují se jako dostupné na mých počítačích
 
@@ -592,11 +593,11 @@ Nejsou-li aktualizace schváleny ve službě WSUS, nejsou nainstalovány. Neschv
 
 ### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>Aktualizace se zobrazují jako nainstalované, ale na počítači je nemůžu najít
 
-Aktualizace se často nahrazují jinými aktualizacemi. Další informace najdete v tématu [aktualizace je nahrazená](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) v Průvodci odstraňováním potíží s web Windows Update.
+Aktualizace se často nahrazují jinými aktualizacemi. Další informace najdete v tématu [aktualizace je nahrazená](/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer) v Průvodci odstraňováním potíží s web Windows Update.
 
 ### <a name="installing-updates-by-classification-on-linux"></a>Instalace aktualizací podle klasifikace v Linuxu
 
-Pro nasazování aktualizací v Linuxu podle klasifikace (důležité aktualizace a aktualizace zabezpečení) platí důležité výhody a rizika, a to zejména pro CentOS. Tato omezení jsou popsaná na [stránce přehled Update Management](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2).
+Pro nasazování aktualizací v Linuxu podle klasifikace (důležité aktualizace a aktualizace zabezpečení) platí důležité výhody a rizika, a to zejména pro CentOS. Tato omezení jsou popsaná na [stránce přehled Update Management](../automation-update-management.md#linux).
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 se konzistentně schází.
 

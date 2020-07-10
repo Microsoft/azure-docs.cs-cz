@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2d16bdca18b7fc0afab2a3deb325d1a75be3bb8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834624"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185156"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>Správa aktualizací pro několik virtuálních počítačů
 
-Pomocí Azure Automation Update Management můžete spravovat aktualizace a opravy pro virtuální počítače s Windows a Linux. Z účtu [Azure Automation](automation-offering-get-started.md) můžete:
+Pomocí Azure Automation Update Management můžete spravovat aktualizace a opravy pro virtuální počítače s Windows a Linux. Z účtu [Azure Automation](./index.yml) můžete:
 
 - Povolte virtuální počítače pro správu aktualizací.
 - Vyhodnotit stav dostupných aktualizací
@@ -73,12 +74,12 @@ Agenti, kteří jsou nainstalováni na virtuálních počítačích a počítač
 
 Následující tabulka popisuje připojené zdroje, které Update Management podporuje:
 
-| Připojený zdroj | Podporuje se | Description |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| Agenti systému Windows |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a pak inicializuje instalaci požadovaných aktualizací. |
-| Agenti systému Linux |Yes |Update Management shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
-| Skupina pro správu Operations Manageru |Yes |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu. |
-| Účet služby Azure Storage |No |Azure Storage neobsahují informace o aktualizacích systému. |
+| Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a pak inicializuje instalaci požadovaných aktualizací. |
+| Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
+| Skupina pro správu Operations Manageru |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu. |
+| Účet služby Azure Storage |Ne |Azure Storage neobsahují informace o aktualizacích systému. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 
@@ -121,7 +122,7 @@ V podokně **nové nasazení aktualizací** zadejte následující informace:
   - Balíčky funkcí
   - Aktualizace Service Pack
   - Aktualizace definic
-  - nástroje
+  - Nástroje
   - Aktualizace
 
 - **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku Zahrnout nebo vyloučit. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o způsobu zpracování zařazení najdete v tématu [Naplánování nasazení aktualizací](automation-tutorial-update-management.md#schedule-an-update-deployment).
@@ -143,7 +144,7 @@ V podokně **nové nasazení aktualizací** zadejte následující informace:
 
 - **Řízení restartování** – toto nastavení určuje, jak se budou zpracovávat restartování pro nasazení aktualizace.
 
-   |Možnost|Description|
+   |Možnost|Popis|
    |---|---|
    |Restartovat v případě potřeby| **(Výchozí)** V případě potřeby se iniciuje restart, pokud je okno údržby povoleno.|
    |Vždy restartovat|Restart se iniciuje bez ohledu na to, jestli je nějaký povinný. |

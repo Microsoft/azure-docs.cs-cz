@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75c6f8ec8410ff90b3da4fb6a50c9ef8ba7d1618
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196378"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184615"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 
@@ -39,8 +39,8 @@ Mezipaměť Azure pro Redis je k dispozici na následujících úrovních:
 
 | Úroveň | Popis |
 |---|---|
-Základní | Mezipaměť s jedním uzlem. Tato úroveň podporuje více velikostí paměti (250 MB až 53 GB) a je ideální pro vývoj a testování a méně důležité úlohy. Vrstva Basic nemá žádnou smlouvu o úrovni služeb (SLA). |
-| Standard | Replikovaná mezipaměť v konfiguraci se dvěma uzly, primární a sekundární, spravovaná pomocí Azure s vysokou dostupností (99,9%) |
+Basic | Mezipaměť s jedním uzlem. Tato úroveň podporuje více velikostí paměti (250 MB až 53 GB) a je ideální pro vývoj a testování a méně důležité úlohy. Vrstva Basic nemá žádnou smlouvu o úrovni služeb (SLA). |
+| Standard | Replikovaná mezipaměť v konfiguraci se dvěma uzly, primární nebo replika spravovaná pomocí Azure s vysokou dostupností (99,9%) |
 | Premium | Úroveň Premium je úroveň pro podnik připravený na úrovni podniku. Mezipaměti vrstvy Premium podporují více funkcí a mají větší propustnost s nižší latencí. Mezipaměti ve vrstvě Premium se nasazují na výkonnější hardware a poskytují lepší výkon v porovnání s vrstvou Basic nebo Standard. Tato výhoda znamená, že propustnost mezipaměti stejné velikosti bude vyšší v porovnání s úrovní Standard. |
 
 > [!TIP]
@@ -53,9 +53,9 @@ Mezipaměť můžete po vytvoření škálovat až do vyšší úrovně. Škálo
 
 Stránka s [cenami Azure cache for Redis](https://azure.microsoft.com/pricing/details/cache/) poskytuje podrobné porovnání každé úrovně. V následující tabulce jsou popsány některé funkce podporované jednotlivými vrstvami:
 
-| Popis funkce | Premium | Standard | Základní |
+| Popis funkce | Premium | Standard | Basic |
 | ------------------- | :-----: | :------: | :---: |
-| [Smlouvy o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
+| [Smlouva SLA (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
 | [Trvalost dat Redis](cache-how-to-premium-persistence.md) |✔|-|-|
 | [Cluster Redis](cache-how-to-premium-clustering.md) |✔|-|-|
 | [Zabezpečení prostřednictvím pravidel brány firewall](cache-configure.md#firewall) |✔|✔|✔|
@@ -71,6 +71,6 @@ Stránka s [cenami Azure cache for Redis](https://azure.microsoft.com/pricing/de
 * [Rychlý Start webové aplikace v ASP.NET](cache-web-app-howto.md) Vytvořte jednoduchou webovou aplikaci v ASP.NET, která používá Azure cache pro Redis.
 * [Rychlý Start .NET](cache-dotnet-how-to-use-azure-redis-cache.md) Vytvořte aplikaci .NET, která používá službu Azure cache pro Redis.
 * [Rychlý Start .NET Core](cache-dotnet-core-quickstart.md) Vytvořte aplikaci .NET Core, která používá službu Azure cache pro Redis.
-* [Rychlý Start pro Node. js](cache-nodejs-get-started.md) Vytvořte jednoduchou aplikaci Node. js, která používá službu Azure cache pro Redis.
+* [Rychlý startNode.js](cache-nodejs-get-started.md) Vytvořte jednoduchou aplikaci Node.js, která používá mezipaměť Azure pro Redis.
 * [Rychlý Start Java](cache-java-get-started.md) Vytvořte jednoduchou aplikaci Java, která používá Azure cache pro Redis.
 * [Rychlý Start Pythonu](cache-python-get-started.md) Vytvořte aplikaci v Pythonu, která používá službu Azure cache pro Redis.

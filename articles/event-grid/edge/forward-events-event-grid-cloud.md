@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfe150a45c70bc5bed18f8e929c9567905cd38f5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844713"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171597"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Kurz: přeposílání událostí do cloudu Event Grid
 
@@ -104,7 +103,7 @@ Například pokud jste vytvořili téma s názvem `testegcloudtopic` v západní
    >[!NOTE]
    > **EndpointUrl** určuje, že adresa URL tématu Event Grid v cloudu. **SasKey** odkazuje na klíč tématu Event Grid cloudu. Hodnota v **části** prokládá se použije k označení všech odchozích událostí, které se mají Event Grid. To může být užitečné při odeslání do tématu Event Grid domény. Další informace o Event Grid doméně najdete v tématu věnovaném [doménám událostí](../event-domains.md) .
 
-    Třeba
+    Příklad:
   
     ```json
         {

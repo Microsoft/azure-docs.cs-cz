@@ -5,15 +5,14 @@ author: arduppal
 manager: brymat
 ms.author: arduppal
 ms.reviewer: spelluru
-ms.date: 12/13/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9389e0aff04baa18cb216f2a7ab6da42eb7031f2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77086604"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171427"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Kurz: reakce na události Blob Storage v IoT Edge (Preview)
 V tomto článku se dozvíte, jak nasadit modul Azure Blob Storage do služby IoT, který by sloužil jako Event Grid Vydavatel k posílání událostí při vytváření objektů BLOB a odstraňování objektů blob do Event Grid.  
@@ -38,7 +37,7 @@ Existuje několik způsobů, jak nasadit moduly do zařízení IoT Edge, a všec
 
 ### <a name="select-your-iot-edge-device"></a>Vyberte zařízení IoT Edge
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 1. Přejděte na IoT Hub.
 1. V nabídce v části **Automatická správa zařízení** vyberte **IoT Edge** . 
 1. V seznamu zařízení klikněte na ID cílového zařízení.
@@ -76,7 +75,7 @@ Manifest nasazení je dokument JSON, který popisuje, které moduly se mají nas
         }
     ```    
 
- 1. Klikněte na **Uložit** .
+ 1. Klikněte na **Uložit**.
  1. Přejděte k další části a přidejte modul předplatitele Azure Event Grid před jejich nasazením dohromady.
 
     >[!IMPORTANT]
@@ -96,7 +95,7 @@ V této části se dozvíte, jak nasadit jiný modul IoT, který by sloužil jak
    * **Název**: odběratel
    * **Identifikátor URI image**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Možnosti vytvoření kontejneru**: žádné
-1. Klikněte na **Uložit** .
+1. Klikněte na **Uložit**.
 1. Pokračujte k další části a přidejte modul Azure Blob Storage.
 
 ## <a name="deploy-azure-blob-storage-module"></a>Nasazení modulu Azure Blob Storage
@@ -147,7 +146,7 @@ V této části se dozvíte, jak nasadit modul Blob Storage Azure, který se bud
      - V případě kontejnerů Linux, **My-Volume:/blobroot**
      - Pro kontejnery Windows**Tento svazek: C:/BlobRoot**
 
-5. Klikněte na **Uložit** .
+5. Klikněte na **Uložit**.
 6. Kliknutím na tlačítko **Další** pokračujte v části trasy.
 
     > [!NOTE]
@@ -319,17 +318,17 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
             }
     ```
 
-Gratulujeme! Dokončili jste tento kurz. Následující části obsahují podrobné informace o vlastnostech události.
+Blahopřejeme! Dokončili jste tento kurz. Následující části obsahují podrobné informace o vlastnostech události.
 
 ### <a name="event-properties"></a>Vlastnosti události
 
 Tady je seznam podporovaných vlastností události a jejich typy a popisy. 
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
 | data | odkazy objektů | Data události služby Blob Storage. |
@@ -338,9 +337,9 @@ Tady je seznam podporovaných vlastností události a jejich typy a popisy.
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| rozhraní api | řetězec | Operace, která aktivovala událost. Může to být jedna z následujících hodnot: <ul><li>BlobCreated – povolené hodnoty jsou: `PutBlob` a`PutBlockList`</li><li>BlobDeleted – povolené hodnoty jsou `DeleteBlob` `DeleteAfterUpload` a `AutoDelete` . <p>`DeleteAfterUpload`Událost se generuje, když se automaticky odstraní objekt blob, protože deleteAfterUpload požadovaná vlastnost je nastavená na true. </p><p>`AutoDelete`událost se generuje, když se automaticky odstraní objekt blob, protože vypršela platnost požadované hodnoty vlastnosti deleteAfterMinutes.</p></li></ul>|
+| api | řetězec | Operace, která aktivovala událost. Může to být jedna z následujících hodnot: <ul><li>BlobCreated – povolené hodnoty jsou: `PutBlob` a`PutBlockList`</li><li>BlobDeleted – povolené hodnoty jsou `DeleteBlob` `DeleteAfterUpload` a `AutoDelete` . <p>`DeleteAfterUpload`Událost se generuje, když se automaticky odstraní objekt blob, protože deleteAfterUpload požadovaná vlastnost je nastavená na true. </p><p>`AutoDelete`událost se generuje, když se automaticky odstraní objekt blob, protože vypršela platnost požadované hodnoty vlastnosti deleteAfterMinutes.</p></li></ul>|
 | ID žádosti klienta | řetězec | ID požadavku pro rozhraní API úložiště poskytnuté klientem. Toto ID lze použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Client-Request-ID" v protokolech a lze je poskytnout v klientských požadavcích pomocí hlavičky x-MS-Client-Request-ID. Podrobnosti najdete v tématu [Formát protokolu](/rest/api/storageservices/storage-analytics-log-format). |
 | Identifikátor | řetězec | ID žádosti generované službou pro operaci rozhraní API úložiště Dá se použít ke korelaci Azure Storage diagnostických protokolů pomocí pole "Request-ID-header" v protokolech a vrátí se z inicializace volání rozhraní API v hlavičce x-MS-Request-ID. Viz [Formát protokolu](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
 | značk | řetězec | Hodnota, kterou můžete použít k podmíněnému provádění operací. |

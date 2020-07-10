@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77f2e78fa3df6c7ac6a422a03335f93d2a19d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255924"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169336"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Vylepší výzvy k opakovanému ověření a pochopení životnosti relace pro Azure Multi-Factor Authentication
 
@@ -122,10 +122,10 @@ Pokud jste povolili konfigurovatelné životnosti tokenů, tato funkce bude brzy
 
 Následující tabulka shrnuje doporučení založená na licencích:
 
-|                              | Aplikace Azure AD Free a Office 365 | Azure AD Premium |
+|              | Aplikace Azure AD Free a Office 365 | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
-| Jednotné přihlašování                          | [Připojení k Azure AD](../devices/concept-azure-ad-join.md) nebo [hybridní připojení ke službě Azure AD](../devices/concept-azure-ad-join-hybrid.md)nebo [bezproblémové jednotné přihlašování](../hybrid/how-to-connect-sso.md) pro nespravovaná zařízení. | Připojení k Azure AD<br />Hybridní připojení k Azure AD |
-| Nastavení opakovaného ověřování    | Zůstat přihlášeni                  | Použití zásad podmíněného přístupu pro četnost přihlášení a trvalou relaci prohlížeče |
+| **Jednotné přihlašování**                      | [Připojení k Azure AD](../devices/concept-azure-ad-join.md) nebo [hybridní připojení ke službě Azure AD](../devices/concept-azure-ad-join-hybrid.md)nebo [bezproblémové jednotné přihlašování](../hybrid/how-to-connect-sso.md) pro nespravovaná zařízení. | Připojení k Azure AD<br />Hybridní připojení k Azure AD |
+| **Nastavení opakovaného ověřování** | Zůstat přihlášeni                  | Použití zásad podmíněného přístupu pro četnost přihlášení a trvalou relaci prohlížeče |
 
 ## <a name="next-steps"></a>Další kroky
 

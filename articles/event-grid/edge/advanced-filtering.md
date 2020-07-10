@@ -5,16 +5,14 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/03/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72992558"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171767"
 ---
 # <a name="advanced-filtering"></a>Rozšířené filtrování
 Event Grid umožňuje zadat filtry pro libovolnou vlastnost v datové části JSON. Tyto filtry jsou modelovány jako množina `AND` podmínek s každou vnější podmínkou, která má volitelné vnitřní `OR` podmínky. Pro každou `AND` podmínku zadejte následující hodnoty:
@@ -79,7 +77,7 @@ Pro události ve schématu Event Grid:
 
 * ID
 * Téma
-* Subjekt
+* Předmět
 * Typ události
 * Dataverze
 * Data. Prop1

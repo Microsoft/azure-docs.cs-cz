@@ -3,16 +3,16 @@ title: Smlouvy k Azure EA a jejich změny
 description: Tento článek vysvětluje, jak smlouvy k Azure EA a jejich změny ovlivňují vaše používání portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 50f7a1bab17b9a98b7ca282387def52b24d448c4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298138"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044902"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak mohou smlouvy Azure EA a jejich změny ovlivnit vá
 
 ## <a name="enrollment-provisioning-status"></a>Stav zřízení registrace
 
-Počáteční datum nového peněžního závazku vyplývá z data, kdy ho regionální operační centrum zpracovalo. Vzhledem k tomu, že objednávky peněžních závazků prostřednictvím webu Azure EA Portal se zpracovávají v časovém pásmu UTC, může dojít ke zpoždění v případě, že nákupní objednávka peněžního závazku byla zpracována v jiné oblasti. Začátek peněžního závazku uvádí počáteční datum pokrytí v nákupní objednávce na webu https://www.explore.ms. Počáteční datum pokrytí představuje den, kdy se peněžní závazek zobrazí na portálu Azure EA.
+Počáteční datum nové zálohy na Azure vyplývá z data, kdy ji regionální operační centrum zpracovalo. Vzhledem k tomu, že objednávky zálohy na Azure prostřednictvím portálu Azure EA na se zpracovávají v časovém pásmu UTC, může dojít ke zpoždění v případě, že se nákupní objednávka zálohy na Azure zpracovávala v jiné oblasti. Začátek zálohy na Azure uvádí počáteční datum pokrytí v nákupní objednávce na webu https://www.explore.ms. Počáteční datum pokrytí představuje den, kdy se záloha na Azure zobrazí na portálu Azure EA.
 
 ## <a name="support-for-enterprise-customers"></a>Podpora pro podnikové zákazníky
 
@@ -36,7 +36,7 @@ Registrace má jednu z následujících hodnot stavu. Každá hodnota určuje, j
 
 **Neurčené období prodloužení:** Tento stav vznikne po dosažení koncového data smlouvy Enterprise. Než registrace EA dosáhne koncového data smlouvy Enterprise, měl by se správce registrace rozhodnout pro jednu z těchto variant:
 
-- Prodloužení registrace přidáním dalšího peněžního závazku
+- Prodloužení registrace přidáním další zálohy na Azure
 - Přesun existující registrace do nové registrace
 - Migrace do programu Microsoft Online Subscription (MOSP)
 - Potvrzení deaktivace všech služeb přidružených k registraci
@@ -51,7 +51,7 @@ Od 1. srpna 2019 nepřijímáme žádné další žádosti o výslovné vyřazen
 
 Díky cenovým maržím u partnerů na portálu Azure EA je možné lépe vykazovat náklady pro zákazníky. Portál Azure EA uvádí využití a ceny nakonfigurované partnery pro jejich zákazníky.
 
-Partneři zajišťující správu si u nepřímých smluv Enterprise navyšují cenu o určitou procentuální přirážku. Procentuální přirážka se uplatní u všech sazeb za služby poskytované Microsoftem na webu Azure EA Portal. Jde například o sazby u měřičů, peněžní závazky a objednávky. Když partner publikuje přirážku, zákazník uvidí náklady spojené s Azure na webu Azure EA Portal. Například v souhrnu využití, na cenících a na stažených sestavách využití.
+Partneři zajišťující správu si u nepřímých smluv Enterprise navyšují cenu o určitou procentuální přirážku. Procentuální přirážka se uplatní u všech sazeb za služby poskytované Microsoftem na webu Azure EA Portal. Jde například o sazby u měřičů, zálohy na Azure a objednávky. Když partner publikuje přirážku, zákazník uvidí náklady spojené s Azure na webu Azure EA Portal. Například v souhrnu využití, na cenících a na stažených sestavách využití.
 
 Od září 2019 mohou partneři uplatňovat marži kdykoli během období. Nemusí tedy čekat do příštího výročí smlouvy.
 
@@ -61,7 +61,7 @@ Microsoft nezpřístupní a nevyužije poskytnutou přirážku a související c
 
 Poskytovatel LSP poskytne jednu procentní hodnotu na webu EA Portal.  Všechny komerční informace na portálu se zvýší o počet procent, který tento poskytovatel LSP uvedl. Příklad:
 
-- Zákazník podepíše smlouvu EA s peněžním závazkem ve výši 100 000 USD.
+- Zákazník podepíše smlouvu EA se zálohou na Azure ve výši 100 000 USD.
 - Sazba měřiče za službu A je 10 USD za hodinu.
 - LSP nastaví na webu EA Portal procentní přirážku ve výši 10 %.
 - Příklad uvedený níž ukazuje, jak se budou zákazníkům zobrazovat komerční informace:
@@ -72,10 +72,10 @@ Poskytovatel LSP poskytne jednu procentní hodnotu na webu EA Portal.  Všechny
 
 ### <a name="when-to-use-a-markup"></a>Kdy používat přirážku
 
-Tuto funkci použijte, pokud nastavujete stejnou procentní přirážku pro VŠECHNY komerční transakce v rámci smlouvy EA. To znamená, pokud přirážku používáte pro informace o peněžních závazcích, sazby měřičů, informace o objednávkách atd.
+Tuto funkci použijte, pokud nastavujete stejnou procentní přirážku pro VŠECHNY komerční transakce v rámci smlouvy EA. To znamená, pokud přirážku používáte pro informace o zálohách na Azure, sazby měřičů, informace o objednávkách atd.
 
 V následujících případech funkci přirážky nepoužívejte:
-- Používáte jiné sazby pro peněžní závazek a sazby měřičů.
+- Pro zálohu na Azure a sazby měřičů používáte různé sazby.
 - Používáte různé sazby pro různé měřiče.
 
 Pokud používáte různé sazby pro různé měřiče, doporučujeme vytvořit vlastní řešení na základě klíče rozhraní API, který může zákazník poskytnout a na jeho základě si vyžádat data týkající se využití a zajišťovat sestavy.
@@ -97,11 +97,11 @@ Před publikováním cen s přirážkami pro koncového zákazníka prosím neza
 
 **Krok 2: Kontrola a ověření**
 
-V zobrazení zákazníka v části _Usage Summary_ (Souhrn využití) zkontrolujte cenu s přirážkou pro období závazku. V zobrazení partnera bude stále dostupná cena Microsoftu. Tato zobrazení je pro přirážku u partnera možné přepínat s využitím přepínače „lidé“ v pravé horní části.
+V zobrazení zákazníka v části _Usage Summary_ (Souhrn využití) zkontrolujte cenu s přirážkou pro období zálohy. V zobrazení partnera bude stále dostupná cena Microsoftu. Tato zobrazení je pro přirážku u partnera možné přepínat s využitím přepínače „lidé“ v pravé horní části.
 
 1. Zkontrolujte ceny v ceníku.
 1. Změny je možné provést před publikováním, a to volbou **Edit** (Úpravy) na kartě _View Usage Summary > Customer View_ (Zobrazit souhrn využití > Zobrazení zákazníka).  
-  Pro ceny služeb i zůstatky závazků se použije stejná procentní přirážka. Pokud máte jiný počet procent pro peněžní zůstatek a sazby měřičů nebo různé počty procent pro různé služby, tuto funkci prosím nepoužívejte.
+  Pro ceny služeb i zůstatky zálohy se použije stejná procentní přirážka. Pokud máte jiný počet procent pro peněžní zůstatek a sazby měřičů nebo různé počty procent pro různé služby, tuto funkci prosím nepoužívejte.
 
 **Krok 3: Publikování**
 
@@ -121,7 +121,7 @@ Jakmile se publikuje přirážka partnera, bude mít nepřímý zákazník pří
 Partneři mohou funkci přirážky (pro Azure EA) využít po zpracování změny distribučního partnera. Není tedy nutné čekat až na další období.
 
 
-## <a name="resource-commitment-and-requesting-quota-increases"></a>Závazek týkající se prostředků a žádost o navýšení kvóty
+## <a name="resource-prepayment-and-requesting-quota-increases"></a>Záloha na prostředky a žádost o navýšení kvóty
 
 **Systém pro každé předplatné vynucuje následující výchozí kvóty:**
 
@@ -135,11 +135,11 @@ Partneři mohou funkci přirážky (pro Azure EA) využít po zpracování změn
 | Řízení přístupu | 50 oborů názvů na účet 100 milionů transakcí řízení přístupu za měsíc |   |
 | Service Bus | 50 oborů názvů na účet 40 připojení služby Service Bus | Kvóty zákazníků, kteří si kupují připojení služby Service Bus prostřednictvím balíčků připojení, se budou rovnat střednímu bodu mezi zakoupeným balíčkem připojení a dalším vyšším balíčkem připojení. Zákazníci, kteří si zvolí balíček 500 připojení, budou mít kvótu 750. |
 
-## <a name="resource-commitment"></a>Závazek týkající se prostředků
+## <a name="resource-prepayment"></a>Záloha na prostředky
 
-Microsoft poskytne služby až do úrovně využití, která je součástí zakoupeného měsíčního závazku (závazek poskytovat služby). Jakékoliv zvýšení úrovní využívání prostředků služeb (například zvýšení počtu běžících výpočetních instancí nebo zvýšení kapacity používaného úložiště) závisí na jejich dostupnosti.
+Microsoft poskytne služby až do úrovně využití, která je součástí zakoupené měsíční zálohy (záloha na služby). Jakékoliv zvýšení úrovní využívání prostředků služeb (například zvýšení počtu běžících výpočetních instancí nebo zvýšení kapacity používaného úložiště) závisí na jejich dostupnosti.
 
-Žádná výše uvedená kvóta není závazkem poskytovat služby. Počet simultánně běžících malých výpočetních instancí (nebo odpovídajícího ekvivalentu), které Microsoft poskytne jako součást závazku poskytovat služby, se určí jako podíl počtu hodin vyhrazených malých výpočetních instancí zakoupených v daném měsíci a počtu hodin nejkratšího měsíce v roce (tj. 672 únorových hodin).
+Žádná výše uvedená kvóta není zálohou na služby. Počet simultánně běžících malých výpočetních instancí (nebo odpovídajícího ekvivalentu), které Microsoft poskytne jako součást zálohy na služby, se určí jako podíl počtu hodin vyhrazených malých výpočetních instancí zakoupených v daném měsíci a počtu hodin nejkratšího měsíce v roce (tj. 672 únorových hodin).
 
 ## <a name="requesting-a-quota-increase"></a>Žádost o navýšení kvóty
 

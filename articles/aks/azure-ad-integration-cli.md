@@ -2,14 +2,16 @@
 title: Integrace Azure Active Directory se službou Azure Kubernetes Service
 description: Naučte se používat Azure CLI k vytvoření a Azure Active Directory clusteru Azure Kubernetes Service (AKS) s povoleným použitím.
 services: container-service
+author: TomGeske
 ms.topic: article
-ms.date: 04/16/2019
-ms.openlocfilehash: 85441b53b22b4d33ee2ff967d777cc3267e171da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 0465c54df2095cff7647e974765e61fa9b9ff3e1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106097"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169455"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrace Azure Active Directory se službou Azure Kubernetes pomocí Azure CLI
 
@@ -19,9 +21,9 @@ V tomto článku se dozvíte, jak vytvořit požadované součásti Azure AD a p
 
 Kompletní vzorový skript použitý v tomto článku najdete v tématu [ukázky v Azure CLI – integrace AKS s Azure AD][complete-script].
 
-Platí následující omezení:
+## <a name="the-following-limitations-apply"></a>Platí následující omezení:
 
-- Azure AD se dá povolit, jenom když vytvoříte nový cluster s podporou RBAC. Službu Azure AD nelze povolit v existujícím clusteru AKS.
+- Službu Azure AD lze povolit pouze v clusteru s povolenou službou RBAC.
 
 ## <a name="before-you-begin"></a>Než začnete
 

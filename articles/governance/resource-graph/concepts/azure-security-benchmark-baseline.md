@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4c4884b643c436eae377b294b2981aa61aa4689d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86137584"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171801"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Směrný plán zabezpečení Azure Resource graphu pro Azure Security test
 
@@ -22,7 +22,7 @@ Tyto základní hodnoty zabezpečení se týkají pokynů z [Azure Security srov
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](../../../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
@@ -39,7 +39,7 @@ Tyto základní hodnoty zabezpečení se týkají pokynů z [Azure Security srov
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../../../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: k řízení přístupu k prostředkům použijte řízení přístupu na základě role
 
@@ -56,7 +56,7 @@ Tyto základní hodnoty zabezpečení se týkají pokynů z [Azure Security srov
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](../../../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
@@ -99,5 +99,5 @@ Tyto základní hodnoty zabezpečení se týkají pokynů z [Azure Security srov
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../../../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../../../security/benchmarks/security-baselines-overview.md)

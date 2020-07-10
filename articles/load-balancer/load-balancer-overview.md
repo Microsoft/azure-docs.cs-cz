@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 598df2f0a1e9badebbb1bf8e7ec0f93ff98d55ce
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 08f7554ed9648df8b225fe9f205ee13b0f693c44
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341787"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170560"
 ---
 # <a name="what-is-azure-load-balancer"></a>Co je Azure Load Balancer?
 
@@ -32,7 +32,7 @@ Azure Load Balancer funguje ve vrstvě čtyř modelu propojení Open Systems (OS
 **[Interní (nebo soukromý) Nástroj pro vyrovnávání zatížení](./components.md#frontend-ip-configurations)** se používá, pokud jsou privátní IP adresy potřeba jenom na front-endu. Interní nástroje pro vyrovnávání zatížení se používají k vyrovnávání zatížení provozu v rámci virtuální sítě. Front-endu nástroje pro vyrovnávání zatížení je možné v hybridním scénáři použít z místní sítě.
 
 <p align="center">
-  <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Nástroj pro vyrovnávání zatížení Azure">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
 </p>
 
 *Obrázek: vyrovnávání vícevrstvých aplikací s využitím veřejného i interního Load Balancer*
@@ -67,7 +67,7 @@ Mezi klíčové scénáře, které můžete provádět pomocí Standard Load Bal
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Zabezpečení ve výchozím nastavení
 
 Standard Load Balancer je ve svém jádru postavená na modelu zabezpečení nulové důvěryhodnosti sítě. Standard Load Balancer zabezpečení ve výchozím nastavení a je součástí vaší virtuální sítě. Virtuální síť je privátní a izolovaná síť.  To znamená, že standardní nástroje pro vyrovnávání zatížení a standardní veřejné IP adresy se do příchozích toků zavřou, pokud je neotevřou skupiny zabezpečení sítě. Skupin zabezpečení sítě se používají k explicitnímu povolení povoleného provozu.  Pokud nemáte NSG v podsíti nebo síťové kartě prostředku virtuálního počítače, přenosy nepovolují přístup k tomuto prostředku. Další informace o skupin zabezpečení sítě a o tom, jak je použít pro váš scénář, najdete v tématu [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
-Základní Load Balancer je ve výchozím nastavení otevřený pro Internet.
+Základní Load Balancer je ve výchozím nastavení otevřený pro Internet. Load Balancer navíc neukládají zákaznická data.
 
 ## <a name="pricing-and-sla"></a>Ceny a smlouvy SLA
 

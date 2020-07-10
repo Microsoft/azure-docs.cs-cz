@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ed105ce6bd1d7d8980799049649b8d5b95dcb761
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e13d5f3421f3c0d4f3e14da29581ca585e7f9438
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536110"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145853"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Rychlý Start: přidání přihlášení do webové aplikace Java pomocí Microsoftu
 
@@ -24,7 +24,7 @@ V tomto rychlém startu se dozvíte, jak integrovat webovou aplikaci Java s plat
 
 Po dokončení tohoto rychlého startu bude vaše aplikace přijímat přihlašovacíky osobních účtů Microsoft (včetně outlook.com, live.com a dalších) a pracovních nebo školních účtů z jakékoli společnosti nebo organizace, která používá Azure Active Directory. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení této ukázky budete potřebovat:
 
@@ -56,7 +56,7 @@ K provedení této ukázky budete potřebovat:
 >    - Vyberte **Zaregistrovat**.
 > 1. Na stránce **Přehled** vyhledejte **ID aplikace (klienta)** a ID adresáře aplikace ( **tenant)** . Tyto hodnoty zkopírujte pro pozdější verzi.
 > 1. V nabídce vyberte **ověřování** a přidejte následující informace:
->    - Přidejte konfiguraci **webové** platformy.  Přidejte je `https://localhost:8080/msal4jsample/secure/aad` a `https://localhost:8080/msal4jsample/graph/me` jako **identifikátory URI přesměrování**..
+>    - Přidejte konfiguraci **webové** platformy.  Přidejte `https://localhost:8443/msal4jsample/secure/aad` je a `https://localhost:8443/msal4jsample/graph/me` jako **identifikátory URI přesměrování**..
 >    - Vyberte **Uložit**.
 > 1. V nabídce vyberte **certifikáty & tajné klíče** a v části **tajné klíče klienta** klikněte na **nový tajný klíč klienta**:
 >
@@ -70,7 +70,7 @@ K provedení této ukázky budete potřebovat:
 >
 > Ukázku kódu pro tento rychlý Start, který funguje, je třeba:
 >
-> 1. Přidejte adresy URL odpovědi `https://localhost:8080/msal4jsample/secure/aad` jako `https://localhost:8080/msal4jsample/graph/me`a.
+> 1. Přidejte adresy URL odpovědi jako `https://localhost:8443/msal4jsample/secure/aad` a`https://localhost:8443/msal4jsample/graph/me`
 > 1. Vytvořte tajný klíč klienta.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Provést tyto změny pro mě]()
@@ -115,8 +115,8 @@ K provedení této ukázky budete potřebovat:
 >    aad.clientId=Enter_the_Application_Id_here
 >    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 >    aad.secretKey=Enter_the_Client_Secret_Here
->    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
->    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+>    aad.redirectUriSignin=https://localhost:8443/msal4jsample/secure/aad
+>    aad.redirectUriGraph=https://localhost:8443/msal4jsample/graph/me
 >    aad.msGraphEndpointHost="https://graph.microsoft.com/"
 >    ```
 > Kde:
@@ -149,11 +149,11 @@ Spusťte ji přímo z integrovaného vývojového prostředí pomocí integrovan
 
 ##### <a name="running-from-ide"></a>Spuštění z IDE
 
-Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak přejděte na domovskou stránku projektu. V této ukázce je https://localhost:8080adresa URL standardní domovské stránky.
+Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak přejděte na domovskou stránku projektu. V této ukázce je adresa URL standardní domovské stránkyhttps://localhost:8443
 
 1. Na přední stránce vyberte tlačítko **přihlášení** , které chcete přesměrovat na Azure Active Directory a vyzvat uživatele k zadání přihlašovacích údajů.
 
-1. Po ověření uživatele budou přesměrováni na *https://localhost:8080/msal4jsample/secure/aad*. Nyní jsou přihlášeni a na stránce se zobrazí informace o přihlášeném účtu. Ukázkové uživatelské rozhraní obsahuje následující tlačítka:
+1. Po ověření uživatele budou přesměrováni na *https://localhost:8443/msal4jsample/secure/aad* . Nyní jsou přihlášeni a na stránce se zobrazí informace o přihlášeném účtu. Ukázkové uživatelské rozhraní obsahuje následující tlačítka:
     - *Odhlášení*: podepíše aktuálního uživatele z aplikace a přesměruje je na domovskou stránku.
     - *Zobrazit informace o uživateli*: Získá token pro Microsoft Graph a zavolá Microsoft Graph s požadavkem, který obsahuje token, který vrátí základní informace o přihlášeném uživateli.
 
@@ -161,17 +161,8 @@ Pokud používáte webovou aplikaci z rozhraní IDE, klikněte na spustit a pak 
 
 Chcete-li nasadit webovou ukázku na Tomcat, bude nutné provést několik změn zdrojového kódu.
 
-1. Otevřít MS-identity-Java-WebApp/pom. XML
-    - V `<name>msal-web-sample</name>` části Přidat`<packaging>war</packaging>`
-    - Přidat závislost:
-
-         ```xml
-         <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-          <scope>provided</scope>
-         </dependency>
-         ```
+1. Otevřete MS-identity-Java-WebApp/pom.xml
+    - V části `<name>msal-web-sample</name>` Přidat`<packaging>war</packaging>`
 
 2. Otevřete MS-identity-Java-WebApp/src/Main/Java/com. Microsoft. Azure. msalwebsample/MsalWebSampleApplication
 
@@ -199,13 +190,26 @@ Chcete-li nasadit webovou ukázku na Tomcat, bude nutné provést několik změn
     }
    ```
 
-3. Otevřete příkazový řádek, přejdete do kořenové složky projektu a spusťte příkaz.`mvn package`
+3.   Výchozí port HTTP Tomcat je 8080, i když je potřeba připojení HTTPS přes port 8443. Postup při konfiguraci:
+        - Přejít na Tomcat/conf/server.xml
+        - Vyhledejte `<connector>` značku a nahraďte existující konektor pomocí:
+        ```
+        <Connector
+                   protocol="org.apache.coyote.http11.Http11NioProtocol"
+                   port="8443" maxThreads="200"
+                   scheme="https" secure="true" SSLEnabled="true"
+                   keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
+                   clientAuth="false" sslProtocol="TLS"/>
+        ``` 
+       
+4. Otevřete příkazový řádek, klikněte na kořenovou složku této ukázky (kde se nachází soubor pom.xml) a spusťte příkaz `mvn package` pro sestavení projektu.
     - Tím se vygeneruje `msal-web-sample-0.1.0.war` soubor v adresáři/TARGETS.
-    - Přejmenovat tento soubor na`ROOT.war`
+    - Přejmenovat tento soubor na`msal4jsample.war`
     - Tento soubor War nasaďte pomocí Tomcat nebo jakéhokoli jiného řešení kontejneru J2EE.
-        - Chcete-li nasadit do kontejneru Tomcat, zkopírujte soubor. War do složky webapps v instalaci Tomcat a potom spusťte server Tomcat.
+        - Chcete-li nasadit, zkopírujte soubor msal4jsample. War do `/webapps/` adresáře v instalaci Tomcat a poté spusťte server Tomcat.
 
-Tento WAR bude automaticky hostovaný na adrese https://localhost:8080/.
+5. Po nasazení přejít do https://localhost:8443/msal4jsample v prohlížeči
+
 
 > [!IMPORTANT]
 > Tato aplikace rychlý Start používá k identifikaci jako důvěrného klienta tajný klíč klienta. Vzhledem k tomu, že se tajný klíč klienta přidá do souborů projektu jako prostý text, doporučuje se z bezpečnostních důvodů použít certifikát místo tajného klíče klienta před zvážením aplikace jako produkční aplikace. Další informace o použití certifikátu najdete v tématu [přihlašovací údaje certifikátu pro ověřování aplikací](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials).
@@ -219,9 +223,9 @@ Tento WAR bude automaticky hostovaný na adrese https://localhost:8080/.
 
 MSAL for Java (MSAL4J) je knihovna jazyka Java používaná k přihlašování uživatelů a žádosti o tokeny používané pro přístup k rozhraní API chráněnému platformou Microsoft identity.
 
-Přidejte do své aplikace MSAL4J pomocí Maven nebo Gradle pro správu závislostí tak, že provedete následující změny souboru pom. XML (Maven) nebo Build. Gradle (Gradle) aplikace.
+Přidejte do své aplikace MSAL4J pomocí Maven nebo Gradle pro správu závislostí provedením následujících změn v souboru aplikace pom.xml (Maven) nebo Build. Gradle (Gradle).
 
-V souboru pom. XML:
+V pom.xml:
 
 ```XML
 <dependency>

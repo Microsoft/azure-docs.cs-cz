@@ -3,16 +3,16 @@ title: Správa portálu Azure EA
 description: V tomto článku jsou vysvětlené nejčastější úkoly, které provádí správce portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 6169a18148b251540d66bce6e34374a16f697015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456551"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044885"
 ---
 # <a name="azure-ea-portal-administration"></a>Správa portálu Azure EA
 
@@ -33,7 +33,7 @@ Podnikoví správci můžou přidružovat existující účty k oddělením v r�
 
 ## <a name="department-spending-quotas"></a>Kvóty útraty oddělení
 
-Zákazníci se smlouvou Enterprise můžou nastavit nebo změnit kvóty útraty pro každé oddělení v rámci registrace. Výše kvóty útraty se nastavuje pro aktuální období závazku. Pokud nedojde k aktualizaci hodnot, na konci aktuálního období závazku systém prodlouží stávající kvótu útraty na další období závazku.
+Zákazníci se smlouvou Enterprise můžou nastavit nebo změnit kvóty útraty pro každé oddělení v rámci registrace. Výše kvóty útraty se nastavuje pro aktuální období zálohy. Pokud nedojde k aktualizaci hodnot, na konci aktuálního období zálohy systém prodlouží stávající kvótu útraty na další období zálohy.
 
 Správce oddělení může zobrazit kvótu útraty, ale pouze podnikový správce může aktualizovat její výši. Podnikový správce a správce oddělení obdrží oznámení, když dojde k dosažení 50 %, 75 %, 90 % a 100 % kvóty.
 
@@ -48,9 +48,9 @@ Správce oddělení může zobrazit kvótu útraty, ale pouze podnikový správc
     - V tuto chvíli můžete upravit také Název oddělení a Nákladové středisko.
  1. Vyberte **Uložit**.
 
-Kvóta útraty oddělení se teď zobrazí na kartě Oddělení v zobrazení Seznam oddělení. Na konci aktuálního závazku se na portálu Azure EA zachovají kvóty útraty pro další období závazku.
+Kvóta útraty oddělení se teď zobrazí na kartě Oddělení v zobrazení Seznam oddělení. Na konci aktuálního období zálohy se na portálu Azure EA zachovají kvóty útraty pro další období zálohy.
 
-Výše kvóty oddělení je nezávislá na aktuálním peněžním závazku a výše kvóty a související upozornění se vztahují pouze na využití první stranou. Kvóta útraty oddělení slouží pouze k informačním účelům a nevynucuje limity útraty.
+Výše kvóty oddělení je nezávislá na aktuální záloze na Azure a výše kvóty a související upozornění se vztahují pouze na využití první stranou. Kvóta útraty oddělení slouží pouze k informačním účelům a nevynucuje limity útraty.
 
 ### <a name="department-administrator-to-view-the-quota"></a>Zobrazení kvóty správcem oddělení:
 
@@ -174,7 +174,7 @@ V tomto dokumentu najdete odpovědi na nejčastější dotazy související s vl
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Kolik vlastníků účtů Azure je možné mít pro jedno předplatné?
 
-V jednom předplatném je povolený pouze jeden vlastník účtu.  Další role je možné přidat pomocí řízení přístupu na základě role nebo řízení přístupu (IAM) na kartě předplatného v levém horním rohu stránky na webu [portal.azure.com](https://portal.azure.com).
+V jednom předplatném je povolený pouze jeden vlastník účtu.  Další role je možné přidat pomocí řízení přístupu na základě role nebo řízení přístupu (IAM) na kartě předplatného v levém horním rohu stránky na webu[Azure Portal](https://portal.azure.com).
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Může být vlastník účtu Azure uvedený u více než jednoho oddělení?
 

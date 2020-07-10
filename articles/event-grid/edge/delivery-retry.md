@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841708"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171614"
 ---
 # <a name="delivery-and-retry"></a>Doručování a opakované pokusy
 
@@ -26,11 +25,11 @@ Event Grid poskytuje trvalé doručování. Pokusí se okamžitě doručovat ka�
 
 Po doručení zprávy vyčká Event Grid až 60 sekund na odpověď. Pokud koncový bod předplatitele neobdrží odpověď, bude zpráva zařazená do fronty v jedné z back-mailových front pro následné pokusy.
 
-K dispozici jsou dvě předem nakonfigurované back-Queues, které určují plán, podle kterého se bude opakovat pokus. Jsou to tyto:
+K dispozici jsou dvě předem nakonfigurované back-Queues, které určují plán, podle kterého se bude opakovat pokus. Jedná se o tyto peeringy:
 
-| Plán | Description |
+| Plán | Popis |
 | ---------| ------------ |
-| 1 min. | Zprávy, které končí, se pokoušejí každou minutu.
+| 1 minuta | Zprávy, které končí, se pokoušejí každou minutu.
 | 10 minut | Zprávy, které se tady ukončí, se pokoušejí každou desátou minutu.
 
 ### <a name="how-it-works"></a>Jak to funguje
@@ -42,7 +41,7 @@ K dispozici jsou dvě předem nakonfigurované back-Queues, které určují plá
 
 ## <a name="retry-policy-limits"></a>Omezení zásad opakování
 
-Existují dvě konfigurace, které určují zásady opakování. Jsou to tyto:
+Existují dvě konfigurace, které určují zásady opakování. Jedná se o tyto peeringy:
 
 * Maximální počet pokusů
 * Hodnota TTL (Time to Live)
@@ -53,7 +52,7 @@ Pokud je dosažena kterákoli z omezení zásady opakování, bude událost zaho
 
 Existují dvě vlastnosti: `brokers__defaultMaxDeliveryAttempts` a `broker__defaultEventTimeToLiveInSeconds` , které je možné nakonfigurovat jako součást nasazení Event Grid, které řídí výchozí nastavení zásad opakování pro všechny předplatitele.
 
-| Název vlastnosti | Description |
+| Název vlastnosti | Popis |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Maximální počet pokusů o doručení události Výchozí hodnota: 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Hodnota TTL události v sekundách, po které bude událost vyřazena, pokud nebyla doručena. Výchozí hodnota: **7200** sekund

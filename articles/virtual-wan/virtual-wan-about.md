@@ -8,11 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027201"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143925"
 ---
 # <a name="about-azure-virtual-wan"></a>Informace o službě Azure Virtual WAN
 
@@ -57,7 +58,7 @@ Pro konfiguraci virtuální sítě WAN mezi koncovými body vytvořte následuj�
 
 * **Připojení virtuální sítě k rozbočovači:** Prostředek připojení virtuální sítě k rozbočovači se používá k bezproblémovému propojení rozbočovače a virtuální sítě.
 
-* **(Preview) připojení k rozbočovači** – rozbočovače jsou vzájemně připojeni ve virtuální síti WAN. To znamená, že větev, uživatel nebo virtuální síť, která je připojená k místnímu rozbočovači, může komunikovat s jinou větví nebo virtuální sítí pomocí úplné architektury sítě připojených Center. Virtuální sítě se taky můžete připojit v rámci centra, které se přenáší přes virtuální rozbočovač, a také virtuální sítě napříč centrem pomocí architektury připojeného k rozbočovači.
+* **Připojení k rozbočovači:** Rozbočovače jsou všechny vzájemně propojené ve virtuální síti WAN. To znamená, že větev, uživatel nebo virtuální síť, která je připojená k místnímu rozbočovači, může komunikovat s jinou větví nebo virtuální sítí pomocí úplné architektury sítě připojených Center. Virtuální sítě se taky můžete připojit v rámci centra, které se přenáší přes virtuální rozbočovač, a také virtuální sítě napříč centrem pomocí architektury připojeného k rozbočovači.
 
 * **Směrovací tabulka rozbočovače:** Můžete vytvořit trasu virtuálního rozbočovače a použít ji ve směrovací tabulce virtuálního rozbočovače. V uvedené tabulce můžete použít více tras.
 
@@ -127,7 +128,7 @@ Směrovací tabulky teď mají funkce pro přidružení a šíření. Již exist
 
 * **Základní virtuální zákazníci sítě WAN s již existujícími trasami ve virtuálním centru**: Pokud chcete používat nové možnosti směrovací tabulky, počkejte prosím, než se dokončí v Azure, a počkejte prosím na dokončení zavedení v Azure. Pokud máte již existující trasy v části směrování pro centrum v Azure Portal, budete je muset nejdřív odstranit a pak **upgradovat** základní virtuální síť WAN na standard Virtual WAN. Viz [upgrade virtuální sítě WAN z úrovně Basic na standard](upgrade-virtual-wan.md).
 
-## <a name="faq"></a><a name="faq"></a>Časté otázky
+## <a name="faq"></a><a name="faq"></a>DOTAZ
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 

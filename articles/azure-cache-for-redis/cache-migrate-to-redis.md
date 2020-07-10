@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 909329a4326354a890c3c4645002f7248f30e8fa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74122686"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184782"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrace ze služby Managed Cache Service na službu Azure Cache for Redis
 Migrace aplikací používajících Azure Managed Cache Service do mezipaměti Azure pro Redis se dá udělat s minimálními změnami vaší aplikace, a to v závislosti na funkcích Managed Cache Service používaných vaší aplikací pro ukládání do mezipaměti. I když rozhraní API nejsou přesně stejná, jsou podobná a většina vašeho stávajícího kódu, který používá Managed Cache Service pro přístup do mezipaměti, může být použita s minimálními změnami. V tomto článku se dozvíte, jak provést potřebné změny konfigurace a aplikace pro migraci aplikací Managed Cache Service pro použití Azure cache pro Redis a ukazuje, jak se některé funkce mezipaměti Azure pro Redis dají použít k implementaci funkcí mezipaměti Managed Cache Service.
@@ -39,7 +40,7 @@ Azure Managed Cache Service a Azure cache pro Redis jsou podobné, ale implement
 | Managed Cache Service funkce | Podpora Managed Cache Service | Podpora Azure cache pro Redis |
 | --- | --- | --- |
 | Pojmenované mezipaměti |V případě potřeby je nakonfigurovaná výchozí mezipaměť a v nabídkách mezipaměti Standard a Premium můžete nakonfigurovat až devět dalších pojmenovaných mezipamětí. |Mezipaměť Azure pro Redis má konfigurovatelný počet databází (výchozí hodnota je 16), které lze použít k implementaci podobných funkcí do pojmenovaných mezipamětí. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |
-| Vysoká dostupnost |Poskytuje vysokou dostupnost pro položky v mezipaměti v nabídkách mezipaměti Standard a Premium. Pokud dojde ke ztrátě položek z důvodu chyby, jsou záložní kopie položek v mezipaměti stále k dispozici. Zápisy do sekundární mezipaměti jsou prováděny synchronně. |Vysoká dostupnost je dostupná v nabídkách mezipaměti Standard a Premium, které mají konfiguraci se dvěma primárními a replikami uzlů (každý horizontálních oddílů v mezipaměti Premium má dvojici primárního/repliky). Zápisy do repliky se provádějí asynchronně. Další informace najdete v tématu [ceny služby Azure cache pro Redis](https://azure.microsoft.com/pricing/details/cache/). |
+| Vysoká dostupnost |Poskytuje vysokou dostupnost pro položky v mezipaměti v nabídkách mezipaměti Standard a Premium. Pokud dojde ke ztrátě položek z důvodu chyby, jsou záložní kopie položek v mezipaměti stále k dispozici. Zápisy do mezipaměti repliky jsou prováděny synchronně. |Vysoká dostupnost je dostupná v nabídkách mezipaměti Standard a Premium, které mají konfiguraci se dvěma primárními a replikami uzlů (každý horizontálních oddílů v mezipaměti Premium má dvojici primárního/repliky). Zápisy do repliky se provádějí asynchronně. Další informace najdete v tématu [ceny služby Azure cache pro Redis](https://azure.microsoft.com/pricing/details/cache/). |
 | Oznámení |Umožňuje klientům přijímat asynchronní oznámení v případě, že dojde k různým operacím mezipaměti v pojmenované mezipaměti. |Klientské aplikace mohou používat oznámení Redis k publikování a [podprostorům](cache-configure.md#keyspace-notifications-advanced-settings) a k dosažení podobných funkcí oznámení. |
 | Místní mezipaměť |Ukládá kopii objektů uložených v mezipaměti lokálně na klientovi, aby bylo velmi rychlém přístupu. |Klientské aplikace by musely tuto funkci implementovat pomocí slovníku nebo podobné struktury dat. |
 | Zásada vyřazení |Žádné nebo LRU. Výchozí zásada je LRU. |Azure cache pro Redis podporuje následující zásady vyřazení: volatile-LRU, AllKeys-LRU, volatile náhodné, AllKeys-Random, volatile-TTL, vyřazení. Výchozí zásada je nestálá – LRU. Další informace najdete v tématu [výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration). |

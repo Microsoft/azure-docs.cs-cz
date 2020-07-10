@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 2f61345cd55fc9541f9e1b707389d0b9d06685b0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873437"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077154"
 ---
 # <a name="understand-and-work-with-scopes"></a>Vysvětlení a práce s rozsahy
 
@@ -67,7 +67,7 @@ Cost Management podporuje následující předdefinované role pro každý z ná
 
 Přispěvatel Cost Management je doporučená role s nejnižší úrovní oprávnění. Tato role dává uživatelům přístup k vytváření a správě rozpočtů a exportů za účelem efektivnějšího monitorování a vykazování nákladů. Přispěvatelé Cost Management mohou také vyžadovat další role pro podporu scénářů komplexní správy nákladů. Zvažte následující scénáře:
 
-- **Vytváření sestav využití prostředků** – Azure Cost Management zobrazuje náklady na webu Azure Portal a zahrnuje také využití v vztažené k nákladům při plném využití a poplatkům za API a stahování, ale můžete také přejít k podrobným metrikám využití v Azure Monitoru, které poskytují podrobnější informace. Zvažte udělení role [Čtenář monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) pro libovolný rozsah, kde potřebujete také vytvářet podrobné sestavy metrik využití.
+- **Vytváření sestav využití prostředků** – Azure Cost Management zobrazuje na webu Azure Portal náklady, které zahrnují využití vztažené k nákladům ve vzorech plného využití. Tato sestava může také uvádět poplatky za rozhraní API a stahování, ale dá se také přejít k podrobným metrikám využití v Azure Monitoru, které poskytují podrobnější informace. Zvažte udělení role [Čtenář monitorování](../../role-based-access-control/built-in-roles.md#monitoring-reader) pro libovolný rozsah, kde potřebujete také vytvářet podrobné sestavy metrik využití.
 - **Opatření při překročení rozpočtů** – Přispěvatelé Cost Management také potřebují přístup k vytvoření nebo správě skupin akcí, které automaticky reagují na nadlimitní využití. Zvažte možnost udělit oprávnění [Přispěvatele monitorování](../../role-based-access-control/built-in-roles.md#monitoring-contributor) skupině prostředků obsahující skupinu akcí, která se má použít při překročení rozpočtových prahů. Automatizace konkrétních akcí vyžaduje další role pro konkrétní použité služby, jako je Automation a Azure Functions.
 - **Plánování exportu dat nákladů** – Přispěvatelé Cost Management také potřebují přístup ke správě účtů úložiště a naplánování exportu pro kopírování dat do účtu úložiště. Zvažte možnost udělit oprávnění [Přispěvatel účtu úložiště](../../role-based-access-control/built-in-roles.md#storage-account-contributor) skupině prostředků obsahující účet úložiště, do kterého se mají exportovat data nákladů.
 - **Zobrazení doporučení pro úspory** – Čtenáři Cost Management a Přispěvatelé Cost Management mají ve výchozím nastavení přístup k *zobrazení* doporučení k nákladům. Přístup k provádění změn doporučení k nákladům je ale podmíněn přístupem k jednotlivým prostředkům. Pokud chcete pracovat s doporučeními na základě nákladů, zvažte udělení [role specifické pro službu](../../role-based-access-control/built-in-roles.md#all).

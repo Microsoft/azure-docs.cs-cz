@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 4721d8dbe5973baf2ac82124ff516a89398227cb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: acb818cf2a892a3a71f2f59b0a44041767b846d0
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298189"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044919"
 ---
 # <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -20,7 +20,7 @@ Tento článek vysvětluje, jak partneři a zákazníci EA mohou zobrazovat popl
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Azure Marketplace pro zákazníky EA
 
-Přímí zákazníci můžou poplatky za Azure Marketplace zobrazit na portálu Azure Enterprise Portal. Nákupy na Azure Marketplace a související spotřeba se účtují mimo peněžní závazek, a to čtvrtletně nebo měsíčně a v nedoplatcích.
+Přímí zákazníci můžou poplatky za Azure Marketplace zobrazit na portálu Azure Enterprise Portal. Nákupy na Azure Marketplace a související spotřeba se účtují mimo zálohu na Azure, čtvrtletně nebo měsíčně, a to zpětně.
 
 Nepřímí zákazníci najdou svá předplatná Azure Marketplace na stránce **Manage Subscriptions** (Správa předplatných) na portálu Azure Enterprise Portal, ale ceny budou skryté. Pokud zákazníci chtějí získat informace o poplatcích za Azure Marketplace, měli by se obrátit na svého poskytovatele LSP (Licensing Solutions Provider).
 
@@ -28,7 +28,7 @@ Nové měsíčně či ročně se opakující nákupy na Azure Marketplace se pln
 
 Stávající měsíční poplatky se budou i nadále obnovovat k prvnímu dni každého kalendářního měsíce. Roční poplatky se obnoví k datu výročí nákupu.
 
-Některé služby prodejců třetích stran dostupné na Azure Marketplace teď spotřebovávají zůstatek peněžního závazku smlouvy Enterprise (EA). Dříve se tyto služby účtovaly mimo peněžní závazek EA a fakturovaly se samostatně. Použití peněžního závazku EA pro tyto služby na Azure Marketplace pomáhá zákazníkům zjednodušit nákup a správu plateb. Úplný seznam služeb, které teď využívají peněžní závazek, najdete na v [aktualizaci k 6. březnu 2018 na webu Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
+Některé služby prodejců třetích stran dostupné na Azure Marketplace teď spotřebovávají zůstatek peněžního zálohu na Azure v rámci vaší smlouvy Enterprise (EA). Dříve se tyto služby účtovaly mimo zálohu na Azure EA a fakturovaly se samostatně. Použití zálohy na Azure EA pro tyto služby na Azure Marketplace pomáhá zákazníkům zjednodušit nákup a správu plateb. Úplný seznam služeb, které teď využívají zálohu na Azure, najdete na v [aktualizaci k 6. březnu 2018 na webu Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
 
 ### <a name="partners"></a>Partneři
 
@@ -75,41 +75,41 @@ Pokud máte smlouvu Enterprise, platíte za službu Azure RemoteApp na základě
 
 ## <a name="azure-marketplace-faq"></a>Nejčastější dotazy k Azure Marketplace
 
-Tato část vysvětluje, jak se peněžní závazek Azure může použít na některé služby prodejců třetích stran na webu Azure Marketplace.
+Tato část vysvětluje, jak se záloha na Azure může použít na některé služby prodejců třetích stran na webu Azure Marketplace.
 
-### <a name="what-changed-with-azure-marketplace-services-and-ea-monetary-commitment"></a>Co se u služeb Azure Marketplace a peněžního závazku smlouvy EA změnilo?
+### <a name="what-changed-with-azure-marketplace-services-and-azure-ea-prepayment"></a>Co se u služeb Azure Marketplace a zálohy na Azure se smlouvou EA změnilo?
 
-Od 1. března 2018 využívají některé služby prodejců třetích stran peněžní závazek EA. S výjimkou rezervovaných instancí virtuálního počítače Azure byly služby dříve fakturovány mimo peněžní závazek EA a byly účtovány samostatně.
+Od 1. března 2018 využívají některé služby prodejců třetích stran zálohu na Azure se smlouvou EA. S výjimkou rezervovaných instancí virtuálního počítače Azure byly služby dříve fakturovány mimo zálohu na Azure se smlouvou EA a účtovaly se samostatně.
 
-Rozšířili jsme možnosti použití peněžního závazku tak, aby zahrnoval některé služby publikované na Azure Marketplace třetími stranami, které si naši zákazníci kupují nejčastěji. Použití peněžního závazku EA pro tyto služby na Azure Marketplace pomáhá zjednodušit nákup a správu plateb.
+Rozšířili jsme možnosti použití zálohy na Azure tak, aby zahrnovaly některé služby publikované na Azure Marketplace třetími stranami, které si naši zákazníci kupují nejčastěji. Použití zálohy na Azure se smlouvou EA pro tyto služby na Azure Marketplace pomáhá zjednodušit nákup a správu plateb.
 
 ### <a name="why-did-we-make-this-change"></a>Proč jsme tuto změnu provedli?
 
-Zákazníci neustále hledají další způsoby, jak využít platbu peněžního závazku předem. Zákazníci tuto změnu často vyžadovali a měla vliv na velkou část zákazníků Azure Marketplace.
+Zákazníci neustále hledají další způsoby, jak využít zálohu na Azure hrazenou předem. Zákazníci tuto změnu často vyžadovali a měla vliv na velkou část zákazníků Azure Marketplace.
 
 ### <a name="how-do-you-benefit"></a>Jaké přináší výhody?
 
-Fakturace se zjednoduší a budete moct lépe využít peněžní závazek EA. Vzhledem k tomu, že jsou tyto služby zahrnuté do předem placeného peněžního závazku, bude váš peněžní závazek se smlouvou EA cennější.
+Fakturace se zjednoduší a budete mít možnost zálohu na Azure se smlouvou EA lépe využít. Vzhledem k tomu, že tyto služby jsou zahrnuté do zálohy na Azure, bude vaše záloha na Azure se smlouvou EA o to cennější.
 
-### <a name="what-azure-marketplace-services-use-ea-monetary-commitment-and-how-do-i-know"></a>Jaké služby Azure Marketplace peněžní závazek EA používají a jak to zjistím?
+### <a name="what-azure-marketplace-services-use-azure-ea-prepayment-and-how-do-i-know"></a>Které služby Azure Marketplace používají zálohu na Azure se smlouvou EA a jak to zjistím?
 
-Když si koupíte službu, která peněžní závazek používá, Azure Marketplace zobrazí právní omezení. Podporují se některé služby publikované společnostmi Red Hat, SUSE, Autodesk a Oracle. Podobně pojmenované služby publikované jinými stranami se v současné době od peněžního závazku neodečtou. Úplný seznam najdete na konci těchto nejčastějších dotazů.
+Když si koupíte službu, která používá zálohu na Azure, Azure Marketplace zobrazí právní omezení. Podporují se některé služby publikované společnostmi Red Hat, SUSE, Autodesk a Oracle. Podobně pojmenované služby publikované jinými stranami se v současné době od zálohy na Azure neodečtou. Úplný seznam najdete na konci těchto nejčastějších dotazů.
 
-### <a name="what-if-my-ea-monetary-commitment-runs-out"></a>Co když peněžní závazek EA vyčerpám?
+### <a name="what-if-my-azure-ea-prepayment-runs-out"></a>Co když zálohu na Azure se smlouvou EA vyčerpám?
 
-Pokud využijete celý svůj peněžní závazek a služby teď využívají nadlimitně, poplatky související s těmito službami se zobrazí na další faktuře za nadlimitní využití společně se všemi dalšími službami založenými na spotřebě. Před změnou, ke které došlo 1. března 2018, se tyto poplatky fakturovaly s ostatními službami Azure Marketplace.
+Pokud využijete celou svoji zálohu na Azure a služby využíváte nadlimitně, poplatky související s těmito službami se zobrazí na další faktuře za nadlimitní využití společně se všemi dalšími službami založenými na spotřebě. Před změnou, ke které došlo 1. března 2018, se tyto poplatky fakturovaly s ostatními službami Azure Marketplace.
 
-### <a name="why-dont-all-azure-marketplaces-consume-ea-monetary-commitment"></a>Proč peněžní závazek EA nevyužívají všechny služby Azure Marketplace?
+### <a name="why-dont-all-azure-marketplaces-consume-azure-ea-prepayment"></a>Proč zálohu na Azure se smlouvou EA nevyužívají všechny služby Azure Marketplace?
 
-Často pracujeme na tom, abychom zákazníkům v souvislosti s peněžním závazkem Azure poskytovali co nejlepší služby. Tato změna se týkala velkého množství zákazníků a významné části celkové útraty na Azure Marketplace. V budoucnu se možná přidají další služby.
+Často pracujeme na tom, abychom zákazníkům v souvislosti se zálohou na Azure se smlouvou EA poskytovali co nejlepší služby. Tato změna se týkala velkého množství zákazníků a významné části celkové útraty na Azure Marketplace. V budoucnu se možná přidají další služby.
 
 ### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>Jaký to bude mít vliv na nepřímé registrace a partnery?
 
-Na naše zákazníky ani partnery s nepřímou registrací to nebude mít žádný vliv. Na tyto služby se vztahují stejné možnosti přirážky partnera jako na ostatní služby založené na spotřebě. Jedinou změnou je, že se poplatky objevují na jiné faktuře a že platba poplatků pochází z peněžního závazku zákazníka EA.
+Na naše zákazníky ani partnery s nepřímou registrací to nebude mít žádný vliv. Na tyto služby se vztahují stejné možnosti přirážky partnera jako na ostatní služby založené na spotřebě. Jedinou změnou je, že se poplatky objevují na jiné faktuře a že platba poplatků pochází ze záloh na Azure se smlouvou EA příslušného zákazníka.
 
-### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-ea-monetary-commitment"></a>Existuje seznam služeb Azure Marketplace, které využívají peněžní závazek EA?
+### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-azure-ea-prepayment"></a>Existuje seznam služeb Azure Marketplace, které využívají zálohu na Azure se smlouvou EA?
 
-Pro konkrétní nabídky Azure Marketplace je možné využít prostředky peněžních závazků. Úplný seznam produktů zapojených do tohoto programu najdete v tématu týkajícím se [služeb třetích stran využívajících peněžní závazek](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment).
+Pro konkrétní nabídky Azure Marketplace je možné využít prostředky zálohy na Azure. Úplný seznam produktů zapojených do tohoto programu najdete v tématu týkajícím se [služeb třetích stran využívajících zálohu na Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment).
 
 
 ## <a name="next-steps"></a>Další kroky
