@@ -3,12 +3,12 @@ title: Nastavení vývojového prostředí v systému Linux
 description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojový cluster v Linuxu. Po dokončení této instalace a nastavení budete moci sestavovat aplikace.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: cfc97a540ed8c4c17ca4030c45b16021b926d7c5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8610feb68e16646c73c132c0577fd3ff198d74b8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854787"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186890"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -161,8 +161,8 @@ Modul runtime Service Fabric, který je součástí instalace sady SDK, obsahuje
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1,8 | Implicitně převzato z npm | nejnovější |
-RHEL | - | OpenJDK 1.8 | Implicitně převzato z npm | nejnovější |
+**Ubuntu** | 2.0.0 | AzulJDK 1,8 | Implicitně převzato z npm | nejnovější |
+**RHEL** | - | OpenJDK 1.8 | Implicitně převzato z npm | nejnovější |
 
 ## <a name="set-up-a-local-cluster"></a>Nastavení místního clusteru
 Po dokončení instalace spusťte místní cluster.
@@ -261,7 +261,7 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 
 3. Do pole **work with (pracovat s** ) zadejte **https: \/ /dl.Microsoft.com/Eclipse**.
 
-4. Vyberte možnost **Přidat**.
+4. Vyberte **Přidat**.
 
     ![Stránka Available Software (Dostupný software)][sf-eclipse-plugin]
 

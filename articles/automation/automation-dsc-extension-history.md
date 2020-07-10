@@ -9,11 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836919"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186414"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Práce s historií verze rozšíření pro konfiguraci požadovaného stavu Azure
 
@@ -98,7 +99,7 @@ Tento článek obsahuje informace o jednotlivých verzích rozšíření virtuá
 - **Prostředí:** Azure
 - **Poznámky:** Tato verze používá DSC jako součást Windows serveru 2016; pro ostatní systémy Windows operačních systémech nainstaluje rozhraní [Windows Management Framework 5,1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) (instalace WMF vyžaduje restart). Pro nano Server je na virtuálním počítači nainstalovaná role DSC.
 - **Nové funkce:**
-  - Opravy chyb & vylepšení, která zjednodušují používání DSC Azure Automation prostřednictvím uživatelského rozhraní portálu i šablony Správce prostředků. Další informace najdete v tématu [výchozí konfigurační skript](/azure/virtual-machines/extensions/dsc-overview) v dokumentaci k rozšíření DSC.
+  - Opravy chyb & vylepšení, která zjednodušují používání DSC Azure Automation prostřednictvím uživatelského rozhraní portálu i šablony Správce prostředků. Další informace najdete v tématu [výchozí konfigurační skript](../virtual-machines/extensions/dsc-overview.md) v dokumentaci k rozšíření DSC.
 
 ### <a name="version-226"></a>Verze 2,26
 
@@ -249,6 +250,6 @@ Tento článek obsahuje informace o jednotlivých verzích rozšíření virtuá
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o prostředí PowerShell DSC najdete v tématu [PowerShell Documentation Center](/powershell/scripting/dsc/overview/overview).
-- Projděte si [šablonu správce prostředků pro rozšíření DSC](/azure/virtual-machines/extensions/dsc-template).
+- Projděte si [šablonu správce prostředků pro rozšíření DSC](../virtual-machines/extensions/dsc-template.md).
 - Další funkce a prostředky, které můžete spravovat pomocí prostředí PowerShell DSC, najdete v [galerii prostředí PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
-- Podrobnosti o předávání citlivých parametrů do konfigurací najdete v tématu [Zabezpečená Správa přihlašovacích údajů s obslužným rutinou rozšíření DSC](/azure/virtual-machines/extensions/dsc-credentials).
+- Podrobnosti o předávání citlivých parametrů do konfigurací najdete v tématu [Zabezpečená Správa přihlašovacích údajů s obslužným rutinou rozšíření DSC](../virtual-machines/extensions/dsc-credentials.md).

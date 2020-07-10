@@ -3,12 +3,12 @@ title: Offline zálohování pro Data Protection Manager (DPM) a server pro Micr
 description: Pomocí Azure Backup můžete odesílat data mimo síť pomocí služby Azure import/export. Tento článek vysvětluje pracovní postup offline zálohování pro DPM a Azure Backup Server.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f39e93973deab09eb328eeafcff4e49b326483f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374827"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186941"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Pracovní postup offline zálohování pro DPM a Azure Backup Server (předchozí verze)
 
@@ -44,6 +44,9 @@ Offline zálohování je podporované pro všechny modely nasazení Azure Backup
 > * Zálohování souborů a složek pomocí agenta MARS nebo agenta Azure Backup.
 > * Zálohování všech úloh a souborů pomocí aplikace DPM.
 > * Zálohování všech úloh a souborů pomocí MABS.
+
+>[!NOTE]
+>Předplatné Azure CSP se nepodporuje pro použití s offline osazením pro DPM 2019 RTM a staršími verzemi a MABS V3 RTM a staršími verzemi. Online zálohování prostřednictvím sítě se pořád podporuje.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -96,7 +99,7 @@ Než spustíte pracovní postup offline zálohování, ujistěte se, že jsou sp
 
 Pomocí těchto kroků ručně Nahrajte certifikát offline zálohování do dříve vytvořené Azure Active Directory aplikace určené pro offline zálohování.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Přejít na **Azure Active Directory**  >  **Registrace aplikací**.
 1. Na kartě **vlastněné aplikace** vyhledejte aplikaci ve formátu zobrazovaného názvu `AzureOfflineBackup _<Azure User Id` .
 

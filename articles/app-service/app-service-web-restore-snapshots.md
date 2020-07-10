@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255153"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169966"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Obnovení aplikace v Azure ze snímku
 V tomto článku se dozvíte, jak obnovit aplikaci v [Azure App Service](../app-service/overview.md) ze snímku. Můžete obnovit aplikaci do předchozího stavu, a to na základě jedné z snímků vaší aplikace. Není nutné povolit zálohování snímků, platforma automaticky uloží snímek všech aplikací pro účely obnovení dat.
@@ -36,15 +37,15 @@ Obnovení ze snímků je k dispozici pro aplikace běžící na úrovni **Premiu
 
 1. Na stránce **Nastavení** aplikace v [Azure Portal](https://portal.azure.com)klikněte na **zálohování** . zobrazí se stránka **zálohy** . Pak klikněte na **obnovit** v části **snímek (Preview)** .
    
-    ![](./media/app-service-web-restore-snapshots/1.png)
+    ![Snímek obrazovky, který ukazuje, jak obnovit aplikaci ze zálohy snímku.](./media/app-service-web-restore-snapshots/1.png)
 
 2. Na stránce **obnovení** vyberte snímek, který chcete obnovit.
    
-    ![](./media/app-service-web-restore-snapshots/2.png)
+    ![Snímek obrazovky, který ukazuje, jak vybrat snímek, který se má obnovit ](./media/app-service-web-restore-snapshots/2.png)
    
 3. Zadejte cíl pro obnovení aplikace v umístění pro **obnovení**.
    
-    ![](./media/app-service-web-restore-snapshots/3.png)
+    ![Snímek obrazovky, který ukazuje, jak určit cíl obnovení.](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
    > Pokud zvolíte možnost **přepsat**, všechna stávající data v aktuálním systému souborů vaší aplikace budou smazána a přepsána. Než kliknete na **OK**, ujistěte se, že to je to, co chcete udělat.
@@ -60,6 +61,6 @@ Obnovení ze snímků je k dispozici pro aplikace běžící na úrovni **Premiu
 
 4. Můžete zvolit obnovení konfigurace lokality.
    
-    ![](./media/app-service-web-restore-snapshots/4.png)
+    ![Snímek obrazovky, který ukazuje, jak obnovit konfiguraci lokality.](./media/app-service-web-restore-snapshots/4.png)
 
 5. Klikněte na **OK**.

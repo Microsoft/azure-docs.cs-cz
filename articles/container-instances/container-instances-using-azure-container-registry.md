@@ -3,15 +3,15 @@ title: Nasadit image kontejneru z Azure Container Registry
 description: Naučte se nasazovat kontejnery v Azure Container Instances tím, že nasadíte image kontejneru z Azure Container Registry.
 services: container-instances
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81453519"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169608"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení ze služby Azure Container Registry do služby Azure Container Instances
 
@@ -136,7 +136,7 @@ Vlastnosti služby Azure Container Registry můžete zadat v šabloně Azure Res
 [...]
 ```
 
-Kompletní nastavení skupiny kontejnerů najdete v [referenčních informacích k šabloně správce prostředků](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups).    
+Kompletní nastavení skupiny kontejnerů najdete v [referenčních informacích k šabloně správce prostředků](/azure/templates/Microsoft.ContainerInstance/2019-12-01/containerGroups).    
 
 Podrobnosti o odkazování Azure Key Vault tajných kódů v šabloně Správce prostředků najdete v tématu [použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazování](../azure-resource-manager/templates/key-vault-parameter.md).
 

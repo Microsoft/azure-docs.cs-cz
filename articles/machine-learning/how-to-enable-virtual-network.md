@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/30/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 94a2f77326487aa4bb180dd62ec05f4e23ca6218
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057785"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186856"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Můžete také [Povolit privátní propojení Azure](how-to-configure-private-li
 > [!TIP]
 > Můžete kombinovat virtuální síť a privátní propojení a chránit tak komunikaci mezi vaším pracovním prostorem a dalšími prostředky Azure. Některé kombinace ale vyžadují pracovní prostor Enterprise Edition. Následující tabulka vám pomůže pochopit, jaké scénáře vyžaduje Enterprise Edition:
 >
-> | Scénář | Enterprise</br>Edition | Základní</br>Edition |
+> | Scénář | Enterprise</br>Edition | Basic</br>Edition |
 > | ----- |:-----:|:-----:| 
 > | Žádná virtuální síť ani privátní odkaz | ✔ | ✔ |
 > | Pracovní prostor bez privátního odkazu Další prostředky (kromě Azure Container Registry) ve virtuální síti | ✔ | ✔ |
@@ -67,6 +67,9 @@ Můžete také [Povolit privátní propojení Azure](how-to-configure-private-li
 
 Pokud jsou vaše data uložená ve virtuální síti, musíte pomocí [spravované identity](../active-directory/managed-identities-azure-resources/overview.md) v pracovním prostoru udělit přístup k vašim datům v studiu.
 
+> [!IMPORTANT]
+> I když většina studia funguje s daty uloženými ve virtuální síti, integrované poznámkové bloky __ne__. Integrované poznámkové bloky nepodporují používání úložiště, které je ve virtuální síti. Místo toho můžete použít poznámkové bloky Jupyter z výpočetní instance. Další informace najdete v části [přístup k datům v poznámkovém bloku COMPUTE instance](#access-data-in-a-compute-instance-notebook) .
+
 Pokud se vám nepodaří udělit přístup do studia, zobrazí se tato chyba `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` a zakažte následující operace:
 
 * Náhled dat v studiu
@@ -85,7 +88,7 @@ Studio podporuje čtení dat z následujících typů úložiště dat ve virtu�
 
 Přidejte svůj pracovní prostor a účet úložiště do stejné virtuální sítě, aby k nim měli přístup.
 
-1. Pokud chcete připojit svůj pracovní prostor k virtuální síti, [Povolte privátní odkaz na Azure](how-to-configure-private-link.md).
+1. Pokud chcete připojit svůj pracovní prostor k virtuální síti, [Povolte privátní odkaz na Azure](how-to-configure-private-link.md). Tato funkce je aktuálně ve verzi Preview a je k dispozici v USA – východ USA – západ 2 USA (střed) – jih oblastech.
 
 1. Pokud chcete připojit svůj účet úložiště k virtuální síti, [nakonfigurujte nastavení brány firewall a virtuální sítě](#use-a-storage-account-for-your-workspace).
 
@@ -617,7 +620,7 @@ Pokud chcete použít ACI ve virtuální síti k vašemu pracovnímu prostoru, p
 
 2. Nasaďte model pomocí [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-), použijte `vnet_name` parametry a `subnet_name` . Nastavte tyto parametry na název virtuální sítě a podsíť, ve které jste povolili delegování.
 
-## <a name="azure-firewall"></a>Brána Azure Firewall
+## <a name="azure-firewall"></a>Azure Firewall
 
 Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu [použití Azure Machine Learningho pracovního prostoru za Azure firewall](how-to-access-azureml-behind-firewall.md).
 

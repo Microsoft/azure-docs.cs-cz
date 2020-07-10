@@ -4,11 +4,12 @@ description: Přenos kolekcí imagí nebo jiných artefaktů z jednoho registru 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006323"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186924"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
 
@@ -57,7 +58,7 @@ Ověřování úložiště používá tokeny SAS spravované jako tajné klíče
 * **[PipelineRun](#create-pipelinerun-for-export-with-resource-manager)** – prostředek, který se používá k vyvolání prostředku ExportPipeline nebo ImportPipeline.  
   * ExportPipeline spustíte ručně vytvořením prostředku PipelineRun a zadáním artefaktů k exportu.  
   * Pokud je povolená aktivační událost importu, ImportPipeline se automaticky spustí. Můžete ho také spustit ručně pomocí PipelineRun. 
-  * V současné době je možné přenést maximálně **10 artefaktů** .
+  * V současné době je možné přenést maximálně **50 artefaktů** s každým PipelineRun.
 
 ### <a name="things-to-know"></a>Co je potřeba vědět
 * ExportPipeline a ImportPipeline se obvykle nacházejí v různých klientech služby Active Directory přidružených ke zdrojovému a cílovému cloudu. Tento scénář vyžaduje samostatné spravované identity a trezory klíčů pro prostředky exportu a importu. Pro účely testování je možné tyto prostředky umístit do stejného cloudu a sdílet identity.
@@ -161,7 +162,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
+Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Zde je příklad:
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -207,7 +208,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
+Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Zde je příklad:
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -336,7 +337,7 @@ az deployment group delete \
 * **Problémy AzCopy**
   * Přečtěte si téma [řešení potíží s AzCopy](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues).  
 * **Problémy s přenosem artefaktů**
-  * Ne všechny artefakty nebo žádné, jsou přeneseny. Potvrďte kontrolu pravopisu artefaktů při spuštění exportu a název objektu BLOB v běhůch exportu a importu. Potvrďte, že přenášíte maximálně 10 artefaktů.
+  * Ne všechny artefakty nebo žádné, jsou přeneseny. Potvrďte kontrolu pravopisu artefaktů při spuštění exportu a název objektu BLOB v běhůch exportu a importu. Potvrďte, že přenášíte maximálně 50 artefaktů.
   * Běh kanálu možná není dokončený. Spuštění exportu nebo importu může nějakou dobu trvat. 
   * Pro jiné problémy s kanály zadejte [ID korelace](../azure-resource-manager/templates/deployment-history.md) nasazení pro spuštění exportu nebo spusťte import do týmu Azure Container Registry.
 

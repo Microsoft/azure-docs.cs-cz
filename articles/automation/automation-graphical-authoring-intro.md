@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: fa1be31f90bd14c1f22d9e389132487094ecb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5d611ddffedc2f69cfc4f2b5600a158b0be9680
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83849752"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186329"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Vytváření grafických runbooků v Azure Automation
 
@@ -33,7 +34,7 @@ Ovládací prvek plátna umožňuje návrh sady Runbook. Do sady Runbook můžet
 
 Ovládací prvek knihovna umožňuje vybrat [aktivity](#use-activities) , které se mají přidat do Runbooku. Můžete je přidat na plátno, kde je můžete propojit s dalšími aktivitami. Ovládací prvek knihovna obsahuje oddíly, které jsou definovány v následující tabulce.
 
-| Sekce | Description |
+| Sekce | Popis |
 |:--- |:--- |
 | Rutiny |Všechny rutiny, které lze použít v sadě Runbook. Rutiny jsou uspořádány podle modulu. Všechny moduly, které jste nainstalovali v účtu Automation, jsou k dispozici. |
 | Runbooky |Runbooky v účtu Automation. Tyto Runbooky můžete přidat na plátno, které se použijí jako podřízené Runbooky. Zobrazují se jenom Runbooky stejného základního typu jako upravované sady Runbook. Pro grafické Runbooky se zobrazí pouze Runbooky založené na PowerShellu. Pro grafické Runbooky pracovních postupů PowerShellu se zobrazí jenom Runbooky založené na pracovním postupu PowerShellu. |
@@ -60,7 +61,7 @@ Vyberte aktivitu na plátně pro konfiguraci vlastností a parametrů v okně ko
 
 Sada parametrů definuje povinné a volitelné parametry, které přijímají hodnoty pro konkrétní rutinu. Všechny rutiny mají alespoň jednu sadu parametrů a některé mají několik sad. Pokud má rutina více sad parametrů, je nutné před konfigurací parametrů vybrat, která se má použít. Sadu parametrů použitou v aktivitě můžete změnit tak, že vyberete **sadu parametrů** a vyberete jinou sadu. V takovém případě ztratí všechny hodnoty parametrů, které jste již nakonfigurovali.
 
-V následujícím příkladu má rutina [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) tři sady parametrů. V příkladu se používá jedna sada s názvem **ListVirtualMachineInResourceGroupParamSet**s jedním volitelným parametrem pro vrácení všech virtuálních počítačů ve skupině prostředků. V příkladu se používá také sada parametrů **GetVirtualMachineInResourceGroupParamSet** k zadání virtuálního počítače, který se má vrátit. Tato sada má dva povinné parametry a jeden volitelný parametr.
+V následujícím příkladu má rutina [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) tři sady parametrů. V příkladu se používá jedna sada s názvem **ListVirtualMachineInResourceGroupParamSet**s jedním volitelným parametrem pro vrácení všech virtuálních počítačů ve skupině prostředků. V příkladu se používá také sada parametrů **GetVirtualMachineInResourceGroupParamSet** k zadání virtuálního počítače, který se má vrátit. Tato sada má dva povinné parametry a jeden volitelný parametr.
 
 ![Sada parametrů](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -68,7 +69,7 @@ V následujícím příkladu má rutina [Get-AzVM](https://docs.microsoft.com/po
 
 Když zadáte hodnotu parametru, vyberete zdroj dat, abyste určili, jak je hodnota zadaná. Zdroje dat, které jsou k dispozici pro konkrétní parametr, závisí na platných hodnotách pro daný parametr. Například hodnota null není dostupná možnost pro parametr, který nepovoluje hodnoty null.
 
-| Zdroj dat | Description |
+| Zdroj dat | Popis |
 |:--- |:--- |
 | Hodnota konstanty |Zadejte hodnotu parametru. Tento zdroj dat je k dispozici pouze pro následující datové typy: Int32, Int64, String, Boolean, DateTime, Switch. |
 | Výstup aktivity |Použijte výstup aktivity, která předchází aktuální aktivitě v pracovním postupu. V seznamu jsou uvedeny všechny platné aktivity. Pro hodnotu parametru použijte pouze aktivitu, která vytváří výstup. V případě, že výstupem aktivity je objekt s více vlastnostmi, můžete po výběru aktivity zadat název určité vlastnosti. |
@@ -150,7 +151,7 @@ Propojení dvou aktivit můžete vytvořit tak, že vyberete zdrojovou aktivitu 
 
 Vyberte odkaz pro konfiguraci vlastností v okně konfigurace. Vlastnosti obsahují typ odkazu, který je popsán v následující tabulce.
 
-| Typ odkazu | Description |
+| Typ odkazu | Popis |
 |:--- |:--- |
 | Kanál |Cílová aktivita se spustí jednou pro každý výstup objektu ze zdrojové aktivity. Cílová aktivita se nespustí, pokud výsledkem zdrojové aktivity není žádný výstup. Výstup zdrojové aktivity je k dispozici jako objekt. |
 | Sequence |Cílová aktivita se spustí pouze jednou při přijetí výstupu ze zdrojové aktivity. Výstup zdrojové aktivity je k dispozici jako pole objektů. |
@@ -255,19 +256,19 @@ Jednotlivé vstupní parametry jsou definovány vlastnostmi v následující tab
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Name | Povinná hodnota. Název parametru Název musí být v rámci sady Runbook jedinečný. Musí začínat písmenem a může obsahovat jenom písmena, číslice a podtržítka. Název nesmí obsahovat mezery. |
-| Description |Nepovinný parametr. Popis účelu pro vstupní parametr |
+| Název | Povinná hodnota. Název parametru Název musí být v rámci sady Runbook jedinečný. Musí začínat písmenem a může obsahovat jenom písmena, číslice a podtržítka. Název nesmí obsahovat mezery. |
+| Popis |Nepovinný parametr. Popis účelu pro vstupní parametr |
 | Typ | Nepovinný parametr. Pro hodnotu parametru se očekával datový typ. Azure Portal poskytuje vhodný ovládací prvek pro datový typ pro každý parametr při zobrazení výzvy pro vstup. Podporované typy parametrů jsou String, Int32, Int64, Decimal, Boolean, DateTime a Object. Pokud není vybraný datový typ, použije se výchozí hodnota String (řetězec).|
 | Povinné | Nepovinný parametr. Nastavení, které určuje, zda musí být pro parametr zadána hodnota. Zvolíte-li `yes` tuto možnost, musí být při spuštění sady Runbook zadána hodnota. Zvolíte-li možnost `no` , není při spuštění sady Runbook požadována hodnota a je možné použít výchozí hodnotu. Sadu Runbook nelze spustit, pokud nezadáte hodnotu pro každý povinný parametr, který nemá definovánu výchozí hodnotu. |
 | Výchozí hodnota | Nepovinný parametr. Hodnota použitá pro parametr, pokud není předána při spuštění Runbooku. Pokud chcete nastavit výchozí hodnotu, vyberte `Custom` . Tuto možnost vyberte `None` , pokud nechcete zadat žádnou výchozí hodnotu. |
 
 ## <a name="handle-runbook-output"></a>Zpracovat výstup Runbooku
 
-Vytváření grafického obsahu ukládá data vytvořená aktivitou, která nemá odchozí odkaz na [Výstup runbooku](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages). Výstup je uložen s úlohou Runbooku a je k dispozici pro nadřazenou sadu Runbook, pokud je sada Runbook používána jako podřízená položka.
+Vytváření grafického obsahu ukládá data vytvořená aktivitou, která nemá odchozí odkaz na [Výstup runbooku](./automation-runbook-output-and-messages.md). Výstup je uložen s úlohou Runbooku a je k dispozici pro nadřazenou sadu Runbook, pokud je sada Runbook používána jako podřízená položka.
 
 ## <a name="work-with-powershell-expressions"></a>Práce s výrazy PowerShellu
 
-Jednou z výhod grafického vytváření je to, že vám umožní vytvořit Runbook s minimálními znalostmi prostředí PowerShell. V současné době ale potřebujete znát bitovou kopii PowerShellu pro naplnění určitých [hodnot parametrů](#use-activities) a pro nastavení [podmínek propojení](#use-links-for-workflow). V této části najdete stručný úvod do PowerShellových výrazů. Úplné podrobnosti o PowerShellu jsou k dispozici v skriptování v prostředí [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/overview).
+Jednou z výhod grafického vytváření je to, že vám umožní vytvořit Runbook s minimálními znalostmi prostředí PowerShell. V současné době ale potřebujete znát bitovou kopii PowerShellu pro naplnění určitých [hodnot parametrů](#use-activities) a pro nastavení [podmínek propojení](#use-links-for-workflow). V této části najdete stručný úvod do PowerShellových výrazů. Úplné podrobnosti o PowerShellu jsou k dispozici v skriptování v prostředí [Windows PowerShell](/powershell/scripting/overview).
 
 ### <a name="use-a-powershell-expression-as-a-data-source"></a>Použití výrazu PowerShellu jako zdroje dat
 
@@ -322,7 +323,7 @@ Sada Runbook může použít výstup aktivity ve složitějším výrazu, např�
 
 ### <a name="compare-values"></a>Porovnat hodnoty
 
-[Operátory porovnání](https://technet.microsoft.com/library/hh847759.aspx) použijte k porovnání hodnot nebo určení, zda hodnota odpovídá zadanému vzoru. Porovnání vrátí hodnotu buď true, nebo false.
+[Operátory porovnání](/powershell/module/microsoft.powershell.core/about/about_comparison_operators) použijte k porovnání hodnot nebo určení, zda hodnota odpovídá zadanému vzoru. Porovnání vrátí hodnotu buď true, nebo false.
 
 Například následující podmínka Určuje, jestli je virtuální počítač z aktivity s názvem `Get-AzureVM` aktuálně zastavený.
 
@@ -336,7 +337,7 @@ Následující podmínka Určuje, zda je stejný virtuální počítač v jiném
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-Pomocí [logického operátoru](https://technet.microsoft.com/library/hh847789.aspx), například nebo, můžete ve svém Runbooku spojit několik `-and` podmínek `-or` . Například následující podmínka kontroluje, jestli je virtuální počítač v předchozím příkladu ve stavu zastaveno nebo zastavování.
+Pomocí [logického operátoru](/powershell/module/microsoft.powershell.core/about/about_logical_operators), například nebo, můžete ve svém Runbooku spojit několik `-and` podmínek `-or` . Například následující podmínka kontroluje, jestli je virtuální počítač v předchozím příkladu ve stavu zastaveno nebo zastavování.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -344,7 +345,7 @@ Pomocí [logického operátoru](https://technet.microsoft.com/library/hh847789.a
 
 ### <a name="use-hashtables"></a>Použití zatřiďovacími tabulkami
 
-[Zatřiďovacími tabulkami](https://technet.microsoft.com/library/hh847780.aspx) jsou páry název-hodnota, které jsou užitečné pro vrácení sady hodnot. Může se také zobrazit zatřiďovací tabulka, na kterou se odkazuje jako na slovník. Vlastnosti pro určité aktivity očekávají zatřiďovací tabulku namísto jednoduché hodnoty.
+[Zatřiďovacími tabulkami](/powershell/module/microsoft.powershell.core/about/about_hash_tables) jsou páry název-hodnota, které jsou užitečné pro vrácení sady hodnot. Může se také zobrazit zatřiďovací tabulka, na kterou se odkazuje jako na slovník. Vlastnosti pro určité aktivity očekávají zatřiďovací tabulku namísto jednoduché hodnoty.
 
 Pomocí následující syntaxe vytvořte zatřiďovací tabulku. Může obsahovat libovolný počet položek, ale každá je definována pomocí názvu a hodnoty.
 
@@ -372,7 +373,7 @@ Následující příklad používá výstup z aktivity volané `Get Twitter Conn
 
 ## <a name="authenticate-to-azure-resources"></a>Ověřování v prostředcích Azure
 
-Sady Runbook v Azure Automation, které spravují prostředky Azure, vyžadují ověřování do Azure. [Účet Spustit jako](automation-create-runas-account.md), označovaný také jako instanční objekt, je výchozím mechanismem, který Runbook služby Automation používá pro přístup k Azure Resource Manager prostředkům ve vašem předplatném. Tuto funkci můžete přidat do grafického Runbooku přidáním `AzureRunAsConnection` assetu připojení, který na plátně používá rutinu PowerShellu [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) . Můžete také přidat rutinu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Tento scénář je znázorněn v následujícím příkladu.
+Sady Runbook v Azure Automation, které spravují prostředky Azure, vyžadují ověřování do Azure. [Účet Spustit jako](./manage-runas-account.md), označovaný také jako instanční objekt, je výchozím mechanismem, který Runbook služby Automation používá pro přístup k Azure Resource Manager prostředkům ve vašem předplatném. Tuto funkci můžete přidat do grafického Runbooku přidáním `AzureRunAsConnection` assetu připojení, který na plátně používá rutinu PowerShellu [Get-AutomationConnection](/system-center/sma/manage-global-assets) . Můžete také přidat rutinu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Tento scénář je znázorněn v následujícím příkladu.
 
 ![Aktivity ověřování spustit jako](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
@@ -389,7 +390,7 @@ Další aktivita `Connect-AzAccount` přidá ověřený účet Spustit jako pro 
 
 Pro pole parametrů **APPLICATIONID**, **CERTIFICATETHUMBPRINT**a **TENANTID**zadejte název vlastnosti pro cestu k poli, protože výstupem aktivity je objekt s více vlastnostmi. V opačném případě, když se sada Runbook spustí, při pokusu o ověření dojde k chybě. To je to, co potřebujete minimálně k ověření vaší sady Runbook pomocí účtu Spustit jako.
 
-Někteří předplatitelé vytvoří účet Automation pomocí [uživatelského účtu Azure AD](automation-create-aduser-account.md) ke správě nasazení Azure Classic nebo k Azure Resource Manager prostředkům. Aby se zajistila zpětná kompatibilita pro tyto předplatitele, je mechanismus ověřování, který se má použít ve vašem Runbooku, `Add-AzureAccount` rutina s [Assetem přihlašovacích údajů](automation-credentials.md). Asset představuje uživatele služby Active Directory s přístupem k účtu Azure.
+Někteří předplatitelé vytvoří účet Automation pomocí [uživatelského účtu Azure AD](./shared-resources/credentials.md) ke správě nasazení Azure Classic nebo k Azure Resource Manager prostředkům. Aby se zajistila zpětná kompatibilita pro tyto předplatitele, je mechanismus ověřování, který se má použít ve vašem Runbooku, `Add-AzureAccount` rutina s [Assetem přihlašovacích údajů](./shared-resources/credentials.md). Asset představuje uživatele služby Active Directory s přístupem k účtu Azure.
 
 Tuto funkci můžete pro svůj grafický Runbook povolit přidáním assetu přihlašovacích údajů na plátno následovaný `Add-AzureAccount` aktivitou, která pro svůj vstup používá prostředek přihlašovacích údajů. Prohlédněte si následující příklad.
 
@@ -434,4 +435,4 @@ Máte možnost vrátit se k publikované verzi Runbooku. Tato operace vyvolává
 * Informace o tom, jak začít s grafickými Runbooky, najdete v tématu [kurz: Vytvoření grafického Runbooku](learn/automation-tutorial-runbook-graphical.md).
 * Další informace o typech runbooků a jejich výhodách a omezeních najdete v tématu [Azure Automation typy runbooků](automation-runbook-types.md).
 * Informace o ověřování pomocí účtu Spustit jako pro automatizaci najdete v tématu [účet Spustit jako](automation-security-overview.md#run-as-account).
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

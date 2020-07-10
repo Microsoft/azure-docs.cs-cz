@@ -7,12 +7,12 @@ keywords: dsc, configuration, automation
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 28e8f921fa7620d1fec7dec1788ed769026624d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836715"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186074"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Konfigurace virtuálního počítače s požadovanou konfigurací stavu
 
@@ -22,8 +22,8 @@ Povolením konfigurace stavu Azure Automation můžete spravovat a monitorovat k
 
 K dokončení tohoto rychlého startu je potřeba:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
-* Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](automation-sec-configure-azure-runas-account.md).
+* Předplatné Azure. Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+* Účet Azure Automation. Pokyny k vytvoření účtu Azure Automation Spustit jako najdete v tématu [Účet Spustit jako pro Azure](./manage-runas-account.md).
 * Azure Resource Manager virtuální počítač (ne Classic) se spuštěným Red Hat Enterprise Linux, CentOS nebo Oracle Linux. Pokyny k vytvoření virtuálního počítače najdete v tématu [Vytvoření prvního virtuálního počítače s Linuxem na webu Azure Portal](../virtual-machines/linux/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
@@ -31,7 +31,7 @@ Přihlaste se k Azure na adrese https://portal.azure.com .
 
 ## <a name="enable-a-virtual-machine"></a>Povolit virtuální počítač
 
-Existuje mnoho různých metod, jak povolit funkci Konfigurace počítače pro stav. V tomto rychlém startu se dozvíte, jak povolit funkci pro virtuální počítač pomocí účtu Automation. Další informace o různých metodách, jak povolit počítače pro konfiguraci stavu, najdete v tématu [Povolení počítačů pro správu pomocí konfigurace stavu Azure Automation](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding).
+Existuje mnoho různých metod, jak povolit funkci Konfigurace počítače pro stav. V tomto rychlém startu se dozvíte, jak povolit funkci pro virtuální počítač pomocí účtu Automation. Další informace o různých metodách, jak povolit počítače pro konfiguraci stavu, najdete v tématu [Povolení počítačů pro správu pomocí konfigurace stavu Azure Automation](./automation-dsc-onboarding.md).
 
 1. V levém podokně webu Azure Portal vyberte **Účty Automation**. Pokud není zobrazený v levém podokně, klikněte na **všechny služby** a vyhledejte ve výsledném zobrazení.
 1. V seznamu vyberte účet Automation.
@@ -39,8 +39,8 @@ Existuje mnoho různých metod, jak povolit funkci Konfigurace počítače pro s
 2. Kliknutím na **Přidat** otevřete stránku pro výběr virtuálního počítače.
 3. Vyhledejte virtuální počítač, pro který chcete povolit DSC. K vyhledání konkrétního virtuálního počítače můžete použít vyhledávací pole a možnosti filtru.
 4. Klikněte na virtuální počítač a pak klikněte na **připojit** .
-5. Vyberte vhodné nastavení DSC pro tento virtuální počítač. Pokud jste již propravili konfiguraci, můžete ji zadat jako `Node Configuration Name` . Pokud chcete řídit chování konfigurace počítače, můžete nastavit [režim konfigurace](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig).
-6. Klikněte na tlačítko **OK**. I když je rozšíření DSC nasazené do virtuálního počítače, stav se zobrazí jako `Connecting` .
+5. Vyberte vhodné nastavení DSC pro tento virtuální počítač. Pokud jste již propravili konfiguraci, můžete ji zadat jako `Node Configuration Name` . Pokud chcete řídit chování konfigurace počítače, můžete nastavit [režim konfigurace](/powershell/scripting/dsc/managing-nodes/metaConfig).
+6. Klikněte na **OK**. I když je rozšíření DSC nasazené do virtuálního počítače, stav se zobrazí jako `Connecting` .
 
 ![Povolení virtuálního počítače Azure pro DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -57,9 +57,9 @@ Moduly obsahují prostředky DSC a mnoho najdete v [Galerie prostředí PowerShe
 
 ## <a name="import-the-configuration"></a>Import konfigurace
 
-Tento rychlý start využívá konfiguraci DSC, která na počítači konfiguruje Apache HTTP Server, MySQL a PHP. Viz [Konfigurace DSC](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations).
+Tento rychlý start využívá konfiguraci DSC, která na počítači konfiguruje Apache HTTP Server, MySQL a PHP. Viz [Konfigurace DSC](/powershell/scripting/dsc/configurations/configurations).
 
-V textovém editoru zadejte následující příkaz a uložte ho místně jako **AMPServer. ps1**.
+V textovém editoru zadejte následující příkaz a uložte ho místně jako **AMPServer.ps1**.
 
 ```powershell-interactive
 configuration LAMPServer {
@@ -95,9 +95,9 @@ configuration LAMPServer {
 Import konfigurace:
 
 1. V levém podokně účtu Automation vyberte **Konfigurace stavu (DSC)** a pak klikněte na kartu **Konfigurace**.
-2. Klikněte na tlačítko **+ Přidat**.
+2. Klikněte na **+ Přidat**.
 3. Vyberte konfigurační soubor, který jste uložili v předchozím kroku.
-4. Klikněte na tlačítko **OK**.
+4. Klikněte na **OK**.
 
 ## <a name="compile-a-configuration"></a>Kompilace konfigurace
 

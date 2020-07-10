@@ -9,11 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836851"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186363"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>Napravit servery konfigurace stavu nesplňujících požadavky Azure Automation
 
@@ -24,7 +25,7 @@ Tento dokument popisuje příklady skriptů pro tuto funkci při ruční opravě
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Správný posun virtuálních počítačů s Windows pomocí PowerShellu
 
-Pomocí funkce příkazu můžete opravit posun virtuálních počítačů s Windows `Run` . Podívejte [se na téma spuštění skriptů PowerShellu na virtuálním počítači s Windows pomocí příkazu Spustit](/azure/virtual-machines/windows/run-command).
+Pomocí funkce příkazu můžete opravit posun virtuálních počítačů s Windows `Run` . Podívejte [se na téma spuštění skriptů PowerShellu na virtuálním počítači s Windows pomocí příkazu Spustit](../virtual-machines/windows/run-command.md).
 
 Pokud chcete vynutit, aby uzel Konfigurace stavu Azure Automation stáhnout nejnovější konfiguraci a použít ho, použijte rutinu [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) .
 
@@ -42,5 +43,5 @@ U hybridních uzlů můžete opravit posun pomocí skriptů Pythonu. Viz [prová
 
 ## <a name="next-steps"></a>Další kroky
 
-- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 741569740713fef72f714f7cbce38a3c6f075684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836681"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185992"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Informace o pracovním postupu PowerShellu pro Azure Automation
 
@@ -20,7 +21,7 @@ Když je pracovní postup zapsaný pomocí syntaxe Windows PowerShellu a spustí
 > [!NOTE]
 > Skript PowerShellového pracovního postupu je velmi podobný skriptu prostředí Windows PowerShell, ale obsahuje některé významné rozdíly, které mohou být matoucí pro nového uživatele. Proto doporučujeme napsat své Runbooky pomocí pracovního postupu PowerShellu jenom v případě, že potřebujete použít [kontrolní body](#use-checkpoints-in-a-workflow). 
 
-Podrobné informace o tématech v tomto článku najdete v tématu [Začínáme s pracovním postupem prostředí Windows PowerShell](https://technet.microsoft.com/library/jj134242.aspx).
+Podrobné informace o tématech v tomto článku najdete v tématu [Začínáme s pracovním postupem prostředí Windows PowerShell](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11)).
 
 ## <a name="use-workflow-keyword"></a>Použít klíčové slovo pracovního postupu
 
@@ -45,9 +46,9 @@ Kód pracovního postupu PowerShellu vypadá téměř stejně jako kód skriptu 
 
 Aktivita je konkrétní úloha v pracovním postupu, která se provádí v rámci sekvence. Pracovní postup prostředí Windows PowerShell automaticky převádí mnoho rutin prostředí Windows PowerShell na aktivity při spuštění pracovního postupu. Když zadáte jednu z těchto rutin v Runbooku, odpovídající aktivita se spustí programovací model Windows Workflow Foundation. 
 
-Pokud rutina nemá odpovídající aktivitu, pracovní postup prostředí Windows PowerShell automaticky spustí rutinu v aktivitě [InlineScript](#use-inlinescript) . Některé rutiny jsou vyloučené a nelze je použít v pracovním postupu, pokud je výslovně nezahrnete do bloku InlineScript. Další informace najdete v tématu [použití aktivit ve skriptových pracovních postupech](https://technet.microsoft.com/library/jj574194.aspx).
+Pokud rutina nemá odpovídající aktivitu, pracovní postup prostředí Windows PowerShell automaticky spustí rutinu v aktivitě [InlineScript](#use-inlinescript) . Některé rutiny jsou vyloučené a nelze je použít v pracovním postupu, pokud je výslovně nezahrnete do bloku InlineScript. Další informace najdete v tématu [použití aktivit ve skriptových pracovních postupech](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11)).
 
-Aktivity pracovních postupů sdílejí sadu společných parametrů ke konfiguraci svého provozu. Viz [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
+Aktivity pracovních postupů sdílejí sadu společných parametrů ke konfiguraci svého provozu. Viz [about_WorkflowCommonParameters](/powershell/module/psworkflow/about/about_workflowcommonparameters).
 
 ### <a name="positional-parameters"></a>Poziční parametry
 
@@ -150,7 +151,7 @@ I když aktivity InlineScript můžou být v určitých pracovních postupech kr
 * [Paralelní provádění](#use-parallel-processing) nelze použít uvnitř InlineScript bloku.
 * InlineScript má vliv na škálovatelnost pracovního postupu, protože obsahuje relaci prostředí Windows PowerShell pro celou délku bloku InlineScript.
 
-Další informace o použití InlineScript najdete v tématu [spuštění příkazů prostředí Windows PowerShell v pracovním postupu](https://technet.microsoft.com/library/jj574197.aspx) a [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
+Další informace o použití InlineScript najdete v tématu [spuštění příkazů prostředí Windows PowerShell v pracovním postupu](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11)) a [about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript).
 
 ## <a name="use-parallel-processing"></a>Použít paralelní zpracování
 
@@ -260,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-Vzhledem k tomu, že přihlašovací údaje uživatelského jména nejsou po volání aktivity [pozastavit-Workflow](https://technet.microsoft.com/library/jj733586.aspx) nebo po posledním kontrolním bodu zachovány, je třeba nastavit přihlašovací údaje na hodnotu null a pak je znovu načíst z úložiště Asset po `Suspend-Workflow` volání nebo zadání kontrolního bodu.  V opačném případě se může zobrazit následující chybová zpráva:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Vzhledem k tomu, že přihlašovací údaje uživatelského jména nejsou po volání aktivity [pozastavit-Workflow](/powershell/module/psworkflow/about/about_suspend-workflow) nebo po posledním kontrolním bodu zachovány, je třeba nastavit přihlašovací údaje na hodnotu null a pak je znovu načíst z úložiště Asset po `Suspend-Workflow` volání nebo zadání kontrolního bodu.  V opačném případě se může zobrazit následující chybová zpráva:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 Následující stejný kód ukazuje, jak tuto situaci zpracovat ve vašich sadách Runbook pracovního postupu PowerShellu.
 
@@ -289,9 +290,9 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation. Pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s instančním objektem, není použití těchto rutin nutné.
+> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation. Pokud ověřujete pomocí účtu Spustit jako nakonfigurovaného s instančním objektem, není použití těchto rutin nutné.
 
-Další informace o kontrolních bodech najdete v tématu [Přidání kontrolních bodů do pracovního postupu skriptu](https://technet.microsoft.com/library/jj574114.aspx).
+Další informace o kontrolních bodech najdete v tématu [Přidání kontrolních bodů do pracovního postupu skriptu](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11)).
 
 ## <a name="next-steps"></a>Další kroky
 

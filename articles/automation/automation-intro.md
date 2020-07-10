@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, konfigurace stavu, Správa aktualiz
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 30cfadcec1f0c28a463740ddaefa8fc76f04af3f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835270"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186176"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
@@ -31,13 +31,13 @@ Automatizace procesů podporuje integraci služeb Azure a dalších veřejných 
 Správa konfigurace v Azure Automation umožňuje přístup ke dvěma funkcím:
 
 * Change Tracking a Inventory
-* Služba Azure Automation State Configuration
+* Azure Automation State Configuration
 
 ### <a name="change-tracking-and-inventory"></a>Change Tracking a Inventory
 
 Change Tracking a inventář kombinuje funkce Change Tracking a Inventory, které vám umožní sledovat změny infrastruktury virtuálních počítačů a serverů. Služba podporuje sledování změn napříč službami, démony, softwarem, Registry a soubory ve vašem prostředí, které vám pomůžou diagnostikovat nechtěné změny a vyvolat výstrahy. Podpora inventáře vám umožní dotazovat se na prostředky v hostovi pro přehlednost v nainstalovaných aplikacích a dalších položkách konfigurace. Podrobnosti o této funkci najdete v tématu [Change Tracking a inventář](change-tracking.md).
 
-### <a name="azure-automation-state-configuration"></a>Služba Azure Automation State Configuration
+### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
 
 [Konfigurace stavu Azure Automation](automation-dsc-overview.md) je cloudová funkce pro konfiguraci požadovaného stavu PowerShellu (DSC), která poskytuje služby pro podniková prostředí. Pomocí této funkce můžete spravovat prostředky DSC v Azure Automation a aplikovat konfigurace na virtuální nebo fyzické počítače ze serveru vyžádané replikace DSC v cloudu Azure. 
 
@@ -53,14 +53,14 @@ Azure Automation nabízí řadu sdílených možností, včetně sdílených pro
 
 Azure Automation se skládá ze sady sdílených prostředků, které usnadňují automatizaci a konfiguraci prostředí ve velkém měřítku.
 
-* **[Plány](automation-schedules.md)** – aktivuje operace automatizace v předdefinovaných časech.
-* **[Moduly](automation-integration-modules.md)** – spravujte Azure a další systémy. Moduly můžete importovat do účtu Automation pro rutiny od Microsoftu, dalších výrobců, komunitu a pro vlastní definice a prostředky DSC.
+* **[Plány](./shared-resources/schedules.md)** – aktivuje operace automatizace v předdefinovaných časech.
+* **[Moduly](./shared-resources/modules.md)** – spravujte Azure a další systémy. Moduly můžete importovat do účtu Automation pro rutiny od Microsoftu, dalších výrobců, komunitu a pro vlastní definice a prostředky DSC.
 * **[Galerie modulů](automation-runbook-gallery.md)** – podporuje nativní integraci s Galerie prostředí PowerShell, která umožňuje zobrazit Runbooky a importovat je do účtu Automation. Galerie vám umožní rychle začít s integrací a vytvářením procesů z Galerie prostředí PowerShell a Microsoft Script Center.
 * **[Balíčky Python 2](python-packages.md)** – podporují Runbooky Python 2 pro váš účet Automation.
-* **[Přihlašovací údaje](automation-credentials.md)** – bezpečně ukládají citlivé informace, které Runbooky a konfigurace můžou použít za běhu.
+* **[Přihlašovací údaje](./shared-resources/credentials.md)** – bezpečně ukládají citlivé informace, které Runbooky a konfigurace můžou použít za běhu.
 * **[Connections](automation-connections.md)** – dvojici název-hodnota jsou společné informace pro připojení k systémům. Autor modulu definuje připojení v sadách Runbook a konfiguracích pro použití za běhu.
-* **[Certifikáty](automation-certificates.md)** – definujte informace, které se mají použít při ověřování a zabezpečení nasazených prostředků při použití v sadách Runbook nebo konfiguracích DSC za běhu. 
-* **[Proměnné](automation-variables.md)** – blokovaný obsah, který se dá použít napříč Runbooky a konfiguracemi. Hodnoty proměnných můžete změnit bez nutnosti upravovat žádné Runbooky nebo konfigurace, které na ně odkazují.
+* **[Certifikáty](./shared-resources/certificates.md)** – definujte informace, které se mají použít při ověřování a zabezpečení nasazených prostředků při použití v sadách Runbook nebo konfiguracích DSC za běhu. 
+* **[Proměnné](./shared-resources/variables.md)** – blokovaný obsah, který se dá použít napříč Runbooky a konfiguracemi. Hodnoty proměnných můžete změnit bez nutnosti upravovat žádné Runbooky nebo konfigurace, které na ně odkazují.
 
 ### <a name="role-based-access-control"></a>Řízení přístupu na základě role
 

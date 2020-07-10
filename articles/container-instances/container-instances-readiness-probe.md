@@ -2,12 +2,13 @@
 title: Nastavení testu připravenosti na instanci kontejneru
 description: Naučte se konfigurovat sondu, aby kontejnery v Azure Container Instances přijímaly požadavky pouze v případě, že jsou připravené.
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 3e89086d66f284df35e36dc8f1d68bb09264843f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76935682"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169659"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurace testů připravenosti
 
@@ -25,7 +26,7 @@ Azure Container Instances podporuje také [sondy živého provozu](container-ins
 Jako příklad vytvořte `readiness-probe.yaml` soubor s následujícím fragmentem kódu, který obsahuje test připravenosti. Tento soubor definuje skupinu kontejnerů, která se skládá z kontejneru, na kterém běží malá webová aplikace. Aplikace se nasadí z veřejné `mcr.microsoft.com/azuredocs/aci-helloworld` image. Tato kontejnerová aplikace je také znázorněna v [části nasazení instance kontejneru v Azure pomocí rozhraní příkazového řádku Azure](container-instances-quickstart.md) a dalších rychlých startů.
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: readinesstest
 properties:

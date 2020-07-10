@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73888605"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170781"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Odeslání souborů do účtu Azure Media Services pomocí REST  
 > [!div class="op_single_selector"]
@@ -41,13 +42,13 @@ V tomto kurzu se dozvíte, jak nahrát soubor a další operaci s ním spojenou:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), ještě než začnete.
+- Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Vytvořte účet Azure Media Services pomocí Azure Portal](media-services-portal-create-account.md).
 - Přečtěte si článek [Přehled přístupu k rozhraní Azure Media Services API pomocí ověřování AAD](media-services-use-aad-auth-to-access-ams-api.md) .
 - Další informace najdete také v tématu [použití ověřování Azure AD pro přístup k rozhraní Media Services API pomocí REST](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) .
 - Nakonfigurujte **metodu post** , jak je popsáno v tématu [Configure the post for Media Services REST API Calls](media-rest-apis-with-postman.md).
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 Při použití Media Services REST API platí následující předpoklady:
  
@@ -149,9 +150,9 @@ Chcete-li přijmout skutečnou adresu URL pro odeslání, vytvořte Lokátor SAS
 
 Adresa URL SAS má následující formát:
 
-    {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
+`{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
-### <a name="considerations"></a>Důležité informace
+### <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 Musí být splněny určité předpoklady:
 
@@ -212,15 +213,17 @@ Pokud chcete ověřit, jestli se soubor úspěšně nahrál, možná budete cht�
 
 Následující operace **Get** například přináší data souborů pro soubor assetu (v případě BigBuckBunny.mp4 souboru). Dotaz používá [proměnné prostředí](postman-environment.md) , které jste nastavili dříve.
 
-    {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
+`{{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files`
 
 Odpověď bude obsahovat velikost, název a další informace.
 
-    "Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
-    "Name": "BigBuckBunny.mp4",
-    "ContentFileSize": "3186542",
-    "ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
-            
+```console
+"Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
+"Name": "BigBuckBunny.mp4",
+"ContentFileSize": "3186542",
+"ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
+```
+  
 ## <a name="next-steps"></a>Další kroky
 
 Nyní můžete kódovat nahrané assety. Další informace najdete v tématu [Kódování assetů](media-services-portal-encode.md).

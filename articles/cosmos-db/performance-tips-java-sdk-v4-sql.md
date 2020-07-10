@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 30573eb3b35152ab5769c1aab9c4af052cb454a6
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850206"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171019"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Java SDK v4
 
@@ -37,52 +37,46 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 * **Režim připojení: použít přímý režim**
 <a id="direct-connection"></a>
     
-    Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména z hlediska latence na straně klienta. *ConnectionMode* je klíčovým nastavením konfigurace, které je k dispozici pro konfiguraci klienta *ConnectionPolicy*. Pro Azure Cosmos DB Java SDK v4 jsou k dispozici dvě dostupné *ConnectionMode*s:  
-      
-    * [Brána (výchozí)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
-    * [Direct](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
+    Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, zejména z hlediska latence na straně klienta. Režim připojení je klíčovým nastavením konfigurace, které je k dispozici pro konfiguraci klienta. Pro Azure Cosmos DB Java SDK v4 jsou k dispozici dva režimy připojení:  
 
-    Tyto *ConnectionMode*s v podstatě vybírají trasu, kterou požadavky přebírají z klientského počítače na oddíly v Azure Cosmos DB back-endu. Obecně přímým režimem je upřednostňovaná možnost pro nejlepší výkon – umožňuje klientovi otevřít připojení TCP přímo k oddílům v Azure Cosmos DB back-endu a *odesílat požadavky přímo*, bez jakýchkoli dodavatelů. V režimu brány naopak požadavky vytvořené vaším klientem jsou směrovány na server "brána" v Azure Cosmos DB front-endu, který zase odvolá vaše požadavky na příslušné oddíly v back-endu Azure Cosmos DB. Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou režim brány, protože používá standardní port HTTPS a jeden koncový bod. Kompromisy týkající se výkonu však jsou v tom, že režim brány zahrnuje dodatečné směrování sítě (klient brány k bráně plus brána) při každém čtení nebo zápisu dat do Azure Cosmos DB. Díky tomu přímý režim nabízí lepší výkon kvůli menšímu počtu směrování sítě.
+    * Přímý režim (výchozí)      
+    * Režim brány
 
-    *ConnectionMode* je nakonfigurován při vytváření instance klienta Azure Cosmos DB s parametrem *ConnectionPolicy* :
+    Tyto režimy připojení v podstatě vybírají trasu, kterou požadavky na data rovinují – čtení a zápis dokumentů – z klientského počítače na oddíly v Azure Cosmos DB back-endu. Obecně přímým režimem je upřednostňovaná možnost pro nejlepší výkon – umožňuje klientovi otevřít připojení TCP přímo k oddílům v Azure Cosmos DB back-endu a *odesílat požadavky přímo*, bez jakýchkoli dodavatelů. V režimu brány naopak požadavky vytvořené vaším klientem jsou směrovány na server "brána" v Azure Cosmos DB front-endu, který zase odvolá vaše požadavky na příslušné oddíly v back-endu Azure Cosmos DB. Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou režim brány, protože používá standardní port HTTPS a jeden koncový bod. Kompromisy týkající se výkonu však jsou v tom, že režim brány zahrnuje dodatečné směrování sítě (klient brány k bráně plus brána) při každém čtení nebo zápisu dat do Azure Cosmos DB. Díky tomu přímý režim nabízí lepší výkon kvůli menšímu počtu směrování sítě.
+
+    Režim připojení pro požadavky na rovinu dat je konfigurován v Azure Cosmos DB tvůrce klienta pomocí metod *directMode ()* nebo *gatewayMode ()* , jak je znázorněno níže. Chcete-li nakonfigurovat kterýkoli režim s výchozím nastavením, zavolejte buď metodu bez argumentů. V opačném případě předejte instanci třídy nastavení konfigurace jako argument (*DirectConnectionConfig* pro *directMode ()*, *GatewayConnectionConfig* pro *gatewayMode ()*.)
     
-   #### <a name="async"></a>[Async](#tab/api-async)
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Sada Java v4 SDK
 
-   ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Async API
+    # <a name="async"></a>[Async](#tab/api-async)
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Async API
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosAsyncClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildAsyncClient();
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientConnectionModeAsync)]
 
-    #### <a name="sync"></a>[Synchronizovat](#tab/api-sync)
+    # <a name="sync"></a>[Synchronizovat](#tab/api-sync)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-connection-policy-sync"></a>Sada Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+    Sada Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientConnectionModeSync)]
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildClient();
-    ```
+    --- 
+
+    Metoda *directMode ()* má dodatečné přepsání z následujícího důvodu. Operace roviny ovládacího prvku, jako je databáze a CRUD, používají *vždy* režim brány; Pokud uživatel nakonfiguroval přímý režim pro operace roviny dat, operace řídicí roviny použijí nastavení režimu výchozí brány. To vyhovuje většině uživatelů. Uživatel, který požaduje přímý režim pro operace roviny dat, a také tunability parametrů režimu brány řídicích ploch může použít následující přepsání *directMode ()* :
+
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Sada Java v4 SDK
+
+    # <a name="async"></a>[Async](#tab/api-async)
+
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Async API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientDirectOverrideAsync)]
+
+    # <a name="sync"></a>[Synchronizovat](#tab/api-sync)
+
+    Sada Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientDirectOverrideSync)]
 
     --- 
 
@@ -156,7 +150,7 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
 
 * **Vyladění ConnectionPolicy**
 
-    Ve výchozím nastavení se požadavky přímého režimu Cosmos DB při použití Azure Cosmos DB Java SDK v4 provedou přes protokol TCP. Interně sada SDK používá speciální architekturu přímého režimu pro dynamickou správu síťových prostředků a dosažení nejlepšího výkonu.
+    Ve výchozím nastavení se požadavky přímého režimu Cosmos DB při použití Azure Cosmos DB Java SDK v4 provedou přes protokol TCP. Interně přímý režim používá speciální architekturu k dynamické správě síťových prostředků a k dosažení nejlepšího výkonu.
 
     V Azure Cosmos DB Java SDK v4 je přímým řešením nejlepší volbou pro zlepšení výkonu databáze s většinou úloh. 
 
@@ -166,30 +160,21 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
 
         Architektura na straně klienta pracující v přímém režimu umožňuje předvídatelné využití sítě a multiplexější přístup k replikám Azure Cosmos DB. Výše uvedený diagram ukazuje, jak přímý režim směruje požadavky klienta na repliky v Cosmos DB back-endu. Architektura přímého režimu přiděluje až 10 **kanálů** na straně klienta pro repliku databáze. Kanál je připojení TCP předchází vyrovnávací paměť požadavků, což je 30 požadavků hluboko. Kanály patřící do repliky se dynamicky přiřazují podle potřeby **koncového bodu služby**repliky. Když uživatel vydá požadavek v přímém režimu, **TransportClient** směruje požadavek do správného koncového bodu služby na základě klíče oddílu. Vyrovnávací paměti front požadavků se **vyžadují** před koncovým bodem služby.
 
-    * ***Možnosti konfigurace ConnectionPolicy pro přímý režim***
+    * ***Možnosti konfigurace pro přímý režim***
 
-        Tato nastavení konfigurace řídí chování architektury RNTBD, která se řídí chováním sady SDK pro přímý režim.
-        
-        V prvním kroku použijte následující doporučené konfigurační nastavení. Tyto možnosti *ConnectionPolicy* jsou pokročilá nastavení konfigurace, která mohou ovlivnit výkon sady SDK neočekávaným způsobem. Doporučujeme, aby se uživatelé nemuseli měnit, pokud se jim nedaří lépe porozumět kompromisům a je nezbytně nutné. Pokud v tomto konkrétním tématu narazíte na problémy, obraťte se prosím na [tým Azure Cosmos DB](mailto:CosmosDBPerformanceSupport@service.microsoft.com) .
+        Pokud je žádoucí jiné než výchozí chování přímého režimu, vytvořte instanci *DirectConnectionConfig* a přizpůsobte její vlastnosti a pak předejte přizpůsobenou instanci vlastnosti metodě *directMode ()* v Tvůrci klienta Azure Cosmos DB.
 
-        Pokud používáte Azure Cosmos DB jako referenční databázi (to znamená, že databáze se používá v mnoha operacích čtení a několika operací zápisu), může být přijatelné nastavit *idleEndpointTimeout* na hodnotu 0 (tj. bez časového limitu).
+        Tato nastavení konfigurace řídí chování základní architektury přímého režimu popsané výše.
 
+        V prvním kroku použijte následující doporučené konfigurační nastavení. Tyto možnosti *DirectConnectionConfig* jsou pokročilá nastavení konfigurace, která mohou ovlivnit výkon sady SDK neočekávaným způsobem. Doporučujeme, aby se uživatelé nemuseli měnit, pokud se jim nedaří lépe porozumět kompromisům a je nezbytně nutné. Pokud v tomto konkrétním tématu narazíte na problémy, obraťte se prosím na [tým Azure Cosmos DB](mailto:CosmosDBPerformanceSupport@service.microsoft.com) .
 
         | Možnost konfigurace       | Výchozí    |
         | :------------------:       | :-----:    |
-        | bufferPageSize             | 8192       |
-        | connectionTimeout          | "PT1M"     |
-        | idleChannelTimeout         | "PT0S"     |
-        | idleEndpointTimeout        | "PT1M10S"  |
-        | maxBufferCapacity          | 8388608    |
-        | maxChannelsPerEndpoint     | 10         |
-        | maxRequestsPerChannel      | 30         |
-        | receiveHangDetectionTime   | "PT1M5S"   |
-        | requestExpiryInterval      | "PT5S"     |
-        | requestTimeout             | "PT1M"     |
-        | requestTimerResolution     | "PT 0.5 S"   |
-        | sendHangDetectionTime      | "PT10S"    |
-        | shutdownTimeout            | "PT15S"    |
+        | idleConnectionTimeout      | "PT1M"     |
+        | maxConnectionsPerEndpoint  | "PT0S"     |
+        | connectTimeout             | "PT1M10S"  |
+        | idleEndpointTimeout        | 8388608    |
+        | maxRequestsPerConnection   | 10         |
 
 * **Ladění paralelních dotazů pro dělené kolekce**
 
@@ -322,21 +307,15 @@ Další podrobnosti najdete v pokynech pro [Windows](https://docs.microsoft.com/
 
     Druhá je podporována, ale přidá do aplikace latenci. sada SDK musí položku analyzovat a extrahovat klíč oddílu.
 
-## <a name="indexing-policy"></a>Zásady indexování
+## <a name="indexing-policy"></a>Zásada indexování
  
 * **Vyloučení nepoužívaných cest z indexování za účelem zrychlení zápisu**
 
-    Pomocí cest indexování (setIncludedPaths a setExcludedPaths) můžete určit, které cesty dokumentů zahrnout nebo vyloučit z indexování. Azure Cosmos DB Použití cest indexování může nabízet lepší výkon zápisu a nižší indexové úložiště pro scénáře, ve kterých jsou vzory dotazů předem známé, protože náklady na indexování jsou přímo ve vztahu k počtu indexovaných jedinečných cest. Například následující kód ukazuje, jak vyloučit celý oddíl dokumentů (označovaný také jako podstrom) z indexování pomocí zástupného znaku "*".
+    Pomocí cest indexování (setIncludedPaths a setExcludedPaths) můžete určit, které cesty dokumentů zahrnout nebo vyloučit z indexování. Azure Cosmos DB Použití cest indexování může nabízet lepší výkon zápisu a nižší indexové úložiště pro scénáře, ve kterých jsou vzory dotazů předem známé, protože náklady na indexování jsou přímo ve vztahu k počtu indexovaných jedinečných cest. Například následující kód ukazuje, jak zahrnout a vyloučit celé oddíly dokumentů (označované také jako podstrom) z indexování pomocí zástupného znaku "*".
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
-    ```java
-    Index numberIndex = Index.Range(DataType.Number);
-    indexes.add(numberIndex);
-    includedPath.setIndexes(indexes);
-    includedPaths.add(includedPath);
-    indexingPolicy.setIncludedPaths(includedPaths);        
-    containerProperties.setIndexingPolicy(indexingPolicy);
-    ``` 
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
 
     Další informace najdete v tématu [Azure Cosmos DB zásady indexování](indexing-policies.md).
 

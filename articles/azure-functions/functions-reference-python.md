@@ -4,11 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730743"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170373"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -234,7 +235,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Přístup k protokolovacímu nástroji Azure Functions runtime je k dispozici prostřednictvím kořenové [`logging`](https://docs.python.org/3/library/logging.html#module-logging) obslužné rutiny ve vaší aplikaci Function App. Tento protokolovací nástroj je svázán s Application Insights a umožňuje označit upozornění a chyby, které byly zjištěny během provádění funkce.
 
@@ -250,7 +251,7 @@ def main(req):
 
 K dispozici jsou další metody protokolování, které umožňují zapisovat do konzoly na různých úrovních trasování:
 
-| Metoda                 | Description                                |
+| Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Zapíše zprávu s KRITICKou úrovní na kořenovém protokolovacím nástroji.  |
 | **`error(_message_)`**   | Zapíše zprávu s CHYBou úrovně v kořenovém protokolovacím nástroji.    |
@@ -337,7 +338,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce
 
 Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) do jejího podpisu argument.
 
-Příklad:
+Zde je příklad:
 
 ```python
 import azure.functions
@@ -427,17 +428,15 @@ Až budete připraveni k publikování, ujistěte se, že všechny veřejně dos
 
 Soubory projektu a složky, které jsou vyloučeny z publikování, včetně složky virtuálního prostředí, jsou uvedeny v souboru. funcignore.
 
-K publikování projektu Pythonu do Azure jsou podporované tři akce sestavení:
+Existují tři akce sestavení, které jsou podporovány pro publikování projektu v jazyce Python do Azure: vzdálené sestavení, místní sestavení a sestavení pomocí vlastních závislostí.
 
-+ Vzdálené sestavení: závislosti se získávají vzdáleně na základě obsahu souboru requirements.txt. Doporučenou metodou sestavení je [vzdálené sestavení](functions-deployment-technologies.md#remote-build) . Vzdálená aplikace je také výchozí možností sestavení nástrojů Azure.
-+ Místní sestavení: závislosti se získávají místně na základě obsahu souboru requirements.txt.
-+ Vlastní závislosti: váš projekt používá pro naše nástroje balíčky, které nejsou veřejně dostupné. (Vyžaduje Docker.)
-
-K sestavování závislostí a publikování pomocí systému pro průběžné doručování (CD) [použijte Azure Pipelines](functions-how-to-azure-devops.md).
+Azure Pipelines můžete použít také k sestavení závislostí a publikování pomocí průběžného doručování (CD). Další informace najdete v tématu [průběžné doručování pomocí Azure DevOps](functions-how-to-azure-devops.md).
 
 ### <a name="remote-build"></a>Vzdálené sestavení
 
-Ve výchozím nastavení Azure Functions Core Tools požádá o vzdálené sestavení, když použijete následující příkaz [Func Azure functionapp Publish](functions-run-local.md#publish) pro publikování projektu v Pythonu do Azure.
+Při použití vzdáleného sestavení se závislosti obnovené na serveru a nativní závislosti shodují s produkčním prostředím. Výsledkem je menší balíček pro nasazení, který se má nahrát. Používejte vzdálené sestavení při vývoji aplikací v jazyce Python ve Windows. Pokud má váš projekt vlastní závislosti, můžete [použít vzdálené sestavení s dodatečnou adresou URL indexu](#remote-build-with-extra-index-url). 
+ 
+Závislosti se získávají vzdáleně na základě obsahu souboru requirements.txt. Doporučenou metodou sestavení je [vzdálené sestavení](functions-deployment-technologies.md#remote-build) . Ve výchozím nastavení Azure Functions Core Tools požádá o vzdálené sestavení, když použijete následující příkaz [Func Azure functionapp Publish](functions-run-local.md#publish) pro publikování projektu v Pythonu do Azure.
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -449,7 +448,7 @@ Nezapomeňte nahradit `<APP_NAME>` názvem vaší aplikace Function App v Azure.
 
 ### <a name="local-build"></a>Místní sestavení
 
-Můžete zabránit provedení vzdáleného sestavení pomocí následujícího příkazu [Func Azure functionapp Publish](functions-run-local.md#publish) pro publikování s místním sestavením.
+Závislosti se získávají místně na základě obsahu souboru requirements.txt. Můžete zabránit provedení vzdáleného sestavení pomocí následujícího příkazu [Func Azure functionapp Publish](functions-run-local.md#publish) pro publikování s místním sestavením.
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -457,9 +456,21 @@ func azure functionapp publish <APP_NAME> --build local
 
 Nezapomeňte nahradit `<APP_NAME>` názvem vaší aplikace Function App v Azure.
 
-Pomocí `--build local` Možnosti se závislosti projektu čtou ze souboru requirements.txt a tyto závislé balíčky se stahují a instalují místně. Soubory projektu a závislosti se nasazují z místního počítače do Azure. Výsledkem je větší balíček pro nasazení, který se nahrává do Azure. Pokud z nějakého důvodu nepůjde závislosti v souboru requirements.txt získat základními nástroji, musíte pro publikování použít možnost vlastní závislosti.
+Pomocí `--build local` Možnosti se závislosti projektu čtou ze souboru requirements.txt a tyto závislé balíčky se stahují a instalují místně. Soubory projektu a závislosti se nasazují z místního počítače do Azure. Výsledkem je větší balíček pro nasazení, který se nahrává do Azure. Pokud z nějakého důvodu nepůjde závislosti v souboru requirements.txt získat základními nástroji, musíte pro publikování použít možnost vlastní závislosti. 
+
+Při vývoji místně ve Windows nedoporučujeme používat místní buildy.
 
 ### <a name="custom-dependencies"></a>Vlastní závislosti
+
+Pokud váš projekt obsahuje závislosti nenalezené v [indexu balíčku Pythonu](https://pypi.org/), existují dva způsoby sestavení projektu. Metoda sestavení závisí na tom, jak sestavíte projekt.
+
+#### <a name="remote-build-with-extra-index-url"></a>Vzdálené sestavení s dodatečnou adresou URL indexu
+
+Pokud jsou balíčky dostupné z dostupného vlastního indexu balíčku, použijte vzdálené sestavení. Před publikováním se ujistěte, že jste [vytvořili nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) s názvem `PIP_EXTRA_INDEX_URL` . Hodnota tohoto nastavení je adresa URL vašeho vlastního indexu balíčku. Pomocí tohoto nastavení se vzdálené sestavení spustí `pip install` pomocí `--extra-index-url` Možnosti. Další informace najdete v [dokumentaci k instalaci Python PIP](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format). 
+
+Můžete také použít přihlašovací údaje základního ověřování s dalšími adresami URL indexu balíčku. Další informace najdete v tématu [základní přihlašovací údaje pro ověřování](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) v dokumentaci Pythonu.
+
+#### <a name="install-local-packages"></a>Nainstalovat místní balíčky
 
 Pokud váš projekt používá balíčky, které nejsou veřejně dostupné pro naše nástroje, můžete je zpřístupnit pro vaši aplikaci jejich vložením do \_ \_ adresáře App \_ \_ /. python_packages. Před publikováním spusťte následující příkaz pro místní instalaci závislostí:
 
@@ -467,7 +478,7 @@ Pokud váš projekt používá balíčky, které nejsou veřejně dostupné pro 
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-Pokud používáte vlastní závislosti, měli byste použít `--no-build` možnost publikování, protože už jste nainstalovali závislosti.
+Pokud používáte vlastní závislosti, měli byste použít `--no-build` možnost publikování, protože už jste nainstalovali závislosti do složky projektu.
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build

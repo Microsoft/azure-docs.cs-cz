@@ -3,12 +3,12 @@ title: Nejčastější dotazy – zálohování databází SAP HANA na virtuáln
 description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování SAP HANA databází pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: ddc4af9a164de3a822e8aebd6c0a4db769ec62a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262578"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170322"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
 
@@ -59,15 +59,19 @@ V současné době není k dispozici možnost k nastavení řešení pouze pro v
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Jak můžu přesunout zálohu na vyžádání do místního systému souborů místo do trezoru Azure?
 
-1. Počkat na dokončení aktuálně běžícího zálohování v požadované databázi (kontrolu dokončíte od studia)
+1. Počkejte, než se aktuálně spuštěné zálohování dokončí v požadované databázi (pro dokončení proveďte kontrolu od studia).
 1. Zakažte zálohy protokolů a nastavte zálohu katalogu na **systém souborů** pro požadovanou databázi pomocí následujících kroků:
 1. Dvakrát klikněte na **SYSTEMDB**  ->  **Konfigurace**  ->  **vybrat databázový**  ->  **filtr (protokol)** .
     1. Nastavit enable_auto_log_backup na **ne**
-    1. Nastavit log_backup_using_backint na **hodnotu false**
-1. Proveďte zálohování na vyžádání v požadované databázi a počkejte, než se dokončí zálohování a zálohování katalogu.
+    1. Nastavit catalog_backup_using_backint na **hodnotu false**
+1. V požadované databázi proveďte zálohování na vyžádání (úplné/rozdílové/přírůstkové) a počkejte, než se dokončí zálohování a zálohování katalogu.
+1. Pokud chcete také přesunout zálohy protokolu do systému souborů, nastavte enable_auto_log_backup na **Ano** .
 1. Vraťte se k předchozímu nastavení, aby bylo možné zálohy do trezoru Azure přesměrovat:
     1. Nastavit enable_auto_log_backup na **Ano**
-    1. Nastavit log_backup_using_backint na **hodnotu true**
+    1. Nastavit catalog_backup_using_backint na **hodnotu true**
+
+>[!NOTE]
+>Přesunutí záloh do místního systému souborů a opětovné přepnutí zpátky do trezoru Azure může způsobit přerušení řetězů protokolů v trezoru. Tím se aktivuje úplná záloha, která po úspěšném dokončení spustí zálohování protokolů.
 
 ### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>Jak můžu použít zálohování SAP HANA s nastavením replikace v HANA?
 

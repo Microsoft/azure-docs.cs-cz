@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206882"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186380"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Přehled konfigurace stavu Azure Automation
 
@@ -53,7 +53,7 @@ Konfigurace stavu Azure Automation přináší stejnou vrstvu správy pro [konfi
 
 Uzly spravované pomocí konfigurace stavu Azure Automation odesílají podrobné údaje o stavu vytváření sestav na integrovaný server vyžádané replikace. Konfiguraci stavu Azure Automation můžete nakonfigurovat tak, aby odesílala tato data do pracovního prostoru Log Analytics. Přečtěte si informace [o konfiguraci stavu Dopředné Azure Automation do protokolů Azure monitor](automation-dsc-diagnostics.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Při použití konfigurace stavu Azure Automation Vezměte v úvahu požadavky v této části.
 
@@ -77,7 +77,7 @@ Pro uzly se systémem Linux podporuje rozšíření DSC Linux všechna distribuc
 
 ### <a name="dsc-requirements"></a>Požadavky DSC
 
-Pro všechny uzly Windows běžící v Azure se při povolení počítačů nainstaluje [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) . Pro uzly se systémem Windows Server 2012 a Windows 7 je povolená [Služba WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) .
+Pro všechny uzly Windows běžící v Azure se při povolení počítačů nainstaluje [WMF 5,1](/powershell/scripting/wmf/setup/install-configure) . Pro uzly se systémem Windows Server 2012 a Windows 7 je povolená [Služba WinRM](/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) .
 
 Pro všechny uzly Linux běžící v Azure se v případě povolení počítačů nainstaluje [POWERSHELL DSC pro Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) .
 
@@ -90,7 +90,7 @@ Pokud jsou uzly umístěny v privátní síti, je nutné zadat následující po
 * Globální adresa URL US Gov – Virginie: ***. Azure-Automation.us**
 * Služba agenta: **https:// \<workspaceId\> . agentsvc.Azure-Automation.NET**
 
-Pokud používáte prostředky DSC, které komunikují mezi uzly, například s [prostředky WAITFOR *](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), musíte taky u těchto uzlů povolený přenos. Pochopte tyto požadavky na síť v dokumentaci ke každému prostředku DSC.
+Pokud používáte prostředky DSC, které komunikují mezi uzly, například s [prostředky WAITFOR *](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), musíte taky u těchto uzlů povolený přenos. Pochopte tyto požadavky na síť v dokumentaci ke každému prostředku DSC.
 
 Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -114,5 +114,4 @@ Při definování výjimek doporučujeme použít adresy uvedené v tabulce [zá
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
 - Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
-- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207003"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170407"
 ---
 # <a name="monitor-azure-functions"></a>Monitorování Azure Functions
 
@@ -64,7 +64,7 @@ Informace o tom, jak používat Application Insights, najdete v [dokumentaci k A
 
 Následující oblasti Application Insights mohou být užitečné při vyhodnocování chování, výkonu a chyb ve vašich funkcích:
 
-| Prověřování | Description |
+| Prověřování | Popis |
 | ---- | ----------- |
 | **[Selhání](../azure-monitor/app/asp-net-exceptions.md)** |  Vytvářejte grafy a výstrahy na základě selhání funkcí a výjimek serveru. **Název operace** je název funkce. Pokud neimplementujete vlastní telemetrie pro závislosti, neobjeví se chyby v závislostech. |
 | **[Výkon](../azure-monitor/app/performance-counters.md)** | Analyzujte problémy s výkonem zobrazením využití prostředků a propustnosti na **instance rolí cloudu**. Tato data můžou být užitečná pro scénáře ladění, kde funkce bogging své základní prostředky. |
@@ -118,7 +118,7 @@ Application Insights můžete použít bez vlastní konfigurace. Výchozí konfi
 
 Protokolovací nástroj Azure Functions zahrnuje *kategorii* pro každý protokol. Kategorie označuje, která část běhového kódu nebo kód vaší funkce zapsaly protokol. Následující graf popisuje hlavní kategorie protokolů, které modul runtime vytvoří. 
 
-| Kategorie | Description |
+| Kategorie | Popis |
 | ----- | ----- | 
 | Host.Results | Tyto protokoly se zobrazují jako **požadavky** v Application Insights. Označují úspěch nebo neúspěch funkce. Všechny tyto protokoly jsou zapisovány na `Information` úrovni. Pokud filtrujete `Warning` nad nebo výše, nezobrazí se žádná z těchto dat. |
 | Host. agregátor | Tyto protokoly poskytují počty a průměry volání funkcí v [konfigurovatelném](#configure-the-aggregator) časovém intervalu. Výchozí doba je 30 sekund nebo 1 000 výsledků, podle toho, co nastane dřív. Protokoly jsou k dispozici v tabulce **customMetrics** v Application Insights. Jedná se o počet spuštění, úspěšnost a dobu trvání. Všechny tyto protokoly jsou zapisovány na `Information` úrovni. Pokud filtrujete `Warning` nad nebo výše, nezobrazí se žádná z těchto dat. |
@@ -138,11 +138,11 @@ Protokolovací nástroj Azure Functions zahrnuje i *úroveň protokolu* s každ�
 |LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladit       | 1 |
+|Ladění       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritické    | 5 |
+|Kritická    | 5 |
 |Žádná        | 6 |
 
 Úroveň protokolu `None` je vysvětleno v další části. 
@@ -358,7 +358,7 @@ Tento kód je alternativou pro volání `trackMetric` pomocí Node.js SDK pro Ap
 
 Verze Application Insights SDK specifická pro konkrétní funkce, kterou můžete použít k posílání vlastních dat telemetrie z vašich funkcí do Application Insights: [Microsoft. Azure. WebJobs. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). K instalaci tohoto balíčku použijte následující příkaz z příkazového řádku:
 
-# <a name="command"></a>[Příkaz](#tab/cmd)
+# <a name="command"></a>[Systému](#tab/cmd)
 
 ```cmd
 dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
@@ -688,27 +688,41 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
-## <a name="scale-controller-logs"></a>Škálování protokolů řadičů
+## <a name="scale-controller-logs-preview"></a>Škálování protokolů řadiče (Preview)
 
-[Řadič Azure Functions Scale](./functions-scale.md#runtime-scaling) monitoruje instance hostitelů funkcí, které spouštějí vaši aplikaci, a rozhoduje o tom, kdy přidat nebo odebrat instance hostitele funkce. Pokud potřebujete pochopit rozhodnutí, které kontroler škálování provádí v aplikaci, můžete ji nakonfigurovat tak, aby vygenerovala protokoly pro Application Insights nebo k Blob Storage.
+Tato funkce je ve verzi Preview. 
 
-> [!WARNING]
-> Tato funkce je ve verzi Preview. Nedoporučujeme, abyste tuto funkci povolili po neomezenou dobu a místo toho ji měli povolit, pokud potřebujete informace, které shromažďuje, a pak je zakázat.
+[Kontroler škálování Azure Functions](./functions-scale.md#runtime-scaling) sleduje instance Azure Functionsho hostitele, na kterém vaše aplikace běží. Tento kontroler provádí rozhodnutí o tom, kdy se instance na základě aktuálního výkonu přidávají nebo odebírají. Řadič škálování můžete mít k dispozici protokoly pro Application Insights nebo do úložiště objektů blob, abyste lépe pochopili rozhodnutí, které kontroler škálování vytváří pro vaši aplikaci Function App.
 
-Chcete-li povolit tuto funkci, přidejte nové nastavení aplikace s názvem `SCALE_CONTROLLER_LOGGING_ENABLED` . Hodnota tohoto nastavení musí být ve formátu `{Destination}:{Verbosity}` , kde:
-* `{Destination}`Určuje cíl, na který budou odesílány protokoly, a musí být buď `AppInsights` nebo `Blob` .
-* `{Verbosity}`Určuje požadovanou úroveň protokolování a musí to být jedna z těchto `None` , `Warning` nebo `Verbose` .
+Chcete-li povolit tuto funkci, přidejte nové nastavení aplikace s názvem `SCALE_CONTROLLER_LOGGING_ENABLED` . Hodnota tohoto nastavení musí být ve formátu `<DESTINATION>:<VERBOSITY>` , a to na základě následujícího:
 
-Pokud například chcete protokolovat podrobné informace z kontroleru škálování na Application Insights, použijte hodnotu `AppInsights:Verbose` .
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
-> [!NOTE]
-> Pokud povolíte `AppInsights` typ cíle, musíte se ujistit, že nakonfigurujete [Application Insights vaší aplikace Function App](#enable-application-insights-integration).
+Například následující příkaz Azure CLI zapne podrobné protokolování z kontroleru škálování na Application Insights:
 
-Pokud nastavíte cíl na `Blob` , protokoly se vytvoří v kontejneru objektů BLOB s názvem v `azure-functions-scale-controller` `AzureWebJobsStorage` nastavení aplikace.
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
 
-Pokud nastavíte podrobnosti na `Verbose` , kontroler škálování se zaznamená důvod každé změny v počtu pracovních procesů a také informace o triggerech, které se účastní rozhodnutí řadiče škálování. Například protokoly budou obsahovat upozornění triggeru a hodnoty hash používané triggery před a po spuštění kontroleru škálování.
+V tomto příkladu nahraďte `<FUNCTION_APP_NAME>` a `<RESOURCE_GROUP_NAME>` názvem vaší aplikace Function App a názvem skupiny prostředků v uvedeném pořadí. 
 
-Chcete-li zakázat protokolování řadiče škálování, nastavte hodnotu na `{Verbosity}` `None` nebo odeberte `SCALE_CONTROLLER_LOGGING_ENABLED` nastavení aplikace.
+Následující příkaz rozhraní příkazového řádku Azure zakáže protokolování nastavením podrobností na `None` :
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+Protokolování můžete také zakázat odebráním `SCALE_CONTROLLER_LOGGING_ENABLED` nastavení pomocí následujícího příkazu rozhraní příkazového řádku Azure:
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
+```
 
 ## <a name="disable-built-in-logging"></a>Zakázat integrované protokolování
 

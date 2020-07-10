@@ -3,12 +3,12 @@ title: AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs | Microsof
 description: Průvodce protokolem pro výrazy a popis AMQP 1,0 v Azure Service Bus a Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337882"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186907"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs
 
@@ -264,8 +264,8 @@ Každé připojení musí iniciovat svůj vlastní odkaz na ovládací prvek, ab
 
 K zahájení transakční práce. kontroler musí `txn-id` od koordinátora získat. Provede to odesláním `declare` zprávy typu. Pokud je deklarace úspěšná, koordinátor odpoví na výsledek dispozice, který je přiřazený `txn-id` .
 
-| Klient (kontroler) | | Service Bus (koordinátor) |
-| --- | --- | --- |
+| Klient (kontroler) | Směr | Service Bus (koordinátor) |
+| :--- | :---: | :--- |
 | pojovat<br/>název = {Link Name};<br/>... ,<br/>role =**odesilatel**,<br/>cíl =**koordinátor**<br/>) | ------> |  |
 |  | <------ | pojovat<br/>název = {Link Name};<br/>... ,<br/>Target = Coordinator ()<br/>) |
 | Transfer<br/>doručení – ID = 0,...)<br/>{AmqpValue (**Declare ()**)}| ------> |  |
@@ -277,8 +277,8 @@ K zahájení transakční práce. kontroler musí `txn-id` od koordinátora zís
 
 > Poznámka: selhání = true odkazuje na vrácení transakce zpět a selhání = false odkazuje na potvrzení.
 
-| Klient (kontroler) | | Service Bus (koordinátor) |
-| --- | --- | --- |
+| Klient (kontroler) | Směr | Service Bus (koordinátor) |
+| :--- | :---: | :--- |
 | Transfer<br/>doručení – ID = 0,...)<br/>{AmqpValue (Declare ())}| ------> |  |
 |  | <------ | akcí <br/> First = 0, Last = 0, <br/>State = deklarované (<br/>TXN-ID = {ID transakce}<br/>))|
 | | . . . <br/>Transakční práce<br/>na jiných odkazech<br/> . . . |
@@ -289,8 +289,8 @@ K zahájení transakční práce. kontroler musí `txn-id` od koordinátora zís
 
 Veškerá transakční práce se provádí s transakčním stavem doručení `transactional-state` , který přenáší TXN-ID. V případě odesílání zpráv je transakční stav přenášen rámcem přenosu zprávy. 
 
-| Klient (kontroler) | | Service Bus (koordinátor) |
-| --- | --- | --- |
+| Klient (kontroler) | Směr | Service Bus (koordinátor) |
+| :--- | :---: | :--- |
 | Transfer<br/>doručení – ID = 0,...)<br/>{AmqpValue (Declare ())}| ------> |  |
 |  | <------ | akcí <br/> First = 0, Last = 0, <br/>State = deklarované (<br/>TXN-ID = {ID transakce}<br/>))|
 | Transfer<br/>popisovač = 1,<br/>doručení – ID = 1, <br/>**stav = <br/> TransactionalState ( <br/> TXN-ID = 0)**)<br/>Délka| ------> |  |
@@ -300,8 +300,8 @@ Veškerá transakční práce se provádí s transakčním stavem doručení `tr
 
 Dispozice zprávy obsahuje operace jako `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer` . Chcete-li provést tyto operace v rámci transakce, předejte `transactional-state` s dispoziční hodnotu.
 
-| Klient (kontroler) | | Service Bus (koordinátor) |
-| --- | --- | --- |
+| Klient (kontroler) | Směr | Service Bus (koordinátor) |
+| :--- | :---: | :--- |
 | Transfer<br/>doručení – ID = 0,...)<br/>{AmqpValue (Declare ())}| ------> |  |
 |  | <------ | akcí <br/> First = 0, Last = 0, <br/>State = deklarované (<br/>TXN-ID = {ID transakce}<br/>))|
 | | <------ |Transfer<br/>Handle = 2;<br/>doručení – ID = 11, <br/>stav = null)<br/>Délka|  
@@ -359,10 +359,10 @@ Zpráva požadavku má následující vlastnosti aplikace:
 
 | Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| NázevOperace |No |řetězec |**token Put** |
-| typ |No |řetězec |Typ vytvářeného tokenu. |
-| name |No |řetězec |Cílová skupina, na kterou se vztahuje token. |
-| vypršení platnosti |Yes |časové razítko |Čas vypršení platnosti tokenu. |
+| NázevOperace |Ne |řetězec |**token Put** |
+| typ |Ne |řetězec |Typ vytvářeného tokenu. |
+| name |Ne |řetězec |Cílová skupina, na kterou se vztahuje token. |
+| vypršení platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
 
 Vlastnost *Name* určuje entitu, ke které je token přidružen. V Service Bus se jedná o cestu k frontě nebo k tématu nebo předplatnému. Vlastnost *Type* určuje typ tokenu:
 
@@ -378,8 +378,8 @@ Zpráva s odpovědí obsahuje následující hodnoty *vlastností aplikace* .
 
 | Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| Stavový kód |No |int |Kód odpovědi HTTP **[RFC2616]**. |
-| Popis stavu |Yes |řetězec |Popis stavu |
+| Stavový kód |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
+| Popis stavu |Ano |řetězec |Popis stavu |
 
 Klient může opakovaně volat *tokeny Put* a pro každou entitu v infrastruktuře zasílání zpráv. Tokeny jsou vymezeny na aktuálního klienta a ukotveny k aktuálnímu připojení, což znamená, že server při poklesu připojení vyřazuje všechny zachované tokeny.
 
@@ -399,8 +399,8 @@ Pomocí této funkce vytvoříte odesílatele a vytvoříte odkaz na `via-entity
 
 > Poznámka: před vytvořením tohoto odkazu je nutné provést ověření pro entitu *Via* a *cíl-entita* .
 
-| Klient | | Service Bus |
-| --- | --- | --- |
+| Klient | Směr | Service Bus |
+| :--- | :---: | :--- |
 | pojovat<br/>název = {Link Name};<br/>role = odesilatel,<br/>zdroj = {ID odkazu na klienta},<br/>Target =**{Via-entity}**,<br/>**Properties = map [( <br/> com. Microsoft: Transfer-Destination-address = <br/> {Destination-entity})]** ) | ------> | |
 | | <------ | pojovat<br/>název = {Link Name};<br/>role = přijímač,<br/>zdroj = {ID odkazu na klienta},<br/>Target = {Via-entity},<br/>Properties = map [(<br/>com. Microsoft: Transfer-cíl-adresa =<br/>{Destination-entity})] ) |
 

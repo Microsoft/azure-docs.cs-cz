@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134623"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170339"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor klíč spravovaný zákazníkem 
 
@@ -23,7 +23,7 @@ Před konfigurací doporučujeme zkontrolovat níže uvedená [omezení a omezen
 
 [Šifrování v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)   je běžným požadavkem na ochranu osobních údajů a zabezpečení v organizacích.Azure vám umožní plně spravovat šifrování v klidovém režimu, zatímco máte k dispozici různé možnosti, jak pečlivě spravovat šifrovací a šifrovací klíče.
 
-Azure Monitor zajistí, aby byla všechna data v klidovém stavu zašifrovaná pomocí klíčů spravovaných Azure.Azure Monitor taky nabízí možnost šifrování dat pomocí vlastního klíče, který je uložený ve vaší [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)   a k němuž má přístup úložiště pomocí [spravovaného ověřování identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)přiřazené systémem   .Tento klíč může být buď [software, nebo hardware – chráněný](https://docs.microsoft.com/azure/key-vault/key-vault-overview)modulem HSM.
+Azure Monitor zajistí, že všechna data a uložené dotazy budou v klidovém stavu zašifrované pomocí klíčů spravovaných Microsoftem (MMK). Azure Monitor taky nabízí možnost šifrování pomocí vlastního klíče, který je uložený ve vaší [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) a k němuž má přístup úložiště pomocí [spravovaného ověřování identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) přiřazené systémem. Tento klíč (CMK) může být buď [software, nebo hardware-HSM Protected](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Storage šifrování](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   funguje.
 
@@ -80,7 +80,7 @@ Procedura není podporovaná v Azure Portal a zřizování se provádí přes Po
 > [!IMPORTANT]
 > Každá žádost REST musí v hlavičce požadavku zahrnovat autorizační token držitele.
 
-Příklad:
+Zde je příklad:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
@@ -235,7 +235,7 @@ Content-type: application/json
 
 Identita je přiřazena ke zdroji *clusteru* v okamžiku vytvoření.
 
-**Základě**
+**Response** (Odpověď)
 
 200 OK a záhlaví.
 
@@ -249,7 +249,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 Authorization: Bearer <token>
 ```
 
-**Základě**
+**Response** (Odpověď)
 
 ```json
 {
@@ -334,7 +334,7 @@ Content-type: application/json
 
 "KeyVaultProperties" obsahuje podrobnosti o identifikátoru Key Vaultho klíče.
 
-**Základě**
+**Response** (Odpověď)
 
 200 OK a záhlaví.
 Dokončením tohoto identifikátoru klíče bude dokončeno několik minut. Stav aktualizace můžete zjistit dvěma způsoby:
@@ -401,7 +401,7 @@ Content-type: application/json
 }
 ```
 
-**Základě**
+**Response** (Odpověď)
 
 200 OK a záhlaví.
 
@@ -415,7 +415,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 Authorization: Bearer <token>
 ```
 
-**Základě**
+**Response** (Odpověď)
 
 ```json
 {
@@ -546,7 +546,7 @@ Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do �
   Authorization: Bearer <token>
   ```
 
-  **Základě**
+  **Response** (Odpověď)
   
   ```json
   {
@@ -592,7 +592,7 @@ Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do �
   Authorization: Bearer <token>
   ```
     
-  **Základě**
+  **Response** (Odpověď)
     
   Stejná odpověď jako u ' prostředků*clusteru* pro skupinu prostředků ', ale v oboru předplatného.
 
@@ -652,7 +652,7 @@ Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do �
   Authorization: Bearer <token>
   ```
 
-  **Základě**
+  **Response** (Odpověď)
 
   200 OK a záhlaví.
 
@@ -684,7 +684,7 @@ Po dokončení konfigurace se všechny nové dotazy na upozornění uloží do �
   Authorization: Bearer <token>
   ```
 
-  **Základě**
+  **Response** (Odpověď)
 
   200 OK
 

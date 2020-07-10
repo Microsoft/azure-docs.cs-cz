@@ -511,6 +511,8 @@
                       href: ../vm-specialized-image-version-powershell.md
                 - name: Aktualizace prostředků imagí
                   href: ../update-image-resources-powershell.md
+                - name: Registrace aplikace pro sdílení
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Portál
               items:
                 - name: 'Vytvoření galerie, image a virtuálního počítače'
@@ -947,8 +949,6 @@
           items:
             - name: Migrace na Premium Storage s Azure Site Recovery
               href: migrate-to-premium-storage-using-azure-site-recovery.md
-            - name: Převod na šifrování na straně serveru
-              href: disks-ade-sse-conversion-cli.md
             - name: Převod na Spravované disky
               href: convert-unmanaged-to-managed-disks.md
             - name: Převod disku mezi úrovněmi Standard a Premium

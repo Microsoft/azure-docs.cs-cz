@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74073855"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186822"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Porozumění a použití agenta Azure Linux
 
@@ -61,7 +62,7 @@ Agent Microsoft Azure Linux (waagent) spravuje systémy Linux & FreeBSD a intera
   * Vložení součásti, kterou vytvořila Microsoft a partneři, do virtuálního počítače se systémem Linux (IaaS), aby bylo možné povolit automatizaci softwaru a konfigurace
   * Implementace odkazu na rozšíření virtuálních počítačů na[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
-## <a name="communication"></a>Communication
+## <a name="communication"></a>Komunikace
 Tok informací z platformy k agentům probíhá prostřednictvím dvou kanálů:
 
 * Spouštěcí DVD připojený k IaaS nasazení. Tento disk DVD obsahuje konfigurační soubor kompatibilní s OVF, který obsahuje informace o všech zřizováních, jiné než skutečné páry klíčů SSH.
@@ -133,36 +134,36 @@ Další možnosti instalace najdete v dokumentaci v [úložišti agenta Azure Li
 ## <a name="configuration"></a>Konfigurace
 Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. V následujícím příkladu vidíte Ukázkový konfigurační soubor:
 
-    ```
-    Provisioning.Enabled=y
-    Provisioning.DeleteRootPassword=n
-    Provisioning.RegenerateSshHostKeyPair=y
-    Provisioning.SshHostKeyPairType=rsa
-    Provisioning.MonitorHostName=y
-    Provisioning.DecodeCustomData=n
-    Provisioning.ExecuteCustomData=n
-    Provisioning.AllowResetSysUser=n
-    Provisioning.PasswordCryptId=6
-    Provisioning.PasswordCryptSaltLength=10
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.MountOptions=None
-    ResourceDisk.EnableSwap=n
-    ResourceDisk.SwapSizeMB=0
-    LBProbeResponder=y
-    Logs.Verbose=n
-    OS.RootDeviceScsiTimeout=300
-    OS.OpensslPath=None
-    HttpProxy.Host=None
-    HttpProxy.Port=None
-    AutoUpdate.Enabled=y
-    ```
+```config
+Provisioning.Enabled=y
+Provisioning.DeleteRootPassword=n
+Provisioning.RegenerateSshHostKeyPair=y
+Provisioning.SshHostKeyPairType=rsa
+Provisioning.MonitorHostName=y
+Provisioning.DecodeCustomData=n
+Provisioning.ExecuteCustomData=n
+Provisioning.AllowResetSysUser=n
+Provisioning.PasswordCryptId=6
+Provisioning.PasswordCryptSaltLength=10
+ResourceDisk.Format=y
+ResourceDisk.Filesystem=ext4
+ResourceDisk.MountPoint=/mnt/resource
+ResourceDisk.MountOptions=None
+ResourceDisk.EnableSwap=n
+ResourceDisk.SwapSizeMB=0
+LBProbeResponder=y
+Logs.Verbose=n
+OS.RootDeviceScsiTimeout=300
+OS.OpensslPath=None
+HttpProxy.Host=None
+HttpProxy.Port=None
+AutoUpdate.Enabled=y
+```
 
 Jsou popsány následující různé možnosti konfigurace. Možnosti konfigurace jsou tři typy; Logická hodnota, řetězec nebo celé číslo. Logické možnosti konfigurace lze zadat jako "y" nebo "n". Klíčové slovo None nelze použít pro některé položky konfigurace typu řetězce jako následující podrobnosti:
 
 **Zřizování. povoleno:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -174,14 +175,14 @@ To uživateli umožňuje povolit nebo zakázat funkce zřizování v agentovi. P
 > 
 
 **Zřizování. DeleteRootPassword:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Pokud je nastaveno, bude během procesu zřizování vymazáno kořenové heslo v souboru/etc/shadow.
 
 **Zřizování. RegenerateSshHostKeyPair:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -190,42 +191,42 @@ Při nastavení se během procesu zřizování z/etc/ssh/. odstraní všechny p�
 Typ šifrování pro nový pár klíčů lze konfigurovat pomocí položky zřizování. SshHostKeyPairType. Některé distribuce znovu vytvoří páry klíčů SSH pro všechny chybějící typy šifrování při restartování démona SSH (například při restartování počítače).
 
 **Zřizování. SshHostKeyPairType:**  
-```
+```txt
 Type: String  
 Default: rsa
 ```
 To může být nastaveno na typ šifrovacího algoritmu, který je podporován démonem SSH na virtuálním počítači. Obvykle jsou podporované hodnoty "RSA", "DSA" a "ECDsa". "putty.exe" ve Windows nepodporuje "ECDsa". Pokud tedy chcete použít putty.exe ve Windows pro připojení k nasazení Linux, použijte šifrování RSA nebo DSA.
 
 **Zřizování. MonitorHostName:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 Pokud je tato možnost nastavená, waagent monitoruje virtuální počítač Linux pro změny názvu hostitele (vrácených příkazem "hostname") a automaticky aktualizuje konfiguraci sítě v imagi tak, aby odrážela změnu. Aby bylo možné doručit změnu názvu na servery DNS, budou síťové služby restartovány ve virtuálním počítači. Výsledkem je krátká ztráta připojení k Internetu.
 
 **Zřizování. DecodeCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Pokud je nastaveno, waagent dekódování CustomData z base64.
 
 **Provisioning.ExecuteCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Pokud je nastaveno, waagent po zřízení spustí CustomData.
 
 **Zřizování. AllowResetSysUser**
-```
+```txt
 Type: Boolean
 Default: n
 ```
 Tato možnost umožňuje resetování hesla pro uživatele sys; Výchozí hodnota je zakázaná.
 
 **Zřizování. PasswordCryptId**  
-```
+```txt
 Type: String  
 Default: 6
 ```
@@ -236,91 +237,91 @@ Algoritmus používaný algoritmem crypt při generování hodnoty hash hesla
  6. SHA-512  
 
 **Zřizování. PasswordCryptSaltLength**  
-```
+```txt
 Type: String  
 Default: 10
 ```
 Délka náhodné soli použitá při generování hodnoty hash hesla
 
 **ResourceDisk. Format:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 Pokud je tato možnost nastavená, disk prostředků poskytovaný platformou se naformátuje a připojí přes waagent, pokud typ systému souborů požadovaný uživatelem v souboru ResourceDisk. FileSystem je jiný než NTFS. Na disku je k dispozici jeden oddíl typu Linux (83). Tento oddíl není naformátován, pokud jej lze úspěšně připojit.
 
 **ResourceDisk. FileSystem:**  
-```
+```txt
 Type: String  
 Default: ext4
 ```
 Určuje typ systému souborů pro disk prostředků. Podporované hodnoty se liší podle distribuce systému Linux. Pokud je řetězec X, pak mkfs. X by se měla nacházet v imagi pro Linux. Image SLES 11 by typicky měly používat "ext3". Image FreeBSD by měly používat UFS2.
 
 **ResourceDisk. přípojný bod:**  
-```
+```txt
 Type: String  
 Default: /mnt/resource 
 ```
 Určuje cestu, ke které je připojen disk prostředků. Disk prostředků je *dočasný* disk a při zrušení zřízení virtuálního počítače může dojít k jeho vyprázdnění.
 
 **ResourceDisk.MountOptions**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Určuje možnosti připojení disku, které se mají předat příkazu Mount-o. Toto je seznam hodnot oddělených čárkou, např. 'nodev,nosuid'. Podrobnosti najdete v tématu Mount (8).
 
 **ResourceDisk.EnableSwap:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Pokud je nastavená, na disku prostředků se vytvoří odkládací soubor (/swapfile) a přidají se do systémového odkládacího prostoru.
 
 **ResourceDisk.SwapSizeMB:**  
-```
+```txt
 Type: Integer  
 Default: 0
 ```
 Velikost odkládacího souboru v megabajtech
 
 **Log. verbose:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Při nastavení se zvyšuje úroveň podrobností protokolu. Protokoly waagent do/var/log/waagent.log a využívají funkci systému logrotate pro otočení protokolů.
 
 **Jiného. EnableRDMA**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Při nastavení se agent pokusí nainstalovat a pak načíst ovladač jádra RDMA, který odpovídá verzi firmwaru na základním hardwaru.
 
 **Jiného. RootDeviceScsiTimeout:**  
-```
+```txt
 Type: Integer  
 Default: 300
 ```
 Toto nastavení nakonfiguruje časový limit SCSI v sekundách pro disk s operačním systémem a datové jednotky. Pokud není nastavená, použijí se výchozí nastavení systému.
 
 **Jiného. OpensslPath:**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Toto nastavení se dá použít k zadání alternativní cesty pro binární soubor OpenSSL, který se má použít pro kryptografické operace.
 
 **HttpProxy. Host, HttpProxy. port**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Pokud je nastaveno, Agent použije tuto proxy server k přístupu k Internetu. 
 
 **AutoUpdate. Enabled**
-```
+```txt
 Type: Boolean
 Default: y
 ```

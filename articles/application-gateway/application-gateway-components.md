@@ -1,5 +1,5 @@
 ---
-title: Komponenty aplikační brány
+title: Komponenty Application Gateway
 description: Tento článek poskytuje informace o různých součástech v aplikační bráně.
 services: application-gateway
 author: abshamsft
@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 46ef67e5ede1ea41469a8dcc78244e74c0bffc45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254323"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186754"
 ---
-# <a name="application-gateway-components"></a>Komponenty aplikační brány
+# <a name="application-gateway-components"></a>Komponenty Application Gateway
 
  Aplikační brána slouží jako jeden kontaktní bod pro klienty. Distribuuje příchozí aplikační provoz do několika back-end fondů, mezi které patří virtuální počítače Azure, sady škálování virtuálních počítačů, Azure App Service a místní/externí servery. Pro distribuci provozu používá Aplikační brána několik součástí popsaných v tomto článku.
 
@@ -59,7 +59,7 @@ Použijte naslouchací proces HTTPS pro ukončení TLS. Naslouchací proces HTTP
 
 ### <a name="custom-error-pages"></a>Vlastní chybové stránky
 
-Application Gateway umožňuje vytvářet vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení. Pokud se žádost nemůže připojit k back-endu, Application Gateway zobrazí vlastní chybovou stránku.
+Application Gateway umožňuje vytvářet vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní branding a rozložení. Pokud se žádost nemůže připojit k back-endu, Application Gateway zobrazí vlastní chybovou stránku.
 
 Další informace najdete v tématu [vlastní chybové stránky pro bránu Application Gateway](custom-error.md).
 
@@ -67,7 +67,7 @@ Další informace najdete v tématu [vlastní chybové stránky pro bránu Appli
 
 Existují dva typy naslouchacího procesu:
 
-- **Základní**. Tento typ naslouchacího procesu naslouchá pro jednu doménovou lokalitu, kde má jedno mapování DNS na IP adresu služby Application Gateway. Tato konfigurace naslouchacího procesu se vyžaduje, když hostete jednu lokalitu za aplikační bránou.
+- **Basic**. Tento typ naslouchacího procesu naslouchá pro jednu doménovou lokalitu, kde má jedno mapování DNS na IP adresu služby Application Gateway. Tato konfigurace naslouchacího procesu se vyžaduje, když hostete jednu lokalitu za aplikační bránou.
 
 - **Více lokalit**. Tato konfigurace naslouchacího procesu se vyžaduje, když nakonfigurujete více než jednu webovou aplikaci na stejné instanci služby Application Gateway. Umožňuje pro vaše nasazení nakonfigurovat efektivnější topologii přidáním až 100 webů do jedné aplikační brány. Každou stránku lze přesměrovat na vlastní back-endový fond. Například tři subdomény, abc.contoso.com, xyz.contoso.com a pqr.contoso.com, odkazují na IP adresu služby Application Gateway. Vytvořili jste tři naslouchací procesy pro více webů a nakonfigurujete každého naslouchacího procesu pro příslušný port a nastavení protokolu.
 
@@ -85,7 +85,7 @@ Když naslouchací proces přijme požadavek, pravidlo směrování požadavku p
 
 Existují dva typy pravidel směrování žádostí:
 
-- **Základní**. Všechny požadavky na přidruženém naslouchacího procesu (například blog.contoso.com/*) se předají do přidruženého back-endu s použitím přidruženého nastavení protokolu HTTP.
+- **Basic**. Všechny požadavky na přidruženém naslouchacího procesu (například blog.contoso.com/*) se předají do přidruženého back-endu s použitím přidruženého nastavení protokolu HTTP.
 
 - **Na základě cesty**. Toto pravidlo směrování umožňuje směrovat požadavky na přiřazený naslouchací proces do konkrétního back-endu na základě adresy URL v žádosti. Pokud cesta adresy URL v požadavku odpovídá vzoru cesty v pravidle na základě cesty, pravidlo tyto požadavky směruje. Aplikuje vzor cesty pouze na cestu URL, nikoli na jeho parametry dotazu. Pokud cesta URL na žádost naslouchacího procesu neodpovídá žádné z pravidel založených na cestě, směruje požadavek do výchozího back-endu a nastavení protokolu HTTP.
 
@@ -144,7 +144,7 @@ Můžete vytvořit různé back-endové fondy pro různé typy požadavků. Mů�
 
 Ve výchozím nastavení brána Application Gateway monitoruje stav všech prostředků v back-endu fondu a automaticky odebere chybné. Pak monitoruje poškozené instance a přidává je zpátky do back-endového fondu, jakmile budou k dispozici a reagují na sondy stavu.
 
-Kromě používání výchozího monitorování sondy stavu můžete také přizpůsobit sondu stavu tak, aby vyhovovala požadavkům vaší aplikace. Vlastní testy umožňují podrobnější kontrolu nad monitorováním stavu. Pokud používáte vlastní testy, můžete nakonfigurovat interval sondy, adresu URL a cestu k otestování a počet neúspěšných odpovědí, které se mají přijmout předtím, než je instance fondu back-endu označena jako stav není v pořádku. Doporučujeme nakonfigurovat vlastní testy, abyste mohli monitorovat stav jednotlivých back-end fondů.
+Kromě používání výchozího monitorování sondy stavu můžete také přizpůsobit sondu stavu tak, aby vyhovovala požadavkům vaší aplikace. Vlastní testy umožňují podrobnější kontrolu nad monitorováním stavu. Pokud používáte vlastní testy, můžete nakonfigurovat vlastní název hostitele, cestu k adrese URL, interval testu a počet neúspěšných odpovědí, které se mají přijmout před označením instance back-endu jako chybné, vlastních stavových kódů a shody textu odpovědí atd. Doporučujeme nakonfigurovat vlastní testy, abyste mohli monitorovat stav jednotlivých back-end fondů.
 
 Další informace najdete v tématu [monitorování stavu služby Application Gateway](../application-gateway/application-gateway-probe-overview.md).
 

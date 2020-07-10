@@ -6,11 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fa64562f8d26297d2b2c8a13cd8b6a513c2c630
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74672216"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170016"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurace PremiumV2 úrovně pro Azure App Service
 
@@ -42,7 +43,7 @@ Při konfiguraci plánu App Service v <a href="https://portal.azure.com" target=
 
 Vyberte možnost **Výroba**, pak **Vyberte P1V2**, **P2V2**nebo **P3V2**a pak klikněte na **použít**.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Snímek obrazovky znázorňující Doporučené cenové úrovně pro vaši aplikaci](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > Pokud nevidíte **P1V2**, **P2V2**a **P3V2** jako možnosti, nebo pokud jsou možnosti šedé, pak **PremiumV2** pravděpodobně není k dispozici v podkladovém nasazení App Service, které obsahuje plán App Service. Další podrobnosti najdete v tématu [horizontální navýšení kapacity z nepodporované skupiny prostředků a kombinace oblastí](#unsupported) .
@@ -57,15 +58,15 @@ V <a href="https://portal.azure.com" target="_blank">Azure Portal</a>otevřete s
 
 V levém navigačním panelu aplikace App Service vyberte **škálovat nahoru (App Service plán)**.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
+![Snímek obrazovky znázorňující postup horizontálního navýšení kapacity plánu služby App Service.](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
 Vyberte možnost **Výroba**, pak **Vyberte P1V2**, **P2V2**nebo **P3V2**a pak klikněte na **použít**.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Snímek obrazovky znázorňující Doporučené cenové úrovně pro vaši aplikaci](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 Pokud se vaše operace úspěšně dokončí, zobrazí se na stránce Přehled vaší aplikace, že je teď ve vrstvě **PremiumV2** .
 
-![](media/app-service-configure-premium-tier/finished.png)
+![Snímek obrazovky zobrazující cenovou úroveň PremiumV2 na stránce přehledu vaší aplikace](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>Pokud se zobrazí chyba
 
@@ -80,7 +81,7 @@ Pokud je vaše aplikace spuštěná v nasazení App Service, kde **PremiumV2** n
 - Vytvořte **novou** skupinu prostředků a potom v **nové** skupině prostředků vytvořte **Nový** plán aplikace a App Service a v rámci procesu vytváření vyberte požadovanou oblast Azure.  V době, kdy je vytvořen nový plán služby App Service, **musíte** vybrat plán **PremiumV2** .  Tím se zajistí, že kombinace skupiny prostředků, App Service plánu a oblasti Azure bude v nasazení App Service, která podporuje **PremiumV2**, vytvořena App Service plán.  Pak znovu nasaďte kód aplikace do nově vytvořené aplikace a plánu služby App Service. Pokud budete chtít, můžete následně škálovat App Service plán z **PremiumV2** a ušetřit tak náklady a stále budete moct znovu škálovat zálohování znovu v budoucnu pomocí **PremiumV2**.
 - Pokud už vaše aplikace běží na stávající úrovni **Premium** , můžete svoji aplikaci klonovat pomocí nastavení aplikace, připojovacích řetězců a konfigurace nasazení do nového plánu služby App Service, který používá **PremiumV2**.
 
-    ![](media/app-service-configure-premium-tier/clone-app.png)
+    ![Snímek obrazovky znázorňující způsob klonování aplikace](media/app-service-configure-premium-tier/clone-app.png)
 
     Na stránce **klonovat aplikaci** můžete vytvořit plán App Service pomocí **PremiumV2** v požadované oblasti a zadat nastavení a konfiguraci aplikace, které chcete klonovat.
 

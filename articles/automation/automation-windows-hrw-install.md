@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e1262aedda95f3feb7cf5604644d938bf4d00a53
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854903"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185615"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -206,9 +206,9 @@ Můžete získat informace požadované pro parametry `Url` a `Key` ze stránky 
 
 Runbooky můžou používat jakékoli aktivity a rutiny definované v modulech nainstalovaných ve vašem Azure Automationovém prostředí. Protože tyto moduly nejsou automaticky nasazené do místních počítačů, musíte je nainstalovat ručně. Výjimkou je modul Azure. Tento modul se instaluje ve výchozím nastavení a poskytuje přístup k rutinám pro všechny služby a aktivity Azure pro Azure Automation.
 
-Vzhledem k tomu, že primárním účelem Hybrid Runbook Worker je spravovat místní prostředky, pravděpodobně budete muset nainstalovat moduly, které tyto prostředky podporují, zejména `PowerShellGet` modul. Informace o instalaci modulů prostředí Windows PowerShell najdete v tématu [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
+Vzhledem k tomu, že primárním účelem Hybrid Runbook Worker je spravovat místní prostředky, pravděpodobně budete muset nainstalovat moduly, které tyto prostředky podporují, zejména `PowerShellGet` modul. Informace o instalaci modulů prostředí Windows PowerShell najdete v tématu [Windows PowerShell](/powershell/scripting/developer/windows-powershell).
 
-Moduly, které jsou nainstalovány, musí být v umístění, na `PSModulePath` které odkazuje proměnná prostředí, aby je hybridní pracovní proces mohl automaticky importovat. Další informace najdete v tématu [Instalace modulů v PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+Moduly, které jsou nainstalovány, musí být v umístění, na `PSModulePath` které odkazuje proměnná prostředí, aby je hybridní pracovní proces mohl automaticky importovat. Další informace najdete v tématu [Instalace modulů v PSModulePath](/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
 
 ## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-machine"></a><a name="remove-windows-hybrid-runbook-worker"></a>Odebrání Hybrid Runbook Worker z místního počítače s Windows
 

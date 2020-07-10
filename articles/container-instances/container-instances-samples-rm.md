@@ -3,11 +3,12 @@ title: Ukázky šablon Azure Resource Manager
 description: Vyhledání ukázek šablon Azure Resource Manager k nasazení Azure Container Instances v různých konfiguracích
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299753"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169642"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Šablony Azure Resource Manager pro Azure Container Instances
 
@@ -17,7 +18,7 @@ Možnosti nasazení najdete v části věnované [nasazení](#deployment) . Chce
 
 ## <a name="sample-templates"></a>Ukázkové šablony
 
-| | |
+| Template (Šablona) | Popis |
 |-|-|
 | **Aplikace** ||
 | [WordPress][app-wp] | Vytvoří web WordPress a jeho databázi MySQL ve skupině kontejnerů. Obsah webu WordPress a databáze MySQL jsou trvalé ve sdílené složce souborů Azure. Vytvoří také aplikační bránu pro zpřístupnění přístupu k veřejné síti pro WordPress. |

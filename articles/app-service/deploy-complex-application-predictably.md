@@ -5,11 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5e4c4d89a1119b0f59aa15885406cd7261d2f69
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75967381"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169999"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Prediktivní zřizování a nasazování mikroslužeb v Azure
 V tomto kurzu se dozvíte, jak zřídit a nasadit aplikaci skládající se z [mikroslužeb](https://en.wikipedia.org/wiki/Microservices) v [Azure App Service](https://azure.microsoft.com/services/app-service/) jako jediná jednotka a předvídatelným způsobem pomocí šablon skupin prostředků JSON a skriptů prostředí PowerShell. 
@@ -53,19 +54,19 @@ Teď to máme k tomu přímo.
 2. V readme.md klikněte na **nasadit do Azure**.
 3. Přejdete na web [nasazení do Azure](https://deploy.azure.com) a zobrazí se výzva k zadání parametrů nasazení. Všimněte si, že většina polí se naplní názvem úložiště a dalšími náhodnými řetězci. Všechna pole můžete změnit, pokud chcete, ale stačí, když zadáte jenom ty, které musíte zadat, SQL Server přihlašovací jméno správce a heslo a pak klikněte na **Další**.
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
+   ![Zobrazuje vstupní parametry nasazení na webu nasazení na platformě Azure.](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
 4. Potom kliknutím na **nasadit** spusťte proces nasazení. Po dokončení procesu klikněte na http://todoapp odkaz *XXXX*. azurewebsites.NET a procházejte nasazenou aplikaci. 
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
+   ![Zobrazuje proces nasazení vaší aplikace.](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
    Uživatelské rozhraní by bylo trochu pomalé při prvním procházení, protože se aplikace právě spouštějí, ale přesvědčit se, že se jedná o plně funkční aplikaci.
 5. Zpátky na stránce nasazení kliknutím na odkaz **Správa** Zobrazte novou aplikaci na webu Azure Portal.
 6. V rozevíracím seznamu **Essentials** klikněte na odkaz skupina prostředků. Všimněte si také, že aplikace je už v **externím projektu**připojená k úložišti GitHubu. 
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
+   ![Zobrazuje odkaz skupina prostředků v rozevíracím seznamu Essentials.](./media/app-service-deploy-complex-application-predictably/gettemplate-3-portalresourcegroup.png)
 7. V okně Skupina prostředků si všimněte, že ve skupině prostředků už existují dvě aplikace a jeden SQL Database.
    
-   ![](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
+   ![Zobrazuje prostředky, které jsou k dispozici ve vaší skupině prostředků.](./media/app-service-deploy-complex-application-predictably/gettemplate-4-portalresourcegroupclicked.png)
 
 Všechno, co jste právě viděli během několika krátkých minut, je plně nasazená aplikace se dvěma mikroslužbami, které mají všechny komponenty, závislosti, nastavení, databáze a průběžné publikování, nastavené pomocí automatizované orchestrace v Azure Resource Manager. To všechno bylo provedeno dvěma způsoby:
 
@@ -79,10 +80,10 @@ Teď se podíváme na to, jak se nastavilo úložiště GitHub. V sadě Azure .N
 
 1. Naklonujte úložiště [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) pomocí oblíbeného nástroje Git. Na snímku obrazovky níže jsem to dělá v Team Explorer v Visual Studio 2013.
    
-   ![](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
+   ![Ukazuje, jak pomocí nástroje Git klonovat úložiště ToDoApp.](./media/app-service-deploy-complex-application-predictably/examinejson-1-vsclone.png)
 2. V kořenovém adresáři úložiště otevřete azuredeploy.jsv aplikaci Visual Studio. Pokud nevidíte podokno osnova JSON, musíte nainstalovat sadu Azure .NET SDK.
    
-   ![](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
+   ![Zobrazuje podokno osnova JSON v aplikaci Visual Studio.](./media/app-service-deploy-complex-application-predictably/examinejson-2-vsjsoneditor.png)
 
 Nepopisujeme všechny podrobnosti formátu JSON, ale část [Další zdroje](#resources) obsahuje odkazy na výuku jazyka šablony skupiny prostředků. Tady teď ukážeme jenom zajímavé funkce, které vám pomůžou začít vytvářet vlastní šablonu pro nasazení aplikací.
 
@@ -95,7 +96,7 @@ V uzlu Resources (prostředky) uvidíte, že jsou definované 4 prostředky nejv
 #### <a name="app-service-plan"></a>Plán služby App Service
 Pojďme začít s jednoduchým prostředkem na kořenové úrovni ve formátu JSON. V osnově JSON kliknutím na plán App Service s názvem **[hostingPlanName]** zvýrazněte odpovídající kód JSON. 
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
+![Zobrazuje oddíl [hostingPlanName] kódu JSON.](./media/app-service-deploy-complex-application-predictably/examinejson-3-appserviceplan.png)
 
 Všimněte si, že `type` element určuje řetězec pro plán App Service (byl označován jako serverová farma delší a dlouhou dobou) a další prvky a vlastnosti jsou vyplněny pomocí parametrů definovaných v souboru JSON a tento prostředek nemá žádné vnořené prostředky.
 
@@ -107,7 +108,7 @@ Všimněte si, že `type` element určuje řetězec pro plán App Service (byl o
 #### <a name="sql-server"></a>SQL Server
 Potom v osnově JSON klikněte na prostředek SQL Server s názvem **SQLServer** .
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
+![Zobrazuje SQL Server prostředek s názvem SQLServer v osnově JSON.](./media/app-service-deploy-complex-application-predictably/examinejson-4-sqlserver.png)
 
 Všimněte si následujícího o zvýrazněném kódu JSON:
 
@@ -127,12 +128,12 @@ Nyní se teď podíváme na samotné vlastní aplikace, které jsou složitějš
 ##### <a name="root-resource"></a>Kořenový prostředek
 Aplikace závisí na dvou různých prostředcích. To znamená, že Azure Resource Manager vytvoří aplikaci pouze po vytvoření plánu App Service a instanci SQL Server.
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
+![Zobrazuje závislosti aplikace v plánu App Service a instanci SQL Server.](./media/app-service-deploy-complex-application-predictably/examinejson-5-webapproot.png)
 
 ##### <a name="app-settings"></a>Nastavení aplikace
 Nastavení aplikace jsou také definována jako vnořený prostředek.
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
+![Zobrazuje nastavení aplikace definované jako vnořený prostředek v kódu JSON.](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
 V `properties` elementu pro `config/appsettings` má dvě nastavení aplikace ve formátu `"<name>" : "<value>"` .
 
@@ -142,7 +143,7 @@ V `properties` elementu pro `config/appsettings` má dvě nastavení aplikace ve
 ##### <a name="connection-strings"></a>Připojovací řetězce
 Připojovací řetězce jsou také definovány jako vnořený prostředek.
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
+![Ukazuje, jak jsou připojovací řetězce definovány jako vnořené prostředky v kódu JSON.](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
 V `properties` elementu pro je `config/connectionstrings` každý připojovací řetězec definován také jako název: dvojice hodnot s konkrétním formátem `"<name>" : {"value": "…", "type": "…"}` . Pro `type` element jsou možné hodnoty `MySql` ,, a `SQLServer` `SQLAzure` `Custom` .
 
@@ -154,7 +155,7 @@ V `properties` elementu pro je `config/connectionstrings` každý připojovací 
 ##### <a name="source-control"></a>Správa zdrojového kódu
 Nastavení správy zdrojového kódu jsou také definována jako vnořený prostředek. Azure Resource Manager používá tento prostředek ke konfiguraci průběžného publikování (viz upozornění `IsManualIntegration` později) a také k automatickému nasazení kódu aplikace během zpracování souboru JSON.
 
-![](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
+![Ukazuje, jak jsou nastavení správy zdrojů definována jako vnořený prostředek v kódu JSON.](./media/app-service-deploy-complex-application-predictably/examinejson-8-webappsourcecontrol.png)
 
 `RepoUrl`a `branch` měly by být poměrně intuitivní a měly by odkazovat na úložiště Git a název větve, ze které se mají publikovat. Tyto hodnoty jsou znovu definované vstupními parametry. 
 
@@ -170,11 +171,11 @@ Tady můžete projít všechna okna aplikace na [portálu Azure Portal](https://
 
 Když například přejdete na nástroj [Azure Resource Explorer](https://resources.azure.com) a rozbalíte uzly v Průzkumníkovi, můžu zobrazit skupinu prostředků a prostředky kořenové úrovně, které se shromažďují v příslušných typech prostředků.
 
-![](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
+![Prohlédněte si skupinu prostředků a prostředky na kořenové úrovni v rozšířeném nástroji Průzkumník prostředků Azure.](./media/app-service-deploy-complex-application-predictably/ARM-1-treeview.png)
 
 Pokud přejdete k podrobnostem aplikace, měli byste vidět podrobnosti konfigurace aplikace podobné tomuto snímku obrazovky:
 
-![](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
+![Přejděte k podrobnostem a zobrazte podrobnosti o konfiguraci v aplikaci.](./media/app-service-deploy-complex-application-predictably/ARM-2-jsonview.png)
 
 Vnořené prostředky by měly mít stejnou hierarchii velmi podobné těm v souboru šablony JSON a v podokně JSON by se měla zobrazit nastavení aplikace, připojovací řetězce atd. Zde uvedená neexistence nastavení může znamenat problém s vaším souborem JSON a může pomoct při odstraňování potíží se souborem šablony JSON.
 
@@ -184,50 +185,50 @@ Tlačítko **nasadit do Azure** je skvělé, ale umožňuje nasadit šablonu sku
 1. V aplikaci Visual Studio klikněte na **soubor**  >  **Nový**  >  **projekt**.
 2. Klikněte **Visual C#** na  >  **cloudová**  >  **Skupina prostředků Azure**Visual C# a pak klikněte na **OK**.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
+   ![Vytvořte nový projekt jako skupinu prostředků Azure v sadě Azure .NET SDK.](./media/app-service-deploy-complex-application-predictably/deploy-1-vsproject.png)
 3. V nabídce **Vybrat šablonu Azure**vyberte **prázdná šablona** a klikněte na **OK**.
 4. Přetáhněte azuredeploy.jsdo složky **template** v novém projektu.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
+   ![Zobrazuje výsledek přetažení azuredeploy.jsdo souboru do složky šablony projektu.](./media/app-service-deploy-complex-application-predictably/deploy-2-copyjson.png)
 5. Z Průzkumník řešení otevřete zkopírovaný azuredeploy.jsna.
 6. Do našeho souboru JSON můžeme přidat několik standardních prostředků Application Insights, a to tak, že kliknete na **Přidat prostředek**. Pokud vás zajímá jenom nasazení souboru JSON, přejděte k postupu nasazení.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
+   ![Zobrazuje tlačítko Přidat prostředek, které můžete použít k přidání standardních prostředků Application Insights do souboru JSON.](./media/app-service-deploy-complex-application-predictably/deploy-3-newresource.png)
 7. **Pro Web Apps vyberte Application Insights**, pak ověřte, že je vybraná možnost plán a aplikace App Service, a pak klikněte na **Přidat**.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
+   ![Zobrazuje výběr Application Insights pro Web Apps, název App Service plán a webovou aplikaci.](./media/app-service-deploy-complex-application-predictably/deploy-4-newappinsight.png)
    
    Teď budete moct zobrazit několik nových prostředků, které v závislosti na prostředku a jeho činnosti mají závislosti v plánu App Service nebo aplikaci. Tyto prostředky nejsou povolené stávající definicí a vy budete tuto změnu měnit.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
+   ![Prohlédněte si nové prostředky, které mají závislosti na plánu App Service nebo aplikaci.](./media/app-service-deploy-complex-application-predictably/deploy-5-appinsightresources.png)
 8. V osnově JSON kliknutím na **appInsights AutoScale** zvýrazněte svůj kód JSON. Toto je nastavení škálování pro váš App Service plán.
 9. Ve zvýrazněném kódu JSON Najděte `location` `enabled` vlastnosti a a nastavte je tak, jak vidíte níže.
    
-   ![](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
+   ![Zobrazuje umístění a povolené vlastnosti v kódu JSON automatického škálování appInsights a hodnoty, na které byste je měli nastavit.](./media/app-service-deploy-complex-application-predictably/deploy-6-autoscalesettings.png)
 10. V osnově JSON klikněte na **CPUHigh appInsights** a zvýrazněte jeho kód JSON. Toto je výstraha.
 11. Vyhledejte `location` vlastnosti a `isEnabled` a nastavte je tak, jak vidíte níže. Totéž udělejte pro ostatní tři výstrahy (fialové cibule).
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
+    ![Zobrazuje umístění a deaktivované vlastnosti v kódu JSON CPUHigh appInsights a hodnoty, na které byste je měli nastavit.](./media/app-service-deploy-complex-application-predictably/deploy-7-alerts.png)
 12. Teď jste připraveni nasadit. Klikněte pravým tlačítkem na projekt a vyberte **nasadit**  >  **nové nasazení**.
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
+    ![Ukazuje, jak nasadit nový projekt.](./media/app-service-deploy-complex-application-predictably/deploy-8-newdeployment.png)
 13. Pokud jste to ještě neudělali, přihlaste se k účtu Azure.
 14. V předplatném vyberte existující skupinu prostředků nebo vytvořte novou, vyberte **azuredeploy.jszapnuto**a pak klikněte na **Upravit parametry**.
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
+    ![Ukazuje, jak upravit parametry v azuredeploy.jsv souboru.](./media/app-service-deploy-complex-application-predictably/deploy-9-deployconfig.png)
     
     Teď budete moct upravit všechny parametry definované v souboru šablony v tabulce s dobrým oprávněním. Parametry, které definují výchozí hodnoty, již mají své výchozí hodnoty a parametry definující seznam povolených hodnot budou zobrazeny jako rozevírací seznamy.
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
+    ![Zobrazuje parametry, které definují seznam povolených hodnot jako rozevírací seznamy.](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
 15. Vyplňte všechny prázdné parametry a použijte [adresu úložiště GitHub pro ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) v části **relévání**. Pak klikněte na **Uložit**.
     
-    ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
+    ![Zobrazuje nově vyplněné parametry azuredeploy.jsv souboru.](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
     > [!NOTE]
     > Automatické škálování je funkce nabízená na úrovni **Standard** nebo vyšší a výstrahy na úrovni plánu jsou funkce nabízené na úrovni **Basic** nebo vyšší, takže budete muset nastavit parametr **SKU** na úroveň **Standard** nebo **Premium** , abyste viděli všechny nové prostředky služby App Insights.
     > 
     > 
-16. Klikněte na **nasadit**. Pokud jste vybrali možnost **Uložit hesla**, heslo bude uloženo v souboru parametrů **v prostém textu**. V opačném případě budete požádáni o zadání hesla databáze během procesu nasazení.
+16. Klikněte na **Deploy** (Nasadit). Pokud jste vybrali možnost **Uložit hesla**, heslo bude uloženo v souboru parametrů **v prostém textu**. V opačném případě budete požádáni o zadání hesla databáze během procesu nasazení.
 
 A to je vše! Teď stačí přejít na [portál Azure Portal](https://portal.azure.com/) a nástroj [Azure Resource Explorer](https://resources.azure.com) , abyste viděli nové výstrahy a nastavení automatického škálování přidané do nasazené aplikace JSON.
 
@@ -239,11 +240,11 @@ Kroky v této části doplňují zejména následující:
 
 Posledním krokem je snadné provedení rutiny prostředí PowerShell. Chcete-li zjistit, co aplikace Visual Studio provedla při nasazení aplikace, otevřete Scripts\Deploy-AzureResourceGroup.ps1. Existuje velké množství kódu, ale stačí pouze zdůraznit veškerý související kód, který potřebujete k nasazení souboru šablony se souborem parametrů.
 
-![](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
+![Zobrazuje relevantní kód ve skriptu, který potřebujete použít k nasazení souboru šablony se souborem parametrů.](./media/app-service-deploy-complex-application-predictably/deploy-12-powershellsnippet.png)
 
 Poslední rutinou `New-AzureResourceGroup` je ta, která tuto akci skutečně provádí. To by vám mělo Ukázat na to, že při použití nástrojů je poměrně snadné nasadit cloudovou aplikaci. Pokaždé, když spustíte rutinu na stejné šabloně se stejným souborem parametrů, vrátíte stejný výsledek.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 V DevOps je opakovatelnost a předvídatelnost klíčem k jakémukoli úspěšnému nasazení vysoce škálovatelné aplikace složené z mikroslužeb. V tomto kurzu jste do Azure nasadili aplikaci se dvěma mikroslužbami jako s jednou skupinou prostředků pomocí šablony Azure Resource Manager. Snad vám vaše znalosti, které potřebujete k zahájení konverze vaší aplikace v Azure do šablony, a jejich předpovídat a jejich nasazení. 
 
 <a name="resources"></a>

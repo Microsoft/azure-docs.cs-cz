@@ -3,11 +3,12 @@ title: Přepsat parametr entryPoint v instanci kontejneru
 description: Nastavení příkazového řádku pro přepsání vstupního bodu v imagi kontejneru při nasazení instance kontejneru Azure
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23221de3dc91c37c2e6fb96489539d3954efcd87
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84693052"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169625"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Nastavení příkazového řádku v instanci kontejneru pro přepsání výchozí operace příkazového řádku
 
@@ -51,10 +52,10 @@ Syntaxe příkazového řádku se liší v závislosti na rozhraní API nebo ná
 
 ### <a name="examples"></a>Příklady
 
-|    |  Azure CLI   | Portál | Šablona | 
+|    |  Azure CLI   | Portál | Template (Šablona) | 
 | ---- | ---- | --- | --- |
-| Jeden příkaz | `--command-line "python myscript.py arg1 arg2"` | **Přepsání příkazu**:`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
-| Více příkazů | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Přepsání příkazu**:`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
+| **Jeden příkaz** | `--command-line "python myscript.py arg1 arg2"` | **Přepsání příkazu**:`python, myscript.py, arg1, arg2` | `"command": ["python", "myscript.py", "arg1", "arg2"]` |
+| **Více příkazů** | `--command-line "/bin/bash -c 'mkdir test; touch test/myfile; tail -f /dev/null'"` |**Přepsání příkazu**:`/bin/bash, -c, mkdir test; touch test/myfile; tail -f /dev/null` | `"command": ["/bin/bash", "-c", "mkdir test; touch test/myfile; tail -f /dev/null"]` |
 
 ## <a name="azure-cli-example"></a>Příklad rozhraní příkazového řádku Azure
 

@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637203"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170696"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Ruby
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -38,10 +38,12 @@ TwiML je sada instrukcí založených na XML, které informují Twilio o tom, ja
 
 Například následující TwiML převede text **Hello World** na řeč.
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-       <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+    <Say>Hello World</Say>
+</Response>
+```
 
 Všechny dokumenty TwiML mají `<Response>` jako svůj kořenový element. Odtud použijete příkazy Twilio k definování chování aplikace.
 
@@ -82,28 +84,36 @@ V příkladech níže budeme používat [Sinatra][sinatra], velmi jednoduchou we
 
 Připojte se k novému VIRTUÁLNÍmu počítači přes SSH a vytvořte adresář pro novou aplikaci. V tomto adresáři vytvořte soubor s názvem Gemfile a zkopírujte do něj následující kód:
 
-    source 'https://rubygems.org'
-    gem 'sinatra'
-    gem 'thin'
+```bash
+source 'https://rubygems.org'
+gem 'sinatra'
+gem 'thin'
+```
 
 Na příkazovém řádku spusťte příkaz `bundle install` . Tím se nainstalují výše uvedené závislosti. Dále vytvořte soubor s názvem `web.rb` . To bude místo, kde je kód vaší webové aplikace život. Vložte do něj následující kód:
 
-    require 'sinatra'
+```ruby
+require 'sinatra'
 
-    get '/' do
-        "Hello Monkey!"
-    end
+get '/' do
+    "Hello Monkey!"
+end
+```
 
 V tomto okamžiku byste měli být moci spustit příkaz `ruby web.rb -p 5000` . Tím se vytočí malý webový server na portu 5000. Měli byste být schopni přejít do této aplikace v prohlížeči, a to návštěvou adresy URL, kterou jste nastavili pro virtuální počítač Azure. Až se dostanete k webové aplikaci v prohlížeči, můžete začít vytvářet aplikace v Twilio.
 
 ## <a name="configure-your-application-to-use-twilio"></a><a id="configure_app"></a>Konfigurace aplikace tak, aby používala Twilio
 Webovou aplikaci můžete nakonfigurovat tak, aby používala knihovnu Twilio, a to tak, že `Gemfile` se aktualizuje tak, aby zahrnovala tento řádek:
 
-    gem 'twilio-ruby'
+```bash
+gem 'twilio-ruby'
+```
 
 Na příkazovém řádku spusťte příkaz `bundle install` . Nyní otevřete `web.rb` a včetně tohoto řádku v horní části:
 
-    require 'twilio-ruby'
+```ruby
+require 'twilio-ruby'
+```
 
 Teď jste vše nastavili pro použití pomocné knihovny Twilio pro Ruby ve vaší webové aplikaci.
 
@@ -112,33 +122,35 @@ Následující příklad ukazuje, jak provést odchozí volání. Klíčové kon
 
 Přidat tuto funkci do `web.md` :
 
-    # Set your account ID and authentication token.
-    sid = "your_twilio_account_sid";
-    token = "your_twilio_authentication_token";
+```ruby
+# Set your account ID and authentication token.
+sid = "your_twilio_account_sid";
+token = "your_twilio_authentication_token";
 
-    # The number of the phone initiating the call.
-    # This should either be a Twilio number or a number that you've verified
-    from = "NNNNNNNNNNN";
+# The number of the phone initiating the call.
+# This should either be a Twilio number or a number that you've verified
+from = "NNNNNNNNNNN";
 
-    # The number of the phone receiving call.
-    to = "NNNNNNNNNNN";
+# The number of the phone receiving call.
+to = "NNNNNNNNNNN";
 
-    # Use the Twilio-provided site for the TwiML response.
-    url = "http://yourdomain.cloudapp.net/voice_url";
+# Use the Twilio-provided site for the TwiML response.
+url = "http://yourdomain.cloudapp.net/voice_url";
 
-    get '/make_call' do
-      # Create the call client.
-      client = Twilio::REST::Client.new(sid, token);
+get '/make_call' do
+    # Create the call client.
+    client = Twilio::REST::Client.new(sid, token);
 
-      # Make the call
-      client.account.calls.create(to: to, from: from, url: url)
-    end
+    # Make the call
+    client.account.calls.create(to: to, from: from, url: url)
+end
 
-    post '/voice_url' do
-      "<Response>
-         <Say>Hello Monkey!</Say>
-       </Response>"
-    end
+post '/voice_url' do
+    "<Response>
+        <Say>Hello Monkey!</Say>
+    </Response>"
+end
+```
 
 Pokud otevřete `http://yourdomain.cloudapp.net/make_call` v prohlížeči, který aktivuje volání rozhraní Twilio API, aby mohl telefonní hovor uskutečnit. První dva parametry v jsou poměrně vysvětlované `client.account.calls.create` : číslo volání `from` a číslo, které je volání `to` . 
 
@@ -151,11 +163,13 @@ Nejdřív se přihlaste ke svému [řídicímu panelu Twilio][twilio_account]. V
 
 Chceme zpracovat příchozí zprávy SMS, takže pojďme adresu URL aktualizovat na `http://yourdomain.cloudapp.net/sms_url` . Pokračujte a v dolní části stránky klikněte na Uložit změny. Teď se vraťte do `web.rb` programu, abychom tuto aplikaci zpracovali:
 
-    post '/sms_url' do
-      "<Response>
-         <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
-       </Response>"
-    end
+```ruby
+post '/sms_url' do
+    "<Response>
+        <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
+    </Response>"
+end
+```
 
 Po provedení změny nezapomeňte znovu spustit svou webovou aplikaci. Nyní si vyžádejte svůj telefon a odešlete SMS k vašemu Twilio číslu. Měli byste se rychle zeptat na odpověď SMS, která říká "Hey", děkuji za testem. Twilio a Azure Rock! ".
 

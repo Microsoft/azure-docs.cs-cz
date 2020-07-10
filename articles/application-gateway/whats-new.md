@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: dd6ec2057ede076511b567c013fc1b6fa12d8281
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: ebb3e6ba777646d39e3732215aa6c8fdd12ca40a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669728"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186686"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Co je nového v Azure Application Gateway?
 
@@ -25,9 +25,10 @@ Azure Application Gateway se průběžně aktualizuje. V tomto článku najdete 
 
 ## <a name="new-features"></a>Nové funkce
 
-|Příznak  |Popis  |Datum přidání  |
+|Funkce  |Popis  |Datum přidání  |
 |---------|---------|---------|
-| Application Gateway (AGIC) AKS Controller (verze Preview) |Řadič pro příchozí Application Gateway se teď dá nasadit jako nativní doplněk AKS v jednom řádku prostřednictvím Azure CLI. AKS doplněk umožňuje, aby se AGIC stala plně spravovaná služba a pořád běžela v clusteru AKS zákazníka. Další informace najdete v tématu [AGIC – rozdíly v doplňcích](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). |Červeně 2020 |
+| Vlastní port pro sondy stavu | SKU Application Gateway v2 nyní poskytuje možnost poskytnout vlastní port v konfiguraci sondy stavu. Další informace najdete v tématu [Přehled stavu testu](application-gateway-probe-overview.md) . | Červenec 2020
+| Application Gateway (AGIC) AKS Controller (verze Preview) |Řadič pro příchozí Application Gateway se teď dá nasadit jako nativní doplněk AKS v jednom řádku prostřednictvím Azure CLI. AKS doplněk umožňuje, aby se AGIC stala plně spravovaná služba a pořád běžela v clusteru AKS zákazníka. Další informace najdete v tématu [AGIC – rozdíly v doplňcích](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). |Červen 2020 |
 | Trasy definované uživatelem (UDR) ve verzi v2 (Preview) |Trasy definované uživatelem jsou nyní podporovány v některých scénářích u SKU Application Gateway v2. Další informace najdete v tématu [Přehled konfigurace Application Gateway](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet). |Březen 2020 |
 |Změny souborů cookie spřažení |Pokud je povoleno spřažení na základě souborů cookie, Application Gateway kromě existujícího souboru cookie ApplicationGatewayAffinity vloží jiný stejný soubor cookie s názvem *ApplicationGatewayAffinityCORS* . *ApplicationGatewayAffinityCORS* má přidaných dva další atributy (*SameSite = None; Secure*), aby se rychlé relace zachovaly i pro požadavky na více zdrojů. Další informace najdete v tématu [Application Gateway spřažení na základě souborů cookie](configuration-overview.md#cookie-based-affinity) . |Únor 2020 |
 |Vylepšení testu paměti |Díky vylepšením vlastních sond ve službě Application Gateway v2 SKU jsme zjednodušili [konfiguraci testu paměti](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku), usnadnili jsme [testy stavu back-endu na vyžádání](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe) a přidali jsme [Další diagnostické informace](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages) , které vám pomůžou při řešení problémů se stavem back-endu.  |Říjen 2019 |

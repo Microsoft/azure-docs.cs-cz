@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430564"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169975"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Osvědčené postupy a Průvodce odstraňováním potíží pro aplikace uzlů v Azure App Service Windows
 
@@ -169,7 +170,7 @@ Přejít na web konzoly ladění`https://yoursite.scm.azurewebsites.net/DebugCon
 
 Přejdete do adresáře site/Wwwroot. Zobrazí se příkazový řádek, jak je znázorněno v následujícím příkladu:
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![Snímek obrazovky zobrazující adresář site/wwwroot a příkazový řádek.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 Spusťte příkaz `npm install v8-profiler`.
 
@@ -202,11 +203,11 @@ http.createServer(function (req, res) {
 
 Předchozí profil kódu WriteConsoleLog funkci a potom zapíše výstup profilu do souboru Profile. cpuprofile v rámci lokality Wwwroot. Odešlete žádost do aplikace. Zobrazí se soubor Profile. cpuprofile vytvořený v rámci lokality Wwwroot.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![Snímek obrazovky, který zobrazuje soubor Profile. cpuprofile.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
 Stáhněte si tento soubor a otevřete ho pomocí nástrojů Chrome F12. Stiskněte klávesu F12 na Chrome a pak zvolte kartu **profily** . klikněte na tlačítko **načíst** . Vyberte soubor Profile. cpuprofile, který jste stáhli. Klikněte na profil, který jste právě načetli.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![Snímek obrazovky zobrazující soubor Profile. cpuprofile, který jste načetli.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 Pomocí funkce WriteConsoleLog můžete zjistit, že 95% času bylo spotřebováno. Výstup také zobrazuje přesná čísla řádků a zdrojové soubory, které tento problém způsobily.
 

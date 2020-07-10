@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 1a244cd17ecf1f6165936d86791f9b2e320666c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a269137508feb8a2d2cc0710986e1b74b91c0ea
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807159"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186737"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastního testu pro Azure Application Gateway pomocí prostředí PowerShell pro Azure Resource Manager
 
@@ -83,14 +83,14 @@ Vytvořte prostředek veřejné IP adresy **publicIP01** ve skupině prostředk�
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
 ```
 
-### <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+### <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 Před vytvořením služby Application Gateway se nastavují všechny položky konfigurace. Následující příklad vytvoří položky konfigurace, které jsou potřeba pro prostředek aplikační brány.
 
 | **Komponenta** | **Popis** |
 |---|---|
 | **Konfigurace protokolu IP brány** | Konfigurace protokolu IP pro aplikační bránu.|
-| **Back-end fond** | Fond IP adres, plně kvalifikovaného názvu domény nebo síťových adaptérů, které jsou aplikačním serverům, které hostují webovou aplikaci.|
+| **Back-endový fond** | Fond IP adres, plně kvalifikovaného názvu domény nebo síťových adaptérů, které jsou aplikačním serverům, které hostují webovou aplikaci.|
 | **Sonda stavu** | Vlastní test, který slouží k monitorování stavu členů fondu back-end|
 | **Nastavení HTTP** | Kolekce nastavení včetně, portu, protokolu, spřažení založeného na souborech cookie, sondy a časového limitu.  Tato nastavení určují způsob směrování provozu do členů fondu back-end.|
 | **Port front-endu** | Port, na kterém brána Application Gateway naslouchá provozu|

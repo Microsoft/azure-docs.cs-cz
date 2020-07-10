@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f7e24e1b4546c76348e61e3c2736fcfe4b66410d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0560d9a5156f06f7ae7473f63359d9d17926b7ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836936"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186448"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrace s protokoly Azure Monitor
 
@@ -35,7 +36,7 @@ Chcete-li začít odesílat sestavy konfigurace stavu automatizace do Azure Moni
 
 - Vydání [Azure PowerShell](/powershell/azure/overview) (v 2.3.0) v listopadu 2016 nebo novějším.
 - Účet Azure Automation. Další informace najdete v [úvodu k Azure Automation](automation-intro.md).
-- Pracovní prostor Log Analytics pomocí nabídky služby Automation & Control. Další informace najdete v tématu [Začínáme s Log Analytics v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+- Pracovní prostor Log Analytics pomocí nabídky služby Automation & Control. Další informace najdete v tématu [Začínáme s Log Analytics v Azure monitor](../azure-monitor/log-query/get-started-portal.md).
 - Nejméně jeden uzel Konfigurace stavu Azure Automation. Další informace najdete v tématu věnovaném [připojování počítačů pro správu podle konfigurace stavu Azure Automation](automation-dsc-onboarding.md).
 - Modul [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) verze 2.7.0.0 nebo vyšší. Pokyny k instalaci najdete v tématu [řešení potíží Azure Automation konfiguraci požadovaného stavu](./troubleshoot/desired-state-configuration.md).
 
@@ -43,7 +44,7 @@ Chcete-li začít odesílat sestavy konfigurace stavu automatizace do Azure Moni
 
 Pokud chcete začít importovat data z konfigurace stavu Azure Automation do protokolů Azure Monitor, proveďte následující kroky:
 
-1. Přihlaste se ke svému účtu Azure v PowerShellu. Přečtěte si téma [přihlášení pomocí Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Přihlaste se ke svému účtu Azure v PowerShellu. Přečtěte si téma [přihlášení pomocí Azure PowerShell](/powershell/azure/authenticate-azureps).
 1. ID prostředku účtu Automation získáte spuštěním následující rutiny prostředí PowerShell. Pokud máte více než jeden účet Automation, vyberte ID prostředku pro účet, který chcete konfigurovat.
 
    ```powershell
@@ -90,7 +91,7 @@ Podrobnosti filtrování:
 * Filtrujte na `DscResourceStatusData` vrácení operací pro každý prostředek DSC s názvem v konfiguraci uzlu použité pro daný prostředek. 
 * `DscResourceStatusData`Pokud chcete vrátit informace o chybách pro všechny prostředky DSC, které selžou, vyfiltrujte.
 
-Další informace o vytváření dotazů protokolu pro hledání dat najdete v tématu [Přehled dotazů protokolu v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Další informace o vytváření dotazů protokolu pro hledání dat najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Odeslat e-mail, když se nepovede ověřit dodržování předpisů konfigurace stavu
 
@@ -104,7 +105,7 @@ Chcete-li vytvořit pravidlo výstrahy, začněte tím, že vytvoříte hledán�
    Pokud jste v pracovním prostoru nastavili protokoly z více než jednoho účtu Automation nebo předplatného, můžete své výstrahy seskupit podle předplatného a účtu Automation. `Resource`V poli hledání záznamů odvodit název účtu Automation `DscNodeStatusData` .
 1. Obrazovku **vytvořit pravidlo** otevřete kliknutím na **nové pravidlo výstrahy** v horní části stránky. 
 
-Další informace o možnostech konfigurace výstrahy najdete v tématu [Vytvoření pravidla výstrahy](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+Další informace o možnostech konfigurace výstrahy najdete v tématu [Vytvoření pravidla výstrahy](../azure-monitor/platform/alerts-metric.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Najít neúspěšné prostředky DSC ve všech uzlech
 
@@ -195,9 +196,8 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvořit dvě kategori
 - Přehled najdete v tématu [Přehled konfigurace stavu Azure Automation](automation-dsc-overview.md).
 - Informace o tom, jak začít, najdete v tématu Začínáme [s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
-- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
 - Příklad použití konfigurace stavu Azure Automation v kanálu nepřetržitého nasazení najdete v tématu [Nastavení průběžného nasazování s čokoládou](automation-dsc-cd-chocolatey.md).
-- Další informace o tom, jak vytvořit různé vyhledávací dotazy a zkontrolovat protokoly konfigurace stavu automatizace pomocí protokolů Azure Monitor, najdete [v tématu prohledávání protokolů v protokolech Azure monitor](../log-analytics/log-analytics-log-searches.md).
-- Další informace o Azure Monitor protokolů a zdrojích shromažďování dat najdete [v tématu shromažďování dat služby Azure Storage v protokolech Azure monitor přehled](../azure-monitor/platform/collect-azure-metrics-logs.md).
+- Další informace o tom, jak vytvořit různé vyhledávací dotazy a zkontrolovat protokoly konfigurace stavu automatizace pomocí protokolů Azure Monitor, najdete [v tématu prohledávání protokolů v protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md).
+- Další informace o Azure Monitor protokolů a zdrojích shromažďování dat najdete [v tématu shromažďování dat služby Azure Storage v protokolech Azure monitor přehled](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).

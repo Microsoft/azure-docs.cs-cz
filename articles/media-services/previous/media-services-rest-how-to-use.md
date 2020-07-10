@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 288b7302b12d607c9090f699af83691b832256a3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76773663"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170815"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Přehled Media Servicesch operací REST API 
 
@@ -32,32 +33,34 @@ Media Services poskytuje REST API, který přijímá formát JSON nebo Atom + Pu
 
 Ověřování u Media Services REST API se provádí prostřednictvím Azure Active Directory ověřování, které je uvedené v článku [použití ověřování Azure AD pro přístup k rozhraní API pro Azure Media Services s REST](media-services-rest-connect-with-aad.md) .
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 Při použití REST platí následující požadavky.
 
 * Při dotazování entit existuje limit 1000 entit vrácených v jednom okamžiku, protože veřejné REST v2 omezuje výsledky dotazu na 1000 výsledků. Musíte použít **Skip** a **převzít** (rozhraní .NET)/ **horní** (REST), jak je popsáno v [tomto příkladu .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) a v [tomto příkladu REST API](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). 
 * Při použití formátu JSON a určení použití klíčového slova **__metadata** v žádosti (například pro odkazování na propojený objekt) je nutné nastavit [podrobný formát](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) **Accept** on JSON (viz následující příklad). OData nerozumí vlastnosti **__metadata** v žádosti, pokud ji nenastavíte na Verbose.  
-  
-        POST https://media.windows.net/API/Jobs HTTP/1.1
-        Content-Type: application/json;odata=verbose
-        Accept: application/json;odata=verbose
-        DataServiceVersion: 3.0
-        MaxDataServiceVersion: 3.0
-        x-ms-version: 2.19
-        Authorization: Bearer <ENCODED JWT TOKEN> 
-        Host: media.windows.net
-  
-        {
-            "Name" : "NewTestJob", 
-            "InputMediaAssets" : 
-                [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
-        . . . 
+
+    ```console
+    POST https://media.windows.net/API/Jobs HTTP/1.1
+    Content-Type: application/json;odata=verbose
+    Accept: application/json;odata=verbose
+    DataServiceVersion: 3.0
+    MaxDataServiceVersion: 3.0
+    x-ms-version: 2.19
+    Authorization: Bearer <ENCODED JWT TOKEN> 
+    Host: media.windows.net
+
+    {
+        "Name" : "NewTestJob", 
+        "InputMediaAssets" : 
+            [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
+    . . . 
+   ```
 
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standardní hlavičky požadavků HTTP, které podporuje Media Services
 Pro každé volání, které provedete v Media Services, je k dispozici sada požadovaných hlaviček, kterou musíte zahrnout do žádosti, a také sadu volitelných hlaviček, které byste mohli chtít zahrnout. Následující tabulka uvádí seznam požadovaných hlaviček:
 
-| Záhlaví | Typ | Hodnota |
+| Hlavička | Typ | Hodnota |
 | --- | --- | --- |
 | Autorizace |Bearer |Držitelem je jediný přijatý autorizační mechanismus. Hodnota musí také zahrnovat přístupový token, který poskytuje Azure Active Directory. |
 | x-MS-Version |Desetinné číslo |2,17 (nebo novější verze)|
@@ -71,7 +74,7 @@ Pro každé volání, které provedete v Media Services, je k dispozici sada po�
 
 Následuje sada volitelných hlaviček:
 
-| Záhlaví | Typ | Hodnota |
+| Hlavička | Typ | Hodnota |
 | --- | --- | --- |
 | Datum |RFC 1123 datum |Časové razítko požadavku |
 | Přijmout |Typ obsahu |Požadovaný typ obsahu pro odpověď, například následující:<p> -Application/JSON; OData = verbose<p> – Application/Atom + XML<p> Odpovědi mohou mít jiný typ obsahu, například načtení objektu blob, kde úspěšná odpověď obsahuje datový proud blobu jako datovou část. |
@@ -85,7 +88,7 @@ Následuje sada volitelných hlaviček:
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standardní hlavičky HTTP odpovědi, které podporuje Media Services
 Následuje sada hlaviček, které mohou být vráceny v závislosti na prostředku, který požadujete, a akci, kterou jste chtěli provést.
 
-| Záhlaví | Typ | Hodnota |
+| Hlavička | Typ | Hodnota |
 | --- | --- | --- |
 | ID žádosti |Řetězec |Jedinečný identifikátor pro aktuální operaci, vygenerovala se služba. |
 | klient-požadavek-ID |Řetězec |Identifikátor určený volajícím v původní žádosti, pokud je k dispozici. |
@@ -96,7 +99,7 @@ Následuje sada hlaviček, které mohou být vráceny v závislosti na prostřed
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Standardní příkazy HTTP podporované Media Services
 Následuje úplný seznam příkazů HTTP, které lze použít při provádění požadavků HTTP:
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 | GET |Vrátí aktuální hodnotu objektu. |
 | POST |Vytvoří objekt na základě poskytnutých dat nebo odešle příkaz. |

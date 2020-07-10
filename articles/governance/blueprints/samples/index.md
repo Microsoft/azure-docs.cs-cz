@@ -3,11 +3,12 @@ title: Index ukázek podrobných plánů
 description: Index ukázek dodržování předpisů a standardních ukázek pro nasazování prostředí, zásad a základů architektury přechodu na cloud s využitím Azure Blueprints
 ms.date: 07/01/2020
 ms.topic: sample
-ms.openlocfilehash: 7e45cbbbf7cf6c2e267156dbb0087a19d8288aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef85ef0615fa0817a574240e65b7670daeaff33b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832317"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181552"
 ---
 # <a name="azure-blueprints-samples"></a>Ukázky Azure Blueprints
 
@@ -15,7 +16,7 @@ Následující tabulka obsahuje odkazy na ukázky pro Azure Blueprints. Všechny
 
 ## <a name="standards-based-blueprint-samples"></a>Ukázky podrobných plánů založené na standardech
 
-|  |  |
+| Ukázka | Popis |
 |---------|---------|
 | [Australian Government ISM PROTECTED](./ism-protected/control-mapping.md) | Poskytuje ochranné mantinely pro dodržování předpisů Australian Government ISM PROTECTED. |
 | [Srovnávací test zabezpečení Azure](./azure-security-benchmark.md) | Poskytuje ochranné mantinely pro dodržování předpisů [Azure Security Benchmarku](../../../security/benchmarks/overview.md). |
