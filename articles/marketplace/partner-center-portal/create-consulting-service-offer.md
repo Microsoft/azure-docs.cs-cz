@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984266"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203804"
 ---
 # <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
@@ -98,12 +98,22 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
 
 3. Pokud jste jako primární produkt vybrali **Azure** , vyberte až tři **oblasti řešení**. To usnadňuje zákazníkům v Azure Marketplace najít vaši nabídku. Pokud jste nezvolili Azure, přeskočte tento krok.
 
-    | Oblast řešení | | | |
-    | --- | --- | --- | --- |
-    | Analýzy | Backup | DevOps | Migrace |
-    | Modernizace aplikací | Velký objem dat | Zotavení po havárii | Sítě |
-    | Archiv | Datová platforma | Identita | Zabezpečení |
-    | AI a Machine Learning | Správa Datacenter | Internet věcí | Storage |
+    - Analýzy
+    - Modernizace aplikací
+    - Archive
+    - AI a Machine Learning
+    - Backup
+    - Velký objem dat
+    - Datová platforma
+    - Správa Datacenter
+    - DevOps
+    - Zotavení po havárii
+    - Identita
+    - Internet věcí
+    - Migrace
+    - Sítě
+    - Zabezpečení
+    - Storage
 
 1. Pokud jste jako primární produkt vybrali **Azure** , máte možnost vybrat až šest **oborů**. To usnadňuje zákazníkům v Azure Marketplace najít vaši nabídku. Seznamte se s [osvědčenými postupy v nabídce](../gtm-offer-listing-best-practices.md), kde najdete úplný seznam oborů. Pokud jste nezvolili Azure, přeskočte tento krok.
 1. Pokud jste vybrali *jiný* produkt než Azure, vyberte až tři produkty, které jsou k **dispozici**. To usnadňuje zákazníkům v AppSource najít vaši nabídku. Podrobnosti najdete v tématu [Microsoft AppSource konzultačních pokynů pro výpisy služby](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
@@ -126,12 +136,12 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 #### <a name="call-out-descriptions"></a>Popisy volání
 
 1. Logo
-2. Price
+2. Cena
 3. Oblasti řešení
 4. Odvětví
 5. Název nabídky
-6. Souhrn
-7. Description
+6. Shrnutí
+7. Popis
 8. Snímky obrazovky a videa
 
 <br>Tady je příklad toho, jak se zobrazují informace o nabídce v Microsoft AppSource (uvedené ceny jsou například jenom pro účely a nejsou určené k tomu, aby odrážely skutečné náklady):
@@ -141,16 +151,16 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 #### <a name="call-out-descriptions"></a>Popisy volání
 
 1. Logo
-2. Price
+2. Cena
 3. Produkty
 4. Odvětví
 5. Název nabídky
-6. Souhrn
-7. Description
+6. Shrnutí
+7. Popis
 8. Snímky obrazovky a videa
-9. Dokumenty
+9. dokumenty.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -164,7 +174,7 @@ Název:
 
 Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 

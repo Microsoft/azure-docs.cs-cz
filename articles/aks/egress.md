@@ -5,11 +5,12 @@ description: Naučte se vytvářet a používat statickou veřejnou IP adresu pr
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80803378"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205788"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Použití statické veřejné IP adresy pro odchozí přenosy ve službě Azure Kubernetes (AKS)
 
@@ -22,6 +23,9 @@ V tomto článku se dozvíte, jak vytvořit a používat statickou veřejnou IP 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
 Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+
+> [!IMPORTANT]
+> Tento článek používá nástroj pro vyrovnávání zatížení *Basic* SKU s jedním fondem uzlů. Tato konfigurace není k dispozici pro více fondů uzlů, protože nástroj pro vyrovnávání zatížení *Basic* SKU není u více fondů uzlů podporován. Další informace o používání nástroje pro vyrovnávání zatížení *Standard* SKU najdete v tématu [použití veřejné Standard Load Balancer ve službě Azure KUBERNETES Service (AKS)][slb] .
 
 ## <a name="egress-traffic-overview"></a>Přehled odchozího provozu
 
@@ -92,7 +96,7 @@ Pomocí příkazu vytvořte službu a nasazení `kubectl apply` .
 kubectl apply -f egress-service.yaml
 ```
 
-Tato služba konfiguruje novou front-end IP adresu na Azure Load Balancer. Pokud nemáte nakonfigurovanou žádnou jinou IP adresu, měla by nyní **všechny** přenosy dat používat. Pokud je na Azure Load Balancer nakonfigurovaných víc adres, použije výstupní služba na tomto nástroji pro vyrovnávání zatížení první IP adresu.
+Tato služba konfiguruje novou front-end IP adresu na Azure Load Balancer. Pokud nemáte nakonfigurovanou žádnou jinou IP adresu, měla by nyní **všechny** přenosy dat používat. Pokud je v Azure Load Balancer nakonfigurovaných víc adres, každá z těchto veřejných IP adres je kandidátem na odchozí toky a jedna se vybere náhodně.
 
 ## <a name="verify-egress-address"></a>Ověřit výstupní adresu
 
@@ -133,3 +137,4 @@ Abyste se vyhnuli udržování více veřejných IP adres na Azure Load Balancer
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

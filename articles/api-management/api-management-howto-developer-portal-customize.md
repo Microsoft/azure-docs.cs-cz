@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79244092"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206243"
 ---
 # <a name="access-and-customize-developer-portal"></a>Přístup a přizpůsobení portálu pro vývojáře
 
@@ -130,6 +131,7 @@ Po publikování portálu je možné k němu přistupovat na stejné adrese URL 
 V rozhraních API musíte povolit CORS (sdílení prostředků mezi zdroji), aby návštěvníci vašeho portálu mohli testovat rozhraní API prostřednictvím integrované interaktivní konzoly. Další podrobnosti najdete v [tomto článku dokumentace](api-management-howto-developer-portal.md#cors) .
 
 ## <a name="next-steps"></a>Další kroky
+- [Optimalizace a ukládání na cloudové útratě](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 Další informace o portálu pro vývojáře:
 

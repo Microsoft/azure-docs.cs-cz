@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0fe0803b0961b3aaa89627823b4867fac0d5d61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831535"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206305"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepce zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)
 
@@ -19,11 +19,16 @@ Pokud chcete chránit zákaznická data při spouštění úloh aplikací ve slu
 
 V tomto článku se seznámíte se základními koncepty, které zabezpečují vaše aplikace v AKS:
 
-- [Zabezpečení hlavních součástí](#master-security)
-- [Zabezpečení uzlů](#node-security)
-- [Upgrady clusteru](#cluster-upgrades)
-- [Zabezpečení sítě](#network-security)
-- [Tajné klíče Kubernetes](#kubernetes-secrets)
+- [Koncepce zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+  - [Hlavní zabezpečení](#master-security)
+  - [Zabezpečení uzlů](#node-security)
+    - [Izolace výpočtů](#compute-isolation)
+  - [Upgrady clusteru](#cluster-upgrades)
+    - [Cordon a vyprázdnění](#cordon-and-drain)
+  - [Zabezpečení sítě](#network-security)
+    - [Skupiny zabezpečení sítě Azure](#azure-network-security-groups)
+  - [Tajné klíče Kubernetes](#kubernetes-secrets)
+  - [Další kroky](#next-steps)
 
 ## <a name="master-security"></a>Hlavní zabezpečení
 
@@ -46,6 +51,13 @@ Uzly jsou nasazeny do podsítě privátní virtuální sítě bez přiřazených
 K poskytnutí úložiště používají uzly Azure Managed Disks. Pro většinu velikostí uzlů virtuálních počítačů se jedná o prémiové disky zajištěné vysokým výkonem SSD. Data uložená na spravovaných discích se v rámci platformy Azure automaticky šifrují v klidovém stavu. Kvůli vylepšení redundance jsou tyto disky také bezpečně replikovány v datovém centru Azure.
 
 Prostředí Kubernetes, v AKS nebo jinde, aktuálně nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou *zásady zabezpečení* nebo pokročilejší řízení přístupu na základě role (RBAC) pro uzly, se obtížně využívají. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery. Další informace o způsobech izolace úloh najdete v tématu [osvědčené postupy pro izolaci clusteru v AKS][cluster-isolation].
+
+### <a name="compute-isolation"></a>Izolace výpočtů
+
+ Kvůli dodržování předpisů nebo zákonných požadavků můžou některé úlohy vyžadovat vysoký stupeň izolace od jiných zákaznických úloh. Pro tyto úlohy Azure poskytuje [izolované virtuální počítače](../virtual-machines/linux/isolation.md), které se dají použít jako uzly agentů v clusteru AKS. Tyto izolované virtuální počítače jsou izolované na určitý typ hardwaru a vyhrazené pro jediného zákazníka. 
+
+ Pokud chcete použít tyto izolované virtuální počítače s clusterem AKS, vyberte jednu z velikostí izolovaných počítačů, které jsou [tady](../virtual-machines/linux/isolation.md) uvedené, jako **Velikost uzlu** při vytváření clusteru AKS nebo přidávání fondu uzlů.
+
 
 ## <a name="cluster-upgrades"></a>Upgrady clusteru
 

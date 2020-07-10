@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa348728cd4e9ac0ce5d70cb293ac850cc549666
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817130"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205691"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization v automatizovaném strojovém učení
 
@@ -45,7 +45,7 @@ U experimentů, které nakonfigurujete pomocí sady Python SDK, můžete povolit
 
 V následující tabulce jsou uvedena přijímaná nastavení pro `featurization` ve [třídě AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig):
 
-|Konfigurace Featurization | Description|
+|Konfigurace Featurization | Popis|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Určuje, že v rámci předběžného zpracování jsou [kroky guardrails dat a featurization](#featurization) provedeny automaticky. Toto nastavení je výchozí.|
 |`"featurization": 'off'`| Určuje, že kroky featurization se nemají automaticky provádět.|
@@ -60,7 +60,7 @@ Následující tabulka shrnuje techniky, které jsou automaticky aplikovány na 
 > [!NOTE]
 > Pokud plánujete exportovat AutoML vytvořené modely do [modelu ONNX](concept-onnx.md), ve formátu ONNX se podporují jenom možnosti featurization označené hvězdičkou (*). Přečtěte si další informace o [převodu modelů na ONNX](concept-automated-ml.md#use-with-onnx).
 
-|Featurization &nbsp; kroky| Description |
+|Featurization &nbsp; kroky| Popis |
 | ------------- | ------------- |
 |**Přetáhnout vysokou mohutnost nebo žádné funkce odchylky*** |Tyto funkce přetáhněte ze sady školení a ověření. Platí pro funkce se všemi chybějícími hodnotami, se stejnou hodnotou ve všech řádcích nebo s vysokou mohutnou (například hodnoty hash, ID nebo identifikátory GUID).|
 |**Imputace – chybějící hodnoty*** |Pro číselné funkce imputace s průměrem hodnot ve sloupci.<br/><br/>V případě funkcí kategorií se imputac s nejčastější hodnotou.|
@@ -104,7 +104,7 @@ V následující tabulce jsou popsány aktuálně podporované guardrails dat a 
 Guardrail|Status|Podmínka &nbsp; pro &nbsp; aktivační událost
 ---|---|---
 **Chybějící hodnoty funkcí imputace** |Předaný <br><br><br> Hotovo| Ve školicích datech se nezjistily žádné chybějící hodnoty funkcí. Přečtěte si další informace o [imputaci chybějících hodnot.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ve školicích datech se zjistily chybějící hodnoty funkcí a byly imputované.
-**Zpracování funkcí vysoké mohutnosti** |Předaný <br><br><br> Hotovo| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. Přečtěte si další informace o [detekci funkcí s vysokou mohutnosti](#automatic-featurization). <br><br> Ve vašich vstupech se zjistily funkce vysoké mohutnosti a zpracovaly se.
+**Zpracování funkcí vysoké mohutnosti** |Předaný <br><br><br> Hotovo| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. <br><br> Ve vašich vstupech se zjistily funkce vysoké mohutnosti a zpracovaly se.
 **Zpracování děleného ověřování** |Hotovo| Konfigurace ověření byla nastavena na `'auto'` a školicí data obsahovala *méně než 20 000 řádků*. <br> Každá iterace proučeného modelu byla ověřena pomocí křížového ověření. Přečtěte si další informace o [ověřovacích datech](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data). <br><br> Konfigurace ověření byla nastavena na hodnotu `'auto'` a školicí data obsahují *více než 20 000 řádků*. <br> Vstupní data byla rozdělena na školicí datovou sadu a datovou sadu ověřování pro ověřování modelu.
 **Detekce vyrovnávání tříd** |Předaný <br><br><br><br><br> Upozorněni | Vaše vstupy byly analyzovány a všechny třídy jsou ve vašich školicích datech vyváženy. Datová sada je považována za vyrovnanou, pokud každá třída má dobrou reprezentaci v datové sadě, jak je měřeno počtem a poměr vzorků. <br><br><br> Ve vašich vstupech se zjistily nevyvážené třídy. Pokud chcete opravit posun modelu, vyřešte problém s vyrovnáváním. Přečtěte si další informace o [vyrovnaných datech](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data).
 **Detekce problémů paměti** |Předaný <br><br><br><br> Hotovo |<br> Vybrané hodnoty (horizont, lag, posuvné okno) byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. Přečtěte si další informace o [konfiguracích prognózování](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)časových řad. <br><br><br>Vybrané hodnoty (horizont, lag, posuvné okno) byly analyzovány a mohou způsobit nedostatek paměti experimentu. Konfigurace zpoždění nebo posuvných oken byla vypnuta.

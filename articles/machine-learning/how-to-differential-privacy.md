@@ -1,5 +1,5 @@
 ---
-title: Jak zachovat ochranu dat pomocí balíčků WhiteNoise
+title: Jak zachovat ochranu dat pomocí balíčků WhiteNoise (Preview)
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak pomocí balíčků WhiteNoise použít pro Azure Machine Learning modelů rozdílové Doporučené postupy ochrany osobních údajů.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 05/17/2020
-ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 0ef20eee7e73c3a73a2f2e895242d7c1fce307c9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981842"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206351"
 ---
-# <a name="use-differential-privacy-in-azure-machine-learning"></a>Použití rozdílových osobních údajů v Azure Machine Learning
+# <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Použití rozdílového soukromí v Azure Machine Learning (Preview)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -30,7 +30,7 @@ Rozdílová ochrana osobních údajů je zlatá standardní definice ochrany oso
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+- Pokud předplatné Azure ještě nemáte, napřed si vytvořte bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-whitenoise-packages"></a>Nainstalovat balíčky WhiteNoise

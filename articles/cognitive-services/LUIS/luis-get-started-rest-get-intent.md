@@ -3,20 +3,20 @@ title: 'Rychlý Start: získání záměru pomocí rozhraní REST API – LUIS'
 titleSuffix: Azure Cognitive Services
 description: V tomto REST API rychlého startu pomocí dostupné veřejné aplikace LUIS určete záměr uživatele z konverzačního textu.
 services: cognitive-services
-author: roy-har
+author: nitinme
 manager: diberry
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
-ms.author: v-royha
-ms.openlocfilehash: 8248d441add1af39ab9d2d08a6dba85055f254b6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: nitinme
+ms.openlocfilehash: 714d76641dd22f566b2464e3470f6a3324f4d758
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119579"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207171"
 ---
 # <a name="quickstart-use-curl-and-rest-to-get-intent"></a>Rychlý Start: použití oblé a REST k získání záměru
 
@@ -81,7 +81,7 @@ Použijte kudrlinkou k dotazování [koncového bodu předpovědi](https://aka.m
 
     |Informace|Účel|
     |--|--|
-    |`***YOUR-PREDICTION-ENDPOINT***`| Koncový bod adresy URL předpovědi Nachází se na portálu LUIS, stránce prostředků Azure pro vaši aplikaci.<br>Například, `https://westus.api.cognitive.microsoft.com/`.|
+    |`***YOUR-PREDICTION-ENDPOINT***`| Koncový bod adresy URL předpovědi Nachází se na portálu LUIS, stránce prostředků Azure pro vaši aplikaci.<br>Například `https://westus.api.cognitive.microsoft.com/`.|
     |`***YOUR-APP-ID***`|Vaše ID aplikace Nachází se na portálu LUIS, na stránce nastavení aplikace pro vaši aplikaci.
     |`***YOUR-PREDICTION-KEY***`|Klíč předpovědi znaků 32. Nachází se na portálu LUIS, stránce prostředků Azure pro vaši aplikaci.
 

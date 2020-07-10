@@ -81,6 +81,10 @@
               href: samples/resource-manager-alerts-metric.md
             - name: Skupiny akcí
               href: samples/resource-manager-action-groups.md
+        - name: Application Insights
+          items:
+            - name: Vytvoření prostředku
+              href: samples/resource-manager-app-resource.md
         - name: Nastavení diagnostiky
           href: samples/resource-manager-diagnostic-settings.md
         - name: Pracovní prostory služby Log Analytics

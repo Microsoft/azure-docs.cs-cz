@@ -1,15 +1,15 @@
 ---
-title: Pokročilé použití AuthN/AuthO
+title: Rozšířené použití AuthN/AuthZ
 description: Naučte se přizpůsobit funkci ověřování a autorizace v App Service pro různé scénáře a získat deklarace identity uživatelů a různé tokeny.
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6efa5461fab9faf3ce1599a01540cf314b34281b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b217bb1052a16ded205ac216878945fb960d32d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205641"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205586"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené použití ověřování a autorizace v Azure App Service
 
@@ -24,6 +24,7 @@ Pokud chcete rychle začít, přečtěte si jedno z následujících kurzů:
 * [Konfigurace aplikace pro použití přihlášení ke Googlu](configure-authentication-provider-google.md)
 * [Konfigurace aplikace pro použití přihlášení k účtu Microsoft](configure-authentication-provider-microsoft.md)
 * [Konfigurace aplikace pro použití přihlášení k Twitteru](configure-authentication-provider-twitter.md)
+* [Jak nakonfigurovat aplikaci pro přihlášení pomocí poskytovatele OpenID Connect (Preview)](configure-authentication-provider-openid-connect.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Použití více poskytovatelů přihlašování
 
@@ -33,7 +34,7 @@ Nejprve na stránce **ověřování/autorizace** v Azure Portal nakonfigurujte k
 
 V **akci, která se má provést, když se žádost neověřuje**, vyberte možnost **povoluje anonymní žádosti (bez akce)**.
 
-Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Příklad:
+Na přihlašovací stránce nebo v navigačním panelu nebo jakémkoli jiném umístění aplikace přidejte odkaz pro přihlášení ke každému poskytovateli, který jste povolili ( `/.auth/login/<provider>` ). Zde je příklad:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -55,7 +56,7 @@ Pokud chcete přesměrovat uživatele po přihlášení na vlastní adresu URL, 
 
 V přihlašování klienta se aplikace přihlásí k poskytovateli ručně a poté odešle ověřovací token k App Service k ověření (viz [tok ověřování](overview-authentication-authorization.md#authentication-flow)). Toto ověření sama o sobě neuděluje přístup k požadovaným prostředkům aplikace, ale úspěšné ověření vám poskytne token relace, který můžete použít pro přístup k prostředkům aplikace. 
 
-Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Příklad: 
+Pokud chcete ověřit token poskytovatele, App Service aplikace musí být nejdřív nakonfigurované s požadovaným poskytovatelem. Po načtení tokenu ověřování od poskytovatele za běhu vystavte token `/.auth/login/<provider>` pro ověření. Zde je příklad: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -86,7 +87,7 @@ V případě úspěšného ověření tokenu poskytovatele vrátí rozhraní API
 }
 ```
 
-Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Příklad: 
+Po vytvoření tohoto tokenu relace můžete získat přístup k prostředkům chráněných aplikací přidáním `X-ZUMO-AUTH` hlavičky do požadavků HTTP. Zde je příklad: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -107,7 +108,7 @@ Tady je jednoduchý odkaz na odhlášení z webové stránky:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Příklad:
+Ve výchozím nastavení se při úspěšném odhlášení přesměruje klient na adresu URL `/.auth/logout/done` . Stránku přesměrování po odhlášení můžete změnit přidáním `post_logout_redirect_uri` parametru dotazu. Zde je příklad:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -269,7 +270,7 @@ V případě jakékoli aplikace pro Windows můžete definovat chování webové
 
 ### <a name="identity-provider-level"></a>Úroveň poskytovatele identity
 
-Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Příklad:
+Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. Zde je příklad:
 
 - Pro [Azure App Service](configure-authentication-provider-aad.md)můžete [spravovat přístup na podnikové úrovni](../active-directory/manage-apps/what-is-access-management.md) přímo ve službě Azure AD. Pokyny najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - Pro [Google](configure-authentication-provider-google.md)jsou projekty Google API, které patří do [organizace](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) , možné nakonfigurovat tak, aby povolovaly přístup jenom uživatelům ve vaší organizaci (viz [Stránka podpory **OAuth 2,0 s nastavením** Google](https://support.google.com/cloud/answer/6158849?hl=en)).
@@ -277,6 +278,195 @@ Poskytovatel identity může poskytovat určitou autorizaci autorizace klíče. 
 ### <a name="application-level"></a>Úroveň aplikace
 
 Pokud žádná z ostatních úrovní neposkytne autorizaci, kterou potřebujete, nebo pokud vaše platforma nebo zprostředkovatel identity není podporována, musíte napsat vlastní kód, který autorizuje uživatele na základě [deklarací identity uživatele](#access-user-claims).
+
+## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>Konfigurace pomocí souboru (Preview)
+
+Nastavení ověřování lze volitelně nakonfigurovat prostřednictvím souboru, který je poskytován vaším nasazením. To může být vyžadováno některými možnostmi verze Preview App Service ověřování/autorizace.
+
+> [!IMPORTANT]
+> Mějte na paměti, že datová část aplikace, a proto se tento soubor může přesouvat mezi prostředími jako s [sloty](./deploy-staging-slots.md). Je možné, že budete chtít, aby se k jednotlivým slotům připnula jiná registrace aplikace, a v těchto případech byste místo použití konfiguračního souboru měli nadále používat standardní metodu konfigurace.
+
+### <a name="enabling-file-based-configuration"></a>Povolení konfigurace na základě souborů
+
+> [!CAUTION]
+> Během období Preview se povolením konfigurace na základě souborů zakáže Správa App Service funkce ověřování/autorizace pro vaši aplikaci prostřednictvím některých klientů, jako je například Azure Portal, Azure CLI a Azure PowerShell.
+
+1. Vytvořte nový soubor JSON pro vaši konfiguraci v kořenovém adresáři projektu (nasazený do D:\home\site\wwwroot ve vaší webové nebo funkční aplikaci). Vyplňte požadovanou konfiguraci podle [odkazu na konfiguraci na základě souborů](#configuration-file-reference). Pokud upravujete existující konfiguraci Azure Resource Manager, nezapomeňte přeložit vlastnosti zachycené v `authsettings` kolekci do konfiguračního souboru.
+
+2. Upravte existující konfiguraci, která je zachycena v rozhraních API [Azure Resource Manager](../azure-resource-manager/management/overview.md) v části `Microsoft.Web/sites/<siteName>/config/authsettings` . Pokud to chcete změnit, můžete použít [šablonu Azure Resource Manager](../azure-resource-manager/templates/overview.md) nebo nástroj jako [Azure Resource Explorer](https://resources.azure.com/). V rámci kolekce authsettings budete muset nastavit tři vlastnosti (a můžou jiné odebrat):
+
+    1.  Nastavit `enabled` na hodnotu "true"
+    2.  Nastavit `isAuthFromFile` na hodnotu "true"
+    3.  Nastavte `authFilePath` na název souboru (například "auth.json").
+
+Po provedení této aktualizace konfigurace bude obsah souboru použit k definování chování App Service ověřování/autorizace pro danou lokalitu. Pokud se někdy chcete vrátit ke konfiguraci Azure Resource Manager, můžete to udělat tak, že nastavíte `isAuthFromFile` zpět na false (NEPRAVDA).
+
+### <a name="configuration-file-reference"></a>Odkaz na konfigurační soubor
+
+Všechny tajné kódy, které budou odkazovány z konfiguračního souboru, musí být uloženy jako [nastavení aplikace](./configure-common.md#configure-app-settings). Nastavení můžete pojmenovat cokoli, co si přejete. Stačí se ujistit, že odkazy z konfiguračního souboru používají stejné klíče.
+
+Následující vyčerpání možných možností konfigurace v souboru:
+
+```json
+{
+    "platform": {
+        "enabled": <true|false>
+    },
+    "globalValidation": {
+        "requireAuthentication": <true|false>,
+        "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
+        "redirectToProvider": "<default provider alias>",
+        "excludedPaths": [
+            "/path1",
+            "/path2"
+        ]
+    },
+    "identityProviders": {
+        "azureActiveDirectory": {
+            "enabled": <true|false>,
+            "registration": {
+                "openIdIssuer": "<issuer url>",
+                "clientId": "<app id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_AAD_SECRET",
+            },
+            "login": {
+                "loginParameters": [
+                    "paramName1=value1",
+                    "paramName2=value2"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "facebook": {
+            "enabled": <true|false>,
+            "registration": {
+                "appId": "<app id>",
+                "appSecretSettingName": "APP_SETTING_CONTAINING_FACEBOOK_SECRET"
+            },
+            "graphApiVersion": "v3.3",
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+        },
+        "gitHub": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GITHUB_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
+        "google": {
+            "enabled": true,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GOOGLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "twitter": {
+            "enabled": <true|false>,
+            "registration": {
+                "consumerKey": "<consumer key>",
+                "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
+            }
+        },
+        "openIdConnectProviders": {
+            "provider name": {
+                "enabled": <true|false>,
+                "registration": {
+                    "clientId": "<client id>",
+                    "clientCredential": {
+                        "secretSettingName": "<name of app setting containing client secret>"
+                    },
+                    "openIdConnectConfiguration": {
+                        "authorizationEndpoint": "<url specifying authorization endpoint>",
+                        "tokenEndpoint": "<url specifying token endpoint>",
+                        "issuer": "<url specifying issuer>",
+                        "certificationUri": "<url specifying jwks endpoint>",
+                        "wellKnownOpenIdConfiguration": "<url specifying .well-known/open-id-configuration endpoint - if this property is set, the other properties of this object are ignored, and authorizationEndpoint, tokenEndpoint, issuer, and certificationUri are set to the corresponding values listed at this endpoint>"
+                    }
+                },
+                "login": {
+                    "nameClaimType": "<name of claim containing name>",
+                    "loginScopes": [
+                        "profile",
+                        "email"
+                    ],
+                    "loginParameterNames": [
+                        "paramName1=value1",
+                        "paramName2=value2"
+                    ],
+                }
+            },
+            //...
+        },
+        "login": {
+            "routes": {
+                "logoutEndpoint": "<logout endpoint>"
+            },
+            "tokenStore": {
+                "enabled": <true|false>,
+                "tokenRefreshExtensionHours": "<double>",
+                "fileSystem": {
+                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
+                },
+                "azureBlobStorage": {
+                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+                }
+            },
+            "preserveUrlFragmentsForLogins": <true|false>,
+            "allowedExternalRedirectUrls": [
+                "https://uri1.azurewebsites.net/",
+                "https://uri2.azurewebsites.net/"
+            ],
+            "cookieExpiration": {
+                "convention": "FixedTime|IdentityProviderDerived",
+                "timeToExpiration": "<timespan>"
+            },
+            "nonce": {
+                "validateNonce": <true|false>,
+                "nonceExpirationInterval": "<timespan>"
+            }
+        },
+        "httpSettings": {
+            "requireHttps": <true|false>,
+            "routes": {
+                "apiPrefix": "<api prefix>"
+            },
+            "forwardProxy": {
+                "convention": "NoProxy|Standard|Custom",
+                "customHostHeaderName": "<host header value>",
+                "customProtoHeaderName": "<proto header value>"
+            }
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 

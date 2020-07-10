@@ -7,16 +7,16 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c66766b39ae104cf4a031c3fd73c173e81d47fb8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b6dc5ba59aa563da6e7c19e6c821f4a9b697832f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563482"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206534"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 s využitím Xamarin
 
-Začínáme s klientskou knihovnou služby Azure Blob Storage V12 s využitím Xamarin. Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Úložiště objektů blob je optimalizované pro ukládání velkých objemů nestrukturovaných dat.
+Začínáme s klientskou knihovnou služby Azure Blob Storage V12 s využitím Xamarin. Azure Blob Storage je řešení úložiště objektů pro cloud od Microsoftu. Postupujte podle kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy. Služba Blob Storage je optimalizovaná pro ukládání velkých objemů nestrukturovaných dat.
 
 Použijte klientskou knihovnu služby Azure Blob Storage V12 s Xamarin na:
 
@@ -26,7 +26,12 @@ Použijte klientskou knihovnu služby Azure Blob Storage V12 s Xamarin na:
 * Stažení objektu blob do zařízení
 * Odstranění kontejneru
 
-[Referenční dokumentace k](/dotnet/api/azure.storage.blobs)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Ukázka](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+Odkazy odkazů:
+
+* [Referenční dokumentace k rozhraní API](/dotnet/api/azure.storage.blobs)
+* [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+* [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+* [Ukázka](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

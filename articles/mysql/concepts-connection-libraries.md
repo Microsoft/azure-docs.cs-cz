@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5f83f937b8d9ec50ec7dc6ec781bff1f435eb45a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5520072ba16b117c33c2ad172030807e51c7cf7a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537189"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203891"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Knihovny připojení pro Azure Database for MySQL
 V tomto článku jsou uvedeny všechny knihovny nebo ovladače, které mohou klientské programy použít při připojování k Azure Database for MySQL.
@@ -35,5 +35,11 @@ MySQL nabízí standardní připojení ovladače databáze pro použití MySQL s
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si tyto rychlé starty, jak se připojit k a dotazovat Azure Database for MySQL pomocí vašeho jazyka podle vlastního výběru:
 
-[Php](./connect-php.md)  |  [Jazyk Java](./connect-java.md)  |   [.NET (C#)](./connect-csharp.md)  |  [Python](./connect-python.md)  |  [Node.JS](./connect-nodejs.md)  |  [Ruby](./connect-ruby.md)  |  [Jazyk C++](connect-cpp.md)  |  [Přejít](./connect-go.md)
-
+- [PHP](./connect-php.md)
+- [Java](./connect-java.md)
+- [.NET (C#)](./connect-csharp.md)
+- [Python](./connect-python.md)
+- [Node.JS](./connect-nodejs.md)
+- [Ruby](./connect-ruby.md)
+- [C++](connect-cpp.md)
+- [Přejít](./connect-go.md)

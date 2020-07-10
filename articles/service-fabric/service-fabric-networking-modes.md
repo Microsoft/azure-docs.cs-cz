@@ -5,11 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: ba1fa92559d39a481008d1dd18036e4232be1bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feeef1773ffe68f3ff88175b413cd40ba618b8d9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639798"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207224"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric síťové režimy kontejneru
 
@@ -190,15 +191,14 @@ Když se služba kontejneru restartuje nebo přesune na jiný uzel v clusteru, I
  
 3. V případě clusterů Windows nastavte pravidlo skupiny zabezpečení sítě Azure (NSG), které otevírá port UDP/53 pro virtuální síť s následujícími hodnotami:
 
-   |Nastavení |Hodnota | |
-   | --- | --- | --- |
-   |Priorita |2000 | |
-   |Name |Custom_Dns  | |
-   |Zdroj |VirtualNetwork | |
-   |Cíl | VirtualNetwork | |
-   |Služba | DNS (UDP/53) | |
-   |Akce | Povolit  | |
-   | | |
+   |Nastavení |Hodnota |
+   | --- | --- |
+   |Priorita |2000 |
+   |Název |Custom_Dns  |
+   |Zdroj |VirtualNetwork |
+   |Cíl | VirtualNetwork |
+   |Služba | DNS (UDP/53) |
+   |Akce | Povolit  |
 
 4. Zadejte režim sítě v manifestu aplikace pro každou službu: `<NetworkConfig NetworkType="Open">` . V případě **otevřeného** síťového režimu dojde k získání vyhrazené IP adresy ve službě. Pokud není zadán režim, služba je výchozím režimem **překladu adres (NAT)** . V následujícím příkladu manifestu `NodeContainerServicePackage1` `NodeContainerServicePackage2` můžou služby a naslouchat na stejném portu (obě služby naslouchá na `Endpoint1` ). Je-li zadán režim otevření sítě, `PortBinding` nelze zadat konfigurace.
 

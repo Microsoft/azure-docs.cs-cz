@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 85d347c45e1ca2cd39c7504e44bd3ea063f788d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013433d60b9f3e7f251f8d80d7b9b8f24b2395b3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708413"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206194"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled omezení prostředků spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,11 +33,11 @@ SQL Managed instance má charakteristiky a omezení prostředků, které závis�
 
 |   | **COMPUTE GEN4 –** | **Gen5** |
 | --- | --- | --- |
-| Hardware | Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD vCore = 1 PP (fyzický jádro) | Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake), Fast NVMe SSD, vCore = 1 LP (Hyper-thread) |
-| Počet virtuálních jader | 8, 16, 24 virtuální jádra | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
-| Maximální velikost paměti (poměr paměti/jádra) | 7 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. | 5,1 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
-| Maximální paměť OLTP v paměti | Limit instance: 1 – 1,5 GB na vCore| Limit instance: 0,8 – 1,65 GB na vCore |
-| Maximální rezervované úložiště instancí |  Pro obecné účely: 8 TB<br/>Pro důležité obchodní informace: 1 TB | Pro obecné účely: 8 TB<br/> V závislosti na počtu jader Pro důležité obchodní informace 1 TB, 2 TB nebo 4 TB. |
+| **Hardware** | Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz, připojené SSD vCore = 1 PP (fyzický jádro) | Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake), Fast NVMe SSD, vCore = 1 LP (Hyper-thread) |
+| **Počet virtuálních jader** | 8, 16, 24 virtuální jádra | 4, 8, 16, 24, 32, 40, 64, 80 virtuální jádra |
+| **Maximální velikost paměti (poměr paměti/jádra)** | 7 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. | 5,1 GB na vCore<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
+| **Maximální paměť OLTP v paměti** | Limit instance: 1 – 1,5 GB na vCore| Limit instance: 0,8 – 1,65 GB na vCore |
+| **Maximální rezervované úložiště instancí** |  Pro obecné účely: 8 TB<br/>Pro důležité obchodní informace: 1 TB | Pro obecné účely: 8 TB<br/> V závislosti na počtu jader Pro důležité obchodní informace 1 TB, 2 TB nebo 4 TB. |
 
 > [!IMPORTANT]
 > - COMPUTE GEN4 – hardware je vyladěný a již není pro nová nasazení k dispozici. Všechny nové instance spravované instance SQL musí být nasazené na Gen5 hardwaru.
@@ -80,7 +80,7 @@ Služba SQL Managed instance má dvě úrovně služeb: [pro obecné účely](..
 | Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Maximální 48 MB/s |
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[Zvětšením velikosti souboru získáte lepší vstupně-výstupní operace.](#file-io-characteristics-in-general-purpose-tier) | Neomezeno. |
 | Latence v/v úložiště (přibližná) | 5-10 MS | 1-2 MS |
-| OLTP v paměti | Nepodporuje se | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
+| OLTP v paměti | Nepodporováno | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
 | Maximální počet souběžných pracovních procesů (požadavků) | COMPUTE GEN4 –: 210 * počet virtuální jádra + 800<br>Gen5:105 * počet virtuální jádra + 800 | COMPUTE GEN4 –: 210 * vCore počet + 800<br>Gen5:105 * vCore počet + 800 |
 | [Repliky jen pro čtení](../database/read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |

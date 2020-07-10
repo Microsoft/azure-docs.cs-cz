@@ -11,15 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 06/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661339545f2c3f01ffd2e07b0fad08de8ac90278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078882"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204008"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Vytvoření kontroly přístupu skupin a aplikací v prohlídekch Azure AD Access
 
@@ -105,7 +106,7 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
 
 1. Chcete-li zadat další nastavení, rozbalte oddíl **Upřesnit nastavení** .
 
-    ![Vytvoření kontroly přístupu – Pokročilá nastavení](./media/create-access-review/advanced-settings.png)
+    ![Vytvoření kontroly přístupu – Pokročilá nastavení](./media/create-access-review/advanced-settings-preview.png)
 
 1. Nastavením **Zobrazit doporučení** **umožníte, aby se** recenzenti zobrazovala doporučení k systému na základě informací o přístupu uživatele.
 
@@ -113,9 +114,14 @@ Další informace najdete v tématu [licenční požadavky](access-reviews-overv
 
 1. Nastavte e- **mailová oznámení** , která **umožní** , aby služba Azure AD odesílala e-mailová oznámení kontrolorům při zahájení kontroly přístupu a správcům, když se kontrola dokončí.
 
-1. Nastavením **připomenutí** **umožníte** , aby služba Azure AD odesílala připomenutí kontrol přístupu, která nedokončila jejich kontrolu.
+1. Nastavením **připomenutí** **umožníte** , aby služba Azure AD odesílala připomenutí kontrol přístupu, která nedokončila jejich kontrolu. 
 
-    Ve výchozím nastavení Azure AD automaticky pošle připomenutí revidujícím, kteří ještě neodpověděli, po uplynutí poloviny času.
+    >[!NOTE]
+    > Ve výchozím nastavení Azure AD automaticky pošle připomenutí kontrolorům, kteří ještě neodpověděli, do koncového data.
+
+1. Tisk Obsah e-mailu odeslaného revidujícím se automaticky generuje na základě podrobností o kontrole, jako je například název revize, název prostředku, datum splatnosti atd. Pokud potřebujete způsob, jak sdělit další informace, jako jsou například další pokyny nebo kontaktní údaje, můžete tyto podrobnosti zadat v dalším obsahu pro e-mail kontrolora, který bude zahrnut v e-mailech pozvánky a připomenutí odeslaných přiřazeným kontrolorům. Zvýrazněná část je místo, kde se tyto informace zobrazí.
+
+    ![Kontrola přístupu uživatelů ke skupině](./media/create-access-review/review-users-access-group.png)
 
 ## <a name="start-the-access-review"></a>Spustit kontrolu přístupu
 

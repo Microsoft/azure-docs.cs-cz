@@ -1,5 +1,5 @@
 ---
-title: Posouzení a zmírnění problémů s spravedlivou v modelech strojového učení
+title: Posouzení a zmírnění problémů s spravedlivými chybami v modelech strojového učení (Preview)
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o nespravedlivosti v modelech strojového učení a o tom, jak může balíček Pythonu Fairlearn pomáhat při vytváření spravedlivých modelů.
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: c4e9b8386c8341d076a69e2e81b5e92f296153ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611777"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207291"
 ---
-# <a name="build-fairer-machine-learning-models"></a>Sestavování dopředných modelů strojového učení
+# <a name="build-fairer-machine-learning-models-preview"></a>Sestavování modelem strojového učení pro sestavování (Preview)
 
 Přečtěte si o nerovnosti ve strojovém učení a o tom, jak [Fairlearn](https://fairlearn.github.io/) Open Source balíček python vám může pomáhat při sestavování modelů, které jsou příznivější. Pokud se vám nesnažíte pochopit problémy s rovností a hodnotit spravedlivost při sestavování modelů strojového učení, můžete vytvářet modely, které vytvářejí nerovné výsledky. 
 
@@ -99,7 +99,7 @@ Fairlearn Open Source balíček poskytuje postprocessing a redukční algoritmy 
 - Snížení: tyto algoritmy přijímají standardní černý krabicový Estimator strojového učení (např. model LightGBM) a generují sadu předaných modelů pomocí sekvence převážených datových sad. Například uchazeči určitého pohlaví můžou být vážené nebo nižší, aby mohli předávat modely a snižovat rozdíly mezi různými skupinami pohlaví. Uživatelé pak mohou vybrat model, který poskytuje nejlepší kompromis mezi přesností (nebo jinou metrikou výkonu) a neparitou, což obecně musí být založeno na obchodních pravidlech a výpočtech nákladů.  
 - Následné zpracování: tyto algoritmy přebírají existující klasifikátor a citlivou funkci jako vstup. Pak odvozují transformaci předpovědi klasifikátoru, aby vynutila zadaná omezení rovnosti. Největší výhodou optimalizace prahové hodnoty je jednoduchost a flexibilita, protože není potřeba přeškolit model. 
 
-| Algoritmus | Description | Úloha strojového učení | Citlivé funkce | Podporovaná omezení parity | Typ algoritmu |
+| Algoritmus | Popis | Úloha strojového učení | Citlivé funkce | Podporovaná omezení parity | Typ algoritmu |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | Přístup k černému poli, který je popsaný v [rámci snížení úrovně přístupu k korektní klasifikaci](https://arxiv.org/abs/1803.02453) | Binární klasifikace | Kategorické | [Demografická parita](#parity-constraints), [rovná se lichá](#parity-constraints) | Roztříštěn |
 | `GridSearch` | Přístup k černému poli, který je popsaný v tématu [snižování přístupu k korektní klasifikaci](https://arxiv.org/abs/1803.02453)| Binární klasifikace | Binární | [Demografická parita](#parity-constraints), [rovná se lichá](#parity-constraints) | Roztříštěn |

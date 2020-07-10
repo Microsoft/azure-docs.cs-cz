@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 1f8dc5ef89c70cebce1d59fc389300b30dc828f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edc2198cff360b6f0d2f6ace3b76d35bf77fab97
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887610"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206698"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Optimalizace streamování médií pomocí Azure CDN 
  
@@ -82,12 +82,11 @@ Po vytvoření koncového bodu se použije optimalizace pro všechny soubory, kt
 Pokud **Azure CDN Standard z Akamai** zjistí, že Asset je manifest nebo fragment streamování, používá jiné časy vypršení platnosti pro ukládání do mezipaměti z obecného doručování webu. (Podívejte se na úplný seznam v následující tabulce.) Jako vždy jsou dodrženy hlavičky pro řízení mezipaměti nebo vypršení platnosti odeslané počátkem. Pokud se nejedná o mediální prostředek, uloží se do mezipaměti pomocí doby vypršení platnosti pro obecné doručování webu.
 
 Krátký negativní čas ukládání do mezipaměti je vhodný pro snižování zátěže, když mnoho uživatelů vyžádá fragment, který ještě neexistuje. Příkladem je živý datový proud, ve kterém nejsou pakety k dispozici od počátku druhého. Delší interval mezipaměti také pomáhá přesměrovat požadavky od počátku, protože obsah videa se obvykle nemění.
- 
 
-|   | Obecné doručování webu | Obecné streamování médií | Streamování médií videa na vyžádání  
---- | --- | --- | ---
-Ukládání do mezipaměti: kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |365 dní | 365 dní   
-Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádná | 1 sekunda | 1 sekunda
+| Ukládání do mezipaměti  | Obecné doručování webu | Obecné streamování médií | Streamování médií videa na vyžádání  
+|--- | --- | --- | ---
+| Ukládání do mezipaměti: kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |365 dní | 365 dní   
+| Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádná | 1 sekunda | 1 sekunda
  
 ### <a name="deal-with-origin-failure"></a>Zabývat se selháním původu  
 

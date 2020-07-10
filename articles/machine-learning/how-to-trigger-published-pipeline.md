@@ -3,19 +3,20 @@ title: Aktivovat kanál ML pro nová data
 titleSuffix: Azure Machine Learning
 description: Naučte se aktivovat spuštění kanálu ML pomocí Azure Logic Apps.
 services: machine-learning
-author: sanpil
-ms.author: sanpil
+author: NilsPohlmann
+ms.author: nilsp
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 02/07/2020
 ms.custom: contperfq4
-ms.openlocfilehash: b56b07bce558a65df79a23eaf1948aac8e4fabad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d6222b4ea0e30997b3b55adb887c839fef6e624
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433763"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207418"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Aktivovat spuštění kanálu Machine Learning z aplikace logiky
 

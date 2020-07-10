@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864362"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204170"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Pracovní postupy ExpressRoute pro zřizování a stavy okruhů
 Tato stránka vás provede pracovními postupy pro zřizování a konfiguraci směrování na vysoké úrovni.
@@ -54,33 +55,37 @@ V této části najdete seznam možných stavů okruhu ExpressRoute.
 
 Okruh ExpressRoute bude při vytváření prostředku hlásit následující stavy.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 **Když poskytovatel připojení zaznamená proces zřizování okruhu**
 
 Okruh ExpressRoute oznámí následující stavy, zatímco poskytovatel připojení pracuje na zřízení okruhu.
 
-    ServiceProviderProvisioningState : Provisioning
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioning
+Status                           : Enabled
+```
 
 **Když poskytovatel připojení dokončí proces zajišťování**
 
 Po úspěšném zřízení okruhu poskytovatel připojení oznámí následující stavy ExpressRoute.
 
-    ServiceProviderProvisioningState : Provisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioned
+Status                           : Enabled
+```
 
 **Když poskytovatel připojení ruší zřízení okruhu**
 
 Pokud je potřeba zrušit zřízení okruhu ExpressRoute, okruh oznámí následující stavy, jakmile poskytovatel služby dokončí proces zrušení zřízení.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 V případě potřeby ho můžete v případě potřeby znovu povolit, nebo můžete k odstranění okruhu použít rutiny PowerShellu.  
 

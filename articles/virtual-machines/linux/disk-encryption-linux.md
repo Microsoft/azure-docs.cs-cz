@@ -1,5 +1,5 @@
 ---
-title: Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem
+title: Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 description: Tento článek poskytuje pokyny k povolení Microsoft Azureho šifrování disku pro virtuální počítače se systémem Linux v různých scénářích.
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601377"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206151"
 ---
-# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem
+# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux
 
 
 Azure Disk Encryption pro virtuální počítače se systémem Linux používá funkce DM-crypt systému Linux k poskytnutí úplného šifrování disku disku s operačním systémem a datových disků. Kromě toho poskytuje šifrování dočasného disku při použití funkce EncryptFormatAll.
@@ -203,7 +203,7 @@ Následující tabulka uvádí Správce prostředků parametry šablony pro exis
 |  keyEncryptionKeyURL | Adresa URL klíčového šifrovacího klíče, který se používá k šifrování šifrovacího klíče. Tento parametr je nepovinný, pokud v rozevíracím seznamu UseExistingKek vyberete **nokek** . Pokud v rozevíracím seznamu UseExistingKek vyberete možnost **KEK** , musíte zadat hodnotu _keyEncryptionKeyURL_ . |
 | volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_a _vše_. 
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
-| location | Umístění pro všechny prostředky. |
+| location | Umístění pro všechny prostředky |
 
 Další informace o tom, jak nakonfigurovat šablonu pro šifrování disků virtuálního počítače Linux, najdete v tématu [Azure Disk Encryption pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/azure-disk-enc-linux).
 
@@ -413,6 +413,8 @@ Azure Disk Encryption nefunguje pro následující scénáře, funkce a technolo
 - Virtuální počítač s "vnořenými přípojnými body"; To znamená, že několik přípojných bodů v jedné cestě (například "/1stmountpoint/data/2stmountpoint").
 - Virtuální počítač s datovou jednotkou připojenou nad složku operačního systému.
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
+- Použití [šifrování na straně serveru u klíčů spravovaných zákazníkem](disk-encryption.md) na virtuální počítače zašifrované přes ADE a naopak.
+- Migrace virtuálního počítače zašifrovaného přes ADE na [serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,11 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: ed8a46683d79211559b4af7972c6d1bb784e1f02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ef7614b32dd88e804b1a74749ee87504f9cea40
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434171"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205457"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -87,65 +88,43 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 
 ### <a name="error"></a>Chyba
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Globální chyba Tomcat (zastaralé)<br><br>(bude odebráno po 1. červenci 2020)  | Tomcat. Global. Error | Počet | Počet chyb, ke kterým došlo ve zpracovaných žádostech |
 >| Tomcat. Global. Error | Tomcat. Global. Error | Počet | Počet chyb, ke kterým došlo ve zpracovaných žádostech |
 
 ### <a name="performance"></a>Výkon
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Procento využití procesoru v systému (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | System. CPU. Usage | Procento | Poslední využití procesoru pro celý systém. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že všechny procesory byly během neaktivního časového období nečinné, zatímco hodnota 1,0 znamená, že všechny procesory aktivně 100 běžely v nedávných obdobích během nedodržení% času.|
 >| System. CPU. Usage | System. CPU. Usage | Procento | Poslední využití procesoru pro celý systém. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že všechny procesory byly během neaktivního časového období nečinné, zatímco hodnota 1,0 znamená, že všechny procesory aktivně 100 běžely v nedávných obdobích během nedodržení% času.|
->| Procento využití procesoru aplikací (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Procento využití procesoru aplikací | Procento | Poslední využití procesoru pro proces prostředí Java Virtual Machine. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
 >| Process. CPU. Usage | Procento využití procesoru aplikací | Procento | Poslední využití procesoru pro proces prostředí Java Virtual Machine. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
->| Přiřazená paměť aplikace (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | JVM. Memory. potvrzený | Bajty | Představuje velikost paměti, která je zaručena k dispozici pro použití v JVM. JVM může uvolnit paměť do systému a potvrzená paměť může být menší než počáteční paměť. Potvrzená paměť bude vždycky větší nebo rovna využité paměti. |
 >| JVM. Memory. potvrzený | JVM. Memory. potvrzený | Bajty | Představuje velikost paměti, která je zaručena k dispozici pro použití v JVM. JVM může uvolnit paměť do systému a potvrzení může být menší než init. potvrzená bude vždycky větší nebo rovna hodnotě použité. |
->| Využitá paměť aplikace (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | JVM. Memory .Ed – použito | Bajty | Představuje velikost aktuálně využité paměti v bajtech. |
 >| JVM. Memory .Ed – použito | JVM. Memory .Ed – použito | Bajty | Představuje velikost aktuálně využité paměti v bajtech. |
->| Maximální velikost paměti aplikace (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | JVM. Memory. max | Bajty | Představuje maximální velikost paměti, kterou lze použít pro správu paměti. Velikost využité a potvrzené paměti bude vždy menší než nebo rovna hodnotě Max, pokud je definována hodnota max. Přidělení paměti může selhat, pokud se pokusí zvětšit využitou paměť tak, aby se použila > potvrzená i v případě, že použitá <= Max by byla pravdivá (například když je systém ve virtuální paměti nedostatek). |
 >| JVM. Memory. max | JVM. Memory. max | Bajty | Představuje maximální velikost paměti, kterou lze použít pro správu paměti. Velikost využité a potvrzené paměti bude vždy menší než nebo rovna hodnotě Max, pokud je definována hodnota max. Přidělení paměti může selhat, pokud se pokusí zvětšit využitou paměť tak, aby se použila > potvrzená i v případě, že použitá <= Max by byla pravdivá (například když je systém ve virtuální paměti nedostatek). |
->| Maximální velikost dostupných starých dat generace (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | JVM. GC. max. data. Size | Bajty | Využití paměti ve špičce starého fondu paměti generace od spuštění virtuálního počítače Java. |
 >| JVM. GC. max. data. Size | JVM. GC. max. data. Size | Bajty | Využití paměti ve špičce starého fondu paměti generace od spuštění virtuálního počítače Java. |
->| Stará velikost dat generace (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | JVM. GC. Live. data. Size | Bajty | Velikost staré generace fondu paměti po úplném GC. |
 >| JVM. GC. Live. data. Size | JVM. GC. Live. data. Size | Bajty | Velikost staré generace fondu paměti po úplném GC. |
->| Stará velikost dat generace (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | JVM. GC. Memory. propagovaný | Bajty | Počet kladných zvýšení velikosti staré paměti generace před GC na po GC. |
 >| JVM. GC. Memory. propagovaný | JVM. GC. Memory. propagovaný | Bajty | Počet kladných zvýšení velikosti staré paměti generace před GC na po GC. |
->| Zvýšení úrovně velikosti dat pro mladé generace (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | JVM. GC. Memory. alokovaný | Bajty | Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC do dalšího. |
 >| JVM. GC. Memory. alokovaný | JVM. GC. Memory. alokovaný | Bajty | Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC do dalšího. |
->| Počet pozastavení GC (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
 >| JVM. GC. Pause. Total. Count | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
->| Celkový čas pozastavení GC (zastaralé)<br><br>(bude odebráno po 1. červenci 2020) | JVM. GC. Pause (celkem-Time) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
 >| JVM. GC. Pause. Total. time | JVM. GC. Pause (celkem-Time) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
 
 ### <a name="request"></a>Žádost
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Celkový počet odeslaných bajtů Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
 >| Tomcat. Global. odesláno | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
->| Celkový počet přijatých bajtů Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
 >| Tomcat. Global. Received | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
->| Celkový čas žádosti Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Global. Request (celkem-Time) | Milisekund | Celková doba, jakou Tomcat webový server zpracovává žádosti |
->| Celkový počet žádostí Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
 >| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
->| Maximální čas požadavku Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Global. Request. max | Milisekund | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |
 >| Tomcat. Global. Request. max | Tomcat. Global. Request. max | Milisekund | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |
 
 ### <a name="session"></a>Relace
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Maximální počet aktivních relací Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Sessions. Active. max | Počet | Maximální počet relací, které byly aktivní ve stejnou dobu |
 >| Tomcat. Sessions. Active. max | Tomcat. Sessions. Active. max | Počet | Maximální počet relací, které byly aktivní ve stejnou dobu |
->| Maximální doba připojení relace Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Sessions. Alive. max | Milisekund | Nejdelší čas (v sekundách), po který vypršela relace s ukončenou platností |
 >| Tomcat. Sessions. Alive. max | Tomcat. Sessions. Alive. max | Milisekund | Nejdelší čas (v sekundách), po který vypršela relace s ukončenou platností |
->| Počet vytvořených relací Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Sessions. Created | Počet | Počet relací, které byly vytvořeny |
 >| Tomcat. Sessions. Created | Tomcat. Sessions. Created | Počet | Počet relací, které byly vytvořeny |
->| Počet neplatných relací Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Sessions. vypršela platnost | Počet | Počet relací, jejichž platnost vypršela |
 >| Tomcat. Sessions. vypršela platnost | Tomcat. Sessions. vypršela platnost | Počet | Počet relací, jejichž platnost vypršela |
->| Počet odmítnutých relací Tomcat (zastaralé)<br><br>(odebrané po 1. červenci 2020) | Tomcat. Sessions. odmítnuto | Počet | Počet relací, které nebyly vytvořeny, protože bylo dosaženo maximálního počtu aktivních relací. |
 >| Tomcat. Sessions. odmítnuto | Tomcat. Sessions. odmítnuto | Počet | Počet relací, které nebyly vytvořeny, protože bylo dosaženo maximálního počtu aktivních relací. |
 >| Tomcat. Sessions. Active. Current | Tomcat. Sessions. Active. Current | Počet | Počet aktivních relací Tomcat |
 

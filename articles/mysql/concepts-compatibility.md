@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e8917a0a5678c4c6b72352a0d4c1523bfea3c96d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3cf2603dec7e921159824f565336cd91a575731
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537206"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205657"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače a nástroje pro správu MySQL kompatibilní s Azure Database for MySQL
 Tento článek popisuje ovladače a nástroje pro správu, které jsou kompatibilní s Azure Database for MySQL.
@@ -45,14 +45,14 @@ Výhoda kompatibility se rozšiřuje i na nástroje pro správu databáze. Stáv
 
 |                                     | **MySQL Workbench 6. x a více** | **Navicat 12** | **PHPMyAdmin 4. x a více** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| Vytvořit, aktualizovat, číst, zapsat, odstranit | X | X | X |
-| Připojení SSL | X | X | X |
-| Automatické dokončování dotazů SQL | X | X |  |
-| Import a export dat | X | X | X | 
-| Exportovat do více formátů | X | X | X |
-| Zálohování a obnovení |  | × |  |
-| Zobrazit parametry serveru | X | X | X |
-| Zobrazit klientská připojení | X | X | X |
+| **Vytvořit, aktualizovat, číst, zapsat, odstranit** | X | X | X |
+| **Připojení SSL** | X | X | X |
+| **Automatické dokončování dotazů SQL** | X | X |  |
+| **Import a export dat** | X | X | X |
+| **Exportovat do více formátů** | X | X | X |
+| **Zálohování a obnovení** |  | × |  |
+| **Zobrazit parametry serveru** | X | X | X |
+| **Zobrazit klientská připojení** | X | X | X |
 
 ## <a name="next-steps"></a>Další kroky
 

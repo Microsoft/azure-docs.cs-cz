@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39803ab88e5b252ef119d22a697e135c83f87780
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073467"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205648"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Postup migrace API Management Azure napříč oblastmi
 Pokud chcete migrovat API Management instance z jedné oblasti Azure do jiné, můžete použít funkci [zálohování a obnovení](api-management-howto-disaster-recovery-backup-restore.md) . Měli byste zvolit stejný API Management cenové úrovně ve zdrojové a cílové oblasti. 
@@ -47,3 +47,4 @@ Pokud chcete migrovat API Management instance z jedné oblasti Azure do jiné, m
 ## <a name="next-steps"></a><a name="next-steps"> </a>Další kroky
 * Další informace o funkci zálohování a obnovení najdete v tématu [implementace zotavení po havárii](api-management-howto-disaster-recovery-backup-restore.md).
 * Informace o prostředcích migrace Azure najdete v tématu [pokyny k migraci mezi oblastmi Azure](https://github.com/Azure/Azure-Migration-Guidance).
+* [Optimalizujte a Šetřete své výdaje na Cloud](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

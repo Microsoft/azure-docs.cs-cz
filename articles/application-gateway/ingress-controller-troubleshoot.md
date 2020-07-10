@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 29f8a7823207f5571acc345bc6234a318342b173
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207851"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207163"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Řešení běžných otázek nebo potíží s řadičem příchozího přenosu dat
 
@@ -26,7 +26,7 @@ ms.locfileid: "85207851"
 Následující postup předpokládá:
   - Máte cluster AKS s povolenými pokročilými sítěmi
   - AGIC je nainstalovaný v clusteru AKS.
-  - Už jste ověření Application Gateway ve virtuální síti sdílené s vaším clusterem AKS.
+  - Už máte Application Gateway ve virtuální síti sdílené s vaším clusterem AKS.
 
 Chcete-li ověřit, zda je instalace Application Gateway + AKS + AGIC správně nastavena, nasaďte nejjednodušší možnou aplikaci:
 
@@ -236,7 +236,7 @@ AGIC má 3 úrovně protokolování. První úroveň je výchozí a zobrazuje mi
 Komunita Kubernetes zřídila 9 úrovní protokolování pro nástroj [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) . V tomto úložišti využíváme 3 z těchto verzí s podobnou sémantikou:
 
 
-| Podrobnosti | Description |
+| Podrobnosti | Popis |
 |-----------|-------------|
 |  1        | Výchozí úroveň protokolu; zobrazuje podrobnosti o spuštění, upozornění a chyby. |
 |  3        | Rozšířené informace o událostech a změnách; seznamy vytvořených objektů |

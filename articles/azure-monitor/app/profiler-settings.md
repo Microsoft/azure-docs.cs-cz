@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188922"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205716"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurace Application Insights Profiler
 
@@ -32,7 +32,7 @@ Tím se otevře stránka, která vypadá takto:
 
 Stránka **konfigurace Application Insights Profiler** obsahuje tyto funkce:
 
-| | |
+| Funkce | Popis |
 |-|-|
 Profilovat teď | Spustí relace profilování pro všechny aplikace, které jsou propojené s touto instancí Application Insights.
 Aktivační události | Umožňuje konfigurovat triggery, které způsobují, že se Profiler spustí. 
@@ -48,7 +48,7 @@ Aby mohl uživatel ručně aktivovat relaci profileru, musí pro Application Ins
 
 Kliknutím na tlačítko triggery na řádku nabídek otevřete okno nastavení triggeru. Můžete nastavit aktivační událost pro spuštění profilování, když procento využití procesoru nebo paměti narazí na úroveň, kterou jste nastavili.
 
-| | |
+| Nastavení | Popis |
 |-|-|
 Tlačítko pro zapnutí/vypnutí | Zapnuto: profiler může spustit Tato aktivační událost; Vypnuto: Profiler nespustí Tato aktivační událost.
 Prahová hodnota paměti | V případě, že se toto procento paměti používá, bude spuštěn Profiler.
@@ -58,12 +58,12 @@ Cooldown | Nastaví dobu, po kterou Profiler počká, než bude znovu kontrolova
 ## <a name="recent-profiling-sessions"></a>Nedávné relace profilování
 Tato část stránky zobrazuje informace o nejnovějších relacích profilování. Relace profilování představuje časový interval, po který agent profileru přebírá profil na jednom z počítačů, které hostují vaši aplikaci. Můžete otevřít profily z relace kliknutím na jeden z řádků. Pro každou relaci se zobrazuje:
 
-| | |
+| Nastavení | Popis |
 |-|-|
 Aktivoval | Jak byla relace spuštěna, buď triggerem, profilem nyní, nebo s výchozím vzorkováním. 
 Název aplikace | Název aplikace, která byla profilace.
 Instance počítače | Název počítače, ve kterém byl spuštěn Agent profileru.
-Časové razítko | Čas, kdy byl profil zachycen.
+Timestamp | Čas, kdy byl profil zachycen.
 Trasovat | Počet trasování, které byly připojeny k jednotlivým požadavkům.
 CPU % | Procento využití procesoru, které bylo používáno během běhu profileru.
 Rezident | Procento paměti, která se použila během běhu profileru.

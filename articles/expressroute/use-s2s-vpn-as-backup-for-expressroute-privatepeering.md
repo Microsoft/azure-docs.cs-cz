@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
-ms.openlocfilehash: cb6ebdcae837216efac5b9333789dee032219251
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df4108604c656cd6383bd57b462c0f12f31bdd7b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738086"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206867"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>Použití S2S VPN jako zálohy privátního partnerského vztahu ExpressRoute
 
@@ -71,19 +71,23 @@ V následující tabulce je uveden seznam čísla ASN topologie:
 
 Místní oznámení o trasách primárního směrovače CE prostřednictvím primárního připojení okruhu ExpressRoute se zobrazuje níže (příkazy Junos):
 
-    user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
+```console
+user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
 
-    Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
+```
 
 Místní oznámení o trasách sekundárního směrovače CE prostřednictvím sekundárního připojení okruhu ExpressRoute se zobrazuje níže (příkazy Junos):
 
-    user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
+```console
+user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
 
-    Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 8 destinations, 8 routes (7 active, 0 holddown, 1 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
+```
 
 Pro zvýšení vysoké dostupnosti záložního připojení je síť VPN S2S taky nakonfigurovaná v režimu aktivní-aktivní. Níže je uvedená konfigurace Azure VPN Gateway. Poznámka: v rámci sítě VPN konfigurace sítě VPN jsou uvedeny i IP adresy partnerského uzlu protokolu BGP brány--10.17.11.76 a 10.17.11.77--.
 
@@ -91,18 +95,20 @@ Pro zvýšení vysoké dostupnosti záložního připojení je síť VPN S2S tak
 
 Místní trasu inzerují brány firewall k primárním a sekundárním partnerským partnerům protokolu BGP brány VPN. Inzerce tras se zobrazuje níže (Junos):
 
-    user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
+```console
+user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
 
-    {primary:node0}
-    user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.77    
+{primary:node0}
+user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.77    
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-    * 10.1.11.0/25            Self                                    I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+* 10.1.11.0/25            Self                                    I
+```
 
 >[!NOTE] 
 >Konfigurace S2S VPN v režimu aktivní-aktivní neposkytuje vysokou dostupnost připojení k síti zálohování pro zotavení po havárii, ale také poskytuje vyšší propustnost připojení k zálohování. Jinými slovy konfigurace S2S VPN v režimu aktivní-aktivní se doporučuje, protože vynutí vytvoření několika podkladových tunelů.
@@ -116,66 +122,70 @@ Je naše zodpovědnost za to, že přenos, který je určený pro Azure z místn
 
 Konfigurace protokolu BGP primárního směrovače CE, který ukončuje primární připojení okruhu ExpressRoute, je uvedená níže. Všimněte si, že hodnota místní předvolby tras inzerovaných v relaci iBGP je nakonfigurovaná tak, aby byla 150. Podobně je potřeba zajistit, aby byla místní priorita sekundárního směrovače CE, která ukončuje sekundární připojení okruhu ExpressRoute, taky nakonfigurovaná tak, aby byla 150.
 
-    user@SEA-MX03-01> show configuration routing-instances Cust11 
-    description "Customer 11 VRF";
-    instance-type virtual-router;
-    interface xe-0/0/0:0.110;
-    interface ae0.11;
-    protocols {
-      bgp {
-        group ibgp {
-            type internal;
-            local-preference 150;
-            neighbor 192.168.11.1;
-        }
-        group ebgp {
-            peer-as 12076;
-            bfd-liveness-detection {
-                minimum-interval 300;
-                multiplier 3;
-            }
-            neighbor 192.168.11.18;
-        }
-      }
+```console
+user@SEA-MX03-01> show configuration routing-instances Cust11
+description "Customer 11 VRF";
+instance-type virtual-router;
+interface xe-0/0/0:0.110;
+interface ae0.11;
+protocols {
+  bgp {
+    group ibgp {
+        type internal;
+        local-preference 150;
+        neighbor 192.168.11.1;
     }
+    group ebgp {
+        peer-as 12076;
+        bfd-liveness-detection {
+            minimum-interval 300;
+            multiplier 3;
+        }
+        neighbor 192.168.11.18;
+    }
+  }
+}
+```
 
 Směrovací tabulka místních bran firewall potvrzuje (viz níže), které jsou pro místní provoz určené pro Azure upřednostňovanou cestou nad ExpressRoute ve stabilním stavu.
 
-    user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24    
+```console
+user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-    + = Active Route, - = Last Active, * = Both
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
 
-    10.17.11.0/25      *[BGP/170] 2d 00:34:04, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.0 via reth1.11
-                          to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 00:34:01, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.118
-                        [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.119
-    10.17.11.76/32     *[Static/5] 2d 21:12:16
-                        > via st0.118
-    10.17.11.77/32     *[Static/5] 2d 00:41:56
-                        > via st0.119
-    10.17.11.128/26    *[BGP/170] 2d 00:34:04, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.0 via reth1.11
-                          to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 00:34:01, localpref 150
-                          AS path: 12076 I, validation-state: unverified
-                        > to 192.168.11.2 via reth2.11
-                        [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.118
-                        [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
-                          AS path: 65515 I, validation-state: unverified
-                        > via st0.119
+10.17.11.0/25      *[BGP/170] 2d 00:34:04, localpref 150
+                      AS path: 12076 I, validation-state: unverified
+                    > to 192.168.11.0 via reth1.11
+                      to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 00:34:01, localpref 150
+                      AS path: 12076 I, validation-state: unverified
+                     > to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
+                       AS path: 65515 I, validation-state: unverified
+                    > via st0.118
+                    [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
+                       AS path: 65515 I, validation-state: unverified
+                     > via st0.119
+10.17.11.76/32     *[Static/5] 2d 21:12:16
+                     > via st0.118
+10.17.11.77/32     *[Static/5] 2d 00:41:56
+                    > via st0.119
+10.17.11.128/26    *[BGP/170] 2d 00:34:04, localpref 150
+                       AS path: 12076 I, validation-state: unverified
+                     > to 192.168.11.0 via reth1.11
+                       to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 00:34:01, localpref 150
+                      AS path: 12076 I, validation-state: unverified
+                     > to 192.168.11.2 via reth2.11
+                    [BGP/170] 2d 21:12:13, localpref 100, from 10.17.11.76
+                       AS path: 65515 I, validation-state: unverified
+                    > via st0.118
+                     [BGP/170] 2d 00:41:51, localpref 100, from 10.17.11.77
+                       AS path: 65515 I, validation-state: unverified
+                     > via st0.119
+```
 
 Ve výše uvedené tabulce směrování pro trasy virtuální sítě rozbočovače a paprsků – 10.17.11.0/25 a 10.17.11.128/26 – uvidíme, že u připojení VPN se upřednostňuje okruh ExpressRoute. 192.168.11.0 a 192.168.11.2 jsou IP adresy na rozhraní brány firewall směrem k ES.
 
@@ -183,49 +193,54 @@ Ve výše uvedené tabulce směrování pro trasy virtuální sítě rozbočova�
 
 Dříve v tomto článku jsme ověřili místní oznámení o trasách bran firewall k primárním a sekundárním partnerským partnerům protokolu BGP služby VPN Gateway. Pojďme taky potvrdit trasy Azure přijaté branami firewall od primárních a sekundárních partnerských uzlů protokolu BGP služby VPN Gateway.
 
-    user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
+```console
+user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-      10.17.11.0/25           10.17.11.76                             65515 I
-      10.17.11.128/26         10.17.11.76                             65515 I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  10.17.11.0/25           10.17.11.76                             65515 I
+  10.17.11.128/26         10.17.11.76                             65515 I
 
-    {primary:node0}
-    user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.77 table Cust11.inet.0    
+{primary:node0}
+user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.77 table Cust11.inet.0    
 
-    Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
-      Prefix                  Nexthop              MED     Lclpref    AS path
-      10.17.11.0/25           10.17.11.77                             65515 I
-      10.17.11.128/26         10.17.11.77                             65515 I
+Cust11.inet.0: 14 destinations, 21 routes (14 active, 0 holddown, 0 hidden)
+  Prefix                  Nexthop              MED     Lclpref    AS path
+  10.17.11.0/25           10.17.11.77                             65515 I
+  10.17.11.128/26         10.17.11.77                             65515 I
+```
 
 Podobně je možné ověřit předpony tras místní sítě přijaté bránou Azure VPN. 
 
-    PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
+```powershell
+PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
 
-    Network      NextHop       AsPath      Weight
-    -------      -------       ------      ------
-    10.1.11.0/25 192.168.11.88 65020        32768
-    10.1.11.0/25 10.17.11.76   65020        32768
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
-    10.1.11.0/25 192.168.11.88 65020        32768
-    10.1.11.0/25 10.17.11.77   65020        32768
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
-    10.1.11.0/25 10.17.11.69   12076-65020  32769
+Network      NextHop       AsPath      Weight
+-------      -------       ------      ------
+10.1.11.0/25 192.168.11.88 65020        32768
+10.1.11.0/25 10.17.11.76   65020        32768
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+10.1.11.0/25 192.168.11.88 65020        32768
+10.1.11.0/25 10.17.11.77   65020        32768
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+10.1.11.0/25 10.17.11.69   12076-65020  32769
+```
 
 Jak vidíte výše, brána sítě VPN obsahuje trasy přijaté primárním i sekundárním partnerským uzlem protokolu BGP brány VPN. Má také přehled o trasách přijatých prostřednictvím primárních a sekundárních připojení ExpressRoute (ta se stejnou cestou představila 12076). Abychom potvrdili, že trasy byly přijaty prostřednictvím připojení VPN, musíme znát místní IP adresu partnerského uzlu BGP připojení. V našem nastavení je 192.168.11.88 a my se zobrazuje z něj přijaté trasy.
 
 V dalším kroku ověříte trasy inzerované bránou Azure VPN na místní partnerský uzel BGP brány firewall (192.168.11.88).
 
-    PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
+```powershell
+PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
 
-    Network         NextHop     AsPath Weight
-    -------         -------     ------ ------
-    10.17.11.0/25   10.17.11.76 65515       0
-    10.17.11.128/26 10.17.11.76 65515       0
-    10.17.11.0/25   10.17.11.77 65515       0
-    10.17.11.128/26 10.17.11.77 65515       0
-
+Network         NextHop     AsPath Weight
+-------         -------     ------ ------
+10.17.11.0/25   10.17.11.76 65515       0
+10.17.11.128/26 10.17.11.76 65515       0
+10.17.11.0/25   10.17.11.77 65515       0
+10.17.11.128/26 10.17.11.77 65515       0
+```
 
 Nepovedlo se zobrazit výměny tras, což znamená selhání připojení. Další informace najdete v tématu [řešení potíží: připojení VPN typu Site-to-Site VPN se nemůže připojit a přestane fungovat,][VPN Troubleshoot] Pokud potřebujete pomoc s řešením potíží s připojením VPN.
 
@@ -239,43 +254,51 @@ Teď, když jsme potvrdili úspěšné pokusy o vystavování tras přes připoj
 
 Předtím, než provedete přepínač provozu, sledujeme trasu aktuální cesty v naší instalaci z místního testovacího serveru do testovacího virtuálního počítače ve virtuální síti rozbočovače.
 
-    C:\Users\PathLabUser>tracert 10.17.11.132
+```console
+C:\Users\PathLabUser>tracert 10.17.11.132
 
-    Tracing route to 10.17.11.132 over a maximum of 30 hops
+Tracing route to 10.17.11.132 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.11.1
-      2    <1 ms    <1 ms    11 ms  192.168.11.0
-      3    <1 ms    <1 ms    <1 ms  192.168.11.18
-      4     *        *        *     Request timed out.
-      5     6 ms     6 ms     5 ms  10.17.11.132
+  1    <1 ms    <1 ms    <1 ms  10.1.11.1
+  2    <1 ms    <1 ms    11 ms  192.168.11.0
+  3    <1 ms    <1 ms    <1 ms  192.168.11.18
+  4     *        *        *     Request timed out.
+  5     6 ms     6 ms     5 ms  10.17.11.132
 
-    Trace complete.
+Trace complete.
+```
 
 Primární a sekundární podsítě ExpressRoute připojení typu Point-to-Point našeho nastavení jsou v uvedeném pořadí 192.168.11.16/30 a 192.168.11.20/30. V výše uvedeném postupu trasování se v kroku 3 zobrazuje, že jsme rádi 192.168.11.18, což je IP adresa rozhraní primárního MSEE. Přítomnost rozhraní MSEE potvrdí, že aktuální cesta je nad ExpressRoute.
 
 Jak je uvedeno v části [resetování partnerských okruhů ExpressRoute][RST], pomocí následujících příkazů PowerShellu zakažte primární i sekundární partnerský vztah okruhu ExpressRoute.
 
-    $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
-    $ckt.Peerings[0].State = "Disabled"
-    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```powershell
+$ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
+$ckt.Peerings[0].State = "Disabled"
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
 
 Doba přepínání převzetí služeb při selhání závisí na době konvergence protokolu BGP. V naší instalaci trvá přepínač převzetí služeb při selhání několik sekund (méně než 10). Po přepínači opakuje traceroute zobrazení následující cesty:
 
-    C:\Users\PathLabUser>tracert 10.17.11.132
+```console
+C:\Users\PathLabUser>tracert 10.17.11.132
 
-    Tracing route to 10.17.11.132 over a maximum of 30 hops
+Tracing route to 10.17.11.132 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.11.1
-      2     *        *        *     Request timed out.
-      3     6 ms     7 ms     9 ms  10.17.11.132
+  1    <1 ms    <1 ms    <1 ms  10.1.11.1
+  2     *        *        *     Request timed out.
+  3     6 ms     7 ms     9 ms  10.17.11.132
 
-    Trace complete.
+Trace complete.
+```
 
 Výsledkem traceroute je potvrzení, že záložní připojení prostřednictvím S2S VPN je aktivní a může zajistit kontinuitu služeb, pokud dojde k selhání primárních i sekundárních připojení ExpressRoute. Aby bylo možné provést testování převzetí služeb při selhání, umožněte ExpressRoute připojení zpět a Normalizujte tok přenosů pomocí následující sady příkazů.
 
-    $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
-    $ckt.Peerings[0].State = "Enabled"
-    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```powershell
+$ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
+$ckt.Peerings[0].State = "Enabled"
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
+```
 
 Pokud chcete potvrdit, že se provoz přepne zpátky na ExpressRoute, opakujte traceroute a ujistěte se, že prochází přes soukromý partnerský vztah ExpressRoute.
 

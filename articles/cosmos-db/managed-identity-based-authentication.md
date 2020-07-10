@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: dfce18674f382cb683fa74a1bed964e9f86d72c2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970956"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206098"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Použití spravovaných identit přiřazených systémem pro přístup k Azure Cosmos DB datům
 
@@ -40,7 +40,7 @@ V tomto kroku přiřadíte aplikaci Function App spravovanou identitu přiřazen
 
 V tomto kroku přiřadíte roli spravované identitě přiřazené k systému aplikace Function App. Azure Cosmos DB má několik předdefinovaných rolí, které můžete přiřadit ke spravované identitě. Pro toto řešení použijete tyto dvě role:
 
-|Předdefinovaná role  |Description  |
+|Předdefinovaná role  |Popis  |
 |---------|---------|
 |[Přispěvatel účtu DocumentDB](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Může spravovat účty Azure Cosmos DB. Umožňuje načtení klíčů pro čtení i zápis. |
 |[Role čtečky účtu Cosmos DB](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Může číst data Azure Cosmos DB účtu. Umožňuje načtení klíčů pro čtení. |
@@ -52,6 +52,8 @@ V tomto kroku přiřadíte roli spravované identitě přiřazené k systému ap
 > Přiřadíte-li role, přiřaďte pouze potřebný přístup. Pokud vaše služba vyžaduje jenom čtení dat, přiřaďte k spravované identitě roli **Čtenář účtu Cosmos DB** . Další informace o významu minimálního přístupu k oprávnění najdete v článku o [nižší expozici privilegovaných účtů](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) .
 
 V tomto scénáři načte aplikace Functions teplotu Aquarium a pak tato data zapíše zpátky do kontejneru v Azure Cosmos DB. Vzhledem k tomu, že aplikace Function App musí data zapisovat, je nutné přiřadit roli **Přispěvatel účtu DocumentDB** . 
+
+### <a name="assign-the-role-using-azure-portal"></a>Přiřaďte roli pomocí Azure Portal
 
 1. Přihlaste se k Azure Portal a přejít na účet Azure Cosmos DB. Otevřete podokno **řízení přístupu (IAM)** a pak kartu **přiřazení rolí** :
 
@@ -70,6 +72,18 @@ V tomto scénáři načte aplikace Functions teplotu Aquarium a pak tato data za
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Snímek obrazovky s podoknem přiřazení role přidání, které se naplní příklady":::
 
 1. Po výběru aplikace Function App vyberte **Save (Uložit**).
+
+### <a name="assign-the-role-using-azure-cli"></a>Přiřazení role pomocí Azure CLI
+
+Pokud chcete přiřadit roli pomocí Azure CLI, použijte následující příkazy:
+
+```azurecli-interactive
+$scope = az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id
+
+$principalId = az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId
+
+az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
+```
 
 ## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programový přístup k klíčům Azure Cosmos DB
 

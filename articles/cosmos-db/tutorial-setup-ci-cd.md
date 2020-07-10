@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: ba90bb89d731c343dfcb3778433d444f2d9a617a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 447f999f48edb9696c74ec5decb1109eefb964d7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025858"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206965"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Nastavení kanálu CI/CD pomocí úlohy sestavení emulátoru služby Azure Cosmos DB v Azure DevOps
 
@@ -36,7 +37,7 @@ Potom vyberte organizaci, do které se má rozšíření nainstalovat.
 
 ## <a name="create-a-build-definition"></a>Vytvoření definice sestavení
 
-Když je teď rozšíření nainstalované, přihlaste se ke svému účtu Azure DevOps a na řídicím panelu projektů vyhledejte svůj projekt. Do svého projektu můžete přidat [kanál sestavení](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) nebo můžete upravit existující kanál sestavení. Pokud už máte kanál sestavení, můžete přeskočit k části [Přidání úlohy sestavení emulátoru do definice sestavení](#addEmulatorBuildTaskToBuildDefinition).
+Teď, když je rozšíření nainstalované, přihlaste se ke svojí organizaci Azure DevOps a Najděte svůj projekt na řídicím panelu projekty. Do svého projektu můžete přidat [kanál sestavení](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) nebo můžete upravit existující kanál sestavení. Pokud už máte kanál sestavení, můžete přeskočit k části [Přidání úlohy sestavení emulátoru do definice sestavení](#addEmulatorBuildTaskToBuildDefinition).
 
 1. Pokud chcete vytvořit novou definici sestavení, přejděte v Azure DevOps na kartu **Builds** (Sestavení). Vyberte **+ Nový.** \> **Nový kanál sestavení**
 
@@ -67,6 +68,24 @@ Start-CosmosDbEmulator
    :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Přidání úlohy sestavení emulátoru k definici sestavení":::
 
 V tomto kurzu přidáte úlohu na začátek, abyste zajistili, že emulátor bude dostupný před provedením testů.
+
+### <a name="add-the-task-using-yaml"></a>Přidání úlohy pomocí YAML
+
+Tento krok je nepovinný a je nutný jenom v případě, že nastavujete kanál CI/CD pomocí úlohy YAML. V takových případech můžete definovat úlohu YAML, jak je znázorněno v následujícím kódu:
+
+```yml
+- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
+  displayName: 'Run Azure Cosmos DB Emulator'
+
+- script: yarn test
+  displayName: 'Run API tests (Cosmos DB)'
+  env:
+    HOST: $(CosmosDbEmulator.Endpoint)
+    # Hardcoded key for emulator, not a secret
+    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+    # The emulator uses a self-signed cert, disable TLS auth errors
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+```
 
 ## <a name="configure-tests-to-use-the-emulator"></a>Konfigurace testů pro použití emulátoru
 
@@ -154,24 +173,6 @@ Jakmile se sestavení spustí, podívejte se, že úloha emulátoru Cosmos DB za
 Jakmile se sestavení dokončí, podívejte se, že vaše testy byly úspěšné a spustily se v emulátoru Cosmos DB z úlohy sestavení.
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Uložení a spuštění sestavení":::
-
-## <a name="set-up-using-yaml"></a>Nastavení pomocí YAML
-
-Pokud nastavujete kanál CI/CD pomocí úlohy YAML, můžete definovat úlohu YAML, jak je znázorněno v následujícím kódu:
-
-```yml
-- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
-  displayName: 'Run Azure Cosmos DB Emulator'
-
-- script: yarn test
-  displayName: 'Run API tests (Cosmos DB)'
-  env:
-    HOST: $(CosmosDbEmulator.Endpoint)
-    # Hardcoded key for emulator, not a secret
-    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
-    # The emulator uses a self-signed cert, disable TLS auth errors
-    NODE_TLS_REJECT_UNAUTHORIZED: '0'
-```
 
 ## <a name="next-steps"></a>Další kroky
 

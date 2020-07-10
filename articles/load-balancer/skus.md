@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: faf77411abca63516b00ac953bc7203da69f3ca9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d08d7a81fddfe70593c31ac3ebd2191679ea1220
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854089"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206365"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer SKU
 
@@ -34,19 +34,19 @@ Samostatné virtuální počítače, skupiny dostupnosti a škálovací sady vir
 
 | | Standard Load Balancer | Základní Load Balancer |
 | --- | --- | --- |
-| [Velikost fondu back-endu](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer) | Podporuje až 1000 instancí. | Podporuje až 300 instancí. |
-| Koncové body fondu back-endu | Všechny virtuální počítače nebo sady škálování virtuálních počítačů v jedné virtuální síti. | Virtuální počítače v jedné skupině dostupnosti nebo v sadě škálování virtuálních počítačů. |
-| [Sondy stavu](./load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Chování sondy stavu](./load-balancer-custom-probe-overview.md#probedown) | Připojení TCP zůstávají v provozu při testování instance dolů __a__ na všech sondách. | Připojení TCP zůstávají v provozu při testování instance. Všechna připojení TCP se ukončí, když jsou všechny sondy mimo provoz. |
-| Zóny dostupnosti | Zóna – redundantní a oblasti front-endu pro příchozí a odchozí provoz. | Není k dispozici. |
-| Diagnostika | [Azure Monitor multidimenzionální metriky](./load-balancer-standard-diagnostics.md) | [Protokoly služby Azure Monitor](./load-balancer-monitor-log.md) |
-| Porty HA | [K dispozici pro interní Load Balancer](./load-balancer-ha-ports-overview.md) | Není k dispozici. |
-| Zabezpečení ve výchozím nastavení | Uzavřeno do příchozích toků, pokud to není povoleno skupinou zabezpečení sítě. Upozorňujeme, že interní provoz z virtuální sítě do interního nástroje pro vyrovnávání zatížení je povolený. | Ve výchozím nastavení otevřete. Skupina zabezpečení sítě je volitelná. |
-| Pravidla pro odchozí provoz | [Konfigurace deklarativního odchozího překladu adres (NAT)](./load-balancer-outbound-rules-overview.md) | Není k dispozici. |
-| Resetování protokolu TCP při nečinnosti | [K dispozici u libovolného pravidla](./load-balancer-tcp-reset.md) | Není k dispozici. |
-| [Více front-endy](./load-balancer-multivip-overview.md) | Příchozí a [odchozí](./load-balancer-outbound-connections.md) | Pouze příchozí |
-| Operace správy | Většina operací < 30 sekund | typických 60 až 90 sekund |
-| SLA | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Není k dispozici. | 
+| **[Velikost fondu back-endu](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)** | Podporuje až 1000 instancí. | Podporuje až 300 instancí. |
+| **Koncové body fondu back-endu** | Všechny virtuální počítače nebo sady škálování virtuálních počítačů v jedné virtuální síti. | Virtuální počítače v jedné skupině dostupnosti nebo v sadě škálování virtuálních počítačů. |
+| **[Sondy stavu](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
+| **[Chování sondy stavu](./load-balancer-custom-probe-overview.md#probedown)** | Připojení TCP zůstávají v provozu při testování instance dolů __a__ na všech sondách. | Připojení TCP zůstávají v provozu při testování instance. Všechna připojení TCP se ukončí, když jsou všechny sondy mimo provoz. |
+| **Zóny dostupnosti** | Zóna – redundantní a oblasti front-endu pro příchozí a odchozí provoz. | Není k dispozici |
+| **Diagnostika** | [Azure Monitor multidimenzionální metriky](./load-balancer-standard-diagnostics.md) | [Protokoly Azure Monitor](./load-balancer-monitor-log.md) |
+| **Porty HA** | [K dispozici pro interní Load Balancer](./load-balancer-ha-ports-overview.md) | Není k dispozici |
+| **Zabezpečení ve výchozím nastavení** | Uzavřeno do příchozích toků, pokud to není povoleno skupinou zabezpečení sítě. Upozorňujeme, že interní provoz z virtuální sítě do interního nástroje pro vyrovnávání zatížení je povolený. | Ve výchozím nastavení otevřete. Skupina zabezpečení sítě je volitelná. |
+| **Odchozí pravidla** | [Konfigurace deklarativního odchozího překladu adres (NAT)](./load-balancer-outbound-rules-overview.md) | Není k dispozici |
+| **Resetování protokolu TCP při nečinnosti** | [K dispozici u libovolného pravidla](./load-balancer-tcp-reset.md) | Není k dispozici |
+| **[Více front-endy](./load-balancer-multivip-overview.md)** | Příchozí a [odchozí](./load-balancer-outbound-connections.md) | Pouze příchozí |
+| **Operace správy** | Většina operací < 30 sekund | typických 60 až 90 sekund |
+| **SLA** | [99,99 %](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Není k dispozici | 
 
 Další informace najdete v tématu [omezení nástroje pro vyrovnávání zatížení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Podrobnosti o Load Balanceru úrovně Standard najdete v [přehledu](load-balancer-standard-overview.md), na stránce s [cenami](https://aka.ms/lbpricing) a ve [smlouvě SLA](https://aka.ms/lbsla).
 

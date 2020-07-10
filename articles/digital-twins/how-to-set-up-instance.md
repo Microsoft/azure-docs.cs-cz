@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4cac7a3f663d9ede966b8d6e5753c48629049dcd
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fecacbd2c7c6549a1321367157bb179321779ca9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057479"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206508"
 ---
 # <a name="set-up-an-azure-digital-twins-instance"></a>Nastavení instance digitálních vláken Azure
 
 Tento článek vás provede základními kroky pro nastavení nové instance digitálních vláken Azure. To zahrnuje vytvoření instance a přiřazení oprávnění [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) k instanci pro sebe sama.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
@@ -57,15 +57,15 @@ Aby bylo možné používat digitální vlákna Azure v rámci klientské aplika
 
 Pomocí e-mailu přidruženého k tenantovi služby AAD ve vašem předplatném Azure můžete vytvořit přiřazení role pro sebe sami v instanci digitálních vláken Azure. 
 
-Abyste to mohli udělat, musíte být ve svém předplatném Azure klasifikováni jako vlastník. Můžete to ověřit spuštěním `az role assignment list --assignee <your-Azure-email>` příkazu a ověřením výstupu, který je *RoleDefinitionName* hodnotou *Owner (vlastník*). Pokud zjistíte, že je hodnota *Přispěvatel* nebo jiný než *vlastník*, obraťte se na správce předplatného s výkonem, abyste udělili oprávnění ve vašem předplatném, aby bylo možné roli zvýšit.
+Abyste to mohli udělat, musíte být ve svém předplatném Azure klasifikováni jako vlastník. Můžete to ověřit spuštěním `az role assignment list --assignee <your-Azure-email>` příkazu a ověřením výstupu, který je *RoleDefinitionName* hodnotou *Owner (vlastník*). Pokud zjistíte, že je hodnota *Přispěvatel* nebo jiný než *vlastník*, obraťte se na správce předplatného s výkonem, abyste mohli udělit oprávnění ve vašem předplatném. Můžou buď zvýšit úroveň vaší role na celé předplatné, abyste mohli spustit následující příkaz, nebo může uživatel spustit následující příkaz, aby pro vás nastavil vaše oprávnění k vašim digitálním událostem Azure.
 
-Jako vlastník předplatného můžete k přiřazení uživatele k roli vlastníka pro instanci digitálního vlákna Azure použít následující příkaz:
+Pokud chcete přiřadit oprávnění uživatele "vlastník" v instanci digitálních vláken Azure, použijte následující příkaz (musí ho spustit vlastník předplatného Azure):
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-AAD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-Výsledkem tohoto příkazu jsou informace o přiřazení role, kterou jste vytvořili.
+Výsledkem tohoto příkazu jsou informace o vytvořeném přiřazení role.
 
 > [!TIP]
 > Pokud se zobrazí chyba *400: důvodu chybného požadavku* , spusťte následující příkaz, který získá *identifikátor objectID* pro uživatele:
@@ -74,7 +74,7 @@ Výsledkem tohoto příkazu jsou informace o přiřazení role, kterou jste vytv
 > ```
 > Pak opakujte příkaz přiřazení role, a to pomocí *ID objektu* uživatele místo vašeho e-mailu.
 
-Teď máte k dispozici instanci digitálních vláken Azure, která je připravená k přechodu.
+Teď máte k dispozici instanci digitálního vlákna Azure, která je připravená k použití, a oprávnění ke správě IT.
 
 ## <a name="next-steps"></a>Další kroky
 

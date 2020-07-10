@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 22ec4058d9485858489162af223bb6d6c381797e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887653"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206713"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimalizace stahování velkých souborů pomocí Azure CDN
 
@@ -107,8 +107,7 @@ CDN ukládá do mezipaměti všechny bloky dat, jak jsou přijaty. Celý soubor 
 ### <a name="caching"></a>Ukládání do mezipaměti
 Optimalizace velkých souborů používá jiné výchozí doby vypršení platnosti pro ukládání do mezipaměti z obecného webového doručování. Rozlišuje kladné ukládání do mezipaměti a negativně ukládání do mezipaměti na základě kódů odpovědí HTTP. Pokud na zdrojovém serveru určíte čas vypršení platnosti prostřednictvím hlavičky Cache-Control nebo Expires v odpovědi, CDN tuto hodnotu respektuje. Pokud počátek neurčí a soubor se shoduje s typem a velikostí pro tento typ optimalizace, CDN používá výchozí hodnoty pro optimalizaci velkých souborů. V opačném případě CDN používá pro obecné doručování webu výchozí nastavení.
 
-
-|    | Obecné webové | Optimalizace velkých souborů 
+| Ukládání do mezipaměti  | Obecné webové | Optimalizace velkých souborů 
 --- | --- | --- 
 Ukládání do mezipaměti: kladné <br> HTTP 200, 203, 300, <br> 301, 302 a 410 | 7 dní |1 den  
 Ukládání do mezipaměti: záporné <br> HTTP 204, 305, 404, <br> a 405 | Žádná | 1 sekunda 

@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: 23c7913fbe9b3943559d36f5cbf2a21d7ed63dbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a53122b324c0a6dc43619eb2e9c704873f87b69
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563449"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207317"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyma v Azure Kognitivní hledání
 
@@ -51,6 +51,7 @@ Mapy synonym musí být ve formátu Apache Solr, který je vysvětlen níže. Po
 
 Novou mapu synonym můžete vytvořit pomocí HTTP POST, jak je znázorněno v následujícím příkladu:
 
+```synonym-map
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
 
@@ -61,9 +62,11 @@ Novou mapu synonym můžete vytvořit pomocí HTTP POST, jak je znázorněno v n
           USA, United States, United States of America\n
           Washington, Wash., WA => WA\n"
     }
+```
 
 Alternativně můžete použít PUT a zadat název mapy synonym na identifikátoru URI. Pokud mapování synonym neexistuje, vytvoří se.
 
+```synonym-map
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
 
@@ -73,10 +76,12 @@ Alternativně můžete použít PUT a zadat název mapy synonym na identifikáto
           USA, United States, United States of America\n
           Washington, Wash., WA => WA\n"
     }
+```
 
 ##### <a name="apache-solr-synonym-format"></a>Formát synonyma Apache Solr
 
 Formát Solr podporuje mapování ekvivalentních a explicitních synonym. Pravidla mapování dodržují specifikace Open Source filtru synonym pro Apache Solr, která je popsaná v tomto dokumentu: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Níže je vzorové pravidlo pro ekvivalentní synonyma.
+
 ```
 USA, United States, United States of America
 ```
@@ -84,29 +89,37 @@ USA, United States, United States of America
 S výše uvedeným pravidlem se vyhledávací dotaz "USA" rozšíří na "USA" nebo "USA" nebo "USA of America".
 
 Explicitní mapování je označeno šipkou "=>". Je-li tento parametr zadán, nahradí se v pravé straně termín sekvence vyhledávacího dotazu, která odpovídá levé straně slova "=>". Podle níže uvedeného pravidla hledejte dotazy "Washington", "mycí cyklus". neboli "WA", všechna budou přepsána do "WA". Explicitní mapování platí pouze v zadaném směru a nepřepíše dotaz "WA" do "Washington" v tomto případě.
+
 ```
 Washington, Wash., WA => WA
 ```
 
 #### <a name="list-synonym-maps-under-your-service"></a>Vypíše mapy synonym v rámci vaší služby.
 
+```synonym-map
     GET https://[servicename].search.windows.net/synonymmaps?api-version=2020-06-30
     api-key: [admin key]
+```
 
 #### <a name="get-a-synonym-map-under-your-service"></a>Získejte mapu synonym v rámci vaší služby.
 
+```synonym-map
     GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
+```
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>Odstraňte mapu synonym v rámci vaší služby.
 
+```synonym-map
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2020-06-30
     api-key: [admin key]
+```
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Nakonfigurujte prohledávatelné pole tak, aby v definici indexu bylo použito mapování synonym.
 
 Novou vlastnost pole **synonymMaps** lze použít k určení mapy synonym, která se má použít pro pole, které chcete prohledávat. Mapy synonym jsou prostředky na úrovni služby a můžou na ně odkazovat libovolné pole indexu v rámci služby.
 
+```synonym-map
     POST https://[servicename].search.windows.net/indexes?api-version=2020-06-30
     api-key: [admin key]
 
@@ -138,6 +151,7 @@ Novou vlastnost pole **synonymMaps** lze použít k určení mapy synonym, kter�
           }
        ]
     }
+```
 
 **synonymMaps** lze zadat pro hledaná pole typu EDM. String nebo Collection (EDM. String).
 

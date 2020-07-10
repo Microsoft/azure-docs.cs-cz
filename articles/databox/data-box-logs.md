@@ -1,36 +1,37 @@
 ---
-title: Sledování a Azure Data Box protokolu Azure Data Box Heavy události | Microsoft Docs
-description: Popisuje, jak sledovat a protokolovat události v různých fázích Azure Data Box a Azure Data Box Heavy pořadí.
+title: Sledovat a protokolovat Azure Data Box Azure Data Box Heavy události pro pořadí importu | Microsoft Docs
+description: Popisuje, jak sledovat a protokolovat události v různých fázích Azure Data Box a Azure Data Box Heavy pořadí importu.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676412"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204294"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Sledování a protokolování událostí pro Azure Data Box a Azure Data Box Heavy pořadí importu
 
-Data Box nebo Data Box Heavy objednávka prochází následujícími kroky: pořadí, nastavení, kopírování dat, vrácení, nahrání do Azure a ověření a mazání dat. V souladu s každým krokem v pořadí můžete provést několik akcí pro řízení přístupu k objednávce, Auditovat události, sledovat pořadí a interpretovat různé protokoly, které jsou vygenerovány.
+Pořadí importu Data Box nebo Data Box Heavy prochází následujícími kroky: pořadí, nastavení, kopírování dat, návrat, nahrání do Azure a ověření a mazání dat. V souladu s každým krokem v pořadí můžete provést několik akcí pro řízení přístupu k objednávce, Auditovat události, sledovat pořadí a interpretovat různé protokoly, které jsou vygenerovány.
 
-Následující tabulka obsahuje souhrn kroků Data Box nebo Data Box Heavy objednávek a nástroje, které jsou k dispozici pro sledování a auditování pořadí v průběhu každého kroku.
+V následující tabulce je uveden souhrn Data Box nebo Data Box Heavy kroků importu a nástrojů, které jsou k dispozici pro sledování a auditování pořadí v průběhu každého kroku.
 
-| Fáze pořadí Data Box       | Nástroj pro sledování a audit                                                                        |
+| Data Box fáze objednávky importu       | Nástroj pro sledování a audit                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Vytvoření objednávky               | [Nastavení řízení přístupu v pořadí přes RBAC](#set-up-access-control-on-the-order)                                                    |
-| Zpracování objednávky            | [Sledovat pořadí](#track-the-order) přes <ul><li> portál Azure </li><li> Web lodního dopravce </li><li>E-mailová oznámení</ul> |
+| Zpracování objednávky            | [Sledovat pořadí](#track-the-order) přes <ul><li> Azure Portal </li><li> Web lodního dopravce </li><li>E-mailová oznámení</ul> |
 | Nastavení zařízení              | Přístup k přihlašovacím údajům zařízení přihlášení k [protokolům aktivit](#query-activity-logs-during-setup)                                              |
 | Kopírování dat do zařízení        | [Zobrazit *error.xml* soubory](#view-error-log-during-data-copy) pro kopírování dat                                                             |
 | Příprava k odeslání            | [Zkontrolujte soubory kusovníku](#inspect-bom-during-prepare-to-ship) nebo soubory manifestu na zařízení.                                      |
 | Nahrávání dat do Azure       | [Kontrola chyb v protokolech kopírování](#review-copy-log-during-upload-to-azure) při nahrávání dat v datovém centru Azure                         |
 | Data mazání ze zařízení   | [Zobrazit řetěz protokolů o úschově](#get-chain-of-custody-logs-after-data-erasure) včetně protokolů auditu a historie objednávek                |
 
-Tento článek podrobně popisuje různé mechanismy a nástroje, které jsou k dispozici pro sledování a audit Data Box nebo Data Box Heavy objednávky. Informace v tomto článku se vztahují na Data Box i Data Box Heavy. V následujících částech se všechny odkazy na Data Box vztahují také na Data Box Heavy.
+Tento článek podrobně popisuje různé mechanismy a nástroje, které jsou k dispozici pro sledování a audit Data Box nebo Data Box Heavyho pořadí importu. Informace v tomto článku se vztahují na Data Box a Data Box Heavy import objednávek. V následujících částech se všechny odkazy na Data Box vztahují také na Data Box Heavy.
 
 ## <a name="set-up-access-control-on-the-order"></a>Nastavení řízení přístupu na objednávce
 
@@ -294,7 +295,7 @@ Tady je příklad protokolu kopírování, ve kterém se při nahrávání dat d
 
 Po vymazání dat z Data Box disků podle pokynů pro NIST SP 800-88 verze 1 je k dispozici řetěz protokolů o úschově. Tyto protokoly zahrnují protokoly auditu a historii objednávek. Soubory kusovníku nebo manifestu jsou také zkopírovány pomocí protokolů auditu.
 
-### <a name="audit-logs"></a>Protokoly auditu
+### <a name="audit-logs"></a>Protokoly auditování
 
 Protokoly auditu obsahují informace o tom, jak zapnout a přistupovat ke sdíleným složkám na Data Box nebo Data Box Heavy, pokud se nachází mimo datové centrum Azure. Tyto protokoly jsou umístěny na adrese:`storage-account/azuredatabox-chainofcustodylogs`
 

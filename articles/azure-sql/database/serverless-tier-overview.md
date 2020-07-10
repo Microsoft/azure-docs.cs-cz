@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/6/2020
-ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 7/9/2020
+ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045956"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206940"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -76,7 +76,7 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 
 SQL Database bez serveru se aktuálně podporuje jenom v Pro obecné účely vrstvě na hardwaru generace 5 v modelu nákupu vCore.
 
-## <a name="autoscaling"></a>Automatické škálování
+## <a name="autoscaling"></a>Automatického škálování
 
 ### <a name="scaling-responsiveness"></a>Škálování rychlosti odezvy
 
@@ -127,7 +127,7 @@ Automatické obnovení se aktivuje, pokud platí kterákoli z následujících p
 
 |Funkce|Aktivační událost autoresume|
 |---|---|
-|Ověřování a autorizace|Přihlásit|
+|Ověřování a autorizace|Přihlášení|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
 |Zjišťování a klasifikace dat|Přidávání, úpravy, odstraňování nebo zobrazování popisků citlivosti|
 |Auditování|Zobrazení záznamů auditu.<br>Probíhá aktualizace nebo zobrazení zásad auditování.|
@@ -272,7 +272,7 @@ Fond zdrojů uživatele je vnitřní hranice správy prostředků pro databázi 
 
 Metriky pro monitorování využití prostředků balíčku aplikace a fondu uživatelů v databázi bez serveru jsou uvedené v následující tabulce:
 
-|Entita|Metric|Popis|Jednotky|
+|Entita|Metrika|Popis|Jednotky|
 |---|---|---|---|
 |Balíček aplikace|app_cpu_percent|Procento virtuální jádra, které aplikace používá vzhledem k maximálnímu virtuální jádra povolenému pro aplikaci|Procento|
 |Balíček aplikace|app_cpu_billed|Množství COMPUTE, které aplikace účtuje během období generování sestav. Částka placená během tohoto období je produktem této metriky a Jednotková cena vCore. <br><br>Hodnoty této metriky se určují tak, že se v průběhu času vyhodnotí maximální využití procesoru a využitá paměť každou sekundu. Pokud je využité množství menší než minimální zajištěné množství, které je stanoveno minimálním virtuální jádra a minimální pamětí, účtuje se minimální stanovený objem.Aby bylo možné porovnat procesor s pamětí pro účely fakturace, je paměť normalizována na jednotky virtuální jádra tím, že převýší množství paměti v GB o 3 GB na vCore.|vCore sekund|
@@ -324,6 +324,19 @@ K dispozici je množství COMPUTE, které se účtuje pomocí následující met
 - **Frekvence generování sestav**: za minutu
 
 Toto množství se počítá každou sekundu a agreguje se za 1 minutu.
+
+### <a name="minimum-compute-bill"></a>Minimální faktura za výpočetní prostředky
+
+Pokud je databáze bez serveru pozastavena, je vyúčtování vypočítáno jako nula.  Pokud databáze bez serveru není pozastavená, minimální vyfakturovaná částka je nižší než množství virtuální jádra na základě Max (min virtuální jádra, min Memory GB × 1/3).
+
+Příklady:
+
+- Předpokládejme, že databáze bez serveru není pozastavená a nakonfigurovaná s 8 Max virtuální jádra a 1 min vCoreami odpovídajícími 3,0 GB min. paměti.  Minimální vyúčtování vychází z maxima (1 vCore, 3,0 GB × 1 vCore/3 GB) = 1 vCore.
+- Předpokládejme, že databáze bez serveru není pozastavena a nakonfigurována s 4 max virtuální jádra a 0,5 min virtuální jádray odpovídající 2,1 GB min. paměti.  Minimální vyúčtování vychází z maxima (0,5 virtuální jádra, 2,1 GB × 1 vCore/3 GB) = 0,7 virtuální jádra.
+
+[Cenové kalkulačky Azure SQL Database](https://azure.microsoft.com/pricing/calculator/?service=sql-database) pro server bez serveru se dají použít k určení minimální konfigurovatelné paměti na základě počtu virtuální jádra nakonfigurovaných na maximum a min.  V případě pravidla platí, že pokud je minimální virtuální jádra nakonfigurovaný větší než 0,5 virtuální jádra, pak je minimální vyúčtování nezávisle na minimální konfiguraci paměti a na základě počtu nakonfigurovaných minimálních virtuální jádra.
+
+### <a name="example-scenario"></a>Ukázkový scénář
 
 Vezměte v úvahu databázi bez serveru nakonfigurovanou s 1 min vCore a 4 max virtuální jádra.  Tato hodnota odpovídá přibližně 3 GB paměti a maximální velikosti paměti 12 GB.  Předpokládejme, že prodleva automatického pozastavení je nastavená na 6 hodin a úloha databáze je aktivní během prvních 2 hodin po dobu 24 hodin a jinak neaktivní.    
 

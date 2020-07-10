@@ -1,7 +1,7 @@
 ---
 title: Jazyková podpora – Počítačové zpracování obrazu
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje seznam přirozených jazyků podporovaných funkcemi Počítačové zpracování obrazu. Optické rozpoznávání znaků, Rozpoznávání textu a čtení.
+description: Tento článek obsahuje seznam přirozených jazyků podporovaných funkcemi Počítačové zpracování obrazu. Optické rozpoznávání znaků, analýza obrázků.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 680e3647e7a5847e132a53986e2cf17150bceac3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560167"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205285"
 ---
 # <a name="language-support-for-computer-vision"></a>Jazyková podpora pro Počítačové zpracování obrazu
 
 Některé funkce Počítačové zpracování obrazu podporují více jazyků. všechny funkce, které tady nejsou uvedené, podporují jenom angličtinu.
 
-## <a name="text-detection-ocr"></a>Detekce textu (OCR)
+## <a name="optical-character-recognition-ocr"></a>optické rozpoznávání znaků (OCR),
 
-Počítačové zpracování obrazu umí detekovat text v mnoha jazycích. Rozhraní API pro čtení a rozpoznávání OCR nevyžadují, abyste zadali kód jazyka. Další informace o této funkci a výhodách jednotlivých rozhraní API najdete v tématu [čtení textu z obrázků a dokumentů](concept-recognizing-text.md) .
+Rozhraní API pro optické Počítačové zpracování obrazu podporují několik jazyků. Nevyžadují, abyste zadali kód jazyka. Další informace naleznete v tématu [optické rozpoznávání znaků (OCR)](concept-recognizing-text.md) .
 
 |Jazyk| Kód jazyka | ROZHRANÍ API PRO OPTICKÉ ROZPOZNÁVÁNÍ ZNAKŮ | Rozhraní API pro čtení |
 |:-----|:----:|:-----:|:---:|
@@ -58,7 +58,7 @@ Počítačové zpracování obrazu umí detekovat text v mnoha jazycích. Rozhra
 
 Některé akce rozhraní API [analyzovat-image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) mohou vracet výsledky v jiných jazycích, které jsou zadány pomocí `language` parametru dotazu. Jiné akce vrátí výsledky v angličtině bez ohledu na to, jaký jazyk je zadán, a jiné vyvolají výjimku pro nepodporované jazyky. Akce jsou zadány s `visualFeatures` `details` parametry dotazu a. Další informace najdete v [přehledu](home.md) o všech akcích, které můžete provádět s analýzou obrázků.
 
-|Jazyk | Kód jazyka | Kategorie | Značky | Popis | Pro dospělé | Značky | Barva | Tváře | ImageType | Objekty | Celebrity | Význačná místa |
+|Jazyk | Kód jazyka | Kategorie | Značky | Popis | Pro dospělé | Značky | Color | Tváře | ImageType | Objekty | Celebrity | Význačná místa |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |Čínština | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |Angličtina | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

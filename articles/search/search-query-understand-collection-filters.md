@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113067"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206175"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Porozumění filtrům kolekce OData v Azure Kognitivní hledání
 
@@ -49,13 +50,17 @@ Prvním důvodem je pouze důsledek, jak jsou definovány jazyky OData a systém
 
 Při použití více kritérií filtru v rámci kolekce složitých objektů jsou kritéria **korelace** , protože se vztahují na *každý objekt v kolekci*. Například následující filtr vrátí hotely, které mají alespoň jednu Deluxe místnost s frekvencí menší než 100:
 
+```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
+```
 
 Pokud filtrování *nekoreluje*, může výše uvedený filtr vracet hotely, kde je jedna místnost Deluxe a jiné místnosti má základní sazbu nižší než 100. To by nevedlo smysl, protože obě klauzule výrazu lambda se vztahují na stejnou proměnnou rozsahu, konkrétně `room` . To je důvod, proč se tyto filtry korelují.
 
 Pro fulltextové vyhledávání ale neexistuje žádný způsob, jak odkazovat na konkrétní proměnnou rozsahu. Pokud k vystavení [úplného dotazu Lucene](query-lucene-syntax.md) , jako je tato, použijete pole hledání:
 
+```odata-filter-expr
     Rooms/Type:deluxe AND Rooms/Description:"city view"
+```
 
 Můžete se dostat do hotelů, kde je jedna místnost Deluxe, a v popisu se zobrazí jiné místo "město". Například dokument uvedený níže se shoduje s `Id` `1` dotazem:
 
@@ -137,7 +142,7 @@ Představte si například pole pro shromažďování řetězců, jako je třeba
 
 Hodnoty `seasons` pole jsou uloženy ve struktuře s názvem **obrácený index**, který vypadá přibližně takto:
 
-| Pojem | ID dokumentů |
+| Termín | ID dokumentů |
 | --- | --- |
 | návratu | 1, 2 |
 | letní | 1 |
@@ -148,19 +153,27 @@ Tato datová struktura je navržená tak, aby odpovídala jedné otázce velkou 
 
 Sestavování od rovnosti: dále se podíváme na to, jak je možné zkombinovat více kontrol rovnosti na stejnou proměnnou rozsahu s `or` . Díky algebraický a [vlastnictví kvantifikátorů](https://en.wikipedia.org/wiki/Existential_quantification#Negation)to funguje. Tento výraz:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 je ekvivalentem:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
+```
 
 a každý ze dvou `any` dílčích výrazů je možné efektivně provádět pomocí obráceného indexu. V důsledku toho, že se jedná o [zákon o negaci kvantifikátorů](https://en.wikipedia.org/wiki/Existential_quantification#Negation), tento výraz:
 
+```odata-filter-expr
     seasons/all(s: s ne 'winter' and s ne 'fall')
+```
 
 je ekvivalentem:
 
+```odata-filter-expr
     not seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 což je důvod, proč je možné použít `all` s `ne` a `and` .
 

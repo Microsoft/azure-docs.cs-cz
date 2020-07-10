@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: e918740c884f377048febfe2177e2fe956b1d552
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085051"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207461"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Apache Hadoop izolovaným prostorem (sandbox), emulátor na virtuálním počítači
 
@@ -57,7 +57,9 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 
 2. Po přihlášení zadejte následující příkaz:
 
-        ambari-admin-password-reset
+    ```bash
+    ambari-admin-password-reset
+    ```
 
     Po zobrazení výzvy zadejte heslo pro účet správce Ambari. Tento přístup se používá při přístupu k webovému uživatelskému rozhraní Ambari.
 
@@ -65,13 +67,21 @@ Pokud si chcete stáhnout starší verzi izolovaného prostoru pro HDP, přečt�
 
 1. Z připojení SSH k izolovanému prostoru (sandbox) spusťte prostředí pro podregistr pomocí následujícího příkazu:
 
-        hive
+    ```bash
+    hive
+    ```
+
 2. Po spuštění prostředí použijte následující příkaz k zobrazení tabulek, které jsou k dispozici v izolovaném prostoru:
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
+
 3. K načtení 10 řádků z tabulky použijte následující `sample_07` :
 
-        select * from sample_07 limit 10;
+    ```hiveql
+    select * from sample_07 limit 10;
+    ```
 
 ## <a name="next-steps"></a>Další kroky
 

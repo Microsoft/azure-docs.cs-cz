@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: f226e240a59b33c2913919495410b1a4923b4902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261665"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206021"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozšíření virtuálního počítače Network Watcher agenta pro Windows
 
@@ -33,7 +34,7 @@ Tento dokument podrobně popisuje podporované platformy a možnosti nasazení p
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření agenta Network Watcher pro systém Windows lze spustit pro systémy Windows Server 2008 R2, 2012, 2012 R2 a 2016 verze. Nano Server se v tuto chvíli nepodporuje.
+Rozšíření agenta Network Watcher pro systém Windows lze spustit pro systémy Windows Server 2008 R2, 2012, 2012 R2, 2016 a 2019. Nano Server se v tuto chvíli nepodporuje.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
@@ -63,7 +64,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad |
+| Název | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. Azure. NetworkWatcher |

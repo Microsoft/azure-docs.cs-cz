@@ -7,11 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 9456d975ffb6d7726166f9badbcb8fe0ccbe5256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68965360"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203981"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Porovnání StorSimple s možnostmi přenosu dat pomocí Synchronizace souborů Azure a Data Boxu Edge 
 
@@ -27,14 +28,14 @@ Tento dokument poskytuje přehled možností místního přenosu dat do Azure, p
 
 |                           |StorSimple 8000   |Synchronizace souborů Azure   |Data Box Edge           |
 |---------------------------|----------------------------------------|-------------------------------|-----------------------------------------|
-|Přehled         |Vrstvené hybridní úložiště a archivace|Obecné úložiště souborového serveru s využitím vrstev cloudu a synchronizace více lokalit.  |Řešení úložiště pro předběžné zpracování dat a jejich odesílání přes síť do Azure        |
-|Scénáře        |Souborový server, archivace, cíl zálohování |Souborový server, archivace (více lokalit)   |Přenos dat, předběžné zpracování dat, včetně ML Inferencing, IoT, archivace    |
-|Výpočetní funkce Edge     |Není k dispozici |Není k dispozici |Podporuje spuštěné kontejnery pomocí Azure IoT Edge    |
-|Formulářový faktor      |Fyzické zařízení   |Agent nainstalovaný na Windows serveru |Fyzické zařízení   |
-|Hardware         |Fyzické zařízení poskytované od Microsoftu jako součást služby | Poskytnutý zákazník |Fyzické zařízení poskytované od Microsoftu jako součást služby  |
-|Formát dat      |Vlastní formát   |Soubory         |Objekty blob nebo soubory    |
-|Podpora protokolu |iSCSI          |SMB, NFS    | SMB nebo NFS      |
-|Ceny          |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Synchronizace souborů Azure](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
+|**Přehled**     |Vrstvené hybridní úložiště a archivace|Obecné úložiště souborového serveru s využitím vrstev cloudu a synchronizace více lokalit.  |Řešení úložiště pro předběžné zpracování dat a jejich odesílání přes síť do Azure        |
+|**Scénáře**    |Souborový server, archivace, cíl zálohování |Souborový server, archivace (více lokalit)   |Přenos dat, předběžné zpracování dat, včetně ML Inferencing, IoT, archivace    |
+|**Výpočetní funkce Edge** |Není k dispozici |Není k dispozici |Podporuje spuštěné kontejnery pomocí Azure IoT Edge    |
+|**Formulářový faktor**  |Fyzické zařízení   |Agent nainstalovaný na Windows serveru |Fyzické zařízení   |
+|**Hardware**     |Fyzické zařízení poskytované od Microsoftu jako součást služby | Poskytnutý zákazník |Fyzické zařízení poskytované od Microsoftu jako součást služby  |
+|**Formát dat**  |Vlastní formát   |Soubory         |Objekty blob nebo soubory    |
+|**Podpora protokolu** |iSCSI          |SMB, NFS    | SMB nebo NFS      |
+|**Ceny**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Synchronizace souborů Azure](https://azure.microsoft.com/pricing/details/storage/files/)  |[Data Box Edge](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 827d68a5f0f35e42acae1fa225646eb509f69c89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4525ea6e23c4f1c2c96ab2beb21e8bfd5b66ca50
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729315"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204222"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
 Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíže. ExpressRoute rozšiřuje místní síť do cloudu Microsoftu přes soukromé připojení, které běžně usnadňuje poskytovatel připojení. Připojení ExpressRoute tradičně zahrnuje tři odlišné síťové zóny, a to takto:
@@ -35,7 +36,7 @@ Tento článek vám pomůže ověřit ExpressRoute konektivitu a řešit potíž
 
 ## <a name="overview"></a>Přehled
 Následující diagram znázorňuje logické připojení sítě zákazníka k síti Microsoftu pomocí ExpressRoute.
-[![první]][1]
+[![1]][1]
 
 V předchozím diagramu čísla označují klíčové síťové body. Na tyto síťové body se v tomto článku odkazuje v době podle jejich přidruženého čísla. V závislosti na modelu připojení ExpressRoute – ve společném umístění v cloudu Exchange, připojení k síti Ethernet typu Point-to-Point nebo Any-to-Any (IPVPN) – síťové body 3 a 4 můžou být přepínače (zařízení vrstvy 2) nebo směrovače (zařízení vrstvy 3). V modelu přímého připojení neexistují žádné síťové body 3 a 4; místo toho se službu zápis certifikátů (2) přímo připojí k směrovači msee prostřednictvím tmavého vlákna. Klíčové body sítě jsou znázorněny takto:
 
@@ -94,7 +95,9 @@ Aby okruh ExpressRoute fungoval, musí být *povolen* *stav okruhu* a musí být
 ### <a name="verification-via-powershell"></a>Ověření prostřednictvím PowerShellu
 Pokud chcete zobrazit seznam všech okruhů ExpressRoute ve skupině prostředků, použijte následující příkaz:
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```
 
 >[!TIP]
 >Pokud hledáte název skupiny prostředků, můžete k ní získat výpis všech skupin prostředků ve vašem předplatném pomocí příkazu *Get-AzResourceGroup* .
@@ -103,37 +106,43 @@ Pokud chcete zobrazit seznam všech okruhů ExpressRoute ve skupině prostředk�
 
 Pokud chcete vybrat konkrétní okruh ExpressRoute ve skupině prostředků, použijte tento příkaz:
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```
 
 Ukázková odpověď:
 
-    Name                             : Test-ER-Ckt
-    ResourceGroupName                : Test-ER-RG
-    Location                         : westus2
-    Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                        "Name": "Standard_UnlimitedData",
-                                        "Tier": "Standard",
-                                        "Family": "UnlimitedData"
-                                        }
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
-    ServiceProviderNotes             : 
-    ServiceProviderProperties        : {
-                                        "ServiceProviderName": "****",
-                                        "PeeringLocation": "******",
-                                        "BandwidthInMbps": 100
-                                        }
-    ServiceKey                       : **************************************
-    Peerings                         : []
-    Authorizations                   : []
+```output
+Name                             : Test-ER-Ckt
+ResourceGroupName                : Test-ER-RG
+Location                         : westus2
+Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                    "Name": "Standard_UnlimitedData",
+                                    "Tier": "Standard",
+                                    "Family": "UnlimitedData"
+                                    }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+ServiceProviderNotes             : 
+ServiceProviderProperties        : {
+                                    "ServiceProviderName": "****",
+                                    "PeeringLocation": "******",
+                                    "BandwidthInMbps": 100
+                                    }
+ServiceKey                       : **************************************
+Peerings                         : []
+Authorizations                   : []
+```
 
 Pokud si chcete ověřit, jestli je okruh ExpressRoute funkční, věnujte zvláštní pozornost následujícím polím:
 
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
+```output
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+```
 
 > [!NOTE]
 > Pokud je *stav okruhu* po konfiguraci okruhu ExpressRoute v nepovoleném stavu, kontaktujte [Podpora Microsoftu][Support]. Na druhé straně, pokud je *stav poskytovatele* v nezřízeném stavu, obraťte se na svého poskytovatele služeb.
@@ -167,47 +176,56 @@ Jak je uvedeno v předchozím příkladu, jak je uvedeno u soukromého partnersk
 ### <a name="verification-via-powershell"></a>Ověření prostřednictvím PowerShellu
 Podrobnosti o konfiguraci privátního partnerského vztahu Azure získáte pomocí následujících příkazů:
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```
 
 Ukázková odpověď pro úspěšnou konfiguraci privátního partnerského vztahu je:
 
-    Name                       : AzurePrivatePeering
-    Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
-    Etag                       : W/"################################"
-    PeeringType                : AzurePrivatePeering
-    AzureASN                   : 12076
-    PeerASN                    : 123##
-    PrimaryPeerAddressPrefix   : 172.16.0.0/30
-    SecondaryPeerAddressPrefix : 172.16.0.4/30
-    PrimaryAzurePort           : 
-    SecondaryAzurePort         : 
-    SharedKey                  : 
-    VlanId                     : 200
-    MicrosoftPeeringConfig     : null
-    ProvisioningState          : Succeeded
+```output
+Name                       : AzurePrivatePeering
+Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
+Etag                       : W/"################################"
+PeeringType                : AzurePrivatePeering
+AzureASN                   : 12076
+PeerASN                    : 123##
+PrimaryPeerAddressPrefix   : 172.16.0.0/30
+SecondaryPeerAddressPrefix : 172.16.0.4/30
+PrimaryAzurePort           : 
+SecondaryAzurePort         : 
+SharedKey                  : 
+VlanId                     : 200
+MicrosoftPeeringConfig     : null
+ProvisioningState          : Succeeded
+```
 
  Úspěšně povolený kontext partnerského vztahu by měl mít uvedené předpony primární a sekundární adresy. Podsítě/30 se používají pro IP adresu rozhraní směrovači msee a zápis certifikátů/PE-směrovači msee.
 
 Podrobnosti o konfiguraci veřejného partnerského vztahu Azure získáte pomocí následujících příkazů:
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```
 
 Podrobnosti o konfiguraci partnerského vztahu Microsoftu získáte pomocí následujících příkazů:
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-     Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```
 
 Pokud partnerský vztah není nakonfigurovaný, bude se jednat o chybovou zprávu. Ukázková odpověď, když je v tomto příkladu uvedený partnerský vztah (veřejný partnerský vztah Azure v tomto příkladu), není v okruhu nakonfigurován:
 
-    Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
-    At line:1 char:1
-        + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
-        + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
-            + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
-
+```azurepowershell
+Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
+At line:1 char:1
+    + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
+    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
+        + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
+```
 
 > [!NOTE]
 > Pokud se povolení partnerského vztahu nepovede, ověřte, jestli se přiřazené primární a sekundární podsítě shodují s konfigurací u propojeného CE/PE – MSEE. Také ověřte, zda jsou v směrovači msee použity správné *VlanId*, *AzureASN*a *PeerASN* a zda jsou tyto hodnoty mapovány na ty, které jsou použity v propojeném CE/PE-MSEE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný jako u páru MSEE a PE-MSEE/CE. Dříve nakonfigurovaný sdílený klíč se z bezpečnostních důvodů nezobrazuje. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].  
@@ -233,28 +251,31 @@ Viz téma [získání tabulek ARP v dokumentu modelu nasazení Správce prostře
 
 Chcete-li získat směrovací tabulku z MSEE na *primární* cestě pro kontext *privátního* směrování, použijte následující příkaz:
 
-    Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
+```
 
 Příklad odpovědi:
 
-    Network : 10.1.0.0/16
-    NextHop : 10.17.17.141
-    LocPrf  : 
-    Weight  : 0
-    Path    : 65515
+```output
+Network : 10.1.0.0/16
+NextHop : 10.17.17.141
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-    Network : 10.1.0.0/16
-    NextHop : 10.17.17.140*
-    LocPrf  : 
-    Weight  : 0
-    Path    : 65515
+Network : 10.1.0.0/16
+NextHop : 10.17.17.140*
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-    Network : 10.2.20.0/25
-    NextHop : 172.16.0.1
-    LocPrf  : 
-    Weight  : 0
-    Path    : 123##
-
+Network : 10.2.20.0/25
+NextHop : 172.16.0.1
+LocPrf  : 
+Weight  : 0
+Path    : 123##
+```
 
 > [!NOTE]
 > Pokud je stav partnerského vztahu eBGP mezi MSEE a a MSEE/PE-MSEE aktivní nebo nečinný, ověřte, jestli se přiřazené primární a sekundární podsítě partnerského vztahu shodují s konfigurací u propojeného CE/PE-. Také ověřte, zda jsou v směrovači msee použity správné *VlanId*, *AzureAsn*a *PeerAsn* a zda jsou tyto hodnoty mapovány na ty, které se používají v propojeném prostředí PE-MSEE/CE. Pokud je zvolena hodnota hash MD5, sdílený klíč by měl být stejný v páru MSEE a CE/PE-MSEE. Pokud potřebujete změnit některou z těchto konfigurací na směrovači MSEE, přečtěte si téma [Vytvoření a úprava směrování pro okruh ExpressRoute][CreatePeering].
@@ -268,24 +289,32 @@ Příklad odpovědi:
 
 Následující příklad ukazuje odpověď příkazu pro partnerský vztah, který neexistuje:
 
-    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
-    StatusCode: 400
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
 ## <a name="confirm-the-traffic-flow"></a>Potvrzení toku přenosů
 Pokud chcete získat kombinovanou statistiku přenosu primárních a sekundárních cest – bajty v a mimo kontext partnerského vztahu, použijte následující příkaz:
 
-    Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+```azurepowershell
+Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+```
 
 Vzorový výstup příkazu je:
 
-    PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
-    -------------- --------------- ---------------- -----------------
-         240780020       239863857        240565035         239628474
+```output
+PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
+-------------- --------------- ---------------- -----------------
+     240780020       239863857        240565035         239628474
+```
 
 Ukázkový výstup příkazu pro neexistující partnerský vztah:
 
-    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
-    StatusCode: 400
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
 ## <a name="next-steps"></a>Další kroky
 Další informace nebo nápovědu najdete na následujících odkazech:

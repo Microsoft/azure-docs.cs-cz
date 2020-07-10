@@ -6,11 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523760"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207187"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Odolnost a zotavení po havárii
 
@@ -63,7 +64,11 @@ Všimněte si `optional` parametru předaného do `AddAzureAppConfiguration` fun
 
 ## <a name="synchronization-between-configuration-stores"></a>Synchronizace mezi úložišti konfigurací
 
-Je důležité, aby úložiště geograficky redundantních konfigurací měla stejnou sadu dat. Pomocí funkce **exportu** v konfiguraci aplikace můžete kopírovat data z primárního úložiště na sekundární na vyžádání. Tato funkce je k dispozici prostřednictvím Azure Portal i v rozhraní příkazového řádku.
+Je důležité, aby úložiště geograficky redundantních konfigurací měla stejnou sadu dat. Toho můžete dosáhnout dvěma způsoby:
+
+### <a name="backup-manually-using-the-export-function"></a>Ruční zálohování pomocí funkce exportu
+
+Pomocí funkce **exportu** v konfiguraci aplikace můžete kopírovat data z primárního úložiště na sekundární na vyžádání. Tato funkce je k dispozici prostřednictvím Azure Portal i v rozhraní příkazového řádku.
 
 Z Azure Portal můžete vložit změnu do jiného úložiště konfigurace pomocí následujících kroků.
 
@@ -71,15 +76,19 @@ Z Azure Portal můžete vložit změnu do jiného úložiště konfigurace pomoc
 
 1. V novém okně, které se otevře, zadejte předplatné, skupinu prostředků a název prostředku svého sekundárního úložiště a pak vyberte **použít**.
 
-1. Uživatelské rozhraní je aktualizované, abyste si mohli vybrat, jaká konfigurační data chcete exportovat do sekundárního úložiště. Můžete ponechat výchozí hodnotu čas jako je a nastavit jak **z popisku** , tak na **popisek** na stejnou hodnotu. Vyberte **Použít**.
+1. Uživatelské rozhraní je aktualizované, abyste si mohli vybrat, jaká konfigurační data chcete exportovat do sekundárního úložiště. Výchozí hodnotu čas můžete ponechat tak, jak je, a nastavit jak **z popisku** , tak i **popisku** na stejnou hodnotu. Vyberte **Použít**. Tento postup opakujte pro všechny popisky v primárním úložišti.
 
-1. Předchozí kroky opakujte pro všechny změny konfigurace.
+1. Předchozí kroky opakujte při každé změně konfigurace.
 
-K automatizaci tohoto procesu exportu použijte rozhraní příkazového řádku Azure. Následující příkaz ukazuje, jak exportovat jednu změnu konfigurace z primárního úložiště do sekundárního:
+Proces exportu se dá dosáhnout taky pomocí Azure CLI. Následující příkaz ukazuje, jak exportovat všechny konfigurace z primárního úložiště do sekundárního:
 
 ```azurecli
-    az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+    az appconfig kv export --destination appconfig --name {PrimaryStore} --dest-name {SecondaryStore} --label * --preserve-labels -y
 ```
+
+### <a name="backup-automatically-using-azure-functions"></a>Automatické zálohování pomocí Azure Functions
+
+Proces zálohování můžete automatizovat pomocí Azure Functions. Využívá integraci s Azure Event Grid v konfiguraci aplikace. Po nastavení bude konfigurace aplikace publikovat události, aby se Event Grid všechny změny provedené v úložišti konfigurace na klíčových hodnotách. Proto aplikace Azure Functions může naslouchat těmto událostem a odpovídajícím způsobem zálohovat data. Podrobnosti najdete v tomto kurzu, [Jak automaticky zálohovat úložiště konfigurace aplikací](./howto-backup-config-store.md).
 
 ## <a name="next-steps"></a>Další kroky
 

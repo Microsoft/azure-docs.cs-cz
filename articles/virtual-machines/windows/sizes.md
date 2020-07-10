@@ -7,22 +7,23 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8f91727ddc131b1f44acb4303a2368aed1890223
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60200bd35d142b8b55a40d6912f946f9421f52e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783295"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207658"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Velikosti virtuálních počítačů s Windows v Azure
 
 Tento článek popisuje dostupné velikosti a možnosti pro virtuální počítače Azure, které můžete použít ke spouštění aplikací a úloh pro Windows. Nabízí také informace o nasazení, které vám pomůžeme při plánování používání těchto prostředků.  Tento článek se týká virtuálních počítačů se systémem Windows i Linux.
 
-| Typ | Velikosti | Description |
+| Typ | Velikosti | Popis |
 |------|-------|-------------|
 | [Obecné účely](../sizes-general.md) | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC, DCv2, dv4, Dsv4, Ddv4, Ddsv4 | Poměr vyrovnaných PROCESORů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
-| [Optimalizované z hlediska výpočetních služeb](../sizes-compute.md) | Fsv2 | Vysoký poměr PROCESORů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery. |
-| [Optimalizované z hlediska paměti](../sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, Dv2 | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti. |
-| [Optimalizované z hlediska úložiště](../sizes-storage.md)  | Lsv2 | Vysoká propustnost disku a vstupně-výstupní operace jsou ideální pro velké objemy dat, SQL, databáze NoSQL, datové sklady a velké transakční databáze.  |
+| [Optimalizované pro výpočty](../sizes-compute.md) | Fsv2 | Vysoký poměr PROCESORů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery. |
+| [Optimalizované pro paměť](../sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, Dv2 | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti. |
+| [Optimalizované pro úložiště](../sizes-storage.md)  | Lsv2 | Vysoká propustnost disku a vstupně-výstupní operace jsou ideální pro velké objemy dat, SQL, databáze NoSQL, datové sklady a velké transakční databáze.  |
 | [GPU](../sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (Preview), NV, NVv3, NVv4 | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa a také školení modelů a Inferencing (ND) s hloubkovým učením. K dispozici s jedním nebo více grafickými procesory. |
 | [Vysokovýkonné výpočetní prostředí](../sizes-hpc.md) | HBv2, HC, H | Naši nejrychlejší a nejvíc nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). |
 
@@ -47,14 +48,18 @@ Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](
 
 Přečtěte si další informace o výpočetním výkonu pro virtuální počítače s Windows pomocí [skóre srovnávacího testu CoreMark](compute-benchmark-scores.md).
 
+## <a name="manage-costs"></a>Správa nákladů
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
+
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o různých velikostech virtuálních počítačů, které jsou k dispozici:
 
 - [Obecné účely](../sizes-general.md)
-- [Optimalizované z hlediska výpočetních služeb](../sizes-compute.md)
-- [Optimalizované z hlediska paměti](../sizes-memory.md)
-- [Optimalizované z hlediska úložiště](../sizes-storage.md)
-- [Optimalizované z hlediska GPU](../sizes-gpu.md)
+- [Optimalizované pro výpočty](../sizes-compute.md)
+- [Optimalizované pro paměť](../sizes-memory.md)
+- [Optimalizované pro úložiště](../sizes-storage.md)
+- [Optimalizované z hlediska GPU.](../sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](../sizes-hpc.md)
 - Podívejte se na stránku [předchozí generace](../sizes-previous-gen.md) pro standardní, Dv1 (D1-4 a D11-14 V1) a řady A8-A11.

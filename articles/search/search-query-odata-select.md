@@ -19,17 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfe438f6940d3ccd5632a47be1389a30748716b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113099"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206884"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>Syntaxe $select OData v Azure Kognitivní hledání
 
  Pomocí [parametru OData **$Select** ](query-odata-filter-orderby-syntax.md) můžete zvolit, která pole se mají zahrnout do výsledků hledání z Azure kognitivní hledání. V tomto článku se podrobně popisuje syntaxe **$Select** . Obecnější informace o tom, jak používat **$Select** při prezentaci výsledků hledání, najdete v tématu [jak pracovat s výsledky hledání v Azure kognitivní hledání](search-pagination-page-layout.md).
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 Parametr **$Select** určuje, která pole pro každý dokument jsou vrácena v sadě výsledků dotazu. Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro parametr **$Select** :
 
@@ -62,7 +63,9 @@ Pokud vypíšete komplexní pole bez explicitního určení jeho dílčích pol�
 
 `HotelId` `HotelName` `Rating` Do výsledků uveďte pole, a nejvyšší úrovně a také `City` dílčí pole pro `Address` :
 
+```odata-filter-expr
     $select=HotelId, HotelName, Rating, Address/City
+```
 
 Příklad výsledku může vypadat takto:
 
@@ -79,7 +82,9 @@ Příklad výsledku může vypadat takto:
 
 Do výsledků zahrňte `HotelName` pole nejvyšší úrovně a také všechna dílčí pole a `Address` `Type` a `BaseRate` dílčí pole jednotlivých objektů v `Rooms` kolekci:
 
+```odata-filter-expr
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
+```
 
 Příklad výsledku může vypadat takto:
 

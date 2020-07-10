@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 205a4bd119a7324c4e6524a0e29d432aa57bf315
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 2b547dbc8671481275952f4c3eae5683e9e3a06c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848208"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207529"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer nejčastějších dotazech
 
@@ -49,5 +49,9 @@ Pomocí příkazu nslookup můžete odeslat dotaz DNS pro název myip.opendns.co
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Jak funguje připojení k Azure Storage ve stejné oblasti?
 Pro připojení k úložišti ve stejné oblasti jako virtuální počítač není nutné mít odchozí připojení prostřednictvím výše uvedených scénářů. Pokud to nechcete, použijte skupiny zabezpečení sítě (skupin zabezpečení sítě), jak je vysvětleno výše. Připojení k úložišti v jiných oblastech vyžaduje odchozí připojení. Pamatujte na to, že při připojování k úložišti z virtuálního počítače ve stejné oblasti bude zdrojová IP adresa v diagnostických protokolech úložiště interní adresa poskytovatele, nikoli veřejná IP adresa vašeho virtuálního počítače. Pokud chcete omezit přístup k účtu úložiště na virtuální počítače v jedné nebo více Virtual Networkch podsítích ve stejné oblasti, při konfiguraci brány firewall účtu úložiště použijte [koncové body služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) a nemusíte mít veřejnou IP adresu. Po nakonfigurování koncových bodů služby se v diagnostických protokolech úložiště zobrazí vaše Virtual Network privátní IP adresa, nikoli adresa interního poskytovatele.
 
+## <a name="what-are-best-practises-with-respect-to-outbound-connectivity"></a>Jaké jsou nejlepší praxe s ohledem na odchozí připojení?
+Standard Load Balancer a standardní veřejná IP adresa přináší možnosti a různá chování pro odchozí připojení. Nejsou stejné jako základní SKU. Pokud chcete odchozí připojení při práci se standardními SKU, musíte ho explicitně definovat buď se standardními veřejnými IP adresami, nebo se standardními veřejnými Load Balancer. To zahrnuje vytvoření odchozího připojení při použití interního Standard Load Balancer. Doporučujeme vždy používat odchozí pravidla pro standardní veřejné Load Balancer. To znamená, že když se používá interní Standard Load Balancer, musíte provést kroky pro vytvoření odchozího připojení pro virtuální počítače ve fondu back-end, pokud je potřeba odchozí připojení. V kontextu odchozího připojení, jednoho samostatného virtuálního počítače, který je ve skupině dostupnosti, se všechny instance v VMSS chovají jako skupina. To znamená, že pokud je jeden virtuální počítač ve skupině dostupnosti přidružený ke standardní SKU, všechny instance virtuálních počítačů v této skupině dostupnosti se teď budou chovat stejnými pravidly, jako kdyby byly přidružené ke standardní SKU, a to i v případě, že se k ní nepřímo přidružit samostatná instance. V případě samostatného virtuálního počítače s několika síťovými kartami připojenými k nástroji pro vyrovnávání zatížení je toto chování také pozorováno. Pokud se jedna síťová karta přidá jako samostatná, bude to mít stejné chování. Pečlivě si Projděte celý dokument, abyste porozuměli celkovým koncepcím, Projděte si [Standard Load Balancer](load-balancer-standard-overview.md) rozdíly mezi SKU a zkontrolujte [odchozí pravidla](load-balancer-outbound-connections.md#outboundrules).
+Použití odchozích pravidel umožňuje detailní kontrolu nad všemi aspekty odchozího připojení.
+ 
 ## <a name="next-steps"></a>Další kroky
 Pokud Váš dotaz není uvedený výše, pošlete nám prosím svůj názor na tuto stránku s vaším dotazem. Tím se vytvoří problém GitHubu pro produktový tým, aby se zajistila odpověď na všechny naše oceněné dotazy zákazníků.

@@ -8,11 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466166"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206889"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Vytvoření privátního koncového bodu pro zabezpečené připojení k Azure Kognitivní hledání
 
@@ -43,9 +44,9 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Předplatné | Výběr předplatného|
+    | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK** . |
-    | Name | Zadejte *MyVirtualNetwork* |
+    | Název | Zadejte *MyVirtualNetwork* |
     | Oblast | Vyberte požadovanou oblast. |
     |||
 
@@ -85,11 +86,11 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | Umístění | Vyberte **západní USA**.|
-    | Name | Zadejte *myPrivateEndpoint*.  |
+    | Název | Zadejte *myPrivateEndpoint*.  |
     | Cílový dílčí prostředek | Ponechte výchozí **searchService**. |
     | **SÍTĚ** |  |
-    | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
-    | Podsíť | Vyberte *mySubnet*. |
+    | Virtuální síť  | Vyberte *MyVirtualNetwork* ze skupiny prostředků *myResourceGroup*. |
+    | Podsíť | Vyberte *mySubnet*. |
     | **INTEGRACE PRIVÁTNÍ DNS** |  |
     | Integrace s privátní zónou DNS  | Ponechte výchozí **hodnotu Ano**. |
     | Zóna privátního DNS  | Ponechte výchozí * * (New) privatelink.search.windows.net * *. |
@@ -188,7 +189,7 @@ V této části ověříte přístup ke službě Search pomocí privátní sít�
 
 Pokud je koncový bod vyhledávací služby privátní, některé funkce portálu jsou zakázané. Budete moct zobrazit a spravovat nastavení úrovně služby, ale přístup k indexovým datům a různým dalším součástem ve službě, jako je index, indexer a definice dovednosti, se z bezpečnostních důvodů omezuje.
 
-1. Ve vzdálené ploše *myVM*otevřete PowerShell.
+1. Ve vzdálené ploše *myVM*otevřete PowerShell.
 
 1. Zadejte příkaz nslookup [Search [název služby]. Search. Windows. NET.
 
@@ -206,7 +207,7 @@ Pokud je koncový bod vyhledávací služby privátní, některé funkce portál
 
 1. Dokončení rychlého startu z virtuálního počítače je vaším potvrzením, že služba je plně funkční.
 
-1. Zavřete připojení ke vzdálené ploše pro *myVM*. 
+1. Zavřete připojení ke vzdálené ploše pro *myVM*. 
 
 1. Pokud chcete ověřit, že vaše služba není přístupná na veřejném koncovém bodu, otevřete ho na místní pracovní stanici a pokuste se o několik úkolů v rychlém startu. Pokud se zobrazí chyba, že vzdálený server neexistuje, úspěšně jste nakonfigurovali soukromý koncový bod pro vaši vyhledávací službu.
 

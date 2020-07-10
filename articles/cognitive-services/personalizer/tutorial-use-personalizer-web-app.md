@@ -1,17 +1,17 @@
 ---
 title: Použití aplikace Web App-personalizovat
 description: Přizpůsobení webové aplikace v jazyce C# .NET pomocí smyčky vlastního nastavení pro poskytnutí správného obsahu uživateli na základě akcí (s funkcemi) a funkcí kontextu.
-ms.topic: troubleshooting
+ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 9def69a1540e81b99723c16ad34ba522d1737c7f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9514e92432c2be5441dec5ff998a9deede35d7f4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84713914"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207595"
 ---
-# <a name="add-personalizer-to-a-net-web-app"></a>Přidání přizpůsobení do webové aplikace .NET
+# <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Kurz: Přidání přizpůsobení do webové aplikace .NET
 
 Přizpůsobení webové aplikace v jazyce C# .NET pomocí smyčky vlastního nastavení pro poskytnutí správného obsahu uživateli na základě akcí (s funkcemi) a funkcí kontextu.
 
@@ -294,7 +294,7 @@ Toto je typická webová aplikace .NET s klientskou aplikací, takže většina 
 
 V **Startup.cs**serveru se pomocí koncového bodu a klíče přizpůsobeného objektu vytvoří klient přizpůsobeného pro přizpůsobení. Klientská aplikace nemusí v této aplikaci komunikovat s přizpůsobením, místo toho, aby tato volání sady SDK spoléhala na server.
 
-Spouštěcí kód .NET webového serveru je:
+Spouštěcí kód pro .NET webového serveru je:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Personalizer;

@@ -1,7 +1,7 @@
 ---
-title: Řešení chyb modulu
+title: Řešení chyb modulu Designer (Preview)
 titleSuffix: Azure Machine Learning
-description: Řešení potíží s výjimkami modulu v Návrháři Azure Machine Learning pomocí kódů chyb
+description: Řešení potíží s kódy chyb modulu v Návrháři Azure Machine Learning (Preview)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,11 +9,12 @@ ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b477fbf0744304b28b3f4ef06271ce7728800bf
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213750"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206994"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (Preview)
 
@@ -355,7 +356,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 ## <a name="error-0018"></a>Chyba 0018  
  Pokud vstupní datová sada není platná, dojde k výjimce.  
 
-**Řešení:** Tato chyba v Azure Machine Learning se může objevit v mnoha kontextech, takže neexistuje jedno řešení. Obecně se v případě chyby značí, že data zadaná jako vstup modulu mají nesprávný počet sloupců nebo že datový typ neodpovídá požadavkům modulu. Příklad:  
+**Řešení:** Tato chyba v Azure Machine Learning se může objevit v mnoha kontextech, takže neexistuje jedno řešení. Obecně se v případě chyby značí, že data zadaná jako vstup modulu mají nesprávný počet sloupců nebo že datový typ neodpovídá požadavkům modulu. Zde je příklad:  
 
 -   Modul vyžaduje sloupec popisku, ale žádný sloupec není označený jako popisek nebo jste ještě nevybrali sloupec popisku.  
   
@@ -437,7 +438,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 ## <a name="error-0022"></a>Chyba 0022  
  K výjimce dojde v případě, že počet vybraných sloupců ve vstupní datové sadě se nerovná očekávanému počtu.  
 
- K této chybě v Azure Machine Learning může dojít v případě, že modul pro příjem dat nebo operace vyžaduje určitý počet sloupců nebo vstupů a zadali jste příliš málo nebo příliš mnoho sloupců nebo vstupů. Příklad:  
+ K této chybě v Azure Machine Learning může dojít v případě, že modul pro příjem dat nebo operace vyžaduje určitý počet sloupců nebo vstupů a zadali jste příliš málo nebo příliš mnoho sloupců nebo vstupů. Zde je příklad:  
 
 -   Zadejte sloupec nebo klíčový sloupec s jedním popiskem a náhodně vybrané více sloupců.  
   

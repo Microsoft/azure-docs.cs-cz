@@ -1,5 +1,5 @@
 ---
-title: Interpretace & vysvětlení modelů ML v Pythonu
+title: Interpretace & vysvětlit ML v Pythonu (Preview)
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak získat vysvětlení způsobu, jakým váš model strojového učení určuje důležitost funkcí a který je předpovědi při použití sady SDK Azure Machine Learning.
 services: machine-learning
@@ -9,15 +9,16 @@ ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
-ms.date: 04/12/2020
+ms.date: 07/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 32b33eed6b4dba303993f4c16fbd2ad42b3902f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3830f65a3435c1db0291811c6306ea579bf1d896
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560206"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207146"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Vysvětlení modelů ML & předpovědi v Pythonu pomocí balíčku pro interpretaci
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Vysvětlení modelů ML & předpovědi v Pythonu (Preview) pomocí balíčku pro interpretaci
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -243,7 +244,7 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
     pip install azureml-interpret
     pip install azureml-contrib-interpret
     ```
-1. Vytvořte školicí skript v místním Jupyter poznámkovém bloku. Například, `train_explain.py`.
+1. Vytvořte školicí skript v místním Jupyter poznámkovém bloku. Například `train_explain.py`.
 
     ```python
     from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
@@ -303,7 +304,7 @@ Po stažení vysvětlení v místním poznámkovém bloku Jupyter můžete model
 
 Následující vykreslení poskytují celkový přehled o škole modelu spolu s jeho předpovědi a vysvětleními.
 
-|Znázorněte|Description|
+|Znázorněte|Popis|
 |----|-----------|
 |Zkoumání dat| Zobrazí přehled datové sady spolu s hodnotami předpovědi.|
 |Globální důležitost|Agreguje hodnoty důležitosti funkcí jednotlivých datapoints k zobrazení celkových důležitých funkcí modelu (konfigurovatelné K). Pomáhá pochopit celkové chování základního modelu.|
@@ -317,7 +318,7 @@ Následující vykreslení poskytují celkový přehled o škole modelu spolu s 
 
 Můžete načíst zobrazení důležitosti jednotlivých funkcí pro libovolný datový bod tak, že kliknete na kterýkoli z jednotlivých datových bodů v některém z celkových vykreslení.
 
-|Znázorněte|Description|
+|Znázorněte|Popis|
 |----|-----------|
 |Místní důležitost|Zobrazuje horních K (konfigurovatelné K) důležité funkce pro jednotlivé předpovědi. Pomáhá ilustrovat místní chování základního modelu v konkrétním datovém bodě.|
 |Průzkum Perturbation (citlivostní analýza)|Umožňuje změnit hodnoty funkcí vybraného datového bodu a sledovat výsledné změny hodnoty předpovědi.|
@@ -334,7 +335,7 @@ Můžete načíst zobrazení důležitosti jednotlivých funkcí pro libovolný 
 > [!NOTE]
 > Před spuštěním jádra Jupyter se ujistěte, že jste povolili rozšíření widgetů pro řídicí panel vizualizace.
 
-* Poznámkové bloky Jupyter
+* Jupyter Notebooks
 
     ```shell
     jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize

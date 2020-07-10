@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 258dfec20644ee29368de075673dfc7798bee28a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083538"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207376"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazování Apache Hivu prostřednictvím ovladače JDBC v HDInsightu
 
@@ -33,7 +33,9 @@ Další informace o rozhraní JDBC podregistru najdete v tématu [HiveJDBCInterf
 
 Připojení JDBC k clusteru HDInsight v Azure se provádí přes port 443. Přenosy se zabezpečují pomocí protokolu TLS/SSL. Veřejná brána, kterou cluster zaznamená, přesměruje provoz na port, na kterém HiveServer2 skutečně naslouchá. Následující připojovací řetězec ukazuje formát, který se má použít pro HDInsight:
 
+```http
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
+```
 
 Parametr `CLUSTERNAME` nahraďte názvem vašeho clusteru HDInsight.
 
@@ -49,7 +51,7 @@ Název hostitele CLUSTERNAME.azurehdinsight.net v připojovacím řetězci je st
 
 **Port 443** můžete použít jenom pro připojení ke clusteru z některých míst mimo virtuální síť Azure. HDInsight je spravovaná služba, která znamená, že všechna připojení ke clusteru se spravují přes zabezpečenou bránu. K HiveServer 2 se nemůžete připojit přímo na portech 10001 nebo 10000. Tyto porty nejsou vystavené vně.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Ověřování uživatelů
 
 Při navazování připojení použijte k ověření název správce clusteru HDInsight a heslo. Z JDBC klientů, jako je SQuirreL SQL, zadejte do nastavení klienta jméno správce a heslo.
 
@@ -121,7 +123,7 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
 
 9. Po připojení zadejte následující dotaz do dialogového okna dotazu SQL a pak vyberte ikonu **Spustit** (spuštěná osoba). V oblasti výsledků by se měly zobrazit výsledky dotazu.
 
-    ```hql
+    ```hiveql
     select * from hivesampletable limit 10;
     ```
 
@@ -131,7 +133,7 @@ SQuirreL SQL je klient JDBC, který se dá použít pro vzdálenou spouštění 
 
 Příklad použití klienta Java k dotazování na podregistr v HDInsight je k dispozici na adrese [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) . Podle pokynů v úložišti Sestavte a spusťte ukázku.
 
-## <a name="troubleshooting"></a>Odstraňování potíží
+## <a name="troubleshooting"></a>Řešení potíží
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Při pokusu o otevření připojení SQL došlo k neočekávané chybě.
 

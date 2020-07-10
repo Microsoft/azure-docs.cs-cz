@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ac76ef5eeebd278dc10e03d661bb21469c8f4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610557"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203664"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
@@ -138,7 +138,7 @@ V následující tabulce jsou uvedeny parametry šablon Správce prostředků pr
 | volumeType | Typ svazku, na kterém se operace šifrování provádí. Platné hodnoty jsou _operační systém_, _data_a _vše_. 
 | forceUpdateTag | Pokaždé, když je potřeba vynutit spuštění operace, předat jedinečnou hodnotu, třeba identifikátor GUID. |
 | resizeOSDisk | Měl by se změnit velikost oddílu operačního systému tak, aby zabírala plný virtuální pevný disk s operačním systémem, než se rozdělí systémový svazek. |
-| location | Umístění pro všechny prostředky. |
+| location | Umístění pro všechny prostředky |
 
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Nové virtuální počítače s IaaS vytvořené z VHD a šifrovacích klíčů šifrovaných zákazníkem
@@ -238,6 +238,9 @@ Azure Disk Encryption nefunguje v následujících scénářích, funkcích a te
 - Virtuální počítače s Gen2 (viz: [Podpora pro virtuální počítače 2. generace v Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
 - Virtuální počítače řady Lsv2 (viz: [Lsv2-Series](../lsv2-series.md))
 - Virtuální počítače řady M-Series s Akcelerátor zápisu disky.
+- Použití [šifrování na straně serveru u klíčů spravovaných zákazníkem](disk-encryption.md) na virtuální počítače zašifrované přes ADE a naopak.
+- Migrace virtuálního počítače zašifrovaného přes ADE na [serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).
+
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,11 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0348461e2a58bd8e71b8dff10667c512125d7b03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9160ab530037da1f24a2f07903b949b42ecbb34b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656708"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207079"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption
 
@@ -22,6 +23,9 @@ Azure Disk Encryption používá Azure Key Vault k řízení a správě šifrova
 > - Pokud jste předtím používali Azure Disk Encryption se službou Azure AD k šifrování virtuálního počítače, musíte tuto možnost použít k zašifrování virtuálního počítače. Podrobnosti najdete v tématu [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-key-vault-aad.md) .
 
 Vytvoření a konfigurace trezoru klíčů pro použití s Azure Disk Encryption zahrnuje tři kroky:
+
+> [!Note]
+> Chcete-li povolit přístup k Azure Disk Encryption šifrování svazku, je nutné vybrat možnost v nastavení zásad přístupu Azure Key Vault.
 
 1. V případě potřeby vytvořte skupinu prostředků.
 2. Vytváří se Trezor klíčů. 

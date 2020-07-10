@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: a055216634775254867421854aa0b456fa90c709
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 7aa0889ab95cdac37f9fe0735c7ad58569621059
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85551040"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205402"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer komponenty
 
 Azure Load Balancer obsahuje několik klíčových součástí. Tyto komponenty můžete nakonfigurovat v předplatném prostřednictvím:
 
-* portál Azure
+* Azure Portal
 * Azure CLI
 * Azure PowerShell
 * Šablony Resource Manageru
@@ -38,9 +38,9 @@ Povaha IP adresy určuje **typ** vytvořeného nástroje pro vyrovnávání zat�
 
 |  | Veřejný Load Balancer  | Interní nástroj pro vyrovnávání zatížení |
 | ---------- | ---------- | ---------- |
-| Konfigurace IP adresy front-endu| Veřejná IP adresa | Privátní IP adresa|
-| Popis | Veřejný Nástroj pro vyrovnávání zatížení mapuje veřejnou IP adresu a port příchozího provozu na privátní IP adresu a port virtuálního počítače. Nástroj pro vyrovnávání zatížení mapuje jiný způsob provozování odezvy z virtuálního počítače. Pomocí pravidel vyrovnávání zatížení můžete distribuovat konkrétní typy provozu napříč několika virtuálními počítači nebo službami. Můžete například rozložit zatížení provozu webových požadavků mezi několik webových serverů.| Interní nástroj pro vyrovnávání zatížení distribuuje provoz do prostředků, které jsou uvnitř virtuální sítě. Azure omezuje přístup k IP adresám front-endu virtuální sítě s vyrovnáváním zatížení. Front-endové IP adresy a virtuální sítě se nikdy přímo nezveřejňují do internetového koncového bodu. Interní obchodní aplikace se spouštějí v Azure a přistupuje se k nim v rámci Azure nebo z místních prostředků. |
-| Podporované SKU | Basic, Standard | Basic, Standard |
+| **Konfigurace IP adresy front-endu**| Veřejná IP adresa | Privátní IP adresa|
+| **Popis** | Veřejný Nástroj pro vyrovnávání zatížení mapuje veřejnou IP adresu a port příchozího provozu na privátní IP adresu a port virtuálního počítače. Nástroj pro vyrovnávání zatížení mapuje jiný způsob provozování odezvy z virtuálního počítače. Pomocí pravidel vyrovnávání zatížení můžete distribuovat konkrétní typy provozu napříč několika virtuálními počítači nebo službami. Můžete například rozložit zatížení provozu webových požadavků mezi několik webových serverů.| Interní nástroj pro vyrovnávání zatížení distribuuje provoz do prostředků, které jsou uvnitř virtuální sítě. Azure omezuje přístup k IP adresám front-endu virtuální sítě s vyrovnáváním zatížení. Front-endové IP adresy a virtuální sítě se nikdy přímo nezveřejňují do internetového koncového bodu. Interní obchodní aplikace se spouštějí v Azure a přistupuje se k nim v rámci Azure nebo z místních prostředků. |
+| **Podporované SKU** | Basic, Standard | Basic, Standard |
 
 ![Příklad vrstveného nástroje pro vyrovnávání zatížení](./media/load-balancer-overview/load-balancer.png)
 
@@ -118,7 +118,7 @@ Například pokud chcete, aby relace protokol RDP (Remote Desktop Protocol) (RDP
 
 Příchozí pravidla NAT v kontextu Virtual Machine Scale Sets jsou příchozí fondy NAT. Přečtěte si další informace o [komponentách Load Balancer a sadě škálování virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#azure-virtual-machine-scale-sets-with-azure-load-balancer).
 
-## <a name="outbound-rules"></a>Odchozí pravidla
+## <a name="outbound-rules"></a>Pravidla odchozích přenosů
 
 Odchozí pravidlo konfiguruje odchozí překlad síťových adres (NAT) pro všechny virtuální počítače nebo instance identifikované fondem back-end. Toto pravidlo umožňuje, aby instance v back-endu komunikovaly (odchozí) na Internet nebo jiné koncové body.
 

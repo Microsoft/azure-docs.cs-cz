@@ -3,14 +3,15 @@ title: Ověřování a autorizace
 description: Přečtěte si informace o integrovaném ověřování a podpoře autorizace v Azure App Service a Azure Functions a o tom, jak vám může pomoci se zabezpečením aplikace před neoprávněným přístupem.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196436"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206755"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Ověřování a autorizace v Azure App Service a Azure Functions
 
@@ -34,7 +35,7 @@ Informace specifické pro nativní mobilní aplikace najdete v tématech [ověř
 
 Modul ověřování a autorizace se spouští ve stejném izolovaném prostoru jako váš kód aplikace. Pokud je povolena, každý příchozí požadavek HTTP projde před tím, než bude zpracován kódem vaší aplikace.
 
-![](media/app-service-authentication-overview/architecture.png)
+![Diagram architektury znázorňující požadavky, které jsou zachyceny procesem v izolovaném prostoru webu, který komunikuje s poskytovateli identity před povolením provozu do nasazené lokality](media/app-service-authentication-overview/architecture.png)
 
 Tento modul zpracovává několik věcí pro vaši aplikaci:
 
@@ -81,8 +82,11 @@ App Service používá [federované identity](https://en.wikipedia.org/wiki/Fede
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
+| Libovolný poskytovatel [OpenID Connect](https://openid.net/connect/) (Preview) | `/.auth/login/<providerName>` |
 
-Pokud povolíte ověřování a autorizaci jedním z těchto poskytovatelů, je k dispozici koncový bod přihlášení pro ověřování uživatelů a ověření tokenů ověřování od poskytovatele. Uživatelům můžete snadno poskytnout libovolný počet možností přihlašování. Můžete také integrovat jiného poskytovatele identity nebo vlastní [řešení identity][custom-auth].
+Pokud povolíte ověřování a autorizaci jedním z těchto poskytovatelů, je k dispozici koncový bod přihlášení pro ověřování uživatelů a ověření tokenů ověřování od poskytovatele. Uživatelům můžete snadno poskytnout libovolný počet možností přihlašování.
+
+[Starší cesta rozšíření][custom-auth] existuje pro integraci s jinými zprostředkovateli identity nebo vlastním ověřovacím řešením, ale nedoporučuje se to. Místo toho zvažte použití podpory OpenID Connect.
 
 ## <a name="authentication-flow"></a>Tok ověřování
 
@@ -112,7 +116,7 @@ Pro klientské prohlížeče App Service může automaticky směrovat všechny n
 
 V [Azure Portal](https://portal.azure.com)můžete nakonfigurovat App Service autorizaci s řadou chování, když příchozí žádost není ověřena.
 
-![](media/app-service-authentication-overview/authorization-flow.png)
+![Snímek obrazovky s rozevíracím seznamem "akce, která se má provést, když se žádost neověřuje"](media/app-service-authentication-overview/authorization-flow.png)
 
 Tyto možnosti jsou popsány v následujících nadpisech.
 
@@ -150,13 +154,14 @@ Návody pro konkrétního poskytovatele:
 * [Konfigurace aplikace pro použití přihlášení ke Googlu][Google]
 * [Konfigurace aplikace pro použití přihlášení k účtu Microsoft][MSA]
 * [Konfigurace aplikace pro použití přihlášení k Twitteru][Twitter]
-* [Postupy: použití vlastního ověřování pro vaši aplikaci][custom-auth]
+* [Jak nakonfigurovat aplikaci tak, aby používala poskytovatele OpenID Connect pro přihlášení (Preview)][OIDC]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
 [Google]: configure-authentication-provider-google.md
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
+[OIDC]: configure-authentication-provider-openid-connect.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 
