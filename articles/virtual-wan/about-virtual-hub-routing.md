@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6809429b26eea30ca0569044634308d2e4dff9f7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025977"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147382"
 ---
 # <a name="about-virtual-hub-routing"></a>Informace o směrováních virtuálních center
 
@@ -25,11 +25,15 @@ Pokud chcete nakonfigurovat směrování, přečtěte si téma [Jak konfigurovat
 
 V následujících částech najdete popis klíčových konceptů v směrování virtuálního rozbočovače.
 
+> [!NOTE]
+> Některé z těchto nových konceptů tabulky směrování centra, přidružení, šíření a statických tras ve virtuální síti se můžou pořád vydávat a očekávat v týdnu od srpna 3.
+>
+
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Tabulka směrování centra
 
 Tabulka směrování virtuálního rozbočovače může obsahovat jednu nebo více tras. Trasa zahrnuje její název, popisek, cílový typ, seznam cílových předpon a další informace o směrování pro paket, který má být směrován. **Připojení** obvykle bude mít konfiguraci směrování, která se přidruží nebo šíří do směrovací tabulky.
 
-### <a name="connection"></a><a name="connection"></a>Připojení
+### <a name="connection"></a><a name="connection"></a>Vázán
 
 Připojení jsou Správce prostředků prostředky, které mají konfiguraci směrování. Existují čtyři typy připojení:
 
@@ -59,10 +63,6 @@ Připojení dynamicky šíří trasy do směrovací tabulky. S připojením VPN,
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Konfigurace statických tras v připojení k virtuální síti
 
 Konfigurace statických tras poskytuje mechanismus pro řízení provozu prostřednictvím IP adresy dalšího směrování, což může být virtuální síťové zařízení (síťové virtuální zařízení) zřízené ve virtuální síti paprsků připojené k virtuálnímu rozbočovači. Statická trasa se skládá z názvu trasy, seznamu předpon cíle a IP adresy dalšího směrování.
-
-> [!NOTE]
-> Některé z těchto nových konceptů přidružení, šíření a statických tras ve virtuální síti se můžou pořád vyvádět a očekávat v týdnu od srpna 3.
->
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Směrování tabulek v základních a standardních virtuálních sítích WAN před sadou funkcí asociace a rozšíření
 

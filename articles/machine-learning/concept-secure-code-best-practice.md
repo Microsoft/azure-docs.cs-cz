@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: larryfr
 author: larryfr
 ms.date: 11/12/2019
-ms.openlocfilehash: 8932640a69ad68e0fd30b8577ba95768dbf8b9b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e41323d05f1a81fbc73a9158cf30c2b0f7953f3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660809"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147060"
 ---
 # <a name="secure-code-best-practices-with-azure-machine-learning"></a>Bezpečné osvědčené postupy pro kód pomocí Azure Machine Learning
 
-V Azure Machine Learning můžete nahrávat soubory a obsah z libovolného zdroje. Obsah v rámci Jupyter poznámkových bloků nebo skriptů může potenciálně číst data z vašich relací, přistupovat k datům v rámci vaší organizace v Azure nebo spouštět škodlivé procesy vaším jménem.
+V Azure Machine Learning můžete do Azure nahrávat soubory a obsah z libovolného zdroje. Obsah ve Jupyter poznámkových blocích nebo skriptech, které načtete, může potenciálně číst data z vašich relací, přistupovat k datům v rámci vaší organizace v Azure nebo spouštět škodlivé procesy vaším jménem.
 
 > [!IMPORTANT]
 > Spouštějte pouze poznámkové bloky nebo skripty z důvěryhodných zdrojů. Například pokud jste vy nebo váš tým zabezpečení zkontrolovali Poznámkový blok nebo skript.

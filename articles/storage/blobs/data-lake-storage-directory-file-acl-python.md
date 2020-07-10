@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: tracking-python
-ms.openlocfilehash: f5ff33d021f27f2c5dfb86ca87f2579602f0d1cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07708de1326e0aba6485b2cf1fb0610d9710cdf7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559156"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142468"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
@@ -93,11 +94,11 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 > [!NOTE]
 > Další příklady najdete v dokumentaci ke [klientské knihovně Azure identity pro Python](https://pypi.org/project/azure-identity/) .
 
-## <a name="create-a-file-system"></a>Vytvoření systému souborů
+## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Systém souborů funguje jako kontejner pro vaše soubory. Můžete jej vytvořit zavoláním metody **FileSystemDataLakeServiceClient. create_file_system** .
+Kontejner funguje jako systém souborů pro vaše soubory. Můžete jej vytvořit zavoláním metody **FileSystemDataLakeServiceClient. create_file_system** .
 
-Tento příklad vytvoří systém souborů s názvem `my-file-system` .
+Tento příklad vytvoří kontejner s názvem `my-file-system` .
 
 ```python
 def create_file_system():
@@ -115,7 +116,7 @@ def create_file_system():
 
 Vytvořte odkaz na adresář voláním metody **FileSystemClient. create_directory** .
 
-Tento příklad přidá adresář s názvem `my-directory` do systému souborů. 
+Tento příklad přidá adresář s názvem `my-directory` do kontejneru. 
 
 ```python
 def create_directory():

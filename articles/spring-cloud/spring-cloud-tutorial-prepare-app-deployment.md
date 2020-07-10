@@ -1,17 +1,17 @@
 ---
 title: Postup přípravy aplikace pružiny v jazyce Java pro nasazení v jarním cloudu Azure
-description: V tomto tématu připravíte pružinovou aplikaci Java pro nasazení do jarního cloudu Azure.
+description: Přečtěte si, jak připravit pružinovou aplikaci Java pro nasazení do jarního cloudu Azure.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1840979fc1380f1e0d14f3a0a74eef5fa6df6538
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833379"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141870"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
 
@@ -253,7 +253,7 @@ Zahrňte `spring-boot-starter-actuator` závislost do oddílu závislosti v soub
 </dependency>
 ```
 
- Musíte taky povolit instanci Azure Application Insights, abyste mohli pracovat s instancí cloudové služby Azure na jaře. Přečtěte si [kurz o distribuovaném trasování](spring-cloud-tutorial-distributed-tracing.md) a Naučte se používat Application Insights s využitím Azure jaře cloudu.
+ Musíte taky povolit instanci Azure Application Insights, abyste mohli pracovat s instancí cloudové služby Azure na jaře. Informace o tom, jak používat Application Insights s využitím služby Azure Pramenitého cloudu, najdete v [dokumentaci k distribuovanému trasování](spring-cloud-tutorial-distributed-tracing.md).
 
 ## <a name="see-also"></a>Viz také
 * [Analýza protokolů a metrik aplikace](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
@@ -264,9 +264,6 @@ Zahrňte `spring-boot-starter-actuator` závislost do oddílu závislosti v soub
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto tématu jste zjistili, jak nakonfigurovat svoji aplikaci v jazyce Java pro nasazení do jarního cloudu Azure. Informace o tom, jak nastavit instanci konfiguračního serveru, najdete v následujícím článku.
-
-> [!div class="nextstepaction"]
-> [Přečtěte si, jak nastavit instanci konfiguračního serveru.](spring-cloud-tutorial-config-server.md)
+V tomto tématu jste zjistili, jak nakonfigurovat svoji aplikaci v jazyce Java pro nasazení do jarního cloudu Azure. Informace o tom, jak nastavit instanci konfiguračního serveru, najdete v tématu [Nastavení instance konfiguračního serveru](spring-cloud-tutorial-config-server.md).
 
 Další ukázky jsou k dispozici na GitHubu: [ukázky Azure pro jarní Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

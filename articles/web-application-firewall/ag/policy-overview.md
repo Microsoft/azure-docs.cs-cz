@@ -7,19 +7,19 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060266"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143831"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Přehled zásad firewallu webových aplikací Azure (WAF)
 
 Zásady firewallu webových aplikací obsahují všechna nastavení a konfigurace WAF. Patří sem vyloučení, vlastní pravidla, spravovaná pravidla atd. Tyto zásady jsou pak přidruženy k aplikační bráně (globálním), naslouchacímu procesu (na pracovišti) nebo pravidlu založenému na cestě (pro identifikátor URI), aby se mohly projevit.
 
 > [!NOTE]
-> Brány firewall webových aplikací Azure (WAF) pro jednotlivé lokality a zásady pro identifikátor URI jsou v Public Preview.
+> Zásady firewallu webových aplikací (WAF) Azure pro jednotlivé identifikátory URI jsou v Public Preview.
 > 
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, mohou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

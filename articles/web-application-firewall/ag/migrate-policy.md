@@ -7,15 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536620"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143847"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Migrace zásad firewallu webových aplikací pomocí Azure PowerShell
 
-Tento skript usnadňuje přechod z WAF konfigurace nebo vlastní pravidla WAF zásady na úplné zásady WAF. Na portálu se může zobrazit upozornění, které se dá *migrovat na zásady WAF*, nebo můžete chtít, aby se nové funkce Public Preview WAF, jako jsou vlastní pravidla pro inshodě, zásady pro jednotlivé lokality a identifikátory URI WAF, nebo RuleSet pro zmírnění hrozeb. Pokud chcete použít některou z těchto funkcí, potřebujete k vaší aplikační bráně přidružené úplné zásady WAF. 
+Tento skript usnadňuje přechod z WAF konfigurace nebo vlastní pravidla WAF zásady na úplné zásady WAF. Na portálu se může zobrazit upozornění, které se dá *migrovat na zásady WAF*, nebo můžete chtít, aby se nové funkce WAF, jako jsou třeba vlastní pravidla pro geografickou shodu (Preview), zásady WAF pro jednotlivé lokality a zásady pro WAF pro identifikátor URI (Preview), nebo RuleSet s omezením na robot (Preview). Pokud chcete použít některou z těchto funkcí, potřebujete k vaší aplikační bráně přidružené úplné zásady WAF. 
 
 Další informace o vytváření nových zásad WAF najdete v tématu věnovaném [Vytvoření zásad firewallu webových aplikací pro Application Gateway](create-waf-policy-ag.md). Informace o migraci najdete v tématu [migrace na zásady WAF](create-waf-policy-ag.md#migrate-to-waf-policy).
 

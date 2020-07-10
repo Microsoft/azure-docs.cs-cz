@@ -19,17 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47e7e09bae082141efd872d3a90ecc30a3be04e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113234"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146069"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Operátory kolekce OData v Azure Kognitivní hledání – `any` a`all`
 
 Při psaní [výrazu filtru OData](query-odata-filter-orderby-syntax.md) pro použití s Azure kognitivní hledání je často užitečné filtrovat pole kolekcí. Můžete to dosáhnout pomocí `any` `all` operátorů a.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá `any` nebo `all` .
 
@@ -65,23 +66,33 @@ Existují tři formy výrazů, které filtrují kolekce.
 
 Porovná dokumenty `tags` , jejichž pole obsahuje přesně řetězec "WiFi":
 
-    tags/any(t: t eq 'wifi')
+```text
+tags/any(t: t eq 'wifi')
+```
 
 Porovnává dokumenty, kde každý prvek v `ratings` poli spadá mezi 3 a 5 včetně:
 
-    ratings/all(r: r ge 3 and r le 5)
+```text
+ratings/all(r: r ge 3 and r le 5)
+```
 
 Porovnává dokumenty, kde jsou některé geografické souřadnice v `locations` poli uvnitř daného mnohoúhelníku:
 
-    locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```text
+locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```
 
 Odpovídá dokumentům, kde `rooms` je pole prázdné:
 
-    not rooms/any()
+```text
+not rooms/any()
+```
 
 Porovnává dokumenty, kde jsou všechny místnosti, `rooms/amenities` pole obsahuje "TV" a `rooms/baseRate` je menší než 100:
 
-    rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```text
+rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```
 
 ## <a name="limitations"></a>Omezení
 

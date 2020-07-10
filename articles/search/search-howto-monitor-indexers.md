@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 02a0de7760c660a7cce1bbd9cd36d4bb2a1180e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91c799972a21d9205577f0a5672e1182831416b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565788"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145404"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Jak monitorovat stav a výsledky služby Azure Kognitivní hledání indexer
 
@@ -30,7 +30,7 @@ Monitorování indexeru je užitečné v případě, že chcete:
 
 Informace o monitorování indexeru můžete získat různými způsoby, včetně těchto:
 
-* Na webu [Azure Portal](#portal)
+* V [Azure Portal](#portal)
 * Použití [REST API](#restapi)
 * Používání [sady .NET SDK](#dotnetsdk)
 
@@ -82,36 +82,40 @@ Další informace o zkoumání chyb a upozornění indexeru najdete v tématu [�
 
 Můžete načíst stav a historii provádění indexeru pomocí [příkazu Get indexer status](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 Odpověď obsahuje celkový stav indexeru, vyvolání posledního (nebo probíhajícího) indexeru a historii posledních vyvolání indexeru.
 
-    {
-        "status":"running",
-        "lastResult": {
-            "status":"success",
-            "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-         },
-        "executionHistory":[ {
-            "status":"success",
-             "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-        }]
-    }
+```output
+{
+    "status":"running",
+    "lastResult": {
+        "status":"success",
+        "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+     },
+    "executionHistory":[ {
+        "status":"success",
+         "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+    }]
+}
+```
 
 Historie spouštění obsahuje až 50 nejaktuálnějších běhů, které jsou seřazené v opačném chronologickém pořadí (nejnovější první).
 
@@ -163,14 +167,16 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
 
 Výstup v konzole bude vypadat přibližně takto:
 
-    Indexer has run 18 times.
-    Indexer Status: Running
-    Latest run
-      Run Status: Success
-      Total Documents: 7, Failed: 0
-      StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
-      ErrorMessage: none
-      Document Errors: 0, Warnings: 0
+```output
+Indexer has run 18 times.
+Indexer Status: Running
+Latest run
+  Run Status: Success
+  Total Documents: 7, Failed: 0
+  StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
+  ErrorMessage: none
+  Document Errors: 0, Warnings: 0
+```
 
 Všimněte si, že existují dvě různé stavové hodnoty. Stav nejvyšší úrovně je stav indexeru, který je sám sebou. Stav indexeru je **spuštěný** znamená, že indexer je nastaven správně a je k dispozici pro spuštění, ale není aktuálně spuštěn.
 

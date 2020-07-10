@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af5a9b5b5dd8eb6b6bec8440287918d1f8610064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357915"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144696"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: technický hluboký podrobně
 
@@ -45,6 +45,9 @@ Bezproblémové jednotné přihlašování je povolené pomocí Azure AD Connect
 
 >[!IMPORTANT]
 > `AZUREADSSOACC`Účet počítače musí být z bezpečnostních důvodů důrazně chráněn. Pouze správci domény by měli být schopni spravovat účet počítače. Zajistěte, aby delegování protokolu Kerberos na účtu počítače bylo zakázané a aby žádný jiný účet ve službě Active Directory nemá oprávnění k delegování na `AZUREADSSOACC` účtu počítače. Uložte účet počítače do organizační jednotky (OU), kde jsou bezpečné před náhodným odstraněním a k nimž mají přístup pouze správci domény. Dešifrovací klíč protokolu Kerberos v účtu počítače by měl být také považován za citlivý. Důrazně doporučujeme, abyste [převzali šifrovací klíč protokolu Kerberos](how-to-connect-sso-faq.md) `AZUREADSSOACC` účtu počítače nejméně každých 30 dní.
+
+>[!IMPORTANT]
+> Bezproblémové jednotné přihlašování podporuje AES256_HMAC_SHA1 typy šifrování AES128_HMAC_SHA1 a RC4_HMAC_MD5 pro protokol Kerberos. Doporučuje se, aby se typ šifrování pro účet AzureADSSOAcc $ nastavil na AES256_HMAC_SHA1, nebo jeden z typů AES vs. RC4 pro zvýšení zabezpečení. Typ šifrování je uložený v atributu msDS-SupportedEncryptionTypes účtu účtu ve službě Active Directory.  Pokud je typ šifrování účtu AzureADSSOAcc $ nastavený na RC4_HMAC_MD5 a chcete ho změnit na jeden z typů šifrování AES, ujistěte se, že jste nejdřív převzali dešifrovací klíč protokolu Kerberos účtu AzureADSSOAcc $, jak je vysvětleno v [dokumentu nejčastějších dotazů](how-to-connect-sso-faq.md) v příslušné otázce. v opačném případě bezproblémové jednotné přihlašování neproběhne.
 
 Po dokončení nastavení funguje bezproblémové jednotné přihlašování stejným způsobem jako jakékoli jiné přihlášení, které používá integrované ověřování systému Windows (IWA).
 

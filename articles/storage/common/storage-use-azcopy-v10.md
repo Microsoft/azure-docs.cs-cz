@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504470"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143002"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -31,7 +31,7 @@ Nejdřív Stáhněte spustitelný soubor AzCopy v10 za účelem do libovolného 
 
 - [Windows 64 – bit](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
 - [Windows 32 – bit](https://aka.ms/downloadazcopy-v10-windows-32bit) (ZIP)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [Linux X86-64](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (ZIP)
 
 Tyto soubory se komprimují jako soubor zip (Windows a Mac) nebo jako soubor s tar (Linux). Chcete-li stáhnout a dekomprimovat soubor tar v systému Linux, přečtěte si dokumentaci k distribuci systému Linux.
@@ -65,9 +65,9 @@ Tuto tabulku použijte jako vodítko:
 
 | Typ úložiště | Aktuálně podporovaná metoda autorizace |
 |--|--|
-|**Úložiště objektů BLOB** | & SAS pro Azure AD |
+|**Blob Storage** | & SAS pro Azure AD |
 |**Úložiště objektů BLOB (hierarchický obor názvů)** | & SAS pro Azure AD |
-|**Úložiště souborů** | Pouze SAS |
+|**File Storage** | Pouze SAS |
 
 ### <a name="option-1-use-azure-active-directory"></a>Možnost 1: použití Azure Active Directory
 
@@ -255,7 +255,7 @@ Ukázkové příkazy najdete v některém z těchto článků.
 
 - [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
 
-- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+- [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 
 - [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85609465"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147404"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Přidání analýzy do rozhraní API pro vyhledávání Bingu
 
@@ -53,7 +53,7 @@ Ve výchozím nastavení se v grafech a grafech zobrazují všechny metriky a da
 - **Časový rámec**: období generování sestav. Můžete zadat:
   - **Vše**: zahrnuje data o hodnotě až 13 měsíců.  
   - **Posledních 24 hodin**: zahrnuje analýzu za posledních 24 hodin.  
-  - **Minulý týden**: zahrnuje analýzu z předchozích sedmi dnů.  
+  - **Minulý týden**: zahrnuje analýzu z předchozích 7 dnů.  
   - **Minulý měsíc**: zahrnuje analýzu z předchozích 30 dnů.  
   - **Vlastní rozsah kalendářních dat**: zahrnuje analýzu ze zadaného rozsahu kalendářních dat, pokud je k dispozici.  
 

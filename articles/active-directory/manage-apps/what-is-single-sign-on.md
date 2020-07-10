@@ -1,5 +1,5 @@
 ---
-title: Jednotné přihlašování k aplikacím – Azure Active Directory | Microsoft Docs
+title: Co je jednotné přihlašování Azure (SSO)?
 description: Naučte se, jak zvolit metodu jednotného přihlašování při konfiguraci aplikací v Azure Active Directory (Azure AD). Používejte jednotné přihlašování, aby uživatelé nemuseli pamatovat hesla pro každou aplikaci a zjednodušili správu správy účtů.
 services: active-directory
 author: kenwith
@@ -12,14 +12,14 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8b20d7d285f30eb0aa9ba5ac22739b57856d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479704"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144605"
 ---
-# <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
+# <a name="what-is-single-sign-on-sso"></a>Co je jednotné přihlašování (SSO)?
 
 Jednotné přihlašování (SSO) přináší zabezpečení a pohodlí, když se uživatelé přihlásí k aplikacím v Azure Active Directory (Azure AD). Tento článek popisuje metody jednotného přihlašování a při konfiguraci aplikací vám pomůže vybrat nejvhodnější metodu jednotného přihlašování.
 
@@ -46,7 +46,7 @@ Následující tabulka shrnuje metody jednotného přihlašování a odkazy na d
 | [SAML](#saml-sso) | Cloud a místní | Pokud je to možné, vyberte pro existující aplikace, které nepoužívají OpenID Connect nebo OAuth, možnost SAML. SAML funguje pro aplikace, které se ověřují pomocí některého z protokolů SAML.|
 | [Založené na heslech](#password-based-sso) | Cloud a místní | Pokud se aplikace ověřuje pomocí uživatelského jména a hesla, vyberte možnost založené na hesle. Jednotné přihlašování založené na heslech umožňuje zabezpečené ukládání hesel aplikací a přehrávání pomocí rozšíření webového prohlížeče nebo mobilní aplikace. Tato metoda používá existující proces přihlášení, který je k dispozici v aplikaci, ale umožňuje správcům spravovat hesla. |
 | [Spojeného](#linked-sign-on) | Cloud a místní | Vyberte možnost propojené přihlašování, pokud je aplikace nakonfigurována pro jednotné přihlašování v jiné službě zprostředkovatele identity. Tato možnost nepřidá do aplikace jednotné přihlašování. Aplikace však může již mít jednotné přihlašování implementované pomocí jiné služby, například Active Directory Federation Services (AD FS).|
-| [Disabled](#disabled-sso) (Zakázáno) | Cloud a místní | Vyberte zakázané jednotné přihlašování, když aplikace není připravená na konfiguraci jednotného přihlašování. Tento režim je při vytváření aplikace výchozí.|
+| [Zakázáno](#disabled-sso) | Cloud a místní | Vyberte zakázané jednotné přihlašování, když aplikace není připravená na konfiguraci jednotného přihlašování. Tento režim je při vytváření aplikace výchozí.|
 | [Integrované ověřování systému Windows (IWA)](#integrated-windows-authentication-iwa-sso) | pouze místní | Pro aplikace, které používají [integrované ověřování systému Windows (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication)nebo aplikace pracující s deklaracemi, vyberte IWA jednotné přihlašování. Pro IWA konektory proxy aplikací používají k ověřování uživatelů v aplikaci omezené delegování (KCD) protokolu Kerberos. |
 | [Na základě hlaviček](#header-based-sso) | pouze místní | Použijte jednotné přihlašování založené na hlavičkách, když aplikace používá hlavičky pro ověřování. Jednotné přihlašování založené na hlavičkách vyžaduje PingAccess pro Azure AD. Proxy aplikací používá k ověření uživatele službu Azure AD a předává přenos prostřednictvím služby konektoru.  |
 
@@ -54,7 +54,7 @@ Následující tabulka shrnuje metody jednotného přihlašování a odkazy na d
 
 Při vývoji nových aplikací použijte moderní protokoly jako OpenID Connect a OAuth, abyste dosáhli nejlepšího jednotného přihlašování pro vaši aplikaci napříč různými platformami zařízení. OAuth umožňuje uživatelům nebo správcům [udělit souhlas](configure-user-consent.md) s chráněnými prostředky, jako je [Microsoft Graph](/graph/overview). Nabízíme snadnou přípravu [sad SDK](../develop/reference-v2-libraries.md) pro vaši aplikaci a navíc je vaše aplikace připravená k použití [Microsoft Graph](/graph/overview).
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
@@ -99,8 +99,8 @@ Jednotné přihlašování založené na heslech se podporuje pro všechny cloud
 - Microsoft Edge ve Windows 10 výročí Edition nebo novějších verzích
 - Microsoft Edge pro iOS a Android
 - Intune Managed Browser
-- Chrome ve Windows 7 nebo novějším a na MacOS X nebo novějším
-- Firefox 26,0 nebo novější v systému Windows XP SP2 nebo novějším a v Mac OS X 10,6 nebo novějším
+- Chrome ve Windows 7 nebo novějším a na macOS X nebo novějším
+- Firefox 26,0 nebo novější v systému Windows XP SP2 nebo novějším a na macOS X 10,6 nebo novějším
 
 Pokud chcete nakonfigurovat cloudovou aplikaci pro jednotné přihlašování založené na heslech, přečtěte si téma [Konfigurace jednotného přihlašování pomocí hesla](configure-password-single-sign-on-non-gallery-applications.md).
 

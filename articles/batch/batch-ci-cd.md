@@ -5,11 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3569e5cc25491fd408f7aec57a51d11f56dbd1fe
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956657"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145258"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Použití Azure Pipelines k sestavení a nasazení řešení HPC
 
@@ -188,7 +189,7 @@ Další šablona ukazuje příklad vytvoření fondu Azure Batch (back-end poč�
 
 Nakonec máme šablonu, která funguje podobně jako Orchestrator. Tato šablona zodpovídá za nasazení šablon schopností.
 
-Další informace o [Vytváření propojených Azure Resource Manager šablon](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) najdete v samostatném článku.
+Další informace o [Vytváření propojených Azure Resource Manager šablon](../azure-resource-manager/templates/deployment-tutorial-linked-template.md) najdete v samostatném článku.
 
 ```json
 {

@@ -6,20 +6,21 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 07/08/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: f9e6c8dc7438e05f960504b2cacee7fc987adf70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7a872121ca6560b8ede86abc35294ab8c9b0c1b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022367"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141999"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Přehled konektoru Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory podporují následující úložiště a formáty dat prostřednictvím kopírování, toku dat, vyhledávání, získávání metadat a odstraňování aktivit. Klikněte na jednotlivá úložiště dat, abyste se seznámili s podporovanými funkcemi a odpovídajícími konfiguracemi v podrobnostech.
+Azure Data Factory podporují následující úložiště a formáty dat prostřednictvím kopírování, toku dat, vyhledávání, získání metadat a aktivity odstranění. Klikněte na jednotlivá úložiště dat, abyste se seznámili s podporovanými funkcemi a odpovídajícími konfiguracemi v podrobnostech.
 
 ## <a name="supported-data-stores"></a>Podporované zdroje dat
 
@@ -27,7 +28,16 @@ Azure Data Factory podporují následující úložiště a formáty dat prostř
 
 ## <a name="supported-file-formats"></a>Podporované formáty souborů
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)]
+Azure Data Factory podporuje následující formáty souborů. Nastavení založená na formátu najdete v každém článku.
+
+- [Formát Avro](format-avro.md)
+- [Binární formát](format-binary.md)
+- [Formát Common Data Modelu](format-common-data-model.md)
+- [Formát textu s oddělovači](format-delimited-text.md)
+- [Excelový formát](format-excel.md)
+- [Formát JSON](format-json.md)
+- [Formát ORC](format-orc.md)
+- [Formát Parquet](format-parquet.md)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 12/27/2019
-ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: 415c624153971e88afac3b18920a3ba3a8f2cfae
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77505575"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147035"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -52,6 +53,7 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 + V jakémkoli prostředí Pythonu s [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + V jakémkoli prostředí R s [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + Na příkazovém řádku pomocí [rozšíření Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
++ [Rozšíření Azure Machine Learning VS Code](how-to-manage-resources-vscode.md#workspaces)
 
 ## <a name="machine-learning-with-a-workspace"></a>Strojové učení s pracovním prostorem
 
@@ -69,13 +71,13 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 
 Můžete také provádět následující úlohy správy pracovního prostoru:
 
-| Úloha správy pracovního prostoru   | Portál              | Studio | Python SDK/R SDK       | Rozhraní příkazového řádku        |
-|---------------------------|---------|---------|------------|------------|
-| Vytvoření pracovního prostoru        | **&check;**     | | **&check;** | **&check;** |
-| Správa přístupu k pracovnímu prostoru    | **&check;**   || |  **&check;**    |
-| Upgrade na Enterprise Edition    | **&check;** | **&check;**  | |     |
-| Vytváření a Správa výpočetních prostředků    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
-| Vytvoření virtuálního počítače s poznámkovým blokem |   | **&check;** | |     |
+| Úloha správy pracovního prostoru   | Portál              | Studio | Python SDK/R SDK       | Rozhraní příkazového řádku        | VS Code
+|---------------------------|---------|---------|------------|------------|------------|
+| Vytvoření pracovního prostoru        | **&check;**     | | **&check;** | **&check;** | **&check;** |
+| Správa přístupu k pracovnímu prostoru    | **&check;**   || |  **&check;**    ||
+| Upgrade na Enterprise Edition    | **&check;** | **&check;**  | |     ||
+| Vytváření a Správa výpočetních prostředků    | **&check;**   | **&check;** | **&check;** |  **&check;**   ||
+| Vytvoření virtuálního počítače s poznámkovým blokem |   | **&check;** | |     ||
 
 > [!WARNING]
 > Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
@@ -89,7 +91,7 @@ Existuje několik způsobů, jak vytvořit pracovní prostor:
 * Pomocí [Azure Portal](how-to-manage-workspace.md) pro rozhraní Point-to-Click vás provede jednotlivé kroky.
 * Použití [sady SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) k vytvoření pracovního prostoru ze skriptů Pythonu nebo poznámkových bloků Jupiter
 * Pokud potřebujete automatizovat nebo přizpůsobovat vytváření pomocí standardů podnikových zabezpečení, použijte [šablonu Azure Resource Manager](how-to-create-workspace-template.md) nebo [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) .
-* Pokud pracujete v Visual Studio Code, použijte [rozšíření vs Code](tutorial-setup-vscode-extension.md).
+* Pokud pracujete v Visual Studio Code, použijte [rozšíření vs Code](how-to-manage-resources-vscode.md#create-a-workspace).
 
 > [!NOTE]
 > V názvu pracovního prostoru se nerozlišují malá a velká písmena.

@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488745"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141955"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
@@ -27,7 +28,7 @@ Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy
 
 3. Ujistěte se, že webová služba přijímá a vrací Serializovaná data JSON.
 
-4. Nasazení modelu ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro vysoce škálovatelná produkční nasazení. Pokud webová služba nemůže zpracovat počet požadavků přicházejících z vaší úlohy, výkon vaší Stream Analytics úlohy se sníží, což má vliv na latenci. Modely nasazené v Azure Container Instances jsou podporovány pouze při použití Azure Portal.
+4. Nasazení modelu ve [službě Azure Kubernetes](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) pro vysoce škálovatelná produkční nasazení. Pokud webová služba nemůže zpracovat počet požadavků přicházejících z vaší úlohy, výkon vaší Stream Analytics úlohy se sníží, což má vliv na latenci. Modely nasazené v Azure Container Instances jsou podporovány pouze při použití Azure Portal. Modely vytvořené pomocí [Azure Machine Learning designeru](https://docs.microsoft.com/azure/machine-learning/concept-designer) se v Stream Analytics ještě nepodporují.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Přidání modelu Machine Learning do úlohy
 

@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9614def5310bdc6fa8c6f37d7cdcc0a5f081a96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360295"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144719"
 ---
 # <a name="adsync-service-account"></a>Účet služby ADSync
 Azure AD Connect nainstaluje místní službu, která orchestruje synchronizaci mezi službou Active Directory a Azure Active Directory.  Služba synchronizace Microsoft Azure AD Sync (ADSync) běží na serveru ve vašem místním prostředí.  Přihlašovací údaje služby se ve výchozím nastavení standardně nastavují v expresních instalacích, ale dají se přizpůsobit tak, aby splňovaly požadavky na zabezpečení vaší organizace.  Tyto přihlašovací údaje se nepoužívají pro připojení k místním doménovým strukturám nebo Azure Active Directory.
@@ -40,15 +40,15 @@ Při spuštění na členském serveru běží služba AdSync v kontextu účtu 
 |Řadič domény|Doména \ AAD_74dc30c01e80 (viz poznámka)|
 
 ## <a name="custom-adsync-service-accounts"></a>Vlastní účty služby ADSync
-Společnost Microsoft doporučuje spustit službu ADSync v kontextu buď účtu virtuální služby, nebo samostatného účtu spravované služby nebo skupiny.  Správce domény může také vytvořit účet služby zřízený tak, aby splňoval vaše konkrétní požadavky na zabezpečení organizace.   Chcete-li upravit účet služby používaný při instalaci, vyberte na stránce expresní nastavení níže možnost přizpůsobit.   K dispozici jsou následující možnosti:
+Společnost Microsoft doporučuje spustit službu ADSync v kontextu buď účtu virtuální služby, nebo samostatného účtu spravované služby nebo skupiny.  Správce domény může také vytvořit účet služby zřízený tak, aby splňoval vaše konkrétní požadavky na zabezpečení organizace.   Chcete-li upravit účet služby používaný při instalaci, vyberte na stránce expresní nastavení níže možnost přizpůsobit.   Dostupné jsou tyto možnosti:
 
 - výchozí účet – Azure AD Connect zřídí účet služby, jak je popsáno výše.
 - účet spravované služby – použijte samostatného nebo skupinové MSA zřízené správcem.
 - doménový účet – použijte účet doménové služby zřízený správcem.
 
-![](media/concept-adsync-service-account/adsync1.png)
+![Snímek obrazovky se stránkou nastavení Azure AD Connect Express s přepínači "přizpůsobit" nebo "použít expresní nastavení".](media/concept-adsync-service-account/adsync1.png)
 
-![](media/concept-adsync-service-account/adsync2.png)
+![Snímek obrazovky Azure AD Connect stránce "instalace požadovaných součástí" s možností použít stávající účet spravované služby byl vybrán.](media/concept-adsync-service-account/adsync2.png)
 
 ## <a name="diagnosing-adsync-service-account-changes"></a>Diagnostikování změn účtu služby ADSync
 Změna přihlašovacích údajů pro službu ADSync po instalaci způsobí, že se služba nebude spouštět, ztratí přístup k databázi synchronizace a neproběhne ověřování s připojenými adresáři (Azure a služba AD DS).  Udělení přístupu k databázi pro nový účet služby ADSync není pro obnovení z tohoto problému dostatečné. Dokud nebudou obnoveny původní přihlašovací údaje, nebude provedena žádná synchronizace.

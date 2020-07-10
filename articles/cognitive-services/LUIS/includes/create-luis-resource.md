@@ -23,11 +23,11 @@ ms.locfileid: "80879192"
 
 1. Zadejte všechna požadovaná nastavení:
 
-    |Name|Účel|
+    |Název|Účel|
     |--|--|
     |Název předplatného| předplatné, které se bude fakturovat za prostředek.|
     |Skupina prostředků| Vlastní název skupiny prostředků, který zvolíte nebo vytvoříte. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu.|
-    |Name| Vlastní název, který zvolíte, se používá jako vlastní subdoména pro dotazy na koncový bod vytváření a předpovědi.|
+    |Název| Vlastní název, který zvolíte, se používá jako vlastní subdoména pro dotazy na koncový bod vytváření a předpovědi.|
     |Umístění pro vytváření obsahu|Oblast přidružená k vašemu modelu|
     |Vytváření cenové úrovně|Cenová úroveň určuje maximální transakci za sekundu a měsíc.|
     |Umístění modulu runtime|Oblast přidružená k publikovanému běhovému koncovému bodu předpovědi|

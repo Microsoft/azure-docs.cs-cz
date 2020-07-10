@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b4980ee8ea252b4ce13601501e4bf1f7af97d1b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295445"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166361"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Použití ověřování AD pro přístup k rozhraní API služby Media Services s využitím REST
 
@@ -49,7 +49,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), ještě než začnete.
+- Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Vytvořte účet Azure Media Services pomocí Azure Portal](media-services-portal-create-account.md).
 - Přečtěte si článek [Přehled přístupu k rozhraní Azure Media Services API pomocí služby Azure AD Authentication](media-services-use-aad-auth-to-access-ams-api.md) .
 - Nainstalujte klienta [post](https://www.getpostman.com/) REST, který SPUSTÍ rozhraní REST API uvedená v tomto článku. 
@@ -137,8 +137,10 @@ V této části se dozvíte, jak použít **metodu post** ke spuštění REST AP
 
     Případně klikněte na odkaz **Hromadná úprava** na pravé straně okna po odeslání a vložte následující kód.
 
-        Content-Type:application/x-www-form-urlencoded
-        Keep-Alive:true
+    ```javascript
+    Content-Type:application/x-www-form-urlencoded
+    Keep-Alive:true
+    ```
 
 6. Stiskněte kartu **tělo** .
 7. Zadejte informace o textu pomocí datové mřížky "klíč/hodnota" (nahraďte ID klienta a tajné hodnoty). 
@@ -147,10 +149,12 @@ V této části se dozvíte, jak použít **metodu post** ke spuštění REST AP
 
     Případně klikněte na tlačítko **Hromadná úprava** na pravé straně okna po odeslání a vložte následující text (nahraďte ID klienta a tajné hodnoty):
 
-        grant_type:client_credentials
-        client_id:{Your Client ID that you got from your Azure AD Application}
-        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
-        resource:https://rest.media.azure.net
+    ```javascript
+    grant_type:client_credentials
+    client_id:{Your Client ID that you got from your Azure AD Application}
+    client_secret:{Your client secret that you got from your Azure AD Application's Keys}
+    resource:https://rest.media.azure.net
+    ```
 
 8. Stiskněte **Odeslat**.
 
@@ -180,11 +184,13 @@ V této části se dozvíte, jak získat přístup k rozhraní API **assetů** p
 5. V pravé části okna po kliknutí klikněte na odkaz **hromadné úpravy** .
 6. Vložte následující hlavičky:
 
-        x-ms-version:2.19
-        Accept:application/json
-        Content-Type:application/json
-        DataServiceVersion:3.0
-        MaxDataServiceVersion:3.0
+    ```javascript
+    x-ms-version:2.19
+    Accept:application/json
+    Content-Type:application/json
+    DataServiceVersion:3.0
+    MaxDataServiceVersion:3.0
+    ```
 
 7. Stiskněte **Odeslat**.
 

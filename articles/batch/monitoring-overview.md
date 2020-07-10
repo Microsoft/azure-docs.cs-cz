@@ -3,25 +3,26 @@ title: Azure Batch monitorování
 description: Přečtěte si o službě Azure Monitoring Services, metrikách, diagnostických protokolech a dalších funkcích monitorování pro Azure Batch.
 ms.topic: how-to
 ms.date: 04/05/2018
-ms.openlocfilehash: 09ac9c676dc1e95cbece6fa500b4f2cf554f8526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9387d4894dbf06445fd43722353ca7ae98607359
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83723523"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144935"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorování řešení Batch
 
 Azure a služba Batch poskytují řadu služeb, nástrojů a rozhraní API pro monitorování vašich řešení Batch. Tento přehledový článek vám pomůže vybrat přístup pro monitorování, který vyhovuje vašim potřebám.
 
-Přehled komponent a služeb Azure, které jsou k dispozici pro monitorování prostředků Azure, najdete v tématu [monitorování aplikací a prostředků Azure](../monitoring-and-diagnostics/monitoring-overview.md).
+Přehled komponent a služeb Azure, které jsou k dispozici pro monitorování prostředků Azure, najdete v tématu [monitorování aplikací a prostředků Azure](../azure-monitor/overview.md).
 
 ## <a name="subscription-level-monitoring"></a>Monitorování na úrovni předplatného
 
-Na úrovni předplatného, která zahrnuje účty Batch, shromažďuje [Protokol aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) data provozní události v [několika kategoriích](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log).
+Na úrovni předplatného, která zahrnuje účty Batch, shromažďuje [Protokol aktivit Azure](../azure-monitor/platform/platform-logs-overview.md) data provozní události v [několika kategoriích](../azure-monitor/platform/activity-log.md#view-the-activity-log).
 
 Pro účty Batch konkrétně protokol aktivit shromažďuje události související se vytvářením a odstraňováním účtů a správou klíčů.
 
-Jedním ze způsobů, jak načíst události z protokolu aktivit, je použít Azure Portal. Klikněte na **všechny služby**  >  **Protokol aktivit**. Nebo se můžete dotazovat na události pomocí rozhraní příkazového řádku Azure CLI, rutin PowerShellu nebo Azure Monitor REST API. Můžete také exportovat protokol aktivit nebo nakonfigurovat [výstrahy protokolu aktivit](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md).
+Jedním ze způsobů, jak načíst události z protokolu aktivit, je použít Azure Portal. Klikněte na **všechny služby**  >  **Protokol aktivit**. Nebo se můžete dotazovat na události pomocí rozhraní příkazového řádku Azure CLI, rutin PowerShellu nebo Azure Monitor REST API. Můžete také exportovat protokol aktivit nebo nakonfigurovat [výstrahy protokolu aktivit](../azure-monitor/platform/alerts-activity-log.md).
 
 ## <a name="batch-account-level-monitoring"></a>Monitorování na úrovni účtu Batch
 
@@ -32,7 +33,7 @@ Monitorujte každý účet Batch pomocí funkcí [Azure monitor](../azure-monito
 
 ## <a name="batch-resource-monitoring"></a>Sledování prostředků Batch
 
-V aplikacích Batch pomocí rozhraní API služby Batch můžete monitorovat stav svých prostředků, včetně úloh, úkolů, uzlů a fondů, a dotazovat se na ně. Příklad:
+V aplikacích Batch pomocí rozhraní API služby Batch můžete monitorovat stav svých prostředků, včetně úloh, úkolů, uzlů a fondů, a dotazovat se na ně. Zde je příklad:
 
 * [Počet úloh a výpočetních uzlů podle stavu](batch-get-resource-counts.md)
 * [Efektivní vytváření dotazů k vypsání prostředků Batch](batch-efficient-list-queries.md)

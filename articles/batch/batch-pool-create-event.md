@@ -3,12 +3,12 @@ title: Událost vytvoření fondu Azure Batch
 description: Odkaz na událost vytvoření fondu Batch, která je generována po vytvoření fondu. Obsah protokolu bude zveřejňovat Obecné informace o fondu.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: d8e4537e0074b7af1e65ea5f13a9668483abc45e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: eee512bbeed223269c43bde77435fbff2b67b533
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962488"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147321"
 ---
 # <a name="pool-create-event"></a>Událost vytvoření fondu
 
@@ -53,7 +53,7 @@ ms.locfileid: "85962488"
 |-------------|----------|-----------|
 |`id`|Řetězec|ID fondu|
 |`displayName`|Řetězec|Zobrazovaný název fondu.|
-|`vmSize`|Řetězec|Velikost virtuálních počítačů ve fondu. Všechny virtuální počítače ve fondu mají stejnou velikost. <br/><br/> Informace o dostupných velikostech virtuálních počítačů pro fondy Cloud Services (fondy vytvořené pomocí nástroje cloudServiceConfiguration) najdete v tématu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Batch podporuje všechny velikosti Cloud Services virtuálních počítačů s výjimkou `ExtraSmall` .<br/><br/> Informace o dostupných velikostech virtuálních počítačů pro fondy pomocí imagí z Virtual Machines Marketplace (fondy vytvořené pomocí virtualMachineConfiguration) najdete v tématu [velikosti pro Virtual Machines](/azure/virtual-machines/linux/sizes?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (Linux) nebo [velikosti pro Virtual Machines](/azure/virtual-machines/windows/sizes?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows). Služba Batch podporuje všechny velikosti VM Azure kromě `STANDARD_A0` a těch, které používají Premium Storage (série `STANDARD_GS`, `STANDARD_DS` a `STANDARD_DSV2`).|
+|`vmSize`|Řetězec|Velikost virtuálních počítačů ve fondu. Všechny virtuální počítače ve fondu mají stejnou velikost. <br/><br/> Informace o dostupných velikostech virtuálních počítačů pro fondy Cloud Services (fondy vytvořené pomocí nástroje cloudServiceConfiguration) najdete v tématu [velikosti pro Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Batch podporuje všechny velikosti Cloud Services virtuálních počítačů s výjimkou `ExtraSmall` .<br/><br/> Informace o dostupných velikostech virtuálních počítačů pro fondy pomocí imagí z Virtual Machines Marketplace (fondy vytvořené pomocí virtualMachineConfiguration) najdete v tématu [velikosti pro Virtual Machines](../virtual-machines/linux/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (Linux) nebo [velikosti pro Virtual Machines](../virtual-machines/windows/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) (Windows). Služba Batch podporuje všechny velikosti VM Azure kromě `STANDARD_A0` a těch, které používají Premium Storage (série `STANDARD_GS`, `STANDARD_DS` a `STANDARD_DSV2`).|
 |`imageType`|Řetězec|Metoda nasazení pro obrázek. Podporovány jsou hodnoty `virtualMachineConfiguration` nebo.`cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|Komplexní typ|Konfigurace cloudové služby pro fond.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Komplexní typ|Konfigurace virtuálního počítače pro fond.|

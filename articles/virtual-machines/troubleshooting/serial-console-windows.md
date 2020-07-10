@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135241"
+ms.locfileid: "86146647"
 ---
 # <a name="azure-serial-console-for-windows"></a>Sériová konzola Azure pro Windows
 
@@ -100,8 +100,7 @@ Pokud potřebujete povolit zobrazování výzev pro spouštěcí zavaděč Windo
 
 1. Připojte se ke konzole sériového portu. Pokud se úspěšně připojíte, zobrazí se výzva **SAC>**:
 
-    ![Připojení k konzole SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
-
+   ![Připojení k konzole SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 1. Zadejte `cmd` pro vytvoření kanálu, který má instanci cmd.
 
 1. Zadejte `ch -si 1` nebo stiskněte klávesovou `<esc>+<tab>` zkratku pro přepnutí na kanál, na kterém je spuštěná instance cmd.
@@ -112,7 +111,7 @@ Pokud potřebujete povolit zobrazování výzev pro spouštěcí zavaděč Windo
 
 1. Pokud chcete spustit instanci prostředí PowerShell, zadejte `PowerShell` v instanci cmd a potom stiskněte klávesu **ENTER**.
 
-    ![Otevřít instanci prostředí PowerShell](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+   ![Otevřít instanci prostředí PowerShell](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
 ### <a name="use-the-serial-console-for-nmi-calls"></a>Použití konzoly sériového portu pro volání NMI
 Nemaskovatelné přerušení (NMI) je navržené k vytvoření signálu, který software na virtuálním počítači Neignoruje. Historicky jsme NMIs použili k monitorování problémů s hardwarem v systémech, které vyžadovaly určitou dobu odezvy. V současné době se programátoři a správci systému často používají NMI jako mechanismus pro ladění nebo odstraňování potíží se systémy, které nereagují.
@@ -147,7 +146,7 @@ Přístup ke konzole sériového portu je omezený na uživatele, kteří mají 
 ### <a name="channel-security"></a>Zabezpečení kanálu
 Všechna data, která se odesílají zpátky a zpátky, se šifrují na lince.
 
-### <a name="audit-logs"></a>Protokoly auditu
+### <a name="audit-logs"></a>Protokoly auditování
 Veškerý přístup ke konzole sériového portu je aktuálně přihlášený k protokolům [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) virtuálního počítače. Přístup k těmto protokolům jsou vlastněné a řízené správcem virtuálního počítače Azure.
 
 > [!CAUTION]

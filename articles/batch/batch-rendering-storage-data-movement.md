@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6fff0e224aaa6bb247543282ac16fbb33fe7e904
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965259"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147299"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Možnosti úložiště a přesunu dat pro vykreslování assetů a výstupních souborů
 
@@ -87,7 +87,7 @@ Protože soubory jsou v Azure Storage objekty blob, pak je možné pomocí stand
 
 [Soubory Azure](../storage/files/storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím protokolu SMB.  Soubory Azure jsou založené na službě Azure Blob Storage; je to [nákladově efektivní](https://azure.microsoft.com/pricing/details/storage/files/) a je možné ji nakonfigurovat s replikací dat do jiné oblasti, aby byla globálně redundantní.  [Cíle škálování](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) by se měly zkontrolovat, aby se zjistilo, jestli se soubory Azure mají použít pro velikost fondu prognóz a počet souborů assetů.
 
-K dispozici je [Blogový příspěvek](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) a [dokumentace](../storage/files/storage-how-to-use-files-windows.md) , která popisuje, jak připojit sdílenou složku Azure.
+K dispozici je [dokumentace](../storage/files/storage-how-to-use-files-windows.md) , která popisuje, jak připojit sdílenou složku Azure.
 
 ### <a name="mounting-an-azure-files-share"></a>Připojení sdílené složky služby soubory Azure
 
@@ -134,4 +134,4 @@ Další informace o možnostech úložiště najdete v podrobné dokumentaci:
 
 * [Úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md)
 * [Blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)
-* [Soubory Azure](../storage/files/storage-files-introduction.md)
+* [Azure Files](../storage/files/storage-files-introduction.md)

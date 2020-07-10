@@ -4,6 +4,8 @@
   items:
     - name: Co je Azure Load Balancer?
       href: load-balancer-overview.md
+    - name: Co je nového?
+      href: whats-new.md
     - name: Nejčastější dotazy
       href: load-balancer-faqs.md
 - name: Rychlý start

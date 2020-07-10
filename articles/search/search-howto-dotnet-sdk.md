@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4714fbb5d9f08e0b02dbc8f6cb32845642911e51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556304"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146910"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Jak používat Azure Kognitivní hledání z aplikace .NET
 
@@ -171,46 +171,49 @@ Tentokrát používáme klíč dotazu, protože k indexu nepotřebujeme přístu
 
 Pokud spouštíte tuto aplikaci s platným názvem služby a klíči rozhraní API, výstup by měl vypadat jako v tomto příkladu: (některý výstup konzoly byl nahrazen znakem "..." pro ilustraci.)
 
-    Deleting index...
+```output
 
-    Creating index...
+Deleting index...
 
-    Uploading documents...
+Creating index...
 
-    Waiting for documents to be indexed...
+Uploading documents...
 
-    Search the entire index for the term 'motel' and return only the HotelName field:
+Waiting for documents to be indexed...
 
-    Name: Secret Point Motel
+Search the entire index for the term 'motel' and return only the HotelName field:
 
-    Name: Twin Dome Motel
+Name: Secret Point Motel
 
-
-    Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
-
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
-
-    HotelId: 2
-    Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
+Name: Twin Dome Motel
 
 
-    Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
+Apply a filter to the index to find hotels with a room cheaper than $100 per night, and return the hotelId and description:
 
-    Name: Triple Landscape Hotel
-    Last renovated on: 9/20/2015 12:00:00 AM +00:00
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York. A few minutes away is Times Square and the historic centre of the city, as well as other places of interest that make New York one of America's most attractive and cosmopolitan cities.
 
-    Name: Twin Dome Motel
-    Last renovated on: 2/18/1979 12:00:00 AM +00:00
+HotelId: 2
+Description: The hotel is situated in a  nineteenth century plaza, which has been expanded and renovated to the highest architectural standards to create a modern, functional and first-class hotel in which art and unique historical elements coexist with the most modern comforts.
 
 
-    Search the hotel names for the term 'hotel':
+Search the entire index, order by a specific field (lastRenovationDate) in descending order, take the top two results, and show only hotelName and lastRenovationDate:
 
-    HotelId: 3
-    Name: Triple Landscape Hotel
-    ...
+Name: Triple Landscape Hotel
+Last renovated on: 9/20/2015 12:00:00 AM +00:00
 
-    Complete.  Press any key to end application... 
+Name: Twin Dome Motel
+Last renovated on: 2/18/1979 12:00:00 AM +00:00
+
+
+Search the hotel names for the term 'hotel':
+
+HotelId: 3
+Name: Triple Landscape Hotel
+...
+
+Complete.  Press any key to end application... 
+```
 
 Úplný zdrojový kód aplikace je k dispozici na konci tohoto článku.
 
@@ -566,7 +569,9 @@ Při navrhování vlastních tříd modelů pro mapování k indexu služby Azur
 
 Nejedná se pouze o hypotetický problém: představte si situaci, kdy přidáte nové pole do stávajícího indexu typu `Edm.Int32`. Po aktualizaci definice indexu budou mít všechny dokumenty pro toto nové pole hodnotu null (vzhledem k tomu, že všechny typy jsou v Azure Kognitivní hledání s možnou hodnotou null). Pokud pak použijete třídu modelu s vlastností `int` se zakázanou hodnotou null, při pokusu o načtení dokumentů dojde k vyvolání podobné výjimky `JsonSerializationException`:
 
-    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```output
+Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
+```
 
 Z tohoto důvodu doporučujeme jako osvědčený postup používat ve třídách modelu typy s možnou hodnotou null.
 
@@ -680,9 +685,11 @@ WriteDocuments(results);
 
 V tomto případě prohledáváme celý index pro slovo "Motel" v jakémkoli vyhledávacím poli a chceme pouze načíst názvy hotelů, jak je uvedeno v `Select` parametru. Tady jsou výsledky:
 
-    Name: Secret Point Motel
+```output
+Name: Secret Point Motel
 
-    Name: Twin Dome Motel
+Name: Twin Dome Motel
+```
 
 Další dotaz je trochu zajímavější.  Chceme najít všechny hotely, které mají místnost s noční frekvencí menší než $100 a vracet jenom ID a popis hotelu:
 
@@ -703,11 +710,13 @@ Tento dotaz používá výraz OData `$filter` `Rooms/any(r: r/BaseRate lt 100)` 
 
 Tady jsou výsledky dotazu:
 
-    HotelId: 1
-    Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
+```output
+HotelId: 1
+Description: The hotel is ideally located on the main commercial artery of the city in the heart of New York...
 
-    HotelId: 2
-    Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+HotelId: 2
+Description: The hotel is situated in a nineteenth century plaza, which has been expanded and renovated to...
+```
 
 Nyní chceme najít první dva hotely, které byly naposledy renovated, a zobrazit název hotelu a datum poslední renovace. Zde je kód: 
 
@@ -729,8 +738,10 @@ V tomto případě znovu použijeme syntaxi OData k zadání `OrderBy` parametru
 
 Tady jsou výsledky:
 
-    Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
-    Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```output
+Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
+Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00
+```
 
 Nakonec chceme najít všechny názvy hotelů, které odpovídají slovu "Hotel":
 
@@ -746,9 +757,11 @@ WriteDocuments(results);
 
 A tady jsou výsledky, které zahrnují všechna pole, protože jsme neurčili `Select` vlastnost:
 
+```output
     HotelId: 3
     Name: Triple Landscape Hotel
     ...
+```
 
 Tento krok dokončí kurz, ale nezastaví se zde. * * Další kroky poskytují další zdroje informací, které vám pomůžou získat další informace o Azure Kognitivní hledání.
 

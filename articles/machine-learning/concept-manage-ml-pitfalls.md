@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210180"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147099"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Ochrana před přeložením a nevyváženými daty pomocí automatizovaného strojového učení
 
@@ -71,7 +71,7 @@ Automatizované ML také implementuje explicitní **omezení složitosti modelu*
 **Křížové ověření (CV)** je proces, který zabírá mnoho podmnožin vašich úplných školicích dat a školení modelu v každé podmnožině. Nápad je, že model by mohl získat "štěstí" a mít skvělou přesnost s jednou podmnožinou, ale s využitím mnoha dílčích sad model nedosáhne pokaždé, když se vyhodnotí. Při provádění CV zadáte datovou sadu pro blokování ověřování, určíte vaše přeložená omezení (počet podmnožin) a automatizovaná ML nasadí váš model a optimalizuje parametry pro minimalizaci chyby v sadě ověřování. Jedno přeložení CV může být příliš velké, ale s využitím mnoha z nich snižuje pravděpodobnost, že je finální model vyhodnocený. Kompromisy jsou v tom, že CV má za následek delší dobu školení, takže větší náklady, protože místo toho, abyste model provedli jednou, je pro každou *n* -podmnožinu CV jednou vyškolí. 
 
 > [!NOTE]
-> Křížové ověření není ve výchozím nastavení povolené. musí být nakonfigurovaný v nastavení automatizovaného ML. Po nakonfigurování křížového ověření a zadání ověřovací sady dat je však proces automatizován. Seznamte se s  
+> Křížové ověření není ve výchozím nastavení povolené. musí být nakonfigurovaný v nastavení automatizovaného ML. Po nakonfigurování křížového ověření a zadání ověřovací sady dat je však proces automatizován. Další informace o [konfiguraci vzájemného ověřování najdete v automatickém ml](how-to-configure-cross-validation-data-splits.md) .
 
 <a name="imbalance"></a>
 
@@ -81,7 +81,7 @@ Nevyvážená data se běžně nacházejí v datech pro scénáře klasifikace M
 
 Automatizované spuštění ML navíc generuje následující grafy automaticky, což vám pomůže pochopit správnost klasifikací modelu a identifikovat modely, které mohou ovlivnit data, která jsou potenciálně ovlivněná nevyváženými daty.
 
-Graf| Description
+Graf| Popis
 ---|---
 [Nejasná matice](how-to-understand-automated-ml.md#confusion-matrix)| Vyhodnotí správně klasifikované popisky proti skutečným popiskům dat. 
 [Přesnost – odvolání](how-to-understand-automated-ml.md#precision-recall-chart)| Vyhodnotí poměr správných popisků oproti poměru nalezených instancí popisků dat. 
@@ -93,7 +93,7 @@ V rámci svého cíle zjednodušit pracovní postup strojového učení mají **
 
 - **Sloupec váhy**: automatizovaná ml podporuje sloupec vah jako vstup, což způsobuje, že řádky v datech se mají navýšit nebo snížit, což lze použít k tomu, aby byla třída větší nebo menší "důležitá".
 
-- Algoritmy používané automatizovanou ML dokáže správně zvládnout nerovnováhu až 20:1, což znamená, že nejběžnější třída může mít 20 krát více řádků v datech než nejméně společná třída.
+- Algoritmy používané automatizovanou nevyrovnanou odchylkou v době, kdy je počet vzorků v menšinové třídě rovný nebo méně než 20% počtu vzorků ve třídě většina, kde menšinová třída odkazuje na tu s nejmenšími vzorky a majoritní třídou, odkazuje na tu s většinou vzorků. Následně AutoML spustí experiment s dílčími ukázkovými daty, aby zkontroloval, jestli by použití vah třídy napravilo tento problém a vylepšilo výkon. Pokud se v tomto experimentu zjistí lepší výkon, Tato náprava se použije.
 
 - Využijte metriku výkonu, která se bude lépe dopracovat s nevyváženými daty. Například AUC_weighted je primární metrika, která vypočítá příspěvek každé třídy na základě relativního počtu vzorků představujících tuto třídu, proto je větší odolnost proti nevyrovnanosti.
 

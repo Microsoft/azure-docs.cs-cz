@@ -8,11 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659875"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144851"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -191,6 +192,9 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
 * **Podporují virtuální počítače generace 2 urychlené síťové služby?**  
     Ano. Další informace najdete v tématu [Vytvoření virtuálního počítače s akcelerovanými síťovými](../../virtual-network/create-vm-accelerated-networking-cli.md)službami.
 
+* **Podporují virtuální počítače generace 2 v Azure zabezpečené spouštění nebo vTPM?**
+    Virtuální počítače 1. generace a 2. generace v Azure nepodporují zabezpečené spouštění ani vTPM. 
+    
 * **Podporuje se VHDX na generaci 2?**  
     Ne, virtuální počítače 2. generace podporují jenom virtuální pevný disk.
 

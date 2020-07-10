@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: e9891e3ac12de3f8735407c603ff59b61f4eb05d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6d14094edc7ae21ca0d56b544fb9c2b19f1f0582
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118966"
+ms.locfileid: "86144984"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Postup konfigurace směrování virtuálního centra
 
@@ -22,9 +22,7 @@ Virtuální rozbočovač může obsahovat několik bran, například bránu VPN 
 Další informace najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> Některé z těchto možností se pořád můžou vymezit. Pokud ve vaší oblasti ještě nedošlo k zavedení, použijte prosím následující postup v těchto verzích těchto článků:
->* [Azure Portal článek](virtual-wan-route-table-nva-portal.md)
->* [Článek o PowerShellu](virtual-wan-route-table-nva.md)
+> Některé z těchto možností se pořád můžou vymezit. Očekává se, že se dokončí 3. srpna.
 >
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Vytvoření směrovací tabulky

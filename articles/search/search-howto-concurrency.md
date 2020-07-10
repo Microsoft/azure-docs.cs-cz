@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792217"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145276"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Jak spravovat souběžnost v Azure Kognitivní hledání
 
@@ -46,7 +46,7 @@ Následující kód ukazuje accessCondition kontroly operací aktualizace klíč
 
 ### <a name="sample-code-from-dotnetetagsexplainer-program"></a>Ukázkový kód z [DotNetETagsExplainer programu](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
-```
+```csharp
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
@@ -173,6 +173,7 @@ Tento fragment kódu ilustruje přidání synonymMap k indexu, který již exist
 
 Fragment Načte index "hotely", zkontroluje verzi objektu u operace Update, vyvolá výjimku, pokud se podmínka nezdařila, a poté opakuje operaci (až třikrát), počínaje načítáním indexu ze serveru za účelem získání nejnovější verze.
 
+```csharp
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
             int MaxNumTries = 3;
@@ -203,7 +204,7 @@ Fragment Načte index "hotely", zkontroluje verzi objektu u operace Update, vyvo
             index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
             return index;
         }
-
+```
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -214,7 +215,7 @@ Zkuste upravit některý z následujících vzorků, aby obsahovaly ETag nebo Ac
 + [Ukázka REST API na GitHubu](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [Ukázka .NET SDK na GitHubu](https://github.com/Azure-Samples/search-dotnet-getting-started). Toto řešení zahrnuje projekt "DotNetEtagsExplainer" obsahující kód uvedený v tomto článku.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 [Běžné hlavičky](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
  požadavků a odpovědí protokolu http [Stavové kódy http](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 

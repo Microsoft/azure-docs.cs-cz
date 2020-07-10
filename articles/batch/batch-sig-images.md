@@ -4,12 +4,12 @@ description: Vlastní fondy imagí představují účinný způsob konfigurace v
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 38233bc5d279c1c0ae7789dd06acff78ea26fb89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851723"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147281"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Vytvoření vlastního fondu imagí pomocí Galerie sdílených imagí
 
@@ -30,7 +30,7 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 - **Před instalací aplikací.** Předinstalace aplikací na disk s operačním systémem je efektivnější a méně náchylná k chybám než instalace aplikací po zřízení výpočetních uzlů s počátečním úkolem.
 - **Kopírování velkých objemů dat jednou.** Nastavte statickou datovou část spravované sdílené image tak, že ji zkopírujete do datových disků spravované image. To je nutné provést pouze jednou a zpřístupnit data pro každý uzel fondu.
 - **Rozšiřte fondy na větší velikosti.** Pomocí Galerie sdílených imagí můžete vytvořit větší fondy s přizpůsobenými imagemi společně s více replikami sdílených imagí.
-- **Lepší výkon než použití jenom spravované Image jako vlastní image.** Pro vlastní fond imagí sdílené Image je čas na dosažení stabilního stavu až 25% fasterm a latence nečinnosti virtuálního počítače je kratší než 30%.
+- **Lepší výkon než použití jenom spravované Image jako vlastní image.** U vlastního fondu imagí sdílené Image je čas na dosažení stabilního stavu rychlejší až 25% a latence nečinnosti virtuálního počítače je kratší než 30%.
 - **Správa verzí obrázků a seskupování pro snadnější správu.** Definice seskupení imagí obsahuje informace o tom, proč se image vytvořila, v jakém operačním systému je, a informace o použití image. Seskupení imagí umožňuje snazší správu imagí. Další informace najdete v tématu [definice imagí](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Požadavky
@@ -83,7 +83,7 @@ Pokud chcete vytvořit spravovanou image ze snímku, použijte nástroje příka
 
 ### <a name="create-a-shared-image-gallery"></a>Vytvoření služby Shared Image Gallery
 
-Po úspěšném vytvoření spravované image musíte vytvořit sdílenou galerii imagí, abyste mohli vlastní image zpřístupnit. Informace o tom, jak vytvořit sdílenou galerii imagí pro vaše image, najdete v tématu [Vytvoření sdílené Galerie imagí pomocí Azure CLI](../virtual-machines/linux/shared-images.md) nebo [vytvoření galerie sdílených imagí pomocí Azure Portal](../virtual-machines/linux/shared-images-portal.md).
+Po úspěšném vytvoření spravované image musíte vytvořit sdílenou galerii imagí, abyste mohli vlastní image zpřístupnit. Informace o tom, jak vytvořit sdílenou galerii imagí pro vaše image, najdete v tématu [Vytvoření sdílené Galerie imagí pomocí Azure CLI](../virtual-machines/shared-images-cli.md) nebo [vytvoření galerie sdílených imagí pomocí Azure Portal](../virtual-machines/linux/shared-images-portal.md).
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Vytvoření fondu ze sdílené Image pomocí Azure CLI
 

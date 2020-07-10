@@ -8,11 +8,12 @@ ms.service: web-application-firewall
 ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682488"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143933"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Konfigurace zásad WAF pro jednotlivé lokality pomocí Azure PowerShell
 
@@ -28,14 +29,14 @@ V tomto článku získáte informace o těchto tématech:
 > * Nastavit síť
 > * Vytvoření zásady WAF
 > * Vytvořit aplikační bránu se zapnutým Firewallem webových aplikací
-> * Použití globálně WAF zásad, pro jednotlivé lokality a pro identifikátor URI
+> * Použijte globálně zásadu WAF, pro jednotlivé lokality a pro identifikátor URI (Preview).
 > * Vytvoření škálovací sady virtuálních počítačů
 > * Vytvoření účtu úložiště a konfigurace diagnostiky
-> * Testování brány Application Gateway
+> * Otestování aplikační brány
 
 ![Příklad firewallu webových aplikací](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -79,7 +80,7 @@ $pip = New-AzPublicIpAddress `
   -Sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="create-an-application-gateway"></a>Vytvoření brány Application Gateway
 
 V této části vytvoříte prostředky, které podporují aplikační bránu, a nakonec je vytvoříte a WAF. K vytvořeným prostředkům patří:
 
@@ -249,7 +250,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>Použití zásad pro identifikátor URI
+### <a name="apply-a-per-uri-policy-preview"></a>Použití zásad pro identifikátor URI (Preview)
 
 Pokud chcete použít zásadu pro identifikátor URI, stačí vytvořit novou zásadu a použít ji na konfiguraci pravidla cesty. 
 
@@ -403,7 +404,7 @@ Set-AzDiagnosticSetting `
   -RetentionInDays 30
 ```
 
-## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
+## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
 K získání veřejné IP adresy služby Application Gateway můžete použít [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) . Pak použijte tuto IP adresu k navýšení na (nahraďte níže uvedenou 1.1.1.1). 
 

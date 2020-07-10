@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 1bf21b8714554dcdc52ab6e34041c738ec2653f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1836be2a5feb6dad747d0da9b42cbd31ddc28a63
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105060"
+ms.locfileid: "86142594"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí .NET
 
@@ -91,11 +91,11 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 > [!NOTE]
 > Další příklady najdete v dokumentaci ke [klientské knihovně Azure identity pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity) .
 
-## <a name="create-a-file-system"></a>Vytvoření systému souborů
+## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Systém souborů funguje jako kontejner pro vaše soubory. Můžete jej vytvořit zavoláním metody [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) .
+Kontejner funguje jako systém souborů pro vaše soubory. Můžete jej vytvořit zavoláním metody [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) .
 
-Tento příklad vytvoří systém souborů s názvem `my-file-system` . 
+Tento příklad vytvoří kontejner s názvem `my-file-system` . 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -109,7 +109,7 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 Vytvořte odkaz na adresář voláním metody [DataLakeFileSystemClient. CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) .
 
-Tento příklad přidá adresář s názvem `my-directory` do systému souborů a následně přidá podadresář s názvem `my-subdirectory` . 
+Tento příklad přidá adresář s názvem `my-directory` do kontejneru a následně přidá podadresář s názvem `my-subdirectory` . 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -201,7 +201,7 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-Můžete také získat a nastavit seznam ACL kořenového adresáře systému souborů. Chcete-li získat kořenový adresář, předejte prázdný řetězec ( `""` ) do metody [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) .
+Můžete také získat a nastavit seznam ACL kořenového adresáře kontejneru. Chcete-li získat kořenový adresář, předejte prázdný řetězec ( `""` ) do metody [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) .
 
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře
 
@@ -360,7 +360,7 @@ public async Task ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient
 
 * [Referenční dokumentace k rozhraní API](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake)
 * [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files.DataLake)
-* [Ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
+* [ukázky](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake)
 * [Mapování Gen1 na Gen2](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/GEN1_GEN2_MAPPING.md)
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-net/issues)

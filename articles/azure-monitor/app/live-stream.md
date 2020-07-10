@@ -4,12 +4,12 @@ description: Monitorujte svou webovou aplikaci v reálném čase s vlastními me
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 10818a531a43b50b86a6d413c7a504e2c19c3986
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507319"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166480"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: monitorování & diagnostiky s 1 sekundou latencí
 
@@ -49,12 +49,12 @@ Ověřte, že [Odchozí porty pro Live Metrics Stream](../../azure-monitor/app/i
 
 | |Live Stream | Průzkumník metrik a analýzy |
 |---|---|---|
-|Latence|Data zobrazená během jedné sekundy|Agregované v průběhu minut|
-|Bez uchování|Data se v grafu přetrvají a pak se zahodí.|[Data zachovaná po 90 dnech](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|Na vyžádání|Data se streamují jenom v případě, že je otevřené podokno aktivní metriky. |Data se odesílají pokaždé, když je SDK nainstalovaná a povolená.|
-|Free|Za Live Stream data se neúčtují žádné poplatky.|V souladu s [cenami](../../azure-monitor/app/pricing.md)
-|Vzorkování|Přenáší se všechny vybrané metriky a čítače. Navzorkují se chyby a trasování zásobníku. TelemetryProcessors se neaplikují.|Události se dají [vzorkovat](../../azure-monitor/app/api-filtering-sampling.md) .|
-|Řídicí kanál|Řídicí signály filtru se odesílají do sady SDK. Doporučujeme tento kanál zabezpečit.|Komunikace je jedním ze způsobů, jak na portál|
+|**Latence**|Data zobrazená během jedné sekundy|Agregované v průběhu minut|
+|**Bez uchování**|Data se v grafu přetrvají a pak se zahodí.|[Data zachovaná po 90 dnech](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**Na vyžádání**|Data se streamují jenom v případě, že je otevřené podokno aktivní metriky. |Data se odesílají pokaždé, když je SDK nainstalovaná a povolená.|
+|Zadejte možnost pro **bezplatnou** SKU.|Za Live Stream data se neúčtují žádné poplatky.|V souladu s [cenami](../../azure-monitor/app/pricing.md)
+|**Vzorkování**|Přenáší se všechny vybrané metriky a čítače. Navzorkují se chyby a trasování zásobníku. TelemetryProcessors se neaplikují.|Události se dají [vzorkovat](../../azure-monitor/app/api-filtering-sampling.md) .|
+|**Řídicí kanál**|Řídicí signály filtru se odesílají do sady SDK. Doporučujeme tento kanál zabezpečit.|Komunikace je jedním ze způsobů, jak na portál|
 
 ## <a name="select-and-filter-your-metrics"></a>Výběr a filtrování metriky
 
@@ -190,7 +190,7 @@ Pokud ale znáte všechny připojené servery a důvěřujete jim, můžete si v
 | .NET                             | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +) | Podporováno (V 2.7.2 +)  |
 | .NET Core (Target =. NET Framework)| Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +)  |
 | .NET Core (Target =. NET Core)     | Podporováno (V 2.4.1 +) | Podporuje se*          | Podporováno (V 2.4.1 +) | Podporováno (V 2.4.1 +) | **Nepodporováno**    |
-| Azure Functions v2               | Podporuje se           | Podporuje se           | Podporuje se           | Podporuje se           | **Nepodporováno**    |
+| Azure Functions v2               | Podporováno           | Podporováno           | Podporováno           | Podporováno           | **Nepodporováno**    |
 | Java                             | Podporováno (V 2.0.0 +) | Podporováno (V 2.0.0 +) | **Nepodporováno**   | **Nepodporováno**   | **Nepodporováno**    |
 | Node.js                          | Podporováno (V 1.3.0 +) | Podporováno (V 1.3.0 +) | **Nepodporováno**   | Podporováno (V 1.3.0 +) | **Nepodporováno**    |
 

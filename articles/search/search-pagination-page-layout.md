@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561589"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146186"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
 
@@ -55,20 +55,26 @@ V případě změny podkladového indexu není zaručeno, že výsledky stránko
  
 Následuje příklad, jak můžete získat duplicity. Předpokládat index se čtyřmi dokumenty:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
-    { "id": "4", "rating": 1 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+{ "id": "4", "rating": 1 }
+```
  
 Nyní předpokládejme, že výsledky byly vráceny dvakrát v čase seřazené podle hodnocení. Tento dotaz provedete tak, aby získal první stránku výsledků: `$top=2&$skip=0&$orderby=rating desc` a vygeneroval následující výsledky:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+```
  
 Ve službě se předpokládá, že se do indexu přidá pátý dokument mezi voláními dotazu: `{ "id": "5", "rating": 4 }` .  Krátce potom spustíte dotaz k načtení druhé stránky: `$top=2&$skip=2&$orderby=rating desc` a získáte tyto výsledky:
 
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
+```text
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+```
  
 Všimněte si, že dokument 2 je načten dvakrát. Je to proto, že nový dokument 5 má větší hodnotu hodnocení, takže seřadí před dokument 2 a na první stránce. I když toto chování může být neočekávané, je typický způsob, jakým se chová vyhledávací web.
 
@@ -78,7 +84,7 @@ U fulltextových vyhledávacích dotazů jsou výsledky automaticky seřazené p
 
 Hledání skóre vyjadřuje obecnou představu o závažnosti a odráží sílu porovnávání ve srovnání s ostatními dokumenty ve stejné sadě výsledků. Skóre nejsou vždy konzistentní od jednoho dotazu k dalšímu, takže při práci s dotazy si můžete všimnout malých nedostatků při řazení dokumentů pro hledání. K tomu může dojít z několika vysvětlení.
 
-| Příčina | Description |
+| Příčina | Popis |
 |-----------|-------------|
 | Nestálost dat | Obsah indexu se při přidávání, upravování a odstraňování dokumentů liší. Termínové kmitočty se změní, protože aktualizace indexu jsou zpracovávány v průběhu času, což má vliv na výsledky hledání u vyhovujících dokumentů. |
 | Více replik | Pro služby, které používají více replik, jsou dotazy vydávány paralelně pro každou repliku. Statistiky indexu použité k výpočtu skóre vyhledávání se počítají na základě repliky a výsledky se sloučily a seřazeny v odpovědi na dotaz. Repliky jsou většinou zrcadlově navzájem, ale statistiky se mohou lišit v důsledku malých rozdílů ve stavu. Například jedna replika mohla odstranit dokumenty přispívající do jejich statistik, které byly sloučeny mimo jiné repliky. Rozdíly v statistikách pro jednotlivé repliky jsou obvykle patrné v menších indexech. |

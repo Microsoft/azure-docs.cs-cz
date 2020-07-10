@@ -16,11 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338181"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145767"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Řešení potíží se správou nároků Azure AD
 
@@ -94,7 +95,9 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
 Pokud po aktivaci žádosti o rezpracování balíčku pro přístup dojde k chybě, musíte počkat, až systém žádost znovu zpracuje. Systém se několikrát pokusí znovu zpracovat několik hodin, takže během této doby nebudete moci vynutit opětovné zpracování. 
 
-Můžete zpracovat pouze požadavek se stavem **doručení se nezdařilo** nebo byl **částečně doručen** a datum dokončení je kratší než jeden týden.
+Můžete zpracovat pouze požadavek se stavem **doručení se nezdařilo** nebo byl **částečně doručen** a datum dokončení je kratší než jeden týden. Tlačítko pro **rezpracování** bude v opačném případě šedé.
+
+![Tlačítko pro znovu zpracovat šedě](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
 - Pokud je chyba opravena během okna zkušební verze, stav žádosti se změní na **doručení**. Požadavek se znovu zpracuje bez dalších akcí od uživatele.
 
@@ -116,7 +119,7 @@ Můžete zpracovat pouze požadavek se stavem **doručení se nezdařilo** nebo 
 
 ### <a name="cancel-a-pending-request"></a>Zrušení žádosti, která čeká na vyřízení
 
-Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena, nebo jejíž doručení se nezdařilo.
+Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena, nebo jejíž doručení se nezdařilo. Tlačítko **Zrušit** bude v opačném případě šedé.
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 
@@ -138,7 +141,7 @@ Můžete zrušit pouze nevyřízenou žádost, která ještě nebyla doručena, 
 
 * Když se uplatní víc zásad, vybere se automaticky vybraná zásada nebo zásady, které se zobrazí žadateli, na základě následující prioritní logiky:
 
-    | Priorita zásad | Rozsah |
+    | Priorita zásad | Obor |
     | --- | --- |
     | P1 | Konkrétní uživatelé a skupiny v adresáři nebo konkrétní připojené organizace |
     | P2 | Všichni členové adresáře (kromě hostů) |

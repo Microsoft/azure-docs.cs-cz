@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985731"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147053"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 
@@ -23,10 +23,10 @@ Azure Machine Learning poskytuje několik způsobů, jak proškolit vaše modely
 
 + [Azure Machine Learning SDK pro Python](#python-sdk): sada Python SDK nabízí několik způsobů výuky modelů, z nichž každá má různé možnosti.
 
-    | Způsob školení | Description |
+    | Způsob školení | Popis |
     | ----- | ----- |
     | [Konfigurace spuštění](#run-configuration) | **Obecným způsobem, jak naučit modely** , je použít školicí skript a spustit konfiguraci. Konfigurace spuštění poskytuje informace potřebné ke konfiguraci školicího prostředí používaného pro výuku modelu. Můžete provést konfiguraci spuštění, školicí skript a cíl služby COMPUTE (školicí prostředí) a spustit školicí úlohu. |
-    | [Automatizované Machine Learning](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
+    | [Automatizované strojové učení](#automated-machine-learning) | Automatizované Machine Learning umožňuje **výukové modely bez rozsáhlých vědeckých znalostí nebo programování**. Pro lidi s datovou vědy a programováním na pozadí poskytuje způsob, jak ušetřit čas a prostředky díky automatizaci výběru algoritmu a ladění parametrů. Při použití automatizovaného strojového učení se nemusíte starat o definování konfigurace spuštění. |
     | [Odhady](#estimators) | Třídy Estimator usnadňují **výukové modely založené na oblíbených architekturách strojového učení**. Existují třídy Estimator pro **Scikit-učit**, **PyTorch**, **TensorFlow**, **chainer**a **Ray RLlib**. K dispozici je také obecná Estimator, která může být použita s architekturami, které ještě nemají vyhrazenou třídu Estimator. Při použití odhady se nemusíte starat o definování konfigurace spuštění. |
     | [Kanál strojového učení](#machine-learning-pipeline) | Kanály nejsou jinou výukovou metodou, ale **způsob definování pracovního postupu pomocí modulárních a opakovaně použitelných kroků**, které můžou zahrnovat školení jako součást pracovního postupu. Kanály strojového učení podporují pomocí automatizovaného strojového učení, odhady a konfigurace spouštění pro výukové modely. Vzhledem k tomu, že se kanály nezaměřují konkrétně na školení, jsou důvody pro použití kanálu různorodější než jiné metody školení. Obecně platí, že můžete použít kanál v těchto případech:<br>* Chcete **naplánovat bezobslužné procesy** , jako je například dlouho běžící školicí úlohy nebo Příprava dat.<br>* Použijte **více kroků** , které jsou koordinovány napříč heterogenními výpočetními prostředky a umístěními úložiště.<br>* Kanál použijte jako **opakovaně použitelnou šablonu** pro konkrétní scénáře, jako je například přeškolení nebo dávkové vyhodnocování.<br>* **Sledování a verze zdrojů dat, vstupů a výstupů** pro váš pracovní postup.<br>* Pracovní postup je **implementován různými týmy, které pracují podle konkrétních kroků nezávisle**. Kroky je pak možné spojit společně v kanálu pro implementaci pracovního postupu. |
 
@@ -131,6 +131,10 @@ Machine Learning CLI je rozšířením rozhraní příkazového řádku Azure CL
 
 * [Pro Azure Machine Learning použít rozšíření CLI](reference-azure-machine-learning-cli.md)
 * [MLOps v Azure](https://github.com/microsoft/MLOps)
+
+## <a name="vs-code"></a>VS Code
+
+Ke spuštění a správě školicích úloh můžete použít rozšíření VS Code. Další informace najdete v tématu [Průvodce správou prostředků vs Code](how-to-manage-resources-vscode.md#experiments) .
 
 ## <a name="next-steps"></a>Další kroky
 

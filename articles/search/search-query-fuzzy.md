@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81262430"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146137"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Nepřibližné vyhledávání pro opravu chybných pravopisů a překlepů
 
@@ -85,37 +86,49 @@ V `"Description"` poli vyhledávacího dokumentu se předpokládá následujíc�
 
 Začněte s přibližným hledáním "Special" a přidejte zvýraznění přístupů do pole Popis:
 
-    search=special~&highlight=Description
+```console
+search=special~&highlight=Description
+```
 
 Vzhledem k tomu, že jste přidali zvýraznění přístupů, se v odpovědi použije jako shodný termín formátování "Special".
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 Opakujte pokus o zadání několika písmen ("PE"):
 
-    search=scial~&highlight=Description
+```console
+search=scial~&highlight=Description
+```
 
 Zatím se žádná změna odezvy nezměnila. Při použití výchozí vzdálenosti 2 stupňů se při odebrání dvou znaků "PE" z "zvláštního" stále povoluje úspěšná shoda s tímto termínem.
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 Když se pokusíte o jednu další žádost, dál upravte hledaný termín tak, že si vyberete jeden poslední znak celkem tři odstranění (od "speciální" až po "škálovatelnost"):
 
-    search=scal~&highlight=Description
+```console
+search=scal~&highlight=Description
+```
 
 Všimněte si, že se vrátí stejná odpověď, ale teď místo porovnání s "speciální" je přibližná shoda na SQL.
 
-            "@search.score": 0.4232868,
-            "@search.highlights": {
-                "Description": [
-                    "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
-                ]
+```output
+        "@search.score": 0.4232868,
+        "@search.highlights": {
+            "Description": [
+                "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
+            ]
+```
 
 Bodem tohoto rozbaleného příkladu je ilustrovat přehlednost, který zvýrazňování výsledků může přinést nejednoznačným výsledkům. Ve všech případech se vrátí stejný dokument. Při ověřování shody jste se spoléhali na ID dokumentů, možná jste nenalezli Shift "Special" na "SQL".
 

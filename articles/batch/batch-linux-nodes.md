@@ -4,11 +4,12 @@ description: Naučte se zpracovávat paralelní výpočetní úlohy na fondech v
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, tracking-python
-ms.openlocfilehash: 1a87b72b16c1d41e5569c4ce9e5e1a6e2c51a2e0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 05e23093a00eab70db683c10eae59ef27152d2f7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960074"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145045"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 
@@ -28,7 +29,7 @@ Při vytváření fondu výpočetních uzlů ve službě Batch máte dvě možno
 
 ### <a name="virtual-machine-image-reference"></a>Odkaz na image virtuálního počítače
 
-Služba Batch používá k poskytování výpočetních uzlů v konfiguraci virtuálního počítače službu [Virtual Machine Scale Sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . Můžete zadat obrázek z [Azure Marketplace][vm_marketplace]nebo zadat vlastní image, kterou jste připravili. Další informace o vlastních bitových kopiích najdete v tématu [Vytvoření fondu pomocí Galerie sdílených imagí](batch-sig-images.md).
+Služba Batch používá k poskytování výpočetních uzlů v konfiguraci virtuálního počítače službu [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) . Můžete zadat obrázek z [Azure Marketplace][vm_marketplace]nebo zadat vlastní image, kterou jste připravili. Další informace o vlastních bitových kopiích najdete v tématu [Vytvoření fondu pomocí Galerie sdílených imagí](batch-sig-images.md).
 
 Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnosti image virtuálního počítače. Při vytváření odkazu na image virtuálního počítače se vyžadují tyto vlastnosti:
 

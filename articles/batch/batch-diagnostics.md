@@ -4,11 +4,12 @@ description: Zaznamenává a analyzuje události diagnostického protokolu pro p
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6e10a4fc6cd13854682f094274c975931b056365
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960720"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145092"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metriky, výstrahy a protokoly služby Batch pro vyhodnocení a monitorování diagnostiky
  
@@ -86,8 +87,8 @@ Běžným scénářem je výběr účtu Azure Storage jako cíle protokolu. Chce
 
 Alternativně můžete:
 
-- Umožňuje streamovat události protokolu diagnostiky služby Batch do [centra událostí Azure](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs může ingestovat miliony událostí za sekundu, které pak můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase. 
-- Odešlete diagnostické protokoly do [protokolů Azure monitor](../log-analytics/log-analytics-overview.md), kde je můžete analyzovat nebo exportovat pro účely analýzy v Power BI nebo Excelu.
+- Umožňuje streamovat události protokolu diagnostiky služby Batch do [centra událostí Azure](../event-hubs/event-hubs-about.md). Event Hubs může ingestovat miliony událostí za sekundu, které pak můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase. 
+- Odešlete diagnostické protokoly do [protokolů Azure monitor](../azure-monitor/log-query/log-query-overview.md), kde je můžete analyzovat nebo exportovat pro účely analýzy v Power BI nebo Excelu.
 
 > [!NOTE]
 > Pro ukládání nebo zpracování dat protokolů diagnostiky se službami Azure můžete účtovat další náklady. 
@@ -118,7 +119,7 @@ m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Příklad:
+Zde je příklad:
 
 ```json
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/
@@ -134,7 +135,7 @@ Níže je uveden příklad `PoolResizeCompleteEvent` položky v `PT1H.json` soub
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-Další informace o schématu diagnostických protokolů v účtu úložiště najdete v tématu [archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-platform-logs-in-storage-account). Pokud chcete získat přístup k protokolům v účtu úložiště programově, použijte rozhraní API pro úložiště.
+Další informace o schématu diagnostických protokolů v účtu úložiště najdete v tématu [archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). Pokud chcete získat přístup k protokolům v účtu úložiště programově, použijte rozhraní API pro úložiště.
 
 ### <a name="service-log-events"></a>Události protokolu služby
 
@@ -177,4 +178,3 @@ Události protokolu služby emitované službou Batch zahrnují následující:
 
 - Další informace o dostupných [rozhraních API a nástrojích služby Batch](batch-apis-tools.md) pro sestavování řešení Batch.
 - Přečtěte si další informace o [monitorování řešení Batch](monitoring-overview.md).
-

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 6660c5d40ffb8ecb338dd9cdf53f24cfe2911713
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/08/2020
+ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043831"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142707"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurace připojení TLS v Azure Database for PostgreSQL – jeden server
 
@@ -51,7 +51,9 @@ Některé aplikační architektury, které používají PostgreSQL pro své data
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>Aplikace, které vyžadují ověření certifikátu pro připojení TLS
 
-V některých případech aplikace vyžadují k zabezpečenému připojení soubor místního certifikátu generovaný ze souboru certifikátu důvěryhodné certifikační autority (CA). Certifikát pro připojení k serveru Azure Database for PostgreSQL se nachází na adrese https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Stáhněte si soubor certifikátu a uložte ho do svého upřednostňovaného umístění. (Další informace najdete v následujících odkazech k certifikátům pro servery v cloudech svrchovaného serveru: [Azure Government](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem), [Azure Čína](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)a [Azure Německo](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).) 
+V některých případech aplikace vyžadují k zabezpečenému připojení soubor místního certifikátu generovaný ze souboru certifikátu důvěryhodné certifikační autority (CA). Certifikát pro připojení k serveru Azure Database for PostgreSQL se nachází na adrese https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Stáhněte si soubor certifikátu a uložte ho do svého upřednostňovaného umístění. 
+
+Podívejte se na následující odkazy pro certifikáty pro servery v cloudech v rámci svrchovaného cloudu: [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem), [Azure Čína](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)a [Azure Německo](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).
 
 ### <a name="connect-using-psql"></a>Připojení pomocí psql
 

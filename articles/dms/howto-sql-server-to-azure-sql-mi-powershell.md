@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 35e6690726750e6c9e6dfb0cb62a6732603c3610
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb8ec09646fa3f3c226edbe957e19d079fd2607c
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083657"
+ms.locfileid: "86147419"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>Migrace SQL Server do spravované instance SQL pomocí PowerShellu & Azure Database Migration Service
 
@@ -121,13 +121,11 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-Následující příklad ukazuje vytvoření informací o připojení pro spravovanou instanci Azure SQL s názvem ' targetmanagedinstance.database.windows.net ' pomocí ověřování SQL:
+Další příklad ukazuje vytvoření informací o připojení pro spravovanou instanci Azure SQL s názvem ' targetmanagedinstance ':
 
 ```powershell
-$targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
-  -DataSource "targetmanagedinstance.database.windows.net" `
-  -AuthType SqlAuthentication `
-  -TrustServerCertificate:$false
+$targetResourceId = (Get-AzSqlInstance -Name "targetmanagedinstance").Id
+$targetConnInfo = New-AzDmsConnInfo -ServerType SQLMI -MiResourceId $targetResourceId
 ```
 
 ### <a name="provide-databases-for-the-migration-project"></a>Poskytnout databáze pro projekt migrace
@@ -418,7 +416,7 @@ Po dokončení migrace můžete instanci Azure Database Migration Service odstra
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 Informace o dalších scénářích migrace (páry zdroj/cíl) najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/)společnosti Microsoft.
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201185"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145707"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Extrakce informací v Excelu pomocí Analýza textu a automatizace 
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Microsoft Azure. [Začněte s bezplatnou zkušební verzí](https://azure.microsoft.com/free/) nebo se [přihlaste](https://portal.azure.com/).
+- Účet Microsoft Azure. [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/) nebo se [přihlaste](https://portal.azure.com/).
 - Prostředek Analýza textu. Pokud ho ještě nemáte, můžete [ho vytvořit v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) a k dokončení tohoto kurzu použít bezplatnou úroveň.
 - [Klíč a koncový bod](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který jste vygenerovali během registrace.
 - Tabulka obsahující problémy klienta. Ukázková data jsou k dispozici na GitHubu
@@ -61,7 +61,7 @@ Na stránce **sestavit naplánovaný tok** inicializujte svůj tok pomocí násl
 |Pole |Hodnota  |
 |---------|---------|
 |**Název toku**     | **Naplánovaná kontrola** nebo jiný název.         |
-|**Začátek**     |  Zadejte aktuální datum a čas.       |
+|**Spouštění**     |  Zadejte aktuální datum a čas.       |
 |**Opakovat každých**     | **1 hodina**        |
 
 ## <a name="add-variables-to-the-flow"></a>Přidání proměnných do toku
@@ -123,7 +123,7 @@ V toku zadejte následující informace, chcete-li vytvořit nové připojení A
 
 | Pole           | Hodnota                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
-| Název připojení | Název připojení k vašemu prostředku Analýza textu. Například, `TAforPowerAutomate`. |
+| Název připojení | Název připojení k vašemu prostředku Analýza textu. Například `TAforPowerAutomate`. |
 | Klíč účtu     | Klíč pro prostředek Analýza textu.                                                                                   |
 | Adresa URL webu        | Koncový bod pro prostředek Analýza textu.                                                       |
 
@@ -182,7 +182,7 @@ Kliknutím na název minimalizujete **každou akci použít na každou 2** . Pak
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
 
-V rámci **použít na každé 3**přidejte ovládací prvek **podmínky** . Bude se pojmenovat **Podmínka 2**. Do prvního textového pole vyhledejte a přidejte **typ entity** z okna dynamického obsahu. Ujistěte se, že je prostřední pole nastavené na hodnotu **je rovno**. Potom do pravého textového pole zadejte `var_phone`. 
+V rámci **použít na každé 3**přidejte ovládací prvek **podmínky** . Bude se pojmenovat **Podmínka 2**. Do prvního textového pole vyhledejte a přidejte **typ entity** z okna dynamického obsahu. Ujistěte se, že je prostřední pole nastavené na hodnotu **je rovno**. Potom do pravého textového pole zadejte `var_phone` . 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
@@ -203,15 +203,15 @@ Kliknutím na název **můžete minimalizovat použití na každé tři** . Pak 
 
 V dalším kroku bude tok kontrolovat, zda popis problému z řádku excelové tabulky obsahuje slovo "domovníing". Pokud ano, přidá se "instalace" do sloupce IssueType. Pokud ne, zadáme "other".
 
-V rámci akce **použít u každé 4** přidejte ovládací prvek **podmínky** . Bude se pojmenovat **Podmínka 3**. Do prvního textového pole vyhledejte a přidejte **Popis** ze souboru aplikace Excel pomocí okna dynamického obsahu. Ujistěte se, že střední box **obsahuje**. Pak v pravém textovém poli vyhledejte a vyberte `var_plumbing`. 
+V rámci akce **použít u každé 4** přidejte ovládací prvek **podmínky** . Bude se pojmenovat **Podmínka 3**. Do prvního textového pole vyhledejte a přidejte **Popis** ze souboru aplikace Excel pomocí okna dynamického obsahu. Ujistěte se, že střední box **obsahuje**. Pak v pravém textovém poli vyhledejte a vyberte `var_plumbing` . 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::
 
 
-V **případě podmínky Ano** klikněte na **přidat akci**a vyberte **aktualizovat řádek**. Pak zadejte informace, jako jsou třeba. Ve sloupci IssueType vyberte `var_plumbing`. Tím se na řádek aplikuje popisek "instalace".
+V **případě podmínky Ano** klikněte na **přidat akci**a vyberte **aktualizovat řádek**. Pak zadejte informace, jako jsou třeba. Ve sloupci IssueType vyberte `var_plumbing` . Tím se na řádek aplikuje popisek "instalace".
 
-V části **Pokud není** podmínka klikněte na **přidat akci**a vyberte **aktualizovat řádek**. Pak zadejte informace, jako jsou třeba. Ve sloupci IssueType vyberte `var_other`. Tím se na řádek aplikuje popisek "jiné".
+V části **Pokud není** podmínka klikněte na **přidat akci**a vyberte **aktualizovat řádek**. Pak zadejte informace, jako jsou třeba. Ve sloupci IssueType vyberte `var_other` . Tím se na řádek aplikuje popisek "jiné".
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Přidejte do svého toku přihlašovací údaje Analýza textu.":::

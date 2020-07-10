@@ -4,12 +4,12 @@ description: Při prvním použití Language Understanding (LUIS) není nutné v
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055762"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144629"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -110,7 +110,7 @@ Vlastník a všichni přispěvatelé mají přístup k vytváření aplikací.
 |Import verze||
 |Nastavit aplikaci jako veřejnou|Když je aplikace veřejná, může se uživatel dotazovat na aplikaci s vytvářením nebo klíčovým bodem.|
 |Upravit model|
-|Publikování|
+|Publikovat|
 |Kontrola služby Endpoint projevy pro [aktivní učení](luis-how-to-review-endpoint-utterances.md)|
 |Trénování|
 
@@ -154,9 +154,9 @@ Můžete určit, kdo může zobrazit klíč koncového bodu LUIS předpovědi, v
 ## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Přihlaste se k portálu LUIS a začněte vytvářet vytváření.
 
 1. Přihlaste se k [portálu Luis](https://www.luis.ai) a odsouhlaste podmínky použití.
-1. Spusťte aplikaci LUIS tak, že zvolíte, který typ klíče pro vytváření LUIS chcete použít: bezplatný zkušební klíč nebo nový klíč pro vytváření obsahu Azure LUIS.
+1. Spusťte aplikaci LUIS tak, že vyberete svůj klíč pro vytváření obsahu Azure LUIS.
 
-    ![Zvolit typ prostředku pro vytváření Language Understanding](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+   ![Zvolit typ prostředku pro vytváření Language Understanding](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
 1. Po dokončení procesu výběru prostředků [vytvořte novou aplikaci](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
@@ -232,7 +232,7 @@ Pro účely automatizace, jako je například kanál CI/CD, možná budete chtí
 
     Toto rozhraní API pro POST vyžaduje následující nastavení:
 
-    |Záhlaví|Hodnota|
+    |Hlavička|Hodnota|
     |--|--|
     |`Authorization`|Hodnota `Authorization` je `Bearer {token}` . Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
     |`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
@@ -245,9 +245,9 @@ Pro účely automatizace, jako je například kanál CI/CD, možná budete chtí
 
     |Typ|Nastavení|Hodnota|
     |--|--|--|
-    |Záhlaví|`Authorization`|Hodnota `Authorization` je `Bearer {token}` . Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
-    |Záhlaví|`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
-    |Záhlaví|`Content-type`|`application/json`|
+    |Hlavička|`Authorization`|Hodnota `Authorization` je `Bearer {token}` . Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
+    |Hlavička|`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
+    |Hlavička|`Content-type`|`application/json`|
     |Dotaz|`appid`|ID aplikace LUIS.
     |Text||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e";<br>"Znovu nasource": "Zdrojová položka-2",<br>"Account": "Luis-uswest-S0-2"}|
 

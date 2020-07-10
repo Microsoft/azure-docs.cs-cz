@@ -97,7 +97,7 @@ Další informace o tom, jak vytvořit snímky pro služby Managed disks, najdet
 * [Vytvoření snímku spravovaného disku ve Windows](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Vytvoření snímku spravovaného disku v systému Linux](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-### <a name="images"></a>Image
+### <a name="images"></a>Obrázky
 
 Spravované disky také podporují vytváření spravované vlastní image. Můžete vytvořit image z vlastního virtuálního pevného disku v účtu úložiště nebo přímo z zobecněného (nástroje Sysprep) virtuálního počítače. Tento proces zachycuje jeden obrázek. Tato image obsahuje všechny spravované disky přidružené k virtuálnímu počítači, včetně operačního systému i datových disků. Tato spravovaná vlastní image umožňuje vytvářet stovky virtuálních počítačů s využitím vlastní image bez nutnosti kopírovat ani spravovat žádné účty úložiště.
 

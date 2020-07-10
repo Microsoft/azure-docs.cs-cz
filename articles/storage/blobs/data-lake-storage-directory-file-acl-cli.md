@@ -9,17 +9,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 8fdcad18ccec2748761cf35f2cd0b8efe9749958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159f3c63a647ff565e838b01dbaaadf947fb8ada
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466132"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142619"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
 V tomto článku se dozvíte, jak pomocí [rozhraní příkazového řádku Azure (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají hierarchický obor názvů. 
 
-Mapování Gen1 na [Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-cli-extensions/issues)
+[Ukázky](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,39 +65,39 @@ Mapování Gen1 na [Gen2](https://github.com/Azure/azure-cli-extensions/tree/mas
 > [!NOTE]
 > Příklad uvedený v tomto článku ukazuje autorizaci Azure Active Directory (AD). Další informace o metodách autorizace najdete v tématu [autorizace přístupu k objektům blob nebo Queue data z Azure pomocí Azure CLI](../common/authorize-data-operations-cli.md).
 
-## <a name="create-a-file-system"></a>Vytvoření systému souborů
+## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Systém souborů funguje jako kontejner pro vaše soubory. Můžete ho vytvořit pomocí `az storage fs create` příkazu. 
+Kontejner funguje jako systém souborů pro vaše soubory. Můžete ho vytvořit pomocí `az storage fs create` příkazu. 
 
-Tento příklad vytvoří systém souborů s názvem `my-file-system` .
+Tento příklad vytvoří kontejner s názvem `my-file-system` .
 
 ```azurecli
 az storage fs create -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="show-file-system-properties"></a>Zobrazit vlastnosti systému souborů
+## <a name="show-container-properties"></a>Zobrazit vlastnosti kontejneru
 
-Vlastnosti systému souborů můžete vytisknout do konzoly pomocí `az storage fs show` příkazu.
+Vlastnosti kontejneru můžete vytisknout do konzoly pomocí `az storage fs show` příkazu.
 
 ```azurecli
 az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="list-file-system-contents"></a>Výpis obsahu systému souborů
+## <a name="list-container-contents"></a>Výpis obsahu kontejneru
 
 Seznamte se s obsahem adresáře pomocí `az storage fs file list` příkazu.
 
-V tomto příkladu je uveden seznam obsahu systému souborů s názvem `my-file-system` .
+V tomto příkladu je uveden seznam obsahu kontejneru s názvem `my-file-system` .
 
 ```azurecli
 az storage fs file list -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="delete-a-file-system"></a>Odstranění systému souborů
+## <a name="delete-a-container"></a>Odstranění kontejneru
 
-Pomocí příkazu odstraňte systém souborů `az storage fs delete` .
+Odstraňte kontejner pomocí `az storage fs delete` příkazu.
 
-Tento příklad odstraní systém souborů s názvem `my-file-system` . 
+Tento příklad odstraní kontejner s názvem `my-file-system` . 
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -106,7 +107,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 Vytvořte odkaz na adresář pomocí `az storage fs directory create` příkazu. 
 
-Tento příklad přidá adresář s názvem `my-directory` do systému souborů s názvem `my-file-system` , který je umístěn v účtu s názvem `mystorageaccount` .
+Tento příklad přidá adresář s názvem `my-directory` do kontejneru s názvem `my-file-system` , který je umístěn v účtu s názvem `mystorageaccount` .
 
 ```azurecli
 az storage fs directory create -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -124,13 +125,13 @@ az storage fs directory show -n my-directory -f my-file-system --account-name my
 
 Přejmenujte nebo přesuňte adresář pomocí `az storage fs directory move` příkazu.
 
-Tento příklad přejmenuje adresář z názvu `my-directory` na název `my-new-directory` ve stejném systému souborů.
+Tento příklad přejmenuje adresář z názvu `my-directory` na název `my-new-directory` ve stejném kontejneru.
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
 ```
 
-Tento příklad přesune adresář do systému souborů s názvem `my-second-file-system` .
+Tento příklad přesune adresář do kontejneru s názvem `my-second-file-system` .
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-second-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
@@ -148,9 +149,9 @@ az storage fs directory delete -n my-directory -f my-file-system  --account-name
 
 ## <a name="check-if-a-directory-exists"></a>Zjistit, jestli adresář existuje
 
-Zjistěte, zda v systému souborů existuje konkrétní adresář pomocí `az storage fs directory exists` příkazu.
+Zjistěte, zda v kontejneru existuje konkrétní adresář pomocí `az storage fs directory exists` příkazu.
 
-Tento příklad ukáže, zda adresář s názvem `my-directory` existuje v `my-file-system` systému souborů. 
+Tento příklad ukáže, zda adresář s názvem `my-directory` existuje v `my-file-system` kontejneru. 
 
 ```azurecli
 az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
@@ -170,7 +171,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 Seznamte se s obsahem adresáře pomocí `az storage fs file list` příkazu.
 
-Tento příklad vypíše obsah adresáře s názvem `my-directory` , který se nachází v `my-file-system` systému souborů účtu úložiště s názvem `mystorageaccount` . 
+Tento příklad vypíše obsah adresáře s názvem `my-directory` , který se nachází v `my-file-system` kontejneru účtu úložiště s názvem `mystorageaccount` . 
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -309,7 +310,7 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ## <a name="see-also"></a>Viz také
 
-* [Mapování Gen1 na Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [ukázky](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [Poskytnout zpětnou vazbu](https://github.com/Azure/azure-cli-extensions/issues)
 * [Známé problémy](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 

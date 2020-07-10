@@ -12,11 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db7a1489b877544cd36627f3962b6b4e1b8c462
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433261"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146441"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Kam ukládat a zapisovat soubory pro Azure Machine Learning experimenty
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +30,9 @@ Při spouštění školicích běhů na [cílovém výpočetním cíli](how-to-s
 
 Předtím, než můžete zahájit experiment na výpočetním cíli nebo na místním počítači, je nutné zajistit, aby byly k dispozici nezbytné soubory pro tento výpočetní cíl, například soubory závislosti a datové soubory, které váš kód potřebuje ke spuštění.
 
-Azure Machine Learning spustí školicí skripty zkopírováním celé složky skriptu do cílového výpočetního kontextu a pak pořídí snímek. Limit úložiště pro snímky experimentů je 300 MB nebo 2 000 souborů.
+Azure Machine Learning spouští školicí skripty zkopírováním celého zdrojového adresáře. Pokud máte citlivá data, která nechcete nahrávat, použijte [soubor. Ignore](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) nebo ho nezahrnujte do zdrojového adresáře. Místo toho přístup k datům pomocí [úložiště](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)dat.
+
+Limit úložiště pro snímky experimentů je 300 MB nebo 2 000 souborů.
 
 Z tohoto důvodu doporučujeme:
 
@@ -55,7 +58,7 @@ Popis experimentu &nbsp;|Řešení omezení úložiště
 Méně než 2000 souborů & nemůže používat úložiště dat| Přepsat omezení velikosti snímku pomocí <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> To může trvat několik minut v závislosti na počtu a velikosti souborů.
 Musí používat konkrétní adresář skriptu.| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 Kanál|Pro každý krok použijte jiný podadresář
-Poznámkové bloky Jupyter| Vytvořte `.amlignore` soubor nebo přesuňte svůj Poznámkový blok do nového, prázdného podadresáře a spusťte svůj kód znovu.
+Jupyter Notebooks| Vytvořte `.amlignore` soubor nebo přesuňte svůj Poznámkový blok do nového, prázdného podadresáře a spusťte svůj kód znovu.
 
 ## <a name="where-to-write-files"></a>Kam zapisovat soubory
 

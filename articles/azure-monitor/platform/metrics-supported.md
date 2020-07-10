@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 7ed55200db72879f7ec7323b5c165998944688a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffdfeacad2fcfa7f77f3bcb55e8b1edaea865202
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906781"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145168"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky s Azure Monitor
 
@@ -43,7 +43,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/servery
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Počet|Průměr|QPU. Rozsah 0-100 pro S1, 0-200 pro S2 a 0-400 pro S4|ServerResourceType|
 |memory_metric|Memory (Paměť)|Bajty|Průměr|Memory: Rozsah 0-25 GB pro S1, 0-50 GB pro S2 a 0-100 GB pro S4|ServerResourceType|
@@ -96,7 +96,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |TotalRequests|Požadavky brány celkem (zastaralé)|Počet|Celkem|Počet požadavků brány – použijte místo toho metriku žádostí s více dimenzemi s dimenzí GatewayResponseCodeCategory|Umístění, název hostitele|
 |SuccessfulRequests|Úspěšné požadavky brány (zastaralé)|Počet|Celkem|Počet úspěšných požadavků brány – použít místo toho metriku žádostí s více dimenzemi s dimenzí GatewayResponseCodeCategory|Umístění, název hostitele|
@@ -120,7 +120,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/configurationStores
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |HttpIncomingRequestCount|HttpIncomingRequestCount|Počet|Počet|Celkový počet příchozích požadavků HTTP.|StatusCode|
 |HttpIncomingRequestDuration|HttpIncomingRequestDuration|Počet|Průměr|Latence požadavku HTTP.|StatusCode|
@@ -128,7 +128,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/pružina
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SystemCpuUsagePercentage|Procento využití procesoru v systému|Procento|Průměr|Poslední využití CPU pro celý systém|AppName, pod|
 |AppCpuUsagePercentage|Procento využití procesoru aplikací|Procento|Průměr|Procento využití CPU App JVM|AppName, pod|
@@ -158,7 +158,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |TotalJob|Celkový počet úloh|Počet|Celkem|Celkový počet úloh|Runbook, stav|
 |TotalUpdateDeploymentRuns|Celkový počet spuštění nasazení aktualizací|Počet|Celkem|Celkový počet spuštění nasazení aktualizací softwaru|SoftwareUpdateConfigurationName, stav|
@@ -167,7 +167,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |CoreCount|Vyhrazený počet jader|Počet|Celkem|Celkový počet vyhrazených jader v účtu Batch|Žádná|
 |TotalNodeCount|Počet vyhrazených uzlů|Počet|Celkem|Celkový počet vyhrazených uzlů v účtu Batch|Žádná|
@@ -204,7 +204,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/Workspaces
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Úloha odeslána|Úloha odeslána|Počet|Celkem|Počet odeslaných úloh|Scénář, název_clusteru|
 |Dokončená úloha|Dokončená úloha|Počet|Celkem|Počet dokončených úloh|Scénář, název_clusteru, ResultType|
@@ -224,29 +224,29 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. blockchain/blockchainMembers
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
-|CpuUsagePercentageInDouble|Procento využití procesoru|Procento|Maximum|Procento využití procesoru|Node|
-|MemoryUsage|Využití paměti|Bajty|Průměr|Využití paměti|Node|
-|MemoryLimit|Omezení paměti|Bajty|Průměr|Omezení paměti|Node|
-|MemoryUsagePercentageInDouble|Procento využití paměti|Procento|Průměr|Procento využití paměti|Node|
-|StorageUsage|Využití úložiště|Bajty|Průměr|Využití úložiště|Node|
-|IOReadBytes|Bajty čtení v/v|Bajty|Celkem|Bajty čtení v/v|Node|
-|IOWriteBytes|Bajty zápisu v/v|Bajty|Celkem|Bajty zápisu v/v|Node|
-|ConnectionAccepted|Přijatá připojení|Počet|Celkem|Přijatá připojení|Node|
-|ConnectionHandled|Zpracovaná připojení|Počet|Celkem|Zpracovaná připojení|Node|
-|ConnectionActive|Aktivní připojení|Počet|Průměr|Aktivní připojení|Node|
-|RequestHandled|Zpracované žádosti|Počet|Celkem|Zpracované žádosti|Node|
-|ProcessedBlocks|Zpracované bloky|Počet|Celkem|Zpracované bloky|Node|
-|ProcessedTransactions|Zpracované transakce|Počet|Celkem|Zpracované transakce|Node|
-|PendingTransactions|Nedokončené transakce|Počet|Průměr|Nedokončené transakce|Node|
-|QueuedTransactions|Transakce ve frontě|Počet|Průměr|Transakce ve frontě|Node|
+|CpuUsagePercentageInDouble|Procento využití procesoru|Procento|Maximum|Procento využití procesoru|Uzel|
+|MemoryUsage|Využití paměti|Bajty|Průměr|Využití paměti|Uzel|
+|MemoryLimit|Omezení paměti|Bajty|Průměr|Omezení paměti|Uzel|
+|MemoryUsagePercentageInDouble|Procento využití paměti|Procento|Průměr|Procento využití paměti|Uzel|
+|StorageUsage|Využití úložiště|Bajty|Průměr|Využití úložiště|Uzel|
+|IOReadBytes|Bajty čtení v/v|Bajty|Celkem|Bajty čtení v/v|Uzel|
+|IOWriteBytes|Bajty zápisu v/v|Bajty|Celkem|Bajty zápisu v/v|Uzel|
+|ConnectionAccepted|Přijatá připojení|Počet|Celkem|Přijatá připojení|Uzel|
+|ConnectionHandled|Zpracovaná připojení|Počet|Celkem|Zpracovaná připojení|Uzel|
+|ConnectionActive|Aktivní připojení|Počet|Průměr|Aktivní připojení|Uzel|
+|RequestHandled|Zpracované žádosti|Počet|Celkem|Zpracované žádosti|Uzel|
+|ProcessedBlocks|Zpracované bloky|Počet|Celkem|Zpracované bloky|Uzel|
+|ProcessedTransactions|Zpracované transakce|Počet|Celkem|Zpracované transakce|Uzel|
+|PendingTransactions|Nedokončené transakce|Počet|Průměr|Nedokončené transakce|Uzel|
+|QueuedTransactions|Transakce ve frontě|Počet|Průměr|Transakce ve frontě|Uzel|
 
 
 
 ## <a name="microsoftcacheredis"></a>Microsoft. cache/Redis
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |connectedclients|Připojení klienti|Počet|Maximum||ShardId|
 |totalcommandsprocessed|Celkový počet operací|Počet|Celkem||ShardId|
@@ -254,7 +254,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 |cachemisses|Neúspěšné přístupy do mezipaměti|Počet|Celkem||ShardId|
 |cachemissrate|Frekvence neúspěšných přístupů do mezipaměti|Procento|cachemissrate||ShardId|
 |GetCommands|Příkazy Get|Počet|Celkem||ShardId|
-|setcommands|Příkazy Set|Počet|Celkem||ShardId|
+|setcommands|Sady|Počet|Celkem||ShardId|
 |operationsPerSecond|Operace za sekundu|Počet|Maximum||ShardId|
 |evictedkeys|Vyloučené klíče|Počet|Celkem||ShardId|
 |totalkeys|Celkem klíčů|Počet|Maximum||ShardId|
@@ -434,14 +434,14 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|Počet požadavků firewallu webových aplikací|Počet|Celkem|Počet požadavků klientů zpracovaných bránou firewall webových aplikací|Policy, Rule, Action|
 
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. ClassicCompute/virtualMachines
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači.|Žádná|
 |Síťové vstupy|Síťové vstupy|Bajty|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz).|Žádná|
@@ -454,7 +454,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft. ClassicCompute/domainNames/sloty/role
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači.|RoleInstanceId|
 |Síťové vstupy|Síťové vstupy|Bajty|Celkem|Počet bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz).|RoleInstanceId|
@@ -468,7 +468,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft. ClassicStorage/storageAccounts
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |UsedCapacity|Využitá kapacita|Bajty|Průměr|Kapacita využitá účtem|Žádná|
 |Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|ResponseType, typ, ApiName, ověřování|
@@ -480,7 +480,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft. ClassicStorage/storageAccounts/blobServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |BlobCapacity|Kapacita objektu BLOB|Bajty|Průměr|Velikost úložiště využitá Blob service účtu úložiště v bajtech|BlobType, úroveň|
 |BlobCount|Počet objektů BLOB|Počet|Průměr|Počet objektů BLOB v Blob service účtu úložiště|BlobType, úroveň|
@@ -495,7 +495,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft. ClassicStorage/storageAccounts/tableServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |TableCapacity|Kapacita tabulky|Bajty|Průměr|Velikost úložiště využitá Table service účtu úložiště v bajtech|Žádná|
 |TableCount|Počet tabulek|Počet|Průměr|Počet tabulek v Table service účtu úložiště|Žádná|
@@ -509,7 +509,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft. ClassicStorage/storageAccounts/služby
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Kapacita zařízení|Kapacita souboru|Bajty|Průměr|Velikost úložiště využitá službou File účtu úložiště v bajtech|Sdílená složka|
 |FileCount|Počet souborů|Počet|Průměr|Počet souborů v Souborové službě účtu úložiště.|Sdílená složka|
@@ -526,7 +526,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft. ClassicStorage/storageAccounts/queueServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |QueueCapacity|Kapacita fronty|Bajty|Průměr|Velikost úložiště využitá Služba front účtu úložiště v bajtech|Žádná|
 |QueueCount|Počet front|Počet|Průměr|Počet front v Služba front účtu úložiště.|Žádná|
@@ -541,7 +541,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. Cognitiveservices Account/účty
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |TotalCalls|Celkový počet volání|Počet|Celkem|Celkový počet volání.|ApiName, OperationName, oblast|
 |SuccessfulCalls|Úspěšná volání|Počet|Celkem|Počet úspěšných volání.|ApiName, OperationName, oblast|
@@ -561,7 +561,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači|Žádná|
 |Síťové vstupy|Síť v fakturovatelný (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz) (zastaralé)|Žádná|
@@ -606,7 +606,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači|VMName|
 |Síťové vstupy|Síť v fakturovatelný (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz) (zastaralé)|VMName|
@@ -651,7 +651,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Procento CPU|Procento CPU|Procento|Průměr|Procento přidělených výpočetních jednotek, které jsou aktuálně používány virtuálními počítači|Žádná|
 |Síťové vstupy|Síť v fakturovatelný (zastaralé)|Bajty|Celkem|Počet fakturovatelných bajtů přijatých virtuálními počítači na všech síťových rozhraních (příchozí provoz) (zastaralé)|Žádná|
@@ -695,7 +695,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft. ContainerInstance/containerGroups
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |CpuUsage|Využití procesoru|Počet|Průměr|Využití CPU na všech jádrech v millicores.|containerName|
 |MemoryUsage|Využití paměti|Bajty|Průměr|Celkové využití paměti v bajtech|containerName|
@@ -704,7 +704,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/Registry
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |TotalPullCount|Celkový počet vyžádané replikace|Počet|Průměr|Celkový počet načtených dat imagí|Žádná|
 |SuccessfulPullCount|Počet úspěšných vyžádané replikace|Počet|Průměr|Počet úspěšných stažení imagí|Žádná|
@@ -715,7 +715,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. ContainerService/managedClusters
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |kube_node_status_allocatable_cpu_cores|Celkový počet dostupných jader procesoru ve spravovaném clusteru|Počet|Průměr|Celkový počet dostupných jader procesoru ve spravovaném clusteru|Žádná|
 |kube_node_status_allocatable_memory_bytes|Celková velikost dostupné paměti ve spravovaném clusteru|Bajty|Průměr|Celková velikost dostupné paměti ve spravovaném clusteru|Žádná|
@@ -727,20 +727,20 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SuccessfullRequests|Úspěšné požadavky|Počet|Celkem|Úspěšné požadavky vytvořené vlastním poskytovatelem|HttpMethod, CallPath, StatusCode|
 |FailedRequests|Neúspěšné požadavky|Počet|Celkem|Získá dostupné protokoly pro vlastní poskytovatele prostředků.|HttpMethod, CallPath, StatusCode|
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft. DataBoxEdge/dataBoxEdgeDevices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |NICReadThroughput|Propustnost čtení (síť)|BytesPerSecond|Průměr|Propustnost čtení síťového rozhraní v zařízení v období vytváření sestav pro všechny svazky v bráně.|InstanceName|
 |NICWriteThroughput|Propustnost zápisu (síť)|BytesPerSecond|Průměr|Propustnost zápisu síťového rozhraní v zařízení v období vytváření sestav pro všechny svazky v bráně.|InstanceName|
-|CloudReadThroughputPerShare|Propustnost stahování do cloudu (sdílení)|BytesPerSecond|Průměr|Propustnost stahování do Azure ze sdílené složky během období generování sestav.|Sdílení|
-|CloudUploadThroughputPerShare|Propustnost nahrávání do cloudu (sdílení)|BytesPerSecond|Průměr|Odeslání propustnosti do Azure ze sdílené složky během období generování sestav.|Sdílení|
-|BytesUploadedToCloudPerShare|Odeslané bajty v cloudu (sdílená složka)|Bajty|Průměr|Celkový počet bajtů odeslaných do Azure ze sdílené složky během období generování sestav.|Sdílení|
+|CloudReadThroughputPerShare|Propustnost stahování do cloudu (sdílení)|BytesPerSecond|Průměr|Propustnost stahování do Azure ze sdílené složky během období generování sestav.|Sdílet|
+|CloudUploadThroughputPerShare|Propustnost nahrávání do cloudu (sdílení)|BytesPerSecond|Průměr|Odeslání propustnosti do Azure ze sdílené složky během období generování sestav.|Sdílet|
+|BytesUploadedToCloudPerShare|Odeslané bajty v cloudu (sdílená složka)|Bajty|Průměr|Celkový počet bajtů odeslaných do Azure ze sdílené složky během období generování sestav.|Sdílet|
 |Úložiště|Celková kapacita|Bajty|Průměr|Celková kapacita|Žádná|
 |Availablecapacity;)|Dostupná kapacita|Bajty|Průměr|Dostupná kapacita v bajtech během období generování sestav.|Žádná|
 |CloudUploadThroughput|Propustnost nahrávání do cloudu|BytesPerSecond|Průměr|Propustnost nahrávání do cloudu do Azure během období generování sestav.|Žádná|
@@ -752,7 +752,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdatacatalogdatacatalogs"></a>Microsoft. datacatalog/datacatalogs
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|Distribuce prostředků podle klasifikace|Počet|Celkem|Označuje počet prostředků s přiřazenou určitou klasifikací, tj. jsou klasifikovány s tímto popiskem.|Klasifikace, zdroj|
 |AssetDistributionByStorageType|Distribuce prostředků podle typu úložiště|Počet|Celkem|Označuje počet prostředků s určitým typem úložiště.|StorageType|
@@ -767,7 +767,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/DataFactory
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |FailedRuns|Neúspěšná spuštění|Počet|Celkem||profilace, Activity|
 |SuccessfulRuns|Úspěšná spuštění|Počet|Celkem||profilace, Activity|
@@ -775,7 +775,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/továrny
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |PipelineFailedRuns|Neúspěšná metrika spuštění kanálu|Počet|Celkem||FailureType, název|
 |PipelineSucceededRuns|Úspěšné metriky spuštění kanálu|Počet|Celkem||FailureType, název|
@@ -798,7 +798,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. DataLakeAnalytics/účty
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |JobEndedSuccess|Úspěšné úlohy|Počet|Celkem|Počet úspěšných úloh|Žádná|
 |JobEndedFailure|Neúspěšné úlohy|Počet|Celkem|Počet neúspěšných úloh|Žádná|
@@ -811,7 +811,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. DataLakeStore/účty
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |TotalStorage|Celkové úložiště|Bajty|Maximum|Celková velikost dat uložených v účtu.|Žádná|
 |Napsáno|Zapsaná data|Bajty|Celkem|Celkové množství dat zapsaných na účet.|Žádná|
@@ -822,7 +822,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft. datashare/Accounts
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ShareCount|Odeslané sdílené složky|Počet|Maximum|Počet odeslaných sdílených složek v účtu|ShareName|
 |ShareSubscriptionCount|Přijaté sdílené složky|Počet|Maximum|Počet přijatých sdílených složek v účtu|ShareSubscriptionName|
@@ -834,7 +834,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/servery
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádná|
 |memory_percent|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádná|
@@ -855,7 +855,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/servery
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádná|
 |memory_percent|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádná|
@@ -876,7 +876,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/servery
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádná|
 |memory_percent|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádná|
@@ -898,7 +898,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádná|
 |memory_percent|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádná|
@@ -912,7 +912,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdbforpostgresqlsingleservers"></a>Microsoft. DBforPostgreSQL/singleservers
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Průměr|Procento využití procesoru|Žádná|
 |memory_percent|Procentuální hodnota paměti|Procento|Průměr|Procentuální hodnota paměti|Žádná|
@@ -932,7 +932,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |D2C. telemetrie. příchozí přenos dat allProtocol|Počet pokusů o odeslání zprávy telemetrie|Počet|Celkem|Počet zpráv typu zařízení-Cloud telemetrie, které se pokusily o odeslání do služby IoT Hub|Žádná|
 |D2C. telemetrie. příchozí přenos dat. úspěch|Odeslané zprávy telemetrie|Počet|Celkem|Počet zpráv telemetrie typu zařízení-Cloud, které se úspěšně odeslaly do služby IoT Hub|Žádná|
@@ -1005,7 +1005,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |RegistrationAttempts|Pokusy o registraci|Počet|Celkem|Počet pokusů o registraci zařízení|ProvisioningServiceName, IotHubName, status|
 |DeviceAssignments|Přiřazená zařízení|Počet|Celkem|Počet zařízení přiřazených ke centru IoT Hub|ProvisioningServiceName,IotHubName|
@@ -1016,7 +1016,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |AddRegion|Přidání oblasti|Počet|Počet|Přidání oblasti|Oblast|
 |AvailableStorage|Dostupné úložiště|Bajty|Celkem|Celkové dostupné úložiště hlášené s členitosti 5 minut|CollectionName, DatabaseName, region|
@@ -1082,7 +1082,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft. EnterpriseKnowledgeGraph/Services
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |TransactionCount|Počet transakcí|Počet|Počet|Celkový počet transakcí|TransactionCount|
 |SuccessCount|Počet úspěchů|Počet|Počet|Počet úspěšných transakcí|SuccessCount|
@@ -1091,7 +1091,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/domény
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Téma|
 |PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|Téma, ErrorType, chyba|
@@ -1105,7 +1105,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témata
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádná|
 |PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|ErrorType, chyba|
@@ -1120,7 +1120,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádná|
 |PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|ErrorType, chyba|
@@ -1135,7 +1135,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/eventSubscriptions
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |MatchedEventCount|Spárované události|Počet|Celkem|Celkový počet událostí odpovídajících tomuto odběru události|Žádná|
 |DeliveryAttemptFailCount|Doručení – neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných doručování do tohoto odběru události|Chyba, ErrorType|
@@ -1146,7 +1146,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/extensionTopics
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Publikované události|Počet|Celkem|Celkový počet událostí publikovaných na toto téma|Žádná|
 |PublishFailCount|Publikovat neúspěšné události|Počet|Celkem|Celkový počet událostí neúspěšných publikování do tohoto tématu|ErrorType, chyba|
@@ -1158,7 +1158,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/obory názvů
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Úspěšné požadavky|Počet|Celkem|Úspěšné požadavky pro Microsoft. EventHub|EntityName, výsledek operace uvnitř|
 |ServerErrors|Chyby serveru.|Počet|Celkem|Chyby serveru pro Microsoft. EventHub|EntityName, výsledek operace uvnitř|
@@ -1197,7 +1197,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsofteventhubclusters"></a>Microsoft. EventHub/clustery
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Úspěšné požadavky|Počet|Celkem|Úspěšné požadavky pro Microsoft. EventHub|Výsledek operace uvnitř|
 |ServerErrors|Chyby serveru.|Počet|Celkem|Chyby serveru pro Microsoft. EventHub|Výsledek operace uvnitř|
@@ -1222,7 +1222,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft. HDInsight/clustery
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |GatewayRequests|Žádosti o bránu|Počet|Celkem|Počet žádostí o bránu|Stavu protokolu http|
 |CategorizedGatewayRequests|Zařadit požadavky na bránu|Počet|Celkem|Počet požadavků brány podle kategorií (1xx/2xx/3xx/4xx/5xx)|Stavu protokolu http|
@@ -1231,7 +1231,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/AutoscaleSettings
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ObservedMetricValue|Zaznamenaná hodnota metriky|Počet|Průměr|Hodnota vypočítaná AutoScale při spuštění|MetricTriggerSource|
 |MetricThreshold|Prahová hodnota metriky|Počet|Průměr|Nakonfigurované prahové hodnoty automatického škálování, když se spustilo automatické škálování.|MetricTriggerRule|
@@ -1240,7 +1240,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. Insights/Components
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|Dostupnost|Procento|Průměr|Procento úspěšně dokončených testů dostupnosti|availabilityResult/název, availabilityResult/umístění|
 |availabilityResults/Count|Testy dostupnosti|Počet|Počet|Počet testů dostupnosti|availabilityResult/název, availabilityResult/umístění, availabilityResult/úspěch|
@@ -1276,7 +1276,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftiotcentraliotapps"></a>Microsoft. IoTCentral/IoTApps
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |connectedDeviceCount|Celkem připojených zařízení|Počet|Průměr|Počet zařízení připojených k IoT Central|Žádná|
 |C2D. Property. Read. Success|Úspěšné čtení vlastností zařízení z IoT Central|Počet|Celkem|Počet všech úspěšných čtení vlastností zahájených z IoT Central|Žádná|
@@ -1291,7 +1291,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftkeyvaultvaults"></a>Trezory a trezory Microsoft.
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ServiceApiHit|Celkový počet přístupů k rozhraní API služby|Počet|Počet|Celkový počet přístupů k rozhraní API služby|ActivityType, Activity|
 |ServiceApiLatency|Celková latence rozhraní API služby|Milisekund|Průměr|Celková latence požadavků na rozhraní API služby|ActivityType, Activity, StatusCode, StatusCodeClass|
@@ -1301,7 +1301,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/clustery
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |CacheUtilization|Využití mezipaměti|Procento|Průměr|Úroveň využití v oboru clusteru|Žádná|
 |QueryDuration|Doba trvání dotazu|Milisekund|Průměr|Doba trvání dotazů v sekundách|QueryStatus|
@@ -1330,7 +1330,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/Workflows
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |RunsStarted|Spuštěné běhy|Počet|Celkem|Počet spuštěných pracovních postupů|Žádná|
 |RunsCompleted|Dokončené běhy|Počet|Celkem|Počet dokončených běhů pracovního postupu.|Žádná|
@@ -1369,7 +1369,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft. Logic/integrationServiceEnvironments
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |RunsStarted|Spuštěné běhy|Počet|Celkem|Počet spuštěných pracovních postupů|Žádná|
 |RunsCompleted|Dokončené běhy|Počet|Celkem|Počet dokončených běhů pracovního postupu.|Žádná|
@@ -1406,7 +1406,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/pracovní prostory
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Zrušená spuštění|Zrušená spuštění|Počet|Celkem|Počet zrušených spuštění pro tento pracovní prostor|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
 |Zrušit požadovaná spuštění|Zrušit požadovaná spuštění|Počet|Celkem|Počet spuštění, kde se pro tento pracovní prostor požádalo o zrušení|Scénář, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
@@ -1446,14 +1446,14 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft. Maps/Accounts
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Využití|Využití|Počet|Počet|Počet volání rozhraní API|ApiCategory, ApiName, ResultType, ResponseCode|
 |Dostupnost|Dostupnost|Procento|Průměr|Dostupnost rozhraní API|ApiCategory, ApiName|
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft. Media/MediaServices/starají
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Výchozí přenos dat|Výchozí přenos dat|Bajty|Celkem|Objem výstupních dat (v bajtech).|OutputFormat|
 |SuccessE2ELatency|Koncová latence úspěch|Milisekund|Průměr|Průměrná latence pro úspěšné požadavky v milisekundách.|OutputFormat|
@@ -1462,7 +1462,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/MediaServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |AssetQuota|Kvóta prostředků|Počet|Průměr|Počet povolených prostředků pro aktuální účet Media Service|Žádná|
 |AssetCount|Počet assetů|Počet|Průměr|Kolik prostředků již bylo vytvořeno v aktuálním účtu Media Service|Žádná|
@@ -1477,14 +1477,14 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft. MixedReality/remoteRenderingAccounts
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |AssetsConverted|Převedené prostředky|Počet|Celkem|Celkový počet převedených prostředků|AppId, ResourceId, SDKVersion|
 |ActiveRenderingSessions|Aktivní relace vykreslování|Počet|Celkem|Celkový počet aktivních relací vykreslování|AppId, ResourceId, SessionType, SDKVersion|
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft. NetApp/netAppAccounts/capacityPools/svazky
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |AverageReadLatency|Průměrná latence čtení|Milisekund|Průměr|Průměrná latence čtení v milisekundách na operaci|Žádná|
 |AverageWriteLatency|Průměrná latence zápisu|Milisekund|Průměr|Průměrná latence zápisu v milisekundách na operaci|Žádná|
@@ -1495,14 +1495,14 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft. NetApp/netAppAccounts/capacityPools
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |VolumePoolAllocatedUsed|Fond přidělený velikosti svazku|Bajty|Průměr|Přidělená velikost fondu, která se používá|Žádná|
 |VolumePoolTotalLogicalSize|Velikost spotřebovaného fondu|Bajty|Průměr|Součet logické velikosti všech svazků patřících do fondu|Žádná|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft. Network/networkInterfaces
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |BytesSentRate|Odeslané bajty|Bajty|Celkem|Počet bajtů, které síťové rozhraní odeslalo|Žádná|
 |BytesReceivedRate|Přijaté bajty|Bajty|Celkem|Počet bajtů, které síťové rozhraní přijalo|Žádná|
@@ -1511,7 +1511,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft. Network/loadBalancers
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |VipAvailability|Dostupnost cesty k datům|Počet|Průměr|Průměrná dostupnost cesty k datům Load Balancer za dobu trvání|FrontendIPAddress,FrontendPort|
 |DipAvailability|Stav sondy stavu|Počet|Průměr|Průměrný stav testu stavu Load Balancer za dobu trvání|Typprotokolu, BackendPort, FrontendIPAddress, FrontendPort, BackendIPAddress|
@@ -1524,7 +1524,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft. Network/dnszones
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |QueryVolume|Svazek dotazu|Počet|Celkem|Počet dotazů poskytovaných pro zónu DNS|Žádná|
 |RecordSetCount|Počet sad záznamů|Počet|Maximum|Počet sad záznamů v zóně DNS|Žádná|
@@ -1533,7 +1533,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft. Network/publicIPAddresses
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |PacketsInDDoS|DDoS příchozích paketů|CountPerSecond|Maximum|DDoS příchozích paketů|Žádná|
 |PacketsDroppedDDoS|Vynechané příchozí pakety DDoS|CountPerSecond|Maximum|Vynechané příchozí pakety DDoS|Žádná|
@@ -1566,7 +1566,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft. Network/virtualNetworks
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |PingMeshAverageRoundtripMs|Čas odezvy na virtuální počítač pomocí příkazů pro odeslání|Milisekund|Průměr|Čas odezvy pro příkazy pro odeslání do cílového virtuálního počítače|SourceCustomerAddress,DestinationCustomerAddress|
 |PingMeshProbesFailedPercent|Nepovedlo se odeslat příkazy do virtuálního počítače|Procento|Průměr|Procento počtu neúspěšných příkazů pro odeslání z testu na celkový počet odeslaných příkazů VMM cílového virtuálního počítače|SourceCustomerAddress,DestinationCustomerAddress|
@@ -1574,7 +1574,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ApplicationRuleHit|Počet volání pravidel aplikace|Počet|Celkem|Počet přístupů k pravidlům aplikace|Stav, důvod, protokol|
 |NetworkRuleHit|Počet volání síťových pravidel|Počet|Celkem|Počet přístupů k síťovým pravidlům|Stav, důvod, protokol|
@@ -1585,7 +1585,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Propustnost|Propustnost|BytesPerSecond|Průměr|Počet bajtů za sekundu, které Application Gateway zasloužily|Žádná|
 |UnhealthyHostCount|Počet hostitelů není v pořádku|Počet|Průměr|Počet nezdravých hostitelů back-endu|BackendSettingsPool|
@@ -1617,11 +1617,11 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |AverageBandwidth|Šířka pásma S2S brány|BytesPerSecond|Průměr|Průměrná šířka pásma brány mezi lokalitami v bajtech za sekundu|Žádná|
 |P2SBandwidth|Šířka pásma P2S brány|BytesPerSecond|Průměr|Průměrná šířka pásma sítě typu Point-to-site brány v bajtech za sekundu|Žádná|
-|P2SConnectionCount|Počet připojení P2S|Počet|Maximum|Počet připojení typu point-to-site brány|Protocol (Protokol)|
+|P2SConnectionCount|Počet připojení P2S|Počet|Maximum|Počet připojení typu point-to-site brány|Protokol|
 |TunnelAverageBandwidth|Šířka pásma tunelu|BytesPerSecond|Průměr|Průměrná šířka pásma tunelu v bajtech za sekundu|ConnectionName, RemoteIP|
 |TunnelEgressBytes|Počet bajtů výchozího přenosu dat tunelu|Bajty|Celkem|Odchozí bajty tunelu|ConnectionName, RemoteIP|
 |TunnelIngressBytes|Počet bajtů příchozího přenosu dat tunelu|Bajty|Celkem|Příchozí bajty tunelu|ConnectionName, RemoteIP|
@@ -1633,7 +1633,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |RxLightLevel|RxLightLevel|Počet|Průměr|Úroveň světla příjmu v dBm|Odkaz, Lane|
 |TxLightLevel|TxLightLevel|Počet|Průměr|Úroveň Light tx v dBm|Odkaz, Lane|
@@ -1646,7 +1646,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|PeeringType|
 |BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|PeeringType|
@@ -1659,28 +1659,28 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft. Network/expressRouteCircuits/peering
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Žádná|
 |BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Žádná|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/připojení
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|Žádná|
 |BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|Žádná|
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft. Network/expressRouteGateways
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ErGatewayConnectionBitsInPerSecond|BitsInPerSecond|CountPerSecond|Průměr|Počet bitů příchozího přenosu dat Azure za sekundu|ConnectionName|
 |ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Průměr|Počet bitů výchozího přenosu dat Azure za sekundu|ConnectionName|
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |QpsByEndpoint|Dotazy podle vráceného koncového bodu|Počet|Celkem|Počet vrácených Traffic Managerho koncového bodu v daném časovém rámci|Koncový bod|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|Stav koncového bodu podle koncového bodu|Počet|Maximum|1, pokud je stav testu koncového bodu zapnuto, 0 jinak.|Koncový bod|
@@ -1689,7 +1689,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft. Network/networkWatchers/connectionMonitors
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ProbesFailedPercent|% PROBE selhalo|Procento|Průměr|% sond monitorování připojení selhalo.|Žádná|
 |AverageRoundtripMs|Průměrná doba odezvy (MS)|Milisekund|Průměr|Průměrná doba odezvy sítě (MS) pro testy monitorování připojení odesílané mezi zdrojem a cílem|Žádná|
@@ -1699,7 +1699,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |RequestCount|Počet požadavků|Počet|Celkem|Počet požadavků klientů obsluhovaných proxy HTTP/S|Stavu protokolu HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
 |RequestSize|Velikost požadavku|Bajty|Celkem|Počet bajtů odeslaných jako požadavek od klientů na proxy server HTTP/S|Stavu protokolu HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
@@ -1714,7 +1714,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnetworkprivatednszones"></a>Microsoft. Network/privateDnsZones
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |QueryVolume|Svazek dotazu|Počet|Celkem|Počet dotazů poskytovaných pro zónu Privátní DNS|Žádná|
 |RecordSetCount|Počet sad záznamů|Počet|Maximum|Počet sad záznamů v zóně Privátní DNS|Žádná|
@@ -1726,7 +1726,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft. NotificationHubs/obory názvů/NotificationHubs
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |registrace. vše|Operace registrace|Počet|Celkem|Počet všech úspěšných operací registrace (vytváření dotazů a odstraňování aktualizací). |Žádná|
 |registrace. Create|Operace vytvoření registrace|Počet|Celkem|Počet všech úspěšných vytvoření registrace.|Žádná|
@@ -1793,7 +1793,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. OperationalInsights/pracovní prostory
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Average_ uzlů inode% Free|% Bezplatného uzlů inode|Počet|Průměr|Average_ uzlů inode% Free|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_% volného místa|% Volného místa|Počet|Průměr|Average_% volného místa|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
@@ -1855,19 +1855,19 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 |Odeslané Average_Bytes za sekundu|Odeslané bajty/s|Počet|Průměr|Odeslané Average_Bytes za sekundu|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Average_Bytes celkem/s|Bajty celkem/s|Počet|Průměr|Average_Bytes celkem/s|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
 |Délka fronty Average_Processor|Délka fronty procesoru|Počet|Průměr|Délka fronty Average_Processor|Počítač, ObjectName, InstanceName, CounterPath, SourceSystem|
-|Prezenční signál|Prezenční signál|Počet|Celkem|Prezenční signál|Počítač, OSType, verze, SourceComputerId|
-|Aktualizace|Aktualizace|Počet|Průměr|Aktualizace|Počítač, produkt, klasifikace, UpdateState, volitelné, schválené|
+|Tep|Tep|Počet|Celkem|Tep|Počítač, OSType, verze, SourceComputerId|
+|Aktualizace|Aktualizace|Počet|Průměr|Aktualizovat|Počítač, produkt, klasifikace, UpdateState, volitelné, schválené|
 |Událost|Událost|Počet|Průměr|Událost|Zdroj, protokol událostí, počítač, EventCategory, EventLevel, EventLevelName, ID události|
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. peering/peeringServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |PrefixLatency|Latence předpony|Milisekund|Průměr|Střední latence předpony|Předpona|
 
 ## <a name="microsoftpeeringpeerings"></a>Microsoft. peering/peering
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SessionAvailabilityV4|Dostupnost relace v4|Procento|Průměr|Dostupnost relace v4|ConnectionId|
 |SessionAvailabilityV6|Dostupnost relace V6|Procento|Průměr|Dostupnost relace V6|ConnectionId|
@@ -1877,7 +1877,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/– kapacity
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |QueryDuration|Doba trvání dotazu|Milisekund|Průměr|Doba trvání dotazu DAX v posledním intervalu|Žádné dimenze|
 |QueryPoolJobQueueLength|Vlákna: délka fronty úloh fondu dotazů|Počet|Průměr|Počet úloh ve frontě fondu vláken dotazů.|Žádné dimenze|
@@ -1888,7 +1888,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftprojectbabylonaccounts"></a>Microsoft. ProjectBabylon/účty
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |AssetDistributionByClassification|Distribuce prostředků podle klasifikace|Počet|Celkem|Označuje počet prostředků s přiřazenou určitou klasifikací, tj. jsou klasifikovány s tímto popiskem.|Klasifikace, zdroj, ResourceId|
 |AssetDistributionByStorageType|Distribuce prostředků podle typu úložiště|Počet|Celkem|Označuje počet prostředků s určitým typem úložiště.|StorageType, ResourceId|
@@ -1905,7 +1905,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/obory názvů
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ListenerConnections – úspěch|ListenerConnections – úspěch|Počet|Celkem|Úspěšně se ListenerConnections pro Microsoft. Relay.|EntityName, výsledek operace uvnitř|
 |ListenerConnections – ClientError|ListenerConnections – ClientError|Počet|Celkem|ClientError v ListenerConnections pro Microsoft. Relay|EntityName, výsledek operace uvnitř|
@@ -1924,7 +1924,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SearchLatency|Latence hledání|Sekundy|Průměr|Průměrná latence hledání pro vyhledávací službu|Žádná|
 |SearchQueriesPerSecond|Hledání dotazů za sekundu|CountPerSecond|Průměr|Hledání dotazů za sekundu pro vyhledávací službu|Žádná|
@@ -1933,7 +1933,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/obory názvů
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Úspěšné požadavky|Počet|Celkem|Celkový počet úspěšných žádostí pro obor názvů|EntityName, výsledek operace uvnitř|
 |ServerErrors|Chyby serveru.|Počet|Celkem|Chyby serveru pro Microsoft. ServiceBus|EntityName, výsledek operace uvnitř|
@@ -1958,7 +1958,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft. ServiceFabricMesh/aplikace
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |AllocatedCpu|AllocatedCpu|Počet|Průměr|Procesor přidělený tomuto kontejneru v lisovnách|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
 |AllocatedMemory|AllocatedMemory|Bajty|Průměr|Paměť přidělená tomuto kontejneru v MB|ApplicationName, ServiceName, CodePackageName, ServiceReplicaName|
@@ -1974,7 +1974,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/Signaler
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ConnectionCount|Počet připojení|Počet|Maximum|Množství připojení uživatele.|Koncový bod|
 |MessageCount|Počet zpráv|Počet|Celkem|Celková velikost zpráv|Žádná|
@@ -1987,7 +1987,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/servery/databáze
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádná|
 |physical_data_read_percent|Procento datových V/V|Procento|Průměr|Procento datových V/V|Žádná|
@@ -2013,9 +2013,9 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 |cache_used_percent|Procento využité mezipaměti|Procento|Maximum|Procento využité mezipaměti Platí jenom pro datové sklady.|Žádná|
 |sqlserver_process_core_percent<sup>1</sup> |Základní procento procesu SQL Server|Procento|Maximum|Procento využití procesoru pro proces SQL Server, jak je měřené operačním systémem.|Žádná|
 |sqlserver_process_memory_percent<sup>1</sup> |% SQL Server paměti procesu|Procento|Maximum|Procento využití paměti pro proces SQL Server, jak je měřené operačním systémem.|Žádná|
-|tempdb_data_size<sup>2</sup> |Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech|Žádná|
-|tempdb_log_size<sup>2</sup> |Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech|Žádná|
-|tempdb_log_used_percent<sup>2</sup> |Použit protokol tempdb v procentech|Procento|Maximum|Byl použit protokol tempdb Percent.|Žádná|
+|tempdb_data_size<sup>1</sup> |Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech|Žádná|
+|tempdb_log_size<sup>1</sup> |Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech|Žádná|
+|tempdb_log_used_percent<sup>1</sup> |Použit protokol tempdb v procentech|Procento|Maximum|Byl použit protokol tempdb Percent.|Žádná|
 |local_tempdb_usage_percent|Místní procento databáze tempdb|Procento|Průměr|Místní procento databáze tempdb. Platí jenom pro datové sklady.|Žádná|
 |app_cpu_billed|CPU aplikace se fakturuje.|Počet|Celkem|CPU aplikace se fakturuje. Platí pro databáze bez serveru.|Žádná|
 |app_cpu_percent|Procento využití procesoru aplikací|Procento|Průměr|Procento využití procesoru aplikací Platí pro databáze bez serveru.|Žádná|
@@ -2040,13 +2040,11 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 |snapshot_backup_size_bytes|Velikost úložiště záloh snímků|Bajty|Maximum|Velikost úložiště pro zálohu kumulativního snímku. Platí pro databáze s škálovatelným škálováním.|Žádná|
 |base_blob_size_bytes|Základní velikost úložiště objektů BLOB|Bajty|Maximum|Základní velikost úložiště objektů BLOB Platí pro databáze s škálovatelným škálováním.|Žádná|
 
-<sup>1</sup> Tato metrika je dostupná pro databáze používající model nákupu Vcore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní modely založené na DTU. 
-
-<sup>2</sup> Tato metrika je dostupná pro databáze používající model nákupu Vcore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro databáze nebo datové sklady ve škálovatelném měřítku.
+<sup>1</sup> Tato metrika je dostupná pro databáze používající model nákupu Vcore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní model založený na DTU. 
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/servery/elasticPools
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|Žádná|
 |database_cpu_percent|Procento CPU|Procento|Průměr|Procento CPU|DatabaseResourceId|
@@ -2074,20 +2072,18 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 |database_cpu_used|Využitý procesor|Počet|Průměr|Využitý procesor|DatabaseResourceId|
 |sqlserver_process_core_percent<sup>1</sup>|Základní procento procesu SQL Server|Procento|Maximum|Procento využití procesoru pro proces SQL Server, jak je měřené operačním systémem. Platí pro elastické fondy. |Žádná|
 |sqlserver_process_memory_percent<sup>1</sup>|% SQL Server paměti procesu|Procento|Maximum|Procento využití paměti pro proces SQL Server, jak je měřené operačním systémem. Platí pro elastické fondy. |Žádná|
-|tempdb_data_size<sup>2</sup>|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech|Žádná|
-|tempdb_log_size<sup>2</sup>|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech |Žádná|
-|tempdb_log_used_percent<sup>2</sup>|Použit protokol tempdb v procentech|Procento|Maximum|Byl použit protokol tempdb Percent.|Žádná|
+|tempdb_data_size<sup>1</sup>|Velikost datového souboru tempdb v kilobajtech|Počet|Maximum|Velikost datového souboru tempdb v kilobajtech|Žádná|
+|tempdb_log_size<sup>1</sup>|Velikost souboru protokolu tempdb v kilobajtech|Počet|Maximum|Velikost souboru protokolu tempdb v kilobajtech |Žádná|
+|tempdb_log_used_percent<sup>1</sup>|Použit protokol tempdb v procentech|Procento|Maximum|Byl použit protokol tempdb Percent.|Žádná|
 |allocated_data_storage|Přidělené datové místo|Bajty|Průměr|Přidělené datové místo|Žádná|
 |database_allocated_data_storage|Přidělené datové místo|Bajty|Průměr|Přidělené datové místo|DatabaseResourceId|
 |allocated_data_storage_percent|Procentuální hodnota přiděleného datového prostoru|Procento|Maximum|Procentuální hodnota přiděleného datového prostoru|Žádná|
 
-<sup>1</sup> Tato metrika je dostupná pro databáze používající model nákupu Vcore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní modely založené na DTU. 
-
-<sup>2</sup> Tato metrika je dostupná pro databáze používající model nákupu Vcore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro databáze s škálovatelnými škálováními.
+<sup>1</sup> Tato metrika je dostupná pro databáze používající model nákupu Vcore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní model založený na DTU. 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |virtual_core_count|Počet virtuálních jader|Počet|Průměr|Počet virtuálních jader|Žádná|
 |avg_cpu_percent|Průměrné procento procesoru|Procento|Průměr|Průměrné procento procesoru|Žádná|
@@ -2101,7 +2097,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft. Storage/storageAccounts
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |UsedCapacity|Využitá kapacita|Bajty|Průměr|Kapacita využitá účtem|Žádná|
 |Transakce|Transakce|Počet|Celkem|Počet požadavků provedených na službu úložiště nebo zadanou operaci rozhraní API. Toto číslo zahrnuje úspěšné i neúspěšné požadavky a také požadavky, u kterých došlo k chybě. Použijte dimenzi ResponseType pro počet různých typů odpovědí.|ResponseType, typ, ApiName, ověřování|
@@ -2113,7 +2109,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |BlobCapacity|Kapacita objektu BLOB|Bajty|Průměr|Velikost úložiště využitá Blob service účtu úložiště v bajtech|BlobType, úroveň|
 |BlobCount|Počet objektů BLOB|Počet|Průměr|Počet objektů BLOB v Blob service účtu úložiště|BlobType, úroveň|
@@ -2128,7 +2124,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |TableCapacity|Kapacita tabulky|Bajty|Průměr|Velikost úložiště využitá Table service účtu úložiště v bajtech|Žádná|
 |TableCount|Počet tabulek|Počet|Průměr|Počet tabulek v Table service účtu úložiště|Žádná|
@@ -2142,7 +2138,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/služby
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Kapacita zařízení|Kapacita souboru|Bajty|Průměr|Velikost úložiště využitá službou File účtu úložiště v bajtech|Sdílená složka|
 |FileCount|Počet souborů|Počet|Průměr|Počet souborů v Souborové službě účtu úložiště.|Sdílená složka|
@@ -2159,7 +2155,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |QueueCapacity|Kapacita fronty|Bajty|Průměr|Velikost úložiště využitá Služba front účtu úložiště v bajtech|Žádná|
 |QueueCount|Počet front|Počet|Průměr|Počet front v Služba front účtu úložiště.|Žádná|
@@ -2177,7 +2173,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragecachecaches"></a>Microsoft. StorageCache/caches
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ClientIOPS|Celkový počet vstupně-výstupních operací klienta|Počet|Průměr|Frekvence operací souborů klienta zpracovávaných mezipamětí.|Žádná|
 |ClientLatency|Průměrná latence klienta|Milisekund|Průměr|Průměrná latence operací s klientskými soubory do mezipaměti úložiště|Žádná|
@@ -2205,7 +2201,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>Microsoft. storagesync/storageSyncServices
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ServerSyncSessionResult|Výsledek relace synchronizace|Počet|Průměr|Metrika, která protokoluje hodnotu 1 pokaždé, když koncový bod serveru úspěšně dokončí relaci synchronizace s koncovým bodem cloudu|SyncGroupName,ServerEndpointName,SyncDirection|
 |StorageSyncSyncSessionAppliedFilesCount|Synchronizované soubory|Počet|Celkem|Počet synchronizovaných souborů|SyncGroupName,ServerEndpointName,SyncDirection|
@@ -2219,7 +2215,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>Microsoft. storagesync/storageSyncServices/syncGroups
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SyncGroupSyncSessionAppliedFilesCount|Synchronizované soubory|Počet|Celkem|Počet synchronizovaných souborů|SyncGroupName,ServerEndpointName,SyncDirection|
 |SyncGroupSyncSessionPerItemErrorsCount|Soubory se nesynchronizují|Počet|Celkem|Počet souborů, jejichž synchronizace se nezdařila|SyncGroupName,ServerEndpointName,SyncDirection|
@@ -2227,7 +2223,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ServerEndpointSyncSessionAppliedFilesCount|Synchronizované soubory|Počet|Celkem|Počet synchronizovaných souborů|ServerEndpointName,SyncDirection|
 |ServerEndpointSyncSessionPerItemErrorsCount|Soubory se nesynchronizují|Počet|Celkem|Počet souborů, jejichž synchronizace se nezdařila|ServerEndpointName,SyncDirection|
@@ -2235,7 +2231,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>Microsoft. storagesync/storageSyncServices/registeredServers
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ServerHeartbeat|Online stav serveru|Počet|Maximum|Metrika, která protokoluje hodnotu 1 pokaždé, když server resigtered úspěšně zaznamená prezenční signál pomocí koncového bodu cloudu|ServerResourceId, servername|
 |ServerRecallIOTotalSizeBytes|Stažení vrstvení cloudu|Bajty|Celkem|Celková velikost dat vrácených serverem|ServerResourceId, servername|
@@ -2244,7 +2240,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |ResourceUtilization|Využití SU%|Procento|Maximum|Využití SU%|ID logického, PartitionId|
 |InputEvents|Události vstupu|Počet|Celkem|Události vstupu|ID logického, PartitionId|
@@ -2265,7 +2261,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft. synapse/pracovní prostory
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |OrchestrationPipelineRunsEnded|Běh kanálu skončil.|Počet|Celkem|Počet úspěšných spuštění kanálu orchestrace, selhání nebo zrušení|Výsledek, FailureType, kanál|
 |OrchestrationActivityRunsEnded|Běh aktivity skončil.|Počet|Celkem|Počet zrušených aktivit orchestrace, selhání nebo zrušení|Výsledek, FailureType, aktivita, ActivityType, kanál|
@@ -2276,7 +2272,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft. synapse/pracovní prostory/bigDataPools
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |SparkJobsEnded|Ukončené aplikace|Počet|Celkem|Počet ukončených aplikací|JobType, výsledek úlohy|
 |CoresCapacity|Kapacita jader|Počet|Maximum|Kapacita jader|Žádná|
@@ -2284,7 +2280,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft. synapse/pracovní prostory/sqlPools
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |DWULimit|DWU limit|Počet|Maximum|Cíl na úrovni služby pro fond SQL|Žádná|
 |DWUUsed|DWU použito|Počet|Maximum|Představuje reprezentaci vysoké úrovně využití napříč fondem SQL. Měřeno podle limitu DWU * procento DWU|Žádná|
@@ -2300,12 +2296,12 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 |WLGAllocationBySystemPercent|Přidělení skupiny úloh podle systémových procent|Procento|Maximum|Procento přidělení prostředků vzhledem k celému systému|IsUserDefined, pracovní vytížení|
 |WLGAllocationByMaxResourcePercent|Přidělení skupiny úloh podle maximálního procenta prostředků|Procento|Maximum|Zobrazuje procento přidělení prostředků vzhledem k procentuální hodnotě prostředku efektivního Cap na skupinu úloh. Tato metrika poskytuje efektivní využití skupiny úloh.|IsUserDefined, pracovní vytížení|
 |WLGEffectiveCapResourcePercent|Procento efektivního Cap prostředku|Procento|Maximum|Procentuální hodnota prostředku efektivního Cap pro skupinu úloh. Pokud jsou k dispozici jiné skupiny úloh s min_percentage_resource > 0, effective_cap_percentage_resource se v poměru dolů.|IsUserDefined, pracovní vytížení|
-|wlg_effective_min_resource_percent|Efektivní minimální procento prostředků|Procento|Minimální|Nastavení platné minimální procento prostředků s povoleným zvážením úrovně služby a nastavení skupiny úloh. Efektivní min_percentage_resource lze zvýšit na nižší úrovni služeb.|IsUserDefined, pracovní vytížení|
+|wlg_effective_min_resource_percent|Efektivní minimální procento prostředků|Procento|Minimum|Nastavení platné minimální procento prostředků s povoleným zvážením úrovně služby a nastavení skupiny úloh. Efektivní min_percentage_resource lze zvýšit na nižší úrovni služeb.|IsUserDefined, pracovní vytížení|
 |WLGQueuedQueries|Dotazování skupin úloh ve frontě|Počet|Celkem|Kumulativní počet požadavků zařazených do fronty po dosažení maximálního počtu souběžnosti|IsUserDefined, pracovní vytížení|
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. TimeSeriesInsights/prostředí
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Příchozí zprávy příchozího přenosu dat|Počet|Celkem|Počet zpráv načtených ze všech centra událostí nebo zdrojů událostí služby IoT Hub|Žádná|
 |IngressReceivedInvalidMessages|Příchozí přenos dat přijal neplatné zprávy.|Počet|Celkem|Počet neplatných zpráv přečtených ze všech centra událostí nebo zdrojů událostí služby IoT Hub|Žádná|
@@ -2321,7 +2317,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. TimeSeriesInsights/prostředí/EventSources
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Příchozí zprávy příchozího přenosu dat|Počet|Celkem|Počet zpráv přečtených ze zdroje události|Žádná|
 |IngressReceivedInvalidMessages|Příchozí přenos dat přijal neplatné zprávy.|Počet|Celkem|Počet neplatných zpráv přečtených ze zdroje události|Žádná|
@@ -2335,7 +2331,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft. VMwareCloudSimple/virtualMachines
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |DiskReadBytesPerSecond|Bajty čtení z disku/s|BytesPerSecond|Průměr|Průměrná propustnost disku z důvodu operací čtení v období vzorkování.|Žádná|
 |DiskWriteBytesPerSecond|Bajty zápisu na disk/s|BytesPerSecond|Průměr|Průměrná propustnost disku z důvodu operací zápisu v období vzorkování.|Žádná|
@@ -2359,7 +2355,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft. Web/serverových farem
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |CpuPercentage|Procento procesoru|Procento|Průměr|Procento procesoru|Instance|
 |MemoryPercentage|Procento paměti|Procento|Průměr|Procento paměti|Instance|
@@ -2385,7 +2381,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 > [!IMPORTANT]
 > **Průměrná doba odezvy** bude zastaralá, aby nedocházelo k záměně s agregacemi metrik. Použijte **dobu odezvy** jako náhradu.
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |CpuTime|Čas procesoru|Sekundy|Celkem|Čas procesoru|Instance|
 |Žádosti|Žádosti|Počet|Celkem|Žádosti|Instance|
@@ -2429,7 +2425,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 > [!NOTE]
 > **Využití systému souborů** je nová metrika, která je globálně nasazená, ale neočekávají se žádná data, pokud jste si je nepřidali do seznamu povolených privátních náhledů.
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |BytesReceived|Data v|Bajty|Celkem|Data v|Instance|
 |BytesSent|Výstupní data|Bajty|Celkem|Výstupní data|Instance|
@@ -2457,7 +2453,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/weby/sloty
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |CpuTime|Čas procesoru|Sekundy|Celkem|Čas procesoru|Instance|
 |Žádosti|Žádosti|Počet|Celkem|Žádosti|Instance|
@@ -2500,7 +2496,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft. Web/hostingEnvironments/multiRolePools
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |Žádosti|Žádosti|Počet|Celkem|Žádosti|Instance|
 |BytesReceived|Data v|Bajty|Celkem|Data v|Instance|
@@ -2527,7 +2523,7 @@ Existují určitá omezení, která je možné směrovat, a formulář, ve kter�
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft. Web/hostingEnvironments/workerPools
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Description|Dimenze|
+|Metrika|Zobrazovaný název metriky|Jednotka|Typ agregace|Popis|Dimenze|
 |---|---|---|---|---|---|
 |WorkersTotal|Celkový počet pracovníků|Počet|Průměr|Celkový počet pracovníků|Žádná|
 |WorkersAvailable|Zaměstnanci, kteří jsou k dispozici|Počet|Průměr|Zaměstnanci, kteří jsou k dispozici|Žádná|

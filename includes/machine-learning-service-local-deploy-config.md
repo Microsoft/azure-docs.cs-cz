@@ -13,7 +13,7 @@ ms.locfileid: "79477268"
 ---
 Položky v dokumentu jsou `deploymentconfig.json` mapovány na parametry pro [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). Následující tabulka popisuje mapování mezi entitami v dokumentu JSON a parametry pro metodu:
 
-| Entita JSON | Parametr metody | Description |
+| Entita JSON | Parametr metody | Popis |
 | ----- | ----- | ----- |
 | `computeType` | NA | Cílové výpočetní prostředí. Pro místní cíle musí být hodnota `local` . |
 | `port` | `port` | Místní port, na kterém má být vystaven koncový bod HTTP služby. |

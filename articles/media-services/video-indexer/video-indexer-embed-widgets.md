@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d76f3afa3a831f402f93322ecec350bfdb0c788d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594844"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166021"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Vložení Video Indexer widgetů do aplikací
 
@@ -29,7 +29,7 @@ Počínaje verzí 2 se základní adresa URL widgetu skládá z oblasti zadanéh
 
 Widget Cognitive Insights zahrnuje všechny vizuální přehledy, které se extrahovaly z indexování videa. Pomůcka pro rozpoznávání poznatků podporuje následující volitelné parametry adresy URL:
 
-|Name|Definice|Popis|
+|Název|Definice|Popis|
 |---|---|---|
 |`widgets` | Řetězce oddělené čárkami | Umožňuje řídit přehledy, které chcete vykreslit.<br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` vykreslí jenom lidé a klíčová slova UI Insights.<br/>Dostupné možnosti: lidé, animatedCharacters, klíčová slova, popisky, zabarvení, emoce, témata, klíčové snímky, přepisy, optické rozpoznávání znaků, reproduktory, scény a namedEntities.|
 |`controls`|Řetězce oddělené čárkami|Umožňuje řídit ovládací prvky, které chcete vykreslit.<br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` vykreslí jenom možnost hledání a tlačítko Stáhnout.<br/>Dostupné možnosti: Hledat, stáhnout, předvolby, jazyk.|
@@ -42,7 +42,7 @@ Widget Cognitive Insights zahrnuje všechny vizuální přehledy, které se extr
 
 Pomůcku přehrávače můžete použít ke streamování videa pomocí adaptivní přenosové rychlosti. Widget přehrávače podporuje následující volitelné parametry adresy URL.
 
-|Name|Definice|Popis|
+|Název|Definice|Popis|
 |---|---|---|
 |`t` | Sekund od začátku | Nastaví, aby se hráč od zadaného časového bodu začal přehrávat.<br/> Příklad: `t=60`. |
 |`captions` | Kód jazyka | Načte titulek v zadaném jazyce během načítání pomůcky, aby byl dostupný v nabídce **titulků** .<br/> Příklad: `captions=en-US`. |
@@ -56,12 +56,12 @@ Pomůcku přehrávače můžete použít ke streamování videa pomocí adaptivn
 
 Pomůcku editoru můžete použít k vytvoření nových projektů a správě přehledů videa. Pomůcka editoru podporuje následující volitelné parametry adresy URL.
 
-|Name|Definice|Popis|
+|Název|Definice|Popis|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Řetězec | Poskytuje přístup k videím, která jsou pouze v účtu, který se používá k vložení widgetu.<br> Widget pro Editor vyžaduje `accessToken` parametr. |
 |`language` | Kód jazyka | Řídí jazyk přehrávače. Výchozí hodnota je `en-US`.<br/>Příklad: `language=de-DE`. |
 |`locale` | Krátký kód jazyka | Řídí jazyk Insights. Výchozí hodnota je `en`.<br/>Příklad: `language=de`. |
-|`location` ||`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial`je výchozí hodnotou pro `location` paramete.| 
+|`location` ||`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial`je výchozí hodnota pro `location` parametr.| 
 
 <sup>*</sup>Vlastník by měl poskytovat `accessToken` upozornění.
 
@@ -69,7 +69,7 @@ Pomůcku editoru můžete použít k vytvoření nových projektů a správě p�
 
 Tato část popisuje vložení veřejného a soukromého obsahu do aplikací.
 
-`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial`je výchozí hodnotou pro `location` paramete. Například: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+`location`Parametr musí být součástí vložených odkazů, viz [Jak získat název vaší oblasti](regions.md). Pokud je váš účet ve verzi Preview, `trial` měl by se použít pro hodnotu umístění. `trial`je výchozí hodnota pro `location` parametr. Například: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Sdílení odkazu pro widget **Playeru** nebo **Insights** bude mít přístupový token a udělí vám oprávnění jen pro čtení k vašemu účtu.
@@ -131,47 +131,48 @@ V této části se dozvíte, jak dosáhnout interakce mezi pomůckou pro rozpozn
 1. Přidejte modul plug-in Video Indexer pro AMP Player:<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
 2. Vytvořte instanci Azure Media Player s modulem plug-in Video Indexer.
 
-        // Init the source.
-        function initSource() {
-            var tracks = [{
-            kind: 'captions',
-            // To load vtt from VI, replace it with your vtt URL.
-            src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
-            srclang: 'en',
-            label: 'English'
-            }];
-
-            myPlayer.src([
-            {
-                "src": "//amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
-                "type": "application/vnd.ms-sstr+xml"
-            }
-            ], tracks);
+    ```javascript
+    // Init the source.
+    function initSource() {
+        var tracks = [{
+        kind: 'captions',
+        // To load vtt from VI, replace it with your vtt URL.
+        src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
+        srclang: 'en',
+        label: 'English'
+        }];
+        myPlayer.src([
+        {
+            "src": "//amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
+            "type": "application/vnd.ms-sstr+xml"
         }
+        ], tracks);
+    }
 
-        // Init your AMP instance.
-        var myPlayer = amp('vid1', { /* Options */
-            "nativeControlsForTouch": false,
-            autoplay: true,
-            controls: true,
-            width: "640",
-            height: "400",
-            poster: "",
-            plugins: {
-            videobreakedown: {}
-            }
-        }, function () {
-            // Activate the plug-in.
-            this.videobreakdown({
-            videoId: "c4c1ad4c9a",
-            syncTranscript: true,
-            syncLanguage: true,
-            location: "trial" /* location option for paid accounts (default is trial) */
-            });
-
-            // Set the source dynamically.
-            initSource.call(this);
+    // Init your AMP instance.
+    var myPlayer = amp('vid1', { /* Options */
+        "nativeControlsForTouch": false,
+        autoplay: true,
+        controls: true,
+        width: "640",
+        height: "400",
+        poster: "",
+        plugins: {
+        videobreakedown: {}
+        }
+    }, function () {
+        // Activate the plug-in.
+        this.videobreakdown({
+        videoId: "c4c1ad4c9a",
+        syncTranscript: true,
+        syncLanguage: true,
+        location: "trial" /* location option for paid accounts (default is trial) */
         });
+
+        // Set the source dynamically.
+        initSource.call(this);
+    });
+    ```
 
 3. Zkopírujte kód pro vložení widgetu Cognitive Insights.
 
@@ -187,42 +188,46 @@ Pokud používáte přehrávač videa, který není Azure Media Player, je nutn�
 
     Například standardní přehrávač HTML5:
 
-        <video id="vid1" width="640" height="360" controls autoplay preload>
-           <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
-           Your browser does not support the video tag.
-        </video>    
+    ```html
+    <video id="vid1" width="640" height="360" controls autoplay preload>
+       <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
+       Your browser does not support the video tag.
+    </video>
+    ```
 
 2. Vložte widget Cognitive Insights.
-3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Příklad:
+3. Implementujte komunikaci pro přehrávač prostřednictvím naslouchání události „zpráva“. Zde je příklad:
 
-        <script>
+    ```javascript
+    <script>
     
-            (function(){
-            // Reference your player instance.
-            var playerInstance = document.getElementById('vid1');
+        (function(){
+        // Reference your player instance.
+        var playerInstance = document.getElementById('vid1');
         
-            function jumpTo(evt) {
-              var origin = evt.origin || evt.originalEvent.origin;
+        function jumpTo(evt) {
+          var origin = evt.origin || evt.originalEvent.origin;
         
-              // Validate that the event comes from the videobreakdown domain.
-              if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
+          // Validate that the event comes from the videobreakdown domain.
+          if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
                 
-                // Call your player's "jumpTo" implementation.
-                playerInstance.currentTime = evt.data.time;
+            // Call your player's "jumpTo" implementation.
+            playerInstance.currentTime = evt.data.time;
                
-                // Confirm the arrival to us.
-                if ('postMessage' in window) {
-                  evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
-                }
-              }
+            // Confirm the arrival to us.
+            if ('postMessage' in window) {
+              evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
             }
+          }
+        }
         
-            // Listen to the message event.
-            window.addEventListener("message", jumpTo, false);
+        // Listen to the message event.
+        window.addEventListener("message", jumpTo, false);
           
-            }())    
+        }())    
         
-        </script>
+    </script>
+    ```
 
 Další informace najdete v [ukázce Azure Media Player + VI Insights](https://codepen.io/videoindexer/pen/YEyPLd).
 
@@ -254,7 +259,7 @@ Všimněte si, že je tato možnost relevantní jenom v případech, když přeh
 
 Pokud vložíte přehrávač Video Indexeru, můžete zvolit velikost přehrávače zadáním velikosti prvku iframe.
 
-Příklad:
+Zde je příklad:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 

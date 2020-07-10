@@ -11,11 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444246"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165766"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Plánování nasazení zařízení Azure Active Directory
 
@@ -65,7 +66,7 @@ Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných oč
 
 Pro tento plán přidejte do svého seznamu následující účastníky:
 
-| Role| Description |
+| Role| Popis |
 | - | - |
 | Správce zařízení| Zástupce týmu zařízení, který dokáže ověřit, jestli plán splňuje požadavky na zařízení vaší organizace. |
 | Správce sítě| Zástupce ze síťového týmu, který může zajistit, aby splňoval požadavky na síť. |
@@ -101,7 +102,7 @@ Pomocí tohoto stromu můžete určit možnosti pro zařízení vlastněná orga
 
 zařízení s iOS a Androidem můžou být jenom registrovaná v Azure AD. Následující tabulka uvádí nejdůležitější požadavky na klientská zařízení Windows. Použijte ho jako přehled a podrobněji si prozkoumejte různé metody integrace.
 
-| | Registrováno v Azure AD| Připojení k Azure AD| Hybridní připojení k Azure AD |
+| Aspekty | Registrováno v Azure AD| Připojení k Azure AD| Hybridní připojení k Azure AD |
 | - | - | - | - |
 | **Klientské operační systémy**| | |  |
 | Zařízení s Windows 10| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png)| ![zaškrtnutí](./media/plan-device-deployment/check.png) |

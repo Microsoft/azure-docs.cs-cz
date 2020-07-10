@@ -5,11 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: d147c87e8fb0fa9e01ba2dbaf732adaae082bcd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84167787"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146236"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Obnovení odstraněné aplikace App Service pomocí PowerShellu
 
@@ -17,6 +18,10 @@ Pokud jste nastali omylem odstranit aplikaci v Azure App Service, můžete ji ob
 
 > [!NOTE]
 > Odstraněné aplikace se po počátečním odstranění odstraní ze systému 30 dní. Jakmile se aplikace vyprázdní, nebude možné ji obnovit.
+>
+
+> [!NOTE]
+> Funkce Undelete není pro plán spotřeby podporovaná.
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>Znovu zaregistrovat App Service poskytovatel prostředků

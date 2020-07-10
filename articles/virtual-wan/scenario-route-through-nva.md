@@ -8,16 +8,22 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0716ca8f0457ca801098c97dd7a5e68751822d4d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: ed64b9d281cfbbf8202a99335ea2759b27a6fc42
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848090"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142977"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Scénář: směrování provozu přes síťové virtuální zařízení
 
 Při práci s směrováním virtuálního rozbočovače WAN je k dispozici několik scénářů, které jsou v pořádku. V tomto scénáři síťové virtuální zařízení je cílem směrovat provoz prostřednictvím síťové virtuální zařízení (síťového virtuálního zařízení) pro větev do virtuální sítě a virtuální sítě do větve. Informace o směrování virtuálního rozbočovače najdete v tématu [o směrování virtuálního rozbočovače](about-virtual-hub-routing.md).
+
+> [!NOTE]
+> Některé možnosti směrování se pořád můžou vyvádět. Pokud ve vaší oblasti ještě nedošlo k zavedení, použijte prosím následující postup v těchto verzích těchto článků:
+>* [Azure Portal článek](virtual-wan-route-table-nva-portal.md)
+>* [Článek o PowerShellu](virtual-wan-route-table-nva.md)
+>
 
 ## <a name="scenario-architecture"></a><a name="architecture"></a>Architektura scénáře
 

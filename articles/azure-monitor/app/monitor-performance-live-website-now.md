@@ -3,12 +3,12 @@ title: Monitorování živé webové aplikace v ASP.NET pomocí Azure Applicatio
 description: Monitorování výkonu webu bez opětovného nasazení. Funguje s ASP.NET webovými aplikacemi hostovanými místně nebo na virtuálních počítačích.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: e30700deaa0121fbe473580d868a79d75a899a1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107474"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166378"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
@@ -39,14 +39,14 @@ Tady je rekapitulace toho, co každý způsob přináší:
 
 |  | Při sestavení | Za běhu |
 | --- | --- | --- |
-| Požadavky a výjimky |Ano |Ano |
-| [Podrobnější výjimky](../../azure-monitor/app/asp-net-exceptions.md) | |Yes |
-| [Diagnostika závislostí](../../azure-monitor/app/asp-net-dependencies.md) |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
-| [Čítače výkonu systému](../../azure-monitor/app/performance-counters.md) |Ano |Ano |
-| [Rozhraní API pro vlastní telemetrii][api] |Yes |No |
-| [Integrace protokolu trasování](../../azure-monitor/app/asp-net-trace-logs.md) |Yes |No |
-| [Zobrazení stránky a uživatelská data](../../azure-monitor/app/javascript.md) |Yes |No |
-| Nutnost znovu sestavit kód |Yes | No |
+| **Vyžádá & výjimky.** |Ano |Ano |
+| **[Podrobnější výjimky](../../azure-monitor/app/asp-net-exceptions.md)** | |Ano |
+| **[Diagnostika závislostí](../../azure-monitor/app/asp-net-dependencies.md)** |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
+| **[Čítače výkonu systému](../../azure-monitor/app/performance-counters.md)** |Ano |Ano |
+| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |Ne |
+| **[Integrace protokolu trasování](../../azure-monitor/app/asp-net-trace-logs.md)** |Ano |Ne |
+| **[Zobrazení stránky & uživatelských dat](../../azure-monitor/app/javascript.md)** |Ano |Ne |
+| **Nutnost znovu sestavit kód** |Ano | Ne |
 
 
 

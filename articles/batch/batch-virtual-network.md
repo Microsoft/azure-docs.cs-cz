@@ -4,12 +4,12 @@ description: Vytvoření fondu služby Batch ve službě Azure Virtual Network, 
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115407"
+ms.locfileid: "86142759"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
 
@@ -27,7 +27,7 @@ Pokud chcete, aby výpočetní uzly komunikovaly zabezpečeně s ostatními virt
 
 - **Virtuální síť Azure**. V následující části najdete informace o požadavcích a konfiguraci virtuální sítě. Pokud chcete připravit virtuální síť s jednou nebo více podsítěmi předem, můžete použít Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure (CLI) nebo jiné metody.
   - Pokud chcete vytvořit virtuální síť založenou na Azure Resource Manager, přečtěte si téma [vytvoření virtuální sítě](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Pro nová nasazení se doporučuje použít virtuální síť založená na Správce prostředků a je podporovaná jenom u fondů, které používají konfiguraci virtuálních počítačů.
-  - Pokud chcete vytvořit klasickou virtuální síť, přečtěte si téma [vytvoření virtuální sítě (klasické) s několika podsítěmi](../virtual-network/create-virtual-network-classic.md). Klasická virtuální síť je podporovaná jenom u fondů, které používají konfiguraci Cloud Services.
+  - Pokud chcete vytvořit klasickou virtuální síť, přečtěte si téma [vytvoření virtuální sítě (klasické) s několika podsítěmi](/previous-versions/azure/virtual-network/create-virtual-network-classic). Klasická virtuální síť je podporovaná jenom u fondů, které používají konfiguraci Cloud Services.
 
 ## <a name="vnet-requirements"></a>Požadavky na virtuální síť
 

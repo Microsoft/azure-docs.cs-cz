@@ -4,12 +4,12 @@ description: Naučte se používat rozhraní API služby Batch k trvalému zacho
 ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9d8eab5b4f4b89a613f5ffc3a7f9c9d9d53dcfc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965123"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143506"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Zachování dat úkolu Azure Storage pomocí rozhraní API služby Batch
 
@@ -43,7 +43,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Získání sdíleného přístupového podpisu pro kontejner
 
-Po vytvoření kontejneru Získejte sdílený přístupový podpis (SAS) s přístupem pro zápis do kontejneru. SAS poskytuje delegovaný přístup ke kontejneru. SAS udělí přístup se zadanou sadou oprávnění a v zadaném časovém intervalu. Služba Batch potřebuje k zápisu výstupu úlohy do kontejneru SAS s oprávněním k zápisu. Další informace o SAS najdete v tématu [použití SAS sdílených přístupových podpisů \( \) v Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Po vytvoření kontejneru Získejte sdílený přístupový podpis (SAS) s přístupem pro zápis do kontejneru. SAS poskytuje delegovaný přístup ke kontejneru. SAS udělí přístup se zadanou sadou oprávnění a v zadaném časovém intervalu. Služba Batch potřebuje k zápisu výstupu úlohy do kontejneru SAS s oprávněním k zápisu. Další informace o SAS najdete v tématu [použití SAS sdílených přístupových podpisů \( \) v Azure Storage](../storage/common/storage-sas-overview.md).
 
 Když obdržíte SAS pomocí Azure Storage rozhraní API, rozhraní API vrátí řetězec tokenu SAS. Tento řetězec tokenu zahrnuje všechny parametry SAS, včetně oprávnění a intervalu, za který je SAS platný. Chcete-li použít SAS pro přístup ke kontejneru v Azure Storage, je nutné připojit řetězec tokenu SAS k identifikátoru URI prostředku. Identifikátor URI prostředku, společně s připojením tokenu SAS, poskytuje ověřený přístup k Azure Storage.
 

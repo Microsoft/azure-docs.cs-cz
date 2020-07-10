@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 5/7/2020
+ms.date: 07/08/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 3f2cb5cbc447dd0483517bef96dbcc7c58cf1af7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 953cdff1f3c067c2d5b9ebd284afe68083d43e66
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101388"
+ms.locfileid: "86141770"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL
 Azure Database for MySQL podporuje připojení Azure Database for MySQLho serveru k klientským aplikacím pomocí SSL (Secure Sockets Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.
@@ -20,6 +20,8 @@ Azure Database for MySQL podporuje připojení Azure Database for MySQLho server
 ## <a name="step-1-obtain-ssl-certificate"></a>Krok 1: získání certifikátu SSL
 Stáhněte si certifikát potřebný ke komunikaci přes SSL s vaším serverem Azure Database for MySQL [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) a uložte soubor certifikátu na místní disk (například tento kurz používá c:\ssl).
 **Pro Microsoft Internet Explorer a Microsoft Edge:** Po dokončení stahování přejmenujte certifikát na BaltimoreCyberTrustRoot. CRT. pem.
+
+Podívejte se na následující odkazy pro certifikáty pro servery v cloudech v rámci svrchovaného cloudu: [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem), [Azure Čína](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)a [Azure Německo](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).
 
 ## <a name="step-2-bind-ssl"></a>Krok 2: vazba SSL
 

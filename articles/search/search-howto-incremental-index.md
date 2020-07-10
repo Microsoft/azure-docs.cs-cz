@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 75b533368a01b2e98bece0751f45b12f36796658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556264"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146871"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Jak nakonfigurovat ukládání do mezipaměti pro přírůstkové obohacení v Azure Kognitivní hledání
 
@@ -103,11 +103,13 @@ api-key: [YOUR-ADMIN-KEY]
 
 Pokud teď v indexeru vydáte jinou žádost o získání, bude odpověď ze služby zahrnovat `ID` vlastnost v objektu mezipaměti. Alfanumerický řetězec je připojen k názvu kontejneru obsahujícímu všechny výsledky v mezipaměti a průběžný stav každého dokumentu zpracovaného tímto indexerem. ID se použije k jedinečnému pojmenování mezipaměti v úložišti objektů BLOB.
 
+```http
     "cache": {
         "ID": "<ALPHA-NUMERIC STRING>",
         "enableReprocessing": true,
         "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
     }
+```
 
 ### <a name="step-5-run-the-indexer"></a>Krok 5: spuštění indexeru
 

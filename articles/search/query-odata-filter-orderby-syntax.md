@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77153872"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165205"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Přehled jazyka OData pro `$filter` , `$orderby` a `$select` v Azure kognitivní hledání
 
@@ -69,7 +70,7 @@ Identifikátor může odkazovat buď na název pole, nebo na **proměnnou rozsah
 
 Příklady cest polí jsou uvedené v následující tabulce:
 
-| Cesta k poli | Description |
+| Cesta k poli | Popis |
 | --- | --- |
 | `HotelName` | Odkazuje na pole nejvyšší úrovně indexu. |
 | `Address/City` | Odkazuje na `City` dílčí pole komplexního pole v indexu; `Address` je typu `Edm.ComplexType` v tomto příkladu. |
@@ -82,7 +83,9 @@ Význam cesty k poli se liší v závislosti na kontextu. Ve filtrech odkazuje c
 
 Vezměte v úvahu cestu k poli `Address/City` . Ve filtru to odkazuje na jedno město pro aktuální dokument, jako je například "San Francisco". Naopak `Rooms/Type` odkazuje na `Type` dílčí pole pro mnoho místností (například "Standard" pro první místnost, "Deluxe" pro druhou místnost atd.). Vzhledem `Rooms/Type` k tomu, že neodkazuje na *jednu instanci* dílčího pole `Type` , nelze ji použít přímo ve filtru. Místo toho byste měli použít [výraz lambda](search-query-odata-collection-operators.md) s proměnnou rozsahu, jako je například:
 
-    Rooms/any(room: room/Type eq 'deluxe')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
+```
 
 V tomto příkladu se proměnná rozsahu `room` zobrazuje v cestě k `room/Type` poli. Tímto způsobem `room/Type` odkazuje na typ aktuální místnosti v aktuálním dokumentu. Toto je jediná instance `Type` dílčího pole, takže ji můžete použít přímo ve filtru.
 

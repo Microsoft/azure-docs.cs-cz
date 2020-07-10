@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0a711b9239e1a76774d8e75f035e6c862218c82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6670966b4cf74510df5dd26c994e0c53b219ba9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563140"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145244"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indexování tabulek z Azure Table Storage pomocí Azure Kognitivní hledání
 
@@ -49,6 +49,7 @@ Pro indexování tabulek musí mít zdroj dat následující vlastnosti:
 
 Vytvoření zdroje dat:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -59,6 +60,7 @@ Vytvoření zdroje dat:
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
+```
 
 Další informace o rozhraní API Create DataSource najdete v tématu [Create DataSource](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
 
@@ -81,6 +83,7 @@ Index určuje pole v dokumentu, atributy a další konstrukce, které prohledaj�
 
 Vytvoření indexu:
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -92,6 +95,7 @@ Vytvoření indexu:
             { "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
           ]
     }
+```
 
 Další informace o vytváření indexů najdete v tématu [vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
@@ -100,6 +104,7 @@ Indexer připojuje zdroj dat k cílovému vyhledávacímu indexu a poskytuje pl�
 
 Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -110,6 +115,7 @@ Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Tento indexer se spustí každé dvě hodiny. (Interval plánu je nastaven na "PT2H".) Pokud chcete indexer spustit každých 30 minut, nastavte interval na "PT30M". Nejkratší podporovaný interval je pět minut. Plán je nepovinný. je-li tento parametr vynechán, bude indexer spuštěn pouze jednou při jeho vytvoření. Indexer ale můžete kdykoli spustit na vyžádání.   
 
@@ -135,6 +141,7 @@ Když nastavíte indexer tabulky tak, aby se spouštěl podle plánu, přeindexu
 
 Chcete-li určit, že některé dokumenty musí být z indexu odebrány, můžete použít strategii obnovitelného odstranění. Místo odstranění řádku přidejte vlastnost, která označuje, že je odstraněna, a nastavte zásady Detekce tichého odstranění pro zdroj dat. Následující zásada například předpokládá, že řádek bude odstraněn, pokud má řádek vlastnost `IsDeleted` s hodnotou `"true"` :
 
+```http
     PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -146,6 +153,7 @@ Chcete-li určit, že některé dokumenty musí být z indexu odebrány, můžet
         "container" : { "name" : "table name", "query" : "<query>" },
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }   
+```
 
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>Otázky výkonu

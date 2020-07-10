@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
+ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: aa961cb94816b50aa515532e69454fce9b370c54
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083075"
+ms.locfileid: "86146561"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +59,7 @@ Následující kód ukazuje, jak se připojit k pracovnímu prostoru Azure Machi
 
 + **Používání nástroje Visual Studio Code**
 
-   Když použijete Visual Studio Code, vybíráte pracovní prostor pomocí grafického rozhraní. Další informace najdete v tématu [nasazení a Správa modelů](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) v dokumentaci k rozšíření Visual Studio Code.
+   Když použijete Visual Studio Code, vybíráte pracovní prostor pomocí grafického rozhraní. Další informace najdete v tématu [nasazení a Správa modelů](how-to-manage-resources-vscode.md#endpoints) v dokumentaci k rozšíření Visual Studio Code.
 
 ## <a name="register-your-model"></a><a id="registermodel"></a>Registrace modelu
 
@@ -608,13 +608,13 @@ Během nasazování modelu se může zobrazit Změna stavu služby během plnéh
 
 Následující tabulka popisuje různé stavy služby:
 
-| Stav WebService | Description | Konečný stav?
+| Stav WebService | Popis | Konečný stav?
 | ----- | ----- | ----- |
-| Přechod | Služba je v procesu nasazení. | No |
-| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
-| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | No |
-| Failed | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Yes |
-| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Yes |
+| Přechod | Služba je v procesu nasazení. | Ne |
+| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
+| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
+| Neúspěšné | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
+| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>Webová služba COMPUTE instance (vývoj/testování)
 
@@ -998,7 +998,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Příklad: 
+Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Zde je příklad: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 

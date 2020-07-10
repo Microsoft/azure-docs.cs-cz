@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 572b653a49833ae06ee57b1718000e8555239de7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113218"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146032"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>Relační operátory OData v Azure kognitivní hledání- `eq` , `ne` ,,, `gt` `lt` `ge` a`le`
 
@@ -46,7 +47,7 @@ Operátory rozsahu v kombinaci s [logickými operátory](search-query-odata-logi
 > [!NOTE]
 > Pokud dáváte přednost, můžete vložit konstantní hodnotu na levou stranu operátoru a název pole na pravé straně. Pro operátory rozsahu je význam porovnání obrácený. Například pokud je konstantní hodnota na levé straně, `gt` bude testována, zda je konstantní hodnota větší než pole. Operátory porovnání můžete použít také k porovnání výsledku funkce, jako `geo.distance` je například, s hodnotou. Pro logické funkce, jako `search.ismatch` je například, porovnání výsledku s `true` nebo `false` je volitelné.
 
-## <a name="syntax"></a>Syntax
+## <a name="syntax"></a>Syntaxe
 
 Následující EBNF ([rozšířený formulář Backus-Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku výrazu OData, který používá operátory porovnání.
 
@@ -135,23 +136,33 @@ Nemůžete přímo porovnat pole typu `Edm.GeographyPoint` s konstantní hodnoto
 
 Porovnává dokumenty `Rating` , kde je pole mezi 3 a 5 včetně:
 
-    Rating ge 3 and Rating le 5
+```text
+Rating ge 3 and Rating le 5
+```
 
 Porovnává dokumenty, kde `Location` je pole menší než 2 kilometry od dané zeměpisné šířky a délky:
 
-    geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```text
+geo.distance(Location, geography'POINT(-122.031577 47.578581)') lt 2.0
+```
 
 Porovná dokumenty, kde `LastRenovationDate` je pole větší nebo rovno 1. ledna 2015, půlnoci UTC:
 
-    LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```text
+LastRenovationDate ge 2015-01-01T00:00:00.000Z
+```
 
 Porovnává dokumenty, kde `Details/Sku` pole není `null` :
 
-    Details/Sku ne null
+```text
+Details/Sku ne null
+```
 
 Porovná dokumenty pro hotely, kde aspoň jedna místnost má typ "Deluxe místnost", kde řetězec `Rooms/Type` pole odpovídá filtru přesně:
 
-    Rooms/any(room: room/Type eq 'Deluxe Room')
+```text
+Rooms/any(room: room/Type eq 'Deluxe Room')
+```
 
 ## <a name="next-steps"></a>Další kroky  
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f6794559c2296b02ef61d0e280d29456904ae607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609295"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142450"
 ---
 # <a name="understand-event-data"></a>Pochopení dat událostí
 
@@ -103,7 +103,7 @@ Oznámení životního cyklu se aktivují v těchto případech:
 
 Tady jsou pole v těle oznámení o životním cyklu.
 
-| Name | Hodnota |
+| Název | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id`je jedinečný pro každou událost DISTINCT. |
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET* |
@@ -125,6 +125,7 @@ Tady je příklad těla pro zařízení [IoT technologie Plug and Play (PnP)](..
 ```json
 {
   "$dtId": "device-digitaltwin-01",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "thermostat": {
     "temperature": 80,
     "humidity": 45,
@@ -157,6 +158,7 @@ Tady je další příklad digitálního vlákna. Tento model je založen na [mod
 ```json
 {
   "$dtId": "logical-digitaltwin-01",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "avgTemperature": 70,
   "comfortIndex": 85,
   "$metadata": {
@@ -187,7 +189,7 @@ Tady je další příklad digitálního vlákna. Tento model je založen na [mod
 
 Tady jsou pole v těle oznámení o změně hrany.
 
-| Name    | Hodnota |
+| Název    | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id`je jedinečný pro každou událost DISTINCT |
 | `source` | Název instance digitálního vlákna Azure, jako je *mydigitaltwins.westus2.azuredigitaltwins.NET* |
@@ -243,7 +245,7 @@ Při aktualizaci digitálního vlákna se aktivují **oznámení o změně digit
 
 Tady jsou pole v těle oznámení o změně digitálního vlákna.
 
-| Name    | Hodnota |
+| Název    | Hodnota |
 | --- | --- |
 | `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id`je jedinečný pro každou událost DISTINCT |
 | `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET*

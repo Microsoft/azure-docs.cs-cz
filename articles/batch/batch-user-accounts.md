@@ -4,19 +4,19 @@ description: Přečtěte si o typech uživatelských účtů a o tom, jak je nak
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 514a104c879a8d601bb03e2ed1c59b69516bc621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209721"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142678"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve Batch
 
 > [!NOTE]
 > Uživatelské účty popsané v tomto článku se liší od uživatelských účtů používaných pro protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) z důvodů zabezpečení.
 >
-> Pokud se chcete připojit k uzlu s konfigurací virtuálního počítače se systémem Linux přes SSH, přečtěte si téma [použití vzdálené plochy k virtuálnímu počítači se systémem Linux v Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Informace o připojení k uzlům se systémem Windows prostřednictvím protokolu RDP najdete v tématu [připojení k virtuálnímu počítači s Windows serverem](../virtual-machines/windows/connect-logon.md).<br /><br />
+> Pokud se chcete připojit k uzlu s konfigurací virtuálního počítače se systémem Linux přes SSH, přečtěte si téma [použití vzdálené plochy k virtuálnímu počítači se systémem Linux v Azure](../virtual-machines/linux/use-remote-desktop.md). Informace o připojení k uzlům se systémem Windows prostřednictvím protokolu RDP najdete v tématu [připojení k virtuálnímu počítači s Windows serverem](../virtual-machines/windows/connect-logon.md).<br /><br />
 > Pokud se chcete připojit k uzlu, na kterém je spuštěná konfigurace cloudové služby prostřednictvím protokolu RDP, přečtěte si téma [povolení připojení ke vzdálené ploše pro roli ve službě Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
 
 Úkol v Azure Batch vždy běží v rámci uživatelského účtu. Ve výchozím nastavení se úlohy spouštějí pod standardními uživatelskými účty bez oprávnění správce. V některých scénářích můžete chtít nakonfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Tento článek pojednává o typech uživatelských účtů a o tom, jak je nakonfigurovat pro váš scénář.

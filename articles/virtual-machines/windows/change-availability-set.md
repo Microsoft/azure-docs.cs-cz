@@ -6,11 +6,12 @@ author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 092dafff6622d3402322eb96d0fe4215e52e16b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e014dbe440f1b7baf39c290b8b7ab8fcaea0bada
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76964919"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165851"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>Změna skupiny dostupnosti pro virtuální počítač
 Následující postup popisuje, jak změnit skupinu dostupnosti virtuálního počítače pomocí Azure PowerShell. Virtuální počítač se dá přidat do skupiny dostupnosti jenom při jeho vytvoření. Chcete-li změnit skupinu dostupnosti, je nutné odstranit a znovu vytvořit virtuální počítač. 
@@ -18,6 +19,8 @@ Následující postup popisuje, jak změnit skupinu dostupnosti virtuálního po
 Tento článek se týká virtuálních počítačů se systémy Linux a Windows.
 
 Tento článek byl naposledy testován na 2/12/2019 pomocí [Azure Cloud Shell](https://shell.azure.com/powershell) a [modulu AZ PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.2.0.
+
+V tomto příkladu se nekontroluje, jestli je virtuální počítač připojený k nástroji pro vyrovnávání zatížení. Pokud je váš virtuální počítač připojený k nástroji pro vyrovnávání zatížení, budete muset skript aktualizovat, aby tento případ zpracovával. 
 
 
 ## <a name="change-the-availability-set"></a>Změna skupiny dostupnosti 

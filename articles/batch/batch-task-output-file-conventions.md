@@ -4,12 +4,12 @@ description: Naučte se, jak pomocí Azure Batch knihovny konvencí souborů pro
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965191"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147160"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Trvalá data úloh a úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET
 
@@ -55,7 +55,7 @@ Pokud chcete zachovat výstupní data Azure Storage pomocí knihovny konvence so
 
 Pokud chcete zachovat výstupní data úlohy a úlohy pomocí knihovny konvence souborů, vytvořte kontejner v Azure Storage a pak výstup uložte do kontejneru. Pomocí [klientské knihovny Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage) v kódu úkolu nahrajte výstup úlohy do kontejneru.
 
-Další informace o práci s kontejnery a objekty BLOB v Azure Storage najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+Další informace o práci s kontejnery a objekty BLOB v Azure Storage najdete v tématu Začínáme [s úložištěm objektů BLOB v Azure pomocí .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 > [!WARNING]
 > Všechny výstupy úlohy a úlohy trvale s knihovnou konvence souborů jsou uložené ve stejném kontejneru. Pokud se velký počet úloh pokusí uchovat soubory současně, můžou se vyhovět Azure Storage omezení omezování. Další informace o omezeních omezování najdete v tématu [Kontrolní seznam pro výkon a škálovatelnost pro úložiště objektů BLOB](../storage/blobs/storage-performance-checklist.md).

@@ -3,12 +3,12 @@ title: Azure Batch spouští velké Paralelní úlohy v cloudu
 description: Další informace o používání služby Azure Batch pro rozsáhlé paralelní úlohy a úlohy v prostředí HPC.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 03c958f44f707e7c5b6ac5c4414bdb5fd4963635
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965072"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142797"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -34,7 +34,7 @@ Některé příklady vnitřně paralelních úloh, které můžete použít ve s
 * Příjem dat, zpracování a operace extrakce, transformace a načítání (ETL)
 * Provádění testů softwaru
 
-Pomocí služby Batch můžete také [spouštět vysoce provázané úlohy](batch-mpi.md). Jedná se o úlohy, ve kterých spouštěné aplikace neběží nezávisle na sobě, ale potřebují spolu komunikovat. Vysoce provázané aplikace běžně používají rozhraní API MPI (Message Passing Interface). Ve službě Batch můžete spouštět vysoce provázané úlohy s využitím rozhraní [Microsoft MPI](/message-passing-interface/microsoft-mpi) nebo Intel MPI. Velikosti virtuálních počítačů specializované pro [vysokovýkonné výpočetní prostředí (HPC)](../virtual-machines/linux/sizes-hpc.md) a [GPU](../virtual-machines/linux/sizes-gpu.md) umožňují zvýšit výkon aplikací.
+Pomocí služby Batch můžete také [spouštět vysoce provázané úlohy](batch-mpi.md). Jedná se o úlohy, ve kterých spouštěné aplikace neběží nezávisle na sobě, ale potřebují spolu komunikovat. Vysoce provázané aplikace běžně používají rozhraní API MPI (Message Passing Interface). Ve službě Batch můžete spouštět vysoce provázané úlohy s využitím rozhraní [Microsoft MPI](/message-passing-interface/microsoft-mpi) nebo Intel MPI. Velikosti virtuálních počítačů specializované pro [vysokovýkonné výpočetní prostředí (HPC)](../virtual-machines/sizes-hpc.md) a [GPU](../virtual-machines/sizes-gpu.md) umožňují zvýšit výkon aplikací.
 
 Některé příklady vysoce propojených úloh:
 * Analýza konečných prvků
@@ -83,4 +83,3 @@ Začněte pracovat se službou Azure Batch pomocí jedné z těchto šablon Rych
 * [Spuštění první úlohy služby Batch pomocí webu Azure Portal](quick-create-portal.md)
 * [Spuštění první úlohy služby Batch pomocí rozhraní API .NET](quick-run-dotnet.md)
 * [Spuštění první úlohy služby Batch pomocí rozhraní API Python](quick-run-python.md)
-

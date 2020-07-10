@@ -1,5 +1,5 @@
 ---
-title: Authentication
+title: Ověřování uživatelů
 titleSuffix: Azure Cognitive Services
 description: 'Existují tři způsoby, jak ověřit požadavek na prostředek služby Azure Cognitive Services: klíč předplatného, nosný token nebo předplatné s více službami. V tomto článku se dozvíte o jednotlivých metodách a o tom, jak vytvořit žádost.'
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a56e815e3a4ac04d20b29163139ab40332c4bec4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445538"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146971"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Ověřování požadavků do Azure Cognitive Services
 
@@ -28,13 +28,13 @@ Každý požadavek na službu rozpoznávání Azure musí obsahovat hlavičku ov
 
 Před vytvořením žádosti potřebujete účet Azure a předplatné Azure Cognitive Services. Pokud již účet máte, přejděte k další části a přejděte k dalšímu oddílu. Pokud účet nemáte, máme v něm průvodce, který vám pomůže nastavit [účet Cognitive Services pro Azure](cognitive-services-apis-create-account.md).
 
-Klíč předplatného můžete získat z [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) po vytvoření účtu nebo aktivaci [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/my-apis).
+Klíč předplatného můžete získat z [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) po [Vytvoření účtu](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="authentication-headers"></a>Ověřovací hlavičky
 
 Pojďme rychle zkontrolovat hlavičky ověřování, které jsou k dispozici pro použití s Azure Cognitive Services.
 
-| Záhlaví | Popis |
+| Hlavička | Popis |
 |--------|-------------|
 | Ocp-Apim-Subscription-Key | Tuto hlavičku použijte k ověření pomocí klíče předplatného pro konkrétní službu nebo klíč předplatného s více službami. |
 | OCP – APIM – předplatné – oblast | Tato hlavička se vyžaduje jenom v případě, že se ke [službě Translator](./Translator/reference/v3-0-reference.md)používá klíč předplatného s více službami. Pomocí této hlavičky můžete zadat oblast předplatného. |
@@ -75,7 +75,7 @@ Klíč předplatného je k dispozici v každé žádosti jako `Ocp-Apim-Subscrip
 
 ### <a name="supported-regions"></a>Podporované oblasti
 
-Při použití klíče předplatného s více službami k vytvoření požadavku na `api.cognitive.microsoft.com` , musíte zahrnout oblast do adresy URL. Příklad: `westus.api.cognitive.microsoft.com`.
+Při použití klíče předplatného s více službami k vytvoření požadavku na `api.cognitive.microsoft.com` , musíte zahrnout oblast do adresy URL. Například: `westus.api.cognitive.microsoft.com`.
 
 Při použití klíče předplatného s více službami se službou Translator musíte zadat oblast předplatného s `Ocp-Apim-Subscription-Region` hlavičkou.
 

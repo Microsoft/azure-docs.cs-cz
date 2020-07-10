@@ -7,11 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014532"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146602"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Vytvoření zásad firewallu webových aplikací pro Application Gateway
 
@@ -22,7 +23,7 @@ Můžete vytvořit tolik zásad, kolik chcete. Až zásadu vytvoříte, musí b�
 Pokud je u vašeho Application Gateway použita zásada a potom použijete pro naslouchací proces na tomto Application Gateway jinou zásadu, uplatní se zásada naslouchacího procesu, ale pouze pro naslouchací proces (y), ke kterým jsou přiřazené. Zásady Application Gateway se stále vztahují na všechny ostatní naslouchací procesy, které nemají přiřazené konkrétní zásady. 
 
    > [!NOTE]
-   > Zásady WAF pro jednotlivé lokality a identifikátory URI jsou v Public Preview. To znamená, že tato funkce podléhá dodatečným podmínkám používání společnosti Microsoft. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > Zásady WAF podle identifikátoru URI jsou v Public Preview. To znamená, že tato funkce podléhá dodatečným podmínkám používání společnosti Microsoft. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
    > [!NOTE]
    > Jakmile je zásada brány firewall přidružena k WAF, musí být vždy k této WAF přidružena zásada. Tuto zásadu můžete přepsat, ale zcela se nepodporují zrušením přidružení zásady z WAF. 
 

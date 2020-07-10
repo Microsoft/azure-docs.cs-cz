@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6c7e1fcaebd415fcacfffcef62ca25cccde3e476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e3a35d95e7d2a339bf33620c9d1a140fb6a0a1d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563161"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143755"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Postup indexování dokumentů v Azure Blob Storage s využitím Azure Kognitivní hledání
 
@@ -53,6 +53,7 @@ Pro indexování objektů BLOB musí mít zdroj dat následující požadované 
 
 Vytvoření zdroje dat:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -63,6 +64,7 @@ Vytvoření zdroje dat:
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
+```
 
 Další informace o rozhraní API Create DataSource najdete v tématu [Create DataSource](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
 
@@ -85,6 +87,7 @@ Index určuje pole v dokumentu, atributech a dalších konstrukcích, které pro
 
 Tady je postup, jak vytvořit index s `content` polem, které lze prohledávat a který ukládá text extrahovaný z objektů BLOB:   
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -96,6 +99,7 @@ Tady je postup, jak vytvořit index s `content` polem, které lze prohledávat a
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 Další informace o vytváření indexů najdete v tématu [vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) .
 
@@ -104,6 +108,7 @@ Indexer připojuje zdroj dat k cílovému vyhledávacímu indexu a poskytuje pl�
 
 Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -114,6 +119,7 @@ Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Tento indexer se spustí každé dvě hodiny (časový interval je nastaven na "PT2H"). Pokud chcete indexer spustit každých 30 minut, nastavte interval na "PT30M". Nejkratší podporovaný interval je 5 minut. Plán je nepovinný – Pokud je vynechaný, indexer se při vytvoření spustí jenom jednou. Můžete ale kdykoli spustit indexer na vyžádání.   
 
@@ -142,7 +148,7 @@ V závislosti na [konfiguraci indexeru](#PartsOfBlobToIndex)může indexer objek
 
   * ** \_ \_ název úložiště metadat** (EDM. String) – název souboru objektu BLOB. Pokud máte například objekt BLOB/my-Container/My-Folder/subfolder/resume.pdf, hodnota tohoto pole je `resume.pdf` .
   * ** \_ \_ cesta úložiště metadat** (EDM. String) – úplný identifikátor URI objektu blob, včetně účtu úložiště. Například `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`.
-  * ** \_ \_ \_ typ obsahu úložiště metadat** (EDM. String) – typ obsahu určený kódem, který jste použili k nahrání objektu BLOB. Například, `application/octet-stream`.
+  * ** \_ \_ \_ typ obsahu úložiště metadat** (EDM. String) – typ obsahu určený kódem, který jste použili k nahrání objektu BLOB. Například `application/octet-stream`.
   * ** \_ \_ naposledy \_ upravená metadata úložiště** (EDM. DateTimeOffset) – poslední změněné časové razítko pro objekt BLOB. Azure Kognitivní hledání používá toto časové razítko k identifikaci změněných objektů blob, aby nedocházelo k přeindexování všeho po počátečním indexování.
   * ** \_ \_ velikost úložiště metadat** (EDM. Int64) – velikost objektu BLOB v bajtech
   * **Metadata \_ úložiště \_ \_ MD5** (EDM. String) – hash MD5 obsahu objektů blob, pokud je k dispozici.
@@ -174,13 +180,16 @@ Měli byste pečlivě zvážit, které extrahované pole by mělo být namapová
 
 V tomto příkladu vybereme `metadata_storage_name` pole jako klíč dokumentu. Předpokládejme také, že váš index obsahuje klíčové pole s názvem `key` a pole `fileSize` pro uložení velikosti dokumentu. Pokud chcete, aby se při vytváření nebo aktualizaci indexeru vytvořily co nejvíce, zadejte následující mapování polí:
 
+```http
     "fieldMappings" : [
       { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
       { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
     ]
+```
 
 Pokud to chcete uvést dohromady, můžete přidat mapování polí a povolit kódování Base-64 klíčů pro existující indexer:
 
+```http
     PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -194,6 +203,7 @@ Pokud to chcete uvést dohromady, můžete přidat mapování polí a povolit k�
         { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
       ]
     }
+```
 
 > [!NOTE]
 > Další informace o mapování polí najdete v [tomto článku](search-indexer-field-mappings.md).
@@ -207,6 +217,7 @@ Můžete určit, které objekty blob budou indexovány a které se přeskočí.
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Indexovat pouze objekty BLOB s určitými příponami souborů
 Pomocí parametru konfigurace indexeru můžete indexovat pouze objekty BLOB s příponami názvů souborů, které zadáte `indexedFileNameExtensions` . Hodnota je řetězec obsahující čárkami oddělený seznam přípon souborů (s počáteční tečkou). Například chcete-li indexovat pouze. Soubory PDF a. Objekty blob DOCX:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -215,10 +226,12 @@ Pomocí parametru konfigurace indexeru můžete indexovat pouze objekty BLOB s p
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
     }
+```
 
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>Vyloučení objektů BLOB s určitými příponami souborů
 Můžete vyloučit objekty BLOB s konkrétní příponou názvu souboru z indexování pomocí `excludedFileNameExtensions` parametru konfigurace. Hodnota je řetězec obsahující čárkami oddělený seznam přípon souborů (s počáteční tečkou). Například pro indexování všech objektů BLOB s výjimkou. PNG a. Rozšíření JPEG:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -227,6 +240,7 @@ Můžete vyloučit objekty BLOB s konkrétní příponou názvu souboru z indexo
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
     }
+```
 
 Pokud `indexedFileNameExtensions` `excludedFileNameExtensions` jsou přítomny parametry i a, Azure kognitivní hledání nejprve vyhledá `indexedFileNameExtensions` , a potom na `excludedFileNameExtensions` . To znamená, že pokud se stejná Přípona souboru nachází v obou seznamech, bude vyloučena z indexování.
 
@@ -241,6 +255,7 @@ Můžete určit, které části objektů BLOB budou indexovány pomocí `dataToE
 
 Chcete-li například indexovat pouze metadata úložiště, použijte:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -249,6 +264,7 @@ Chcete-li například indexovat pouze metadata úložiště, použijte:
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "dataToExtract" : "storageMetadata" } }
     }
+```
 
 ### <a name="using-blob-metadata-to-control-how-blobs-are-indexed"></a>Použití metadat objektů BLOB k řízení, jak jsou objekty blob indexovány
 
@@ -264,6 +280,7 @@ Výše popsané parametry konfigurace se vztahují na všechny objekty blob. V n
 
 Ve výchozím nastavení se indexer objektů BLOB zastaví, jakmile narazí na objekt BLOB s nepodporovaným typem obsahu (například obrázek). Můžete samozřejmě použít `excludedFileNameExtensions` parametr k přeskočení určitých typů obsahu. Je ale možné, že budete muset indexovat objekty blob bez znalosti všech možných typů obsahu předem. Pokud chcete pokračovat v indexování, když je nalezen nepodporovaný typ obsahu, nastavte `failOnUnsupportedContentType` parametr konfigurace na `false` :
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -272,21 +289,28 @@ Ve výchozím nastavení se indexer objektů BLOB zastaví, jakmile narazí na o
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
     }
+```
 
 U některých objektů BLOB nedokáže Azure Kognitivní hledání určit typ obsahu nebo nemůže zpracovat dokument jiného podporovaného typu obsahu. Chcete-li tento režim selhání ignorovat, nastavte `failOnUnprocessableDocument` parametr konfigurace na hodnotu false:
 
+```http
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+```
 
 Azure Kognitivní hledání omezuje velikost indexovaných objektů BLOB. Tato omezení jsou popsaná v [omezení služby v Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity). Ve výchozím nastavení jsou objekty BLOB s příliš velikostí považovány za chyby. Pokud ale nastavíte `indexStorageMetadataOnlyForOversizedDocuments` parametr konfigurace na hodnotu true, pořád ale můžete indexovat metadata úložiště objektů BLOB s více velikostmi. 
 
+```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
+```
 
-Můžete také pokračovat v indexování, pokud dojde k chybám v jakémkoli okamžiku zpracování, při analýze objektů BLOB nebo při přidávání dokumentů do indexu. Chcete-li ignorovat určitý počet chyb, nastavte `maxFailedItems` `maxFailedItemsPerBatch` parametry konfigurace a na požadované hodnoty. Příklad:
+Můžete také pokračovat v indexování, pokud dojde k chybám v jakémkoli okamžiku zpracování, při analýze objektů BLOB nebo při přidávání dokumentů do indexu. Chcete-li ignorovat určitý počet chyb, nastavte `maxFailedItems` `maxFailedItemsPerBatch` parametry konfigurace a na požadované hodnoty. Zde je příklad:
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
     }
+```
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Přírůstkové indexování a odstraňování duplicit
 
@@ -345,6 +369,7 @@ Použijte k tomu následující postup:
 
 Například následující zásady považují objekt blob, který se má odstranit, pokud má vlastnost metadata `IsDeleted` s hodnotou `true` :
 
+```http
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -360,6 +385,7 @@ Například následující zásady považují objekt blob, který se má odstran
             "softDeleteMarkerValue" : "true"
         }
     }
+```
 
 #### <a name="reindexing-undeleted-blobs"></a>Přeindexování neodstraněných objektů BLOB
 
@@ -396,6 +422,7 @@ Aby to fungovalo, všechny indexery a další součásti musí souhlasit s klí�
 
 Pokud všechny objekty blob obsahují prostý text ve stejném kódování, můžete významně zvýšit výkon při indexování pomocí **režimu analýzy textu**. Chcete-li použít režim analýzy textu, nastavte `parsingMode` vlastnost konfigurace na `text` :
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -404,14 +431,16 @@ Pokud všechny objekty blob obsahují prostý text ve stejném kódování, mů�
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text" } }
     }
+```
 
 Ve výchozím nastavení se `UTF-8` předpokládá kódování. Chcete-li zadat jiné kódování, použijte `encoding` vlastnost konfigurace: 
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
     }
-
+```
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>Vlastnosti metadat specifických pro typ obsahu

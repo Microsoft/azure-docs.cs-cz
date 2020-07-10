@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1aca245592bef98bc5d0cff3268d5b6496d2220
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103547"
+ms.locfileid: "86146992"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Synchronizace Azure AD Connect: Plánovač
 Toto téma popisuje integrovaný Plánovač v Azure AD Connect Sync (synchronizační modul).
@@ -41,8 +41,12 @@ Scheduler zodpovídá za dvě úlohy:
 Samotný Plánovač je vždycky spuštěný, ale dá se nakonfigurovat tak, aby se spouštěl jenom jeden nebo žádný z těchto úkolů. Například pokud potřebujete mít vlastní proces synchronizačního cyklu, můžete tuto úlohu v Plánovači zakázat, ale úlohu údržby pořád spustit.
 
 >[!IMPORTANT]
->Bude nutné zajistit, aby byl cyklus synchronizace spuštěn alespoň každých 7 dní. V takovém případě může dojít k problémům s synchronizací, které budou vyžadovat, abyste spustili úplnou synchronizaci, která se má vyřešit.
-
+>Ve výchozím nastavení se cyklus synchronizace spouští každých 30 minut. Pokud jste změnili cyklus synchronizace, budete se muset ujistit, že se cyklus synchronizace spouští aspoň každých 7 dní. 
+>
+>* Rozdílová synchronizace se musí provést do 7 dnů od poslední rozdílové synchronizace.
+>* Rozdílová synchronizace (po úplné synchronizaci) se musí nacházet do 7 dnů od okamžiku dokončení poslední úplné synchronizace.
+>
+>V takovém případě může dojít k problémům s synchronizací, které budou vyžadovat, abyste spustili úplnou synchronizaci, která se má vyřešit. To platí i pro servery v pracovním režimu.
 
 ## <a name="scheduler-configuration"></a>Konfigurace Scheduleru
 Pokud chcete zobrazit aktuální konfigurační nastavení, přejděte do PowerShellu a spusťte `Get-ADSyncScheduler` . Zobrazuje se vám obrázek podobný tomuto:

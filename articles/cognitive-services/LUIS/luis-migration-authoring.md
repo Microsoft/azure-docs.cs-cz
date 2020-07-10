@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055456"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145614"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrace na klíč pro vytváření prostředků Azure
 
@@ -226,7 +226,7 @@ Doporučený postup:
 ## <a name="troubleshooting-the-migration-process"></a>Řešení potíží s procesem migrace
 
 Při pokusu o migraci, ale nemůžete najít předplatné Azure v rozevíracím seznamu:
-* Ujistěte se, že máte platné předplatné Azure, které je autorizováno pro vytváření Cognitive Servicesch prostředků. Přejdete na [Azure Portal](https://ms.portal.azure.com) a zkontrolujete stav předplatného. Pokud ho ještě nemáte, [vytvořte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
+* Ujistěte se, že máte platné předplatné Azure, které je autorizováno pro vytváření Cognitive Servicesch prostředků. Přejdete na [Azure Portal](https://ms.portal.azure.com) a zkontrolujete stav předplatného. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet Azure](https://azure.microsoft.com/free/cognitive-services/).
 * Ujistěte se, že jste v rámci správného tenanta přidruženého k vašemu platnému předplatnému. Klienty můžete na tomto panelu nástrojů přepnout z miniatury na levou stranu úvodní obrazovky: ![ panel nástrojů, kde můžete přepnout klienty.](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 Pokud máte existující prostředek pro vytváření obsahu, ale nemůžete ho najít, když vyberete možnost **použít existující prostředek pro vytváření obsahu** :

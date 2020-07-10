@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: 13c55f2a7470a0d33e12e9e6f0da9df3421242fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f4ed9940c70ed479c3108f3637aa55f2a42811
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556246"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146898"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indexování dat Cosmos DB pomocí indexeru ve službě Azure Cognitive Search 
 
@@ -154,6 +154,8 @@ Tyto hodnoty můžete najít na portálu:
 
 Chcete-li vytvořit zdroj dat, formulujte požadavek POST:
 
+```http
+
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -170,10 +172,11 @@ Chcete-li vytvořit zdroj dat, formulujte požadavek POST:
             "highWaterMarkColumnName": "_ts"
         }
     }
+```
 
 Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat následující pole:
 
-| Pole   | Description |
+| Pole   | Popis |
 |---------|-------------|
 | **Jméno** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
 |**textový**| Povinná hodnota. Musí být `cosmosdb` . |
@@ -190,6 +193,7 @@ Můžete zadat dotaz SQL pro sloučení vnořených vlastností nebo polí, vlas
 
 Ukázkový dokument:
 
+```http
     {
         "userId": 10001,
         "contact": {
@@ -199,30 +203,37 @@ Ukázkový dokument:
         "company": "microsoft",
         "tags": ["azure", "cosmosdb", "search"]
     }
+```
 
 Dotaz filtru:
 
-    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```sql
+SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 Dotaz na sloučení:
 
-    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-    
-    
+```sql
+SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
+
 Dotaz projekce:
 
-    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 Dotaz na sloučení pole:
 
-    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 ### <a name="3---create-a-target-search-index"></a>3. Vytvoření cílového vyhledávacího indexu 
 
 Pokud ho ještě nemáte, [vytvořte cílový index Azure kognitivní hledání](/rest/api/searchservice/create-index) . Následující příklad vytvoří index s polem ID a popis:
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -243,6 +254,7 @@ Pokud ho ještě nemáte, [vytvořte cílový index Azure kognitivní hledání]
          "suggestions": true
        }]
      }
+```
 
 Ujistěte se, že schéma cílového indexu je kompatibilní se schématem zdrojových dokumentů JSON nebo výstupem vlastního projekce dotazu.
 
@@ -261,12 +273,13 @@ Ujistěte se, že schéma cílového indexu je kompatibilní se schématem zdroj
 | Pole primitivních typů, například ["a", "b", "c"] |Collection(Edm.String) |
 | Řetězce, které vypadají jako kalendářní data |EDM. DateTimeOffset, Edm. String |
 | Objekty injson, například {"Type": "Point", "souřadnice": [Long, lat]} |Edm.GeographyPoint |
-| Jiné objekty JSON |Není k dispozici |
+| Jiné objekty JSON |Nelze použít |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4. konfigurace a spuštění indexeru
 
 Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -277,6 +290,7 @@ Po vytvoření indexu a zdroje dat jste připraveni vytvořit indexer:
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Tento indexer se spouští každé dvě hodiny (časový interval je nastaven na "PT2H"). Pokud chcete indexer spustit každých 30 minut, nastavte interval na "PT30M". Nejkratší podporovaný interval je 5 minut. Plán je nepovinný – Pokud je vynechaný, indexer se při vytvoření spustí jenom jednou. Můžete ale kdykoli spustit indexer na vyžádání.   
 
@@ -299,10 +313,12 @@ Obecně dostupná sada .NET SDK má úplnou paritu s všeobecně dostupnou REST 
 
 Účelem zásad detekce změn dat je efektivně identifikovat změněné datové položky. V současné době je jedinou podporovanou zásadou [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) použití `_ts` vlastnosti (časové razítko), kterou poskytuje Azure Cosmos DB, která je určena následujícím způsobem:
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
         "highWaterMarkColumnName" : "_ts"
     }
+```
 
 Použití této zásady se důrazně doporučuje, aby se zajistil dobrý výkon indexeru. 
 
@@ -318,11 +334,13 @@ Pokud chcete povolit přírůstkový průběh při použití vlastního dotazu, 
 
 V některých případech i v případě, že dotaz obsahuje `ORDER BY [collection alias]._ts` klauzuli, nemusí Azure kognitivní hledání odvodit, že dotaz je seřazen podle `_ts` . Azure Kognitivní hledání, že výsledky jsou seřazené pomocí vlastnosti konfigurace, můžete sdělit `assumeOrderByHighWaterMarkColumn` . Chcete-li zadat tuto nápovědu, vytvořte nebo aktualizujte indexer následujícím způsobem: 
 
+```http
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "assumeOrderByHighWaterMarkColumn" : true } }
     } 
+```
 
 <a name="DataDeletionDetectionPolicy"></a>
 
@@ -330,16 +348,19 @@ V některých případech i v případě, že dotaz obsahuje `ORDER BY [collecti
 
 Pokud jsou řádky z kolekce odstraněny, obvykle je chcete odstranit také z indexu vyhledávání. Účelem zásad detekce odstranění dat je efektivně identifikovat odstraněné datové položky. V současné době je jedinou podporovanou zásadou `Soft Delete` zásada (odstranění je označeno příznakem nějakého řazení), které je zadáno následujícím způsobem:
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
         "softDeleteColumnName" : "the property that specifies whether a document was deleted",
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
+```
 
 Pokud používáte vlastní dotaz, ujistěte se, že vlastnost, na kterou odkazuje, `softDeleteColumnName` je projektovaná dotazem.
 
 Následující příklad vytvoří zdroj dat se zásadami podmíněného odstranění:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -361,10 +382,11 @@ Následující příklad vytvoří zdroj dat se zásadami podmíněného odstran
             "softDeleteMarkerValue": "true"
         }
     }
+```
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>Další kroky
 
-Gratulujeme! Zjistili jste, jak integrovat Azure Cosmos DB s Azure Kognitivní hledání pomocí indexeru.
+Blahopřejeme! Zjistili jste, jak integrovat Azure Cosmos DB s Azure Kognitivní hledání pomocí indexeru.
 
 * Další informace o Azure Cosmos DB najdete na [stránce služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 * Další informace o službě Azure Kognitivní hledání najdete na [stránce vyhledávací služby](https://azure.microsoft.com/services/search/).

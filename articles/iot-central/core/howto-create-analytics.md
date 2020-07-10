@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29605fc2a9094f70c26487691e74a4dd72a85813
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158278"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147270"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Analýza dat zařízení pomocí analýzy
 
@@ -86,9 +86,11 @@ Po dotazování na data je můžete začít vizualizovat v spojnicovém grafu. M
 
   ![Přiblížení dat](media/howto-create-analytics/zoom.png)
 
-Pod třemi tečkami je k interakci s daty k dispozici více ovládacích prvků grafu.
+Pod třemi tečkami je k interakci s daty k dispozici více ovládacích prvků grafu:
 
 - **Zobrazit mřížku:** Vaše výsledky jsou k dispozici ve formátu tabulky a umožňují vám zobrazit konkrétní hodnotu pro každý datový bod.
+
+- **Stáhnout jako sdílený svazek clusteru:** Vaše výsledky jsou k dispozici pro export jako textový soubor s oddělovači (CSV). Soubor CSV obsahuje data pro každé zařízení. Výsledky se exportují pomocí zadaného intervalu a časového rámce. 
 
 - **Odstranit značku:** Ovládací prvek Drop marker poskytuje způsob, jak ukotvit určité datové body v grafu. To je užitečné v případě, že se snažíte porovnat data pro více řádků v různých časových obdobích.
 

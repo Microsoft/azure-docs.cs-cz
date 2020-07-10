@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 2baf2b209cae11f734494c377aebd731f69f514d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610859"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145974"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
@@ -45,7 +45,7 @@ Běžný scénář pro převzetí subdomény:
 
 1. Téměř okamžitě po odstranění lokality objekt actor pro hrozbu zjistí chybějící lokalitu a vytvoří svůj vlastní web na adrese `app-contogreat-dev-001.azurewebsites.net` .
 
-    Nyní provoz určený pro `greatapp.contoso.com` přejde na web Azure actor útočníka a objekt actor má pod kontrolou zobrazeného obsahu. 
+    Nyní provoz určený pro `greatapp.contoso.com` přejde na web Azure actor útočníka a útočník hrozby nařídí zobrazený obsah. 
 
     Služba DNS dangling byla zneužita a subdoménou společnosti Contoso "GreatApp" bylo oběť převzetí subdomény. 
 
@@ -61,7 +61,7 @@ Dangling položky DNS umožňují aktérům hrozeb převzít kontrolu nad přidr
 
 - **Ztráta kontroly nad obsahem subdomény** – negativně stiskněte informace o neschopnosti vaší organizace při zabezpečování obsahu a také o poškození značky a o ztrátách důvěry.
 
-- **Soubory cookie získané z nepodezřelých návštěvníků** – je běžné, že webové aplikace zveřejňují soubory cookie relací pro subdomény (*. contoso.com), a proto k nim mají přístup všechny subdomény. Aktéri hrozeb můžou pomocí převzetí subdomény vytvořit autentickou stránku, která uživatele navštíví a nashromáždění jejich souborů cookie (i zabezpečených souborů cookie). Běžný nepojmový pojem použití certifikátů SSL chrání váš web a soubory cookie uživatelů od převzetí. Aktér hrozby však může použít napadenou subdoménu k uplatnění pro a získat platný certifikát SSL. Pak jim udělí přístup k zabezpečeným souborům cookie a může dál zvýšit vnímaný legitimitu škodlivého webu.
+- **Soubory cookie získané z nepodezřelých návštěvníků** – je běžné, že webové aplikace zveřejňují soubory cookie relací pro subdomény (*. contoso.com), a proto k nim mají přístup všechny subdomény. Aktéri hrozeb můžou pomocí převzetí subdomény vytvořit autentickou stránku, která uživatele navštíví a nashromáždění jejich souborů cookie (i zabezpečených souborů cookie). Běžný nepojmový pojem použití certifikátů SSL chrání váš web a soubory cookie uživatelů od převzetí. Aktér hrozby však může použít napadenou subdoménu k uplatnění pro a získat platný certifikát SSL. Platné certifikáty SSL udělují jim přístup k zabezpečeným souborům cookie a můžou dál zvyšovat vnímaný legitimitu škodlivého webu.
 
 - **Podvodné kampaně** – na základě závazného způsobu, které se dají použít v kampaních phishing. To platí pro škodlivé weby a také pro záznamy MX, které by útočníkovi umožnil příjem e-mailů, které jsou adresovány na oprávněnou subdoménu známé značky.
 
@@ -78,14 +78,14 @@ Níže jsou uvedené preventivní míry, které jsou dnes k dispozici.
 
 ### <a name="use-azure-dns-alias-records"></a>Použití záznamů aliasů Azure DNS
 
-Po pevně uvedeném životním cyklu záznamu DNS k prostředku Azure mohou [záznamy aliasů](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) Azure DNS zabránit odkazům na dangling. Předpokládejme například, že záznam DNS, který je kvalifikován jako záznam aliasu, odkazuje na veřejnou IP adresu nebo profil Traffic Manager. Pokud tyto podkladové prostředky odstraníte, bude se záznam aliasu DNS nacházet v prázdné sadě záznamů. Již neodkazuje na odstraněný prostředek. Je důležité si uvědomit, že existují omezení k tomu, co můžete chránit pomocí záznamů aliasů. V dnešní době je seznam omezen na:
+[Záznamy aliasů](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) Azure DNS můžou zabránit odkazům na dangling prostřednictvím propojení životního cyklu záznamu DNS s prostředkem Azure. Předpokládejme například, že záznam DNS, který je kvalifikován jako záznam aliasu, odkazuje na veřejnou IP adresu nebo profil Traffic Manager. Pokud tyto podkladové prostředky odstraníte, bude se záznam aliasu DNS nacházet v prázdné sadě záznamů. Již neodkazuje na odstraněný prostředek. Je důležité si uvědomit, že existují omezení k tomu, co můžete chránit pomocí záznamů aliasů. V dnešní době je seznam omezen na:
 
 - Azure Front Door
 - Profily služby Traffic Manager
 - Koncové body služby Azure Content Delivery Network (CDN)
 - Veřejné IP adresy
 
-Pokud máte prostředky, které je možné chránit před převzetím subdomény pomocí záznamů aliasů, doporučujeme, abyste si to prodělali v dnešní době omezené nabídky služeb.
+Bez ohledu na to, co je dnes omezené nabídky služeb, doporučujeme pomocí záznamů aliasů chránit před převzetím subdomény, kdykoli je to možné.
 
 [Přečtěte si další informace](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) o možnostech záznamů aliasů Azure DNS.
 
@@ -120,7 +120,7 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
         - **Existují** – dotaz na zóny DNS pro prostředky odkazující na subdomény Azure, jako je například *. azurewebsites.NET nebo *. cloudapp.Azure.com (viz [Tento seznam odkazů](azure-domains.md)).
         - **Vlastníte** – potvrďte, že vlastníte všechny prostředky, na které vaše subdomény DNS cílí.
 
-    - Udržujte katalog služeb pro koncové body plně kvalifikovaného názvu domény (FQDN) Azure a vlastníky aplikace. Pokud chcete sestavit katalog služeb, spusťte následující dotaz na Azure Resource Graph s parametry z následující tabulky:
+    - Udržujte katalog služeb pro koncové body plně kvalifikovaného názvu domény (FQDN) Azure a vlastníky aplikace. Pokud chcete sestavit katalog služeb, spusťte následující dotaz Azure Resource Graph (ARG) s parametry z následující tabulky:
     
         >[!IMPORTANT]
         > **Oprávnění** – spusťte dotaz jako uživatel s přístupem ke všem předplatným Azure. 
@@ -139,9 +139,12 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
         
         Můžete také kombinovat více typů prostředků. Tento ukázkový dotaz vrátí prostředky z Azure App Service **a** Azure App Service-slotů:
 
-        ```
+        ```azurepowershell
         Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
         ```
+
+
+        Pro parametry služby pro dotaz ARG:
 
         |Název prostředku  |[ResourceType]  | [FQDNproperty]  |
         |---------|---------|---------|

@@ -3,16 +3,16 @@ title: Použití Azure AD ve službě Azure Kubernetes
 description: Naučte se používat Azure AD ve službě Azure Kubernetes Service (AKS).
 services: container-service
 manager: gwallace
-author: mlearned
+author: TomGeske
 ms.topic: article
-ms.date: 06/25/2020
-ms.author: mlearned
-ms.openlocfilehash: f22b79cb8a730fb9c28dd1a208ab672473218b79
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105944"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166497"
 ---
 # <a name="aks-managed-azure-active-directory-integration-preview"></a>Integrace Azure Active Directory spravovaná v AKS (Preview)
 
@@ -26,10 +26,6 @@ Integrace služby Azure AD spravovaná pomocí AKS je navržená tak, aby zjedno
 Správci clusteru můžou nakonfigurovat řízení přístupu na základě role (RBAC) Kubernetes na základě identity uživatele nebo členství ve skupině adresáře. Ověřování Azure AD je k dispozici pro clustery AKS s OpenID Connect. OpenID Connect je vrstva identity postavená nad protokolem OAuth 2,0. Další informace o OpenID připojení najdete v dokumentaci k [otevřenému ID Connect][open-id-connect].
 
 Přečtěte si další informace o postupu integrace AAD v [dokumentaci k Azure Active Directory v konceptech integrace](concepts-identity.md#azure-active-directory-integration).
-
-## <a name="limitations"></a>Omezení
-
-* V současné době nemůžete upgradovat stávající cluster AKS Azure AD na nové prostředí Azure AD spravované AKS.
 
 > [!IMPORTANT]
 > Funkce AKS ve verzi Preview jsou k dispozici na samoobslužné službě, na základě souhlasu. Verze Preview jsou k dispozici "tak jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou na základě nejlepších úsilí. V takovém případě tyto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:

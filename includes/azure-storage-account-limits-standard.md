@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 07/08/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e2540bceab17e6f37fd94b28df3814ccffa1c81e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 509568b143c9fbbf236139ca83cb55b0ef39beb0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466932"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145920"
 ---
 V následující tabulce jsou popsány výchozí limity pro účty úložiště Azure pro obecné účely V1, v2, BLOB Storage a Block. Limit *ingress* příchozího přenosu dat odkazuje na všechna data, která se odesílají do účtu úložiště. Limit *odchozího* přenosu dat odkazuje na všechna data přijatá z účtu úložiště.
 
@@ -33,11 +33,7 @@ V následující tabulce jsou popsány výchozí limity pro účty úložiště 
 
 <sup>1</sup> Azure Storage standardní účty podporují vyšší limity kapacity a vyšší limity pro příchozí zpracování žádostí. Pokud chcete požádat o zvýšení limitů účtu, obraťte se na [podporu Azure](https://azure.microsoft.com/support/faq/).
 
-<sup>2</sup> Pokud váš účet úložiště má povolený přístup pro čtení s geograficky redundantním úložištěm (RA-GRS) nebo geograficky redundantním úložištěm (RA-GZRS), pak jsou cíle výstupu sekundárního umístění stejné jako v primárním umístění. Mezi možnosti [replikace Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) patří:
-
-[!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
-
-<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) je sada funkcí vyhrazených pro analýzy velkých objemů dat, která je založená na službě Azure Blob Storage.
+<sup>2</sup> Pokud váš účet úložiště má povolený přístup pro čtení s geograficky redundantním úložištěm (RA-GRS) nebo geograficky redundantním úložištěm (RA-GZRS), pak jsou cíle výstupu sekundárního umístění stejné jako v primárním umístění. Další informace najdete v tématu [replikace Azure Storage](../articles/storage/common/storage-redundancy.md).
 
 > [!NOTE]
 > Microsoft doporučuje, abyste pro většinu scénářů používali účet úložiště pro obecné účely v2. Účet Azure Blob Storage pro obecné účely v1 nebo Azure můžete snadno upgradovat na účet pro obecné účely v2 bez výpadků a bez nutnosti kopírovat data. Další informace najdete v tématu [upgrade na účet úložiště pro obecné účely v2](../articles/storage/common/storage-account-upgrade.md).
