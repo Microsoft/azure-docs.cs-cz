@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488782"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218267"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -28,7 +28,7 @@ Když použijete integraci virtuální sítě s virtuální sítě ve stejné ob
 
 Ve výchozím nastavení vaše aplikace směruje jenom RFC1918 provoz do vaší virtuální sítě. Pokud chcete směrovat veškerý odchozí provoz do vaší virtuální sítě, použijte nastavení aplikace WEBSITE_VNET_ROUTE_ALL pro vaši aplikaci. Konfigurace nastavení aplikace:
 
-1. Na portálu aplikací přejdete na uživatelské rozhraní **Konfigurace** . Vyberte možnost **nové nastavení aplikace**.
+1. Na portálu aplikací přejdete na uživatelské rozhraní **Konfigurace** . Vyberte **Nové nastavení aplikace**.
 1. Do pole **název** zadejte **WEBSITE_VNET_ROUTE_ALL** a do pole **hodnota zadejte hodnotu** **1** .
 
    ![Zadat nastavení aplikace][4]
@@ -41,7 +41,7 @@ Pokud budete směrovat veškerý odchozí provoz do vaší virtuální sítě, b
 Při použití integrace virtuální sítě s virtuální sítě ve stejné oblasti je potřeba mít určitá omezení:
 
 * Nemůžete se připojit k prostředkům napříč globálními připojeními partnerských vztahů.
-* Tato funkce je dostupná jenom z novějších jednotek škálování Azure App Service, které podporují plány App Service PremiumV2.
+* Tato funkce je dostupná jenom z novějších jednotek škálování Azure App Service, které podporují plány App Service PremiumV2. Všimněte si, že *to neznamená, že vaše aplikace musí běžet na cenové úrovni PremiumV2*, jenom to, že musí běžet v plánu App Service, kde je dostupná možnost PremiumV2 (což znamená, že se jedná o novější jednotku škálování, kde je tato funkce integrace virtuální sítě dostupná taky).
 * Podsíť Integration můžete použít jenom v jednom plánu App Service.
 * Tuto funkci nemůžou používat aplikace pro izolované plánování, které jsou ve App Service Environment.
 * Tato funkce vyžaduje nepoužitou podsíť, která je a/27 s 32 adresou nebo větší ve Azure Resource Manager virtuální síti.
@@ -65,7 +65,7 @@ Místní integrace virtuální sítě umožňuje používat koncové body služb
 1. Konfigurace místní integrace virtuální sítě pomocí webové aplikace
 1. Přejít na cílovou službu a nakonfigurovat koncové body služby proti podsíti používané pro integraci
 
-### <a name="network-security-groups"></a>Skupiny zabezpečení sítě
+### <a name="network-security-groups"></a>skupiny zabezpečení sítě,
 
 Skupiny zabezpečení sítě můžete použít k blokování příchozího a odchozího provozu do prostředků ve virtuální síti. Aplikace, která používá místní integraci virtuální sítě, může používat [skupinu zabezpečení sítě][VNETnsg] k blokování odchozího provozu do prostředků ve vaší virtuální síti nebo v Internetu. Chcete-li zablokovat provoz na veřejné adresy, je nutné, aby nastavení aplikace WEBSITE_VNET_ROUTE_ALL nastaveno na hodnotu 1. Příchozí pravidla ve NSG se nevztahují na vaši aplikaci, protože integrace virtuální sítě má vliv jenom na odchozí přenosy z vaší aplikace.
 

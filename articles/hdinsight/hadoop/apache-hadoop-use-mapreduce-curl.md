@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: a1d411662fd7afe57c714b97ab67b9d490acd40d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076364"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207725"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spouštění úloh MapReduce s využitím Apache Hadoop ve službě HDInsight pomocí REST
 
@@ -61,7 +61,7 @@ Buď:
 
     Dostanete odpověď podobnou následujícímu formátu JSON:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -83,9 +83,7 @@ Buď:
      * **Třída**: třída, která obsahuje logiku MapReduce
      * **arg**: argumenty, které mají být předány do úlohy MapReduce. V tomto případě vstupní textový soubor a adresář, které se používají pro výstup
 
-    Tento příkaz by měl vrátit ID úlohy, která se dá použít ke kontrole stavu úlohy:
-
-       job_1415651640909_0026
+    Tento příkaz by měl vracet ID úlohy, která se dá použít ke kontrole stavu úlohy: `job_1415651640909_0026` .
 
 1. Chcete-li zjistit stav úlohy, použijte následující příkaz. Nahraďte hodnotu pro `JOBID` **skutečnou** hodnotou vrácenou v předchozím kroku. Podle potřeby upravte umístění **JQ** .
 
@@ -105,7 +103,7 @@ Buď:
     $creds = Get-Credential -UserName admin -Message "Enter the cluster login password"
     ```
 
-1. pomocí následujícího příkazu ověřte, že se můžete připojit ke clusteru HDInsight:
+1. Pomocí následujícího příkazu ověřte, že se můžete připojit ke clusteru HDInsight:
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clustername.azurehdinsight.net/templeton/v1/status" `
@@ -116,7 +114,7 @@ Buď:
 
     Dostanete odpověď podobnou následujícímu formátu JSON:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -146,9 +144,7 @@ Buď:
     * **Třída**: třída, která obsahuje logiku MapReduce
     * **arg**: argumenty, které mají být předány do úlohy MapReduce. V tomto případě vstupní textový soubor a adresář, které se používají pro výstup
 
-   Tento příkaz by měl vrátit ID úlohy, která se dá použít ke kontrole stavu úlohy:
-
-       job_1415651640909_0026
+   Tento příkaz by měl vracet ID úlohy, která se dá použít ke kontrole stavu úlohy: `job_1415651640909_0026` .
 
 1. Chcete-li zjistit stav úlohy, použijte následující příkaz:
 

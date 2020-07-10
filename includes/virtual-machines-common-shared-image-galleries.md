@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ca9d41134bf33a9e007da4b5a56652ccdbd4e22
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84317407"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218399"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
@@ -84,20 +84,7 @@ Specializované virtuální počítače neprošly procesem odebrání informací
 
 Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné oblasti můžou být cílové oblasti, ale pokud je chcete replikovat do Austrálie Central a Austrálie – střed 2, musíte mít své předplatné na seznamu povolených. Pokud chcete požádat o seznam povolených, navštivte:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-
-| Zdrojové oblasti        |                   |                    |                    |
-| --------------------- | ----------------- | ------------------ | ------------------ |
-| Austrálie – střed     | Čína – východ        | Indie – jih        | Západní Evropa        |
-| Austrálie – střed 2   | Čína – východ 2      | Jihovýchodní Asie     | Spojené království – jih           |
-| Austrálie – východ        | Čína – sever       | Japonsko – východ         | Spojené království – západ            |
-| Austrálie – jihovýchod   | Čína – sever 2     | Japonsko – západ         | US DoD – střed     |
-| Brazílie – jih          | Východní Asie         | Jižní Korea – střed      | US DoD – východ        |
-| Střední Kanada        | USA – východ           | Jižní Korea – jih        | USA (Gov) – Arizona     |
-| Kanada – východ           | USA – východ 2         | USA – středosever   | USA (Gov) – Texas       |
-| Indie – střed         | Východní USA 2 EUAP    | Severní Evropa       | USA (Gov) – Virginia    |
-| USA – střed            | Francie – střed    | USA – středojih   | Indie – západ         |
-| Střed USA EUAP       | Francie – jih      | USA – středozápad    | USA – západ            |
-|                       |                   |                    | USA – západ 2          |
+> Austrálie – střed, Čína – východ, Jižní Indie, Západní Evropa, Austrálie – střed 2, Čína – východ 2, jihovýchodní Asie, Velká Británie – jih, Austrálie – východ, Čína – sever, Japonsko – východ, Velká Británie – západ, Austrálie – jihovýchod, Čína – Sever 2, Japonsko – západ, US DoD – střed, Brazílie – jih, východní Asie, Kanada – východ, US DoD – východ, Kanada – střed, východní USA, Jižní Korea, US gov – Arizona, Kanada – východ, východní USA 2 střed USA – sever , US Gov – Texas, Střed Indie, Východní USA 2 EUAP, Severní Evropa, US Gov – Virginie, Střed USA, Francie – střed, Střed USA – jih, Západní Indie, Střed USA EUAP, Francie – jih, Středozápadní USA, Západní USA, Západní USA 2 |
 
 
 
@@ -139,7 +126,7 @@ Oblasti, do kterých se replikuje verze sdíleného obrázku, se dá po vytvoře
 
 ![Obrázek znázorňující, jak můžete replikovat image](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Přístup
 
 Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze image, všechny prostředky, můžou se sdílet pomocí integrovaných nativních ovládacích prvků Azure RBAC. Pomocí RBAC můžete tyto prostředky sdílet ostatním uživatelům, instančním objektům a skupinám. Můžete dokonce sdílet přístup jednotlivcům mimo klienta, kterého vytvořili v rámci. Jakmile má uživatel přístup ke sdílené imagi verze, může nasadit virtuální počítač nebo sadu škálování virtuálního počítače.  Tady je tabulka sdílení, která pomáhá pochopit, k čemu uživatel přistupuje:
 

@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3312d1ec7c2535e103cf8959599c0d4c3014f520
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561782"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218076"
 ---
 1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
 2. `Get-HcsApplianceInfo`Informace pro vaše zařízení získáte pomocí.
@@ -44,15 +44,15 @@ ms.locfileid: "82561782"
     ```
 
     Tady je tabulka shrnující některé důležité informace o zařízení:
-    
-    | Parametr                             | Popis                                                                                                                                                  |   |
-    |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | FriendlyName                   | Popisný název zařízení nakonfigurovaný prostřednictvím místního webového uživatelského rozhraní během nasazování zařízení. Výchozím popisným názvem je sériové číslo zařízení.  |   |
-    | SerialNumber                   | Sériové číslo zařízení je jedinečné číslo přiřazené v továrně.                                                                             |   |
-    | Model                          | Model pro Azure Stack Edge nebo Data Box Gateway zařízení. Model je fyzický pro Azure Stack Edge a Virtual pro Data Box Gateway.                   |   |
-    | FriendlySoftwareVersion        | Popisný řetězec, který odpovídá verzi softwaru zařízení. V systému, ve kterém je spuštěný náhled, by se měla používat popisná verze softwaru Data Box Edge 1902. |   |
-    | HcsVersion                     | Verze softwaru klientovi HCS spuštěná na vašem zařízení. Například verze softwaru klientovi HCS, která odpovídá Data Box Edge 1902, je 1.4.771.324.            |   |
-    | LocalCapacityInMb              | Celková místní kapacita zařízení v megabajtech.                                                                                                        |   |
-    | Registrováno                   | Tato hodnota označuje, jestli je zařízení aktivované službou.                                                                                         |   |
+
+    | Parametr | Popis |
+    |-----------|-------------|
+    | FriendlyName                   | Popisný název zařízení nakonfigurovaný prostřednictvím místního webového uživatelského rozhraní během nasazování zařízení. Výchozím popisným názvem je sériové číslo zařízení.  |
+    | SerialNumber                   | Sériové číslo zařízení je jedinečné číslo přiřazené v továrně.                                                                             |
+    | Model                          | Model pro Azure Stack Edge nebo Data Box Gateway zařízení. Model je fyzický pro Azure Stack Edge a Virtual pro Data Box Gateway.                   |
+    | FriendlySoftwareVersion        | Popisný řetězec, který odpovídá verzi softwaru zařízení. V systému, ve kterém je spuštěný náhled, by se měla používat popisná verze softwaru Data Box Edge 1902. |
+    | HcsVersion                     | Verze softwaru klientovi HCS spuštěná na vašem zařízení. Například verze softwaru klientovi HCS, která odpovídá Data Box Edge 1902, je 1.4.771.324.            |
+    | LocalCapacityInMb              | Celková místní kapacita zařízení v megabajtech.                                                                                                        |
+    | Registrováno                   | Tato hodnota označuje, jestli je zařízení aktivované službou.                                                                                         |
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847442"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207703"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -101,9 +101,8 @@ Když spustíte pokročilou analýzu výkonu, vyberete možnost trasování pro 
 
 Shromažďují se informace o virtuálním počítači s Windows, discích nebo konfiguraci fondů úložiště, čítačích výkonu, protokolech a různých trasováních. Závisí na scénáři výkonu, který používáte. Podrobnosti jsou uvedené v následující tabulce:
 
-|Shromažďovaná data                              |  |  | Scénáře výkonu |  |  | |
-|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Rychlá analýza výkonu | Srovnávací testy | Analýza výkonu | Analýza souborů Azure | Pokročilá analýza výkonu |
+| Shromažďovaná data | Rychlá analýza výkonu | Srovnávací testy | Analýza výkonu | Analýza souborů Azure | Pokročilá analýza výkonu |
+|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
 | Informace z protokolů událostí       | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Systémové informace                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Mapa svazků                        | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
@@ -119,12 +118,12 @@ Shromažďují se informace o virtuálním počítači s Windows, discích nebo 
 | Konfigurace SQL Serveru          | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Trasování diagnostiky výkonu *  | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Trasování čítače výkonu * *      |                            |                                    | Ano                      |                      | Ano                  |
-| Trasování čítače SMB * *              |                            |                                    |                          | Yes                  |                      |
+| Trasování čítače SMB * *              |                            |                                    |                          | Ano                  |                      |
 | Trasování čítače SQL Server * *       |                            |                                    | Ano                      |                      | Ano                  |
-| Xperf trasování                       |                            |                                    |                          |                      | Yes                  |
-| Trasování StorPort                    |                            |                                    |                          |                      | Yes                  |
+| Xperf trasování                       |                            |                                    |                          |                      | Ano                  |
+| Trasování StorPort                    |                            |                                    |                          |                      | Ano                  |
 | Trasování sítě                     |                            |                                    |                          | Ano                  | Ano                  |
-| Sledování srovnávacích testů DiskSpd * * *       |                            | Yes                                |                          |                      |                      |
+| Sledování srovnávacích testů DiskSpd * * *       |                            | Ano                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Trasování diagnostiky výkonu (*)

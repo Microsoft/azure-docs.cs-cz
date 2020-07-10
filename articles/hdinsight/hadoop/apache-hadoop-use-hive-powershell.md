@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 653a481efeeaac83215b1e46309944efab924d2e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5588920c860de09ea1561cf5ed4b28a08085438c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076480"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207766"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Spouštění dotazů Apache Hive pomocí PowerShellu
 
@@ -52,16 +52,20 @@ Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v cluste
 
 2. Otevřete nový příkazový řádek **Azure PowerShell** . Změňte adresáře na umístění `hivejob.ps1` souboru a potom spusťte skript pomocí následujícího příkazu:
 
-        .\hivejob.ps1
+    ```azurepowershell
+    .\hivejob.ps1
+    ```
 
     Po spuštění skriptu se zobrazí výzva k zadání názvu clusteru a přihlašovacích údajů účtu správce HTTPS/cluster. Může se také zobrazit výzva, abyste se přihlásili ke svému předplatnému Azure.
 
 3. Po dokončení úlohy vrátí informace podobné následujícímu textu:
 
-        Display the standard output...
-        2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
-        2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
-        2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```output
+    Display the standard output...
+    2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
+    2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
+    2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```
 
 4. Jak bylo zmíněno dříve, `Invoke-Hive` lze použít ke spuštění dotazu a čekání na odpověď. Pomocí následujícího skriptu můžete zjistit, jak funguje příkaz Invoke-podregistr:
 
@@ -69,9 +73,11 @@ Následující kroky ukazují, jak pomocí těchto rutin spustit úlohu v cluste
 
     Výstup bude vypadat jako následující text:
 
-        2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
-        2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
-        2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```output
+    2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
+    2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
+    2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```
 
    > [!NOTE]  
    > Pro delší dotazy HiveQL můžete použít rutinu Azure PowerShell **tady-Strings** nebo soubory skriptu HiveQL. Následující fragment kódu ukazuje, jak použít `Invoke-Hive` rutinu ke spuštění souboru skriptu HiveQL. Soubor skriptu HiveQL musí být nahrán do wasbs://.
@@ -95,7 +101,7 @@ Get-AzHDInsightJobOutput `
 
 Tato rutina vrátí informace, které jsou během zpracování úlohy zapisovány do STDERR.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 Jak vidíte, Azure PowerShell poskytuje snadný způsob, jak spustit dotazy na podregistr v clusteru HDInsight, jak sledovat stav úlohy a načíst výstup.
 
