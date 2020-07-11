@@ -1,21 +1,22 @@
 ---
-title: Implementace rozdílového soukromí pomocí balíčku WhiteNoise
+title: Implementace rozdílového soukromí pomocí balíčku WhiteNoise (Preview)
 titleSuffix: Azure Machine Learning
 description: Přečtěte si, jaká je rozdílová ochrana osobních údajů a jak může balíček WhiteNoise pomáhat při implementaci rozdílových privátních systémů, které zachovávají ochranu dat.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/03/2020
+ms.date: 07/09/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: aa4fe715c18e582448ee7f642a6a75947356ab61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982658"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199788"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Zachování ochrany soukromí dat pomocí rozdílového soukromí a balíčku WhiteNoise
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>Zachování ochrany soukromí dat pomocí rozdílového soukromí a balíčku WhiteNoise (Preview)
 
 Přečtěte si, jaké jsou rozdílové ochrany osobních údajů a jak může balíček WhiteNoise pomáhat při implementaci rozdílových privátních systémů.
 
@@ -62,18 +63,18 @@ Implementace rozdílových privátních systémů je obtížná. WhiteNoise je o
 
 Základní knihovna nástroje zahrnuje následující mechanismy ochrany osobních údajů pro implementaci rozdílového privátního systému:
 
-|Součást  |Description  |
+|Komponenta  |Popis  |
 |---------|---------|
 |Analýza     | Graf s popisem libovolných výpočtů. |
 |Hodnocení     | Knihovna Rust, která obsahuje sadu nástrojů pro kontrolu a odvozování nezbytných podmínek pro účely analýzy rozdílných privátních.          |
-|Modul runtime     | Médium pro provedení analýzy. Referenční modul runtime je napsaný v Rust, ale moduly runtime se dají zapisovat pomocí všech výpočetních rozhraní, jako je SQL a Spark, v závislosti na vašich datových potřebách.        |
+|Runtime     | Médium pro provedení analýzy. Referenční modul runtime je napsaný v Rust, ale moduly runtime se dají zapisovat pomocí všech výpočetních rozhraní, jako je SQL a Spark, v závislosti na vašich datových potřebách.        |
 |Vazby     | Vazby jazyka a pomocné knihovny pro sestavení analýz Aktuálně WhiteNoise poskytuje vazby Pythonu. |
 
 ### <a name="system"></a>Systém
 
 Systémová knihovna poskytuje následující nástroje a služby pro práci s tabulkovými a relačními daty:
 
-|Součást  |Description  |
+|Komponenta  |Popis  |
 |---------|---------|
 |Přístup k datům     | Knihovna, která zachycuje a zpracovává dotazy SQL a vytváří sestavy. Tato knihovna je implementovaná v Pythonu a podporuje následující zdroje dat ODBC a DBAPI:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>PANDAS</li></ul>|
 |Služba     | Služba spuštění, která poskytuje koncovým bodem REST pro poskytování požadavků nebo dotazů na sdílené zdroje dat. Služba je navržená tak, aby umožňovala složení rozdílových modulů ochrany osobních údajů, které pracují na žádostech s různými hodnotami delta a Epsilon, označované taky jako heterogenní požadavky. Tento referenční účet implementace má další dopad na dotazy na korelační data. |

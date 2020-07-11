@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba498fe9f70664a801172a6ff3705ac41a6371ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835239"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186193"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Předávání dat úloh Azure Automation do protokolů Azure Monitoru
 
@@ -27,8 +28,8 @@ Azure Automation může odesílat datové proudy úloh sady Runbook a streamová
 
 Pokud chcete začít odesílat protokoly pro automatizaci Azure Monitor protokolů, budete potřebovat:
 
-* Nejnovější verzi [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/).
-* Pracovní prostor služby Log Analytics. Další informace najdete v tématu [Začínáme s protokoly Azure monitor](../log-analytics/log-analytics-get-started.md).
+* Nejnovější verzi [Azure PowerShell](/powershell/azureps-cmdlets-docs/).
+* Pracovní prostor služby Log Analytics. Další informace najdete v tématu [Začínáme s protokoly Azure monitor](../azure-monitor/overview.md).
 * ID prostředku pro váš účet Azure Automation.
 
 Pomocí následujícího příkazu Najděte ID prostředku pro Azure Automation účet:
@@ -66,10 +67,10 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvoří dva typy záz
 | Caller_s |Volající, který inicioval operaci Možnou hodnotou je e-mailová adresa nebo systém pro naplánované úlohy. |
 | Tenant_g | Identifikátor GUID, který identifikuje tenanta pro daného volajícího. |
 | JobId_g |Identifikátor GUID, který identifikuje úlohu Runbooku. |
-| Hodnotu |Stav úlohy runbooku. Možné hodnoty:<br>– Nové<br>– Vytvořeno<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>-Dokončeno |
+| ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Nové<br>– Vytvořeno<br>- Spuštěno<br>- Zastaveno<br>- Pozastaveno<br>- Neúspěch<br>-Dokončeno |
 | Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobLogs. |
 | OperationName | Typ operace prováděné v Azure. Pro automatizaci je tato hodnota úloha. |
-| Prostředek | Název účtu Automation |
+| Resource | Název účtu Automation |
 | SourceSystem | Systém, který Azure Monitor protokoly použít ke shromáždění dat. Tato hodnota je vždy Azure pro diagnostiku Azure. |
 | ResultDescription |Stav výsledku úlohy Runbooku Možné hodnoty:<br>- Úloha se spustila<br>- Zpracování úlohy se nezdařilo<br>- Úloha je dokončená |
 | CorrelationId |Identifikátor GUID korelace úlohy Runbooku |
@@ -88,10 +89,10 @@ Diagnostika Azure Automation v protokolech Azure Monitor vytvoří dva typy záz
 | StreamType_s |Typ datového proudu úlohy. Možné hodnoty:<br>- Průběh<br>- Výstup<br>- Varování<br>- Chyba<br>- Ladění<br>- Podrobné |
 | Tenant_g | Identifikátor GUID, který identifikuje tenanta pro daného volajícího. |
 | JobId_g |Identifikátor GUID, který identifikuje úlohu Runbooku. |
-| Hodnotu |Stav úlohy runbooku. Možné hodnoty:<br>– Probíhá |
+| ResultType |Stav úlohy runbooku. Možné hodnoty:<br>– Probíhá |
 | Kategorie | Klasifikace typu dat. Službě Automation odpovídá hodnota JobStreams. |
 | OperationName | Typ operace provedené v Azure Pro automatizaci je tato hodnota úloha. |
-| Prostředek | Název účtu Automation. |
+| Resource | Název účtu Automation. |
 | SourceSystem | Systém, který Azure Monitor protokoly použít ke shromáždění dat. Tato hodnota je vždy Azure pro diagnostiku Azure. |
 | ResultDescription |Popis, který obsahuje výstupní datový proud z Runbooku. |
 | CorrelationId |Identifikátor GUID korelace úlohy Runbooku |
@@ -185,8 +186,8 @@ Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o vytváření vyhledávacích dotazů a kontrole protokolů úloh služby Automation pomocí protokolů Azure Monitor najdete [v tématu prohledávání protokolů v protokolech Azure monitor](../log-analytics/log-analytics-log-searches.md).
+* Další informace o vytváření vyhledávacích dotazů a kontrole protokolů úloh služby Automation pomocí protokolů Azure Monitor najdete [v tématu prohledávání protokolů v protokolech Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 * Informace o vytváření a načítání výstupních a chybové zprávy ze sad Runbook najdete v tématu [monitorování výstupu Runbooku](automation-runbook-output-and-messages.md).
 * Další informace o spuštění sady Runbook, způsobu monitorování úloh sady Runbook a dalších technických informací naleznete v tématu [spuštění sady Runbook v Azure Automation](automation-runbook-execution.md).
-* Další informace o Azure Monitor protokolů a zdrojích shromažďování dat najdete [v tématu shromažďování dat služby Azure Storage v protokolech Azure monitor přehled](../azure-monitor/platform/collect-azure-metrics-logs.md).
+* Další informace o Azure Monitor protokolů a zdrojích shromažďování dat najdete [v tématu shromažďování dat služby Azure Storage v protokolech Azure monitor přehled](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
 * Pomoc při řešení potíží s Log Analytics najdete v tématu [řešení potíží, proč Log Analytics už neshromažďují data](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

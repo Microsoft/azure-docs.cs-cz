@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734788"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220265"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Konfigurace Azure Active Directory Domain Services pro podporu synchronizace profilů uživatelů pro server SharePoint
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak nakonfigurovat službu Azure služba AD DS tak
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -42,18 +42,18 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 ## <a name="service-accounts-overview"></a>Přehled účtů služeb
 
-Ve spravované doméně existuje skupina zabezpečení s názvem **účty služby AAD DC** jako součást organizační jednotky *uživatelů* (OU). Členové této skupiny zabezpečení mají delegovaná tato oprávnění:
+Ve spravované doméně existuje skupina zabezpečení s názvem *účty služby AAD DC* jako součást organizační jednotky *uživatelů* (OU). Členové této skupiny zabezpečení mají delegovaná tato oprávnění:
 
 - **Replikace oprávnění ke změnám adresáře** u KOŘENOVÉho DSEu.
 - **Replikace oprávnění ke změnám adresáře** v názvovém kontextu *Konfigurace* ( `cn=configuration` kontejneru).
 
-Skupina zabezpečení **účty služby AAD DC** je zároveň členem předdefinované skupiny **Pre-Windows 2000 Compatible Access**.
+Skupina zabezpečení *účty služby AAD DC* je zároveň členem předdefinované skupiny *Pre-Windows 2000 Compatible Access*.
 
 Po přidání do této skupiny zabezpečení má účet služby pro synchronizační službu profilů uživatelů serveru SharePoint udělená potřebná oprávnění k správnému fungování.
 
 ## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>Povolit podporu pro synchronizaci profilů uživatelů serveru SharePoint
 
-Účet služby pro SharePoint Server potřebuje odpovídající oprávnění k replikaci změn do adresáře a správné fungování synchronizace profilů uživatelů serveru SharePoint. Chcete-li poskytnout tato oprávnění, přidejte účet služby, který se používá pro synchronizaci profilů uživatelů služby SharePoint, do skupiny **účty služby AAD DC** .
+Účet služby pro SharePoint Server potřebuje odpovídající oprávnění k replikaci změn do adresáře a správné fungování synchronizace profilů uživatelů serveru SharePoint. Chcete-li poskytnout tato oprávnění, přidejte účet služby, který se používá pro synchronizaci profilů uživatelů služby SharePoint, do skupiny *účty služby AAD DC* .
 
 Z virtuálního počítače pro správu Azure služba AD DS proveďte následující kroky:
 

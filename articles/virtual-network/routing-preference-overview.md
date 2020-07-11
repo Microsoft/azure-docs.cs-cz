@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193358"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187434"
 ---
 # <a name="what-is-routing-preference-preview"></a>Co je předvolby směrování (Preview)?
 
@@ -60,7 +60,7 @@ Veřejná IP adresa s volbou předvolby směrování "globální síť Microsoft
 * Azure Kubernetes Service (AKS)
 * Internetový nástroj pro vyrovnávání zatížení
 * Application Gateway
-* Brána Azure Firewall
+* Azure Firewall
 
 Pro úložiště primární koncové body vždy používají **globální síť Microsoft**. Můžete povolit sekundární koncové body s **internetem** podle vašeho výběru pro směrování provozu. Podporované služby úložiště:
 
@@ -88,7 +88,7 @@ Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Int
 
 Podpora předvoleb směrování je dostupná v následujících oblastech pro služby, jako je virtuální počítač a internetový nástroj pro vyrovnávání zatížení, který používá veřejnou IP adresu pro internetovou odchozí Severní Evropa, Západní Evropa, Francii jih, Velká Británie – jih, Východní USA, Střed USA – sever, Střed USA – jih, Západní USA, Středozápadní USA, jihovýchodní Asie, Německo – středozápad, Švýcarsko – západ, Japonsko – východ a Japonsko – západ.
 
-Podpora předvoleb směrování pro účet úložiště je k dispozici v následujících oblastech Azure – Francie – jih, Střed USA – sever, Středozápadní USA, Japonsko – východ, Japonsko – západ, Německo – středozápad a Švýcarsko – západ.
+Podpora předvoleb směrování pro účet úložiště je k dispozici v následujících oblastech Azure – Střed USA – sever, Středozápadní USA, Střed USA – jih Východní USA, Západní USA, Severní Evropa, Francie – jih, Německo – středozápad, Švýcarsko – západ, Jižní Východní Asie, Japonsko – východ a Japonsko – západ.
 ## <a name="limitations"></a>Omezení
 
 * Preference směrování je kompatibilní jenom se standardní SKU veřejné IP adresy. Základní SKU veřejné IP adresy se nepodporuje.

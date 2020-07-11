@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6b6da2a15441564ef0b67e76ee5a0e0c85839a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609312"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142404"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -94,9 +95,10 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
+| `$etag` | Standardní pole HTTP přiřazené webovým serverem |
 | `$conformance` | Výčet, který obsahuje stav shody tohoto digitálního*vlákna (v* *souladu*s nevyhovujícími, *Neznámý*) |
 | `{propertyName}` | Hodnota vlastnosti ve formátu JSON ( `string` , typ čísla nebo objekt) |
 | `$relationships` | Adresa URL cesty ke kolekci vztahů Toto pole chybí, pokud digitální vlákna neobsahuje žádné odchozí okraje vztahu. |
@@ -115,6 +117,7 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 ```json
 {
   "$dtId": "Cafe",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "Temperature": 72,
   "Location": {
     "x": 101,
@@ -159,9 +162,10 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Description |
+| Název pole | Popis |
 | --- | --- |
 | `$relationshipId` | Uživatelem zadaný řetězec představující ID tohoto vztahu. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `relationshipId` je jedinečný v kontextu instance digitálního vlákna Azure. |
+| `$etag` | Standardní pole HTTP přiřazené webovým serverem |
 | `$sourceId` | ID zdrojového digitálního vlákna |
 | `$targetId` | ID cílového digitálního vlákna |
 | `$relationshipName` | Název vztahu |

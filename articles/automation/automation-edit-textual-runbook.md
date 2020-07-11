@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836834"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186346"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Upravit textové Runbooky v Azure Automation
 
@@ -56,7 +57,7 @@ Tento článek poskytuje podrobné pokyny pro provádění různých funkcí v t
 1. V ovládacím prvku plátno textového editoru umístěte kurzor na místo, kam chcete umístit kód pro podřízený Runbook.
 2. Rozbalte uzel **assets (prostředky** ) v ovládacím prvku knihovna.
 3. Rozbalte uzel pro požadovaný typ prostředku.
-4. Klikněte pravým tlačítkem na název assetu, který chcete vložit, a vyberte **Přidat na plátno**. V případě [variabilních prostředků](automation-variables.md)vyberte **Přidat "získat proměnnou" na plátno** nebo **Přidat "nastavit proměnnou" na plátno**v závislosti na tom, zda chcete získat nebo nastavit proměnnou.
+4. Klikněte pravým tlačítkem na název assetu, který chcete vložit, a vyberte **Přidat na plátno**. V případě [variabilních prostředků](./shared-resources/variables.md)vyberte **Přidat "získat proměnnou" na plátno** nebo **Přidat "nastavit proměnnou" na plátno**v závislosti na tom, zda chcete získat nebo nastavit proměnnou.
 5. Všimněte si, že kód pro Asset je vložen do sady Runbook.
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Úprava Azure Automation sady Runbook pomocí prostředí Windows PowerShell
@@ -95,9 +96,9 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [Umožňuje spravovat Runbooky v Azure Automation](manage-runbooks.md).
 * [Školicí pracovní postup prostředí PowerShell](automation-powershell-workflow.md).
 * [Grafické vytváření v Azure Automation](automation-graphical-authoring-intro.md).
-* [Certifikáty](automation-certificates.md).
+* [Certifikáty](./shared-resources/certificates.md).
 * [Připojení](automation-connections.md).
-* [Přihlašovací údaje](automation-credentials.md).
-* [Plány](automation-schedules.md).
-* [Proměnné](automation-variables.md).
-* [Reference k rutinám prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* [Přihlašovací údaje](./shared-resources/credentials.md).
+* [Plány](./shared-resources/schedules.md).
+* [Proměnné](./shared-resources/variables.md).
+* [Reference k rutinám prostředí PowerShell](/powershell/module/az.automation/?view=azps-3.7.0#automation).

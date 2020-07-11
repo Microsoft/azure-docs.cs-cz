@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/18/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d987bbbe2a35dd24341b75d5663bab33d8c3bdb9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735026"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220248"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy protokol Secure LDAP v Azure Active Directory Domain Services
 
@@ -36,7 +36,7 @@ Pokud povolíte zabezpečený protokol LDAP, doporučujeme vytvořit další pra
 
 1. V Azure Portal vyhledejte a vyberte **skupiny zabezpečení sítě**.
 1. Zvolte skupinu zabezpečení sítě přidruženou k vaší spravované doméně, například *AADDS-contoso.com-NSG*, a pak vyberte **příchozí pravidla zabezpečení** .
-1. **+ Přidejte** pravidlo pro port TCP 636. V případě potřeby vyberte v okně možnost **Upřesnit** a vytvořte pravidlo.
+1. Vyberte **+ Přidat** a vytvořte pravidlo pro port TCP 636. V případě potřeby vyberte v okně možnost **Upřesnit** a vytvořte pravidlo.
 1. V části **zdroj**vyberte *IP adresy* z rozevírací nabídky. Zadejte zdrojové IP adresy, u kterých chcete udělit přístup pro zabezpečený přenos LDAP.
 1. Vyberte *jako* **cíl**a pak zadejte *636* pro **rozsahy cílových portů**.
 1. Nastavte **protokol** *TCP* a **akci** , která má být *povolena*.

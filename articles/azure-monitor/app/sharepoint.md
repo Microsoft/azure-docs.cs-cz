@@ -3,11 +3,12 @@ title: Monitorování webu SharePointu pomocí Application Insights
 description: Zahájení monitorování nové aplikace s novým klíčem instrumentace
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671439"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221047"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>Monitorování webu SharePointu pomocí Application Insights
 Služba Azure Application Insights monitoruje dostupnost, výkon a využití vaší aplikace. Zde se dozvíte, jak připravit prostředí pro web SharePointu.
@@ -48,18 +49,18 @@ Pokud můžete upravit stránku šablony daného webu, přidáte monitorování 
 
 Rezervujte si stránku šablony a upravte ji pomocí nástroje SharePoint Designer nebo jiného editoru.
 
-![](./media/sharepoint/03-master.png)
+![Snímek obrazovky, který ukazuje, jak upravit hlavní stránku pomocí návrháře správce nebo jiného editoru.](./media/sharepoint/03-master.png)
 
 Přidejte kód těsně před </head> Inteligentní. 
 
-![](./media/sharepoint/04-code.png)
+![Snímek obrazovky, který ukazuje, kde přidat kód na stránku webu.](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>Nebo na jednotlivé stránky
 Chcete-li monitorovat omezenou sadu stránek, přidejte skript jednotlivě na každou stránku. 
 
 Vložte webovou část a vložte do ní fragment kódu.
 
-![](./media/sharepoint/05-page.png)
+![Snímek obrazovky, který ukazuje přidání skriptu pro monitorování omezené sady stránek.](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>Zobrazení dat o aplikaci
 Znovu nasaďte aplikaci.
@@ -68,7 +69,7 @@ Vraťte se do okna vaší aplikace na webu [Azure Portal](https://portal.azure.c
 
 První události se zobrazí v hledání. 
 
-![](./media/sharepoint/09-search.png)
+![Snímek obrazovky zobrazující nová data, která lze zobrazit v aplikaci.](./media/sharepoint/09-search.png)
 
 Pokud očekáváte více dat, klikněte za několik sekund na Aktualizovat.
 
@@ -77,7 +78,7 @@ Standardní fragment kódu webové stránky nezachycuje ze SharePointu ID uživa
 
 1. Zkopírujte klíč instrumentace vaší aplikace z rozevíracího seznamu Základy ve službě Application Insights. 
 
-    ![](./media/sharepoint/02-props.png)
+    ![Snímek obrazovky, který ukazuje kopírování instrumentace aplikace z rozevíracího seznamu Essentials v Application Insights.](./media/sharepoint/02-props.png)
 
 1. Nahraďte klíč instrumentace za text „XXXX“ v následujícím fragmentu kódu. 
 2. Vložte skript do aplikaci SharePointu místo fragmentu kódu, který jste získali z portálu.

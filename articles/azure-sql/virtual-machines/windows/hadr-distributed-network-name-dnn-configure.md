@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae9b6bf41d90b0a9111414302b2eafea3c8332d3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965522"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169812"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Konfigurace distribuovaného síťového názvu pro FCI 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ V Azure Virtual Machines se název distribuované sítě (DNN) používá ke sm�
 
 V tomto článku se dozvíte, jak nakonfigurovat DNN pro směrování provozu do vaší FCIs pomocí SQL Server na virtuálních počítačích Azure pro zajištění vysoké dostupnosti a zotavení po havárii (HADR). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -81,6 +81,10 @@ Set-ClusterParameter -Name DnsName -Value FCIDNN
 
 Klienti budou nyní `FCIDNN` do svého připojovacího řetězce připojovat při připojování k SQL Server FCI. 
 
+   > [!WARNING]
+   > Neodstraňujte aktuální název virtuální sítě (VNN), protože se jedná o nezbytnou součást infrastruktury FCI. 
+
+
 ### <a name="rename-the-vnn"></a>Přejmenovat VNN 
 
 Pokud máte existující virtuální síť a chcete, aby klienti tuto hodnotu nadále používali pro připojení k SQL Server FCI, je nutné přejmenovat aktuální VNN na hodnotu zástupného symbolu. Po přejmenování aktuálního VNN můžete nastavit hodnotu názvu DNS pro DNN na VNN. 
@@ -122,7 +126,7 @@ Chcete-li aktualizovat možné vlastníky, použijte následující postup:
 
 ## <a name="restart-sql-server-instance"></a>Restartovat instanci SQL Server 
 
-K restartování instance SQL Server použijte Správce clusteru s podporou převzetí služeb při selhání. Postupujte následovně:
+K restartování instance SQL Server použijte Správce clusteru s podporou převzetí služeb při selhání. Postupujte takto:
 
 1. V Správce clusteru s podporou převzetí služeb při selhání přejít na prostředek SQL Server.
 1. Klikněte pravým tlačítkem na prostředek SQL Server a převeďte ho do offline režimu. 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84904588"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171138"
 ---
 # <a name="convert-to-image-directory"></a>Převod do adresáře obrázků
 
@@ -24,11 +24,15 @@ Tento článek popisuje, jak pomocí modulu příkazového adresáře převést 
 
 1.  Přidejte do experimentu modul **adresář pro převod do bitové kopie** . Tento modul můžete najít v kategorii "Počítačové zpracování obrazu/Image Transformation data" v seznamu modul. 
 
-2.  Připojte jako vstup datovou sadu obrázku. Ujistěte se prosím, že ve vstupní datové sadě je obrázek.
+2.  [Zaregistrujte datovou sadu obrázku](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) a připojte ji ke vstupnímu portu modulu. Ujistěte se prosím, že ve vstupní datové sadě je obrázek. 
     Podporovány jsou následující formáty datové sady:
 
     - Komprimovaný soubor v těchto rozšířeních:. zip,. tar,. gz,. bz2
     - Složka obsahující obrázky. **Velmi doporučujeme kompresi takových složek nejprve použít komprimovaný soubor jako datovou sadu**.
+
+    > [!WARNING]
+    > Modul **Import dat** **nelze** použít pro import datové sady imagí, protože výstupní typ modulu **importu dat** je adresář datového rámce, který obsahuje pouze řetězec cesty k souboru.
+    
 
     > [!NOTE]
     > Pokud používáte datovou sadu obrázků v dohledovém učení, je popisek povinný.
@@ -54,13 +58,13 @@ Výstup do adresářového **adresáře převést na Image** je ve formátu adre
 
 ###  <a name="expected-inputs"></a>Očekávané vstupy  
 
-| Name          | Typ                  | Description   |
+| Název          | Typ                  | Popis   |
 | ------------- | --------------------- | ------------- |
 | Vstupní datová sada | AnyDirectory, podřízený ZipFile | Vstupní datová sada |
 
 ###  <a name="output"></a>Výstup  
 
-| Name                   | Typ           | Description            |
+| Název                   | Typ           | Popis            |
 | ---------------------- | -------------- | ---------------------- |
 | Adresář výstupních imagí | ImageDirectory | Adresář výstupních imagí |
 

@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28f69d3ef8301e00b470ce09353be6ae3259bbe3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9658175b0d42db9acfc94d39e4ab226bfe2cfc4b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744961"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187315"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Správa proměnných v Azure Automation
 
@@ -44,31 +45,31 @@ Když vytvoříte proměnnou pomocí Azure Portal, je nutné zadat datový typ z
 * Logická hodnota
 * Null
 
-Proměnná není omezena na zadaný datový typ. Pokud chcete zadat hodnotu jiného typu, je nutné nastavit proměnnou pomocí prostředí Windows PowerShell. Pokud označíte `Not defined` , hodnota proměnné je nastavená na null. Hodnotu je nutné nastavit pomocí rutiny [set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) nebo interní `Set-AutomationVariable` rutiny.
+Proměnná není omezena na zadaný datový typ. Pokud chcete zadat hodnotu jiného typu, je nutné nastavit proměnnou pomocí prostředí Windows PowerShell. Pokud označíte `Not defined` , hodnota proměnné je nastavená na null. Hodnotu je nutné nastavit pomocí rutiny [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) nebo interní `Set-AutomationVariable` rutiny.
 
 Nemůžete použít Azure Portal k vytvoření nebo změně hodnoty pro komplexní typ proměnné. Pomocí Windows PowerShellu ale můžete zadat hodnotu libovolného typu. Komplexní typy jsou načteny jako [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject).
 
 Můžete uložit více hodnot do jedné proměnné tak, že vytvoříte pole nebo zatřiďovací tabulku a uložíte ji do proměnné.
 
 >[!NOTE]
->Proměnné názvu virtuálního počítače můžou být maximálně 80 znaků. Proměnné skupiny prostředků můžou mít maximálně 90 znaků. Viz [pravidla a omezení pojmenování pro prostředky Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules).
+>Proměnné názvu virtuálního počítače můžou být maximálně 80 znaků. Proměnné skupiny prostředků můžou mít maximálně 90 znaků. Viz [pravidla a omezení pojmenování pro prostředky Azure](../../azure-resource-manager/management/resource-name-rules.md).
 
 ## <a name="powershell-cmdlets-to-access-variables"></a>Rutiny PowerShellu pro přístup k proměnným
 
 Rutiny v následující tabulce vytvářejí a spravují proměnné automatizace pomocí PowerShellu. Dodávají se jako součást [AZ moduls](modules.md#az-modules).
 
-| Rutina | Description |
+| Rutina | Popis |
 |:---|:---|
-|[Get-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Načte hodnotu existující proměnné. Pokud je hodnota jednoduchý typ, je načten stejný typ. Pokud se jedná o komplexní typ, `PSCustomObject` načte se typ. <br>**Poznámka:**  Tuto rutinu nemůžete použít k načtení hodnoty šifrované proměnné. Jediným způsobem, jak to provést, je použít interní `Get-AutomationVariable` rutinu v konfiguraci sady Runbook nebo DSC. Viz [interní rutiny pro přístup k proměnným](#internal-cmdlets-to-access-variables). |
-|[New-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Vytvoří novou proměnnou a nastaví její hodnotu.|
-|[Remove-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| Odstraní existující proměnnou.|
-|[Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| Nastaví hodnotu pro existující proměnnou. |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable?view=azps-3.5.0) | Načte hodnotu existující proměnné. Pokud je hodnota jednoduchý typ, je načten stejný typ. Pokud se jedná o komplexní typ, `PSCustomObject` načte se typ. <br>**Poznámka:**  Tuto rutinu nemůžete použít k načtení hodnoty šifrované proměnné. Jediným způsobem, jak to provést, je použít interní `Get-AutomationVariable` rutinu v konfiguraci sady Runbook nebo DSC. Viz [interní rutiny pro přístup k proměnným](#internal-cmdlets-to-access-variables). |
+|[New-AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable?view=azps-3.5.0) | Vytvoří novou proměnnou a nastaví její hodnotu.|
+|[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable?view=azps-3.5.0)| Odstraní existující proměnnou.|
+|[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0)| Nastaví hodnotu pro existující proměnnou. |
 
 ## <a name="internal-cmdlets-to-access-variables"></a>Interní rutiny pro přístup k proměnným
 
 Interní rutiny v následující tabulce se používají pro přístup k proměnným v sadách Runbook a konfiguracích DSC. Tyto rutiny se dodávají s globálním modulem `Orchestrator.AssetManagement.Cmdlets` . Další informace najdete v tématu [interní rutiny](modules.md#internal-cmdlets).
 
-| Interní rutina | Description |
+| Interní rutina | Popis |
 |:---|:---|
 |`Get-AutomationVariable`|Načte hodnotu existující proměnné.|
 |`Set-AutomationVariable`|Nastaví hodnotu pro existující proměnnou.|
@@ -87,7 +88,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 Funkce v následující tabulce se používají pro přístup k proměnným v sadě Runbook Python 2.
 
-|Python 2 – funkce|Description|
+|Python 2 – funkce|Popis|
 |:---|:---|
 |`automationassets.get_automation_variable`|Načte hodnotu existující proměnné. |
 |`automationassets.set_automation_variable`|Nastaví hodnotu pro existující proměnnou. |
@@ -126,7 +127,7 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-Následující příklad ukazuje, jak vytvořit proměnnou se složitým typem a pak načíst jeho vlastnosti. V takovém případě se použije objekt virtuálního počítače z [Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) .
+Následující příklad ukazuje, jak vytvořit proměnnou se složitým typem a pak načíst jeho vlastnosti. V takovém případě se použije objekt virtuálního počítače z [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) .
 
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 285f5aabe32013a629eebb150e55ba343150f589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0880f697ceea9c10a070ede0a73235022ce0529d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734839"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220285"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Nasazení Azure Proxy aplikací služby AD pro zabezpečený přístup k interním aplikacím ve Azure Active Directory Domain Services spravované doméně
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak vytvořit a nakonfigurovat konektor Azure Prox
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
@@ -40,9 +40,9 @@ K dokončení tohoto článku potřebujete následující prostředky a oprávn�
 
 ## <a name="create-a-domain-joined-windows-vm"></a>Vytvoření virtuálního počítače s Windows připojeným k doméně
 
-Pokud chcete směrovat provoz do aplikací spuštěných ve vašem prostředí, nainstalujte komponentu konektoru Azure Proxy aplikací služby AD. Tento konektor Azure Proxy aplikací služby AD musí být nainstalovaný na virtuálních počítačích (VM) Windows serveru, které jsou připojené ke spravované doméně. U některých aplikací můžete nasadit víc serverů, na kterých je nainstalovaný konektor. Tato možnost nasazení poskytuje větší dostupnost a pomáhá zvládnout těžší ověřování.
+Pokud chcete směrovat provoz do aplikací spuštěných ve vašem prostředí, nainstalujte komponentu konektoru Azure Proxy aplikací služby AD. Tento konektor Azure Proxy aplikací služby AD musí být nainstalovaný na virtuálním počítači s Windows serverem, který je připojený ke spravované doméně. U některých aplikací můžete nasadit víc serverů, na kterých je nainstalovaný konektor. Tato možnost nasazení poskytuje větší dostupnost a pomáhá zvládnout těžší ověřování.
 
-Virtuální počítač, na kterém běží konektor Azure Proxy aplikací služby AD, musí být ve stejné nebo partnerské virtuální síti, ve které jste povolili Azure služba AD DS. Virtuální počítače, které pak hostují aplikace, které publikujete pomocí proxy aplikace, musí být nasazené taky na stejné službě Azure Virtual Network.
+Virtuální počítač, na kterém běží konektor Azure Proxy aplikací služby AD, musí být ve stejné nebo partnerské virtuální síti jako vaše spravovaná doména. Virtuální počítače, které pak hostují aplikace, které publikujete pomocí proxy aplikace, musí být nasazené taky na stejné službě Azure Virtual Network.
 
 Pokud chcete vytvořit virtuální počítač pro konektor Azure Proxy aplikací služby AD, proveďte následující kroky:
 
@@ -72,7 +72,7 @@ Když je virtuální počítač připravený k použití jako konektor Azure Pro
         > [!NOTE]
         > Globální účet správce použitý k registraci konektoru musí patřit do stejného adresáře, ve kterém povolíte službu proxy aplikací.
         >
-        > Pokud je například doména Azure AD *aaddscontoso.com*, globální správce by měl být `admin@aaddscontoso.com` nebo jiný platný alias v této doméně.
+        > Pokud je například doména Azure AD *contoso.com*, globální správce by měl být `admin@contoso.com` nebo jiný platný alias v této doméně.
 
    * Pokud je pro virtuální počítač, na který konektor instalujete, zapnutá konfigurace rozšířeného zabezpečení aplikace Internet Explorer, může být registrační obrazovka zablokovaná. Pokud chcete povolit přístup, postupujte podle pokynů v chybové zprávě nebo vypněte rozšířené zabezpečení aplikace Internet Explorer během procesu instalace.
    * Pokud se registrace konektoru nepovede, přečtěte si téma [řešení potíží s proxy aplikací](../active-directory/manage-apps/application-proxy-troubleshoot.md)

@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 344b3bb30c9a92046a5fbd13c35b0efc7e6f3a23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54def7f03e28acb201d613ab5a13d9077cff121b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560839"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146761"
 ---
 # <a name="how-to-create-an-index-for-multiple-languages-in-azure-cognitive-search"></a>Vytvoření indexu pro více jazyků v Azure Kognitivní hledání
 
@@ -52,6 +52,7 @@ Dotaz na index můžete z portálu pomocí [**Průzkumníka služby Search**](se
 
 Někdy není známý jazyk agenta, který vydává dotaz, a v takovém případě lze dotaz vydat pro všechna pole současně. V případě potřeby je možné pomocí [profilů vyhodnocování](index-add-scoring-profiles.md)definovat preference pro výsledky v určitém jazyce. V následujícím příkladu se shody zjištěné v popisu v angličtině budou v porovnání s výsledky v polštině a francouzštině vyhodnoceny jako vyšší:
 
+```http
     "scoringProfiles": [
       {
         "name": "englishFirst",
@@ -60,6 +61,7 @@ Někdy není známý jazyk agenta, který vydává dotaz, a v takovém případ�
         }
       }
     ]
+```
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2020-06-30`
 

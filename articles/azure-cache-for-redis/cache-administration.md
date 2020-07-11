@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: dfb760477fc528575212d79d929661c2276effbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 224436c155f1133621abede21878b49ebc9b3331
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079066"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185196"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Jak spravovat službu Azure cache pro Redis
 Toto téma popisuje, jak provádět úlohy správy, jako je třeba [restartování](#reboot) a [Plánování aktualizací](#schedule-updates) pro instance Redis v mezipaměti Azure.
@@ -34,9 +35,9 @@ Chcete-li restartovat jeden nebo více uzlů mezipaměti, vyberte požadované u
 
 Dopad na klientské aplikace se liší v závislosti na tom, které uzly se restartovaly.
 
-* **Hlavní** – když se hlavní uzel restartuje, Azure cache pro Redis převezme uzel repliky a propaguje ho do hlavní větve. Během tohoto převzetí služeb při selhání může dojít ke krátkému intervalu, během kterého může dojít k selhání připojení do mezipaměti.
+* **Hlavní** – když se restartuje primární uzel, Azure cache pro Redis převezme uzel repliky a propaguje ho na primární. Během tohoto převzetí služeb při selhání může dojít ke krátkému intervalu, během kterého může dojít k selhání připojení do mezipaměti.
 * **Replika** – při restartu uzlu repliky není obvykle nijak ovlivněno ukládání klientů do mezipaměti.
-* **Hlavní uzel i replika** – při restartu obou uzlů mezipaměti dojde k výpadku všech dat v mezipaměti a připojení k mezipaměti selže, dokud se primární uzel nevrátí zpět do režimu online. Pokud jste nakonfigurovali [Trvalost dat](cache-how-to-premium-persistence.md), obnoví se poslední záloha, když se mezipaměť vrátí zpět do režimu online, ale všechny zápisy do mezipaměti, ke kterým došlo po poslední záloze, se ztratí.
+* **Primární i replika** – při restartu obou uzlů mezipaměti se v mezipaměti ztratí všechna data a připojení k mezipaměti selže, dokud se primární uzel nevrátí zpět do režimu online. Pokud jste nakonfigurovali [Trvalost dat](cache-how-to-premium-persistence.md), obnoví se poslední záloha, když se mezipaměť vrátí zpět do režimu online, ale všechny zápisy do mezipaměti, ke kterým došlo po poslední záloze, se ztratí.
 * **Uzly mezipaměti Premium s povoleným clusteringem** – když restartujete jeden nebo víc uzlů mezipaměti Premium s povoleným clusteringem, chování pro vybrané uzly se shoduje s tím, jak restartujete odpovídající uzel nebo uzly, které nejsou v Clusterové mezipaměti.
 
 ## <a name="reboot-faq"></a>Nejčastější dotazy k restartování
@@ -46,7 +47,7 @@ Dopad na klientské aplikace se liší v závislosti na tom, které uzly se rest
 * [Je možné restartovat tuto mezipaměť pomocí PowerShellu, CLI nebo jiných nástrojů pro správu?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>Který uzel mám restartovat, aby se aplikace otestovala?
-Chcete-li otestovat odolnost vaší aplikace proti selhání primárního uzlu vaší mezipaměti, restartujte **Hlavní** uzel. Chcete-li otestovat odolnost vaší aplikace proti selhání sekundárního uzlu, restartujte uzel **repliky** . Chcete-li otestovat odolnost aplikace proti celkovému selhání mezipaměti, restartujte **oba** uzly.
+Chcete-li otestovat odolnost vaší aplikace proti selhání primárního uzlu vaší mezipaměti, restartujte **Hlavní** uzel. Chcete-li otestovat odolnost aplikace proti selhání uzlu repliky, restartujte uzel **repliky** . Chcete-li otestovat odolnost aplikace proti celkovému selhání mezipaměti, restartujte **oba** uzly.
 
 ### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>Můžu restartovat mezipaměť, aby se vymazala připojení klientů?
 Ano, Pokud restartujete mezipaměť, všechna připojení klientů budou vymazána. Restartování může být užitečné v případě, že se všechna připojení klientů využívala z důvodu chyby logiky nebo chyby v klientské aplikaci. Každá cenová úroveň má různá [omezení připojení klientů](cache-configure.md#default-redis-server-configuration) pro různé velikosti a po dosažení těchto limitů nejsou přijímána žádná další připojení klientů. Restartování mezipaměti poskytuje způsob, jak vymazat všechna připojení klientů.
@@ -59,7 +60,7 @@ Ano, Pokud restartujete mezipaměť, všechna připojení klientů budou vymazá
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Ztratím během restartování data z mezipaměti?
 Pokud restartujete **Hlavní** uzel i uzel **repliky** , může dojít ke ztrátě všech dat v mezipaměti (nebo v tomto horizontálních oddílů, pokud používáte mezipaměť Premium s povoleným clusteringem), ale není zaručena žádná z nich. Pokud jste nakonfigurovali [Trvalost dat](cache-how-to-premium-persistence.md), obnoví se poslední záloha, jakmile se mezipaměť vrátí zpět do režimu online, ale všechny zápisy do mezipaměti, ke kterým došlo po provedení zálohování, budou ztraceny.
 
-Pokud restartujete pouze jeden z uzlů, data se obvykle neztratí, ale přesto může být. Například pokud je hlavní uzel restartován a probíhá zápis do mezipaměti, dojde ke ztrátě dat z zápisu do mezipaměti. Dalším scénářem pro ztrátu dat by byl případ, že restartujete jeden uzel a druhý uzel přejde k výpadku z důvodu selhání ve stejnou dobu. Další informace o možných příčinách ztráty dat najdete v tématu [co se stalo s daty v Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
+Pokud restartujete pouze jeden z uzlů, data se obvykle neztratí, ale přesto může být. Například pokud je primární uzel restartován a probíhá zápis do mezipaměti, dojde ke ztrátě dat z zápisu do mezipaměti. Dalším scénářem pro ztrátu dat by byl případ, že restartujete jeden uzel a druhý uzel přejde k výpadku z důvodu selhání ve stejnou dobu. Další informace o možných příčinách ztráty dat najdete v tématu [co se stalo s daty v Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
 ### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Je možné restartovat tuto mezipaměť pomocí PowerShellu, CLI nebo jiných nástrojů pro správu?
 Ano, pokyny k prostředí PowerShell najdete v tématu [restart mezipaměti Azure pro Redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).

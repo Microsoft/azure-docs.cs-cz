@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d8229864acc80a27994ae3c795213dc2a65d22db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385565"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170118"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Konfigurace itsme OpenID Connect (OIDC) pomocí Azure Active Directory B2C
 
 Aplikace itsme Digital ID vám umožní bezpečně se přihlásit bez čtecího zařízení, hesla, dvojúrovňového ověřování nebo více kódů PIN. Aplikace itsme poskytuje silné ověřování zákazníků s ověřenou identitou. V tomto článku se dozvíte, jak integrovat ověřování Azure AD B2C pomocí itsme OpenID Connect (OIDC) pomocí zásad toku uživatele tajného kódu klienta.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli začít, budete potřebovat:
 
@@ -40,7 +40,7 @@ Abyste mohli začít, budete potřebovat:
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-|   |   |
+| Krok | Popis |
 |------|------|
 |1     | Na svém webu nebo v aplikaci zahrňte **Přihlaste se pomocí tlačítka itsme** , a to tak, že se Přizpůsobte v toku Azure AD B2C uživatele. Tok interakce se spustí, když uživatel klikne na toto tlačítko.  |
 |2     | Azure AD B2C spustí tok OpenID Connect odesláním žádosti o autorizaci do rozhraní API tajného kódu klienta itsme. K dispozici je také koncový bod známého/OpenID-Configuration obsahující informace o koncových bodech.  |
@@ -86,7 +86,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    | Adresa URL metadat | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>kde `<environment>` je buď `e2e` (testovací prostředí) nebo `prd` (produkční)  |
    | ClientID     | **ID klienta**, označované také jako **partnerský kód**  |
    | Tajný klíč klienta | Vaše **client_secret** |
-   | Rozsah  | Služba OpenID: e-mailový profil YOURSERVICECODE [telefon] [adresa]  |
+   | Obor  | Služba OpenID: e-mailový profil YOURSERVICECODE [telefon] [adresa]  |
    |Typ odpovědi | kód |
    |Režim odezvy | query |
    |Pomocný parametr domény | *Tohle můžete nechat prázdné.* |

@@ -9,11 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 1cb70109657343f41a1b3a19f3426377d97e261e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d59ca60c7f90c227885927086511bd1f8ac7ca1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830119"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185836"
 ---
 # <a name="encryption-of-secure-assets-in-azure-automation"></a>Šifrování zabezpečených prostředků ve službě Azure Automation
 
@@ -51,12 +52,12 @@ Než povolíte klíče spravované zákazníkem pro účet Automation, musíte z
 
  - Klíč zákazníka-spravovaných je uložený v Azure Key Vault. 
  - V trezoru klíčů povolte jak **obnovitelné odstranění** , tak i **nemazatelné** vlastnosti. Tyto funkce jsou nutné k povolení obnovení klíčů v případě náhodného odstranění.
- - Šifrování Azure Automation podporuje jenom klíče RSA. Další informace o klíčích najdete v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys).
+ - Šifrování Azure Automation podporuje jenom klíče RSA. Další informace o klíčích najdete v tématu [informace o Azure Key Vaultch klíčích, tajných klíčích a certifikátech](../key-vault/general/about-keys-secrets-certificates.md).
 - Účet Automation a trezor klíčů můžou být v různých předplatných, ale musí být ve stejném Azure Active Directory tenantovi.
 
 ### <a name="assignment-of-an-identity-to-the-automation-account"></a>Přiřazení identity k účtu Automation
 
-Pokud chcete používat klíče spravované zákazníkem s účtem Automation, váš účet Automation musí ověřovat proti trezoru klíčů, který ukládá klíče spravované zákazníkem. Azure Automation používá spravované identity přiřazené systémem k ověření účtu s Azure Key Vault. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Pokud chcete používat klíče spravované zákazníkem s účtem Automation, váš účet Automation musí ověřovat proti trezoru klíčů, který ukládá klíče spravované zákazníkem. Azure Automation používá spravované identity přiřazené systémem k ověření účtu s Azure Key Vault. Další informace o spravovaných identitách najdete v tématu [co jsou spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md)
 
 Nakonfigurujte spravovanou identitu přiřazenou systémem na účet Automation pomocí následujícího REST API volání:
 
@@ -184,7 +185,7 @@ Otáčení klíče neaktivuje opětovné šifrování zabezpečených prostředk
 
 ## <a name="revocation-of-access-to-a-customer-managed-key"></a>Odvolání přístupu k klíči spravovanému zákazníkem
 
-K odvolání přístupu k klíčům spravovaným zákazníkem použijte PowerShell nebo Azure CLI. Další informace najdete v tématu [Azure Key Vault PowerShellu](https://docs.microsoft.com/powershell/module/az.keyvault/) nebo rozhraní příkazového [řádku Azure Key Vault](https://docs.microsoft.com/cli/azure/keyvault). Odvolání přístupu efektivně blokuje přístup ke všem zabezpečeným prostředkům v účtu Automation, protože šifrovací klíč je nepřístupný Azure Automation.
+K odvolání přístupu k klíčům spravovaným zákazníkem použijte PowerShell nebo Azure CLI. Další informace najdete v tématu [Azure Key Vault PowerShellu](/powershell/module/az.keyvault/) nebo rozhraní příkazového [řádku Azure Key Vault](/cli/azure/keyvault). Odvolání přístupu efektivně blokuje přístup ke všem zabezpečeným prostředkům v účtu Automation, protože šifrovací klíč je nepřístupný Azure Automation.
 
 ## <a name="next-steps"></a>Další kroky
 

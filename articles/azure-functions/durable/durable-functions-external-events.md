@@ -4,11 +4,12 @@ description: Naučte se zpracovávat externí události v rozšíření Durable 
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76262958"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165545"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Zpracování externích událostí v Durable Functions (Azure Functions)
 
@@ -19,7 +20,7 @@ Funkce nástroje Orchestrator mají možnost čekat a naslouchat externím udál
 
 ## <a name="wait-for-events"></a>Počkat na události
 
-`WaitForExternalEvent`Metody (.NET) a `waitForExternalEvent` (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger) umožňují, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
+Metody [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET) a `waitForExternalEvent` (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger) umožňují, aby funkce Orchestrator asynchronně čekala a naslouchala externí události. Naslouchající funkce Orchestrator deklaruje *název* události a *tvar dat* , která očekává k přijetí.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -172,7 +173,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>Odesílání událostí
 
-`RaiseEventAsync`Metoda (.NET) nebo `raiseEvent` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) odesílá události, `WaitForExternalEvent` pro které (.NET) nebo `waitForExternalEvent` (JavaScript) čeká.  `RaiseEventAsync`Metoda přijímá jako parametry *EventName* a *eventData* . Data události musí být serializovatelný v kódu JSON.
+Můžete použít metody [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.NET) nebo `raiseEventAsync` (JavaScript) k odeslání externí události do orchestrace. Tyto metody jsou zpřístupněny prostřednictvím vazby [klienta Orchestration](durable-functions-bindings.md#orchestration-client) . K odeslání externí události do orchestrace můžete také použít integrované [rozhraní HTTP API události vyvolání](durable-functions-http-api.md#raise-event) .
+
+Vyvolaná událost zahrnuje *ID instance*, *EventName*a *eventData* jako parametry. Funkce Orchestrator zpracovává tyto události pomocí `WaitForExternalEvent` rozhraní API (.NET) nebo `waitForExternalEvent` (JavaScript). Aby bylo možné zpracovat událost, je nutné, aby se *EventName* shodovala na koncích odesílání i přijímání. Data události musí být také JSON-serializovatelný.
+
+Interně, mechanismy vyvolání události zařadí do fronty zprávu, která se vybrala čekající funkcí Orchestrator. Pokud instance nečeká na zadaný *název události,* zpráva události se přidá do fronty v paměti. Pokud instance orchestrace později začne naslouchat tomuto *názvu události,* zkontroluje ve frontě zprávy o událostech.
+
+> [!NOTE]
+> Pokud není k dispozici žádná instance orchestrace se zadaným *ID instance*, zpráva události bude zahozena.
 
 Níže je uvedená příklad funkce aktivované frontou, která odesílá událost schválení do instance funkce Orchestrator. ID instance Orchestration pochází z těla zprávy fronty.
 
@@ -208,6 +216,19 @@ Interně, `RaiseEventAsync` (.NET) nebo `raiseEvent` (JavaScript) zařadí do fr
 
 > [!NOTE]
 > Pokud není k dispozici žádná instance orchestrace se zadaným *ID instance*, zpráva události bude zahozena.
+
+### <a name="http"></a>HTTP
+
+Následuje příklad požadavku HTTP, který vyvolává událost schválení instance orchestrace. 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+V tomto případě je ID instance pevně zakódované jako *MyInstanceId*.
 
 ## <a name="next-steps"></a>Další kroky
 

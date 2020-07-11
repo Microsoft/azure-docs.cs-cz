@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 146cf01d99ccc00a972c98128d8e93e1ed5fb690
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830765"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185700"
 ---
 # <a name="query-update-management-logs"></a>Dotazování na protokoly Update Managementu
 
@@ -37,9 +38,9 @@ Vytvoří se záznam s typem `RequiredUpdate` , který představuje aktualizace 
 | SourceSystem | *OperationsManager* | 
 | TenantId | Jedinečný identifikátor, který představuje instanci vaší organizace Azure Active Directory. | 
 | TimeGenerated | Datum a čas vytvoření záznamu | 
-| Typ | *Aktualizace* | 
-| UpdateClassification | Určuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *Nástroje*<br> *Aktualizace*. Pro Linux:<br> *Důležité aktualizace a aktualizace zabezpečení*<br> *Jiné* |
-| UpdateSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Pokročilé*<br> *Nízká* |
+| Type | *Aktualizace* | 
+| UpdateClassification | Určuje typ aktualizací, které lze použít. Ve Windows:<br> *Důležité aktualizace*<br> *Aktualizace zabezpečení*<br> *Kumulativní aktualizace*<br> *Balíčky funkcí*<br> *Aktualizace Service Pack*<br> *Aktualizace definic*<br> *Nástroje*<br> *Aktualizace*. Pro Linux:<br> *Důležité aktualizace a aktualizace zabezpečení*<br> *Další* |
+| UpdateSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> *Kritické*<br> *Důležité upozornění*<br> *Pokročilé*<br> *Nízké* |
 | UpdateTitle | Název aktualizace|
 
 ### <a name="query-update-record"></a>Záznam aktualizace dotazu
@@ -54,7 +55,7 @@ Vytvoří se záznam s typem `Update` , který představuje dostupné aktualizac
 | Počítač | Plně kvalifikovaný název domény počítače pro vytváření sestav. |
 | ComputerEnvironment | Hlediska. Možné hodnoty jsou Azure nebo mimo Azure. |
 | MSRCBulletinID | Číslo ID bulletinu zabezpečení | 
-| MSRCSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> Kritické<br> Důležité<br> Pokročilé<br> Nízká |  
+| MSRCSeverity | Hodnocení závažnosti pro chybu zabezpečení. Hodnoty jsou:<br> Kritické<br> Důležité<br> Pokročilé<br> Nízké |  
 | KBID | ID článku znalostní báze pro Windows Update |
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
 | UpdateID | Jedinečný identifikátor aktualizace softwaru. |
@@ -62,7 +63,7 @@ Vytvoří se záznam s typem `Update` , který představuje dostupné aktualizac
 | Volitelné | True, pokud je záznam volitelný, nebo jinak false. | 
 | RebootBehavior | Chování při restartování po instalaci nebo odinstalaci aktualizace. |
 | _ResourceId | Jedinečný identifikátor prostředku přidruženého k záznamu |
-| Typ | Typ záznamu Hodnota je aktualizovat. |
+| Type | Typ záznamu Hodnota je aktualizovat. |
 | VMUUID | Jedinečný identifikátor pro virtuální počítač. |
 | MG | Jedinečný identifikátor pro skupinu pro správu nebo pracovní prostor Log Analytics. | 
 | TenantId | Jedinečný identifikátor, který představuje instanci Azure Active Directory vaší organizace. | 
@@ -76,7 +77,7 @@ Vytvoří se záznam s typem `Update` , který představuje dostupné aktualizac
 | SubscriptionId | Jedinečný identifikátor předplatného Azure. | 
 | ResourceGroup | Název skupiny prostředků, do které prostředek patří | 
 | ResourceProvider | Poskytovatel prostředků. | 
-| Prostředek | Název prostředku. | 
+| Resource | Název prostředku. | 
 | ResourceType | Typ prostředku. | 
 
 ### <a name="query-update-agent-record"></a>Záznam agenta aktualizace dotazu
@@ -96,7 +97,7 @@ Vytvoří se záznam s typem `UpdateAgent` , který poskytuje podrobnosti o agen
 | SourceSystem | Zdrojový systém záznamu Hodnota je `OperationsManager` . | 
 | TenantId | Jedinečný identifikátor, který představuje instanci Azure Active Directory vaší organizace. |
 | TimeGenerated | Datum a čas vytvoření záznamu. |
-| Typ | Typ záznamu Hodnota je aktualizovat. | 
+| Type | Typ záznamu Hodnota je aktualizovat. | 
 | WindowsUpdateAgentVersion | Verze agenta web Windows Update. |
 | WSUSServer | Chyby, pokud má agent web Windows Update problém, který vám pomůže při řešení potíží. |
 
@@ -116,7 +117,7 @@ Vytvoří se záznam s typem `UpdateRunProgress` , který poskytuje stav nasazen
 | ManagementGroupName | Název Operations Manager skupiny pro správu nebo pracovního prostoru Log Analytics. |
 | OSType | Typ operačního systému. Hodnoty jsou Windows nebo Linux. | 
 | Produkt | Produkty, pro které je aktualizace platná. |
-| Prostředek | Název prostředku. | 
+| Resource | Název prostředku. | 
 | ResourceId | Jedinečný identifikátor prostředku přidruženého k záznamu |
 | ResourceProvider | Poskytovatel prostředků. | 
 | ResourceType | Typ prostředku. | 
@@ -127,7 +128,7 @@ Vytvoří se záznam s typem `UpdateRunProgress` , který poskytuje stav nasazen
 | SucceededOnRetry | Hodnota označující, zda se při prvním pokusu spuštění aktualizace nezdařila, a aktuální operace je pokus o opakování. |
 | TimeGenerated | Datum a čas vytvoření záznamu. |
 | Nadpis | Název aktualizace |
-| Typ | Typ aktualizace. Hodnota je `UpdateRunProgress` . |
+| Type | Typ aktualizace. Hodnota je `UpdateRunProgress` . |
 | UpdateID naformátovat | Jedinečný identifikátor aktualizace softwaru. |
 | VMUUID | Jedinečný identifikátor pro virtuální počítač. |
 | ResourceId | Jedinečný identifikátor prostředku přidruženého k záznamu |
@@ -147,7 +148,7 @@ Vytvoří se záznam s typem `UpdateSummary` , který poskytuje souhrn aktualiza
 | OldestMissingSecurityUpdateInDays | Celkový počet dní pro nejstarší aktualizaci, která se zjistila jako platná, která není nainstalovaná. |
 | OsVersion | Verze operačního systému. |
 | OtherUpdatesMissing | Počet chybějících zjištěných aktualizací |
-| Prostředek | Název prostředku pro záznam | 
+| Resource | Název prostředku pro záznam | 
 | ResourceGroup | Název skupiny prostředků, která obsahuje prostředek. |
 | ResourceId | Jedinečný identifikátor prostředku přidruženého k záznamu |
 | ResourceProvider | Poskytovatel prostředků. |
@@ -159,7 +160,7 @@ Vytvoří se záznam s typem `UpdateSummary` , který poskytuje souhrn aktualiza
 | SubscriptionId | Jedinečný identifikátor předplatného Azure. |
 | TimeGenerated | Datum a čas vytvoření záznamu. |
 | TotalUpdatesMissing | Celkový počet chybějících aktualizací, které jsou k dispozici. | 
-| Typ | Typ záznamu Hodnota je `UpdateSummary` . |
+| Type | Typ záznamu Hodnota je `UpdateSummary` . |
 | VMUUID | Jedinečný identifikátor pro virtuální počítač. |
 | WindowsUpdateAgentVersion | Verze agenta web Windows Update. |
 | WindowsUpdateSetting | Stav agenta web Windows Update. Možné hodnoty:<br> `Scheduled installation`<br> `Notify before installation`<br> `Error returned from unhealthy WUA agent` | 
@@ -193,7 +194,7 @@ Na počítači s Windows můžete zkontrolovat následující informace a ověř
 1. V Ovládacích panelech otevřete **Microsoft Monitoring Agent**. Na kartě **Azure Log Analytics** se v agentovi zobrazí následující zpráva: **Microsoft Monitoring Agent se úspěšně připojil k Log Analytics**.
 2. Otevřete protokol událostí systému Windows. V části **Application and Services Logs\Operations Manager** vyhledejte události ID 3000 a id události 5002 ze zdrojového **konektoru služby**. Tyto události znamenají, že se počítač zaregistroval do pracovního prostoru služby Log Analytics a přijímá konfiguraci.
 
-Pokud Agent nemůže komunikovat s protokoly Azure Monitor a Agent je nakonfigurován pro komunikaci s internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Informace o tom, jak ověřit, jestli je brána firewall nebo proxy server správně nakonfigurovaná, najdete v tématu [Konfigurace sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfiguraci sítě pro agenta Linux](../log-analytics/log-analytics-agent-linux.md).
+Pokud Agent nemůže komunikovat s protokoly Azure Monitor a Agent je nakonfigurován pro komunikaci s internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Informace o tom, jak ověřit, jestli je brána firewall nebo proxy server správně nakonfigurovaná, najdete v tématu [Konfigurace sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfiguraci sítě pro agenta Linux](../azure-monitor/learn/quick-collect-linux-computer.md).
 
 > [!NOTE]
 > Pokud jsou vaše systémy Linux nakonfigurované pro komunikaci s proxy serverem nebo Log Analytics bránou a povolujete Update Management, aktualizujte `proxy.conf` oprávnění tak, aby skupině omiuser udělil oprávnění ke čtení souboru pomocí následujících příkazů:
@@ -408,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podrobnosti o protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../log-analytics/log-analytics-log-searches.md).
+* Podrobnosti o protokolech Azure Monitor najdete v tématu [protokoly Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 * Nápovědu k výstrahám najdete v tématu [Konfigurace výstrah](automation-tutorial-update-management.md#configure-alerts).

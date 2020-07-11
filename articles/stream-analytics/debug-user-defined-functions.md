@@ -1,18 +1,18 @@
 ---
 title: Ladění uživatelem definovaných funkcí v Azure Stream Analytics
 description: Tento článek popisuje, jak ladit uživatelsky definované funkce v Azure Stream Analytics.
-author: mamccrea
-ms.author: mamccrea
+author: jenssuessmeyer
+ms.author: jenss
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: a6c2e390af39b496a871ae9b5799288ea3609bca
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 46aa9879af4bda1cd4a5e06894ea2d964f838f32
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981499"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181348"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>Ladění uživatelem definovaných funkcí v Azure Stream Analytics 
 
@@ -48,7 +48,7 @@ Vzhledem k tomu, že žádná podpora ladění pro funkce JavaScriptu v Stream A
 
 Následující příklad ukazuje, jak ladit JavaScript UDF s určitými omezeními v integrovaném běhovém prostředí v [Visual Studio Code](quick-create-vs-code.md).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že Azure Stream Analytics projekt obsahuje následující položky:
 

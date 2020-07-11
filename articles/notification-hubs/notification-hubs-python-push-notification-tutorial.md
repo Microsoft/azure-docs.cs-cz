@@ -17,11 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561183"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220061"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Použití Notification Hubs z Pythonu
 
@@ -382,7 +383,7 @@ Spuštění kódu Pythonu by mělo mít na cílovém zařízení zobrazeno ozná
 
 Pokud povolíte příznak ladění při inicializaci NotificationHub, zobrazí se detailní požadavek HTTP a výpis odpovědí a také NotificationOutcome podobný následujícímu, kde můžete zjistit, jaké hlavičky protokolu HTTP se v požadavku předávají a jaká odpověď HTTP byla přijata z centra oznámení:
 
-![][1]
+![Snímek obrazovky konzoly s podrobnostmi o požadavku H T T P a výpisu odpovědí a zpráv o výsledku oznámení, které jsou červeně označeny.][1]
 
 Vidíte například podrobný výsledek centra oznámení.
 
@@ -403,7 +404,7 @@ Všimněte si hlaviček, které se odesílají při odesílání oznámení info
 hub.send_windows_notification(wns_payload)
 ```
 
-![][2]
+![Snímek obrazovky konzoly s podrobnostmi o požadavku H T T P a formátem Service Bus oznámení a hodnotami typu X W N S červeně.][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Odeslat oznámení s určením značky (nebo výrazu značky)
 
@@ -413,7 +414,7 @@ Všimněte si hlavičky značek HTTP, které se přidají do požadavku protokol
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![][3]
+![Snímek obrazovky konzoly s podrobnostmi o požadavku H T T P a formátu oznámení Service Bus, Service Bus značek oznámení a hodnotách typu X W N S zobrazeným červeně.][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Odeslat oznámení s určením více značek
 
@@ -424,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![][4]
+![Snímek obrazovky konzoly s podrobnostmi o požadavku H T T P a formátu oznámení Service Bus, Service Bus značek oznámení a hodnotách typu X W N S zobrazeným červeně.][4]
 
 ### <a name="templated-notification"></a>Oznámení v šabloně
 
@@ -443,7 +444,7 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![][5]
+![Snímek obrazovky konzoly s podrobnostmi o požadavku H T T P a typem obsahu a hodnotami formátu oznámení Service Bus červeně.][5]
 
 ## <a name="next-steps"></a>Další kroky
 

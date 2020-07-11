@@ -2,14 +2,14 @@
 title: Nasazení skupiny kontejnerů do služby Azure Virtual Network
 description: Naučte se, jak nasadit skupinu kontejnerů do nové nebo existující virtuální sítě Azure pomocí rozhraní příkazového řádku Azure.
 ms.topic: article
-ms.date: 04/29/2020
+ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: 7e54690efc7955eaaa88ca87a6f7a086dd3e19a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5a0e15b2e65be45e7f77e401b912ef7b784519b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583638"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169591"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejnerů do virtuální sítě Azure
 
@@ -77,7 +77,7 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-Výstup zobrazí IP adresu skupiny kontejnerů v privátní podsíti. Příklad:
+Výstup zobrazí IP adresu skupiny kontejnerů v privátní podsíti. Například:
 
 ```console
 10.0.0.4
@@ -142,7 +142,7 @@ Ukázkový výstup:
 Jakmile budete mít ID profilu sítě, zkopírujte následující YAML do nového souboru s názvem *VNet-Deploy-ACI. yaml*. V části `networkProfile` nahraďte `id` hodnotu hodnotou ID, kterou jste právě načetli, a pak soubor uložte. Tento YAML vytvoří ve vaší virtuální síti skupinu kontejnerů s názvem *appcontaineryaml* .
 
 ```YAML
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 location: westus
 name: appcontaineryaml
 properties:

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830578"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185649"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Sledování aktualizovaných souborů pomocí úlohy sledovacího procesu
 
@@ -20,7 +20,7 @@ Azure Automation používá úlohu sledovacího procesu k vyhledání událostí
 > Úlohy sledovacího procesu nejsou podporované v Azure Čína Vianet 21.
 
 > [!IMPORTANT]
-> Od května 2020 je pro použití Azure Logic Apps podporovaný způsob, jak monitorovat události, plánovat opakující se úlohy a aktivovat akce. Přečtěte si téma [plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů s Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
+> Od května 2020 je pro použití Azure Logic Apps podporovaný způsob, jak monitorovat události, plánovat opakující se úlohy a aktivovat akce. Přečtěte si téma [plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů s Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 V tomto kurzu se seznámíte s vytvořením úlohy sledovacího procesu, který se bude monitorovat při přidání nového souboru do adresáře. Získáte informace o těchto tématech:
 
@@ -32,12 +32,12 @@ V tomto kurzu se seznámíte s vytvořením úlohy sledovacího procesu, který 
 > * Aktivace sledovacího procesu
 > * Kontrola výstupu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet služby Automation](automation-offering-get-started.md) , který bude obsahovat sledovací proces a runbooky akcí a úlohu sledovacího procesu.
+* [Účet služby Automation](./index.yml) , který bude obsahovat sledovací proces a runbooky akcí a úlohu sledovacího procesu.
 * [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) , ve kterém je spuštěna úloha sledovacího procesu.
 * PowerShellové Runbooky. Úlohy sledovacích procesů nepodporují Runbooky pracovního postupu PowerShellu.
 
@@ -61,7 +61,7 @@ Tento Runbook můžete také naimportovat do účtu Automation z portálu pomoc�
 
 ## <a name="create-an-automation-variable"></a>Vytvoření proměnné automatizace
 
-[Proměnná automatizace](automation-variables.md) slouží k ukládání časových razítek, která předchozí sada Runbook čte a ukládá z každého souboru.
+[Proměnná automatizace](./shared-resources/variables.md) slouží k ukládání časových razítek, která předchozí sada Runbook čte a ukládá z každého souboru.
 
 1. V části **sdílené prostředky** vyberte **proměnné** a klikněte na **+ přidat proměnnou**.
 1. Jako název zadejte Watch-NewFileTimestamp.

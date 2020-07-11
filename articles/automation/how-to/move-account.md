@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3cfc63b29b51b70cb41c476c49bc17f5e9cbd308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746621"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185547"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Přesunutí účtu Azure Automation do jiného předplatného
 
@@ -40,7 +41,7 @@ Pokud chcete odpojit svůj pracovní prostor od svého účtu Automation, musít
 
     ![Snímek obrazovky odstranění prostředků funkce z Azure Portal](../media/move-account/delete-solutions.png)
 
-Pokud budete chtít, můžete prostředky odstranit pomocí rutiny [Remove-AzResource](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) :
+Pokud budete chtít, můžete prostředky odstranit pomocí rutiny [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) :
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -79,7 +80,7 @@ Pro Start/Stop VMs during off-hours musíte také odebrat pravidla upozornění 
 
     ![Snímek stránky skupiny akcí](../media/move-account/delete-action-group.png)
 
-Pokud budete chtít, můžete odstranit skupinu akcí pomocí rutiny [Remove-AzActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) :
+Pokud budete chtít, můžete odstranit skupinu akcí pomocí rutiny [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) :
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
@@ -146,7 +147,7 @@ Po opětovném vytvoření účtů spustit jako je nutné znovu povolit funkce, 
 
 Po dokončení přesunu ověřte, že jsou povolené níže uvedené možnosti. 
 
-|Schopnost|Testy|Řešení potíží|
+|Schopnost|Testy|Odstraňování potíží|
 |---|---|---|
 |Runbooky|Sada Runbook může úspěšně běžet a připojovat se k prostředkům Azure.|[Řešení potíží s runbooky](../troubleshoot/runbooks.md)
 |Správa zdrojového kódu|Můžete spustit ruční synchronizaci v úložišti správy zdrojového kódu.|[Integrace správy zdrojového kódu](../source-control-integration.md)|

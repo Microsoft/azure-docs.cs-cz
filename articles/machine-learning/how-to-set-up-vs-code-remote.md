@@ -1,5 +1,5 @@
 ---
-title: 'Interaktivní ladění: VS Code & ML výpočetních instancí'
+title: 'Interaktivní ladění: VS Code & ML výpočetních instancí (Preview)'
 titleSuffix: Azure Machine Learning
 description: Nastavte VS Code vzdálené na interaktivní ladění kódu pomocí Azure Machine Learning.
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 12/09/2019
-ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 46aefa62ab00c0b3bc2b90467a9fafd61439a10e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433134"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203446"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktivně se ladit na Azure Machine Learning výpočetní instanci s VS Code Vzdálená
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>Interaktivní ladění na Azure Machine Learning výpočetní instanci s VS Codem vzdáleným zobrazením (Preview)
 
 V tomto článku se dozvíte, jak nastavit Visual Studio Code vzdáleně na instanci služby Azure Machine Learning COMPUTE, abyste mohli **interaktivně ladit kód** z vs Code. 
 
@@ -85,10 +86,10 @@ Host azmlci1
 
 Zde jsou některé podrobnosti o polích: 
 
-|Pole|Description|
+|Pole|Popis|
 |----|---------|
 |Hostitel|Použijte libovolné zkratky, které chcete použít pro instanci služby Compute. |
-|HostName|Toto je IP adresa instance Compute. |
+|Název hostitele|Toto je IP adresa instance Compute. |
 |Port|Toto je port zobrazený v dialogovém okně SSH výše. |
 |Uživatel|To je nutné `azureuser` |
 |IdentityFile|Měl by odkazovat na soubor, kam jste uložili soukromý klíč. |

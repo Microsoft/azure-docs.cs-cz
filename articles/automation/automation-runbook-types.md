@@ -5,17 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836562"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185921"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation typy runbooků
 
 Funkce automatizace procesu Azure Automation podporuje několik typů sad Runbook, jak je definováno v následující tabulce. Další informace o prostředí automatizace procesu naleznete v tématu [Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
 
-| Typ | Description |
+| Typ | Popis |
 |:--- |:--- |
 | [Grafický](#graphical-runbooks)|Grafická sada Runbook založená na prostředí Windows PowerShell a vytvořena a upravována zcela v grafickém editoru v Azure Portal. |
 | [Grafický pracovní postup PowerShellu](#graphical-runbooks)|Grafická sada Runbook založená na pracovním postupu prostředí Windows PowerShell a vytvořená a upravená úplně v grafickém editoru v Azure Portal. |
@@ -67,15 +68,15 @@ Runbooky PowerShellu jsou založené na Windows PowerShellu. Kód sady Runbook m
 * Je nutné znát prostředí PowerShell Scripting.
 * Runbooky nemůžou použít [paralelní zpracování](automation-powershell-workflow.md#use-parallel-processing) k paralelnímu provádění více akcí.
 * Runbooky nemůžou použít [kontrolní body](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) k obnovení Runbooku, pokud dojde k chybě.
-* Pomocí rutiny [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) můžete zahrnout jenom Runbooky pracovního postupu PowerShellu a grafické Runbooky jako podřízené Runbooky. tím se vytvoří nová úloha.
+* Pomocí rutiny [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) můžete zahrnout jenom Runbooky pracovního postupu PowerShellu a grafické Runbooky jako podřízené Runbooky. tím se vytvoří nová úloha.
 
 ### <a name="known-issues"></a>Známé problémy
 
 Tady jsou uvedené aktuální známé problémy s Runbooky PowerShellu:
 
-* Runbooky PowerShellu nemůžou načíst nešifrovaný [variabilní prostředek](automation-variables.md) s hodnotou null.
+* Runbooky PowerShellu nemůžou načíst nešifrovaný [variabilní prostředek](./shared-resources/variables.md) s hodnotou null.
 * Runbooky PowerShellu nemůžou v názvu načíst variabilní prostředek `*~*` .
-* Operace [GET-Process](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) ve smyčce v Runbooku PowerShellu může po přibližně 80 iterací selhat.
+* Operace [GET-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) ve smyčce v Runbooku PowerShellu může po přibližně 80 iterací selhat.
 * PowerShellový Runbook může selhat, pokud se pokusí zapisovat velké množství dat do výstupního datového proudu najednou. Tento problém můžete obvykle obejít tak, že výstup Runbooku vydáte jenom informace potřebné pro práci s velkými objekty. Například namísto použití `Get-Process` bez omezení můžete mít výstup rutiny pouze požadované parametry, jako v `Get-Process | Select ProcessName, CPU` .
 
 ## <a name="powershell-workflow-runbooks"></a>Runbooky pracovních postupů PowerShellu

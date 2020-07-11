@@ -13,11 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: c05b62b254320bd56a6f0591f1edbe32d5362e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 721dffcaea64e949ac7a5230e24f3aa37261fa9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514720"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206486"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrace dat z řady StorSimple 5000-7000 na zařízení 8000 series
 
@@ -40,21 +41,21 @@ Data můžete přesunout pomocí funkce migrace nebo pomocí migrace na straně 
 
 Funkce migrace simuluje proces zotavení po havárii (DR) z řady 7000/5000 až 8000 řady. Tato funkce umožňuje migrovat data z 5000/7000 formátu série do formátu 8000 Series v Azure. Proces migrace se iniciuje pomocí nástroje pro migraci StorSimple. Nástroj spustí stahování a převod metadat zálohování na zařízení řady 8000 a potom použije poslední zálohu k vystavení svazků na zařízení.
 
-|      | Výhody                                                                                                                                     |Nevýhody                                                                                                                                                              |
-|------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Proces migrace zachovává historii záloh, které byly pořízeny na 5000/7000 Series.                                               | Když se uživatelé pokusí o přístup k datům, Tato migrace stáhne data z Azure, takže budou mít náklady na stažení dat.                                     |
-| 2.   | Na straně hostitele nejsou migrována žádná data.                                                                                                     | Proces vyžaduje prostoje mezi začátkem zálohování a poslední zálohou, která je v řadě 8000 (dá se odhadnout pomocí nástroje pro migraci). |
-| 3.   | Tento proces zachovává všechny zásady, šablony šířky pásma, šifrování a další nastavení na zařízeních řady 8000.                      | Uživatelský přístup vrátí pouze data, ke kterým uživatelé přistupují, a nebude znovu vypínat celou datovou sadu.                                                  |
-| 4.   | Tento proces vyžaduje další čas k převedení všech starších záloh v Azure, které se provádí asynchronně, aniž by to mělo dopad na produkční prostředí. | Migraci je možné provést jenom na úrovni konfigurace cloudu.  Jednotlivé svazky v konfiguraci cloudu se nedají migrovat samostatně.                       |
+| Výhody                                                                                                                                     |Nevýhody                                                                                                                                                              |
+|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Proces migrace zachovává historii záloh, které byly pořízeny na 5000/7000 Series.                                               | Když se uživatelé pokusí o přístup k datům, Tato migrace stáhne data z Azure, takže budou mít náklady na stažení dat.                                     |
+| Na straně hostitele nejsou migrována žádná data.                                                                                                     | Proces vyžaduje prostoje mezi začátkem zálohování a poslední zálohou, která je v řadě 8000 (dá se odhadnout pomocí nástroje pro migraci). |
+| Tento proces zachovává všechny zásady, šablony šířky pásma, šifrování a další nastavení na zařízeních řady 8000.                      | Uživatelský přístup vrátí pouze data, ke kterým uživatelé přistupují, a nebude znovu vypínat celou datovou sadu.                                                  |
+| Tento proces vyžaduje další čas k převedení všech starších záloh v Azure, které se provádí asynchronně, aniž by to mělo dopad na produkční prostředí. | Migraci je možné provést jenom na úrovni konfigurace cloudu.  Jednotlivé svazky v konfiguraci cloudu se nedají migrovat samostatně.                       |
 
 Migrace na straně hostitele umožňuje nastavení řady 8000 nezávisle a zkopírování dat ze zařízení 5000/7000 Series do zařízení řady 8000. Jedná se o ekvivalent migrace dat z jednoho úložného zařízení na jiný. Ke zkopírování dat se používají různé nástroje, jako je Diskboss, Robocopy.
 
-|      | Výhody                                                                                                                      |Nevýhody                                                                                                                                                                                                      |
-|------|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | K migraci se dá v rámci jednotlivých svazků přistupovat postupně.                                               | Předchozí zálohy (pořízené v 5000/7000 Series) nebudou na zařízení řady 8000 k dispozici.                                                                                                       |
-| 2.   | Umožňuje konsolidaci dat do jednoho účtu úložiště v Azure.                                                       | První zálohování do cloudu v 8000 Series bude trvat delší dobu, protože všechna data v 8000 Series je potřeba zálohovat do Azure.                                                                     |
-| 3.   | Po úspěšné migraci jsou všechna data na zařízení místní. Při přístupu k datům neexistují žádné latence. | Spotřeba úložiště Azure se zvýší, dokud se neodstraní data ze zařízení 5000/7000.                                                                                                        |
-| 4.   |                                                                                                                           | Pokud má zařízení řady 7000/5000 velké množství dat, je potřeba během migrace tato data stáhnout z Azure, což bude mít za následek náklady a latence související se stahováním dat z Azure. |
+| Výhody                                                                                                                      |Nevýhody                                                                                                                                                                                                      |
+|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| K migraci se dá v rámci jednotlivých svazků přistupovat postupně.                                               | Předchozí zálohy (pořízené v 5000/7000 Series) nebudou na zařízení řady 8000 k dispozici.                                                                                                       |
+| Umožňuje konsolidaci dat do jednoho účtu úložiště v Azure.                                                       | První zálohování do cloudu v 8000 Series bude trvat delší dobu, protože všechna data v 8000 Series je potřeba zálohovat do Azure.                                                                     |
+| Po úspěšné migraci jsou všechna data na zařízení místní. Při přístupu k datům neexistují žádné latence. | Spotřeba úložiště Azure se zvýší, dokud se neodstraní data ze zařízení 5000/7000.                                                                                                        |
+|                                                                                                                           | Pokud má zařízení řady 7000/5000 velké množství dat, je potřeba během migrace tato data stáhnout z Azure, což bude mít za následek náklady a latence související se stahováním dat z Azure. |
 
 Tento článek se zaměřuje jenom na funkci migrace z 5000/7000 na 8000 řady zařízení. Další informace o migraci na straně hostitele najdete na webu [migrace z jiných úložných zařízení](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf).
 

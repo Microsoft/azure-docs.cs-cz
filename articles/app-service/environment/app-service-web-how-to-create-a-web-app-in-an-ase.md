@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701826"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220690"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Vytvoření webové aplikace ve App Service Environment v1
 
@@ -27,14 +28,14 @@ V tomto kurzu se dozvíte, jak vytvořit plány Web Apps a App Service v [App Se
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Pokud jste to ještě neudělali, přečtěte si téma [vytvoření App Service Environment](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 1. Na webu [Azure Portal](https://portal.azure.com/)klikněte na **vytvořit prostředek > web a mobilní zařízení > webovou aplikaci**. 
    
-    ![][1]
-2. Vyberte své předplatné.  
+    ![Snímek obrazovky, který ukazuje, kde vytvořit webovou aplikaci v Azure Portal.][1]
+2. Vyberte předplatné.  
    
     Pokud máte více předplatných, abyste si mohli ve svém App Service Environment vytvořit aplikaci, musíte použít stejné předplatné, které jste použili při vytváření prostředí. 
 3. Vyberte nebo vytvořte skupinu prostředků.
@@ -46,7 +47,7 @@ V tomto kurzu se předpokládá, že jste vytvořili App Service Environment. Po
    
     Plány App Service v rámci služby přihlašování můžete identifikovat v umístění, které je uvedeno v názvu plánu.  
    
-    ![][5]
+    ![Snímek obrazovky, který ukazuje, jak zobrazit plány App Service ve vašem pomocném mechanismu.][5]
    
     Pokud chcete použít plán App Service, který již v App Service Environment existuje, vyberte tento plán. Pokud chcete vytvořit nový plán App Service, přečtěte si následující část tohoto kurzu a [vytvořte App Service plán v App Service Environment](#createplan).
 5. Zadejte název vaší webové aplikace a pak klikněte na **vytvořit**. 
@@ -68,18 +69,18 @@ Následující pokyny ukazují, jak vytvořit plán App Service, když vytvář�
    
     Vzhledem k tomu, že App Service Environment je v podstatě soukromým umístěním nasazení, zobrazuje se v části umístění. 
    
-    ![][2]
+    ![Snímek obrazovky, který zobrazuje výběr umístění pro výběr požadovaného pomocného panelu.][2]
    
     Po výběru pomocného mechanismu pro výběr umístění se aktualizují uživatelské rozhraní pro vytváření App Serviceho plánu.  Umístění nyní zobrazuje název systému pomocného programu a oblast, ve které se nachází, a výběr cenového plánu je nahrazen nástrojem pro výběr fondu pracovních procesů.  
    
-    ![][3]
+    ![Snímek obrazovky, který po výběru pomocného mechanismu pro výběr umístění zobrazuje podrobnosti o systému pomocného mechanismu řízení.][3]
 
 ### <a name="selecting-a-worker-pool"></a>Výběr fondu pracovních procesů
 Normálně v Azure App Service a mimo App Service Environment existují 3 výpočetní velikosti, které jsou k dispozici s výběrem vyhrazeného cenového plánu.  Podobně můžete u pomocného mechanismu služeb definovat až 3 fondy pracovníků a zadat výpočetní velikost, která se používá pro tento fond pracovních procesů.  To znamená, že pro klienty pomocného mechanismu služeb je místo výběru cenového plánu s výpočetní velikostí pro plán App Service vybrat, co se nazývá *fond pracovních procesů*.  
 
 Uživatelské rozhraní pro výběr fondu pracovních procesů zobrazuje výpočetní velikost, která se používá pro tento fond pracovních procesů pod názvem.  Dostupné množství znamená, kolik výpočetních instancí je k dispozici pro použití v daném fondu.  Celkový fond může mít ve skutečnosti víc instancí, než je toto číslo, ale tato hodnota odkazuje na to, kolik se nepoužívá.  Pokud potřebujete upravit App Service Environment pro přidání dalších výpočetních prostředků, přečtěte si téma [konfigurace App Service Environment](app-service-web-configure-an-app-service-environment.md).
 
-![][4]
+![Snímek obrazovky, který zobrazuje podokno fond pracovních procesů, kde můžete vybrat fondy pracovních procesů pro pomocné okno.][4]
 
 V tomto příkladu vidíte, že jsou k dispozici pouze dva fondy pracovních procesů. Důvodem je, že správce pomocného mechanismu přiděluje pouze hostitele do těchto dvou fondů pracovních procesů.  Třetí se zobrazí, když jsou do něj přidělené virtuální počítače.  
 

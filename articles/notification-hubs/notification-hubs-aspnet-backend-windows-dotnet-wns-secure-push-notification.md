@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f953b21a221967c2310b2fc70056d48863149821
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75530727"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220044"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Zabezpečená nabízená oznámení z Azure Notification Hubs
 
@@ -93,7 +94,7 @@ Dalším krokem je vytvoření komponenty na pozadí push.
 1. V Průzkumník řešení klikněte pravým tlačítkem myši na uzel nejvyšší úrovně řešení (**SecurePush řešení** v tomto případě), pak klikněte na **Přidat**a potom na **Nový projekt**.
 2. Rozbalte položku **aplikace pro Store**, klikněte na **Windows Phone aplikace**a pak klikněte na **součást prostředí Windows Runtime (Windows Phone)**. Pojmenujte projekt **PushBackgroundComponent**a kliknutím na tlačítko **OK** vytvořte projekt.
 
-    ![][12]
+    ![Snímek obrazovky dialogového okna Přidat nový projekt se zvýrazněnou možností Visual C# součásti prostředí Windows Runtime (Windows Phone)][12]
 3. V Průzkumník řešení klikněte pravým tlačítkem na projekt **PushBackgroundComponent (Windows Phone 8,1)** , pak klikněte na **Přidat**a pak na **Třída**. Pojmenujte novou třídu `PushBackgroundTask.cs` . Pro vygenerování třídy klikněte na tlačítko **Přidat** .
 4. Celý obsah `PushBackgroundComponent` definice oboru názvů nahraďte následujícím kódem a nahraďte zástupný symbol koncovým `{back-end endpoint}` bodem back-end, který byl získán při nasazení back-endu:
 
@@ -161,12 +162,12 @@ Dalším krokem je vytvoření komponenty na pozadí push.
 11. V Průzkumník řešení projektu **NotifyUserWindowsPhone (Windows Phone 8,1)** klikněte pravým tlačítkem na **odkazy**a pak klikněte na **Přidat odkaz...**. V dialogovém okně Správce odkazů zaškrtněte políčko vedle **PushBackgroundComponent**a pak klikněte na **OK**.
 12. V Průzkumník řešení dvakrát klikněte na **Package. appxmanifest** v projektu **NotifyUserWindowsPhone (Windows Phone 8,1)** . V části **oznámení**nastavte **informační** zprávy s možností **Ano**.
 
-    ![][3]
+    ![Snímek obrazovky okna Průzkumník řešení se zaměřením na balíček. appxmanifest s možností možnosti informační zprávy nastavenou na hodnotu Ano, která je červená.][3]
 13. Pořád v **balíčku. appxmanifest**klikněte na nabídku **deklarace** v horní části. V rozevíracím seznamu **dostupné deklarace** klikněte na **úlohy na pozadí**a pak klikněte na **Přidat**.
 14. V **balíčku. appxmanifest**v části **vlastnosti**zaškrtněte **nabízené oznámení**.
 15. V **balíčku. appxmanifest**v části **nastavení aplikace**zadejte do pole **vstupní bod** **PushBackgroundComponent. PushBackgroundTask** .
 
-    ![][13]
+    ![Snímek obrazovky okna Průzkumník řešení se zaměřením na balíček. appxmanifest pomocí dostupných deklarací, podporovaných deklarací, nabízených oznámení a možností vstupního bodu popsaných červeně.][13]
 16. V nabídce **Soubor** klikněte na **Uložit vše**.
 
 ## <a name="run-the-application"></a>Spuštění aplikace

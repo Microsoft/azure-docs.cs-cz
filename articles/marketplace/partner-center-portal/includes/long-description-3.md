@@ -18,7 +18,7 @@ Použijte značky HTML k formátování popisu, aby bylo lépe zajímavější. 
 
 |   Akce  |  Použití  |  Nějak tak  |  K získání   |
 | --- | --- | --- | --- |
-|   Tučný  |  `<b> & </b>`  |  `<b>`Příklad `</b>` : bezplatná zkušební verze  |  **Příklad**: bezplatná zkušební verze   |
+|   Bold  |  `<b> & </b>`  |  `<b>`Příklad `</b>` : bezplatná zkušební verze  |  **Příklad**: bezplatná zkušební verze   |
 |   Kurzíva  |  `<i> & </i>`  |  Vyberte `<i>` první `</i>` řádek.  |  Vyberte *první* řádek.   |
 |   Nový řádek  |  `<br>`  |  Toto je můj první řádek. `<br>` Toto je můj druhý řádek.  |  Toto je můj první řádek.<br>Toto je můj druhý řádek.  |
 |  Znějí  |  `<p> & </p>`  |  `<p>`Toto je můj první odstavec.`</p>`<br>`<p>`Toto je můj druhý odstavec.`</p>`   |   <p>Toto je můj první odstavec.</p><p>Toto je můj druhý odstavec.</p>   |

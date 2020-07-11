@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555031"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185581"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -48,11 +49,11 @@ Change Tracking a inventarizace v současné době dochází k následujícím p
 
 - Aktualizace oprav hotfix nejsou shromažďovány na počítačích s Windows serverem 2016 Core RS3.
 
-- Procesy démon systému Linux mohou zobrazovat změněný stav, i když nedošlo k žádné změně. K tomuto problému dochází kvůli způsobu, jakým `SvcRunLevels` jsou zachycena data v protokolu Azure monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) .
+- Procesy démon systému Linux mohou zobrazovat změněný stav, i když nedošlo k žádné změně. K tomuto problému dochází kvůli způsobu, jakým `SvcRunLevels` jsou zachycena data v protokolu Azure monitor [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange) .
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Oficiální verze operačního systému jsou Windows Server 2008 SP1 nebo novější a Windows 7 SP1 nebo novější. Tato funkce je také podporována v řadě operačních systémů Linux. Operační systémy podporující Log Analytics najdete v tématu [Přehled agenta Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Oficiální verze operačního systému jsou Windows Server 2008 SP1 nebo novější a Windows 7 SP1 nebo novější. Tato funkce je také podporována v řadě operačních systémů Linux. Operační systémy podporující Log Analytics najdete v tématu [Přehled agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md).
 
 Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -80,7 +81,7 @@ Kliknutím na změnu nebo událost můžete zobrazit podrobnosti. Dostupné typy
 - Události
 - Procesy démon
 - Soubory
-- Registr
+- Registry
 - Software
 - Služby společnosti Microsoft
 
@@ -90,7 +91,7 @@ Jednotlivé změny můžete přidat, upravit nebo odebrat. Následující přík
 
 ## <a name="fim-support-in-azure-security-center"></a>Podpora FIM v Azure Security Center
 
-Change Tracking a inventář využívá [Azure Security Center sledování integrity souborů (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring). I když FIM monitoruje jenom soubory a registry, zahrnuje kompletní funkce Change Tracking a inventáře také sledování pro:
+Change Tracking a inventář využívá [Azure Security Center sledování integrity souborů (FIM)](../security-center/security-center-file-integrity-monitoring.md). I když FIM monitoruje jenom soubory a registry, zahrnuje kompletní funkce Change Tracking a inventáře také sledování pro:
 
 - Změny softwaru
 - Služby společnosti Microsoft
@@ -105,7 +106,7 @@ Pro sledování změn v souborech v systémech Windows i Linux používá Change
 
 ## <a name="tracking-of-file-content-changes"></a>Sledování změn obsahu souborů
 
-Change Tracking a inventář vám umožní zobrazit obsah souboru systému Windows nebo Linux. Pro každou změnu souboru Change Tracking a inventář ukládá obsah souboru do [Azure Storage účtu](../storage/common/storage-create-storage-account.md). Když sledujete soubor, můžete jeho obsah zobrazit před nebo po změně. Obsah souboru lze zobrazit buď vloženě, nebo vedle sebe. 
+Change Tracking a inventář vám umožní zobrazit obsah souboru systému Windows nebo Linux. Pro každou změnu souboru Change Tracking a inventář ukládá obsah souboru do [Azure Storage účtu](../storage/common/storage-account-create.md). Když sledujete soubor, můžete jeho obsah zobrazit před nebo po změně. Obsah souboru lze zobrazit buď vloženě, nebo vedle sebe. 
 
 ![Zobrazit změny v souboru](./media/change-tracking/view-file-changes.png)
 
@@ -164,13 +165,13 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 | **Prostředek** | **Počtu** |
 |---|---|---|
 |Soubor|500|
-|Registr|250|
+|Registry|250|
 |Software Windows (nezahrnuje opravy hotfix) |250|
 |Balíčky Linux|1250|
 |Služby|250|
 |Procesy démon|250|
 
-Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc v závislosti na vašem prostředí. Díky funkci využití a odhad nákladů v pracovním prostoru Log Analytics můžete zobrazit data ingestovaná pomocí Change Tracking a inventáře v grafu využití. Toto zobrazení dat slouží k vyhodnocení využití vašich dat a určení toho, jak má na faktuře vliv. Podívejte [se na informace o využití a odhadované náklady](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
+Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc v závislosti na vašem prostředí. Díky funkci využití a odhad nákladů v pracovním prostoru Log Analytics můžete zobrazit data ingestovaná pomocí Change Tracking a inventáře v grafu využití. Toto zobrazení dat slouží k vyhodnocení využití vašich dat a určení toho, jak má na faktuře vliv. Podívejte [se na informace o využití a odhadované náklady](../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Data služby společnosti Microsoft
 
@@ -187,7 +188,7 @@ Pro optimalizaci výkonu Log Analytics agent sledovat pouze změny. Nastavením 
 
 Klíčovou funkcí Change Tracking a inventáře jsou výstrahy týkající se změn stavu konfigurace hybridního prostředí. K dispozici je mnoho užitečných akcí, které je možné aktivovat v reakci na výstrahy, například akce v Azure Functions, Runbooky Automation, webhookech a podobně. Upozornění na změny v souboru **c:\Windows\System32\drivers\etc\hosts** pro počítač je jedním z užitečných výstrah pro Change Tracking a data inventáře. K dispozici je mnoho dalších scénářů pro upozorňování, včetně scénářů dotazu definovaných v následující tabulce.
 
-|Dotaz  |Description  |
+|Dotaz  |Popis  |
 |---------|---------|
 |ConfigurationChange <br>&#124;, kde ConfigChangeType = = "Files" a FileSystemPath obsahuje "c \\ : \\ ovladače Windows system32 \\ \\ "|Hodí se ke sledování změn souborů důležitých pro systém.|
 |ConfigurationChange <br>&#124;, kde FieldsChanged obsahuje "FileContentChecksum" a FileSystemPath = = "c \\ : \\ ovladače systému Windows system32 atd. \\ \\ \\ "|Hodí se ke sledování úprav konfiguračních souborů klíčů.|

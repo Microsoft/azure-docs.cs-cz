@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ab6ee597cfdc5d169bd33b77a061880b19e134b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300306"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165630"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Řešení potíží s výstrahami protokolu v Azure Monitor  
 
@@ -182,9 +183,10 @@ Každé pravidlo upozornění protokolu vytvořené v Azure Monitor jako součá
 - Pro analytickou platformu nedošlo k žádnému toku dat. [Provedení dotazu způsobí chybu](https://dev.loganalytics.io/documentation/Using-the-API/Errors) , protože pro zadaný dotaz nejsou k dispozici žádná data.
 - Změny v [dotazovacím jazyce](https://docs.microsoft.com/azure/kusto/query/) obsahují revidovaný formát pro příkazy a funkce. Proto již není dotaz uvedený dříve v pravidle výstrahy platný.
 
-[Azure Advisor](../../advisor/advisor-overview.md) vás upozorní na toto chování. Přidalo se doporučení pro konkrétní pravidlo upozornění protokolu na Azure Advisor, v kategorii vysoké dostupnosti se středním dopadem a s popisem "opravit pravidlo upozornění protokolu pro zajištění monitorování". Pokud dotaz na výstrahu v pravidle výstrahy protokolu není opravený, když Azure Advisor zadal doporučení po dobu sedmi dnů, Azure Monitor zakáže upozornění protokolu a zajistěte, aby se vám nefakturoval zbytečně, pokud se pravidlo nemůže nepřetržitě spouštět po dobu proměnlivosti (například týden).
+[Azure Advisor](../../advisor/advisor-overview.md) vás upozorní na toto chování. Přidalo se doporučení pro konkrétní pravidlo upozornění protokolu na Azure Advisor, v kategorii vysoké dostupnosti se středním dopadem a s popisem "opravit pravidlo upozornění protokolu pro zajištění monitorování".
 
-Můžete najít přesný čas, kdy Azure Monitor zakázat pravidlo výstrahy protokolu, a to hledáním události v [protokolu aktivit Azure](../../azure-resource-manager/management/view-activity-logs.md).
+> [!NOTE]
+> Pokud dotaz na výstrahu v pravidle výstrahy protokolu není opravený, když Azure Advisor zadal doporučení po dobu sedmi dnů, Azure Monitor zakáže výstrahu protokolu a zajistěte, aby se vám nefakturoval zbytečně, pokud se pravidlo nemůže nepřetržitě spouštět po dobu proměnlivosti (7 dní). Můžete najít přesný čas, kdy Azure Monitor zakázat pravidlo výstrahy protokolu, a to hledáním události v [protokolu aktivit Azure](../../azure-resource-manager/management/view-activity-logs.md).
 
 ## <a name="next-steps"></a>Další kroky
 

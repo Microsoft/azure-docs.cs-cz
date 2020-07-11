@@ -3,11 +3,12 @@ title: Analýza živého videa pomocí AI dle vašeho výběru – Azure
 description: V tomto článku se naučíte, jak vytvořit modul IoT Edge, který se dá integrovat se službou Live video Analytics v IoT Edge k analýze živého videa pomocí modelu počítačové vize dle vašeho výběru.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1ea3ebd8c7de4c691d7a982dbc08e9d08d9e38
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261258"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182861"
 ---
 # <a name="analyze-live-video-with-ai-of-your-choice"></a>Analýza živého videa s využitím AI dle vašeho výběru
 
@@ -45,7 +46,7 @@ Kontrakt HTTP je definován následujícím způsobem:
 
 Požadavky z modulu Live video Analytics do vašeho modulu budou vypadat takto:
 
-|||
+| Klíč | Hodnota |
 |---|---|
 |POST| `https://hostname/optional-path?optional-query`|
 |Přijmout|Application/JSON,*/*|
@@ -71,7 +72,7 @@ Content-Length: 519222
 
 Odpovědi z vašeho modulu na živý modul video Analytics by měly být následující.
 
-|||
+| Klíč | Hodnota |
 |---|---|
 |Stavové kódy|200 OK – nalezené výsledky odvození<br/>204 bez obsahu – žádný obsah nenalezený v AI<br/>400 Chybný požadavek – neočekávané<br/>500 interní chyba serveru – neočekávané<br/>503 Server je zaneprázdněný – AMS se vrátí na základě hlavičky "opakovat po" nebo na základě výchozí doby v případě, že není přednastavená hlavička případu.|
 |Typ obsahu|application/json|
@@ -264,7 +265,7 @@ Následující příklad obsahuje jednu událost se všemi podporovanými typy o
  
 ## <a name="sample-http-extension-modules"></a>Ukázkové moduly rozšíření HTTP
 
-V [úložišti GitHub Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)můžete najít několik ukázkových modulů rozšíření http. Jedna z těchto [ukázek analýzy videí](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) ukazuje, jak pomocí modelu [Yolov3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) sestavit modul IoT Edge pro detekci objektů. Stejný přístup můžete použít k vytvoření vlastního modulu s modelem AI podle vašeho výběru.
+V [úložišti GitHub Live video Analytics](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)můžete najít několik ukázkových modulů rozšíření http. Jedna z těchto [ukázek analýzy videí](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) ukazuje, jak pomocí modelu [YOLOv3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) sestavit modul IoT Edge pro detekci objektů. Další [Ukázka analýzy videa](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx-tiny) ukazuje, jak používat malé YOLOv3, zjednodušenou verzi modelu ONNX YOLOv3. Stejný přístup můžete použít k vytvoření vlastního modulu s modelem AI podle vašeho výběru.
 
 ## <a name="next-steps"></a>Další kroky
 

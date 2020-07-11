@@ -2,8 +2,8 @@
 title: Připojení Azure ExpressRoute pomocí cloudové infrastruktury Oracle | Microsoft Docs
 description: Připojení Azure ExpressRoute pomocí Oracle Cloud Infrastructure (OCI) FastConnect pro povolení mezicloudových řešení Oracle pro aplikace
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -12,12 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/16/2020
-ms.author: borisb
-ms.openlocfilehash: 70556cbbfefd6ad22ef96ee16065209031ea456c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 95f1f7b42b88baaab6d89192f226ca67962544fb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683753"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220469"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Nastavení přímého vzájemného propojení mezi cloudovou infrastrukturou Azure a Oracle  
 
@@ -35,7 +36,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
 
 ![Připojení k síti mezi cloudy](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * K navázání připojení mezi Azure a OCI musíte mít aktivní předplatné Azure a aktivní nájem architektury OCI.
 
@@ -65,7 +66,7 @@ Následující obrázek ukazuje podrobný přehled propojení:
     * Do pole **klíč služby poskytovatele**vložte klíč služby ExpressRoute.
     * Použijte první/30 privátního prostoru IP adres Carved v předchozím kroku pro **primární IP adresu protokolu BGP** a druhý/30 privátní adresní prostor IP adres pro **sekundární IP adresu protokolu BGP** .
         * Přiřaďte první IP adresu dvou rozsahů pro IP adresu protokolu BGP Oracle (primární a sekundární) a druhou adresu IP adrese protokolu BGP zákazníka (z perspektivy FastConnect). První dostupná IP adresa je druhá IP adresa v adresním prostoru/30 (první IP adresa je vyhrazená Microsoftem).
-    * Klikněte na **Vytvořit**.
+    * Klikněte na **Create** (Vytvořit).
 1. Dokončete propojení FastConnect s virtuální cloudovou sítí v rámci vašeho tenanta Oracle přes bránu dynamického směrování pomocí směrovací tabulky.
 1. Přejděte do Azure a ujistěte se, že se **stav poskytovatele** pro váš okruh ExpressRoute změnil na **zřízený** a že se zřídil partnerský vztah typu **Private Azure** . Tento postup je nezbytný pro následující kroky.
 

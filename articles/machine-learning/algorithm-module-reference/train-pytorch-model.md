@@ -9,11 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450658"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170254"
 ---
 # <a name="train-pytorch-model"></a>Trénování modelu PyTorch
 
@@ -26,7 +27,7 @@ Tento článek popisuje, jak pomocí modulu **Pytorch** designer (Azure Machine 
 2. Přidejte do kanálu modul **Pytorch model výuky** . Tento modul můžete najít v kategorii **školení modelu** . Rozbalte položku **vlak**a přetáhněte do svého kanálu modul **Pytorch modelu pro analýzu** .
 
    > [!NOTE]
-   > Modul **výukového modelu Pytorch** se dá spustit jenom na výpočetním typu **GPU** , jinak se váš kanál nezdaří. Můžete vybrat COMPUTE pro určitý modul v pravém podokně modulu nastavením **použít jiný cíl služby COMPUTE**.
+   > Modul **výukového modelu Pytorch** je pro velkou datovou sadu lepší běžet na výpočetním typu **GPU** , jinak se váš kanál nezdaří. Můžete vybrat COMPUTE pro určitý modul v pravém podokně modulu nastavením **použít jiný cíl služby COMPUTE**.
 
 3.  Na levém vstupu připojte nevlakový model. Připojte datovou sadu a datovou sadu pro školení k prostřednímu a pravému vstupu **modelu Pytorch pro analýzu**.
 
@@ -57,7 +58,7 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 ## <a name="technical-notes"></a>Technické poznámky
 ###  <a name="expected-inputs"></a>Očekávané vstupy  
 
-| Name               | Typ                    | Description                              |
+| Název               | Typ                    | Popis                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Nevlakový model    | UntrainedModelDirectory | Nevlakový model, vyžadovat pytorch         |
 | Datová sada školení   | ImageDirectory          | Datová sada školení                         |
@@ -65,17 +66,17 @@ Po dokončení běhu kanálu můžete použít model pro bodování, připojit [
 
 ###  <a name="module-parameters"></a>Parametry modulu  
 
-| Name          | Rozsah            | Typ    | Výchozí | Description                              |
+| Název          | Rozsah            | Type    | Výchozí | Popis                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Epochs        | > 0               | Integer | 5       | Výběr sloupce obsahujícího sloupec popisek nebo výsledek |
 | Velikost dávky    | > 0               | Integer | 16      | Kolik instancí se má naučit v dávce   |
 | Rychlost učení | >= Double. Kurzív | Float   | 0,001   | Počáteční rychlost učení pro Optimalizátor stochastického gradientu klesání. |
-| Náhodné osazení   | Všechny              | Integer | 1       | Počáteční hodnota pro generátor náhodných čísel používaný modelem |
+| Náhodné osazení   | Libovolný              | Integer | 1       | Počáteční hodnota pro generátor náhodných čísel používaný modelem |
 | Trpělivost      | > 0               | Integer | 3       | Kolik epochs k předčasnému zastavení školení   |
 
 ###  <a name="outputs"></a>Výstupy  
 
-| Name          | Typ           | Description   |
+| Název          | Typ           | Popis   |
 | ------------- | -------------- | ------------- |
 | Školený model | ModelDirectory | Školený model |
 

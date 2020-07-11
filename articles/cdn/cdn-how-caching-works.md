@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81253709"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201804"
 ---
 # <a name="how-caching-works"></a>Jak funguje ukládání do mezipaměti
 
@@ -45,7 +46,7 @@ Každá mezipaměť obvykle spravuje svoji vlastní aktuálnost prostředků a p
 
 Vzhledem k tomu, že prostředek uložený v mezipaměti může být zastaralý nebo zastaralý (ve srovnání s odpovídajícím prostředkem na zdrojovém serveru), je důležité pro jakýkoliv mechanismus ukládání do mezipaměti, který by měl řídit, kdy se obsah aktualizuje. Pokud chcete ušetřit čas a spotřebu šířky pásma, prostředek uložený v mezipaměti není ve srovnání s verzí na zdrojovém serveru pokaždé, když se k němu přistupoval. Místo toho, pokud je prostředek v mezipaměti považován za čerstvý, předpokládá se, že bude aktuální verze a pošle se přímo klientovi. Prostředek uložený v mezipaměti je považován za čerstvý, pokud je jeho stáří menší než stáří nebo období definované nastavením mezipaměti. Například když prohlížeč znovu načte webovou stránku, ověří, že každý prostředek v mezipaměti na pevném disku je v čerstvém stavu a načte ho. Pokud prostředek není v čerstvém stavu (zastaralý), načte se aktuální kopie ze serveru.
 
-### <a name="validation"></a>Ověřování
+### <a name="validation"></a>Ověřování vstupů (validace)
 
 Pokud se prostředek považuje za zastaralý, je původní server požádán o jeho ověření. to znamená, zda se data v mezipaměti stále shodují s tím, co se nachází na zdrojovém serveru. Pokud byl soubor změněn na zdrojovém serveru, mezipaměť aktualizuje jeho verzi. V opačném případě platí, že pokud je prostředek nový, data se doručí přímo z mezipaměti bez jejich ověření.
 
@@ -75,7 +76,7 @@ Azure CDN podporuje následující hlavičky HTTP cache-direktivy, které definu
 - Při použití v odpovědi HTTP z klienta na POP CDN:
      - **Azure CDN Standard/Premium z Verizon** a **Azure CDN Standard od společnosti Microsoft** podporují všechny `Cache-Control` direktivy.
      - **Azure CDN Standard z Akamai** podporuje pouze následující `Cache-Control` direktivy. všechny ostatní jsou ignorovány:
-         - `max-age`: Mezipaměť může ukládat obsah za zadaný počet sekund. Například, `Cache-Control: max-age=5`. Tato direktiva určuje maximální dobu, po kterou je obsah považován za čerstvý.
+         - `max-age`: Mezipaměť může ukládat obsah za zadaný počet sekund. Například `Cache-Control: max-age=5`. Tato direktiva určuje maximální dobu, po kterou je obsah považován za čerstvý.
          - `no-cache`: Obsah ukládat do mezipaměti, ale před jeho odesláním z mezipaměti ověřte jeho obsah. Ekvivalent `Cache-Control: max-age=0` .
          - `no-store`: Nikdy neukládat obsah do mezipaměti. Odeberte obsah, pokud byl dříve uložen.
 
@@ -97,25 +98,25 @@ Pokud je mezipaměť zastaralá, používají se validátory mezipaměti protoko
 
 **Značk**
 - **Azure CDN Standard/Premium z Verizon** podporuje standardně `ETag` , zatímco **Azure CDN standard od Microsoftu** a **Azure CDN Standard od Akamai** .
-- `ETag`definuje řetězec, který je jedinečný pro všechny soubory a verze souboru. Například, `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
+- `ETag`definuje řetězec, který je jedinečný pro všechny soubory a verze souboru. Například `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - Představená v HTTP 1,1 a je aktuálnější než `Last-Modified` . Užitečné v případě, že je obtížné určit datum poslední změny.
 - Podporuje silné ověřování i slabé ověřování; Azure CDN však podporuje pouze silné ověřování. Pro silné ověřování musí být oba reprezentace prostředků shodné s Byte-Byte. 
-- Mezipaměť ověřuje soubor, který používá `ETag` odesláním `If-None-Match` hlavičky s jedním nebo více `ETag` validátory v žádosti. Například, `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Pokud verze serveru odpovídá `ETag` validátoru na seznamu, pošle v odpovědi stavový kód 304 (nezměněn). Pokud je verze odlišná, server odpoví stavovým kódem 200 (OK) a aktualizovaným prostředkem.
+- Mezipaměť ověřuje soubor, který používá `ETag` odesláním `If-None-Match` hlavičky s jedním nebo více `ETag` validátory v žádosti. Například `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Pokud verze serveru odpovídá `ETag` validátoru na seznamu, pošle v odpovědi stavový kód 304 (nezměněn). Pokud je verze odlišná, server odpoví stavovým kódem 200 (OK) a aktualizovaným prostředkem.
 
 **Poslední změna:**
 - Pro **Azure CDN Standard/Premium pouze ze Verizon** `Last-Modified` se používá, pokud není `ETag` součástí odpovědi HTTP. 
-- Určuje datum a čas, kdy zdrojový Server určil, že se prostředek naposledy změnil. Například, `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
+- Určuje datum a čas, kdy zdrojový Server určil, že se prostředek naposledy změnil. Například `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
 - Mezipaměť ověří soubor pomocí `Last-Modified` odeslání `If-Modified-Since` hlavičky s datem a časem v žádosti. Zdrojový server porovnává toto datum s `Last-Modified` hlavičkou nejnovějšího prostředku. Pokud se prostředek od zadaného času nezměnil, server vrátí stavový kód 304 (nezměněno) v odpovědi. Pokud byl prostředek změněn, vrátí server stavový kód 200 (OK) a aktualizovaný prostředek.
 
 ## <a name="determining-which-files-can-be-cached"></a>Určení souborů, které mohou být uloženy do mezipaměti
 
 Ne všechny prostředky mohou být uloženy do mezipaměti. Následující tabulka ukazuje, jaké prostředky lze ukládat do mezipaměti na základě typu odpovědi HTTP. Prostředky dodávané s odpověďmi HTTP, které nesplňují všechny tyto podmínky, nelze uložit do mezipaměti. Pro **Azure CDN Premium jenom z Verizon** můžete použít modul pravidel k přizpůsobení některých z těchto podmínek.
 
-|                   | Azure CDN od Microsoftu          | Azure CDN z Verizon | Azure CDN z Akamai        |
-|-------------------|-----------------------------------|------------------------|------------------------------|
-| Stavové kódy HTTP | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
-| Metody HTTP      | GET, HEAD                         | GET                    | GET                          |
-| Omezení velikosti souborů  | 300 GB                            | 300 GB                 | – Obecná optimalizace pro doručování webů: 1,8 GB<br />-Optimalizace streamování médií: 1,8 GB<br />– Optimalizace velkých souborů: 150 GB |
+|                       | Azure CDN od Microsoftu          | Azure CDN z Verizon | Azure CDN z Akamai        |
+|-----------------------|-----------------------------------|------------------------|------------------------------|
+| **Stavové kódy HTTP** | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
+| **Metody HTTP**      | GET, HEAD                         | GET                    | GET                          |
+| **Omezení velikosti souborů**  | 300 GB                            | 300 GB                 | – Obecná optimalizace pro doručování webů: 1,8 GB<br />-Optimalizace streamování médií: 1,8 GB<br />– Optimalizace velkých souborů: 150 GB |
 
 Pro **Azure CDN Standard od Microsoft** caching pro práci na prostředku musí zdrojový server podporovat všechny HLAVIČKY a získávat požadavky HTTP a hodnoty Content-Length musí být pro všechny hlavičky stejné a získat odpovědi HTTP na daný Asset. Pro požadavek HEAD musí zdrojový server podporovat požadavek HEAD a musí odpovídat stejným hlavičkám, jako kdyby přijal požadavek GET.
 
@@ -125,8 +126,8 @@ Následující tabulka popisuje výchozí chování při ukládání do mezipam�
 
 |    | Microsoft: obecné webové doručování | Verizon: Obecné doručování webu | Verizon: DSA | Akamai: Obecné doručování webu | Akamai: DSA | Akamai: stahování velkých souborů | Akamai: General nebo VOD Streaming Media |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Dodržovat původ**       | Ano    | Ano   | No   | Yes    | No   | Ano   | Ano    |
-| **Doba uložení mezipaměti CDN** | 2 dny |7 dní | Žádná | 7 dní | Žádná | 1 den | 1 rok |
+| **Dodržovat původ**       | Ano    | Ano   | Ne   | Ano    | Ne   | Ano   | Ano    |
+| **Doba uložení mezipaměti CDN** | 2 dny |7 dní | Žádný | 7 dní | Žádný | 1 den | 1 rok |
 
 **Dodržovat původ**: Určuje, jestli se mají přijmout podporované hlavičky cache-direktivy, pokud existují v odpovědi HTTP ze zdrojového serveru.
 

@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995866"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183031"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Konfigurace a licenční požadavky pro Apple FairPlay 
 
@@ -60,6 +61,9 @@ Při použití Media Services k šifrování obsahu HLS pomocí nástroje **Appl
   * soubor. der
   * soubor. pfx
   * heslo pro soubor. pfx
+  
+> [!NOTE]
+> Azure Media Services nekontroluje datum vypršení platnosti certifikátu během balení nebo doručování klíčů. Po vypršení platnosti certifikátu bude fungovat i nadále.
 
 ## <a name="fairplay-and-player-apps"></a>Aplikace FairPlay a přehrávače
 

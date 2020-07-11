@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea05e75c0d1db1ef27ae2e8e9364327528a7c8ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30d1606a3928f421d2155e2d1abac0c8a6872aa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837157"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186635"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Konfigurace nastavení web Windows Update pro Azure Automation Update Management
 
-Azure Automation Update Management spoléhá na [klienta web Windows Update](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) ke stažení a instalaci aktualizací Windows. K dispozici jsou určitá nastavení, která používá klient web Windows Update při připojování k Windows Server Update Services (WSUS) nebo web Windows Update. Mnohé z těchto nastavení se dají spravovat pomocí:
+Azure Automation Update Management spoléhá na [klienta web Windows Update](/windows/deployment/update/windows-update-overview) ke stažení a instalaci aktualizací Windows. K dispozici jsou určitá nastavení, která používá klient web Windows Update při připojování k Windows Server Update Services (WSUS) nebo web Windows Update. Mnohé z těchto nastavení se dají spravovat pomocí:
 
 - Editor místních zásad skupiny
 - Zásady skupiny
@@ -22,7 +23,7 @@ Azure Automation Update Management spoléhá na [klienta web Windows Update](htt
 
 Update Management respektuje mnoho nastavení určených k řízení web Windows Update klienta. Pokud použijete nastavení k povolení aktualizací jiných než Windows, Update Management tyto aktualizace taky spravovat. Pokud chcete povolit stahování aktualizací před tím, než dojde k nasazení aktualizace, může být nasazení aktualizace rychlejší, efektivnější a méně pravděpodobně větší než časový interval pro správu a údržbu.
 
-Další doporučení týkající se nastavení služby WSUS v předplatném Azure a bezpečném udržování virtuálních počítačů s Windows najdete v přehledu [Plánování nasazení pro aktualizaci virtuálních počítačů s Windows v Azure pomocí služby WSUS](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/).
+Další doporučení týkající se nastavení služby WSUS v předplatném Azure a bezpečném udržování virtuálních počítačů s Windows najdete v přehledu [Plánování nasazení pro aktualizaci virtuálních počítačů s Windows v Azure pomocí služby WSUS](/azure/architecture/example-scenario/wsus/).
 
 ## <a name="pre-download-updates"></a>Předběžné stažení aktualizací
 
@@ -57,7 +58,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 Update Management podporuje nastavení služby WSUS. Můžete určit zdroje pro vyhledávání a stahování aktualizací podle pokynů v tématu [určení umístění intranetové Microsoft Update služby](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location). Ve výchozím nastavení je klient web Windows Update nakonfigurovaný tak, aby stahoval aktualizace z web Windows Update. Pokud zadáte server WSUS jako zdroj pro počítače, pokud aktualizace nejsou schváleny ve službě WSUS, nasazení aktualizace se nepovede. 
 
-Chcete-li omezit počítače na službu interní aktualizace, nastavte [Nepřipojujte se k žádným web Windows Update internetovým umístěním](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations). 
+Chcete-li omezit počítače na službu interní aktualizace, nastavte [Nepřipojujte se k žádným web Windows Update internetovým umístěním](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations). 
 
 ## <a name="next-steps"></a>Další kroky
 

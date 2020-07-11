@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477791"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220571"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Vytvoření App Service Environment v1 
 
@@ -40,11 +40,11 @@ Pokud chcete vytvořit App Service Environment V1, můžete vyhledat Azure Marke
 
 1. Zadejte název vašeho pomocného programu. Název, který zadáte pro pomocného nástroje, se použije pro aplikace vytvořené v pomocném mechanismu. Pokud je název pomocného mechanismu appsvcenvdemo, název subdomény by byl: *appsvcenvdemo.p.azurewebsites.NET*. Pokud tedy vytvoříte aplikaci s názvem *MyTestApp*, bude se adresovat na *MyTestApp.appsvcenvdemo.p.azurewebsites.NET*. V názvu vašeho pomocného mechanismu se nedá použít prázdné znaky. Použijete-li velká písmena v názvu, bude název domény celková verze tohoto názvu. Pokud použijete interního nástroje, vaše jméno pomocného mechanismu se nepoužije v subdoméně, ale místo toho je explicitně uvedeno během vytváření pomocného mechanismu.
    
-    ![][1]
-2. Vyberte své předplatné. Předplatné, které používáte pro pomocného správce, se použije i pro všechny aplikace, které v tomto pomocném panelu vytvoříte. Do virtuální sítě, která je v jiném předplatném, nemůžete umístit svůj pomocného správce.
+    ![Snímek obrazovky, který ukazuje, jak vytvořit App Service Environment (pomocného mechanismu řízení).][1]
+2. Vyberte předplatné. Předplatné, které používáte pro pomocného správce, se použije i pro všechny aplikace, které v tomto pomocném panelu vytvoříte. Do virtuální sítě, která je v jiném předplatném, nemůžete umístit svůj pomocného správce.
 3. Vyberte nebo zadejte novou skupinu prostředků. Skupina prostředků použitá pro váš správce přidaných mechanismů musí být stejná jako ta, která se používá ve vaší virtuální síti. Pokud vyberete existující virtuální síť, bude se výběr skupiny prostředků pro váš ovládací objekt pro pořízení aktualizovat tak, aby odrážel virtuální síť.
    
-    ![][2]
+    ![Snímek obrazovky, který ukazuje, jak vybrat nebo upravit novou skupinu prostředků.][2]
 4. Proveďte Virtual Network a výběr umístění. Můžete si vytvořit novou virtuální síť nebo vybrat již existující virtuální síť. Pokud vyberete novou virtuální síť, můžete zadat její název a umístění. Nová virtuální síť bude mít rozsah adres 192.168.250.0/23 a podsíť s názvem **Default** , která je definovaná jako 192.168.250.0/24. Můžete také jednoduše vybrat stávající virtuální síť typu Classic nebo Správce prostředků. Výběr typu VIP určuje, jestli k vašemu přimocnému objektu se dá získat přímý pøístup z Internetu (externí) nebo jestli používá interní Load Balancer (interního nástroje). Další informace o nich najdete v tématu [použití interní Load Balancer s App Service Environment][ILBASE]. Pokud vyberete externí typ VIP, můžete vybrat, kolik externích IP adres se má systém vytvořit, pro účely IP SSL. Vyberete-li možnost interní, je třeba zadat subdoménu, kterou bude používat váš správce přidaných mechanismů. Služby ASE je možné nasadit do virtuálních sítí, které používají *buď* rozsahy veřejných adres, *nebo* RFC1918 adresní prostory (tj. soukromé adresy). Aby bylo možné používat virtuální síť s rozsahem veřejných adres, bude nutné vytvořit virtuální síť předem. Když vyberete existující virtuální síť, budete muset během vytváření pomocného mechanismu vytvořit novou podsíť. **Na portálu nemůžete použít předem vytvořenou podsíť. Pokud vytváříte pomocného správce prostředků pomocí šablony Resource Manageru, můžete vytvořit pomocného programu s již existující podsítí.** Pokud chcete vytvořit pomocného objektu ze šablony, použijte zde tyto informace, vytvořte [App Service Environment ze šablony][ILBAseTemplate] a tady a vytvořte [App Service Environment interního nástroje ze šablony][ASEfromTemplate].
 
 ### <a name="details"></a>Podrobnosti

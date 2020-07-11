@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, stažení aktualizace, nejnovější, dostupná, instalace
-ms.openlocfilehash: 2c23977c7e01a9137b72b44d1bdc0e1373bafa0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48cdd35a80d68a7ec0d900639c0fca3a2c66787e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277226"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171784"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Stažení sady SDK pro sadu Azure Kinect snímače
 
@@ -28,7 +28,7 @@ Tato stránka obsahuje odkazy ke stažení pro jednotlivé verze sady Azure Kine
 
 ## <a name="windows-download-link"></a>Odkaz na stažení Windows
 
-[Instalační služba](https://download.microsoft.com/download/4/5/a/45aa3917-45bf-4f24-b934-5cff74df73e1/Azure%20Kinect%20SDK%201.4.0.exe)  |  společnosti Microsoft [Zdrojový kód GitHubu](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1093)
+[Instalační služba](https://download.microsoft.com/download/3/d/6/3d6d9e99-a251-4cf3-8c6a-8e108e960b4b/Azure%20Kinect%20SDK%201.4.1.exe)  |  společnosti Microsoft [Zdrojový kód GitHubu](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1093)
 
 > [!NOTE]
 > Při instalaci sady SDK si zapamatujte cestu, do které jste nainstalovali. Například "C:\Program Files\Azure Kinect SDK 1,2". Nástroje, na které se odkazuje v článcích v této cestě, najdete v článku.

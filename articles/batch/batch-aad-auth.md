@@ -4,11 +4,12 @@ description: Služba Batch podporuje službu Azure AD k ověřování ze služby
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958204"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170305"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -62,7 +63,7 @@ Po zaregistrování aplikace se zobrazí ID aplikace:
 
 ![Registrace aplikace Batch pomocí Azure AD](./media/batch-aad-auth/app-registration-data-plane.png)
 
-Další informace o registraci aplikace v Azure AD najdete v tématu [scénáře ověřování pro Azure AD](../active-directory/develop/authentication-scenarios.md).
+Další informace o registraci aplikace v Azure AD najdete v tématu [scénáře ověřování pro Azure AD](../active-directory/develop/authentication-vs-authorization.md).
 
 ## <a name="get-the-tenant-id-for-your-active-directory"></a>Získat ID tenanta pro vaši službu Active Directory
 
@@ -120,7 +121,7 @@ Na webu Azure Portal postupujte podle těchto pokynů:
 
 ### <a name="assign-rbac-to-your-application"></a>Přiřazení RBAC k aplikaci
 
-K ověřování pomocí instančního objektu je potřeba přiřadit k aplikaci RBAC. Postupujte následovně:
+K ověřování pomocí instančního objektu je potřeba přiřadit k aplikaci RBAC. Postupujte takto:
 
 1. V Azure Portal přejděte na účet Batch používaný vaší aplikací.
 1. V části **Nastavení** účtu Batch vyberte možnost **Access Control (IAM)**.
@@ -426,8 +427,8 @@ Pomocí přihlašovacích údajů instančního objektu otevřete objekt **Batch
 
 - Příklad vytvoření klienta služby Batch ověřeného pomocí tokenu Azure AD v Pythonu najdete v tématu [nasazení Azure Batch vlastní image pomocí skriptu Pythonu](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) .
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Co je Azure Active Directory?"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Scénáře ověřování pro Azure AD"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Integrace aplikací s Azure Active Directory"
+[aad_about]: ../active-directory/fundamentals/active-directory-whatis.md "Co je Azure Active Directory?"
+[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
+[aad_auth_scenarios]: ../active-directory/develop/authentication-vs-authorization.md "Scénáře ověřování pro Azure AD"
+[aad_integrate]: ../active-directory/develop/quickstart-register-app.md "Integrace aplikací s Azure Active Directory"
 [azure_portal]: https://portal.azure.com

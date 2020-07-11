@@ -3,11 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235353"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169901"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -32,6 +33,42 @@ Připojovací řetězec pro Application Insights. Použijte `APPLICATIONINSIGHTS
 |Klíč|Ukázková hodnota|
 |---|------------|
 |APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey = [klíč]; IngestionEndpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; SnapshotEndpoint = [URL];|
+
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+Ve výchozím nastavení používají [proxy služby funkcí](functions-proxies.md) zástupce k odesílání volání rozhraní API z proxy serverů přímo do funkcí ve stejné aplikaci Function App. Místo vytvoření nové žádosti HTTP se používá tato zkratka. Toto nastavení umožňuje zakázat toto chování zástupce.
+
+|Klíč|Hodnota|Popis|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Volání s adresou URL back-endu ukazující na funkci v místní aplikaci Function App nebudou odesílána přímo do funkce. Místo toho se požadavky přesměrují zpátky na front-endu HTTP pro aplikaci Function App.|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false (nepravda)|Volání s adresou URL back-endu ukazující na funkci v místní aplikaci Function App jsou předávána přímo do funkce. Toto je výchozí hodnota. |
+
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+Toto nastavení určuje, zda `%2F` jsou znaky dekódovat jako lomítka v parametrech směrování při jejich vložení do adresy URL back-endu. 
+
+|Klíč|Hodnota|Popis|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Parametry směrování s kódovanými lomítky jsou dekódované. |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false (nepravda)|Všechny parametry tras jsou předány beze změny, což je výchozí chování. |
+
+Zvažte například proxies.jsv souboru pro aplikaci Function App v `myfunction.com` doméně.
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+
+Když `AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` je nastaveno na `true` , adresa URL se `example.com/api%2ftest` přeloží na `example.com/api/test` . Ve výchozím nastavení zůstane adresa URL beze změny `example.com/test%2fapi` . Další informace najdete v tématu [proxy služby Functions](functions-proxies.md).
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
@@ -150,7 +187,31 @@ Běhový modul runtime jazyka, který se má načíst do aplikace Function App. 
 |---|------------|
 |FUNKCE \_ \_ modulu runtime pracovního procesu|dotnet|
 
-## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="pip_extra_index_url"></a>\_přídavná \_ \_ Adresa URL indexu PIP
+
+Hodnota tohoto nastavení označuje adresu URL vlastního indexu balíčku pro aplikace v jazyce Python. Toto nastavení použijte, pokud potřebujete spustit vzdálené sestavení pomocí vlastních závislostí, které se nacházejí v nadbytečném indexu balíčku.   
+
+|Klíč|Ukázková hodnota|
+|---|------------|
+|\_přídavná \_ \_ Adresa URL indexu PIP|http://my.custom.package.repo/simple |
+
+Další informace najdete v tématu [vlastní závislosti](functions-reference-python.md#remote-build-with-extra-index-url) v referenční příručce pro vývojáře v Pythonu.
+
+## <a name="scale_controller_logging_enable"></a>\_ \_ Povolení protokolování škálování \_ řadiče
+
+_Toto nastavení je aktuálně ve verzi Preview._  
+
+Toto nastavení řídí protokolování z Azure Functionsho řadiče škálování. Další informace najdete v tématu [škálování protokolů řadiče](functions-monitoring.md#scale-controller-logs-preview).
+
+|Klíč|Ukázková hodnota|
+|-|-|
+|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights: verbose|
+
+Hodnota pro tento klíč je zadána ve formátu `<DESTINATION>:<VERBOSITY>` , který je definován následujícím způsobem:
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+## <a name="website_contentazurefileconnectionstring"></a>\_CONTENTAZUREFILECONNECTIONSTRING webu
 
 Pro spotřebu & jenom plánů Premium. Připojovací řetězec pro účet úložiště, ve kterém je uložený kód a konfigurace aplikace Function App Viz [Vytvoření aplikace Function App](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -196,47 +257,16 @@ Povolí spuštění aplikace Function App z připojeného souboru balíčku.
 
 Platné hodnoty jsou buď adresy URL, které se překládá na umístění souboru balíčku pro nasazení, nebo `1` . Při nastavení na `1` se balíček musí nacházet ve `d:\home\data\SitePackages` složce. Při použití nasazení zip s tímto nastavením se balíček automaticky nahraje do tohoto umístění. Ve verzi Preview bylo toto nastavení pojmenováno `WEBSITE_RUN_FROM_ZIP` . Další informace najdete v tématu [spuštění funkcí ze souboru balíčku](run-functions-from-deployment-package.md).
 
-## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="website_time_zone"></a>\_časové \_ pásmo webu
 
-Ve výchozím nastavení budou proxy služby funkcí používat zástupce pro odesílání volání rozhraní API z proxy serverů přímo do funkcí ve stejné Function App namísto vytváření nového požadavku HTTP. Toto nastavení umožňuje toto chování zakázat.
+Umožňuje nastavit časové pásmo pro aplikaci Function App. 
 
-|Klíč|Hodnota|Description|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Volání s adresou URL back-endu ukazující na funkci v místním Function App již nebudou odesílána přímo do funkce a místo toho budou přesměrována zpět na front-end protokolu HTTP pro Function App|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false (nepravda)|Toto je výchozí hodnota. Volání s adresou URL back-endu ukazující na funkci v místním Function App budou předána přímo této funkci.|
+|Klíč|Operační systém|Ukázková hodnota|
+|---|--|------------|
+|\_časové \_ pásmo webu|Windows|Východní oblast (běžný čas)|
+|\_časové \_ pásmo webu|Linux|America/New_York|
 
-
-## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
-
-Toto nastavení určuje, jestli se% 2F dekóduje jako lomítka v parametrech směrování při jejich vložení do adresy URL back-endu. 
-
-|Klíč|Hodnota|Description|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Parametry směrování s kódovanými lomítky budou mít dekódované. `example.com/api%2ftest`stane se`example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false (nepravda)|Toto je výchozí chování. Všechny parametry tras budou předány beze změny.|
-
-### <a name="example"></a>Příklad
-
-Tady je příklad proxies.jsv aplikaci Function App na adrese URL myfunction.com
-
-```JSON
-{
-    "$schema": "http://json.schemastore.org/proxies",
-    "proxies": {
-        "root": {
-            "matchCondition": {
-                "route": "/{*all}"
-            },
-            "backendUri": "example.com/{all}"
-        }
-    }
-}
-```
-|Dekódování adresy URL|Vstup|Výstup|
-|-|-|-|
-|true|myfunction.com/test%2fapi|example.com/test/api
-|false (nepravda)|myfunction.com/test%2fapi|example.com/test%2fapi|
-
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06b8f9a2d41fc5400aa0fa610a2be3f31e21f1c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82105756"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169795"
 ---
 # <a name="azure-signalr-service-internals"></a>Interní informace služby Azure SignalR Service
 
@@ -85,6 +85,8 @@ Když je klient připojen ke službě signalizace, modul runtime služby zjistí
 V tomto okamžiku aplikační server obdrží událost s informacemi z nového klienta. Logické připojení ke klientovi je vytvořeno na aplikačním serveru. Datový kanál se naváže z klienta na aplikační server prostřednictvím služby signalizace.
 
 Služba signalizace přenáší data z klienta na server spárované aplikace. A data z aplikačního serveru budou odeslána mapovaným klientům.
+
+Služba signalizace neukládá ani neukládá zákaznická data, všechna přijatá zákaznická data se přenáší do cílového serveru nebo klientů v reálném čase.
 
 Jak vidíte, služba signalizace Azure je v podstatě logickou přenosovou vrstvou mezi aplikačním serverem a klienty. Všechna trvalá připojení se přesměrují na službu Signal.
 Aplikační server potřebuje zpracovat obchodní logiku jenom ve třídě centra, aniž by se museli starat o připojení klientů.

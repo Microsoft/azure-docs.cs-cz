@@ -9,15 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 540ae25b22b2c134a47f91ad5b8b19089c7f2acb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745002"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187400"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Spravovat přihlašovací údaje v Azure Automation
 
-Asset přihlašovacích údajů pro automatizaci obsahuje objekt, který obsahuje zabezpečovací pověření, například uživatelské jméno a heslo. Runbooky a konfigurace DSC používají rutiny, které přijímají pro ověřování objekt [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) . Případně mohou extrahovat uživatelské jméno a heslo `PSCredential` objektu, které mají být k dispozici pro některé aplikace nebo služby vyžadující ověřování. 
+Asset přihlašovacích údajů pro automatizaci obsahuje objekt, který obsahuje zabezpečovací pověření, například uživatelské jméno a heslo. Runbooky a konfigurace DSC používají rutiny, které přijímají pro ověřování objekt [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) . Případně mohou extrahovat uživatelské jméno a heslo `PSCredential` objektu, které mají být k dispozici pro některé aplikace nebo služby vyžadující ověřování. 
 
 >[!NOTE]
 >Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Azure Automation ukládá klíč do Key Vault spravovaném systémem. Před uložením zabezpečeného assetu Automation načte klíč z Key Vault a pak ho použije k zašifrování prostředku. 
@@ -28,9 +29,9 @@ Asset přihlašovacích údajů pro automatizaci obsahuje objekt, který obsahuj
 
 Rutiny v následující tabulce vytvářejí a spravují přihlašovací údaje automatizace pomocí PowerShellu. Dodávají se jako součást [AZ moduls](modules.md#az-modules).
 
-| Rutina | Description |
+| Rutina | Popis |
 |:--- |:--- |
-| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Načte objekt [CredentialInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) obsahující metadata o přihlašovacích údajích. Rutina nenačte `PSCredential` samotný objekt.  |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Načte objekt [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo?view=azurerm-ps) obsahující metadata o přihlašovacích údajích. Rutina nenačte `PSCredential` samotný objekt.  |
 | [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Vytvoří nové přihlašovací údaje automatizace. |
 | [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Odebere přihlašovací údaje automatizace. |
 | [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Nastaví vlastnosti pro existující přihlašovací údaje automatizace. |
@@ -39,11 +40,11 @@ Rutiny v následující tabulce vytvářejí a spravují přihlašovací údaje 
 
 Rutiny v následující tabulce se používají pro přístup k přihlašovacím údajům v sadách Runbook a konfiguracích DSC. 
 
-| Rutina | Description |
+| Rutina | Popis |
 |:--- |:--- |
 | `Get-AutomationPSCredential` |Získá `PSCredential` objekt, který se má použít v sadě Runbook nebo konfiguraci DSC. Nejčastěji byste měli místo rutiny použít tuto [interní rutinu](modules.md#internal-cmdlets) `Get-AzAutomationCredential` , protože ta načte jenom informace o přihlašovacích údajích. Tyto informace nejsou obvykle užitečné k předání jiné rutině. |
-| [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Získá přihlašovací údaje s výzvou k zadání uživatelského jména a hesla. Tato rutina je součástí výchozího modulu Microsoft. PowerShell. Security. Viz [výchozí moduly](modules.md#default-modules).|
-| [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Vytvoří Asset přihlašovacích údajů. Tato rutina je součástí výchozího modulu Azure. Viz [výchozí moduly](modules.md#default-modules).|
+| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Získá přihlašovací údaje s výzvou k zadání uživatelského jména a hesla. Tato rutina je součástí výchozího modulu Microsoft. PowerShell. Security. Viz [výchozí moduly](modules.md#default-modules).|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Vytvoří Asset přihlašovacích údajů. Tato rutina je součástí výchozího modulu Azure. Viz [výchozí moduly](modules.md#default-modules).|
 
 Chcete-li načíst `PSCredential` objekty v kódu, musíte importovat `Orchestrator.AssetManagement.Cmdlets` modul. Další informace najdete v tématu [Správa modulů v Azure Automation](modules.md).
 
@@ -103,7 +104,7 @@ Sada Runbook nebo konfigurace DSC načte Asset přihlašovacích údajů pomocí
 > [!NOTE]
 > `Get-AzAutomationCredential`Rutina nenačte `PSCredential` objekt, který lze použít k ověřování. Poskytuje jenom informace o přihlašovacích údajích. Pokud potřebujete použít přihlašovací údaje v sadě Runbook, je nutné ji načíst jako `PSCredential` objekt pomocí `Get-AutomationPSCredential` .
 
-Alternativně můžete použít metodu [GetNetworkCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) k načtení objektu [NetworkCredential](/dotnet/api/system.net.networkcredential) , který představuje nezabezpečenou verzi hesla.
+Alternativně můžete použít metodu [GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential?view=pscore-6.2.0) k načtení objektu [NetworkCredential](/dotnet/api/system.net.networkcredential) , který představuje nezabezpečenou verzi hesla.
 
 ### <a name="textual-runbook-example"></a>Příklad textového Runbooku
 

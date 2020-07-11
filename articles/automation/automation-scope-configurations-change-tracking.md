@@ -5,15 +5,16 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 353f29d9b4c6599226619d40e4378e21618bcad4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117435"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185904"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>Omezení rozsahu nasazení Change Tracking a inventáře
 
-Tento článek popisuje, jak pracovat s konfiguracemi oboru při použití funkce [Change Tracking a inventáře](change-tracking.md) k nasazení změn do virtuálních počítačů. Další informace najdete v tématu [cílení řešení monitorování v Azure monitor (Preview)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
+Tento článek popisuje, jak pracovat s konfiguracemi oboru při použití funkce [Change Tracking a inventáře](change-tracking.md) k nasazení změn do virtuálních počítačů. Další informace najdete v tématu [cílení řešení monitorování v Azure monitor (Preview)](../azure-monitor/insights/solution-targeting.md). 
 
 ## <a name="about-scope-configurations"></a>O konfiguracích oboru
 
@@ -33,7 +34,7 @@ Omezení rozsahu pro nasazení Change Tracking a inventáře:
 
 5. V podokně úpravy vyberte **Vybrat skupiny počítačů**. V podokně skupiny počítačů se zobrazí uložená hledání, která slouží k vytvoření konfigurace oboru. Uložené výsledky hledání, které používá Change Tracking a inventář:
 
-    |Name     |Kategorie  |Alias  |
+    |Název     |Kategorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Sledování změn ve       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 

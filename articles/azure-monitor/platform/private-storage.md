@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610062"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184493"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Účty úložiště vlastněné zákazníkem pro přijímání protokolů v Azure Monitor
 
@@ -24,7 +25,7 @@ Dalším scénářem je šifrování protokolů pomocí klíčů spravovaných z
 
 K datovým typům, které se ingestují z účtu úložiště, patří následující. Další informace o přijímání těchto typů najdete v tématu [shromáždění dat z rozšíření Azure Diagnostics pro Azure monitor protokolů](azure-storage-iis-table.md) .
 
-| Typ | Informace o tabulce |
+| Type | Informace o tabulce |
 |:-----|:------------------|
 | Protokoly IIS | Objekt BLOB: wad-IIS-LogFiles|
 |Protokoly událostí Windows | Tabulka: WADWindowsEventLogsTable |
@@ -39,7 +40,7 @@ K datovým typům, které se ingestují z účtu úložiště, patří následuj
 
 - Přístup k prostředkům ve vaší virtuální síti, které zapisují protokoly do úložiště.
 - Musí být ve stejné oblasti jako pracovní prostor, ke kterému je propojený.
-- Pokud chcete pro přístup k tomuto účtu úložiště explicitně povolit Log Analytics čtení protokolů z účtu úložiště, vyberte *Povolit důvěryhodné služby MS*.
+- Povolení přístupu Azure Monitor – Pokud jste zvolili omezení přístupu účtu úložiště k vybraným sítím, ujistěte se, že jste tuto výjimku povolili: *pro přístup k tomuto účtu úložiště měli důvěryhodné služby Microsoftu*.
 
 ## <a name="process-to-configure-customer-owned-storage"></a>Postup konfigurace úložiště ve vlastnictví zákazníka
 Základní proces používání vlastního účtu úložiště pro přijímání je následující:
@@ -50,7 +51,12 @@ Základní proces používání vlastního účtu úložiště pro přijímání
 
 Jedinou metodou, kterou je možné vytvořit a odebrat, je REST API. Podrobnosti o konkrétní žádosti rozhraní API vyžadované pro jednotlivé procesy jsou k dispozici v následujících částech.
 
-## <a name="api-request-values"></a>Hodnoty požadavků na rozhraní API
+## <a name="command-line-and-rest-api"></a>Příkazový řádek a REST API
+
+### <a name="command-line"></a>Příkazový řádek
+Pokud chcete vytvořit a spravovat propojené účty úložiště, použijte příkaz [AZ monitor Log-Analytics pracovní prostor propojený-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage). Tento příkaz může propojit účty úložiště a odpojit je od pracovního prostoru a zobrazit seznam propojených účtů úložiště.
+
+### <a name="request-and-cli-values"></a>Hodnoty požadavků a CLI
 
 #### <a name="datasourcetype"></a>dataSourceType 
 
@@ -72,37 +78,7 @@ subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Mic
 ```
 
 
-
-## <a name="get-current-links"></a>Získat aktuální odkazy
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Získat propojené účty úložiště pro určitý typ zdroje dat
-
-#### <a name="api-request"></a>Požadavek rozhraní API
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Odpověď 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-### <a name="get-all-linked-storage-accounts"></a>Získat všechny propojené účty úložiště
+### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>Získat propojené účty úložiště pro všechny typy zdrojů dat
 
 #### <a name="api-request"></a>Požadavek rozhraní API
 
@@ -144,6 +120,34 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
             "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
         }
     ]
+}
+```
+
+
+### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Získat propojené účty úložiště pro určitý typ zdroje dat
+
+#### <a name="api-request"></a>Požadavek rozhraní API
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
+```
+
+#### <a name="response"></a>Odpověď 
+
+```json
+{
+    "properties":
+    {
+        "dataSourceType": "CustomLogs",
+        "storageAccountIds  ": 
+        [  
+            "<storage_account_resource_id_1>",
+            "<storage_account_resource_id_2>"
+        ],
+    },
+    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
+    "name": "CustomLogs",
+    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
 }
 ```
 
@@ -217,7 +221,7 @@ Konfigurace agenta se po několika minutách aktualizuje a přepne se na nové �
 
 ## <a name="manage-storage-account"></a>Spravovat účet úložiště
 
-### <a name="load"></a>Načtení
+### <a name="load"></a>Načítání
 
 Účty úložiště mohou zpracovávat určité zatížení požadavků na čtení a zápis před tím, než začnou žádosti o omezení začínat. Omezení ovlivňuje dobu potřebnou k ingestování protokolů a může způsobit ztrátu dat. Pokud je vaše úložiště přetížené, zaregistrujte další účty úložiště a rozšíříte zatížení mezi nimi. 
 

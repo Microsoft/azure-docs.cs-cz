@@ -3,18 +3,18 @@ title: Azure PowerShell ukázky pro Azure Lab Services | Microsoft Docs
 description: Ukázky Azure PowerShell – skripty, které vám pomůžou se správou cvičení v Azure Lab Services
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d94074acdd4aeef87f322f8e7a9734e5da9a1c32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce7a4f77aa0ea309afb81a54fd2f8f0a8f373e58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483223"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187723"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>Ukázky Azure PowerShell pro Azure Lab Services
 
 Následující tabulka obsahuje odkazy na ukázkové Azure PowerShell skripty pro Azure Lab Services.
 
-| |  |
+| Skript | Popis |
 |---|---|
 |[Přidání externího uživatele do testovacího prostředí](scripts/add-external-user-to-lab.md)| Tento skript PowerShellu přidá externího uživatele do testovacího prostředí v Azure DevTest Labs. |
 |[Přidání imagí z marketplace do testovacího prostředí](scripts/add-marketplace-images-to-lab.md)| Tento skript PowerShellu přidá image z Marketplace do testovacího prostředí v Azure DevTest Labs. |

@@ -16,13 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76263740"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219959"
 ---
-# <a name="templates"></a>Šablony
+# <a name="notification-hubs-templates"></a>Šablony Notification Hubs
 
 Šablony umožňují klientské aplikaci zadat přesný formát oznámení, která chce přijmout. Pomocí šablon může aplikace realizovat několik různých výhod, včetně následujících:
 
@@ -61,7 +62,7 @@ Funkce šablony Notification Hubs umožňuje klientské aplikaci vytvořit speci
 
 Proces je znázorněný na následujícím obrázku:
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![Diagram znázorňující proces používání šablon pro různé platformy](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 Šablona pro registraci klientské aplikace pro iOS je následující:
 
@@ -120,7 +121,7 @@ Zpráva odeslaná do centra oznámení obsahuje následující vlastnosti:
 
 Při použití tohoto vzoru back-end pošle jenom jednu zprávu, aniž by museli ukládat konkrétní možnosti přizpůsobení pro uživatele aplikace. Tento scénář je znázorněný na následujícím obrázku:
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![Diagram znázorňující, jak back-end odesílá jednu zprávu na každou platformu.](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>Postup při registraci šablon
 
@@ -144,7 +145,7 @@ V následující tabulce je uveden jazyk povolený v šablonách:
 
 Výrazy mohou být libovolné z předchozích forem.
 
-Při použití zřetězení musí být celý výraz ohraničený pomocí `{}` . Například, `{$(prop) + ‘ - ’ + $(prop2)}`.
+Při použití zřetězení musí být celý výraz ohraničený pomocí `{}` . Například `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 Například následující šablona není platnou šablonou XML:
 
@@ -158,7 +159,7 @@ Například následující šablona není platnou šablonou XML:
 </tile>
 ```
 
-Jak bylo vysvětleno dříve, při použití zřetězení musí být výrazy zabaleny do složených závorek. Příklad:
+Jak bylo vysvětleno dříve, při použití zřetězení musí být výrazy zabaleny do složených závorek. Například:
 
 ```xml
 <tile>

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961196"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142547"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvářet a spravovat adr
 
 Mapování Gen1 na [Gen2](#gen1-gen2-map)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-powershell/issues)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!div class="checklist"]
 > * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
@@ -81,11 +81,11 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-file-system"></a>Vytvoření systému souborů
+## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Systém souborů funguje jako kontejner pro vaše soubory. Můžete ho vytvořit pomocí `New-AzStorageContainer` rutiny. 
+Kontejner funguje jako systém souborů pro vaše soubory. Můžete ho vytvořit pomocí `New-AzStorageContainer` rutiny. 
 
-Tento příklad vytvoří systém souborů s názvem `my-file-system` .
+Tento příklad vytvoří kontejner s názvem `my-file-system` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 Vytvořte odkaz na adresář pomocí `New-AzDataLakeGen2Item` rutiny. 
 
-Tento příklad přidá adresář s názvem `my-directory` do systému souborů.
+Tento příklad přidá adresář s názvem `my-directory` do kontejneru.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -202,7 +202,7 @@ $properties.Group
 $properties.Owner
 ```
 
-Chcete-li zobrazit seznam obsahu systému souborů, vynechejte `-Path` parametr z příkazu.
+Chcete-li vypsat obsah kontejneru, vynechejte `-Path` parametr z příkazu.
 
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře
 
@@ -270,7 +270,7 @@ Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů
 
 Získat seznam řízení přístupu k adresáři nebo souboru pomocí `Get-AzDataLakeGen2Item` rutiny.
 
-Tento příklad získá seznam řízení přístupu kořenového adresáře **systému souborů** a pak vytiskne seznam řízení přístupu do konzoly.
+Tento příklad získá seznam řízení přístupu kořenového adresáře **kontejneru** a pak vytiskne seznam řízení přístupu do konzoly.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ V tomto příkladu má vlastnící uživatel oprávnění ke čtení, zápisu a 
 
 Pomocí `set-AzDataLakeGen2ItemAclObject` rutiny vytvořte seznam ACL pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele. Potom pomocí `Update-AzDataLakeGen2Item` rutiny potvrďte seznam řízení přístupu.
 
-Tento příklad nastavuje seznam řízení přístupu v kořenovém adresáři **systému souborů** pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele a pak vytiskne seznam řízení přístupu do konzoly.
+Tento příklad nastavuje seznam řízení přístupu v kořenovém adresáři **kontejneru** pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele a pak vytiskne seznam řízení přístupu do konzoly.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -349,9 +349,9 @@ Následující obrázek ukazuje výstup po nastavení seznamu ACL souboru.
 V tomto příkladu mají vlastnící uživatel a vlastnící skupina jenom oprávnění ke čtení a zápisu. Všichni ostatní uživatelé mají oprávnění k zápisu a spouštění. Další informace o seznamech řízení přístupu najdete [v tématu řízení přístupu v Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
 
 
-### <a name="set-acls-on-all-items-in-a-file-system"></a>Nastavení seznamů ACL pro všechny položky v systému souborů
+### <a name="set-acls-on-all-items-in-a-container"></a>Nastavení seznamů ACL pro všechny položky v kontejneru
 
-Můžete použít `Get-AzDataLakeGen2Item` `-Recurse` parametr a spolu s `Update-AzDataLakeGen2Item` rutinou k REKURZIVNÍMU nastavení seznamu ACL pro adresáře a soubory v systému souborů. 
+Můžete použít `Get-AzDataLakeGen2Item` `-Recurse` parametr a spolu s `Update-AzDataLakeGen2Item` rutinou k REKURZIVNÍMU nastavení seznamu ACL pro adresáře a soubory v kontejneru. 
 
 ```powershell
 $filesystemName = "my-file-system"

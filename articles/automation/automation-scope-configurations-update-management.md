@@ -5,15 +5,16 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8770762fa2d2ae6bc0584d75397829298a62e8c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117402"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185887"
 ---
 # <a name="limit-update-management-deployment-scope"></a>Omezení rozsahu nasazení Update Management
 
-Tento článek popisuje, jak pracovat s konfiguracemi oboru při použití funkce [Update Management](automation-update-management.md) k nasazení aktualizací a oprav do vašich virtuálních počítačů. Další informace najdete v tématu [cílení řešení monitorování v Azure monitor (Preview)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
+Tento článek popisuje, jak pracovat s konfiguracemi oboru při použití funkce [Update Management](automation-update-management.md) k nasazení aktualizací a oprav do vašich virtuálních počítačů. Další informace najdete v tématu [cílení řešení monitorování v Azure monitor (Preview)](../azure-monitor/insights/solution-targeting.md). 
 
 ## <a name="about-scope-configurations"></a>O konfiguracích oboru
 
@@ -33,7 +34,7 @@ Omezení rozsahu nasazení Update Management:
 
 5. V podokně úpravy rozbalte položku **Vybrat skupiny počítačů**. V podokně skupiny počítačů se zobrazí uložená hledání, která slouží k vytvoření konfigurace oboru. Uložené hledání, které používá Update Management, je:
 
-    |Name     |Kategorie  |Alias  |
+    |Název     |Kategorie  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     | Aktualizace        | Updates__MicrosoftDefaultComputerGroup         |
 

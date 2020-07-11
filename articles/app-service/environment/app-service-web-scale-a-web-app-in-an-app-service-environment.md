@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74688680"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220554"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>Škálování aplikací ve App Service Environment v1
 V Azure App Service existují obvykle tři věci, které můžete škálovat:
@@ -29,7 +30,7 @@ S ohledem na velikosti pracovních procesů může správce pomocného programu 
 
 Změna jedné položky se provádí prostřednictvím příslušného uživatelského rozhraní zobrazeného pro plány hostované v App Service.  
 
-![][1]
+![Snímek obrazovky, který ukazuje, kde zobrazit podrobnosti plánu služby škálování a plánu služby fondu pracovních procesů.][1]
 
 Nemůžete škálovat prostředí ASP nad rámec počtu dostupných výpočetních prostředků ve fondu pracovních procesů, ve kterém je vaše prostředí ASP.  Pokud v tomto fondu pracovních procesů potřebujete výpočetní prostředky, je potřeba, abyste správce pomocného mechanismu mohli přidat.  Informace o opětovné konfiguraci služby pomocného mechanismu pro čtení najdete tady: [jak nakonfigurovat App Service prostředí][HowtoConfigureASE].  Můžete také využít výhod funkcí automatického škálování pomocného mechanismu, abyste mohli přidat kapacitu na základě plánu nebo metrik.  Další informace o konfiguraci automatického škálování pro samotný prostředí přihlašování k systému najdete v tématu [Konfigurace automatického škálování pro App Service Environment][ASEAutoscale].
 
@@ -40,14 +41,14 @@ Při prvním vytvoření webové aplikace v App Service Environment začíná s 
 
 Pokud má vaše pomocného mechanismu dostatek kapacity, je to poměrně jednoduché.  Přejdete na plán App Service, který obsahuje weby, které chcete škálovat, a vyberte škálovat.  Tím se otevře uživatelské rozhraní, kde můžete ručně nastavit škálování pro ASP nebo nakonfigurovat pravidla automatického škálování pro ASP.  K ručnímu škálování aplikace stačí nastavit ***škálování*** na ***počet instancí, který zadáte ručně***.  Z tohoto místa buď přetáhněte posuvník na požadované množství, nebo ho zadejte do pole vedle posuvníku.  
 
-![][2] 
+![Snímek obrazovky, který ukazuje, kde můžete nastavit měřítko pro ASP nebo nakonfigurovat pravidla automatického škálování pro ASP.][2] 
 
 Pravidla automatického škálování pro ASP v pomocném mechanismu služby fungují stejně jako normálně.  Můžete vybrat ***procento CPU*** v části ***škálovat podle*** a vytvořit pravidla automatického škálování pro ASP na základě PROCENTUÁLNÍho podílu procesoru, nebo můžete vytvořit složitější pravidla pomocí ***pravidel plánování a výkonu***.  Pokud chcete zobrazit podrobnější informace o konfiguraci automatického škálování, postupujte podle pokynů [v tématu škálování aplikace v Azure App Service][AppScale]. 
 
 ### <a name="worker-pool-selection"></a>Výběr fondu pracovních procesů
 Jak bylo uvedeno dříve, k výběru fondu pracovních procesů se dostanete z uživatelského rozhraní ASP.  Otevřete okno pro ASP, u kterého chcete škálovat a vyberte fond pracovních procesů.  Zobrazí se všechny fondy pracovních procesů, které jste nakonfigurovali v App Service Environment.  Pokud máte jenom jeden fond pracovních procesů, zobrazí se jenom jeden z nich.  Pokud chcete změnit, na jaký fond pracovních procesů je ASP, stačí vybrat fond pracovních procesů, do kterého chcete App Service plán přesunout.  
 
-![][3]
+![Snímek obrazovky, který ukazuje, kde můžete změnit, na jaký fond pracovních procesů je vaše prostředí ASP.][3]
 
 Před přesunutím ASP z jednoho pracovního fondu na jiný je důležité mít jistotu, že budete mít dostatečnou kapacitu pro ASP.  V seznamu fondů pracovních procesů není pouze uvedený název fondu pracovních procesů, ale můžete také zjistit, kolik pracovních procesů je k dispozici v daném fondu pracovních procesů.  Ujistěte se, že je k dispozici dostatek instancí pro zahrnutí vašeho plánu App Service.  Pokud ve fondu pracovních procesů potřebujete víc výpočetních prostředků, na které chcete přejít, potom správce pomocného mechanismu přidejte.  
 

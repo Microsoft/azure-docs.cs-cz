@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7666ee1a81c2ed93ee5e246b3ec79f056f9d63ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078721"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187774"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Získat data o počasí od partnerů počasí
 
@@ -153,7 +153,7 @@ Pokud chcete zadat dotaz na data o počasí pomocí REST API FarmBeats, postupuj
 
 1. V Swagger FarmBeats datacentra ( https://yourdatahub.azurewebsites.net/swagger) , přejděte na rozhraní/WeatherDataLocation API a vytvořte žádost o získání. Odpověď bude obsahovat objekty/WeatherDataLocation vytvořené pro umístění (zeměpisná šířka/délka), která byla zadána jako součást běhu úlohy. Poznamenejte si **ID** a **weatherDataModelId** objektu (y).
 
-2. Pro **weatherDataModelId** , jak je uvedeno v kroku 1, vytvořte/WEATHERDATAMODEL API Get/{ID}. "Datový model počasí" obsahuje veškerá metadata a podrobnosti o přijatých datech o počasí. Například **míra počasí** v objektu **datového modelu počasí** obsahuje podrobnosti o tom, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Třeba
+2. Pro **weatherDataModelId** , jak je uvedeno v kroku 1, vytvořte/WEATHERDATAMODEL API Get/{ID}. "Datový model počasí" obsahuje veškerá metadata a podrobnosti o přijatých datech o počasí. Například **míra počasí** v objektu **datového modelu počasí** obsahuje podrobnosti o tom, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Příklad:
 
    ```json
    {
@@ -211,6 +211,11 @@ Pokud chcete zadat dotaz na data o počasí pomocí REST API FarmBeats, postupuj
 
 V předchozím příkladu má odpověď data pro dvě časová razítka spolu s názvem míry ("teplota") a hodnotami hlášených povětrnostních dat ve dvou časových razítkech. Pro interpretaci typu a jednotky hlášených hodnot budete potřebovat odkaz na přidružený datový model počasí (jak je popsáno v kroku 2 výše).
 
+## <a name="troubleshoot-job-failures"></a>Řešení potíží s chybami úloh
+
+Pokud chcete řešit problémy s chybami úloh, můžete vyhledat protokoly úloh. Postupujte prosím podle následujících [kroků](troubleshoot-azure-farmbeats.md#weather-data-job-failures) .
+
+
 ## <a name="appendix"></a>Příloha
 
 |        Partner   |  Podrobnosti   |
@@ -224,7 +229,7 @@ V předchozím příkladu má odpověď data pro dvě časová razítka spolu s 
 | DockerDetails - partnerCredentials | přihlašovací údaje pro volání rozhraní API partnerského serveru v Docker Partner musí zákazníkům poskytnout tyto informace na základě ověřovacího mechanizmu, který je podporován například. Uživatelské jméno/heslo nebo klíče rozhraní API. |
 | partnerType | "Počasí" (jiné typy partnerů v FarmBeats jsou "senzor" a "satelitní")  |
 |  name   |   Požadovaný název partnera v FarmBeats systému   |
-|  description |  Description   |
+|  Popis |  Popis   |
 
 ## <a name="next-steps"></a>Další kroky
 

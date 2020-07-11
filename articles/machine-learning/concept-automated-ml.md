@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f12f080f2b1b7379b622fe4d7c5e0b35e358d0ef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041723"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199877"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -105,7 +105,7 @@ Naučte se používat [vzdálený výpočetní cíl](how-to-auto-train-remote.md
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 
-## <a name="feature-engineering"></a>Návrh funkcí
+## <a name="feature-engineering"></a>Příprava atributů
 
 Inženýrské funkce je proces využití dat v doméně k vytváření funkcí, které pomůžou lépe zjistit algoritmy ML. V Azure Machine Learning se pro usnadnění metodologie funkcí používají způsoby škálování a normalizace. Souhrnně jsou tyto techniky a inženýry funkcí označovány jako featurization.
 
@@ -118,7 +118,7 @@ Pro automatizované experimenty strojového učení se featurization aplikuje au
 
 V každém automatizovaném experimentu Machine Learning se vaše data automaticky škálují nebo normalizují, aby se algoritmy lépe prováděly. Během školení modelů se u každého modelu použije jedna z následujících technik škálování nebo normalizace. Přečtěte si, jak AutoML pomáhá [zabránit přebudování a nevyváženým datům](concept-manage-ml-pitfalls.md) ve vašich modelech.
 
-|&nbsp; & &nbsp; Normalizace škálování| Description |
+|&nbsp; & &nbsp; Normalizace škálování| Popis |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardizace funkcí odebráním střední odchylky a měřítka jednotky  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformuje funkce změnou velikosti jednotlivých funkcí na minimum a maximum tohoto sloupce.  |
@@ -220,21 +220,21 @@ Následující nastavení vám umožní nakonfigurovat experiment automatizovan�
 
 | |Sada Python SDK|Prostředí pro web Studio|
 ----|:----:|:----:
-Rozdělit data na sady vlaků a ověření| ✓|✓
-Podporuje úlohy ML: klasifikace, regrese a prognózy.| ✓| ✓
-Optimalizuje se na základě primární metriky.| ✓| ✓
-Podporuje COMPUTE AML jako cíl výpočtů. | ✓|✓
-Konfigurace horizontu předpovědi, cílové prodlevy & posuvné okno|✓|✓
-Nastavení kritérií ukončení |✓|✓ 
-Nastavit souběžné iterace| ✓|✓
-Odkládací sloupce| ✓|✓
-Algoritmy blokování|✓|✓
-Vzájemné ověřování |✓|✓
-Podporuje školení u clusterů Azure Databricks.| ✓|
-Zobrazit názvy navržených funkcí|✓|
-Featurization souhrn| ✓|
-Featurization pro svátky|✓|
-Úrovně podrobností souboru protokolu| ✓|
+|**Rozdělit data na sady vlaků a ověření**| ✓|✓
+|**Podporuje úlohy ML: klasifikace, regrese a prognózy.**| ✓| ✓
+|**Optimalizuje se na základě primární metriky.**| ✓| ✓
+|**Podporuje COMPUTE AML jako cíl výpočtů.** | ✓|✓
+|**Konfigurace horizontu předpovědi, cílové prodlevy & posuvné okno**|✓|✓
+|**Nastavení kritérií ukončení** |✓|✓ 
+|**Nastavit souběžné iterace**| ✓|✓
+|**Odkládací sloupce**| ✓|✓
+|**Algoritmy blokování**|✓|✓
+|**Vzájemné ověřování** |✓|✓
+|**Podporuje školení u clusterů Azure Databricks.**| ✓|
+|**Zobrazit názvy navržených funkcí**|✓|
+|**Featurization souhrn**| ✓|
+|**Featurization pro svátky**|✓|
+|**Úrovně podrobností souboru protokolu**| ✓|
 
 ### <a name="model-settings"></a>Nastavení modelu
 
@@ -242,11 +242,11 @@ Tato nastavení je možné použít pro nejlepší model v důsledku automatizov
 
 | |Sada Python SDK|Prostředí pro web Studio|
 |----|:----:|:----:|
-|Nejlepší registrace modelu, nasazení, vyjasnění| ✓|✓|
-|Povolit &ové kompletování modelů sady zásobníku| ✓|✓|
-|Zobrazit nejlepší model založený na neprimární metrikě|✓||
-|Povolit/zakázat kompatibilitu s modelem ONNX|✓||
-|Testování modelu | ✓| |
+|**Nejlepší registrace modelu, nasazení, vyjasnění**| ✓|✓|
+|**Povolit &ové kompletování modelů sady zásobníku**| ✓|✓|
+|**Zobrazit nejlepší model založený na neprimární metrikě**|✓||
+|**Povolit/zakázat kompatibilitu s modelem ONNX**|✓||
+|**Testování modelu** | ✓| |
 
 ### <a name="run-control-settings"></a>Spustit nastavení ovládacího prvku
 
@@ -254,10 +254,10 @@ Tato nastavení umožňují kontrolovat a řídit spouštění experimentů a je
 
 | |Sada Python SDK|Prostředí pro web Studio|
 |----|:----:|:----:|
-|Spustit souhrnnou tabulku| ✓|✓|
-|Zrušit spuštění & podřízených běhů| ✓|✓|
-|Získat guardrails| ✓|✓|
-|Pozastavit & pokračování v běhu| ✓| |
+|**Spustit souhrnnou tabulku**| ✓|✓|
+|**Zrušit spuštění & podřízených běhů**| ✓|✓|
+|**Získat guardrails**| ✓|✓|
+|**Pozastavit & pokračování v běhu**| ✓| |
 
 <a name="use-with-onnx"></a>
 
@@ -279,7 +279,7 @@ Kurzy představují ucelené Úvodní příklady scénářů AutoML.
 
  + V **případě nedostatku nebo prostředí bez kódu**si přečtěte [kurz: vytváření automatizovaných modelů klasifikace ml pomocí Azure Machine Learning studia](tutorial-first-experiment-automated-ml.md).
 
-Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Třeba 
+Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Příklad: 
 
 + Konfigurovat nastavení pro automatické experimenty školení
     + V Azure Machine Learning Studiu [použijte tento postup](how-to-use-automated-ml-for-ml-models.md). 

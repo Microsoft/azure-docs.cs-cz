@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514046"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182011"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Vytvoření a Správa balíčku pro podporu pro řady StorSimple 8000
 
@@ -23,7 +23,7 @@ Tento kurz obsahuje podrobné pokyny k vytvoření a správě balíčku pro podp
 
 ## <a name="create-a-support-package"></a>Vytvoření balíčku pro podporu
 
-V některých případech budete muset ručně vytvořit balíček pro podporu prostřednictvím Windows PowerShell pro StorSimple. Příklad:
+V některých případech budete muset ručně vytvořit balíček pro podporu prostřednictvím Windows PowerShell pro StorSimple. Například:
 
 * Pokud potřebujete před sdílením pomocí podpora Microsoftu odebrat citlivé informace ze svých souborů protokolu.
 * Pokud máte potíže při nahrávání balíčku z důvodu problémů s připojením.
@@ -64,7 +64,7 @@ Ručně vytvořený balíček podpory můžete sdílet s podpora Microsoftu pře
 
 Pomocí rutiny Export-HcsSupportPackage můžete použít následující parametry.
 
-| Parametr | Požadováno/volitelné | Description |
+| Parametr | Požadováno/volitelné | Popis |
 | --- | --- | --- |
 | `-Path` |Vyžadováno |Slouží k zadání umístění sdílené síťové složky, ve které je balíček podpory umístěný. |
 | `-EncryptionPassphrase` |Vyžadováno |Použijte k poskytnutí přístupového hesla, který vám může pomoci s šifrováním balíčku pro podporu. |
@@ -98,9 +98,11 @@ Chcete-li upravit balíček podpory před tím, než ho nahrajete na podpora Mic
     ![Upravit balíček pro podporu](./media/storsimple-8000-create-manage-support-package/IC750706.png)
 5. Až budete vyzváni k zadání šifrovacího hesla, zadejte heslo, které jste použili při vytváření balíčku podpory.
    
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
-   
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Open-HcsSupportPackage at command pipeline position 1
+
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 6. Přejděte do složky, která obsahuje soubory protokolu. Vzhledem k tomu, že soubory protokolu jsou nyní dekomprimovány a dešifrovány, budou mít původní přípony souborů. Úpravou těchto souborů odeberte informace specifické pro zákazníka, jako jsou názvy svazků a IP adresy zařízení, a soubory uložte.
 7. Zavřete soubory pro jejich komprimaci pomocí nástroje gzip a zašifrujte je pomocí AES-256. Jedná se o rychlost a zabezpečení při přenosu balíčku pro podporu přes síť. Chcete-li zkomprimovat a zašifrovat soubory, zadejte následující:
    
@@ -109,33 +111,37 @@ Chcete-li upravit balíček podpory před tím, než ho nahrajete na podpora Mic
     ![Upravit balíček pro podporu](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. Po zobrazení výzvy zadejte šifrovací heslo pro upravený balíček pro podporu.
    
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Close-HcsSupportPackage at command pipeline position 1
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 9. Zapište si nové přístupové heslo, abyste ho mohli při vyžádání sdílet s podpora Microsoftu.
 
 ### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>Příklad: úprava souborů v balíčku pro podporu na sdílené složce chráněné heslem
 
 Následující příklad ukazuje, jak dešifrovat, upravit a znovu zašifrovat balíček pro podporu.
 
-        PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
+```powershell
+PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
 
-        PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
+cmdlet Open-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
+cmdlet Close-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32>
+```
 
 ## <a name="next-steps"></a>Další kroky
 

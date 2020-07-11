@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: de637bc30420ce494e553100a9f1126e88027bd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af19586807bf676f1f449f7402b364a054721eec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704127"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187587"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Použití PowerShellu ke správě Traffic Manager
 
@@ -30,7 +30,7 @@ Azure Traffic Manager se konfiguruje pomocí kolekce nastavení označované jak
 
 Každý profil Traffic Manager představuje prostředek typu "TrafficManagerProfiles". Na úrovni REST API je identifikátor URI pro každý profil následující:
 
-    https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
+`https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}`
 
 ## <a name="setting-up-azure-powershell"></a>Nastavení Azure PowerShell
 
@@ -61,11 +61,11 @@ Parametry jsou popsány v následující tabulce:
 
 | Parametr | Popis |
 | --- | --- |
-| Name |Název prostředku profilu Traffic Manager. Profily ve stejné skupině prostředků musí mít jedinečné názvy. Tento název je oddělený od názvu DNS, který se používá pro dotazy DNS. |
+| Název |Název prostředku profilu Traffic Manager. Profily ve stejné skupině prostředků musí mít jedinečné názvy. Tento název je oddělený od názvu DNS, který se používá pro dotazy DNS. |
 | ResourceGroupName |Název skupiny prostředků, která obsahuje prostředek profilu. |
 | TrafficRoutingMethod |Určuje metodu směrování provozu, pomocí které se určí, který koncový bod se vrátí v odpovědi na dotaz DNS. Možné hodnoty jsou Performance, vážená nebo priorita. |
 | RelativeDnsName |Určuje část názvu hostitele názvu DNS, kterou poskytuje tento Traffic Manager profil. Tato hodnota je kombinována s názvem domény DNS používaným službou Azure Traffic Manager k vytvoření plně kvalifikovaného názvu domény (FQDN) profilu. Například když nastavíte hodnotu "contoso", bude se jednat o "contoso.trafficmanager.net". |
-| Hodnota TTL |Určuje hodnotu TTL (Time to Live) služby DNS v sekundách. Tato hodnota TTL informuje místní překladače DNS a klienty DNS, jak dlouho ukládat odpovědi DNS na tento profil Traffic Manager. |
+| TTL |Určuje hodnotu TTL (Time to Live) služby DNS v sekundách. Tato hodnota TTL informuje místní překladače DNS a klienty DNS, jak dlouho ukládat odpovědi DNS na tento profil Traffic Manager. |
 | MonitorProtocol |Určuje protokol, který se má použít k monitorování stavu koncového bodu. Možné hodnoty jsou "HTTP" a "HTTPS". |
 | MonitorPort |Určuje port TCP, který se používá ke sledování stavu koncového bodu. |
 | MonitorPath |Určuje cestu relativní k názvu domény koncového bodu, který se používá k testování stavu koncového bodu. |

@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 557dc3ad48f8f21d8898e2beb5d940d66058e90c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bd988029b8d78a29de38e995c36ee1860d8cda9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744986"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187349"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Spravovat plány v Azure Automation
 
@@ -29,15 +30,15 @@ Pokud chcete naplánovat spuštění Runbooku v Azure Automation v zadanou dobu,
 
 Rutiny v následující tabulce vytvářejí a spravují plány automatizace pomocí PowerShellu. Dodávají se jako součást [AZ moduls](modules.md#az-modules). 
 
-| Rutiny | Description |
+| Rutiny | Popis |
 |:--- |:--- |
-| [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Načte plán. |
-| [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Načte naplánované Runbooky. |
-| [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Vytvoří nový plán. |
-| [Registrovat – AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Přidruží sadu Runbook k plánu. |
-| [Remove-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Odebere plán. |
-| [Set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Nastaví vlastnosti pro existující plán. |
-| [Zrušit registraci – AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Dissociates sadu Runbook z plánu. |
+| [Get-AzAutomationSchedule](/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Načte plán. |
+| [Get-AzAutomationScheduledRunbook](/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Načte naplánované Runbooky. |
+| [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) |Vytvoří nový plán. |
+| [Registrovat – AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) |Přidruží sadu Runbook k plánu. |
+| [Remove-AzAutomationSchedule](/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) |Odebere plán. |
+| [Set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Nastaví vlastnosti pro existující plán. |
+| [Zrušit registraci – AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Dissociates sadu Runbook z plánu. |
 
 ## <a name="create-a-schedule"></a>Vytvořit plán
 
@@ -64,7 +65,7 @@ Můžete vytvořit nový plán pro Runbooky v Azure Portal nebo pomocí PowerShe
 
 ### <a name="create-a-new-schedule-with-powershell"></a>Vytvoření nového plánu pomocí PowerShellu
 
-K vytvoření plánů použijte rutinu [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) . Zadejte čas spuštění plánu a frekvenci, kterou má spustit. Následující příklady ukazují, jak vytvořit mnoho různých scénářů plánování.
+K vytvoření plánů použijte rutinu [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) . Zadejte čas spuštění plánu a frekvenci, kterou má spustit. Následující příklady ukazují, jak vytvořit mnoho různých scénářů plánování.
 
 #### <a name="create-a-one-time-schedule"></a>Vytvoření jednorázového plánu
 
@@ -127,7 +128,7 @@ Runbook můžete spojit s víc plány a k jednomu plánu může být připojený
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>Připojení plánu k Runbooku pomocí PowerShellu
 
-K propojení plánu použijte rutinu [Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) . Parametry Runbooku můžete zadat pomocí parametru Parametry . Další informace o tom, jak zadat hodnoty parametrů, najdete [v tématu Spuštění Runbooku v Azure Automation](../automation-starting-a-runbook.md).
+K propojení plánu použijte rutinu [Register-AzAutomationScheduledRunbook](/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) . Parametry Runbooku můžete zadat pomocí parametru Parametry . Další informace o tom, jak zadat hodnoty parametrů, najdete [v tématu Spuštění Runbooku v Azure Automation](../start-runbooks.md).
 Následující příklad ukazuje, jak propojit plán k sadě Runbook pomocí rutiny Azure Resource Manager s parametry.
 
 ```azurepowershell-interactive
@@ -163,7 +164,7 @@ Když plán zakážete, na tento plán se už nespustí žádná sada Runbook, n
 
 ### <a name="disable-a-schedule-with-powershell"></a>Zakázání plánu pomocí PowerShellu
 
-Pomocí rutiny [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) můžete změnit vlastnosti stávajícího plánu. Pokud chcete plán zakázat, zadejte pro parametr hodnotu false `IsEnabled` .
+Pomocí rutiny [set-AzAutomationSchedule](/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) můžete změnit vlastnosti stávajícího plánu. Pokud chcete plán zakázat, zadejte pro parametr hodnotu false `IsEnabled` .
 
 Následující příklad ukazuje, jak zakázat plán pro sadu Runbook pomocí rutiny Azure Resource Manager.
 

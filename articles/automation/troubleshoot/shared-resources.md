@@ -8,11 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680888"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187162"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Řešení potíží se sdílenými prostředky
 
@@ -32,7 +33,7 @@ Vzhledem k tomu, že import modulů PowerShellu je složitý proces s více krok
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný pomocí rutiny [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) . Pak můžete modul znovu importovat.
+Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný pomocí rutiny [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) . Pak můžete modul znovu importovat.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -69,7 +70,7 @@ Některé běžné důvody, proč se modul nemusí úspěšně naimportovat do A
 * Struktura neodpovídá struktuře, která je potřebná pro automatizaci.
 * Modul závisí na jiném modulu, který nebyl nasazen do vašeho účtu Automation.
 * V modulu chybí závislosti ve složce.
-* Rutina [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) se používá k nahrání modulu a neposkytli jste úplnou cestu k úložišti, nebo jste modul nespustili pomocí veřejně přístupné adresy URL.
+* Rutina [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) se používá k nahrání modulu a neposkytli jste úplnou cestu k úložišti, nebo jste modul nespustili pomocí veřejně přístupné adresy URL.
 
 #### <a name="resolution"></a>Řešení
 

@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: inventory, automation, change, tracking
 ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603107"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185717"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Správa shromažďování dat pro inventarizaci z virtuálních počítačů
 
@@ -24,13 +24,13 @@ Azure Automation Change Tracking a inventář poskytují uživatelské rozhraní
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
+Pokud nemáte předplatné Azure, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/).
 
 V tomto článku se předpokládá, že máte virtuální počítač, který se má povolit s Change Tracking a inventářem. Pokud nemáte virtuální počítač Azure, můžete [vytvořit virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="enable-inventory-collection-from-the-vm-resource-page"></a>Povolit shromažďování inventáře ze stránky prostředku virtuálního počítače
 
@@ -131,5 +131,5 @@ Odebrání virtuálního počítače ze správy Change Tracking a inventáře:
 ## <a name="next-steps"></a>Další kroky
 
 * Podrobnosti o práci s funkcí najdete v tématu [správa Change Tracking a inventáře](change-tracking-file-contents.md).
-* Další informace o sledování změn softwaru najdete v tématu [sledování změn softwaru ve vašem prostředí pomocí Change Tracking](../log-analytics/log-analytics-change-tracking.md).
+* Další informace o sledování změn softwaru najdete v tématu [sledování změn softwaru ve vašem prostředí pomocí Change Tracking](./change-tracking.md).
 * Řešení obecných problémů s funkcí najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).

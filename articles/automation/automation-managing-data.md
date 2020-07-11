@@ -5,11 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343050"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186159"
 ---
 # <a name="management-of-azure-automation-data"></a>Správa dat služby Azure Automation
 
@@ -36,9 +37,9 @@ Informace o podpoře TLS 1,2 s agentem Log Analytics pro systémy Windows a Linu
 |Platforma/jazyk | Podpora | Další informace |
 | --- | --- | --- |
 |Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2.  | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
-| Windows 8,0 – 10 | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
-| Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
+| Windows 8,0 – 10 | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](/windows-server/security/tls/tls-registry-settings) .  |
 
 ## <a name="data-retention"></a>Uchovávání dat
 
@@ -46,11 +47,11 @@ Když prostředek odstraníte z Azure Automation, uchová se po několik dní pr
 
 Následující tabulka shrnuje zásady uchovávání informací pro různé prostředky.
 
-| Data | Zásada |
+| Data | Zásady |
 |:--- |:--- |
 | Účty |Účet se trvale odebere 30 dní poté, co ho uživatel odstraní. |
 | Prostředky |Asset se trvale odebere 30 dní poté, co ho uživatel odstraní nebo 30 dní poté, co uživatel odstraní účet, který má Asset. |
-| Uzly DSC |Uzel DSC se trvale odebere 30 dnů po zrušení registrace účtu Automation pomocí Azure Portal nebo rutiny [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) ve Windows PowerShellu. Uzel je také trvale odebrán 30 dní poté, co uživatel odstraní účet, který obsahuje uzel. |
+| Uzly DSC |Uzel DSC se trvale odebere 30 dnů po zrušení registrace účtu Automation pomocí Azure Portal nebo rutiny [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) ve Windows PowerShellu. Uzel je také trvale odebrán 30 dní poté, co uživatel odstraní účet, který obsahuje uzel. |
 | Úlohy |Úloha je odstraněna a trvale odebrána 30 dní po provedení změny, například po dokončení úlohy, zastavení nebo pozastavení. |
 | Moduly |Modul se trvale odebere 30 dní poté, co ho uživatel odstraní nebo 30 dní poté, co uživatel odstraní účet, který obsahuje daný modul. |
 | Konfigurace uzlů/soubory MOF |Stará konfigurace uzlu je trvale odebrána 30 dní po vygenerování nové konfigurace uzlu. |
@@ -65,7 +66,7 @@ Když odstraníte účet služby Automation v Azure, odstraní se všechny objek
 
 ### <a name="runbooks"></a>Runbooky
 
-Runbooky můžete exportovat do souborů skriptu pomocí rutiny Azure Portal nebo rutiny [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) ve Windows PowerShellu. Tyto soubory skriptu můžete importovat do jiného účtu Automation, jak je popsáno v tématu [Správa runbooků v Azure Automation](manage-runbooks.md).
+Runbooky můžete exportovat do souborů skriptu pomocí rutiny Azure Portal nebo rutiny [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) ve Windows PowerShellu. Tyto soubory skriptu můžete importovat do jiného účtu Automation, jak je popsáno v tématu [Správa runbooků v Azure Automation](manage-runbooks.md).
 
 ### <a name="integration-modules"></a>Integrační moduly
 
@@ -79,8 +80,7 @@ Pomocí rutin se nedají načíst hodnoty šifrovaných proměnných nebo polí 
 
 ### <a name="dsc-configurations"></a>Konfigurace DSC
 
-Konfigurace DSC můžete exportovat do souborů skriptu pomocí Azure Portal nebo rutiny [Export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
-) ve Windows PowerShellu. Tyto konfigurace můžete importovat a používat v jiném účtu Automation.
+Konfigurace DSC můžete exportovat do souborů skriptu pomocí Azure Portal nebo rutiny [Export-AzAutomationDscConfiguration](/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0) ve Windows PowerShellu. Tyto konfigurace můžete importovat a používat v jiném účtu Automation.
 
 ## <a name="geo-replication-in-azure-automation"></a>Geografická replikace v Azure Automation
 
@@ -102,4 +102,4 @@ Služba geografického replikace pro automatizaci není dostupná přímo pro ex
 
 * Další informace o zabezpečených assetech v Azure Automation najdete v tématu [šifrování zabezpečených prostředků v Azure Automation](automation-secure-asset-encryption.md).
 
-* Další informace o geografické replikaci najdete v tématu [vytváření a používání aktivní geografické replikace](../sql-database/sql-database-active-geo-replication.md).
+* Další informace o geografické replikaci najdete v tématu [vytváření a používání aktivní geografické replikace](../azure-sql/database/active-geo-replication-overview.md).

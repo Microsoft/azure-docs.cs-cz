@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836086"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171937"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementace omezující navigace v Azure Kognitivní hledání
 
@@ -283,10 +284,12 @@ V podrobném procházení podrobností obvykle chcete zahrnout pouze dokumenty, 
 
 Výsledky omezující vlastnosti jsou dokumenty nalezené ve výsledcích hledání, které odpovídají termínům omezující podmínky. V následujícím příkladu jsou ve výsledcích hledání pro *cloud computingu*254 položek *interní specifikace* jako typ obsahu. Položky nejsou nutně vzájemně exkluzivní. Pokud položka splňuje kritéria obou filtrů, počítá se v každé z nich. Tato duplicita je možná při vytváření omezujících podmínek pro `Collection(Edm.String)` pole, která se často používají k implementaci označování dokumentu.
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 Obecně platí, že pokud zjistíte, že výsledky omezující vlastnosti jsou konzistentně příliš velké, doporučujeme přidat další filtry, abyste uživatelům poskytli více možností pro zúžení hledání.
 
@@ -344,7 +347,7 @@ Pro číselná data můžete použít seznam hodnot.  Vezměte v úvahu rozsah o
 
 Chcete-li určit rozsah omezujících vlastností, jako je například na předchozím snímku obrazovky, použijte seznam hodnot:
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
 Každý rozsah je sestaven jako výchozí bod hodnotou 0, což je hodnota ze seznamu jako koncový bod a pak se ořízne předchozí rozsah, aby bylo možné vytvořit diskrétní intervaly. Azure Kognitivní hledání provádí tyto věci jako součást omezující navigace. Nemusíte psát kód pro strukturování každého intervalu.
 
@@ -378,7 +381,7 @@ Při práci s výsledky hledání Sledujte adresu URL pro změny v vytváření 
 
 1. Pokud chcete používat funkce mapování ukázkové aplikace, Získejte klíč mapy Bing z centra pro vývojáře pro [mapy Bing](https://www.bingmapsportal.com/). Vložte ho přes existující klíč na `index.cshtml` stránku. `BingApiKey`Nastavení v `Web.config` souboru se nepoužívá. 
 
-2. Spusťte aplikaci. Pořídit volitelnou prohlídku nebo zrušit dialog.
+2. Aplikaci spusťte. Pořídit volitelnou prohlídku nebo zrušit dialog.
    
 3. Zadejte hledaný termín, například "analytika", a klikněte na ikonu hledání. Dotaz se rychle spustí.
    

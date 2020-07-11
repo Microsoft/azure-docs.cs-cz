@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63b534f67aa5cf39f7549a467be28ec1212897d2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84265314"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86172005"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak používat modul plug-in Microsoft Smooth Streaming pro rozhraní Adobe Open Source Media Framework  
 ## <a name="overview"></a>Přehled
@@ -59,7 +60,7 @@ Další informace o statickém a dynamickém načítání najdete na stránce of
 ### <a name="ss-for-osmf-static-loading"></a>SS pro statické načtení OSMF
 Následující fragment kódu ukazuje, jak načíst modul plug-in SS pro OSMF staticky a přehrát základní video pomocí třídy OSMF MediaFactory. Před zahrnutím SS pro kód OSMF Prosím zajistěte, aby odkaz na projekt zahrnoval statický modul plug-in MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC.
 
-```
+```csharp
 package 
 {
 
@@ -195,7 +196,9 @@ package
 ### <a name="ss-for-osmf-dynamic-loading"></a>SS pro dynamické načítání OSMF
 Následující fragment kódu ukazuje, jak dynamicky načíst modul plug-in SS pro OSMF a přehrát základní video pomocí třídy MediaFactory OSMF. Před zahrnutím SS pro OSMF kód zkopírujte dynamický modul plug-in "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" do složky projektu, pokud chcete načíst pomocí protokolu souborů nebo zkopírovat na webovém serveru pro načtení HTTP. V odkazech na projekt není nutné zahrnout "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC".
 
-balíček
+```csharp
+package 
+{
 
     import flash.display.*;
     import org.osmf.media.*;
@@ -325,6 +328,7 @@ balíček
 
     }
 }
+```
 
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Přehrávání nevracení médií pomocí dynamického modulu plug-in ODMF SS
 Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráváním médií (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/). K přidání Smooth Streaming přehrávání obsahu do SMP můžete použít modul plug-in SS pro OSMF. Uděláte to tak, že zkopírujete soubor "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" pod webový server pro načtení HTTP pomocí následujících kroků:
@@ -336,49 +340,53 @@ Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráv
    **Poznámka:** Webový server obsahu potřebuje platné crossdomain.xml. 
 4. Zkopírujte a vložte kód na jednoduchou stránku HTML pomocí oblíbeného textového editoru, jako je například v následujícím příkladu:
 
-        <html>
-        <body>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
-        </embed>
-        </object>
-        </body>
-        </html>
-
+    ```html
+    <html>
+    <body>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
+    </embed>
+    </object>
+    </body>
+    </html>
+    ```
 
 
 1. Přidejte do kódu pro vložení Smooth Streaming modul plug-in OSMF a uložte ho.
    
-        <html>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
-        </embed>
-        </object>
-        </html>
+    ```html
+    <html>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
+    </embed>
+    </object>
+    </html>
+    ```
+
 2. Uložte stránku HTML a publikujte ji na webový server. Přejděte na publikovanou webovou stránku pomocí &reg; internetového prohlížeče povoleného v přehrávači Flash (Internet Explorer, Chrome, Firefox atd.).
 3. Užívejte Smooth Streaming obsahu uvnitř Adobe &reg; Flash &reg; Playeru.
 

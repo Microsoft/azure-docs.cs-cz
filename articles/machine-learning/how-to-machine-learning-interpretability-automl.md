@@ -1,5 +1,5 @@
 ---
-title: Vysvětlení v automatizovaném ML
+title: Vysvětlení v automatizovaných ML (Preview)
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak získat vysvětlení toho, jak model automatizovaného ML určuje důležitost funkcí a že při použití Azure Machine Learning SDK je předpovědi.
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: mesameki
 author: mesameki
-ms.date: 03/11/2020
-ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: af3fe7bffbf985936a1648088daaf1a294a69905
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430525"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206597"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Výklad: vysvětlení modelů v automatizovaném strojovém učení
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Výklad: vysvětlení modelů v automatizovaném strojovém učení (Preview)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -29,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 - Povolit vizualizace, které vám pomůžou zobrazit vzory v datech a vysvětlení.
 - Implementujte výklad při odvozování nebo bodování.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Funkce pro vyhodnocení. `pip install azureml-interpret azureml-contrib-interpret`Pro získání potřebných balíčků spusťte.
 - Znalosti o sestavování automatizovaných experimentů ML. Další informace o tom, jak používat sadu Azure Machine Learning SDK, získáte v tomto [kurzu regresní model](tutorial-auto-train-models.md) nebo v tématu Jak [Konfigurovat automatizované experimenty ml](how-to-configure-auto-train.md).

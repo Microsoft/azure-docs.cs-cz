@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 191c6d411418229d40b10704ea14d5a536c0d5f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110619"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184544"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -95,7 +95,7 @@ Pokud je směrování červené, znamená to, že je součástí nejméně jedn�
 NPM používá mechanismus pravděpodobnostní pro přiřazení pravděpodobnosti chyby každé síťové cestě, segmentu sítě a směrování sítě v závislosti na počtu nezdravých cest, které jsou součástí. Protože segmenty sítě a směrování se stanou součástí většího počtu špatných cest, zvyšují se pravděpodobnost selhání, která jsou k nim přidružená. Tento algoritmus funguje nejlépe tehdy, když máte spoustu uzlů s NPM agentem, který se navzájem připojuje. tím se zvyšuje počet datových bodů pro výpočet pravděpodobnosti selhání.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Jak můžu vytvářet upozornění v NPM?
-Podrobné pokyny najdete [v části s výstrahami v dokumentaci](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) .
+Kvůli problému se aktuálně nedaří vytvořit výstrahy z uživatelského rozhraní NPM. Vytvořte prosím výstrahy ručně.
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Jaké jsou výchozí Log Analytics dotazy na výstrahy
 Dotaz na sledování výkonu
@@ -129,7 +129,7 @@ NetworkMonitoring
  | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
 ```
 
-Partnerský vztah Microsoftu
+Partnerský vztah s Microsoftem
 
 ```kusto
 NetworkMonitoring
@@ -190,7 +190,7 @@ NPM může monitorovat připojení ke službám v jakékoli části světa, od p
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Které oblasti se podporují pro monitor ExpressRoute v NPM?
 NPM dokáže monitorovat vaše ExpressRoute okruhy, které jsou umístěné v libovolné oblasti Azure. K připojení do NPM budete potřebovat pracovní prostor Log Analytics, který musí být hostovaný v některé z [podporovaných oblastí](/azure/expressroute/how-to-npm) .
 
-## <a name="troubleshoot"></a>Odstranit potíže
+## <a name="troubleshoot"></a>Řešení potíží
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Proč jsou některé z směrování označeny jako neidentifikované v zobrazení síťové topologie?
 NPM používá upravenou verzi traceroute ke zjištění topologie ze zdrojového agenta do cíle. Neidentifikovaný skok znamená, že směrování sítě nereagovalo na žádost traceroute zdrojového agenta. Pokud tři po sobě jdoucí síťové segmenty nereagují na traceroute agenta, toto řešení označí nereagující chmel jako neidentifikovaný a nepokusí se zjistit další segmenty směrování.

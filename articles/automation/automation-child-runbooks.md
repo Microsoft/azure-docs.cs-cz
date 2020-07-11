@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95e156c17b723c679772293401c730cbdff2220b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828640"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169880"
 ---
 # <a name="create-modular-runbooks"></a>Vytváření modulárních runbooků
 
@@ -20,12 +20,12 @@ Existují dva způsoby, jak volat podřízenou sadu Runbook, a existují různé
 
 |  | Přiřazený | Rutina |
 |:--- |:--- |:--- |
-| Úloha |Podřízené Runbooky spuštěné ve stejné úloze jako nadřízený. |Pro podřízený Runbook se vytvoří samostatná úloha. |
-| Spouštěcí |Nadřízený Runbook čeká na dokončení podřízeného. Teprve potom pokračuje. |Nadřazená sada Runbook pokračuje ihned po spuštění podřízeného Runbooku *nebo* se nadřazený Runbook počká, až se podřízená úloha dokončí. |
-| Výstup |Nadřízený Runbook může získat výstup přímo z podřízeného. |Nadřazená sada Runbook musí načíst výstup z podřízené úlohy Runbooku *nebo* může z nadřazeného Runbooku získat výstup přímo z podřízeného Runbooku. |
-| Parametry |Hodnoty pro parametry podřízeného Runbooku se zadávají samostatně a můžou používat jakýkoli datový typ. |Hodnoty pro parametry podřízeného Runbooku musí být sloučeny do jedné zatřiďovací tabulky. Tato zatřiďovací tabulka může zahrnovat pouze jednoduché datové typy Array a Object, které používají serializaci JSON. |
-| Účet Automation |Nadřazená sada Runbook může použít pouze podřízený Runbook ve stejném účtu Automation. |Nadřazené Runbooky můžou použít podřízený Runbook z libovolného účtu Automation, ze stejného předplatného Azure a dokonce z jiného předplatného, ke kterému máte připojení. |
-| Publikování |Podřízený Runbook je potřeba publikovat před publikováním nadřízeného. |Podřízená sada Runbook je publikovaná kdykoli před spuštěním nadřazeného Runbooku. |
+| **Úloha** |Podřízené Runbooky spuštěné ve stejné úloze jako nadřízený. |Pro podřízený Runbook se vytvoří samostatná úloha. |
+| **Spouštěcí** |Nadřízený Runbook čeká na dokončení podřízeného. Teprve potom pokračuje. |Nadřazená sada Runbook pokračuje ihned po spuštění podřízeného Runbooku *nebo* se nadřazený Runbook počká, až se podřízená úloha dokončí. |
+| **Výstup** |Nadřízený Runbook může získat výstup přímo z podřízeného. |Nadřazená sada Runbook musí načíst výstup z podřízené úlohy Runbooku *nebo* může z nadřazeného Runbooku získat výstup přímo z podřízeného Runbooku. |
+| **Parametry** |Hodnoty pro parametry podřízeného Runbooku se zadávají samostatně a můžou používat jakýkoli datový typ. |Hodnoty pro parametry podřízeného Runbooku musí být sloučeny do jedné zatřiďovací tabulky. Tato zatřiďovací tabulka může zahrnovat pouze jednoduché datové typy Array a Object, které používají serializaci JSON. |
+| **Účet Automation** |Nadřazená sada Runbook může použít pouze podřízený Runbook ve stejném účtu Automation. |Nadřazené Runbooky můžou použít podřízený Runbook z libovolného účtu Automation, ze stejného předplatného Azure a dokonce z jiného předplatného, ke kterému máte připojení. |
+| **Publikování** |Podřízený Runbook je potřeba publikovat před publikováním nadřízeného. |Podřízená sada Runbook je publikovaná kdykoli před spuštěním nadřazeného Runbooku. |
 
 ## <a name="invoke-a-child-runbook-using-inline-execution"></a>Vyvolání podřízeného Runbooku pomocí vloženého spuštění
 

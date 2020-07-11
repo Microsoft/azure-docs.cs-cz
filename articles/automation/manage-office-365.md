@@ -4,24 +4,25 @@ description: V tomto článku se dozvíte, jak pomocí Azure Automation spravova
 services: automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 322e2a3679ed29ab9ecc4cdc3c6e1fe4d0f20276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91f5ac0c3adabf9880078d7a4d3703e2757cb97f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831159"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185309"
 ---
 # <a name="manage-office-365-services"></a>Správa služeb Office 365
 
-Pro správu předplatných služeb Office 365 můžete použít Azure Automation pro produkty, jako je Microsoft Word a Microsoft Outlook. Interakce s Office 365 jsou povolené službou [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Projděte si téma [použití Azure AD v Azure Automation k ověření v Azure](automation-use-azure-ad.md).
+Pro správu předplatných služeb Office 365 můžete použít Azure Automation pro produkty, jako je Microsoft Word a Microsoft Outlook. Interakce s Office 365 jsou povolené službou [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md). Projděte si téma [použití Azure AD v Azure Automation k ověření v Azure](automation-use-azure-ad.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke správě předplatných služeb Office 365 v Azure Automation potřebujete následující:
 
-* Předplatné Azure. Viz [Průvodce rozhodnutím předplatného](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/subscriptions/).
-* Automatizační objekt v Azure, který bude uchovávat přihlašovací údaje uživatelského účtu a runbooky. Další informace najdete v [úvodu k Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro).
+* Předplatné Azure. Viz [Průvodce rozhodnutím předplatného](/azure/cloud-adoption-framework/decision-guides/subscriptions/).
+* Automatizační objekt v Azure, který bude uchovávat přihlašovací údaje uživatelského účtu a runbooky. Další informace najdete v [úvodu k Azure Automation](./automation-intro.md).
 * Služba Azure AD. Projděte si téma [použití Azure AD v Azure Automation k ověření v Azure](automation-use-azure-ad.md).
-* Tenant Office 365 s účtem. Viz [Nastavení tenanta Office 365](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant).
+* Tenant Office 365 s účtem. Viz [Nastavení tenanta Office 365](/sharepoint/dev/spfx/set-up-your-developer-tenant).
 
 ## <a name="install-the-msonline-and-msonlineext-modules"></a>Instalace modulů MSOnline a MSOnlineExt
 
@@ -51,7 +52,7 @@ Je volitelné vytvořit Asset přihlašovacích údajů pro administrativního u
 
 ## <a name="create-an-office-365-service-account"></a>Vytvoření účtu služby Office 365
 
-Chcete-li spustit služby předplatného systému Office 365, potřebujete účet služby Office 365 s oprávněními k tomu, co chcete. Můžete použít jeden účet globálního správce, jeden účet na službu nebo spustit jednu funkci nebo skript. V každém případě vyžaduje účet služby složitá a bezpečná hesla. Viz [Nastavení Office 365 pro firmy](https://docs.microsoft.com/microsoft-365/admin/setup/setup?view=o365-worldwide). 
+Chcete-li spustit služby předplatného systému Office 365, potřebujete účet služby Office 365 s oprávněními k tomu, co chcete. Můžete použít jeden účet globálního správce, jeden účet na službu nebo spustit jednu funkci nebo skript. V každém případě vyžaduje účet služby složitá a bezpečná hesla. Viz [Nastavení Office 365 pro firmy](/microsoft-365/admin/setup/setup?view=o365-worldwide). 
 
 ## <a name="connect-to-the-azure-ad-online-service"></a>Připojení ke službě Azure AD online
 
@@ -60,7 +61,7 @@ Chcete-li spustit služby předplatného systému Office 365, potřebujete úče
 
 K připojení ke službě Azure AD z předplatného sady Office 365 můžete použít modul MSOnline. Připojení používá uživatelské jméno a heslo sady Office 365 nebo používá službu Multi-Factor Authentication (MFA). Můžete se připojit pomocí Azure Portal nebo příkazového řádku Windows PowerShellu (nemusí se nacházet vyššími oprávněními).
 
-Příklad PowerShellu je uveden níže. Rutina [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) vyzve k zadání přihlašovacích údajů a uloží je do `Msolcred` proměnné. Pak rutina [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) použije přihlašovací údaje pro připojení ke službě Azure Directory Online Service. Pokud se chcete připojit ke konkrétnímu prostředí Azure, použijte `AzureEnvironment` parametr.
+Příklad PowerShellu je uveden níže. Rutina [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) vyzve k zadání přihlašovacích údajů a uloží je do `Msolcred` proměnné. Pak rutina [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) použije přihlašovací údaje pro připojení ke službě Azure Directory Online Service. Pokud se chcete připojit ke konkrétnímu prostředí Azure, použijte `AzureEnvironment` parametr.
 
 ```powershell
 $Msolcred = Get-Credential
@@ -70,7 +71,7 @@ Connect-MsolService -Credential $MsolCred -AzureEnvironment "AzureCloud"
 Pokud neobdržíte žádné chyby, úspěšně jste se připojili. Rychlý test je spuštění rutiny sady Office 365, například `Get-MsolUser` a zobrazení výsledků. Pokud se zobrazí chyby, počítejte s tím, že běžný problém je nesprávné heslo.
 
 >[!NOTE]
->K připojení ke službě Azure AD z předplatného Office 365 můžete použít také modul AzureRM nebo AZ Module. Rutina Main pro připojení je [Connect-AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0). Tato rutina podporuje `AzureEnvironmentName` parametr pro konkrétní prostředí sady Office 365.
+>K připojení ke službě Azure AD z předplatného Office 365 můžete použít také modul AzureRM nebo AZ Module. Rutina Main pro připojení je [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0). Tato rutina podporuje `AzureEnvironmentName` parametr pro konkrétní prostředí sady Office 365.
 
 ## <a name="create-a-powershell-runbook-from-an-existing-script"></a>Vytvoření Runbooku PowerShellu z existujícího skriptu
 
@@ -95,22 +96,22 @@ $O365Licenses -SmtpServer $emailSMTPServer -UseSSL
 
 Můžete použít svůj skript v sadě Azure Automation Runbook. Pro účely tohoto příkladu použijeme typ Runbooku prostředí PowerShell.
 
-1. Vytvořte novou PowerShellový Runbook. Další informace najdete [v tématu Vytvoření sady runbook Azure Automation](https://docs.microsoft.com/azure/automation/automation-quickstart-create-runbook).
+1. Vytvořte novou PowerShellový Runbook. Další informace najdete [v tématu Vytvoření sady runbook Azure Automation](./automation-quickstart-create-runbook.md).
 2. Z účtu Automation v části **Automatizace procesu**vyberte **Runbooky** .
 3. Vyberte novou sadu Runbook a klikněte na **Upravit**.
 4. Zkopírujte skript a vložte ho do textového editoru pro sadu Runbook.
 5. Vyberte **assety**, potom rozbalte **přihlašovací údaje** a ověřte, jestli je zde přihlašovací údaje pro Office 365.
-6. Klikněte na **Uložit**.
-7. Vyberte **podokno test**a potom kliknutím na **Spustit** zahajte testování Runbooku. Viz [Správa runbooků v Azure Automation](https://docs.microsoft.com/azure/automation/manage-runbooks).
+6. Klikněte na **Save** (Uložit).
+7. Vyberte **podokno test**a potom kliknutím na **Spustit** zahajte testování Runbooku. Viz [Správa runbooků v Azure Automation](./manage-runbooks.md).
 8. Po dokončení testování ukončete z podokna test.
 
 ## <a name="publish-and-schedule-the-runbook"></a>Publikování a Naplánování runbooku
 
-Pokud chcete publikovat a potom naplánovat Runbook, přečtěte si téma [Správa runbooků v Azure Automation](https://docs.microsoft.com/azure/automation/manage-runbooks).
+Pokud chcete publikovat a potom naplánovat Runbook, přečtěte si téma [Správa runbooků v Azure Automation](./manage-runbooks.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 * Podrobnosti o použití přihlašovacích údajů najdete [v tématu Správa přihlašovacích údajů v Azure Automation](shared-resources/credentials.md).
 * Informace o modulech najdete v tématu [Správa modulů v Azure Automation](shared-resources/modules.md).
 * Pokud potřebujete Runbook spustit, přečtěte si téma [Spuštění Runbooku v Azure Automation](start-runbooks.md).
-* Podrobnosti o PowerShellu najdete v tématu [dokumentace k PowerShellu](https://docs.microsoft.com/powershell/scripting/overview).
+* Podrobnosti o PowerShellu najdete v tématu [dokumentace k PowerShellu](/powershell/scripting/overview).

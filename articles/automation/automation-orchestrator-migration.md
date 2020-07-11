@@ -5,17 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3399138ef7c14dd2db9133334a08b3984bd26448
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836749"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185993"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrace z Orchestratoru na Azure Automation (beta verze)
 
-Sady Runbook v [produktu System Center 2012 – Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) jsou založené na aktivitách z integračních balíčků, které jsou napsané speciálně pro nástroj Orchestrator, zatímco sady runbook v Azure Automation jsou založené na prostředí Windows PowerShell. [Grafické Runbooky](automation-runbook-types.md#graphical-runbooks) v Azure Automation mají podobný vzhled pro Runbooky se systémem Orchestrator a jejich aktivity, které představují rutiny prostředí PowerShell, podřízené Runbooky a prostředky. Kromě převádění sad Runbook, je nutné převést integrační balíčky s aktivitami, které Runbooky používají pro moduly integrace s rutinami prostředí Windows PowerShell. 
+Sady Runbook v [produktu System Center 2012 – Orchestrator](/previous-versions/system-center/system-center-2012-R2/hh237242(v=sc.12)) jsou založené na aktivitách z integračních balíčků, které jsou napsané speciálně pro nástroj Orchestrator, zatímco sady runbook v Azure Automation jsou založené na prostředí Windows PowerShell. [Grafické Runbooky](automation-runbook-types.md#graphical-runbooks) v Azure Automation mají podobný vzhled pro Runbooky se systémem Orchestrator a jejich aktivity, které představují rutiny prostředí PowerShell, podřízené Runbooky a prostředky. Kromě převádění sad Runbook, je nutné převést integrační balíčky s aktivitami, které Runbooky používají pro moduly integrace s rutinami prostředí Windows PowerShell. 
 
-[Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx) (SMA) ukládá a spouští Runbooky v místním datovém centru, jako je Orchestrator, a používá stejné moduly integrace jako Azure Automation. Převaděč Runbooku převede Runbooky Orchestrator na grafické Runbooky, které se v SMA nepodporují. Do SMA můžete i nadále instalovat modul pro standardní aktivity a integrační moduly nástroje System Center Orchestrator, ale musíte ručně [přepsat Runbooky](https://technet.microsoft.com/library/dn469262.aspx).
+[Service Management Automation](/previous-versions/system-center/system-center-2012-R2/dn469260(v=sc.12)) (SMA) ukládá a spouští Runbooky v místním datovém centru, jako je Orchestrator, a používá stejné moduly integrace jako Azure Automation. Převaděč Runbooku převede Runbooky Orchestrator na grafické Runbooky, které se v SMA nepodporují. Do SMA můžete i nadále instalovat modul pro standardní aktivity a integrační moduly nástroje System Center Orchestrator, ale musíte ručně [přepsat Runbooky](/system-center/sma/authoring-automation-runbooks).
 
 ## <a name="download-the-orchestrator-migration-toolkit"></a>Stažení sady nástrojů pro migraci softwaru Orchestrator
 
@@ -23,28 +24,28 @@ Prvním krokem migrace je stažení sady [System Center Orchestrator Migration T
 
 ## <a name="import-the-standard-activities-module"></a>Import modulu standardní aktivity
 
-Importujte [modul standardní aktivity](https://docs.microsoft.com/system-center/orchestrator/standard-activities?view=sc-orch-2019) do Azure Automation. To zahrnuje převedené verze standardních aktivit produktu Orchestrator, které mohou používat převedené grafické Runbooky.
+Importujte [modul standardní aktivity](/system-center/orchestrator/standard-activities?view=sc-orch-2019) do Azure Automation. To zahrnuje převedené verze standardních aktivit produktu Orchestrator, které mohou používat převedené grafické Runbooky.
 
 ## <a name="import-orchestrator-integration-modules"></a>Importovat integrační moduly Orchestrator
 
-Společnost Microsoft poskytuje [integrační balíčky](https://technet.microsoft.com/library/hh295851.aspx) pro vytváření runbooků pro automatizaci součástí produktu System Center a dalších produktů. Některé z těchto integračních balíčků jsou aktuálně založené na OIT, ale nedají se v současnosti převést na integrační moduly kvůli známým problémům. Naimportujte [integrační moduly nástroje System Center Orchestrator](https://www.microsoft.com/download/details.aspx?id=49555) do Azure Automation pro integrační balíčky používané vašimi Runbooky, které mají přístup k produktu System Center. Tento balíček zahrnuje převedené verze integračních balíčků, které lze importovat do Azure Automation a Service Management Automation.  
+Společnost Microsoft poskytuje [integrační balíčky](/previous-versions/system-center/packs/hh295851(v=technet.10)) pro vytváření runbooků pro automatizaci součástí produktu System Center a dalších produktů. Některé z těchto integračních balíčků jsou aktuálně založené na OIT, ale nedají se v současnosti převést na integrační moduly kvůli známým problémům. Naimportujte [integrační moduly nástroje System Center Orchestrator](https://www.microsoft.com/download/details.aspx?id=49555) do Azure Automation pro integrační balíčky používané vašimi Runbooky, které mají přístup k produktu System Center. Tento balíček zahrnuje převedené verze integračních balíčků, které lze importovat do Azure Automation a Service Management Automation.  
 
 ## <a name="convert-integration-packs"></a>Převést integrační balíčky
 
-Pomocí [převaděče integračního balíčku](https://docs.microsoft.com/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019) můžete převést všechny integrační balíčky vytvořené pomocí [Orchestrator Integration Toolkit (OIT)](https://technet.microsoft.com/library/hh855853.aspx) do modulů integrace založeného na prostředí PowerShell, které se dají importovat do Azure Automation nebo Service Management Automation. Při spuštění převaděče integračního balíčku se zobrazí průvodce, který umožňuje vybrat soubor integračního balíčku (. OIP). Průvodce pak zobrazí seznam aktivit zahrnutých do tohoto integračního balíčku a umožní vám vybrat aktivity, které chcete migrovat. Po dokončení Průvodce vytvoří modul Integration Module, který obsahuje odpovídající rutinu pro každou z aktivit v původním integračním balíčku.
+Pomocí [převaděče integračního balíčku](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019) můžete převést všechny integrační balíčky vytvořené pomocí [Orchestrator Integration Toolkit (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) do modulů integrace založeného na prostředí PowerShell, které se dají importovat do Azure Automation nebo Service Management Automation. Při spuštění převaděče integračního balíčku se zobrazí průvodce, který umožňuje vybrat soubor integračního balíčku (. OIP). Průvodce pak zobrazí seznam aktivit zahrnutých do tohoto integračního balíčku a umožní vám vybrat aktivity, které chcete migrovat. Po dokončení Průvodce vytvoří modul Integration Module, který obsahuje odpovídající rutinu pro každou z aktivit v původním integračním balíčku.
 
 > [!NOTE]
 > Nelze použít převaděč integračního balíčku k převodu integračních balíčků, které nebyly vytvořeny pomocí nástroje OIT. Existují taky některé integrační balíčky poskytované Microsoftem, které se v tuto chvíli nedají pomocí tohoto nástroje převést. Převedené verze těchto integračních balíčků jsou k dispozici ke stažení, aby je bylo možné nainstalovat do Azure Automation nebo Service Management Automation.
 
 ### <a name="parameters"></a>Parametry
 
-Všechny vlastnosti aktivity v integračním balíčku jsou převedeny na parametry odpovídající rutiny v modulu integrace.  Rutiny prostředí Windows PowerShell mají sadu [společných parametrů](https://technet.microsoft.com/library/hh847884.aspx) , které lze použít se všemi rutinami. Například parametr-verbose způsobí, že rutina zaznamená výstup podrobných informací o jeho provozu.  Žádná rutina nemůže mít parametr se stejným názvem jako společný parametr. Pokud aktivita má vlastnost se stejným názvem jako společný parametr, Průvodce vás vyzve k zadání dalšího názvu parametru.
+Všechny vlastnosti aktivity v integračním balíčku jsou převedeny na parametry odpovídající rutiny v modulu integrace.  Rutiny prostředí Windows PowerShell mají sadu [společných parametrů](/powershell/module/microsoft.powershell.core/about/about_commonparameters) , které lze použít se všemi rutinami. Například parametr-verbose způsobí, že rutina zaznamená výstup podrobných informací o jeho provozu.  Žádná rutina nemůže mít parametr se stejným názvem jako společný parametr. Pokud aktivita má vlastnost se stejným názvem jako společný parametr, Průvodce vás vyzve k zadání dalšího názvu parametru.
 
 ### <a name="monitor-activities"></a>Monitorování aktivit
 
-Monitorujte Runbooky v produktu Orchestrator pomocí [monitorovací aktivity](https://technet.microsoft.com/library/hh403827.aspx) a spouštějte nepřetržitě na vyvolání konkrétní událostí. Azure Automation nepodporuje monitorování runbooků, takže se nepřevádí žádné aktivity monitorování v integračním balíčku. Místo toho je v modulu integrace pro aktivitu monitorování vytvořena zástupná rutina.  Tato rutina nemá žádné funkce, ale umožňuje převedenou sadu Runbook, která používá k instalaci. Tuto sadu Runbook není možné spustit v Azure Automation, ale je možné ji nainstalovat, abyste ji mohli upravovat.
+Monitorujte Runbooky v produktu Orchestrator pomocí [monitorovací aktivity](/previous-versions/system-center/system-center-2012-R2/hh403827(v=sc.12)) a spouštějte nepřetržitě na vyvolání konkrétní událostí. Azure Automation nepodporuje monitorování runbooků, takže se nepřevádí žádné aktivity monitorování v integračním balíčku. Místo toho je v modulu integrace pro aktivitu monitorování vytvořena zástupná rutina.  Tato rutina nemá žádné funkce, ale umožňuje převedenou sadu Runbook, která používá k instalaci. Tuto sadu Runbook není možné spustit v Azure Automation, ale je možné ji nainstalovat, abyste ji mohli upravovat.
 
-Nástroj Orchestrator zahrnuje sadu [standardních aktivit](https://technet.microsoft.com/library/hh403832.aspx) , které nejsou součástí integračního balíčku, ale jsou používány mnoha sadami Runbook.  Modul standardní aktivity je modul Integration Module, který obsahuje ekvivalent rutiny pro každou z těchto aktivit. Před importem všech převedených runbooků, které používají standardní aktivitu, je nutné tento integrační modul nainstalovat do Azure Automation.
+Nástroj Orchestrator zahrnuje sadu [standardních aktivit](/previous-versions/system-center/system-center-2012-R2/hh403832(v=sc.12)) , které nejsou součástí integračního balíčku, ale jsou používány mnoha sadami Runbook.  Modul standardní aktivity je modul Integration Module, který obsahuje ekvivalent rutiny pro každou z těchto aktivit. Před importem všech převedených runbooků, které používají standardní aktivitu, je nutné tento integrační modul nainstalovat do Azure Automation.
 
 Kromě podpory převedených runbooků můžou být rutiny v modulu standardní aktivity používané někým známým s nástrojem Orchestrator, aby mohli vytvářet nové Runbooky v Azure Automation. I když se funkce všech standardních aktivit dají provádět s rutinami, můžou fungovat různě. Rutiny v modulu převedené standardní aktivity fungují stejným způsobem jako odpovídající aktivity a používají stejné parametry. To vám může přispět k přechodu na Azure Automation Runbooky.
 
@@ -99,7 +100,7 @@ Převaděč Runbooku převede každou aktivitu v Runbooku nástroje Orchestrator
 
 Všechny aktivity produktu Orchestrator v modulu standardní aktivity jsou převedeny. Existují některé standardní aktivity nástroje Orchestrator, které nejsou v tomto modulu, ale nejsou převedeny. Například `Send Platform Event` nemá žádný Azure Automation ekvivalent, protože událost je specifická pro nástroj Orchestrator.
 
-[Aktivity monitorování](https://technet.microsoft.com/library/hh403827.aspx) se nepřevádí, protože v Azure Automation nejsou ekvivalentní. Výjimky jsou sledovány aktivity v převedených integračních balíčcích, které jsou převedeny na zástupné aktivity.
+[Aktivity monitorování](/previous-versions/system-center/system-center-2012-R2/hh403827(v=sc.12)) se nepřevádí, protože v Azure Automation nejsou ekvivalentní. Výjimky jsou sledovány aktivity v převedených integračních balíčcích, které jsou převedeny na zástupné aktivity.
 
 Pokud zadáte cestu k modulu integrace s parametrem, dojde k převodu jakékoli aktivity z převedeného integračního balíčku `modules` . Pro integrační balíčky produktu System Center můžete použít integrační moduly nástroje System Center Orchestrator.
 
@@ -117,7 +118,7 @@ Důvodem, proč se tato strategie používá, je nejlepší zrcadlit funkce v Ru
 
 ### <a name="invoke-runbook-activity"></a>Vyvolat aktivitu Runbooku
 
-Runbooky v Orchestrator spouštějí další Runbooky s `Invoke Runbook` aktivitou. Pokud je sada Runbook převáděná na tuto aktivitu a `Wait for completion` možnost nastavená, vytvoří se pro ni v převedené sadě Runbook aktivita sady Runbook.  Pokud `Wait for completion` možnost není nastavena, vytvoří se aktivita skriptu pracovního postupu, která pomocí příkazu [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) spustí sadu Runbook. Po importu převedeného Runbooku do Azure Automation musíte tuto aktivitu upravit s informacemi zadanými v aktivitě.
+Runbooky v Orchestrator spouštějí další Runbooky s `Invoke Runbook` aktivitou. Pokud je sada Runbook převáděná na tuto aktivitu a `Wait for completion` možnost nastavená, vytvoří se pro ni v převedené sadě Runbook aktivita sady Runbook.  Pokud `Wait for completion` možnost není nastavena, vytvoří se aktivita skriptu pracovního postupu, která pomocí příkazu [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) spustí sadu Runbook. Po importu převedeného Runbooku do Azure Automation musíte tuto aktivitu upravit s informacemi zadanými v aktivitě.
 
 ## <a name="create-orchestrator-assets"></a>Vytvoření assetů Orchestrator
 
@@ -129,8 +130,8 @@ Produkt Orchestrator ukládá Runbooky na databázový server a spouští je na 
 
 ## <a name="related-articles"></a>Související články
 
-* Podrobnosti o nástroji Orchestrator najdete v tématu [System Center 2012 – Orchestrator](https://technet.microsoft.com/library/hh237242.aspx).
-* Přečtěte si další informace o automatizaci správy služeb v [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx).
-* Podrobnosti o aktivitách nástroje Orchestrator najdete v části [Standardní aktivity nástroje Orchestrator](https://technet.microsoft.com/library/hh403832.aspx).
+* Podrobnosti o nástroji Orchestrator najdete v tématu [System Center 2012 – Orchestrator](/previous-versions/system-center/system-center-2012-R2/hh237242(v=sc.12)).
+* Přečtěte si další informace o automatizaci správy služeb v [Service Management Automation](/previous-versions/system-center/system-center-2012-R2/dn469260(v=sc.12)).
+* Podrobnosti o aktivitách nástroje Orchestrator najdete v části [Standardní aktivity nástroje Orchestrator](/previous-versions/system-center/system-center-2012-R2/hh403832(v=sc.12)).
 * Chcete-li získat sadu nástrojů pro migraci nástroje Orchestrator, přečtěte si téma [Stažení sady System Center Orchestrator Migration Toolkit](https://www.microsoft.com/download/details.aspx?id=47323).
 * Přehled Hybrid Runbook Worker Azure Automation najdete v tématu [přehled Hybrid Runbook Worker](automation-hybrid-runbook-worker.md).

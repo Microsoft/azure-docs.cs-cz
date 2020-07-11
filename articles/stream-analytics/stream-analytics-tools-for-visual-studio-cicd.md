@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
-ms.openlocfilehash: 56fb677ca80c047fb90c58a3e0aedb41e6d4a3f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 175abe54ce5476bece309bbfaf7858cd2e214f52
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045089"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187655"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Použití balíčku NuGet Azure Stream Analytics CI/CD pro integraci a vývoj 
 Tento článek popisuje, jak použít balíček NuGet Azure Stream Analytics CI/CD, abyste nastavili proces průběžné integrace a nasazování.
@@ -36,15 +36,11 @@ Po úspěšném sestavení Stream Analytics projektu sady Visual Studio vygeneru
 
 * Soubor šablony Správce prostředků
 
-   ```
-   [ProjectName].JobTemplate.json 
-   ```
+   `[ProjectName].JobTemplate.json`
 
 * Soubor parametrů Správce prostředků
    
-   ```
-   [ProjectName].JobTemplate.parameters.json
-   ```
+   `[ProjectName].JobTemplate.parameters.json`
 
 Výchozí parametry v souboru parameters.json jsou z nastavení v projektu sady Visual Studio. Pokud chcete nasazení nasadit do jiného prostředí, nahraďte příslušné parametry odpovídajícím způsobem.
 

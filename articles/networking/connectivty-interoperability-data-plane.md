@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 635a8fc5409e18da9529763b06e4a531a36d0156
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80518252"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169200"
 ---
 # <a name="interoperability-in-azure--data-plane-analysis"></a>Interoperabilita v Azure: analýza roviny dat
 
@@ -29,13 +29,15 @@ Analýza roviny dat prověřuje cestu pořízenou pakety, které procházejí z 
 
 Partnerský vztah virtuální sítě (VNet) emuluje funkčnost síťového mostu mezi dvěma virtuální sítě, která jsou v partnerském vztahu. Traceroute výstup z virtuální sítě rozbočovače k virtuálnímu počítači ve virtuální síti paprsků se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.11.30.4
+  1     2 ms     1 ms     1 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Následující obrázek ukazuje zobrazení grafického připojení virtuální sítě centra a virtuální sítě rozbočovače z perspektivy Azure Network Watcher:
 
@@ -46,15 +48,17 @@ Následující obrázek ukazuje zobrazení grafického připojení virtuální s
 
 Výstup traceroute z virtuální sítě rozbočovače k virtuálnímu počítači ve virtuální síti ve větvi se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms     1 ms     1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     2 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms     1 ms     1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     2 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je první segment směrování bránou VPN v Azure VPN Gateway virtuální sítě rozbočovače. Druhým směrováním je Brána VPN virtuální sítě pobočky. IP adresa brány VPN pro virtuální síť pobočky není inzerována ve virtuální síti centra. Třetí segment směrování je virtuální počítač ve virtuální síti pobočky.
 
@@ -70,16 +74,18 @@ Pro stejné připojení ukazuje následující obrázek zobrazení mřížky v N
 
 Traceroute výstup z virtuální sítě rozbočovače na virtuální počítač v místním umístění 1 se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     2 ms     2 ms     2 ms  10.2.30.10
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     2 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je prvním směrováním koncový bod tunelu služby Azure ExpressRoute Gateway do směrovače Microsoft Enterprise Edge (MSEE). Druhý a třetí segment směrování je směrovačem zákaznické hranice (CE) a místní IP adresa v místním umístění. Tyto IP adresy nejsou inzerované ve virtuální síti centra. Čtvrtý segment směrování je virtuální počítač v místním umístění 1.
 
@@ -88,16 +94,18 @@ V tomto traceroute je prvním směrováním koncový bod tunelu služby Azure Ex
 
 Traceroute výstup z virtuální sítě rozbočovače na virtuální počítač v místním umístění 2 se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.1.31.10
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-      1    76 ms    75 ms    75 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
+  1    76 ms    75 ms    75 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je první segment směrování koncovým bodem tunelu ExpressRoute Gateway na MSEE. Druhý a třetí segment směrování je směrovačem CE a místní IP adresa umístění 2 LAN. Tyto IP adresy nejsou inzerované ve virtuální síti centra. Čtvrtý segment směrování je virtuální počítač v místním umístění 2.
 
@@ -105,15 +113,17 @@ V tomto traceroute je první segment směrování koncovým bodem tunelu Express
 
 Traceroute výstup z virtuální sítě rozbočovače do virtuálního počítače ve vzdálené virtuální síti se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     2 ms     2 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    69 ms  10.17.30.4
+  1     2 ms     2 ms     2 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je první segment směrování koncovým bodem tunelu ExpressRoute Gateway na MSEE. Druhým směrováním je IP adresa brány vzdálené virtuální sítě. Druhý rozsah IP adres směrování není inzerovaný ve virtuální síti centra. Třetí segment směrování je virtuální počítač ve vzdálené virtuální síti.
 
@@ -125,27 +135,31 @@ Síť VNet s paprsky sdílí zobrazení sítě virtuální sítě rozbočovače.
 
 Traceroute výstup z virtuální sítě rozbočovače k virtuálnímu počítači ve virtuální síti centra se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet"></a>Cesta k virtuální síti pobočky
 
 Výstup traceroute z virtuální sítě rozbočovače k virtuálnímu počítači ve virtuální síti ve větvi se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.10.30.142
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1     1 ms    <1 ms    <1 ms  10.10.30.142
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je první segment směrování bránou VPN virtuální sítě rozbočovače. Druhým směrováním je Brána VPN virtuální sítě pobočky. IP adresa brány VPN pro virtuální síť pobočky není inzerována v rámci sítě VNet centra/paprsků. Třetí segment směrování je virtuální počítač ve virtuální síti pobočky.
 
@@ -153,16 +167,18 @@ V tomto traceroute je první segment směrování bránou VPN virtuální sítě
 
 Traceroute výstup z virtuální sítě rozbočovače na virtuální počítač v místním umístění 1 se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    24 ms     2 ms     3 ms  10.10.30.132
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4     3 ms     2 ms     2 ms  10.2.30.10
+  1    24 ms     2 ms     3 ms  10.10.30.132
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4     3 ms     2 ms     2 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je prvním směrováním koncový bod tunelu ExpressRoute brány virtuální sítě rozbočovače na MSEE. Druhý a třetí segment směrování je směrovačem CE a místní IP adresa pro místní umístění 1. Tyto IP adresy nejsou inzerovány ve virtuální síti centra/paprsků. Čtvrtý segment směrování je virtuální počítač v místním umístění 1.
 
@@ -170,17 +186,18 @@ V tomto traceroute je prvním směrováním koncový bod tunelu ExpressRoute br�
 
 Traceroute výstup z virtuální sítě rozbočovače na virtuální počítač v místním umístění 2 se zobrazuje tady:
 
+```console
+C:\Users\rb>tracert 10.1.31.10
 
-    C:\Users\rb>tracert 10.1.31.10
+Tracing route to 10.1.31.10 over a maximum of 30 hops
 
-    Tracing route to 10.1.31.10 over a maximum of 30 hops
+  1    76 ms    75 ms    76 ms  10.10.30.134
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    75 ms    75 ms    75 ms  10.1.31.10
 
-      1    76 ms    75 ms    76 ms  10.10.30.134
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    75 ms    75 ms    75 ms  10.1.31.10
-
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je prvním směrováním koncový bod tunelu ExpressRoute brány virtuální sítě rozbočovače na MSEE. Druhý a třetí segment směrování je směrovačem CE a místní IP adresa umístění 2 LAN. Tyto IP adresy nejsou inzerované v centru/paprskech virtuální sítě. Čtvrtý segment směrování je virtuální počítač v místním umístění 2.
 
@@ -188,15 +205,17 @@ V tomto traceroute je prvním směrováním koncový bod tunelu ExpressRoute br�
 
 Traceroute výstup z virtuální sítě rozbočovače do virtuálního počítače ve vzdálené virtuální síti se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1     2 ms     1 ms     1 ms  10.10.30.133
-      2     *        *        *     Request timed out.
-      3    71 ms    70 ms    70 ms  10.17.30.4
+  1     2 ms     1 ms     1 ms  10.10.30.133
+  2     *        *        *     Request timed out.
+  3    71 ms    70 ms    70 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je prvním směrováním koncový bod tunelu ExpressRoute brány virtuální sítě rozbočovače na MSEE. Druhým směrováním je IP adresa brány vzdálené virtuální sítě. Druhý rozsah IP adres směrování není inzerovaný ve virtuální síti rozbočovače/paprsek. Třetí segment směrování je virtuální počítač ve vzdálené virtuální síti.
 
@@ -206,15 +225,17 @@ V tomto traceroute je prvním směrováním koncový bod tunelu ExpressRoute br�
 
 Traceroute výstup z virtuální sítě z pobočky do virtuálního počítače ve virtuální síti centra se zobrazuje tady:
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je první segment směrování bránou VPN virtuální sítě pobočky. Druhým směrováním je Brána VPN virtuální sítě rozbočovače. IP adresa brány VPN pro virtuální síť rozbočovače není inzerována ve vzdálené virtuální síti. Třetí segment směrování je virtuální počítač ve virtuální síti centra.
 
@@ -222,15 +243,17 @@ V tomto traceroute je první segment směrování bránou VPN virtuální sítě
 
 Traceroute výstup z virtuální sítě z pobočky na virtuální počítač ve virtuální síti rozbočovače se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1     1 ms    <1 ms     1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     4 ms     3 ms     2 ms  10.11.30.4
+  1     1 ms    <1 ms     1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     4 ms     3 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je první segment směrování bránou VPN virtuální sítě pobočky. Druhým směrováním je Brána VPN virtuální sítě rozbočovače. IP adresa brány VPN pro virtuální síť rozbočovače není inzerována ve vzdálené virtuální síti. Třetí segment směrování je virtuální počítač ve virtuální síti rozbočovače.
 
@@ -238,17 +261,19 @@ V tomto traceroute je první segment směrování bránou VPN virtuální sítě
 
 Traceroute výstup z virtuální sítě z pobočky na virtuální počítač v místním umístění 1 se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1     1 ms    <1 ms    <1 ms  10.11.30.100
-      2     *        *        *     Request timed out.
-      3     3 ms     2 ms     2 ms  10.2.30.125
-      4     *        *        *     Request timed out.
-      5     3 ms     3 ms     3 ms  10.2.30.10
+  1     1 ms    <1 ms    <1 ms  10.11.30.100
+  2     *        *        *     Request timed out.
+  3     3 ms     2 ms     2 ms  10.2.30.125
+  4     *        *        *     Request timed out.
+  5     3 ms     3 ms     3 ms  10.2.30.10
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute je první segment směrování bránou VPN virtuální sítě pobočky. Druhým směrováním je Brána VPN virtuální sítě rozbočovače. IP adresa brány VPN pro virtuální síť rozbočovače není inzerována ve vzdálené virtuální síti. Třetí segment směrování je koncovým bodem tunelu VPN v primárním směrovači CE. Čtvrtý segment směrování je interní IP adresa místního umístění 1. Tato IP adresa sítě LAN není inzerována mimo směrovač CE. Pátý segment směrování je cílový virtuální počítač v místním umístění 1.
 
@@ -256,27 +281,29 @@ V tomto traceroute je první segment směrování bránou VPN virtuální sítě
 
 Jak jsme probrali v analýze roviny ovládacího prvku, virtuální síť pobočky nemá žádnou viditelnost ani pro místní umístění 2 nebo ke vzdálené virtuální síti na základě konfigurace sítě. Následující výsledky nástroje test potvrzení: 
 
-    C:\Users\rb>ping 10.1.31.10
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Pinging 10.1.31.10 with 32 bytes of data:
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
 
-    C:\Users\rb>ping 10.17.30.4
+C:\Users\rb>ping 10.17.30.4
 
-    Pinging 10.17.30.4 with 32 bytes of data:
+Pinging 10.17.30.4 with 32 bytes of data:
 
-    Request timed out.
-    ...
-    Request timed out.
+Request timed out.
+...
+Request timed out.
 
-    Ping statistics for 10.17.30.4:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Ping statistics for 10.17.30.4:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ## <a name="data-path-from-on-premises-location-1"></a>Cesta k datům z místního umístění 1
 
@@ -284,17 +311,19 @@ Jak jsme probrali v analýze roviny ovládacího prvku, virtuální síť poboč
 
 Výstup traceroute z místního umístění 1 k virtuálnímu počítači ve virtuální síti centra se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     2 ms     2 ms     2 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     2 ms     2 ms     2 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 V tomto traceroute jsou první dva segmenty součástí místní sítě. Třetí segment směrování je primární rozhraní MSEE, které čelí směrovači CE. Čtvrtý segment směrování je ExpressRoute bránou virtuální sítě rozbočovače. Rozsah IP adres brány ExpressRoute brány virtuální sítě rozbočovače není ohlášený místní síti. Pátý segment směrování je cílový virtuální počítač.
 
@@ -306,15 +335,17 @@ Následující obrázek znázorňuje zobrazení topologie připojení virtuáln�
 
 Jak je popsáno výše, nastavení testu používá síť Site-to-Site VPN jako konektivitu zálohování pro ExpressRoute mezi místním umístěním 1 a virtuální sítí centra. Pokud chcete otestovat cestu k záložním datům, vydejte nám ExpressRoute selhání propojení mezi místním směrovačem umístění 1 primárního CE a odpovídajícím MSEE. Chcete-li vyvolat selhání propojení ExpressRoute, vypněte rozhraní CE, které čelí MSEE:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     3 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     3 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Následující obrázek ukazuje zobrazení topologie připojení virtuálního počítače v místním umístění 1 k VIRTUÁLNÍmu počítači ve virtuální síti centra prostřednictvím připojení VPN typu Site-to-site v případě nefunkčnosti připojení ExpressRoute:
 
@@ -326,17 +357,19 @@ Traceroute výstup z místního umístění 1 k virtuálnímu počítači ve vir
 
 Pojďme se vrátit k ExpressRoute primárnímu připojení a provést analýzu cesty k datům směrem k virtuální síti paprsků:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5     3 ms     2 ms     2 ms  10.11.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5     3 ms     2 ms     2 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 Zaveďte primární připojení ExpressRoute 1 pro zbytek analýzy cesty k datům.
 
@@ -344,46 +377,52 @@ Zaveďte primární připojení ExpressRoute 1 pro zbytek analýzy cesty k datů
 
 Výstup traceroute z místního umístění 1 k virtuálnímu počítači ve virtuální síti ve větvi se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.11.30.68
+```console
+C:\Users\rb>tracert 10.11.30.68
 
-    Tracing route to 10.11.30.68 over a maximum of 30 hops
+Tracing route to 10.11.30.68 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2    <1 ms    <1 ms    <1 ms  192.168.30.0
-      3     3 ms     2 ms     2 ms  10.11.30.68
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2    <1 ms    <1 ms    <1 ms  192.168.30.0
+  3     3 ms     2 ms     2 ms  10.11.30.68
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-on-premises-location-2"></a>Cesta k místnímu umístění 2
 
 Jak probereme v [analýze roviny ovládacího prvku][Control-Analysis], místní umístění 1 nemá žádnou viditelnost pro místní umístění 2 na konfiguraci sítě. Následující výsledky nástroje test potvrzení: 
 
-    C:\Users\rb>ping 10.1.31.10
-    
-    Pinging 10.1.31.10 with 32 bytes of data:
+```console
+C:\Users\rb>ping 10.1.31.10
 
-    Request timed out.
-    ...
-    Request timed out.
+Pinging 10.1.31.10 with 32 bytes of data:
 
-    Ping statistics for 10.1.31.10:
-        Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+Request timed out.
+...
+Request timed out.
+
+Ping statistics for 10.1.31.10:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+```
 
 ### <a name="path-to-the-remote-vnet"></a>Cesta ke vzdálené virtuální síti
 
 Traceroute výstup z místního umístění 1 do virtuálního počítače ve vzdálené virtuální síti se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.17.30.4
+```console
+C:\Users\rb>tracert 10.17.30.4
 
-    Tracing route to 10.17.30.4 over a maximum of 30 hops
+Tracing route to 10.17.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.2.30.3
-      2     2 ms     5 ms     7 ms  192.168.30.0
-      3    <1 ms    <1 ms    <1 ms  192.168.30.18
-      4     *        *        *     Request timed out.
-      5    69 ms    70 ms    69 ms  10.17.30.4
+  1    <1 ms    <1 ms    <1 ms  10.2.30.3
+  2     2 ms     5 ms     7 ms  192.168.30.0
+  3    <1 ms    <1 ms    <1 ms  192.168.30.18
+  4     *        *        *     Request timed out.
+  5    69 ms    70 ms    69 ms  10.17.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ## <a name="data-path-from-on-premises-location-2"></a>Cesta k datům z místního umístění 2
 
@@ -391,32 +430,36 @@ Traceroute výstup z místního umístění 1 do virtuálního počítače ve vz
 
 Výstup traceroute z místního umístění 2 k virtuálnímu počítači ve virtuální síti centra se zobrazuje tady:
 
-    C:\Windows\system32>tracert 10.10.30.4
+```console
+C:\Windows\system32>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    <1 ms    <1 ms    <1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.4
-      3    <1 ms    <1 ms    <1 ms  192.168.31.22
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.10.30.4
+  1    <1 ms    <1 ms    <1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.4
+  3    <1 ms    <1 ms    <1 ms  192.168.31.22
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>Cesta k virtuální síti paprsků
 
 Výstup traceroute z místního umístění 2 k virtuálnímu počítači ve virtuální síti paprsků se zobrazuje tady:
 
-    C:\Windows\system32>tracert 10.11.30.4
+```console
+C:\Windows\system32>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
-      1    <1 ms    <1 ms     1 ms  10.1.31.3
-      2    <1 ms    <1 ms    <1 ms  192.168.31.0
-      3    <1 ms    <1 ms    <1 ms  192.168.31.18
-      4     *        *        *     Request timed out.
-      5    75 ms    74 ms    74 ms  10.11.30.4
+Tracing route to 10.11.30.4 over a maximum of 30 hops
+  1    <1 ms    <1 ms     1 ms  10.1.31.3
+  2    <1 ms    <1 ms    <1 ms  192.168.31.0
+  3    <1 ms    <1 ms    <1 ms  192.168.31.18
+  4     *        *        *     Request timed out.
+  5    75 ms    74 ms    74 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-on-premises-location-1-and-the-remote-vnet"></a>Cesta k virtuální síti pobočky, místnímu umístění 1 a vzdálené virtuální síti
 
@@ -428,29 +471,33 @@ Jak probereme v [analýze roviny ovládacího prvku][Control-Analysis], místní
 
 Výstup traceroute ze vzdálené virtuální sítě k virtuálnímu počítači ve virtuální síti centra se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.10.30.4
+```console
+C:\Users\rb>tracert 10.10.30.4
 
-    Tracing route to 10.10.30.4 over a maximum of 30 hops
+Tracing route to 10.10.30.4 over a maximum of 30 hops
 
-      1    65 ms    65 ms    65 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    69 ms    68 ms    68 ms  10.10.30.4
+  1    65 ms    65 ms    65 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    69 ms    68 ms    68 ms  10.10.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-spoke-vnet"></a>Cesta k virtuální síti paprsků
 
 Výstup traceroute ze vzdálené virtuální sítě k virtuálnímu počítači ve virtuální síti rozbočovače se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.11.30.4
+```console
+C:\Users\rb>tracert 10.11.30.4
 
-    Tracing route to 10.11.30.4 over a maximum of 30 hops
+Tracing route to 10.11.30.4 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3    71 ms    69 ms    69 ms  10.11.30.4
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3    71 ms    69 ms    69 ms  10.11.30.4
 
-    Trace complete.
+Trace complete.
+```
 
 ### <a name="path-to-the-branch-vnet-and-on-premises-location-2"></a>Cesta k virtuální síti pobočky a místnímu umístění 2
 
@@ -460,17 +507,18 @@ Jak probereme v [analýze roviny ovládacího prvku][Control-Analysis], vzdálen
 
 Výstup traceroute ze vzdálené virtuální sítě do virtuálního počítače v místním umístění 1 se zobrazuje tady:
 
-    C:\Users\rb>tracert 10.2.30.10
+```console
+C:\Users\rb>tracert 10.2.30.10
 
-    Tracing route to 10.2.30.10 over a maximum of 30 hops
+Tracing route to 10.2.30.10 over a maximum of 30 hops
 
-      1    67 ms    67 ms    67 ms  10.17.30.36
-      2     *        *        *     Request timed out.
-      3     *        *        *     Request timed out.
-      4    69 ms    69 ms    69 ms  10.2.30.10
+  1    67 ms    67 ms    67 ms  10.17.30.36
+  2     *        *        *     Request timed out.
+  3     *        *        *     Request timed out.
+  4    69 ms    69 ms    69 ms  10.2.30.10
 
-    Trace complete.
-
+Trace complete.
+```
 
 ## <a name="expressroute-and-site-to-site-vpn-connectivity-in-tandem"></a>ExpressRoute a připojení VPN typu Site-to-site společně
 

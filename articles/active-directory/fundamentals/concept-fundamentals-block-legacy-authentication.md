@@ -12,11 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1799f676e8971726832cc50598e119f029bc331d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196394"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200536"
 ---
 # <a name="blocking-legacy-authentication"></a>Blokování starších verzí ověřování
  
@@ -31,9 +32,9 @@ V současné době většina všech neúspěšných pokusů o přihlášení poc
 
 Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
-1. Přejděte do **Azure Portal**   >  **Azure Active Directory**   >  **přihlášení**.
+1. Přejděte do **Azure Portal**  >  **Azure Active Directory**  >  **přihlášení**.
 1. Pokud není zobrazený, klikněte na **sloupce** **Client App**   >  **klientská aplikace**a přidejte sloupec aplikace klienta.
-1. Filtrovat podle **klientské aplikace**  > zajděte si uvedené možnosti pro **starší verze klientů ověřování** .
+1. Filtrovat podle **klientské aplikace** > zajděte si uvedené možnosti pro **starší verze klientů ověřování** .
 1. Filtrovat podle **stavu**  >  **úspěch**. 
 1. V případě potřeby rozbalíte rozsah dat pomocí filtru **data** .
 
@@ -99,4 +100,4 @@ Postup povolení moderního ověřování najdete v následujících článcích
 
 - [Jak nakonfigurovat místní Exchange Server tak, aby používal hybridní moderní ověřování](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Jak používat moderní ověřování (ADAL) se Skypem pro firmy](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)
-- [Blokovat starší verze ověřování](../conditional-access/block-legacy-authentication.md)
+- [Blokování starší verze ověřování](../conditional-access/block-legacy-authentication.md)

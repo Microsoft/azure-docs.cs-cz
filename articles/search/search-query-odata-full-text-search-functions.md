@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72793354"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201391"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Funkce fulltextového vyhledávání OData v Azure Kognitivní hledání – `search.ismatch` a`search.ismatchscoring`
 
@@ -98,25 +98,35 @@ Všechny výše uvedené parametry jsou ekvivalentem odpovídajících [parametr
 
 Vyhledá dokumenty ve slově "Waterfront". Tento dotaz filtru je stejný jako [požadavek na hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents) s `search=waterfront` .
 
+```odata-filter-expr
     search.ismatchscoring('waterfront')
+```
 
 Najde dokumenty se slovem "Hostel" a hodnocením větším nebo rovným 4 nebo dokumenty se slovem "Motel" a hodnocením rovným 5. Poznámka: Tento požadavek nebylo možné vyjádřit bez `search.ismatchscoring` funkce.
 
+```odata-filter-expr
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
+```
 
 Najde dokumenty bez slova "luxus".
 
+```odata-filter-expr
     not search.ismatch('luxury')
+```
 
 Vyhledá dokumenty se frází "zobrazení v oceánu" nebo hodnocení rovno 5. `search.ismatchscoring`Dotaz bude proveden pouze proti polím `HotelName` a `Rooms/Description` .
 
 Dokumenty, které odpovídají pouze druhé klauzuli disjunkce, budou vráceny příliš-Hotely s `Rating` hodnotou 5. Aby bylo jasné, že se tyto dokumenty neshodují s žádnou z částí výrazu, budou vráceny výsledek se stejnou hodnotou jako nula.
 
+```odata-filter-expr
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
+```
 
 Vyhledá dokumenty, kde jsou termíny "Hotel" a "letiště" mezi 5 slovy od sebe navzájem v popisu hotelu a tam, kde není povolený kouření aspoň na některých místnostech. Tento dotaz používá [celý dotazovací jazyk Lucene](query-lucene-syntax.md).
 
+```odata-filter-expr
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>Další kroky  
 

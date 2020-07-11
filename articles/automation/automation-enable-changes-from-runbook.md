@@ -5,11 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 2728964d5bbf83b42251068ffbdea223ff6bd85e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92149289c6c422179ddb3562274020acf779f10b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171085"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186278"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Povolení řešení Change Tracking a Inventory z runbooku
 
@@ -18,10 +19,10 @@ Tento článek popisuje, jak můžete pomocí Runbooku povolit funkci [Change Tr
 > [!NOTE]
 > Při povolování Change Tracking a inventáře jsou podporovány pouze určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Účet Automation](automation-offering-get-started.md) pro správu počítačů.
+* [Účet Automation](./index.yml) pro správu počítačů.
 * [Virtuální počítač](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory 
@@ -50,7 +51,7 @@ Po povolení Change Tracking a inventáře můžete přidat virtuální počíta
 
 ## <a name="install-and-update-modules"></a>Instalace a aktualizace modulů
 
-Je potřeba, abyste aktualizovali na nejnovější moduly Azure a importovali modul [AZ. OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) , který umožňuje úspěšně povolit Change Tracking a inventář pro váš virtuální počítač.
+Je potřeba, abyste aktualizovali na nejnovější moduly Azure a importovali modul [AZ. OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) , který umožňuje úspěšně povolit Change Tracking a inventář pro váš virtuální počítač.
 
 1. Ve svém účtu Automation v části **sdílené prostředky**vyberte **moduly** . 
 2. Vyberte **Aktualizovat moduly Azure** a aktualizujte moduly Azure na nejnovější verzi. 

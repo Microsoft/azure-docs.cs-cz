@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 707cfb2e9bea3286daa92ea54f7bb9659a455caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390512"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142367"
 ---
 # <a name="manage-digital-twins"></a>Správa digitálních dvojčat
 
@@ -122,6 +122,7 @@ Výsledek volání `object result = await client.DigitalTwins.GetByIdAsync("my-m
 ```json
 {
   "$dtId": "myMoon-001",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
@@ -146,7 +147,8 @@ Výsledek volání `object result = await client.DigitalTwins.GetByIdAsync("my-m
 
 Definované vlastnosti digitálního vlákna jsou vráceny jako vlastnosti nejvyšší úrovně u digitálního vlákna. Metadata nebo systémové informace, které nejsou součástí definice DTDL, se vrátí s `$` předponou. Mezi vlastnosti metadat patří:
 * ID digitálního vlákna v této instanci digitálních vláken Azure, jako je `$dtId` .
-* Další vlastnosti v `$metadata` oddílu. Sem patří:
+* `$etag`, standardní pole HTTP přiřazené webovým serverem
+* Další vlastnosti v `$metadata` oddílu. Mezi ně patří:
     - DTMI modelu digitálního vlákna.
     - Stav synchronizace pro každou zapisovatelnou vlastnost. To je nejužitečnější pro zařízení, kde je možné, že služba a zařízení mají Rozbíhající se stavy (například když je zařízení offline). V současné době se tato vlastnost vztahuje pouze na fyzická zařízení připojená k IoT Hub. S daty v části metadata je možné pochopit úplný stav vlastnosti a také poslední změněná časová razítka. Další informace o stavu synchronizace najdete v [tomto IoT Hub kurzu](../iot-hub/tutorial-device-twins.md) synchronizace stavu zařízení.
     - Metadata specifická pro službu, například z IoT Hub nebo z digitálních vláken Azure. 

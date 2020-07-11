@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856963"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185003"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Nejčastější dotazy ke službě Azure Cache for Redis
 Seznamte se s odpověďmi na běžné otázky, vzory a osvědčené postupy pro službu Azure cache pro Redis.
@@ -41,6 +41,7 @@ Následující nejčastější dotazy se týkají základních konceptů a dotaz
 * [Jakou mezipaměť Azure pro nabídku a velikost Redis mám použít?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
 * [Azure cache pro výkon Redis](#azure-cache-for-redis-performance)
 * [V jaké oblasti mám najít mezipaměť?](#in-what-region-should-i-locate-my-cache)
+* [Kde se nacházejí moje data z mezipaměti?](#where-do-my-cached-data-reside)
 * [Jak se fakturuje Azure cache pro Redis?](#how-am-i-billed-for-azure-cache-for-redis)
 * [Můžu použít Azure cache pro Redis s Azure Governmentm cloudem, cloudem Azure Čína nebo Microsoft Azure (Německo)?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
@@ -149,6 +150,13 @@ Pokyny k nastavení stunnelu nebo stažení nástrojů Redis, jako jsou `redis-b
 ### <a name="in-what-region-should-i-locate-my-cache"></a>V jaké oblasti mám najít mezipaměť?
 Pro nejlepší výkon a nejnižší latenci vyhledejte mezipaměť Azure pro Redis ve stejné oblasti, jako je klientská aplikace pro mezipaměť.
 
+### <a name="where-do-my-cached-data-reside"></a>Kde se nacházejí moje data z mezipaměti?
+Azure cache pro Redis ukládá data vaší aplikace do paměti RAM virtuálního počítače nebo virtuálních počítačů v závislosti na vrstvě, která hostuje vaši mezipaměť. Vaše data se budou nacházet výhradně v oblasti Azure, kterou jste vybrali ve výchozím nastavení. Existují dva případy, kdy vaše data mohou opustit oblast:
+  1. Když v mezipaměti povolíte trvalost, mezipaměť Azure pro Redis bude zálohovat vaše data na účet Azure Storage, který vlastníte. Pokud se účet úložiště, který zadáte, nachází v jiné oblasti, ukončí se kopie vašich dat.
+  1. Pokud nastavíte geografickou replikaci a sekundární mezipaměť je v jiné oblasti, což by mohlo být v normálním případě, vaše data budou replikována do této oblasti.
+
+Aby bylo možné používat tyto funkce, budete muset explicitně nakonfigurovat Azure cache pro Redis. Máte také úplnou kontrolu nad oblastí, ve které se nachází účet úložiště nebo sekundární mezipaměť.
+
 <a name="cache-billing"></a>
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Jak se fakturuje Azure cache pro Redis?
@@ -159,7 +167,7 @@ Ano, mezipaměť Azure pro Redis je dostupná v cloudu Azure Government, Azure �
 
 | Cloud   | Přípona DNS pro Redis            |
 |---------|---------------------------------|
-| Public  | *. redis.cache.windows.net       |
+| Veřejný  | *. redis.cache.windows.net       |
 | US Gov  | *. redis.cache.usgovcloudapi.net |
 | Německo | *. redis.cache.cloudapi.de       |
 | Čína   | *. redis.cache.chinacloudapi.cn  |
@@ -177,7 +185,7 @@ Informace o používání služby Azure cache pro Redis s prostředím PowerShel
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Co dělají konfigurační možnosti StackExchange. Redis?
 StackExchange. Redis má mnoho možností. Tato část pojednává o některých běžných nastaveních. Podrobnější informace o možnostech StackExchange. Redis najdete v tématu [Konfigurace stackexchange. Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Description | Doporučení |
+| ConfigurationOptions | Popis | Doporučení |
 | --- | --- | --- |
 | AbortOnConnectFail |Když se nastaví na true, připojení se po selhání sítě znovu nepřipojí. |Nastavte na hodnotu false a nechte StackExchange. Redis automaticky znovu připojit. |
 | ConnectRetry |Počet opakovaných pokusů o připojení při počátečním připojení. |Pokyny najdete v následujících pokynech. |
@@ -196,7 +204,7 @@ Obvykle jsou výchozí hodnoty klienta dostatečné. Možnosti můžete vyladit 
   * Pro aplikaci použijte jednu instanci ConnectionMultiplexer. Pomocí LazyConnection můžete vytvořit jednu instanci, která je vrácena vlastností připojení, jak je znázorněno v [části připojení k mezipaměti pomocí třídy ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
   * `ConnectionMultiplexer.ClientName`Pro účely diagnostiky nastavte vlastnost na jedinečný název instance aplikace.
   * `ConnectionMultiplexer`Pro vlastní úlohy použijte více instancí.
-      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Příklad:
+      * Pokud máte v aplikaci proměnlivé zatížení, můžete postupovat podle tohoto modelu. Například:
       * Můžete mít jeden multiplexor pro zvládnutí velkých klíčů.
       * Můžete mít jeden multiplexor pro zvládnutí malých klíčů.
       * Pro každý ConnectionMultiplexer, který používáte, můžete nastavit různé hodnoty pro vypršení časového limitu připojení a logiku opakování.
@@ -215,20 +223,20 @@ Pro službu Azure cache pro Redis není k dispozici žádný místní emulátor,
 
 ```csharp
 private static Lazy<ConnectionMultiplexer>
-      lazyConnection = new Lazy<ConnectionMultiplexer>
-    (() =>
+    lazyConnection = new Lazy<ConnectionMultiplexer> (() =>
     {
-        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        // Connect to a locally running instance of Redis to simulate
+        // a local cache emulator experience.
         return ConnectionMultiplexer.Connect("127.0.0.1:6379");
     });
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
 ```
 
 Volitelně můžete nakonfigurovat soubor [Redis. conf](https://redis.io/topics/config) tak, aby lépe odpovídal [výchozím nastavením mezipaměti](cache-configure.md#default-redis-server-configuration) pro online Azure cache pro Redis, pokud je to potřeba.
@@ -308,7 +316,7 @@ Pokyny ke stažení nástrojů Redis naleznete v části How to [Run Redis Comma
 * Pamatujte na náklady na výkon spojené s různými operacemi, které používáte. Například `KEYS` příkaz je operace o (n), která by se měla vyhnout. [Web Redis.IO](https://redis.io/commands/) obsahuje podrobnosti o časové složitosti každé podporované operace. Pro zobrazení složitosti jednotlivých operací klikněte na jednotlivé příkazy.
 
 #### <a name="configuration-and-concepts"></a>Konfigurace a koncepty
-* Pro produkční systémy použijte úroveň Standard nebo Premium. Úroveň Basic odpovídá systému s jedním uzlem, bez replikace dat a smlouvy SLA. Jako mezipaměť použijte aspoň C1. Mezipaměti C0 jsou obvykle používány pro jednoduché scénáře vývoje a testování.
+* Pro produkční systémy použijte úroveň Standard nebo Premium. Úroveň Basic odpovídá systému s jedním uzlem bez replikace dat a smlouvy SLA. Jako mezipaměť použijte aspoň C1. Mezipaměti C0 jsou obvykle používány pro jednoduché scénáře vývoje a testování.
 * Pamatujte, že Redis je úložiště dat **v paměti** . Přečtěte si [Tento článek](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) , abyste se dozvěděli o scénářích, kdy může dojít ke ztrátě dat.
 * Vytvořte svůj systém tak, aby mohl zpracovávat připojení výkyvů [z důvodu oprav a převzetí služeb při selhání](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
@@ -367,11 +375,11 @@ V podstatě to znamená, že pokud je počet zaneprázdněných vláken větší
 
 Pokud se podíváme na ukázkovou chybovou zprávu z StackExchange. Redis (Build 1.0.450 nebo novější), uvidíte, že teď vytisknou statistiky fondu (podrobnosti najdete v podrobnostech o IOCP a PRACOVNÍKovi níže).
 
-```output
-    System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
-    queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
-    IOCP: (Busy=6,Free=994,Min=4,Max=1000),
-    WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
+System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
+queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
+IOCP: (Busy=6,Free=994,Min=4,Max=1000),
+WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 ```
 
 V předchozím příkladu vidíte, že pro vlákno IOCP je šest zaneprázdněných vláken a systém je nakonfigurován tak, aby umožňoval čtyři minimální vlákna. V takovém případě by se u klienta pravděpodobně zobrazilo zpoždění 2 500 ms, protože 6 > 4.
@@ -384,22 +392,22 @@ S těmito informacemi doporučujeme, aby zákazníci nastavili minimální hodno
 
 Jak nakonfigurovat toto nastavení:
 
-* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs` . Příklad:
+* Toto nastavení doporučujeme změnit programově pomocí metody [fondu vláken. SetMinThreads – (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) v `global.asax.cs` . Například:
 
-```cs
-private readonly int minThreads = 200;
-void Application_Start(object sender, EventArgs e)
-{
-    // Code that runs on application startup
-    AreaRegistration.RegisterAllAreas();
-    RouteConfig.RegisterRoutes(RouteTable.Routes);
-    BundleConfig.RegisterBundles(BundleTable.Bundles);
-    ThreadPool.SetMinThreads(minThreads, minThreads);
-}
-```
+    ```csharp
+    private readonly int minThreads = 200;
+    void Application_Start(object sender, EventArgs e)
+    {
+        // Code that runs on application startup
+        AreaRegistration.RegisterAllAreas();
+        RouteConfig.RegisterRoutes(RouteTable.Routes);
+        BundleConfig.RegisterBundles(BundleTable.Bundles);
+        ThreadPool.SetMinThreads(minThreads, minThreads);
+    }
+    ```
 
-  > [!NOTE]
-  > Hodnota zadaná touto metodou je globální nastavení, které ovlivňuje celou doménu AppDomain. Pokud máte například počítač se 4 jádry a chcete nastavit *MinWorkerThreads* a *MINIOTHREADS* 50 na procesor za běhu za běhu, použijte auto. **SetMinThreads – (200, 200)**.
+    > [!NOTE]
+    > Hodnota zadaná touto metodou je globální nastavení, které ovlivňuje celou doménu AppDomain. Pokud máte například počítač se 4 jádry a chcete nastavit *MinWorkerThreads* a *MINIOTHREADS* 50 na procesor za běhu za běhu, použijte auto. **SetMinThreads – (200, 200)**.
 
 * Je také možné zadat minimální nastavení vláken pomocí [nastavení konfigurace *MinIoThreads* nebo *MinWorkerThreads* ](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) v rámci `<processModel>` konfiguračního prvku v `Machine.config` , obvykle se nachází v `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **Nastavení počtu minimálních vláken tímto způsobem se obecně nedoporučuje, protože se jedná o nastavení v rámci systému.**
 
@@ -455,7 +463,7 @@ Níže jsou uvedeny některé běžné důvody pro odpojení mezipaměti.
   * Bylo dosaženo limitu prahové hodnoty šířky pásma.
   * Dokončení operací vázaných na procesor trvalo příliš dlouho.
 * Příčiny na straně serveru
-  * V nabídce standardní mezipaměti služba Azure cache pro Redis zahájila převzetí služeb při selhání z primárního uzlu do sekundárního uzlu.
+  * V nabídce standardní mezipaměti služba Azure cache pro Redis zahájila převzetí služeb při selhání z primárního uzlu do uzlu repliky.
   * Azure použil opravu instance, ve které byla mezipaměť nasazená.
     * Může to být pro aktualizace serveru Redis nebo obecnou údržbu virtuálních počítačů.
 

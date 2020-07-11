@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681001"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187196"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Řešení problémů s funkcí Hybrid Runbook Worker
 
@@ -57,7 +58,7 @@ V protokolu událostí **Microsoft-SMA** vyhledejte odpovídající událost s p
 
 #### <a name="issue"></a>Problém
 
-Hybrid Runbook Worker přijímá událost 15011, která značí, že výsledek dotazu není platný. Následující chyba se zobrazí, když se pracovní proces pokusí otevřít připojení k [serveru signalizace](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.1).
+Hybrid Runbook Worker přijímá událost 15011, která značí, že výsledek dotazu není platný. Následující chyba se zobrazí, když se pracovní proces pokusí otevřít připojení k [serveru signalizace](/aspnet/core/signalr/introduction?view=aspnetcore-3.1).
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -175,7 +176,7 @@ Pokud agent neběží, zabrání Hybrid Runbook Worker pro Linux komunikovat s A
 
 #### <a name="resolution"></a>Řešení
 
- Ověřte, že je agent spuštěný, zadáním příkazu `ps -ef | grep python` . Zobrazený výstup by měl vypadat přibližně takto: Python zpracuje s uživatelským účtem **nxautomation** . Pokud funkce Azure Automation není povolená, žádný z následujících procesů není spuštěný.
+ Ověřte, že je agent spuštěný, zadáním příkazu `ps -ef | grep python` . Výstup by se měl podobat následujícímu. Python zpracuje s uživatelským účtem **nxautomation** . Pokud funkce Azure Automation není povolená, žádný z následujících procesů není spuštěný.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -237,7 +238,7 @@ Hybridní pracovní procesy odesílají [výstup a zprávy Runbooku](../automati
 
 #### <a name="issue"></a>Problém
 
-Skript, který běží na Windows Hybrid Runbook Worker, se v izolovaném prostoru (sandbox) Orchestrator nemůže připojit podle očekávání na Office 365. Skript používá pro připojení [příkaz Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) . 
+Skript, který běží na Windows Hybrid Runbook Worker, se v izolovaném prostoru (sandbox) Orchestrator nemůže připojit podle očekávání na Office 365. Skript používá pro připojení [příkaz Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) . 
 
 Pokud upravíte **Orchestrator.Sandbox.exe.config** nastavíte proxy server a seznam pro obejití, izolovaný prostor (sandbox) se stále nepřipojí správně. **Powershell_ise.exe.config** soubor se stejným nastavením proxy serveru a seznamu obcházení se zdá fungovat podle očekávání. Protokoly Service Management Automation (SMA) a protokoly prostředí PowerShell neposkytují žádné informace týkající se proxy serveru.
 
@@ -247,9 +248,9 @@ Připojení k Active Directory Federation Services (AD FS) (AD FS) na serveru ne
 
 #### <a name="resolution"></a>Řešení
 
-Problém pro izolovaný prostor pro Orchestrator můžete vyřešit migrací skriptu tak, aby používal moduly Azure Active Directory místo modulu MSOnline pro rutiny prostředí PowerShell. Další informace najdete v tématu [migrace z nástroje Orchestrator na Azure Automation (beta)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
+Problém pro izolovaný prostor pro Orchestrator můžete vyřešit migrací skriptu tak, aby používal moduly Azure Active Directory místo modulu MSOnline pro rutiny prostředí PowerShell. Další informace najdete v tématu [migrace z nástroje Orchestrator na Azure Automation (beta)](../automation-orchestrator-migration.md).
 
-Pokud chcete i nadále používat rutiny modulu MSOnline, změňte skript tak, aby používal [příkaz Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7). Zadejte hodnoty `ComputerName` `Credential` parametrů a. 
+Pokud chcete i nadále používat rutiny modulu MSOnline, změňte skript tak, aby používal [příkaz Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7). Zadejte hodnoty `ComputerName` `Credential` parametrů a. 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

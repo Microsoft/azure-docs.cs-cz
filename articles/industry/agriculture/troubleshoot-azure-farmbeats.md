@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656813"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187706"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -185,7 +186,7 @@ Pokud jste už přístup k této chybě udělili a k této chybě došlo, zkuste
 
 **Problém**: akcelerátor FarmBeats nezobrazuje nejnovější verzi, i když jste provedli upgrade FarmBeatsDeployment.
 
-**Nápravná opatření** K této chybě dochází z důvodu trvalosti pracovního procesu služby v prohlížeči. Udělejte toto:
+**Nápravná opatření** K této chybě dochází z důvodu trvalosti pracovního procesu služby v prohlížeči. Postupujte následovně:
 
 1. Zavřete všechny karty prohlížeče, které mají otevřený akcelerátor, a zavřete okno prohlížeče.
 2. Spusťte novou instanci prohlížeče a znovu načtěte identifikátor URI akcelerátoru. Tato akce načte novou verzi akcelerátoru.
@@ -284,7 +285,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Shromažďování protokolů úloh Azure Data Factory nebo protokolů App Service v DataHub
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků FarmBeats DataHub.
 3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *datahublogs \* * . Například *datahublogsmvxmq*.  
 4. Ve sloupci **název** vyberte účet úložiště pro zobrazení řídicího panelu **účtu úložiště** .
@@ -296,7 +297,7 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Shromažďovat protokoly úloh Azure Data Factory nebo protokoly App Service pro akcelerátor
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 2. Do **vyhledávacího** pole vyhledejte skupinu prostředků akcelerátoru FarmBeats.
 3. Na řídicím panelu **skupiny prostředků** vyhledejte účet úložiště *úložiště \* * . Například *storagedop4k \* *.
 4. Vyberte účet úložiště ve sloupci **název** pro zobrazení řídicího panelu **účtu úložiště** .
@@ -313,3 +314,39 @@ K tomuto problému může dojít, pokud se na serveru Sentinel provádí nějak�
 1. Přejít do skupiny prostředků FarmBeats DataHub.
 2. Vyberte **službu App Service**.  
 3. Přejít na [stránku s cenami](https://azure.microsoft.com/pricing/details/app-service/windows/)horizontálního navýšení kapacity App Service a pak vyberte příslušnou cenovou úroveň.
+
+## <a name="weather-data-job-failures"></a>Selhání úlohy dat počasí
+
+**Chyba**: spouštíte úlohy, abyste získali data o počasí, ale úloha se nezdařila.
+
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>Shromažďovat protokoly pro řešení potíží s chybami úlohy počasí
+
+1. V Azure Portal otevřete skupinu prostředků FarmBeats.
+2. Klikněte na službu Data Factory, která je součástí skupiny prostředků. Služba bude obsahovat značku "SKU: DataHub"
+
+> [!NOTE]
+> Pokud chcete zobrazit značky služeb v rámci skupiny prostředků, klikněte na Upravit sloupce a přidejte do zobrazení skupiny prostředků značky.
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="FarmBeats projektu":::
+
+3. Na stránce Přehled objektu pro vytváření dat klikněte na **vytvořit a monitorovat**. V prohlížeči se otevře nová karta. Klikněte na **monitorování** .
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="FarmBeats projektu":::
+
+4. Zobrazí se seznam spuštění kanálu, která jsou součástí provádění úlohy počasí. Klikněte na úlohu, pro kterou chcete shromažďovat protokoly.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="FarmBeats projektu":::
+
+5. Na stránce Přehled kanálu se zobrazí seznam spuštění aktivit. Poznamenejte si ID spuštění aktivit, pro které chcete shromažďovat protokoly.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="FarmBeats projektu":::
+
+6. Vraťte se do skupiny prostředků FarmBeats v Azure Portal a klikněte na účet úložiště s názvem **datahublogs-xxxx** .
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="FarmBeats projektu":::
+
+7. Klikněte na **kontejnery**  ->  **adfjobs**. Do vyhledávacího pole zadejte ID běhu úlohy, které jste si poznamenali v kroku 5 výše.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="FarmBeats projektu":::
+
+8. Výsledek hledání bude obsahovat složku, která obsahuje protokoly týkající se úlohy. Stáhněte si protokoly a odešlete je farmbeatssupport@microsoft.com pro pomoc při ladění problému.

@@ -3,12 +3,12 @@ title: Monitorování výkonu Azure App Services | Microsoft Docs
 description: Sledování výkonu aplikací pro Azure App Services. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 574aefa4d554be7b0027c921289d8d15cffb8e49
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733443"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169931"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
 
@@ -58,7 +58,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
  
  Níže je uveden souhrn dat shromažďovaných pro každou trasu:
         
-|  | Kolekce .NET úrovně Basic | .NET – doporučená kolekce |
+| Datum | Kolekce .NET úrovně Basic | .NET – doporučená kolekce |
 | --- | --- | --- |
 | Přidání trendů využití procesoru, paměti a vstupně-výstupních operací |Ano |Ano |
 | Shromažďování trendů využití a povolení korelace mezi výsledky dostupnosti a transakcemi | Ano |Ano |
@@ -116,7 +116,7 @@ Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při
 * Vyberte **nastavení** > * * * * nastavení aplikace * * * *.
    * V části nastavení aplikace přidejte název a **hodnotu** **Nastavení nové aplikace** :
 
-     Jméno:`APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Název: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Hodnota: `true`
 
@@ -348,7 +348,7 @@ Počínaje verzí 2.8.9 se používá předem nainstalovaná rozšíření webu.
 
 Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou knihovny DLL ApplicationInsigths odebrány ze složky bin aplikace, [v tématu Postup řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na platformě .NET a .NET Core běžící na Azure App Services.
 

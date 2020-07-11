@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 892197c79285495f49a870bbe79eb75229af2940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831020"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185768"
 ---
 # <a name="update-azure-powershell-modules"></a>Aktualizace modulů Azure PowerShellu
 
@@ -37,7 +38,7 @@ Sada Runbook **Update-AutomationAzureModulesForAccount** podporuje ve výchozím
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>Použití aktualizace kódu Runbooku jako regulárního skriptu PowerShellu
 
-Kód Runbooku můžete použít jako regulární skript PowerShellu namísto Runbooku. Pokud to chcete provést, přihlaste se k Azure pomocí rutiny [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) a pak ji předejte `-Login $false` do skriptu.
+Kód Runbooku můžete použít jako regulární skript PowerShellu namísto Runbooku. Pokud to chcete provést, přihlaste se k Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) a pak ji předejte `-Login $false` do skriptu.
 
 ## <a name="use-the-update-runbook-on-sovereign-clouds"></a>Použití sady Runbook aktualizace na cloudech z svrchovaného počítače
 

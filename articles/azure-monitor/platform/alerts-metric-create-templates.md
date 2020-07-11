@@ -5,13 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 6/2/2020
+ms.date: 7/9/2020
 ms.subservice: alerts
-ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8ec0c76259a8567906e9ac415864e2cd37a9cd
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299294"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187570"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -1520,7 +1521,9 @@ V této části najdete popis Azure Resource Manager šablon pro různé scéná
 
 > [!NOTE]
 >
-> V pravidle výstrahy metriky, které monitorují více prostředků, je povolena pouze jedna podmínka.
+> V pravidle výstrahy metriky, které monitorují více prostředků, platí následující omezení:
+> - Rozsah pravidla výstrahy musí obsahovat alespoň jeden prostředek vybraného typu prostředku.
+> - Pravidlo výstrahy může obsahovat pouze jednu podmínku.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Výstraha statické prahové hodnoty na všech virtuálních počítačích v jedné nebo více skupinách prostředků
 

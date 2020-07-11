@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 2/10/2020
-ms.openlocfilehash: 39329eb9ea2c396f8b5f04287f3e933bb6242f85
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/09/2020
+ms.openlocfilehash: a4624d16f29834e8948a7bbc7ef882041727a823
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982975"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171869"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -239,7 +239,7 @@ Vzhledem k tomu, že každá instance je izolovaná ve své vlastní virtuální
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Vytvoření skupiny převzetí služeb při selhání mezi spravovanými instancemi v různých předplatných
 
-Můžete vytvořit skupinu převzetí služeb při selhání mezi spravovanými instancemi SQL ve dvou různých předplatných. Pokud používáte rozhraní PowerShell API, můžete to udělat zadáním `PartnerSubscriptionId` parametru pro sekundární SQL spravovanou instanci. Při použití REST API může mít každé ID instance obsažené v `properties.managedInstancePairs` parametru vlastní subscriptionID.
+Skupinu převzetí služeb při selhání můžete vytvořit mezi spravovanými instancemi SQL ve dvou různých předplatných, pokud jsou předplatná přidružená ke stejnému [Azure Active Directory tenantovi](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology). Při použití rozhraní API PowerShellu to můžete provést zadáním `PartnerSubscriptionId` parametru pro sekundární SQL spravovanou instanci. Při použití REST API může mít každé ID instance obsažené v `properties.managedInstancePairs` parametru vlastní subscriptionID.
   
 > [!IMPORTANT]
 > Azure Portal nepodporuje vytváření skupin převzetí služeb při selhání v různých předplatných. Pro existující skupiny převzetí služeb při selhání v různých předplatných nebo skupinách prostředků se převzetí služeb při selhání nedá iniciovat ručně prostřednictvím portálu z primární spravované instance SQL. Místo toho ji inicializujte z instance geografické sekundární instance.
@@ -404,7 +404,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Rutina | Description |
+| Rutina | Popis |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -415,7 +415,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 | [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -425,7 +425,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="rest-api"></a>[Rozhraní REST API](#tab/rest-api)
 
-| Rozhraní API | Description |
+| Rozhraní API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Vytvoří nebo aktualizuje skupinu převzetí služeb při selhání. |
 | [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -442,7 +442,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Rutina | Description |
+| Rutina | Popis |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární instanci.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání.|
@@ -453,7 +453,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 | [AZ SQL Failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Tento příkaz vytvoří skupinu převzetí služeb při selhání a zaregistruje ji na primární i sekundární servery.|
 | [AZ SQL Failover-Group DELETE](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Odebere skupinu převzetí služeb při selhání ze serveru. |
@@ -463,7 +463,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 
 # <a name="rest-api"></a>[Rozhraní REST API](#tab/rest-api)
 
-| Rozhraní API | Description |
+| Rozhraní API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Vytvoří nebo aktualizuje konfiguraci skupiny převzetí služeb při selhání. |
 | [Odstranit skupinu převzetí služeb při selhání](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Odebere skupinu převzetí služeb při selhání z instance. |

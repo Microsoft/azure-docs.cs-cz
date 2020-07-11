@@ -3,12 +3,12 @@ title: Šifrování v Azure Backup
 description: Přečtěte si, jak funkce šifrování v Azure Backup pomůžou chránit zálohovaná data a plnit požadavky na zabezpečení vaší firmy.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: ca570cfdc6e78e712715ba075168f4b06c55e4af
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: aafb9868dfb6a63ec9b6a3ae654b88b202a1a145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116552"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171818"
 ---
 # <a name="encryption-in-azure-backup"></a>Šifrování v Azure Backup
 
@@ -26,8 +26,7 @@ Ve výchozím nastavení se všechna vaše data šifrují pomocí klíčů sprav
 
 Při zálohování Virtual Machines Azure teď můžete data šifrovat pomocí klíčů vlastněných a spravovaných vámi. Azure Backup umožňuje používat klíče RSA uložené v Azure Key Vault k šifrování záloh. Šifrovací klíč, který se používá k šifrování záloh, může být jiný než ten, který se používá pro zdroj. Data jsou chráněná pomocí šifrovacího klíče založeného na standardu AES 256 (klíč DEK), který je zase chráněn pomocí vašich klíčů. Díky tomu máte plnou kontrolu nad daty a klíči. Chcete-li šifrování zakázat, je nutné, aby měl Recovery Services trezoru udělen přístup k šifrovacímu klíči v Azure Key Vault. Kdykoli je to potřeba, můžete klíč zakázat nebo odvolat přístup. Před tím, než se pokusíte ochránit jakékoli položky do trezoru, je však nutné povolit šifrování pomocí vašich klíčů.
 
->[!NOTE]
->Tato funkce je aktuálně v omezeném rozsahu dostupnosti. Pokud chcete data záloh šifrovat pomocí zákaznických klíčů, vyplňte prosím [Tento průzkum](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) a pošlete nám e-mail AskAzureBackupTeam@microsoft.com . Všimněte si, že možnost použití této funkce podléhá schválení Azure Backup služby.
+Přečtěte si další informace o šifrování zálohovaných dat [pomocí klíčů](encryption-at-rest-with-cmk.md)spravovaných zákazníkem.
 
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Zálohování virtuálních počítačů se spravovanými disky šifrovaných pomocí klíčů spravovaných zákazníkem
 
@@ -38,7 +37,7 @@ Azure Backup taky umožňuje zálohovat virtuální počítače Azure, které po
 Kromě šifrování dat v úložišti Recovery Services pomocí klíčů spravovaných zákazníkem můžete také zvolit, aby byla na infrastruktuře úložiště nakonfigurovaná další vrstva šifrování. Toto šifrování infrastruktury je spravováno platformou a společně s šifrováním v klidovém formátu pomocí klíčů spravovaných zákazníkem umožňuje použití dvou vrstev šifrování zálohovaných dat. Je potřeba si uvědomit, že šifrování infrastruktury se dá nakonfigurovat jenom v případě, že se nejdřív rozhodnete používat vlastní klíče pro šifrování v klidovém umístění. Šifrování infrastruktury používá pro šifrování dat klíče spravované platformou.
 
 >[!NOTE]
->Šifrování infrastruktury je momentálně ve verzi omezené verze Preview a je k dispozici ve USA – východ, USA a oblasti USA (střed) – jih. Pokud chcete funkci používat v některé z těchto oblastí, vyplňte prosím [Tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) a pošlete nám e-mail na adresu [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>Šifrování infrastruktury je momentálně ve verzi omezené verze Preview a je dostupné v oblastech USA – východ, US West2, USA (střed) – jih, US Gov – Arizona a US GOV) – Virginia. Pokud chcete funkci používat v některé z těchto oblastí, vyplňte prosím [Tento formulář](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) a pošlete nám e-mail na adresu [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>Zálohování virtuálních počítačů šifrovaných pomocí ADE
 

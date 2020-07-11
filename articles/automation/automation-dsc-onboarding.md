@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: f30d15615e4f3c738d969d068bf2864df23e7cdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae268534a18a921cca012881fa172261c7ba1063
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836902"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186397"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Povolit konfiguraci stavu Azure Automation
 
@@ -56,7 +57,7 @@ Pomocí rutiny [Register-AzAutomationDscNode](/powershell/module/az.automation/r
 
 ### <a name="register-vms-across-azure-subscriptions"></a>Registrace virtuálních počítačů napříč předplatnými Azure
 
-Nejlepším způsobem, jak registrovat virtuální počítače z jiných předplatných Azure, je použít rozšíření DSC v šabloně nasazení Azure Resource Manager. Příklady jsou k dispozici v [rozšíření konfigurace požadovaného stavu pomocí šablon Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
+Nejlepším způsobem, jak registrovat virtuální počítače z jiných předplatných Azure, je použít rozšíření DSC v šabloně nasazení Azure Resource Manager. Příklady jsou k dispozici v [rozšíření konfigurace požadovaného stavu pomocí šablon Azure Resource Manager](../virtual-machines/extensions/dsc-template.md).
 
 Pokud chcete najít registrační klíč a registrační adresu URL, které se použijí jako parametry v šabloně, přečtěte si téma [povolení zabezpečeného počítače pomocí registrace](#enable-machines-securely-using-registration).
 
@@ -72,7 +73,7 @@ Můžete povolit servery Windows spuštěné místně nebo v jiných cloudových
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. Pokud nemůžete použít metaconfigurations prostředí PowerShell DSC vzdáleně, zkopírujte složku **metaconfigurations** do počítačů, které povolíte. Pak přidejte kód pro volání [set-DscLocalConfigurationManager](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) místně na počítačích.
+1. Pokud nemůžete použít metaconfigurations prostředí PowerShell DSC vzdáleně, zkopírujte složku **metaconfigurations** do počítačů, které povolíte. Pak přidejte kód pro volání [set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) místně na počítačích.
 1. Pomocí rutin Azure Portal a ověřte, že se počítače zobrazují jako uzly Konfigurace stavu registrované ve vašem účtu Azure Automation.
 
 ## <a name="enable-physicalvirtual-linux-machines"></a>Povolit fyzické a virtuální počítače se systémem Linux
@@ -122,7 +123,7 @@ Pokud chcete povolit libovolný počítač pro konfiguraci stavu, můžete vygen
 > [!NOTE]
 > DSC metaconfigurations obsahují tajné kódy potřebné k povolení počítače v účtu Automation pro správu. Ujistěte se, že jste správně chránili všechny metaconfigurationsy DSC, které jste vytvořili, nebo je po použití odstraňte.
 
-Podpora proxy serveru pro metaconfigurations se řídí [místním Configuration Manager](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7), což je modul Windows PowerShell DSC. LCM běží na všech cílových uzlech a zodpovídá za volání prostředků konfigurace, které jsou součástí skriptu DSC metaconfiguration. Do metaconfiguration můžete zahrnout podporu proxy tak, že zahrnete definice `ProxyURL` a `ProxyCredential` vlastnosti podle potřeby v `ConfigurationRepositoryWeb` blocích, `ResourceRepositoryWeb` a `ReportServerWeb` . Příkladem nastavení adresy URL je `ProxyURL = "http://172.16.3.6:3128";` . `ProxyCredential`Vlastnost je nastavena na `PSCredential` objekt, jak je popsáno v tématu [Správa přihlašovacích údajů v Azure Automation](shared-resources/credentials.md). 
+Podpora proxy serveru pro metaconfigurations se řídí [místním Configuration Manager](/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7), což je modul Windows PowerShell DSC. LCM běží na všech cílových uzlech a zodpovídá za volání prostředků konfigurace, které jsou součástí skriptu DSC metaconfiguration. Do metaconfiguration můžete zahrnout podporu proxy tak, že zahrnete definice `ProxyURL` a `ProxyCredential` vlastnosti podle potřeby v `ConfigurationRepositoryWeb` blocích, `ResourceRepositoryWeb` a `ReportServerWeb` . Příkladem nastavení adresy URL je `ProxyURL = "http://172.16.3.6:3128";` . `ProxyCredential`Vlastnost je nastavena na `PSCredential` objekt, jak je popsáno v tématu [Správa přihlašovacích údajů v Azure Automation](shared-resources/credentials.md). 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>Generování DSC metaconfigurations pomocí konfigurace DSC
 
@@ -259,7 +260,7 @@ Podpora proxy serveru pro metaconfigurations se řídí [místním Configuration
 Pokud se výchozí hodnoty prostředí PowerShell DSC shodují s vaším případem použití a chcete, aby počítače umožňovaly načítat a nahlásit Azure Automation konfiguraci stavu, můžete potřebné DSC vygenerovat snadněji pomocí rutin Azure Automation.
 
 1. Otevřete konzolu PowerShellu nebo VSCode jako správce na počítači v místním prostředí.
-2. Připojte se k Azure Resource Manager pomocí [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0).
+2. Připojte se k Azure Resource Manager pomocí [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0).
 3. Stáhněte si prostředí PowerShell DSC metaconfigurations pro počítače, které chcete povolit z účtu Automation, ve kterém nastavujete uzly.
 
    ```powershell
@@ -324,8 +325,7 @@ Zobrazení stavu rozšíření konfigurace požadovaného stavu virtuálního po
 
 - Informace o tom, jak začít, najdete v tématu Začínáme [s konfigurací stavu Azure Automation](automation-dsc-getting-started.md).
 - Další informace o kompilaci konfigurací DSC, abyste je mohli přiřadit cílovým uzlům, najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](automation-dsc-compile.md).
-- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - Informace o cenách najdete v tématu [Azure Automation ceny konfigurace stavu](https://azure.microsoft.com/pricing/details/automation/).
 - Příklad použití konfigurace stavu Azure Automation v kanálu průběžného nasazování najdete v tématu [Nastavení průběžného nasazování pomocí čokolády](automation-dsc-cd-chocolatey.md).
 - Informace o řešení potíží najdete v tématu [řešení potíží s konfigurací stavu Azure Automation](./troubleshoot/desired-state-configuration.md).

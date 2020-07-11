@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680828"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187128"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Řešení problémů s agentem Windows Update
 
@@ -109,7 +110,7 @@ Při kontrole přístupu ke složce kryptografických souborů se určuje, jestl
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Řešení potíží offline
 
-Poradce při potížích s Hybrid Runbook Worker můžete použít offline spuštěním skriptu místně. Získejte následující skript z Galerie prostředí PowerShell: [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Pokud chcete skript spustit, musíte mít nainstalovanou verzi WMF 4,0 nebo novější. Pokud si chcete stáhnout nejnovější verzi PowerShellu, přečtěte si téma [instalace různých verzí PowerShellu](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+Poradce při potížích s Hybrid Runbook Worker můžete použít offline spuštěním skriptu místně. Získejte následující skript z Galerie prostředí PowerShell: [Troubleshooting-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Pokud chcete skript spustit, musíte mít nainstalovanou verzi WMF 4,0 nebo novější. Pokud si chcete stáhnout nejnovější verzi PowerShellu, přečtěte si téma [instalace různých verzí PowerShellu](/powershell/scripting/install/installing-powershell).
 
 Výstup tohoto skriptu vypadá jako v následujícím příkladu:
 
