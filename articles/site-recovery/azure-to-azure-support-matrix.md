@@ -2,14 +2,14 @@
 title: Matice podpory pro zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
 description: Shrnuje podporu zotavení po havárii virtuálních počítačů Azure do sekundární oblasti pomocí Azure Site Recovery.
 ms.topic: article
-ms.date: 06/03/2020
+ms.date: 07/10/2020
 ms.author: raynew
-ms.openlocfilehash: c729645eadc192dba4d7bb4f2c346d7b9d36434a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d56a507586c9d62fdbeae01d47bb734b98bf385b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132675"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223801"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -30,18 +30,18 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 
 **Akce prostředku** | **Podrobnosti**
 --- | ---
-**Přesun trezorů mezi skupinami prostředků** | Nepodporuje se
-**Přesun prostředků COMPUTE/Storage/sítě mezi skupinami prostředků** | Není podporováno.<br/><br/> Pokud po replikaci virtuálního počítače přesunete virtuální počítač nebo přidružené součásti, jako je úložiště nebo síť, musíte pro tento virtuální počítač Zakázat a znovu povolit replikaci.
+**Přesun trezorů mezi skupinami prostředků** | Nepodporováno
+**Přesun prostředků COMPUTE/Storage/sítě mezi skupinami prostředků** | Nepodporováno<br/><br/> Pokud po replikaci virtuálního počítače přesunete virtuální počítač nebo přidružené součásti, jako je úložiště nebo síť, musíte pro tento virtuální počítač Zakázat a znovu povolit replikaci.
 **Replikace virtuálních počítačů Azure z jednoho předplatného do jiného pro zotavení po havárii** | Podporováno v rámci stejného Azure Active Directory tenanta.
 **Migrace virtuálních počítačů napříč oblastmi v rámci podporovaných geografických clusterů (v rámci a napříč předplatnými)** | Podporováno v rámci stejného Azure Active Directory tenanta.
-**Migrace virtuálních počítačů v rámci stejné oblasti** | Není podporováno.
+**Migrace virtuálních počítačů v rámci stejné oblasti** | Nepodporováno
 
 ## <a name="region-support"></a>Podpora oblastí
 
 Virtuální počítače můžete replikovat a obnovovat mezi dvěma oblastmi v rámci stejného geografického clusteru. Geografické clustery jsou definovány pro udržení latence a suverenity dat.
 
 
-**Geografický cluster** | **Oblast Azure**
+**Geografický cluster** | **Oblasti Azure**
 -- | --
 Používaný | Kanada – východ, Kanada – střed, Střed USA – jih, Středozápadní USA, Východní USA, Východní USA 2, Západní USA, Západní USA 2, Střed USA, Střed USA – sever
 Evropa | Velká Británie – západ, Velká Británie – jih, Severní Evropa, Západní Evropa, Jižní Afrika západní, Jižní Afrika sever, Norsko – východ, Norsko – západ
@@ -68,9 +68,9 @@ Tato tabulka shrnuje podporu účtu úložiště mezipaměti používaného Site
 
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Účty úložiště pro obecné účely v2 (horká a studená vrstva) | Podporuje se | Použití GPv2 se nedoporučuje, protože náklady na transakce pro v2 jsou podstatně vyšší než V1 účty úložiště.
-Premium Storage | Nepodporuje se | Účty úložiště úrovně Standard se používají pro úložiště mezipaměti, které vám pomůžou optimalizovat náklady.
-Azure Storage brány firewall pro virtuální sítě  | Podporuje se | Pokud používáte účet úložiště mezipaměti s povolenou bránou firewall nebo cílový účet úložiště, zajistěte, abyste [povolili důvěryhodné služby Microsoftu](../storage/common/storage-network-security.md#exceptions).<br></br>Také se ujistěte, že máte povolený přístup k alespoň jedné podsíti zdrojové virtuální sítě.
+Účty úložiště pro obecné účely v2 (horká a studená vrstva) | Podporováno | Použití GPv2 se nedoporučuje, protože náklady na transakce pro v2 jsou podstatně vyšší než V1 účty úložiště.
+Premium Storage | Nepodporováno | Účty úložiště úrovně Standard se používají pro úložiště mezipaměti, které vám pomůžou optimalizovat náklady.
+Azure Storage brány firewall pro virtuální sítě  | Podporováno | Pokud používáte účet úložiště mezipaměti s povolenou bránou firewall nebo cílový účet úložiště, zajistěte, abyste [povolili důvěryhodné služby Microsoftu](../storage/common/storage-network-security.md#exceptions).<br></br>Také se ujistěte, že máte povolený přístup k alespoň jedné podsíti zdrojové virtuální sítě.
 
 
 ## <a name="replicated-machine-operating-systems"></a>Operační systémy replikovaných počítačů
@@ -170,17 +170,17 @@ SUSE Linux Enterprise Server 15 a 15 SP1 | 9,32 | Ve výchozím nastavení jsou 
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Velikost | Všechny velikosti virtuálních počítačů Azure s minimálně 2 jádry procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/windows/sizes.md).
-Skupiny dostupnosti | Podporuje se | Pokud povolíte replikaci pro virtuální počítač Azure s výchozími možnostmi, vytvoří se skupina dostupnosti automaticky na základě nastavení zdrojové oblasti. Tato nastavení můžete změnit.
-Zóny dostupnosti | Podporuje se |
-Zvýhodněné hybridní využití (centrum) | Podporuje se | Pokud má zdrojový virtuální počítač povolenou licenci na rozbočovač, používá testovací převzetí služeb při selhání nebo převzetí služeb při selhání virtuální počítač taky licenci centra.
-Škálovací sady virtuálních počítačů | Nepodporuje se |
-Image Galerie Azure – Publikováno Microsoftem | Podporuje se | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
-Image Galerie Azure – Publikováno třetí stranou | Podporuje se | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
-Vlastní image – Publikováno třetí stranou | Podporuje se | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
-Virtuální počítače migrované pomocí Site Recovery | Podporuje se | Pokud se virtuální počítač VMware nebo fyzický počítač migruje do Azure pomocí Site Recovery, musíte odinstalovat starší verzi služby mobility spuštěnou na počítači a restartovat počítač před tím, než ho budete replikovat do jiné oblasti Azure.
-Zásady RBAC | Nepodporuje se | Zásady řízení přístupu na základě role (RBAC) na virtuálních počítačích se nereplikují do virtuálního počítače s podporou převzetí služeb při selhání v cílové oblasti.
-Rozšíření | Nepodporuje se | Rozšíření se nereplikují do virtuálního počítače s podporou převzetí služeb při selhání v cílové oblasti. Po převzetí služeb při selhání je potřeba ji nainstalovat ručně.
-Skupiny umístění blízkosti | Podporuje se | Virtuální počítače umístěné ve skupině umístění blízkosti se dají chránit pomocí Site Recovery.
+Skupiny dostupnosti | Podporováno | Pokud povolíte replikaci pro virtuální počítač Azure s výchozími možnostmi, vytvoří se skupina dostupnosti automaticky na základě nastavení zdrojové oblasti. Tato nastavení můžete změnit.
+Zóny dostupnosti | Podporováno |
+Zvýhodněné hybridní využití (centrum) | Podporováno | Pokud má zdrojový virtuální počítač povolenou licenci na rozbočovač, používá testovací převzetí služeb při selhání nebo převzetí služeb při selhání virtuální počítač taky licenci centra.
+Škálovací sady virtuálních počítačů | Nepodporováno |
+Image Galerie Azure – Publikováno Microsoftem | Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
+Image Galerie Azure – Publikováno třetí stranou | Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
+Vlastní image – Publikováno třetí stranou | Podporováno | Podporováno, pokud virtuální počítač běží v podporovaném operačním systému.
+Virtuální počítače migrované pomocí Site Recovery | Podporováno | Pokud se virtuální počítač VMware nebo fyzický počítač migruje do Azure pomocí Site Recovery, musíte odinstalovat starší verzi služby mobility spuštěnou na počítači a restartovat počítač před tím, než ho budete replikovat do jiné oblasti Azure.
+Zásady RBAC | Nepodporováno | Zásady řízení přístupu na základě role (RBAC) na virtuálních počítačích se nereplikují do virtuálního počítače s podporou převzetí služeb při selhání v cílové oblasti.
+Rozšíření | Nepodporováno | Rozšíření se nereplikují do virtuálního počítače s podporou převzetí služeb při selhání v cílové oblasti. Po převzetí služeb při selhání je potřeba ji nainstalovat ručně.
+Skupiny umístění blízkosti | Podporováno | Virtuální počítače umístěné ve skupině umístění blízkosti se dají chránit pomocí Site Recovery.
 
 
 ## <a name="replicated-machines---disk-actions"></a>Replikované počítače – diskové akce
@@ -188,7 +188,7 @@ Skupiny umístění blízkosti | Podporuje se | Virtuální počítače umístě
 **Akce** | **Podrobnosti**
 -- | ---
 Změna velikosti disku na replikovaném virtuálním počítači | Podporováno ve zdrojovém virtuálním počítači před převzetím služeb při selhání. Není nutné zakázat nebo znovu povolit replikaci.<br/><br/> Pokud po převzetí služeb při selhání změníte zdrojový virtuální počítač, změny se nezachytí.<br/><br/> Pokud po převzetí služeb při selhání změníte velikost disku na virtuálním počítači Azure, změny nebudou zachyceny Site Recovery a navrácení služeb po obnovení do původní velikosti virtuálního počítače.
-Přidání disku do replikovaného virtuálního počítače | Podporuje se
+Přidání disku do replikovaného virtuálního počítače | Podporováno
 
 ## <a name="replicated-machines---storage"></a>Replikované počítače – úložiště
 
@@ -201,39 +201,41 @@ Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový 
 **Komponenta** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md) o discích virtuálních počítačů.
-Dočasný disk | Nepodporuje se | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/windows/managed-disks-overview.md).
+Dočasný disk | Nepodporováno | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/windows/managed-disks-overview.md).
 Maximální velikost datového disku | 8192 GB pro Managed disks<br></br>4095 GB pro nespravované disky|
 Minimální velikost datového disku | Neexistují žádná omezení pro nespravované disky. 2 GB pro spravované disky |
 Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.
-Rychlost změny datového disku | Maximálně 10 MB/s na disk pro Premium Storage. Maximálně 2 MB/s na disk pro úložiště úrovně Standard. | Pokud je průměrná rychlost změny dat na disku nepřetržitě vyšší než maximální, replikace se nezachytí.<br/><br/>  Pokud je ale maximum překročeno zřídka, replikace může zachytit, ale mírně zpožděné body obnovení.
-Datový disk – standardní účet úložiště | Podporuje se |
-Datový disk – účet Premium Storage | Podporuje se | Pokud má virtuální počítač disky se systémem Premium a standardními účty úložiště, můžete pro každý disk vybrat jiný cílový účet úložiště, abyste měli jistotu, že máte stejnou konfiguraci úložiště v cílové oblasti.
+Rychlost změny datového disku | Maximálně 20 MB/s na disk pro Premium Storage. Maximálně 2 MB/s na disk pro úložiště úrovně Standard. | Pokud je průměrná rychlost změny dat na disku nepřetržitě vyšší než maximální, replikace se nezachytí.<br/><br/>  Pokud je ale maximum překročeno zřídka, replikace může zachytit, ale mírně zpožděné body obnovení.
+Datový disk – standardní účet úložiště | Podporováno |
+Datový disk – účet Premium Storage | Podporováno | Pokud má virtuální počítač disky se systémem Premium a standardními účty úložiště, můžete pro každý disk vybrat jiný cílový účet úložiště, abyste měli jistotu, že máte stejnou konfiguraci úložiště v cílové oblasti.
 Spravovaný disk – Standard | Podporováno v oblastech Azure, ve kterých je podpora Azure Site Recovery podporovaná. |
 Spravovaný disk – Premium | Podporováno v oblastech Azure, ve kterých je podpora Azure Site Recovery podporovaná. |
-SSD úrovně Standard | Podporuje se |
+SSD úrovně Standard | Podporováno |
 Redundance | LRS a GRS jsou podporovány.<br/><br/> ZRS se nepodporuje.
-Studené a horké úložiště | Nepodporuje se | Disky virtuálních počítačů se nepodporují na studeném a horkém úložišti.
-Prostory úložiště | Podporuje se |
-Šifrování v klidovém prostředí (SSE) | Podporuje se | Pro účty úložiště je výchozí nastavení SSE.
-Šifrování v klidovém umístění (CMK) | Podporuje se | U spravovaných disků se podporuje jak software, tak klíče HSM.
+Studené a horké úložiště | Nepodporováno | Disky virtuálních počítačů se nepodporují na studeném a horkém úložišti.
+Prostory úložiště | Podporováno |
+Šifrování v klidovém prostředí (SSE) | Podporováno | Pro účty úložiště je výchozí nastavení SSE.
+Šifrování v klidovém umístění (CMK) | Podporováno | U spravovaných disků se podporuje jak software, tak klíče HSM.
+Dvojité šifrování v klidovém umístění | Podporováno | Další informace o podporovaných oblastech pro [Windows](../virtual-machines/windows/disk-encryption.md) a [Linux](../virtual-machines/linux/disk-encryption.md)
 Azure Disk Encryption (ADE) pro operační systém Windows | Podporováno pro virtuální počítače se spravovanými disky. | Virtuální počítače používající nespravované disky se nepodporují. <br/><br/> Klíče chráněné HSM nejsou podporovány. <br/><br/> Šifrování jednotlivých svazků na jednom disku se nepodporuje. |
 Azure Disk Encryption (ADE) pro Linux OS | Podporováno pro virtuální počítače se spravovanými disky. | Virtuální počítače používající nespravované disky se nepodporují. <br/><br/> Klíče chráněné HSM nejsou podporovány. <br/><br/> Šifrování jednotlivých svazků na jednom disku se nepodporuje. |
-Horké přidání    | Podporuje se | Povolení replikace pro datový disk, který přidáte do replikovaného virtuálního počítače Azure, se podporuje pro virtuální počítače, které používají spravované disky. <br/><br/> Do virtuálního počítače Azure se dá po jednom okamžiku připojit jenom jeden disk. Paralelní přidávání více disků není podporováno. |
-Odstranit disk z provozu    | Nepodporuje se | Pokud na virtuálním počítači odeberete datový disk, budete muset zakázat replikaci a znovu povolit replikaci pro virtuální počítač.
+Horké přidání    | Podporováno | Povolení replikace pro datový disk, který přidáte do replikovaného virtuálního počítače Azure, se podporuje pro virtuální počítače, které používají spravované disky. <br/><br/> Do virtuálního počítače Azure se dá po jednom okamžiku připojit jenom jeden disk. Paralelní přidávání více disků není podporováno. |
+Odstranit disk z provozu    | Nepodporováno | Pokud na virtuálním počítači odeberete datový disk, budete muset zakázat replikaci a znovu povolit replikaci pro virtuální počítač.
 Vyloučení disku | Podpora. Ke konfiguraci je nutné použít [PowerShell](azure-to-azure-exclude-disks.md) . |    Dočasné disky jsou ve výchozím nastavení vyloučené.
 Prostory úložiště – přímé  | Podporováno pro body obnovení konzistentní vzhledem k selhání. Body obnovení konzistentní vzhledem k aplikacím se nepodporují. |
 Souborový server se škálováním na více instancí  | Podporováno pro body obnovení konzistentní vzhledem k selhání. Body obnovení konzistentní vzhledem k aplikacím se nepodporují. |
 DRBD | Disky, které jsou součástí instalace DRBD, nejsou podporovány. |
-LRS | Podporuje se |
-GRS | Podporuje se |
-RA-GRS | Podporuje se |
-ZRS | Nepodporuje se |
-Studené a horké úložiště | Nepodporuje se | Disky virtuálních počítačů se ve studeném a horkém úložišti nepodporují.
-Azure Storage brány firewall pro virtuální sítě  | Podporuje se | Pokud omezíte přístup k účtu úložiště přes virtuální síť, povolte možnost [Povolit důvěryhodné služby společnosti Microsoft](../storage/common/storage-network-security.md#exceptions).
-Účty úložiště pro obecné účely v2 (horká a studená vrstva) | Podporuje se | Náklady transakce se podstatně zvyšují v porovnání s účty úložiště pro obecné účely v1.
-Generace 2 (spuštění UEFI) | Podporuje se
-NVMe disky | Nepodporuje se
-Sdílené disky Azure | Nepodporuje se
+LRS | Podporováno |
+GRS | Podporováno |
+RA-GRS | Podporováno |
+ZRS | Nepodporováno |
+Studené a horké úložiště | Nepodporováno | Disky virtuálních počítačů se ve studeném a horkém úložišti nepodporují.
+Azure Storage brány firewall pro virtuální sítě  | Podporováno | Pokud omezíte přístup k účtu úložiště přes virtuální síť, povolte možnost [Povolit důvěryhodné služby společnosti Microsoft](../storage/common/storage-network-security.md#exceptions).
+Účty úložiště pro obecné účely v2 (horká a studená vrstva) | Podporováno | Náklady transakce se podstatně zvyšují v porovnání s účty úložiště pro obecné účely v1.
+Generace 2 (spuštění UEFI) | Podporováno
+NVMe disky | Nepodporováno
+Sdílené disky Azure | Nepodporováno
+Možnost zabezpečeného přenosu | Podporováno
 
 >[!IMPORTANT]
 > Abyste se vyhnuli problémům s výkonem, ujistěte se, že je pro virtuální počítače se systémem [Linux](../virtual-machines/linux/disk-scalability-targets.md) nebo [Windows](../virtual-machines/windows/disk-scalability-targets.md) dodržujte škálovatelnost a výkonnostní cíle pro disky virtuálních počítačů. Pokud použijete výchozí nastavení, Site Recovery v závislosti na konfiguraci zdroje vytvoří požadované disky a účty úložiště. Pokud přizpůsobíte a vyberete vlastní nastavení, postupujte podle škálovatelnosti disku a cílů výkonu pro vaše zdrojové virtuální počítače.
@@ -259,28 +261,30 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 M
 **Nastavení** | **Podpora** | **Podrobnosti**
 --- | --- | ---
 NIC | Maximální podporovaný počet pro konkrétní velikost virtuálního počítače Azure | Síťové karty se vytvoří, když se virtuální počítač vytvoří během převzetí služeb při selhání.<br/><br/> Počet síťových adaptérů na VIRTUÁLNÍm počítači s podporou převzetí služeb při selhání závisí na počtu síťových adaptérů ve zdrojovém virtuálním počítači, když je replikace povolená. Pokud po povolení replikace přidáte nebo odeberete síťovou kartu, nebude to mít vliv na počet síťových adaptérů v replikovaném virtuálním počítači po převzetí služeb při selhání. <br/><br/> Pořadí síťových adaptérů po převzetí služeb při selhání není zaručené jako původní pořadí. <br/><br/> Síťové karty můžete přejmenovat v cílové oblasti na základě zásad vytváření názvů vaší organizace.
-Internetový nástroj pro vyrovnávání zatížení | Podporuje se | Přidružte předem nakonfigurovaný Nástroj pro vyrovnávání zatížení pomocí skriptu Azure Automation v plánu obnovení.
-Interní nástroj pro vyrovnávání zatížení | Podporuje se | Přidružte předem nakonfigurovaný Nástroj pro vyrovnávání zatížení pomocí skriptu Azure Automation v plánu obnovení.
-Veřejná IP adresa | Podporuje se | Přidružte existující veřejnou IP adresu k síťovému rozhraní. Případně vytvořte veřejnou IP adresu a přidružte ji k síťovému rozhraní pomocí skriptu Azure Automation v plánu obnovení.
-NSG na síťové kartě | Podporuje se | Přidružte NSG k síťovému rozhraní pomocí skriptu Azure Automation v plánu obnovení.
-NSG v podsíti | Podporuje se | Přidružte NSG k podsíti pomocí skriptu Azure Automation v plánu obnovení.
-Rezervovaná (statická) IP adresa | Podporuje se | Pokud má síťová karta ve zdrojovém virtuálním počítači statickou IP adresu a cílová podsíť má stejnou IP adresu, je přiřazená k virtuálnímu počítači, u kterého došlo k převzetí služeb při selhání.<br/><br/> Pokud cílová podsíť nemá k dispozici stejnou IP adresu, jedna z dostupných IP adres v podsíti je vyhrazena pro virtuální počítač.<br/><br/> Můžete také zadat pevnou IP adresu a podsíť v nastavení **replikované položky**  >  **Nastavení**  >  **výpočetních a síťových**  >  **síťových rozhraní**.
-Dynamická IP adresa | Podporuje se | Pokud má síťová karta ve zdroji dynamické přidělování IP adres, síťové rozhraní ve virtuálním počítači převzetí služeb při selhání je ve výchozím nastavení také dynamické.<br/><br/> V případě potřeby ho můžete v případě potřeby upravit na pevně stanovenou IP adresu.
-Několik IP adres | Nepodporuje se | Při převzetí služeb při selhání virtuálního počítače, který má síťové rozhraní s více IP adresami, zůstane zachována pouze primární IP adresa síťového adaptéru ve zdrojové oblasti. Pokud chcete přiřadit více IP adres, můžete přidat virtuální počítače do [plánu obnovení](recovery-plan-overview.md) a připojit skript pro přiřazení dalších IP adres k plánu, nebo můžete změnu provést ručně nebo pomocí skriptu po převzetí služeb při selhání.
-Traffic Manager     | Podporuje se | Můžete předem nakonfigurovat Traffic Manager tak, aby se provoz směroval do koncového bodu ve zdrojové oblasti v pravidelných intervalech, a v případě převzetí služeb při selhání do koncového bodu v cílové oblasti.
-Azure DNS | Podporuje se |
-Vlastní DNS    | Podporuje se |
-Neověřený proxy server | Podporuje se | [Další informace](./azure-to-azure-about-networking.md)
-Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač používá pro odchozí připojení ověřený proxy server, nedá se replikovat pomocí Azure Site Recovery.
-Připojení VPN typu Site-to-site k místnímu prostředí<br/><br/>(s ExpressRoute nebo bez něj)| Podporuje se | Ujistěte se, že jsou udr a skupin zabezpečení sítě nakonfigurované tak, aby se provoz Site Recovery nesměroval do místního prostředí. [Další informace](./azure-to-azure-about-networking.md)
-Připojení virtuální sítě k virtuální síti    | Podporuje se | [Další informace](./azure-to-azure-about-networking.md)
-Koncové body služby pro virtuální síť | Podporuje se | Pokud omezíte přístup k virtuální síti k účtům úložiště, ujistěte se, že důvěryhodné služby Microsoftu mají povolený přístup k účtu úložiště.
-Urychlení sítě | Podporuje se | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
-Síťové zařízení Palo Alto | Nepodporuje se | U zařízení třetích stran se v rámci virtuálního počítače často ukládají omezení poskytovatele. Azure Site Recovery potřebuje k dispozici agenta, rozšíření a odchozí připojení. Zařízení ale neumožňuje konfigurovat žádné odchozí aktivity uvnitř virtuálního počítače.
-IPv6  | Nepodporuje se | Současně se nepodporují i smíšené konfigurace, které zahrnují IPv4 i IPv6. Před jakoukoli operací Site Recovery Prosím uvolněte podsíť rozsahu IPv6.
+Internetový nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předem nakonfigurovaný Nástroj pro vyrovnávání zatížení pomocí skriptu Azure Automation v plánu obnovení.
+Interní nástroj pro vyrovnávání zatížení | Podporováno | Přidružte předem nakonfigurovaný Nástroj pro vyrovnávání zatížení pomocí skriptu Azure Automation v plánu obnovení.
+Veřejná IP adresa | Podporováno | Přidružte existující veřejnou IP adresu k síťovému rozhraní. Případně vytvořte veřejnou IP adresu a přidružte ji k síťovému rozhraní pomocí skriptu Azure Automation v plánu obnovení.
+NSG na síťové kartě | Podporováno | Přidružte NSG k síťovému rozhraní pomocí skriptu Azure Automation v plánu obnovení.
+NSG v podsíti | Podporováno | Přidružte NSG k podsíti pomocí skriptu Azure Automation v plánu obnovení.
+Rezervovaná (statická) IP adresa | Podporováno | Pokud má síťová karta ve zdrojovém virtuálním počítači statickou IP adresu a cílová podsíť má stejnou IP adresu, je přiřazená k virtuálnímu počítači, u kterého došlo k převzetí služeb při selhání.<br/><br/> Pokud cílová podsíť nemá k dispozici stejnou IP adresu, jedna z dostupných IP adres v podsíti je vyhrazena pro virtuální počítač.<br/><br/> Můžete také zadat pevnou IP adresu a podsíť v nastavení **replikované položky**  >  **Nastavení**  >  **výpočetních a síťových**  >  **síťových rozhraní**.
+Dynamická IP adresa | Podporováno | Pokud má síťová karta ve zdroji dynamické přidělování IP adres, síťové rozhraní ve virtuálním počítači převzetí služeb při selhání je ve výchozím nastavení také dynamické.<br/><br/> V případě potřeby ho můžete v případě potřeby upravit na pevně stanovenou IP adresu.
+Několik IP adres | Nepodporováno | Při převzetí služeb při selhání virtuálního počítače, který má síťové rozhraní s více IP adresami, zůstane zachována pouze primární IP adresa síťového adaptéru ve zdrojové oblasti. Pokud chcete přiřadit více IP adres, můžete přidat virtuální počítače do [plánu obnovení](recovery-plan-overview.md) a připojit skript pro přiřazení dalších IP adres k plánu, nebo můžete změnu provést ručně nebo pomocí skriptu po převzetí služeb při selhání.
+Traffic Manager     | Podporováno | Můžete předem nakonfigurovat Traffic Manager tak, aby se provoz směroval do koncového bodu ve zdrojové oblasti v pravidelných intervalech, a v případě převzetí služeb při selhání do koncového bodu v cílové oblasti.
+Azure DNS | Podporováno |
+Vlastní DNS    | Podporováno |
+Neověřený proxy server | Podporováno | [Další informace](./azure-to-azure-about-networking.md)
+Ověřený proxy server | Nepodporováno | Pokud virtuální počítač používá pro odchozí připojení ověřený proxy server, nedá se replikovat pomocí Azure Site Recovery.
+Připojení VPN typu Site-to-site k místnímu prostředí<br/><br/>(s ExpressRoute nebo bez něj)| Podporováno | Ujistěte se, že jsou udr a skupin zabezpečení sítě nakonfigurované tak, aby se provoz Site Recovery nesměroval do místního prostředí. [Další informace](./azure-to-azure-about-networking.md)
+Připojení virtuální sítě k virtuální síti    | Podporováno | [Další informace](./azure-to-azure-about-networking.md)
+Koncové body služby pro virtuální síť | Podporováno | Pokud omezíte přístup k virtuální síti k účtům úložiště, ujistěte se, že důvěryhodné služby Microsoftu mají povolený přístup k účtu úložiště.
+Urychlení sítě | Podporováno | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Síťové zařízení Palo Alto | Nepodporováno | U zařízení třetích stran se v rámci virtuálního počítače často ukládají omezení poskytovatele. Azure Site Recovery potřebuje k dispozici agenta, rozšíření a odchozí připojení. Zařízení ale neumožňuje konfigurovat žádné odchozí aktivity uvnitř virtuálního počítače.
+IPv6  | Nepodporováno | Současně se nepodporují i smíšené konfigurace, které zahrnují IPv4 i IPv6. Před jakoukoli operací Site Recovery Prosím uvolněte podsíť rozsahu IPv6.
 
 
 
 ## <a name="next-steps"></a>Další kroky
+
 - Přečtěte si [pokyny k síti](./azure-to-azure-about-networking.md) pro replikaci virtuálních počítačů Azure.
 - Nasazení zotavení po havárii [replikací virtuálních počítačů Azure](./azure-to-azure-quickstart.md).
+

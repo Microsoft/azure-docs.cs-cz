@@ -5,17 +5,17 @@ services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75772949"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226415"
 ---
-Pokud při provádění jakýchkoli operací se sdílenými galeriemi imagí, definicemi imagí a verzemi imagí narazíte na problémy, spusťte příkaz, který selhal, znovu v režimu ladění. Režim ladění je aktivován předáním přepínače **-Debug** s rozhraním CLI a přepínačem **-Debug** v prostředí PowerShell. Po vyhledání chyby použijte tento dokument k odstranění chyb.
+Pokud při provádění jakýchkoli operací se sdílenými galeriemi imagí, definicemi imagí a verzemi imagí narazíte na problémy, spusťte příkaz, který selhal, znovu v režimu ladění. Režim ladění je aktivován předáním přepínače pomocí rozhraní příkazového `--debug` řádku a `-Debug` přepínače pomocí prostředí PowerShell. Po vyhledání chyby použijte tento dokument k odstranění chyb.
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>Nejde vytvořit sdílenou galerii imagí
@@ -43,7 +43,7 @@ Povolené znaky pro definici obrázku jsou velká a malá písmena, číslice, t
 
 Vlastnosti, jako je název, vydavatel, nabídka, SKU a typ operačního systému, jsou povinné. Ověřte, zda jsou předávány všechny vlastnosti.
 
-Zajistěte, aby se **OSType**, ať už se systémem Linux nebo Windows, definice image shoduje se zdrojovou spravovanou imagí, kterou používáte k vytvoření verze image. 
+Zajistěte, aby se **OSType**, buď Linux nebo Windows, definice image shoduje se zdrojem, který používáte k vytvoření verze image. 
 
 
 ## <a name="unable-to-create-an-image-version"></a>Nejde vytvořit verzi image 
@@ -84,7 +84,7 @@ Ověřte, zda je oblast, ve které se pokoušíte vytvořit virtuální počíta
 
 *Vytvoření virtuálního počítače nebo sady škálování virtuálního počítače trvá dlouhou dobu.*
 
-Ověřte, že **OSType** verze image, ze které se pokoušíte vytvořit virtuální počítač nebo sadu škálování virtuálního počítače, z nástroje má stejný **OSType** ze zdrojové spravované image, kterou jste použili k vytvoření verze image. 
+Ověřte, že **OSType** verze image, ze které se pokoušíte vytvořit virtuální počítač nebo sadu škálování virtuálního počítače, z nástroje má stejný **OSType** zdroje, který jste použili k vytvoření verze image. 
 
 ## <a name="unable-to-share-resources"></a>Nejde sdílet prostředky
 

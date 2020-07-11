@@ -5,15 +5,15 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 158ac92a930b53e02ee81570c62711ca27dc4ae8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfe428b9eba1f83f3e1bb05c3941c4c56317c9bc
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200388"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223104"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurace typu přiřazení fondu hostitelů osobní plochy
 
@@ -28,7 +28,7 @@ Typ přiřazení fondu hostitelů osobní plochy můžete nakonfigurovat tak, ab
 >[!NOTE]
 > Pokyny v tomto článku se vztahují pouze na fondy hostitelů osobních ploch, nikoli pro fondy hostitelů ve fondu, protože uživatelé ve fondech hostitelů fondu nejsou přiřazeni ke konkrétním hostitelům relace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už stáhli a nainstalovali modul PowerShellu pro virtuální počítače s Windows. Pokud jste to neudělali, postupujte podle pokynů v části [nastavení modulu PowerShell](powershell-module.md).
 
@@ -71,6 +71,21 @@ Pokud chcete přiřadit uživatele ke konkrétnímu hostiteli relace, spusťte n
 ```powershell
 Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -ResourceGroupName <resourcegroupname> -AssignedUser <userupn>
 ```
+
+Chcete-li uživatele přímo přiřadit k hostiteli relace v Azure Portal:
+
+1. Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com>.
+2. Do panelu hledání zadejte **virtuální klient Windows** .
+3. V části **služby**vyberte **virtuální klient Windows**.
+4. Na stránce virtuální počítač s Windows přejděte do nabídky na levé straně okna a vyberte **fondy hostitelů**.
+5. Vyberte název hostitelského fondu, který chcete aktualizovat.
+6. Potom přejděte do nabídky na levé straně okna a vyberte **skupiny aplikací**.
+7. Vyberte název skupiny desktopových aplikací, kterou chcete upravit, a pak v nabídce na levé straně okna vyberte **přiřazení** .
+8. Vyberte **+ Přidat**a vyberte uživatele nebo skupiny uživatelů, na které chcete tuto skupinu desktopových aplikací publikovat.
+9. Na informačním panelu vyberte **přiřadit virtuální počítač** pro přiřazení hostitele relace k uživateli.
+10. Vyberte hostitele relace, kterého chcete přiřadit uživateli, a pak vyberte **přiřadit**.
+11. V seznamu dostupných uživatelů vyberte uživatele, kterému chcete přiřadit hostitele relace.
+12. Až budete hotovi, vyberte **Vybrat**.
 
 ## <a name="next-steps"></a>Další kroky
 

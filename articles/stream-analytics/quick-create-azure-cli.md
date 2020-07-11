@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/01/2020
-ms.openlocfilehash: 8406c556ecaa0cea968fc1976d709b4f3c51c78b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852517"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231253"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí Azure CLI
 
@@ -23,7 +23,7 @@ V tomto rychlém startu použijete rozhraní příkazového řádku Azure CLI k 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -49,7 +49,7 @@ V tomto rychlém startu použijete rozhraní příkazového řádku Azure CLI k 
     az extension add --name stream-analytics
     ```
 
-   [Rozšíření pro Azure IoT](/cli/azure/ext/azure-iot/azure-iot) nainstalujete spuštěním následujícího příkazu:
+   [Rozšíření pro Azure IoT](/cli/azure/ext/azure-iot) nainstalujete spuštěním následujícího příkazu:
 
     ```azurecli
     az extension add --name azure-iot
@@ -154,7 +154,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>Konfigurace vstupu do úlohy
 
-Přidejte vstup do úlohy pomocí rutiny [AZ Stream-Analytics Input](/cli/azure/ext/stream-analytics/stream-analytics/input?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-input-create) . Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definici vstupu úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte IoT Hub jako vstup.
+Přidejte vstup do úlohy pomocí rutiny [AZ Stream-Analytics Input](/cli/azure/ext/stream-analytics/stream-analytics/input?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-input-create) . Tato rutina použije název úlohy, název vstupu úlohy, název skupiny prostředků a definici vstupu úlohy jako parametry. Definice vstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci vstupu úlohy. V tomto příkladu vytvoříte IoT Hub jako vstup.
 
 Na místním počítači vytvořte soubor s názvem `datasource.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu v `sharedAccessPolicyKey` `SharedAccessKey` části připojovacího řetězce IoT Hub, který jste uložili v předchozí části.
 
@@ -196,9 +196,9 @@ az stream-analytics input create
 
 ## <a name="configure-output-to-the-job"></a>Konfigurace výstupu do úlohy
 
-Do úlohy přidejte výstup pomocí rutiny [AZ Stream-Analytics Output Create](/cli/azure/ext/stream-analytics/stream-analytics/output?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-output-create) . Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definici výstupu úlohy představuje soubor JSON, který obsahuje vlastnosti potřebné ke konfiguraci výstupu úlohy. V tomto příkladu je výstupem úložiště objektů blob.
+Do úlohy přidejte výstup pomocí rutiny [AZ Stream-Analytics Output Create](/cli/azure/ext/stream-analytics/stream-analytics/output?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-output-create) . Tato rutina použije název úlohy, název výstupu úlohy, název skupiny prostředků a definici výstupu úlohy jako parametry. Definice výstupu úlohy je soubor JSON, který obsahuje vlastnosti požadované ke konfiguraci výstupu úlohy. V tomto příkladu je výstupem úložiště objektů blob.
 
-Na místním počítači vytvořte soubor s názvem `datasink.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu položky `accountKey` přístupovým klíčem k vašemu účtu úložiště, který je uložený v hodnotě $storageAccountKey.
+Na místním počítači vytvořte soubor s názvem `datasink.json` a přidejte do něj následující data JSON. Nezapomeňte nahradit hodnotu pro `accountKey` přístupový klíč účtu úložiště, který je hodnotou uloženou v $storageAccountKey Value.
 
 ```json
 {

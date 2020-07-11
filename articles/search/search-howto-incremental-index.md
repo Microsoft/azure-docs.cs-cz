@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146871"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230702"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Jak nakonfigurovat ukládání do mezipaměti pro přírůstkové obohacení v Azure Kognitivní hledání
 
@@ -174,7 +174,7 @@ Následující tabulka shrnuje, jak různá rozhraní API souvisí s mezipamět�
 | [Vytvořit indexer (2020-06-30 – Preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | Vytvoří a spustí indexer při prvním použití, včetně vytvoření mezipaměti, pokud ho definuje definice indexeru. |
 | [Spustit indexer](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | Spustí na vyžádání kanál pro obohacení. Toto rozhraní API načte z mezipaměti, pokud existuje, nebo vytvoří mezipaměť, pokud jste přidali do aktualizované definice indexeru ukládání do mezipaměti. Když spustíte indexer s povoleným ukládáním do mezipaměti, indexer vynechá kroky, pokud je možné použít výstup z mezipaměti. Můžete použít verzi rozhraní API všeobecně k dispozici nebo Preview.|
 | [Resetovat indexer](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Vymaže indexer všech přírůstkových informací o indexování. Další indexer se spustí (buď na vyžádání, nebo podle plánu) zcela znovu od začátku, včetně opětovného spuštění všech dovedností a nové sestavení mezipaměti. Je funkčně ekvivalentní k odstranění indexeru a jeho opětovnému vytvoření. Můžete použít verzi rozhraní API všeobecně k dispozici nebo Preview.|
-| [Resetovat dovednosti](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | Určuje, které dovednosti se mají znovu spustit u dalšího indexeru, i když jste nezměnili žádnou dovednost. Mezipaměť se odpovídajícím způsobem aktualizuje. Výstupy, jako je znalostní báze úložiště nebo vyhledávací index, se aktualizují pomocí opakovaně použitelných dat z mezipaměti a nového obsahu na aktualizovanou dovednost. |
+| [Resetovat dovednosti](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | Určuje, které dovednosti se mají znovu spustit u dalšího indexeru, i když jste nezměnili žádnou dovednost. Mezipaměť se odpovídajícím způsobem aktualizuje. Výstupy, jako je znalostní báze úložiště nebo vyhledávací index, se aktualizují pomocí opakovaně použitelných dat z mezipaměti a nového obsahu na aktualizovanou dovednost. |
 
 Další informace o řízení, co se stane s mezipamětí, najdete v tématu [Správa mezipaměti](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 

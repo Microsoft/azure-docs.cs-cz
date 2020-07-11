@@ -8,11 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081111"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230753"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Vzory návrhu pro víceklientské aplikace SaaS a Azure Kognitivní hledání
 
@@ -40,14 +41,14 @@ Přidávání a odebírání oddílů a replik v nástroji umožní, aby služba
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Omezení služby a indexu v Azure Kognitivní hledání
 V Azure Kognitivní hledání existuje několik různých [cenových úrovní](https://azure.microsoft.com/pricing/details/search/) , každá z vrstev má různá [omezení a kvóty](search-limits-quotas-capacity.md). Některá z těchto omezení jsou na úrovni služby, některé jsou na úrovni indexu a některé jsou na úrovni oddílu.
 
-|  | Základní | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
-| Maximální počet replik na službu |3 |12 |12 |12 |12 |
-| Maximální počet oddílů na službu |1 |12 |12 |12 |3 |
-| Maximální počet jednotek hledání (repliky * oddíly) na službu |3 |36 |36 |36 |36 (max. 3 oddíly) |
-| Maximální velikost úložiště na službu |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
-| Maximální velikost úložiště na oddíl |2 GB |25 GB |100 GB |200 GB |200 GB |
-| Maximální počet indexů na službu |5 |50 |200 |200 |3000 (max. 1000 indexů/oddílů) |
+| **Maximální počet replik na službu** |3 |12 |12 |12 |12 |
+| **Maximální počet oddílů na službu** |1 |12 |12 |12 |3 |
+| **Maximální počet jednotek hledání (repliky * oddíly) na službu** |3 |36 |36 |36 |36 (max. 3 oddíly) |
+| **Maximální velikost úložiště na službu** |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
+| **Maximální velikost úložiště na oddíl** |2 GB |25 GB |100 GB |200 GB |200 GB |
+| **Maximální počet indexů na službu** |5 |50 |200 |200 |3000 (max. 1000 indexů/oddílů) |
 
 #### <a name="s3-high-density"></a>Vysoká hustota S3
 V cenové úrovni S3 Azure Kognitivní hledání je k dispozici možnost pro režim vysoké hustoty (HD) navržený speciálně pro víceklientské scénáře. V mnoha případech je potřeba zajistit podporu velkého počtu menších klientů v rámci jedné služby, abyste dosáhli výhod jednoduchosti a nákladové efektivity.

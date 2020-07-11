@@ -6,18 +6,19 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: d113d20e87d58bad007a35fce47d597a67849a6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aadc5806f0c5c610dc28b32039ca944af87ab13
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445198"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231722"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Postup povolení spravované identity přiřazené systémem pro aplikaci Azure jaře Cloud
 Spravované identity pro prostředky Azure poskytují automaticky spravovanou identitu v Azure Active Directory k prostředkům Azure, jako je například vaše aplikace pro jarní Cloud v Azure. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu.
 
 V tomto článku se dozvíte, jak povolit a zakázat spravované identity přiřazené systémem pro cloudovou aplikaci Azure pomocí Azure Portal a rozhraní příkazového řádku (dostupného z verze 0.2.4).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 Budete potřebovat nasazenou instanci cloudu Azure pro jaře. Dokončete [nasazení pomocí Azure CLI pomocí rychlého](spring-cloud-quickstart-launch-app-cli.md)startu.
 
@@ -30,7 +31,7 @@ Pokud chcete nastavit spravovanou identitu v [Azure Portal](https://portal.azure
 1. Vytvořte aplikaci na portálu obvyklým způsobem. Přejděte na portál na portálu.
 2. Přejděte dolů do skupiny **Nastavení** v levém navigačním podokně.
 3. Vyberte **Identita**.
-4. V rámci karty **přiřazené systémem** přepněte **stav** na *zapnuto*. Klikněte na **Uložit**.
+4. V rámci karty **přiřazené systémem** přepněte **stav** na *zapnuto*. Klikněte na **Save** (Uložit).
 
  ![Spravovaná identita na portálu](./media/spring-cloud-managed-identity/identity-1.png)
 
@@ -80,6 +81,6 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 
 ## <a name="next-steps"></a>Další kroky
 * [Použití spravovaných identit pomocí sady Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
-* [Přístup k Azure Key Vault se spravovanými identitami ve jarním startu Starter](https://github.com/microsoft/azure-spring-boot/blob/master/azure-spring-boot-starters/azure-keyvault-secrets-spring-boot-starter/README.md#use-msi--managed-identities)
+* [Přístup k Azure Key Vault se spravovanými identitami ve jarním startu Starter](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [Další informace o spravovaných identitách pro prostředky Azure](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 

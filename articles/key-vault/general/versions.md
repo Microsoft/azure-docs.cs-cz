@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4959d530e1f7a3c777aa3db21fe577c853fbca13
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856003"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230821"
 ---
 # <a name="key-vault-versions"></a>Verze Key Vaultu
 
@@ -55,7 +55,7 @@ Nové funkce vydané tento rok:
 ## <a name="2015"></a>2015
 
 Nové funkce vydané tento rok:
-- Správa certifikátů. Přidáno do 26. září 2016 jako funkce pro GA verze 2015-06-01.
+- Správa certifikátů: Přidáno do 26. září 2016 jako funkce pro GA verze 2015-06-01.
 
 Obecná dostupnost (verze 2015-06-01) byla oznámena 24. června 2015. V této verzi byly provedeny následující změny: 
 - Odstranění klíče – pole použít se odebralo.
@@ -64,7 +64,7 @@ Obecná dostupnost (verze 2015-06-01) byla oznámena 24. června 2015. V této v
 - Obnoví klíč – pole použít se odebralo.     
 - Byl změněn "RSA_OAEP" na "RSA-výplně OAEP" pro algoritmy RSA. Přečtěte si [o klíčích, tajných klíčích a certifikátech](about-keys-secrets-certificates.md).    
  
-Verze Second Preview (verze 2015-02-01-Preview) byla oznámena 20. dubna 2015. Další informace najdete v příspěvku na blogu [REST API Update](https://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx) . Následující úkoly byly aktualizovány:
+Verze Second Preview (verze 2015-02-01-Preview) byla oznámena 20. dubna 2015. Další informace najdete v příspěvku na blogu [REST API Update](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) . Následující úkoly byly aktualizovány:
  
 - Výpis klíčů v trezoru – Podpora stránkování je přidána do provozu.
 - Vypíše verze operace přidané klíčovým seznamem verzí klíče.  

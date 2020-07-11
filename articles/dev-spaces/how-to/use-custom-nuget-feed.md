@@ -8,11 +8,12 @@ ms.topic: conceptual
 description: Pomocí vlastního informačního kanálu NuGet můžete získat přístup k balíčkům NuGet v prostoru pro vývoj Azure a používat je.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
 manager: gwallace
-ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77c7b733b12d9b352f9a806cadc0f900b9283ef3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74325730"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229273"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Použití vlastního informačního kanálu NuGet s Azure Dev Spaces
 
@@ -20,7 +21,7 @@ Kanál NuGet poskytuje pohodlný způsob, jak zahrnout zdroje balíčků do proj
 
 ## <a name="set-up-a-nuget-feed"></a>Nastavení kanálu NuGet
 
-Přidejte [odkaz na balíček](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) pro vaši závislost do `*.csproj` souboru pod `PackageReference` uzlem. Příklad:
+Přidejte [odkaz na balíček](/nuget/consume-packages/package-references-in-project-files) pro vaši závislost do `*.csproj` souboru pod `PackageReference` uzlem. Například:
 
 ```xml
 <ItemGroup>
@@ -30,7 +31,7 @@ Přidejte [odkaz na balíček](https://docs.microsoft.com/nuget/consume-packages
 </ItemGroup>
 ```
 
-Vytvořte soubor [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file) ve složce projektu a nastavte `packageSources` `packageSourceCredentials` oddíly a pro váš informační kanál NuGet. `packageSources`Oddíl obsahuje adresu URL vašeho informačního kanálu, která musí být přístupná z vašeho clusteru AKS. `packageSourceCredentials`Přihlašovací údaje pro přístup k informačnímu kanálu. Příklad:
+Vytvořte soubor [NuGet.Config](/nuget/reference/nuget-config-file) ve složce projektu a nastavte `packageSources` `packageSourceCredentials` oddíly a pro váš informační kanál NuGet. `packageSources`Oddíl obsahuje adresu URL vašeho informačního kanálu, která musí být přístupná z vašeho clusteru AKS. `packageSourceCredentials`Přihlašovací údaje pro přístup k informačnímu kanálu. Například:
 
 ```xml
 <packageSources>
@@ -45,7 +46,7 @@ Vytvořte soubor [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget
 </packageSourceCredentials>
 ```
 
-Aktualizujte fázemi tak, aby se `NuGet.Config` soubor zkopíroval do image. Příklad:
+Aktualizujte fázemi tak, aby se `NuGet.Config` soubor zkopíroval do image. Například:
 
 ```console
 COPY ["<project folder>/NuGet.Config", "./NuGet.Config"]
@@ -70,4 +71,4 @@ Při příštím spuštění `azds up` nebo `F5` přihlášení do Visual Studio
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [NuGet a o tom, jak funguje](https://docs.microsoft.com/nuget/what-is-nuget).
+Přečtěte si další informace o [NuGet a o tom, jak funguje](/nuget/what-is-nuget).

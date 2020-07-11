@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc665503413d2f022b10ae043aac3315597c6ba4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734992"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221387"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy instančního objektu v Azure Active Directory Domain Services
 
@@ -34,11 +34,11 @@ Pokud se požadovaný objekt služby odstraní, platforma Azure nemůže provád
 
 ### <a name="check-for-missing-service-principals"></a>Kontrolovat chybějící objekty služby
 
-Chcete-li zjistit, který objekt služby chybí a je třeba jej znovu vytvořit, proveďte následující kroky:
+Chcete-li zjistit, který instanční objekt chybí a je třeba jej znovu vytvořit, proveďte následující kroky:
 
 1. V Azure Portal v navigační nabídce vlevo vyberte **Azure Active Directory** .
 1. Vyberte **podnikové aplikace**. Zvolte možnost *všechny aplikace* z rozevírací nabídky **Typ aplikace** a pak vyberte **použít**.
-1. Vyhledejte jednotlivá ID aplikací. Pokud se nenajde žádná existující aplikace, použijte postup *řešení* k vytvoření instančního objektu nebo opětovné registraci oboru názvů.
+1. Vyhledejte všechna následující ID aplikací. Pokud se nenajde žádná existující aplikace, použijte postup *řešení* k vytvoření instančního objektu nebo opětovné registraci oboru názvů.
 
     | ID aplikace | Řešení |
     | :--- | :--- |
@@ -49,9 +49,9 @@ Chcete-li zjistit, který objekt služby chybí a je třeba jej znovu vytvořit,
 
 ### <a name="recreate-a-missing-service-principal"></a>Znovu vytvořit chybějící instanční objekt
 
-Pokud v adresáři Azure AD chybí ID aplikace *2565bd9d-DA50-47d4-8B85-4c97f669dc36* , použijte Azure AD PowerShell k provedení následujících kroků. Další informace najdete v tématu [instalace Azure AD PowerShellu](/powershell/azure/active-directory/install-adv2).
+Pokud v adresáři Azure AD chybí ID aplikace *2565bd9d-DA50-47d4-8B85-4c97f669dc36* , použijte Azure AD PowerShell k provedení následujících kroků. Další informace najdete v tématu [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2).
 
-1. Nainstalujte modul Azure AD PowerShell a naimportujte ho následujícím způsobem:
+1. V případě potřeby nainstalujte modul Azure AD PowerShell a naimportujte ho následujícím způsobem:
 
     ```powershell
     Install-Module AzureAD
@@ -89,7 +89,7 @@ Azure služba AD DS automaticky synchronizuje uživatelské účty a přihlašov
 
 K opětovnému vytvoření aplikace služby Azure AD používané pro synchronizaci přihlašovacích údajů použijte Azure AD PowerShell k provedení následujících kroků. Další informace najdete v tématu [instalace Azure AD PowerShellu](/powershell/azure/active-directory/install-adv2).
 
-1. Nainstalujte modul Azure AD PowerShell a naimportujte ho následujícím způsobem:
+1. V případě potřeby nainstalujte modul Azure AD PowerShell a naimportujte ho následujícím způsobem:
 
     ```powershell
     Install-Module AzureAD

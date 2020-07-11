@@ -4,8 +4,6 @@
   items:
     - name: Co je Microsoft Identity Platform?
       href: v2-overview.md
-    - name: Rozvoj platformy Microsoft Identity Platform
-      href: about-microsoft-identity-platform.md
 - name: Rychlé starty
   expanded: true
   items:

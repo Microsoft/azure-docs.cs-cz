@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: cynthn
-ms.openlocfilehash: 3d55efb15454f0b1dfe5ac1101a8a53eb1c9aa8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 469e225a1cc40dc2ecc45339d9355484e87c4af2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683954"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223580"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Verze Preview: použití klíčů spravovaných zákazníkem pro šifrování imagí
 
@@ -112,7 +113,7 @@ Virtuální počítač můžete vytvořit z Galerie sdílených imagí a pomocí
 V případě datových disků je nutné přidat `-DiskEncryptionSetId $setID` parametr při použití [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk).
 
 
-## <a name="cli"></a>Rozhraní příkazového řádku 
+## <a name="cli"></a>CLI 
 
 Ve verzi Public Preview musíte nejprve zaregistrovat funkci.
 
@@ -174,7 +175,7 @@ az sig image-version create \
    
 ```
 
-### <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+### <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
 Virtuální počítač můžete vytvořit z Galerie sdílených imagí a pomocí klíčů spravovaných zákazníkem zašifrovat disky. Syntaxe je stejná jako vytvoření [zobecněného](vm-generalized-image-version-cli.md) nebo [specializovaného](vm-specialized-image-version-cli.md) virtuálního počítače z image, stačí přidat `--os-disk-encryption-set` parametr s ID sady šifrování. U datových disků přidejte k `--data-disk-encryption-sets` datovým diskům seznam diskových sad s oddělenými mezerami.
 
@@ -187,10 +188,12 @@ Když vytvoříte verzi image na portálu, můžete k zadání informací o sad�
 2. V části **typ šifrování**vyberte možnost místní **šifrování pomocí klíče spravovaného zákazníkem**. 
 3. Pro každý disk v imagi vyberte v rozevíracím seznamu možnost použít **šifrování disku** . 
 
-### <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+### <a name="create-the-vm"></a>Vytvoření virtuálního počítače
 
 Virtuální počítač můžete vytvořit z Galerie sdílených imagí a pomocí klíčů spravovaných zákazníkem zašifrovat disky. Když vytváříte virtuální počítač na portálu, na kartě **disky** vyberte možnost **šifrování v klidovém nastavení pomocí klíčů spravovaných zákazníkem** pro **typ šifrování**. Pak můžete vybrat sadu šifrování z rozevíracího seznamu.
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o [šifrování disků na straně serveru](./windows/disk-encryption.md).
+
+Informace o tom, jak dokoupit informace o plánu nákupu, najdete v tématu [zadání informací o plánu nákupu Azure Marketplace při vytváření imagí](marketplace-images.md).

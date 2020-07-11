@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135071"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221200"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Verze Preview: Vytvoření šablony Azure image Builder 
 
@@ -65,20 +65,20 @@ Toto je základní formát šablony:
 
 Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imagí se podporují tyto oblasti:
 
-- USA – východ
+- East US
 - USA – východ 2
 - USA – středozápad
 - USA – západ
-- USA – západ 2
+- Západní USA 2
 - Severní Evropa
-- Západní Evropa
+- West Europe
 
 
 ```json
     "location": "<region>",
 ```
 ## <a name="vmprofile"></a>vmProfile
-Ve výchozím nastavení bude nástroj pro tvorbu obrázků používat virtuální počítač pro sestavení "Standard_D1_v2", můžete ho například přepsat, pokud chcete přizpůsobit image pro virtuální počítač GPU, potřebujete velikost virtuálního počítače GPU. Tato položka je nepovinná.
+Ve výchozím nastavení bude nástroj pro tvorbu obrázků používat virtuální počítač pro sestavení "Standard_D1_v2", můžete ho například přepsat, pokud chcete přizpůsobit image pro virtuální počítač GPU, potřebujete velikost virtuálního počítače GPU. Tento údaj je nepovinný.
 
 ```json
  {
@@ -120,7 +120,7 @@ Tento volitelný oddíl lze použít k zajištění, aby byly před pokračován
 
 Další informace najdete v tématu [Definování závislostí prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
 
-## <a name="identity"></a>Identita
+## <a name="identity"></a>Identity
 Ve výchozím nastavení podporuje tvůrce imagí použití skriptů nebo kopírování souborů z více umístění, jako je GitHub a Azure Storage. Aby je bylo možné použít, musí být veřejně přístupné.
 
 Můžete také použít spravovanou identitu přiřazenou uživatelem Azure, kterou jste definovali, a zapnout tak přístup k tvůrci imagí Azure Storage, pokud mu byla v účtu úložiště Azure udělena minimální hodnota "úložiště BLOB data Reader". To znamená, že nemusíte mít externě přístup k objektům blob úložiště nebo nastavit tokeny SAS.
@@ -150,6 +150,9 @@ Rozhraní API vyžaduje typ SourceType, který definuje zdroj pro sestavení ima
 - PlatformImage – indikuje, že zdrojová Image je image na webu Marketplace.
 - ManagedImage – Toto použijte při spuštění z obyčejné spravované image.
 - SharedImageVersion – používá se, pokud používáte verzi image v galerii sdílených imagí jako zdroj.
+
+> [!NOTE]
+> Pokud používáte stávající vlastní image Windows, můžete spustit příkaz Sysprep až 8 časů na jedné imagi Windows, další informace najdete v dokumentaci k [nástroji Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) .
 
 ### <a name="iso-source"></a>Zdroj ISO
 Tato funkce je zastaralá od tvůrce imagí, protože teď [RHEL vlastní image předplatného](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos), přečtěte si prosím následující časové osy:
@@ -468,7 +471,10 @@ Azure image Builder podporuje tři cíle distribuce:
 - Galerie sdílených imagí **sharedImage**
 - **VHD – VHD** v účtu úložiště
 
-Můžete distribuovat obrázek do obou cílových typů ve stejné konfiguraci, viz [Příklady](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80).
+Můžete distribuovat obrázek do obou cílových typů ve stejné konfiguraci.
+
+> [!NOTE]
+> Výchozí příkaz Sysprep AIB neobsahuje "/Mode: VM", ale to může být nutné při vytváření imagí, na kterých bude nainstalovaná role HyperV. Pokud potřebujete přidat tento argument příkazu, musíte přepsat příkaz Sysprep.
 
 Vzhledem k tomu, že můžete mít více než jeden cíl pro distribuci do nástroje, nástroj image Builder udržuje stav pro každý cíl distribuce, ke kterému lze přistup pomocí dotazování na `runOutputName` .  `runOutputName`Je objekt, který můžete odeslat dotazem na distribuci pro informace o této distribuci. Můžete například zadat dotaz na umístění virtuálního pevného disku nebo oblasti, ve kterých byla verze bitové kopie replikována, nebo vytvořená verze image SIG. Toto je vlastnost všech cílů distribuce. `runOutputName`Musí být jedinečný pro každý cíl distribuce. Tady je příklad, který se dotazuje na distribuci Galerie sdílených imagí:
 

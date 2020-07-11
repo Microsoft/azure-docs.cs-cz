@@ -1,5 +1,5 @@
 ---
-title: Kopírování obrázku z jiné galerie
+title: Kopírování obrázku z jiné galerie pomocí PowerShellu
 description: Kopírování obrázku z jiné galerie pomocí Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796925"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221217"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>Kopírování obrázku z jiné galerie
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>Kopírování obrázku z jiné galerie pomocí PowerShellu
 
 Pokud máte ve vaší organizaci více galerií, můžete vytvářet image z imagí uložených v jiných galeriích. Můžete mít například galerii pro vývoj a testování pro vytváření a testování nových imagí. Až budou připravené k použití v produkčním prostředí, můžete je pomocí tohoto příkladu zkopírovat do produkční galerie. Můžete také vytvořit image z obrázku v jiné galerii pomocí [Azure CLI](image-version-another-gallery-cli.md).
 
@@ -165,3 +165,5 @@ $job.State
 Vytvořte virtuální počítač z [zobecněné](vm-generalized-image-version-powershell.md) nebo [specializované](vm-specialized-image-version-powershell.md) verze image.
 
 [Azure image Builder (Preview)](./linux/image-builder-overview.md) může přispět k automatizaci vytváření verzí image, můžete ji dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
+
+Informace o tom, jak dokoupit informace o plánu nákupu, najdete v tématu [zadání informací o plánu nákupu Azure Marketplace při vytváření imagí](marketplace-images.md).

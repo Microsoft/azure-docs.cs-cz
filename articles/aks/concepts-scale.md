@@ -4,11 +4,12 @@ description: Přečtěte si o škálování ve službě Azure Kubernetes Service
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465333"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223835"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -79,7 +80,7 @@ Pokud chcete rychle škálovat cluster AKS, můžete ho integrovat s Azure Conta
 
 ![Škálování rozKubernetesho shluku na ACI](media/concepts-scale/burst-scaling.png)
 
-ACI umožňuje rychle nasadit instance kontejnerů bez dalších režijních nákladů na infrastrukturu. Když se připojíte pomocí AKS, ACI se bude zabezpečeným logickým rozšířením vašeho clusteru AKS. Součást [virtuálních uzlů][virtual-nodes-cli] , která je založená na [Virtual Kubelet][virtual-kubelet], je nainstalovaná v clusteru AKS, který prezentuje ACI jako virtuální uzel Kubernetes. Kubernetes může naplánovat lusky spouštěné jako instance ACI prostřednictvím virtuálních uzlů, ne jako lusky na uzlech virtuálních počítačů přímo v clusteru AKS. Virtuální uzly jsou v současnosti ve verzi Preview v AKS.
+ACI umožňuje rychle nasadit instance kontejnerů bez dalších režijních nákladů na infrastrukturu. Když se připojíte pomocí AKS, ACI se bude zabezpečeným logickým rozšířením vašeho clusteru AKS. Součást [virtuálních uzlů][virtual-nodes-cli] , která je založená na [Virtual Kubelet][virtual-kubelet], je nainstalovaná v clusteru AKS, který prezentuje ACI jako virtuální uzel Kubernetes. Kubernetes může naplánovat lusky spouštěné jako instance ACI prostřednictvím virtuálních uzlů, ne jako lusky na uzlech virtuálních počítačů přímo v clusteru AKS.
 
 Vaše aplikace nevyžaduje žádné úpravy k použití virtuálních uzlů. Nasazení se můžou škálovat napříč AKS a ACI a bez prodlevy, protože automatické škálování clusteru nasazuje nové uzly v clusteru AKS.
 

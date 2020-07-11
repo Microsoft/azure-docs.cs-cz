@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981303"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224702"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
 
 Přestože funkce správy a více přístupů nabízejí bohatou sadu možností, může tato variabilita výrazně zvýšit rizika při nasazení cloudu. Může být obtížné spravovat, sledovat a auditovat akce správy. Tato variabilita může také zvýšit ohrožení bezpečnosti prostřednictvím neregulovaného přístupu ke koncovým bodům klientů, které se používají pro správu cloudových služeb. Používání obecných nebo osobních pracovních stanic k vývoji a správě infrastruktury otevírá možnosti útoků z nečekaných směrů, například prohlížení webu (např. útok typu watering hole) nebo e-mailu (např. sociální inženýrství a phishing).
 
-![](./media/management/typical-management-network-topology.png)
+![Diagram znázorňující různé způsoby, kterými může hrozba napojovat útoky.](./media/management/typical-management-network-topology.png)
 
 Pravděpodobnost útoku v tomto prostředí narůstá, protože je náročné vytvořit zásady a mechanismy zabezpečení, které by odpovídajícím způsobem řídily přístup k rozhraním Azure (například rozhraní SMAPI) z rozmanitých koncových bodů.
 
@@ -156,12 +157,12 @@ V případě samostatné posílené pracovní stanice mají správci stolní neb
 
 V případě scénáře se samostatnou posílenou pracovní stanicí (viz následující obrázek) je místní instance brány Windows Firewall (nebo brány firewall klienta jiného výrobce) nakonfigurovaná tak, aby blokovala příchozí připojení, například RDP. Správce se může přihlásit k posílené pracovní stanici a spustit relaci RDP, která se připojuje k Azure po navázání připojení VPN ke službě Azure Virtual Network, ale nemůže se přihlásit k podnikovému počítači pomocí RDP, aby se připojil k samotné posílené pracovní stanici.
 
-![](./media/management/stand-alone-hardened-workstation-topology.png)
+![Diagram znázorňující scénář samostatné zesílené pracovní stanice.](./media/management/stand-alone-hardened-workstation-topology.png)
 
 ### <a name="corporate-pc-as-virtual-machine"></a>Podnikový počítač jako virtuální počítač
 V případech, kdy je samostatná posílená pracovní stanice nákladově nevýhodná nebo nevhodná, se může posílená pracovní stanice stát hostitelem virtuálního počítače určeného k provádění úloh, které nepotřebují žádné oprávnění.
 
-![](./media/management/hardened-workstation-enabled-with-hyper-v.png)
+![Diagram znázorňující posílenou pracovní stanici hostující virtuální počítač k provádění úloh bez správy.](./media/management/hardened-workstation-enabled-with-hyper-v.png)
 
 Abyste zabránili několika bezpečnostním rizikům, která mohou vyplývat z používání jedné pracovní stanice pro správu systémů a další každodenní pracovní úlohy, můžete na posílenou pracovní stanici nasadit virtuální počítač Windows Hyper-V. Tento virtuální počítač můžete používat jako podnikový počítač. Prostředí s podnikovými počítači může zůstat izolované od hostitele. Tím omezíte prostor k útokům a oddělíte denní aktivity uživatele (například příjem e-mailů) od citlivých úloh správy.
 
@@ -202,10 +203,10 @@ Minimalizace počtu úloh, které můžou správci provádět na posílené prac
 * Zásady skupiny. Vytvořte globální zásady správy, které se budou používat na libovolné pracovní stanice domény, které se používají pro správu (a zablokujte přístup ze všech ostatních), a na uživatelské účty na těchto pracovních stanicích ověřené.
 * Zřizování s rozšířeným zabezpečením. Zabezpečte svůj image posílené pracovní stanice, abyste byli lépe chráněni před manipulací. Používejte bezpečnostní opatření, například šifrování a izolaci k ukládání imagů, virtuálních počítačů a skriptů a omezte přístup (použijte třeba auditovatelný proces vrácení a rezervace).
 * Opravy chyb. Udržujte konzistentní sestavení (nebo mějte samostatné image pro vývoj, provoz a další úlohy správy), pravidelně kontrolujte změny a malware, udržujte sestavení v aktuálním stavu a počítače aktivujte jenom v případě potřeby.
-* Šifrování. Zajistěte, aby pracovní stanice pro správu byly vybaveny čipy TPM pro bezpečnější povolování [systému souborů EFS](https://technet.microsoft.com/library/cc700811.aspx) (Encrypting File System) a BitLockeru.
+* Šifrování Zajistěte, aby pracovní stanice pro správu byly vybaveny čipy TPM pro bezpečnější povolování [systému souborů EFS](https://technet.microsoft.com/library/cc700811.aspx) (Encrypting File System) a BitLockeru.
 * Řízení. K řízení všech rozhraní Windows pro správce, například sdílení souborů, používejte GPO v AD DS. Zahrňte pracovní stanice pro správu do procesů auditování, sledování a protokolování. Sledujte všechny přístupy a chování správců a vývojářů.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Používání konfigurace posílené pracovní stanice ke správě cloudových služeb Azure, služby Virtual Machines a aplikací vám může pomoct s omezením řady rizik a hrozeb, které vyplývají ze vzdálené správy kritické infrastruktury IT. Azure i Windows poskytují mechanismy, které můžete použít k ochraně a řízení komunikace, ověřování a chování klienta.
 
 ## <a name="next-steps"></a>Další kroky

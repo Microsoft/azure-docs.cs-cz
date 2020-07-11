@@ -8,11 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9b651776ccd8c93271b57eab0efa24c6a79f50a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f209a8b1d7ba5ab4fc213e43d56c04aebc3bd410
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676229"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224260"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -57,8 +58,12 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
           "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-        }      
-      }
+        },
+        "authenticationSettings": {
+                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
+                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
+       }
       }
     }
 ```
@@ -68,10 +73,14 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 > 
 > Důvodem je to `/secrets` , že cesta vrátí úplný certifikát, včetně privátního klíče, ale `/certificates` cesta ne. Další informace o certifikátech najdete tady: [Key Vault certifikátů](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates) .
 
+> [!NOTE]
+> Vlastnost authenticationSettings je volitelná pro scénáře, kdy má virtuální počítač více přiřazených identit.
+> Umožňuje určující identitu použít k ověřování Key Vault.
+
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad | Typ dat |
+| Název | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | vydavatel | Microsoft.Azure.KeyVault | řetězec |
@@ -83,6 +92,8 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | řetězec |
 | requiredInitialSync | true | Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
+| msiEndpoint | http://169.254.169.254/metadata/identity | řetězec |
+| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | řetězec |
 
 
 ## <a name="template-deployment"></a>Nasazení šablon

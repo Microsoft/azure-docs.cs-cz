@@ -11,17 +11,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 43b2a02acc04a5c81b9e7bfbe3bfb1551b48ed52
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9f41cb11960dbe9487231f14b005376261075a83
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964613"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231501"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Změny v dokumentaci pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou. Tento článek shrnuje změny v dokumentaci spojené s novými funkcemi a vylepšeními v posledních verzích [SQL Server v Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/). 
+
+## <a name="july-2020"></a>Červenec 2020
+
+
+| Změny | Podrobnosti |
+| --- | --- |
+| **Migrace protokolu na Ultra disk** | Přečtěte si, jak můžete [migrovat soubor protokolu na disk](storage-migrate-to-ultradisk.md) s vysokým výkonem, abyste mohli využívat vysoký výkon a nízkou latenci. | 
+
+
 
 
 ## <a name="june-2020"></a>Červen 2020
@@ -83,7 +92,7 @@ Azure umožňuje nasadit virtuální počítač s imagí SQL Server vestavěnou.
 |**Přepnutí modelu licencování** | Pomocí Azure CLI nebo PowerShellu se teď můžete přepínat mezi modely s platbami za využití a vlastní licence pro váš SQL Server virtuální počítač. Další informace najdete v tématu [Změna licenčního modelu pro SQL Server virtuální počítač v Azure](licensing-model-azure-hybrid-benefit-ahb-change.md). | 
 | &nbsp; | &nbsp; |
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací
 
 **Virtuální počítače s Windows**:
 

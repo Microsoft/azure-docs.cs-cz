@@ -44,9 +44,19 @@
           href: set-up-mabs-for-avs.md
         - name: Zálohování virtuálních počítačů AVS s využitím Azure Backup Serveru
           href: backup-avs-vms-with-mabs.md
+    - name: Nativní integrace Azure
+      items:
+        - name: API Management
+          href: concepts-api-management.md
+        - name: Hvězdicová architektura
+          href: concepts-avs-hub-and-spoke-integration.md
 - name: Referenční informace
   items: null
 - name: Zdroje a prostředky
   items:
+    - name: Řešení potíží
+      items:
+        - name: Pomoc při selhání zřizování nebo nasazení AVS
+          href: fix-deployment-provisioning-failures.md
     - name: Nejčastější dotazy
       href: faq.md

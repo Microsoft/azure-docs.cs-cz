@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81455358"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231705"
 ---
 # <a name="virtual-appliance-scenario"></a>Scénář virtuálního zařízení
 Běžným scénářem v rámci většího zákazníka Azure je nutnost poskytovat dvě vrstvené aplikace, které jsou zpřístupněné pro Internet, a současně umožnit přístup k back-vrstvám z místního datacentra. Tento dokument vás provede scénářem, který využívá trasy definované uživatelem (UDR), VPN Gateway a síťová virtuální zařízení k nasazení dvou vícevrstvých prostředí, která splňují následující požadavky:
@@ -33,12 +33,12 @@ Toto je standardní hraniční síť (označovaná také jako DMZ) s DMZ a chrá
 
 |  | Výhody | Nevýhody |
 | --- | --- | --- |
-| NSG |Žádné náklady. <br/>Integrováno do Azure RBAC. <br/>Pravidla lze vytvořit v Azure Resource Manager šablonách. |Složitost se může ve větších prostředích lišit. |
-| Brána firewall |Plné řízení roviny dat <br/>Centrální správa prostřednictvím konzoly brány firewall. |Náklady na zařízení brány firewall. <br/>Není integrováno do Azure RBAC. |
+| **NSG** |Žádné náklady. <br/>Integrováno do Azure RBAC. <br/>Pravidla lze vytvořit v Azure Resource Manager šablonách. |Složitost se může ve větších prostředích lišit. |
+| **Brána firewall** |Plné řízení roviny dat <br/>Centrální správa prostřednictvím konzoly brány firewall. |Náklady na zařízení brány firewall. <br/>Není integrováno do Azure RBAC. |
 
 Řešení níže používá virtuální zařízení brány firewall k implementaci scénáře sítě/Protected hraniční sítě (DMZ).
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 Prostředí můžete nasadit v Azure podrobněji pomocí různých funkcí dostupných v současnosti, a to následujícím způsobem.
 
 * **Virtuální síť (VNet)** . Virtuální síť Azure funguje podobně jako místní síť a dá se rozdělit do jedné nebo víc podsítí, aby poskytovala izolaci provozu a oddělení obav.
@@ -63,7 +63,7 @@ V tomto příkladu je k dispozici předplatné, které obsahuje následující:
   * **azsn2**. Front-end, který hostuje virtuální počítač běžící jako webový server, ke kterému se bude přicházet z Internetu.
   * **azsn3**. Podsíť back-endu hostující virtuální počítač, na kterém běží aplikační server back-end, ke kterému se bude přicházet prostřednictvím webového serveru front-end.
   * **azsn4**. Podsíť pro správu, která se používá výhradně k poskytnutí přístupu pro správu ke všem virtuálním zařízením brány firewall. Tato podsíť obsahuje jenom síťovou kartu pro každé virtuální zařízení brány firewall použité v řešení.
-  * **GatewaySubnet**. Podsíť hybridního připojení Azure, která se vyžaduje pro ExpressRoute a VPN Gateway, aby poskytovala připojení mezi virtuální sítě Azure a dalšími sítěmi. 
+  * **Podsíť brány:** Podsíť hybridního připojení Azure, která se vyžaduje pro ExpressRoute a VPN Gateway, aby poskytovala připojení mezi virtuální sítě Azure a dalšími sítěmi. 
 * V **azurevnet** síti se nachází 3 virtuální zařízení brány firewall. 
   * **AZF1**. Externí brána firewall vystavená veřejnému Internetu pomocí prostředku veřejné IP adresy v Azure. Musíte mít jistotu, že máte šablonu z webu Marketplace nebo přímo od dodavatele zařízení, která zřídí virtuální zařízení se třemi síťovými kartami.
   * **AZF2**. Interní brána firewall používaná k řízení provozu mezi **azsn2** a **azsn3**. Toto je také virtuální zařízení se třemi kartami.

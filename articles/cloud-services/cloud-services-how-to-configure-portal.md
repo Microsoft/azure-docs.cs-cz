@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811414"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223733"
 ---
 # <a name="how-to-configure-cloud-services"></a>Jak konfigurovat Cloud Services
 
@@ -47,7 +48,7 @@ Pokud potřebujete cílit na konkrétní verzi operačního systému, můžete j
 
 Do své cloudové služby můžete přidat výstrahy. Klikněte na **Nastavení**  >  **pravidla výstrahy**  >  **Přidat výstrahu**.
 
-![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![Snímek obrazovky s nastavením, který se zvýrazní pomocí možnosti pravidla upozornění, je zvýrazněný a zobrazený červeně a možnost Přidat výstrahu popsaný červeně.](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 Tady můžete nastavit výstrahu. Pomocí rozevíracího seznamu **metrika** můžete nastavit výstrahu pro následující typy dat.
 
@@ -57,7 +58,7 @@ Tady můžete nastavit výstrahu. Pomocí rozevíracího seznamu **metrika** mů
 * Síťové výstupy
 * Procento CPU
 
-![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+![Snímek obrazovky s podoknem přidat pravidlo výstrahy se sadou možností konfigurace](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Konfigurace monitorování z dlaždice metriky
 
@@ -94,7 +95,7 @@ Možná budete muset znovu nakonfigurovat cloudovou službu prostřednictvím so
     ![Stáhnout](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Po aktualizaci konfiguračního souboru služby nahrajte a nainstalujte aktualizace konfigurace:
 
-    ![Odeslat](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
+    ![Nahrávání](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. Vyberte soubor. cscfg a klikněte na **OK**.
 
 ## <a name="next-steps"></a>Další kroky

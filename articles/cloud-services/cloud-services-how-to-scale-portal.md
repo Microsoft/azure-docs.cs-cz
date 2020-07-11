@@ -7,11 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360833"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223682"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Jak nakonfigurovat automatické škálování pro cloudovou službu na portálu
 
@@ -20,7 +21,7 @@ Můžete nastavit podmínky pro roli pracovního procesu cloudové služby, kter
 > [!NOTE]
 > Tento článek se zaměřuje na webové role a role pracovních procesů cloudové služby. Když vytváříte virtuální počítač (Classic) přímo, je hostovaný v cloudové službě. Standardní virtuální počítač můžete škálovat tak, že ho přidružíte ke [skupině dostupnosti](../virtual-machines/windows/classic/configure-availability-classic.md) , a ručně je zapnout nebo vypnout.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 Před konfigurací škálování pro aplikaci byste měli zvážit následující informace:
 
 * Škálování je ovlivněné základní spotřebou.
@@ -42,10 +43,10 @@ Po výběru cloudové služby byste měli mít zobrazené okno cloudové služby
 1. V okně cloudová služba na dlaždici **role a instance** vyberte název cloudové služby.   
    **Důležité**: Ujistěte se, že kliknete na roli Cloudová služba, nikoli na instanci role, která se nachází pod rolí.
 
-    ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+    ![Snímek obrazovky s dlaždicou role a instance s rolí pracovního procesu s možností fronta S B 1 popsaným červeně](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Vyberte dlaždici **škálování** .
 
-    ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    ![Snímek stránky operace s dlaždicí prodeje popsaný červeně](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Automatické škálování
 Nastavení škálování pro roli můžete nakonfigurovat buď pomocí dvou režimů **ručně** , nebo **automaticky**. Ruční je to, jak byste očekávali, nastavíte absolutní počet instancí. Možnost automaticky vám ale umožní nastavit pravidla, která určují, jak a o kolik byste měli škálovat.
@@ -88,7 +89,7 @@ Pravidla jsou přidána do profilu a představují podmínku, která spouští �
 
 Trigger pravidla vychází z metriky cloudové služby (využití procesoru, aktivity disku nebo síťové aktivity), ke kterým můžete přidat podmíněnou hodnotu. Navíc můžete mít Trigger na základě fronty zpráv nebo metriky nějakého jiného prostředku Azure přidruženého k vašemu předplatnému.
 
-![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![Snímek obrazovky s dialogovým oknem pravidlo s názvem metriky popsanými červeně](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
 Po nakonfigurování pravidla vyberte tlačítko **OK** v dolní části okna pravidla.
 

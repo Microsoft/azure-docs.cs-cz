@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 740c5dfb7dd4bece32aa2df5ef47d5f87091445b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055490"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231637"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Díky [rozhraní CNI (Azure Container Networking Interface)][cni-networking]kaž
 
 V tomto článku se dozvíte, jak pomocí sítě *kubenet* vytvořit a použít podsíť virtuální sítě pro cluster AKS. Další informace o možnostech a požadavcích sítě najdete v tématu [Koncepty sítě pro Kubernetes a AKS][aks-network-concepts].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
 * Nevytvářejte více než jeden cluster AKS ve stejné podsíti.
@@ -54,7 +54,7 @@ V případě *Azure CNI*je běžný problém, že přiřazený rozsah IP adres j
 
 Jako kompromis můžete vytvořit cluster AKS, který používá *kubenet* , a připojit se k existující podsíti virtuální sítě. Tento přístup umožňuje uzlům přijímat definované IP adresy, aniž by bylo nutné vyhradit velký počet IP adres vpřed pro všechny možné lusky, které by mohly běžet v clusteru.
 
-Pomocí *kubenet*můžete použít mnohem menší rozsah IP adres a být schopný podporovat velké clustery a požadavky aplikací. Například i s rozsahem IP adres */27* můžete spustit cluster uzlu 20-25 s dostatkem místa pro škálování nebo upgrade. Tato velikost clusteru by podporovala až *2200-2750* lusky (s výchozím maximem 110 až na jeden uzel). Maximální počet lusků na uzel, který můžete nakonfigurovat pomocí *kubenet* v AKS, je 110.
+Pomocí *kubenet*můžete použít mnohem menší rozsah IP adres a být schopný podporovat velké clustery a požadavky aplikací. Například s rozsahem IP adres */27* v podsíti můžete spustit cluster 20-25 Node s dostatkem místa pro škálování nebo upgrade. Tato velikost clusteru by podporovala až *2200-2750* lusky (s výchozím maximem 110 až na jeden uzel). Maximální počet lusků na uzel, který můžete nakonfigurovat pomocí *kubenet* v AKS, je 110.
 
 Následující základní výpočty porovnávají rozdíl v síťových modelech:
 

@@ -3,12 +3,12 @@ title: Běžné otázky týkající se migrace Azure Migrate serveru
 description: Získejte odpovědi na běžné otázky týkající se použití migrace serveru Azure Migrate k migraci počítačů.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744325"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224124"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
 
@@ -67,6 +67,9 @@ Ne. Zóny dostupnosti Azure se pro migraci Azure Migrate nepodporuje.
 
 Azure Migrate používá protokol NBD (Network Block Device) s šifrováním TLS.
 
+## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>Jak se data přenáší z prostředí Prem do Azure? Je před přenosem zašifrovaný? 
+Zařízení Azure Migrate v případě replikace bez agenta komprimuje data a šifruje před odesláním. Data se přenáší přes protokol HTTPS přes zabezpečený komunikační kanál a používají TLS 1,2 nebo novější. Navíc Azure Storage automaticky šifruje vaše data při jejich trvalém ukládání do cloudu (šifrování v klidovém prostředí).  
+
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Jaká je minimální vCenter Server verze, která se vyžaduje pro migraci?
 
 Musíte mít minimálně vCenter Server 5,5 a hostitele ESXi verze 5,5.
@@ -81,7 +84,7 @@ V současné době můžete migrovat 100 virtuálních počítačů na instanci 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Návody omezení replikace při používání zařízení Azure Migrate pro bezagentskou replikaci VMware?  
 
-Můžete omezit pomocí NetQosPolicy. Příklad:
+Můžete omezit pomocí NetQosPolicy. Například:
 
 AppNamePrefix pro použití v NetQosPolicy je "GatewayWindowsService.exe". Můžete vytvořit zásadu na zařízení Azure Migrate, abyste omezili provoz replikace ze zařízení tím, že vytvoříte zásadu, jako je tato:
  

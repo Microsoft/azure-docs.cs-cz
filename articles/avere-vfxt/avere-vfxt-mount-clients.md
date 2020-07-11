@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: c6a4b2c1d95bc803d10697ce2164ea190f824d96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505439"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229563"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Připojení clusteru Avere vFXT
 
@@ -102,7 +102,7 @@ Chcete-li zajistit bezproblémové připojení klienta, předejte tato nastaven�
 
 ``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Požadovaná nastavení | |
+| Požadovaná nastavení | Popis |
 --- | ---
 ``hard`` | K selhání aplikací a možné ztrátě dat se připojí provizorní připojení k vFXT clusteru.
 ``proto=netid`` | Tato možnost podporuje odpovídající zpracování chyb sítě systému souborů NFS.

@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: 50a7e9520730159ad2df3ec3e0b75fcfa0c5ce0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae6b40e7ec8a2bb6f635a6ffca4886ed09c1364
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84451064"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229529"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Řešení potíží s načtením sady SDK pro webové aplikace v jazyce JavaScript
 
@@ -28,7 +29,7 @@ Výjimka selhání načtení sady SDK je vytvořena a hlášena fragmentem kódu
 
 Podrobnosti zásobníku zahrnují základní informace o adresách URL používaných koncovým uživatelem.
 
-| Name                      | Description                                                                                                  |
+| Název                      | Popis                                                                                                  |
 |---------------------------|--------------------------------------------------------------------------------------------------------------|
 | &lt;&nbsp;Koncový bod CDN&gt; | Adresa URL, která byla použita (a nebyla úspěšná) pro stažení sady SDK.                                                      |
 | &lt;Odkaz na Help &nbsp;&gt;    | Adresa URL, která odkazuje na dokumentaci k řešení potíží (Tato stránka).                                              |
@@ -75,11 +76,11 @@ Pokud ověříte, že dojde k výpadku, můžete [vytvořit novou lístek podpor
 V případě, že se fragment a jeho konfigurace vrátí v rámci vaší aplikace jako součást každé generované stránky, můžete změnit konfiguraci fragmentu, `src` aby pro sadu SDK používala jinou adresu URL. Pomocí tohoto přístupu můžete obejít problém blokovaný CDN, protože nová adresa URL by neměla být blokovaná.
 
 Aktuální koncové body CDN sady JavaScript SDK pro Application Insights
-- https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js
-- https://js.monitor.azure.com/scripts/b/ai.2.min.js
+- `https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js`
+- `https://js.monitor.azure.com/scripts/b/ai.2.min.js`
 
 > [!NOTE]
-> https://js.monitor.azure.com/Koncový bod je alias, který umožňuje přepínat mezi poskytovateli CDN během přibližně 5 minut, aniž byste museli měnit konfiguraci. To nám umožní opravit zjištěné problémy související s CDN rychleji, pokud poskytovatel CDN má místní nebo globální problémy, aniž by musel upravovat nastavení.
+> `https://js.monitor.azure.com/`Koncový bod je alias, který umožňuje přepínat mezi poskytovateli CDN během přibližně 5 minut, aniž byste museli měnit konfiguraci. To nám umožní opravit zjištěné problémy související s CDN rychleji, pokud poskytovatel CDN má místní nebo globální problémy, aniž by musel upravovat nastavení.
 
 ## <a name="sdk-failed-to-initialize-after-loading-the-script"></a>Inicializace sady SDK po načtení skriptu se nezdařila.
 

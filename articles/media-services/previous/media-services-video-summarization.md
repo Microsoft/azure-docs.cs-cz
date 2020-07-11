@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918310"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231841"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Vytvoření Shrnutí videa pomocí Azure Media Video Thumbnails  
 
@@ -58,7 +59,7 @@ Při vytváření úlohy miniatury videa pomocí **Azure Media Video Thumbnails*
 
 V současné době můžete změnit následující parametry:
 
-| Param | Description |
+| Param | Popis |
 | --- | --- |
 | outputAudio |Určuje, zda výsledné video obsahuje libovolný zvuk. <br/>Povolené hodnoty jsou: true nebo false. Výchozí hodnota je true. |
 | fadeInFadeOut |Určuje, zda jsou použity přechody mezi jednotlivými miniaturami pohybu.  <br/>Povolené hodnoty jsou: true nebo false.  Výchozí hodnota je true. |
@@ -66,10 +67,10 @@ V současné době můžete změnit následující parametry:
 
 Následující tabulka popisuje výchozí dobu trvání, když se **maxMotionThumbnailInSecs** nepoužívá.
 
-|  |  |  |
+|  | Small | Větší |
 | --- | --- | --- |
-| Doba trvání videa |d < 3 min. |3 min < d < 15 min |
-| Doba trvání miniatury |15 sekund (2-3 scén) |30 sekund (3-5 scén) |
+| **Doba trvání videa** |d < 3 min. |3 min < d < 15 min |
+| **Doba trvání miniatury** |15 sekund (2-3 scén) |30 sekund (3-5 scén) |
 
 Následující sady JSON mají dostupné parametry.
 

@@ -8,16 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 06/15/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9bfc7f194730545469e7d17d46c47f7293f016e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728890"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221249"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Zobrazení a přiřazení rolí správce v Azure Active Directory
 
@@ -25,29 +26,50 @@ V portálu Azure Active Directory nyní můžete zobrazit a spravovat všechny �
 
 ## <a name="view-all-roles"></a>Zobrazit všechny role
 
-Vyhledejte a vyberte **Azure Active Directory**. Výběrem **rolí a správců** zobrazíte seznam všech dostupných rolí.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) a vyberte **Azure Active Directory**.
 
-Kliknutím na tři tečky na pravé straně každého řádku otevřete podrobný popis role.
+1. Výběrem **rolí a správců** zobrazíte seznam všech dostupných rolí.
 
-![seznam rolí na portálu Azure AD](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
+1. Vyberte tři tečky na pravé straně každého řádku, abyste viděli oprávnění pro danou roli. Vyberte roli pro zobrazení uživatelů přiřazených k této roli. Pokud se vám zobrazí něco jiného než na následujícím obrázku, přečtěte si poznámku v tématu [zobrazení přiřazení privilegovaných rolí](#view-assignments-for-privileged-roles) a ověřte, jestli jste v PRIVILEGED Identity Management (PIM).
+
+    ![seznam rolí na portálu Azure AD](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
 ## <a name="view-my-roles"></a>Zobrazení mých rolí
 
 Je snadné zobrazit také vlastní oprávnění. Výběrem **role** na stránce **role a správci** zobrazíte aktuálně přiřazené role.
 
-## <a name="view-assignments-for-a-role"></a>Zobrazení přiřazení pro roli
+## <a name="view-assignments-for-privileged-roles"></a>Zobrazení přiřazení privilegovaných rolí
 
-Kliknutím na roli zobrazíte uživatele přiřazené k této roli. Pro další možnosti správy můžete vybrat **spravovat v PIM** . Správci privilegovaných rolí můžou změnit přiřazení "trvalé" (vždy aktivní v roli) přiřazení na "opravňující" (v roli jenom při zvýšeném oprávnění). Pokud nemáte PIM, můžete si i nadále vybrat **spravovat v PIM** , abyste se mohli zaregistrovat ke zkušební verzi. Privileged Identity Management vyžaduje [plán licencí Azure AD Premium P2](../privileged-identity-management/subscription-requirements.md).
+Pro další možnosti správy můžete vybrat **spravovat v PIM** . Správci privilegovaných rolí můžou změnit přiřazení "trvalé" (vždy aktivní v roli) přiřazení na "opravňující" (v roli jenom při zvýšeném oprávnění). Pokud nemáte Privileged Identity Management, můžete přesto vybrat **spravovat v PIM** , abyste se mohli zaregistrovat ke zkušební verzi. Privileged Identity Management vyžaduje [plán licencí Azure AD Premium P2](../privileged-identity-management/subscription-requirements.md).
 
 ![seznam členů role správce](./media/directory-manage-roles-portal/member-list.png)
 
 Pokud jste globální správce nebo správce privilegovaných rolí, můžete snadno přidávat nebo odebírat členy, filtrovat seznam nebo vybrat člena a zobrazit jejich aktivní přiřazené role.
+
+> [!Note]
+> Pokud máte licenci Azure AD Premium P2 a už používáte Privileged Identity Management, provedou se všechny úlohy správy rolí ve správě identit oprávnění, nikoli v Azure AD.
+>
+> ![Role Azure AD spravované v PIM pro uživatele, kteří už používají PIM a mají licenci Premium P2](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
 ## <a name="view-a-users-role-permissions"></a>Zobrazit oprávnění role uživatele
 
 Při prohlížení členů role vyberte možnost **Popis** a zobrazí se úplný seznam oprávnění udělených přiřazením role. Stránka obsahuje odkazy na příslušnou dokumentaci, která vám pomůže s tím, jak spravovat role adresáře.
 
 ![seznam oprávnění pro roli správce](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="assign-a-role"></a>Přiřazení role
+
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) s oprávněními správce globálního správce nebo Privileged role a vyberte **Azure Active Directory**.
+
+1. Výběrem **rolí a správců** zobrazíte seznam všech dostupných rolí.
+
+1. Výběrem role zobrazíte její přiřazení.
+
+    ![seznam oprávnění pro roli správce](./media/directory-manage-roles-portal/member-list.png)
+
+1. Vyberte **Přidat přiřazení** a vyberte role, které chcete přiřadit. Pro další možnosti správy můžete vybrat **spravovat v PIM** . Pokud se vám zobrazí něco jiného než na následujícím obrázku, přečtěte si poznámku v tématu [zobrazení přiřazení privilegovaných rolí](#view-assignments-for-privileged-roles) a ověřte, jestli jste v PIM.
+
+    ![seznam oprávnění pro roli správce](./media/directory-manage-roles-portal/directory-role-select-role.png)
 
 ## <a name="next-steps"></a>Další kroky
 

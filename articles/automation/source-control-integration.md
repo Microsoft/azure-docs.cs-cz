@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828878"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229614"
 ---
 # <a name="use-source-control-integration"></a>Použití integrace správy zdrojového kódu
 
@@ -21,11 +22,11 @@ ms.locfileid: "83828878"
 
 Azure Automation podporuje tři typy správy zdrojového kódu:
 
-* GitHubu
+* GitHub
 * Azure Repos (Git)
 * Azure Repos (TFVC)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Úložiště správy zdrojového kódu (GitHub nebo Azure Repos)
 * [Účet Spustit jako](manage-runas-account.md)
@@ -61,7 +62,7 @@ Pomocí tohoto postupu můžete nakonfigurovat správu zdrojového kódu pomocí
     |Cesta ke složce     | Složka, která obsahuje Runbooky, které se mají synchronizovat, například **/runbooks**. Synchronizovány jsou pouze Runbooky v zadané složce. Rekurze není podporována.        |
     |Automatická synchronizace<sup>1</sup>     | Nastavení, které zapne nebo vypne automatickou synchronizaci při provedení potvrzení v úložišti správy zdrojů.        |
     |Publikování Runbooku     | Nastavení zapnuto, pokud jsou Runbooky automaticky publikovány po synchronizaci ze správy zdrojového kódu a mimo jiné.           |
-    |Description     | Text určující další podrobnosti o správě zdrojového kódu.        |
+    |Popis     | Text určující další podrobnosti o správě zdrojového kódu.        |
 
     <sup>1</sup> Chcete-li povolit automatickou synchronizaci při konfiguraci integrace správy zdrojového kódu pomocí Azure Repos, musíte být správcem projektu.
 
@@ -72,8 +73,7 @@ Pomocí tohoto postupu můžete nakonfigurovat správu zdrojového kódu pomocí
 
 ### <a name="configure-source-control-in-powershell"></a>Konfigurace správy zdrojového kódu v PowerShellu
 
-PowerShell můžete také použít ke konfiguraci správy zdrojového kódu v Azure Automation. Pokud chcete pro tuto operaci používat rutiny PowerShellu, budete potřebovat osobní přístupový token (PAT). Pomocí rutiny [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
-) vytvořte připojení správy zdrojového kódu. Tato rutina vyžaduje zabezpečený řetězec pro PAT. Informace o tom, jak vytvořit zabezpečený řetězec, najdete v tématu [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
+PowerShell můžete také použít ke konfiguraci správy zdrojového kódu v Azure Automation. Pokud chcete pro tuto operaci používat rutiny PowerShellu, budete potřebovat osobní přístupový token (PAT). Pomocí rutiny [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) vytvořte připojení správy zdrojového kódu. Tato rutina vyžaduje zabezpečený řetězec pro PAT. Informace o tom, jak vytvořit zabezpečený řetězec, najdete v tématu [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
 
 Následující témata ukazují prostředí PowerShell pro vytvoření připojení správy zdrojového kódu pro GitHub, Azure Repos (Git) a Azure Repos (TFVC). 
 
@@ -110,7 +110,7 @@ Správa zdrojového kódu vyžaduje minimální oprávnění pro PATs. Následuj
 
 Následující tabulka definuje minimální oprávnění PAT potřebná pro GitHub. Další informace o vytvoření PAT v GitHubu najdete v tématu [Vytvoření osobního přístupového tokenu pro příkazový řádek](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Rozsah  |Description  |
+|Obor  |Popis  |
 |---------|---------|
 |**`repo`**     |         |
 |`repo:status`     | Stav potvrzení přístupu         |
@@ -122,9 +122,9 @@ Následující tabulka definuje minimální oprávnění PAT potřebná pro GitH
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Minimální oprávnění PAT pro Azure Repos
 
-Následující seznam definuje minimální oprávnění PAT potřebná pro Azure Repos. Další informace o vytvoření PAT v Azure Repos najdete v tématu [ověření přístupu pomocí tokenů osobního přístupu](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
+Následující seznam definuje minimální oprávnění PAT potřebná pro Azure Repos. Další informace o vytvoření PAT v Azure Repos najdete v tématu [ověření přístupu pomocí tokenů osobního přístupu](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
 
-| Rozsah  |  Typ přístupu  |
+| Obor  |  Typ přístupu  |
 |---------| ----------|
 | `Code`      | Čtení  |
 | `Project and team` | Čtení |
@@ -195,14 +195,14 @@ Odpojení od úložiště správy zdrojového kódu:
 
 ## <a name="handle-encoding-issues"></a>Zpracování potíží s kódováním
 
-Pokud více lidí upravuje Runbooky v úložišti správy zdrojového kódu pomocí různých editorů, může dojít k problémům s kódováním. Další informace o této situaci najdete v tématu [běžné příčiny potíží s kódováním](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
+Pokud více lidí upravuje Runbooky v úložišti správy zdrojového kódu pomocí různých editorů, může dojít k problémům s kódováním. Další informace o této situaci najdete v tématu [běžné příčiny potíží s kódováním](/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
 
 ## <a name="update-the-pat"></a>Aktualizace PAT
 
 V současné době nemůžete použít Azure Portal k aktualizaci PAT ve správě zdrojového kódu. Pokud vaše PAT vypršela nebo odvolala, můžete v jednom z těchto způsobů aktualizovat správu zdrojového kódu pomocí nového přístupového tokenu:
 
-* Použijte [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update).
-* Použijte rutinu [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) .
+* Použijte [REST API](/rest/api/automation/sourcecontrol/update).
+* Použijte rutinu [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) .
 
 ## <a name="next-steps"></a>Další kroky
 

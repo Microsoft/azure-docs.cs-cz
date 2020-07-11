@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 75ecfcca24aa801c2ec277e810f60dbc0a9167fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78a8e0a46fd60f14ea3bae7485c737aa4fe3c60e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565279"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230770"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Znalostní báze ve službě Azure Kognitivní hledání
 
@@ -134,12 +134,12 @@ Jakmile rozšíření existují v úložišti, můžete použít jakýkoli nást
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>API – referenční informace
+## <a name="api-reference"></a>referenční dokumentace k rozhraní API
 
 REST API verze `2020-06-30` poskytuje znalostní bázi s dalšími definicemi na dovednosti. Kromě odkazu najdete informace o tom, jak volat rozhraní API, v tématu [Vytvoření úložiště znalostí pomocí služby post](knowledge-store-create-rest.md) .
 
-+ [Create dovednosti (rozhraní API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/create-skillset)
-+ [Update dovednosti (rozhraní API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/2020-06-30/update-skillset)
++ [Create dovednosti (rozhraní API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Update dovednosti (rozhraní API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset)
 
 
 ## <a name="next-steps"></a>Další kroky

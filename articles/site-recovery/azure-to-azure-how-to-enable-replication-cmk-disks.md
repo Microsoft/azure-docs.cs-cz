@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 07/10/2020
 ms.author: mayg
-ms.openlocfilehash: 1e4dcd8847d7d79d816d80b453a37f58c45417fd
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 92b35284fd7bbb3d4f1196ee0d9bae4ce42d7c9e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135736"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224107"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Replikace počítačů s disky s podporou Customer-Managed Key (CMK)
 
@@ -81,3 +81,8 @@ Pomocí těchto kroků upravíte Site Recovery výchozí nastavení cíle.
 * Přidal (a) jsem nový disk s podporou CMK do replikované položky. Jak mohu tento disk replikovat pomocí Azure Site Recovery?
 
     Přidání nového disku s povoleným CMK do existující replikované položky není podporováno. Zakažte replikaci a znovu povolte replikaci pro virtuální počítač.
+
+* Jak mám povolit platformu i spravované klíče zákazníka, jak můžu chránit svoje disky?
+
+    Povolení dvojitého šifrování s suppprtedmi platforem i zákaznických klíčů je Site Recovery. Pokud chcete chránit počítač, postupujte podle pokynů v tomto článku. V cílové oblasti musíte předem vytvořit algoritmus DES s povoleným šifrováním. V době povolení replikace tohoto virtuálního počítače můžete tomuto algoritmu DES poskytnout Site Recovery.
+

@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: b9770e46e8e52d8644143c9912c98e0f7913db9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79b5f4492d05880e263f8d489a64ba0cc218d355
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734278"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223393"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Pochopení stavů a řešení pozastavených domén v Azure Active Directory Domain Services
 
-Když Azure Active Directory Domain Services (Azure služba AD DS) nemůže po dlouhou dobu obsluhovat spravovanou doménu, převede spravovanou doménu do pozastaveného stavu. Pokud pak spravovaná doména zůstane v pozastaveném stavu, automaticky se odstraní. Aby se vaše Azure služba AD DSa v dobrém stavu v pořádku a zabránila pozastavení, vyřešte všechny výstrahy tak rychle, jak to jde.
+Když Azure Active Directory Domain Services (Azure služba AD DS) nemůže po dlouhou dobu obsluhovat spravovanou doménu, převede spravovanou doménu do pozastaveného stavu. Pokud spravovaná doména zůstane v pozastaveném stavu, je automaticky odstraněna. Aby se vaše Azure služba AD DSa v dobrém stavu v pořádku a zabránila pozastavení, vyřešte všechny výstrahy tak rychle, jak to jde.
 
 Tento článek vysvětluje, proč jsou spravované domény pozastavené a jak obnovit pozastavenou doménu.
 
@@ -32,14 +32,14 @@ V životním cyklu spravované domény existují různé stavy, které určují 
 
 Spravovaná doména může být v jednom z následujících stavů:
 
-* [Spuštěno](#running-state)
+* [Spuštěný](#running-state)
 * [Vyžaduje pozornost](#needs-attention-state)
 * [Dočasně blokován.](#suspended-state)
 * [Odstraněné](#deleted-state)
 
 ## <a name="running-state"></a>Běžící stav
 
-Spravovaná doména, která je nakonfigurovaná správně a běží bez problémů, je ve stavu *spuštěno* . Toto je požadovaný stav pro spravovanou doménu.
+Spravovaná doména, která je nakonfigurovaná správně a bez problémů, je ve stavu *spuštěno* . Toto je požadovaný stav pro spravovanou doménu.
 
 ### <a name="what-to-expect"></a>Co očekávat
 
@@ -50,7 +50,9 @@ Spravovaná doména, která je nakonfigurovaná správně a běží bez problém
 
 ## <a name="needs-attention-state"></a>Vyžaduje stav pozornosti
 
-Spravovaná doména s jedním nebo více problémy, které je potřeba opravit, je ve stavu *vyžaduje pozornost* . Stránka stav pro spravovanou doménu zobrazuje seznam výstrah a označuje, kde došlo k potížím. Některé výstrahy jsou přechodné a automaticky se vyřeší platformou Azure. Pro jiné výstrahy můžete problém vyřešit pomocí uvedených kroků řešení. Je to kritická výstraha. pro další pomoc s řešením potíží [otevřete žádost o podporu Azure][azure-support] .
+Spravovaná doména s jedním nebo více problémy, které je potřeba opravit, je ve stavu *vyžaduje pozornost* . Stránka stav pro spravovanou doménu zobrazuje seznam výstrah a označuje, kde došlo k potížím.
+
+Některé výstrahy jsou přechodné a automaticky se vyřeší platformou Azure. Pro jiné výstrahy můžete problém vyřešit pomocí uvedených kroků řešení. Je to kritická výstraha. pro další pomoc s řešením potíží [otevřete žádost o podporu Azure][azure-support] .
 
 Jedním z příkladů výstrah je, že existuje omezující skupina zabezpečení sítě. V této konfiguraci nemusí být platforma Azure schopná aktualizovat a monitorovat spravovanou doménu. Vygeneruje se výstraha a stav se změní na *vyžaduje pozornost*.
 
@@ -58,7 +60,7 @@ Další informace najdete v tématu [řešení potíží s výstrahami pro sprav
 
 ### <a name="what-to-expect"></a>Co očekávat
 
-Když je spravovaná doména ve stavu " *potřebuje pozornost* ", platforma Azure nemusí být schopná pravidelně monitorovat, opravovat, aktualizovat ani zálohovat data. V některých případech, například s neplatnou konfigurací sítě, mohou být řadiče domény pro spravovanou doménu nedosažitelné.
+Když je spravovaná doména ve stavu " *potřebuje pozornost* ", platforma Azure nemusí být schopná pravidelně monitorovat, opravovat, aktualizovat ani zálohovat data. V některých případech, třeba v případě neplatné konfigurace sítě, mohou být řadiče domény pro spravovanou doménu nedosažitelné.
 
 * Spravovaná doména je ve stavu není v pořádku a průběžné monitorování stavu může skončit až do vyřešení výstrahy.
 * Řadiče domény pro spravovanou doménu nejde opravit ani aktualizovat.
@@ -102,7 +104,7 @@ Chcete-li obnovit stav spravované domény, která je v *pozastaveném* stavu, p
 
 Spravovanou doménu lze obnovit pouze do data posledního zálohování. Datum poslední zálohy se zobrazí na stránce **stav** spravované domény. Jakékoli změny, ke kterým došlo po poslední záloze, se neobnoví. Zálohy spravované domény jsou uložené po dobu až 30 dnů. Zálohy, které jsou starší než 30 dní, se odstraní.
 
-Po vyřešení upozornění, když je spravovaná doména v *pozastaveném* stavu, [otevřete žádost o podporu Azure][azure-support] a vraťte se do stavu v pořádku. Pokud je zálohování méně než 30 dnů, podpora Azure může obnovit spravovanou doménu.
+Po vyřešení upozornění, když je spravovaná doména v *pozastaveném* stavu, [otevřete žádost o podporu Azure][azure-support] a vraťte se do stavu v pořádku. Pokud je zálohování méně než 30 dní staré, podpora Azure může tuto spravovanou doménu obnovit.
 
 ## <a name="deleted-state"></a>Odstraněný stav
 
@@ -113,7 +115,7 @@ Pokud spravovaná doména zůstane v *pozastaveném* stavu po dobu 15 dnů, odst
 Když spravovaná doména vstoupí do *odstraněného* stavu, je vidět následující chování:
 
 * Odstraní se všechny prostředky a zálohy pro spravovanou doménu.
-* Nemůžete obnovit spravovanou doménu a potřebujete vytvořit náhradní spravovanou doménu k opakovanému použití Azure služba AD DS.
+* Nemůžete obnovit spravovanou doménu. K opakovanému použití Azure služba AD DS je nutné vytvořit náhradní spravovanou doménu.
 * Po odstranění se vám nebude účtovat spravovaná doména.
 
 ## <a name="next-steps"></a>Další kroky

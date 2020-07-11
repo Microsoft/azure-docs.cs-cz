@@ -3,12 +3,12 @@ title: Uchovávání dat a ukládání v Azure Application Insights | Microsoft 
 description: Prohlášení o zásadách uchovávání a ochrany osobních údajů
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acee1ad0b531f23a872d78111ccd9f0ac09bcfb1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601356"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224481"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchovávání a ukládání dat v Application Insights
 
@@ -62,7 +62,7 @@ Hlavní kategorie jsou:
 ## <a name="how-can-i-verify-whats-being-collected"></a>Jak můžu ověřit, co se shromažďuje?
 Pokud vyvíjíte aplikaci pomocí sady Visual Studio, spusťte aplikaci v režimu ladění (F5). Telemetrie se zobrazí v okně výstup. Odtud ji můžete zkopírovat a naformátovat jako JSON pro snadnější kontrolu. 
 
-![](./media/data-retention-privacy/06-vs.png)
+![Snímek obrazovky, který ukazuje spuštění aplikace v režimu ladění v aplikaci Visual Studio.](./media/data-retention-privacy/06-vs.png)
 
 V okně diagnostiky je také přehlednější zobrazení.
 
@@ -213,7 +213,7 @@ Nedoporučujeme explicitně nastavit aplikaci tak, aby používala protokol TLS 
 | Windows Server 2012 – 2016 | Podporované a povolené ve výchozím nastavení. | Potvrzení, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
 | Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale nejsou ve výchozím nastavení povolené. | Podrobnosti o tom, jak povolit, najdete na stránce [nastavení registru TLS (Transport Layer Security)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) .  |
 | Windows Server 2008 SP2 | Podpora TLS 1,2 vyžaduje aktualizaci. | Pokud [chcete přidat podporu pro TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) ve Windows serveru 2008 SP2, viz aktualizace. |
-|Windows Vista | Nepodporuje se. | Není k dispozici
+|Windows Vista | Nepodporuje se. | Nelze použít
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Ověřte, jakou verzi OpenSSL je vaše distribuce systému Linux spuštěná.
 
@@ -255,7 +255,7 @@ Sady SDK se mezi platformami liší a je možné nainstalovat několik součást
 | [TrackMetric volání][api] |Číselné hodnoty<br/>**Vlastnosti** |
 | [Hovorová stopa *][api] |Název události<br/>**Vlastnosti** |
 | [TrackException volání][api] |**Výjimky**<br/>Výpis zásobníku<br/>**Vlastnosti** |
-| Sada SDK nemůže shromažďovat data. Příklad: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
+| Sada SDK nemůže shromažďovat data. Například: <br/> – nejde získat přístup k čítačům výkonu.<br/> – výjimka v inicializátoru telemetrie |Diagnostika sady SDK |
 
 Pro [sady SDK pro jiné platformy][platforms]se podívejte na jejich dokumenty.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 03/25/2020
-ms.openlocfilehash: 065fd166fb2ce82a3338322d55ef1ee5886ac56b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 1d4896a2dd2115e5654baffe394618b30a294d5b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85210367"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231739"
 ---
 # <a name="azure-machine-learning-vs-machine-learning-studio-classic"></a>Azure Machine Learning vs Machine Learning Studio (Classic)
 
@@ -27,17 +27,17 @@ Doporučujeme, aby noví uživatelé zvolili Azure Machine Learning pro nejšir�
 
 Následující tabulka shrnuje některé hlavní rozdíly mezi Azure Machine Learning a studia (Classic):
 
-| | Machine Learning Studio (Classic) | Azure Machine Learning |
+| Funkce | Machine Learning Studio (Classic) | Azure Machine Learning |
 |---| --- | --- |
-| Rozhraní přetažení | Podporuje se | Podporované – [návrhář Azure Machine Learning (Preview)](concept-designer.md) <br/>(Vyžaduje pracovní prostor Enterprise) | 
+| Rozhraní přetažení | Podporováno | Podporované – [návrhář Azure Machine Learning (Preview)](concept-designer.md) <br/>(Vyžaduje pracovní prostor Enterprise) | 
 | Experiment | Škálovatelné (limit pro školicí data z 10 GB) | Škálování s cílem výpočetního prostředí |
 | Školení výpočetních cílů | Proprietární výpočetní cíl, jenom podpora procesoru | Široké spektrum přizpůsobitelných [výpočetních cílů](concept-compute-target.md#train). Zahrnuje podporu GPU a procesoru. | 
 | Cíle výpočtů nasazení | Speciální formát webové služby, není přizpůsobitelný | Široké škály přizpůsobitelných [výpočetních cílů nasazení](concept-compute-target.md#deploy). Zahrnuje podporu GPU a procesoru. |
-| Kanál ML | Nepodporuje se | Vytváření flexibilních modulárních [kanálů](concept-ml-pipelines.md) pro automatizaci pracovních postupů |
+| Kanál ML | Nepodporováno | Vytváření flexibilních modulárních [kanálů](concept-ml-pipelines.md) pro automatizaci pracovních postupů |
 | MLOps | Základní Správa modelů a nasazení | Správa verzí entit (model, data, pracovní postupy), automatizace pracovních postupů, integrace s nástroji CICD [a další](concept-model-management-and-deployment.md) |
 | Formát modelu | Speciální formát, jenom Studio (Classic) | Více podporovaných formátů v závislosti na typu úlohy školení |
-| Automatizované školení modelů a ladění parametrů |  Nepodporuje se | [Podporováno v sadě SDK a pracovním prostoru Visual](concept-automated-ml.md) | 
-| Detekce posunu dat | Nepodporuje se | [Podporováno v sadě SDK a v pracovním prostoru Visual](how-to-monitor-datasets.md) |
+| Automatizované školení modelů a ladění parametrů |  Nepodporováno | [Podporováno v sadě SDK a pracovním prostoru Visual](concept-automated-ml.md) | 
+| Detekce posunu dat | Nepodporováno | [Podporováno v sadě SDK a v pracovním prostoru Visual](how-to-monitor-datasets.md) |
 
 
 ## <a name="migrate-from-machine-learning-studio-classic"></a>Migrace z Machine Learning Studio (Classic)

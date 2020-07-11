@@ -3,12 +3,12 @@ title: Konverzace s vícenásobným zapnete – QnA Maker
 description: Pomocí výzev a kontextu můžete spravovat vícenásobná vypnutí, označovaná jako vícenásobný křížek, pro robota z jedné otázky do druhé. Vícenásobné zapínání je schopnost mít v případě potřeby konverzaci, kde kontext předchozí otázky ovlivňuje další otázku a odpověď.
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 8ef244e1b6baf480189bb90ea5ff53138a6f377a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93bc6201cb627dc27071caf7beded5778b06ccb6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81261461"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229342"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Použití následných dotazů k vytvoření konverzace s několika směry
 
@@ -52,7 +52,7 @@ Když vyberete tuto možnost, QnA Maker extrahuje hierarchii přítomnou ve stru
 
 Strukturu vícenásobného navýšení můžete odvodit jenom z adres URL, souborů PDF nebo souborů DOCX. Příklad struktury najdete v obrazovém [souboru PDF Microsoft Surface User Manually](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf).
 
-![! [Příklad struktury v uživatelské příručce] (.. /media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
+![! [Příklad struktury v uživatelské příručce] (.. /Media/Conversational-Context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
 ### <a name="building-your-own-multi-turn-document"></a>Sestavení vlastního dokumentu s vícenásobným zahnutím
 
@@ -62,7 +62,7 @@ Pokud vytváříte dokument s vícenásobným zahnutím, pamatujte na následuj�
 
 * První znak nadpisu musí být velkými písmeny.
 
-* Nekončit záhlavím otazníkem, `?`.
+* Nekončit záhlavím otazníkem, `?` .
 
 * [Vzorový dokument](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) můžete použít jako příklad k vytvoření vlastního dokumentu vícenásobného vypínání.
 
@@ -92,7 +92,7 @@ Vyberte **Možnosti zobrazení**a pak vyberte **Zobrazit kontext**. V seznamu se
 
 V prvním sloupci se zobrazí kontext vícenásobného zapnutí.
 
-![! ["Kontextový (PREVIEW)" sloupec] (.. /media/conversational-context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
+![! ["Kontextový (PREVIEW)" sloupec] (.. /Media/Conversational-Context/surface-manual-pdf-follow-up-prompt.png)](../media/conversational-context/surface-manual-pdf-follow-up-prompt.png#lightbox)
 
 V předchozím obrázku **#1** označuje tučný text ve sloupci, který označuje aktuální otázku. Nadřazená otázka je nejvyšší položka na řádku. Všechny dotazy pod ní jsou propojené páry otázek a odpovědí. Tyto položky jsou vybrané, takže můžete okamžitě přejít k ostatním položkám kontextu.
 
@@ -167,7 +167,7 @@ Když do znalostní báze přidáte novou dvojici otázek a odpovědí, každá 
 
     Nadřazený dotaz zobrazí novou otázku jako jednu z možností.
 
-    ![! [Kontextový sloupec pro obě otázky indikuje vztah následné výzvy] (.. /media/conversational-context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
+    ![! [Kontextový sloupec pro obě otázky indikuje vztah následné výzvy] (.. /Media/Conversational-Context/child-prompt-created.png)](../media/conversational-context/child-prompt-created.png#lightbox)
 
 1. Po přidání následné výzvy vyberte v horním navigačním panelu možnost **Uložit a výuka** .
 
@@ -260,7 +260,7 @@ Předchozí část požadovala odpověď a jakékoli následné výzvy k zadán�
 }
 ```
 
-`prompts` Pole poskytuje text v této `displayText` vlastnosti a `qnaId` hodnotě. Tyto odpovědi můžete zobrazit jako další zobrazené možnosti v toku konverzace a potom odeslat vybrané `qnaId` zpět do QnA maker v následující žádosti.
+`prompts`Pole poskytuje text v této `displayText` vlastnosti a `qnaId` hodnotě. Tyto odpovědi můžete zobrazit jako další zobrazené možnosti v toku konverzace a potom odeslat vybrané `qnaId` zpět do QnA maker v následující žádosti.
 
 <!--
 
@@ -290,7 +290,7 @@ V následující žádosti JSON se v aktuální otázce *k přihlášení použ�
 
 ##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>Odpověď JSON, která vrátí nepočáteční odpověď a výzvy pro následné zpracování
 
-Odpověď QnA Maker _GenerateAnswer_ JSON zahrnuje následné výzvy ve `context` vlastnosti první položky v `answers` objektu:
+Odpověď QnA Maker _GenerateAnswer_ JSON zahrnuje následné výzvy ve `context` Vlastnosti první položky v `answers` objektu:
 
 ```JSON
 {
@@ -350,7 +350,7 @@ Odpověď QnA Maker _GenerateAnswer_ JSON zahrnuje následné výzvy ve `context
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Dotazování znalostní báze s ID QnA Maker
 
-Pokud vytváříte vlastní aplikaci pomocí funkce vícenásobného zapnutí. V reakci prvotní otázky se vrátí všechny následné výzvy a její přidružené `qnaId` výzvy. Teď, když máte ID, můžete to předat v textu žádosti o následné výzvy. Pokud tělo požadavku obsahuje `qnaId`, a kontextový objekt (který obsahuje předchozí vlastnosti QnA maker), vrátí GenerateAnswer přesný dotaz podle ID namísto použití algoritmu řazení k vyhledání odpovědi textem otázky.
+Pokud vytváříte vlastní aplikaci pomocí funkce vícenásobného zapnutí. V reakci prvotní otázky se vrátí všechny následné výzvy a její přidružené výzvy `qnaId` . Teď, když máte ID, můžete to předat v textu žádosti o následné výzvy. Pokud tělo požadavku obsahuje `qnaId` , a kontextový objekt (který obsahuje předchozí vlastnosti QnA maker), vrátí GenerateAnswer přesný dotaz podle ID namísto použití algoritmu řazení k vyhledání odpovědi textem otázky.
 
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>V rozhraní API pro aktualizaci se podporuje pořadí zobrazení.
@@ -367,7 +367,7 @@ QnA Maker podporuje správu verzí zahrnutím kroků vícenásobného konverzace
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o kontextových konverzacích z tohoto [dialogového okna ukázka](https://aka.ms/qnamakermultiturnsample) nebo si přečtěte další informace o [návrhu koncepčního robota pro vícenásobné konverzace](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
+Přečtěte si další informace o kontextových konverzacích z tohoto [dialogového okna ukázka](https://github.com/microsoft/BotBuilder-Samples/blob/master/samples/csharp_dotnetcore/adaptive-dialog/07.qnamaker/QnAMaker.csproj) nebo si přečtěte další informace o [návrhu koncepčního robota pro vícenásobné konverzace](https://docs.microsoft.com/azure/bot-service/bot-builder-conversations?view=azure-bot-service-4.0).
 
 > [!div class="nextstepaction"]
 > [Migrace znalostní báze](../Tutorials/migrate-knowledge-base.md)

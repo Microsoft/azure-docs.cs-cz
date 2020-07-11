@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f53a6b63c744b0e3e41f7ad22270cd842da57674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a983fd65a4934f53643bb21c8751e90dcb9eb21
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796574"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223529"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Vytvoření verze image z virtuálního počítače v Azure pomocí rozhraní příkazového řádku Azure
 
@@ -105,3 +105,5 @@ az sig image-version create \
 ## <a name="next-steps"></a>Další kroky
 
 Vytvořte virtuální počítač z [generalizované image](vm-generalized-image-version-cli.md) pomocí Azure CLI.
+
+Informace o tom, jak dokoupit informace o plánu nákupu, najdete v tématu [zadání informací o plánu nákupu Azure Marketplace při vytváření imagí](marketplace-images.md).

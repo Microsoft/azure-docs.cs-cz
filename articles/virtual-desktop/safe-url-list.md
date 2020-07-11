@@ -1,0 +1,80 @@
+---
+title: Seznam bezpečných adres URL pro virtuální počítače s Windows – Azure
+description: Seznam adres URL, které byste měli odblokovat, aby bylo zajištěno, že nasazení virtuálních klientů Windows funguje tak, jak má.
+services: virtual-desktop
+author: heidilohr
+ms.service: virtual-desktop
+ms.topic: conceptual
+ms.date: 07/10/2020
+ms.author: helohr
+manager: lizross
+ms.openlocfilehash: 9b1bdfc326ff217e68785d823b4af046af3241b7
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86225103"
+---
+# <a name="safe-url-list"></a>Seznam bezpečných adres URL
+
+Budete muset odblokovat určité adresy URL, aby nasazení virtuálních klientů Windows fungovalo správně. Tento článek uvádí tyto adresy URL, takže víte, které z nich jsou bezpečné.
+
+## <a name="virtual-machines"></a>Virtuální počítače
+
+Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí mít přístup k následujícím adresám URL:
+
+|Adresa|Odchozí port TCP|Účel|Značka služby|
+|---|---|---|---|
+|*. wvd.microsoft.com|443|Provoz služby|WindowsVirtualDesktop|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Aktualizace zásobníku agenta a SXS|AzureCloud|
+|*.core.windows.net|443|Přenosy agenta|AzureCloud|
+|*.servicebus.windows.net|443|Přenosy agenta|AzureCloud|
+|prod.warmpath.msftcloudes.com|443|Přenosy agenta|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
+|kms.core.windows.net|1688|Aktivace Windows|Internet|
+|wvdportalstorageblob.blob.core.windows.net|443|Podpora Azure Portal|AzureCloud|
+
+>[!IMPORTANT]
+>Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](../firewall/protect-windows-virtual-desktop.md)v systému Windows.
+>
+>Pro předcházení problémům se službou doporučujeme použít místo adres URL značky plně kvalifikovaného názvu domény nebo značky služby. Uvedené adresy URL a značky odpovídají pouze webům a prostředkům virtuálních ploch systému Windows. Neobsahují adresy URL pro jiné služby, například Azure Active Directory.
+
+Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít virtuální počítače Azure přístup:
+
+|Adresa|Odchozí port TCP|Účel|Značka služby|
+|---|---|---|---|
+|*.microsoftonline.com|443|Ověřování pro online služby Microsoftu|Žádné|
+|*. events.data.microsoft.com|443|Služba telemetrie|Žádné|
+|www.msftconnecttest.com|443|Zjistí, jestli je operační systém připojený k Internetu.|Žádné|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Žádné|
+|login.windows.net|443|Přihlaste se ke službám Microsoft Online Services Microsoft 365|Žádné|
+|*. sfx.ms|443|Aktualizace klientského softwaru OneDrivu|Žádné|
+|*. digicert.com|443|Ověření odvolání certifikátu|Žádné|
+
+>[!NOTE]
+>Virtuální klient Windows aktuálně neobsahuje seznam rozsahů IP adres, které můžete odblokovat, aby se povolil síťový provoz. V tuto chvíli podporujeme jenom odblokování specifických adres URL.
+>
+>Seznam bezpečných adres URL pro Office, včetně požadovaných adres URL souvisejících s Azure Active Directory, najdete v tématu [adresy URL a rozsahy IP adres pro office 365](/office365/enterprise/urls-and-ip-address-ranges).
+>
+>Pro adresy URL, které se týkají provozu služby, je nutné použít zástupný znak (*). Pokud nechcete používat * pro přenosy související s agentem, vyhledáte adresy URL bez zástupných znaků:
+>
+>1. Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
+>2. Otevřete **Prohlížeč událostí**a potom v **systému Windows protokoly**  >  **aplikace**  >  **WVD-agent** a vyhledejte událost s ID 3702.
+>3. Seznam povolených adres URL, které najdete v části ID události 3702. Adresy URL v rámci události s ID 3702 jsou specifické pro oblast. Pro každou oblast, ve které chcete nasadit virtuální počítače, budete muset zopakovat proces odblokování s příslušnými adresami URL.
+
+## <a name="remote-desktop-clients"></a>Klienti služby Vzdálená plocha
+
+Všichni klienti vzdálené plochy, které použijete, musí mít přístup k následujícím adresám URL:
+
+|Adresa|Odchozí port TCP|Účel|Klient (y)|
+|---|---|---|---|
+|*. wvd.microsoft.com|443|Provoz služby|Vše|
+|*.servicebus.windows.net|443|Řešení potíží s daty|Vše|
+|go.microsoft.com|443|Microsoft odkazy fwlinks|Vše|
+|aka.ms|443|Zkrácení adresy URL Microsoftu|Vše|
+|docs.microsoft.com|443|Dokumentace|Vše|
+|privacy.microsoft.com|443|Prohlášení o ochraně osobních údajů|Vše|
+|query.prod.cms.rt.microsoft.com|443|Aktualizace klienta|Windows Desktop|
+
+>[!IMPORTANT]
+>Otevírání těchto adres URL je nezbytné pro spolehlivé klientské prostředí. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají pouze klientským webům a prostředkům a nezahrnují adresy URL pro jiné služby, například Azure Active Directory.

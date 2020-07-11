@@ -1,28 +1,26 @@
 ---
-title: Výběr imagí virtuálních počítačů s Windows v Azure
+title: Hledání a používání Azure Marketplacech imagí
 description: K určení vydavatele, nabídky, SKU a verze imagí virtuálních počítačů Marketplace použijte Azure PowerShell.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083361"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224243"
 ---
-# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vyhledání imagí virtuálních počítačů s Windows na Azure Marketplace pomocí Azure PowerShellu
+# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Vyhledání a použití imagí virtuálních počítačů v Azure Marketplace s využitím Azure PowerShell
 
-Tento článek popisuje, jak použít Azure PowerShell k nalezení imagí virtuálních počítačů v Azure Marketplace. Pak můžete zadat image Marketplace, když vytvoříte virtuální počítač pomocí programu PowerShell, Správce prostředků šablon nebo jiných nástrojů.
+Tento článek popisuje, jak použít Azure PowerShell k nalezení imagí virtuálních počítačů v Azure Marketplace. Při vytváření virtuálního počítače pak můžete zadat image Marketplace.
 
 K dispozici je také možnost procházení dostupných imagí a nabídek pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) prezentace, [Azure Portal](https://portal.azure.com)nebo rozhraní příkazového [řádku Azure](../linux/cli-ps-findimage.md). 
 
- 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -318,7 +316,6 @@ Pak předáte konfiguraci virtuálních počítačů spolu s objekty konfigurace
 
 Informace o tom, jak rychle vytvořit virtuální počítač pomocí `New-AzVM` rutiny pomocí základních informací o imagi, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí PowerShellu](quick-create-powershell.md).
 
-
-Pokud chcete [vytvořit plně nakonfigurovaný virtuální počítač](../scripts/virtual-machines-windows-powershell-sample-create-vm.md), podívejte se na příklad skriptu PowerShellu.
+Další informace o použití Azure Marketplace imagí k vytváření vlastních imagí v galerii sdílených imagí najdete v tématu věnovaném [zadávání informací o plánu nákupu Azure Marketplace při vytváření imagí](../marketplace-images.md).
 
 

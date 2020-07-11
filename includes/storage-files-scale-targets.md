@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cf9be653da2dd587b93724b6e319dc4d20686c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c130fb2e032a24384f52f11957632319093e1e3
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536423"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226382"
 ---
-| Prostředek | Standardní sdílené složky | Soubory ke sdílení souborů úrovně Premium |
+| Resource | Standardní sdílené složky | Soubory ke sdílení souborů úrovně Premium |
 |----------|---------------|------------------------------------------|
 | Minimální velikost sdílené složky | Bez minima; průběžné platby | 100 GiB; zřízené |
 | Maximální velikost sdílené složky | 100 TiB *, 5 TiB | 100 TiB |
@@ -22,7 +22,7 @@ ms.locfileid: "81536423"
 | Cílová propustnost pro jednu sdílenou složku | až 300 MiB/s *, až 60 MiB/s.  | Viz hodnoty příchozího a odchozího sdílení souborů Premium|
 | Maximální počet odchozích dat pro jednu sdílenou složku | Viz standardní propustnost cíle sdílení souborů | Až 6 204 MiB/s |
 | Maximální příchozí přenos dat pro jednu sdílenou složku | Viz standardní propustnost cíle sdílení souborů | Až 4 136 MiB/s |
-| Maximální počet otevřených popisovačů na soubor | 2 000 otevřených popisovačů | 2 000 otevřených popisovačů |
+| Maximální počet otevřených popisovačů na soubor nebo adresář | 2 000 otevřených popisovačů | 2 000 otevřených popisovačů |
 | Maximální počet snímků sdílené složky | 200 snímky sdílené složky | 200 snímky sdílené složky |
 | Maximální délka názvu objektu (adresářů a souborů) | 2 048 znaků | 2 048 znaků |
 | Maximální součást cesty (v cestě \A\B\C\D je každé písmeno součásti) | 255 znaků | 255 znaků |

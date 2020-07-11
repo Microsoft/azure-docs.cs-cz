@@ -3,7 +3,7 @@ title: Zálohování a obnovení databáze Oracle Database 12c na virtuálním p
 description: Naučte se, jak zálohovat a obnovit databázi Oracle Database 12c v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
+author: rgardler
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687000"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224447"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure Linux
 
@@ -171,7 +172,7 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
 
 4. Upravte soubor JSON.
 
-    Upravte VMSnapshotScriptPluginConfig.jsv souboru tak, aby obsahovala `PreScriptLocation` `PostScriptlocation` parametry a. Příklad:
+    Upravte VMSnapshotScriptPluginConfig.jsv souboru tak, aby obsahovala `PreScriptLocation` `PostScriptlocation` parametry a. Například:
 
     ```output
     {

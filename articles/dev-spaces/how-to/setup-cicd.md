@@ -8,11 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Přečtěte si, jak nastavit průběžnou integraci a průběžné nasazování pomocí Azure DevOps s využitím Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81685635"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229325"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Použití CI/CD s Azure Dev Spaces
 
@@ -22,10 +23,10 @@ Tento článek vás provede nastavením služby průběžná integrace/průběž
 
 I když vás tento článek provede s Azure DevOps, stejné koncepty by se měly vztahovat na systémy CI/CD, jako je Jenkinse, TeamCity atd.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * [Cluster služby Azure Kubernetes (AKS) s povoleným Azure Dev Spaces](../get-started-netcore.md)
 * [Nainstalované rozhraní příkazového řádku Azure Dev Spaces](upgrade-tools.md)
-* [Organizace Azure DevOps s projektem](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [Organizace Azure DevOps s projektem](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * Podrobnosti [účtu správce](../../container-registry/container-registry-authentication.md#admin-account) Azure Container Registry k dispozici
 * [Autorizace clusteru AKS pro vyžádání z Azure Container Registry](../../aks/cluster-container-registry-integration.md)
@@ -67,7 +68,7 @@ Možnost zakázání:
 > [!Note]
 > Funkce Preview _prostředí pro vytváření nových kanálů YAML_ v Azure DevOps je v konfliktu s vytvářením předem definovaných kanálů sestavení. Pokud chcete nasadit náš předem definovaný kanál sestavení, musíte ho teď zakázat.
 
-Ve větvi _azds_updates_ jsme zahrnuli jednoduché [YAML kanálu Azure](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) definující kroky sestavení vyžadované pro *mywebapi* a *webendu*.
+Ve větvi _azds_updates_ jsme zahrnuli jednoduché [YAML kanálu Azure](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) definující kroky sestavení vyžadované pro *mywebapi* a *webendu*.
 
 V závislosti na zvoleném jazyce se YAML kanálu vrátil se změnami v cestě, která vypadá přibližně takto:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
@@ -76,7 +77,7 @@ Vytvoření kanálu z tohoto souboru:
 1. Vyberte možnost pro vytvoření **nového** kanálu sestavení.
 1. Jako zdroj vyberte **GitHub** , v případě potřeby proveďte autorizaci s vaším účtem GitHub a vyberte větev _azds_updates_ z větvené verze úložiště ukázkové aplikace pro _vývoj a prostory_ .
 1. Jako šablonu vyberte **Konfigurace jako kód**nebo **YAML**.
-1. Nyní se zobrazí stránka konfigurace pro váš kanál sestavení. Jak bylo zmíněno výše, přejděte k cestě k **souboru YAML** pomocí tlačítka **...** v konkrétní jazyku. Například, `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
+1. Nyní se zobrazí stránka konfigurace pro váš kanál sestavení. Jak bylo zmíněno výše, přejděte k cestě k **souboru YAML** pomocí tlačítka **...** v konkrétní jazyku. Například `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. Přejít na kartu **proměnné** .
 1. Ručně přidejte _dockerId_ jako proměnnou, která je uživatelské jméno [účtu správce Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). (Zmíněné v článku požadavky)
 1. Ručně přidejte _dockerPassword_ jako proměnnou, což je heslo [účtu správce Azure Container Registry](../../container-registry/container-registry-authentication.md#admin-account). Nezapomeňte zadat _dockerPassword_ jako tajný kód (výběrem ikony zámku) z bezpečnostních důvodů.
@@ -98,7 +99,7 @@ Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webend
 1. U **výchozí verze**vyberte možnost **nejnovější z výchozí větve kanálu sestavení s značkami**.
 1. Nechejte **značky** prázdné.
 1. Nastavte **alias zdroje** na `drop` . Hodnota **zdrojového aliasu** se používá v předdefinovaných úlohách vydaných verzí, takže je nutné ji nastavit.
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.
 1. Nyní klikněte na ikonu blesku na nově vytvořeném `drop` zdroji artefaktů, jak je znázorněno níže:
 
     ![Nastavení průběžného nasazování artefaktů verzí](../media/common/release-artifact-cd-setup.png)
@@ -118,7 +119,7 @@ Teď máte řešení CI, které bude automaticky vytvářet *mywebapi* a *webend
 1. Klikněte na **Uložit** v pravém horním rohu a pak na **OK**.
 1. Klikněte na **+ release** (vedle tlačítka Uložit) a **vytvořte vydání**.
 1. V části **artefakty**ověřte, zda je vybráno nejnovější sestavení z kanálu sestavení.
-1. Klikněte na **Vytvořit**.
+1. Klikněte na **Create** (Vytvořit).
 
 Nyní začne proces automatizované verze, nasazování grafů *mywebapi* a *webendu* do clusteru Kubernetes v _prostoru nejvyšší úrovně_ . Průběh vydaných verzí můžete monitorovat na webovém portálu Azure DevOps:
 

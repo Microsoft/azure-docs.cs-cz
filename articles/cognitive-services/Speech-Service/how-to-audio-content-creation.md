@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 72fecbdc173a6174e54a28e48f983965f397ba6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589648"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224583"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Vylepšení syntézy pomocí nástroje pro tvorbu zvukového obsahu
 
@@ -23,11 +23,13 @@ ms.locfileid: "83589648"
 
 Nástroj pro vytváření zvukového obsahu je založený na [jazyce SSML (Speech syntézy)](speech-synthesis-markup.md). Pro zjednodušení přizpůsobení a optimalizace vám vytvoření zvukového obsahu umožňuje vizuálně kontrolovat výstupy textu na řeč v reálném čase.
 
+Podívejte se na [video s kurzem](https://www.youtube.com/watch?v=O1wIJ7mts_w) vytvoření zvukového obsahu.
+
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
 Tento diagram znázorňuje kroky potřebné k vyladění výstupů převodu textu na řeč. Pomocí odkazů níže můžete získat další informace o jednotlivých krocích.
 
-![](media/audio-content-creation/audio-content-creation-diagram.jpg)
+![Diagram kroků, které jsou potřebné k doladění výstupů převodu textu na řeč.](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
 1. [Nastavte si účet Azure a prostředek řeči](#set-up-your-azure-account-and-speech-resource) , abyste mohli začít.
 2. Pomocí prostého textu nebo skriptů SSML [vytvořte soubor pro optimalizaci zvuku](#create-an-audio-tuning-file) .

@@ -9,11 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: f54adb54ca842ea389b0d3ea203d747df0071ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792026"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223291"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Přehled objektů blob stránky Azure
 
@@ -35,7 +36,7 @@ Služby společnosti Microsoft, jako je například Azure Site Recovery, Azure B
 
 ## <a name="page-blob-features"></a>Funkce objektů blob stránky
 
-### <a name="rest-api"></a>REST API
+### <a name="rest-api"></a>Rozhraní REST API
 
 Pokud chcete začít s [vývojem pomocí objektů blob stránky](storage-dotnet-how-to-use-blobs.md), přečtěte si následující dokument. Příklad najdete v tématu Jak získat přístup k objektům blob stránky pomocí klientské knihovny pro úložiště pro .NET. 
 
@@ -122,7 +123,7 @@ Jakmile je žádost o zápis pro sekvenční sadu stránek ve službě BLOB Serv
 
 V níže uvedeném diagramu vidíte dvě samostatné operace zápisu:
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
+![Diagram znázorňující dvě samostatné možnosti zápisu.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
 1.  Operace zápisu začínající na posunu 0 o délce 1024 bajtů 
 2.  Operace zápisu začínající na posunu 4096 o délce 1024 
@@ -150,7 +151,7 @@ Díky tomu můžete stáhnout celý objekt BLOB nebo rozsah bajtů od libovolné
 
 Následující obrázek znázorňuje operaci čtení s posunem 256 a velikostí rozsahu 4352. Vrácená data jsou zvýrazněna oranžová. Pro stránky NUL jsou vraceny nuly.
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
+![Diagram znázorňující operaci čtení s posunem 256 a velikostí rozsahu 4352](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
 Pokud máte zhuštěný objekt blob, můžete chtít jenom stáhnout platné oblasti stránky, abyste se vyhnuli zaplacení na nenulové bajty a aby se snížila latence stahování.  
 

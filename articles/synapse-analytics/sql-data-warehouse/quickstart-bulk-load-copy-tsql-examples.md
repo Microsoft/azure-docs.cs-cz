@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: f5f6c6970ad8bb697ceb118b6725b37e93ca80b5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 94f9aca38ebe6fef50b555fa0d5b09050d996366
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213053"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230617"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Bezpečné načtení dat pomocí synapse SQL
 
@@ -23,10 +23,10 @@ Tento článek popisuje a poskytuje příklady mechanismů zabezpečeného ově�
 
 Následující matice popisuje podporované metody ověřování pro každý typ souboru a účet úložiště. To platí pro zdrojové umístění úložiště a umístění chybového souboru.
 
-|                      |                CSV                |              Parquet              |                ORC                |
-| :------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|  Azure Blob Storage  | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD |              SAS/KLÍČ              |              SAS/KLÍČ              |
-| Azure Data Lake Gen2 | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD |
+|                          |                CSV                |              Parquet              |                ORC                |
+| :----------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|  **Úložiště objektů BLOB v Azure**  | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD |              SAS/KLÍČ              |              SAS/KLÍČ              |
+| **Azure Data Lake Gen2** | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD | SAS/MSI/INSTANČNÍ OBJEKT/KLÍČ/AAD |
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Klíč účtu úložiště s LF jako ukončovací znak řádku (nový řádek systému UNIX)
 
@@ -68,7 +68,7 @@ WITH (
 
 Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se spravované ověřování identity. 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 1. Pomocí této [příručky](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)nainstalujte Azure PowerShell.
 2. Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte nejdřív v této [příručce](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)upgradovat na obecné účely v2.
@@ -129,7 +129,7 @@ Pokud je váš účet úložiště připojený k virtuální síti, vyžaduje se
 >
 > - Zadejte roli vlastníka **dat objektu BLOB** **úložiště** , přispěvatele nebo čtenáře. Tyto role se liší od předdefinovaných rolí vlastník, přispěvatel a čtenář v Azure. 
 
-## <a name="e-service-principal-authentication"></a>E. Ověřování instančního objektu
+## <a name="e-service-principal-authentication"></a>E. Ověřování instančních objektů
 #### <a name="steps"></a>Kroky
 
 1. [Vytvoření aplikace Azure Active Directory (AAD)](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)

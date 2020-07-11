@@ -3,12 +3,12 @@ title: Vylepšení znalostní báze Knowledge Base – QnA Maker
 description: Vylepšete kvalitu znalostní báze s aktivním učením. Zkontrolujte, přijměte nebo odmítněte, přidejte bez odebrání nebo změny existujících otázek.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650774"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231773"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Přijetí dotazů na aktivní učení ve znalostní bázi Knowledge Base
 
@@ -127,12 +127,12 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Vlastnost požadavku HTTP|Name|Typ|Účel|
+|Vlastnost požadavku HTTP|Název|Typ|Účel|
 |--|--|--|--|
 |Parametr trasy adresy URL|ID znalostní báze|řetězec|Identifikátor GUID znalostní báze|
 |Vlastní subdoména|Název prostředku Qnamakerem|řetězec|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host` .|
-|Záhlaví|Typ obsahu|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je:`application/json`|
-|Záhlaví|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Hlavička|Typ obsahu|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je:`application/json`|
+|Hlavička|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Tělo příspěvku|Objekt JSON|JSON|Váš názor na školení|
 
 Tělo JSON má několik nastavení:
@@ -199,7 +199,7 @@ Pokud se má dotaz uživatele použít pro aktivní učení, váš kód rozhran�
 * Určení, jestli se má dotaz použít pro aktivní učení
 * Poslat dotaz zpátky do QnA Maker API pro školení pro aktivní učení
 
-V [ukázce Azure bot](https://aka.ms/activelearningsamplebot)byly obě tyto aktivity naprogramované.
+V [ukázce Azure bot](https://github.com/microsoft/BotBuilder-Samples)byly obě tyto aktivity naprogramované.
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Příklad kódu jazyka C# pro rozhraní API pro učení s bot Framework 4. x
 
@@ -264,7 +264,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Příklad kódu Node. js pro rozhraní API pro učení s bot Framework 4. x
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Příklad Node.js kódu pro rozhraní API pro učení s bot Framework 4. x
 
 Následující kód ilustruje, jak odeslat informace zpět do QnA Maker pomocí rozhraní API pro vlaky.
 

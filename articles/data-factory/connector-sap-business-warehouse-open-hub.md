@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 1413676eb5f3ab6f472648335996c1e607bc8b27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb61a3360ee2514fa6fd61e125ebc345474c62f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771015"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224617"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,10 +38,10 @@ Data z SAP Business Warehouse můžete kopírovat prostřednictvím otevřeného
 
 Konkrétně konektor Open hub pro SAP Business Warehouse podporuje:
 
-- SAP Business Warehouse **verze 7,01 nebo vyšší (v nedávných balíčcích balíčku podpory SAP vydané po roce 2015)**.
+- SAP Business Warehouse **verze 7,01 nebo vyšší (v nedávných balíčcích balíčku podpory SAP vydané po roce 2015)**. Tento konektor nepodporuje SAP BW4/HANA.
 - Kopírování dat prostřednictvím místní tabulky Open hub, která je v této části může být DSO, InfoCube, s více dodanými, zdroji dat atd.
 - Kopírování dat pomocí základního ověřování.
-- Připojování k aplikačnímu serveru.
+- Připojování k aplikačnímu serveru SAP nebo serveru zpráv SAP.
 
 ## <a name="sap-bw-open-hub-integration"></a>SAP BW otevřít integraci centra 
 
@@ -73,7 +74,7 @@ V pracovním úložišti dat (jako je Azure Blob ve výše uvedeném diagramu) o
 
 Pro správné zpracování rozdílů není povoleno mít ID žádosti z různých DTPs ve stejné otevřené tabulce hub. Proto nesmíte pro každé místo v otevřeném centru (OHD) vytvořit více než jednu DTP. Pokud budete potřebovat úplnou a rozdílovou extrakci ze stejného InfoProvider, měli byste vytvořit dvě OHDs pro stejné InfoProvider. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete použít tento konektor pro SAP Business Warehouse, musíte:
 
@@ -106,20 +107,20 @@ Pro propojenou službu SAP Business Warehouse se podporují následující vlast
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na: **SapOpenHub** . | Yes |
-| server | Název serveru, na kterém se nachází instance SAP BW. | Yes |
-| systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Yes |
-| messageServer | Název hostitele serveru zpráv SAP.<br/>Slouží k připojení k serveru zpráv SAP. | No |
-| messageServerService | Název služby nebo číslo portu serveru zpráv.<br/>Slouží k připojení k serveru zpráv SAP. | No |
-| systemId | ID systému SAP, ve kterém je tabulka umístěna.<br/>Slouží k připojení k serveru zpráv SAP. | No |
-| přihlášená | Přihlašovací skupina pro systém SAP.<br/>Slouží k připojení k serveru zpráv SAP. | No |
-| clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Yes |
+| typ | Vlastnost Type musí být nastavená na: **SapOpenHub** . | Ano |
+| server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
+| systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ano |
+| messageServer | Název hostitele serveru zpráv SAP.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
+| messageServerService | Název služby nebo číslo portu serveru zpráv.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
+| systemId | ID systému SAP, ve kterém je tabulka umístěna.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
+| přihlášená | Přihlašovací skupina pro systém SAP.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
+| clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano |
 | language | Jazyk používaný systémem SAP. | Ne (výchozí hodnota je **EN**)|
-| userName | Jméno uživatele, který má přístup k serveru SAP. | Yes |
-| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Yes |
+| userName | Jméno uživatele, který má přístup k serveru SAP. | Ano |
+| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -152,12 +153,12 @@ Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Ty
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Yes |
-| openHubDestinationName | Název otevřeného cíle centra, ze kterého se mají kopírovat data | Yes |
+| typ | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Ano |
+| openHubDestinationName | Název otevřeného cíle centra, ze kterého se mají kopírovat data | Ano |
 
 Pokud jste nacházeli `excludeLastRequest` a `baseRequestId` v datové sadě, je stále podporováno tak, jak jsou, a Vy jste navrženi použít nový model ve zdroji aktivity.
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -186,16 +187,16 @@ Pokud chcete kopírovat data z SAP BW otevřete centrum, v části **zdroj** akt
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Yes |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Ano |
 | excludeLastRequest | Určuje, zda mají být vyloučeny záznamy poslední žádosti. | Ne (výchozí hodnota je **true**) |
-| baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId **větším, než** je hodnota této vlastnosti.  | No |
+| baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId **větším, než** je hodnota této vlastnosti.  | Ne |
 
 >[!TIP]
 >Pokud otevřená tabulka centra obsahuje jenom data generovaná IDENTIFIKÁTORem jediného požadavku, například vždy stačí úplné načtení a přepsat stávající data v tabulce, nebo když pro test spustíte jenom DTP, nezapomeňte zrušit kontrolu možnosti excludeLastRequest, aby se data zkopírovala.
 
 Pro urychlení načítání dat můžete [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) u aktivity kopírování nastavit, aby se data načetla z SAP BW otevřeného centra paralelně. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně spouští čtyři volání RFC a každé volání RFC načte část dat z SAP BW otevřené tabulky hub rozdělené podle ID žádosti DTP a ID balíčku. To platí v případě, že počet jedinečných ID žádosti DTP + ID balíčku je větší než hodnota `parallelCopies` . Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[

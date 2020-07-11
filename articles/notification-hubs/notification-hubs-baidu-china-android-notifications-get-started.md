@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79536985"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223954"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Začínáme s použitím Notification Hubs pomocí Baidu
 
@@ -29,7 +29,7 @@ Nabídka cloudu Baidu představuje čínskou cloudovou službu, kterou můžete 
 
 Vzhledem k nedostupnosti obchodu Google Play a služby Firebase Cloud Messaging (FCM) v Číně je nutné pro aplikace používat jiné obchody a služby nabízených oznámení. Baidu je jednou z nich a aktuálně ji používá Centrum oznámení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu budete potřebovat:
 
@@ -415,8 +415,8 @@ Poznamenejte si `DefaultListenSharedAccessSignature` a `DefaultFullSharedAccessS
 
 Příjem oznámení můžete rychle otestovat na webu [Azure Portal]: Použijte tlačítka **Odeslat** na obrazovce pro konfiguraci centra oznámení, jak je znázorněno na následující obrazovce:
 
-![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
-![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![Snímek obrazovky s možností odeslat na webu Azure Portal popsaný červenou a červenou šipkou, na ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+ ![ kterou se odkazuje Snímek obrazovky se stránkou Baidu test Send v Azure Portal.](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 Nabízená oznámení se většinou posílají ve službě back-end, jako je služba Mobile Services, nebo v technologii ASP.NET pomocí kompatibilní knihovny. Pokud pro váš back-end není dostupná žádná knihovna, můžete k přímému odesílání oznámení použít také rozhraní REST API.
 
@@ -436,7 +436,7 @@ V této části ukážeme odesílání oznámení pomocí konzolové aplikace .N
 
 1. Vytvořte novou konzolovou aplikaci Visual C#:
 
-    ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![Snímek obrazovky dialogového okna Nový projekt s zvýrazněnou možností Visual C# pro konzolovou aplikaci Visual C#](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. V okně konzoly Správce balíčků nastavte **Výchozí projekt** na nový projekt konzolové aplikace a pak v okně konzoly spusťte následující příkaz:
 
@@ -446,7 +446,7 @@ V této části ukážeme odesílání oznámení pomocí konzolové aplikace .N
 
     Tento příkaz přidá referenci na sadu SDK služby Azure Notification Hubs pomocí [balíčku NuGet Microsoft.Azure.Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![Snímek obrazovky dialogového okna konzoly Správce balíčků s možností poslat do centra oznámení červeně v kruhu](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. Otevřete soubor `Program.cs` a přidejte následující příkaz using:
 

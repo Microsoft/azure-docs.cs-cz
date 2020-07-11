@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b66ef1a28faf97759045d40ea0f649282b2d837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91360776c50ce514985ad36242606223becbd933
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392879"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230872"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Vlastní ověření e-mailu pomocí Mailjet
 
@@ -38,26 +38,26 @@ Pokud ho ještě nemáte, začněte tím, že nastavíte účet Mailjet (zákazn
 
 V dalším kroku uložte klíč rozhraní API Mailjet do klíče zásad Azure AD B2C, aby se zásady odkazovaly na.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce **Přehled** vyberte možnost **Architektura prostředí identity**.
 1. Vyberte **klíče zásad**a pak vyberte **Přidat**.
 1. V případě **možností**vyberte možnost **ručně**.
-1. Zadejte **název** klíče zásad. Například, `MailjetApiKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+1. Zadejte **název** klíče zásad. Například `MailjetApiKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 1. Do **tajného**klíče zadejte svůj **klíč rozhraní API** Mailjet, který jste předtím nahráli.
 1. V případě **použití klíče**vyberte možnost **podpis**.
 1. Vyberte **Vytvořit**.
 1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 1. V případě **možností**vyberte možnost **ručně**.
-1. Zadejte **název** klíče zásad. Například, `MailjetSecretKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
+1. Zadejte **název** klíče zásad. Například `MailjetSecretKey`. Předpona `B2C_1A_` se automaticky přidá do názvu vašeho klíče.
 1. Do **tajného**klíče zadejte svůj **tajný klíč** Mailjet, který jste předtím nahráli.
 1. V případě **použití klíče**vyberte možnost **podpis**.
 1. Vyberte **Vytvořit**.
 
 ## <a name="create-a-mailjet-template"></a>Vytvoření šablony Mailjet
 
-Když je vytvořený účet Mailjet a klíč rozhraní Mailjet API uložený v klíči zásad Azure AD B2C, vytvořte [šablonu dynamické transakce](https://Mailjet.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)Mailjet.
+Když je vytvořený účet Mailjet a klíč rozhraní Mailjet API uložený v klíči zásad Azure AD B2C, vytvořte [šablonu dynamické transakce](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)Mailjet.
 
 1. Na webu Mailjet otevřete stránku [transakční šablony](https://app.mailjet.com/templates/transactional) a vyberte **vytvořit novou šablonu**.
 1. Vyberte **ho pomocí kódování ve formátu HTML**a pak vyberte **kód od začátku**.

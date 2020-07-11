@@ -3,12 +3,12 @@ title: Export pomocí Stream Analytics z Azure Application Insights | Microsoft 
 description: Stream Analytics může průběžně transformovat, filtrovat a směrovat data, která exportujete z Application Insights.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110483"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224515"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Použití Stream Analytics k zpracování exportovaných dat z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovaných z Application Insights](export-telemetry.md). Stream Analytics může vyžádat data z nejrůznějších zdrojů. Může data transformovat a filtrovat a pak je směrovat na celou řadu umyvadel.
@@ -60,7 +60,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
     Data budou také exportována do vašeho úložiště. 
 2. Zkontrolujte exportovaná data. V aplikaci Visual Studio vyberte možnost **Zobrazit/Cloud Průzkumník**a otevřete Azure/úložiště. (Pokud nemáte tuto možnost nabídky, musíte nainstalovat sadu Azure SDK: otevřete dialogové okno Nový projekt a otevřete Visual C#/Cloud/získat Microsoft Azure SDK pro .NET.)
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![Snímek obrazovky ukazující, jak nastavit typy událostí, které chcete zobrazit.](./media/export-stream-analytics/04-data.png)
    
     Poznamenejte si běžnou část názvu cesty, která je odvozena z názvu aplikace a klíče instrumentace. 
 
@@ -69,21 +69,21 @@ Události se zapisují do souborů BLOB ve formátu JSON. Každý soubor může 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Vytvoření instance Azure Stream Analytics
 Z [Azure Portal](https://portal.azure.com/)vyberte službu Azure Stream Analytics a vytvořte novou Stream Analytics úlohu:
 
-![](./media/export-stream-analytics/SA001.png)
+![Snímek obrazovky, který zobrazuje hlavní stránku pro vytváření Stream Analyticsch úloh v Azure Portal.](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![Snímek obrazovky, který zobrazuje podrobnosti potřebné při vytváření nové Stream Analytics úlohy.](./media/export-stream-analytics/SA002.png)
 
 Po vytvoření nové úlohy vyberte **Přejít k prostředku**.
 
-![](./media/export-stream-analytics/SA003.png)
+![Snímek obrazovky zobrazující zprávu přijatou v případě úspěchu nového nasazení úlohy Stream Analytics](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>Přidat nový vstup
 
-![](./media/export-stream-analytics/SA004.png)
+![Snímek obrazovky, který ukazuje, jak přidat vstupy do úlohy Stream Analytics.](./media/export-stream-analytics/SA004.png)
 
 Nastavte ho tak, aby převzal výstup z objektu BLOB průběžného exportu:
 
-![](./media/export-stream-analytics/SA0005.png)
+![Snímek obrazovky, který ukazuje konfiguraci Stream Analytics úlohy, aby probrala vstup z objektu BLOB průběžného exportu.](./media/export-stream-analytics/SA0005.png)
 
 Teď budete potřebovat primární přístupový klíč z účtu úložiště, který jste si poznamenali dříve. Nastavte tuto hodnotu jako klíč účtu úložiště.
 
@@ -109,7 +109,7 @@ V tomto příkladu:
 ## <a name="add-new-output"></a>Přidat nový výstup
 Nyní vyberte úlohu > **výstupy**  >  **Přidat**.
 
-![](./media/export-stream-analytics/SA006.png)
+![Snímek obrazovky, který zobrazuje výběr úlohy Stream Analytics pro přidání nového výstupu.](./media/export-stream-analytics/SA006.png)
 
 
 ![Vyberte nový kanál, klikněte na výstupy, přidat Power BI](./media/export-stream-analytics/SA010.png)

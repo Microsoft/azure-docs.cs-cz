@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77482968"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221132"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronizovat obsah z cloudové složky do Azure App Service
 V tomto článku se dozvíte, jak synchronizovat obsah pro [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) z Dropboxu a OneDrivu. 
@@ -23,11 +24,11 @@ Pokud chcete povolit synchronizaci obsahu, přejděte na stránku aplikace App S
 
 V levé nabídce klikněte na **nasazení centra nasazení**  >  **OneDrive** nebo **Dropbox**  >  **autorizovat**. Postupujte podle výzev k autorizaci. 
 
-![](media/app-service-deploy-content-sync/choose-source.png)
+![Ukazuje, jak autorizovat OneDrive nebo Dropbox v centru nasazení v Azure Portal.](media/app-service-deploy-content-sync/choose-source.png)
 
 K OneDrivu nebo Dropboxu se stačí autorizovat jenom jednou. Pokud jste již autorizováni, stačí kliknout na tlačítko **pokračovat**. Autorizovaný účet OneDrive nebo Dropbox můžete změnit kliknutím na **změnit účet**.
 
-![](media/app-service-deploy-content-sync/continue.png)
+![Ukazuje, jak změnit autorizovaný účet OneDrivu nebo Dropboxu v centru nasazení v Azure Portal.](media/app-service-deploy-content-sync/continue.png)
 
 Na stránce **Konfigurace** vyberte složku, kterou chcete synchronizovat. Tato složka se vytvoří pod následující určenou cestou k obsahu na OneDrivu nebo Dropboxu. 
    
@@ -42,7 +43,7 @@ Na stránce **Souhrn** ověřte své možnosti a klikněte na **Dokončit**.
 
 Pokud chcete synchronizovat obsah ve složce cloudu pomocí App Service, vraťte se na stránku **centra nasazení** a klikněte na **synchronizovat**.
 
-![](media/app-service-deploy-content-sync/synchronize.png)
+![Ukazuje, jak synchronizovat složku v cloudu s App Service.](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
    > **OneDrive pro firmy** se v tuto chvíli nepodporuje kvůli základním rozdílům v rozhraních API. 
@@ -55,7 +56,7 @@ Pokud chcete zakázat synchronizaci obsahu, přejděte na stránku aplikace App 
 
 V nabídce vlevo klikněte na **centrum nasazení**  >  **Odpojit**.
 
-![](media/app-service-deploy-content-sync/disable.png)
+![Ukazuje, jak odpojit svou cloudovou složku s vaší aplikací App Service v Azure Portal.](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 

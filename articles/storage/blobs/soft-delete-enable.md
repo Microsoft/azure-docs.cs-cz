@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2914dfed14360c114476025c74f3dc0c03d82e25
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463718"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224889"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Povolení a Správa obnovitelného odstranění pro objekty blob
 
@@ -39,31 +40,31 @@ Povolit obnovitelné odstranění pro objekty BLOB v účtu úložiště pomocí
 
 5. Kliknutím na tlačítko **Uložit** potvrďte nastavení ochrany dat.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+![Snímek obrazovky webu Azure Portal se zvolenou službou data Protection BLOB](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 Chcete-li zobrazit obnovitelné odstraněné objekty blob, zaškrtněte políčko **Zobrazit odstraněné objekty blob** .
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
+![Snímek stránky služby BLOB data Protection s zvýrazněnou možností zobrazit odstraněné objekty blob](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
 Pokud chcete pro daný objekt BLOB zobrazit obnovitelné odstraněné snímky, vyberte objekt BLOB a pak klikněte na **Zobrazit snímky**.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
+![Snímek stránky služby BLOB data Protection se zvýrazněnou možností zobrazení snímků](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
 Ujistěte se, že je zaškrtnuté políčko **Zobrazit odstraněné snímky** .
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
+![Snímek stránky zobrazení snímků se zvýrazněnou možností zobrazit odstraněné objekty blob](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
 Když kliknete na měkký odstraněný objekt BLOB nebo snímek, Všimněte si, že se zobrazí nové vlastnosti objektu BLOB. Označují, že se objekt odstranil, a kolik dní zbývá, dokud platnost snímku objektu BLOB nebo objektu BLOB neproběhne trvale. Pokud neměkký odstraněný objekt není snímkem, budete mít také možnost ho zrušit.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
+![Snímek obrazovky podrobností nepodmíněného odstraněného objektu.](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
 Pamatujte, že zrušení odstranění objektu BLOB také zruší odstranění všech přidružených snímků. Chcete-li obnovit odstraněné obnovitelné snímky pro aktivní objekt blob, klikněte na objekt BLOB a vyberte možnost zrušit **odstranění všech snímků**.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
+![Snímek obrazovky s podrobnostmi nepodmíněného odstraněného objektu BLOB.](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
 Po obnovení snímků objektu blob můžete kliknutím na **zvýšit úroveň** zkopírovat snímek přes kořenový objekt blob, čímž se obnoví objekt blob do snímku.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+![Snímek stránky zobrazení snímků se zvýrazněnou možností zvýšení úrovně](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

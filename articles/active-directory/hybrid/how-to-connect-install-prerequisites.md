@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/27/2020
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358714"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223920"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Požadavky pro Azure AD Connect
 Toto téma popisuje předpoklady a požadavky na hardware pro Azure AD Connect.
@@ -48,34 +48,35 @@ Než nainstalujete Azure AD Connect, budete potřebovat několik věcí.
 * Doporučuje se [Povolit Koš služby Active Directory](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Server Azure AD Connect
->[!IMPORTANT]
->Azure AD Connect Server obsahuje kritická data identity a měla by se považovat za součást vrstvy 0, jak je popsáno v [modelu vrstvy správy služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) .
+Server Azure AD Connect obsahuje kritická data identity. Je důležité, aby byl přístup správce k tomuto serveru správně zabezpečený, podle pokynů popsaných v [zabezpečení privilegovaného přístupu](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). 
 
-* Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows Server Essentials před 2019 (podporuje se Windows Server Essentials 2019). Server musí používat Windows Server Standard nebo vyšší.
-* Instalace Azure AD Connect v řadiči domény se nedoporučuje z důvodu postupů zabezpečení a více omezujících nastavení, která můžou zabránit tomu, aby se Azure AD Connect správně nainstalovala.
-* Azure AD Connect Server musí mít nainstalované úplné grafické rozhraní (GUI). Instalace na jádro serveru není **podporovaná** .
->[!IMPORTANT]
->Instalace Azure AD Connect na Small Business Server, Server Essentials nebo jádro serveru není podporovaná.
+Azure AD Connect Server musí být považován za součást vrstvy 0, jak je popsáno v [modelu vrstvy správy služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material).  
 
-* Azure AD Connect musí být nainstalovaný na Windows Serveru 2012 nebo novějším. Tento server musí být připojený k doméně a může se jednat o řadič domény nebo členský server.
-* Pokud ke správě konfigurace služby ADFS používáte Průvodce Azure AD Connect, Azure AD Connect Server nesmí mít povolený Zásady skupiny prostředí PowerShell přepis. Pokud ke správě konfigurace synchronizace používáte Azure AD Connect průvodce, můžete povolit PowerShellový přepis.
-* Pokud je nasazen Active Directory Federation Services (AD FS), musí být servery, na kterých AD FS nebo proxy webových aplikací nainstalovány, systémy Windows Server 2012 R2 nebo novější. Pro vzdálenou instalaci musí být na těchto serverech povolená [Vzdálená správa systému Windows](#windows-remote-management) .
-* Pokud nasazujete Active Directory Federation Services (AD FS), budete potřebovat [certifikáty TLS/SSL](#tlsssl-certificate-requirements).
-* Pokud probíhá nasazení Active Directory Federation Services (AD FS), je nutné nakonfigurovat [Překlad adres IP](#name-resolution-for-federation-servers).
-* Pokud mají globální správci povolené MFA, musí být adresa URL **https://secure.aadcdn.microsoftonline-p.com** v seznamu důvěryhodných serverů. Po zobrazení výzvy k zadání dotazu MFA se zobrazí výzva k přidání tohoto webu do seznamu důvěryhodných webů. Aplikaci Internet Explorer můžete použít k jejímu přidání do důvěryhodných webů.
-* Společnost Microsoft doporučuje posílit Azure AD Connect Server, aby se snížila plocha pro útok na zabezpečení pro tuto kritickou součást vašeho IT prostředí.  Podle následujících doporučení se sníží rizika zabezpečení vaší organizace.
+Další informace o zabezpečení prostředí Active Directory najdete v tématu [osvědčené postupy pro zabezpečení služby Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
 
-* Nasaďte Azure AD Connect na serveru připojeném k doméně a omezte přístup pro správu na správce domény nebo na jiné pevně kontrolované skupiny zabezpečení.
+#### <a name="installation-prerequisites"></a>Instalační požadavky 
 
-Další informace naleznete v tématu: 
+- Azure AD Connect musí být nainstalované v doméně, která je připojená na Windows Serveru 2012 nebo novější. Důrazně doporučujeme, aby tento server byl řadič domény. 
+- Azure AD Connect nejde nainstalovat na Small Business Server nebo Windows Server Essentials před 2019 (podporuje se Windows Server Essentials 2019). Server musí používat Windows Server Standard nebo vyšší.  
+- Azure AD Connect Server musí mít nainstalované úplné grafické rozhraní (GUI). Instalace Azure AD Connect v jádru serveru Windows není podporovaná. 
+- Pokud ke správě konfigurace služby ADFS používáte Průvodce Azure AD Connect, Azure AD Connect Server nesmí mít povolený Zásady skupiny prostředí PowerShell přepis. Pokud ke správě konfigurace synchronizace používáte Azure AD Connect průvodce, můžete povolit PowerShellový přepis. 
+- Pokud probíhá nasazení Active Directory Federation Services (AD FS), pak: 
+    - servery, kde jsou nainstalované AD FS nebo proxy webových aplikací, musí být Windows Server 2012 R2 nebo novější. Pro vzdálenou instalaci musí být na těchto serverech povolená Vzdálená správa systému Windows. 
+    - je nutné nakonfigurovat certifikáty TLS/SSL.  Přečtěte si téma [Správa protokolů SSL/TLS a šifrovacích sad pro AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) a [správu certifikátů SSL v AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
+    - je nutné nakonfigurovat překlad adres IP. 
+- Pokud mají globální správci povolené MFA, https://secure.aadcdn.microsoftonline-p.com **musí** být adresa URL v seznamu důvěryhodných serverů. Po zobrazení výzvy k zadání dotazu MFA se zobrazí výzva k přidání tohoto webu do seznamu důvěryhodných webů. Aplikaci Internet Explorer můžete použít k jejímu přidání do důvěryhodných webů.  
 
-* [Zabezpečení skupin správců](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+#### <a name="hardening-your-azure-ad-connect-server"></a>Posílení zabezpečení serveru Azure AD Connect 
+Společnost Microsoft doporučuje posílit Azure AD Connect Server, aby se snížila plocha pro útok na zabezpečení pro tuto kritickou součást vašeho IT prostředí. Následující doporučení vám pomůžou zmírnit rizika zabezpečení vaší organizace.
 
-* [Zabezpečení předdefinovaných účtů správců](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+- Musíte zacházet se Azure AD Connect stejným jako s řadičem domény a dalšími prostředky vrstvy 0:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material 
+- Přístup pro správu serveru Azure AD Connect byste měli omezit jenom na správce domény nebo na jiné skupiny zabezpečení, které jsou pod kontrolou.
+- Měli byste vytvořit [vyhrazený účet pro všechny pracovníky s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). Správci by neměli procházet web, kontrolovat jejich e-maily a provádět každodenní úkoly produktivity s vysoce privilegovanými účty.
+- Postupujte podle pokynů uvedených v části [zabezpečení privilegovaného přístupu](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts). 
+- Měli byste mít jistotu, že každý počítač má jedinečné heslo místního správce. [Řešení hesel místního správce (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) může konfigurovat jedinečná náhodná hesla na každé pracovní stanici a na serveru je ukládat do služby Active Directory (AD) chráněné seznamem ACL. Resetovat hesla těchto účtů místních správců můžou číst nebo žádat jenom oprávnění autorizovaní uživatelé. LAPS můžete získat pro použití na pracovních stanicích a serverech z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.). Další pokyny pro provoz prostředí s LAPS a privilegovaným přístupem najdete v [provozních standardech na základě principu čistého zdroje](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
+- Měli byste implementovat [pracovní stanice vyhrazené privilegovaného přístupu (privilegovaným přístupem)](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) pro všechny pracovníky s privilegovaným přístupem k informačním systémům vaší organizace. 
+- Podle těchto [dalších pokynů](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) byste měli omezit plochu útoku prostředí Active Directory.
 
-* [Vylepšení a udržování zabezpečení snížením počtu napadených ploch](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
-
-* [Snížení prostoru pro útoky na službu Active Directory](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>SQL Server používaný službou Azure AD Connect
 * Azure AD Connect vyžaduje k ukládání dat identity databázi SQL Serveru. Ve výchozím nastavení je nainstalovaná SQL Server 2012 Express LocalDB (světlá verze SQL Server Express). SQL Server Express má limit velikosti 10GB, který umožňuje spravovat přibližně 100 000 objektů. Pokud potřebujete spravovat větší objem objektů adresáře, musíte Průvodce instalací nasměrovat na jinou instalaci SQL Server. Typ SQL Server instalace může mít vliv na [výkon Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).

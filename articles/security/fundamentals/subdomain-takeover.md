@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a7ff8a0cf23bf0701a7cc35cb137ec0965f295ec
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145974"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223971"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Zabránit položkám DNS v dangling a vyhnout se převzetí subdomény
 
@@ -117,8 +117,8 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
 
     - Pravidelně kontrolujte své záznamy DNS, abyste měli jistotu, že jsou všechny subdomény namapované na prostředky Azure, které:
 
-        - **Existují** – dotaz na zóny DNS pro prostředky odkazující na subdomény Azure, jako je například *. azurewebsites.NET nebo *. cloudapp.Azure.com (viz [Tento seznam odkazů](azure-domains.md)).
-        - **Vlastníte** – potvrďte, že vlastníte všechny prostředky, na které vaše subdomény DNS cílí.
+        - Existují – dotaz na zóny DNS pro prostředky odkazující na subdomény Azure, jako je například *. azurewebsites.net nebo *. cloudapp.azure.com (viz [Tento seznam odkazů](azure-domains.md)).
+        - Vlastníte – potvrďte, že vlastníte všechny prostředky, na které vaše subdomény DNS cílí.
 
     - Udržujte katalog služeb pro koncové body plně kvalifikovaného názvu domény (FQDN) Azure a vlastníky aplikace. Pokud chcete sestavit katalog služeb, spusťte následující dotaz Azure Resource Graph (ARG) s parametry z následující tabulky:
     
@@ -127,26 +127,15 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
         >
         > **Omezení** – Azure Resource Graph má omezení a omezení stránkování, které byste měli zvážit, pokud máte velké prostředí Azure. [Přečtěte si další informace](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) o práci s velkými sadami dat prostředků Azure.  
 
-        ```
-        Search-AzGraph -Query "resources | where type == '[ResourceType]' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = [FQDNproperty]"
+        ```powershell
+        Search-AzGraph -Query "resources | where type == '<ResourceType>' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = <FQDNproperty>"
         ``` 
-        
-        Tento dotaz například vrátí prostředky z Azure App Service:
-
-        ```
-        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-        
-        Můžete také kombinovat více typů prostředků. Tento ukázkový dotaz vrátí prostředky z Azure App Service **a** Azure App Service-slotů:
-
-        ```azurepowershell
-        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-
 
         Pro parametry služby pro dotaz ARG:
 
-        |Název prostředku  |[ResourceType]  | [FQDNproperty]  |
+        |Název prostředku  | `<ResourceType>`  | `<FQDNproperty>`  |
         |---------|---------|---------|
         |Azure Front Door|Microsoft. Network/frontdoors|vlastnosti. cName|
         |Azure Blob Storage|Microsoft. Storage/storageaccounts|Properties. primaryEndpoints. blob|
@@ -157,6 +146,23 @@ Pro vývojáře a provozní týmy je často možné spouštět procesy čištěn
         |Azure API Management|Microsoft. apimanagement/Service|Properties. hostnameConfigurations. název_hostitele|
         |Azure App Service|Microsoft. Web/weby|Properties. defaultHostName|
         |Azure App Service – sloty|Microsoft. Web/weby/sloty|Properties. defaultHostName|
+
+        
+        **Příklad 1** – tento dotaz vrací prostředky z Azure App Service: 
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = properties.defaultHostName"
+        ```
+        
+        **Příklad 2** – tento dotaz kombinuje více typů prostředků, aby se vracely prostředky z Azure App Service **a** Azure App Service Sloty:
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 
+        'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, 
+        resourceGroup, name, endpoint = properties.defaultHostName"
+        ```
 
 
 - **Vytvořit procedury pro nápravu:**
@@ -173,4 +179,4 @@ Další informace o souvisejících službách a funkcích Azure, které můžet
 
 - [Při přidávání vlastních domén do Azure App Service použijte ID ověření domény.](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
 
--    [Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Rychlý Start: spuštění prvního dotazu na diagram prostředku pomocí Azure PowerShell](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)

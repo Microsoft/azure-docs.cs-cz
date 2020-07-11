@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649115"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223852"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Nakonfigurovat přihlašovací údaje nasazení pro Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) podporuje dva typy přihlašovacích údajů pro nasazení [místního úložiště Git](deploy-local-git.md) a [FTP/S](deploy-ftp.md). Tyto přihlašovací údaje nejsou stejné jako přihlašovací údaje vašeho předplatného Azure.
@@ -39,17 +40,17 @@ V Azure Portal musíte mít alespoň jednu aplikaci, abyste mohli získat přís
 
 1. V [Azure Portal](https://portal.azure.com)v nabídce vlevo vyberte **App Services**  >  **\<any_app>**  >  **Deployment center**  >  **FTP**  >  **řídicí panel**FTP centra nasazení.
 
-    ![](./media/app-service-deployment-credentials/access-no-git.png)
+    ![Ukazuje, jak můžete vybrat řídicí panel FTP z centra nasazení v Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
     Nebo, pokud jste již nakonfigurovali nasazení Git, vyberte **App Services**  >  ** &lt; any_app>**  >  **Deployment center**  >  **FTP/přihlašovacích údajů**centra nasazení.
 
-    ![](./media/app-service-deployment-credentials/access-with-git.png)
+    ![Ukazuje, jak můžete vybrat řídicí panel FTP z centra nasazení v Azure App Services pro vaše nakonfigurované nasazení Git.](./media/app-service-deployment-credentials/access-with-git.png)
 
 2. Vyberte **přihlašovací údaje uživatele**, nakonfigurujte uživatelské jméno a heslo a pak vyberte **uložit přihlašovací údaje**.
 
 Po nastavení přihlašovacích údajů pro nasazení můžete na stránce **přehledu** vaší aplikace najít uživatelské jméno nasazení *Git* .
 
-![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
+![Ukazuje, jak najít uživatelské jméno nasazení Git na stránce s přehledem vaší aplikace.](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
 Pokud je nakonfigurované nasazení Git, na stránce se zobrazí **uživatelské jméno pro Git/nasazení**; v opačném případě se jedná o **uživatelské jméno pro FTP/nasazení**.
 

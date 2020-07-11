@@ -3,11 +3,12 @@ title: Řešení potíží s chybějícími daty v nástroji Application Insight
 description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím tady.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485172"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221030"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -123,7 +124,7 @@ Opravit
 *Spustil (a) jsem aplikaci Application Insights v Microsoft Azure, ale v grafu se zobrazila informace o tom, jak shromažďovat... nebo není nakonfigurováno.* Nebo, *jenom zobrazení stránky a uživatelská data, ale žádná data serveru.*
 
 * Spusťte aplikaci v režimu ladění v aplikaci Visual Studio (F5). Použijte aplikaci, aby se vygenerovala nějaká telemetrie. Zkontrolujte, zda jsou události zaznamenané v okně výstup sady Visual Studio.  
-  ![](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![Snímek obrazovky, který ukazuje spuštění aplikace v režimu ladění v aplikaci Visual Studio.](./media/asp-net-troubleshoot-no-data/output-window.png)
 * Na portálu Application Insights otevřete [diagnostické vyhledávání](../../azure-monitor/app/diagnostic-search.md). Data se obvykle zobrazují jako první.
 * Klikněte na tlačítko Aktualizovat. Okno se pravidelně aktualizuje, ale můžete ho také provést ručně. Interval aktualizace je delší pro větší časové rozsahy.
 * Ověřte, zda se klíče instrumentace shodují. V hlavním okně aplikace na portále Application Insights v rozevíracím seznamu **základy** vyhledejte **klíč instrumentace**. Potom v projektu v aplikaci Visual Studio otevřete ApplicationInsights.config a vyhledejte `<instrumentationkey>` . Ověřte, zda jsou oba klíče stejné. Pokud ne:  

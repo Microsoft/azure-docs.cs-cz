@@ -10,12 +10,12 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 7e47440a54d733d0b5d849123633bf7e067fcd81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf7d72e6f16605827b55e3a460a9b28010842d2f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805701"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220826"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Vytvoření účtu, který podporuje klíče spravované zákazníkem pro tabulky a fronty
 
@@ -29,9 +29,9 @@ Pokud chcete vytvořit účet úložiště, který spoléhá na šifrovací klí
 
 Můžete vytvořit účet úložiště, který spoléhá na šifrovací klíč účtu pro frontu a úložiště tabulek v následujících oblastech:
 
-- USA – východ
-- USA – středojih
-- USA – západ 2  
+- East US
+- Středojižní USA
+- Západní USA 2  
 
 ### <a name="register-to-use-the-account-encryption-key"></a>Registrace pro použití šifrovacího klíče účtu
 
@@ -61,7 +61,7 @@ az feature register --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Není k dispozici
+Nelze použít
 
 ---
 
@@ -93,7 +93,7 @@ az feature show --namespace Microsoft.Storage \
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Není k dispozici
+Nelze použít
 
 ---
 
@@ -119,7 +119,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Není k dispozici
+Nelze použít
 
 ---
 
@@ -237,7 +237,7 @@ $account.Encryption.Services.Table
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz [AZ Storage Account](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `keyType` pole pro každou službu ve vlastnosti šifrování a ověřte, jestli je nastavená na `Account` .
+Pokud chcete ověřit, že služba v účtu úložiště používá šifrovací klíč účtu, zavolejte příkaz [AZ Storage Account show](/cli/azure/storage/account#az-storage-account-show) . Tento příkaz vrátí sadu vlastností účtu úložiště a jejich hodnoty. Vyhledejte `keyType` pole pro každou službu ve vlastnosti šifrování a ověřte, jestli je nastavená na `Account` .
 
 ```azurecli
 az storage account show /
@@ -247,7 +247,7 @@ az storage account show /
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Není k dispozici
+Nelze použít
 
 ---
 

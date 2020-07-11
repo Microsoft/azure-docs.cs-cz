@@ -1,5 +1,5 @@
 ---
-title: Kopírovat verzi image z jiné galerie
+title: Kopírování verze image z jiné galerie pomocí rozhraní příkazového řádku
 description: Kopírování verze image z jiné galerie pomocí Azure CLI.
 author: cynthn
 ms.service: virtual-machines
@@ -9,13 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: add08d7b8ef39322f03e0faf78959b08a6ae2a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 764fe98ad20aa29506b4fba723762124e24af245
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82797055"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224328"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>Kopírování obrázku z jiné galerie
+# <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Kopírování obrázku z jiné galerie pomocí Azure CLI
 
 Pokud máte ve vaší organizaci více galerií, můžete také vytvářet verze imagí z existujících verzí imagí uložených v jiných galeriích. Můžete mít například galerii pro vývoj a testování pro vytváření a testování nových imagí. Až budou připravené k použití v produkčním prostředí, můžete je pomocí tohoto příkladu zkopírovat do produkční galerie. Můžete také vytvořit obrázek z obrázku v jiné galerii pomocí [Azure PowerShell](image-version-another-gallery-powershell.md).
 
@@ -161,3 +162,5 @@ az sig image-version create \
 Vytvořte virtuální počítač z [zobecněné](vm-generalized-image-version-cli.md) nebo [specializované](vm-specialized-image-version-cli.md) verze image.
 
 Také si vyzkoušejte [Azure image Builder (Preview)](./linux/image-builder-overview.md) , které vám pomůžou automatizovat vytváření verzí imagí, můžete ho dokonce použít k aktualizaci a [Vytvoření nové verze image z existující verze image](./linux/image-builder-gallery-update-image-version.md). 
+
+Informace o tom, jak dokoupit informace o plánu nákupu, najdete v tématu [zadání informací o plánu nákupu Azure Marketplace při vytváření imagí](marketplace-images.md).

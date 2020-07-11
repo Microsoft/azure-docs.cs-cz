@@ -3,8 +3,8 @@ title: Návrh a implementace databáze Oracle v Azure | Microsoft Docs
 description: Navrhněte a implementujte databázi Oracle v prostředí Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687539"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224566"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
@@ -52,7 +53,7 @@ V následující tabulce jsou uvedeny některé rozdíly mezi místními impleme
 > | **Prostředek** |Vyhrazená  |Sdíleno s ostatními klienty|
 > | **Oblasti** |Datová centra |[Párování oblastí](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
 > | **Storage** |SÍŤ SAN/fyzické disky |[Úložiště spravované v Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Měřítko** |Vertikální škálování |Horizontální škálování|
+> | **Škálování** |Vertikální škálování |Horizontální škálování|
 
 
 ### <a name="requirements"></a>Požadavky
@@ -143,7 +144,7 @@ Na základě požadavků na šířku pásma sítě si můžete vybrat z různýc
 - V porovnání s místním nasazením je latence sítě vyšší. Snížení zatížení sítě může výrazně zlepšit výkon.
 - Pro omezení zpátečních cest Konsolidujte aplikace, které mají vysoké transakce nebo "konverzace" na stejném virtuálním počítači.
 - Pro lepší výkon sítě používejte Virtual Machines s [akcelerovanými síťovými](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) službami.
-- U některých distrubutions pro Linux doporučujeme povolit [podporu pro funkci trim/](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)oddálení.
+- U některých distribucí systému Linux zvažte možnost povolit [podporu pro funkci trim a](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)oddálení.
 - Nainstalujte [správce Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) do samostatného virtuálního počítače.
 - Ve výchozím nastavení nejsou v systému Linux povoleny velké stránky. Zvažte možnost Povolit velké stránky a nastavit `use_large_pages = ONLY` Oracle DB. To může přispět ke zvýšení výkonu. Další informace najdete [tady](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 

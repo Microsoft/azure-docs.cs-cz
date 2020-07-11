@@ -3,21 +3,21 @@ title: Připojení zařízení v Azure IoT Central | Microsoft Docs
 description: Tento článek představuje klíčové koncepty týkající se připojení zařízení v Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710435"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224731"
 ---
-# <a name="get-connected-to-azure-iot-central"></a>Připojte se k Azure IoT Central
+# <a name="get-connected-to-azure-iot-central"></a>Připojení ke službě Azure IoT Central
 
 *Tento článek se týká operátorů a vývojářů zařízení.*
 
@@ -72,27 +72,48 @@ Pomocí informací o připojení ze souboru exportu v kódu zařízení můžete
 
 V produkčním prostředí je použití certifikátů X. 509 doporučeným mechanismem ověřování zařízení pro IoT Central. Další informace najdete v tématu [ověřování zařízení pomocí certifikátů certifikační autority X. 509](../../iot-hub/iot-hub-x509ca-overview.md).
 
-Před připojením zařízení k certifikátu X. 509 přidejte a ověřte zprostředkující nebo kořenový certifikát X. 509 ve vaší aplikaci. Zařízení musí používat listové certifikáty X. 509 vygenerované z kořenového nebo zprostředkujícího certifikátu.
+Připojení zařízení s certifikátem X. 509 do vaší aplikace:
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Přidání a ověření kořenového nebo zprostředkujícího certifikátu
+1. Vytvořte *skupinu registrace* , která používá typ ověření identity **(X. 509)** .
+2. Přidejte a ověřte zprostředkující nebo kořenový certifikát X. 509 ve skupině pro registraci.
+3. Zaregistrujte a připojte zařízení, která používají listové certifikáty X. 509 vygenerované z kořenového nebo zprostředkujícího certifikátu ve skupině pro registraci.
 
-Přejděte do části **správa > připojení zařízení > spravovat primární certifikát** a přidejte kořenový certifikát X. 509 nebo zprostředkující certifikát, který používáte k vygenerování certifikátů zařízení.
+### <a name="create-an-enrollment-group"></a>Vytvoření skupiny registrace
 
-![Nastavení připojení](media/concepts-get-connected/manage-x509-certificate.png)
+[Skupina registrace](../../iot-dps/concepts-service.md#enrollment) je skupina zařízení, která sdílejí stejný typ ověření identity. Tyto dva podporované typy ověření identity jsou certifikáty X. 509 a SAS:
 
-Ověření vlastnictví certifikátu zajišťuje, že uživatel, který certifikát nahrává, má privátní klíč certifikátu. Ověření certifikátu:
+- V rámci skupiny pro registraci X. 509 se všechna zařízení, která se připojují k IoT Central, používají listy, které jsou vygenerované z kořenového nebo zprostředkujícího certifikátu v rámci skupiny registrací.
+- V rámci skupiny registrací SAS se všechna zařízení, která se připojují k IoT Central používají token SAS generovaný z tokenu SAS ve skupině pro registraci.
 
-  1. Vyberte tlačítko vedle **ověřovacího kódu** pro vygenerování kódu.
-  1. Vytvořte ověřovací certifikát X. 509 s ověřovacím kódem, který jste vygenerovali v předchozím kroku. Uložte certifikát jako soubor. cer.
-  1. Nahrajte podepsaný ověřovací certifikát a vyberte **ověřit**. Certifikát je označený jako **ověřený** , pokud ověření proběhlo úspěšně.
+Dvě výchozí skupiny registrací v každé aplikaci IoT Central jsou skupiny registrací SAS – jeden pro zařízení IoT a jeden pro Azure IoT Edge zařízení. Pokud chcete vytvořit skupinu registrace X. 509, přejděte na stránku **připojení zařízení** a vyberte **+ Přidat skupinu**registrací:
+
+:::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="Přidat snímek skupiny registrace X. 509":::
+
+### <a name="add-and-verify-a-root-or-intermediate-x509-certificate"></a>Přidání a ověření kořenového nebo zprostředkujícího certifikátu X. 509
+
+Postup přidání a ověření kořenového nebo zprostředkujícího certifikátu do skupiny registrací:
+
+1. Přejděte do skupiny registrace X. 509, kterou jste právě vytvořili. Máte možnost Přidat jak primární, tak sekundární certifikáty X. 509. Vyberte **+ Spravovat primární**.
+
+1. Na **stránce primární certifikát**Nahrajte svůj primární certifikát X. 509. Toto je váš kořenový nebo zprostředkující certifikát:
+
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Snímek primárního certifikátu":::
+
+1. Pomocí **ověřovacího kódu** vygenerujte ověřovací kód v nástroji, který používáte. Pak vyberte **ověřit** a odešlete ověřovací certifikát.
+
+1. Po úspěšném ověření se zobrazí následující potvrzení:
+
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Snímek ověřeného primárního certifikátu":::
+
+Ověření vlastnictví certifikátu zajišťuje, že uživatel, který certifikát nahrává, má privátní klíč certifikátu.
 
 Pokud dojde k narušení zabezpečení nebo pokud je váš primární certifikát nastavený na vypršení platnosti, použijte sekundární certifikát k omezení výpadků. Během aktualizace primárního certifikátu můžete nadále zřizovat zařízení pomocí sekundárního certifikátu.
 
 ### <a name="register-and-connect-devices"></a>Registrace a připojení zařízení
 
-Pokud chcete zařízení hromadně propojit pomocí certifikátů X. 509, nejdřív zařízení zaregistrujte do aplikace, a to pomocí souboru CSV [a importujte identifikátory zařízení a názvy zařízení](howto-manage-devices.md#import-devices). Všechna ID zařízení by měla být malá.
+Pokud chcete zařízení hromadně propojit pomocí certifikátů X. 509, nejdřív zařízení zaregistrujte do aplikace pomocí souboru CSV [a importujte identifikátory zařízení a názvy zařízení](howto-manage-devices.md#import-devices). Všechna ID zařízení by měla být malá.
 
-Vygenerujte na svých zařízeních listový certifikát X. 509 pomocí nahraného kořenového nebo zprostředkujícího certifikátu. Jako **Device ID** `CNAME` hodnotu v listových certifikátech použijte ID zařízení. Váš kód zařízení potřebuje hodnotu **rozsahu ID** vaší aplikace, **ID zařízení**a odpovídající certifikát zařízení.
+Pomocí kořenového nebo zprostředkujícího certifikátu, který jste nahráli do vaší skupiny registrací X. 509, vygenerujte na svých zařízeních hlavní certifikáty X. 509. Jako **Device ID** `CNAME` hodnotu v listových certifikátech použijte ID zařízení. Váš kód zařízení potřebuje hodnotu **rozsahu ID** vaší aplikace, **ID zařízení**a odpovídající certifikát zařízení.
 
 #### <a name="sample-device-code"></a>Ukázkový kód zařízení
 
@@ -122,9 +143,9 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>Připojení zařízení, která používají tokeny SAS bez registrace
 
-1. Zkopírujte primární klíč skupiny IoT Central aplikace:
+1. Zkopírujte primární klíč skupiny ze skupiny pro zápis **SAS-IoT-Device** :
 
-    ![Primární klíč SAS pro skupinu aplikací](media/concepts-get-connected/group-sas-keys.png)
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Skupinový primární klíč ze skupiny SAS-IoT-Devices skupina pro registraci":::
 
 1. Použijte nástroj [DPS-keygen](https://www.npmjs.com/package/dps-keygen) k vygenerování klíčů SAS zařízení. Použijte primární klíč skupiny z předchozího kroku. ID zařízení musí být malá písmena:
 
@@ -145,7 +166,7 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Připojení zařízení, která používají certifikáty X. 509 bez registrace
 
-1. [Přidejte a ověřte kořenový nebo zprostředkující certifikát X. 509](#connect-devices-using-x509-certificates) pro vaši aplikaci IoT Central.
+1. [Vytvořte skupinu](#create-an-enrollment-group) registrací a potom do aplikace IoT Central [přidejte a ověřte kořenový nebo zprostředkující certifikát X. 509](#add-and-verify-a-root-or-intermediate-x509-certificate) .
 
 1. Vygenerujte list – certifikáty pro vaše zařízení pomocí kořenového nebo zprostředkujícího certifikátu, který jste přidali do aplikace IoT Central. Použijte ID zařízení malými písmeny jako `CNAME` v listových certifikátech.
 

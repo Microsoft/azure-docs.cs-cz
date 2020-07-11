@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: dd5d9c721c3e0204a66367b76654f9a917e26ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8e84e845910b8f84a9b3f84ad414f2ecdd250a5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884628"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223784"
 ---
 # <a name="soft-delete-for-blob-storage"></a>Obnovitelné odstranění pro úložiště objektů BLOB
 
@@ -53,7 +54,7 @@ Obnovitelné odstranění zachová data v mnoha případech, kde jsou objekty sm
 
 Když je objekt BLOB přepsaný pomocí **objektu Put BLOB**, **seznamu blokovaných**objektů nebo **kopie objektu**blob, verze nebo snímek stavu objektu BLOB před operací zápisu se automaticky vygeneruje. Tento objekt je neviditelný, pokud nejsou explicitně odstraněné objekty výslovně uvedeny. V části věnované [obnovení](#recovery) se dozvíte, jak zobrazit seznam neodstraněných objektů.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
+![Diagram znázorňující, jak jsou snímky objektů BLOB uložené, protože se přepíší pomocí objektů pro vložení, seznamu blokovaných objektů nebo kopie objektu BLOB.](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
 
 *Měkké Odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Další data napsaná v poslední době se zobrazí pod staršími daty. Když se B0 přepíše pomocí B1, vygeneruje se měkký odstraněný snímek B0. Když je B1 přepsána v B2, je vygenerována měkký odstraněný snímek B1.*
 
@@ -65,13 +66,13 @@ Když je objekt BLOB přepsaný pomocí **objektu Put BLOB**, **seznamu blokovan
 
 Při volání metody **Delete BLOB** pro snímek je tento snímek označený jako měkký odstraněný. Nový snímek se nevygeneruje.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
+![Diagram znázorňující, jakým způsobem se při použití funkce Odstranit objekt BLOB dočasná odstraní snímky objektů BLOB](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
 *Měkké Odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Další data napsaná v poslední době se zobrazí pod staršími daty. Když se zavolá **objekt BLOB snímku** , B0 se vytvoří jako snímek a B1 je aktivním stavem objektu BLOB. Po odstranění snímku B0 je označen jako měkký odstraněný.*
 
 Když se **objekt BLOB pro odstranění** volá u základního objektu BLOB (jakýkoli objekt blob, který není sám snímkem), tento objekt BLOB je označený jako měkký odstraněný. V souladu s předchozím chováním volání funkce **Odstranit objekt BLOB** u objektu blob, který má aktivní snímky, vrátí chybu. Volání metody **Delete BLOB** u objektu BLOB s nejemnými odstraněnou snímků nevrátí chybu. Můžete přesto odstranit objekt BLOB a všechny jeho snímky v rámci jedné operace, když je zapnuté obnovitelné odstranění. Tím se vyznačuje základní objekt BLOB a snímky jako obnovitelné.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
+![Diagram znázorňující, co se stane, když se na základním objektu BLOB volá odstranění blogu](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
 
 *Měkké Odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Další data napsaná v poslední době se zobrazí pod staršími daty. Zde je provedeno volání **objektu BLOB Delete** pro odstranění B2 a všech přidružených snímků. Aktivní objekt blob, B2 a všechny přidružené snímky jsou označené jako měkké odstraněné.*
 
@@ -82,7 +83,7 @@ Obnovitelné odstranění neukládá vaše data v případě, že dojde k odstra
 
 Následující tabulka podrobně popisuje očekávané chování při zapnutí obnovitelného odstranění:
 
-| Operace REST API | Typ prostředku | Description | Změna chování |
+| Operace REST API | Typ prostředku | Popis | Změna chování |
 |--------------------|---------------|-------------|--------------------|
 | [Odstranit](/rest/api/storagerp/StorageAccounts/Delete) | Účet | Odstraní účet úložiště, včetně všech kontejnerů a objektů blob, které obsahuje.                           | Žádná změna. Kontejnery a objekty BLOB v odstraněném účtu nejde obnovit. |
 | [Odstranění kontejneru](/rest/api/storageservices/delete-container) | Kontejner | Odstraní kontejner včetně všech objektů blob, které obsahuje. | Žádná změna. Objekty BLOB v odstraněném kontejneru nejsou obnovitelné. |
@@ -98,13 +99,13 @@ Následující tabulka podrobně popisuje očekávané chování při zapnutí o
 
 Je důležité si všimnout, že volající **Stránka Put** pro přepsání nebo vymazání rozsahů objektu blob stránky nebude automaticky generovat snímky. Disky virtuálních počítačů se zálohují objekty blob stránky a používají **stránku Put** k zápisu dat.
 
-### <a name="recovery"></a>Obnovení
+### <a name="recovery"></a>Obnovovací
 
 Volání operace obnovení [objektu BLOB](/rest/api/storageservices/undelete-blob) na neodstraněném základním objektu BLOB obnoví a všechny přidružené měkké odstraněné snímky jako aktivní. Volání operace **obnovení objektu BLOB** na aktivním základním objektu BLOB obnoví všechny přidružené měkké odstraněné snímky jako aktivní. Když se snímky obnovují jako aktivní, vypadají jako uživatelem generované snímky; nepřepisují základní objekt BLOB.
 
 Chcete-li obnovit objekt blob do konkrétního neodstraněného snímku, můžete volat možnost **zrušit odstranění objektu BLOB** u základního objektu BLOB. Pak můžete snímek zkopírovat přes objekt BLOB nyní – aktivní. Snímek můžete také zkopírovat do nového objektu BLOB.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
+![Diagram znázorňující, co se stane, když se použije odstraněné objekty blob](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
 
 *Měkké Odstraněná data jsou šedá, zatímco aktivní data jsou modrá. Další data napsaná v poslední době se zobrazí pod staršími daty. V tomto případě se v objektu BLOB B volá příkaz **Undelete BLOB** , který obnovuje základní objekt blob, B1 a všechny přidružené snímky, a to jenom B0 jako aktivní. V druhém kroku se B0 zkopíruje přes základní objekt BLOB. Tato operace kopírování vygeneruje měkký odstraněný snímek B1.*
 
@@ -158,7 +159,7 @@ Když zpočátku zapnete obnovitelné odstranění, společnost Microsoft doporu
 
 Povolení obnovitelného odstranění často přepsaných dat může mít za následek zvýšené poplatky za kapacitu úložiště a vyšší latenci při výpisu objektů BLOB. Tyto dodatečné náklady a latence můžete zmírnit uložením často přepsaných dat do samostatného účtu úložiště, kde je deaktivované obnovitelné odstranění.
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 ### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>Můžu použít nastavení rozhraní API vrstev objektů BLOB pro objekty blob vrstvy se měkkými odstraněnou snímků?
 

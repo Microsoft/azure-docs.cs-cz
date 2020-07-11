@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: 95ca527d8f7912e2c455f94036fe61828b220257
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121465"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229444"
 ---
 # <a name="what-is-a-test-drive"></a>Co je testovací verze?
 
@@ -74,7 +74,7 @@ Proces zapnutí architektury prostředků do testovacích jednotek může být t
 
 ## <a name="generate-leads-from-your-test-drive"></a>Generování zájemců z testovacího disku
 
-Testovací jednotka komerčního tržiště je skvělým nástrojem pro pracovníky marketingu. Doporučujeme, abyste ho zahrnuli do úsilí o uvedení na trh, když spustíte pro vygenerování dalších zájemců pro vaši firmu. Podrobné pokyny najdete v [zákaznických zákaznících z nabídky komerčních webů na webu Marketplace](https://github.com/partner-center-portal/commercial-marketplace-get-customer-leads.md).
+Testovací jednotka komerčního tržiště je skvělým nástrojem pro pracovníky marketingu. Doporučujeme, abyste ho zahrnuli do úsilí o uvedení na trh, když spustíte pro vygenerování dalších zájemců pro vaši firmu. Podrobné pokyny najdete v [zákaznických zákaznících z nabídky komerčních webů na webu Marketplace](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
 Pokud uzavřete obchod se zájemcem testovacích jednotek, nezapomeňte ho zaregistrovat na [webu Microsoft Partner Sales Connect](https://support.microsoft.com/help/3155788/getting-started-with-microsoft-partner-sales-connect). Rádi bychom měli slyšet informace o zákazníkovi, kde zkušební jednotka přehrála roli.
 
