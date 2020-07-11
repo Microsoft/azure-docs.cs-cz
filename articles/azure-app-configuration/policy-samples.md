@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure App Configuration
 description: Seznam Azure Policy integrovaných definic zásad pro konfiguraci aplikací Azure. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 2d430bbe718981f9a4f258d70efcd1d218da8283
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 79b213af62c0c1a6919f03d4b0052c6c03d6257b
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316325"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275613"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>Azure Policy předdefinované definice pro konfiguraci aplikací Azure
 

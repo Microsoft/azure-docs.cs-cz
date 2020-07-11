@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: fc3c42964d5417db2f5d10bf1049c72d1f2c925e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 5ee5ad4d6e3142805600665aae6246ec855dffb6
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321422"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276600"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Zajistěte, aby byla pro servery PostgreSQL povolená vlastní ochrana dat klíčů.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F18adea5e-f416-4d0f-8aa8-d24321e3e274) |Tato zásada Audituje PostgreSQL servery ve vašem prostředí, aniž by byla povolena ochrana dat klíčů pro vlastní klíč. Další podrobnosti najdete na adrese [https://aka.ms/postgresqlbyok](https://aka.ms/postgresqlbyok) . |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_EnableByok_Audit.json) |
 |[Pro databázové servery PostgreSQL by mělo být povoleno omezování připojení.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5345bb39-67dc-4960-a1bf-427e16b9a0bd) |Tato zásada pomáhá auditovat všechny databáze PostgreSQL ve vašem prostředí bez povoleného omezení připojení. Toto nastavení umožňuje dočasné omezení počtu připojení na IP adresu pro příliš mnoho neplatných neúspěšných přihlášení k heslům. |AuditIfNotExists, zakázáno |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/PostgreSQL_ConnectionThrottling_Enabled_Audit.json) |

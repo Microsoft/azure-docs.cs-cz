@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: f16f9b3fe6cd17b9fb6eb1cb2bd3ef1f42824701
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: a1df804681f0066fda025a60e0baddedc51f7a78
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312758"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276834"
 ---
 |Název |Popis |Zásady |Verze |
 |---|---|---|---|
@@ -37,4 +37,3 @@ ms.locfileid: "85312758"
 |[Auditovat virtuální počítače s Windows, na kterých jsou nainstalované zadané aplikace](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApp.json) |Tento iniciativa nasadí požadavky na zásady a Audituje virtuální počítače s Windows, ve kterých jsou nainstalované zadané aplikace. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[Auditovat virtuální počítače s Windows pomocí nedokončeného restartování](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_WindowsPendingReboot.json) |V této iniciativě se nasadí požadavky na zásady a Audituje virtuální počítače s Windows pomocí nedokončeného restartování. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
 |[Auditovat webové servery systému Windows, které nepoužívají protokoly zabezpečených komunikací](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_TLS.json) |V této iniciativě se nasadí požadavky na zásady a auditují se webové servery Windows, které nepoužívají protokoly TLS (Secure Communication Protocol) (TLS 1,1 nebo TLS 1,2). Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.0.0 |
-|[Nasazení požadavků pro povolení zásad konfigurace hostů na virtuálních počítačích](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json) |V této iniciativě se přidá spravovaná identita přiřazená systémem a nasadí se pro virtuální počítače, které mají nárok na monitorování pomocí zásad konfigurace hosta, nasadí příslušné rozhraní konfigurace hosta platformy. Je to předpoklad pro všechny zásady konfigurace hostů a před použitím zásad konfigurace hosta musí být přiřazený k oboru přiřazení zásad. Další informace o konfiguraci hosta najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . |4 |1.0.0 – Preview |

@@ -3,16 +3,16 @@ title: Nasazení aplikace .NET v kontejneru do Azure Service Fabric
 description: Podívejte se, jak kontejnerizovat existující aplikaci .NET pomocí sady Visual Studio a jak místně ladit kontejnery v Service Fabricu. Kontejnerizovaná aplikace se odešle do registru kontejneru Azure a nasadí se do clusteru Service Fabricu. Po nasazení do Azure používá aplikace k uchovávání dat databázi SQL Azure.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: aa99897da99ff1a1443e548e98ae415b6a8d49f5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234226"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258873"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
-V tomto kurzu se dozvíte, jak kontejnerizovat existující aplikaci ASP.NET a pak ji zabalit jako aplikaci Service Fabricu.  Ve vývojovém clusteru Service Fabricu spustíte kontejnery nejdřív místně a pak aplikaci nasadíte do Azure.  Aplikace uchovává data ve službě [Azure SQL Database](/azure/sql-database/sql-database-technical-overview).
+V tomto kurzu se dozvíte, jak kontejnerizovat existující aplikaci ASP.NET a pak ji zabalit jako aplikaci Service Fabricu.  Ve vývojovém clusteru Service Fabricu spustíte kontejnery nejdřív místně a pak aplikaci nasadíte do Azure.  Aplikace uchovává data ve službě [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md).
 
 V tomto kurzu se naučíte:
 
@@ -20,7 +20,7 @@ V tomto kurzu se naučíte:
 >
 > * Kontejnerizovat existující aplikaci pomocí sady Visual Studio
 > * Vytvoření databáze v Azure SQL Database
-> * Vytvořit registr kontejneru Azure
+> * Vytvoření registru kontejneru Azure
 > * Nasadit aplikaci Service Fabricu v Azure
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -55,7 +55,7 @@ V tomto kurzu se naučíte:
 
 Při spuštění aplikace Fabrikam Fiber CallCenter v produkčním prostředí musí být data ukládána v databázi. V současné době neexistuje způsob, jak zaručit trvalost dat v kontejneru, proto na SQL Server v kontejneru nemůžete ukládat produkční data.
 
-Doporučujeme [Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell). K nastavení a spuštění spravované databáze SQL Serveru v Azure spusťte následující skript.  Podle potřeby upravte proměnné skriptu. *clientIP* je IP adresa vašeho vývojového počítače. Poznamenejte si název serveru výstupu, který skript vybral.
+Doporučujeme [Azure SQL Database](../azure-sql/database/powershell-script-content-guide.md). K nastavení a spuštění spravované databáze SQL Serveru v Azure spusťte následující skript.  Podle potřeby upravte proměnné skriptu. *clientIP* je IP adresa vašeho vývojového počítače. Poznamenejte si název serveru výstupu, který skript vybral.
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -124,9 +124,9 @@ Vraťte se do projektu **FabrikamFiber.Web** a aktualizujte připojovací řetě
 
 Když stisknete klávesu **F5**, proběhne ladění a spuštění aplikace v kontejneru v místním vývojovém clusteru Service Fabricu. Pokud se vám zobrazí okno se zprávou žádající o udělení oprávnění ke čtení a spouštění vašeho adresáře projektu sady Visual Studio pro skupinu ServiceFabricAllowedUsers, klikněte na **Ano**.
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
-Teď, když aplikace běží místně, začněte s přípravou nasazení do Azure.  Image kontejneru musí být uložené v registru kontejneru.  Pomocí následujícího skriptu vytvořte [registr kontejneru Azure](/azure/container-registry/container-registry-intro). Název registru kontejneru mohou zobrazovat jiná předplatná Azure, a proto musí být jedinečný.
+Teď, když aplikace běží místně, začněte s přípravou nasazení do Azure.  Image kontejneru musí být uložené v registru kontejneru.  Pomocí následujícího skriptu vytvořte [registr kontejneru Azure](../container-registry/container-registry-intro.md). Název registru kontejneru mohou zobrazovat jiná předplatná Azure, a proto musí být jedinečný.
 Než aplikaci nasadíte do Azure, odešlete do tohoto registru image kontejneru.  Jakmile je aplikace nasazená v clusteru v Azure, image kontejneru se z tohoto registru odebere.
 
 ```powershell
@@ -144,14 +144,14 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 Aplikace Service Fabric se spouští v clusteru, což je síťově propojená sada virtuálních nebo fyzických počítačů.  Než budete moct nasadit aplikaci do Azure, vytvořte v Azure Cluster Service Fabric.
 
-Další možnosti:
+Můžete:
 
 * Vytvořit testovací cluster v sadě Visual Studio. Tato možnost umožňuje vytvořit zabezpečený cluster přímo ze sady Visual Studio s použitím upřednostňované konfigurace.
 * [Vytvořit zabezpečený cluster ze šablony](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 V tomto kurzu vytvoříte cluster v sadě Visual Studio, což je nejvhodnější scénář pro účely testování. Pokud vytvoříte cluster jiným způsobem nebo použijete existující cluster, můžete zkopírovat a vložit svůj koncový bod připojení nebo ho zvolit ze svého předplatného.
 
-Než začnete, otevřete FabrikamFiber. Web-> PackageRoot-> ServiceManifest. XML v Průzkumník řešení. Poznamenejte si port pro webový front-end, který je uvedený v **koncovém bodu**.
+Než začnete, otevřete FabrikamFiber. Web->PackageRoot->ServiceManifest.xml v Průzkumník řešení. Poznamenejte si port pro webový front-end, který je uvedený v **koncovém bodu**.
 
 Při vytváření clusteru:
 
@@ -179,7 +179,7 @@ Při vytváření clusteru:
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>Umožněte aplikaci běžící v Azure přístup k SQL Database
 
-V předchozích krocích jste vytvořili pravidlo brány firewall pro SQL, a zajistili jste tak přístup pro vaši místní aplikaci.  Teď je potřeba povolit přístup k databázi SQL i pro aplikaci spuštěnou v Azure.  Vytvořte [koncový bod služby pro virtuální síť](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) pro cluster Service Fabricu a pak vytvořte pravidlo, které pro tento koncový bod povolí přístup k databázi SQL. Nezapomeňte zadat proměnnou skupiny prostředků clusteru, na kterou jste si poznamenali při vytváření clusteru.
+V předchozích krocích jste vytvořili pravidlo brány firewall pro SQL, a zajistili jste tak přístup pro vaši místní aplikaci.  Teď je potřeba povolit přístup k databázi SQL i pro aplikaci spuštěnou v Azure.  Vytvořte [koncový bod služby pro virtuální síť](../azure-sql/database/vnet-service-endpoint-rule-overview.md) pro cluster Service Fabricu a pak vytvořte pravidlo, které pro tento koncový bod povolí přístup k databázi SQL. Nezapomeňte zadat proměnnou skupiny prostředků clusteru, na kterou jste si poznamenali při vytváření clusteru.
 
 ```powershell
 # Create a virtual network service endpoint
@@ -227,13 +227,13 @@ $vnetRuleObject1 = New-AzSqlServerVirtualNetworkRule `
   -VirtualNetworkSubnetId $subnetID;
 ```
 
-## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace v Azure
+## <a name="deploy-the-application-to-azure"></a>Nasazení aplikace do Azure
 
 Aplikace je teď připravená a můžete ji nasadit do clusteru v Azure přímo ze sady Visual Studio.  V Průzkumníku řešení klikněte pravým tlačítkem na projekt aplikace **FabrikamFiber.CallCenterApplication** a zvolte **Publikovat**.  V rozevíracím seznamu **Koncový bod připojení** vyberte koncový bod clusteru, který jste vytvořili v předchozím postupu.  V rozevíracím seznamu **Azure Container Registry** vyberte registr kontejneru, který jste vytvořili v předchozím postupu.  Kliknutím na **Publikovat** nasaďte aplikaci do clusteru v Azure.
 
 ![Publikování aplikace][publish-app]
 
-Postupujte podle pokynů k nasazení v okně výstupu. Po nasazení aplikace otevřete prohlížeč a zadejte adresu clusteru a port aplikace. Například, `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
+Postupujte podle pokynů k nasazení v okně výstupu. Po nasazení aplikace otevřete prohlížeč a zadejte adresu clusteru a port aplikace. Například `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/`.
 
 ![Ukázka webu Fabrikam][fabrikam-web-page-deployed]
 
@@ -268,7 +268,7 @@ V tomto kurzu jste se naučili:
 >
 > * Kontejnerizovat existující aplikaci pomocí sady Visual Studio
 > * Vytvoření databáze v Azure SQL Database
-> * Vytvořit registr kontejneru Azure
+> * Vytvoření registru kontejneru Azure
 > * Nasadit aplikaci Service Fabricu v Azure
 
 V další části tohoto kurzu se dozvíte, jak [nasadit aplikaci typu kontejner s CI/CD do clusteru Service Fabric](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md).

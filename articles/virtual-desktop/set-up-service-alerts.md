@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad25ab219cdb83227d39f86109d18b2c8402c38f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 035fc4840b08a0a9807c228cb5f63c191efc524a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612346"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256879"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Kurz: nastavení výstrah služby
 
@@ -49,7 +49,7 @@ Doporučujeme vytvořit výstrahy služby pro následující typy událostí sta
 
 Konfigurace výstrah služby:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com/).
 2. Vyberte **Service Health.**
 3. Postupujte podle pokynů v tématu [vytvoření výstrah protokolu aktivit v oznámeních služby](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) a nastavte upozornění a oznámení.
 
@@ -58,4 +58,4 @@ Konfigurace výstrah služby:
 V tomto kurzu jste zjistili, jak nastavit a použít Azure Service Health k monitorování problémů služby a Poradce pro stav pro virtuální počítače s Windows. Další informace o tom, jak se přihlásit k virtuálnímu počítači s Windows, najdete v tématu připojení k virtuálnímu počítači s Windows.
 
 > [!div class="nextstepaction"]
-> [Připojení ke klientovi vzdálené plochy v systému Windows 7 a Windows 10](./connect-windows-7-and-10.md)
+> [Připojení ke klientovi vzdálené plochy v systému Windows 7 a Windows 10](./connect-windows-7-10.md)

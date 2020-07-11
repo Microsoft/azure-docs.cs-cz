@@ -4,12 +4,12 @@ description: Vytvořte registr kontejnerů Azure, nakonfigurujte geografickou re
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 159426b7258d83fc28fc7d126c064167bbe00975
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799439"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259530"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Kurz: Příprava geograficky replikovaného registru kontejnerů Azure
 
@@ -35,14 +35,14 @@ K dokončení tohoto kurzu potřebujete místní instalaci Dockeru. Docker posky
 
 Azure Cloud Shell neobsahuje součásti Dockeru nutné pro dokončení všech kroků v tomto kurzu. Proto doporučujeme místní instalaci Azure CLI a vývojového prostředí pro Docker.
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 Pro tento kurz potřebujete službu Azure Container Registry ve vrstvě služeb Premium. Pokud chcete vytvořit nový službu Azure Container Registry, postupujte podle kroků v této části.
 
 > [!TIP]
 > Pokud jste dříve vytvořili registr a potřebujete provést upgrade, přečtěte si téma [Změna vrstev](container-registry-skus.md#changing-tiers). 
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 Vyberte **vytvořit**  >  **kontejnery**prostředků  >  **Azure Container Registry**.
 
@@ -98,7 +98,7 @@ Přejděte do nového registru kontejneru v Azure Portal a v části **Nastaven�
 
 Když teď máte nakonfigurovanou geografickou replikaci, sestavte image kontejneru a nasdílejte ji do svého registru. Před nahráním imagí do registru se musíte nejdřív přihlásit do svého registru.
 
-Pomocí příkazu [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) se ověřte a uložte do mezipaměti přihlašovací údaje pro váš registr. `<acrName>` nahraďte názvem registru, který jste vytvořili dříve.
+Pomocí příkazu [az acr login](/cli/azure/acr#az-acr-login) se ověřte a uložte do mezipaměti přihlašovací údaje pro váš registr. `<acrName>` nahraďte názvem registru, který jste vytvořili dříve.
 
 ```azurecli
 az acr login --name <acrName>
@@ -212,7 +212,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 
 ## <a name="push-image-to-azure-container-registry"></a>Nahrání image do služby Azure Container Registry
 
-Potom pomocí příkazu `docker push` nasdílejte image *acr-helloworld* do svého registru. Nahraďte `<acrName>` názvem vašeho registru.
+Potom pomocí příkazu `docker push` nasdílejte image *acr-helloworld* do svého registru. `<acrName>` nahraďte názvem vašeho registru.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1

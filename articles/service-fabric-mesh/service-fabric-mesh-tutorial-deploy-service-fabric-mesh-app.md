@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f0dca5aa9e430fa21d09509121a7ad26feda446
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75351847"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261329"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Kurz: Nasazení aplikace Service Fabric Mesh
 
@@ -59,13 +59,13 @@ Zobrazí se dialogové okno **Publikovat aplikaci Service Fabricu**.
 
 ![Dialogové okno pro publikování aplikace Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Vyberte účet a předplatné Azure. Zvolte **Umístění**. Tento článek používá umístění **USA – východ**.
+Vyberte účet a předplatné Azure. Vyberte **umístění**. Tento článek používá umístění **USA – východ**.
 
-V části **Skupina prostředků** vyberte **\<Vytvořit novou skupinu prostředků...>**. Zobrazí se dialogové okno, ve kterém vytvoříte novou skupinu prostředků. Tento článek pracuje s umístěním **USA – východ** a názvem skupiny **sfmeshTutorial1RG** (pokud vaše organizace má více lidí, kteří používají stejné předplatné, zvolte jedinečný název skupiny).  Kliknutím na **Vytvořit** vytvořte skupinu prostředků a vraťte se do dialogového okna pro publikování.
+V části **Skupina prostředků**vyberte **\<Create New Resource Group...>** . Zobrazí se dialogové okno, ve kterém vytvoříte novou skupinu prostředků. Tento článek pracuje s umístěním **USA – východ** a názvem skupiny **sfmeshTutorial1RG** (pokud vaše organizace má více lidí, kteří používají stejné předplatné, zvolte jedinečný název skupiny).  Kliknutím na **Vytvořit** vytvořte skupinu prostředků a vraťte se do dialogového okna pro publikování.
 
 ![Dialogové okno nové skupiny prostředků Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-V dialogovém okně **Publikovat aplikaci Service Fabricu** vyberte v části **Azure Container Registry** možnost **\<Vytvořit nový registr kontejneru...>**. V dialogovém okně **Vytvořit registr kontejneru** použijte pro **registr kontejneru** jedinečný název. Zadejte **umístění** (tento kurz používá **USA – východ**). V rozevírací nabídce vyberte **skupinu prostředků**, kterou jste vytvořili v předchozím kroku, například **sfmeshTutorial1RG**. Nastavte **skladovou položku** na **Basic** a pak stisknutím **Vytvořit** vytvořte privátní registr kontejneru Azure a vraťte se do dialogového okna Publikovat.
+Zpátky v dialogovém okně **Service Fabric aplikace pro publikování** vyberte v části **Azure Container Registry** **\<Create New Container Registry...>** . V dialogovém okně **Vytvořit registr kontejneru** použijte pro **registr kontejneru** jedinečný název. Zadejte **umístění** (tento kurz používá **USA – východ**). V rozevírací nabídce vyberte **skupinu prostředků**, kterou jste vytvořili v předchozím kroku, například **sfmeshTutorial1RG**. Nastavte **skladovou položku** na **Basic** a pak stisknutím **Vytvořit** vytvořte privátní registr kontejneru Azure a vraťte se do dialogového okna Publikovat.
 
 ![Dialogové okno nového registru kontejneru Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
@@ -139,4 +139,4 @@ Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]
 > [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest

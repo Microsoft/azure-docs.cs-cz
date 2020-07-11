@@ -4,14 +4,14 @@ description: V tomto kurzu zjistíte, jak sestavit image kontejneru Dockeru v Az
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78398510"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259482"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úloh
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Kurz: Sestavení a nasazení imagí kontejneru v cloudu pomocí úloh služby Azure Container Registry
 
 **ACR Tasks** je sada funkcí ve službě Azure Container Registry, která poskytuje zjednodušená a efektivní sestavení imagí kontejnerů Dockeru v Azure. V tomto článku se dozvíte, jak používat funkci *rychlé úlohy* služby ACR Tasks.
 
@@ -50,7 +50,7 @@ Vytvořte fork tohoto úložiště: https://github.com/Azure-Samples/acr-build-h
 
 Po vytvoření forku úložiště fork naklonujte a zadejte adresář obsahující místní klon.
 
-Naklonujte úložiště `git`pomocí, nahraďte ** \<své uživatelské jméno\> GitHubu** svým uživatelským jménem GitHubu:
+Naklonujte úložiště pomocí `git` , nahraďte **\<your-github-username\>** ho vaším uživatelským jménem GitHubu:
 
 ```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -70,7 +70,7 @@ Příkazy v této sérii kurzů jsou formátované pro prostředí Bash. Pokud b
 
 Když teď máte zdrojový kód ve svém počítači, postupujte podle těchto kroků k vytvoření registru kontejneru a sestavení image kontejneru pomocí ACR Tasks.
 
-Aby bylo spouštění ukázkových souborů jednodušší, používají kurzy v této sérii proměnné prostředí shell. Spuštěním následujícího příkazu nastavte proměnnou `ACR_NAME`. ** \<Název\> registru** nahraďte jedinečným názvem nového registru kontejneru. Název registru musí být v rámci Azure jedinečný, obsahovat pouze malá písmena a musí obsahovat 5-50 alfanumerických znaků. Další prostředky, které v tomto kurzu vytvoříte, jsou založené na tomto názvu. Proto byste měli změnit jenom tuto první proměnnou.
+Aby bylo spouštění ukázkových souborů jednodušší, používají kurzy v této sérii proměnné prostředí shell. Spuštěním následujícího příkazu nastavte proměnnou `ACR_NAME`. Nahraďte **\<registry-name\>** jedinečným názvem nového registru kontejneru. Název registru musí být v rámci Azure jedinečný, obsahovat pouze malá písmena a musí obsahovat 5-50 alfanumerických znaků. Další prostředky, které v tomto kurzu vytvoříte, jsou založené na tomto názvu. Proto byste měli změnit jenom tuto první proměnnou.
 
 [![Vložit spuštění](https://shell.azure.com/images/launchcloudshell.png "Spuštění služby Azure Cloud Shell")](https://shell.azure.com)
 
@@ -174,9 +174,9 @@ V této části vytvoříte Azure Key Vault a instanční objekt a pak pomocí p
 
 Veškeré produkční scénáře by měly pro přístup k registru kontejneru Azure používat [instanční objekty][service-principal-auth]. Instanční objekty vám umožní poskytnout řízení přístupu k vašim imagím kontejnerů na základě role. Můžete například nakonfigurovat instanční objekt s přístupem k registru pouze ke čtení.
 
-#### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
+#### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 
-Pokud ještě nemáte trezor ve službě [Azure Key Vault](/azure/key-vault/), vytvořte si ho v Azure CLI pomocí následujících příkazů.
+Pokud ještě nemáte trezor ve službě [Azure Key Vault](../key-vault/index.yml), vytvořte si ho v Azure CLI pomocí následujících příkazů.
 
 ```azurecli-interactive
 AKV_NAME=$ACR_NAME-vault
@@ -203,7 +203,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-`--role` Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která uděluje přístup pouze pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
+`--role`Argument v předchozím příkazu nakonfiguruje instanční objekt pomocí role *acrpull* , která uděluje přístup pouze pro získání přístupu k registru. Chcete-li udělit přístup push i Pull, změňte `--role` argument na *acrpush*.
 
 V dalším kroku uložte *appId* instančního objektu v trezoru. Jedná se o **uživatelské jméno**, které předáte službě Azure Container Registry pro ověření:
 

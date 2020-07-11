@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
-ms.openlocfilehash: 6b8d520a539f69889b1e1bd23d255f3fe19b8717
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 991123b4373332503eff242315e1596a091473c1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238787"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243660"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
 
@@ -24,7 +24,7 @@ Azure Container Registry (ACR) je privátní registr pro Image kontejnerů. Priv
 
 V dalších kurzech se tato instance ACR integruje s clusterem Kubernetes v AKS a z image se nasadí aplikace.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V [předchozím kurzu][aks-tutorial-prepare-app] byla vytvořena image kontejneru pro jednoduchou hlasovací aplikaci v Azure. Pokud jste image hlasovací aplikace v Azure ještě nevytvořili, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
@@ -139,7 +139,7 @@ Teď máte image kontejneru uloženou v privátní instanci služby Azure Contai
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili službu Azure Container Registry a odeslali jste do ní image pro použití v clusteru AKS. Naučili jste se tyto postupy:
+V tomto kurzu jste vytvořili službu Azure Container Registry a odeslali jste do ní image pro použití v clusteru AKS. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření instance služby Azure Container Registry (ACR)
@@ -159,8 +159,8 @@ V dalším kurzu se dozvíte, jak nasadit cluster Kubernetes v Azure.
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr
 [az-acr-list]: /cli/azure/acr
-[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az-acr-login
-[az-acr-list]: https://docs.microsoft.com/cli/azure/acr#az-acr-list
+[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-list]: /cli/azure/acr#az-acr-list
 [az-acr-repository-list]: /cli/azure/acr/repository
 [az-acr-repository-show-tags]: /cli/azure/acr/repository
 [az-group-create]: /cli/azure/group#az-group-create

@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure App Service
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure App Service. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 348c70c1e26bd4325979659a8a0fd93c8a31f8fe
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 8df8f1a1a48f3a539646401162694272d8e634ac
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316423"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275783"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-service"></a>Azure Policy předdefinované definice pro Azure App Service
 

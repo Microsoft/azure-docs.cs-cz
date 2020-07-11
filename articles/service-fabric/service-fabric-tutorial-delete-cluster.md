@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak odstranit cluster Service Fabric hos
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 802fdfc46344929930b1ffb015b364b4e2360cca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 38ddc7173f54a34d68c41ce1180c8dbeaf3d7962
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465366"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244959"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Kurz: Odebrání clusteru Service Fabric běžícího v Azure
 
@@ -37,7 +37,7 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure//install-Az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+* Nainstalujte [Azure PowerShell](/powershell/azure//install-az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Odstranění skupiny prostředků obsahující cluster Service Fabric

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75613954"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245377"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Kurz: Nasazení aplikace do samostatného clusteru Service Fabric
 
@@ -46,13 +46,13 @@ Jakmile je aplikace stažená, můžete ji do clusteru nasadit přímo ze sady V
 
 1. Otevřete sadu Visual Studio.
 
-2. Vybrat **soubor** > **otevřen**
+2. Vybrat **soubor**  >  **otevřen**
 
 3. Přejděte do složky, do které jste naklonovali úložiště git, a vyberte Voting.sln.
 
 4. V Průzkumníku řešení klikněte pravým tlačítkem na projekt aplikace `Voting` a zvolte **Publikovat**.
 
-5. Vyberte rozevírací seznam pro **Koncový bod připojení** a zadejte veřejný název DNS jednoho z uzlů v clusteru.  Například, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Všimněte si, že v Azure se plně kvalifikovaný název domény (FQDN) neposkytuje automaticky, ale dá se snadno [nastavit na stránce s přehledem virtuálního počítače.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
+5. Vyberte rozevírací seznam pro **Koncový bod připojení** a zadejte veřejný název DNS jednoho z uzlů v clusteru.  Například `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Všimněte si, že v Azure se plně kvalifikovaný název domény (FQDN) neposkytuje automaticky, ale dá se snadno [nastavit na stránce s přehledem virtuálního počítače.](../virtual-machines/linux/portal-create-fqdn.md)
 
 6. Otevřete váš preferovaný prohlížeč a zadejte adresu clusteru (koncový bod připojení, tato aplikace se nasadí na port 8080 – například ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

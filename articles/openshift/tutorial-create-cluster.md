@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985684"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260688"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -87,11 +87,26 @@ Při spuštění `az aro create` příkazu můžete na svůj tajný kód pro vy�
 
 Pokud kopírujete tajný kód pro vyžádání obsahu nebo na něj odkazujete v jiných skriptech, měl by váš tajný klíč pro vyžádání formátu obsahovat platný řetězec JSON.
 
+### <a name="prepare-a-custom-domain-for-your-cluster-optional"></a>Příprava vlastní domény pro cluster (volitelné)
+
+Při spuštění `az aro create` příkazu můžete zadat vlastní doménu pro svůj cluster pomocí `--domain foo.example.com` parametru.
+
+Pokud pro svůj cluster zadáte vlastní doménu, Všimněte si následujících bodů:
+
+* Po vytvoření clusteru je nutné na serveru DNS vytvořit dva záznamy DNS A pro `--domain` zadané:
+    * **rozhraní API** – ukázání na server rozhraní API
+    * ** \* . Apps** – přechod na příchozí přenos dat
+    * Tyto hodnoty načtete spuštěním následujícího příkazu: `az aro show -n -g --query '{api:apiserverProfile.ip, ingress:ingressProfiles[0].ip}'` .
+
+* Konzola OpenShift bude k dispozici na adrese URL, jako `https://console-openshift-console.apps.foo.example.com` je místo předdefinované domény `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+
+* Ve výchozím nastavení používá OpenShift certifikáty podepsané svým držitelem pro všechny trasy vytvořené v nástroji `*.apps.<random>.<location>.aroapp.io` .  Pokud se po připojení ke clusteru rozhodnete použít vlastní DNS, budete muset postupovat podle dokumentace OpenShift a [nakonfigurovat vlastní CA pro váš kontroler](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) příchozího přístupu a [vlastní CA pro váš Server API](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Vytvoření virtuální sítě obsahující dvě prázdné podsítě
 
 V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné podsítě.
 
-1. **Nastavte následující proměnné.**
+1. **Nastavte následující proměnné v prostředí prostředí, ve kterém budete provádět `az` příkazy.**
 
    ```console
    LOCATION=eastus                 # the location of your cluster
@@ -99,9 +114,9 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **Vytvoření skupiny prostředků**
+1. **Vytvořte skupinu prostředků.**
 
-    Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí příkazu [az Group Create] [az-Group-Create].
+    Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí příkazu [AZ Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) .
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
@@ -126,7 +141,7 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
 
     Clustery Azure Red Hat OpenShift se systémem OpenShift 4 vyžadují pro hlavní a pracovní uzly virtuální síť se dvěma prázdnými podsítěmi.
 
-    Vytvořte novou virtuální síť ve stejné skupině prostředků, kterou jste vytvořili dříve.
+    Vytvořte novou virtuální síť ve stejné skupině prostředků, kterou jste vytvořili dříve:
 
     ```azurecli-interactive
     az network vnet create \
@@ -189,10 +204,12 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
 
 ## <a name="create-the-cluster"></a>Vytvoření clusteru
 
-Spuštěním následujícího příkazu vytvořte cluster. Volitelně můžete [předat tajný klíč pro vyžádání Red Hat](#get-a-red-hat-pull-secret-optional) , který umožňuje vašemu clusteru přístup k registrům kontejnerů Red Hat spolu s dalším obsahem.
+Spuštěním následujícího příkazu vytvořte cluster. Pokud se rozhodnete použít některou z následujících možností, upravte příkaz odpovídajícím způsobem:
+* Volitelně můžete [předat tajný klíč pro vyžádání Red Hat](#get-a-red-hat-pull-secret-optional) , který umožňuje vašemu clusteru přístup k registrům kontejnerů Red Hat spolu s dalším obsahem. Přidejte `--pull-secret @pull-secret.txt` argument do příkazu.
+* Volitelně můžete [použít vlastní doménu](#prepare-a-custom-domain-for-your-cluster-optional). Přidejte `--domain foo.example.com` argument do příkazu a nahraďte `foo.example.com` ho vlastní doménou.
 
->[!NOTE]
-> Pokud kopírujete a vkládáte příkazy a použijete některý z volitelných parametrů, nezapomeňte odstranit počáteční hashtagy a text na konci komentáře. Také uzavřete argument na předchozím řádku příkazu s koncovým zpětným lomítkem.
+> [!NOTE]
+> Pokud přidáváte do příkazu nějaké volitelné argumenty, nezapomeňte uzavřít argument na předchozím řádku příkazu s koncovým zpětným lomítkem.
 
 ```azurecli-interactive
 az aro create \
@@ -201,17 +218,9 @@ az aro create \
   --vnet aro-vnet \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
-  # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
 Po provedení `az aro create` příkazu bude normálně trvat přibližně 35 minut, než se cluster vytvoří.
-
->[!IMPORTANT]
-> Pokud se rozhodnete zadat vlastní doménu, například **foo.example.com**, konzola OpenShift bude k dispozici na adrese URL `https://console-openshift-console.apps.foo.example.com` , jako je místo v předdefinované doméně `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
->
-> Ve výchozím nastavení používá OpenShift certifikáty podepsané svým držitelem pro všechny trasy vytvořené v nástroji `*.apps.<random>.<location>.aroapp.io` .  Pokud se po připojení ke clusteru rozhodnete použít vlastní DNS, budete muset postupovat podle dokumentace OpenShift a [nakonfigurovat vlastní CA pro váš kontroler](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) příchozího přístupu a [vlastní CA pro váš Server API](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
->
 
 ## <a name="next-steps"></a>Další kroky
 

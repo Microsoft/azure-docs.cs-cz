@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1fc8910f3f30ef03970d13fe8f667a4a7a8a9cd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: f15e83b8bf3ca8c7a838afc2836dbf0e02108d66
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316191"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275648"
 ---
-|Název<br /><sub>(Azure Portal)</sub> |Popis |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Vliv (s) |Verze<br /><sub>GitHubu</sub> |
 |---|---|---|---|
 |[Auditovat virtuální počítače Linux, na kterých je povolené použití hesel pro SSH](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F630c64f9-8b6b-4c64-b511-6544ceff6fd6) |Tato zásada Audituje virtuální počítače Linux, které používají hesla pro ověřování prostřednictvím SSH. Tato zásada vyžaduje, aby byly požadavky na konfiguraci hostů nasazené do oboru přiřazení zásad. Podrobnosti najdete na stránce[https://aka.ms/gcpol](https://aka.ms/gcpol) |AuditIfNotExists, zakázáno |[1.0.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxNoPasswordForSSH_AINE.json) |
 |[Auditovat virtuální počítače s Windows, na kterých není ochrana před zneužitím v programu Windows Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Ochrana před zneužitím v programu Windows Defender pomáhá chránit před malwarem, který využívá zneužití k nainfikování zařízení a dvojstránky. Ochrana před zneužitím se skládá z několika rizik, která se dají použít buď pro operační systém, nebo pro jednotlivé aplikace. Tato zásada vyžaduje rozšíření Azure Policy pro Windows. Podrobnosti najdete na adrese [https://aka.ms/gcpol](https://aka.ms/gcpol) . |AuditIfNotExists, zakázáno |[1.1.0 – Preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AINE.json) |

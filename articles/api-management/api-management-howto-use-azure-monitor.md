@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982046"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243235"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -43,7 +43,7 @@ Následující video ukazuje, jak pomocí služby Azure Monitor monitorovat slu�
 
 ## <a name="view-metrics-of-your-apis"></a>Zobrazení metrik vašich rozhraní API
 
-API Management každou minutu vysílá metriky, takže vám skoro v reálném čase poskytuje přehled o stavu vašich rozhraní API. Níže jsou uvedené dvě nejčastěji používané metriky. Seznam všech dostupných metrik najdete v tématu [podporované metriky](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice).
+API Management každou minutu vysílá metriky, takže vám skoro v reálném čase poskytuje přehled o stavu vašich rozhraní API. Níže jsou uvedené dvě nejčastěji používané metriky. Seznam všech dostupných metrik najdete v tématu [podporované metriky](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice).
 
 * Kapacita: pomáhá při rozhodování o upgradu/downgrade služeb APIM Services. Metrika se generuje každou minutu a odráží kapacitu brány v čase vytvoření sestavy. Její hodnoty se pohybují v rozsahu od 0 do 100 a počítají se na základě prostředků brány, jako je využití procesoru nebo paměti.
 * Požadavky: pomáhá analyzovat provoz rozhraní API prostřednictvím služeb APIM Services. Metrika je vygenerována za minutu a oznamuje počet požadavků brány s dimenzemi, včetně kódů odpovědí, umístění, názvu hostitele a chyb. 

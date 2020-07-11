@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f472865c131b873f1ae0a21fa9ec55865fb2b29
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85805573"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277729"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -22,7 +22,11 @@ Po otevření okna Cloud Shell se první věc přihlaste a nastavte kontext pros
 az login
 az account set --subscription <your-Azure-subscription-ID>
 ```
-
+> [!TIP]
+> Předplatné můžete také nastavit pomocí názvu svého předplatného. Použijte tento příkaz: 
+> ```azurecli
+> az account set --subscription "your-Azure-subscription-name"
+> 
 Pokud jste toto předplatné použili u digitálních vláken Azure jako první, spusťte tento příkaz a zaregistrujte se do oboru názvů digitálních vláken Azure. (Pokud si nejste jistí, můžete ji znovu spustit i v případě, že jste to udělali za nějakou dobu v minulosti.)
 
 ```azurecli

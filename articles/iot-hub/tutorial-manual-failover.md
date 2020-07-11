@@ -11,16 +11,16 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 86b39beb2958194f7c86409c5d78992616234b05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769913"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252568"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Kurz: provedení ručního převzetí služeb při selhání pro Centrum IoT
 
-Ruční převzetí služeb při selhání je funkce služby IoT Hub, která zákazníkům umožňuje [převzetí služeb při selhání](https://en.wikipedia.org/wiki/Failover) provozu jejich centra z primární oblasti do odpovídající geograficky spárované oblasti Azure. Ruční převzetí služeb při selhání se dá provést v případě havárie nebo delšího výpadku služeb v oblasti. Můžete také provést plánované převzetí služeb při selhání a otestovat si své možnosti zotavení po havárii, doporučujeme ale použít spíš IoT Hub v testovacím prostředí, ne v produkčním. Funkci ručního převzetí služeb při selhání mají zákazníci k dispozici bez dalších poplatků.
+Ruční převzetí služeb při selhání je funkce služby IoT Hub, která zákazníkům umožňuje [převzetí služeb při selhání](https://en.wikipedia.org/wiki/Failover) provozu jejich centra z primární oblasti do odpovídající geograficky spárované oblasti Azure. Ruční převzetí služeb při selhání se dá provést v případě havárie nebo delšího výpadku služeb v oblasti. Můžete také provést plánované převzetí služeb při selhání a otestovat si své možnosti zotavení po havárii, doporučujeme ale použít spíš IoT Hub v testovacím prostředí, ne v produkčním. Funkce ručního převzetí služeb při selhání se zákazníkům nabízí bez dalších poplatků za centra IoT vytvořená po 18. května 2017.
 
 V tomto kurzu provedete následující úlohy:
 
@@ -33,7 +33,7 @@ V tomto kurzu provedete následující úlohy:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Předplatné Azure. Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -73,7 +73,7 @@ Upozorňujeme, že jedno centrum IoT Hub má limit dvou převzetí služeb při 
 
    ![Snímek obrazovky s podoknem vlastností služby IoT Hub](./media/tutorial-manual-failover/trigger-failover-01.png)
 
-1. V podokně ruční převzetí služeb při selhání uvidíte **aktuální umístění** a **umístění převzetí služeb při selhání**. Aktuální umístění vždy indikuje umístění, ve kterém je rozbočovač aktuálně aktivní. Umístění převzetí služeb při selhání je standardní [geograficky spárovaná oblast Azure](../best-practices-availability-paired-regions.md) , která se spáruje s aktuálním umístěním. Hodnoty umístění se nedají změnit. V tomto kurzu je aktuální umístění `West US 2` a umístění převzetí služeb při selhání `West Central US`.
+1. V podokně ruční převzetí služeb při selhání uvidíte **aktuální umístění** a **umístění převzetí služeb při selhání**. Aktuální umístění vždy indikuje umístění, ve kterém je rozbočovač aktuálně aktivní. Umístění převzetí služeb při selhání je standardní [geograficky spárovaná oblast Azure](../best-practices-availability-paired-regions.md) , která se spáruje s aktuálním umístěním. Hodnoty umístění se nedají změnit. V tomto kurzu je aktuální umístění `West US 2` a umístění převzetí služeb při selhání `West Central US` .
 
    ![Snímek obrazovky s podoknem Ruční převzetí služeb při selhání](./media/tutorial-manual-failover/trigger-failover-02.png)
 
@@ -93,11 +93,11 @@ Upozorňujeme, že jedno centrum IoT Hub má limit dvou převzetí služeb při 
 
    ![Snímek obrazovky znázorňující probíhající převzetí služeb při selhání IoT Hub](./media/tutorial-manual-failover/trigger-failover-05-hub-inactive.png)
 
-   Po dokončení se Překlopí aktuální oblasti a oblasti převzetí služeb při selhání na stránce ručního převzetí služeb při selhání a centrum bude zase aktivní. V tomto příkladu je aktuální umístění nyní `WestCentralUS` a umístění převzetí služeb při selhání je `West US 2`nyní. 
+   Po dokončení se Překlopí aktuální oblasti a oblasti převzetí služeb při selhání na stránce ručního převzetí služeb při selhání a centrum bude zase aktivní. V tomto příkladu je aktuální umístění nyní `WestCentralUS` a umístění převzetí služeb při selhání je nyní `West US 2` . 
 
    ![Snímek obrazovky po dokončení převzetí služeb při selhání](./media/tutorial-manual-failover/trigger-failover-06-finished.png)
 
-   Na stránce Přehled se zobrazí také zpráva oznamující, že se převzetí služeb při selhání dokončilo `West Central US`a IoT Hub běží v.
+   Na stránce Přehled se zobrazí také zpráva oznamující, že se převzetí služeb při selhání dokončilo a IoT Hub běží v `West Central US` .
 
    ![Snímek obrazovky s kompletním převzetím služeb při selhání na stránce Přehled](./media/tutorial-manual-failover/trigger-failover-06-finished-overview.png)
 

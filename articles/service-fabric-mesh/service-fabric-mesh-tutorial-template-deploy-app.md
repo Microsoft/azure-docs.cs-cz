@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75494935"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248386"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
 
@@ -44,7 +44,7 @@ Než začnete s tímto kurzem:
 
 * [Nainstalujte si místně Azure CLI a Service Fabric Mesh CLI.](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli)
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 Image kontejneru přidružené k službám ve vaší aplikaci Service Fabric Mesh musí být uložené v registru kontejneru.  V tomto kurzu se používá privátní instance služby Azure Container Registry (ACR). 
 
@@ -171,7 +171,7 @@ Předchozí výstup potvrzuje přítomnost značky `azure-mesh-todo-service:1.0-
 ## <a name="retrieve-credentials-for-the-registry"></a>Načtení přihlašovacích údajů registru
 
 > [!IMPORTANT]
-> Pro produkční scénáře se nedoporučuje povolovat v instanci služby ACR uživatele s rolí správce. Tady se to dělá kvůli usnadnění práce. K ověřování uživatelů i systému v produkčních scénářích použijte [instanční objekt](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal).
+> Pro produkční scénáře se nedoporučuje povolovat v instanci služby ACR uživatele s rolí správce. Tady se to dělá kvůli usnadnění práce. K ověřování uživatelů i systému v produkčních scénářích použijte [instanční objekt](../container-registry/container-registry-auth-service-principal.md).
 
 Abyste mohli nasadit instanci kontejneru z registru vytvořeného pomocí šablony, musíte při nasazování zadat přihlašovací údaje registru. Nejprve ve svém registru pomocí následujícího příkazu povolte uživatele s rolí správce:
 
@@ -191,7 +191,7 @@ Vrácené hodnoty názvu přihlašovacího serveru ACR, uživatelského jména a
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>Stažení a prozkoumání šablony a souborů parametrů
 
-Aplikace Service Fabric Mesh je prostředek Azure, který můžete nasadit a spravovat pomocí šablon Azure Resource Manageru. Pokud neznáte koncepty nasazování a správy řešení Azure, přečtěte si témata [Přehled Azure Resource Manageru](/azure/azure-resource-manager/resource-group-overview) a [Vysvětlení struktury a syntaxe šablon Resource Manageru](/azure/azure-resource-manager/resource-group-authoring-templates).
+Aplikace Service Fabric Mesh je prostředek Azure, který můžete nasadit a spravovat pomocí šablon Azure Resource Manageru. Pokud neznáte koncepty nasazování a správy řešení Azure, přečtěte si témata [Přehled Azure Resource Manageru](../azure-resource-manager/management/overview.md) a [Vysvětlení struktury a syntaxe šablon Resource Manageru](../azure-resource-manager/templates/template-syntax.md).
 
 V tomto kurzu se jako příklad používá ukázka Seznam úkolů.  Místo vytváření nové šablony a souborů parametrů si stáhněte[šablonu nasazení mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) a soubory [parametrů mesh_rp.windows.parameter.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json).
 
@@ -342,8 +342,8 @@ V souboru parametrů aktualizujte hodnoty následujících parametrů:
 |registryPassword|Heslo, které jste získali dříve v části [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry). Tento parametr je v šabloně zabezpečeným řetězcem a nezobrazí se ve stavu nasazení ani v příkazech `az mesh service show`.|
 |registryUserName|Uživatelské jméno, které jste získali v části [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry).|
 |registryServer|Název serveru registru, který jste získali v části [Načtení přihlašovacích údajů registru](#retrieve-credentials-for-the-registry).|
-|frontEndImage|Image kontejneru pro front-endovou službu.  Například, `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`.|
-|serviceImage|Image kontejneru pro back-endovou službu.  Například, `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`.|
+|frontEndImage|Image kontejneru pro front-endovou službu.  Například `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`.|
+|serviceImage|Image kontejneru pro back-endovou službu.  Například `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`.|
 
 Aplikaci nasadíte spuštěním následujícího příkazu:
 
@@ -362,7 +362,7 @@ Tento příkaz vytvoří fragment kódu JSON, který je zobrazen níže. V ```ou
 }
 ```
 
-Tyto informace pocházejí z ```outputs``` části v šabloně ARM. Jak vidíte níže, Tato část se odkazuje na prostředek brány, aby se načetla veřejná IP adresa. 
+Tyto informace pocházejí z ```outputs``` části v ŠABLONĚ ARM. Jak vidíte níže, Tato část se odkazuje na prostředek brány, aby se načetla veřejná IP adresa. 
 
 ```json
   "outputs": {

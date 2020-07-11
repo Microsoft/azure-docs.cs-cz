@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b683910180e597cb8cbfa642bb2d9ac3200b42ee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73176832"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255026"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Publikování několika verzí rozhraní API 
 
-Občas je nepraktické, aby všichni volající vašeho rozhraní API používali naprosto stejnou verzi. Když volající chtějí upgradovat na novější verzi, chtějí mít možnost to udělat snadno pochopitelným způsobem. Ve službě Azure API Management je možné toho docílit s využitím **verzí**. Další informace najdete v tématu [Verze a revize](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/).
+Občas je nepraktické, aby všichni volající vašeho rozhraní API používali naprosto stejnou verzi. Když volající chtějí upgradovat na novější verzi, chtějí mít možnost to udělat snadno pochopitelným způsobem. Ve službě Azure API Management je možné toho docílit s využitím **verzí**. Další informace najdete v tématu [Verze a revize](https://azure.microsoft.com/blog/versions-revisions/).
 
 V tomto kurzu se naučíte:
 

@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7b73923b7fc32ae83bfc8405d074835c02031a63
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2422204a809e0b13f4e337d49b851a0338681853
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77913697"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249202"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>Migrace z Google Maps na Azure Maps
+# <a name="migrate-from-google-maps-to-azure-maps"></a>Migrace z Google Maps do Azure Maps
 
 V tomto kurzu najdete informace o tom, jak migrovat webové a mobilní aplikace a aplikace založené na serveru z Google Maps na platformu Microsoft Azure Maps. Tento kurz obsahuje srovnávací ukázky kódu, návrhy migrace a osvědčené postupy pro migraci na Azure Maps.
 
@@ -38,19 +38,19 @@ Tabulka poskytuje seznam Azure Mapsch funkcí, které odpovídají funkcím slu�
 | Matice vzdáleností             | ✓                                      |
 | Zvýšení oprávnění                   | Plánováno                                |
 | Geografické kódování (přesměrné/obrácené) | ✓                                      |
-| Geografická poloha                 | –                                    |
+| Geografická poloha                 | Nelze použít                                    |
 | Nejbližší silnice               | ✓                                      |
 | Hledání míst               | ✓                                      |
 | Podrobnosti o místech              | Není k dispozici – web & telefonní číslo. |
-| Místo fotek               | –                                    |
+| Místo fotek               | Nelze použít                                    |
 | Umístit automatické dokončování          | ✓                                      |
 | Přichycení k cestám                | ✓                                      |
 | Omezení rychlosti                | ✓                                      |
 | Statické mapy                 | ✓                                      |
-| Statické zobrazení ulice          | –                                    |
+| Statické zobrazení ulice          | Nelze použít                                    |
 | Časové pásmo                   | ✓                                      |
-| Rozhraní API pro mapování Embedded           | –                                    |
-| Mapování adres URL                    | –                                    |
+| Rozhraní API pro mapování Embedded           | Nelze použít                                    |
+| Mapování adres URL                    | Nelze použít                                    |
 
 Google Maps poskytuje základní ověřování založené na klíčích. Azure Maps poskytuje jak základní ověřování založené na klíčích, tak ověřování Azure Active Directory. Ověřování Azure Active Directory poskytuje více funkcí zabezpečení oproti základnímu ověřování založenému na klíčích.
 
@@ -74,7 +74,7 @@ Tady je několik souvisejících prostředků pro Azure Maps:
 Následuje plán migrace na vysoké úrovni.
 
 1. Využijte inventarizaci sad SDK a služeb Google Maps, které vaše aplikace používá. Ověřte, že Azure Maps poskytuje alternativní sady SDK a služby.
-2. Pokud ho ještě nemáte, vytvořte si předplatné Azure na adrese [https://azure.com](https://azure.com).
+2. Pokud ho ještě nemáte, vytvořte si předplatné Azure na adrese [https://azure.com](https://azure.com) .
 3. Vytvořte účet Azure Maps ([dokumentace](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) a ověřovací klíč nebo Azure Active Directory ([dokumentace](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
 4. Migrujte kód aplikace.
 5. Otestujte migrovaná aplikace.
@@ -92,7 +92,7 @@ Tady je seznam užitečných technických prostředků pro Azure Maps.
 - Webový[https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - Technický blog:[https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
 - Azure Maps váš názor (UserVoice):[https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
-- [Azure Maps Jupyter Notebook] [https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook]
+- [Azure Maps Jupyter Notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)
 
 ## <a name="migration-support"></a>Podpora migrace
 

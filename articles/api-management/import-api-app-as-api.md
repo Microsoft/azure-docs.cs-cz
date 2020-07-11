@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202821"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249486"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Import aplikace API jako rozhraní API
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 + Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
-+ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace najdete v [dokumentaci k App Service](https://docs.microsoft.com/azure/app-service/) .
++ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace najdete v [dokumentaci k App Service](../app-service/index.yml) .
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

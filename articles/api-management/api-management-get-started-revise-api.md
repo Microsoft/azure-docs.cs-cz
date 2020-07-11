@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c91d42f3445bb2ffc02366e6cb9ae49ec2db1be4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a4655b20fabcc72e02037de05dd0ef7c4671e52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75442754"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254907"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Použití revizí k bezpečnému provedení nevýznamných změn
-Jakmile bude vaše rozhraní API připravené a začnou ho využívat vývojáři, časem bude potřeba provádět změny rozhraní API, aniž by to mělo negativní vliv na volající vašeho rozhraní API. Také je užitečné informovat vývojáře o prováděných změnách. Ve službě Azure API Management k tomu můžeme použít **revize**. Další informace najdete v tématech [Verze a revize](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) a [Správa verzí rozhraní API pomocí služby Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
+Jakmile bude vaše rozhraní API připravené a začnou ho využívat vývojáři, časem bude potřeba provádět změny rozhraní API, aniž by to mělo negativní vliv na volající vašeho rozhraní API. Také je užitečné informovat vývojáře o prováděných změnách. Ve službě Azure API Management k tomu můžeme použít **revize**. Další informace najdete v tématech [Verze a revize](https://azure.microsoft.com/blog/versions-revisions/) a [Správa verzí rozhraní API pomocí služby Azure API Management](https://azure.microsoft.com/blog/api-versioning-with-azure-api-management/).
 
 V tomto kurzu se naučíte:
 
@@ -53,7 +53,7 @@ V tomto kurzu se naučíte:
     > Můžete také zvolit **Přidat revizi** v místní nabídce (**...**) rozhraní API.
 
 5. Zadejte popis nové revize, který vám pomůže zapamatovat si, k čemu se bude používat.
-6. Vyberte **vytvořit** .
+6. Vyberte **Vytvořit**.
 7. Teď se vytvoří vaše nová revize.
 
     > [!NOTE]
@@ -109,4 +109,4 @@ V tomto kurzu jste se naučili:
 Přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Publikování několika verzí vašeho rozhraní API](api-management-get-started-publish-versions.md)
+> [Publikování několika verzí rozhraní API](api-management-get-started-publish-versions.md)

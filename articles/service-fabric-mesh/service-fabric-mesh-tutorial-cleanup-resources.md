@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8ce3c795bc9ad212331ce1c1f413fe7fd6da909
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75351876"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246741"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Kurz: Odebrání prostředků Azure
 
@@ -62,4 +62,4 @@ Nyní, když jste dokončili publikování aplikace Service Fabric Mesh do Azure
 * Pokud se chcete podívat na další příklad komunikace mezi službami, prohlédněte si [ukázku hlasovací aplikace](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp).
 * Další informace o modelu prostředků Service Fabric najdete v článku o [modelu prostředků Service Fabric Mesh](service-fabric-mesh-service-fabric-resources.md).
 * Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).
-* Přečtěte si o [Cloud Shellu](https://docs.microsoft.com/azure/cloud-shell/overview).
+* Přečtěte si o [Cloud Shellu](../cloud-shell/overview.md).

@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak nastavit průběžnou integraci a n
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 11485d22abcf0b8e1eb13d8123ff21c7fe0079f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75614137"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260356"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric
 
@@ -39,7 +39,7 @@ Než začnete s tímto kurzem:
 * [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/) a nainstalujte úlohy vývoje pro vývoj a vývoj pro **Azure** a vývoj **webů** .
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 * Vytvořte v Azure cluster Service Fabric s Windows, například [podle tohoto kurzu](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-* Vytvořte [organizaci Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). To vám umožní vytvořit projekt ve službě Azure DevOps a použít Azure Pipelines.
+* Vytvořte [organizaci Azure DevOps](/azure/devops/organizations/accounts/create-organization-msa-or-work-student). To vám umožní vytvořit projekt ve službě Azure DevOps a použít Azure Pipelines.
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové aplikace Voting
 
@@ -61,7 +61,7 @@ Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracov
 
 Nasdílejte zdrojové soubory své aplikace do projektu v Azure DevOps, abyste mohli generovat buildy.
 
-Pro svůj projekt vytvořte nové místní úložiště Git, a to tak, že na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete ->  **Přidat do správy zdrojového kódu****Git** .
+Pro svůj projekt vytvořte nové místní úložiště Git, a to **Add to Source Control**tak, že  ->  na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete Přidat do správy zdrojového kódu**Git** .
 
 V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps** tlačítko **Publikovat úložiště Git**.
 
@@ -111,7 +111,7 @@ Vyberte kartu **kanály** a pak **verze**a potom **+ Nový kanál**.  V části 
 
 ![Výběr šablony vydání][select-release-template]
 
-Vyberte **úlohy**->**prostředí 1** a potom **+ nové** a přidejte nové připojení k clusteru.
+Vyberte **úlohy** -> **prostředí 1** a potom **+ nové** a přidejte nové připojení k clusteru.
 
 ![Přidání připojení clusteru][add-cluster-connection]
 
@@ -131,7 +131,7 @@ Povolte trigger průběžného nasazování, aby se po dokončení sestavení au
 
 ![Povolení triggeru][enable-trigger]
 
-Výběrem **+ vydaná** -> verze**vytvořit vydání** -> **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
+Výběrem **+ vydaná**verze  ->  **vytvořit vydání**  ->  **vytvořit vytvořte** vydanou verzi ručně. Průběh vydání můžete sledovat na kartě **Vydání**.
 
 Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/`.  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
 
@@ -139,7 +139,7 @@ Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clust
 
 Ověřte fungování kanálu kontinuální integrace tím, že do Azure DevOps vrátíte se změnami nějaký kód.
 
-Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Čekající na vyřízení][pending]) na stavovém řádku v pravém dolním rohu.
+Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Čekající][pending]) na stavovém řádku v pravém dolním rohu.
 
 V zobrazení **Změny** v Team Exploreru přidejte zprávu s popisem vaší aktualizace a potvrďte provedené změny.
 

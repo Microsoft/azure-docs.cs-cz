@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/01/2020
 ms.author: apimpm
-ms.openlocfilehash: 9af20972a47e2d0ad20de62f1bb9d10e4d43563c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5814ff3909aa36ccfd9e14033f200fb4d3b8d32d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82725949"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252849"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>Export rozhraní API z Azure API Management do Power Platform 
 
@@ -29,7 +29,7 @@ Tento článek vás provede kroky pro export rozhraní API z API Management na p
 
 + Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
 + Ujistěte se, že ve vaší instanci API Management existuje rozhraní API, které byste chtěli exportovat do Power Platform
-+ Ujistěte se, že máte Power apps nebo Power automatizuje [prostředí](https://docs.microsoft.com/powerapps/powerapps-overview#power-apps-for-admins) . 
++ Ujistěte se, že máte Power apps nebo Power automatizuje [prostředí](/powerapps/powerapps-overview#power-apps-for-admins) . 
 
 ## <a name="export-an-api"></a>Exportovat rozhraní API
 
@@ -39,7 +39,7 @@ Tento článek vás provede kroky pro export rozhraní API z API Management na p
 4. Vyberte **Power Apps a Power Automatizujte**.
 5. Vyberte prostředí, do kterého se má rozhraní API exportovat. 
 6. Zadejte zobrazovaný název, který se použije jako název vlastního konektoru.  
-7. Volitelné – Pokud je rozhraní API chráněné serverem OAuth 2,0, budete taky muset zadat další podrobnosti `Client ID`, včetně, `Client secret`, `Authorization URL` `Token URL`, a. `Refresh URL`  
+7. Volitelné – Pokud je rozhraní API chráněné serverem OAuth 2,0, budete taky muset zadat další podrobnosti `Client ID` , včetně, `Client secret` ,, `Authorization URL` `Token URL` a `Refresh URL` .  
 8. Vyberte **Exportovat**. 
 
 Až se export dokončí, přejděte do Power aplikace nebo na Power Automate prostředí. Rozhraní API se zobrazí jako vlastní konektor.
@@ -47,4 +47,4 @@ Až se export dokončí, přejděte do Power aplikace nebo na Power Automate pro
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o Power platformu](https://powerplatform.microsoft.com/)
-* [Seznamte se s běžnými úlohami v API Management pomocí těchto kurzů.](https://docs.microsoft.com/azure/api-management/import-and-publish)
+* [Seznamte se s běžnými úlohami v API Management pomocí těchto kurzů.](./import-and-publish.md)

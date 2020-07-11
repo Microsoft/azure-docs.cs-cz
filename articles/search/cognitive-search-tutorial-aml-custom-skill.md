@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513812"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245326"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Kurz: sestavení a nasazení vlastní dovednosti pomocí Azure Machine Learning 
 
@@ -29,6 +29,9 @@ Jsou k dispozici dvě datové sady. Pokud chcete model naučit sami sebe, je vy�
 > * Výuka a nasazení modelu do clusteru Azure Kubernetes
 > * Propojení kanálu rozšíření AI s nasazeným modelem
 > * Ingestovat výstup z nasazeného modelu jako vlastní dovednosti
+
+> [!IMPORTANT] 
+> Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není podporovaná žádná podpora sady .NET SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -96,7 +99,7 @@ Po uložení dovednosti přejít na indexer a vybrat odkaz na definici indexeru 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Můžete odstraňovat prostředky jednotlivě nebo odstraněním skupiny prostředků odstranit celou sadu prostředků najednou.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: df6719cad79bdb063c2d4d74892206b6e5bbd414
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 672f8916749362e7145799bdefa3bbd628fc9116
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292035"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244816"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Kurz: Nasazení aplikace v Javě do clusteru Service Fabric v Azure
 
@@ -37,7 +37,7 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* [Instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Nainstalujte sadu Service Fabric SDK pro [Mac](service-fabric-get-started-mac.md) nebo [Linux](service-fabric-get-started-linux.md).
 * [Nainstalujte Python 3](https://wiki.python.org/moin/BeginnersGuide/Download).
 
@@ -162,7 +162,7 @@ Následujícím postupem se vytvoří nezbytné prostředky potřebné k nasazen
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    Vaše adresa URL SAS pro EventHubs se řídí strukturou `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`:. Například `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`.
+    Vaše adresa URL SAS pro EventHubs se řídí strukturou: `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>` . Například `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`.
 
 12. Otevřete soubor *sfdeploy.parameters.json* a nahraďte následující obsah hodnotami z předchozích kroků. Hodnotu [SAS-URL-STORAGE-ACCOUNT] jste si poznamenali v kroku 8. Hodnotu [SAS-URL-EVENT-HUBS] jste si poznamenali v kroku 11.
 

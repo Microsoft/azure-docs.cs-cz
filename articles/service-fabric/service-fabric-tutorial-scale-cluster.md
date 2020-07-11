@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak škálovat Cluster Service Fabric v 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611641"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257100"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
@@ -38,7 +38,7 @@ V této sérii kurzů se naučíte:
 Než začnete s tímto kurzem:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli).
+* Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) nebo rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli).
 * Vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) v Azure
 
 ## <a name="important-considerations-and-guidelines"></a>Důležité informace a pokyny
@@ -64,7 +64,7 @@ Další informace najdete v tématu [doprovodné materiály ke kapacitě cluster
 
 ## <a name="export-the-template-for-the-resource-group"></a>Vyexportování šablony pro skupinu prostředků
 
-Po vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) a úspěšném nastavení skupiny prostředků exportujte šablonu správce prostředků pro skupinu prostředků. Export šablony vám umožní automatizovat budoucí nasazení clusteru a jeho prostředků, protože šablona obsahuje veškerou kompletní infrastrukturu.  Další informace o exportu šablon najdete v tématu [správa Azure Resource Manager skupin prostředků pomocí Azure Portal](/azure/azure-resource-manager/manage-resource-groups-portal).
+Po vytvoření zabezpečeného [clusteru s Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) a úspěšném nastavení skupiny prostředků exportujte šablonu správce prostředků pro skupinu prostředků. Export šablony vám umožní automatizovat budoucí nasazení clusteru a jeho prostředků, protože šablona obsahuje veškerou kompletní infrastrukturu.  Další informace o exportu šablon najdete v tématu [správa Azure Resource Manager skupin prostředků pomocí Azure Portal](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 1. V [Azure Portal](https://portal.azure.com)přejdete do skupiny prostředků obsahující cluster (**sfclustertutorialgroup**, pokud budete postupovat podle tohoto kurzu). 
 

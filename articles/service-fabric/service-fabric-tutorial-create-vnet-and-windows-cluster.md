@@ -4,16 +4,16 @@ description: V tomto kurzu se naučíte nasadit cluster Windows Service Fabric d
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611658"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245037"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Kurz: nasazení clusteru Service Fabric se systémem Windows do virtuální sítě Azure
 
-Tento kurz je první částí série. Naučíte se, jak nasadit cluster Azure Service Fabric se systémem Windows do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) a [skupiny zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) pomocí PowerShellu a šablony. Až budete hotovi, budete mít cluster spuštěný v cloudu, do kterého můžete nasazovat aplikace. Pokud chcete vytvořit cluster se systémem Linux, který používá rozhraní příkazového řádku Azure, přečtěte si téma [Vytvoření zabezpečeného clusteru Linux v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
+Tento kurz je první částí série. Naučíte se, jak nasadit cluster Azure Service Fabric se systémem Windows do [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) a [skupiny zabezpečení sítě](../virtual-network/virtual-network-vnet-plan-design-arm.md) pomocí PowerShellu a šablony. Až budete hotovi, budete mít cluster spuštěný v cloudu, do kterého můžete nasazovat aplikace. Pokud chcete vytvořit cluster se systémem Linux, který používá rozhraní příkazového řádku Azure, přečtěte si téma [Vytvoření zabezpečeného clusteru Linux v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 Tento kurz popisuje produkční scénář. Pokud chcete vytvořit menší cluster pro účely testování, přečtěte si téma [Vytvoření testovacího clusteru](./scripts/service-fabric-powershell-create-secure-cluster-cert.md).
 
@@ -46,9 +46,9 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Nainstalujte [sadu Service Fabric SDK a modul prostředí PowerShell](service-fabric-get-started.md).
-* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps).
 * Přečtěte si klíčové koncepty [clusterů Azure](service-fabric-azure-clusters-overview.md).
 * [Naplánujte a připravte](service-fabric-cluster-azure-deployment-preparation.md) nasazení produkčního clusteru.
 
@@ -78,7 +78,7 @@ V prostředku **Microsoft.ServiceFabric/clusters** se konfiguruje cluster s Wind
 * Koncový bod připojení klienta: 19000 (konfigurovatelné v parametrech šablony).
 * Koncový bod brány HTTP: 19080 (konfigurovatelné v parametrech šablony).
 
-### <a name="azure-load-balancer"></a>Nástroj pro vyrovnávání zatížení Azure
+### <a name="azure-load-balancer"></a>Azure Load Balancer
 
 V prostředku **Microsoft. Network/loadBalancers** je nakonfigurován Nástroj pro vyrovnávání zatížení. Testy a pravidla se nastavují pro následující porty:
 
@@ -111,7 +111,7 @@ V prostředku **Microsoft.Network/networkSecurityGroups** jsou povolená násled
 Pokud jsou potřeba další porty aplikací, budete muset upravit prostředek **Microsoft. Network/loadBalancers** a prostředek **Microsoft. Network/networkSecurityGroups** , aby se provoz povolil.
 
 ### <a name="windows-defender"></a>Windows Defender
-Ve výchozím nastavení je [antivirový program v programu Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) nainstalovaný a funkční na Windows serveru 2016. Uživatelské rozhraní je ve výchozím nastavení nainstalováno u některých SKU, ale není vyžadováno. Pro každý typ uzlu/sadu škálování virtuálního počítače, který je v šabloně deklarovaný, se k vyloučení Service Fabric adresářů a procesů používá [antimalwarové rozšíření Azure VM](/azure/virtual-machines/extensions/iaas-antimalware-windows) :
+Ve výchozím nastavení je [antivirový program v programu Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) nainstalovaný a funkční na Windows serveru 2016. Uživatelské rozhraní je ve výchozím nastavení nainstalováno u některých SKU, ale není vyžadováno. Pro každý typ uzlu/sadu škálování virtuálního počítače, který je v šabloně deklarovaný, se k vyloučení Service Fabric adresářů a procesů používá [antimalwarové rozšíření Azure VM](../virtual-machines/extensions/iaas-antimalware-windows.md) :
 
 ```json
 {
@@ -145,8 +145,8 @@ Soubor s parametry [azuredeploy.parameters.json][parameters] deklaruje mnoho hod
 
 **Parametr** | **Příklad hodnoty** | **Poznámky** 
 |---|---|---|
-|adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. [Požadavky na uživatelské jméno pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm) |
-|adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru. [Požadavky na heslo pro virtuální počítač](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
+|adminUserName|vmadmin| Uživatelské jméno správce pro virtuální počítače clusteru. [Požadavky na uživatelské jméno pro virtuální počítač](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm) |
+|adminPassword|Password#1234| Heslo správce pro virtuální počítače clusteru. [Požadavky na heslo pro virtuální počítač](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| Název clusteru. Může obsahovat jenom písmena a číslice. Může mít délku 3 až 23 znaků.|
 |location|southcentralus| Umístění clusteru. |
 |certificateThumbprint|| <p>Pokud vytváříte certifikát podepsaný svým držitelem nebo poskytujete soubor certifikátu, měla by být hodnota prázdná.</p><p>Pokud chcete použít existující certifikát, který se dříve odeslal do trezoru klíčů, vyplňte hodnotu kryptografického otisku certifikátu SHA1. Příklad: „6190390162C988701DB5676EB81083EA608DCCF3“.</p> |
@@ -172,7 +172,7 @@ Pro zjednodušení kroků týkajících se konfigurace služby Azure AD pomocí 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Vytváření aplikací Azure AD a přiřazení uživatelů k rolím
 Vytvořte dvě aplikace Azure AD pro řízení přístupu ke clusteru: jednu webovou aplikaci a jednu nativní aplikaci. Po vytvoření aplikací, které reprezentují váš cluster, přiřaďte uživatele k [rolím, které podporuje Service Fabric](service-fabric-cluster-security-roles.md): jen pro čtení a správce.
 
-Spusťte `SetupApplications.ps1` příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Příklad:
+Spusťte `SetupApplications.ps1` příkaz a jako parametry zadejte ID klienta, název clusteru a adresu URL odpovědi webové aplikace. Zadejte uživatelská jména a hesla pro uživatele. Například:
 
 ```powershell
 $Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
@@ -249,7 +249,7 @@ V [azuredeploy.jsna][template]portálu NAKONFIGURUJTE Azure AD v části **Micro
 }
 ```
 
-Přidejte hodnoty parametrů do souboru parametrů [azuredeploy.parameters.js][parameters] . Příklad:
+Přidejte hodnoty parametrů do souboru parametrů [azuredeploy.parameters.js][parameters] . Například:
 
 ```json
 "aadTenantId": {
@@ -703,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V dalších článcích v této sérii kurzů se používá cluster, který jste vytvořili. Pokud nechcete ihned pokračovat dalším článkem, můžete [cluster odstranit](service-fabric-cluster-delete.md), aby se vám neúčtovaly poplatky.
+V dalších článcích v této sérii kurzů se používá cluster, který jste vytvořili. Pokud nechcete ihned pokračovat dalším článkem, můžete [cluster odstranit](./service-fabric-tutorial-delete-cluster.md), aby se vám neúčtovaly poplatky.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 586641d721d0c29bcd6d7b42fc8ca9141df96c66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75494960"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261310"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Kurz: Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj
 
@@ -69,22 +69,22 @@ Až se místní nasazení dokončí a Visual Studio spustí vaši aplikaci, otev
 
 Udělejte první běh ladění (F5) mnohem rychleji pomocí pokynů v tématu [optimalizace výkonu sady Visual Studio](service-fabric-mesh-howto-optimize-vs.md).
 
-V současné době je problém, který způsobí, že `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` se volání nezdaří připojit ke službě. Může k tomu dojít, kdykoli se změní IP adresa hostitele. Řešení je následující:
+V současné době je problém, který způsobí, že se volání `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` nezdaří připojit ke službě. Může k tomu dojít, kdykoli se změní IP adresa hostitele. Řešení je následující:
 
-1. Odeberte aplikaci z místního clusteru (v aplikaci Visual Studio **vytvořte** > **Vyčištění řešení**).
+1. Odeberte aplikaci z místního clusteru (v aplikaci Visual Studio **vytvořte**  >  **Vyčištění řešení**).
 2. V nástroji Service Fabric Local Cluster Manager vyberte **Stop Local CLuster** (Zastavit místní cluster) a pak **Start Local Cluster** (Spustit místní cluster).
 3. Znovu nasaďte aplikaci (v sadě Visual Studio stiskněte **F5**).
 
 Pokud se zobrazí chyba se sdělením, že **žádný místní cluster Service Fabric není spuštěný**, zkontrolujte, že je spuštěný nástroj Service Fabric Local Custer Manager (LCM), klikněte pravým tlačítkem na ikonu LCM na hlavním panelu a pak klikněte na **Start Local Cluster** (Spustit místní cluster). Po jeho spuštění se vraťte do sady Visual Studio a stiskněte klávesu **F5**.
 
-Pokud se po spuštění aplikace zobrazí chyba **404**, může to znamenat, že proměnné prostředí v souboru **service.yaml** nejsou správné. Podle pokynů pro [vytvoření proměnných prostředí](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) zkontrolujte, jestli jsou správně nastavené proměnné `ApiHostPort` a `ToDoServiceName`.
+Pokud se po spuštění aplikace zobrazí chyba **404**, může to znamenat, že proměnné prostředí v souboru **service.yaml** nejsou správné. Podle pokynů pro [vytvoření proměnných prostředí](./service-fabric-mesh-tutorial-create-dotnetcore.md#create-environment-variables) zkontrolujte, jestli jsou správně nastavené proměnné `ApiHostPort` a `ToDoServiceName`.
 
 Pokud se zobrazí chyby sestavení v **service.yaml**, zkontrolujte, že se k odsazení řádků používají mezery a ne tabulátory. Navíc je prozatím potřeba sestavit aplikaci s anglickým národním prostředím.
 
 ### <a name="debug-in-visual-studio"></a>Ladění v sadě Visual Studio
 
 Při ladění aplikace Service Fabric sítě v aplikaci Visual Studio používáte místní cluster pro vývoj Service Fabric. Pokud chcete zobrazit, jak se položky úkolů načítají z back-endové služby, zaměřte se při ladění na metodu OnGet().
-1. V projektu **webendu** otevřete **stránky** > **index. cshtml** > **index.cshtml.cs** a nastavte zarážku v metodě **OnGet** (řádek 17).
+1. V projektu **webendu** otevřete **stránky**  >  **index. cshtml**  >  **index.cshtml.cs** a nastavte zarážku v metodě **OnGet** (řádek 17).
 2. V projektu **ToDoService** otevřete **TodoController.cs** a nastavte zarážku v metodě **Get** (řádek 15).
 3. Vraťte se do prohlížeče a aktualizujte stránku. Dostanete se k zarážce v metodě `OnGet()` front-endu. Můžete se podívat na proměnnou `backendUrl`, abyste zjistili, jak se proměnné prostředí definované v souboru **service.yaml** zkombinují do adresy URL, která se používá ke kontaktování back-endové služby.
 4. Vynechejte (F10) volání `client.GetAsync(backendUrl).GetAwaiter().GetResult())` a dostanete se k zarážce `Get()` kontroleru. V této metodě můžete vidět, jak se seznam položek úkolů načítá ze seznamu v paměti.

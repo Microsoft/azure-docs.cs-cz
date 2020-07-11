@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: b0a9597e370648faab3787218c7d038798dbd455
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048115"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251769"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Centrum nasazení pro Azure Kubernetes
 
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující:
 
 1. Přihlaste se ke svému [Azure Portal](https://portal.azure.com/).
 
-1. Vyberte možnost [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) na pravé straně řádku nabídek v Azure Portal.
+1. Vyberte možnost [Cloud Shell](../cloud-shell/overview.md) na pravé straně řádku nabídek v Azure Portal.
 
 1. Pokud chcete vytvořit cluster AKS, spusťte následující příkazy:
 
@@ -54,9 +54,9 @@ V tomto kurzu provedete následující:
 
 1. Vyberte cluster AKS a v levém okně vyberte **centrum nasazení (Preview)** . Vyberte **Začínáme**.
 
-   ![settings](media/deployment-center-launcher/settings.png)
+   ![nastavení](media/deployment-center-launcher/settings.png)
 
-1. Zvolte umístění kódu a vyberte **Další**. Pak vyberte jedno z aktuálně podporovaných úložišť: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** nebo **GitHub**.
+1. Zvolte umístění kódu a vyberte **Další**. Pak vyberte jedno z aktuálně podporovaných úložišť: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** nebo **GitHub**.
 
     Azure Repos je sada nástrojů pro správu verzí, které vám pomůžou spravovat kód. Bez ohledu na to, jestli je váš softwarový projekt velký nebo malý, je dobrý nápad pomocí správy verzí co nejdříve.
 
@@ -66,7 +66,7 @@ V tomto kurzu provedete následující:
 
     - **GitHub**: autorizovat a vyberte úložiště pro váš účet GitHub.
 
-        ![GitHubu](media/deployment-center-launcher/github.gif)
+        ![GitHub](media/deployment-center-launcher/github.gif)
 
 
 1. Centrum nasazení analyzuje úložiště a detekuje vaše souboru Dockerfile. Pokud chcete aktualizovat souboru Dockerfile, můžete označené číslo portu upravit.
@@ -75,9 +75,9 @@ V tomto kurzu provedete následující:
 
     Pokud úložiště neobsahuje souboru Dockerfile, zobrazí systém zprávu pro potvrzení jednoho.
 
-    ![Souboru Dockerfile](media/deployment-center-launcher/dockerfile.png)
+    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
 
-1. Vyberte existující registr kontejnerů nebo ho vytvořte a pak vyberte **Dokončit**. Kanál se vytvoří automaticky a zařadí do fronty sestavení v [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops).
+1. Vyberte existující registr kontejnerů nebo ho vytvořte a pak vyberte **Dokončit**. Kanál se vytvoří automaticky a zařadí do fronty sestavení v [Azure Pipelines](/azure/devops/pipelines/index?view=azure-devops).
 
     Azure Pipelines je cloudová služba, kterou můžete použít k automatickému sestavení a otestování projektu kódu a zpřístupnění pro jiné uživatele. Azure Pipelines kombinuje průběžnou integraci a průběžné doručování pro neustálé a konzistentní testování a sestavování kódu a dodávání do libovolného cíle.
 

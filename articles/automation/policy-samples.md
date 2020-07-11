@@ -1,15 +1,15 @@
 ---
 title: Předdefinované definice zásad pro Azure Automation
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Automation. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 1cb0ee391e97d87a0c2e96035cc8405b83bb0654
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b4a5c1d36b139bddeb39c3d0876140744c692fd3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318316"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275681"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-automation"></a>Azure Policy předdefinované definice pro Azure Automation
 

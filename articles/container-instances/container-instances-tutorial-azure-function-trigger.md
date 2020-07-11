@@ -4,12 +4,12 @@ description: Vytvoření funkce PowerShellu bez serveru aktivovaného protokolem
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: ''
-ms.openlocfilehash: d5fa4acf7ac5a7d0b9103458636adff4befcc3d9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 298cf1452e514ede540e23d4e64f6dd1059cceab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144881"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259744"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Kurz: použití funkce Azure aktivované protokolem HTTP k vytvoření skupiny kontejnerů
 
@@ -33,7 +33,7 @@ Další kroky v tomto článku se používají Azure PowerShell. Pokud potřebuj
 
 ## <a name="create-a-basic-powershell-function"></a>Vytvoření základní funkce PowerShellu
 
-Postupujte podle kroků v části [Vytvoření první funkce PowerShellu v Azure](../azure-functions/functions-create-first-function-powershell.md) a vytvořte funkci PowerShell pomocí šablony triggeru http. Použijte výchozí název funkce Azure **HttpTrigger**. Jak je znázorněno v rychlém startu, otestujte funkci místně a publikujte projekt do aplikace Function App v Azure. Tento příklad je základní funkcí spouštěnou protokolem HTTP, která vrací textový řetězec. V pozdějších krocích v tomto článku upravíte funkci pro vytvoření skupiny kontejnerů.
+Postupujte podle kroků v části [Vytvoření první funkce PowerShellu v Azure](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell) a vytvořte funkci PowerShell pomocí šablony triggeru http. Použijte výchozí název funkce Azure **HttpTrigger**. Jak je znázorněno v rychlém startu, otestujte funkci místně a publikujte projekt do aplikace Function App v Azure. Tento příklad je základní funkcí spouštěnou protokolem HTTP, která vrací textový řetězec. V pozdějších krocích v tomto článku upravíte funkci pro vytvoření skupiny kontejnerů.
 
 V tomto článku se předpokládá, že publikujete projekt pomocí názvu *myfunctionapp*ve skupině prostředků Azure, která se automaticky jmenuje podle názvu aplikace Function App (také *myfunctionapp*). V pozdějších krocích nahraďte jedinečný název aplikace funkcí a název skupiny prostředků.
 
@@ -191,7 +191,7 @@ az group delete --name myfunctionapp
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili funkci Azure, která přebírá požadavek HTTP a aktivuje nasazení skupiny kontejnerů. Naučili jste se tyto postupy:
+V tomto kurzu jste vytvořili funkci Azure, která přebírá požadavek HTTP a aktivuje nasazení skupiny kontejnerů. Naučili jste se:
 
 > [!div class="checklist"]
 > * K vytvoření základní funkce PowerShellu aktivované protokolem HTTP použijte Visual Studio Code s rozšířením Azure Functions.
@@ -201,7 +201,7 @@ V tomto kurzu jste vytvořili funkci Azure, která přebírá požadavek HTTP a 
 
 Podrobný příklad, jak spustit a monitorovat kontejnerové úlohy, najdete v blogovém příspěvku bez [serveru řízeném událostmi s prostředím PowerShell Azure functions a Azure Container Instances](https://dev.to/azure/event-driven-serverless-containers-with-powershell-azure-functions-and-azure-container-instances-e9b) a s doprovodnou [ukázkou kódu](https://github.com/anthonychu/functions-powershell-run-aci).
 
-Podrobné pokyny k vytváření funkcí Azure functions a publikování projektů Functions najdete v [dokumentaci k Azure Functions](/azure/azure-functions/) . 
+Podrobné pokyny k vytváření funkcí Azure functions a publikování projektů Functions najdete v [dokumentaci k Azure Functions](../azure-functions/index.yml) . 
 
 <!-- IMAGES -->
 

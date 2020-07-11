@@ -1,15 +1,15 @@
 ---
 title: Seznam předdefinovaných definic zásad
 description: Vypíše předdefinované definice zásad pro Azure Policy. Kategorie zahrnují značky, dodržování předpisů, Key Vault, Kubernetes, konfiguraci hostů a další.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 94f69754ab51728a18da10b45e05770f1271760b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1db053744a68e34fc3995916605be75a49887f01
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313772"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277164"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy předdefinované definice zásad
 
@@ -153,7 +153,7 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 
 [!INCLUDE [azure-policy-samples-policies-sql](../../../../includes/policy/samples/bycat/policies-sql.md)]
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Úložiště
 
 [!INCLUDE [azure-policy-samples-policies-storage](../../../../includes/policy/samples/bycat/policies-storage.md)]
 
@@ -164,6 +164,10 @@ Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pom
 ## <a name="tags"></a>Značky
 
 [!INCLUDE [azure-policy-samples-policies-tags](../../../../includes/policy/samples/bycat/policies-tags.md)]
+
+## <a name="vm-image-builder"></a>VM Image Builder
+
+[!INCLUDE [azure-policy-samples-policies-vm-image-builder](../../../../includes/policy/samples/bycat/policies-vm-image-builder.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

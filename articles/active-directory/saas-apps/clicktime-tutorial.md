@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27803187e06ee523ff7e6b773bd302eed7422111
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b0db29309c2f691a1c7811258fee59582643a6e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608859"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256079"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Kurz: Azure Active Directory integrace s ClickTime
 
@@ -33,7 +33,7 @@ Integrace ClickTime s Azure AD poskytuje následující výhody:
 * Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -110,10 +110,10 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ClickTim
 
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:
     
-        ```https
-        https://app.clicktime.com/Login/
-        https://app.clicktime.com/App/Login/Consume.aspx
-        ```
+    ```http
+    https://app.clicktime.com/Login/
+    https://app.clicktime.com/App/Login/Consume.aspx
+    ```
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
@@ -145,7 +145,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ClickTim
    
     c.  Otevřete v **programu Poznámkový blok** **certifikát s kódováním Base-64** stažený z Azure Portal, zkopírujte ho a vložte ho do textového pole **certifikát X. 509** .
    
-    d.  Klikněte na **Uložit**.
+    d.  Klikněte na **Save** (Uložit).
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
@@ -170,7 +170,7 @@ Cílem této části je vytvořit testovacího uživatele v Azure Portal s názv
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na **Create** (Vytvořit).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -229,7 +229,7 @@ V případě ClickTime je zřizování ručním úkolem.
     > [!NOTE]
     > Pokud chcete, můžete nastavit další vlastnosti objektu New Person.
    
-    c.  Klikněte na **Uložit**.
+    c.  Klikněte na **Save** (Uložit).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 

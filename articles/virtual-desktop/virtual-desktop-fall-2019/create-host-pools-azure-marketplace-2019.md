@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd309b7c3b37e338b1d8e69635247cc90511b34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204740"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256845"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -46,7 +46,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů
 
@@ -58,7 +58,7 @@ Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů:
 
 Potom postupujte podle pokynů v následující části a zadejte informace o příslušných kartách.
 
-### <a name="basics"></a>Základy
+### <a name="basics"></a>Základní kroky
 
 Tady je seznam toho, co uděláte na kartě **základy** :
 
@@ -115,7 +115,7 @@ Karta **informace o Tenantovi virtuálních klientů Windows** :
    Pokud jste dokončili [kurz vytvoření objektů služby a přiřazení rolí pomocí PowerShellu](create-service-principal-role-powershell.md), vyberte **instanční objekt**.
 
 1. Pro instanční **objekt**pro **ID tenanta Azure AD**zadejte účet správce tenanta pro instanci služby Azure AD, která obsahuje instanční objekt. Podporují se jenom instanční objekty s přihlašovacími údaji hesla.
-1. Vyberte **Další: zkontrolovat + vytvořit**.
+1. Vyberte **Další: Zkontrolovat a vytvořit**.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>Dokončení instalace a vytvoření virtuálního počítače
 
@@ -154,7 +154,7 @@ Uživatelé, které přidáte do skupiny aplikací pracovní plochy, se můžou 
 
 Tady jsou aktuálně Podporovaní klienti:
 
-* [Klient služby Vzdálená plocha pro Windows 7 a Windows 10](../connect-windows-7-and-10.md)
+* [Klient služby Vzdálená plocha pro Windows 7 a Windows 10](connect-windows-7-10-2019.md)
 * [Webový klient pro virtuální počítače s Windows](connect-web-2019.md)
 
 ## <a name="next-steps"></a>Další kroky
