@@ -10,24 +10,26 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: f45cf27f427625571a58022c199391cac9a05bd2
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146935"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223750"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co je Azure Cognitive Services?
 
 Azure Cognitive Services jsou dostupná rozhraní API, sady SDK a služby, které vývojářům umožňují sestavovat inteligentní aplikace bez přímých dovedností nebo znalostí v oblasti datových věd. Azure Cognitive Services umožňuje vývojářům snadno přidat funkce rozpoznávání do svých aplikací. Cílem Azure Cognitive Services je pomáhat vývojářům vytvářet aplikace, které mohou vidět, slyšet, mluvit, pochopit a dokonce i začít. Katalog služeb v rámci služby Azure Cognitive Services je možné rozdělit na pět hlavních pilířů – vize, řeč, jazyk, Vyhledávání na webu a rozhodnutí.
 
+Chcete zjistit, co je nového a aktualizované v dokumentaci k Cognitive Services? Podívejte se, [co je nového v Cognitive Services docs](whats-new-docs.md).
+
 ## <a name="vision-apis"></a>Rozhraní API pro visioning
 
 |Název služby|Popis služby|
 |:-----------|:------------------|
-|[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací.|
+|[Počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Počítačové zpracování obrazu")|Služba Počítačové zpracování obrazu poskytuje přístup k pokročilým algoritmům pro zpracování imagí a vracení informací.|
 |[Služba Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Služba Custom Vision")|Custom Vision Service umožňuje vytvářet vlastní klasifikátory obrázků.|
-|[Tvář](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
+|[Rozpoznávání tváře](https://docs.microsoft.com/azure/cognitive-services/face/ "Tvář")| Služba obličeje poskytuje přístup k pokročilým algoritmům obličeje a umožňuje detekci a rozpoznávání atributů obličeje.|
 |[Nástroj pro rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Rozpoznávání formulářů") (Preview)|Nástroj pro rozpoznávání formulářů identifikuje a extrahuje páry klíč-hodnota a tabulková data z dokumentů formulářů; pak výstup strukturovaných dat včetně relací v původním souboru.|
 |[Nástroj pro rozpoznávání rukopisu](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Rozpoznávání rukopisu") (Preview)|Nástroj pro rozpoznávání rukopisu umožňuje rozpoznávat a analyzovat data tahů digitálního inkoustu, tvary a Rukopisný obsah a vytvářet výstupy struktury dokumentů se všemi rozpoznanými entitami.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer vám umožní extrahovat z videa přehledy.|

@@ -17,7 +17,7 @@ ms.locfileid: "73491663"
 ---
 | **Typ virtuální sítě WAN** | **Typ centra** | **Dostupné konfigurace** |
 |---|---|---|
-|Základní | Základní | Jenom síť Site-to-Site VPN |
+|Basic | Basic | Jenom síť Site-to-Site VPN |
 | Standard | Standard | ExpressRoute<br>SÍŤ VPN uživatele (P2S)<br>SÍŤ VPN (site-to-site)<br> Přenos mezi rozbočovači a propojení VNet-to-VNet přes virtuální rozbočovač |
 
 >[!NOTE]

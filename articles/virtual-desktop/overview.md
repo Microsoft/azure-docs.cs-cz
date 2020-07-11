@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 05/07/2020
+ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 0d6cc523a56c9235360e6476b69303c51dc4d893
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125800"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224345"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -87,47 +87,7 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 >[!NOTE]
 >Pokud potřebujete předplatné Azure, můžete si [zaregistrovat měsíční bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Pokud používáte bezplatnou zkušební verzi Azure, měli byste použít službu Azure AD Domain Services k udržování synchronizace služby Windows Server Active Directory s Azure Active Directory.
 
-Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí mít přístup k následujícím adresám URL:
-
-|Adresa|Odchozí port TCP|Účel|Značka služby|
-|---|---|---|---|
-|*. wvd.microsoft.com|443|Provoz služby|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Aktualizace zásobníku agenta a SXS|AzureCloud|
-|*.core.windows.net|443|Přenosy agenta|AzureCloud|
-|*.servicebus.windows.net|443|Přenosy agenta|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Přenosy agenta|AzureCloud|
-|catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
-|kms.core.windows.net|1688|Aktivace Windows|Internet|
-|wvdportalstorageblob.blob.core.windows.net|443|Podpora Azure Portal|AzureCloud|
-
->[!IMPORTANT]
->Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](../firewall/protect-windows-virtual-desktop.md)v systému Windows.
->
->Pro předcházení problémům se službou doporučujeme použít místo adres URL značky plně kvalifikovaného názvu domény nebo značky služby. Uvedené adresy URL a značky odpovídají pouze webům a prostředkům virtuálních ploch systému Windows. Neobsahují adresy URL pro jiné služby, například Azure Active Directory.
-
-Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít virtuální počítače Azure přístup:
-
-|Adresa|Odchozí port TCP|Účel|Značka služby|
-|---|---|---|---|
-|*.microsoftonline.com|443|Ověřování pro online služby Microsoftu|Žádné|
-|*. events.data.microsoft.com|443|Služba telemetrie|Žádné|
-|www.msftconnecttest.com|443|Zjistí, jestli je operační systém připojený k Internetu.|Žádné|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Žádné|
-|login.windows.net|443|Přihlaste se ke službám Microsoft Online Services Microsoft 365|Žádné|
-|*. sfx.ms|443|Aktualizace klientského softwaru OneDrivu|Žádné|
-|*. digicert.com|443|Ověření odvolání certifikátu|Žádné|
-
-
->[!NOTE]
->Virtuální klient Windows aktuálně neobsahuje seznam rozsahů IP adres, které můžete povolit pro povolení síťového provozu. V tuto chvíli podporujeme jenom konkrétní adresy URL, které jsou na seznamu povolených.
->
->Seznam adres URL souvisejících s Office, včetně požadovaných adres URL souvisejících s Azure Active Directory, najdete v tématu [adresy URL a rozsahy IP adres pro office 365](/office365/enterprise/urls-and-ip-address-ranges).
->
->Pro adresy URL, které se týkají provozu služby, je nutné použít zástupný znak (*). Pokud nechcete používat * pro přenosy související s agentem, vyhledáte adresy URL bez zástupných znaků:
->
->1. Zaregistrujte virtuální počítače do fondu hostitelů virtuálních počítačů s Windows.
->2. Otevřete **Prohlížeč událostí** a přejděte na **Windows protokoly**  >  **aplikace**  >  **WVD-agent** a vyhledejte událost s ID 3702.
->3. Seznam povolených adres URL, které najdete v části ID události 3702. Adresy URL v rámci události s ID 3702 jsou specifické pro oblast. Pro každou oblast, ve které chcete virtuální počítače nasadit, budete muset tento postup opakovat s příslušnými adresami URL.
+Seznam adres URL, které byste měli odblokovat, aby nasazení virtuálních klientů Windows fungovalo tak, jak má, najdete v našem [seznamu bezpečných adres URL](safe-url-list.md).
 
 Windows Virtual Desktop obsahuje stolní počítače a aplikace Windows, které dodáváte uživatelům a řešení pro správu, které je hostované jako služba v Azure od Microsoftu. Stolní počítače a aplikace můžou být nasazené na virtuálních počítačích v libovolné oblasti Azure a řešení pro správu a data pro tyto virtuální počítače se budou nacházet v USA. To může vést k přenosu dat do USA.
 
@@ -153,21 +113,7 @@ Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
 > [!IMPORTANT]
 > Virtuální počítač s Windows v současné době nepodporuje klienta vzdálené plochy z Windows Storu. Podpora tohoto klienta se přidá v budoucí verzi.
 
-Klienti vzdálené plochy musí mít přístup k následujícím adresám URL:
-
-|Adresa|Odchozí port TCP|Účel|Klient (y)|
-|---|---|---|---|
-|*. wvd.microsoft.com|443|Provoz služby|Vše|
-|*.servicebus.windows.net|443|Řešení potíží s daty|Vše|
-|go.microsoft.com|443|Microsoft odkazy fwlinks|Vše|
-|aka.ms|443|Zkrácení adresy URL Microsoftu|Vše|
-|docs.microsoft.com|443|Dokumentace|Vše|
-|privacy.microsoft.com|443|Prohlášení o ochraně osobních údajů
-|Vše|
-|query.prod.cms.rt.microsoft.com|443|Aktualizace klienta|Windows Desktop|
-
->[!IMPORTANT]
->Otevírání těchto adres URL je nezbytné pro spolehlivé klientské prostředí. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají pouze klientským webům a prostředkům a nezahrnují adresy URL pro jiné služby, například Azure Active Directory.
+Další informace o adresách URL, které musíte odblokovat, abyste mohli používat vzdálené klienty, najdete v [seznamu bezpečných adres URL](safe-url-list.md).
 
 ## <a name="supported-virtual-machine-os-images"></a>Podporované image operačních systémů virtuálních počítačů
 

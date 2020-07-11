@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: bbf098feccaf760718b97b1afb2d24bc55eef9ad
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 09eba483a258c1e88b15a5795d32b3b4a029a175
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027031"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232708"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
@@ -26,14 +26,14 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 ## <a name="july-2020"></a>Červenec 2020
 
 ### <a name="new-features"></a>Nové funkce
-* **dostupný odkaz v 2.0** Podívejte se [na reference k rozhraní API v 2.0](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) a aktualizované sady SDK pro [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer), [Python](https://docs.microsoft.com/python/api/overview/azure/formrecognizer), [Java](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)a [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer).
+* **dostupný odkaz v 2.0** Podívejte se [na reference k rozhraní API v 2.0](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) a aktualizované sady SDK pro [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre), [Python](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer), [Java](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)a [JavaScript](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/).
 * Vylepšení **tabulek a vylepšení extrakce** zahrnují vylepšení přesnosti a vylepšení extrahování tabulek, konkrétně možnost učit se záhlaví a struktury tabulek ve vlastním vlaku bez popisků. 
 * **Podpora měn** Detekce a extrakce globálních symbolů měny.
 * **Gov Azure** Nástroj pro rozpoznávání formulářů je teď také dostupný v Azure gov.
-*   **Rozšířené funkce zabezpečení**: 
-    *   **Přineste si vlastní klíč**  Nástroj pro rozpoznávání formulářů automaticky šifruje vaše data při trvalém ukládání do cloudu, aby bylo možné je chránit a aby vám pomohla splnit vaše závazky na zabezpečení a dodržování předpisů v organizaci. Ve výchozím nastavení používá vaše předplatné šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK)](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest
+*    **Rozšířené funkce zabezpečení**: 
+    *    **Přineste si vlastní klíč**  Nástroj pro rozpoznávání formulářů automaticky šifruje vaše data při trvalém ukládání do cloudu, aby bylo možné je chránit a aby vám pomohla splnit vaše závazky na zabezpečení a dodržování předpisů v organizaci. Ve výchozím nastavení používá vaše předplatné šifrovací klíče spravované Microsoftem. Vaše předplatné teď můžete spravovat i s vlastními šifrovacími klíči. [Klíče spravované zákazníkem (CMK), označované také jako Přineste si vlastní klíč (BYOK)](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/form-recognizer-encryption-of-data-at-rest
 ), nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich dat.  
-    *   **Soukromé koncové body** – umožňují vám používat virtuální síť (VNET) pro [zabezpečený přístup k datům prostřednictvím privátního propojení.](https://docs.microsoft.com/azure/private-link/private-link-overview)
+    *    **Soukromé koncové body** – umožňují vám používat virtuální síť (VNET) pro [zabezpečený přístup k datům prostřednictvím privátního propojení.](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
 
 ## <a name="june-2020"></a>Červen 2020
@@ -51,10 +51,10 @@ Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek
 
 ### <a name="new-features"></a>Nové funkce
 * **Podpora sady SDK pro rozhraní API pro rozpoznávání formulářů v 2.0 Public Preview** Tento měsíc jsme rozšířili podporu naší služby tak, aby zahrnovala sadu SDK verze Preview pro vydaný formulář pro rozpoznávání formulářů v 2.0 (Preview). Pomocí odkazů níže můžete začít s jazykem, který si vyberete: 
-   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/formrecognizer)
+   * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)
    * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/formrecognizer)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/formrecognizer)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/formrecognizer)
+   * [Python SDK](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)
+   * [JavaScript SDK](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)
 
   Nová sada SDK podporuje všechny funkce REST API v 2.0 pro rozpoznávání formulářů. Můžete například vytvořit model s nebo bez popisků a extrahovat text, páry klíčových hodnot a tabulky z formulářů, extrahovat data z účtenek pomocí předem připravené služby příjem a extrahovat text a tabulky pomocí služby rozvržení z vašich dokumentů. Svůj názor na sady SDK můžete sdílet prostřednictvím [formuláře zpětné vazby SDK](https://aka.ms/FR_SDK_v1_feedback).
  

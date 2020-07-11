@@ -16,6 +16,6 @@ ms.locfileid: "75445817"
 | Oblasti | Operační systém | Dostupné SKU GPU |
 | -------- | ---- | :-----------: |
 | Východní USA, Západní Evropa Západní USA 2 | Linux | K80, P100, V100 |
-| Jihovýchodní Asie | Linux | P100, V100|
+| Southeast Asia | Linux | P100, V100|
 | Indie – střed | Linux | V100 |
 | Severní Evropa | Linux | K80 |
