@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78199644"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232453"
 ---
 # <a name="live-event-low-latency-settings"></a>Nastavení nízké latence události za provozu
 
@@ -61,15 +62,15 @@ V následujících tabulkách jsou uvedeny typické výsledky pro latenci (když
 
 ||2S – skupinu GOP s povolenou nízkou latencí|1 skupinu GOP nízká latence povolena|
 |---|---|---|
-|POMLČKa v AMP|desítkách|8s|
-|HLS v nativním přehrávači pro iOS|14s|desítkách|
+|**POMLČKa v AMP**|desítkách|8s|
+|**HLS v nativním přehrávači pro iOS**|14s|desítkách|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
 
 ||2S – skupinu GOP s povolenou nízkou latencí|1 skupinu GOP nízká latence povolena|
 |---|---|---|
-|POMLČKa v AMP|14s|desítkách|
-|HLS v nativním přehrávači pro iOS|18s|13s|
+|**POMLČKa v AMP**|14s|desítkách|
+|**HLS v nativním přehrávači pro iOS**|18s|13s|
 
 > [!NOTE]
 > Koncová latence se může lišit v závislosti na podmínkách místní sítě nebo při zavedení vrstvy mezipaměti CDN. Měli byste testovat přesnou konfiguraci.

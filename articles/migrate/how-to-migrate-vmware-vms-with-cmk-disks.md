@@ -7,11 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc3132ebdd0f144d16507ef2ccda2dcaffaa34e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79269481"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232164"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrace virtuálních počítačů VMware na virtuální počítače Azure s povoleným šifrováním na straně serveru a zákaznickými klíči
 
@@ -23,7 +24,7 @@ Příklady v tomto článku se používají [Azure PowerShell](/powershell/azure
 
 [Přečtěte si další informace](../virtual-machines/windows/disk-encryption.md) o šifrování na straně serveru (SSE) se spravovanými klíči Customer (CMK) pro spravované disky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Přečtěte si kurz](tutorial-migrate-vmware.md) migrace virtuálních počítačů VMware do Azure s replikací bez agentů, abyste pochopili požadavky na nástroj.
 - [Postupujte podle těchto pokynů](how-to-add-tool-first-time.md) a vytvořte projekt Azure Migrate a přidejte do projektu nástroj pro **migraci serveru Azure Migrate: Server** .
@@ -57,7 +58,7 @@ Prostředí portálu pro migraci serveru zjednodušuje přípravu infrastruktury
 
 Objekty pro nastavení šifrování disku – mapování Managed Disks na Key Vault obsahující CMK, který se má použít pro SSE. K replikaci virtuálních počítačů pomocí CMK vytvoříte sadu pro šifrování disků a předáte ji jako vstup do operace replikace.
 
-Podle [následujícího příkladu vytvořte](../virtual-machines/windows/disk-encryption.md#powershell) pomocí Azure PowerShell sadu šifrování disku. Ujistěte se, že je v cílovém předplatném, na které jsou virtuální počítače migrovány, vytvořená sada Disk Encryption, a v cílové oblasti Azure pro migraci.
+Podle [následujícího příkladu vytvořte](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) pomocí Azure PowerShell sadu šifrování disku. Ujistěte se, že je v cílovém předplatném, na které jsou virtuální počítače migrovány, vytvořená sada Disk Encryption, a v cílové oblasti Azure pro migraci.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

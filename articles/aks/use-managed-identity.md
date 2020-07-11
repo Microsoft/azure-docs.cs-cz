@@ -4,14 +4,14 @@ description: Naučte se používat spravované identity ve službě Azure Kubern
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 07/10/2020
 ms.author: mlearned
-ms.openlocfilehash: 30d1290f9eb7b2750f09e5e256d4dd212c7e4607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27ae1d1a2c6309bdac2410dca4b48abf27d8ea0b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610281"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231977"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
@@ -23,7 +23,7 @@ V současné době cluster Azure Kubernetes Service (AKS) (konkrétně poskytova
 
 Musíte mít nainstalované následující prostředky:
 
-- Rozhraní příkazového řádku Azure, verze 2.2.0 nebo novější
+- Rozhraní příkazového řádku Azure, verze 2.8.0 nebo novější
 
 ## <a name="limitations"></a>Omezení
 
@@ -36,20 +36,20 @@ Musíte mít nainstalované následující prostředky:
 
 AKS používá několik spravovaných identit pro předdefinované služby a doplňky.
 
-| Identita                       | Name    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
+| Identita                       | Název    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
 |----------------------------|-----------|----------|
 | Řídicí rovina | neviditelné | Používá AKS ke správě síťových prostředků, například k vytvoření nástroje pro vyrovnávání zatížení pro příchozí, veřejnou IP adresu atd.| Role přispěvatele pro skupinu prostředků uzlu | Aktuálně se nepodporuje.
 | Kubelet | Název clusteru AKS – neznámá | Ověřování pomocí Azure Container Registry (ACR) | Role čtecího modulu pro skupinu prostředků uzlu | Aktuálně se nepodporuje.
-| Doplněk | AzureNPM | Není nutná žádná identita. | NA | No
-| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | NA | No
-| Doplněk | azurepolicy (gatekeeper) | Není nutná žádná identita. | NA | No
-| Doplněk | azurepolicy | Není nutná žádná identita. | NA | No
-| Doplněk | Calico | Není nutná žádná identita. | NA | No
-| Doplněk | Řídicí panel | Není nutná žádná identita. | NA | No
-| Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | No
-| Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | No
-| Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | No
-| Doplněk | Virtuální uzel (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | No
+| Doplněk | AzureNPM | Není nutná žádná identita. | NA | Ne
+| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | NA | Ne
+| Doplněk | azurepolicy (gatekeeper) | Není nutná žádná identita. | NA | Ne
+| Doplněk | azurepolicy | Není nutná žádná identita. | NA | Ne
+| Doplněk | Calico | Není nutná žádná identita. | NA | Ne
+| Doplněk | Řídicí panel | Není nutná žádná identita. | NA | Ne
+| Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | Ne
+| Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | Ne
+| Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | Ne
+| Doplněk | Virtuální uzel (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | Ne
 
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Vytvoření clusteru AKS se spravovanými identitami

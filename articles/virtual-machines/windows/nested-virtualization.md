@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 543ed51cc10cce017e0e57a1a351ce382f1ca35f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083504"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232317"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Jak povolit vnořenou virtualizaci na virtuálním počítači Azure
 
@@ -145,7 +145,7 @@ Pomocí následujících kroků nakonfigurujte DHCP na virtuálním počítači 
   
 3. Zaškrtněte políčko **Server DHCP** , klikněte na **Přidat funkce**a potom klikněte na **Další** , dokud Průvodce nedokončíte.
   
-4. Klikněte na **nainstalovat**.
+4. Klikněte na **Install** (Nainstalovat).
 
 #### <a name="configure-a-new-dhcp-scope"></a>Konfigurace nového oboru DHCP
 
@@ -181,3 +181,4 @@ V tomto příkladu budete používat adresu v rozsahu 192.168.0.0/24.
 V hostovaném virtuálním počítači otevřete prohlížeč a přejděte na webovou stránku.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
+Pokyny, jak povolit transparentní připojení mezi virtuálními počítači hosta a virtuálními počítači Azure, najdete v [tomto dokumentu](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).

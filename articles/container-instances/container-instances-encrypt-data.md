@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080356"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232436"
 ---
 # <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
 
@@ -25,10 +26,10 @@ Pro šifrování dat kontejneru můžete spoléhat na klíče spravované Micros
 
 |    |    Klíče spravované společností Microsoft     |     Klíče spravované zákazníkem     |
 |----|----|----|
-|    Operace šifrování a dešifrování    |    Azure    |    Azure    |
-|    Úložiště klíčů    |    Úložiště klíčů Microsoftu    |    Azure Key Vault    |
-|    Zodpovědnost za střídání klíčů    |    Microsoft    |    Zákazník    |
-|    Přístup ke klíči    |    Jenom Microsoft    |    Microsoft, zákazník    |
+|    **Operace šifrování a dešifrování**    |    Azure    |    Azure    |
+|    **Úložiště klíčů**    |    Úložiště klíčů Microsoftu    |    Azure Key Vault    |
+|    **Zodpovědnost za střídání klíčů**    |    Partnerský vztah Microsoftu    |    Customer (Zákazník)    |
+|    **Přístup ke klíči**    |    Jenom Microsoft    |    Microsoft, zákazník    |
 
 Zbývající část dokumentu popisuje kroky potřebné k zašifrování dat nasazení ACI s klíčem (klíč spravovaný zákazníkem). 
 

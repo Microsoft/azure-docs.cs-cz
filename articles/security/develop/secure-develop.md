@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266759"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232691"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -134,7 +134,7 @@ Proveďte DAST, nejlépe s asistencí odborníka na zabezpečení ( [Tester pro 
 
 V případě neočekávaného [testování](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)vystavíte selhání programu záměrně, když do aplikace zavedete poškozená nebo náhodná data. Selhání programu pomáhá odhalit potenciální problémy zabezpečení před vydáním aplikace.
 
-[Detekce rizik se zabezpečením](https://docs.microsoft.com/security-risk-detection/) je jedinečná služba pro nenáročné testování Microsoftu pro nalezení chyb kritických pro zabezpečení v softwaru.
+[Detekce rizik se zabezpečením](https://www.microsoft.com/en-us/security-risk-detection/) je jedinečná služba pro nenáročné testování Microsoftu pro nalezení chyb kritických pro zabezpečení v softwaru.
 
 ### <a name="conduct-attack-surface-review"></a>Provést kontrolu na Surface útoků
 

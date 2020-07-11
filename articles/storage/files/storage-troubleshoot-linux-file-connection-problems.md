@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffd73e9dff06df4b5acdd004dddcfca5ff03ede0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512004"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232266"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
 
@@ -30,12 +30,12 @@ Mezi běžné příčiny tohoto problému patří:
 
 |   | SMB 2.1 <br>(Připojení k virtuálním počítačům ve stejné oblasti Azure) | SMB 3.0 <br>(Připojení z místního prostředí a mezi oblastmi) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
-| Debian | 8 + |   |
-| openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+| **Ubuntu Server** | 14.04 + | 16.04 + |
+| **RHEL** | 7 + | 7.5 + |
+| **CentOS** | 7 + |  7.5 + |
+| **Debian** | 8 + |   |
+| **openSUSE** | 13.2 + | 42.3 + |
+| **SUSE Linux Enterprise Server** | 12 | 12 SP3 + |
 
 - V klientovi nejsou nainstalované nástroje CIFS (CIFS-util).
 - Na klientovi není nainstalovaná minimální verze protokolu SMB/CIFS 2,1.
@@ -84,9 +84,9 @@ V systému Linux se zobrazí chybová zpráva podobná následující:
 
 ### <a name="cause"></a>Příčina
 
-Dosáhli jste horního limitu souběžných otevřených popisovačů, které jsou povoleny pro určitý soubor.
+Dosáhli jste horního limitu souběžných otevřených popisovačů, které jsou povoleny pro soubor nebo adresář.
 
-V jednom souboru je kvóta 2 000 otevřených popisovačů. Když máte 2 000 otevřených popisovačů, zobrazí se chybová zpráva oznamující, že se dosáhlo kvóty.
+K dispozici je kvóta 2 000 otevřených popisovačů v jednom souboru nebo adresáři. Když máte 2 000 otevřených popisovačů, zobrazí se chybová zpráva oznamující, že se dosáhlo kvóty.
 
 ### <a name="solution"></a>Řešení
 

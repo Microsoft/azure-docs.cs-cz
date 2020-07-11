@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d32c130205420ef8f20d7ce8cb97f9a2595e978
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481727"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232198"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -174,7 +174,7 @@ To závisí na okolnostech. Pokud byl virtuální počítač nasazen prostředni
 Ano, ale nedoporučuje se, pokud je to nutné, například při přiřazování více IP adres k virtuálnímu počítači. Podrobnosti najdete v tématu [Přidání více IP adres k virtuálnímu počítači](virtual-network-multiple-ip-addresses-portal.md#os-config). Pokud se změní IP adresa přiřazená k síťové kartě Azure připojené k virtuálnímu počítači a IP adresa v operačním systému virtuálního počítače je odlišná, ztratíte připojení k virtuálnímu počítači.
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Když zastavím slot nasazení cloudové služby nebo vypnete virtuální počítač z operačního systému, co se stane s IP adresami?
-Nic. IP adresy (veřejné virtuální IP adresy, veřejné a privátní) zůstanou přiřazené k slotu nasazení cloudové služby nebo k virtuálnímu počítači.
+Nic IP adresy (veřejné virtuální IP adresy, veřejné a privátní) zůstanou přiřazené k slotu nasazení cloudové služby nebo k virtuálnímu počítači.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Můžu přesunout virtuální počítače z jedné podsítě do jiné podsítě ve virtuální síti bez nutnosti opětovného nasazení?
 Ano. Další informace najdete v tématu [Postup přesunutí instance virtuálního počítače nebo role do jiné podsítě](virtual-networks-move-vm-role-to-subnet.md) .
@@ -406,9 +406,8 @@ Azure Active Directory (Azure AD) nepodporují nativní koncové body služby. �
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Existují nějaká omezení počtu koncových bodů služby virtuální sítě, které můžu nastavit z mé virtuální sítě?
 Celkový počet koncových bodů služby virtuální sítě ve virtuální síti není nijak omezený. Pro prostředek služby Azure (například účet Azure Storage) můžou služby vymáhat omezení počtu podsítí používaných k zabezpečení prostředku. Následující tabulka uvádí některé příklady omezení: 
 
-|||
-|---|---|
 |Služba Azure| Omezení pravidel virtuální sítě|
+|---|---|
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|

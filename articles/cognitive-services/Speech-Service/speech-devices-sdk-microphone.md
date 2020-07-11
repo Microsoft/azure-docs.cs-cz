@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168143"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232521"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Doporučení pro pole mikrofonu v sadě Speech Devices SDK
 
@@ -27,7 +27,7 @@ Sada Speech Devices SDK nejlépe funguje s polem mikrofonu navrženým podle ná
 
 Pro použití s Microsoft audio stackem se doporučuje následující geometrií pole. Umístění zvukových zdrojů a odmítnutí okolního hluku je vylepšeno s větším počtem mikrotelefonů se závislostmi na konkrétních aplikacích, uživatelských scénářích a faktoru formuláře zařízení.
 
-|     | Kruhové pole |     | Lineární pole |     |
+| MICS & geometrie | Kruhové pole | Kruhové pole | Lineární pole | Lineární pole |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \#Mics | 7 | 4 | 4 | 2 |
@@ -41,7 +41,7 @@ Pro přesný reprodukování signálu bez rušivého hluku a narušení by měly
 
 Doporučené vlastnosti při výběru mikrofonu jsou:
 
-| Parametr | Doporučené |
+| Parametr | Doporučeno |
 | --------- | ----------- |
 | SNR | \>= 65 dB (1 kHz signálu 94 dBSPL, s váženým hlukem) |
 | Porovnání amplitudy | ± 1 dB @ 1 kHz |
@@ -60,7 +60,7 @@ Dobrým výběrem komponenty musí být párována s dobrou integrací electroac
 
 Výkon pole mikrofonu, když se integruje do zařízení, se liší od specifikace součásti. Je důležité zajistit, aby se mikrofony po integraci dobře shodovaly. Proto by výkon zařízení měřený po jakémkoli dlouhodobém získání nebo EQ měl splňovat následující doporučení:
 
-| Parametr          | Doporučené                                        |
+| Parametr          | Doporučeno                                        |
 | ------------------ | -------------------------------------------------- |
 | SNR                | \>63 dB (1 kHz signálu 94 dBSPL, s váženým hlukem) |
 | Citlivost výstupu | -26 dBFS/PA @ 1 kHz (doporučeno)                  |
@@ -76,7 +76,7 @@ Výkon pole mikrofonu, když se integruje do zařízení, se liší od specifika
 
 Pro zařízení rozpoznávání řeči, která obsahují reproduktory, je třeba zrušení ozvěny k dispozici pro výběr mluvčího a integraci dalších doporučení.
 
-| Parametr | Doporučené |
+| Parametr | Doporučeno |
 | --------- | ----------- |
 | Otázky linearity | Žádné nelineární zpracování po odkazech na mluvčí, jinak se vyžaduje hardwarový Stream reference zpětné smyčky. |
 | Smyčka mluvčího | Poskytuje se prostřednictvím WASAPI, privátních rozhraní API, vlastního modulu plug-in ALSA (Linux) nebo poskytovaných prostřednictvím kanálu firmwaru. |
@@ -90,7 +90,7 @@ Při integraci mikrotelefonů do zařízení jsou nutné následující pokyny p
 | Parametr | Doporučení |
 | --------- | -------------- |
 | Podobnost portů na mikrofonu | Všechny porty mikrofonu mají v poli stejnou délku. |
-| Rozměry portů MIC | Velikost portu ř. 0,8 – 1,0 mm. Délka portu/průměr \< portu 2 |
+| Rozměry portů MIC | Velikost portu ř. 0,8 – 1,0 mm. Délka portu/průměr portu \< 2 |
 | Zapečetění mikrofonu         | Zapečetění gaskets se stejnoměrně implementuje v zásobníku. Doporučuje \> 70% kompresní poměr pro pěnu gaskets |
 | Spolehlivost mikrofonu     | Síť by se měla použít k zamezení prachu a vstupu (mezi PCB pro nejnižší přenosová čísla a uzavírání Gasket/horního krytu). |
 | Izolace mikrofonu       | Pryžové gaskets a vibrace odpojuje se strukturou, zejména pro izolaci všech cest vibrací z důvodu integrovaných mluvčích. |

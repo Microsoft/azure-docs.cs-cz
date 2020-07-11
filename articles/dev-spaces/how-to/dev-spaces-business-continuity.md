@@ -8,23 +8,24 @@ ms.topic: conceptual
 description: Naučte se používat Azure Dev Spaces a služby Azure Kubernetes k zajištění kontinuity podnikových aplikací a příprava na zotavení po havárii.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996920"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232419"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Provozní kontinuita a zotavení po havárii v Azure Dev Spaces
 
 ## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Přečtěte si pokyny pro zotavení po havárii pro službu Azure Kubernetes Service (AKS).
 
-Azure Dev Spaces je funkce služby Azure Kubernetes Service (AKS). Měli byste si být vědomi pokynů pro zotavení po havárii v AKS a zvážit, zda se vztahují na clustery AKS, které používáte pro vývojové prostory. Další informace najdete [v článku osvědčené postupy pro kontinuitu podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) .
+Azure Dev Spaces je funkce služby Azure Kubernetes Service (AKS). Měli byste si být vědomi pokynů pro zotavení po havárii v AKS a zvážit, zda se vztahují na clustery AKS, které používáte pro vývojové prostory. Další informace najdete [v článku osvědčené postupy pro kontinuitu podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)](../../aks/operator-best-practices-multi-region.md) .
 
 ## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Povolit vývojářské prostory v clusterech AKS v různých oblastech
 
 Povolením vývojových prostorů v clusterech AKS v různých oblastech můžete dál používat vývojové prostory hned po selhání oblasti Azure.
 
-Obecné informace o nasazeních AKS ve více oblastech najdete v tématu [Plánování nasazení ve více oblastech](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) .
+Obecné informace o nasazeních AKS ve více oblastech najdete v tématu [Plánování nasazení ve více oblastech](../../aks/operator-best-practices-multi-region.md#plan-for-multiregion-deployment) .
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>Povolit vývojářské prostory prostřednictvím Azure CLI
 

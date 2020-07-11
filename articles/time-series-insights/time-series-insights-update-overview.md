@@ -10,11 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 20ab78aa67fa5d59dac774559b3c43561cf75fbc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5e8ea56de84f3d6b92bc23c0e3ab139d03bd68a9
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040703"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232249"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Co je Azure Time Series Insights ve verzi Preview?
 
@@ -75,7 +76,7 @@ Azure Time Series Insights poskytuje škálovatelný cenový model průběžnýc
  
 Díky zavedení těchto klíčových funkcí pro průmyslové účely IoT Time Series Insights také nabízí následující klíčové výhody.  
 
-| | |
+| Schopnost | Výhoda |
 | ---| ---|
 | Vícevrstvé úložiště pro data časových řad IoT-Scale | Pomocí sdíleného kanálu zpracování dat pro ingestování dat můžete ingestovat data do teplého i mrazírenského úložiště. Používejte záložní úložiště pro interaktivní dotazy a chladírenské úložiště pro ukládání velkých objemů dat. Další informace o tom, jak využít výhod vysoce výkonných dotazů založených na prostředcích, najdete v tématu [dotazy](./concepts-query-overview.md). |
 | Model časové řady pro dátí nezpracované telemetrie a odvození přehledů na základě assetů | Model časové řady můžete použít k vytvoření instancí, hierarchií, typů a proměnných pro data časových řad. Další informace o modelu časových řad najdete v tématu [model časových řad](./concepts-model-overview.md).  |

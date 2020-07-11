@@ -1,49 +1,73 @@
 ---
-title: Upgrade na sadu Azure Search .NET Management SDK verze 2
+title: Upgrade na sadu Azure Search .NET Management SDK
 titleSuffix: Azure Cognitive Search
-description: Upgradujte na sadu Azure Search .NET Management SDK verze 2 z předchozích verzí. Podívejte se, co je nového a co je potřeba mít změny kódu.
+description: Upgradujte na sadu Azure Search .NET Management SDK z předchozích verzí. Přečtěte si o nových funkcích a změnách kódu nezbytných pro migraci.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/01/2020
+ms.openlocfilehash: 436c2620b83513a2b814e050b2ae6407930b082d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73847533"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232045"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Upgrade verzí sady Azure Search .NET Management SDK
 
-> [!Important]
-> Tento obsah je stále v konstrukci. V NuGet je dostupná verze 3,0 sady Azure Search Management .NET SDK. Pracujeme na aktualizaci tohoto průvodce migrací, abychom vysvětlují, jak upgradovat na novou verzi. 
->
+Tento článek vysvětluje, jak migrovat do po sobě jdoucí verze sady Azure Search .NET Management SDK, která se používá ke zřízení nebo zrušení zřízení služby Search Services, úpravě kapacity a správě klíčů rozhraní API.
 
-Pokud používáte verzi 1.0.2 [sady .NET Management SDK nebo Azure Search](https://aka.ms/search-mgmt-sdk)starší, Tento článek vám pomůže při upgradu aplikace na použití verze 2.
+Sady SDK pro správu cílí na konkrétní verzi REST API správy. Další informace o konceptech a operacích najdete v tématu [Správa hledání (REST)](https://docs.microsoft.com/rest/api/searchmanagement/).
 
-Verze 2 sady Azure Search .NET Management SDK obsahuje některé změny z dřívějších verzí. Jsou to většinou méně významné, takže změna kódu by měla vyžadovat jenom minimální úsilí. Pokyny ke změně kódu pro použití nové verze sady SDK najdete v tématu [Postup upgradu](#UpgradeSteps) .
+## <a name="versions"></a>Verze
 
-<a name="WhatsNew"></a>
+| SDK version (Verze sady SDK) | Odpovídající verze REST API | Přidání nebo změna chování funkce |
+|-------------|--------------------------------|-------------------------------------|
+| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020-30-20 | Přidá zabezpečení koncového bodu (brány firewall IP a integrace pomocí [privátního odkazu Azure](../private-link/private-endpoint-overview.md)). |
+| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Vylepšení použitelnosti. Zásadní změna [klíčů dotazu seznamu](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) (přestává se ukončit). |
+| [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | První verze |
 
-## <a name="whats-new-in-version-2"></a>Co je nového ve verzi 2
-Verze 2 sady Azure Search .NET Management SDK cílí na stejnou obecně dostupnou verzi REST API správy Azure Search jako předchozí verze sady SDK, konkrétně 2015-08-19. Změny v sadě SDK jsou čistě změny na straně klienta, aby se zlepšila použitelnost samotné sady SDK. Mezi tyto změny patří následující:
+## <a name="how-to-upgrade"></a>Postup upgradu
+
+1. Aktualizujte svůj odkaz na NuGet pro `Microsoft.Azure.Management.Search` použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
+
+1. Jakmile NuGet stáhne nové balíčky a jejich závislosti, sestavte projekt znovu. V závislosti na tom, jak je váš kód strukturovaný, se může úspěšně znovu sestavit, v takovém případě jste hotovi.
+
+1. Pokud sestavení selhalo, může to být způsobeno tím, že jste implementovali některá rozhraní sady SDK (například pro účely testování částí), které se změnily. Chcete-li tento problém vyřešit, budete muset implementovat novější metody, jako je například `BeginCreateOrUpdateWithHttpMessagesAsync` .
+
+1. Po opravě chyb sestavení můžete v aplikaci provádět změny, abyste mohli využívat nové funkce. 
+
+## <a name="upgrade-to-30"></a>Upgradovat na 3,0
+
+Verze 3,0 přidává ochranu privátních koncových bodů tím, že omezuje přístup k rozsahům IP adres a volitelně je integruje s privátním propojením Azure pro služby vyhledávání, které by se neměly zobrazovat na veřejném Internetu.
+
+### <a name="new-apis"></a>Nová rozhraní API
+
+| Rozhraní API | Kategorie| Podrobnosti |
+|-----|--------|------------------|
+| [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#networkruleset) | Brána firewall protokolu IP | Omezte přístup ke koncovému bodu služby na seznam povolených IP adres. Koncepty a pokyny pro portál najdete v tématu [Konfigurace brány firewall protokolu IP](service-configure-firewall.md) . |
+| [Prostředek sdíleného privátního propojení](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Vytvořte sdílený prostředek privátního propojení, který bude používán vyhledávací službou.  |
+| [Připojení privátního koncového bodu](https://docs.microsoft.com/rest/api/searchmanagement/privateendpointconnections) | Private Link | Navázání a Správa připojení k vyhledávací službě prostřednictvím privátního koncového bodu. Koncepty a pokyny pro portál najdete v tématu [Vytvoření privátního koncového bodu](service-create-private-endpoint.md) .|
+| [Prostředky privátního propojení](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/) | Private Link | Pro vyhledávací službu, která má připojení privátního koncového bodu, získejte seznam všech služeb, které se používají ve stejné virtuální síti. Pokud vaše řešení pro vyhledávání obsahuje indexery, které jsou vyžádané ze zdrojů dat Azure (Azure Storage, Cosmos DB, Azure SQL), nebo používají Cognitive Services nebo Key Vault, musí mít všechny tyto prostředky ve virtuální síti koncové body a toto rozhraní API by mělo vracet seznam. |
+| [PublicNetworkAccess](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Toto je vlastnost pro žádosti o vytvoření nebo aktualizaci služby. Když je tato zakázaná, privátní odkaz je jediným rozhraním přístupu. |
+
+### <a name="breaking-changes"></a>Změny způsobující chyby
+
+Nemůžete už použít možnost získat u žádosti o [klíč dotazu seznamu](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) . V předchozích verzích můžete použít buď GET nebo POST, v této verzi a ve všech verzích, které se přesunou nahoru, podporuje se jenom POST. 
+
+## <a name="upgrade-to-20"></a>Upgradovat na 2,0
+
+Verze 2 sady Azure Search .NET Management SDK je menší upgrade, takže změna kódu by měla vyžadovat jenom minimální úsilí. Změny v sadě SDK jsou čistě změny na straně klienta, aby se zlepšila použitelnost samotné sady SDK. Mezi tyto změny patří následující:
 
 * `Services.CreateOrUpdate`a jeho asynchronní verze nyní automaticky dotazují zřizování `SearchService` a nevrátí se do dokončení zřizování služby. Tím ušetříte, abyste si tento kód cyklického dotazování sami napsali sami.
+
 * Pokud přesto chcete, aby se zřizování služby dotazoval ručně, můžete použít novou `Services.BeginCreateOrUpdate` metodu nebo jednu z jejích asynchronních verzí.
+
 * Nové metody `Services.Update` a její asynchronní verze byly přidány do sady SDK. Tyto metody používají opravu HTTP k podpoře přírůstkové aktualizace služby. Můžete například nyní škálovat službu předáním `SearchService` instance těmto metodám, které obsahují pouze požadované `partitionCount` `replicaCount` vlastnosti a. Starý způsob volání `Services.Get` , úpravy vráceného `SearchService` a jeho předání na `Services.CreateOrUpdate` je stále podporován, ale již není nutný. 
 
-<a name="UpgradeSteps"></a>
-
-## <a name="steps-to-upgrade"></a>Postup upgradu
-Nejdřív aktualizujte svůj odkaz na NuGet pro `Microsoft.Azure.Management.Search` použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
-
-Jakmile NuGet stáhne nové balíčky a jejich závislosti, sestavte projekt znovu. V závislosti na tom, jak je kód strukturovaný, se může úspěšně znovu sestavit. Pokud ano, jste připraveni!
-
-Pokud sestavení selhalo, může to být způsobeno tím, že jste implementovali některá rozhraní sady SDK (například pro účely testování částí), které se změnily. Chcete-li tento problém vyřešit, budete muset implementovat nové metody, jako je například `BeginCreateOrUpdateWithHttpMessagesAsync` .
-
-Jakmile opravíte jakékoli chyby sestavení, můžete v aplikaci provádět změny, abyste mohli využít nové funkce, pokud chcete. Nové funkce v sadě SDK jsou podrobně popsané v části [co je nového ve verzi 2](#WhatsNew).
-
 ## <a name="next-steps"></a>Další kroky
-Vaše názory na sadu SDK jsme uvítá. Pokud narazíte na problémy, pošlete prosím své dotazy na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest). Pokud narazíte na chybu, můžete založit problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že název problému bude označovat text "[Search]".
+
+Pokud narazíte na problémy, je nejlepší fórum pro publikování dotazů [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest). Pokud narazíte na chybu, můžete založit problém v [úložišti GitHub Azure .NET SDK](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že název problému bude označovat text "[Search]".

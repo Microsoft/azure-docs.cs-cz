@@ -6,13 +6,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/30/2020
-ms.openlocfilehash: 078892691bfaec62f71f9d601a42de3f80221149
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 07/10/2020
+ms.openlocfilehash: 01968335ffcaffb26cabd2a5174d00e5471409c1
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958153"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232028"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -22,47 +22,48 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 ### <a name="june-2020"></a>Červen 2020
 
-+ [Znalostní databáze](knowledge-store-concept-intro.md) je teď všeobecně dostupná.
-
-+ [Search Service REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) je nová stabilní verze rozhraní REST API. Kromě znalostní báze Knowledge Store tato všeobecně dostupná verze obsahuje vylepšení pro vyhledávání relevance a bodování.
-
-+ Nový algoritmus hodnocení relevance se teď [BM25](https://en.wikipedia.org/wiki/Okapi_BM25) pro každou novou službu, kterou vytvoříte. U existujících služeb se můžete rozhodnout, že nastavíte `similarity` vlastnost u polí index. Tato vlastnost je všeobecně dostupná.
-
-+ Nový indexer `executionEnvironment` může být explicitně nastaven na `private` . Tato schopnost podporuje přístup indexeru k externím datům prostřednictvím soukromých koncových bodů a je všeobecně dostupná.
-
-+ [Azure Machine Learning (AML)](cognitive-search-aml-skill.md) je nový typ dovedností pro integraci koncového bodu inferencing z Azure Machine Learning. Prostředí portálu podporuje zjišťování a integraci Azure Machine Learningho koncového bodu v rámci Kognitivní hledání dovednosti. Zjišťování vyžaduje, aby vaše Kognitivní hledání a služby Azure ML byly nasazeny ve stejném předplatném. Tato dovednost je všeobecně dostupná. Začněte s [tímto kurzem](cognitive-search-tutorial-aml-custom-skill.md).
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
+|---------|------------------|-------------|---------------|
+[**Knowledge Store**](knowledge-store-concept-intro.md) | Obohacení AI | Výstup indexeru s obohaceným AI, který ukládá obsah v Azure Storage pro použití v jiných aplikacích a procesech. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější nebo na portálu. |
+| [**Hledat REST API 2020-06-30**](https://docs.microsoft.com/rest/api/searchservice/) | REST | Nová stabilní verze rozhraní REST API. Kromě znalostní báze Knowledge Store zahrnuje tato verze vylepšení vyhledávání relevance a bodování. | Všeobecně k dispozici. |
+| [**Okapi BM25 – algoritmus relevance**](https://en.wikipedia.org/wiki/Okapi_BM25) | Dotaz | Nový algoritmus hodnocení relevance se automaticky používá pro všechny nové služby vyhledávání vytvořené po 15. červenci. Pro služby, které jste vytvořili dřív, se můžete rozhodnout, že nastavíte `similarity` vlastnost u polí index. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
+| **executionEnvironment** | Zabezpečení (indexery) | Explicitně nastavte tuto vlastnost konfigurace indexeru tak, aby `private` vynutila všechna připojení k externím zdrojům dat v rámci privátního koncového bodu. Platí pouze pro služby vyhledávání, které využívají privátní propojení Azure. | Všeobecně k dispozici. </br> K nastavení tohoto obecného parametru konfigurace použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) . |
+| [**Azure Machine Learning (AML) – dovednost**](cognitive-search-aml-skill.md) | Obohacení AI| Nový typ dovednosti pro integraci koncového bodu Inferencing z Azure Machine Learning. Začněte s [tímto kurzem](cognitive-search-tutorial-aml-custom-skill.md). | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější. K dispozici také na portálu v návrhu dovednosti, za předpokladu, že Kognitivní hledání a služby Azure ML se nasazují ve stejném předplatném. |
 
 ### <a name="may-2020-microsoft-build"></a>Květen 2020 (Microsoft Build)
 
-+ Funkce [relace ladění](cognitive-search-debug-session.md) je teď ve verzi Preview. Relace ladění poskytují rozhraní založené na portálu pro zkoumání a řešení problémů s dovednosti. Opravy vytvořené v relaci ladění se dají uložit do produkčního dovednostiu. Začněte s [tímto kurzem](cognitive-search-tutorial-debug-sessions.md).
-
-+ Proveďte stínění koncového bodu vyhledávací služby z veřejného Internetu [konfigurací pravidel IP adres pro podporu integrované brány firewall](service-configure-firewall.md) nebo využitím [privátního odkazu Azure pro soukromý koncový bod vyhledávání](service-create-private-endpoint.md). Obě možnosti jsou všeobecně dostupné.
-
-+ K nastavení připojení ke zdroji dat Azure pro indexování použijte [systémově spravovanou identitu (Preview)](search-howto-managed-identities-data-sources.md) . Platí pro [indexery](search-indexer-overview.md) , které ingestují obsah ze zdrojů dat Azure, jako jsou Azure SQL Database, Azure Cosmos DB a Azure Storage.
-
-+ Změňte základ pro výpočet skóre výsledků hledání z horizontálních oddílů na All-horizontálních oddílů s použitím parametrů [SessionID](index-similarity-and-scoring.md) a [scoringStatistics = Global](index-similarity-and-scoring.md#scoring-statistics)Query. Tyto parametry jsou všeobecně dostupné.
-
-+ Přidejte parametr dotazu [featuresMode (Preview)](index-similarity-and-scoring.md#featuresMode-param) , který rozbalí skóre významnosti, aby se zobrazilo více podrobností: skóre podobnosti podle pole, frekvence termínu pole a počet jedinečných tokenů na pole. Tyto datové body můžete využívat v algoritmech vlastního bodování. Ukázku, která tuto schopnost předvádí, najdete v tématu věnovaném [Přidání strojového učení (LearnToRank) k vyhledávání relevance](https://github.com/Azure-Samples/search-ranking-tutorial).
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
+|---------|------------------|-------------|---------------|
+| [**Ladicí relace**](cognitive-search-debug-session.md) | Obohacení AI | Relace ladění poskytují rozhraní založené na portálu pro zkoumání a řešení problémů s existujícím dovednosti. Opravy vytvořené v relaci ladění se dají uložit do produkčního dovednostiu. Začněte s [tímto kurzem](cognitive-search-tutorial-debug-sessions.md). | Public Preview na portálu. |
+| [**Pravidla protokolu IP pro podporu firewallu s vazbou**](service-configure-firewall.md) | Zabezpečení | Omezte přístup ke koncovému bodu vyhledávací služby na konkrétní IP adresy. | Všeobecně k dispozici. </br> Použijte [správu REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) nebo novější nebo na portálu. |
+| [**Privátní odkaz na Azure pro soukromý koncový bod hledání**](service-create-private-endpoint.md) | Zabezpečení| Propojte vyhledávací službu z veřejného Internetu tak, že ji spustíte jako prostředek privátního propojení, který je přístupný jenom pro klientské aplikace a další služby Azure ve stejné virtuální síti. | Všeobecně k dispozici. </br> Použijte [správu REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) nebo novější nebo na portálu. |
+| [**Identita spravovaná systémem (verze Preview)**](search-howto-managed-identities-data-sources.md) | Zabezpečení (indexery) | Zaregistrujte vyhledávací službu jako důvěryhodnou službu s Azure Active Directory pro nastavení připojení k podporovanému zdroji dat Azure pro indexování. Platí pro [indexery](search-indexer-overview.md) , které ingestují obsah ze zdrojů dat Azure, jako jsou Azure SQL Database, Azure Cosmos DB a Azure Storage. | Verze Public Preview. </br> K registraci vyhledávací služby použijte portál. |
+| [**parametr dotazu SessionID**](index-similarity-and-scoring.md), [scoringStatistics = Global – parametr](index-similarity-and-scoring.md#scoring-statistics) | Dotaz (relevance) | Přidejte sessionID do dotazu a navažte relaci pro výpočet skóre hledání s scoringStatistics = Global pro shromažďování skóre ze všech horizontálních oddílů a pro přesnější výpočty skóre hledání. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
+| [**featuresMode (Preview)**](index-similarity-and-scoring.md#featuresMode-param) | Dotaz | Přidejte tento parametr dotazu, abyste rozšířili skóre relevance tak, aby se zobrazilo více podrobností: skóre podobnosti za pole, frekvence termínů a počet jedinečných tokenů podle pole. Tyto datové body můžete využívat v algoritmech vlastního bodování. Ukázku, která tuto schopnost předvádí, najdete v tématu věnovaném [Přidání strojového učení (LearnToRank) k vyhledávání relevance](https://github.com/Azure-Samples/search-ranking-tutorial). | Verze Public Preview. </br> Použijte [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
 
 ### <a name="march-2020"></a>Březen 2020
 
-+ Funkce [Native BLOB unnative (Preview)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) znamená, že indexovací člen služby Azure Blob Storage v Azure kognitivní hledání rozpozná objekty blob, které jsou ve stavu undeleteded, a během indexování odebere odpovídající hledaný dokument.
-
-+ Novinka stabilní [správy REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) je teď všeobecně dostupná. 
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
+|---------|------------------|-------------|---------------|
+| [**Obnovitelné odstranění nativního objektu BLOB (Preview)**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexery | Indexovací člen služby Azure Blob Storage v Azure Kognitivní hledání rozpozná objekty blob, které jsou ve stavu undeleteded, a během indexování odebere odpovídající hledaný dokument. | Verze Public Preview. </br> Pomocí služby [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) a REST API 2019-05-06-Preview se spuštěním indexeru na zdroji dat objektu BLOB v Azure, který má povolené nativní "obnovitelné odstranění". |
+| [**REST API správy (2020-03-13)**](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Nové stabilní REST API pro vytváření a správu vyhledávací služby. Přidání podpory protokolu IP a privátních odkazů | Všeobecně k dispozici. |
 
 ### <a name="february-2020"></a>Únor 2020
 
-+ [Detekce PII (Preview)](cognitive-search-skill-pii-detection.md) je způsob rozpoznávání, který se používá při indexování, která extrahuje identifikovatelné osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby.
-
-+ [Vlastní vyhledávání entit (Preview)](cognitive-search-skill-custom-entity-lookup.md ) vyhledává text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. 
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
+|---------|------------------|-------------|---------------|
+| [**Detekce PII (Preview)**](cognitive-search-skill-pii-detection.md) | Obohacení AI | Nový způsob rozpoznávání používaný při indexování, který extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby. | Verze Public Preview. </br> Použijte portál nebo [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
+| [**Vyhledávání vlastních entit (Preview)**](cognitive-search-skill-custom-entity-lookup.md )| Obohacení AI | Nová schopnost rozpoznávání, která hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale ne přesně. | Verze Public Preview. </br> Použijte portál nebo [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) nebo REST API 2019-05-06-Preview. |
 
 ### <a name="january-2020"></a>Leden 2020
 
-+ [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) jsou teď všeobecně dostupné. Pokud používáte REST, můžete k této funkci přistupovat pomocí nástroje `api-version=2019-05-06` nebo novějšího. Pro spravovaný kód je správný balíček stále [.NET SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , i když funkce není ve verzi Preview. 
+|Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
+|---------|------------------|-------------|---------------|
+| [**Šifrovací klíče spravované zákazníkem**](search-security-manage-encryption-keys.md) |Zabezpečení | Kromě integrovaného šifrování platformy přidá další vrstvu šifrování. Pomocí šifrovacího klíče, který vytvoříte a spravujete, můžete šifrovat obsah indexu a mapy synonym před tím, než dosáhnete datové části služby vyhledávání. | Všeobecně k dispozici. </br> Použijte Search REST API 2019-05-06 nebo novější. Pro spravovaný kód je správný balíček stále [.NET SDK verze 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , i když funkce není ve verzi Preview. |
+| [**Pravidla protokolu IP pro podporu brány firewall vázané na hranice (Preview)**](service-configure-firewall.md) | Zabezpečení | Omezte přístup ke koncovému bodu vyhledávací služby na konkrétní IP adresy. Rozhraní API ve verzi Preview má nové vlastnosti **IpRule** a **NetworkRuleSet** v [rozhraní CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Tato funkce ve verzi Preview je dostupná ve vybraných oblastech. |  Verze Public Preview s použitím rozhraní API-Version = 2019-10 -01-Preview.  |
+| [**Privátní odkaz Azure pro soukromý koncový bod hledání (Preview)**](service-create-private-endpoint.md) | Zabezpečení| Propojte vyhledávací službu z veřejného Internetu tak, že ji spustíte jako prostředek privátního propojení, který je přístupný jenom pro klientské aplikace a další služby Azure ve stejné virtuální síti. | Verze Public Preview s použitím rozhraní API-Version = 2019-10 -01-Preview.  |
 
-+ Privátní přístup k vyhledávací službě je k dispozici prostřednictvím dvou mechanismů v současnosti ve verzi Preview:
-
-  + Přístup ke konkrétním IP adresám můžete omezit pomocí REST API pro správu `api-version=2019-10-01-Preview` a vytvořit službu. Rozhraní API ve verzi Preview má nové vlastnosti **IpRule** a **NetworkRuleSet** v [rozhraní CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Tato funkce ve verzi Preview je dostupná ve vybraných oblastech. Další informace najdete v tématu [Jak používat REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+## <a name="feature-announcements-in-2019"></a>Oznámení funkcí v 2019
 
 ### <a name="december-2019"></a>Prosinec 2019
 

@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8f100d253dc5ecb321934eb49a1aba60595a5e8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919307"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232572"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Detekce obličeje a emoce pomocí Azure Media Analytics
 
@@ -80,7 +81,7 @@ Při vytváření úlohy s **Azure Media Face Detector**je nutné zadat předvol
 ```
 
 #### <a name="attribute-descriptions"></a>Popisy atributů
-| Název atributu | Description |
+| Název atributu | Popis |
 | --- | --- |
 | Mode |Rychlost rychlého zpracování, ale méně přesná (výchozí).|
 
@@ -155,7 +156,7 @@ Při vytváření úlohy s **Azure Media Face Detector**je nutné zadat předvol
 
 
 #### <a name="attribute-descriptions"></a>Popisy atributů
-| Název atributu | Description |
+| Název atributu | Popis |
 | --- | --- |
 | Mode |Obličeje: jenom rozpoznávání tváře.<br/>PerFaceEmotion: vrátíte emoce nezávisle pro každou detekci obličeje.<br/>AggregateEmotion: vrátí průměrné hodnoty emoce pro všechny plošky v rámci rámečku. |
 | AggregateEmotionWindowMs |Použijte, pokud je vybraný režim AggregateEmotion. Určuje délku videa, která se používá k získání každého agregovaného výsledku v milisekundách. |
@@ -166,8 +167,8 @@ Níže jsou doporučené hodnoty pro agregované nastavení okna a intervalu. Ag
 
 || Výchozí hodnoty: | Maximální počet (s) | Minimum (s) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0,5 |2 |0,25|
-| AggregateEmotionIntervalMs |0,5 |1 |0,25|
+| **AggregateEmotionWindowMs** |0,5 |2 |0,25|
+| **AggregateEmotionIntervalMs** |0,5 |1 |0,25|
 
 ### <a name="json-output"></a>Výstup JSON
 Výstup JSON pro agregovaná emoce (zkrácený):

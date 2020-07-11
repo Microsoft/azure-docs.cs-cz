@@ -3,12 +3,12 @@ title: Použití portálu k nahrávání, kódování a streamování obsahu –
 description: V tomto rychlém startu se dozvíte, jak pomocí portálu nahrávat, kódovat a streamovat obsah pomocí Azure Media Services.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: b023a4ed68aa7cfa41661e986dcd4ad6819b810d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988930"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232470"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Rychlý Start: nahrání, kódování a streamování obsahu pomocí portálu
 
@@ -26,7 +26,7 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
 
     Zkontrolujte následující: 
 
-  * [Nahrávání na cloud a úložiště](storage-account-concept.md)
+  * [Nahrávání do cloudu a úložiště](storage-account-concept.md)
   * [Koncept prostředků](assets-concept.md)
   * [Správa prostředků](manage-asset-concept.md)
 * Po nahrání vysoce kvalitního digitálního mediálního souboru do assetu (vstupní Asset) ho můžete zpracovat (kódovat nebo analyzovat). Zpracovaný obsah přechází do jiného prostředku (výstupní prostředek). 
@@ -46,13 +46,13 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
     * [Filtry](filters-concept.md)
 * Svůj obsah můžete chránit šifrováním pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo/a kteréhokoliv ze tří hlavních systémů DRM: Microsoft PlayReady, Google Widevine a Apple FairPlay. [Šifrování obsahu pomocí Azure Portal](encrypt-content-quickstart.md) rychlý Start ukazuje, jak nakonfigurovat ochranu obsahu.
         
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [Vytvoření účtu Media Services](create-account-howto.md#use-the-azure-portal)
 
-## <a name="upload"></a>Odeslat
+## <a name="upload"></a>Nahrávání
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Vyhledejte účet Media Services a klikněte na něj.
@@ -62,7 +62,7 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
 
 Pokud přejdete do okna assety, uvidíte, že se do seznamu přidal nový Asset:
 
-![Odeslat](./media/manage-assets-quickstart/upload.png)
+![Nahrávání](./media/manage-assets-quickstart/upload.png)
 
 ## <a name="encode"></a>Kódování
 
@@ -80,7 +80,7 @@ Pokud přejdete do okna assety, uvidíte, že se do seznamu přidal výstupní A
 
 Pokud chcete zobrazit stav úlohy, přejděte na **úlohy**. Úloha obvykle prochází následujícími stavy: naplánované, zařazeno do fronty, zpracování, dokončeno (konečný stav). Pokud během provádění úlohy dojde k chybě, přejde úloha do stavu Chyba.
 
-![Status](./media/manage-assets-quickstart/job-status.png)
+![Stav](./media/manage-assets-quickstart/job-status.png)
 
 ## <a name="publish-and-stream"></a>Publikování a streamování
 
