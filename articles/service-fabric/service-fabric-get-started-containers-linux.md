@@ -4,23 +4,24 @@ description: Vytvoříte svou první aplikaci typu kontejner pro Linux na platfo
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 07e3682ec1787ceb350ac72c8b80d86eed80b339
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 783f6a06d57a447998710e2c8ff349b23ef751c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560651"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256412"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
+Spuštění existující aplikace v kontejneru Linux v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](../container-registry/index.yml). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
 
 > [!NOTE]
 > Tento článek se týká prostředí pro vývoj pro Linux.  Modul runtime clusteru Service Fabric a modul runtime Docker musí být spuštěný ve stejném operačním systému.  V clusteru Windows nemůžete spouštět kontejnery Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Vývojový počítač s:
   * [Service Fabric SDK a nástroje](service-fabric-get-started-linux.md)
   * [Docker CE pro Linux](https://docs.docker.com/engine/installation/#prior-releases). 

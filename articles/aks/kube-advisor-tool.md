@@ -7,11 +7,12 @@ author: seanmck
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 9dc5a38a05ef73863f85e4dbe92d52eb94b2715f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b0078f1aff3ef81ee270f67de0fffddec3abab9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83773804"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255247"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kontrola osvědčených postupů Kubernetes v clusteru
 
@@ -28,7 +29,7 @@ Nástroj Kube-Advisor může vykazovat požadavky na prostředky a omezení chyb
 
 ## <a name="running-kube-advisor"></a>Spuštění Kube-Advisor
 
-Chcete-li spustit nástroj na clusteru, který je konfigurován pro [řízení přístupu na základě role (RBAC)](azure-ad-integration.md), použijte následující příkazy. První příkaz vytvoří účet služby Kubernetes. Druhý příkaz spustí nástroj ve vztahu pod tímto účtem služby a po jeho ukončení nakonfiguruje pole pod pro odstranění. 
+Chcete-li spustit nástroj na clusteru, který je konfigurován pro [řízení přístupu na základě role (RBAC)](./azure-ad-integration-cli.md), použijte následující příkazy. První příkaz vytvoří účet služby Kubernetes. Druhý příkaz spustí nástroj ve vztahu pod tímto účtem služby a po jeho ukončení nakonfiguruje pole pod pro odstranění. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml

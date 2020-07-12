@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f68635820125161ed4f5777e27a20de9e6fbe8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80049382"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255604"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Co je agent pro správu Azure AD Connectu? 
 Azure AD Connect Agent pro správu je nová součást Azure Active Directory Connect, kterou je možné nainstalovat na Azure Active Directory Connect Server. Slouží ke shromažďování konkrétních dat z prostředí služby Active Directory, které pomáhá pracovníkovi podpory společnosti Microsoft řešit problémy při otevření případu podpory. 
@@ -40,7 +40,7 @@ Binární soubory agenta správy Azure AD Connect jsou umístěné na serveru AA
 
 1.    Otevřít PowerShell v režimu správce
 2.    Přejděte do adresáře, kde se nachází aplikace CD "C:\Program Files\Microsoft Azure Active Directory Connect\Tools"
-3.    Spustit ConfigureAdminAgent. ps1
+3.    Spustit ConfigureAdminAgent.ps1
 
 Po zobrazení výzvy zadejte svoje přihlašovací údaje globálního správce služby Azure AD. Mělo by se jednat o stejné přihlašovací údaje, které jste zadali během Azure AD Connect instalace.
 
@@ -56,8 +56,8 @@ Podpora Microsoftu inženýr nemůže změnit žádná data v systému a nevidí
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Co když nechcete, aby měl pracovník podpory Microsoftu přístup k mým datům? 
 Pokud nechcete, aby měl Microsoft Service inženýr přístup k vašim datům pro volání podpory, můžete po instalaci agenta zakázat jeho funkčnost úpravou konfiguračního souboru služby, jak je popsáno níže: 
 
-1.    Otevřete **C:\Program Files\Microsoft Azure AD Connect Správa Agent\AzureADConnectAdministrationAgentService.exe.config** v poznámkovém bloku.
-2.    Zakažte nastavení **UserDataEnabled** , jak je znázorněno níže. Pokud nastavení **UserDataEnabled** existuje a je nastavené na hodnotu true, pak ho nastavte na false. Pokud nastavení neexistuje, přidejte nastavení, jak je znázorněno níže.    
+1. Otevřete **C:\Program Files\Microsoft Azure AD Connect správa Agent\AzureADConnectAdministrationAgentService.exe.config** v programu Poznámkový blok.
+2. Zakažte nastavení **UserDataEnabled** , jak je znázorněno níže. Pokud nastavení **UserDataEnabled** existuje a je nastavené na hodnotu true, pak ho nastavte na false. Pokud nastavení neexistuje, přidejte nastavení, jak je znázorněno níže.    
 
     ```xml
     <appSettings>
@@ -66,8 +66,8 @@ Pokud nechcete, aby měl Microsoft Service inženýr přístup k vašim datům p
     </appSettings>
     ```
 
-3.    Uložte konfigurační soubor.
-4.    Restartujte službu agenta správy Azure AD Connect, jak je znázorněno níže.
+3. Uložte konfigurační soubor.
+4. Restartujte službu agenta správy Azure AD Connect, jak je znázorněno níže.
 
 ![Agent správce](media/whatis-aadc-admin-agent/adminagent2.png)
 

@@ -5,11 +5,12 @@ author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
-ms.openlocfilehash: f2da9fbb04f9d1fa696250967db404864a3cce82
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: ae49a59c2629d9f9461d298ada555d314c0c9f22
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921815"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256964"
 ---
 # <a name="azure-service-fabric-support-options"></a>Možnosti podpory pro Azure Service Fabric
 
@@ -25,9 +26,9 @@ Přečtěte si další informace:
 - [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
 
 > [!Note]
-> Clustery běžící na bronzové úrovni spolehlivosti nebo v clusteru s jedním uzlem vám umožní spustit pouze zkušební zatížení. Pokud dochází k problémům s clusterem, který běží v případě bronzové nebo clustery s jedním uzlem, tým podpory společnosti Microsoft vám pomůže při zmírnění tohoto problému, ale neprovede analýzu původní příčiny. Další podrobnosti najdete [v tématu charakteristiky spolehlivosti clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) .
+> Clustery běžící na bronzové úrovni spolehlivosti nebo v clusteru s jedním uzlem vám umožní spustit pouze zkušební zatížení. Pokud dochází k problémům s clusterem, který běží v případě bronzové nebo clustery s jedním uzlem, tým podpory společnosti Microsoft vám pomůže při zmírnění tohoto problému, ale neprovede analýzu původní příčiny. Další podrobnosti najdete [v tématu charakteristiky spolehlivosti clusteru](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) .
 >
-> Další informace o tom, co je potřeba pro cluster připravený pro produkční prostředí, najdete v [kontrolním seznamu připravenosti na produkci](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist).
+> Další informace o tom, co je potřeba pro cluster připravený pro produkční prostředí, najdete v [kontrolním seznamu připravenosti na produkci](./service-fabric-production-readiness-checklist.md).
 
 <a id="getlivesitesupportonprem"></a>
 
@@ -58,15 +59,15 @@ Nahlaste se Service Fabric problémy s Azure [Service-Fabric – problémy v úl
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Verze Preview Service Fabric – nepodporované pro produkční použití
 
-V době od času vydáváme verze, které mají významné funkce, pro které chceme mít k dispozici zpětnou vazbu, která je vydaná jako verze Preview. Tyto verze Preview by se měly používat jenom pro testovací účely. Provozní cluster by měl vždycky provozovat podporovanou, stabilní a Service Fabric verzi. Verze Preview vždy začíná číslem hlavní a dílčí verze 255. Pokud se například zobrazí Service Fabric verze 255.255.5703.949, vydaná verze se bude používat jenom v testovacích clusterech a je ve verzi Preview. Tato vydání verze Preview jsou také oznámena na [blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric) a budou mít podrobné informace o funkcích, které jsou k dispozici.
-Pro tyto verze Preview se nepoužívá žádná možnost placené podpory. Pomocí jedné z možností uvedených v části [nahlásit problémy s Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) můžete klást otázky nebo poskytovat zpětnou vazbu.
+V době od času vydáváme verze, které mají významné funkce, pro které chceme mít k dispozici zpětnou vazbu, která je vydaná jako verze Preview. Tyto verze Preview by se měly používat jenom pro testovací účely. Provozní cluster by měl vždycky provozovat podporovanou, stabilní a Service Fabric verzi. Verze Preview vždy začíná číslem hlavní a dílčí verze 255. Pokud se například zobrazí Service Fabric verze 255.255.5703.949, vydaná verze se bude používat jenom v testovacích clusterech a je ve verzi Preview. Tato vydání verze Preview jsou také oznámena na [blogu týmu Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) a budou mít podrobné informace o funkcích, které jsou k dispozici.
+Pro tyto verze Preview se nepoužívá žádná možnost placené podpory. Pomocí jedné z možností uvedených v části [nahlásit problémy s Azure Service Fabric](#report-azure-service-fabric-issues) můžete klást otázky nebo poskytovat zpětnou vazbu.
 
 ## <a name="next-steps"></a>Další kroky
 
 [Podporované verze Service Fabric](service-fabric-versions.md)
 
 <!--references-->
-[Microsoft Q&A question page]: https://docs.microsoft.com/answers/topics/azure-service-fabric.html
+[Microsoft Q&A question page]: /answers/topics/azure-service-fabric.html
 [stackoverflow]: https://stackoverflow.com/questions/tagged/azure-service-fabric
 [uservoice-forum]: https://feedback.azure.com/forums/293901-service-fabric
 [acom-docs]: https://aka.ms/servicefabricdocs

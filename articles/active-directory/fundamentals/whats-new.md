@@ -1,5 +1,5 @@
 ---
-title: Co je nového? Poznámky k verzi – Azure Active Directory | Microsoft Docs
+title: Co je nového Poznámky k verzi – Azure Active Directory | Microsoft Docs
 description: Přečtěte si, co je nového v Azure Active Directory, jako jsou například nejnovější poznámky k verzi, známé problémy, opravy chyb, zastaralé funkce a nadcházející změny.
 services: active-directory
 author: msaburnley
@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cbf811fdb8ff051ec1bb782eb3da12ea45b29bdf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170441"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256812"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového v Azure Active Directory?
 
@@ -259,7 +259,7 @@ Zavedli jsme novou vlastnost riskEventsTypes_v2 (String) na rozhraní API pro ne
 **Schopnost produktu:** Zabezpečení identity & ochrana
  
 
-U e-mailových oznámení MFA pro MFA provádíme tyto změny:
+U e-mailových oznámení pro Cloud MFA provádíme tyto změny:
 
 E-mailová oznámení budou odesílána z následující adresy: azure-noreply@microsoft.com a msonlineservicesteam@microsoftonline.com . Aktualizujeme obsah e-mailů s výstrahou týkající se podvodů, aby lépe označovaly požadované kroky odblokování použití.
 

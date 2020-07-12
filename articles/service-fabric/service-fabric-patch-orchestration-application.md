@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5a5ffdf217483c60836f67213c20ff3afd9043d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43b6f5d4367cfc641183a17fda89cf1381c22a6c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82608911"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258595"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Oprava operačního systému Windows v clusteru Service Fabric
 
@@ -28,7 +28,7 @@ ms.locfileid: "82608911"
 > Od 30. dubna 2019 již není podporována aplikace orchestrace verze 1,2. *. Ujistěte se, že upgradujete na nejnovější verzi.
 
 > [!NOTE]
-> Získání [automatických upgradů bitových kopií operačního systému na základě sady škálování virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) je osvědčeným postupem, jak zachovat aktualizace operačního systému v Azure. Automatické upgrady bitových kopií operačního systému založené na sadě škálování virtuálních počítačů budou vyžadovat u sady škálování stříbrné nebo větší trvanlivost.
+> Získání [automatických upgradů bitových kopií operačního systému na základě sady škálování virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) je osvědčeným postupem, jak zachovat aktualizace operačního systému v Azure. Automatické upgrady bitových kopií operačního systému založené na sadě škálování virtuálních počítačů budou vyžadovat u sady škálování stříbrné nebo větší trvanlivost.
 >
 
  Aplikace orchestrace opravy (POA) je obálkou v rámci služby Azure Service Fabric Repair Manager, která umožňuje plánování oprav operačního systému na základě konfigurace pro clustery hostované mimo Azure. Pro clustery, které nejsou hostované na Azure, se nepožaduje POA, ale k opravě Service Fabric hostitelů clusteru bez výpadků je potřeba naplánovat instalaci opravy pomocí aktualizační domény.
@@ -63,7 +63,7 @@ POA se skládá z následujících podsoučástí:
 > [!NOTE]
 > POA používá službu Service Fabric Repair Manager k zakázání nebo povolení uzlu a provádění kontrol stavu. Úloha opravy vytvořená v POA sleduje průběh web Windows Update pro každý uzel.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!NOTE]
 > Požadovaná minimální verze .NET Framework je 4,6.
@@ -82,9 +82,9 @@ Při nastavování clusteru můžete povolit Repair Manager z Azure Portal. Kdy�
 ![Obrázek povolení Repair Manager z Azure Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="the-azure-resource-manager-deployment-model"></a>Model nasazení Azure Resource Manager
-Případně můžete použít [model nasazení Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) k povolení služby Repair Manager na novém i existujícím clusteru Service Fabric. Získejte šablonu pro cluster, který chcete nasadit. Můžete buď použít ukázkové šablony, nebo vytvořit vlastní šablonu modelu nasazení Azure Resource Manager. 
+Případně můžete použít [model nasazení Azure Resource Manager](./service-fabric-cluster-creation-via-arm.md) k povolení služby Repair Manager na novém i existujícím clusteru Service Fabric. Získejte šablonu pro cluster, který chcete nasadit. Můžete buď použít ukázkové šablony, nebo vytvořit vlastní šablonu modelu nasazení Azure Resource Manager. 
 
-Pokud chcete službu Repair Manager povolit pomocí [šablony modelu nasazení Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm), udělejte toto:
+Pokud chcete službu Repair Manager povolit pomocí [šablony modelu nasazení Azure Resource Manager](./service-fabric-cluster-creation-via-arm.md), udělejte toto:
 
 1. Zkontrolujte, jestli `apiVersion` je u prostředku *Microsoft. ServiceFabric/clusterů* nastavená *verze 2017-07-01-Preview* . Pokud se liší, musíte aktualizovat `apiVersion` na *2017-07-01-Preview* nebo novější:
 
@@ -113,11 +113,11 @@ Pokud chcete službu Repair Manager povolit pomocí [šablony modelu nasazení A
 
 ### <a name="standalone-on-premises-clusters"></a>Samostatné místní clustery
 
-Pokud chcete službu Repair Manager povolit na novém nebo existujícím clusteru Service Fabric, můžete použít [nastavení konfigurace pro samostatný cluster Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest).
+Pokud chcete službu Repair Manager povolit na novém nebo existujícím clusteru Service Fabric, můžete použít [nastavení konfigurace pro samostatný cluster Windows](./service-fabric-cluster-manifest.md).
 
 Povolení služby Repair Manager:
 
-1. Zkontrolujte, zda `apiVersion` je v části [obecné konfigurace clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-manifest#general-cluster-configurations) nastavena na *04-2017* nebo vyšší, jak je znázorněno zde:
+1. Zkontrolujte, zda `apiVersion` je v části [obecné konfigurace clusteru](./service-fabric-cluster-manifest.md#general-cluster-configurations) nastavena na *04-2017* nebo vyšší, jak je znázorněno zde:
 
     ```json
     {
@@ -139,7 +139,7 @@ Povolení služby Repair Manager:
     ],
     ```
 
-1. Aktualizujte manifest clusteru pomocí těchto změn pomocí aktualizovaného manifestu clusteru [vytvořte nový cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) nebo [upgradujte konfiguraci clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). 
+1. Aktualizujte manifest clusteru pomocí těchto změn pomocí aktualizovaného manifestu clusteru [vytvořte nový cluster](./service-fabric-cluster-creation-for-windows-server.md) nebo [upgradujte konfiguraci clusteru](./service-fabric-cluster-upgrade-windows-server.md). 
 
    Po spuštění clusteru s aktualizovaným manifestem clusteru můžete zobrazit službu Repair Manager spuštěnou ve vašem clusteru. Označuje se jako *Fabric:/System/RepairManagerService*a je v části systémové služby v Service Fabric Explorer.
 
@@ -160,7 +160,7 @@ Chování POA můžete nakonfigurovat tak, aby vyhovovalo vašim potřebám. Př
 |MaxResultsToCache    |Dlouhou                              | Maximální počet web Windows Update výsledků, které by měly být uloženy do mezipaměti. <br><br>Výchozí hodnota je 3000 za předpokladu, že: <br> &nbsp;&nbsp;– Počet uzlů je 20. <br> &nbsp;&nbsp;– Počet aktualizací uzlu za měsíc je 5. <br> &nbsp;&nbsp;-Počet výsledků na operaci může být 10. <br> &nbsp;&nbsp;– Výsledky za poslední tři měsíce by měly být uloženy. |
 |TaskApprovalPolicy   |Výčet <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy určuje zásadu, kterou má služba koordinátora použít k instalaci aktualizací Windows v uzlech clusteru Service Fabric.<br><br>Povolené hodnoty jsou následující: <br>*NodeWise*: aktualizace systému Windows jsou nainstalovány vždy po jednom uzlu. <br> *UpgradeDomainWise*: aktualizace systému Windows jsou nainstalovány v jednu chvíli po doméně aktualizace. (Na maximum můžou všechny uzly patřící k doméně aktualizace přejít ke službě Windows Update.)<br><br> V části [Nejčastější dotazy](#frequently-asked-questions) vám pomůžou určit, které zásady jsou pro váš cluster nejvhodnější.
 |LogsDiskQuotaInMB   |Dlouhou  <br> (Výchozí: *1024*)               | Maximální velikost protokolů aplikace orchestrace oprav v MB, které je možné trvale uchovat místně na uzlech.
-| WUQuery               | řetězec<br>(Výchozí: *IsInstalled = 0*)                | Dotaz pro získání aktualizací Windows Další informace najdete v tématu [WuQuery.](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx)
+| WUQuery               | řetězec<br>(Výchozí: *IsInstalled = 0*)                | Dotaz pro získání aktualizací Windows Další informace najdete v tématu [WuQuery.](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search)
 | InstallWindowsOSOnlyUpdates | *Logická hodnota* <br> (výchozí: NEPRAVDA)                 | Pomocí tohoto příznaku můžete řídit, které aktualizace se mají stáhnout a nainstalovat. Jsou povoleny následující hodnoty. <br>true – nainstaluje jenom aktualizace operačního systému Windows.<br>false – nainstaluje všechny dostupné aktualizace na počítač.          |
 | WUOperationTimeOutInMinutes | Int <br>(Výchozí: *90*)                   | Určuje časový limit pro jakoukoliv operaci web Windows Update (hledání nebo stažení nebo instalace). Pokud operace není dokončena v rámci zadaného časového limitu, je přerušena.       |
 | WURescheduleCount     | Int <br> (Výchozí: *5*)                  | Maximální počet, kolikrát služba aktualizuje službu Windows Update, pokud se operace trvale nezdařila.          |
@@ -174,7 +174,7 @@ Chování POA můžete nakonfigurovat tak, aby vyhovovalo vašim potřebám. Př
 ## <a name="deploy-poa"></a>Nasazení POA
 
 1. Dokončete všechny požadované kroky a připravte cluster.
-1. Nasaďte POA jako jakoukoli jinou aplikaci Service Fabric. Pokud ho chcete nasadit pomocí PowerShellu, přečtěte si téma [nasazení a odebrání aplikací pomocí PowerShellu](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
+1. Nasaďte POA jako jakoukoli jinou aplikaci Service Fabric. Pokud ho chcete nasadit pomocí PowerShellu, přečtěte si téma [nasazení a odebrání aplikací pomocí PowerShellu](./service-fabric-deploy-remove-applications.md).
 1. Chcete-li nakonfigurovat aplikaci v době nasazení, předejte `ApplicationParameter` `New-ServiceFabricApplication` rutinu do rutiny. Pro usnadnění práce jsme zadali skript Deploy.ps1 společně s aplikací. Postup použití skriptu:
 
     - Připojte se ke clusteru Service Fabric pomocí `Connect-ServiceFabricCluster` .
@@ -185,11 +185,11 @@ Chování POA můžete nakonfigurovat tak, aby vyhovovalo vašim potřebám. Př
 
 ## <a name="upgrade-poa"></a>Aktualizace pro POA
 
-Pokud chcete upgradovat verzi POA pomocí prostředí PowerShell, postupujte podle pokynů v tématu [Service Fabric upgrade aplikace pomocí PowerShellu](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-tutorial-powershell).
+Pokud chcete upgradovat verzi POA pomocí prostředí PowerShell, postupujte podle pokynů v tématu [Service Fabric upgrade aplikace pomocí PowerShellu](./service-fabric-application-upgrade-tutorial-powershell.md).
 
 ## <a name="remove-poa"></a>Odebrat POA
 
-Pokud chcete aplikaci odebrat, postupujte podle pokynů v tématu [nasazení a odebrání aplikací pomocí PowerShellu](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
+Pokud chcete aplikaci odebrat, postupujte podle pokynů v tématu [nasazení a odebrání aplikací pomocí PowerShellu](./service-fabric-deploy-remove-applications.md).
 
 Pro usnadnění práce jsme zadali Undeploy.ps1 skript spolu s aplikací. Postup použití skriptu:
 
@@ -240,7 +240,7 @@ Pole | Hodnoty | Podrobnosti
 Výsledek operace uvnitř | 0 – úspěšné<br> 1 – úspěšné s chybami<br> 2 – chyba<br> 3 – přerušeno<br> 4 – přerušeno s časovým limitem | Označuje výsledek celkové operace, která obvykle zahrnuje instalaci jedné nebo více aktualizací.
 ResultCode | Stejné jako výsledek operace uvnitř | Toto pole indikuje výsledek operace instalace pro jednotlivou aktualizaci.
 Typem operace OperationType | 1. instalace<br> 0 – Hledat a stáhnout| Ve výchozím nastavení je instalace jedinou typem operace OperationType, která se zobrazuje ve výsledcích.
-WindowsUpdateQuery | Výchozí hodnota je "IsInstalled = 0" | Web Windows Update dotaz, který se použil k hledání aktualizací. Další informace najdete v tématu [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
+WindowsUpdateQuery | Výchozí hodnota je "IsInstalled = 0" | Web Windows Update dotaz, který se použil k hledání aktualizací. Další informace najdete v tématu [WuQuery](/windows/win32/api/wuapi/nf-wuapi-iupdatesearcher-search).
 RebootRequired | true – byl vyžadován restart.<br> false – restart nebyl požadován. | Určuje, zda byl pro dokončení instalace aktualizací požadován restart.
 OperationStartTime | DateTime | Určuje čas, kdy byla spuštěna operace (stažení a instalace).
 OperationTime | DateTime | Určuje čas, kdy byla dokončena operace (stažení/instalace).
@@ -258,7 +258,7 @@ Pokud je reverzní proxy server povolený v clusteru, můžete k adrese URL při
 
 Koncový bod, který je třeba stisknout, je *http:// &lt; SERVERURL &gt; : &lt; REVERSEPROXYPORT &gt; /PatchOrchestrationApplication/CoordinatorService/v1/GetWindowsUpdateResults*.
 
-Pokud chcete povolit reverzní proxy server v clusteru, postupujte podle pokynů v [reverzní proxy serveru v Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy). 
+Pokud chcete povolit reverzní proxy server v clusteru, postupujte podle pokynů v [reverzní proxy serveru v Azure Service Fabric](./service-fabric-reverseproxy.md). 
 
 > 
 > [!WARNING]
@@ -271,17 +271,17 @@ Tato část popisuje, jak ladit nebo diagnostikovat problémy s aktualizacemi Up
 > [!NOTE]
 > Chcete-li získat mnoho z následujících povolaných vylepšení s sebou samým, měli byste mít nainstalovanou verzi POA verze 1.4.0 nebo novější.
 
-Agent Node NTService vytvoří [úlohy opravy](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) pro instalaci aktualizací na uzlech. Každou úlohu potom připraví služba koordinátora v souladu se zásadami schvalování úkolů. Připravené úkoly jsou nakonec schváleny Repair Manager, které neschvalují žádnou úlohu, pokud je cluster ve stavu není v pořádku. 
+Agent Node NTService vytvoří [úlohy opravy](/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) pro instalaci aktualizací na uzlech. Každou úlohu potom připraví služba koordinátora v souladu se zásadami schvalování úkolů. Připravené úkoly jsou nakonec schváleny Repair Manager, které neschvalují žádnou úlohu, pokud je cluster ve stavu není v pořádku. 
 
 Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme přejít na krok za krokem:
 
 1. NodeAgentNTService běžící na každém uzlu vyhledá dostupné aktualizace Windows v naplánovaném čase. Pokud jsou aktualizace k dispozici, stáhne je na uzel.
 
-1. Po stažení aktualizací agent Node NTService vytvoří odpovídající úlohu opravy pro uzel s názvem *POS___ \<unique_id> *. Tyto úlohy opravy můžete zobrazit pomocí rutiny [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) nebo pomocí SFX v části Podrobnosti uzlu. Po vytvoření úlohy opravy se rychle přesune do [ *přihlášeného* stavu](https://docs.microsoft.com/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Po stažení aktualizací agent Node NTService vytvoří odpovídající úlohu opravy pro uzel s názvem *POS___ \<unique_id> *. Tyto úlohy opravy můžete zobrazit pomocí rutiny [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) nebo pomocí SFX v části Podrobnosti uzlu. Po vytvoření úlohy opravy se rychle přesune do [ *přihlášeného* stavu](/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
 
 1. Služba koordinátora pravidelně hledá úlohy opravy v *deklarovaném* stavu a pak je *aktualizuje na základě* TaskApprovalPolicy. Pokud je TaskApprovalPolicy nakonfigurovaná tak, aby NodeWise, je úloha opravy, která odpovídá uzlu, připravená jenom v případě, že se v současné době neprovádí *Příprava*, *schválení*, *spuštění*nebo *obnovení* stavu žádné jiné úlohy opravy. 
 
-   Podobně platí, že v případě UpgradeWise TaskApprovalPolicy jsou v předchozích stavech úlohy pouze pro uzly, které patří do stejné aktualizační domény. Po přesunu úlohy opravy do stavu *Příprava* je odpovídající uzel Service Fabric [zakázán](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) se sadou záměrů k *restartování*.
+   Podobně platí, že v případě UpgradeWise TaskApprovalPolicy jsou v předchozích stavech úlohy pouze pro uzly, které patří do stejné aktualizační domény. Po přesunu úlohy opravy do stavu *Příprava* je odpovídající uzel Service Fabric [zakázán](/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) se sadou záměrů k *restartování*.
 
    POA verze 1.4.0 a později odesílá události s vlastností ClusterPatchingStatus v CoordinatorService pro zobrazení uzlů, které jsou opraveny. Aktualizace se instalují na _poanode_0, jak je znázorněno na následujícím obrázku:
 
@@ -300,7 +300,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
    [![Obrázek stavu operace web Windows Update](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
-   Podrobnosti můžete získat také pomocí prostředí PowerShell. Provedete to tak, že se připojíte ke clusteru a načtete stav úlohy opravit pomocí [Get-ServiceFabricRepairTask](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). 
+   Podrobnosti můžete získat také pomocí prostředí PowerShell. Provedete to tak, že se připojíte ke clusteru a načtete stav úlohy opravit pomocí [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps). 
    
    V následujícím příkladu je úloha "POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15" v *DownloadComplete* stavu. To znamená, že aktualizace byly staženy na *poanode_2* uzlu a při přechodu úlohy do stavu *spuštění* bude proveden pokus o instalaci.
 
@@ -334,7 +334,7 @@ Abychom vám pomohli porozumět tomu, jak aktualizace postupují v uzlu, pojďme
 
 Protokoly aplikací orchestrace oprav se shromažďují jako součást protokolů Service Fabric runtime.
 
-Protokoly můžete zachytit pomocí diagnostického nástroje nebo zvoleného kanálu. POA používá následující ID pevných zprostředkovatelů k protokolování událostí prostřednictvím [zdroje událostí](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1):
+Protokoly můžete zachytit pomocí diagnostického nástroje nebo zvoleného kanálu. POA používá následující ID pevných zprostředkovatelů k protokolování událostí prostřednictvím [zdroje událostí](/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1):
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -379,7 +379,7 @@ A: POA neinstaluje aktualizace, Pokud cluster není v pořádku. Zkuste svůj cl
 
 **Otázka: Mám pro svůj cluster nastavit TaskApprovalPolicy jako "NodeWise" nebo "UpgradeDomainWise"?**
 
-Odpověď: nastavení "UpgradeDomainWise" urychluje veškerou opravu clusteru tak, že se opraví paralelně všechny uzly, které patří do aktualizační domény. Během procesu jsou uzly, které patří do celé aktualizační domény, nedostupné (v [ *zakázaném* stavu](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
+Odpověď: nastavení "UpgradeDomainWise" urychluje veškerou opravu clusteru tak, že se opraví paralelně všechny uzly, které patří do aktualizační domény. Během procesu jsou uzly, které patří do celé aktualizační domény, nedostupné (v [ *zakázaném* stavu](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
 
 Naproti tomu nastavení "NodeWise" opraví jenom jeden uzel najednou, což by znamenalo, že by Celková oprava clusteru mohla trvat delší dobu. V průběhu procesu opravy však nebude v průběhu procesu opravy k dispozici pouze jeden uzel na nejvyšší úrovni (v *zakázaném* stavu).
 
@@ -405,9 +405,9 @@ Odpověď: čas potřebný k opravě celého clusteru závisí na:
     - "NodeWise": ~ 20 hodin.
     - "UpgradeDomainWise": ~ 5 hodin.
 
-- Zatížení clusteru. Každá operace opravy vyžaduje přemístění úlohy zákazníka k ostatním dostupným uzlům v clusteru. Uzel, který se má opravit, by byl během této doby [ *zakázán* stavem](https://docs.microsoft.com/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) . Pokud cluster běží blízko špičky zátěže, proces zakázání bude trvat déle. Proto se celkový proces opravy může v takových podmínkách navýšení zpomalit.
+- Zatížení clusteru. Každá operace opravy vyžaduje přemístění úlohy zákazníka k ostatním dostupným uzlům v clusteru. Uzel, který se má opravit, by byl během této doby [ *zakázán* stavem](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling) . Pokud cluster běží blízko špičky zátěže, proces zakázání bude trvat déle. Proto se celkový proces opravy může v takových podmínkách navýšení zpomalit.
 
-- Selhání stavu clusteru během oprav. Jakékoli [snížení](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) [stavu clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-health-introduction) by přerušilo proces opravy. Tento problém by měl přidat do celkového času potřebného k opravě celého clusteru.
+- Selhání stavu clusteru během oprav. Jakékoli [snížení](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) [stavu clusteru](./service-fabric-health-introduction.md) by přerušilo proces opravy. Tento problém by měl přidat do celkového času potřebného k opravě celého clusteru.
 
 **Otázka: Proč se mi zobrazují některé aktualizace v web Windows Update výsledky získané prostřednictvím REST API, ale ne pod historií web Windows Update v počítači?**
 
@@ -415,11 +415,11 @@ Odpověď: některé aktualizace produktu se zobrazí pouze ve vlastní aktualiz
 
 **Otázka: je možné použít POA k opravě vývojového clusteru (cluster s jedním uzlem)?**
 
-Odpověď: Ne, POA nelze použít k opravě clusteru s jedním uzlem. Toto omezení je záměrné, protože [Service Fabric systémových služeb](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services) nebo jiných zákaznických aplikací by mohlo dojít k výpadku. Proto by se úlohy opravy opravy nikdy neschválily Repair Manager.
+Odpověď: Ne, POA nelze použít k opravě clusteru s jedním uzlem. Toto omezení je záměrné, protože [Service Fabric systémových služeb](./service-fabric-technical-overview.md#system-services) nebo jiných zákaznických aplikací by mohlo dojít k výpadku. Proto by se úlohy opravy opravy nikdy neschválily Repair Manager.
 
 **Otázka: Návody oprava uzlů clusteru v systému Linux?**
 
-Odpověď: informace o orchestraci aktualizací v systému Linux najdete v tématu [automatické upgrady bitových kopií operačního systému Azure Virtual Machine Scale set](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade).
+Odpověď: informace o orchestraci aktualizací v systému Linux najdete v tématu [automatické upgrady bitových kopií operačního systému Azure Virtual Machine Scale set](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md).
 
 **Otázka: Proč cyklus aktualizace trvá dlouho?**
 

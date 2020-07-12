@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1bb07ee900622b138a556a33469641e4e8310af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392297"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258278"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Principy dvojitých modelů v digitálních prozdvojeních Azure
 
@@ -108,7 +109,7 @@ Zde je příklad typického modelu, který je napsán jako rozhraní DTDL. Model
 
 Pole modelu jsou:
 
-| Pole | Description |
+| Pole | Popis |
 | --- | --- |
 | `@id` | Identifikátor modelu. Musí být ve formátu `dtmi:<domain>:<unique model identifier>;<model version number>` . |
 | `@type` | Určuje druh informací, které jsou popsány. Pro rozhraní je typ *rozhraní*. |
@@ -196,9 +197,14 @@ Rozhraní rozšíření nemůže změnit žádnou z definic nadřazených rozhra
 
 ## <a name="validating-models"></a>Ověřování modelů
 
-K dispozici je ukázka pro ověřování dokumentů modelu, aby bylo zajištěno, že je DTDL platný. Je postavená na knihovně analyzátorů DTDL a je to Language-nezávislá. Najdete ho tady: [Ukázka validátoru DTDL](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+> [!TIP]
+> Před odesláním do instance digitálního vlákna Azure doporučujeme vaše modely ověřit offline.
 
-Nebo, další informace o knihovně analyzátoru, včetně příkladu, jak ji použít přímo, naleznete v tématu [Postupy: analýza a ověření modelů](how-to-use-parser.md).
+Pro ověřování dokumentů modelu je k dispozici ukázkový nezávisláý jazyk, abyste se ujistili, že DTDL je správný. Je umístěn zde: [**Ukázka validátoru DTDL**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+
+Ukázka validátoru DTDL je postavená na knihovně DTDL analyzátoru .NET, která je k dispozici v NuGet jako knihovna na straně klienta: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). Knihovnu můžete také použít přímo k návrhu vlastního řešení ověřování. Při použití knihovny analyzátoru se ujistěte, že používáte verzi, která je kompatibilní s verzí, kterou Azure Digital revláken používá. Během období Preview se jedná o verzi *3.7.0*.
+
+Další informace o knihovně analyzátoru, včetně příkladů použití, najdete v tématu [Postupy: analýza a ověření modelů](how-to-use-parser.md).
 
 ## <a name="next-steps"></a>Další kroky
 

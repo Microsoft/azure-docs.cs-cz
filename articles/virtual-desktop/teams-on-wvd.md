@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564457"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255655"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
@@ -27,12 +27,12 @@ Microsoft Teams na virtuálním počítači s Windows podporuje chat a spoluprá
 
 Díky optimalizaci médií pro Microsoft Teams klient pro stolní počítače s Windows zpracovává zvuk a video místně pro volání a schůzky týmů. Na virtuálním počítači s Windows můžete dál používat Microsoft Teams s ostatními klienty bez optimalizovaného volání a schůzek. Týmy a funkce pro spolupráci jsou podporované na všech platformách. Pokud chcete přesměrovat místní zařízení ve vzdálené relaci, přečtěte si [Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů](#customize-remote-desktop-protocol-properties-for-a-host-pool).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct používat Microsoft Teams na virtuálním počítači s Windows, musíte provést tyto akce:
 
 - [Připravte síť](/microsoftteams/prepare-network/) pro Microsoft Teams.
-- Nainstalujte [klienta pro stolní počítače Windows](connect-windows-7-and-10.md) na zařízení s Windows 10 nebo Windows 10 IoT Enterprise, které splňuje hardwarové požadavky Microsoft Teams [pro týmy na počítači s Windows](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
+- Nainstalujte [klienta pro stolní počítače Windows](connect-windows-7-10.md) na zařízení s Windows 10 nebo Windows 10 IoT Enterprise, které splňuje hardwarové požadavky Microsoft Teams [pro týmy na počítači s Windows](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Připojte se k virtuálnímu počítači s Windows 10 nebo Windows 10 Enterprise (VM).
 - Nainstalujte desktopovou aplikaci Teams Desktop na hostitele pomocí instalace vázaná na počítač. Optimalizace médií pro Microsoft Teams vyžaduje týmy aplikace pro stolní počítače verze 1.3.00.4461 nebo novější.
 

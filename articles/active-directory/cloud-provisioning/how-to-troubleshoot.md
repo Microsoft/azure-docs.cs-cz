@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360788"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256862"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Řešení potíží se zřizováním cloudu
 
@@ -22,7 +22,7 @@ Zřizování cloudu se dotýká mnoha různých věcí a má mnoho různých zá
 
 ## <a name="common-troubleshooting-areas"></a>Běžné oblasti odstraňování potíží
 
-|Name|Description|
+|Název|Popis|
 |-----|-----|
 |[Problémy agenta](#agent-problems)|Ověřte, že je agent nainstalovaný správně a komunikuje s Azure Active Directory (Azure AD).|
 |[Problémy synchronizace objektů](#object-synchronization-problems)|K řešení problémů se synchronizací objektů použijte protokoly zřizování.|
@@ -43,7 +43,7 @@ Tyto položky lze ověřit v Azure Portal a na místním serveru, na kterém je 
 
 Pokud chcete ověřit, jestli je agent v Azure a je v pořádku, postupujte podle těchto kroků.
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 1. Na levé straně vyberte **Azure Active Directory**  >  **Azure AD Connect**. V centru vyberte **Spravovat zřizování (Preview)**.
 1. Na obrazovce **Azure AD zřizování (Preview)** vyberte **zkontrolovat všechny agenty**.
 
@@ -55,9 +55,7 @@ Pokud chcete ověřit, jestli je agent v Azure a je v pořádku, postupujte podl
 
 ### <a name="verify-the-port"></a>Ověření portu
 
-Pokud chcete ověřit, že Azure naslouchá na portu 443 a že s ním může agent komunikovat, použijte následující nástroj:
-
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
+Ověřte, že Azure naslouchá na portu 443 a že s ním může komunikovat agent. 
 
 Tento test ověřuje, jestli můžou vaši agenti komunikovat s Azure přes port 443. Otevřete prohlížeč a na serveru, na kterém je nainstalovaný agent, se dostanete na předchozí adresu URL.
 
@@ -124,7 +122,7 @@ K tomuto problému obvykle dochází v důsledku toho, že agent nedokáže spus
 
 Chcete-li tento problém vyřešit, změňte zásady spouštění prostředí PowerShell na serveru. Je nutné, aby byly zásady počítače a uživatele nastaveny jako *nedefinované* nebo *RemoteSigned*. Pokud jsou nastavené jako *neomezená*, zobrazí se tato chyba. Další informace najdete v tématu [zásady spouštění prostředí PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6). 
 
-### <a name="log-files"></a>Soubory protokolů
+### <a name="log-files"></a>Soubory protokolu
 
 Ve výchozím nastavení agent generuje minimální množství chybových zpráv a informací o trasování zásobníku. Tyto protokoly trasování najdete ve složce *C:\ProgramData\Microsoft\Azure zřizování služby AD Connect Agent\Trace*.
 

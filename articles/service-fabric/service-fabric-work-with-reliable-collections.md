@@ -3,12 +3,12 @@ title: Práce s Reliable Collections
 description: Seznamte se s osvědčenými postupy pro práci s spolehlivými kolekcemi v rámci aplikace Service Fabric v Azure.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374691"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255791"
 ---
 # <a name="working-with-reliable-collections"></a>Práce s Reliable Collections
 Service Fabric nabízí stavový programovací model dostupný vývojářům .NET prostřednictvím spolehlivých kolekcí. Konkrétně Service Fabric poskytuje spolehlivé slovníkové a spolehlivé třídy front. Při použití těchto tříd je váš stav rozdělený na oddíly (pro škálovatelnost), replikovaný (pro dostupnost) a v rámci oddílu (pro sémantiku KYSELování). Pojďme se podívat na typické použití objektu spolehlivého slovníku a podívat se, co dělá ve skutečnosti.
@@ -219,10 +219,10 @@ Kód služby je navíc upgradován o jednu upgradovací doménu v jednom okamži
 Alternativně můžete provést to, co se obvykle označuje jako dva upgrady. Pomocí dvoufázové aktualizace upgradujete službu z verze V1 na v2: v2 obsahuje kód, který ví, jak pracovat s novou změnou schématu, ale tento kód se nespustí. Když kód v2 přečte data V1, bude na něm fungovat a zapisuje data v1. Až se upgrade dokončí napříč všemi doménami upgradu, můžete nějakým způsobem signalizovat spuštěné instance v2, které upgrade dokončil. (Jedním ze způsobů, jak to signalizovat, je zavedení upgradu konfigurace; to je to, co je v dvoufázové fázi upgradu.) Nyní mohou instance v2 číst data V1, převádět je na data v2, pracovat na ní a zapisovat je jako data v2. Když ostatní instance čtou data v2, nemusejí je převádět, stačí na ni pracovat a napíší se data v2.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o vytváření kontraktů s dopředné kompatibility dat najdete v článku [kontrakty dat kompatibilní s](https://msdn.microsoft.com/library/ms731083.aspx) podporou
+Další informace o vytváření kontraktů s dopředné kompatibility dat najdete v článku [kontrakty dat kompatibilní s](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts) podporou
 
-Další informace o osvědčených postupech pro kontrakty dat týkajících se verzí najdete v tématu [Správa verzí kontraktů dat](https://msdn.microsoft.com/library/ms731138.aspx)
+Další informace o osvědčených postupech pro kontrakty dat týkajících se verzí najdete v tématu [Správa verzí kontraktů dat](/dotnet/framework/wcf/feature-details/data-contract-versioning)
 
-Informace o tom, jak implementovat kontrakty dat odolné vůči verzím, najdete v tématu [zpětná volání serializace odolná](https://msdn.microsoft.com/library/ms733734.aspx)
+Informace o tom, jak implementovat kontrakty dat odolné vůči verzím, najdete v tématu [zpětná volání serializace odolná](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks)
 
-Informace o tom, jak poskytnout datovou strukturu, která může spolupracovat napříč více verzemi, najdete v tématu [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx) .
+Informace o tom, jak poskytnout datovou strukturu, která může spolupracovat napříč více verzemi, najdete v tématu [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1) .

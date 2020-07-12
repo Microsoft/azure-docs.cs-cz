@@ -5,11 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464075"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256046"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurace upgradu aplikace Service Fabric v aplikaci Visual Studio
 Nástroje Visual Studio Tools for Azure Service Fabric poskytují podporu upgradu pro publikování do místních nebo vzdálených clusterů. Existují tři scénáře, ve kterých chcete aplikaci upgradovat na novější verzi místo toho, aby se aplikace nahradila při testování a ladění:
@@ -56,7 +57,7 @@ Pokud používáte nástroje sady Visual Studio Service Fabric k upgradu aplikac
 3. Pokud vyberete režim upgradu UnmonitoredManual, musíte ručně spustit konzolu PowerShellu a pokračovat a dokončit proces upgradu. Informace o tom, jak ruční upgrade funguje, najdete v [tématu Service Fabric upgrade aplikace: Pokročilá témata](service-fabric-application-upgrade-advanced.md) .
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>Upgrade aplikace pomocí PowerShellu
-K upgradu Service Fabric aplikace můžete použít rutiny prostředí PowerShell. Podrobné informace najdete v článku [Service Fabric kurzu upgradu aplikací](service-fabric-application-upgrade-tutorial.md) a [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) .
+K upgradu Service Fabric aplikace můžete použít rutiny prostředí PowerShell. Podrobné informace najdete v článku [Service Fabric kurzu upgradu aplikací](service-fabric-application-upgrade-tutorial.md) a [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) .
 
 ## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Zadejte zásady kontroly stavu v souboru manifestu aplikace.
 Každá služba ve Service Fabric aplikaci může mít své vlastní parametry zásad stavu, které přepisují výchozí hodnoty. Tyto hodnoty parametrů můžete zadat v souboru manifestu aplikace.

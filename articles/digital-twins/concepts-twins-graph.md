@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142404"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258212"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
 
@@ -21,11 +21,27 @@ V řešení digitálních vláken Azure jsou entity ve vašem prostředí reprez
 > [!TIP]
 > "Digitální vlákna Azure" odkazuje na tuto službu Azure jako celek. "Digitální vlákna" nebo pouze "vlákna" odkazují na jednotlivé zdvojené uzly v rámci vaší instance služby.
 
-## <a name="creating-digital-twins"></a>Vytváření digitálních vláken
+## <a name="digital-twins"></a>Digitální vlákna
 
 Než budete moct vytvořit digitální dvojitou hodnotu v instanci digitálních vláken Azure, musíte mít do této služby nahraný *model* . Model popisuje sadu vlastností, zpráv telemetrie a vztahy, které mohou mít konkrétní vlákna, mimo jiné. Typy informací, které jsou definovány v modelu, naleznete v tématu [Koncepty: vlastní modely](concepts-models.md).
 
 Po vytvoření a nahrání modelu může klientská aplikace vytvořit instanci typu; Jedná se o digitální dvojitou hodnotu. Například po vytvoření modelu *podlahy*můžete vytvořit jednu nebo několik digitálních vláken, která používají tento typ (například dvojitou hodnotu typu *podlah-Floor*s názvem *GroundFloor*, další s názvem *Floor2*atd.). 
+
+## <a name="relationships-a-graph-of-digital-twins"></a>Relace: graf digitálních vláken
+
+Vlákna se připojují k dvojitým grafům podle jejich vztahů. Vztahy, které mohou být zdvojeny, jsou definovány jako součást modelu.  
+
+Modelová *podlaha* například může *definovat relaci,* která cílí na vlákna typu *Room*. V této definici vám digitální vlákna Azure umožní vytvořit *obsahuje* vztahy z libovolného vlákna na *podlaze* pro všechny místnosti s dvojitou *místností* (včetně vláken, která jsou podtypy *místnosti* ). 
+
+Výsledkem tohoto procesu je sada uzlů (digitální vlákna) propojená přes hrany (jejich vztahy) v grafu.
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+## <a name="create-with-the-apis"></a>Vytvoření pomocí rozhraní API
+
+V této části se dozvíte, co vypadá při vytváření digitálních vláken a vztahů z klientské aplikace. Obsahuje příklady kódu .NET, které využívají [rozhraní API DigitalTwins](how-to-use-apis-sdks.md), k poskytnutí dalších informací o tom, co se nachází uvnitř každé z těchto konceptů.
+
+### <a name="create-digital-twins"></a>Vytváření digitálních vláken
 
 Níže je fragment kódu klienta, který používá [rozhraní API DigitalTwins](how-to-use-apis-sdks.md) k vytvoření instance vlákna typu *pokoj*.
 
@@ -59,11 +75,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 }
 ```
 
-## <a name="relationships-creating-a-graph-of-digital-twins"></a>Vztahy: vytváření grafu digitálních vláken
-
-Vlákna se připojují k dvojitým grafům podle jejich vztahů. Vztahy, které mohou být zdvojeny, jsou definovány jako součást modelu.  
-
-Modelová *podlaha* například může *definovat relaci,* která cílí na vlákna typu *Room*. V této definici vám digitální vlákna Azure umožní vytvořit *obsahuje* vztahy z libovolného vlákna na *podlaze* pro všechny místnosti s dvojitou *místností* (včetně vláken, která jsou podtypy *místnosti* ). 
+### <a name="create-relationships"></a>Vytvoření relací
 
 Tady je příklad klientského kódu, který používá [rozhraní API DigitalTwins](how-to-use-apis-sdks.md) k vytvoření vztahu mezi digitálním *typem podlahového*typu s názvem *GroundFloor* a digitálním dvojitým názvem typu *místnosti* *Cafe*.
 
@@ -84,8 +96,6 @@ try
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
 }
 ```
-
-Výsledkem tohoto procesu je sada uzlů (digitální vlákna) propojená přes hrany (jejich vztahy) v grafu.
 
 ## <a name="json-representations-of-graph-elements"></a>Reprezentace JSON prvků grafu
 

@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645748"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258640"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Události clusteru Service Fabric Linux v protokolu syslog
 
@@ -25,7 +26,7 @@ Každá událost syslog má 4 součásti
 * Vybavení
 * Identita
 * Zpráva
-* Severity
+* Závažnost
 
 SyslogConsumer zapisuje všechny události platforem pomocí zařízení `Local0` . Změnou konfigurace konfigurace můžete aktualizovat na jakékoli platné zařízení. Použitá identita je `ServiceFabric` . Pole zpráva obsahuje celou událost serializovanou ve formátu JSON, aby mohla být dotazována a spotřebována řadou nástrojů. 
 
@@ -112,6 +113,6 @@ Výše uvedený příklad je NodeDown události. Úplný seznam událostí můž
 
 ## <a name="next-steps"></a>Další kroky
 * [Nasaďte agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) do svých uzlů, abyste mohli shromažďovat čítače výkonu a shromažďovat statistiky a protokoly Docker pro vaše kontejnery.
-* Seznámení s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor
-* [Použití návrháře zobrazení k vytváření vlastních zobrazení v protokolech Azure Monitor](../log-analytics/log-analytics-view-designer.md)
-* Referenční informace o tom, jak [Azure monitor protokoly integrace s protokolem SYSLOG](../log-analytics/log-analytics-data-sources-syslog.md).
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/log-query/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
+* [Použití návrháře zobrazení k vytváření vlastních zobrazení v protokolech Azure Monitor](../azure-monitor/platform/view-designer.md)
+* Referenční informace o tom, jak [Azure monitor protokoly integrace s protokolem SYSLOG](../azure-monitor/platform/data-sources-syslog.md).

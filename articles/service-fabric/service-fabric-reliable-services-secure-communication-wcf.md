@@ -5,11 +5,12 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8633a5018e6faeaca842a3ecffb4c4921358e191
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614158"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257365"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Zabezpečená komunikace založená na technologii WCF pro službu
 Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní Reliable Services Application Framework poskytuje několik předem připravených komunikačních zásobníků a nástrojů, které můžete použít ke zvýšení zabezpečení. Tento článek pojednává o tom, jak zvýšit zabezpečení při použití vzdálené komunikace služby.
@@ -119,4 +120,4 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-V dalším kroku si přečtete [webové rozhraní API s Owin v Reliable Services](service-fabric-reliable-services-communication-webapi.md).
+V dalším kroku si přečtete [webové rozhraní API s Owin v Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md).

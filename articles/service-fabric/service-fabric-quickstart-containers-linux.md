@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d765168ea2eddaf42715536b5da67f15bb8a8cee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75372682"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258554"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Linuxu do Service Fabric
 
@@ -20,7 +20,7 @@ V tomto rychlém startu se dozvíte, jak nasadit kontejnery Linux do clusteru Se
 
 ![Webová stránka hlasovací aplikace][quickstartpic]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -108,7 +108,7 @@ Mozilla Firefox je výchozím prohlížečem v Ubuntu 16,04. Pokud chcete certif
     ./install.sh
     ```
 
-3. Otevřete webový prohlížeč a přejděte na koncový bod Service Fabric Exploreru pro váš cluster. Koncový bod má následující formát: **https://\<adresa_URL_clusteru_Azure_Service_Fabric>:19080/Explorer**, například `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
+3. Otevřete webový prohlížeč a přejděte na koncový bod Service Fabric Exploreru pro váš cluster. Koncový bod má následující formát: **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; například `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Rozbalením uzlu **aplikace** zjistíte, že nyní existuje položka pro typ hlasovací aplikace a instanci, kterou jste vytvořili.
 
@@ -179,7 +179,7 @@ az group delete --name $ResourceGroupName
 ```
 
 Pokud už jste dokončili práci se svým clusterem, můžete odebrat certifikát ze svého úložiště certifikátů. Příklad:
-- Windows: Použijte [modul snap-in Certifikáty v konzole MMC](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Při přidávání modulu snap-in nezapomeňte vybrat možnost **Můj uživatelský účet**. Přejděte do umístění `Certificates - Current User\Personal\Certificates` a odeberte certifikát.
+- Windows: Použijte [modul snap-in Certifikáty v konzole MMC](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Při přidávání modulu snap-in nezapomeňte vybrat možnost **Můj uživatelský účet**. Přejděte do umístění `Certificates - Current User\Personal\Certificates` a odeberte certifikát.
 - Mac: Použijte aplikaci Klíčenka.
 - Ubuntu: Postupujte podle kroků, pomocí kterých jste zobrazili certifikáty a odebrali certifikát.
 

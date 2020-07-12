@@ -5,11 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího
 services: container-service
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: f10bed46f93af3579f07e04d9940fc98eef67826
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a59bd1cfcc03b0a6c9af218cb7108a0ba094377d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920314"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255281"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou ve službě Azure Kubernetes Service (AKS)
 
@@ -433,7 +434,7 @@ Tento článek obsahuje některé externí komponenty, které se AKS. Další in
 
 - [Helm CLI][helm-cli]
 - [Kontroler NGINX pro příchozí přenosy][nginx-ingress]
-- [Správce certifikátů][cert-manager]
+- [cert-manager][cert-manager]
 
 Můžete také:
 
@@ -444,7 +445,7 @@ Můžete také:
 - [Vytvoření kontroleru příchozího přenosu dat s dynamickou veřejnou IP adresou a konfigurací šifry pro automatické generování certifikátů TLS][aks-ingress-tls]
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
 [cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html

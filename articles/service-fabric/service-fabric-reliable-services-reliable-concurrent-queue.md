@@ -3,14 +3,15 @@ title: ReliableConcurrentQueue v Azure Service Fabric
 description: ReliableConcurrentQueue je fronta s vysokou propustností, která umožňuje paralelní fronty a vyřazování z fronty.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462735"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257439"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Úvod do ReliableConcurrentQueue v Azure Service Fabric
-Spolehlivá souběžná fronta je asynchronní, transakční a replikovaná fronta, která poskytuje vysoké souběžnosti pro zařazování do fronty a operace odstranění fronty. Je navržená tak, aby poskytovala vysokou propustnost a nízkou latenci tím, že požadavků striktní řazení FIFO poskytované [spolehlivou frontou](https://msdn.microsoft.com/library/azure/dn971527.aspx) a místo toho poskytuje nejlepší řazení.
+Spolehlivá souběžná fronta je asynchronní, transakční a replikovaná fronta, která poskytuje vysoké souběžnosti pro zařazování do fronty a operace odstranění fronty. Je navržená tak, aby poskytovala vysokou propustnost a nízkou latenci tím, že požadavků striktní řazení FIFO poskytované [spolehlivou frontou](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) a místo toho poskytuje nejlepší řazení.
 
 ## <a name="apis"></a>Rozhraní API
 
@@ -20,11 +21,11 @@ Spolehlivá souběžná fronta je asynchronní, transakční a replikovaná fron
 | bool TryDequeue (výsledek T)  | Task< ConditionalValue < T > > TryDequeueAsync (ITransaction TX)  |
 | Počet int ()                    | dlouhý počet ()                                                     |
 
-## <a name="comparison-with-reliable-queue"></a>Porovnání s [spolehlivou frontou](https://msdn.microsoft.com/library/azure/dn971527.aspx)
+## <a name="comparison-with-reliable-queue"></a>Porovnání s [spolehlivou frontou](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)
 
-Spolehlivá souběžná fronta se nabízí jako alternativa [spolehlivé fronty](https://msdn.microsoft.com/library/azure/dn971527.aspx). V případech, kdy není vyžadováno striktní řazení FIFO, by mělo být použito v případech, kdy je zaručeno, že metoda FIFO vyžaduje kompromisy s souběžnou metodou.  [Spolehlivá fronta](https://msdn.microsoft.com/library/azure/dn971527.aspx) používá zámky k vykonání řazení FIFO, přičemž ve více než jedné transakci povoluje zařazení do fronty a maximálně jedna transakce povolená k vyřazení z fronty v jednom okamžiku. V porovnání spolehlivá souběžná fronta vydává omezení pořadí a umožňuje jakýmkoli souběžným transakcím prokládat jejich fronty a operace dequeueing. K dispozici je doporučené řazení, ale relativní řazení dvou hodnot ve spolehlivé souběžné frontě není nikdy zaručeno.
+Spolehlivá souběžná fronta se nabízí jako alternativa [spolehlivé fronty](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1). V případech, kdy není vyžadováno striktní řazení FIFO, by mělo být použito v případech, kdy je zaručeno, že metoda FIFO vyžaduje kompromisy s souběžnou metodou.  [Spolehlivá fronta](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) používá zámky k vykonání řazení FIFO, přičemž ve více než jedné transakci povoluje zařazení do fronty a maximálně jedna transakce povolená k vyřazení z fronty v jednom okamžiku. V porovnání spolehlivá souběžná fronta vydává omezení pořadí a umožňuje jakýmkoli souběžným transakcím prokládat jejich fronty a operace dequeueing. K dispozici je doporučené řazení, ale relativní řazení dvou hodnot ve spolehlivé souběžné frontě není nikdy zaručeno.
 
-Spolehlivá souběžná fronta poskytuje vyšší propustnost a nižší latenci než [spolehlivá fronta](https://msdn.microsoft.com/library/azure/dn971527.aspx) , kdykoli je v nich více souběžných transakcí, které provádějí fronty nebo odstíny.
+Spolehlivá souběžná fronta poskytuje vyšší propustnost a nižší latenci než [spolehlivá fronta](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) , kdykoli je v nich více souběžných transakcí, které provádějí fronty nebo odstíny.
 
 Vzorový případ použití pro ReliableConcurrentQueue je scénář [fronty zpráv](https://en.wikipedia.org/wiki/Message_queue) . V tomto scénáři jeden nebo více výrobců zpráv vytváří a přidává položky do fronty a jeden nebo více příjemců zprávy přebírá zprávy z fronty a zpracovává je. Více výrobců a uživatelů může pracovat nezávisle, a to pomocí souběžných transakcí za účelem zpracování fronty.
 
@@ -337,6 +338,6 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Oznámení Reliable Services](service-fabric-reliable-services-notifications.md)
 * [Reliable Services zálohování a obnovení (zotavení po havárii)](service-fabric-reliable-services-backup-restore.md)
 * [Konfigurace spolehlivého správce stavu](service-fabric-reliable-services-configuration.md)
-* [Začínáme se službami rozhraní API pro Service Fabric Web](service-fabric-reliable-services-communication-webapi.md)
-* [Pokročilé použití programovacího modelu Reliable Services](service-fabric-reliable-services-advanced-usage.md)
-* [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Začínáme se službami rozhraní API pro Service Fabric Web](./service-fabric-reliable-services-communication-aspnetcore.md)
+* [Pokročilé použití programovacího modelu Reliable Services](./service-fabric-reliable-services-lifecycle.md)
+* [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

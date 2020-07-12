@@ -3,12 +3,12 @@ title: Upgrade uzlů clusteru pro používání služby Azure Managed disks
 description: Tady je postup, jak upgradovat existující Cluster Service Fabric tak, aby používal Azure Managed disks s malým nebo žádným výpadkem clusteru.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 46dec6ae29fdd8f2a418f695c31900e6df4483e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611624"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255893"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgrade uzlů clusteru pro používání služby Azure Managed disks
 
@@ -16,7 +16,7 @@ ms.locfileid: "85611624"
 
 Všeobecná strategie pro upgrade uzlu clusteru Service Fabric na používání spravovaných disků:
 
-1. Nasaďte jinak duplicitní sadu škálování virtuálního počítače pro daný typ uzlu, ale s objektem [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) přidaným do `osDisk` části šablony nasazení sady škálování virtuálního počítače. Nová sada škálování by se měla navazovat na stejný nástroj pro vyrovnávání zatížení/IP adresu jako originál, aby vaši zákazníci během migrace nepracovali jako výpadek služeb.
+1. Nasaďte jinak duplicitní sadu škálování virtuálního počítače pro daný typ uzlu, ale s objektem [managedDisk](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) přidaným do `osDisk` části šablony nasazení sady škálování virtuálního počítače. Nová sada škálování by se měla navazovat na stejný nástroj pro vyrovnávání zatížení/IP adresu jako originál, aby vaši zákazníci během migrace nepracovali jako výpadek služeb.
 
 2. Po souběžném spuštění původní i upgradované sady škálování zakažte instance původních uzlů po jednom, aby se systémové služby (nebo repliky stavových služeb) migrovali do nové sady škálování.
 
@@ -25,7 +25,7 @@ Všeobecná strategie pro upgrade uzlu clusteru Service Fabric na používání 
 Tento článek vás provede jednotlivými kroky upgradu primárního typu uzlu ukázkového clusteru, který bude používat spravované disky, a zároveň vyloučí jakékoli výpadky clusteru (viz poznámka níže). Počáteční stav ukázkového testovacího clusteru se skládá z jednoho typu uzlu [odolného proti stříbrnému](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), který je zajištěný jednou sadou škálování s pěti uzly.
 
 > [!CAUTION]
-> Tento postup se projeví pouze v případě, že máte závislosti na DNS clusteru (například při přístupu k [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). [Osvědčeným postupem pro front-end služby](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) je mít určitý druh nástroje pro [Vyrovnávání zatížení](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) před typy uzlů, aby bylo možné přeměnit uzel bez výpadku.
+> Tento postup se projeví pouze v případě, že máte závislosti na DNS clusteru (například při přístupu k [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). [Osvědčeným postupem pro front-end služby](/azure/architecture/microservices/design/gateway) je mít určitý druh nástroje pro [Vyrovnávání zatížení](/azure/architecture/guide/technology-choices/load-balancing-overview) před typy uzlů, aby bylo možné přeměnit uzel bez výpadku.
 
 Tady jsou [šablony a rutiny](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) pro Azure Resource Manager, které použijeme k dokončení scénáře upgradu. Změny šablon budou vysvětleny v části [nasazení upgradované sady škálování pro typ primárního uzlu](#deploy-an-upgraded-scale-set-for-the-primary-node-type) níže.
 
@@ -212,7 +212,7 @@ V části šablona nasazení `variables` přidejte položku pro fond adres pří
 "lbNatPoolID1": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool1')]", 
 ```
 
-### <a name="resources"></a>Prostředky
+### <a name="resources"></a>Zdroje a prostředky
 
 V části *prostředky* šablony nasazení přidejte novou sadu škálování virtuálního počítače. Pamatujte na tyto věci:
 

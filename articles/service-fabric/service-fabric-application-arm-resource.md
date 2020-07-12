@@ -3,11 +3,12 @@ title: Nasazení a upgrade pomocí Azure Resource Manager
 description: Naučte se, jak nasadit aplikace a služby do clusteru Service Fabric pomocí šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: a2dfe54bf2c6b4fa8814f10c10576a73727a7417
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75610246"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256505"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Správa aplikací a služeb jako Azure Resource Managerch prostředků
 
@@ -260,13 +261,12 @@ Pouhým odebráním Microsoft. ServiceFabric/Clusters/Application ze šablony AR
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Správa existující aplikace pomocí Správce prostředků
 
-Pokud je váš cluster už v provozu a některé aplikace, které byste chtěli spravovat jako Správce prostředků prostředky, jsou už nasazené, neodstraňujte aplikace a znovu je nasadíte. k tomu, aby se aplikace získaly jako Správce prostředků prostředky, můžete použít volání PUT pomocí stejných rozhraní API. Další informace najdete [v tématu Co je model prostředků aplikace Service Fabric?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model)
+Pokud je váš cluster už v provozu a některé aplikace, které byste chtěli spravovat jako Správce prostředků prostředky, jsou už nasazené, neodstraňujte aplikace a znovu je nasadíte. k tomu, aby se aplikace získaly jako Správce prostředků prostředky, můžete použít volání PUT pomocí stejných rozhraní API. Další informace najdete [v tématu Co je model prostředků aplikace Service Fabric?](./service-fabric-concept-resource-model.md)
 
 > [!NOTE]
-> Aby mohl upgrade clusteru ignorovat aplikace, které nemají stav v pořádku, může zákazník v části upgradeDescription/healthPolicy zadat "maxPercentUnhealthyApplications: 100"; Podrobné popisy všech nastavení jsou v [dokumentaci Service fabric REST API zásadách upgradu clusteru](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
+> Aby mohl upgrade clusteru ignorovat aplikace, které nemají stav v pořádku, může zákazník v části upgradeDescription/healthPolicy zadat "maxPercentUnhealthyApplications: 100"; Podrobné popisy všech nastavení jsou v [dokumentaci Service fabric REST API zásadách upgradu clusteru](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>Další kroky
 
 * K nasazení dalších aplikací do clusteru použijte [Service Fabric CLI](service-fabric-cli.md) nebo [PowerShell](service-fabric-deploy-remove-applications.md) . 
 * [Upgrade clusteru Service Fabric](service-fabric-cluster-upgrade.md)
-

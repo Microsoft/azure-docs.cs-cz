@@ -4,12 +4,12 @@ description: Seznamte se s používáním spravovaných identit pro Azure s Serv
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710299"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257624"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Použití spravovaných identit pro Azure s Service Fabric
 
@@ -24,7 +24,7 @@ Běžným problémem při sestavování cloudových aplikací je způsob, jak be
 
 Spravované identity pro Azure jsou založené na několika klíčových konceptech:
 
-- **ID klienta** – jedinečný identifikátor generovaný službou Azure AD, který je svázán s aplikací a instančním objektem během počátečního zřizování (viz také [ID aplikace](/azure/active-directory/develop/developer-glossary#application-id-client-id).)
+- **ID klienta** – jedinečný identifikátor generovaný službou Azure AD, který je svázán s aplikací a instančním objektem během počátečního zřizování (viz také [ID aplikace](../active-directory/develop/developer-glossary.md#application-id-client-id).)
 
 - **ID objektu zabezpečení** – ID objektu instančního objektu pro spravovanou identitu, která se používá pro udělení přístupu na základě role k prostředku Azure.
 

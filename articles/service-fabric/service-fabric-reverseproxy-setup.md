@@ -4,12 +4,12 @@ description: Naučte se, jak nastavit a nakonfigurovat službu reverzního proxy
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80476667"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256341"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
 Reverzní proxy je volitelná služba Azure Service Fabric, která pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http. Další informace najdete v tématu [reverzní proxy v Azure Service Fabric](service-fabric-reverseproxy.md). V tomto článku se dozvíte, jak nastavit a nakonfigurovat reverzní proxy server v clusteru. 
@@ -37,7 +37,7 @@ Pro nový cluster můžete [vytvořit vlastní šablonu správce prostředků](s
 
 Můžete najít ukázkovou Správce prostředků šablony, které vám pomůžou nakonfigurovat zabezpečený reverzní proxy pro cluster Azure na GitHubu v rámci [šablony pro zabezpečení reverzního proxy serveru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) . Pokyny a šablony, které se použijí ke konfiguraci zabezpečeného serveru reverzního proxy s certifikátem a ke zpracování změn certifikátů, najdete v tématu [Konfigurace reverzního proxy serveru HTTPS v zabezpečeném clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) v souboru Readme.
 
-Pro existující cluster můžete exportovat šablonu Správce prostředků pro skupinu prostředků clusteru pomocí [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli).
+Pro existující cluster můžete exportovat šablonu Správce prostředků pro skupinu prostředků clusteru pomocí [Azure Portal](../azure-resource-manager/templates/export-template-portal.md), [PowerShellu](../azure-resource-manager/management/manage-resources-powershell.md)nebo rozhraní příkazového [řádku Azure](../azure-resource-manager/management/manage-resources-cli.md).
 
 Po vytvoření šablony Správce prostředků můžete povolit reverzní proxy pomocí následujících kroků:
 
@@ -52,7 +52,7 @@ Po vytvoření šablony Správce prostředků můžete povolit reverzní proxy p
         }
     },
     ```
-2. Zadejte port pro každý objekt NodeType v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. ServiceFabric/clustery**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) .
+2. Zadejte port pro každý objekt NodeType v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. ServiceFabric/clustery**](/azure/templates/microsoft.servicefabric/clusters) .
 
     Port je identifikovaný názvem parametru reverseProxyEndpointPort.
 
@@ -74,7 +74,7 @@ Po vytvoření šablony Správce prostředků můžete povolit reverzní proxy p
         ...
     }
     ```
-3. Chcete-li nakonfigurovat certifikáty TLS/SSL na portu reverzního proxy serveru, přidejte certifikát do vlastnosti ***reverseProxyCertificate*** v [části typ prostředku](../resource-group-authoring-templates.md) **Microsoft. ServiceFabric/clustery** .
+3. Chcete-li nakonfigurovat certifikáty TLS/SSL na portu reverzního proxy serveru, přidejte certifikát do vlastnosti ***reverseProxyCertificate*** v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) **Microsoft. ServiceFabric/clustery** .
 
     ```json
     {
@@ -98,7 +98,7 @@ Po vytvoření šablony Správce prostředků můžete povolit reverzní proxy p
     ```
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>Podpora certifikátu reverzního proxy serveru, který se liší od certifikátu clusteru
- Pokud se certifikát reverzního proxy liší od certifikátu, který zabezpečuje cluster, pak by měl být dříve zadaný certifikát na virtuálním počítači nainstalovaný a přidaný do seznamu řízení přístupu (ACL), aby k němu Service Fabric mít přístup. To se dá udělat v [části typ prostředku](../resource-group-authoring-templates.md) [**Microsoft. COMPUTE/virtualMachineScaleSets**](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets) . Pro instalaci přidejte certifikát do osProfile. Oddíl Extension v šabloně může aktualizovat certifikát v seznamu ACL.
+ Pokud se certifikát reverzního proxy liší od certifikátu, který zabezpečuje cluster, pak by měl být dříve zadaný certifikát na virtuálním počítači nainstalovaný a přidaný do seznamu řízení přístupu (ACL), aby k němu Service Fabric mít přístup. To se dá udělat v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. COMPUTE/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) . Pro instalaci přidejte certifikát do osProfile. Oddíl Extension v šabloně může aktualizovat certifikát v seznamu ACL.
 
   ```json
   {
@@ -252,50 +252,50 @@ Pokud chcete server reverzního proxy zveřejnit jako samostatný cluster, bude 
 
 ### <a name="expose-the-reverse-proxy-via-resource-manager-templates"></a>Zpřístupnění reverzního proxy serveru prostřednictvím šablon Správce prostředků
 
-Následující JSON odkazuje na stejnou šablonu, která se používá v [Povolení reverzního proxy prostřednictvím šablon Azure Resource Manager](#enable-reverse-proxy-via-azure-resource-manager-templates). Informace o tom, jak vytvořit šablonu Správce prostředků nebo jak exportovat šablonu pro existující cluster, najdete v této části dokumentu.  Změny se provedou v [části typ prostředku](../resource-group-authoring-templates.md) [**Microsoft. Network/loadBalancers**](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers) .
+Následující JSON odkazuje na stejnou šablonu, která se používá v [Povolení reverzního proxy prostřednictvím šablon Azure Resource Manager](#enable-reverse-proxy-via-azure-resource-manager-templates). Informace o tom, jak vytvořit šablonu Správce prostředků nebo jak exportovat šablonu pro existující cluster, najdete v této části dokumentu.  Změny se provedou v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) .
 
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
+```json
+{
+    "apiVersion": "[variables('lbApiVersion')]",
+    "type": "Microsoft.Network/loadBalancers",
+    ...
+    ...
+    "loadBalancingRules": [
         ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
+        {
+            "name": "LBSFReverseProxyRule",
+            "properties": {
+                "backendAddressPool": {
+                    "id": "[variables('lbPoolID0')]"
+                },
+                "backendPort": "[parameters('SFReverseProxyPort')]",
+                "enableFloatingIP": "false",
+                "frontendIPConfiguration": {
+                    "id": "[variables('lbIPConfig0')]"
+                },
+                "frontendPort": "[parameters('SFReverseProxyPort')]",
+                "idleTimeoutInMinutes": "5",
+                "probe": {
+                    "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
+                },
+                "protocol": "tcp"
             }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
+        }
+    ],
+    "probes": [
+        ...
+        {
+            "name": "SFReverseProxyProbe",
+            "properties": {
+                "intervalInSeconds": 5,
+                "numberOfProbes": 2,
+                "port":     "[parameters('SFReverseProxyPort')]",
+                "protocol": "tcp"
+            }
+        }  
+    ]
+}
+```
 
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Přizpůsobení chování reverzního proxy serveru pomocí nastavení prostředků infrastruktury

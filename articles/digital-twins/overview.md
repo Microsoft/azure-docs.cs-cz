@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737117"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257985"
 ---
 # <a name="what-is-azure-digital-twins"></a>Co je služba Azure Digital Twins?
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Digitální vlákna Azure** je platforma IoT, která umožňuje vytváření komplexních digitálních modelů celých prostředí. Tato prostředí můžou být budovy, továrny, farmy, energetické sítě, železnice, Stadium a další – dokonce i celá města. Tyto digitální modely se dají využít k získání přehledů, které poskytují lepší produkty, optimalizované operace, snížené náklady a převratná prostředí pro zákazníky.
 
@@ -46,6 +43,12 @@ DTDL se používá pro datové modely v jiných službách Azure IoT, včetně s
 ### <a name="live-execution-environment"></a>Prostředí pro spuštění v reálném čase
 
 Digitální modely v rámci digitálních vláken Azure jsou živé a aktuální reprezentace reálného světa. Pomocí vztahů ve vlastních DTDL modelech spojíte vlákna do **živého grafu** představujícího vaše prostředí.
+
+Vizualizaci grafu digitálních vláken Azure můžete zobrazit pomocí ukázkové aplikace v [**Průzkumníkovi digitálních vláken Azure**](https://github.com/Azure-Samples/digital-twins-explorer).
+
+Tady je přehled toho, jak vypadá ukázková vizualizace:
+
+:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Snímek obrazovky s ukázkovou aplikací Průzkumníka digitálních vláken Azure a zobrazením grafu uzlů reprezentujících digitální vlákna" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
 Digitální vlákna Azure poskytuje bohatý **systém událostí** , který umožňuje zajistit, aby graf aktuální se zpracováním dat a obchodní logikou. Můžete propojit externí výpočetní prostředky, jako je [Azure Functions](../azure-functions/functions-overview.md), aby se zpracování těchto dat mohlo řídit flexibilním, přizpůsobeným způsobem.
 

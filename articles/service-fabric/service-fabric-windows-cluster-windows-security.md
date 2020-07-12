@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 360bba2ffc344175214c44e2c9c1d3c0859ac3e5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76774449"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255961"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Zabezpečení samostatného clusteru ve Windows pomocí zabezpečení systému Windows
 Aby se zabránilo neoprávněnému přístupu ke clusteru Service Fabric, musíte zabezpečit cluster. Zabezpečení je obzvláště důležité, když cluster spouští produkční úlohy. Tento článek popisuje, jak nakonfigurovat zabezpečení mezi uzly a klientem a uzlem pomocí zabezpečení systému Windows v *ClusterConfig.JSv* souboru.  Proces odpovídá kroku konfigurace zabezpečení [vytvoření samostatného clusteru běžícího v systému Windows](service-fabric-cluster-creation-for-windows-server.md). Další informace o tom, jak Service Fabric používá zabezpečení systému Windows, najdete v tématu [scénáře zabezpečení clusteru](service-fabric-cluster-security.md).
@@ -20,7 +21,7 @@ Aby se zabránilo neoprávněnému přístupu ke clusteru Service Fabric, musít
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Konfigurace zabezpečení Windows pomocí gMSA  
-Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JS* konfiguračního souboru staženého pomocí [Microsoft. Azure. ServiceFabric. windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)samostatný clusterový balíček zip obsahuje šablonu pro konfiguraci zabezpečení systému Windows pomocí [skupinového účtu spravované služby (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
+Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JS* konfiguračního souboru staženého pomocí [Microsoft. Azure. ServiceFabric. windowsserver. \<version> . ](https://go.microsoft.com/fwlink/?LinkId=730690)samostatný clusterový balíček zip obsahuje šablonu pro konfiguraci zabezpečení systému Windows pomocí [skupinového účtu spravované služby (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)):  
 
 ```
 "security": {
@@ -53,8 +54,8 @@ Ukázka *ClusterConfig.gMSA.Windows.MultiMachine.JS* konfiguračního souboru st
 > [!NOTE]
 > Hodnota ClustergMSAIdentity musí být ve formátu " mysfgmsa@mydomain ".
 
-[Zabezpečení uzlů na uzel](service-fabric-cluster-security.md#node-to-node-security) je nakonfigurované nastavením **ClustergMSAIdentity** , když Service Fabric potřebuje běžet pod gMSA. Aby bylo možné sestavovat vztahy důvěryhodnosti mezi uzly, je nutné, aby si je navzájem věděli. Toho lze dosáhnout dvěma různými způsoby: Určete skupinový účet spravované služby, který zahrnuje všechny uzly v clusteru, nebo zadejte skupinu počítačů, která zahrnuje všechny uzly v clusteru. Důrazně doporučujeme používat přístup [skupinového účtu spravované služby (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) , zvláště u větších clusterů (více než 10 uzlů) nebo u clusterů, které se nejspíš zvětšují nebo zmenšují.  
-Tento přístup nevyžaduje vytvoření skupiny domén, pro kterou se správcům clusteru udělila přístupová práva k přidávání a odebírání členů. Tyto účty jsou užitečné také pro automatickou správu hesel. Další informace najdete v tématu [Začínáme se skupinovými účty spravované služby](https://technet.microsoft.com/library/jj128431.aspx).  
+[Zabezpečení uzlů na uzel](service-fabric-cluster-security.md#node-to-node-security) je nakonfigurované nastavením **ClustergMSAIdentity** , když Service Fabric potřebuje běžet pod gMSA. Aby bylo možné sestavovat vztahy důvěryhodnosti mezi uzly, je nutné, aby si je navzájem věděli. Toho lze dosáhnout dvěma různými způsoby: Určete skupinový účet spravované služby, který zahrnuje všechny uzly v clusteru, nebo zadejte skupinu počítačů, která zahrnuje všechny uzly v clusteru. Důrazně doporučujeme používat přístup [skupinového účtu spravované služby (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) , zvláště u větších clusterů (více než 10 uzlů) nebo u clusterů, které se nejspíš zvětšují nebo zmenšují.  
+Tento přístup nevyžaduje vytvoření skupiny domén, pro kterou se správcům clusteru udělila přístupová práva k přidávání a odebírání členů. Tyto účty jsou užitečné také pro automatickou správu hesel. Další informace najdete v tématu [Začínáme se skupinovými účty spravované služby](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)).  
  
 [Zabezpečení klienta na uzel](service-fabric-cluster-security.md#client-to-node-security) je nakonfigurované pomocí **ClientIdentities**. Aby bylo možné navázat vztah důvěryhodnosti mezi klientem a clusterem, je nutné nakonfigurovat cluster tak, aby věděli, které identity klienta může důvěřovat. To se dá udělat dvěma různými způsoby: Určete uživatele skupiny domény, které se můžou připojit, nebo zadejte uživatele uzlu domény, které se můžou připojit. Service Fabric podporuje pro klienty, kteří jsou připojení ke clusteru Service Fabric, dva různé typy řízení přístupu: správce a uživatel. Řízení přístupu poskytuje správci clusteru možnost omezit přístup k určitým typům operací clusteru pro různé skupiny uživatelů a tím zvýšit zabezpečení clusteru.  Správci mají plný přístup k funkcím správy (včetně funkcí pro čtení a zápis). Uživatelé mají ve výchozím nastavení přístup jen pro čtení k funkcím pro správu (například možnosti dotazů) a možnost přeložit aplikace a služby. Další informace o ovládacích prvcích přístupu najdete v tématu [řízení přístupu na základě rolí pro klienty Service Fabric](service-fabric-cluster-security-roles.md).  
  
@@ -102,7 +103,7 @@ Tento model je zastaralý. Doporučujeme použít gMSA, jak je popsáno výše. 
 | Identita |Přidejte uživatele domény (doména \ Uživatel) pro identitu klienta. |  
 | Správce |Nastavte na hodnotu true, pokud chcete, aby měl uživatel domény oprávnění správce pro přístup klienta k uživateli nebo false. |  
 
-[Zabezpečení uzlů na uzel](service-fabric-cluster-security.md#node-to-node-security) se konfiguruje nastavením použití **ClusterIdentity** , pokud chcete použít skupinu počítačů v rámci doména služby Active Directory. Další informace najdete v tématu [Vytvoření skupiny počítačů ve službě Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx).
+[Zabezpečení uzlů na uzel](service-fabric-cluster-security.md#node-to-node-security) se konfiguruje nastavením použití **ClusterIdentity** , pokud chcete použít skupinu počítačů v rámci doména služby Active Directory. Další informace najdete v tématu [Vytvoření skupiny počítačů ve službě Active Directory](/previous-versions/commerce-server/aa545347(v=cs.70)).
 
 [Zabezpečení klient-uzel](service-fabric-cluster-security.md#client-to-node-security) se konfiguruje pomocí **ClientIdentities**. Chcete-li vytvořit vztah důvěryhodnosti mezi klientem a clusterem, je nutné nakonfigurovat cluster tak, aby znal identity klientů, které může cluster důvěřovat. Vztah důvěryhodnosti můžete vytvořit dvěma různými způsoby:
 

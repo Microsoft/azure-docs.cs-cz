@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 167ca76d0b6977a87352f8219d807949a0e4a301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e8d03f782527cd3a9a2667f3513046d7e76c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392637"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256301"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Přidat vlastní sestavy o stavu Service Fabric
 Azure Service Fabric zavádí [model stavu](service-fabric-health-introduction.md) , který je navržený tak, aby na konkrétní entity mohl označovat stav není v pořádku a podmínky použití aplikace. Model stavu používá **sestavy stavu** (systémové součásti a sledovací zařízení). Cílem je snadno a rychle diagnostikovat a opravit. Zapisovače služeb se musí představit předem o stavu. Všechny podmínky, které mohou ovlivnit stav, by měly být hlášeny, zejména v případě, že mohou přispět k potížím s příznakem blízko ke kořenu. Informace o stavu mohou ušetřit čas a úsilí při ladění a vyšetřování. Užitečnost je obzvláště jasné, když je služba v cloudu (soukromá nebo Azure) v provozu.
@@ -37,7 +38,7 @@ Jak bylo zmíněno, vytváření sestav je možné provést z těchto kroků:
 > 
 > 
 
-Jakmile je návrh vytváření sestav stavu jasný, je možné snadno odesílat sestavy o stavu. [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) můžete použít k hlášení stavu, Pokud cluster není [zabezpečený](service-fabric-cluster-security.md) nebo pokud má klient prostředků infrastruktury oprávnění správce. Vytváření sestav můžete provést prostřednictvím rozhraní API pomocí [FabricClient. HealthManager. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), prostřednictvím PowerShellu nebo pomocí REST. Ovladače konfigurace dávkují sestavy pro lepší výkon.
+Jakmile je návrh vytváření sestav stavu jasný, je možné snadno odesílat sestavy o stavu. [FabricClient](/dotnet/api/system.fabric.fabricclient) můžete použít k hlášení stavu, Pokud cluster není [zabezpečený](service-fabric-cluster-security.md) nebo pokud má klient prostředků infrastruktury oprávnění správce. Vytváření sestav můžete provést prostřednictvím rozhraní API pomocí [FabricClient. HealthManager. ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), prostřednictvím PowerShellu nebo pomocí REST. Ovladače konfigurace dávkují sestavy pro lepší výkon.
 
 > [!NOTE]
 > Stav sestavy je synchronní a představuje pouze práci ověřování na straně klienta. Skutečnost, že je sestava přijata klientem stavu nebo `Partition` `CodePackageActivationContext` objekty nebo, neznamená, že se používá v úložišti. Odesílá se asynchronně a pravděpodobně dávkuje s jinými sestavami. Zpracování na serveru může stále selhat: pořadové číslo může být zastaralé, entita, na které je nutné sestavu použít, byla odstraněna atd.
@@ -57,7 +58,7 @@ Sestavy o stavu se odesílají do Správce stavu prostřednictvím klienta Healt
 > 
 
 Ukládání do vyrovnávací paměti klienta vezme v úvahu jedinečnosti sestav. Pokud například určitý špatný zpravodaj hlásí 100 sestav za sekundu na stejné vlastnosti stejné entity, nahradí se sestavy poslední verzí. Ve frontě klienta existuje nejvýše jedna taková sestava. Pokud nakonfigurujete dávkování, počet zpráv odeslaných do Správce stavu je pouze jeden za interval odeslání. Tato sestava je poslední přidanou sestavou, která odráží aktuální stav entity.
-Zadejte parametry konfigurace při `FabricClient` vytváření předáváním [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) s požadovanými hodnotami pro položky související se stavem.
+Zadejte parametry konfigurace při `FabricClient` vytváření předáváním [FabricClientSettings](/dotnet/api/system.fabric.fabricclientsettings) s požadovanými hodnotami pro položky související se stavem.
 
 Následující příklad vytvoří klienta prostředků infrastruktury a určí, že se mají sestavy odesílat při jejich přidání. V případě časových limitů a chyb, které je možné opakovat, se opakování provádí každých 40 sekund.
 
@@ -71,7 +72,7 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-Doporučujeme ponechat výchozí nastavení klienta prostředků infrastruktury, které je nastavené `HealthReportSendInterval` na 30 sekund. Toto nastavení zajišťuje optimální výkon z důvodu dávkování. V případě kritických sestav, které je třeba odeslat co nejdříve, použijte příkaz `HealthReportSendOptions` s okamžitým `true` rozhraním API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) . Okamžité sestavy vycházejí z intervalu dávkování. Pomocí tohoto příznaku se opatrně; Pokud je to možné, chceme využít dávkování klientů healthing. Okamžité odeslání je užitečné také v případě, že je klient Fabric ukončován (například proces zjistil neplatný stav a musí vypnout, aby se zabránilo vedlejším účinkům). Zajišťuje nejlepší úsilí při posílání kumulovaných sestav. Když se přidá jedna sestava s okamžitým příznakem, klient stavu se po posledním odeslání zařadí všechny shromážděné sestavy.
+Doporučujeme ponechat výchozí nastavení klienta prostředků infrastruktury, které je nastavené `HealthReportSendInterval` na 30 sekund. Toto nastavení zajišťuje optimální výkon z důvodu dávkování. V případě kritických sestav, které je třeba odeslat co nejdříve, použijte příkaz `HealthReportSendOptions` s okamžitým `true` rozhraním API [FabricClient. HealthClient. ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) . Okamžité sestavy vycházejí z intervalu dávkování. Pomocí tohoto příznaku se opatrně; Pokud je to možné, chceme využít dávkování klientů healthing. Okamžité odeslání je užitečné také v případě, že je klient Fabric ukončován (například proces zjistil neplatný stav a musí vypnout, aby se zabránilo vedlejším účinkům). Zajišťuje nejlepší úsilí při posílání kumulovaných sestav. Když se přidá jedna sestava s okamžitým příznakem, klient stavu se po posledním odeslání zařadí všechny shromážděné sestavy.
 
 Při vytváření připojení ke clusteru prostřednictvím PowerShellu se dají zadat stejné parametry. Následující příklad spustí připojení k místnímu clusteru:
 
@@ -113,12 +114,12 @@ V případě REST se zprávy odesílají do Service Fabric brány, která má in
 ## <a name="report-from-within-low-privilege-services"></a>Sestava v rámci služeb s nízkou úrovní oprávnění
 Pokud služba Service Fabric Services nemá přístup správce ke clusteru, můžete hlásit stav entit z aktuálního kontextu prostřednictvím `Partition` nebo `CodePackageActivationContext` .
 
-* U bezstavových služeb použijte [IStatelessServicePartition. ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) k hlášení aktuální instance služby.
-* Pro stavové služby použijte [IStatefulServicePartition. ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) k hlášení o aktuální replice.
-* Pomocí [IServicePartition. ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) nahlaste aktuální entitu oddílu.
-* K hlášení aktuální aplikace použijte [CodePackageActivationContext. ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) .
-* Pomocí [CodePackageActivationContext. ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) můžete nahlásit aktuální aplikaci nasazenou v aktuálním uzlu.
-* Pomocí [CodePackageActivationContext. ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) nahlaste balíček služby pro aplikaci nasazenou na aktuálním uzlu.
+* U bezstavových služeb použijte [IStatelessServicePartition. ReportInstanceHealth](/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) k hlášení aktuální instance služby.
+* Pro stavové služby použijte [IStatefulServicePartition. ReportReplicaHealth](/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) k hlášení o aktuální replice.
+* Pomocí [IServicePartition. ReportPartitionHealth](/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) nahlaste aktuální entitu oddílu.
+* K hlášení aktuální aplikace použijte [CodePackageActivationContext. ReportApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) .
+* Pomocí [CodePackageActivationContext. ReportDeployedApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) můžete nahlásit aktuální aplikaci nasazenou v aktuálním uzlu.
+* Pomocí [CodePackageActivationContext. ReportDeployedServicePackageHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) nahlaste balíček služby pro aplikaci nasazenou na aktuálním uzlu.
 
 > [!NOTE]
 > Interně jsou `Partition` a `CodePackageActivationContext` držitelem stavu s nakonfigurovaným výchozím nastavením. Jak je vysvětleno pro [klienta Health](service-fabric-report-health.md#health-client), sestavy jsou dávkově a odesílány v časovači. Objekty by měly zůstat aktivní, aby měly možnost Odeslat zprávu.
@@ -289,7 +290,7 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Odesílat sestavy o stavu pomocí REST s požadavky POST, které přecházejí na požadovanou entitu a mají v těle popis sestavy o stavu. Podívejte se například na téma odeslání [sestav stavu clusteru](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) REST nebo [sestav o stavu služby](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Všechny entity jsou podporovány.
+Odesílat sestavy o stavu pomocí REST s požadavky POST, které přecházejí na požadovanou entitu a mají v těle popis sestavy o stavu. Podívejte se například na téma odeslání [sestav stavu clusteru](/rest/api/servicefabric/report-the-health-of-a-cluster) REST nebo [sestav o stavu služby](/rest/api/servicefabric/report-the-health-of-a-service). Všechny entity jsou podporovány.
 
 ## <a name="next-steps"></a>Další kroky
 Na základě dat o stavu, zapisovače služeb a správců clusterů a aplikací si můžete představit, jak tyto informace využívat. Můžou například nastavit výstrahy na základě stavu a zachytit vážné problémy před tím, než vyplní výpadky. Správci můžou také nastavit systémy oprav, aby automaticky opravily problémy.
@@ -305,4 +306,3 @@ Na základě dat o stavu, zapisovače služeb a správců clusterů a aplikací 
 [Místní monitorování a diagnostika služeb](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Upgrade aplikace Service Fabric](service-fabric-application-upgrade.md)
-

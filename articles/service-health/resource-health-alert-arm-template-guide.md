@@ -3,11 +3,12 @@ title: Šablona pro vytvoření výstrah Resource Health
 description: Vytvářejte výstrahy programově, které vás upozorní, když vaše prostředky Azure nebudou k dispozici.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18a3b2df2d159d2903c69debd79cccfc6d0af63e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759013"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255876"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurace upozornění na stav prostředků s využitím šablon Resource Manageru
 
@@ -20,7 +21,7 @@ Azure Resource Health vás informují o aktuálním a historickém stavu vašich
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle pokynů na této stránce, musíte předem nastavit pár věcí:
 
@@ -30,45 +31,55 @@ Pokud chcete postupovat podle pokynů na této stránce, musíte předem nastavi
 ## <a name="instructions"></a>Pokyny
 1. Pomocí PowerShellu se přihlaste k Azure pomocí svého účtu a vyberte předplatné, se kterým chcete pracovat.
 
-        Login-AzAccount
-        Select-AzSubscription -Subscription <subscriptionId>
+    ```azurepowershell
+    Login-AzAccount
+    Select-AzSubscription -Subscription <subscriptionId>
+    ```
 
     > Můžete použít `Get-AzSubscription` k vypsání předplatných, ke kterým máte přístup.
 
 2. Vyhledejte a uložte úplné ID Azure Resource Manager pro vaši skupinu akcí.
 
-        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```azurepowershell
+    (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+    ```
 
 3. Vytvoření a uložení šablony Správce prostředků pro Resource Health výstrahy jako `resourcehealthalert.json` ([Viz podrobnosti níže](#resource-manager-template-options-for-resource-health-alerts))
 
 4. Vytvořit nové nasazení Azure Resource Manager pomocí této šablony
 
-        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```azurepowershell
+    New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+    ```
 
 5. Zobrazí se výzva k zadání názvu výstrahy a ID prostředku skupiny akcí, které jste zkopírovali dříve:
 
-        Supply values for the following parameters:
-        (Type !? for Help.)
-        activityLogAlertName: <Alert Name>
-        actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```azurepowershell
+    Supply values for the following parameters:
+    (Type !? for Help.)
+    activityLogAlertName: <Alert Name>
+    actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+    ```
 
 6. Pokud vše úspěšně fungovalo, získáte potvrzení v PowerShellu.
 
-        DeploymentName          : ExampleDeployment
-        ResourceGroupName       : <resourceGroup>
-        ProvisioningState       : Succeeded
-        Timestamp               : 11/8/2017 2:32:00 AM
-        Mode                    : Incremental
-        TemplateLink            :
-        Parameters              :
-                                Name                     Type       Value
-                                ===============          =========  ==========
-                                activityLogAlertName     String     <Alert Name>
-                                activityLogAlertEnabled  Bool       True
-                                actionGroupResourceId    String     /...
-        
-        Outputs                 :
-        DeploymentDebugLogLevel :
+    ```output
+    DeploymentName          : ExampleDeployment
+    ResourceGroupName       : <resourceGroup>
+    ProvisioningState       : Succeeded
+    Timestamp               : 11/8/2017 2:32:00 AM
+    Mode                    : Incremental
+    TemplateLink            :
+    Parameters              :
+                            Name                     Type       Value
+                            ===============          =========  ==========
+                            activityLogAlertName     String     <Alert Name>
+                            activityLogAlertEnabled  Bool       True
+                            actionGroupResourceId    String     /...
+
+    Outputs                 :
+    DeploymentDebugLogLevel :
+    ```
 
 Pamatujte na to, že pokud plánujete plně automatizovat tento proces, stačí upravit šablonu Správce prostředků, aby se nezobrazovala výzva k zadání hodnot v kroku 5.
 

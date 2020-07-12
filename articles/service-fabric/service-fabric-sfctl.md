@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906219"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257049"
 ---
 # <a name="sfctl"></a>sfctl
 Příkazy pro správu Service Fabric clusterů a entit Tato verze je kompatibilní s modulem runtime Service Fabric 7,0.
@@ -17,7 +18,7 @@ Příkazy pro správu Service Fabric clusterů a entit Tato verze je kompatibiln
 Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v tématu podskupiny.
 
 ## <a name="subgroups"></a>Podskupiny
-|Podskupina|Description|
+|Podskupina|Popis|
 | --- | --- |
 | [aplikace](service-fabric-sfctl-application.md) | Vytvářejte, odstraňujte a spravujte aplikace a typy aplikací. |
 | [chaos](service-fabric-sfctl-chaos.md) | Spuštění, zastavení a hlášení služby chaos test Service. |
@@ -25,7 +26,7 @@ Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v t�
 | [sestavit](service-fabric-sfctl-compose.md) | Vytvářejte, odstraňujte a spravujte aplikace Docker Compose. |
 | [vnitřního](service-fabric-sfctl-container.md) | Spusťte příkazy související s kontejnerem na uzlu clusteru. |
 | [událost](service-fabric-sfctl-events.md) | Načtěte události z úložiště událostí (Pokud je už nainstalovaná služba Eventstoru). |
-| [is](service-fabric-sfctl-is.md) | Dotazování a posílání příkazů do služby infrastruktury |
+| [dojde](service-fabric-sfctl-is.md) | Dotazování a posílání příkazů do služby infrastruktury |
 | [mesh](service-fabric-sfctl-mesh.md) | Umožňuje odstraňovat a spravovat aplikace Service Fabric sítě. |
 | [uzlu](service-fabric-sfctl-node.md) | Spravujte uzly, které tvoří cluster. |
 | [rozdělován](service-fabric-sfctl-partition.md) | Dotazování a Správa oddílů pro libovolnou službu. |
@@ -39,4 +40,4 @@ Příkazy se řídí vzorem slovesa substantivum. Další informace najdete v t�
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

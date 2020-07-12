@@ -3,12 +3,12 @@ title: Přečtěte si o zabezpečení aplikací Service Fabric Azure
 description: Přehled, jak bezpečně spouštět aplikace mikroslužeb na Service Fabric. Naučte se spouštět služby a spouštěcí skripty v různých účtech zabezpečení, ověřovat a autorizovat uživatele, spravovat tajné klíče aplikací, zabezpečenou komunikaci služeb, používat bránu API a zabezpečovat neaktivní data aplikací.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461425"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256573"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric zabezpečení aplikací a služeb
 Architektura mikroslužeb může přinést [mnoho výhod](service-fabric-overview-microservices.md). Správa zabezpečení mikroslužeb je ale výzvou a odlišná od správy tradičních aplikací monolitické. 
@@ -35,7 +35,7 @@ Po ověření potřebují služby autorizaci přístupu uživatele nebo určení
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Omezení a zabezpečení přístupu pomocí brány rozhraní API
 Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. [Brána rozhraní API](/azure/architecture/microservices/gateway) se nachází mezi klienty a službami a je vstupním bodem pro všechny služby, které vaše aplikace poskytuje. Funguje jako reverzní proxy server, směrování požadavků od klientů na služby. Může také provádět různé úlohy křížového vyjmutí, jako je ověřování a autorizace, ukončení protokolu TLS a omezení rychlosti. Pokud bránu nesadíte, klienti musí odesílat požadavky přímo do front-endové služby.
 
-V Service Fabric může být bránou Bezstavová služba, jako je například [aplikace ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md), nebo jiná služba určená pro příchozí přenos dat, jako je [Traefik](https://docs.traefik.io/), [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)nebo [Azure API Management](https://docs.microsoft.com/azure/api-management).
+V Service Fabric může být bránou Bezstavová služba, jako je například [aplikace ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md), nebo jiná služba určená pro příchozí přenos dat, jako je [Traefik](https://docs.traefik.io/), [Event Hubs](../event-hubs/index.yml), [IoT Hub](../iot-hub/index.yml)nebo [Azure API Management](../api-management/index.yml).
 
 API Management se integruje přímo s Service Fabric, což vám umožní publikovat rozhraní API s bohatou sadou pravidel směrování pro vaše back-end Service Fabric služby.  Můžete zabezpečit přístup ke službám back-end, zabránit útokům DOS pomocí omezování nebo ověřit klíče rozhraní API, tokeny JWT, certifikáty a další přihlašovací údaje. Pokud se chcete dozvědět víc, přečtěte si téma [Service Fabric s Azure API Management Overview](service-fabric-api-management-overview.md).
 
@@ -85,7 +85,7 @@ Můžete vytvořit zabezpečené připojení mezi reverzním proxy serverem a sl
 Rozhraní Reliable Services Application Framework poskytuje několik předem připravených komunikačních zásobníků a nástrojů, které můžete použít ke zvýšení zabezpečení. Zjistěte, jak zvýšit zabezpečení při použití vzdálené komunikace služby (v [jazyce C#](service-fabric-reliable-services-secure-communication.md) nebo [Java](service-fabric-reliable-services-secure-communication-java.md)) nebo pomocí [WCF](service-fabric-reliable-services-secure-communication-wcf.md).
 
 ## <a name="encrypt-application-data-at-rest"></a>Šifrovat data aplikace v klidovém umístění
-Každý [typ uzlu](service-fabric-cluster-nodetypes.md) v clusteru Service Fabric spuštěném v Azure je zálohovaný pomocí [sady škálování virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). Pomocí šablony Azure Resource Manageru můžete připojit datové disky ke škálovacím sadám, ze kterých se skládá cluster Service Fabric.  Pokud vaše služby ukládají data na připojený datový disk, můžete [tyto datové disky zašifrovat](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) a chránit tak data aplikací.
+Každý [typ uzlu](service-fabric-cluster-nodetypes.md) v clusteru Service Fabric spuštěném v Azure je zálohovaný pomocí [sady škálování virtuálních počítačů](../virtual-machine-scale-sets/overview.md). Pomocí šablony Azure Resource Manageru můžete připojit datové disky ke škálovacím sadám, ze kterých se skládá cluster Service Fabric.  Pokud vaše služby ukládají data na připojený datový disk, můžete [tyto datové disky zašifrovat](../virtual-machine-scale-sets/disk-encryption-powershell.md) a chránit tak data aplikací.
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->

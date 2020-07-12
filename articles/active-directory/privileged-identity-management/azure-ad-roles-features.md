@@ -1,27 +1,25 @@
 ---
-title: Správa rolí Azure AD v Privileged Identity Management (PIM) | Microsoft Docs
+title: Funkce role Azure AD v Privileged Identity Management | Microsoft Docs
 description: Správa rolí Azure AD pro přiřazování Privileged Identity Management (PIM)
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: pim
-ms.devlang: na
-ms.topic: how-to
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/06/2019
+ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 501efaf2e9e97f37521daa770e6c760cc794fa36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742857"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256624"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Možnosti správy pro role Azure AD v Privileged Identity Management
 
@@ -29,10 +27,9 @@ Prostředí pro správu rolí služby Azure AD v Privileged Identity Management 
 
 Při současném uvedení aktualizace se tyto dva sloučí do jediného prostředí pro správu. v takovém případě získáte stejné funkce pro role Azure AD jako pro role prostředků Azure. Tento článek vás informuje o aktualizovaných funkcích a všech požadavcích.
 
-
 ## <a name="time-bound-assignments"></a>Přiřazení s časovou vazbou
 
-Dříve v Privileged Identity Management pro role Azure AD jste obeznámeni s přiřazením rolí se dvěma možnými stavy – *způsobilých* a *trvalých*. Nyní můžete nastavit počáteční a koncový čas pro každý typ přiřazení. Tento dodatek vám poskytne čtyři možné stavy, ve kterých můžete přiřadit přiřazení:
+Dříve existovaly dva možné stavy pro přiřazení rolí: *oprávněná* a *trvalá*. Nyní můžete také nastavit počáteční a koncový čas pro každý typ přiřazení. Tento dodatek vám poskytne čtyři možné stavy, do kterých můžete umístit přiřazení:
 
 - Oprávněné trvalé
 - Aktivní trvale
@@ -43,14 +40,17 @@ V mnoha případech i v případě, že nechcete, aby uživatelé měli k dispoz
 
 ## <a name="new-role-settings"></a>Nové nastavení role
 
-Také přidáváme nová nastavení pro role Azure AD. Dřív jste mohli nakonfigurovat nastavení aktivace jenom u jednotlivých rolí. To znamená, že nastavení aktivace jako požadavky na vícefaktorové ověřování a požadavky lístku incidentu nebo žádosti byly aplikovány na všechny uživatele s nárokem na zadanou roli. Nyní můžete nakonfigurovat, zda má jednotliví uživatelé provádět službu Multi-Factor Authentication před tím, než budou moci aktivovat roli. Navíc můžete mít pokročilou kontrolu nad Privileged Identity Management e-maily, které souvisejí s konkrétními rolemi.
+Také přidáváme nová nastavení pro role Azure AD.
+
+- **Dřív**jste mohli nakonfigurovat nastavení aktivace jenom u jednotlivých rolí. To znamená, že nastavení aktivace jako požadavky na vícefaktorové ověřování a požadavky lístku incidentu nebo žádosti byly aplikovány na všechny uživatele s nárokem na zadanou roli.
+- **Nyní**můžete nakonfigurovat, zda má jednotliví uživatelé provádět službu Multi-Factor Authentication před tím, než budou moci aktivovat roli. Navíc můžete mít pokročilou kontrolu nad Privileged Identity Management e-maily, které souvisejí s konkrétními rolemi.
 
 ## <a name="extend-and-renew-assignments"></a>Prodloužit a prodloužit přiřazení
 
 Jakmile napíšete přiřazení s časovou vazbou, bude se první otázka, kterou můžete zeptat, dělat, co se stane, když vypršela platnost role? V této nové verzi poskytujeme dvě možnosti pro tento scénář:
 
-- Rozšířit – když se přiřazení role blíží k vypršení platnosti, může uživatel použít Privileged Identity Management k vyžádání rozšíření pro přiřazení role.
-- Obnovit – Pokud vypršela platnost přiřazení role, může uživatel použít Privileged Identity Management k vyžádání obnovení pro přiřazení role.
+- **Rozšíření**: když se přiřazení role blíží k vypršení platnosti, může uživatel použít Privileged Identity Management k vyžádání rozšíření pro přiřazení role.
+- **Prodloužit**: Pokud vypršela platnost přiřazení role, uživatel může použít Privileged Identity Management k vyžádání obnovení pro přiřazení role.
 
 Akce iniciované uživatelem vyžadují schválení od správce globálního správce nebo privilegované role. Správci už nebudou muset být v podnikání v rámci správy těchto vypršení platnosti. Jenom potřebují počkat na rozšíření nebo žádosti o obnovení a schválit je, pokud je žádost platná.
 

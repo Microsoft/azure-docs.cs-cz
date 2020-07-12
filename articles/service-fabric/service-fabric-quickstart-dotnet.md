@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75730135"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258559"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace spolehlivých služeb v .NET do Service Fabric
 
@@ -30,7 +30,7 @@ Pomocí této aplikace se naučíte:
 * Škálování aplikace na více instancí napříč několika uzly
 * Provedení upgradu aplikace se zajištěním provozu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -52,7 +52,7 @@ Až nainstalujete modul runtime, sady SDK, nástroje sady Visual Studio, Docker 
 > I když v tomto konkrétním rychlém startu není potřeba, pokyny k tomu, aby měl Docker spuštěný při vytváření clusteru, jsou zahrnuté jako osvědčené postupy.
 > Zkontrolujte, že je Dockeru spuštěný, otevřením okna terminálu a zadáním příkazu `docker ps`, abyste viděli, jestli došlo k chybě. Pokud odpověď neindikuje chybu, Docker je spuštěný a vy jste připravení vytvořit cluster.
 >
-> [Nastavení Windows 10 nebo Windows serveru pro kontejnery](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
+> [Nastavení Windows 10 nebo Windows serveru pro kontejnery](/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Jako správce otevřete nové okno PowerShellu se zvýšenými oprávněními.
 2. Vývojový cluster vytvoříte spuštěním následujícího příkazu PowerShellu:
@@ -161,7 +161,7 @@ Pokud chcete upgradovat aplikaci, postupujte následovně:
 
     ![Dialogové okno pro změnu verze](./media/service-fabric-quickstart-dotnet/change-version.png)
 7. V dialogovém okně **publikovat Service Fabric aplikaci** zaškrtněte políčko **upgradovat aplikaci**.
-8.  Změňte **cílový profil** na **PublishProfiles\Local.5Node.XML** a ujistěte se, že je **koncový bod připojení** nastavený na **místní cluster**. 
+8.  Změňte **cílový profil** na **PublishProfiles\Local.5Node.xml** a ujistěte se, že je **koncový bod připojení** nastavený na **místní cluster**. 
 9. Vyberte možnost **upgradovat aplikaci**.
 
     ![Dialogové okno pro publikování – nastavení upgradu](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
@@ -170,7 +170,7 @@ Pokud chcete upgradovat aplikaci, postupujte následovně:
 
     V průběhu upgradu můžete aplikaci dál používat. Vzhledem k tomu, že v clusteru máte spuštěné dvě instance služby, můžou některé požadavky přicházet do upgradované verze aplikace, zatímco jiné můžou stále přicházet do staré verze.
 
-11. Otevřete prohlížeč a přejděte na adresu clusteru na portu 19080. Například, `http://localhost:19080/`.
+11. Otevřete prohlížeč a přejděte na adresu clusteru na portu 19080. Například `http://localhost:19080/`.
 12. Ve stromovém zobrazení klikněte na uzel **Aplikace** a pak na **Probíhající upgrady** v pravém podokně. Zobrazí se postupné zavádění upgradu napříč upgradovacími doménami ve vašem clusteru. U každé domény se nejprve ověří, jestli je v pořádku, a pak se přejde k další. Po ověření stavu domény se upgradovací doména v indikátoru průběhu zobrazí zeleně.
     ![Zobrazení upgradu v Service Fabric Exploreru](./media/service-fabric-quickstart-dotnet/upgrading.png)
 

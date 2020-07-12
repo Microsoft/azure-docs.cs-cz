@@ -5,20 +5,21 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2ee5df9f0b09e30212f61e804e24086874f07f5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466248"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256267"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
 > [!div class="op_single_selector"]
 > * [C# v systému Windows](service-fabric-reliable-actors-get-started.md)
-> * [Java v Linuxu](service-fabric-reliable-actors-get-started-java.md)
+> * [Java v Linuxu](./service-fabric-create-your-first-linux-application-with-java.md)
 
 Tento článek vás provede vytvořením a laděním jednoduché aplikace typu Reliable actor v aplikaci Visual Studio. Další informace o Reliable Actors najdete v tématu [Úvod do Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte vývojové prostředí Service Fabric, včetně sady Visual Studio, a nastavte na svém počítači. Podrobnosti najdete v tématu [Postup nastavení vývojového prostředí](service-fabric-get-started.md).
 

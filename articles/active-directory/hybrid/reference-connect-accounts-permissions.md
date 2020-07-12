@@ -17,11 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f84724285dee6dfff4913b067daa651837787d4e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83681748"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255774"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -101,7 +102,7 @@ Následuje souhrn stránek průvodce expresní instalací, shromažďovaných p�
 
 | Stránka průvodce | Shromážděné přihlašovací údaje | Požadovaná oprávnění | Používá se pro |
 | --- | --- | --- | --- |
-| Není k dispozici |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří účet služby ADSync, který se používá jako ke spuštění synchronizační služby. |
+| Nelze použít |Uživatel, který spouští Průvodce instalací |Správce místního serveru |<li>Vytvoří účet služby ADSync, který se používá jako ke spuštění synchronizační služby. |
 | Připojení k Azure AD |Přihlašovací údaje k adresáři Azure AD |Role globálního správce v Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu konektoru služby Azure AD, který se používá pro probíhající operace synchronizace ve službě Azure AD.</li> |
 | Připojení ke službě AD DS |Místní přihlašovací údaje služby Active Directory |Člen skupiny Enterprise Admins (EA) ve službě Active Directory |<li>Vytvoří účet konektoru služba AD DS ve službě Active Directory a udělí mu oprávnění. Tento vytvořený účet se používá ke čtení a zápisu informací o adresáři během synchronizace.</li> |
 
@@ -118,7 +119,7 @@ Následuje souhrn stránek průvodce vlastní instalace, shromážděných pově
 
 | Stránka průvodce | Shromážděné přihlašovací údaje | Požadovaná oprávnění | Používá se pro |
 | --- | --- | --- | --- |
-| Není k dispozici |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte úplný SQL Server, musí být uživatel správcem systému (SA) v SQL.</li> |Ve výchozím nastavení vytvoří místní účet, který se používá jako účet služby synchronizačního modulu. Účet je vytvořen pouze v případě, že správce nezadá konkrétní účet. |
+| Nelze použít |Uživatel, který spouští Průvodce instalací |<li>Správce místního serveru</li><li>Pokud používáte úplný SQL Server, musí být uživatel správcem systému (SA) v SQL.</li> |Ve výchozím nastavení vytvoří místní účet, který se používá jako účet služby synchronizačního modulu. Účet je vytvořen pouze v případě, že správce nezadá konkrétní účet. |
 | Instalace synchronizačních služeb, možnost účet služby |Přihlašovací údaje účtu služby AD nebo místního uživatele |Uživatel, oprávnění jsou udělována Průvodcem instalací |Pokud správce zadá účet, použije se tento účet jako účet služby pro synchronizační službu. |
 | Připojení k Azure AD |Přihlašovací údaje k adresáři Azure AD |Role globálního správce v Azure AD |<li>Povoluje se synchronizace v adresáři Azure AD.</li>  <li>Vytvoření účtu konektoru služby Azure AD, který se používá pro probíhající operace synchronizace ve službě Azure AD.</li> |
 | Připojení adresářů |Místní přihlašovací údaje služby Active Directory pro každou doménovou strukturu, která je připojená k Azure AD |Oprávnění závisí na tom, které funkce povolíte a najdete v části Vytvoření účtu služba AD DS Connectoru. |Tento účet slouží ke čtení a zápisu informací o adresáři během synchronizace. |
@@ -174,7 +175,7 @@ Pokud používáte vlastní nastavení, zodpovídáte za vytvoření účtu pře
 ### <a name="adsync-service-account"></a>Účet služby ADSync
 Synchronizační služba může běžet pod různými účty. Může běžet pod **účtem virtuální služby** (VSA), **skupinový účet spravované služby** (gMSA/SMSA) nebo běžný uživatelský účet. Podporované možnosti se změnily s 2017. dubna Connect při nové instalaci. Pokud upgradujete ze starší verze Azure AD Connect, tyto další možnosti nejsou k dispozici.
 
-| Typ účtu | Možnost instalace | Description |
+| Typ účtu | Možnost instalace | Popis |
 | --- | --- | --- |
 | [Účet virtuální služby](#virtual-service-account) | Express a Custom, 2017. dubna a novější | Tato možnost se používá pro všechny Expresní instalace, s výjimkou instalací na řadič domény. Pro vlastní je výchozí možnost, pokud nepoužijete jinou možnost. |
 | [Účet spravované služby skupiny](#group-managed-service-account) | Vlastní, 2017. dubna a novější | Pokud používáte vzdálený SQL Server, doporučujeme použít skupinový účet spravované služby. |
@@ -201,7 +202,6 @@ Legenda:
 
 | | LocalDB</br>Express | LocalDB/LocalSQL</br>Vlastní | Vzdálený SQL</br>Vlastní |
 | --- | --- | --- | --- |
-| **počítač pro samostatnou/pracovní skupinu** | Nepodporuje se | **ATRIBUT**</br>Místní účet (2008)</br>Místní účet |  Nepodporuje se |
 | **počítač připojený k doméně** | **ATRIBUT**</br>Místní účet (2008) | **ATRIBUT**</br>Místní účet (2008)</br>Místní účet</br>Účet domény</br>sMSA, gMSA | **gMSA**</br>Účet domény |
 | **Řadič domény** | **Účet domény** | *gMSA*</br>**Účet domény**</br>sMSA| *gMSA*</br>**Účet domény**|
 

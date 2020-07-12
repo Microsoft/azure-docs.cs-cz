@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458241"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257761"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Připojení a komunikace se službami v Service Fabric
 V Service Fabric se služba spouští někde v clusteru Service Fabric, který se obvykle distribuuje napříč několika virtuálními počítači. Dá se přesunout z jednoho místa na jiný, buď podle vlastníka služby, nebo automaticky pomocí Service Fabric. Služby nejsou staticky vázané na konkrétní počítač nebo adresu.
@@ -162,14 +163,14 @@ Je důležité si uvědomit, že Azure Load Balancer a sonda ví pouze o *uzlech
 Rozhraní Reliable Services se dodává s několika předem vytvořenými možnostmi komunikace. Rozhodnutí o tom, které z nich bude fungovat nejlépe, závisí na výběru programovacího modelu, komunikačního rozhraní a programovacího jazyka, ve kterém jsou vaše služby napsané.
 
 * **Žádný specifický protokol:**  Pokud nemáte konkrétní volbu komunikačního rozhraní, ale chcete rychle začít pracovat, je ideální volbou pro vás [Vzdálená komunikace služby](service-fabric-reliable-services-communication-remoting.md), která umožňuje používat pro Reliable Services a Reliable Actors silné typy volání vzdálené procedury. Toto je nejjednodušší a nejrychlejší způsob, jak začít s komunikací služby. Vzdálená komunikace služby zajišťuje překlad adres služeb, připojení, opakování a zpracování chyb. To je k dispozici pro aplikace v jazyce C# i Java.
-* **Http**: pro nezávislá komunikaci nabízí protokol HTTP standardní volbu s nástroji a servery http dostupnými v mnoha různých jazycích, které podporuje Service Fabric. Služby mohou používat libovolný dostupný zásobník HTTP, včetně [webového rozhraní API ASP.NET](service-fabric-reliable-services-communication-webapi.md) pro aplikace v jazyce C#. Klienti napsané v jazyce C# mohou `ICommunicationClient` využívat `ServicePartitionClient` třídy a, zatímco pro jazyk Java použijte `CommunicationClient` `FabricServicePartitionClient` třídy a, [pro řešení, připojení HTTP a smyčky opakování](service-fabric-reliable-services-communication.md).
+* **Http**: pro nezávislá komunikaci nabízí protokol HTTP standardní volbu s nástroji a servery http dostupnými v mnoha různých jazycích, které podporuje Service Fabric. Služby mohou používat libovolný dostupný zásobník HTTP, včetně [webového rozhraní API ASP.NET](./service-fabric-reliable-services-communication-aspnetcore.md) pro aplikace v jazyce C#. Klienti napsané v jazyce C# mohou `ICommunicationClient` využívat `ServicePartitionClient` třídy a, zatímco pro jazyk Java použijte `CommunicationClient` `FabricServicePartitionClient` třídy a, [pro řešení, připojení HTTP a smyčky opakování](service-fabric-reliable-services-communication.md).
 * **WCF**: Pokud máte existující kód, který používá WCF jako komunikační rozhraní, můžete `WcfCommunicationListener` pro klienta použít pro stranu serveru a `WcfCommunicationClient` a `ServicePartitionClient` třídy. K dispozici je však pouze pro aplikace v jazyce C# v clusterech založených na systému Windows. Další podrobnosti najdete v tomto článku o [implementaci komunikačního zásobníku založeného na WCF](service-fabric-reliable-services-communication-wcf.md).
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Použití vlastních protokolů a dalších komunikačních rozhraní
 Služby můžou používat libovolný protokol nebo rozhraní pro komunikaci, ať už jde o vlastní binární protokol přes sokety TCP, nebo streamování událostí prostřednictvím [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) nebo [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). Service Fabric poskytuje komunikační rozhraní API, do kterých můžete připojit komunikační zásobník, zatímco veškerou práci, která se má zjistit a připojit, je z vás abstraktní. Další podrobnosti najdete v tomto článku o [komunikačním modelu spolehlivé služby](service-fabric-reliable-services-communication.md) .
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o konceptech a rozhraní API dostupných v [Reliable Services komunikačním modelu](service-fabric-reliable-services-communication.md)a začněte rychle s využitím [vzdálené komunikace služby](service-fabric-reliable-services-communication-remoting.md) nebo pořiďte se podrobněji, abyste se dozvěděli, jak napsat naslouchací proces komunikace pomocí [webového rozhraní API s Owin samoobslužným hostováním](service-fabric-reliable-services-communication-webapi.md).
+Přečtěte si další informace o konceptech a rozhraní API dostupných v [Reliable Services komunikačním modelu](service-fabric-reliable-services-communication.md)a začněte rychle s využitím [vzdálené komunikace služby](service-fabric-reliable-services-communication-remoting.md) nebo pořiďte se podrobněji, abyste se dozvěděli, jak napsat naslouchací proces komunikace pomocí [webového rozhraní API s Owin samoobslužným hostováním](./service-fabric-reliable-services-communication-aspnetcore.md).
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

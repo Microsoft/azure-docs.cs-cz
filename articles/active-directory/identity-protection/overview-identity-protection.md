@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59f83c7896ca371809d9103489b140ae73d5a42d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647357"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256645"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co je Azure Active Directory Identity Protection?
 
@@ -48,9 +48,9 @@ Identity Protection identifikuje rizika v následujících klasifikacích:
 
 | Typ detekce rizika | Popis |
 | --- | --- |
-| Neobvyklé cestování | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
+| Neobvyklá cesta | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
 | Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN). |
-| Neznámou vlastnost přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. |
+| Neznámé vlastnosti přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. |
 | Propojená IP adresa pro malware | Přihlášení z IP adresy propojené s malwarem |
 | Nevrácená pověření | Toto zjišťování rizik indikuje, že došlo k úniku platných přihlašovacích údajů uživatele. |
 | Analýza hrozeb v Azure AD | Zdroje analýzy interních a externích hrozeb Microsoftu identifikovaly známý vzor útoku. |
@@ -63,7 +63,7 @@ Rizikové signály můžou aktivovat úsilí k nápravě, jako je třeba vyžado
 
 Správci mohou kontrolovat zjišťování a v případě potřeby provádět ruční akce. Existují tři základní sestavy, které správci používají k vyšetřování v ochraně identity:
 
-- Rizikové uživatele
+- Rizikoví uživatelé
 - Riziková přihlášení
 - Detekce rizik
 
@@ -94,17 +94,17 @@ Správci podmíněného přístupu můžou taky vytvářet zásady, které přis
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Schopnost | Podrobnosti | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
+| Schopnost | Podrobnosti | Azure AD Premium P2 | Azure AD Premium P1 | Aplikace Azure AD Free/Office 365 |
 | --- | --- | --- | --- | --- |
-| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection) | Ano | Ne | Ne |
-| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup) | Ano | Ne | Ne |
-| Sestavy zabezpečení | Přehled | Ano | Ne | Ne |
-| Sestavy zabezpečení | Rizikové uživatele | Full access | Omezené informace | Omezené informace |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection) | Ano | No | No |
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup) | Ano | No | No |
+| Sestavy zabezpečení | Přehled | Ano | No | No |
+| Sestavy zabezpečení | Rizikoví uživatelé | Full access | Omezené informace | Omezené informace |
 | Sestavy zabezpečení | Riziková přihlášení | Full access | Omezené informace | Omezené informace |
 | Sestavy zabezpečení | Detekce rizik | Full access | Omezené informace | No |
-| Oznámení | Uživatelé s výstrahami zjištěnými riziky | Ano | Ne | Ne |
-| Oznámení | Týdenní výtah | Ano | Ne | Ne |
-| | Zásady registrace MFA | Ano | Ne | No |
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky | Ano | No | No |
+| Oznámení | Týdenní výtah | Ano | No | No |
+| | Zásady registrace MFA | Ano | No | No |
 
 ## <a name="next-steps"></a>Další kroky
 

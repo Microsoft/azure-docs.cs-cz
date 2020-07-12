@@ -15,11 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ad8990512cb09f6048b169c1d0c0a259a62b61b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827144"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256675"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
 
@@ -256,6 +257,16 @@ Ve výjimečných případech se služba Azure AD Connect po provedení upgradu 
 
 **Otázka: Nejsem si jisti, jaká rizika jsou při upgradu na novější verzi Azure AD Connect. Můžete zavolat mi na pomoc s upgradem?**  
 Pokud potřebujete pomoc s upgradem na novější verzi Azure AD Connect, otevřete lístek podpory v tématu [Vytvoření žádosti o službu pro kontaktování podpory Office 365](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
+
+## <a name="operational-best-practice"></a>Provozní osvědčený postup    
+Níže jsou uvedeny některé osvědčené postupy, které byste měli implementovat při synchronizaci mezi službou Windows Server Active Directory a Azure Active Directory.
+
+**Použít Multi-Factor Authentication u všech synchronizovaných účtů** Azure Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně zachovává jednoduchost uživatelů. Poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování prostřednictvím řady snadno použitelných metod ověřování. Na základě rozhodnutí týkajících se konfigurace, která správce provede, se uživatelé můžou nebo nemusí vyvolávat na MFA. Další informace o MFA získáte tady:https://www.microsoft.com/security/business/identity/mfa?rtc=1
+
+**Postupujte podle pokynů pro zabezpečení Azure AD Connect serveru** . Azure AD Connect Server obsahuje kritická data identity a měla by se považovat za součást vrstvy 0, jak je popsáno v [modelu vrstvy správy služby Active Directory](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material). Přečtěte si prosím naše [pokyny k zabezpečení AADConnect serveru](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server).
+
+**Povolit kosmetice pro detekci nevrácených přihlašovacích údajů** Synchronizace hodnot hash hesel taky umožňuje [zjišťování nevrácených přihlašovacích údajů](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks) pro vaše hybridní účty. Společnost Microsoft spolupracuje s tmavými webovými výzkumníky a orgány činnými v oblasti a hledá veřejně dostupné páry uživatelského jména a hesla. Pokud některý z těchto párů odpovídá vašim uživatelům, je přidružený účet přesunutý na vysoké riziko. 
+
 
 ## <a name="troubleshooting"></a>Řešení potíží
 **Otázka: Jak můžu získat pomoc s Azure AD Connect?**

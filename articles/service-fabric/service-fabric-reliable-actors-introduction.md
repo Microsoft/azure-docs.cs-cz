@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c534ba54ccea78759628f554707271934ddc9a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645561"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258486"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Úvod do Service Fabric Reliable Actors
 Reliable Actors je Service Fabric aplikační architektury založené na vzoru [virtuálního objektu actor](https://research.microsoft.com/en-us/projects/orleans/) . Rozhraní Reliable Actors API nabízí model programování s jedním vláknem sestavený na základě škálovatelnosti a záruk spolehlivosti poskytovaných Service Fabric.
@@ -136,7 +137,7 @@ Modul runtime Actors poskytuje tyto záruky souběžnosti v situacích, kdy ří
 ## <a name="next-steps"></a>Další kroky
 Začněte vytvořením první Reliable Actors služby:
    * [Začínáme s Reliable Actors v .NET](service-fabric-reliable-actors-get-started.md)
-   * [Začínáme s Reliable Actors v Java](service-fabric-reliable-actors-get-started-java.md)
+   * [Začínáme s Reliable Actors v Java](./service-fabric-create-your-first-linux-application-with-java.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png

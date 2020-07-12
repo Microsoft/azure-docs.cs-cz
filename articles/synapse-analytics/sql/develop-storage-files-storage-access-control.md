@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7df4d917ce25d644003a60b34bc0683ea75299f3
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204876"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255706"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Řízení přístupu účtu úložiště pro SQL na vyžádání (Preview)
 
@@ -71,11 +71,11 @@ Můžete přistupovat k veřejně dostupným souborům umístěným na účtech 
 
 V následující tabulce najdete dostupné typy autorizace:
 
-| Typ autorizace                    | *Uživatel SQL*    | *Uživatel Azure AD*     |
+| Typ autorizace                    | *Uživatel SQL*    | *Uživatel služby Azure AD*     |
 | ------------------------------------- | ------------- | -----------    |
-| [Identita uživatele](?tabs=user-identity#supported-storage-authorization-types)       | Nepodporuje se | Podporuje se      |
-| [VEDE](?tabs=shared-access-signature#supported-storage-authorization-types)       | Podporuje se     | Podporuje se      |
-| [Spravovaná identita](?tabs=managed-identity#supported-storage-authorization-types) | Nepodporuje se | Podporuje se      |
+| [Identita uživatele](?tabs=user-identity#supported-storage-authorization-types)       | Nepodporováno | Podporováno      |
+| [VEDE](?tabs=shared-access-signature#supported-storage-authorization-types)       | Podporováno     | Podporováno      |
+| [Spravovaná identita](?tabs=managed-identity#supported-storage-authorization-types) | Nepodporováno | Podporováno      |
 
 ### <a name="supported-storages-and-authorization-types"></a>Podporované typy úložišť a autorizace
 
@@ -83,9 +83,9 @@ Můžete použít následující kombinace autorizačních a Azure Storagech typ
 
 |                     | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| *VEDE*               | Podporuje se      | Nepodporováno   | Podporuje se     |
-| *Spravovaná identita* | Podporuje se      | Podporuje se        | Podporuje se     |
-| *Identita uživatele*    | Podporuje se      | Podporuje se        | Podporuje se     |
+| *VEDE*               | Podporováno      | Nepodporováno   | Podporováno     |
+| *Spravovaná identita* | Podporováno      | Podporováno        | Podporováno     |
+| *Identita uživatele*    | Podporováno      | Podporováno        | Podporováno     |
 
 ## <a name="credentials"></a>Přihlašovací údaje
 
@@ -145,7 +145,7 @@ Následující skript vytvoří přihlašovací údaje na úrovni serveru, kter�
 Exchange <*mystorageaccountname*> s vaším skutečným názvem účtu úložiště a> <*mystorageaccountcontainername* s aktuálním názvem kontejneru:
 
 ```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 WITH IDENTITY='SHARED ACCESS SIGNATURE'
 , SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
@@ -156,7 +156,7 @@ GO
 Následující skript vytvoří přihlašovací údaje na úrovni serveru, které můžou používat `OPENROWSET` funkce pro přístup k jakémukoli souboru v úložišti Azure pomocí spravované identity pracovního prostoru.
 
 ```sql
-CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 WITH IDENTITY='Managed Identity'
 ```
 
@@ -211,7 +211,7 @@ Přihlašovací údaje v oboru databáze se používají v externích zdrojích 
 
 ```sql
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples',
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
           CREDENTIAL = <name of database scoped credential> 
 )
 ```
@@ -227,7 +227,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
        WITH ( FORMAT_TYPE = PARQUET)
 GO
 CREATE EXTERNAL DATA SOURCE publicData
-WITH (    LOCATION   = 'https://****.blob.core.windows.net/public-access' )
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<public_container>/<path>' )
 GO
 
 CREATE EXTERNAL TABLE dbo.userPublicData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
@@ -270,7 +270,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
 GO
 
 CREATE EXTERNAL DATA SOURCE mysample
-WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples'
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 

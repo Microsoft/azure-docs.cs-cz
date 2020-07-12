@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371643"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257510"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Zotavení po havárii v Azure Service Fabric
 Důležitou součástí poskytování vysoké dostupnosti je zajištění, že služby mohou zachovány všechny různé typy selhání. To je obzvláště důležité pro neplánované chyby a mimo váš ovládací prvek. 
@@ -171,7 +172,7 @@ Následující akce mohou mít za následek ztrátu dat. Před provedením tohot
 >
 
 - Použijte `Repair-ServiceFabricPartition -PartitionId` `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` rozhraní API nebo. Toto rozhraní API umožňuje zadat ID oddílu pro přesunutí ztráty kvora a potenciální ztráty dat.
-- Pokud se v clusteru vyskytují časté chyby, které způsobují, že se služby přestanou do stavu ztráty kvora, a může dojít _ke ztrátě dat_, zadáním příslušné hodnoty [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) může vaše služba automaticky obnovit. Service Fabric `QuorumLossWaitDuration` před provedením obnovení počká na poskytnutou hodnotu (výchozí je nekonečno). Tuto metodu *nedoporučujeme* , protože může dojít k neočekávaným ztrátám dat.
+- Pokud se v clusteru vyskytují časté chyby, které způsobují, že se služby přestanou do stavu ztráty kvora, a může dojít _ke ztrátě dat_, zadáním příslušné hodnoty [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) může vaše služba automaticky obnovit. Service Fabric `QuorumLossWaitDuration` před provedením obnovení počká na poskytnutou hodnotu (výchozí je nekonečno). Tuto metodu *nedoporučujeme* , protože může dojít k neočekávaným ztrátám dat.
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Dostupnost clusteru Service Fabric
 Obecně platí, že Cluster Service Fabric je vysoce distribuované prostředí bez jednoho bodu selhání. Selhání žádného uzlu nebude způsobovat problémy s dostupností nebo spolehlivostí clusteru, a to hlavně proto, že systémové služby Service Fabric postupují podle výše uvedených pokynů. To znamená, že se ve výchozím nastavení vždycky spouštějí se třemi nebo více replikami a systémové služby, které jsou na všech uzlech bez stavového provozu. 
@@ -207,17 +208,17 @@ V samostatných Service Fabric clusterech a v Azure je typ primárního uzlu ten
 - Naučte se simulovat různé chyby pomocí [architektury testování](service-fabric-testability-overview.md).
 - Přečtěte si další prostředky pro zotavení po havárii a vysokou dostupnost. Společnost Microsoft publikovala v těchto tématech velké množství pokynů. I když některé z těchto prostředků odkazují na konkrétní techniky pro použití v jiných produktech, obsahují mnoho obecných osvědčených postupů, které můžete použít v kontextu Service Fabric:
   - [Kontrolní seznam k dostupnosti](/azure/architecture/checklist/resiliency-per-service)
-  - [Postup při provádění postupu zotavení po havárii](../sql-database/sql-database-disaster-recovery-drills.md)
+  - [Postup při provádění postupu zotavení po havárii](../azure-sql/database/disaster-recovery-drills.md)
   - [Zotavení po havárii a vysoká dostupnost pro aplikace Azure][dr-ha-guide]
 - Přečtěte si o [možnostech podpory Service Fabric](service-fabric-support.md).
 
 
 <!-- External links -->
 
-[repair-partition-ps]: https://msdn.microsoft.com/library/mt163522.aspx
+[repair-partition-ps]: /windows/win32/perfctrs/specifying-a-counter-path
 [azure-status-dashboard]:https://azure.microsoft.com/status/
 [azure-regions]: https://azure.microsoft.com/regions/
-[dr-ha-guide]: https://msdn.microsoft.com/library/azure/dn251004.aspx
+[dr-ha-guide]: /previous-versions/azure/dn251004(v=azure.100)
 
 
 <!-- Images -->

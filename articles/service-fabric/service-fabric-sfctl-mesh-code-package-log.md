@@ -5,18 +5,19 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ac1d85a1a498f9f6fcd0a03f8f819d1cdfcac33
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906046"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257306"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 Načte protokoly pro kontejner zadaného balíčku kódu pro danou repliku služby.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
 | get | Načte protokoly z kontejneru. |
 
@@ -27,7 +28,7 @@ Načte protokoly pro kontejner zadaného balíčku kódu repliky služby.
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --App-Name--název aplikace [povinné] | Název aplikace |
 | --Code-Package-Name [povinné] | Název balíčku kódu služby. |
@@ -37,7 +38,7 @@ Načte protokoly pro kontejner zadaného balíčku kódu repliky služby.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -48,4 +49,4 @@ Načte protokoly pro kontejner zadaného balíčku kódu repliky služby.
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

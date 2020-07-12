@@ -5,14 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 08/07/2019
+ms.topic: article
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 22fd67797bbec516317aadaa4b33371c5d335b36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fc869448bac8303acee902b5d8819fdd3f26138
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609450"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258510"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Pomocí Azure Portal můžete spravovat Azure Data Box a Azure Data Box Heavy
 
@@ -20,10 +21,14 @@ Tento článek se týká Azure Data Box i Azure Data Box Heavy. Tento článek p
 
 Tento článek se zaměřuje na úlohy, které můžete provést pomocí webu Azure Portal. Pomocí Azure Portal můžete spravovat objednávky, spravovat Data Box zařízení a sledovat stav objednávky v průběhu jejich dokončení.
 
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
+
 
 ## <a name="cancel-an-order"></a>Zrušení objednávky
 
-Může se stát, že po zadání objednávky budete muset tuto objednávku z různých důvodů zrušit. Objednávku je možné zrušit jen do doby, než je zpracována. Po zpracování objednávky a přípravné Data Box zařízení není možné objednávku zrušit.
+Může se stát, že po zadání objednávky budete muset tuto objednávku z různých důvodů zrušit. 
+
+U objednávek importu i exportu můžete objednávku zrušit jenom před zpracováním objednávky. Po zpracování objednávky a přípravné Data Box zařízení není možné objednávku zrušit.
 
 Když chcete zrušit objednávku, postupujte následovně.
 
@@ -41,13 +46,16 @@ Když chcete zrušit objednávku, postupujte následovně.
 
 V některých situacích může být užitečné klonování. Uživatel například používá Data Box k přenosu dat. Když se generují víc dat, potřebuje další Data Box zařízení pro přenos těchto dat do Azure. V takovém případě se dá stejná objednávka jednoduše naklonovat.
 
-Pokud chcete naklonovat objednávku, proveďte následující kroky.
+> [!IMPORTANT]
+> Pro exportní objednávky není klonování k dispozici. Můžete klonovat pouze importované objednávky.
+
+Provedením následujících kroků naklonujte pořadí importu.
 
 1.  Přejděte na **Přehled > Klonovat**. 
 
     ![Klonování objednávky 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  Všechny podrobnosti o objednávce zůstávají stejné. Název objednávky má podobu názvu původní objednávky s příponou *-Clone*. Zaškrtnutím políčka potvrďte, že jste si přečetli informace o ochraně osobních údajů. Klikněte na **Vytvořit**.
+2.  Všechny podrobnosti o objednávce zůstávají stejné. Název objednávky má podobu názvu původní objednávky s příponou *-Clone*. Zaškrtnutím políčka potvrďte, že jste si přečetli informace o ochraně osobních údajů. Klikněte na **Create** (Vytvořit).
 
 Během pár minut se vytvoří klon, portál se aktualizuje a zobrazí se na něm nová objednávka.
 
@@ -121,70 +129,74 @@ Pokud si chcete stáhnout historii objednávky, proveďte následující kroky.
 
 2. Klikněte na **Stáhnout historii objednávky**. Ve stažené historii uvidíte záznam protokolů dopravců o sledování zásilky. Budou existovat dvě sady protokolů odpovídající dvěma uzlům na Data Box Heavy. Pokud se posunete do dolní části tohoto protokolu, zobrazí se následující odkazy:
     
-   - **Copy logs** (Protokoly kopírování) – obsahují seznam souborů, u kterých během kopírování dat z Data Boxu do vašeho účtu úložiště Azure došlo k chybě.
+   - **Kopírovat protokoly** – seznam souborů, které byly při kopírování dat z data box do vašeho účtu úložiště Azure (pořadí importu), a *naopak* (export objednávek)
    - **Protokoly auditu** – obsahují informace o tom, jak zapnout a přistupovat ke sdíleným složkám na data box, pokud se nachází mimo datové centrum Azure.
-   - **BOM files** (Soubory BOM) – obsahují seznam souborů (označovaný také jako soubor manifestu), které si můžete stáhnout během **přípravy k odeslání**, a zahrnují názvy, velikosti a kontrolní součty souborů.
+   - **Soubory kusovníku v pořadí importu** – mají seznam souborů (označovaný také jako manifest souboru), které si můžete stáhnout během **Příprava k odeslání** a mají názvy souborů, velikosti souborů a kontrolní součty souborů.
+   - **Podrobné protokoly v pořadí exportu** – mají seznam souborů s názvy souborů, velikostí souborů a výpočetem kontrolního součtu, když se data zkopírují z Azure Storage účtů do data box.
 
-       ```
-       -------------------------------
-       Microsoft Data Box Order Report
-       -------------------------------
-       Name                                               : DataBoxTestOrder                              
-       StartTime(UTC)                                     : 10/31/2018 8:49:23 AM +00:00                       
-       DeviceType                                         : DataBox                                           
-       -------------------
-       Data Box Activities
-       -------------------
-       Time(UTC)                 | Activity                       | Status          | Description  
-       
-       10/31/2018 8:49:26 AM     | OrderCreated                   | Completed       |                                                   
-       11/2/2018 7:32:53 AM      | DevicePrepared                 | Completed       |                                                   
-       11/3/2018 1:36:43 PM      | ShippingToCustomer             | InProgress      | Shipment picked up. Local Time : 11/3/2018 1:36:43        PM at AMSTERDAM-NLD                                                                                
-       11/4/2018 8:23:30 PM      | ShippingToCustomer             | InProgress      | Processed at AMSTERDAM-NLD. Local Time : 11/4/2018        8:23:30 PM at AMSTERDAM-NLD                                                                        
-       11/4/2018 11:43:34 PM     | ShippingToCustomer             | InProgress      | Departed Facility in AMSTERDAM-NLD. Local Time :          11/4/2018 11:43:34 PM at AMSTERDAM-NLD                                                               
-       11/5/2018 1:38:20 AM      | ShippingToCustomer             | InProgress      | Arrived at Sort Facility LEIPZIG-DEU. Local Time :        11/5/2018 1:38:20 AM at LEIPZIG-DEU                                                                
-       11/5/2018 2:31:07 AM      | ShippingToCustomer             | InProgress      | Processed at LEIPZIG-DEU. Local Time : 11/5/2018          2:31:07 AM at LEIPZIG-DEU                                                                            
-       11/5/2018 4:05:58 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LEIPZIG-DEU. Local Time :            11/5/2018 4:05:58 AM at LEIPZIG-DEU                                                                    
-       11/5/2018 4:35:43 AM      | ShippingToCustomer             | InProgress      | Transferred through LUTON-GBR. Local Time :              11/5/2018 4:35:43 AM at LUTON-GBR                                                                         
-       11/5/2018 4:52:15 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LUTON-GBR. Local Time :              11/5/2018 4:52:15 AM at LUTON-GBR                                                                        
-       11/5/2018 5:47:58 AM      | ShippingToCustomer             | InProgress      | Arrived at Sort Facility LONDON-HEATHROW-GBR.            Local Time : 10/5/2018 5:47:58 AM at LONDON-HEATHROW-GBR                                                
-       11/5/2018 6:27:37 AM      | ShippingToCustomer             | InProgress      | Processed at LONDON-HEATHROW-GBR. Local Time :            11/5/2018 6:27:37 AM at LONDON-HEATHROW-GBR                                                            
-       11/5/2018 6:39:40 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LONDON-HEATHROW-GBR. Local          Time : 11/5/2018 6:39:40 AM at LONDON-HEATHROW-GBR                                                    
-       11/5/2018 8:13:49 AM      | ShippingToCustomer             | InProgress      | Arrived at Delivery Facility in LAMBETH-GBR. Local        Time : 11/5/2018 8:13:49 AM at LAMBETH-GBR                                                         
-       11/5/2018 9:13:24 AM      | ShippingToCustomer             | InProgress      | With delivery courier. Local Time : 11/5/2018            9:13:24 AM at LAMBETH-GBR                                                                               
-       11/5/2018 12:03:04 PM     | ShippingToCustomer             | Completed       | Delivered - Signed for by. Local Time : 11/5/2018        12:03:04 PM at LAMBETH-GBR                                                                          
-       1/25/2019 3:19:25 PM      | ShippingToDataCenter           | InProgress      | Shipment picked up. Local Time : 1/25/2019 3:19:25        PM at LAMBETH-GBR                                                                                       
-       1/25/2019 8:03:55 PM      | ShippingToDataCenter           | InProgress      | Processed at LAMBETH-GBR. Local Time : 1/25/2019          8:03:55 PM at LAMBETH-GBR                                                                            
-       1/25/2019 8:04:58 PM      | ShippingToDataCenter           | InProgress      | Departed Facility in LAMBETH-GBR. Local Time :            1/25/2019 8:04:58 PM at LAMBETH-GBR                                                                    
-       1/25/2019 9:06:09 PM      | ShippingToDataCenter           | InProgress      | Arrived at Sort Facility LONDON-HEATHROW-GBR.            Local Time : 1/25/2019 9:06:09 PM at LONDON-HEATHROW-GBR                                                
-       1/25/2019 9:48:54 PM      | ShippingToDataCenter           | InProgress      | Processed at LONDON-HEATHROW-GBR. Local Time :            1/25/2019 9:48:54 PM at LONDON-HEATHROW-GBR                                                            
-       1/25/2019 10:30:20 PM     | ShippingToDataCenter           | InProgress      | Departed Facility in LONDON-HEATHROW-GBR. Local          Time : 1/25/2019 10:30:20 PM at LONDON-HEATHROW-GBR                                                   
-       1/26/2019 2:17:10 PM      | ShippingToDataCenter           | InProgress      | Arrived at Sort Facility BRUSSELS-BEL. Local Time        : 1/26/2019 2:17:10 PM at BRUSSELS-BEL                                                              
-       1/26/2019 2:31:57 PM      | ShippingToDataCenter           | InProgress      | Processed at BRUSSELS-BEL. Local Time : 1/26/2019        2:31:57 PM at BRUSSELS-BEL                                                                          
-       1/26/2019 3:37:53 PM      | ShippingToDataCenter           | InProgress      | Processed at BRUSSELS-BEL. Local Time : 1/26/2019        3:37:53 PM at BRUSSELS-BEL                                                                          
-       1/27/2019 11:01:45 AM     | ShippingToDataCenter           | InProgress      | Departed Facility in BRUSSELS-BEL. Local Time :          1/27/2019 11:01:45 AM at BRUSSELS-BEL                                                                 
-       1/28/2019 7:11:35 AM      | ShippingToDataCenter           | InProgress      | Arrived at Delivery Facility in AMSTERDAM-NLD.            Local Time : 1/28/2019 7:11:35 AM at AMSTERDAM-NLD                                                     
-       1/28/2019 9:07:57 AM      | ShippingToDataCenter           | InProgress      | With delivery courier. Local Time : 1/28/2019            9:07:57 AM at AMSTERDAM-NLD                                                                             
-       1/28/2019 1:35:56 PM      | ShippingToDataCenter           | InProgress      | Scheduled for delivery. Local Time : 1/28/2019            1:35:56 PM at AMSTERDAM-NLD                                                                            
-       1/28/2019 2:57:48 PM      | ShippingToDataCenter           | Completed       | Delivered - Signed for by. Local Time : 1/28/2019        2:57:48 PM at AMSTERDAM-NLD                                                                         
-       1/29/2019 2:18:43 PM      | PhysicalVerification           | Completed       |                                              
-       1/29/2019 3:49:50 PM      | DeviceBoot                     | Completed       | Appliance booted up successfully                  
-       1/29/2019 3:49:51 PM      | AnomalyDetection               | Completed       | No anomaly detected.                               
-       1/29/2019 4:55:00 PM      | DataCopy                       | Started         |                                                 
-       2/2/2019 7:07:34 PM       | DataCopy                       | Completed       | Copy Completed.                                   
-       2/4/2019 7:47:32 PM       | SecureErase                    | Started         |                                                  
-       2/4/2019 8:01:10 PM      | SecureErase                    | Completed       | Azure Data Box:DEVICESERIALNO has been sanitized          according to NIST 800-88 Rev 1.                                                                       
+   Zde je ukázka historie objednávek z pořadí importu.
 
-       ------------------
-       Data Box Log Links
-       ------------------
+    ```output
+    -------------------------------
+    Microsoft Data Box Order Report
+    -------------------------------
+    Name                                               : DataBoxTestOrder                              
+    StartTime(UTC)                                     : 10/31/2018 8:49:23 AM +00:00                       
+    DeviceType                                         : DataBox                                           
+    -------------------
+    Data Box Activities
+    -------------------
+    Time(UTC)                 | Activity                       | Status          | Description  
+    
+    10/31/2018 8:49:26 AM     | OrderCreated                   | Completed       |                                                   
+    11/2/2018 7:32:53 AM      | DevicePrepared                 | Completed       |                                                   
+    11/3/2018 1:36:43 PM      | ShippingToCustomer             | InProgress      | Shipment picked up. Local Time : 11/3/2018 1:36:43        PM at AMSTERDAM-NLD                                                                                
+    11/4/2018 8:23:30 PM      | ShippingToCustomer             | InProgress      | Processed at AMSTERDAM-NLD. Local Time : 11/4/2018        8:23:30 PM at AMSTERDAM-NLD                                                                        
+    11/4/2018 11:43:34 PM     | ShippingToCustomer             | InProgress      | Departed Facility in AMSTERDAM-NLD. Local Time :          11/4/2018 11:43:34 PM at AMSTERDAM-NLD                                                               
+    11/5/2018 1:38:20 AM      | ShippingToCustomer             | InProgress      | Arrived at Sort Facility LEIPZIG-DEU. Local Time :        11/5/2018 1:38:20 AM at LEIPZIG-DEU                                                                
+    11/5/2018 2:31:07 AM      | ShippingToCustomer             | InProgress      | Processed at LEIPZIG-DEU. Local Time : 11/5/2018          2:31:07 AM at LEIPZIG-DEU                                                                            
+    11/5/2018 4:05:58 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LEIPZIG-DEU. Local Time :            11/5/2018 4:05:58 AM at LEIPZIG-DEU                                                                    
+    11/5/2018 4:35:43 AM      | ShippingToCustomer             | InProgress      | Transferred through LUTON-GBR. Local Time :              11/5/2018 4:35:43 AM at LUTON-GBR                                                                         
+    11/5/2018 4:52:15 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LUTON-GBR. Local Time :              11/5/2018 4:52:15 AM at LUTON-GBR                                                                        
+    11/5/2018 5:47:58 AM      | ShippingToCustomer             | InProgress      | Arrived at Sort Facility LONDON-HEATHROW-GBR.            Local Time : 10/5/2018 5:47:58 AM at LONDON-HEATHROW-GBR                                                
+    11/5/2018 6:27:37 AM      | ShippingToCustomer             | InProgress      | Processed at LONDON-HEATHROW-GBR. Local Time :            11/5/2018 6:27:37 AM at LONDON-HEATHROW-GBR                                                            
+    11/5/2018 6:39:40 AM      | ShippingToCustomer             | InProgress      | Departed Facility in LONDON-HEATHROW-GBR. Local          Time : 11/5/2018 6:39:40 AM at LONDON-HEATHROW-GBR                                                    
+    11/5/2018 8:13:49 AM      | ShippingToCustomer             | InProgress      | Arrived at Delivery Facility in LAMBETH-GBR. Local        Time : 11/5/2018 8:13:49 AM at LAMBETH-GBR                                                         
+    11/5/2018 9:13:24 AM      | ShippingToCustomer             | InProgress      | With delivery courier. Local Time : 11/5/2018            9:13:24 AM at LAMBETH-GBR                                                                               
+    11/5/2018 12:03:04 PM     | ShippingToCustomer             | Completed       | Delivered - Signed for by. Local Time : 11/5/2018        12:03:04 PM at LAMBETH-GBR                                                                          
+    1/25/2019 3:19:25 PM      | ShippingToDataCenter           | InProgress      | Shipment picked up. Local Time : 1/25/2019 3:19:25        PM at LAMBETH-GBR                                                                                       
+    1/25/2019 8:03:55 PM      | ShippingToDataCenter           | InProgress      | Processed at LAMBETH-GBR. Local Time : 1/25/2019          8:03:55 PM at LAMBETH-GBR                                                                            
+    1/25/2019 8:04:58 PM      | ShippingToDataCenter           | InProgress      | Departed Facility in LAMBETH-GBR. Local Time :            1/25/2019 8:04:58 PM at LAMBETH-GBR                                                                    
+    1/25/2019 9:06:09 PM      | ShippingToDataCenter           | InProgress      | Arrived at Sort Facility LONDON-HEATHROW-GBR.            Local Time : 1/25/2019 9:06:09 PM at LONDON-HEATHROW-GBR                                                
+    1/25/2019 9:48:54 PM      | ShippingToDataCenter           | InProgress      | Processed at LONDON-HEATHROW-GBR. Local Time :            1/25/2019 9:48:54 PM at LONDON-HEATHROW-GBR                                                            
+    1/25/2019 10:30:20 PM     | ShippingToDataCenter           | InProgress      | Departed Facility in LONDON-HEATHROW-GBR. Local          Time : 1/25/2019 10:30:20 PM at LONDON-HEATHROW-GBR                                                   
+    1/26/2019 2:17:10 PM      | ShippingToDataCenter           | InProgress      | Arrived at Sort Facility BRUSSELS-BEL. Local Time        : 1/26/2019 2:17:10 PM at BRUSSELS-BEL                                                              
+    1/26/2019 2:31:57 PM      | ShippingToDataCenter           | InProgress      | Processed at BRUSSELS-BEL. Local Time : 1/26/2019        2:31:57 PM at BRUSSELS-BEL                                                                          
+    1/26/2019 3:37:53 PM      | ShippingToDataCenter           | InProgress      | Processed at BRUSSELS-BEL. Local Time : 1/26/2019        3:37:53 PM at BRUSSELS-BEL                                                                          
+    1/27/2019 11:01:45 AM     | ShippingToDataCenter           | InProgress      | Departed Facility in BRUSSELS-BEL. Local Time :          1/27/2019 11:01:45 AM at BRUSSELS-BEL                                                                 
+    1/28/2019 7:11:35 AM      | ShippingToDataCenter           | InProgress      | Arrived at Delivery Facility in AMSTERDAM-NLD.            Local Time : 1/28/2019 7:11:35 AM at AMSTERDAM-NLD                                                     
+    1/28/2019 9:07:57 AM      | ShippingToDataCenter           | InProgress      | With delivery courier. Local Time : 1/28/2019            9:07:57 AM at AMSTERDAM-NLD                                                                             
+    1/28/2019 1:35:56 PM      | ShippingToDataCenter           | InProgress      | Scheduled for delivery. Local Time : 1/28/2019            1:35:56 PM at AMSTERDAM-NLD                                                                            
+    1/28/2019 2:57:48 PM      | ShippingToDataCenter           | Completed       | Delivered - Signed for by. Local Time : 1/28/2019        2:57:48 PM at AMSTERDAM-NLD                                                                         
+    1/29/2019 2:18:43 PM      | PhysicalVerification           | Completed       |                                              
+    1/29/2019 3:49:50 PM      | DeviceBoot                     | Completed       | Appliance booted up successfully                  
+    1/29/2019 3:49:51 PM      | AnomalyDetection               | Completed       | No anomaly detected.                               
+    1/29/2019 4:55:00 PM      | DataCopy                       | Started         |                                                 
+    2/2/2019 7:07:34 PM       | DataCopy                       | Completed       | Copy Completed.                                   
+    2/4/2019 7:47:32 PM       | SecureErase                    | Started         |                                                  
+    2/4/2019 8:01:10 PM       | SecureErase                    | Completed       | Azure Data Box:DEVICESERIALNO has been sanitized          according to NIST 800-88 Rev 1.                                                                       
 
-       Account Name         : Gus                                                       
-       Copy Logs Path       : databoxcopylog/DataBoxTestOrder_CHC533180024_CopyLog_73a81b2d613547a28ecb7b1612fe93ca.xml
-       Audit Logs Path      : azuredatabox-chainofcustodylogs\7fc6cac9-9cd6-4dd8-ae22-1ce479666282\chc533180024
-       BOM Files Path       : azuredatabox-chainofcustodylogs\7fc6cac9-9cd6-4dd8-ae22-1ce479666282\chc533180024      
-       ```
-     Potom můžete přejít ke svému účtu úložiště a zobrazit protokoly kopírování.
+    ------------------
+    Data Box Log Links
+    ------------------
+
+    Account Name         : Gus                                                       
+    Copy Logs Path       : databoxcopylog/DataBoxTestOrder_CHC533180024_CopyLog_73a81b2d613547a28ecb7b1612fe93ca.xml
+    Audit Logs Path      : azuredatabox-chainofcustodylogs\7fc6cac9-9cd6-4dd8-ae22-1ce479666282\chc533180024
+    BOM Files Path       : azuredatabox-chainofcustodylogs\7fc6cac9-9cd6-4dd8-ae22-1ce479666282\chc533180024      
+    ```
+
+    Potom můžete přejít ke svému účtu úložiště a zobrazit protokoly kopírování.
 
 ![Protokoly v účtech úložiště](media/data-box-portal-admin/logs-in-storage-acct-2.png)
 
@@ -196,7 +208,11 @@ Můžete také zobrazit řetězec protokolů opatrovnictví, mezi které patří
 
 Když se stav zařízení na portálu změní, dostanete upozornění prostřednictvím e-mailu.
 
-|Stav objednávky |Description |
+### <a name="statuses-for-import-order"></a>Stavy pro pořadí importu
+
+Zde jsou stavy pro pořadí importu.
+
+|Stav objednávky |Popis |
 |---------|---------|
 |Objednáno     | Došlo k úspěšnému zadání objednávky. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není dostupné okamžitě, bude objednávka zpracována, až bude zařízení dostupné. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka zrušena a budete upozorněni.         |
 |Zpracováno     | Proběhlo zpracování objednávky. Zařízení je připravené k odeslání v datovém centru podle objednávky.         |
@@ -210,6 +226,42 @@ Když se stav zařízení na portálu změní, dostanete upozornění prostředn
 |Dokončeno s upozorněními| Kopírování dat se dokončilo, ale data se změnila. Data obsahovala nekritické chyby objektů BLOB nebo souborů, které byly opraveny změnou názvu souboru nebo objektu BLOB. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si úpravy vašich dat. Podívejte [se na příklady kopírování protokolů po dokončení nahrávání s upozorněními](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
 |Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste objednávku zrušili, nebo došlo k chybě a objednávku zrušila služba. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka také zrušena a budete upozorněni.     |
 |Vyčištění | Vymažou se data na discích zařízení. Vyčištění zařízení se považuje za dokončené, jakmile je na webu Azure Portal k dispozici ke stažení historie objednávky.|
+
+### <a name="statuses-for-export-order"></a>Stavy pro export objednávky
+
+Zde jsou stavy pro export objednávky.
+
+|Stav objednávky |Popis |
+|---------|---------|
+|Objednáno     | Objednávka exportu se úspěšně nastavila. <br>Pokud je zařízení dostupné, určí Microsoft zařízení k odeslání a toto zařízení připraví. <br> Pokud zařízení není dostupné okamžitě, bude objednávka zpracována, až bude zařízení dostupné. Zpracování objednávky může trvat od několika dnů až do dvou měsíců. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka zrušena a budete upozorněni.         |
+|Zrušeno            |Došlo ke zrušení objednávky. <br> Buď jste zrušili objednávku (můžete zrušit pouze před zpracováním objednávky), nebo došlo k chybě a služba zrušila pořadí. Pokud objednávku nelze vyřídit do 90 dnů, je objednávka také zrušena a budete upozorněni.     |
+|Zpracováno     | Proběhlo zpracování objednávky. Podle vaší objednávky se zařízení připravuje na kopírování dat v datovém centru. Sdílené složky zařízení se vytvářejí.         |
+|Probíhá kopírování dat     | Probíhá kopírování dat ze zadaných účtů Azure Storage do zařízení. Sledujte průběh kopírování u vaší objednávky na portálu Azure Portal. <br> Počkejte, dokud se kopírování dat nedokončí. |
+|Kopírování dokončeno     | Kopírování dat ze zadaných účtů Azure Storage do zařízení bylo dokončeno. Podrobný soubor protokolu (Pokud byla v pořadí povolená možnost) a v účtu úložiště se vytvoří protokol kopírování. Podrobný protokol obsahuje informace o všech souborech (název, cesta, výpočetního kontrolního součtu), které se zkopírují do zařízení. Protokol kopírování obsahuje souhrn procesu kopírování včetně seznamu souborů, které nebylo možné zkopírovat z důvodu chyb.<br> Data účtu úložiště zůstanou tak, jak jsou. |
+|Kopírování dokončeno s chybami| Kopírování dat se dokončilo, ale během kopírování došlo k chybám. <br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte [se na příklady kopírování protokolů po dokončení stahování s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Kopírování dokončeno s upozorněními| Kopírování dat z účtu Azure Storage bylo dokončeno, ale data obsahovala méně závažné chyby. <br> Zkontrolujte protokoly kopírování pomocí cesty uvedené na portálu Azure Portal. Poznamenejte si méně závažné chyby. Podívejte [se na příklady kopírování protokolů po dokončení stahování s upozorněními](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings).   |
+|Kopírování se nezdařilo s chybami| Kopírování dat z účtu Azure Storage se nezdařilo a pořadí je ukončeno. Zařízení nebude dodány.<br> Zkontrolujte protokoly kopírování v Azure Storage účtu pomocí cesty uvedené v Azure Portal. Podívejte se [na příklady kopírování protokolů po stažení se nezdařilo s chybami](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Odesláno     |Došlo k odeslání objednávky. Zásilku můžete sledovat pomocí ID pro sledování, které je uvedené ve vaší objednávce na portálu.        |
+|Doručeno     |Zásilka byla doručena na adresu uvedenou v objednávce.        |
+|Vyzvednuto     |Zpáteční zásilka byla vyzvednuta a naskenována dopravcem.         |
+|Přijato     | Zařízení bylo přijato a naskenováno v datovém centru Azure. <br> Zásilka byla zkontrolována.      |
+|Dokončeno           |Pořadí je dokončené.     |
+|Vyčištění | Vymažou se data na discích zařízení. Vyčištění zařízení se považuje za dokončené, jakmile je na webu Azure Portal k dispozici ke stažení historie objednávky.|
+
+> [!NOTE]
+> Pokud je úloha kopírování k exportu dat z Azure Storage účtů do Data Box dokončena s chybami nebo upozorněními, zařízení je stále dodáváno. V případě selhání kopírování se pořadí ukončí a zařízení se nedodá.
+
+
+Pokud používáte samoobslužné doručování, pak po dokončení kopírování a před přijetím zařízení se zobrazí následující stavy (místo těch, které jsou uvedené v předchozí tabulce):
+
+|Stav objednávky |Popis |
+|---------|---------|
+|Připraveno k vyzvednutí v datacentru Azure      |Zařízení je připravené k vyzvednutí v datacentru Azure.        |
+|Vyzvednuto    |Zařízení jste si vybrali.         |
+|Připraveno k přijetí v datacentru Azure     |Zařízení je připravené k přijetí v datacentru Azure.        |
+|Přijato     |Zařízení se přijímá v datacentru Azure.      |
+
+
 
 
 

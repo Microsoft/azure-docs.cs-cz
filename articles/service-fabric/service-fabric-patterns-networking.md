@@ -3,12 +3,12 @@ title: Modely sítě pro Azure Service Fabric
 description: Popisuje běžné síťové vzory pro Service Fabric a vytváření clusterů pomocí síťových funkcí Azure.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106613"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258531"
 ---
 # <a name="service-fabric-networking-patterns"></a>Modely Service Fabric sítě
 Svůj cluster Azure Service Fabric můžete integrovat s dalšími síťovými funkcemi Azure. V tomto článku vám ukážeme, jak vytvořit clustery, které používají následující funkce:
@@ -598,10 +598,9 @@ Po nasazení můžete ve skupině prostředků zobrazit dvě nástroje pro vyrov
 
 ## <a name="notes-for-production-workloads"></a>Poznámky pro produkční úlohy
 
-Výše uvedené šablony GitHubu jsou navržené tak, aby fungovaly s výchozí SKU pro Azure Standard Load Balancer (SLB), základní SKU. Tato SLB nemá žádnou smlouvu SLA, takže pro produkční úlohy by se měla použít standardní SKU. Další informace najdete v tématu [Přehled Azure Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview). Všechny Service Fabric clustery, které používají standardní SKU pro SLB, musí zajistit, aby každý typ uzlu měl pravidlo umožňující odchozí přenosy na portu 443. To je nezbytné pro dokončení instalace clusteru a jakékoli nasazení bez takového pravidla selže. Ve výše uvedeném příkladu nástroje pro vyrovnávání zatížení musí být do šablony přidán další externí nástroj pro vyrovnávání zatížení s pravidlem, které povoluje odchozí přenosy pro port 443.
+Výše uvedené šablony GitHubu jsou navržené tak, aby fungovaly s výchozí SKU pro Azure Standard Load Balancer (SLB), základní SKU. Tato SLB nemá žádnou smlouvu SLA, takže pro produkční úlohy by se měla použít standardní SKU. Další informace najdete v tématu [Přehled Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md). Všechny Service Fabric clustery, které používají standardní SKU pro SLB, musí zajistit, aby každý typ uzlu měl pravidlo umožňující odchozí přenosy na portu 443. To je nezbytné pro dokončení instalace clusteru a jakékoli nasazení bez takového pravidla selže. Ve výše uvedeném příkladu nástroje pro vyrovnávání zatížení musí být do šablony přidán další externí nástroj pro vyrovnávání zatížení s pravidlem, které povoluje odchozí přenosy pro port 443.
 
 ## <a name="next-steps"></a>Další kroky
 [Vytvoření clusteru](service-fabric-cluster-creation-via-arm.md)
 
 Po nasazení můžete ve skupině prostředků zobrazit dvě nástroje pro vyrovnávání zatížení. Pokud procházíte nástroji pro vyrovnávání zatížení, můžete zobrazit veřejné IP adresy a koncové body správy (porty 19000 a 19080) přiřazené k veřejné IP adrese. Také se můžete podívat na statickou interní IP adresu a koncový bod aplikace (port 80) přiřazený internímu nástroji pro vyrovnávání zatížení. Obě služby Vyrovnávání zatížení používají stejný fond back-end sady škálování virtuálních počítačů.
-

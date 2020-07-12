@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 0819ca02d088aeb9ada5de1269467f70242bbcca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2114f5392da788bb440589e69e704a148731e02
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609906"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258620"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Sledování výkonu pomocí rozšíření Windows Azure Diagnostics
 
@@ -192,5 +193,5 @@ Tady je příklad konfigurace s čítačem pro *Celkový čas procesoru* (čas, 
 
 ## <a name="next-steps"></a>Další kroky
 * Shromážděte další čítače výkonu pro váš cluster. Seznam čítačů, které byste měli shromažďovat, najdete v tématu [metrika výkonu](service-fabric-diagnostics-event-generation-perf.md) .
-* [Pomocí monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon](../virtual-machines/windows/extensions-diagnostics-template.md) můžete provádět další úpravy `WadCfg` , včetně konfigurace dalších účtů úložiště, do kterých se budou posílat diagnostická data.
+* [Pomocí monitorování a diagnostiky pomocí virtuálních počítačů s Windows a Azure Resource Manager šablon](../virtual-machines/extensions/diagnostics-template.md) můžete provádět další úpravy `WadCfg` , včetně konfigurace dalších účtů úložiště, do kterých se budou posílat diagnostická data.
 * Přejděte na [Tvůrce WadCfg](https://azure.github.io/azure-diagnostics-tools/config-builder/) a vytvořte šablonu od začátku a ujistěte se, že je syntaxe správná. ( https://azure.github.io/azure-diagnostics-tools/config-builder/) Chcete-li vytvořit šablonu od začátku a ujistěte se, že je syntaxe správná.

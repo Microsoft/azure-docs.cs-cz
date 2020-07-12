@@ -8,11 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308774"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257829"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Správa certifikátů na zařízení IoT Edge
 
@@ -30,7 +31,7 @@ Další informace o různých typech certifikátů a jejich rolích najdete v t�
 >[!NOTE]
 >Pojem "Kořenová CA", který se používá v celém tomto článku, odkazuje na veřejný certifikát certifikační autority pro vaše řešení IoT. Nemusíte používat kořen certifikátu pro neoprávněnou certifikační autoritu nebo kořen certifikační autority vaší organizace. V mnoha případech je ve skutečnosti veřejný certifikát zprostředkující certifikační autority.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Zařízení IoT Edge spuštěné v [systému Windows](how-to-install-iot-edge-windows.md) nebo [Linux](how-to-install-iot-edge-linux.md).
 * Mít certifikát kořenové certifikační autority (CA), buď podepsaný svým držitelem, nebo zakoupený od důvěryhodné Komerční certifikační autority, jako je Baltimore, VeriSign, DigiCert nebo GlobalSign.
@@ -46,6 +47,9 @@ Pro vytvoření následujících souborů byste měli použít vlastní certifik
 * Privátní klíč certifikační autority zařízení
 
 V tomto článku, na který odkazujeme jako na *kořenovou certifikační autoritu* , není pro organizaci nejvyšší certifikační autorita. Je to nejvyšší certifikační autorita pro IoT Edge scénář, kterou modul IoT Edge hub, uživatelské moduly a jakákoli podřízená zařízení používají k navázání vztahu důvěryhodnosti mezi sebou.
+
+> [!NOTE]
+> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050.
 
 Pokud chcete zobrazit příklad těchto certifikátů, přečtěte si téma Vytvoření ukázkových certifikátů v tématu [Správa certifikátů testovací CA pro ukázky a kurzy](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
@@ -108,7 +112,7 @@ Další informace o funkci různých certifikátů na zařízení IoT Edge najde
 Pro tyto dva automaticky vygenerované certifikáty máte možnost nastavit příznak **auto_generated_ca_lifetime_days** v souboru config. yaml a nakonfigurovat tak počet dní pro dobu života certifikátů.
 
 >[!NOTE]
->K dispozici je třetí automaticky generovaný certifikát, který IoT Edge Security Manager vytvoří, **certifikát serveru IoT Edge hub**. Tento certifikát má vždycky 90 den, ale před vypršením platnosti se automaticky obnoví. Hodnota **auto_generated_ca_lifetime_days** nemá vliv na tento certifikát.
+>K dispozici je třetí automaticky generovaný certifikát, který IoT Edge Security Manager vytvoří, **certifikát serveru IoT Edge hub**. Tento certifikát má vždy dobu 90 dne, ale před vypršením platnosti se automaticky obnoví. Hodnota **auto_generated_ca_lifetime_days** nemá vliv na tento certifikát.
 
 Chcete-li nakonfigurovat vypršení platnosti certifikátu na jinou hodnotu než výchozí 90 dní, přidejte hodnotu ve dnech do části **certifikáty** v souboru config. yaml.
 
@@ -119,6 +123,9 @@ certificates:
   trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
   auto_generated_ca_lifetime_days: <value>
 ```
+
+> [!NOTE]
+> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050.
 
 Pokud jste zadali vlastní certifikáty certifikační autority zařízení, bude tato hodnota stále platit pro certifikát certifikační autority pro úlohy, pokud je nastavená hodnota životnosti kratší, než je doba platnosti certifikátu certifikační autority zařízení.
 

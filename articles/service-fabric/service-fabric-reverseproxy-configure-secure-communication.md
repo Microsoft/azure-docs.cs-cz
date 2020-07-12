@@ -3,11 +3,12 @@ title: Zabezpečená komunikace služby Azure Service Fabric reverzní proxy
 description: Nakonfigurujte reverzní proxy tak, aby umožňoval zabezpečenou koncovou komunikaci v aplikaci Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82858526"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256131"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení k zabezpečené službě pomocí reverzního proxy serveru
 
@@ -19,7 +20,7 @@ V tomto článku se dozvíte, jak vytvořit zabezpečené připojení mezi rever
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Zabezpečené vytváření připojení mezi reverzním proxy serverem a službami 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Reverzní proxy ověřování pro služby:
-Reverzní proxy server identifikuje sám sebe se službami pomocí jejího certifikátu. V případě clusterů Azure je certifikát zadaný pomocí vlastnosti ***reverseProxyCertificate*** v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. ServiceFabric/clustery**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) v šabloně správce prostředků. V případě samostatných clusterů je certifikát určen buď pomocí ***ReverseProxyCertificate*** , nebo pomocí vlastnosti ***ReverseProxyCertificateCommonNames*** v části **zabezpečení** ClusterConfig.jszapnuté. Další informace najdete v tématu [Povolení reverzního proxy na samostatných clusterech](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+Reverzní proxy server identifikuje sám sebe se službami pomocí jejího certifikátu. V případě clusterů Azure je certifikát zadaný pomocí vlastnosti ***reverseProxyCertificate*** v [části typ prostředku](../azure-resource-manager/templates/template-syntax.md) [**Microsoft. ServiceFabric/clustery**](/azure/templates/microsoft.servicefabric/clusters) v šabloně správce prostředků. V případě samostatných clusterů je certifikát určen buď pomocí ***ReverseProxyCertificate*** , nebo pomocí vlastnosti ***ReverseProxyCertificateCommonNames*** v části **zabezpečení** ClusterConfig.jszapnuté. Další informace najdete v tématu [Povolení reverzního proxy na samostatných clusterech](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 Služby můžou implementovat logiku, která ověří certifikát prezentovaný reverzním proxy serverem. Služby můžou určit podrobnosti přijímaného klientského certifikátu jako konfigurační nastavení v konfiguračním balíčku. To je možné číst za běhu a použít k ověření certifikátu prezentovaného reverzním proxy serverem. Chcete-li přidat nastavení konfigurace, přečtěte si téma [Správa parametrů aplikace](service-fabric-manage-multiple-environment-app-configuration.md) . 
 
@@ -188,5 +189,5 @@ Pokud klient neprezentuje certifikát, reverzní proxy předává prázdnou hlav
 * Další informace o [konfiguraci reverzního proxy serveru pro připojení k zabezpečeným službám](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services)
 * Podívejte se na příklad komunikace HTTP mezi službami ve [vzorovém projektu na GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Vzdálená volání procedur s Reliable Services Vzdálená komunikace](service-fabric-reliable-services-communication-remoting.md)
-* [Webové rozhraní API, které používá OWIN v Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Webové rozhraní API, které používá OWIN v Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Správa certifikátů clusteru](service-fabric-cluster-security-update-certs-azure.md)

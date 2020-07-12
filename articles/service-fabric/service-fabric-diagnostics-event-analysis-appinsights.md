@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701898"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256556"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Analýza a vizualizace událostí pomocí Application Insights
 
@@ -37,7 +38,7 @@ Application Insights má určené zobrazení pro dotazování na všechna data, 
 
 ![Podrobnosti o Application Insights žádosti](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-Chcete-li dále prozkoumat možnosti portálu Application Insights, přečtěte si dokumentaci k [portálu Application Insights Portal](../azure-monitor/app/app-insights-dashboards.md).
+Chcete-li dále prozkoumat možnosti portálu Application Insights, přečtěte si dokumentaci k [portálu Application Insights Portal](../azure-monitor/app/overview-dashboard.md).
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Konfigurace Application Insights pomocí využitím eventflow
 
@@ -66,11 +67,11 @@ Pokud vyvíjíte v rozhraní .NET a pravděpodobně použijete některé z progr
 
 Jakmile nakonfigurujete Application Insights jako výstup pro události a protokoly, měly by se informace během několika minut zobrazovat v prostředku Application Insights. Přejděte na prostředek Application Insights, který vás převezme na řídicí panel prostředků Application Insights. Kliknutím na **Hledat** na hlavním panelu Application Insights zobrazíte nejnovější trasování, která přijala, a budete je moct přes ně filtrovat.
 
-*Průzkumník metrik* je užitečný nástroj pro vytváření vlastních řídicích panelů na základě metrik, které mohou hlásit aplikace, služby a cluster. V tématu [prozkoumávání metrik v Application Insights](../azure-monitor/app/metrics-explorer.md) můžete nastavit několik grafů pro sebe na základě shromažďovaných dat.
+*Průzkumník metrik* je užitečný nástroj pro vytváření vlastních řídicích panelů na základě metrik, které mohou hlásit aplikace, služby a cluster. V tématu [prozkoumávání metrik v Application Insights](../azure-monitor/platform/metrics-charts.md) můžete nastavit několik grafů pro sebe na základě shromažďovaných dat.
 
-Kliknutím na **Analýza** přejdete na portál Application Insights Analytics, kde můžete zadávat dotazy na události a trasování s větším rozsahem a volitelnosti. Přečtěte si další informace o [analýze v Application Insights](../azure-monitor/app/analytics.md).
+Kliknutím na **Analýza** přejdete na portál Application Insights Analytics, kde můžete zadávat dotazy na události a trasování s větším rozsahem a volitelnosti. Přečtěte si další informace o [analýze v Application Insights](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [V AI nastavte výstrahy](/azure/azure-monitor/platform/alerts-log) na změny výkonu nebo využití.
+* [V AI nastavte výstrahy](../azure-monitor/platform/alerts-log.md) na změny výkonu nebo využití.
 * [Inteligentní zjišťování v Application Insights](../azure-monitor/app/proactive-diagnostics.md) provádí proaktivní analýzu telemetrie, která se posílá do Application Insights upozorňující na potenciální problémy s výkonem.

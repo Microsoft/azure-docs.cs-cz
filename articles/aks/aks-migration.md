@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82129105"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255485"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
@@ -18,13 +18,13 @@ Tento článek vám pomůže s plánováním a spuštěním úspěšné migrace 
 
 Tento dokument se dá použít k podpoře následujících scénářů:
 
-* Migrace clusteru AKS s využitím [skupin dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) na [Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)
-* Migrace clusteru AKS na použití [standardního nástroje pro vyrovnávání zatížení SKU](https://docs.microsoft.com/azure/aks/load-balancer-standard)
+* Migrace clusteru AKS s využitím [skupin dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) na [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md)
+* Migrace clusteru AKS na použití [standardního nástroje pro vyrovnávání zatížení SKU](./load-balancer-standard.md)
 * Migrace z [Azure Container Service (ACS) – vyřazení z 31. ledna 2020](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) do AKS
-* Migrace z [modulu AKS](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) na AKS
+* Migrace z [modulu AKS](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) na AKS
 * Migrace z clusterů Kubernetes založených na jiných než Azure na AKS
 
-Při migraci zajistěte, aby vaše cílová verze Kubernetes byla v podporovaném okně pro AKS. Pokud používáte starší verzi, nemusí být v podporovaném rozsahu a vyžadovat, aby byly upgradované verze AKS podporovány. Další informace najdete v tématu [podporované verze Kubernetes pro AKS](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) .
+Při migraci zajistěte, aby vaše cílová verze Kubernetes byla v podporovaném okně pro AKS. Pokud používáte starší verzi, nemusí být v podporovaném rozsahu a vyžadovat, aby byly upgradované verze AKS podporovány. Další informace najdete v tématu [podporované verze Kubernetes pro AKS](./supported-kubernetes-versions.md) .
 
 Pokud migrujete na novější verzi Kubernetes, zkontrolujte [zásady podpory pro verzi Kubernetes a zkosit](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions).
 
@@ -47,11 +47,11 @@ V tomto článku shrnujeme podrobnosti o migraci pro:
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>AKS s Standard Load Balancer a Virtual Machine Scale Sets
 
-AKS je spravovaná služba, která nabízí jedinečné možnosti s nižšími nároky na správu. V důsledku toho, že se jedná o spravovanou službu, musíte vybrat ze sady [oblastí](https://docs.microsoft.com/azure/aks/quotas-skus-regions) , které podporuje AKS. Přechod ze stávajícího clusteru do AKS může vyžadovat úpravu stávajících aplikací, aby zůstaly v dobrém stavu na rovině spravovaného řízení AKS.
+AKS je spravovaná služba, která nabízí jedinečné možnosti s nižšími nároky na správu. V důsledku toho, že se jedná o spravovanou službu, musíte vybrat ze sady [oblastí](./quotas-skus-regions.md) , které podporuje AKS. Přechod ze stávajícího clusteru do AKS může vyžadovat úpravu stávajících aplikací, aby zůstaly v dobrém stavu na rovině spravovaného řízení AKS.
 
-Pro zajištění funkcí, jako je [více fondů uzlů](https://docs.microsoft.com/azure/aks/use-multiple-node-pools), [zóny dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview), [autorizovaných rozsahů IP adres](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), [automatického škálování clusteru](https://docs.microsoft.com/azure/aks/cluster-autoscaler), [Azure Policy pro AKS](https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks)a dalších nových funkcí, doporučujeme používat clustery AKS, které jsou založené na [Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets) a [Azure Standard Load Balancer](https://docs.microsoft.com/azure/aks/load-balancer-standard) .
+Pro zajištění funkcí, jako je [více fondů uzlů](./use-multiple-node-pools.md), [zóny dostupnosti](../availability-zones/az-overview.md), [autorizovaných rozsahů IP adres](./api-server-authorized-ip-ranges.md), [automatického škálování clusteru](./cluster-autoscaler.md), [Azure Policy pro AKS](../governance/policy/concepts/policy-for-kubernetes.md)a dalších nových funkcí, doporučujeme používat clustery AKS, které jsou založené na [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml) a [Azure Standard Load Balancer](./load-balancer-standard.md) .
 
-AKS clustery zajištěné [sadami dostupnosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) neobsahují podporu pro mnohé z těchto funkcí.
+AKS clustery zajištěné [sadami dostupnosti virtuálních počítačů](../virtual-machine-scale-sets/availability.md#availability-sets) neobsahují podporu pro mnohé z těchto funkcí.
 
 Následující příklad vytvoří cluster AKS s jediným fondem uzlů zálohovaným sadou škálování virtuálního počítače. Používá standardní nástroj pro vyrovnávání zatížení. Povoluje taky automatické škálování clusteru ve fondu uzlů pro cluster a nastavuje minimálně *1* a maximálně *3* uzly:
 
@@ -79,30 +79,30 @@ Při migraci clusterů máte pravděpodobně připojené externí služby Azure.
 * Log Analytics
 * Application Insights
 * Traffic Manager
-* Účet úložiště
+* Storage Account (Účet úložiště)
 * Externí databáze
 
 ## <a name="ensure-valid-quotas"></a>Zajištění platných kvót
 
-Vzhledem k tomu, že během migrace budou do svého předplatného nasazené další virtuální počítače, měli byste ověřit, že vaše kvóty a limity jsou pro tyto prostředky dostatečné. Možná budete muset požádat o zvýšení [kvóty vCPU](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
+Vzhledem k tomu, že během migrace budou do svého předplatného nasazené další virtuální počítače, měli byste ověřit, že vaše kvóty a limity jsou pro tyto prostředky dostatečné. Možná budete muset požádat o zvýšení [kvóty vCPU](../azure-portal/supportability/per-vm-quota-requests.md).
 
-Možná budete muset požádat o zvýšení [kvót sítě](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) , abyste se ujistili, že nevyčerpáte IP adresy. Další informace najdete v tématu [sítě a rozsahy IP adres pro AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) .
+Možná budete muset požádat o zvýšení [kvót sítě](../azure-portal/supportability/networking-quota-requests.md) , abyste se ujistili, že nevyčerpáte IP adresy. Další informace najdete v tématu [sítě a rozsahy IP adres pro AKS](./configure-kubenet.md) .
 
-Další informace najdete v tématu [omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Pokud chcete zjistit aktuální kvóty, v Azure Portal v okně pro [předplatné](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)vyberte své předplatné a pak vyberte **využití + kvóty**.
+Další informace najdete v tématu [omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md). Pokud chcete zjistit aktuální kvóty, v Azure Portal v okně pro [předplatné](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)vyberte své předplatné a pak vyberte **využití + kvóty**.
 
 ## <a name="high-availability-and-business-continuity"></a>Vysoká dostupnost a provozní kontinuita
 
-Pokud vaše aplikace nemůže zvládnout výpadky, budete muset dodržovat osvědčené postupy pro scénáře migrace s vysokou dostupností.  Osvědčené postupy pro komplexní plánování kontinuity podnikových procesů, zotavení po havárii a maximalizaci doby provozu jsou nad rámec tohoto dokumentu.  Další informace o [osvědčených postupech pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS) získáte v článku o osvědčených postupech](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) .
+Pokud vaše aplikace nemůže zvládnout výpadky, budete muset dodržovat osvědčené postupy pro scénáře migrace s vysokou dostupností.  Osvědčené postupy pro komplexní plánování kontinuity podnikových procesů, zotavení po havárii a maximalizaci doby provozu jsou nad rámec tohoto dokumentu.  Další informace o [osvědčených postupech pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS) získáte v článku o osvědčených postupech](./operator-best-practices-multi-region.md) .
 
 U složitých aplikací se obvykle provádí migrace v čase, nikoli najednou. To znamená, že stará a nová prostředí můžou potřebovat komunikovat přes síť. Aplikace, které dříve používaly `ClusterIP` služby ke komunikaci, mohou být potřeba zveřejnit jako typ `LoadBalancer` a správně zabezpečit.
 
 K dokončení migrace budete chtít klienty nasměrovat na nové služby, které běží na AKS. Pro přesměrování provozu doporučujeme, abyste provedli aktualizaci DNS tak, aby odkazovaly na Load Balancer, která je umístěná před clusterem AKS.
 
-Služba [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) může směrovat zákazníky na požadovaný cluster Kubernetes a instanci aplikace.  Traffic Manager je nástroj pro vyrovnávání zatížení pro provoz založený na DNS, který může distribuovat síťový provoz napříč oblastmi.  Abyste dosáhli nejlepšího výkonu a redundance, přesměrujte veškerý provoz aplikací prostřednictvím Traffic Manager před tím, než přejdete do clusteru AKS.  V nasazení s více clustery by se zákazníci měli připojit k Traffic Manager názvu DNS, který odkazuje na služby na jednotlivých clusterech AKS. Tyto služby definujte pomocí koncových bodů Traffic Manager. Každý koncový bod je *IP adresa nástroje pro vyrovnávání zatížení služby*. Pomocí této konfigurace můžete směrovat síťový provoz z Traffic Manager koncového bodu v jedné oblasti do koncového bodu v jiné oblasti.
+Služba [Azure Traffic Manager](../traffic-manager/index.yml) může směrovat zákazníky na požadovaný cluster Kubernetes a instanci aplikace.  Traffic Manager je nástroj pro vyrovnávání zatížení pro provoz založený na DNS, který může distribuovat síťový provoz napříč oblastmi.  Abyste dosáhli nejlepšího výkonu a redundance, přesměrujte veškerý provoz aplikací prostřednictvím Traffic Manager před tím, než přejdete do clusteru AKS.  V nasazení s více clustery by se zákazníci měli připojit k Traffic Manager názvu DNS, který odkazuje na služby na jednotlivých clusterech AKS. Tyto služby definujte pomocí koncových bodů Traffic Manager. Každý koncový bod je *IP adresa nástroje pro vyrovnávání zatížení služby*. Pomocí této konfigurace můžete směrovat síťový provoz z Traffic Manager koncového bodu v jedné oblasti do koncového bodu v jiné oblasti.
 
 ![AKS s Traffic Manager](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-[Služba front-dveří Azure](https://docs.microsoft.com/azure/frontdoor/front-door-overview) je další možností pro směrování provozu pro clustery AKS.  Služba Azure Front Door vám umožňuje definovat, spravovat a monitorovat globální směrování webového provozu tím, že provádí optimalizaci pro nejlepší výkon a poskytuje okamžité globální převzetí služeb při selhání, aby byla zajištěna vysoká dostupnost. 
+[Služba front-dveří Azure](../frontdoor/front-door-overview.md) je další možností pro směrování provozu pro clustery AKS.  Služba Azure Front Door vám umožňuje definovat, spravovat a monitorovat globální směrování webového provozu tím, že provádí optimalizaci pro nejlepší výkon a poskytuje okamžité globální převzetí služeb při selhání, aby byla zajištěna vysoká dostupnost. 
 
 ### <a name="considerations-for-stateless-applications"></a>Požadavky na bezstavové aplikace
 
@@ -113,15 +113,15 @@ Nestavová migrace aplikace je nejjednodušším případem. Použijte definice 
 Pečlivě naplánujte migraci stavových aplikací, abyste se vyhnuli ztrátě dat nebo neočekávanému výpadku.
 
 Pokud používáte soubory Azure, můžete sdílenou složku připojit jako svazek do nového clusteru:
-* [Připojit statické soubory Azure jako svazek](https://docs.microsoft.com/azure/aks/azure-files-volume#mount-the-file-share-as-a-volume)
+* [Připojit statické soubory Azure jako svazek](./azure-files-volume.md#mount-the-file-share-as-a-volume)
 
 Pokud používáte Azure Managed Disks, můžete disk připojit pouze v případě, že je nepřipojen k žádnému virtuálnímu počítači:
-* [Připojit statický disk Azure jako svazek](https://docs.microsoft.com/azure/aks/azure-disk-volume#mount-disk-as-volume)
+* [Připojit statický disk Azure jako svazek](./azure-disk-volume.md#mount-disk-as-volume)
 
 Pokud ani jeden z těchto přístupů nefunguje, můžete použít možnosti zálohování a obnovení:
 * [Velero v Azure](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 
-#### <a name="azure-files"></a>Soubory Azure
+#### <a name="azure-files"></a>Azure Files
 
 Na rozdíl od disků je možné soubory Azure připojit k více hostitelům současně. V clusteru AKS vám Azure a Kubernetes nebrání v vytváření pod tím, že váš cluster ACS stále používá. Aby nedošlo ke ztrátě dat a neočekávanému chování, zajistěte, aby clustery nepsaly do stejných souborů současně.
 
@@ -131,7 +131,7 @@ Pokud vaše aplikace může hostovat několik replik, které odkazují na stejno
 * Nasměrujte svůj živý provoz do nového clusteru AKS.
 * Odpojte původní cluster.
 
-Pokud chcete začít s prázdnou sdílenou složkou a vytvořit kopii zdrojových dat, můžete [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) k migraci dat použít příkazy.
+Pokud chcete začít s prázdnou sdílenou složkou a vytvořit kopii zdrojových dat, můžete [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) k migraci dat použít příkazy.
 
 
 #### <a name="migrating-persistent-volumes"></a>Migrace trvalých svazků
@@ -142,7 +142,7 @@ Pokud migrujete existující trvalé svazky na AKS, obecně postupujte podle tě
 * Pořizovat snímky disků.
 * Vytvořte nové spravované disky ze snímků.
 * Vytvořte v AKS trvalé svazky.
-* V případě, že chcete [použít existující svazky](https://docs.microsoft.com/azure/aks/azure-disk-volume) místo PersistentVolumeClaims (statické zřizování), aktualizujte specifikace pod.
+* V případě, že chcete [použít existující svazky](./azure-disk-volume.md) místo PersistentVolumeClaims (statické zřizování), aktualizujte specifikace pod.
 * Nasaďte aplikaci do AKS.
 * Ověřte, že aplikace funguje správně.
 * Nasměrujte svůj živý provoz do nového clusteru AKS.
@@ -158,7 +158,7 @@ Některé open source nástroje vám pomůžou vytvořit spravované disky a mig
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Nasazení konfigurace clusteru
 
-Doporučujeme použít stávající kanál průběžné integrace (CI) a průběžné doručování (CD) k nasazení známé konfigurace do AKS. K [sestavování a nasazování aplikací do AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)můžete použít Azure Pipelines. Naklonujte stávající úlohy nasazení a zajistěte, aby `kubeconfig` odkazovaly na nový cluster AKS.
+Doporučujeme použít stávající kanál průběžné integrace (CI) a průběžné doručování (CD) k nasazení známé konfigurace do AKS. K [sestavování a nasazování aplikací do AKS](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)můžete použít Azure Pipelines. Naklonujte stávající úlohy nasazení a zajistěte, aby `kubeconfig` odkazovaly na nový cluster AKS.
 
 Pokud to není možné, exportujte definice prostředků ze stávajícího clusteru Kubernetes a pak je použijte na AKS. Můžete použít `kubectl` k exportu objektů.
 
@@ -184,4 +184,4 @@ V tomto článku jsme shrnuti podrobnosti o migraci pro:
 
 
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml

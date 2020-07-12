@@ -5,11 +5,12 @@ author: cawaMS
 ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464097"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256089"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurace zabezpečených připojení k Service Fabricmu clusteru ze sady Visual Studio
 Naučte se používat Visual Studio k zabezpečenému přístupu ke clusteru Azure Service Fabric s nakonfigurovanými zásadami řízení přístupu.
@@ -34,9 +35,9 @@ Dialogové okno **publikovat Service Fabric aplikaci** automaticky ověří při
 3. Zvolte příkaz **publikovat...** v místní nabídce projektu pro otevření dialogového okna **publikovat aplikaci Azure** a pak vyberte cílový cluster. Nástroj automaticky vyřeší připojení a uloží parametry zabezpečeného připojení v profilu publikování.
 4. Volitelné: profil publikování můžete upravit a zadat zabezpečené připojení k clusteru.
    
-   Vzhledem k tomu, že ručně upravujete soubor XML profilu publikování, abyste určili informace o certifikátu, nezapomeňte si poznamenat název úložiště certifikátů, umístění úložiště a kryptografický otisk certifikátu. Tyto hodnoty budete muset zadat pro název úložiště certifikátu a umístění úložiště. Další informace naleznete v tématu [How to: Načtení kryptografického otisku certifikátu](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) .
+   Vzhledem k tomu, že ručně upravujete soubor XML profilu publikování, abyste určili informace o certifikátu, nezapomeňte si poznamenat název úložiště certifikátů, umístění úložiště a kryptografický otisk certifikátu. Tyto hodnoty budete muset zadat pro název úložiště certifikátu a umístění úložiště. Další informace naleznete v tématu [How to: Načtení kryptografického otisku certifikátu](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) .
    
-   Pomocí parametrů *ClusterConnectionParameters* můžete zadat parametry PowerShellu, které se použijí při připojování ke clusteru Service Fabric. Platné parametry jsou všechny, které jsou přijímány pomocí rutiny Connect-ServiceFabricCluster. Seznam dostupných parametrů najdete v tématu [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) .
+   Pomocí parametrů *ClusterConnectionParameters* můžete zadat parametry PowerShellu, které se použijí při připojování ke clusteru Service Fabric. Platné parametry jsou všechny, které jsou přijímány pomocí rutiny Connect-ServiceFabricCluster. Seznam dostupných parametrů najdete v tématu [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
    
    Pokud publikujete do vzdáleného clusteru, je nutné zadat příslušné parametry pro konkrétní cluster. Následuje příklad připojení k nezabezpečenému clusteru:
    

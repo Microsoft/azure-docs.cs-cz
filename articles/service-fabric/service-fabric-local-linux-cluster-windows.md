@@ -5,18 +5,18 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 1798d57f9fc4004fd2c7d1f1901fcddf850626c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91d055a480748ef012120aac4d329d474491e2c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193322"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258579"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Nastavení clusteru se systémem Linux Service Fabric ve vašem počítači s Windows Developer
 
 Tento dokument popisuje, jak nastavit místní Service Fabric pro Linux ve vývojových počítačích s Windows. Nastavení místního clusteru se systémem Linux je užitečné pro rychlé testování aplikací určených pro clustery se systémem Linux, které jsou vyvíjeny na počítači s Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Clustery Service Fabric se systémem Linux neběží nativně ve Windows. Pro spuštění místního clusteru Service Fabric je k dispozici předem nakonfigurovaná image kontejneru Docker. Než začnete, budete potřebovat:
 
 * Minimálně 4 GB RAM
@@ -113,7 +113,7 @@ Pokud chcete nastavit místní kontejner Docker a mít v něm spuštěný Cluste
  * Služba DNS neběží a není podporovaná [Problém č. 132](https://github.com/Microsoft/service-fabric/issues/132)
 
 ## <a name="next-steps"></a>Další kroky
-* Začínáme s [zatmění](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse)
+* Začínáme s [zatmění](./service-fabric-get-started-eclipse.md)
 * Podívejte se na další [ukázky Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 

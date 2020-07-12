@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: d6522d417556104a1ece703c725f3fbeab49d683
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75458981"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257799"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Co je Service Fabric Mesh?
 
@@ -42,7 +42,7 @@ Služba Service Fabric Mesh umožňuje:
 
 - Nasazení a správu aplikací bez nutnosti explicitně zřizovat a spravovat infrastrukturu.  Service Fabric Mesh zřídí, aktualizuje, opravuje a udržuje potřebnou infrastrukturu za vás.
 - Nastavení nepřetržité integrace pomocí integrovaných nástrojů pro snadné balíčkování a nasazování aplikací.
-- Využijte všechny funkce prostředků Azure Resource Manager. Mezi příklady těchto funkcí patří záznam pro audit a [řízení přístupu na základě role](/azure/role-based-access-control/overview)). Všechny prostředky, které nasadíte do služby Service Fabric sítě v Azure, jsou Azure Resource Manager prostředky. Mezi tyto prostředky patří aplikace, služby, tajné kódy a tak dále.
+- Využijte všechny funkce prostředků Azure Resource Manager. Mezi příklady těchto funkcí patří záznam pro audit a [řízení přístupu na základě role](../role-based-access-control/overview.md)). Všechny prostředky, které nasadíte do služby Service Fabric sítě v Azure, jsou Azure Resource Manager prostředky. Mezi tyto prostředky patří aplikace, služby, tajné kódy a tak dále.
 - Nasazení a správu prostředků pomocí [webu Azure Portal](https://portal.azure.com), šablon Správce prostředků nebo knihoven Azure CLI/PowerShell.
 - Nastavení sledování provozu a upozorňování pomocí služby [Application Insights](/azure/application-insights/) (nebo jiného nástroje podle vašeho výběru) a zachycování provozních a diagnostických dat z platformy.
 - Přístup k informacím o diagnostice získaným z aplikačního modelu pomocí [Application Insights](/azure/application-insights/) nebo jiného nástroje podle vašeho výběru.
@@ -50,14 +50,14 @@ Služba Service Fabric Mesh umožňuje:
 
 ## <a name="mission-critical-platform-capabilities"></a>Možnosti platformy pro kritické aplikace
 
-Service Fabric Mesh vytvoří kolekci clusterů, které překračují hranice [zóny dostupnosti Azure](/azure/availability-zones/az-overview) nebo místní geopolitické hranice. Service Fabric mřížka popisuje aplikace se sadou záměrů, jako je například škálování, požadavky na hardware, požadavky na odolnost a zásady zabezpečení.  Po nasazení aplikace najde Service Fabric Mesh optimální místo, kde ji spustit.
+Service Fabric Mesh vytvoří kolekci clusterů, které překračují hranice [zóny dostupnosti Azure](../availability-zones/az-overview.md) nebo místní geopolitické hranice. Service Fabric mřížka popisuje aplikace se sadou záměrů, jako je například škálování, požadavky na hardware, požadavky na odolnost a zásady zabezpečení.  Po nasazení aplikace najde Service Fabric Mesh optimální místo, kde ji spustit.
 
 Služba Service Fabric Mesh umožňuje:
 
 - Využít vysokou dostupnost, škálování nahoru i dolů, vyhledatelnost, orchestraci, směrování zpráv, spolehlivé zasílání zpráv, upgrady bez výpadků, správu zabezpečení a tajných kódů, zotavení po havárii, správa stavů, správu konfigurací a distribuované transakce.
 - Vybírat při vytváření aplikace z několika různých aplikačních modelů.
 - Využít možností platformy poskytovaných koncovými body REST prostřednictvím vazeb specifických pro různé jazyky generovaných pomocí Swaggeru.
-- Nasazení aplikací napříč [zónami dostupnosti](/azure/availability-zones/az-overview) a různými oblastmi pro geografickou spolehlivost.
+- Nasazení aplikací napříč [zónami dostupnosti](../availability-zones/az-overview.md) a různými oblastmi pro geografickou spolehlivost.
 - Využít všechny možnosti zabezpečení a dodržování předpisů, které Azure nabízí.
 
 ## <a name="next-steps"></a>Další kroky
