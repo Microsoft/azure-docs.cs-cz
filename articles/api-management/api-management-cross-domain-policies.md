@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: b72abf4e208c57987375a105865046f194460058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6512edd26b59dac11f046e82940db4877728943c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690315"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243588"
 ---
 # <a name="api-management-cross-domain-policies"></a>Zásady pro API Management napříč doménami
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -52,12 +53,12 @@ Použijte `cross-domain` zásady, aby rozhraní API bylo dostupné z klientů za
 
 ### <a name="elements"></a>Elementy
 
-|Name|Description|Vyžadováno|
+|Název|Popis|Vyžadováno|
 |----------|-----------------|--------------|
 |mezi doménami|Kořenový element. Podřízené elementy musí odpovídat [specifikaci souboru zásad pro Adobe více domén](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Yes|
 
 ### <a name="usage"></a>Využití
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 - **Oddíly zásad:** příchozí
 - **Obory zásad:** všechny rozsahy
@@ -121,26 +122,26 @@ Tento příklad ukazuje, jak podporovat žádosti o předběžné lety, jako jso
 
 ### <a name="elements"></a>Elementy
 
-|Name|Description|Vyžadováno|Výchozí|
+|Název|Popis|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|CORS|Kořenový element.|Yes|Není k dispozici|
-|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins`může obsahovat jeden `origin` prvek, který určuje, že `*` má být povolen libovolný původ, nebo jeden či více `origin` prvků, které obsahují identifikátor URI.|Yes|Není k dispozici|
+|CORS|Kořenový element.|Yes|Nelze použít|
+|povolené – počátek|Obsahuje `origin` prvky, které popisují povolené zdroje pro požadavky mezi doménami. `allowed-origins`může obsahovat jeden `origin` prvek, který určuje, že `*` má být povolen libovolný původ, nebo jeden či více `origin` prvků, které obsahují identifikátor URI.|Yes|Nelze použít|
 |origin (zdroj)|Hodnota může být buď `*` tak, aby povolovala všechny zdroje, nebo identifikátor URI, který určuje jeden počátek. Identifikátor URI musí obsahovat schéma, hostitele a port.|Yes|Pokud je port v identifikátoru URI vynechán, použije se port 80 pro protokol HTTP a port 443 pro protokol HTTPS.|
 |povolené – metody|Tento prvek je vyžadován, pokud jsou povoleny jiné metody než GET nebo POST. Obsahuje `method` prvky, které určují podporované příkazy HTTP. Hodnota `*` označuje všechny metody.|No|Pokud tato část není k dispozici, jsou podporovány GET a POST.|
-|method|Určuje příkaz HTTP.|`method`Pokud je oddíl přítomen, je vyžadován alespoň jeden prvek `allowed-methods` .|Není k dispozici|
-|povoleno – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které mohou být zahrnuty v žádosti.|No|Není k dispozici|
+|method|Určuje příkaz HTTP.|`method`Pokud je oddíl přítomen, je vyžadován alespoň jeden prvek `allowed-methods` .|Nelze použít|
+|povoleno – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které mohou být zahrnuty v žádosti.|No|Nelze použít|
 |vystavení – hlavičky|Tento prvek obsahuje `header` prvky, které určují názvy hlaviček, které budou přístupné pro klienta.|No|Není k dispozici|
-|header|Určuje název záhlaví.|`header`V nebo je- `allowed-headers` li oddíl přítomen, je požadován alespoň jeden prvek `expose-headers` .|Není k dispozici|
+|header|Určuje název záhlaví.|`header`V nebo je- `allowed-headers` li oddíl přítomen, je požadován alespoň jeden prvek `expose-headers` .|Nelze použít|
 
 ### <a name="attributes"></a>Atributy
 
-|Name|Description|Vyžadováno|Výchozí|
+|Název|Popis|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
 |povolení – pověření|`Access-Control-Allow-Credentials`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost klienta odesílat přihlašovací údaje v rámci požadavků mezi doménami.|No|false (nepravda)|
 |Kontrola před výstupem – výsledek – maximum – stáří|`Access-Control-Max-Age`Záhlaví v odpovědi na kontrolu před výstupem bude nastaveno na hodnotu tohoto atributu a bude mít vliv na schopnost uživatelského agenta ukládat do mezipaměti před letem.|No|0|
 
 ### <a name="usage"></a>Využití
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 - **Oddíly zásad:** příchozí
 - **Obory zásad:** všechny rozsahy
@@ -166,18 +167,18 @@ Pokud přidáte parametr zpětného volání, `?cb=XXX` vrátí výsledek JSONP 
 
 ### <a name="elements"></a>Elementy
 
-|Name|Description|Vyžadováno|
+|Název|Popis|Vyžadováno|
 |----------|-----------------|--------------|
 |JSONP|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
-|Name|Description|Vyžadováno|Výchozí|
+|Název|Popis|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|zpětné volání – parametr-Name|Funkce jazyka JavaScript mezi doménami začíná předponou s plně kvalifikovaným názvem domény, kde se nachází funkce.|Yes|Není k dispozici|
+|zpětné volání – parametr-Name|Funkce jazyka JavaScript mezi doménami začíná předponou s plně kvalifikovaným názvem domény, kde se nachází funkce.|Yes|Nelze použít|
 
 ### <a name="usage"></a>Využití
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 - **Oddíly zásad:** odchozí
 - **Obory zásad:** všechny rozsahy
@@ -188,5 +189,5 @@ Další informace o práci se zásadami najdete v těchto tématech:
 
 + [Zásady v API Management](api-management-howto-policies.md)
 + [Transformační rozhraní API](transform-api.md)
-+ [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
++ [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
 + [Ukázky zásad](policy-samples.md)

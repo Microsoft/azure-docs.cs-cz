@@ -3,12 +3,12 @@ title: Horizontální navýšení nebo navýšení Service Fabric clusteru
 description: Škálujte Service Fabric clusteru v nebo v souladu s požadavky nastavením pravidel automatického škálování pro každý typ uzlu nebo sadu škálování virtuálního počítače. Přidání uzlů do clusteru Service Fabric nebo jejich odebrání
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c72f8eca9bc054446ceec35448c930098c5f81fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9393ca4531dea58859a4fc60509524e9c4a0b7f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610247"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246482"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontální snížení nebo navýšení kapacity clusteru
 
@@ -24,7 +24,7 @@ ms.locfileid: "85610247"
 Služby Virtual Machine Scale Sets jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Service Fabric, se nastaví jako samostatná sada škálování virtuálního počítače. Jednotlivé typy uzlů se pak dají škálovat nezávisle, mají otevřené různé sady portů a můžou mít různé metriky kapacity. Přečtěte si další informace o tom v dokumentu [typy Service Fabricch uzlů](service-fabric-cluster-nodetypes.md) . Vzhledem k tomu, že typy uzlů Service Fabric v clusteru jsou v rámci back-endu sady virtuálních počítačů, je třeba nastavit pravidla automatického škálování pro každý typ uzlu nebo sadu škálování virtuálního počítače.
 
 > [!NOTE]
-> Aby bylo možné přidat nové virtuální počítače, které tvoří tento cluster, musí mít vaše předplatné dostatek jader. V současné době se neprovádí ověřování modelu, takže pokud dojde k dosažení limitu kvóty, zobrazí se chyba v čase nasazení. Také jeden typ uzlu nemůže překročit 100 uzlů na VMSS. Možná budete muset přidat VMSS, abyste dosáhli cíleného škálování, a automatické škálování nemůže automaticky připínat do VMSS. Přidávání VMSS do živého clusteru je náročné, a to obvykle vede k tomu, že uživatelé zřídí nové clustery s příslušnými typy uzlů zřízenými během vytváření. podle potřeby [Naplánujte kapacitu clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) . 
+> Aby bylo možné přidat nové virtuální počítače, které tvoří tento cluster, musí mít vaše předplatné dostatek jader. V současné době se neprovádí ověřování modelu, takže pokud dojde k dosažení limitu kvóty, zobrazí se chyba v čase nasazení. Také jeden typ uzlu nemůže překročit 100 uzlů na VMSS. Možná budete muset přidat VMSS, abyste dosáhli cíleného škálování, a automatické škálování nemůže automaticky připínat do VMSS. Přidávání VMSS do živého clusteru je náročné, a to obvykle vede k tomu, že uživatelé zřídí nové clustery s příslušnými typy uzlů zřízenými během vytváření. podle potřeby [Naplánujte kapacitu clusteru](./service-fabric-cluster-capacity.md) . 
 > 
 > 
 
@@ -52,7 +52,7 @@ Funkce automatického škálování se v současné době neřídí načtenými 
 Podle těchto pokynů [nastavte automatické škálování pro jednotlivé sady škálování virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 > [!NOTE]
-> V měřítku ve scénáři, pokud váš typ uzlu nemá [úroveň odolnosti][durability] Gold nebo stříbrné, je nutné volat [rutinu Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) s odpovídajícím názvem uzlu. Pro bronzovou odolnost se nedoporučuje škálovat ve více než jednom uzlu současně.
+> V měřítku ve scénáři, pokud váš typ uzlu nemá [úroveň odolnosti][durability] Gold nebo stříbrné, je nutné volat [rutinu Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) s odpovídajícím názvem uzlu. Pro bronzovou odolnost se nedoporučuje škálovat ve více než jednom uzlu současně.
 > 
 > 
 
@@ -229,7 +229,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Chování, která můžete sledovat v Service Fabric Explorer
-Při horizontálním navýšení kapacity clusteru bude Service Fabric Explorer odpovídat počtu uzlů (instance sady škálování virtuálních počítačů), které jsou součástí clusteru.  Při škálování clusteru v ale uvidíte, že odebraný uzel/instance virtuálního počítače se zobrazí ve stavu není v pořádku, pokud nebudete volat příkaz [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) s příslušným názvem uzlu.   
+Při horizontálním navýšení kapacity clusteru bude Service Fabric Explorer odpovídat počtu uzlů (instance sady škálování virtuálních počítačů), které jsou součástí clusteru.  Při škálování clusteru v ale uvidíte, že odebraný uzel/instance virtuálního počítače se zobrazí ve stavu není v pořádku, pokud nebudete volat příkaz [Remove-ServiceFabricNodeState cmd](/powershell/module/servicefabric/remove-servicefabricnodestate) s příslušným názvem uzlu.   
 
 Zde je vysvětlení tohoto chování.
 
@@ -240,7 +240,7 @@ Abyste se ujistili, že je uzel odebraný při odebrání virtuálního počíta
 1. Vyberte úroveň životnosti Gold nebo stříbrného pro typy uzlů v clusteru, což vám umožní integraci infrastruktury. Tím se pak po horizontálním navýšení kapacity budou automaticky odebírat uzly ze stavu FM (System Services).
 Tady najdete [Podrobnosti o úrovních trvanlivosti](service-fabric-cluster-capacity.md) .
 
-2. Po škálování instance virtuálního počítače v nástroji je potřeba zavolat [rutinu Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate).
+2. Po škálování instance virtuálního počítače v nástroji je potřeba zavolat [rutinu Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate).
 
 > [!NOTE]
 > Clustery Service Fabric vyžadují, aby určitý počet uzlů byl neustále v čase, aby bylo možné zachovat dostupnost a zachovat stav – označuje se jako Údržba kvora. Proto je obvykle bezpečné vypnout všechny počítače v clusteru, pokud jste nejprve neprováděli [úplné zálohování vašeho stavu](service-fabric-reliable-services-backup-restore.md).

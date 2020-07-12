@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f473b70d260c552dc67d00715b6ee4bc56b670e0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259469"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246550"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Popište Cluster Service Fabric pomocí Správce prostředků clusteru.
 Funkce Správce prostředků clusteru v Azure Service Fabric poskytuje několik mechanismů pro popis clusteru:
@@ -35,7 +36,7 @@ V prostředí Azure Service Fabric používá informace o doméně selhání pos
 > [!WARNING]
 > Je důležité, aby informace o doméně selhání uvedené Service Fabric byly přesné. Řekněme například, že uzly clusteru Service Fabric běží v 10 virtuálních počítačích, které běží na 5 fyzických hostitelích. V takovém případě i v případě, že existuje 10 virtuálních počítačů, existují pouze 5 různých (nejvyšší úroveň) domén selhání. Sdílení stejného fyzického hostitele způsobí, že virtuální počítače budou sdílet stejnou kořenovou doménu selhání, protože při selhání fyzického hostitele dojde k koordinované chybě virtuálních počítačů.  
 >
-> Service Fabric očekává, že se doména selhání uzlu nemění. Další mechanismy zajištění vysoké dostupnosti virtuálních počítačů, jako jsou [ha-VM](https://technet.microsoft.com/library/cc967323.aspx), můžou způsobit konflikty s Service Fabric. Tyto mechanismy využívají transparentní migraci virtuálních počítačů z jednoho hostitele do druhého. Neprovádí překonfigurování nebo upozorňování běžícího kódu uvnitř virtuálního počítače. V takovém případě *nejsou podporované* jako prostředí pro spouštění Service Fabricch clusterů. 
+> Service Fabric očekává, že se doména selhání uzlu nemění. Další mechanismy zajištění vysoké dostupnosti virtuálních počítačů, jako jsou [ha-VM](/previous-versions/system-center/virtual-machine-manager-2008-r2/cc967323(v=technet.10)), můžou způsobit konflikty s Service Fabric. Tyto mechanismy využívají transparentní migraci virtuálních počítačů z jednoho hostitele do druhého. Neprovádí překonfigurování nebo upozorňování běžícího kódu uvnitř virtuálního počítače. V takovém případě *nejsou podporované* jako prostředí pro spouštění Service Fabricch clusterů. 
 >
 > Service Fabric by měla být jediná technologie s vysokou dostupností, která je zaměstnaná. Mechanismy jako migrace živých virtuálních počítačů a San nejsou nutné. Pokud se tyto mechanismy používají ve spojení s Service Fabric, _omezují_ dostupnost a spolehlivost aplikace. Důvodem je, že zavádějí další složitost, dodávají centralizované zdroje selhání a využívají strategie spolehlivosti a dostupnosti, které jsou v konfliktu s nástroji Service Fabric. 
 >
@@ -236,7 +237,7 @@ Pokud je v předchozím rozložení hodnota **TargetReplicaSetSize** 5 a N1 z cl
 
 |  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |Není k dispozici |Není k dispozici |Není k dispozici |Není k dispozici |Není k dispozici |Není k dispozici |
+| **UD0** |Nelze použít |Nelze použít |Nelze použít |Nelze použít |Nelze použít |Nelze použít |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |

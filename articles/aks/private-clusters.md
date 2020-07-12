@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 6/18/2020
-ms.openlocfilehash: ebbe2f754aa70c6c65ec7016da29a4a1b0bd7dd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c788f2009bdc771bcdde20d1c3dbe9eafdbcffcb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374521"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244221"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -17,7 +17,7 @@ V privátním clusteru má Řídicí rovina nebo Server rozhraní API interní I
 
 Rovina ovládacího prvku nebo Server API se nachází v předplatném Azure spravovaném službou Azure Kubernetes (AKS). Cluster nebo fond uzlů zákazníka je v předplatném zákazníka. Server a cluster nebo fond uzlů můžou vzájemně komunikovat prostřednictvím [služby privátního propojení Azure][private-link-service] ve virtuální síti serveru API a privátního koncového bodu, který je vystavený v PODSÍTI clusteru AKS zákazníka.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure CLI verze 2.2.0 nebo novější
 
@@ -67,7 +67,7 @@ Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. Pokud chc
 
 Nejjednodušší možností je vytvoření virtuálního počítače ve stejné virtuální síti jako cluster AKS.  Expresní směrování a sítě VPN přidávají náklady a vyžadují další složitost sítě.  Partnerský vztah virtuálních sítí vyžaduje, abyste naplánovali rozsahy směrování sítě, aby se zajistilo, že se překrývají rozsahy.
 
-## <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
+## <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
 
 Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze způsobů, jak získat přístup k privátnímu clusteru. Pokud chcete použít partnerský vztah virtuálních sítí, musíte nastavit propojení mezi virtuální sítí a privátní zónou DNS.
     
@@ -83,7 +83,7 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>Střed a Paprskový s vlastním DNS
 
-[Architektury hub a paprsků](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se běžně používají k nasazení sítí v Azure. V mnoha těchto nasazeních jsou nastavení DNS v paprskovém virtuální sítě nakonfigurovaná tak, aby odkazovala na centrální službu DNS pro překládání, aby bylo možné místní a řešení DNS založené na Azure. Při nasazování clusteru AKS do takového síťového prostředí se musí vzít v úvahu několik zvláštních hledisek, které je potřeba vzít v úvahu.
+[Architektury hub a paprsků](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) se běžně používají k nasazení sítí v Azure. V mnoha těchto nasazeních jsou nastavení DNS v paprskovém virtuální sítě nakonfigurovaná tak, aby odkazovala na centrální službu DNS pro překládání, aby bylo možné místní a řešení DNS založené na Azure. Při nasazování clusteru AKS do takového síťového prostředí se musí vzít v úvahu několik zvláštních hledisek, které je potřeba vzít v úvahu.
 
 ![Centrum privátních clusterů a paprskový](media/private-clusters/aks-private-hub-spoke.png)
 
@@ -116,9 +116,9 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: /azure/private-link/private-link-service-overview#limitations
+[private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-[devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
+[devops-agents]: /azure/devops/pipelines/agents/agents?view=azure-devops
 [availability-zones]: availability-zones.md

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 5b17b7784691cdf38c45e4f306b2ed14b981a2d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3843ff986fdc37c37690bee9616861f16a334c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751264"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243728"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady služby API Management
 
@@ -38,7 +38,7 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 -   [Nastavit metodu žádosti](#SetRequestMethod) – umožňuje změnit metodu HTTP pro požadavek.
 -   [Nastavit stavový kód](#SetStatus) – změní stavový kód HTTP na zadanou hodnotu.
 -   [Nastavení proměnné](api-management-advanced-policies.md#set-variable) – uchovává hodnotu v pojmenované [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné pro pozdější přístup.
--   [Trasování](#Trace) – přidá vlastní trasování do výstupu [kontroly rozhraní API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) Application Insights telemetrií a protokoly prostředků.
+-   [Trasování](#Trace) – přidá vlastní trasování do výstupu [kontroly rozhraní API](./api-management-howto-api-inspector.md) Application Insights telemetrií a protokoly prostředků.
 -   [Wait](#Wait) -čeká na uzavřenou [žádost o odeslání](api-management-advanced-policies.md#SendRequest), před pokračováním [Získá hodnotu z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey)nebo zásady [toku řízení](api-management-advanced-policies.md#choose) .
 
 ## <a name="control-flow"></a><a name="choose"></a>Tok řízení
@@ -126,7 +126,7 @@ Tento příklad ukazuje, jak provést filtrování obsahu odebráním datových 
 
 ### <a name="elements"></a>Elementy
 
-| Prvek   | Description                                                                                                                                                                                                                                                               | Vyžadováno |
+| Element   | Popis                                                                                                                                                                                                                                                               | Vyžadováno |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | výběrem    | Kořenový element.                                                                                                                                                                                                                                                             | Yes      |
 | Kdy      | Podmínka, která se má použít pro `if` části nebo pro tyto `ifelse` `choose` zásady. Pokud `choose` má zásada více `when` oddílů, vyhodnotí se postupně. Po `condition` vyhodnocování prvku, který je vyhodnocen `true` , se `when` nevyhodnotí žádné další podmínky. | Yes      |
@@ -140,7 +140,7 @@ Tento příklad ukazuje, jak provést filtrování obsahu odebráním datových 
 
 ### <a name="usage"></a><a name="ChooseUsage"></a>Využívání
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 
@@ -148,7 +148,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 
 ## <a name="forward-request"></a><a name="ForwardRequest"></a>Dopředný požadavek
 
-`forward-request`Zásada předává příchozí požadavek do back-end služby zadané v [kontextu](api-management-policy-expressions.md#ContextVariables)požadavku. Adresa URL back-end služby je zadaná v [Nastavení](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) rozhraní API a dá se změnit pomocí [nastavení zásady back-end služby](api-management-transformation-policies.md) .
+`forward-request`Zásada předává příchozí požadavek do back-end služby zadané v [kontextu](api-management-policy-expressions.md#ContextVariables)požadavku. Adresa URL back-end služby je zadaná v [Nastavení](./import-and-publish.md) rozhraní API a dá se změnit pomocí [nastavení zásady back-end služby](api-management-transformation-policies.md) .
 
 > [!NOTE]
 > Výsledkem odebrání této zásady je, že žádost není předávána do back-endové služby a zásady v odchozím oddílu se vyhodnocují okamžitě po úspěšném dokončení zásad v části příchozí.
@@ -244,7 +244,7 @@ Tato zásada na úrovni operace nepředávají požadavky do back-endové služb
 
 ### <a name="elements"></a>Elementy
 
-| Prvek         | Description   | Vyžadováno |
+| Element         | Popis   | Vyžadováno |
 | --------------- | ------------- | -------- |
 | dopředné žádosti | Kořenový element. | Yes      |
 
@@ -252,14 +252,14 @@ Tato zásada na úrovni operace nepředávají požadavky do back-endové služb
 
 | Atribut                                     | Popis                                                                                                                                                                                                                                                                                                    | Vyžadováno | Výchozí |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| timeout = "Integer"                             | Doba v sekundách, po kterou se má čekat na vrácení hlaviček odpovědí HTTP službou back-end, než dojde k vygenerování chyby časového limitu. Minimální hodnota je 0 sekund. Hodnoty větší než 240 sekund nemusí být dodrženy, protože podkladová síťová infrastruktura může po uplynutí této doby zrušit nečinné připojení. | No       | Žádná    |
+| timeout = "Integer"                             | Doba v sekundách, po kterou se má čekat na vrácení hlaviček odpovědí HTTP službou back-end, než dojde k vygenerování chyby časového limitu. Minimální hodnota je 0 sekund. Hodnoty větší než 240 sekund nemusí být dodrženy, protože podkladová síťová infrastruktura může po uplynutí této doby zrušit nečinné připojení. | No       | Žádné    |
 | následné přesměrování = "false &#124; true"          | Určuje, jestli je následováno přesměrování ze služby back-end, nebo se vrátí volajícímu.                                                                                                                                                                                                    | No       | false (nepravda)   |
 | buffer-Request-body = "false &#124; true"       | Pokud je hodnota nastavená na "true", uloží se do vyrovnávací paměti a při [opakovaném pokusu](api-management-advanced-policies.md#Retry)se znovu použije.                                                                                                                                                                                               | No       | false (nepravda)   |
 | selhání-On-Error-Status-Code = "false &#124; true" | Pokud je nastavená hodnota true Triggers [On-Error](api-management-error-handling-policies.md) , pro kódy odpovědí v rozsahu od 400 do 599 včetně.                                                                                                                                                                      | No       | false (nepravda)   |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** back-end
 -   **Obory zásad:** všechny rozsahy
@@ -296,7 +296,7 @@ Následující příklad ukazuje, jak omezit počet požadavků předaných do b
 
 ### <a name="elements"></a>Elementy
 
-| Prvek           | Description   | Vyžadováno |
+| Element           | Popis   | Vyžadováno |
 | ----------------- | ------------- | -------- |
 | limit – souběžnost | Kořenový element. | Yes      |
 
@@ -304,12 +304,12 @@ Následující příklad ukazuje, jak omezit počet požadavků předaných do b
 
 | Atribut | Popis                                                                                        | Vyžadováno | Výchozí |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| key       | Řetězec. Výraz je povolený. Určuje rozsah souběžnosti. Může být sdíleno více zásadami. | Yes      | Není k dispozici     |
-| max – počet | Celé číslo Určuje maximální počet požadavků, které mají povolené zadání těchto zásad.           | Yes      | Není k dispozici     |
+| key       | Řetězec. Výraz je povolený. Určuje rozsah souběžnosti. Může být sdíleno více zásadami. | Yes      | Nelze použít     |
+| max – počet | Celé číslo Určuje maximální počet požadavků, které mají povolené zadání těchto zásad.           | Yes      | Nelze použít     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 
@@ -320,7 +320,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 `log-to-eventhub`Zásada odesílá zprávy v zadaném formátu do centra událostí, které definuje entita protokolovacího nástroje. Jak název naznačuje, zásada se používá k uložení vybraných informací o kontextu požadavku nebo odpovědi pro online nebo offline analýzu.
 
 > [!NOTE]
-> Podrobný průvodce konfigurací centra událostí a událostí protokolování najdete v tématu [postup protokolu API Managementch událostí pomocí Azure Event Hubs](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/).
+> Podrobný průvodce konfigurací centra událostí a událostí protokolování najdete v tématu [postup protokolu API Managementch událostí pomocí Azure Event Hubs](./api-management-howto-log-event-hubs.md).
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -349,7 +349,7 @@ Libovolný řetězec se dá použít jako hodnota, která se má Event Hubs při
 
 ### <a name="elements"></a>Elementy
 
-| Prvek         | Description                                                                     | Vyžadováno |
+| Element         | Popis                                                                     | Vyžadováno |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
 | přihlášení k centru událostí | Kořenový element. Hodnota tohoto prvku je řetězec, který se má protokolovat do centra událostí. | Yes      |
 
@@ -363,7 +363,7 @@ Libovolný řetězec se dá použít jako hodnota, která se má Event Hubs při
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 
@@ -394,7 +394,7 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>Elementy
 
-| Prvek       | Description   | Vyžadováno |
+| Element       | Popis   | Vyžadováno |
 | ------------- | ------------- | -------- |
 | Maketa – odezva | Kořenový element. | Yes      |
 
@@ -403,11 +403,11 @@ status code and media type. If no example or schema found, the content is empty.
 | Atribut    | Popis                                                                                           | Vyžadováno | Výchozí |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | Stavový kód  | Určuje kód stavu odpovědi a používá se k výběru odpovídajícího příkladu nebo schématu.                 | No       | 200     |
-| typ obsahu | Určuje `Content-Type` hodnotu hlavičky odpovědi a používá se k výběru odpovídajícího příkladu nebo schématu. | No       | Žádná    |
+| typ obsahu | Určuje `Content-Type` hodnotu hlavičky odpovědi a používá se k výběru odpovídajícího příkladu nebo schématu. | No       | Žádné    |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, zapnutá chyba
 
@@ -453,7 +453,7 @@ V následujícím příkladu se znovu pokusí o předávání požadavků až de
 
 ### <a name="elements"></a>Elementy
 
-| Prvek | Description                                                         | Vyžadováno |
+| Element | Popis                                                         | Vyžadováno |
 | ------- | ------------------------------------------------------------------- | -------- |
 | retry   | Kořenový element. Může obsahovat jakékoli jiné zásady jako své podřízené prvky. | Yes      |
 
@@ -461,11 +461,11 @@ V následujícím příkladu se znovu pokusí o předávání požadavků až de
 
 | Atribut        | Popis                                                                                                                                           | Vyžadováno | Výchozí |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| pomocné        | Logický literál nebo [výraz](api-management-policy-expressions.md) určující, zda mají být pokusy o opakování zastaveny ( `false` ) nebo pokračování ( `true` ).      | Yes      | Není k dispozici     |
-| count            | Kladné číslo určující maximální počet opakovaných pokusů o opakování.                                                                                | Yes      | Není k dispozici     |
-| interval         | Kladné číslo v sekundách, které určuje interval čekání mezi pokusy o opakování.                                                                 | Yes      | Není k dispozici     |
-| Max – interval     | Kladné číslo v sekundách, které určuje maximální interval čekání mezi pokusy o opakování. Slouží k implementaci algoritmu exponenciálního opakování. | No       | Není k dispozici     |
-| rozdíl            | Kladné číslo v sekundách, které určuje přírůstek intervalu čekání. Slouží k implementaci algoritmů lineárního a exponenciálního opakování.             | No       | Není k dispozici     |
+| pomocné        | Logický literál nebo [výraz](api-management-policy-expressions.md) určující, zda mají být pokusy o opakování zastaveny ( `false` ) nebo pokračování ( `true` ).      | Yes      | Nelze použít     |
+| count            | Kladné číslo určující maximální počet opakovaných pokusů o opakování.                                                                                | Yes      | Nelze použít     |
+| interval         | Kladné číslo v sekundách, které určuje interval čekání mezi pokusy o opakování.                                                                 | Yes      | Nelze použít     |
+| Max – interval     | Kladné číslo v sekundách, které určuje maximální interval čekání mezi pokusy o opakování. Slouží k implementaci algoritmu exponenciálního opakování. | No       | Nelze použít     |
+| rozdíl            | Kladné číslo v sekundách, které určuje přírůstek intervalu čekání. Slouží k implementaci algoritmů lineárního a exponenciálního opakování.             | No       | Nelze použít     |
 | First – Fast – opakování | Pokud je nastavená na `true` , první pokus o opakování proběhne okamžitě.                                                                                  | No       | `false` |
 
 > [!NOTE]
@@ -475,7 +475,7 @@ V následujícím příkladu se znovu pokusí o předávání požadavků až de
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) zásad. Všimněte si, že tato zásada zdědí omezení použití podřízených zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes) zásad. Všimněte si, že tato zásada zdědí omezení použití podřízených zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 
@@ -510,7 +510,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 
 ### <a name="elements"></a>Elementy
 
-| Prvek         | Description                                                                               | Vyžadováno |
+| Element         | Popis                                                                               | Vyžadováno |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
 | návrat – odpověď | Kořenový element.                                                                             | Yes      |
 | Set – hlavička      | Příkaz zásad [pro záhlaví sady](api-management-transformation-policies.md#SetHTTPheader) | No       |
@@ -525,7 +525,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 
@@ -550,7 +550,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 
 ### <a name="example"></a>Příklad
 
-Tato ukázková zásada ukazuje příklad použití `send-one-way-request` zásady k odeslání zprávy do chatovací místnosti časové rezervy, pokud je kód odpovědi HTTP větší nebo roven 500. Další informace o této ukázce najdete v tématu [použití externích služeb ze služby Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Tato ukázková zásada ukazuje příklad použití `send-one-way-request` zásady k odeslání zprávy do chatovací místnosti časové rezervy, pokud je kód odpovědi HTTP větší nebo roven 500. Další informace o této ukázce najdete v tématu [použití externích služeb ze služby Azure API Management](./api-management-sample-send-request.md).
 
 ```xml
 <choose>
@@ -580,7 +580,7 @@ Tato ukázková zásada ukazuje příklad použití `send-one-way-request` zása
 
 ### <a name="elements"></a>Elementy
 
-| Prvek                    | Description                                                                                                 | Vyžadováno                        |
+| Element                    | Popis                                                                                                 | Vyžadováno                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | Send – One-Way – požadavek       | Kořenový element.                                                                                               | Yes                             |
 | url                        | Adresa URL požadavku                                                                                     | Žádný režim if = kopírovat; v opačném případě ano. |
@@ -594,12 +594,12 @@ Tato ukázková zásada ukazuje příklad použití `send-one-way-request` zása
 | Atribut     | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Vyžadováno | Výchozí  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "řetězec" | Určuje, zda se jedná o nový požadavek nebo o kopii aktuálního požadavku. V režimu odchozího připojení neinicializuje režim = Copy Text žádosti.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | Nová      |
-| name          | Určuje název hlavičky, který se má nastavit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Yes      | Není k dispozici      |
+| name          | Určuje název hlavičky, který se má nastavit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Yes      | Nelze použít      |
 | Existuje – akce | Určuje akci, která se má provést, když je hlavička již zadána. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override – nahradí hodnotu existujícího záhlaví.<br />-Skip – nenahradí stávající hodnotu záhlaví.<br />-Append – připojí hodnotu k existující hodnotě záhlaví.<br />-Delete – Odebere hlavičku z požadavku.<br /><br /> Pokud je nastavená na `override` zařazení více položek se stejným názvem, v záhlaví se nastaví podle všech záznamů (které se budou zobrazovat víckrát). ve výsledku se nastaví jenom uvedené hodnoty. | No       | override |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 
@@ -625,7 +625,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 
 ### <a name="example"></a>Příklad
 
-Tento příklad ukazuje jeden ze způsobů, jak ověřit token odkazu pomocí autorizačního serveru. Další informace o této ukázce najdete v tématu [použití externích služeb ze služby Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Tento příklad ukazuje jeden ze způsobů, jak ověřit token odkazu pomocí autorizačního serveru. Další informace o této ukázce najdete v tématu [použití externích služeb ze služby Azure API Management](./api-management-sample-send-request.md).
 
 ```xml
 <inbound>
@@ -664,7 +664,7 @@ Tento příklad ukazuje jeden ze způsobů, jak ověřit token odkazu pomocí au
 
 ### <a name="elements"></a>Elementy
 
-| Prvek                    | Description                                                                                                 | Vyžadováno                        |
+| Element                    | Popis                                                                                                 | Vyžadováno                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | Odeslat požadavek               | Kořenový element.                                                                                               | Yes                             |
 | url                        | Adresa URL požadavku                                                                                     | Žádný režim if = kopírovat; v opačném případě ano. |
@@ -678,15 +678,15 @@ Tento příklad ukazuje jeden ze způsobů, jak ověřit token odkazu pomocí au
 | Atribut                       | Popis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Vyžadováno | Výchozí  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "řetězec"                   | Určuje, zda se jedná o nový požadavek nebo o kopii aktuálního požadavku. V režimu odchozího připojení neinicializuje režim = Copy Text žádosti.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | No       | Nová      |
-| Response-Variable-Name = "String" | Název kontextové proměnné, která bude přijímat objekt Response. Pokud proměnná neexistuje, vytvoří se po úspěšném spuštění zásady a zpřístupní se prostřednictvím [`context.Variable`](api-management-policy-expressions.md#ContextVariables) kolekce.                                                                                                                                                                                                                                                                                                                          | Yes      | Není k dispozici      |
+| Response-Variable-Name = "String" | Název kontextové proměnné, která bude přijímat objekt Response. Pokud proměnná neexistuje, vytvoří se po úspěšném spuštění zásady a zpřístupní se prostřednictvím [`context.Variable`](api-management-policy-expressions.md#ContextVariables) kolekce.                                                                                                                                                                                                                                                                                                                          | Yes      | Nelze použít      |
 | timeout = "Integer"               | Časový limit v sekundách, po kterém se volání adresy URL nezdařila.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | No       | 60       |
 | ignorovat – chyba                    | V případě hodnoty true a výsledkem požadavku dojde k chybě:<br /><br /> -Pokud byla zadána hodnota Response-Variable-Name, bude obsahovat hodnotu null.<br />-Pokud nebyl zadán parametr Response-Variable-Name, je to kontext. Požadavek nebude aktualizován.                                                                                                                                                                                                                                                                                                                                                                                   | No       | false (nepravda)    |
-| name                            | Určuje název hlavičky, který se má nastavit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Yes      | Není k dispozici      |
+| name                            | Určuje název hlavičky, který se má nastavit.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Yes      | Nelze použít      |
 | Existuje – akce                   | Určuje akci, která se má provést, když je hlavička již zadána. Tento atribut musí mít jednu z následujících hodnot.<br /><br /> -override – nahradí hodnotu existujícího záhlaví.<br />-Skip – nenahradí stávající hodnotu záhlaví.<br />-Append – připojí hodnotu k existující hodnotě záhlaví.<br />-Delete – Odebere hlavičku z požadavku.<br /><br /> Pokud je nastavená na `override` zařazení více položek se stejným názvem, v záhlaví se nastaví podle všech záznamů (které se budou zobrazovat víckrát). ve výsledku se nastaví jenom uvedené hodnoty. | No       | override |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 
@@ -714,7 +714,7 @@ Poznamenejte si použití [vlastností](api-management-howto-properties.md) jako
 
 ### <a name="elements"></a>Elementy
 
-| Prvek | Description  | Vyžadováno |
+| Element | Popis  | Vyžadováno |
 | ------- | ------------ | -------- |
 | proxy   | Kořenový element | Yes      |
 
@@ -722,13 +722,13 @@ Poznamenejte si použití [vlastností](api-management-howto-properties.md) jako
 
 | Atribut         | Popis                                            | Vyžadováno | Výchozí |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
-| URL = "řetězec"      | Adresa URL proxy serveru ve formátu http://host:port .             | Yes      | Není k dispozici     |
-| username = "řetězec" | Uživatelské jméno, které se má použít k ověřování pomocí proxy serveru. | No       | Není k dispozici     |
-| Password = "řetězec" | Heslo, které se má použít pro ověřování u proxy serveru. | No       | Není k dispozici     |
+| URL = "řetězec"      | Adresa URL proxy serveru ve formátu http://host:port .             | Yes      | Nelze použít     |
+| username = "řetězec" | Uživatelské jméno, které se má použít k ověřování pomocí proxy serveru. | No       | Nelze použít     |
+| Password = "řetězec" | Heslo, které se má použít pro ověřování u proxy serveru. | No       | Nelze použít     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí
 
@@ -747,7 +747,7 @@ Tato `set-method` zásada umožňuje změnit metodu požadavku HTTP pro požadav
 
 ### <a name="example"></a>Příklad
 
-Tato ukázková zásada, která používá `set-method` zásadu, zobrazuje příklad odeslání zprávy do chatovací místnosti časové rezervy, pokud je kód odpovědi HTTP větší nebo roven 500. Další informace o této ukázce najdete v tématu [použití externích služeb ze služby Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).
+Tato ukázková zásada, která používá `set-method` zásadu, zobrazuje příklad odeslání zprávy do chatovací místnosti časové rezervy, pokud je kód odpovědi HTTP větší nebo roven 500. Další informace o této ukázce najdete v tématu [použití externích služeb ze služby Azure API Management](./api-management-sample-send-request.md).
 
 ```xml
 <choose>
@@ -777,13 +777,13 @@ Tato ukázková zásada, která používá `set-method` zásadu, zobrazuje pří
 
 ### <a name="elements"></a>Elementy
 
-| Prvek    | Description                                                       | Vyžadováno |
+| Element    | Popis                                                       | Vyžadováno |
 | ---------- | ----------------------------------------------------------------- | -------- |
 | Set – metoda | Kořenový element. Hodnota elementu určuje metodu HTTP. | Yes      |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, zapnutá chyba
 
@@ -802,7 +802,7 @@ Tyto zásady se dají použít v následujících [oddílech](https://azure.micr
 
 ### <a name="example"></a>Příklad
 
-Tento příklad ukazuje, jak vrátit odpověď 401, pokud autorizační token není platný. Další informace najdete v tématu [použití externích služeb ze služby Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/) .
+Tento příklad ukazuje, jak vrátit odpověď 401, pokud autorizační token není platný. Další informace najdete v tématu [použití externích služeb ze služby Azure API Management](./api-management-sample-send-request.md) .
 
 ```xml
 <choose>
@@ -820,7 +820,7 @@ Tento příklad ukazuje, jak vrátit odpověď 401, pokud autorizační token ne
 
 ### <a name="elements"></a>Elementy
 
-| Prvek    | Description   | Vyžadováno |
+| Element    | Popis   | Vyžadováno |
 | ---------- | ------------- | -------- |
 | nastavit stav | Kořenový element. | Yes      |
 
@@ -828,12 +828,12 @@ Tento příklad ukazuje, jak vrátit odpověď 401, pokud autorizační token ne
 
 | Atribut       | Popis                                                | Vyžadováno | Výchozí |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
-| Code = "Integer"  | Stavový kód protokolu HTTP, který se má vrátit.                            | Yes      | Není k dispozici     |
-| důvod = řetězec | Popis důvodu vrácení stavového kódu. | Yes      | Není k dispozici     |
+| Code = "Integer"  | Stavový kód protokolu HTTP, který se má vrátit.                            | Yes      | Nelze použít     |
+| důvod = řetězec | Popis důvodu vrácení stavového kódu. | Yes      | Nelze použít     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** odchozí, back-end, on-error
 -   **Obory zásad:** všechny rozsahy
@@ -858,7 +858,7 @@ Následující příklad ukazuje zásadu sady proměnných v oddílu příchozí
 
 ### <a name="elements"></a>Elementy
 
-| Prvek      | Description   | Vyžadováno |
+| Element      | Popis   | Vyžadováno |
 | ------------ | ------------- | -------- |
 | SET – proměnná | Kořenový element. | Yes      |
 
@@ -871,7 +871,7 @@ Následující příklad ukazuje zásadu sady proměnných v oddílu příchozí
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 -   **Obory zásad:** všechny rozsahy
@@ -916,9 +916,9 @@ Výrazy používané v `set-variable` zásadách musí vracet jeden z následuj�
 
 `trace`Zásada přidá vlastní trasování do výstupu kontroly rozhraní API, Application Insights telemetrií a/nebo protokoly prostředků.
 
--   Zásada přidá vlastní trasování do výstupu [inspektoru rozhraní API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) , když se aktivuje trasování, tj. `Ocp-Apim-Trace` je přítomná hlavička Request, která má nastavenou hodnotu true a `Ocp-Apim-Subscription-Key` je k dispozici Hlavička požadavku a obsahuje platný klíč, který umožňuje trasování.
--   Zásada vytvoří telemetrii [trasování](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) v Application Insights, pokud je povolená [integrace Application Insights](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) a `severity` úroveň zadaná v zásadách je vyšší nebo rovna `verbosity` úrovni určené v nastavení diagnostiky.
--   Zásada přidá do položky protokolu vlastnost, pokud je povolená možnost [protokoly prostředků](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) a úroveň závažnosti zadaná v zásadách je na nebo vyšší než úroveň podrobností uvedená v nastavení diagnostiky.
+-   Zásada přidá vlastní trasování do výstupu [inspektoru rozhraní API](./api-management-howto-api-inspector.md) , když se aktivuje trasování, tj. `Ocp-Apim-Trace` je přítomná hlavička Request, která má nastavenou hodnotu true a `Ocp-Apim-Subscription-Key` je k dispozici Hlavička požadavku a obsahuje platný klíč, který umožňuje trasování.
+-   Zásada vytvoří telemetrii [trasování](../azure-monitor/app/data-model-trace-telemetry.md) v Application Insights, pokud je povolená [integrace Application Insights](./api-management-howto-app-insights.md) a `severity` úroveň zadaná v zásadách je vyšší nebo rovna `verbosity` úrovni určené v nastavení diagnostiky.
+-   Zásada přidá do položky protokolu vlastnost, pokud je povolená možnost [protokoly prostředků](./api-management-howto-use-azure-monitor.md#activity-logs) a úroveň závažnosti zadaná v zásadách je na nebo vyšší než úroveň podrobností uvedená v nastavení diagnostiky.
 
 ### <a name="policy-statement"></a>Prohlášení o zásadách
 
@@ -942,24 +942,24 @@ Výrazy používané v `set-variable` zásadách musí vracet jeden z následuj�
 
 ### <a name="elements"></a>Elementy
 
-| Prvek  | Description                                                                                                                                          | Vyžadováno |
+| Element  | Popis                                                                                                                                          | Vyžadováno |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | trasování    | Kořenový element.                                                                                                                                        | Yes      |
 | zpráva  | Řetězec nebo výraz, který se má zaznamenat.                                                                                                                 | Yes      |
-| zprostředkovatele identity | Přidá do telemetrie [trasování](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) Application Insights vlastní vlastnost. | No       |
+| zprostředkovatele identity | Přidá do telemetrie [trasování](../azure-monitor/app/data-model-trace-telemetry.md) Application Insights vlastní vlastnost. | No       |
 
 ### <a name="attributes"></a>Atributy
 
 | Atribut | Popis                                                                                                               | Vyžadováno | Výchozí |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| source    | Řetězcové literály smysluplné pro prohlížeč trasování a určení zdroje zprávy.                                   | Yes      | Není k dispozici     |
+| source    | Řetězcové literály smysluplné pro prohlížeč trasování a určení zdroje zprávy.                                   | Yes      | Nelze použít     |
 | severity  | Určuje úroveň závažnosti trasování. Povolené hodnoty jsou `verbose` , `information` , `error` (od nejnižší po nejvyšší). | No       | Verbose |
-| name      | Název vlastnosti.                                                                                                     | Yes      | Není k dispozici     |
-| hodnota     | Hodnota vlastnosti                                                                                                    | Yes      | Není k dispozici     |
+| name      | Název vlastnosti.                                                                                                     | Yes      | Nelze použít     |
+| hodnota     | Hodnota vlastnosti                                                                                                    | Yes      | Nelze použít     |
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes) zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end, zapnutá chyba
 
@@ -1017,7 +1017,7 @@ V následujícím příkladu jsou k dispozici dvě `choose` zásady jako přím�
 
 ### <a name="elements"></a>Elementy
 
-| Prvek | Description                                                                                                   | Vyžadováno |
+| Element | Popis                                                                                                   | Vyžadováno |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
 | Počkej    | Kořenový element. Může obsahovat pouze podřízené prvky `send-request` `cache-lookup-value` a `choose` zásady. | Yes      |
 
@@ -1029,7 +1029,7 @@ V následujícím příkladu jsou k dispozici dvě `choose` zásady jako přím�
 
 ### <a name="usage"></a>Využití
 
-Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí, odchozí, back-end
 -   **Obory zásad:** všechny rozsahy
@@ -1040,5 +1040,5 @@ Další informace o práci se zásadami najdete v těchto tématech:
 
 -   [Zásady v API Management](api-management-howto-policies.md)
 -   [Výrazy zásad](api-management-policy-expressions.md)
--   [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
+-   [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
 -   [Ukázky zásad](policy-samples.md)

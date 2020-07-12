@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b8f97bb27b3eb45c731b20ad51e35fde9b6a394a
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126892"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242963"
 ---
 # <a name="api-management-policy-samples"></a>Ukázky zásad API Managementu
 
@@ -34,7 +34,7 @@ ms.locfileid: "85126892"
 | [Autorizace požadavků na používání externího objektu Authorizer](./authorize-request-using-external-authorizer.md)                                                   | Ukazuje, jak používat externí objekt Authorizer pro zabezpečení přístupu API.                                                                                                                                                               |
 | [Autorizace přístupu pomocí tokenu Google OAuth](./use-google-as-oauth-token-provider.md)                                            | Ukazuje, jak autorizovat přístup k vašim koncovým bodům s využitím Googlu jako poskytovatele tokenu OAuth.                                                                                                                                    |
 | [Filtrování IP adres při použití služby Application Gateway](./filter-ip-addresses-when-using-appgw.md) | Ukazuje, jak filtrovat IP adresy v zásadách, pokud se k instanci API Managementu přistupuje prostřednictvím služby Application Gateway.
-| [Vygenerování sdíleného přístupového podpisu a předání požadavku do úložiště Azure](./generate-shared-access-signature.md)                  | Ukazuje, jak vygenerovat [sdílený přístupový podpis](../../storage/storage-dotnet-shared-access-signature-part-1.md) pomocí výrazů a předat požadavek do úložiště Azure se zásadami rewrite-uri. |
+| [Vygenerování sdíleného přístupového podpisu a předání požadavku do úložiště Azure](./generate-shared-access-signature.md)                  | Ukazuje, jak vygenerovat [sdílený přístupový podpis](../../storage/common/storage-sas-overview.md) pomocí výrazů a předat požadavek do úložiště Azure se zásadami rewrite-uri. |
 | [Získání tokenu přístupu OAuth2 z AAD a jeho předání do back-endu](./use-oauth2-for-authorization.md)                             | Poskytuje příklad použití OAuth2 k autorizaci mezi bránou a back-endem. Ukazuje, jak získat token přístupu z AAD a předat ho do back-endu.                                                    |
 | [Získání tokenu X-CSRF z brány SAP pomocí zásad odeslání žádosti](./get-x-csrf-token-from-sap-gateway.md)                           | Ukazuje, jak implementovat vzor X-CSRF používaný mnoho rozhraními API. Tento příklad je konkrétně pro bránu SAP.                                                                                                                           |
 | [Směrování požadavku na základě velikosti jeho obsahu](./route-requests-based-on-size.md)                                            | Ukazuje, jak směrovat požadavky na základě velikosti jejich obsahu.                                                                                                                                                       |

@@ -5,11 +5,12 @@ author: alexwun
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: c3395248188c2a16736cfc8cea262fe163a6944b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fc0239dd18fc7071823a129a7dbc4f102023d66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645663"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246192"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Principy nastavení ImageStoreConnectionString
 
@@ -37,7 +38,7 @@ Namísto služby Image Store pro místní clustery s jedním box se při vývoji
 
 Kromě toho není třeba poskytovatele systému souborů nebo poskytovatel Azure Storage použít jako metodu sdílení Image Store mezi několika clustery – to bude mít za následek poškození dat konfigurace clusteru, protože každý cluster může do Image Store zapisovat konfliktní data. Chcete-li sdílet zřízené balíčky aplikací mezi několika clustery, použijte místo toho soubory [sfpkg][12] , které lze odeslat do libovolného externího úložiště s identifikátorem URI pro stažení.
 
-Takže i když je ImageStoreConnectionString konfigurovatelné, stačí použít výchozí nastavení. Při publikování do Azure pomocí sady Visual Studio se parametr automaticky nastaví za vás. Pro programové nasazení do clusterů hostovaných v Azure je připojovací řetězec vždy "Fabric: úložiště bitových kopií". I když v nejistých případech může být jeho hodnota vždy ověřena načtením manifestu clusteru pomocí [PowerShellu](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)nebo [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Místní testovací i produkční clustery by měly být vždy nakonfigurované na používání poskytovatele Image Store služby.
+Takže i když je ImageStoreConnectionString konfigurovatelné, stačí použít výchozí nastavení. Při publikování do Azure pomocí sady Visual Studio se parametr automaticky nastaví za vás. Pro programové nasazení do clusterů hostovaných v Azure je připojovací řetězec vždy "Fabric: úložiště bitových kopií". I když v nejistých případech může být jeho hodnota vždy ověřena načtením manifestu clusteru pomocí [PowerShellu](/powershell/module/servicefabric/get-servicefabricclustermanifest), [.NET](/previous-versions/azure/reference/mt161375(v=azure.100))nebo [REST](/rest/api/servicefabric/get-a-cluster-manifest). Místní testovací i produkční clustery by měly být vždy nakonfigurované na používání poskytovatele Image Store služby.
 
 ### <a name="next-steps"></a>Další kroky
 [Nasazení a odebrání aplikací pomocí PowerShellu][10]

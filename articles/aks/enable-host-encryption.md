@@ -4,12 +4,12 @@ description: Naučte se konfigurovat šifrování založené na hostiteli v clus
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 6f145750ac9158c0184ac9d4d6c303828ee5bdf4
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7b9d930d62d0acea30af9b5e7e12e43fa8fcd5da
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225148"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244306"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Šifrování založené na hostiteli ve službě Azure Kubernetes (AKS) (Preview)
 
@@ -103,7 +103,7 @@ Pokud chcete vytvořit nové fondy uzlů bez funkce šifrování založené na h
 
 ## <a name="next-steps"></a>Další kroky
 
-Projděte si [osvědčené postupy zabezpečení clusteru AKS][best-practices-security] . Další informace o [šifrování na základě hostitele](/azure/virtual-machines/linux/disk-encryption#host-based-encryption).
+Projděte si [osvědčené postupy zabezpečení clusteru AKS][best-practices-security] . Další informace o [šifrování na základě hostitele](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
 
 <!-- LINKS - external -->
@@ -111,9 +111,9 @@ Projděte si [osvědčené postupy zabezpečení clusteru AKS][best-practices-se
 <!-- LINKS - internal -->
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[best-practices-security]: /azure/aks/operator-best-practices-cluster-security
-[supported-regions]: /azure/virtual-machines/linux/disk-encryption#supported-regions
-[supported-sizes]: /azure/virtual-machines/linux/disk-encryption#supported-vm-sizes
+[best-practices-security]: ./operator-best-practices-cluster-security.md
+[supported-regions]: ../virtual-machines/linux/disk-encryption.md#supported-regions
+[supported-sizes]: ../virtual-machines/linux/disk-encryption.md#supported-vm-sizes
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list

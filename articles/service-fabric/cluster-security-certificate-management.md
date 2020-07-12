@@ -4,11 +4,12 @@ description: Přečtěte si o správě certifikátů v clusteru Service Fabric z
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324738"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246703"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Správa certifikátů v Service Fabric clusterech
 
@@ -75,8 +76,8 @@ Tyto kroky jsou popsané níže. Všimněte si rozdílů mezi zřizováním cert
 ![Zřizování certifikátů deklarované běžným názvem subjektu][Image2]
 
 ### <a name="certificate-enrollment"></a>Zápis certifikátu
-Toto téma je podrobně popsáno v [dokumentaci](../key-vault/create-certificate.md)Key Vault. pro zajištění kontinuity a snazšího odkazování obsahujeme stručný přehled. V rámci Azure jako kontextu a používání Azure Key Vault jako služby pro správu tajných kódů musí mít autorizovaný žadatel o certifikát aspoň oprávnění pro správu certifikátů v trezoru, kterou udělí vlastník trezoru. Žadatel se pak zaregistruje do certifikátu následujícím způsobem:
-    - vytvoří zásadu certifikátu v Azure Key Vault (integrace), která určuje doménu/předmět certifikátu, požadovaný Vystavitel, typ a délku klíče, zamýšlené použití klíče a další informace. Podrobnosti najdete [v tématu certifikáty v Azure Key Vault](../key-vault/certificate-scenarios.md) . 
+Toto téma je podrobně popsáno v [dokumentaci](../key-vault/certificates/create-certificate.md)Key Vault. pro zajištění kontinuity a snazšího odkazování obsahujeme stručný přehled. V rámci Azure jako kontextu a používání Azure Key Vault jako služby pro správu tajných kódů musí mít autorizovaný žadatel o certifikát aspoň oprávnění pro správu certifikátů v trezoru, kterou udělí vlastník trezoru. Žadatel se pak zaregistruje do certifikátu následujícím způsobem:
+    - vytvoří zásadu certifikátu v Azure Key Vault (integrace), která určuje doménu/předmět certifikátu, požadovaný Vystavitel, typ a délku klíče, zamýšlené použití klíče a další informace. Podrobnosti najdete [v tématu certifikáty v Azure Key Vault](../key-vault/certificates/certificate-scenarios.md) . 
     - vytvoří certifikát ve stejném trezoru se zásadami uvedenými výše. Tím se pak vygeneruje dvojice klíčů jako objekty trezoru, žádost o podepsání certifikátu podepsaná privátním klíčem, která se pak předává určenému vydavateli k podepsání.
     - po odpovědi vystavitele (certifikační autorita) k podepsanému certifikátu se výsledek sloučí do trezoru a certifikát je k dispozici pro následující operace:
       - v části {vaultUri}/Certificates/{Name}: certifikát, včetně veřejného klíče a metadat
@@ -209,7 +210,7 @@ Jak už bylo zmíněno dříve, certifikát zřízený jako tajný klíč sady v
 
 Všechny další výňatky by měly být nasazené concomitantly – jsou uvedeny jednotlivě pro analýzu a vysvětlení přehrávání.
 
-Nejdřív definujte identitu přiřazenou uživatelem (výchozí hodnoty jsou zahrnuté jako příklady) – Podívejte se na [oficiální dokumentaci](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity) , kde najdete informace o aktuálním stavu:
+Nejdřív definujte identitu přiřazenou uživatelem (výchozí hodnoty jsou zahrnuté jako příklady) – Podívejte se na [oficiální dokumentaci](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity) , kde najdete informace o aktuálním stavu:
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -240,7 +241,7 @@ Nejdřív definujte identitu přiřazenou uživatelem (výchozí hodnoty jsou za
   ]}
 ```
 
-Pak této identitě udělte přístup k tajným tajným klíčům – informace o aktuálních informacích najdete v [oficiální dokumentaci](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy) :
+Pak této identitě udělte přístup k tajným tajným klíčům – informace o aktuálních informacích najdete v [oficiální dokumentaci](/rest/api/keyvault/vaults/updateaccesspolicy) :
 ```json
   "resources":
   [{
@@ -265,7 +266,7 @@ Pak této identitě udělte přístup k tajným tajným klíčům – informace 
 V dalším kroku budeme:
   - Přiřaďte uživateli přiřazenou identitu pro sadu škálování virtuálního počítače.
   - deklarace závislosti sady škálování virtuálního počítače na vytvoření spravované identity a na základě udělení přístupu k trezoru
-  - deklarujete rozšíření virtuálního počítače trezoru klíčů, které vyžaduje, aby při spuštění nahlásilo zjištěné certifikáty ([oficiální dokumentace](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows)).
+  - deklarujete rozšíření virtuálního počítače trezoru klíčů, které vyžaduje, aby při spuštění nahlásilo zjištěné certifikáty ([oficiální dokumentace](../virtual-machines/extensions/key-vault-windows.md)).
   - Aktualizujte definici Service Fabric virtuálního počítače tak, aby byla závislá na rozšíření KVVM, a převeďte certifikát clusteru na běžný název (tyto změny provedeme v jednom kroku, protože spadají do oboru stejného prostředku).
 
 ```json
@@ -419,12 +420,12 @@ Rozšíření KVVM jako agent zřizování běží nepřetržitě na předem ur�
 #### <a name="certificate-linking-explained"></a>Odkazy na certifikát – vysvětlení
 Možná jste si všimli příznaku linkOnRenewal rozšíření KVVM a fakt, že je nastavený na false. Tady řešíme chování řízené tímto příznakem a jeho dopad na fungování clusteru. Všimněte si, že toto chování je specifické pro systém Windows.
 
-Podle [definice](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows#extension-schema):
+Podle [definice](../virtual-machines/extensions/key-vault-windows.md#extension-schema):
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
 
-Certifikáty, které se používají k navázání připojení TLS, se obvykle [získávají jako popisovač](https://docs.microsoft.com/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) prostřednictvím zprostředkovatele podpory zabezpečení s kanálem – to znamená, že klient nemá přímý přístup k privátnímu klíči samotného certifikátu. Kanál S-podporuje přesměrování (propojení) přihlašovacích údajů ve formě rozšíření certifikátu ([CERT_RENEWAL_PROP_ID](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)): Pokud je tato vlastnost nastavená, představuje její hodnota kryptografický otisk certifikátu pro prodloužení platnosti a kanál s-Channel se místo toho pokusí načíst propojený certifikát. Ve skutečnosti se tento seznam propojených (a snad acyklického) přesměruje do té doby, než ukončí Poslední certifikát – jedna bez značky obnovení. Tato funkce, pokud se používá uvážlivě, je vynikající zmírnění proti ztrátě dostupnosti způsobené certifikáty s vypršenou platností (například). V jiných případech může být příčinou výpadků, které je obtížné diagnostikovat a zmírnit. Kanál S-Channel provádí přecházení certifikátů na své vlastnosti obnovení bez podmíněného nezávisle na předmětu, emitentech nebo jakýchkoli jiných specifických atributů, které se účastní ověřování výsledného certifikátu klientem. Je to ale možné, že výsledný certifikát nemá přidružený žádný privátní klíč, nebo klíč nebyl ACLed k potenciálnímu spotřebiteli. 
+Certifikáty, které se používají k navázání připojení TLS, se obvykle [získávají jako popisovač](/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) prostřednictvím zprostředkovatele podpory zabezpečení s kanálem – to znamená, že klient nemá přímý přístup k privátnímu klíči samotného certifikátu. Kanál S-podporuje přesměrování (propojení) přihlašovacích údajů ve formě rozšíření certifikátu ([CERT_RENEWAL_PROP_ID](/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)): Pokud je tato vlastnost nastavená, představuje její hodnota kryptografický otisk certifikátu pro prodloužení platnosti a kanál s-Channel se místo toho pokusí načíst propojený certifikát. Ve skutečnosti se tento seznam propojených (a snad acyklického) přesměruje do té doby, než ukončí Poslední certifikát – jedna bez značky obnovení. Tato funkce, pokud se používá uvážlivě, je vynikající zmírnění proti ztrátě dostupnosti způsobené certifikáty s vypršenou platností (například). V jiných případech může být příčinou výpadků, které je obtížné diagnostikovat a zmírnit. Kanál S-Channel provádí přecházení certifikátů na své vlastnosti obnovení bez podmíněného nezávisle na předmětu, emitentech nebo jakýchkoli jiných specifických atributů, které se účastní ověřování výsledného certifikátu klientem. Je to ale možné, že výsledný certifikát nemá přidružený žádný privátní klíč, nebo klíč nebyl ACLed k potenciálnímu spotřebiteli. 
  
 Pokud je povoleno propojení, rozšíření virtuálního počítače trezoru klíčů po načtení zjištěného certifikátu z trezoru se pokusí najít vyhovující existující certifikáty, aby je propojí přes vlastnost rozšíření pro obnovení. Shoda je (exkluzivně) založená na alternativním názvu subjektu (SAN) a funguje jako exemplified níže.
 Předpokládejme dva existující certifikáty následujícím způsobem: A: CN = "příslušenství Alice", SAN = {"alice.universalexports.com"}, obnovení = ' B: CN = "Bob 's bity", SAN = {"bob.universalexports.com", "bob.universalexports.net"}, obnovení = ' '
@@ -491,4 +492,3 @@ Odpověď *: Získejte*certifikát se zamýšleným subjektem a přidejte ho do 
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png
-

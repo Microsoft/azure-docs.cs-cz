@@ -8,14 +8,17 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d017472715e8fe924a11080fc837ac837f5bd48f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 598a8383350cae98d61b8ab74f7687161d3d33e8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982148"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245286"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML dovednosti v kanálu pro rozšíření Azure Kognitivní hledání
+
+> [!IMPORTANT] 
+> Tato dovednost je aktuálně ve verzi Public Preview. Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). V tuto chvíli není podporovaná žádná podpora sady .NET SDK.
 
 **AML** dovednosti umožňuje rozšířit obohacení AI pomocí vlastního modelu [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AML). Jakmile je model AML [vyškolený a nasazený](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow), **AML** dovednost ho integruje do obohacení AI.
 
@@ -26,7 +29,7 @@ Podobně jako v případě integrovaných dovedností mají **AML** dovednosti v
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Pracovní prostor AML](https://docs.microsoft.com/azure/machine-learning/concept-workspace)
 * [Azure Kubernetes Service AML Target COMPUTE](https://docs.microsoft.com/azure/machine-learning/concept-compute-target) v tomto pracovním prostoru s [nasazeným modelem](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
@@ -40,7 +43,7 @@ Microsoft. dovednosti. Custom. AmlSkill
 
 U parametrů se rozlišují malá a velká písmena. Parametry, které se rozhodnete použít, závisí na tom [, jaké ověřování vaše služba AML vyžaduje](#WhatSkillParametersToUse) .
 
-| Název parametru | Description |
+| Název parametru | Popis |
 |--------------------|-------------|
 | `uri` | (Vyžaduje se pro [ověřování a ověření klíče](#WhatSkillParametersToUse)) [Identifikátor URI pro vyhodnocování služby AML](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service) , na kterou se pošle datová část _JSON_ Je povoleno pouze schéma identifikátoru URI **protokolu HTTPS** . |
 | `key` | (Vyžadováno pro [ověření klíče](#WhatSkillParametersToUse)) [Klíč pro službu AML](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys) |

@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: d98261629f9e1612966bf74084ae0e0fa70d3605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829244"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244442"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy
 
@@ -19,7 +19,7 @@ Odchozí přenos dat z clusteru AKS se dá přizpůsobit tak, aby vyhovoval spec
 
 Tento článek vás seznámí s postupem přizpůsobení odchozí trasy clusteru pro podporu vlastních síťových scénářů, jako jsou například ty, které nepovolují veřejné IP adresy a vyžadují, aby se cluster zacházel za virtuálním síťovým zařízením (síťové virtuální zařízení).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Azure CLI verze 2.0.81 nebo vyšší
 * Verze rozhraní API `2020-01-01` nebo vyšší
 
@@ -75,9 +75,9 @@ K ilustraci aplikace clusteru s odchozím typem pomocí uživatelsky definované
 
 ## <a name="next-steps"></a>Další kroky
 
-Viz [Přehled služby Azure Networking udr](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
+Viz [Přehled služby Azure Networking udr](../virtual-network/virtual-networks-udr-overview.md).
 
-Přečtěte si téma [jak vytvořit, změnit nebo odstranit směrovací tabulku](https://docs.microsoft.com/azure/virtual-network/manage-route-table).
+Přečtěte si téma [jak vytvořit, změnit nebo odstranit směrovací tabulku](../virtual-network/manage-route-table.md).
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

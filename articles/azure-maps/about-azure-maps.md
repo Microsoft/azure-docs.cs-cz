@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 4b53c4d1a26d8e4b8d784087dcb9b9feba9c7ded
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191748"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242865"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
-Azure Maps je kolekce geoprostorových služeb, které používají data z nového mapování k poskytování geografického kontextu pro webové a mobilní aplikace. Azure Maps poskytuje:
+Azure Maps je kolekce geoprostorových služeb, které používají aktuální mapová data k poskytování geografického kontextu webovým a mobilním aplikacím. Azure Maps poskytuje:
 
 * Rozhraní REST API pro vykreslování map v několika stylech a v satelitních proobrázcích.
 * Služba Search vám umožní najít adresy, místa a body zájmu po celém světě.
@@ -57,7 +57,7 @@ K vytváření aplikací pro mobilní mapování použijte Azure Maps Android SD
 
 Azure Maps se skládá z následujících devíti služeb, které poskytují geografickou souvislost aplikacím Azure.
 
-### <a name="data-service"></a>Služba Data
+### <a name="data-service"></a>Datová služba
 
 Data jsou pro mapy naléhavá. Pomocí datové služby můžete nahrávat a ukládat geoprostorové data pro použití s prostorovou operací nebo kompozicí imagí.  Uvedení zákaznických dat blíže ke službě Azure Maps omezí latenci, zvýší produktivitu a vytvoří nové scénáře ve vašich aplikacích. Podrobnosti o této službě najdete v dokumentaci k [rozhraní API datové služby](https://docs.microsoft.com/rest/api/maps/data).
 
@@ -165,17 +165,25 @@ Azure Maps je postavená na mobilitu a může vám pomáhat vyvíjet aplikace pr
 
 Azure Maps také nabízí pohodlný [mapový ovládací prvek JavaScriptu](https://docs.microsoft.com/javascript/api/azure-maps-control) s jednoduchým programovacím modelem. Vývoj je rychlý a snadný pro webové i mobilní aplikace.
 
+## <a name="power-bi-visual"></a>Vizuál Power BI
+
+Azure Maps vizuál pro Power BI poskytuje bohatou sadu vizualizací dat pro prostorová data nad mapou. Odhaduje se, že více než 80% obchodních dat má kontext umístění. Azure Maps vizuál nabízí řešení bez kódu, které umožňuje získat přehled o tom, jak se tento kontext umístění týká a ovlivňuje vaše obchodní data.
+
+![Power BI plochu s Azure Maps vizuálním zobrazením obchodních dat](media/power-bi-visual/azure-maps-visual-hero.png)
+
+Další informace najdete v tématu Začínáme s dokumentací k [aplikaci Azure Maps Power BI](power-bi-visual-getting-started.md) .
+
 ## <a name="usage"></a>Využití
 
 Přístup ke službám Azure Maps Services je podstatou [Azure Portal](https://portal.azure.com) a vytvořením účtu Azure Maps.
 
 V Azure Maps se používá schéma ověřování založeného na klíčích. Váš účet obsahuje dvě klíče, které jsou už vygenerované za vás, a to pomocí obou klíčů. Zahajte integraci těchto schopností umístění do vaší aplikace a vyžádejte si žádosti o služby Azure Maps Services.
 
-Poznámka: Azure Maps pro účely mapování funkcí a dotazů na umístění ("dotazy") poskytovaných uživatelem ("dotazy") od jiných výrobců TomTom. Dotazy nejsou propojeny s žádným zákazníkem nebo koncovým uživatelem, pokud jsou sdíleny s TomTom a nelze je použít k identifikaci jednotlivců. Microsoft v současné době v procesu přidávání TomTom do seznamu subdodavatelů služeb Online Services. Mějte na paměti, že mobilita a povětrnostní služby, které zahrnují integraci s Moovit a AccuWeather, jsou momentálně ve [verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Poznámka: Azure Maps pro účely mapování funkcí a dotazů na umístění ("dotazy") od jiných výrobců TomTom. Dotazy nejsou propojeny s žádným zákazníkem nebo koncovým uživatelem, pokud jsou sdíleny pomocí TomTom a nelze je použít k identifikaci jednotlivců. Microsoft v současné době v procesu přidávání TomTom do seznamu subdodavatelů služeb Online Services. Mějte na paměti, že mobilita a povětrnostní služby, které zahrnují integraci s Moovit a AccuWeather, jsou momentálně ve [verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Rozhraní API pro Azure Maps jsou aktuálně k dispozici ve všech zemích a oblastech s výjimkou těchto:
+Rozhraní API pro Azure Maps jsou aktuálně k dispozici ve všech zemích a oblastech s výjimkou následujících:
 
 * Čína
 * Jižní Korea

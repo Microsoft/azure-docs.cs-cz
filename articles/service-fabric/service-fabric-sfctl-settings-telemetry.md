@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 6af5fa944ef399756f9e890ddd77a7f5f32e2bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef720a14617b4131474d50875701d0ef27df4151
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76903030"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245499"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
 Nakonfigurujte nastavení telemetrie jako místní pro tuto instanci sfctl.
@@ -18,7 +19,7 @@ Telemetrie Sfctl shromažďuje název příkazu bez zadaných parametrů nebo je
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
 | sada-telemetrie | Zapnutí nebo vypnutí telemetrie. |
 
@@ -27,14 +28,14 @@ Zapnutí nebo vypnutí telemetrie.
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --vypnuto | Vypněte telemetrii. |
 | --zapnuto | Zapnout telemetrii. Toto je výchozí hodnota. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -59,4 +60,4 @@ sfctl settings telemetry set_telemetry --on
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

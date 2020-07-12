@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674257"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243541"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Zpracování chyb v zásadách služby API Management
 
@@ -50,7 +51,7 @@ Při zpracování požadavku se spustí integrovaný postup spolu se všemi zás
 `on-error`Oddíl zásad lze použít v jakémkoli oboru. Vydavatelé rozhraní API můžou nakonfigurovat vlastní chování, jako je například protokolování chyby do Center událostí nebo vytvoření nové odpovědi, která se vrátí volajícímu.
 
 > [!NOTE]
-> Oddíl není ve `on-error` výchozím nastavení v zásadách k dispozici. Pokud chcete přidat `on-error` oddíl do zásad, přejděte na požadovanou zásadu v editoru zásad a přidejte ji. Další informace o konfiguraci zásad najdete v tématu [zásady v API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).
+> Oddíl není ve `on-error` výchozím nastavení v zásadách k dispozici. Pokud chcete přidat `on-error` oddíl do zásad, přejděte na požadovanou zásadu v editoru zásad a přidejte ji. Další informace o konfiguraci zásad najdete v tématu [zásady v API Management](./api-management-howto-policies.md).
 >
 > Pokud není k dispozici žádný `on-error` oddíl, volající obdrží zprávy s odpovědí HTTP 400 nebo 500, pokud dojde k chybovému stavu.
 
@@ -79,7 +80,7 @@ V části zásady se dají použít tyto zásady `on-error` .
 
 Pokud dojde k chybě a řízení přejde na `on-error` oddíl zásady, je chyba uložena v [kontextu. Vlastnost GetLastError](api-management-policy-expressions.md#ContextVariables) , ke které se dají přistupovat zásady v `on-error` části. Poslední z těchto vlastností je.
 
-| Name       | Typ   | Description                                                                                               | Vyžadováno |
+| Name       | Typ   | Popis                                                                                               | Vyžadováno |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | `Source`   | řetězec | Pojmenuje prvek, kde došlo k chybě. Může to být buď zásada, nebo vestavěný název kroku kanálu.      | Yes      |
 | `Reason`   | řetězec | Uživatelsky přívětivý kód chyby, který se dá použít při zpracování chyb.                                       | No       |
@@ -188,5 +189,5 @@ Další informace o práci se zásadami najdete v těchto tématech:
 
 -   [Zásady v API Management](api-management-howto-policies.md)
 -   [Transformační rozhraní API](transform-api.md)
--   [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
+-   [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
 -   [Ukázky zásad](policy-samples.md)

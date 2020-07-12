@@ -5,21 +5,22 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b805b7047b00f416664a001f02f311f6b387af19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baf4e843eea859fc16ed6e3bcd509785cc4db8bc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76896276"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245581"
 ---
 # <a name="sfctl-settings"></a>sfctl settings
 Nakonfigurujte nastavení místní pro tuto instanci sfctl.
 
 ## <a name="subgroups"></a>Podskupiny
-|Podskupina|Description|
+|Podskupina|Popis|
 | --- | --- |
 | [telemetrie](service-fabric-sfctl-settings-telemetry.md) | Nakonfigurujte nastavení telemetrie jako místní pro tuto instanci sfctl. |
 
 
 ## <a name="next-steps"></a>Další kroky   
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.   
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

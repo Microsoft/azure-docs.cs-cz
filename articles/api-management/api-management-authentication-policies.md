@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
-ms.openlocfilehash: 70f1e4414888ceb8fb04fd92dc954d1a7c06dcb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557981"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243711"
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování ve službě API Management
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -48,19 +48,19 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 ### <a name="elements"></a>Elementy
 
-|Name|Description|Vyžadováno|
+|Název|Popis|Vyžadováno|
 |----------|-----------------|--------------|
 |ověřování – základní|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
-|Name|Description|Vyžadováno|Výchozí|
+|Název|Popis|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|uživatelské jméno|Určuje uživatelské jméno základního přihlašovacího údaje.|Yes|Není k dispozici|
-|heslo|Určuje heslo základního přihlašovacího údaje.|Yes|Není k dispozici|
+|username|Určuje uživatelské jméno základního přihlašovacího údaje.|Yes|Nelze použít|
+|heslo|Určuje heslo základního přihlašovacího údaje.|Yes|Nelze použít|
 
 ### <a name="usage"></a>Využití
- Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
+ Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
 
 -   **Oddíly zásad:** příchozí
 
@@ -97,21 +97,21 @@ V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačte
 
 ### <a name="elements"></a>Elementy  
   
-|Name|Description|Vyžadováno|  
+|Název|Popis|Vyžadováno|  
 |----------|-----------------|--------------|  
 |ověřování – certifikát|Kořenový element.|Yes|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Description|Vyžadováno|Výchozí|  
+|Název|Popis|Vyžadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|kryptografický|Kryptografický otisk pro klientský certifikát|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Není k dispozici|
-|ID certifikátu|Název prostředku certifikátu.|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Není k dispozici|
-|text|Certifikát klienta jako bajtové pole.|No|Není k dispozici|
-|heslo|Heslo pro klientský certifikát.|Používá se, pokud je certifikát určený v nástroji `body` chráněný heslem.|Není k dispozici|
+|kryptografický|Kryptografický otisk pro klientský certifikát|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Nelze použít|
+|ID certifikátu|Název prostředku certifikátu.|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Nelze použít|
+|text|Certifikát klienta jako bajtové pole.|No|Nelze použít|
+|heslo|Heslo pro klientský certifikát.|Používá se, pokud je certifikát určený v nástroji `body` chráněný heslem.|Nelze použít|
   
 ### <a name="usage"></a>Využití  
- Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.  
+ Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.  
   
 -   **Oddíly zásad:** příchozí  
   
@@ -174,21 +174,21 @@ K vyžádání tokenu se dá použít jak identita přiřazená systémem, tak i
 
 ### <a name="elements"></a>Elementy  
   
-|Name|Description|Vyžadováno|  
+|Název|Popis|Vyžadováno|  
 |----------|-----------------|--------------|  
 |ověřování – spravovaná identita |Kořenový element.|Yes|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name|Description|Vyžadováno|Výchozí|  
+|Název|Popis|Vyžadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Yes|Není k dispozici|
+|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Yes|Nelze použít|
 |ID klienta|Řetězec. ID aplikace identity přiřazené uživatelem v Azure Active Directory.|No|Identita přiřazená systémem|
-|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |No|Není k dispozici|  
+|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |No|Nelze použít|  
 |ignorovat – chyba|Datového. Pokud se nastaví na `true` , kanál zásad se bude dál spouštět i v případě, že se přístupový token nezíská.|No|false (nepravda)|  
   
 ### <a name="usage"></a>Využití  
- Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.  
+ Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.  
   
 -   **Oddíly zásad:** příchozí  
   
@@ -199,5 +199,5 @@ Další informace o práci se zásadami najdete v těchto tématech:
 
 + [Zásady v API Management](api-management-howto-policies.md)
 + [Transformační rozhraní API](transform-api.md)
-+ [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
++ [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
 + [Ukázky zásad](policy-samples.md)

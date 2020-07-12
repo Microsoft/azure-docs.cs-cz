@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38c487928f15e953a1c660c5007398bc5c2b3f7d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ed95b902c2c0768f50a0c6dadbfc617292932c2b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206641"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242946"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Přehled agenta Azure ARC pro servery
 
@@ -62,7 +62,7 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
 
     |Složka |Popis |
     |-------|------------|
-    |C:\Program Files\AzureConnectedMachineAgent |Výchozí instalační cesta obsahující soubory podpory agenta.|
+    |%ProgramFiles%\AzureConnectedMachineAgent |Výchozí instalační cesta obsahující soubory podpory agenta.|
     |%ProgramData%\AzureConnectedMachineAgent |Obsahuje konfigurační soubory agenta.|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |Obsahuje získané tokeny.|
     |%ProgramData%\AzureConnectedMachineAgent\Config |Obsahuje konfigurační soubor agenta, který ve `agentconfig.json` službě zaznamenává informace o registraci.|
@@ -72,14 +72,14 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
 
 * Následující služby systému Windows se v cílovém počítači vytvoří během instalace agenta.
 
-    |Název služby |Zobrazovaný název |Název procesu |Popis |
+    |Název služby |Zobrazované jméno |Název procesu |Popis |
     |-------------|-------------|-------------|------------|
     |himds |Hybridní Instance Metadata Service Azure |himds.exe |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
     |DscService |Služba konfigurace hosta |dsc_service.exe |Toto je základ kódu požadovaného stavu (DSC v2), který se používá v Azure k implementaci zásad hosta.|
 
 * Během instalace agenta se vytvoří následující proměnné prostředí.
 
-    |Název |Výchozí hodnota |Popis |
+    |Name |Výchozí hodnota |Popis |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -99,7 +99,7 @@ Po instalaci agenta připojeného počítače pro Windows se aplikují následuj
 
 * Během odinstalace agenta nejsou odebrány následující artefakty.
 
-    * C:\Program Files\AzureConnectedMachineAgent\Logs
+    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
     * %ProgramData%\AzureConnectedMachineAgent a podadresáře
     * %ProgramData%\GuestConfig
 
@@ -123,7 +123,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Následující procesy démon jsou vytvořeny v cílovém počítači během instalace agenta.
 
-    |Název služby |Zobrazovaný název |Název procesu |Popis |
+    |Název služby |Zobrazované jméno |Název procesu |Popis |
     |-------------|-------------|-------------|------------|
     |himdsd. Service |Hybridní Instance Metadata Service Azure |/opt/azcmagent/bin/himds |Tato služba implementuje službu metadat Azure instance (IMDS) pro správu připojení k Azure a identitě Azure připojeného počítače.|
     |dscd. Service |Služba konfigurace hosta |/opt/DSC/dsc_linux_service |Toto je základ kódu požadovaného stavu (DSC v2), který se používá v Azure k implementaci zásad hosta.|
@@ -141,7 +141,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
 
 * Během instalace agenta se vytvoří následující proměnné prostředí. Tyto proměnné jsou nastaveny v `/lib/systemd/system.conf.d/azcmagent.conf` .
 
-    |Název |Výchozí hodnota |Popis |
+    |Name |Výchozí hodnota |Popis |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
@@ -151,7 +151,7 @@ Po instalaci agenta připojeného počítače pro Linux se aplikují následují
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -170,9 +170,9 @@ Pro agenta připojeného počítače Azure jsou oficiálně podporované násled
 
 ### <a name="required-permissions"></a>Požadovaná oprávnění
 
-- Pokud chcete připojit počítače, jste členem role **připojení počítače připojeného k Azure** .
+* Pokud chcete připojit počítače, jste členem role **připojení počítače připojeného k Azure** .
 
-- Pro čtení, úpravy, opětovné zprovoznění a odstranění počítače jste členem role **Správce prostředků počítače připojeného k Azure** . 
+* Pro čtení, úpravy, opětovné zprovoznění a odstranění počítače jste členem role **Správce prostředků počítače připojeného k Azure** . 
 
 ### <a name="azure-subscription-and-service-limits"></a>Omezení předplatného a služeb Azure
 
@@ -195,8 +195,8 @@ Pokud je odchozí připojení omezeno bránou firewall nebo proxy server, ujist�
 
 Značky služby:
 
-- Azureactivedirectory selhala
-- AzureTrafficManager
+* Azureactivedirectory selhala
+* AzureTrafficManager
 
 Adrese
 
@@ -218,8 +218,8 @@ Adresy URL v předchozí tabulce jsou nutné kromě informací o rozsahu IP adre
 
 Azure ARC pro servery (verze Preview) závisí na následujících poskytovatelích prostředků Azure ve vašem předplatném, aby bylo možné tuto službu používat:
 
-- **Microsoft. HybridCompute**
-- **Microsoft. GuestConfiguration**
+* **Microsoft. HybridCompute**
+* **Microsoft. GuestConfiguration**
 
 Pokud nejsou registrovány, můžete je zaregistrovat pomocí následujících příkazů:
 

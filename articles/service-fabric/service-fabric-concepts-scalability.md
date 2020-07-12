@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 1780cb47696813b5d26035f54e0685969482dba6
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5b311dd9b0cd2c2b007bc19994aee771b2c4360f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058108"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246376"
 ---
 # <a name="scaling-in-service-fabric"></a>Škálování v Service Fabric
 Azure Service Fabric usnadňuje vytváření škálovatelných aplikací tím, že spravuje služby, oddíly a repliky na uzlech clusteru. Spouštění mnoha úloh na stejném hardwaru umožňuje maximální využití prostředků, ale také nabízí flexibilitu při volbě škálování úloh. Tento video pro kanál 9 popisuje, jak můžete vytvářet škálovatelné aplikace mikroslužeb:
@@ -63,7 +63,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Škálování vytvořením nebo odebráním nových pojmenovaných služeb
 Pojmenovaná instance služby je konkrétní instance typu služby (viz [Service Fabric životní cyklus aplikací](service-fabric-application-lifecycle.md)) v rámci některé pojmenované instance aplikace v clusteru. 
 
-Nově pojmenované instance služby je možné vytvořit (nebo odebrat), protože služby jsou zaneprázdněné nebo menší. To umožňuje, aby se požadavky rozšířily mezi další instance služby, což obvykle umožňuje zatížení stávajících služeb. Při vytváření služeb Cluster Service Fabric Správce prostředků umístí služby v clusteru distribuovaným způsobem. Přesná rozhodnutí se řídí [metrikami](service-fabric-cluster-resource-manager-metrics.md) v clusteru a dalšími pravidly umístění. Služby je možné vytvořit několika různými způsoby, ale nejběžnější jsou buď prostřednictvím akcí správy, jako je volaná osoba [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) nebo voláním kódu [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) . `CreateServiceAsync`lze dokonce volat v rámci jiných služeb spuštěných v clusteru.
+Nově pojmenované instance služby je možné vytvořit (nebo odebrat), protože služby jsou zaneprázdněné nebo menší. To umožňuje, aby se požadavky rozšířily mezi další instance služby, což obvykle umožňuje zatížení stávajících služeb. Při vytváření služeb Cluster Service Fabric Správce prostředků umístí služby v clusteru distribuovaným způsobem. Přesná rozhodnutí se řídí [metrikami](service-fabric-cluster-resource-manager-metrics.md) v clusteru a dalšími pravidly umístění. Služby je možné vytvořit několika různými způsoby, ale nejběžnější jsou buď prostřednictvím akcí správy, jako je volaná osoba [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) nebo voláním kódu [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) . `CreateServiceAsync`lze dokonce volat v rámci jiných služeb spuštěných v clusteru.
 
 Dynamické vytváření služeb se dá použít v nejrůznějších scénářích a je to běžný vzor. Zvažte například stavovou službu, která představuje konkrétní pracovní postup. Volání, která představují práci, se budou zobrazovat až k této službě a tato služba bude provádět kroky tohoto pracovního postupu a zaznamenat průběh. 
 

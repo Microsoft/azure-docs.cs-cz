@@ -13,23 +13,23 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857175"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246805"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při návrhu aplikací pro Cloud. Pojednává o školicích materiálech spolu s bezpečnostními otázkami a koncepty, které je potřeba vzít v úvahu během fází vývoje požadavků a návrhů na [životní cyklus Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k návrhu bezpečnější aplikace.
 
 V tomto článku jsou uvedené tyto fáze SDL:
 
-- Školení
+- Probíhá trénování
 - Požadavky
 - Návrh
 
-## <a name="training"></a>Školení
+## <a name="training"></a>Probíhá trénování
 Než začnete vyvíjet cloudovou aplikaci, pochopíte si dobu zabezpečení a ochrany osobních údajů v Azure. Provedením tohoto kroku můžete snížit počet a závažnost zneužití ohrožení zabezpečení ve vaší aplikaci. Připravili jste příslušně na to, aby reagovala vhodně na na ni neustále se měnícím ohrožením.
 
 Během školení použijte následující zdroje, abyste se seznámili se službami Azure, které jsou dostupné vývojářům a s osvědčenými postupy zabezpečení v Azure:
@@ -153,11 +153,11 @@ Modelování návrhu aplikace a vytváření [výčtu hrozeb a](https://docs.goo
 
 | Hrozba | Vlastnost zabezpečení | Potenciální omezení pro platformu Azure |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Falšování identity               | Authentication        | [Vyžadovat připojení HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Falšování              | Integrita             | Ověřte certifikáty protokolu SSL/TLS. Aplikace, které používají protokol SSL/TLS, musí plně ověřit certifikáty X. 509 entit, ke kterým se připojují. Pomocí Azure Key Vault certifikátů můžete [spravovat certifikáty x509](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
-| Popírání odpovědnosti            | Neodmítnutí       | Povolte [monitorování a diagnostiku](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)Azure.|
-| Zpřístupnění informací | Důvěrnost       | Šifrování citlivých dat v [klidovém umístění](../fundamentals/encryption-atrest.md) a [přenosu](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
-| Útok DoS      | Dostupnost          | Monitoruje metriky výkonu pro potenciální odepření podmínek poskytování služeb. Implementujte filtry připojení. [Ochrana Azure DDoS](../../virtual-network/ddos-protection-overview.md#next-steps)v kombinaci s osvědčenými postupy pro návrh aplikací poskytuje ochranu před útoky DDoS.|
+| Falšování identity               | Ověřování        | [Vyžadovat připojení HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Manipulace              | Integrita             | Ověřte certifikáty protokolu SSL/TLS. Aplikace, které používají protokol SSL/TLS, musí plně ověřit certifikáty X. 509 entit, ke kterým se připojují. Pomocí Azure Key Vault certifikátů můžete [spravovat certifikáty x509](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
+| Popírání odpovědnosti            | Neodvolatelnost       | Povolte [monitorování a diagnostiku](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)Azure.|
+| Zveřejnění informací | Důvěrnost       | Šifrování citlivých dat v [klidovém umístění](../fundamentals/encryption-atrest.md) a [přenosu](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
+| Odepření služby      | Dostupnost          | Monitoruje metriky výkonu pro potenciální odepření podmínek poskytování služeb. Implementujte filtry připojení. [Ochrana Azure DDoS](../../virtual-network/ddos-protection-overview.md#next-steps)v kombinaci s osvědčenými postupy pro návrh aplikací poskytuje ochranu před útoky DDoS.|
 | Zvýšení oprávnění | Autorizace         | Použijte Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md).|
 
 ### <a name="reduce-your-attack-surface"></a>Omezení prostoru pro útok
@@ -209,7 +209,7 @@ Používejte dvojúrovňové ověřování. Dvojúrovňové ověřování je akt
 
 Místo vlastního kódu použijte mechanismy ověřování a autorizace dodané platformou. Důvodem je, že vývoj vlastního ověřovacího kódu může být náchylný k chybě. Komerční kód (například od společnosti Microsoft) je často výrazně přezkoumán z hlediska zabezpečení. [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) je řešení Azure pro správu identit a přístupu. Tyto nástroje a služby Azure AD vám pomůžou s zabezpečeným vývojem:
 
-- [Azure AD identity Platform (Azure AD pro vývojáře)](../../active-directory/develop/about-microsoft-identity-platform.md) je cloudová služba identit, kterou vývojáři používají k vytváření aplikací, které se bezpečně přihlásí uživatelům. Azure AD pomáhá vývojářům, kteří sestavují aplikace pro jednoho tenanta, obchodní aplikace (LOB) a vývojáře, kteří chtějí vyvíjet aplikace s více klienty. Kromě základního přihlašování můžou aplikace sestavené pomocí Azure AD volat rozhraní API Microsoftu a vlastní rozhraní API, která jsou postavená na platformě Azure AD. Platforma identity Azure AD podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect.
+- [Microsoft Identity Platform](/azure/active-directory/develop/) je sada komponent, které vývojáři používají k sestavování aplikací, které bezpečně přihlásí uživatele. Platforma pomáhá vývojářům, kteří sestavují aplikace pro jednoho tenanta, obchodní aplikace (LOB) a vývojáře, kteří chtějí vyvíjet aplikace s více klienty. Kromě základního přihlašování můžou aplikace sestavené pomocí platformy Microsoft Identity volat rozhraní API Microsoftu a vlastní rozhraní API. Platforma Microsoft identity podporuje standardní protokoly jako OAuth 2,0 a OpenID Connect.
 
 - [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) je služba pro správu identit, kterou můžete použít k přizpůsobení a řízení způsobu registrace, přihlašování a správy profilů při používání vašich aplikací. To zahrnuje aplikace vyvinuté pro iOS, Android a .NET mimo jiné. Azure AD B2C tyto akce povoluje při ochraně zákaznických identit.
 

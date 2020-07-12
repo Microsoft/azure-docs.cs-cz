@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 58f05b2f9f15166e161b31578b47cf06afcb13a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248156c403e7e74665ec1c856588d8a2ca76e208
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362573"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244561"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Přizpůsobení kanálu pro uživatele Windows Virtual Desktopu
 
@@ -76,5 +76,5 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 
 Teď, když jste přizpůsobili informační kanál pro uživatele, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat ho. Provedete to tak, že přejdete do části s postupy pro připojení k virtuálnímu počítači s Windows:
 
- * [Připojení z Windows 10 nebo Windows 7](../connect-windows-7-and-10.md)
+ * [Připojení z Windows 10 nebo Windows 7](connect-windows-7-10-2019.md)
  * [Připojení z webového prohlížeče](connect-web-2019.md)

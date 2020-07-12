@@ -3,12 +3,12 @@ title: Vyloučení disků z replikace pomocí Azure Site Recovery
 description: Postup vyloučení disků z replikace do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135685"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245394"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Vyloučení disků z zotavení po havárii
 
@@ -105,29 +105,35 @@ V našem příkladu se Disk3 disk SQL tempdb z replikace vyloučil a není k dis
 1. Otevřete příkazový řádek.
 2. Spusťte z příkazového řádku SQL Server v režimu obnovení.
 
-        Net start MSSQLSERVER /f / T3608
+    ```console
+    Net start MSSQLSERVER /f / T3608
+    ```
 
 3. Spuštěním následujícího příkazu sqlcmd změňte cestu k databázi tempdb na novou cestu.
 
-        sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;     
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
-        GO
-
+    ```sql
+    sqlcmd -A -S SalesDB        **Use your SQL DBname**
+    USE master;     
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
+    GO
+    ```
 
 4. Zastavte službu Microsoft SQL Server.
 
-        Net stop MSSQLSERVER
+    ```console
+    Net stop MSSQLSERVER
+    ```
+
 5. Spusťte službu Microsoft SQL Server.
 
-        Net start MSSQLSERVER
-
-
+    ```console
+    Net start MSSQLSERVER
+    ```
 
 ### <a name="vmware-vms-disks-during-failback-to-original-location"></a>Virtuální počítače VMware: disky během navrácení služeb po obnovení do původního umístění
 

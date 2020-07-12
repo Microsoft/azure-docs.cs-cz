@@ -5,16 +5,17 @@ author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33ad837195c747a4e7f9a4609d745659be69dc9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463166"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246176"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>NaChaos řízených v clusterech Service Fabric
 Rozsáhlé distribuované systémy, jako jsou cloudové infrastruktury, jsou v podstatě nespolehlivé. Azure Service Fabric umožňuje vývojářům psát spolehlivé distribuované služby nad nespolehlivou infrastrukturou. Aby mohli vývojáři psát robustní distribuované služby nad nespolehlivou infrastrukturou, musí být schopni testovat stabilitu svých služeb, zatímco základní nespolehlivá infrastruktura prochází složitými přechody stavu v důsledku chyb.
 
-[Vkládání chyb a služba Analysis Service clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (označované také jako služba analýzy chyb) umožňují vývojářům navolávat chyby při testování svých služeb. Tyto cílené simulované chyby, jako je [restartování oddílu](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), můžou přispět k provádění nejběžnějších přechodů mezi stavy. Cílené simulované chyby se ale účtují podle definice, takže můžou přijít o chyby, které se zobrazují jenom v pevně předpokládaném, dlouhém a složitém pořadí přechodů mezi stavy. Pro nevyvážené testování můžete použít chaos.
+[Vkládání chyb a služba Analysis Service clusteru](./service-fabric-testability-overview.md) (označované také jako služba analýzy chyb) umožňují vývojářům navolávat chyby při testování svých služeb. Tyto cílené simulované chyby, jako je [restartování oddílu](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), můžou přispět k provádění nejběžnějších přechodů mezi stavy. Cílené simulované chyby se ale účtují podle definice, takže můžou přijít o chyby, které se zobrazují jenom v pevně předpokládaném, dlouhém a složitém pořadí přechodů mezi stavy. Pro nevyvážené testování můžete použít chaos.
 
 Chaos simuluje pravidelné, prokládané chyby (jak v rámci celého clusteru jsou bezproblémové i nedarované) po delší dobu. Plynulá chyba se skládá ze sady Service Fabric volání rozhraní API, například restartování repliky je bezproblémové selhání, protože se jedná o blízko následovaný otevřeným na replice. Odebrání repliky, přesunutí primární repliky a přesunutí sekundární repliky jsou další plynulé chyby, na které chaos přichází. Nedarované chyby se ukončí proces, jako je restartování uzlu a restartování balíčku kódu. 
 
@@ -24,7 +25,7 @@ Jakmile nakonfigurujete chaos s frekvencí a typem chyb, můžete spustit chaos 
 > V jeho aktuální podobě chaos vystavuje pouze bezpečné chyby, což znamená, že při absenci externích chyb v důsledku ztráty kvora nedochází k neztrátě dat.
 >
 
-I když je spuštěný chaos, vytváří různé události, které zachytí stav běhu v daném okamžiku. Například ExecutingFaultsEvent obsahuje všechny chyby, které chaos se rozhodly spustit v této iteraci. ValidationFailedEvent obsahuje podrobnosti o selhání ověřování (stav nebo problémy se stabilitou), které byly zjištěny během ověřování clusteru. Můžete vyvolat rozhraní API GetChaosReport (C#, PowerShell nebo REST) a získat tak zprávu o běhu chaos. Tyto události se chovají ve [spolehlivém slovníku](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections), který má zásady zkracování, které jsou vynásobené dvěma konfiguracemi: **MaxStoredChaosEventCount** (výchozí hodnota je 25000) a **StoredActionCleanupIntervalInSeconds** (výchozí hodnota je 3600). Všechny *StoredActionCleanupIntervalInSeconds* chaos kontroly a všechny kromě nejaktuálnějších událostí *MaxStoredChaosEventCount* jsou vymazány ze spolehlivého slovníku.
+I když je spuštěný chaos, vytváří různé události, které zachytí stav běhu v daném okamžiku. Například ExecutingFaultsEvent obsahuje všechny chyby, které chaos se rozhodly spustit v této iteraci. ValidationFailedEvent obsahuje podrobnosti o selhání ověřování (stav nebo problémy se stabilitou), které byly zjištěny během ověřování clusteru. Můžete vyvolat rozhraní API GetChaosReport (C#, PowerShell nebo REST) a získat tak zprávu o běhu chaos. Tyto události se chovají ve [spolehlivém slovníku](./service-fabric-reliable-services-reliable-collections.md), který má zásady zkracování, které jsou vynásobené dvěma konfiguracemi: **MaxStoredChaosEventCount** (výchozí hodnota je 25000) a **StoredActionCleanupIntervalInSeconds** (výchozí hodnota je 3600). Všechny *StoredActionCleanupIntervalInSeconds* chaos kontroly a všechny kromě nejaktuálnějších událostí *MaxStoredChaosEventCount* jsou vymazány ze spolehlivého slovníku.
 
 ## <a name="faults-induced-in-chaos"></a>Chyby vyvolané v chaos
 Chaos vygeneruje chyby napříč celým clusterem Service Fabric a komprimuje chyby, které se zobrazují v měsících nebo rocích, do několika hodin. Kombinace vzájemně vykládaných chyb s vysokou mírou chyb vyhledává rohové případy, které by jinak mohly chybět. Toto cvičení chaos vede k výraznému zlepšení kvality kódu služby.

@@ -4,11 +4,12 @@ description: Přehled důvodů, proč je vytváření cloudových aplikací s p�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792864"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246016"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Proč používat při sestavování aplikací přístup k mikroslužbám
 
@@ -130,7 +131,7 @@ Stav se liší od diagnostiky. Stav je o mikroslužbě, která hlásí svůj akt
 
 ## <a name="guidance-for-designing-microservices-on-azure"></a>Doprovodné materiály k navrhování mikroslužeb v Azure
 
-Pokyny k [navrhování a vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/)najdete v centru architektury Azure.
+Pokyny k [navrhování a vytváření mikroslužeb v Azure](/azure/architecture/microservices/)najdete v centru architektury Azure.
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric jako platforma mikroslužeb
 
@@ -162,7 +163,7 @@ Nezapomeňte, že můžete *začít a zastavovat v kterékoli z těchto fází*.
 
 Pojďme se podívat na příklady pro každou z těchto fází.
 
-**Migrace**  
+**Migrate**  
 Ve dvou případech mnoho společností migruje existující aplikace monolitické do kontejnerů:
 
 * Snížení nákladů, buď z důvodu konsolidace a odebrání stávajícího hardwaru, nebo z důvodu spuštěných aplikací s vyšší hustotou.
@@ -190,7 +191,7 @@ Cílem Service Fabric je snížit složitosti vytváření aplikací mikrosluže
 ## <a name="next-steps"></a>Další kroky
 
 * [Mikroslužby: aplikace s revoluce, kterou Cloud využívá](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Cetrum architektury Azure: vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Cetrum architektury Azure: vytváření mikroslužeb v Azure](/azure/architecture/microservices/)
 * [Osvědčené postupy pro aplikace a Cluster Service Fabric pro Azure](service-fabric-best-practices-overview.md)
 * [Přehled terminologie Service Fabric](service-fabric-technical-overview.md)
 

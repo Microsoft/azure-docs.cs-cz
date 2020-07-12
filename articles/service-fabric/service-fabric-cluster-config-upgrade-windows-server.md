@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4817c7b76ccd127d5f310a9d2abcecdb094944dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790843"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246601"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Upgrade konfigurace samostatného clusteru 
 
@@ -53,7 +53,7 @@ TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File
 Některé konfigurace není možné upgradovat, jako jsou koncové body, název clusteru, IP adresa uzlu atd. Nový kód JSON konfigurace clusteru se testuje proti starému a vyvolá chyby v okně PowerShellu, pokud dojde k nějakému problému.
 
 ## <a name="upgrade-the-cluster-configuration"></a>Upgrade konfigurace clusteru
-Pokud chcete upgradovat upgrade konfigurace clusteru, spusťte rutinu [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade). Upgrade konfigurace je zpracována upgradovací doména podle upgradované domény.
+Pokud chcete upgradovat upgrade konfigurace clusteru, spusťte rutinu [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade). Upgrade konfigurace je zpracována upgradovací doména podle upgradované domény.
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>

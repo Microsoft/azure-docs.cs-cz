@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc19c5ea7a45f78110818bc6c8cea8fbe25981c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70072307"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243439"
 ---
 # <a name="policies-in-azure-api-management"></a>Zásady ve službě Azure API Management
 
@@ -58,7 +58,7 @@ Konfigurace je rozdělena do `inbound` , `backend` , `outbound` a `on-error` . �
 </policies> 
 ```
 
-Pokud během zpracování požadavku dojde k chybě, všechny zbývající kroky v `inbound` , `backend` nebo se přeskočí `outbound` a provádění přejde na příkazy v `on-error` části. Vložením příkazů zásad v `on-error` části můžete zkontrolovat chybu pomocí `context.LastError` vlastnosti, zkontrolovat a přizpůsobit chybovou odpověď pomocí `set-body` zásad a nakonfigurovat, co se stane, když dojde k chybě. K dispozici jsou kódy chyb pro integrované kroky a chyby, ke kterým může dojít během zpracování příkazů zásad. Další informace najdete v tématu [zpracování chyb v zásadách API Management](/azure/api-management/api-management-error-handling-policies).
+Pokud během zpracování požadavku dojde k chybě, všechny zbývající kroky v `inbound` , `backend` nebo se přeskočí `outbound` a provádění přejde na příkazy v `on-error` části. Vložením příkazů zásad v `on-error` části můžete zkontrolovat chybu pomocí `context.LastError` vlastnosti, zkontrolovat a přizpůsobit chybovou odpověď pomocí `set-body` zásad a nakonfigurovat, co se stane, když dojde k chybě. K dispozici jsou kódy chyb pro integrované kroky a chyby, ke kterým může dojít během zpracování příkazů zásad. Další informace najdete v tématu [zpracování chyb v zásadách API Management](./api-management-error-handling-policies.md).
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Postup konfigurace zásad
 
@@ -66,7 +66,7 @@ Informace o tom, jak nakonfigurovat zásady, najdete v tématu [nastavení nebo 
 
 ## <a name="policy-reference"></a>Reference k zásadám
 
-Úplný seznam příkazů zásad a jejich nastavení najdete v [referenčních informacích k zásadám](api-management-policy-reference.md) .
+Úplný seznam příkazů zásad a jejich nastavení najdete v [referenčních informacích k zásadám](./api-management-policies.md) .
 
 ## <a name="policy-samples"></a>Ukázky zásad
 
@@ -118,17 +118,17 @@ Chcete-li omezit příchozí požadavky a přijmout pouze ty z IP adresy 1.2.3.4
 Další informace o práci se zásadami najdete v těchto tématech:
 
 + [Transformační rozhraní API](transform-api.md)
-+ [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
++ [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
 + [Ukázky zásad](policy-samples.md)   
 
-[Policy Reference]: api-management-policy-reference.md
+[Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md
-[Operation]: api-management-howto-add-operations.md
+[Operation]: ./mock-api-responses.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Advanced policies]: ./api-management-advanced-policies.md
+[Control flow]: ./api-management-advanced-policies.md#choose
+[Set variable]: ./api-management-advanced-policies.md#set-variable
+[Policy expressions]: ./api-management-policy-expressions.md
 
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png

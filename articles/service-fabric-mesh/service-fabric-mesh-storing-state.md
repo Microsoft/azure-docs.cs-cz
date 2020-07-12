@@ -5,15 +5,16 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692678"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246822"
 ---
 # <a name="state-management-with-service-fabric"></a>Správa stavu pomocí Service Fabric
 
-Service Fabric podporuje mnoho různých možností pro úložiště stavů. Koncepční Přehled vzorů správy stavů a Service Fabric najdete v tématu [Service Fabric koncepty: State](/azure/service-fabric/service-fabric-concepts-state). Všechny tyto stejné koncepty platí bez ohledu na to, jestli se vaše služby spouštějí uvnitř nebo vně Service Fabric sítě. 
+Service Fabric podporuje mnoho různých možností pro úložiště stavů. Koncepční Přehled vzorů správy stavů a Service Fabric najdete v tématu [Service Fabric koncepty: State](../service-fabric/service-fabric-concepts-state.md). Všechny tyto stejné koncepty platí bez ohledu na to, jestli se vaše služby spouštějí uvnitř nebo vně Service Fabric sítě. 
 
 Pomocí Service Fabric sítě můžete snadno nasadit novou aplikaci a připojit ji k existujícímu úložišti dat hostovanému v Azure. Kromě použití jakékoli vzdálené databáze existuje několik možností pro ukládání dat v závislosti na tom, jestli služba používá místní nebo vzdálené úložiště. 
 

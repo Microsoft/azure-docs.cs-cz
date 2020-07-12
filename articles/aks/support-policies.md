@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106981"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243847"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Zásady podpory pro službu Azure Kubernetes
 
@@ -75,7 +75,7 @@ Společnost Microsoft neposkytuje technickou podporu pro následující:
   > Microsoft může poskytovat nejlepší podporu pro open source projekty třetích stran, jako jsou Helm a Kured. Pokud se Open source nástroj od jiného výrobce integruje s Kubernetes poskytovatelem cloudu Azure nebo jinými chybami týkajícími se AKS, Microsoft podporuje v dokumentaci Microsoftu příklady a aplikace.
 * Uzavřený zdrojový software třetí strany. Tento software může obsahovat nástroje pro kontrolu zabezpečení a síťová zařízení nebo software.
 * Problémy týkající se více než cloudových nebo více dodavatelů sestavení Microsoft například nepodporuje problémy související se spouštěním řešení pro Cloud ve federaci s více veřejnými cloudy.
-* Vlastní nastavení sítě, kromě těch, která jsou uvedena v [dokumentaci k AKS](https://docs.microsoft.com/azure/aks/).
+* Vlastní nastavení sítě, kromě těch, která jsou uvedena v [dokumentaci k AKS](./index.yml).
   > [!NOTE]
   > Společnost Microsoft podporuje problémy a chyby související se skupinami zabezpečení sítě (skupin zabezpečení sítě). Podpora Microsoftu například může zodpovědět otázky týkající se selhání aktualizace nebo neočekávaného NSG nebo nástroje pro vyrovnávání zatížení.
 
@@ -88,7 +88,7 @@ Microsoft a zákazníci mají odpovědnost za pracovní uzly Kubernetes, kde:
 * Základní image operačního systému obsahuje požadované dodatky (například monitorování a síťové agenty).
 * Pracovní uzly automaticky dostanou opravy operačního systému.
 * Problémy s komponentou roviny ovládacího prvku Kubernetes, které běží na pracovních uzlech, jsou automaticky opraveny. Součástí jsou tyto součásti:
-  * Kube – proxy
+  * Kube-proxy
   * Síťové tunely, které poskytují komunikační cesty k hlavním komponentám Kubernetes
   * Kubelet
   * Docker nebo Moby démon

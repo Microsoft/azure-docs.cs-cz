@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b2fe3a7995cdd88a8f63d0d865e72e9f161cf9d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 985fb505aae96f4ebd1ba8aeb61679081f303243
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905960"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245768"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 Získejte a odstraňte secretvalue prostředky sítě.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
-| delete | Odstraní zadanou hodnotu pojmenovaného tajného prostředku. |
+| odstranění | Odstraní zadanou hodnotu pojmenovaného tajného prostředku. |
 | list | Vypíše názvy všech hodnot zadaného tajného prostředku. |
 | show | Vypíše zadanou hodnotu tajného prostředku. |
 
@@ -29,14 +30,14 @@ Odstraní prostředek tajné hodnoty identifikovaný názvem. Název prostředku
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --tajný klíč-name-n [povinné] | Název tajného prostředku |
 | --Version-v [povinné] | Název tajné verze |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -51,13 +52,13 @@ Načte informace o všech prostředcích tajných hodnot zadaného tajného pros
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --tajný klíč-name-n [povinné] | Název tajného prostředku |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -70,7 +71,7 @@ Vypíše zadanou hodnotu tajného prostředku.
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --tajný klíč-name-n [povinné] | Název tajného prostředku |
 | --Version-v [povinné] | Název tajné verze |
@@ -78,7 +79,7 @@ Vypíše zadanou hodnotu tajného prostředku.
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -89,4 +90,4 @@ Vypíše zadanou hodnotu tajného prostředku.
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

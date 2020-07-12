@@ -5,16 +5,17 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f883457c2d6da6d2776bb2119caf5d09565170
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259367"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246414"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Nasazení clusteru Azure Service Fabric napříč Zóny dostupnosti
 Zóny dostupnosti v Azure je nabídka s vysokou dostupností, která chrání vaše aplikace a data při selhání datacentra. Zóna dostupnosti je jedinečné fyzické umístění vybavené nezávislým napájením, chlazením a sítí v oblasti Azure.
 
-Service Fabric podporuje clustery, které jsou rozloženy mezi Zóny dostupnosti nasazením typů uzlů, které jsou připnuté na konkrétní zóny. Tím zajistíte vysokou dostupnost vašich aplikací. Zóny dostupnosti Azure jsou k dispozici pouze ve vybraných oblastech. Další informace najdete v tématu [přehled zóny dostupnosti Azure](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Service Fabric podporuje clustery, které jsou rozloženy mezi Zóny dostupnosti nasazením typů uzlů, které jsou připnuté na konkrétní zóny. Tím zajistíte vysokou dostupnost vašich aplikací. Zóny dostupnosti Azure jsou k dispozici pouze ve vybraných oblastech. Další informace najdete v tématu [přehled zóny dostupnosti Azure](../availability-zones/az-overview.md).
 
 K dispozici jsou ukázkové šablony: [Service Fabric šablonu zóny pro různé dostupnosti](https://github.com/Azure-Samples/service-fabric-cluster-templates) .
 
@@ -135,7 +136,7 @@ Příchozí pravidla NAT nástroje pro vyrovnávání zatížení by se měla sh
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>Odchozí pravidla Load Balancer Standard SKU
-Standard Load Balancer a standardní veřejná IP adresa přináší do odchozího připojení nové možnosti a různá chování při porovnání s použitím základních SKU. Pokud chcete odchozí připojení při práci se standardními SKU, musíte ho explicitně definovat buď se standardními veřejnými IP adresami, nebo se standardními veřejnými Load Balancer. Další informace najdete v tématu [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) a [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+Standard Load Balancer a standardní veřejná IP adresa přináší do odchozího připojení nové možnosti a různá chování při porovnání s použitím základních SKU. Pokud chcete odchozí připojení při práci se standardními SKU, musíte ho explicitně definovat buď se standardními veřejnými IP adresami, nebo se standardními veřejnými Load Balancer. Další informace najdete v tématu [odchozí připojení](../load-balancer/load-balancer-outbound-connections.md) a [Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
 > Standardní šablona odkazuje na NSG, který ve výchozím nastavení povoluje veškerý odchozí provoz. Příchozí provoz je omezen na porty, které jsou požadovány pro Service Fabric operace správy. Pravidla NSG se dají upravit tak, aby splňovala vaše požadavky.

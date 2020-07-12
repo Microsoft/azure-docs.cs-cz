@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b9568d352b22d9c48789f2648489be0444823fff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea46a42fa8063aaf1d67c4f5ae0d2eef3a83fd5a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195982"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242695"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Základní hodnota zabezpečení Azure pro Azure cache pro Redis
 
@@ -711,7 +711,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
 
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 
 - Povolené typy prostředků
 
@@ -737,7 +737,7 @@ Vytváření a používání značek:https://docs.microsoft.com/azure/azure-reso
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-Nepovolené typy prostředků
+Žádné povolené typy prostředků
 
 Povolené typy prostředků
 
@@ -783,7 +783,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
 
-Nepovolené typy prostředků
+Žádné povolené typy prostředků
 
 Povolené typy prostředků
 

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649209"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243473"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak používat pojmenované hodnoty v zásadách Azure API Management
 
@@ -33,13 +34,13 @@ Každá instance API Management služby má kolekci párů klíč/hodnota, kter�
 
 ![Pojmenované hodnoty](./media/api-management-howto-properties/named-values.png)
 
-Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](/azure/api-management/api-management-policy-expressions). Například hodnota `Expression` je výraz zásady, který vrací řetězec obsahující aktuální datum a čas. Pojmenovaná hodnota `Credential` je označena jako tajná, takže její hodnota se ve výchozím nastavení nezobrazí.
+Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](./api-management-policy-expressions.md). Například hodnota `Expression` je výraz zásady, který vrací řetězec obsahující aktuální datum a čas. Pojmenovaná hodnota `Credential` je označena jako tajná, takže její hodnota se ve výchozím nastavení nezobrazí.
 
 | Name       | Hodnota                      | Tajný kód | Značky          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Hodnota      | 42                         | False  | důležitá – čísla |
-| Přihlašovací údaj | ••••••••••••••••••••••     | True   | security      |
-| Výraz | @ (DateTime. Now. ToString ()) | False  |               |
+| Hodnota      | 42                         | Ne  | důležitá – čísla |
+| Přihlašovací údaj | ••••••••••••••••••••••     | Ano   | security      |
+| Výraz | @ (DateTime. Now. ToString ()) | Ne  |               |
 
 > [!NOTE]
 > Místo pojmenovaných hodnot uložených v rámci služby API Management můžete použít hodnoty uložené ve službě [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) , jak je znázorněno v tomto [příkladu](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml).
@@ -54,7 +55,7 @@ Pojmenované hodnoty mohou obsahovat řetězce literálů a [výrazy zásad](/az
 
     Název a hodnota jsou požadované hodnoty. Pokud je hodnota tajná, zaškrtněte políčko _Toto je tajné_ . Zadejte jednu nebo více volitelných značek, které vám pomůžou s uspořádáním pojmenovaných hodnot, a klikněte na Uložit.
 
-4. Klikněte na **Vytvořit**.
+4. Klikněte na **Create** (Vytvořit).
 
 Jakmile je pojmenovaná hodnota vytvořena, můžete ji upravit kliknutím na ni. Změníte-li název pojmenované hodnoty, budou automaticky aktualizovány všechny zásady, které odkazují na tuto pojmenovanou hodnotu, aby používaly nový název.
 
@@ -109,8 +110,8 @@ Pojmenované hodnoty můžou obsahovat výrazy zásad, ale nemůžou obsahovat j
 
 -   Další informace o práci se zásadami
     -   [Zásady v API Management](api-management-howto-policies.md)
-    -   [referenční příručce o zásadách](/azure/api-management/api-management-policies)
-    -   [Výrazy zásad](/azure/api-management/api-management-policy-expressions)
+    -   [referenční příručce o zásadách](./api-management-policies.md)
+    -   [Výrazy zásad](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

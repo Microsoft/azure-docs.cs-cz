@@ -6,11 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 041767474fbc56ee7a53bcbd54f27873d17dab77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 216705ef4ff7c235179c1f1be38a993ecd2fe782
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413633"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244408"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -19,7 +20,7 @@ ms.locfileid: "85413633"
 Když je doplněk povolený, vytvoří v předplatném zónu DNS. Další informace o cenách služby DNS najdete v tématu [ceny služby DNS][dns-pricing].
 
 > [!CAUTION]
-> Doplněk pro směrování aplikací HTTP je navržený tak, aby vám umožnil rychle vytvořit kontroler příchozího přenosu dat a přistupovat k aplikacím. Tento doplněk není doporučen pro produkční použití. Pro nasazení příchozích dat do provozu, která zahrnují víc replik a podporu TLS, najdete informace v tématu [vytvoření řadiče HTTPS pro příchozí](https://docs.microsoft.com/azure/aks/ingress-tls)přenosy.
+> Doplněk pro směrování aplikací HTTP je navržený tak, aby vám umožnil rychle vytvořit kontroler příchozího přenosu dat a přistupovat k aplikacím. Tento doplněk není doporučen pro produkční použití. Pro nasazení příchozích dat do provozu, která zahrnují víc replik a podporu TLS, najdete informace v tématu [vytvoření řadiče HTTPS pro příchozí](./ingress-tls.md)přenosy.
 
 ## <a name="http-routing-solution-overview"></a>Přehled řešení směrování HTTP
 

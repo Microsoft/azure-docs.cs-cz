@@ -5,11 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b86f68126825f146a50ed21edf2acbda2b5181cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639594"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245173"
 ---
 # <a name="reliable-services-lifecycle"></a>Životní cyklus Reliable Services
 > [!div class="op_single_selector"]
@@ -114,7 +115,7 @@ Služby, které nezpracovávají zrušení čistě, můžou vyskytnout několik 
 
 Vzhledem k tomu, že služby jsou stavové, je také pravděpodobně nutné, aby služby používaly [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md). V Service Fabric, když dojde ke snížení úrovně primárního primárního obsahu, nastane jedna z prvních věcí, ke kterým dojde, aby byl přístup pro zápis do základního stavu odvolán. To vede k druhé sadě problémů, které by mohly mít vliv na životní cyklus služby. Kolekce vrací výjimky založené na časování a na tom, zda je replika přesunuta nebo vypnuta. Je důležité tyto výjimky správně zpracovat. 
 
-Výjimky vyvolané Service Fabric jsou buď trvalá [( `FabricException` )](https://docs.microsoft.com/java/api/system.fabric.exception) , nebo přechodný [( `FabricTransientException` )](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception). Trvalé výjimky by měly být protokolovány a vyvolány. Přechodné výjimky lze opakovat na základě logiky opakování.
+Výjimky vyvolané Service Fabric jsou buď trvalá [( `FabricException` )](/java/api/system.fabric.exception) , nebo přechodný [( `FabricTransientException` )](/java/api/system.fabric.exception.fabrictransientexception). Trvalé výjimky by měly být protokolovány a vyvolány. Přechodné výjimky lze opakovat na základě logiky opakování.
 
 Důležitou součástí testování a ověřování Reliable Services je zpracování výjimek, které pocházejí z použití `ReliableCollections` ve spojení s událostmi životního cyklu služby. Doporučujeme vždy spustit službu při zatížení. Před nasazením do produkčního prostředí byste také měli provést upgrady a [testování chaos](service-fabric-controlled-chaos.md) . Tyto základní kroky vám pomůžou zajistit správnou implementaci služby a tím, že se události životního cyklu zpracovávají správně.
 
@@ -129,4 +130,3 @@ Důležitou součástí testování a ověřování Reliable Services je zpracov
 ## <a name="next-steps"></a>Další kroky
 * [Úvod do Reliable Services](service-fabric-reliable-services-introduction.md)
 * [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start-java.md)
-

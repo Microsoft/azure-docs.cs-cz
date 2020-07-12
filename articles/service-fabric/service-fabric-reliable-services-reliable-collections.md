@@ -3,12 +3,12 @@ title: Seznámení s Reliable Collections
 description: Service Fabric stavové služby poskytují spolehlivé kolekce, které umožňují psát vysoce dostupné a škálovatelné cloudové aplikace a s nízkou latencí.
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81398436"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245122"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Úvod do spolehlivých kolekcí ve stavových službách Azure Service Fabric
 
@@ -40,8 +40,8 @@ Spolehlivé kolekce rozhraní API jsou vývoj souběžných kolekcí rozhraní A
 
 Dnes, **Microsoft. ServiceFabric. data. Collections** obsahuje tři kolekce:
 
-* [Reliable Dictionary](https://msdn.microsoft.com/library/azure/dn971511.aspx): představuje replikovanou, transakční a asynchronní kolekci párů klíč/hodnota. Podobně jako **ConcurrentDictionary**, klíč i hodnota mohou být libovolného typu.
-* [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): představuje replikovanou, transakční a asynchronní striktní metodu first-in, First-out (FIFO). Podobně jako **ConcurrentQueue**, hodnota může být libovolného typu.
+* [Reliable Dictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2): představuje replikovanou, transakční a asynchronní kolekci párů klíč/hodnota. Podobně jako **ConcurrentDictionary**, klíč i hodnota mohou být libovolného typu.
+* [Reliable Queue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1): představuje replikovanou, transakční a asynchronní striktní metodu first-in, First-out (FIFO). Podobně jako **ConcurrentQueue**, hodnota může být libovolného typu.
 * [Spolehlivá souběžná fronta](service-fabric-reliable-services-reliable-concurrent-queue.md): představuje replikované, transakční a asynchronní frontu pro řazení osvědčených procesů pro vysokou propustnost. Podobně jako u **ConcurrentQueue**může být hodnota libovolného typu.
 
 ## <a name="next-steps"></a>Další kroky
@@ -51,10 +51,10 @@ Dnes, **Microsoft. ServiceFabric. data. Collections** obsahuje tři kolekce:
 * [Transakce a zámky](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Správa dat
   * [Zálohování a obnovení](service-fabric-reliable-services-backup-restore.md)
-  * [Oznámení](service-fabric-reliable-services-notifications.md)
+  * [Připomenutí](service-fabric-reliable-services-notifications.md)
   * [Spolehlivá serializace kolekcí](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [Serializace a upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Konfigurace spolehlivého správce stavu](service-fabric-reliable-services-configuration.md)
 * Ostatní
   * [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start.md)
-  * [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

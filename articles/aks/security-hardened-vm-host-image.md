@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7552fc083c5ed340dc54c2a31160b0c8b4bd076
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420903"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244034"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>Posílení zabezpečení pro hostitelský operační systém uzlu agenta AKS
 
-Služba Azure Kubernetes Service (AKS) je zabezpečená služba, která vyhovuje standardům SOC, ISO, PCI DSS a HIPAA. Tento článek popisuje posílení zabezpečení použité pro hostitele virtuálních počítačů s AKS. Další informace o zabezpečení AKS najdete v tématu [koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-security).
+Služba Azure Kubernetes Service (AKS) je zabezpečená služba, která vyhovuje standardům SOC, ISO, PCI DSS a HIPAA. Tento článek popisuje posílení zabezpečení použité pro hostitele virtuálních počítačů s AKS. Další informace o zabezpečení AKS najdete v tématu [koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes Service (AKS)](./concepts-security.md).
 
 > [!Note]
 > Tento dokument je omezený na agenty Linux pouze v AKS.
@@ -32,7 +32,7 @@ Cílem hostitelského operačního systému s posíleným zabezpečením je sní
 
 * AKS poskytuje standardně optimalizovaný hostitelský operační systém. Neexistuje možnost vybrat jiný operační systém.
 
-* Azure na AKS hostitelích virtuálních počítačů aplikuje každodenní opravy (včetně oprav zabezpečení). Některé z těchto oprav budou vyžadovat restart, i když jiné nebudou. Zodpovídáte za plánování restartování hostitele virtuálních počítačů AKS podle potřeby. Pokyny k automatizaci oprav AKS najdete v tématu věnovaném [opravám AKS uzlů](https://docs.microsoft.com/azure/aks/node-updates-kured).
+* Azure na AKS hostitelích virtuálních počítačů aplikuje každodenní opravy (včetně oprav zabezpečení). Některé z těchto oprav budou vyžadovat restart, i když jiné nebudou. Zodpovídáte za plánování restartování hostitele virtuálních počítačů AKS podle potřeby. Pokyny k automatizaci oprav AKS najdete v tématu věnovaném [opravám AKS uzlů](./node-updates-kured.md).
 
 ## <a name="what-is-configured"></a>Co je nakonfigurované
 
@@ -85,8 +85,8 @@ Cílem hostitelského operačního systému s posíleným zabezpečením je sní
 
 Další informace o zabezpečení AKS najdete v následujících článcích: 
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+[Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
 
-[Požadavky na zabezpečení AKS](https://docs.microsoft.com/azure/aks/concepts-security)
+[Požadavky na zabezpečení AKS](./concepts-security.md)
 
-[Osvědčené postupy pro AKS](https://docs.microsoft.com/azure/aks/best-practices)
+[Osvědčené postupy pro AKS](./best-practices.md)

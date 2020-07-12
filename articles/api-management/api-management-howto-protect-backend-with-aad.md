@@ -12,11 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445504"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243405"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API pomocí OAuth 2.0 s využitím služeb Azure Active Directory a API Management
 
@@ -25,7 +26,7 @@ V této příručce se dozvíte, jak nakonfigurovat instanci Azure API Managemen
 > [!NOTE]
 > Tato funkce je dostupná v API Management úrovně pro **vývojáře**, **Basic**, **Standard**a **Premium** .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 
@@ -145,7 +146,7 @@ V tomto příkladu je konzole pro vývojáře klientská aplikace. Následujíc�
 
 1. Použijete-li koncové body **v1** , přidejte parametr body s názvem **Resource**. Pro hodnotu tohoto parametru použijte **ID aplikace** back-endové aplikace. 
 
-1. Pokud používáte koncové body **v2** , použijte obor, který jste vytvořili pro back-end aplikaci, do pole **výchozí obor** . Ujistěte se také, že jste [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) `2` v [manifestu aplikace](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)nastavili hodnotu pro vlastnost.
+1. Pokud používáte koncové body **v2** , použijte obor, který jste vytvořili pro back-end aplikaci, do pole **výchozí obor** . Ujistěte se také, že jste [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) `2` v [manifestu aplikace](../active-directory/develop/reference-app-manifest.md)nastavili hodnotu pro vlastnost.
 
 1. Dále zadejte pověření klienta. Toto jsou přihlašovací údaje klienta aplikace.
 
@@ -167,7 +168,7 @@ Dalším krokem je povolení autorizace uživatele OAuth 2,0 pro vaše rozhraní
 
 1. Přejděte k instanci API Management a přejděte na **rozhraní API**.
 
-1. Vyberte rozhraní API, které chcete chránit. Například, `Echo API`.
+1. Vyberte rozhraní API, které chcete chránit. Například `Echo API`.
 
 1. Přejít na **Nastavení**.
 
@@ -202,7 +203,7 @@ V tomto okamžiku, když se uživatel pokusí uskutečnit volání z konzole pro
 
 Ale co když někdo volá vaše rozhraní API bez tokenu nebo s neplatným tokenem? Například zkuste volat rozhraní API bez `Authorization` hlavičky, volání bude dál probíhat. Důvodem je, že API Management v tomto okamžiku neověřuje přístupový token. Jednoduše předá `Authorization` hlavičku back-endové rozhraní API.
 
-Pomocí zásady [ověřit token JWT](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#ValidateJWT) předem autorizujte žádosti v API Management tím, že ověříte přístupové tokeny každého příchozího požadavku. Pokud požadavek nemá platný token, API Management ho zablokuje. Přidejte například následující zásadu do `<inbound>` části Policy (zásady) v tématu `Echo API` . Kontroluje deklaraci identity cílové skupiny v přístupovém tokenu a pokud token není platný, vrátí chybovou zprávu. Informace o tom, jak nakonfigurovat zásady, najdete v tématu [nastavení nebo úprava zásad](https://docs.microsoft.com/azure/api-management/set-edit-policies).
+Pomocí zásady [ověřit token JWT](./api-management-access-restriction-policies.md#ValidateJWT) předem autorizujte žádosti v API Management tím, že ověříte přístupové tokeny každého příchozího požadavku. Pokud požadavek nemá platný token, API Management ho zablokuje. Přidejte například následující zásadu do `<inbound>` části Policy (zásady) v tématu `Echo API` . Kontroluje deklaraci identity cílové skupiny v přístupovém tokenu a pokud token není platný, vrátí chybovou zprávu. Informace o tom, jak nakonfigurovat zásady, najdete v tématu [nastavení nebo úprava zásad](./set-edit-policies.md).
 
 
 ```xml
@@ -227,7 +228,7 @@ V této příručce jste použili konzolu pro vývojáře v API Management jako 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o [Azure Active Directory a OAuth 2.0](../active-directory/develop/authentication-scenarios.md).
+- Přečtěte si další informace o [Azure Active Directory a OAuth 2.0](../active-directory/develop/authentication-vs-authorization.md).
 - Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o API Management.
 - Další způsoby zabezpečení back-endové služby najdete v tématu [vzájemné ověřování certifikátů](./api-management-howto-mutual-certificates.md).
 - [Vytvořte instanci služby API Management](./get-started-create-service-instance.md).

@@ -4,11 +4,12 @@ description: Přečtěte si o sítích ve službě Azure Kubernetes Service (AKS
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ae1c2b95a948f2344119af234539b6fab4edaaac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84789493"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244646"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -95,14 +96,14 @@ Mezi kubenet a Azure CNI existují následující rozdíly v chování:
 
 | Schopnost                                                                                   | Kubenet   | CNI Azure |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| Nasadit cluster v existující nebo nové virtuální síti                                            | Podporováno – udr ručně použito | Podporuje se |
-| Připojení pod                                                                         | Podporuje se | Podporuje se |
+| Nasadit cluster v existující nebo nové virtuální síti                                            | Podporováno – udr ručně použito | Podporováno |
+| Připojení pod                                                                         | Podporováno | Podporováno |
 | Připojení pod virtuálním počítačem; Virtuální počítač ve stejné virtuální síti                                          | Funguje při inicializaci pod | Funguje v obou směrech |
 | Připojení pod virtuálním počítačem; Virtuální počítač ve virtuální síti s partnerským vztahem                                            | Funguje při inicializaci pod | Funguje v obou směrech |
 | Místní přístup pomocí sítě VPN nebo Express Route                                                | Funguje při inicializaci pod | Funguje v obou směrech |
-| Přístup k prostředkům zabezpečeným koncovými body služby                                             | Podporuje se | Podporuje se |
-| Vystavení služeb Kubernetes pomocí služby Vyrovnávání zatížení, služby App Gateway nebo řadiče pro příchozí přenosy | Podporuje se | Podporuje se |
-| Výchozí Azure DNS a soukromé zóny                                                          | Podporuje se | Podporuje se |
+| Přístup k prostředkům zabezpečeným koncovými body služby                                             | Podporováno | Podporováno |
+| Vystavení služeb Kubernetes pomocí služby Vyrovnávání zatížení, služby App Gateway nebo řadiče pro příchozí přenosy | Podporováno | Podporováno |
+| Výchozí Azure DNS a soukromé zóny                                                          | Podporováno | Podporováno |
 
 V souvislosti se službou DNS nabízí CoreDNS sada démonů, která je spuštěná v AKS, pomocí kubenet i služby Azure CNI plugins. Další informace o CoreDNS v Kubernetes najdete v tématu [přizpůsobení služby DNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). Služba CoreDNS je nakonfigurovaná na výchozí hodnotu pro přeposílání neznámých domén na servery DNS uzlů, jinými slovy, na funkce DNS Azure Virtual Network, kde je nasazený cluster AKS. Proto Azure DNS a soukromé zóny budou fungovat pro lusky běžící v AKS.
 
@@ -134,7 +135,7 @@ Další běžnou funkcí příchozího přenosu dat je ukončení SSL/TLS. U roz
 
 Můžete taky nakonfigurovat svůj kontroler příchozího přenosu dat, aby se v požadavcích na kontejnery v clusteru AKS zachovala zdrojová IP adresa klienta. Když je požadavek klienta směrován do kontejneru v clusteru AKS prostřednictvím vašeho kontroleru příchozího přenosu dat, původní zdrojová IP adresa této žádosti nebude k dispozici pro cílový kontejner. Když povolíte *zachování IP adresy zdrojového klienta*, je zdrojová IP adresa pro klienta k dispozici v hlavičce žádosti v části *X-předáno-pro*. Pokud používáte zachování IP adresy zdrojového klienta v řadiči příchozího přenosu dat, nemůžete použít průchozí protokol TLS. U jiných služeb, jako je třeba typ *Vyrovnávání zatížení* sítě, můžete použít předávání IP adres klienta a předávací protokol TLS.
 
-## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
+## <a name="network-security-groups"></a>skupiny zabezpečení sítě,
 
 Skupina zabezpečení sítě filtruje provoz virtuálních počítačů, například uzlů AKS. Při vytváření služeb, jako je například nástroj pro vyrovnávání zatížení, platforma Azure automaticky konfiguruje všechna potřebná pravidla skupiny zabezpečení sítě. Nekonfigurujte ručně pravidla skupiny zabezpečení sítě pro filtrování provozu pro lusky v clusteru AKS. Definujte všechny požadované porty a předávání jako součást svých manifestů služby Kubernetes a umožněte, aby platforma Azure vytvořila nebo aktualizovala příslušná pravidla. Můžete také použít zásady sítě, jak je popsáno v další části, a automaticky tak použít pravidla filtru přenosu na lusky.
 
@@ -173,7 +174,7 @@ Další informace o základních konceptech Kubernetes a AKS najdete v následuj
 
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ./ingress-tls.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

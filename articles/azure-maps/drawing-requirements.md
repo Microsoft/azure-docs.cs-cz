@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ba9edba97ce89cede54287076e50eb587af10f3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791567"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242470"
 ---
 # <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
 
 [Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Balíček pro kreslení obsahuje kresby uložené ve formátu DWG, což je nativní formát souboru pro software Autodesk® pro AutoCAD, a [ochranná známka společnosti Autodesk, Inc](https://www.autodesk.com/company/legal-notices-trademarks/trademarks/guidelines-for-use#section12).
 
@@ -28,10 +29,10 @@ Můžete zvolit libovolný software CAD pro vytváření kreseb v balíčku pro 
 
 Glosář termínů používaných v tomto dokumentu.
 
-| Pojem  | Definice |
+| Označení  | Definice |
 |:-------|:------------|
 | Vrstva | Vrstva DWG AutoCADu.|
-| Úroveň | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
+| Level | Oblast budovy se zvýšenou úrovní oprávnění. Například podlaha budovy. |
 | Odkazy XREF  |Soubor ve formátu DWG AutoCADu (. dwg) připojený k primárnímu výkresu jako externí odkaz.  |
 | Funkce | Objekt, který kombinuje geometrii s dalšími informacemi o metadatech. |
 | Třídy funkcí | Běžný podrobný plán pro funkce. Například jednotka je třída funkce a kancelář je funkce. |
@@ -79,10 +80,10 @@ Následující tabulka popisuje podporované typy entit a podporované funkce pr
 | Vrstva | Typy entit | Funkce |
 | :----- | :-------------------| :-------
 | [Zpětný](#exterior-layer) | Mnohoúhelník, lomená (uzavřená), kruh | Úrovně
-| [Jednotce](#unit-layer) |  Mnohoúhelník, lomená (uzavřená), kruh | Svislé průniky, jednotky
+| [Jednotka](#unit-layer) |  Mnohoúhelník, lomená (uzavřená), kruh | Svislé průniky, jednotky
 | [Zásuvky](#wall-layer)  | Mnohoúhelník, lomená (uzavřená), kruh | Neužívá se. Další informace najdete v tématu [vrstva zdi](#wall-layer).
 | [Dveře](#door-layer) | Mnohoúhelník, Lomená čára, čára, CircularArc, kruh | Volná
-| [Zóny](#zone-layer) | Mnohoúhelník, lomená (uzavřená), kruh | Zóna
+| [Zóna](#zone-layer) | Mnohoúhelník, lomená (uzavřená), kruh | Zóna
 | [UnitLabel](#unitlabel-layer) | Text (jednořádkový řádek) | Neužívá se. Tato vrstva může přidat vlastnosti pouze do funkcí jednotek z vrstvy jednotek. Další informace naleznete na [UnitLabel vrstvě](#unitlabel-layer).
 | [ZoneLabel](#zonelabel-layer) | Text (jednořádkový řádek) | Neužívá se. Tato vrstva může do funkcí zón přidávat pouze vlastnosti z ZonesLayer. Další informace najdete v tématu [ZoneLabel vrstva](#zonelabel-layer) .
 

@@ -4,12 +4,12 @@ description: Přečtěte si, jak řešit problémy a řešit běžné problémy 
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054385"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243677"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -22,7 +22,7 @@ Je zde také [Průvodce odstraňováním potíží](https://github.com/feiskyer/
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Zobrazuje se chyba překročení kvóty při vytváření nebo upgradu. Co bych měl/a dělat? 
 
- [Vyžádejte si více jader](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+ [Vyžádejte si více jader](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Jaké je nastavení maximálního počtu lusků na uzel pro AKS?
 
@@ -34,7 +34,7 @@ Pokud nasadíte cluster AKS v rozhraní příkazového řádku Azure, je nastave
 Tato chyba znamená, že podsíť, která se používá pro cluster, už nemá k dispozici žádné IP adresy v rámci jejího CIDR pro úspěšné přiřazení prostředku. U clusterů Kubenet je požadavek pro každý uzel v clusteru dostatečným místem pro IP adresu. U clusterů Azure CNI je požadavek pro každý uzel a pod v clusteru dostatečným místem pro IP adresu.
 Přečtěte si další informace o [návrhu Azure CNI, abyste přiřadili IP adresy do lusků](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-Tyto chyby jsou také v [AKS Diagnostics](https://docs.microsoft.com/azure/aks/concepts-diagnostics) , které aktivně povrchují problémy, jako je například nedostatečná velikost podsítě.
+Tyto chyby jsou také v [AKS Diagnostics](./concepts-diagnostics.md) , které aktivně povrchují problémy, jako je například nedostatečná velikost podsítě.
 
 V následujících třech případech dojde k chybě nedostatečné velikosti podsítě:
 
@@ -217,7 +217,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | Není k dispozici |
+| 1,12 a novější | Nelze použít |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
@@ -274,7 +274,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.9 nebo novější |
 | 1.13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-| 1,15 a novější | Není k dispozici |
+| 1,15 a novější | Nelze použít |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém a váš uzel obsahuje zastaralý seznam disků, můžete zmírnit odpojením všech neexistujících disků z virtuálního počítače jako hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
@@ -293,7 +293,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1.12 | 1.12.10 nebo novější |
 | 1.13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
-| 1,15 a novější | Není k dispozici |
+| 1,15 a novější | Nelze použít |
 
 Pokud používáte verzi Kubernetes, která nemá opravu pro tento problém, a váš uzel je ve stavu selhání, můžete zmírnit ruční aktualizací stavu virtuálního počítače pomocí jedné z následujících akcí:
 
@@ -402,7 +402,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 |--|:--:|
 | 1.12 | 1.12.6 nebo novější |
 | 1.13 | 1.13.4 nebo novější |
-| 1,14 a novější | Není k dispozici |
+| 1,14 a novější | Nelze použít |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 

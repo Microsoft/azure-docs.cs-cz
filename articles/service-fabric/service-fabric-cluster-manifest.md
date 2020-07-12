@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458374"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246567"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace samostatného clusteru Windows
 Tento článek popisuje nastavení konfigurace samostatného clusteru Azure Service Fabric, který je možné nastavit v *ClusterConfig.jsv* souboru. Tento soubor použijete k zadání informací o uzlech clusteru, konfiguracích zabezpečení a topologii sítě z hlediska selhání a upgradovacích domén.  Po změně nebo přidání nastavení konfigurace můžete buď [vytvořit samostatný cluster](service-fabric-cluster-creation-for-windows-server.md) , nebo [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -88,7 +89,7 @@ V části diagnosticsStore můžete nakonfigurovat parametry pro povolení diagn
 }
 ```
 
-Metadata jsou popisem diagnostiky clusteru a lze je nastavit podle nastavení. Tyto proměnné pomáhají při shromažďování protokolů trasování ETW a výpisů stavu systému a také čítačů výkonu. Další informace o protokolech trasování ETW najdete v tématu [nástroji tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) a [trasování událostí pro Windows](https://msdn.microsoft.com/library/ms751538.aspx). Všechny protokoly, včetně [výpisů stavu systému](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) a [čítačů výkonu](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx), je možné směrovat do složky ConnectionString na vašem počítači. Pomocí AzureStorage můžete také ukládat diagnostiku. Podívejte se na následující vzorový fragment:
+Metadata jsou popisem diagnostiky clusteru a lze je nastavit podle nastavení. Tyto proměnné pomáhají při shromažďování protokolů trasování ETW a výpisů stavu systému a také čítačů výkonu. Další informace o protokolech trasování ETW najdete v tématu [nástroji tracelog](/windows-hardware/drivers/devtest/tracelog) a [trasování událostí pro Windows](/dotnet/framework/wcf/samples/etw-tracing). Všechny protokoly, včetně [výpisů stavu systému](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) a [čítačů výkonu](/windows/win32/perfctrs/performance-counters-portal), je možné směrovat do složky ConnectionString na vašem počítači. Pomocí AzureStorage můžete také ukládat diagnostiku. Podívejte se na následující vzorový fragment:
 
 ```json
 "diagnosticsStore": {
@@ -192,7 +193,7 @@ Chcete-li nakonfigurovat funkce doplňku, nakonfigurujte apiVersion jako 04-2017
     ]
 }
 ```
-Všechny dostupné funkce doplňku se dají zobrazit v [odkazu Service Fabric REST API](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures).
+Všechny dostupné funkce doplňku se dají zobrazit v [odkazu Service Fabric REST API](/rest/api/servicefabric/sfrp-model-addonfeatures).
 
 ### <a name="container-support"></a>Podpora kontejnerů
 Pokud chcete povolit podporu kontejnerů pro kontejnery Windows serveru i pro kontejnery Hyper-V pro samostatné clustery, musí být povolená funkce doplňku služba DNSservice.
@@ -203,4 +204,3 @@ PoClusterConfig.jsdokončení nastavení souboru *na* základě samostatné inst
 Pokud máte nasazen samostatný cluster, můžete také [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md). 
 
 Naučte [se vizualizovat cluster pomocí Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
-

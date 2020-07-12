@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d9ebf77862f7b9b019507613e269126501abfd8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735332"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244918"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
 Reverzní proxy server integrovaný do Azure Service Fabric pomáhá mikroslužbám běžícím v clusteru Service Fabric zjišťovat a komunikovat s dalšími službami, které mají koncové body http.
@@ -117,7 +117,7 @@ Service Fabric reverzní proxy server se znovu pokusí znovu přeložit adresu s
 
 Repliky nebo instance služby však mohou sdílet hostitelský proces a mohou také sdílet port, pokud je hostován webovým serverem http.sys, včetně:
 
-* [System .NET. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [System .NET. HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
 * [ASP.NET Core weblisten](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
@@ -155,7 +155,7 @@ Service Fabric služby, které běží v kontejnerech Docker Compose, vyžadují
 * [Diagnostika událostí reverzního proxy serveru](service-fabric-reverse-proxy-diagnostics.md)
 * Podívejte se na příklad komunikace HTTP mezi službami ve [vzorovém projektu na GitHubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Vzdálená volání procedur s Reliable Services Vzdálená komunikace](service-fabric-reliable-services-communication-remoting.md)
-* [Webové rozhraní API, které používá OWIN v Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Webové rozhraní API, které používá OWIN v Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Komunikace WCF pomocí Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png

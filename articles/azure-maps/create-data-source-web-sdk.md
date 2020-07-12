@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0334e03f2d4f34913f2f96610868b5ffe169013
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207494"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242555"
 ---
 # <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
@@ -71,16 +71,69 @@ dataSource.setShapes(geoJsonData);
 
 **Zdroj vektorové dlaždice**
 
-Zdroj vektorové dlaždice popisuje, jak přistupovat k vrstvě vektorové dlaždice. Použijte třídu [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) k vytvoření instance zdroje vektorové dlaždice. Vrstvy vektorové dlaždice jsou podobné vrstvám dlaždic, ale nejsou stejné. Vrstva dlaždice je rastrový obrázek. Vrstvy vektorové dlaždice jsou komprimovaný soubor ve formátu PBF. Tento komprimovaný soubor obsahuje data vektorové mapy a jednu nebo více vrstev. Soubor lze vykreslit a stylovat na straně klienta na základě stylu jednotlivých vrstev. Data ve vektorové dlaždici obsahují geografické funkce ve formě bodů, čar a mnohoúhelníků. Je několik výhod používání vrstev vektorových dlaždic namísto vrstev rastrových dlaždic:
+Zdroj vektorové dlaždice popisuje, jak přistupovat k vrstvě vektorové dlaždice. Použijte třídu [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) k vytvoření instance zdroje vektorové dlaždice. Vrstvy vektorové dlaždice jsou podobné vrstvám dlaždic, ale nejsou stejné. Vrstva dlaždice je rastrový obrázek. Vrstvy vektorové dlaždice jsou komprimovaný soubor ve formátu **PBF** . Tento komprimovaný soubor obsahuje data vektorové mapy a jednu nebo více vrstev. Soubor lze vykreslit a stylovat na straně klienta na základě stylu jednotlivých vrstev. Data ve vektorové dlaždici obsahují geografické funkce ve formě bodů, čar a mnohoúhelníků. Je několik výhod používání vrstev vektorových dlaždic namísto vrstev rastrových dlaždic:
 
  - Velikost souboru vektorové dlaždice je obvykle mnohem menší než ekvivalentní rastrová dlaždice. V takovém případě se používá menší šířka pásma. Znamená nižší latenci, rychlejší mapu a lepší uživatelské prostředí.
  - Vzhledem k tomu, že se na klientovi vykreslují vektorové dlaždice, přizpůsobuje se rozlišení zařízení, ve kterém se zobrazují. Výsledkem je, že vykreslené mapy jsou lépe definovány a s jasnými popisky.
  - Změna stylu dat ve vektorových mapách nepotřebuje stahovat data znovu, protože nový styl lze použít na straně klienta. Naopak změna stylu vrstvy rastrového dlaždice obvykle vyžaduje načtení dlaždic ze serveru a následné použití nového stylu.
  - Vzhledem k tomu, že data jsou doručena v vektorovém formátu, je pro přípravu dat vyžadováno méně zpracování na straně serveru. V důsledku toho je možné novější data zpřístupnit rychleji.
 
-Všechny vrstvy, které používají vektorový zdroj, musí určovat `sourceLayer` hodnotu.
+Azure Maps dodržuje [specifikaci vektorové dlaždice Mapbox](https://github.com/mapbox/vector-tile-spec), což je otevřený standard. Azure Maps poskytuje následující služby vektorových dlaždic jako součást platformy:
 
-Azure Maps dodržuje [specifikaci vektorové dlaždice Mapbox](https://github.com/mapbox/vector-tile-spec), což je otevřený standard.
+- [documentation](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile) v dokumentaci k částem silničních bloků
+- [documentation](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles) v dokumentaci k incidentům přenosu
+- [documentation](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [Podrobnosti o formátu dat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles) v dokumentaci toku provozu
+- Azure Maps Creator taky umožňuje vytvořit vlastní vektorové dlaždice a získat přístup přes [vykreslování dlaždice získat 2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) .
+
+> [!TIP]
+> Když použijete dlaždice vektorového nebo rastrového obrázku ze služby Azure Maps Renderer s webovou sadou SDK, můžete nahradit `atlas.microsoft.com` zástupným symbolem `{azMapsDomain}` . Tento zástupný symbol bude nahrazen stejnou doménou, kterou používá mapa, a automaticky bude automaticky připojovat stejné podrobnosti ověřování. To významně zjednodušuje ověřování pomocí služby vykreslování při použití Azure Active Directory ověřování.
+
+Chcete-li zobrazit data ze zdroje vektorové dlaždice na mapě, připojte zdroj k jedné z vrstev vykreslování dat. Všechny vrstvy, které používají zdroj vektorů, musí `sourceLayer` v možnostech určovat hodnotu. FThe následující kód načte službu vektorového toku Azure Maps provozu jako zdroj vektorové dlaždice a pak ji zobrazí na mapě pomocí spojnicové vrstvy. Tento zdroj dlaždice vektoru má jednu sadu dat ve zdrojové vrstvě s názvem "přenosový tok". Řádková data v této datové sadě obsahují vlastnost s názvem `traffic_level` , která se používá v tomto kódu k výběru barvy a škálování velikosti řádků.
+
+```javascript
+//Create a vector tile source and add it to the map.
+var datasource = new atlas.source.VectorTileSource(null, {
+    tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
+    maxZoom: 22
+});
+map.sources.add(datasource);
+
+//Create a layer for traffic flow lines.
+var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+    //The name of the data layer within the data source to pass into this rendering layer.
+    sourceLayer: 'Traffic flow',
+
+    //Color the roads based on the traffic_level property. 
+    strokeColor: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 'red',
+        0.33, 'orange',
+        0.66, 'green'
+    ],
+
+    //Scale the width of roads based on the traffic_level property. 
+    strokeWidth: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 6,
+        1, 1
+    ]
+});
+
+//Add the traffic flow layer below the labels to make the map clearer.
+map.layers.add(flowLayer, 'labels');
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Vrstva čáry vektorové dlaždice" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+V CodePen () na se podívejte na <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>dlaždici Azure Maps čáry dlaždice pera Vector</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+<br/>
 
 ## <a name="connecting-a-data-source-to-a-layer"></a>Připojení zdroje dat ke vrstvě
 

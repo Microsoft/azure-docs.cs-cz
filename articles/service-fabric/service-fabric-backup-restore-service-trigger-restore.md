@@ -5,11 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75377901"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246686"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Obnovování zálohy v Azure Service Fabric
 
@@ -22,7 +23,7 @@ Můžete například nakonfigurovat službu, která bude zálohovat svá data a 
 - **Případ ztráty dat**: náhodné odstranění nebo poškození služby. Správce například omylem odstraní službu.
 - **Případ poškození dat**: chyby ve službě způsobují poškození dat. Například poškození dat může nastat, pokud upgrade kódu služby zapisuje vadná data do spolehlivé kolekce. V takovém případě může být nutné obnovit kód i data do předchozího stavu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Aby bylo možné spustit obnovení, musí být pro cluster povolená _služba analýzy chyb (v)_ .
 - _Služba obnovení záloh (BRS)_ vytvořila zálohu.
@@ -51,7 +52,7 @@ Obnovení můžete spustit pro kterýkoli z následujících scénářů:
 
 ### <a name="data-restore-in-the-case-of-disaster-recovery"></a>Obnovení dat v případě zotavení po havárii
 
-Pokud dojde ke ztrátě celého Service Fabric clusteru, můžete obnovit data pro oddíly spolehlivé stavové služby a Reliable Actors. Požadovaná záloha se dá vybrat ze seznamu při použití [GetBackupAPI s podrobnostmi úložiště zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation). Výčet zálohování může být pro aplikaci, službu nebo oddíl.
+Pokud dojde ke ztrátě celého Service Fabric clusteru, můžete obnovit data pro oddíly spolehlivé stavové služby a Reliable Actors. Požadovaná záloha se dá vybrat ze seznamu při použití [GetBackupAPI s podrobnostmi úložiště zálohování](/rest/api/servicefabric/sfclient-api-getbackupsfrombackuplocation). Výčet zálohování může být pro aplikaci, službu nebo oddíl.
 
 V následujícím příkladu Předpokládejme, že ztracený cluster je stejný jako cluster, na který se odkazuje v [Povolení pravidelného zálohování pro spolehlivou stavovou službu a Reliable Actors](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). V tomto případě `SampleApp` je nasazen se zapnutou zásadou zálohování a zálohy jsou nakonfigurovány na Azure Storage.
 
@@ -165,7 +166,7 @@ Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -Backup
 
 #### <a name="rest-call-using-powershell"></a>Volání REST pomocí PowerShellu
 
-Pomocí následujícího [rozhraní API pro obnovení](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)vyžádáte obnovení na oddíl záložního clusteru:
+Pomocí následujícího [rozhraní API pro obnovení](/rest/api/servicefabric/sfclient-api-restorepartition)vyžádáte obnovení na oddíl záložního clusteru:
 
 ```powershell
 
@@ -305,7 +306,7 @@ Požadavek na obnovení bude postupovat v následujícím pořadí:
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **Časový limit**: stav obnovy _časového limitu_ označuje, že žádost má časový limit. Vytvořte novou žádost o obnovení s větším [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout). Výchozí časový limit je 10 minut. Před opětovným požadováním obnovení se ujistěte, že oddíl není ve stavu ztráty dat.
+    - **Časový limit**: stav obnovy _časového limitu_ označuje, že žádost má časový limit. Vytvořte novou žádost o obnovení s větším [RestoreTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout). Výchozí časový limit je 10 minut. Před opětovným požadováním obnovení se ujistěte, že oddíl není ve stavu ztráty dat.
      
         ```
         RestoreState  : Timeout
@@ -316,15 +317,15 @@ Požadavek na obnovení bude postupovat v následujícím pořadí:
 
 ## <a name="automatic-restore"></a>Automatické obnovení
 
-Pro _Automatické obnovení_můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V části zásada zálohování je nastavena `AutoRestore` na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace naleznete v tématech:
+Pro _Automatické obnovení_můžete nakonfigurovat Reliable stavovou službu a Reliable Actors oddíly v clusteru Service Fabric. V části zásada zálohování je nastavena `AutoRestore` na _hodnotu true_. Povolení _automatického obnovení_ automaticky obnoví data z poslední zálohy oddílu při hlášení ztráty dat. Další informace najdete tady:
 
 - [Povolení automatického obnovení v zásadách zálohování](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
-- [Reference k rozhraní API RestorePartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)
-- [Reference k rozhraní API GetPartitionRestoreProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
+- [Reference k rozhraní API RestorePartition](/rest/api/servicefabric/sfclient-api-restorepartition)
+- [Reference k rozhraní API GetPartitionRestoreProgress](/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
 ## <a name="next-steps"></a>Další kroky
 - [Principy konfigurace pravidelného zálohování](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Odkaz na REST API obnovení zálohy](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Odkaz na REST API obnovení zálohy](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [2]: ./media/service-fabric-backuprestoreservice/restore-partition-backup.png
 [3]: ./media/service-fabric-backuprestoreservice/restore-partition-fileshare.png

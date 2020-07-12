@@ -4,12 +4,12 @@ description: Přečtěte si o škálování ve službě Azure Kubernetes Service
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223835"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244510"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ V tomto článku se seznámíte se základními koncepty, které vám pomůžou 
 
 Můžete ručně škálovat repliky (lusky) a uzly, abyste otestovali, jak vaše aplikace reaguje na změnu dostupných prostředků a stavu. Ruční škálování prostředků také umožňuje definovat sadu množství prostředků, které se mají použít k údržbě pevných nákladů, jako je třeba počet uzlů. Chcete-li ručně škálovat, definujte počet replik nebo uzlů. Rozhraní Kubernetes API pak plánuje vytváření dalších lusků nebo vyprazdňování uzlů na základě této repliky nebo počtu uzlů.
 
-Při horizontálním škálování uzlů volá rozhraní API Kubernetes příslušné rozhraní API služby Azure COMPUTE vázané na výpočetní typ používaný clusterem. Například pro clustery založené na VM Scale Sets logiku pro výběr uzlů, které mají být odebrány, je určena rozhraním API VM Scale Sets. Další informace o tom, jak jsou uzly vybrané k odstranění při horizontálním navýšení kapacity, najdete v tématu [VMSS – Nejčastější dotazy](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
+Při horizontálním škálování uzlů volá rozhraní API Kubernetes příslušné rozhraní API služby Azure COMPUTE vázané na výpočetní typ používaný clusterem. Například pro clustery založené na VM Scale Sets logiku pro výběr uzlů, které mají být odebrány, je určena rozhraním API VM Scale Sets. Další informace o tom, jak jsou uzly vybrané k odstranění při horizontálním navýšení kapacity, najdete v tématu [VMSS – Nejčastější dotazy](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
 
 Pokud chcete začít s ručním škálováním v luskech a uzlech, přečtěte si téma [škálování aplikací v AKS][aks-scale]
 
@@ -111,7 +111,7 @@ Další informace o základních konceptech Kubernetes a AKS najdete v následuj
 [aks-scale]: tutorial-kubernetes-scale.md
 [aks-manually-scale-pods]: tutorial-kubernetes-scale.md#manually-scale-pods
 [aks-manually-scale-nodes]: tutorial-kubernetes-scale.md#manually-scale-aks-nodes
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-storage]: concepts-storage.md

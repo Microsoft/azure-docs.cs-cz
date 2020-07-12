@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 84800f978790a114b80c415a5e5e3dad77eaf8da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122271"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244256"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Použití Azure RBAC pro autorizaci Kubernetes (Preview)
 
@@ -31,7 +31,7 @@ Možnost spravovat RBAC pro prostředky Kubernetes z Azure vám dává možnost 
 > - [Zásady podpory AKS](support-policies.md)
 > - [Nejčastější dotazy k podpoře Azure](faq.md)
 
-### <a name="prerequisites"></a>Požadavky 
+### <a name="prerequisites"></a>Předpoklady 
 - Zaregistrujte se do verze Preview <https://aka.ms/aad-rbac-sign-up-form> .
 - Ujistěte se, že máte `EnableAzureRBACPreview` povolený příznak funkce.
 - Ujistěte se, že máte `AAD-V2` povolený příznak funkce.
@@ -122,7 +122,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad --enable-azure
 AKS poskytuje následující čtyři předdefinované role:
 
 
-| Role                                | Description  |
+| Role                                | Popis  |
 |-------------------------------------|--------------|
 | Prohlížeč RBAC pro službu Azure Kubernetes  | Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Nepovoluje zobrazení rolí nebo vazeb rolí. Tato role nepovoluje zobrazení `Secrets` , protože čtení obsahu tajných kódů umožňuje přístup k přihlašovacím údajům ServiceAccount v oboru názvů, což by mohlo povolit přístup k rozhraní API jako libovolný ServiceAccount v oboru názvů (forma eskalace oprávnění).  |
 | Zapisovač RBAC služby Azure Kubernetes | Povoluje přístup pro čtení a zápis většiny objektů v oboru názvů. Tato role nepovoluje prohlížení a úpravy rolí nebo vazeb rolí. Tato role však umožňuje přístup k `Secrets` luskům a jejich spuštění jako libovolných ServiceAccount v oboru názvů, takže se dá použít k získání úrovní přístupu rozhraní API všech ServiceAccount v oboru názvů. |
@@ -215,7 +215,7 @@ az aks get-credentials -g MyResourceGroup -n MyManagedCluster
 ```
 
 > [!IMPORTANT]
-> K provedení výše uvedeného kroku budete potřebovat integrovanou roli [uživatele clusteru Azure Kubernetes Service](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) .
+> K provedení výše uvedeného kroku budete potřebovat integrovanou roli [uživatele clusteru Azure Kubernetes Service](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) .
 
 Teď můžete kubectl použít například k vypsání uzlů v clusteru. Když ho spustíte poprvé, budete se muset přihlásit a následné příkazy budou používat příslušný přístupový token.
 

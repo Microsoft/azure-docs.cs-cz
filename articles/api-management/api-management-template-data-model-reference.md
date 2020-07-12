@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690027"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243150"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Referenční informace k datovému modelu šablony Azure API Management
 Toto téma popisuje entity a typy reprezentace pro běžné položky používané v datových modelech pro šablony portálu pro vývojáře v Azure API Management.  
   
- Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+ Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](./api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -37,7 +38,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 -   [Ukázka kódu](#Sample)  
 -   [Komentář](#Comment)  
 -   [Filtrování](#Filtering)  
--   [Hlaviček](#Header)  
+-   [Hlavička](#Header)  
 -   [Požadavek HTTP](#HTTPRequest)  
 -   [Odpověď HTTP](#HTTPResponse)  
 -   [Chybu](#Issue)  
@@ -66,7 +67,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 |`serviceUrl`|řetězec|Absolutní adresa URL back-end služby implementující toto rozhraní API.|  
 |`path`|řetězec|Relativní adresa URL jednoznačně identifikuje toto rozhraní API a všechny jeho cesty k prostředkům v rámci instance služby API Management. Připojí se k základní adrese URL koncového bodu rozhraní API zadané během vytváření instance služby za účelem vytvoření veřejné adresy URL pro toto rozhraní API.|  
 |`protocols`|pole čísla|V této části najdete popis protokolů, které mohou být operace v tomto rozhraní API vyvolány. Povolené hodnoty jsou `1 - http` a `2 - https` , nebo obojí.|  
-|`authenticationSettings`|[Nastavení ověřování autorizačního serveru](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Kolekce nastavení ověřování zahrnutá v tomto rozhraní API|  
+|`authenticationSettings`|[Nastavení ověřování autorizačního serveru](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Kolekce nastavení ověřování zahrnutá v tomto rozhraní API|  
 |`subscriptionKeyParameterNames`|odkazy objektů|Volitelná vlastnost, která se dá použít k zadání vlastních názvů pro parametry dotazu nebo hlavičky obsahující klíč předplatného Pokud je tato vlastnost přítomna, musí obsahovat alespoň jednu ze dvou následujících vlastností.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a>Přehled rozhraní API  
@@ -126,7 +127,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="comment"></a><a name="Comment"></a>Vytvořena  
  `API`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`Id`|číslo|ID komentáře|  
 |`CommentText`|řetězec|Tělo komentáře Může zahrnovat HTML.|  
@@ -183,7 +184,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>Odpověď HTTP  
  V této části je popsána `response` reprezentace.  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`statusCode`|kladné celé číslo|Stavový kód odezvy operace.|  
 |`description`|řetězec|Popis odezvy operace.|  
@@ -226,7 +227,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="paging"></a><a name="Paging"></a>Přenosu  
  `paging`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`Page`|číslo|Číslo aktuální stránky|  
 |`PageSize`|číslo|Maximální výsledky, které mají být zobrazeny na jedné stránce.|  
@@ -263,7 +264,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="provider"></a><a name="Provider"></a>Zprostředkovatele  
  `provider`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`Properties`|slovník řetězců|Vlastnosti tohoto zprostředkovatele ověřování.|  
 |`AuthenticationType`|řetězec|Typ poskytovatele. (Azure Active Directory, přihlášení na Facebooku, účet Google, účet Microsoft, Twitter).|  
@@ -345,7 +346,7 @@ Toto téma popisuje entity a typy reprezentace pro běžné položky používan�
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a>Registrace uživatele  
  `user sign up`Entita má následující vlastnosti:  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|Boolean|Hodnota, kterou používá ovládací prvek registrace [pro registraci](api-management-page-controls.md#sign-up)|  
 |`Password`|řetězec|Heslo k uživatelskému účtu.|  

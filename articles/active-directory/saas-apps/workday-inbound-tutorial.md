@@ -15,11 +15,12 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6415214e5d6b71d174e5117c1cf1e41af381334c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bbd461072a137bf32874805e5c6171d1102ef0c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84013558"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245343"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -43,7 +44,7 @@ Cílem tohoto kurzu je Ukázat kroky, které musíte provést při zřizování 
 
 * **Pracovní zařazení zaměstnanců** – když se zaměstnanec v Workday odkoupí, jeho starý účet se dá automaticky znovu aktivovat nebo znovu zřídit (v závislosti na vaší preferenci) pro Active Directory, Azure Active Directory a volitelně Office 365 a [Další aplikace SaaS podporované službou Azure AD](../app-provisioning/user-provisioning.md).
 
-### <a name="whats-new"></a>Co je nového
+### <a name="whats-new"></a>Novinky
 V této části jsou zachycena nedávná vylepšení integrace pracovního dne. Seznam komplexních aktualizací, plánovaných změn a archivů najdete na stránce [co je nového v Azure Active Directory?](../fundamentals/whats-new.md) 
 
 * **Květen 2020 – možnost zápisu telefonních čísel do Workday:** Navíc k e-mailu a uživatelskému jménu teď můžete do pracovního dne služby Azure AD znovu spustit zpětný zápis a číslo mobilního telefonu. Další podrobnosti najdete v [kurzu aplikace zpětného zápisu](workday-writeback-tutorial.md).
@@ -262,7 +263,7 @@ Pomocí následujících kroků nastavte účet služby, který se dá použít 
 > Pokud chcete omezit zřizovacího agenta jenom na vytváření a čtení uživatelů z určité organizační jednotky pro účely testování, pak doporučujeme delegovat ovládací prvek na příslušné úrovni organizační jednotky během testovacích běhů.
 
 4. Na úvodní obrazovce klikněte na **Další** . 
-5. Na obrazovce **Vybrat uživatele nebo skupiny** přidejte uživatele domény, který jste vytvořili v kroku 2. Klikněte na **Další**.
+5. Na obrazovce **Vybrat uživatele nebo skupiny** přidejte uživatele domény, který jste vytvořili v kroku 2. Klikněte na **Next** (Další).
    >[!div class="mx-imgBorder"]
    >![Přidat obrazovku](./media/workday-inbound-tutorial/delegation-wizard-01.png "Přidat obrazovku")
 
@@ -290,7 +291,7 @@ Tato část popisuje kroky pro zřizování uživatelských účtů z Workday do
 
 **Konfigurace pracovního dne pro zřizování služby Active Directory:**
 
-1. Přejděte do části <https://portal.azure.com> (Soubor > Nový > Jiné).
+1. Přejděte na <https://portal.azure.com>.
 
 2. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 
@@ -532,7 +533,7 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
-2. Klikněte na **Uložit**.
+2. Klikněte na **Save** (Uložit).
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi pracovního dne. 
 
@@ -683,12 +684,7 @@ Nahraďte proměnné [proxy-server] a [proxy-port] hodnotami názvu a portu vaš
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Návody zajistěte, aby agent zřizování mohl komunikovat s tenant Azure AD, a žádné brány firewall neblokují porty vyžadované agentem?
 
-Můžete taky zkontrolovat, jestli máte všechny požadované porty otevřené, a to tak, že otevřete [Nástroj pro testování portů konektoru](https://aadap-portcheck.connectorporttest.msappproxy.net/) z místní sítě. Více zelených značek znamená větší odolnost.
-
-Abyste se ujistili, že vám nástroj poskytne správné výsledky, nezapomeňte:
-
-* Otevřete nástroj v prohlížeči ze serveru, na který jste nainstalovali agenta zřizování.
-* Zajistěte, aby se na této stránce používaly taky všechny proxy servery nebo brány firewall, které platí pro vašeho agenta zřizování. To lze provést v aplikaci Internet Explorer tak, že na **nastavení > možnosti Internetu – > připojení – > nastavení sítě LAN**. Na této stránce se zobrazí pole "použít proxy server pro vaši síť LAN". Zaškrtněte toto políčko a adresu proxy umístěte do pole adresa.
+Můžete také ověřit, zda jsou všechny [požadované porty](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports) otevřeny.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Je možné nakonfigurovat jednoho agenta zřizování pro zřizování více domén služby AD?
 

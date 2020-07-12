@@ -3,17 +3,18 @@ title: Azure Service Fabric – použití Service Fabricch odkazů na Trezor kl�
 description: Tento článek vysvětluje, jak používat podporu KeyVaultReference Service-Fabric pro tajné klíče pro aplikace.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76545479"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246159"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Podpora KeyVaultReference pro aplikace Service Fabric (Preview)
 
 Běžným problémem při sestavování cloudových aplikací je bezpečné ukládání tajných kódů vyžadovaných vaší aplikací. Můžete například chtít uložit přihlašovací údaje úložiště kontejnerů do trezoru klíčů a odkazovat na něj v manifestu aplikace. Service Fabric KeyVaultReference používá Service Fabric spravovanou identitu a usnadňuje referenční informace trezoru klíčů. Zbývající část tohoto článku podrobně popisuje, jak používat Service Fabric KeyVaultReference a obsahuje některé typické využití.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Spravovaná identita pro aplikaci (MIT)
     
@@ -148,7 +149,7 @@ KeyVaultReference je podporovaný typ pro RepositoryCredentials kontejneru, ní�
         <RepositoryCredentials AccountName="user1" Type="KeyVaultReference" Password="https://ttkvault.vault.azure.net/secrets/containerpwd/e225bd97e203430d809740b47736b9b8"/>
       </ContainerHostPolicies>
 ```
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 - Pro podporu KeyVaultReference je potřeba povolit spravovanou identitu, aktivace vaší aplikace selže, pokud se KeyVaultReference použije bez povolení spravované identity.
 
 - Pokud používáte identitu přiřazenou systémem, je vytvořena až po nasazení aplikace a tím se vytvoří cyklická závislost. Jakmile je vaše aplikace nasazená, můžete k trezoru klíčů udělit oprávnění k přístupu k identitě přidělené systémem. Identitu přiřazenou systémem můžete najít podle názvu {cluster}/{Application Name}/{ServiceName}
@@ -157,4 +158,4 @@ KeyVaultReference je podporovaný typ pro RepositoryCredentials kontejneru, ní�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Dokumentace k trezoru klíčů Azure](https://docs.microsoft.com/azure/key-vault/)
+* [Dokumentace k trezoru klíčů Azure](../key-vault/index.yml)

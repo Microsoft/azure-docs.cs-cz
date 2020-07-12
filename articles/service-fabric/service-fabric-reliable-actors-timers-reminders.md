@@ -3,11 +3,12 @@ title: Reliable Actors časovače a připomenutí
 description: Úvod do časovačů a připomenutí Service Fabric Reliable Actors, včetně pokynů k použití jednotlivých.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996355"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245943"
 ---
 # <a name="actor-timers-and-reminders"></a>Časovače a připomenutí objektu actor
 Objekty actor mohou naplánovat pravidelnou práci sami registrací časovačů nebo připomenutí. Tento článek ukazuje, jak používat časovače a připomenutí a vysvětluje rozdíly mezi nimi.
@@ -129,7 +130,7 @@ Připomenutí jsou mechanismem, jak aktivovat trvalá zpětná volání v objekt
 > [!NOTE]
 > Spolehlivost upomínek je vázána na záruky spolehlivosti stavu poskytované poskytovatelem stavu objektu actor. To znamená, že u aktérů, jejichž trvalost stavu je nastavená na *none*, se připomenutí po převzetí služeb při selhání neaktivují.
 
-Pro registraci připomenutí volá objekt actor [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) metodu poskytnutou pro základní třídu, jak je znázorněno v následujícím příkladu:
+Pro registraci připomenutí volá objekt actor [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) metodu poskytnutou pro základní třídu, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 protected override async Task OnActivateAsync()

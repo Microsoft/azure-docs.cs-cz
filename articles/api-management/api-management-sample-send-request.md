@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5f6b4d2d197bbd4f4aff9236837eab062b4a63
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190013"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243303"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Použití externích služeb ze služby Azure API Management
 Zásady, které jsou dostupné ve službě Azure API Management, můžou provádět nejrůznější práci založenou čistě na příchozím požadavku, odchozí odpovědi a základní informace o konfiguraci. Je ale možné pracovat s externími službami ze zásad API Management otevírá mnoho dalších příležitostí.
@@ -26,7 +27,7 @@ Zásady, které jsou dostupné ve službě Azure API Management, můžou provád
 Dříve jste viděli, jak komunikovat se [službou centra událostí Azure za účelem protokolování, monitorování a analýzy](api-management-log-to-eventhub-sample.md). Tento článek popisuje zásady, které umožňují interakci s libovolnou externí službou založenou na protokolu HTTP. Tyto zásady se dají použít k aktivaci vzdálených událostí nebo k získání informací, které se používají k manipulaci s původním požadavkem a odpovědí v nějakým způsobem.
 
 ## <a name="send-one-way-request"></a>Send – One-Way – požadavek
-Nejjednodušší vnější interakce je stylem požáru a zapomenutí požadavku, který umožňuje externí službě upozorňovat na určitý druh důležité události. Zásady toku řízení se `choose` dají použít k detekci libovolného druhu stavu, který vás zajímá.  Pokud je podmínka splněná, můžete vytvořit externí požadavek HTTP pomocí zásady [Odeslat a jednosměrné žádosti](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) . Může se jednat o požadavek na systém zasílání zpráv, jako je HipChat nebo časová rezerva nebo poštovní rozhraní API, jako je SendGrid nebo MailChimp, nebo pro kritické incidenty podpory, jako je PagerDuty. Všechny tyto systémy zasílání zpráv mají jednoduchá rozhraní API HTTP, která lze vyvolat.
+Nejjednodušší vnější interakce je stylem požáru a zapomenutí požadavku, který umožňuje externí službě upozorňovat na určitý druh důležité události. Zásady toku řízení se `choose` dají použít k detekci libovolného druhu stavu, který vás zajímá.  Pokud je podmínka splněná, můžete vytvořit externí požadavek HTTP pomocí zásady [Odeslat a jednosměrné žádosti](./api-management-advanced-policies.md#SendOneWayRequest) . Může se jednat o požadavek na systém zasílání zpráv, jako je HipChat nebo časová rezerva nebo poštovní rozhraní API, jako je SendGrid nebo MailChimp, nebo pro kritické incidenty podpory, jako je PagerDuty. Všechny tyto systémy zasílání zpráv mají jednoduchá rozhraní API HTTP, která lze vyvolat.
 
 ### <a name="alerting-with-slack"></a>Upozorňování s časovou rezervou
 Následující příklad ukazuje, jak odeslat zprávu do chatovací místnosti s časovou rezervou, pokud je stavový kód odpovědi HTTP větší nebo roven 500. Chyba rozsahu 500 indikuje problém s rozhraním API back-end, které klient rozhraní API nemůže vyřešit sami. Obvykle vyžaduje určitý druh zásahu v API Management část.  
@@ -61,7 +62,7 @@ Následující příklad ukazuje, jak odeslat zprávu do chatovací místnosti s
 ![Webový zavěšení časové rezervy](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>Je požár a zapomenout dostatečně dobrý?
-Při použití stylu požáru a zapomenutí žádosti se používají určité kompromisy. Pokud z nějakého důvodu požadavek selže, nebude chyba hlášena. V této konkrétní situaci není zaručena složitá náročnost systému generování sestav sekundárního selhání a dodatečné náklady na výkon při čekání na odpověď. V případě scénářů, kde je důležité pro kontrolu odpovědi, je lepší volbou zásada [Odeslat požadavek](/azure/api-management/api-management-advanced-policies#SendRequest) .
+Při použití stylu požáru a zapomenutí žádosti se používají určité kompromisy. Pokud z nějakého důvodu požadavek selže, nebude chyba hlášena. V této konkrétní situaci není zaručena složitá náročnost systému generování sestav sekundárního selhání a dodatečné náklady na výkon při čekání na odpověď. V případě scénářů, kde je důležité pro kontrolu odpovědi, je lepší volbou zásada [Odeslat požadavek](./api-management-advanced-policies.md#SendRequest) .
 
 ## <a name="send-request"></a>Odeslat požadavek
 Tato `send-request` zásada umožňuje použití externí služby k provádění složitých funkcí zpracování a vrácení dat do služby API Management, která se dá použít k dalšímu zpracování zásad.
@@ -212,7 +213,7 @@ Po zadání těchto informací můžete provést požadavky na všechny back-end
 Tyto požadavky jsou spouštěny v pořadí, což není ideální. 
 
 ### <a name="responding"></a>Attendee
-Chcete-li vytvořit složenou odpověď, můžete použít zásady [vrácení odpovědi](/azure/api-management/api-management-advanced-policies#ReturnResponse) . `set-body`Element může použít výraz k vytvoření nového `JObject` se všemi reprezentacemi součástí, které jsou vloženy jako vlastnosti.
+Chcete-li vytvořit složenou odpověď, můžete použít zásady [vrácení odpovědi](./api-management-advanced-policies.md#ReturnResponse) . `set-body`Element může použít výraz k vytvoření nového `JObject` se všemi reprezentacemi součástí, které jsou vloženy jako vlastnosti.
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -284,6 +285,5 @@ Kompletní zásada vypadá následovně:
 
 V konfiguraci operace zástupných znaků můžete nakonfigurovat prostředek řídicího panelu tak, aby se ukládal do mezipaměti alespoň po dobu 1 hodiny. 
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Služba Azure API Management poskytuje flexibilní zásady, které je možné selektivně použít pro přenosy HTTP, a umožňuje složení back-end služeb. Bez ohledu na to, jestli chcete bránu API vylepšit pomocí funkcí upozorňování, ověřování, možností ověřování nebo vytvářet nové složené prostředky založené na více službách back-end, se v `send-request` souvisejících zásadách otevře celosvětový svět možností.
-

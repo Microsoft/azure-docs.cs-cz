@@ -3,12 +3,12 @@ title: Referenční materiály k nastavení aplikací pro Azure Functions
 description: Referenční dokumentace k nastavení aplikace Azure Functions nebo k proměnným prostředí.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169901"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242759"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenční materiály k nastavení aplikací pro Azure Functions
 
@@ -17,6 +17,9 @@ Nastavení aplikace ve Function App obsahují globální možnosti konfigurace, 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 Existují další možnosti globální konfigurace v [host.js](functions-host-json.md) souboru a [local.settings.js](functions-run-local.md#local-settings-file) v souboru.
+
+> [!NOTE]  
+> Nastavení aplikace můžete použít k přepsání host.jsnastavením hodnot bez nutnosti měnit host.jsv samotném souboru. To je užitečné ve scénářích, kdy potřebujete nakonfigurovat nebo upravit konkrétní host.jsv nastavení pro konkrétní prostředí. To vám také umožní změnit host.jsnastavení bez nutnosti opětovného publikování projektu. Další informace najdete v části [host.jsv článku referenční článek](functions-host-json.md#override-hostjson-values).  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 

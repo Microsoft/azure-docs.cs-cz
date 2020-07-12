@@ -6,11 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981920"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245298"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Přehled provozní kontinuity pomocí Azure Database for PostgreSQL-Single server
 
@@ -22,10 +23,10 @@ Azure Database for PostgreSQL poskytuje funkce pro provozní kontinuitu, které 
 
 Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Funkce** | **Základní** | **Pro obecné účely** | **Optimalizované z hlediska paměti** |
+| **Funkce** | **Basic** | **Pro obecné účely** | **Optimalizované pro paměť** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
-| Geografické obnovení ze geograficky replikovaných záloh | Nepodporuje se | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
 > [!IMPORTANT]
 > Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit. Pomocí [zámku prostředků Azure](../azure-resource-manager/management/lock-resources.md) můžete zabránit nechtěnému odstranění serveru.
@@ -51,6 +52,11 @@ Funkce geografického obnovení obnoví Server pomocí geograficky redundantníc
 
 ## <a name="cross-region-read-replicas"></a>Repliky čtení mezi oblastmi
 Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie fyzické replikace PostgreSQL. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
+
+## <a name="faq"></a>Časté otázky
+### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Kam se Azure Database for PostgreSQL ukládají zákaznická data?
+Ve výchozím nastavení Azure Database for PostgreSQL nepřesouvá nebo neukládají zákaznická data mimo oblast, ve které je nasazená. Zákazníci si ale můžou volitelně zvolit možnost povolit [geograficky redundantní zálohy](concepts-backup.md#backup-redundancy-options) nebo vytvořit [repliku pro čtení v různých oblastech](concepts-read-replicas.md#cross-region-replication) pro ukládání dat v jiné oblasti.
+
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [automatizovaných zálohách v Azure Database for PostgreSQL](concepts-backup.md). 
