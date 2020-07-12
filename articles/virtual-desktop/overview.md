@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0d6cc523a56c9235360e6476b69303c51dc4d893
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224345"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248607"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -101,7 +101,7 @@ Pro zajištění optimálního výkonu zajistěte, aby vaše síť splňovala n�
 
 Virtuální plocha Windows podporuje následující klienti vzdálené plochy:
 
-* [Plocha Windows](connect-windows-7-and-10.md)
+* [Plocha Windows](connect-windows-7-10.md)
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
@@ -133,13 +133,13 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 |Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Více relací Windows 10, verze 1903|Ano|Ano|Ano|Ano|
-|Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|
-|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|
-|Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|
-|Windows Server 2019|Ano|Ano|Ne|Ne|
-|Windows Server 2016|Ano|Ano|Ano|Ano|
-|Windows Server 2012 R2|Ano|Ano|Ne|Ne|
+|Více relací Windows 10, verze 1809|Ano|Yes|No|No|
+|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Yes|
+|Windows 10 Enterprise, verze 1809|Ano|Yes|No|No|
+|Windows 7 Enterprise|Ano|Yes|No|No|
+|Windows Server 2019|Ano|Yes|No|No|
+|Windows Server 2016|Ano|Ano|Ano|Yes|
+|Windows Server 2012 R2|Ano|Yes|No|No|
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7be1e90d10a84465d6416f2c13a6e4b6855077b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76713146"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250069"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Postup zabezpečení rozhraní API s využitím ověřování pomocí klientských certifikátů ve službě API Management
 
 API Management poskytuje možnost zabezpečení přístupu k rozhraním API (například klienta k API Management) pomocí klientských certifikátů. Příchozí certifikát a kontrolu vlastností certifikátu můžete ověřit podle požadovaných hodnot pomocí výrazů zásad.
 
-Informace o zabezpečení přístupu k back-endové službě rozhraní API pomocí klientských certifikátů (tj. API Management do back-endu) najdete v tématu [zabezpečení back-endové služby pomocí ověřování klientských certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) .
+Informace o zabezpečení přístupu k back-endové službě rozhraní API pomocí klientských certifikátů (tj. API Management do back-endu) najdete v tématu [zabezpečení back-endové služby pomocí ověřování klientských certifikátů](./api-management-howto-mutual-certificates.md) .
 
 > [!IMPORTANT]
 > Pokud chcete přijímat a ověřovat klientské certifikáty přes HTTP/2 na úrovních pro vývojáře, Basic, Standard nebo Premium, musíte v okně vlastní domény zapnout nastavení vyjednávat klientský certifikát, jak je znázorněno níže.
@@ -98,5 +99,5 @@ Následující příklad ukazuje, jak kontrolovat kryptografický otisk certifik
 
 ## <a name="next-steps"></a>Další kroky
 
--   [Postup zabezpečení back-endové služby pomocí ověřování klientských certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
--   [Postup nahrání certifikátů](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [Postup zabezpečení back-endové služby pomocí ověřování klientských certifikátů](./api-management-howto-mutual-certificates.md)
+-   [Postup nahrání certifikátů](./api-management-howto-mutual-certificates.md)

@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645731"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247638"
 ---
 # <a name="eventstore-overview"></a>Eventstoru – přehled
 
@@ -45,7 +46,7 @@ Služba Eventstoru se dá dotazovat na události, které jsou k dispozici pro ka
 * Repliky oddílů: události ze všech replik/instancí v rámci určitého oddílu identifikovaného`partitionId`
 * Replika oddílu: události z konkrétní repliky/instance identifikované `replicaId` a`partitionId`
 
-Další informace o rozhraní API najdete v referenčních informacích k [rozhraní eventstoru API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
+Další informace o rozhraní API najdete v referenčních informacích k [rozhraní eventstoru API](/rest/api/servicefabric/sfclient-index-eventsstore).
 
 Služba Eventstoru má taky možnost korelovat události v clusteru. Když prohlížíte události, které byly zapsané současně z různých entit, které by mohly mít vliv na sebe navzájem, služba Eventstoru je schopná propojit tyto události s cílem identifikovat příčiny aktivit ve vašem clusteru. Například pokud dojde k tomu, že jedna z vašich aplikací přestane být v pořádku bez jakýchkoli nevolaných změn, Eventstoru se také podívat na další události vystavené platformou a může je korelovat `Error` `Warning` událostmi nebo. To pomáhá s rychlejší detekcí selhání a hlavními příčinami při analýze.
 
@@ -125,5 +126,5 @@ Pokud používáte verzi 6,4, můžete upravit šablonu Azure Resource Manager a
 * Začínáme s rozhraním API pro Eventstoru – [používání rozhraní API eventstoru v clusterech Azure Service Fabric](service-fabric-diagnostics-eventstore-query.md)
 * Další informace o seznamu událostí nabízených [událostmi](service-fabric-diagnostics-event-generation-operational.md) eventstoru-Service Fabric
 * Přehled monitorování a diagnostiky v Service Fabric – [monitorování a Diagnostika pro Service Fabric](service-fabric-diagnostics-overview.md)
-* Zobrazit úplný seznam volání rozhraní API – [eventstoru REST API Reference](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* Zobrazit úplný seznam volání rozhraní API – [eventstoru REST API Reference](/rest/api/servicefabric/sfclient-index-eventsstore)
 * Přečtěte si další informace o monitorování clusteru – [monitorování clusteru a platformy](service-fabric-diagnostics-event-generation-infra.md).

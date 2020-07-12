@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: apimpm
-ms.openlocfilehash: 7f87389016286c9f1b91abc77155be9e94005371
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 043a3d0b63dfc74f587b58b3c2ac42f1a084cc4a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335873"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250307"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Správa protokolů a šifer ve službě Azure API Management
 
@@ -27,7 +27,7 @@ V této příručce se dozvíte, jak spravovat konfiguraci protokolů a šifrov�
 
 ![Správa protokolů a šifr v APIM](./media/api-management-howto-manage-protocols-ciphers/api-management-protocols-ciphers.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 
@@ -38,9 +38,9 @@ Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 1. V Azure Portal přejděte ke své **instanci API Management** .
 2. V nabídce vyberte **nastavení protokolu** .  
 3. Povolte nebo zakažte požadované protokoly nebo šifry.
-4. Klikněte na **Uložit**. Změny budou provedeny během hodiny.  
+4. Klikněte na **Save** (Uložit). Změny budou provedeny během hodiny.  
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o [TLS (Transport Layer Security)](https://docs.microsoft.com/dotnet/framework/network-programming/tls).
+* Přečtěte si další informace o [TLS (Transport Layer Security)](/dotnet/framework/network-programming/tls).
 * Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o API Management.

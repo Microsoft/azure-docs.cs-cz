@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: e059a503a29872ee6241fe00ff5c7ec94ae30308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e82c7809f5a6c79b61dc0c6731a696c672f6aa97
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888103"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247332"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 
@@ -23,7 +23,7 @@ ms.locfileid: "84888103"
 
 Pokud chcete sestavovat a spouštět [aplikace Azure Service Fabric][1] na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric, sadu SDK a nástroje. Musíte také [povolit spouštění skriptů Windows PowerShellu](#enable-powershell-script-execution), které jsou součástí sady SDK.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="supported-operating-system-versions"></a>Podporované verze operačních systémů
 
@@ -42,7 +42,7 @@ Pro vývoj jsou podporovány tyto verze operačních systémů:
 
 ## <a name="install-the-sdk-and-tools"></a>Instalace sady SDK a nástrojů
 
-Instalační program webové platformy (WebPI) je doporučeným způsobem, jak nainstalovat sadu SDK a nástroje. Pokud obdržíte chyby za běhu pomocí WebPI, můžete také najít přímé odkazy na instalační programy v poznámkách k verzi pro konkrétní verzi Service Fabric. Poznámky k verzi najdete v různých oznámeních k vydaným verzím na [blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
+Instalační program webové platformy (WebPI) je doporučeným způsobem, jak nainstalovat sadu SDK a nástroje. Pokud obdržíte chyby za běhu pomocí WebPI, můžete také najít přímé odkazy na instalační programy v poznámkách k verzi pro konkrétní verzi Service Fabric. Poznámky k verzi najdete v různých oznámeních k vydaným verzím na [blogu týmu Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
 
 > [!NOTE]
 > Upgrade místních Service Fabric vývoje clusteru se nepodporuje.

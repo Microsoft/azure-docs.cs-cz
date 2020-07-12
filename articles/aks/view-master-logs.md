@@ -4,12 +4,12 @@ description: Naučte se, jak povolit a zobrazit protokoly pro hlavní uzel Kuber
 services: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.openlocfilehash: 504d6a5216f3345f22a601c4ae084488aeb97c8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76ded781d4eae48db04f54a4f88a80cc700d0ad9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82128954"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250732"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolení a kontrola protokolů hlavních uzlů Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -133,8 +133,8 @@ V tomto článku jste zjistili, jak povolit a zkontrolovat protokoly pro hlavní
 <!-- LINKS - internal -->
 [cli-quickstart]: kubernetes-walkthrough.md
 [portal-quickstart]: kubernetes-walkthrough-portal.md
-[log-analytics-overview]: ../log-analytics/log-analytics-overview.md
-[analyze-log-analytics]: ../azure-monitor/learn/tutorial-viewdata.md
+[log-analytics-overview]: ../azure-monitor/log-query/log-query-overview.md
+[analyze-log-analytics]: ../azure-monitor/log-query/get-started-portal.md
 [kubelet-logs]: kubelet-logs.md
 [aks-ssh]: ssh.md
 [az-feature-register]: /cli/azure/feature#az-feature-register

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b87244b4df155768e815bdba5226fc784866f6b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60780816"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249712"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Vlastní ukládání do mezipaměti ve službě Azure API Management
-Služba Azure API Management obsahuje integrovanou podporu [ukládání odpovědí HTTP do mezipaměti](api-management-howto-cache.md) pomocí adresy URL prostředku jako klíče. Klíč lze upravit pomocí hlaviček požadavků pomocí `vary-by` vlastností. To je užitečné pro ukládání úplných odpovědí HTTP (neboli reprezentace), ale v některých případech je vhodné, aby část reprezentace mohla ukládat do mezipaměti. Nové zásady [cache-Lookup-Value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) a [cache-Store-Value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) umožňují ukládat a načítat libovolné části dat v rámci definic zásad. Tato možnost také přidá hodnotu k dříve zavedené zásadě [odeslání – požadavek](/azure/api-management/api-management-advanced-policies#SendRequest) , protože teď můžete ukládat odpovědi z externích služeb do mezipaměti.
+Služba Azure API Management obsahuje integrovanou podporu [ukládání odpovědí HTTP do mezipaměti](api-management-howto-cache.md) pomocí adresy URL prostředku jako klíče. Klíč lze upravit pomocí hlaviček požadavků pomocí `vary-by` vlastností. To je užitečné pro ukládání úplných odpovědí HTTP (neboli reprezentace), ale v některých případech je vhodné, aby část reprezentace mohla ukládat do mezipaměti. Nové zásady [cache-Lookup-Value](./api-management-caching-policies.md#GetFromCacheByKey) a [cache-Store-Value](./api-management-caching-policies.md#StoreToCacheByKey) umožňují ukládat a načítat libovolné části dat v rámci definic zásad. Tato možnost také přidá hodnotu k dříve zavedené zásadě [odeslání – požadavek](./api-management-advanced-policies.md#SendRequest) , protože teď můžete ukládat odpovědi z externích služeb do mezipaměti.
 
 ## <a name="architecture"></a>Architektura
 Služba API Management používá sdílenou mezipaměť dat pro jednotlivé klienty, takže při horizontálním navýšení kapacity až na více jednotek získáte přístup ke stejným datům uloženým v mezipaměti. Při práci s nasazením ve více oblastech ale v každé z těchto oblastí existují nezávislé mezipaměti. Je důležité, abyste mezipaměť nepovažovali za úložiště dat, kde se jedná o jediný zdroj některých informací. Pokud jste pracovali a později jste se rozhodli využít výhod nasazení ve více oblastech, můžou zákazníci s uživateli, kteří cestují, přijít o přístup k těmto datům v mezipaměti.
@@ -276,5 +276,5 @@ Ve větších nasazeních s více klienty vytvářejí některé společnosti sa
 
 Místo vrácení upřednostňované verze rozhraní API pro každý klíč předplatného byste vrátili identifikátor, který vztahuje tenanta k přiřazené hardwarové skupině. Tento identifikátor lze použít k vytvoření příslušné adresy URL back-endu.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Volná mezipaměť služby Azure API Management pro ukládání jakéhokoli druhu dat umožňuje efektivní přístup k datům konfigurace, který může ovlivnit způsob zpracování příchozího požadavku. Dá se taky použít k ukládání fragmentů dat, které můžou rozšiřovat odpovědi, které se vrátí z back-endu rozhraní API.

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16ab72a67a021338bd8e186c32015c271240d224
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430709"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250528"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Vytváření skupin a jejich používání ke správě účtů vývojářů ve službě Azure API Management
 
@@ -33,11 +34,11 @@ Kromě těchto systémových skupin můžou správci vytvářet vlastní skupiny
 
 V této příručce se dozvíte, jak můžou správci instance API Management přidávat nové skupiny a přidružit je k produktům a vývojářům.
 
-Kromě vytváření a správy skupin na portálu vydavatele můžete vytvořit a spravovat skupiny pomocí entity API Management REST API [skupiny](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) .
+Kromě vytváření a správy skupin na portálu vydavatele můžete vytvořit a spravovat skupiny pomocí entity API Management REST API [skupiny](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) .
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončení úloh v tomto článku: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 
@@ -97,7 +98,7 @@ Po přidání přidružení mezi vývojářem a skupinou si ho můžete zobrazit
 ## <a name="next-steps"></a><a name="next-steps"> </a>Další kroky
 
 * Jakmile se vývojář přidá do skupiny, může zobrazit a přihlásit se k odběru produktů přidružených k této skupině. Další informace najdete v tématu [jak vytvořit a publikovat produkt v Azure API Management][How create and publish a product in Azure API Management],
-* Kromě vytváření a správy skupin na portálu vydavatele můžete vytvořit a spravovat skupiny pomocí entity API Management REST API [skupiny](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) .
+* Kromě vytváření a správy skupin na portálu vydavatele můžete vytvořit a spravovat skupiny pomocí entity API Management REST API [skupiny](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) .
 
 [Create a group]: #create-group
 [Associate a group with a product]: #associate-group-product

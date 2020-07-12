@@ -4,11 +4,12 @@ description: Osvědčené postupy pro serializaci dat a jejich vliv na postupné
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457492"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247978"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Vliv serializace dat na upgrade aplikace
 V rámci [upgradu aplikace](service-fabric-application-upgrade.md)se upgrade aplikuje na podmnožinu uzlů, jednu upgradovací doménu v jednom okamžiku. Během tohoto procesu se některé domény upgradu nacházejí v novější verzi aplikace a některé domény upgradu se nacházejí ve starší verzi aplikace. Při zavedení musí být v nové verzi aplikace možné číst starou verzi vašich dat a stará verze vaší aplikace musí být schopná přečíst si novou verzi vašich dat. Pokud formát dat není předáván dál a zpětně kompatibilní, upgrade může selhat nebo může dojít ke ztrátě nebo poškození dat. Tento článek popisuje, co znamená váš formát dat, a nabízí osvědčené postupy pro zajištění, že vaše data jsou předávána a zpětně kompatibilní.
@@ -25,7 +26,7 @@ Vzhledem k tomu, že formát dat je určen třídami jazyka C#, mohou změny v t
 * Změna názvu nebo oboru názvů třídy
 
 ### <a name="data-contract-as-the-default-serializer"></a>Kontrakt dat jako výchozí serializátor
-Serializátor je obecně zodpovědný za čtení dat a jejich deserializaci do aktuální verze, a to i v případě, že jsou data ve starší nebo *novější* verzi. Výchozí serializátor je [serializátor kontraktu dat](https://msdn.microsoft.com/library/ms733127.aspx), který má dobře definovaná pravidla správy verzí. Spolehlivé kolekce umožňují přepsat serializátor, ale Reliable Actors aktuálně ne. Serializátor dat hraje důležitou roli při povolování postupné inovace. Serializátor kontraktu dat je serializátor, který doporučujeme pro Service Fabric aplikace.
+Serializátor je obecně zodpovědný za čtení dat a jejich deserializaci do aktuální verze, a to i v případě, že jsou data ve starší nebo *novější* verzi. Výchozí serializátor je [serializátor kontraktu dat](/dotnet/framework/wcf/feature-details/using-data-contracts), který má dobře definovaná pravidla správy verzí. Spolehlivé kolekce umožňují přepsat serializátor, ale Reliable Actors aktuálně ne. Serializátor dat hraje důležitou roli při povolování postupné inovace. Serializátor kontraktu dat je serializátor, který doporučujeme pro Service Fabric aplikace.
 
 ## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Vliv formátu dat na postupný upgrade
 Během postupného upgradu existují dva hlavní scénáře, kde serializátor může narazit na starší nebo *novější* verzi vašich dat:
@@ -40,7 +41,7 @@ Během postupného upgradu existují dva hlavní scénáře, kde serializátor m
 
 Obě verze kódu a formátu dat musí být kompatibilní s dopředně i zpět. Pokud nejsou kompatibilní, může upgrade za provozu selhat nebo může dojít ke ztrátě dat. Postupná inovace může selhat, protože kód nebo serializátor může vyvolat výjimky nebo chybu, když nalezne jinou verzi. Data mohou být ztracena, pokud například byla přidána nová vlastnost, ale starý serializátor je během deserializace zahozen.
 
-Pro zajištění kompatibility vašich dat je doporučeným řešením kontraktu dat. Má jasně definovaná pravidla správy verzí pro přidání, odebrání a změnu polí. Také podporuje pro práci s neznámými poli, zapojení do procesu serializace a deserializace a řešit dědičnost tříd. Další informace najdete v tématu [použití kontraktu dat](https://msdn.microsoft.com/library/ms733127.aspx).
+Pro zajištění kompatibility vašich dat je doporučeným řešením kontraktu dat. Má jasně definovaná pravidla správy verzí pro přidání, odebrání a změnu polí. Také podporuje pro práci s neznámými poli, zapojení do procesu serializace a deserializace a řešit dědičnost tříd. Další informace najdete v tématu [použití kontraktu dat](/dotnet/framework/wcf/feature-details/using-data-contracts).
 
 ## <a name="next-steps"></a>Další kroky
 [Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgradem aplikace pomocí sady Visual Studio.
@@ -52,4 +53,3 @@ Pomocí [parametrů upgradu](service-fabric-application-upgrade-parameters.md)lz
 Naučte se používat pokročilé funkce při upgradu vaší aplikace, které odkazují na [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
 
 Pomocí postupu v části [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md)můžete opravit běžné problémy s upgrady aplikací.
-

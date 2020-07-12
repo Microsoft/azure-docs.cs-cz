@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: e70d7d1f2ca7aa0eeec08d69720e37c5be34f8ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391906"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247060"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
 
@@ -134,7 +134,7 @@ ms.locfileid: "85391906"
 
 * Všechny operace, které převezmou `request_options` nebo jsou `feed_options` , se přesunuly na parametry jenom pro klíčové slovo. I když jsou tyto slovníky možností pořád podporované, každá z jednotlivých možností v rámci slovníku se teď podporuje jako explicitní argumenty klíčového slova.
 
-* Hierarchie chyb je nyní děděna z `azure.core.AzureError` , nikoli z, která byla odebrána.
+* Hierarchie chyb je nyní děděna z `azure.core.AzureError` :
 
   * Přejmenování `HTTPFailure` na `CosmosHttpResponseError`
   * `JSONParseFailure`byl odebrán a nahrazen`azure.core.DecodeError`
@@ -338,7 +338,7 @@ Všechny žádosti o Azure Cosmos DB používání vyřazené sady SDK jsou slu�
 | 0.9.1 – zapůjčení |23. září 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |21. srpna 2014 |29. února 2016 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

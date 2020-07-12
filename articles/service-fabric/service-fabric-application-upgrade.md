@@ -3,11 +3,12 @@ title: Upgrade aplikace Service Fabric
 description: Tento článek obsahuje úvod k upgradu aplikace Service Fabric, včetně výběru režimů upgradu a provádění kontrol stavu.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710316"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247995"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade aplikace Service Fabric
 Aplikace Azure Service Fabric je kolekce služeb. Během upgradu Service Fabric porovná nový [manifest aplikace](service-fabric-application-and-service-manifests.md) s předchozí verzí a určí, které služby v aplikaci vyžadují aktualizace. Service Fabric porovná čísla verzí v manifestech služby s čísly verzí v předchozí verzi. Pokud se služba nezměnila, tato služba se neupgraduje.
@@ -36,7 +37,7 @@ Režim, který doporučujeme pro upgrade aplikace, je monitorovaný režim, což
 Nemonitorovaný ruční režim potřebuje ruční zásah po každém upgradu v aktualizační doméně pro zahájení upgradu v další aktualizační doméně. Neprovádí se žádné Service Fabric kontroly stavu. Správce provede kontrolu stavu nebo stavu před zahájením upgradu v další aktualizační doméně.
 
 ## <a name="upgrade-default-services"></a>Upgrade výchozích služeb
-Některé výchozí parametry služby definované v [manifestu aplikace](service-fabric-application-and-service-manifests.md) je také možné upgradovat jako součást upgradu aplikace. V rámci upgradu lze změnit pouze parametry služby, které podporují změnu prostřednictvím [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) . Chování při změně výchozích služeb během upgradu aplikace je následující:
+Některé výchozí parametry služby definované v [manifestu aplikace](service-fabric-application-and-service-manifests.md) je také možné upgradovat jako součást upgradu aplikace. V rámci upgradu lze změnit pouze parametry služby, které podporují změnu prostřednictvím [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) . Chování při změně výchozích služeb během upgradu aplikace je následující:
 
 1. Vytvoří se výchozí služby v manifestu nové aplikace, které v clusteru ještě neexistují.
 2. Výchozí služby, které existují v předchozích i nových manifestech aplikace, jsou aktualizovány. Parametry výchozí služby v manifestu nové aplikace přepíšou parametry existující služby. Upgrade aplikace bude automaticky vrácen, pokud se nezdaří aktualizace výchozí služby.

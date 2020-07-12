@@ -12,19 +12,20 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 672f145b638fa6b85f7139f2edb4fc41bb2855d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8f7d7f7707add22d700421b229f6dbe725db465
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81260968"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250453"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Správa uživatelských účtů ve službě Azure API Management
 
-V API Management jsou vývojáři uživateli rozhraní API, které vystavíte pomocí API Management. V této příručce se dozvíte, jak vytvořit a pozvat vývojáře k používání rozhraní API a produktů, které jim zpřístupníte s vaší instancí API Management. Informace o tom, jak spravovat uživatelské účty prostřednictvím kódu programu, najdete v dokumentaci k [entitě uživatele](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user) v odkazu [API Management REST](/rest/api/apimanagement/) .
+V API Management jsou vývojáři uživateli rozhraní API, které vystavíte pomocí API Management. V této příručce se dozvíte, jak vytvořit a pozvat vývojáře k používání rozhraní API a produktů, které jim zpřístupníte s vaší instancí API Management. Informace o tom, jak spravovat uživatelské účty prostřednictvím kódu programu, najdete v dokumentaci k [entitě uživatele](/rest/api/apimanagement/2019-12-01/user) v odkazu [API Management REST](/rest/api/apimanagement/) .
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončení úloh v tomto článku: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 
@@ -67,7 +68,7 @@ Pokud chcete uživatele zablokovat, postupujte podle následujících kroků.
 
 ## <a name="reset-a-user-password"></a>Resetování hesla uživatele
 
-Chcete-li programově pracovat s uživatelskými účty, přečtěte si dokumentaci k entitě uživatele v tématu [API Management REST API](/rest/api/apimanagement/) reference. Chcete-li obnovit heslo uživatelského účtu na určitou hodnotu, můžete použít operaci [aktualizovat uživatele](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) a zadat požadované heslo.
+Chcete-li programově pracovat s uživatelskými účty, přečtěte si dokumentaci k entitě uživatele v tématu [API Management REST API](/rest/api/apimanagement/) reference. Chcete-li obnovit heslo uživatelského účtu na určitou hodnotu, můžete použít operaci [aktualizovat uživatele](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) a zadat požadované heslo.
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>Další kroky
 Jakmile se vytvoří účet pro vývojáře, můžete ho přidružit k rolím a přihlásit se k odběru produktů a rozhraní API. Další informace najdete v tématu [Vytvoření a používání skupin][How to create and use groups].

@@ -3,11 +3,12 @@ title: Ladění aplikací Azure Service Fabric v systému Linux
 description: Naučte se monitorovat a diagnostikovat Service Fabric služby na místním vývojovém počítači se systémem Linux.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80991326"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247553"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Monitorování a diagnostika služeb v nastavení pro vývoj v místním počítači se systémem Linux
 
@@ -131,4 +132,4 @@ Ukázky v [C# Samples](https://github.com/Azure-Samples/service-fabric-dotnet-co
 
 ## <a name="next-steps"></a>Další kroky
 Stejný trasovací kód přidaný do vaší aplikace funguje také s diagnostikou vaší aplikace v clusteru Azure. Podívejte se na tyto články, které popisují různé možnosti nástrojů, a popište, jak je nastavit.
-* [Postup shromažďování protokolů pomocí Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Postup shromažďování protokolů pomocí Azure Diagnostics](./service-fabric-diagnostics-event-aggregation-lad.md)

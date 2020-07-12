@@ -3,12 +3,12 @@ title: Správa tajných kódů aplikace Service Fabric Azure
 description: Naučte se zabezpečit tajné hodnoty v Service Fabric aplikaci (Platform-nezávislá).
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af82a55d41c48eebcbcbd1581ec5096a89c49bea
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583230"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248114"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Správa šifrovaných tajných kódů v aplikacích Service Fabric
 Tento průvodce vás provede jednotlivými kroky správy tajných kódů v aplikaci Service Fabric. Tajné kódy můžou obsahovat citlivé informace, jako jsou například připojovací řetězce úložiště, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu.
@@ -99,7 +99,7 @@ Chcete-li přepsat hodnoty v Settings.xml, deklarujte parametr přepsání pro s
 
 Nyní je možné při vytváření instance aplikace zadat hodnotu jako *parametr aplikace* . Vytvoření instance aplikace lze skriptovat pomocí prostředí PowerShell nebo napsaného v jazyce C# pro jednoduchou integraci v procesu sestavení.
 
-Pomocí PowerShellu je parametr dodán `New-ServiceFabricApplication` příkazu jako [zatřiďovací tabulka](https://technet.microsoft.com/library/ee692803.aspx):
+Pomocí PowerShellu je parametr dodán `New-ServiceFabricApplication` příkazu jako [zatřiďovací tabulka](/previous-versions/windows/it-pro/windows-powershell-1.0/ee692803(v=technet.10)):
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}

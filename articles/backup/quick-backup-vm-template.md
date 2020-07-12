@@ -5,26 +5,26 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: d6fb73801f0f460daf2ed70f8dc88187e41ea887
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458841"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248930"
 ---
-# <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Zálohování virtuálního počítače v Azure pomocí šablony Správce prostředků
+# <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Rychlý Start: zálohování virtuálního počítače v Azure pomocí šablony ARM
 
-[Azure Backup](backup-overview.md) zálohuje místní počítače a aplikace a virtuální počítače Azure. V tomto článku se dozvíte, jak zálohovat virtuální počítač Azure pomocí Správce prostředků šablony a Azure PowerShell. Tento rychlý Start se zaměřuje na proces nasazení šablony Správce prostředků pro vytvoření trezoru Recovery Services. Další informace o vývoji šablon Správce prostředků naleznete v [dokumentaci správce prostředků](/azure/azure-resource-manager/) a odkazu na [šablonu](/azure/templates/microsoft.recoveryservices/allversions).
+[Azure Backup](backup-overview.md) zálohuje místní počítače a aplikace a virtuální počítače Azure. V tomto článku se dozvíte, jak zálohovat virtuální počítač Azure pomocí šablony Azure Resource Manager (šablona ARM) a Azure PowerShell. Tento rychlý Start se zaměřuje na proces nasazení šablony ARM pro vytvoření trezoru Recovery Services. Další informace o vývoji šablon ARM naleznete v [dokumentaci Azure Resource Manager](/azure/azure-resource-manager/) a v [referenčních](/azure/templates/microsoft.recoveryservices/allversions)informacích k šabloně.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Alternativně můžete virtuální počítač zálohovat pomocí [Azure PowerShell](./quick-backup-vm-powershell.md), rozhraní příkazového [řádku Azure](quick-backup-vm-cli.md)nebo v [Azure Portal](quick-backup-vm-portal.md).
+[Recovery Services trezor](backup-azure-recovery-services-vault-overview.md) je logický kontejner, který ukládá zálohovaná data pro chráněné prostředky, jako jsou například virtuální počítače Azure. Při spuštění úlohy zálohování se v rámci Recovery Services trezoru vytvoří bod obnovení. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase. Alternativně můžete virtuální počítač zálohovat pomocí [Azure PowerShell](./quick-backup-vm-powershell.md), rozhraní příkazového [řádku Azure](quick-backup-vm-cli.md)nebo v [Azure Portal](quick-backup-vm-portal.md).
 
-## <a name="create-a-vm-and-recovery-services-vault"></a>Vytvoření virtuálního počítače a trezoru Recovery Services
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
 
-[Recovery Services trezor](backup-azure-recovery-services-vault-overview.md) je logický kontejner, který ukládá zálohovaná data pro chráněné prostředky, jako jsou například virtuální počítače Azure. Při spuštění úlohy zálohování se v rámci Recovery Services trezoru vytvoří bod obnovení. Pomocí některého z těchto bodů obnovení pak můžete obnovit data k danému bodu v čase.
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-create-vm-and-configure-backup%2Fazuredeploy.json)
 
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Tato šablona umožňuje nasazení jednoduchého virtuálního počítače s Windows a Recovery Services trezoru nakonfigurovaného s DefaultPolicy pro ochranu.
 
@@ -39,9 +39,9 @@ Prostředky definované v šabloně jsou:
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft. COMPUTE/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. RecoveryServices/trezory**](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults)
-- [**Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems**](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults/backupfabrics/protectioncontainers/protecteditems)
+- [**Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems**](/azure/templates/microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems)
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 Pokud chcete šablonu nasadit, vyberte **zkusit** , aby se Azure Cloud Shell otevřít, a pak do okna prostředí vložte následující skript PowerShellu. Kód vložíte tak, že kliknete pravým tlačítkem myši na okno prostředí a pak vyberete **Vložit**.
 
@@ -59,7 +59,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -adminUsername $adminUsername -adminPassword $adminPassword -dnsLabelPrefix $dnsPrefix
 ```
 
-Azure PowerShell slouží k nasazení Správce prostředků šablony v rámci tohoto rychlého startu. K nasazení šablon můžete také použít [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), rozhraní příkazového [řádku Azure](../azure-resource-manager/templates/deploy-cli.md)a [rozhraní REST API](../azure-resource-manager/templates/deploy-rest.md) .
+V tomto rychlém startu se používá Azure PowerShell k nasazení šablony ARM. K nasazení šablon můžete také použít [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), rozhraní příkazového [řádku Azure](../azure-resource-manager/templates/deploy-cli.md)a [rozhraní REST API](../azure-resource-manager/templates/deploy-rest.md) .
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
@@ -71,7 +71,7 @@ Azure PowerShell slouží k nasazení Správce prostředků šablony v rámci to
 
 Chcete-li monitorovat úlohu zálohování, přečtěte si téma [monitorování úlohy zálohování](./quick-backup-vm-powershell.md#monitor-the-backup-job).
 
-## <a name="clean-up-the-deployment"></a>Vyčištění nasazení
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Pokud už nepotřebujete zálohovat virtuální počítač, můžete ho vyčistit.
 
@@ -93,4 +93,4 @@ V tomto rychlém startu jste vytvořili trezor služby Recovery Services, povoli
 
 - [Naučte](tutorial-backup-vm-at-scale.md) se, jak zálohovat virtuální počítače v Azure Portal.
 - [Zjistěte, jak](tutorial-restore-disk.md) rychle obnovit virtuální počítač.
-- [Naučte](../azure-resource-manager/templates/template-tutorial-create-first-template.md) se vytvářet správce prostředků šablony.
+- [Naučte](../azure-resource-manager/templates/template-tutorial-create-first-template.md) se vytvářet šablony ARM.

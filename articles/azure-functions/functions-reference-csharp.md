@@ -2,15 +2,15 @@
 title: Referenční dokumentace pro vývojáře skriptu v jazyce C# Azure Functions
 description: Naučte se vyvíjet Azure Functions pomocí skriptu jazyka C#.
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: a5497300f6b0cbf3a073681bac41adc583d869ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8041f2514f59ac2511fcd64eeb0283565a0e07a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733392"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249236"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions referenční příručka pro vývojáře skriptu jazyka C# (. csx)
 
@@ -236,7 +236,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 }
 ```
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Chcete-li protokolovat výstup do protokolů streamování v jazyce C#, zahrňte argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme vám ho pojmenovat `log` . Nepoužívejte `Console.Write` v Azure Functions.
 

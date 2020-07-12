@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 97c3be391dfbee7301ea47bf7234a9549d373370
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1871df962a26def8c12000f8b8bc0cf31bae9a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464722"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247655"
 ---
 # <a name="application-logging"></a>Protokolování aplikací
 
@@ -21,11 +22,11 @@ Příklady použití těchto návrhů najdete v tématu [Přidání protokolová
 
 ## <a name="application-insights-sdk"></a>Sada Application Insights SDK
 
-Application Insights má bohatou integraci s Service Fabric vycházejícími z boxu. Uživatelé můžou přidávat balíčky NuGet Service Fabric AI a přijímat data a protokoly vytvořené a shromážděné v Azure Portal. Kromě toho se uživatelům doporučuje přidat vlastní telemetrii, aby bylo možné diagnostikovat a ladit své aplikace a sledovat, které služby a části jejich aplikace jsou používány nejvíc. Třída [TelemetryClient](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) v sadě SDK poskytuje mnoho způsobů, jak sledovat telemetrii ve vašich aplikacích. Podívejte se na příklad, jak instrumentovat a přidat Application Insights do aplikace v našem kurzu pro [monitorování a diagnostiku aplikace .NET](service-fabric-tutorial-monitoring-aspnet.md) .
+Application Insights má bohatou integraci s Service Fabric vycházejícími z boxu. Uživatelé můžou přidávat balíčky NuGet Service Fabric AI a přijímat data a protokoly vytvořené a shromážděné v Azure Portal. Kromě toho se uživatelům doporučuje přidat vlastní telemetrii, aby bylo možné diagnostikovat a ladit své aplikace a sledovat, které služby a části jejich aplikace jsou používány nejvíc. Třída [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient?view=azure-dotnet) v sadě SDK poskytuje mnoho způsobů, jak sledovat telemetrii ve vašich aplikacích. Podívejte se na příklad, jak instrumentovat a přidat Application Insights do aplikace v našem kurzu pro [monitorování a diagnostiku aplikace .NET](service-fabric-tutorial-monitoring-aspnet.md) .
 
 ## <a name="eventsource"></a>EventSource
 
-Při vytváření řešení Service Fabric ze šablony v aplikaci Visual Studio je vygenerována třída odvozená od objektu **EventSource**(**ServiceEventSource** nebo **ActorEventSource**). Vytvoří se šablona, do které můžete přidat události pro svou aplikaci nebo službu. Název **EventSource** **musí** být jedinečný a měl by být přejmenován z výchozí šablony řetězce společnost – &lt; řešení &gt; - &lt; &gt; . Pokud máte více definic **EventSource** , které používají stejný název, způsobí problém v době běhu. Každá definovaná událost musí mít jedinečný identifikátor. Pokud identifikátor není jedinečný, dojde k chybě modulu runtime. Některé organizace předřadí rozsah hodnot pro identifikátory, aby nedocházelo ke konfliktům mezi samostatnými vývojovými týmy. Další informace najdete v [blogu Vance](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/) nebo v [dokumentaci MSDN](https://msdn.microsoft.com/library/dn774985(v=pandp.20).aspx).
+Při vytváření řešení Service Fabric ze šablony v aplikaci Visual Studio je vygenerována třída odvozená od objektu **EventSource**(**ServiceEventSource** nebo **ActorEventSource**). Vytvoří se šablona, do které můžete přidat události pro svou aplikaci nebo službu. Název **EventSource** **musí** být jedinečný a měl by být přejmenován z výchozí šablony řetězce společnost – &lt; řešení &gt; - &lt; &gt; . Pokud máte více definic **EventSource** , které používají stejný název, způsobí problém v době běhu. Každá definovaná událost musí mít jedinečný identifikátor. Pokud identifikátor není jedinečný, dojde k chybě modulu runtime. Některé organizace předřadí rozsah hodnot pro identifikátory, aby nedocházelo ke konfliktům mezi samostatnými vývojovými týmy. Další informace najdete v [blogu Vance](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource) nebo v [dokumentaci MSDN](/previous-versions/msp-n-p/dn774985(v=pandp.20)).
 
 ## <a name="aspnet-core-logging"></a>Protokolování ASP.NET Core
 

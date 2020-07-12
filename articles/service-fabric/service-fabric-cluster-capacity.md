@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 774b114a47958b173f891ed13d423f9b051ee37c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610536"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247772"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 
@@ -26,7 +26,7 @@ Tento článek vás provede důležitými rozhodovacími body pro každou z těc
 
 ## <a name="initial-number-and-properties-of-cluster-node-types"></a>Počáteční počet a vlastnosti typů uzlů clusteru
 
-*Typ uzlu* definuje velikost, číslo a vlastnosti pro sadu uzlů (virtuálních počítačů) v clusteru. Každý typ uzlu, který je definovaný v clusteru Service Fabric, se mapuje na [sadu škálování virtuálního počítače](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+*Typ uzlu* definuje velikost, číslo a vlastnosti pro sadu uzlů (virtuálních počítačů) v clusteru. Každý typ uzlu, který je definovaný v clusteru Service Fabric, se mapuje na [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/overview.md).
 
 Vzhledem k tomu, že každý typ uzlu je odlišná sada škálování, dá se škálovat směrem nahoru nebo dolů, mít různé sady portů otevřené a mají různé metriky kapacity. Další informace o vztahu mezi typy uzlů a sadami škálování virtuálních počítačů najdete v tématu [Service Fabric typy uzlů clusteru](service-fabric-cluster-nodetypes.md).
 
@@ -34,7 +34,7 @@ Každý cluster vyžaduje jeden **primární typ uzlu**, který spouští důle�
 
 **Typy neprimárních uzlů** lze použít k definování aplikačních rolí (například *front-endové* a *back-endové* služby) a k fyzické izolaci služeb v rámci clusteru. Clustery Service Fabric mohou mít nula nebo více typů neprimárních uzlů.
 
-Typ primárního uzlu je nakonfigurován pomocí `isPrimary` atributu v rámci definice typu uzlu v šabloně nasazení Azure Resource Manager. Úplný seznam vlastností typu uzlu naleznete v [objektu NodeTypeDescription](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Například použití otevřete libovolný *AzureDeploy.js* v souboru v části [Service Fabric ukázky clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) a *vyhledejte na stránce* hledání `nodetTypes` objektu.
+Typ primárního uzlu je nakonfigurován pomocí `isPrimary` atributu v rámci definice typu uzlu v šabloně nasazení Azure Resource Manager. Úplný seznam vlastností typu uzlu naleznete v [objektu NodeTypeDescription](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Například použití otevřete libovolný *AzureDeploy.js* v souboru v části [Service Fabric ukázky clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) a *vyhledejte na stránce* hledání `nodetTypes` objektu.
 
 ### <a name="node-type-planning-considerations"></a>Požadavky na plánování typu uzlu
 
@@ -79,7 +79,7 @@ Následující tabulka uvádí Service Fabric vrstev odolnosti, jejich požadavk
 > V případě bronzové odolnosti není k dispozici automatický upgrade pro image operačního systému. I když se [aplikace Orchestration](service-fabric-patch-orchestration-application.md) (určená jenom pro clustery, které nejsou hostované na Azure) *nedoporučují* pro stříbrné nebo vyšší úrovně odolnosti, jedná se o jedinou možnost pro automatizaci aktualizací Windows s ohledem na Service Fabric upgradovacích domén.
 
 > [!IMPORTANT]
-> Bez ohledu na úroveň odolnosti spustí operace zrušení [přidělení](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) na sadě škálování virtuálního počítače cluster.
+> Bez ohledu na úroveň odolnosti spustí operace zrušení [přidělení](/rest/api/compute/virtualmachinescalesets/deallocate) na sadě škálování virtuálního počítače cluster.
 
 ### <a name="bronze"></a>Bronzová
 

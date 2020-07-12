@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79243923"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249899"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Šablony produktů v Azure API Management
 
@@ -30,7 +31,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 -   [Product](#Product) (Produkt)  
   
 > [!NOTE]
->  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázkové výchozí šablony jsou uvedené v následující dokumentaci, ale můžou se změnit z důvodu průběžných vylepšení. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na požadované jednotlivé šablony. Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](./api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -78,7 +79,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
 |Stránkování|Entita [stránkování](api-management-template-data-model-reference.md#Paging)|Informace o stránkování kolekce Products|  
 |Filtrování|Entita [filtrování](api-management-template-data-model-reference.md#Filtering)|Informace o filtrování pro stránku seznam produktů.|  
@@ -203,13 +204,13 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Description|  
+|Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Produkt|[Product](api-management-template-data-model-reference.md#Product) (Produkt)|Zadaný produkt.|  
+|Součin|[Product](api-management-template-data-model-reference.md#Product) (Produkt)|Zadaný produkt.|  
 |IsDeveloperSubscribed|Boolean|Určuje, zda je aktuální uživatel přihlášen k odběru tohoto produktu.|  
 |SubscriptionState|číslo|Stav předplatného. Možné stavy:<br /><br /> -   `0 - suspended`– předplatné je blokované a předplatitel nemůže volat žádná rozhraní API produktu.<br />-   `1 - active`– předplatné je aktivní.<br />-   `2 - expired`– předplatné dosáhlo data vypršení platnosti a bylo deaktivováno.<br />-   `3 - submitted`– žádost o odběr byla vytvořena vývojářem, ale ještě nebyla schválena nebo odmítnuta.<br />-   `4 - rejected`– žádost o předplatné byla zamítnuta správcem.<br />-   `5 - cancelled`– předplatné zrušila vývojář nebo správce.|  
 |Omezení|pole|Tato vlastnost je zastaralá a neměla by se používat.|  
-|DelegatedSubscriptionEnabled|Boolean|Zda je pro toto předplatné povoleno [delegování](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) .|  
+|DelegatedSubscriptionEnabled|Boolean|Zda je pro toto předplatné povoleno [delegování](./api-management-howto-setup-delegation.md) .|  
 |DelegatedSubscriptionUrl|řetězec|Pokud je povoleno delegování, adresa URL delegovaného předplatného.|  
 |Souhlasí|Boolean|Pokud má produkt nějaké výrazy, bez ohledu na to, jestli aktuální uživatel souhlasil s podmínkami.|  
 |Předplatná|Kolekce [souhrnných entit předplatného](api-management-template-data-model-reference.md#SubscriptionSummary)|Odběry produktu.|  

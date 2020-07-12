@@ -2,16 +2,16 @@
 title: Použití injektáže závislostí ve službě Azure Functions pro .NET
 description: Naučte se používat vkládání závislostí k registraci a používání služeb ve funkcích .NET.
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a994111d2f7e938ecdd71236858e4cb8773b00f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832861"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249253"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -21,7 +21,7 @@ Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což j
 
 - Podpora vkládání závislostí začíná Azure Functions 2. x.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moci použít vkládání závislostí, je nutné nainstalovat následující balíčky NuGet:
 
@@ -185,7 +185,7 @@ Následující příklad `host.json` souboru Přidá filtr protokolu.
 
 Hostitel funkce registruje mnoho služeb. V rámci vaší aplikace je možné v aplikaci provést zabezpečení těchto služeb:
 
-|Typ služby|Doba platnosti|Description|
+|Typ služby|Doba platnosti|Popis|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Konfigurace modulu runtime|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Zodpovídá za poskytnutí ID instance hostitele.|
@@ -257,7 +257,7 @@ Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor m
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 - [Jak monitorovat aplikaci Function App](functions-monitoring.md)
 - [Osvědčené postupy pro funkce](functions-best-practices.md)

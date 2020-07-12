@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b34893b64ac3533406f33c45583a911b70ae42af
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692594"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247434"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
 
@@ -20,14 +21,14 @@ Tento článek poskytuje přehled požadavků a nastavení rozšíření a také
 > [!IMPORTANT]
 > Aplikace Service Fabric Java je možné vyvíjet na počítačích s Windows, ale dají se nasadit jenom do clusterů Azure Linux. Ladění aplikací Java není v systému Windows podporováno.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ve všech prostředích musí být nainstalované následující požadavky.
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
 * [Git](https://git-scm.com/)
-* [Sada Service Fabric SDK](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
+* [Sada Service Fabric SDK](./service-fabric-get-started.md)
 * Yeoman generátory – nainstalujte vhodné generátory pro vaši aplikaci.
 
    ```sh

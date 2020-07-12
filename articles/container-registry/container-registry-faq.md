@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390359"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247026"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Nejčastější dotazy týkající se Azure Container Registry
 
@@ -32,7 +32,7 @@ Ano. Tady je [Šablona](https://github.com/Azure/azure-quickstart-templates/tree
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Kontroluje se u obrázků v ACR chyba zabezpečení?
 
-Ano. Přečtěte si dokumentaci od [Azure Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Ano. Přečtěte si dokumentaci od [Azure Security Center](../security-center/azure-container-registry-integration.md), [TwistLock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) a [azurová](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Návody nakonfigurovat Kubernetes pomocí Azure Container Registry?
 
@@ -436,8 +436,8 @@ Obraťte se prosím na správce sítě nebo Zkontrolujte konfiguraci sítě a p�
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Proč dojde k selhání žádosti o přijetí změn nebo nabízení oznámení s nepovolenou operací?
 
 Tady je několik scénářů, ve kterých může být operace zakázaná:
-* Klasické Registry už nejsou podporované. Upgradujte prosím na podporovanou [úroveň služby](https://aka.ms/acr/skus) pomocí [AZ acr Update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) nebo Azure Portal.
-* Bitová kopie nebo úložiště je možná zamčené, aby se nemohlo odstranit ani aktualizovat. Aktuální atributy můžete zobrazit pomocí příkazu [AZ ACR show úložištì](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) .
+* Klasické Registry už nejsou podporované. Upgradujte prosím na podporovanou [úroveň služby](https://aka.ms/acr/skus) pomocí [AZ acr Update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) nebo Azure Portal.
+* Bitová kopie nebo úložiště je možná zamčené, aby se nemohlo odstranit ani aktualizovat. Aktuální atributy můžete zobrazit pomocí příkazu [AZ ACR show úložištì](./container-registry-image-lock.md) .
 * Pokud je obrázek v karanténě, některé operace jsou zakázané. Přečtěte si další informace o [karanténě](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Je možné, že váš registr dosáhl svého [limitu úložiště](container-registry-skus.md#service-tier-features-and-limits).
 
@@ -449,7 +449,7 @@ Pokud se zobrazí chyba, například "nepodporovaný formát úložiště", "nep
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Návody shromažďovat trasování http ve Windows?
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 - Povolit dešifrování HTTPS v Fiddler:<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Povolit Docker pro použití proxy serveru prostřednictvím uživatelského rozhraní Docker:<https://docs.docker.com/docker-for-windows/#proxies>

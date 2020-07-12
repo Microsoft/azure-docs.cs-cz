@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498145"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248403"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorování a diagnostika
 Azure Service Fabric Mesh je plně spravovaná služba, která vývojářům umožňuje nasazovat aplikace zajišťující mikroslužby, aniž by museli spravovat virtuální počítače, úložiště nebo sítě. Monitorování a diagnostika Service Fabric sítě jsou rozdělené do tří hlavních typů diagnostických dat:
@@ -42,7 +43,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 Prostředí sítě zpřístupňuje několik metrik, které označují, jak vaše kontejnery provádějí. Pomocí Azure Portal a rozhraní příkazového řádku Azure monitor jsou k dispozici následující metriky:
 
-| Metric | Popis | Jednotky|
+| Metrika | Popis | Jednotky|
 |----|----|----|
 | CpuUtilization | ActualCpu/AllocatedCpu jako procento | % |
 | MemoryUtilization | ActualMem/AllocatedMem jako procento | % |
@@ -50,14 +51,14 @@ Prostředí sítě zpřístupňuje několik metrik, které označují, jak vaše
 | AllocatedMemory | Paměť přidělená jako šablona pro Azure Resource Manager | MB |
 | ActualCpu | Využití procesoru | Millicores |
 | ActualMemory | Využití paměti | MB |
-| ContainerStatus | 0 – neplatné: stav kontejneru je neznámý. <br> 1 – čeká se na spuštění kontejneru. <br> 2 – spouštění: kontejner se právě spouští. <br> 3-zahájeno: kontejner byl úspěšně spuštěn. <br> 4 – zastavování: Probíhá zastavení kontejneru. <br> 5 – zastaveno: kontejner se úspěšně zastavil. | Není k dispozici |
-| ApplicationStatus | 0 – neznámý: stav nelze načíst. <br> 1 – připraveno: aplikace je úspěšně spuštěná. <br> 2. upgrade: probíhá upgrade. <br> 3 – vytváření: aplikace se vytváří. <br> 4 – odstraňování: aplikace se odstraňuje. <br> 5 – neúspěch: aplikaci se nepovedlo nasadit. | Není k dispozici |
-| ServiceStatus | 0 – neplatné: služba aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Není k dispozici |
-| ServiceReplicaStatus | 0 – neplatné: replika aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Není k dispozici | 
-| RestartCount | Počet restartování kontejneru | Není k dispozici |
+| ContainerStatus | 0 – neplatné: stav kontejneru je neznámý. <br> 1 – čeká se na spuštění kontejneru. <br> 2 – spouštění: kontejner se právě spouští. <br> 3-zahájeno: kontejner byl úspěšně spuštěn. <br> 4 – zastavování: Probíhá zastavení kontejneru. <br> 5 – zastaveno: kontejner se úspěšně zastavil. | Nelze použít |
+| ApplicationStatus | 0 – neznámý: stav nelze načíst. <br> 1 – připraveno: aplikace je úspěšně spuštěná. <br> 2. upgrade: probíhá upgrade. <br> 3 – vytváření: aplikace se vytváří. <br> 4 – odstraňování: aplikace se odstraňuje. <br> 5 – neúspěch: aplikaci se nepovedlo nasadit. | Nelze použít |
+| ServiceStatus | 0 – neplatné: služba aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Nelze použít |
+| ServiceReplicaStatus | 0 – neplatné: replika aktuálně nemá stav <br> 1 – OK: služba je v pořádku.  <br> 2 – Upozornění: může se jednat o něco špatného, vyžadovat šetření <br> 3 – Chyba: došlo k nějakému problému, který vyžaduje šetření. <br> 4 – neznámé: stav nelze načíst. | Nelze použít | 
+| RestartCount | Počet restartování kontejneru | Nelze použít |
 
 > [!NOTE]
-> Hodnoty ServiceStatus a ServiceReplicaStatus jsou stejné jako hodnota [elementu](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ve Service Fabric. 
+> Hodnoty ServiceStatus a ServiceReplicaStatus jsou stejné jako hodnota [elementu](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) ve Service Fabric. 
 
 Každá metrika je k dispozici v různých dimenzích, takže můžete vidět agregace na různých úrovních. Aktuální seznam dimenzí je následující:
 
@@ -73,7 +74,7 @@ Každá dimenze odpovídá různým komponentám [modelu Service Fabric aplikace
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor CLI
 
-Úplný seznam příkazů je k dispozici v [dokumentaci Azure monitor CLI](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) , ale obsahujeme několik užitečných příkladů. 
+Úplný seznam příkazů je k dispozici v [dokumentaci Azure monitor CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) , ale obsahujeme několik užitečných příkladů. 
 
 V každém příkladu ID prostředku následuje tento model.
 
@@ -117,4 +118,4 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o službě Service Fabric Mesh najdete v článku s [přehledem služby Service Fabric Mesh](service-fabric-mesh-overview.md).
-* Další informace o příkazech Azure Monitor metrik naleznete v dokumentaci k rozhraní příkazového [řádku Azure monitor CLI](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list).
+* Další informace o příkazech Azure Monitor metrik naleznete v dokumentaci k rozhraní příkazového [řádku Azure monitor CLI](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list).

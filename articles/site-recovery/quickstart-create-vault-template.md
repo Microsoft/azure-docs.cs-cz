@@ -1,33 +1,31 @@
 ---
 title: Rychlý Start k vytvoření trezoru služby Azure Recovery Services pomocí šablony Azure Resource Manager
-description: V tomto rychlém startu se dozvíte, jak vytvořit trezor služby Azure Recovery Services pomocí šablony Azure Resource Manager.
+description: V tomto rychlém startu se dozvíte, jak vytvořit trezor služby Azure Recovery Services pomocí šablony Azure Resource Manager (šablona ARM).
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-author: davidsmatlak
-ms.author: v-dasmat
-ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217287"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248821"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Rychlý Start: vytvoření trezoru Recovery Services pomocí šablony Správce prostředků
+# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Rychlý Start: vytvoření trezoru Recovery Services pomocí šablony ARM
 
-V tomto rychlém startu se dozvíte, jak nastavit trezor Recovery Services pomocí šablony Azure Resource Manager. Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), takže vaše podnikové aplikace budou zůstat online během plánovaných a neplánovaných výpadků. Site Recovery spravuje zotavení po havárii místních počítačů a virtuálních počítačů Azure (VM), včetně replikace, převzetí služeb při selhání a obnovení.
+V tomto rychlém startu se dozvíte, jak nastavit trezor Recovery Services pomocí šablony Azure Resource Manager (šablona ARM). Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR), takže vaše podnikové aplikace budou zůstat online během plánovaných a neplánovaných výpadků. Site Recovery spravuje zotavení po havárii místních počítačů a virtuálních počítačů Azure (VM), včetně replikace, převzetí služeb při selhání a obnovení.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Předpoklady
+
 Pokud nemáte aktivní předplatné Azure, můžete si před tím, než začnete, vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Požadavky
-
-Žádné
-
-## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
-
-### <a name="review-the-template"></a>Kontrola šablony
+## <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
 
@@ -42,7 +40,7 @@ V šabloně jsou definované dva prostředky Azure:
 
 Další šablony Recovery Services pro Azure najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 Aby bylo možné šablonu nasadit, je nutné zadat **předplatné**, **skupinu prostředků**a **název trezoru** .
 

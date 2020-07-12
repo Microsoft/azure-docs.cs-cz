@@ -5,19 +5,19 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ce2dbcefa63cc55a66e712664d1436ca24d3a1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707936"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248488"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Nastavení rozhraní příkazového řádku služby Service Fabric Mesh
 K nasazení a správě prostředků v místním počítači a v síti Azure Service Fabric je nutná Service Fabric rozhraní příkazového řádku (CLI). Tady je postup, jak ho nastavit.
 
 Existují tři typy rozhraní příkazového řádku, které lze použít a které jsou shrnuty v následující tabulce.
 
-| Modul CLI | Cílové prostředí |  Description | 
+| Modul CLI | Cílové prostředí |  Popis | 
 |---|---|---|
 | AZ Mesh | Síť Azure Service Fabric | Primární rozhraní příkazového řádku, které umožňuje nasazovat aplikace a spravovat prostředky v prostředí sítě Azure Service Fabric. 
 | sfctl | Místní clustery | Service Fabric CLI, který umožňuje nasazení a testování prostředků Service Fabric na místních clusterech.  
@@ -44,7 +44,7 @@ Ve verzi Preview je rozhraní příkazového řádku služby Azure Service Fabri
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>Instalace rozhraní příkazového řádku Service Fabric (sfctl) 
 
-Postupujte podle pokynů v tématu [nastavení Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli). Modul **sfctl** se dá použít k nasazení aplikací na základě modelu prostředků v Service Fabric clusterech na místním počítači. 
+Postupujte podle pokynů v tématu [nastavení Service Fabric CLI](../service-fabric/service-fabric-cli.md). Modul **sfctl** se dá použít k nasazení aplikací na základě modelu prostředků v Service Fabric clusterech na místním počítači. 
 
 ## <a name="install-the-maven-cli"></a>Instalace rozhraní příkazového řádku Maven 
 

@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/10/2020
-ms.openlocfilehash: 01968335ffcaffb26cabd2a5174d00e5471409c1
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d2567a5a0374fd05f17e1153c3b2d7f3df50e0d9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232028"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246992"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -28,7 +28,6 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 | [**Hledat REST API 2020-06-30**](https://docs.microsoft.com/rest/api/searchservice/) | REST | Nová stabilní verze rozhraní REST API. Kromě znalostní báze Knowledge Store zahrnuje tato verze vylepšení vyhledávání relevance a bodování. | Všeobecně k dispozici. |
 | [**Okapi BM25 – algoritmus relevance**](https://en.wikipedia.org/wiki/Okapi_BM25) | Dotaz | Nový algoritmus hodnocení relevance se automaticky používá pro všechny nové služby vyhledávání vytvořené po 15. červenci. Pro služby, které jste vytvořili dřív, se můžete rozhodnout, že nastavíte `similarity` vlastnost u polí index. | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější, nebo REST API 2019-05-06. |
 | **executionEnvironment** | Zabezpečení (indexery) | Explicitně nastavte tuto vlastnost konfigurace indexeru tak, aby `private` vynutila všechna připojení k externím zdrojům dat v rámci privátního koncového bodu. Platí pouze pro služby vyhledávání, které využívají privátní propojení Azure. | Všeobecně k dispozici. </br> K nastavení tohoto obecného parametru konfigurace použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) . |
-| [**Azure Machine Learning (AML) – dovednost**](cognitive-search-aml-skill.md) | Obohacení AI| Nový typ dovednosti pro integraci koncového bodu Inferencing z Azure Machine Learning. Začněte s [tímto kurzem](cognitive-search-tutorial-aml-custom-skill.md). | Všeobecně k dispozici. </br> Použijte [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) nebo novější. K dispozici také na portálu v návrhu dovednosti, za předpokladu, že Kognitivní hledání a služby Azure ML se nasazují ve stejném předplatném. |
 
 ### <a name="may-2020-microsoft-build"></a>Květen 2020 (Microsoft Build)
 

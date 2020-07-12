@@ -3,15 +3,15 @@ title: 'Referenční informace pro vývojáře v jazyce F # Azure Functions'
 description: 'Naučte se vyvíjet Azure Functions pomocí skriptu jazyka F #.'
 author: sylvanc
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005cb0044cb4d225c8b94602fb907fee09fb00b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846739"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249185"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Referenční informace pro vývojáře v jazyce F # Azure Functions
 
@@ -89,7 +89,7 @@ let Run(input: string, item: byref<Item>) =
     item <- result
 ```
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 Pokud chcete protokolovat výstup do [protokolů streamování](../app-service/troubleshoot-diagnostic-logs.md) v F #, funkce by měla převzít argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Pro zajištění konzistence doporučujeme tento argument pojmenovaný `log` . Příklad:
 
 ```fsharp
@@ -285,7 +285,7 @@ Cesty poskytují `#load` direktivám relativním k umístění `.fsx` souboru.
 `#load`Direktiva funguje pouze se `.fsx` soubory (F # Script), nikoli se `.fs` soubory.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Průvodce F #](/dotnet/articles/fsharp/index)
 * [Osvědčené postupy pro Azure Functions](functions-best-practices.md)

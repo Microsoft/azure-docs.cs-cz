@@ -13,11 +13,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 76107a3713a7570bc3bbca15aa1b47e76560bf66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7323793dcbbd05fc5abf032d140b2caa5975da4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674274"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249457"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -31,11 +32,11 @@ Službu Azure API Management lze nasadit v rámci virtuální sítě (VNET), aby
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
-+ Aktivní předplatné Azure.
++ Musíte mít aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -70,7 +71,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
     > [!IMPORTANT]
     > Při nasazování instance Azure API Management do virtuální sítě Správce prostředků musí být služba ve vyhrazené podsíti, která neobsahuje žádné další prostředky s výjimkou instancí Azure API Management. Pokud se provede pokus o nasazení instance služby Azure API Management do podsítě Správce prostředků virtuální sítě, která obsahuje další prostředky, nasazení se nezdaří.
 
-    Potom vyberte **Použít**. Stránka **virtuální síť** vaší instance API Management se aktualizuje novými možnostmi virtuální sítě a podsítě.
+    Pak vyberte **Použít**. Stránka **virtuální síť** vaší instance API Management se aktualizuje novými možnostmi virtuální sítě a podsítě.
 
     ![Vybrat síť VPN][api-management-setup-vpn-select]
 
@@ -102,7 +103,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
 * **Nastavení vlastního serveru DNS**: služba API Management závisí na několika službách Azure. Pokud je API Management hostovaný ve virtuální síti s vlastním serverem DNS, musí přeložit názvy hostitelů těchto služeb Azure. [Postupujte prosím podle pokynů pro](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) vlastní nastavení DNS. Podívejte se na tabulku porty níže a další požadavky na síť pro referenci.
 
 > [!IMPORTANT]
-> Pokud máte v úmyslu používat pro virtuální síť vlastní servery DNS, měli byste ji nastavit **před** nasazením služby API Management do ní. V opačném případě je potřeba aktualizovat API Management službu pokaždé, když změníte servery DNS spuštěním [operace použít konfiguraci sítě](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates) .
+> Pokud máte v úmyslu používat pro virtuální síť vlastní servery DNS, měli byste ji nastavit **před** nasazením služby API Management do ní. V opačném případě je potřeba aktualizovat API Management službu pokaždé, když změníte servery DNS spuštěním [operace použít konfiguraci sítě](/rest/api/apimanagement/2019-12-01/apimanagementservice/applynetworkconfigurationupdates) .
 
 * **Porty vyžadované pro API Management**: příchozí a odchozí provoz do podsítě, ve které API Management nasazená, se dají řídit pomocí [skupiny zabezpečení sítě][Network Security Group]. Pokud některý z těchto portů není dostupný, API Management nemusí správně fungovat a může být nepřístupný. Pokud se některý z těchto portů zablokuje, je při použití API Management s virtuální sítí další běžný problém s konfigurací.
 
@@ -173,7 +174,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
   > [!IMPORTANT]
   > Po ověření připojení nezapomeňte odebrat všechny prostředky nasazené v podsíti, než nasadíte API Management do podsítě.
 
-* **Přírůstkové aktualizace**: při provádění změn v síti se podívejte na [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus), abyste ověřili, že služba API Management neztratila přístup k žádnému z kritických prostředků, na kterých závisí. Stav připojení by se měl aktualizovat každých 15 minut.
+* **Přírůstkové aktualizace**: při provádění změn v síti se podívejte na [NetworkStatus API](/rest/api/apimanagement/2019-12-01/networkstatus), abyste ověřili, že služba API Management neztratila přístup k žádnému z kritických prostředků, na kterých závisí. Stav připojení by se měl aktualizovat každých 15 minut.
 
 * **Navigační odkazy prostředků**: při nasazení do podsítě virtuálních sítí ve stylu Správce prostředků API Management rezervuje podsíť tím, že vytvoří navigační odkaz na prostředek. Pokud podsíť již obsahuje prostředek od jiného poskytovatele, nasazení se **nezdaří**. Obdobně platí, že když přesunete API Management službu do jiné podsítě nebo ji odstraníte, odebereme tento odkaz na tento prostředek.
 
@@ -202,7 +203,7 @@ Každá další jednotka API Management škálování vyžaduje dvě další IP 
 
 IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa příchozích požadavků označená s **globálním** umístěním, musí být na seznamu povolená i IP adresa specifická pro **oblast** .
 
-| **Prostředí Azure**|   **Věřitel**|  **IP adresa**|
+| **Prostředí Azure**|   **Oblast**|  **IP adresa**|
 |-----------------|-------------------------|---------------|
 | Veřejný partnerský vztah Azure| Střed USA – jih (globální)| 104.214.19.224|
 | Veřejný partnerský vztah Azure| Střed USA – sever (globální)| 52.162.110.80|
@@ -212,29 +213,29 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejný partnerský vztah Azure| Japonsko – západ| 40.81.185.8|
 | Veřejný partnerský vztah Azure| USA – středosever| 40.81.47.216|
 | Veřejný partnerský vztah Azure| Spojené království – jih| 51.145.56.125|
-| Veřejný partnerský vztah Azure| Indie – západ| 40.81.89.24|
-| Veřejný partnerský vztah Azure| USA – východ| 52.224.186.99|
-| Veřejný partnerský vztah Azure| Západní Evropa| 51.145.179.78|
-| Veřejný partnerský vztah Azure| Japonsko – východ| 52.140.238.179|
+| Veřejný partnerský vztah Azure| Západní Indie| 40.81.89.24|
+| Veřejný partnerský vztah Azure| East US| 52.224.186.99|
+| Veřejný partnerský vztah Azure| West Europe| 51.145.179.78|
+| Veřejný partnerský vztah Azure| Japan East| 52.140.238.179|
 | Veřejný partnerský vztah Azure| Francie – střed| 40.66.60.111|
 | Veřejný partnerský vztah Azure| Kanada – východ| 52.139.80.117|
 | Veřejný partnerský vztah Azure| Spojené arabské emiráty sever| 20.46.144.85|
-| Veřejný partnerský vztah Azure| Brazílie – jih| 191.233.24.179|
-| Veřejný partnerský vztah Azure| Jihovýchodní Asie| 40.90.185.46|
+| Veřejný partnerský vztah Azure| Brazil South| 191.233.24.179|
+| Veřejný partnerský vztah Azure| Southeast Asia| 40.90.185.46|
 | Veřejný partnerský vztah Azure| Jižní Afrika – sever| 102.133.130.197|
 | Veřejný partnerský vztah Azure| Střední Kanada| 52.139.20.34|
 | Veřejný partnerský vztah Azure| Jižní Korea – jih| 40.80.232.185|
 | Veřejný partnerský vztah Azure| Indie – střed| 13.71.49.1|
 | Veřejný partnerský vztah Azure| USA – západ| 13.64.39.16|
-| Veřejný partnerský vztah Azure| Austrálie – jihovýchod| 20.40.160.107|
+| Veřejný partnerský vztah Azure| Australia Southeast| 20.40.160.107|
 | Veřejný partnerský vztah Azure| Austrálie – střed| 20.37.52.67|
 | Veřejný partnerský vztah Azure| Indie – jih| 20.44.33.246|
-| Veřejný partnerský vztah Azure| USA – střed| 13.86.102.66|
+| Veřejný partnerský vztah Azure| Střední USA| 13.86.102.66|
 | Veřejný partnerský vztah Azure| Austrálie – východ| 20.40.125.155|
-| Veřejný partnerský vztah Azure| USA – západ 2| 51.143.127.203|
+| Veřejný partnerský vztah Azure| Západní USA 2| 51.143.127.203|
 | Veřejný partnerský vztah Azure| Východní USA 2 EUAP| 52.253.229.253|
 | Veřejný partnerský vztah Azure| Střed USA EUAP| 52.253.159.160|
-| Veřejný partnerský vztah Azure| USA – středojih| 20.188.77.119|
+| Veřejný partnerský vztah Azure| Středojižní USA| 20.188.77.119|
 | Veřejný partnerský vztah Azure| USA – východ 2| 20.44.72.3|
 | Veřejný partnerský vztah Azure| Severní Evropa| 52.142.95.35|
 | Veřejný partnerský vztah Azure| Východní Asie| 52.139.152.27|

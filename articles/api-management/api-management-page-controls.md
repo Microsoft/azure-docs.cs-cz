@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690179"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250018"
 ---
 # <a name="azure-api-management-page-controls"></a>Ovládací prvky stránky Azure API Management
 Azure API Management poskytuje následující ovládací prvky pro použití v šablonách portálu pro vývojáře.  
@@ -29,7 +30,7 @@ Chcete-li použít ovládací prvek, umístěte ho do požadovaného umístění
   
 Hodnoty pro parametry jsou předány v rámci datového modelu pro šablonu. Ve většině případů můžete jednoduše vložit do uvedeného příkladu pro každý ovládací prvek, aby správně fungoval. Další informace o hodnotách parametrů naleznete v části datový model pro každou šablonu, v níž lze ovládací prvek použít.  
 
-Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+Další informace o práci se šablonami najdete v tématu [Postup přizpůsobení API Management portálu pro vývojáře pomocí šablon](./api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -80,7 +81,7 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
 ```  
   
 ### <a name="parameters"></a>Parametry  
- Žádné  
+ Žádné.  
   
 ### <a name="developer-portal-templates"></a>Šablony portálu pro vývojáře  
  `basic-signin`Ovládací prvek se dá použít na následujících šablonách portálu pro vývojáře:  
@@ -99,7 +100,7 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
 ```  
   
 ### <a name="parameters"></a>Parametry  
- Žádné  
+ Žádné.  
   
 ### <a name="developer-portal-templates"></a>Šablony portálu pro vývojáře  
  `paging-control`Ovládací prvek se dá použít na následujících šablonách portálu pro vývojáře:  
@@ -122,7 +123,7 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
 ```  
   
 ### <a name="parameters"></a>Parametry  
- Žádné  
+ Žádné.  
   
 ### <a name="developer-portal-templates"></a>Šablony portálu pro vývojáře  
  `providers`Ovládací prvek se dá použít na následujících šablonách portálu pro vývojáře:  
@@ -141,7 +142,7 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
 ```  
   
 ### <a name="parameters"></a>Parametry  
- Žádné  
+ Žádné.  
   
 ### <a name="developer-portal-templates"></a>Šablony portálu pro vývojáře  
  `search-control`Ovládací prvek se dá použít na následujících šablonách portálu pro vývojáře:  
@@ -162,7 +163,7 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
 ```  
   
 ### <a name="parameters"></a>Parametry  
- Žádné  
+ Žádné.  
   
 ### <a name="developer-portal-templates"></a>Šablony portálu pro vývojáře  
  `sign-up`Ovládací prvek se dá použít na následujících šablonách portálu pro vývojáře:  
@@ -181,7 +182,7 @@ Další informace o práci se šablonami najdete v tématu [Postup přizpůsoben
 ```  
   
 ### <a name="parameters"></a>Parametry  
- Žádné  
+ Žádné.  
   
 ### <a name="developer-portal-templates"></a>Šablony portálu pro vývojáře  
  `subscribe-button`Ovládací prvek se dá použít na následujících šablonách portálu pro vývojáře:  

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e718739971283418d151bef9ad75333e313d85
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811171"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250426"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrace API Management v interní virtuální síti s Application Gateway
 
@@ -34,13 +35,13 @@ Kombinování API Management zřízené v interní virtuální síti s Applicati
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Pokud chcete postupovat podle kroků popsaných v tomto článku, musíte mít:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -329,7 +330,7 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 
 ### <a name="step-11"></a>Krok 11
 
-Nakonfigurujte počet instancí a velikost Application Gateway. V tomto příkladu používáme [WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) pro zvýšené zabezpečení prostředku API Management.
+Nakonfigurujte počet instancí a velikost Application Gateway. V tomto příkladu používáme [WAF SKU](../web-application-firewall/ag/ag-overview.md) pro zvýšené zabezpečení prostředku API Management.
 
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -367,9 +368,9 @@ Azure API Management nakonfigurovaný ve virtuální síti poskytuje rozhraní j
 
 ## <a name="next-steps"></a><a name="next-steps"> </a> Další kroky
 * Další informace o Azure Application Gateway
-  * [Přehled Application Gateway](../application-gateway/application-gateway-introduction.md)
-  * [Application Gateway Firewall webových aplikací](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [Application Gateway pomocí směrování založeného na cestách](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+  * [Přehled Application Gateway](../application-gateway/overview.md)
+  * [Application Gateway Firewall webových aplikací](../web-application-firewall/ag/ag-overview.md)
+  * [Application Gateway pomocí směrování založeného na cestách](../application-gateway/tutorial-url-route-powershell.md)
 * Další informace o API Management a virtuální sítě
   * [Použití API Management k dispozici pouze v rámci virtuální sítě](api-management-using-with-internal-vnet.md)
   * [Použití API Management ve virtuální síti](api-management-using-with-vnet.md)

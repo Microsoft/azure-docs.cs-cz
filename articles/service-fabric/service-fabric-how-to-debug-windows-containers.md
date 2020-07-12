@@ -4,21 +4,22 @@ description: Naučte se ladit kontejnery Windows v Azure Service Fabric pomocí 
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e6e7785278b182cebb21115a70f35ade52303c3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701145"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247247"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Postupy: ladění kontejnerů Windows v Azure Service Fabric pomocí sady Visual Studio 2019
 
 Pomocí sady Visual Studio 2019 můžete ladit aplikace .NET v kontejnerech jako Service Fabric služby. V tomto článku se dozvíte, jak nakonfigurovat prostředí a potom ladit aplikaci .NET v kontejneru spuštěném v místním Service Fabricovém clusteru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* V systému Windows 10 postupujte podle tohoto rychlého startu a [nakonfigurujte Windows 10 tak, aby se spouštěly kontejnery Windows](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10) .
-* V systému Windows Server 2016 postupujte podle tohoto rychlého startu a [Nakonfigurujte systém windows 2016 pro spouštění kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
-* Místní Service Fabric prostředí nastavte po [přípravě vývojového prostředí ve Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) .
+* V systému Windows 10 postupujte podle tohoto rychlého startu a [nakonfigurujte Windows 10 tak, aby se spouštěly kontejnery Windows](/virtualization/windowscontainers/quick-start/quick-start-windows-10) .
+* V systému Windows Server 2016 postupujte podle tohoto rychlého startu a [Nakonfigurujte systém windows 2016 pro spouštění kontejnerů Windows](/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
+* Místní Service Fabric prostředí nastavte po [přípravě vývojového prostředí ve Windows](./service-fabric-get-started.md) .
 
 ## <a name="configure-your-developer-environment-to-debug-containers"></a>Konfigurace vývojového prostředí pro ladění kontejnerů
 
@@ -37,7 +38,7 @@ Pomocí sady Visual Studio 2019 můžete ladit aplikace .NET v kontejnerech jako
       > Můžete použít `-CreateOneNodeCluster` k nastavení clusteru s jedním uzlem. Ve výchozím nastavení se vytvoří místní cluster s pěti uzly.
       >
 
-      Další informace o službě DNS v Service Fabric najdete v tématu [Služba DNS ve službě Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Další informace o Service Fabric použití reverzního proxy serveru ze služeb spuštěných v kontejneru najdete v tématu [reverzní proxy zvláštní zpracování pro služby běžící v kontejnerech](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
+      Další informace o službě DNS v Service Fabric najdete v tématu [Služba DNS ve službě Azure Service Fabric](./service-fabric-dnsservice.md). Další informace o Service Fabric použití reverzního proxy serveru ze služeb spuštěných v kontejneru najdete v tématu [reverzní proxy zvláštní zpracování pro služby běžící v kontejnerech](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Známá omezení při ladění kontejnerů v Service Fabric
 

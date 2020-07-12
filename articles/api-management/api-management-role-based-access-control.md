@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: ed0cd51fc686735f2d9c110ce46d5904107cafc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be8ffa1b569c365c8fa9b985d2b8319b7c0731b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430619"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249831"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Použití řízení přístupu na základě role ve službě API Management
 
-Azure API Management spoléhá na Access Control na základě rolí v Azure (RBAC) a umožňuje jemně odstupňovanou správu přístupu pro API Management služby a entity (například rozhraní API a zásady). Tento článek poskytuje přehled předdefinovaných a vlastních rolí v API Management. Další informace o správě přístupu v Azure Portal najdete v tématu [Začínáme se správou přístupu v Azure Portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
+Azure API Management spoléhá na Access Control na základě rolí v Azure (RBAC) a umožňuje jemně odstupňovanou správu přístupu pro API Management služby a entity (například rozhraní API a zásady). Tento článek poskytuje přehled předdefinovaných a vlastních rolí v API Management. Další informace o správě přístupu v Azure Portal najdete v tématu [Začínáme se správou přístupu v Azure Portal](../role-based-access-control/overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -29,9 +30,9 @@ Azure API Management spoléhá na Access Control na základě rolí v Azure (RBA
 
 API Management v současné době nabízí tři předdefinované role a v blízké budoucnosti bude přidávat další dvě role. Tyto role se dají přiřadit v různých oborech, včetně předplatného, skupiny prostředků a jednotlivých instancí API Management. Pokud například přiřadíte roli "API Management Service Reader" uživateli na úrovni skupiny prostředků, bude mít uživatel oprávnění ke čtení všech API Management instancí v rámci skupiny prostředků. 
 
-Následující tabulka uvádí stručný popis předdefinovaných rolí. Tyto role můžete přiřadit pomocí Azure Portal nebo jiných nástrojů, včetně Azure [PowerShellu](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)a [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Podrobnosti o tom, jak přiřadit předdefinované role, najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Následující tabulka uvádí stručný popis předdefinovaných rolí. Tyto role můžete přiřadit pomocí Azure Portal nebo jiných nástrojů, včetně Azure [PowerShellu](../role-based-access-control/role-assignments-powershell.md), [azure CLI](../role-based-access-control/role-assignments-cli.md)a [REST API](../role-based-access-control/role-assignments-rest.md). Podrobnosti o tom, jak přiřadit předdefinované role, najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
-| Role          | Přístup pro čtení<sup>[1]</sup> | Přístup pro zápis<sup>[2]</sup> | Vytvoření, odstranění, škálování, síť VPN a konfigurace vlastní domény služby | Přístup k staršímu portálu vydavatele | Description
+| Role          | Přístup pro čtení<sup>[1]</sup> | Přístup pro zápis<sup>[2]</sup> | Vytvoření, odstranění, škálování, síť VPN a konfigurace vlastní domény služby | Přístup k staršímu portálu vydavatele | Popis
 | ------------- | ---- | ---- | ---- | ---- | ---- 
 | Přispěvatel API Management služby | ✓ | ✓ | ✓ | ✓ | Super uživatel. Má úplný přístup CRUD k API Management službám a entitám (například rozhraní API a zásady). Má přístup k webu starší verze portálu vydavatele. |
 | Čtecí modul API Management služby | ✓ | | || Má přístup jen pro čtení k API Management službám a entitám. |
@@ -47,7 +48,7 @@ Následující tabulka uvádí stručný popis předdefinovaných rolí. Tyto ro
 
 ## <a name="custom-roles"></a>Vlastní role
 
-Pokud žádná z předdefinovaných rolí nevyhovuje vašim konkrétním potřebám, je možné vytvořit vlastní role a zajistit tak podrobnější správu přístupu pro API Management entit. Můžete například vytvořit vlastní roli, která má k API Management službě přístup jen pro čtení, ale má jenom přístup pro zápis do jednoho konkrétního rozhraní API. Další informace o vlastních rolích najdete [v tématu vlastní role v Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
+Pokud žádná z předdefinovaných rolí nevyhovuje vašim konkrétním potřebám, je možné vytvořit vlastní role a zajistit tak podrobnější správu přístupu pro API Management entit. Můžete například vytvořit vlastní roli, která má k API Management službě přístup jen pro čtení, ale má jenom přístup pro zápis do jednoho konkrétního rozhraní API. Další informace o vlastních rolích najdete [v tématu vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md). 
 
 > [!NOTE]
 > Aby bylo možné v Azure Portal zobrazit instanci API Management, musí vlastní role zahrnovat tuto ```Microsoft.ApiManagement/service/read``` akci.
@@ -82,4 +83,4 @@ Další informace o Access Control na základě rolí v Azure najdete v následu
   * [Začínáme se správou přístupu na webu Azure Portal](../role-based-access-control/overview.md)
   * [Použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md)
   * [Vlastní role v Azure RBAC](../role-based-access-control/custom-roles.md)
-  * [Azure Resource Manager operace poskytovatele prostředků](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)
+  * [Operace poskytovatele prostředků Azure Resource Manager](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)

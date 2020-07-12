@@ -3,11 +3,12 @@ title: Aktualizace clusteru tak, aby používal běžný název certifikátu
 description: Naučte se, jak přepínat Cluster Service Fabric, aby používal kryptografické otisky certifikátů k použití běžného názvu certifikátu.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a90290430616302dbbe9ab9cf717510070936529
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272623"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247910"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změna z kryptografického otisku certifikátu clusteru na běžný název
 Žádné dva certifikáty nemohou mít stejný kryptografický otisk, což způsobuje, že je změna nebo Správa certifikátu clusteru obtížná. Více certifikátů však může mít stejný společný název nebo předmět.  Přepnutím nasazeného clusteru z použití kryptografických otisků certifikátů na použití běžných názvů certifikátů je Správa certifikátů mnohem jednodušší. Tento článek popisuje, jak aktualizovat běžící cluster Service Fabric tak, aby místo kryptografického otisku certifikátu používal běžný název certifikátu.
@@ -19,7 +20,7 @@ ms.locfileid: "81272623"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Získat certifikát
-Nejdřív Získejte certifikát od certifikační [autority (CA)](https://wikipedia.org/wiki/Certificate_authority).  Běžný název certifikátu by měl být pro vlastní doménu, kterou vlastníte, a koupit z doménového registrátora. Například "azureservicefabricbestpractices.com"; Uživatelé, kteří nejsou zaměstnanci Microsoftu, nemůžou zřídit certifikáty pro domény MS, takže nebudete moct používat jako běžné názvy pro svůj certifikát názvy DNS ani Traffic Manager, a pokud vaše vlastní doména budete moct přeložit v Azure, budete muset zřídit [Azure DNS zónu](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) . Pokud chcete, aby portál odrážel vlastní alias domény pro váš cluster, budete také chtít deklarovat vlastní doménu, kterou vlastníte jako "managementEndpoint" clusteru.
+Nejdřív Získejte certifikát od certifikační [autority (CA)](https://wikipedia.org/wiki/Certificate_authority).  Běžný název certifikátu by měl být pro vlastní doménu, kterou vlastníte, a koupit z doménového registrátora. Například "azureservicefabricbestpractices.com"; Uživatelé, kteří nejsou zaměstnanci Microsoftu, nemůžou zřídit certifikáty pro domény MS, takže nebudete moct používat jako běžné názvy pro svůj certifikát názvy DNS ani Traffic Manager, a pokud vaše vlastní doména budete moct přeložit v Azure, budete muset zřídit [Azure DNS zónu](../dns/dns-delegate-domain-azure-dns.md) . Pokud chcete, aby portál odrážel vlastní alias domény pro váš cluster, budete také chtít deklarovat vlastní doménu, kterou vlastníte jako "managementEndpoint" clusteru.
 
 Pro účely testování byste mohli získat certifikát podepsaný certifikační autoritou od bezplatné nebo otevřené certifikační autority.
 
@@ -178,7 +179,7 @@ Pak otevřete soubor šablony v textovém editoru a proveďte tři aktualizace, 
         ...
     ```
 
-Další informace najdete v tématu [nasazení Service Fabric clusteru, který místo kryptografického otisku používá běžný název certifikátu.](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn)
+Další informace najdete v tématu [nasazení Service Fabric clusteru, který místo kryptografického otisku používá běžný název certifikátu.](./service-fabric-create-cluster-using-cert-cn.md)
 
 ## <a name="deploy-the-updated-template"></a>Nasazení aktualizované šablony
 Po provedení změn znovu nasaďte aktualizovanou šablonu.

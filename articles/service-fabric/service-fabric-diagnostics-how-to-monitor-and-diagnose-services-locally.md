@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701196"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247417"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a diagnostika služeb v nastavení místních počítačů pro vývoj
 > [!div class="op_single_selector"]
@@ -21,7 +22,7 @@ ms.locfileid: "84701196"
 Monitorování, detekce, diagnostika a řešení potíží umožní službám pokračovat s minimálním přerušením uživatelského prostředí. I když jsou monitorování a diagnostika v samotném nasazeném provozním prostředí kritické, efektivita bude záviset na tom, jak při vývoji služeb používat podobný model, abyste zajistili, že budou fungovat při přesunu do reálného nastavení. Service Fabric usnadňuje vývojářům služeb implementovat diagnostiku, která dokáže hladce fungovat v rámci místních nastavení pro vývoj v jednom počítači a v reálných instalacích produkčních clusterů.
 
 ## <a name="event-tracing-for-windows"></a>Trasování událostí pro Windows
-[Trasování událostí pro Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) je doporučená technologie pro trasování zpráv v Service Fabric. Mezi výhody používání ETW patří:
+[Trasování událostí pro Windows](/windows/win32/etw/event-tracing-portal) (ETW) je doporučená technologie pro trasování zpráv v Service Fabric. Mezi výhody používání ETW patří:
 
 * **Trasování událostí pro Windows je rychlé.** Byla sestavena jako technologie trasování, která má minimální dopad na doby spuštění kódu.
 * **Trasování ETW funguje bez problémů v místních vývojových prostředích i v reálných nastaveních clusteru.** To znamená, že nemusíte přepisovat kód trasování, když jste připraveni nasadit kód do reálného clusteru.
@@ -55,6 +56,5 @@ Po přidání vlastního trasování ETW do kódu služby můžete aplikaci sest
 ## <a name="next-steps"></a>Další kroky
 Stejný trasovací kód, který jste přidali do aplikace výše pro místní diagnostiku, bude fungovat s nástroji, které můžete použít k zobrazení těchto událostí při spuštění aplikace v clusteru Azure. Podívejte se na tyto články, které popisují různé možnosti nástrojů, a popište, jak je můžete nastavit.
 
-* [Postup shromažďování protokolů pomocí Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Postup shromažďování protokolů pomocí Azure Diagnostics](./service-fabric-diagnostics-event-aggregation-wad.md)
 * [Agregace a shromažďování událostí pomocí využitím eventflow](service-fabric-diagnostics-event-aggregation-eventflow.md)
-

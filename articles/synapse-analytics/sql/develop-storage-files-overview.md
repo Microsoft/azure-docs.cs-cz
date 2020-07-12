@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: c251b70d1988be82821f1e133151dae1ac6d1bc9
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f786e92ca99c4c1700d00adf396ba1127b66ea7c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921302"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247094"
 ---
 # <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Přístup k externímu úložišti v synapse SQL (na vyžádání)
 
@@ -35,7 +35,7 @@ OPENROWSET umožňuje uživatelům dotazovat se na externí soubory ve službě 
 
 ```sql
 SELECT * FROM
- OPENROWSET(BULK 'http://storage...com/container/file/path/*.csv', format= 'parquet') as rows
+ OPENROWSET(BULK 'https://<storage_account>.dfs.core.windows.net/<container>/<path>/*.parquet', format= 'parquet') as rows
 ```
 
 Uživatel může získat přístup k úložišti pomocí následujících pravidel přístupu:
@@ -48,10 +48,10 @@ Objekty zabezpečení SQL mohou také použít OPENROWSET k přímému dotazová
 ```sql
 EXECUTE AS somepoweruser
 
-CREATE CREDENTIAL [http://storage.dfs.com/container]
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
  WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sas token';
 
-GRANT REFERENCES CREDENTIAL::[http://storage.dfs.com/container] TO sqluser
+GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<container>] TO sqluser
 ```
 
 Pokud není k dispozici žádné přihlašovací údaje na úrovni serveru, které by odpovídaly adrese URL nebo uživatel SQL nemá oprávnění pro přístup k tomuto pověření, bude vrácena chyba. Objekty zabezpečení SQL se nemůžou zosobnit pomocí nějaké identity Azure AD.
@@ -78,7 +78,7 @@ CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
  SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
 
 CREATE EXTERNAL DATA SOURCE MyAzureInvoices
- WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3' ,
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>/' ,
  CREDENTIAL = AccessAzureInvoices) ;
 ```
 
@@ -97,7 +97,7 @@ Uživatel může vytvořit externí zdroj dat bez PŘIHLAŠOVACÍch údajů, kte
 
 ```sql
 CREATE EXTERNAL DATA SOURCE MyAzureInvoices
- WITH ( LOCATION = 'https://newinvoices.blob.core.windows.net/week3') ;
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
 ```
 
 ## <a name="external-table"></a>EXTERNÍ TABULKA
@@ -125,7 +125,7 @@ CREATE DATABASE SCOPED CREDENTIAL cred
  SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
 
 CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
- WITH ( LOCATION = 'https://samples.blob.core.windows.net/products' ,
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>' ,
  CREDENTIAL = cred
  ) ;
 ```

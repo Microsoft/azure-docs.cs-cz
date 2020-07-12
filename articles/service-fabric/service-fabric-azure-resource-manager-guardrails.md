@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: f8d8d5ae677ea438de4baed7d6636c2087277427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa1499c57ead28bfcee90a2f224ef9c3bb1d7f58
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602699"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247820"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
 Při nasazování clusteru Service Fabric jsou zavedeny guardrails, což způsobí selhání nasazení Azure Resource Manager v případě neplatné konfigurace clusteru. V následujících částech najdete přehled běžných potíží s konfigurací clusteru a kroky potřebné k tomu, abyste tyto problémy zmírnili. 
@@ -68,7 +68,7 @@ Chcete-li opravit neshodu trvanlivosti, která je označena některou z výše u
 
 ## <a name="seed-node-deletion"></a>Odstranění uzlu počáteční hodnoty 
 ### <a name="overview"></a>Přehled
-Cluster Service Fabric má vlastnost [úrovně spolehlivosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#reliability-characteristics-of-the-cluster) , která se používá k určení počtu replik systémových služeb, které běží na primárním uzlu typu clusteru. Počet požadovaných replik bude určovat minimální počet uzlů, které musí být udržovány v primárním typu uzlu clusteru. Pokud počet uzlů v primárním uzlu překročí požadované minimum pro úroveň spolehlivosti, cluster přestane být stabilní.  
+Cluster Service Fabric má vlastnost [úrovně spolehlivosti](./service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster) , která se používá k určení počtu replik systémových služeb, které běží na primárním uzlu typu clusteru. Počet požadovaných replik bude určovat minimální počet uzlů, které musí být udržovány v primárním typu uzlu clusteru. Pokud počet uzlů v primárním uzlu překročí požadované minimum pro úroveň spolehlivosti, cluster přestane být stabilní.  
 
 ### <a name="error-messages"></a>Chybové zprávy 
 Byla zjištěna operace odebrání uzlu počáteční hodnoty a bude odmítnuta. 
@@ -79,7 +79,7 @@ Byla zjištěna operace odebrání uzlu počáteční hodnoty a bude odmítnuta.
 Ujistěte se, že váš typ primárního uzlu má dostatek Virtual Machines pro spolehlivost určenou v clusteru. Virtuální počítač nebudete moct odebrat, pokud by se sada škálování virtuálního počítače nastavila pod minimálním počtem uzlů pro danou úroveň spolehlivosti.
 * Pokud je úroveň spolehlivosti správně zadaná, ujistěte se, že je v primárním uzlu typu podle potřeby pro úroveň spolehlivosti k dispozici dostatek uzlů. 
 * Pokud je úroveň spolehlivosti nesprávná, zahajte změnu v prostředku Service Fabric tak, aby se před zahájením operací s škálováním sady virtuálních počítačů snížila úroveň spolehlivosti, a počkejte, než se dokončí.
-* Pokud je úroveň spolehlivosti bronzová, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) a proveďte řádné škálování clusteru.
+* Pokud je úroveň spolehlivosti bronzová, postupujte podle těchto [kroků](./service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) a proveďte řádné škálování clusteru.
 
 ## <a name="next-steps"></a>Další kroky
 * Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Windows Server: [Service Fabric vytvoření clusteru pro Windows Server](service-fabric-cluster-creation-for-windows-server.md)

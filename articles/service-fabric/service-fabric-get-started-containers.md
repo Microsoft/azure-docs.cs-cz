@@ -4,11 +4,12 @@ description: Vytvoříte svou první aplikaci typu kontejner pro Windows na plat
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560671"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247400"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -16,7 +17,7 @@ ms.locfileid: "84560671"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Docker [obsahující webovou aplikaci](http://flask.pocoo.org/) v Pythonu a nasazením do clusteru Azure Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
+Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Docker [obsahující webovou aplikaci](http://flask.pocoo.org/) v Pythonu a nasazením do clusteru Azure Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](../container-registry/index.yml). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
 
 > [!NOTE]
 > Tento článek se týká prostředí pro vývoj ve Windows.  Modul runtime clusteru Service Fabric a modul runtime Docker musí být spuštěný ve stejném operačním systému.  Kontejnery Windows nelze spouštět v clusteru se systémem Linux.
@@ -24,7 +25,7 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vývojový počítač s:
   * Visual Studio 2015 nebo Visual Studio 2019.
@@ -320,7 +321,7 @@ Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric
 ## <a name="deploy-the-container-application"></a>Nasazení aplikace typu kontejner
 Uložte všechny provedené změny a sestavte aplikaci. Pokud chcete aplikaci publikovat, klikněte pravým tlačítkem na **MyFirstContainer** v Průzkumníku řešení a vyberte **Publikovat**.
 
-Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. Například, `containercluster.westus2.cloudapp.azure.com:19000`. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
+Do pole **Koncový bod připojení** zadejte koncový bod správy pro příslušný cluster. Například `containercluster.westus2.cloudapp.azure.com:19000`. Koncový bod připojení klienta najdete na kartě Přehled pro váš cluster na webu [Azure Portal](https://portal.azure.com).
 
 Klikněte na **Publikovat**.
 
@@ -332,7 +333,7 @@ Otevřete prohlížeč a přejděte na adresu `http://containercluster.westus2.c
 
 ## <a name="clean-up"></a>Vyčištění
 
-Za spuštěný cluster se vám stále účtují poplatky, proto zvažte [odstranění clusteru](service-fabric-cluster-delete.md).
+Za spuštěný cluster se vám stále účtují poplatky, proto zvažte [odstranění clusteru](./service-fabric-tutorial-delete-cluster.md).
 
 Po nahrání image do registru kontejneru můžete odstranit místní image z vývojového počítače:
 
@@ -349,7 +350,7 @@ Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostite
 - Kontejnery Windows serveru vytvořené pomocí systému Windows Server 2016 fungují v režimu izolace technologie Hyper-V pouze v hostiteli se systémem Windows Server verze 1709. 
 - Pomocí kontejnerů Windows serveru vytvořených pomocí systému Windows Server 2016 může být nutné zajistit, aby revize operačního systému v kontejneru a hostitelském operačním systému byla stejná při spuštění v režimu izolace procesu na hostiteli se systémem Windows Server 2016.
  
-Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Při sestavování a nasazování kontejnerů do clusteru Service Fabric zvažte kompatibilitu s hostitelským operačním systémem a vaším kontejnerovým operačním systémem. Příklad:
 

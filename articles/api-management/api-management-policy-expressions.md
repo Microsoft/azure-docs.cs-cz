@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 40ea26a2394b7ca093f1bba2456ebf5ef116cd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695806"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249814"
 ---
 # <a name="api-management-policy-expressions"></a>API Management výrazy zásad
 Tento článek popisuje syntaxi výrazů zásad v jazyce C# 7. Každý výraz má přístup k implicitně zadané [kontextové](api-management-policy-expressions.md#ContextVariables) proměnné a povolené [podmnožině](api-management-policy-expressions.md#CLRTypes) typů .NET Framework.
@@ -26,7 +27,7 @@ Další informace najdete tady:
 
 - Podívejte se, jak do back-endu poskytovat informace o kontextu. K poskytnutí těchto informací použijte [parametr nastavení řetězce dotazu](api-management-transformation-policies.md#SetQueryStringParameter) a [nastavte zásady hlaviček protokolu HTTP](api-management-transformation-policies.md#SetHTTPheader) .
 - Podívejte se, jak použít zásadu [ověření JWT](api-management-access-restriction-policies.md#ValidateJWT) k předběžné autorizaci přístupu k operacím na základě deklarací identity tokenu.
-- Podívejte se, jak pomocí trasování [inspektoru rozhraní API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) zjistit, jak se zásady vyhodnocují, a výsledky těchto hodnocení.
+- Podívejte se, jak pomocí trasování [inspektoru rozhraní API](./api-management-howto-api-inspector.md) zjistit, jak se zásady vyhodnocují, a výsledky těchto hodnocení.
 - Podívejte se, jak používat výrazy s možnostmi [načíst z mezipaměti](api-management-caching-policies.md#GetFromCache) a [Uložit do](api-management-caching-policies.md#StoreToCache) zásad ukládání do mezipaměti pro konfiguraci API Management ukládání odpovědí do mezipaměti. Nastavte dobu trvání, která odpovídá ukládání do mezipaměti služby back-end, jak je uvedeno v direktivě zálohované služby `Cache-Control` .
 - Podívejte se, jak provádět filtrování obsahu. Odeberte datové prvky z odpovědi přijaté z back-endu pomocí [toku řízení](api-management-advanced-policies.md#choose) a nastavte zásady pro [tělo](api-management-transformation-policies.md#SetBody) .
 - Pokud chcete stáhnout příkazy zásad, přečtěte si úložiště GitHub [API-Management-Samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) .
@@ -209,7 +210,7 @@ Proměnná s názvem `context` je implicitně dostupná ve všech [výrazech](ap
 
 |Kontextová proměnná|Povolené metody, vlastnosti a hodnoty parametrů|
 |----------------------|-------------------------------------------------------|
-|kontext|[Rozhraní API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Nasazení](#ref-context-deployment)<br /><br /> Uplynulý: časový interval časového intervalu mezi hodnotou časového razítka a aktuálním časem<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Operace](#ref-context-operation)<br /><br /> [Product](#ref-context-product) (Produkt)<br /><br /> [Žádost](#ref-context-request)<br /><br /> RequestId: GUID – jedinečný identifikátor žádosti<br /><br /> [Základě](#ref-context-response)<br /><br /> [Předplatné](#ref-context-subscription)<br /><br /> Časové razítko: hodnota DateTime – bod v čase, kdy byla přijata žádost<br /><br /> Trasování: bool – určuje, zda je trasování zapnuto nebo vypnuto <br /><br /> [Uživatel](#ref-context-user)<br /><br /> [Proměnné](#ref-context-variables): IReadOnlyDictionary<řetězec,> objektů<br /><br /> void trace (zpráva: String)|
+|kontext|[Rozhraní API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Nasazení](#ref-context-deployment)<br /><br /> Uplynulý: časový interval časového intervalu mezi hodnotou časového razítka a aktuálním časem<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Operace](#ref-context-operation)<br /><br /> [Product](#ref-context-product) (Produkt)<br /><br /> [Žádost](#ref-context-request)<br /><br /> RequestId: GUID – jedinečný identifikátor žádosti<br /><br /> [Response](#ref-context-response) (Odpověď)<br /><br /> [Předplatné](#ref-context-subscription)<br /><br /> Časové razítko: hodnota DateTime – bod v čase, kdy byla přijata žádost<br /><br /> Trasování: bool – určuje, zda je trasování zapnuto nebo vypnuto <br /><br /> [Uživatel](#ref-context-user)<br /><br /> [Proměnné](#ref-context-variables): IReadOnlyDictionary<řetězec,> objektů<br /><br /> void trace (zpráva: String)|
 |<a id="ref-context-api"></a>souvislost. API|ID: řetězec<br /><br /> IsCurrentRevision: bool<br /><br />  Název: řetězec<br /><br /> Cesta: řetězec<br /><br /> Revize: řetězec<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Verze: řetězec |
 |<a id="ref-context-deployment"></a>souvislost. Prostředí|Oblast: řetězec<br /><br /> ServiceName: řetězec<br /><br /> Certifikáty: IReadOnlyDictionary<řetězec, X509Certificate2>|
 |<a id="ref-context-lasterror"></a>souvislost. LastError|Zdroj: řetězec<br /><br /> Důvod: řetězec<br /><br /> Zpráva: řetězec<br /><br /> Obor: řetězec<br /><br /> Oddíl: řetězec<br /><br /> Cesta: řetězec<br /><br /> PolicyId: řetězec<br /><br /> Pro další informace o kontextu. Poslední chyba najdete v tématu [zpracování chyb](api-management-error-handling-policies.md).|
@@ -251,5 +252,5 @@ Další informace o práci se zásadami najdete v těchto tématech:
 
 + [Zásady v API Management](api-management-howto-policies.md)
 + [Transformační rozhraní API](transform-api.md)
-+ [Odkaz na zásady](api-management-policy-reference.md) pro úplný seznam příkazů zásad a jejich nastavení
++ [Odkaz na zásady](./api-management-policies.md) pro úplný seznam příkazů zásad a jejich nastavení
 + [Ukázky zásad](policy-samples.md)

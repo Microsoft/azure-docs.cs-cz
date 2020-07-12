@@ -5,28 +5,28 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 07/18/2019
+ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: 0eb778d1fc2dca522bef675709b5241f214e2b86
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 18f8be607516857d1631f43d3bef9e2ae233c995
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118113"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248642"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: rozhraní Gremlin API
+# <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Úvod do rozhraní Gremlin API v Azure Cosmos DB
 
-[Azure Cosmos DB](introduction.md)   je globálně distribuovaná databázová služba pro více modelů od Microsoftu pro klíčové aplikace. Je to databáze s více modely a podporuje datové modely typu dokument, klíč-hodnota, graf a řada sloupců. Rozhraní Azure Cosmos DB API Gremlin se používá k ukládání a práci s daty grafu na plně spravovanou databázovou službu určenou pro libovolné škálování.  
+[Azure Cosmos DB](introduction.md)   je globálně distribuovaná databázová služba pro více modelů od Microsoftu pro klíčové aplikace. Je to databáze s více modely a podporuje datové modely typu dokument, klíč-hodnota, graf a řada sloupců. "Azure Cosmos DB poskytuje databázovou službu grafu prostřednictvím rozhraní API Gremlin pro plně spravovanou databázovou službu určenou pro libovolné škálování.  
 
 :::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Architektura grafu služby Azure Cosmos DB" border="false":::
 
-Tento článek obsahuje přehled rozhraní Gremlin API služby Azure Cosmos DB a vysvětluje, jak ho můžete použít k ukládání ohromných grafů s miliardami vrcholů a hran. Můžete zadávat dotazy na grafy s latencí milisekund a snadno vyvíjet strukturu grafu. Rozhraní Gremlin API pro Azure Cosmos DB je založené na standardu [Apache TinkerPop](https://tinkerpop.apache.org)   Graph Database a používá dotazovací jazyk Gremlin. 
+Tento článek obsahuje přehled rozhraní Azure Cosmos DB API Gremlin a vysvětluje, jak je používat k ukládání obrovských grafů s miliardami vrcholů a hran. Můžete zadávat dotazy na grafy s latencí milisekund a snadno vyvíjet strukturu grafu. Rozhraní Gremlin API pro Azure Cosmos DB je postavené na základě rozhraní [Apache TinkerPop](https://tinkerpop.apache.org), architektury grafu computingu. Rozhraní Gremlin API v Azure Cosmos DB používá dotazovací jazyk Gremlin.
 
-Rozhraní Gremlin API Azure Cosmos DB kombinuje sílu algoritmů databázové databáze s vysoce škálovatelnou a spravovanou infrastrukturou, aby poskytovala jedinečné a flexibilní řešení nejběžnějších problémů s daty, která souvisí s nedostatečnou flexibilitou a relačními přístupy. 
+Rozhraní Gremlin API Azure Cosmos DB kombinuje sílu algoritmů databázové databáze s vysoce škálovatelnou a spravovanou infrastrukturou, aby poskytovala jedinečné a flexibilní řešení nejběžnějších problémů s daty, která souvisí s nedostatečnou flexibilitou a relačními přístupy.
 
-## <a name="features-of-azure-cosmos-db-graph-database"></a>Funkce databáze grafu Azure Cosmos DB
+## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Funkce rozhraní Gremlin API pro Azure Cosmos DB
  
-Azure Cosmos DB je plně spravovaná databáze grafu, která nabízí globální distribuci, elastické škálování úložiště a propustnosti, automatické indexování a dotazování, nastavitelné úrovně konzistence a podporu standardu TinkerPop. 
+Azure Cosmos DB je plně spravovaná databáze grafu, která nabízí globální distribuci, elastické škálování úložiště a propustnosti, automatické indexování a dotazování, nastavitelné úrovně konzistence a podporu standardu TinkerPop.
 
 Níže jsou uvedené odlišné funkce Azure Cosmos DB Gremlin API nabízí:
 
@@ -36,11 +36,11 @@ Níže jsou uvedené odlišné funkce Azure Cosmos DB Gremlin API nabízí:
 
 * **Replikace mezi více oblastmi**
 
-  Azure Cosmos DB může automaticky replikovat data grafu do jakékoli oblasti Azure po celém světě. Globální replikace zjednodušuje vývoj aplikací, které vyžadují globální přístup k datům. Kromě minimalizace latence čtení a zápisu kdekoli po celém světě Azure Cosmos DB poskytuje automatický mechanismus pro místní převzetí služeb při selhání, který umožňuje zajistit kontinuitu aplikace ve výjimečných případech přerušení služby v určité oblasti. 
+  Azure Cosmos DB může automaticky replikovat data grafu do jakékoli oblasti Azure po celém světě. Globální replikace zjednodušuje vývoj aplikací, které vyžadují globální přístup k datům. Kromě minimalizace latence čtení a zápisu kdekoli po celém světě Azure Cosmos DB poskytuje automatický mechanismus pro místní převzetí služeb při selhání, který umožňuje zajistit kontinuitu aplikace ve výjimečných případech přerušení služby v určité oblasti.
 
 * **Rychlé dotazy a procházení s nejběžnějším přijatým standardem dotazů na grafy**
 
-  Uložte heterogenní vrcholy a hrany a Dotazujte je pomocí známé syntaxe Gremlin. Gremlin je imperativně funkční dotazovací jazyk, který poskytuje bohatá rozhraní pro implementaci běžných algoritmů grafů. 
+  Uložte heterogenní vrcholy a hrany a Dotazujte je pomocí známé syntaxe Gremlin. Gremlin je imperativně funkční dotazovací jazyk, který poskytuje bohatá rozhraní pro implementaci běžných algoritmů grafů.
   
   Azure Cosmos DB povoluje rozsáhlé dotazy v reálném čase a procházení, aniž by bylo nutné zadávat parametry schématu, sekundární indexy nebo zobrazení. Další informace najdete v článku o [dotazování grafů pomocí jazyka Gremlin](gremlin-support.md).
 
@@ -52,17 +52,18 @@ Níže jsou uvedené odlišné funkce Azure Cosmos DB Gremlin API nabízí:
 
 * **Automatické indexování**
 
-  Azure Cosmos DB standardně automaticky indexuje všechny vlastnosti v uzlech a hranách grafu a neočekává ani nevyžaduje žádné schéma nebo vytvoření sekundárních indexů. Přečtěte si další informace o [indexování v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview). 
+  Ve výchozím nastavení Azure Cosmos DB automaticky indexuje všechny vlastnosti v uzlech (označované také jako vrcholy) a hrany v grafu a neočekává ani nevyžaduje žádné schéma nebo vytváření sekundárních indexů. Přečtěte si další informace o [indexování v Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview).
 
 * **Kompatibilita s Apache TinkerPop**
 
-  Azure Cosmos DB podporuje [Open Source Standard Apache TinkerPop](https://tinkerpop.apache.org/). Tinkerpop Standard má rozsáhlou ekosystém aplikací a knihoven, které je možné snadno integrovat s Gremlin rozhraním API Azure Cosmos DB. 
+  Azure Cosmos DB podporuje [Open Source Standard Apache TinkerPop](https://tinkerpop.apache.org/). Tinkerpop Standard má rozsáhlou ekosystém aplikací a knihoven, které je možné snadno integrovat s Gremlin rozhraním API Azure Cosmos DB.
 
 * **Přizpůsobitelné úrovně konzistence**
 
   Azure Cosmos DB poskytuje pět jasně definovaných úrovní konzistence pro dosažení správných kompromisů mezi konzistencí a výkonem vaší aplikace. Pro dotazy a operace čtení nabízí služba Azure Cosmos DB pět různých úrovní konzistence: silná, omezená neaktuálnost, relace, konzistentní předpona a konečný výsledek. Tyto podrobné a jasně definované úrovně konzistence umožňují zvolit vhodný kompromis mezi konzistencí, dostupností a latencí. Další informace najdete v článku o [nastavitelných úrovních konzistence dat v Azure Cosmos DB](consistency-levels.md).
 
-## <a name="scenarios-that-can-use-gremlin-api"></a>Scénáře použití rozhraní Gremlin API
+## <a name="scenarios-that-use-gremlin-api"></a>Scénáře, které používají rozhraní Gremlin API
+
 Tady je několik scénářů, kde může být užitečná podpora grafu Azure Cosmos DB:
 
 * **Sociální sítě/zákazník 365**
@@ -82,6 +83,7 @@ Tady je několik scénářů, kde může být užitečná podpora grafu Azure Co
   Pomocí sítě a propojení mezi zařízeními IoT modelovanými ve formě grafu můžete zajistit lepší porozumění stavu vašich zařízení a majetku. Zároveň zjistíte, jak změny v jedné části sítě mohou potenciálně ovlivnit jinou část.
 
 ## <a name="introduction-to-graph-databases"></a>Seznámení s databázemi grafů
+
 Data, která existují v reálném světě, jsou přirozeně propojená. Tradiční modelování dat se zaměřuje na definování entit samostatně a výpočet jejich vztahů za běhu. I když tento model má své výhody, může být velmi propojená data nenáročná na správu v rámci svých omezení.  
 
 Přístup k databázi grafu spoléhá na trvalé vztahy ve vrstvě úložiště, což vede k vysoce efektivním operacím načítání grafů. Rozhraní Gremlin API Azure Cosmos DB podporuje [model grafu vlastností](https://tinkerpop.apache.org/docs/current/reference/#intro).
@@ -90,34 +92,39 @@ Přístup k databázi grafu spoléhá na trvalé vztahy ve vrstvě úložiště,
 
 [Graf](http://mathworld.wolfram.com/Graph.html) vlastností je struktura, která se skládá z [vrcholů](http://mathworld.wolfram.com/GraphVertex.html) a [hran](http://mathworld.wolfram.com/GraphEdge.html). Oba objekty mohou mít libovolný počet párů klíč-hodnota jako vlastnosti. 
 
-* **Vrcholy** – vrcholy označují diskrétní entity, jako je osoba, místo nebo událost.
+* **Vrcholy/uzly** – vrcholy označují diskrétní entity, jako je osoba, místo nebo událost.
 
-* **Hrany** – znázorňují vztahy mezi vrcholy. Nějaká osoba například může znát jinou osobu, účastnit se nějaké události a nacházet se na určitém místě. 
+* **Hrany/vztahy** – okraje označují vztahy mezi vrcholy. Nějaká osoba například může znát jinou osobu, účastnit se nějaké události a nacházet se na určitém místě.
 
-* **Vlastnosti** vyjadřují informace o vrcholech a hranách. V obou vrcholech nebo v okrajích může být libovolný počet vlastností, které lze použít k popisu a filtrování objektů v dotazu. Příkladem vlastností je vrchol, který má název a stáří nebo okraj, který může mít časové razítko nebo váhu. 
+* **Vlastnosti** vyjadřují informace o vrcholech a hranách. V obou vrcholech nebo v okrajích může být libovolný počet vlastností, které lze použít k popisu a filtrování objektů v dotazu. Příkladem vlastností je vrchol, který má název a stáří nebo okraj, který může mít časové razítko nebo váhu.
 
-Databáze grafů jsou často zahrnuty v kategorii NoSQL nebo nerelační databáze, protože neexistuje žádná závislost na schématu nebo omezeném datovém modelu. Toto nedostatečné schéma umožňuje modelování a ukládání propojených struktur přirozeně a efektivně. 
+* **Label** – popisek je název nebo identifikátor vrcholu nebo okraje. Popisky mohou seskupovat více vrcholů nebo hran tak, aby všechny vrcholy a hrany ve skupině měly určitý popisek. Například graf může mít více vrcholů typu Label "Person".
 
-### <a name="gremlin-by-example"></a>Ukázka jazyka Gremlin
+Databáze grafů jsou často zahrnuty v kategorii NoSQL nebo nerelační databáze, protože neexistuje žádná závislost na schématu nebo omezeném datovém modelu. Toto nedostatečné schéma umožňuje modelování a ukládání propojených struktur přirozeně a efektivně.
+
+### <a name="graph-database-by-example"></a>Databáze grafu podle příkladu
+
 Ukázkový graf vám pomůže pochopit, jak lze v jazyce Gremlin vyjádřit dotazy. Na následujícím obrázku je znázorněna obchodní aplikace, která spravuje data o uživatelích, zájmech a zařízeních v podobě grafu.  
 
 :::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Ukázková databáze znázorňující osoby, zařízení a zájmy" border="false"::: 
 
-Tento graf má následující typy *vrcholu* (označované jako "jmenovka" v Gremlin):
+Tento graf má následující typy *vrcholů* (v Gremlin se také nazývají "jmenovka"):
 
-- **Lidé**: graf má tři lidi, Robin, Tomáš a Robert.
-- **Zájmy**: jejich zájmy v tomto příkladu se hrou fotbalu
-- **Zařízení**: zařízení, která uživatelé používají
-- **Operační systémy**: operační systémy, ve kterých se zařízení spouštějí
+* **Lidé**: graf má tři lidi, Robin, Tomáš a Robert.
+* **Zájmy**: jejich zájmy v tomto příkladu se hrou fotbalu
+* **Zařízení**: zařízení, která uživatelé používají
+* **Operační systémy**: operační systémy, ve kterých se zařízení spouštějí
+* **Místo**: místa, ze kterých se mají zařízení přistupovat
 
-Znázorňuje vztahy mezi těmito entitami prostřednictvím následujících typů nebo popisků *Edge* :
+Vztahy mezi těmito entitami zastupujeme prostřednictvím následujících typů *Edge* :
 
-- **Ví**: například "Tomáš ví s dotazem"
-- **Zúčastněte**se: k vyjádření zájmů lidí v našem grafu, například "Robert se zajímá o fotbal."
-- **RunsOS**: laptop spouští operační systém Windows.
-- **Používá**: k vyjádření zařízení, které osoba používá. Robin například používá telefon Motorola se sériovým číslem 77.
+* **Ví**: například "Tomáš ví s dotazem"
+* **Zúčastněte**se: k vyjádření zájmů lidí v našem grafu, například "Robert se zajímá o fotbal."
+* **RunsOS**: laptop spouští operační systém Windows.
+* **Používá**: k vyjádření zařízení, které osoba používá. Robin například používá telefon Motorola se sériovým číslem 77.
+* **Umístění: představuje**umístění, ze kterého mají být zařízení k dispozici.
 
-Nyní pomocí [konzoly Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console) spustíme u tohoto grafu několik operací. K jejich provedení můžete také použít ovladače Gremlin na platformě dle vlastního výběru (Java, Node.js, Python nebo .NET).  Než se podíváme na to, co Azure Cosmos DB podporuje, projděme si několik příkladů, abychom se blíže seznámili se syntaxí.
+Konzola Gremlin je interaktivní terminál nabízený Apache TinkerPop a tento terminál se používá k interakci s daty grafu. Další informace najdete v dokumentu rychlý Start, [Jak používat konzolu Gremlin](create-graph-gremlin-console.md). K jejich provedení můžete také použít ovladače Gremlin na platformě dle vlastního výběru (Java, Node.js, Python nebo .NET). Následující příklady ukazují, jak spustit dotazy na data grafu pomocí konzoly Gremlin.
 
 Nejprve se podívejme na CRUD. Následující příkaz Gremlinu vloží do grafu vrchol Thomas:
 
@@ -132,6 +139,7 @@ Tento příkaz Gremlinu dále vloží do grafu mezi Thomase a Robina okraj knows
 ```
 
 Následující dotaz vrátí vrcholy person (osoba) seřazené podle jmen osob v sestupném pořadí:
+
 ```java
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
@@ -143,6 +151,7 @@ Graf je užitečný zejména v případě, kdy potřebujete získat odpověď na
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 Další informace o podpoře grafů ve službě Azure Cosmos DB najdete zde:
 
 * Začněte [kurzem věnovaným grafu služby Azure Cosmos DB](create-graph-dotnet.md).

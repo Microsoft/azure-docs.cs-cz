@@ -2,13 +2,13 @@
 title: Odstranění historie nasazení
 description: Popisuje, jak Azure Resource Manager automaticky odstranit nasazení z historie nasazení. Nasazení se odstraní, když se historie blíží k překročení limitu 800.
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: 70730ce814ebc689d9672952bad7c3dd39b5a7f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981652"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248973"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatické odstraňování z historie nasazení
 
@@ -23,16 +23,18 @@ Azure Resource Manager se brzy začnou automaticky odstraňovat nasazení z hist
 
 ## <a name="when-deployments-are-deleted"></a>Po odstranění nasazení
 
-Nasazení se při dosažení 790 nasazení odstraní z historie nasazení. Azure Resource Manager odstraní malou sadu nejstarší nasazení, aby se místo pro budoucí nasazení vymazalo místo. Většina vaší historie zůstane beze změny. Nejstarší nasazení se vždy odstraní jako první.
+Nasazení se odstraní z historie při dosažení 775 nebo více nasazení. Azure Resource Manager odstraní nasazení, dokud nebude historie nižší až 750. Nejstarší nasazení se vždy odstraní jako první.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Odstranění z historie nasazení":::
+
+> [!NOTE]
+> Počáteční číslo (775) a koncové číslo (750) se může změnit.
+>
+> Pokud vaše skupina prostředků už je 800, při dalším nasazení dojde k chybě. Proces automatického odstranění se spustí okamžitě. Můžete vyzkoušet nasazení znovu po krátkém čekání.
 
 Kromě nasazení se také aktivují odstranění při spuštění [operace citlivosti](template-deploy-what-if.md) nebo ověření nasazení.
 
 Když zadáte stejnému nasazení stejný název jako v historii, resetujete jeho místo v historii. Nasazení se přesune na nejnovější místo v historii. Také obnovíte místo nasazení v případě, že se vrátíte [k nasazení](rollback-on-error.md) po chybě.
-
-> [!NOTE]
-> Pokud vaše skupina prostředků už je 800, při dalším nasazení dojde k chybě. Proces automatického odstranění se spustí okamžitě. Můžete vyzkoušet nasazení znovu po krátkém čekání.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Odhlásit automatické odstranění
 

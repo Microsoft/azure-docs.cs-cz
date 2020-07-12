@@ -2,13 +2,13 @@
 title: Osvědčené postupy pro šablony
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon. Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/10/2020
+ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058057"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248913"
 ---
 # <a name="arm-template-best-practices"></a>Osvědčené postupy pro šablonu ARM
 
@@ -160,7 +160,7 @@ Následující informace můžou být užitečné při práci s [proměnnými](t
 
 Při rozhodování, jaké [závislosti](define-resource-dependency.md) se mají nastavit, postupujte podle následujících pokynů:
 
-* Použijte **odkazovou** funkci a předejte název prostředku k nastavení implicitní závislosti mezi prostředky, které potřebují sdílet vlastnost. Nepřidejte explicitní `dependsOn` element, pokud jste již definovali implicitní závislost. Tento přístup snižuje riziko zbytečných závislostí.
+* Použijte **odkazovou** funkci a předejte název prostředku k nastavení implicitní závislosti mezi prostředky, které potřebují sdílet vlastnost. Nepřidejte explicitní `dependsOn` element, pokud jste již definovali implicitní závislost. Tento přístup snižuje riziko zbytečných závislostí. Příklad nastavení implicitní závislosti naleznete v tématu [implicitní závislost](define-resource-dependency.md#reference-and-list-functions).
 
 * Nastavte podřízený prostředek jako závislý na svém nadřazeném prostředku.
 
@@ -170,7 +170,7 @@ Při rozhodování, jaké [závislosti](define-resource-dependency.md) se mají 
 
 * Pokud je možné určit hodnotu před nasazením, zkuste prostředek nasadit bez závislosti. Pokud například hodnota konfigurace potřebuje název jiného prostředku, možná nebudete potřebovat závislost. Tyto pokyny nefungují vždycky, protože některé prostředky ověřují existenci druhého prostředku. Pokud se zobrazí chyba, přidejte závislost.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 Následující informace můžou být užitečné při práci s [prostředky](template-syntax.md#resources):
 

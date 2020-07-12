@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712220"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247519"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorování a Diagnostika pro Azure Service Fabric
 
@@ -92,4 +92,4 @@ Klíčové body pro libovolnou platformu, kterou si zvolíte, by měly zahrnovat
 * Naučte se, jak nastavit protokoly Azure Monitor pro monitorování kontejnerů – [monitorování a diagnostiku kontejnerů Windows v Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
 * Další informace najdete v tématu Příklady problémů s diagnostikou a řešení pomocí Service Fabric při [diagnostice běžných scénářů](service-fabric-diagnostics-common-scenarios.md) .
 * Podívejte se na další diagnostické produkty, které se integrují s Service Fabric v [Service Fabric diagnostických partnerech](service-fabric-diagnostics-partners.md)
-* Přečtěte si o obecných doporučeních pro monitorování prostředků Azure – [osvědčené postupy – monitorování a diagnostika](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 
+* Přečtěte si o obecných doporučeních pro monitorování prostředků Azure – [osvědčené postupy – monitorování a diagnostika](/azure/architecture/best-practices/monitoring). 

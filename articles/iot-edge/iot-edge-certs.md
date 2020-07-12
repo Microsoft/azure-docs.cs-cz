@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982724"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247009"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
 
@@ -24,6 +25,9 @@ Tento článek vysvětluje, jak IoT Edge certifikáty můžou fungovat v produk�
 ## <a name="iot-edge-certificates"></a>Certifikáty IoT Edge
 
 Výrobci nejsou obvykle koncoví uživatelé zařízení IoT Edge. V některých případech je jediným vztahem mezi těmito dvěma pokaždé, když koncový uživatel, nebo operátor zakoupí obecné zařízení provedené výrobcem. Jinak výrobce v rámci smlouvy pracuje na sestavení vlastního zařízení pro operátor. IoT Edge návrh certifikátu se snaží vzít v úvahu oba scénáře.
+
+> [!NOTE]
+> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050. Toto omezení se vztahuje na certifikát certifikační autority zařízení, všechny certifikáty v sadě prostředků trustu a na certifikáty ID zařízení, které se používají pro metody zřizování X. 509.
 
 Následující obrázek ukazuje IoT Edge využití certifikátů. Mezi certifikátem kořenové certifikační autority a certifikátem certifikační autority zařízení může být nulový, jeden nebo mnoho zprostředkujících podpisových certifikátů v závislosti na počtu zúčastněných entit. Tady zobrazujeme jeden případ.
 

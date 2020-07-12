@@ -3,11 +3,12 @@ title: Zabalení stávajícího spustitelného souboru do Azure Service Fabric
 description: Přečtěte si o sbalení existující aplikace jako spustitelného souboru hosta, aby ji bylo možné nasadit do clusteru Service Fabric.
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457834"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247383"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Nasaďte existující spustitelný soubor pro Service Fabric
 Jako službu můžete v Azure Service Fabric spustit libovolný typ kódu, jako je například Node.js, Java nebo C++. Service Fabric odkazuje na tyto typy služeb jako spustitelné soubory typu Host.
@@ -64,8 +65,7 @@ ApplicationPackageRoot obsahuje soubor ApplicationManifest.xml definující apli
 ## <a name="next-steps"></a>Další kroky
 Související informace a úlohy najdete v následujících článcích.
 * [Nasazení hostujícího spustitelného souboru](service-fabric-deploy-existing-app.md)
-* [Nasazení několika hostujících spustitelných souborů](service-fabric-deploy-multiple-apps.md)
+* [Nasazení několika hostujících spustitelných souborů](./service-fabric-deploy-existing-app.md)
 * [Vytvoření první spustitelné aplikace hosta pomocí sady Visual Studio](quickstart-guest-app.md)
 * [Ukázka balení a nasazení spustitelného souboru hosta](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), včetně odkazu na předběžnou verzi nástroje pro balení
 * [Ukázka dvou spustitelných souborů hosta (C# a NodeJS), které komunikují přes službu pojmenování pomocí REST](https://github.com/Azure-Samples/service-fabric-containers)
-

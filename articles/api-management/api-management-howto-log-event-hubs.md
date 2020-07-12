@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871257"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250290"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolovat události do Azure Event Hubs v Azure API Management
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Event Hubs slouží jako "přední dveře" pro kanál událostí a jakmile se data shromažďují do centra událostí, je možné je transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase nebo adaptérů pro dávkování/ukládání. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
@@ -26,12 +27,12 @@ V tomto článku se dozvíte, jak [integrovat API Management Azure s Event Hubsm
 
 ## <a name="create-an-azure-event-hub"></a>Vytvoření centra událostí Azure
 
-Podrobné informace o tom, jak vytvořit centrum událostí a jak získat připojovací řetězce, které potřebujete k odesílání a příjmu událostí do a z centra událostí, najdete v tématu [vytvoření Event Hubs oboru názvů a centra událostí pomocí Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+Podrobné informace o tom, jak vytvořit centrum událostí a jak získat připojovací řetězce, které potřebujete k odesílání a příjmu událostí do a z centra událostí, najdete v tématu [vytvoření Event Hubs oboru názvů a centra událostí pomocí Azure Portal](../event-hubs/event-hubs-create.md).
 
 ## <a name="create-an-api-management-logger"></a>Vytvoření protokolovacího nástroje API Management
-Teď, když máte centrum událostí, je dalším krokem konfigurace [protokolovacího](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) nástroje ve službě API Management, aby mohla protokolovat události do centra událostí.
+Teď, když máte centrum událostí, je dalším krokem konfigurace [protokolovacího](/rest/api/apimanagement/2019-12-01/logger) nástroje ve službě API Management, aby mohla protokolovat události do centra událostí.
 
-API Management protokolovacích nástrojů se konfigurují pomocí [REST API API Management](https://aka.ms/apimapi). Podrobné příklady požadavků najdete v tématu [Vytvoření protokolovacích](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)nástrojů.
+API Management protokolovacích nástrojů se konfigurují pomocí [REST API API Management](https://aka.ms/apimapi). Podrobné příklady požadavků najdete v tématu [Vytvoření protokolovacích](/rest/api/apimanagement/2019-12-01/logger/createorupdate)nástrojů.
 
 ## <a name="configure-log-to-eventhub-policies"></a>Konfigurace zásad přihlášení k protokolu eventhub
 
@@ -68,7 +69,7 @@ Kliknutím na **Uložit** uložte aktualizovanou konfiguraci zásad. Jakmile je 
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Náhled Event Hubs přihlášení pomocí Azure Stream Analytics
 
-Můžete zobrazit náhled Event Hubs přihlášení pomocí [Azure Stream Analytics dotazů](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics). 
+Můžete zobrazit náhled Event Hubs přihlášení pomocí [Azure Stream Analytics dotazů](../event-hubs/process-data-azure-stream-analytics.md). 
 
 1. V Azure Portal přejděte do centra událostí, do kterého protokolovací nástroj odesílá události. 
 2. V části **funkce**vyberte kartu **data procesu** .
@@ -78,11 +79,11 @@ Můžete zobrazit náhled Event Hubs přihlášení pomocí [Azure Stream Analyt
 ## <a name="next-steps"></a>Další kroky
 * Další informace o Azure Event Hubs
   * [Začínáme s Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Přijímání zpráv pomocí třídy EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Přijímání zpráv pomocí třídy EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Průvodce programováním pro službu Event Hubs](../event-hubs/event-hubs-programming-guide.md)
 * Další informace o integraci API Management a Event Hubs
-  * [Reference k entitě protokolovacího nástroje](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
-  * [odkaz na zásady přihlášení k protokolu eventhub](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Reference k entitě protokolovacího nástroje](/rest/api/apimanagement/2019-12-01/logger)
+  * [odkaz na zásady přihlášení k protokolu eventhub](./api-management-advanced-policies.md#log-to-eventhub)
   * [Monitorování rozhraní API pomocí API Management Azure, Event Hubs a Moesif](api-management-log-to-eventhub-sample.md)  
 * Další informace o [integraci s Azure Application Insights](api-management-howto-app-insights.md)
 

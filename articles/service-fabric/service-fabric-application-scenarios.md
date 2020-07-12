@@ -4,11 +4,12 @@ description: Přehled kategorií cloudových aplikací v Service Fabric. Popisuj
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
-ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76024734"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248165"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric scénáře aplikací
 
@@ -16,7 +17,7 @@ Azure Service Fabric nabízí spolehlivou a flexibilní platformu, kde můžete 
 
 Jedinečná architektura Service Fabric umožňuje provádět analýzu dat v reálném čase, výpočet v paměti, paralelní transakce a zpracování událostí ve vašich aplikacích. V závislosti na změnách požadavků na prostředky můžete své aplikace snadno škálovat do systému nebo.
 
-Pokyny k návrhu při sestavování aplikací, čtení [architektury mikroslužeb v Azure Service Fabric](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) a [osvědčených postupech pro návrh aplikace pomocí Service Fabric](service-fabric-best-practices-applications.md).
+Pokyny k návrhu při sestavování aplikací, čtení [architektury mikroslužeb v Azure Service Fabric](/azure/architecture/reference-architectures/microservices/service-fabric) a [osvědčených postupech pro návrh aplikace pomocí Service Fabric](service-fabric-best-practices-applications.md).
 
 Zvažte použití platformy Service Fabric pro následující typy aplikací:
 
@@ -24,7 +25,7 @@ Zvažte použití platformy Service Fabric pro následující typy aplikací:
 
     Zákazníci, kteří sestavili služby IoT pomocí Service Fabric, zahrnují [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), [vytváření PCL](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), [Schneider elektrických](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)a [mřížkové systémy](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
 
-* **Hraní her a interaktivní aplikace založené na relacích**: Service Fabric je užitečné, pokud vaše aplikace vyžaduje čtení a zápis s nízkou latencí, například v online herním nebo rychlém zasílání zpráv. Service Fabric vám umožní vytvářet tyto interaktivní a stavové aplikace, aniž byste museli vytvářet samostatné úložiště nebo mezipaměť. Pokyny k [používání Service Fabric v herních službách](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)najdete v [řešeních her v Azure](https://azure.microsoft.com/solutions/gaming/) .
+* **Hraní her a interaktivní aplikace založené na relacích**: Service Fabric je užitečné, pokud vaše aplikace vyžaduje čtení a zápis s nízkou latencí, například v online herním nebo rychlém zasílání zpráv. Service Fabric vám umožní vytvářet tyto interaktivní a stavové aplikace, aniž byste museli vytvářet samostatné úložiště nebo mezipaměť. Pokyny k [používání Service Fabric v herních službách](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)najdete v [řešeních her v Azure](https://azure.microsoft.com/solutions/gaming/) .
 
     Mezi zákazníky, kteří vytvořili herní služby, patří [Další hry](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) a [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/). Zákazníci, kteří vytvořili interaktivní relace, zahrnují [Honeywell s HoloLens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens).
 
@@ -67,7 +68,7 @@ Tady je ukázková aplikace, která používá stavové služby: ![ aplikace, kt
 ## <a name="next-steps"></a>Další kroky
 
 * Začněte vytvářet bezstavové a stavové služby pomocí Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programovacích modelů.
-* Pokyny k [vytváření mikroslužeb v Azure](https://docs.microsoft.com/azure/architecture/microservices/)najdete na cetrum architektury Azure.
+* Pokyny k [vytváření mikroslužeb v Azure](/azure/architecture/microservices/)najdete na cetrum architektury Azure.
 * Přejít na [Azure Service Fabric a osvědčené postupy](service-fabric-best-practices-overview.md) pro vytváření aplikací pro návrh aplikace.
 
 * Viz také:

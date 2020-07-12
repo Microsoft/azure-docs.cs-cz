@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c6f4bbae180184c13041863a85e2a7025f06a6e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81260985"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250442"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management
 
@@ -54,7 +55,7 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 
 ### <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com).
 2. Pomocí předplatného, které obsahuje vaši instanci služby API Management, přejděte v **Azure Active Directory** na kartu **Registrace aplikací** (Azure Active Directory > spravovat/registrace aplikací).
 
     > [!NOTE]
@@ -67,7 +68,7 @@ Všechny úlohy, které provedete v prostředcích pomocí Azure Resource Manage
 4. Zadejte název aplikace.
 5. Jako typ aplikace vyberte **nativní**.
 6. Zadejte adresu URL zástupného symbolu `http://resources` , například pro **identifikátor URI přesměrování**, protože se jedná o povinné pole, ale hodnota se nepoužije později. Kliknutím na zaškrtávací políčko aplikaci uložíte.
-7. Klikněte na **Vytvořit**.
+7. Klikněte na **Create** (Vytvořit).
 
 ### <a name="add-an-application"></a>Přidání aplikace
 
@@ -233,7 +234,7 @@ V různých návodech k procesu zálohování a obnovení si Projděte následuj
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2
-[azure api management rest api]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
+[azure api management rest api]: /rest/api/apimanagement/apimanagementrest/api-management-rest
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
 [api-management-aad-permissions]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions.png
 [api-management-aad-permissions-add]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions-add.png

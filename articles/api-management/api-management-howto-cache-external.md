@@ -11,12 +11,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: f8ca0caedd438c4ce707a044bc7fa7dd035e8983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1f3d0fd0164a37c8011dc82a95337c89e103df
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203229"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250630"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Použití externí mezipaměti kompatibilní s Redis v Azure API Management
 
@@ -39,7 +39,7 @@ Naučíte se:
 > [!div class="checklist"]
 > * Přidat externí mezipaměť v API Management
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
@@ -74,7 +74,7 @@ Pomocí následujících kroků přidejte externí mezipaměť Azure pro Redis d
 3. Klikněte na tlačítko **+Přidat**.
 4. V rozevíracím poli **instance mezipaměti** vyberte mezipaměť.
 5. Vyberte **výchozí** nebo zadejte požadovanou oblast do rozevíracího pole **použít z** .
-6. Klikněte na **Uložit**.
+6. Klikněte na **Save** (Uložit).
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Přidání mezipaměti Azure pro Redis hostované mimo aktuální předplatné Azure nebo obecně Azure
 
@@ -84,7 +84,7 @@ Pomocí následujících kroků přidejte externí mezipaměť Azure pro Redis d
 4. V rozevíracím poli **instance mezipaměti** vyberte **vlastní** .
 5. Vyberte **výchozí** nebo zadejte požadovanou oblast do rozevíracího pole **použít z** .
 6. Zadejte do pole **připojovací řetězec** svou mezipaměť Azure pro připojovací řetězec Redis.
-7. Klikněte na **Uložit**.
+7. Klikněte na **Save** (Uložit).
 
 ### <a name="add-a-redis-cache-to-a-self-hosted-gateway"></a>Přidání mezipaměti Redis do samoobslužné brány
 
@@ -94,7 +94,7 @@ Pomocí následujících kroků přidejte externí mezipaměť Azure pro Redis d
 4. V rozevíracím poli **instance mezipaměti** vyberte **vlastní** .
 5. Zadejte požadované umístění místní hostované brány nebo **výchozí** v rozevíracím poli **použít z** .
 6. Zadejte připojovací řetězec Redis Cache do pole **připojovací řetězec** .
-7. Klikněte na **Uložit**.
+7. Klikněte na **Save** (Uložit).
 
 ## <a name="use-the-external-cache"></a>Použít externí mezipaměť
 
@@ -105,5 +105,5 @@ Jakmile je externí mezipaměť nakonfigurovaná v Azure API Management, dá se 
 * Další informace o zásadách ukládání do mezipaměti najdete v části [Zásady ukládání do mezipaměti][Caching policies] v článku [Zásady API Managementu][API Management policy reference].
 * Informace o ukládání položek do mezipaměti podle klíče pomocí výrazů zásad najdete v článku [Vlastní ukládání do mezipaměti ve službě Azure API Management](api-management-sample-cache-by-key.md).
 
-[API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-caching-policies.md

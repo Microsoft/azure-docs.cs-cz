@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa6d4fc27373e524f4c492635cffbf8b735add8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614362"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247213"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Přidání protokolování do aplikace Service Fabric
 
@@ -95,7 +96,7 @@ Použití hybridní struktury strukturovaných a obecných instrumentací také 
 
 Protokolování ASP.NET Core ([balíček NuGet Microsoft. Extensions. Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) je protokolovací rozhraní, které pro vaši aplikaci poskytuje standardní protokolovací rozhraní API. Podpora pro jiné back-endy protokolování se dá připojit k ASP.NET Core protokolování. Získáte tak širokou škálu podpory pro protokolování ve vaší aplikaci, aniž byste museli měnit mnohem více kódu.
 
-1. Přidejte balíček NuGet **Microsoft. Extensions. Logging** do projektu, který chcete instrumentovat. Přidejte také všechny balíčky poskytovatele. Další informace najdete v tématu věnovaném [přihlášení ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+1. Přidejte balíček NuGet **Microsoft. Extensions. Logging** do projektu, který chcete instrumentovat. Přidejte také všechny balíčky poskytovatele. Další informace najdete v tématu věnovaném [přihlášení ASP.NET Core](/aspnet/core/fundamentals/logging).
 2. Přidejte direktivu **using** pro **Microsoft. Extensions. Logging** do souboru služby.
 3. Definujte soukromou proměnnou v rámci vaší třídy služby.
 
@@ -166,13 +167,3 @@ Někteří poskytovatelé třetích stran používají přístup popsaný v pře
 
 - Přečtěte si další informace o [monitorování aplikací v Service Fabric](service-fabric-diagnostics-event-generation-app.md).
 - Přečtěte si o protokolování pomocí [využitím eventflow](service-fabric-diagnostics-event-aggregation-eventflow.md) a [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).
-
-
-
-
-
-
-
-
-
-

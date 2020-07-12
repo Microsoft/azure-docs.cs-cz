@@ -1,15 +1,16 @@
 ---
 title: Geografická replikace registru
-description: Začněte vytvářet a spravovat geograficky replikovaný registr kontejnerů Azure, což umožňuje, aby registr poskytoval více oblastí s více hlavními místními replikami. Geografická replikace je funkcí úrovně Premium služby.
+description: Začněte vytvářet a spravovat geograficky replikovaný registr kontejnerů Azure, což umožňuje, aby registr poskytoval více oblastí s více hlavními místními replikami. Geografická replikace je funkcí úrovně Premium Service.
 author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: 35525906135db02c453c55d8798e1405396c8598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508790"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247128"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geografická replikace v Azure Container Registry
 
@@ -27,7 +28,7 @@ Geograficky replikovaný registr nabízí tyto výhody:
 >
 
 ## <a name="example-use-case"></a>Příklad případu použití
-Společnost Contoso spouští web veřejné přítomnosti, který se nachází v USA, Kanadě a Evropě. V rámci poskytování těchto trhů s obsahem místního a síťového zavírání spustí contoso clustery [Azure Kubernetes Service](/azure/aks/) (AKS) v Západní USA, východní USA, Kanadě Central a západní Evropa. Webová aplikace, která je nasazena jako dokovací image, využívá stejný kód a obrázek napříč všemi oblastmi. Obsah, který je místní k této oblasti, se načte z databáze, která je v každé oblasti zřízená jednoznačně. Každé místní nasazení má svou jedinečnou konfiguraci pro prostředky, jako je místní databáze.
+Společnost Contoso spouští web veřejné přítomnosti, který se nachází v USA, Kanadě a Evropě. V rámci poskytování těchto trhů s obsahem místního a síťového zavírání spustí contoso clustery [Azure Kubernetes Service](../aks/index.yml) (AKS) v Západní USA, východní USA, Kanadě Central a západní Evropa. Webová aplikace, která je nasazena jako dokovací image, využívá stejný kód a obrázek napříč všemi oblastmi. Obsah, který je místní k této oblasti, se načte z databáze, která je v každé oblasti zřízená jednoznačně. Každé místní nasazení má svou jedinečnou konfiguraci pro prostředky, jako je místní databáze.
 
 Vývojový tým se nachází v Seattlu WA, který využívá Západní USA datové centrum.
 
@@ -94,7 +95,7 @@ ACR zahájí synchronizaci imagí napříč nakonfigurovanými replikami. Po dok
 * Když nahrajete nebo vyžádáte image z geograficky replikovaného registru, Azure Traffic Manager na pozadí pošle požadavek do registru v oblasti, která je nejblíže vaší latenci v síti.
 * Po nahrání obrázku nebo aktualizace značky do nejbližší oblasti trvá Azure Container Registry pro replikaci manifestů a vrstev do zbývajících oblastí, do kterých jste se přihlásili. Větším imagí trvá replikace déle než menší. Image a značky jsou synchronizované v rámci replikačních oblastí s konečným modelem konzistence.
 * Chcete-li spravovat pracovní postupy, které jsou závislé na nabízených aktualizacích do geograficky replikovaného registru, doporučujeme nakonfigurovat [Webhooky](container-registry-webhook.md) , aby reagovaly na nabízené události. Můžete nastavit regionální Webhooky v rámci geograficky replikovaného registru a sledovat tak nabízené události, které se dokončí napříč geograficky replikovanými oblastmi.
-* Pro poskytování objektů blob, které představují vrstvy obsahu, je pro Azure Container-registrování použito koncové body dat. V každé z geograficky replikovaných oblastí v registru můžete povolit [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) pro váš registr. Tyto koncové body umožňují konfiguraci přísně vymezených pravidel přístupu brány firewall.
+* Pro poskytování objektů blob, které představují vrstvy obsahu, Azure Container Registry používá koncové body dat. V každé z geograficky replikovaných oblastí v registru můžete povolit [vyhrazené koncové body dat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) pro váš registr. Tyto koncové body umožňují konfiguraci přísně vymezených pravidel přístupu brány firewall.
 * Pokud nakonfigurujete [privátní odkaz](container-registry-private-link.md) pro váš registr pomocí privátních koncových bodů ve virtuální síti, budou ve výchozím nastavení povoleny vyhrazené koncové body dat v každé z geograficky replikovaných oblastí. 
 
 ## <a name="delete-a-replica"></a>Odstranění repliky

@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 963f728db55f587f7ae72aec702a099882cf401a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170490"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249355"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Rychlý Start: směrování webového provozu pomocí šablony Azure Application Gateway-Správce prostředků
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Rychlý Start: směrování webového provozu pomocí šablony Azure Application Gateway – ARM
 
-V tomto rychlém startu použijete šablonu Správce prostředků k vytvoření Application Gateway Azure. Pak otestujete Aplikační bránu a ujistěte se, že funguje správně.
+V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření Application Gateway Azure. Pak otestujete Aplikační bránu a ujistěte se, že funguje správně.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,17 +26,19 @@ Tento rychlý Start můžete také dokončit pomocí [Azure Portal](quick-create
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
+## <a name="review-the-template"></a>Kontrola šablony
 
 V zájmu zjednodušení Tato šablona vytvoří jednoduché nastavení s veřejnou front-end IP adresou, základní naslouchací proces, který hostí jednu lokalitu v aplikační bráně, pravidlo základního směrování požadavku a dva virtuální počítače ve fondu back-end.
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json) .
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/ag-docs-qs/) .
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
 
@@ -50,10 +52,9 @@ V šabloně je definováno víc prostředků Azure:
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : dvě pro virtuální počítače
 - [**Microsoft. COMPUTE/VirtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : Konfigurace služby IIS a webových stránek
 
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-### <a name="deploy-the-template"></a>Nasazení šablony
-
-Nasadit šablonu Správce prostředků do Azure:
+Nasazení šablony ARM do Azure:
 
 1. Vyberte **nasadit do Azure** a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří Aplikační bránu, síťovou infrastrukturu a dva virtuální počítače ve fondu back-end se službou IIS.
 

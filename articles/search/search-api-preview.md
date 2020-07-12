@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fb99530923f25541316fd159a2270f7035a1916b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0c0f40144fde49d467ca7fb126a19afa6c76660a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229240"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246952"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Funkce ve verzi Preview v Azure Kognitivní hledání
 
@@ -23,6 +23,7 @@ Funkce ve verzi Preview, které se převádějí do všeobecné dostupnosti, se 
 
 |Zapnut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategorie | Popis | Dostupnost  |
 |---------|------------------|-------------|---------------|
+| [**Azure Machine Learning (AML) – dovednost**](cognitive-search-aml-skill.md) | Obohacení AI| Nový typ dovednosti pro integraci koncového bodu Inferencing z Azure Machine Learning. Začněte s [tímto kurzem](cognitive-search-tutorial-aml-custom-skill.md). | Použijte [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/) nebo 2019-05-06-Preview. K dispozici také na portálu v návrhu dovednosti, za předpokladu, že Kognitivní hledání a služby Azure ML se nasazují ve stejném předplatném. |
 | [**parametr featuresMode**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | Relevance (bodování) | Rozšíření skóre relevance tak, aby zahrnovalo detaily: skóre podle pole, frekvence termínu pro pole a počet jedinečných tokenů, které se shodují. Tyto datové body můžete využívat ve [vlastních řešeních pro bodování](https://github.com/Azure-Samples/search-ranking-tutorial). | Přidejte tento parametr dotazu pomocí [vyhledávacích dokumentů (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) s rozhraním API-Version = 2020-06 -30-preview nebo 2019-05-06-Preview. |
 | [**Identita spravované služby**](search-howto-managed-identities-data-sources.md) | Indexery, zabezpečení| Zaregistrujte vyhledávací službu s Azure Active Directory, abyste ji načetli jako důvěryhodnou službu, a pak v Azure Data Sources použijte oprávnění RBAC, aby bylo možné v indexeru umožnit přístup jen pro čtení. | Přístup k této funkci při použití portálu nebo [Vytvoření zdroje dat (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) s rozhraním API-Version = 2020-06 -30-Preview nebo API-Version = 2019-05 -06-Preview. |
 | [**Relace ladění**](cognitive-search-debug-session.md) | Portál, obohacení AI (dovednosti) | Editor dovednosti v relaci, který se používá k prozkoumání a řešení problémů s dovednosti. Opravy, které se použijí během relace ladění, se dají uložit do dovednosti ve službě. | Pouze portál, pomocí odkazů na střední stránku na stránce Přehled otevřete relaci ladění. |
