@@ -8,11 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648573"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242368"
 ---
 # <a name="building-an-accessible-application"></a>Vytvoření přístupné aplikace
 
@@ -45,6 +46,7 @@ Existuje několik různých způsobů, jak lze mapu zvětšit, vytočit, otočit
 - S soustředěnou mapou použijte znaménko mínus, pomlčku ( `-` ) nebo podtržítko ( `_` ), abyste mohli zmenšit jednu úroveň.
 - Použití ovládacího prvku Lupa pomocí myši, dotyku nebo klávesy TAB/kláves ENTER
 - Stiskněte a podržte `Shift` tlačítko a stiskněte levé tlačítko myši na mapě a přetažením myši nakreslete oblast pro přiblížení mapy.
+- Pomocí některých doplňků pro více dotykové ovládání můžete k přiblížení nebo zmenšení snížit velikost přetažením dvou prsty.
 
 **Posouvání mapy**
 

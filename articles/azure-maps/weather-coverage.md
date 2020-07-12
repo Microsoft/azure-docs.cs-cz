@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ac4df0b63d48e590bfdfc49f1c8b5607b4651cd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c18a09b494de7ecb639fbc5639b7162bdb02d2a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310185"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241977"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps povětrnostní pokrytí
 
@@ -110,7 +111,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Čad                        | ✓               |                              |        ✓| 
 | Komory                     | ✓               |                              |        ✓| 
 | Konžská demokratická republika                 | ✓               |                              |        ✓|
-| Pobřeží slonoviny               | ✓               |                              |        ✓| 
+| Côte d’Ivoire (Pobřeží slonoviny)               | ✓               |                              |        ✓| 
 | Džibutsko                    | ✓               |                              |        ✓| 
 | Egypt                       | ✓               |                              |        ✓| 
 | Rovníková Guinea           | ✓               |                              |        ✓| 

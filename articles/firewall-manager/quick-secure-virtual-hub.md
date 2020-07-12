@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1917bed7727b97de27e560a0f2d8032a8ae08996
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563686"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242011"
 ---
-# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Rychlý Start: zabezpečení virtuálního rozbočovače pomocí nástroje Azure Firewall Manager – šablona Správce prostředků
+# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Rychlý Start: zabezpečení virtuálního centra pomocí šablony Azure Firewall Manager – ARM
 
-V tomto rychlém startu použijete šablonu Správce prostředků k zabezpečení svého virtuálního rozbočovače pomocí nástroje Azure Firewall Manager. Nasazená brána firewall má pravidlo aplikace, které umožňuje připojení `www.microsoft.com` . K otestování brány firewall jsou nasazeny dva virtuální počítače s Windows serverem 2019. K připojení k serveru úloh se používá jeden server skoků. Ze serveru úloh se můžete připojit pouze k `www.microsoft.com` .
+V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k zabezpečení vašeho virtuálního rozbočovače pomocí nástroje Azure Firewall Manager. Nasazená brána firewall má pravidlo aplikace, které umožňuje připojení `www.microsoft.com` . K otestování brány firewall jsou nasazeny dva virtuální počítače s Windows serverem 2019. K připojení k serveru úloh se používá jeden server skoků. Ze serveru úloh se můžete připojit pouze k `www.microsoft.com` .
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Další informace o Azure Firewall Manageru najdete v tématu [co je Azure firewall Manager?](overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-secured-virtual-hub"></a>Vytvoření zabezpečeného virtuálního rozbočovače
+## <a name="review-the-template"></a>Kontrola šablony
 
 Tato šablona vytvoří zabezpečeného virtuálního rozbočovače pomocí nástroje Azure Firewall Manager spolu s nezbytnými prostředky pro podporu tohoto scénáře.
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
@@ -51,9 +53,9 @@ V šabloně je definováno víc prostředků Azure:
 - [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-Nasadit šablonu Správce prostředků do Azure:
+Nasazení šablony ARM do Azure:
 
 1. Vyberte **nasadit do Azure** a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří Azure Firewall, virtuální síť WAN a virtuální rozbočovač, síťovou infrastrukturu a dva virtuální počítače.
 
@@ -86,7 +88,7 @@ Nyní otestujte pravidla brány firewall a potvrďte, že funguje podle očekáv
 
 Takže teď ověříte, že pravidla brány firewall fungují:
 
-* Můžete přejít na jediný povolený plně kvalifikovaný název domény, ale jinam už ne.
+- Můžete přejít na jediný povolený plně kvalifikovaný název domény, ale jinam už ne.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: feeef1773ffe68f3ff88175b413cd40ba618b8d9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e6174f35bd54b3ca0b2c5240a663369350b30ce8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207224"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241892"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric síťové režimy kontejneru
 
@@ -21,7 +21,7 @@ Pokud máte v manifestu služby jednu službu kontejneru se statickým koncovým
 Když se služba kontejneru restartuje nebo přesune na jiný uzel v clusteru, IP adresa se změní. Z tohoto důvodu nedoporučujeme používat dynamicky přiřazenou IP adresu ke zjišťování služeb kontejneru. Pro zjišťování služeb by se měla použít jenom Naming Service Service Fabric nebo služba DNS. 
 
 >[!WARNING]
->Azure umožňuje celkem 65 356 IP adres na jednu virtuální síť. Součet počtu uzlů a počtu instancí služby kontejnerů (používajících režim otevření) nesmí v rámci virtuální sítě překročit 65 356 IP adres. U scénářů s vysokou hustotou doporučujeme použít režim sítě NAT. Další závislosti, jako je třeba nástroj pro vyrovnávání zatížení, budou mít i další [omezení](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) , která je potřeba zvážit. V současné době až 50 IP adres na uzel byly testovány a prověřeny stabilní. 
+>Azure umožňuje celkem 65 356 IP adres na jednu virtuální síť. Součet počtu uzlů a počtu instancí služby kontejnerů (používajících režim otevření) nesmí v rámci virtuální sítě překročit 65 356 IP adres. U scénářů s vysokou hustotou doporučujeme použít režim sítě NAT. Další závislosti, jako je třeba nástroj pro vyrovnávání zatížení, budou mít i další [omezení](../azure-resource-manager/management/azure-subscription-service-limits.md) , která je potřeba zvážit. V současné době až 50 IP adres na uzel byly testovány a prověřeny stabilní. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nastavení režimu otevřené sítě
@@ -194,7 +194,7 @@ Když se služba kontejneru restartuje nebo přesune na jiný uzel v clusteru, I
    |Nastavení |Hodnota |
    | --- | --- |
    |Priorita |2000 |
-   |Název |Custom_Dns  |
+   |Name |Custom_Dns  |
    |Zdroj |VirtualNetwork |
    |Cíl | VirtualNetwork |
    |Služba | DNS (UDP/53) |
@@ -263,6 +263,6 @@ Když se služba kontejneru restartuje nebo přesune na jiný uzel v clusteru, I
  
 ## <a name="next-steps"></a>Další kroky
 * [Pochopení aplikačního modelu služby Service Fabric](service-fabric-application-model.md)
-* [Další informace o prostředcích manifestu služby Service Fabric Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
+* [Další informace o prostředcích manifestu služby Service Fabric Service](./service-fabric-service-manifest-resources.md)
 * [Nasazení kontejneru Windows pro Service Fabric v systému Windows Server 2016](service-fabric-get-started-containers.md)
 * [Nasazení kontejneru Docker pro Service Fabric v systému Linux](service-fabric-get-started-containers-linux.md)

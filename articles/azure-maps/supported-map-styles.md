@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db8ae98302ad6df7355ce03f5a33b5d21f1ea09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334039"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242096"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps podporované styly mapy
 Azure Maps podporuje několik různých vestavěných stylů mapy, jak je popsáno níže.
@@ -28,6 +28,7 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé
 * [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
+* Vizuál Power BI
 
 ## <a name="blank-and-blank_accessible"></a>prázdné a blank_accessible
 
@@ -48,6 +49,7 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé
 * [Satelitní dlaždice](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
+* Vizuál Power BI
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Tento styl mapy je hybridem cest a popisků, které se překrývají na družicovém a leteckém mikrosnímků.
@@ -57,6 +59,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
+* Vizuál Power BI
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 **tmavě šedá** je tmavá verze stylu mapy cest.
@@ -68,6 +71,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 * [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Mapový ovládací prvek sady web SDK 
 * Ovládací prvek mapy pro Android
+* Vizuál Power BI
 
 
 ## <a name="grayscale_light"></a>grayscale_light
@@ -78,6 +82,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
+* Vizuál Power BI
 
 
 ## <a name="night"></a>veletrh
@@ -88,6 +93,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
+* Vizuál Power BI
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 **odlehčené vybarvené z provozu** je Azure Maps hlavní styl dokončený pomocí kokolace země.
@@ -98,6 +104,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 * [Dlaždice mapy](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Mapový ovládací prvek sady web SDK
 * Ovládací prvek mapy pro Android
+* Vizuál Power BI
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
@@ -107,6 +114,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
+* Vizuál Power BI
 
 ## <a name="next-steps"></a>Další kroky
 

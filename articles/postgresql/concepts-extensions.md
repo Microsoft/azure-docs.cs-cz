@@ -5,12 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: b97b373936f9c485eaa96cdd34ed33c49e75ad9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77201267"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242062"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – jeden server
 PostgreSQL poskytuje možnost rozšíření funkcí databáze pomocí rozšíření. Rozšíření seskupují více souvisejících objektů SQL společně v jednom balíčku, který se dá načíst nebo odebrat z databáze jediným příkazem. Po načtení do databáze nástroje rozšíření funguje jako předdefinované funkce.
@@ -211,7 +212,7 @@ Mezi informacemi o spuštění dotazu pg_stat_statements poskytuje kompromis a d
 ## <a name="dblink-and-postgres_fdw"></a>dblink a postgres_fdw
 [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) vám umožní připojit se z jednoho serveru PostgreSQL k druhému nebo do jiné databáze na stejném serveru. Přijímající server musí v bráně firewall umožňovat připojení z odesílajícího serveru. Pokud se tato rozšíření používají pro připojení mezi Azure Database for PostgreSQL servery, můžete to udělat nastavením možnosti "povolení přístupu ke službám Azure" na ZAPNUTo. To je také nutné v případě, že chcete použít rozšíření pro návrat ke stejnému serveru. Nastavení "povolení přístupu ke službám Azure" najdete na stránce Azure Portal pro server Postgres v části zabezpečení připojení. Zapnutím možnosti "povolení přístupu ke službám Azure" získáte všechny IP adresy Azure na seznamu povolených.
 
-Odchozí připojení z Azure Database for PostgreSQL se v současné době nepodporují, s výjimkou připojení k jiným serverům Azure Database for PostgreSQL.
+Odchozí připojení z Azure Database for PostgreSQL se v současné době nepodporují, s výjimkou připojení k ostatním Azure Database for PostgreSQLm serverům ve stejné oblasti.
 
 ## <a name="uuid"></a>uuid
 Pokud plánujete použití `uuid_generate_v4()` z [rozšíření UUID-OSSP](https://www.postgresql.org/docs/current/uuid-ossp.html), zvažte porovnání s `gen_random_uuid()` [rozšířením pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) pro výhody výkonu.

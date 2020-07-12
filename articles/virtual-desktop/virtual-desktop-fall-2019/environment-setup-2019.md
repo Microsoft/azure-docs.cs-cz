@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d666f7e3e43b5429423a5356aa00e074ed020869
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 153532b3c33158ee1a43db7883eb7a9ec621ade7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615328"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241671"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Prostředí Windows Virtual Desktop
 
@@ -67,5 +67,5 @@ Informace o tom, jak nastavit tenanta pro virtuální počítače s Windows, naj
 
 Informace o tom, jak se připojit k virtuálnímu počítači s Windows, najdete v jednom z následujících článků:
 
-- [Připojení z Windows 10 nebo Windows 7](../connect-windows-7-and-10.md)
+- [Připojení z Windows 10 nebo Windows 7](connect-windows-7-10-2019.md)
 - [Připojení z webového prohlížeče](connect-web-2019.md)

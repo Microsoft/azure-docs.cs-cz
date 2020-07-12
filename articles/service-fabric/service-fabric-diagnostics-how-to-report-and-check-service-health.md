@@ -5,18 +5,19 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 751af36c630d1b0faa0c07bdd3a8b7519bd328c9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464639"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241926"
 ---
 # <a name="report-and-check-service-health"></a>Hlášení a kontrola stavu služeb
 Pokud vaše služby nastanou problémy, vaše schopnost reagovat na incidenty a výpadky závisí na vaší schopnosti rychle detekovat problémy. Pokud nahlásíte problémy a chyby do služby Azure Service Fabric Health Manager z kódu služby, můžete použít standardní nástroje pro monitorování stavu, které Service Fabric poskytuje ke kontrole stavu.
 
 Existují tři způsoby, jak můžete hlásit stav ze služby:
 
-* Použijte [partition](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) nebo [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) objekty.  
+* Použijte [partition](/dotnet/api/system.fabric.istatefulservicepartition) nebo [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) objekty.  
   Pomocí `Partition` objektů a můžete `CodePackageActivationContext` nahlásit stav prvků, které jsou součástí aktuálního kontextu. Například kód, který se spouští jako součást repliky, může hlásit stav pouze v této replice, oddíl, do kterého patří, a aplikaci, které je součástí.
 * Použijte `FabricClient`.   
   V případě, že `FabricClient` je cluster [nezabezpečený](service-fabric-cluster-security.md) nebo pokud je služba spuštěná s oprávněními správce, je možné použít k hlášení stavu kódu služby. Většina scénářů reálného světa nepoužívá nezabezpečené clustery nebo poskytuje oprávnění správce. Pomocí nástroje `FabricClient` můžete nahlásit stav jakékoli entity, která je součástí clusteru. V ideálním případě by však měl kód služby odesílat pouze zprávy, které souvisejí s jeho vlastním stavem.
@@ -24,7 +25,7 @@ Existují tři způsoby, jak můžete hlásit stav ze služby:
 
 Tento článek vás provede příkladem, který hlásí stav z kódu služby. Tento příklad také ukazuje, jak lze použít nástroje poskytované Service Fabric ke kontrole stavu. Tento článek je určený jako rychlý Úvod k funkcím monitorování stavu Service Fabric. Podrobnější informace si můžete přečíst v podrobných článcích o stavu, který začíná odkazem na konci tohoto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Musíte mít nainstalované následující:
 
 * Visual Studio 2015 nebo Visual Studio 2019
@@ -140,6 +141,5 @@ activationContext.ReportApplicationHealth(healthInformation);
 
 ## <a name="next-steps"></a>Další kroky
 * [Hluboká podrobněa stavu Service Fabric](service-fabric-health-introduction.md)
-* [REST API pro stav služby Reporting Services](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [REST API pro vytváření sestav stavu aplikace](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
-
+* [REST API pro stav služby Reporting Services](/rest/api/servicefabric/report-the-health-of-a-service)
+* [REST API pro vytváření sestav stavu aplikace](/rest/api/servicefabric/report-the-health-of-an-application)

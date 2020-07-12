@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: b5751bdccde33fa16d5f09cfbe9a411a351518b0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 74fdfb9f3a3f59f55b0f0ed4865601c0ddb7b7f2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086547"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241960"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Informace o kontinuitě podnikových aplikací v Azure Database for MySQL
 
@@ -23,10 +23,10 @@ Azure Database for MySQL poskytuje funkce pro provozní kontinuitu, které zahrn
 
 Následující tabulka porovnává ERT a RPO pro dostupné funkce:
 
-| **Funkce** | **Základní** | **Pro obecné účely** | **Optimalizované z hlediska paměti** |
+| **Funkce** | **Basic** | **Pro obecné účely** | **Optimalizované pro paměť** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Obnovení k určitému bodu v čase ze zálohy | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování | Libovolný bod obnovení v rámci doby uchování |
-| Geografické obnovení ze geograficky replikovaných záloh | Nepodporuje se | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
+| Geografické obnovení ze geograficky replikovaných záloh | Nepodporováno | ERT < 12 h<br/>RPO < 1 h | ERT < 12 h<br/>RPO < 1 h |
 
 > [!IMPORTANT]
 > Odstraněné servery **nelze** obnovit. Pokud server odstraníte, odstraní se i všechny databáze patřící do serveru a nebude možné je obnovit.
@@ -51,6 +51,10 @@ Druhou možností je použít funkci geografického obnovení Azure Database for
 ## <a name="cross-region-read-replicas"></a>Repliky čtení mezi oblastmi
 
 Repliky čtení pro různé oblasti můžete použít ke zvýšení provozní kontinuity a plánování zotavení po havárii. Repliky čtení jsou asynchronně aktualizované pomocí technologie pro replikaci binárního protokolu MySQL. Přečtěte si další informace o replikách pro čtení, dostupných oblastech a o tom, jak převzít služby při selhání v článku věnovaném [konceptům čtení replik](concepts-read-replicas.md). 
+
+## <a name="faq"></a>Časté otázky
+### <a name="where-does-azure-database-for-mysql-store-customer-data"></a>Kam se Azure Database for MySQL ukládají zákaznická data?
+Ve výchozím nastavení Azure Database for MySQL nepřesouvá nebo neukládají zákaznická data mimo oblast, ve které je nasazená. Zákazníci si ale můžou volitelně zvolit možnost povolit [geograficky redundantní zálohy](concepts-backup.md#backup-redundancy-options) nebo vytvořit [repliku pro čtení v různých oblastech](concepts-read-replicas.md#cross-region-replication) pro ukládání dat v jiné oblasti.
 
 ## <a name="next-steps"></a>Další kroky
 
