@@ -3,12 +3,12 @@ title: Zásady restartování pro úlohy běhu
 description: Naučte se používat Azure Container Instances k provádění úloh, které se spouštějí do dokončení, například v úlohách sestavení, testování nebo vykreslování imagí.
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a582036ae54a0b100b768e37bcf0d952521559d9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80131497"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261344"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Spuštění kontejnerizovaných úkolů se zásadami restartování
 
@@ -90,13 +90,13 @@ Výstup:
  ('HAMLET', 386)]
 ```
 
-Tento příklad ukazuje výstup, který skript odeslal do STDOUT. Vaše kontejnerové úlohy však mohou místo toho zapsat výstup do trvalého úložiště pro pozdější načtení. Například do [sdílené složky Azure](container-instances-mounting-azure-files-volume.md).
+Tento příklad ukazuje výstup, který skript odeslal do STDOUT. Vaše kontejnerové úlohy však mohou místo toho zapsat výstup do trvalého úložiště pro pozdější načtení. Například do [sdílené složky Azure](./container-instances-volume-azure-files.md).
 
 ## <a name="next-steps"></a>Další kroky
 
 Scénáře založené na úlohách, například dávkové zpracování velké datové sady s několika kontejnery, mohou využívat vlastní [proměnné prostředí](container-instances-environment-variables.md) nebo [příkazové řádky](container-instances-start-command.md) za běhu.
 
-Podrobnosti o tom, jak zachovat výstup kontejnerů, které se spouští k dokončení, najdete v tématu [připojení sdílené složky Azure pomocí Azure Container Instances](container-instances-mounting-azure-files-volume.md).
+Podrobnosti o tom, jak zachovat výstup kontejnerů, které se spouští k dokončení, najdete v tématu [připojení sdílené složky Azure pomocí Azure Container Instances](./container-instances-volume-azure-files.md).
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount

@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – vytvoření fondu Apache Spark (ve verzi Preview) pomocí synapse studia
+title: 'Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) pomocí synapse studia'
 description: Pomocí postupu v této příručce vytvořte nový fond Apache Spark s využitím synapse studia.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c945e56aa0b6f851f54cf7679276558190b4bc10
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 87fcbef5a3cedab3142fe9ad47c68752515fdd2e
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194951"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274335"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) pomocí synapse studia
 
@@ -27,14 +27,14 @@ Tento rychlý Start popisuje kroky pro vytvoření fondu Apache Spark v pracovn�
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor synapse](./quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Azure Portal](https://portal.azure.com/)
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Přejděte do pracovního prostoru synapse.
 

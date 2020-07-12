@@ -8,13 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/06/2020
+ms.date: 07/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0402ed6177ca7f9d10cbb7d2a81352af0108b828
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 4627cc83de70f596ae4917d0449f785a33bf720f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027947"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261352"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services pomocí PHP
 <a name="HOLTop"></a>
@@ -23,7 +24,7 @@ V tomto článku se dozvíte, jak [detekovat jazyk](#Detect), [analyzovat míně
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
@@ -36,7 +37,7 @@ Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu po
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 1. Přidejte níže uvedený kód.
 1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
-1. Spusťte program.
+1. Spustíte program.
 
 ```php
 <?php
@@ -137,7 +138,7 @@ Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznam
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 1. Přidejte níže uvedený kód.
 1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
-1. Spusťte program.
+1. Spustíte program.
 
 ```php
 <?php
@@ -261,7 +262,7 @@ Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z te
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 1. Přidejte níže uvedený kód.
 1. Zkopírujte klíč Analýza textu a koncový bod do kódu.
-1. Spusťte program.
+1. Spustíte program.
 
 ```php
 <?php
@@ -365,7 +366,7 @@ Rozhraní API pro entity identifikuje dobře známé entity v textovém dokument
 1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt PHP.
 1. Přidejte níže uvedený kód.
 1. Zkopírujte klíč Analýza textu a koncový bod do kódu. 
-1. Spusťte program.
+1. Spustíte program.
 
 ```php
 <?php
@@ -382,7 +383,7 @@ $path = '/text/analytics/v3.0/entities/recognition/general';
 function GetEntities ($host, $path, $key, $data) {
 
     $headers = "Content-type: text/json\r\n" .
-        "Content-Length: " . Length($data) . "\r\n" .
+        "Content-Length: " . strlen($data) . "\r\n" .
         "Ocp-Apim-Subscription-Key: $key\r\n";
     $data = json_encode ($data);
 
@@ -454,5 +455,5 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 
 ## <a name="see-also"></a>Viz také 
 
- [Přehled Analýza textu](../overview.md)  
+ [Přehled analýzy textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

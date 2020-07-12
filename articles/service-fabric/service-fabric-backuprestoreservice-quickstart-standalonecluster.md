@@ -5,11 +5,12 @@ author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 938cbbde9f53c52350ef64715f6c61c4aa961057
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07a6260c176165af5ced5ce275b9e4b365707d77
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75526239"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261233"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>Pravidelné zálohování a obnovování v samostatné Service Fabric
 > [!div class="op_single_selector"]
@@ -43,7 +44,7 @@ Service Fabric poskytuje sadu rozhraní API pro zajištění následujících fu
 - Dočasné pozastavení zálohování
 - Správa uchovávání záloh (nadcházející)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Service Fabric cluster se službou Fabric verze 6,4 nebo vyšší. Postup stažení požadovaného balíčku najdete v tomto [článku](service-fabric-cluster-creation-for-windows-server.md) .
 * X. 509 certifikát pro šifrování tajných kódů potřebných pro připojení k úložišti pro ukládání záloh. V [článku](service-fabric-windows-cluster-x509-security.md) najdete informace o tom, jak získat nebo vytvořit certifikát X. 509 podepsaný svým držitelem.
 
@@ -287,7 +288,7 @@ Chcete-li zobrazit zálohy v Service Fabric Explorer, přejděte do oddílu a vy
 
 ## <a name="next-steps"></a>Další kroky
 - [Principy konfigurace pravidelného zálohování](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Odkaz na REST API obnovení zálohy](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Odkaz na REST API obnovení zálohy](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event.png
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png

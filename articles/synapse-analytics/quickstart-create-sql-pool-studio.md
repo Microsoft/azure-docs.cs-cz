@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – vytvoření synapse fondu SQL (ve verzi Preview) pomocí synapse studia
+title: 'Rychlý Start: vytvoření synapse fondu SQL (ve verzi Preview) pomocí synapse studia'
 description: Podle kroků v této příručce vytvořte nový synapse fond SQL pomocí synapse studia.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: f93eb55b888c58ad111bd67b2011ba9c996b16bb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4aac32ec69a4572a0988a22f1bc3b7bdf3f947d7
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960261"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274267"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>Rychlý Start: vytvoření synapse fondu SQL (ve verzi Preview) pomocí synapse studia
 
@@ -25,14 +25,14 @@ Tento rychlý Start popisuje kroky pro vytvoření fondu SQL v pracovním prosto
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Pracovní prostor synapse](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Azure Portal](https://portal.azure.com/)
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Přejděte do pracovního prostoru synapse.
 

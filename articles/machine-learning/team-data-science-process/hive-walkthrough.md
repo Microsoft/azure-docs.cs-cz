@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb144aa7b6c717ada3a51fe3286f349bc3d8b325
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81677460"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273910"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: použití clusterů Azure HDInsight Hadoop
 V tomto návodu použijeme [TDSP (Team data Sciences)](overview.md) v uceleném scénáři. Pro ukládání, prozkoumávání a inženýrské údaje z veřejně dostupné datové sady [taxislužby pro NYC](https://www.andresmh.com/nyctaxitrips/) a pro data ukázek používáme [cluster Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) . Pro zpracování binárních a regresních klasifikací a regresních prediktivních úkolů sestavíme modely dat s Azure Machine Learning. 
@@ -28,21 +29,32 @@ Pomocí poznámkového bloku IPython můžete také provádět úkoly uvedené v
 Data o cestách NYC taxislužby jsou přibližně 20 GB komprimovaných souborů hodnot oddělených čárkami (CSV 48 GB nekomprimovaných). Má více než 173 000 000 jednotlivých cest a zahrnuje tarify placené za každou cestu. Každý záznam na cestách zahrnuje umístění a dobu dropoff a čas, informace o licencích pro jméno a Medallion (jedinečné ID taxislužby). Data se týkají všech cest v roce 2013 a jsou k dispozici v následujících dvou datových sadách pro každý měsíc:
 
 - Trip_data soubory CSV obsahují podrobnosti o cestách: počet cestujících, výběr a dropoff body, doba trvání cesty a délka cesty. Tady je několik ukázkových záznamů:
-   
-        medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
+
+  `medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude`
+
+  `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-06 00:18:35,2013-01-06 00:22:54,1,259,1.50,-74.006683,40.731781,-73.994499,40.75066`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868`
+
 - Soubory trip_fare CSV obsahují podrobnosti o tarifu placeného za každou cestu: typ platby, částka tarifů, příplatek a daně, tipy a mýtné a celková placená částka. Tady je několik ukázkových záznamů:
-   
-        medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-        89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7
-        0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
-        DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
+
+  `medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount`
+
+  `89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-06 00:18:35,CSH,6,0.5,0.5,0,0,7`
+
+  `0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,2013-01-05 18:49:41,CSH,5.5,1,0.5,0,0,7`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6`
+
+  `DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5`
 
 Jedinečný klíč pro připojení k \_ datům cest a služební \_ tarif se skládá z těchto polí: Medallion, napadená \_ licence a data a času vyzvednutí \_ . Chcete-li získat všechny podrobnosti týkající se konkrétní cesty, stačí se připojit k těmto třem klíčům.
 
@@ -50,16 +62,18 @@ Jedinečný klíč pro připojení k \_ datům cest a služební \_ tarif se skl
 Určete druh předpovědi, který chcete vytvořit na základě analýzy dat, abyste mohli vyjasnit požadované úlohy procesu. Tady jsou tři příklady problémů s předpovědí, které řešíme v tomto návodu, a to vše na základě * \_ výše uvedené hodnoty Tip*:
 
 - **Binární klasifikace**: předpověď bez ohledu na to, zda byl pro cestu zaplacen Tip. To znamená, že * \_ hodnota tipu* , která je větší než $0, je pozitivním příkladem, zatímco * \_ hodnota tipu* $0 je negativním příkladem.
-   
-        Class 0: tip_amount = $0
-        Class 1: tip_amount > $0
+
+  - Třída 0: tip_amount = $0
+  - Třída 1: tip_amount > $0
+
 - **Klasifikace s více třídami**: předpověď rozsahu částek v tipu placených pro danou cestu. * \_ Velikost tipu* rozdělíme na pět tříd:
-   
-        Class 0: tip_amount = $0
-        Class 1: tip_amount > $0 and tip_amount <= $5
-        Class 2: tip_amount > $5 and tip_amount <= $10
-        Class 3: tip_amount > $10 and tip_amount <= $20
-        Class 4: tip_amount > $20
+
+  - Třída 0: tip_amount = $0
+  - Třída 1: tip_amount > $0 a tip_amount <= $5
+  - Třída 2: tip_amount > $5 a tip_amount <= $10
+  - Třída 3: tip_amount > $10 a tip_amount <= $20
+  - Třída 4: tip_amount > $20
+
 - **Regresní úloha**: předpověď množství tipu placeného pro cestu.  
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>Nastavení clusteru HDInsight Hadoop pro pokročilou analýzu
@@ -89,7 +103,9 @@ Tady popisujeme, jak použít AzCopy k přenosu souborů obsahujících data. Po
 
 1. V okně příkazového řádku spusťte následující příkazy AzCopy a nahraďte *\<path_to_data_folder>* požadované místo:
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```console
+    "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
+    ```
 
 1. Až se kopie dokončí, zobrazí se ve vybrané složce s daty celkem 24 souborů zip. Rozbalte stažené soubory do stejného adresáře na místním počítači. Poznamenejte si složku, do které se nacházejí nekomprimované soubory. Tato složka je označována jako *\<path\_to\_unzipped_data\_files\>* v následujícím příkladu.
 
@@ -110,11 +126,15 @@ Z příkazového řádku nebo okna Windows PowerShellu spusťte následující d
 
 Tento příkaz nahraje data pro cestu do adresáře ***nyctaxitripraw*** ve výchozím kontejneru clusteru Hadoop.
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+```console
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data_*.csv
+```
 
 Tento příkaz nahraje data tarifů do adresáře ***nyctaxifareraw*** ve výchozím kontejneru clusteru Hadoop.
 
-        "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+```console
+"C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare_*.csv
+```
 
 Data by teď měla být v úložišti objektů BLOB a připravená k využití v clusteru HDInsight.
 
@@ -130,9 +150,11 @@ V tomto návodu primárně používáme dotazy napsané v [podregistru](https://
 
 Chcete-li připravit cluster pro průzkumné analýzy dat, Stáhněte soubory '. HQL ', které obsahují relevantní skripty podregistru z [GitHubu](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) , do místního adresáře (C:\Temp) do hlavního uzlu. Otevřete příkazový řádek z hlavního uzlu v clusteru a spusťte následující dva příkazy:
 
-    set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
+```console
+set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
-    @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
+```
 
 Tyto dva příkazy stáhnou všechny soubory '. HQL ' potřebné v tomto návodu do místního adresáře ***C:\temp&#92;*** do hlavního uzlu.
 
@@ -145,7 +167,9 @@ Tyto dva příkazy stáhnou všechny soubory '. HQL ' potřebné v tomto návodu
 Nyní jste připraveni vytvořit tabulky podregistru pro datovou sadu NYC taxislužby.
 V hlavním uzlu clusteru Hadoop otevřete příkazový řádek Hadoop na ploše hlavního uzlu. Spuštěním následujícího příkazu zadejte adresář podregistru:
 
-    cd %hive_home%\bin
+```console
+cd %hive_home%\bin
+```
 
 > [!NOTE]
 > Spustí všechny příkazy podregistru v tomto návodu z adresáře bin/adresáře podadresáře. To zpracovává všechny problémy s cestou automaticky. V tomto návodu použijeme výrazy "výzva k adresáři pro podregistr", "přihrádku na podregistr/adresář" a "příkazový řádek Hadoop".
@@ -154,48 +178,52 @@ V hlavním uzlu clusteru Hadoop otevřete příkazový řádek Hadoop na ploše 
 
 Z příkazového řádku adresáře podregistr spusťte následující příkaz v příkazovém řádku Hadoop hlavního uzlu, který vytvoří databázi a tabulky podregistru:
 
-    hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
+```console
+hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
+```
 
 Tady je obsah ** \_ podregistru C:\temp\sample \_ Create \_ DB \_ a \_ Tables. HQL** , který vytváří podregistr Database **nyctaxidb**a tabulky **TRIPS** a **jízdné**.
 
-    create database if not exists nyctaxidb;
+```hiveql
+create database if not exists nyctaxidb;
 
-    create external table if not exists nyctaxidb.trip
-    (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        passenger_count int,
-        trip_time_in_secs double,
-        trip_distance double,
-        pickup_longitude double,
-        pickup_latitude double,
-        dropoff_longitude double,
-        dropoff_latitude double)  
-    PARTITIONED BY (month int)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-    STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
+create external table if not exists nyctaxidb.trip
+(
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    rate_code string,
+    store_and_fwd_flag string,
+    pickup_datetime string,
+    dropoff_datetime string,
+    passenger_count int,
+    trip_time_in_secs double,
+    trip_distance double,
+    pickup_longitude double,
+    pickup_latitude double,
+    dropoff_longitude double,
+    dropoff_latitude double)  
+PARTITIONED BY (month int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/trip' TBLPROPERTIES('skip.header.line.count'='1');
 
-    create external table if not exists nyctaxidb.fare
-    (
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        pickup_datetime string,
-        payment_type string,
-        fare_amount double,
-        surcharge double,
-        mta_tax double,
-        tip_amount double,
-        tolls_amount double,
-        total_amount double)
-    PARTITIONED BY (month int)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
-    STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
+create external table if not exists nyctaxidb.fare
+(
+    medallion string,
+    hack_license string,
+    vendor_id string,
+    pickup_datetime string,
+    payment_type string,
+    fare_amount double,
+    surcharge double,
+    mta_tax double,
+    tip_amount double,
+    tolls_amount double,
+    total_amount double)
+PARTITIONED BY (month int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' lines terminated by '\n'
+STORED AS TEXTFILE LOCATION 'wasb:///nyctaxidbdata/fare' TBLPROPERTIES('skip.header.line.count'='1');
+```
 
 Tento skript podregistru vytvoří dvě tabulky:
 
@@ -212,64 +240,80 @@ Pokud potřebujete další pomoc s těmito postupy nebo chcete prozkoumat altern
 
 Datová sada taxislužby NYC má přirozený segmentaci za měsíc, který používáme k zajištění rychlejšího zpracování a času dotazování. Následující příkazy PowerShellu (vydané z adresáře podregistru pomocí příkazového řádku Hadoop) načítají data do tabulek pro jízdu na cestě a tarify dělené po měsících.
 
-    for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
+```powershell
+for /L %i IN (1,1,12) DO (hive -hiveconf MONTH=%i -f "C:\temp\sample_hive_load_data_by_partitions.hql")
+```
 
 **Ukázkový \_ podregistr \_ načíst \_ data \_ pomocí \_ oddílů. HQL** obsahuje následující příkazy **načtení** :
 
-    LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
-    LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+```hiveql
+LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
+LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
+```
 
 Počet dotazů na podregistr, které se tady používají v procesu průzkumu, zahrnuje prohlížení jenom jednoho nebo dvou oddílů. Tyto dotazy ale můžete spustit napříč celou datovou sadou.
 
 ### <a name="show-databases-in-the-hdinsight-hadoop-cluster"></a><a name="#show-db"></a>Zobrazit databáze v clusteru HDInsight Hadoop
 Pokud chcete zobrazit databáze vytvořené v clusteru HDInsight Hadoop uvnitř okna příkazového řádku Hadoop, spusťte na příkazovém řádku Hadoop následující příkaz:
 
-    hive -e "show databases;"
+```console
+hive -e "show databases;"
+```
 
 ### <a name="show-the-hive-tables-in-the-nyctaxidb-database"></a><a name="#show-tables"></a>Zobrazit tabulky podregistru v databázi **nyctaxidb**
 Chcete-li zobrazit tabulky v databázi **nyctaxidb** , spusťte následující příkaz v příkazovém řádku Hadoop:
 
-    hive -e "show tables in nyctaxidb;"
+```console
+hive -e "show tables in nyctaxidb;"
+```
 
 Spuštěním následujícího příkazu si můžete ověřit, že jsou tabulky rozdělené na oddíly:
 
-    hive -e "show partitions nyctaxidb.trip;"
+```console
+hive -e "show partitions nyctaxidb.trip;"
+```
 
 Tady je očekávaný výstup:
 
-    month=1
-    month=10
-    month=11
-    month=12
-    month=2
-    month=3
-    month=4
-    month=5
-    month=6
-    month=7
-    month=8
-    month=9
-    Time taken: 2.075 seconds, Fetched: 12 row(s)
+```output
+month=1
+month=10
+month=11
+month=12
+month=2
+month=3
+month=4
+month=5
+month=6
+month=7
+month=8
+month=9
+Time taken: 2.075 seconds, Fetched: 12 row(s)
+```
 
 Podobně je možné zajistit, aby tabulka tarifů byla rozdělená spuštěním následujícího příkazu:
 
-    hive -e "show partitions nyctaxidb.fare;"
+```console
+hive -e "show partitions nyctaxidb.fare;"
+```
 
 Tady je očekávaný výstup:
 
-    month=1
-    month=10
-    month=11
-    month=12
-    month=2
-    month=3
-    month=4
-    month=5
-    month=6
-    month=7
-    month=8
-    month=9
-    Time taken: 1.887 seconds, Fetched: 12 row(s)
+```output
+month=1
+month=10
+month=11
+month=12
+month=2
+month=3
+month=4
+month=5
+month=6
+month=7
+month=8
+month=9
+Time taken: 1.887 seconds, Fetched: 12 row(s)
+```
 
 ## <a name="data-exploration-and-feature-engineering-in-hive"></a><a name="#explore-hive"></a>Zkoumání dat a strojírenství funkcí v podregistru
 > [!NOTE]
@@ -295,15 +339,21 @@ Chcete-li zjistit, co data vypadají, Prohlédněte si 10 záznamů z každé ta
 
 Pokud chcete získat prvních 10 záznamů v tabulce cest od prvního měsíce:
 
-    hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
+```console
+hive -e "select * from nyctaxidb.trip where month=1 limit 10;"
+```
 
 Pokud chcete získat prvních 10 záznamů v tabulce tarifů od prvního měsíce:
 
-    hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
+```console
+hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
+```
 
 Záznamy můžete uložit do souboru pro pohodlné zobrazení s malou změnou v předchozím dotazu:
 
-    hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
+```console
+hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
+```
 
 ### <a name="exploration-view-the-number-of-records-in-each-of-the-12-partitions"></a>Průzkum: zobrazení počtu záznamů v jednotlivých 12 oddílech
 > [!NOTE]
@@ -313,65 +363,81 @@ Záznamy můžete uložit do souboru pro pohodlné zobrazení s malou změnou v 
 
 Důležité je, jak se počet cest v kalendářním roce mění. Seskupení podle měsíce znázorňuje distribuci cest.
 
-    hive -e "select month, count(*) from nyctaxidb.trip group by month;"
+```console
+hive -e "select month, count(*) from nyctaxidb.trip group by month;"
+```
 
 Tento příkaz vytvoří následující výstup:
 
-    1       14776615
-    2       13990176
-    3       15749228
-    4       15100468
-    5       15285049
-    6       14385456
-    7       13823840
-    8       12597109
-    9       14107693
-    10      15004556
-    11      14388451
-    12      13971118
-    Time taken: 283.406 seconds, Fetched: 12 row(s)
+```output
+1       14776615
+2       13990176
+3       15749228
+4       15100468
+5       15285049
+6       14385456
+7       13823840
+8       12597109
+9       14107693
+10      15004556
+11      14388451
+12      13971118
+Time taken: 283.406 seconds, Fetched: 12 row(s)
+```
 
 Zde je první sloupec měsíc a druhým je počet cest k tomuto měsíci.
 
 Celkový počet záznamů v naší datové sadě můžete také spočítat spuštěním následujícího příkazu na příkazovém řádku adresáře podregistru:
 
-    hive -e "select count(*) from nyctaxidb.trip;"
+```console
+hive -e "select count(*) from nyctaxidb.trip;"
+```
 
 Tento příkaz vypočítá:
 
-    173179759
-    Time taken: 284.017 seconds, Fetched: 1 row(s)
+```output
+173179759
+Time taken: 284.017 seconds, Fetched: 1 row(s)
+```
 
 Pomocí příkazů, které jsou podobné těm, které jsou zobrazené pro datovou sadu pro cestu, můžeme vystavit dotazy na podregistry z adresáře podadresáře pro datovou sadu jízdného a ověřit počet záznamů.
 
-    hive -e "select month, count(*) from nyctaxidb.fare group by month;"
+```console
+hive -e "select month, count(*) from nyctaxidb.fare group by month;"
+```
 
 Tento příkaz vytvoří tento výstup:
 
-    1       14776615
-    2       13990176
-    3       15749228
-    4       15100468
-    5       15285049
-    6       14385456
-    7       13823840
-    8       12597109
-    9       14107693
-    10      15004556
-    11      14388451
-    12      13971118
-    Time taken: 253.955 seconds, Fetched: 12 row(s)
+```output
+1       14776615
+2       13990176
+3       15749228
+4       15100468
+5       15285049
+6       14385456
+7       13823840
+8       12597109
+9       14107693
+10      15004556
+11      14388451
+12      13971118
+Time taken: 253.955 seconds, Fetched: 12 row(s)
+```
 
 V obou datových sadách se vrátí přesně stejný počet cest za měsíc, který poskytuje první ověření, že data byla načtena správně.
 
 Celkový počet záznamů v datové sadě tarifů můžete spočítat pomocí následujícího příkazu na příkazovém řádku adresáře podregistru:
 
-    hive -e "select count(*) from nyctaxidb.fare;"
+```console
+hive -e "select count(*) from nyctaxidb.fare;"
+```
 
 Tento příkaz vypočítá:
 
-    173179759
-    Time taken: 186.683 seconds, Fetched: 1 row(s)
+```output
+173179759
+Time taken: 186.683 seconds, Fetched: 1 row(s)
+```
 
 Celkový počet záznamů v obou tabulkách je také stejný a poskytuje druhé ověření, že data byla načtena správně.
 
@@ -383,31 +449,39 @@ Celkový počet záznamů v obou tabulkách je také stejný a poskytuje druhé 
 
 Tento příklad identifikuje medallions (taxislužby čísla) s více než 100 TRIPS během daného časového období. Dotaz je výhodou z přístupu k dělenému tabulce, protože je podmíněna proměnnou month za **měsíc**. Výsledky dotazu jsou zapsány do místního souboru **queryoutput. TSV**v `C:\temp` hlavní uzel.
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```
 
 Tady je obsah **ukázkového \_ počtu cest k podregistru \_ podle souboru \_ \_ \_ Medallion. HQL** pro kontrolu.
 
-    SELECT medallion, COUNT(*) as med_count
-    FROM nyctaxidb.fare
-    WHERE month<=3
-    GROUP BY medallion
-    HAVING med_count > 100
-    ORDER BY med_count desc;
+```hiveql
+SELECT medallion, COUNT(*) as med_count
+FROM nyctaxidb.fare
+WHERE month<=3
+GROUP BY medallion
+HAVING med_count > 100
+ORDER BY med_count desc;
+```
 
 Medallion v datové sadě NYC taxislužby identifikuje jedinečný soubor CAB. Můžete určit, které kabiny jsou poměrně zaneprázdněny tím, že zjistíte, které z nich v určitém časovém období provedly více než určitý počet cest. Následující příklad identifikuje kabiny, které provedly více než sto cest v prvních třech měsících, a uloží výsledky dotazu do místního souboru **C:\temp\queryoutput.TSV**.
 
 Tady je obsah **ukázkového \_ počtu cest k podregistru \_ podle souboru \_ \_ \_ Medallion. HQL** pro kontrolu.
 
-    SELECT medallion, COUNT(*) as med_count
-    FROM nyctaxidb.fare
-    WHERE month<=3
-    GROUP BY medallion
-    HAVING med_count > 100
-    ORDER BY med_count desc;
+```hiveql
+SELECT medallion, COUNT(*) as med_count
+FROM nyctaxidb.fare
+WHERE month<=3
+GROUP BY medallion
+HAVING med_count > 100
+ORDER BY med_count desc;
+```
 
 Na příkazovém řádku adresáře podregistru spusťte následující příkaz:
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
+```
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Průzkum: distribuce cest pomocí Medallion a licence pro napadení
 > [!NOTE]
@@ -419,18 +493,22 @@ Při zkoumání datové sady často chceme prozkoumat distribuce skupin hodnot. 
 
 **Ukázkový \_ Počet cest k podregistru \_ \_ \_ podle \_ Medallion \_ License. HQL** seskupuje datovou sadu tarifů v **Medallion** a **hack_license**a vrátí počty jednotlivých kombinací. Tady jsou jeho obsah:
 
-    SELECT medallion, hack_license, COUNT(*) as trip_count
-    FROM nyctaxidb.fare
-    WHERE month=1
-    GROUP BY medallion, hack_license
-    HAVING trip_count > 100
-    ORDER BY trip_count desc;
+```hiveql
+SELECT medallion, hack_license, COUNT(*) as trip_count
+FROM nyctaxidb.fare
+WHERE month=1
+GROUP BY medallion, hack_license
+HAVING trip_count > 100
+ORDER BY trip_count desc;
+```
 
 Tento dotaz vrátí kombinace souborů CAB a ovladačů seřazený podle sestupného počtu cest.
 
 Na příkazovém řádku adresáře podregistru spusťte příkaz:
 
-    hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
+```console
+hive -f "C:\temp\sample_hive_trip_count_by_medallion_license.hql" > C:\temp\queryoutput.tsv
+```
 
 Výsledky dotazu jsou zapsány do místního souboru **C:\temp\queryoutput.TSV**.
 
@@ -444,17 +522,20 @@ Běžným cílem analýzy dat pro průzkumné účely je vytvoření neplatných
 
 Tady je obsah **ukázkového souboru \_ \_ \_ . HQL vyhodnocení kvality podregistru** pro kontrolu.
 
-        SELECT COUNT(*) FROM nyctaxidb.trip
-        WHERE month=1
-        AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
-        OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
-        OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
-        OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
-
+```hiveql
+    SELECT COUNT(*) FROM nyctaxidb.trip
+    WHERE month=1
+    AND  (CAST(pickup_longitude AS float) NOT BETWEEN -90 AND -30
+    OR    CAST(pickup_latitude AS float) NOT BETWEEN 30 AND 90
+    OR    CAST(dropoff_longitude AS float) NOT BETWEEN -90 AND -30
+    OR    CAST(dropoff_latitude AS float) NOT BETWEEN 30 AND 90);
+```
 
 Na příkazovém řádku adresáře podregistru spusťte příkaz:
 
-    hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
+```console
+hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
+```
 
 Argument *-S* , který je součástí tohoto příkazu, potlačí výpis stavu obrazovky mapy podregistru nebo omezení úloh. Tento příkaz je užitečný, protože usnadňuje tisk na obrazovce výstup dotazu na podregistr.
 
@@ -471,17 +552,21 @@ Pro problém binární klasifikace, který je popsaný v části [příklady úk
 
 Následující **ukázkový soubor \_ \_ \_ hqlch frekvencí podregistru** zobrazuje příkaz, který se má spustit:
 
-    SELECT tipped, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tipped;
+```hiveql
+SELECT tipped, COUNT(*) AS tip_freq
+FROM
+(
+    SELECT if(tip_amount > 0, 1, 0) as tipped, tip_amount
+    FROM nyctaxidb.fare
+)tc
+GROUP BY tipped;
+```
 
 Na příkazovém řádku adresáře podregistru spusťte příkaz:
 
-    hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
+```console
+hive -f "C:\temp\sample_hive_tipped_frequencies.hql"
+```
 
 
 ### <a name="exploration-class-distributions-in-the-multiclass-setting"></a>Průzkum: distribuce tříd v nastavení více tříd
@@ -492,20 +577,24 @@ Na příkazovém řádku adresáře podregistru spusťte příkaz:
 
 V případě problému s více třídami, který je popsaný v části [příklady úkolů předpovědi](hive-walkthrough.md#mltasks) , se tato datová sada také přímo zaplní do přirozené klasifikace pro předpověď množství předaných tipů. K definování rozsahů tipů v dotazu můžeme použít přihrádky. Chcete-li získat distribuce tříd pro různé rozsahy tipů, použijte soubor ** \_ \_ \_ \_ . HQL s ukázkovým koncem podregistru** . Tady je jeho obsah.
 
-    SELECT tip_class, COUNT(*) AS tip_freq
-    FROM
-    (
-        SELECT if(tip_amount=0, 0,
-            if(tip_amount>0 and tip_amount<=5, 1,
-            if(tip_amount>5 and tip_amount<=10, 2,
-            if(tip_amount>10 and tip_amount<=20, 3, 4)))) as tip_class, tip_amount
-        FROM nyctaxidb.fare
-    )tc
-    GROUP BY tip_class;
+```hiveql
+SELECT tip_class, COUNT(*) AS tip_freq
+FROM
+(
+    SELECT if(tip_amount=0, 0,
+        if(tip_amount>0 and tip_amount<=5, 1,
+        if(tip_amount>5 and tip_amount<=10, 2,
+        if(tip_amount>10 and tip_amount<=20, 3, 4)))) as tip_class, tip_amount
+    FROM nyctaxidb.fare
+)tc
+GROUP BY tip_class;
+```
 
 Z konzoly příkazového řádku Hadoop spusťte následující příkaz:
 
-    hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
+```console
+hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
+```
 
 ### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>Průzkum: výpočet přímé vzdálenosti mezi dvěma zeměpisnou šířkou a místy Zeměpisná šířka
 > [!NOTE]
@@ -517,24 +606,26 @@ Možná budete chtít zjistit, jestli existuje rozdíl mezi přímou vzdálenost
 
 Pokud chcete zobrazit srovnání mezi skutečnou délkou cest a [Haversine vzdáleností](https://en.wikipedia.org/wiki/Haversine_formula) mezi dvěma zeměpisnou délkou (vzdálenost "skvělého kruhu"), můžete použít trigonometrické funkce dostupné v rámci podregistru:
 
-    set R=3959;
-    set pi=radians(180);
+```hiveql
+set R=3959;
+set pi=radians(180);
 
-    insert overwrite directory 'wasb:///queryoutputdir'
+insert overwrite directory 'wasb:///queryoutputdir'
 
-    select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
-    ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-     *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
-     *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
-     /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
-     +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
-     pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance
-    from nyctaxidb.trip
-    where month=1
-    and pickup_longitude between -90 and -30
-    and pickup_latitude between 30 and 90
-    and dropoff_longitude between -90 and -30
-    and dropoff_latitude between 30 and 90;
+select pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude, trip_distance, trip_time_in_secs,
+${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+ *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+ *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+ /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
+ +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*
+ pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance
+from nyctaxidb.trip
+where month=1
+and pickup_longitude between -90 and -30
+and pickup_latitude between 30 and 90
+and dropoff_longitude between -90 and -30
+and dropoff_latitude between 30 and 90;
+```
 
 V předchozím dotazu R je poloměr země zeminy v mílích a PI je převedena na radiány. Zeměpisná délka – Zeměpisná šířka se filtruje tak, aby se odebraly hodnoty, které jsou daleko z oblasti NYC.
 
@@ -542,20 +633,25 @@ V tomto případě zapíšeme výsledky do adresáře s názvem **queryoutputdir
 
 Na příkazovém řádku adresáře podregistru spusťte příkaz:
 
-    hdfs dfs -mkdir wasb:///queryoutputdir
+```hiveql
+hdfs dfs -mkdir wasb:///queryoutputdir
 
-    hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
-
+hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
+```
 
 Výsledky dotazu jsou zapisovány do devíti objektů blob Azure (**queryoutputdir/000000 \_ 0** do **queryoutputdir/000008 \_ 0**) ve výchozím kontejneru clusteru Hadoop.
 
 Chcete-li zobrazit velikost jednotlivých objektů blob, spusťte následující příkaz na příkazovém řádku adresáře podregistr:
 
-    hdfs dfs -ls wasb:///queryoutputdir
+```hiveql
+hdfs dfs -ls wasb:///queryoutputdir
+```
 
 Pokud chcete zobrazit obsah daného souboru, řekněme, že **000000 \_ 0**, použijte příkaz Hadoop `copyToLocal` .
 
-    hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
+```hiveql
+hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
+```
 
 > [!WARNING]
 > `copyToLocal`může být u velkých souborů velmi pomalé a nedoporučuje se je používat s nimi.  
@@ -588,130 +684,134 @@ Dotaz pak vyvzorkuje data, aby se výsledky dotazu vešly na Azure Machine Learn
 
 Tady je obsah **ukázkového \_ podregistru \_ připravo \_ pro \_ AML \_ úplný soubor. HQL** , který připraví data pro sestavování modelu v Machine Learning:
 
-        set R = 3959;
-        set pi=radians(180);
+```hiveql
+set R = 3959;
+set pi=radians(180);
 
-        create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
+create table if not exists nyctaxidb.nyctaxi_downsampled_dataset (
 
-        medallion string,
-        hack_license string,
-        vendor_id string,
-        rate_code string,
-        store_and_fwd_flag string,
-        pickup_datetime string,
-        dropoff_datetime string,
-        pickup_hour string,
-        pickup_week string,
-        weekday string,
-        passenger_count int,
-        trip_time_in_secs double,
-        trip_distance double,
-        pickup_longitude double,
-        pickup_latitude double,
-        dropoff_longitude double,
-        dropoff_latitude double,
-        direct_distance double,
-        payment_type string,
-        fare_amount double,
-        surcharge double,
-        mta_tax double,
-        tip_amount double,
-        tolls_amount double,
-        total_amount double,
-        tipped string,
-        tip_class string
-        )
-        row format delimited fields terminated by ','
-        lines terminated by '\n'
-        stored as textfile;
+medallion string,
+hack_license string,
+vendor_id string,
+rate_code string,
+store_and_fwd_flag string,
+pickup_datetime string,
+dropoff_datetime string,
+pickup_hour string,
+pickup_week string,
+weekday string,
+passenger_count int,
+trip_time_in_secs double,
+trip_distance double,
+pickup_longitude double,
+pickup_latitude double,
+dropoff_longitude double,
+dropoff_latitude double,
+direct_distance double,
+payment_type string,
+fare_amount double,
+surcharge double,
+mta_tax double,
+tip_amount double,
+tolls_amount double,
+total_amount double,
+tipped string,
+tip_class string
+)
+row format delimited fields terminated by ','
+lines terminated by '\n'
+stored as textfile;
 
-        --- now insert contents of the join into the above internal table
+--- now insert contents of the join into the above internal table
 
-        insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
-        select
-        t.medallion,
-        t.hack_license,
-        t.vendor_id,
-        t.rate_code,
-        t.store_and_fwd_flag,
-        t.pickup_datetime,
-        t.dropoff_datetime,
-        hour(t.pickup_datetime) as pickup_hour,
-        weekofyear(t.pickup_datetime) as pickup_week,
-        from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
-        t.passenger_count,
-        t.trip_time_in_secs,
-        t.trip_distance,
-        t.pickup_longitude,
-        t.pickup_latitude,
-        t.dropoff_longitude,
-        t.dropoff_latitude,
-        t.direct_distance,
-        f.payment_type,
-        f.fare_amount,
-        f.surcharge,
-        f.mta_tax,
-        f.tip_amount,
-        f.tolls_amount,
-        f.total_amount,
-        if(tip_amount>0,1,0) as tipped,
-        if(tip_amount=0,0,
-        if(tip_amount>0 and tip_amount<=5,1,
-        if(tip_amount>5 and tip_amount<=10,2,
-        if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
+insert overwrite table nyctaxidb.nyctaxi_downsampled_dataset
+select
+t.medallion,
+t.hack_license,
+t.vendor_id,
+t.rate_code,
+t.store_and_fwd_flag,
+t.pickup_datetime,
+t.dropoff_datetime,
+hour(t.pickup_datetime) as pickup_hour,
+weekofyear(t.pickup_datetime) as pickup_week,
+from_unixtime(unix_timestamp(t.pickup_datetime, 'yyyy-MM-dd HH:mm:ss'),'u') as weekday,
+t.passenger_count,
+t.trip_time_in_secs,
+t.trip_distance,
+t.pickup_longitude,
+t.pickup_latitude,
+t.dropoff_longitude,
+t.dropoff_latitude,
+t.direct_distance,
+f.payment_type,
+f.fare_amount,
+f.surcharge,
+f.mta_tax,
+f.tip_amount,
+f.tolls_amount,
+f.total_amount,
+if(tip_amount>0,1,0) as tipped,
+if(tip_amount=0,0,
+if(tip_amount>0 and tip_amount<=5,1,
+if(tip_amount>5 and tip_amount<=10,2,
+if(tip_amount>10 and tip_amount<=20,3,4)))) as tip_class
 
-        from
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        rate_code,
-        store_and_fwd_flag,
-        pickup_datetime,
-        dropoff_datetime,
-        passenger_count,
-        trip_time_in_secs,
-        trip_distance,
-        pickup_longitude,
-        pickup_latitude,
-        dropoff_longitude,
-        dropoff_latitude,
-        ${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
-        *${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
-        *cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
-        /sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
-        +cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance,
-        rand() as sample_key
+from
+(
+select
+medallion,
+hack_license,
+vendor_id,
+rate_code,
+store_and_fwd_flag,
+pickup_datetime,
+dropoff_datetime,
+passenger_count,
+trip_time_in_secs,
+trip_distance,
+pickup_longitude,
+pickup_latitude,
+dropoff_longitude,
+dropoff_latitude,
+${hiveconf:R}*2*2*atan((1-sqrt(1-pow(sin((dropoff_latitude-pickup_latitude)
+*${hiveconf:pi}/180/2),2)-cos(pickup_latitude*${hiveconf:pi}/180)
+*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2)))
+/sqrt(pow(sin((dropoff_latitude-pickup_latitude)*${hiveconf:pi}/180/2),2)
++cos(pickup_latitude*${hiveconf:pi}/180)*cos(dropoff_latitude*${hiveconf:pi}/180)*pow(sin((dropoff_longitude-pickup_longitude)*${hiveconf:pi}/180/2),2))) as direct_distance,
+rand() as sample_key
 
-        from nyctaxidb.trip
-        where pickup_latitude between 30 and 90
-            and pickup_longitude between -90 and -30
-            and dropoff_latitude between 30 and 90
-            and dropoff_longitude between -90 and -30
-        )t
-        join
-        (
-        select
-        medallion,
-        hack_license,
-        vendor_id,
-        pickup_datetime,
-        payment_type,
-        fare_amount,
-        surcharge,
-        mta_tax,
-        tip_amount,
-        tolls_amount,
-        total_amount
-        from nyctaxidb.fare
-        )f
-        on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
-        where t.sample_key<=0.01
+from nyctaxidb.trip
+where pickup_latitude between 30 and 90
+    and pickup_longitude between -90 and -30
+    and dropoff_latitude between 30 and 90
+    and dropoff_longitude between -90 and -30
+)t
+join
+(
+select
+medallion,
+hack_license,
+vendor_id,
+pickup_datetime,
+payment_type,
+fare_amount,
+surcharge,
+mta_tax,
+tip_amount,
+tolls_amount,
+total_amount
+from nyctaxidb.fare
+)f
+on t.medallion=f.medallion and t.hack_license=f.hack_license and t.pickup_datetime=f.pickup_datetime
+where t.sample_key<=0.01
+```
 
 Chcete-li spustit tento dotaz z adresáře podregistr:
 
-    hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
+```console
+hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
+```
 
 Teď máme interní tabulku **nyctaxidb. nyctaxi_downsampled_dataset**, ke které se dá dostat pomocí modulu [Import dat][import-data] z Machine Learning. Kromě toho můžeme použít tuto datovou sadu pro vytváření Machine Learningch modelů.  
 
@@ -739,7 +839,9 @@ Zde jsou některé podrobnosti o modulu [Import dat][import-data] a parametry, k
 
 Zde je postup určení, zda je tabulka **T** v databázi **D. DB** interní tabulkou. Na příkazovém řádku adresáře podregistru spusťte následující příkaz:
 
-    hdfs dfs -ls wasb:///D.db/T
+```hiveql
+hdfs dfs -ls wasb:///D.db/T
+```
 
 Pokud je tabulka interní tabulkou a je naplněná, její obsah se musí zobrazit tady.
 

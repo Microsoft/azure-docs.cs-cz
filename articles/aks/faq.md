@@ -3,11 +3,12 @@ title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300922"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275712"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -136,7 +137,7 @@ Uzly agenta AKS se účtují jako standardní virtuální počítače Azure, tak
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Můžu svůj cluster přesunout nebo migrovat mezi klienty Azure?
 
-`az aks update-credentials`Příkaz se dá použít k přesunutí clusteru AKS mezi klienty Azure. Postupujte podle pokynů v části [Zvolte možnost aktualizovat nebo vytvořit instanční objekt](https://docs.microsoft.com/azure/aks/update-credentials) a pak [aktualizujte cluster AKS pomocí nových přihlašovacích údajů](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
+`az aks update-credentials`Příkaz se dá použít k přesunutí clusteru AKS mezi klienty Azure. Postupujte podle pokynů v části [Zvolte možnost aktualizovat nebo vytvořit instanční objekt](./update-credentials.md) a pak [aktualizujte cluster AKS pomocí nových přihlašovacích údajů](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Můžu cluster přesunout/migrovat mezi předplatnými?
 
@@ -144,7 +145,11 @@ Přesun clusterů mezi předplatnými není aktuálně podporován.
 
 ## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Můžu svoje clustery AKS přesunout z aktuálního předplatného Azure do jiného? 
 
-Přesunutí clusteru AKS a přidružené prostředky mezi předplatnými Azure se nepodporuje.
+Přesunutí clusteru AKS a jeho přidružených prostředků mezi předplatnými Azure se nepodporuje.
+
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>Můžu svůj cluster AKS nebo prostředky infrastruktury AKS přesunout do jiných skupin prostředků nebo je přejmenovat?
+
+Přesunutí nebo přejmenování clusteru AKS a jeho přidružených prostředků se nepodporuje.
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>Proč je můj cluster trvá tak dlouho? 
 
@@ -164,11 +169,11 @@ Nejčastěji to je způsobeno tím, že uživatelé, kteří mají jednu nebo v�
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Spustil (a) jsem upgrade, ale teď jsou moje lusky v cyklech havárií a testy připravenosti selžou?
 
-Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
+Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](./kubernetes-service-principal.md) a [přihlašovací údaje pro AKS aktualizace](./update-credentials.md).
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Můj cluster fungoval, ale náhle nedokáže zřídit LoadBalancers, připojení PVC atd.? 
 
-Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
+Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](./kubernetes-service-principal.md) a [přihlašovací údaje pro AKS aktualizace](./update-credentials.md).
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Můžu použít rozhraní API sady škálování pro virtuální počítače k ručnímu škálování?
 
@@ -189,9 +194,9 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
-[aks-cluster-autoscale]: ./autoscaler.md
+[aks-cluster-autoscale]: ./cluster-autoscaler.md
 [aks-advanced-networking]: ./configure-azure-cni.md
-[aks-rbac-aad]: ./azure-ad-integration.md
+[aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create

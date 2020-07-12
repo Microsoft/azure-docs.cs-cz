@@ -1,5 +1,5 @@
 ---
-title: Použití synapse studia (Preview)
+title: 'Rychlý Start: použití synapse studia'
 description: V tomto rychlém startu uvidíte a naučíte se, jak snadné je dotazování různých typů souborů pomocí synapse studia.
 services: synapse-analytics
 author: jovanpop-msft
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 182c6a20af51508c357079b9542b2bda695fdae4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658565"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276052"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Rychlý Start: použití synapse Studio (Preview)
 
@@ -24,17 +24,17 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [Vytvořte pracovní prostor Azure synapse a přidružený účet úložiště](quickstart-create-workspace.md).
 
-## <a name="launch-synapse-studio"></a>Spustit synapse Studio
+## <a name="launch-synapse-studio"></a>Spuštění funkce Synapse Studio
 
 V pracovním prostoru Azure synapse v Azure Portal klikněte na **Spustit synapse Studio**.
 
-![Spustit synapse Studio](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
+![Spuštění funkce Synapse Studio](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
 
 Alternativně můžete spustit synapse Studio kliknutím na [Azure synapse Analytics](https://web.azuresynapse.net) a zadáním příslušného tenanta, předplatného a hodnot pracovního prostoru.
 

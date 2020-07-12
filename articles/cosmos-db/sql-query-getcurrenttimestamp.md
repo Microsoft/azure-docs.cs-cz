@@ -4,18 +4,19 @@ description: Přečtěte si o GetCurrentTimestamp funkcí SQL systému v Azure C
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 07/09/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b816c63da56025fe6e9cbaece2cde5dcd01585d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c35f83ce7a9a478f706e9ed560d884d9bf5e508
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71351010"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261296"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
- Vrátí počet milisekund, které uplynuly od 00:00:00 ve čtvrtek, 1. ledna 1970. 
+
+ Vrátí počet milisekund, které uplynuly od 00:00:00 ve čtvrtek, 1. ledna 1970.
   
 ## <a name="syntax"></a>Syntax
   

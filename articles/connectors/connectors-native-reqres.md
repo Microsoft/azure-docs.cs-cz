@@ -7,11 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325129"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261371"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
@@ -23,9 +24,9 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované 
 
 * Přijímat a reagovat na volání HTTPS z jiné aplikace logiky.
 
-Aktivační událost žádosti podporuje [Azure Active Directory otevřené ověřování](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) pro autorizaci příchozích volání do vaší aplikace logiky. Další informace o povolení tohoto ověřování najdete v tématu [zabezpečený přístup a data v Azure Logic Apps – povolení ověřování Azure AD OAuth](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+Aktivační událost žádosti podporuje [Azure Active Directory otevřené ověřování](/azure/active-directory/develop/) (Azure AD OAuth) pro autorizaci příchozích volání do vaší aplikace logiky. Další informace o povolení tohoto ověřování najdete v tématu [zabezpečený přístup a data v Azure Logic Apps – povolení ověřování Azure AD OAuth](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, můžete si [zaregistrovat bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -61,7 +62,7 @@ Aktivační událost žádosti podporuje [Azure Active Directory otevřené ově
 
 Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, který může přijímat *jenom* příchozí požadavky HTTPS. Když dojde k této události, Trigger se aktivuje a spustí aplikaci logiky. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v tématu [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [pracovní postupy volání, triggeru nebo vnoření do koncových bodů HTTPS v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
+1. Přihlaste se na portál [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
 1. Po otevření návrháře aplikace logiky zadejte do vyhledávacího pole `http request` jako filtr. V seznamu triggery vyberte aktivační událost **při přijetí požadavku HTTP** , což je první krok v pracovním postupu aplikace logiky.
 
@@ -156,7 +157,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
          "account": {
             "name": "Contoso",
             "ID": "12345",
-            "address": { 
+            "address": {
                "number": "1234",
                "street": "Anywhere Street",
                "city": "AnyTown",
@@ -171,9 +172,9 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 1. Chcete-li ověřit, zda příchozí volání obsahuje text žádosti, který odpovídá zadanému schématu, postupujte podle těchto kroků:
 
    1. V záhlaví triggeru žádosti vyberte tlačítko se třemi tečkami (**...**).
-   
+
    1. V nastavení triggeru zapněte **ověřování schématu**a vyberte **Hotovo**.
-   
+
       Pokud text požadavku na příchozí volání neodpovídá vašemu schématu, aktivační událost vrátí `HTTP 400 Bad Request` chybu.
 
 1. Chcete-li zadat další vlastnosti, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.
@@ -217,7 +218,7 @@ Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto 
 
 Zde jsou další informace o výstupech z triggeru požadavku:
 
-| Název vlastnosti JSON | Datový typ | Description |
+| Název vlastnosti JSON | Datový typ | Popis |
 |--------------------|-----------|-------------|
 | `headers` | Objekt | Objekt JSON, který popisuje hlavičky z požadavku |
 | `body` | Objekt | Objekt JSON, který popisuje obsah těla žádosti |
@@ -258,7 +259,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [
 
    Aktivační událost žádosti je v tomto příkladu sbalená pro zjednodušení.
 
-1. Přidejte všechny hodnoty, které jsou požadovány pro zprávu odpovědi. 
+1. Přidejte všechny hodnoty, které jsou požadovány pro zprávu odpovědi.
 
    V některých polích se kliknutím do příslušných polí otevře seznam dynamického obsahu. Pak můžete vybrat tokeny, které reprezentují dostupné výstupy z předchozích kroků v pracovním postupu. Vlastnosti ze schématu zadaného v předchozím příkladu se nyní zobrazí v seznamu dynamického obsahu.
 
@@ -270,7 +271,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [
 
    ![Záhlaví – přepnout na textové zobrazení](./media/connectors-native-reqres/switch-to-text-view.png)
 
-   Zde jsou další informace o vlastnostech, které lze nastavit v akci reakce. 
+   Zde jsou další informace o vlastnostech, které lze nastavit v akci reakce.
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
@@ -281,7 +282,7 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [
 
 1. Chcete-li zadat další vlastnosti, jako je například schéma JSON pro tělo odpovědi, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.
 
-1. Až budete hotovi, uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**. 
+1. Až budete hotovi, uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
 

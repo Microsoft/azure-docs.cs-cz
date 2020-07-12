@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc05722ee79f72b2931cb1fa6106f742c5bc0e15
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81677606"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274199"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – použití clusteru Azure HDInsight Hadoop s datovou sadou 1 TB
 
@@ -36,10 +37,11 @@ Sloupce jsou anonymity a používají řadu výčtových názvů: "Sloupec1" (pr
 
 Tady je výňatek z prvních 20 sloupců dvou pozorování (řádků) z této datové sady:
 
-    Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20
-
-    0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb
-    0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb
+> `Col1    Col2    Col3    Col4    Col5    Col6    Col7    Col8    Col9    Col10    Col11    Col12    Col13    Col14    Col15            Col16            Col17            Col18            Col19        Col20`
+>
+> `0       40      42      2       54      3       0       0       2       16      0       1       4448    4       1acfe1ee        1b2ff61f        2e8b2631        6faef306        c6fc10d3    6fcd6dcb`
+>
+> `0               24              27      5               0       2       1               3       10064           9a8cb066        7a06385f        417e6103        2170fc56        acf676aa    6fcd6dcb`
 
 V číselném i kategorií sloupci v této datové sadě chybí hodnoty. Je popsána jednoduchá metoda pro zpracování chybějících hodnot. Další podrobnosti o datech se procházejí při jejich ukládání do tabulek podregistru.
 
@@ -99,7 +101,9 @@ Nyní jste nastavili a připraveni začít první část návodu: zkoumání dat
 ## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a>Vytvoření databáze a tabulek podregistru
 Chcete-li vytvořit tabulky podregistru pro naši datovou sadu Criteo, otevřete ***příkazový řádek Hadoop*** na ploše hlavního uzlu a zadejte adresář podregistru zadáním příkazu.
 
-    cd %hive_home%\bin
+```console
+cd %hive_home%\bin
+```
 
 > [!NOTE]
 > Spustí všechny příkazy podregistru v tomto návodu z adresáře bin/adresáře podadresáře. To má za starosti jakékoli problémy s cestou. Můžete použít výrazy "výzva ke složce adresáře pro podregistr", "bin podadresáře/adresář" a "příkazový řádek Hadoop" se zaměnit.
@@ -107,8 +111,8 @@ Chcete-li vytvořit tabulky podregistru pro naši datovou sadu Criteo, otevřete
 > [!NOTE]
 > K provedení jakéhokoli dotazu na podregistr může jeden z nich vždy použít následující příkazy:
 >
->        cd %hive_home%\bin
->        hive
+> `cd %hive_home%\bin`
+> `hive`
 
 Po zobrazení podregistru se REPL s označením "podregistr >", jednoduše vyvyjměte a vložte dotaz, který chcete spustit.
 
@@ -122,34 +126,36 @@ Rozdělte testovací sadu do dvou různých tabulek, protože jeden ze dnů je s
 
 Ukázka skriptu [&#95;podregistr&#95;create&#95;criteo&#95;database&#95;a&#95;Tables.](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql) pro usnadnění práce se tady zobrazí HQL:
 
-    CREATE DATABASE IF NOT EXISTS criteo;
-    DROP TABLE IF EXISTS criteo.criteo_count;
-    CREATE TABLE criteo.criteo_count (
-    col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-    LINES TERMINATED BY '\n'
-    STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/count';
+```hiveql
+CREATE DATABASE IF NOT EXISTS criteo;
+DROP TABLE IF EXISTS criteo.criteo_count;
+CREATE TABLE criteo.criteo_count (
+col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/count';
 
-    DROP TABLE IF EXISTS criteo.criteo_train;
-    CREATE TABLE criteo.criteo_train (
-    col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-    LINES TERMINATED BY '\n'
-    STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/train';
+DROP TABLE IF EXISTS criteo.criteo_train;
+CREATE TABLE criteo.criteo_train (
+col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/train';
 
-    DROP TABLE IF EXISTS criteo.criteo_test_day_22;
-    CREATE TABLE criteo.criteo_test_day_22 (
-    col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-    LINES TERMINATED BY '\n'
-    STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/test/day_22';
+DROP TABLE IF EXISTS criteo.criteo_test_day_22;
+CREATE TABLE criteo.criteo_test_day_22 (
+col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/test/day_22';
 
-    DROP TABLE IF EXISTS criteo.criteo_test_day_23;
-    CREATE TABLE criteo.criteo_test_day_23 (
-    col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-    LINES TERMINATED BY '\n'
-    STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/test/day_23';
+DROP TABLE IF EXISTS criteo.criteo_test_day_23;
+CREATE TABLE criteo.criteo_test_day_23 (
+col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/test/day_23';
+```
 
 Všechny tyto tabulky jsou externí, takže můžete odkazovat na jejich umístění Azure Blob Storage (wasb).
 
@@ -157,38 +163,50 @@ Všechny tyto tabulky jsou externí, takže můžete odkazovat na jejich umíst�
 
 * **Pomocí příkazového řádku REPL podregistru**: první z nich je vydání příkazu "podregistr" a zkopírování a vložení dotazu do podregistru REPL příkazového řádku:
 
-        cd %hive_home%\bin
-        hive
+  ```console
+  cd %hive_home%\bin
+  hive
+  ```
 
      Nyní na příkazovém řádku REPL provede vyjmutí a vložení dotazu.
 * **Ukládání dotazů do souboru a spuštění příkazu**: druhý postup uloží dotazy do souboru. HQL ([vzorový&#95;podregistr&#95;create&#95;criteo&#95;database&#95;a&#95;Tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)) a potom pro spuštění dotazu vydejte následující příkaz:
 
-        hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
+  ```console
+  hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
+  ```
 
 ### <a name="confirm-database-and-table-creation"></a>Potvrdit vytvoření databáze a tabulky
 Dále potvrďte vytvoření databáze pomocí následujícího příkazu z přihrádky podadresáře/adresáře pro podregistr:
 
-        hive -e "show databases;"
+```console
+hive -e "show databases;"
+```
 
 To poskytuje:
 
-        criteo
-        default
-        Time taken: 1.25 seconds, Fetched: 2 row(s)
+```output
+criteo
+default
+Time taken: 1.25 seconds, Fetched: 2 row(s)
+```
 
 Tím se potvrdí vytvoření nové databáze "Criteo".
 
 Chcete-li zjistit, které tabulky byly vytvořeny, jednoduše vydejte příkaz z přihrádky/adresáře podregistru:
 
-        hive -e "show tables in criteo;"
+```output
+hive -e "show tables in criteo;"
+```
 
 Měl by se zobrazit následující výstup:
 
-        criteo_count
-        criteo_test_day_22
-        criteo_test_day_23
-        criteo_train
-        Time taken: 1.437 seconds, Fetched: 4 row(s)
+```ouput
+criteo_count
+criteo_test_day_22
+criteo_test_day_23
+criteo_train
+Time taken: 1.437 seconds, Fetched: 4 row(s)
+```
 
 ## <a name="data-exploration-in-hive"></a><a name="exploration"></a>Zkoumání dat v podregistru
 Nyní jste připraveni provést některé základní zkoumání dat v podregistru. Začnete tím, že počítáte počet příkladů v tabulkách vlakových a testovacích dat.
@@ -196,126 +214,162 @@ Nyní jste připraveni provést některé základní zkoumání dat v podregistr
 ### <a name="number-of-train-examples"></a>Počet příkladů vlaků
 Obsah [ukázkového&#95;podregistru&#95;count&#95;vlak&#95;table&#95;Examples. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_train_table_examples.hql) jsou zde uvedeny:
 
-        SELECT COUNT(*) FROM criteo.criteo_train;
+```hiveql
+SELECT COUNT(*) FROM criteo.criteo_train;
+```
 
 To má za důsledek:
 
-        192215183
-        Time taken: 264.154 seconds, Fetched: 1 row(s)
+```output
+192215183
+Time taken: 264.154 seconds, Fetched: 1 row(s)
+```
 
 Alternativně může následující příkaz vystavit na příkazovém řádku bin nebo adresáře podadresáře:
 
-        hive -f C:\temp\sample_hive_count_criteo_train_table_examples.hql
+```console
+hive -f C:\temp\sample_hive_count_criteo_train_table_examples.hql
+```
 
 ### <a name="number-of-test-examples-in-the-two-test-datasets"></a>Počet příkladů testů v obou testovacích datových sadách
 Nyní spočítá počet příkladů ve dvou testovacích datových sadách. Obsah [ukázkového&#95;podregistru&#95;count&#95;criteo&#95;test&#95;den&#95;22&#95;tabulka&#95;příklady. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_22_table_examples.hql) jsou tady:
 
-        SELECT COUNT(*) FROM criteo.criteo_test_day_22;
+```hiveql
+SELECT COUNT(*) FROM criteo.criteo_test_day_22;
+```
 
 To má za důsledek:
 
-        189747893
-        Time taken: 267.968 seconds, Fetched: 1 row(s)
+```output
+189747893
+Time taken: 267.968 seconds, Fetched: 1 row(s)
+```
 
 V obvyklých případech můžete skript volat také z adresářové přihrádky/adresáře, a to vydáním příkazu:
 
-        hive -f C:\temp\sample_hive_count_criteo_test_day_22_table_examples.hql
+```console
+hive -f C:\temp\sample_hive_count_criteo_test_day_22_table_examples.hql
+```
 
 Nakonec prověřte počet příkladů testů v datové sadě testu na základě dne \_ 23.
 
 Příkaz, který se má udělat, je podobný jako na zobrazené stránce (podívejte se na [vzorový&#95;podregistr&#95;count&#95;criteo&#95;test&#95;den&#95;23&#95;příklady. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
-        SELECT COUNT(*) FROM criteo.criteo_test_day_23;
+```hiveql
+SELECT COUNT(*) FROM criteo.criteo_test_day_23;
+```
 
 To poskytuje:
 
-        178274637
-        Time taken: 253.089 seconds, Fetched: 1 row(s)
+```output
+178274637
+Time taken: 253.089 seconds, Fetched: 1 row(s)
+```
 
 ### <a name="label-distribution-in-the-train-dataset"></a>Distribuce popisků v datové sadě vlaků
 Distribuce popisků v datové sadě vlaků je zajímavá. Pokud to chcete zobrazit, zobrazte obsah [ukázkové&#95;podregistru&#95;criteo&#95;label&#95;&#95;&#95;Table. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_label_distribution_train_table.hql):
 
-        SELECT Col1, COUNT(*) AS CT FROM criteo.criteo_train GROUP BY Col1;
+```hiveql
+SELECT Col1, COUNT(*) AS CT FROM criteo.criteo_train GROUP BY Col1;
+```
 
 To má za důsledek distribuci popisku:
 
-        1       6292903
-        0       185922280
-        Time taken: 459.435 seconds, Fetched: 2 row(s)
+```output
+1       6292903
+0       185922280
+Time taken: 459.435 seconds, Fetched: 2 row(s)
+```
 
 Procentuální hodnota pozitivních popisků je přibližně 3,3% (v souladu s původní datovou sadou).
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Distribuce histogramu některých číselných proměnných v datové sadě vlaků
 \_K zjištění toho, co vypadá, jak se bude distribuce číselných proměnných líbit, můžete použít funkci "s nativním histogramem" v podregistru. Tady je obsah [ukázkového&#95;podregistru&#95;criteo&#95;histogram&#95;numeric. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
 
-        SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
-            (SELECT
-            histogram_numeric(col2, 20) as col2_hist
-            FROM
-            criteo.criteo_train
-            ) a
-            LATERAL VIEW explode(col2_hist) exploded_table as hist;
+```hiveql
+SELECT CAST(hist.x as int) as bin_center, CAST(hist.y as bigint) as bin_height FROM
+    (SELECT
+    histogram_numeric(col2, 20) as col2_hist
+    FROM
+    criteo.criteo_train
+    ) a
+    LATERAL VIEW explode(col2_hist) exploded_table as hist;
+```
 
 To má za důsledek následující:
 
-        26      155878415
-        2606    92753
-        6755    22086
-        11202   6922
-        14432   4163
-        17815   2488
-        21072   1901
-        24113   1283
-        27429   1225
-        30818   906
-        34512   723
-        38026   387
-        41007   290
-        43417   312
-        45797   571
-        49819   428
-        53505   328
-        56853   527
-        61004   160
-        65510   3446
-        Time taken: 317.851 seconds, Fetched: 20 row(s)
+```output
+26      155878415
+2606    92753
+6755    22086
+11202   6922
+14432   4163
+17815   2488
+21072   1901
+24113   1283
+27429   1225
+30818   906
+34512   723
+38026   387
+41007   290
+43417   312
+45797   571
+49819   428
+53505   328
+56853   527
+61004   160
+65510   3446
+Time taken: 317.851 seconds, Fetched: 20 row(s)
+```
 
 Kombinovaný pohled – kombinace v podregistru slouží k vytvoření výstupu podobného SQL namísto normálního seznamu. V této tabulce odpovídá první sloupec centru bin a druhý k frekvenci přihrádek.
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Přibližné percentily některých číselných proměnných v datové sadě vlaků
 Také úroky s číselnými proměnnými je výpočet přibližných percentilů. Pro nás je to v nativním "percentilu" \_ . Obsah [ukázkového&#95;podregistru&#95;criteo&#95;přibližná&#95;percentily. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) jsou:
 
-        SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
+```hiveql
+SELECT MIN(Col2) AS Col2_min, PERCENTILE_APPROX(Col2, 0.1) AS Col2_01, PERCENTILE_APPROX(Col2, 0.3) AS Col2_03, PERCENTILE_APPROX(Col2, 0.5) AS Col2_median, PERCENTILE_APPROX(Col2, 0.8) AS Col2_08, MAX(Col2) AS Col2_max FROM criteo.criteo_train;
+```
 
 To má za důsledek:
 
-        1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
-        Time taken: 564.953 seconds, Fetched: 1 row(s)
+```output
+1.0     2.1418600917169246      2.1418600917169246    6.21887086390288 27.53454893115633       65535.0
+Time taken: 564.953 seconds, Fetched: 1 row(s)
+```
 
 Rozdělení percentilů je úzce spojené s distribucí histogramu libovolné číselné proměnné, obvykle.
 
 ### <a name="find-number-of-unique-values-for-some-categorical-columns-in-the-train-dataset"></a>Najde počet jedinečných hodnot pro některé sloupce kategorií v datové sadě vlaků.
 Pokračování v průzkumu dat, hledání pro některé sloupce kategorií, počet jedinečných hodnot, které přijmou. Provedete to tak, že zobrazíte obsah [ukázkové&#95;podregistr&#95;criteo&#95;jedinečné hodnoty&#95;&#95;categoricals. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_categoricals.hql):
 
-        SELECT COUNT(DISTINCT(Col15)) AS num_uniques FROM criteo.criteo_train;
+```hiveql
+SELECT COUNT(DISTINCT(Col15)) AS num_uniques FROM criteo.criteo_train;
+```
 
 To má za důsledek:
 
-        19011825
-        Time taken: 448.116 seconds, Fetched: 1 row(s)
+```output
+19011825
+Time taken: 448.116 seconds, Fetched: 1 row(s)
+```
 
 Col15 má 19M jedinečné hodnoty! Použití technik Naive jako "jediného horkého kódování" ke kódování těchto kategoriích proměnných není proveditelné. Konkrétně je vysvětleno a ukázáno zejména výkonná a robustní technika [s názvem učení s](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) využitím počtů pro řešení tohoto problému efektivně.
 
 Nakonec se podívejte na počet jedinečných hodnot v některých dalších kategorií sloupcích. Obsah [ukázkového&#95;podregistru&#95;criteo&#95;jedinečné hodnoty&#95;&#95;více&#95;categoricals. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) jsou:
 
-        SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)),
-        COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
-        FROM criteo.criteo_train;
+```hiveql
+SELECT COUNT(DISTINCT(Col16)), COUNT(DISTINCT(Col17)),
+COUNT(DISTINCT(Col18), COUNT(DISTINCT(Col19), COUNT(DISTINCT(Col20))
+FROM criteo.criteo_train;
+```
 
 To má za důsledek:
 
-        30935   15200   7349    20067   3
-        Time taken: 1933.883 seconds, Fetched: 1 row(s)
+```output
+30935   15200   7349    20067   3
+Time taken: 1933.883 seconds, Fetched: 1 row(s)
+```
 
 Znovu si všimněte, že kromě Col20 mají všechny ostatní sloupce mnoho jedinečných hodnot.
 
@@ -323,80 +377,95 @@ Znovu si všimněte, že kromě Col20 mají všechny ostatní sloupce mnoho jedi
 
 Počet distribucí párů kategorií proměnných je také zajímavá. To se dá určit pomocí kódu v [ukázce&#95;podregistr&#95;criteo&#95;spárovaných&#95;kategorií&#95;Counts. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql):
 
-        SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
+```hiveql
+SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
+```
 
 V tomto případě změňte pořadí počtů podle jejich výskytu a v tomto případě se podívejte na prvních 15. To nám umožní:
 
-        ad98e872        cea68cd3        8964458
-        ad98e872        3dbb483e        8444762
-        ad98e872        43ced263        3082503
-        ad98e872        420acc05        2694489
-        ad98e872        ac4c5591        2559535
-        ad98e872        fb1e95da        2227216
-        ad98e872        8af1edc8        1794955
-        ad98e872        e56937ee        1643550
-        ad98e872        d1fade1c        1348719
-        ad98e872        977b4431        1115528
-        e5f3fd8d        a15d1051        959252
-        ad98e872        dd86c04a        872975
-        349b3fec        a52ef97d        821062
-        e5f3fd8d        a0aaffa6        792250
-        265366bf        6f5c7c41        782142
-        Time taken: 560.22 seconds, Fetched: 15 row(s)
+```output
+ad98e872        cea68cd3        8964458
+ad98e872        3dbb483e        8444762
+ad98e872        43ced263        3082503
+ad98e872        420acc05        2694489
+ad98e872        ac4c5591        2559535
+ad98e872        fb1e95da        2227216
+ad98e872        8af1edc8        1794955
+ad98e872        e56937ee        1643550
+ad98e872        d1fade1c        1348719
+ad98e872        977b4431        1115528
+e5f3fd8d        a15d1051        959252
+ad98e872        dd86c04a        872975
+349b3fec        a52ef97d        821062
+e5f3fd8d        a0aaffa6        792250
+265366bf        6f5c7c41        782142
+Time taken: 560.22 seconds, Fetched: 15 row(s)
+```
 
 ## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a>Debrat ukázku datových sad pro Azure Machine Learning
 Po prozkoumání datových sad a demonstrace toho, jak tento typ průzkumu provést pro jakékoli proměnné (včetně kombinací), vypište vzorek datových sad tak, aby bylo možné sestavit modely v Azure Machine Learning. Zajistěte, aby se při výběru problému objevila tato: předána sada ukázkových atributů (hodnoty funkcí z col2-Col40), předpověď, pokud je hodnota Sloupec1 0 (žádné kliknutí), nebo 1 (klikněte).
 
 Chcete-li vzorkovat sadu vlakových a testovacích datových sad na 1% původní velikosti, použijte funkci Native RAND () podregistru. Další skript, [ukázkový&#95;podregistr&#95;criteo&#95;převzorkovat&#95;vlak&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql) pro datovou sadu vlaků:
 
-        CREATE TABLE criteo.criteo_train_downsample_1perc (
-        col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-        LINES TERMINATED BY '\n'
-        STORED AS TEXTFILE;
+```hiveql
+CREATE TABLE criteo.criteo_train_downsample_1perc (
+col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
 
-        ---Now downsample and store in this table
+---Now downsample and store in this table
 
-        INSERT OVERWRITE TABLE criteo.criteo_train_downsample_1perc SELECT * FROM criteo.criteo_train WHERE RAND() <= 0.01;
+INSERT OVERWRITE TABLE criteo.criteo_train_downsample_1perc SELECT * FROM criteo.criteo_train WHERE RAND() <= 0.01;
+```
 
 To má za důsledek:
 
-        Time taken: 12.22 seconds
-        Time taken: 298.98 seconds
+```output
+Time taken: 12.22 seconds
+Time taken: 298.98 seconds
+```
 
 Ukázkový skript [&#95;podregistr&#95;criteo&#95;převzorkovat&#95;test&#95;den&#95;22&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_22_dataset.hql) provede pro testovací data, den \_ 22:
 
-        --- Now for test data (day_22)
+```hiveql
+--- Now for test data (day_22)
 
-        CREATE TABLE criteo.criteo_test_day_22_downsample_1perc (
-        col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-        LINES TERMINATED BY '\n'
-        STORED AS TEXTFILE;
+CREATE TABLE criteo.criteo_test_day_22_downsample_1perc (
+col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
 
-        INSERT OVERWRITE TABLE criteo.criteo_test_day_22_downsample_1perc SELECT * FROM criteo.criteo_test_day_22 WHERE RAND() <= 0.01;
+INSERT OVERWRITE TABLE criteo.criteo_test_day_22_downsample_1perc SELECT * FROM criteo.criteo_test_day_22 WHERE RAND() <= 0.01;
+```
 
 To má za důsledek:
 
-        Time taken: 1.22 seconds
-        Time taken: 317.66 seconds
-
+```output
+Time taken: 1.22 seconds
+Time taken: 317.66 seconds
+```
 
 Nakonec [ukázkový skript&#95;podregistr&#95;criteo&#95;převzorkovat&#95;test&#95;den&#95;23&#95;DataSet. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_test_day_23_dataset.hql) provede pro testovací data, den \_ 23:
 
-        --- Finally test data day_23
-        CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
-        col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 srical feature; tring)
-        ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
-        LINES TERMINATED BY '\n'
-        STORED AS TEXTFILE;
+```hiveql
+--- Finally test data day_23
+CREATE TABLE criteo.criteo_test_day_23_downsample_1perc (
+col1 string,col2 double,col3 double,col4 double,col5 double,col6 double,col7 double,col8 double,col9 double,col10 double,col11 double,col12 double,col13 double,col14 double,col15 string,col16 string,col17 string,col18 string,col19 string,col20 string,col21 string,col22 string,col23 string,col24 string,col25 string,col26 string,col27 string,col28 string,col29 string,col30 string,col31 string,col32 string,col33 string,col34 string,col35 string,col36 string,col37 string,col38 string,col39 string,col40 srical feature; tring)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
 
-        INSERT OVERWRITE TABLE criteo.criteo_test_day_23_downsample_1perc SELECT * FROM criteo.criteo_test_day_23 WHERE RAND() <= 0.01;
+INSERT OVERWRITE TABLE criteo.criteo_test_day_23_downsample_1perc SELECT * FROM criteo.criteo_test_day_23 WHERE RAND() <= 0.01;
+```
 
 To má za důsledek:
 
-        Time taken: 1.86 seconds
-        Time taken: 300.02 seconds
+```output
+Time taken: 1.86 seconds
+Time taken: 300.02 seconds
+```
 
 Díky tomu jste připraveni k použití našich ukázek výukových a testovacích datových sad pro vytváření modelů v Azure Machine Learning.
 

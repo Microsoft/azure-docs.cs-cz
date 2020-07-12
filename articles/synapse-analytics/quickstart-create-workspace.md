@@ -1,5 +1,5 @@
 ---
-title: Rychlý Start – vytvoření pracovního prostoru synapse
+title: 'Rychlý Start: vytvoření pracovního prostoru synapse'
 description: Pomocí kroků v této příručce vytvořte pracovní prostor synapse.
 services: synapse-analytics
 author: pimorano
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e5896d1eabaf43afcbab7513d7abb0b1de4efe51
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: a069ee40c2db99b05e9620cf83c06c49cc9e29fc
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656703"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274233"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rychlý Start: vytvoření pracovního prostoru synapse
 
@@ -22,13 +22,13 @@ Tento rychlý Start popisuje kroky pro vytvoření pracovního prostoru Azure sy
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Účet úložiště Azure Data Lake Storage Gen2](../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Azure Portal](https://portal.azure.com/)
+Přihlaste se na [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Vytvoření pracovního prostoru Azure synapse pomocí Azure Portal
 

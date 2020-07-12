@@ -1,5 +1,5 @@
 ---
-title: Použití SQL na vyžádání (Preview)
+title: 'Rychlý Start: použití SQL na vyžádání'
 description: V tomto rychlém startu uvidíte a naučíte se, jak se snadno dotazovat na různé typy souborů pomocí SQL na vyžádání (Preview).
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: cbc13695610e8fe190793a7dc925a414f5da2e53
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: fe07192b0077518cdd73092f53342c298034cfa8
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207426"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274165"
 ---
 # <a name="quickstart-use-sql-on-demand"></a>Rychlý Start: použití SQL na vyžádání
 
@@ -22,7 +22,7 @@ Synapse SQL na vyžádání (Preview) je služba pro dotazování bez serveru, k
 
 V tomto rychlém startu se zobrazí dotazování: CSV, Apache Parquet a soubory JSON.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Zvolit klienta SQL pro vydávání dotazů:
 

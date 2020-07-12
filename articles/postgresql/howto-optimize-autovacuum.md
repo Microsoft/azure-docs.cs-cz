@@ -5,18 +5,20 @@ author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 5/6/2019
-ms.openlocfilehash: 9b0e263d3b8bce9e04548f5e8433ff90d2bda274
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/09/2020
+ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116348"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274505"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Optimalizujte autovaku na Azure Database for PostgreSQL – jeden server
+
 Tento článek popisuje, jak efektivně optimalizovat autovaku na Azure Database for PostgreSQL serveru.
 
 ## <a name="overview-of-autovacuum"></a>Přehled autovaku
+
 PostgreSQL využívá řízení souběžnosti více verzí (MVCC) k umožnění větší souběžnosti databáze. Každá aktualizace má za následek, že při vložení a odstranění dojde k odstranění výsledků a při každém odstranění se v řádcích označí, že se má odstranit. Měkké označení identifikuje neaktivní řazené kolekce členů, které budou později vyčištěny. Pro provedení těchto úloh PostgreSQL spustí vakuovou úlohu.
 
 Úlohu vaku lze aktivovat ručně nebo automaticky. V případě, že se v databázi vyskytují operace aktualizovat nebo odstranit, existují další mrtvé řazené kolekce členů. Pokud je databáze nečinná, existuje méně nečinných řazených kolekcí členů. Pokud je zatížení databáze těžké, je potřeba vymezit více, pokud je zatížení databáze velmi *manually* snadné.
@@ -36,6 +38,7 @@ Pokud neurčíte čas do doby od času, může docházet k neaktivním řazeným
 - Zvýšila se vstupně-výstupní operace.
 
 ## <a name="monitor-bloat-with-autovacuum-queries"></a>Monitorování dispozici determinističtější pomocí autovakuických dotazů
+
 Následující vzorový dotaz je navržený tak, aby identifikoval počet neaktivních a živých řazených kolekcí členů v tabulce s názvem XYZ:
 
 ```sql
@@ -43,7 +46,9 @@ SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRa
 ```
 
 ## <a name="autovacuum-configurations"></a>Autovaku – konfigurace
+
 Parametry konfigurace, které ovládají autovaku, jsou založeny na odpovědích dvou klíčových otázek:
+
 - Kdy by měl začít?
 - Kolik byste měli vyčistit po spuštění?
 
@@ -55,10 +60,10 @@ autovacuum_vacuum_threshold|Určuje minimální počet aktualizovaných nebo ods
 autovacuum_vacuum_scale_factor|Určuje zlomek velikosti tabulky, která se má přidat do autovacuum_vacuum_threshold při rozhodování, jestli se má aktivovat vakuová operace. Výchozí hodnota je 0,2, což je 20 procent velikosti tabulky. Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru. Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky.|0.2
 autovacuum_vacuum_cost_limit|Určuje hodnotu limitu nákladů používané při automatickém vakuových operací. Je-li zadána hodnota-1, což je výchozí hodnota, použije se běžná hodnota vacuum_cost_limit. Pokud je k dispozici více než jeden pracovní proces, je hodnota rozdělena mezi běžící pracovní procesy autoformování. Součet omezení pro každý pracovní proces nepřekračuje hodnotu této proměnné. Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru. Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky.|-1
 autovacuum_vacuum_cost_delay|Určuje hodnotu zpoždění nákladů použitou při automatickém vakuových operací. Je-li zadán parametr-1, je použita běžná hodnota vacuum_cost_delay. Výchozí hodnota je 20 milisekund. Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru. Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky.|20 MS
-autovacuum_nap_time|Určuje minimální prodlevu mezi autovakuy spuštěnými na všech daných databázích. V každém zaokrouhlení démon vyhledá databázi a problémy v podtlaku a ANALYZUJe příkazy podle potřeby pro tabulky v této databázi. Zpoždění se měří v sekundách a výchozí hodnota je jedna minuta (1 min). Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru.|15 s
-autovacuum_max_workers|Určuje maximální počet autovakuových procesů, které jsou jiné než spouštěč autovaku, který může běžet kdykoli. Výchozí hodnota je tři. Tento parametr nastavte pouze na serveru Start.|3
+autovacuum_naptime | Určuje minimální prodlevu mezi autovakuy spuštěnými na všech daných databázích. V každém zaokrouhlení démon vyhledá databázi a problémy v podtlaku a ANALYZUJe příkazy podle potřeby pro tabulky v této databázi. Zpoždění se měří v sekundách. Tento parametr nastavte pouze v souboru PostgreSQL. conf nebo na příkazovém řádku serveru.| 15 s
+autovacuum_max_workers | Určuje maximální počet autovakuových procesů, které jsou jiné než spouštěč autovaku, který může běžet kdykoli. Výchozí hodnota je tři. Tento parametr nastavte pouze na serveru Start.|3
 
-Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky. 
+Chcete-li přepsat nastavení pro jednotlivé tabulky, změňte parametry úložiště tabulky.
 
 ## <a name="autovacuum-cost"></a>Autovaku – náklady
 
@@ -82,12 +87,14 @@ Výchozí faktor škálování 20 procent funguje dobře u tabulek s nízkým pr
 Pomocí PostgreSQL můžete nastavit tyto parametry na úrovni tabulky nebo instance. V současné době můžete tyto parametry nastavit na úrovni tabulky pouze v Azure Database for PostgreSQL.
 
 ## <a name="estimate-the-cost-of-autovacuum"></a>Odhad nákladů na autovaku
+
 Spouštění autovaku je "nákladné" "a existují parametry pro řízení běhu vakuových operací. Následující parametry vám pomůžou odhadnout náklady na spuštění vaku:
+
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-Vakuový proces čte fyzické stránky a kontroluje nedoručené řazené kolekce členů. Každá stránka v shared_buffers se považuje za cenu 1 (vacuum_cost_page_hit). Všechny ostatní stránky se považují za ceny 20 (vacuum_cost_page_dirty), pokud existují nedoručené řazené kolekce členů nebo 10 (vacuum_cost_page_miss), pokud žádné neexistují žádné nedoručené řazené kolekce členů. Vakuová operace se zastaví, když proces překročí autovacuum_vacuum_cost_limit. 
+Vakuový proces čte fyzické stránky a kontroluje nedoručené řazené kolekce členů. Každá stránka v shared_buffers se považuje za cenu 1 (vacuum_cost_page_hit). Všechny ostatní stránky se považují za ceny 20 (vacuum_cost_page_dirty), pokud existují nedoručené řazené kolekce členů nebo 10 (vacuum_cost_page_miss), pokud žádné neexistují žádné nedoručené řazené kolekce členů. Vakuová operace se zastaví, když proces překročí autovacuum_vacuum_cost_limit.
 
 Po dosažení limitu proces přejde do režimu spánku po dobu určenou parametrem autovacuum_vacuum_cost_delay před tím, než se znovu spustí. Pokud limit není dosaženo, autovaku začne za hodnotou určenou parametrem autovacuum_nap_time.
 

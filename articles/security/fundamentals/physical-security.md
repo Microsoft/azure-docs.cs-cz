@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 19fd257e76cdf811343f1c1c772fb3646933bb86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd83cd164415f45929049541a8731f80a4ba146d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774050"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273502"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Zařízení, místní a fyzické zabezpečení Azure
 Tento článek popisuje, co Microsoft dělá k zabezpečení infrastruktury Azure.
@@ -29,7 +30,7 @@ Azure se skládá z [globálně distribuované infrastruktury Datacenter](https:
 
 Infrastruktura je navržená tak, aby přiblížila aplikace uživatelům po celém světě, zachovává zaregistrování dat a nabízela zákazníkům komplexní možnosti dodržování předpisů a odolnosti proti chybám. Azure má 58 oblastí po celém světě a je k dispozici ve 140 zemích nebo oblastech.
 
-Oblast je sada datových center, která je propojená pomocí obrovské a odolné sítě. Síť zahrnuje distribuci obsahu, Vyrovnávání zatížení, redundanci a šifrování ve výchozím nastavení. V případě více globálních oblastí než jakýkoli jiný poskytovatel cloudu vám Azure poskytne flexibilitu při nasazování aplikací tam, kde je potřebujete.
+Oblast je sada datových center, která je propojená pomocí obrovské a odolné sítě. Síť zahrnuje distribuci obsahu, Vyrovnávání zatížení, redundanci a [šifrování linkové vrstvy dat ve výchozím nastavení](encryption-overview.md#encryption-of-data-in-transit) pro všechny přenosy Azure v rámci jedné oblasti nebo při cestách mezi oblastmi. V případě více globálních oblastí než jakýkoli jiný poskytovatel cloudu vám Azure poskytne flexibilitu při nasazování aplikací tam, kde je potřebujete.
 
 Oblasti Azure jsou uspořádané do geografických oblastí. Zeměpisná oblast Azure zajišťuje, že se nároky na data, svrchovanost, dodržování předpisů a odolnost proti chybám uplatňují v rámci zeměpisných hranic.
 

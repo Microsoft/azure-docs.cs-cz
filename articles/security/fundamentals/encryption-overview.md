@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005932f4a4be9e4a7bae85a6b380c934de5e9874
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84012972"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276528"
 ---
-# <a name="azure-encryption-overview"></a>Přehled šifrování Azure
+# <a name="azure-encryption-overview"></a>Přehled šifrování v Azure
 
 Tento článek poskytuje přehled o tom, jak se šifrování používá v Microsoft Azure. Pokrývá hlavní oblasti šifrování, včetně šifrování v klidovém umístění, šifrování v letu a správy klíčů pomocí Azure Key Vault. Každá část obsahuje odkazy na podrobnější informace.
 
@@ -116,9 +117,13 @@ K šifrování a dešifrování dat se používají tři typy klíčů: hlavní 
 
 Azure nabízí řadu mechanismů pro zachování privátních dat při jejich přesunu z jednoho umístění do druhého.
 
-### <a name="tlsssl-encryption-in-azure"></a>Šifrování TLS/SSL v Azure
+### <a name="data-link-layer-encryption-in-azure"></a>Šifrování vrstvy pro propojení dat v Azure
 
-Microsoft používá protokol TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) ) k ochraně dat při cestování mezi Cloud Services a zákazníky. Datová centra Microsoftu vyjednávají připojení TLS k klientským systémům, které se připojují ke službám Azure. Protokol TLS zajišťuje silné ověřování, soukromí zpráv a integritu (povolení detekce manipulace, zachycení a padělání zpráv), interoperability, flexibility algoritmů a snadné nasazení a použití.
+Pokaždé, když se pohyb zákazníků Azure pohybuje mezi datovými centry – mimo fyzické hranice, která není řízená Microsoftem (nebo jménem Microsoftu) – šifrovací metoda vrstvy dat pomocí [standardů zabezpečení IEEE 802.1 AE Mac](https://1.ieee802.org/security/802-1ae/) (označované taky jako MACsec) se použije z Point-to-Point v rámci základního síťového hardwaru.  Před odesláním se pakety zašifrují a dešifrují na zařízeních, aby se zabránilo fyzickým útokům typu "man-in-the-middle" nebo "Snoop/wiretapping".  Vzhledem k tomu, že je tato technologie integrovaná na samotném síťovém hardwaru, zajišťuje na síťovém hardwaru přenosovou rychlost při nezvyšování latence spojení.  Toto šifrování MACsec je ve výchozím nastavení zapnuté pro všechny přenosy dat Azure na cestách v rámci oblasti nebo mezi oblastmi a na straně zákazníků není potřeba žádná akce, kterou by bylo možné povolit. 
+
+### <a name="tls-encryption-in-azure"></a>Šifrování TLS v Azure
+
+Společnost Microsoft zákazníkům dává možnost používat protokol TLS ( [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) ) k ochraně dat při cestování mezi cloudovou službou a zákazníky. Datová centra Microsoftu vyjednávají připojení TLS k klientským systémům, které se připojují ke službám Azure. Protokol TLS zajišťuje silné ověřování, soukromí zpráv a integritu (povolení detekce manipulace, zachycení a padělání zpráv), interoperability, flexibility algoritmů a snadné nasazení a použití.
 
 PFS ( [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) ) chrání připojení mezi klientskými systémy zákazníků a cloudovou službou Microsoftu pomocí jedinečných klíčů. Připojení také používají délky šifrovacího klíče 2 048 založeného na šifrování RSA. Tato kombinace usnadňuje uživatelům zachycení a přístup k datům, která se přepravují.
 
@@ -140,7 +145,7 @@ Když je ve výchozím nastavení zapnuté šifrování SMB pro sdílenou složk
 
 ## <a name="in-transit-encryption-in-vms"></a>Šifrování v přenosech na virtuálních počítačích
 
-Data přenášená do, z a mezi virtuálními počítači, které používají systém Windows, jsou v závislosti na povaze připojení šifrována mnoha různými způsoby.
+Data přenášená do, z a mezi virtuálními počítači, které používají systém Windows, lze v závislosti na povaze připojení šifrovat různými způsoby.
 
 ### <a name="rdp-sessions"></a>Relace protokolu RDP
 
@@ -180,7 +185,7 @@ Připojení brány VPN typu Site-to-site můžete použít k připojení místn�
 
 Připojení VPN typu Site-to-site k virtuální síti můžete nakonfigurovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 
-Další informace naleznete v tématech:
+Další informace najdete tady:
 
 [Vytvoření připojení typu Site-to-site v Azure Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 

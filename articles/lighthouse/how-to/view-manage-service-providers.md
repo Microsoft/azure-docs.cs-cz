@@ -1,14 +1,14 @@
 ---
 title: Zobrazení a správa poskytovatelů služeb
 description: Zákazníci mohou pomocí stránky poskytovatelé služeb v Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatele služeb a delegovaných prostředcích.
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 56ba5b8c88cd4653c9d41f7f3fcc6219cc376256
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111622"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273774"
 ---
 # <a name="view-and-manage-service-providers"></a>Zobrazení a správa poskytovatelů služeb
 
@@ -19,7 +19,7 @@ Pro přístup ke stránce **poskytovatelé služeb** v Azure Portal může záka
 > [!NOTE]
 > Aby bylo možné zobrazit stránku **poskytovatelé služeb** , musí mít uživatel v tenantovi zákazníka [vestavěnou roli Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jinou předdefinovanou roli, která zahrnuje přístup ke čtenářům).
 >
-> Chcete-li přidat nabídky, delegovat prostředky a odebrat nabídky, musí mít uživatel [předdefinovanou roli](../../role-based-access-control/built-in-roles.md#owner) pro předplatné.
+> Chcete-li přidat nebo aktualizovat nabídky, delegovat prostředky a odebrat nabídky, musí mít uživatel [předdefinovanou roli](../../role-based-access-control/built-in-roles.md#owner) pro předplatné.
 
 Mějte na paměti, že na stránce **poskytovatelé služeb** se zobrazují jenom informace o poskytovatelích služeb, kteří mají přístup k předplatným zákazníků nebo ke skupinám prostředků prostřednictvím Azure Lighthouse. Pokud zákazník spolupracuje s dalšími poskytovateli služeb, kteří k přístupu k prostředkům zákazníka nepoužívají Azure Lighthouse, informace o těchto poskytovatelích služeb tady nejsou uvedené.
 

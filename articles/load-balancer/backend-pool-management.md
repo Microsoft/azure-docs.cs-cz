@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113968"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273757"
 ---
 # <a name="backend-pool-management"></a>Správa fondu back-endu
 Back-end fond je kritickou součástí nástroje pro vyrovnávání zatížení. Back-end fond definuje skupinu prostředků, které budou obsluhovat provoz pro dané pravidlo vyrovnávání zatížení.
@@ -22,9 +22,9 @@ Existují dva způsoby konfigurace fondu back-endu:
 * Síťová karta (NIC)
 * ID prostředku kombinované IP adresy a Virtual Network (VNET)
 
-Při použití virtuálních počítačů a sady škálování virtuálních počítačů nakonfigurujte back-end fond podle síťových adaptérů. Tato metoda vytváří nejpřímější propojení mezi vaším prostředkem a back-end fondem. 
+Nakonfigurujte svůj fond back-end podle síťových adaptérů při použití existujících virtuálních počítačů a služby Virtual Machine Scale Sets. Tato metoda vytváří nejpřímější propojení mezi vaším prostředkem a back-end fondem. 
 
-Ve scénářích, kdy není k dispozici síťové rozhraní, jako jsou kontejnery nebo Kubernetes lusky, nakonfigurujte svůj fond back-end podle kombinace IP adresy a ID virtuální sítě.
+Při předrozdělování back-endu s rozsahem IP adres, který plánujete později vytvořit virtuální počítače a služby Virtual Machine Scale Sets, nakonfigurujte svůj fond back-end podle kombinace IP adresy a ID virtuální sítě.
 
 Konfigurační oddíly tohoto článku se zaměří na:
 
@@ -249,7 +249,7 @@ Text požadavku JSON:
 Podle tohoto [rychlého startu správce prostředků šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) nasaďte Nástroj pro vyrovnávání zatížení a virtuální počítače a přidejte virtuální počítače do back-endového fondu prostřednictvím síťového rozhraní.
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>Konfigurace fondu back-endu podle IP adresy a virtuální sítě
-Ve scénářích s kontejnery nebo předem vyplněný fond back-end s IP adresami použijte IP a virtuální síť.
+Ve scénářích s předem vyplněnými back-end fondy použijte IP a virtuální síť.
 
 Veškerá správa back-end fondu se provádí přímo na objektu back-end fondu, který je zvýrazněný v níže uvedených příkladech.
 

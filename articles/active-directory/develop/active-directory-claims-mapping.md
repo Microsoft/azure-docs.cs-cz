@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d9c46368b42cac1d06f7d78d5e0d03ad2de0bada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478395"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275389"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -44,7 +44,7 @@ Zásada mapování deklarací identity je typ objektu **zásad** , který mění
 
 Existují určité sady deklarací, které definují, jak a kdy se používají v tokenech.
 
-| Sada deklarací identity | Description |
+| Sada deklarací identity | Popis |
 |---|---|
 | Základní sada deklarací identity | Jsou přítomny v každém tokenu bez ohledu na zásadu. Tyto deklarace jsou také považovány za omezené a nelze je upravit. |
 | Základní sada deklarací identity | Zahrnuje deklarace identity, které jsou ve výchozím nastavení emitované pro tokeny (kromě základní sady deklarací identity). Základní deklarace identity můžete vynechat nebo upravit pomocí zásad mapování deklarací identity. |
@@ -158,7 +158,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | request_nonce |
 | prostředek |
 | role |
-| role |
+| Role |
 | scope |
 | SCP |
 | ID |
@@ -177,7 +177,7 @@ Existují určité sady deklarací, které definují, jak a kdy se používají 
 | unique_name |
 | názvu |
 | user_setting_sync_url |
-| uživatelské jméno |
+| username |
 | identifikátor UTI |
 | ver |
 | verified_primary_email |
@@ -284,7 +284,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabulka 3: platné hodnoty ID na zdroj
 
-| Zdroj | ID | Description |
+| Zdroj | ID | Popis |
 |-----|-----|-----|
 | Uživatel | surname | Název rodiny |
 | Uživatel | givenname | jméno |
@@ -320,10 +320,10 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | extensionattribute15 | Atribut rozšíření 15 |
 | Uživatel | othermail | Jiná pošta |
 | Uživatel | country | Země/oblast |
-| Uživatel | city | Město |
+| Uživatel | city | City (Město) |
 | Uživatel | state | Stav |
 | Uživatel | jobtitle | Název pozice |
-| Uživatel | zaměstnance | Identifikační číslo zaměstnance |
+| Uživatel | zaměstnance | ID zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
 | Uživatel | assignedroles | seznam rolí aplikace přiřazených uživateli|
 | aplikace, prostředek, cílová skupina | DisplayName | Zobrazovaný název |
@@ -359,10 +359,10 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabulka 4: metody transformace a očekávané vstupy a výstupy
 
-|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Description|
+|TransformationMethod|Očekávaný vstup|Očekávaný výstup|Popis|
 |-----|-----|-----|-----|
 |Spojit|řetězec1, řetězec2, oddělovač|outputClaim|Spojí vstupní řetězce pomocí oddělovače mezi. Například: řetězec1: " foo@bar.com ", řetězec2: "Sandbox", oddělovač: "." má za následek outputClaim: " foo@bar.com.sandbox "|
-|ExtractMailPrefix|pošta|outputClaim|Extrahuje místní část e-mailové adresy. Například: mail: " foo@bar.com " má za následek outputClaim: "foo". Pokud \@ není k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
+|ExtractMailPrefix|e-mail nebo hlavní název uživatele|UPN|ExtensionAttributes 1-15 nebo jiná rozšíření schématu, která pro uživatele ukládají hodnotu hlavního názvu uživatele (UPN) nebo e-mailové adresy, například johndoe@contoso.com . Extrahuje místní část e-mailové adresy. Například: mail: " foo@bar.com " má za následek outputClaim: "foo". Pokud \@ není k dispozici žádný symbol, je původní vstupní řetězec vrácen tak, jak je.|
 
 **InputClaims:** Pomocí elementu InputClaims předejte data ze záznamu schématu deklarace do transformace. Má dva atributy: **ClaimTypeReferenceId** a **TransformationClaimType**.
 
@@ -385,12 +385,12 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabulka 5: atributy povolené jako zdroj dat pro SAML NameID
 
-|Zdroj|ID|Description|
+|Zdroj|ID|Popis|
 |-----|-----|-----|
 | Uživatel | pošta|E-mailová adresa|
 | Uživatel | třídy|Hlavní název uživatele|
 | Uživatel | onpremisessamaccountname|Místní název účtu SAM|
-| Uživatel | zaměstnance|Identifikační číslo zaměstnance|
+| Uživatel | zaměstnance|ID zaměstnance|
 | Uživatel | extensionattribute1 | Atribut rozšíření 1 |
 | Uživatel | extensionattribute2 | Atribut rozšíření 2 |
 | Uživatel | extensionattribute3 | Atribut rozšíření 3 |
@@ -411,7 +411,7 @@ Na základě zvolené metody se očekává sada vstupů a výstupů. Definujte *
 
 | TransformationMethod | Omezení |
 | ----- | ----- |
-| ExtractMailPrefix | Žádná |
+| ExtractMailPrefix | Žádné |
 | Spojit | Připojená přípona musí být ověřená doména tenanta prostředků. |
 
 ### <a name="custom-signing-key"></a>Vlastní podpisový klíč
@@ -436,7 +436,7 @@ Zásady mapování deklarací lze přiřadit pouze objektům instančních objek
 
 V Azure AD je mnoho scénářů možné, když můžete přizpůsobit deklarace identity vydávané v tokenech pro konkrétní instanční objekty. V této části se seznámíme s několika běžnými scénáři, které vám pomůžou naučit se používat typ zásad mapování deklarací identity.
 
-#### <a name="prerequisites"></a>Požadavky
+#### <a name="prerequisites"></a>Předpoklady
 
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.
 

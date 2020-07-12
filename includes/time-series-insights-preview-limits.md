@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1171c07a754b056fb9df2cee73ddf224427037cc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77123215"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277774"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Obecná dostupnost a porovnání verze Preview
 
@@ -22,16 +22,16 @@ Následující tabulka shrnuje několik hlavních rozdílů mezi Azure Time Seri
 
 | | GA | Preview |
 | --- | --- | ---|
-| Občan první třídy | Orientované na události | Orientované na časovou řadu |
-| Sémantický důvod | Nízká úroveň (referenční data) | Nejvyšší úroveň (modely) |
-| Kontextová data | Úroveň bez zařízení | Na úrovni zařízení a mimo zařízení |
-| Úložiště COMPUTE Logic | No | Uloženo v části typu proměnné modelu |
-| Úložiště a řízení přístupu | No | Povoleno přes model |
-| Agregace a vzorkování | No | Vážené a časově vážené události |
-| Rekonstrukce signálu | No | Interpolace |
-| Výroba odvozených časových řad | No | Ano, sloučit a spojení |
-| Flexibilita jazyka | Bez možnosti složení | Sestavitelné |
-| Jazyk výrazů | Řetězec predikátu | Výrazy časových řad (řetězce predikátů, hodnoty, výrazy a funkce) |
+| **Občan první třídy** | Orientované na události | Orientované na časovou řadu |
+| **Sémantický důvod** | Nízká úroveň (referenční data) | Nejvyšší úroveň (modely) |
+| **Kontextová data** | Úroveň bez zařízení | Na úrovni zařízení a mimo zařízení |
+| **Úložiště COMPUTE Logic** | No | Uloženo v části typu proměnné modelu |
+| **Úložiště a řízení přístupu** | No | Povoleno přes model |
+| **Agregace a vzorkování** | No | Vážené a časově vážené události |
+| **Rekonstrukce signálu** | No | Interpolace |
+| **Výroba odvozených časových řad** | No | Ano, sloučit a spojení |
+| **Flexibilita jazyka** | Bez možnosti složení | Sestavitelné |
+| **Jazyk výrazů** | Řetězec predikátu | Výrazy časových řad (řetězce predikátů, hodnoty, výrazy a funkce) |
 
 ### <a name="property-limits"></a>Omezení vlastností
 

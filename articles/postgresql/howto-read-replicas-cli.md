@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: b8da326ea48133d2029f385fc55450c00aecf656
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: de74258cadcdf81da211561a84ff06927830e690
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106607"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274403"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Vytváření a Správa replik pro čtení z Azure CLI, REST API
 
@@ -31,7 +31,7 @@ Po změně tohoto parametru je nutné restartovat server. Interně tento paramet
 ## <a name="azure-cli"></a>Azure CLI
 Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazového řádku Azure CLI.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 - [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Server Azure Database for PostgreSQL](quickstart-create-server-up-azure-cli.md) , který bude hlavním serverem.
@@ -61,7 +61,7 @@ Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazov�
 
 Příkaz [AZ Postgres Server Replica Create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) vyžaduje následující parametry:
 
-| Nastavení | Příklad hodnoty | Description  |
+| Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  Skupina prostředků, ve které se vytvoří server repliky.  |
 | name | mydemoserver – replika | Název nového serveru repliky, který se vytvoří. |
@@ -84,9 +84,9 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 
 Pokud jste nenastavili `azure.replication_support` parametr na **repliku** na pro obecné účely nebo paměťově optimalizovaném hlavním serveru a server restartovali, zobrazí se chyba. Před vytvořením repliky tyto dva kroky proveďte.
 
-Replika se vytvoří pomocí stejného nastavení výpočtů a úložiště jako hlavní. Po vytvoření repliky se dá několik nastavení měnit nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
-
 > [!IMPORTANT]
+> Přečtěte si [část s informacemi v tématu Přehled repliky čtení](concepts-read-replicas.md#considerations).
+>
 > Než bude nastavení hlavního serveru aktualizováno na novou hodnotu, aktualizujte nastavení repliky na hodnotu rovná se nebo větší. Tato akce pomůže replice uchovávat všechny změny provedené v hlavní větvi.
 
 ### <a name="list-replicas"></a>Vypsat repliky

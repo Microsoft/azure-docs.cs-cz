@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83868098"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277732"
 ---
 Sdílené disky Azure (Preview) je nová funkce pro služby Azure Managed disks, která umožňuje připojení spravovaného disku k několika virtuálním počítačům současně. Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace.
 
@@ -41,7 +41,7 @@ Většina clusterů založených na Windows využívá službu WSFC, která zaji
 
 Mezi některé oblíbené aplikace využívající službu WSFC patří:
 
-- Instance clusteru s podporou převzetí služeb při selhání (FCI) SQL Serveru
+- [Vytvoření FCI se sdílenými disky Azure (SQL Server na virtuálních počítačích Azure)](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
 - Souborový server se škálováním na více systémů (SoFS)
 - Souborový server pro obecné použití (úloha IW)
 - Disk profilu uživatele na serveru vzdálené plochy (RDS UPD)
@@ -87,7 +87,12 @@ Disky Ultra nabízejí dodatečné omezení pro celkový počet dvou omezení. Z
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Obrázek tabulky, která znázorňuje přístup jen pro čtení nebo čtení/zápis pro rezervovaného držitele, registraci a další.":::
 
-## <a name="ultra-disk-performance-throttles"></a>Omezení výkonu Ultra disk
+## <a name="performance-throttles"></a>Omezení výkonu
+
+### <a name="premium-ssd-performance-throttles"></a>Omezení výkonu úrovně Premium SSD
+U jednotky SSD úrovně Premium je pevný počet vstupně-výstupních operací disku a propustnost, například IOPS P30, 5000. Tato hodnota zůstává bez ohledu na to, jestli se disk sdílí mezi 2 virtuálními počítači nebo 5 virtuálními počítači. Omezení disku můžete dosáhnout z jednoho virtuálního počítače nebo rozdělit na dva nebo více virtuálních počítačů. 
+
+### <a name="ultra-disk-performance-throttles"></a>Omezení výkonu Ultra disk
 
 Disky Ultra mají jedinečnou schopnost nastavit svůj výkon vyplněním upravitelných atributů a tím, že je budete moct upravit. Ve výchozím nastavení jsou k dispozici pouze dva atributy s modifikátorem, ale sdílené disky Ultra mají dva další atributy.
 
@@ -111,23 +116,23 @@ Následující vzorce vysvětlují, jak lze nastavit atributy výkonu, protože 
     - Pro každý zřízený IOPS je limit propustnosti jednoho disku 256 KiB/s, maximálně 2000 MB/s na disk.
     - Minimální zaručená propustnost na disk je 4KiB/s pro každý zřízený IOPS, přičemž celkové minimální hodnoty jsou 1 MB/s.
 
-### <a name="examples"></a>Příklady
+#### <a name="examples"></a>Příklady
 
 V následujících příkladech je znázorněno několik scénářů, které ukazují, jak omezování dokáže pracovat se sdílenými disky Ultra, konkrétně.
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Cluster se dvěma uzly pomocí sdílených svazků clusteru
+##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Cluster se dvěma uzly pomocí sdílených svazků clusteru
 
 Následuje příklad dvou uzlů služby WSFC pomocí clusterovaných sdílených svazků. V této konfiguraci mají oba virtuální počítače souběžný přístup pro zápis na disk, což vede k rozdělení omezení pro čtení do dvou virtuálních počítačů a omezení jen pro čtení, které se nepoužívá.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Ultra example v CSV – dva uzly":::
 
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster se dvěma uzly bez sdílených svazků clusteru
+##### <a name="two-node-cluster-without-cluster-share-volumes"></a>Cluster se dvěma uzly bez sdílených svazků clusteru
 
 Níže je uveden příklad služby WSFC se dvěma uzly, který nepoužívá clusterované sdílené svazky. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. Výsledkem je omezení pro čtení a použití výhradně pro primární virtuální počítač a omezení jen pro čtení, které používá sekundární.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="Sdílený svazek clusteru – dva uzly žádný příklad CSV Ultra disk":::
 
-#### <a name="four-node-linux-cluster"></a>Cluster se čtyřmi uzly Linux
+##### <a name="four-node-linux-cluster"></a>Cluster se čtyřmi uzly Linux
 
 Následuje příklad clusteru se čtyřmi uzly v systému Linux s jedním zapisovačem a třemi čtecími nástroji pro horizontální navýšení kapacity. V této konfiguraci má disk přístup pro zápis jenom na jednom virtuálním počítači. To vede k tomu, že se omezení pro čtení a čtení používá výhradně pro primární virtuální počítač a omezení jen pro čtení, které jsou rozdělené do sekundárních virtuálních počítačů.
 

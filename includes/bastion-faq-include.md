@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82780299"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276106"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Které oblasti jsou k dispozici?
 
@@ -48,6 +48,10 @@ V tuto chvíli se podporuje jenom textové kopírování a vkládání. Funkce, 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Které prohlížeče se podporují?
 
 Použijte prohlížeč Microsoft Edge nebo Google Chrome ve Windows. Pro Apple Mac použijte prohlížeč Google Chrome. Microsoft Edge chrom se podporuje i v obou oknech i v počítačích Mac.
+
+### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Kde Azure bastionu Store data Customer?
+
+Azure bastionu nepřesouvá ani neukládá zákaznická data mimo oblast, ve které je nasazená.
 
 ### <a name="are-any-roles-required-to-access-a-virtual-machine"></a><a name="roles"></a>Vyžadují se pro přístup k virtuálnímu počítači nějaké role?
 

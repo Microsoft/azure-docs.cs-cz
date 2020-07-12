@@ -5,11 +5,12 @@ author: hrushib
 ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a99a936b3e6cf53c30c0264b70046008dab283c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712458"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261264"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Periodické zálohování a obnovení v clusteru Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -44,7 +45,7 @@ Service Fabric poskytuje sadu rozhraní API pro zajištění následujících fu
 - Dočasné pozastavení zálohování
 - Správa uchovávání záloh (nadcházející)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Service Fabric cluster se službou Fabric verze 6,4 nebo vyšší. Postup vytvoření Service Fabricho clusteru pomocí šablony prostředků Azure najdete v tomto [článku](service-fabric-cluster-creation-via-arm.md) .
 * X. 509 certifikát pro šifrování tajných kódů potřebných pro připojení k úložišti pro ukládání záloh. V [článku](service-fabric-cluster-creation-via-arm.md) najdete informace o tom, jak získat nebo vytvořit certifikát X. 509.
 * Service Fabric Reliable stavová aplikace vytvořená pomocí sady Service Fabric SDK verze 3,0 nebo vyšší. Pro aplikace cílené na .NET Core 2,0 by měla být aplikace sestavená pomocí sady SDK Service Fabric verze 3,1 nebo vyšší.
@@ -303,7 +304,7 @@ Chcete-li zobrazit zálohy v Service Fabric Explorer, přejděte do oddílu a vy
 
 ## <a name="next-steps"></a>Další kroky
 - [Principy konfigurace pravidelného zálohování](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [Odkaz na REST API obnovení zálohy](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [Odkaz na REST API obnovení zálohy](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/partition-backedup-health-event-azure.png
 [1]: ./media/service-fabric-backuprestoreservice/enable-backup-restore-service-with-portal.png

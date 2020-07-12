@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 15cdd4c53105998488d2ae1f544e34c1e07a157a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 549fd9851ffce4459e16b4d84f368234bfdf207d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82147128"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275814"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v SUSE Linux Enterprise Server 
 
@@ -137,7 +137,7 @@ V následujících pokynech se předpokládá, že jste už nasadili službu [Az
 
 5. Nasaďte Azure NetApp Files svazky podle pokynů v tématu [vytvoření svazku NFS pro Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes).  
 
-   Když nasazujete svazky, ujistěte se, že jste vybrali verzi **nfsv 4.1** . Přístup k NFSv 4.1 v současnosti vyžaduje další seznam povolených. Nasaďte svazky v určené Azure NetApp Files [podsíti](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). IP adresy svazků Azure NetApp se přiřazují automaticky. 
+   Když nasazujete svazky, ujistěte se, že jste vybrali verzi **nfsv 4.1** . V současné době se přístup k NFSv 4.1 vyžaduje přidání do seznamu povolených. Nasaďte svazky v určené Azure NetApp Files [podsíti](https://docs.microsoft.com/rest/api/virtualnetwork/subnets). IP adresy svazků Azure NetApp se přiřazují automaticky. 
    
    Pamatujte, že prostředky Azure NetApp Files a virtuální počítače Azure musí být ve stejné virtuální síti Azure nebo ve virtuálních sítích Azure s partnerským vztahem. Například **HN1**-data-Mnt00001, **HN1**-log-mnt00001 atd. jsou názvy svazků**a NFS://10.23.1.5/HN1-data**-mnt00001, NFS://10.23.1.4/**HN1**-log-mnt00001 atd. jsou cesty k souborům pro Azure NetApp Files svazky.  
 
@@ -655,7 +655,7 @@ V tomto příkladu pro nasazení SAP HANA v konfiguraci škálování na více i
 
 ## <a name="test-sap-hana-failover"></a>Test SAP HANA převzetí služeb při selhání 
 
-1. Simulujte selhání uzlu na SAP HANA pracovním uzlu. Udělejte toto: 
+1. Simulujte selhání uzlu na SAP HANA pracovním uzlu. Postupujte následovně: 
 
    a. Před simulací havárie uzlu spusťte následující příkazy jako **HN1**ADM pro zachycení stavu prostředí:  
 

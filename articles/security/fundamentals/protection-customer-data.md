@@ -15,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811422"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273468"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrana zákaznických dat Azure   
-Přístup k zákaznickým datům podle operací Microsoftu a pracovníků podpory je ve výchozím nastavení zakázaný. Když se udělí přístup k zákaznickým datům, vyžaduje se schválení vedoucího a pak se pečlivě spravuje a protokoluje přístup. Požadavky na řízení přístupu jsou navázány následujícími zásadami zabezpečení Azure:
+Přístup k zákaznickým datům podle operací Microsoftu a pracovníků podpory je ve výchozím nastavení zakázaný. Pokud je udělen přístup k datům souvisejícím s případem podpory, je mu uděleno pouze použití modelu JIT (just-in-time), který používá zásady, které jsou auditovány a prověřené proti zásadám dodržování předpisů a ochrany osobních údajů.  Požadavky na řízení přístupu jsou navázány následujícími zásadami zabezpečení Azure:
 
 - Ve výchozím nastavení není přístup k zákaznickým datům.
 - Žádné účty uživatele nebo správce na virtuálních počítačích zákazníka (VM).
@@ -37,14 +38,11 @@ Azure poskytuje zákazníkům se silným zabezpečením dat, a to jak ve výchoz
 
 **Oddělení dat**: Azure je víceklientská služba, což znamená, že více zákaznických nasazení a virtuálních počítačů je uloženo na stejném fyzickém hardwaru. Azure používá logickou izolaci k oddělení dat jednotlivých zákazníků od dat ostatních. Oddělení poskytuje škálu a ekonomické výhody pro víceklientské služby a současně zajišťuje přísnou prevenci zákazníkům přístup k datům jiného typu.
 
-**Ochrana dat v klidovém**stavu: zákazníci zodpovídají za zajištění, že data uložená v Azure jsou zašifrovaná v souladu s jejich standardy. Azure nabízí rozsáhlou škálu možností šifrování, která zákazníkům poskytuje flexibilitu při výběru řešení, které nejlépe vyhovuje jejich potřebám. Azure Key Vault pomáhá zákazníkům snadno udržovat kontrolu nad klíči, které používají cloudové aplikace a služby k šifrování dat. Azure Disk Encryption umožňuje zákazníkům šifrovat virtuální počítače. Šifrování služby Azure Storage umožňuje šifrovat všechna data, která jsou umístěna do účtu úložiště zákazníka.
+**Ochrana dat v klidovém**stavu: zákazníci zodpovídají za zajištění, že data uložená v Azure jsou zašifrovaná v souladu s jejich standardy. Azure nabízí rozsáhlou škálu možností šifrování, která zákazníkům poskytuje flexibilitu při výběru řešení, které nejlépe vyhovuje jejich potřebám. Azure Key Vault pomáhá zákazníkům snadno udržovat kontrolu nad klíči, které používají cloudové aplikace a služby k šifrování dat. Azure Disk Encryption umožňuje zákazníkům šifrovat virtuální počítače. Šifrování služby Azure Storage umožňuje šifrovat všechna data umístěná do účtu úložiště zákazníka.
 
-**Ochrana před**přenosem dat: zákazníci můžou povolit šifrování pro přenosy mezi vlastními virtuálními počítači a koncovými uživateli. Azure chrání data při přenosu mezi externími součástmi a přenášenými daty interně, například mezi dvěma virtuálními sítěmi. Azure používá standardní protokol TLS (Transport Layer Security) 1,2 nebo novější 2 048 s CESG šifrovacími klíči RSA/SHA256, jak to doporučila/NCSC, k šifrování komunikace mezi těmito službami:
+**Ochrana před přenosem dat**: Společnost Microsoft nabízí celou řadu možností, které můžou zákazníci využívat k internímu přenosu dat v rámci sítě Azure a externě na celém internetu pro koncového uživatele.  Mezi ně patří komunikace prostřednictvím virtuálních privátních sítí (s využitím šifrování IPsec/IKE), TLS (Transport Layer Security) 1,2 nebo novější (prostřednictvím komponent Azure, jako jsou například Application Gateway nebo front-in Azure), protokolů přímo na virtuálních počítačích Azure (například Windows IPsec nebo SMB) a dalších. 
 
-- Zákazník a Cloud.
-- Interně mezi systémy a datacentry Azure.
-
-**Šifrování**: šifrování dat v úložišti a přenosu je možné nasadit zákazníky jako osvědčený postup pro zajištění důvěrnosti a integrity dat. Zákazníci můžou nakonfigurovat své cloudové služby Azure tak, aby používaly protokol TLS k ochraně komunikace z Internetu a dokonce i mezi virtuálními počítači hostovanými v Azure.
+Kromě toho je u všech přenosů dat v provozu mezi datacentry Azure povolená možnost šifrování ve výchozím nastavení pomocí MACsec (Standard IEEE na vrstvě Data-Link), aby se zajistila důvěrnost a integrita zákaznických dat. 
 
 **Redundance dat**: Microsoft pomáhá zajistit, aby data byla chráněna v případě, že dojde k cyberattack nebo fyzickému poškození datacentra. Zákazníci se můžou rozhodnout pro:
 

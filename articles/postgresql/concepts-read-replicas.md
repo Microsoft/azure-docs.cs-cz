@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/24/2020
-ms.openlocfilehash: 0d678d900ec31b00d27eba19617d533c5010c1dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367987"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276647"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Čtení replik v Azure Database for PostgreSQL – jeden server
 
@@ -142,11 +142,11 @@ Jakmile se rozhodnete, že chcete převzít služeb při selhání do repliky,
 Po úspěšném zpracování čtení a zápisu vaší aplikace jste dokončili převzetí služeb při selhání. Množství prostojů, na kterých bude prostředí aplikace záviset při zjištění problému a dokončení kroků 1 a 2 výše.
 
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 V této části najdete přehled informací o funkci Replika čtení.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 Repliky čtení a [logické dekódování](concepts-logical.md) závisí na protokolu Postgres Write předem log (WAL). Tyto dvě funkce vyžadují různé úrovně protokolování z Postgres. Logické dekódování potřebuje vyšší úroveň protokolování než repliky čtení.
 
 Ke konfiguraci správné úrovně protokolování použijte parametr podpory replikace Azure. Podpora replikace Azure má tři možnosti nastavení:
@@ -161,12 +161,14 @@ Po změně tohoto parametru je nutné restartovat server. Interně tento paramet
 Replika pro čtení je vytvořená jako nový server Azure Database for PostgreSQL. Existující server nelze vytvořit do repliky. Nelze vytvořit repliku jiné repliky pro čtení.
 
 ### <a name="replica-configuration"></a>Konfigurace repliky
-Replika se vytvoří pomocí stejného nastavení výpočtů a úložiště jako hlavní. Po vytvoření repliky se dá několik nastavení měnit nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
+Replika se vytvoří pomocí stejného nastavení výpočtů a úložiště jako hlavní. Po vytvoření repliky je možné změnit několik nastavení včetně doby uchování úložiště a zálohy.
+
+Virtuální jádra a cenová úroveň se dá v replice změnit taky za následujících podmínek:
+* PostgreSQL vyžaduje, `max_connections` aby hodnota parametru v replice pro čtení byla větší než nebo rovna hlavní hodnotě. v opačném případě se replika nespustí. `max_connections`Hodnota parametru je v Azure Database for PostgreSQL založena na skladové jednotce (virtuální jádra a cenové úrovni). Další informace najdete v tématu [omezení v Azure Database for PostgreSQL](concepts-limits.md). 
+* Škálování na cenové úrovni Basic nebo ze se nepodporuje.
 
 > [!IMPORTANT]
 > Před aktualizací hlavního nastavení na novou hodnotu aktualizujte konfiguraci repliky na hodnotu rovná se nebo větší. Tato akce zajistí, že replika bude moct udržovat krok se všemi změnami na hlavním serveru.
-
-PostgreSQL vyžaduje, `max_connections` aby hodnota parametru v replice pro čtení byla větší než nebo rovna hlavní hodnotě. v opačném případě se replika nespustí. V Azure Database for PostgreSQL `max_connections` je hodnota parametru založena na SKU. Další informace najdete v tématu [omezení v Azure Database for PostgreSQL](concepts-limits.md). 
 
 Pokud se pokusíte aktualizovat výše popsané hodnoty serveru, ale nedodržují omezení, dojde k chybě.
 

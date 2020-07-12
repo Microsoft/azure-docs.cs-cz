@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696979"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276426"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Průzkumníkem metrik Azure
 
@@ -38,7 +39,7 @@ Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků
 
     > ![Vyberte metriku](./media/metrics-getting-started/metric-picker.png)
 
-4. Volitelně můžete změnit agregaci metriky. Můžete například chtít, aby v grafu bylo možné zobrazit minimální, maximální nebo průměrné hodnoty metriky.
+4. Volitelně můžete [změnit agregaci metriky](metrics-charts.md#changing-aggregation). Můžete například chtít, aby v grafu bylo možné zobrazit minimální, maximální nebo průměrné hodnoty metriky.
 
 > [!NOTE]
 > Použijte tlačítko **Přidat metriku** a opakujte tyto kroky, pokud chcete zobrazit více metrik vykreslených ve stejném grafu. U více grafů v jednom zobrazení vyberte tlačítko **přidat graf** nahoře.

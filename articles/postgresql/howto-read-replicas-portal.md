@@ -5,20 +5,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 8e148a3dac8435a08c0f1735cd35d06c700e1e84
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ca4d3d2d52e79dbcaaa15eba5794a4d2d28366a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106624"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274539"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytváření a Správa replik pro čtení v serveru Azure Database for PostgreSQL-Single z Azure Portal
 
 V tomto článku se dozvíte, jak vytvořit a spravovat repliky pro čtení v Azure Database for PostgreSQL z Azure Portal. Další informace o replikách pro čtení najdete v tématu [Přehled](concepts-read-replicas.md).
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 [Server Azure Database for PostgreSQL](quickstart-create-server-database-portal.md) , který bude hlavním serverem.
 
 ## <a name="azure-replication-support"></a>Podpora replikace Azure
@@ -78,15 +78,15 @@ K vytvoření repliky pro čtení použijte následující postup:
 
 6. Kliknutím na **OK** potvrďte vytváření repliky.
 
-Replika se vytvoří pomocí stejného nastavení výpočtů a úložiště jako hlavní. Po vytvoření repliky se dá několik nastavení měnit nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
-
-> [!IMPORTANT]
-> Než bude nastavení hlavního serveru aktualizováno na novou hodnotu, aktualizujte nastavení repliky na hodnotu rovná se nebo větší. Tato akce pomůže replice uchovávat všechny změny provedené v hlavní větvi.
-
 Po vytvoření repliky pro čtení je možné ji zobrazit z okna **replikace** :
 
 ![Zobrazit novou repliku v okně replikace](./media/howto-read-replicas-portal/list-replica.png)
  
+
+> [!IMPORTANT]
+> Přečtěte si [část s informacemi v tématu Přehled repliky čtení](concepts-read-replicas.md#considerations).
+>
+> Než bude nastavení hlavního serveru aktualizováno na novou hodnotu, aktualizujte nastavení repliky na hodnotu rovná se nebo větší. Tato akce pomůže replice uchovávat všechny změny provedené v hlavní větvi.
 
 ## <a name="stop-replication"></a>Zastavení replikace
 Replikaci mezi hlavním serverem a replikou pro čtení můžete zastavit.
