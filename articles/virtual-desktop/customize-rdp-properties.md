@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d41df8fe4f411cf28af83c8b4b667f1e86bdb45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135113"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259918"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů
 
@@ -27,7 +27,7 @@ Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu h
 
 Úplný seznam podporovaných vlastností a jejich výchozích hodnot najdete v tématu [podporované nastavení souboru RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, postupujte podle pokynů v části [nastavení modulu Azure Virtual Desktop PowerShell](powershell-module.md) a nastavte modul prostředí PowerShell a přihlaste se k Azure.
 
@@ -37,7 +37,7 @@ Publikované soubory RDP ve výchozím nastavení obsahují následující vlast
 
 |Vlastnosti protokolu RDP | Desktops | Vzdálené aplikace RemoteApp |
 |---|---| --- |
-| Režim více monitorů | Povoleno | Není k dispozici |
+| Režim více monitorů | Povoleno | Nelze použít |
 | Přesměrování jednotky povolena | Jednotky, schránka, tiskárny, porty COM, zařízení USB a čipové karty| Jednotky, schránka a tiskárny |
 | Režim vzdáleného zvuku | Přehrát místně | Přehrát místně |
 
@@ -132,7 +132,7 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 Teď, když jste přizpůsobili vlastnosti protokolu RDP pro daný fond hostitelů, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat je jako součást uživatelské relace. Tyto další návody vám posdělí, jak se připojit k relaci pomocí klienta podle vašeho výběru:
 
-- [Připojení s desktopovým klientem Windows](connect-windows-7-and-10.md)
+- [Připojení s desktopovým klientem Windows](connect-windows-7-10.md)
 - [Připojení k webovému klientovi](connect-web.md)
 - [Práce s klientem Android](connect-android.md)
 - [Připojení s klientem macOS](connect-macos.md)

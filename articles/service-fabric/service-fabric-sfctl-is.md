@@ -5,18 +5,19 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a64aaca97c9df61d795c82d64e6048d6f9ae032f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 349f70c32ea4ebb4559f053d5ef05b4b37b6480f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906076"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260378"
 ---
 # <a name="sfctl-is"></a>sfctl is
 Dotazování a posílání příkazů do služby infrastruktury
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
 | command | Vyvolá příkaz pro správu v dané instanci služby infrastruktury. |
 | query | Vyvolá dotaz jen pro čtení v dané instanci služby infrastruktury. |
@@ -28,7 +29,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --příkaz [povinné] | Text příkazu, který má být vyvolán. Obsah příkazu je závislý na infrastruktuře. |
 | --Service-ID | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez \: schématu identifikátoru URI Fabric. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
@@ -36,7 +37,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -51,7 +52,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --příkaz [povinné] | Text příkazu, který má být vyvolán. Obsah příkazu je závislý na infrastruktuře. |
 | --Service-ID | Identita služby infrastruktury <br><br> Toto je úplný název služby infrastruktury bez \: schématu identifikátoru URI Fabric. Tento parametr je vyžadován pouze pro cluster, který má spuštěnu více než jednu instanci služby infrastruktury. |
@@ -59,7 +60,7 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -70,4 +71,4 @@ V případě clusterů, které mají nakonfigurovanou jednu nebo více instancí
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

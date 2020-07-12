@@ -7,18 +7,18 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ffd73e9dff06df4b5acdd004dddcfca5ff03ede0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 4dddc2eab5004377afd6743c4722498dd5c6e2a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232266"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260005"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Řešení potíží se soubory Azure v systému Linux
 
 V tomto článku jsou uvedené běžné problémy, které se týkají souborů Azure, když se připojujete z klientů se systémem Linux. Poskytuje taky možné příčiny a řešení těchto problémů. 
 
-Kromě kroků pro řešení potíží v tomto článku můžete použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) a zajistit tak, že klient pro Linux bude mít správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku. Pomáhá nastavit vaše prostředí, aby získalo optimální výkon. Tyto informace můžete najít také v [poradci při potížích se sdílenými složkami souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Poradce při potížích obsahuje kroky, které vám pomůžou s problémy s připojením, mapováním a připojením sdílených složek Azure Files.
+Kromě kroků pro řešení potíží v tomto článku můžete použít [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Linux) a zajistit tak, že klient pro Linux bude mít správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku. Pomáhá nastavit vaše prostředí, aby získalo optimální výkon. Tyto informace můžete najít také v [poradci při potížích se sdílenými složkami souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares). Poradce při potížích obsahuje kroky, které vám pomůžou s problémy s připojením, mapováním a připojením sdílených složek Azure Files.
 
 ## <a name="cannot-connect-to-or-mount-an-azure-file-share"></a>Nelze se připojit ke sdílené složce Azure nebo ji připojit
 

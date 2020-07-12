@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b17befcd86cd56eb5eb385ddc5196cbfce73003c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639662"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260417"
 ---
 # <a name="actor-events"></a>Události objektu actor
 Události objektu actor poskytují způsob, jak odesílat osvědčená oznámení od objektu actor klientům. Události objektu actor jsou navržené pro komunikaci pomocí objektu actor-klient a neměly by se používat pro komunikaci actor-to-actor.
@@ -101,7 +102,7 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ## <a name="next-steps"></a>Další kroky
 * [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
 * [Monitorování diagnostiky a výkonu objektu actor](service-fabric-reliable-actors-diagnostics.md)
-* [Referenční dokumentace k rozhraní API actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Referenční dokumentace k rozhraní API actor](/previous-versions/azure/dn971626(v=azure.100))
 * [Ukázkový kód C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Ukázkový kód C# .NET Core](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)

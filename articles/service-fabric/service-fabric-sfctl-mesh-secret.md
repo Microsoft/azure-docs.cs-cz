@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: fab388ff223eb95020e2ba0945c76532bc54f224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c91a59e57613934c946e3cd56089b330893a51a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905980"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260342"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Získá a odstraní prostředky tajného klíče sítě.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
-| delete | Odstraní prostředek tajného kódu. |
+| odstranění | Odstraní prostředek tajného kódu. |
 | list | Zobrazí seznam všech tajných prostředků. |
 | show | Získá prostředek tajného kódu se zadaným názvem. |
 
@@ -29,13 +30,13 @@ Odstraní zadaný tajný prostředek a všechny jeho pojmenované hodnoty.
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Name-n [povinné] | Název tajného prostředku |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -50,7 +51,7 @@ Načte informace o všech tajných zdrojích v dané skupině prostředků. Tyto
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -65,13 +66,13 @@ Načte informace o prostředku tajného kódu se zadaným názvem. Tyto informac
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Name-n [povinné] | Název tajného prostředku |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -82,4 +83,4 @@ Načte informace o prostředku tajného kódu se zadaným názvem. Tyto informac
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

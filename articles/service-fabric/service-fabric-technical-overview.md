@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: dc429500081e65bf3fdf4d7f7557d2423f56ee23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b2f1a170a792e0b4d069258264407c121dab3ae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611726"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260244"
 ---
 # <a name="service-fabric-terminology-overview"></a>Přehled terminologie Service Fabric
 
-Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  [Clustery Service Fabric můžete hostovat kdekoli](service-fabric-deploy-anywhere.md): Azure, v místním datovém centru nebo v jakémkoli poskytovateli cloudu.  Service Fabric je produkt Orchestrator, který využívá [síť Azure Service Fabric](/azure/service-fabric-mesh). Můžete použít libovolné rozhraní k zápisu služeb a zvolit, kde spustit aplikaci z více možností prostředí. Tento článek podrobně popisuje terminologii, kterou používá Service Fabric k pochopení podmínek používaných v dokumentaci.
+Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  [Clustery Service Fabric můžete hostovat kdekoli](service-fabric-deploy-anywhere.md): Azure, v místním datovém centru nebo v jakémkoli poskytovateli cloudu.  Service Fabric je produkt Orchestrator, který využívá [síť Azure Service Fabric](../service-fabric-mesh/index.yml). Můžete použít libovolné rozhraní k zápisu služeb a zvolit, kde spustit aplikaci z více možností prostředí. Tento článek podrobně popisuje terminologii, kterou používá Service Fabric k pochopení podmínek používaných v dokumentaci.
 
 ## <a name="infrastructure-concepts"></a>Koncepty infrastruktury
 
@@ -125,13 +125,13 @@ Chcete-li nasadit své služby, je třeba popsat, jak by měly být spuštěny. 
 
 ### <a name="resource-model-preview"></a>Model prostředků (Preview)
 
-Prostředky Service Fabric jsou cokoli, co se dá nasadit jednotlivě do Service Fabric; včetně aplikací, služeb, sítí a svazků. Prostředky se definují pomocí souboru JSON, který se dá nasadit na koncový bod clusteru.  V případě Service Fabric sítě se používá schéma modelu Azure Resource model. Schéma souborů YAML lze také použít k snadnějšímu vytváření definičních souborů. Prostředky je možné nasadit kdekoli Service Fabric spuštění. Model prostředků představuje nejjednodušší způsob, jak popsání Service Fabricch aplikací. Hlavním fokusem je jednoduché nasazení a Správa kontejnerových služeb. Pokud se chcete dozvědět víc, přečtěte si [Úvod do modelu prostředků Service Fabric](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources).
+Prostředky Service Fabric jsou cokoli, co se dá nasadit jednotlivě do Service Fabric; včetně aplikací, služeb, sítí a svazků. Prostředky se definují pomocí souboru JSON, který se dá nasadit na koncový bod clusteru.  V případě Service Fabric sítě se používá schéma modelu Azure Resource model. Schéma souborů YAML lze také použít k snadnějšímu vytváření definičních souborů. Prostředky je možné nasadit kdekoli Service Fabric spuštění. Model prostředků představuje nejjednodušší způsob, jak popsání Service Fabricch aplikací. Hlavním fokusem je jednoduché nasazení a Správa kontejnerových služeb. Pokud se chcete dozvědět víc, přečtěte si [Úvod do modelu prostředků Service Fabric](../service-fabric-mesh/service-fabric-mesh-service-fabric-resources.md).
 
 ### <a name="native-model"></a>Nativní model
 
 Nativní aplikační model poskytuje vašim aplikacím úplný přístup na nízké úrovni k Service Fabric. Aplikace a služby jsou definovány jako registrované typy v souborech manifestu XML.
 
-Nativní model podporuje rozhraní Reliable Services a Reliable Actors, která poskytují přístup k rozhraním API Service Fabric modulu runtime a rozhraním API pro správu clusteru v jazycích C# a Java. Nativní model podporuje také libovolné kontejnery a spustitelné soubory. Nativní model není podporován v [prostředí Service Fabric sítě](/azure/service-fabric-mesh/service-fabric-mesh-overview).
+Nativní model podporuje rozhraní Reliable Services a Reliable Actors, která poskytují přístup k rozhraním API Service Fabric modulu runtime a rozhraním API pro správu clusteru v jazycích C# a Java. Nativní model podporuje také libovolné kontejnery a spustitelné soubory. Nativní model není podporován v [prostředí Service Fabric sítě](../service-fabric-mesh/service-fabric-mesh-overview.md).
 
 **Reliable Services**: rozhraní API pro sestavení bezstavových a stavových služeb. Stavové služby ukládají jejich stav do spolehlivých kolekcí, jako je slovník nebo fronta. Můžete také připojit různé komunikační zásobníky, například webové rozhraní API a Windows Communication Foundation (WCF).
 
@@ -155,7 +155,7 @@ Service Fabric je open source technologie pro platformu, na které jsou založen
 
  - **Síť Azure Service Fabric**: plně spravovaná služba pro spouštění Service Fabric aplikací v Microsoft Azure.
  - **Azure Service Fabric**: Nabídka Azure hosted Service Fabric clusteru. Poskytuje integraci mezi Service Fabric a infrastrukturou Azure spolu se správou aktualizací a konfigurací Service Fabricch clusterů.
- - **Service Fabric Standalone**: sada nástrojů pro instalaci a konfiguraci pro [nasazení Service Fabricch clusterů kdekoli](/azure/service-fabric/service-fabric-deploy-anywhere) (místně nebo v jakémkoli poskytovateli cloudu). Nespravuje se v Azure.
+ - **Service Fabric Standalone**: sada nástrojů pro instalaci a konfiguraci pro [nasazení Service Fabricch clusterů kdekoli](./service-fabric-deploy-anywhere.md) (místně nebo v jakémkoli poskytovateli cloudu). Nespravuje se v Azure.
  - **Service Fabric vývojový cluster**: poskytuje místní vývojové prostředí v systému Windows, Linux nebo Mac pro vývoj aplikací Service Fabric.
 
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>Matice podpory pro prostředí, architekturu a model nasazení
@@ -164,15 +164,15 @@ Různá prostředí mají různé úrovně podpory pro architektury a modely nas
 
 | Typ aplikace | Popisuje | Síť Azure Service Fabric | Clustery Azure Service Fabric (libovolný operační systém)| Místní cluster | Samostatný cluster |
 |---|---|---|---|---|---|
-| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | Podporuje se |Nepodporuje se | Windows – podporováno, Linux a Mac – nepodporováno | Windows – nepodporováno |
-|Service Fabric nativních aplikací | Nativní aplikační model (XML) | Nepodporuje se| Podporuje se|Podporuje se|Windows – podporováno|
+| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | Podporováno |Nepodporováno | Windows – podporováno, Linux a Mac – nepodporováno | Windows – nepodporováno |
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | Nepodporuje se| Podporováno|Podporováno|Windows – podporováno|
 
 V následující tabulce jsou popsány různé modely aplikací a nástroje, které pro ně existují pro Service Fabric.
 
 | Typ aplikace | Popisuje | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
 |---|---|---|---|---|---|---|
-| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | VS 2017 |Nepodporuje se |Nepodporuje se | Podporované – jenom pro prostředí sítě | Nepodporuje se|
-|Service Fabric nativních aplikací | Nativní aplikační model (XML) | VS 2017 a VS 2015| Podporuje se|Podporuje se|Podporuje se|Podporuje se|
+| Aplikace Service Fabric sítě | Model prostředků (YAML & JSON) | VS 2017 |Nepodporováno |Nepodporováno | Podporované – jenom pro prostředí sítě | Nepodporuje se|
+|Service Fabric nativních aplikací | Nativní aplikační model (XML) | VS 2017 a VS 2015| Podporováno|Podporováno|Podporováno|Podporováno|
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -184,4 +184,4 @@ Další informace o Service Fabric:
 
 Další informace o Service Fabric sítě:
 
-* [Přehled Service Fabric sítě](/azure/service-fabric-mesh/service-fabric-mesh-overview)
+* [Přehled Service Fabric sítě](../service-fabric-mesh/service-fabric-mesh-overview.md)

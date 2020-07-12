@@ -3,12 +3,12 @@ title: Kurz – nasazení skupiny více kontejnerů – YAML
 description: V tomto kurzu se naučíte, jak nasadit skupinu kontejnerů s více kontejnery v Azure Container Instances pomocí souboru YAML pomocí Azure CLI.
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: f101d19814687082ab02955a3a860486d3988211
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2673f1066db705e4d2e850230c5f96dc2690a85c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169676"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259563"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Kurz: nasazení skupiny s více kontejnery pomocí souboru YAML
 
@@ -186,5 +186,5 @@ Skupinu s více kontejnery můžete zadat také pomocí [šablony Správce prost
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
-[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
+[template-reference]: /azure/templates/microsoft.containerinstance/containergroups

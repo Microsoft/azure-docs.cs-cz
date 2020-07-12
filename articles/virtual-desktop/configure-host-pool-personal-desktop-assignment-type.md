@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bfe428b9eba1f83f3e1bb05c3941c4c56317c9bc
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 12caa6fce4d49e86d1ad5da16aa7abba30f26207
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223104"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260816"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurace typu přiřazení fondu hostitelů osobní plochy
 
@@ -91,7 +91,7 @@ Chcete-li uživatele přímo přiřadit k hostiteli relace v Azure Portal:
 
 Teď, když jste nakonfigurovali typ přiřazení osobní plocha, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat ho v rámci uživatelské relace. Tyto další dva postupy se dozvíte, jak se připojit k relaci pomocí klienta podle vašeho výběru:
 
-- [Připojení s desktopovým klientem Windows](connect-windows-7-and-10.md)
+- [Připojení s desktopovým klientem Windows](connect-windows-7-10.md)
 - [Připojení k webovému klientovi](connect-web.md)
 - [Práce s klientem Android](connect-android.md)
 - [Připojení s klientem iOS](connect-ios.md)

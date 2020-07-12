@@ -12,8 +12,6 @@
       href: tutorial-hybrid-portal.md
     - name: Filtrování příchozího provozu pomocí DNAT
       href: tutorial-firewall-dnat.md
-    - name: Monitorování diagnostických protokolů
-      href: tutorial-diagnostics.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -86,6 +84,8 @@
       href: protect-azure-kubernetes-service.md
     - name: Nastavení DNS
       href: dns-settings.md
+    - name: Monitorování diagnostických protokolů
+      href: firewall-diagnostics.md
 - name: Referenční informace
   items:
     - name: Azure CLI

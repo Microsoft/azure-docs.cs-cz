@@ -4,12 +4,12 @@ description: Naučte se, jak připojit svazek souborů Azure k trvalému stavu p
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: 593400f67db5018f1533dd37eed88ece7fd596c6
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169574"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259478"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Připojení sdílené složky ve službě Azure Container Instances
 
@@ -223,11 +223,11 @@ Stejně jako v předchozích příkladech `dnsNameLabel` musí být hodnota jedi
 }
 ```
 
-Pokud chcete nasadit šablonu Správce prostředků, uložte předchozí JSON do souboru s názvem `deploy-aci.json` a pak spusťte příkaz [AZ Group Deployment Create][az-group-deployment-create] s `--template-file` parametrem:
+Pokud chcete nasadit šablonu Správce prostředků, uložte předchozí JSON do souboru s názvem `deploy-aci.json` a potom spusťte příkaz [AZ Deployment Group Create][az-deployment-group-create] s `--template-file` parametrem:
 
 ```azurecli
 # Deploy with Resource Manager template
-az group deployment create --resource-group myResourceGroup --template-file deploy-aci.json
+az deployment group create --resource-group myResourceGroup --template-file deploy-aci.json
 ```
 
 
@@ -285,4 +285,4 @@ Naučte se připojit další typy svazků v Azure Container Instances:
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

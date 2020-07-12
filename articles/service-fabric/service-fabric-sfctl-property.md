@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a5ebd4822c5f0ff1735464bb4d5b42c436ee529
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905830"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260320"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Uložení a dotazování vlastností pod názvy Service Fabric.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
-| delete | Odstraní zadanou vlastnost Service Fabric. |
+| odstranění | Odstraní zadanou vlastnost Service Fabric. |
 | get | Získá zadanou vlastnost Service Fabric. |
 | list | Získá informace o všech vlastnostech Service Fabric pod daným názvem. |
 | převést | Vytvoří nebo aktualizuje vlastnost Service Fabric. |
@@ -30,7 +31,7 @@ Odstraní zadanou vlastnost Service Fabric v rámci daného názvu. Vlastnost mu
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Name-ID [povinné] | Název Service Fabric bez \: schématu identifikátoru URI prostředků infrastruktury |
 | --Property-Name [povinné] | Určuje název vlastnosti, která má být získána. |
@@ -38,7 +39,7 @@ Odstraní zadanou vlastnost Service Fabric v rámci daného názvu. Vlastnost mu
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -53,7 +54,7 @@ Získá zadanou vlastnost Service Fabric pod daným názvem. Tím se vždycky vr
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Name-ID [povinné] | Název Service Fabric bez \: schématu identifikátoru URI prostředků infrastruktury |
 | --Property-Name [povinné] | Určuje název vlastnosti, která má být získána. |
@@ -61,7 +62,7 @@ Získá zadanou vlastnost Service Fabric pod daným názvem. Tím se vždycky vr
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -76,7 +77,7 @@ Název Service Fabric může obsahovat jednu nebo více pojmenovaných vlastnost
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Name-ID [povinné] | Název Service Fabric bez \: schématu identifikátoru URI prostředků infrastruktury |
 | --pokračování-token | Parametr tokenu pokračování slouží k získání další sady výsledků. Token pokračování s neprázdnou hodnotou je zahrnut v odpovědi rozhraní API v případě, že se výsledky ze systému nevejdou do jediné odpovědi. Když se tato hodnota předává do dalšího volání rozhraní API, vrátí rozhraní API další sadu výsledků. Pokud nejsou k dispozici žádné další výsledky, token pokračování neobsahuje hodnotu. Hodnota tohoto parametru nesmí být kódovaná v adrese URL. |
@@ -85,7 +86,7 @@ Název Service Fabric může obsahovat jednu nebo více pojmenovaných vlastnost
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -100,7 +101,7 @@ Vytvoří nebo aktualizuje zadanou vlastnost Service Fabric v rámci daného ná
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Name-ID [povinné] | Název Service Fabric bez \: schématu identifikátoru URI prostředků infrastruktury |
 | --Property-Name [povinné] | Název vlastnosti Service Fabric. |
@@ -110,7 +111,7 @@ Vytvoří nebo aktualizuje zadanou vlastnost Service Fabric v rámci daného ná
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -121,4 +122,4 @@ Vytvoří nebo aktualizuje zadanou vlastnost Service Fabric v rámci daného ná
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

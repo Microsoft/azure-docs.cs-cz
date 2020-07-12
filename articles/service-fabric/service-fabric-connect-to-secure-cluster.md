@@ -3,11 +3,12 @@ title: Zabezpečené připojení k clusteru Azure Service Fabric
 description: Popisuje ověření přístupu klienta ke clusteru Service Fabric a způsob zabezpečení komunikace mezi klienty a clusterem.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d3598b283a91645f0db648be81c73dffde8b46
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701215"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259251"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
@@ -144,7 +145,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 <a id="connectsecureclusterfabricclient"></a>
 
 ## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Připojení ke clusteru pomocí rozhraní FabricClient API
-Sada Service Fabric SDK poskytuje třídu [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) pro správu clusteru. Pokud chcete používat rozhraní API FabricClient, Získejte balíček NuGet Microsoft. ServiceFabric.
+Sada Service Fabric SDK poskytuje třídu [FabricClient](/dotnet/api/system.fabric.fabricclient) pro správu clusteru. Pokud chcete používat rozhraní API FabricClient, Získejte balíček NuGet Microsoft. ServiceFabric.
 
 ### <a name="connect-to-an-unsecure-cluster"></a>Připojení k nezabezpečenému clusteru
 
@@ -162,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Připojení k zabezpečenému clusteru pomocí klientského certifikátu
 
-Uzly v clusteru musí mít platné certifikáty, jejichž běžný název nebo název DNS v síti SAN se zobrazí ve [vlastnosti RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) nastavené na [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Následující postup umožňuje vzájemné ověřování mezi klientem a uzly clusteru.
+Uzly v clusteru musí mít platné certifikáty, jejichž běžný název nebo název DNS v síti SAN se zobrazí ve [vlastnosti RemoteCommonNames](/dotnet/api/system.fabric.x509credentials) nastavené na [FabricClient](/dotnet/api/system.fabric.fabricclient). Následující postup umožňuje vzájemné ověřování mezi klientem a uzly clusteru.
 
 ```csharp
 using System.Fabric;
@@ -230,7 +231,7 @@ catch (Exception e)
 
 Následující příklad spoléhá na Microsoft. IdentityModel. clients. Active, Version: 2.19.208020213.
 
-Další informace o získání tokenu AAD najdete v tématu [Microsoft. IdentityModel. clients. Active](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
+Další informace o získání tokenu AAD najdete v tématu [Microsoft. IdentityModel. clients. Active](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet).
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";

@@ -5,18 +5,19 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd911574cd37c18e3043cfc2482bd1fcd5f3857b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906186"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260844"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Získejte a nastavte plán chaos.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
 | get | Získejte plán chaos definující, kdy a jak se má spustit chaos. |
 | set | Nastavte plán používaný nástrojem chaos. |
@@ -28,13 +29,13 @@ Získá verzi používaného plánu chaos a plán chaos, který definuje, kdy a 
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Timeout-t | Časový limit serveru pro provedení operace během několika sekund. Tento časový limit určuje dobu, po kterou bude klient ochotn počkat na dokončení požadované operace. Výchozí hodnota pro tento parametr je 60 sekund.  Výchozí hodnota je \: 60. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -49,7 +50,7 @@ Chaos automaticky naplánuje spuštění na základě plánu chaos. Plán chaos 
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --chaos-Parameters-Dictionary | Seznam kódovaný v kódování JSON představující mapování názvů řetězců na ChaosParameters, které mají být použity úlohami. |
 | --Datum vypršení platnosti-UTC | Datum a čas, kdy se má zastavit plánování chaos pomocí plánu.  Výchozí hodnota \: 9999-12-31T23 \: 59 \: 59.999 z. |
@@ -60,7 +61,7 @@ Chaos automaticky naplánuje spuštění na základě plánu chaos. Plán chaos 
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -140,4 +141,4 @@ sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z"
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

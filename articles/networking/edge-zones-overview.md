@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086887"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260071"
 ---
 # <a name="about-azure-edge-zone-preview"></a>O verzi Preview zóny Azure Edge
 
@@ -75,6 +75,8 @@ Mezi typické případy použití patří:
 Hraniční zóny budou nabídnuty ve spolupráci s následujícími operátory:
 
 - AT&T (Brno, Praha a Los Angeles) 
+
+Nezávislý výrobce softwaru pracující na optimalizovaných a škálovatelných aplikacích, které jsou připojené k sítím 5G, teď můžou používat nové umístění Azure Edge ve verzi Preview, které se nachází na&T při sestavování a experimentování s extrémně nízkou latencí, mobilními a propojenými scénáři. Zaregistrujte se do programu předčasného přihlašování, abyste mohli využít zabezpečené připojení s vysokou šířkou pásma.
 
 Další informace [vám poskytne tým hraničních zón](https://aka.ms/EdgeZones) .
 

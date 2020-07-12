@@ -4,14 +4,14 @@ description: Přečtěte si, jak nastavit privátní odkaz Azure pro přístup k
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: 1ee468b99cddeb5f18f78a6d1298c8959bda075b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261626"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259115"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 
@@ -38,7 +38,7 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte své předplatné. |
+    | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Vyberte skupinu prostředků.|
     | **Podrobnosti instance** |  |
     | Name | Zadejte libovolný název vašeho privátního koncového bodu. Pokud se tento název povede, vytvořte jedinečný. |
@@ -50,9 +50,9 @@ Pomocí následujících kroků můžete vytvořit privátní koncový bod pro e
     | Nastavení | Hodnota |
     | ------- | ----- |
     |Způsob připojení  | **V adresáři vyberte připojit k prostředku Azure**. <br/><br/> Pak můžete zvolit jeden z vašich prostředků pro nastavení privátního propojení. Nebo se můžete připojit k prostředku jiné osoby pomocí ID prostředku nebo aliasu, který s vámi sdílí.|
-    | Předplatné| Vyberte své předplatné. |
+    | Předplatné| Vyberte předplatné. |
     | Typ prostředku | Vyberte **Microsoft. AzureCosmosDB/databaseAccounts**. |
-    | Prostředek |Vyberte svůj účet Azure Cosmos. |
+    | Resource |Vyberte svůj účet Azure Cosmos. |
     |Cílový dílčí prostředek |Vyberte Azure Cosmos DB typ rozhraní API, který chcete namapovat. Tato možnost je standardně jenom jedna volba pro rozhraní API SQL, MongoDB a Cassandra. Pro Gremlin a rozhraní Table API můžete také zvolit **SQL** , protože tato rozhraní API se vzájemně spolupracují s rozhraním SQL API. |
     |||
 
@@ -655,8 +655,6 @@ Pokud používáte privátní propojení s účtem Azure Cosmos, platí následu
 * Pokud používáte rozhraní API Azure Cosmos DB pro účet MongoDB, který má privátní propojení, nemusí některé nástroje nebo knihovny fungovat, protože automaticky vyřadí `appName` parametr z připojovacího řetězce. Tento parametr se vyžaduje pro připojení k účtu přes soukromý koncový bod. Některé nástroje, například Visual Studio Code, neodstraňují tento parametr z připojovacího řetězce a jsou proto kompatibilní.
 
 * Správce sítě by měl mít alespoň `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` oprávnění v oboru účtu Azure Cosmos k vytváření automaticky schválených privátních koncových bodů.
-
-* Přímý režim není v současnosti podporován v oblastech Azure založených na Číně.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>Omezení integrace privátní zóny DNS
 

@@ -4,30 +4,31 @@ description: Přečtěte si o GetCurrentDateTime funkcí SQL systému v Azure Co
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 07/09/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2ac3235191952702f2acc39a25e948511901050b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4db2ec7bbd05d982af57c05fd46ef7da7c682e15
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555884"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258804"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
- Vrátí aktuální čas UTC (koordinovaný světový čas) datum a čas jako řetězec ISO 8601.
+
+Vrátí aktuální čas UTC (koordinovaný světový čas) datum a čas jako řetězec ISO 8601.
   
 ## <a name="syntax"></a>Syntax
   
 ```sql
 GetCurrentDateTime ()
 ```
-  
+
 ## <a name="return-types"></a>Návratové typy
   
   Vrátí aktuální hodnotu řetězce standardu UTC data a času 8601 ve formátu, `YYYY-MM-DDThh:mm:ss.fffffffZ` kde:
   
-  |Formát|Description|
+  |Formát|Popis|
   |-|-|
   |RRRR|rok se čtyřmi číslicemi|
   |MM|dvoumístný měsíc (01 = leden atd.)|
@@ -43,7 +44,7 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>Poznámky
 
-  GetCurrentDateTime () je nedeterministické funkce. 
+  GetCurrentDateTime () je nedeterministické funkce.
   
   Vrácený výsledek je UTC.
 

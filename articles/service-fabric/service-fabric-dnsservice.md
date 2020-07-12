@@ -3,11 +3,12 @@ title: Služba DNS pro Azure Service Fabric
 description: Použijte službu DNS Service Fabric pro zjišťování mikroslužeb v rámci clusteru.
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458026"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258903"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Služba DNS v Azure Service Fabric
 Služba DNS je volitelná systémová služba, kterou můžete v clusteru povolit a zjišťovat tak další služby pomocí protokolu DNS. 
@@ -41,7 +42,7 @@ Když vytvoříte cluster pomocí portálu, služba DNS je ve výchozím nastave
 Pokud nepoužíváte portál k vytvoření clusteru nebo pokud aktualizujete existující cluster, budete muset povolit službu DNS v šabloně:
 
 - K nasazení nového clusteru můžete použít [ukázkové šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) nebo vytvořit vlastní šablonu správce prostředků. 
-- Pokud chcete aktualizovat existující cluster, můžete přejít na skupinu prostředků clusteru na portálu a kliknout na **skript Automation** pro práci se šablonou, která odráží aktuální stav clusteru a dalších prostředků ve skupině. Další informace najdete v tématu [Export šablony ze skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template).
+- Pokud chcete aktualizovat existující cluster, můžete přejít na skupinu prostředků clusteru na portálu a kliknout na **skript Automation** pro práci se šablonou, která odráží aktuální stav clusteru a dalších prostředků ve skupině. Další informace najdete v tématu [Export šablony ze skupiny prostředků](../azure-resource-manager/templates/export-template-portal.md).
 
 Po vytvoření šablony můžete službu DNS povolit pomocí následujících kroků:
 
@@ -102,7 +103,7 @@ Po vytvoření šablony můžete službu DNS povolit pomocí následujících kr
 3. Jakmile aktualizujete šablonu clusteru o provedené změny, použijte ji a nechte upgrade dokončeno. Po dokončení upgradu začne služba systému DNS běžet ve vašem clusteru. Název služby je `fabric:/System/DnsService` a můžete ho najít v části **Systémová** služba v Service Fabric Exploreru. 
 
 > [!NOTE]
-> Při upgradu serveru DNS z zakázaného na povoleno se Service Fabric Explorer nemusí odrážet nový stav. Chcete-li řešení vyřešit, restartujte uzly úpravou UpgradePolicy v šabloně Azure Resource Manager. Další informace najdete v [referenčních informacích k šabloně Service Fabric](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) .
+> Při upgradu serveru DNS z zakázaného na povoleno se Service Fabric Explorer nemusí odrážet nový stav. Chcete-li řešení vyřešit, restartujte uzly úpravou UpgradePolicy v šabloně Azure Resource Manager. Další informace najdete v [referenčních informacích k šabloně Service Fabric](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) .
 
 > [!NOTE]
 > Povolení služby DNS při vývoji na místním počítači přepíše některá nastavení DNS. Pokud se setkáte s připojením k Internetu, ověřte nastavení DNS.
@@ -128,7 +129,7 @@ Po nasazení aplikace instance služby v Průzkumníkovi Service Fabric zobrazuj
 
 ![koncové body služby](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-Následující příklad nastaví název DNS stavové služby na `statefulsvc.app` . Služba používá schéma pojmenovaného dělení. Všimněte si, že názvy oddílů jsou malými písmeny. Toto je požadavek na oddíly, které budou cílené na dotazy DNS. Další informace najdete v tématu [vytváření dotazů DNS na oddílu stavové služby](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
+Následující příklad nastaví název DNS stavové služby na `statefulsvc.app` . Služba používá schéma pojmenovaného dělení. Všimněte si, že názvy oddílů jsou malými písmeny. Toto je požadavek na oddíly, které budou cílené na dotazy DNS. Další informace najdete v tématu [vytváření dotazů DNS na oddílu stavové služby](#preview-making-dns-queries-on-a-stateful-service-partition).
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
@@ -252,4 +253,3 @@ public class ValuesController : Controller
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o komunikaci služby v rámci clusteru s [připojením a komunikace se službami](service-fabric-connect-and-communicate-with-services.md)
-

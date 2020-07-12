@@ -3,12 +3,12 @@ title: Upgrade verze Azure Service Fabric v clusteru
 description: Upgradujte Service Fabric kód nebo konfiguraci, která spouští Cluster Service Fabric, včetně nastavení režimu aktualizace clusteru, upgradu certifikátů, přidávání portů aplikací, provádění oprav operačního systému a tak dále. Co můžete očekávat při provádění upgradů?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82789596"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261062"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Upgrade verze Service Fabric v clusteru
 
@@ -19,7 +19,7 @@ Cluster můžete nastavit tak, aby přijímal automatické upgrady prostředků 
 Provedete to tak, že nastavíte konfiguraci clusteru "upgradeMode" na portálu nebo pomocí Správce prostředků v době vytváření nebo později v živém clusteru. 
 
 > [!NOTE]
-> Zajistěte, aby cluster používal podporovanou verzi prostředků infrastruktury vždycky. Jak a když oznamujeme vydání nové verze Service fabricu, bude předchozí verze označená pro konec podpory po dobu minimálně 60 dní od tohoto data. Nové verze jsou oznámeny [na blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). K dispozici je nová verze, kterou si můžete vybrat. 
+> Zajistěte, aby cluster používal podporovanou verzi prostředků infrastruktury vždycky. Jak a když oznamujeme vydání nové verze Service fabricu, bude předchozí verze označená pro konec podpory po dobu minimálně 60 dní od tohoto data. Nové verze jsou oznámeny [na blogu týmu Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric). K dispozici je nová verze, kterou si můžete vybrat. 
 > 
 > 
 

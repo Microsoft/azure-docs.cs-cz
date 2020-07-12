@@ -4,11 +4,12 @@ description: Úvod k vytvoření aplikace Microsoft Azure Service Fabric se stav
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038017"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260478"
 ---
 # <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
 
@@ -168,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) je slovníková implementace, kterou můžete použít k spolehlivému ukládání stavu ve službě. Pomocí Service Fabric a spolehlivých kolekcí můžete přímo ukládat data do vaší služby, aniž by bylo nutné externí trvalé úložiště. Spolehlivé kolekce zajistí vysokou dostupnost vašich dat. Service Fabric toho dosahuje vytvořením a správou více *replik* vaší služby za vás. Poskytuje také rozhraní API, které abstrakce zjednodušuje správu těchto replik a jejich přechodů na stav.
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) je slovníková implementace, kterou můžete použít k spolehlivému ukládání stavu ve službě. Pomocí Service Fabric a spolehlivých kolekcí můžete přímo ukládat data do vaší služby, aniž by bylo nutné externí trvalé úložiště. Spolehlivé kolekce zajistí vysokou dostupnost vašich dat. Service Fabric toho dosahuje vytvořením a správou více *replik* vaší služby za vás. Poskytuje také rozhraní API, které abstrakce zjednodušuje správu těchto replik a jejich přechodů na stav.
 
 Spolehlivé kolekce můžou ukládat jakýkoli typ .NET, včetně vašich vlastních typů, s několika upozorněními:
 
-* Service Fabric zajistí, aby byl stav vysoce dostupný při *replikaci* do všech uzlů, a spolehlivé kolekce ukládají vaše data na místní disk v každé replice. To znamená, že všechno, co je uloženo ve spolehlivých kolekcích, musí být *serializovatelný*. Ve výchozím nastavení používají spolehlivé kolekce [kontrakt DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) pro serializaci, takže je důležité zajistit, aby byly vaše typy [podporovány serializátorem kontraktu dat](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) při použití výchozího serializátoru.
+* Service Fabric zajistí, aby byl stav vysoce dostupný při *replikaci* do všech uzlů, a spolehlivé kolekce ukládají vaše data na místní disk v každé replice. To znamená, že všechno, co je uloženo ve spolehlivých kolekcích, musí být *serializovatelný*. Ve výchozím nastavení používají spolehlivé kolekce [kontrakt DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) pro serializaci, takže je důležité zajistit, aby byly vaše typy [podporovány serializátorem kontraktu dat](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) při použití výchozího serializátoru.
 * Objekty jsou při potvrzení transakcí u spolehlivých kolekcí replikovány pro zajištění vysoké dostupnosti. Objekty uložené ve spolehlivých kolekcích jsou v rámci služby uchovávány v místní paměti. To znamená, že máte místní odkaz na objekt.
   
    Je důležité, abyste nemuseli provádět místní instance těchto objektů bez provedení operace aktualizace pro spolehlivou kolekci v transakci. Důvodem je to, že změny místních instancí objektů nebudou replikovány automaticky. Objekt je nutné znovu vložit zpět do slovníku nebo použít jednu z metod *aktualizace* ve slovníku.
@@ -211,7 +212,7 @@ Po spuštění služeb můžete v okně **diagnostické události** zobrazit gen
 ## <a name="next-steps"></a>Další kroky
 [Ladění aplikace Service Fabric v aplikaci Visual Studio](service-fabric-debugging-your-application.md)
 
-[Začínáme: Service Fabric služby webového rozhraní API pomocí samoobslužného hostování OWIN](service-fabric-reliable-services-communication-webapi.md)
+[Začínáme: Service Fabric služby webového rozhraní API pomocí samoobslužného hostování OWIN](./service-fabric-reliable-services-communication-aspnetcore.md)
 
 [Další informace o spolehlivých kolekcích](service-fabric-reliable-services-reliable-collections.md)
 
@@ -219,5 +220,4 @@ Po spuštění služeb můžete v okně **diagnostické události** zobrazit gen
 
 [Upgrade aplikací](service-fabric-application-upgrade.md)
 
-[Referenční příručka pro vývojáře pro Reliable Services](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+[Referenční příručka pro vývojáře pro Reliable Services](/previous-versions/azure/dn706529(v=azure.100))

@@ -3,17 +3,18 @@ title: Vytvoření pravidla Azure Load Balancer pro cluster
 description: Nakonfigurujte Azure Load Balancer pro otevření portů pro cluster Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025380"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259040"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevření portů pro cluster Service Fabric
 
 Nástroj pro vyrovnávání zatížení, který je nasazený s vaším clusterem Azure Service Fabric, směruje provoz do vaší aplikace spuštěné na uzlu. Pokud změníte svoji aplikaci tak, aby používala jiný port, musíte tento port (nebo směrovat jiný port) v Azure Load Balancer.
 
-Když nasadíte Cluster Service Fabric do Azure, automaticky se pro vás vytvoří nástroj pro vyrovnávání zatížení. Pokud nemáte Nástroj pro vyrovnávání zatížení, přečtěte si téma [Konfigurace internetového nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-get-started-internet-portal.md).
+Když nasadíte Cluster Service Fabric do Azure, automaticky se pro vás vytvoří nástroj pro vyrovnávání zatížení. Pokud nemáte Nástroj pro vyrovnávání zatížení, přečtěte si téma [Konfigurace internetového nástroje pro vyrovnávání zatížení](../load-balancer/quickstart-load-balancer-standard-public-portal.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -24,7 +25,7 @@ Konfigurační soubor **ServiceManifest.xml** aplikace Service Fabric definuje k
 
 ## <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo Load Balancer otevře Internetový port a přepošle provoz na port interního uzlu, který vaše aplikace používá. Pokud nemáte Nástroj pro vyrovnávání zatížení, přečtěte si téma [Konfigurace internetového nástroje pro vyrovnávání zatížení](../load-balancer/load-balancer-get-started-internet-portal.md).
+Pravidlo Load Balancer otevře Internetový port a přepošle provoz na port interního uzlu, který vaše aplikace používá. Pokud nemáte Nástroj pro vyrovnávání zatížení, přečtěte si téma [Konfigurace internetového nástroje pro vyrovnávání zatížení](../load-balancer/quickstart-load-balancer-standard-public-portal.md).
 
 Chcete-li vytvořit pravidlo Load Balancer, je nutné shromáždit následující informace:
 

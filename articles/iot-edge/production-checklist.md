@@ -4,18 +4,19 @@ description: Naučte se, jak převést Azure IoT Edge řešení z vývoje do pro
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/25/2020
+ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431926"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258785"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -37,11 +38,14 @@ IoT Edge zařízení mohou být od maliny PI až po přenosný počítač na vir
 
 ### <a name="install-production-certificates"></a>Instalace produkčních certifikátů
 
-Každé IoT Edge zařízení v produkčním prostředí potřebuje certifikát certifikační autority zařízení (CA), který je na něm nainstalovaný. Tento certifikát certifikační autority se pak deklaruje jako modul runtime IoT Edge v souboru config. yaml. Pro scénáře vývoje a testování vytvoří modul runtime IoT Edge dočasné certifikáty, pokud nejsou v souboru config. yaml deklarovány žádné certifikáty. Platnost těchto dočasných certifikátů však vyprší po třech měsících a nejsou zabezpečené pro produkční scénáře.
+Každé IoT Edge zařízení v produkčním prostředí potřebuje certifikát certifikační autority zařízení (CA), který je na něm nainstalovaný. Tento certifikát certifikační autority se pak deklaruje jako modul runtime IoT Edge v souboru config. yaml. Pro scénáře vývoje a testování vytvoří modul runtime IoT Edge dočasné certifikáty, pokud nejsou v souboru config. yaml deklarovány žádné certifikáty. Platnost těchto dočasných certifikátů však vyprší po třech měsících a nejsou zabezpečené pro produkční scénáře. V produkčních scénářích byste měli zadat vlastní certifikát certifikační autority pro zařízení, a to buď od certifikační autority podepsané svým držitelem, nebo zakoupené od Komerční certifikační autority.
+
+> [!NOTE]
+> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050.
 
 Informace o [tom, jak Azure IoT Edge používá certifikáty](iot-edge-certs.md), najdete v tématu How of a Certificate of Certificate CA.
 
-Další informace o tom, jak nainstalovat certifikáty na zařízení IoT Edge a odkázat je ze souboru config. yaml, najdete v tématu [instalace produkčních certifikátů na IoT Edge zařízení](how-to-manage-device-certificates.md).
+Další informace o tom, jak nainstalovat certifikáty na zařízení IoT Edge a odkázat je ze souboru config. yaml, najdete v tématu [Správa certifikátů na IoT Edgem zařízení](how-to-manage-device-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Máte plán správy zařízení
 

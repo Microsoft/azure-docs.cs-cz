@@ -3,11 +3,12 @@ title: Přehled Service Fabric a kontejnerů
 description: Přehled Service Fabric a použití kontejnerů k nasazení aplikací mikroslužeb. Tento článek poskytuje přehled o tom, jak můžou být kontejnery použity, a dostupné možnosti v Service Fabric.
 ms.topic: conceptual
 ms.date: 8/8/2018
-ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458221"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259233"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric a kontejnery
 
@@ -64,7 +65,7 @@ Na následujícím obrázku jsou znázorněny různé typy virtualizace a úrovn
 
 Tady jsou typické příklady, kde je kontejner dobrou volbou:
 
-* **Zvednutí a posunutí služby IIS**: existující aplikaci [ASP.NET MVC](https://www.asp.net/mvc) můžete vložit do kontejneru místo migrace na ASP.NET Core. Tyto aplikace ASP.NET MVC jsou závislé na Internetová informační služba (IIS). Tyto aplikace můžete zabalit do kontejnerových imagí z předvytvořené bitové kopie služby IIS a nasadit je pomocí Service Fabric. Informace o kontejnerech Windows najdete v tématu [Image kontejnerů na Windows serveru](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
+* **Zvednutí a posunutí služby IIS**: existující aplikaci [ASP.NET MVC](https://www.asp.net/mvc) můžete vložit do kontejneru místo migrace na ASP.NET Core. Tyto aplikace ASP.NET MVC jsou závislé na Internetová informační služba (IIS). Tyto aplikace můžete zabalit do kontejnerových imagí z předvytvořené bitové kopie služby IIS a nasadit je pomocí Service Fabric. Informace o kontejnerech Windows najdete v tématu [Image kontejnerů na Windows serveru](/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
 
 * **Kombinovat kontejnery a Service Fabric mikroslužby**: pro část aplikace použijte existující image kontejneru. Například můžete použít [kontejner Nginx](https://hub.docker.com/_/nginx/) pro webový front-end aplikace a stavové služby pro náročnější výpočet back-endu.
 
@@ -89,7 +90,7 @@ Service Fabric poskytuje několik možností kontejneru, které vám pomůžou s
 * Možnost nastavení zabezpečovacích přihlašovacích údajů v kontejneru.
 * Výběr různých síťových režimů pro kontejnery.
 
-Úplný přehled podpory kontejnerů v Azure, jako je vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes, jak vytvořit privátní registr Docker v systému Azure Container Registry a další informace najdete v tématu [Azure for Containers](https://docs.microsoft.com/azure/containers/).
+Úplný přehled podpory kontejnerů v Azure, jako je vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes, jak vytvořit privátní registr Docker v systému Azure Container Registry a další informace najdete v tématu [Azure for Containers](../containers/index.yml).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -97,6 +98,6 @@ V tomto článku jste se dozvěděli o podpoře, které Service Fabric poskytuje
 
 [Vytvoření první aplikace Service Fabric typu kontejner v Linuxu](service-fabric-get-started-containers-linux.md)  
 [Vytvoření první aplikace Service Fabric typu kontejner v systému Windows](service-fabric-get-started-containers.md)  
-[Další informace o kontejnerech Windows](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[Další informace o kontejnerech Windows](/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

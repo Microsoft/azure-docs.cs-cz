@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: charwen
-ms.openlocfilehash: f3a658d4b02501994437691308810ffb9cabcb6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2672068e505b7c86127b8b765372e7c607c3875a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738851"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259772"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimalizace směrování ExpressRoute
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho může dojít k neoptimálnímu směrování, to znamená, že přenosy dat mezi vaší sítí a Microsoftem mohou použít delší cestu. Čím delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon aplikací a činnost koncového uživatele. Tento článek popíše tento problém a vysvětlí možnosti optimalizace směrování pomocí standardních technologií směrování.
@@ -33,18 +33,18 @@ Ve výše uvedeném příkladu dáváte přednost ExpressRoute cestám konfigura
 
 **Konfigurace Cisco IOS-XE z perspektivy R1:**
 
-    R1(config)#route-map prefer-ExR permit 10
-    R1(config-route-map)#set local-preference 150
+- R1 (config) #route-map preferovat-ExR Permit 10
+- R1 (config-route-map) #set místní preference 150
 
-    R1(config)#router BGP 345
-    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
-    R1(config-router)#neighbor 1.1.1.2 activate
-    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+- R1 (config) #router BGP 345
+- R1 (config-router) #neighbor 1.1.1.2 Remote-as 12076
+- R1 (config-router) #neighbor 1.1.1.2 Activate
+- R1 (config-router) #neighbor 1.1.1.2 route-map preferovat-ExR in
 
 **Konfigurace Junos z hlediska R1:**
 
-    user@R1# set protocols bgp group ibgp type internal
-    user@R1# set protocols bgp group ibgp local-preference 150
+- user@R1# Set Protocols Group protokolu BGP iBGP typ interní
+- user@R1# Set Protocols Group protokolu BGP iBGP Local-preference 150
 
 
 

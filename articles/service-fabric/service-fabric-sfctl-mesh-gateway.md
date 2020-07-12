@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 3e398ff8a1a0a28fd9d0650a7c9d18ba04817d33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b6766137dd88a5a780dcca7b6eab7c6c3f9bbf4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906013"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260385"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
 Získejte a odstraňte prostředky brány sítě.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
-| delete | Odstraní prostředek brány. |
+| odstranění | Odstraní prostředek brány. |
 | list | Zobrazí seznam všech prostředků brány. |
 | show | Získá prostředek brány s daným názvem. |
 
@@ -29,13 +30,13 @@ Odstraní prostředek brány identifikovaný názvem.
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Name-n [povinné] | Název prostředku brány |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -50,7 +51,7 @@ Načte informace o všech prostředcích brány v dané skupině prostředků. T
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -65,13 +66,13 @@ Načte informace o prostředku brány s daným názvem. Tyto informace zahrnují
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Name-n [povinné] | Název prostředku brány |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -82,4 +83,4 @@ Načte informace o prostředku brány s daným názvem. Tyto informace zahrnují
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

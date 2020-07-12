@@ -5,12 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4cab376318bec471fa59614e5bcc716a31dc333
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184142"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260934"
 ---
 # <a name="get-started-with-reliable-services-in-java"></a>Začínáme s Reliable Services v jazyce Java
 > [!div class="op_single_selector"]
@@ -190,7 +190,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections.reliablehashmap) je slovníková implementace, kterou můžete použít k spolehlivému ukládání stavu ve službě. Pomocí Service Fabric a spolehlivých HashMaps můžete ukládat data přímo do služby bez nutnosti externího trvalého úložiště. Spolehlivé HashMaps zajistí vysokou dostupnost vašich dat. Service Fabric toho dosahuje vytvořením a správou více *replik* vaší služby za vás. Poskytuje také rozhraní API, které abstrakce zjednodušuje správu těchto replik a jejich přechodů na stav.
+[ReliableHashMap](/java/api/microsoft.servicefabric.data.collections.reliablehashmap) je slovníková implementace, kterou můžete použít k spolehlivému ukládání stavu ve službě. Pomocí Service Fabric a spolehlivých HashMaps můžete ukládat data přímo do služby bez nutnosti externího trvalého úložiště. Spolehlivé HashMaps zajistí vysokou dostupnost vašich dat. Service Fabric toho dosahuje vytvořením a správou více *replik* vaší služby za vás. Poskytuje také rozhraní API, které abstrakce zjednodušuje správu těchto replik a jejich přechodů na stav.
 
 Spolehlivé kolekce můžou ukládat jakýkoli typ Java, včetně vašich vlastních typů, s několika upozorněními:
 

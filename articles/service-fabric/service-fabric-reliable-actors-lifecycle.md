@@ -5,12 +5,12 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db47a758d33c3ed6e861601285e7737514ab416d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847866"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260437"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Životní cyklus objektu actor, automatické uvolňování paměti a ruční odstranění
 Objekt actor se aktivuje při prvním volání jakékoli z jeho metod. Objekt actor se deaktivuje (uvolňování paměti modulem Actors), pokud se nepoužívá pro konfigurovatelnou dobu. Objekt actor a jeho stav lze také kdykoli odstranit ručně.
@@ -112,7 +112,7 @@ Uvolňování paměti deaktivovaných aktérů vyčistí jenom objekt actor, ale
 * [Události objektu actor](service-fabric-reliable-actors-events.md)
 * [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
 * [Monitorování diagnostiky a výkonu objektu actor](service-fabric-reliable-actors-diagnostics.md)
-* [Referenční dokumentace k rozhraní API actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Referenční dokumentace k rozhraní API actor](/previous-versions/azure/dn971626(v=azure.100))
 * [Ukázkový kód C#](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Vzorový kód Java](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

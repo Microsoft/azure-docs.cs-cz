@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82025029"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259640"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Nasazování na vyhrazené hostitele
 
@@ -17,7 +18,7 @@ ms.locfileid: "82025029"
 
 Vyhrazená SKU je vhodná pro úlohy kontejneru, které vyžadují izolaci úloh z pohledu fyzického serveru.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Výchozí omezení pro všechna předplatná, která používají vyhrazené SKU, je 0. Pokud chcete tuto sku použít pro nasazení produkčního kontejneru, vytvořte [support Request Azure][azure-support] pro zvýšení limitu.
 
@@ -27,7 +28,7 @@ Vyhrazená SKU je vhodná pro úlohy kontejneru, které vyžadují izolaci úloh
 > Použití vyhrazené SKU je dostupné jenom v nejnovější verzi rozhraní API (2019-12-01), která se v tuto chvíli zavádí. Tuto verzi rozhraní API zadejte v šabloně nasazení.
 >
 
-Počínaje rozhraním API verze 2019-12-01 je `sku` v části vlastnosti skupiny kontejnerů v šabloně nasazení požadovaná vlastnost, která se vyžaduje pro nasazení ACI. V současné době můžete tuto vlastnost použít jako součást šablony nasazení Azure Resource Manager pro ACI. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Počínaje rozhraním API verze 2019-12-01 je `sku` v části vlastnosti skupiny kontejnerů v šabloně nasazení požadovaná vlastnost, která se vyžaduje pro nasazení ACI. V současné době můžete tuto vlastnost použít jako součást šablony nasazení Azure Resource Manager pro ACI. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](./container-instances-multi-container-group.md). 
 
 `sku`Vlastnost může mít jednu z následujících hodnot:
 * `Standard`– standardní volba nasazení ACI, která stále garantuje zabezpečení na úrovni hypervisoru 
@@ -136,17 +137,17 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-crea
 az group create --name myResourceGroup --location eastus
 ```
 
-Šablonu nasaďte pomocí příkazu [AZ Group Deployment Create][az-group-deployment-create] .
+Nasaďte šablonu pomocí příkazu [AZ Deployment Group Create][az-deployment-group-create] .
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 Během několika sekund by se měla zobrazit první odezva z Azure. Úspěšné nasazení se provádí na vyhrazeném hostiteli.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

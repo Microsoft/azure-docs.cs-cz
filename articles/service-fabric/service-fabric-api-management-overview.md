@@ -5,15 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76028547"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259299"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric se službou Azure API Management – Přehled
 
-Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. V Service Fabric může být bránou Bezstavová služba, jako je například [aplikace ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)nebo jiná služba určená pro příchozí přenos dat, jako je například [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)nebo [Azure API Management](https://docs.microsoft.com/azure/api-management/).
+Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. V Service Fabric může být bránou Bezstavová služba, jako je například [aplikace ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)nebo jiná služba určená pro příchozí přenos dat, jako je například [Event Hubs](../event-hubs/index.yml), [IoT Hub](../iot-hub/index.yml)nebo [Azure API Management](../api-management/index.yml).
 
 Tento článek představuje úvod k používání služby Azure API Management jako brány k vašim Service Fabricm aplikacím. API Management se integruje přímo s Service Fabric, což vám umožní publikovat rozhraní API s bohatou sadou pravidel směrování pro vaše back-end Service Fabric služby.
 

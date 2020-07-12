@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209347"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259879"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
 
@@ -44,7 +44,7 @@ Při prvním vytvoření fondu hostitelů a hostitele relací budete také potř
 
 Rozšíření fondu hostitelů přidáním virtuálních počítačů:
 
-1. Přihlaste se k portálu Azure.
+1. Přihlaste se k webu Azure Portal.
 
 2. Vyhledejte a vyberte **virtuální počítač s Windows**.
 
@@ -78,7 +78,7 @@ Rozšíření fondu hostitelů přidáním virtuálních počítačů:
 
 Teď, když jste rozšířili stávající fond hostitelů, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat ho jako součást uživatelské relace. K relaci se můžete připojit pomocí kteréhokoli z následujících klientů:
 
-- [Připojení s desktopovým klientem Windows](./connect-windows-7-and-10.md)
+- [Připojení s desktopovým klientem Windows](./connect-windows-7-10.md)
 - [Připojení k webovému klientovi](./connect-web.md)
 - [Práce s klientem Android](./connect-android.md)
 - [Připojení s klientem macOS](./connect-macos.md)

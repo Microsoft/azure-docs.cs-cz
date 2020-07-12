@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7e3a35d95e7d2a339bf33620c9d1a140fb6a0a1d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 3ed3ff94b764c0fcb5521ef8106b32923b203a01
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143755"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260652"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Postup indexování dokumentů v Azure Blob Storage s využitím Azure Kognitivní hledání
 
@@ -210,6 +210,25 @@ Pokud to chcete uvést dohromady, můžete přidat mapování polí a povolit k�
 >
 >
 
+#### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>Co když potřebujete kódovat pole, abyste ho mohli použít jako klíč, ale chcete ho také vyhledat?
+
+Existují situace, kdy potřebujete jako klíč použít zakódovanou verzi pole, jako je metadata_storage_path, ale také je potřeba, aby toto pole bylo možné prohledávat (bez kódování). Chcete-li tento problém vyřešit, můžete jej namapovat do dvou polí. ten, který se použije pro klíč, a druhý, který se použije pro účely vyhledávání. V příkladu pod polem *Key* obsahuje kódovanou cestu, zatímco pole *cesta* není zakódované a bude použito jako vyhledávací pole v indexu.
+
+```http
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "dataSourceName" : " blob-datasource ",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "fieldMappings" : [
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "path" }
+      ]
+    }
+```
 <a name="WhichBlobsAreIndexed"></a>
 ## <a name="controlling-which-blobs-are-indexed"></a>Řízení indexovaných objektů BLOB
 Můžete určit, které objekty blob budou indexovány a které se přeskočí.
@@ -303,7 +322,7 @@ Azure Kognitivní hledání omezuje velikost indexovaných objektů BLOB. Tato o
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 ```
 
-Můžete také pokračovat v indexování, pokud dojde k chybám v jakémkoli okamžiku zpracování, při analýze objektů BLOB nebo při přidávání dokumentů do indexu. Chcete-li ignorovat určitý počet chyb, nastavte `maxFailedItems` `maxFailedItemsPerBatch` parametry konfigurace a na požadované hodnoty. Zde je příklad:
+Můžete také pokračovat v indexování, pokud dojde k chybám v jakémkoli okamžiku zpracování, při analýze objektů BLOB nebo při přidávání dokumentů do indexu. Chcete-li ignorovat určitý počet chyb, nastavte `maxFailedItems` `maxFailedItemsPerBatch` parametry konfigurace a na požadované hodnoty. Příklad:
 
 ```http
     {

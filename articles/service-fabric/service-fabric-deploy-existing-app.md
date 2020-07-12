@@ -3,12 +3,12 @@ title: Nasazení existujícího spustitelného souboru do Azure Service Fabric
 description: Naučte se, jak zabalit existující aplikaci jako spustitelný soubor hosta, takže se dá nasadit do clusteru Service Fabric.
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80520491"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259266"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Zabalit a nasadit existující spustitelný soubor pro Service Fabric
 
@@ -76,7 +76,7 @@ Proces ručního balení spustitelného souboru hosta je založen na následují
 
 ### <a name="create-the-package-directory-structure"></a>Vytvořit adresářovou strukturu balíčku
 
-Můžete začít vytvořením adresářové struktury, jak je popsáno v části [balení aplikace Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps).
+Můžete začít vytvořením adresářové struktury, jak je popsáno v části [balení aplikace Azure Service Fabric](./service-fabric-package-apps.md).
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>Přidat kód a konfigurační soubory aplikace
 
@@ -178,7 +178,7 @@ V předchozím příkladu SetupEntryPoint spustí dávkový soubor s názvem `La
 
 `EntryPoint`Element v souboru manifestu služby slouží k určení způsobu spuštění služby.
 
-`ExeHost`Element určuje spustitelný soubor (a argumenty), které by měly být použity ke spuštění služby. Volitelně můžete přidat `IsExternalExecutable="true"` atribut `ExeHost` , který označuje, že program je externí spustitelný soubor mimo balíček kódu. Například, `<ExeHost IsExternalExecutable="true">`.
+`ExeHost`Element určuje spustitelný soubor (a argumenty), které by měly být použity ke spuštění služby. Volitelně můžete přidat `IsExternalExecutable="true"` atribut `ExeHost` , který označuje, že program je externí spustitelný soubor mimo balíček kódu. Například `<ExeHost IsExternalExecutable="true">`.
 
 * `Program`Určuje název spustitelného souboru, který by měl službu spustit.
 * `Arguments`Určuje argumenty, které se mají předat spustitelnému souboru. Může se jednat o seznam parametrů s argumenty.

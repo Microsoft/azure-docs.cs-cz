@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
-ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430627"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258976"
 ---
 # <a name="initializer-codepackages"></a>Balíčky kódu inicializátoru
 
@@ -50,7 +50,7 @@ Pojďme se podívat na úplný příklad pomocí inicializátoru CodePackages.
 > [!IMPORTANT]
 > Následující příklad předpokládá znalost vytváření [kontejnerových aplikací pro Windows pomocí Service Fabric a Docker][containers-getting-started-link].
 >
-> Tento příklad odkazuje na mcr.microsoft.com/windows/nanoserver:1809. Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostitelského operačního systému. Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+> Tento příklad odkazuje na mcr.microsoft.com/windows/nanoserver:1809. Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostitelského operačního systému. Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Následující ServiceManifest.xml jsou vytvořeny na fragmentu ServiceManifest popsané výše. *InitCodePackage0*, *InitCodePackage1* a *WorkloadCodePackage* jsou CodePackages, které představují kontejnery. Při aktivaci se *InitCodePackage0* spustí jako první. Zaznamená zprávu do souboru a ukončí se. V dalším kroku se spustí *InitCodePackage1* , který také zaznamená zprávu do souboru a ukončí. Nakonec *WorkloadCodePackage* zahájí provádění. Zaznamená také zprávu do souboru, vytvoří výstup obsahu souboru do **stdout** a pak se znovu otestuje.
 
@@ -151,4 +151,3 @@ Související informace najdete v následujících článcích.
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
-

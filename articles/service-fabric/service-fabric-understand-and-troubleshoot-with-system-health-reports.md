@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392569"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260190"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Řešení problémů pomocí sestav o stavu systému
 Komponenty služby Azure Service Fabric poskytují zprávy o stavu systému pro všechny entity v clusteru přímo ze seznamu. [Health Store](service-fabric-health-introduction.md#health-store) vytvoří a odstraní entity založené na sestavách systému. Uspořádává je také v hierarchii, která zachycuje interakce entit.
@@ -73,17 +74,17 @@ Zpráva s upozorněním na stav uzlu počáteční hodnoty zobrazí seznam všec
 * **Další kroky**: Pokud se toto upozornění v clusteru zobrazí, postupujte podle pokynů níže, abyste ho opravili: u clusteru se systémem Service Fabric verze 6,5 nebo vyšší: pro Service Fabric clusteru v Azure, když se uzel počáteční hodnoty ukončí, Service Fabric se ho automaticky změní na nepočáteční uzel. Aby k tomu docházelo, ujistěte se, že počet nepočátečních uzlů v primárním uzlu je větší nebo roven počtu počátečních uzlů. V případě potřeby přidejte k primárnímu typu uzlu další uzly, abyste to dosáhli.
 V závislosti na stavu clusteru může řešení problému nějakou dobu trvat. Až to uděláte, zpráva upozornění se automaticky vymaže.
 
-Pro Service Fabric samostatný cluster, aby bylo možné vymazat zprávu o upozornění, musí být všechny počáteční uzly v dobrém stavu. V závislosti na tom, proč jsou uzly osazení v chybném stavu, je nutné provést různé akce: Pokud je uzel počáteční hodnoty mimo provoz, uživatelé musí tento počáteční uzel přenést. Pokud je uzel počáteční hodnoty odebraný nebo neznámý, je nutné tento uzel počátečního [rozhraní odebrat z clusteru](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
+Pro Service Fabric samostatný cluster, aby bylo možné vymazat zprávu o upozornění, musí být všechny počáteční uzly v dobrém stavu. V závislosti na tom, proč jsou uzly osazení v chybném stavu, je nutné provést různé akce: Pokud je uzel počáteční hodnoty mimo provoz, uživatelé musí tento počáteční uzel přenést. Pokud je uzel počáteční hodnoty odebraný nebo neznámý, je nutné tento uzel počátečního [rozhraní odebrat z clusteru](./service-fabric-cluster-windows-server-add-remove-nodes.md).
 Zpráva o upozornění se automaticky vymaže, jakmile budou všechny počáteční uzly v dobrém stavu.
 
 Pro cluster se systémem Service Fabric verze starší než 6,5: v takovém případě je nutné zprávu upozornění vymazat ručně. **Před vymazáním sestavy by se uživatelé měli ujistit, že všechny počáteční uzly budou v pořádku**. Pokud je uzel počáteční hodnoty mimo provoz, uživatelé musí tento počáteční uzel přenést. Pokud je počáteční uzel odebraný nebo neznámý, musí být tento počáteční uzel odebraný z clusteru.
-Až budou všechny počáteční uzly v dobrém stavu, použijte následující příkaz z PowerShellu k [vymazání zprávy upozornění](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
+Až budou všechny počáteční uzly v dobrém stavu, použijte následující příkaz z PowerShellu k [vymazání zprávy upozornění](/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
 
 ## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
 
 ### Node up/down
 System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
@@ -674,7 +675,7 @@ Další volání rozhraní API, která můžou zablokovat, jsou v rozhraní **IR
 * **Vlastnost**: **PrimaryReplicationQueueStatus** nebo **SecondaryReplicationQueueStatus**, v závislosti na roli repliky.
 
 ### <a name="slow-naming-operations"></a>Pomalé operace pojmenování
-**System. NamingService** hlásí stav primární repliky, když operace pojmenování trvá déle, než je přijatelné. Příklady operací pojmenování jsou [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) nebo [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Další metody najdete v části FabricClient. Můžete je například najít v části [metody správy služeb](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) nebo [metody správy vlastností](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
+**System. NamingService** hlásí stav primární repliky, když operace pojmenování trvá déle, než je přijatelné. Příklady operací pojmenování jsou [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) nebo [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). Další metody najdete v části FabricClient. Můžete je například najít v části [metody správy služeb](/dotnet/api/system.fabric.fabricclient.servicemanagementclient) nebo [metody správy vlastností](/dotnet/api/system.fabric.fabricclient.propertymanagementclient).
 
 > [!NOTE]
 > Služba pojmenování překládá názvy služeb na umístění v clusteru. Uživatelé je můžou použít ke správě názvů a vlastností služby. Jedná se o Service Fabric s dělenou trvalou službou. Jeden z oddílů představuje *vlastníka autority*, který obsahuje metadata o všech Service Fabric názvech a službách. Názvy Service Fabric jsou namapovány na jiné oddíly označované jako oddíly *vlastníka názvu* , takže služba je rozšiřitelná. Přečtěte si další informace o [službě pojmenování](service-fabric-architecture.md).
@@ -879,4 +880,3 @@ Když se v manifestu clusteru nedefinují kapacity uzlů a konfigurace pro autom
 * [Místní monitorování a diagnostika služeb](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 * [Upgrade aplikace Service Fabric](service-fabric-application-upgrade.md)
-

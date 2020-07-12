@@ -3,11 +3,12 @@ title: Ověřování pomocí spravované identity
 description: Poskytněte přístup k obrázkům v soukromém registru kontejneru pomocí uživatelsky přiřazené spravované identity Azure, která je přiřazená uživatelem nebo systémem.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456492"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259098"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Použití spravované identity Azure k ověření ve službě Azure Container Registry 
 
@@ -44,7 +45,7 @@ Pak použijte identitu k ověření pro libovolnou [službu, která podporuje ov
 
 * [Přihlaste se k Azure CLI nebo PowerShellu](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) s identitou. 
 
-## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
+## <a name="create-a-container-registry"></a>Vytvoření registru kontejneru
 
 Pokud ještě nemáte službu Azure Container Registry, vytvořte registr a nahrajte do něj ukázkovou image kontejneru. Postup najdete v tématu [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md).
 
@@ -95,7 +96,7 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-### <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
+### <a name="install-the-azure-cli"></a>Instalace Azure CLI
 
 Podle postupu v části [instalace Azure CLI pomocí apt](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) nainstalujte rozhraní příkazového řádku Azure do svého virtuálního počítače s Ubuntu. V tomto článku se ujistěte, že instalujete verzi 2.0.55 nebo novější.
 
@@ -238,7 +239,7 @@ V tomto článku jste se seznámili s používáním spravovaných identit s Azu
 > * Udělení identity přístupu ke službě Azure Container Registry
 > * Použití spravované identity pro přístup k registru a stažení Image kontejneru
 
-* Přečtěte si další informace o [spravovaných identitách pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/).
+* Přečtěte si další informace o [spravovaných identitách pro prostředky Azure](../active-directory/managed-identities-azure-resources/index.yml).
 
 
 <!-- LINKS - external -->

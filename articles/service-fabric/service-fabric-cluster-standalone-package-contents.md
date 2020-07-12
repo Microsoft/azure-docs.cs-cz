@@ -5,11 +5,12 @@ author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451851"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261021"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Obsah samostatného balíčku Service Fabric pro Windows Server
 Ve [staženém](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samostatném balíčku najdete následující soubory:
@@ -36,11 +37,11 @@ Ve [staženém](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric s
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje nastavení pro nezabezpečený vývojový cluster se třemi uzly, jeden počítač (nebo virtuální počítač), včetně informací pro každý uzel v clusteru. |
 | ClusterConfig.Unsecure.MultiMachine.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje nastavení pro nezabezpečený cluster s více počítači (nebo virtuální počítač), včetně informací pro každý počítač v clusteru. |
-| ClusterConfig.Windows.DevCluster.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje všechna nastavení zabezpečeného vývojového clusteru se třemi uzly, jednoho počítače (nebo virtuálního počítače), včetně informací pro každý uzel v clusteru. Cluster je zabezpečený pomocí [identit Windows](https://msdn.microsoft.com/library/ff649396.aspx). |
-| ClusterConfig.Windows.MultiMachine.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje všechna nastavení zabezpečeného clusteru s více počítači (nebo virtuálního počítače) používajícího zabezpečení systému Windows, včetně informací pro každý počítač, který je v zabezpečeném clusteru. Cluster je zabezpečený pomocí [identit Windows](https://msdn.microsoft.com/library/ff649396.aspx). |
+| ClusterConfig.Windows.DevCluster.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje všechna nastavení zabezpečeného vývojového clusteru se třemi uzly, jednoho počítače (nebo virtuálního počítače), včetně informací pro každý uzel v clusteru. Cluster je zabezpečený pomocí [identit Windows](/previous-versions/msp-n-p/ff649396(v=pandp.10)). |
+| ClusterConfig.Windows.MultiMachine.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje všechna nastavení zabezpečeného clusteru s více počítači (nebo virtuálního počítače) používajícího zabezpečení systému Windows, včetně informací pro každý počítač, který je v zabezpečeném clusteru. Cluster je zabezpečený pomocí [identit Windows](/previous-versions/msp-n-p/ff649396(v=pandp.10)). |
 | ClusterConfig.x509.DevCluster.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje všechna nastavení zabezpečeného vývojového clusteru se třemi uzly, jednoho počítače (nebo virtuálního počítače), včetně informací pro každý uzel v clusteru. Cluster je zabezpečený pomocí certifikátů x509. |
 | ClusterConfig.x509.MultiMachine.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje všechna nastavení pro zabezpečený cluster s více počítači (nebo virtuální počítač), včetně informací pro každý uzel v zabezpečeném clusteru. Cluster je zabezpečený pomocí certifikátů x509. |
-| ClusterConfig.gMSA.Windows.MultiMachine.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje všechna nastavení pro zabezpečený cluster s více počítači (nebo virtuální počítač), včetně informací pro každý uzel v zabezpečeném clusteru. Cluster je zabezpečený pomocí [skupinových účtů spravované služby](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx). |
+| ClusterConfig.gMSA.Windows.MultiMachine.jsna |Ukázkový soubor konfigurace clusteru, který obsahuje všechna nastavení pro zabezpečený cluster s více počítači (nebo virtuální počítač), včetně informací pro každý uzel v zabezpečeném clusteru. Cluster je zabezpečený pomocí [skupinových účtů spravované služby](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)). |
 
 ## <a name="cluster-configuration-samples"></a>Ukázky konfigurace clusteru
 Nejnovější verze šablon konfigurace clusteru najdete na stránce GitHub: [samostatné ukázky konfigurace clusteru](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).

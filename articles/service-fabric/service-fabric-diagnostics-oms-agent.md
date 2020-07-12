@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366734"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258687"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Sledování výkonu pomocí protokolů Azure Monitor
 
@@ -22,7 +23,7 @@ Tento článek popisuje postup přidání agenta Log Analytics jako rozšířen�
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Přidání rozšíření agenta přes rozhraní příkazového řádku Azure
 
-Nejlepším způsobem, jak přidat agenta Log Analytics do vašeho clusteru, je prostřednictvím rozhraní API sady škálování pro virtuální počítače, která jsou k dispozici v rozhraní příkazového řádku Azure CLI. Pokud ještě nemáte Azure CLI nastavené, přejděte na Azure Portal a otevřete [Cloud Shell](../cloud-shell/overview.md) instanci nebo [nainstalujte rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Nejlepším způsobem, jak přidat agenta Log Analytics do vašeho clusteru, je prostřednictvím rozhraní API sady škálování pro virtuální počítače, která jsou k dispozici v rozhraní příkazového řádku Azure CLI. Pokud ještě nemáte Azure CLI nastavené, přejděte na Azure Portal a otevřete [Cloud Shell](../cloud-shell/overview.md) instanci nebo [nainstalujte rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
 
 1. Po vyžádání Cloud Shell se ujistěte, že pracujete ve stejném předplatném jako váš prostředek. Zkontrolujte to pomocí `az account show` a ujistěte se, že hodnota "název" odpovídá vašemu předplatnému vašeho clusteru.
 
@@ -72,7 +73,7 @@ Teď, když jste přidali agenta Log Analytics, přecházíte na portál Log Ana
 
 3. Klikněte na **Upřesnit nastavení**.
 
-4. Klikněte na **data**a pak na **čítače výkonu Windows nebo Linux**. K dispozici je seznam výchozích čítačů, které můžete povolit, a můžete nastavit interval pro shromažďování dat. Můžete také přidat [Další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromáždění. Správný formát je odkazován v tomto [článku](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx).
+4. Klikněte na **data**a pak na **čítače výkonu Windows nebo Linux**. K dispozici je seznam výchozích čítačů, které můžete povolit, a můžete nastavit interval pro shromažďování dat. Můžete také přidat [Další čítače výkonu](service-fabric-diagnostics-event-generation-perf.md) ke shromáždění. Správný formát je odkazován v tomto [článku](/windows/win32/perfctrs/specifying-a-counter-path).
 
 5. Klikněte na **Uložit**a pak na **OK**.
 
@@ -91,5 +92,5 @@ Teď, když jste přidali agenta Log Analytics, přecházíte na portál Log Ana
 ## <a name="next-steps"></a>Další kroky
 
 * Shromážděte relevantní [čítače výkonu](service-fabric-diagnostics-event-generation-perf.md). Chcete-li nakonfigurovat agenta Log Analytics pro shromažďování konkrétních čítačů výkonu, přečtěte si téma [Konfigurace zdrojů dat](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources).
-* Konfigurace protokolů Azure Monitor pro nastavení [automatizovaného upozorňování](../log-analytics/log-analytics-alerts.md) na pomoc při zjišťování a diagnostice
+* Konfigurace protokolů Azure Monitor pro nastavení [automatizovaného upozorňování](../azure-monitor/platform/alerts-overview.md) na pomoc při zjišťování a diagnostice
 * Jako alternativu můžete shromažďovat čítače výkonu prostřednictvím [rozšíření Azure Diagnostics a posílat je Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

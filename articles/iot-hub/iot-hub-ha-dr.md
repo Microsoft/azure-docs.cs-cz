@@ -7,11 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267626"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260171"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Vysoká dostupnost služby IoT Hub a zotavení po havárii
 
@@ -75,6 +76,8 @@ Pokud nesplňuje vaše cíle provozní doby provozu RTO, kterou iniciovala služ
 
 Možnost ručního převzetí služeb při selhání je vždy dostupná pro použití bez ohledu na to, jestli má primární region výpadky nebo ne. Proto tuto možnost můžete použít k provádění plánovaných převzetí služeb při selhání. Jedním z příkladů použití plánovaného převzetí služeb při selhání je provedení pravidelného přechodu k převzetí služeb při selhání. V takovém případě se jedná o slovo s upozorněním, ale výsledkem plánované operace převzetí služeb při selhání je výpadek centra po dobu určenou RTO pro tuto možnost a také způsobí ztrátu dat, jak je definováno v tabulce RPO výše. Je možné zvážit nastavení instance testovacího centra IoT, aby bylo možné naplánovat možnost plánovaného převzetí služeb při selhání, a získat tak jistotu, že vaše možnosti budou fungovat i v případě, že dojde k reálné havárii.
 
+Ruční převzetí služeb při selhání je dostupné bez dalších poplatků pro centra IoT vytvořená po 18. května 2017
+
 Podrobné pokyny najdete v tématu [kurz: provedení ručního převzetí služeb při selhání pro Centrum IoT.](tutorial-manual-failover.md)
 
 ### <a name="running-test-drills"></a>Spuštění testovacích cvičení
@@ -127,11 +130,11 @@ Pro zjednodušení tohoto kroku byste měli použít operace idempotentní. Oper
 
 Tady je souhrn možností HA/DR prezentovaných v tomto článku, které se dají použít jako rámec Reference k výběru správné možnosti, která funguje pro vaše řešení.
 
-| Možnost HA/DR | RTO | Cíl bodu obnovení | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
+| Možnost HA/DR | RTO | RPO | Vyžaduje ruční zásah? | Složitost implementace | Dodatečný dopad na náklady|
 | --- | --- | --- | --- | --- | --- |
-| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|No|Žádná|Žádná|
-| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Yes|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádná|
-| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|No|Vysoká|> 1x náklady 1 centra IoT|
+| Převzetí služeb při selhání iniciované Microsoftem |2-26 hodin|Odkaz na tabulku RPO výše|No|Žádné|Žádné|
+| Ruční převzetí služeb při selhání |10 minut – 2 hodiny|Odkaz na tabulku RPO výše|Yes|Velmi nízká. Tuto operaci musíte aktivovat jenom z portálu.|Žádné|
+| HA mezi oblastmi |< 1 min.|Závisí na četnosti replikace vlastního řešení HA.|No|Vysoké|> 1x náklady 1 centra IoT|
 
 ## <a name="next-steps"></a>Další kroky
 

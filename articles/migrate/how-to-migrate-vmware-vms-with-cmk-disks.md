@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: afc3132ebdd0f144d16507ef2ccda2dcaffaa34e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232164"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260019"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrace virtuálních počítačů VMware na virtuální počítače Azure s povoleným šifrováním na straně serveru a zákaznickými klíči
 
@@ -59,6 +59,10 @@ Prostředí portálu pro migraci serveru zjednodušuje přípravu infrastruktury
 Objekty pro nastavení šifrování disku – mapování Managed Disks na Key Vault obsahující CMK, který se má použít pro SSE. K replikaci virtuálních počítačů pomocí CMK vytvoříte sadu pro šifrování disků a předáte ji jako vstup do operace replikace.
 
 Podle [následujícího příkladu vytvořte](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) pomocí Azure PowerShell sadu šifrování disku. Ujistěte se, že je v cílovém předplatném, na které jsou virtuální počítače migrovány, vytvořená sada Disk Encryption, a v cílové oblasti Azure pro migraci.
+
+Sada šifrování disků se dá nakonfigurovat tak, aby se pomocí klíče spravovaného zákazníkem a klíče platformy zašifroval spravované disky, nebo pro dvojité šifrování. Pokud chcete použít možnost dvojité šifrování v klidovém formátu, nakonfigurujte sadu šifrování disku, jak je popsáno [zde](../virtual-machines/windows/disks-enable-double-encryption-at-rest-powershell.md).
+
+V příkladu zobrazeném níže je sada Disk Encryption nakonfigurovaná tak, aby používala klíč spravovaný zákazníkem.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

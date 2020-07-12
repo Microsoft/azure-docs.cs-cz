@@ -1,0 +1,75 @@
+---
+title: Připojení k Windows Virtual desktopu je 2019 Windows 10 nebo 7 – Azure
+description: Jak se připojit k virtuálnímu počítači s Windows pomocí desktopového klienta Windows
+services: virtual-desktop
+author: Heidilohr
+ms.service: virtual-desktop
+ms.topic: how-to
+ms.date: 07/10/2020
+ms.author: helohr
+manager: lizross
+ms.openlocfilehash: 78c400ffc6a84696a82c219294f133b729754259
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261805"
+---
+# <a name="connect-with-the-windows-desktop-client"></a>Připojení s desktopovým klientem Windows
+
+> Platí pro: Windows 7, Windows 10 a Windows 10 IoT Enterprise
+
+>[!IMPORTANT]
+>Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../connect-windows-7-10.md).
+
+K prostředkům virtuálních klientů Windows na zařízeních s Windows 7, Windows 10 a Windows 10 IoT Enterprise můžete přistupovat pomocí desktopového klienta Windows.
+
+>[!NOTE]
+>Klient Windows automaticky nastaví výchozí hodnotu 2019 Release pro Windows Virtual Desktop. Pokud však klient zjistí, že uživatel má také prostředky Azure Resource Manager, automaticky přidá prostředky nebo upozorní uživatele, že jsou k dispozici.
+
+> [!IMPORTANT]
+> Virtuální počítač s Windows nepodporuje klienta připojení k aplikacím RemoteApp a vzdálené ploše (RADC) ani klienta Připojení ke vzdálené ploše (MSTSC).
+
+> [!IMPORTANT]
+> Virtuální počítač s Windows v současné době nepodporuje klienta vzdálené plochy z Windows Storu.
+
+## <a name="install-the-windows-desktop-client"></a>Instalace klienta pro stolní počítače se systémem Windows
+
+Vyberte klienta, který odpovídá vaší verzi Windows:
+
+- [Windows 64 – bit](https://go.microsoft.com/fwlink/?linkid=2068602)
+- [Windows 32 – bit](https://go.microsoft.com/fwlink/?linkid=2098960)
+- [ARM64 Windows](https://go.microsoft.com/fwlink/?linkid=2098961)
+
+Klienta můžete nainstalovat pro aktuálního uživatele, který nevyžaduje oprávnění správce, nebo může správce nainstalovat a nakonfigurovat klienta tak, aby k němu měli přístup všichni uživatelé zařízení.
+
+Po instalaci je možné klienta spustit z nabídky Start, a to tak, že vyhledáte **vzdálenou plochu**.
+
+## <a name="subscribe-to-a-workspace"></a>Přihlášení k odběru pracovního prostoru
+
+Existují dva způsoby, jak se můžete přihlásit k odběru pracovního prostoru. Klient se může pokusit zjistit prostředky, které vám k dispozici z pracovního nebo školního účtu, nebo můžete přímo zadat adresu URL, kde se vaše prostředky nacházejí v případech, kdy je klient nemůže najít. Jakmile se přihlásíte k odběru pracovního prostoru, můžete spustit prostředky jedním z následujících způsobů:
+
+- Přejděte do centra připojení a dvojím kliknutím na prostředek ho spusťte.
+- Můžete také přejít do nabídky Start a vyhledat složku s názvem pracovního prostoru nebo zadat název prostředku do vyhledávacího panelu.
+
+### <a name="subscribe-with-a-user-account"></a>Přihlášení k odběru pomocí uživatelského účtu
+
+1. Na hlavní stránce klienta vyberte možnost **přihlásit k odběru**.
+2. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.
+3. Prostředky se zobrazí v centru připojení a jsou seskupeny podle pracovního prostoru.
+
+### <a name="subscribe-with-a-url"></a>Přihlášení k odběru pomocí adresy URL
+
+1. Na hlavní stránce klienta vyberte možnost **Přihlásit se k odběru pomocí adresy URL**.
+2. Zadejte adresu URL pracovního prostoru nebo svou e-mailovou adresu:
+   - Pokud použijete **adresu URL pracovního prostoru**, použijte toho, kterého vám správce poskytl. Při přístupu k prostředkům z virtuálního počítače s Windows můžete použít jednu z těchto adres URL:
+     - Virtuální plocha Windows je 2019:`https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Jarní 2020 virtuálních počítačů s Windows:`https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+   - Pokud místo toho použijete pole **e-mail** , zadejte svou e-mailovou adresu. To klientovi oznamuje, aby vyhledal adresu URL přidruženou k vaší e-mailové adrese, pokud váš správce nastavil [zjišťování e-mailů](/windows-server/remote/remote-desktop-services/rds-email-discovery).
+3. Vyberte **Další**.
+4. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu.
+5. Prostředky by se měly zobrazit v centru připojení seskupených podle pracovního prostoru.
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o použití desktopového klienta Windows najdete v tématu [Začínáme s klientem Windows pro stolní počítače](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).

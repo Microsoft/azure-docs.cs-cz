@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8a8fff374edab7e307cd6dc8fb9aa4a4f974d09c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224685"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259977"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
 
-V tomto článku jsou uvedené běžné problémy související se soubory Microsoft Azure, když se připojujete z klientů Windows. Poskytuje taky možné příčiny a řešení těchto problémů. Kromě kroků pro řešení potíží v tomto článku můžete také použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)   a zajistit, aby klientské prostředí systému Windows mělo správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku a pomáhá nastavit vaše prostředí, aby dosáhlo optimálního výkonu. Tyto informace můžete najít také v [poradci při potížích se sdílenými složkami souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který obsahuje postup, který vám pomůže s problémy při připojování/mapování/připojování sdílených složek Azure Files.
+V tomto článku jsou uvedené běžné problémy související se soubory Microsoft Azure, když se připojujete z klientů Windows. Poskytuje taky možné příčiny a řešení těchto problémů. Kromě kroků pro řešení potíží v tomto článku můžete také použít [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   a zajistit, aby klientské prostředí systému Windows mělo správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku a pomáhá nastavit vaše prostředí, aby dosáhlo optimálního výkonu. Tyto informace můžete najít také v [poradci při potížích se sdílenými složkami souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který obsahuje postup, který vám pomůže s problémy při připojování/mapování/připojování sdílených složek Azure Files.
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Chyba 5 při připojení sdílené složky Azure
@@ -65,7 +65,7 @@ Když se pokusíte připojit sdílenou složku z místního prostředí nebo z j
 
 Systémová chyba 53 nebo systémová chyba 67 může nastat, 445 Pokud je zablokovaná odchozí komunikace se službou Azure Files Datacenter. Souhrn poskytovatelů internetových služeb, kteří umožňují nebo neumožňují přístup z portu 445, najdete na webu [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx).
 
-Pokud chcete zjistit, jestli brána firewall nebo poskytovatel internetových služeb blokuje port 445 [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , použijte nástroj nebo `Test-NetConnection` rutinu AzFileDiagnostics. 
+Pokud chcete zjistit, jestli brána firewall nebo poskytovatel internetových služeb blokuje port 445 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) , použijte nástroj nebo `Test-NetConnection` rutinu AzFileDiagnostics. 
 
 Pokud chcete použít `Test-NetConnection` rutinu, musí být nainstalovaný modul Azure PowerShell. Další informace najdete v tématu [instalace Azure PowerShell modulu](/powershell/azure/install-Az-ps) . Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
@@ -334,7 +334,7 @@ V současné době můžete zvážit opětovné nasazení služby AAD DS pomocí
 ### <a name="self-diagnostics-steps"></a>Kroky pro samočinnou diagnostiku
 Nejdřív se ujistěte, že jste provedli všechny čtyři kroky, abyste [mohli povolit ověřování Azure Files AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable).
 
-Za druhé zkuste připojit [sdílenou složku Azure s klíčem účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Pokud se nepovedlo připojit, Stáhněte si [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , abyste vám pomohli ověřit spuštěné prostředí klienta, zjistit nekompatibilní konfiguraci klienta, která by způsobila selhání přístupu pro soubory Azure, nabízí doporučené pokyny k automatickým opravám a shromažďování diagnostických trasování.
+Za druhé zkuste připojit [sdílenou složku Azure s klíčem účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Pokud se nepovedlo připojit, Stáhněte si [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) , abyste vám pomohli ověřit spuštěné prostředí klienta, zjistit nekompatibilní konfiguraci klienta, která by způsobila selhání přístupu pro soubory Azure, nabízí doporučené pokyny k automatickým opravám a shromažďování diagnostických trasování.
 
 Třetí, můžete spustit rutinu Debug-AzStorageAccountAuth, která provede sadu základních kontrol konfigurace služby AD s přihlášeným uživatelem služby AD. Tuto rutinu podporuje [AzFilesHybrid verze 0.1.2 nebo novější](https://github.com/Azure-Samples/azure-files-samples/releases). Tuto rutinu je potřeba spustit pod uživatelem AD, který má oprávnění vlastníka k cílovému účtu úložiště.  
 ```PowerShell

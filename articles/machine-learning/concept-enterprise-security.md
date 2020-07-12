@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392229"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259442"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ Když použijete cloudovou službu, osvědčeným postupem je omezit přístup j
 > [!NOTE]
 > Informace v tomto článku jsou v sadě Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Služba Multi-Factor Authentication je podporovaná, pokud je služba Azure Active Directory (Azure AD) nakonfigurovaná tak, aby ji používala. Toto je proces ověřování:
 
@@ -42,7 +42,7 @@ Další informace najdete v tématu [nastavení ověřování pro Azure Machine 
 
 Azure Machine Learning podporuje dvě formy ověřování pro webové služby: klíč a token. Každá webová služba může současně povolit jenom jednu formu ověřování.
 
-|Metoda ověřování|Description|Azure Container Instances|AKS|
+|Metoda ověřování|Popis|Azure Container Instances|AKS|
 |---|---|---|---|
 |Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
 |Token|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici| Zakázáno ve výchozím nastavení |
@@ -88,7 +88,7 @@ Každý pracovní prostor má také přidruženou spravovanou identitu přiřaze
 
 Další informace o spravovaných identitách najdete v tématu [spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-| Prostředek | Oprávnění |
+| Resource | Oprávnění |
 | ----- | ----- |
 | Pracovní prostor | Přispěvatel |
 | Účet úložiště | Přispěvatel dat objektu BLOB služby Storage |
@@ -111,16 +111,21 @@ Můžete také povolit privátní propojení Azure pro váš pracovní prostor. 
 
 ## <a name="data-encryption"></a>Šifrování dat
 
-### <a name="encryption-at-rest"></a>Šifrování v klidovém stavu
+> [!IMPORTANT]
+> Pro šifrování produkčních prostředků během __školení__doporučuje Microsoft používat výpočetní cluster Azure Machine Learning. V případě šifrování produkčních stupňů při __odvozování__doporučuje Microsoft používat službu Azure Kubernetes.
+>
+> Azure Machine Learning výpočetní instance je prostředí pro vývoj a testování. Při použití doporučujeme ukládat do sdílené složky soubory, jako jsou třeba poznámkové bloky a skripty. Data by měla být uložená v úložišti dat.
+
+### <a name="encryption-at-rest"></a>Šifrování neaktivních uložených dat
 
 > [!IMPORTANT]
 > Pokud váš pracovní prostor obsahuje citlivá data, doporučujeme při vytváření pracovního prostoru nastavit [příznak hbi_workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) . 
 
-`hbi_workspace`Příznak řídí množství dat, která Microsoft shromažďuje pro účely diagnostiky, a umožňuje další šifrování v prostředích spravovaných společností Microsoft. Kromě toho umožňuje následující:
+`hbi_workspace`Příznak řídí množství dat, která Microsoft shromažďuje pro účely diagnostiky, a umožňuje další šifrování v prostředích spravovaných Microsoftem. Kromě toho umožňují následující akce:
 
-* Spustí šifrování místního pomocného disku v clusteru Amlcompute, pokud jste v tomto předplatném nevytvořili žádné předchozí clustery. V opačném případě je potřeba vyvolat lístek podpory, který umožní šifrování pomocného disku vašich výpočetních clusterů. 
-* Vyčistí místní poškrábaný disk mezi běhy.
-* Zabezpečeně předává přihlašovací údaje účtu úložiště, registru kontejnerů a účtu SSH z vrstvy spuštění do vašich výpočetních clusterů pomocí vašeho trezoru klíčů.
+* Spustí šifrování místního pomocného disku ve vašem Azure Machine Learning výpočetním clusteru, protože jste v tomto předplatném nevytvořili žádné předchozí clustery. V opačném případě je potřeba vyvolat lístek podpory, který umožní šifrování pomocného disku vašich výpočetních clusterů. 
+* Čištění místního pomocného disku mezi jednotlivými spuštěními
+* Zabezpečeně předává přihlašovací údaje pro účet úložiště, registr kontejnerů a účet SSH z vrstvy spouštění do výpočetních clusterů pomocí vašeho trezoru klíčů.
 * Povolí filtrování protokolu IP, aby se zajistilo, že se nadřazené fondy dávek nedají volat v jiných externích službách než AzureMachineLearningService.
 
 
@@ -228,7 +233,7 @@ Azure Databricks lze použít v kanálech Azure Machine Learning. Ve výchozím 
 
 Azure Machine Learning používá protokol TLS k zabezpečení interní komunikace mezi různými Azure Machine Learning mikroslužby. K přístupu k Azure Storage dojde taky přes zabezpečený kanál.
 
-K zabezpečení externích volání bodování koncového bodu Azure Machine Learning používá protokol TLS. Další informace najdete v tématu [použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
+Aby bylo možné zabezpečit externí volání u bodování koncového bodu, Azure Machine Learning používá protokol TLS. Další informace najdete v tématu [použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
 
 ### <a name="using-azure-key-vault"></a>Použití Azure Key Vault
 
@@ -322,7 +327,7 @@ Přidruženo k pracovnímu prostoru Azure Machine Learning jsou adresáře (expe
 
 [![Pracovní postup snímku kódu](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
 
-### <a name="training"></a>Školení
+### <a name="training"></a>Probíhá trénování
 
 Následující diagram znázorňuje pracovní postup školení.
 

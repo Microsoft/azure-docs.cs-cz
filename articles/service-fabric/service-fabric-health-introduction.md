@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 82e61b2bf127ba86d06aba3110a000ed28a79833
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392756"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258848"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric zavádí model stavu, který poskytuje bohatě, flexibilní a rozšiřitelné vyhodnocení stavu a vytváření sestav. Model umožňuje monitorovat stav clusteru a služby, které jsou v něm spuštěné, do téměř v reálném čase. Můžete snadno získat informace o stavu a opravit případné problémy, které se budou zastarat, a způsobit obrovské výpadky. V typickém modelu odesílají služby sestavy na základě místních zobrazení a tyto informace jsou agregované tak, aby poskytovaly celkové zobrazení na úrovni clusteru.
@@ -59,12 +60,12 @@ Naplánujte investici, jak ohlásit a reagovat na stav při návrhu velké cloud
 ## <a name="health-states"></a>Stav
 Service Fabric používá tři stavové stavy k popisu, jestli je entita v pořádku, nebo ne: OK, varování a chyba. Všechny sestavy odeslané do Health Store musí určovat jeden z těchto stavů. Výsledkem vyhodnocení stavu je jeden z těchto stavů.
 
-Možné [stavy](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate) :
+Možné [stavy](/dotnet/api/system.fabric.health.healthstate) :
 
 * **OK**. Entita je v pořádku. Neexistují žádné známé problémy, které jsou na něm hlášeny (Pokud je to možné).
 * **Upozornění**: Entita obsahuje nějaké problémy, ale přesto může fungovat správně. Existují například prodlevy, ale ještě nezpůsobují žádné funkční problémy. V některých případech se může podmínka upozornění opravit bez vnějšího zásahu. V těchto případech sestavy o stavu zvyšují povědomí a poskytují přehled o tom, co se prochází. V jiných případech může stav varování snížit závažnost problému bez zásahu uživatele.
 * **Chyba**. Entita není v pořádku. Měla by být provedena akce pro opravu stavu entity, protože nemůže správně fungovat.
-* **Neznámý**. Entita v Health Store neexistuje. Tento výsledek lze získat z distribuovaných dotazů, které sloučí výsledky z více součástí. Například dotaz získat seznam uzlů přejde na **FailoverManager**, **ClusterManager**a **HealthManager**; získat dotaz na seznam aplikací přejde na **ClusterManager** a **HealthManager**. Tyto dotazy sloučí výsledky z více systémových součástí. Pokud jiná systémová součást vrátí entitu, která není přítomna v Health Store, má sloučený výsledek neznámý stav. Entita není v úložišti, protože sestavy o stavu ještě nejsou zpracované nebo se entita vyčistila po jejím odstranění.
+* **Neznámé**: Entita v Health Store neexistuje. Tento výsledek lze získat z distribuovaných dotazů, které sloučí výsledky z více součástí. Například dotaz získat seznam uzlů přejde na **FailoverManager**, **ClusterManager**a **HealthManager**; získat dotaz na seznam aplikací přejde na **ClusterManager** a **HealthManager**. Tyto dotazy sloučí výsledky z více systémových součástí. Pokud jiná systémová součást vrátí entitu, která není přítomna v Health Store, má sloučený výsledek neznámý stav. Entita není v úložišti, protože sestavy o stavu ještě nejsou zpracované nebo se entita vyčistila po jejím odstranění.
 
 ## <a name="health-policies"></a>Zásady stavu
 Health Store používá zásady stavu k určení, jestli je entita v pořádku, na základě jejich sestav a jejích podřízených položek.
@@ -77,13 +78,13 @@ Health Store používá zásady stavu k určení, jestli je entita v pořádku, 
 Ve výchozím nastavení Service Fabric používá striktní pravidla (vše musí být v pořádku) pro hierarchický vztah nadřazený-podřízený. Pokud dokonce jedna z podřízených prvků obsahuje jednu událost, která není v pořádku, považuje se nadřazená položka za není v pořádku.
 
 ### <a name="cluster-health-policy"></a>Zásady stavu clusteru
-[Zásady stavu clusteru](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy) se používají k vyhodnocení stavu clusteru a stavu uzlu. Zásady je možné definovat v manifestu clusteru. Pokud není k dispozici, je použita výchozí zásada (počet nedovolených selhání).
+[Zásady stavu clusteru](/dotnet/api/system.fabric.health.clusterhealthpolicy) se používají k vyhodnocení stavu clusteru a stavu uzlu. Zásady je možné definovat v manifestu clusteru. Pokud není k dispozici, je použita výchozí zásada (počet nedovolených selhání).
 Zásada stavu clusteru obsahuje:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Určuje, jestli se mají při hodnocení stavu považovat zprávy o stavu s varováním za chyby. Výchozí hodnota: false.
-* [MaxPercentUnhealthyApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications). Určuje maximální povolený procentuální podíl aplikací, které můžou být chybné, než se cluster bude považovat za chybu.
-* [MaxPercentUnhealthyNodes](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes). Určuje maximální povolený procentuální podíl uzlů, které mohou být v nesprávném stavu, než se cluster bude považovat za chybu. Ve velkých clusterech jsou některé uzly u oprav vždycky mimo provoz, takže toto procento by mělo být nakonfigurované tak, aby to bylo tolerováno.
-* [ApplicationTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). Mapování zásad stavu aplikace lze použít při vyhodnocení stavu clusteru k popisu speciálních typů aplikací. Ve výchozím nastavení jsou všechny aplikace vloženy do fondu a vyhodnocovány pomocí MaxPercentUnhealthyApplications. Pokud se některé typy aplikací mají zpracovávat odlišně, můžou se vycházet z globálního fondu. Místo toho jsou vyhodnocovány proti procentům přidruženým k názvu typu aplikace na mapě. Například v clusteru existují tisíce aplikací různých typů a několik instancí aplikace pro řízení speciálního typu aplikace. Řídicí aplikace by nikdy neměly být v chybě. Můžete zadat globální MaxPercentUnhealthyApplications na 20% pro tolerovatcí některé chyby, ale pro typ aplikace "ControlApplicationType" nastaví MaxPercentUnhealthyApplications na 0. Tímto způsobem platí, že pokud některé z mnoha aplikací nejsou v pořádku, ale pod globálním procentem není v pořádku, cluster se vyhodnotí jako varování. Stav upozornění nemá vliv na upgrade clusteru ani na jiné monitorování aktivované chybovým stavem. I když ale jedna aplikace ovládacího prvku v chybě způsobí, že cluster není v pořádku, který triggery vrátí zpět nebo pozastaví upgrade clusteru v závislosti na konfiguraci upgradu.
+* [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Určuje, jestli se mají při hodnocení stavu považovat zprávy o stavu s varováním za chyby. Výchozí hodnota: false.
+* [MaxPercentUnhealthyApplications](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications). Určuje maximální povolený procentuální podíl aplikací, které můžou být chybné, než se cluster bude považovat za chybu.
+* [MaxPercentUnhealthyNodes](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes). Určuje maximální povolený procentuální podíl uzlů, které mohou být v nesprávném stavu, než se cluster bude považovat za chybu. Ve velkých clusterech jsou některé uzly u oprav vždycky mimo provoz, takže toto procento by mělo být nakonfigurované tak, aby to bylo tolerováno.
+* [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). Mapování zásad stavu aplikace lze použít při vyhodnocení stavu clusteru k popisu speciálních typů aplikací. Ve výchozím nastavení jsou všechny aplikace vloženy do fondu a vyhodnocovány pomocí MaxPercentUnhealthyApplications. Pokud se některé typy aplikací mají zpracovávat odlišně, můžou se vycházet z globálního fondu. Místo toho jsou vyhodnocovány proti procentům přidruženým k názvu typu aplikace na mapě. Například v clusteru existují tisíce aplikací různých typů a několik instancí aplikace pro řízení speciálního typu aplikace. Řídicí aplikace by nikdy neměly být v chybě. Můžete zadat globální MaxPercentUnhealthyApplications na 20% pro tolerovatcí některé chyby, ale pro typ aplikace "ControlApplicationType" nastaví MaxPercentUnhealthyApplications na 0. Tímto způsobem platí, že pokud některé z mnoha aplikací nejsou v pořádku, ale pod globálním procentem není v pořádku, cluster se vyhodnotí jako varování. Stav upozornění nemá vliv na upgrade clusteru ani na jiné monitorování aktivované chybovým stavem. I když ale jedna aplikace ovládacího prvku v chybě způsobí, že cluster není v pořádku, což aktivuje odvolání nebo pozastaví upgrade clusteru v závislosti na konfiguraci upgradu.
   Pro typy aplikací definované v mapě se všechny instance aplikace vyberou z globálního fondu aplikací. Jsou vyhodnocovány na základě celkového počtu aplikací typu aplikace pomocí konkrétního MaxPercentUnhealthyApplications z mapy. Všechny zbývající aplikace zůstanou v globálním fondu a vyhodnocují se pomocí MaxPercentUnhealthyApplications.
 
 Následující příklad je výňatek z manifestu clusteru. Chcete-li definovat položky v mapě typu aplikace, zadejte předponu názvu parametru pomocí "ApplicationTypeMaxPercentUnhealthyApplications-" následovaný názvem typu aplikace.
@@ -100,20 +101,20 @@ Následující příklad je výňatek z manifestu clusteru. Chcete-li definovat 
 ```
 
 ### <a name="application-health-policy"></a>Zásada stavu aplikace
-[Zásady stavu aplikace](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) popisují, jak se provádí vyhodnocení agregací událostí a podřízených stavů pro aplikace a jejich podřízené objekty. Může být definován v manifestu aplikace, **ApplicationManifest.xml**v balíčku aplikace. Pokud nejsou zadány žádné zásady, Service Fabric předpokládá, že entita není v pořádku, pokud má zprávu o stavu nebo podřízenou položku ve stavu upozornění nebo chyba.
+[Zásady stavu aplikace](/dotnet/api/system.fabric.health.applicationhealthpolicy) popisují, jak se provádí vyhodnocení agregací událostí a podřízených stavů pro aplikace a jejich podřízené objekty. Může být definován v manifestu aplikace, **ApplicationManifest.xml**v balíčku aplikace. Pokud nejsou zadány žádné zásady, Service Fabric předpokládá, že entita není v pořádku, pokud má zprávu o stavu nebo podřízenou položku ve stavu upozornění nebo chyba.
 Konfigurovatelné zásady jsou:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Určuje, jestli se mají při hodnocení stavu považovat zprávy o stavu s varováním za chyby. Výchozí hodnota: false.
-* [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Určuje maximální povolený procentuální podíl nasazených aplikací, které mohou být poškozeny, než je aplikace považována za chybu. Toto procento se počítá vydělením počtu chybně nasazených aplikací nad počtem uzlů, na kterých jsou aktuálně nasazené aplikace v clusteru. Výpočet se zaokrouhlí na jednu neúspěch na malých číslech uzlů. Výchozí procento: nula.
-* [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Určuje výchozí zásadu stavu pro typ služby, která nahrazuje výchozí zásady stavu pro všechny typy služeb v aplikaci.
-* [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Poskytuje mapu zásad stavu služby na typ služby. Tyto zásady nahrazují výchozí zásady stavu typu služby pro každý zadaný typ služby. Pokud má aplikace například typ služby brány bez stavu a typ služby stavového stroje, můžete nakonfigurovat zásady stavu pro jejich vyzkoušení jinak. Když zadáte zásadu pro typ služby, můžete získat podrobnější kontrolu nad stavem služby.
+* [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Určuje, jestli se mají při hodnocení stavu považovat zprávy o stavu s varováním za chyby. Výchozí hodnota: false.
+* [MaxPercentUnhealthyDeployedApplications](/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Určuje maximální povolený procentuální podíl nasazených aplikací, které mohou být poškozeny, než je aplikace považována za chybu. Toto procento se počítá vydělením počtu chybně nasazených aplikací nad počtem uzlů, na kterých jsou aktuálně nasazené aplikace v clusteru. Výpočet se zaokrouhlí na jednu neúspěch na malých číslech uzlů. Výchozí procento: nula.
+* [DefaultServiceTypeHealthPolicy](/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Určuje výchozí zásadu stavu pro typ služby, která nahrazuje výchozí zásady stavu pro všechny typy služeb v aplikaci.
+* [ServiceTypeHealthPolicyMap](/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Poskytuje mapu zásad stavu služby na typ služby. Tyto zásady nahrazují výchozí zásady stavu typu služby pro každý zadaný typ služby. Pokud má aplikace například typ služby brány bez stavu a typ služby stavového stroje, můžete nakonfigurovat zásady stavu pro jejich vyzkoušení jinak. Když zadáte zásadu pro typ služby, můžete získat podrobnější kontrolu nad stavem služby.
 
 ### <a name="service-type-health-policy"></a>Zásada stavu pro typ služby
-[Zásada stavu typu služby](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy) určuje, jak se mají vyhodnocovat a agregovat služby a podřízené položky služeb. Zásada obsahuje:
+[Zásada stavu typu služby](/dotnet/api/system.fabric.health.servicetypehealthpolicy) určuje, jak se mají vyhodnocovat a agregovat služby a podřízené položky služeb. Zásada obsahuje:
 
-* [MaxPercentUnhealthyPartitionsPerService](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice). Určuje maximální povolený procentní podíl nestavových oddílů, než se služba považuje za poškozenou. Výchozí procento: nula.
-* [MaxPercentUnhealthyReplicasPerPartition](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition). Určuje maximální tolerovánou procentuální hodnotu replik, které nejsou v pořádku, než se oddíl považuje za špatný. Výchozí procento: nula.
-* [MaxPercentUnhealthyServices](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices). Určuje maximální povolený procentuální podíl bezstavových služeb předtím, než se aplikace považuje za poškozenou. Výchozí procento: nula.
+* [MaxPercentUnhealthyPartitionsPerService](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice). Určuje maximální povolený procentní podíl nestavových oddílů, než se služba považuje za poškozenou. Výchozí procento: nula.
+* [MaxPercentUnhealthyReplicasPerPartition](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition). Určuje maximální tolerovánou procentuální hodnotu replik, které nejsou v pořádku, než se oddíl považuje za špatný. Výchozí procento: nula.
+* [MaxPercentUnhealthyServices](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices). Určuje maximální povolený procentuální podíl bezstavových služeb předtím, než se aplikace považuje za poškozenou. Výchozí procento: nula.
 
 Následující příklad je výňatek z manifestu aplikace:
 
@@ -178,15 +179,15 @@ Jakmile Health Store vyhodnotí všechny podřízené položky, agreguje jejich 
 ## <a name="health-reporting"></a>Vytváření sestav o stavu
 Komponenty systému, aplikace systémových prostředků infrastruktury a interní/externí sledovací zařízení mohou hlásit Service Fabric entit. Sestavy provádějí *místní* určení stavu monitorovaných entit na základě podmínek, které monitorují. Nemusí se pohlížet na žádná globální stav ani agregovaná data. Požadovaným chováním je jednoduché sestavování a ne komplexní organismy, které potřebují prohledat informace, které se mají odeslat, a získat tak mnoho věcí.
 
-Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifikovat ovlivněnou entitu a vytvořit sestavu o stavu. K odeslání sestavy použijte rozhraní API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , vystavení rozhraní API pro stav vystavená na `Partition` `CodePackageActivationContext` objektech nebo, rutinách PowerShellu nebo REST.
+Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifikovat ovlivněnou entitu a vytvořit sestavu o stavu. K odeslání sestavy použijte rozhraní API [FabricClient. HealthClient. ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , vystavení rozhraní API pro stav vystavená na `Partition` `CodePackageActivationContext` objektech nebo, rutinách PowerShellu nebo REST.
 
 ### <a name="health-reports"></a>Sestavy stavu
-[Sestavy o stavu](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) pro každou entitu v clusteru obsahují následující informace:
+[Sestavy o stavu](/dotnet/api/system.fabric.health.healthreport) pro každou entitu v clusteru obsahují následující informace:
 
 * **SourceId**. Řetězec, který jednoznačně identifikuje zpravodaj události stavu.
 * **Identifikátor entity** Určuje entitu, ve které se sestava aplikuje. Liší se v závislosti na [typu entity](service-fabric-health-introduction.md#health-entities-and-hierarchy):
   
-  * Služby. Žádné
+  * Služby. Žádné.
   * Uzlu. Název uzlu (řetězec).
   * Použití. Název aplikace (URI). Představuje název instance aplikace nasazené v clusteru.
   * Službám. Název služby (URI). Představuje název instance služby nasazené v clusteru.
@@ -204,7 +205,7 @@ Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifi
 Tyto čtyři informace – SourceId, identifikátor entity, vlastnost a stav podstavu jsou požadovány pro každou sestavu stavu. Řetězec SourceId nesmí začínat předponou "**System.**", která je vyhrazena pro systémové sestavy. Pro stejnou entitu je pro stejný zdroj a vlastnost k dispozici pouze jedna sestava. Několik sestav pro stejný zdroj a vlastnost jsou navzájem popsány buď na straně klienta stavu (pokud jsou v dávce), nebo na straně Health Store. Náhrada je založena na pořadových číslech; novější sestavy (s vyššími čísly pořadových čísel) nahrazují starší sestavy.
 
 ### <a name="health-events"></a>Události stavu
-Interně Health Store udržuje [události stavu](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent), které obsahují všechny informace ze sestav a další metadata. Metadata obsahují čas, kdy byla sestava předána klientovi stavu a čas jejich změny na straně serveru. [Dotazy](service-fabric-view-entities-aggregated-health.md#health-queries)na stav jsou vraceny událostmi stavu.
+Interně Health Store udržuje [události stavu](/dotnet/api/system.fabric.health.healthevent), které obsahují všechny informace ze sestav a další metadata. Metadata obsahují čas, kdy byla sestava předána klientovi stavu a čas jejich změny na straně serveru. [Dotazy](service-fabric-view-entities-aggregated-health.md#health-queries)na stav jsou vraceny událostmi stavu.
 
 Přidaná metadata obsahují:
 
@@ -305,4 +306,3 @@ Model stavu se silně používá pro monitorování a diagnostiku, pro vyhodnoce
 [Místní monitorování a diagnostika služeb](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Upgrade aplikace Service Fabric](service-fabric-application-upgrade.md)
-

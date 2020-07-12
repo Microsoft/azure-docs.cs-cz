@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609957"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259203"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Agregace a shromažďování událostí pomocí Azure Diagnostics pro Linux
 > [!div class="op_single_selector"]
@@ -20,7 +21,7 @@ ms.locfileid: "75609957"
 
 Pokud používáte cluster Azure Service Fabric, je vhodné shromáždit protokoly ze všech uzlů v centrálním umístění. Protokoly v centrálním umístění vám pomůžou analyzovat a řešit problémy v clusteru nebo problémy s aplikacemi a službami běžícími v tomto clusteru.
 
-Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít rozšíření Linux Azure Diagnostics (LAD), které nahrává protokoly k Azure Storage a má také možnost odesílat protokoly do Azure Application Insights nebo Event Hubs. Můžete také použít externí proces ke čtení událostí z úložiště a jejich umístění do produktu Analysis Platform, jako jsou [protokoly Azure monitor](../log-analytics/log-analytics-service-fabric.md) nebo jiné řešení pro analýzu protokolů.
+Jedním ze způsobů, jak nahrávat a shromažďovat protokoly, je použít rozšíření Linux Azure Diagnostics (LAD), které nahrává protokoly k Azure Storage a má také možnost odesílat protokoly do Azure Application Insights nebo Event Hubs. Můžete také použít externí proces ke čtení událostí z úložiště a jejich umístění do produktu Analysis Platform, jako jsou [protokoly Azure monitor](./service-fabric-diagnostics-oms-setup.md) nebo jiné řešení pro analýzu protokolů.
 
 ## <a name="log-and-event-sources"></a>Zdroje protokolů a událostí
 
@@ -42,5 +43,5 @@ Tím se nakonfiguruje agent LAD pro sledování zadaných souborů protokolu. Po
 
 ## <a name="next-steps"></a>Další kroky
 
-1. Další informace o tom, jaké události byste měli prošetřit při řešení problémů, najdete v [dokumentaci k LTTng](https://lttng.org/docs) a [pomocí lad](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux).
+1. Další informace o tom, jaké události byste měli prošetřit při řešení problémů, najdete v [dokumentaci k LTTng](https://lttng.org/docs) a [pomocí lad](../virtual-machines/extensions/diagnostics-linux.md).
 2. [Nastavte agenta Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) , který vám umožní shromáždit metriky, monitorovat kontejnery nasazené v clusteru a vizualizovat protokoly. 

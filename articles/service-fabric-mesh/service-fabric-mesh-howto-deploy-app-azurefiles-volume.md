@@ -6,19 +6,20 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76718816"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260096"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Připojení svazku založeného na souborech Azure v aplikaci Service Fabric sítě 
 
 Tento článek popisuje, jak připojit svazek založený na souborech Azure ve službě Service Fabric aplikace sítě.  Ovladač svazku souborů Azure je ovladač svazku Docker, který se používá k připojení sdílené složky Azure Files do kontejneru, který používáte k trvalému stavu služby. Svazky poskytují úložiště souborů pro obecné účely a umožňují čtení a zápis souborů pomocí normálních rozhraní API v/v souborů na disku.  Pokud se chcete dozvědět víc o svazcích a možnostech pro ukládání dat aplikací, přečtěte si téma [uložení stavu](service-fabric-mesh-storing-state.md).
 
-Pokud chcete připojit svazek ve službě, vytvořte v aplikaci Service Fabric sítě prostředek svazku a pak na tento svazek odkázat v rámci služby.  Deklarace prostředku svazku a odkazování na něj v prostředku služby se dá provést buď v [souborech prostředků založených na YAML](#declare-a-volume-resource-and-update-the-service-resource-yaml) , nebo v [šabloně nasazení založené na JSON](#declare-a-volume-resource-and-update-the-service-resource-json). Před připojením svazku nejdřív vytvořte účet úložiště Azure a [sdílenou složku ve službě soubory Azure](/azure/storage/files/storage-how-to-create-file-share).
+Pokud chcete připojit svazek ve službě, vytvořte v aplikaci Service Fabric sítě prostředek svazku a pak na tento svazek odkázat v rámci služby.  Deklarace prostředku svazku a odkazování na něj v prostředku služby se dá provést buď v [souborech prostředků založených na YAML](#declare-a-volume-resource-and-update-the-service-resource-yaml) , nebo v [šabloně nasazení založené na JSON](#declare-a-volume-resource-and-update-the-service-resource-json). Před připojením svazku nejdřív vytvořte účet úložiště Azure a [sdílenou složku ve službě soubory Azure](../storage/files/storage-how-to-create-file-share.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 > [!NOTE]
 > **Známý problém s nasazením na vývojovém počítači s Windows RS5:** K dispozici je otevřená chyba rutiny prostředí PowerShell New-SmbGlobalMapping na počítačích s Windows RS5, které zabraňují připojení svazků Azurefile. Níže je uvedená ukázková chyba, ke které došlo při připojení svazku založeného na AzureFile do místního vývojového počítače.
 ```

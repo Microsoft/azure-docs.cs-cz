@@ -4,12 +4,12 @@ description: Přenos kolekcí imagí nebo jiných artefaktů z jednoho registru 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186924"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259458"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Přenos artefaktů do jiného registru
 
@@ -30,13 +30,13 @@ Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Registry kontejnerů** – potřebujete existující zdrojový registr s artefakty pro přenos a cílový registr. Přenos ACR je určený pro pohyb mezi fyzicky odpojenými cloudy. Pro účely testování můžou být zdrojové a cílové Registry ve stejném nebo jiném předplatném Azure, tenantovi služby Active Directory nebo cloudu. Pokud potřebujete vytvořit registr, přečtěte si téma [rychlý Start: Vytvoření privátního registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md). 
 * **Účty úložiště** – vytvoření zdrojového a cílového účtu úložiště v předplatném a umístění dle vašeho výběru. Pro účely testování můžete použít stejné předplatné nebo odběry jako zdrojové a cílové Registry. V případě scénářů mezi cloudy obvykle vytvoříte samostatný účet úložiště v každém cloudu. V případě potřeby vytvořte účty úložiště pomocí rozhraní příkazového [řádku Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) nebo jiných nástrojů. 
 
   Vytvořte kontejner objektů BLOB pro přenos artefaktů do každého účtu. Vytvořte například kontejner s názvem *Transfer*. Dva nebo více kanálů přenosu může sdílet stejný účet úložiště, ale měl by používat jiné obory kontejneru úložiště.
-* **Trezory klíčů** – trezory klíčů jsou potřeba k ukládání tajných klíčů tokenů SAS používaných pro přístup ke zdrojovému a cílovému účtu úložiště. Vytvořte zdrojové a cílové trezory klíčů ve stejném předplatném Azure nebo předplatném jako zdrojové a cílové Registry. V případě potřeby vytvořte trezory klíčů pomocí rozhraní příkazového [řádku Azure CLI](../key-vault/quick-create-cli.md) nebo jiných nástrojů.
+* **Trezory klíčů** – trezory klíčů jsou potřeba k ukládání tajných klíčů tokenů SAS používaných pro přístup ke zdrojovému a cílovému účtu úložiště. Vytvořte zdrojové a cílové trezory klíčů ve stejném předplatném Azure nebo předplatném jako zdrojové a cílové Registry. V případě potřeby vytvořte trezory klíčů pomocí rozhraní příkazového [řádku Azure CLI](../key-vault/secrets/quick-create-cli.md) nebo jiných nástrojů.
 * **Proměnné prostředí** – například příkazy v tomto článku, nastavte následující proměnné prostředí pro zdrojové a cílové prostředí. Všechny příklady jsou formátovány pro prostředí bash shell.
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -162,7 +162,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Zde je příklad:
+Ve výstupu příkazu si poznamenejte ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -208,7 +208,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Zde je příklad:
+Pokud máte v úmyslu spustit import ručně, poznamenejte si ID prostředku ( `id` ) kanálu. Tuto hodnotu můžete uložit do proměnné prostředí pro pozdější použití spuštěním vlastnosti [AZ Deployment Group show][az-deployment-group-show]. Příklad:
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -257,7 +257,7 @@ az storage blob list \
 
 Použijte nástroj AzCopy nebo jiné metody k [přenosu dat objektů BLOB](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) ze zdrojového účtu úložiště do cílového účtu úložiště.
 
-Následující [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) příkaz například zkopíruje myblob z kontejneru *přenosu* ve zdrojovém účtu do kontejneru *přenosu* v cílovém účtu. Pokud objekt BLOB v cílovém účtu existuje, bude přepsán. Ověřování používá tokeny SAS s příslušnými oprávněními pro zdrojové a cílové kontejnery. (Kroky pro vytváření tokenů nejsou zobrazeny.)
+Následující [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) příkaz například zkopíruje myblob z kontejneru *přenosu* ve zdrojovém účtu do kontejneru *přenosu* v cílovém účtu. Pokud objekt BLOB v cílovém účtu existuje, bude přepsán. Ověřování používá tokeny SAS s příslušnými oprávněními pro zdrojové a cílové kontejnery. (Kroky pro vytváření tokenů nejsou zobrazeny.)
 
 ```console
 azcopy copy \
@@ -366,6 +366,3 @@ Informace o importování jediné image kontejneru do služby Azure Container Re
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
-
-
-

@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131313"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260042"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>Vytvoření a zřízení zařízení IoT Edge pomocí certifikátů X. 509
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak vytvořit registraci služby Device Provisioni
 
 Používání certifikátů X. 509 jako mechanismu ověřování je skvělým způsobem, jak škálovat produkční prostředí a zjednodušit zřizování zařízení. Obvykle jsou certifikáty X. 509 uspořádány v řetězu certifikátů důvěryhodnosti. Počínaje certifikátem podepsaným svým držitelem nebo důvěryhodným kořenovým certifikátem podepisuje každý certifikát v řetězu další nižší certifikát. Tento model vytvoří delegovaný řetěz vztahu důvěryhodnosti od kořenového certifikátu až po každý zprostředkující certifikát s konečným certifikátem "list" nainstalovaným na zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Aktivní IoT Hub.
 * Fyzické nebo virtuální zařízení, které se má IoT Edge zařízení.
@@ -50,6 +50,9 @@ K nastavení automatického zřizování pomocí X. 509 potřebujete následují
 * Certifikát identity zařízení a jeho certifikát privátního klíče. Certifikát identity zařízení se nahraje do DPS, pokud vytvoříte jednotlivou registraci. Privátní klíč se předává do modulu runtime IoT Edge.
 * Úplný řetězový certifikát, který by měl mít alespoň identitu zařízení a zprostředkující certifikáty. Úplný certifikát řetězu se předává modulu runtime IoT Edge.
 * Certifikát zprostředkující nebo kořenové certifikační autority z řetězu certifikátů, který je důvěryhodný. Tento certifikát se nahraje do DPS, pokud vytvoříte registraci skupiny.
+
+> [!NOTE]
+> V současné době omezení libiothsm brání použití certifikátů, jejichž platnost vyprší, od 1. ledna 2050.
 
 ### <a name="use-test-certificates"></a>Použití testovacích certifikátů
 
@@ -161,7 +164,7 @@ Při vytváření skupiny registrací máte možnost použít ověřený certifi
 
 1. Na stránce s podrobnostmi o certifikátu v Azure Portal nahrajte nově vygenerovaný ověřovací certifikát.
 
-1. Vyberte možnost **ověření**.
+1. Vyberte **Ověřit**.
 
 ### <a name="create-enrollment-group"></a>Vytvořit skupinu registrace
 

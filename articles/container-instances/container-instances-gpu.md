@@ -3,12 +3,12 @@ title: Nasazení instance kontejneru s podporou GPU
 description: Naučte se nasazovat služby Azure Container Instances pro spouštění kontejnerových aplikací náročných na výpočetní prostředky pomocí prostředků GPU.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169744"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259586"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instancí kontejnerů, které používají prostředky GPU
 
@@ -209,7 +209,7 @@ Adding run metadata for 999
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Vzhledem k tomu, že používání prostředků GPU může být náročné, zajistěte, aby vaše kontejnery neočekávaně neběžely po dlouhou dobu. Monitorujte kontejnery v Azure Portal nebo pomocí příkazu [AZ Container show][az-container-show] ověřte stav skupiny kontejnerů. Například:
+Vzhledem k tomu, že používání prostředků GPU může být náročné, zajistěte, aby vaše kontejnery neočekávaně neběžely po dlouhou dobu. Monitorujte kontejnery v Azure Portal nebo pomocí příkazu [AZ Container show][az-container-show] ověřte stav skupiny kontejnerů. Příklad:
 
 ```azurecli
 az container show --resource-group myResourceGroup --name gpucontainergroup --output table
@@ -225,7 +225,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o nasazení skupiny kontejnerů pomocí [souboru YAML](container-instances-multi-container-yaml.md) nebo [šablony Správce prostředků](container-instances-multi-container-group.md).
-* Přečtěte si další informace o [velikostech virtuálních počítačů optimalizovaných pro GPU](../virtual-machines/linux/sizes-gpu.md) v Azure.
+* Přečtěte si další informace o [velikostech virtuálních počítačů optimalizovaných pro GPU](../virtual-machines/sizes-gpu.md) v Azure.
 
 
 <!-- IMAGES -->

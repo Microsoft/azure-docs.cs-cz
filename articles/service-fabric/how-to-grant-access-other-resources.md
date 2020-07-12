@@ -3,11 +3,12 @@ title: Udělení přístupu aplikace k jiným prostředkům Azure
 description: V tomto článku se dozvíte, jak udělit přístup k aplikaci Service Fabric s povolenými identitami do dalších prostředků Azure, které podporují ověřování založené na Azure Active Directory.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 3b1feab1e67e993df771564a1a7c1aba4236b2c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 638176ca2665146a64fb7a6bd83253eba3434a7f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614789"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258952"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-preview"></a>Udělení přístupu spravované identitě Service Fabric aplikace do prostředků Azure (Preview)
 
@@ -101,7 +102,7 @@ A pro spravované identity přiřazené systémem:
     }
 ```
 
-Další podrobnosti najdete v tématu [trezory – zásady přístupu pro aktualizaci](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy).
+Další podrobnosti najdete v tématu [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Další kroky
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

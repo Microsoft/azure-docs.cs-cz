@@ -6,12 +6,12 @@ metadata:
   title: Dokumentace ke službám Microsoft Azure Container Service | Microsoft Docs
   description: Naučte se používat služby Azure Container Service ke správě a vývoji cloudových kontejnerových aplikací.
   ms.topic: hub-page
-  ms.openlocfilehash: 8cfbe066a0e52615b6312ff49d0af268d1acf610
-  ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+  ms.openlocfilehash: c83db23fda2fe5895a8d4400a26be463ec8d2d6a
+  ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/18/2020
-  ms.locfileid: "84981587"
+  ms.lasthandoff: 07/11/2020
+  ms.locfileid: "86260703"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -19,128 +19,128 @@ highlightedContent:
     url: https://azure.microsoft.com/updates/?category=containers
   - itemType: concept
     title: Přístup k aplikacím založený na mikroslužbách
-    url: /azure/service-fabric/service-fabric-overview-microservices
+    url: ../service-fabric/service-fabric-overview-microservices.md
   - itemType: concept
     title: Vysvětlení protokolu Kubernetes
-    url: /azure/aks/concepts-clusters-workloads
+    url: ../aks/concepts-clusters-workloads.md
 conceptualContent:
   items:
   - title: Nasazení Kubernetes v Azure
     links:
-    - url: /azure/aks/intro-kubernetes
+    - url: ../aks/intro-kubernetes.md
       itemType: overview
       text: Co je Azure Kubernetes Service?
-    - url: /azure/aks/tutorial-kubernetes-prepare-app
+    - url: ../aks/tutorial-kubernetes-prepare-app.md
       itemType: tutorial
       text: Příprava aplikace pro AKS
-    - url: /azure/aks/kubernetes-walkthrough
+    - url: ../aks/kubernetes-walkthrough.md
       itemType: tutorial
       text: Vytvoření clusteru AKS (rozhraní příkazového řádku)
     footerLink:
-      url: /azure/aks/
+      url: ../aks/index.yml
       text: Další informace
   - title: Testování a vývoj aplikací AKS
     links:
-    - url: /azure/dev-spaces/how-dev-spaces-works-local-process-kubernetes
+    - url: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
       itemType: concept
       text: Jak funguje místní proces s Kubernetes
-    - url: /azure/dev-spaces/how-to/local-process-kubernetes-vs-code
+    - url: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
       itemType: how-to-guide
       text: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code
-    - url: /azure/dev-spaces/how-to/local-process-kubernetes-visual-studio
+    - url: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
       itemType: how-to-guide
       text: Použití místního procesu s Kubernetes s využitím sady Visual Studio
   - title: Vytváření cloudových aplikací pro web a mobilní zařízení
     links:
-    - url: /azure/app-service/overview
+    - url: ../app-service/overview.md
       itemType: overview
       text: Co je App Service?
-    - url: /azure/app-service/app-service-web-tutorial-custom-domain
+    - url: ../app-service/app-service-web-tutorial-custom-domain.md
       itemType: get-started
       text: Mapování vlastní domény na aplikaci
-    - url: /azure/app-service/configure-ssl-bindings
+    - url: ../app-service/configure-ssl-bindings.md
       itemType: tutorial
       text: Zabezpečení vlastní domény s využitím vazby SSL
-    - url: /azure/app-service/app-service-web-get-started-windows-container
+    - url: ../app-service/app-service-web-get-started-windows-container.md
       itemType: get-started
       text: Spuštění vlastního kontejneru pro Windows
-    - url: /azure/app-service/containers/quickstart-docker
+    - url: ../app-service/containers/quickstart-docker.md
       itemType: quickstart
       text: Spuštění vlastního linuxového kontejneru
-    - url: /azure/app-service/containers/quickstart-multi-container
+    - url: ../app-service/containers/quickstart-multi-container.md
       itemType: quickstart
       text: Vytvoření vícekontejnerové aplikace pro Linux
     footerLink:
-      url: /azure/app-service/
+      url: ../app-service/index.yml
       text: Další informace
   - title: Spouštění kontejnerů v Azure
     links:
-    - url: /azure/container-instances/container-instances-overview
+    - url: ../container-instances/container-instances-overview.md
       itemType: overview
       text: Přehled služby Container Instances
-    - url: https://docs.microsoft.com/learn/modules/run-docker-with-azure-container-instances/
+    - url: /learn/modules/run-docker-with-azure-container-instances/
       itemType: learn
       text: Spouštění kontejnerizovaných aplikací s využitím Azure Container Instances
-    - url: /azure/container-instances/container-instances-using-azure-container-registry
+    - url: ../container-instances/container-instances-using-azure-container-registry.md
       itemType: how-to-guide
       text: Nasazení image ze služby Azure Container Registry
-    - url: /azure/container-registry/container-registry-quickstart-task-cli
+    - url: ../container-registry/container-registry-quickstart-task-cli.md
       itemType: get-started
       text: Sestavení, nasdílení změn a spuštění image s využitím Azure CLI
     footerLink:
-      url: /azure/container-instances/
+      url: ../container-instances/index.yml
       text: Další informace
   - title: Plánování úloh a správa výpočetních funkcí
     links:
-    - url: /azure/batch/batch-technical-overview
+    - url: ../batch/batch-technical-overview.md
       itemType: overview
       text: Co je Batch?
-    - url: /azure/batch/quick-create-cli
+    - url: ../batch/quick-create-cli.md
       itemType: get-started
       text: Spuštění první úlohy služby Batch s využitím Azure CLI
-    - url: /azure/batch/tutorial-parallel-dotnet
+    - url: ../batch/tutorial-parallel-dotnet.md
       itemType: tutorial
       text: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní .NET API
     footerLink:
-      url: /azure/batch/
+      url: ../batch/index.yml
       text: Další informace
   - title: Vývoj mikroslužeb a orchestrace kontejnerů
     links:
-    - url: /azure/service-fabric/service-fabric-overview
+    - url: ../service-fabric/service-fabric-overview.md
       itemType: overview
       text: Co je Azure Service Fabric?
-    - url: /azure/service-fabric/service-fabric-quickstart-dotnet
+    - url: ../service-fabric/service-fabric-quickstart-dotnet.md
       itemType: quickstart
       text: Nasazení aplikace Reliable Services v .NET do služby Service Fabric
-    - url: /azure/service-fabric/service-fabric-cluster-creation-for-windows-server
+    - url: ../service-fabric/service-fabric-cluster-creation-for-windows-server.md
       itemType: how-to-guide
       text: Vytvoření samostatného clusteru běžícího na Windows Serveru
     footerLink:
-      url: /azure/service-fabric/
+      url: ../service-fabric/index.yml
       text: Další informace
   - title: Ukládání a správa imagí kontejnerů
     links:
-    - url: /azure/container-registry/container-registry-intro
+    - url: ../container-registry/container-registry-intro.md
       itemType: overview
       text: Co je Azure Container Registry?
-    - url: /azure/container-registry/container-registry-get-started-azure-cli
+    - url: ../container-registry/container-registry-get-started-azure-cli.md
       itemType: get-started
       text: Vytvoření soukromého registru kontejneru s využitím Azure CLI
-    - url: /azure/container-registry/container-registry-quickstart-task-cli
+    - url: ../container-registry/container-registry-quickstart-task-cli.md
       itemType: get-started
       text: Sestavení, nasdílení změn a spuštění image s využitím Azure CLI
     footerLink:
-      url: /azure/container-registry/
+      url: ../container-registry/index.yml
       text: Další informace
   - title: Spravovaná služba OpenShift
     links:
-    - url: /azure/openshift/intro-openshift
+    - url: ../openshift/intro-openshift.md
       itemType: overview
       text: Co je Azure Red Hat OpenShift?
-    - url: /azure/openshift/howto-setup-environment
+    - url: ../openshift/howto-setup-environment.md
       itemType: how-to-guide
       text: Nastavení vývojového prostředí Azure Red Hat OpenShift
-    - url: /azure/openshift/tutorial-create-cluster
+    - url: ../openshift/tutorial-create-cluster.md
       itemType: tutorial
       text: Vytvoření clusteru Azure Red Hat OpenShift
     footerLink:
@@ -148,15 +148,15 @@ conceptualContent:
       text: Další informace
   - title: Vývoj bezserverových aplikací
     links:
-    - url: /azure/azure-functions/functions-overview
+    - url: ../azure-functions/functions-overview.md
       itemType: overview
       text: Seznámení s Azure Functions
-    - url: /azure/azure-functions/functions-create-first-function-vs-code
+    - url: ../azure-functions/functions-create-first-function-vs-code.md
       itemType: quickstart
       text: Vytvoření první funkce
-    - url: /azure/azure-functions/functions-triggers-bindings
+    - url: ../azure-functions/functions-triggers-bindings.md
       itemType: overview
       text: Integrace s ostatními službami Azure
     footerLink:
-      url: /azure/azure-functions/
+      url: ../azure-functions/index.yml
       text: Další informace

@@ -4,11 +4,12 @@ description: Nejčastější dotazy týkající se Service Fabric, včetně mož
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78254887"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258936"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Nejčastější dotazy ke službě Service Fabric
 
@@ -21,9 +22,9 @@ Existuje mnoho nejčastějších otázek, které Service Fabric můžou dělat a
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Návody vrátit Service Fabric certifikát clusteru?
 
-Vrácení jakéhokoli upgradu do vaší aplikace vyžaduje detekci selhání stavu před tím, než vaše Service Fabric kvorum clusteru tuto změnu provedla. potvrzené změny lze provést pouze posunutím. Pokud byla zavedena nemonitorovaná změna nemonitorovaného certifikátu, může být nutné obnovit váš cluster prostřednictvím služeb podpory pro eskalace prostřednictvím služeb zákaznické podpory.  [Upgrade aplikace Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) aplikuje [parametry upgradu aplikace](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)a poskytuje příslib upgradu s žádným výpadkem.  Po doporučeném monitorovaném režimu upgradu aplikace je automatický průběh prostřednictvím aktualizačních domén založený na kontrolách stavu, které se provedou, pokud dojde k chybě při aktualizaci výchozí služby.
+Vrácení jakéhokoli upgradu do vaší aplikace vyžaduje detekci selhání stavu před tím, než vaše Service Fabric kvorum clusteru tuto změnu provedla. potvrzené změny lze provést pouze posunutím. Pokud byla zavedena nemonitorovaná změna nemonitorovaného certifikátu, může být nutné obnovit váš cluster prostřednictvím služeb podpory pro eskalace prostřednictvím služeb zákaznické podpory.  [Upgrade aplikace Service Fabric](./service-fabric-application-upgrade.md?branch=master) aplikuje [parametry upgradu aplikace](./service-fabric-application-upgrade-parameters.md?branch=master)a poskytuje příslib upgradu s žádným výpadkem.  Po doporučeném monitorovaném režimu upgradu aplikace je automatický průběh prostřednictvím aktualizačních domén založený na kontrolách stavu, které se provedou, pokud dojde k chybě při aktualizaci výchozí služby.
  
-Pokud váš cluster stále využívá vlastnost s klasickým kryptografickým otiskem certifikátu v šabloně Správce prostředků, doporučujeme [změnit cluster z kryptografického otisku certifikátu na běžný název](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn), abyste využili moderní funkce pro správu tajných kódů.
+Pokud váš cluster stále využívá vlastnost s klasickým kryptografickým otiskem certifikátu v šabloně Správce prostředků, doporučujeme [změnit cluster z kryptografického otisku certifikátu na běžný název](./service-fabric-cluster-change-cert-thumbprint-to-cn.md), abyste využili moderní funkce pro správu tajných kódů.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Můžu vytvořit cluster, který zahrnuje několik oblastí Azure nebo vlastní datová centra?
 
@@ -40,7 +41,7 @@ Zvažte několik věcí, které je potřeba vzít v úvahu:
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Budou uzly Service Fabric automaticky dostávat aktualizace operačního systému?
 
-V dnešní době můžete používat [automatickou funkci aktualizace image sady škálování virtuálního počítače](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) , která je všeobecně dostupná.
+V dnešní době můžete používat [automatickou funkci aktualizace image sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) , která je všeobecně dostupná.
 
 Pro clustery, které neběží v Azure, [poskytujeme aplikaci](service-fabric-patch-orchestration-application.md) , která umožňuje opravovat operační systémy pod uzly Service Fabric.
 
@@ -125,7 +126,7 @@ Ne. Virtuální počítače s nízkou prioritou se nepodporují.
 Níže jsou uvedené možnosti pro vaši aplikaci k získání přihlašovacích údajů pro ověřování do trezoru klíčů:
 
 A. Během sestavování/balení vaší aplikace můžete načíst certifikát do balíčku dat aplikace SF a použít ho k ověření do trezoru klíčů.
-B. Pro hostitele s podporou MSI sady škálování pro virtuální počítače můžete vyvinout jednoduché prostředí PowerShell SetupEntryPoint pro vaši aplikaci SF a získat [přístupový token z koncového bodu MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)a pak [načíst tajné kódy z trezoru klíčů](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
+B. Pro hostitele s podporou MSI sady škálování pro virtuální počítače můžete vyvinout jednoduché prostředí PowerShell SetupEntryPoint pro vaši aplikaci SF a získat [přístupový token z koncového bodu MSI](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)a pak [načíst tajné kódy z trezoru klíčů](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret).
 
 ## <a name="application-design"></a>Návrh aplikace
 
@@ -176,9 +177,9 @@ Kontejnery nabízejí jednoduchý způsob, jak zabalit služby a jejich závislo
 
 Máme Open Source součásti Service Fabric ([Reliable Services Framework](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [Reliable actors](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.NET Core Integration](https://github.com/Azure/service-fabric-aspnetcore)Library, [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)a [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) na GitHubu a přijměte příspěvky komunity na tyto projekty. 
 
-[Nedávno jsme oznámili](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) , že plánujeme otevřít zdroj Service Fabric runtime. V tuto chvíli máme [Service Fabric](https://github.com/Microsoft/service-fabric/) nakládat na GitHubu pomocí nástrojů pro sestavení a testování pro Linux, což znamená, že můžete klonovat úložiště, sestavovat Service Fabric pro Linux, spouštět základní testy, otevírat problémy a odesílat žádosti o přijetí změn. Těžko pracujeme na tom, aby se prostředí Windows buildu migrovali i v rámci kompletního prostředí CI.
+[Nedávno jsme oznámili](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) , že plánujeme otevřít zdroj Service Fabric runtime. V tuto chvíli máme [Service Fabric](https://github.com/Microsoft/service-fabric/) nakládat na GitHubu pomocí nástrojů pro sestavení a testování pro Linux, což znamená, že můžete klonovat úložiště, sestavovat Service Fabric pro Linux, spouštět základní testy, otevírat problémy a odesílat žádosti o přijetí změn. Těžko pracujeme na tom, aby se prostředí Windows buildu migrovali i v rámci kompletního prostředí CI.
 
-Další podrobnosti najdete na [blogu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/) .
+Další podrobnosti najdete na [blogu Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) .
 
 ## <a name="next-steps"></a>Další kroky
 

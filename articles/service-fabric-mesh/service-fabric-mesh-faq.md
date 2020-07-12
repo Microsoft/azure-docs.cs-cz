@@ -4,11 +4,12 @@ description: Seznamte se s nejčastějšími dotazy a odpověďmi na Azure Servi
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78252493"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260111"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Nejčastější dotazy týkající se Service Fabric sítě
 
@@ -120,7 +121,7 @@ V místním vývojovém clusteru použijte `{serviceName}.{applicationName}` . V
 
 Síť Azure v současné době nepodporuje překlad DNS napříč aplikacemi.
 
-Další známé problémy se službou DNS při spuštění Service Fabric vývojového clusteru ve Windows 10 najdete v tématu: [ladění kontejnerů Windows](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) a [známých problémů se službou DNS](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues).
+Další známé problémy se službou DNS při spuštění Service Fabric vývojového clusteru ve Windows 10 najdete v tématu: [ladění kontejnerů Windows](../service-fabric/service-fabric-how-to-debug-windows-containers.md) a [známých problémů se službou DNS](../service-fabric/service-fabric-dnsservice.md#known-issues).
 
 ### <a name="networking"></a>Sítě
 

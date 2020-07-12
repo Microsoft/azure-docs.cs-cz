@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 48350caef6bdaafda9aff7ac776d67b314aeaf8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d66248797d577d6894d1125188735ecf71029b0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614396"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258893"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Dotazování rozhraní API Eventstoru pro události clusteru
 
@@ -109,7 +110,7 @@ Tady vidíte, že mezi `2018-04-03T18:00:00Z` a byl `2018-04-04T18:00:00Z` tento
 
 ## <a name="query-the-eventstore-programmatically"></a>Programové dotazování na Eventstoru
 
-Pomocí [klientské knihovny Service Fabric také můžete prostřednictvím klientské knihovny](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)dotazovat na eventstoru programově.
+Pomocí [klientské knihovny Service Fabric také můžete prostřednictvím klientské knihovny](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)dotazovat na eventstoru programově.
 
 Po nastavení klienta Service Fabric můžete zadávat dotazy na události tím, že získáte přístup k Eventstoru, jako je tato:`sfhttpClient.EventStore.<request>`
 
@@ -199,4 +200,3 @@ Pokud chcete zobrazit všechny přesuny oddílů, ke kterým došlo v clusteru, 
 *Služba chaos:*
 
 Existuje událost pro případ, že je služba chaos spuštěná nebo zastavená, která je vystavená na úrovni clusteru. Pokud chcete zobrazit poslední použití služby chaos, použijte následující dotaz:`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
-

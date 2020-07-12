@@ -3,11 +3,12 @@ title: Vytvoření šablony clusteru Azure Service Fabric
 description: Naučte se, jak vytvořit šablonu Správce prostředků pro cluster Service Fabric. Nakonfigurujte zabezpečení, Azure Key Vault a Azure Active Directory (Azure AD) pro ověřování klientů.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b028b5c1f32733146c071e50b24202e5bad945c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985367"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260495"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Vytvoření Správce prostředků šablony Service Fabric clusteru
 
@@ -261,7 +262,7 @@ Další informace o syntaxi a vlastnostech JSON pro prostředky nasazené v tomt
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
-[resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
+[resource-group-template-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-create-template/cluster-security-arm-dependency-map.png

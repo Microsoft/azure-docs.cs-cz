@@ -3,11 +3,12 @@ title: Připojit svazek Gitrepo nepodporují ke skupině kontejnerů
 description: Naučte se připojit svazek Gitrepo nepodporují, abyste mohli klonovat úložiště Git do svých instancí kontejnerů.
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78252091"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260711"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojení svazku Gitrepo nepodporují v Azure Container Instances
 
@@ -24,7 +25,7 @@ Když připojíte svazek *gitrepo nepodporují* , můžete nastavit tři vlastno
 
 | Vlastnost | Povinné | Popis |
 | -------- | -------- | ----------- |
-| `repository` | Yes | Úplná adresa URL, včetně `http://` nebo `https://` , úložiště Git, které se má klonovat.|
+| `repository` | Ano | Úplná adresa URL, včetně `http://` nebo `https://` , úložiště Git, které se má klonovat.|
 | `directory` | No | Adresář, do kterého má být úložiště klonováno. Cesta nesmí obsahovat ani začínat znakem " `..` ".  Pokud zadáte " `.` ", úložiště bude naklonováno do adresáře svazku. V opačném případě je úložiště Git naklonované do podadresáře daného názvu v rámci adresáře svazků. |
 | `revision` | No | Hodnota hash potvrzení revizí, která se má klonovat Pokud tento parametr nezadáte, `HEAD` je revize naklonována. |
 
@@ -111,7 +112,7 @@ Naučte se připojit další typy svazků v Azure Container Instances:
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
 [pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[pat-repos]: https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
+[pat-repos]: /azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

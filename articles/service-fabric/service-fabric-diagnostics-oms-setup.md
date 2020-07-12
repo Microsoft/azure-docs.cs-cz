@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609923"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258649"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Nastavení protokolů Azure Monitor pro cluster
 
@@ -90,7 +91,7 @@ Azure Resource Manager zjistí, že tento příkaz je aktualizací existujícíh
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Nasazení protokolů Azure Monitor s využitím Azure PowerShell
 
-Prostředek Log Analytics můžete nasadit taky přes PowerShell pomocí `New-AzOperationalInsightsWorkspace` příkazu. Pokud chcete použít tuto metodu, ujistěte se, že máte nainstalovanou [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Pomocí tohoto skriptu vytvořte nový pracovní prostor Log Analytics a přidejte do něj řešení Service Fabric: 
+Prostředek Log Analytics můžete nasadit taky přes PowerShell pomocí `New-AzOperationalInsightsWorkspace` příkazu. Pokud chcete použít tuto metodu, ujistěte se, že máte nainstalovanou [Azure PowerShell](/powershell/azure/install-az-ps). Pomocí tohoto skriptu vytvořte nový pracovní prostor Log Analytics a přidejte do něj řešení Service Fabric: 
 
 ```powershell
 
@@ -122,5 +123,5 @@ Pomocí prostředí PowerShell můžete také přidat další řešení nebo pro
 
 ## <a name="next-steps"></a>Další kroky
 * [Nasaďte agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) do svých uzlů, abyste mohli shromažďovat čítače výkonu a shromažďovat statistiky a protokoly Docker pro vaše kontejnery.
-* Seznámení s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) , které nabízí jako součást protokolů Azure monitor
+* Seznámení s funkcemi [prohledávání protokolů a dotazování](../azure-monitor/log-query/log-query-overview.md) , které nabízí jako součást protokolů Azure monitor
 * [Použití návrháře zobrazení k vytváření vlastních zobrazení v protokolech Azure Monitor](../azure-monitor/platform/view-designer.md)

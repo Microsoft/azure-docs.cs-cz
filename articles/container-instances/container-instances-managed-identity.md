@@ -3,12 +3,12 @@ title: Povolit spravovanou identitu ve skupině kontejnerů
 description: Naučte se, jak v Azure Container Instances povolit spravovanou identitu, která se dá ověřit u jiných služeb Azure.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169778"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259622"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Použití spravovaných identit se službou Azure Container Instances
 
@@ -392,6 +392,6 @@ V tomto článku jste se seznámili se spravovanými identitami v Azure Containe
 > * Udělení identity přístupu k trezoru klíčů Azure
 > * Použití spravované identity pro přístup k trezoru klíčů ze spuštěného kontejneru
 
-* Přečtěte si další informace o [spravovaných identitách pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/).
+* Přečtěte si další informace o [spravovaných identitách pro prostředky Azure](../active-directory/managed-identities-azure-resources/index.yml).
 
 * Příklad použití spravované identity pro přístup k trezoru klíčů z Azure Container Instances najdete v tématu [Azure SDK SDK](https://medium.com/@samkreter/c98911206328) .

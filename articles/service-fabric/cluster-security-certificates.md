@@ -4,12 +4,12 @@ description: Přečtěte si o ověřování pomocí certifikátů v Service Fabr
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36717f526f88af753f3929d62e84ee65be4320e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429665"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259018"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>Ověřování pomocí certifikátu X. 509 v clusterech Service Fabric
 
@@ -180,7 +180,7 @@ Dříve jsme uvedli, že nastavení zabezpečení Service Fabricho clusteru tak�
 
 Jak už bylo zmíněno, ověřování certifikátu vždy implikuje sestavování a vyhodnocování řetězu certifikátů. V případě certifikátů vydaných certifikační autoritou toto zjevně jednoduché volání rozhraní API pro operační systém obvykle zahrnuje několik odchozích volání do různých koncových bodů vydávajícího PKI, ukládání odpovědí do mezipaměti atd. Vzhledem k tomu, že je v clusteru Service Fabrica volání ověřování certifikátů, mohou všechny problémy v koncových bodech infrastruktury veřejných klíčů způsobit snížení dostupnosti clusteru nebo navýšení pravého rozpisu. I když odchozí volání nelze potlačit (Další informace najdete níže v části Nejčastější dotazy), je možné použít následující nastavení k maskování chyb ověřování způsobených neúspěšnými voláními CRL.
 
-  * CrlCheckingFlag – v části zabezpečení se řetězec převedl na UINT. Hodnota tohoto nastavení je používána Service Fabric k maskování chyb stavu řetězu certifikátů změnou chování řetězového sestavení; do volání Win32 CryptoAPI [CertGetCertificateChain](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) se předává jako parametr dwFlags a dá se nastavit na jakoukoli platnou kombinaci příznaků přijatou funkcí. Hodnota 0 vynutí, aby modul runtime Service Fabric ignoroval chyby stavu důvěryhodnosti – to se nedoporučuje, protože jeho použití by představovalo významnou expozici zabezpečení. Výchozí hodnota je 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
+  * CrlCheckingFlag – v části zabezpečení se řetězec převedl na UINT. Hodnota tohoto nastavení je používána Service Fabric k maskování chyb stavu řetězu certifikátů změnou chování řetězového sestavení; do volání Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) se předává jako parametr dwFlags a dá se nastavit na jakoukoli platnou kombinaci příznaků přijatou funkcí. Hodnota 0 vynutí, aby modul runtime Service Fabric ignoroval chyby stavu důvěryhodnosti – to se nedoporučuje, protože jeho použití by představovalo významnou expozici zabezpečení. Výchozí hodnota je 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
 
   Kdy použít: pro místní testování s certifikáty podepsanými držitelem nebo certifikáty pro vývojáře, které nejsou plně vytvořené/nemají správnou infrastrukturu veřejného klíče pro podporu certifikátů. Může také používat jako zmírnění rizik v prostředí AIR gapped během přechodu mezi infrastruktury veřejných klíčů.
 
@@ -257,7 +257,7 @@ Dokončení fáze 2 také označuje převod clusteru na běžné certifikáty za
 V samostatném článku budeme řešit téma Správa a zřizování certifikátů do clusteru Service Fabric.
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>Řešení problémů a nejčastější dotazy
-Při ladění potíží souvisejících s ověřováním v Service Fabric clusterech není jednoduché, hopeful se vám mohou pomoci následující rady a tipy. Nejjednodušší způsob, jak začít s vyšetřováním, je prozkoumávat protokoly událostí Service Fabric v uzlech clusteru – nemusí nutně jenom zobrazovat příznaky, ale také uzly, které se nemůžou připojit k jednomu ze svých sousedů. V systému Windows se události významnosti obvykle protokolují do kanálů "Applications and Services Logs\Microsoft-ServiceFabric\Admin" nebo "Operational" (v uvedeném pořadí). V některých případech může být užitečné [Povolit protokolování CAPI2](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues), zachytit další podrobnosti týkající se ověření certifikátu, načtení seznamu CRL/seznamu CTL atd. (Nezapomeňte ho po dokončení reprodukci zablokovat, může být poměrně podrobný.)
+Při ladění potíží souvisejících s ověřováním v Service Fabric clusterech není jednoduché, hopeful se vám mohou pomoci následující rady a tipy. Nejjednodušší způsob, jak začít s vyšetřováním, je prozkoumávat protokoly událostí Service Fabric v uzlech clusteru – nemusí nutně jenom zobrazovat příznaky, ale také uzly, které se nemůžou připojit k jednomu ze svých sousedů. V systému Windows se události významnosti obvykle protokolují do kanálů "Applications and Services Logs\Microsoft-ServiceFabric\Admin" nebo "Operational" (v uvedeném pořadí). V některých případech může být užitečné [Povolit protokolování CAPI2](/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues), zachytit další podrobnosti týkající se ověření certifikátu, načtení seznamu CRL/seznamu CTL atd. (Nezapomeňte ho po dokončení reprodukci zablokovat, může být poměrně podrobný.)
 
 Typickými příznaky, které v clusteru dochází k problémům s ověřováním, jsou tyto problémy: 
   - uzly jsou mimo provoz nebo cykly. 
@@ -300,5 +300,4 @@ Jednotlivé příznaky mohou být způsobeny různými problémy a stejná hlavn
     ```C++
     0x80090014  -2146893804 NTE_BAD_PROV_TYPE
     ```
-    Pokud chcete problém vyřešit, znovu vytvořte certifikát clusteru pomocí CAPI1 (např. "poskytovatel kryptografických služeb standardu RSA a AES"). Další informace o zprostředkovatelích kryptografických služeb najdete v tématu [Principy zprostředkovatelů kryptografických služeb](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers) .
-
+    Pokud chcete problém vyřešit, znovu vytvořte certifikát clusteru pomocí CAPI1 (např. "poskytovatel kryptografických služeb standardu RSA a AES"). Další informace o zprostředkovatelích kryptografických služeb najdete v tématu [Principy zprostředkovatelů kryptografických služeb](/windows/win32/seccertenroll/understanding-cryptographic-providers) .

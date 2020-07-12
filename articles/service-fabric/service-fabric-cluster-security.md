@@ -4,12 +4,12 @@ description: Přečtěte si o scénářích zabezpečení pro cluster Azure Serv
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080680"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261072"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric scénáře zabezpečení clusteru
 
@@ -27,7 +27,7 @@ Zabezpečení mezi uzly pomáhá zabezpečit komunikaci mezi virtuálními poč�
 
 ![Diagram komunikace mezi uzly][Node-to-Node]
 
-Clustery běžící v Azure a samostatné clustery, které běží v systému Windows, můžou pro počítače se systémem Windows Server použít [zabezpečení certifikátů](https://msdn.microsoft.com/library/ff649801.aspx) nebo [zabezpečení systému Windows](https://msdn.microsoft.com/library/ff649396.aspx) .
+Clustery běžící v Azure a samostatné clustery, které běží v systému Windows, můžou pro počítače se systémem Windows Server použít [zabezpečení certifikátů](/previous-versions/msp-n-p/ff649801(v=pandp.10)) nebo [zabezpečení systému Windows](/previous-versions/msp-n-p/ff649396(v=pandp.10)) .
 
 ### <a name="node-to-node-certificate-security"></a>Zabezpečení certifikátů mezi uzly
 
@@ -54,7 +54,7 @@ Zabezpečení typu klient-uzel ověřuje klienty a pomáhá zabezpečit komunika
 
 ![Diagram komunikace mezi klientem a uzlem][Client-to-Node]
 
-Clustery běžící v Azure a samostatné clustery, které běží v systému Windows, můžou používat [zabezpečení certifikátů](https://msdn.microsoft.com/library/ff649801.aspx) nebo [zabezpečení systému Windows](https://msdn.microsoft.com/library/ff649396.aspx), i když je to možné, pokud je to možné, doporučuje se používat ověřování certifikátů X. 509.
+Clustery běžící v Azure a samostatné clustery, které běží v systému Windows, můžou používat [zabezpečení certifikátů](/previous-versions/msp-n-p/ff649801(v=pandp.10)) nebo [zabezpečení systému Windows](/previous-versions/msp-n-p/ff649396(v=pandp.10)), i když je to možné, pokud je to možné, doporučuje se používat ověřování certifikátů X. 509.
 
 ### <a name="client-to-node-certificate-security"></a>Zabezpečení certifikátu klienta k uzlu
 
@@ -95,7 +95,7 @@ Nastavte role správce a uživatele klienta při vytváření clusteru. Přiřa�
 
 ## <a name="x509-certificates-and-service-fabric"></a>Certifikáty X. 509 a Service Fabric
 
-Digitální certifikáty X. 509 se běžně používají k ověřování klientů a serverů. Používají se také k šifrování a digitálnímu podepisování zpráv. Service Fabric k zabezpečení clusteru a poskytování funkcí zabezpečení aplikací používá certifikáty X. 509. Další informace o digitálních certifikátech X. 509 najdete v tématu [práce s certifikáty](https://msdn.microsoft.com/library/ms731899.aspx). Pomocí [Key Vault](../key-vault/general/overview.md) můžete spravovat certifikáty pro Service Fabric clustery v Azure.
+Digitální certifikáty X. 509 se běžně používají k ověřování klientů a serverů. Používají se také k šifrování a digitálnímu podepisování zpráv. Service Fabric k zabezpečení clusteru a poskytování funkcí zabezpečení aplikací používá certifikáty X. 509. Další informace o digitálních certifikátech X. 509 najdete v tématu [práce s certifikáty](/dotnet/framework/wcf/feature-details/working-with-certificates). Pomocí [Key Vault](../key-vault/general/overview.md) můžete spravovat certifikáty pro Service Fabric clustery v Azure.
 
 Mezi důležité věci, které je potřeba vzít v úvahu:
 

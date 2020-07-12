@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82612363"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259893"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Prostředí Windows Virtual Desktop
 
@@ -66,7 +66,7 @@ Informace o tom, jak nastavit fond hostitelů pro virtuální počítače s Wind
 
 Informace o tom, jak se připojit k virtuálnímu počítači s Windows, najdete v jednom z následujících článků:
 
-- [Připojení se systémem Windows 10 nebo Windows 7](connect-windows-7-and-10.md)
+- [Připojení se systémem Windows 10 nebo Windows 7](connect-windows-7-10.md)
 - [Připojení pomocí webového prohlížeče](connect-web.md)
 - [Práce s klientem Android](connect-android.md)
 - [Připojení s klientem macOS](connect-macos.md)

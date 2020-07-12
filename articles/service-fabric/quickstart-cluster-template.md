@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 70b5387e5e58bd30aa61feefc1bf4e5e98af9b1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119493"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259341"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Rychlý Start: Vytvoření clusteru Service Fabric pomocí šablony ARM
 
@@ -26,7 +26,7 @@ Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používán�
 
 [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-secure-cluster-5-node-1-nodetype%2Fazuredeploy.json)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
@@ -36,7 +36,7 @@ K dokončení tohoto rychlého startu budete potřebovat:
 
 * Nainstalujte [sadu Service Fabric SDK a modul prostředí PowerShell](service-fabric-get-started.md).
 
-* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="download-the-sample-template-and-certificate-helper-script"></a>Stažení ukázkové šablony a skriptu pomocníka s certifikátem
 

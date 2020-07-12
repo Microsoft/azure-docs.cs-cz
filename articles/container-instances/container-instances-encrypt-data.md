@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232436"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259703"
 ---
 # <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
 
@@ -39,7 +39,7 @@ Zbývající část dokumentu popisuje kroky potřebné k zašifrování dat nas
 
 ### <a name="create-service-principal-for-aci"></a>Vytvoření instančního objektu pro ACI
 
-Prvním krokem je zajistit, aby měl váš [tenant Azure](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) instanční objekt přiřazený pro udělení oprávnění službě Azure Container Instances. 
+Prvním krokem je zajistit, aby měl váš [tenant Azure](../active-directory/develop/quickstart-create-new-tenant.md) instanční objekt přiřazený pro udělení oprávnění službě Azure Container Instances. 
 
 > [!IMPORTANT]
 > Pokud chcete spustit následující příkaz a úspěšně vytvořit instanční objekt, potvrďte, že máte oprávnění k vytváření instančních objektů ve vašem tenantovi.
@@ -59,7 +59,7 @@ V případě, že nemůžete úspěšně vytvořit instanční objekt:
 
 ### <a name="create-a-key-vault-resource"></a>Vytvoření prostředku Key Vault
 
-Vytvořte Azure Key Vault pomocí [Azure Portal](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault), [CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli)nebo [PowerShellu](https://docs.microsoft.com/azure/key-vault/quick-create-powershell). 
+Vytvořte Azure Key Vault pomocí [Azure Portal](../key-vault/secrets/quick-create-portal.md#create-a-vault), [CLI](../key-vault/secrets/quick-create-cli.md)nebo [PowerShellu](../key-vault/secrets/quick-create-powershell.md). 
 
 Pro vlastnosti vašeho trezoru klíčů použijte následující pokyny: 
 * Název: Je potřeba zadat jedinečný název. 
@@ -96,7 +96,7 @@ Zásady přístupu by se teď měly zobrazit v zásadách přístupu trezoru kl�
 > [!IMPORTANT]
 > Šifrování dat nasazení pomocí klíče spravovaného zákazníkem je dostupné v nejnovější verzi rozhraní API (2019-12-01), která se v tuto chvíli zavádí. Tuto verzi rozhraní API zadejte v šabloně nasazení. Pokud s tím máte nějaké problémy, obraťte se prosím na podporu Azure.
 
-Jakmile nastavíte klíč trezoru klíčů a zásadu přístupu, přidejte do šablony nasazení ACI následující vlastnosti. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Jakmile nastavíte klíč trezoru klíčů a zásadu přístupu, přidejte do šablony nasazení ACI následující vlastnosti. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](./container-instances-multi-container-group.md). 
 * V části `resources` nastavte `apiVersion` na `2019-12-01` .
 * V části vlastnosti skupiny kontejnerů v šabloně nasazení přidejte `encryptionProperties` , který obsahuje následující hodnoty:
   * `vaultBaseUrl`: název DNS vašeho trezoru klíčů najdete v okně Přehled prostředku trezoru klíčů na portálu.
@@ -129,7 +129,7 @@ Následující fragment šablony zobrazuje tyto další vlastnosti pro šifrová
 ]
 ```
 
-Toto je kompletní šablona přizpůsobená pomocí šablony v [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+Toto je kompletní šablona přizpůsobená pomocí šablony v [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](./container-instances-multi-container-group.md). 
 
 ```json
 {
@@ -233,14 +233,14 @@ Vytvořte skupinu prostředků pomocí příkazu [az group create][az-group-crea
 az group create --name myResourceGroup --location eastus
 ```
 
-Šablonu nasaďte pomocí příkazu [AZ Group Deployment Create][az-group-deployment-create] .
+Nasaďte šablonu pomocí příkazu [AZ Deployment Group Create][az-deployment-group-create] .
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 Během několika sekund by se měla zobrazit první odezva z Azure. Až se nasazení dokončí, všechna data související s tím, která jsou trvale zachovaná službou ACI, se zašifrují pomocí zadaného klíče.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create

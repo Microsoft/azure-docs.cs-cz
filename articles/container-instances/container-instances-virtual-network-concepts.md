@@ -4,12 +4,12 @@ description: Scénáře, prostředky a omezení pro nasazení skupin kontejnerů
 ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
-ms.openlocfilehash: 77fbdb1720e571027f28b5bdca5c0e3c65c3ded2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82584399"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259541"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Scénáře a prostředky virtuální sítě
 
@@ -67,7 +67,7 @@ Podsíť, kterou použijete pro skupiny kontejnerů, může obsahovat pouze skup
 
 Profil sítě je šablona konfigurace sítě pro prostředky Azure. Určuje určité vlastnosti sítě pro prostředek, například podsíť, do které se má nasadit. Při prvním použití příkazu [AZ Container Create][az-container-create] k nasazení skupiny kontejnerů do podsítě (a tedy virtuální sítě) vytvoří Azure profil sítě za vás. Pak můžete tento profil sítě použít pro budoucí nasazení do podsítě. 
 
-Chcete-li použít šablonu Správce prostředků, soubor YAML nebo programovou metodu pro nasazení skupiny kontejnerů do podsítě, je nutné zadat úplné ID Správce prostředků prostředku profilu sítě. Můžete použít profil, který jste vytvořili dříve pomocí [AZ Container Create][az-container-create], nebo vytvořit profil pomocí šablony Správce prostředků (viz [příklad šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) a [reference](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Pokud chcete získat ID dříve vytvořeného profilu, použijte příkaz [AZ Network Profile list][az-network-profile-list] . 
+Chcete-li použít šablonu Správce prostředků, soubor YAML nebo programovou metodu pro nasazení skupiny kontejnerů do podsítě, je nutné zadat úplné ID Správce prostředků prostředku profilu sítě. Můžete použít profil, který jste vytvořili dříve pomocí [AZ Container Create][az-container-create], nebo vytvořit profil pomocí šablony Správce prostředků (viz [příklad šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) a [reference](/azure/templates/microsoft.network/networkprofiles)). Pokud chcete získat ID dříve vytvořeného profilu, použijte příkaz [AZ Network Profile list][az-network-profile-list] . 
 
 V následujícím diagramu byly nasazeny některé skupiny kontejnerů do podsítě delegované do Azure Container Instances. Po nasazení jedné skupiny kontejnerů do podsítě můžete do ní nasadit další skupiny kontejnerů zadáním stejného profilu sítě.
 
@@ -86,4 +86,3 @@ V následujícím diagramu byly nasazeny některé skupiny kontejnerů do podsí
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
-

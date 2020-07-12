@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9b9b7926caa717c1a02988ac7a927bd9bd39d52a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683707"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260630"
 ---
-# <a name="quickstart-deploy-azure-firewall-with-availability-zones---resource-manager-template"></a>Rychlý Start: nasazení Azure Firewall se šablonou Zóny dostupnosti-Správce prostředků
+# <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Rychlý Start: nasazení Azure Firewall se šablonou Zóny dostupnosti-ARM
 
-V tomto rychlém startu použijete šablonu Správce prostředků k nasazení Azure Firewall ve třech Zóny dostupnosti. 
+V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k nasazení Azure Firewall ve třech Zóny dostupnosti.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,15 +29,17 @@ Uživatelem definovaná trasa směrování v síti z podsítě *ServersSubnet* p
 
 Další informace o Azure Firewall najdete v tématu [nasazení a konfigurace Azure firewall použití Azure Portal](tutorial-firewall-deploy-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-azure-firewall-with-availability-zones"></a>Vytvoření Azure Firewall s Zóny dostupnosti
+## <a name="review-the-template"></a>Kontrola šablony
 
 Tato šablona vytvoří Azure Firewall s Zóny dostupnosti, včetně nezbytných prostředků pro podporu Azure Firewall.
-
-### <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox).
 
@@ -54,9 +56,9 @@ V šabloně je definováno víc prostředků Azure:
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-Nasazení šablony Správce prostředků do Azure:
+Nasazení šablony ARM do Azure:
 
 1. Vyberte **nasadit do Azure** a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří Azure Firewall, síťovou infrastrukturu a dva virtuální počítače.
 
@@ -64,9 +66,9 @@ Nasazení šablony Správce prostředků do Azure:
 
 2. Na portálu na stránce **vytvořit nastavení izolovaného prostoru Azure firewall se zónami** zadejte nebo vyberte následující hodnoty:
    - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte název skupiny prostředků a vyberte **OK**. 
-   - **Virtual Network název**: zadejte název nové virtuální sítě. 
+   - **Virtual Network název**: zadejte název nové virtuální sítě.
    - **Uživatelské jméno správce**: zadejte uživatelské jméno pro uživatelský účet správce.
-   - **Heslo správce**: zadejte heslo správce. 
+   - **Heslo správce**: zadejte heslo správce.
 
 3. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními** a pak vyberte **koupit**. Dokončení nasazení může trvat 10 minut nebo i déle.
 
@@ -78,7 +80,7 @@ Další informace o syntaxi a vlastnostech JSON pro bránu firewall v šabloně 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud je už nepotřebujete, můžete skupinu prostředků, bránu firewall a všechny související prostředky odebrat spuštěním `Remove-AzResourceGroup` příkazu PowerShellu. Pokud chcete odebrat skupinu prostředků s názvem *MyResourceGroup*, spusťte: 
+Pokud je už nepotřebujete, můžete skupinu prostředků, bránu firewall a všechny související prostředky odebrat spuštěním `Remove-AzResourceGroup` příkazu PowerShellu. Pokud chcete odebrat skupinu prostředků s názvem *MyResourceGroup*, spusťte:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup

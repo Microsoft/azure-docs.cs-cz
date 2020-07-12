@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 376f9d78f508c245bec2d066863566ace68eff0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204859"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259790"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurace typu přiřazení fondu hostitelů osobní plochy
 
@@ -92,5 +92,5 @@ Pokud potřebujete přidat hostitele relace zpátky do fondu hostitelů osobní 
 
 Teď, když jste nakonfigurovali typ přiřazení osobní plocha, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat ho v rámci uživatelské relace. Tyto další dva postupy se dozvíte, jak se připojit k relaci pomocí klienta podle vašeho výběru:
 
-- [Připojení s desktopovým klientem Windows](../connect-windows-7-and-10.md)
+- [Připojení s desktopovým klientem Windows](connect-windows-7-10-2019.md)
 - [Připojení k webovému klientovi](connect-web-2019.md)

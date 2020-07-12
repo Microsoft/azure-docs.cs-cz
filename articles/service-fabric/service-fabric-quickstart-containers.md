@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75466265"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260512"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rychlý start: Nasazení kontejnerů Windows do Service Fabric
 
@@ -30,7 +30,7 @@ V tomto rychlém startu se naučíte:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure (můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)).
 * Vývojový počítač s:
@@ -41,7 +41,7 @@ V tomto rychlém startu se naučíte:
 
 Sada Service Fabric SDK a nástroje poskytují šablonu služby, která vám pomůže s nasazením kontejneru do clusteru Service Fabric.
 
-Spusťte sadu Visual Studio jako správce.  Vyberte **soubor** > **Nový** > **projekt**.
+Spusťte sadu Visual Studio jako správce.  Vyberte **soubor**  >  **Nový**  >  **projekt**.
 
 Vyberte **Service Fabric aplikace**, pojmenujte ji "MyFirstContainer" a klikněte na **vytvořit**.
 
@@ -76,7 +76,7 @@ Společnost Microsoft publikuje různé image pro verze IIS sestavené na různ�
 
 Manifest služby dále specifikuje jenom jednu image na nanoserver, `mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016`.
 
-V souboru *souboru ApplicationManifest. XML* také změňte **PasswordEncrypted** na **false**. Účet a heslo pro veřejnou image kontejneru, která je v Docker Hub, jsou prázdné, takže šifrování vypneme, protože při šifrování prázdného hesla se vytvoří chyba buildu.
+V souboru *ApplicationManifest.xml* také změňte **PasswordEncrypted** na **hodnotu false (NEPRAVDA**). Účet a heslo pro veřejnou image kontejneru, která je v Docker Hub, jsou prázdné, takže šifrování vypneme, protože při šifrování prázdného hesla se vytvoří chyba buildu.
 
 ```xml
 <RepositoryCredentials AccountName="" Password="" PasswordEncrypted="false" />
@@ -88,9 +88,9 @@ Následující vzorový skript vytvoří cluster Service Fabric s pěti uzly zab
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/overview).
 
-Před spuštěním následujícího skriptu můžete v PowerShellu spustit `Connect-AzAccount` , aby se vytvořilo připojení k Azure.
+Před spuštěním následujícího skriptu můžete v PowerShellu spustit, `Connect-AzAccount` aby se vytvořilo připojení k Azure.
 
-Zkopírujte následující skript do schránky a otevřete **Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell**.  Vložte obsah do prázdného okna Untitled1. ps1. Pak zadejte hodnoty pro proměnné ve `subscriptionId`skriptu:, `certpwd`, `certfolder`, `adminuser`, `adminpwd`a tak dále.  Adresář, který zadáte `certfolder` pro, musí existovat před spuštěním skriptu.
+Zkopírujte následující skript do schránky a otevřete **Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell**.  Vložte obsah do prázdného okna Untitled1.ps1. Pak zadejte hodnoty pro proměnné ve skriptu: `subscriptionId` , `certpwd` , `certfolder` , `adminuser` , `adminpwd` a tak dále.  Adresář, který zadáte pro, `certfolder` musí existovat před spuštěním skriptu.
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
@@ -105,7 +105,7 @@ ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/cluster
 
 ### <a name="install-the-certificate-for-the-cluster"></a>Instalace certifikátu pro cluster
 
-Nyní nainstalujeme PFX do úložiště certifikátů *do currentuser\my* . Soubor PFX bude v adresáři, který jste zadali pomocí proměnné `certfolder` prostředí ve výše uvedeném skriptu PowerShellu.
+Nyní nainstalujeme PFX do úložiště certifikátů *do currentuser\my* . Soubor PFX bude v adresáři, který jste zadali pomocí `certfolder` proměnné prostředí ve výše uvedeném skriptu PowerShellu.
 
 Přejděte do tohoto adresáře a spusťte následující příkaz prostředí PowerShell, kde nahraďte název souboru PFX, který je ve vašem `certfolder` adresáři, a heslo, které jste zadali v `certpwd` proměnné. V tomto příkladu je aktuální adresář nastavený na adresář určený `certfolder` proměnnou ve skriptu PowerShellu. Z tohoto `Import-PfxCertificate` příkazu se spustí příkaz:
 
@@ -132,7 +132,7 @@ Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadi
 
 V Průzkumníku řešení klikněte pravým tlačítkem na **MyFirstContainer** a zvolte **Publikovat**. Zobrazí se dialogové okno Publikovat.
 
-Při spuštění `Import-PfxCertificate` příkazu v okně PowerShellu zkopírujte obsah následující **CN =** a do něj přidejte port. `19000` Například, `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Zkopírujte ho do pole **koncový bod připojení** . Zapamatujte si tuto hodnotu, protože ji budete potřebovat v budoucím kroku.
+Při spuštění příkazu v okně PowerShellu zkopírujte obsah následující **CN =** a do `Import-PfxCertificate` něj přidejte port `19000` . Například `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Zkopírujte ho do pole **koncový bod připojení** . Zapamatujte si tuto hodnotu, protože ji budete potřebovat v budoucím kroku.
 
 Klikněte na **Rozšířené parametry připojení** a ověřte informace o parametrech připojení.  Hodnoty *findValue* a *ServerCertThumbprint* musí odpovídat kryptografickému otisku certifikátu nainstalovaného při spuštění `Import-PfxCertificate` v předchozím kroku.
 
@@ -142,13 +142,13 @@ Klikněte na **Publikovat**.
 
 Každá aplikace v clusteru musí mít jedinečný název. Pokud dojde ke konfliktu názvů, přejmenujte projekt sady Visual Studio a znovu ho nasaďte.
 
-Otevřete prohlížeč a přejděte na adresu, kterou jste vložili do pole **koncový bod připojení** v předchozím kroku. Volitelně můžete před adresu URL přidat identifikátor schématu `http://` a připojit za ní port `:80`. Například http:\//mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
+Otevřete prohlížeč a přejděte na adresu, kterou jste vložili do pole **koncový bod připojení** v předchozím kroku. Volitelně můžete před adresu URL přidat identifikátor schématu `http://` a připojit za ní port `:80`. Například http: \/ /mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
 
  Měla by se zobrazit výchozí webová stránka služby IIS: ![Výchozí webová stránka služby IIS][iis-default]
 
 ## <a name="clean-up"></a>Vyčištění
 
-Po spuštění clusteru se vám budou účtovat poplatky. Zvažte [odstranění clusteru](service-fabric-cluster-delete.md).
+Po spuštění clusteru se vám budou účtovat poplatky. Zvažte [odstranění clusteru](./service-fabric-tutorial-delete-cluster.md).
 
 ## <a name="next-steps"></a>Další kroky
 

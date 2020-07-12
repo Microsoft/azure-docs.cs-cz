@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827960"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259280"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Vytvoření samostatného clusteru běžícího na Windows Serveru
 Azure Service Fabric můžete použít k vytvoření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server. To znamená, že můžete nasadit a spouštět aplikace Service Fabric v jakémkoli prostředí, které obsahuje sadu propojených počítačů se systémem Windows Server, je místní nebo s jakýmkoli poskytovatelem cloudu. Service Fabric poskytuje instalační balíček pro vytváření clusterů Service Fabric s názvem samostatný balíček Windows serveru. Tradiční Service Fabric clustery v Azure jsou k dispozici jako spravovaná služba, zatímco samostatné clustery Service Fabric jsou samoobslužné. Další informace o rozdílech najdete v tématu [porovnání clusterů Azure a samostatných Service Fabric](./service-fabric-deploy-anywhere.md).
@@ -24,10 +25,10 @@ Tento článek vás provede kroky pro vytvoření samostatného clusteru Service
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>Získání podpory pro balíček Service Fabric pro Windows Server
-* Zeptejte se komunity na balíček Service Fabric Standalone pro Windows Server na [stránce s dotazem na Microsoft Q&pro Azure Service Fabric](https://docs.microsoft.com/answers/topics/azure-service-fabric.html).
+* Zeptejte se komunity na balíček Service Fabric Standalone pro Windows Server na [stránce s dotazem na Microsoft Q&pro Azure Service Fabric](/answers/topics/azure-service-fabric.html).
 * Otevřete lístek pro [profesionální podporu pro Service Fabric](https://support.microsoft.com/oas/default.aspx?prid=16146).  Další informace o odborné podpoře od Microsoftu [najdete tady](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * Podporu tohoto balíčku můžete také získat jako součást [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
-* Další podrobnosti najdete v tématu [Možnosti podpory pro Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+* Další podrobnosti najdete v tématu [Možnosti podpory pro Azure Service Fabric](./service-fabric-support.md).
 * Pro shromažďování protokolů pro účely podpory spusťte [Service Fabric samostatný kolektor protokolů](service-fabric-cluster-standalone-package-contents.md).
 
 <a id="downloadpackage"></a>
@@ -77,7 +78,7 @@ Správce clusteru, který cluster nasazuje a konfiguruje, musí mít v příslu�
     .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.json
     ```
 
-    Zobrazený výstup by měl vypadat přibližně takto: Pokud je dolní pole "Pass" vráceno jako "true", kontroly správnosti byly úspěšné a cluster bude pravděpodobně možné nasadit na základě konfigurace vstupu.
+    Výstup by se měl podobat následujícímu. Pokud je dolní pole "Pass" vráceno jako "true", kontroly správnosti byly úspěšné a cluster bude pravděpodobně možné nasadit na základě konfigurace vstupu.
 
     ```powershell
     Trace folder already exists. Traces will be written to existing trace folder: C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer\DeploymentTraces
@@ -202,7 +203,7 @@ Pro vypnutí telemetrie přidejte do *vlastností* konfigurace clusteru následu
 <a id="previewfeatures" name="previewfeatures_anchor"></a>
 
 ## <a name="preview-features-included-in-this-package"></a>Funkce ve verzi Preview, které jsou součástí tohoto balíčku
-Žádné
+Žádné.
 
 
 > [!NOTE]
@@ -215,7 +216,7 @@ Pro vypnutí telemetrie přidejte do *vlastností* konfigurace clusteru následu
 * [Nastavení konfigurace pro samostatný cluster Windows](service-fabric-cluster-manifest.md)
 * [Přidání nebo odebrání uzlů do samostatného Service Fabric clusteru](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [Upgrade samostatné verze Service Fabric clusteru](service-fabric-cluster-upgrade-windows-server.md)
-* [Vytvoření samostatného Service Fabricho clusteru s virtuálními počítači Azure s Windows](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [Vytvoření samostatného Service Fabricho clusteru s virtuálními počítači Azure s Windows](./service-fabric-cluster-creation-via-arm.md)
 * [Zabezpečení samostatného clusteru ve Windows pomocí zabezpečení systému Windows](service-fabric-windows-cluster-windows-security.md)
 * [Zabezpečení samostatného clusteru ve Windows pomocí certifikátů x509](service-fabric-windows-cluster-x509-security.md)
 

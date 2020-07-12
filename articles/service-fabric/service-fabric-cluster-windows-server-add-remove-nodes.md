@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fa8b0970d198f9801c7661b9555db17cdf67b3c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75934209"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258722"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidání nebo odebrání uzlů u samostatného clusteru Service Fabric na Windows Serveru
 Po [vytvoření samostatného clusteru Service Fabric na počítačích s Windows serverem](service-fabric-cluster-creation-for-windows-server.md)se můžou vaše (firmy) změnit a bude potřeba přidat nebo odebrat uzly do clusteru. Tento článek poskytuje podrobné pokyny k tomuto účelu. Všimněte si, že místní vývojové clustery nepodporuje funkce Přidat nebo odebrat uzel.
@@ -141,5 +142,4 @@ Nahrazení primárních uzlů by mělo být provedeno v jednom uzlu za jiným uz
 ## <a name="next-steps"></a>Další kroky
 * [Nastavení konfigurace pro samostatný cluster Windows](service-fabric-cluster-manifest.md)
 * [Zabezpečení samostatného clusteru ve Windows pomocí certifikátů x509](service-fabric-windows-cluster-x509-security.md)
-* [Vytvoření samostatného Service Fabricho clusteru s virtuálními počítači Azure s Windows](service-fabric-cluster-creation-with-windows-azure-vms.md)
-
+* [Vytvoření samostatného Service Fabricho clusteru s virtuálními počítači Azure s Windows](./service-fabric-cluster-creation-via-arm.md)

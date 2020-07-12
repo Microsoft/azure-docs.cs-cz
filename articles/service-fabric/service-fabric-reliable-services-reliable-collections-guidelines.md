@@ -3,12 +3,12 @@ title: Pokyny pro spolehlivé kolekce
 description: Pokyny a doporučení pro použití Service Fabric spolehlivých kolekcí v aplikaci Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f196df4b58f1acb01a497b5fa08e9af99a4707d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483121"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260912"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Pokyny a doporučení pro spolehlivé kolekce v Azure Service Fabric
 V této části najdete pokyny pro použití spolehlivého správce stavu a spolehlivých kolekcí. Cílem je pomáhat uživatelům vyhnout se běžným nástrah.
@@ -59,9 +59,9 @@ Při rozhodování o použití volatile spolehlivých kolekcí Vezměte v úvahu
 * [Transakce a zámky](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Správa dat
   * [Zálohování a obnovení](service-fabric-reliable-services-backup-restore.md)
-  * [Oznámení](service-fabric-reliable-services-notifications.md)
+  * [Připomenutí](service-fabric-reliable-services-notifications.md)
   * [Serializace a upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Konfigurace spolehlivého správce stavu](service-fabric-reliable-services-configuration.md)
 * Ostatní
   * [Rychlý Start Reliable Services](service-fabric-reliable-services-quick-start.md)
-  * [Referenční informace pro vývojáře pro spolehlivé kolekce](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Referenční informace pro vývojáře pro spolehlivé kolekce](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

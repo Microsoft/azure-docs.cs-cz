@@ -3,11 +3,12 @@ title: Nastavit Azure Active Directory pro ověřování klientů
 description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro ověřování klientů pro Service Fabric clustery.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78193372"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258767"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavit Azure Active Directory pro ověřování klientů
 
@@ -25,7 +26,7 @@ Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím spr�
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku předpokládáme, že jste už tenanta vytvořili. Pokud ne, začněte tím, že si přečtete, [Jak získat klienta Azure Active Directory][active-directory-howto-tenant].
 
 Abychom zjednodušili některé kroky týkající se konfigurace služby Azure AD pomocí Service Fabricho clusteru, vytvořili jsme sadu skriptů prostředí Windows PowerShell.
@@ -124,7 +125,7 @@ Pokud chcete připojit Cluster Service Fabric, použijte následující příkla
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-Další informace najdete v tématu [rutina Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster).
+Další informace najdete v tématu [rutina Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster).
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Můžu znovu použít stejného tenanta služby Azure AD ve více clusterech?
 Ano. Nezapomeňte ale přidat adresu URL Service Fabric Explorer do vaší Clusterové (webové) aplikace. V opačném případě Service Fabric Explorer nefunguje.

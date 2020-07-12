@@ -4,11 +4,12 @@ description: Tento článek poskytuje přehled správy aplikace Service Fabric A
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682630"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258734"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric model prostředku aplikace
 
@@ -39,13 +40,13 @@ Další informace najdete v [balíčku aplikace](service-fabric-package-apps.md#
 
 Pak vytvoříte šablonu Správce prostředků, aktualizujte soubor parametrů s podrobnostmi o aplikaci a nasaďte šablonu do clusteru Service Fabric. [Prozkoumejte ukázky](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM).
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Pokud chcete nasadit aplikaci ze šablony Správce prostředků, musíte mít účet úložiště. Účet úložiště se používá k přípravě image aplikace. 
 
 Můžete znovu použít existující účet úložiště, nebo můžete vytvořit nový účet úložiště pro přípravu svých aplikací. Pokud použijete existující účet úložiště, můžete tento krok přeskočit. 
 
-![vytvořit účet úložiště][CreateStorageAccount]
+![Vytvoření účtu úložiště][CreateStorageAccount]
 
 ### <a name="configure-your-storage-account"></a>Konfigurace účtu úložiště
 
@@ -55,7 +56,7 @@ Prostředky v clusteru je možné zabezpečit nastavením úrovně veřejného p
 
 * Pomocí [Azure Active Directory](../storage/common/storage-auth-aad-app.md)autorizujte přístup k objektům blob a frontám.
 * Pomocí [RBAC v Azure Portal](../storage/common/storage-auth-aad-rbac-portal.md)udělte přístup k datům objektů blob Azure a frontám.
-* Delegovat přístup pomocí [sdíleného přístupového podpisu](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature).
+* Delegovat přístup pomocí [sdíleného přístupového podpisu](/rest/api/storageservices/delegate-access-with-shared-access-signature).
 
 Příklad na následujícím snímku obrazovky používá anonymní přístup pro čtení pro objekty blob.
 
@@ -165,13 +166,13 @@ Můžete upgradovat aplikaci, která je už nasazená do clusteru Service Fabric
 
 Postup odstranění aplikace nasazené pomocí modelu prostředku aplikace v Správce prostředků:
 
-1. K získání ID prostředku pro aplikaci použijte rutinu [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) :
+1. K získání ID prostředku pro aplikaci použijte rutinu [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) :
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. K odstranění prostředků aplikace použijte rutinu [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) :
+1. K odstranění prostředků aplikace použijte rutinu [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) :
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]

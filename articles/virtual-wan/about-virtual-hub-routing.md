@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147382"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259171"
 ---
 # <a name="about-virtual-hub-routing"></a>Informace o směrováních virtuálních center
 
@@ -63,6 +63,9 @@ Připojení dynamicky šíří trasy do směrovací tabulky. S připojením VPN,
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Konfigurace statických tras v připojení k virtuální síti
 
 Konfigurace statických tras poskytuje mechanismus pro řízení provozu prostřednictvím IP adresy dalšího směrování, což může být virtuální síťové zařízení (síťové virtuální zařízení) zřízené ve virtuální síti paprsků připojené k virtuálnímu rozbočovači. Statická trasa se skládá z názvu trasy, seznamu předpon cíle a IP adresy dalšího směrování.
+
+## <a name="reset-hub"></a><a name="route"></a>Resetování centra
+K dispozici pouze v Azure Portal, tato možnost poskytuje uživateli prostředky pro přenesení všech neúspěšných prostředků, jako jsou směrovací tabulky, směrovač rozbočovače nebo prostředek virtuálního rozbočovače zpátky zpět do svého stavu zřizování rightful. Toto je další možnost, kterou může uživatel zvážit před kontaktováním Microsoftu pro podporu. Tato operace neresetuje žádné brány ve virtuálním rozbočovači. 
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Směrování tabulek v základních a standardních virtuálních sítích WAN před sadou funkcí asociace a rozšíření
 

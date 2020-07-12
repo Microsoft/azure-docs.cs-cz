@@ -3,12 +3,12 @@ title: Nasazení aplikace pomocí spravované identity přiřazené uživatelem
 description: V tomto článku se dozvíte, jak nasadit aplikaci Service Fabric s uživatelem přiřazenou spravovanou identitou.
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79d8654733b580be96d59e78f31105077929ac78
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415628"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260077"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Nasazení aplikace Service Fabric s uživatelem přiřazenou spravovanou identitou
 
@@ -23,40 +23,42 @@ Chcete-li nasadit aplikaci Service Fabric se spravovanou identitou, musí být a
 
 ## <a name="user-assigned-identity"></a>Identita přiřazená uživatelem
 
-Chcete-li povolit aplikaci s uživatelem přiřazenou identitou, přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem. Pak přidejte část **managedIdentities** do oddílu **Properties (vlastnosti** ) prostředku **aplikace** , který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživateli. Další informace o identitách přiřazených uživateli najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
+Chcete-li povolit aplikaci s uživatelem přiřazenou identitou, přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem. Pak přidejte část **managedIdentities** do oddílu **Properties (vlastnosti** ) prostředku **aplikace** , který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživateli. Další informace o identitách přiřazených uživateli najdete v tématu [Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 ### <a name="application-template"></a>Šablona aplikace
 
 Pokud chcete povolit aplikaci s identitou přiřazenou uživateli, nejdřív přidejte do prostředku aplikace vlastnost **identity** s typem **userAssigned** a odkazovanými identitami přiřazenými uživatelem a pak přidejte objekt **managedIdentities** do oddílu **Properties (vlastnosti** ), který obsahuje seznam popisného názvu pro principalId mapování pro každou identitu přiřazenou uživatelem.
 
-    {
-      "apiVersion": "2019-06-01-preview",
-      "type": "Microsoft.ServiceFabric/clusters/applications",
-      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'), '/versions/', parameters('applicationTypeVersion'))]",
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
-      ],
-      "identity": {
-        "type" : "userAssigned",
-        "userAssignedIdentities": {
-            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]": {}
-        }
-      },
-      "properties": {
-        "typeName": "[parameters('applicationTypeName')]",
-        "typeVersion": "[parameters('applicationTypeVersion')]",
-        "parameters": {
-        },
-        "managedIdentities": [
-          {
-            "name" : "[parameters('userAssignedIdentityName')]",
-            "principalId" : "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName')), '2018-11-30').principalId]"
-          }
-        ]
-      }
+```json
+{
+  "apiVersion": "2019-06-01-preview",
+  "type": "Microsoft.ServiceFabric/clusters/applications",
+  "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applicationTypes/', parameters('applicationTypeName'), '/versions/', parameters('applicationTypeVersion'))]",
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
+  ],
+  "identity": {
+    "type" : "userAssigned",
+    "userAssignedIdentities": {
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]": {}
     }
+  },
+  "properties": {
+    "typeName": "[parameters('applicationTypeName')]",
+    "typeVersion": "[parameters('applicationTypeVersion')]",
+    "parameters": {
+    },
+    "managedIdentities": [
+      {
+        "name" : "[parameters('userAssignedIdentityName')]",
+        "principalId" : "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName')), '2018-11-30').principalId]"
+      }
+    ]
+  }
+}
+```
 
 V předchozím příkladu se jako popisný název spravované identity aplikace používá název prostředku přiřazené identitě uživatele. V následujících příkladech se předpokládá, že skutečný popisný název je "AdminUser".
 

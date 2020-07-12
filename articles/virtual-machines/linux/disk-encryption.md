@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: c78fa51150ba09e5b72eeb0587679f779c947acf
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 2d4fc47247c9fe2ed1af0eee59500db7e894fdd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230967"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260138"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Šifrování na straně serveru Azure Disk Storage
 
@@ -80,9 +80,8 @@ Zákazníci s vysokým zabezpečením, kteří se týkají rizik spojených s ja
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolit šifrování na hostiteli](disks-enable-host-based-encryption-cli.md)
-- [Azure CLI – povolení dvojitého šifrování na discích spravovaných v klidovém umístění](disks-enable-double-encryption-at-rest-cli.md)
+- [Povolení kompletního šifrování pomocí šifrování na hostiteli – CLI](disks-enable-host-based-encryption-cli.md)
+- [Povolit dvojité šifrování v klidovém umístění pro Managed disks – CLI](disks-enable-double-encryption-at-rest-cli.md)
 - [Povolit pro spravované disky klíče spravované zákazníkem – CLI](disks-enable-customer-managed-keys-cli.md)
 - [Povolení klíčů spravovaných zákazníkem pro spravované disky – portál](disks-enable-customer-managed-keys-portal.md)
-- [Povolení klíčů spravovaných zákazníkem pro váš spravovaný disk – PowerShell](../windows/disks-enable-customer-managed-keys-powershell.md)
 - [Co je Azure Key Vault?](../../key-vault/general/overview.md)

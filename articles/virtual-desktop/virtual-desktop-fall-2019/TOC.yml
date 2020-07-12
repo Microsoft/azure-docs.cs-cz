@@ -24,6 +24,8 @@
   items:
     - name: Připojení k prostředkům Windows Virtual Desktop
       items:
+        - name: Připojení s desktopovým klientem Windows
+          href: connect-windows-7-10-2019.md
         - name: Připojení k webovému klientovi
           href: connect-web-2019.md
         - name: Práce s klientem Android

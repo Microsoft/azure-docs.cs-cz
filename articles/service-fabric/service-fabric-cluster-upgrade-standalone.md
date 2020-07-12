@@ -3,19 +3,19 @@ title: Upgrade samostatného clusteru Azure Service Fabric
 description: Přečtěte si informace o upgradu verze nebo konfigurace samostatného clusteru Azure Service Fabric.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 519a9163d16fda2dd9fcf49cf22fe4ad4a272e09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790639"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260983"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Upgrade a aktualizace samostatného clusteru Service Fabric
 
 Pro jakýkoliv moderní systém je pro zajištění dlouhodobé úspěšnosti produktu navržený návrh pro zajištění náročnosti. Samostatný cluster Azure Service Fabric je prostředek, který vlastníte. Tento článek popisuje, co je možné upgradovat nebo aktualizovat.
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Řízení verze prostředků infrastruktury, která běží na vašem clusteru
-Ujistěte se, že cluster vždy používá [podporovanou verzi Service Fabric](service-fabric-versions.md). Když společnost Microsoft oznamuje vydání nové verze Service Fabric, bude předchozí verze označena pro konec podpory po nejméně 60 dní od data oznámení. Nové verze jsou oznámeny [na blogu týmu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Nová verze je dostupná k výběru v tomto okamžiku.
+Ujistěte se, že cluster vždy používá [podporovanou verzi Service Fabric](service-fabric-versions.md). Když společnost Microsoft oznamuje vydání nové verze Service Fabric, bude předchozí verze označena pro konec podpory po nejméně 60 dní od data oznámení. Nové verze jsou oznámeny [na blogu týmu Service Fabric](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric). Nová verze je dostupná k výběru v tomto okamžiku.
 
 Cluster můžete nastavit tak, aby přijímal automatické upgrady prostředků infrastruktury, když jsou vydané společností Microsoft, nebo můžete ručně vybrat podporovanou verzi prostředků infrastruktury, na které má být cluster zapnutý. Další informace najdete v článku [Upgrade verze Service Fabric, která běží na vašem clusteru](service-fabric-cluster-upgrade-windows-server.md).
 

@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b07e3fe14478cf45df2f02378da4e83853cf9ea
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079355"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261037"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plánování a příprava nasazení samostatného clusteru Service Fabric
 
@@ -58,10 +59,10 @@ Tady jsou doporučené specifikace pro počítače ve Service Fabricm clusteru:
 * Připojení k zabezpečené síti nebo sítím pro všechny počítače
 * Nainstalovaný operační systém Windows Server (platné verze: 2012 R2, 2016, 1709 nebo 1803). Verze Service Fabric 6.4.654.9590 a novější také podporuje servery 2019 a 1809.
 * Úplná instalace [.NET Framework 4.5.1 nebo vyšší](https://www.microsoft.com/download/details.aspx?id=40773)verze
-* [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
-* [Služba RemoteRegistry](https://technet.microsoft.com/library/cc754820) by měla běžet na všech počítačích
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [Služba RemoteRegistry](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11)) by měla běžet na všech počítačích
 * **Instalační jednotka Service Fabric musí být systém souborů NTFS.**
-* ** *Protokoly výkonu* služeb systému Windows & výstrahy a *protokol událostí systému Windows* musí [být povoleny](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))**.
+* ** *Protokoly výkonu* služeb systému Windows & výstrahy a *protokol událostí systému Windows* musí [být povoleny](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11))**.
 
 > [!IMPORTANT]
 > Cluster, který nasazuje a konfiguruje správce clusteru, musí mít na každém z těchto počítačů [oprávnění správce](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) . Service Fabric nelze nainstalovat na řadič domény.
@@ -156,7 +157,7 @@ Passed                     : True
 V současné době tento modul testování konfigurace neověřuje konfiguraci zabezpečení, takže je třeba provést nezávisle.
 
 > [!NOTE]
-> Neustále provádíme vylepšení, aby byl tento modul robustnější, takže pokud dojde k chybnému nebo chybějícímu případu, který se domníváte, že v tuto chvíli nejste zachytili TestConfiguration, dejte nám prosím informace prostřednictvím našich [kanálů podpory](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+> Neustále provádíme vylepšení, aby byl tento modul robustnější, takže pokud dojde k chybnému nebo chybějícímu případu, který se domníváte, že v tuto chvíli nejste zachytili TestConfiguration, dejte nám prosím informace prostřednictvím našich [kanálů podpory](./service-fabric-support.md).
 >
 >
 

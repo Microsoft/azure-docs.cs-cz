@@ -3,12 +3,12 @@ title: Horizontální navýšení kapacity typu uzlu Azure Service Fabric
 description: Naučte se škálovat Cluster Service Fabric přidáním sady škálování virtuálního počítače.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a42e33fa87b6cf7966368481ef6d3920511919e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610689"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260456"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Vertikální navýšení kapacity primárního typu uzlu clusteru Service Fabric
 Tento článek popisuje, jak škálovat typ primárního uzlu clusteru Service Fabric pomocí zvýšení prostředků virtuálního počítače. Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Sady škálování virtuálních počítačů jsou výpočetním prostředkem Azure, který můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který je definovaný v clusteru Azure, je [nastavený jako samostatná sada škálování](service-fabric-cluster-nodetypes.md). Každý typ uzlu se pak dá spravovat samostatně. Po vytvoření clusteru Service Fabric můžete škálovat typ uzlu clusteru vertikálně (změnit prostředky uzlů) nebo upgradovat operační systém typu virtuálních počítačů typu uzel.  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
@@ -49,7 +49,7 @@ Potom se přihlaste ke svému účtu Azure.
 Login-AzAccount -SubscriptionId "<your subscription ID>"
 ```
 
-Tento kurz vás provede scénářem vytvoření certifikátu podepsaného svým držitelem. Pokud chcete použít existující certifikát z Azure Key Vault, přeskočte následující krok a místo toho zrcadlte kroky v části [použití existujícího certifikátu k nasazení clusteru](https://docs.microsoft.com/azure/service-fabric/upgrade-managed-disks#use-an-existing-certificate-to-deploy-the-cluster).
+Tento kurz vás provede scénářem vytvoření certifikátu podepsaného svým držitelem. Pokud chcete použít existující certifikát z Azure Key Vault, přeskočte následující krok a místo toho zrcadlte kroky v části [použití existujícího certifikátu k nasazení clusteru](./upgrade-managed-disks.md#use-an-existing-certificate-to-deploy-the-cluster).
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Vygenerování certifikátu podepsaného svým držitelem a nasazení clusteru
 
@@ -251,4 +251,3 @@ Typ primárního uzlu clusteru byl nyní upgradován. Ověřte, že všechny nas
 * Horizontální navýšení nebo navýšení [kapacity clusteru Azure](service-fabric-tutorial-scale-cluster.md)
 * [Škálujte cluster Azure pomocí programu](service-fabric-cluster-programmatic-scaling.md) Fluent Azure COMPUTE SDK.
 * Horizontální navýšení [nebo zmenšení kapacity samostatného clusteru](service-fabric-cluster-windows-server-add-remove-nodes.md)
-

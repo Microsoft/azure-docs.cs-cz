@@ -3,11 +3,12 @@ title: Statická IP adresa pro skupinu kontejnerů
 description: Vytvoření skupiny kontejnerů ve virtuální síti a použití služby Azure Application Gateway k vystavení statické IP adresy front-endu pro kontejnerové webové aplikace
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299158"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260775"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Zveřejňuje statickou IP adresu pro skupinu kontejnerů.
 
@@ -102,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>Vytvoření služby Application Gateway
 
-Vytvořte Aplikační bránu ve virtuální síti podle kroků v [rychlém startu služby Application Gateway](../application-gateway/quick-create-cli.md). Následující příkaz [AZ Network Application-Gateway Create][az-network-application-gateway-create] vytvoří bránu s veřejnou IP adresou front-endu a trasou do back-endové skupiny kontejnerů. Podrobnosti o nastavení brány najdete v [dokumentaci k Application Gateway](/azure/application-gateway/) .
+Vytvořte Aplikační bránu ve virtuální síti podle kroků v [rychlém startu služby Application Gateway](../application-gateway/quick-create-cli.md). Následující příkaz [AZ Network Application-Gateway Create][az-network-application-gateway-create] vytvoří bránu s veřejnou IP adresou front-endu a trasou do back-endové skupiny kontejnerů. Podrobnosti o nastavení brány najdete v [dokumentaci k Application Gateway](../application-gateway/index.yml) .
 
 ```azurecli
 az network application-gateway create \

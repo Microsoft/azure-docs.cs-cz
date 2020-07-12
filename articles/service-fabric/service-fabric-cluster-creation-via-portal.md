@@ -3,12 +3,12 @@ title: Vytvoření clusteru služby Service Fabric na webu Azure Portal
 description: Přečtěte si, jak nastavit zabezpečený Service Fabric cluster v Azure pomocí Azure Portal a Azure Key Vault.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611148"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259311"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí Azure Portal
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Vytvoření produkčního clusteru, který splňuje požadavky vaší aplikace, 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Vyhledejte prostředek Service Fabric clusteru.
 
-Přihlaste se k [portálu Azure Portal][azure-portal].
+Přihlaste se na portál [Azure Portal][azure-portal].
 Kliknutím na **vytvořit prostředek** přidejte novou šablonu prostředků. Na **webu Marketplace** vyhledejte šablonu Service Fabric clusteru v rámci **všeho**.
 V seznamu vyberte **Cluster Service Fabric** .
 
@@ -121,7 +121,7 @@ Nakonfigurujte uzly clusteru. Typy uzlů definují velikosti virtuálních poč�
 ### <a name="3-security"></a>3. zabezpečení
 ![Snímek obrazovky s konfiguracemi zabezpečení na Azure Portal.][BasicSecurityConfigs]
 
-Aby bylo možné nastavit zabezpečený testovací cluster snadno pro vás, nabízíme **základní** možnost. Pokud už máte certifikát a nahráli jste ho do [trezoru klíčů](/azure/key-vault/) (a povolili jste Trezor klíčů pro nasazení), použijte **vlastní** možnost.
+Aby bylo možné nastavit zabezpečený testovací cluster snadno pro vás, nabízíme **základní** možnost. Pokud už máte certifikát a nahráli jste ho do [trezoru klíčů](../key-vault/index.yml) (a povolili jste Trezor klíčů pro nasazení), použijte **vlastní** možnost.
 
 #### <a name="basic-option"></a>Možnost Basic
 Podle obrazovky přidejte nebo znovu použijte existující Trezor klíčů a přidejte certifikát. Přidání certifikátu je synchronní proces, takže budete muset počkat na vytvoření certifikátu.
@@ -173,7 +173,7 @@ Teď jste připraveni nasadit cluster. Před tím, než to provedete, Stáhněte
 
 Vytvoření clusteru dokončíte kliknutím na **vytvořit**. Volitelně můžete šablonu stáhnout.
 
-![Souhrn]
+![Shrnutí]
 
 Průběh vytváření můžete sledovat v oznámeních. (Klikněte na ikonu zvonku u stavového řádku v pravém horním rohu obrazovky.) Pokud jste při vytváření clusteru klikli **na Připnout na úvodní panel** , uvidíte, že se na **úvodní** desce připnulo **nasazení Service Fabric clusteru** . Tento proces bude nějakou dobu trvat. 
 
@@ -202,7 +202,7 @@ Každé z NodeType zadaných v clusteru má za následek nastavování sady šk�
 V tomto okamžiku máte zabezpečený cluster s použitím certifikátů pro ověřování správy. Pak se [připojte ke svému clusteru](service-fabric-connect-to-secure-cluster.md) a Naučte se [spravovat tajné klíče aplikace](service-fabric-application-secret-management.md).  Přečtěte si také informace o [možnostech podpory Service Fabric](service-fabric-support.md).
 
 <!-- Links -->
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md

@@ -4,12 +4,12 @@ description: Naučte se rychle začít s Azure API Management a směrovat provoz
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80292145"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260247"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrace API Management s Service Fabric v Azure
 
@@ -25,12 +25,12 @@ V tomto článku se dozvíte, jak nastavit [API Management Azure](../api-managem
 > [!IMPORTANT]
 > Tato funkce je dostupná na úrovních úrovně **Premium** a **Developer** API Management v důsledku podpory požadované virtuální sítě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete:
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
-* Nainstalujte [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+* Nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) nebo rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 * Vytvořte zabezpečený [cluster se systémem Windows](service-fabric-tutorial-create-vnet-and-windows-cluster.md) ve skupině zabezpečení sítě.
 * Pokud nasadíte cluster s Windows, nastavte vývojové prostředí ve Windows. Nainstalujte [Visual Studio 2019](https://www.visualstudio.com) a vývojové úlohy pro vývoj pro **Azure**, **ASP.NET a**vývoj pro web a **.NET Core pro různé platformy** .  Potom nastavte [vývojové prostředí .NET](service-fabric-get-started.md).
 
@@ -151,9 +151,9 @@ Pokud chcete přidat front-end operaci rozhraní API, vyplňte následující ho
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
-[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) vytvoří zásadu back-endu, která vše spojí dohromady. Tady konfigurujete back-end službu Service Fabric, do které se požadavky směrují. Tuto zásadu můžete použít pro jakoukoli operaci rozhraní API.  Další informace najdete v tématu [Přehled zásad](/azure/api-management/api-management-howto-policies).
+[Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) vytvoří zásadu back-endu, která vše spojí dohromady. Tady konfigurujete back-end službu Service Fabric, do které se požadavky směrují. Tuto zásadu můžete použít pro jakoukoli operaci rozhraní API.  Další informace najdete v tématu [Přehled zásad](../api-management/api-management-howto-policies.md).
 
-[Konfigurace back-endu pro Service Fabric](/azure/api-management/api-management-transformation-policies#SetBackendService) poskytuje následující ovládací prvky směrování požadavků:
+[Konfigurace back-endu pro Service Fabric](../api-management/api-management-transformation-policies.md#SetBackendService) poskytuje následující ovládací prvky směrování požadavků:
 
 * Výběr instance služby zadáním názvu instance služby Service Fabric, a to buď pevně zakódovaného (například `"fabric:/myapp/myservice"`), nebo vygenerovaného z požadavku HTTP (například `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`).
 * Překlad oddílů vygenerováním klíče oddílu pomocí jakéhokoli schématu vytváření oddílů Service Fabric.
@@ -180,7 +180,7 @@ Pokud chcete přidat front-end operaci rozhraní API, vyplňte následující ho
 </policies>
 ```
 
-Úplnou sadu atributů zásad back-endu Service Fabric najdete v [dokumentaci k back-endu služby API Management](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService).
+Úplnou sadu atributů zásad back-endu Service Fabric najdete v [dokumentaci k back-endu služby API Management](../api-management/api-management-transformation-policies.md#SetBackendService).
 
 ## <a name="set-parameters-and-deploy-api-management"></a>Nastavení parametrů a nasazení služby API Management
 
@@ -291,9 +291,9 @@ az group delete --name $ResourceGroupName
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o použití [API Management](/azure/api-management/import-and-publish).
+Přečtěte si další informace o použití [API Management](../api-management/import-and-publish.md).
 
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
 [apim-parameters-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.parameters.json

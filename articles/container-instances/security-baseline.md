@@ -7,35 +7,36 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3897ef75be34d4413e06dc5459739baec3afdcec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 996793f2851949f7474312a18ccff04e88db2232
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84268002"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259165"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Základní hodnoty zabezpečení Azure pro Container Instances
 
 Základní plán zabezpečení Azure pro Container Instances obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](../security/benchmarks/overview.md), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
 
 **Pokyny**: Azure Virtual Network poskytuje zabezpečenou a privátní síť pro vaše Azure a místní prostředky. Integrujte své skupiny kontejnerů v Azure Container Instances s virtuální sítí Azure. 
 
-* [Scénáře a prostředky virtuální sítě – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-virtual-network-concepts)
+* [Scénáře a prostředky virtuální sítě – Azure Container Instances](./container-instances-virtual-network-concepts.md)
 
-* [Nasazení instancí kontejnerů do virtuální sítě Azure](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Nasazení instancí kontejnerů do virtuální sítě Azure](./container-instances-vnet.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Jak nasadit a nakonfigurovat Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Jak nasadit a nakonfigurovat Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
 
 **Monitorování Azure Security Center**: Ano
@@ -46,9 +47,9 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Pokyny**: použijte Azure Security Center a opravte doporučení k ochraně sítě, abyste chránili vaše síťové prostředky v Azure. Povolte protokoly toku NSG a odešlete protokoly do účtu úložiště pro audit provozu.
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Ochrana síťových prostředků](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Ochrana síťových prostředků](../security-center/security-center-network-recommendations.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -58,7 +59,7 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Pokyny**: nasazení firewallu webových aplikací Azure (WAF) před kritickými webovými aplikacemi hostovanými v Azure Container Instances pro další kontrolu příchozího provozu. Povolte nastavení diagnostiky pro protokoly WAF a ingestování do účtu úložiště, centra událostí nebo Log Analytics pracovního prostoru.
 
-* [Jak nasadit Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Jak nasadit Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 
 
@@ -70,13 +71,13 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Pokyny**: povolení DDoS Standard Protection v Azure Virtual Networks pro ochranu před útoky DDoS. K odepření komunikace se známými škodlivými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb. Nasaďte Azure Firewall na všech hranicích sítě organizace s povolenou funkcí Analýza hrozeb a nakonfigurované na "výstrahy a zamítnutí" pro škodlivý síťový provoz. Použijte Azure Security Center k přístupu k síti jenom v čase, abyste mohli nakonfigurovat skupin zabezpečení sítě tak, aby po omezenou dobu omezila počet vystavování koncových bodů na schválené IP adresy Pomocí Azure Security Center adaptivního posílení zabezpečení sítě doporučujeme doporučit konfigurace NSG, které omezují porty a zdrojové IP adresy na základě skutečného provozu a analýzy hrozeb. 
 
-* [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/threat-protection.md)
 
-* [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+* [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](../security-center/security-center-adaptive-network-hardening.md)
 
-* [Azure Security Center pouze v čase Access Control sítě](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Azure Security Center pouze v čase Access Control sítě](../security-center/security-center-just-in-time.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -86,9 +87,9 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 **Pokyny**: Pokud používáte skupiny zabezpečení sítě (skupin zabezpečení sítě) s implementací virtuální sítě, povolte protokoly NSG Flow pro NSG připojené k podsíti delegované do Azure Container Instances. Zaznamenejte NSG Flow do účtu Azure Storage pro generování záznamů toků. Pokud se to vyžaduje pro prošetření aktivity neobvyklé, povolte zachytávání paketů služby Azure Network Watcher.
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Postup povolení Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Postup povolení Network Watcher](../network-watcher/network-watcher-create.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -102,11 +103,11 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Postup konfigurace výstrah pomocí Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Postup konfigurace výstrah pomocí Azure Firewall](../firewall/threat-intel.md)
 
-* [Nasazení ve virtuální síti – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md) 
 
 
 
@@ -118,15 +119,15 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Pokyny**: nasazení služby Azure Application Gateway pro webové aplikace s POVOLENým protokolem HTTPS/SSL u důvěryhodných certifikátů.
 
-* [Postup nasazení Application Gateway](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Postup nasazení Application Gateway](../application-gateway/quick-create-portal.md)
 
-* [Postup konfigurace Application Gateway pro použití protokolu HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal) 
+* [Postup konfigurace Application Gateway pro použití protokolu HTTPS](../application-gateway/create-ssl-portal.md) 
 
-* [Princip vyrovnávání zatížení vrstvy 7 pomocí bran webových aplikací Azure](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Princip vyrovnávání zatížení vrstvy 7 pomocí bran webových aplikací Azure](../application-gateway/overview.md)
 
-* [Zveřejňuje statickou IP adresu pro skupinu kontejnerů.](https://docs.microsoft.com/azure/container-instances/container-instances-application-gateway)
+* [Zveřejňuje statickou IP adresu pro skupinu kontejnerů.](./container-instances-application-gateway.md)
 
-* [Nasazení ve virtuální síti – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md)
 
 
 
@@ -140,11 +141,11 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složité konfigurace zabezpečení. Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě jako přirozené rozšíření struktury aplikace. Můžete seskupovat virtuální počítače a na základě těchto skupin definovat zásady zabezpečení sítě. 
 
-* [Pochopení a použití značek služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview) 
+* [Pochopení a použití značek služeb](../virtual-network/service-tags-overview.md) 
 
-* [Pochopení a použití skupin zabezpečení aplikací](https://docs.microsoft.com/azure/virtual-network/security-overview#application-security-groups)
+* [Pochopení a použití skupin zabezpečení aplikací](../virtual-network/security-overview.md#application-security-groups)
 
-* [Nasazení ve virtuální síti – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md)
 
 
 
@@ -156,11 +157,11 @@ Skupiny zabezpečení aplikací můžete použít také ke zjednodušení složi
 
 **Doprovodné**materiály: můžete také použít plány Azure ke zjednodušení rozsáhlých nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manageru, ovládací prvky RBAC a zásady, a to v jediné definici podrobného plánu. Můžete použít podrobný plán na nová předplatná a vyladit řízení a správu prostřednictvím správy verzí. 
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ukázky Azure Policy pro sítě](https://docs.microsoft.com/azure/governance/policy/samples/#network)
+* [Ukázky Azure Policy pro sítě](/azure/governance/policy/samples/#network)
 
-* [Vytvoření Azure Blueprint](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
 
 
@@ -176,11 +177,11 @@ Použijte některou z vestavěných definic zásad Azure souvisejících s ozna�
 
 Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Nasazení ve virtuální síti – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -191,9 +192,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi instancemi kontejnerů. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -201,15 +202,15 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
 **Pokyny**: Microsoft udržuje časové zdroje pro prostředky Azure, ale máte možnost spravovat nastavení synchronizace času pro výpočetní prostředky. Například spusťte příkaz synchronizace času ve spuštěném kontejneru.
 
-* [Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Jak nakonfigurovat časovou synchronizaci pro výpočetní prostředky Azure](../virtual-machines/windows/time-sync.md)
 
-* [Spuštění příkazu ve spuštěné instanci kontejneru Azure](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [Spuštění příkazu ve spuštěné instanci kontejneru Azure](./container-instances-exec.md)
 
 
 
@@ -221,7 +222,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Doprovodné**materiály: ingestování protokolů prostřednictvím Azure monitor k agregaci dat zabezpečení vygenerovaných skupinou kontejnerů Azure. V rámci Azure Monitor Používejte pracovní prostory Log Analytics k dotazování a provádění analýz a používejte účty Azure Storage pro dlouhodobé nebo archivní úložiště.
 
-* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](./container-instances-log-analytics.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -231,7 +232,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: Azure monitor shromažďuje protokoly prostředků (dříve nazývané diagnostické protokoly) pro události řízené uživateli v registru. Azure Container Instances obsahuje integrovanou podporu pro odesílání protokolů skupin kontejnerů a dat událostí a protokolů kontejnerů do Azure Monitor protokolů.
 
-* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs)
+* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -250,7 +251,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Doprovodné**materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -260,11 +261,11 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: analýza a sledování protokolů pro neobvyklé chování a pravidelné kontroly výsledků. Pomocí Log Analytics pracovního prostoru Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu. 
 
-* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](./container-instances-log-analytics.md)
 
-* [Principy Log Analyticsho pracovního prostoru](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/log-query/get-started-portal.md)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -274,9 +275,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Doprovodné**materiály: použijte Log Analytics pracovní prostor pro monitorování a upozorňování na aktivitu neobvyklé nalezené v protokolech zabezpečení a událostech. 
 
-* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](./container-instances-log-analytics.md)
 
-* [Upozornění na data protokolu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -303,7 +304,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Doprovodné**materiály: v případě potřeby nakonfigurujte protokolování konzoly ve spuštěné instanci kontejneru.
 
-* [Spuštění příkazu ve spuštěné instanci kontejneru Azure](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [Spuštění příkazu ve spuštěné instanci kontejneru Azure](./container-instances-exec.md)
 
 
 
@@ -313,7 +314,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -321,11 +322,11 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 Pokud používáte službu Azure Container Registry s Azure Container Instances, můžete pro každý registr kontejnerů Azure sledovat, jestli je integrovaný účet správce povolený nebo zakázaný. Zakáže účet, pokud se nepoužívá.
 
-* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Účet správce Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Účet správce Azure Container Registry](../container-registry/container-registry-authentication.md#admin-account)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -337,7 +338,7 @@ Pokud používáte službu Azure Container Registry s Azure Container Instances,
 
 Pokud používáte službu Azure Container Registry se službou Azure Container Instances, pokud je výchozí účet správce služby Azure Container Registry povolený, vytvoří se automaticky složitá hesla, která by se měla střídat. Zakáže účet, pokud se nepoužívá.
 
-* [Účet správce Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Účet správce Azure Container Registry](../container-registry/container-registry-authentication.md#admin-account)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -349,9 +350,9 @@ Pokud používáte službu Azure Container Registry se službou Azure Container 
 
 Pokud používáte službu Azure Container Registry s Azure Container Instances, vytvořte procedury pro povolení předdefinovaného účtu správce registru kontejneru. Zakáže účet, pokud se nepoužívá.
 
-* [Pochopení Azure Security Center identity a přístupu](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Pochopení Azure Security Center identity a přístupu](../security-center/security-center-identity-access.md)
 
-* [Účet správce Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account)
+* [Účet správce Azure Container Registry](../container-registry/container-registry-authentication.md#admin-account)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -361,7 +362,7 @@ Pokud používáte službu Azure Container Registry s Azure Container Instances,
 
 **Doprovodné**materiály: kdykoli je to možné, použijte Azure Active Directory jednotného přihlašování (SSO) místo konfigurace jednotlivých samostatných přihlašovacích údajů pro každou službu. Použijte Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Vysvětlení jednotného přihlašování pomocí Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Vysvětlení jednotného přihlašování pomocí Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -372,9 +373,9 @@ Pokud používáte službu Azure Container Registry s Azure Container Instances,
 
 **Doprovodné**materiály: Povolte službu Multi-Factor Authentication (Azure AD) pro Azure Active Directory (Azure AD) a postupujte podle Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Jak monitorovat identitu a přístup v rámci Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -384,9 +385,9 @@ Pokud používáte službu Azure Container Registry s Azure Container Instances,
 
 **Doprovodné**materiály: použití privilegovaným přístupem (privilegovaných pracovních stanic) s MFA nakonfigurovaným pro přihlášení a konfiguraci prostředků Azure.
 
-* [Další informace o pracovních stanicích s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -396,9 +397,9 @@ Pokud používáte službu Azure Container Registry s Azure Container Instances,
 
 **Doprovodné**materiály: použití sestav zabezpečení Azure Active Directory (Azure AD) pro generování protokolů a výstrah v případě, že v prostředí dojde k podezřelé nebo nebezpečné aktivitě. Pomocí Azure Security Center můžete monitorovat aktivitu identity a přístupu.
 
-* [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+* [Jak identifikovat uživatele Azure AD označené příznakem rizika pro rizikové aktivity](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Jak monitorovat identitu uživatelů a aktivity přístupu v Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -408,7 +409,7 @@ Pokud používáte službu Azure Container Registry s Azure Container Instances,
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
-* [Postup konfigurace pojmenovaných umístění v Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -418,7 +419,7 @@ Pokud používáte službu Azure Container Registry s Azure Container Instances,
 
 **Pokyny**: jako centrální ověřování a systém autorizací použijte Azure Active Directory (Azure AD). Azure AD chrání data pomocí silného šifrování pro neaktivní a tranzitní data. Azure AD také nasolete, hodnoty hash a bezpečně ukládají přihlašovací údaje uživatele.
 
-* [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -428,9 +429,9 @@ Pokud používáte službu Azure Container Registry s Azure Container Instances,
 
 **Doprovodné**materiály: Azure Active Directory (Azure AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-* [Pochopení sestav Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
-* [Jak používat recenze Azure identity Access](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -442,7 +443,7 @@ Pokud používáte službu Azure Container Registry s Azure Container Instances,
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure Active Directory uživatelských účtů a odesláním protokolů auditu a protokolů přihlášení do pracovního prostoru Log Analytics. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics.
 
-* [Jak integrovat protokoly aktivit Azure do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Jak integrovat protokoly aktivit Azure do Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -452,9 +453,9 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 **Pokyny**: použití funkcí Azure Active Directory (Azure AD) pro rizika a ochranu identity ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů.
 
-* [Jak zobrazit rizikové přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -464,7 +465,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 **Doprovodné**materiály: není aktuálně k dispozici; Customer Lockbox se v tuto chvíli nepodporuje pro Azure Container Instances.
 
-* [Seznam podporovaných služeb Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Seznam podporovaných služeb Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -472,7 +473,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
@@ -480,9 +481,9 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro Azure
 
 Označení a verze kontejnerových obrázků, které vám pomůžou při sledování imagí, které ukládají nebo zpracovávají citlivé informace.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Doporučení pro označování a naznačení verzí imagí kontejneru](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [Doporučení pro označování a naznačení verzí imagí kontejneru](../container-registry/container-registry-image-tag-version.md)
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
@@ -493,20 +494,20 @@ Označení a verze kontejnerových obrázků, které vám pomůžou při sledov�
 
 **Doprovodné**materiály: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Prostředky by měly být oddělené podle virtuální sítě a podsítě, musí se vhodně označit a zabezpečit pomocí NSG nebo Azure Firewall. Prostředky, které ukládají nebo zpracovávají citlivá data, by měly být dostatečně izolované.
 
-* [Spuštění příkazu ve spuštěné instanci kontejneru Azure](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [Spuštění příkazu ve spuštěné instanci kontejneru Azure](./container-instances-exec.md)
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Vytvoření skupin pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Vytvoření skupin pro správu](../governance/management-groups/create.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Nasazení ve virtuální síti – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md) 
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Jak nakonfigurovat výstrahu nebo upozornění a odepřít pomocí Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Jak nakonfigurovat výstrahu nebo upozornění a odepřít pomocí Azure Firewall](../firewall/threat-intel.md)
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
@@ -519,11 +520,11 @@ Označení a verze kontejnerových obrázků, které vám pomůžou při sledov�
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
-* [Nasazení ve virtuální síti – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md) 
 
-* [Připojení sdílené složky ve službě Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-volume-azure-files)
+* [Připojení sdílené složky ve službě Azure Container Instances](./container-instances-volume-azure-files.md)
 
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
@@ -536,7 +537,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování.
 
-* [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -548,7 +549,7 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -558,7 +559,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: pomocí služby Azure AD RBAC můžete řídit přístup k Azure Container Instancesovým datům a prostředkům. 
 
-* [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/role-assignments-portal.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -571,7 +572,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -581,9 +582,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné**materiály: ve výchozím nastavení jsou všechna data nasazení v Azure Container Instances v klidovém stavu zašifrovaná pomocí klíčů spravovaných Microsoftem. Volitelně můžete spravovat šifrování pomocí vlastního klíče (klíč spravovaný zákazníkem).
 
-* [Vysvětlení šifrování v klidovém umístění v Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Vysvětlení šifrování v klidovém umístění v Azure](../security/fundamentals/encryption-atrest.md)
 
-* [Šifrovat data nasazení pomocí Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-encrypt-data)
+* [Šifrovat data nasazení pomocí Azure Container Instances](./container-instances-encrypt-data.md)
 
 
 
@@ -595,7 +596,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet výstrahy pro případy, kdy změny probíhají do skupin kontejnerů a instancí kontejnerů. 
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -604,15 +605,15 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](../security/benchmarks/security-control-vulnerability-management.md)zabezpečení.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
 **Doprovodné**materiály: implementace řešení pro skenování imagí kontejnerů v privátním registru a identifikaci potenciálních ohrožení zabezpečení. Dodržujte doporučení od Azure Security Center při provádění posouzení ohrožení zabezpečení u imagí kontejneru uložených v Azure Container Registry. Volitelně můžete nasadit řešení jiných výrobců z Azure Marketplace k provádění posouzení ohrožení zabezpečení imagí.
 
-* [Požadavky na zabezpečení pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integrace s Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -624,9 +625,9 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kontejneru. Pokud ukládáte image kontejnerů v Azure Container Registry, spusťte úlohy Azure Container Registry pro automatizaci aktualizací imagí aplikace v registru kontejnerů na základě oprav zabezpečení nebo jiných aktualizací v imagí základního operačního systému.
 
-* [Požadavky na zabezpečení pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Základní aktualizace obrázků pro úlohy Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Základní aktualizace obrázků pro úlohy Azure Container Registry](../container-registry/container-registry-tasks-base-images.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -637,9 +638,9 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 **Pokyny**: k opravě imagí kontejneru použijte vlastní řešení nebo řešení třetí strany. Pokud ukládáte image kontejnerů v Azure Container Registry, spusťte úlohy Azure Container Registry pro automatizaci aktualizací imagí aplikace v registru kontejnerů na základě oprav zabezpečení nebo jiných aktualizací v imagí základního operačního systému.
 
-* [Požadavky na zabezpečení pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Základní aktualizace obrázků pro úlohy ACR](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Základní aktualizace obrázků pro úlohy ACR](../container-registry/container-registry-tasks-base-images.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -649,9 +650,9 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 **Doprovodné**materiály: Exportovat výsledky kontroly imagí v konzistentních intervalech a porovnat výsledky a ověřit, zda byly chyby zabezpečení opraveny. Pokud ukládáte image kontejnerů v Azure Container Registry, Integrujte registr do Azure Security Center a povolte tak pravidelné prohledávání imagí kontejneru pro ohrožení zabezpečení. Volitelně můžete nasadit řešení jiných výrobců z Azure Marketplace a provádět pravidelné kontroly ohrožení zabezpečení imagí.
 
-* [Požadavky na zabezpečení pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integrace s Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -661,9 +662,9 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 **Doprovodné**materiály: Pokud ukládáte image kontejneru do Azure Container Registry, Integrujte registr s Azure Security Center a umožněte tak pravidelné prohledávání imagí kontejneru pro ohrožení zabezpečení a klasifikaci rizik. Volitelně můžete nasadit řešení třetích stran z Azure Marketplace a provádět pravidelné kontroly ohrožení zabezpečení imagí a hodnocení rizik.
 
-* [Požadavky na zabezpečení pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integrace s Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -671,7 +672,7 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
 
@@ -679,11 +680,11 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
 
-* [Jak vytvářet dotazy pomocí Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-* [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -693,7 +694,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné**materiály: použití značek pro Azure Container Instances a souvisejících prostředků, které dávají metadata k logickému uspořádání do taxonomie.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -704,11 +705,11 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -729,11 +730,11 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazovat nebo zjišťovat prostředky. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-* [Audit dodržování předpisů pro služby Azure Container Registry pomocí Azure Policy](https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy)
+* [Audit dodržování předpisů pro služby Azure Container Registry pomocí Azure Policy](../container-registry/container-registry-azure-policy.md)
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak vytvářet dotazy pomocí Azure graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -747,14 +748,14 @@ Implementujte řešení pro skenování imagí kontejnerů v privátním registr
 
 Sledujte protokoly Azure Container Instances pro chování neobvyklé a pravidelně kontrolujte výsledky. Pomocí Log Analytics pracovního prostoru Azure Monitor můžete prohlížet protokoly a provádět dotazy na data protokolu.
 
-* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](https://docs.microsoft.com/azure/container-instances/container-instances-log-analytics)
+* [Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor](./container-instances-log-analytics.md)
 
-* [Principy Log Analyticsho pracovního prostoru](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/log-query/get-started-portal.md)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
-* [Požadavky na zabezpečení pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
-* [Azure Container Registry integrace s Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
+* [Požadavky na zabezpečení pro Azure Container Instances](./container-instances-image-security.md)
+* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
 
 
 
@@ -766,7 +767,7 @@ Sledujte protokoly Azure Container Instances pro chování neobvyklé a pravidel
 
 **Doprovodné**materiály: Azure Automation poskytuje úplnou kontrolu během nasazení, operací a vyřazení úloh a prostředků z provozu. Můžete implementovat vlastní řešení pro odebrání neautorizovaných prostředků a softwarových aplikací Azure.
 
-* [Seznámení s Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)
+* [Seznámení se službou Azure Automation](../automation/automation-intro.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -775,7 +776,7 @@ Sledujte protokoly Azure Container Instances pro chování neobvyklé a pravidel
 ### <a name="68-use-only-approved-applications"></a>6,8: Používejte pouze schválené aplikace.
 
 **Doprovodné**materiály: značky a image kontejneru verze, které vám pomůžou při sledování imagí, které spouštějí schválené aplikace.
-* [Doporučení pro označování a naznačení verzí imagí kontejneru](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [Doporučení pro označování a naznačení verzí imagí kontejneru](../container-registry/container-registry-image-tag-version.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -786,9 +787,9 @@ Sledujte protokoly Azure Container Instances pro chování neobvyklé a pravidel
 
 **Doprovodné**materiály: použijte Azure Policy k omezení služeb, které můžete zřídit ve vašem prostředí.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -797,7 +798,7 @@ Sledujte protokoly Azure Container Instances pro chování neobvyklé a pravidel
 ### <a name="610-implement-approved-application-list"></a>6,10: Implementujte schválený seznam aplikací
 
 **Doprovodné**materiály: značky a image kontejneru verze, které vám pomůžou při sledování imagí, které spouštějí schválené aplikace.
-* [Doporučení pro označování a naznačení verzí imagí kontejneru](https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version)
+* [Doporučení pro označování a naznačení verzí imagí kontejneru](../container-registry/container-registry-image-tag-version.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -808,7 +809,7 @@ Sledujte protokoly Azure Container Instances pro chování neobvyklé a pravidel
 
 **Pokyny**: pomocí podmíněného přístupu Azure omezte schopnost uživatelů pracovat se správcem prostředků Azure tak, že nakonfigurujete "blokování přístupu" pro aplikaci "Microsoft Azure Management". 
 
-* [Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manageru](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Jak nakonfigurovat podmíněný přístup k blokování přístupu k Azure Resource Manageru](../role-based-access-control/conditional-access-azure-management.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -820,17 +821,17 @@ Sledujte protokoly Azure Container Instances pro chování neobvyklé a pravidel
 
 Spravujte a zkontrolujte přístup k Azure Container Instances prostředkům pomocí různých předplatných Azure nebo skupin pro správu nebo izolujte prostředky pomocí virtuálních sítí a skupin zabezpečení sítě nebo Azure Firewall.
 
-* [Spuštění příkazu ve spuštěné instanci kontejneru Azure](https://docs.microsoft.com/azure/container-instances/container-instances-exec)
+* [Spuštění příkazu ve spuštěné instanci kontejneru Azure](./container-instances-exec.md)
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Vytvoření skupin pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Vytvoření skupin pro správu](../governance/management-groups/create.md)
 
-* [Nasazení ve virtuální síti – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet)
+* [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
 
 
@@ -842,9 +843,9 @@ Spravujte a zkontrolujte přístup k Azure Container Instances prostředkům pom
 
 **Doprovodné**materiály: software, který je potřeba pro obchodní operace, ale může pro organizaci zvýšit riziko, že by se měl izolovat v rámci vlastní virtuální sítě a dostatečně zabezpečený pomocí Azure firewall nebo skupiny zabezpečení sítě.
 
-* [Nasazení ve virtuální síti – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-vnet) 
+* [Nasazení ve virtuální síti – Azure Container Instances](./container-instances-vnet.md) 
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -852,7 +853,7 @@ Spravujte a zkontrolujte přístup k Azure Container Instances prostředkům pom
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
@@ -860,7 +861,7 @@ Spravujte a zkontrolujte přístup k Azure Container Instances prostředkům pom
 
 * [Skupiny kontejnerů ve službě Azure Container Instances](container-instances-container-groups.md#deployment)
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -871,7 +872,7 @@ Spravujte a zkontrolujte přístup k Azure Container Instances prostředkům pom
 
 **Pokyny**: k opravě imagí kontejneru použijte vlastní řešení nebo řešení třetí strany. Pokud ukládáte image kontejnerů v Azure Container Registry, spusťte úlohy Azure Container Registry pro automatizaci aktualizací imagí aplikace v registru kontejnerů na základě oprav zabezpečení nebo jiných aktualizací v imagí základního operačního systému. 
 
-* [Základní aktualizace obrázků pro úlohy Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Základní aktualizace obrázků pro úlohy Azure Container Registry](../container-registry/container-registry-tasks-base-images.md)
 
 
 
@@ -883,9 +884,9 @@ Spravujte a zkontrolujte přístup k Azure Container Instances prostředkům pom
 
 **Pokyny**: použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení napříč prostředky Azure.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Pochopení Azure Policych efektů](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -897,10 +898,10 @@ Spravujte a zkontrolujte přístup k Azure Container Instances prostředkům pom
 
 Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kontejneru. Pokud ukládáte image kontejnerů v Azure Container Registry, spusťte úlohy Azure Container Registry pro automatizaci aktualizací imagí aplikace v registru kontejnerů na základě oprav zabezpečení nebo jiných aktualizací v imagí základního operačního systému. 
 
-* [Bezpečnostní doporučení pro monitorování a kontrolu kontejnerů pro Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-image-security)
+* [Bezpečnostní doporučení pro monitorování a kontrolu kontejnerů pro Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integrace s Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)
-* [Základní aktualizace obrázků pro úlohy Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images)
+* [Azure Container Registry integrace s Security Center](../security-center/azure-container-registry-integration.md)
+* [Základní aktualizace obrázků pro úlohy Azure Container Registry](../container-registry/container-registry-tasks-base-images.md)
 
 
 
@@ -912,9 +913,9 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 **Doprovodné**materiály: ukládejte a SPRAVUJTE šablony ARM, soubory YAML a vlastní definice zásad Azure ve správě zdrojového kódu bezpečně.
 
-* [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -924,11 +925,11 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 **Doprovodné**materiály: uložte image kontejneru do Azure Container registry a využijte RBAC, aby bylo zajištěno, že k obrázkům budou mít přístup jenom oprávnění uživatelé.
 
-* [Princip RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Princip RBAC v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [Vysvětlení RBAC pro Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [Vysvětlení RBAC pro Container Registry](../container-registry/container-registry-roles.md)
 
-* [Jak nakonfigurovat RBAC v Azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Jak nakonfigurovat RBAC v Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -939,7 +940,7 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 **Doprovodné**materiály: použijte Azure Policy k upozornění, auditu a prosazování konfigurace systému. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -960,9 +961,9 @@ Použijte vlastní řešení nebo řešení třetí strany k opravě imagí kont
 
 Pomocí Azure Policy můžete umístit omezení typu prostředků, které se dají vytvořit v předplatných.
 
-* [Jak opravit doporučení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations)
+* [Jak opravit doporučení v Azure Security Center](../security-center/security-center-remediate-recommendations.md)
 
-* [Audit dodržování předpisů pro služby Azure Container Registry pomocí Azure Policy](https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy)
+* [Audit dodržování předpisů pro služby Azure Container Registry pomocí Azure Policy](../container-registry/container-registry-azure-policy.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -972,7 +973,7 @@ Pomocí Azure Policy můžete umístit omezení typu prostředků, které se daj
 
 **Pokyny**: Pokud použijete Azure Container Registry k ukládání imagí kontejneru, použijte Azure Security Center k provádění kontrol směrného plánu pro nastavení operačního systému a Docker pro kontejnery.
 
-* [Porozumění doporučení týkajících se kontejnerů Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [Porozumění doporučení týkajících se kontejnerů Azure Security Center](../security-center/container-security.md)
 
 
 **Monitorování Azure Security Center**: Ano
@@ -983,13 +984,13 @@ Pomocí Azure Policy můžete umístit omezení typu prostředků, které se daj
 
 **Doprovodné**materiály: použití identita spravované služby ve spojení s Azure Key Vault ke zjednodušení a zabezpečení správy tajných kódů pro vaše cloudové aplikace.
 
-* [Integrace se spravovanými identitami Azure](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity)
+* [Integrace se spravovanými identitami Azure](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [Vytvoření Key Vault](https://docs.microsoft.com/azure/key-vault/quick-create-portal)
+* [Vytvoření Key Vault](../key-vault/secrets/quick-create-portal.md)
 
-* [Jak zajistit Key Vault ověřování pomocí spravované identity](https://docs.microsoft.com/azure/key-vault/managed-identity)
+* [Jak zajistit Key Vault ověřování pomocí spravované identity](../key-vault/general/managed-identity.md)
 
-* [Použití spravovaných identit se službou Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+* [Použití spravovaných identit se službou Azure Container Instances](./container-instances-managed-identity.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -999,9 +1000,9 @@ Pomocí Azure Policy můžete umístit omezení typu prostředků, které se daj
 
 **Doprovodné**materiály: použití spravovaných identit k poskytování služeb Azure s automaticky spravovanou identitou ve službě Azure AD. Spravované identity vám umožňují ověřit jakoukoli službu, která podporuje ověřování Azure AD, včetně Key Vault bez jakýchkoli přihlašovacích údajů v kódu.
 
-* [Postup konfigurace spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
+* [Postup konfigurace spravovaných identit](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 
-* [Použití spravovaných identit se službou Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-managed-identity)
+* [Použití spravovaných identit se službou Azure Container Instances](./container-instances-managed-identity.md)
 
 
 
@@ -1021,7 +1022,7 @@ Pomocí Azure Policy můžete umístit omezení typu prostředků, které se daj
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
@@ -1054,15 +1055,15 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
 **Doprovodné**materiály: Povolte Azure Backup a nakonfigurujte zdroj zálohy (například sdílenou složku připojenou ke skupinám kontejnerů) a také požadovanou četnost a dobu uchování. 
 
-* [Postup povolení Azure Backup](https://docs.microsoft.com/azure/backup/)
+* [Postup povolení Azure Backup](../backup/index.yml)
 
-* [Připojení sdílené složky ve službě Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-volume-azure-files)
+* [Připojení sdílené složky ve službě Azure Container Instances](./container-instances-volume-azure-files.md)
 
 
 **Monitorování Azure Security Center**: nelze použít
@@ -1074,9 +1075,9 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 **Pokyny**: zálohování klíčů spravovaných zákazníkem v Azure Key Vault pomocí nástrojů příkazového řádku Azure nebo sad SDK.
 
 Volitelně můžete zálohovat image kontejnerů importem z jednoho registru do jiného.
-* [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup zálohování klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Import imagí kontejneru do registru kontejneru](https://docs.microsoft.com/azure/container-registry/container-registry-import-images)
+* [Import imagí kontejneru do registru kontejneru](../container-registry/container-registry-import-images.md)
 
 
 
@@ -1088,9 +1089,9 @@ Volitelně můžete zálohovat image kontejnerů importem z jednoho registru do 
 
 **Pokyny**: testování obnovení zálohovaných zákaznických klíčů v Azure Key Vault pomocí nástrojů příkazového řádku Azure nebo sad SDK.
 
-* [Postup obnovení klíčů Azure Key Vault v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup obnovení klíčů Azure Key Vault v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Šifrovat data nasazení – Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-encrypt-data)
+* [Šifrovat data nasazení – Azure Container Instances](./container-instances-encrypt-data.md)
 
 
 
@@ -1102,7 +1103,7 @@ Volitelně můžete zálohovat image kontejnerů importem z jednoho registru do 
 
 **Pokyny**: můžete povolit obnovitelné odstranění v Azure Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-* [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -1110,7 +1111,7 @@ Volitelně můžete zálohovat image kontejnerů importem z jednoho registru do 
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -1118,7 +1119,7 @@ Volitelně můžete zálohovat image kontejnerů importem z jednoho registru do 
 
 Zákazník může také využít příručku pro zpracování incidentů zabezpečení počítače NIST, která pomáhá při vytváření vlastního plánu reakce na incidenty.
 
-* [Postup konfigurace automatizace pracovních postupů v rámci služby Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
+* [Postup konfigurace automatizace pracovních postupů v rámci služby Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
 * [Pokyny k vytvoření vlastního procesu reakce na incidenty zabezpečení](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
@@ -1155,7 +1156,7 @@ Navíc jasně označte odběry (například. produkční, neprodukční) a vytvo
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka přistupovala protiprávní nebo neoprávněná strana. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-* [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1165,9 +1166,9 @@ Navíc jasně označte odběry (například. produkční, neprodukční) a vytvo
 
 **Doprovodné**materiály: vyexportujte výstrahy a doporučení Azure Security Center pomocí funkce průběžného exportu. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat ověřovací data výstrah.
 
-* [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
-* [Jak streamovat výstrahy do Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1177,7 +1178,7 @@ Navíc jasně označte odběry (například. produkční, neprodukční) a vytvo
 
 **Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
-* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1185,7 +1186,7 @@ Navíc jasně označte odběry (například. produkční, neprodukční) a vytvo
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech důležitých zjištění zabezpečení do 60 dnů.
 
@@ -1202,5 +1203,5 @@ Navíc jasně označte odběry (například. produkční, neprodukční) a vytvo
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

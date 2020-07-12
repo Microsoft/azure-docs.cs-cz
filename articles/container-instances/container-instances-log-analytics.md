@@ -4,12 +4,12 @@ description: Přečtěte si, jak odesílat protokoly prostředků a data událos
 ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169727"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259615"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor
 
@@ -29,7 +29,7 @@ Následující části popisují, jak vytvořit skupinu kontejnerů s povoleným
 Abyste mohli povolit protokolování ve vašich instancích kontejnerů, potřebujete následující:
 
 * [Pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md)
-* [Rozhraní Azure CLI](/cli/azure/install-azure-cli) (nebo službu [Cloud Shell](/azure/cloud-shell/overview))
+* [Rozhraní Azure CLI](/cli/azure/install-azure-cli) (nebo službu [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>Získání přihlašovacích údajů služby Log Analytics
 
@@ -153,7 +153,7 @@ ContainerInstanceLog_CL
 
 Další informace o dotazování protokolů a konfiguraci výstrah v Azure Monitorch protokolech najdete v tématech:
 
-* [Principy prohledávání protokolů v Azure Monitorch protokolech](../log-analytics/log-analytics-log-search.md)
+* [Principy prohledávání protokolů v Azure Monitorch protokolech](../azure-monitor/log-query/log-query-overview.md)
 * [Sjednocená upozornění ve službě Azure Monitor](../azure-monitor/platform/alerts-overview.md)
 
 

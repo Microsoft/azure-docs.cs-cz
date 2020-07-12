@@ -5,21 +5,22 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7317fd66303aaabf5232106aa7391439880bebaf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76904945"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260284"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Dotazování a posílání příkazů do služby správce oprav.
 
 ## <a name="commands"></a>Příkazy
 
-|Příkaz|Description|
+|Příkaz|Popis|
 | --- | --- |
 | schválit – vynutit | Vynutí schválení dané úlohy opravy. |
-| delete | Odstraní dokončenou úlohu opravy. |
+| odstranění | Odstraní dokončenou úlohu opravy. |
 | list | Načte seznam úloh opravy, které odpovídají daným filtrům. |
 
 ## <a name="sfctl-rpm-approve-force"></a>schválení sfctl ot./min. – Force
@@ -29,14 +30,14 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Task-ID [povinné] | ID úlohy opravy |
 | --verze | Aktuální číslo verze úlohy opravy. Pokud je hodnota nenulová, požadavek bude úspěšný pouze v případě, že tato hodnota odpovídá skutečné aktuální verzi úlohy opravy. Pokud je nula, není provedena žádná kontrolní verze. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -51,14 +52,14 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --Task-ID [povinné] | ID dokončené úlohy opravy, která se má odstranit |
 | --verze | Aktuální číslo verze úlohy opravy. Pokud je hodnota nenulová, požadavek bude úspěšný pouze v případě, že tato hodnota odpovídá skutečné aktuální verzi úlohy opravy. Pokud je nula, není provedena žádná kontrolní verze. |
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -73,7 +74,7 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ### <a name="arguments"></a>Arguments
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --prováděcí modul – filtr | Název prováděcího modulu, jehož deklarované úkoly by měly být uvedeny v seznamu. |
 | --State-Filter | Bitové nebo následující hodnoty určující, které stavy úloh by měly být zahrnuty v seznamu výsledků. <ul><li>1 – vytvořeno</li><li>2 – tvrzeno</li><li>4 – Příprava</li><li>8 – schváleno</li><li>16 provedení</li><li>32 – obnovování</li><li>64 – dokončeno</li></ul>
@@ -81,7 +82,7 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ### <a name="global-arguments"></a>Globální argumenty
 
-|Argument|Description|
+|Argument|Popis|
 | --- | --- |
 | --ladění | Zvyšte úroveň podrobností protokolování, aby se zobrazily všechny protokoly ladění. |
 | --Help-h | Zobrazí tuto zprávu s upozorněním a ukončí. |
@@ -92,4 +93,4 @@ Toto rozhraní API podporuje Service Fabric platformu; není určeno pro použit
 
 ## <a name="next-steps"></a>Další kroky
 - [Nastavte](service-fabric-cli.md) Service Fabric CLI.
-- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](/azure/service-fabric/scripts/sfctl-upgrade-application).
+- Naučte se používat rozhraní příkazového řádku Service Fabric s použitím [ukázkových skriptů](./scripts/sfctl-upgrade-application.md).

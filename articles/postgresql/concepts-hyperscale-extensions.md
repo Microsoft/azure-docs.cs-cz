@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: ba8f4591782a4e34fbde26d9669ef01f24450486
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82146417"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259055"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – škálovatelné (Citus)
 
@@ -144,6 +144,6 @@ Nastavení `pg_stat_statements.track` Určuje, které příkazy se započítáva
 Existují kompromisy mezi informacemi o provádění dotazů, které pg_stat_statements poskytuje, a vlivem na výkon serveru při zaznamenání jednotlivých příkazů SQL. Pokud nepoužíváte rozšíření pg_stat_statements, doporučujeme, abyste nastavili `pg_stat_statements.track` na `none` . Některé služby monitorování třetích stran se můžou spoléhat na pg_stat_statements pro poskytování přehledů výkonu dotazů, takže ověřte, jestli se jedná o případ nebo ne.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink a postgres_fdw
-Pomocí dblink a postgres_fdw se můžete připojit z jednoho serveru PostgreSQL k druhému nebo do jiné databáze na stejném serveru. Přijímající server musí v bráně firewall umožňovat připojení z odesílajícího serveru. Pokud chcete použít tato rozšíření pro připojení mezi Azure Database for PostgreSQL servery, nastavte možnost **Povolení přístupu ke službám Azure** na zapnuto. Toto nastavení musíte zapnout také v případě, že chcete použít rozšíření pro návrat ke stejnému serveru. Nastavení **Povolení přístupu ke službám Azure** najdete na stránce Azure Portal pro server Postgres v části **zabezpečení připojení**. Povolení **přístupu ke službám Azure** na seznamu povolených všech IP adres Azure.
 
-V současné době se odchozí připojení z Azure Database for PostgreSQL nepodporují, s výjimkou připojení k jiným serverům Azure Database for PostgreSQL.
+Pomocí dblink a Postgres FDW se můžete \_ připojit z jednoho serveru PostgreSQL k druhému nebo do jiné databáze na stejném serveru.  Přijímající server musí v bráně firewall umožňovat připojení z odesílajícího serveru.  Pokud chcete tato rozšíření použít pro připojení mezi skupinami serverů Azure Database for PostgreSQL nebo Citus (), nastavte možnost **dovolit službám a prostředkům Azure přístup k této skupině serverů (nebo serveru)** na zapnuto.  Toto nastavení musíte zapnout také v případě, že chcete použít rozšíření pro návrat ke stejnému serveru.
+Nastavení **Povolení služeb a prostředků Azure pro přístup k této skupině serverů** najdete na stránce Azure Portal pro skupinu serverů Citus () v části **síť**.  V současné době se odchozí připojení z Azure Database for PostgreSQL jednom serveru a Citus () nepodporují, s výjimkou připojení k ostatním serverům Azure Database for PostgreSQL a skupinám serverů Citus ().
