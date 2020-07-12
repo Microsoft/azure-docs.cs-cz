@@ -12,21 +12,22 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 1d6773b4daac256234c33bf50fb3736d585ac505
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75480993"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254686"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Použití Azure API Management s mikroslužbami nasazenými ve službě Azure Kubernetes
 
-Mikroslužby jsou ideální pro vytváření rozhraní API. Pomocí [služby Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) (AKS) můžete rychle nasadit a provozovat [architekturu založenou na mikroslužbách](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/microservices) v cloudu. Potom můžete využít [Azure API Management](https://aka.ms/apimrocks) (API Management) k publikování mikroslužeb jako rozhraní API pro interní a externí spotřebu. Tento článek popisuje možnosti nasazení API Management pomocí AKS. Předpokládá základní znalosti o Kubernetes, API Management a sítích Azure. 
+Mikroslužby jsou ideální pro vytváření rozhraní API. Pomocí [služby Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) (AKS) můžete rychle nasadit a provozovat [architekturu založenou na mikroslužbách](/azure/architecture/guide/architecture-styles/microservices) v cloudu. Potom můžete využít [Azure API Management](https://aka.ms/apimrocks) (API Management) k publikování mikroslužeb jako rozhraní API pro interní a externí spotřebu. Tento článek popisuje možnosti nasazení API Management pomocí AKS. Předpokládá základní znalosti o Kubernetes, API Management a sítích Azure. 
 
 ## <a name="background"></a>Pozadí
 
 Při publikování mikroslužeb jako rozhraní API pro spotřebu může být obtížné spravovat komunikaci mezi mikroslužbami a klienty, kteří je používají. Existuje velké množství různých otázek, jako je ověřování, autorizace, omezování, ukládání do mezipaměti, transformace a monitorování. Tyto aspekty jsou platné bez ohledu na to, jestli jsou mikroslužby vystavené interním nebo externím klientům. 
 
-Tento model [brány rozhraní API](https://docs.microsoft.com/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) řeší tyto aspekty. Brána API slouží jako přední dveře ke mikroslužbám, rozděluje klienty od vašich mikroslužeb, přidává další vrstvu zabezpečení a snižuje složitost vašich mikroslužeb tím, že odstraňuje zatížení, které zpracovává obavy z hlediska vzájemného průřezu. 
+Tento model [brány rozhraní API](/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern) řeší tyto aspekty. Brána API slouží jako přední dveře ke mikroslužbám, rozděluje klienty od vašich mikroslužeb, přidává další vrstvu zabezpečení a snižuje složitost vašich mikroslužeb tím, že odstraňuje zatížení, které zpracovává obavy z hlediska vzájemného průřezu. 
 
 [Azure API Management](https://aka.ms/apimrocks) je řešení klíč, které slouží k řešení vašich potřeb vašich bran API. Můžete rychle vytvořit konzistentní a moderní bránu pro vaše mikroslužby a publikovat je jako rozhraní API. Jako řešení pro správu rozhraní API pro celou životní cyklus poskytuje taky další možnosti, jako je Samoobslužný portál pro vývojáře pro zjišťování rozhraní API, správu životního cyklu rozhraní API a analýzy rozhraní API.
 
@@ -52,7 +53,7 @@ I když je cluster AKS vždy nasazený ve virtuální síti (VNet), není nutné
 
 ### <a name="option-1-expose-services-publicly"></a>Možnost 1: veřejně zveřejňuje služby
 
-Služby v clusteru AKS mohou být veřejně vystaveny pomocí [typů služeb](https://docs.microsoft.com/azure/aks/concepts-network) NodePort, Vyrovnávání zatížení nebo extern. V takovém případě jsou služby přístupné přímo z veřejného Internetu. Po nasazení API Management před clusterem je potřeba zajistit, aby veškerý příchozí provoz procházel prostřednictvím API Management použitím ověřování v mikroslužbách. API Management například může do každého požadavku v clusteru zahrnovat přístupový token. Každá mikroslužba zodpovídá za ověření tokenu před zpracováním žádosti. 
+Služby v clusteru AKS mohou být veřejně vystaveny pomocí [typů služeb](../aks/concepts-network.md) NodePort, Vyrovnávání zatížení nebo extern. V takovém případě jsou služby přístupné přímo z veřejného Internetu. Po nasazení API Management před clusterem je potřeba zajistit, aby veškerý příchozí provoz procházel prostřednictvím API Management použitím ověřování v mikroslužbách. API Management například může do každého požadavku v clusteru zahrnovat přístupový token. Každá mikroslužba zodpovídá za ověření tokenu před zpracováním žádosti. 
 
 
 To může být nejjednodušší způsob, jak nasadit API Management před AKS, zejména pokud už máte logiku ověřování implementovanou v mikroslužbách. 
@@ -72,7 +73,7 @@ Cons
 
 I když možnost 1 může být jednodušší, má významné nevýhody, jak je uvedeno výše. Pokud instance služby API Management není umístěná ve virtuální síti clusteru, vzájemné ověřování TLS (mTLS) je robustní způsob, jak zajistit, aby byl provoz zabezpečený a důvěryhodný v obou směrech mezi instancí API Management a clusterem AKS. 
 
-Vzájemné ověřování TLS je [nativně podporované](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates) API Management a je možné je povolit v Kubernetes [instalací kontroleru příchozího](https://docs.microsoft.com/azure/aks/ingress-own-tls) přenosu dat (obrázek. 3). V důsledku toho se ověřování provede v řadiči příchozího přenosu dat, což zjednodušuje mikroslužby. Příchozí přenos dat API Management taky můžete přidat do seznamu povolených IP adres, aby se zajistilo, že přístup ke clusteru bude mít jenom API Management.  
+Vzájemné ověřování TLS je [nativně podporované](./api-management-howto-mutual-certificates.md) API Management a je možné je povolit v Kubernetes [instalací kontroleru příchozího](../aks/ingress-own-tls.md) přenosu dat (obrázek. 3). V důsledku toho se ověřování provede v řadiči příchozího přenosu dat, což zjednodušuje mikroslužby. Příchozí přenos dat API Management taky můžete přidat do seznamu povolených IP adres, aby se zajistilo, že přístup ke clusteru bude mít jenom API Management.  
 
  
 ![Publikování prostřednictvím kontroleru příchozího přenosu dat](./media/api-management-aks/ingress-controller.png)
@@ -96,7 +97,7 @@ Pokud chcete získat klíč předplatného pro přístup k rozhraním API, vyža
 
 V některých případech mohou zákazníci, kteří mají regulativní omezení nebo přísné požadavky na zabezpečení, najít možnost 1 a 2 neživotaschopná řešení kvůli veřejně přístupným koncovým bodům. V ostatních případech se cluster AKS a aplikace, které využívají mikroslužby, můžou nacházet v rámci stejné virtuální sítě, proto není důvod zveřejnit cluster veřejně, protože veškerý provoz rozhraní API zůstane v rámci virtuální sítě. V těchto scénářích můžete nasadit API Management do virtuální sítě clusteru. [Úroveň Premium API Management](https://aka.ms/apimpricing) podporuje nasazení virtuální sítě. 
 
-Existují dva způsoby [nasazení API Management do virtuální](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet) sítě – externí a interní. 
+Existují dva způsoby [nasazení API Management do virtuální](./api-management-using-with-vnet.md) sítě – externí a interní. 
 
 Pokud se uživatelé rozhraní API nenacházejí ve virtuální síti clusteru, je třeba použít externí režim (obrázek. 4). V tomto režimu je API Management brána vložená do virtuální sítě clusteru, ale přístupná z veřejného Internetu prostřednictvím externího nástroje pro vyrovnávání zatížení. Pomůže zcela skrýt cluster a zároveň umožňuje externím klientům využívat mikroslužby. Kromě toho můžete k omezení síťového provozu použít možnosti sítě Azure, jako jsou třeba skupiny zabezpečení sítě (NSG).
 
@@ -119,10 +120,5 @@ Cons
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [principech sítě pro aplikace v AKS](https://docs.microsoft.com/azure/aks/concepts-network)
-* Další informace o [použití API Management s virtuálními sítěmi](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
-
-
-
-
-
+* Další informace o [principech sítě pro aplikace v AKS](../aks/concepts-network.md)
+* Další informace o [použití API Management s virtuálními sítěmi](./api-management-using-with-vnet.md)

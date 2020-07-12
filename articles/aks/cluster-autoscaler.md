@@ -4,11 +4,12 @@ description: Naučte se, jak pomocí automatického škálování clusteru autom
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aa06ea2fbc3aff218a4940fa60da767fabca500
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730012"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252024"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru pro splnění požadavků aplikace ve službě Azure Kubernetes (AKS)
 
@@ -106,7 +107,7 @@ Monitorujte výkon svých aplikací a služeb a upravte počty uzlů automatick�
 
 Můžete taky nakonfigurovat podrobnější informace o automatickém škálování clusteru změnou výchozích hodnot v profilu automatického škálování na úrovni clusteru. Například událost horizontálního navýšení kapacity proběhne po využívaném uzlu po 10 minutách. Pokud máte úlohy, které byly spuštěny každých 15 minut, můžete změnit profil automatického škálování tak, aby se v části využívané uzly po 15 nebo 20 minutách změnila velikost. Pokud povolíte automatické škálování clusteru, použije se výchozí profil, pokud neurčíte jiné nastavení. Profil automatického škálování clusteru má následující nastavení, která můžete aktualizovat:
 
-| Nastavení                          | Description                                                                              | Výchozí hodnota |
+| Nastavení                          | Popis                                                                              | Výchozí hodnota |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | Kontrola – interval                    | Jak často se cluster znovu vyhodnocuje pro horizontální navýšení nebo snížení kapacity                                    | 10 sekund    |
 | horizontální navýšení kapacity – zpoždění po přidání       | Jak dlouho po horizontálním navýšení kapacity dotrvají zkušební obnovení                               | 10 minut    |
@@ -212,7 +213,7 @@ AKS spravuje automatické škálování clusteru vaším jménem a spouští ho 
 
 Pokud chcete nakonfigurovat protokoly, které se budou nabízet z automatického škálování clusteru do Log Analytics, postupujte podle těchto kroků.
 
-1. Nastavte pravidlo pro protokoly prostředků pro nabízení protokolů clusteru – automatického škálování na Log Analytics. [Pokyny najdete tady](https://docs.microsoft.com/azure/aks/view-master-logs#enable-resource-logs), nezapomeňte zaškrtnout políčko `cluster-autoscaler` při výběru možností pro protokoly.
+1. Nastavte pravidlo pro protokoly prostředků pro nabízení protokolů clusteru – automatického škálování na Log Analytics. [Pokyny najdete tady](./view-master-logs.md#enable-resource-logs), nezapomeňte zaškrtnout políčko `cluster-autoscaler` při výběru možností pro protokoly.
 1. Klikněte na oddíl Logs v clusteru prostřednictvím Azure Portal.
 1. Zadejte následující příklad dotazu do Log Analytics:
 

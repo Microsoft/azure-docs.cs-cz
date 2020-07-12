@@ -6,18 +6,18 @@ author: mlearned
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: mlearned
-ms.openlocfilehash: 27ae1d1a2c6309bdac2410dca4b48abf27d8ea0b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 95a303a4b6a83901560b26679bca920b9de4d3f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231977"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250901"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
 V současné době cluster Azure Kubernetes Service (AKS) (konkrétně poskytovatel cloudu Kubernetes) vyžaduje identitu k vytváření dalších prostředků, jako jsou nástroje pro vyrovnávání zatížení a spravované disky v Azure. Tato identita může být buď *spravovaná identita* , nebo *instanční objekt*. Pokud používáte [instanční objekt](kubernetes-service-principal.md), musíte buď zadat jeden, nebo AKS ho vytvořit vaším jménem. Pokud používáte spravovanou identitu, vytvoří se pro vás AKS automaticky. Clustery s použitím instančních objektů nakonec dosáhnou stavu, ve kterém musí být instanční objekt obnovený, aby mohl cluster fungovat. Správa instančních objektů přináší složitost, což je důvod, proč je místo toho snazší použít spravované identity. Stejné požadavky oprávnění platí pro instanční objekty i spravované identity.
 
-*Spravované identity* jsou v podstatě obálkou objektů služby a zjednoduší se jejich správa. K rotaci přihlašovacích údajů pro MI dochází automaticky každých 46 dní podle Azure Active Directory výchozí. AKS používá spravované typy identit přiřazené systémem i uživatelem. Tyto identity jsou momentálně neměnné. Pokud se chcete dozvědět víc, přečtěte si o [spravovaných identitách prostředků Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+*Spravované identity* jsou v podstatě obálkou objektů služby a zjednoduší se jejich správa. K rotaci přihlašovacích údajů pro MI dochází automaticky každých 46 dní podle Azure Active Directory výchozí. AKS používá spravované typy identit přiřazené systémem i uživatelem. Tyto identity jsou momentálně neměnné. Pokud se chcete dozvědět víc, přečtěte si o [spravovaných identitách prostředků Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -36,20 +36,20 @@ Musíte mít nainstalované následující prostředky:
 
 AKS používá několik spravovaných identit pro předdefinované služby a doplňky.
 
-| Identita                       | Název    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
+| Identita                       | Name    | Případ použití | Výchozí oprávnění | Přineste si vlastní identitu
 |----------------------------|-----------|----------|
 | Řídicí rovina | neviditelné | Používá AKS ke správě síťových prostředků, například k vytvoření nástroje pro vyrovnávání zatížení pro příchozí, veřejnou IP adresu atd.| Role přispěvatele pro skupinu prostředků uzlu | Aktuálně se nepodporuje.
 | Kubelet | Název clusteru AKS – neznámá | Ověřování pomocí Azure Container Registry (ACR) | Role čtecího modulu pro skupinu prostředků uzlu | Aktuálně se nepodporuje.
-| Doplněk | AzureNPM | Není nutná žádná identita. | NA | Ne
-| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | NA | Ne
-| Doplněk | azurepolicy (gatekeeper) | Není nutná žádná identita. | NA | Ne
-| Doplněk | azurepolicy | Není nutná žádná identita. | NA | Ne
-| Doplněk | Calico | Není nutná žádná identita. | NA | Ne
-| Doplněk | Řídicí panel | Není nutná žádná identita. | NA | Ne
-| Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | Ne
-| Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | Ne
-| Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | Ne
-| Doplněk | Virtuální uzel (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | Ne
+| Doplněk | AzureNPM | Není nutná žádná identita. | NA | No
+| Doplněk | Monitorování sítě AzureCNI | Není nutná žádná identita. | NA | No
+| Doplněk | azurepolicy (gatekeeper) | Není nutná žádná identita. | NA | No
+| Doplněk | azurepolicy | Není nutná žádná identita. | NA | No
+| Doplněk | Calico | Není nutná žádná identita. | NA | No
+| Doplněk | Řídicí panel | Není nutná žádná identita. | NA | No
+| Doplněk | HTTPApplicationRouting | Spravuje požadované síťové prostředky. | Role čtenáře pro skupinu prostředků uzlu, roli přispěvatele pro zónu DNS | No
+| Doplněk | Aplikační brána příchozího přenosu dat | Spravuje požadované síťové prostředky.| Role přispěvatele pro skupinu prostředků uzlu | No
+| Doplněk | omsagent | Slouží k posílání AKS metrik pro Azure Monitor | Role vydavatele metrik monitorování | No
+| Doplněk | Virtuální uzel (ACIConnector) | Spravuje požadované síťové prostředky pro Azure Container Instances (ACI). | Role přispěvatele pro skupinu prostředků uzlu | No
 
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Vytvoření clusteru AKS se spravovanými identitami
@@ -110,4 +110,4 @@ Cluster se vytvoří během několika minut. Pak můžete nasadit úlohy aplikac
 * Pomocí [šablon Azure Resource Manager (ARM)][aks-arm-template] vytvoříte clustery s povolenou správou identit.
 
 <!-- LINKS - external -->
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters

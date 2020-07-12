@@ -15,16 +15,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ace0ef2660a44af41d8942cfe4d225bc1a03228e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75442527"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254584"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Monitorování rozhraní API pomocí API Management Azure, Event Hubs a Moesif
 [Služba API Management](api-management-key-concepts.md) poskytuje mnoho funkcí, které zvyšují zpracování požadavků HTTP odeslaných na vaše rozhraní HTTP API. Existence požadavků a odpovědí je však přechodný. Požadavek se provede a přetéká prostřednictvím služby API Management do rozhraní back-end API. Vaše rozhraní API zpracovává požadavek a odezvu zpět do příjemce rozhraní API. Služba API Management udržuje několik důležitých statistik o rozhraních API pro zobrazení na řídicím panelu Azure Portal, ale kromě toho se tyto podrobnosti odešlou.
 
-Pomocí zásad přihlášení k protokolu pro protokol eventhub ve službě API Management můžete odeslat jakékoli podrobnosti z žádosti a odpovědi do [centra událostí Azure](../event-hubs/event-hubs-what-is-event-hubs.md). Existuje řada důvodů, proč můžete chtít generovat události ze zpráv HTTP odesílaných do vašich rozhraní API. Mezi příklady patří auditující záznam aktualizací, analýza využití, upozorňování na výjimky a integrace třetích stran.
+Pomocí zásad přihlášení k protokolu pro protokol eventhub ve službě API Management můžete odeslat jakékoli podrobnosti z žádosti a odpovědi do [centra událostí Azure](../event-hubs/event-hubs-about.md). Existuje řada důvodů, proč můžete chtít generovat události ze zpráv HTTP odesílaných do vašich rozhraní API. Mezi příklady patří auditující záznam aktualizací, analýza využití, upozorňování na výjimky a integrace třetích stran.
 
 Tento článek ukazuje, jak zachytit celou žádost HTTP a zprávu s odpovědí, odeslat ji do centra událostí a pak tuto zprávu předat službě třetí strany, která poskytuje služby protokolování a monitorování HTTP.
 
@@ -47,7 +48,7 @@ Centrum událostí přijímá data události jako jednoduchý řetězec. Obsah t
 
 Alternativní možností bylo použít `application/http` typ média, jak je popsáno v tématu Specifikace http [RFC 7230](https://tools.ietf.org/html/rfc7230). Tento typ média používá přesný formát, který se používá ke skutečnému posílání zpráv HTTP prostřednictvím sítě, ale celá zpráva může být vložena do těla jiné žádosti HTTP. V našem případě budeme k odeslání do Event Hubs použít text jako naši zprávu. Pohodlně existuje analyzátor, který existuje v [Microsoft ASP.NET klientské knihovny webového rozhraní API 2,2](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) , které mohou analyzovat tento formát a převést jej na nativní `HttpRequestMessage` a `HttpResponseMessage` objekty.
 
-Abychom mohli vytvořit tuto zprávu, musíme využít výhod [výrazů zásad](/azure/api-management/api-management-policy-expressions) založených na jazyce C# v Azure API Management. Tady je zásada, která odešle zprávu požadavku HTTP do Azure Event Hubs.
+Abychom mohli vytvořit tuto zprávu, musíme využít výhod [výrazů zásad](./api-management-policy-expressions.md) založených na jazyce C# v Azure API Management. Tady je zásada, která odešle zprávu požadavku HTTP do Azure Event Hubs.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -296,7 +297,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 Využívá `MoesifHttpMessageProcessor` [knihovnu rozhraní C# API pro Moesif](https://www.moesif.com/docs/api?csharp#events) , která usnadňuje vkládání dat událostí http do služby. Aby bylo možné odesílat data HTTP do rozhraní API Moesif collector, potřebujete účet a ID aplikace. ID aplikace Moesif získáte vytvořením účtu na [webu Moesif](https://www.moesif.com) a následným přechodem k nastavení aplikace v _pravém horním_rohu  ->  _App Setup_.
 
 ## <a name="complete-sample"></a>Kompletní ukázka
-[Zdrojový kód](https://github.com/dgilling/ApimEventProcessor) a testy pro ukázku jsou na GitHubu. Potřebujete [službu API Management](get-started-create-service-instance.md), [připojené centrum událostí](api-management-howto-log-event-hubs.md)a [účet úložiště](../storage/common/storage-create-storage-account.md) , abyste mohli ukázku spustit sami.   
+[Zdrojový kód](https://github.com/dgilling/ApimEventProcessor) a testy pro ukázku jsou na GitHubu. Potřebujete [službu API Management](get-started-create-service-instance.md), [připojené centrum událostí](api-management-howto-log-event-hubs.md)a [účet úložiště](../storage/common/storage-account-create.md) , abyste mohli ukázku spustit sami.   
 
 Ukázka je pouze jednoduchá Konzolová aplikace, která naslouchá událostem přicházejících z centra událostí, převádí je do Moesif `EventRequestModel` a `EventResponseModel` objektů a pak je předávají do rozhraní API kolekce Moesif.
 
@@ -304,15 +305,15 @@ Na následujícím animovaném obrázku vidíte na portálu pro vývojáře pož
 
 ![Ukázka přesměrovaného požadavku na Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Služba Azure API Management poskytuje ideální místo pro zachycení provozu HTTP na cestách a z vašich rozhraní API. Azure Event Hubs je vysoce škálovatelné řešení s nízkými náklady pro zachytávání provozu a jejich krmení do sekundárních zpracovatelských systémů pro protokolování, monitorování a další propracované analýzy. Připojení k systémům monitorování provozu třetích stran, jako je Moesif, je jednoduché jako několik desítek řádků kódu.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o Azure Event Hubs
   * [Začínáme s Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Přijímání zpráv pomocí třídy EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Přijímání zpráv pomocí třídy EventProcessorHost](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Průvodce programováním pro službu Event Hubs](../event-hubs/event-hubs-programming-guide.md)
 * Další informace o integraci API Management a Event Hubs
   * [Jak protokolovat události do Azure Event Hubs v Azure API Management](api-management-howto-log-event-hubs.md)
-  * [Reference k entitě protokolovacího nástroje](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [odkaz na zásady přihlášení k protokolu eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Reference k entitě protokolovacího nástroje](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [odkaz na zásady přihlášení k protokolu eventhub](./api-management-advanced-policies.md#log-to-eventhub)

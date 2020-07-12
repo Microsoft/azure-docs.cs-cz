@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: dd49680da6f52e32ddb52dbdb23ad5e8f627a91e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205063"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254499"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurace místních metrik a protokolů pro bránu Azure API Management pro samoobslužnou hostování
 
@@ -189,7 +189,7 @@ Teď máme všechno nasazené a nakonfigurované, ale v samoobslužné bráně b
 
 Navázání některých volání rozhraní API prostřednictvím samoobslužné brány, pokud je vše nakonfigurované správně, byste měli být schopni zobrazit níže uvedené metriky:
 
-| Metric  | Popis |
+| Metrika  | Popis |
 | ------------- | ------------- |
 | Žádosti  | Počet požadavků na rozhraní API v období |
 | DurationInMS | Počet milisekund od chvíle, kdy brána přijala požadavek, do chvíle odeslání úplné odpovědi. |
@@ -204,7 +204,7 @@ V samoobslužné bráně se `stdout` `stderr` ve výchozím nastavení protokolu
 kubectl logs <pod-name>
 ```
 
-Pokud je vaše místní hostská brána nasazená ve službě Azure Kubernetes, můžete povolit [Azure monitor pro kontejnery](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) shromažďovat `stdout` a `stderr` z vašich úloh a zobrazovat protokoly v Log Analytics. 
+Pokud je vaše místní hostská brána nasazená ve službě Azure Kubernetes, můžete povolit [Azure monitor pro kontejnery](../azure-monitor/insights/container-insights-overview.md) shromažďovat `stdout` a `stderr` z vašich úloh a zobrazovat protokoly v Log Analytics. 
 
 Samoobslužná brána také podporuje několik protokolů `localsyslog` , a to včetně, `rfc5424` a `journal` . Níže uvedená tabulka shrnuje všechny podporované možnosti. 
 
@@ -236,4 +236,3 @@ Tady je ukázka konfigurace místního protokolování:
 
 * Další informace o samoobslužné bráně najdete v tématu [Přehled služby Azure API Management v místním prostředí pro samoobslužné hostování](self-hosted-gateway-overview.md) .
 * Informace o [konfiguraci a uchování protokolů v cloudu](how-to-configure-local-metrics-logs.md)
-

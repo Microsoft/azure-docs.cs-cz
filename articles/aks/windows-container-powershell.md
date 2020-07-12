@@ -4,12 +4,12 @@ description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207937"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250868"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí PowerShellu
 
@@ -19,7 +19,7 @@ Služba Azure Kubernetes Service (AKS) je spravovaná služba Kubernetes, která
 
 V tomto článku se předpokládá základní znalost konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
@@ -47,7 +47,7 @@ Pro fondy uzlů Windows serveru platí následující další omezení:
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-[Skupina prostředků Azure](/azure/azure-resource-manager/resource-group-overview) je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí rutiny [New-AzResourceGroup][new-azresourcegroup] .
+[Skupina prostředků Azure](../azure-resource-manager/management/overview.md) je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí rutiny [New-AzResourceGroup][new-azresourcegroup] .
 
 Následující příklad vytvoří skupinu prostředků **myResourceGroup** v umístění **eastus**.
 
@@ -70,7 +70,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 
-Pomocí `ssh-keygen` nástroje příkazového řádku vygenerujte pár klíčů ssh. Další podrobnosti najdete v tématu [rychlé kroky: vytvoření a použití páru veřejných privátních klíčů ssh pro virtuální počítače se systémem Linux v Azure](/azure/virtual-machines/linux/mac-create-ssh-keys).
+Pomocí `ssh-keygen` nástroje příkazového řádku vygenerujte pár klíčů ssh. Další podrobnosti najdete v tématu [rychlé kroky: vytvoření a použití páru veřejných privátních klíčů ssh pro virtuální počítače se systémem Linux v Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
 
 Pokud chcete spustit cluster AKS, který podporuje fondy uzlů pro kontejnery Windows serveru, musí cluster používat zásady sítě, které používají modul plug-in [Azure CNI][azure-cni-about] (Advanced) Network. Podrobnější informace, které vám pomůžou naplánovat požadované rozsahy podsítí a požadavky na síť, najdete v tématu [Konfigurace sítě Azure CNI][use-advanced-networking]. Pomocí rutiny [New-AzAks][new-azaks] vytvořte cluster AKS s názvem **myAKSCluster**. Následující příklad vytvoří nezbytné síťové prostředky, pokud neexistují.
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
 author: palma21
-ms.openlocfilehash: 6aed6c84439e65646c15367cdad3bf13c5573256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831659"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251310"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -46,7 +46,7 @@ Pro cluster AKS se vyžadují následující pravidla sítě a plně kvalifikova
 
 Požadovaná síťová pravidla a závislosti IP adres:
 
-| Cílový koncový bod                                                             | Protocol (Protokol) | Port    | Použití  |
+| Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
 | **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
@@ -73,7 +73,7 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 
 Požadovaná síťová pravidla a závislosti IP adres:
 
-| Cílový koncový bod                                                             | Protocol (Protokol) | Port    | Použití  |
+| Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.Region:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
 | **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
@@ -102,7 +102,7 @@ Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla po
 
 Požadovaná síťová pravidla a závislosti IP adres:
 
-| Cílový koncový bod                                                             | Protocol (Protokol) | Port    | Použití  |
+| Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | **`*:1194`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:1194`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:1194`** <br/> *Ani* <br/> **`APIServerIP:1194`** `(only known after cluster creation)`  | UDP           | 1194      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
 | **`*:9000`** <br/> *Ani* <br/> [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureCloud.<Region>:9000`** <br/> *Ani* <br/> [Oblastní CIDRs](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) - **`RegionCIDRs:9000`** <br/> *Ani* <br/> **`APIServerIP:9000`** `(only known after cluster creation)`  | TCP           | 9000      | Pro Tunelově zabezpečenou komunikaci mezi uzly a rovinou ovládacího prvku. |
@@ -168,7 +168,7 @@ Existují dvě možnosti, jak zajistit přístup k Azure Monitor kontejnerů, m�
 
 Vyžaduje se následující plně kvalifikovaný název domény nebo pravidla použití:
 
-| Cílový koncový bod                                                             | Protocol (Protokol) | Port    | Použití  |
+| Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureMonitor:443`**  | TCP           | 443      | Tento koncový bod slouží k posílání dat metrik a protokolů pro Azure Monitor a Log Analytics. |
 
@@ -189,7 +189,7 @@ Aktualizujte bránu firewall nebo konfiguraci zabezpečení tak, aby povolovaly 
 
 #### <a name="required-network-rules"></a>Požadovaná síťová pravidla
 
-| Cílový koncový bod                                                             | Protocol (Protokol) | Port    | Použití  |
+| Cílový koncový bod                                                             | Protokol | Port    | Použití  |
 |----------------------------------------------------------------------------------|----------|---------|------|
 | [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) - **`AzureDevSpaces`**  | TCP           | 443      | Tento koncový bod slouží k posílání dat metrik a protokolů pro Azure Monitor a Log Analytics. |
 
@@ -239,7 +239,7 @@ Níže je uvedená ukázková architektura nasazení:
   * Požadavky z uzlů agentů AKS se řídí UDR, který byl umístěn v podsíti, do které byl nasazen cluster AKS.
   * VyAzure Firewall výstup z virtuální sítě z front-endu veřejné IP adresy
   * Přístup k veřejným internetům nebo jiným službám Azure, ke kterým se dostanete, do a z IP adresy front-endu brány firewall
-  * Volitelně je přístup k rovině ovládacího prvku AKS chráněn pomocí [rozsahů IP adres autorizovaných serverem API](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), které zahrnují veřejnou IP adresu front-endu brány firewall.
+  * Volitelně je přístup k rovině ovládacího prvku AKS chráněn pomocí [rozsahů IP adres autorizovaných serverem API](./api-server-authorized-ip-ranges.md), které zahrnují veřejnou IP adresu front-endu brány firewall.
 * Interní provoz
   * Volitelně můžete místo toho nebo kromě [veřejných Load Balancer](load-balancer-standard.md) použít [interní Load Balancer](internal-lb.md) pro interní provoz, který byste měli izolovat i v vlastní podsíti.
 
@@ -353,7 +353,7 @@ FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurati
 ```
 
 > [!NOTE]
-> Pokud používáte zabezpečený přístup k serveru rozhraní AKS API s [povolenými rozsahy IP adres](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), musíte přidat veřejnou IP adresu brány firewall do povoleného rozsahu IP adres.
+> Pokud používáte zabezpečený přístup k serveru rozhraní AKS API s [povolenými rozsahy IP adres](./api-server-authorized-ip-ranges.md), musíte přidat veřejnou IP adresu brány firewall do povoleného rozsahu IP adres.
 
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Vytvoření UDR s segmentem směrování na Azure Firewall
 
@@ -389,7 +389,7 @@ az network firewall network-rule create -g $RG -f $FWNAME --collection-name 'aks
 az network firewall application-rule create -g $RG -f $FWNAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ```
 
-Další informace o službě Azure Firewall najdete v [dokumentaci k Azure firewall](https://docs.microsoft.com/azure/firewall/overview) .
+Další informace o službě Azure Firewall najdete v [dokumentaci k Azure firewall](../firewall/overview.md) .
 
 ### <a name="associate-the-route-table-to-aks"></a>Přidružení směrovací tabulky k AKS
 
@@ -722,7 +722,7 @@ kubectl apply -f example.yaml
 ### <a name="add-a-dnat-rule-to-azure-firewall"></a>Přidat pravidlo DNAT do Azure Firewall
 
 > [!IMPORTANT]
-> Když použijete Azure Firewall k omezení odchozího provozu a vytvoření trasy definované uživatelem (UDR) k vynucení veškerého odchozího provozu, ujistěte se, že jste v bráně firewall vytvořili příslušné pravidlo DNAT pro správné povolení provozu příchozího přenosu dat. Použití Azure Firewall s UDR v důsledku asymetrického směrování narušuje nastavení příchozího přenosu dat. (K tomuto problému dochází, pokud má podsíť AKS výchozí trasu, která přechází na soukromou IP adresu brány firewall, ale používáte veřejný Nástroj pro vyrovnávání zatížení – příchozí nebo Kubernetes služba typu: Vyrovnávání zatížení sítě). V tomto případě se příchozí provoz nástroje pro vyrovnávání zatížení přijímá prostřednictvím veřejné IP adresy, ale návratová cesta prochází přes privátní IP adresu brány firewall. Vzhledem k tomu, že brána firewall je stavová, dojde k vrácení vráceného paketu, protože brána firewall neví o zavedené relaci. Informace o tom, jak integrovat Azure Firewall s vaším nástrojem pro vyrovnávání zatížení pro příchozí přenosy nebo služby, najdete v tématu věnovaném [integraci Azure firewall s Azure Standard Load Balancer](https://docs.microsoft.com/azure/firewall/integrate-lb).
+> Když použijete Azure Firewall k omezení odchozího provozu a vytvoření trasy definované uživatelem (UDR) k vynucení veškerého odchozího provozu, ujistěte se, že jste v bráně firewall vytvořili příslušné pravidlo DNAT pro správné povolení provozu příchozího přenosu dat. Použití Azure Firewall s UDR v důsledku asymetrického směrování narušuje nastavení příchozího přenosu dat. (K tomuto problému dochází, pokud má podsíť AKS výchozí trasu, která přechází na soukromou IP adresu brány firewall, ale používáte veřejný Nástroj pro vyrovnávání zatížení – příchozí nebo Kubernetes služba typu: Vyrovnávání zatížení sítě). V tomto případě se příchozí provoz nástroje pro vyrovnávání zatížení přijímá prostřednictvím veřejné IP adresy, ale návratová cesta prochází přes privátní IP adresu brány firewall. Vzhledem k tomu, že brána firewall je stavová, dojde k vrácení vráceného paketu, protože brána firewall neví o zavedené relaci. Informace o tom, jak integrovat Azure Firewall s vaším nástrojem pro vyrovnávání zatížení pro příchozí přenosy nebo služby, najdete v tématu věnovaném [integraci Azure firewall s Azure Standard Load Balancer](../firewall/integrate-lb.md).
 
 
 Aby bylo možné konfigurovat příchozí připojení, musí být do Azure Firewall zapsáno pravidlo DNAT. Pro otestování připojení ke clusteru je definováno pravidlo pro veřejnou IP adresu front-endu firewall pro směrování do interní IP adresy vystavené interní službou.

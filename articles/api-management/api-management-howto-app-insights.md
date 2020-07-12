@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9df3393a0554d2e65b3918c6760885f89e11ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259132"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254738"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Postup při integraci služby Azure API Management s Azure Application Insights
 
 Azure API Management umožňuje snadnou integraci se službou Azure Application Insights – rozšiřitelná služba pro webové vývojáře vytvářející a spravované aplikace na různých platformách. Tato příručka vás provede jednotlivými kroky této integrace a popisuje strategie pro snížení dopadu na výkon vaší instance služby API Management.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete postupovat podle tohoto průvodce, musíte mít instanci služby Azure API Management. Pokud ho nemáte, dokončete nejprve [kurz](get-started-create-service-instance.md) .
 
@@ -33,24 +34,24 @@ Než budete moct použít Azure Application Insights, musíte nejdřív vytvoři
 
 1. Otevřete **Azure Portal** a přejděte do **Application Insights**.  
     ![Vytvoření App Insights](media/api-management-howto-app-insights/apim-app-insights-instance-1.png)  
-2. Klikněte na tlačítko **+ Přidat**.  
+2. Klikněte na **+ Přidat**.  
     ![Vytvoření App Insights](media/api-management-howto-app-insights/apim-app-insights-instance-2.png)  
 3. Vyplňte formulář. Jako **Typ aplikace**vyberte **Obecné** .
-4. Klikněte na **Vytvořit**.
+4. Klikněte na **Create** (Vytvořit).
 
 ## <a name="create-a-connection-between-azure-application-insights-and-azure-api-management-service-instance"></a>Vytvoření připojení mezi službou Azure Application Insights a instancí služby Azure API Management
 
 1. V **Azure Portal**přejděte do své **instance služby Azure API Management** .
 2. V nabídce vlevo vyberte **Application Insights** .
-3. Klikněte na tlačítko **+ Přidat**.  
+3. Klikněte na **+ Přidat**.  
     ![Protokolovací nástroj App Insights](media/api-management-howto-app-insights/apim-app-insights-logger-1.png)  
 4. Vyberte dříve vytvořenou instanci **Application Insights** a zadejte krátký popis.
-5. Klikněte na **Vytvořit**.
+5. Klikněte na **Create** (Vytvořit).
 6. Právě jste vytvořili protokolovací nástroj pro Azure Application Insights s klíčem instrumentace. Měl by se teď zobrazit v seznamu.  
     ![Protokolovací nástroj App Insights](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> Za scénou je ve vaší instanci API Management vytvořená entita [protokolovacího](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) nástroje obsahující klíč instrumentace instance Application Insights.
+> Za scénou je ve vaší instanci API Management vytvořená entita [protokolovacího](/rest/api/apimanagement/2019-12-01/logger/createorupdate) nástroje obsahující klíč instrumentace instance Application Insights.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Povolení protokolování Application Insights pro vaše rozhraní API
 
@@ -63,15 +64,15 @@ Než budete moct použít Azure Application Insights, musíte nejdřív vytvoři
 6. Zaškrtněte políčko **Povolit** .
 7. V rozevíracím seznamu **cíl** vyberte připojeného protokolovacího nástroje.
 8. Zadejte **100** jako **vzorkování (%)** a zaškrtněte políčko **vždy zaznamenávat chyby** .
-9. Klikněte na **Uložit**.
+9. Klikněte na **Save** (Uložit).
 
 > [!WARNING]
 > Přepsání výchozí hodnoty **0** v **prvních bajtech pole body** může výrazně snížit výkon vašich rozhraní API.
 
 > [!NOTE]
-> Za scénou je na úrovni rozhraní API vytvořená [diagnostická](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) entita s názvem ApplicationInsights.
+> Za scénou je na úrovni rozhraní API vytvořená [diagnostická](/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) entita s názvem ApplicationInsights.
 
-| Název nastavení                        | Typ hodnoty                        | Description                                                                                                                                                                                                                                                                                                                                      |
+| Název nastavení                        | Typ hodnoty                        | Popis                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Povolit                              | Boolean                           | Určuje, jestli je povolené protokolování tohoto rozhraní API.                                                                                                                                                                                                                                                                                                |
 | Cíl                         | Protokolovací nástroj Azure Application Insights | Určuje protokolovací nástroj Azure Application Insights, který se má použít.                                                                                                                                                                                                                                                                                           |
@@ -125,5 +126,5 @@ Přeskočení protokolování hlaviček a textu požadavků a odpovědí bude m�
 
 ## <a name="next-steps"></a>Další kroky
 
-+ Přečtěte si další informace o [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/).
++ Přečtěte si další informace o [Azure Application Insights](/azure/application-insights/).
 + Zvažte [protokolování pomocí Event Hubs Azure](api-management-howto-log-event-hubs.md).

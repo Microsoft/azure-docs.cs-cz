@@ -4,11 +4,12 @@ description: Seznamte se se základními komponentami clusterů a úloh Kubernet
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336632"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251854"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -37,7 +38,7 @@ Cluster Kubernetes je rozdělen do dvou součástí:
 
 ## <a name="control-plane"></a>Řídicí rovina
 
-Při vytváření clusteru AKS se automaticky vytvoří a nakonfiguruje rovina ovládacího prvku. Tato Řídicí rovina je k dispozici jako spravovaný prostředek Azure, který je z uživatele abstraktní. Pro plochu ovládacího prvku se neúčtují žádné náklady, jenom uzly, které jsou součástí clusteru AKS.
+Při vytváření clusteru AKS se automaticky vytvoří a nakonfiguruje rovina ovládacího prvku. Tato Řídicí rovina je k dispozici jako spravovaný prostředek Azure, který je z uživatele abstraktní. Pro plochu ovládacího prvku se neúčtují žádné náklady, jenom uzly, které jsou součástí clusteru AKS. Rovina ovládacího prvku a její prostředky se nachází pouze v oblasti, ve které jste cluster vytvořili.
 
 Rovina ovládacího prvku zahrnuje následující základní komponenty Kubernetes:
 
@@ -48,7 +49,7 @@ Rovina ovládacího prvku zahrnuje následující základní komponenty Kubernet
 
 AKS poskytuje rovinu ovládacího prvku s jedním klientem a vyhrazeným serverem API, plánovačem atd. Definujete počet a velikost uzlů a platforma Azure nakonfiguruje zabezpečenou komunikaci mezi řídicí rovinou a uzly. Interakce s rovinou ovládacího prvku probíhá prostřednictvím rozhraní API Kubernetes, jako je `kubectl` nebo řídicí panel Kubernetes.
 
-Tato spravovaná rovina řízení znamená, že nemusíte konfigurovat komponenty jako vysoce dostupné úložiště *etcd* , ale také to znamená, že nemůžete získat přístup k rovině ovládacího prvku přímo. Upgrady na Kubernetes se orchestrují prostřednictvím Azure CLI nebo Azure Portal, který upgraduje rovinu ovládacího prvku a pak uzly. Pokud chcete řešit možné problémy, můžete zkontrolovat protokoly roviny ovládacího prvku prostřednictvím protokolů Azure Monitor.
+Tato spravovaná rovina řízení znamená, že nemusíte konfigurovat komponenty jako vysoce dostupné úložiště *etcd* , ale také to znamená, že nemůžete přímo přistupovat k rovině ovládacího prvku. Upgrady na Kubernetes se orchestrují prostřednictvím Azure CLI nebo Azure Portal, který upgraduje rovinu ovládacího prvku a pak uzly. Pokud chcete řešit možné problémy, můžete zkontrolovat protokoly roviny ovládacího prvku prostřednictvím protokolů Azure Monitor.
 
 Pokud potřebujete řídicí plochu nakonfigurovat určitým způsobem nebo potřebujete k ní přímý přístup, můžete nasadit vlastní cluster Kubernetes pomocí [AKS-Engine][aks-engine].
 
@@ -72,9 +73,9 @@ Pokud potřebujete použít jiný hostitelský operační systém, modul runtime
 
 ### <a name="resource-reservations"></a>Rezervace prostředků
 
-Prostředky uzlů využívají AKS k zajištění funkce uzlu jako součásti clusteru. To může při použití v AKS vytvořit nesoulad mezi celkovými prostředky vašeho uzlu a ALLOCATABLE prostředky. To je důležité poznamenat si, že při nastavování požadavků a omezení pro uživatele nasazené lusky.
+Prostředky uzlů využívají AKS k zajištění funkce uzlu jako součásti clusteru. Toto využití může vytvořit nesoulad mezi celkovými prostředky vašeho uzlu a prostředky ALLOCATABLE při použití v AKS. Tyto informace jsou důležité při nastavování požadavků a omezení pro uživatele nasazené lusky.
 
-Pokud chcete najít allocatableé prostředky uzlu, proveďte následující:
+Chcete-li najít prostředky ALLOCATABLE uzlu, spusťte příkaz:
 ```kubectl
 kubectl describe node [NODE_NAME]
 
@@ -93,7 +94,7 @@ Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány n
 
 - **Paměť,** kterou využívá AKS, zahrnuje součet dvou hodnot.
 
-1. Démon kubelet je nainstalován na všech uzlech agenta Kubernetes za účelem správy vytváření a ukončování kontejneru. Ve výchozím nastavení má démon následující pravidlo vyřazení: *paměť. k dispozici<750Mi*, což znamená, že uzel musí vždy mít alespoň 750 mi ALLOCATABLE.  Když je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jednu z běžících lusků, aby uvolnil paměť na hostitelském počítači a chránil ji. Tato akce je reaktivní, jakmile se velikost dostupné paměti sníží nad prahovou hodnotu 750Mi.
+1. Démon kubelet je nainstalován na všech uzlech agenta Kubernetes za účelem správy vytváření a ukončování kontejneru. Ve výchozím nastavení má démon následující pravidlo vyřazení: *paměť. k dispozici<750Mi*, což znamená, že uzel musí vždy mít alespoň 750 mi ALLOCATABLE.  Když je hostitel pod touto prahovou hodnotou dostupné paměti, kubelet ukončí jednu z běžících lusků, aby uvolnil paměť na hostitelském počítači a chránil ji. Tato akce se aktivuje až po snížení dostupné paměti za prahovou hodnotu 750Mi.
 
 2. Druhá hodnota je regresivní míra rezervací paměti pro správnou funkci démona kubelet (Kube – rezervováno).
     - 25% prvních 4 GB paměti
@@ -102,7 +103,7 @@ Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány n
     - 6% z dalších 112 GB paměti (až 128 GB)
     - 2% libovolné paměti nad 128 GB
 
-Výše uvedená pravidla pro paměť a přidělení procesoru se používají k udržení dobrých uzlů agentů, včetně některých z nich hostujících prostředí, které jsou pro stav clusteru zásadní. Tato pravidla přidělení také způsobí, že uzel hlásí méně ALLOCATABLE paměť a procesor, než by by neměl být součástí clusteru Kubernetes. Výše uvedené rezervace prostředků se nedají změnit.
+Výše uvedená pravidla pro paměť a přidělení procesoru se používají k udržení dobrých uzlů agentů, včetně některých z nich hostujících prostředí, které jsou pro stav clusteru zásadní. Tato pravidla přidělení také způsobí, že uzel hlásí méně ALLOCATABLE paměť a procesor, než by normálně neměl být součástí clusteru Kubernetes. Výše uvedené rezervace prostředků se nedají změnit.
 
 Například pokud uzel nabízí 7 GB, bude hlásit 34% paměti, která není ALLOCATABLE, včetně prahové hodnoty pro pevné vyřazení 750Mi.
 
@@ -152,7 +153,7 @@ Když vytvoříte pod, můžete definovat *požadavky* na prostředky pro vyžá
 
 Další informace najdete v tématu životní cyklus [Kubernetes lusky][kubernetes-pods] a [Kubernetes pod][kubernetes-pod-lifecycle].
 
-Pod je logický prostředek, ale kontejnery jsou spuštěny úlohami aplikace. Lusky jsou obvykle dočasné a nepoužívané prostředky a samostatně naplánované lusky neposkytují některé z funkcí vysoké dostupnosti a redundance Kubernetes. Místo toho jsou lusky obvykle nasazeny a spravovány Kubernetes *řadiči*, jako je například kontrolér nasazení.
+Pod je logický prostředek, ale kontejnery jsou spuštěny úlohami aplikace. Lusky jsou obvykle dočasné a nepoužívané prostředky a samostatně naplánované lusky neposkytují některé z funkcí vysoké dostupnosti a redundance Kubernetes. Místo toho jsou lusky nasazeny a spravovány Kubernetes *řadiči*, jako je například kontrolér nasazení.
 
 ## <a name="deployments-and-yaml-manifests"></a>Nasazení a manifesty YAML
 
@@ -162,9 +163,9 @@ Nasazení můžete aktualizovat, aby se změnila konfigurace lusků, použitého
 
 Většina bezstavových aplikací v AKS by měla místo plánování jednotlivých lusků používat model nasazení. Kubernetes může monitorovat stav a stav nasazení, aby se zajistilo, že se v clusteru spustí požadovaný počet replik. Když naplánujete pouze jednotlivé lusky, lusky se nerestartují, pokud dojde k potížím a nedojde k jejich přeplánování na funkčních uzlech, pokud jejich aktuální uzel narazí na problém.
 
-Pokud aplikace vyžaduje, aby byly kvora instancí vždy k dispozici pro rozhodování o správě, nechcete, aby proces aktualizace narušil tuto schopnost. *Rozpočty přerušení pod* mohou být použity k definování toho, kolik replik v nasazení lze v průběhu aktualizace nebo upgradu uzlu považovat za nefunkční. Například pokud máte ve svém nasazení *5* replik, můžete definovat přerušení v případě *4* , aby bylo možné současně odstranit nebo přeplánovat pouze jednu repliku. Stejně jako u omezení prostředků pod je osvědčeným postupem definování rozpočtů přerušení v aplikacích vyžadujících minimální počet replik, které mají být vždy k dispozici.
+Pokud aplikace vyžaduje, aby byly kvora instancí vždy k dispozici pro rozhodování o správě, nechcete, aby proces aktualizace narušil tuto schopnost. *Rozpočty přerušení pod* mohou být použity k definování toho, kolik replik v nasazení lze v průběhu aktualizace nebo upgradu uzlu považovat za nefunkční. Například pokud máte ve svém nasazení *pět (5)* replik, můžete definovat přerušení v případě *4* , aby bylo možné v jednom okamžiku odstranit nebo přeplánovat pouze jednu repliku. Stejně jako u omezení prostředků pod je osvědčeným postupem definování rozpočtů přerušení v aplikacích vyžadujících minimální počet replik, které mají být vždy k dispozici.
 
-Nasazení se obvykle vytváří a spravují pomocí `kubectl create` nebo `kubectl apply` . Nasazení vytvoříte tak, že definujete soubor manifestu ve formátu YAML (YAML Ain't Markup Language). Následující příklad vytvoří základní nasazení webového serveru NGINX. Nasazení určuje *3* repliky, které mají být vytvořeny, a port *80* bude otevřen na kontejneru. Pro procesor a paměť se definují taky požadavky na prostředky a omezení.
+Nasazení se obvykle vytváří a spravují pomocí `kubectl create` nebo `kubectl apply` . Nasazení vytvoříte tak, že definujete soubor manifestu ve formátu YAML (YAML Ain't Markup Language). Následující příklad vytvoří základní nasazení webového serveru NGINX. Nasazení určuje *tři (3)* repliky, které mají být vytvořeny, a vyžaduje, aby byl na kontejneru otevřen port *80* . Pro procesor a paměť se definují taky požadavky na prostředky a omezení.
 
 ```yaml
 apiVersion: apps/v1

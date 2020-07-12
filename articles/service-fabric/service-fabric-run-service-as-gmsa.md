@@ -6,11 +6,12 @@ ms.topic: how-to
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.custom: sfrev
-ms.openlocfilehash: 19343d370547cb5457f6bed70a8465187ff27102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dea63ef6a50597d9ad852cb9cdea4745532fed4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988392"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252908"
 ---
 # <a name="run-a-service-as-a-group-managed-service-account"></a>Spuštění služby jako skupinový účet spravované služby
 
@@ -40,7 +41,7 @@ Požadavky:
     Test-AdServiceAccount svc-Test$
     ```
 
-3. Nakonfigurujte objekt zabezpečení uživatele a nakonfigurujte `RunAsPolicy` ho tak, aby odkazoval na [uživatele](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#runas).
+3. Nakonfigurujte objekt zabezpečení uživatele a nakonfigurujte `RunAsPolicy` ho tak, aby odkazoval na [uživatele](./service-fabric-cluster-fabric-settings.md#runas).
     
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

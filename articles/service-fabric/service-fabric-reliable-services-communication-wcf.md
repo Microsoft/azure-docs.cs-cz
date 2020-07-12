@@ -5,11 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbcf552cee8a96636920f04472843b1fea5c845
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433867"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253231"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Komunikační zásobník založený na WCF pro Reliable Services
 Rozhraní Reliable Services Framework umožňuje autorům služeb zvolit komunikační zásobník, který chtějí používat pro své služby. Mohou připojit komunikační zásobník podle svého výběru prostřednictvím **ICommunicationListener** vráceného z metod [CreateServiceReplicaListeners nebo CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) . Rozhraní poskytuje implementaci komunikačního zásobníku na základě Windows Communication Foundation (WCF) pro autory služeb, kteří chtějí používat komunikaci založenou na technologii WCF.
@@ -115,6 +116,5 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 
 ## <a name="next-steps"></a>Další kroky
 * [Vzdálené volání procedur s Reliable Services vzdálené komunikace](service-fabric-reliable-services-communication-remoting.md)
-* [Webové rozhraní API s OWIN v Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Webové rozhraní API s OWIN v Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Zabezpečení komunikace pro Reliable Services](service-fabric-reliable-services-secure-communication-wcf.md)
-

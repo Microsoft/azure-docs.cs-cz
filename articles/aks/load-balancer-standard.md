@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c03c8b385fc287737853c3cabd2e25f365a84578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11f8442f188ea6ce7ee1de5a093362279da4594c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831518"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251159"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Použití veřejné Standard Load Balancer ve službě Azure Kubernetes (AKS)
 
@@ -297,7 +297,7 @@ spec:
 
 Níže je uveden seznam poznámek podporovaných pro služby Kubernetes Services s typem `LoadBalancer` . Tyto poznámky platí pouze pro **příchozí** toky:
 
-| Poznámka | Hodnota | Description
+| Poznámka | Hodnota | Popis
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` nebo `false`                     | Určete, zda má být Nástroj pro vyrovnávání zatížení interní. Pokud není nastavená, je výchozí nastavení veřejné.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Název podsítě                    | Určete podsíť, na kterou má být interní nástroj pro vyrovnávání zatížení vázán. Pokud není nastavená podsíť nakonfigurovaná v konfiguračním souboru cloudu, je nastavená jako výchozí.
@@ -393,10 +393,10 @@ Přečtěte si další informace o používání interního Load Balancer pro p�
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
-[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
+[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md
 [azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
-[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md

@@ -4,29 +4,32 @@ description: V tomto rychlém startu použijete šablonu Azure Resource Manager 
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969801"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252364"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření sdíleného dotazu pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Rychlý Start: vytvoření sdíleného dotazu pomocí šablony ARM
 
 Dotazy na grafy prostředků se dají uložit jako _soukromý dotaz_ nebo do _sdíleného dotazu_. Privátní dotaz je uložený v profilu portálu jednotlivců a není viditelný pro ostatní. Sdílený dotaz je objekt Správce prostředků, který se dá sdílet s ostatními prostřednictvím oprávnění a přístupu založeného na rolích. Sdílený dotaz nabízí běžné a konzistentní provádění zjišťování prostředků. Tento rychlý Start používá šablonu Azure Resource Manager (šablonu ARM) k vytvoření sdíleného dotazu.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Požadavky
+Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Nasazení šablony ARM pro vytvoření sdíleného dotazu do Azure" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
-## <a name="create-a-shared-query"></a>Vytvořit sdílený dotaz
+## <a name="review-the-template"></a>Kontrola šablony
 
 V tomto rychlém startu vytvoříte sdílený dotaz s názvem _počet virtuálních počítačů podle operačního systému_. Pokud chcete tento dotaz vyzkoušet v sadě SDK nebo na portálu pomocí Průzkumníka grafů prostředků, přečtěte si téma [Počet ukázek – počet virtuálních počítačů podle typu operačního systému](./samples/starter.md#count-os).
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/).
 
 :::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
 
@@ -34,7 +37,7 @@ Prostředek definovaný v šabloně je:
 
 - [Microsoft. ResourceGraph/– dotazy](/azure/templates/microsoft.resourcegraph/queries)
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 > [!NOTE]
 > Služba Azure Resource Graph je zadarmo. Další informace najdete v tématu [Přehled Azure Resource graphu](./overview.md).

@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5373cbf76b55b86e4851e1d7c6b53222871faa4c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75458974"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254329"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rychlý start: Nasazení aplikace Hello World do služby Service Fabric Mesh
 
@@ -47,7 +47,7 @@ Vytvořte aplikaci ve skupině prostředků pomocí příkazu `az mesh deploymen
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-Předchozí příkaz nasadí aplikaci pro Linux pomocí [šablony Linux. JSON](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Pokud chcete nasadit aplikaci pro Windows, použijte [šablonu Windows. JSON](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). Image kontejnerů Windows jsou větší než image kontejnerů Linuxu a jejich nasazení může trvat delší dobu.
+Předchozí příkaz nasadí aplikaci pro Linux pomocí [linux.jsv šabloně](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Pokud chcete nasadit aplikaci pro Windows, použijte [windows.jspro šablonu](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). Image kontejnerů Windows jsou větší než image kontejnerů Linuxu a jejich nasazení může trvat delší dobu.
 
 Tento příkaz vytvoří fragment kódu JSON, který je zobrazen níže. V ```outputs``` části výstupu JSON zkopírujte ```publicIPAddress``` vlastnost.
 
@@ -60,7 +60,7 @@ Tento příkaz vytvoří fragment kódu JSON, který je zobrazen níže. V ```ou
 }
 ```
 
-Tyto informace pocházejí z ```outputs``` části v šabloně ARM. Jak vidíte níže, Tato část se odkazuje na prostředek brány, aby se načetla veřejná IP adresa. 
+Tyto informace pocházejí z ```outputs``` části v ŠABLONĚ ARM. Jak vidíte níže, Tato část se odkazuje na prostředek brány, aby se načetla veřejná IP adresa. 
 
 ```json
   "outputs": {
@@ -110,4 +110,4 @@ Pokud chcete získat další informace o vytváření a nasazování aplikací S
 
 <!-- Links / Internal -->
 [az-group-delete]: /cli/azure/group
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest

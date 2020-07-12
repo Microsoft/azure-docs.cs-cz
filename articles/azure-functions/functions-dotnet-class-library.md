@@ -1,13 +1,14 @@
 ---
 title: Referenční informace pro vývojáře v jazyce C# Azure Functions
 description: Naučte se vyvíjet Azure Functions pomocí jazyka C#.
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697183"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254363"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční informace pro vývojáře v jazyce C# Azure Functions
 
@@ -235,7 +236,7 @@ public static class ICollectorExample
 }
 ```
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Chcete-li protokolovat výstup do protokolů streamování v jazyce C#, zahrňte argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme, abyste ho pojmenovat `log` jako v následujícím příkladu:  
 

@@ -5,13 +5,14 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551807"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253673"
 ---
-# <a name="infrastructure-as-code"></a>Infrastruktura jako kód
+# <a name="infrastructure-as-code"></a>Infrastruktura v podobě kódu
 
 V produkčním scénáři Vytvořte clustery Azure Service Fabric pomocí šablon Správce prostředků. Šablony Správce prostředků poskytují větší kontrolu nad vlastnostmi prostředku a zajišťují, že máte konzistentní model prostředků.
 
@@ -43,7 +44,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Prostředky Azure Service Fabric
 
-Do Service Fabric clusteru můžete pomocí Azure Resource Manager nasadit aplikace a služby. Podrobnosti najdete v tématu [Správa aplikací a služeb jako Azure Resource Manager prostředků](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) . Níže jsou uvedené osvědčené postupy Service Fabric prostředků specifických pro aplikaci, které se mají zahrnout do prostředků šablon Správce prostředků.
+Do Service Fabric clusteru můžete pomocí Azure Resource Manager nasadit aplikace a služby. Podrobnosti najdete v tématu [Správa aplikací a služeb jako Azure Resource Manager prostředků](./service-fabric-application-arm-resource.md) . Níže jsou uvedené osvědčené postupy Service Fabric prostředků specifických pro aplikaci, které se mají zahrnout do prostředků šablon Správce prostředků.
 
 ```json
 {
@@ -72,7 +73,7 @@ Do Service Fabric clusteru můžete pomocí Azure Resource Manager nasadit aplik
 }
 ```
 
-Chcete-li nasadit aplikaci pomocí Azure Resource Manager, musíte nejprve [vytvořit](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg) balíček aplikace Service Fabric sfpkg. Následující skript Pythonu je příkladem vytvoření sfpkg:
+Chcete-li nasadit aplikaci pomocí Azure Resource Manager, musíte nejprve [vytvořit](./service-fabric-package-apps.md#create-an-sfpkg) balíček aplikace Service Fabric sfpkg. Následující skript Pythonu je příkladem vytvoření sfpkg:
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
@@ -90,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Konfigurace automatického upgradu operačního systému virtuálního počítače Azure 
-Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporučuje se použít [Automatický upgrade operačního systému](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) pro Azure Service Fabric clustery pro správu oprav hostitele; Aplikace orchestrace opravy je alternativní řešení, které je určené pro hostování mimo Azure, i když je v Azure možné použít POA, se základním důvodem pro hostování rodu POA v Azure je běžným důvodem pro upřednostnění automatického upgradu operačního systému virtuálního počítače přes POA. Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků, které umožňují automatický upgrade operačního systému:
+Upgrade virtuálních počítačů je operace iniciovaná uživatelem. doporučuje se použít [Automatický upgrade operačního systému](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) pro Azure Service Fabric clustery pro správu oprav hostitele; Aplikace orchestrace opravy je alternativní řešení, které je určené pro hostování mimo Azure, i když je v Azure možné použít POA, se základním důvodem pro hostování rodu POA v Azure je běžným důvodem pro upřednostnění automatického upgradu operačního systému virtuálního počítače přes POA. Níže jsou uvedeny vlastnosti šablony COMPUTE Virtual Machine Scale Správce prostředků, které umožňují automatický upgrade operačního systému:
 
 ```json
 "upgradePolicy": {

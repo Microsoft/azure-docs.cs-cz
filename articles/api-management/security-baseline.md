@@ -7,23 +7,24 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ceaa44429d105c2a6a1d0883ab29ed11b63ad497
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5640a42c0fdcb0bd958011db28c19854b16a547
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83736071"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252755"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Základní hodnoty zabezpečení Azure pro API Management
 
 Základní plán zabezpečení Azure pro API Management obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](../security/benchmarks/overview.md), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: Chraňte prostředky pomocí skupin zabezpečení sítě nebo Azure Firewall v Virtual Network
 
@@ -33,11 +34,11 @@ Další informace najdete v tématu [Přehled standardních hodnot zabezpečení
 
 Příchozí a odchozí provoz do podsítě, ve které je nasazená API Management, se dá řídit pomocí skupiny zabezpečení sítě.
 
-* [Použití služby Azure API Management s virtuálními sítěmi](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [Použití služby Azure API Management s virtuálními sítěmi](./api-management-using-with-vnet.md)
 
-* [Použití služby Azure API Management s interní virtuální sítí](https://docs.microsoft.com/azure/api-management/api-management-using-with-internal-vnet)
+* [Použití služby Azure API Management s interní virtuální sítí](./api-management-using-with-internal-vnet.md)
 
-* [Integrace API Management v interní virtuální síti s Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Integrace API Management v interní virtuální síti s Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -49,11 +50,11 @@ Příchozí a odchozí provoz do podsítě, ve které je nasazená API Managemen
 
 Upozornění: při konfiguraci NSG v podsíti API Management existuje sada portů, které je potřeba otevřít. Pokud některý z těchto portů není dostupný, API Management nemusí správně fungovat a může být nepřístupný.
 
-* [Principy konfigurací NSG pro Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [Principy konfigurací NSG pro Azure API Management](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Postup povolení a použití Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -70,9 +71,9 @@ Kombinování API Management zřízené v interní virtuální síti s Applicati
 
 Poznámka: Tato funkce je dostupná na úrovních API Management úrovně Premium a Developer.
 
-* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Pochopení Application Gateway Azure](https://docs.microsoft.com/azure/application-gateway/)
+* [Pochopení Application Gateway Azure](../application-gateway/index.yml)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -93,13 +94,13 @@ Povolením Azure DDoS Protection Standard ve virtuální síti přidružené k v
 
 K odepření komunikace se známými škodlivými nebo nepoužívanými internetovými IP adresami použijte Azure Security Center integrovanou analýzu hrozeb.
 
-* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Pochopení Application Gateway Azure](https://docs.microsoft.com/azure/application-gateway/)
+* [Pochopení Application Gateway Azure](../application-gateway/index.yml)
 
-* [Postup konfigurace Azure DDoS Protection úrovně Standard](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [Postup konfigurace Azure DDoS Protection úrovně Standard](../virtual-network/manage-ddos-protection.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/threat-protection.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -111,11 +112,11 @@ K odepření komunikace se známými škodlivými nebo nepoužívanými internet
 
 Upozornění: při konfiguraci NSG v podsíti API Management existuje sada portů, které je potřeba otevřít. Pokud některý z těchto portů není dostupný, API Management nemusí správně fungovat a může být nepřístupný.
 
-* [Principy konfigurací NSG pro Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [Principy konfigurací NSG pro Azure API Management](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Postup povolení a použití Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -134,9 +135,9 @@ Kombinování API Management zřízené v interní virtuální síti s Applicati
 
 Poznámka: Tato funkce je dostupná na úrovních API Management úrovně Premium a Developer.
 
-* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Vysvětlení Azure Application Gateway WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Vysvětlení Azure Application Gateway WAF](../web-application-firewall/ag/ag-overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -155,13 +156,13 @@ Kombinování API Management zřízené v interní virtuální síti s Applicati
 
 Poznámka: Tato funkce je dostupná na úrovních API Management úrovně Premium a Developer.
 
-* [Vystavení privátních rozhraní API externím příjemcům](https://docs.microsoft.com/azure/architecture/example-scenario/apps/publish-internal-apis-externally)
+* [Vystavení privátních rozhraní API externím příjemcům](/azure/architecture/example-scenario/apps/publish-internal-apis-externally)
 
-* [Jak používat API Management v rámci virtuální sítě](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [Jak používat API Management v rámci virtuální sítě](./api-management-using-with-vnet.md)
 
-* [Firewall webových aplikací Azure v Azure Application Gateway](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview)
+* [Firewall webových aplikací Azure v Azure Application Gateway](../web-application-firewall/ag/ag-overview.md)
 
-* [Pochopení Application Gateway Azure](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Pochopení Application Gateway Azure](../application-gateway/overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -173,9 +174,9 @@ Poznámka: Tato funkce je dostupná na úrovních API Management úrovně Premiu
 
 Upozornění: při konfiguraci NSG v podsíti API Management existuje sada portů, které je potřeba otevřít. Pokud některý z těchto portů není dostupný, API Management nemusí správně fungovat a může být nepřístupný.
 
-* [Porozumění a používání značek služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Porozumění a používání značek služeb](../virtual-network/service-tags-overview.md)
 
-* [Porty vyžadované pro API Management](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+* [Porty vyžadované pro API Management](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -188,9 +189,9 @@ Upozornění: při konfiguraci NSG v podsíti API Management existuje sada port�
 
 Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role (RBAC) a zásady v jediné definici podrobného plánu. V rámci správy verzí můžete snadno použít podrobný plán na nová předplatná, prostředí a vyladit řízení a správu.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Vytvoření Azure Blueprint](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -200,11 +201,11 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 **Pokyny**: používejte značky pro skupiny zabezpečení sítě (skupin zabezpečení sítě) a další zdroje informací týkající se zabezpečení sítě a toku provozu. Pro jednotlivá pravidla NSG můžete použít pole Popis k zadání obchodních potřeb a/nebo doby trvání (atd.) pro všechna pravidla, která umožňují provoz do/ze sítě.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Vytvoření Virtual Network](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Vytvoření Virtual Network](../virtual-network/quick-create-portal.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -214,9 +215,9 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků přidružených k nasazením Azure API Management. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -224,7 +225,7 @@ Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tí
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
@@ -242,15 +243,15 @@ Kromě Azure Monitor může být služba Azure API Management integrovaná s jed
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo incidentu zabezpečení a správu událostí třetích stran (SIEM).
 
-* [Postup konfigurace nastavení diagnostiky](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-in-azure-portal)
+* [Postup konfigurace nastavení diagnostiky](../azure-monitor/platform/diagnostic-settings.md#create-in-azure-portal)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 * [Jak začít s Azure Monitor a integrací SIEM třetích stran](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-* [Jak vytvořit vlastní kanál pro protokolování a analýzu](https://docs.microsoft.com/azure/api-management/api-management-howto-log-event-hubs)
+* [Jak vytvořit vlastní kanál pro protokolování a analýzu](./api-management-howto-log-event-hubs.md)
 
-* [Postup při integraci s Azure Application Insights](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [Postup při integraci s Azure Application Insights](./api-management-howto-app-insights.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -262,9 +263,9 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo incidentu za
 
 V případě protokolování auditu roviny dat poskytují diagnostické protokoly podrobné informace o operacích a chybách, které jsou důležité pro auditování, a také pro účely řešení potíží. Diagnostické protokoly se liší od protokolů aktivit. Protokoly aktivit poskytují přehled o operacích provedených ve vašich prostředcích Azure. Diagnostické protokoly poskytují přehled o operacích, které provedly vaše prostředky.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
 
-* [Postup povolení nastavení diagnostiky pro Azure API Management](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)
+* [Postup povolení nastavení diagnostiky pro Azure API Management](./api-management-howto-use-azure-monitor.md#activity-logs)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -282,9 +283,9 @@ V případě protokolování auditu roviny dat poskytují diagnostické protokol
 
 **Doprovodné**materiály: v rámci Azure monitor nastavte dobu uchování pracovního prostoru Log Analytics podle předpisů pro dodržování předpisů vaší organizace. Používejte účty Azure Storage pro dlouhodobé a archivační úložiště.
 
-* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů pro Log Analytics pracovní prostory](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
-* [Postup archivace protokolů na účet Azure Storage](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-storage)
+* [Postup archivace protokolů na účet Azure Storage](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -296,13 +297,13 @@ V případě protokolování auditu roviny dat poskytují diagnostické protokol
 
 Volitelně můžete integrovat API Management s Azure Application Insights a použít ji jako primární nebo sekundární nástroj pro sledování, trasování, generování sestav a upozorňování.
 
-* [Jak monitorovat a prohlížet protokoly pro Azure API Management](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor)
+* [Jak monitorovat a prohlížet protokoly pro Azure API Management](./api-management-howto-use-azure-monitor.md)
 
-* [Jak provádět vlastní dotazy v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries)
+* [Jak provádět vlastní dotazy v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
-* [Principy Log Analyticsho pracovního prostoru](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)
+* [Principy Log Analyticsho pracovního prostoru](../azure-monitor/log-query/get-started-portal.md)
 
-* [Postup při integraci s Azure Application Insights](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [Postup při integraci s Azure Application Insights](./api-management-howto-app-insights.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -318,17 +319,17 @@ Volitelně můžete integrovat API Management s Azure Application Insights a pou
 
 Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
 
-* [Postup povolení nastavení diagnostiky pro Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)
+* [Postup povolení nastavení diagnostiky pro Azure API Management](./api-management-howto-use-azure-monitor.md#activity-logs)
 
-* [Jak nakonfigurovat pravidlo výstrahy pro neautorizovaný požadavek](https://docs.microsoft.com/Azure/api-management/api-management-howto-use-azure-monitor#set-up-an-alert-rule-for-unauthorized-request)
+* [Jak nakonfigurovat pravidlo výstrahy pro neautorizovaný požadavek](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule-for-unauthorized-request)
 
-* [Jak zobrazit metriky kapacity instance služby Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-capacity)
+* [Jak zobrazit metriky kapacity instance služby Azure API Management](./api-management-capacity.md)
 
-* [Postup při integraci s Azure Application Insights](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)
+* [Postup při integraci s Azure Application Insights](./api-management-howto-app-insights.md)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -360,7 +361,7 @@ Volitelně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -372,15 +373,15 @@ Kromě toho API Management obsahuje integrovanou skupinu Administrators v uživa
 
 Pro správu a údržbu účtů pro správu použijte doporučení od Azure Security Center.
 
-* [Použití řízení přístupu na základě role ve službě API Management](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Použití řízení přístupu na základě role ve službě API Management](./api-management-role-based-access-control.md)
 
-* [Jak získat seznam uživatelů v rámci instance služby Azure API Management](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [Jak získat seznam uživatelů v rámci instance služby Azure API Management](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
 
-* [Jak získat seznam uživatelů přiřazených k roli adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
+* [Jak získat seznam uživatelů přiřazených k roli adresáře v Azure AD pomocí PowerShellu](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
 
-* [Jak získat definici role adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
+* [Jak získat definici role adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
 
-* [Pochopení doporučení identity a přístupu z Azure Security Center](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-identity)
+* [Pochopení doporučení identity a přístupu z Azure Security Center](../security-center/recommendations-reference.md#recs-identity)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -392,7 +393,7 @@ Pro správu a údržbu účtů pro správu použijte doporučení od Azure Secur
 
 Předplatná Azure API Management, která jsou jedním ze způsobů zabezpečení přístupu k rozhraním API, ale přidávají dvojici generovaných klíčů předplatného. Zákazníci můžou tyto klíče předplatného kdykoli znovu vygenerovat.
 
-* [Principy předplatných Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-subscriptions)
+* [Principy předplatných Azure API Management](./api-management-subscriptions.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -407,9 +408,9 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 - Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 
-* [Použití Azure Security Center k monitorování identity a přístupu (Preview)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Použití Azure Security Center k monitorování identity a přístupu (Preview)](../security-center/security-center-identity-access.md)
 
-* [Jak používat Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Jak používat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -419,11 +420,11 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 
 **Pokyny**: Azure API Management je možné nakonfigurovat tak, aby využil Azure Active Directory jako zprostředkovatele identity pro ověřování uživatelů na portálu pro vývojáře, aby bylo možné využívat možnosti jednotného přihlašování nabízené službou Azure AD. Po nakonfigurování se noví uživatelé portálu pro vývojáře můžou rozhodnout, že budou postupovat předem při prvním ověření prostřednictvím služby Azure AD a pak na portálu po ověření dokončí proces registrace.
 
-* [Autorizace vývojářských účtů pomocí Azure Active Directory ve službě Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [Autorizace vývojářských účtů pomocí Azure Active Directory ve službě Azure API Management](./api-management-howto-aad.md)
 
 Alternativně lze proces přihlášení nebo přihlášení dále přizpůsobit prostřednictvím delegování. Delegování vám umožňuje používat stávající web ke zpracování přihlašování a předplatného pro vývojáře k produktům, a to na rozdíl od používání integrované funkce portálu pro vývojáře. Umožňuje vašemu webu vlastnit uživatelská data a provádět ověřování těchto kroků vlastním způsobem.
 
-* [Delegování registrace uživatelů a předplatného produktu](https://docs.microsoft.com/azure/api-management/api-management-howto-setup-delegation)
+* [Delegování registrace uživatelů a předplatného produktu](./api-management-howto-setup-delegation.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -433,9 +434,9 @@ Alternativně lze proces přihlášení nebo přihlášení dále přizpůsobit 
 
 **Doprovodné**materiály: Povolte Azure Active Directory (AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Jak monitorovat identitu a přístup v rámci Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -445,9 +446,9 @@ Alternativně lze proces přihlášení nebo přihlášení dále přizpůsobit 
 
 **Pokyny**: použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s nakonfigurovaným Multi-Factor Authentication (MFA), které jsou nakonfigurovány pro přihlášení a konfiguraci prostředků Azure.
 
-* [Další informace o pracovních stanicích s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -459,9 +460,9 @@ Alternativně lze proces přihlášení nebo přihlášení dále přizpůsobit 
 
 Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-* [Postup nasazení Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Postup nasazení Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Vysvětlení zjišťování rizik Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Vysvětlení zjišťování rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -471,7 +472,7 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 **Pokyny**: pomocí pojmenovaných umístění podmíněného přístupu povolíte přístup k Azure Portal jenom z konkrétních logických skupin rozsahů IP adres nebo zemí nebo oblastí.
 
-* [Postup konfigurace pojmenovaných umístění v Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -485,11 +486,11 @@ Nakonfigurujte portál pro vývojáře Azure API Management k ověřování výv
 
 Nakonfigurujte instanci Azure API Management tak, aby chránila vaše rozhraní API pomocí protokolu OAuth 2,0 s Azure Active Directory (AD).
 
-* [Jak autorizovat vývojářské účty pomocí Azure Active Directory v Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [Jak autorizovat vývojářské účty pomocí Azure Active Directory v Azure API Management](./api-management-howto-aad.md)
 
-* [Jak chránit rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Jak chránit rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management](./api-management-howto-protect-backend-with-aad.md)
 
-* [Postup vytvoření a konfigurace instance AAD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Postup vytvoření a konfigurace instance AAD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -503,13 +504,13 @@ Zákazníci můžou udržovat inventář API Managementch uživatelských účt�
 
 Správci můžou vytvářet vlastní skupiny nebo využívat externí skupiny v přidružených klientech Azure Active Directory. Vlastní a externí skupiny můžete používat společně se systémovými skupinami, a nastavovat tak vývojářům viditelnost produktů s rozhraním API a přístup k nim.
 
-* [Správa uživatelských účtů ve službě Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-create-or-invite-developers)
+* [Správa uživatelských účtů ve službě Azure API Management](./api-management-howto-create-or-invite-developers.md)
 
-* [Jak získat seznam API Management uživatelů](https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [Jak získat seznam API Management uživatelů](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
 
-* [Vytváření skupin a jejich používání ke správě účtů vývojářů ve službě Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-create-groups)
+* [Vytváření skupin a jejich používání ke správě účtů vývojářů ve službě Azure API Management](./api-management-howto-create-groups.md)
 
-* [Jak používat recenze Azure identity Access](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -527,17 +528,17 @@ Vytvořte nastavení diagnostiky pro uživatelské účty Azure AD a odešlete p
 
 Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API Management `log-to-eventhub` , zachytit další kontextové informace vyžadované pro analýzu zabezpečení a odeslat je do Azure Sentinel nebo Siem třetí strany.
 
-* [Jak autorizovat vývojářské účty pomocí Azure Active Directory v Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-aad)
+* [Jak autorizovat vývojářské účty pomocí Azure Active Directory v Azure API Management](./api-management-howto-aad.md)
 
-* [Jak chránit rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Jak chránit rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management](./api-management-howto-protect-backend-with-aad.md)
 
-* [Zásady omezení přístupu ke službě API Management](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies)
+* [Zásady omezení přístupu ke službě API Management](./api-management-access-restriction-policies.md)
 
-* [Jak integrovat protokoly služby Azure AD do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Jak integrovat protokoly služby Azure AD do Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Postup zprovoznění služby Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Pokročilé monitorování rozhraní API](https://docs.microsoft.com/azure/api-management/api-management-log-to-eventhub-sample)
+* [Pokročilé monitorování rozhraní API](./api-management-log-to-eventhub-sample.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -547,11 +548,11 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 **Doprovodné**materiály: pro odchylku chování přihlášení k účtu na rovině ovládacího prvku (Azure Portal) použijte funkce Azure Active Directory (AD) Identity Protection a detekce rizik ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-* [Jak zobrazit rizikové přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -561,7 +562,7 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 **Doprovodné**materiály: není aktuálně k dispozici; Customer Lockbox se v současnosti pro Azure API Management nepodporuje.
 
-* [Seznam služeb podporovaných Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -569,13 +570,13 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
 **Doprovodné**materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -585,13 +586,13 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 **Pokyny**: implementace samostatných předplatných nebo skupin pro správu pro vývoj, testování a produkci. Instance služby Azure API Management by měly být odděleny virtuální sítí (VNet)/Subnet a odpovídajícím způsobem označeny.
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Použití služby Azure API Management s virtuálními sítěmi](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)
+* [Použití služby Azure API Management s virtuálními sítěmi](./api-management-using-with-vnet.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -603,7 +604,7 @@ Pomocí zásad můžete nakonfigurovat rozšířené monitorování pomocí API 
 
 Microsoft spravuje základní infrastrukturu pro Azure API Management a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -613,13 +614,13 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 **Doprovodné**materiály: volání roviny správy se provádí prostřednictvím Azure Resource Manager přes TLS. Vyžaduje se platný webový token JSON (JWT). Volání roviny dat je možné zabezpečit pomocí protokolu TLS a jednoho z podporovaných mechanismů ověřování (například klientský certifikát nebo token JWT).
 
-* [Pochopení ochrany dat v Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-security-controls#data-protection)
+* [Pochopení ochrany dat v Azure API Management](./api-management-security-controls.md#data-protection)
 
-* [Správa nastavení TLS v Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers)
+* [Správa nastavení TLS v Azure API Management](./api-management-howto-manage-protocols-ciphers.md)
 
-* [Ochrana rozhraní API v Azure API Management s využitím Azure Active Directory](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad)
+* [Ochrana rozhraní API v Azure API Management s využitím Azure Active Directory](./api-management-howto-protect-backend-with-aad.md)
 
-* [Ochrana rozhraní API v Azure API Management s využitím Azure Active Directory B2C](https://docs.microsoft.com/azure/api-management/howto-protect-backend-frontend-azure-ad-b2c)
+* [Ochrana rozhraní API v Azure API Management s využitím Azure Active Directory B2C](./howto-protect-backend-frontend-azure-ad-b2c.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -631,7 +632,7 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje veškerý obsah zákazníka za citlivý a vede na skvělé délky, aby se zabránilo ochraně před ztrátou a únikem informací a riziky zákazníků. Aby se zajistilo zabezpečení zákaznických dat v Azure, společnost Microsoft implementovala a udržuje sadu robustních ovládacích prvků a možností ochrany dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -641,7 +642,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 **Doprovodné**materiály: použití řízení přístupu na základě rolí pro řízení přístupu k Azure API Management. Azure API Management spoléhá na Access Control na základě rolí v Azure (RBAC) a umožňuje jemně odstupňovanou správu přístupu pro API Management služby a entity (například rozhraní API a zásady).
 
-* [Použití řízení přístupu na základě role ve službě API Management](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Použití řízení přístupu na základě role ve službě API Management](./api-management-role-based-access-control.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -653,7 +654,7 @@ Pro základní platformu, která je spravovaná Microsoftem, Microsoft považuje
 
 Microsoft spravuje základní infrastrukturu pro Azure API Management a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -663,7 +664,7 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 **Doprovodné**materiály: citlivá data, jako jsou certifikáty, klíče a tajné hodnoty, se šifrují pomocí klíčů pro instanci služby spravované službou. Všechny šifrovací klíče jsou na instanci služby a jsou spravované službou.
 
-* [Pochopení ochrany a šifrování dat v klidovém umístění pomocí Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-security-controls#data-protection)
+* [Pochopení ochrany a šifrování dat v klidovém umístění pomocí Azure API Management](./api-management-security-controls.md#data-protection)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -673,9 +674,9 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 **Pokyny**: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na to, kdy změny probíhají v produkčních Azure Functionsch aplikacích i v jiných důležitých nebo souvisejících prostředcích.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
-* [Jak používat Azure Monitor a protokol aktivit Azure v Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor)
+* [Jak používat Azure Monitor a protokol aktivit Azure v Azure API Management](./api-management-howto-use-azure-monitor.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -683,7 +684,7 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](../security/benchmarks/security-control-vulnerability-management.md)zabezpečení.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
@@ -691,7 +692,7 @@ Microsoft spravuje základní infrastrukturu pro Azure API Management a implemen
 
 Nadřazená platforma byla zkontrolována a opravena společností Microsoft. Zkontrolujte bezpečnostní mechanismy, které jsou k dispozici pro omezení ohrožení zabezpečení související s konfigurací služby.
 
-* [Principy ovládacích prvků zabezpečení dostupných pro Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-security-controls)
+* [Principy ovládacích prvků zabezpečení dostupných pro Azure API Management](./api-management-security-controls.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -727,7 +728,7 @@ Nadřazená platforma byla zkontrolována a opravena společností Microsoft. Zk
 
 Nadřazená platforma byla zkontrolována a opravena společností Microsoft. Zákazník si zkontroluje bezpečnostní mechanismy, které jsou k dispozici, k omezení ohrožení zabezpečení souvisejícího s konfigurací služby.
 
-* [Principy ovládacích prvků zabezpečení dostupných pro Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-security-controls)
+* [Principy ovládacích prvků zabezpečení dostupných pro Azure API Management](./api-management-security-controls.md)
 
 **Monitorování Azure Security Center**: aktuálně není k dispozici.
 
@@ -735,7 +736,7 @@ Nadřazená platforma byla zkontrolována a opravena společností Microsoft. Z�
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-azure-asset-discovery"></a>6,1: použijte Azure Asset Discovery.
 
@@ -743,11 +744,11 @@ Nadřazená platforma byla zkontrolována a opravena společností Microsoft. Z�
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme vytvořit a používat prostředky Azure Resource Manager, které budou předány.
 
-* [Jak vytvářet dotazy pomocí Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-* [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -757,7 +758,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-* [Jak vytvářet a používat značky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Jak vytvářet a používat značky](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -768,14 +769,14 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -792,14 +793,14 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: monitorování neschválených prostředků Azure
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
 Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazovat nebo zjišťovat prostředky. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak vytvářet dotazy pomocí Azure graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure graphu](../governance/resource-graph/first-query-portal.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -832,12 +833,12 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -855,9 +856,9 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Pokyny**: Nakonfigurujte podmíněný přístup Azure tak, aby uživatelé mohli komunikovat s Azure Resource Manager konfigurací možnosti blokovat přístup pro aplikaci Microsoft Azure Management.
 
-* [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
-* [Řízení přístupu na základě role v Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-role-based-access-control)
+* [Řízení přístupu na základě role v Azure API Management](./api-management-role-based-access-control.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -881,15 +882,15 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro službu Azure API Management pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. ApiManagement můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace služeb Azure API Management.
 
-* [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -907,9 +908,9 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro služby Azure API Management services pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. ApiManagement můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace instancí Azure API Management. Použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení napříč prostředky Azure.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Pochopení Azure Policych efektů](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -927,11 +928,11 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Doprovodné**materiály: Pokud používáte vlastní definice zásad Azure, použijte Azure DevOps nebo Azure Repos k bezpečnému ukládání a správě konfigurace služby Azure API Management.
 
-* [Jak ukládat soubory v Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Jak ukládat soubory v Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
-* [Vysvětlení sady Resource Kit pro Azure API Management DevOps](https://docs.microsoft.com/azure/api-management/api-management-security-controls#configuration-management)
+* [Vysvětlení sady Resource Kit pro Azure API Management DevOps](./api-management-security-controls.md#configuration-management)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -949,9 +950,9 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Pokyny**: definování a implementace standardních konfigurací zabezpečení pro služby Azure API Management services pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. ApiManagement můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace instancí Azure API Management. Použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení napříč prostředky Azure.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Pochopení Azure Policych efektů](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -971,11 +972,11 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 Kromě toho definujte a Implementujte standardní konfigurace zabezpečení pro služby Azure API Management Services pomocí Azure Policy. Pomocí aliasů Azure Policy v oboru názvů Microsoft. ApiManagement můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace instancí Azure API Management. Použijte zásady Azure [Deny] a [nasazení, pokud neexistuje], abyste vynutili zabezpečená nastavení napříč prostředky Azure.
 
-* [Vysvětlení sady Resource Kit pro Azure API Management DevOps](https://docs.microsoft.com/azure/api-management/api-management-security-controls#configuration-management)
+* [Vysvětlení sady Resource Kit pro Azure API Management DevOps](./api-management-security-controls.md#configuration-management)
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Pochopení Azure Policych efektů](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -993,7 +994,7 @@ Kromě toho definujte a Implementujte standardní konfigurace zabezpečení pro 
 
 **Doprovodné**materiály: použijte Key Vault pro správu certifikátů a nastavte je na automatické střídání. Pokud používáte Azure Key Vault ke správě vlastního certifikátu SSL domény, ujistěte se, že je certifikát vložen do Key Vault jako certifikát, nikoli jako tajný kód.
 
-* [Jak nastavit vlastní názvy domén s pokyny pro Key Vault střídání klíčů](https://docs.microsoft.com/azure/api-management/configure-custom-domain)
+* [Jak nastavit vlastní názvy domén s pokyny pro Key Vault střídání klíčů](./configure-custom-domain.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1003,9 +1004,9 @@ Kromě toho definujte a Implementujte standardní konfigurace zabezpečení pro 
 
 **Pokyny**: pomocí identita spravované služby generovaných Azure Active Directory (AD) Umožněte, aby instance API Management snadno a bezpečně přístup k dalším prostředkům chráněným službou Azure AD, jako je například Azure Key Vault.
 
-* [Postup vytvoření spravované identity pro instanci API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
+* [Postup vytvoření spravované identity pro instanci API Management](./api-management-howto-use-managed-service-identity.md)
 
-* [Zásada pro ověření pomocí spravované identity](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
+* [Zásada pro ověření pomocí spravované identity](./api-management-authentication-policies.md#ManagedIdentity)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1023,7 +1024,7 @@ Kromě toho definujte a Implementujte standardní konfigurace zabezpečení pro 
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
@@ -1057,7 +1058,7 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
@@ -1065,9 +1066,9 @@ Microsoft Anti-malware je povolený na podkladovém hostiteli, který podporuje 
 
 Funkce zálohování a obnovení služby API Management poskytují potřebné stavební bloky pro implementaci strategie zotavení po havárii. Operace zálohování a obnovení je možné provést ručně nebo automaticky.
 
-* [Postup nasazení API Management roviny dat do více oblastí](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)
+* [Postup nasazení API Management roviny dat do více oblastí](./api-management-howto-deploy-multi-region.md)
 
-* [Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 * [Postup volání operace API Management Backup](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
@@ -1083,9 +1084,9 @@ Funkce zálohování a obnovení služby API Management poskytují potřebné st
 
 Spravované identity lze použít k získání certifikátů z Azure Key Vault pro API Management vlastních názvů domén. Zálohujte všechny certifikáty, které jsou uložené v Azure Key Vault.
 
-* [Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [Postup zálohování certifikátů Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Postup zálohování certifikátů Azure Key Vault](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1095,9 +1096,9 @@ Spravované identity lze použít k získání certifikátů z Azure Key Vault p
 
 **Doprovodné**materiály: Ověřte zálohy pomocí testu obnovení služby a certifikátů ze záloh.
 
-* [Jak volat operaci obnovení API Management](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
+* [Jak volat operaci obnovení API Management](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
-* [Postup obnovení certifikátů Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Postup obnovení certifikátů Azure Key Vault](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1107,13 +1108,13 @@ Spravované identity lze použít k získání certifikátů z Azure Key Vault p
 
 **Pokyny**: Azure API Management zapisuje zálohy na účty Azure Storage ve vlastnictví zákazníka. Pokud chcete svoji zálohu chránit, postupujte podle Azure Storage doporučení zabezpečení.
 
-* [Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+* [Implementace zotavení po havárii pomocí zálohování a obnovení služby ve službě Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [Doporučení zabezpečení pro úložiště objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/security-recommendations)
+* [Doporučení zabezpečení pro úložiště objektů BLOB](../storage/blobs/security-recommendations.md)
 
 Povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-* [Jak povolit obnovitelné odstranění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Jak povolit obnovitelné odstranění v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1121,7 +1122,7 @@ Povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodn�
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -1143,9 +1144,9 @@ Povolit obnovitelné odstranění v Key Vault k ochraně klíčů proti náhodn�
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
-* [Výstrahy zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Používání značek k uspořádání prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1165,7 +1166,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-* [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -1175,9 +1176,9 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Pokyny**: vyexportujte výstrahy a doporučení pro Azure Security Center pomocí funkce průběžného exportu, které vám pomůžou identifikovat rizika pro prostředky Azure. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
-* [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
-* [Jak streamovat výstrahy do Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1187,7 +1188,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: Využijte funkci automatizace pracovních postupů v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" na výstrahy a doporučení zabezpečení.
 
-* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -1195,7 +1196,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-to-remediate-all-critical-security-findings-within-60-days"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a ujistěte se, že je potřeba opravit všechna kritická zjištění zabezpečení do 60 dnů.
 
@@ -1209,5 +1210,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

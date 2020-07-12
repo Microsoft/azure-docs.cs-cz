@@ -3,11 +3,12 @@ title: Shromažďovat & analyzovat protokoly prostředků
 description: Zaznamenává a analyzuje události protokolu prostředků pro Azure Container Registry, jako je například ověřování, vkládání obrázků a vyžádanou image.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343179"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252483"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky
 
@@ -141,10 +142,9 @@ ContainerRegistryLoginEvents
 
 Kromě odesílání protokolů pro Log Analytics, nebo jako alternativu můžete běžným scénářem vybrat Azure Storage účet jako cíl protokolu. Pokud chcete archivovat protokoly v Azure Storage, vytvořte si účet úložiště ještě předtím, než povolíte archivaci prostřednictvím nastavení diagnostiky.
 
-Události diagnostického protokolu můžete také streamovat do [centra událostí Azure](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs může ingestovat miliony událostí za sekundu, které pak můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase. 
+Události diagnostického protokolu můžete také streamovat do [centra událostí Azure](../event-hubs/event-hubs-about.md). Event Hubs může ingestovat miliony událostí za sekundu, které pak můžete transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase. 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Přečtěte si další informace o použití [Log Analytics](../azure-monitor/log-query/get-started-portal.md) a vytváření [dotazů protokolu](../azure-monitor/log-query/get-started-queries.md).
 * Další informace o protokolech platforem, které jsou k dispozici v různých vrstvách Azure, najdete v tématu [Přehled protokolů platformy Azure](../azure-monitor/platform/platform-logs-overview.md) .
-

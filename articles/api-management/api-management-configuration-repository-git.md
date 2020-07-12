@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 183a3561a7c01d8f0911a70846384cf8ebc7dd9c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649220"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254839"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložení a konfigurace nastavení služby API Management pomocí Gitu
 
@@ -141,13 +142,13 @@ git push
 
 Po potvrzení místních změn a jejich vložení do úložiště serveru je můžete nasadit do své instance služby API Management.
 
-Informace o tom, jak tuto operaci provést pomocí REST API, najdete v tématu [nasazení změn Git do konfigurační databáze pomocí REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/tenantconfiguration).
+Informace o tom, jak tuto operaci provést pomocí REST API, najdete v tématu [nasazení změn Git do konfigurační databáze pomocí REST API](/rest/api/apimanagement/2019-12-01/tenantconfiguration).
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Referenční dokumentace struktury souborů a složek místního úložiště Git
 
 Soubory a složky v místním úložišti Git obsahují informace o konfiguraci instance služby.
 
-| Položka | Description |
+| Položka | Popis |
 | --- | --- |
 | Kořenová složka API – Správa |Obsahuje konfiguraci nejvyšší úrovně pro instanci služby. |
 | Složka rozhraní API |Obsahuje konfiguraci pro rozhraní API v instanci služby. |
@@ -171,8 +172,8 @@ Tyto soubory se dají vytvářet, odstraňovat, upravovat a spravovat v místní
 > [!NOTE]
 > Následující entity nejsou obsaženy v úložišti Git a nelze je konfigurovat pomocí Gitu.
 >
-> * [Uživatelé](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
-> * [Předplatná](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
+> * [Uživatelé](/rest/api/apimanagement/2019-12-01/user)
+> * [Předplatná](/rest/api/apimanagement/2019-12-01/subscription)
 > * Pojmenované hodnoty
 > * Jiné entity portálu pro vývojáře než styly
 >
@@ -221,15 +222,15 @@ Poslední nastavení, `$ref-policy` mapuje na soubor globálních příkazů zá
 ### <a name="apis-folder"></a>Složka rozhraní API
 `apis`Složka obsahuje složku pro každé rozhraní API v instanci služby, která obsahuje následující položky.
 
-* `apis\<api name>\configuration.json`– Jedná se o konfiguraci rozhraní API a obsahuje informace o adrese URL back-end služby a operacích. Jedná se o stejné informace, které by byly vráceny v případě, že jste volali funkci [získat konkrétní rozhraní API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) `export=true` ve `application/json` formátu.
-* `apis\<api name>\api.description.html`– Toto je popis rozhraní API a odpovídá `description` vlastnosti [entity rozhraní API](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty).
-* `apis\<api name>\operations\`– Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost [entity operace](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) v REST API.
+* `apis\<api name>\configuration.json`– Jedná se o konfiguraci rozhraní API a obsahuje informace o adrese URL back-end služby a operacích. Jedná se o stejné informace, které by byly vráceny v případě, že jste volali funkci [získat konkrétní rozhraní API](/rest/api/apimanagement/2019-12-01/apis/get) `export=true` ve `application/json` formátu.
+* `apis\<api name>\api.description.html`– Toto je popis rozhraní API a odpovídá `description` vlastnosti [entity rozhraní API](/java/api/com.microsoft.azure.storage.table.entityproperty).
+* `apis\<api name>\operations\`– Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost [entity operace](/rest/api/visualstudio/operations/list#operationproperties) v REST API.
 
 ### <a name="groups-folder"></a>Složka skupin
 `groups`Složka obsahuje složku pro každou skupinu definovanou v instanci služby.
 
-* `groups\<group name>\configuration.json`– Jedná se o konfiguraci skupiny. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní skupinu](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/group/get) .
-* `groups\<group name>\description.html`– Toto je popis skupiny a odpovídá `description` vlastnosti [entity Group](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
+* `groups\<group name>\configuration.json`– Jedná se o konfiguraci skupiny. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní skupinu](/rest/api/apimanagement/2019-12-01/group/get) .
+* `groups\<group name>\description.html`– Toto je popis skupiny a odpovídá `description` vlastnosti [entity Group](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>Složka zásad
 `policies`Složka obsahuje příkazy zásad pro instanci služby.
@@ -248,8 +249,8 @@ Poslední nastavení, `$ref-policy` mapuje na soubor globálních příkazů zá
 ### <a name="products-folder"></a>Složka Products
 `products`Složka obsahuje složku pro každý produkt definovaný v instanci služby.
 
-* `products\<product name>\configuration.json`– Jedná se o konfiguraci produktu. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní produkt](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/product/get) .
-* `products\<product name>\product.description.html`– Toto je popis produktu a odpovídá `description` vlastnosti [entity produktu](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) v REST API.
+* `products\<product name>\configuration.json`– Jedná se o konfiguraci produktu. Jedná se o stejné informace, které by se vracely v případě, že jste volali operaci [získat konkrétní produkt](/rest/api/apimanagement/2019-12-01/product/get) .
+* `products\<product name>\product.description.html`– Toto je popis produktu a odpovídá `description` vlastnosti [entity produktu](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) v REST API.
 
 ### <a name="templates"></a>šablony
 `templates`Složka obsahuje konfiguraci pro [e-mailové šablony](api-management-howto-configure-notifications.md) instance služby.
@@ -261,8 +262,8 @@ Poslední nastavení, `$ref-policy` mapuje na soubor globálních příkazů zá
 Další informace o dalších způsobech správy instance služby najdete v následujících tématech:
 
 * Pomocí následujících rutin PowerShellu spravujte instanci služby.
-  * [Reference k rutinám prostředí PowerShell pro nasazení služeb](https://docs.microsoft.com/powershell/module/wds)
-  * [Reference k rutinám prostředí PowerShell pro správu služeb](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
+  * [Reference k rutinám prostředí PowerShell pro nasazení služeb](/powershell/module/wds)
+  * [Reference k rutinám prostředí PowerShell pro správu služeb](/powershell/azure/servicemanagement/overview)
 * Správa instance služby pomocí REST API
   * [Odkaz na API Management REST API](/rest/api/apimanagement/)
 
@@ -280,7 +281,3 @@ Další informace o dalších způsobech správy instance služby najdete v nás
 [api-management-identity-settings]: ./media/api-management-configuration-repository-git/api-management-identity-settings.png
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
-
-
-
-

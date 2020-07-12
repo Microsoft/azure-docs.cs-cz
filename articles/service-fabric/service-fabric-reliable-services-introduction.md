@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77083516"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253078"
 ---
 # <a name="reliable-services-overview"></a>Přehled Reliable Services
 
@@ -36,7 +37,7 @@ Reliable Services poskytuje jednoduchý, výkonný model programování na nejvy
   * Používejte [spolehlivé kolekce](service-fabric-reliable-services-reliable-collections.md)
   * Přístup k mnoha dalším funkcím, a to vše z první třídy programovacího modelu v několika programovacích jazycích.
 * Jednoduchý model pro spuštění vlastního kódu, který je podobný jiným známým programovacím modelům. Váš kód má dobře definovaný vstupní bod a snadno spravovaný životní cyklus.
-* Připojitelný komunikační model. Použijte přenos dle vašeho výběru, například HTTP s [webovým rozhraním API](service-fabric-reliable-services-communication-webapi.md), WebSockets, vlastní protokoly TCP nebo cokoli jiného. Reliable Services poskytují skvělé předem připravené možnosti, které můžete použít, nebo můžete zadat vlastní.
+* Připojitelný komunikační model. Použijte přenos dle vašeho výběru, například HTTP s [webovým rozhraním API](./service-fabric-reliable-services-communication-aspnetcore.md), WebSockets, vlastní protokoly TCP nebo cokoli jiného. Reliable Services poskytují skvělé předem připravené možnosti, které můžete použít, nebo můžete zadat vlastní.
 * Pro stavové služby Reliable Services programovací model umožňuje konzistentně a spolehlivě ukládat stav přímo do vaší služby pomocí [spolehlivých kolekcí](service-fabric-reliable-services-reliable-collections.md). Spolehlivé kolekce jsou jednoduché sady vysoce dostupných a spolehlivých tříd kolekcí, které budou obeznámeny s kýmkoli, kdo používal kolekce jazyka C#. Služby, které jsou potřeba pro správu spolehlivých stavů, tradičně vyžadují služby. Pomocí Reliable Collections můžete uložit svůj stav vedle vašich výpočtů se stejnou vysokou dostupností a spolehlivostí, kterou jste měli očekávat od vysoce dostupných externích obchodů. Tento model také zlepšuje latenci, protože společně vyhledáváte výpočetní výkon a stav, který potřebuje k fungování.
 
 ## <a name="what-makes-reliable-services-different"></a>Co dělá Reliable Services odlišnou
@@ -52,7 +53,7 @@ Reliable Services se liší od služeb, které jste mohli předtím napsat, prot
 
 Bez ohledu na to, jestli je vaše služba stavová nebo Bezstavová, Reliable Services poskytovat jednoduchý životní cyklus, který vám umožní rychle připojit váš kód a začít.  Zavedení a zprovoznění nové služby vyžaduje, abyste implementovali dvě metody:
 
-* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** – Tato metoda je tam, kde služba definuje komunikační zásobníky, které chce použít. Komunikační zásobník, jako je například [webové rozhraní API](service-fabric-reliable-services-communication-webapi.md), je definice bodu naslouchání nebo koncových bodů pro službu (jak klienti dosáhnou služby). Definuje také způsob, jakým budou zprávy zobrazeny v interakci se zbytkem kódu služby.
+* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** – Tato metoda je tam, kde služba definuje komunikační zásobníky, které chce použít. Komunikační zásobník, jako je například [webové rozhraní API](./service-fabric-reliable-services-communication-aspnetcore.md), je definice bodu naslouchání nebo koncových bodů pro službu (jak klienti dosáhnou služby). Definuje také způsob, jakým budou zprávy zobrazeny v interakci se zbytkem kódu služby.
 * **RunAsync** – Tato metoda je tam, kde vaše služba spouští svoji obchodní logiku a kde by mohla aktivovat všechny úlohy na pozadí, které by se měly spustit po dobu životnosti služby. Poskytnutý token zrušení je signálem, kdy se má tato práce zastavit. Například pokud služba potřebuje vyžádat zprávy ze spolehlivé fronty a zpracovat je, jedná se o to, kde k této práci dojde.
 
 Pokud se o spolehlivých službách naučíte poprvé, přečtěte si téma. Pokud hledáte podrobný návod k životnímu cyklu spolehlivých služeb, podívejte se na [Přehled životního cyklu Reliable Services](service-fabric-reliable-services-lifecycle.md).
@@ -67,7 +68,7 @@ Pojďme se podívat, jak model Reliable Services pracuje s bezstavovou a stavovo
 
 Představte si například kalkulačku, která nemá žádnou paměť a přijímá všechny kroky a operace, které je potřeba provést najednou.
 
-V takovém případě `RunAsync()` může být (C#) nebo `runAsync()` (Java) služby prázdný, protože není k dispozici žádné zpracování úloh na pozadí, které služba potřebuje. Při vytvoření služby kalkulačky vrátí `ICommunicationListener` (C#) nebo `CommunicationListener` (Java) (například [webové rozhraní API](service-fabric-reliable-services-communication-webapi.md)), které otevře koncový bod naslouchání na některém portu. Toto naslouchání koncových bodů se zapojováním k různým metodám výpočtu (příklad: Add (N1, N2)), který definuje veřejné rozhraní API kalkulačky.
+V takovém případě `RunAsync()` může být (C#) nebo `runAsync()` (Java) služby prázdný, protože není k dispozici žádné zpracování úloh na pozadí, které služba potřebuje. Při vytvoření služby kalkulačky vrátí `ICommunicationListener` (C#) nebo `CommunicationListener` (Java) (například [webové rozhraní API](./service-fabric-reliable-services-communication-aspnetcore.md)), které otevře koncový bod naslouchání na některém portu. Toto naslouchání koncových bodů se zapojováním k různým metodám výpočtu (příklad: Add (N1, N2)), který definuje veřejné rozhraní API kalkulačky.
 
 Při volání z klienta je vyvolána vhodná metoda a služba kalkulačky provede operace s poskytnutými daty a vrátí výsledek. Neukládá žádný stav.
 

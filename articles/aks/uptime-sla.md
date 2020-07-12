@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 672a5afe36449aaa486ca6980f510ba52cf6daf2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361570"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250953"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
@@ -40,7 +40,7 @@ Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé c
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Nainstalujte [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) verze 2.8.0 nebo novější.
+* Nainstalujte [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) verze 2.8.0 nebo novější.
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Vytvoření nového clusteru s smlouvou SLA pro dobu provozu
 

@@ -12,11 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91094285aa50641f62527326bab121adcf026a9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308622"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252058"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
 
@@ -116,7 +117,7 @@ Další podrobnosti najdete v referenčních informacích k [tokenům platformy 
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
-Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Další podrobnosti najdete v tématu [o platformě Microsoft Identity](about-microsoft-identity-platform.md) .
+Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect.
 
 ## <a name="multi-tenant-application"></a>víceklientské aplikace
 
@@ -157,7 +158,7 @@ Server prostředků zveřejňuje rozhraní API a vynutil přístup k chráněný
 
 Stejně jako klientská aplikace, konfigurace identity aplikace prostředků se vytváří prostřednictvím [registrace](#application-registration) v TENANTOVI Azure AD, která poskytuje aplikační i instanční objekt. Některá rozhraní API poskytnutá Microsoftem, jako je Microsoft Graph API, mají předem registrované instanční objekty, které jsou k dispozici ve všech klientech během zřizování.
 
-## <a name="roles"></a>role
+## <a name="roles"></a>Role
 
 Podobně jako [obory](#scopes)role poskytují [serveru prostředků](#resource-server) způsob, jak řídit přístup k chráněným prostředkům. Existují dva typy: role "uživatel" implementuje řízení přístupu na základě rolí pro uživatele nebo skupiny, které vyžadují přístup k prostředku, zatímco role "aplikace" implementuje stejné pro [klientské aplikace](#client-application) , které vyžadují přístup.
 

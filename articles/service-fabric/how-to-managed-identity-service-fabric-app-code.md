@@ -3,12 +3,12 @@ title: Použití spravované identity s aplikací
 description: Použití spravovaných identit v Azure Service Fabric kódu aplikace pro přístup ke službám Azure.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461561"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253639"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Jak využít spravovanou identitu aplikace Service Fabric pro přístup ke službám Azure
 
@@ -48,7 +48,7 @@ GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-0
 ```
 kde:
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, který indikuje, že chcete načíst data z koncového bodu. V tomto případě se jedná o přístupový token OAuth. | 
 | `https://localhost:2377/metadata/identity/oauth2/token` | Spravovaný koncový bod identity pro aplikace Service Fabric poskytovaný přes proměnnou prostředí IDENTITY_ENDPOINT. |
@@ -70,7 +70,7 @@ Content-Type: application/json
 ```
 kde:
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
 | `token_type` | Typ tokenu; v tomto případě se jedná o přístupový token "nosiče", což znamená, že předvádějící ("Bearer") tohoto tokenu je zamýšlený předmět tokenu. |
 | `access_token` | Požadovaný přístupový token Při volání zabezpečeného REST API se token vloží do `Authorization` pole Hlavička požadavku jako "nosič", což umožňuje rozhraní API ověřit volajícího. | 
@@ -332,7 +332,7 @@ Pole Stavový kód hlavičky HTTP Response indikuje stav úspěch žádosti; sta
 
 Pokud dojde k chybě, odpovídající tělo odpovědi HTTP obsahuje objekt JSON s podrobnostmi o chybě:
 
-| Prvek | Popis |
+| Element | Popis |
 | ------- | ----------- |
 | kód | Kód chyby |
 | correlationId | ID korelace, které lze použít pro ladění. |
@@ -371,7 +371,7 @@ Doporučuje se, aby se požadavky nezdařily, protože došlo k opakovanému pok
 | 5 | Počkejte 16 sekund a zkuste to znovu. |
 
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků pro služby Azure
-V tématu [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md) , najdete seznam prostředků, které podporují Azure AD, a jejich odpovídajících ID prostředků.
+V tématu [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) , najdete seznam prostředků, které podporují Azure AD, a jejich odpovídajících ID prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 * [Nasazení aplikace Azure Service Fabric se spravovanou identitou přiřazenou systémem](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)

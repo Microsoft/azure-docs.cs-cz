@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 069fc95d226e4417bb650b6092a7d00953f69e8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82128721"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252840"
 ---
 # <a name="api-management-policies"></a>Zásady služby API Management
 V této části najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](api-management-howto-policies.md).  
@@ -50,12 +50,12 @@ V této části najdete referenční informace pro následující zásady API Ma
     -   [Nastavte proměnnou](api-management-advanced-policies.md#set-variable) – zachovat hodnotu v pojmenované kontextové proměnné pro pozdější přístup.  
     -   [Nastavit metodu žádosti](api-management-advanced-policies.md#SetRequestMethod) – umožňuje změnit metodu HTTP pro požadavek.  
     -   [Nastavit stavový kód](api-management-advanced-policies.md#SetStatus) – změní stavový kód HTTP na zadanou hodnotu.  
-    -   [Trasování](api-management-advanced-policies.md#Trace) – přidá vlastní trasování do výstupu [kontroly rozhraní API](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) Application Insights telemetrií a protokoly prostředků.  
+    -   [Trasování](api-management-advanced-policies.md#Trace) – přidá vlastní trasování do výstupu [kontroly rozhraní API](./api-management-howto-api-inspector.md) Application Insights telemetrií a protokoly prostředků.  
     -   [Wait](api-management-advanced-policies.md#Wait) -čeká na uzavřenou [žádost o odeslání](api-management-advanced-policies.md#SendRequest), před pokračováním [Získá hodnotu z mezipaměti](api-management-caching-policies.md#GetFromCacheByKey)nebo zásady [toku řízení](api-management-advanced-policies.md#choose) .  
 -   [Zásady ověřování](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   Ověřování pomocí služby [back-end](api-management-authentication-policies.md#Basic) s využitím základního ověřování pomocí back-endu  
     -   [Ověřování pomocí klientského certifikátu](api-management-authentication-policies.md#ClientCertificate) – ověřování pomocí back-end služby pomocí klientských certifikátů.  
-    -   [Ověřování pomocí spravované identity](api-management-authentication-policies.md#ManagedIdentity) – ověřování pomocí back-end služby pomocí [spravované identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).  
+    -   [Ověřování pomocí spravované identity](api-management-authentication-policies.md#ManagedIdentity) – ověřování pomocí back-end služby pomocí [spravované identity](../active-directory/managed-identities-azure-resources/overview.md).  
 -   [Zásady ukládání do mezipaměti](api-management-caching-policies.md#CachingPolicies)  
     -   [Získat z mezipaměti](api-management-caching-policies.md#GetFromCache) – vyhledá mezipaměť a vrátí platnou odpověď uloženou v mezipaměti, pokud je dostupná.  
     -   [Ukládat do](api-management-caching-policies.md#StoreToCache) mezipaměti cache – odpověď v závislosti na zadané konfiguraci řízení mezipaměti.  

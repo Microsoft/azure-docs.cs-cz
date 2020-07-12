@@ -4,12 +4,12 @@ description: Naučte se rychle vytvořit cluster Kubernetes, nasadit aplikaci a 
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 74a71bdc4c9aef9a6964f0c9120a902262a50526
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e786b64554b5fbaf5bb7051e09daca8fb1eaf049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207137"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251429"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes pomocí prostředí PowerShell
 
@@ -21,7 +21,7 @@ Další informace o vytváření fondu uzlů Windows serveru najdete v tématu [
 
 Tento rychlý start předpokládá základní znalosti konceptů Kubernetes. Další informace najdete v tématu [základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
@@ -37,7 +37,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-[Skupina prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí rutiny [New-AzResourceGroup][new-azresourcegroup] .
+[Skupina prostředků Azure](../azure-resource-manager/management/overview.md) je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí rutiny [New-AzResourceGroup][new-azresourcegroup] .
 
 Následující příklad vytvoří skupinu prostředků s názvem **myResourceGroup** v oblasti **eastus** .
 
@@ -57,12 +57,12 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>Vytvoření clusteru AKS
 
-Pomocí `ssh-keygen` nástroje příkazového řádku vygenerujte pár klíčů ssh. Další podrobnosti najdete v tématu [rychlé kroky: vytvoření a použití páru veřejných privátních klíčů ssh pro virtuální počítače se systémem Linux v Azure](/azure/virtual-machines/linux/mac-create-ssh-keys).
+Pomocí `ssh-keygen` nástroje příkazového řádku vygenerujte pár klíčů ssh. Další podrobnosti najdete v tématu [rychlé kroky: vytvoření a použití páru veřejných privátních klíčů ssh pro virtuální počítače se systémem Linux v Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
 
 Pomocí rutiny [New-AzAks][new-azaks] vytvořte cluster AKS. Následující příklad vytvoří cluster **myAKSCluster** s jedním uzlem. Ve výchozím nastavení je také povolena možnost Azure Monitor pro kontejnery. Dokončení této akce trvá několik minut.
 
 > [!NOTE]
-> Při vytváření clusteru AKS se automaticky vytvoří druhá skupina prostředků pro ukládání prostředků AKS. Další informace najdete v tématu [Proč jsou dvě skupiny prostředků vytvořené pomocí AKS?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)
+> Při vytváření clusteru AKS se automaticky vytvoří druhá skupina prostředků pro ukládání prostředků AKS. Další informace najdete v tématu [Proč jsou dvě skupiny prostředků vytvořené pomocí AKS?](./faq.md#why-are-two-resource-groups-created-with-aks)
 
 ```azurepowershell-interactive
 New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
@@ -266,7 +266,7 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202872"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253690"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrana SPA back-endu pomocí OAuth 2,0, Azure Active Directory B2C a Azure API Management
 
@@ -31,7 +31,7 @@ Zjistíme, jak se dá API Management použít ve zjednodušeném scénáři s Az
 
 Pro důkladnou obranu pak používáme EasyAuth k ověření tokenu v back-endu rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 * Účet úložiště Azure (StorageV2) Pro obecné účely v2 pro hostování jednostránkové aplikace front-end JS
 * Instance Azure API Management 
@@ -458,7 +458,7 @@ Na panel omezení IP adres budete muset přidat bloky s formátovaným směrová
 Výše uvedené kroky lze upravit a upravit tak, aby bylo možné v API Management použít řadu různých použití Azure AD B2C.
 
 ## <a name="next-steps"></a>Další kroky
-* Přečtěte si další informace o [Azure Active Directory a OAuth 2.0](../active-directory/develop/authentication-scenarios.md).
+* Přečtěte si další informace o [Azure Active Directory a OAuth 2.0](../active-directory/develop/authentication-vs-authorization.md).
 * Podívejte se na další [videa](https://azure.microsoft.com/documentation/videos/index/?services=api-management) o API Management.
 * Další způsoby zabezpečení back-endové služby najdete v tématu [vzájemné ověřování certifikátů](api-management-howto-mutual-certificates.md).
 * [Vytvořte instanci služby API Management](get-started-create-service-instance.md).

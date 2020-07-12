@@ -2,13 +2,14 @@
 title: Referenční dokumentace pro vývojáře JavaScriptu pro Azure Functions
 description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 51d8c951958dc5fb4b26e92337f96e7a5c758999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996597"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252721"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -264,7 +265,7 @@ context.log(message)
 Umožňuje zapisovat do protokolů funkcí streamování na výchozí úrovni trasování. V systému `context.log` jsou k dispozici další metody protokolování, které umožňují psát protokoly funkcí na jiných úrovních trasování:
 
 
-| Metoda                 | Description                                |
+| Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
 | **Chyba (_zpráva_)**   | Zapisuje do protokolování na úrovni chyb nebo snižuje.   |
 | **upozornit (_zpráva_)**    | Zapíše do protokolování na úrovni upozornění nebo sníží. |
@@ -458,7 +459,7 @@ Existují dva způsoby, jak nainstalovat balíčky do Function App:
 
 
 ### <a name="using-kudu"></a>Použití Kudu
-1. Přejděte do části `https://<function_app_name>.scm.azurewebsites.net` (Soubor > Nový > Jiné).
+1. Přejděte na `https://<function_app_name>.scm.azurewebsites.net`.
 
 2. Klikněte na **ladit konzolu**  >  **cmd**.
 
@@ -490,7 +491,7 @@ Při místním spuštění jsou nastavení aplikace načítána z [local.setting
 
 `function.json`Vlastnosti `scriptFile` , které `entryPoint` lze použít ke konfiguraci umístění a názvu exportované funkce. Tyto vlastnosti mohou být důležité při překládání JavaScriptu.
 
-### <a name="using-scriptfile"></a>Použití metody `scriptFile`
+### <a name="using-scriptfile"></a>Používání akce `scriptFile`
 
 Ve výchozím nastavení je funkce JavaScriptu spouštěna z `index.js` , soubor, který sdílí stejný nadřazený adresář jako odpovídající `function.json` .
 
@@ -519,7 +520,7 @@ FunctionApp
 }
 ```
 
-### <a name="using-entrypoint"></a>Použití metody `entryPoint`
+### <a name="using-entrypoint"></a>Používání akce `entryPoint`
 
 V `scriptFile` (nebo `index.js` ) musí být funkce exportována pomocí, aby bylo `module.exports` možné je vyhledat a spustit. Ve výchozím nastavení je funkce, která se spustí, když se aktivuje, jediný export z tohoto souboru, export s názvem `run` nebo export s názvem `index` .
 
@@ -693,7 +694,7 @@ module.exports = async function (context) {
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 + [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 + [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

@@ -2,14 +2,15 @@
 title: Aktivační události a vazby v Azure Functions
 description: Naučte se používat triggery a vazby k připojení funkce Azure k online událostem a cloudovým službám.
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687646"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252687"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Koncepty triggerů a vazeb Azure Functions.
 
@@ -17,7 +18,7 @@ V tomto článku se seznámíte s koncepty a možnostmi triggerů funkcí a vaze
 
 Aktivační události jsou tím, co způsobí spuštění funkce. Aktivační událost definuje způsob volání funkce a funkce musí mít právě jednu aktivační událost. Aktivační události obsahují související data, která se často poskytují jako datová část funkce. 
 
-Vazba na funkci je způsob deklarativního připojení jiného prostředku ke funkci; vazby mohou být propojeny jako *vstupní vazby*, *výstupní vazby*nebo obojí. Data z vazeb jsou k dispozici funkci jako parametry.
+Vazba na funkci je způsob deklarativního připojení jiného prostředku ke funkci; vazby mohou být propojeny jako *vstupní vazby*, *výstupní vazby*nebo obojí. Data z vazeb má funkce k dispozici jako parametry.
 
 Můžete kombinovat a párovat různé vazby tak, aby odpovídaly vašim potřebám. Vazby jsou volitelné a funkce může mít jednu nebo více vstupních nebo výstupních vazeb.
 
@@ -27,10 +28,10 @@ Vezměte v úvahu následující příklady, jak můžete implementovat různé 
 
 | Ukázkový scénář | Trigger | Vstupní vazba | Výstupní vazba |
 |-------------|---------|---------------|----------------|
-| Dojde k doručení nové zprávy fronty, která spustí funkci pro zápis do jiné fronty. | Provedených<sup>*</sup> | *Žádné* | Provedených<sup>*</sup> |
+| Dojde k doručení nové zprávy fronty, která spustí funkci pro zápis do jiné fronty. | Provedených<sup>*</sup> | *Žádný* | Provedených<sup>*</sup> |
 |Naplánovaná úloha načte Blob Storage obsah a vytvoří nový dokument Cosmos DB. | Časovač | Blob Storage | Databáze Cosmos |
 |Event Grid slouží ke čtení obrázku z Blob Storage a dokumentu z Cosmos DB k odeslání e-mailu. | Event Grid | Blob Storage a Cosmos DB | SendGrid |
-| Webhook, který používá Microsoft Graph k aktualizaci excelového listu. | HTTP | *Žádné* | Microsoft Graph |
+| Webhook, který používá Microsoft Graph k aktualizaci excelového listu. | HTTP | *Žádný* | Microsoft Graph |
 
 <sup>\*</sup>Představuje různé fronty.
 
@@ -78,7 +79,7 @@ Použijete-li [atributy v knihovně tříd](functions-dotnet-class-library.md) k
 
 Informace o tom, které vazby jsou ve verzi Preview nebo které jsou schválené pro použití v produkčním prostředí, najdete v tématu [podporované jazyky](supported-languages.md).
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 - [Výrazy a vzory vazby](./functions-bindings-expressions-patterns.md)
 - [Použití návratové hodnoty funkce Azure Functions](./functions-bindings-return-value.md)
 - [Postup registrace výrazu vazby](./functions-bindings-register.md)

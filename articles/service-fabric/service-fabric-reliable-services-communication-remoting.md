@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433873"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253282"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Vzdálená komunikace služby v jazyce C# s Reliable Services
 
@@ -64,7 +65,7 @@ class MyService : StatelessService, IMyService
 ```
 
 > [!NOTE]
-> Argumenty a návratové typy v rozhraní služby mohou být jakékoli jednoduché, komplexní nebo vlastní typy, ale musí být schopny být serializovány rozhraním .NET [DataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx).
+> Argumenty a návratové typy v rozhraní služby mohou být jakékoli jednoduché, komplexní nebo vlastní typy, ale musí být schopny být serializovány rozhraním .NET [DataContractSerializer](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer).
 >
 >
 
@@ -88,19 +89,19 @@ Vytvoření proxy služby je jednoduchá operace, takže můžete vytvořit toli
 
 ### <a name="service-proxy-factory-lifetime"></a>Doba života objektu proxy služby
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) je továrna, která vytváří proxy instance pro různá rozhraní vzdálené komunikace. Pokud `ServiceProxyFactory.CreateServiceProxy` k vytvoření proxy serveru použijete rozhraní API, rozhraní vytvoří proxy služby s jedním objektem.
-Je vhodné ho vytvořit ručně, když potřebujete přepsat vlastnosti [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) .
+[ServiceProxyFactory](/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) je továrna, která vytváří proxy instance pro různá rozhraní vzdálené komunikace. Pokud `ServiceProxyFactory.CreateServiceProxy` k vytvoření proxy serveru použijete rozhraní API, rozhraní vytvoří proxy služby s jedním objektem.
+Je vhodné ho vytvořit ručně, když potřebujete přepsat vlastnosti [IServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) .
 Vytváření továrny je náročná operace. Objekt pro vytváření proxy služby udržuje interní mezipaměť komunikačního klienta.
 Osvědčeným postupem je, aby objekt pro vytváření objektů proxy služby byl co nejkratší.
 
 ## <a name="remoting-exception-handling"></a>Zpracování výjimek vzdálené komunikace
 
-Všechny vzdálené výjimky vyvolané rozhraním API služby se odesílají zpátky klientovi jako AggregateException. Vzdálené výjimky by měly být schopné serializovat pomocí kontraktu dat. Pokud nejsou, rozhraní API proxy vyvolá [ServiceException](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) s chybou serializace.
+Všechny vzdálené výjimky vyvolané rozhraním API služby se odesílají zpátky klientovi jako AggregateException. Vzdálené výjimky by měly být schopné serializovat pomocí kontraktu dat. Pokud nejsou, rozhraní API proxy vyvolá [ServiceException](/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) s chybou serializace.
 
 Proxy služby zpracovává všechny výjimky převzetí služeb při selhání pro oddíl služby, pro který je vytvořen. Pokud jsou výjimky převzetí služeb při selhání (nepřechodnými výjimkami) a opakované pokusy o volání se správným koncovým bodem, přeloží koncové body. Počet opakování pro výjimky převzetí služeb při selhání je nekonečný.
 Pokud dojde k přechodným výjimkám, proxy opakuje volání.
 
-Výchozí parametry opakování jsou poskytovány pomocí [OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
+Výchozí parametry opakování jsou poskytovány pomocí [OperationRetrySettings](/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings).
 
 Uživatel může tyto hodnoty nakonfigurovat předáním objektu OperationRetrySettings konstruktoru ServiceProxyFactory.
 
@@ -160,7 +161,7 @@ Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí explicitní
    </Resources>
    ```
 
-2. Použijte [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` oboru názvů.
+2. Použijte [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` oboru názvů.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +177,7 @@ Tyto kroky mění kód šablony pro použití zásobníku v2 pomocí explicitní
     }
    ```
 
-3. Pro vytváření klientů použijte [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` oboru názvů.
+3. Pro vytváření klientů použijte [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) z `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` oboru názvů.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +256,7 @@ Pomocí těchto kroků můžete přejít na V2_1 Stack.
     }
    ```
 
-3. Přidejte [atribut Assembly](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) na rozhraních vzdálené komunikace.
+3. Přidejte [atribut Assembly](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) na rozhraních vzdálené komunikace.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -267,7 +268,7 @@ Sestavte sestavení klienta se sestavením rozhraní, abyste se ujistili, že se
 
 ### <a name="use-explicit-remoting-classes-to-create-a-listenerclient-factory-for-the-v2-interface-compatible-version"></a>Použití explicitních tříd vzdálené komunikace k vytvoření naslouchacího procesu/továrny klienta pro verzi v2 (kompatibilní s rozhraním)
 
-Postupujte následovně:
+Postupujte takto:
 
 1. Přidejte prostředek koncového bodu s názvem "ServiceEndpointV2_1" v manifestu služby.
 
@@ -279,7 +280,7 @@ Postupujte následovně:
    </Resources>
    ```
 
-2. Použijte [naslouchací proces vzdálené komunikace v2](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Výchozí použitý název prostředku koncového bodu služby je "ServiceEndpointV2_1". Musí být definován v manifestu služby.
+2. Použijte [naslouchací proces vzdálené komunikace v2](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Výchozí použitý název prostředku koncového bodu služby je "ServiceEndpointV2_1". Musí být definován v manifestu služby.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +298,7 @@ Postupujte následovně:
     }
    ```
 
-3. Použijte [klientskou továrnu](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)v2.
+3. Použijte [klientskou továrnu](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)v2.
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -356,7 +357,7 @@ Tento krok zajistí, že služba naslouchá jenom na naslouchací službě v2.
 ### <a name="use-custom-serialization-with-a-remoting-wrapped-message"></a>Použití vlastní serializace se zprávou zabalené vzdálené komunikace
 
 U zprávy zabalené vzdálené komunikace vytvoříme jeden zabalený objekt se všemi parametry jako pole v něm.
-Postupujte následovně:
+Postupujte takto:
 
 1. Implementujte `IServiceRemotingMessageSerializationProvider` rozhraní k poskytnutí implementace pro vlastní serializaci.
     Tento fragment kódu ukazuje, jak implementace vypadá jako.
@@ -548,6 +549,6 @@ Postupujte následovně:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Webové rozhraní API s OWIN v Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [Webové rozhraní API s OWIN v Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Windows Communication Foundation komunikace s Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 * [Zabezpečená komunikace pro Reliable Services](service-fabric-reliable-services-secure-communication.md)

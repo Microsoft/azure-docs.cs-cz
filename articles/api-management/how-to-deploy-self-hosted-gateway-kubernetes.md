@@ -9,17 +9,18 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82854108"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254278"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Nasazení brány v místním prostředí v Kubernetes
 
 Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure API Management do clusteru Kubernetes.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 - Vytvořte cluster Kubernetes.
@@ -64,7 +65,7 @@ Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure 
 ### <a name="access-token"></a>Přístupový token
 Bez platného přístupového tokenu nemůže místní brána získat přístup k datům konfigurace a stahovat je z koncového bodu přidružené služby API Management. Přístupový token může být platný po dobu maximálně 30 dnů. Je nutné ho znovu vygenerovat a cluster nakonfigurovaný s čerstvým tokenem, a to buď ručně, nebo prostřednictvím automatizace před tím, než vyprší jeho platnost. 
 
-Při automatizaci aktualizace tokenu použijte [tuto operaci rozhraní API pro správu](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway/generatetoken) k vygenerování nového tokenu. Informace o správě Kubernetes tajných klíčů najdete na [webu Kubernetes](https://kubernetes.io/docs/concepts/configuration/secret).
+Při automatizaci aktualizace tokenu použijte [tuto operaci rozhraní API pro správu](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) k vygenerování nového tokenu. Informace o správě Kubernetes tajných klíčů najdete na [webu Kubernetes](https://kubernetes.io/docs/concepts/configuration/secret).
 
 ### <a name="namespace"></a>Obor názvů
 Kubernetes [obory názvů](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) vám pomůžou rozdělit jeden cluster mezi několik týmů, projektů nebo aplikací. Obory názvů poskytují obor pro prostředky a názvy. Můžou být přidružené k kvótě prostředků a zásadám řízení přístupu.

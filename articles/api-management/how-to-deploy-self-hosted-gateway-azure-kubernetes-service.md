@@ -10,18 +10,18 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205115"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254380"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Nasazení do Azure Kubernetes Service
 
 Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure API Management do [služby Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/). Další informace o nasazení brány pro místní hostování do clusteru Kubernetes najdete v tomto[dokumentu](how-to-deploy-self-hosted-gateway-kubernetes.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md)
 - [Vytvoření clusteru Azure Kubernetes](../aks/kubernetes-walkthrough-portal.md)
@@ -36,7 +36,7 @@ Tento článek popisuje postup nasazení komponenty samoobslužné brány Azure 
 5. Ujistěte se, že je v části **skripty nasazení**vybraná možnost **Kubernetes** .
 6. Chcete-li stáhnout soubor, vyberte odkaz soubor **<brány – název>. yml** vedle **nasazení** .
 7. Podle potřeby upravte mapování portů a název kontejneru v souboru YML.
-8. V závislosti na vašem scénáři možná budete muset změnit [typ služby](https://docs.microsoft.com/azure/aks/concepts-network#services). Výchozí hodnota je `NodePort`.
+8. V závislosti na vašem scénáři možná budete muset změnit [typ služby](../aks/concepts-network.md#services). Výchozí hodnota je `NodePort`.
 9. Vyberte ikonu **kopírování** nacházející se na pravém konci textového pole **nasadit** a uložte `kubectl` příkaz do schránky.
 10. Vložte příkaz do okna terminálu (nebo příkazu). Všimněte si, že příkaz očekává, že se stažený soubor prostředí nachází v aktuálním adresáři.
 ```console
@@ -63,10 +63,6 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o samoobslužné bráně najdete v tématu [Přehled služby Azure API Management v místním prostředí pro samoobslužné hostování](self-hosted-gateway-overview.md) .
-* Další informace o [službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+* Další informace o [službě Azure Kubernetes](../aks/intro-kubernetes.md)
 * Naučte [se konfigurovat a uchovávat protokoly v cloudu](how-to-configure-cloud-metrics-logs.md) .
 * * Informace [o tom, jak místně nakonfigurovat a uchovat protokoly](how-to-configure-local-metrics-logs.md)
-
-
-
-

@@ -5,11 +5,12 @@ author: sumukhs
 ms.topic: conceptual
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8765e86ffeae86b9f4e2b693c0dbf92478632dbf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645510"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253163"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurovat stavové služby Reliable Services
 Pro spolehlivé služby jsou k dispozici dvě sady nastavení konfigurace. Jedna sada je globální pro všechny spolehlivé služby v clusteru, zatímco druhá sada je specifická pro konkrétní spolehlivé služby.
@@ -102,20 +103,20 @@ ReplicatorConfig
 | Name | Jednotka | Výchozí hodnota | Poznámky |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0,015 |Časové období, po které se Replikátor v sekundárním čekání po přijetí operace před odesláním zpět na primární. Jakékoli další potvrzení, která se mají odeslat pro operace zpracovávané v tomto intervalu, se odešlou jako jedna odpověď. |
-| ReplicatorEndpoint |Není k dispozici |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
+| ReplicatorEndpoint |Nelze použít |Žádný výchozí – parametr není povinný. |IP adresa a port, které bude primární a sekundární Replikátor používat ke komunikaci s ostatními replikačními replikami v sadě replik. To by mělo odkazovat na koncový bod prostředku TCP v manifestu služby. Další informace o definování prostředků koncového bodu v manifestu služby najdete v článku [prostředky manifestu služby](service-fabric-service-manifest-resources.md) . |
 | MaxPrimaryReplicationQueueSize |Počet operací |8192 |Maximální počet operací v primární frontě. Když primární Replikátor dostane potvrzení ze všech sekundárních replikátorů, operace se uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
 | MaxSecondaryReplicationQueueSize |Počet operací |16384 |Maximální počet operací v sekundární frontě. Po zajištění vysoké dostupnosti stavu prostřednictvím trvalosti se operace uvolní. Tato hodnota musí být větší než 64 a mocnina 2. |
 | CheckpointThresholdInMB |MB |50 |Velikost místa pro soubor protokolu, po kterém je stav nastaven na kontrolní bod. |
 | MaxRecordSizeInKB |KB |1024 |Největší velikost záznamu, kterou může Replikátor zapsat do protokolu. Tato hodnota musí být násobkem 4 a větší než 16. |
 | MinLogSizeInMB |MB |0 (zjištěno systémem) |Minimální velikost transakčního protokolu Protokol nebude moci zkrátit na velikost pod tímto nastavením. 0 znamená, že Replikátor určí minimální velikost protokolu. Zvýšením této hodnoty se zvýší možnost provádět částečné kopírování a přírůstkové zálohování, protože by se snížila pravděpodobnost, že se zkrátí relevantní záznamy protokolů. |
-| TruncationThresholdFactor |Jednotek |2 |Určuje, jaká velikost protokolu se bude aktivovat. Prahová hodnota zkrácení je určena MinLogSizeInMB vynásobeným TruncationThresholdFactor. TruncationThresholdFactor musí být větší než 1. MinLogSizeInMB * TruncationThresholdFactor musí být menší než MaxStreamSizeInMB. |
-| ThrottlingThresholdFactor |Jednotek |4 |Určuje, jak velikost protokolu se spustí, aby se replika omezila. Prahová hodnota omezení (v MB) je určena hodnotou Max (((MinLogSizeInMB * ThrottlingThresholdFactor), (CheckpointThresholdInMB * ThrottlingThresholdFactor)). Prahová hodnota omezení (v MB) musí být větší než prahová hodnota zkrácení (v MB). Prahová hodnota zkrácení (v MB) musí být menší než MaxStreamSizeInMB. |
+| TruncationThresholdFactor |Faktor |2 |Určuje, jaká velikost protokolu se bude aktivovat. Prahová hodnota zkrácení je určena MinLogSizeInMB vynásobeným TruncationThresholdFactor. TruncationThresholdFactor musí být větší než 1. MinLogSizeInMB * TruncationThresholdFactor musí být menší než MaxStreamSizeInMB. |
+| ThrottlingThresholdFactor |Faktor |4 |Určuje, jak velikost protokolu se spustí, aby se replika omezila. Prahová hodnota omezení (v MB) je určena hodnotou Max (((MinLogSizeInMB * ThrottlingThresholdFactor), (CheckpointThresholdInMB * ThrottlingThresholdFactor)). Prahová hodnota omezení (v MB) musí být větší než prahová hodnota zkrácení (v MB). Prahová hodnota zkrácení (v MB) musí být menší než MaxStreamSizeInMB. |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |Maximální kumulovaná velikost (v MB) protokolů zálohování v daném řetězci záložního protokolu. Pokud přírůstkové zálohování vygeneruje protokol zálohování, který by mohl způsobit, že se nashromážděné protokoly zálohování od příslušné úplné zálohy budou větší než tato velikost, budou žádosti o přírůstkové zálohování neúspěšné. V takových případech musí uživatel provést úplnou zálohu. |
 | SharedLogId |Identifikátor GUID |"" |Určuje jedinečný identifikátor GUID, který se použije pro identifikaci sdíleného souboru protokolu používaného v této replice. Služby by obvykle neměly používat toto nastavení. Pokud je však zadán parametr SharedLogId, musí být také zadán parametr SharedLogPath. |
 | SharedLogPath |Plně kvalifikovaný název cesty |"" |Určuje plně kvalifikovanou cestu, kam se vytvoří sdílený soubor protokolu pro tuto repliku. Služby by obvykle neměly používat toto nastavení. Pokud je však zadán parametr SharedLogPath, musí být také zadán parametr SharedLogId. |
 | SlowApiMonitoringDuration |Sekundy |300 |Nastaví interval monitorování pro spravovaná volání rozhraní API. Příklad: uživatelem poskytnutá funkce zpětného volání zálohy. Po uplynutí intervalu se do Správce stavu pošle zpráva o stavu upozornění. |
 | LogTruncationIntervalSeconds |Sekundy |0 |Konfigurovatelný interval, při kterém se bude na každé replice inicializovat zkracování protokolu. Slouží k tomu, aby bylo zajištěno, že protokol je také zkrácen na základě času namísto pouze velikosti protokolu. Toto nastavení také vynutí vyprázdnění odstraněných položek ve spolehlivém slovníku. Proto se dá použít k zajištění včasného mazání odstraněných položek. |
-| EnableStableReads |Logická hodnota |False |Povolení stabilních čtení omezuje sekundární repliky, aby vracely hodnoty, které byly kvorum-potvrzeno. |
+| EnableStableReads |Logická hodnota |Ne |Povolení stabilních čtení omezuje sekundární repliky, aby vracely hodnoty, které byly kvorum-potvrzeno. |
 
 ### <a name="sample-configuration-via-code"></a>Ukázková konfigurace prostřednictvím kódu
 ```csharp
@@ -183,5 +184,4 @@ Nastavení SharedLogId a SharedLogPath se vždycky používají společně k vyt
 
 ## <a name="next-steps"></a>Další kroky
 * [Ladění aplikace Service Fabric v aplikaci Visual Studio](service-fabric-debugging-your-application.md)
-* [Referenční příručka pro vývojáře pro Reliable Services](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+* [Referenční příručka pro vývojáře pro Reliable Services](/previous-versions/azure/dn706529(v=azure.100))

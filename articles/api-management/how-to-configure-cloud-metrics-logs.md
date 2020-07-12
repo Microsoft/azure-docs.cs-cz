@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205128"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254522"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Konfigurace metrik a protokolů cloudu pro Azure API Management bránu pro samoobslužné hostování
 
@@ -49,7 +49,7 @@ Tady je Ukázková konfigurace:
 
 Brána pro samoobslužné hostování aktuálně generuje následující metriky prostřednictvím Azure Monitor:
 
-| Metric  | Popis |
+| Metrika  | Popis |
 | ------------- | ------------- |
 | Žádosti  | Počet požadavků na rozhraní API v období |
 | Doba trvání žádostí o bránu | Počet milisekund od chvíle, kdy brána přijala požadavek, do chvíle odeslání úplné odpovědi. |
@@ -57,14 +57,12 @@ Brána pro samoobslužné hostování aktuálně generuje následující metriky
 
 ## <a name="logs"></a>Protokoly
 
-Samoobslužná brána aktuálně neodesílá [diagnostické protokoly](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) do cloudu. Nicméně je možné [nakonfigurovat a uchovat protokoly místně](how-to-configure-local-metrics-logs.md) tam, kde je nasazená samoobslužná brána. 
+Samoobslužná brána aktuálně neodesílá [diagnostické protokoly](./api-management-howto-use-azure-monitor.md#activity-logs) do cloudu. Nicméně je možné [nakonfigurovat a uchovat protokoly místně](how-to-configure-local-metrics-logs.md) tam, kde je nasazená samoobslužná brána. 
 
-Pokud je brána nasazená ve [službě Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/), můžete povolit [Azure monitor kontejnerů](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) pro shromažďování protokolů z kontejnerů a jejich zobrazení v Log Analytics. 
+Pokud je brána nasazená ve [službě Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/), můžete povolit [Azure monitor kontejnerů](../azure-monitor/insights/container-insights-overview.md) pro shromažďování protokolů z kontejnerů a jejich zobrazení v Log Analytics. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o samoobslužné bráně najdete v tématu [Přehled služby Azure API Management v místním prostředí pro samoobslužné hostování](self-hosted-gateway-overview.md) .
 * Další informace o [konfiguraci a uchování protokolů místně](how-to-configure-local-metrics-logs.md)
-
-

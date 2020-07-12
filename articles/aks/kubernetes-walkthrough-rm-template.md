@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 447af1580f601c1f55690434b371aeeed2d335a0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cc71603add2caeb277f8083d292832a374a95544
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106284"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251497"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Rychlý Start: nasazení clusteru služby Azure Kubernetes (AKS) pomocí šablony ARM
 
@@ -30,9 +30,9 @@ Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používán�
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+Pokud ještě předplatné Azure nemáte, vytvořte si napřed [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Pokud chcete vytvořit cluster AKS pomocí šablony Správce prostředků, poskytnete veřejný klíč SSH a Azure Active Directory instančního objektu. Alternativně můžete pro oprávnění použít [spravovanou identitu](use-managed-identity.md) místo instančního objektu. Pokud potřebujete některý z těchto prostředků, přečtěte si následující část. v opačném případě přejděte k části [Kontrola šablony](#review-the-template) .
 
@@ -105,7 +105,7 @@ Další ukázky AKS najdete na webu [šablony pro rychlý Start AKS][aks-quickst
 
 3. Vyberte **Koupit**.
 
-Vytvoření clusteru AKS trvá několik minut. Než přejdete k dalšímu kroku, počkejte, než se cluster úspěšně nasadí.
+Vytvoření clusteru AKS bude trvat několik minut. Než přejdete k dalšímu kroku, počkejte, než se cluster úspěšně nasadí.
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
@@ -305,7 +305,7 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [aks-quickstart-templates]: https://azure.microsoft.com/resources/templates/?term=Azure+Kubernetes+Service
 
 <!-- LINKS - internal -->

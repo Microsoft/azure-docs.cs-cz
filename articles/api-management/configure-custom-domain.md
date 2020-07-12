@@ -12,11 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83004748"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252891"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
@@ -28,11 +29,11 @@ Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí sub
 > [!WARNING]
 > Zákazníci, kteří chtějí použít připnutí certifikátů ke zlepšení zabezpečení svých aplikací, musí používat vlastní název domény a certifikát, který spravují, nikoli výchozí certifikát. Zákazníci, kteří připnout výchozí certifikát, budou mít zavedenou závislost na vlastnostech certifikátu, který neovládají, což není doporučený postup.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení kroků popsaných v tomto článku musíte mít:
 
--   Aktivní předplatné Azure.
+-   Musíte mít aktivní předplatné Azure.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -63,15 +64,15 @@ K provedení kroků popsaných v tomto článku musíte mít:
 1. Vyberte koncový bod, který chcete aktualizovat.
 1. V okně na pravé straně klikněte na **vlastní**.
 
-    - Do pole **vlastní název domény**zadejte název, který chcete použít. Například, `api.contoso.com`.
+    - Do pole **vlastní název domény**zadejte název, který chcete použít. Například `api.contoso.com`.
     - V části **certifikát**vyberte certifikát z Key Vault. Můžete také nahrát platnou hodnotu. Soubor PFX a zadejte **heslo**, pokud je certifikát chráněn heslem.
 
     > [!NOTE]
     > Názvy domén se zástupnými znaky, např., `*.contoso.com` jsou podporovány ve všech úrovních s výjimkou úrovně spotřeby.
 
     > [!TIP]
-    > Doporučujeme použít [Azure Key Vault pro správu certifikátů](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) a jejich nastavení na autorenew.
-    > Pokud používáte Azure Key Vault ke správě vlastního certifikátu TLS/SSL, ujistěte se, že je certifikát vložen do Key Vault [jako _certifikát_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nikoli jako _tajný kód_.
+    > Doporučujeme použít [Azure Key Vault pro správu certifikátů](../key-vault/certificates/about-certificates.md) a jejich nastavení na autorenew.
+    > Pokud používáte Azure Key Vault ke správě vlastního certifikátu TLS/SSL, ujistěte se, že je certifikát vložen do Key Vault [jako _certifikát_](/rest/api/keyvault/createcertificate/createcertificate), nikoli jako _tajný kód_.
     >
     > Pokud chcete načíst certifikát TLS/SSL, API Management musí mít v Azure Key Vault obsahujícím certifikát oprávnění list a Get tajných klíčů. Při použití Azure Portal všechny nezbytné kroky konfigurace se automaticky dokončí. Při použití nástrojů příkazového řádku nebo rozhraní API pro správu musí být tato oprávnění udělena ručně. To se provádí ve dvou krocích. Nejprve pomocí stránky spravované identity na vaší instanci API Management zajistěte, aby byla povolena spravovaná identita, a poznamenejte si ID objektu zabezpečení zobrazené na této stránce. Druhý, udělte seznam oprávnění a získejte přístup k tomuto ID objektu zabezpečení pro Azure Key Vault obsahující certifikát.
     >

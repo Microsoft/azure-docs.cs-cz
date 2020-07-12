@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 55fd27d473bd47fd3321bdb2e730e4ef2d35352f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 560f7b958e04b55a7d642c9f95750812b86d32bc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106156"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251718"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -83,7 +83,7 @@ V rámci clusteru Kubernetes se ověřování pomocí tokenu Webhooku používá
 
 Jak je znázorněno na obrázku výše, Server rozhraní API volá server Webhooku AKS a provede následující kroky:
 
-1. Klientská aplikace Azure AD se používá v kubectl k přihlašování uživatelů pomocí [toku udělení autorizace zařízení OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code).
+1. Klientská aplikace Azure AD se používá v kubectl k přihlašování uživatelů pomocí [toku udělení autorizace zařízení OAuth 2,0](../active-directory/develop/v2-oauth2-device-code.md).
 2. Azure AD poskytuje access_token, id_token a refresh_token.
 3. Uživatel vytvoří požadavek na kubectl s access_token z kubeconfig.
 4. Kubectl odesílá access_token do APIServer.
@@ -138,7 +138,7 @@ Tato funkce vám umožní například nejen udělit uživatelům oprávnění k 
 
 AKS poskytuje následující čtyři předdefinované role. Jsou podobné [integrovaným rolím Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) , ale s několika rozdíly, jako je podpora CRDs. Úplný seznam akcí povolených všemi integrovanými rolemi najdete [tady](../role-based-access-control/built-in-roles.md).
 
-| Role                                | Description  |
+| Role                                | Popis  |
 |-------------------------------------|--------------|
 | Prohlížeč RBAC pro službu Azure Kubernetes  | Povoluje přístup jen pro čtení k zobrazení většiny objektů v oboru názvů. Nepovoluje zobrazení rolí nebo vazeb rolí. Tato role nepovoluje zobrazení `Secrets` , protože čtení obsahu tajných kódů umožňuje přístup k `ServiceAccount` přihlašovacím údajům v oboru názvů, což by mohlo povolit přístup k rozhraní API jako jakékoli `ServiceAccount` v oboru názvů (forma eskalace oprávnění).  |
 | Zapisovač RBAC služby Azure Kubernetes | Povoluje přístup pro čtení a zápis většiny objektů v oboru názvů. Tato role nepovoluje prohlížení a úpravy rolí nebo vazeb rolí. Tato role však umožňuje přístup k `Secrets` luskům a jejich spuštění jako libovolných ServiceAccount v oboru názvů, takže se dá použít k získání úrovní přístupu rozhraní API všech ServiceAccount v oboru názvů. |

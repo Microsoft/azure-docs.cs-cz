@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462948"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253180"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Jak používat rozhraní API pro komunikaci Reliable Services
 Služba Azure Service Fabric jako platforma zcela nezávislá o komunikaci mezi službami. Všechny protokoly a zásobníky jsou přijatelné od UDP přes HTTP. Chcete-li zvolit, jak by měly služby komunikovat, je k tomu vývojář služby. Rozhraní Reliable Services Application Framework poskytuje integrované komunikační zásobníky i rozhraní API, které můžete použít k sestavení vlastních komunikačních komponent.
@@ -187,7 +188,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 Service Fabric poskytuje rozhraní API, která klientům a dalším službám umožní požádat o tuto adresu podle názvu služby. To je důležité, protože adresa služby není statická. Služby se v clusteru pohybují pro účely vyrovnávání a dostupnosti prostředků. Toto je mechanismus, který umožňuje klientům přeložit adresu naslouchání pro službu.
 
 > [!NOTE]
-> Úplný návod, jak napsat naslouchací proces komunikace, najdete v tématu [Service Fabric služby webového rozhraní API pomocí samoobslužného hostování](service-fabric-reliable-services-communication-webapi.md) pro C#, zatímco pro Java můžete napsat vlastní implementaci HTTP serveru, viz příklad aplikace EchoServer na adrese https://github.com/Azure-Samples/service-fabric-java-getting-started .
+> Úplný návod, jak napsat naslouchací proces komunikace, najdete v tématu [Service Fabric služby webového rozhraní API pomocí samoobslužného hostování](./service-fabric-reliable-services-communication-aspnetcore.md) pro C#, zatímco pro Java můžete napsat vlastní implementaci HTTP serveru, viz příklad aplikace EchoServer na adrese https://github.com/Azure-Samples/service-fabric-java-getting-started .
 >
 >
 
