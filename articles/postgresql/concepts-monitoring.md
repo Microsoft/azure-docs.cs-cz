@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 89450e5518d854fbc31b43324ecb05f47e1ab5ac
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.date: 07/10/2020
+ms.openlocfilehash: fc41b76fa14d464b2e4ddcca7e98997011a51cd4
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970990"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276630"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitorování a ladění Azure Database for PostgreSQL – jeden server
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for PostgreSQL poskytuje různé možnosti monitorování, které poskytují přehled o chování serveru.
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL poskytuje různé metriky, které poskytují přeh
 ### <a name="list-of-metrics"></a>Seznam metrik
 Tyto metriky jsou k dispozici pro Azure Database for PostgreSQL:
 
-|Metrika|Zobrazovaný název metriky|Jednotka|Description|
+|Metrika|Zobrazovaný název metriky|Jednotka|Popis|
 |---|---|---|---|
 |cpu_percent|Procento využití procesoru|Procento|Procento využití procesoru.|
 |memory_percent|Procentuální hodnota paměti|Procento|Procentuální podíl používané paměti.|
@@ -34,7 +34,7 @@ Tyto metriky jsou k dispozici pro Azure Database for PostgreSQL:
 |serverlog_storage_usage|Využité úložiště protokolu serveru|Bajty|Velikost používaného úložiště protokolu serveru.|
 |serverlog_storage_limit|Limit úložiště protokolu serveru|Bajty|Maximální úložiště protokolu serveru pro tento server.|
 |active_connections|Aktivní připojení|Počet|Počet aktivních připojení k serveru.|
-|connections_failed|Neúspěšná připojení|Počet|Počet neúspěšných připojení k serveru|
+|connections_failed|Neúspěšná připojení|Počet|Počet navázaných připojení, u kterých došlo k chybě.|
 |network_bytes_egress|Síťové výstupy|Bajty|Síť vyprší napříč aktivními připojeními.|
 |network_bytes_ingress|Síťové vstupy|Bajty|Síť v rámci aktivních připojení.|
 |backup_storage_used|Využité úložiště záloh|Bajty|Velikost využitého úložiště záloh.|
