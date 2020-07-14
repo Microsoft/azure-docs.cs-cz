@@ -18,6 +18,7 @@ ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ef2faf2a1d1a131dc5f2a01d3fa46cc61a06fb6
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85078811"
@@ -36,8 +37,8 @@ Způsob, jakým určíte, kdo může žádat o přístup k balíčku, je zásado
 
 | Scénář | Počet zásad |
 | --- | --- |
-| Chci, aby všichni uživatelé v adresáři měli stejné nastavení požadavků a schvalování pro balíček pro přístup | Jeden |
-| Chci, aby všichni uživatelé v některých připojených organizacích mohli žádat o přístup k balíčku | Jeden |
+| Chci, aby všichni uživatelé v adresáři měli stejné nastavení požadavků a schvalování pro balíček pro přístup | Jednu |
+| Chci, aby všichni uživatelé v některých připojených organizacích mohli žádat o přístup k balíčku | Jednu |
 | Chci uživatelům v adresáři a také uživatelům, kteří jsou mimo můj adresář, dovolit přístup k balíčku pro přístup | Několik |
 | Chci pro některé uživatele zadat jiná nastavení schvalování | Několik |
 | Chci, aby někteří uživatelé měli přístup k vypršení platnosti přiřazení balíčků, zatímco ostatní uživatelé můžou svůj přístup rozšíří. | Několik |

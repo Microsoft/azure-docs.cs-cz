@@ -15,7 +15,7 @@ ms.locfileid: "84609277"
 
     ![Snímek obrazovky s uvítacím oknem Android Studia](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-01-start-new-android-studio-project.png)
 
-1. Zobrazí se průvodce **zvolit projekt** . V poli pro výběr aktivity vyberte možnost **telefon a tablet** a **prázdná aktivita** . Vyberte **Další**.
+1. Zobrazí se průvodce **zvolit projekt** . V poli pro výběr aktivity vyberte možnost **telefon a tablet** a **prázdná aktivita** . Vyberte **Next** (Další).
 
    ![Snímek obrazovky s průvodcem pro výběr projektu](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-02-target-android-devices.png)
 

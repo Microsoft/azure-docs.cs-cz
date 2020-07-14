@@ -20,7 +20,7 @@ Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovac�
 | C#          | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++         | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac]                                   |
 | Java        | [Android][java-android], [JRE][java-jre]                                                       |
-| JavaScript  | [Prohlížeč, Node. js][js-code]                                                                    |
+| JavaScript  | [Prohlížeč, Node.js][js-code]                                                                    |
 | Objective-C | [iOS][obj-iOS], [MacOS][obj-macOS]                                                             |
 | Python      | [Windows, Linux, macOS][python]                                                                |
 | Swift       | [iOS][swift-iOS], [MacOS][swift-macOS]                                                         |

@@ -21,6 +21,6 @@ V tomto rychlém startu použijete [sadu Speech SDK](~/articles/cognitive-servic
 Po splnění několika předpokladů připojení vlastního hlasového asistenta trvá jenom několik kroků:
 > [!div class="checklist"]
 > * Vytvořte `BotFrameworkConfig` objekt z klíče a oblasti předplatného.
-> * Vytvořte `DialogServiceConnector` objekt pomocí výše uvedeného `BotFrameworkConfig` objektu.
+> * Vytvořte `DialogServiceConnector` objekt pomocí `BotFrameworkConfig` výše uvedeného objektu.
 > * Pomocí `DialogServiceConnector` objektu spusťte proces naslouchání pro jeden utterance.
 > * Zkontrolujte `ActivityReceivedEventArgs` vrácenou.

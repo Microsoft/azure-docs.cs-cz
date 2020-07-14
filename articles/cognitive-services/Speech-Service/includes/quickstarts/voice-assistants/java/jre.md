@@ -28,7 +28,7 @@ Než začnete, nezapomeňte:
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor _pom. XML_ tak, aby zahrnoval následující závislost:
+Pokud chcete povolit protokolování, aktualizujte soubor _pom.xml_ tak, aby zahrnoval následující závislost:
 
 ```xml
  <dependency>
@@ -40,7 +40,7 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor _pom. XML
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Chcete-li do projektu Java přidat novou prázdnou třídu, vyberte možnost **soubor** > **Nová** > **Třída**.
+1. Chcete-li do projektu Java přidat novou prázdnou třídu, vyberte možnost **soubor**  >  **Nová**  >  **Třída**.
 
 1. V okně **nové třídy Java** zadejte _speechsdk. Start_ do pole **balíček** a do pole **název** zadejte _Main_ .
 
@@ -113,7 +113,7 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor _pom. XML
    }
    ```
 
-1. V `main` metodě nejprve nakonfigurujte `DialogServiceConfig` a použijte ji k vytvoření `DialogServiceConnector` instance. Tato instance se připojuje k přímému line kanálu pro práci s robotem. `AudioConfig` Instance se také používá k určení zdroje zvukového vstupu. V tomto příkladu se používá výchozí mikrofon s nástrojem `AudioConfig.fromDefaultMicrophoneInput()`.
+1. V `main` metodě nejprve nakonfigurujte `DialogServiceConfig` a použijte ji k vytvoření `DialogServiceConnector` instance. Tato instance se připojuje k přímému line kanálu pro práci s robotem. `AudioConfig`Instance se také používá k určení zdroje zvukového vstupu. V tomto příkladu se používá výchozí mikrofon s nástrojem `AudioConfig.fromDefaultMicrophoneInput()` .
 
    - Nahraďte řetězec `YourSubscriptionKey` vaším klíčem předplatného, který můžete získat z [tohoto webu](~/articles/cognitive-services/speech-service/get-started.md).
    - Nahraďte řetězec `YourServiceRegion` [oblastí](~/articles/cognitive-services/speech-service/regions.md) , která je přidružená k vašemu předplatnému.
@@ -185,7 +185,7 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor _pom. XML
 
 1. Uložte změny do `Main` souboru.
 
-1. Pro podporu přehrávání odpovědí přidejte další třídu, která transformuje objekt PullAudioOutputStream vrácený z rozhraní getaudio () API na InputStream Java pro usnadnění manipulace. Toto `ActivityAudioStream` je specializovaná třída, která zpracovává zvukovou odpověď z přímého kanálu s rozpoznáváním řádků. Poskytuje přistupující objekty pro načtení informací o formátu zvuku, které jsou požadovány pro zpracování přehrávání. V takovém případě vyberte možnost **soubor** > **Nová** > **Třída**.
+1. Pro podporu přehrávání odpovědí přidejte další třídu, která transformuje objekt PullAudioOutputStream vrácený z rozhraní getaudio () API na InputStream Java pro usnadnění manipulace. Toto `ActivityAudioStream` je specializovaná třída, která zpracovává zvukovou odpověď z přímého kanálu s rozpoznáváním řádků. Poskytuje přistupující objekty pro načtení informací o formátu zvuku, které jsou požadovány pro zpracování přehrávání. V takovém případě vyberte možnost **soubor**  >  **Nová**  >  **Třída**.
 
 1. V okně **nové třídy Java** zadejte _speechsdk. Start_ do pole **Package** a do pole **název** _ActivityAudioStream_ .
 
@@ -432,9 +432,9 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor _pom. XML
 
 1. Uložte změny do `ActivityAudioStream` souboru.
 
-## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
+## <a name="build-and-run-the-app"></a>Sestavte a spusťte aplikaci.
 
-Vyberte F11 nebo vyberte **Spustit** > **ladění**.
+Vyberte F11 nebo vyberte **Spustit**  >  **ladění**.
 Konzola zobrazí zprávu "říká něco".
 V tomto okamžiku si přečtete anglickou frázi nebo větu, kterou vaše robot může pochopit. Váš řeč se přenáší na robota prostřednictvím kanálu přímého Lineového rozpoznávání, kde ho rozpozná a zpracuje robot. Odpověď se vrátí jako aktivita. Pokud robot vrátí hlas jako odpověď, zvuk se přehraje pomocí `AudioPlayer` třídy.
 
