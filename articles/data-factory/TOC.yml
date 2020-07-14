@@ -270,6 +270,8 @@
           href: connector-db2.md
         - name: Formát textu s oddělovači
           href: format-delimited-text.md
+        - name: Rozdílový formát
+          href: format-delta.md
         - name: Drill
           href: connector-drill.md
         - name: Dynamics 365
@@ -727,6 +729,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Spouštění balíčků v prostředí Azure-SSIS IR
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: Diagnostika možností připojení v Azure-SSIS IR
+          href: ssis-integration-runtime-diagnose-connectivity-faq.md
 - name: Referenční informace
   items:
     - name: Skript toku dat

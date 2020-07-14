@@ -5,6 +5,8 @@
   items:
     - name: Co jsou služby Cognitive Services?
       href: Welcome.md
+    - name: Co je nového v dokumentaci ke Cognitive Services
+      href: whats-new-docs.md
     - name: Cognitive Services a strojové učení
       href: cognitive-services-and-machine-learning.md
     - name: Vlastní podřízené domény pro Cognitive Services
@@ -64,6 +66,24 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+- name: Velký objem dat
+  items:
+    - name: Cognitive Services pro velký objem dat
+      href: ./big-data/cognitive-services-for-big-data.md
+    - name: Začínáme
+      href: ./big-data/getting-started.md
+    - name: ukázky
+      items:
+        - name: Python
+          href: ./big-data/samples-python.md
+        - name: Scala
+          href: ./big-data/samples-scala.md
+    - name: Návody
+      items:
+        - name: 'Návod: Detektor anomálií'
+          href: ./big-data/recipes/anomaly-detection.md
+        - name: 'Návod: Art Explorer'
+          href: ./big-data/recipes/art-explorer.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

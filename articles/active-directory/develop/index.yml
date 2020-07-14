@@ -1,232 +1,102 @@
 ### YamlMime:Landing
 title: Dokumentace k platformě Microsoft Identity Platform
-summary: Microsoft Identity Platform umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání rozhraní API od Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, která jste vytvořili. Tuto plnohodnotnou platformu tvoří ověřovací služba kompatibilní se standardy OAuth 2.0 a OpenID Connect, opensourcové knihovny, registrace a konfigurace aplikací, robustní koncepční a referenční dokumentace, rychlá zprovoznění, ukázky kódu, kurzy a praktičtí průvodci.
+summary: Microsoft Identity Platform poskytuje službu ověřování, opensourcové knihovny a nástroje pro správu aplikací. Prostřednictvím našich rychlých zprovoznění, kurzů a ukázek kódu se naučíte vytvářet moderní řešení ověřování založená na standardech. Vytvářejte aplikace, ke kterým se uživatelé a zákazníkům přihlásí pomocí svých identit Microsoft nebo účtů na sociálních sítí, a autorizujte přístup k vašim rozhraním API nebo rozhraním API Microsoftu, jako je Microsoft Graph.
 metadata:
   ms.topic: landing-page
-  ms.date: 06/22/2019
+  ms.date: 07/13/2020
   author: CelesteDG
   ms.author: celested
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d1f3958fd47f6e3e5f3971697de546b4cb738b3d
-  ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+  ms.openlocfilehash: 689fb9953f6de9c717d774e222824c5b3701527e
+  ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/17/2020
-  ms.locfileid: "84886901"
+  ms.lasthandoff: 07/10/2020
+  ms.locfileid: "86230345"
 landingContent:
 - title: O platformě Microsoft Identity Platform
   linkLists:
   - linkListType: overview
     links:
-    - text: Microsoft Identity Platform (v2.0)
+    - text: Co je Microsoft Identity Platform?
       url: v2-overview.md
-    - text: Rozvoj platformy Microsoft Identity Platform
-      url: about-microsoft-identity-platform.md
-    - text: Migrace aplikací do MSAL
+    - text: Ukázky kódů
+      url: sample-v2-code.md
+    - text: Migrace aplikací ADAL do MSAL
       url: msal-migration.md
-    - text: Azure Active Directory pro vývojáře (v1.0)
-      url: ../azuread-dev/v1-overview.md
-  - linkListType: concept
+- title: Základní koncepce
+  linkLists:
+  - linkListType: learn
     links:
     - text: Základy ověřování
-      url: authentication-scenarios.md
+      url: authentication-vs-authorization.md
     - text: Toky ověřování a scénáře aplikací
       url: authentication-flows-app-scenarios.md
     - text: Osvědčené postupy a doporučení
       url: identity-platform-integration-checklist.md
+- title: Série výukových videí
+  linkLists:
   - linkListType: video
     links:
-    - text: 'Série: Platforma identit pro vývojáře'
-      url: identity-videos.md
-- title: Vytvoření jednostránkové webové aplikace
+    - text: Platforma identit pro vývojáře
+      url: identity-videos.md#microsoft-identity-platform-for-developers
+    - text: Základy ověřování
+      url: identity-videos.md#authentication-fundamentals
+    - text: 'One Dev Question: Základy platformy'
+      url: identity-videos.md#microsoft-identity-platform-basics
+- title: Jednostránková aplikace (SPA)
   linkLists:
   - linkListType: get-started
     links:
-    - text: Přehled scénáře
-      url: scenario-spa-overview.md
-  - linkListType: quickstart
-    links:
-    - text: JavaScript – ověřovací kód
-      url: quickstart-v2-javascript-auth-code.md
-    - text: JavaScript – implicitní
-      url: quickstart-v2-javascript.md
     - text: Úhlová
       url: quickstart-v2-angular.md
-  - linkListType: tutorial
-    links:
-    - text: JavaScript – ověřovací kód
-      url: tutorial-v2-javascript-auth-code.md
-    - text: JavaScript – implicitní
-      url: tutorial-v2-javascript-spa.md
-  - linkListType: download
-    links:
-    - text: Ukázky – JavaScript, Angular
-      url: sample-v2-code.md#single-page-applications
-    - text: Ukázka – SPA s Azure AD B2C
-      url: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
-- title: Vytvoření webové aplikace, která přihlašuje uživatele
+    - text: JavaScript – tok ověřovacího kódu
+      url: quickstart-v2-javascript-auth-code.md
+    - text: JavaScript – implicitní tok
+      url: quickstart-v2-javascript.md
+- title: Webová aplikace
   linkLists:
   - linkListType: get-started
     links:
-    - text: Přehled scénáře
-      url: scenario-web-app-sign-user-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Jádro ASP.NET
-      url: quickstart-v2-aspnet-core-webapp.md
     - text: ASP.NET
       url: quickstart-v2-aspnet-webapp.md
-    - text: Java
-      url: quickstart-v2-java-webapp.md
+    - text: Jádro ASP.NET
+      url: quickstart-v2-aspnet-core-webapp.md
     - text: Python
       url: quickstart-v2-python-webapp.md
-  - linkListType: tutorial
-    links:
-    - text: Jádro ASP.NET
-      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
-  - linkListType: download
-    links:
-    - text: Ukázky – ASP.NET Core, ASP.NET, Java, Python
-      url: sample-v2-code.md#web-applications
-- title: Vytvoření webové aplikace, která volá webová rozhraní API
+- title: Mobilní/nativní aplikace
   linkLists:
   - linkListType: get-started
     links:
-    - text: Přehled scénáře
-      url: scenario-web-app-call-api-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Java
-      url: quickstart-v2-java-webapp.md
-    - text: Python
-      url: quickstart-v2-python-webapp.md
-  - linkListType: tutorial
-    links:
-    - text: Jádro ASP.NET
-      url: https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2#scope-of-this-tutorial
-  - linkListType: download
-    links:
-    - text: Ukázky – ASP.NET Core, ASP.NET, Node.js, Ruby, Java, Python
-      url: sample-v2-code.md#web-applications
-- title: Vytvoření chráněného webového rozhraní API
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Přehled scénáře
-      url: scenario-protected-web-api-overview.md
-  - linkListType: tutorial
-    links:
-    - text: Webové rozhraní API architektury ASP.NET Core
-      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
-  - linkListType: download
-    links:
-    - text: Ukázka – ASP.NET
-      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2
-- title: Webové rozhraní API, které volá webová rozhraní API
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Přehled scénáře
-      url: scenario-web-api-call-api-overview.md
-  - linkListType: tutorial
-    links:
-    - text: Webové rozhraní API architektury ASP.NET Core, které volá Microsoft Graph
-      url: https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph
-    - text: Webové rozhraní API v Javě, které volá Microsoft Graph
-      url: https://github.com/Azure-Samples/ms-identity-java-webapi
-- title: Vytvoření desktopové aplikace, která volá webová rozhraní API
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Přehled scénáře
-      url: scenario-desktop-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Získání tokenu a volání rozhraní API Microsoft Graphu (Windows Desktop)
-      url: quickstart-v2-windows-desktop.md
-    - text: Získání tokenu a volání rozhraní API Microsoft Graphu (UPW)
-      url: quickstart-v2-uwp.md
-  - linkListType: tutorial
-    links:
-    - text: Volání rozhraní API Microsoft Graphu (Windows Desktop)
-      url: tutorial-v2-windows-desktop.md
-    - text: Volání rozhraní API Microsoft Graphu (UPW)
-      url: tutorial-v2-windows-uwp.md
-  - linkListType: download
-    links:
-    - text: Ukázky – .NET, .NET Core, Java, Python
-      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
-- title: Vytvoření aplikace démona, která volá webová rozhraní API
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Přehled scénáře
-      url: scenario-daemon-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Získání tokenu a volání rozhraní API Microsoft Graphu (konzola .NET Core)
-      url: quickstart-v2-netcore-daemon.md
-    - text: Získání tokenu a volání rozhraní API Microsoft Graphu (webová aplikace ASP.NET)
-      url: https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp
-  - linkListType: download
-    links:
-    - text: Ukázky – konzola ASP.NET, web ASP.NET, Java, Python
-      url: sample-v2-code.md#daemon-applications
-- title: Vytvoření mobilní aplikace, která volá webová rozhraní API
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: Přehled scénáře
-      url: scenario-mobile-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Získání tokenu a volání rozhraní API Microsoft Graphu (Android)
+    - text: Android
       url: quickstart-v2-android.md
-    - text: Získání tokenu a volání rozhraní API Microsoft Graphu (iOS)
+    - text: iOS a macOS
       url: quickstart-v2-ios.md
-    - text: Získání tokenu a volání rozhraní API Microsoft Graphu (Xamarin iOS a Android)
-      url: https://github.com/Azure-Samples/active-directory-xamarin-native-v2
-  - linkListType: tutorial
-    links:
-    - text: Přihlášení uživatelů a volání rozhraní API Microsoft Graphu (Android)
-      url: tutorial-v2-android.md
-    - text: Přihlášení uživatelů a volání rozhraní API Microsoft Graphu (iOS)
-      url: tutorial-v2-ios.md
-  - linkListType: download
-    links:
-    - text: Ukázka – Android, iOS, Xamarin
-      url: sample-v2-code.md#desktop-and-mobile-public-client-apps
-- title: Volání rozhraní API Microsoft Graphu
+    - text: Windows Desktop (WPF)
+      url: quickstart-v2-windows-desktop.md
+- title: Zabezpečené webové rozhraní API
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
-    - text: Informace o Microsoft Graphu
-      url: https://docs.microsoft.com/graph/overview
-  - linkListType: quickstart
-    links:
-    - text: Zprovoznění během tří minut
-      url: https://developer.microsoft.com/graph/get-started
-  - linkListType: learn
-    links:
-    - text: Použití rozhraní API
-      url: https://docs.microsoft.com/graph/use-the-api
-    - text: Microsoft Graph REST API v1.0
-      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-1.0
-    - text: Microsoft Graph REST API Beta
-      url: https://docs.microsoft.com/graph/api/overview?toc=.%2Fref%2Ftoc.json&view=graph-rest-beta
-  - linkListType: deploy
-    links:
-    - text: Graph Explorer
-      url: https://developer.microsoft.com/graph/graph-explorer/
-- title: Vytvoření aplikace určené pro zákazníky, která přihlašuje sociální a místní identity
+    - text: ASP.NET
+      url: quickstart-v2-dotnet-native-aspnet.md
+    - text: Jádro ASP.NET
+      url: https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+- title: Microsoft Graph
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
-    - text: Informace o Azure AD B2C
-      url: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
-  - linkListType: tutorial
+    - text: Použití rozhraní Microsoft Graph API
+      url: microsoft-graph-intro.md
+    - text: Přehled ověřování Microsoft Graphu
+      url: https://docs.microsoft.com/graph/auth/
+- title: SAML 2.0
+  linkLists:
+  - linkListType: get-started
     links:
-    - text: Přidání zprostředkovatelů identity do vašich aplikací v Azure AD B2C
-      url: https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers
+    - text: Jak Azure AD využívá protokol SAML
+      url: active-directory-saml-protocol-reference.md
+    - text: Jednotné přihlašování SAML v Azure AD
+      url: single-sign-on-saml-protocol.md

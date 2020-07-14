@@ -5,39 +5,39 @@
   items:
     - name: Co je Azure Spring Cloud?
       href: spring-cloud-overview.md
+    - name: Java a základní operační systém pro aplikace mikroslužeb Spring
+      href: spring-cloud-principles-microservice-apps.md
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Spuštění aplikace Spring Cloudu s využitím portálu
+    - name: Spuštění aplikace Spring Cloudu – portál
       href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Spuštění aplikace Spring Cloudu s využitím Azure CLI
+    - name: Spuštění aplikace Spring Cloudu – Azure CLI
       href: spring-cloud-quickstart-launch-app-cli.md
-    - name: Spuštění aplikace Spring Cloudu ze zdroje
+    - name: Spuštění aplikace Spring Cloudu – zdroj
       href: spring-cloud-launch-from-source.md
-    - name: Spuštění aplikace Spring Cloudu s využitím Mavenu
+    - name: Spuštění aplikace Spring Cloudu – Maven
       href: spring-cloud-quickstart-launch-app-maven.md
 - name: Kurzy
   items:
-    - name: Nastavení konfiguračního serveru
-      href: spring-cloud-tutorial-config-server.md
     - name: Ruční škálování aplikace
       href: spring-cloud-tutorial-scale-manual.md
-    - name: Monitorování aplikace pomocí distribuovaného trasování a App Insights
-      href: spring-cloud-tutorial-distributed-tracing.md
-    - name: Monitorování prostředků Spring Cloudu s využitím výstrah a skupin akcí
+    - name: Upozornění a skupiny akcí
       href: spring-cloud-tutorial-alerts-action-groups.md
-    - name: Navázání aplikace na Azure CosmosDB
-      href: spring-cloud-tutorial-bind-cosmos.md
-    - name: Navázání aplikace s využitím Azure Cache for Redis
-      href: spring-cloud-tutorial-bind-redis.md
-    - name: Navázání aplikace na Azure MySQL
-      href: spring-cloud-tutorial-bind-mysql.md
-    - name: Řídicí panel Circuit Breaker s využitím Azure Spring Cloudu
+    - name: Použití IntelliJ k nasazení aplikací
+      href: spring-cloud-tutorial-intellij-deploy-apps.md
+    - name: Řídicí panel jističe
       href: spring-cloud-tutorial-circuit-breaker.md
-    - name: Mapování vlastního názvu DNS na Azure Spring Cloud
+    - name: Vlastní název DNS
       href: spring-cloud-tutorial-custom-domain.md
     - name: Použití IntelliJ k nasazování aplikací Azure Spring Cloudu
       href: spring-cloud-tutorial-intellij-deploy-apps.md
+    - name: Zřízení instance Azure Spring Cloudu s využitím Terraformu
+      href: spring-cloud-tutorial-provision-azure-spring-cloud-instance-terraform.md
+    - name: CI/CD s využitím Jenkinse
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+    - name: Použití spravované identity pro připojení Key Vaultu k aplikaci Azure Spring Cloud
+      href: spring-cloud-tutorial-managed-identities-key-vault.md
 - name: ukázky
   items:
     - name: Integrované služby Azure Policy
@@ -45,15 +45,15 @@
       href: ./policy-samples.md
 - name: Koncepty
   items:
-    - name: Principy kvót a omezení pro Azure Spring Cloud
+    - name: Principy kvót a omezení
       href: spring-cloud-quotas.md
-    - name: Principy metrik v Azure Spring Cloudu
+    - name: Principy metrik
       href: spring-cloud-concept-metrics.md
-    - name: Správa a monitorování aplikací s využitím ovladače Azure Spring Boot
+    - name: Ovladač Azure Spring Boot
       href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
-    - name: Ovládací prvky zabezpečení pro službu Azure Spring Cloud
+    - name: Ovládací prvky zabezpečení
       href: spring-cloud-concept-security-controls.md
-    - name: Principy stavu aplikací v Azure Spring Cloudu
+    - name: Principy stavu aplikací
       href: spring-cloud-concept-app-status.md
     - name: Plán pro zotavení po havárii
       href: disaster-recovery.md
@@ -61,34 +61,48 @@
   items:
     - name: Příprava aplikace Java Spring pro nasazení
       href: spring-cloud-tutorial-prepare-app-deployment.md
-    - name: 'Jak spustit, zastavit a odstranit aplikaci Azure Spring Cloud'
-      href: spring-cloud-howto-start-stop-delete.md
-    - name: Jak nastavit přípravné prostředí
-      href: spring-cloud-howto-staging-environment.md
+    - name: Nastavení konfiguračního serveru
+      href: spring-cloud-tutorial-config-server.md
     - name: Povolení registrace služeb
       href: spring-cloud-service-registration.md
-    - name: Analýzy aplikačních protokolů a metrik
-      href: diagnostic-services.md
-    - name: Streamování protokolů aplikace Azure Spring Cloudu v reálném čase
-      href: spring-cloud-howto-log-streaming.md
-    - name: Použití trvalého úložiště v Azure Spring Cloudu
+    - name: Navázání aplikace na Azure CosmosDB
+      href: spring-cloud-tutorial-bind-cosmos.md
+    - name: Navázání aplikace na Azure Cache for Redis
+      href: spring-cloud-tutorial-bind-redis.md
+    - name: Navázání aplikace na Azure MySQL
+      href: spring-cloud-tutorial-bind-mysql.md
+    - name: 'Spuštění, zastavení a odstranění aplikace'
+      href: spring-cloud-howto-start-stop-delete.md
+    - name: Nastavení přípravného prostředí
+      href: spring-cloud-howto-staging-environment.md
+    - name: Použití trvalého úložiště
       href: spring-cloud-howto-persistent-storage.md
-    - name: Integrace Azure Spring Cloudu se řešeními pro vyrovnávání zatížení Azure
+    - name: Integrace s řešeními pro vyrovnávání zatížení v Azure
       href: spring-cloud-howto-integrate-azure-load-balancers.md
-    - name: Povolení spravované identity přiřazené systémem pro aplikaci Azure Spring Cloud
+    - name: Povolení spravované identity přiřazené systémem
       href: spring-cloud-howto-enable-system-assigned-managed-identity.md
-    - name: Samodiagnostika a řešení problémů v Azure Spring Cloudu
+    - name: Samodiagnostika a řešení problémů
       href: spring-cloud-howto-self-diagnose-solve.md
-- name: Nasazení DevOps do Azure Spring Cloudu
-  items:
-    - name: CI/CD s využitím Azure DevOps
-      href: spring-cloud-howto-cicd.md
-    - name: CI/CD s využitím GitHub Actions
-      href: spring-cloud-howto-github-actions.md
-    - name: Ověřování Azure Spring Cloudu s využitím Key Vaultu v GitHub Actions
-      href: spring-cloud-github-actions-key-vault.md
-    - name: CI/CD s využitím Jenkinse
-      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+    - name: Monitorování
+      items:
+        - name: Distribuované trasování a App Insights
+          href: spring-cloud-tutorial-distributed-tracing.md
+        - name: Analýza protokolů a metrik
+          href: diagnostic-services.md
+        - name: Streamování protokolů v reálném čase
+          href: spring-cloud-howto-log-streaming.md
+    - name: Nasazení DevOps
+      items:
+        - name: CI/CD s využitím Azure DevOps
+          href: spring-cloud-howto-cicd.md
+        - name: CI/CD s využitím GitHub Actions
+          href: spring-cloud-howto-github-actions.md
+        - name: Ověřování s využitím Key Vaultu v GitHub Actions
+          href: spring-cloud-github-actions-key-vault.md
+    - name: Řešení potíží
+      items:
+        - name: Průvodce odstraňováním potíží
+          href: spring-cloud-troubleshoot.md
 - name: Referenční informace
   items:
     - name: Modul plug-in Azure CLI
@@ -97,7 +111,5 @@
       href: spring-cloud-resources.md
     - name: Nejčastější dotazy
       href: spring-cloud-faq.md
-    - name: Průvodce odstraňováním potíží
-      href: spring-cloud-troubleshoot.md
     - name: REST API – referenční informace
       href: 'https://docs.microsoft.com/rest/api/azurespringclould/'

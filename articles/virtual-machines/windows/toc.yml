@@ -434,6 +434,8 @@
                   items:
                     - name: Z virtuálního počítače
                       href: ../image-version-vm-powershell.md
+                    - name: Z disku VHD nebo snímku
+                      href: ../image-version-snapshot-powershell.md
                     - name: Migrace ze spravované image
                       href: ../image-version-managed-image-powershell.md
                     - name: Kopírování z jiné galerie
@@ -454,6 +456,8 @@
                   items:
                     - name: Z virtuálního počítače
                       href: ../image-version-vm-cli.md
+                    - name: Z disku VHD nebo snímku
+                      href: ../image-version-snapshot-cli.md
                     - name: Migrace ze spravované image
                       href: ../image-version-managed-image-cli.md
                     - name: Kopírování z jiné galerie
@@ -508,6 +512,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Vyhledání a použití imagí
           href: cli-ps-findimage.md
+        - name: Informace o plánu nákupu
+          href: ../marketplace-images.md
         - name: Příprava virtuálního počítače pro nahrání
           href: prepare-for-upload-vhd-image.md
         - name: Zachycení virtuálního počítače v imagi
@@ -853,10 +859,18 @@
           href: disks-incremental-snapshots-portal.md
         - name: Zálohování nespravovaných disků
           href: incremental-snapshots.md
+        - name: Šifrování
+          items:
+            - name: Povolení šifrování na základě hostitele – PowerShell
+              href: disks-enable-host-based-encryption-powershell.md
+            - name: Povolení klíčů spravovaných zákazníkem – PowerShell
+              href: disks-enable-customer-managed-keys-powershell.md
+            - name: Povolení klíčů spravovaných zákazníkem – portál
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: Povolení dvojitého šifrování při nečinnosti
+              href: disks-enable-double-encryption-at-rest-powershell.md
         - name: Migrace a převod
           items:
-            - name: Převod na šifrování na straně serveru
-              href: disks-ade-sse-conversion-powershell.md
             - name: Převod disku mezi úrovněmi Standard a Premium
               href: convert-disk-storage.md
             - name: Migrace na Premium Storage s Azure Site Recovery
