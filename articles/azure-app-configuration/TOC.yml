@@ -103,6 +103,8 @@
       href: howto-import-export-data.md
     - name: Směrování událostí na vlastní koncový bod
       href: howto-app-configuration-event.md
+    - name: Automatické zálohování úložiště konfigurace
+      href: howto-backup-config-store.md
     - name: Osvědčené postupy
       href: howto-best-practices.md
 - name: Referenční informace

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833099"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220809"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Použití interního Load Balancer s App Service Environment
 
@@ -46,7 +46,7 @@ K dispozici jsou některé věci, které nemůžete použít při použití inte
 Vytvoření pomocného mechanismu pro interního nástroje se neliší od normálního vytváření pomocného mechanismu. Podrobnější diskuzi o vytváření pomocného mechanismu řízení najdete v tématu [jak vytvořit App Service Environment][HowtoCreateASE]. Proces vytvoření interního nástroje pomocného mechanismu je stejný mezi vytvořením virtuální sítě během vytváření pomocného procesu nebo výběrem již existující virtuální sítě. Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatížení postupujte takto: 
 
 1. V Azure Portal vyberte **vytvořit prostředek-> web a mobilní zařízení-> App Service Environment**.
-2. Vyberte své předplatné.
+2. Vyberte předplatné.
 3. Vyberte nebo vytvořte skupinu prostředků.
 4. Vyberte nebo vytvořte virtuální síť.
 5. Pokud vybíráte virtuální síť, vytvořte podsíť.
@@ -54,7 +54,7 @@ Vytvoření pomocného mechanismu pro interního nástroje se neliší od normá
 7. Zadejte název subdomény (Tento název je subdoménou, která se používá pro aplikace vytvořené v tomto mechanismu pro nápovědu).
 8. Vyberte **OK** a pak **vytvořit**.
 
-![][1]
+![Zobrazuje obrazovky, které slouží k vytvoření pomocného nástroje interního nástroje.][1]
 
 V podokně Virtual Network existuje možnost konfigurace virtuální sítě, která umožňuje vybrat mezi externí VIP nebo interní VIP. Výchozí hodnota je Externí. Pokud máte nastavenou hodnotu externí, váš přístupový protokol používá internetovou IP adresu s přístupem. Pokud vyberete možnost Interní, vaše služba ASE bude mít nakonfigurovaný interní nástroj pro vyrovnávání zatížení s IP adresou v rámci vaší virtuální sítě. 
 
@@ -65,12 +65,12 @@ Vytvoření aplikace v pomocném okně interního nástroje je stejné jako vytv
 
 1. V Azure Portal vyberte **vytvořit prostředek-> web a mobilní zařízení-> web** nebo **mobilní** **aplikace nebo aplikaci API**.
 2. Zadejte název aplikace.
-3. Vyberte své předplatné.
+3. Vyberte předplatné.
 4. Vyberte nebo vytvořte skupinu prostředků.
 5. Vyberte nebo vytvořte plán App Service (ASP). Pokud vytváříte nové prostředí ASP, jako umístění vyberte svůj pomocným mechanismem a vyberte fond pracovních procesů, ve kterém chcete vytvořit ASP. Při vytváření ASP vyberete jako umístění a fond pracovních procesů správce přidaných objektů. Když zadáte název aplikace, uvidíte, že subdoména v názvu vaší aplikace je nahrazena subdoménou pro váš přístup k pomocnému programu. 
 6. Vyberte **Vytvořit**. Nezapomeňte zaškrtnout políčko **Připnout na řídicí panel** , pokud chcete, aby se aplikace zobrazovala na řídicím panelu. 
 
-![][2]
+![Ukazuje, jak vytvořit aplikaci v interního nástroje pomocném mechanismu pro zobrazení v Azure Portal.][2]
 
 V části název aplikace se název subdomény aktualizuje tak, aby odrážel subdoménu vašeho pomocného programu. 
 
@@ -79,11 +79,11 @@ Služba ASE s interním nástrojem pro vyrovnávání zatížení se trochu liš
 
 Po vytvoření pomocného bodu obnovení si všimněte, že se v subdoméně zobrazuje zadaná subdoména a v nabídce **Nastavení** s názvem **interního nástroje Certificate**je nová položka. Pomocného programu se vytvoří s certifikátem podepsaným svým držitelem, který usnadňuje testování HTTPS. Na portálu se dozvíte, že potřebujete zadat vlastní certifikát pro protokol HTTPS, ale doporučujeme vám, abyste měli certifikát, který se dokončí s vaší subdoménou. 
 
-![][3]
+![Zobrazuje subdoménu, kterou jste zadali při vytváření pomocného mechanismu.][3]
 
 Pokud jednoduše vyzkoušíte něco a nevíte, jak vytvořit certifikát, můžete k vytvoření certifikátu podepsaného svým držitelem použít konzolovou aplikaci IIS MMC. Jakmile je vytvořený, můžete ho exportovat jako soubor. pfx a pak ho nahrát do uživatelského rozhraní certifikátu interního nástroje. Když přistupujete k webu zabezpečenému pomocí certifikátu podepsaného svým držitelem, zobrazí se vám upozornění, že web, ke kterému přistupujete, není zabezpečený z důvodu neschopnosti ověřit certifikát. Pokud se chcete tomuto upozornění vyhnout, budete potřebovat správně podepsaný certifikát, který odpovídá vaší subdoméně a má řetěz důvěryhodnosti, který rozpozná váš prohlížeč.
 
-![][6]
+![Ukazuje, jak použít konzolovou aplikaci IIS MMC k vytvoření certifikátu podepsaného svým držitelem.][6]
 
 Pokud chcete tento tok vyzkoušet s vlastními certifikáty a otestovat přístup HTTP i HTTPS k vašemu přimocnému programu:
 
@@ -98,7 +98,7 @@ Pokud chcete tento tok vyzkoušet s vlastními certifikáty a otestovat přístu
 
 IP adresa pro váš interního nástroje je uvedena ve vašich vlastnostech jako virtuální IP adresa.
 
-![][4]
+![Zobrazuje, že IP adresa pro váš interního nástroje je uvedená ve vašich vlastnostech jako virtuální IP adresa.][4]
 
 ## <a name="using-an-ilb-ase"></a>Použití pomocného mechanismu interního nástroje
 #### <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě)
@@ -108,7 +108,7 @@ Pokud chcete k dalšímu omezení přístupu použít skupin zabezpečení sít�
 
 Abyste mohli nakonfigurovat skupin zabezpečení sítě, musíte znát IP adresu, kterou Azure používá ke správě vašeho pomocného mechanismu. Tato IP adresa je také odchozí IP adresa z vašeho přimocného mechanismu, pokud vytváří internetové požadavky. Odchozí IP adresa pro pomocného správce sítě zůstane po celou dobu životnosti vašeho pomocného mechanismu. Pokud odstraníte a znovu vytvoříte správce přidaných mechanismů, zobrazí se nová IP adresa. IP adresu najdete tak, že přejdete na **Nastavení-> vlastnosti** a vyhledáte **odchozí IP adresu**. 
 
-![][5]
+![Zobrazuje, kde můžete najít odchozí IP adresu pro váš pomocného správce.][5]
 
 #### <a name="general-ilb-ase-management"></a>Obecná Správa pomocného mechanismu interního nástroje
 Správa interního nástroje pomocného mechanismu je převážně stejná jako správa pomocného mechanismu. Je nutné škálovat fondy pracovních procesů, aby bylo možné hostovat více instancí ASP, a škálovat servery front-end tak, aby zpracovávala zvýšené množství přenosů HTTP/HTTPS. Obecné informace o správě konfigurace pomocného mechanismu služby najdete v tématu [konfigurace App Service Environment][ASEConfig]. 

@@ -40,6 +40,8 @@
       items:
         - name: Informace o okruzích a peeringu
           href: expressroute-circuit-peerings.md
+        - name: Informace o upgradu šířky pásma okruhu
+          href: about-upgrade-circuit-bandwidth.md
         - name: Přesun okruhů z modelu nasazení Classic do Resource Manager
           href: expressroute-move.md
     - name: BFD přes ExpressRoute

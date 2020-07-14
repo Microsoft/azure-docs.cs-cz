@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: bef655c4dd30147733b28252199a7d8b58df42f8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc0918f3d9739a214e682d7faa460b6cc519cb0b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085986"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207835"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Spuštění příkladů MapReduce obsažených v HDInsight
 
@@ -33,7 +33,7 @@ Ukázky se nacházejí v clusteru HDInsight na adrese `/usr/hdp/current/hadoop-m
 
 V tomto archivu jsou uvedené následující ukázky:
 
-|Ukázka |Description |
+|Ukázka |Popis |
 |---|---|
 |aggregatewordcount|Spočítá slova ve vstupních souborech.|
 |aggregatewordhist|Vypočítá histogram slov ve vstupních souborech.|
@@ -107,10 +107,12 @@ V tomto archivu jsou uvedené následující ukázky:
 
     Tento příkaz zřetězí všechny výstupní soubory vytvářené úlohou. Zobrazí výstup do konzoly. Výstup se bude podobat následujícímu:
 
-        zum     1
-        zur     1
-        zwanzig 1
-        zweite  1
+    ```output
+    zum     1
+    zur     1
+    zwanzig 1
+    zweite  1
+    ```
 
     Každý řádek představuje slovo a kolikrát k němu došlo ve vstupních datech.
 
@@ -124,15 +126,17 @@ V tomto archivu jsou uvedené následující ukázky:
 
 Existuje určitý způsob, jak vytvořit Sudoku puzzle; nelze opakovat číslo v rámci sloupce nebo řádku. V clusteru HDInsight je příklad, který je správně vytvořen. Je umístěný na adrese `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` a obsahuje následující text:
 
-    8 5 ? 3 9 ? ? ? ?
-    ? ? 2 ? ? ? ? ? ?
-    ? ? 6 ? 1 ? ? ? 2
-    ? ? 4 ? ? 3 ? 5 9
-    ? ? 8 9 ? 1 4 ? ?
-    3 2 ? 4 ? ? 8 ? ?
-    9 ? ? ? 8 ? 5 ? ?
-    ? ? ? ? ? ? 2 ? ?
-    ? ? ? ? 4 5 ? 7 8
+```output
+8 5 ? 3 9 ? ? ? ?
+? ? 2 ? ? ? ? ? ?
+? ? 6 ? 1 ? ? ? 2
+? ? 4 ? ? 3 ? 5 9
+? ? 8 9 ? 1 4 ? ?
+3 2 ? 4 ? ? 8 ? ?
+9 ? ? ? 8 ? 5 ? ?
+? ? ? ? ? ? 2 ? ?
+? ? ? ? 4 5 ? 7 8
+```
 
 Chcete-li spustit tento ukázkový problém prostřednictvím příkladu Sudoku, použijte následující příkaz:
 
@@ -142,15 +146,17 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 Výsledky se zobrazí podobně jako následující text:
 
-    8 5 1 3 9 2 6 4 7
-    4 3 2 6 7 8 1 9 5
-    7 9 6 5 1 4 3 8 2
-    6 1 4 8 2 3 7 5 9
-    5 7 8 9 6 1 4 2 3
-    3 2 9 4 5 7 8 1 6
-    9 4 7 2 8 6 5 3 1
-    1 8 5 7 3 9 2 6 4
-    2 6 3 1 4 5 9 7 8
+```output
+8 5 1 3 9 2 6 4 7
+4 3 2 6 7 8 1 9 5
+7 9 6 5 1 4 3 8 2
+6 1 4 8 2 3 7 5 9
+5 7 8 9 6 1 4 2 3
+3 2 9 4 5 7 8 1 6
+9 4 7 2 8 6 5 3 1
+1 8 5 7 3 9 2 6 4
+2 6 3 1 4 5 9 7 8
+```
 
 ## <a name="pi--example"></a>PI (π) – příklad
 

@@ -159,6 +159,8 @@
           href: streaming-policy-concept.md
         - name: Zásady symetrických klíčů
           href: content-key-policy-concept.md
+        - name: Ochrana obsahu s využitím Azure AD
+          href: azure-ad-content-protection.md
     - name: Monitorování
       items:
         - name: Události s využitím Event Gridu

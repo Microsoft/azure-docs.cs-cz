@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/15/2020
-ms.openlocfilehash: 347f37fb999656a1c4951f01a75a392887b5b882
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/09/2020
+ms.openlocfilehash: 43839e19eb252c9fa7ab46605fd247f3a798d223
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045667"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220299"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Kopírování dat z a do Snowflake pomocí Azure Data Factory
 
@@ -48,11 +48,11 @@ Pro službu propojenou s Snowflake jsou podporovány následující vlastnosti.
 
 | Vlastnost         | Popis                                                  | Vyžadováno |
 | :--------------- | :----------------------------------------------------------- | :------- |
-| typ             | Vlastnost Type musí být nastavená na **Snowflake**.              | Yes      |
-| připojovací řetězec | Nakonfigurujte [úplný název účtu](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (včetně dalších segmentů, které identifikují oblast a cloudovou platformu), uživatelské jméno, heslo, databázi a datový sklad. Zadejte připojovací řetězec JDBC pro připojení k instanci Snowflake. Můžete také do Azure Key Vault umístit heslo. Další podrobnosti najdete v příkladech pod tabulkou a také s [přihlašovacími údaji úložiště v Azure Key Vaultovém](store-credentials-in-key-vault.md) článku.| Yes      |
-| connectVia       | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se používá pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí prostředí Azure Integration runtime. | No       |
+| typ             | Vlastnost Type musí být nastavená na **Snowflake**.              | Ano      |
+| připojovací řetězec | Nakonfigurujte [úplný název účtu](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (včetně dalších segmentů, které identifikují oblast a cloudovou platformu), uživatelské jméno, heslo, databázi a datový sklad. Zadejte připojovací řetězec JDBC pro připojení k instanci Snowflake. Můžete také do Azure Key Vault umístit heslo. Další podrobnosti najdete v příkladech pod tabulkou a také s [přihlašovacími údaji úložiště v Azure Key Vaultovém](store-credentials-in-key-vault.md) článku.| Ano      |
+| connectVia       | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se používá pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí prostředí Azure Integration runtime. | Ne       |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -60,7 +60,7 @@ Pro službu propojenou s Snowflake jsou podporovány následující vlastnosti.
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>(optional)"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,7 +78,7 @@ Pro službu propojenou s Snowflake jsou podporovány následující vlastnosti.
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>(optional)",
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": { 
@@ -104,11 +104,11 @@ Následující vlastnosti jsou podporovány pro datovou sadu Snowflake.
 
 | Vlastnost  | Popis                                                  | Vyžadováno                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| typ      | Vlastnost Type datové sady musí být nastavená na **SnowflakeTable**. | Yes                         |
+| typ      | Vlastnost Type datové sady musí být nastavená na **SnowflakeTable**. | Ano                         |
 | XSD | Název schématu. |Ne pro zdroj, Ano pro jímku  |
-| tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
+| table | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -142,13 +142,13 @@ Chcete-li kopírovat data z Snowflake, v části **zdroj** aktivity kopírován�
 
 | Vlastnost                     | Popis                                                  | Vyžadováno |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SnowflakeSource**. | Yes      |
-| query          | Určuje dotaz SQL, který má načíst data z Snowflake.<br>Provádění uložené procedury není podporováno. | No       |
-| exportSettings | Rozšířená nastavení používaná k načtení dat z Snowflake. Můžete nakonfigurovat ty, které podporuje příkaz Kopírovat do, který Data Factory projde při vyvolání příkazu. | No       |
+| typ                         | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **SnowflakeSource**. | Ano      |
+| query          | Určuje dotaz SQL, který má načíst data z Snowflake.<br>Provádění uložené procedury není podporováno. | Ne       |
+| exportSettings | Rozšířená nastavení používaná k načtení dat z Snowflake. Můžete nakonfigurovat ty, které podporuje příkaz Kopírovat do, který Data Factory projde při vyvolání příkazu. | Ne       |
 | ***V části `exportSettings` :*** |  |  |
-| typ | Typ příkazu pro export nastavený na **SnowflakeExportCopyCommand**. | Yes |
-| additionalCopyOptions | Další možnosti kopírování, které jsou k dispozici jako slovník párů klíč-hodnota. Příklady: MAX_FILE_SIZE, OVERWRITE. Další informace najdete v tématu [Možnosti kopírování Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | No |
-| additionalFormatOptions | Další možnosti formátu souboru, které jsou k dispozici pro kopírování příkazu jako slovníku párů klíč-hodnota. Příklady: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Další informace najdete v tématu [Možnosti typu formátu Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | No |
+| typ | Typ příkazu pro export nastavený na **SnowflakeExportCopyCommand**. | Ano |
+| additionalCopyOptions | Další možnosti kopírování, které jsou k dispozici jako slovník párů klíč-hodnota. Příklady: MAX_FILE_SIZE, OVERWRITE. Další informace najdete v tématu [Možnosti kopírování Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#copy-options-copyoptions). | Ne |
+| additionalFormatOptions | Další možnosti formátu souboru, které jsou k dispozici pro kopírování příkazu jako slovníku párů klíč-hodnota. Příklady: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Další informace najdete v tématu [Možnosti typu formátu Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html#format-type-options-formattypeoptions). | Ne |
 
 #### <a name="direct-copy-from-snowflake"></a>Přímá kopie z Snowflake
 
@@ -156,18 +156,23 @@ Pokud vaše úložiště a formát dat jímky splňují kritéria popsaná v té
 
 - **Propojená služba jímky** je [**úložiště objektů BLOB v Azure**](connector-azure-blob-storage.md) s ověřováním pomocí **sdíleného přístupového podpisu** .
 
-- **Formát dat jímky** je **Parquet** nebo **oddělený text**s následujícími konfiguracemi:
+- **Formát dat jímky** je **Parquet**, **oddělený text**nebo **JSON** s následujícími konfiguracemi:
 
-   - V případě formátu **Parquet** je Kompresní kodek **none**, **přichycení**nebo **LZO**.
-   - Textový formát s **oddělovači** :
-     - `rowDelimiter`je **\r\n**nebo jakýkoli jeden znak.
-     - `compression`nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
-     - `encodingName`je ponechán jako výchozí nebo nastavený na **UTF-8**.
-     - `quoteChar`je **dvojité uvozovky**, **jednoduché uvozovky**nebo **prázdný řetězec** (bez znaku uvozovky).
+    - V případě formátu **Parquet** je Kompresní kodek **none**, **přichycení**nebo **LZO**.
+    - Textový formát s **oddělovači** :
+        - `rowDelimiter`je **\r\n**nebo jakýkoli jeden znak.
+        - `compression`nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
+        - `encodingName`je ponechán jako výchozí nebo nastavený na **UTF-8**.
+        - `quoteChar`je **dvojité uvozovky**, **jednoduché uvozovky** nebo **prázdný řetězec** (bez znaku uvozovek).
+    - V případě formátu **JSON** podporuje Přímá kopie pouze jeden sloupec, protože zdroj Snowflake tabulky nebo výsledek dotazu obsahuje pouze jeden sloupec a datový typ tohoto sloupce je **variant**, **objekt**nebo **pole**.
+        - `compression`nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
+        - `encodingName`je ponechán jako výchozí nebo nastavený na **UTF-8**.
+        - `filePattern`v jímky aktivity kopírování je ponecháno jako výchozí nebo nastavené na **setOfObjects**.
+
 - Ve zdroji aktivity kopírování není `additionalColumns` zadán.
 - Není zadáno mapování sloupce.
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -218,7 +223,7 @@ Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Stor
 > [!NOTE]
 > V pracovní službě Azure Blob Storage se musí použít ověřování pomocí sdíleného přístupového podpisu, jak vyžaduje příkaz Snowflake COPY. 
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -268,13 +273,13 @@ Chcete-li kopírovat data do Snowflake, jsou v části **jímka** aktivity kopí
 
 | Vlastnost          | Popis                                                  | Vyžadováno                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| typ              | Vlastnost Type jímky aktivity kopírování nastavená na **SnowflakeSink**. | Yes                                           |
-| preCopyScript     | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Snowflake při každém spuštění. Tato vlastnost slouží k vyčištění předem načtených dat. | No                                            |
-| importSettings | Rozšířená nastavení používaná k zápisu dat do Snowflake. Můžete nakonfigurovat ty, které podporuje příkaz Kopírovat do, který Data Factory projde při vyvolání příkazu. | No |
+| typ              | Vlastnost Type jímky aktivity kopírování nastavená na **SnowflakeSink**. | Ano                                           |
+| preCopyScript     | Zadejte dotaz SQL pro aktivitu kopírování, která se má spustit před zápisem dat do Snowflake při každém spuštění. Tato vlastnost slouží k vyčištění předem načtených dat. | Ne                                            |
+| importSettings | Rozšířená nastavení používaná k zápisu dat do Snowflake. Můžete nakonfigurovat ty, které podporuje příkaz Kopírovat do, který Data Factory projde při vyvolání příkazu. | Ne |
 | ***V části `importSettings` :*** |                                                              |  |
-| typ | Typ příkazu pro import, který je nastavený na **SnowflakeImportCopyCommand**. | Yes |
-| additionalCopyOptions | Další možnosti kopírování, které jsou k dispozici jako slovník párů klíč-hodnota. Příklady: ON_ERROR, FORCE, LOAD_UNCERTAIN_FILES. Další informace najdete v tématu [Možnosti kopírování Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | No |
-| additionalFormatOptions | Další možnosti formátu souboru, které jsou k dispozici pro příkaz kopírování, který je k dispozici jako slovník párů klíč-hodnota. Příklady: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Další informace najdete v tématu [Možnosti typu formátu Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | No |
+| typ | Typ příkazu pro import, který je nastavený na **SnowflakeImportCopyCommand**. | Ano |
+| additionalCopyOptions | Další možnosti kopírování, které jsou k dispozici jako slovník párů klíč-hodnota. Příklady: ON_ERROR, FORCE, LOAD_UNCERTAIN_FILES. Další informace najdete v tématu [Možnosti kopírování Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#copy-options-copyoptions). | Ne |
+| additionalFormatOptions | Další možnosti formátu souboru, které jsou k dispozici pro příkaz kopírování, který je k dispozici jako slovník párů klíč-hodnota. Příklady: DATE_FORMAT, TIME_FORMAT TIMESTAMP_FORMAT. Další informace najdete v tématu [Možnosti typu formátu Snowflake](https://docs.snowflake.com/en/sql-reference/sql/copy-into-table.html#format-type-options-formattypeoptions). | Ne |
 
 #### <a name="direct-copy-to-snowflake"></a>Přímá kopie na Snowflake
 
@@ -282,15 +287,19 @@ Pokud zdrojové úložiště a formát dat splňují kritéria popsaná v této 
 
 - **Zdrojová propojená služba** je [**úložiště objektů BLOB v Azure**](connector-azure-blob-storage.md) s ověřováním pomocí **sdíleného přístupového podpisu** .
 
-- **Zdrojový formát dat** je **Parquet** nebo **oddělený text**s následujícími konfiguracemi:
+- **Formát zdrojových dat** je **Parquet**, **oddělený text**nebo **JSON** s následujícími konfiguracemi:
 
-   - V případě formátu **Parquet** je Kompresní kodek **žádný** nebo **přichycený**.
+    - Pro formát **Parquet** je Kompresní kodek **žádný**nebo **přichycený**.
 
-   - Textový formát s **oddělovači** :
-     - `rowDelimiter`je **\r\n**nebo jakýkoli jeden znak. Pokud není oddělovač řádků "\r\n", `firstRowAsHeader` je nutné mít **hodnotu false**a není `skipLineCount` zadán.
-     - `compression`nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
-     - `encodingName`je ponechán jako výchozí nebo nastavený na UTF-8, UTF-16, UTF-16BE, UTF-32 "," UTF-32BE "," BIG5 "," EUC-JP "," EUC-KR "," UTF ",", "," ISO-2022-JP ";" ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," WINDOWS-1250 "," WINDOWS-1251 "," WINDOWS-1252 "," WINDOWS-1253 "," Windows-1254 "," Windows-1255 ";
-     - `quoteChar`je **dvojité uvozovky**, **jednoduché uvozovky**nebo **prázdný řetězec** (bez znaku uvozovky).
+    - Textový formát s **oddělovači** :
+        - `rowDelimiter`je **\r\n**nebo jakýkoli jeden znak. Pokud není oddělovač řádků "\r\n", `firstRowAsHeader` je nutné mít **hodnotu false**a není `skipLineCount` zadán.
+        - `compression`nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
+        - `encodingName`je ponechán jako výchozí nebo nastavený na UTF-8, UTF-16, UTF-16BE, UTF-32 "," UTF-32BE "," BIG5 "," EUC-JP "," EUC-KR "," UTF ",", "," ISO-2022-JP ";" ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," WINDOWS-1250 "," WINDOWS-1251 "," WINDOWS-1252 "," WINDOWS-1253 "," Windows-1254 "," Windows-1255 ";
+        - `quoteChar`je **dvojité uvozovky**, **jednoduché uvozovky** nebo **prázdný řetězec** (bez znaku uvozovek).
+    - V případě formátu **JSON** podporuje Přímá kopie pouze jeden sloupec a datový typ tohoto sloupce je **variantou**, **objektem**nebo **polem**.
+        - `compression`nemůže být **žádná komprese**, **gzip**, **bzip2**ani **zúžení**.
+        - `encodingName`je ponechán jako výchozí nebo nastavený na **UTF-8**.
+        - Není zadáno mapování sloupce.
 
 - Ve zdroji aktivity kopírování: 
 
@@ -298,7 +307,7 @@ Pokud zdrojové úložiště a formát dat splňují kritéria popsaná v této 
    - Pokud je zdrojem složka, `recursive` je nastaveno na hodnotu true.
    - `prefix`nejsou `modifiedDateTimeStart` `modifiedDateTimeEnd` zadány.
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -348,7 +357,7 @@ Pokud chcete tuto funkci použít, vytvořte [propojenou službu Azure Blob Stor
 > [!NOTE]
 > Služba propojené služby Azure Blob Storage musí používat ověřování pomocí sdíleného přístupového podpisu, jak vyžaduje příkaz Snowflake COPY.
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[

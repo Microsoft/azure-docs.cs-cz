@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5de4b6f16f52d7cab7088ab39aa70267110eed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84606883"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187179"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
 
@@ -203,7 +204,7 @@ K této chybě může dojít, pokud:
 Pomocí těchto kroků zjistíte, jestli jste se ověřili do Azure a máte přístup k předplatnému, které se pokoušíte vybrat:
 
 1. Abyste se ujistili, že váš skript funguje samostatně, otestujte ho mimo Azure Automation.
-1. Ujistěte se, že skript před spuštěním rutiny spustí rutinu [Connect-AzAccount](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) `Select-*` .
+1. Ujistěte se, že skript před spuštěním rutiny spustí rutinu [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) `Select-*` .
 1. Přidejte `Disable-AzContextAutosave –Scope Process` na začátek Runbooku. Tato rutina zajišťuje, že se jakékoli přihlašovací údaje použijí pouze pro spuštění aktuální sady Runbook.
 1. Pokud se chybová zpráva zobrazuje stále, upravte kód přidáním `AzContext` parametru pro `Connect-AzAccount` a poté spusťte kód.
 
@@ -400,7 +401,7 @@ Pokud datový proud obsahuje objekty, `Start-AzAutomationRunbook` nezpracovává
 
 ### <a name="resolution"></a>Řešení
 
-Implementujte logiku cyklického dotazování a pomocí rutiny [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) načtěte výstup. Ukázka této logiky je definována zde:
+Implementujte logiku cyklického dotazování a pomocí rutiny [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) načtěte výstup. Ukázka této logiky je definována zde:
 
 ```powershell
 $automationAccountName = "ContosoAutomationAccount"
@@ -485,7 +486,7 @@ K této chybě může dojít při načítání výstupu úlohy z Runbooku, kter�
 Chcete-li vyřešit tuto chybu, proveďte jednu z následujících akcí:
 
 * Upravte sadu Runbook a snižte počet datových proudů úloh, které vygeneruje.
-* Snižte počet datových proudů, které se mají načíst při spuštění rutiny. K tomu můžete nastavit hodnotu `Stream` parametru pro rutinu [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) , aby se načetly jenom výstupní datové proudy. 
+* Snižte počet datových proudů, které se mají načíst při spuštění rutiny. K tomu můžete nastavit hodnotu `Stream` parametru pro rutinu [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.7.0) , aby se načetly jenom výstupní datové proudy. 
 
 ## <a name="scenario-runbook-job-fails-because-allocated-quota-was-exceeded"></a><a name="quota-exceeded"></a>Scénář: úloha Runbooku se nezdařila, protože byla překročena přidělená kvóta
 
@@ -558,7 +559,7 @@ Tato chyba může znamenat, že Runbooky, které běží v izolovaném prostoru 
 
 Tuto chybu můžete vyřešit dvěma způsoby:
 
-* Místo použití funkce [Start-Job](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)použijte příkaz [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) a spusťte sadu Runbook.
+* Místo použití funkce [Start-Job](/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)použijte příkaz [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) a spusťte sadu Runbook.
 * Zkuste spustit Runbook na Hybrid Runbook Worker.
 
 Další informace o tomto chování a dalších chování sady Runbook Azure Automation naleznete v tématu [spuštění sady Runbook v Azure Automation](../automation-runbook-execution.md).
@@ -587,8 +588,8 @@ Dalším řešením je optimalizovat sadu Runbook vytvořením [podřízených r
 
 Rutiny PowerShellu, které umožňují podřízený scénář sady Runbook:
 
-* [Start – AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). Tato rutina vám umožní spustit runbook a předat do něj parametry.
-* [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Pokud existují operace, které je třeba provést po dokončení podřízeného Runbooku, tato rutina vám umožní zjistit stav úlohy pro každou podřízenou položku.
+* [Start – AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0). Tato rutina vám umožní spustit runbook a předat do něj parametry.
+* [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0). Pokud existují operace, které je třeba provést po dokončení podřízeného Runbooku, tato rutina vám umožní zjistit stav úlohy pro každou podřízenou položku.
 
 ## <a name="scenario-error-in-job-streams-about-the-get_serializationsettings-method"></a><a name="get-serializationsettings"></a>Scénář: Chyba v datových proudech úlohy týkající se metody get_SerializationSettings
 
@@ -651,7 +652,7 @@ Možné příčiny tohoto problému:
 
 #### <a name="not-using-a-run-as-account"></a>Nepoužívat účet Spustit jako
 
-Postupujte podle [kroku 5 – přidejte ověřování pro správu prostředků Azure](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources) , abyste měli jistotu, že používáte účet Spustit jako pro přístup k Key Vault.
+Postupujte podle [kroku 5 – přidejte ověřování pro správu prostředků Azure](../learn/automation-tutorial-runbook-textual-powershell.md#step-5---add-authentication-to-manage-azure-resources) , abyste měli jistotu, že používáte účet Spustit jako pro přístup k Key Vault.
 
 #### <a name="insufficient-permissions"></a>Nedostatečná oprávnění
 
@@ -660,7 +661,7 @@ Postupujte podle [kroku 5 – přidejte ověřování pro správu prostředků A
 ## <a name="recommended-documents"></a>Doporučené dokumenty
 
 * [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
-* [Spuštění Runbooku v Azure Automation](../automation-starting-a-runbook.md)
+* [Spuštění Runbooku v Azure Automation](../start-runbooks.md)
 
 ## <a name="next-steps"></a>Další kroky
 

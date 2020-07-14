@@ -72,6 +72,8 @@
           href: cognitive-search-tutorial-blob-python.md
     - name: Ladění sady dovedností
       href: cognitive-search-tutorial-debug-sessions.md
+    - name: Vytvoření vlastního analyzátoru
+      href: tutorial-create-custom-analyzer.md
     - name: Dotaz z Power Apps
       href: search-howto-powerapps.md
 - name: ukázky

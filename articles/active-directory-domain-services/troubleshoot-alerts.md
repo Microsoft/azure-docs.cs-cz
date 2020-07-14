@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d3300151dc5fdfde0b34aa3f76c3ed9494d34fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734057"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86222968"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Známé problémy: běžné výstrahy a řešení v Azure Active Directory Domain Services
 
@@ -33,7 +34,7 @@ Tento článek popisuje informace o řešení běžných výstrah v Azure služb
 
 K této chybě obvykle dochází, když se předplatné Azure přesune do nového adresáře služby Azure AD a starý adresář služby Azure AD, který je přidružený k Azure služba AD DS, se odstraní.
 
-Tato chyba je neopravitelná. Pokud chcete tuto výstrahu vyřešit, [odstraňte existující spravovanou doménu služba AD DS Azure](delete-aadds.md) a vytvořte ji znovu v novém adresáři. Pokud máte potíže s odstraněním spravované domény, [otevřete žádost o podporu pro Azure][azure-support] , kde najdete další pomoc při odstraňování potíží.
+Tato chyba je neopravitelná. Pokud chcete tuto výstrahu vyřešit, [odstraňte existující spravovanou doménu](delete-aadds.md) a vytvořte ji znovu v novém adresáři. Pokud máte potíže s odstraněním spravované domény, [otevřete žádost o podporu pro Azure][azure-support] , kde najdete další pomoc při odstraňování potíží.
 
 ## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C je spuštěný v tomto adresáři.
 
@@ -66,7 +67,7 @@ Než začnete, ujistěte se, že rozumíte [adresním prostorům privátního pr
 Virtuální počítače ve virtuální síti můžou podávat požadavky na prostředky Azure ve stejném rozsahu IP adres, jaký je nakonfigurovaný pro podsíť. Pokud nakonfigurujete rozsah veřejných IP adres pro podsíť, požadavky směrované do virtuální sítě nemusí dosahovat zamýšlených webových prostředků. Tato konfigurace může vést k nepředvídatelným chybám s Azure služba AD DS.
 
 > [!NOTE]
-> Pokud vlastníte rozsah IP adres v Internetu, který je nakonfigurovaný ve vaší virtuální síti, můžete tuto výstrahu ignorovat. Azure AD Domain Services ale s touto konfigurací nepůjde zavázat na [smlouvu SLA](https://azure.microsoft.com/support/legal/sla/active-directory-ds/v1_0/)], protože může vést k nepředvídatelným chybám.
+> Pokud vlastníte rozsah IP adres v Internetu, který je nakonfigurovaný ve vaší virtuální síti, můžete tuto výstrahu ignorovat. Azure AD Domain Services ale s touto konfigurací nejde zavázat do [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/active-directory-ds/v1_0/) , protože by mohlo vést k nepředvídatelným chybám.
 
 Pokud chcete tuto výstrahu vyřešit, odstraňte existující spravovanou doménu a znovu ji vytvořte ve virtuální síti s rozsahem privátních IP adres. Tento proces je rušivý, protože spravovaná doména není k dispozici a všechny vlastní prostředky, které jste vytvořili jako OU nebo účty služeb, se ztratí.
 
@@ -147,7 +148,7 @@ Tato výstraha se vygeneruje, když se odstraní jeden z požadovaných prostře
 
 ### <a name="resolution"></a>Řešení
 
-Podsíť virtuální sítě pro Azure služba AD DS potřebuje dostatek IP adres pro automaticky vytvořené prostředky. Tento adresní prostor IP adres zahrnuje nutnost vytvořit náhradní prostředky, pokud dojde k události údržby. K minimalizaci rizika vycházejícího z dostupných IP adres nesaďte do stejné podsítě virtuální sítě jako Azure služba AD DS další prostředky, například vaše vlastní virtuální počítače.
+Podsíť virtuální sítě pro Azure služba AD DS potřebuje dostatek IP adres pro automaticky vytvořené prostředky. Tento adresní prostor IP adres zahrnuje nutnost vytvořit náhradní prostředky, pokud dojde k události údržby. K minimalizaci rizika vycházejícího z dostupných IP adres nesaďte do stejné podsítě virtuální sítě, jako je spravovaná doména, další prostředky, například vaše vlastní virtuální počítače.
 
 Tato chyba je neopravitelná. Pokud chcete tuto výstrahu vyřešit, [odstraňte existující spravovanou doménu](delete-aadds.md) a vytvořte ji znovu. Pokud máte potíže s odstraněním spravované domény, [otevřete žádost o podporu pro Azure][azure-support] , kde najdete další pomoc při odstraňování potíží.
 
@@ -172,14 +173,14 @@ Některé automaticky generované objekty služby se používají ke správě a 
 
 ### <a name="resolution"></a>Řešení
 
-Podsíť virtuální sítě pro Azure služba AD DS potřebuje dostatek IP adres pro automaticky vytvořené prostředky. Tento adresní prostor IP adres zahrnuje nutnost vytvořit náhradní prostředky, pokud dojde k události údržby. K minimalizaci rizika vycházejícího z dostupných IP adres nesaďte do stejné podsítě virtuální sítě jako Azure služba AD DS další prostředky, například vaše vlastní virtuální počítače.
+Podsíť virtuální sítě pro Azure služba AD DS potřebuje dostatek IP adres pro automaticky vytvořené prostředky. Tento adresní prostor IP adres zahrnuje nutnost vytvořit náhradní prostředky, pokud dojde k události údržby. K minimalizaci rizika vycházejícího z dostupných IP adres nesaďte do stejné podsítě virtuální sítě, jako je spravovaná doména, další prostředky, například vaše vlastní virtuální počítače.
 
 Pokud chcete tuto výstrahu vyřešit, odstraňte existující spravovanou doménu a znovu ji vytvořte ve virtuální síti s velkým množstvím rozsahu IP adres. Tento proces je rušivý, protože spravovaná doména není k dispozici a všechny vlastní prostředky, které jste vytvořili jako OU nebo účty služeb, se ztratí.
 
 1. [Odstraňte spravovanou doménu](delete-aadds.md) z adresáře.
-1. Chcete-li aktualizovat rozsah IP adres virtuální sítě, vyhledejte a vyberte možnost *virtuální síť* v Azure Portal. Vyberte virtuální síť pro Azure služba AD DS, která má malý rozsah IP adres.
+1. Chcete-li aktualizovat rozsah IP adres virtuální sítě, vyhledejte a vyberte možnost *virtuální síť* v Azure Portal. Vyberte virtuální síť pro spravovanou doménu, která má malý rozsah IP adres.
 1. V části **Nastavení**vyberte *adresní prostor*.
-1. Aktualizujte rozsah adres tak, že vyberete stávající rozsah adres, upravíte ho nebo přidáte další rozsah adres. Zajistěte, aby byl nový rozsah IP adres dostatečně velký pro rozsah podsítě Azure služba AD DS. Až budete připraveni, změny **uložte** .
+1. Aktualizujte rozsah adres tak, že vyberete stávající rozsah adres, upravíte ho nebo přidáte další rozsah adres. Zajistěte, aby byl nový rozsah IP adres dostatečně velký pro rozsah podsítí spravované domény. Až budete připraveni, změny **uložte** .
 1. V levém navigačním panelu vyberte **podsítě** .
 1. Vyberte podsíť, kterou chcete upravit, nebo vytvořte další podsíť.
 1. Aktualizujte nebo zadejte velký rozsah IP adres a potom změny **uložte** .
@@ -219,7 +220,7 @@ K tomu, aby se zabránilo změně nebo odstranění, se můžou použít zámky 
 
 Pokud chcete vyhledat zámky prostředků na součástech Azure služba AD DS a odebrat je, proveďte následující kroky:
 
-1. Pro každou součást sítě Azure služba AD DS ve vaší skupině prostředků, jako je třeba virtuální síť, síťové rozhraní nebo veřejná IP adresa, se podívejte na protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se používá zámek prostředku.
+1. U každé síťové součásti spravované domény, jako je třeba virtuální síť, síťové rozhraní nebo veřejná IP adresa, se podívejte na protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se používá zámek prostředku.
 1. Vyberte prostředek, na kterém je zámek použit, a pak v části **zámky**vyberte a odeberte zámky.
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116: prostředky jsou nepoužitelné.
@@ -234,7 +235,7 @@ Zásady se používají u prostředků Azure a skupin prostředků, které urču
 
 Pokud chcete vyhledat použité zásady v součástech Azure služba AD DS a aktualizovat je, proveďte následující kroky:
 
-1. Pro každou součást sítě Azure služba AD DS ve vaší skupině prostředků, jako je třeba virtuální síť, síťová karta nebo veřejná IP adresa, Projděte si protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se uplatní omezující zásada.
+1. U každé síťové součásti spravované domény, jako je například virtuální síť, síťová karta nebo veřejná IP adresa, se podívejte na protokoly operací v Azure Portal. Tyto protokoly operací by měly ukazovat, proč selže operace a kde se uplatní omezující zásada.
 1. Vyberte prostředek, u kterého se zásada používá, a pak v části **zásady**vyberte a upravte zásadu tak, aby byla méně omezující.
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: synchronizace se ještě nedokončila.
@@ -247,9 +248,9 @@ Pokud chcete vyhledat použité zásady v součástech Azure služba AD DS a akt
 
 [Podívejte se na stav služby Azure služba AD DS](check-health.md) pro všechny výstrahy, které indikují problémy v konfiguraci spravované domény. Problémy se síťovou konfigurací můžou synchronizaci z Azure AD zablokovat. Pokud můžete vyřešit výstrahy indikující problém s konfigurací, počkejte dvě hodiny a vraťte se zpátky, abyste viděli, jestli se synchronizace úspěšně dokončila.
 
-Následující běžné důvody způsobují zastavení synchronizace ve spravovaných doménách:
+Následující běžné důvody způsobují zastavení synchronizace ve spravované doméně:
 
-* Požadované síťové připojení je blokované. Další informace o tom, jak ve službě Azure Virtual Network vyhledat problémy a co je potřeba, najdete v tématu [řešení potíží se skupinami zabezpečení sítě](alert-nsg.md) a [požadavky na síť pro Azure AD Domain Services](network-considerations.md).
+* Požadované síťové připojení je blokované. Další informace o tom, jak ve službě Azure Virtual Network vyhledat problémy a co je potřeba, najdete v tématu [řešení potíží se skupinami zabezpečení sítě](alert-nsg.md) a [požadavky na síť pro Azure služba AD DS](network-considerations.md).
 *  Při nasazení spravované domény se synchronizace hesel nevytvořila nebo se úspěšně nedokončila. Synchronizaci hesel můžete nastavit [jenom pro cloudové uživatele](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) nebo [hybridní uživatele z Prem](tutorial-configure-password-hash-sync.md).
 
 ## <a name="aadds501-a-backup-has-not-been-taken-in-a-while"></a>AADDS501: záloha se neuskutečnila během chvilky.

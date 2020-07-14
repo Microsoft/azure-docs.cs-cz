@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 3efccc44255067b7e47c468c9a35853def2fce69
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085850"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221013"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrace Apache Spark a Apache Hive pomocí konektoru skladu s podregistru v Azure HDInsight
 
@@ -37,6 +37,9 @@ Mezi operace podporované konektorem skladu podregistru patří:
 * Zápis datového rámce nebo datového proudu Sparku do podregistru pomocí HiveStreaming
 
 ## <a name="hive-warehouse-connector-setup"></a>Nastavení konektoru pro skladiště v podregistru
+
+> [!IMPORTANT]
+> HiveServer2 Interactive instance, která je nainstalovaná na Spark 2,4 Balíček zabezpečení podniku clustery, se nepodporuje pro použití s konektorem skladu pro podregistr. Místo toho musíte nakonfigurovat samostatný HiveServer2 interaktivní cluster pro hostování HiveServer2 interaktivních úloh. Konfigurace konektoru skladu podregistru, která využívá jeden cluster Spark 2,4, není podporována.
 
 Konektor Warehouse pro podregistr potřebuje samostatné clustery pro úlohy Spark a interaktivní dotazy. Pomocí těchto kroků nastavte tyto clustery ve službě Azure HDInsight.
 
@@ -215,7 +218,7 @@ kinit USERNAME
 
         ![seznam zásad podregistru Ranger konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    1. Zadejte požadovaný název zásad. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat**a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na tlačítko **Add** (Přidat).
+    1. Zadejte požadovaný název zásad. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat**a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na **Přidat**.
                 ![vytvořit zásadu](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Znovu zobrazte obsah tabulky. Po použití zásad Ranger uvidíme jenom poslední čtyři znaky sloupce.
 

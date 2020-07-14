@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 53a7e113d64ea4cf7018d51a44f9488342f1470f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715626"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187145"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Řešení potíží s Start/Stop VMs during off-hours
 
@@ -98,7 +99,7 @@ Tato chyba může být způsobena jedním z následujících důvodů:
 
 V následujícím seznamu najdete možná řešení:
 
-* Ověřte, že jste správně nakonfigurovali plán pro Start/Stop VMs during off-hours. Informace o tom, jak nakonfigurovat plán, najdete v tématu [plány](../automation-schedules.md).
+* Ověřte, že jste správně nakonfigurovali plán pro Start/Stop VMs during off-hours. Informace o tom, jak nakonfigurovat plán, najdete v tématu [plány](../shared-resources/schedules.md).
 
 * Zkontrolujte [streamy úlohy](../automation-runbook-execution.md#job-statuses) a vyhledejte případné chyby. Vyhledejte úlohy z jedné z následujících sad Runbook:
 

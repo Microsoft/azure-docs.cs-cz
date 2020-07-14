@@ -10,12 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/10/2020
-ms.openlocfilehash: 9dfa45e463ecd53524e7516160324a80824e4d8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: add2e0cc2852f9ab0b63565841f670ed6c53d9a7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669524"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206125"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,7 +43,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Minimální – maximální velikost paměti (GB)|2.02-3|2.05 – 6|2.10 – 12|2.25-18|3.00-24|
 |Minimální prodleva automatického pozastavení (minuty) pro maximum|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (GB)|512|1024|1024|1024|1536|
 |Maximální velikost protokolu (GB)|154|307|307|307|461|
 |Maximální velikost dat databáze TempDB (GB)|32|64|128|192|256|
@@ -53,8 +54,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných pracovních procesů (požadavků)|75|150|300|450|600|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
-|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
+|Škálování čtení|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -68,7 +69,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Minimální – maximální velikost paměti (GB)|3,75 – 30|4.50 – 36|5,25 – 42|6.00-48|
 |Minimální prodleva automatického pozastavení (minuty) pro maximum|60-10080|60-10080|60-10080|60-10080|
 |Podpora columnstore|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (GB)|1536|3072|3072|3072|
 |Maximální velikost protokolu (GB)|461|461|461|922|
 |Maximální velikost dat databáze TempDB (GB)|320|384|448|512|
@@ -79,8 +80,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných pracovních procesů (požadavků)|750|900|1050|1200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
-|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
+|Škálování čtení|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -94,7 +95,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Minimální – maximální velikost paměti (GB)|6.75-54|7,5 – 60|9-72|12-96|15-120|
 |Minimální prodleva automatického pozastavení (minuty) pro maximum|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (GB)|3072|3072|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|1229|1229|1229|
 |Maximální velikost dat databáze TempDB (GB)|576|640|768|1024|1280|
@@ -105,8 +106,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných pracovních procesů (požadavků)|1350|1 500|1800|2400|3000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
-|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
+|Škálování čtení|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -123,21 +124,23 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Paměť (GB)|7|14|21|28|35|42|
 |[RBPEX](service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100|
-|Maximální velikost protokolu (TB)|1 |1 |1 |1 |1 |1 |
+|Maximální velikost protokolu (TB)|Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |
 |Maximální velikost dat databáze TempDB (GB)|32|64|96|128|160|192|
 |Typ úložiště| [Poznámka 1](#notes) |[Poznámka 1](#notes)|[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |
-|Maximální počet datových IOPS *|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
+|Maximální místní SSD IOPS *|4000 |8000 |12000 |16000 |20000 |24000 |
 |Maximální rychlost protokolu (MB/s)|100 |100 |100 |100 |100 |100 |
-|Latence v/v (přibližná)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|
+|Latence v/v (přibližná)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
 |Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
 |||
+
+\*Kromě místní jednotky SSD v/v budou úlohy používat v/v vzdálené [stránky](service-tier-hyperscale.md#page-server) . Platnost IOPS bude záviset na zatížení. Podrobnosti najdete v tématu zásady [správy vstupně-výstupních operací](resource-limits-logical-server.md#resource-governance)a [data ve statistice využití prostředků](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ### <a name="gen4-compute-generation-part-2"></a>Generace COMPUTE COMPUTE GEN4 – (část 2)
 
@@ -148,23 +151,23 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Paměť (GB)|49|56|63|70|112|159,5|
 |[RBPEX](service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |
-|Maximální velikost protokolu (TB)|1 |1 |1 |1 |1 |1 |
+|Maximální velikost protokolu (TB)|Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |
 |Maximální velikost dat databáze TempDB (GB)|224|256|288|320|512|768|
 |Typ úložiště| [Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |
-|Maximální počet datových IOPS *|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
+|Maximální místní SSD IOPS *|28000 |32000 |36000 |40000 |64000 |76800 |
 |Maximální rychlost protokolu (MB/s)|100 |100 |100 |100 |100 |100 |
-|Latence v/v (přibližná)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|
+|Latence v/v (přibližná)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
 |Maximální počet souběžných pracovních procesů (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|
 |Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
 |||
 
-\*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
+\*Kromě místní jednotky SSD v/v budou úlohy používat v/v vzdálené [stránky](service-tier-hyperscale.md#page-server) . Platnost IOPS bude záviset na zatížení. Podrobnosti najdete v tématu zásady [správy vstupně-výstupních operací](resource-limits-logical-server.md#resource-governance)a [data ve statistice využití prostředků](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ## <a name="hyperscale---provisioned-compute---gen5"></a>Výpočetní prostředí s podporou škálování na více Gen5
 
@@ -177,23 +180,23 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Paměť (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |[RBPEX](service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |100|
-|Maximální velikost protokolu (TB)|1 |1 |1 |1 |1 |1 |1 |
+|Maximální velikost protokolu (TB)|Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|320|384|448|
 |Typ úložiště| [Poznámka 1](#notes) |[Poznámka 1](#notes)|[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |
-|Maximální počet datových IOPS *|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
+|Maximální místní SSD IOPS *|8000 |16000 |24000 |32000 |40000 |48000 |56000 |
 |Maximální rychlost protokolu (MB/s)|100 |100 |100 |100 |100 |100 |100 |
-|Latence v/v (přibližná)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|
+|Latence v/v (přibližná)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|1400|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
 |||
 
-\*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
+\*Kromě místní jednotky SSD v/v budou úlohy používat v/v vzdálené [stránky](service-tier-hyperscale.md#page-server) . Platnost IOPS bude záviset na zatížení. Podrobnosti najdete v tématu zásady [správy vstupně-výstupních operací](resource-limits-logical-server.md#resource-governance)a [data ve statistice využití prostředků](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 ### <a name="gen5-compute-generation-part-2"></a>Generace COMPUTE Gen5 (část 2)
 
@@ -204,31 +207,29 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Paměť (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |[RBPEX](service-tier-hyperscale.md#compute) Hodnota|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|Paměť 3X|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (TB)|100 |100 |100 |100 |100 |100 |100 |
-|Maximální velikost protokolu (TB)|1 |1 |1 |1 |1 |1 |1 |
+|Maximální velikost protokolu (TB)|Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |Unlimited |
 |Maximální velikost dat databáze TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Typ úložiště| [Poznámka 1](#notes) |[Poznámka 1](#notes)|[Poznámka 1](#notes)|[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |[Poznámka 1](#notes) |
-|Maximální počet datových IOPS *|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
+|Maximální místní SSD IOPS *|64000 |72000 |80000 |96000 |160000 |192000 |204800 |
 |Maximální rychlost protokolu (MB/s)|100 |100 |100 |100 |100 |100 |100 |
-|Latence v/v (přibližná)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|[Poznámka 3](#notes)|
+|Latence v/v (přibližná)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|[Poznámka 2](#notes)|
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Sekundární repliky|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Škálování čtení|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
 |Uchování úložiště záloh|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|7 dní|
 |||
 
-\*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
+\*Kromě místní jednotky SSD v/v budou úlohy používat v/v vzdálené [stránky](service-tier-hyperscale.md#page-server) . Platnost IOPS bude záviset na zatížení. Podrobnosti najdete v tématu zásady [správy vstupně-výstupních operací](resource-limits-logical-server.md#resource-governance)a [data ve statistice využití prostředků](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics).
 
 #### <a name="notes"></a>Poznámky
 
 **Poznámka 1**: Škálovatelná architektura je Vícevrstvá architektura se samostatnými výpočetními a úložnými součástmi: [Architektura vrstvy služeb s vlastním škálováním](service-tier-hyperscale.md#distributed-functions-architecture)
 
-**Poznámka 2**: Vícevrstvá architektura škálovatelné architektury má ukládání do mezipaměti na více úrovních. Platnost IOPS bude záviset na zatížení.
-
-**Poznámka 3**: latence je 1-2 MS pro data v mezipaměti založené na SSD RBPEX na výpočetních replikách, které ukládá do mezipaměti nejčastěji používané datové stránky. Vyšší latence pro data získaná ze stránkových serverů.
+**Poznámka 2**: latence je 1-2 MS pro data na místní sadě prostředků SSD služby COMPUTE, která ukládá do mezipaměti nejčastěji používané datové stránky. Vyšší latence pro data získaná ze stránkových serverů.
 
 ## <a name="general-purpose---provisioned-compute---gen4"></a>Pro obecné účely zřízené COMPUTE – COMPUTE GEN4 –
 
@@ -243,7 +244,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|
 |Maximální velikost protokolu (GB)|307|307|461|461|461|922|
 |Maximální velikost dat databáze TempDB (GB)|32|64|96|128|160|192|
@@ -254,8 +255,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
-|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
+|Škálování čtení|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -268,7 +269,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|159,5|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (GB)|3072|3072|3072|3072|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|922|922|1229|1229|
 |Maximální velikost dat databáze TempDB (GB)|224|256|288|320|512|768|
@@ -279,8 +280,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných pracovních procesů (požadavků)|1400|1600|1800|2000|3200|4800|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
-|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
+|Škálování čtení|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -295,7 +296,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Maximální velikost protokolu (GB)|307|307|461|461|461|922|922|
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|320|384|384|
@@ -306,8 +307,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|600|800|1000|1200|1400|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
-|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
+|Škálování čtení|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -320,7 +321,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Úložiště OLTP v paměti (GB)|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Maximální velikost dat (GB)|3072|3072|3072|4 096|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|922|922|922|1229|1229|1229|1229|
 |Maximální velikost dat databáze TempDB (GB)|512|576|640|768|1024|1280|2560|
@@ -331,8 +332,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
-|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Více AZ|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
+|Škálování čtení|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|Nelze použít|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 \*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -346,8 +347,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Řada Fsv2|
 |Virtuální jádra|72|
 |Paměť (GB)|136,2|
-|Podpora columnstore|Yes|
-|Úložiště OLTP v paměti (GB)|Není k dispozici|
+|Podpora columnstore|Ano|
+|Úložiště OLTP v paměti (GB)|Nelze použít|
 |Maximální velikost dat (GB)|4 096|
 |Maximální velikost protokolu (GB)|1024|
 |Maximální velikost dat databáze TempDB (GB)|333|
@@ -359,8 +360,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných přihlášení|3600|
 |Maximální počet souběžných relací|30 000|
 |Počet replik|1|
-|Více AZ|Není k dispozici|
-|Škálování čtení|Není k dispozici|
+|Více AZ|Nelze použít|
+|Škálování čtení|Nelze použít|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|
 
 \*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).
@@ -485,7 +486,7 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Generování výpočtů|Řada M|
 |Virtuální jádra|128|
 |Paměť (GB)|3767,1|
-|Podpora columnstore|Yes|
+|Podpora columnstore|Ano|
 |Úložiště OLTP v paměti (GB)|1768|
 |Maximální velikost dat (GB)|4 096|
 |Maximální velikost protokolu (GB)|2 048|
@@ -498,8 +499,8 @@ Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množ
 |Maximální počet souběžných přihlášení|12 800|
 |Maximální počet souběžných relací|30000|
 |Počet replik|4|
-|Více AZ|Yes|
-|Škálování čtení|Yes|
+|Více AZ|Ano|
+|Škálování čtení|Ano|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|
 
 \*Maximální hodnota pro velikost v/v v rozsahu od 8 KB do 64 KB. Skutečný IOPS je závislý na úlohách. Podrobnosti najdete v tématu zásady [správy v/v data](resource-limits-logical-server.md#resource-governance).

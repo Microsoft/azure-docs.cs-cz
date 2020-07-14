@@ -44,6 +44,14 @@
       href: troubleshooting-identity-protection-faq.md
 - name: Referenční informace
   items:
+    - name: Rozhraní Graph API
+      items:
+        - name: Rozhraní API riskDetection
+          href: /graph/api/resources/riskdetection?view=graph-rest-v1.0
+        - name: Rozhraní API riskyUsers
+          href: /graph/api/resources/riskyuser?view=graph-rest-v1.0
+        - name: Rozhraní API signIn
+          href: /graph/api/resources/signin?view=graph-rest-v1.0
     - name: Glosář
       href: reference-identity-protection-glossary.md
 - name: Zdroje a prostředky

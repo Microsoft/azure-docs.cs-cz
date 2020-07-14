@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610060"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223454"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží v Azure Machine Learning
 
@@ -181,7 +181,27 @@ Pokud používáte sdílenou složku pro jiné úlohy, jako je třeba přenos da
 |Při kontrole imagí se nezobrazují nově označené obrázky.     |   Chcete-li načíst všechny označené obrázky, klikněte na tlačítko **první** . **První** tlačítko se vrátí zpět na začátek seznamu, ale načte všechna označená data.      |
 |Když stisknete klávesu ESC, zatímco při rozpoznávání objektu se vytvoří popisek s nulovou velikostí v levém horním rohu. Odesílání popisků v tomto stavu se nezdařilo.     |   Odstraňte popisek kliknutím na křížek vedle něj.  |
 
-### <a name="data-drift-monitors"></a>Monitory pro posunování dat
+### <a name="data-drift-monitors"></a><a name="data-drift"></a>Monitory pro posunování dat
+
+Omezení a známé problémy pro sledování posunu dat:
+
+* Časový rozsah při analýze historických dat je omezen na 31 intervalů nastavení četnosti monitorování. 
+* Omezení 200 funkcí, pokud není zadán seznam funkcí (všechny používané funkce).
+* Velikost výpočetní kapacity musí být pro zpracování dat dostatečně velká.
+* Zajistěte, aby datová sada měla data v rámci počátečního a koncového data daného spuštění monitorování.
+* Monitory datové sady budou fungovat jenom u datových sad, které obsahují 50 nebo více řádků.
+* Sloupce nebo funkce v datové sadě jsou klasifikovány jako kategorií nebo číselné na základě podmínek v následující tabulce. Pokud tato funkce nesplňuje tyto podmínky – například sloupec typu řetězec s >100 jedinečnými hodnotami, funkce je vyřazena z našeho algoritmu pro posun dat, ale je stále profilovaná. 
+
+    | Typ funkce | Datový typ | Podmínka | Omezení | 
+    | ------------ | --------- | --------- | ----------- |
+    | Kategorické | String, bool, int, float | Počet jedinečných hodnot ve funkci je menší než 100 a menší než 5% počtu řádků. | Hodnota null se považuje za svou vlastní kategorii. | 
+    | Číselné | int, float | Hodnoty ve funkci jsou číselného datového typu a nesplňují podmínky pro funkci kategorií. | Funkce byla vynechána, pokud >15% hodnot mají hodnotu null. | 
+
+* Když jste [vytvořili monitor](how-to-monitor-datasets.md) DataMarket, ale nevidíte data na stránce **monitorování datových sad** v Azure Machine Learning studiu, zkuste následující.
+
+    1. Ověřte, zda jste v horní části stránky vybrali rozsah dat vpravo.  
+    1. Na kartě **monitorování datových sad** vyberte odkaz experiment pro kontrolu stavu spuštění.  Tento odkaz je na pravé straně tabulky.
+    1. Pokud je spuštění úspěšně dokončeno, zkontrolujte protokoly ovladačů, abyste viděli, kolik metrik bylo vygenerováno, nebo zda jsou k dispozici nějaké zprávy upozornění.  Po kliknutí na experimentu Najděte na kartě **výstup + protokoly** protokoly ovladačů.
 
 * Pokud funkce sady SDK `backfill()` negeneruje očekávaný výstup, může to být způsobeno problémem ověřování.  Když vytvoříte výpočetní prostředky, které se budou předávat do této funkce, nepoužívejte `Run.get_context().experiment.workspace.compute_targets` .  Místo toho použijte [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) jako následující k vytvoření výpočtů, které předáte do této `backfill()` funkce: 
 

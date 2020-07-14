@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800524"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202242"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>rozhraní API Bingu pro vyhledávání na webu struktury odpovědí a typů odpovědí  
 
@@ -435,7 +435,7 @@ Pokud Bing určí, že uživatel může chtít hledat něco jiného, odpověď z
 
 Odpovědi z rozhraní API Bingu pro vyhledávání na webu mohou obsahovat následující hlavičky:
 
-|||
+| Hlavička | Popis |
 |-|-|
 |`X-MSEdge-ClientID`|Jedinečné ID, které Bingu přiřadilo uživateli|
 |`BingAPIs-Market`|Trh, který se použil ke splnění žádosti|
@@ -480,6 +480,6 @@ Následující příklad ukazuje, jak Bing používá návrh pravopisu.
 
 * Projděte si dokumentaci [omezení žádostí](throttling-requests.md) .  
 
-## <a name="see-also"></a>Viz také:  
+## <a name="see-also"></a>Viz také  
 
 * [Odkaz na rozhraní API Bingu pro vyhledávání na webu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

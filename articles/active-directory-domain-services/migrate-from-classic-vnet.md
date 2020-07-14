@@ -7,13 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/22/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 35f92afea9f9e8da3cf1eeefa81cac0cb712843a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2802445bbb80a4412787362a3ee9aaee4adcd40
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734618"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223495"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrace Azure Active Directory Domain Services z modelu klasických virtuálních sítí do Správce prostředků
 
@@ -97,13 +98,15 @@ Při přípravě a následné migraci spravované domény jsou k dispozici někt
 
 Po migraci se IP adresy řadiče domény pro spravovanou doménu změnily. Tato změna zahrnuje veřejnou IP adresu pro koncový bod zabezpečeného LDAP. Nové IP adresy jsou v rozsahu adres pro novou podsíť ve virtuální síti Správce prostředků.
 
-V případě odvolání se IP adresy můžou po vrácení zpět změnit.
+Pokud se potřebujete vrátit zpátky, můžou se IP adresy po vrácení zpátky změnit.
 
 Azure služba AD DS obvykle používá první dvě dostupné IP adresy v rozsahu adres, není to ale zaručené. V tuto chvíli nemůžete zadat IP adresy, které se mají použít po migraci.
 
 ### <a name="downtime"></a>Výpadek
 
-Proces migrace zahrnuje řadiče domény, které jsou po určitou dobu offline. Řadiče domény jsou nedostupné, když je Azure služba AD DS migrována do modelu nasazení Správce prostředků a virtuální sítě. V průměru je výpadek zhruba 1 až 3 hodiny. Toto časové období vychází z doby, kdy jsou řadiče domény přepnuty do stavu offline, kdy se první řadič domény vrátí zpět do režimu online. Tento průměr nezahrnuje čas potřebný k replikaci druhého řadiče domény, nebo čas, který může trvat k migraci dalších prostředků do modelu nasazení Správce prostředků.
+Proces migrace zahrnuje řadiče domény, které jsou po určitou dobu offline. Řadiče domény jsou nedostupné, když je Azure služba AD DS migrována do modelu nasazení Správce prostředků a virtuální sítě.
+
+V průměru je výpadek zhruba 1 až 3 hodiny. Toto časové období vychází z doby, kdy jsou řadiče domény přepnuty do stavu offline, kdy se první řadič domény vrátí zpět do režimu online. Tento průměr nezahrnuje čas potřebný k replikaci druhého řadiče domény, nebo čas, který může trvat k migraci dalších prostředků do modelu nasazení Správce prostředků.
 
 ### <a name="account-lockout"></a>Uzamčení účtu
 
@@ -142,11 +145,11 @@ Migrace na model nasazení Správce prostředků a virtuální síť je rozděle
 
 | Krok    | Provedeno prostřednictvím  | Odhadovaný čas  | Výpadek  | Vrátit zpět a obnovit? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | portál Azure | 15 minut | Nepožaduje se žádný výpadek | Není k dispozici |
+| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | portál Azure | 15 minut | Nepožaduje se žádný výpadek | Nelze použít |
 | [Krok 2 – Příprava spravované domény na migraci](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minut v průměru | Výpadek služby Azure služba AD DS začíná po dokončení tohoto příkazu. | Vrácení zpět a obnovení k dispozici. |
 | [Krok 3 – přesunutí spravované domény do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény, výpadek skončí. | Při selhání jsou k dispozici obě vrácení zpět (Samoobslužná služba) i obnovení. |
 | [Krok 4 – testování a čekání na repliku řadiče domény](#test-and-verify-connectivity-after-the-migration)| PowerShell a Azure Portal | 1 hodina nebo více, v závislosti na počtu testů | Oba řadiče domény jsou k dispozici a měly by fungovat normálně. | Není k dispozici. Po úspěšné migraci prvního virtuálního počítače není k dispozici možnost vrácení nebo obnovení. |
-| [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | Není k dispozici | Nepožaduje se žádný výpadek | Není k dispozici |
+| [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | Nelze použít | Nepožaduje se žádný výpadek | Nelze použít |
 
 > [!IMPORTANT]
 > Abyste se vyhnuli dalším výpadkům, přečtěte si tento článek a pokyny k migraci před zahájením procesu migrace. Proces migrace má na určitou dobu vliv na dostupnost řadičů domény Azure služba AD DS. Uživatelé, služby a aplikace se nemůžou během procesu migrace ověřit ve spravované doméně.
@@ -206,7 +209,7 @@ K přípravě spravované domény pro migraci proveďte následující kroky:
 
 ## <a name="migrate-the-managed-domain"></a>Migrace spravované domény
 
-Když je spravovaná doména připravena a zálohována, je možné doménu migrovat. V tomto kroku se vytvoří virtuální počítače Azure AD Domain Services řadiče domény pomocí modelu nasazení Správce prostředků. Dokončení tohoto kroku může trvat 1 až 3 hodiny.
+Když je spravovaná doména připravena a zálohována, je možné doménu migrovat. V tomto kroku se vytvoří virtuální počítače Azure služba AD DS řadiče domény pomocí modelu nasazení Správce prostředků. Dokončení tohoto kroku může trvat 1 až 3 hodiny.
 
 Spusťte `Migrate-Aadds` rutinu s použitím parametru *-Commit* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu připravenou v předchozí části, jako je například *aaddscontoso.com*:
 
@@ -247,10 +250,12 @@ Pomocí modelu nasazení Správce prostředků se v Azure Portal nebo Azure Powe
 
 Pokud je k dispozici alespoň jeden řadič domény, proveďte následující kroky konfigurace pro síťové připojení k virtuálním počítačům:
 
-* **Aktualizovat nastavení serveru DNS** Pokud chcete umožnit jiným prostředkům ve Správce prostředků virtuální síti přeložit a používat spravovanou doménu, aktualizujte nastavení DNS pomocí IP adres nových řadičů domény. Azure Portal může tato nastavení automaticky nakonfigurovat. Další informace o tom, jak nakonfigurovat Správce prostředků virtuální síť, najdete v tématu [aktualizace nastavení DNS pro virtuální síť Azure][update-dns].
+* **Aktualizovat nastavení serveru DNS** Pokud chcete umožnit jiným prostředkům ve Správce prostředků virtuální síti přeložit a používat spravovanou doménu, aktualizujte nastavení DNS pomocí IP adres nových řadičů domény. Azure Portal může tato nastavení automaticky nakonfigurovat.
+
+    Další informace o tom, jak nakonfigurovat Správce prostředků virtuální síť, najdete v tématu [aktualizace nastavení DNS pro virtuální síť Azure][update-dns].
 * **Restartujte virtuální počítače připojené k doméně** – jako IP adresy serveru DNS pro řadiče domény služba AD DS Azure, restartujte všechny virtuální počítače připojené k doméně, aby pak používali nové nastavení serveru DNS. Pokud aplikace nebo virtuální počítače mají ručně nakonfigurovaná nastavení DNS, aktualizujte je ručně s novými IP adresami serveru DNS řadičů domény, které jsou uvedené v Azure Portal.
 
-Nyní otestujte připojení k virtuální síti a překlad názvů. Na virtuálním počítači, který je připojený k Správce prostředků virtuální síti, nebo na něj partnerský vztah, vyzkoušejte následující testy komunikace v síti:
+Nyní otestujte připojení k virtuální síti a překlad názvů. Na virtuálním počítači, který je připojený k virtuální síti Správce prostředků, nebo na něj partnerský vztah, vyzkoušejte následující testy komunikace v síti:
 
 1. Ověřte, jestli můžete testovat IP adresu jednoho z řadičů domény, třeba`ping 10.1.0.4`
     * IP adresy řadičů domény se zobrazují na stránce **vlastnosti** spravované domény v Azure Portal.
@@ -269,7 +274,7 @@ Azure služba AD DS zveřejňuje protokoly auditu, které vám pomůžou řešit
 
 Pomocí šablon můžete monitorovat důležité informace, které jsou k dispozici v protokolech. Například Šablona sešitu protokolu auditu může sledovat možné uzamčení účtu ve spravované doméně.
 
-### <a name="configure-azure-ad-domain-services-email-notifications"></a>Konfigurace e-mailových oznámení Azure AD Domain Services
+### <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení
 
 Chcete-li být upozorněni na zjištění problému ve spravované doméně, aktualizujte nastavení e-mailových oznámení v Azure Portal. Další informace najdete v tématu [Konfigurace nastavení oznámení][notifications].
 
@@ -296,7 +301,7 @@ Až do určitého bodu v procesu migrace se můžete rozhodnout vrátit zpět ne
 
 ### <a name="roll-back"></a>Vrátit zpět
 
-Pokud při spuštění rutiny prostředí PowerShell dojde k chybě pro přípravu migrace v kroku 2 nebo pro samotnou migraci v kroku 3, spravovaná doména se může vrátit k původní konfiguraci. Tato návratová záloha vyžaduje původní klasickou virtuální síť. Všimněte si, že IP adresy se i po vrácení zpět můžou změnit.
+Pokud při spuštění rutiny prostředí PowerShell dojde k chybě pro přípravu migrace v kroku 2 nebo pro samotnou migraci v kroku 3, spravovaná doména se může vrátit k původní konfiguraci. Tato návratová záloha vyžaduje původní klasickou virtuální síť. Tyto IP adresy se můžou i po vrácení změn změnit.
 
 Spusťte `Migrate-Aadds` rutinu s použitím parametru *-Abort* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu připravenou v předchozí části, jako je třeba *aaddscontoso.com*, a název klasické virtuální sítě, například *myClassicVnet*:
 

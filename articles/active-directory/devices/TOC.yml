@@ -79,6 +79,10 @@
       href: enterprise-state-roaming-group-policy-settings.md
     - name: Nastavení Windows služby Enterprise State Roaming
       href: enterprise-state-roaming-windows-settings-reference.md
+    - name: Rozhraní Graph API
+      items:
+        - name: Rozhraní API pro identitu zařízení
+          href: /graph/api/resources/device?view=graph-rest-1.0
 - name: Zdroje a prostředky
   items:
     - name: Fórum Azure pro názory

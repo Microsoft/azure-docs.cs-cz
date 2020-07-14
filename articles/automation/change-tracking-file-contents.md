@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781187"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185598"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Správa řešení Change Tracking a Inventory
 
@@ -78,10 +79,10 @@ Ke konfiguraci sledování souborů na počítačích se systémem Linux použij
 
 ## <a name="track-file-contents"></a>Sledovat obsah souboru
 
-Sledování obsahu souborů umožňuje zobrazit obsah souboru před a po sledované změně. Tato funkce uloží obsah souboru do [účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-overview) poté, co dojde ke změně. Tady jsou některá pravidla, která se mají dodržovat při sledování obsahu souboru:
+Sledování obsahu souborů umožňuje zobrazit obsah souboru před a po sledované změně. Tato funkce uloží obsah souboru do [účtu úložiště](../storage/common/storage-account-overview.md) poté, co dojde ke změně. Tady jsou některá pravidla, která se mají dodržovat při sledování obsahu souboru:
 
 * Pro ukládání obsahu souboru se vyžaduje účet úložiště úrovně Standard, který používá model nasazení Správce prostředků. 
-* Nepoužívejte účty úložiště modelu nasazení Premium a Classic. Přečtěte si informace [o Azure Storagech účtech](../storage/common/storage-create-storage-account.md).
+* Nepoužívejte účty úložiště modelu nasazení Premium a Classic. Přečtěte si informace [o Azure Storagech účtech](../storage/common/storage-account-create.md).
 * Účet úložiště můžete připojit jenom k jednomu účtu Automation.
 * [Change Tracking a inventář](change-tracking.md) musí být ve vašem účtu Automation povolené.
 
@@ -140,7 +141,7 @@ Ke konfiguraci sledování klíčů registru v počítačích se systémem Windo
 
 Můžete provádět různé vyhledávání v protokolech Azure Monitor pro záznamy změn. Otevřete stránku pro sledování změn, kliknutím na **Log Analytics** otevřete stránku protokoly. V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy změn.
 
-|Dotaz  |Description  |
+|Dotaz  |Popis  |
 |---------|---------|
 |`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Zobrazuje nejaktuálnější záznamy inventáře pro služby společnosti Microsoft, které byly nastaveny na hodnotu automaticky, ale byly hlášeny jako zastaveno. Výsledky jsou omezené na nejnovější záznam pro zadaný název softwaru a počítač.    |
 |`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Zobrazuje záznamy změn pro odebraný software.|
@@ -169,7 +170,7 @@ Pomocí tohoto příkladu se podíváme na postup, jak na změnu vytvořit výst
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o konfiguracích oboru najdete v tématu [omezení Change Tracking a rozsahu nasazení inventáře](automation-scope-configurations-change-tracking.md).
-* Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [prohledávání protokolů v](../log-analytics/log-analytics-log-searches.md)protokolech Azure monitor.
+* Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [prohledávání protokolů v](../azure-monitor/log-query/log-query-overview.md)protokolech Azure monitor.
 * Pokud jste dokončili nasazení, přečtěte si téma [zrušení propojení pracovního prostoru s účtem Automation pro Change Tracking a inventář](automation-unlink-workspace-change-tracking.md).
 * Pokud chcete virtuální počítače odstranit z Change Tracking a inventáře, přečtěte si téma [Odebrání virtuálních počítačů z Change Tracking a inventáře](automation-remove-vms-from-change-tracking.md).
 * Řešení chyb funkcí najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).

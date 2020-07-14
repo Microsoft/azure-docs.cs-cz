@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: 12ad18edbb434bdfaec2ae817ea079a843661ef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 937f220980d602b755b6329da4d93df0e4b372ab
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111336"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224056"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Firewall webových aplikací Azure a Azure Policy
 
@@ -38,10 +38,12 @@ K dispozici je několik integrovaných zásad Azure pro správu prostředků WAF
 
 2.  Ve službě Azure Policy v části **vytváření**vyberte **přiřazení**.
 
+[!div class="mx-imgBorder"]
 ![Firewall webových aplikací Azure](../media/waf-azure-policy/policy-home.png)
 
 3.  Na stránce přiřazení vyberte ikonu **přiřadit zásadu** v horní části.
 
+[!div class="mx-imgBorder"]
 ![Firewall webových aplikací Azure](../media/waf-azure-policy/assign-policy.png)
 
 4.  Na kartě základy stránky pro přiřazení zásad aktualizujte následující pole:
@@ -49,6 +51,7 @@ K dispozici je několik integrovaných zásad Azure pro správu prostředků WAF
     2.  **Vyloučení**: vyberte všechny prostředky z oboru, které se mají vyloučit ze zásad. 
     3.  **Definice zásady**: vyberte Azure Policy, který se má použít u oboru s vyloučeními. Na panelu hledání zadejte "Firewall webových aplikací" a vyberte odpovídající Azure Policy firewallu webových aplikací.
 
+[!div class="mx-imgBorder"]
 ![Firewall webových aplikací Azure](../media/waf-azure-policy/policy-listing.png)
 
 

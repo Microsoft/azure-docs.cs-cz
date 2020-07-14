@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e53e9599da3c12fdf01c8902a7275fc75ce86643
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76264029"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223597"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Doprovodné materiály k architektuře nabízení v podnicích
 
@@ -36,7 +37,7 @@ Tady je obecná Architektura řešení (generalizovaná s více mobilními aplik
 
 ## <a name="architecture"></a>Architektura
 
-![][1]
+![Diagram podnikové architektury znázorňující tok prostřednictvím událostí, předplatných a nabízených zpráv.][1]
 
 Klíčový kámen v tomto diagramu architektury je Azure Service Bus, který poskytuje témata nebo programovací model předplatných (Další informace najdete v tématu [Service Bus publikování do Pub/sub]). Příjemce, což je v tomto případě mobilní back-end (obvykle [mobilní služba Azure], která iniciuje nabízení oznámení mobilním aplikacím), nepřijímá zprávy přímo ze systémů back-end, ale místo toho poskytuje zprostředkující vrstvu abstrakce poskytovanou [Azure Service Bus], která umožňuje mobilnímu back-endu přijímat zprávy z jednoho nebo více back-end systémů. Je třeba vytvořit Service Bus téma pro každý back-end systém, například účet, HR, finance, který je v podstatě "důležité" témata, která zahájí odeslání zprávy jako nabízené oznámení. Back-endové systémy odesílají zprávy do těchto témat. Mobilní back-end se může přihlásit k odběru jednoho nebo několika takových témat vytvořením předplatného Service Bus. Umožňuje mobilnímu back-endu přijímat oznámení z odpovídajícího systému back-end. Mobilní back-end nadále naslouchá zprávám ve svých předplatných a Jakmile přijde zpráva, přepíná a odesílá oznámení do centra oznámení. Centra oznámení nakonec doručovat zprávu do mobilní aplikace. Tady je seznam klíčových součástí:
 
@@ -227,15 +228,17 @@ Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářen
 
     e. Pokud chcete tuto aplikaci publikovat jako **webovou úlohu**, klikněte pravým tlačítkem na řešení v aplikaci Visual Studio a vyberte **Publikovat jako webovou úlohu** .
 
-    ![][2]
+    ![Snímek obrazovky s možnostmi napravo od pravého tlačítka, která se zobrazuje s možností publikovat jako Azure WebJob, je popsaný červeně.][2]
 
     f. Vyberte svůj profil publikování a vytvořte nový web Azure, pokud už neexistuje, který je hostitelem této webové úlohy, a až potom web **publikujte**.
 
-    ![][3]
+    :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="Snímek obrazovky znázorňující pracovní postup k vytvoření webu v Azure":::
+    Snímek obrazovky dialogového okna Publikovat web se zvolenou možností Microsoft Azure Websites, zelená šipka ukazující na dialogové okno vybrat existující web s novou možností označenou červenou a zelenou šipkou ukazující na dialogové okno vytvořit web v Microsoft Azure s názvem webu a možnostmi popsanými červeně.
+    :::image-end:::
 
     například Nakonfigurujte úlohu tak, aby běžela průběžně, takže když se přihlásíte k [Azure Portal] , mělo by se zobrazit něco jako v následujícím seznamu:
 
-    ![][4]
+    ![Snímek obrazovky s portálem Azure Portal se zobrazenými WebJobs back-endu (Enterprise push back-end) a hodnotami názvů, plánů a protokolů popsaných červeně][4]
 
 3. **EnterprisePushMobileApp**
 
@@ -269,11 +272,11 @@ Dokončete následující kurzy a seznamte se s koncepty a běžnými vytvářen
 2. Spusťte **EnterprisePushMobileApp**, ve kterém se spustí aplikace pro Windows Store.
 3. Spusťte konzolovou aplikaci **EnterprisePushBackendSystem** , která simuluje back-end LOB a začne odesílat zprávy a měla by se zobrazit informační zpráva, která se zobrazí jako na následujícím obrázku:
 
-    ![][5]
+    ![Snímek obrazovky s konzolou, ve které je spuštěná systémová aplikace nabízeného back-end a zpráva odeslaná aplikací][5]
 
 4. Zprávy byly původně odeslány pro Service Bus témata, která byla monitorována Service Bus odběry ve webové úloze. Po přijetí zprávy se vytvoří oznámení a pošle se do mobilní aplikace. Můžete procházet protokoly webové úlohy a potvrdit zpracování při přechodu na odkaz protokoly v [Azure Portal] pro vaši webovou úlohu:
 
-    ![][6]
+    ![Snímek obrazovky dialogového okna průběžné podrobnosti WebJob se zprávou, která je odeslána červeně.][6]
 
 <!-- Images -->
 [1]: ./media/notification-hubs-enterprise-push-architecture/architecture.png

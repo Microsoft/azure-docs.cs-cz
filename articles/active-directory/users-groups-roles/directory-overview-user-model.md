@@ -1,12 +1,12 @@
 ---
-title: Přehled uživatelů, skupin, licencí a rolí – Azure AD | Microsoft Docs
+title: Uživatelé, skupiny, licence a role v Azure Active Directory
 description: Vztah mezi uživateli a přiřazenými licencemi, role správců a členství ve skupinách v Azure Active Directory
 keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 11/08/2019
+ms.date: 06/16/2020
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,14 +14,14 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 89c96da30411705bf33b1c63f79a9beef11962a1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583016"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223818"
 ---
-# <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Uživatelé, skupiny, licencování a role pro velké organizace
+# <a name="what-is-enterprise-user-management"></a>Co je Správa uživatelů v podniku?
 
 Tento článek představuje správce Azure Active Directory ve vztahu k hlavním úkolům [správy identit](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context) pro uživatele z hlediska jejich skupin, licencí, nasazených podnikových aplikací a rolí správců. Když vaše organizace roste, můžete skupiny Azure Active Directory a role správců používat k následujícímu:
 

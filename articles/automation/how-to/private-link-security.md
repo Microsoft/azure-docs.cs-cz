@@ -4,24 +4,27 @@ description: Použití privátního odkazu Azure k bezpečnému připojení sít
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: fa473591355ef9e1ee582dd9c9b820dfa2f93f36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85268972"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207284"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Automation
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Automation (Preview)
 
 Privátní koncový bod Azure je síťové rozhraní, které vás privátně a zabezpečeně připojí ke službám využívajícím službu Azure Private Link. Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě a efektivně přináší službu Automation do vaší virtuální sítě. Síťový provoz mezi počítači ve virtuální síti a účtem Automation prochází přes virtuální síť a privátní odkaz na páteřní síti Microsoftu, což eliminuje expozici veřejného Internetu.
 
-Máte například virtuální síť, ve které jste zakázali odchozí přístup k Internetu. Chcete ale přistoupit k účtu Automation soukromě a používat funkce automatizace, jako jsou Webhooky, konfigurace stavu a úlohy Runbooku na hybridních pracovních procesech Runbooku. Navíc chcete, aby uživatelé měli přístup k účtu Automation jenom přes virtuální síť. To je možné dosáhnout nasazením privátních koncových bodů.
+Máte například virtuální síť, ve které jste zakázali odchozí přístup k Internetu. Chcete ale přistoupit k účtu Automation soukromě a používat funkce automatizace, jako jsou Webhooky, konfigurace stavu a úlohy Runbooku na hybridních pracovních procesech Runbooku. Navíc chcete, aby uživatelé měli přístup k účtu Automation jenom přes virtuální síť.  Nasazení privátního koncového bodu dosahuje těchto cílů.
 
-Tento článek popisuje, kdy použít a jak nastavit privátní koncový bod s vaším účtem Automation.
+Tento článek popisuje, kdy použít a jak nastavit privátní koncový bod s vaším účtem Automation (Preview).
 
 ![Koncepční přehled privátního odkazu pro Azure Automation](./media/private-link-security/private-endpoints-automation.png)
+
+>[!NOTE]
+> Podpora privátních odkazů s Azure Automation (Preview) je dostupná jenom v cloudech Azure komerčních a Azure USA.
 
 ## <a name="advantages"></a>Výhody
 
@@ -46,9 +49,11 @@ Azure Automation privátní odkaz připojí jeden nebo více privátních koncov
 
 Po vytvoření privátních koncových bodů pro automatizaci každá z veřejných adres URL automatizace, které vy nebo počítač můžete přímo kontaktovat, se namapuje na jeden privátní koncový bod ve vaší virtuální síti.
 
+V rámci verze Preview nemá účet Automation přístup k prostředkům Azure, které jsou zabezpečené pomocí privátního koncového bodu. Například Azure Key Vault, Azure SQL, účet Azure Storage atd.
+
 ### <a name="webhook-scenario"></a>Scénář Webhooku
 
-Sady Runbook můžete spustit pomocí příspěvku na adrese URL Webhooku. Například adresa URL vypadá takto:`https://<automationAccountId>.webhooks. <region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+Sady Runbook můžete spustit pomocí příspěvku na adrese URL Webhooku. Adresa URL vypadá například takto:`https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Scénář konfigurace stavu (agentsvc)
 
@@ -60,11 +65,11 @@ Adresa URL veřejné & privátního koncového bodu by byla stejná, ale bude na
 
 ## <a name="planning-based-on-your-network"></a>Plánování na základě vaší sítě
 
-Před nastavením prostředku účtu Automation zvažte požadavky na izolaci sítě. Vyhodnoťte přístup virtuálních sítí k veřejnému Internetu a omezení přístupu k vašemu účtu Automation (včetně nastavení oboru privátních odkazů na Azure Monitor protokolů, pokud jsou integrovány s vaším účtem Automation).
+Před nastavením prostředku účtu Automation zvažte požadavky na izolaci sítě. Vyhodnoťte přístup virtuálních sítí k veřejnému Internetu a omezení přístupu k vašemu účtu Automation (včetně nastavení oboru privátních odkazů na Azure Monitor protokolů, pokud jsou integrovány s vaším účtem Automation). V rámci vašeho plánu taky zahrňte revizi [záznamů DNS](./automation-region-dns-records.md) služby Automation, abyste zajistili, že podporované funkce budou fungovat bez problémů.
 
 ### <a name="connect-to-a-private-endpoint"></a>Připojení k privátnímu koncovému bodu
 
-Vytvořte privátní koncový bod pro připojení k naší síti. Tuto úlohu lze provést v [centru Azure Portal Private Link Center](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints). Až budou změny publicNetworkAccess a privátního propojení uplatněny, může trvat až 35 minut, než se projeví.
+Vytvořte privátní koncový bod pro připojení k naší síti. Můžete ho vytvořit v [Azure Portal privátním centru odkazů](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints). Až budou změny publicNetworkAccess a privátního propojení uplatněny, může trvat až 35 minut, než se projeví.
 
 V této části vytvoříte privátní koncový bod pro svůj účet Automation.
 
@@ -72,12 +77,12 @@ V této části vytvoříte privátní koncový bod pro svůj účet Automation.
 
 2. V části **centrum privátních odkazů – přehled**na možnost **vytvořit privátní připojení ke službě**vyberte možnost **Spustit**.
 
-3. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
+3. V části **vytvořit virtuální počítač základy**zadejte nebo vyberte následující informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **PODROBNOSTI O PROJEKTU** | |
-    | Předplatné | Vyberte své předplatné. |
+    | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.  |
     | **PODROBNOSTI INSTANCE** |  |
     | Name | Zadejte své *PrivateEndpoint*. |
@@ -86,20 +91,20 @@ V této části vytvoříte privátní koncový bod pro svůj účet Automation.
 
 4. Vyberte **Další: prostředek**.
 
-5. V **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte tyto informace:
+5. V části **Vytvoření privátního koncového bodu – prostředek**zadejte nebo vyberte následující informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     |Způsob připojení  | V adresáři vyberte připojit k prostředku Azure.|
-    | Předplatné| Vyberte své předplatné. |
+    | Předplatné| Vyberte předplatné. |
     | Typ prostředku | Vyberte **Microsoft. Automation/automationAccounts**. |
-    | Prostředek |Vybrat *myAutomationAccount*|
-    |Cílový dílčí prostředek |V závislosti na vašem scénáři vyberte *Webhook* nebo *DSCAndHybridWorker* .|
+    | Resource |Vybrat *myAutomationAccount*|
+    |Cílový podprostředek |V závislosti na vašem scénáři vyberte *Webhook* nebo *DSCAndHybridWorker* .|
     |||
 
 6. Vyberte **Další: Konfigurace**.
 
-7. V **Vytvoření privátního koncového bodu – konfigurace**zadejte nebo vyberte tyto informace:
+7. V části **Vytvoření privátního koncového bodu – konfigurace**zadejte nebo vyberte následující informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
@@ -141,7 +146,7 @@ $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 
 ## <a name="dns-configuration"></a>Konfigurace DNS
 
-Při připojování k prostředku privátního propojení pomocí plně kvalifikovaného názvu domény v rámci připojovacího řetězce je důležité správně nakonfigurovat nastavení DNS tak, aby se přeložilo na přidělenou privátní IP adresu. Existující služby Azure už můžou mít konfiguraci DNS, která se má použít při připojování přes Veřejný koncový bod. To je nutné přepsat pro připojení pomocí privátního koncového bodu.
+Při připojování k prostředku privátního propojení pomocí plně kvalifikovaného názvu domény (FQDN) jako součásti připojovacího řetězce je důležité správně nakonfigurovat nastavení DNS tak, aby se přeložilo na přidělenou privátní IP adresu. Existující služby Azure už můžou mít konfiguraci DNS, která se má použít při připojování přes Veřejný koncový bod. Vaše konfigurace DNS by se měla zkontrolovat a aktualizovat, aby se mohla připojit pomocí privátního koncového bodu.
 
 Síťové rozhraní přidružené k privátnímu koncovému bodu obsahuje úplnou sadu informací potřebných ke konfiguraci DNS, včetně plně kvalifikovaného názvu domény a privátních IP adres přidělených pro daný prostředek privátního propojení.
 

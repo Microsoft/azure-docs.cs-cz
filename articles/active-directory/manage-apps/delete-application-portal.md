@@ -22,7 +22,7 @@ ms.locfileid: "86223903"
 
 V tomto rychlém startu se pomocí Azure Portal odstraní aplikace, která se přidala do tenanta Azure Active Directory (Azure AD).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete odstranit aplikaci z tenanta Azure AD, budete potřebovat:
 

@@ -8,20 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 8/2/2019
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117909"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187247"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Plánované spouštění a zastavování prostředí Azure-SSIS Integration Runtime
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tento článek popisuje, jak naplánovat spouštění a zastavování Azure-SSIS Integration Runtime (IR) pomocí Azure Data Factory (ADF). Azure-SSIS IR je výpočetní prostředek ADF vyhrazený pro spouštění balíčků služba SSIS (SQL Server Integration Services) (SSIS). Spuštění Azure-SSIS IR má k sobě přiřazené náklady. Proto obvykle budete chtít spustit IR pouze v případě, že budete potřebovat spouštět balíčky SSIS v Azure a zastavit technologii IR, když ji ještě nepotřebujete. K [ručnímu spuštění nebo zastavení prostředí IR](manage-azure-ssis-integration-runtime.md)můžete použít uživatelské rozhraní (UI) ADF (/App) nebo Azure PowerShell.
 
@@ -71,7 +72,7 @@ Pokud vytvoříte třetí Trigger, u kterého je naplánováno každodenní spu�
 6. V případě **verze**vyberte **v2** .
 7. V poli **umístění**vyberte jedno z umístění podporovaného pro vytvoření ADF z rozevíracího seznamu.
 8. Zaškrtněte **Připnout na řídicí panel**.     
-9. Klikněte na **Vytvořit**.
+9. Klikněte na **Create** (Vytvořit).
 10. Na řídicím panelu Azure se zobrazí následující dlaždice se stavem: **nasazení Data Factory**. 
 
     ![nasazování dlaždice datové továrny](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -116,7 +117,7 @@ Pokud vytvoříte třetí Trigger, u kterého je naplánováno každodenní spu�
     1. Jako **role**vyberte **Přispěvatel**. 
     2. V případě **přiřazení přístupu k**vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**. 
     3. Pro **možnost vybrat**vyhledejte název ADF a vyberte ho. 
-    4. Klikněte na **Uložit**.
+    4. Klikněte na **Save** (Uložit).
     
    ![Přiřazení role identity spravovaného ADF](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 

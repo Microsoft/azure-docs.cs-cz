@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Notebooks (Preview)
-summary: Azure Notebooks (Preview) je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. Jupyter (dříve IPython) je opensourcový projekt, který umožňuje snadno kombinovat text markdownu, spustitelný kód (Python, R a F#), trvalá data, grafiku a vizualizace v jednom plátně, které se označuje jako poznámkový blok a dá se sdílet.
+summary: 'Dne 9. října 2020 se web Azure Notebooks verze Public Preview vyřadí z provozu a nahradí ho integrované služby ze sady Visual Studio, platformy Azure a GitHubu. Další informace o vašich možnostech a dalších prostředích Microsoftu s poznámkovými bloky najdete tady: https://notebooks.azure.com/Content/alternatives.html.'
 metadata:
   title: Dokumentace ke službě Azure Notebooks (Preview)
   description: Zjistěte, jak vytvářet, spouštět a sdílet poznámkové bloky Jupyter prostřednictvím hostované služby Azure Notebooks (Preview).
@@ -9,12 +9,12 @@ metadata:
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 96fd38e081105b6fc43cc2fc00d52bcf17b20074
-  ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
-  ms.translationtype: 
+  ms.openlocfilehash: 0065b8b609ca9ef29365127333ad1a39f3327c1b
+  ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+  ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 07/01/2020
-  ms.locfileid: "85799407"
+  ms.lasthandoff: 07/09/2020
+  ms.locfileid: "86181416"
 landingContent:
 - title: Informace o službě Azure Notebooks
   linkLists:

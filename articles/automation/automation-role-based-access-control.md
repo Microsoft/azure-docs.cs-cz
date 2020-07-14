@@ -6,11 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100010"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186142"
 ---
 # <a name="manage-role-permissions-and-security"></a>Správa oprávnění rolí a zabezpečení
 
@@ -32,7 +33,7 @@ Ve službě Azure Automation se přístup uděluje přiřazením příslušné r
 | Čtenář Log Analytics | Role čtecího modulu Log Analytics umožňuje zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování. To zahrnuje zobrazení konfigurace diagnostiky Azure pro všechny prostředky Azure. |
 | Přispěvatel monitorování | Role Přispěvatel monitorování umožňuje číst všechna data monitorování a aktualizovat nastavení monitorování.|
 | Čtečka monitorování | Role čtenář monitorování umožňuje číst všechna data monitorování. |
-| Správce přístupu uživatelů |Role správce přístupu uživatelů umožňuje spravovat přístup uživatelů k účtům Azure Automation. |
+| Správce uživatelských přístupů |Role správce přístupu uživatelů umožňuje spravovat přístup uživatelů k účtům Azure Automation. |
 
 ## <a name="role-permissions"></a>Oprávnění role
 
@@ -42,7 +43,7 @@ V následujících tabulkách jsou popsána konkrétní oprávnění udělená j
 
 Vlastník může spravovat všechno, včetně přístupu. Následující tabulka uvádí oprávnění udělená pro roli:
 
-|Akce|Description|
+|Akce|Popis|
 |---|---|
 |Microsoft. Automation/automationAccounts/|Vytváření a Správa prostředků všech typů.|
 
@@ -193,7 +194,7 @@ Přispěvatel monitorování může číst všechna data monitorování a aktual
 |Microsoft. OperationalInsights/pracovní prostory/hledání/akce|Hledání Log Analytics pracovních prostorů.|
 |Microsoft. support/*|Vytváření a Správa lístků podpory|
 
-### <a name="user-access-administrator"></a>Správce přístupu uživatelů
+### <a name="user-access-administrator"></a>Správce uživatelských přístupů
 
 Správce přístupu uživatelů může spravovat přístup uživatelů k prostředkům Azure. Následující tabulka uvádí oprávnění udělená pro roli:
 
@@ -253,7 +254,7 @@ V následujících částech jsou popsány minimální požadovaná oprávnění
 
 Služba Update Management dosáhne v rámci více služeb, aby poskytovala službu. Následující tabulka uvádí oprávnění potřebná ke správě nasazení správy aktualizací:
 
-|**Prostředek**  |**Role**  |**Rozsah**  |
+|**Prostředek**  |**Role**  |**Scope**  |
 |---------|---------|---------|
 |Účet Automation     | Přispěvatel Log Analytics       | Účet Automation        |
 |Účet Automation    | Přispěvatel virtuálních počítačů        | Skupina prostředků pro účet        |
@@ -310,7 +311,7 @@ Můžete odebrat přístupová oprávnění pro uživatele, který účet Automa
 
 Můžete také nakonfigurovat přístup na základě rolí k účtu Automation pomocí následujících [rutin Azure PowerShell](../role-based-access-control/role-assignments-powershell.md):
 
-[Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) vypíše všechny role RBAC, které jsou k dispozici v Azure Active Directory. Pomocí této rutiny s `Name` parametrem můžete zobrazit seznam všech akcí, které může konkrétní role provádět.
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) vypíše všechny role RBAC, které jsou k dispozici v Azure Active Directory. Pomocí této rutiny s `Name` parametrem můžete zobrazit seznam všech akcí, které může konkrétní role provádět.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -329,7 +330,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) vypíše přiřazení rolí RBAC Azure AD v zadaném oboru. Bez parametrů Tato rutina vrátí všechna přiřazení rolí provedené v rámci předplatného. `ExpandPrincipalGroups`K vypsání přiřazení přístupu pro zadaného uživatele a také skupin, do kterých uživatel patří, použijte parametr.
+[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) vypíše přiřazení rolí RBAC Azure AD v zadaném oboru. Bez parametrů Tato rutina vrátí všechna přiřazení rolí provedené v rámci předplatného. `ExpandPrincipalGroups`K vypsání přiřazení přístupu pro zadaného uživatele a také skupin, do kterých uživatel patří, použijte parametr.
 
 **Příklad:** K vypsání všech uživatelů a jejich rolí v rámci účtu Automation použijte následující rutinu.
 
@@ -351,7 +352,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-K přiřazení přístupu uživatelům, skupinám a aplikacím do konkrétního oboru použijte [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) .
+K přiřazení přístupu uživatelům, skupinám a aplikacím do konkrétního oboru použijte [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) .
     
 **Příklad:** K přiřazení role "operátor služby Automation" pro uživatele v rozsahu účtu Automation použijte následující příkaz.
 
@@ -373,7 +374,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-K odebrání přístupu zadaného uživatele, skupiny nebo aplikace z konkrétního oboru použijte [příkaz Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) .
+K odebrání přístupu zadaného uživatele, skupiny nebo aplikace z konkrétního oboru použijte [příkaz Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) .
 
 **Příklad:** Pomocí následujícího příkazu Odeberte uživatele z role operátora automatizace v oboru účtu služby Automation.
 

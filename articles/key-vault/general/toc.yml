@@ -100,6 +100,8 @@
           href: event-grid-logicapps.md
         - name: Příjem oznámení prostřednictvím služeb Azure Event Grid a Azure Automation
           href: event-grid-tutorial.md
+        - name: Zálohování jednotlivých objektů Key Vaultu
+          href: backup.md
     - name: Zabezpečení
       items:
         - name: Integrace se službou Azure Private Link

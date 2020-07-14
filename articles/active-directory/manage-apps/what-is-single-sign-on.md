@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144605"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223886"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Co je jednotné přihlašování (SSO)?
 
@@ -54,7 +54,7 @@ Následující tabulka shrnuje metody jednotného přihlašování a odkazy na d
 
 Při vývoji nových aplikací použijte moderní protokoly jako OpenID Connect a OAuth, abyste dosáhli nejlepšího jednotného přihlašování pro vaši aplikaci napříč různými platformami zařízení. OAuth umožňuje uživatelům nebo správcům [udělit souhlas](configure-user-consent.md) s chráněnými prostředky, jako je [Microsoft Graph](/graph/overview). Nabízíme snadnou přípravu [sad SDK](../develop/reference-v2-libraries.md) pro vaši aplikaci a navíc je vaše aplikace připravená k použití [Microsoft Graph](/graph/overview).
 
-Další informace najdete tady:
+Další informace naleznete v tématu:
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
@@ -89,6 +89,9 @@ Vyberte jednotné přihlašování založené na heslech, když:
 
 - Aplikace nepodporuje protokol jednotného přihlašování SAML.
 - Aplikace se ověřuje pomocí uživatelského jména a hesla místo přístupových tokenů a hlaviček.
+
+>[!NOTE]
+>U jednotného přihlašování založeného na heslech nemůžete použít zásady podmíněného přístupu ani službu Multi-Factor Authentication.
 
 Jednotné přihlašování založené na heslech se podporuje pro všechny cloudové aplikace, které mají přihlašovací stránku založenou na jazyce HTML. Uživatel může použít kterýkoli z následujících prohlížečů:
 
@@ -136,6 +139,9 @@ Díky připojenému přihlašování může Azure AD poskytovat jednotné přihl
 Díky připojenému přihlašování můžete zajistit konzistentní uživatelské prostředí při migraci aplikací v časovém intervalu. Pokud migrujete aplikace na Azure Active Directory, můžete k rychlému publikování odkazů na všechny aplikace, které máte v úmyslu migrovat, použít propojené přihlašování.  Uživatelé můžou najít všechny odkazy na [portálu MyApp](../user-help/active-directory-saas-access-panel-introduction.md) nebo ve [spouštěči aplikací Office 365](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a). Uživatelé nebudou znát přístup k propojené aplikaci nebo migrované aplikaci.  
 
 Jakmile se uživatel s propojenou aplikací ověří, musí se vytvořit záznam účtu, aby byl koncovým uživatelům poskytnutý přístup s jednotným přihlašováním. K tomu, aby se tento záznam účtu mohl vyskytnout automaticky, nebo ho může vyskytnout správce ručně.
+
+>[!NOTE]
+>Pro propojenou aplikaci nemůžete použít zásady podmíněného přístupu ani službu Multi-Factor Authentication. Je to proto, že propojená aplikace neposkytuje možnosti jednotného přihlašování prostřednictvím služby Azure AD. Když nakonfigurujete propojenou aplikaci, stačí přidat odkaz, který se zobrazí ve Spouštěči aplikací nebo v portálu Mojeapl. 
 
 ## <a name="disabled-sso"></a>Zakázané jednotné přihlašování
 

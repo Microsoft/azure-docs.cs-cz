@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477851"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201952"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postup: Přihlášení libovolného uživatele služby Azure Active Directory pomocí vzoru aplikace s více tenanty
 
@@ -71,15 +71,21 @@ Webové aplikace a webová rozhraní API přijímají a ověřují tokeny z plat
 
 Pojďme se podívat, jak aplikace ověřuje tokeny, které obdrží od platformy Microsoft Identity Platform. Jediná aplikace tenanta má obvykle hodnotu koncového bodu, jako je:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com
+```
 
 a používá ho k vytvoření adresy URL metadat (v tomto případě OpenID Connect), jako je:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+```
 
 stažení dvou důležitých informací, které se používají k ověření tokenů: podpisové klíče klienta a hodnota vystavitele. Každý tenant služby Azure AD má jedinečnou hodnotu vystavitele formuláře:
 
+```http
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
 
 kde hodnota identifikátoru GUID je verze s identifikátorem ID tenanta v tenantovi, která je bezpečná pro přejmenování. Pokud vyberete odkaz předchozí metadata pro `contoso.onmicrosoft.com` , můžete tuto hodnotu vystavitele zobrazit v dokumentu.
 
@@ -87,7 +93,9 @@ Když jedna klientská aplikace ověří token, zkontroluje signaturu tokenu pro
 
 Vzhledem k tomu, že koncový bod/běžné neodpovídá tenantovi a není vystavitelem, při prohlédnutí hodnoty vystavitele v metadatech pro/běžné má místo skutečné hodnoty adresu URL šablony:
 
+```http
     https://sts.windows.net/{tenantid}/
+```
 
 Proto aplikace s více klienty nemůže ověřit tokeny jenom tak, že odpovídají hodnotě vystavitele v metadatech s `issuer` hodnotou v tokenu. Víceklientská aplikace potřebuje logiku k rozhodnutí, které hodnoty vystavitele jsou platné a které nejsou založené na části ID tenanta v hodnotě vystavitele. 
 
@@ -135,7 +143,9 @@ Vaše aplikace může mít více vrstev, z nichž každý představuje vlastní 
 
 To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Příklad:
 
+```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```
 
 To je znázorněno ve vícevrstvém nativním klientovi, který volá ukázku webového rozhraní API v části [související obsah](#related-content) na konci tohoto článku. Následující diagram poskytuje přehled o souhlasu vícevrstvé aplikace zaregistrované v jednom tenantovi.
 

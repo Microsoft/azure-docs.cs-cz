@@ -10,7 +10,7 @@ Výchozí časové pásmo použité s výrazy CRON je koordinovaný světový č
 
 Hodnota tohoto nastavení závisí na operačním systému a na plánu, na kterém běží aplikace Function App.
 
-|Operační systém |Plán |Hodnota |
+|Operační systém |Plánování |Hodnota |
 |-|-|-|
 | **Windows** |Vše | Nastavte hodnotu na název požadovaného časového pásma, jak je znázorněno v [indexu časového pásma Microsoftu] ( https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10) . |
 | **Linux** |Premium<br/>Vyhrazená |Nastavte hodnotu na název požadovaného časového pásma, jak je znázorněno v [databázi TZ](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). |

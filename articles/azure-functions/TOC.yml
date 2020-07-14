@@ -55,6 +55,7 @@
       href: machine-learning-pytorch.md
     - name: Vytvoření vlastní linuxové image
       href: functions-create-function-linux-custom-image.md
+      displayName: 'container, docker'
     - name: Functions na zařízení IoT Edge
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Java s Azure Cosmos DB a Event Hubs
@@ -252,7 +253,7 @@
           href: run-functions-from-deployment-package.md
         - name: Funkce na platformě Kubernetes
           href: functions-kubernetes-keda.md
-          displayName: keda
+          displayName: 'keda, container, docker'
         - name: Automatizace nasazení prostředků
           href: functions-infrastructure-as-code.md
         - name: Místní funkce
@@ -296,6 +297,8 @@
               href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Ověřování pomocí Twitteru
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Ověřování pomocí poskytovatele OpenID Connect (Preview)
+              href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Pokročilé ověřování
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Omezení IP adres
@@ -500,6 +503,8 @@
   items:
     - name: Získávání dovedností pomocí Microsoft Learn
       href: /learn/browse/?products=azure-functions
+    - name: Pokyny pro architekturu
+      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Ceny

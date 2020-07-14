@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80655950"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156603"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
@@ -194,7 +194,7 @@ Například pokud jste jako první schvalovateli v seznamu Alice a Bob, vypíše
 
 1. V poli **předávat k alternativním schvalovatelům po počtu dní** uveďte počet dní, po které schvalovatelé schválí nebo zamítnou požadavek. Pokud žádný schvalovatel neschválil nebo zamítl požadavek před trváním žádosti, vyprší platnost žádosti (časový limit) a uživatel bude muset odeslat další žádost o přístup k balíčku. 
 
-    Žádosti je možné přeslat pouze alternativním schvalovatelům po dnech, kdy doba trvání žádosti dosáhne poloviny životního cyklu. V tomto příkladu je doba trvání žádosti 14 dní. To znamená, že doba trvání žádosti dosáhne poloviny životnosti 7 dní. Proto se žádost nedá přeposláním starší než 8 dní. Žádosti se taky nedají přeslat za poslední den trvání žádosti. Takže v tomto příkladu může být nejnovější žádost předána dne 13.
+    Žádosti mohou být předávány alternativním schvalovatelům denně po uplynutí doby trvání žádosti a rozhodnutí hlavních schvalovatelů se musí po dobu nejméně 4 dnů vysílat. Pokud je časový limit požadavku menší nebo roven 3, není dostatek času na přeposlání žádosti na alternativní schvalovatele. V tomto příkladu je doba trvání žádosti 14 dní. To znamená, že doba trvání žádosti dosáhne poloviny životnosti 7 dní. Proto se žádost nedá přeposláním starší než 8 dní. Žádosti se taky nedají přeslat za poslední den trvání žádosti. Takže v tomto příkladu může být nejnovější žádost předána dne 13.
 
 ## <a name="enable-requests"></a>Povolit žádosti
 
@@ -206,4 +206,4 @@ Například pokud jste jako první schvalovateli v seznamu Alice a Bob, vypíše
 
     ![Přístup k balíčku – nastavení zásad – Povolit zásadu](./media/active-directory-entitlement-management-request-policy/enable-requests.png)
 
-1. Klikněte na **Další**.
+1. Klikněte na **Next** (Další).

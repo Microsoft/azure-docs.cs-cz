@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361672"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185632"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Spuštění runbooku z webhooku
 
-Webhook umožňuje externí službě spustit konkrétní sadu Runbook v Azure Automation prostřednictvím jedné žádosti HTTP. Mezi externí služby patří Azure DevOps Services, GitHub, protokoly Azure Monitor a vlastní aplikace. Taková služba může pomocí Webhooku spustit Runbook bez implementace kompletního rozhraní Azure Automation API. Webhooky můžete porovnat s jinými metodami spuštění sady Runbook při [Spuštění Runbooku v Azure Automation](automation-starting-a-runbook.md).
+Webhook umožňuje externí službě spustit konkrétní sadu Runbook v Azure Automation prostřednictvím jedné žádosti HTTP. Mezi externí služby patří Azure DevOps Services, GitHub, protokoly Azure Monitor a vlastní aplikace. Taková služba může pomocí Webhooku spustit Runbook bez implementace kompletního rozhraní Azure Automation API. Webhooky můžete porovnat s jinými metodami spuštění sady Runbook při [Spuštění Runbooku v Azure Automation](./start-runbooks.md).
 
 > [!NOTE]
 > Použití Webhooku ke spuštění Runbooku v Pythonu se nepodporuje.
@@ -29,7 +29,7 @@ Následující tabulka popisuje vlastnosti, které musíte nakonfigurovat pro We
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Name |Název Webhooku Můžete zadat jakýkoli název, který chcete, protože není k dispozici klientovi. Používá se pouze k identifikaci Runbooku v Azure Automation. Jako osvědčený postup byste měli Webhook dát název týkající se klienta, který ho používá. |
+| Název |Název Webhooku Můžete zadat jakýkoli název, který chcete, protože není k dispozici klientovi. Používá se pouze k identifikaci Runbooku v Azure Automation. Jako osvědčený postup byste měli Webhook dát název týkající se klienta, který ho používá. |
 | URL |Adresa URL Webhooku Jedná se o jedinečnou adresu, kterou klient volá s HTTP POST, aby mohl spustit Runbook propojený s webhookem. Při vytváření Webhooku se automaticky vygeneruje. Nemůžete zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, který umožňuje systému třetí strany vyvolat sadu Runbook bez dalšího ověřování. Z tohoto důvodu byste měli zacházet s adresou URL, jako je heslo. Z bezpečnostních důvodů můžete při vytváření Webhooku zobrazit jenom adresu URL v Azure Portal. Poznamenejte si adresu URL v zabezpečeném umístění pro budoucí použití. |
 | Datum vypršení platnosti | Datum vypršení platnosti Webhooku, po kterém ho už nebude možné používat. Po vytvoření Webhooku můžete upravit datum vypršení platnosti, dokud nevypršela platnost Webhooku. |
 | Povoleno | Nastavení určující, zda je Webhook ve výchozím nastavení povolený, když je vytvořený. Pokud tuto vlastnost nastavíte na zakázáno, nebude moct Webhook používat žádný klient. Tuto vlastnost můžete nastavit při vytváření Webhooku nebo jakékoli jiné doby po jejím vytvoření. |
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Klient obdrží z požadavku jeden z následujících návratových kódů `POST` .
 
-| Kód | Text | Description |
+| Kód | Text | Popis |
 |:--- |:--- |:--- |
 | 202 |Přijato |Požadavek byl přijat a sada Runbook byla úspěšně zařazena do fronty. |
 | 400 |Chybný požadavek |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |
@@ -133,7 +133,7 @@ Za předpokladu, že žádost je úspěšná, odpověď Webhooku obsahuje ID úl
 {"JobIds":["<JobId>"]}
 ```
 
-Klient nemůže určit, kdy má být úloha sady Runbook dokončena nebo její stav dokončení z Webhooku. Tyto informace může zjistit s použitím ID úlohy s jiným mechanismem, jako je například [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) nebo [rozhraní Azure Automation API](/rest/api/automation/job).
+Klient nemůže určit, kdy má být úloha sady Runbook dokončena nebo její stav dokončení z Webhooku. Tyto informace může zjistit s použitím ID úlohy s jiným mechanismem, jako je například [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) nebo [rozhraní Azure Automation API](/rest/api/automation/job).
 
 ## <a name="renew-a-webhook"></a>Obnovení Webhooku
 
@@ -151,7 +151,7 @@ Můžete zvětšit Webhook, který nedosáhl svého času vypršení platnosti. 
 Následující ukázkový Runbook akceptuje data Webhooku a spustí virtuální počítače zadané v textu žádosti. Pokud chcete tento Runbook otestovat, v účtu Automation v části **Runbooky**klikněte na **vytvořit Runbook**. Pokud si nejste jisti, jak vytvořit sadu Runbook, přečtěte si téma [Vytvoření Runbooku](automation-quickstart-create-runbook.md).
 
 > [!NOTE]
-> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
+> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
 
 ```powershell
 param

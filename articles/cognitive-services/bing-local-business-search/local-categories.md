@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f469196f96b97903f69e29d1a38900369653e02f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69906400"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200518"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Kategorie hledání pro rozhraní API pro vyhledávání místních obchodních aplikací Bingu
 
@@ -24,7 +24,7 @@ Rozhraní API pro místní vyhledávání Bingu umožňuje vyhledávat místní 
 
 ## <a name="toplevel-categories"></a>Kategorie TopLevel 
 
-Následující typy definují hlavní kategorie hledání.  Pomocí seznamu odděleného čárkami, který je `localCategories` přiřazen k parametru, lze zadat více než jednu kategorii.  
+Následující typy definují hlavní kategorie hledání.  Pomocí seznamu odděleného čárkami, který je přiřazen k parametru, lze zadat více než jednu kategorii `localCategories` .  
 - EatDrink 
 - SeeDo 
 - Středisko 
@@ -34,51 +34,19 @@ Následující typy definují hlavní kategorie hledání.  Pomocí seznamu odd�
 - Nemocniční 
 
 ## <a name="sub-categories"></a>Podkategorie
-Podkategorie jsou předány stejným způsobem jako `localCategories`. Podkategorie jsou konkrétnější kategorie. Jsou podřízené v tom smyslu, že pokud zadáte kategorii C a jednu z jejích podkategorií v jednom seznamu odděleném čárkami, obdržíte stejné výsledky, jako kdyby jste určili pouze C.
+Podkategorie jsou předány stejným způsobem jako `localCategories` . Podkategorie jsou konkrétnější kategorie. Jsou podřízené v tom smyslu, že pokud zadáte kategorii C a jednu z jejích podkategorií v jednom seznamu odděleném čárkami, obdržíte stejné výsledky, jako kdyby jste určili pouze C.
 
-### <a name="eat-drink"></a>Eat nápoj 
-|  |  |  |  |
-| - | - | - | - |
-| BreweriesAndBrewPubs | CocktailLounges | AfricanRestaurants |
-| AmericanRestaurants | Bagels | BarbecueRestaurants |
-| Taverns | SportsBars | Webových |
-| BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
-| BritishRestaurants | CafeRestaurants | CaribbeanRestaurants |
-| ChineseRestaurants | CoffeeAndTea | Delicatessens | 
-| DeliveryService | Diners | DiscountStores | 
-| Donuts | FastFood | FrenchRestaurants | 
-| FrozenYogurt | GermanRestaurants | Supermarkety | 
-| GreekRestaurants | Nákup | HawaiianRestaurants | 
-| HungarianRestaurants | IceCreamAndFrozenDesserts | IndianRestaurants | 
-| ItalianRestaurants | JapaneseRestaurants | Šťávy | 
-| KoreanRestaurants | LiquorStores | MexicanRestaurants |
-| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
-| PortugueseRestaurants | Pretzels | Stravování | 
-| RussianAndUkrainianRestaurants | Sandwichovy | SeafoodRestaurants | 
-| SpanishRestaurants | SteakHouseRestaurants | SushiRestaurants | 
-| Poznatkem | ThaiRestaurants | TurkishRestaurants | 
-| VegetarianAndVeganRestaurants | VietnameseRestaurants|  |
- 
-### <a name="see-do"></a>Viz do 
-|  |  |  |
-| -- | -- | -- |
-| AmusementParks | Attractions | Carnivals |
-| Casinos | LandmarksAndHistoricalSites | MiniatureGolfCourses |
-| MovieTheaters | Muzeí | Parků |
-| SightseeingTours | TouristInformation | Zoos |
- 
-### <a name="shop"></a>Středisko 
-|  |  |  |
-| -- | -- | -- |
-| AntiqueStores | Bookstore | CDAndRecordStores |
-| ChildrensClothingStores | CigarAndTobaccoShops | ComicBookStores |
-| DepartmentStores | DiscountStores | FleaMarketsAndBazaars |
-| FurnitureStores | HomeImprovementStores | JewelryAndWatchesStores |
-| KitchenwareStores | LiquorStores | MallsAndShoppingCenters |
-| MensClothingStores | MusicStores | OutletStores |
-| PetShops | PetSupplyStores | SchoolAndOfficeSupplyStores |
-| ShoeStores | SportingGoodsStores | ToyAndGameStores |
-| VitaminAndSupplementStores | WomensClothingStores |  |
+### <a name="eat-drink"></a>Eat nápoj
+
+> BreweriesAndBrewPubs, CocktailLounges, AfricanRestaurants, AmericanRestaurants, bagels, BarbecueRestaurants, Taverns, SportsBars, bar, BarsGrillsAndPubs, BuffetRestaurants | BelgianRestaurants, BritishRestaurants, CafeRestaurants, CaribbeanRestaurants, ChineseRestaurants, CoffeeAndTea, Delicatessens, DeliveryService, Diners, DiscountStores, Donuts, FastFood, FrenchRestaurants, FrozenYogurt, GermanRestaurants, supermarkety, GreekRestaurants, nákupy, HawaiianRestaurants, HungarianRestaurants, IceCreamAndFrozenDesserts, IndianRestaurants, ItalianRestaurants, JapaneseRestaurants, šťávy, KoreanRestaurants, LiquorStores, MexicanRestaurants, MiddleEasternRestaurants, Pizza, PolishRestaurants, PortugueseRestaurants, Pretzels, restaurace, RussianAndUkrainianRestaurants, SeafoodRestaurants, SpanishRestaurants, SteakHouseRestaurants, SushiRestaurants, poznatkem, ThaiRestaurants, TurkishRestaurants, VegetarianAndVeganRestaurants, VietnameseRestaurants,,
+
+### <a name="see-do"></a>Viz do
+
+> AmusementParks, attractions, Carnivals, Casinos, LandmarksAndHistoricalSites, MiniatureGolfCourses, MovieTheaters, muzeí, parky, SightseeingTours, TouristInformation, zoos
+
+### <a name="shop"></a>Středisko
+
+> AntiqueStores, Bookstore, CDAndRecordStores, ChildrensClothingStores, CigarAndTobaccoShops, ComicBookStores, DepartmentStores, DiscountStores, FleaMarketsAndBazaars, FurnitureStores, HomeImprovementStores, JewelryAndWatchesStores, KitchenwareStores, LiquorStores, MallsAndShoppingCenters, MensClothingStores, MusicStores, OutletStores, PetShops, PetSupplyStores, SchoolAndOfficeSupplyStores, ShoeStores, SportingGoodsStores, ToyAndGameStores, VitaminAndSupplementStores, WomensClothingStores
 
 
 ## <a name="examples-of-local-categories-search"></a>Příklady hledání místních kategorií

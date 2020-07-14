@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 03/24/2020
+ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: cb52935b731a507d2408d174a5aa571fb2bfc973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609261"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146728"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Informace o tom, kde je úložiště dat vhodné v rámci celkového pracovního
 ## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud předplatné Azure ještě nemáte, napřed si vytvořte bezplatný účet. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - Účet služby Azure Storage s [kontejnerem objektů blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) nebo [sdílenou složkou Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -52,16 +52,16 @@ Budete potřebovat:
 
 Úložiště dat v současné době podporují ukládání informací o připojení do služby úložiště uvedené v následující matici.
 
-| &nbsp;Typ úložiště | &nbsp;Typ ověřování | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Sada SDK pro službu Azure &nbsp; Machine &nbsp; Learning &nbsp; Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Rozhraní příkazového &nbsp; řádku Azure Machine &nbsp; Learning](reference-azure-machine-learning-cli.md) | [&nbsp; &nbsp; &nbsp; Rozhraní REST API služby Azure Machine Learning](https://docs.microsoft.com/rest/api/azureml/)
----|---|---|---|---|---
-[&nbsp;Úložiště objektů BLOB v Azure &nbsp;](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Klíč účtu <br> Token SAS | ✓ | ✓ | ✓ |✓
-[&nbsp; &nbsp; Sdílená složka Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Klíč účtu <br> Token SAS | ✓ | ✓ | ✓ |✓
-[Azure &nbsp; Data Lake &nbsp; Storage – &nbsp; 1. generace](https://docs.microsoft.com/azure/data-lake-store/)| Instanční objekt| ✓ | ✓ | ✓ |✓
-[&nbsp;Úložiště Azure Data Lake – &nbsp; 2. generace &nbsp;](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Instanční objekt| ✓ | ✓ | ✓ |✓
-[&nbsp;Databáze SQL &nbsp; Azure](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| Ověřování pomocí SQL <br>Instanční objekt| ✓ | ✓ | ✓ |✓
-[&nbsp;PostgreSQL Azure](https://docs.microsoft.com/azure/postgresql/overview) | Ověřování pomocí SQL| ✓ | ✓ | ✓ |✓
-[Azure &nbsp; Database &nbsp; for &nbsp; MySQL](https://docs.microsoft.com/azure/mysql/overview) | Ověřování pomocí SQL|  | ✓* | ✓* |✓*
-[Systém souborů datacihly &nbsp; &nbsp;](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Bez ověřování | | ✓** | ✓ ** |✓** 
+| &nbsp;Typ úložiště | &nbsp;Typ ověřování | [Azure &nbsp; Machine &nbsp; Learning Studio](https://ml.azure.com/) | [Sada SDK pro službu Azure &nbsp; Machine &nbsp; Learning &nbsp; Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Rozhraní příkazového &nbsp; řádku Azure Machine &nbsp; Learning](reference-azure-machine-learning-cli.md) | [&nbsp; &nbsp; &nbsp; Rozhraní REST API služby Azure Machine Learning](https://docs.microsoft.com/rest/api/azureml/) | VS Code
+---|---|---|---|---|---|---
+[&nbsp;Úložiště objektů BLOB v Azure &nbsp;](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Klíč účtu <br> Token SAS | ✓ | ✓ | ✓ |✓ |✓
+[&nbsp; &nbsp; Sdílená složka Azure](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Klíč účtu <br> Token SAS | ✓ | ✓ | ✓ |✓|✓
+[Azure &nbsp; Data Lake &nbsp; Storage – &nbsp; 1. generace](https://docs.microsoft.com/azure/data-lake-store/)| Instanční objekt| ✓ | ✓ | ✓ |✓|
+[&nbsp;Úložiště Azure Data Lake – &nbsp; 2. generace &nbsp;](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Instanční objekt| ✓ | ✓ | ✓ |✓|
+[&nbsp;Databáze SQL &nbsp; Azure](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| Ověřování SQL <br>Instanční objekt| ✓ | ✓ | ✓ |✓|
+[&nbsp;PostgreSQL Azure](https://docs.microsoft.com/azure/postgresql/overview) | Ověřování SQL| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; Database &nbsp; for &nbsp; MySQL](https://docs.microsoft.com/azure/mysql/overview) | Ověřování SQL|  | ✓* | ✓* |✓*|
+[Systém souborů datacihly &nbsp; &nbsp;](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Žádné ověřování | | ✓** | ✓ ** |✓** |
 
 * MySQL se podporuje jenom pro [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)kanálu. <br>
 * * Datacihly se podporují jenom pro [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) kanálu.
@@ -205,6 +205,9 @@ Následující příklad ukazuje, jak formulář vypadá při vytváření **úl
     
 ![Formulář pro nové úložiště dat](media/how-to-access-data/new-datastore-form.png)
 
+### <a name="vs-code"></a>VS Code
+
+Úložiště dat můžete vytvořit a spravovat pomocí rozšíření Azure Machine Learning VS Code. Další informace najdete v tématu [Průvodce správou prostředků vs Code](how-to-manage-resources-vscode.md#datastores) .
 
 <a name="get"></a>
 
@@ -244,7 +247,7 @@ Výchozí úložiště dat můžete také změnit pomocí následujícího kódu
 > [!NOTE]
 > Nahrávání do úložiště dat AzureDataLakeGen2 se v tuto chvíli nepodporuje.
 
-### <a name="upload"></a>Odeslat
+### <a name="upload"></a>Nahrávání
 
 Nahrát buď adresář nebo jednotlivé soubory do úložiště dat pomocí sady Python SDK:
 
@@ -292,7 +295,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely pro bodování. Některé z těchto metod neposkytují přístup k úložiště dat. Následující tabulka vám pomůže pochopit, které metody umožňují přístup k úložišti dat během bodování:
 
-| Metoda | Přístup k úložišti dat | Description |
+| Metoda | Přístup k úložišti dat | Popis |
 | ----- | :-----: | ----- |
 | [Dávkové předpovědi](how-to-use-parallel-run-step.md) | ✔ | Provádějte asynchronní předpovědi velké množství dat. |
 | [Webová služba](how-to-deploy-and-where.md) | &nbsp; | Nasaďte modely jako webovou službu. |

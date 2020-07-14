@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98b82047c1744fbd63ecd3665e804e9d8f6c5221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565976"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143916"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Musí mít uživatel k používání Azure Virtual WAN rozbočovač a paprsek se zařízeními SD-WAN/VPN?
 
@@ -25,7 +25,7 @@ Virtuální síť WAN nabízí dva typy: Basic a Standard. V nástroji Basic Vir
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Jak se ve virtuální síti WAN zpracovávají Zóny dostupnosti a odolnost proti chybám?
 
-Virtuální síť WAN je kolekce rozbočovačů a služeb zpřístupněných v rámci centra. Uživatel může mít tolik virtuálních sítí WAN podle svých potřeb. Ve virtuálním rozbočovači WAN existuje několik služeb, jako je VPN, ExpressRoute atd. Každá z těchto služeb je nasazená v Zóny dostupnosti oblasti, pokud oblast podporuje Zóny dostupnosti. Pokud se oblast po počátečním nasazení v centru změní na zónu dostupnosti, může uživatel znovu vytvořit brány, které aktivují nasazení zóny dostupnosti. Všechny brány se zřídí v rozbočovači jako aktivní – aktivní, což znamená, že v rámci centra je vestavěná odolnost. Uživatelé se můžou připojit k několika rozbočovačům, pokud chtějí mít odolnost napříč oblastmi. I když je koncept virtuální sítě WAN globální, skutečný prostředek virtuální sítě WAN je Správce prostředků a nasazený v regionu. Pokud by tato virtuální oblast sítě WAN mohla mít problém, všechna centra v této virtuální síti WAN budou dál fungovat, jak je, ale uživatel nebude moct vytvářet nová centra, dokud nebude dostupná tato oblast virtuální sítě WAN.
+Virtuální síť WAN je kolekce rozbočovačů a služeb zpřístupněných v rámci centra. Uživatel může mít tolik virtuálních sítí WAN na základě jejich potřeby. Ve virtuálním rozbočovači WAN existuje několik služeb, jako je VPN, ExpressRoute atd. Každá z těchto služeb (kromě Azure Firewall) je nasazena v Zóny dostupnosti oblasti, to znamená, že oblast podporuje Zóny dostupnosti. Pokud se oblast po počátečním nasazení v centru změní na zónu dostupnosti, může uživatel znovu vytvořit brány, které aktivují nasazení zóny dostupnosti. Všechny brány se zřídí v rozbočovači jako aktivní – aktivní, což znamená, že v rámci centra je vestavěná odolnost. Uživatelé se můžou připojit k několika rozbočovačům, pokud chtějí mít odolnost napříč oblastmi. I když je koncept virtuální sítě WAN globální, skutečný prostředek virtuální sítě WAN je Správce prostředků a nasazený v regionu. Pokud by tato virtuální oblast sítě WAN mohla mít problém, všechna centra v této virtuální síti WAN budou dál fungovat, jak je, ale uživatel nebude moct vytvářet nová centra, dokud nebude dostupná tato oblast virtuální sítě WAN.
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Jaký klient podporuje službu Azure Virtual WAN User VPN (Point-to-site)?
 

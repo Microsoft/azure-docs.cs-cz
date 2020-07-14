@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535702"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220716"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Nákup vlastního názvu domény pro Azure App Service
 
@@ -78,11 +78,11 @@ Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se pomocí své
 ### <a name="launch-buy-domains"></a>Spustit nákupní domény
 Na kartě **App Services** klikněte na název vaší aplikace, vyberte **Nastavení**a pak vyberte **vlastní domény** .
    
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Snímek obrazovky zobrazující zvýrazněné vlastní domény](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Na stránce **vlastní domény** klikněte na **koupit doménu**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
+![Snímek obrazovky zobrazující zvýrazněnou nákupní doménu](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
 > Pokud nemůžete zobrazit část **App Service domény** , musíte odebrat limit útraty ve vašem účtu Azure (viz [požadavky](#prerequisites)).
@@ -93,7 +93,7 @@ Na stránce **vlastní domény** klikněte na **koupit doménu**.
 
 Na stránce **App Service doména** zadejte do pole **Hledat doménu** název domény, kterou chcete koupit, a zadejte `Enter` . Navrhované dostupné domény se zobrazují hned pod textovým polem. Vyberte jednu nebo více domén, které chcete koupit.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+![Snímek obrazovky, který zobrazuje vyhledávací pole Hledat doménu](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
 > Následující [domény nejvyšší úrovně](https://wikipedia.org/wiki/Top-level_domain) jsou podporovány App Service doménami: _com_, _net_, _co.UK_, _org_, _nl_, _in_,, _biz_ _org.UK_a _co.in_.
@@ -122,19 +122,19 @@ Kliknutím na **právní doložku** si Projděte podmínku a poplatky a pak klik
 
 Zpátky na stránce **App Service doména** klikněte na **OK**. V průběhu operace se zobrazí následující oznámení:
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
+![Snímek obrazovky zobrazující zprávu o probíhajícím ověřování](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
+![Snímek obrazovky zobrazující oznámení o úspěšnosti nákupu](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
 ### <a name="test-the-hostnames"></a>Testování názvů hostitelů
 
 Pokud jste aplikaci přiřadili výchozí názvy hostitelů, zobrazí se vám také oznámení o úspěšnosti pro každý vybraný název hostitele.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![Snímek obrazovky, který zobrazuje oznámení o úspěšnosti pro každý vybraný název hostitele.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 Vybrané názvy hostitelů se zobrazí také na stránce **vlastní domény** v části **vlastní názvy hostitelů** .
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+![Snímek obrazovky, který zobrazuje vybrané názvy hostitelů v části vlastní názvy hostitelů na stránce vlastní domény.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
 > **Nezabezpečený** popisek pro vaši vlastní doménu znamená, že ještě není svázán s certifikátem TLS/SSL, a v závislosti na prohlížeči obdrží v závislosti na prohlížeči chybu nebo upozornění v jakémkoli požadavku HTTPS z prohlížeče do vaší vlastní domény. Pokud chcete nakonfigurovat vazbu TLS, přečtěte si téma [zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service](configure-ssl-bindings.md).
@@ -154,11 +154,11 @@ Můžete také přiřadit názvy hostitelů v doméně App Service do jakékoli 
 ### <a name="launch-add-hostname"></a>Spustit přidání názvu hostitele
 Na stránce **App Services** vyberte název aplikace, ke které chcete přiřadit názvy hostitelů, vyberte **Nastavení**a pak vyberte **vlastní domény**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Snímek obrazovky zobrazující zvýrazněné vlastní domény](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Ujistěte se, že je Vaše zakoupená doména uvedená v části **App Service domény** , ale nevybírejte ji. 
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![Snímek obrazovky, který zobrazuje vaši zakoupenou doménu v části App Service domény.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
 > Na stránce **vlastní domény** aplikace se zobrazí všechny App Service domény ve stejném předplatném. Pokud je vaše doména v předplatném aplikace, ale nemůžete ji zobrazit na stránce **vlastní domény** aplikace, zkuste znovu otevřít stránku **vlastní domény** nebo aktualizovat webovou stránku. Také si přečtěte oznámení v oznámení v horní části Azure Portal pro průběh nebo selhání vytvoření.
@@ -180,14 +180,14 @@ Vyberte **Přidat název hostitele**.
 
 Po dokončení operace se pro přiřazený název hostitele zobrazí oznámení o úspěchu.  
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![Snímek obrazovky, který zobrazuje oznámení o úspěšnosti pro přiřazený název hostitele.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>Zavřít přidání názvu hostitele
 Na stránce **Přidat název hostitele** přiřaďte aplikaci libovolný další název hostitele podle potřeby. Po dokončení zavřete stránku **Přidat název hostitele** .
 
 Teď byste měli vidět nově přiřazené názvy hostitelů na stránce **vlastní domény** vaší aplikace.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
+![Snímek obrazovky zobrazující nově přiřazené názvy hostitelů na stránce vlastní domény vaší aplikace](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
 ### <a name="test-the-hostnames"></a>Testování názvů hostitelů
 
@@ -201,15 +201,15 @@ Pokud chcete vypnout automatické obnovování nebo pokud chcete, aby se doména
 
 Na kartě **App Services** klikněte na název vaší aplikace, vyberte **Nastavení**a pak vyberte **vlastní domény**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Snímek obrazovky zobrazující zvýrazněné vlastní domény](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 V části **App Service domény** vyberte doménu, kterou chcete nakonfigurovat.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![Snímek obrazovky, který zobrazuje vaši zakoupenou doménu v části App Service domény.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 V levém navigačním panelu domény vyberte **obnovení domény**. Pokud chcete zastavit obnovení domény automaticky, vyberte **vypnout**a pak **Uložit**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+![Snímek obrazovky, který ukazuje možnost automaticky obnovit vaši doménu.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
 Chcete-li ručně obnovit doménu, vyberte možnost **obnovit doménu**. Toto tlačítko je ale aktivní až [90 dní před vypršením platnosti domény](#when-domain-expires).
 
@@ -237,7 +237,7 @@ V Azure se záznamy DNS pro App Service doméně spravují pomocí [Azure DNS](h
 
 V Azure Portal v nabídce vlevo vyberte **všechny služby**  >  **App Service domény**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![Snímek obrazovky, který ukazuje, kde získat přístup k App Service doménám](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Vyberte doménu, kterou chcete spravovat. 
 
@@ -245,7 +245,7 @@ Vyberte doménu, kterou chcete spravovat.
 
 V nabídce vlevo v doméně vyberte **zónu DNS**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
+![Snímek obrazovky, který ukazuje, kde vybrat zónu DNS.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
 Tato akce otevře stránku [zóny DNS](../dns/dns-zones-records.md) vaší App Service domény v Azure DNS. Informace o tom, jak upravit záznamy DNS, najdete v tématu [správa zóny DNS v Azure Portal](../dns/dns-operations-dnszones-portal.md).
 
@@ -257,7 +257,7 @@ Po zakoupení App Service domény budete mít za pět dní, abyste zrušili nák
 
 V Azure Portal v nabídce vlevo vyberte **všechny služby**  >  **App Service domény**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![Snímek obrazovky, který ukazuje, kde získat přístup k App Service doménám](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Vyberte doménu, kterou chcete zrušit nebo odstranit. 
 
@@ -265,13 +265,13 @@ Vyberte doménu, kterou chcete zrušit nebo odstranit.
 
 V nabídce vlevo v doméně vyberte možnost **vazby názvů hostitelů**. Tady jsou uvedené vazby názvů hostitelů ze všech služeb Azure.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+![Snímek obrazovky zobrazující stránku vazeb názvu hostitele](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
 Doménu App Service nelze odstranit, dokud nebudou odstraněny všechny vazby názvů hostitelů.
 
 Odstraňte všechny vazby hostitele výběrem **...**  >  **Odstraňte**. Po odstranění všech vazeb vyberte **Save (Uložit**).
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
+![Snímek obrazovky, který ukazuje, kde odstranit vazby hostitele.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>Zrušit nebo odstranit
 
@@ -279,7 +279,7 @@ V nabídce vlevo v doméně vyberte **Přehled**.
 
 Pokud neuplynula doba zrušení u koupené domény, vyberte **zrušit nákup**. V opačném případě se místo toho zobrazí tlačítko pro **odstranění** . Chcete-li odstranit doménu bez náhrady, vyberte možnost **Odstranit**.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
+![Snímek obrazovky, který ukazuje, kde odstranit nebo zrušit zakoupenou doménu.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
 Pro potvrzení operace vyberte **Ano**.
 

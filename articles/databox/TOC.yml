@@ -14,30 +14,52 @@
               href: data-box-quickstart-portal.md
         - name: Kurzy
           items:
-            - name: 1 – Objednání
-              href: data-box-deploy-ordered.md
-            - name: 2 – Nastavení
-              href: data-box-deploy-set-up.md
-            - name: 3 – Připojení a kopírování
+            - name: Import dat do Azure
               items:
-                - name: Přes SMB
-                  href: data-box-deploy-copy-data.md
-                - name: Přes NFS
-                  href: data-box-deploy-copy-data-via-nfs.md
-                - name: Přes REST
-                  href: data-box-deploy-copy-data-via-rest.md
-                - name: Prostřednictvím služby kopírování dat
-                  href: data-box-deploy-copy-data-via-copy-service.md
-                - name: Na spravované disky
-                  href: data-box-deploy-copy-data-from-vhds.md
-            - name: '4 – Vrácení, odeslání, ověření'
-              href: data-box-deploy-picked-up.md
+                - name: 1 – Objednání
+                  href: data-box-deploy-ordered.md
+                - name: 2 – Nastavení
+                  href: data-box-deploy-set-up.md
+                - name: 3 – Připojení a kopírování
+                  items:
+                    - name: Přes SMB
+                      href: data-box-deploy-copy-data.md
+                    - name: Přes NFS
+                      href: data-box-deploy-copy-data-via-nfs.md
+                    - name: Přes REST
+                      href: data-box-deploy-copy-data-via-rest.md
+                    - name: Prostřednictvím služby kopírování dat
+                      href: data-box-deploy-copy-data-via-copy-service.md
+                    - name: Na spravované disky
+                      href: data-box-deploy-copy-data-from-vhds.md
+                - name: '4 – Vrácení, odeslání, ověření'
+                  href: data-box-deploy-picked-up.md
+            - name: Export dat z Azure
+              items:
+                - name: 1 – Objednání
+                  href: data-box-deploy-export-ordered.md
+                - name: 2 – Nastavení
+                  href: data-box-deploy-set-up.md
+                - name: 3 – Připojení a kopírování
+                  items:
+                    - name: Přes SMB
+                      href: data-box-deploy-export-copy-data.md
+                    - name: Přes NFS
+                      href: data-box-deploy-export-copy-data-via-nfs.md
+                - name: 4 – Vrácení
+                  href: data-box-deploy-export-picked-up.md
         - name: Koncepty
           items:
             - name: Přečtěte si bezpečnostní pokyny
               href: data-box-safety.md
             - name: Kontrola sledování a protokolování
-              href: data-box-logs.md
+              items:
+                - name: Pro objednávky importu
+                  href: data-box-logs.md
+                - name: Pro objednávky exportu
+                  href: data-box-export-logs.md
+            - name: Zobrazení protokolů auditu
+              href: data-box-audit-logs.md
             - name: Kontrola požadavků
               items:
                 - name: Pro Data Box
@@ -64,6 +86,8 @@
               href: data-box-portal-customer-managed-shipping.md
             - name: Povolení klíče spravovaného zákazníkem
               href: data-box-customer-managed-encryption-key-portal.md
+            - name: Použití Customer Lockboxu
+              href: data-box-customer-lockbox.md
             - name: Přesun dat do úrovně objektu blob
               href: data-box-how-to-set-data-tier.md
             - name: Zapojení kabeláže zařízení

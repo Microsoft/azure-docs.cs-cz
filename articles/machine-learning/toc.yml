@@ -443,6 +443,9 @@
     - name: Správa kvót prostředků
       displayName: limits
       href: how-to-manage-quotas.md
+    - name: Správa prostředků – VS Code
+      displayName: 'vscode,resources'
+      href: how-to-manage-resources-vscode.md
     - name: Export a odstranění dat
       displayName: GDPR
       href: how-to-export-delete-data.md
@@ -495,3 +498,6 @@
     - name: Funkce usnadnění pro návrháře
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
+    - name: Kurátorovaná prostředí
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md

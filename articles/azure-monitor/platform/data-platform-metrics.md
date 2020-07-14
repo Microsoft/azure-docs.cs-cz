@@ -9,11 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 23e4d104697b5b688330c6ab3a93beebf62f3c6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 839347ce0a04cc1ca1bf16c68e0ccc36fcf0f7fc
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83799966"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200812"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriky na platformě Azure Monitor
 
@@ -28,15 +29,15 @@ Metriky jsou číselné hodnoty, které popisují určité aspekty systému v ko
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Co se dá dělat s Azure Monitor metrikami?
 Následující tabulka uvádí různé způsoby, jak můžete použít data metrik v Azure Monitor.
 
-|  |  |
+|  | Popis |
 |:---|:---|
-| Analýza | Pomocí [Průzkumníka metrik](metrics-charts.md) můžete analyzovat shromážděné metriky v grafu a porovnat metriky z různých prostředků. |
-| Vizualizace | Připněte graf z Průzkumníka metrik na [řídicí panel Azure](../learn/tutorial-app-dashboards.md).<br>Vytvoří [sešit](../platform/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat. |
-| Výstrahy | Nakonfigurujte [pravidlo upozornění metriky](alerts-metric.md) , které pošle oznámení nebo provede [automatizovanou akci](action-groups.md) , když hodnota metriky přechází ze prahové hodnoty. |
-| Automatizace |  Pomocí [automatického škálování](autoscale-overview.md) můžete zvýšit nebo snížit prostředky na základě hodnoty metriky, která překračuje prahovou hodnotu. |
-| Export | [Směrování metriky do protokolů](resource-logs-collect-storage.md) pro analýzu dat v Azure monitor metriky spolu s daty v protokolech Azure monitor a ukládání hodnot metriky po dobu delší než 93 dní.<br>Streamujte metriky do [centra událostí](stream-monitoring-data-event-hubs.md) , abyste je mohli směrovat do externích systémů. |
-| Stahovat | Přístup k hodnotám metrik z příkazového řádku pomocí [rutin PowerShellu](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Přístup k hodnotám metrik z vlastní aplikace pomocí [REST API](rest-api-walkthrough.md).<br>Přístup k hodnotám metrik z příkazového řádku pomocí [CLI](/cli/azure/monitor/metrics). |
-| Archiv | [Archivujte](..//learn/tutorial-archive-data.md) historii výkonu nebo stavu prostředku pro účely dodržování předpisů, auditování nebo offline generování sestav. |
+| **Analýza** | Pomocí [Průzkumníka metrik](metrics-charts.md) můžete analyzovat shromážděné metriky v grafu a porovnat metriky z různých prostředků. |
+| **Vizualizace** | Připněte graf z Průzkumníka metrik na [řídicí panel Azure](../learn/tutorial-app-dashboards.md).<br>Vytvoří [sešit](../platform/workbooks-overview.md) pro kombinování s více sadami dat v interaktivní sestavě. Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat. |
+| **Výstraha** | Nakonfigurujte [pravidlo upozornění metriky](alerts-metric.md) , které pošle oznámení nebo provede [automatizovanou akci](action-groups.md) , když hodnota metriky přechází ze prahové hodnoty. |
+| **Automatizace** |  Pomocí [automatického škálování](autoscale-overview.md) můžete zvýšit nebo snížit prostředky na základě hodnoty metriky, která překračuje prahovou hodnotu. |
+| **Export** | [Směrování metriky do protokolů](resource-logs-collect-storage.md) pro analýzu dat v Azure monitor metriky spolu s daty v protokolech Azure monitor a ukládání hodnot metriky po dobu delší než 93 dní.<br>Streamujte metriky do [centra událostí](stream-monitoring-data-event-hubs.md) , abyste je mohli směrovat do externích systémů. |
+| **Stahovat** | Přístup k hodnotám metrik z příkazového řádku pomocí [rutin PowerShellu](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>Přístup k hodnotám metrik z vlastní aplikace pomocí [REST API](rest-api-walkthrough.md).<br>Přístup k hodnotám metrik z příkazového řádku pomocí [CLI](/cli/azure/monitor/metrics). |
+| **Archive** | [Archivujte](..//learn/tutorial-archive-data.md) historii výkonu nebo stavu prostředku pro účely dodržování předpisů, auditování nebo offline generování sestav. |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Jak se data ve Azure Monitor strukturované metriky?
 Data shromážděná pomocí Azure Monitor metriky se ukládají do databáze časových řad, která je optimalizovaná pro analýzu časových údajů s časovým razítkem. Každá sada hodnot metrik je časová řada s následujícími vlastnostmi:
@@ -55,7 +56,7 @@ Následující příklad znázorňuje dvě datové sady pro hypotetickou metriku
 
 ### <a name="network-throughput"></a>Propustnost sítě
 
-| Časové razítko     | Hodnota metriky |
+| Timestamp     | Hodnota metriky |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1 331,8 KB/s |
 | 8/9/2017 8:15 | 1 141,4 KB/s |
@@ -65,7 +66,7 @@ Tato nedimenzionální metrika může odpovědět jenom na základní otázku, j
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Propustnost sítě + dvě dimenze ("IP" a "směr")
 
-| Časové razítko     | Dimenze "IP"   | Rozměr "Direction" | Hodnota metriky|
+| Timestamp     | Dimenze "IP"   | Rozměr "Direction" | Hodnota metriky|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP = "192.168.5.2" | Direction = Send    | 646,5 KB/s |
 | 8/9/2017 8:14 | IP = "192.168.5.2" | Direction = Receive | 420,1 KB/s |

@@ -369,8 +369,10 @@
           href: backup-azure-security-feature.md
         - name: Privátní koncové body
           href: private-endpoints.md
-        - name: Šifrování
+        - name: Šifrování ve službě Azure Backup
           href: backup-encryption.md
+        - name: Šifrování s využitím klíčů spravovaných zákazníky
+          href: encryption-at-rest-with-cmk.md
         - name: Integrované ovládací prvky zabezpečení
           href: backup-security-controls.md
         - name: Standardní hodnoty zabezpečení

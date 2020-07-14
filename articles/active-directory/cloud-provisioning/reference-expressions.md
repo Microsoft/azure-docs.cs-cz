@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e1dc68aba4ba294bccca6da278d3e30e51f056
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 722b3fcb2bc533e396a35feb4c755de99c375b10
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360449"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201846"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů v Azure Active Directory
 Při konfiguraci zřizování cloudu je jedním z typů mapování atributů, které lze zadat, mapování výrazu. 
@@ -61,11 +61,11 @@ Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Ba
 |[K dispozici](#ispresent)|Pokud se výraz vyhodnotí jako řetězec, který není null a není prázdný, vrátí funkce vracející hodnotu true.|    
 |[Řetězec](#isstring)|Pokud je možné výraz vyhodnotit na typ řetězce, pak je funkce typu String vyhodnocena jako true.|
 |[Položka](#item)|Funkce Item vrátí jednu položku z vícehodnotového řetězce nebo atributu.|
-|[Připojit](#join) |Join () je podobný jako Append (), s tím rozdílem, že může zkombinovat více hodnot **zdrojového** řetězce do jednoho řetězce a každá hodnota bude oddělena řetězcem **oddělovače** .| 
+|[Join](#join) (Spojení) |Join () je podobný jako Append (), s tím rozdílem, že může zkombinovat více hodnot **zdrojového** řetězce do jednoho řetězce a každá hodnota bude oddělena řetězcem **oddělovače** .| 
 |[Zbývá](#left)|Funkce Left vrátí zadaný počet znaků nalevo od řetězce.|
 |[Středně](#mid) |Vrátí podřetězec zdrojové hodnoty. Podřetězec je řetězec, který obsahuje pouze některé znaky ze zdrojového řetězce.|
 |[NormalizeDiacritics](#normalizediacritics)|Vyžaduje jeden řetězcový argument. Vrátí řetězec, ale se všemi diakritikami nahrazenými ekvivalentními nediakritikou znaků.|
-|[Not](#not) |Převrátí logickou hodnotu **zdroje**. Pokud je hodnota **zdroje** "*true*", vrátí "*false*". V opačném případě vrátí "*true*".| 
+|[Mění](#not) |Převrátí logickou hodnotu **zdroje**. Pokud je hodnota **zdroje** "*true*", vrátí "*false*". V opačném případě vrátí "*true*".| 
 |[RemoveDuplicates –](#removeduplicates)|Funkce RemoveDuplicates – přebírá řetězec s více hodnotami a ověří, zda jsou všechny hodnoty jedinečné.| 
 |[Náhrady](#replace) |Nahradí hodnoty v rámci řetězce. | 
 |[SelectUniqueValue](#selectuniquevalue)|Vyžaduje minimálně dva argumenty, což jsou jedinečná pravidla generování hodnot definovaná pomocí výrazů. Funkce vyhodnocuje všechna pravidla a potom kontroluje hodnotu vygenerovanou pro jedinečnost v cílové aplikaci/adresáři.| 
@@ -73,7 +73,7 @@ Syntaxe výrazů pro mapování atributů je Reminiscent funkcí jazyk Visual Ba
 |[Rozdělení](#split)|Rozdělí řetězec na pole s více hodnotami pomocí zadaného oddělovače.|
 |[StringFromSID](#stringfromsid)|Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpečení na řetězec.| 
 |[StripSpaces](#stripspaces) |Odebere ze zdrojového řetězce všechny znaky ("").| 
-|[Přepínač](#switch)|Když hodnota **zdroje** odpovídá **klíči**, vrátí **hodnotu** pro tento **klíč**. | 
+|[Přepnutí](#switch)|Když hodnota **zdroje** odpovídá **klíči**, vrátí **hodnotu** pro tento **klíč**. | 
 |[ToLower](#tolower)|Převezme hodnotu *zdrojového* řetězce a převede ji na malý případ pomocí pravidel jazykové verze, které jsou určeny.| 
 |[ToUpper](#toupper)|Převezme hodnotu *zdrojového* řetězce a převede ji na velká písmena pomocí pravidel jazykové verze, které jsou určeny.|
 |[Sklon](#trim)|Funkce Trim odstraní úvodní a koncové prázdné znaky z řetězce.|
@@ -110,7 +110,7 @@ Tato funkce převede oba parametry do binární reprezentace a nastaví bit na:
 
 Jinými slovy, vrátí 0 ve všech případech s výjimkou toho, že odpovídající bity obou parametrů jsou 1.
 
-**Příklad:**  
+**Případě**  
  
  `BitAnd(&HF, &HF7)`</br>
  Vrátí hodnotu 7, protože hexadecimální hodnota "F" a "F7" je vyhodnocena.
@@ -127,7 +127,7 @@ Funkce CBool vrátí logickou hodnotu založenou na vyhodnoceném výrazu.
 **Mark**  
 Pokud je výraz vyhodnocen jako nenulová hodnota, pak funkce CBool vrátí hodnotu true, jinak vrátí hodnotu false.
 
-**Příklad:**  
+**Případě**  
 `CBool([attrib1] = [attrib2])`  
 
 Vrátí hodnotu true, pokud mají oba atributy stejnou hodnotu.
@@ -159,7 +159,7 @@ Převede hodnotu pole celých čísel na odpovídající řetězcovou reprezenta
 **Syntaktick**  
 `str ConvertToBase64(str source)`
 
-**Příklad:**  
+**Případě**  
 `ConvertToBase64("Hello world!")`  
 Vrátí "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
@@ -174,7 +174,7 @@ Funkce ConvertToUTF8Hex převede řetězec na šestnáctkovou hodnotu v kódová
 **Mark**  
 Výstupní formát této funkce se používá Azure Active Directory jako formát atributu DN.
 
-**Příklad:**  
+**Případě**  
 `ConvertToUTF8Hex("Hello world!")`  
 Vrátí 48656C6C6F20776F726C6421
 
@@ -198,7 +198,7 @@ Funkce CStr se převede na datový typ String.
 
 * hodnota: může to být číselná hodnota, odkazový atribut nebo logická hodnota.
 
-**Příklad:**  
+**Případě**  
 `CStr([dn])`  
 Může vracet "CN = Jan, DC = contoso, DC = com"
 
@@ -210,7 +210,7 @@ Funkce DateFromNum převede hodnotu ve formátu data AD na typ DateTime.
 **Syntaktick**  
 `dt DateFromNum(num value)`
 
-**Příklad:**  
+**Případě**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
 Vrátí hodnotu DateTime představující 2012-01-01 23:00:00.
@@ -226,7 +226,7 @@ Funkce DNComponent vrací hodnotu zadané složky DN z levé části.
 * DN: atribut reference, který se má interpretovat
 * ComponentNumber: komponenta v rozlišujícím názvu, která se má vrátit
 
-**Příklad:**  
+**Případě**  
 `DNComponent(CRef([dn]),1)`  
 Pokud je DN "CN = Jan, OU =...", vrátí Jana
 
@@ -238,7 +238,7 @@ Funkce Error slouží k vrácení vlastní chyby.
 **Syntaktick**  
 `void Error(str ErrorMessage)`
 
-**Příklad:**  
+**Případě**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
 Pokud atribut Account není přítomen, vyvolejte chybu objektu.
 
@@ -276,7 +276,7 @@ Funkce IIF vrátí jednu ze sady možných hodnot na základě zadané podmínky
 * valueIfTrue: Pokud je podmínka vyhodnocena jako true, vrácená hodnota.
 * valueIfFalse: Pokud je podmínka vyhodnocena jako false, vrácená hodnota.
 
-**Příklad:**  
+**Případě**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
  Pokud je uživatel interně, vrátí alias uživatele s názvem "t-", který je přidán na začátek, jinak vrátí alias uživatele tak, jak je.
 
@@ -299,7 +299,7 @@ Funkce InStr vyhledá první výskyt podřetězce v řetězci.
 **Mark**  
 Vrátí pozici, kde byl dílčí řetězec nalezen, nebo 0, pokud nebyl nalezen.
 
-**Příklad:**  
+**Případě**  
 `InStr("The quick brown fox","quick")`  
 Evalues na 5
 
@@ -317,7 +317,7 @@ Pokud je výraz vyhodnocen jako null, funkce IsNull vrátí hodnotu true.
 **Mark**  
 U atributu je hodnota null vyjádřena nepřítomností atributu.
 
-**Příklad:**  
+**Případě**  
 `IsNull([displayName])`  
 Vrátí hodnotu true, pokud atribut není přítomen v CS nebo MV.
 
@@ -333,7 +333,7 @@ Pokud má výraz hodnotu null nebo je prázdný řetězec, vrátí funkce IsNull
 U atributu by se to mělo vyhodnotit na hodnotu true, pokud atribut chybí nebo je přítomen, ale je to prázdný řetězec.  
 Inverzní část této funkce je pojmenována jako.
 
-**Příklad:**  
+**Případě**  
 `IsNullOrEmpty([displayName])`  
 Vrátí hodnotu true, pokud atribut není přítomen, nebo je prázdný řetězec v CS nebo MV.
 
@@ -348,7 +348,7 @@ Pokud se výraz vyhodnotí jako řetězec, který není null a není prázdný, 
 **Mark**  
 Inverzní funkce k této funkci má název IsNullOrEmpty.
 
-**Příklad:**  
+**Případě**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 ---
@@ -367,7 +367,7 @@ Funkce Item je užitečná společně s funkcí Contains, protože druhá funkce
 
 Vyvolá chybu, pokud je index mimo rozsah.
 
-**Příklad:**  
+**Případě**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Vrátí primární e-mailovou adresu.
 
@@ -417,7 +417,7 @@ Funkce Left vrátí zadaný počet znaků nalevo od řetězce.
 
 Pokud řetězec obsahuje méně znaků než číslo zadané v numChars, vrátí se řetězec shodný s řetězcem (tj. obsahující všechny znaky v parametru 1).
 
-**Příklad:**  
+**Případě**  
 `Left("John Doe", 3)`  
 Vrací objekt `Joh`.
 
@@ -467,7 +467,7 @@ Funkce RemoveDuplicates – přebírá řetězec s více hodnotami a ověří, z
 **Syntaktick**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
-**Příklad:**  
+**Případě**  
 `RemoveDuplicates([proxyAddresses])`  
 Vrátí upravený atribut proxyAddress, ve kterém byly odstraněny všechny duplicitní hodnoty.
 
@@ -584,8 +584,8 @@ Funkce StringFromSid převede pole bajtů obsahující identifikátor zabezpeče
    | --- | --- | --- | --- |
    | **Zdrojová** |Vyžadováno |Řetězec |**Zdrojová** hodnota, která se má ověřit |
    | **Hodnot** |Volitelné |Řetězec |Výchozí hodnota, která se má použít, pokud zdroj neodpovídá žádným klíčům Může být prázdný řetězec (""). |
-   | **key** |Vyžadováno |Řetězec |**Klíč** pro porovnání **zdrojové** hodnoty s. |
-   | **osa** |Vyžadováno |Řetězec |Nahrazující hodnota pro **zdroj** , který odpovídá klíči. |
+   | **zkrat** |Vyžadováno |Řetězec |**Klíč** pro porovnání **zdrojové** hodnoty s. |
+   | **value** |Vyžadováno |Řetězec |Nahrazující hodnota pro **zdroj** , který odpovídá klíči. |
 
 ---
 ### <a name="tolower"></a>ToLower
@@ -623,7 +623,7 @@ Funkce Trim odstraní úvodní a koncové prázdné znaky z řetězce.
 **Syntaktick**  
 `str Trim(str value)`  
 
-**Příklad:**  
+**Případě**  
 `Trim(" Test ")`  
 Vrátí "test".
 
@@ -650,7 +650,7 @@ Každý řetězec znaků v řetězci, oddělený jedním ze znaků v oddělovač
 
 Pokud řetězec obsahuje méně než čísla slov nebo řetězec neobsahuje žádná slova identifikovaná oddělovači, je vrácen prázdný řetězec.
 
-**Příklad:**  
+**Případě**  
 `Word("The quick brown fox",3," ")`  
 Vrátí "Brown"
 
@@ -769,11 +769,13 @@ Na základě křestního jména a jména uživatele a jména a příjmení je po
 
 **Vyjádření** <br>
 
+```ad-attr-mapping-expr
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 1), [PreferredLastName]))), "contoso.com"),
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
+```
 
 **Vzorový vstup/výstup:**
 

@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84733394"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223036"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Kontrola událostí auditu zabezpečení v Azure Active Directory Domain Services používání sešitů Azure Monitor
 
@@ -26,14 +26,14 @@ V tomto článku se dozvíte, jak pomocí Azure Monitor sešity zkontrolovat ud�
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
-* Aktivní předplatné Azure.
+* Musíte mít aktivní předplatné Azure.
     * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
     * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][create-azure-ad-ds-instance].
-* Povolené události auditu zabezpečení vaší Azure Active Directory Domain Services spravované doméně, které streamují data do pracovního prostoru Log Analytics
-    * V případě potřeby [Povolte audity zabezpečení pro Azure Active Directory Domain Services][enable-security-audits].
+* Pro spravovanou doménu jsou povolené události auditu zabezpečení, které streamují data do pracovního prostoru Log Analytics.
+    * V případě potřeby [Povolte audity zabezpečení pro Azure služba AD DS][enable-security-audits].
 
 ## <a name="azure-monitor-workbooks-overview"></a>Přehled Azure Monitor sešitů
 
@@ -61,11 +61,13 @@ Pro přístup k šabloně sešitu pro sestavu přehledu zabezpečení proveďte 
     ![V Azure Portal vyberte možnost nabídky sešity.](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. Vyberte **sestavu Přehled zabezpečení**.
-1. V rozevíracích nabídkách v horní části sešitu vyberte předplatné Azure a pak Azure Monitor pracovní prostor. Vyberte **časový rozsah**, například *posledních 7 dní*.
+1. V rozevíracích nabídkách v horní části sešitu vyberte své předplatné Azure a pak Azure Monitor pracovní prostor.
+
+    Vyberte **časový rozsah**, například *posledních 7 dní*, jak je znázorněno na následujícím ukázkovém snímku obrazovky:
 
     ![V Azure Portal vyberte možnost nabídky sešity.](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
-    Možnosti **zobrazení dlaždice** a **zobrazení grafu** lze také změnit a analyzovat a vizualizovat data podle potřeby.
+    Možnosti **zobrazení dlaždic** a **zobrazení grafu** je také možné změnit tak, aby se data daly analyzovat a vizualizovat podle potřeby.
 
 1. Chcete-li přejít k podrobnostem konkrétního typu události, vyberte jednu z karet **výsledku přihlášení** , například *účet uzamčeno*, jak je znázorněno v následujícím příkladu:
 
@@ -85,7 +87,11 @@ Chcete-li získat přístup k šabloně sešitu pro sestavu aktivita účtu, pro
 1. Vyberte spravovanou doménu, například *aaddscontoso.com* .
 1. V nabídce na levé straně vyberte **monitorování > sešity** .
 1. Vyberte **sestavu aktivita účtu**.
-1. V rozevíracích nabídkách v horní části sešitu vyberte předplatné Azure a pak Azure Monitor pracovní prostor. Zvolte **časový rozsah**, například *posledních 30 dní*, a určete, jak chcete, aby **zobrazení dlaždice** představovalo data. Můžete filtrovat podle **uživatelského jména účtu**, jako je například *Felix*, jak je znázorněno v následujícím příkladu sestavy:
+1. V rozevíracích nabídkách v horní části sešitu vyberte své předplatné Azure a pak Azure Monitor pracovní prostor.
+
+    Zvolte **časový rozsah**, například *posledních 30 dní*, a určete, jak chcete, aby **zobrazení dlaždice** představovalo data.
+
+    Můžete filtrovat podle **uživatelského jména účtu**, jako je například *Felix*, jak je znázorněno v následujícím příkladu sestavy:
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 

@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: 0a7048e79ddd4a86d7e14e573cf5b8556f462f03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af410310e3866b547b8c898a1cc4f91f4f851bc7
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550339"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223019"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Přihlášení k Azure Active Directory používání e-mailu jako alternativního přihlašovacího ID (Preview)
 
@@ -38,9 +38,9 @@ Pokud se chcete přihlásit ke službě Azure AD, uživatelé zadají název, kt
 
 V případě organizací, kde je místní hlavní název uživatele upřednostňovaný přihlašovací e-mail uživatele, byl tento přístup skvělý. Tyto organizace by nastavily hlavní název uživatele (UPN) Azure AD na stejnou hodnotu jako místní hlavní název uživatele (UPN) a uživatelé budou mít konzistentní přihlašovací prostředí.
 
-V některých organizacích se ale místní hlavní název uživatele (UPN) nepoužívá jako přihlašovací jméno. V místních prostředích byste měli místní služba AD DS nakonfigurovat tak, aby umožňovaly přihlášení pomocí alternativního přihlašovacího ID. Nastavení hlavního názvu uživatele (UPN) Azure AD na stejnou hodnotu jako místní hlavní název uživatele (UPN) není možnost, protože služba Azure AD by pak vyžadovala, aby se uživatelé přihlásili pomocí této hodnoty.
+V některých organizacích se ale místní hlavní název uživatele (UPN) nepoužívá jako přihlašovací jméno. V místních prostředích byste měli nakonfigurovat místní služba AD DS, aby se povolilo přihlašovat pomocí alternativního přihlašovacího ID. Nastavení hlavního názvu uživatele (UPN) Azure AD na stejnou hodnotu jako místní hlavní název uživatele (UPN) není možnost, protože služba Azure AD by pak vyžadovala, aby se uživatelé přihlásili pomocí této hodnoty.
 
-Obvyklým řešením tohoto problému bylo nastavení hlavního názvu uživatele (UPN) Azure AD na e-mailovou adresu, se kterou uživatel očekává přihlášení. Tento přístup funguje, i když vede k různým UPN mezi místní službou AD a službou Azure AD a tato konfigurace není kompatibilní se všemi Microsoft 365 úlohami.
+Obvyklým řešením tohoto problému bylo nastavení hlavního názvu uživatele (UPN) Azure AD na e-mailovou adresu, se kterou uživatel očekává přihlášení. Tento přístup funguje, ale výsledkem jsou různé hlavní názvy uživatelů (UPN) mezi místními službami AD a Azure AD a tato konfigurace není kompatibilní se všemi Microsoft 365 úlohami.
 
 Jiným přístupem je synchronizace Azure AD a místních UPN na stejnou hodnotu a konfigurace Azure AD tak, aby se uživatelé mohli přihlásit k Azure AD pomocí ověřeného e-mailu. Chcete-li tuto možnost poskytnout, definujte jednu nebo více e-mailových adres v atributu *proxyAddresses* uživatele v místním adresáři. *ProxyAddresses* se pak automaticky synchronizuje se službou Azure AD pomocí Azure AD Connect.
 

@@ -39,12 +39,34 @@
       href: ../../application-gateway/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Automation
       href: ../../automation/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Backup
+      href: ../../backup/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Cache for Redis
       href: ../../azure-cache-for-redis/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Data Box
+      href: ../../databox/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Data Explorer
+      href: /azure/data-explorer/security-baseline
+    - name: Standardní hodnoty zabezpečení pro Azure Data Factory
+      href: ../../data-factory/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Database for MySQL
+      href: ../../mysql/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Database for MariaDB
+      href: ../../mariadb/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Database for PostgreSQL
+      href: ../../postgresql/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Databricks
+      href: ../../azure-databricks/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Functions
+      href: ../../azure-functions/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Azure Policy
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Backup
-      href: ../../backup/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Resource Graph
+      href: ../../governance/resource-graph/concepts/azure-security-benchmark-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure SQL Database
+      href: ../../sql-database/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Azure Storage
+      href: ../../storage/common/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Batch
       href: ../../batch/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Cognitive Services
@@ -57,39 +79,19 @@
       href: ../../cosmos-db/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Customer Lockbox
       href: ../fundamentals/customer-lockbox-security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Data Box
-      href: ../../databox/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Data Explorer
-      href: /azure/data-explorer/security-baseline
-    - name: Standardní hodnoty zabezpečení pro Data Factory
-      href: ../../data-factory/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Databricks
-      href: ../../azure-databricks/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Event Hubs
       href: ../../event-hubs/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro ExpressRoute
       href: ../../expressroute/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Functions
-      href: ../../azure-functions/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro HDInsight
       href: ../../hdinsight/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Key Vault
       href: ../../key-vault/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Logic Apps
       href: ../../logic-apps/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro MariaDB
-      href: ../../mariadb/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro MySQL
-      href: ../../mysql/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Network Watcher
       href: ../../network-watcher/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro PostgreSQL
-      href: ../../postgresql/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro SQL Database
-      href: ../../sql-database/security-baseline.md
     - name: Standardní hodnoty pro Stream Analytics
       href: ../../stream-analytics/security-baseline.md
-    - name: Standardní hodnoty zabezpečení pro Storage
-      href: ../../storage/common/security-baseline.md
     - name: Standardní hodnoty zabezpečení pro Synapse Analytics
       href: ../../synapse-analytics/security-baseline.md

@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fe61cf2a53b8e128a6cb58465cbb4785faa89d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6e66dc05ac2b6e54a1be94576b8686390949145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562039"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171835"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Postup modelování komplexních datových typů v Azure Kognitivní hledání
 
@@ -111,7 +111,7 @@ Výrazy hledání volných formulářů fungují podle očekávání u složitý
 
 Dotazy dostanou více odlišit, když máte více podmínek a operátorů, přičemž některé výrazy mají zadané názvy polí, jak je to možné v [syntaxi Lucene](query-lucene-syntax.md). Tento dotaz se například pokusí porovnat dvě podklíče pole adresa, "Portland" a "nebo".
 
-    search=Address/City:Portland AND Address/State:OR
+> `search=Address/City:Portland AND Address/State:OR`
 
 Podobné dotazy nejsou pro fulltextové vyhledávání na rozdíl od filtrů *nekorelační* . Ve filtrech jsou dotazy nad dílčími poli komplexní kolekce korelační pomocí proměnných rozsahu v [ `any` nebo `all` ](search-query-odata-collection-operators.md). Výše uvedený dotaz Lucene vrátí dokumenty, které obsahují "Portland, Maine" a "Portlandd, Brno", spolu s ostatními městy v Brno. K tomu dochází, protože každá klauzule se vztahuje na všechny hodnoty svého pole v celém dokumentu, takže neexistuje koncept "aktuálního dílčího dokumentu". Další informace najdete v tématu [porozumění filtrům kolekce OData v Azure kognitivní hledání](search-query-understand-collection-filters.md).
 
@@ -119,7 +119,7 @@ Podobné dotazy nejsou pro fulltextové vyhledávání na rozdíl od filtrů *ne
 
 `$select`Parametr slouží k výběru polí, která se vrátí ve výsledcích hledání. Chcete-li použít tento parametr pro výběr konkrétní dílčí pole složeného pole, zahrňte nadřazené pole a dílčí pole oddělené lomítkem ( `/` ).
 
-    $select=HotelName, Address/City, Rooms/BaseRate
+> `$select=HotelName, Address/City, Rooms/BaseRate`
 
 Pole musí být označena jako zavedená v indexu, pokud je chcete ve výsledcích hledání. V příkazu lze použít pouze pole, která jsou označena jako schopná `$select` .
 
@@ -143,11 +143,11 @@ Operace řazení fungují, pokud pole mají jednu hodnotu v jednom dokumentu, a�
 
 Můžete se podívat na dílčí pole komplexního pole ve výrazu filtru. Stačí použít stejnou [syntaxi cesty OData](query-odata-filter-orderby-syntax.md) , která se používá pro omezující vlastnosti, řazení a výběr polí. Například následující filtr vrátí všechny hotely v Kanadě:
 
-    $filter=Address/Country eq 'Canada'
+> `$filter=Address/Country eq 'Canada'`
 
 Chcete-li filtrovat podle komplexního pole kolekce, můžete použít **výraz lambda** s [ `any` `all` operátory a](search-query-odata-collection-operators.md). V takovém případě **Proměnná rozsahu** výrazu lambda je objekt s podoblastmi. Můžete se podívat na tato dílčí pole se standardní syntaxí cesty OData. Například následující filtr vrátí všechny hotely s aspoň jednou a všemi místnostmi, které nepatří ke kouření:
 
-    $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
+> `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 
 Stejně jako u jednoduchých polí nejvyšší úrovně lze jednoduchá dílčí pole komplexních polí zahrnout pouze do filtrů, pokud mají atribut **Filtered** nastaven na hodnotu `true` v definici indexu. Další informace najdete v referenčních informacích k [rozhraní API pro vytvoření indexu](/rest/api/searchservice/create-index).
 
