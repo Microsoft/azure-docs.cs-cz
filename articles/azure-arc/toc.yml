@@ -56,3 +56,7 @@
               href: ./servers/manage-vm-extensions.md
             - name: Správa agenta
               href: ./servers/manage-agent.md
+        - name: Řešení potíží
+          items:
+            - name: Problémy s připojením agentů
+              href: ./servers/troubleshoot-agent-onboard.md

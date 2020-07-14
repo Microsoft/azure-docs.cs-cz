@@ -31,7 +31,7 @@ Po změně tohoto parametru je nutné restartovat server. Interně tento paramet
 ## <a name="azure-cli"></a>Azure CLI
 Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazového řádku Azure CLI.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Server Azure Database for PostgreSQL](quickstart-create-server-up-azure-cli.md) , který bude hlavním serverem.
@@ -114,7 +114,7 @@ Při odstranění hlavního serveru se zastaví replikace do všech replik čten
 az postgres server delete --name myserver --resource-group myresourcegroup
 ```
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 Repliky pro čtení můžete vytvářet a spravovat pomocí [REST API Azure](/rest/api/azure/).
 
 ### <a name="prepare-the-master-server"></a>Příprava hlavního serveru

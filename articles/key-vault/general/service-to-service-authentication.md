@@ -9,12 +9,12 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 132663ed26eab41747f6fce25bdb2beabe286322
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855078"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232606"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
@@ -170,7 +170,7 @@ Existují tři primární metody použití instančního objektu ke spuštění 
 
     Nahraďte hodnoty *{AppID}*, *{TenantId}* a *{kryptografický otisk}* hodnotami generovanými v kroku 1. Nahraďte *{CertificateStore}* buď *LocalMachine*, nebo *CurrentUser*, a to na základě vašeho plánu nasazení.
 
-1. Spusťte aplikaci.
+1. Aplikaci spusťte.
 
 ### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>Přihlášení ke službě Azure AD pomocí sdíleného tajného pověření
 
@@ -188,7 +188,7 @@ Existují tři primární metody použití instančního objektu ke spuštění 
 
     Nahraďte hodnoty _{AppID}_, _{TenantId}_ a _{ClientSecret}_ hodnotami generovanými v kroku 1.
 
-1. Spusťte aplikaci.
+1. Aplikaci spusťte.
 
 Jakmile se všechno nastaví správně, nemusíte dělat žádné další změny kódu. `AzureServiceTokenProvider`používá k ověření ve službě Azure AD proměnnou prostředí a certifikát.
 
@@ -226,17 +226,20 @@ Použití klientského certifikátu pro ověřování instančního objektu:
 
 ## <a name="connection-string-support"></a>Podpora připojovacích řetězců
 
-Ve výchozím nastavení `AzureServiceTokenProvider` používá k získání tokenu více metod.
+Ve výchozím nastavení se aplikace `AzureServiceTokenProvider` pokusí načíst token pomocí následujících metod ověřování:
 
-Chcete-li řídit proces, použijte připojovací řetězec předaný `AzureServiceTokenProvider` konstruktoru nebo zadaného v proměnné prostředí *AzureServicesAuthConnectionString* .
+- [Spravovaná identita pro prostředky Azure](../..//active-directory/managed-identities-azure-resources/overview.md)
+- Ověřování sady Visual Studio
+- [Ověřování Azure CLI](/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [Integrované ověřování systému Windows](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
-Podporovány jsou následující možnosti:
+Chcete-li řídit proces, použijte připojovací řetězec předaný `AzureServiceTokenProvider` konstruktoru nebo zadaného v proměnné prostředí *AzureServicesAuthConnectionString* .  Podporovány jsou následující možnosti:
 
 | Možnost připojovacího řetězce | Scénář | Komentáře|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Místní vývoj | `AzureServiceTokenProvider`k získání tokenu používá Azure CLI. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Místní vývoj | `AzureServiceTokenProvider`k získání tokenu používá Visual Studio. |
-| `RunAs=CurrentUser` | Místní vývoj | `AzureServiceTokenProvider`k získání tokenu používá integrované ověřování Azure AD. |
+| `RunAs=CurrentUser` | Místní vývoj | Nepodporováno v .NET Core. `AzureServiceTokenProvider`k získání tokenu používá integrované ověřování Azure AD. |
 | `RunAs=App` | [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider`k získání tokenu používá spravovanou identitu. |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Uživatelsky přiřazená identita pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider`k získání tokenu používá uživatelem přiřazenou identitu. |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Ověřování vlastních služeb | `KeyVaultCertificateSecretIdentifier`je tajný identifikátor certifikátu. |

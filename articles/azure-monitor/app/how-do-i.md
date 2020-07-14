@@ -3,12 +3,12 @@ title: Návody... v Azure Application Insights | Microsoft Docs
 description: Nejčastější dotazy v Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110228"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224464"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získat e-mail, když...
@@ -18,7 +18,7 @@ Nastavte [webový test dostupnosti](../../azure-monitor/app/monitor-web-app-avai
 ### <a name="email-if-my-site-is-overloaded"></a>E-mail, pokud je můj web přetížený
 Nastavte [Upozornění](../../azure-monitor/platform/alerts-log.md) na **dobu odezvy serveru**. Musí fungovat prahová hodnota mezi 1 a 2 sekundami.
 
-![](./media/how-do-i/030-server.png)
+![Snímek obrazovky, který ukazuje, jak nastavit výstrahu pro dobu odezvy serveru.](./media/how-do-i/030-server.png)
 
 Vaše aplikace může také zobrazit znaménka kmene vrácením kódů selhání. Nastavte upozornění na **neúspěšné žádosti**.
 
@@ -53,11 +53,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 V [Průzkumníkovi metriky](../../azure-monitor/platform/metrics-charts.md) vytvořte graf, ve kterém se zobrazí upozornění:
 
-![](./media/how-do-i/010-alarm.png)
+![Snímek obrazovky, který ukazuje, jak vytvořit graf v Průzkumníkovi metrik, aby se zobrazila vaše signalizace.](./media/how-do-i/010-alarm.png)
 
 Teď můžete nastavit výstrahu, která se aktivuje, když metrika překročí hodnotu Mid po krátkou dobu:
 
-![](./media/how-do-i/020-threshold.png)
+![Snímek obrazovky, který ukazuje, jak nastavit výstrahu, která se aktivuje, když metrika překročí hodnotu Mid po krátkou dobu.](./media/how-do-i/020-threshold.png)
 
 Nastavte období průměrování na minimum.
 
@@ -106,11 +106,11 @@ Pak můžete:
 
 * Hledat ID konkrétních uživatelů
 
-![](./media/how-do-i/110-search.png)
+![Snímek obrazovky, který zobrazuje možnosti searchin pro konkrétní ID uživatelů](./media/how-do-i/110-search.png)
 
 * Filtrovat metriky buď anonymních, nebo ověřených uživatelů
 
-![](./media/how-do-i/115-metrics.png)
+![Snímek obrazovky, který zobrazuje metrixs filtrování pro anonymní i ověřené uživatele.](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>Úprava názvů vlastností nebo hodnot
 Vytvořte [Filtr](../../azure-monitor/app/api-filtering-sampling.md#filtering). To vám umožní upravit nebo filtrovat telemetrii předtím, než se pošle z vaší aplikace do Application Insights.

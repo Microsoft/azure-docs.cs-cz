@@ -257,6 +257,8 @@
           href: private-clusters.md
         - name: BYOK pro disky
           href: azure-disk-customer-managed-keys.md
+        - name: Povolení šifrování na základě hostitele
+          href: enable-host-encryption.md
     - name: Monitorování a protokolování
       items:
         - name: Azure Monitor pro kontejnery
@@ -282,9 +284,9 @@
         - name: Použití řídicího panelu Kubernetes
           href: kubernetes-dashboard.md
         - name: Vytvoření kontejnerů Dockerfile pro Windows Server
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context
         - name: Optimalizace kontejnerů Dockerfile pro Windows Server
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: Vývoj a spouštění aplikací
       items:
         - name: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code (Preview)

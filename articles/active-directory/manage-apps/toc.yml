@@ -5,6 +5,8 @@
   items:
     - name: Co je správa aplikací?
       href: what-is-application-management.md
+    - name: Co je jednotné přihlašování (SSO)?
+      href: what-is-single-sign-on.md
 - name: Rychlé starty
   items:
     - name: Zobrazení aplikací
@@ -19,6 +21,8 @@
       href: delete-application-portal.md
 - name: Kurzy
   items:
+    - name: 'Přidání aplikace, která není uvedená v galerii'
+      href: add-non-gallery-app.md
     - name: 'Integrované aplikace v galerii (např. ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Přidání místní aplikace prostřednictvím proxy aplikací
@@ -46,8 +50,6 @@
               href: developer-guidance-for-integrating-applications.md
         - name: Jednotné přihlašování
           items:
-            - name: Co je jednotné přihlašování
-              href: what-is-single-sign-on.md
             - name: Povolení jednotného přihlašování pro aplikaci s více tenanty
               href: isv-sso-content.md
             - name: Vytvoření tenanta Azure pro aplikaci s více tenanty
@@ -103,10 +105,6 @@
   items:
     - name: Cloudové aplikace a jednotné přihlašování
       items:
-        - name: Přidání cloudové aplikace
-          items:
-            - name: Přidání galerie mimo galerii
-              href: add-non-gallery-app.md
         - name: Konfigurace jednotného přihlašování
           items:
             - name: Konfigurace jednotného přihlašování pomocí SAML
@@ -143,6 +141,8 @@
               href: configure-admin-consent-workflow.md
             - name: Přiřazení uživatele nebo skupiny k aplikaci
               href: assign-user-or-group-access-portal.md
+            - name: Kontrola oprávnění udělených aplikacím
+              href: manage-application-permissions.md
             - name: Vytváření kolekcí na portálu Moje aplikace
               href: access-panel-collections.md
             - name: Použití samoobslužného přístupu k aplikacím

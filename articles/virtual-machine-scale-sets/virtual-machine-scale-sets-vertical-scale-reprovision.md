@@ -9,11 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 565d98bd5f27351f16ff523aa017c4b980fbdd53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827262"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232657"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikální automatické škálování se sadami škálování virtuálních počítačů
 
@@ -38,7 +39,7 @@ Můžete nastavit svislé škálování, které se aktivuje na základě výstra
 > [!NOTE]
 > Vzhledem k velikosti prvního virtuálního počítače se můžou velikosti, na které se dá škálovat, omezit kvůli dostupnosti dalších velikostí v clusteru, na kterém je nasazený aktuální virtuální počítač. V publikovaných runbookůch Automation používaných v tomto článku se postará o tento případ a jenom škálovat v rámci dvojice velikostí virtuálních počítačů. To znamená, že virtuální počítač s Standard_D1v2 nebude po navýšení do Standard_G5 škálované na Basic_A0. Také omezené velikosti virtuálních počítačů se škálují nahoru/dolů nejsou podporované. Můžete si vybrat, jestli chcete škálovat mezi následujícími páry velikostí:
 > 
-> | Velikost virtuálního počítače – párování škálování |  |
+> | Velikosti virtuálních počítačů škálované členské párování | Člen |
 > | --- | --- |
 > | Basic_A0 |Basic_A4 |
 > | Standard_A0 |Standard_A4 |
@@ -86,7 +87,7 @@ Můžete nastavit svislé škálování, které se aktivuje na základě výstra
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Vytvoření účtu Azure Automation s možností spuštění jako
-První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace naleznete v tématech:
+První věc, kterou potřebujete udělat, je vytvořit účet Azure Automation, který hostuje Runbooky používané pro škálování instancí sady škálování virtuálních počítačů. Nedávno [Azure Automation](https://azure.microsoft.com/services/automation/) zavedli funkci účet Spustit jako, která umožňuje nastavit instanční objekt pro automatické spouštění Runbooků jménem uživatele. Další informace naleznete v tématu:
 
 * [Ověření runbooků pomocí účtu Spustit v Azure jako](../automation/automation-sec-configure-azure-runas-account.md)
 

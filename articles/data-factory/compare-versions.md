@@ -132,11 +132,11 @@ Sady SDK aktualizované v aktuální verzi nejsou zpětně kompatibilní s klien
 
 | | Verze 2 | Verze 1 |
 | ------ | -- | -- | 
-| **Azure Portal** | [Ano](quickstart-create-data-factory-portal.md) | Ne |
+| **Azure Portal** | [Ano](quickstart-create-data-factory-portal.md) | No |
 | **Azure PowerShell** | [Ano](quickstart-create-data-factory-powershell.md) | [Ano](data-factory-build-your-first-pipeline-using-powershell.md) |
 | **.NET SDK** | [Ano](quickstart-create-data-factory-dot-net.md) | [Ano](data-factory-build-your-first-pipeline-using-vs.md) |
 | **REST API** | [Ano](quickstart-create-data-factory-rest-api.md) | [Ano](data-factory-build-your-first-pipeline-using-rest-api.md) |
-| **Python SDK** | [Ano](quickstart-create-data-factory-python.md) | Ne |
+| **Python SDK** | [Ano](quickstart-create-data-factory-python.md) | No |
 | **Šablona Resource Manageru** | [Ano](quickstart-create-data-factory-resource-manager-template.md) | [Ano](data-factory-build-your-first-pipeline-using-arm.md) | 
 
 ## <a name="roles-and-permissions"></a>Role a oprávnění

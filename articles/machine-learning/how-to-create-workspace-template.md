@@ -8,13 +8,14 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 05/19/2020
+ms.date: 07/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 39c694f4e2afbf5d781a8fde43a7db9c4a255466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ba48e5beb8ce4b4ae126dd23acbe0dec650f655
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392658"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232147"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Použití šablony Azure Resource Manager k vytvoření pracovního prostoru pro Azure Machine Learning
 
@@ -27,19 +28,16 @@ Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure R
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
+* **Předplatné Azure** Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Pokud chcete použít šablonu z CLI, potřebujete buď [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) , nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="resource-manager-template"></a>Šablona Resource Manageru
+## <a name="workspace-resource-manager-template"></a>Šablona Správce prostředků pracovního prostoru
 
-Následující šablonu Správce prostředků lze použít k vytvoření pracovního prostoru Azure Machine Learning a přidružených prostředků Azure:
-
-[!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
+Šablona Azure Resource Manager použitá v tomto dokumentu se nachází v adresáři Azure pro rychlé zprovoznění šablon v úložišti GitHubu [201-Machine-Learning-pokročilé](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) .
 
 Tato šablona vytvoří následující služby Azure:
 
-* Skupina prostředků Azure
 * Účet služby Azure Storage
 * Azure Key Vault
 * Azure Application Insights
@@ -48,13 +46,13 @@ Tato šablona vytvoří následující služby Azure:
 
 Skupina prostředků je kontejner, který obsahuje služby. Jednotlivé služby jsou vyžadovány pracovním prostorem Azure Machine Learning.
 
-Příklad šablony má dva parametry:
+Ukázková šablona má dva **požadované** parametry:
 
-* **Umístění** , kde se vytvoří skupina prostředků a služby.
+* **Místo** , kde budou vytvořeny prostředky.
 
     Šablona bude používat umístění, které jste vybrali pro většinu prostředků. Výjimkou je služba Application Insights, která není dostupná ve všech umístěních, ve kterých jsou jiné služby. Pokud vyberete umístění, kde není k dispozici, bude služba vytvořena v umístění Střed USA – jih.
 
-* **Název pracovního prostoru**, což je popisný název pracovního prostoru Azure Machine Learning.
+* Název **pracovního prostoru**, což je popisný název pracovního prostoru Azure Machine Learning.
 
     > [!NOTE]
     > V názvu pracovního prostoru se nerozlišují malá a velká písmena.
@@ -74,7 +72,82 @@ Další informace o šablonách najdete v následujících článcích:
 * [Nasazení aplikace pomocí šablon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md)
 * [Typy prostředků Microsoft. MachineLearningServices](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
-### <a name="advanced-template"></a>Pokročilá šablona
+## <a name="deploy-template"></a>Nasazení šablony
+
+Pokud chcete šablonu nasadit, musíte vytvořit skupinu prostředků.
+
+Pokud dáváte přednost použití grafického uživatelského rozhraní, přečtěte si část [Azure Portal](#use-the-azure-portal) .
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az group create --name "examplegroup" --location "eastus"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroup -Name "examplegroup" -Location "eastus"
+```
+
+---
+
+Po úspěšném vytvoření skupiny prostředků nasaďte šablonu pomocí následujícího příkazu:
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" location="eastus"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus"
+```
+
+---
+
+Ve výchozím nastavení jsou všechny prostředky vytvořené jako součást šablony nové. Můžete ale také využít možnost použít stávající prostředky. Zadáním dalších parametrů do šablony můžete použít stávající prostředky. Pokud třeba chcete použít existující účet úložiště, nastavte hodnotu **storageAccountOption** na **stávající** a v parametru **storageAccountName** zadejte název svého účtu úložiště.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      storageAccountOption="existing" \
+      storageAccountName="existingstorageaccountname"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -storageAccountOption "existing" `
+  -storageAccountName "existingstorageaccountname"
+```
+
+---
+
+## <a name="deploy-an-encrypted-workspace"></a>Nasazení šifrovaného pracovního prostoru
 
 Následující příklad šablony ukazuje, jak vytvořit pracovní prostor se třemi nastaveními:
 
@@ -86,6 +159,7 @@ Další informace najdete v tématu věnovaném [šifrování v klidovém umíst
 
 > [!IMPORTANT]
 > Než použijete tuto šablonu, musí vaše předplatné splňovat tyto požadavky:
+>
 > * Aplikace __Azure Machine Learning__ musí být __přispěvatelem__ vašeho předplatného Azure.
 > * Musíte mít existující Azure Key Vault, která obsahuje šifrovací klíč.
 > * V Azure Key Vault musíte mít zásadu přístupu, která uděluje přístup k aplikaci __Azure Cosmos DB__ k __získání__, __zabalení__a __rozbalení__ .
@@ -93,110 +167,482 @@ Další informace najdete v tématu věnovaném [šifrování v klidovém umíst
 
 Pokud __chcete přidat aplikaci Azure Machine Learning jako přispěvatele__, použijte následující příkazy:
 
-1. K ověření v Azure pomocí rozhraní příkazového řádku použijte následující příkaz:
+1. Přihlaste se k účtu Azure a Získejte ID vašeho předplatného. Toto předplatné musí být stejné, které obsahuje váš pracovní prostor Azure Machine Learning.  
 
-    ```azurecli-interactive
-    az login
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az account list --query '[].[name,id]' --output tsv
     ```
-    
-    [!INCLUDE [subscription-login](../../includes/machine-learning-cli-subscription.md)]
+
+    > [!TIP]
+    > Pokud chcete vybrat jiné předplatné, použijte `az account set -s <subscription name or ID>` příkaz a zadejte název nebo ID předplatného, na které chcete přepnout. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). 
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzSubscription
+    ```
+
+    > [!TIP]
+    > Pokud chcete vybrat jiné předplatné, použijte `Az-SetContext -SubscriptionId <subscription ID>` příkaz a zadejte název nebo ID předplatného, na které chcete přepnout. Další informace o výběru předplatného najdete v tématu [použití více předplatných Azure](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0).
+
+    ---
 
 1. K získání ID objektu aplikace Azure Machine Learning použijte následující příkaz. Hodnota se může lišit pro každé z vašich předplatných Azure:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
     ```
 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
+    ```
+
+    ---
     Tento příkaz vrátí ID objektu, což je identifikátor GUID.
 
-1. Pokud chcete přidat ID objektu jako přispěvatele k vašemu předplatnému, použijte následující příkaz. Nahraďte `<object-ID>` identifikátorem GUID z předchozího kroku. Nahraďte `<subscription-ID>` názvem nebo ID vašeho předplatného Azure:
+1. Pokud chcete přidat ID objektu jako přispěvatele k vašemu předplatnému, použijte následující příkaz. Nahraďte `<object-ID>` ID objektu instančního objektu. Nahraďte `<subscription-ID>` názvem nebo ID vašeho předplatného Azure:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
     ```
 
-Pokud chcete __do Azure Key Vault přidat klíč__, použijte informace v článku [Přidání klíče, tajného klíče nebo certifikátu do trezoru klíčů](../key-vault/general/manage-with-cli2.md#adding-a-key-secret-or-certificate-to-the-key-vault) tématu __Správa Key Vault pomocí Azure CLI__ .
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
+    ```
+
+    ---
+
+1. Pokud chcete vygenerovat klíč v existující Azure Key Vault, použijte jeden z následujících příkazů. Nahraďte `<keyvault-name>` názvem trezoru klíčů. Nahraďte `<key-name>` názvem, který se má použít pro klíč:
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
+    ```
+    --- 
 
 Pokud chcete __do trezoru klíčů přidat zásady přístupu, použijte následující příkazy__:
 
 1. K získání ID objektu aplikace Azure Cosmos DB použijte následující příkaz. Hodnota se může lišit pro každé z vašich předplatných Azure:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
     ```
-    
-    Tento příkaz vrátí ID objektu, což je identifikátor GUID.
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
+    ```
+    ---
+
+    Tento příkaz vrátí ID objektu, což je identifikátor GUID. Uložit pro pozdější
 
 1. Chcete-li nastavit zásadu, použijte následující příkaz. Nahraďte `<keyvault-name>` názvem existující Azure Key Vault. Nahraďte `<object-ID>` identifikátorem GUID z předchozího kroku:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
     ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    
+    ```azurepowershell
+    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
+    ```
+    ---    
 
 __Chcete-li získat hodnoty__ pro `cmk_keyvault` (ID Key Vault) a `resource_cmk_uri` parametry (identifikátor URI klíče) vyžadované touto šablonou, použijte následující postup:
 
 1. Chcete-li získat ID Key Vault, použijte následující příkaz:
 
-    ```azurecli-interactive
-    az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv
     ```
 
-    Tento příkaz vrátí hodnotu podobnou `/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault` .
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
+    ```
+    ---
+
+    Tento příkaz vrátí hodnotu podobnou `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .
 
 1. Chcete-li získat hodnotu identifikátoru URI pro spravovaný klíč zákazníka, použijte následující příkaz:
 
-    ```azurecli-interactive
-    az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
     ```
 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
+    ```
+    ---
+
     Tento příkaz vrátí hodnotu podobnou `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
-
-__Příklad šablony__
-
-:::code language="json" source="~/quickstart-templates/201-machine-learning-encrypted-workspace/azuredeploy.json":::
 
 > [!IMPORTANT]
 > Po vytvoření pracovního prostoru nemůžete změnit nastavení pro důvěrná data, šifrování, ID trezoru klíčů nebo identifikátory klíčů. Chcete-li tyto hodnoty změnit, je nutné vytvořit nový pracovní prostor s použitím nových hodnot.
 
+Po úspěšném dokončení výše uvedených kroků nasaďte šablonu, jako byste to udělali normálně. Pokud chcete povolit použití spravovaných klíčů zákazníka, nastavte následující parametry:
+
+* **Encryption_status** **Povolit**.
+* **cmk_keyvault** na `cmk_keyvault` hodnotu získanou v předchozích krocích.
+* **resource_cmk_uri** na `resource_cmk_uri` hodnotu získanou v předchozích krocích.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      encryption_status="Enabled" \
+      cmk_keyvault="/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>" \
+      resource_cmk_uri="https://mykeyvault.vault.azure.net/keys/mykey/{guid}" \
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -encryption_status "Enabled" `
+  -cmk_keyvault "/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>" `
+  -resource_cmk_uri "https://mykeyvault.vault.azure.net/keys/mykey/{guid}"
+```
+---
+
+Při použití klíče spravovaného zákazníkem Azure Machine Learning vytvoří sekundární skupinu prostředků, která obsahuje instanci Cosmos DB. Další informace najdete v tématu [šifrování v klidovém Cosmos DB](concept-enterprise-security.md#encryption-at-rest).
+
+Další konfigurací, kterou můžete pro data poskytnout, je nastavení parametru **confidential_data** na **hodnotu true**. Uděláte to takto:
+
+* Spustí šifrování místního pomocného disku pro Azure Machine Learning výpočetních clusterů, takže jste nevytvořili žádné předchozí clustery v rámci vašeho předplatného. Pokud jste předtím vytvořili cluster v rámci předplatného, otevřete lístek podpory, který bude mít povolený šifrovací disk pro vaše výpočetní clustery.
+* Vyčistí místní poškrábaný disk mezi spuštěním.
+* Zabezpečeně předává přihlašovací údaje účtu úložiště, registru kontejnerů a účtu SSH z vrstvy spouštění do vašich výpočetních clusterů pomocí trezoru klíčů.
+* Povolí filtrování protokolu IP, aby se zajistilo, že se nadřazené fondy dávek nedají volat v jiných externích službách než AzureMachineLearningService.
+
+  Další informace najdete v tématu věnovaném [šifrování v klidovém umístění](concept-enterprise-security.md#encryption-at-rest).
+
+## <a name="deploy-workspace-behind-a-virtual-network"></a>Nasazení pracovního prostoru za virtuální sítí
+
+Nastavením `vnetOption` hodnoty parametru na buď `new` nebo `existing` můžete vytvořit prostředky používané pracovním prostorem za virtuální sítí.
+
+> [!IMPORTANT]
+> V případě registru kontejneru je podporována pouze SKU Premium.
+
+> [!IMPORTANT]
+> Application Insights nepodporuje nasazení za virtuální sítí.
+
+### <a name="only-deploy-workspace-behind-private-endpoint"></a>Nasadit jenom pracovní prostor za privátním koncovým bodem
+
+Pokud vaše přidružené prostředky nejsou za virtuální sítí, můžete nastavit parametr **privateEndpointType** na `AutoAproval` nebo `ManualApproval` pro nasazení pracovního prostoru za soukromým koncovým bodem.
+
+> [!IMPORTANT]
+> Nasazení je platné pouze v oblastech, které podporují soukromé koncové body.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+### <a name="use-a-new-virtual-network"></a>Použít novou virtuální síť
+
+Pokud chcete nasadit prostředek za novou virtuální sítí, nastavte **vnetOption** na **New** spolu s nastavením virtuální sítě pro příslušný prostředek. Níže uvedené nasazení ukazuje, jak nasadit pracovní prostor s prostředkem účtu úložiště za novou virtuální sítí.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      storageAccountBehindVNet="true"
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -storageAccountBehindVNet "true"
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+Alternativně můžete nasadit více nebo všechny závislé prostředky za virtuální síť.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      storageAccountBehindVNet="true" \
+      keyVaultBehindVNet="true" \
+      containerRegistryBehindVNet="true" \
+      containerRegistryOption="new" \
+      containerRegistrySku="Premium"
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -storageAccountBehindVNet "true"
+  -keyVaultBehindVNet "true" `
+  -containerRegistryBehindVNet "true" `
+  -containerRegistryOption "new" `
+  -containerRegistrySku "Premium"
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+<!-- Workspaces need a private endpoint when associated resources are behind a virtual network to work properly. To set up a private endpoint for the workspace with a new virtual network:
+
+> [!IMPORTANT]
+> The deployment is only valid in regions which support private endpoints.
+
+# [Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      privateEndpointType="AutoApproval"
+```
+
+# [Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -privateEndpointType "AutoApproval"
+```
+
+--- -->
+
+### <a name="use-an-existing-virtual-network--resources"></a>Použít existující prostředky & virtuální sítě
+
+Pokud chcete nasadit pracovní prostor s existujícími přidruženými prostředky, musíte nastavit parametr **vnetOption** na **existující** společně s parametry podsítě. **Před** nasazením ale budete muset vytvořit koncové body služby ve virtuální síti pro každý z prostředků. Podobně jako u nových nasazení virtuální sítě můžete mít jeden nebo všechny prostředky za virtuální sítí.
+
+> [!IMPORTANT]
+> Podsíť by měla mít `Microsoft.Storage` koncový bod služby.
+
+> [!IMPORTANT]
+> Podsítě neumožňují vytváření privátních koncových bodů. Pokud chcete povolit podsíť, zakažte privátní koncový bod.
+
+1. Povolte koncové body služby pro prostředky.
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.Storage"
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.KeyVault"
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.ContainerRegistry"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.ContainerRegistry" | Set-AzVirtualNetwork
+    ```
+
+    ---
+
+1. Nasazení pracovního prostoru
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="existing" \
+      vnetName="examplevnet" \
+      vnetResourceGroupName="examplegroup" \
+      storageAccountBehindVNet="true" \
+      keyVaultBehindVNet="true" \
+      containerRegistryBehindVNet="true" \
+      containerRegistryOption="new" \
+      containerRegistrySku="Premium" \
+      subnetName="examplesubnet" \
+      subnetOption="existing"
+      privateEndpointType="AutoApproval"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -Name "exampledeployment" `
+      -ResourceGroupName "examplegroup" `
+      -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+      -workspaceName "exampleworkspace" `
+      -location "eastus" `
+      -vnetOption "existing" `
+      -vnetName "examplevnet" `
+      -vnetResourceGroupName "examplegroup" `
+      -storageAccountBehindVNet "true"
+      -keyVaultBehindVNet "true" `
+      -containerRegistryBehindVNet "true" `
+      -containerRegistryOption "new" `
+      -containerRegistrySku "Premium" `
+      -subnetName "examplesubnet" `
+      -subnetOption "existing"
+      -privateEndpointType "AutoApproval"
+    ```
+    ---
+
+<!-- Workspaces need a private endpoint when associated resources are behind a virtual network to work properly. To set up a private endpoint for the workspace with an existing virtual network:
+
+> [!IMPORTANT]
+> The deployment is only valid in regions which support private endpoints.
+
+# [Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="existing" \
+      vnetName="examplevnet" \
+      vnetResourceGroupName="rg" \
+      privateEndpointType="AutoApproval" \
+      subnetName="subnet" \
+      subnetOption="existing"
+```
+
+# [Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "existing" `
+  -vnetName "examplevnet" `
+  -vnetResourceGroupName "rg"
+  -privateEndpointType "AutoApproval"
+  -subnetName "subnet"
+  -subnetOption "existing"
+```
+
+--- -->
+
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Po přijetí na obrazovku __Upravit šablonu__ vložte do šablony z tohoto dokumentu šablonu.
-1. Vyberte __Uložit__ a použijte šablonu. Zadejte následující informace a vyjádřete souhlas s uvedenými podmínkami a ujednáními:
+1. Postupujte podle kroků v části [nasazení prostředků z vlastní šablony](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Až přijdete na obrazovku __Vybrat šablonu__ , v rozevíracím seznamu vyberte šablonu **201-Machine-Learning-Advanced** .
+1. Vyberte __možnost vybrat šablonu__ a šablonu použijte. V závislosti na scénáři nasazení zadejte následující požadované informace a všechny další parametry.
 
    * Předplatné: vyberte předplatné Azure, které chcete použít pro tyto prostředky.
    * Skupina prostředků: vyberte nebo vytvořte skupinu prostředků, která bude obsahovat služby.
+   * Oblast: Vyberte oblast Azure, ve které se budou prostředky vytvářet.
    * Název pracovního prostoru: název, který se má použít pro pracovní prostor Azure Machine Learning, který se vytvoří. Název pracovního prostoru musí být dlouhý 3 až 33 znaků. Může obsahovat pouze alfanumerické znaky a znak "-".
    * Umístění: vyberte umístění, kde se budou prostředky vytvářet.
+1. Vyberte __Zkontrolovat a vytvořit__.
+1. Na obrazovce __Revize + vytvořit__ vyjádřete souhlas s uvedenými podmínkami a ujednáními a vyberte __vytvořit__.
 
 Další informace najdete v tématu [nasazení prostředků z vlastní šablony](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
-
-## <a name="use-azure-powershell"></a>Použití Azure Powershell
-
-V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s názvem `azuredeploy.json` v aktuálním adresáři:
-
-```powershell
-New-AzResourceGroup -Name examplegroup -Location "East US"
-new-azresourcegroupdeployment -name exampledeployment `
-  -resourcegroupname examplegroup -location "East US" `
-  -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
-```
-
-Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) a [nasazení privátní šablony Správce prostředků pomocí tokenu SAS a Azure PowerShell](../azure-resource-manager/templates/secure-template-with-sas-token.md).
-
-## <a name="use-the-azure-cli"></a>Použití Azure CLI
-
-V tomto příkladu se předpokládá, že jste šablonu uložili do souboru s názvem `azuredeploy.json` v aktuálním adresáři:
-
-```azurecli-interactive
-az group create --name examplegroup --location "East US"
-az group deployment create \
-  --name exampledeployment \
-  --resource-group examplegroup \
-  --template-file azuredeploy.json \
-  --parameters workspaceName=exampleworkspace location=eastus sku=basic
-```
-
-Další informace najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md) a [nasazení privátních správce prostředků šablony s tokenem SAS a](../azure-resource-manager/templates/secure-template-with-sas-token.md)rozhraním příkazového řádku Azure CLI.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -216,7 +662,7 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
 
 * Zkontrolujte zásady přístupu Key Vault a pak tyto zásady použijte k nastavení `accessPolicies` Vlastnosti šablony. Zásady přístupu zobrazíte pomocí následujícího příkazu rozhraní příkazového řádku Azure:
 
-    ```azurecli-interactive
+    ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
@@ -287,7 +733,7 @@ Chcete-li se tomuto problému vyhnout, doporučujeme jeden z následujících p�
 
     Pokud chcete získat ID Key Vault, můžete odkazovat na výstup původní šablony a použít Azure CLI. Následující příkaz je příkladem použití rozhraní příkazového řádku Azure k získání ID Key Vault prostředku:
 
-    ```azurecli-interactive
+    ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
     ```
 

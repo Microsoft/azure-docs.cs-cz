@@ -8,11 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564640"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232062"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
@@ -67,7 +68,7 @@ V dalším kroku nasaďte Time Series Insights jako další prostředek do řeš
 
     ![Vytvořit Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Klikněte na **Vytvořit**. Vytvoření prostředí může chvíli trvat.
+1. Klikněte na **Create** (Vytvořit). Vytvoření prostředí může chvíli trvat.
 
 ## <a name="create-event-source"></a>Vytvoření zdroje událostí
 
@@ -79,7 +80,7 @@ Vytvořte nový zdroj událostí pro připojení ke službě IoT Hub. Ujistěte 
 
     ![Zobrazení zdrojů událostí](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources.png)
 
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Klikněte na **Přidat**.
 
     ![Přidat zdroj události](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -100,7 +101,7 @@ Vytvořte nový zdroj událostí pro připojení ke službě IoT Hub. Ujistěte 
 
     ![Vytvořit zdroj události](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na **Create** (Vytvořit).
 
 ## <a name="configure-the-data-access-policy"></a>Konfigurace zásad přístupu k datům
 
@@ -243,7 +244,7 @@ Nakonfigurujte prostředí `basic` nasazení pro aktualizované mikroslužby.
 
 Konfigurace prostředí `standard` nasazení pro aktualizované mikroslužby výše
 
-1. Na příkazovém řádku spusťte příkaz `kubectl proxy` . Další informace najdete v tématu [přístup k rozhraní Kubernetes API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server).
+1. Na příkazovém řádku spusťte příkaz `kubectl proxy` . Další informace najdete v tématu [přístup k rozhraní Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/).
 
 1. Otevřete konzolu pro správu Kubernetes.
 

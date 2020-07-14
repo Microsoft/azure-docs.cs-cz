@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4c873e7ec1867b6ce53cd9f4c3d5c54242a6f16
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81729857"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232334"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro jazyk Java
 
@@ -27,7 +27,7 @@ Použijte klientskou knihovnu Azure Queue Storage V12 pro jazyk Java:
 * Přijímání a odstraňování zpráv z fronty
 * Odstranění fronty
 
-[API reference documentation](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [Library source code](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)[Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples) knihovny | dokumentace k referenční dokumentaci rozhraní API[(Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | 
+[Referenční dokumentace k](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)  |  [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -99,7 +99,7 @@ Vytvořte aplikaci Java s názvem *Queues-Start-V12*.
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-V textovém editoru otevřete soubor *pom. XML* . Přidejte následující prvek závislosti do skupiny závislostí.
+Otevřete *pom.xml* soubor v textovém editoru. Přidejte následující prvek závislosti do skupiny závislostí.
 
 ```xml
 <dependency>
@@ -155,10 +155,10 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 K interakci s těmito prostředky použijte následující třídy Java:
 
-* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): `QueueClientBuilder` třída konfiguruje a vytvoří instanci `QueueClient` objektu.
+* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): `QueueClientBuilder` Třída konfiguruje a vytvoří instanci `QueueClient` objektu.
 * [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
-* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): `QueueClient` třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
-* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): `QueueMessageItem` třída představuje jednotlivé objekty vracené při volání [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) ve frontě.
+* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
+* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): `QueueMessageItem` Třída představuje jednotlivé objekty vracené při volání [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) ve frontě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -167,7 +167,7 @@ Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s kli
 * [Získání připojovacího řetězce](#get-the-connection-string)
 * [Vytvoření fronty](#create-a-queue)
 * [Přidání zpráv do fronty](#add-messages-to-a-queue)
-* [Prohlížet zprávy ve frontě](#peek-at-messages -in-a-queue)
+* [Prohlížet zprávy ve frontě](#peek-at-messages-in-a-queue)
 * [Aktualizace zprávy ve frontě](#update-a-message-in-a-queue)
 * [Přijímání a odstraňování zpráv z fronty](#receive-and-delete-messages-from-a-queue)
 * [Odstranění fronty](#delete-a-queue)
@@ -238,7 +238,7 @@ SendMessageResult result = queueClient.sendMessage("Third message");
 
 ### <a name="peek-at-messages-in-a-queue"></a>Prohlížet zprávy ve frontě
 
-Podívejte se na zprávy ve frontě voláním metody [peekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) . `peelkMessages` Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
+Podívejte se na zprávy ve frontě voláním metody [peekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) . `peelkMessages`Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
 
 Přidejte tento kód na konec `main` metody:
 
@@ -252,7 +252,7 @@ queueClient.peekMessages(10, null, null).forEach(
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualizace zprávy ve frontě
 
-Aktualizujte obsah zprávy voláním metody [updateMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) . `updateMessage` Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Spolu s novým obsahem zprávy předejte ID zprávy a příjemku POP pomocí `SendMessageResult` , který byl uložen dříve v kódu. ID zprávy a příjemku pop identifikují, která zpráva se má aktualizovat.
+Aktualizujte obsah zprávy voláním metody [updateMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) . `updateMessage`Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Spolu s novým obsahem zprávy předejte ID zprávy a příjemku POP pomocí `SendMessageResult` , který byl uložen dříve v kódu. ID zprávy a příjemku pop identifikují, která zpráva se má aktualizovat.
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");

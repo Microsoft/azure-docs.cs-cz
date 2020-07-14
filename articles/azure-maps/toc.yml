@@ -232,6 +232,24 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Zobrazení provozních dat
           href: how-to-show-traffic-android.md
+    - name: Použití Azure Maps v Power BI
+      items:
+        - name: Začínáme
+          href: power-bi-visual-getting-started.md
+        - name: Principy vrstev
+          href: power-bi-visual-understanding-layers.md
+        - name: Přidání vrstvy bublin
+          href: power-bi-visual-add-bubble-layer.md
+        - name: Přidání vrstvy pruhového grafu
+          href: power-bi-visual-add-bar-chart-layer.md
+        - name: Přidání referenční vrstvy
+          href: power-bi-visual-add-reference-layer.md
+        - name: Přidání vrstvy dlaždic
+          href: power-bi-visual-add-tile-layer.md
+        - name: Zobrazení provozu v reálném čase
+          href: power-bi-visual-show-real-time-traffic.md
+        - name: Správa přístupu
+          href: power-bi-visual-manage-access.md
     - name: Poskytnutí zpětné vazby k datům
       href: how-to-use-feedback-tool.md
 - name: Referenční informace

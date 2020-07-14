@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57e312df31682ea868443423f40d54369cab6699
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846713"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231295"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Specifikace souborového pro Azure FXT Edge
 
@@ -19,7 +19,7 @@ Tento článek vysvětluje hardwarové specifikace pro hardwarové uzly Azure FX
 
 ## <a name="hardware-specifications"></a>Specifikace hardwaru
 
-| Součást | FXT 6600 | FXT 6400 |
+| Komponenta | FXT 6600 | FXT 6400 |
 |----------|-----------|-----------|
 | Procesorová jádra |  16 | 16 |
 | DRAM  | 1536 GB | 768 GB |
@@ -46,9 +46,9 @@ Souborového Edge pro Azure FXT je navržený tak, aby odpovídal standardu 19 "
 
 <!-- 10x2.5 inches version -->
 
-| Souborového dimenze           |                          |
+| Souborového dimenze            | Hodnota                    |
 |-----------------------------|--------------------------|
-| Vlastnost Height                      | 42,8 mm (1,68 palců)    |
+| Height (Výška)                      | 42,8 mm (1,68 palců)    |
 | Šířka (včetně racku EARS) | 482,0 mm (18,97 palců)  |
 | Šířka – hlavní skříň      | 434,0 mm (17,08 palců) |
 | Hloubka EARS stojanu na zadní část hlavního skříně                   | 733,82 mm (29,61 palců) |
@@ -56,7 +56,7 @@ Souborového Edge pro Azure FXT je navržený tak, aby odpovídal standardu 19 "
 | Earsa hloubkového stojanu na nejvzdálenější přední protrusion, bez čelního krytu | 22,0 mm (0,87 palce)  |
 | Hloubka EARS stojanu na nejvzdálenější přední protrusion s čelním krytem    | 35,84 mm (1,41 palců) |
 
-| Hmotnost | |
+| Hmotnost | Hodnota |
 |-----------------|----------------------|
 | Váha uzlu (bez balení, bez příslušenství) | 40 kg (18,1 kg) |
 | Čistou hmotnost (bez balení, včetně příslušenství) | 51 kg (23,1 kg)|
@@ -66,8 +66,8 @@ Souborového Edge pro Azure FXT je navržený tak, aby odpovídal standardu 19 "
 
 | Dimenze balíčku | Milimetrech | Cm |
 |-------------------|-------------|--------|
-| Vlastnost Height            | 311,2       | 12,25 " |
-| impulzu             | 642,8       | 25,31 " |
+| Height (Výška)            | 311,2       | 12,25 " |
+| Width (Šířka)             | 642,8       | 25,31 " |
 | Délka            | 1 051,1     | 41,38 " |
 
 ## <a name="power-and-thermal-specifications"></a>Specifikace napájení a tepelného řízení

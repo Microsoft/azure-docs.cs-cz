@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bf5e161b46b9ec6e39702ddd8435a7c7672111f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550119"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230379"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -48,12 +48,28 @@ Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect
 >
 >Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) .
 
+## <a name="15420"></a>1.5.42.0
+
+### <a name="release-status"></a>Stav verze
+07/10/2020: vydáno ke stažení
+
+### <a name="functional-changes"></a>Funkční změny
+Tato verze zahrnuje veřejnou verzi Preview funkce pro export konfigurace existujícího serveru Azure AD Connect do. Soubor JSON, který se pak dá použít při instalaci nového serveru Azure AD Connect pro vytvoření kopie původního serveru.
+
+Podrobný popis této nové funkce najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-import-export-config) .
+
+### <a name="fixed-issues"></a>Opravené problémy
+- Opravili jsme chybu, kdy by došlo k nepravdivému upozornění na velikost místní databáze v lokalizovaných sestaveních během upgradu.
+- Opravili jsme chybu, kdy došlo k nepravdivé chybě v událostech aplikace pro prohození názvu účtu nebo názvu domény.
+- Opravili jsme chybu, kdy se Azure AD Connect nepovedlo nainstalovat na řadič domény, což způsobí chybu "člen nebyl nalezen".
+
+
 ## <a name="15300"></a>1.5.30.0
 
 ### <a name="release-status"></a>Stav verze
 05/07/2020: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 Toto sestavení opravy hotfix řeší problém, ve kterém nevybrané domény byly nesprávně vybrány z uživatelského rozhraní průvodce, pokud byly vybrány pouze podoblasti.
 
 
@@ -65,7 +81,7 @@ Toto sestavení opravy hotfix řeší problém, ve kterém nevybrané domény by
 ### <a name="release-status"></a>Stav verze
 04/23/2020: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 Toto sestavení opravy hotfix opravuje problém představený v sestavení 1.5.20.0, kde správce klienta s MFA nemohl povolit DSSO.
 
 ## <a name="15220"></a>1.5.22.0
@@ -73,7 +89,7 @@ Toto sestavení opravy hotfix opravuje problém představený v sestavení 1.5.2
 ### <a name="release-status"></a>Stav verze
 04/20/2020: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste naklonoval **v nástroji z pravidla spojení AD-Group** a neklonoval ho **ze společného pravidla AD-Group** .
 
 ## <a name="15200"></a>1.5.20.0
@@ -81,7 +97,7 @@ Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste nakl
 ### <a name="release-status"></a>Stav verze
 04/09/2020: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 - Toto sestavení opravy hotfix řeší problém se 1.5.18.0 Build, pokud máte povolenou funkci filtrování skupin a jako zdrojovou kotvu použijete mS-DS-ConsistencyGuid.
 - Opravili jsme problém v modulu ADSyncConfig PowerShellu, kde vyvolání příkazu DSACLS, který se používá ve všech rutinách oprávnění set-ADSync *, by způsobilo jednu z následujících chyb:
      - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
@@ -113,7 +129,7 @@ Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste nakl
 >[!NOTE]
 >Starý nástroj CSDelete.exe se odebral a nahradil novou rutinou Remove-ADSyncCSObject. 
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 
 - Opravili jsme chybu v selektoru v doménové struktuře zpětného zápisu skupiny a v selektor organizační jednotky při spuštění Průvodce Azure AD Connect po zakázání funkce. 
 - Zavedli jsme novou chybovou stránku, která se zobrazí, pokud chybí požadované hodnoty registru DCOM s novým odkazem na aplikaci help. Do souborů protokolu jsou také zapisovány informace. 
@@ -131,7 +147,7 @@ Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste nakl
 - Přidali jsme mezipaměť DNS pro připojení protokolu WebSocket mezi ověřovacím agentem a cloudovou službou.
 - Přidali jsme možnost zaměřit se na konkrétního agenta z cloudu na testování připojení agenta.
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 - Verze 1.4.18.0 využívala chybu, při které rutina PowerShellu pro DSSO používala přihlašovací údaje přihlašovacího uživatele systému Windows místo přihlašovacích údajů správce, které jste zadali při spuštění PS. V důsledku toho nebylo možné povolit DSSO ve více doménových strukturách prostřednictvím uživatelského rozhraní AADConnect. 
 - Byla provedena oprava umožňující DSSO současně ve všech doménových strukturách prostřednictvím uživatelského rozhraní AADConnect.
 
@@ -142,7 +158,7 @@ Toto sestavení opravy hotfix řeší problém v Build 1.5.20.0, pokud jste nakl
 >[!IMPORTANT]
 >Z důvodu interní změny schématu v této verzi Azure AD Connect, pokud spravujete AD FS nastavení konfigurace vztahů důvěryhodnosti pomocí prostředí MSOnline PowerShell, musíte aktualizovat modul MSOnline PowerShellu na verzi 1.1.183.57 nebo vyšší.
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 
 Tato verze opravuje problém se stávajícími zařízeními připojenými k hybridní službě Azure AD. Tato verze obsahuje nové pravidlo synchronizace zařízení, které tento problém vyřeší.
 Všimněte si, že tato změna pravidla může způsobit odstranění zastaralých zařízení z Azure AD. Nejedná se o příčinu obav, protože tyto objekty zařízení služba Azure AD během autorizace podmíněného přístupu nepoužívá. Počet zařízení, která se budou pomocí této změny pravidla odstraňovat u některých zákazníků, může překročit prahovou hodnotu pro odstranění. Pokud se vám v Azure AD zobrazuje odstranění objektů zařízení, než je prahová hodnota pro odstranění exportu, doporučuje se, aby se odstranění procházela. [Postup při překročení prahové hodnoty odstranění do toku při odstraňování](how-to-connect-sync-feature-prevent-accidental-deletes.md)
@@ -154,7 +170,7 @@ Všimněte si, že tato změna pravidla může způsobit odstranění zastaralý
 
 Tato verze opravuje chybu, při které některé servery, které byly automaticky upgradovány z předchozí verze, 1.4.18.0 a byly zjištěny problémy s samoobslužným resetováním hesla (SSPR) a zpětným zápisem hesla.
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 
 Za určitých okolností servery, které byly automaticky upgradovány na verzi 1.4.18.0, po dokončení upgradu znovu nepovolily Samoobslužné resetování hesla a zpětný zápis hesla. Tato verze automatického upgradu opravuje tento problém a znovu umožňuje Samoobslužné resetování hesla a zpětný zápis hesla.
 
@@ -194,7 +210,7 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 - Přidala se nová úloha správy federace s názvem "spravovat servery", která obsahuje podúlohy pro nasazení AD FS serveru, nasazení serveru proxy webových aplikací a určení primárního serveru.
 - Přidala se nová úloha správy federace s názvem "zobrazení konfigurace federace", která zobrazuje aktuální nastavení AD FS.  (Kvůli tomuto přidání se AD FS nastavení odebrala ze stránky zkontrolovat vaše řešení.)
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 - Vyřešen problém s chybou synchronizace pro situaci, kdy objekt uživatele přebírající odpovídající objekt kontaktu má odkaz na sebe sama (například uživatel je vlastní správce).
 - Automaticky otevíraná okna s nápovědou se teď zobrazují na fokusu klávesnice.
 - Pokud se při automatickém upgradu spustí nějaká konfliktní aplikace z 6 hodin, ukončí se a pokračuje v upgradu.
@@ -222,7 +238,7 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 
 05/14/2019: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží 
+### <a name="fixed-issues"></a>Opravené problémy 
 
 - Opravili jsme zvýšení oprávnění k ohrožení zabezpečení, které existuje v Microsoft Azure Active Directory Connect Build 1.3.20.0.  Tato zranitelnost za určitých podmínek může útočníkovi umožnit spustit dvě rutiny prostředí PowerShell v kontextu privilegovaného účtu a provádět privilegované akce.  Tato aktualizace zabezpečení řeší problém tím, že tyto rutiny zakáže. Další informace najdete v tématu [aktualizace zabezpečení](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000).
 
@@ -255,7 +271,7 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 - Změna chování farmy instalace nové AD FS tak, aby vyžadovala certifikát. pfx odebráním možnosti použití předem nainstalovaného certifikátu.
 - Pracovní postup instalace nové AD FS farmy byl aktualizován tak, aby umožňoval nasazení 1 AD FS a 1 serveru WAP.  Všechny další servery budou provedeny po počáteční instalaci. 
 
-### <a name="fixed-issues"></a>Oprava potíží 
+### <a name="fixed-issues"></a>Opravené problémy 
 
 - Oprava logiky opětovného připojení SQL pro službu ADSync 
 - Oprava pro povolení čisté instalace pomocí prázdné databáze SQL AOA 
@@ -279,7 +295,7 @@ Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpraco
 
 12/18/2018: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 
 Toto sestavení aktualizuje nestandardní konektory (například obecný konektor LDAP a obecný konektor SQL) dodávané s Azure AD Connect. Další informace o použitelných konektorech najdete v tématu verze 1.1.911.0 v [historii verzí konektoru](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history).
 
@@ -289,7 +305,7 @@ Toto sestavení aktualizuje nestandardní konektory (například obecný konekto
 ### <a name="release-status"></a>Stav verze
 12/11/2018: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 Toto sestavení opravy hotfix umožňuje uživateli vybrat cílovou doménu v rámci zadané doménové struktury pro kontejner RegisteredDevices při povolování zpětného zápisu zařízení.  V předchozích verzích, které obsahují nové funkce možností zařízení (1.1.819.0 – 1.2.68.0), bylo umístění kontejneru RegisteredDevices omezené na kořen doménové struktury a nepovolilo podřízené domény.  Toto omezení se projevuje jenom při nových nasazeních – místní upgrady neovlivnily.  
 
 Pokud se nějaké sestavení obsahující aktualizované funkce možností zařízení nasadilo na nový server a zpětný zápis zařízení byl povolený, budete muset ručně zadat umístění kontejneru, pokud ho nechcete v kořenovém adresáři doménové struktury.  K tomu je potřeba zakázat zpětný zápis zařízení a znovu ho povolit, což vám umožní určit umístění kontejneru na stránce "doménová struktura zpětného zápisu".
@@ -302,7 +318,7 @@ Pokud se nějaké sestavení obsahující aktualizované funkce možností zař�
 
 11/30/2018: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 
 Toto sestavení opravy hotfix opravuje konflikt, ve kterém může dojít k chybě ověřování z důvodu nezávislé přítomnosti modulu MSOnline Galerie prostředí PowerShell na synchronizačním serveru.
 
@@ -314,7 +330,7 @@ Toto sestavení opravy hotfix opravuje konflikt, ve kterém může dojít k chyb
 
 11/19/2018: vydáno ke stažení
 
-### <a name="fixed-issues"></a>Oprava potíží
+### <a name="fixed-issues"></a>Opravené problémy
 
 Toto sestavení opravy hotfix opravuje regresi v předchozím buildu, kde při použití řadiče domény v systému Windows Server 2008/R2 dojde k chybě zpětného zápisu hesla.
 
@@ -337,7 +353,7 @@ Toto sestavení opravy hotfix opravuje regresi v předchozím buildu, kde při p
 
  
 
-### <a name="fixed-issues"></a>Oprava potíží   
+### <a name="fixed-issues"></a>Opravené problémy   
 
 - Opravili jsme chybu, kdy Azure AD Connect upgrade selže při použití SQL Always On. 
 - Opravili jsme chybu pro správné analyzování názvů organizačních jednotek, které obsahují lomítko. 
@@ -354,7 +370,7 @@ Toto sestavení opravy hotfix opravuje regresi v předchozím buildu, kde při p
 
 9/7/2018: vydané ke stažení, nebude vydávat verze pro automatický upgrade. 
 
-### <a name="fixed-issues"></a>Oprava potíží  
+### <a name="fixed-issues"></a>Opravené problémy  
 
 Azure AD Connect upgrade se nepovede, pokud je pro ADSync DB nakonfigurovaná dostupnost SQL Always On. Tato oprava hotfix tento problém řeší a umožňuje úspěšné provedení upgradu. 
 
@@ -379,7 +395,7 @@ Azure AD Connect upgrade se nepovede, pokud je pro ADSync DB nakonfigurovaná do
 - Všechny další úlohy federace se teď seskupují do jedné podnabídky pro snadné použití.
 - Nový přepracované ADSyncConfig Posh modul (AdSyncConfig. psm1) s novými funkcemi oprávnění služby Active Directory přesunutými ze starého ADSyncPrep. psm1 (které se můžou v krátké době přestat používat)
 
-### <a name="fixed-issues"></a>Oprava potíží 
+### <a name="fixed-issues"></a>Opravené problémy 
 
 - Opravili jsme chybu, kdy by server AAD Connect po upgradu na .NET 4.7.2 zobrazoval vysoké využití procesoru.
 - Opravili jsme chybu, která by občas vytvořila chybovou zprávu pro automatický vyřešený problém se zablokování SQL.
@@ -421,7 +437,7 @@ Nové funkce a vylepšení
 
 
 
-### <a name="fixed-issues"></a>Oprava potíží 
+### <a name="fixed-issues"></a>Opravené problémy 
 
 - Tato verze aktualizuje SQL Server Express instalaci na SQL Server 2012 SP4, což mimo jiné poskytuje opravy pro několik chyb zabezpečení.  Další informace o SQL Server 2012 SP4 najdete [tady](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information) .
 - Zpracování pravidla synchronizace: pravidla synchronizace odchozího připojení bez podmínky spojení by se neměla použít, pokud pravidlo nadřazené synchronizace už neplatí.
@@ -462,11 +478,11 @@ Stav 4/12/2018: vydáno pouze ke stažení
 >Tato verze je opravou hotfix pro Azure AD Connect
 
 ### <a name="azure-ad-connect-sync"></a>Synchronizace služby Azure AD Connect
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 Opravili jsme problém, ale automatické zjišťování instancí Azure pro klienty v Číně občas selhává.  
 
 ### <a name="ad-fs-management"></a>Správa AD FS
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 
 Došlo k problému s logikou opakování konfigurace, která by způsobila, že došlo k chybě ArgumentException informující o tom, že položka se stejným klíčem již byla přidána. "  To by způsobilo selhání všech operací opakování.
 
@@ -480,7 +496,7 @@ Stav 3/22/2018: vydaná pro automatický upgrade a stažení.
 
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 
 * Rutina Set-ADSyncAutoUpgrade by předtím blokovala automatický upgrade, pokud je stav automatického upgradu nastavený na pozastaveno. Tato funkce se teď změnila tak, aby neblokovala autoinovaci budoucích buildů.
 * Byla změněna možnost **přihlašovací stránky uživatele** "synchronizace hesel" na "synchronizace hodnot hash hesel".  Azure AD Connect synchronizuje hodnoty hash hesel, nikoli hesla, takže se zarovnává s tím, co se skutečně objevuje.  Další informace najdete v tématu [implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](how-to-connect-password-hash-synchronization.md) .
@@ -492,7 +508,7 @@ Stav: vydáno pro výběr zákazníků
 >Až se upgrade na tuto novou verzi dokončí, automaticky aktivuje úplnou synchronizaci a úplný Import pro konektor Azure AD a úplnou synchronizaci pro konektor služby Active Directory. Vzhledem k tomu, že to může nějakou dobu trvat, v závislosti na velikosti Azure AD Connectho prostředí se ujistěte, že jste provedli potřebné kroky pro podporu tohoto nebo na upgradování, dokud nezjistíte vhodný okamžik.
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 * Oprava okna časování na úkolech na pozadí pro stránku filtrování oddílů při přechodu na další stránku
 
 * Opravili jsme chybu, která způsobila porušení přístupu během vlastní akce ConfigDB.
@@ -632,7 +648,7 @@ Stav: říjen 19 2017
 >
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 * Opravili jsme problém s *přihlašovacím úkolem změny uživatele* v Azure AD Connect Průvodce:
 
   * K tomuto problému dochází, když máte existující nasazení Azure AD Connect se **zapnutou**synchronizací hesel a pokoušíte se nastavit metodu přihlašování uživatelů jako *předávací ověřování*. Před použitím změny se v průvodci nesprávně zobrazí výzva "*zakázat synchronizaci hesla*". Synchronizace hesel ale zůstane zapnutá i po použití změny. V této opravě už průvodce nezobrazuje výzvu.
@@ -669,7 +685,7 @@ Stav: říjen 19 2017
 > [!NOTE]
 > Poznámka: synchronizační služba má rozhraní WMI, které umožňuje vyvíjet vlastní Plánovač. Toto rozhraní je nyní zastaralé a bude odebráno z budoucích verzí Azure AD Connect dodaných po 30. června 2018. Zákazníci, kteří chtějí přizpůsobit plán synchronizace, by měli používat [integrovaný Plánovač](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler).
 
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 * Když průvodce Azure AD Connect vytvoří účet konektoru služby AD potřebný k synchronizaci změn z místní služby Active Directory, účet k tomu nesprávně přiřadí oprávnění potřebné ke čtení objektů PublicFolder. Tento problém má vliv na expresní instalaci i na vlastní instalaci. Tato změna opravuje problém.
 
 * Opravili jsme problém, který způsobil, že se stránka Poradce při potížích s průvodcem Azure AD Connect nesprávně vygenerovala pro správce se systémem Windows Server 2016.
@@ -695,12 +711,12 @@ Stav: září 05 2017
 
 * Došlo k známému problému s Azure AD Connect upgradem, který má vliv na zákazníky, kteří mají povolené [bezproblémové jednotné přihlašování](how-to-connect-sso.md). Po upgradu Azure AD Connect se tato funkce v průvodci zobrazí jako zakázaná, i když tato funkce zůstane zapnutá. Oprava tohoto problému bude k dispozici v budoucí verzi. Zákazníci, kteří mají obavy z tohoto problému, ho můžou ručně opravit tak, že v průvodci povolí bezproblémové jednotné přihlašování.
 
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 * Opravili jsme problém, který zabránil Azure AD Connect aktualizaci pravidel deklarací v místních AD FS při povolování funkce [MS-DS-ConsistencyGuid jako zdrojového ukotvení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor) . K tomuto problému dochází, pokud se pokusíte povolit funkci pro existující nasazení Azure AD Connect, které má AD FS nakonfigurován jako metoda přihlašování. K tomuto problému dochází, protože průvodce nezobrazuje výzvu k zadání přihlašovacích údajů služby ADFS předtím, než se pokusí aktualizovat pravidla deklarace identity v AD FS.
 * Opravili jsme problém, který způsobil, že Azure AD Connect neúspěšná instalace, pokud má místní doménová struktura AD zakázaný protokol NTLM. Příčinou tohoto problému je Azure AD Connect, že Průvodce při vytváření kontextů zabezpečení vyžadovaných pro ověřování pomocí protokolu Kerberos neposkytuje plně kvalifikované přihlašovací údaje. Tím dojde k selhání ověřování protokolem Kerberos a Azure AD Connect průvodce, aby se vrátil k použití protokolu NTLM.
 
 ### <a name="azure-ad-connect-sync"></a>Synchronizace služby Azure AD Connect
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 * Opravili jsme problém, kdy se nedá vytvořit nové synchronizační pravidlo, pokud se nezadá atribut značky.
 * Opravili jsme problém, který způsobil Azure AD Connect připojení k místní službě AD za účelem synchronizace hesel pomocí protokolu NTLM, a to i v případě, že je protokol Kerberos k dispozici. K tomuto problému dochází, pokud místní topologie služby AD má jeden nebo více řadičů domény, které byly obnoveny ze zálohy.
 * Opravili jsme problém, který způsobil úplnou synchronizaci kroků po upgradu. Obecně platí, že po upgradu se po upgradu vyžadují spuštěné úplné synchronizace, pokud dojde ke změnám v dodaných pravidlech synchronizace. K tomuto problému došlo z důvodu chyby v logice detekce změn, která nesprávně zjistila změnu při výskytu výrazu pravidla synchronizace se znaky nového řádku. Znaky nového řádku jsou vloženy do výrazu pravidla synchronizace pro zlepšení čitelnosti.
@@ -722,7 +738,7 @@ Stav: září 05 2017
 * Přidala se podpora pro Microsoft Azure Government Cloud a Microsoft Cloud Německo.
 
 ### <a name="ad-fs-management"></a>Správa AD FS
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 * Rutina Initialize-ADSyncNGCKeysWriteBack v modulu AD PREP PowerShell nepoužívala nesprávné použití seznamů ACL pro kontejner registrace zařízení, a proto zdědí pouze existující oprávnění.  Tato aktualizace byla aktualizována, aby měl účet synchronizační služby správná oprávnění.
 
 #### <a name="new-features-and-improvements"></a>Nové funkce a vylepšení
@@ -731,7 +747,7 @@ Stav: září 05 2017
 * Během upgradu AAD Connect už neprovedeme upgrade, pokud se nepodaří aktualizovat vztah důvěryhodnosti služby ADFS AAD.  V takovém případě se uživateli zobrazí příslušná varovná zpráva a měla by pokračovat v resetování vztahu důvěryhodnosti prostřednictvím dodatečné úlohy AAD Connect.
 
 ### <a name="seamless-single-sign-on"></a>Bezproblémové jednotné přihlašování
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 * Opravili jsme problém, který způsobil, že Průvodce Azure AD Connect vrátit chybu, pokud se pokusíte povolit [bezproblémové jednotné přihlašování](how-to-connect-sso.md). Chybová zpráva je *"konfigurace ověřovacího agenta Microsoft Azure AD Connect se nezdařila."* Tento problém má vliv na stávající zákazníky, kteří ručně upgradovali verzi Preview ověřovacích agentů pro [předávací ověřování](how-to-connect-sso.md) na základě kroků popsaných v tomto [článku](how-to-connect-pta-upgrade-preview-authentication-agents.md).
 
 
@@ -844,7 +860,7 @@ Stav: červen 2017
 
 K tomuto problému dochází, když při spuštění Průvodce vždycky vyberete **možnost Synchronizovat všechny domény a organizační jednotky** .  K tomu dojde i v případě, že bylo filtrování na základě organizační jednotky dříve nakonfigurováno. Před uložením změn konfigurace připojení AAD se ujistěte, že **je vybraná možnost synchronizovat vybrané domény a organizační jednotky** , a ověřte, že jsou všechny organizační jednotky, které je potřeba synchronizovat, povolené znovu. V opačném případě bude filtrování na základě organizační jednotky zakázáno.
 
-#### <a name="fixed-issues"></a>Oprava potíží
+#### <a name="fixed-issues"></a>Opravené problémy
 
 * Opravili jsme problém se zpětným zápisem hesla, který správci Azure AD umožňuje resetovat heslo k místnímu uživatelskému účtu s oprávněním AD. K tomuto problému dochází, když Azure AD Connect k privilegovanému účtu udělili oprávnění k resetování hesla. Tento problém je řešený v této verzi Azure AD Connect tím, že neumožní správci Azure AD resetovat heslo libovolného místního privilegovaného uživatelského účtu, pokud správce není vlastníkem tohoto účtu. Další informace najdete v tématu [Security advisor 4033453](https://technet.microsoft.com/library/security/4033453).
 

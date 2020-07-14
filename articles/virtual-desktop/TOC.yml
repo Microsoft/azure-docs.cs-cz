@@ -23,7 +23,7 @@
     - name: Připojení k prostředkům Windows Virtual Desktop
       items:
         - name: Připojení s desktopovým klientem Windows
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: Připojení k webovému klientovi
           href: connect-web.md
         - name: Práce s klientem Android
@@ -38,6 +38,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: Nasazení virtuálního počítače s Windows 7
+          href: deploy-windows-7-virtual-machine.md
         - name: Nasazení hostitele relace na bázi GPU
           href: configure-vm-gpu.md
         - name: Rozšíření existujícího fondu hostitelů
@@ -90,6 +92,8 @@
       href: language-packs.md
 - name: Koncepty
   items:
+    - name: Seznam bezpečných adres URL
+      href: safe-url-list.md
     - name: Prostředí Windows Virtual Desktop
       href: environment-setup.md
     - name: Určení latence připojení uživatele

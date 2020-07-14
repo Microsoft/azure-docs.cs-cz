@@ -46,7 +46,7 @@ V tomto rychlém startu se dozvíte, jak používat Azure Portal k nahrání, k�
     * [Filtry](filters-concept.md)
 * Svůj obsah můžete chránit šifrováním pomocí standard AES (Advanced Encryption Standard) (AES-128) nebo/a kteréhokoliv ze tří hlavních systémů DRM: Microsoft PlayReady, Google Widevine a Apple FairPlay. [Šifrování obsahu pomocí Azure Portal](encrypt-content-quickstart.md) rychlý Start ukazuje, jak nakonfigurovat ochranu obsahu.
         
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

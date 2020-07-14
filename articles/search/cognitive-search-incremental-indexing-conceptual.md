@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: d4b36f00bad8c06c2f62794fa03a85120af79965
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3957884a8c559194c436487050f0dbc09acf0441
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557378"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232504"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Přírůstkové obohacení a ukládání do mezipaměti v Azure Kognitivní hledání
 
@@ -109,7 +109,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 Účelem mezipaměti je vyhnout se zbytečnému zpracování, ale Předpokládejme, že provedete změnu dovednosti, kterou indexer nedetekuje (například změna nějakého externího kódu, jako je třeba vlastní dovednost).
 
-V takovém případě můžete použít [dovednost obnovení](https://docs.microsoft.com/rest/api/searchservice/reset-skills) k vynucení přepracování konkrétní dovednosti, včetně všech dovedností, které jsou závislé na výstupu této dovednosti. Toto rozhraní API přijme požadavek POST se seznamem dovedností, které by měly být neověřené a označené k novému zpracování. Po resetování dovedností spusťte indexer k vyvolání kanálu.
+V takovém případě můžete použít [dovednost obnovení](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) k vynucení přepracování konkrétní dovednosti, včetně všech dovedností, které jsou závislé na výstupu této dovednosti. Toto rozhraní API přijme požadavek POST se seznamem dovedností, které by měly být neověřené a označené k novému zpracování. Po resetování dovedností spusťte indexer k vyvolání kanálu.
 
 ## <a name="change-detection"></a>Zjišťování změn
 
@@ -148,17 +148,17 @@ Přírůstkové zpracování vyhodnocuje vaši definici dovednosti a určuje, kt
 * Změny v projekcích ve znalostní bázi Store mají za následek reprojekci dokumentů.
 * Mapování polí výstupu změněné u indexeru má za následek reprodukci dokumentů do indexu.
 
-## <a name="api-reference"></a>API – referenční informace
+## <a name="api-reference"></a>referenční dokumentace k rozhraní API
 
 REST API verze `2020-06-30-Preview` poskytuje přírůstkové rozšíření prostřednictvím dalších vlastností indexerů. Dovednosti a zdroje dat můžou používat všeobecně dostupnou verzi. Kromě referenční dokumentace najdete další informace o volání rozhraní API v tématu [Konfigurace ukládání do mezipaměti pro přírůstkové obohacení](search-howto-incremental-index.md) .
 
-+ [Vytvoření indexeru (API-Version = 2020-06 -30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
++ [Vytvoření indexeru (API-Version = 2020-06 -30-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
 
-+ [Aktualizace indexeru (API-Version = 2020-06 -30-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
++ [Aktualizace indexeru (API-Version = 2020-06 -30-Preview)](https://docs.microsoft.com/rest/api/searchservice/update-indexer) 
 
 + [Update dovednosti (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (nový parametr URI na žádosti)
 
-+ [Resetování dovedností (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/reset-skills)
++ [Resetování dovedností (API-Version = 2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)
 
 + Indexery databází (Azure SQL, Cosmos DB). Některé indexery načítají data prostřednictvím dotazů. U dotazů, které načítají data, [aktualizuje zdroj dat](https://docs.microsoft.com/rest/api/searchservice/update-data-source) v žádosti **ignoreResetRequirement**nový parametr, který by měl být nastaven na hodnotu, `true` Pokud by vaše akce aktualizace neměla mít za následek zrušení platnosti mezipaměti. 
 

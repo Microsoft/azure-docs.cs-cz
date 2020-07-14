@@ -50,14 +50,14 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 |Název|Popis|Vyžadováno|
 |----------|-----------------|--------------|
-|ověřování – základní|Kořenový element.|Yes|
+|ověřování – základní|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
 |Název|Popis|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|username|Určuje uživatelské jméno základního přihlašovacího údaje.|Yes|Nelze použít|
-|heslo|Určuje heslo základního přihlašovacího údaje.|Yes|Nelze použít|
+|username|Určuje uživatelské jméno základního přihlašovacího údaje.|Ano|Nelze použít|
+|heslo|Určuje heslo základního přihlašovacího údaje.|Ano|Nelze použít|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.
@@ -99,7 +99,7 @@ V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačte
   
 |Název|Popis|Vyžadováno|  
 |----------|-----------------|--------------|  
-|ověřování – certifikát|Kořenový element.|Yes|  
+|ověřování – certifikát|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
@@ -107,7 +107,7 @@ V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačte
 |----------|-----------------|--------------|-------------|  
 |kryptografický|Kryptografický otisk pro klientský certifikát|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Nelze použít|
 |ID certifikátu|Název prostředku certifikátu.|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Nelze použít|
-|text|Certifikát klienta jako bajtové pole.|No|Nelze použít|
+|text|Certifikát klienta jako bajtové pole.|Ne|Nelze použít|
 |heslo|Heslo pro klientský certifikát.|Používá se, pokud je certifikát určený v nástroji `body` chráněný heslem.|Nelze použít|
   
 ### <a name="usage"></a>Využití  
@@ -176,16 +176,16 @@ K vyžádání tokenu se dá použít jak identita přiřazená systémem, tak i
   
 |Název|Popis|Vyžadováno|  
 |----------|-----------------|--------------|  
-|ověřování – spravovaná identita |Kořenový element.|Yes|  
+|ověřování – spravovaná identita |Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
 |Název|Popis|Vyžadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Yes|Nelze použít|
-|ID klienta|Řetězec. ID aplikace identity přiřazené uživatelem v Azure Active Directory.|No|Identita přiřazená systémem|
-|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |No|Nelze použít|  
-|ignorovat – chyba|Datového. Pokud se nastaví na `true` , kanál zásad se bude dál spouštět i v případě, že se přístupový token nezíská.|No|false (nepravda)|  
+|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Ano|Nelze použít|
+|ID klienta|Řetězec. ID aplikace identity přiřazené uživatelem v Azure Active Directory.|Ne|Identita přiřazená systémem|
+|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |Ne|Nelze použít|  
+|ignorovat – chyba|Datového. Pokud se nastaví na `true` , kanál zásad se bude dál spouštět i v případě, že se přístupový token nezíská.|Ne|false (nepravda)|  
   
 ### <a name="usage"></a>Využití  
  Tyto zásady se dají použít v následujících [oddílech](./api-management-howto-policies.md#sections) a [oborech](./api-management-howto-policies.md#scopes)zásad.  

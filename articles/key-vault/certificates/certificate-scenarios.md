@@ -9,11 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765093"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224855"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
@@ -79,6 +80,9 @@ Poznámka: Tento proces, prostřednictvím kroku 3,1, je operace jednorázová.
 [Získat operaci certifikátu](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Stav: dokončeno, selhalo s informacemi o chybě nebo bylo zrušeno.  
       -   Kvůli prodlevě, která se má vytvořit, se dá iniciovat operace zrušení. Zrušení může nebo nemusí být účinné.  
+
+### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Zásady zabezpečení a přístupu k síti spojené s integrovanou certifikační autoritou
+Služba Key Vault odesílá požadavky do certifikační autority (odchozí provoz). Proto je plně kompatibilní s povolenými trezory klíčů brány firewall. Key Vault nesdílí zásady přístupu k certifikační autoritě. CA musí být nakonfigurovaná tak, aby přijímala požadavky na podpis nezávisle. [Průvodce integrací důvěryhodné certifikační autority](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
 
 ## <a name="import-a-certificate"></a>Import certifikátu  
  Alternativně – certifikát lze importovat do Key Vault – PFX nebo PEM.  

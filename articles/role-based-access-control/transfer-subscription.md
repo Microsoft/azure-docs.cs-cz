@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: f169cf45702d4a5051f9f6908b77c645c7a0018f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042386"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230838"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Přenos předplatného Azure do jiného adresáře Azure AD (Preview)
 
@@ -66,19 +66,19 @@ Několik prostředků Azure má závislost na předplatném nebo adresáři. V z
 
 | Služba nebo prostředek | Ovlivněné | Obnovitelné | Máte vliv na to? | Co můžete dělat |
 | --------- | --------- | --------- | --------- | --------- |
-| Přiřazení rolí | Ano | Yes | [Zobrazení seznamu přiřazení rolí](#save-all-role-assignments) | Všechna přiřazení rolí se trvale odstraní. Je nutné mapovat uživatele, skupiny a instanční objekty k odpovídajícím objektům v cílovém adresáři. Je nutné znovu vytvořit přiřazení rolí. |
-| Vlastní role | Ano | Yes | [Výpis vlastních rolí](#save-custom-roles) | Všechny vlastní role se trvale odstraní. Je nutné znovu vytvořit vlastní role a jakékoli přiřazení rolí. |
-| Spravované identity přiřazené systémem | Ano | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
-| Spravované identity přiřazené uživatelem | Ano | Yes | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
-| Azure Key Vault | Ano | Yes | [Seznam Key Vault zásad přístupu](#list-other-known-resources) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
-| Databáze SQL Azure s ověřováním Azure AD | Yes | No | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-other-known-resources) |  |  |
-| Azure Storage a Azure Data Lake Storage Gen2 | Ano | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Přiřazení rolí | Ano | Ano | [Zobrazení seznamu přiřazení rolí](#save-all-role-assignments) | Všechna přiřazení rolí se trvale odstraní. Je nutné mapovat uživatele, skupiny a instanční objekty k odpovídajícím objektům v cílovém adresáři. Je nutné znovu vytvořit přiřazení rolí. |
+| Vlastní role | Ano | Ano | [Výpis vlastních rolí](#save-custom-roles) | Všechny vlastní role se trvale odstraní. Je nutné znovu vytvořit vlastní role a jakékoli přiřazení rolí. |
+| Spravované identity přiřazené systémem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Je nutné zakázat a znovu povolit spravované identity. Je nutné znovu vytvořit přiřazení rolí. |
+| Spravované identity přiřazené uživatelem | Ano | Ano | [Výpis spravovaných identit](#list-role-assignments-for-managed-identities) | Spravované identity musíte odstranit, znovu vytvořit a připojit k příslušnému prostředku. Je nutné znovu vytvořit přiřazení rolí. |
+| Azure Key Vault | Ano | Ano | [Seznam Key Vault zásad přístupu](#list-other-known-resources) | Je nutné aktualizovat ID tenanta přidruženého k trezorům klíčů. Je nutné odebrat a přidat nové zásady přístupu. |
+| Databáze SQL Azure s ověřováním Azure AD | Ano | Ne | [Ověření databází Azure SQL pomocí ověřování Azure AD](#list-other-known-resources) |  |  |
+| Azure Storage a Azure Data Lake Storage Gen2 | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
 | Azure Data Lake Storage Gen1 | Ano |  |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Soubory Azure | Ano | Yes |  | Je nutné znovu vytvořit všechny seznamy ACL. |
-| Synchronizace souborů Azure | Ano | Yes |  |  |
-| Spravované disky Azure | Yes | Není k dispozici |  |  |
-| Azure Container Services pro Kubernetes | Ano | Yes |  |  |
-| Azure Active Directory Domain Services | Yes | No |  |  |
+| Azure Files | Ano | Ano |  | Je nutné znovu vytvořit všechny seznamy ACL. |
+| Synchronizace souborů Azure | Ano | Ano |  |  |
+| Spravované disky Azure | Ano | Nelze použít |  |  |
+| Azure Container Services pro Kubernetes | Ano | Ano |  |  |
+| Azure Active Directory Domain Services | Ano | Ne |  |  |
 | Registrace aplikací | Ano | Ano |  |  |
 
 Pokud používáte šifrování v klidovém umístění pro určitý prostředek, jako je například účet úložiště nebo databáze SQL, která má závislost na trezoru klíčů, který není ve stejném předplatném, které se přenáší, může vést k neodstranitelné situaci. Pokud máte tuto situaci, měli byste podniknout kroky k použití jiného trezoru klíčů nebo k dočasnému zakázání klíčů spravovaných zákazníkem, abyste se vyhnuli tomuto neopravitelnému scénáři.
@@ -189,7 +189,7 @@ Spravované identity se při přenosu předplatného do jiného adresáře neakt
 
 1. Projděte si [seznam služeb Azure, které podporují spravované identity,](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) abyste si poznamenali, kde možná používáte spravované identity.
 
-1. Pomocí příkaz [AZ AD SP list](/azure/ad/sp#az-ad-sp-list) můžete zobrazit seznam spravovaných identit přiřazených systémem a uživatelem.
+1. Pomocí příkaz [AZ AD SP list](/cli/azure/identity?view=azure-cli-latest#az-identity-list) můžete zobrazit seznam spravovaných identit přiřazených systémem a uživatelem.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
@@ -289,7 +289,7 @@ V tomto kroku převedete vlastnictví fakturace předplatného ze zdrojového ad
     az account set --subscription "Contoso"
     ```
 
-### <a name="create-custom-roles"></a>Vytvoření vlastních rolí
+### <a name="create-custom-roles"></a>Vytváření vlastních rolí
         
 - Pomocí [AZ role definition Create vytvořte](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) vytvořte jednotlivé vlastní role ze souborů, které jste vytvořili dříve. Další informace najdete v tématu [Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí Azure CLI](custom-roles-cli.md).
 

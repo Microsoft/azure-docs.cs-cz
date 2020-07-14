@@ -26,7 +26,7 @@ Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím spr�
 
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto článku předpokládáme, že jste už tenanta vytvořili. Pokud ne, začněte tím, že si přečtete, [Jak získat klienta Azure Active Directory][active-directory-howto-tenant].
 
 Abychom zjednodušili některé kroky týkající se konfigurace služby Azure AD pomocí Service Fabricho clusteru, vytvořili jsme sadu skriptů prostředí Windows PowerShell.
