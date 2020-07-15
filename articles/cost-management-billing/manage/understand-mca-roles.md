@@ -6,18 +6,18 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84702597"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207211"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Vysvětlení rolí pro správu smluv se zákazníky Microsoftu v Azure
 
 Při správě fakturačního účtu smlouvy se zákazníkem Microsoftu používejte role popsané v následujících částech. Tyto role existují vedle předdefinovaných rolí, které v Azure slouží k řízení přístupu k prostředkům. Další informace najdete v tématu [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 
-Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Microsoftu. Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu.
+Tento článek se týká fakturačního účtu smlouvy se zákazníky Microsoftu. Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu.
 
 ## <a name="billing-role-definitions"></a>Definice fakturačních rolí
 
@@ -141,12 +141,12 @@ Následující tabulky ukazují, jakou roli potřebujete k různým úkonům v k
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>Správa oprávnění a vlastností oddílů faktur
 
-|Úlohy|Vlastník oddílu faktur|Přispěvatel oddílu faktur|Čtenář oddílu faktur|Tvůrce předplatného Azure|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu | |
-|---|---|---|---|---|---|---|---|---|
-|Zobrazení všech oprávnění k oddílu faktury|✔|✔|✔|✔|✔|✔|✔| |
-|Udělování oprávnění k zobrazení a správě oddílu faktury ostatním|✔|✘|✘|✘|✘|✘|✘| |
-|Zobrazení vlastností oddílu faktury|✔|✔|✔|✔|✔|✔|✔| |
-|Aktualizace vlastností oddílu faktury|✔|✔|✘|✘|✘|✘|✘|✘|
+|Úlohy|Vlastník oddílu faktur|Přispěvatel oddílu faktur|Čtenář oddílu faktur|Tvůrce předplatného Azure|Vlastník fakturačního účtu|Přispěvatel fakturačního účtu|Čtenář fakturačního účtu |
+|---|---|---|---|---|---|---|---|
+|Zobrazení všech oprávnění k oddílu faktury|✔|✔|✔|✔|✔|✔|✔|
+|Udělování oprávnění k zobrazení a správě oddílu faktury ostatním|✔|✘|✘|✘|✘|✘|✘|
+|Zobrazení vlastností oddílu faktury|✔|✔|✔|✔|✔|✔|✔|
+|Aktualizace vlastností oddílu faktury|✔|✔|✘|✘|✘|✘|✘|
 
 ### <a name="manage-products-for-invoice-section"></a>Správa produktů souvisejících s oddílem faktury
 
@@ -178,7 +178,7 @@ Následující tabulka ukazuje, jakou roli potřebujete k různým úkonům v ko
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte položku **Správa nákladů a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
    ![Snímek obrazovky znázorňující hledání na webu Azure Portal](./media/understand-mca-roles/billing-search-cost-management-billing.png)
 
@@ -196,7 +196,7 @@ Následující tabulka ukazuje, jakou roli potřebujete k různým úkonům v ko
 
    ![Snímek obrazovky, který znázorňuje odebrání správce z fakturačního účtu](./media/understand-mca-roles/billing-remove-admin.png)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Ověření přístupu ke smlouvě se zákazníkem Microsoftu
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu k zákaznické smlouvě Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
