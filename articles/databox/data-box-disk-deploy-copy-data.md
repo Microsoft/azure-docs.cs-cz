@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214322"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231535"
 ---
 ::: zone target="docs"
 
@@ -111,7 +111,7 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
     |/NFL                | Určuje, že se nemají protokolovat názvy souborů.        |
     |/NDL                | Určuje, že se nemají protokolovat názvy adresářů.        |
     |/FFT                | Přebírá časy systému souborů FAT (s přesností na 2 sekundy).        |
-    |/Log:\<soubor_protokolu>     | Zapíše výstup stavu do souboru protokolu (přepíše existující soubor protokolu).         |
+    |/Log:\<Log File>     | Zapíše výstup stavu do souboru protokolu (přepíše existující soubor protokolu).         |
 
     Je možné použít více disků současně a na každém disku může běžet několik úloh.
 
@@ -273,7 +273,7 @@ Po dokončení kopírování dat můžete přejít k jejich ověření. Pokud js
 
 Pokud jste ke kopírování dat nepoužili nástroj Split Copy, budete svá data muset ověřit. Data ověříte následujícím postupem.
 
-1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce.
+1. Spusťte soubor `DataBoxDiskValidation.cmd` pro ověření kontrolního součtu ve složce *DataBoxDiskImport* na jednotce. Tato možnost je k dispozici jenom pro prostředí Windows. Uživatelé Linuxu musí ověřit, že zdrojová data, která se kopírují na disk, splňují příslušné [požadavky](https://docs.microsoft.com/azure/databox/data-box-disk-limits).
     
     ![Výstup ověřovacího nástroje Data Box Disku](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

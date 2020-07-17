@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 04343f684539307957cd635822ba1ba5a1ce24c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313769"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201082"
 ---
-# <a name="get-started-with-azure-data-box"></a>Začínáme s Azure Data Boxem 
+# <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Začínáme s Azure Data Boxem pro import dat do Azure
 
 ::: zone target="docs"
 
-Tento rychlý start popisuje, jak nasadit Azure Data Box pomocí webu Azure Portal. V tomto postupu najdete informace o zapojení, konfiguraci a kopírování dat do Data Boxu, aby se data nahrála do služby Azure. Rychlý start se provádí na webu Azure Portal a přes místní webové uživatelské rozhraní zařízení.
+Tento rychlý start popisuje, jak nasadit Azure Data Box pomocí webu Azure Portal pro objednávku importu. V tomto postupu najdete informace o zapojení, konfiguraci a kopírování dat do Data Boxu, aby se data nahrála do služby Azure. Kroky rychlého startu se provádějí na webu Azure Portal a přes místní webové uživatelské rozhraní zařízení.
 
 Podrobné pokyny k nasazení a sledování najdete v článku [Kurz: Objednání Azure Data Boxu](data-box-deploy-ordered.md).
 
@@ -28,7 +28,7 @@ Podrobné pokyny k nasazení a sledování najdete v článku [Kurz: Objednání
 
 ::: zone target="chromeless"
 
-Tato příručka popisuje, jak nasadit Azure Data Box pomocí webu Azure Portal. Tento postup zahrnuje kontrolu požadavků, zapojení kabeláže a připojení zařízení a zkopírování dat do zařízení, aby se nahrála do Azure.
+Tato příručka popisuje, jak nasadit Azure Data Box pro import pomocí webu Azure Portal. Tento postup zahrnuje kontrolu požadavků, zapojení kabeláže a připojení zařízení a zkopírování dat do zařízení, aby se nahrála do Azure.
 
 ::: zone-end
 

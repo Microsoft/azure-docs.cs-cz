@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 850144e4835b43e219fa059bbc1c92bb3ef412f4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c74b5ba5101dae9165898aeb4f265d449988ecab
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200500"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205242"
 ---
 ::: zone target="docs"
 
-# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení kabeláže a připojení k Azure Data Boxu
+# <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení kabeláže a připojení Azure Data Boxu
 
 ::: zone-end
 
@@ -38,24 +38,26 @@ V tomto kurzu se naučíte:
 > * Zapojení kabeláže Data Boxu
 > * Připojení k Data Boxu
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [Kurz: Objednání Azure Data Boxu](data-box-deploy-ordered.md).
-2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**. 
+1. Zadali jste objednávku Azure Data Boxu.
+    - V případě objednávky importu si projděte [Kurz: Objednání Azure Data Boxu](data-box-deploy-ordered.md).
+    - V případě objednávky exportu si projděte [Kurz: Objednání Azure Data Boxu](data-box-deploy-export-ordered.md).
+1. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**. 
     - V průhledném pouzdře připevněném k zařízení pod elektrickým kabelem najdete expediční štítek. Tento štítek bezpečně uschovejte, protože ho budete potřebovat pro zpáteční zásilku.
     - V některých oblastech Evropy může zařízení přijít zabalené v krabici. Nezapomeňte zařízení rozbalit a krabici si uschovejte pro zpáteční zásilku.
-3. Prostudovali jste si [bezpečnostní pokyny k Data Boxu](data-box-safety.md).
-4. Obdrželi jste jeden uzemněný napájecí kabel pro použití s 100TB úložným zařízením.
-5. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
+1. Prostudovali jste si [bezpečnostní pokyny k Data Boxu](data-box-safety.md).
+1. Obdrželi jste jeden uzemněný napájecí kabel pro použití s 100TB úložným zařízením.
+1. Máte hostitelský počítač, který se používá ke kopírování dat do (objednávka importu) nebo z (objednávka exportu) Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-system-requirements.md).
     - Musí být připojený k vysokorychlostní síti. Důrazně doporučujeme, abyste měli připojení minimálně 10 GbE. Pokud nemáte připojení 10 GbE, je možné použít datové propojení 1 GbE, což ale bude mít vliv na rychlosti kopírování. 
-6. Data Box je potřeba umístit na rovnou plochu. Pokud chcete zařízení umístit na standardní polici v racku, potřebujete v racku datového centra slot 7U. Zařízení můžete v racku umístit na plocho nebo na výšku.
-7. Pro připojení Data Boxu k hostitelském počítači je potřeba pořídit následující kabely.
+1. Data Box je potřeba umístit na rovnou plochu. Pokud chcete zařízení umístit na standardní polici v racku, potřebujete v racku datového centra slot 7U. Zařízení můžete v racku umístit na plocho nebo na výšku.
+1. Pro připojení Data Boxu k hostitelském počítači je potřeba pořídit následující kabely.
     - Alespoň jeden měděný kabel 10 GbE SFP+ Twinax nebo optický kabel SFP+ (pro síťová rozhraní DATA 1, DATA 2). Data Box obsahuje síťové rozhraní Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0, takže kabely kompatibilní s tímto rozhraním by měly fungovat. Například při interním testování jsme použili kabel CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M. Další informace najdete v [seznamu podporovaných kabelů a přepínačů od společnosti Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
-    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 GB/s a 1 GB/s v tomto pořadí)
+    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
 
 ## <a name="cable-your-device"></a>Zapojení kabeláže zařízení
 
@@ -91,7 +93,7 @@ Jakmile zařízení obdržíte, je potřeba zapojit jeho kabeláž a připojit s
     - Uzemněný napájecí kabel 10 A nebo více s konektorem IEC60320 C-13 na jednom konci pro připojení k zařízení.
     - Jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní MGMT)
     - Dva měděné kabely 10 GbE SFP+ Twinax (pro síťová rozhraní DATA 1, DATA 2 10 Gb/s)
-    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 GB/s a 1 GB/s v tomto pořadí)
+    - Jeden síťový kabel RJ-45 kategorie 6A NEBO jeden síťový kabel RJ-45 kategorie 6 (pro síťové rozhraní DATA 3 konfigurované jako 10 Gb/s a 1 Gb/s v tomto pořadí)
 
 3. Zařízení vyjměte a položte na rovnou plochu. 
     
@@ -120,7 +122,7 @@ Pomocí následujícího postupu nastavte své zařízení s využitím místní
    ![Připojení k místnímu webovému uživatelskému rozhraní](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
 
 4. Zobrazí se **přihlašovací** stránka místního webového uživatelského rozhraní. Ujistěte se, že je sériové číslo zařízení stejné v uživatelském rozhraní portálu i v místním webovém uživatelském rozhraní. V tuto chvíli je zařízení uzamčené.
-5. Přihlaste se k [Azure Portal](https://portal.azure.com).
+5. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 6. Stáhněte si z portálu přihlašovací údaje zařízení. Přejděte na **Obecné > Podrobnosti zařízení**. Zkopírujte si **Heslo zařízení**. Heslo zařízení se na portálu váže ke konkrétní objednávce. 
 
     ![Získání přihlašovacích údajů zařízení](media/data-box-deploy-set-up/data-box-device-credentials.png)
@@ -135,7 +137,7 @@ Pomocí následujícího postupu nastavte své zařízení s využitím místní
 
 Jakmile budou nakonfigurovaná datová síťová rozhraní, můžete k získání přístupu k místnímu webovému uživatelskému rozhraní na adrese `https://<IP address of a data network interface>` použít také IP adresu libovolného rozhraní DATA 1 až DATA 3. 
 
-Po dokončení nastavení zařízení se můžete připojit ke sdíleným složkám zařízení a zkopírovat do zařízení data z vašeho počítače. 
+Po dokončení nastavení zařízení se můžete připojit ke sdíleným složkám zařízení a zkopírovat do zařízení data. 
 
 ::: zone-end
 
@@ -143,7 +145,7 @@ Po dokončení nastavení zařízení se můžete připojit ke sdíleným složk
 
 ## <a name="connect-your-device"></a>Připojení zařízení
 
-1. Pokud chcete získat heslo zařízení, přejděte na webu **Azure Portal** na [Obecné > Podrobnosti o zařízení](https://portal.azure.com).
+1. Pokud chcete získat heslo zařízení, přejděte na webu [Azure Portal](https://portal.azure.com) na **Obecné > Podrobnosti o zařízení**.
 2. Na adaptéru sítě Ethernet na počítači, pomocí kterého se připojujete k Data Boxu, nakonfigurujte statickou IP adresu 192.168.100.5 a podsíť 255.255.255.0. Přejděte do místního webového uživatelského rozhraní zařízení na adrese `https://192.168.100.10`. Připojení zařízení po zapnutí může trvat až 5 minut. 
 3. Přihlaste se pomocí hesla z webu Azure Portal. Zobrazí se vám chyba s informacemi k potížím s certifikátem zabezpečení webu. Postupujte podle pokynů pro konkrétní prohlížeč a přejděte tak na webovou stránku.
 4. Standardně je pro nastavení sítě pro datové rozhraní 10 Gb/s (nebo 1 Gb/s) nakonfigurovaný protokol DHCP. V případě potřeby můžete toto rozhraní nakonfigurovat jako statické a zadat IP adresu. 
@@ -161,10 +163,15 @@ V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data 
 > * Zapojení kabeláže Data Boxu
 > * Připojení k Data Boxu
 
-V dalším kurzu se dozvíte, jak do Data Boxu zkopírovat data.
+V dalším kurzu se dozvíte, jak zkopírovat data.
 
 > [!div class="nextstepaction"]
-> [Kopírování dat do Azure Data Boxu](./data-box-deploy-copy-data.md)
+> [Kopírování dat do Azure Data Boxu pro objednávku importu](./data-box-deploy-copy-data.md)
+
+Nebo
+
+> [!div class="nextstepaction"]
+> [Kopírování dat do Azure Data Boxu pro objednávku exportu](./data-box-deploy-export-copy-data.md)
 
 ::: zone-end
 
