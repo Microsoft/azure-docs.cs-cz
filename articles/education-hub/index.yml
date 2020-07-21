@@ -1,0 +1,47 @@
+### YamlMime:Landing
+title: Dokumentace k Centru Education pro Azure
+summary: Prostřednictvím Centra Education můžete studentům rychle a snadno poskytnout veškerý nezbytný software, výuku a služby Azure, které potřebují k získání cloudových dovedností.
+metadata:
+  title: Dokumentace k Centru Education pro Azure
+  description: Prostřednictvím Centra Education můžete studentům rychle a snadno poskytnout veškerý nezbytný software, výuku a služby Azure, které potřebují k získání cloudových dovedností.
+  ms.service: azure-education .
+  ms.subservice: education-hub
+  ms.topic: landing-page
+  author: tfosmark
+  ms.author: rymend
+  ms.date: 07/14/2020
+  ms.openlocfilehash: be96b241c3ca784043ac3203fd1cb100b05178b8
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86540399"
+landingContent:
+- title: Centrum Education
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informace o Centru Education
+      url: about-education-hub.md
+  - linkListType: quickstart
+    links:
+    - text: Použití Centra Education
+      url: access-education-hub.md
+- title: Azure Dev Tools for Teaching
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure Dev Tools for Teaching?
+      url: ./azure-dev-tools-teaching/about-program.md
+  - linkListType: tutorial
+    links:
+    - text: Registrace v programu Azure Dev Tools for Teaching
+      url: ./azure-dev-tools-teaching/enroll-renew-subscription.md
+    - text: Nastavení přístupu
+      url: ./azure-dev-tools-teaching/set-up-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Postup při správě studentů
+      url: ./azure-dev-tools-teaching/manage-students.md
+    - text: Postup při stahování softwaru
+      url: ./azure-dev-tools-teaching/download-software.md

@@ -194,7 +194,7 @@
               href: job-error-codes.md
     - name: Vysoká dostupnost
       items:
-        - name: Kódování
+        - name: Video na vyžádání
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
         - name: Streamování

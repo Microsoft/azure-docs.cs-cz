@@ -31,7 +31,7 @@ Vlastnost NetworkAccessPolicy můžete nastavit tak, aby `DenyAll` nedocházelo 
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete používat privátní koncové body pro export a import spravovaných disků, musíte mít ve svém předplatném povolenou funkci. Pokud chcete mdprivatelinks@microsoft funkci povolit pro vaše předplatná, odešlete e-mail na adresu. com s ID předplatného.
 
