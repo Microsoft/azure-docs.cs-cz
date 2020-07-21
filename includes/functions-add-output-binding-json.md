@@ -6,6 +6,7 @@ ms.date: 09/23/2019
 ms.author: glenga
 ms.openlocfilehash: 8530f4469a0c25f3c32e652e2b0752c51c28ff3f
 ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "78191008"
@@ -14,7 +15,7 @@ Atributy vazby jsou definovány přímo v function.jsv souboru. V závislosti na
 
 Vazbu vytvoříte tak, že kliknete pravým tlačítkem (CTRL + kliknete na macOS) do `function.json` souboru ve složce HttpTrigger a kliknete na **Přidat vazbu...**. Podle pokynů definujte následující vlastnosti vazby pro novou vazbu:
 
-| Výzva | Hodnota | Description |
+| Výzva | Hodnota | Popis |
 | -------- | ----- | ----------- |
 | **Vybrat směr vazby** | `out` | Vazba je výstupní vazba. |
 | **Vyberte vazbu se směrováním...** | `Azure Queue Storage` | Vazba je vazba fronty Azure Storage. |

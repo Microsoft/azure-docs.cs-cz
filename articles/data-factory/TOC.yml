@@ -23,7 +23,8 @@
       href: quickstart-create-data-factory-python.md
     - name: Vytvoření datové továrny – REST
       href: quickstart-create-data-factory-rest-api.md
-    - name: Vytvoření datové továrny – šablona Resource Manageru
+    - name: Vytvoření datové továrny – šablona ARM
+      displayName: Resource Manager
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Zabezpečení – povolení šifrování klíčů spravovaných zákazníkem
       href: enable-customer-managed-key.md
@@ -98,6 +99,8 @@
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: Nové soubory podle názvu souboru
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+        - name: Sestavení kanálu pro kopírování s využitím spravované virtuální sítě a privátních koncových bodů
+          href: tutorial-copy-data-portal-private.md
     - name: Transformace dat
       items:
         - name: Transformace dat s využitím toků dat mapování
@@ -126,6 +129,8 @@
                   href: tutorial-transform-data-hive-virtual-network-portal.md
                 - name: Azure PowerShell
                   href: tutorial-transform-data-hive-virtual-network.md
+        - name: Sestavení kanálu pro mapování toku dat s využitím spravované virtuální sítě a privátních koncových bodů
+          href: tutorial-data-flow-private.md
     - name: Tok řízení
       items:
         - name: Uživatelské rozhraní
@@ -162,6 +167,8 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Prostředí Integration Runtime
       href: concepts-integration-runtime.md
+    - name: Spravované virtuální sítě
+      href: managed-virtual-network-private-endpoint.md
     - name: Zabezpečení
       items:
         - name: Standardní hodnoty zabezpečení
@@ -408,6 +415,8 @@
           href: connector-web-table.md
         - name: Xero
           href: connector-xero.md
+        - name: Formát XML
+          href: format-xml.md
         - name: Zoho
           href: connector-zoho.md
     - name: Přesun dat
@@ -469,12 +478,12 @@
           href: transform-data-using-spark.md
         - name: Aktivita Streamování služby HDInsight
           href: transform-data-using-hadoop-streaming.md
-        - name: Aktivita Provedení dávky služby Machine Learning
-          href: transform-data-using-machine-learning.md
-        - name: Aktivita aktualizace prostředku služby Machine Learning
-          href: update-machine-learning-models.md
         - name: Aktivita kanálu spuštění služby Machine Learning
           href: transform-data-machine-learning-service.md
+        - name: Aktivita Provedení dávky služby Machine Learning Studio (classic)
+          href: transform-data-using-machine-learning.md
+        - name: Aktivita Aktualizace prostředků služby Machine Learning Studio (classic)
+          href: update-machine-learning-models.md
         - name: Aktivita Uložená procedura
           href: transform-data-using-stored-procedure.md
         - name: Propojené služby Compute
@@ -681,7 +690,7 @@
               href: how-to-fixed-width.md
             - name: Zpracování chybového řádku
               href: how-to-data-flow-error-rows.md
-            - name: Azure SQL DB na CosmosDB
+            - name: Azure SQL DB do Azure Cosmos DB
               href: how-to-sqldb-to-cosmosdb.md
         - name: Migrace SSIS z místního prostředí
           items:

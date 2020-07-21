@@ -1,6 +1,7 @@
 - name: Dokumentace ke službě Security Center
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Informace o službě Security Center
       href: security-center-intro.md
@@ -18,8 +19,11 @@
       href: recommendations-reference.md
     - name: Výstrahy zabezpečení a model Kill Chain
       href: alerts-reference.md
+    - name: Oprávnění
+      href: security-center-permissions.md
+    - name: Ceny
+      href: security-center-pricing.md
 - name: Rychlé starty
-  expanded: true
   items:
     - name: Předplatná Azure
       href: security-center-get-started.md
@@ -29,6 +33,12 @@
       href: quick-onboard-linux-computer.md
     - name: Virtuální počítače Azure Stack
       href: quick-onboard-azure-stack.md
+    - name: Automatizace onboardingu pomocí PowerShellu
+      href: security-center-powershell-onboarding.md
+    - name: Konfigurace shromažďování dat
+      href: security-center-enable-data-collection.md
+    - name: Nastavení e-mailových oznámení
+      href: security-center-provide-security-contact-details.md
 - name: Kurzy
   items:
     - name: Průvodce plánováním a provozem
@@ -39,21 +49,36 @@
       href: tutorial-security-incident.md
     - name: Vylepšené dodržování legislativních předpisů
       href: security-center-compliance-dashboard.md
-- name: ukázky
-  items:
-    - name: Integrované služby Azure Policy
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Koncepty
   items:
-    - name: Bezpečnostní skóre
-      href: secure-score-security-controls.md
-    - name: Oprávnění
-      href: security-center-permissions.md
+    - name: 'Skóre zabezpečení, doporučení a zásady'
+      items:
+        - name: Bezpečnostní skóre
+          href: secure-score-security-controls.md
+        - name: Přehled doporučení k zabezpečení
+          href: security-center-recommendations.md
+        - name: Přehled zásad zabezpečení
+          href: tutorial-security-policy.md
+        - name: Předdefinované zásady zabezpečení
+          href: security-center-policy-definitions.md
+        - name: Použití doporučení k vylepšení zabezpečení
+          href: security-center-using-recommendations.md
+    - name: Ochrana před hrozbami a výstrahy zabezpečení
+      items:
+        - name: Přehled ochrany před hrozbami ve službě Security Center
+          href: threat-protection.md
+        - name: Přehled výstrah zabezpečení
+          href: security-center-alerts-overview.md
+        - name: Referenční seznam výstrah
+          href: alerts-reference.md
+        - name: Schémata výstrah
+          href: alerts-schemas.md
+        - name: Přehled incidentů zabezpečení
+          href: security-center-alerts-cloud-smart.md
     - name: Zabezpečení dat
       href: security-center-data-security.md
-    - name: Použití doporučení k vylepšení zabezpečení
-      href: security-center-using-recommendations.md
+    - name: Přístup k virtuálnímu počítači za běhu
+      href: just-in-time-explained.md
     - name: Správa napříč tenanty
       href: security-center-cross-tenant-management.md
     - name: Zabezpečení kontejneru
@@ -64,32 +89,18 @@
           href: azure-container-registry-integration.md
         - name: Integrace se službou Azure Kubernetes Service
           href: azure-kubernetes-service-integration.md
-    - name: Ochrana před hrozbami a výstrahy zabezpečení
-      items:
-        - name: Ochrana před hrozbami v Azure Security Center
-          href: threat-protection.md
-        - name: Přehled výstrah zabezpečení
-          href: security-center-alerts-overview.md
-        - name: Referenční seznam výstrah
-          href: alerts-reference.md
-        - name: Schémata výstrah
-          href: alerts-schemas.md
-        - name: Správa výstrah zabezpečení
-          href: security-center-managing-and-responding-alerts.md
-        - name: Pravidla potlačení pro výstrahy zabezpečení
-          href: alerts-suppression-rules.md
-        - name: Správa incidentů zabezpečení
-          href: security-center-incident.md
-        - name: Korelace inteligentních výstrah v cloudu (incidenty)
-          href: security-center-alerts-cloud-smart.md
-        - name: Sestavy hrozeb
-          href: security-center-threat-report.md
-        - name: Ověřování výstrah (testovací soubor EICAR)
-          href: security-center-alert-validation.md
 - name: Návody
   items:
     - name: Upgrade na pokročilé zabezpečení
       href: security-center-onboarding.md
+    - name: Konfigurace zásad zabezpečení a standardů dodržování předpisů
+      items:
+        - name: Vytváření vlastních zásad zabezpečení
+          href: custom-security-policies.md
+        - name: Správa zásad s využitím REST API služby Azure Policy
+          href: configure-security-policy-azure-policy.md
+        - name: Volba standardů pro řídicí panel dodržování předpisů
+          href: update-regulatory-compliance-packages.md
     - name: Kontrola ohrožení zabezpečení virtuálních počítačů
       items:
         - name: Přehled kontroly ohrožení zabezpečení
@@ -98,54 +109,28 @@
           href: built-in-vulnerability-assessment.md
         - name: Použití externích skenerů
           href: partner-vulnerability-assessment.md
-    - name: Monitorování kontejnerů
-      href: monitor-container-security.md
-    - name: Ochrana serverů pomocí služby Microsoft Defender ATP
-      href: security-center-wdatp.md
-    - name: Použití pokročilého zabezpečení dat pro počítače s SQL
-      href: security-center-iaas-advanced-data.md
-    - name: Použití služby App Service k ochraně aplikací
-      href: security-center-app-services.md
-    - name: Použití zásad zabezpečení
+    - name: Konfigurace ochrany před hrozbami a zpracování výstrah
       items:
-        - name: Přehled zásad zabezpečení
-          href: tutorial-security-policy.md
-        - name: Použití předdefinovaných zásad zabezpečení
-          href: security-center-policy-definitions.md
-        - name: Vytváření vlastních zásad zabezpečení
-          href: custom-security-policies.md
-        - name: Správa zásad s využitím REST API služby Azure Policy
-          href: configure-security-policy-azure-policy.md
-    - name: Volba standardů pro řídicí panel dodržování předpisů
-      href: update-regulatory-compliance-packages.md
-    - name: Přizpůsobení zásad Information Protection
-      href: security-center-info-protection-policy.md
-    - name: Správa řešení zabezpečení
-      href: security-center-partner-integration.md
-    - name: Automatizace onboardingu pomocí PowerShellu
-      href: security-center-powershell-onboarding.md
-    - name: Integrace s řešením Windows Admin Center
-      href: windows-admin-center-integration.md
-    - name: Porovnání standardních hodnot s využitím monitorování Integrity souborů
-      href: security-center-file-integrity-monitoring-baselines.md
-    - name: Automatizace odpovědí na upozornění a doporučení
-      href: workflow-automation.md
-    - name: Export upozornění a doporučení
-      href: continuous-export.md
-    - name: Konfigurace shromažďování dat
-      href: security-center-enable-data-collection.md
-    - name: Nastavení služby Advanced Threat Protection pro Azure Key Vault
-      href: advanced-threat-protection-key-vault.md
-    - name: Nastavení e-mailových oznámení
-      href: security-center-provide-security-contact-details.md
-    - name: Ceny
-      href: security-center-pricing.md
-    - name: Zajištění viditelnosti v rámci celého tenanta
-      href: security-center-management-groups.md
-    - name: Implementace doporučení pro zabezpečení
+        - name: Správa výstrah zabezpečení
+          href: security-center-managing-and-responding-alerts.md
+        - name: Vytváření a správa pravidel pro potlačení výstrah
+          href: alerts-suppression-rules.md
+        - name: Nastavení služby Advanced Threat Protection pro Azure Key Vault
+          href: advanced-threat-protection-key-vault.md
+        - name: Správa incidentů zabezpečení
+          href: security-center-incident.md
+        - name: Generování sestav analýzy hrozeb
+          href: security-center-threat-report.md
+        - name: Ověření konfigurace výstrah (testovací soubor EICAR)
+          href: security-center-alert-validation.md
+        - name: Použití pokročilého zabezpečení dat pro SQL na virtuálních počítačích Azure
+          href: security-center-iaas-advanced-data.md
+        - name: Automatizace odpovědí na výstrahy
+          href: workflow-automation.md
+        - name: Export výstrah
+          href: continuous-export.md
+    - name: Použití bezpečnostních doporučení ke zvýšení zabezpečení
       items:
-        - name: Co jsou doporučení zabezpečení
-          href: security-center-recommendations.md
         - name: Oprava doporučení
           href: security-center-remediate-recommendations.md
         - name: Posílení stavu zabezpečení
@@ -160,8 +145,20 @@
           href: security-center-sql-service-recommendations.md
         - name: Ochrana identit a přístupu
           href: security-center-identity-access.md
-        - name: Správa uživatelských dat šetření
-          href: security-center-investigation-user-data.md
+        - name: Automatizace odpovědí na doporučení
+          href: workflow-automation.md
+        - name: Export doporučení
+          href: continuous-export.md
+    - name: Integrace s ostatními nástroji a službami
+      items:
+        - name: Integrace s řešením Windows Admin Center
+          href: windows-admin-center-integration.md
+        - name: Ochrana rozhraní API a webových aplikací Azure App Service
+          href: security-center-app-services.md
+        - name: Integrace s programem Microsoft Defender ATP
+          href: security-center-wdatp.md
+        - name: Integrace řešení zabezpečení a zdrojů dat
+          href: security-center-partner-integration.md
     - name: Použití cloudové ochrany
       items:
         - name: Správa přístupu za běhu
@@ -170,8 +167,18 @@
           href: security-center-adaptive-application.md
         - name: Monitorování integrity souborů
           href: security-center-file-integrity-monitoring.md
+        - name: Porovnání standardních hodnot s využitím monitorování Integrity souborů
+          href: security-center-file-integrity-monitoring-baselines.md
         - name: Adaptivní posilování zabezpečení sítě
           href: security-center-adaptive-network-hardening.md
+    - name: Monitorování kontejnerů
+      href: monitor-container-security.md
+    - name: Přizpůsobení zásad Information Protection
+      href: security-center-info-protection-policy.md
+    - name: Správa uživatelských dat šetření
+      href: security-center-investigation-user-data.md
+    - name: Zajištění viditelnosti v rámci celého tenanta
+      href: security-center-management-groups.md
 - name: Referenční informace
   items:
     - name: Rozhraní REST API

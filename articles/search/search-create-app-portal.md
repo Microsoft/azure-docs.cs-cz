@@ -21,7 +21,7 @@ Pomocí průvodce **vytvořením ukázkové aplikace** Azure Portal vygenerujte 
 
 Ukázková aplikace vám pomůže vizualizovat, jak bude index fungovat v klientské aplikaci, ale není určený pro produkční scénáře. Klientské aplikace by měly zahrnovat zabezpečení, zpracování chyb a logiku hostování, kterou neposkytuje vygenerovaná stránka HTML. Až budete připraveni vytvořit klientskou aplikaci, přečtěte si téma [Vytvoření první aplikace pro vyhledávání pomocí sady .NET SDK](tutorial-csharp-create-first-app.md) pro další kroky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, musíte mít následující:
 
