@@ -26,7 +26,7 @@ Azure Dev Spaces také umožňují ladit a iterovat pomocí:
 - [Node.js a Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core a Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Visual Studio Code nainstalován](https://code.visualstudio.com/download).

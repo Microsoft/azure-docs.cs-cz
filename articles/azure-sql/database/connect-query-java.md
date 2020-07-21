@@ -22,7 +22,7 @@ Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a 
 
 JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
 - [Azure Cloud Shell](/azure/cloud-shell/quickstart) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.

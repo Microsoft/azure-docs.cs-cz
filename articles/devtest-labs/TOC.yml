@@ -6,14 +6,15 @@
       href: devtest-lab-overview.md
     - name: Azure DevTest Labs a Lab Services
       href: lab-services-overview.md
+- name: Rychlý start
+  items:
+    - name: Vytvoření testovacího prostředí – šablona ARM
+      displayName: Resource Manager
+      href: create-lab-windows-vm-template.md
 - name: Kurzy
   items:
     - name: Nastavení testovacího prostředí
-      items:
-        - name: Použití webu Azure Portal
-          href: tutorial-create-custom-lab.md
-        - name: Použití šablony Resource Manageru
-          href: create-lab-windows-vm-template.md
+      href: tutorial-create-custom-lab.md
     - name: Přístup k testovacímu prostředí
       href: tutorial-use-custom-lab.md
 - name: ukázky
@@ -64,6 +65,10 @@
           href: devtest-lab-training-lab.md
         - name: Scénáře využití nárokovatelných virtuálních počítačů
           href: devtest-lab-use-claim-capabilities.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
 - name: Návody
   items:
     - name: Konfigurace testovacího prostředí
@@ -122,18 +127,26 @@
           href: personal-data-delete-export.md
     - name: Použití virtuálních počítačů v testovacím prostředí
       items:
-        - name: Vytvoření virtuálního počítače – Azure Portal
-          href: devtest-lab-add-vm.md
-        - name: Vytvoření virtuálního počítače – Azure PowerShell
-          href: devtest-lab-vm-powershell.md
-        - name: Vytvoření virtuálního počítače – rozhraní příkazového řádku Azure
-          href: devtest-lab-vmcli.md
-        - name: Vytvoření virtuálního počítače – šablona Resource Manageru
-          href: devtest-lab-use-resource-manager-template.md
-        - name: Vytvoření virtuálního počítače s využitím image ze sdílené galerie imagí
-          href: add-vm-use-shared-image.md
-        - name: Připojení k virtuálnímu počítači přes prohlížeč
-          href: connect-virtual-machine-through-browser.md
+        - name: Vytvoření virtuálního počítače
+          items:
+            - name: portál Azure
+              href: devtest-lab-add-vm.md
+            - name: Azure PowerShell
+              href: devtest-lab-vm-powershell.md
+            - name: Azure CLI
+              href: devtest-lab-vmcli.md
+            - name: Šablona Resource Manageru
+              href: devtest-lab-use-resource-manager-template.md
+            - name: Vytvoření virtuálního počítače s využitím image ze sdílené galerie imagí
+              href: add-vm-use-shared-image.md
+        - name: Připojení k virtuálnímu počítači
+          items:
+            - name: Připojení k virtuálnímu počítači s Windows
+              href: connect-windows-virtual-machine.md
+            - name: Připojení k virtuálnímu počítači s Linuxem
+              href: connect-linux-virtual-machine.md
+            - name: Připojení k virtuálnímu počítači přes prohlížeč
+              href: connect-virtual-machine-through-browser.md
         - name: Spuštění nebo zastavení virtuálního počítače s použitím PowerShellu nebo CLI
           href: use-command-line-start-stop-virtual-machines.md
         - name: Restartování virtuálního počítače
@@ -263,6 +276,12 @@
           href: troubleshoot-vm-environment-creation-failures.md
         - name: Řešení potíží se selháním artefaktů
           href: devtest-lab-troubleshoot-artifact-failure.md
+    - name: Monitorování
+      items:
+        - name: Zobrazení protokolů aktivit
+          href: activity-logs.md
+        - name: Vytváření výstrah protokolu aktivit
+          href: create-alerts.md
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku
