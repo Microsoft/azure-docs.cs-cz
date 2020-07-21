@@ -3,12 +3,12 @@ title: Posílání a přijímání událostí z Azure Event Hubs pomocí JavaScr
 description: Tento článek poskytuje návod pro vytvoření aplikace JavaScriptu, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure/Event-hub verze 5.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ad9a78aa48ee0d4c01e2748b8b52192e259add7b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 7ec97d07843a9844387ad1038c075ed55e304a2c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312928"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521883"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Odesílání událostí do a příjem událostí z Center událostí pomocí JavaScriptu (Azure/Event-hub verze 5)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure/Event-hub verze 5** JavaScriptu. 
@@ -16,7 +16,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 > [!IMPORTANT]
 > V tomto rychlém startu se používá nejnovější balíček Azure/Event-Centers verze 5. Rychlý Start, který používá starý balíček Azure/Event-hub verze 2, najdete v tématu [posílání a přijímání událostí pomocí Azure/Event – Center verze 2](event-hubs-node-get-started-send.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
@@ -99,20 +99,20 @@ V této části vytvoříte aplikaci JavaScriptu, která odesílá události do 
     > [!NOTE]
     > Úplný zdrojový kód včetně dalších informativních komentářů najdete na [stránce sendEvents.js GitHubu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js).
 
-Gratulujeme! Nyní jste odeslali události do centra událostí.
+Blahopřejeme! Nyní jste odeslali události do centra událostí.
 
 
 ## <a name="receive-events"></a>Příjem událostí
 V této části obdržíte události z centra událostí pomocí úložiště kontrolních bodů služby Azure Blob Storage v aplikaci JavaScript. Pro přijaté zprávy v pravidelných intervalech v objektu blob Azure Storage provádí kontrolní body metadat. Tento přístup usnadňuje příjem zpráv později od místa, kde jste skončili.
 
 > [!NOTE]
-> Pokud používáte centrum Azure Stack, může tato platforma podporovat jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure. Pokud například používáte [v Azure Stack centra verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v tématu ukázky pro [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) a [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) na GitHubu. Další informace o verzích služby Azure Storage podporovaných v centru Azure Stack najdete v tématu [úložiště centra pro Azure Stack: rozdíly a požadavky](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences).
+> Pokud používáte centrum Azure Stack, může tato platforma podporovat jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure. Pokud například používáte [v Azure Stack centra verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě, kromě kroků v této části, budete také muset přidat kód pro cílení na rozhraní API služby úložiště verze 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v tématu ukázky pro [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) a [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) na GitHubu. Další informace o verzích služby Azure Storage podporovaných v centru Azure Stack najdete v tématu [úložiště centra pro Azure Stack: rozdíly a požadavky](/azure-stack/user/azure-stack-acs-differences).
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu služby Azure Storage a kontejneru objektů BLOB
 Pokud chcete vytvořit účet úložiště Azure a kontejner objektů BLOB v něm, proveďte následující akce:
 
-1. [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md?tabs=azure-portal)  
+1. [Vytvoření účtu úložiště Azure](../storage/common/storage-account-create.md?tabs=azure-portal)  
 2. [Vytvoření kontejneru objektů blob v účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
 3. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 
@@ -182,7 +182,7 @@ Nezapomeňte si poznamenejte připojovací řetězec a název kontejneru pro poz
     > [!NOTE]
     > Úplný zdrojový kód včetně dalších informativních komentářů najdete na [stránce receiveEventsUsingCheckpointStore.js GitHubu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js).
 
-Gratulujeme! Nyní jste dostali události z centra událostí. Program přijímače dostane události ze všech oddílů výchozí skupiny příjemců v centru událostí.
+Blahopřejeme! Nyní jste dostali události z centra událostí. Program přijímače dostane události ze všech oddílů výchozí skupiny příjemců v centru událostí.
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na tyto ukázky na GitHubu:

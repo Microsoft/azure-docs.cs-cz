@@ -3,12 +3,12 @@ title: Co je služba Azure Event Hubs? – Služba pro příjem velkých objemů
 description: Přečtěte si o Azure Event Hubs, což je streamovací služba pro velké objemy dat, která může ingestovat miliony událostí za sekundu.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 175f7e249e02d5c85dd38cf49821b2893de159a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314250"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522104"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – platforma pro zpracování velkých objemů dat a služba pro příjem událostí
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro příjem událostí. Dokáže přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
@@ -44,7 +44,7 @@ Ingestování, ukládání do vyrovnávací paměti, dlouhodobé ukládání a z
 
 Data můžete [zachytit](event-hubs-capture-overview.md) prakticky v reálném čase v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)   pro dlouhodobé uchovávání nebo zpracování mikrodávkování. Toto chování můžete dosáhnout na stejném datovém proudu, který používáte pro odvození analýz v reálném čase. Nastavení zachycení dat událostí je rychlé. Neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují Event Hubs [jednotky propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs vám umožní soustředit se na zpracování dat, nikoli na shromažďování dat.
 
-Azure Event Hubs se také dá integrovat s [Azure Functions](/azure/azure-functions/) jako architektura bez serveru.
+Azure Event Hubs se také dá integrovat s [Azure Functions](../azure-functions/index.yml) jako architektura bez serveru.
 
 ## <a name="scalable"></a>Škálovatelné
 
@@ -74,7 +74,7 @@ Event Hubs v centru Azure Stack vám umožní realizovat hybridní cloudové sc�
 
 Edice Event Hubs (v centru Azure Stack a v Azure) nabízejí vysoký stupeň parity funkcí. Tato parita znamená, že sady SDK, ukázky, PowerShellu, rozhraní příkazového řádku a portálů nabízejí podobné prostředí s několika rozdíly. 
 
-Event Hubs v zásobníku jsou v rámci verze Public Preview zdarma. Další informace najdete v tématu [Event Hubs v článku Přehled centra Azure Stack](https://docs.microsoft.com/azure-stack/user/event-hubs-overview).
+Event Hubs v zásobníku jsou v rámci verze Public Preview zdarma. Další informace najdete v tématu [Event Hubs v článku Přehled centra Azure Stack](/azure-stack/user/event-hubs-overview).
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -94,5 +94,3 @@ Další informace o službě Event Hubs najdete v následujících článcích:
 
 - [Přehled funkcí Event Hubs](event-hubs-features.md)
 - [Nejčastější dotazy](event-hubs-faq.md)
-
-

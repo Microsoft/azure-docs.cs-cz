@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: 08c7fa6abac7ed369347f1f496c70174b06edf02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65f9ee8f67ac4efb6ab26fa0912d11d7be7c571d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831569"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520897"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Spouštění akcí na základě stavu skupiny pomocí oborů v Azure Logic Apps
 
@@ -22,7 +23,7 @@ Tady je například aplikace logiky vysoké úrovně, která používá obor ke 
 
 ![Nastavení triggeru "plán-opakování"](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li postupovat podle příkladu v tomto článku, budete potřebovat tyto položky:
 
@@ -60,7 +61,7 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
 
    1. Pokud ještě nemáte připojení ke službě Mapy Bing, budete požádáni o vytvoření připojení.
 
-      | Nastavení | Hodnota | Description |
+      | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
       | **Název připojení** | PřipojeníMapyBing | Zadejte název připojení. | 
       | **Klíč rozhraní API** | <*váš klíč-Bing-Maps-Key*> | Zadejte klíč Map Bing, který jste dříve dostali. | 
@@ -70,18 +71,18 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
 
       ![Nastavení akce mapy Bing – získat trasu](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
-      Další informace o těchto parametrech najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx).
+      Další informace o těchto parametrech najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route).
 
-      | Nastavení | Hodnota | Description |
+      | Nastavení | Hodnota | Popis |
       | ------- | ----- | ----------- |
       | **Bod na trase 1** | <*Čína*> | Zadejte původ trasy. | 
       | **Bod na trase 2** | <*účelu*> | Zadejte cíl trasy. | 
-      | **Vyloučit** | Žádná | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Vyhnutí se** | Žádný | Zadejte položky, které vám zabrání v trasách, jako jsou například dálnice, mýtné atd. Možné hodnoty najdete v tématu [Výpočet trasy](/bingmaps/rest-services/routes/calculate-a-route). | 
       | **Optimalizace** | timeWithTraffic | Vyberte parametr pro optimalizaci trasy, například vzdálenost, čas s aktuálními informacemi o provozu a tak dále. V tomto příkladu se používá tato hodnota: "timeWithTraffic" | 
       | **Jednotka vzdálenosti** | <*vaše preference*> | Zadejte jednotku ke vzdálenosti pro výpočet trasy. V tomto příkladu se používá tato hodnota: km. | 
       | **Způsob cestování** | Autem | Zadejte režim cesty pro trasu. V tomto příkladu se používá tato hodnota "jízda". | 
-      | **Datum a čas přejezdu** | Žádná | Platí jenom pro režim přenosu. | 
-      | **Typ data přenosu – typ typu** | Žádná | Platí jenom pro režim přenosu. | 
+      | **Datum a čas přejezdu** | Žádný | Platí jenom pro režim přenosu. | 
+      | **Typ data přenosu – typ typu** | Žádný | Platí jenom pro režim přenosu. | 
       ||||  
 
 1. [Přidejte podmínku](../logic-apps/logic-apps-control-flow-conditional-statement.md) , která zkontroluje, jestli aktuální doba trvání cesty s provozem přesáhne zadaný čas. 
@@ -149,7 +150,7 @@ Aplikaci logiky můžete kdykoli uložit, takže svou práci budete často uklá
        ![Bylo dokončeno pole "tělo"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 Dále přidejte obor, abyste mohli seskupit konkrétní akce a vyhodnotit jejich stav.
 
@@ -219,7 +220,7 @@ Dále přidejte obor, abyste mohli seskupit konkrétní akce a vyhodnotit jejich
 
    ![Přidat akce, které se mají provést na základě stavu oboru](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 Vaše dokončená aplikace logiky teď vypadá jako v tomto příkladu:
 
@@ -387,7 +388,7 @@ Pokud pracujete v zobrazení kódu, můžete místo toho definovat strukturu obo
 
 ## <a name="get-support"></a>Získání podpory
 
-* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Chcete-li odesílat nebo hlasovat o funkcích a návrzích, navštivte [web Azure Logic Apps pro zpětnou vazbu uživatelů](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další kroky

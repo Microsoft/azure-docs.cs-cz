@@ -7,16 +7,20 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da90bbbce485616afdac5997576da99ac4d62c6f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076678"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521900"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Návrh pro zajištění vysoké dostupnosti pomocí ExpressRoute
 
 ExpressRoute je navržená tak, aby poskytovala vysokou dostupnost k zajištění privátní síťové připojení k prostředkům Microsoftu. Jinými slovy, v ExpressRoute cestě v síti Microsoftu neexistuje jediný bod selhání. Pro maximalizaci dostupnosti by měl být pro zákazníky a segmenty poskytovatele služeb vašeho okruhu ExpressRoute také navržený pro vysokou dostupnost. V tomto článku se nejdřív podívejme na požadavky na architekturu sítě při vytváření robustního síťového připojení pomocí ExpressRoute a potom se podíváme na funkce s vyladěním, které vám pomůžou zlepšit vysokou dostupnost vašeho okruhu ExpressRoute.
 
+>[!NOTE]
+>Koncepty popsané v tomto článku platí stejně, když je v rámci virtuální sítě WAN nebo mimo ni vytvořen okruh ExpressRoute.
+>
 
 ## <a name="architecture-considerations"></a>Požadavky architektury
 

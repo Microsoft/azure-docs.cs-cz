@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anbene
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119289"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520268"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Vytvoření, konfigurace a publikování nabídky modulu IoT Edge v Azure Marketplace
 
@@ -131,7 +131,7 @@ Tady definujete podrobnosti nabídky, které se zobrazí na webu Marketplace. To
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Název
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -149,7 +149,7 @@ Zadejte krátký popis vaší nabídky. Může to být až 100 znaků dlouhé a 
 
 Poskytněte podrobnější popis vaší nabídky. Může to být až 256 znaků dlouhé a používá se ve výsledcích hledání na webu Marketplace.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Popis
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -229,9 +229,9 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 3. Adresa podpory (odkaz)
 4. podmínky a ujednání
 5. Adresa zásad ochrany osobních údajů (odkaz)
-6. Name
+6. Název
 7. Souhrn
-8. Description
+8. Popis
 9. Užitečné odkazy
 10. Snímky obrazovky a videa
 
@@ -251,8 +251,8 @@ Tady je příklad toho, jak se zobrazují informace o nabídce v Azure Marketpla
 
 #### <a name="call-out-descriptions"></a>Popisy volání
 
-1. Name
-2. Description
+1. Název
+2. Popis
 3. Užitečné odkazy
 4. Screenshoty
 
@@ -286,17 +286,17 @@ Než budete pokračovat k další části, vyberte **Uložit koncept** .
 
 ### <a name="plan-overview"></a>Přehled plánu
 
-Tato karta vám umožní v partnerském centru poskytnout různé možnosti plánu v rámci stejné nabídky. Tyto plány byly dříve označovány jako SKU nebo skladové jednotky. Plány se můžou lišit v souvislosti s dostupnými cloudy, jako jsou globální cloudy, cloudy státní správy a image, na kterou plán odkazuje. Pokud chcete zobrazit seznam nabídek na webu Marketplace, musíte nastavit aspoň jeden plán.
+Tato karta vám umožní v partnerském centru poskytnout různé možnosti plánu v rámci stejné nabídky. Plány (dříve nazývané SKU) se mohou lišit v souvislosti s dostupnými cloudy, jako jsou globální cloudy, cloudy státní správy a bitová kopie, na kterou plán odkazuje. Pokud chcete zobrazit seznam nabídek na webu Marketplace, musíte nastavit aspoň jeden plán.
 
 Po vytvoření plánů se zobrazí karta **Přehled plánu** :
 
 - Názvy plánů
 - Cenový model
-- Dostupnost cloudu (globální nebo státní správa)
+- Oblasti Azure (globální nebo státní správa)
 - Stav aktuálního publikování
 - Jakékoli dostupné akce
 
-Akce, které jsou k dispozici v přehledu plánu, se liší v závislosti na aktuálním stavu plánu. Mezi ně patří:
+Akce, které jsou k dispozici v přehledu plánu, se liší v závislosti na aktuálním stavu plánu. Patří sem:
 
 - **Odstranit koncept**: Pokud je stav plánu koncept.
 - **Zastavit prodej plánu**: Pokud je stav plánu publikovaný živě
@@ -329,7 +329,7 @@ Pokud chcete, aby se vaše řešení zobrazilo tady, vyberte možnost [Azure Gov
 
 #### <a name="azure-government-certifications"></a>Azure Government certifikace
 
-Tato možnost se zobrazí jenom v případě, že je vybraná **Azure Government** v části **dostupnost cloudu**.
+Tato možnost se zobrazí jenom v případě, že je v **oblasti Azure**vybraná **Azure Government** .
 
 Služba Azure Government Services zpracovává data, která se vztahují na určité předpisy a požadavky státní správy. Příklad: FedRAMP, NIST 800,171 (DIB), ITAR, finanční úřad 1075, DoD – L4 a CJIS. Pro zajištění povědomí o certifikaci pro tyto programy můžete poskytnout až 100 odkazů, které popisují vaše certifikace. Můžou to být odkazy na vaše výpisy v programu přímo nebo na váš vlastní web. Tyto odkazy jsou viditelné pouze pro Azure Government zákazníky.
 

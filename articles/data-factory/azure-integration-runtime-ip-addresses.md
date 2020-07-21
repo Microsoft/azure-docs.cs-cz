@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: f3eed03c585ba6b48a21b36c21cb77585456fc2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c64a38295754e4754326dec126bfbc36e1bef61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660267"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523328"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>ID adresy modulu Azure Integration Runtime
 
@@ -24,7 +25,7 @@ ms.locfileid: "84660267"
 IP adresy, které Azure Integration Runtime používá, závisí na oblasti, ve které se nachází Azure Integration runtime. *Vše* Prostředí Azure Integration runtime, která jsou ve stejné oblasti, používají stejné rozsahy IP adres.
 
 > [!IMPORTANT]  
-> Datové toky nepodporují použití pevných rozsahů IP adres.
+> Toky dat a Azure Integration Runtime, které umožňují spravované Virtual Network nepodporují použití pevných rozsahů IP adres.
 >
 > Tyto rozsahy IP adres můžete použít pro provádění přesunu dat, kanálu a externích aktivit. Tyto rozsahy IP adres se dají použít k přidávání do seznamu povolených úložišť dat/skupiny zabezpečení sítě (NSG)/bran firewall pro příchozí přístup z prostředí Azure Integration runtime. 
 

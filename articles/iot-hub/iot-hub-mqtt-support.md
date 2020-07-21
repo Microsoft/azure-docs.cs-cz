@@ -10,11 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c3fa56daee5d2dba98fa9fd420524a9b7e4c60ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726107"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521118"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -303,7 +304,21 @@ Pokud chcete dostávat zprávy z IoT Hub, zařízení by se mělo přihlásit `d
 
 Zařízení neobdrží žádné zprávy od IoT Hub, dokud se úspěšně přihlásí ke koncovému bodu pro konkrétní zařízení, reprezentovanému `devices/{device_id}/messages/devicebound/#` filtrem tématu. Po navázání předplatného zařízení obdrží zprávy typu cloud-zařízení, které se do ní poslaly po uplynutí doby platnosti předplatného. Pokud se zařízení připojí s příznakem **CleanSession** nastaveným na **hodnotu 0**, předplatné se trvale zachová napříč různými relacemi. V takovém případě se při příštím připojení zařízení k **CleanSession 0** obdrží všechny nedokončené zprávy, které se do ní odesílají během odpojení. Pokud zařízení používá příznak **CleanSession** nastavené na **1** , ale neobdrží žádné zprávy z IoT Hub, dokud se přihlásí k odběru koncového bodu zařízení.
 
-IoT Hub doručuje zprávy s **názvem tématu** `devices/{device_id}/messages/devicebound/` , nebo `devices/{device_id}/messages/devicebound/{property_bag}` Pokud jsou vlastnosti zprávy. `{property_bag}`obsahuje páry klíč/hodnota zakódované adresy URL vlastností zprávy. Do kontejneru objektů a dat jsou zahrnuty pouze vlastnosti aplikace a uživatelsky nastavitelované systémové vlastnosti (například **MessageID** nebo **ID korelace**). Názvy systémových vlastností mají předponu **$** , vlastnosti aplikace používají název původní vlastnosti bez předpony.
+IoT Hub doručuje zprávy s **názvem tématu** `devices/{device_id}/messages/devicebound/` , nebo `devices/{device_id}/messages/devicebound/{property_bag}` Pokud jsou vlastnosti zprávy. `{property_bag}`obsahuje páry klíč/hodnota zakódované adresy URL vlastností zprávy. Do kontejneru objektů a dat jsou zahrnuty pouze vlastnosti aplikace a uživatelsky nastavitelované systémové vlastnosti (například **MessageID** nebo **ID korelace**). Názvy systémových vlastností mají předponu **$** , vlastnosti aplikace používají název původní vlastnosti bez předpony. Další podrobnosti o formátu kontejneru objektů a dat najdete v tématu [posílání zpráv typu zařízení-Cloud](#sending-device-to-cloud-messages).
+
+V případě zpráv z cloudu na zařízení se hodnoty v kontejneru objektů a dat reprezentují jako v následující tabulce:
+
+| Hodnota vlastnosti | Obrázek | Popis |
+|----|----|----|
+| `null` | `key` | V kontejneru objektů a dat se zobrazí jenom klíč. |
+| prázdný řetězec | `key=` | Klíč následovaný rovnítkem bez hodnoty |
+| neprázdná hodnota, která není null | `key=value` | Klíč následovaný rovnítkem a hodnotou |
+
+Následující příklad ukazuje kontejner vlastností, který obsahuje tři vlastnosti aplikace: **Prop1** s hodnotou `null` ; **prop2**, prázdný řetězec (""); a **prop3** s hodnotou "a String".
+
+```mqtt
+/?prop1&prop2=&prop3=a%20string
+```
 
 Když se aplikace zařízení přihlásí k odběru tématu s **QoS 2**, IoT Hub v paketu **SUBACK** udělí maximální úroveň QoS úrovně 1. Potom IoT Hub doručuje zprávy na zařízení pomocí technologie QoS 1.
 
@@ -333,7 +348,7 @@ Možné stavové kódy:
 
 |Status | Popis |
 | ----- | ----------- |
-| 200 | Úspěch |
+| 200 | Success |
 | 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
 | 5 * * | Chyby serveru |
 

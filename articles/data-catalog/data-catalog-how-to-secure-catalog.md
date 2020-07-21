@@ -4,13 +4,14 @@ description: Tento článek vysvětluje, jak zabezpečit Katalog dat a jeho dato
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b0972be2b8a6e05d3d90cde7354b4890ea95cbe4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976765"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523379"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Postup zabezpečení přístupu ke katalogu dat a datovým assetům
 
@@ -31,7 +32,7 @@ Chcete-li uživateli nebo skupině udělit přístup ke katalogu dat a nastavit 
 
    ![Tlačítko pro přidání uživatelů Azure Data Catalog](media/data-catalog-how-to-secure-catalog/data-catalog-add-button.png)
 
-3. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na **Přidat**.
 
 4. Zadejte plně kvalifikované **uživatelské jméno** nebo název **skupiny zabezpečení** v Azure Active Directory (AAD) přidružené ke katalogu. Pokud přidáváte více než jednoho uživatele nebo skupinu, použijte čárku (,) jako oddělovač.
 

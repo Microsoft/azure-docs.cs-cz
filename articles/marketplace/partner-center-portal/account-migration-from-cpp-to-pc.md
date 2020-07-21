@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 24ce0ff2fa5e0b023f2a0d6b92e657299518c044
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120496"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520149"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Postup migrace účtu z portál partnerů cloudu do partnerského centra
 
@@ -27,7 +27,7 @@ Pokud jste uživatel s rolí vlastníka v CPP pro daný účet, zobrazí se na s
 
 ### <a name="your-account-has-been-migrated-to-partner-center"></a>Váš účet se migruje do partnerského centra.
 
-Pro všechny účty, které dokončily migraci z CPP do partnerského centra, se Správa účtů stane v partnerském centru. Změny, jako je přidání nebo odstranění uživatele, budou synchronizovány zpět do CPP.
+Teď budete spravovat svůj účet v partnerském centru. Změny, jako je přidání nebo odstranění uživatele, budou synchronizovány zpět do CPP.
 
 ### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>Váš účet jste ještě nemigrovali do partnerského centra.
 
@@ -45,7 +45,7 @@ Kliknutím na hlavičku spusťte proces migrace účtu. Očekává se, že zadá
 
 ## <a name="publishers-moving-from-cpp"></a>Vydavatelé, kteří se přesouvá z CPP
 
-Pokud jste svůj účet migrovali z [portál partnerů cloudu (CPP)](https://cloudpartner.azure.com), nemusíte vytvářet nový účet partnerského centra. Měli byste mít přizpůsobený odkaz na nový účet partnerského centra v e-mailu a v oznámení banner po přihlášení ke stávajícímu účtu CPP.
+Pokud jste svůj účet migrovali z CPP, nemusíte vytvářet nový účet partnerského centra. Po přihlášení k vašemu existujícímu účtu CPP byste měli mít přizpůsobený odkaz na nový účet partnerského centra v e-mailu a v oznámení banneru.
 
 Po povolení nového účtu partnerského centra na základě tohoto přizpůsobeného odkazu se můžete vrátit ke svému účtu na [řídicím panelu komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) v partnerském centru.
 
@@ -81,7 +81,7 @@ Konkrétní informace o tom, co je potřeba udělat **15. října 2019** pro nab
     * Certifikace nebo recertifikace vyžaduje, aby vaše aplikace podporovala nejnovější verzi naší Business Applications platformy.
     * Po schválení vaší aplikace obdržíte e-mail, který se má vrátit na nabídku, a vyberte "přejít do živého", aby se nabídka mohla na Microsoft AppSource živě začít.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
 Získejte pomoc od expertů a partnerů ve fórech a Objevte Blogy, webináře, videa, události a další informace v [Microsoft Dynamics CRM](https://community.dynamics.com/crm?wa=wsignin1.0).
 

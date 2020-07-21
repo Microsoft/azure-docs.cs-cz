@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Akce modulu pravidel pro přední dveře Azure
 description: Tento článek poskytuje seznam různých akcí, které můžete provádět s modulem pravidel pro službu Azure dopředných dveří.
 services: frontdoor
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 74c0a2617a01e8c24cd93a015b667081250657ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314000"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521492"
 ---
-# <a name="azure-front-door-rules-engine-actions"></a>Akce modulu pravidel pro přední dveře Azure
+# <a name="azure-front-door-rules-engine-actions"></a>Akce stroje pravidel služby Azure Front Door
 
 V [modulu pravidel AFD](front-door-rules-engine.md) se pravidlo skládá z nuly nebo více podmínek a akcí shody. Tento článek poskytuje podrobné popisy akcí, které můžete použít v modulu pravidel AFD.
 
@@ -51,7 +51,7 @@ Připojit | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavičk
 Přepsat | Pokud je vybrána tato možnost a pravidlo odpovídá, bude hlavička zadaná v **názvu záhlaví** přidána k odpovědi pomocí zadané **hodnoty**. Pokud je již hlavička přítomna, **hodnota** přepíše existující hodnotu. | Řetězec
 Odstranit | Když je vybraná tato možnost, pravidlo se shoduje s a hlavička zadaná v pravidle je k dispozici, hlavička se z odpovědi odstraní. | Řetězec
 
-## <a name="route-configuration-overrides"></a>Přepsání konfigurace směrování 
+## <a name="route-configuration-overrides"></a>Přepisování konfigurace směrování 
 
 ### <a name="route-type-redirect"></a>Typ trasy: přesměrování
 
@@ -94,7 +94,7 @@ Pomocí těchto nastavení můžete řídit, jak jsou soubory ukládány do mezi
 
 Chování mezipaměti |  Popis              
 ---------------|----------------
-Ignorovat řetězce dotazu | Po uložení prostředku do mezipaměti všechny následné požadavky ignorují řetězce dotazu, dokud nevyprší platnost prostředku uloženého v mezipaměti.
+Ignorovat řetězce dotazů | Po uložení prostředku do mezipaměti všechny následné požadavky ignorují řetězce dotazu, dokud nevyprší platnost prostředku uloženého v mezipaměti.
 Ukládat do mezipaměti každou jedinečnou adresu URL | Každý požadavek s jedinečnou adresou URL, včetně řetězce dotazu, je považován za jedinečný prostředek s vlastní mezipamětí.
 Ignorovat zadané řetězce dotazu | Řetězce dotazů adresy URL dotazu uvedené v nastavení "parametry dotazu" jsou pro ukládání do mezipaměti ignorovány.
 Zahrnout zadané řetězce dotazu | Pro ukládání do mezipaměti se používají řetězce dotazů adresy URL uvedené v nastavení "parametry dotazu".

@@ -3,19 +3,19 @@ title: Nasazení Live video Analytics na zařízení IoT Edge – Azure
 description: V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519894"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Nasazení Live video Analytics na zařízení IoT Edge
 
 V tomto článku jsou uvedené kroky, které vám pomůžou nasadit Live video Analytics na zařízení IoT Edge. To byste měli udělat například v případě, že máte přístup k místnímu počítači se systémem Linux nebo jste vytvořili účet Azure Media Services.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Počítač se systémem Linux, který splňuje omezení HW a SW pro Live video Analytics
 * Předplatné Azure, ke kterému máte [oprávnění vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)
@@ -34,7 +34,7 @@ Přečtěte si téma [Vytvoření vlastní role Azure Resource Manager](create-c
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Nastavení koncového bodu streamování Premium
 
-Pokud máte v úmyslu používat Live video Analytics k nahrávání videa do cloudu a následně ho přehrát, měli byste aktualizovat službu Media Service, aby používala [koncový bod streamování Premium](../latest/streaming-endpoint-concept.md#types).  
+Pokud máte v úmyslu používat Live video Analytics k nepřetržitému nahrávání videa do cloudu a následně před jejich přehráním používat [rozhraní API pro dotazování](playback-recordings-how-to.md#query-api) , doporučujeme, abyste službu Media Service aktualizovali tak, aby používala [koncový bod streamování Premium](../latest/streaming-endpoint-concept.md#types).  
 
 Toto je volitelný krok. K tomu můžete použít tento příkaz Azure CLI:
 
@@ -84,7 +84,7 @@ sudo chown -R edgeuser /var/media
 <!-- (To JuliaKo: this is similar to https://docs.microsoft.com/azure/iot-edge/how-to-deploy-blob)-->
 Live video Analytics na IoT Edge zveřejňuje moduly s dvojitou vlastností, které jsou zdokumentovány ve [schématu konfigurace s dvojitou](module-twin-configuration-schema.md)platností. 
 
-### <a name="deploy-using-the-azure-portal"></a>Nasazení s využitím webu Azure Portal
+### <a name="deploy-using-the-azure-portal"></a>Nasazení pomocí webu Azure Portal
 
 Azure Portal vás provede vytvořením manifestu nasazení a vložením nasazení do IoT Edgeho zařízení.
 Vyberte své zařízení.

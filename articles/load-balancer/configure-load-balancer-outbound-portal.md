@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0484bc393ac97dc88fed5858f736f01fc41b507a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367389"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521053"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Konfigurace vyrovnávání zatížení a odchozích pravidel v Standard Load Balancer pomocí Azure Portal
 
@@ -40,12 +40,12 @@ V této části vytvoříte Nástroj pro vyrovnávání zatížení, který bude
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
+    | Předplatné               | Vyberte předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupSLB** .|
-    | Name                   | **myLoadBalancer**                                   |
+    | Název                   | **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Typ          | Vyberte možnost **veřejné**.                                        |
-    | SKU           | Vyberte **Standard**. |
+    | Typ          | Vyberte **Veřejný**.                                        |
+    | Skladová položka           | Vyberte **Standard**. |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**.  Stávající veřejná IP adresa musí být **standardní** SKU.  Základní veřejné IP adresy nejsou kompatibilní se službou Load Balancer **Standard** SKU.  |
     | Název veřejné IP adresy              | Do textového pole zadejte **myPublicIP** .|
     | Zóna dostupnosti | Chcete-li vytvořit odolný Load Balancer, vyberte **zónu – redundantní** . Pokud chcete vytvořit oblast Load Balancer, vyberte konkrétní zónu z 1, 2 nebo 3. |
@@ -82,7 +82,7 @@ Sonda stavu se používá ke sledování stavu vaší aplikace. Sonda stavu při
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte **myHealthProbe**. |
-    | Protocol (Protokol) | Vyberte **http**. |
+    | Protokol | Vyberte **http**. |
     | Port | Zadejte **80**.|
     | Interval | Zadejte hodnotu **15** pro **interval** mezi pokusy o sondu v sekundách. |
     | Prahová hodnota pro poškozený stav | Vyberte **2** pro počet chybných **prahových hodnot** nebo po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.|
@@ -109,9 +109,9 @@ V následující části vytvoříte:
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název | Zadejte **myHTTPRule**. |
-    | Protocol (Protokol) | Vyberte **TCP**. |
+    | Protokol | Vyberte **TCP**. |
     | Port | Zadejte **80**.|
-    | Port back-endu | Zadejte **80**. |
+    | Back-endový port | Zadejte **80**. |
     | Back-endový fond | Vyberte **myBackendPool**.|
     | Sonda stavu | Vyberte **myHealthProbe**. |
     | Vytvořit implicitní odchozí pravidla | Vyberte **Ne**. V pozdější části vytvoříme odchozí pravidla pomocí vyhrazené veřejné IP adresy. |
@@ -132,10 +132,10 @@ Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí
     | ------- | ----- |
     | Název | Zadejte **LoadBalancerFrontEndOutbound**. |
     | Verze protokolu IP | Vyberte **IPv4**. |
-    | Typ IP adresy | Vyberte **IP adresa**.|
-    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Do pole **Přidat veřejnou IP adresu**zadejte **myPublicIPOutbound**.  Vyberte **OK**. |
+    | Typ IP adresy | Vyberte **IP adresu** nebo **předponu IP**adresy.|
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Do pole **Přidat veřejnou IP adresu**zadejte **myPublicIPOutbound**. </br> Pokud používáte předponu IP adresy, zadejte do **přidat předponu veřejné IP adresy** **myPublicIPPrefixOutbound**. Vyberte **Velikost předpony** pro předponu veřejné IP adresy. </br> Vyberte **OK**.  |
 
-4. Vyberte možnost **Přidat**.
+4. Vyberte **Přidat**.
 
 ### <a name="create-an-outbound-backend-pool"></a>Vytvořit odchozí back-end fond
 
@@ -157,14 +157,14 @@ Odchozí pravidla nástroje pro vyrovnávání zatížení konfigurují odchozí
     | ------- | ----- |
     | Název | Zadejte **myOutboundRule**. |
     | IP adresa front-endu | Vyberte **LoadBalancerFrontEndOutbound**. |
-    | Časový limit nečinnosti (minuty) | Přesuňte posuvník na * * 15 minut.|
+    | Časový limit nečinnosti (minuty) | Přesuňte posuvník na **15 minut**.|
     | Resetování protokolu TCP | Vyberte **Povoleno**.|
     | Back-endový fond | Vybrat **myBackendPoolOutbound** |
     | Přidělování portů-> přidělování portů | Vyberte možnost **ručně vybrat počet odchozích portů** . |
     | Odchozí porty – > zvolit podle | Vybrat **porty na instanci** |
     | Odchozí porty – > porty na instanci | Zadejte **10 000**. |
 
-4. Vyberte možnost **Přidat**.
+4. Vyberte **Přidat**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

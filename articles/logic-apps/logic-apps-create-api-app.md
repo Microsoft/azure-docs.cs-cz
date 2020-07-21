@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834488"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520796"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytváření vlastních rozhraní API, která můžete volat z Azure Logic Apps
 
@@ -53,8 +54,8 @@ Můžete také jmenovat zaregistrované konektory pro certifikaci Microsoftu. Te
 Další informace o vlastních konektorech najdete v tématu. 
 
 * [Přehled vlastních konektorů](../logic-apps/custom-connector-overview.md)
-* [Vytváření vlastních konektorů z webových rozhraní API](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Registrace vlastních konektorů v Azure Logic Apps](../logic-apps/logic-apps-custom-connector-register.md)
+* [Vytváření vlastních konektorů z webových rozhraní API](/connectors/custom-connectors/create-web-api-connector)
+* [Registrace vlastních konektorů v Azure Logic Apps](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>Užitečné nástroje
 
@@ -173,7 +174,7 @@ Pokud třeba chcete pravidelně kontrolovat službu pro nové soubory, můžete 
 | Obsahuje požadavek `triggerState` ? | Odpověď rozhraní API | 
 | -------------------------------- | -------------| 
 | No | Vrátí stav HTTP a `202 ACCEPTED` `location` hlavičku s `triggerState` nastavenou na aktuální čas a `retry-after` interval na 15 sekund. | 
-| Yes | Ověřte službu pro soubory přidané po `DateTime` pro `triggerState` . | 
+| Ano | Ověřte službu pro soubory přidané po `DateTime` pro `triggerState` . | 
 ||| 
 
 | Počet nalezených souborů | Odpověď rozhraní API | 
@@ -227,7 +228,7 @@ Pokud chcete, aby vaše vlastní rozhraní API byla dostupná pro všechny uživ
 
 * Pro konkrétní nápovědu k vlastním rozhraním API kontaktujte [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 
-* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Otázky najdete na stránce s [dotazem na&Microsoft Q pro Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 
 * Pokud chcete pomoci při vylepšování Logic Apps, hlasujte nebo zanechte své nápady na [webu zpětné vazby uživatelů Logic Apps](https://aka.ms/logicapps-wish). 
 

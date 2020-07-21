@@ -8,11 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792879"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520711"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizace schématu pro Azure Logic Apps – 1. června 2016
 
@@ -28,7 +29,7 @@ Pokud chcete upgradovat aplikace logiky ze schématu verze 1, 2015 Preview na sc
 
 ## <a name="scopes"></a>Obory
 
-Toto schéma zahrnuje rozsahy, které umožňují seskupit akce společně, nebo vnořené akce mezi sebou. Podmínka může například obsahovat jinou podmínku. Přečtěte si další informace o [syntaxi oboru](../logic-apps/logic-apps-loops-and-scopes.md)nebo Projděte si příklad tohoto základního oboru:
+Toto schéma zahrnuje rozsahy, které umožňují seskupit akce společně, nebo vnořené akce mezi sebou. Podmínka může například obsahovat jinou podmínku. Přečtěte si další informace o [syntaxi oboru](./logic-apps-control-flow-loops.md)nebo Projděte si příklad tohoto základního oboru:
 
 ```json
 {
@@ -54,7 +55,7 @@ Toto schéma zahrnuje rozsahy, které umožňují seskupit akce společně, nebo
 
 ## <a name="conditions-and-loops-changes"></a>Změny podmínek a smyček
 
-V předchozích verzích schématu byly podmínky a smyčky parametry přidružené k jedné akci. Toto omezení výtahem toto omezení, takže podmínky a smyčky jsou nyní k dispozici jako typy akcí. Přečtěte si další informace o [cyklech a oborech](../logic-apps/logic-apps-loops-and-scopes.md), [podmínkách](../logic-apps/logic-apps-control-flow-conditional-statement.md)nebo Projděte si tento základní příklad, který ukazuje akci podmínky:
+V předchozích verzích schématu byly podmínky a smyčky parametry přidružené k jedné akci. Toto omezení výtahem toto omezení, takže podmínky a smyčky jsou nyní k dispozici jako typy akcí. Přečtěte si další informace o [cyklech a oborech](./logic-apps-control-flow-loops.md), [podmínkách](../logic-apps/logic-apps-control-flow-conditional-statement.md)nebo Projděte si tento základní příklad, který ukazuje akci podmínky:
 
 ```json
 {
@@ -130,7 +131,7 @@ V upgradovaných definicích nástroj provádí nejlepší úsilí při seskupen
 
 #### <a name="foreach-loop-with-condition"></a>smyčka foreach s podmínkou
 
-V novém schématu můžete použít akci filtru k replikaci vzoru, který používá **pro každou** smyčku s jednou podmínkou na položku. Tato změna se ale při upgradu provede automaticky. Podmínka se stala akcí filtru, která se zobrazí před smyčkou **for each** a vrátí pouze pole položek, které se shodují s podmínkou, a předání tohoto pole **pro každou** akci. Příklad naleznete v tématu [smyčky a rozsahy](../logic-apps/logic-apps-loops-and-scopes.md).
+V novém schématu můžete použít akci filtru k replikaci vzoru, který používá **pro každou** smyčku s jednou podmínkou na položku. Tato změna se ale při upgradu provede automaticky. Podmínka se stala akcí filtru, která se zobrazí před smyčkou **for each** a vrátí pouze pole položek, které se shodují s podmínkou, a předání tohoto pole **pro každou** akci. Příklad naleznete v tématu [smyčky a rozsahy](./logic-apps-control-flow-loops.md).
 
 ### <a name="resource-tags"></a>Značky prostředků
 

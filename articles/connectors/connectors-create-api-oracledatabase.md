@@ -7,11 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836273"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524161"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Začínáme s konektorem Oracle Database
 
@@ -29,7 +30,7 @@ Tento konektor nepodporuje následující položky:
 
 V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci logiky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Podporované verze Oracle: 
     * Oracle 9 a novější
@@ -57,30 +58,30 @@ V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci
 
 2. Na začátku vaší aplikace logiky vyberte Trigger **požadavek/odpověď-žádost** : 
 
-    ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
+    ![Dialogové okno obsahuje pole pro hledání všech triggerů. K dispozici je také jedna aktivační událost "Request/response-Request" (výběr) s tlačítkem výběru.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
 3. Vyberte **Uložit**. Při uložení se automaticky vygeneruje adresa URL požadavku. 
 
 4. Vyberte **Nový krok** a potom **Přidat akci**. Zadáním `oracle` možnosti zobrazíte dostupné akce: 
 
-    ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
+    ![Vyhledávací pole obsahuje text "Oracle". Hledání vytvoří jeden z přístupů označených Oracle Database. Stránka s kartami obsahuje jednu kartu "TRIGGERy (0)", další ukazující "akce (6)". Uvádí se šest akcí. První z nich je "získat náhled řádku".](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > To je také nejrychlejší způsob, jak zobrazit triggery a akce, které jsou k dispozici pro libovolný konektor. Zadejte část názvu konektoru, například `oracle` . Návrhář zobrazí seznam všech triggerů a akcí. 
 
 5. Vyberte jednu z akcí, například **Oracle Database-získat řádek**. Vyberte **připojit přes místní bránu dat**. Zadejte název serveru Oracle, metodu ověřování, uživatelské jméno, heslo a vyberte bránu:
 
-    ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
+    ![Dialogové okno má hodnotu "Oracle Database-získat řádek". Je zaškrtnuto políčko "připojit přes místní bránu dat". Níže jsou uvedeny pět dalších textových polí.](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
 6. Po připojení vyberte v seznamu tabulku a zadejte ID řádku do tabulky. Musíte znát identifikátor v tabulce. Pokud to neznáte, obraťte se na správce Oracle DB a získejte výstup z `select * from yourTableName` . Získáte tak identifikovatelné informace, které potřebujete k tomu, abyste mohli pokračovat.
 
     V následujícím příkladu se data úlohy vracejí z databáze lidských zdrojů: 
 
-    ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![Dialogové okno s názvem načíst řádek (Preview) má dvě textová pole: "název tabulky", který obsahuje text "HRJOBS" a má rozevírací seznam a "ID řádku", který obsahuje "SA_REP".](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. V tomto dalším kroku můžete k sestavení pracovního postupu použít kterýkoli z dalších konektorů. Pokud chcete testovat získávání dat od Oracle, pošlete sami sobě e-mail s daty Oracle pomocí jedné z konektorů pro odesílání e-mailů, například Office 365 Outlook. Pomocí dynamických tokenů z tabulky Oracle Sestavte `Subject` a `Body` svůj e-mail:
+7. V tomto dalším kroku můžete k sestavení pracovního postupu použít kterýkoli z dalších konektorů. Pokud chcete testovat získávání dat od Oracle, pošlete sami sobě e-mail s daty Oracle pomocí jedné z konektorů pro odesílání e-mailů, jako je Office 365 Outlook. Pomocí dynamických tokenů z tabulky Oracle Sestavte `Subject` a `Body` svůj e-mail:
 
-    ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
+    ![Existují dvě dialogová okna. Pole "Odeslat e-mail" obsahuje pole pro zadání "tělo", "Předmět" a "adresa" e-mailu. Dialogové okno Přidat dynamický obsah poskytuje hledání dynamického obsahu z aplikací a služeb daného toku.](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
 8. **Uložte** aplikaci logiky a pak vyberte **Spustit**. Zavřete návrháře a podívejte se na historii spuštění daného stavu. Pokud dojde k chybě, vyberte řádek zprávy, která selhala. Otevře se Návrhář a ukáže vám, který krok se nezdařil, a také zobrazí informace o chybě. Pokud bude úspěšná, měli byste obdržet e-mail s informacemi, které jste přidali.
 
@@ -89,11 +90,11 @@ V tomto článku se dozvíte, jak používat konektor Oracle Database v aplikaci
 
 * Chcete monitorovat #oracle hashtag a umístit tweety do databáze, aby se mohly dotazovat a používat v jiných aplikacích. V aplikaci logiky přidejte `Twitter - When a new tweet is posted` Trigger a zadejte **#oracle** hashtag. Pak přidejte `Oracle Database - Insert row` akci a vyberte tabulku:
 
-    ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
+    ![V dialogovém okně "když se odešle nový seznam se stavem" se zobrazí text "hashtag Oracle" jako text vyhledávání a umožňuje určit četnost kontroly. Toto dialogové okno vás zavede do dialogového okna "Oracle Database", které vám umožní vybrat akci.](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
 * Zprávy jsou odesílány do fronty Service Bus. Tyto zprávy chcete získat a umístit je do databáze. V aplikaci logiky přidejte `Service Bus - when a message is received in a queue` Trigger a vyberte frontu. Pak přidejte `Oracle Database - Insert row` akci a vyberte tabulku:
 
-    ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
+    !["Při přijetí zprávy..." Dialogové okno zobrazí "objednávky" jako "název fronty" a umožňuje určit četnost kontroly. Toto pole vede k dialogovému oknu vložit řádek (Preview), ve kterém můžete vybrat název tabulky.](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>Běžné chyby
 

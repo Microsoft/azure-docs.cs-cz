@@ -2,17 +2,17 @@
 title: 'ExpressRoute: filtry tras – partnerské vztahy Microsoftu: Azure CLI'
 description: Tento článek popisuje, jak nakonfigurovat filtry tras pro partnerský vztah Microsoftu pomocí Azure CLI.
 services: expressroute
-author: anzaman
+author: kumudD
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 12/07/2018
-ms.author: anzaman
-ms.openlocfilehash: 269cabae276712a1f5b51c09705b7cd3eee5fb9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: kumud
+ms.openlocfilehash: 43a3e7672a6bfdf89bce67ec54e4500cd84b6dcf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738341"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521628"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Konfigurace filtrů tras pro partnerský vztah Microsoftu: Azure CLI
 
@@ -45,7 +45,7 @@ Aby bylo možné k těmto službám Office 365 připojit filtry tras, musíte m�
 > 
 > 
 
-### <a name="workflow"></a><a name="workflow"></a>Pracovního postupu
+### <a name="workflow"></a><a name="workflow"></a>Pracovní postup
 
 Abyste se mohli úspěšně připojit ke službám prostřednictvím partnerského vztahu Microsoftu, musíte provést následující kroky konfigurace:
 

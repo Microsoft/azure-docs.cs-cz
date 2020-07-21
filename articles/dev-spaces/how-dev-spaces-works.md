@@ -5,11 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Popisuje procesy, které Azure Dev Spaces napájení
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 536918e1b1db88dcae6985b853b3cb0a6c91a52a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84307363"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522274"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Jak Azure Dev Spaces funguje
 
@@ -48,7 +49,7 @@ Pokud chcete začít s připojením místního vývojového počítače ke clust
 Chcete-li začít používat Azure Dev Spaces pro týmový vývoj, přečtěte si téma [vývoj týmu v Azure dev Spaces][quickstart-team] rychlý Start.
 
 [connect]: how-to/local-process-kubernetes-vs-code.md
-[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
+[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

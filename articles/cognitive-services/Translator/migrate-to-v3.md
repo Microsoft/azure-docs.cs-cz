@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996206"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523974"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Migrace překladatelů v2 na V3
 
@@ -49,8 +49,8 @@ Následující seznam metod v2 a V3 identifikuje metody v3 a rozhraní API, kter
 | `GetLanguagesForTranslate`     | [Jazyky](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Služba Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Služba Microsoft Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Zjišťování](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Zjišťování](reference/v3-0-detect.md)         |
+| `Detect`     | [Soustavy](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Soustavy](reference/v3-0-detect.md)         |
 | `AddTranslation`     | Funkce už není podporovaná.       |
 | `AddTranslationArray`    | Funkce už není podporovaná.          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
@@ -116,10 +116,10 @@ Microsoft Translator V3 ve výchozím nastavení používá neuronové strojový
 
 Neuronové překladu s rozhraním textového API V3 nepodporuje použití standardních kategorií (SMT, Speech, tech, generalnn).
 
-| |Koncový bod|    Dodržování předpisů pro procesory GDPR|    Použít centrum překladatelů|    Použít vlastní překladatele (Preview)|
-|:-----|:-----|:-----|:-----|:-----|
-|Překladatel verze 2|    api.microsofttranslator.com|    Ne    |Ano    |Ne|
-|Překladatel verze 3|    api.cognitive.microsofttranslator.com|    Ano|    Ne|    Ano|
+| Verze | Koncový bod | Dodržování předpisů pro procesory GDPR | Použít centrum překladatelů | Použít vlastní překladatele (Preview) |
+| :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
+|Překladatel verze 2|    api.microsofttranslator.com|    No    |Ano    |No|
+|Překladatel verze 3|    api.cognitive.microsofttranslator.com|    Ano|    No|    Ano|
 
 **Překladatel verze 3**
 * Je všeobecně dostupná a plně podporovaná.

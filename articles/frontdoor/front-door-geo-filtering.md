@@ -13,13 +13,14 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 98c86d839868eb0714c7106d5267d1c55e6e99d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48e2697cb4793f10e7694aa26e29c48a397fe3a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83739307"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521594"
 ---
-# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Co je geografické filtrování na doméně pro službu Azure Front Door?
+# <a name="geo-filtering-on-a-domain-for-azure-front-door"></a>Geografické filtrování v doméně pro přední dveře Azure
 
 Ve výchozím nastavení reagují přední dveře Azure na požadavky uživatelů bez ohledu na umístění uživatele, který požadavek odeslal. V některých případech však můžete chtít omezit přístup k vašim webovým aplikacím podle země nebo oblasti. Služba WAF (Web Application firewall) ve front-dveřích umožňuje definovat zásadu s použitím pravidel vlastního přístupu pro konkrétní cestu ke koncovému bodu a povolit nebo blokovat přístup ze zadaných zemí nebo oblastí. 
 
@@ -149,7 +150,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | MX | Mexiko|
 | MY | Malajsie|
 | MZ | Mosambik|
-| NA | Namibie|
+| Není k dispozici | Namibie|
 | NE | Niger|
 | NG | Nigérie|
 | NI | Nikaragua|
@@ -175,7 +176,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | RU | Ruská federace|
 | RW | Rwanda|
 | SA | Saúdská Arábie|
-| SD | Súdán|
+| Směrodatná odchylka | Súdán|
 | SE | Švédsko|
 | SG | Singapur|
 | SI | Slovinsko|
@@ -197,7 +198,7 @@ Zásady geografického filtrování pro vaše přední dveře můžete nakonfigu
 | TZ | Sjednocená tanzanská republika|
 | UA | Ukrajina|
 | UG | Uganda|
-| USA | USA|
+| USA | Spojené státy|
 | UY | Uruguay|
 | UZ | Uzbekistán|
 | VC | Svatý Vincenc a Grenadiny|

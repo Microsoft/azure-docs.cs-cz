@@ -3,12 +3,12 @@ title: Číst data z Azure Event Hubs zachycená z aplikace v Pythonu (nejnověj
 description: V tomto článku se dozvíte, jak napsat kód v Pythonu pro zachycení dat, která se odesílají do centra událostí, a přečtěte si data zachycených událostí z účtu služby Azure Storage.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 752a582e59b438f7449d6722b222969dc641880c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: eb7e8a2c1e567e474ad7d0766d9b12e5b43de3ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315294"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521866"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Zaznamenání dat Event Hubs v Azure Storage a jejich čtení pomocí Pythonu (Azure-eventhub verze 5)
 
@@ -28,14 +28,14 @@ V tomto rychlém startu:
 > * Odešlete data do centra událostí pomocí skriptu Pythonu.
 > * Čtení a zpracování souborů z Event Hubs zachytávání pomocí jiného skriptu Pythonu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Python 2,7 a 3,5 nebo novější s nainstalovaným a aktualizovaným PIP.  
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.  
 - Aktivní Event Hubs obor názvů a centrum událostí.
 [Vytvořte obor názvů Event Hubs a centrum událostí v oboru názvů](event-hubs-create.md). Poznamenejte si název oboru názvů Event Hubs, název centra událostí a primární přístupový klíč pro obor názvů. Přístupovou klávesu získáte v tématu [získání připojovacího řetězce Event Hubs](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Výchozí název klíče je *RootManageSharedAccessKey*. V tomto rychlém startu potřebujete jenom primární klíč. Nepotřebujete připojovací řetězec.  
 - Účet úložiště Azure, kontejner objektů BLOB v účtu úložiště a připojovací řetězec k účtu úložiště. Pokud tyto položky nemáte, udělejte toto:  
-    1. [Vytvoření účtu služby Azure Storage](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
+    1. [Vytvoření účtu úložiště Azure](../storage/common/storage-account-create.md?tabs=azure-portal)  
     1. [Vytvoření kontejneru objektů blob v účtu úložiště](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
     1. [Získání připojovacího řetězce k účtu úložiště](../storage/common/storage-configure-connection-string.md)
 
@@ -182,4 +182,4 @@ Podívejte se [na ukázky v Pythonu na GitHubu](https://github.com/Azure/azure-s
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
 [About Azure storage accounts]:../storage/common/storage-create-storage-account.md
 [Visual Studio Code]: https://code.visualstudio.com/
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md

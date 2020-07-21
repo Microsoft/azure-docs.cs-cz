@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628159"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522716"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Přesunout soubory pomocí Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Tento článek popisuje šablonu řešení, kterou můžete použít k přesunutí souborů z jedné složky do jiné mezi úložišti na základě souborů. Jeden ze běžných scénářů použití této šablony: soubory se v úložišti zdrojového úložiště trvale přecházejí do cílové složky. Když vytvoříte aktivační událost plánovače, kanál ADF může pravidelně přesouvat soubory ze zdroje do cílového úložiště.  Způsob, jakým kanál ADF dosáhne "přesunutí souborů", získává soubory z cílové složky, kopíruje každou z nich do jiné složky v cílovém úložišti a pak odstraní stejné soubory z cílové složky ve zdrojovém úložišti.
+Aktivita kopírování ADF má integrovanou podporu při kopírování binárních souborů mezi úložišti úložiště v případě scénáře přesunutí.  Způsob, jak ho povolit, je nastavit "deleteFilesAfterCompletion" v aktivitě kopírování na hodnotu true. Díky tomu aktivita kopírování odstraní soubory z úložiště zdroje dat po dokončení úlohy. 
+
+Tento článek popisuje šablonu řešení jako jiný způsob využití flexibilního toku řízení ADF a aktivity kopírování a aktivity odstranit, abyste dosáhli stejného scénáře. Jeden ze běžných scénářů použití této šablony: soubory se v úložišti zdrojového úložiště trvale přecházejí do cílové složky. Když vytvoříte aktivační událost plánovače, kanál ADF může pravidelně přesouvat soubory ze zdroje do cílového úložiště.  Způsob, jakým kanál ADF dosáhne "přesunutí souborů", získává soubory z cílové složky, kopíruje každou z nich do jiné složky v cílovém úložišti a pak odstraní stejné soubory z cílové složky ve zdrojovém úložišti.
 
 > [!NOTE]
 > Uvědomte si, že tato šablona je navržená tak, aby místo přesouvání složek přesunula soubory.  Pokud chcete přesunout složku tím, že změníte datovou sadu tak, aby obsahovala pouze cestu ke složce, a potom pomocí aktivity kopírování a odstranění odkazuje na stejnou datovou sadu, která představuje složku, je nutné mít velmi opatrní. Je to proto, že je nutné zajistit, aby do složky mezi operacemi kopírování a odstraňování nedocházelo nové soubory. Pokud se ve složce v okamžiku, kdy vaše aktivita kopírování právě dokončila operace kopírování, přirazily nové soubory, ale aktivita odstranění nebyla postará, je možné, že aktivita odstranění odstraní tento nový doručený soubor, který se ještě nezkopíroval do cílového umístění, a to tak, že se odstraní celá složka.
@@ -64,7 +66,7 @@ Tato šablona získá soubory ze zdrojového úložiště založeného na soubor
 
     ![Spuštění kanálu](media/solution-template-move-files/move-files5.png)
 
-6. Zkontrolujte výsledek.
+6. Prohlédněte si výsledek.
 
     ![Kontrola výsledku](media/solution-template-move-files/move-files6.png)
 

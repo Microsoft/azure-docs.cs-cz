@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 88b7dc60b865325ef7dcd9e79015fdee10b4f9a2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e532634fb40eee100e73a333ac6aa7e0a79cf3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563716"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521645"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Přehled zásad Azure Firewall Manageru
 
@@ -47,8 +47,8 @@ Díky dědičnosti jsou všechny změny nadřazené zásady automaticky aplikov�
 Azure Firewall podporuje tradiční pravidla a zásady. V následující tabulce jsou porovnávány zásady a pravidla:
 
 
-|         |Zásady  |Pravidla  |
-|---------|---------|---------|
+| Předmět | Zásady  | Pravidla |
+| ------- | ------- | ----- |
 |Contains     |NAT, síť, pravidla použití, vlastní nastavení DNS a DNS, skupiny IP a nastavení analýzy hrozeb (včetně seznamu povolených)|Pravidla pro překlad adres (NAT), síť a aplikace, vlastní nastavení DNS a DNS, skupiny IP adres a nastavení analýzy hrozeb (včetně seznamu povolených)|
 |Proti     |Virtuální rozbočovače a virtuální sítě|Pouze virtuální sítě|
 |Prostředí portálu     |Centrální správa pomocí Správce brány firewall|Samostatné prostředí brány firewall|

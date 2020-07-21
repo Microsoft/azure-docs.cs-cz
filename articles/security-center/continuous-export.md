@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299940"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519693"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
 
@@ -28,7 +29,6 @@ Pomocí těchto nástrojů můžete:
 
 
 
-
 ## <a name="availability"></a>Dostupnost
 
 - Stav verze: **všeobecně dostupné**
@@ -36,10 +36,7 @@ Pomocí těchto nástrojů můžete:
     - **Čtenář** v předplatném, který obsahuje konfiguraci exportu
     - **Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)
     - Musí mít taky oprávnění k zápisu pro cílový prostředek.
-- Cloud 
-    - ✔ Komerční cloudy
-    - ✔ US Gov
-    - ✘ Čína gov, ostatní gov
+- Cloudy: komerční cloudy ✔ ✔ US Gov ✘ Čína gov, ostatní gov
 
 
 ## <a name="setting-up-a-continuous-export"></a>Nastavení průběžného exportu

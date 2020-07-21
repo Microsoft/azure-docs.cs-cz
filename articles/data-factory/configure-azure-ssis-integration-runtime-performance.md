@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255530"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523311"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurace Azure-SSIS Integration Runtime pro vysoký výkon
 
@@ -104,11 +104,15 @@ Pokud nemáte mnoho balíčků ke spuštění a chcete, aby se balíčky spoušt
 
 Tato data představují jedno spuštění balíčku v jednom pracovním uzlu. Balíček načte 3 000 000 záznamů se sloupci křestní jméno a příjmení z Azure Blob Storage, vygeneruje sloupec s úplným názvem a zapíše záznamy, které mají úplný název delší než 20 znaků, do Azure Blob Storage.
 
+Osa y je počet balíčků, které dokončily provádění během jedné hodiny. Všimněte si, že se jedná pouze o výsledek testu jednoho balíčku využívajícího paměť. Pokud chcete zjistit propustnost balíčku, doporučujeme provést test sami.
+
 ![SSIS Integration Runtime – rychlost spuštění balíčku](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>Konfigurace pro celkovou propustnost
 
 Pokud máte spoustu balíčků, které je třeba spustit, a Vy se zajímáte o celkové propustnosti, použijte informace v následujícím grafu k výběru typu virtuálního počítače vhodného pro váš scénář.
+
+Osa y je počet balíčků, které dokončily provádění během jedné hodiny. Všimněte si, že se jedná pouze o výsledek testu jednoho balíčku využívajícího paměť. Pokud chcete zjistit propustnost balíčku, doporučujeme provést test sami.
 
 ![SSIS Integration Runtime maximální celkovou propustnost](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 

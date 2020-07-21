@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 083ed0001adb5524c124295eb3bc31f4afad99cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a0d3c344d19d0831dd8525ddf3311e0ce7cd682
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691754"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520813"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Vytváření a správa účtů integrace pro podnikové integrace B2B v Azure Logic Apps
 
@@ -32,13 +33,13 @@ V tomto tématu se dozvíte, jak provádět tyto úlohy:
 * Přesuňte účet pro integraci do jiné skupiny prostředků nebo předplatného Azure.
 * Odstraňte účet pro integraci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-integration-account"></a>Vytvoření účtu integrace
 
-Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části, [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)nebo [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create).
+Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části, [Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)nebo [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-create).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
@@ -56,11 +57,11 @@ Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Yes | <*Integration-Account-Name*> | Název vašeho účtu pro integraci, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). V tomto příkladu se používá "Fabrikam-Integration". |
-   | **Předplatné** | Yes | <*Azure – předplatné – název*> | Název vašeho předplatného Azure |
-   | **Skupina prostředků** | Yes | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která se má použít pro uspořádání souvisejících prostředků V tomto příkladu vytvořte novou skupinu prostředků s názvem "FabrikamIntegration-RG". |
-   | **Cenová úroveň** | Yes | <*úroveň cen*> | Cenová úroveň pro účet pro integraci, kterou můžete později změnit. V tomto příkladu vyberte **Free (zdarma**). Další informace najdete v těchto tématech: <p>- [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Umístění** | Yes | <*Oblast Azure*> | Oblast, kam se mají ukládat metadata účtu pro integraci Buď vyberte stejné umístění jako aplikace logiky, nebo vytvořte své aplikace logiky ve stejném umístění jako váš účet pro integraci. V tomto příkladu použijte "Západní USA". <p>**Poznámka**: Pokud chcete vytvořit účet pro integraci v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), vyberte tento ISE jako umístění. Další informace najdete v tématu [Vytvoření integračních účtů v ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
+   | **Název** | Ano | <*Integration-Account-Name*> | Název vašeho účtu pro integraci, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ), kulaté závorky ( `(` , `)` ) a tečky ( `.` ). V tomto příkladu se používá "Fabrikam-Integration". |
+   | **Předplatné** | Ano | <*Azure – předplatné – název*> | Název vašeho předplatného Azure |
+   | **Skupina prostředků** | Ano | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která se má použít pro uspořádání souvisejících prostředků V tomto příkladu vytvořte novou skupinu prostředků s názvem "FabrikamIntegration-RG". |
+   | **Cenová úroveň** | Ano | <*úroveň cen*> | Cenová úroveň pro účet pro integraci, kterou můžete později změnit. V tomto příkladu vyberte **Free (zdarma**). Další informace najdete v těchto tématech: <p>- [Logic Apps cenový model](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Omezení Logic Apps a konfigurace](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Ceny Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) |
+   | **Umístění** | Ano | <*Oblast Azure*> | Oblast, kam se mají ukládat metadata účtu pro integraci Buď vyberte stejné umístění jako aplikace logiky, nebo vytvořte své aplikace logiky ve stejném umístění jako váš účet pro integraci. V tomto příkladu použijte "Západní USA". <p>**Poznámka**: Pokud chcete vytvořit účet pro integraci v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), vyberte tento ISE jako umístění. Další informace najdete v tématu [Vytvoření integračních účtů v ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
    | **Log Analytics** | No | Vypnuto, zapnuto | Pro tento příklad nechejte nastavení **vypnuto** . |
    |||||
 
@@ -131,13 +132,13 @@ Tuto změnu můžete provést buď pomocí Azure Portal podle kroků v této č�
 
 #### <a name="azure-cli"></a>Azure CLI
 
-1. Pokud jste to ještě neudělali, [nainstalujte požadavky rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+1. Pokud jste to ještě neudělali, [nainstalujte požadavky rozhraní příkazového řádku Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
-1. V Azure Portal otevřete prostředí Azure [**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) .
+1. V Azure Portal otevřete prostředí Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest) .
 
    ![Otevření služby Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. Na příkazovém řádku zadejte [příkaz **AZ Resource** Command](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update)a nastavte `skuName` na vyšší úroveň, kterou chcete.
+1. Na příkazovém řádku zadejte [příkaz **AZ Resource** Command](/cli/azure/resource?view=azure-cli-latest#az-resource-update)a nastavte `skuName` na vyšší úroveň, kterou chcete.
 
    ```azurecli
    az resource update --resource-group {ResourceGroupName} --resource-type Microsoft.Logic/integrationAccounts --name {IntegrationAccountName} --subscription {AzureSubscriptionID} --set sku.name={SkuName}
@@ -153,15 +154,15 @@ Tuto změnu můžete provést buď pomocí Azure Portal podle kroků v této č�
 
 ### <a name="downgrade-pricing-tier"></a>Cenová úroveň downgrade
 
-Pokud chcete tuto změnu provést, použijte rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+Pokud chcete tuto změnu provést, použijte rozhraní příkazového [řádku Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
-1. Pokud jste to ještě neudělali, [nainstalujte požadavky rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+1. Pokud jste to ještě neudělali, [nainstalujte požadavky rozhraní příkazového řádku Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 
-1. V Azure Portal otevřete prostředí Azure [**Cloud Shell**](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) .
+1. V Azure Portal otevřete prostředí Azure [**Cloud Shell**](../cloud-shell/overview.md?view=azure-cli-latest) .
 
    ![Otevření služby Azure Cloud Shell](./media/logic-apps-enterprise-integration-create-integration-account/open-azure-cloud-shell-window.png)
 
-1. Na příkazovém řádku zadejte [příkaz **AZ Resource** ](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-update) a nastavte `skuName` na nižší úroveň, kterou chcete.
+1. Na příkazovém řádku zadejte [příkaz **AZ Resource** ](/cli/azure/resource?view=azure-cli-latest#az-resource-update) a nastavte `skuName` na nižší úroveň, kterou chcete.
 
    ```azurecli
    az resource update --resource-group <resourceGroupName> --resource-type Microsoft.Logic/integrationAccounts --name <integrationAccountName> --subscription <AzureSubscriptionID> --set sku.name=<skuName>
@@ -221,7 +222,7 @@ Pokud chcete aplikaci logiky propojit s jiným účtem pro integraci nebo už ne
 
 Účet pro integraci můžete přesunout do jiné skupiny prostředků Azure nebo do předplatného Azure. Když přesunete prostředky, Azure vytvoří nová ID prostředků, takže nezapomeňte místo toho použít nová ID a aktualizovat skripty nebo nástroje přidružené k přesunutým prostředkům. Pokud chcete změnit předplatné, musíte zadat taky existující nebo novou skupinu prostředků.
 
-Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části nebo v [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-move).
+Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části nebo v [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-move).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
@@ -253,7 +254,7 @@ Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části
 
 ## <a name="delete-integration-account"></a>Odstranění účtu integrace
 
-Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části, [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-delete)nebo [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount).
+Pro tuto úlohu můžete použít buď Azure Portal podle kroků v této části, [Azure CLI](/cli/azure/resource?view=azure-cli-latest#az-resource-delete)nebo [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 

@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: edfbf090c3409d583cda6fd2c9957c37be5dfb7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd54fec963b8f4775a8ade6277b071d62ca3850
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75378428"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524198"
 ---
 # <a name="access-and-manage-files-in-onedrive-connector-by-using-azure-logic-apps"></a>Přístup k souborům v konektoru OneDrive a jejich správa pomocí Azure Logic Apps
 
@@ -39,11 +40,11 @@ Trigger je událost, která se dá použít ke spuštění pracovního postupu d
 
 1. V návrháři aplikace logiky zadejte `onedrive` seznam aktivačních událostí:  
 
-   ![](./media/connectors-create-api-onedrive/onedrive-1.png)
+   ![Dialogové okno s názvem "Zobrazit spravovaná rozhraní API společnosti Microsoft" obsahuje pole, které obsahuje "OneDrive". Níže je uveden seznam čtyř aktivačních událostí. První z nich je "OneDrive – při vytvoření souboru". Druhá je vybraná možnost OneDrive – při úpravě souboru.](./media/connectors-create-api-onedrive/onedrive-1.png)
 
 2. Vyberte, **kdy se má soubor upravovat**. Pokud připojení již existuje, vyberte složku kliknutím na tlačítko Zobrazit výběr.
 
-   ![](./media/connectors-create-api-onedrive/sample-folder.png)
+   ![Dialogové okno s názvem "při úpravě souboru" obsahuje pole s názvem "složka" s přiřazeným tlačítkem Procházet.](./media/connectors-create-api-onedrive/sample-folder.png)
 
    Pokud se zobrazí výzva k přihlášení, zadejte přihlašovací údaje pro vytvoření připojení. [Vytvoření připojení](connectors-create-api-onedrive.md#create-the-connection) v tomto článku obsahuje seznam kroků.
 
@@ -51,7 +52,7 @@ Trigger je událost, která se dá použít ke spuštění pracovního postupu d
 
 3. Vyberte tlačítko **Upravit** a nastavte hodnoty **frekvence** a **interval** . Například pokud chcete, aby se Trigger dotazoval každých 15 minut, nastavte **četnost** na **minuty**a nastavte **interval** na **15**. 
 
-   ![](./media/connectors-create-api-onedrive/trigger-properties.png)
+   ![Dialogové okno s názvem "při úpravě souboru" zobrazuje pět polí označených jako "složka", "frekvence", "INTERVAL", "TIMEZONE" a "čas spuštění". Existují rozevírací seznamy pro pole četnost a časové pásmo.](./media/connectors-create-api-onedrive/trigger-properties.png)
 
 4. **Uložte** změny (v levém horním rohu panelu nástrojů). Vaše aplikace logiky se uloží a může se automaticky povolit.
 
@@ -61,23 +62,23 @@ Akce je operace prováděná pracovním postupem, který je definován v aplikac
 
 1. Vyberte znaménko plus. Zobrazí se několik možností: **přidat akci**, **Přidat podmínku**nebo jednu z **dalších** možností.
 
-   ![](./media/connectors-create-api-onedrive/add-action.png)
+   ![Snímek obrazovky ukazuje čtyři tlačítka: "+ nový krok", "přidat akci", "Přidat podmínku", a "... Další ".](./media/connectors-create-api-onedrive/add-action.png)
 
 2. Vyberte **přidat akci**.
 
 3. Do vyhledávacího pole zadejte `onedrive` seznam všech dostupných akcí.
 
-   ![](./media/connectors-create-api-onedrive/onedrive-actions.png) 
+   ![Dialogové okno s názvem "Zobrazit spravovaná rozhraní API společnosti Microsoft" obsahuje pole, které obsahuje "OneDrive". Níže je uveden seznam osmi akcí. První je "OneDrive – vytvořit soubor" a je vybraný.](./media/connectors-create-api-onedrive/onedrive-actions.png) 
 
 4. V našem příkladu vyberte **OneDrive – vytvořit soubor**. Pokud již existuje připojení, vyberte **cestu ke složce** , kam chcete soubor vložit, zadejte **název souboru**a zvolte požadovaný **obsah souboru** :  
 
-   ![](./media/connectors-create-api-onedrive/sample-action.png)
+   ![Dialogové okno s názvem "vytvořit soubor" zobrazuje tři pole označená "cesta ke složce", "název souboru" a "obsah složky". Vedle pole cesta ke složce je tlačítko procházení adresáře.](./media/connectors-create-api-onedrive/sample-action.png)
 
    Pokud se zobrazí výzva k zadání informací o připojení, zadejte podrobnosti pro [vytvoření připojení, jak je popsáno](#create-the-connection) v tomto tématu.
 
    V tomto příkladu vytvoříte nový soubor ve složce OneDrive. K vytvoření souboru OneDrivu můžete použít výstup z jiné triggeru. Přidejte například sadu Office 365 Outlook, *když přijde nový e-mail* . Pak přidejte akci *Vytvoření souboru* na OneDrivu, která používá pole příloh a typ obsahu v rámci foreach k vytvoření nového souboru na OneDrivu.
 
-   ![](./media/connectors-create-api-onedrive/foreach-action.png)
+   ![Dialogové okno s názvem for each obsahuje pole s popiskem "vybrat výstup z předchozích kroků", které obsahuje "přílohy". Zobrazí se dialogové okno vytvořit soubor pokrývající zbývající část pole for each s poli "cesta ke složce", "název souboru" a "obsah souboru". ](./media/connectors-create-api-onedrive/foreach-action.png)
 
 5. **Uložte** změny (v levém horním rohu panelu nástrojů). Vaše aplikace logiky se uloží a může se automaticky povolit.
 

@@ -2,14 +2,14 @@
 title: Shromažďovat & analyzovat protokoly prostředků
 description: Přečtěte si, jak odesílat protokoly prostředků a data událostí ze skupin kontejnerů v Azure Container Instances do protokolů Azure Monitor
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 07/13/2020
 ms.author: danlep
-ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259615"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524008"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Protokolování skupiny kontejnerů a instance s protokoly Azure Monitor
 
@@ -38,11 +38,10 @@ Služba Azure Container Instances potřebuje oprávnění k odesílání dat do 
 Získání ID a primárního klíče pracovního prostoru Log Analytics:
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
-1. V části **Nastavení**vyberte **Upřesnit nastavení** .
-1. Vyberte **připojené zdroje**  >  **Windows servery** (nebo **servery**se systémem Linux – ID a klíče jsou u obou) stejné.
+1. V části **Nastavení**vyberte **Správa agentů** .
 1. Poznamenejte si:
-   * **ID PRACOVNÍHO PROSTORU**
-   * **PRIMÁRNÍ KLÍČ**
+   * **ID pracovního prostoru**
+   * **Primární klíč**
 
 ## <a name="create-container-group"></a>Vytvoření skupiny kontejnerů
 
@@ -102,7 +101,9 @@ Krátce po spuštění příkazu byste měli dostat odpověď z Azure s podrobno
 
 ## <a name="view-logs"></a>Zobrazení protokolů
 
-Po nasazení skupiny kontejnerů může trvat několik minut (až 10), než se první položky protokolu objeví na webu Azure Portal. Chcete-li zobrazit protokoly skupiny kontejnerů v `ContainerInstanceLog_CL` tabulce:
+Po nasazení skupiny kontejnerů může trvat několik minut (až 10), než se první položky protokolu objeví na webu Azure Portal. 
+
+Chcete-li zobrazit protokoly skupiny kontejnerů v `ContainerInstanceLog_CL` tabulce:
 
 1. Na webu Azure Portal přejděte do svého pracovního prostoru služby Log Analytics.
 1. V části **Obecné**vyberte **protokoly** .  

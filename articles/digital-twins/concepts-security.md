@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0f1f9e17646c4432d9c1103b3c579fc6bb0d2f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a1447e64b606170601e6df6a443f53e3132294d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833160"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522257"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Zabezpečení digitálních vláken Azure pomocí řízení přístupu na základě role
 
@@ -58,7 +58,7 @@ Role můžete přiřadit dvěma způsoby:
 * prostřednictvím podokna řízení přístupu (IAM) pro digitální vlákna Azure v Azure Portal (viz [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal](../role-based-access-control/role-assignments-portal.md))
 * Přidání nebo odebrání role přes příkazy rozhraní příkazového řádku
 
-Podrobnější pokyny k tomu, jak to provést, najdete v [kurzu o digitálních zdvojeních Azure: připojení kompletního řešení](tutorial-end-to-end.md).
+Podrobnější pokyny k tomu, jak to provést, najdete v [kurzu o digitálních zdvojeních Azure: *připojení kompletního řešení*](tutorial-end-to-end.md).
 
 ## <a name="permission-scopes"></a>Obory oprávnění
 
@@ -73,6 +73,6 @@ Následující seznam popisuje úrovně, na kterých můžete přistoupit k pros
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podívejte se, jak projít tyto kroky pomocí ukázkové klientské aplikace v tématu [Postupy: ověření klientské aplikace](how-to-authenticate-client.md).
+* Podívejte se, jak projít tyto kroky pomocí ukázkové klientské aplikace v tématu [*Postupy: ověření klientské aplikace*](how-to-authenticate-client.md).
 
 * Přečtěte si další informace o [RBAC pro Azure](../role-based-access-control/overview.md).

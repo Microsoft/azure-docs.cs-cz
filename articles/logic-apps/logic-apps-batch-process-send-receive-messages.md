@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4863ff0005f09ca325125667062455357687fdd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144340"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521135"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
 
@@ -29,7 +29,7 @@ Chcete-li odesílat a zpracovávat zprávy v konkrétním způsobu jako skupiny,
 
 Ujistěte se, že přijímač Batch a odesilatel dávky sdílejí stejné předplatné Azure *a* oblast Azure. Pokud ne, nemůžete při vytváření odesílatele Batch vybrat přijímače Batch, protože nejsou navzájem viditelné.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud předplatné nemáte, můžete [začít s bezplatným účtem Azure](https://azure.microsoft.com/free/).
 Případně si [můžete zaregistrovat předplatné s průběžnými platbami](https://azure.microsoft.com/pricing/purchase-options/).
@@ -37,7 +37,7 @@ Případně si [můžete zaregistrovat předplatné s průběžnými platbami](h
 * E-mailový účet s jakýmkoli [poskytovatelem e-mailu, který podporuje Azure Logic Apps](../connectors/apis-list.md)
 
   > [!IMPORTANT]
-  > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -117,7 +117,7 @@ Než budete moci odeslat zprávy do dávky, tato dávková operace musí nejprve
 
      ![V části "tělo" vyberte "ID zprávy".](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
-7.  Uložte svou aplikaci logiky. Nyní jste vytvořili přijímač Batch.
+7.  Uložte aplikaci logiky. Nyní jste vytvořili přijímač Batch.
 
     ![Uložení aplikace logiky](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
 
@@ -205,7 +205,7 @@ Nyní vytvořte jednu nebo více aplikací pro příjem z aplikace Batch, které
       Tato funkce **Rand** vygeneruje číslo mezi 1 a pěti. 
       Takže tuto dávku vydělíte do pěti očíslovaných oddílů, které tento výraz dynamicky nastaví.
 
-5. Uložte svou aplikaci logiky. Vaše aplikace logiky vašeho odesílatele teď vypadá podobně jako v tomto příkladu:
+5. Uložte aplikaci logiky. Vaše aplikace logiky vašeho odesílatele teď vypadá podobně jako v tomto příkladu:
 
    ![Uložení aplikace logiky odesilatele](./media/logic-apps-batch-process-send-receive-messages/batch-sender-finished.png)
 

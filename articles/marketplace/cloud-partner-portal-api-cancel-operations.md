@@ -4,20 +4,20 @@ description: Rozhraní API pro zrušení aktuálně probíhající operace v nab
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 06/16/2020
-ms.openlocfilehash: e65f0a8ee0a5dfafab681010006fe190cb5bad70
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 462ca525be9cf46c87acdf4025223a98afaf8e3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102748"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520370"
 ---
 # <a name="cancel-operation"></a>Zrušit operaci
 
 > [!NOTE]
-> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
 Toto rozhraní API zruší aktuálně probíhající operaci na této nabídce. K předání do tohoto rozhraní API použijte [rozhraní API pro načtení operací](./cloud-partner-portal-api-retrieve-operations.md) `operationId` . Zrušení je obvykle synchronní operace, ale v některých složitých scénářích může být pro zrušení existující operace nutná nová operace. V tomto případě tělo odpovědi HTTP obsahuje umístění operace, které by se mělo použít k dotazování na stav.
 
@@ -34,7 +34,7 @@ Toto rozhraní API zruší aktuálně probíhající operaci na této nabídce. 
 | verze-api  |  Aktuální verze rozhraní API                               |    Datum           |
 |  |  |  |
 
-## <a name="header"></a>Záhlaví
+## <a name="header"></a>Hlavička
 ------
 
 |  **Název**              |  **Hodnota**         |
@@ -46,7 +46,7 @@ Toto rozhraní API zruší aktuálně probíhající operaci na této nabídce. 
 ## <a name="body-example"></a>Příklad textu
 ------------
 
-### <a name="request"></a>Žádost
+### <a name="request"></a>Request
 
 ``` json
 {

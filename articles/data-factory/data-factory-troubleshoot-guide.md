@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836154"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522852"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Řešení potíží se službou Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -122,6 +123,14 @@ Problémy s konektorem, jako je chyba při použití aktivity kopírování, naj
 - **Příčina**: chybové zprávy indikují různé problémy, jako je neočekávaný stav clusteru nebo konkrétní aktivita. Často se nezobrazí žádná chybová zpráva.
 
 - **Doporučení**: není k dispozici
+
+### <a name="error-code-3208"></a>Kód chyby: 3208
+
+- **Zpráva**:`An error occurred while sending the request.`
+
+- **Příčina**: síťové připojení ke službě datacihly bylo přerušeno.
+
+- **Doporučení**: Pokud používáte prostředí Integration runtime v místním prostředí, ujistěte se, že síťové připojení je spolehlivé z uzlů Integration runtime. Pokud používáte Azure Integration runtime, obvykle to funguje.
  
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
@@ -1037,7 +1046,7 @@ Použití **Fiddler** k vytvoření relace HTTP monitorované webové aplikace:
  
    1. V případě potřeby přidejte záhlaví a text žádosti.
 
-   1. Vyberte **Provést**.
+   1. Vyberte **Execute** (Provést).
 
 1. Zapněte znovu zachytávání provozu a dokončete problematickou transakci na stránce.
 
@@ -1053,5 +1062,5 @@ Pro další nápovědu k řešení potíží zkuste tyto prostředky:
 * [Žádosti o Data Factory funkcí](https://feedback.azure.com/forums/270578-data-factory)
 * [Stack Overflow fórum pro Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 * [Informace o Twitteru týkající se Data Factory](https://twitter.com/hashtag/DataFactory)
-* [Videa k Azure](https://azure.microsoft.com/resources/videos/index/)
+* [Videa Azure](https://azure.microsoft.com/resources/videos/index/)
 * [Stránka s otázkou Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-data-factory.html)

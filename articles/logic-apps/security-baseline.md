@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a37f57bc12e5756b493bb009268beb067e7faaab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833974"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520642"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Základní hodnoty zabezpečení Azure pro Logic Apps
 
 Základní plán zabezpečení Azure pro Logic Apps obsahuje doporučení, která vám pomůžou vylepšit stav zabezpečení vašeho nasazení.
 
-Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
+Základní hodnota této služby se vykreslí z [bezpečnostního testu Azure Security 1,0](../security/benchmarks/overview.md), který poskytuje doporučení k zabezpečení cloudových řešení v Azure s využitím našich osvědčených postupů.
 
-Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Další informace najdete v tématu [Přehled standardních hodnot zabezpečení Azure](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Zabezpečení sítě
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečení sítě](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Ochrana prostředků Azure v rámci virtuálních sítí
 
@@ -36,25 +36,25 @@ Při vytváření ISE můžete použít buď interní nebo externí koncové bod
 
 Ujistěte se, že všechna nasazení podsítí virtuální sítě související s ISE mají skupinu zabezpečení sítě, která se použije pro řízení přístupu k síti specifická pro důvěryhodné porty a zdroje vaší aplikace. Když nasadíte Logic Apps do ISE, použijte privátní odkaz. Privátní odkaz Azure umožňuje přístup ke službám Azure PaaS a zákaznickým/partnerským službám Azure hostovaným na zákazníky přes privátní koncový bod ve vaší virtuální síti. Případně, pokud máte konkrétní případ použití, můžete tento požadavek splnit implementací Azure Firewall. Chcete-li při nastavování pravidel zabezpečení snížit složitost, použijte značky služby, které reprezentují skupiny předpon IP adres pro konkrétní službu Azure.
 
-* [Vysvětlení konektorů pro Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list)
+* [Vysvětlení konektorů pro Logic Apps](../connectors/apis-list.md)
 
-* [Principy značek služeb v Azure](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Principy značek služeb v Azure](../virtual-network/service-tags-overview.md)
 
-* [Pochopení přístupu k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview)
+* [Pochopení přístupu k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)](./connect-virtual-network-vnet-isolated-environment-overview.md)
 
-* [Vysvětlení koncových bodů služby Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+* [Vysvětlení koncových bodů služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-* [Principy privátního odkazu Azure](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [Principy privátního odkazu Azure](../private-link/private-link-overview.md)
 
-* [Principy přístupu ke koncovému bodu ISE](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview#ise-endpoint-access)
+* [Principy přístupu ke koncovému bodu ISE](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
-* [Vytvoření Virtual Network](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Vytvoření Virtual Network](../virtual-network/quick-create-portal.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Jak nasadit a nakonfigurovat Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Jak nasadit a nakonfigurovat Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Jak povolit přístup pro ISE](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment#enable-access-for-ise)
+* [Jak povolit přístup pro ISE](./connect-virtual-network-vnet-isolated-environment.md#enable-access-for-ise)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -64,11 +64,11 @@ Ujistěte se, že všechna nasazení podsítí virtuální sítě související 
 
 **Doprovodné**materiály: Pokud spouštíte Logic Apps v prostředí ISE (Integration Service Environment), které používá externí přístupový bod, můžete ke snížení rizika exfiltrace dat použít skupinu zabezpečení sítě (NSG). Povolte protokoly toku NSG a odešlete protokoly do účtu Azure Storage pro audit provozu. Protokoly toku NSG můžete také odesílat do pracovního prostoru Log Analytics a používat Analýza provozu k poskytování přehledů o toku přenosů ve vašem cloudu Azure. Mezi výhody Analýza provozu patří schopnost vizualizovat síťovou aktivitu a identifikovat aktivní body, identifikovat bezpečnostní hrozby, pochopit vzory toků provozu a označovat nesprávné konfigurace sítě.
 
-* [Principy přístupu ke koncovému bodu ISE](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview#ise-endpoint-access)
+* [Principy přístupu ke koncovému bodu ISE](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Postup povolení a použití Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -94,19 +94,19 @@ Použijte Azure Security Center k přístupu k síti jenom v čase, abyste mohli
 
 Pomocí Azure Security Center adaptivního posílení zabezpečení sítě doporučujeme doporučit konfigurace NSG, které omezují porty a zdrojové IP adresy na základě skutečného provozu a analýzy hrozeb.
 
-* [Postup zabezpečení příchozích volání na Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-request-based-triggers)
+* [Postup zabezpečení příchozích volání na Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
 
-* [Jak omezit příchozí IP adresy](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#restrict-inbound-ip-addresses)
+* [Jak omezit příchozí IP adresy](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
-* [Jak nakonfigurovat DDoS Protection](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [Jak nakonfigurovat DDoS Protection](../virtual-network/manage-ddos-protection.md)
 
-* [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Pochopení Azure Security Center integrované analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Pochopení Azure Security Center integrované analýzy hrozeb](../security-center/threat-protection.md)
 
-* [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+* [Pochopení Azure Security Center adaptivního posílení zabezpečení sítě](../security-center/security-center-adaptive-network-hardening.md)
 
-* [Pochopení Azure Security Center k síťovému Access Control v čase](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Pochopení Azure Security Center k síťovému Access Control v čase](../security-center/security-center-just-in-time.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -120,15 +120,15 @@ Chcete-li zajistit další ochranu a informace o síťovém provozu, můžete se
 
 V opačném případě můžete z webu Marketplace využít řešení třetí strany, které tento požadavek splní.
 
-* [Principy přístupu ke koncovému bodu ISE](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview#ise-endpoint-access)
+* [Principy přístupu ke koncovému bodu ISE](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
-* [Jak povolit protokoly toku NSG](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [Jak povolit protokoly toku NSG](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Postup povolení a použití Analýza provozu](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Postup povolení a použití Analýza provozu](../network-watcher/traffic-analytics.md)
 
-* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Pochopení protokolů přístupu WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/web-application-firewall-logs#access-log)
+* [Pochopení protokolů přístupu WAF](../web-application-firewall/ag/web-application-firewall-logs.md#access-log)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -142,9 +142,9 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Postup nasazení Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Postup nasazení Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Postup konfigurace výstrah pomocí Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Postup konfigurace výstrah pomocí Azure Firewall](../firewall/threat-intel.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -154,11 +154,11 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Doprovodné**materiály: Pokud spouštíte Logic Apps v prostředí ISE (Integration Service Environment), nasaďte Azure Application Gateway.
 
-* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [Jak integrovat API Management do interní virtuální sítě s Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Postup konfigurace Application Gateway pro použití protokolu HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [Postup konfigurace Application Gateway pro použití protokolu HTTPS](../application-gateway/create-ssl-portal.md)
 
-* [Princip vyrovnávání zatížení vrstvy 7 pomocí bran webových aplikací Azure](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Princip vyrovnávání zatížení vrstvy 7 pomocí bran webových aplikací Azure](../application-gateway/overview.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -168,7 +168,7 @@ Nasaďte řešení brány firewall podle svého výběru na základě hranic sí
 
 **Doprovodné**materiály: u prostředků, které potřebují přístup k instancím Azure Logic Apps, použijte značky služby virtuální sítě a definujte řízení přístupu k síti u skupin zabezpečení sítě nebo Azure firewall. Značky služeb můžete používat místo konkrétních IP adres při vytváření pravidel zabezpečení. Zadáním názvu značky služby (např. LogicApps, LogicAppsManagement) v příslušném zdrojovém nebo cílovém poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu. Společnost Microsoft spravuje předpony adres, které jsou součástí značky služby, a automaticky aktualizuje označení služby jako adresy změny.
 
-* [Další informace o použití značek služeb](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [Další informace o použití značek služeb](../virtual-network/service-tags-overview.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -184,9 +184,9 @@ Měla by být povolená DDoS Protection Standard.
 
 Pomocí plánů Azure můžete také zjednodušit rozsáhlá nasazení Azure tím, že zabalíte klíčové artefakty prostředí, jako jsou například šablony Azure Resource Manager, řízení přístupu na základě role (RBAC) a zásady v rámci jediné definice podrobného plánu. Podrobné sestavování můžete snadno použít pro nová předplatná a prostředí a vyladit řízení a správu prostřednictvím správy verzí.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Vytvoření Azure Blueprint](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Vytvoření Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -200,13 +200,13 @@ Použijte některou z předdefinovaných Azure Policy definic souvisejících s 
 
 Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akce s prostředky na základě jejich značek.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
-* [Vytvoření Virtual Network](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Vytvoření Virtual Network](../virtual-network/quick-create-portal.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Seznam Azure Policy definic pro Logic Apps](https://docs.microsoft.com/azure/logic-apps/policy-samples)
+* [Seznam Azure Policy definic pro Logic Apps](./policy-samples.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -216,9 +216,9 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 **Pokyny**: pomocí protokolu aktivit Azure můžete monitorovat konfigurace síťových prostředků a zjišťovat změny síťových prostředků, které souvisejí s vašimi Azure Logic Apps instancemi. Vytvoří výstrahy v rámci Azure Monitor, které se aktivují, když budou provedeny změny v kritických síťových prostředcích.
 
-* [Jak zobrazit a načíst události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Jak zobrazit a načíst události protokolu aktivit Azure](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Vytváření výstrah v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytváření výstrah v Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -226,7 +226,7 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 ## <a name="logging-and-monitoring"></a>Protokolování a monitorování
 
-*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Další informace najdete v tématu [řízení zabezpečení: protokolování a monitorování](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: Použijte schválené zdroje synchronizace času
 
@@ -242,11 +242,11 @@ Pomocí Azure PowerShell nebo Azure CLI můžete vyhledávat nebo provádět akc
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
 
-* [Jak nastavit protokoly Azure Monitor a shromažďovat diagnostická data pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps-log-analytics)
+* [Jak nastavit protokoly Azure Monitor a shromažďovat diagnostická data pro Azure Logic Apps](./monitor-logic-apps-log-analytics.md)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -258,11 +258,11 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
 
-* [Jak nastavit protokoly Azure Monitor a shromažďovat diagnostická data pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps-log-analytics)
+* [Jak nastavit protokoly Azure Monitor a shromažďovat diagnostická data pro Azure Logic Apps](./monitor-logic-apps-log-analytics.md)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -282,9 +282,9 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 V Azure Monitor nastavte dobu uchování protokolu pro protokoly přidružené k vašim Azure Logic Apps instancí podle předpisů pro dodržování předpisů vaší organizace.
 
-* [Jak monitorovat stav spuštění, zkontrolovat historii triggeru a nastavit výstrahy pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps)
+* [Jak monitorovat stav spuštění, zkontrolovat historii triggeru a nastavit výstrahy pro Azure Logic Apps](./monitor-logic-apps.md)
 
-* [Postup nastavení parametrů uchovávání protokolů](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Postup nastavení parametrů uchovávání protokolů](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -298,13 +298,13 @@ Můžete také povolit nastavení diagnostiky protokolu aktivit Azure a odesíla
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM třetí strany.
 
-* [Jak nastavit protokoly Azure Monitor a shromažďovat diagnostická data pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps-log-analytics)
+* [Jak nastavit protokoly Azure Monitor a shromažďovat diagnostická data pro Azure Logic Apps](./monitor-logic-apps-log-analytics.md)
 
-* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Postup povolení nastavení diagnostiky pro protokol aktivit Azure](../azure-monitor/platform/activity-log.md)
 
-* [Jak shromažďovat a analyzovat protokoly aktivit Azure v Log Analytics v Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect)
+* [Jak shromažďovat a analyzovat protokoly aktivit Azure v Log Analytics v Azure Monitor](../azure-monitor/platform/activity-log.md)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -316,11 +316,11 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel nebo SIEM tře
 
 Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Správa výstrah v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Správa výstrah v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Upozornění na data protokolu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Upozornění na data protokolu Log Analytics](../azure-monitor/learn/tutorial-response.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -352,7 +352,7 @@ Alternativně můžete povolit a začlenit data do Azure Sentinel.
 
 ## <a name="identity-and-access-control"></a>Identita a řízení přístupu
 
-*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Další informace najdete v tématu [řízení zabezpečení: identita a řízení přístupu](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: udržování inventáře účtů pro správu
 
@@ -362,13 +362,13 @@ Pro snadný přístup k dalším prostředkům, které jsou chráněné Azure Ac
 
 Každý koncový bod žádosti v aplikaci logiky má v adrese URL koncového bodu sdílený přístupový podpis (SAS). Pokud sdílíte adresu URL koncového bodu pro aktivační událost na základě požadavku s ostatními stranami, můžete vygenerovat adresy URL zpětného volání, které používají konkrétní klíče a mají datum vypršení platnosti. Tímto způsobem můžete plynule vrátit klíče nebo omezit přístup k aktivaci aplikace logiky na základě konkrétního časového rozmezí.
 
-* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Jak získat roli adresáře ve službě Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity)
+* [Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](./create-managed-service-identity.md)
 
-* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Jak načíst členy role adresáře v Azure AD pomocí PowerShellu](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Jak zabezpečit přístup a data v Azure Logic Apps pomocí SAS](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-request-based-triggers)
+* [Jak zabezpečit přístup a data v Azure Logic Apps pomocí SAS](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -382,9 +382,9 @@ Pokud se používá základní ověřování, budete muset zadat uživatelské j
 
 Pokud používáte infrastrukturu jako kód, neukládejte hesla do kódu a místo toho použijte Azure Key Vault k ukládání a načítání přihlašovacích údajů.
 
-* [Zabezpečení a přístup k datům v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app)
+* [Zabezpečení a přístup k datům v Logic Apps](./logic-apps-securing-a-logic-app.md)
 
-* [Jak nastavit a načíst tajný klíč z Azure Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal)
+* [Jak nastavit a načíst tajný klíč z Azure Key Vault](../key-vault/secrets/quick-create-portal.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -399,9 +399,9 @@ Kromě toho můžete použít doporučení z Azure Security Center nebo integrov
 - Zastaralé účty s oprávněním vlastníka by se měly odebrat z vašeho předplatného.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 
-* [Použití Azure Security Center k monitorování identity a přístupu (Preview)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Použití Azure Security Center k monitorování identity a přístupu (Preview)](../security-center/security-center-identity-access.md)
 
-* [Jak používat Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Jak používat Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -415,13 +415,13 @@ Mnoho konektorů také vyžaduje, abyste nejprve vytvořili připojení k cílov
 
 Pro konektory, které používají Azure Active Directory (Azure AD) OAuth, vytvoření připojení znamená přihlášení ke službě, jako je například Office 365, Salesforce nebo GitHub, kde je váš přístupový token zašifrovaný a bezpečně uložený v úložišti tajného úložiště Azure. Jiné konektory, například FTP a SQL, vyžadují připojení, které má podrobnosti o konfiguraci, jako je adresa serveru, uživatelské jméno a heslo. Tyto podrobnosti konfigurace připojení jsou taky šifrované a bezpečně uložené.
 
-* [Volání rozhraní Azure REST API](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+* [Volání rozhraní Azure REST API](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [Postup registrace klientské aplikace (instančního objektu) ve službě Azure AD](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [Postup registrace klientské aplikace (instančního objektu) ve službě Azure AD](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-* [Pracovní postup spustí informace rozhraní API](https://docs.microsoft.com/rest/api/logic/workflowtriggers)
+* [Pracovní postup spustí informace rozhraní API](/rest/api/logic/workflowtriggers)
 
-* [Principy konfigurace konektoru](https://docs.microsoft.com/azure/connectors/apis-list])
+* [Principy konfigurace konektoru](../connectors/apis-list.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -431,9 +431,9 @@ Pro konektory, které používají Azure Active Directory (Azure AD) OAuth, vytv
 
 **Doprovodné**materiály: Povolte Azure Active Directory (AD) Multi-Factor Authentication (MFA) a sledujte Azure Security Center doporučení pro správu identit a přístupu.
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Jak monitorovat identitu a přístup v rámci Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Jak monitorovat identitu a přístup v rámci Azure Security Center](../security-center/security-center-identity-access.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -443,9 +443,9 @@ Pro konektory, které používají Azure Active Directory (Azure AD) OAuth, vytv
 
 **Pokyny**: použití pracovních stanic s privilegovaným přístupem (privilegovaným přístupem) s nakonfigurovaným Multi-Factor Authentication (MFA), které jsou nakonfigurovány pro přihlášení a konfiguraci prostředků Azure.
 
-* [Další informace o pracovních stanicích s privilegovaným přístupem](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Další informace o pracovních stanicích s privilegovaným přístupem](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Jak povolit vícefaktorové ověřování v Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Jak povolit vícefaktorové ověřování v Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -457,9 +457,9 @@ Pro konektory, které používají Azure Active Directory (Azure AD) OAuth, vytv
 
 Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a sestavy týkající se rizikového chování uživatelů.
 
-* [Postup nasazení Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Postup nasazení Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Vysvětlení zjišťování rizik Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Vysvětlení zjišťování rizik Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -471,9 +471,9 @@ Navíc můžete pomocí zjišťování rizik Azure AD zobrazovat výstrahy a ses
 
 Každý koncový bod žádosti v aplikaci logiky navíc má v adrese URL koncového bodu sdílený přístupový podpis (SAS). Aplikaci logiky můžete omezit tak, aby přijímala požadavky pouze z určitých IP adres.
 
-* [Postup konfigurace pojmenovaných umístění v Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Postup konfigurace pojmenovaných umístění v Azure](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-* [Vysvětlení, jak omezit příchozí IP adresy v Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#restrict-inbound-ip-addresses)
+* [Vysvětlení, jak omezit příchozí IP adresy v Logic Apps](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -491,9 +491,9 @@ Azure Logic Apps podporuje spravované identity přiřazené systémem i uživat
 - Azure API Management
 - Azure App Services
 
-* [Jak vytvořit a nakonfigurovat instanci Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Jak vytvořit a nakonfigurovat instanci Azure AD](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity)
+* [Ověřování přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](./create-managed-service-identity.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -503,9 +503,9 @@ Azure Logic Apps podporuje spravované identity přiřazené systémem i uživat
 
 **Doprovodné**materiály: Azure Active Directory (AD) poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé.
 
-* [Pochopení sestav Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Pochopení sestav Azure AD](../active-directory/reports-monitoring/index.yml)
 
-* [Jak používat recenze Azure identity Access](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Jak používat recenze Azure identity Access](../active-directory/governance/access-reviews-overview.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -519,9 +519,9 @@ Máte přístup ke zdrojům přihlašovacích aktivit, auditování a rizikovýc
 
 Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživatelské účty Azure AD a odesláním protokolů auditu a protokolů přihlášení do Log Analytics pracovního prostoru. Požadované výstrahy protokolu můžete nakonfigurovat v rámci Log Analytics.
 
-* [Jak integrovat protokoly aktivit Azure do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Jak integrovat protokoly aktivit Azure do Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [Postup zprovoznění služby Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Postup zprovoznění služby Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -531,11 +531,11 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné**materiály: použití funkcí rizika a ochrany identity v Azure AD ke konfiguraci automatizovaných odpovědí na zjištěné podezřelé akce týkající se identit uživatelů. Můžete také ingestovat data do služby Azure Sentinel pro další šetření.
 
-* [Jak zobrazit rizikové přihlašování Azure AD](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Jak zobrazit rizikové přihlašování Azure AD](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Jak nakonfigurovat a povolit zásady rizik ochrany identity](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Jak připojit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Jak připojit Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -545,7 +545,7 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 **Doprovodné**materiály: aktuálně není k dispozici; Customer Lockbox ještě není pro Azure Logic Apps podporovaná.
 
-* [Seznam služeb podporovaných Customer Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Seznam služeb podporovaných Customer Lockbox](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -553,13 +553,13 @@ Tento proces můžete zjednodušit vytvořením nastavení diagnostiky pro uživ
 
 ## <a name="data-protection"></a>Ochrana dat
 
-*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Další informace najdete v tématu [řízení zabezpečení: Ochrana dat](../security/benchmarks/security-control-data-protection.md).*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: Udržujte inventář citlivých informací
 
 **Doprovodné**materiály: používejte značky, které vám pomůžou při sledování prostředků Azure, které ukládají nebo zpracovávají citlivé informace.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -575,15 +575,15 @@ Při vytváření ISE můžete použít buď interní nebo externí koncové bod
 
 Kromě toho implementujte izolaci pomocí samostatných předplatných a skupin pro správu pro jednotlivé domény zabezpečení, jako je například typ prostředí a úroveň citlivosti dat. Můžete omezit úroveň přístupu k prostředkům Azure, které vaše aplikace a podniková prostředí vyžadují. Přístup k prostředkům Azure můžete řídit prostřednictvím řízení přístupu na základě role Azure (RBAC).
 
-* [Vysvětlení konektorů pro Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list)
+* [Vysvětlení konektorů pro Logic Apps](../connectors/apis-list.md)
 
-* [Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview)
+* [Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)](./connect-virtual-network-vnet-isolated-environment-overview.md)
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -597,7 +597,7 @@ Využijte řešení třetích stran z Azure Marketplace na hraničních sítích
 
 Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -611,17 +611,17 @@ Aktivační událost žádosti podporuje pro příchozí požadavky pouze zabezp
 
 Pokud je to možné, postupujte podle Azure Security Center doporučení pro šifrování v klidovém režimu a šifrování.
 
-* [Zabezpečený přístup a data v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app)
+* [Zabezpečený přístup a data v Azure Logic Apps](./logic-apps-securing-a-logic-app.md)
 
-* [Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-native-reqres#tls-support)
+* [Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps](../connectors/connectors-native-reqres.md#tls-support)
 
-* [Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-native-http#tls-support)
+* [Volání koncových bodů služby přes HTTP nebo HTTPS z Azure Logic Apps](../connectors/connectors-native-http.md#tls-support)
 
-* [Pochopení šifrování při přenosu pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Pochopení šifrování při přenosu pomocí Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Pochopení šifrování dat v klidovém případě pomocí Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Pochopení šifrování dat v klidovém případě pomocí Azure](../security/fundamentals/encryption-atrest.md)
 
-* [Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps](./customer-managed-keys-integration-service-environment.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -633,9 +633,9 @@ Pokud je to možné, postupujte podle Azure Security Center doporučení pro ši
 
 Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Zabezpečený přístup k datům historie spouštění](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-run-history-data)
+* [Zabezpečený přístup k datům historie spouštění](./logic-apps-securing-a-logic-app.md#access-to-run-history-data)
 
-* [Pochopení ochrany zákaznických dat v Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Pochopení ochrany zákaznických dat v Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -649,7 +649,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a 
 
 Pokud chcete ostatním uživatelům zabránit ve změně nebo odstranění vaší aplikace logiky, můžete použít Azure Resource Lock. Tato možnost zabraňuje ostatním změnám a odstraňování produkčních prostředků.
 
-* [Zabezpečený přístup k operacím Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-logic-app-operations)
+* [Zabezpečený přístup k operacím Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -659,7 +659,7 @@ Pokud chcete ostatním uživatelům zabránit ve změně nebo odstranění vaš�
 
 **Doprovodné**materiály: nepoužitelné; Toto doporučení je určené pro výpočetní prostředky. Společnost Microsoft spravuje základní infrastrukturu pro Azure Logic Apps a implementuje přísné ovládací prvky, které zabrání ztrátě nebo expozici zákaznických dat.
 
-* [Ochrana zákaznických dat Azure](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Ochrana zákaznických dat Azure](../security/fundamentals/protection-customer-data.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -671,7 +671,7 @@ Pokud chcete ostatním uživatelům zabránit ve změně nebo odstranění vaš�
 
 Když vytvoříte prostředí ISE (Integration Service Environment) pro hostování aplikací logiky a potřebujete větší kontrolu nad šifrovacími klíči používanými Azure Storage, můžete nastavit, používat a spravovat vlastní klíč pomocí Azure Key Vault. Tato funkce se také označuje jako "Bring Your Own Key" (BYOK) a váš klíč se nazývá klíč spravovaný zákazníkem.
 
-* [Šifrování neaktivních dat pro prostředí integrační služby v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Šifrování neaktivních dat pro prostředí integrační služby v Azure Logic Apps](./customer-managed-keys-integration-service-environment.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -681,7 +681,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 **Doprovodné**materiály: pomocí Azure monitor s protokolem aktivit Azure můžete vytvářet upozornění na změny v Azure Logic Apps a také na jiné důležité nebo související prostředky.
 
-* [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Vytvoření upozornění pro události protokolu aktivit Azure](../azure-monitor/platform/alerts-activity-log.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -689,7 +689,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ## <a name="vulnerability-management"></a>Správa ohrožení zabezpečení
 
-*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)zabezpečení.*
+*Další informace najdete v tématu [řízení zabezpečení: Správa ohrožení](../security/benchmarks/security-control-vulnerability-management.md)zabezpečení.*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: spuštění automatizovaných nástrojů pro kontrolu ohrožení zabezpečení
 
@@ -733,7 +733,7 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 ## <a name="inventory-and-asset-management"></a>Správa inventáře a aktiv
 
-*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Další informace najdete v tématu [řízení zabezpečení: inventář a Správa prostředků](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: použití řešení automatizovaného zjišťování prostředků
 
@@ -741,11 +741,11 @@ Když vytvoříte prostředí ISE (Integration Service Environment) pro hostová
 
 I když je možné zjistit klasické prostředky Azure pomocí grafu prostředků, důrazně doporučujeme, abyste vytvořili a používali Azure Resource Manager prostředky, které budou předány dál.
 
-* [Jak vytvářet dotazy pomocí Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
-* [Jak zobrazit vaše předplatná Azure](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Jak zobrazit vaše předplatná Azure](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Pochopení Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Pochopení Azure RBAC](../role-based-access-control/overview.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -755,7 +755,7 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 
 **Doprovodné**materiály: použití značek pro prostředky Azure poskytující metadata k logickému uspořádání do taxonomie.
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -766,14 +766,14 @@ I když je možné zjistit klasické prostředky Azure pomocí grafu prostředk�
 **Doprovodné**materiály: Používejte označení, skupiny pro správu a samostatné odběry, pokud je to vhodné, k organizování a sledování prostředků Azure. Proveďte pravidelné sjednocení inventáře a zajistěte si včas odstranění neautorizovaných prostředků z předplatného.
 
 Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v předplatných zákazníka pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
-* [Vytvoření dalších předplatných Azure](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [Vytvoření dalších předplatných Azure](../cost-management-billing/manage/create-subscription.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Vytváření a používání značek](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Vytváření a používání značek](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -785,11 +785,11 @@ Kromě toho použijte Azure Policy k omezení typu prostředků, které se dají
 
 Poznámka: vzhledem k zásadám ochrany osobních údajů a ochraně osobních údajů Google můžete použít konektor Gmail jenom se službami schválenými v Google. Tato situace se vyvíjí a může mít vliv na ostatní konektory Google v budoucnu.
 
-* [Seznam všech konektorů Logic Apps](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors)
+* [Seznam všech konektorů Logic Apps](/connectors/connector-reference/connector-reference-logicapps-connectors)
 
-* [Porozumění problémům a omezením pro konektory Gmail](https://docs.microsoft.com/connectors/gmail/#known-issues-and-limitations)
+* [Porozumění problémům a omezením pro konektory Gmail](/connectors/gmail/#known-issues-and-limitations)
 
-* [Další informace o zásadách ochrany osobních údajů Google](https://docs.microsoft.com/azure/connectors/connectors-google-data-security-privacy-policy)
+* [Další informace o zásadách ochrany osobních údajů Google](../connectors/connectors-google-data-security-privacy-policy.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -801,9 +801,9 @@ Poznámka: vzhledem k zásadám ochrany osobních údajů a ochraně osobních �
 
 Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazovat nebo zjišťovat prostředky. Ujistěte se, že všechny prostředky Azure přítomné v daném prostředí jsou schválené.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak vytvářet dotazy pomocí Azure Resource graphu](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Jak vytvářet dotazy pomocí Azure Resource graphu](../governance/resource-graph/first-query-portal.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -836,12 +836,12 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 ### <a name="69-use-only-approved-azure-services"></a>6,9: Používejte jenom schválené služby Azure.
 
 **Doprovodné**materiály: použijte Azure Policy k omezení typu prostředků, které se dají vytvořit v zákaznických předplatných, pomocí následujících integrovaných definic zásad:
-- Nepovolené typy prostředků
+- Žádné povolené typy prostředků
 - Povolené typy prostředků
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Jak odepřít konkrétní typ prostředku pomocí Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -859,7 +859,7 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 **Pokyny**: Nakonfigurujte podmíněný přístup Azure tak, aby uživatelé mohli komunikovat s Azure Resource Manager konfigurací možnosti blokovat přístup pro aplikaci Microsoft Azure Management.
 
-* [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [Postup konfigurace podmíněného přístupu pro blokování přístupu k Azure Resource Manager](../role-based-access-control/conditional-access-azure-management.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -879,13 +879,13 @@ Pomocí grafu prostředků Azure můžete v rámci svých předplatných dotazov
 
 Logic Apps, které jsou potřeba pro obchodní operace, ale můžou pro organizaci zvýšit riziko, měli byste je všude, kde to jde, kdykoli je to možné, přes samostatné skupiny prostředků s konkrétními oprávněními a hranicemi RBAC.
 
-* [Jak vytvořit virtuální síť](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Jak vytvořit virtuální síť](../virtual-network/quick-create-portal.md)
 
-* [Vytvoření NSG s konfigurací zabezpečení](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Vytvoření NSG s konfigurací zabezpečení](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Postup vytvoření Skupiny pro správu](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Postup vytvoření Skupiny pro správu](../governance/management-groups/create.md)
 
-* [Postup zabezpečení přístupu k Logic Apps pomocí RBAC](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-logic-app-operations)
+* [Postup zabezpečení přístupu k Logic Apps pomocí RBAC](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -893,7 +893,7 @@ Logic Apps, které jsou potřeba pro obchodní operace, ale můžou pro organiza
 
 ## <a name="secure-configuration"></a>Zabezpečená konfigurace
 
-*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Další informace najdete v tématu [řízení zabezpečení: zabezpečená konfigurace](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: Vytvoření zabezpečených konfigurací pro všechny prostředky Azure
 
@@ -903,19 +903,19 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 K ochraně citlivých dat a tajných kódů taky používejte zabezpečené parametry.
 
-* [Jak zobrazit dostupné aliasy Azure Policy](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Jak zobrazit dostupné aliasy Azure Policy](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Blokovat připojení vytvořená pomocí konektorů v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/block-connections-connectors)
+* [Blokovat připojení vytvořená pomocí konektorů v Azure Logic Apps](./block-connections-connectors.md)
 
-* [Export jednoho a více prostředků do šablony v Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Postup nasazení šablon Azure Resource Manager pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-deploy-azure-resource-manager-templates)
+* [Postup nasazení šablon Azure Resource Manager pro Azure Logic Apps](./logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Principy parametrů zabezpečené akce](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-action-parameters)
+* [Principy parametrů zabezpečené akce](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
-* [Doporučení zabezpečení pro parametry](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [Doporučení zabezpečení pro parametry](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -939,21 +939,21 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 Také se ujistěte, že zabezpečíte data v historii spouštění pomocí zmatenosti.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Pochopení Azure Policych efektů](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Pochopení Azure Policych efektů](../governance/policy/concepts/effects.md)
 
-* [Blokovat připojení vytvořená pomocí konektorů v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/block-connections-connectors)
+* [Blokovat připojení vytvořená pomocí konektorů v Azure Logic Apps](./block-connections-connectors.md)
 
-* [Export jednoho a více prostředků do šablony v Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Postup nasazení šablon Azure Resource Manager pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-deploy-azure-resource-manager-templates)
+* [Postup nasazení šablon Azure Resource Manager pro Azure Logic Apps](./logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Zabezpečený přístup ke vstupům a výstupům historie spouštění](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#obfuscate)
+* [Zabezpečený přístup ke vstupům a výstupům historie spouštění](./logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Zabezpečený přístup ke vstupům parametrů](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-action-parameters)
+* [Zabezpečený přístup ke vstupům parametrů](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
-* [Doporučení zabezpečení pro parametry](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [Doporučení zabezpečení pro parametry](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -973,11 +973,11 @@ Také se ujistěte, že zabezpečíte data v historii spouštění pomocí zmate
 
 Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScript Object Notation (JSON), která by měla být přezkoumána, aby se zajistilo, že konfigurace splňují nebo překračují požadavky zabezpečení vaší organizace.
 
-* [Jak v Azure DevOps ukládat kód](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Jak v Azure DevOps ukládat kód](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Dokumentace k Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Dokumentace k Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
-* [Export jednoho a více prostředků do šablony v Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Export jednoho a více prostředků do šablony v Azure Portal](../azure-resource-manager/templates/export-template-portal.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -995,7 +995,7 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 **Doprovodné**materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů "Microsoft. Logic" k vytváření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. Pomocí aliasů Azure Policy můžete vytvářet vlastní zásady pro auditování nebo prosazování konfigurace sítě vašich prostředků Azure. Dále můžete vyvinout proces a kanál pro správu výjimek zásad.
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1013,7 +1013,7 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 **Doprovodné**materiály: použijte předdefinované definice Azure Policy a také Azure Policy aliasy v oboru názvů "Microsoft. Logic" k vytváření vlastních zásad pro upozornění, audit a prosazování konfigurace systému. K automatickému vymáhání konfigurací pro prostředky Azure použijte Azure Policy [audit], [Deny] a [nasazení, pokud neexistuje].
 
-* [Konfigurace a Správa Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Konfigurace a Správa Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1033,15 +1033,15 @@ Kromě toho Azure Resource Manager mít možnost Exportovat šablonu do JavaScri
 
 Když vytvoříte prostředí ISE (Integration Service Environment) pro hostování aplikací logiky a potřebujete větší kontrolu nad šifrovacími klíči používanými Azure Storage, můžete nastavit, používat a spravovat vlastní klíč pomocí Azure Key Vault. Tato funkce se také označuje jako "Bring Your Own Key" (BYOK) a váš klíč se nazývá klíč spravovaný zákazníkem.
 
-* [Zabezpečení vstupů a výstupů v historii spuštění v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#obfuscate)
+* [Zabezpečení vstupů a výstupů v historii spuštění v Azure Logic Apps](./logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Doporučení zabezpečení pro parametry](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [Doporučení zabezpečení pro parametry](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Zabezpečený přístup k vstupům parametrů v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-parameter-inputs)
+* [Zabezpečený přístup k vstupům parametrů v Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
-* [Předání hodnot zabezpečeného parametru během nasazování pomocí Azure Key Vault](https://docs.microsoft.com/azure/azure-resource-manager/templates/key-vault-parameter)
+* [Předání hodnot zabezpečeného parametru během nasazování pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-* [Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps](./customer-managed-keys-integration-service-environment.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1057,7 +1057,7 @@ V současné době pouze konkrétní vestavěné triggery a akce podporují spra
 - Azure API Management
 - Azure App Services
 
-* [Jak ověřit přístup k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity)
+* [Jak ověřit přístup k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](./create-managed-service-identity.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1069,13 +1069,13 @@ V současné době pouze konkrétní vestavěné triggery a akce podporují spra
 
 Můžete také implementovat kontrolu přihlašovacích údajů pro identifikaci přihlašovacích údajů v rámci kódu. Skener přihlašovacích údajů taky bude povzbudit přesunutí zjištěných přihlašovacích údajů do bezpečnějších umístění, jako je Azure Key Vault.
 
-* [Zabezpečení vstupů a výstupů v historii spuštění v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#obfuscate)
+* [Zabezpečení vstupů a výstupů v historii spuštění v Azure Logic Apps](./logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Doporučení zabezpečení pro parametry](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [Doporučení zabezpečení pro parametry](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Zabezpečený přístup k vstupům parametrů v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-parameter-inputs)
+* [Zabezpečený přístup k vstupům parametrů v Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
-* [Předání hodnot zabezpečeného parametru během nasazování pomocí Azure Key Vault](https://docs.microsoft.com/azure/azure-resource-manager/templates/key-vault-parameter)
+* [Předání hodnot zabezpečeného parametru během nasazování pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * [Jak nastavit skener přihlašovacích údajů](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -1085,7 +1085,7 @@ Můžete také implementovat kontrolu přihlašovacích údajů pro identifikaci
 
 ## <a name="malware-defense"></a>Obrana před malwarem
 
-*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Další informace najdete v tématu [řízení zabezpečení: obrana proti malwaru](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: použití centrálně spravovaného malwarového softwaru
 
@@ -1103,9 +1103,9 @@ Předem Prohledejte všechny soubory nahrané do nevýpočetních prostředků A
 
 K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Azure Security Center pro datové služby.
 
-* [Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Pochopení ochrany proti malwaru Microsoftu pro Azure Cloud Services a Virtual Machines](../security/fundamentals/antimalware.md)
 
-* [Vysvětlení detekce hrozeb Azure Security Center pro datové služby](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [Vysvětlení detekce hrozeb Azure Security Center pro datové služby](../security-center/threat-protection.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1121,7 +1121,7 @@ K detekci malwaru nahraného do účtů úložiště použijte detekci hrozeb Az
 
 ## <a name="data-recovery"></a>Obnovení dat
 
-*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Další informace najdete v tématu [řízení zabezpečení – obnovení dat](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: zajištění pravidelného automatického zálohování
 
@@ -1131,9 +1131,9 @@ Tato strategie zotavení po havárii se zaměřuje na nastavení vaší primárn
 
 Kromě toho byste měli rozšířit základní definici pracovního postupu aplikace logiky na šablonu Azure Resource Manager. Tato šablona definuje infrastrukturu, prostředky, parametry a další informace pro zřizování a nasazení aplikace logiky.
 
-* [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](./business-continuity-disaster-recovery-guidance.md)
 
-* [Postup automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+* [Postup automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](./logic-apps-azure-resource-manager-templates-overview.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1149,13 +1149,13 @@ Kromě toho byste měli rozšířit základní definici pracovního postupu apli
 
 Každý koncový bod žádosti v aplikaci logiky má v adrese URL koncového bodu sdílený přístupový podpis (SAS). Pokud používáte Azure Key Vault k ukládání tajných klíčů, zajistěte pravidelné automatizované zálohování klíčů a adres URL.
 
-* [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](./business-continuity-disaster-recovery-guidance.md)
 
-* [Postup automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+* [Postup automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager](./logic-apps-azure-resource-manager-templates-overview.md)
 
-* [Jak zabezpečit přístup a data v Azure Logic Apps pomocí SAS](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-request-based-triggers)
+* [Jak zabezpečit přístup a data v Azure Logic Apps pomocí SAS](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
 
-* [Postup zálohování klíčů Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
+* [Postup zálohování klíčů Key Vault](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1167,11 +1167,11 @@ Každý koncový bod žádosti v aplikaci logiky má v adrese URL koncového bod
 
 Test obnovení zálohovaných klíčů spravovaných zákazníkem Všimněte si, že to platí jenom pro Logic Apps běžící na prostředí ISE (Integration Service Environment).
 
-* [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](./business-continuity-disaster-recovery-guidance.md)
 
-* [Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps](./customer-managed-keys-integration-service-environment.md)
 
-* [Postup obnovení klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Postup obnovení klíčů trezoru klíčů v Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1185,11 +1185,11 @@ Ochrana zálohovaných klíčů spravovaných zákazníkem. Všimněte si, že t
 
 Povolení ochrany před náhodným odstraněním a vyprázdněním v Key Vault k ochraně klíčů proti náhodnému nebo škodlivému odstranění.
 
-* [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [Další informace o provozní kontinuitě a zotavení po havárii pro Azure Logic Apps](./business-continuity-disaster-recovery-guidance.md)
 
-* [Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Nastavení klíčů spravovaných zákazníkem k šifrování dat v klidovém prostředí pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps](./customer-managed-keys-integration-service-environment.md)
 
-* [Jak povolit ochranu s možnostmi obnovitelného odstranění a vyprázdnění v Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Jak povolit ochranu s možnostmi obnovitelného odstranění a vyprázdnění v Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1197,7 +1197,7 @@ Povolení ochrany před náhodným odstraněním a vyprázdněním v Key Vault k
 
 ## <a name="incident-response"></a>Reakce na incidenty
 
-*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Další informace najdete v tématu [řízení zabezpečení: reakce na incidenty](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: Vytvoření Průvodce odpověďmi na incidenty
 
@@ -1219,9 +1219,9 @@ Povolení ochrany před náhodným odstraněním a vyprázdněním v Key Vault k
 
 Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka pomocí značek a vytvoření názvového systému pro zřetelné identifikaci a kategorizaci prostředků Azure, zejména těch, která zpracovávají citlivá data. Máte zodpovědnost za to, že je možné určit prioritu nápravy výstrah na základě závažnosti prostředků a prostředí Azure, ve kterých došlo k incidentu.
 
-* [Výstrahy zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Výstrahy zabezpečení ve službě Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [Používání značek k uspořádání prostředků Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Používání značek k uspořádání prostředků Azure](../azure-resource-manager/management/tag-resources.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1241,7 +1241,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: kontaktní informace incidentu zabezpečení bude společnost Microsoft používat ke kontaktování v případě, že služba Microsoft Security Response Center (MSRC) zjistí, že k datům došlo nezákonní nebo neoprávněná osoba. Projděte si incidenty, abyste měli jistotu, že jsou vyřešené problémy.
 
-* [Jak nastavit kontakt zabezpečení Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Jak nastavit kontakt zabezpečení Azure Security Center](../security-center/security-center-provide-security-contact-details.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1251,9 +1251,9 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Pokyny**: vyexportujte výstrahy a doporučení pro Azure Security Center pomocí funkce průběžného exportu, které vám pomůžou identifikovat rizika pro prostředky Azure. Průběžný export umožňuje exportovat výstrahy a doporučení buď ručně, nebo nepřetržitě, průběžným způsobem. Pomocí konektoru Azure Security Center Data můžete streamovat výstrahy do Azure Sentinel.
 
-* [Postup konfigurace průběžného exportu](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Postup konfigurace průběžného exportu](../security-center/continuous-export.md)
 
-* [Jak streamovat výstrahy do Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Jak streamovat výstrahy do Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1263,7 +1263,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 **Doprovodné**materiály: použití funkce automatizace pracovního postupu v Azure Security Center k automatickému spouštění odpovědí prostřednictvím "Logic Apps" pro výstrahy zabezpečení a doporučení k ochraně vašich prostředků Azure.
 
-* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [Jak nakonfigurovat automatizaci pracovních postupů a Logic Apps](../security-center/workflow-automation.md)
 
 **Monitorování Azure Security Center**: není k dispozici
 
@@ -1271,7 +1271,7 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Penetrační testy a tzv. red team exercises
 
-*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Další informace najdete v tématu [řízení zabezpečení: testy průniku a cvičení červeného týmu](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: proveďte pravidelné testování průniku vašich prostředků Azure a zajistěte nápravu všech kritických poznatků zabezpečení.
 
@@ -1287,5 +1287,5 @@ Kromě toho jasně označte odběry (pro např. Výroba, nevýrobní zakázka po
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zobrazit [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- Další informace o [plánech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Zobrazit [Srovnávací test zabezpečení Azure](../security/benchmarks/overview.md)
+- Další informace o [plánech zabezpečení Azure](../security/benchmarks/security-baselines-overview.md)

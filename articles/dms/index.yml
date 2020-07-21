@@ -3,17 +3,19 @@ title: Dokumentace ke službě Azure Database Migration Service
 summary: Služba Azure Database Migration Service umožňuje bezproblémovou migraci z více zdrojů databáze na platformy Azure Data s minimální dobou vyřazení z provozu. Tato služba používá nástroj Data Migration Assistant k vygenerování sestav vyhodnocení poskytujících doporučení, která vás provedou nutnými změnami před provedením migrace. Až budete připravení zahájit proces migrace, služba Azure Database Migration Service provede všechny požadované kroky.
 metadata:
   description: Zjistěte, jak pomocí služby Azure Database Migration Service umožnit bezproblémovou migraci z několika databázových zdrojů na datové platformy Azure s minimem výpadků.
+  keywords: azure database migration services, dms service, azure data migration, data migration service, database migration service
   author: HJToland3
   ms.author: jtoland
   ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 9a37c850426cab0d940ab546084c1c64811ccb64
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.custom: azure-migrate-seo
+  ms.openlocfilehash: 732870bef2311ac13afb9a6e2a1a329fdd3905e2
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78164555"
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86522308"
 landingContent:
 - title: Informace o službě Azure Database Migration Service
   linkLists:
@@ -49,7 +51,7 @@ landingContent:
       url: https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/
   - linkListType: whats-new
     links:
-    - text: Podívejte se na náš blog.
+    - text: Přechod na náš blog
       url: https://techcommunity.microsoft.com/t5/Microsoft-Data-Migration/bg-p/MicrosoftDataMigration
 - title: Migrace SQL Serveru do Azure SQL Database
   linkLists:

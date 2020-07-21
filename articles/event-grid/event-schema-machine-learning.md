@@ -3,12 +3,12 @@ title: Azure Machine Learning jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro pracovní prostor Machine Learning události s Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e72123a4f609b93e191c82f11443cbb1de7d012d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181518"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522070"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning jako zdroj Event Grid
 
@@ -151,7 +151,7 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearningServices/workspaces/{workspace-name}",
   "subject": "experiments/0fa9dfaa-cba3-4fa7-b590-23e48548f5c1/runs/AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-  "eventType": "Microsoft.MachineLearningServices.RunCompleted",
+  "eventType": "Microsoft.MachineLearningServices.RunStatusChanged",
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
@@ -186,14 +186,14 @@ V této části najdete příklad toho, jak by tato data vypadala jako u každé
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | subject | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
 | eventType | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | odkazy objektů | Data události služby Blob Storage. |
+| data | object | Data události služby Blob Storage. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -201,22 +201,22 @@ Datový objekt má pro každý typ události následující vlastnosti:
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | ModelName | řetězec | Název modelu, který byl zaregistrován. |
 | ModelVersion | řetězec | Verze modelu, který byl zaregistrován. |
-| ModelTags | odkazy objektů | Značky modelu, který byl zaregistrován. |
-| ModelProperties | odkazy objektů | Vlastnosti modelu, který byl zaregistrován. |
+| ModelTags | object | Značky modelu, který byl zaregistrován. |
+| ModelProperties | object | Vlastnosti modelu, který byl zaregistrován. |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | ServiceName | řetězec | Název nasazené služby. |
 | ServiceComputeType | řetězec | Výpočetní typ (např. ACI, AKS) nasazené služby. |
   | ModelIds | řetězec | Čárkami oddělený seznam ID modelů. ID modelů nasazených ve službě. |
-| ServiceTags | odkazy objektů | Značky nasazené služby. |
-| ServiceProperties | odkazy objektů | Vlastnosti nasazené služby. |
+| ServiceTags | object | Značky nasazené služby. |
+| ServiceProperties | object | Vlastnosti nasazené služby. |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
@@ -226,8 +226,8 @@ Datový objekt má pro každý typ události následující vlastnosti:
 | Experiment | řetězec | Název experimentu, do kterého daný běh patří. |
 | RunId | řetězec | ID běhu, které bylo dokončeno. |
 | RunType | řetězec | Typ spuštění dokončeného běhu. |
-| RunTags | odkazy objektů | Značky dokončeného spuštění. |
-| RunProperties | odkazy objektů | Vlastnosti dokončeného běhu |
+| RunTags | object | Značky dokončeného spuštění. |
+| RunProperties | object | Vlastnosti dokončeného běhu |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. DatasetDriftDetected
 
@@ -250,12 +250,12 @@ Datový objekt má pro každý typ události následující vlastnosti:
 | Experiment | řetězec | Název experimentu, do kterého daný běh patří. |
 | RunId | řetězec | ID běhu, které bylo dokončeno. |
 | RunType | řetězec | Typ spuštění dokončeného běhu. |
-| RunTags | odkazy objektů | Značky dokončeného spuštění. |
-| RunProperties | odkazy objektů | Vlastnosti dokončeného běhu |
+| RunTags | object | Značky dokončeného spuštění. |
+| RunProperties | object | Vlastnosti dokončeného běhu |
 | RunStatus | řetězec | Stav spuštění. |
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
-| Název | Popis |
+| Nadpis | Popis |
 | ----- | ----- |
 | [Využívání Azure Machine Learningch událostí](../machine-learning/concept-event-grid-integration.md) | Přehled Integrace Azure Machine Learning s Event Grid |
 

@@ -3,12 +3,12 @@ title: Škálovatelnost – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje informace o tom, jak škálovat Event Hubs Azure pomocí oddílů a jednotek propustnosti.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6d1c7bc5a0206b634e5a85243f25b2c926762d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315475"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521951"
 ---
 # <a name="scaling-with-event-hubs"></a>Škálování pomocí Event Hubs
 
@@ -23,7 +23,7 @@ Kapacita propustnosti Event Hubs je řízena *jednotkami propustnosti*. Jednotky
 * Příchozí přenos dat: až 1 MB za sekundu nebo 1000 událostí za sekundu (podle toho, co nastane dřív).
 * Odchozí data: až 2 MB za sekundu nebo 4096 událostí za sekundu.
 
-Nad rámec kapacity zakoupených jednotek propustnosti je příjem příchozích dat omezen a vrátí se výjimka [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception). Odchozí data nezpůsobují takové výjimky, ale jsou omezená na objem přenosu dat, který poskytují zakoupené jednotky propustnosti. Pokud se vám objevují výjimky související s frekvencí publikování nebo v budoucnu očekáváte větší objem odchozích dat, zkontrolujte, kolik jednotek propustnosti jste pro konkrétní obor názvů zakoupili. Ke správě jednotek propustnosti můžete využít okno **Škálování** oboru názvů na webu [Azure Portal](https://portal.azure.com). Jednotky propustnosti můžete spravovat i programově pomocí [Event Hubs rozhraní API](event-hubs-api-overview.md).
+Nad rámec kapacity zakoupených jednotek propustnosti je příjem příchozích dat omezen a vrátí se výjimka [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception). Odchozí data nezpůsobují takové výjimky, ale jsou omezená na objem přenosu dat, který poskytují zakoupené jednotky propustnosti. Pokud se vám objevují výjimky související s frekvencí publikování nebo v budoucnu očekáváte větší objem odchozích dat, zkontrolujte, kolik jednotek propustnosti jste pro konkrétní obor názvů zakoupili. Ke správě jednotek propustnosti můžete využít okno **Škálování** oboru názvů na webu [Azure Portal](https://portal.azure.com). Jednotky propustnosti můžete spravovat i programově pomocí [Event Hubs rozhraní API](./event-hubs-samples.md).
 
 Jednotky propustnosti jsou předem zakoupené a účtují se za hodinu. Zakoupené jednotky propustnosti se účtují minimálně za jednu hodinu. Pro obor názvů Event Hubs lze zakoupit až 20 jednotek propustnosti, které jsou sdíleny napříč všemi centry událostí v daném oboru názvů.
 
@@ -50,4 +50,4 @@ Zdroj události zná jenom svůj klíč oddílu, a ne oddíl, do kterého se ud�
 Další informace o službě Event Hubs najdete na následujících odkazech:
 
 - [Automatické škálování jednotek propustnosti](event-hubs-auto-inflate.md)
-- [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md)
+- [Přehled služby Event Hubs](./event-hubs-about.md)

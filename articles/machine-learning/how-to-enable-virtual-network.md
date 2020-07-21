@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 06/30/2020
+ms.date: 07/07/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186856"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520694"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak zabezpečit životní cyklus strojového učen
 
 __Virtuální síť__ funguje jako hranice zabezpečení a izoluje prostředky Azure od veřejného Internetu. Virtuální síť Azure se taky můžete připojit k místní síti. Připojením sítí můžete bezpečně prosazovat modely a přistupovat k nasazeným modelům pro odvození.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + [Pracovní prostor](how-to-manage-workspace.md)Azure Machine Learning.
 
@@ -42,7 +42,7 @@ Můžete také [Povolit privátní propojení Azure](how-to-configure-private-li
 > [!TIP]
 > Můžete kombinovat virtuální síť a privátní propojení a chránit tak komunikaci mezi vaším pracovním prostorem a dalšími prostředky Azure. Některé kombinace ale vyžadují pracovní prostor Enterprise Edition. Následující tabulka vám pomůže pochopit, jaké scénáře vyžaduje Enterprise Edition:
 >
-> | Scénář | Enterprise</br>Edition | Basic</br>Edition |
+> | Scénář | Enterprise</br>Edition | Základní</br>Edition |
 > | ----- |:-----:|:-----:| 
 > | Žádná virtuální síť ani privátní odkaz | ✔ | ✔ |
 > | Pracovní prostor bez privátního odkazu Další prostředky (kromě Azure Container Registry) ve virtuální síti | ✔ | ✔ |
@@ -109,6 +109,24 @@ Až přidáte pracovní prostor a účet služby úložiště do virtuální sí
 
 V případě __úložiště objektů BLOB v Azure__je identita spravovaná pracovním prostorem také přidána jako [čtečka dat objektů BLOB](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) , aby mohla číst data z úložiště objektů BLOB.
 
+
+### <a name="azure-machine-learning-designer-default-datastore"></a>Výchozí úložiště dat návrháře Azure Machine Learning
+
+Návrhář používá účet úložiště připojený k vašemu pracovnímu prostoru k uložení výstupu ve výchozím nastavení. Můžete ji však zadat pro uložení výstupu do libovolného úložiště dat, ke kterému máte přístup. Pokud vaše prostředí používá virtuální sítě, můžete pomocí těchto ovládacích prvků zajistit, aby data zůstala zabezpečená a přístupná.
+
+Nastavení nového výchozího úložiště pro kanál:
+
+1. V konceptu kanálu vyberte **ikonu ozubeného kolečka pro nastavení** vedle názvu vašeho kanálu.
+1. Vyberte **Vybrat výchozí úložiště dat**.
+1. Zadejte nové úložiště dat.
+
+Výchozí úložiště dat můžete také přepsat na základě jednotlivých modulů. Díky tomu budete mít kontrolu nad umístěním úložiště pro každý jednotlivý modul.
+
+1. Vyberte modul, jehož výstup chcete zadat.
+1. Rozbalte část **Nastavení výstupu** .
+1. Vyberte **přepsat výchozí nastavení výstupu**.
+1. Vyberte **nastavit výstupní nastavení**.
+1. Zadejte nový datstore.
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Řízení přístupu Azure Data Lake Storage Gen2
 
@@ -286,8 +304,8 @@ Pokud nechcete používat výchozí odchozí pravidla a chcete omezit odchozí p
 - Odmítne odchozí připojení k Internetu pomocí pravidel NSG.
 
 - V případě __výpočetní instance__ nebo __výpočetního clusteru__omezte odchozí provoz na následující položky:
-   - Azure Storage pomocí __označení služby__ __Storage. RegionName__. Kde `{RegionName}` je název oblasti Azure.
-   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry. RegionName__. Kde `{RegionName}` je název oblasti Azure.
+   - Azure Storage pomocí __označení služby__ __úložiště__.
+   - Azure Container Registry pomocí __označení služby__ __AzureContainerRegistry__.
    - Azure Machine Learning pomocí __označení služby__ __AzureMachineLearning__
    - Azure Resource Manager pomocí __označení služby__ __AzureResourceManager__
    - Azure Active Directory pomocí __označení služby__ __azureactivedirectory selhala__
@@ -326,11 +344,15 @@ Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujícím obrázku
 > run = exp.submit(est)
 > ```
 
-### <a name="user-defined-routes-for-forced-tunneling"></a>Uživatelem definované trasy pro vynucené tunelování
+### <a name="forced-tunneling"></a>Vynucené tunelování
 
-Pokud používáte vynucené tunelování s Výpočetní prostředky služby Machine Learning, přidejte [uživatelsky definované trasy (udr)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) do podsítě, která obsahuje výpočetní prostředky.
+Pokud používáte [vynucené tunelování](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) s využitím Azure Machine Learning COMPUTE, musíte z podsítě, která obsahuje výpočetní prostředky, umožňovat komunikaci s veřejným internetem. Tato komunikace se používá pro plánování úloh a přístup k Azure Storage.
 
-* Vytvořte UDR pro každou IP adresu, kterou používá služba Azure Batch, v oblasti, kde existují vaše prostředky. Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Přidejte také IP adresu pro službu Azure Machine Learning, kde existují prostředky, jak je to nutné pro přístup k výpočetním instancím. Chcete-li získat seznam IP adres služby Batch a služby Azure Machine Learning, použijte jednu z následujících metod:
+Můžete to provést dvěma způsoby:
+
+* Použijte [Virtual Network překlad adres (NAT)](../virtual-network/nat-overview.md). Brána NAT poskytuje odchozí připojení k Internetu pro jednu nebo více podsítí ve vaší virtuální síti. Informace najdete v tématu [navrhování virtuálních sítí s využitím prostředků brány NAT](../virtual-network/nat-gateway-resource.md).
+
+* Přidejte [uživatelsky definované trasy (udr)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) do podsítě, která obsahuje výpočetní prostředek. Vytvořte UDR pro každou IP adresu, kterou používá služba Azure Batch, v oblasti, kde existují vaše prostředky. Tyto udr umožňují, aby služba Batch komunikovala s výpočetními uzly pro plánování úloh. Přidejte také IP adresu pro službu Azure Machine Learning, kde existují prostředky, jak je to nutné pro přístup k výpočetním instancím. Chcete-li získat seznam IP adres služby Batch a služby Azure Machine Learning, použijte jednu z následujících metod:
 
     * Stáhněte si [rozsahy IP adres Azure a značky služby](https://www.microsoft.com/download/details.aspx?id=56519) a vyhledejte v něm soubor `BatchNodeManagement.<region>` a `AzureMachineLearning.<region>` , kde `<region>` je vaše oblast Azure.
 
@@ -340,14 +362,15 @@ Pokud používáte vynucené tunelování s Výpočetní prostředky služby Mac
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+    
+    Když přidáte udr, definujte trasu pro každou související předponu IP adresy dávky a nastavte __typ dalšího segmentu směrování__ na __Internet__. Následující obrázek ukazuje příklad tohoto UDR v Azure Portal:
 
-* Odchozí provoz do Azure Storage se nesmí blokovat v místním síťovém zařízení. Konkrétně adresy URL jsou ve formátu `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` a `<account>.blob.core.windows.net` .
+    ![Příklad UDR pro předponu adresy](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-Když přidáte udr, definujte trasu pro každou související předponu IP adresy dávky a nastavte __typ dalšího segmentu směrování__ na __Internet__. Následující obrázek ukazuje příklad tohoto UDR v Azure Portal:
+    Kromě všech udr, které definujete, musí být odchozí provoz do Azure Storage povolen prostřednictvím místního síťového zařízení. Konkrétně adresy URL tohoto provozu jsou v následujících formulářích: `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` a `<account>.blob.core.windows.net` . 
 
-![Příklad UDR pro předponu adresy](./media/how-to-enable-virtual-network/user-defined-route.png)
+    Další informace najdete v tématu [Vytvoření fondu Azure Batch ve virtuální síti](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
-Další informace najdete v tématu [Vytvoření fondu Azure Batch ve virtuální síti](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Vytvoření výpočetního clusteru ve virtuální síti
 
@@ -480,6 +503,40 @@ Ve výchozím nastavení je veřejná IP adresa přiřazená AKS nasazením. Př
 
 Privátní IP adresa je povolena konfigurací AKS k použití _interního nástroje pro vyrovnávání zatížení_. 
 
+#### <a name="network-contributor-role"></a>Role Přispěvatel sítě
+
+> [!IMPORTANT]
+> Pokud vytvoříte nebo připojíte cluster AKS tím, že zadáte dříve vytvořenou virtuální síť, musíte instančnímu objektu (SP) nebo spravované identitě pro svůj cluster AKS udělit roli _Přispěvatel sítě_ do skupiny prostředků, která obsahuje virtuální síť. Tato operace se musí provést předtím, než se pokusíte změnit interní nástroj pro vyrovnávání zatížení na soukromou IP adresu.
+>
+> Chcete-li přidat identitu jako Přispěvatel sítě, použijte následující postup:
+
+1. Pokud chcete najít instanční objekt nebo ID spravované identity pro AKS, použijte následující příkazy rozhraní příkazového řádku Azure CLI. Nahraďte `<aks-cluster-name>` názvem clusteru. Nahraďte `<resource-group-name>` názvem skupiny prostředků, která _obsahuje cluster AKS_:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    Pokud tento příkaz vrátí hodnotu `msi` , použijte následující příkaz k identifikaci ID objektu zabezpečení pro spravovanou identitu:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. Pokud chcete najít ID skupiny prostředků, která obsahuje vaši virtuální síť, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem skupiny prostředků, která _obsahuje virtuální síť_:
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. K přidání instančního objektu nebo spravované identity jako přispěvatele sítě použijte následující příkaz. Nahraďte `<SP-or-managed-identity>` identifikátorem vráceným pro instanční objekt nebo spravovanou identitu. Nahraďte `<resource-group-id>` identifikátorem vráceným pro skupinu prostředků, která obsahuje virtuální síť:
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
+Další informace o používání interního nástroje pro vyrovnávání zatížení s AKS najdete v tématu [použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service](/azure/aks/internal-lb).
+
+#### <a name="enable-private-ip"></a>Povolit privátní IP adresu
+
 > [!IMPORTANT]
 > Při vytváření clusteru služby Azure Kubernetes není možné povolit privátní IP adresu. Musí být povolená jako Aktualizace existujícího clusteru.
 
@@ -570,38 +627,6 @@ aks_target.update(update_config)
 aks_target.wait_for_completion(show_output = True)
 ```
 
-__Role Přispěvatel sítě__
-
-> [!IMPORTANT]
-> Pokud vytvoříte nebo připojíte cluster AKS tím, že zadáte dříve vytvořenou virtuální síť, musíte instančnímu objektu (SP) nebo spravované identitě pro svůj cluster AKS udělit roli _Přispěvatel sítě_ do skupiny prostředků, která obsahuje virtuální síť. Tato operace se musí provést předtím, než se pokusíte změnit interní nástroj pro vyrovnávání zatížení na soukromou IP adresu.
->
-> Chcete-li přidat identitu jako Přispěvatel sítě, použijte následující postup:
-
-1. Pokud chcete najít instanční objekt nebo ID spravované identity pro AKS, použijte následující příkazy rozhraní příkazového řádku Azure CLI. Nahraďte `<aks-cluster-name>` názvem clusteru. Nahraďte `<resource-group-name>` názvem skupiny prostředků, která _obsahuje cluster AKS_:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
-    ``` 
-
-    Pokud tento příkaz vrátí hodnotu `msi` , použijte následující příkaz k identifikaci ID objektu zabezpečení pro spravovanou identitu:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
-    ```
-
-1. Pokud chcete najít ID skupiny prostředků, která obsahuje vaši virtuální síť, použijte následující příkaz. Nahraďte `<resource-group-name>` názvem skupiny prostředků, která _obsahuje virtuální síť_:
-
-    ```azurecli-interactive
-    az group show -n <resource-group-name> --query id
-    ```
-
-1. K přidání instančního objektu nebo spravované identity jako přispěvatele sítě použijte následující příkaz. Nahraďte `<SP-or-managed-identity>` identifikátorem vráceným pro instanční objekt nebo spravovanou identitu. Nahraďte `<resource-group-id>` identifikátorem vráceným pro skupinu prostředků, která obsahuje virtuální síť:
-
-    ```azurecli-interactive
-    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
-    ```
-Další informace o používání interního nástroje pro vyrovnávání zatížení s AKS najdete v tématu [použití interního nástroje pro vyrovnávání zatížení se službou Azure Kubernetes Service](/azure/aks/internal-lb).
-
 ## <a name="use-azure-container-instances-aci"></a>Použít Azure Container Instances (ACI)
 
 Azure Container Instances se dynamicky vytvářejí při nasazování modelu. Pokud chcete povolit Azure Machine Learning vytváření ACI uvnitř virtuální sítě, musíte povolit __delegování podsítě__ pro podsíť, kterou používá nasazení.
@@ -630,6 +655,7 @@ Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu 
 > Azure Container Registry (ACR) lze umístit do virtuální sítě, ale musíte splňovat následující požadavky:
 >
 > * Váš pracovní prostor Azure Machine Learning musí být Enterprise Edition. Informace o upgradu nástroje najdete v tématu [upgrade na verzi Enterprise Edition](how-to-manage-workspace.md#upgrade).
+> * Oblast vašeho Azure Machine Learning pracovního prostoru by měla být [oblast povolená soukromým odkazem](https://docs.microsoft.com/azure/private-link/private-link-overview#availability). 
 > * Vaše Azure Container Registry musí být verze Premium. Další informace o upgradu najdete v tématu [Změna SKU](/azure/container-registry/container-registry-skus#changing-skus).
 > * Vaše Azure Container Registry musí být ve stejné virtuální síti a podsíti jako účet úložiště a cíle výpočtů používané pro školení nebo odvození.
 > * Váš pracovní prostor Azure Machine Learning musí obsahovat [Azure Machine Learning výpočetní cluster](how-to-set-up-training-targets.md#amlcompute).

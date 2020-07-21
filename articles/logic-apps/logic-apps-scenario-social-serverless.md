@@ -8,11 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980428"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520745"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Vytvoření řídicího panelu pro streamování zákaznických přehledů pomocí Azure Logic Apps a Azure Functions
 
@@ -21,7 +22,7 @@ Azure nabízí nástroje bez [serveru](https://azure.microsoft.com/solutions/ser
 Pro toto řešení použijete tyto klíčové součásti Azure pro aplikace bez serveru: [Azure Functions](https://azure.microsoft.com/services/functions/) a [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/).
 Azure Logic Apps poskytuje modul pracovního postupu bez serveru v cloudu, takže můžete vytvářet orchestraci napříč komponentami bez serveru a připojit se k 200 službám a rozhraním API. Azure Functions poskytuje výpočetní prostředí bez serveru v cloudu. Toto řešení používá Azure Functions pro označení zákaznických tweety na základě předdefinovaných klíčových slov.
 
-V tomto scénáři vytvoříte aplikaci logiky, která se aktivuje při hledání zpětné vazby od zákazníků. Mezi konektory, které vám pomůžou reagovat na názory zákazníků, patří Outlook.com, Office 365, opice průzkumu, Twitter a [požadavek HTTP z webového formuláře](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). Pracovní postup, který vytvoříte, monitoruje hashtag na Twitteru.
+V tomto scénáři vytvoříte aplikaci logiky, která se aktivuje při hledání zpětné vazby od zákazníků. Mezi konektory, které vám pomůžou reagovat na názory zákazníků, patří Outlook.com, Office 365, opice průzkumu, Twitter a [požadavek HTTP z webového formuláře](/archive/blogs/logicapps/calling-a-logic-app-from-an-html-form). Pracovní postup, který vytvoříte, monitoruje hashtag na Twitteru.
 
 Můžete [sestavit celé řešení v aplikaci Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) a [nasadit řešení pomocí šablony Azure Resource Manager](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md). Návod pro video, který ukazuje, jak vytvořit toto řešení, najdete v [tomto videu kanálu 9](https://aka.ms/logicappsdemo). 
 
@@ -66,7 +67,7 @@ Můžete také vytvořit a funkci Azure Function, abyste mohli provádět vlastn
 
 ## <a name="process-data-with-azure-functions"></a>Zpracování dat pomocí Azure Functions
 
-Před vytvořením funkce vytvořte v předplatném Azure aplikaci Function App. Pro aplikaci logiky, aby přímo volala funkci, musí mít funkce vazbu triggeru HTTP, například pomocí šablony **HttpTrigger** . Naučte [se, jak vytvořit svou první aplikaci funkcí a funkci v Azure Portal](../azure-functions/functions-create-first-azure-function-azure-portal.md).
+Před vytvořením funkce vytvořte v předplatném Azure aplikaci Function App. Pro aplikaci logiky, aby přímo volala funkci, musí mít funkce vazbu triggeru HTTP, například pomocí šablony **HttpTrigger** . Naučte [se, jak vytvořit svou první aplikaci funkcí a funkci v Azure Portal](../azure-functions/functions-create-first-azure-function.md).
 
 V tomto scénáři jako text žádosti pro funkci Azure použijte text. V kódu funkce definujte logiku, která určuje, zda text příznaku obsahuje klíčové slovo nebo frázi. Tuto funkci nechte v případě potřeby ve scénáři jednoduché nebo složitější.
 Na konci funkce vrátí odpověď do aplikace logiky s některými daty, například jednoduchou logickou hodnotu, jako je například `containsKeyword` nebo složitý objekt.

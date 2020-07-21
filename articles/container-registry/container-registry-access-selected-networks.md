@@ -3,11 +3,12 @@ title: Konfigurace přístupu k veřejnému registru
 description: Nakonfigurujte pravidla protokolu IP pro povolení přístupu ke službě Azure Container Registry z vybraných veřejných IP adres nebo rozsahů adres.
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83702082"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523821"
 ---
 # <a name="configure-public-ip-network-rules"></a>Konfigurace pravidel sítě veřejných IP adres
 
@@ -74,7 +75,7 @@ az acr update --name myContainerRegistry --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Zakázat veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Pak vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Potom vyberte **Uložit**.
 
 ![Zakázat veřejný přístup][acr-access-disabled]
 
@@ -97,9 +98,16 @@ az acr update --name myContainerRegistry --public-network-enabled true
 ### <a name="restore-public-access---portal"></a>Obnovit veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **všechny sítě**. Pak vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **všechny sítě**. Potom vyberte **Uložit**.
 
 ![Veřejný přístup ze všech sítí][acr-access-all-networks]
+
+## <a name="troubleshoot"></a>Odstraňování potíží
+
+Pokud je nastavené pravidlo veřejné sítě nebo je veřejný přístup k registru odepřený, pokusy o přihlášení k registru z nepovolené veřejné sítě se nezdaří. Přístup klienta z za proxy serveru HTTPS selže i v případě, že není nastavené pravidlo přístupu pro proxy server. Zobrazí se chybová zpráva podobná `Error response from daemon: login attempt failed with status: 403 Forbidden` nebo `Looks like you don't have access to registry` .
+
+K těmto chybám může dojít také v případě, že používáte proxy server HTTPS, který je povolen pravidlem přístupu k síti, ale proxy server není správně nakonfigurován v klientském prostředí. Ověřte, že je klient Docker i démon Docker nakonfigurovaný pro chování proxy serveru. Podrobnosti najdete v dokumentaci k Docker v dokumentaci k [serveru proxy HTTP/HTTPS](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) .
+
 
 ## <a name="next-steps"></a>Další kroky
 

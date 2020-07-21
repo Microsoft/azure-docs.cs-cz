@@ -11,16 +11,24 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: tracking-python
-ms.openlocfilehash: 733eec452501a829d0162b91aca9ece191d68914
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: fc589f53fc10e376479bf54ec408a95dac42db4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611420"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523957"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Použití tokenu Insights k získání přehledů pro Image
 
-Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který zadáte. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech najdete v tématu [co je rozhraní API pro vizuální vyhledávání Bingu?](overview.md). Tento článek ukazuje použití tokenu Insights. Příklady, které ukazují, jak nahrát obrázek pro získání přehledů, najdete v tématu rychlé starty ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [Node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
+Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který zadáte. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech najdete v tématu [co je rozhraní API pro vizuální vyhledávání Bingu?](overview.md). Tento článek ukazuje použití tokenu Insights. Příklady, které ukazují, jak nahrát obrázek pro získání přehledů, najdete v tématu rychlý Start:
+
+* ([C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [Node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md)).
 
 Pokud odešlete Vizuální vyhledávání Bingu token nebo adresu URL obrázku, zobrazí se následující data formuláře, která musíte zahrnout do těla příspěvku. Data formuláře musí obsahovat `Content-Disposition` hlavičku a je nutné nastavit její `name` parametr na hodnotu "knowledgeRequest". Podrobnosti o `imageInfo` objektu naleznete v žádosti:
 
@@ -59,7 +67,15 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Příklady použití tokenu Insights najdete v tématu [C#](#use-with-c)  |  [Java](#use-with-java)  |  [Node.js](#use-with-nodejs)  |  [Python](#use-with-python).
+Příklady, které používají tokeny Insights, najdete v těchto tématech:
+
+* [C#](#use-with-c)
+
+* [Java](#use-with-java)
+
+* [Node.js](#use-with-nodejs)
+
+* [Python](#use-with-python)
 
 ## <a name="use-with-c"></a>Použití s C #
 
@@ -77,7 +93,7 @@ Pokud chcete tuto aplikaci spustit, postupujte následovně:
 2. Nahraďte obsah Program.cs kódem zobrazeným v tomto rychlém startu.
 3. Hodnotu `accessKey` nahraďte klíčem předplatného.
 4. Nahraďte `insightsToken` hodnotu tokenem Insights z odpovědi/images/Search.
-5. Spusťte program.
+5. Spustíte program.
 
 ```csharp
 using System;
@@ -252,7 +268,7 @@ Pokud chcete tuto aplikaci spustit, postupujte následovně:
 2. Ve svém oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Javy.
 3. Přidejte poskytnutý kód do souboru s názvem `VisualSearch.java`.
 4. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
-5. Spusťte program.
+5. Spustíte program.
 
 ```java
 package insightstoken;
@@ -376,7 +392,7 @@ Pokud chcete tuto aplikaci spustit, postupujte následovně:
    ```
 1. Vytvořte soubor s názvem GetVisualInsights.js a přidejte do něj následující kód.
 1. Hodnotu `subscriptionKey` nahraďte klíčem předplatného.
-1. Spusťte program.  
+1. Spustíte program.  
    ```
    node GetVisualInsights.js
    ```
@@ -431,7 +447,7 @@ Pokud chcete tuto aplikaci spustit, postupujte následovně:
 1. Vytvořte nový projekt v jazyce Python v oblíbeném integrovaném vývojovém prostředí nebo editoru.
 2. Vytvořte soubor s názvem visualsearch.py a přidejte do něj kód zobrazený v tomto rychlém startu.
 3. Hodnotu `SUBSCRIPTION_KEY` nahraďte klíčem předplatného.
-4. Spusťte program.
+4. Spustíte program.
 
 ```python
 """Bing Visual Search example"""

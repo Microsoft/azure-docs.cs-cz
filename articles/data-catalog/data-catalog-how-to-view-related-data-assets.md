@@ -4,13 +4,14 @@ description: Tento článek vysvětluje, jak zobrazit související datové pros
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 212ba647e6eb44e800a589928620f56fba65107c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5352b4cc84801296d9e621053672328b02692a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68737016"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523362"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Jak zobrazit související datové prostředky v Azure Data Catalog?
 Azure Data Catalog umožňuje zobrazit datové prostředky související s vybraným datovým Assetem a mezi nimi zobrazit vztahy. 

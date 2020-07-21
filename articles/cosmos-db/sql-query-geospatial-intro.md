@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bb7fd69073dbc960904e8f7b44459ed85e98cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79367580"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523515"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Data geoprostorového a geografického umístění JSON v Azure Cosmos DB
 
@@ -20,9 +21,19 @@ Tento článek představuje úvod do geoprostorové funkce v Azure Cosmos DB. V 
 * Jak se dají dotazovat geoprostorové údaje v Azure Cosmos DB v SQL a LINQ?
 * Návody povolit nebo zakázat indexování prostorových dat v Azure Cosmos DB?
 
+## <a name="spatial-data-use-cases"></a>Případy použití prostorových dat
+
+Geoprostorové údaje často zahrnují dotazy na Proximity, například "najít všechny kavárny poblíž aktuálního umístění". Běžné případy použití:
+
+* Analýzy geografického umístění, které řídí konkrétní nalezené marketingové iniciativy.
+* Individuální nastavení na základě umístění, pro různé obory, jako je maloobchodní a zdravotní péče.
+* Vylepšení logistiky pro optimalizaci přenosu.
+* Analýza rizik, zejména pro pojišťovací a finanční společnosti.
+* Povědomí o situaci, výstrahy a oznámení.
+
 ## <a name="introduction-to-spatial-data"></a>Seznámení s prostorovými daty
 
-Prostorová data popisují umístění a tvar objektů v prostoru. Ve většině aplikací odpovídají objekty pro země a geoprostorové údaje. Prostorová data lze použít k reprezentaci umístění osoby, místa zájmu nebo hranice města nebo jezera. Běžné případy použití často zahrnují dotazy na Proximity, například "najít všechny kavárny poblíž aktuálního umístění".
+Prostorová data popisují umístění a tvar objektů v prostoru. Ve většině aplikací odpovídají objekty pro země a geoprostorové údaje. Prostorová data lze použít k reprezentaci umístění osoby, místa zájmu nebo hranice města nebo jezera.
 
 Rozhraní SQL API Azure Cosmos DB podporuje dva typy prostorových dat: typ dat **geometrie** a **zeměpisný** datový typ.
 

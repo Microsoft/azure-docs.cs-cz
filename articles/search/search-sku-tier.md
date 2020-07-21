@@ -7,12 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84119226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519729"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Výběr cenové úrovně pro Azure Kognitivní hledání
 
@@ -22,14 +23,17 @@ Většina zákazníků začíná na bezplatné úrovni, takže může službu vy
 
 ## <a name="feature-availability-by-tier"></a>Dostupnost funkcí podle úrovně
 
-Téměř všechny funkce jsou k dispozici na všech úrovních, včetně bezplatné, ale funkce nebo pracovní postup, který je náročný na prostředky, nemusí fungovat správně, pokud jim neposkytnete dostatečnou kapacitu. Například [rozšíření AI](cognitive-search-concept-intro.md) má dlouhodobě běžící dovednosti, které vyprší časový limit bezplatné služby, pokud není datová sada malá.
-
 Následující tabulka popisuje omezení funkcí souvisejících s vrstvami.
 
 | Funkce | Omezení |
 |---------|-------------|
 | [Indexery](search-indexer-overview.md) | Indexery nejsou k dispozici na S3 HD. |
+| [Obohacení AI](search-security-manage-encryption-keys.md) | Běží na bezplatné úrovni, ale nedoporučuje se. |
 | [Šifrovací klíče spravované zákazníkem](search-security-manage-encryption-keys.md) | Není k dispozici na úrovni Free. |
+| [Přístup k bráně firewall protokolu IP](service-configure-firewall.md) | Není k dispozici na úrovni Free. |
+| [Integrace s privátním propojením Azure](service-create-private-endpoint.md) | Není k dispozici na úrovni Free. |
+
+Většina funkcí je dostupná na všech úrovních, včetně bezplatných funkcí, ale funkce náročné na prostředky nemusí fungovat správně, pokud jim neposkytnete dostatečnou kapacitu. Například [rozšíření AI](cognitive-search-concept-intro.md) má dlouhodobě běžící dovednosti, které vyprší časový limit bezplatné služby, pokud není datová sada malá.
 
 ## <a name="tiers-skus"></a>Úrovně (SKU)
 
@@ -56,10 +60,10 @@ Další informace o různých úrovních najdete na [stránce s cenami](https://
 
 K řešení postavenému na Azure Kognitivní hledání může doplatit tyto náklady následujícími způsoby:
 
-+ Pevné náklady na samotnou službu, která běží nepřetržitě, při minimální konfiguraci (jeden oddíl a replika)
-+ Přírůstkové náklady při vertikálním navýšení kapacity (přidání replik nebo oddílů)
++ Náklady na samotnou službu, která běží nepřetržitě, při minimální konfiguraci (jeden oddíl a replika)
++ Přidání kapacity (repliky nebo oddíly)
 + Poplatky za šířku pásma (odchozí přenos dat) 
-+ Vyhledávání rozpoznávání (připojení Cognitive Services pro obohacení AI nebo použití úložiště Azure pro znalostní bázi Store)
++ Služby doplňku, jako je například rozšíření AI (připojení Cognitive Services v dovednosti, které definují zpracování AI nebo použití Azure Storage pro znalostní bázi úložiště pro Store) nebo nasazení vyhledávací služby v privátní virtuální síti
 
 ### <a name="service-costs"></a>Náklady na službu
 
@@ -71,7 +75,7 @@ Při odhadování nákladů na řešení hledání mějte na paměti, že ceny a
 
 ### <a name="bandwidth-charges"></a>Poplatky za šířku pásma
 
-Použití [indexerů Azure kognitivní hledání](search-indexer-overview.md) může ovlivnit fakturaci v závislosti na umístění vašich služeb. Pokud vytvoříte službu Azure Kognitivní hledání ve stejné oblasti, ve které jsou vaše data, můžete poplatky za odchozí přenosy dat zcela eliminovat. Tady jsou některé informace na [stránce s cenami za šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/):
+Použití [indexerů](search-indexer-overview.md) může mít vliv na fakturaci v závislosti na umístění vašich služeb. Pokud vytvoříte službu Azure Kognitivní hledání ve stejné oblasti, ve které jsou vaše data, můžete poplatky za odchozí přenosy dat zcela eliminovat. Tady jsou některé informace na [stránce s cenami za šířku pásma](https://azure.microsoft.com/pricing/details/bandwidth/):
 
 + Microsoft neúčtuje žádná příchozí data do žádné služby v Azure ani pro žádná odchozí data z Azure Kognitivní hledání.
 + V řešeních s více službami se za přenos dat mezi všemi službami ve stejné oblasti neúčtují žádné poplatky.
@@ -107,7 +111,7 @@ Většina zákazníků přinese jenom část celkové kapacity online, která uc
 
 ## <a name="how-to-manage-costs"></a>Jak spravovat náklady
 
-Následující návrhy vám pomůžou zajistit minimální náklady:
+Následující návrhy vám pomůžou snížit náklady nebo efektivněji spravovat náklady:
 
 + Vytvořte všechny prostředky ve stejné oblasti nebo v několika oblastech, abyste minimalizovali nebo vyloučili poplatky za šířku pásma.
 
@@ -140,7 +144,7 @@ Kapacita a náklady na provoz služby se dostanou rukou. Vrstvy ukládají omeze
 
 Obchodní požadavky obvykle určují počet indexů, které budete potřebovat. Například je možné, že budete potřebovat globální index pro velké úložiště dokumentů. Případně je možné, že budete potřebovat více indexů na základě oblastí, aplikací nebo Business mezery.
 
-Chcete-li určit velikost indexu, je třeba [ho sestavit](search-create-index-portal.md). Jeho velikost bude založena na importovaných datech a konfiguraci indexu, například na tom, jestli povolíte moduly pro návrhy, filtrování a řazení. Další informace o vlivu konfigurace na velikost najdete v tématu [Vytvoření základního indexu ](search-what-is-an-index.md).
+Chcete-li určit velikost indexu, je třeba [ho sestavit](search-what-is-an-index.md). Jeho velikost bude založena na importovaných datech a konfiguraci indexu, například na tom, jestli povolíte moduly pro návrhy, filtrování a řazení.
 
 Pro fulltextové vyhledávání je primární strukturou dat [obrácená struktura indexu](https://en.wikipedia.org/wiki/Inverted_index) , která má jiné charakteristiky než zdrojová data. U převráceného indexu se velikost a složitost určují podle obsahu, nikoli nutně podle množství dat, která do něj zadáte. Velký zdroj dat s vysokou redundancí může mít za následek menší index než menší datová sada, která obsahuje vysoce proměnlivý obsah. Je proto možné pouze odvodit velikost indexu na základě velikosti původní datové sady.
 
@@ -154,7 +158,7 @@ Jedním z přístupů k odhadu kapacity je začít s úrovní Free. Mějte na pa
 
 + [Vytvořte bezplatnou službu](search-create-service-portal.md).
 + Připravte malou, reprezentativní datovou sadu.
-+ [Sestavte počáteční index na portálu](search-create-index-portal.md) a poznamenejte si jeho velikost. Funkce a atributy mají dopad na úložiště. Například přidání návrhů (dotazy hledání podle typu) zvýší požadavky na úložiště. Pomocí stejné datové sady můžete zkusit vytvořit několik verzí indexu s různými atributy každého pole, abyste viděli, jak se požadavky na úložiště liší. Další informace najdete v části ["dopady na úložiště" v tématu Vytvoření základního indexu](search-what-is-an-index.md#index-size).
++ [Sestavte počáteční index na portálu](search-get-started-portal.md) a poznamenejte si jeho velikost. Funkce a atributy mají dopad na úložiště. Například přidání návrhů (dotazy hledání podle typu) zvýší požadavky na úložiště. Pomocí stejné datové sady můžete zkusit vytvořit několik verzí indexu s různými atributy každého pole, abyste viděli, jak se požadavky na úložiště liší. Další informace najdete v části ["dopady na úložiště" v tématu Vytvoření základního indexu](search-what-is-an-index.md#index-size).
 
 V případě hrubého odhadu se může tato částka zdvojnásobit do rozpočtu pro dva indexy (vývoj a produkce) a odpovídajícím způsobem zvolit svou úroveň.
 
@@ -170,7 +174,7 @@ Vyhrazené prostředky můžou sloužit k většímu počtu vzorkování a zprac
     + Pokud víte, že budete mít rozsáhlé indexování a načítání dotazů, začněte vysokou, v S2 nebo dokonce S3.
     + Pokud indexuje velké množství dat a zatížení dotazů je relativně nízké, stejně jako u interní obchodní aplikace, začněte s optimalizovaným úložištěm, v L1 nebo L2.
 
-1. [Sestavte počáteční index](search-create-index-portal.md) pro určení způsobu, jakým zdrojová data přecházejí do indexu. Toto je jediný způsob, jak odhadnout velikost indexu.
+1. [Sestavte počáteční index](search-what-is-an-index.md) pro určení způsobu, jakým zdrojová data přecházejí do indexu. Toto je jediný způsob, jak odhadnout velikost indexu.
 
 1. Na portálu [monitorujte úložiště, omezení služeb, svazek dotazů a latenci](search-monitor-usage.md) . Na portálu se zobrazí dotazy za sekundu, omezené dotazy a latence hledání. Všechny tyto hodnoty vám pomohou při rozhodování, zda jste vybrali správnou úroveň. 
 

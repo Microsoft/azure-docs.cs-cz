@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 5390915436d38939b83a1599f8fb564cfbd11bdb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e882035af3ac0a086c58b4886fd6999970712df1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738239"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521662"
 ---
 # <a name="troubleshooting-network-performance"></a>Řešení potíží s výkonem sítě
 ## <a name="overview"></a>Přehled
@@ -53,7 +53,7 @@ V předchozím diagramu je úplně vlevo vaše podniková síť. V závislosti n
 
 Vzhledem k složitosti těchto tří různých síťových prostředí je často vhodné začít na okrajích a zkusit Ukázat, kde je výkon dobrý, a kde se snižuje. Tento přístup může přispět k identifikaci problému s doménou směrování těchto tří a pak se zaměřit na řešení potíží v tomto konkrétním prostředí.
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 Většinu problémů se sítí se dá analyzovat a izolovat pomocí základních nástrojů, jako je třeba příkazy traceroute. Je to zřídka, když potřebujete jako analýzu paketů, jako je třeba Nástroj Wireshark, přejít hluboko. Pro pomoc s řešením potíží se vyvinula sada Azure Connectivity Toolkit (AzureCT), která do snadného balíčku tyto nástroje umísťuje. V případě testování výkonu chci použít iPerf a PSPing. iPerf je běžně používaný nástroj a funguje ve většině operačních systémů. iPerf je pro základní testy funkčních zkoušek dobré a je poměrně snadné ho používat. PSPing je nástroj pro použití testu, který vyvinula společnost Sysinternals. PSPing je jednoduchý způsob, jak v jednom snadno používat příkazy protokolu ICMP a TCP s protokolem TCP. Oba tyto nástroje jsou odlehčené a jsou "nainstalují" jednoduše kopírování soubory do adresáře na hostiteli.
 
 Všechny tyto nástroje a metody jsme zabalily do modulu PowerShellu (AzureCT), který můžete nainstalovat a použít.
@@ -177,17 +177,16 @@ Nastavení testu:
 >
 >
 
-| | | | | | |
-|-|-|-|-|-|-|
-|ExpressRoute<br/>Umístění|Azure<br/>Oblast|–<br/>Vzdálenost (km)|Latence|1 relace<br/>Šířka pásma|Maximum<br/>Šířka pásma|
-| Seattle | USA – západ 2        |    191 km |   5 MS | 262,0 Mbit/s |  3,74 Gbits/s |
+| ExpressRoute<br/>Umístění|Azure<br/>Oblast | –<br/>Vzdálenost (km) | Latence|1 relace<br/>Šířka pásma | Maximum<br/>Šířka pásma |
+| ------------------------------------------ | --------------------------- |  - | - | - | - |
+| Seattle | Západní USA 2        |    191 km |   5 MS | 262,0 Mbit/s |  3,74 Gbits/s |
 | Seattle | USA – západ          |  1 094 km |  18 MS |  82,3 Mbit/s |  3,70 Gbits/s |
-| Seattle | USA – střed       |  2 357 km |  40 MS |  38,8 Mbit/s |  2,55 Gbits/s |
-| Seattle | USA – středojih |  2 877 km |  51 MS |  30,6 Mbit/s |  2,49 Gbits/s |
+| Seattle | Střední USA       |  2 357 km |  40 MS |  38,8 Mbit/s |  2,55 Gbits/s |
+| Seattle | Středojižní USA |  2 877 km |  51 MS |  30,6 Mbit/s |  2,49 Gbits/s |
 | Seattle | USA – středosever |  2 792 km |  55 MS |  27,7 Mbit/s |  2,19 Gbits/s |
 | Seattle | USA – východ 2        |  3 769 km |  73 MS |  21,3 Mbit/s |  1,79 Gbits/s |
-| Seattle | USA – východ          |  3 699 km |  74 MS |  21,1 Mbit/s |  1,78 Gbits/s |
-| Seattle | Japonsko – východ       |  7 705 km | 106 MS |  14,6 Mbit/s |  1,22 Gbits/s |
+| Seattle | East US          |  3 699 km |  74 MS |  21,1 Mbit/s |  1,78 Gbits/s |
+| Seattle | Japan East       |  7 705 km | 106 MS |  14,6 Mbit/s |  1,22 Gbits/s |
 | Seattle | Spojené království – jih         |  7 708 km | 146 MS |  10,6 Mbit/s |   896 Mbit/s |
 | Seattle | Západní Evropa      |  7 834 km | 153 MS |  10,2 Mbit/s |   761 Mbit/s |
 | Seattle | Austrálie – východ   | 12 484 km | 165 MS |   9,4 Mbit/s |   794 Mbit/s |

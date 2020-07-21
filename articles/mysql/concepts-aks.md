@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 9e020d34b6cfb8117ccff1114cc938c966126b77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 712bf702ba355ec3b2ca6184c33da8489f8a178e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537274"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519860"
 ---
 # <a name="connecting-azure-kubernetes-service-and-azure-database-for-mysql"></a>Připojení služby Azure Kubernetes a Azure Database for MySQL
 
@@ -41,13 +41,7 @@ Výstupem bude vygenerovaná skupina prostředků, kterou AKS vytvoří, obsahuj
 az network nic list --resource-group nodeResourceGroup -o table
 ```
 
-## <a name="open-service-broker-for-azure"></a>Technologie Open Service Broker for Azure 
-[Open Service Broker pro Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA) vám umožní zřídit služby Azure přímo z Kubernetes nebo Cloud Foundry. Jedná se o [Open Service Broker implementaci rozhraní API](https://www.openservicebrokerapi.org/) pro Azure.
-
-Pomocí OSBA můžete vytvořit server Azure Database for MySQL a vytvořit jeho propojení s clusterem AKS pomocí nativního jazyka Kubernetes. Přečtěte si, jak používat OSBA a Azure Database for MySQL společně na [stránce GitHubu OSBA](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/mysql.md). 
-
-
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření clusteru služby Azure Kubernetes](../aks/kubernetes-walkthrough.md)
+- [Vytvoření clusteru služby Azure Kubernetes Service](../aks/kubernetes-walkthrough.md)
 - Naučte se [instalovat WordPress z grafu Helm pomocí OSBA a Azure Database for MySQL](../aks/integrate-azure.md)

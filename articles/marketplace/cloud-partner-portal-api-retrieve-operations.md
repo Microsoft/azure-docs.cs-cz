@@ -4,18 +4,20 @@ description: Rozhraní API pro načtení všech operací na této nabídce nebo 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: c0611cb3cbc24e2b105cdef134e30a7c2fbdd445
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113458"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520285"
 ---
 # <a name="retrieve-operations"></a>Načtení operací
 
 > [!NOTE]
-> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
 Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný operationId. Klient může pomocí parametrů dotazů filtrovat spuštěné operace.
 
@@ -27,7 +29,6 @@ Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný 
 
 ```
 
-
 ## <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 |  **Název**          |      **Popis**                                                                                           | **Datový typ** |
@@ -38,15 +39,13 @@ Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný 
 |  verze-api       | Nejnovější verze rozhraní API |    Datum      |
 |  |  |  |
 
-## <a name="header"></a>Záhlaví
-
+## <a name="header"></a>Hlavička
 
 |  **Název**          |  **Hodnota**           |
 |  ---------------   | -------------------- |
 |  Typ obsahu      | `application/json`   |
 |  Autorizace     | `Bearer YOUR_TOKEN`  |
 |  |  |
-
 
 ## <a name="body-example"></a>Příklad textu
 
@@ -186,7 +185,7 @@ Načte všechny operace v nabídce nebo získá konkrétní operaci pro zadaný 
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | Odhadovaná doba trvání této operace |
 | id | Jedinečný identifikátor procesu kroku |
-| description | Popis kroku |
+| Popis | Popis kroku |
 | Step | Popisný název kroku |
 | status | Stav kroku, `notStarted` \| `running` \| `failed` buď \|`completed` |
 | cloud-zařízení | Všechna oznámení nebo upozornění zjištěná v průběhu tohoto kroku. Pole řetězců |

@@ -5,19 +5,19 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.openlocfilehash: 05a76a1434b5a63229b335fb3973897896ec733d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 07/14/2020
+ms.openlocfilehash: d36b4fd433af716ebd97d88d05922d94bd74c309
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955808"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523532"
 ---
-# <a name="pricing-model-in-azure-cosmos-db"></a>Cenový model ve službě Azure Cosmos DB 
+# <a name="pricing-model-in-azure-cosmos-db"></a>Cenový model ve službě Azure Cosmos DB
 
 Cenový model služby Azure Cosmos DB zjednodušuje správu a plánování nákladů. V případě služby Azure Cosmos DB platíte za zřízenou propustnost a spotřebované úložiště.
 
-* **Zajištěná propustnost**: zajištěná propustnost (označovaná také jako rezervovaná propustnost) zaručuje vysoký výkon v jakémkoli měřítku. Určete propustnost (RU/s), kterou potřebujete, a Azure Cosmos DB vyhradit prostředky potřebné k zajištění nakonfigurované propustnosti. Za danou hodinu se účtuje po hodinách maximální zajištěné propustnosti.
+* **Zajištěná propustnost**: [zajištěná](how-to-choose-offer.md) propustnost (označovaná také jako rezervovaná propustnost) zaručuje vysoký výkon v jakémkoli měřítku. Určete propustnost (RU/s), kterou potřebujete, a Azure Cosmos DB vyhradit prostředky potřebné k zajištění nakonfigurované propustnosti. Za danou hodinu se účtuje po hodinách maximální zajištěné propustnosti. Můžete ručně zřídit propustnost nebo použít [Automatické škálování](provision-throughput-autoscale.md).
 
    > [!NOTE]
    > Vzhledem k tomu, že model zřízené propustnosti vyhradí prostředky pro váš kontejner nebo databázi, bude se vám za zřízenou propustnost účtovat i v případě, že nespustíte žádné úlohy.
@@ -41,9 +41,11 @@ Jak je znázorněno v předchozí tabulce, minimální propustnost v Azure Cosmo
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Vyzkoušejte si Azure Cosmos DB zdarma
 
-Azure Cosmos DB nabízí zdarma několik možností pro vývojáře. K těmto možnostem patří:
+Azure Cosmos DB nabízí zdarma mnoho možností pro vývojáře. K těmto možnostem patří:
 
-* **Bezplatný účet Azure**: Azure nabízí [bezplatnou úroveň](https://azure.microsoft.com/free/) , která vám poskytne $200 kredity Azure během prvních 30 dnů a omezené množství bezplatných služeb na 12 měsíců. Další informace najdete na stránce [bezplatného účtu Azure](../cost-management-billing/manage/avoid-charges-free-account.md). Azure Cosmos DB je součástí bezplatného účtu Azure. Tento bezplatný účet Azure Cosmos DB konkrétně nabízí 5 GB úložiště a 400 Ruy zajištěné propustnosti po celý rok. 
+* **Azure Cosmos DB úroveň Free**: Azure Cosmos dB úrovně Free usnadňuje začátek, vývoj a testování aplikací nebo dokonce i spouštění malých produkčních úloh zdarma. Pokud je na účtu povolená úroveň Free, získáte po dobu životnosti účtu prvních 400 RU/s a 5 GB úložiště v účtu Free. Můžete mít až jeden účet bezplatné úrovně na jedno předplatné Azure a při vytváření účtu musí být výslovný souhlas. Pokud chcete začít, [vytvořte nový účet v Azure Portal s povolenou úrovní Free](create-cosmosdb-resources-portal.md) nebo použijte [šablonu ARM](manage-sql-with-resource-manager.md#free-tier).
+
+* **Bezplatný účet Azure**: Azure nabízí [bezplatnou úroveň](https://azure.microsoft.com/free/) , která vám poskytne $200 kredity Azure během prvních 30 dnů a omezené množství bezplatných služeb na 12 měsíců. Další informace najdete na stránce [bezplatného účtu Azure](../cost-management-billing/manage/avoid-charges-free-account.md). Azure Cosmos DB je součástí bezplatného účtu Azure. Tento bezplatný účet Azure Cosmos DB konkrétně nabízí 5 GB úložiště a 400 RU/s zřízené propustnost po celý rok.
 
 * **Vyzkoušejte si Azure Cosmos DB zdarma**: Azure Cosmos DB nabízí časově omezené prostředí pomocí funkce vyzkoušet Azure Cosmos DB pro bezplatné účty. Můžete vytvořit účet Azure Cosmos DB, vytvořit databázi a kolekce a spustit ukázkovou aplikaci pomocí rychlých startů a kurzů. Ukázkovou aplikaci můžete spustit bez přihlášení k odběru účtu Azure nebo pomocí platební karty. [Vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) nabízených nabídek Azure Cosmos DB po dobu jednoho měsíce, s možností obnovit účet několikrát.
 

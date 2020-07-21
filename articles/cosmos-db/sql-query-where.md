@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
-ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceffb203ccc2cca1ff6e1c53644cde955c2e0acb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78898786"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523498"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>Klauzule WHERE v Azure Cosmos DB
 
@@ -72,7 +73,7 @@ Můžete použít následující podporované binární operátory:
 |---------|---------|
 |Průměr | +,-,*,/,% |
 |Číslo2    | \|, &, ^,  <<,  >>  >>>  (s nulovou výplní vpravo Shift) |
-|Logické    | A, NEBO, NOT      |
+|Logický    | A, NEBO, NOT      |
 |Porovnání | =,! =, &lt; , &gt; , &lt; =, &gt; =,  <> |
 |Řetězec     |  \|\|zřetězit |
 
@@ -104,7 +105,7 @@ Můžete také použít unární operátory +,-, ~ a ne v dotazech, jak je znáz
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující Vlastnost `isRegistered` s hodnotou rovnou `true` . Jakákoli jiná hodnota, například,,, `false` `null` `Undefined` `<number>` , `<string>` , `<object>` , nebo `<array>` , vyloučí položku z výsledku.
+Odkazy na vlastnosti můžete použít také v dotazech. Například `SELECT * FROM Families f WHERE f.isRegistered` vrátí položku JSON obsahující Vlastnost `isRegistered` s hodnotou rovnou `true` . Jakákoli jiná hodnota, například,,, `false` `null` `Undefined` `<number>` , `<string>` , `<object>` , nebo `<array>` , vyloučí položku z výsledku. Kromě toho můžete použít `IS_DEFINED` funkci pro kontrolu typů k dotazování na základě přítomnosti nebo absence dané vlastnosti JSON. Například `SELECT * FROM Families f WHERE NOT IS_DEFINED(f.isRegistered)` vrátí libovolnou položku JSON, která nemá hodnotu pro `isRegistered` .
 
 ## <a name="next-steps"></a>Další kroky
 

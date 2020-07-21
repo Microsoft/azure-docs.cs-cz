@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 6b29937e53fd58886d770ec15c803fb814a155ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 123090cad78af46e88e6493a47d04b97e448f62a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391804"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522325"
 ---
 # <a name="service-limits-in-public-preview"></a>Omezení služby ve verzi Public Preview
 
@@ -30,4 +30,4 @@ Toto jsou omezení služeb digitálních vláken Azure v rámci verze Public Pre
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o aktuální verzi Preview digitálních vláken Azure v přehledu služby:
-* [Přehled: co je Azure Digital revláken?](overview.md)
+* [*Přehled: co je Azure Digital revláken?*](overview.md)
