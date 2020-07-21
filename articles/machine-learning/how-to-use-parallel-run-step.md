@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
+ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 06/23/2020
+ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520625"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Spuštění dávkového odvozování pro velké objemy dat pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,10 +33,11 @@ V tomto článku se seznámíte s následujícími úlohami:
 > * Napište svůj skript pro odvození.
 > * Vytvořte [kanál strojového učení](concept-ml-pipelines.md) obsahující ParallelRunStep a spusťte odvození dávky na mnist ručně zapsaných testovacích imagí. 
 > * Opětovné odeslání odvozeného odvození dávky s novým vstupem a parametry dat 
+> * Zkontrolujte výsledky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+* Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Průvodce rychlým startem vám umožní absolvovat [kurz instalace](tutorial-1st-experiment-sdk-setup.md) , pokud ještě nemáte pracovní prostor Azure Machine Learning. 
 
@@ -158,9 +160,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
 
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
+output_dir = PipelineData(name="inferences", datastore=def_data_store)
 ```
 
 ## <a name="prepare-the-model"></a>Příprava modelu
@@ -265,17 +265,17 @@ Teď máte všechno, co potřebujete: datové vstupy, model, výstup a skript pr
 
 ### <a name="prepare-the-environment"></a>Příprava prostředí
 
-Nejdřív zadejte závislosti pro váš skript. Díky tomu budete moct instalovat balíčky PIP i nakonfigurovat prostředí. Vždy zahrňte balíčky **AzureML-Core** a **AzureML-dataprep [PANDAS, zapékací]** .
+Nejdřív zadejte závislosti pro váš skript. Díky tomu budete moct instalovat balíčky PIP i nakonfigurovat prostředí.
 
-Pokud používáte vlastní image Docker (user_managed_dependencies = true), měli byste také mít nainstalované conda.
+Vždy zahrňte do seznamu balíčků PIP modul **AzureML-Core** a **AzureML-DataSet-runtime [PANDAS, pojistka]** . Pokud používáte vlastní image Docker (user_managed_dependencies = true), měli byste také mít nainstalované conda.
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
-                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.15.2", "pillow", 
+                                                          "azureml-core", "azureml-dataset-runtime[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
@@ -285,7 +285,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>Zadejte parametry pomocí ParallelRunConfig
 
-`ParallelRunConfig`je hlavní konfigurací `ParallelRunStep` instance v rámci Azure Machine Learning kanálu. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech těchto:
+`ParallelRunConfig`je hlavní konfigurací `ParallelRunStep` instance v rámci Azure Machine Learning kanálu. Použijete ho k zabalení skriptu a ke konfiguraci nezbytných parametrů, včetně všech následujících položek:
 - `entry_script`: Uživatelský skript jako cesta k místnímu souboru, který bude spuštěn paralelně na více uzlech. Pokud `source_directory` je k dispozici, použijte relativní cestu. V opačném případě použijte jakoukoli cestu, která je přístupná v počítači.
 - `mini_batch_size`: Velikost malé dávky předaná jednomu `run()` volání. (volitelné; výchozí hodnota je `10` soubory pro datovou sadu souborů a `1MB` pro TabularDataset.)
     - V případě je `FileDataset` to počet souborů s minimální hodnotou `1` . Můžete zkombinovat více souborů do jedné Mini-dávky.
@@ -304,7 +304,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: `run()` Časový limit volání metody v sekundách. (volitelné; výchozí hodnota je `60` )
 - `run_max_try`: Maximální počet testovaných položek `run()` pro Mini-Batch. V `run()` případě, že dojde k výjimce, se nezdařila nebo není vrácena žádná hodnota, pokud `run_invocation_timeout` je dosaženo (volitelné; výchozí hodnota je `3` ). 
 
-Můžete zadat `mini_batch_size` , `node_count` ,, `process_count_per_node` `logging_level` , `run_invocation_timeout` a jako, aby při opětovném `run_max_try` `PipelineParameter` odeslání běhu kanálu mohli doladit hodnoty parametrů. V tomto příkladu použijete PipelineParameter pro `mini_batch_size` a `Process_count_per_node` a pak změníte tyto hodnoty, když znovu odešlete spustit později. 
+Můžete zadat `mini_batch_size` , `node_count` ,, `process_count_per_node` `logging_level` , `run_invocation_timeout` a `run_max_try` jako, aby `PipelineParameter` při opakovaném odesílání kanálu mohli doladit hodnoty parametrů. V tomto příkladu použijete PipelineParameter pro `mini_batch_size` a `Process_count_per_node` a pak změníte tyto hodnoty, když znovu odešlete spustit později. 
 
 V tomto příkladu se předpokládá, že používáte `digit_identification.py` skript, který jste si poznamenali dříve. Pokud používáte vlastní skript, změňte `source_directory` `entry_script` parametry a odpovídajícím způsobem.
 
@@ -378,7 +378,7 @@ pipeline_run.wait_for_completion(show_output=True)
 
 ## <a name="resubmit-a-run-with-new-data-inputs-and-parameters"></a>Opětovné odeslání běhu s novými vstupy a parametry dat
 
-Vzhledem k tomu, že jste provedli vstupy a několik nakonfigurujících jako `PipelineParameter` , můžete znovu odeslat spuštění odvození dávky s jiným vstupem datové sady a doladit parametry bez nutnosti vytvářet zcela nový kanál. Použijete stejné úložiště dat, ale použijete pouze jeden obrázek jako vstup dat.
+Vzhledem k tomu, že jste provedli vstupy a několik konfigurací jako `PipelineParameter` , můžete znovu odeslat odvození dávky s jiným vstupem datové sady a doladit parametry bez nutnosti vytvářet zcela nový kanál. Použijete stejné úložiště dat, ale použijete pouze jeden obrázek jako vstup dat.
 
 ```python
 path_on_datastore = mnist_blob.path('mnist/0.png')
@@ -391,6 +391,28 @@ pipeline_run_2 = experiment.submit(pipeline,
 )
 
 pipeline_run_2.wait_for_completion(show_output=True)
+```
+## <a name="view-the-results"></a>Zobrazení výsledků
+
+Výsledky z výše uvedeného běhu jsou zapsány do úložiště dat určeného v objektu PipelineData jako výstupní data, která jsou v tomto případě označována jako *odvozená*. Výsledky jsou uložené ve výchozím kontejneru objektů blob, můžete přejít k účtu úložiště a zobrazit ho prostřednictvím Průzkumník služby Storage, cesta k souboru je AzureML-SAS-*GUID*/AzureML/*RunId* / *output_dir*.
+
+Můžete si také stáhnout tato data a zobrazit výsledky. Níže je ukázkový kód pro zobrazení prvních 10 řádků.
+
+```python
+import pandas as pd
+import tempfile
+
+batch_run = pipeline_run.find_step_run(parallelrun_step.name)[0]
+batch_output = batch_run.get_output_data(output_dir.name)
+
+target_dir = tempfile.mkdtemp()
+batch_output.download(local_path=target_dir)
+result_file = os.path.join(target_dir, batch_output.path_on_datastore, parallel_run_config.append_row_file_name)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
+df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
+df.head(10) 
 ```
 
 ## <a name="next-steps"></a>Další kroky

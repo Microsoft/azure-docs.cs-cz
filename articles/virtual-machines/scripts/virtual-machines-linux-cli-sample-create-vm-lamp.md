@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
-ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 471690c5c0f5ebb4cea111b85cab1fe0524a36cd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74039102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509717"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>Nasazení stacku LAMP do škálovací sady virtuálních počítačů s vyrovnáváním zatížení
 
@@ -50,17 +50,17 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | Vytvoří škálovací sadu virtuálních počítačů. |
-| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Přidá koncový bod s vyrovnáváním zatížení. |
-| [az vmss extension set](https://docs.microsoft.com/cli/azure/vmss/extension) | Vytvoří rozšíření, které po nasazení virtuálního počítače spustí vlastní skript. |
-| [az vmss update-instances](https://docs.microsoft.com/cli/azure/vmss) | Spustí vlastní skript na instancích virtuálních počítačů nasazených před použitím rozšíření pro škálovací sadu. |
-| [az vmss scale](https://docs.microsoft.com/cli/azure/vmss) | Vertikálně navýší kapacitu škálovací sady přidáním dalších instancí virtuálních počítačů. Na těch se po nasazení spustí vlastní skript. |
-| [az network public-ip list](https://docs.microsoft.com/cli/azure/network/public-ip) | Získá IP adresy virtuálních počítačů, které se vytvořily v rámci ukázky. |
-| [az network lb show](https://docs.microsoft.com/cli/azure/network/lb) | Získá front-endové a back-endové porty, které používá nástroj pro vyrovnávání zatížení. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az vmss create](/cli/azure/vmss) | Vytvoří škálovací sadu virtuálních počítačů. |
+| [az network lb rule create](/cli/azure/network/lb/rule) | Přidá koncový bod s vyrovnáváním zatížení. |
+| [az vmss extension set](/cli/azure/vmss/extension) | Vytvoří rozšíření, které po nasazení virtuálního počítače spustí vlastní skript. |
+| [az vmss update-instances](/cli/azure/vmss) | Spustí vlastní skript na instancích virtuálních počítačů nasazených před použitím rozšíření pro škálovací sadu. |
+| [az vmss scale](/cli/azure/vmss) | Vertikálně navýší kapacitu škálovací sady přidáním dalších instancí virtuálních počítačů. Na těch se po nasazení spustí vlastní skript. |
+| [az network public-ip list](/cli/azure/network/public-ip) | Získá IP adresy virtuálních počítačů, které se vytvořily v rámci ukázky. |
+| [az network lb show](/cli/azure/network/lb) | Získá front-endové a back-endové porty, které používá nástroj pro vyrovnávání zatížení. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Linuxem](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

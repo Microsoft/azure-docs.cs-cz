@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: a4502a9ec7866d9b1ecb0f2aa2257e759fd417c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9a069c4e63abd5307c123799d92e656294045a65
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81114680"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505852"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Vytvoření nastavení automatického škálování prostředků Azure na základě údajů o výkonu nebo časového plánu
 
@@ -183,5 +183,4 @@ V tomto kurzu jste:
 Další informace o nastaveních automatického škálování najdete v [přehledu automatického škálování](../../azure-monitor/platform/autoscale-overview.md).
 
 > [!div class="nextstepaction"]
-> [Archivace dat monitorování](tutorial-archive-data.md)
-
+> [Archivace dat monitorování](../platform/platform-logs-overview.md)

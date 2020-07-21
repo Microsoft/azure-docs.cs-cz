@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628389"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536160"
 ---
-# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem (Preview) pro klasifikaci imagí ve více třídách 
+# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem pro klasifikaci imagí ve více třídách 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto kurzu se dozvíte, jak spravovat proces označování (označované také jako označování) obrázků, které se použijí jako data pro sestavování modelů strojového učení. Popisky dat v Azure Machine Learning jsou ve verzi Public Preview.
@@ -34,9 +34,9 @@ V tomto kurzu budete používat obrázky koček a psi.  Vzhledem k tomu, že ka�
 > * Označte data.  Tato úloha může být provedena buď vy, nebo vašimi popisky.
 > * Dokončete projekt tak, že zkontrolujete a exportujete data.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
@@ -114,7 +114,7 @@ Teď, když máte přístup k datům, která mají být označená, vytvořte sv
 
 Pokud plánujete přidat nové image do datové sady, přírůstková aktualizace tyto nové image najde a přidá je do projektu.  Pokud tuto funkci povolíte, bude projekt pravidelně kontrolovat nové image.  Pro tento kurz nebudete přidávat nové image do úložiště dat, takže tuto funkci nechte nezaškrtnuté.
 
-Pokračujte výběrem tlačítka **Next** (Další).
+Pokračujte výběrem tlačítka **Další**.
 
 ### <a name="label-classes"></a>Třídy popisků
 
@@ -130,7 +130,7 @@ Pokračujte výběrem tlačítka **Next** (Další).
 
 1. Vyberte **Další**.
 
-1. Na formuláři s **asistencí pro označování v ml** ponechejte políčko nezaškrtnuté. Označování s asistencí ML vyžaduje více dat, než v tomto kurzu budete používat.
+1. Pokud používáte pracovní prostor Enterprise, zobrazí se v části s **asistencí s popisem ml** .  Ponechejte políčko nezaškrtnuté. Označování s asistencí ML vyžaduje více dat, než v tomto kurzu budete používat.
 
 1. Vyberte **Vytvořit projekt**.
 

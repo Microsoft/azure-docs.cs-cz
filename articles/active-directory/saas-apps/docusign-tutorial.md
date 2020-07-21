@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 00c2825b78d0774d3c428978ba66c957130d3737
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499949"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s DocuSign
 
@@ -32,12 +32,15 @@ V tomto kurzu se dozvíte, jak integrovat DocuSign s Microsoft Azure Active Dire
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
 * Předplatné DocuSign s povoleným jednotným přihlašováním (SSO).
+
+> [!NOTE]
+> Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -118,7 +121,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V horní části obrazovky vyberte **Nový uživatel**.
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **název** zadejte **B. Simon**.  
-   1. Do pole **uživatelské jméno** zadejte `<username>@<companydomain>.<extension>`. Například: `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte `<username>@<companydomain>.<extension>` . Například: `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a potom si poznamenejte hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -192,13 +195,13 @@ V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel moh
 
     f. V případě, **že chcete odeslat žádost o odeslání Authn**, vyberte **post**.
 
-    g. Pro **Odeslat žádost o odhlášení**vyberte **získat**.
+    například Pro **Odeslat žádost o odhlášení**vyberte **získat**.
 
     h. V oddílu **mapování vlastních atributů** vyberte možnost **Přidat nové mapování**.
 
        ![Uživatelské rozhraní Mapování vlastního atributu][62]
 
-    i. Vyberte pole, které chcete namapovat na deklaraci identity Azure AD. V tomto příkladu je deklarace identity **EmailAddress** namapovaná s hodnotou `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`. To je výchozí název deklarace identity z Azure AD pro deklaraci e-mailu. Vyberte **Uložit**.
+    i. Vyberte pole, které chcete namapovat na deklaraci identity Azure AD. V tomto příkladu je deklarace identity **EmailAddress** namapovaná s hodnotou `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` . To je výchozí název deklarace identity z Azure AD pro deklaraci e-mailu. Vyberte **Uložit**.
 
        ![Pole mapování vlastního atributu][57]
 
@@ -238,7 +241,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici DocuSign, měli byste se automaticky přihlásit k instanci DocuSign, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 - [Kurzy týkající se integrace aplikací SaaS s Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

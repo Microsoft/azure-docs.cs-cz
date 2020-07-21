@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c82f087505c1634dd621252935c4017687340b2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b3b57cd2a2e5d5502f3865eddcdddfac67460dc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198248"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495019"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Kurz: Vytvoření a použití disků se škálovací sadou virtuálních počítačů pomocí Azure PowerShellu
 
@@ -27,7 +27,7 @@ ms.locfileid: "83198248"
 > * Výkon disků
 > * Připojení a příprava datových disků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -44,12 +44,12 @@ Při vytváření nebo škálování škálovací sady se ke každé instanci vi
 ### <a name="temporary-disk-sizes"></a>Velikosti dočasného disku
 | Typ | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
 |----|----|----|
-| [Obecné účely](../virtual-machines/windows/sizes-general.md) | Řady A, B a D | 1600 |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md) | Řada F | 576 |
-| [Optimalizované z hlediska paměti](../virtual-machines/windows/sizes-memory.md) | Řady D, E, G a M | 6144 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/windows/sizes-storage.md) | Řada L | 5630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | Řada N | 1440 |
-| [Vysoký výkon](../virtual-machines/windows/sizes-hpc.md) | Řady A a H | 2000 |
+| [Obecné účely](../virtual-machines/sizes-general.md) | Řady A, B a D | 1600 |
+| [Optimalizované pro výpočty](../virtual-machines/sizes-compute.md) | Řada F | 576 |
+| [Optimalizované pro paměť](../virtual-machines/sizes-memory.md) | Řady D, E, G a M | 6144 |
+| [Optimalizované pro úložiště](../virtual-machines/sizes-storage.md) | Řada L | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | Řada N | 1440 |
+| [Vysoký výkon](../virtual-machines/sizes-hpc.md) | Řady A a H | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Datové disky Azure
@@ -58,12 +58,12 @@ Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další
 ### <a name="max-data-disks-per-vm"></a>Maximum datových disků na virtuální počítač
 | Typ | Běžné velikosti | Maximum datových disků na virtuální počítač |
 |----|----|----|
-| [Obecné účely](../virtual-machines/windows/sizes-general.md) | Řady A, B a D | 64 |
-| [Optimalizované z hlediska výpočetních služeb](../virtual-machines/windows/sizes-compute.md) | Řada F | 64 |
-| [Optimalizované z hlediska paměti](../virtual-machines/windows/sizes-memory.md) | Řady D, E, G a M | 64 |
-| [Optimalizované z hlediska úložiště](../virtual-machines/windows/sizes-storage.md) | Řada L | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | Řada N | 64 |
-| [Vysoký výkon](../virtual-machines/windows/sizes-hpc.md) | Řady A a H | 64 |
+| [Obecné účely](../virtual-machines/sizes-general.md) | Řady A, B a D | 64 |
+| [Optimalizované pro výpočty](../virtual-machines/sizes-compute.md) | Řada F | 64 |
+| [Optimalizované pro paměť](../virtual-machines/sizes-memory.md) | Řady D, E, G a M | 64 |
+| [Optimalizované pro úložiště](../virtual-machines/sizes-storage.md) | Řada L | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | Řada N | 64 |
+| [Vysoký výkon](../virtual-machines/sizes-hpc.md) | Řady A a H | 64 |
 
 
 ## <a name="vm-disk-types"></a>Typy disků virtuálního počítače
@@ -135,7 +135,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>Příprava datových disků
 Disky, které se vytvoří a připojí k instancím virtuálních počítačů ve škálovací sadě, jsou holé disky. Než je budete moct použít pro svá data a aplikace, je potřeba disky připravit. Disky připravíte tak, že vytvoříte oddíl a systém souborů a připojíte je.
 
-K automatizaci tohoto procesu napříč několika instancemi virtuálních počítačů ve škálovací sadě můžete použít rozšíření vlastních skriptů Azure. Toto rozšíření může na jednotlivých instancích virtuálních počítačů místně spouštět skripty, například pro přípravu připojených datových disků. Další informace najdete v tématu [Přehled rozšíření vlastních skriptů](../virtual-machines/windows/extensions-customscript.md).
+K automatizaci tohoto procesu napříč několika instancemi virtuálních počítačů ve škálovací sadě můžete použít rozšíření vlastních skriptů Azure. Toto rozšíření může na jednotlivých instancích virtuálních počítačů místně spouštět skripty, například pro přípravu připojených datových disků. Další informace najdete v tématu [Přehled rozšíření vlastních skriptů](../virtual-machines/extensions/custom-script-windows.md).
 
 
 Následující příklad spustí skript z ukázkového úložiště GitHubu na každé instanci virtuálního počítače s [doplňkem Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) , který připraví všechny nezpracované připojené datové disky:

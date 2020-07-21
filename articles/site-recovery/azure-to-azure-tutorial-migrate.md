@@ -1,5 +1,5 @@
 ---
-title: Přesuňte virtuální počítače Azure do jiné oblasti pomocí Azure Site Recovery
+title: Přesun virtuálních počítačů Azure s IaaS do jiné oblasti pomocí Azure Site Recovery
 description: Pomocí Azure Site Recovery můžete přesunout virtuální počítače Azure IaaS z jedné oblasti Azure do jiné.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 09a00d2c6a889f396e5c18da29530c94a624568b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 198e07b80788629030b621dd3c5e235a91baaba3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134432"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518907"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Přesun virtuálních počítačů Azure do jiné oblasti
 
@@ -34,7 +34,7 @@ V tomto kurzu provedete následující:
 > [!NOTE]
 > V tomto kurzu se dozvíte, jak přesunout virtuální počítače Azure z jedné oblasti do jiné, jak je to. Pokud potřebujete zlepšit dostupnost tím, že přesunete virtuální počítače ve skupině dostupnosti na virtuální počítače připojené k zóně v jiné oblasti, přečtěte si [kurz přesunutí virtuálních počítačů Azure do zóny dostupnosti](move-azure-vms-avset-azone.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že virtuální počítače Azure jsou v oblasti Azure, ze které chcete přejít.
 - Ověřte, zda [je podporována kombinace zdrojové oblasti a cílové](./azure-to-azure-support-matrix.md#region-support)oblasti, a proveďte odpovídající rozhodnutí o cílové oblasti.
@@ -99,7 +99,7 @@ Site Recovery načte seznam virtuálních počítačů, které jsou přidružen�
 
 1. V dalším kroku vyberte virtuální počítač, který chcete přesunout, a pak vyberte **OK**.
 1. V **Nastavení**vyberte **zotavení po havárii**.
-1. V části **Konfigurovat zotavení po havárii**  >  **cílová oblast**vyberte cílovou oblast, do které budete replikovat.
+1. V části **Konfigurovat zotavení po havárii** > **Cílová oblast** vyberte cílovou oblast, do které chcete replikaci provést.
 1. U ostatních nastavení přijměte pro účely tohoto kurzu výchozí hodnoty.
 1. Vyberte **Povolit replikaci**. Tento krok spustí úlohu, která povolí replikaci pro virtuální počítač.
 

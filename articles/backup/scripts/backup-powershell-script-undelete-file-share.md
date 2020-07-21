@@ -3,12 +3,12 @@ title: PowerShellový skript – zrušení odstranění odstraněné sdílené s
 description: Naučte se, jak pomocí skriptu Azure PowerShell obnovit omylem odstraněnou sdílenou složku.
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: 2eb89735a8327e782d8d8a712f4f0d59911540cc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 199cb4720c2efe03d47fd06ea0cf41eae29d06fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513230"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>Skript PowerShellu pro zrušení odstranění omylem odstraněné sdílené složky
 
@@ -152,9 +152,9 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ## <a name="how-to-use-the-script-in-different-scenarios"></a>Jak používat skript v různých scénářích
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
-1. Před spuštěním skriptu nainstalujte nejnovější Azure PowerShell AZ modules from [tohoto odkazu](https://docs.microsoft.com//powershell/azure/install-az-ps?view=azps-3.3.0) .
+1. Před spuštěním skriptu nainstalujte nejnovější Azure PowerShell AZ modules from [tohoto odkazu](//powershell/azure/install-az-ps) .
 2. Následující podrobnosti si ponechte, protože je budete muset předat jako hodnoty pro různé parametry skriptu:
 
     * **-SubscriptionId** -ID předplatného, kde se nachází sdílená složka.
@@ -164,7 +164,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ### <a name="execution-steps"></a>Kroky provedení
 
-1. Uložte skript výše na svém počítači s názvem, který jste vybrali. V tomto příkladu jsme ho uložili jako *Undelete. ps1*
+1. Uložte skript výše na svém počítači s názvem, který jste vybrali. V tomto příkladu jsme ho uložili jako *Undelete.ps1*
 2. Spusťte skript podle scénáře, který vyhovuje vašim požadavkům.
 
 #### <a name="scenario-1"></a>Scénář 1
@@ -185,7 +185,7 @@ Existuje několik odstraněných verzí se stejným názvem, jako má sdílená 
 
 V následujícím příkladu se odstraní verze sdílené složky *share1*
 
-##### <a name="step-1"></a>Krok 1
+##### <a name="step-1"></a>Step 1
 
 Spusťte skript následujícím způsobem zadáním názvu sdílené složky.
 
@@ -209,4 +209,3 @@ Následující příklad odstraní verzi *01D5D7F77ACC7864* sdílené složky *s
 ```powershell
    .\UnDelete.ps1 -ResourceGroupName afsshare-StorageAccountName afsshare -SubscriptionId f75d8d8b-6735-4697-82e1-1a7a3ff0d5d4 -FileShareName share1 -DeletedShareVersion 01D5D7F77ACC7864
 ```
-

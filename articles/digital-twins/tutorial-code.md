@@ -7,17 +7,18 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b1039bb94626dec35eff040e023a84283d9d3a4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027892"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537410"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Kódování pomocí rozhraní API digitálních vláken Azure
 
 Pro vývojáře, kteří pracují s digitálními podmnožinami Azure, je běžné, že napíší klientskou aplikaci pro komunikaci s její instancí služby Azure Digital Working. Tento kurz zaměřený na vývojáře poskytuje Úvod do programování služby Azure Digital prokážely pomocí [klientské knihovny Azure IoT Digital vláken pro .NET (C#)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). Provede vás vytvořením kroku klientské aplikace konzoly C# od začátku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se používá příkazový řádek pro nastavení a práci v projektu. Proto můžete použít libovolný editor kódu k procházení cvičení.
 
@@ -46,7 +47,7 @@ Tím se vytvoří několik souborů v adresáři, včetně jednoho s názvem *pr
 Dále přidejte dvě nezbytné závislosti pro práci s digitálními úkoly Azure:
 
 ```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
@@ -173,7 +174,7 @@ V adresáři, ve kterém jste vytvořili projekt, vytvořte nový soubor *. JSON
 > Pokud pro tento kurz používáte sadu Visual Studio, možná budete chtít vybrat nově vytvořený soubor JSON a nastavit vlastnost *Kopírovat do výstupního adresáře* v inspektoru vlastností na hodnotu *Kopírovat, pokud* je vždycky novější nebo *Kopírovat*. To umožní aplikaci Visual Studio najít soubor JSON s výchozí cestou při spuštění programu s klávesou **F5** během zbývající části kurzu.
 
 > [!TIP] 
-> Je k dispozici [Ukázka validátoru](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [Postupy: analýza a ověření modelů](how-to-use-parser.md).
+> Je k dispozici [Ukázka validátoru](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) jazyka nezávislá DTDL, kterou můžete použít ke kontrole modelu dokumentů, abyste měli jistotu, že je DTDL platný. Je postaven na knihovně analyzátoru DTDL, kterou si můžete přečíst v tématu [*Postupy: analýza a ověření modelů*](how-to-use-parser.md).
 
 Dále přidejte další kód do *program.cs* , abyste nahráli model, který jste právě vytvořili, do instance digitálního vlákna Azure.
 
@@ -184,7 +185,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 ```
 
 Dále připravte na použití asynchronních metod v sadě SDK služby C# tak, že změníte `Main` signaturu metody tak, aby povolovala asynchronní spuštění. 
@@ -530,7 +530,7 @@ namespace minimal
 ```
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
  
-Instance použitá v tomto kurzu se dá znovu použít v dalším kurzu. [kurz: Prozkoumejte základy pomocí ukázkové klientské aplikace](tutorial-command-line-app.md). Pokud máte v úmyslu pokračovat k dalšímu kurzu, můžete ponechat instanci digitálních vláken Azure, kterou jste nastavili tady.
+Instance použitá v tomto kurzu se dá znovu použít v dalším kurzu. [*kurz: Prozkoumejte základy pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md). Pokud máte v úmyslu pokračovat k dalšímu kurzu, můžete ponechat instanci digitálních vláken Azure, kterou jste nastavili tady.
  
 Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, odstraňte je pomocí těchto kroků.
 
@@ -560,8 +560,8 @@ V tomto kurzu jste vytvořili klientskou aplikaci konzoly .NET od nuly. Napsali 
 Pokračujte k dalšímu kurzu, abyste prozkoumali věci, které můžete s touto ukázkovou klientskou aplikací dělat: 
 
 > [!div class="nextstepaction"]
-> [Kurz: zkoumání základních informací pomocí ukázkové klientské aplikace](tutorial-command-line-app.md)
+> [*Kurz: zkoumání základních informací pomocí ukázkové klientské aplikace*](tutorial-command-line-app.md)
 
 Do kódu, který jste napsali v tomto kurzu, můžete přidat také informace o více operacích správy v článcích s postupy, nebo můžete začít hledat v dokumentaci konceptu, kde najdete další informace o prvcích, se kterými jste se v tomto kurzu pracovali.
-* [Postupy: Správa vlastních modelů](how-to-manage-model.md)
-* [Koncepty: vlastní modely](concepts-models.md)
+* [*Postupy: Správa vlastních modelů*](how-to-manage-model.md)
+* [*Koncepty: vlastní modely*](concepts-models.md)

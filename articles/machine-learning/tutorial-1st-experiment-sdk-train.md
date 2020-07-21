@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: trevorbye
-ms.author: trbye
-ms.reviewer: trbye
+ms.author: sgilley
+author: sdgilley
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 2a65579ea7ea1a8e1611b604fa64f6b108c88784
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 821b11dc89a3479f7310770db84d0947390a3109
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025144"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520540"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte provádět následující úlohy:
 > * Zobrazit výsledky školení v studiu
 > * Načtení nejlepšího modelu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
@@ -133,7 +133,7 @@ Po dokončení školení volejte `experiment` proměnnou, která načte odkaz na
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Machine Learning Studio</td><td>Odkaz na dokumentaci</td></tr></table>
+<table style="width:100%"><tr><th>Název</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Machine Learning Studio</td><td>Odkaz na dokumentaci</td></tr></table>
 
 ## <a name="view-training-results-in-studio"></a>Zobrazit výsledky školení v studiu
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/09/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c7260730ccf94e909238c116cb77572463550ed9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 18ceab0b7a16362ddefe841b8e5bc6c4b5bc5bf6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458552"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501401"
 ---
 # <a name="create-a-vm-with-a-virtual-hard-disk"></a>Vytvoření virtuálního počítače s využitím virtuálního pevného disku
 
@@ -52,19 +52,19 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače, skup
 
 | Příkaz | Poznámky |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az storage account list](https://docs.microsoft.com/cli/azure/storage/account) | Vypíše účty úložiště. |
-| [az storage account check-name](https://docs.microsoft.com/cli/azure/storage/account) | Zkontroluje platnost názvu účtu úložiště a jestli už neexistuje. |
-| [az storage account keys list](https://docs.microsoft.com/cli/azure/storage/account/keys) | Vypíše klíče pro účty úložiště. |
-| [az storage blob exists](https://docs.microsoft.com/cli/azure/storage/blob) | Zkontroluje, jestli objekt blob existuje. |
-| [az storage container create](https://docs.microsoft.com/cli/azure/storage/container) | Vytvoří kontejner v účtu úložiště. |
-| [az storage blob upload](https://docs.microsoft.com/cli/azure/storage/blob) | Vytvoří v kontejneru objekt blob nahráním virtuálního pevného disku. |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm) | Používá se s parametrem `--query` ke kontrole, jestli už se název virtuálního počítače nepoužívá. | 
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Vytvoří virtuální počítače. |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az-vm-list-ip-addresses) | Získá IP adresu vytvořeného virtuálního počítače. |
+| [az group create](/cli/azure/group) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
+| [az storage account list](/cli/azure/storage/account) | Vypíše účty úložiště. |
+| [az storage account check-name](/cli/azure/storage/account) | Zkontroluje platnost názvu účtu úložiště a jestli už neexistuje. |
+| [az storage account keys list](/cli/azure/storage/account/keys) | Vypíše klíče pro účty úložiště. |
+| [az storage blob exists](/cli/azure/storage/blob) | Zkontroluje, jestli objekt blob existuje. |
+| [az storage container create](/cli/azure/storage/container) | Vytvoří kontejner v účtu úložiště. |
+| [az storage blob upload](/cli/azure/storage/blob) | Vytvoří v kontejneru objekt blob nahráním virtuálního pevného disku. |
+| [az vm list](/cli/azure/vm) | Používá se s parametrem `--query` ke kontrole, jestli už se název virtuálního počítače nepoužívá. | 
+| [az vm create](/cli/azure/vm/availability-set) | Vytvoří virtuální počítače. |
+| [az vm list-ip-addresses](/cli/azure/vm#az-vm-list-ip-addresses) | Získá IP adresu vytvořeného virtuálního počítače. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Linuxem](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -1,21 +1,22 @@
 ---
-title: Vytvoření testovacího prostředí pomocí Azure DevTest Labs a šablony Správce prostředků
-description: V tomto kurzu vytvoříte v Azure DevTest Labs testovací prostředí pomocí Azure Resource Manager šablony. Správce testovacího prostředí nastaví testovací prostředí, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady.
-ms.topic: tutorial
+title: Vytvoření testovacího prostředí pomocí Azure DevTest Labs a šablony Azure Resource Manager
+description: V tomto rychlém startu vytvoříte testovací prostředí v Azure DevTest Labs pomocí šablony Azure Resource Manager (šablona ARM). Správce testovacího prostředí nastaví testovací prostředí, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady.
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 06/26/2020
-ms.openlocfilehash: 22ba4ffeec22a45c07b096b0a754d08c8230dd8f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 8688b8265a8ca00a36a569ff4e067c9f36834c6d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476202"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537543"
 ---
-# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs-resource-manager-template"></a>Kurz: nastavení testovacího prostředí pomocí Azure DevTest Labs (šablona Správce prostředků)
-V tomto kurzu vytvoříte testovací prostředí pomocí virtuálního počítače s Windows serverem 2019 Datacenter pomocí šablony Azure Resource Manager. 
+# <a name="quickstart-set-up-a-lab-by-using-azure-devtest-labs-arm-template"></a>Rychlý Start: nastavení testovacího prostředí pomocí šablony Azure DevTest Labs ARM
+V tomto rychlém startu vytvoříte testovací prostředí s virtuálním počítačem Windows Server 2019 Datacenter pomocí šablony Azure Resource Manager (ARM). 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-V tomto kurzu provedete následující akce:
+V tomto rychlém startu provedete následující akce:
 
 > [!div class="checklist"]
 > * Kontrola šablony 
@@ -23,11 +24,13 @@ V tomto kurzu provedete následující akce:
 > * Ověření šablony
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné
+Pokud předplatné Azure ještě nemáte, napřed si [vytvořte bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
@@ -46,7 +49,7 @@ Další ukázky šablon najdete v tématu [šablony rychlý Start pro Azure](htt
 ## <a name="deploy-the-template"></a>Nasazení šablony
 Chcete-li spustit nasazení automaticky, klikněte na následující tlačítko. 
 
-[![Nasazení do Azure](./media/create-lab-windows-vm-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-dtl-create-lab-windows-vm%2Fazuredeploy.json)
 
 1. Vytvořte **novou skupinu prostředků** , aby ji bylo možné snadno vyčistit později.
 1. Vyberte **umístění** pro skupinu prostředků. 
@@ -59,7 +62,7 @@ Chcete-li spustit nasazení automaticky, klikněte na následující tlačítko.
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deploy-template-page.png" alt-text="Nasadit stránku šablony":::
 
-## <a name="verify-the-deployment"></a>Ověření nasazení
+## <a name="validate-the-deployment"></a>Ověření nasazení
 1. Výběrem **oznámení** v horní části zobrazíte stav nasazení a kliknete na odkaz **probíhá nasazení** .
 
     :::image type="content" source="./media/create-lab-windows-vm-template/deployment-notification.png" alt-text="Oznámení o nasazení":::
@@ -76,7 +79,7 @@ Chcete-li spustit nasazení automaticky, klikněte na následující tlačítko.
     > [!IMPORTANT] 
     > Tuto stránku nechte otevřenou a postupujte podle pokynů v další části, abyste vyčistili prostředky, abyste předešli nákladům na spuštění testovacího prostředí a virtuálního počítače v Azure. Pokud si chcete projít další kurz, abyste otestovali přístup k virtuálnímu počítači v testovacím prostředí, vyčistěte po absolvování tohoto kurzu prostředky. 
 
-## <a name="cleanup-resources"></a>Vyčištění prostředků
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 1. Nejprve odstraňte testovací prostředí, abyste mohli odstranit skupinu prostředků. Nebudete moct odstranit skupinu prostředků s testovacím prostředím. Testovací prostředí odstraníte tak, že na panelu nástrojů vyberete **Odstranit** . 
 
@@ -90,8 +93,7 @@ Chcete-li spustit nasazení automaticky, klikněte na následující tlačítko.
     :::image type="content" source="./media/create-lab-windows-vm-template/delete-resource-group-button.png" alt-text="Tlačítko Odstranit skupinu prostředků":::
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste vytvořili testovací prostředí s virtuálním počítačem. Další informace o tom, jak se dostat do testovacího prostředí, najdete v dalším kurzu:
+V tomto rychlém startu jste vytvořili testovací prostředí s virtuálním počítačem. Další informace o tom, jak se dostat do testovacího prostředí, najdete v dalším kurzu:
 
 > [!div class="nextstepaction"]
 > [Kurz: Přístup k testovacímu prostředí](tutorial-use-custom-lab.md)
-

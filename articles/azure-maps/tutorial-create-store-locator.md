@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 050f95ac98ce1ab36dc4ca537db458e133581925
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746045"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517548"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
-Tento kurz vás provede procesem vytvoření jednoduchého lokátoru úložiště pomocí Azure Maps. Lokátory úložiště jsou běžné. Mnohé z konceptů, které se používají v tomto typu aplikace, platí i pro mnoho dalších typů aplikací. Nabídka lokátoru úložiště zákazníkům je potřeba pro většinu firem, které prodávají přímo zákazníkům. V tomto kurzu:
+Tento kurz vás provede procesem vytvoření jednoduchého lokátoru úložiště pomocí Azure Maps. Lokátory úložiště jsou běžné. Mnohé z konceptů, které se používají v tomto typu aplikace, platí i pro mnoho dalších typů aplikací. Nabídka lokátoru úložiště zákazníkům je potřeba pro většinu firem, které prodávají přímo zákazníkům. V tomto kurzu se naučíte:
     
 > [!div class="checklist"]
 > * Vytvořte novou webovou stránku pomocí rozhraní Azure Ovládací prvek Mapa API.
@@ -33,9 +33,9 @@ Tento kurz vás provede procesem vytvoření jednoduchého lokátoru úložišt�
 
 Přejděte dopředu na [příklad lokátoru Live Storu](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) nebo [zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). Postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
+Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). Postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-azure-maps-account) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="design"></a>Návrh
 
@@ -90,7 +90,7 @@ Existuje mnoho způsobů, jak datovou sadu zpřístupnit aplikaci. Jedním z mo�
 
 Dalším přístupem je převést tuto datovou sadu na nestrukturovaný textový soubor, který může prohlížeč snadno analyzovat. Samotný soubor může být hostován se zbytkem aplikace. Tato možnost udržuje něco jednoduchého, ale je dobrá možnost jenom pro menší datové sady, protože uživatel stáhne všechna data. Pro tuto datovou sadu používáme nestrukturovaný textový soubor, protože velikost datového souboru je menší než 1 MB.  
 
-Chcete-li převést sešit na nestrukturovaný textový soubor, uložte sešit jako soubor s oddělovači na kartě. Každý sloupec je oddělen znakem tabulátoru, což umožňuje, aby se sloupce v našem kódu snadno analyzovaly. Můžete použít formát hodnot oddělených čárkami (CSV), ale tato možnost vyžaduje více logiky analýzy. Každé pole, které má čárku kolem, by bylo zabaleno do uvozovek. Pokud chcete tato data exportovat jako soubor s hodnotami oddělenými tabulátory v Excelu, vyberte **Uložit jako**. V rozevíracím seznamu **Uložit jako typ** vyberte **text (oddělený tabulátory) (*. txt)**. Pojmenujte soubor *ContosoCoffee. txt*. 
+Chcete-li převést sešit na nestrukturovaný textový soubor, uložte sešit jako soubor s oddělovači na kartě. Každý sloupec je oddělen znakem tabulátoru, což umožňuje, aby se sloupce v našem kódu snadno analyzovaly. Můžete použít formát hodnot oddělených čárkami (CSV), ale tato možnost vyžaduje více logiky analýzy. Každé pole, které má čárku kolem, by bylo zabaleno do uvozovek. Pokud chcete tato data exportovat jako soubor s hodnotami oddělenými tabulátory v Excelu, vyberte **Uložit jako**. V rozevíracím seznamu **Uložit jako typ** vyberte **text (oddělený tabulátory) (*. txt)**. Pojmenujte soubor *ContosoCoffee.txt*. 
 
 <center>
 
@@ -105,7 +105,7 @@ Pokud otevřete textový soubor v poznámkovém bloku, vypadá to podobně jako 
 
 ## <a name="set-up-the-project"></a>Nastavení projektu
 
-Chcete-li vytvořit projekt, můžete použít [aplikaci Visual Studio](https://visualstudio.microsoft.com) nebo Editor kódu dle vašeho výběru. Ve složce projektu vytvořte tři soubory: *index. html*, *indexovat. CSS*a *index. js*. Tyto soubory definují rozložení, styl a logiku pro aplikaci. Vytvořte složku s názvem *data* a přidejte do ní *ContosoCoffee. txt* . Vytvořte další složku s názvem *Image*. V této aplikaci používáme 10 imagí pro ikony, tlačítka a značky na mapě. [Tyto image](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)si můžete stáhnout. Složka projektu by teď měla vypadat jako na následujícím obrázku:
+Chcete-li vytvořit projekt, můžete použít [aplikaci Visual Studio](https://visualstudio.microsoft.com) nebo Editor kódu dle vašeho výběru. Ve složce projektu vytvořte tři soubory: *index.html*, *index. CSS*a *index.js*. Tyto soubory definují rozložení, styl a logiku pro aplikaci. Vytvořte složku s názvem *data* a přidejte *ContosoCoffee.txt* do složky. Vytvořte další složku s názvem *Image*. V této aplikaci používáme 10 imagí pro ikony, tlačítka a značky na mapě. [Tyto image](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)si můžete stáhnout. Složka projektu by teď měla vypadat jako na následujícím obrázku:
 
 <center>
 
@@ -113,9 +113,9 @@ Chcete-li vytvořit projekt, můžete použít [aplikaci Visual Studio](https://
 
 ## <a name="create-the-user-interface"></a>Vytvoření uživatelského rozhraní
 
-Chcete-li vytvořit uživatelské rozhraní, přidejte kód do souboru *index. html*:
+Chcete-li vytvořit uživatelské rozhraní, přidejte kód do *index.html*:
 
-1. Přidejte následující `meta` značky do `head` souboru *index. html*. `charset`Značka definuje znakovou sadu (UTF-8). Hodnota `http-equiv` oznamuje aplikaci Internet Explorer a Microsoft Edge, aby používala nejnovější verze prohlížeče. A poslední `meta` značka Určuje zobrazení, které funguje dobře pro reakce na uspořádání.
+1. Přidejte následující `meta` značky do `head` *index.html*. `charset`Značka definuje znakovou sadu (UTF-8). Hodnota `http-equiv` oznamuje aplikaci Internet Explorer a Microsoft Edge, aby používala nejnovější verze prohlížeče. A poslední `meta` značka Určuje zobrazení, které funguje dobře pro reakce na uspořádání.
 
     ```HTML
     <meta charset="utf-8">
@@ -136,7 +136,7 @@ Chcete-li vytvořit uživatelské rozhraní, přidejte kód do souboru *index. h
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. Přidejte odkazy na *index. js* a *index. CSS*:
+1. Přidejte odkazy na *index.js* a *index. CSS*:
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
@@ -168,7 +168,7 @@ Chcete-li vytvořit uživatelské rozhraní, přidejte kód do souboru *index. h
     </main>
     ```
 
-Až skončíte, *index. html* by měl vypadat jako v [tomto ukázkovém souboru index. html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html).
+Až skončíte, *index.html* by měl vypadat jako v [tomto příkladu index.html souboru](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html).
 
 Dalším krokem je definování stylů CSS. Styly CSS definují způsob, jakým jsou komponenty aplikace vymezeny, a vzhled aplikace. Otevřete *index. CSS* a přidejte do něj následující kód. `@media`Styl definuje alternativní možnosti stylu, které se použijí, pokud je šířka obrazovky menší než 700 pixelů.  
 
@@ -379,7 +379,7 @@ Spusťte aplikaci nyní, zobrazí se tlačítko záhlaví, vyhledávací pole a 
 
 ## <a name="wire-the-application-with-javascript"></a>Vedení aplikace pomocí JavaScriptu
 
-V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat JavaScript, aby se data načetla a analyzovala, a pak se na mapě vykreslí data. Začněte tím, že otevřete *index. js* a do něj přidáte kód, jak je popsáno v následujícím postupu.
+V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat JavaScript, aby se data načetla a analyzovala, a pak se na mapě vykreslí data. Začněte tím, že otevřete *index.js* a do něj přidáte kód, jak je popsáno v následujícím postupu.
 
 1. Přidejte globální možnosti, aby bylo nastavení snazší aktualizovat. Definujte proměnné pro mapu, překryvné okno, zdroj dat, vrstvu ikony a značku HTML. Nastavte značku HTML tak, aby označovala střed oblasti hledání. A definujte instanci klienta služby Search Azure Maps.
 
@@ -395,7 +395,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Přidejte kód do *indexu. js*. Následující kód inicializuje mapu. Přidali jsme [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , který bude počkat na dokončení načítání stránky. Pak se v případě, že se budou monitorovat načítající mapy, zadávají události a na tlačítko Hledat a na tlačítko "umístění" získáte funkce.
+1. Přidejte kód pro *index.js*. Následující kód inicializuje mapu. Přidali jsme [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , který bude počkat na dokončení načítání stránky. Pak se v případě, že se budou monitorovat načítající mapy, zadávají události a na tlačítko Hledat a na tlačítko "umístění" získáte funkce.
 
    Když uživatel vybere tlačítko hledání nebo zadá umístění do vyhledávacího pole, pak stiskne klávesu ENTER, bude zahájeno přibližné vyhledávání proti dotazu uživatele. Předejte pole hodnot ISO 2 země nebo oblasti do `countrySet` Možnosti pro omezení výsledků hledání na tyto země nebo oblasti. Omezení zemí nebo oblastí pro hledání pomáhá zvýšit přesnost vrácených výsledků. 
   
@@ -920,7 +920,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     }
     ```
 
-Teď máte plně funkční Lokátor úložiště. Ve webovém prohlížeči otevřete soubor *index. html* pro Lokátor úložiště. Po zobrazení clusterů na mapě můžete vyhledat umístění pomocí vyhledávacího pole, a to tak, že vyberete tlačítko "umístění", výběrem clusteru nebo přiblížením na mapě zobrazíte jednotlivá umístění.
+Teď máte plně funkční Lokátor úložiště. Ve webovém prohlížeči otevřete soubor *index.html* pro Lokátor úložiště. Po zobrazení clusterů na mapě můžete vyhledat umístění pomocí vyhledávacího pole, a to tak, že vyberete tlačítko "umístění", výběrem clusteru nebo přiblížením na mapě zobrazíte jednotlivá umístění.
 
 Když uživatel poprvé vybere tlačítko pro umístění, zobrazí se upozornění zabezpečení, které požádá o oprávnění k přístupu k umístění uživatele. Pokud uživatel souhlasí s sdílením svého umístění, mapa se přiblíží do umístění uživatele a zobrazí se okolní kavárny. 
 

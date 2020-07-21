@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670419"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516358"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -27,7 +27,7 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace, kterou m�
 > * Vytvoření nové pracovní položky pro opravu chybného kódu
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -35,12 +35,12 @@ Pro absolvování tohoto kurzu potřebujete:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
-- Povolit [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger).
+- Povolit [Visual Studio Snapshot Debugger](../app/snapshot-debugger.md).
 - Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
 - Kurz popisuje identifikaci výjimky ve vaší aplikaci, proto upravte kód ve vašem prostředí vývoj nebo testování, aby generoval výjimku. 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Přihlaste se k Azure Portal [https://portal.azure.com](https://portal.azure.com)v.
+Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
 
 
 ## <a name="analyze-failures"></a>Analýza selhání
@@ -95,7 +95,7 @@ Všechna data shromážděná pomocí Application Insights jsou uložená ve slu
 
 1. Kliknutím na informace CodeLens nad kódem zobrazíte telemetrii poskytovanou službou Application Insights.
 
-    ![kód](media/tutorial-runtime-exceptions/codelens.png)
+    ![Kód](media/tutorial-runtime-exceptions/codelens.png)
 
 1. Kliknutím na **Analyzovat dopad** otevřete analýzu Application Insights Analytics.  Otevře se s několika dotazy, které poskytují podrobné informace o neúspěšných požadavcích, například počet ovlivněných uživatelů, prohlížeče a oblasti.<br><br>![Analýzy](media/tutorial-runtime-exceptions/analytics.png)<br>
 

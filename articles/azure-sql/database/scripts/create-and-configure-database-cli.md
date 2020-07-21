@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: de554f48297c228df9345a6e822096d05b85652f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: cb8850adaf638aca3ed69c3939916e132f66062d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196866"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504559"
 ---
 # <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Použití rozhraní příkazového řádku Azure k vytvoření jedné databáze a konfiguraci pravidla brány firewall
 
@@ -48,7 +48,7 @@ az group delete --name $resource
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| | |
+| Příkaz | Popis |
 |---|---|
 | [az sql server](/cli/azure/sql/server#az-sql-server-create) | Příkazy serveru |
 | [AZ SQL Server Firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Příkazy brány firewall serveru. |

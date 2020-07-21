@@ -7,21 +7,21 @@ ms.date: 06/13/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: 345710e1ade459d49602c18820d47826141e6f81
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aa9dcc45656256e1f666bbf1b096c5c66b123b31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68721951"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528498"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Ukázky v Azure CLI pro službu Azure Blob Storage
 
 Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure CLI pro vytvoření a správu služby Azure Storage.
 
-| | |
+| Skript | Popis |
 |---|---|
 |**Účty úložiště**||
 | [Vytvoření účtu úložiště a načtení/obměna přístupových klíčů](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vytvoří účet služby Azure Storage a načte a obmění jeho přístupové klíče. |
-|**Úložiště objektů BLOB**||
+|**Blob Storage**||
 | [Výpočet celkové velikosti kontejneru úložiště objektů blob](../scripts/storage-blobs-container-calculate-size-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Vypočítá celkovou velikost všech objektů blob v kontejneru. |
 | [Odstranění kontejnerů s určitou předponou](../scripts/storage-blobs-container-delete-by-prefix-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Odstraní kontejnery začínající na zadaný řetězec. |

@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
-ms.author: mbaldwin
-ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/14/2020
+ms.author: johndaw
+ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79474420"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512499"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Kurz – nasazení HSM do existující virtuální sítě pomocí prostředí PowerShell
 
@@ -38,7 +38,7 @@ Tento kurz se zaměřuje na pár HSM a požadovanou bránu ExpressRoute (viz pod
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Vyhrazený modul HARDWAROVÉho zabezpečení Azure není v Azure Portal aktuálně k dispozici, takže veškerá interakce se službou bude prostřednictvím příkazového řádku nebo pomocí PowerShellu. V tomto kurzu použijete PowerShell v Azure Cloud Shell. Pokud prostředí PowerShell začínáte, postupujte podle pokynů v části Začínáme: [Azure PowerShell Začínáme](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
@@ -48,7 +48,7 @@ Předpoklady:
 - Vytvořili jste skupinu prostředků pro tyto prostředky a nově nasazená v tomto kurzu se připojí k této skupině.
 - Už jste vytvořili potřebnou virtuální síť, podsíť a virtuální počítače podle diagramu výše a teď chcete do tohoto nasazení integrovat 2 HSM.
 
-Všechny níže uvedené pokyny předpokládají, že jste již přešli na Azure Portal a že jste otevřeli Cloud Shell (vyberte\>\_"" směrem nahoru v pravém horním rohu portálu).
+Všechny níže uvedené pokyny předpokládají, že jste již přešli na Azure Portal a že jste otevřeli Cloud Shell (vyberte " \> \_ " směrem nahoru v pravém horním rohu portálu).
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Zřizování vyhrazeného modulu HSM
 
@@ -62,19 +62,13 @@ Jak je uvedeno výše, všechny aktivity zřizování vyžadují, aby byla pro v
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-Následující příkaz ověří síťové funkce vyžadované pro vyhrazenou službu HSM.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
-```
-
-Oba příkazy by měly vrátit stav "registrováno" (jak je vidět níže), než budete pokračovat dál.  Pokud se pro tuto službu potřebujete zaregistrovat, obraťte se na svého zástupce účet Microsoft.
+Příkaz by měl vrátit stav "registrováno" (jak je vidět níže), než budete pokračovat dál.  Pokud jste pro tuto službu nezaregistrovali, obraťte se na svého zástupce účet Microsoft.
 
 ![stav předplatného](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
 ### <a name="creating-hsm-resources"></a>Vytváření prostředků HSM
 
-Zařízení HSM se zřídí do virtuální sítě zákazníků. To předpokládá požadavek na podsíť. Závislost modulu HARDWAROVÉho zabezpečení, která umožňuje komunikaci mezi virtuální sítí a fyzickým zařízením, je bránou ExpressRoute a nakonec je pro přístup k zařízení HSM pomocí klientského softwaru identita Gemalto potřeba virtuální počítač. Tyto prostředky byly shromážděny do souboru šablony s odpovídajícím souborem parametrů pro snadné použití. Soubory jsou k dispozici kontaktováním společnosti Microsoft přímo HSMrequest@Microsoft.comna adrese.
+Zařízení HSM se zřídí do virtuální sítě zákazníků. To předpokládá požadavek na podsíť. Závislost modulu HARDWAROVÉho zabezpečení, která umožňuje komunikaci mezi virtuální sítí a fyzickým zařízením, je bránou ExpressRoute a nakonec je pro přístup k zařízení HSM pomocí klientského softwaru identita Gemalto potřeba virtuální počítač. Tyto prostředky byly shromážděny do souboru šablony s odpovídajícím souborem parametrů pro snadné použití. Soubory jsou k dispozici kontaktováním společnosti Microsoft přímo na adrese HSMrequest@Microsoft.com .
 
 Jakmile budete mít soubory, musíte upravit soubor parametrů a vložit tak preferované názvy prostředků. To znamená, že se upravují řádky s hodnotou:.
 
@@ -123,7 +117,7 @@ Přidružený soubor šablony Správce prostředků vytvoří 6 prostředků s t
 - HSM v razítku 1
 - HSM na razítku 2
 
-Po nastavení hodnot parametrů je potřeba odeslat soubory do Azure Portal sdílené složky Cloud Shell pro použití. V Azure Portal klikněte v pravém horním\>\_rohu na symbol "Cloud Shell" a tím se v dolní části obrazovky zobrazí příkazové prostředí. Možnosti pro toto jsou BASH a PowerShell a pokud ještě nejsou nastavené, měli byste vybrat BASH.
+Po nastavení hodnot parametrů je potřeba odeslat soubory do Azure Portal sdílené složky Cloud Shell pro použití. V Azure Portal klikněte v \> \_ pravém horním rohu na symbol "Cloud Shell" a tím se v dolní části obrazovky zobrazí příkazové prostředí. Možnosti pro toto jsou BASH a PowerShell a pokud ještě nejsou nastavené, měli byste vybrat BASH.
 
 Příkazové prostředí má na panelu nástrojů možnost odeslat/stáhnout a tuto šablonu byste měli vybrat k nahrání šablony a souborů parametrů do sdílené složky:
 
@@ -217,7 +211,7 @@ Nástroj SSH se používá pro připojení k virtuálnímu počítači. Příkaz
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Heslo, které se má použít, je ten ze souboru parametrů.
-Po přihlášení k virtuálnímu počítači se systémem Linux se můžete přihlásit k modulu HSM pomocí privátní IP adresy, kterou najdete na portálu, pro \<předponu prostředku>hsm_vnic.
+Po přihlášení k virtuálnímu počítači se systémem Linux se můžete přihlásit k modulu HSM pomocí privátní IP adresy, kterou najdete na portálu pro \<prefix> hsm_vnic prostředku.
 
 ```powershell
 

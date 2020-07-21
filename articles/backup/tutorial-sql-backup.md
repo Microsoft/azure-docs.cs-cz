@@ -3,12 +3,12 @@ title: Kurz – zálohování databází SQL Server do Azure
 description: V tomto kurzu se naučíte zálohovat SQL Server databázi běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.openlocfilehash: f1d76fe0dfa428688714b8383c3974ac63195681
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0f3ec8e9407c97f91a7f215a6a2734a254006d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81680736"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513296"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Zálohování databáze SQL Server na virtuálním počítači Azure
 
@@ -21,7 +21,7 @@ V tomto kurzu se dozvíte, jak zálohovat databázi SQL Server běžící na vir
 > * Nastavte automatickou ochranu pro databáze.
 > * Spusťte zálohování na vyžádání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před zálohováním SQL Server databáze ověřte následující podmínky:
 
@@ -64,11 +64,11 @@ Nepoužívejte pro názvy databází následující:
 * Zavřít hranatou závorku '] '
 * Názvy databází začínají řetězcem ' F:\ '
 
-Pro nepodporované znaky tabulky Azure máme aliasy, ale doporučujeme je vyhnout. [Další informace](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
+Pro nepodporované znaky tabulky Azure máme aliasy, ale doporučujeme je vyhnout. [Přečtěte si další informace](/rest/api/storageservices/understanding-the-table-service-data-model).
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-## <a name="discover-sql-server-databases"></a>Zjišťování SQL Serverch databází
+## <a name="discover-sql-server-databases"></a>Zjišťování databází SQL Serveru
 
 Zjišťovat databáze běžící na virtuálním počítači.
 
@@ -84,7 +84,7 @@ Zjišťovat databáze běžící na virtuálním počítači.
 
     ![Vyberte SQL Server na virtuálním počítači Azure pro zálohování.](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-5. V části **cíl** > zálohování ve**virtuálním počítači Najděte databáze**, vyberte **Spustit zjišťování** a vyhledejte nechráněné virtuální počítače v předplatném. Může to chvíli trvat v závislosti na počtu nechráněných virtuálních počítačů v rámci předplatného.
+5. V části **cíl zálohování**ve  >  **virtuálním počítači Najděte databáze**, vyberte **Spustit zjišťování** a vyhledejte nechráněné virtuální počítače v předplatném. Může to chvíli trvat v závislosti na počtu nechráněných virtuálních počítačů v rámci předplatného.
 
    * Nechráněné virtuální počítače by se měly zobrazit v seznamu po zjištění, které jsou uvedené podle názvu a skupiny prostředků.
    * Pokud virtuální počítač není uvedený podle očekávání, ověřte, jestli je už zálohovaný v trezoru.
@@ -161,7 +161,7 @@ Zásady zálohování definují, kdy se zálohují zálohy a jak dlouho se uchov
 
 Vytvoření zásady zálohování:
 
-1. V trezoru klikněte na **zásady** > zálohování**Přidat**.
+1. V trezoru klikněte na **zásady zálohování**  >  **Přidat**.
 2. V nabídce **Přidat** klikněte na **SQL Server na virtuálním počítači Azure** a definujte typ zásad.
 
    ![Vyberte typ zásad pro nové zásady zálohování.](./media/backup-azure-sql-database/policy-type-details.png)
@@ -189,8 +189,8 @@ Vytvoření zásady zálohování:
 6. V nabídce **zásady úplného zálohování** vyberte **OK** a přijměte nastavení.
 7. Chcete-li přidat zásady rozdílového zálohování, vyberte **rozdílové zálohování**.
 
-   ![Nastavení](./media/backup-azure-sql-database/retention-range-interval.png)
-   ![intervalu rozsahu uchování otevřete nabídku zásad rozdílového zálohování.](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+   ![Nastavení intervalu rozsahu uchování ](./media/backup-azure-sql-database/retention-range-interval.png)
+    ![ otevřete nabídku zásad rozdílového zálohování.](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
 8. V části **rozdílová zásada zálohování**vyberte **Povolit** a otevřete tak ovládací prvky četnost a uchování.
 

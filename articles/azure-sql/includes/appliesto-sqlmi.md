@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 34349c8da12c8a8478a267b398bdece100ed5750
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9667a7669feed194d5b033e22870443ef7dfb93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84041120"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498392"
 ---
-<Token>**platí pro:** ![ Ano, ](../media/applies-to/yes.png) spravovaná instance Azure SQL</Token>
+<Token>**platí pro:** ![ Ano, ](../media/applies-to/yes.png) spravovaná instance Azure SQL</Token> 
 

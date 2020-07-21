@@ -11,14 +11,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 1f6c178c1f8813300d3473ad3b788ecd7e7b573e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bf4e2b04c540ee5672bea6e097496ced5a0d622a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115400"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528872"
 ---
-# <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>Přidání spravované instance Azure SQL do skupiny převzetí služeb při selhání pomocí rozhraní příkazového řádku
+# <a name="use-cli-to-create-an-azure-sql-managed-instance-to-a-failover-group"></a>Vytvoření spravované instance Azure SQL pomocí rozhraní příkazového řádku pro skupinu převzetí služeb při selhání
 
 Tento příklad rozhraní příkazového řádku Azure vytvoří dvě spravované instance, přidá je do skupiny převzetí služeb při selhání a pak otestuje převzetí služeb při selhání z primární spravované instance do sekundární spravované instance.
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| | |
+| Příkaz | Popis |
 |---|---|
 | [AZ Network VNet](/cli/azure/network/vnet) | Příkazy virtuální sítě.  |
 | [AZ Network VNet Subnet](/cli/azure/network/vnet/subnet) | Příkazy podsítě virtuální sítě. |

@@ -3,12 +3,12 @@ title: PowerShellový skript – najít trezor pro účet úložiště
 description: Naučte se, jak pomocí skriptu Azure PowerShell najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
 ms.topic: sample
 ms.date: 1/28/2020
-ms.openlocfilehash: 786420ec8cef6516f7261c71b40641693efece07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b343b2f93ed439188c5c0238bf108064f6e132c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76775358"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513247"
 ---
 # <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>Skript PowerShellu pro vyhledání trezoru Recovery Services, ve kterém je registrovaný účet úložiště
 
@@ -49,7 +49,7 @@ if(!$found)
 
 ## <a name="how-to-execute-the-script"></a>Postup spuštění skriptu
 
-1. Uložte skript výše na svém počítači s názvem, který jste vybrali. V tomto příkladu jsme ho uložili jako *FindRegisteredStorageAccount. ps1*.
+1. Uložte skript výše na svém počítači s názvem, který jste vybrali. V tomto příkladu jsme ho uložili jako *FindRegisteredStorageAccount.ps1*.
 2. Spusťte skript zadáním následujících parametrů:
 
     * **-ResourceGroupName** -skupina prostředků účtu úložiště
@@ -72,4 +72,4 @@ Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o [Zálohování sdílených složek Azure z Azure Portal](https://docs.microsoft.com/azure/backup/backup-afs)
+Informace o [Zálohování sdílených složek Azure z Azure Portal](../backup-afs.md)

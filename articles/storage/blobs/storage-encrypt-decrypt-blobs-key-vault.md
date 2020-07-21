@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: 21771fb1bb041dd2f09f5d82d9def4cfe91794f6
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 82131ab4e1f990af25c669131e20c789a0f74dcf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808395"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518653"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Kurz – šifrování a dešifrování objektů BLOB pomocí Azure Key Vault
 
@@ -27,7 +27,7 @@ Přehled informací o Azure Key Vault najdete v tématu [co je Azure Key Vault?]
 
 Přehled informací o šifrování na straně klienta pro Azure Storage najdete v tématu [šifrování na straně klienta a Azure Key Vault Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -50,7 +50,7 @@ Tady je stručný popis toho, jak funguje šifrování na straně klienta:
 
 Aby bylo možné pokračovat v tomto kurzu, je třeba provést následující kroky, které jsou popsanými v kurzu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí webové aplikace .NET](../../key-vault/secrets/quick-create-net.md):
 
-* Vytvoření trezoru klíčů
+* Vytvořte trezor klíčů.
 * Přidejte klíč nebo tajný klíč do trezoru klíčů.
 * Registrace aplikace pomocí Azure Active Directory.
 * Autorizujte aplikaci pro použití klíče nebo tajného klíče.
@@ -210,7 +210,7 @@ Způsob použití tajného klíče se šifrováním na straně klienta je prost�
 Tady je příklad v PowerShellu vytvoření tajného klíče v Key Vault, který se dá použít jako SymmetricKey.
 Upozorňujeme, že pevně kódovaná hodnota, $key, slouží pouze k demonstračnímu účelu. Ve svém vlastním kódu budete chtít vygenerovat tento klíč.
 
-```csharp
+```powershell
 // Here we are making a 128-bit key so we have 16 characters.
 //     The characters are in the ASCII range of UTF8 so they are
 //    each 1 byte. 16 x 8 = 128.

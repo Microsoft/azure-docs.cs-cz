@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77192620"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530163"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
 
@@ -30,7 +30,7 @@ Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 >
 >Pokud to chcete zkontrolovat, spusťte sadu Visual Studio. V nabídce **Nástroje** vyberte **Rozšíření a aktualizace**. Vyhledejte **Správce balíčků NuGet** ve vaší verzi sady Visual Studio a ujistěte se, že máte nejnovější verzi. Pokud vaše verze není nejnovější verzí, odinstalujte ji a pak znovu nainstalujte Správce balíčků NuGet.
 
-![][B4]
+![Snímek obrazovky dialogového okna rozšíření a aktualizace se zvýrazněným balíčkem pro správu balíčků NuGet pro Visual studia.][B4]
 
 > [!NOTE]
 > Ujistěte se, že máte nainstalovanou sadu Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) pro nasazení webu.

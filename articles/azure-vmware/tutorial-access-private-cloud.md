@@ -3,12 +3,12 @@ title: Kurz – informace o přístupu k privátnímu cloudu
 description: Přečtěte si, jak získat přístup k privátnímu cloudu řešení Azure VMware (AVS)
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 32dc5c173789996d2559eda1153b1509e10e5984
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873605"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497960"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>Kurz: Naučte se získat přístup k privátnímu cloudu řešení Azure VMware (AVS)
 
@@ -16,7 +16,7 @@ Během období Preview vám neumožňuje vaše privátní cloud spravovat pomoc�
 
 V tomto kurzu vytvoříte virtuální počítač s Windows pro pole přechodu ve skupině prostředků, kterou jste vytvořili v předchozím kurzu kurzu [: konfigurace sítě pro privátní cloud VMware v Azure](tutorial-configure-networking.md) a přihlášení do vCenter. Toto je virtuální počítač ve stejné virtuální síti, kterou jste vytvořili, a poskytuje přístup k vCenter a NSX Manageru. 
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořit virtuální počítač s Windows, který se má použít pro připojení k serveru vCenter
@@ -35,15 +35,15 @@ Zadejte požadované informace do polí a pak vyberte **zkontrolovat + vytvořit
 | **Předplatné** | Tato hodnota se už naplní předplatným, ke kterému patří skupina prostředků. |
 | **Skupina prostředků** | Tato hodnota je pro aktuální skupinu prostředků již vyplněna. Mělo by se jednat o skupinu prostředků, kterou jste vytvořili v předchozím kurzu. |
 | **Název virtuálního počítače** | Zadejte jedinečný název virtuálního počítače. |
-| **Věřitel** | Vyberte zeměpisnou polohu virtuálního počítače. |
+| **Oblast** | Vyberte zeměpisnou polohu virtuálního počítače. |
 | **Možnosti dostupnosti** | Ponechte vybranou výchozí hodnotu. |
 | **Image** | Vyberte image virtuálního počítače. |
 | **Velikost** | Ponechte výchozí hodnotu velikosti. |
 | **Typ ověřování**  | Vyberte **heslo**. |
-| **Jmen** | Zadejte uživatelské jméno pro přihlášení k virtuálnímu počítači. |
+| **Uživatelské jméno** | Zadejte uživatelské jméno pro přihlášení k virtuálnímu počítači. |
 | **Heslo** | Zadejte heslo pro přihlášení k virtuálnímu počítači. |
-| **Potvrdit heslo** | Zadejte heslo pro přihlášení k virtuálnímu počítači. |
-| **Veřejné příchozí porty** | Vyberte **Žádná**. Pokud vyberete možnost žádné, můžete použít [přístup JIT](../security-center/security-center-just-in-time.md#configure-jit-access-from-an-azure-vms-page-) k řízení přístupu k virtuálnímu počítači pouze v případě, že k němu chcete přistupovat.  |
+| **Potvrzení hesla** | Zadejte heslo pro přihlášení k virtuálnímu počítači. |
+| **Veřejné příchozí porty** | Vyberte **Žádná**. Pokud vyberete možnost žádné, můžete použít [přístup JIT](../security-center/security-center-just-in-time.md#jit-configure) k řízení přístupu k virtuálnímu počítači pouze v případě, že k němu chcete přistupovat.  |
 
 Po zadání příslušných informací klikněte na tlačítko **zkontrolovat + vytvořit**. Po úspěšném ověření vyberte **vytvořit** a spusťte tak proces vytváření virtuálního počítače.
 

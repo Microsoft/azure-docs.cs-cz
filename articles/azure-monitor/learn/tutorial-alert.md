@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77656258"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505869"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Monitorování a upozornění na stav aplikace pomocí Azure Application Insights
 
@@ -24,11 +24,11 @@ Získáte informace o těchto tématech:
 > * Vytvořit test dostupnosti pro nepřetržitou kontrolu odezvy aplikace
 > * Při výskytu problému poslat e-mail správcům
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
-Vytvořte [prostředek Application Insights](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights).
+Vytvořte [prostředek Application Insights](./dotnetcore-quick-start.md#enable-application-insights).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -56,7 +56,7 @@ Testy dostupnosti v Application Insights umožňují automaticky testovat aplika
 
     ![Upravit upozornění](media/tutorial-alert/edit-alert-001.png)
 
-6. Nastavte umístění, která selhala, aby byla větší než nebo rovna 3. Vytvořte [skupinu akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) pro konfiguraci, kdo obdrží oznámení, když dojde k porušení prahové hodnoty upozornění.
+6. Nastavte umístění, která selhala, aby byla větší než nebo rovna 3. Vytvořte [skupinu akcí](../platform/action-groups.md) pro konfiguraci, kdo obdrží oznámení, když dojde k porušení prahové hodnoty upozornění.
 
     ![Uložit uživatelské rozhraní výstrahy](media/tutorial-alert/save-alert-001.png)
 

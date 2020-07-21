@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78269194"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505835"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure
 
@@ -25,13 +25,13 @@ V tomto kurzu se naučíte:
 > * Vytvoření jednoduchého dotazu protokolu pro analýzu protokolů
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete prostředek Azure, který se má monitorovat. Můžete použít libovolný prostředek v předplatném Azure, který podporuje nastavení diagnostiky. Chcete-li zjistit, zda prostředek podporuje nastavení diagnostiky, přejděte do příslušné nabídky v Azure Portal a ověřte, zda je v části **monitorování** v nabídce možnost **nastavení diagnostiky** .
 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Přihlaste se k Azure Portal [https://portal.azure.com](https://portal.azure.com)v.
+Přihlaste se k Azure Portal v [https://portal.azure.com](https://portal.azure.com) .
 
 
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
@@ -86,7 +86,7 @@ Data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protok
    
     ![Protokoly](media/tutorial-resource-logs/logs.png)
 
-4. Služba uvedená v příkladu zapisuje protokoly prostředků do tabulky **AzureDiagnostics** , ale další služby mohou zapisovat do jiných tabulek. Seznamte se s [podporovanými službami, schématy a kategoriemi pro protokoly prostředků Azure](../platform/diagnostic-logs-schema.md) pro tabulky používané různými službami Azure.
+4. Služba uvedená v příkladu zapisuje protokoly prostředků do tabulky **AzureDiagnostics** , ale další služby mohou zapisovat do jiných tabulek. Seznamte se s [podporovanými službami, schématy a kategoriemi pro protokoly prostředků Azure](../platform/resource-logs-schema.md) pro tabulky používané různými službami Azure.
 
     > [!NOTE]
     > Několik služeb zapisuje do tabulky AzureDiagnostics protokoly prostředků. Pokud spustíte Log Analytics v nabídce Azure Monitor, budete muset přidat `where` příkaz se `ResourceProvider` sloupcem pro určení konkrétní služby. Když začnete Log Analytics z nabídky prostředku, pak je obor nastavený na pouze záznamy z tohoto prostředku, aby tento sloupec nebyl povinný. Ukázkové dotazy najdete v dokumentaci ke službě.
@@ -104,4 +104,4 @@ Data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protok
 Teď, když jste se naučili, jak shromažďovat protokoly prostředků do Log Analyticsho pracovního prostoru, dokončete kurz týkající se zápisu dotazů protokolu pro analýzu těchto dat.
 
 > [!div class="nextstepaction"]
-> [Začínáme s dotazy protokolu v Azure Monitor](../log-query/get-started-queries.md)
+> [Začínáme s dotazy protokolů v Azure Monitoru](../log-query/get-started-queries.md)

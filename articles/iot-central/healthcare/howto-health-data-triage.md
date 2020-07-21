@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77021640"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497042"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Kurz: sestavení řídicího panelu poskytovatele Power BI
 
 
 
-Při sestavování řešení pro monitorování nepřetržitého pacienta můžete také vytvořit řídicí panel pro tým ústavní péče, který bude vizualizovat data pacienta. V tomto kurzu se naučíte, jak vytvořit řídicí panel Power BI pro streamování v reálném čase ze šablony vaší IoT Central nepřetržité aplikace pro monitorování.
+Při sestavování řešení pro monitorování nepřetržitého pacienta můžete také vytvořit řídicí panel pro tým ústavní péče, který bude vizualizovat data pacienta. V tomto kurzu se naučíte, jak vytvořit řídicí panel Power BI pro streamování v reálném čase ze šablony vaší IoT Central nepřetržité aplikace pro monitorování. Pokud váš případ použití nevyžaduje přístup k datům v reálném čase, můžete použít [řídicí panel IoT Central Power BI](../core/howto-connect-powerbi.md), který má zjednodušený proces nasazení. 
 
 >[!div class="mx-imgBorder"]
 >![Obrázek řídicího panelu GIF](media/dashboard-gif-3.gif)
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 > * Streamování dat do Power BI z aplikace logiky
 > * Vytvoření řídicího panelu v reálném čase pro důležité vlastnosti pacienta
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -81,7 +81,7 @@ Pokud chcete aplikaci logiky připojit k Azure Event Hubs, můžete postupovat p
 |---|---|
 |Typ obsahu|application/json|
 |Interval|3|
-|Frequency|1 sekunda|
+|Frekvence|Second|
 
 Na konci tohoto kroku by měl návrhář aplikace logiky vypadat takto:
 

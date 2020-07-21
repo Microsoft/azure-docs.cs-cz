@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f15beeee2c5843506f0bf89b4c6d66d77826e152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0e5cabdf9c69ead9a2d7f497aceec183cf0be900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459884"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509660"
 ---
 # <a name="troubleshoot-a-vms-operating-system-disk"></a>Řešení potíží s diskem s operačním systémem virtuálního počítače
 
@@ -40,14 +40,14 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 
 | Příkaz | Poznámky |
 |---|---|
-| [az vm show](https://docs.microsoft.com/cli/azure/vm) | Vrátí seznam virtuálních počítačů. V tomto případě se možnost dotazu používá k vrácení disku s operačním systémem virtuálního počítače. Tato hodnota se pak přidá do proměnné uri. |
-| [az vm delete](https://docs.microsoft.com/cli/azure/vm) | Odstraní virtuální počítač. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | Vytvoří virtuální počítač.  |
-| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk) | Připojí disk k virtuálnímu počítači. |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm) | Vrátí IP adresy virtuálního počítače. |
+| [az vm show](/cli/azure/vm) | Vrátí seznam virtuálních počítačů. V tomto případě se možnost dotazu používá k vrácení disku s operačním systémem virtuálního počítače. Tato hodnota se pak přidá do proměnné uri. |
+| [az vm delete](/cli/azure/vm) | Odstraní virtuální počítač. |
+| [az vm create](/cli/azure/vm) | Vytvoří virtuální počítač.  |
+| [az vm disk attach](/cli/azure/vm/disk) | Připojí disk k virtuálnímu počítači. |
+| [az vm list-ip-addresses](/cli/azure/vm) | Vrátí IP adresy virtuálního počítače. |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
+Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
 Další ukázkové skripty rozhraní příkazového řádku pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Linuxem](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

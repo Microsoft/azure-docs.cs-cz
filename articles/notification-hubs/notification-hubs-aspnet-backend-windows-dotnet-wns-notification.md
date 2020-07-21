@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e13e7c1057d5a01867b561fc7ee7d1eed1a97ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220146"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530486"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Kurz: Zasílání oznámení konkrétním uživatelům službou Azure Notification Hubs
 
@@ -51,7 +51,7 @@ V tomto kurzu provedete následující kroky:
 V tomto kurzu se používá centrum oznámení a projekt sady Visual Studio, které jste vytvořili v [kurzu Zasílání oznámení do aplikací pro Univerzální platformu Windows službou Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md). Proto ho dokončete před zahájením tohoto kurzu.
 
 > [!NOTE]
-> Pokud jako back-endovou službu používáte Mobile Apps ve službě Azure App Service, prostudujte si část [Verze Mobile Apps](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) tohoto kurzu.
+> Pokud jako back-endovou službu používáte Mobile Apps ve službě Azure App Service, prostudujte si část [Verze Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push) tohoto kurzu.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -224,7 +224,7 @@ V této části aktualizujete kód v projektu, který jste vytvořili v [kurzu Z
     ```
 13. Klikněte pravým tlačítkem na projekt **WindowsApp**, **Přidat** a potom na **Třída**. Pojmenujte třídu `RegisterClient.cs` a potom kliknutím na tlačítko **OK** vygenerujte třídu.
 
-    Tato třída zabalí potřebná volání REST ke kontaktování back-endu aplikace za účelem registrace nabízených oznámení. Kromě toho místně ukládá *ID registrací* vytvořená centrem oznámení, jak je podrobně popsáno v tématu popisujícím [registraci z back-endu aplikace](https://msdn.microsoft.com/library/dn743807.aspx). Po kliknutí na tlačítko **Login and register** (Přihlášení a registrace) použije autorizační token uložený v místním úložišti.
+    Tato třída zabalí potřebná volání REST ke kontaktování back-endu aplikace za účelem registrace nabízených oznámení. Kromě toho místně ukládá *ID registrací* vytvořená centrem oznámení, jak je podrobně popsáno v tématu popisujícím [registraci z back-endu aplikace](/previous-versions/azure/azure-services/dn743807(v=azure.100)). Po kliknutí na tlačítko **Login and register** (Přihlášení a registrace) použije autorizační token uložený v místním úložišti.
 14. Na začátek souboru RegisterClient.cs přidejte následující příkazy `using`:
 
     ```csharp
@@ -357,4 +357,4 @@ V tomto kurzu jste zjistili, jak posílat nabízená oznámení konkrétním už
 [Get started with Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41f42b053181f4115770cd9973621706b248baab
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a09cc83259a6fbb07b8c88e1d8f82b720400c0d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168299"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507705"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s ServiceNow
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak integrovat ServiceNow s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -43,6 +43,9 @@ Chcete-li začít, potřebujete následující položky:
 * Tenant ServiceNow musí mít povolený [modul plug-in jednotného přihlašování více zprostředkovatelů](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) . To můžete provést [odesláním žádosti o služby](https://hi.service-now.com).
 * Pro automatickou konfiguraci povolte modul plug-in více zprostředkovatelů pro ServiceNow.
 * Pokud chcete nainstalovat aplikaci ServiceNow Classic (Mobile), vyhledejte příslušné úložiště a vyhledejte aplikaci ServiceNow Classic. Pak ho stáhněte.
+
+> [!NOTE]
+> Tato integrace je taky dostupná pro použití z cloudového prostředí Azure AD USA. Tuto aplikaci můžete najít v galerii cloudových aplikací pro státní správu Azure AD USA a nakonfigurovat ji stejným způsobem jako ve veřejném cloudu.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -101,8 +104,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     c. V poli **Adresa URL odpovědi**zadejte jednu z těchto adres URL:
 
-    - `https://instancename.service-now.com/navpage.do`
-    - `https://instancename.service-now.com/customer.do`
+    | Adresa URL odpovědi|
+    |----------|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` | 
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Tyto hodnoty musíte aktualizovat pomocí skutečné přihlašovací adresy URL a identifikátoru, který je vysvětlen dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -127,7 +132,7 @@ V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure 
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Jako **název**zadejte `B.Simon` .  
-   1. Do pole **uživatelské jméno**zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno**zadejte username@companydomain.extension . Například `B.Simon@contoso.com`.
    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu zobrazenou v poli **heslo** .
    1. Vyberte **Vytvořit**.
 
@@ -171,8 +176,10 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     c. V poli **Adresa URL odpovědi**zadejte jednu z těchto adres URL:
 
-    - `https://instancename.service-now.com/navpage.do`
-    - `https://instancename.service-now.com/customer.do`
+    | Adresa URL odpovědi |
+    |-----------|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` |
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Tyto hodnoty musíte aktualizovat pomocí skutečné přihlašovací adresy URL a identifikátoru, který je vysvětlen dále v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -243,7 +250,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     1. Přihlaste se k aplikaci ServiceNow jako správce.
 
-       * V rámci automatické konfigurace jsou všechna potřebná nastavení nakonfigurovaná na straně **ServiceNow** , ale **certifikát X. 509** není ve výchozím nastavení povolený. Musíte ho ručně namapovat na svého poskytovatele identity v ServiceNow. Postupujte následovně:
+       * V rámci automatické konfigurace jsou všechna potřebná nastavení nakonfigurovaná na straně **ServiceNow** , ale **certifikát X. 509** není ve výchozím nastavení povolený. Musíte ho ručně namapovat na svého poskytovatele identity v ServiceNow. Postupujte takto:
 
          1. V levém podokně vyhledejte v poli hledání oddíl **jednotného přihlašování k více poskytovatelům** a vyberte **Zprostředkovatelé identity**.
 

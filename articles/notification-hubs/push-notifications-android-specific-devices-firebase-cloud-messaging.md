@@ -17,12 +17,12 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: 273827e68a81e87dcff15760f0b400b2d5ce8723
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7143ecbb04fc19c990c4a5d71f3d6b0e8e05f229
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220860"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529722"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Kurz: posílání oznámení na konkrétní zařízení pomocí Notification Hubs a Firebase cloudového zasílání zpráv Google
 
@@ -40,7 +40,7 @@ V tomto kurzu provedete následující akce:
 > * Přidáte do mobilní aplikace výběr kategorií.
 > * Registrováno pro oznámení pomocí značek.
 > * Odešlete označená oznámení.
-> * Testování aplikace
+> * Otestování aplikace
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -316,7 +316,7 @@ Hotová aplikace teď do místního úložiště v zařízení uloží sadu kate
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="test-the-app"></a>Testování aplikace
+## <a name="test-the-app"></a>Otestování aplikace
 
 1. V Android Studiu spusťte aplikaci buď na zařízení s Androidem, nebo v emulátoru. Uživatelské rozhraní aplikace nabízí sadu přepínačů, kterými můžete vybrat odebírané kategorie.
 2. Zapněte jeden nebo více přepínačů kategorií a klikněte na **Přihlásit k odběru**. Aplikace převede vybrané kategorie na značky a u vybraných značek požádá centrum oznámení o registraci nových zařízení. Zaregistrované kategorie se vrátí a zobrazí se v informační zprávě.
@@ -340,8 +340,8 @@ V tomto kurzu jste odeslali nabízená oznámení určitým zařízením s Andro
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

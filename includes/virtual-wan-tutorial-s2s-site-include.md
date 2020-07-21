@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ac23912b12bc6c7fcd40d7433cb4e2d257eeb5d0
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bc94f31887526f387413f78fe3270784a4e3bd88
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562982"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525148"
 ---
 1. Na stránce portálu pro virtuální síť WAN vyberte v části **připojení** možnost **sítě VPN** a otevřete stránku sítě VPN.
 2. Na stránce **Lokality VPN** klikněte na **+Vytvořit lokalitu**.
@@ -24,7 +24,7 @@ ms.locfileid: "85562982"
     * **Oblast** – dříve odkazovala na umístění. Toto je umístění, ve kterém chcete vytvořit tento prostředek lokality.
     * **Název** – název, podle kterého chcete odkazovat na místní lokalitu.
     * **Dodavatel zařízení** – název dodavatele zařízení VPN (například: Citrix, Cisco, Barracuda). Díky tomu může tým Azure lépe pochopit vaše prostředí, aby v budoucnu přidal další možnosti optimalizace, nebo vám pomůže při odstraňování potíží.
-    * **Border Gateway Protocol** -Enable znamená, že všechna připojení z webu budou povolena protokol BGP. Nakonec můžete nastavit informace protokolu BGP pro každý odkaz z webu VPN v části odkazy. Konfigurace protokolu BGP ve virtuální síti WAN je rovnocenná konfiguraci protokolu BGP v síti VPN brány virtuální sítě Azure. Vaše místní adresa partnerského uzlu BGP nesmí být stejná jako veřejná IP adresa vaší sítě VPN k zařízení nebo adresní prostor virtuální sítě sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může se jednat o adresu přiřazenou rozhraní zpětné smyčky v zařízení. Nemůže to ale být adresa APIPa (169.254. x. x). Zadejte tuto adresu do odpovídající sítě VPN, která představuje umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../articles/vpn-gateway/vpn-gateway-bgp-overview.md). Po povolení nastavení protokolu BGP sítě VPN můžete vždy upravit připojení k síti VPN a aktualizovat jeho parametry protokolu BGP (IP adresy partnerského vztahu na odkaz a jako #).
+    * **Border Gateway Protocol** -Enable znamená, že všechna připojení z webu budou povolena protokol BGP. Nakonec můžete nastavit informace protokolu BGP pro každý odkaz z webu VPN v části odkazy. Konfigurace protokolu BGP ve virtuální síti WAN je rovnocenná konfiguraci protokolu BGP v síti VPN brány virtuální sítě Azure. Vaše místní adresa partnerského uzlu BGP nesmí být stejná jako veřejná IP adresa vaší sítě VPN k zařízení nebo adresní prostor virtuální sítě sítě VPN. Pro IP adresu partnerského uzlu BGP použijte jinou IP adresu na zařízení VPN. Může to být adresa přiřazená k rozhraní zpětné smyčky v zařízení. Zadejte tuto adresu do odpovídající sítě VPN, která představuje umístění. Požadavky protokolu BGP najdete v tématu [informace o protokolu BGP s Azure VPN Gateway](../articles/vpn-gateway/vpn-gateway-bgp-overview.md). Po povolení nastavení protokolu BGP sítě VPN můžete vždy upravit připojení k síti VPN a aktualizovat jeho parametry protokolu BGP (IP adresy partnerského vztahu na odkaz a jako #).
     * **Soukromý adresní prostor** – adresní prostor IP adres umístěný ve vaší místní lokalitě. Provoz určený do tohoto adresního prostoru se přesměruje do místní lokality. Tato možnost je vyžadována, pokud není pro daný web povolen protokol BGP.
     * **Centra** – rozbočovač, ke kterému se má vaše lokalita připojit Lokalita může být připojena pouze k rozbočovačům, které mají VPN Gateway. Pokud nevidíte centrum, vytvořte nejdřív v tomto centru bránu VPN.
 4. Vyberte **odkazy** a přidejte informace o fyzických odkazech ve větvi. Pokud máte zařízení s virtuálním partnerem WAN, podívejte se na ně a zjistěte, jestli se tyto informace vyměňují s Azure jako součást nahrávání informací o větvích nastavených ze svých systémů.

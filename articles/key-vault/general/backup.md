@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault zálohování | Microsoft Docs
+title: Zálohujte tajný klíč, klíč nebo certifikát uložený v Azure Key Vault | Microsoft Docs
 description: Tento dokument vám umožní zálohovat tajný klíč, klíč nebo certifikát uložený v Azure Key Vault.
 services: key-vault
 author: ShaneBala-keyvault
@@ -10,64 +10,67 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 8a152e2771f0b207e81f42c6ecae2e4d14605051
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147795"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521101"
 ---
 # <a name="azure-key-vault-backup"></a>Zálohování Azure Key Vault
 
-V tomto dokumentu se dozvíte, jak provést zálohování jednotlivých tajných klíčů, klíčů a certifikátů uložených v trezoru klíčů. Účelem této zálohy je poskytnout offline kopii všech vašich tajných kódů v nepravděpodobném případě, že ztratíte přístup k trezoru klíčů.
+V tomto dokumentu se dozvíte, jak zálohovat tajné klíče, klíče a certifikáty uložené v trezoru klíčů. Záloha je určena k tomu, aby vám poskytla offline kopii všech vašich tajných kódů v nepravděpodobném případě, že ztratíte přístup k trezoru klíčů.
 
 ## <a name="overview"></a>Přehled
 
-Key Vault automaticky poskytuje několik funkcí pro udržení dostupnosti a ochranu před únikem informací. Tato záloha by měla být prováděna pouze v případě, že existuje důležitý obchodní odůvodnění, aby bylo možné zachovat zálohu vašich tajných kódů. Zálohování tajných klíčů v trezoru klíčů může vést k dalším provozním výzvám, jako je udržování více sad protokolů, oprávnění a zálohování, když vyprší nebo natočí tajnosti klíčů.
+Azure Key Vault automaticky poskytuje funkce, které vám pomůžou zachovat dostupnost a zabránit ztrátě dat. Zálohujte tajné klíče jenom v případě, že máte důležité obchodní odůvodnění. Zálohování tajných klíčů v trezoru klíčů může vést k provozním výzvám, jako je udržování několika sad protokolů, oprávnění a záloh po vypršení platnosti tajných klíčů.
 
-Key Vault udržuje dostupnost ve scénářích havárií a automaticky převezme požadavky na spárované oblasti bez nutnosti zásahu uživatele. Další informace najdete na následujícím odkazu. [Azure Key Vault zotavení po havárii](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)
+Key Vault udržuje dostupnost ve scénářích havárií a automaticky převezme požadavky na spárované oblasti bez zásahu uživatele. Další informace najdete v tématu [Azure Key Vault dostupnost a redundance](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance).
 
-Key Vault chránit před náhodným a škodlivým odstraněním tajných kódů prostřednictvím ochrany pomocí obnovitelného odstranění a vyprázdnění. Pokud chcete chránit před náhodným nebo škodlivým odstraněním tajných kódů, nakonfigurujte prosím funkce ochrany obnovitelného odstranění a vyprázdnění pro váš Trezor klíčů. Další informace najdete v následujícím dokumentu. [Azure Key Vault obnovení](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)
+Pokud chcete chránit před náhodným nebo škodlivým odstraněním tajných kódů, nakonfigurujte funkce ochrany obnovitelného odstranění a vyprázdnění v trezoru klíčů. Další informace najdete v tématu [přehled Azure Key Vaultho obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete).
 
 ## <a name="limitations"></a>Omezení
 
-Azure Key Vault v současné době nepodporuje způsob zálohování celého trezoru klíčů v rámci jedné operace. Žádný pokus o použití příkazů uvedených v tomto dokumentu k provedení automatizovaného zálohování trezoru klíčů nebude podporován společností Microsoft ani týmem Azure Key Vault.
+Key Vault aktuálně neposkytuje způsob, jak zálohovat celý Trezor klíčů v rámci jedné operace. Jakékoli pokusy o použití příkazů uvedených v tomto dokumentu k provedení automatizovaného zálohování trezoru klíčů může způsobit chyby a společnost Microsoft ani tým Azure Key Vault nepodporují. 
 
-Při pokusu o použití příkazů uvedených v následujícím dokumentu k vytvoření vlastní automatizace může dojít k chybám.
+Vezměte v úvahu také následující důsledky:
 
-* Zálohování tajných kódů s více verzemi může způsobit chyby s časovým limitem.
-* Při zálohování se vytvoří snímek v daném časovém okamžiku. Tajné kódy se můžou prodloužit při zálohování, což způsobuje neshodu šifrovacích klíčů.
-* Překročení limitů služby trezoru klíčů pro žádosti za sekundu způsobí omezení trezoru klíčů a způsobí selhání zálohování.
+* Zálohování tajných klíčů, které mají více verzí, může způsobit chyby s časovým limitem.
+* Při zálohování se vytvoří snímek v daném časovém okamžiku. Tajné kódy se můžou během zálohování prodloužit, což způsobilo neshodu šifrovacích klíčů.
+* Pokud překročíte omezení služby trezoru klíčů pro žádosti za sekundu, váš Trezor klíčů bude omezený a zálohování se nezdaří.
 
-## <a name="design-considerations"></a>Na co dát pozor při navrhování
+## <a name="design-considerations"></a>Co vzít v úvahu při návrhu
 
-Když zálohujete objekt uložený v trezoru klíčů (tajný klíč, klíč nebo certifikát), operace zálohování stáhne objekt jako zašifrovaný objekt BLOB. Tento objekt BLOB se nedá dešifrovat mimo Azure. Pokud chcete získat použitelná data z tohoto objektu blob, musíte obnovit objekt blob do trezoru klíčů v rámci stejného předplatného Azure a geografické oblasti Azure.
-[Geografické grafy Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
+Při zálohování objektu trezoru klíčů, jako je tajný klíč, klíč nebo certifikát, bude operace zálohování stahovat objekt jako zašifrovaný objekt BLOB. Tento objekt BLOB není možné dešifrovat mimo Azure. Pokud chcete získat použitelná data z tohoto objektu blob, musíte obnovit objekt blob do trezoru klíčů v rámci stejného předplatného Azure a [geografické oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Oprávnění na úrovni přispěvatele nebo vyšší úrovně oprávnění pro předplatné Azure
-* Primární Trezor klíčů obsahující tajné kódy, které chcete zálohovat
+Pokud chcete zálohovat objekt trezoru klíčů, musíte mít: 
+
+* Oprávnění na úrovni přispěvatele nebo vyšší úrovně na předplatném Azure.
+* Primární Trezor klíčů obsahující tajné údaje, které chcete zálohovat.
 * Sekundární Trezor klíčů, ve kterém se obnoví tajné klíče
 
-## <a name="back-up-and-restore-with-azure-portal"></a>Zálohování a obnovení pomocí Azure Portal
+## <a name="back-up-and-restore-from-the-azure-portal"></a>Zálohování a obnovení z Azure Portal
+
+Podle kroků v této části můžete zálohovat a obnovovat objekty pomocí Azure Portal.
 
 ### <a name="back-up"></a>Zálohování
 
 1. Přejděte na Azure Portal.
 2. Vyberte svůj Trezor klíčů.
-3. Přejděte k objektu (tajný klíč, klíč nebo certifikát), který chcete zálohovat.
+3. Přejít na objekt (tajný klíč, klíč nebo certifikát), který chcete zálohovat.
 
-    ![Image](../media/backup-1.png)
+    ![Snímek obrazovky s informacemi o tom, kde vybrat nastavení klíčů a objekt v trezoru klíčů](../media/backup-1.png)
 
 4. Vyberte objekt.
-5. Vyberte stáhnout zálohu.
+5. Vyberte **stáhnout zálohu**.
 
-    ![Image](../media/backup-2.png)
+    ![Snímek obrazovky s informacemi o tom, kde vybrat tlačítko pro stažení zálohy v trezoru klíčů](../media/backup-2.png)
     
-6. Klikněte na tlačítko Download (Stáhnout).
+6. Vyberte **Stáhnout**.
 
-    ![Image](../media/backup-3.png)
+    ![Snímek obrazovky s informacemi o tom, kde vybrat tlačítko pro stažení v trezoru klíčů](../media/backup-3.png)
     
 7. Zašifrovaný objekt BLOB uložte na bezpečném místě.
 
@@ -75,46 +78,46 @@ Když zálohujete objekt uložený v trezoru klíčů (tajný klíč, klíč neb
 
 1. Přejděte na Azure Portal.
 2. Vyberte svůj Trezor klíčů.
-3. Přejděte na typ objektu (tajný klíč, klíč nebo certifikát), který chcete obnovit.
-4. Vyberte obnovit zálohu.
+3. Přejít na typ objektu (tajný klíč, klíč nebo certifikát), který chcete obnovit.
+4. Vyberte **obnovit zálohu**.
 
-    ![Image](../media/backup-4.png)
+    ![Snímek obrazovky s informacemi o tom, kde vybrat obnovit zálohu v trezoru klíčů](../media/backup-4.png)
     
-5. Přejděte do umístění, kam jste uložili zašifrovaný objekt BLOB.
-6. Vyberte OK.
+5. Přejít do umístění, kam jste uložili zašifrovaný objekt BLOB.
+6. Vyberte **OK**.
 
-## <a name="back-up-and-restore-with-the-azure-cli"></a>Zálohování a obnovení pomocí Azure CLI
+## <a name="back-up-and-restore-from-the-azure-cli"></a>Zálohování a obnovení z Azure CLI
 
 ```azurecli
-## Login To Azure
+## Log in to Azure
 az login
 
-## Set your Subscription
+## Set your subscription
 az account set --subscription {AZURE SUBSCRIPTION ID}
 
-## Register Key Vault as a Provider
+## Register Key Vault as a provider
 az provider register -n Microsoft.KeyVault
 
-## Backup a Certificate in Key Vault
+## Back up a certificate in Key Vault
 az keyvault certificate backup --file {File Path} --name {Certificate Name} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Backup a Key in Key Vault
+## Back up a key in Key Vault
 az keyvault key backup --file {File Path} --name {Key Name} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Backup a Secret in Key Vault
+## Back up a secret in Key Vault
 az keyvault secret backup --file {File Path} --name {Secret Name} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Restore a Certificate in Key Vault
+## Restore a certificate in Key Vault
 az keyvault certificate restore --file {File Path} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Restore a Key in Key Vault
+## Restore a key in Key Vault
 az keyvault key restore --file {File Path} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
-## Restore a Secret in Key Vault
+## Restore a secret in Key Vault
 az keyvault secret restore --file {File Path} --vault-name {Key Vault Name} --subscription {SUBSCRIPTION ID}
 
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Zapněte protokolování a monitorování pro Azure Key Vault. [Protokolování Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/logging)
+Zapněte [protokolování a monitorování](https://docs.microsoft.com/azure/key-vault/general/logging) pro Key Vault.

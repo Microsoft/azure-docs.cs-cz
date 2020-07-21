@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 44aa7bdcaa77ba0865f17e2781e2a0521afe16df
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 89b2fc9ffe05853e34670b6f33ed665240d59457
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555431"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540192"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Kurz: použití modelů strojového učení v Azure Functions pomocí Pythonu a TensorFlow
 
@@ -23,7 +23,7 @@ V tomto článku se naučíte používat Python, TensorFlow a Azure Functions s 
 > * Vytvoří rozhraní HTTP API bez serveru pro klasifikaci obrázku jako obsahujícího psa nebo kočka.
 > * Využívání rozhraní API z webové aplikace
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [Python 3.7.4](https://www.python.org/downloads/release/python-374/). (Python 3.7.4 a Python 3.6. x jsou ověřovány pomocí Azure Functions; Python 3,8 a novější verze se zatím nepodporují.)
@@ -122,18 +122,18 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     func init --worker-runtime python
     ```
 
-    Po inicializaci obsahuje složka *Start* různé soubory pro projekt, včetně konfigurací souborů s názvem [Local. Settings. JSON](functions-run-local.md#local-settings-file) a [Host. JSON](functions-host-json.md). Protože *Local. Settings. JSON* může obsahovat tajné kódy stažené z Azure, soubor je ve výchozím nastavení vyloučený ze správy zdrojového kódu v souboru *. gitignore* .
+    Po inicializaci obsahuje složka *Start* různé soubory pro projekt, včetně konfiguračních souborů s názvem [local.settings.jsv](functions-run-local.md#local-settings-file) a [host.jsna](functions-host-json.md). Vzhledem k tomu, že *local.settings.json* může obsahovat tajné kódy stažené z Azure, soubor je ve výchozím nastavení vyloučený ze správy zdrojového kódu v souboru *. gitignore* .
 
     > [!TIP]
     > Vzhledem k tomu, že projekt funkce je svázán s konkrétním modulem runtime, všechny funkce v projektu musí být zapsány stejným jazykem.
 
-1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a `--template` argument určuje Trigger funkce. `func new`Vytvořte podsložku, která odpovídá názvu funkce, který obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfiguračního souboru s názvem *Function. JSON*.
+1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a `--template` argument určuje Trigger funkce. `func new`Vytvořte podsložku odpovídající názvu funkce, která obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfigurační soubor s názvem *function.jsv*.
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    Tento příkaz vytvoří složku, která odpovídá názvu funkce, *klasifikovat*. V této složce jsou dva soubory: * \_ \_ init \_ \_ . py*, který obsahuje kód funkce a *Function. JSON*, který popisuje Trigger funkce a její vstupní a výstupní vazby. Podrobnosti o obsahu těchto souborů najdete v tématu [prohlédnutí obsahu souboru](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) v rychlém startu Pythonu.
+    Tento příkaz vytvoří složku, která odpovídá názvu funkce, *klasifikovat*. V této složce jsou dva soubory: * \_ \_ init \_ \_ . py*, který obsahuje kód funkce a *function.jsv*, které popisují Trigger funkce a její vstupní a výstupní vazby. Podrobnosti o obsahu těchto souborů najdete v tématu [prohlédnutí obsahu souboru](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents) v rychlém startu Pythonu.
 
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
@@ -180,7 +180,7 @@ Chcete-li vytvořit vlastní model pomocí bezplatné úrovně Custom Vision Ser
     
     ---
     
-1. Ověřte, zda složka *klasifikovat* obsahuje soubory s názvem *model. pb* a *labels. txt*. Pokud ne, ověřte, že jste spustili příkaz ve složce *Start* .
+1. Ověřte, zda složka *klasifikovat* obsahuje soubory s názvem *model. pb* a *labels.txt*. Pokud ne, ověřte, že jste spustili příkaz ve složce *Start* .
 
 1. Ve složce *Start* spusťte následující příkaz, který zkopíruje soubor s pomocným kódem do složky *klasifikovat* :
 
@@ -206,7 +206,7 @@ Chcete-li vytvořit vlastní model pomocí bezplatné úrovně Custom Vision Ser
 
 1. Ověřte, zda složka *klasifikovat* nyní obsahuje soubor s názvem *PREDICT.py*.
 
-1. V textovém editoru otevřete *Start/požadavky. txt* a přidejte následující závislosti, které vyžaduje pomocný kód:
+1. V textovém editoru otevřete *Start/requirements.txt* a přidejte následující závislosti, které vyžaduje pomocný kód:
 
     ```txt
     tensorflow==1.14
@@ -214,7 +214,7 @@ Chcete-li vytvořit vlastní model pomocí bezplatné úrovně Custom Vision Ser
     requests
     ```
     
-1. Uložte *požadavky. txt*.
+1. Uložte *requirements.txt*.
 
 1. Nainstalujte závislosti spuštěním následujícího příkazu ve složce *Start* . Instalace může trvat několik minut. během této doby můžete pokračovat v úpravách funkce v další části.
 

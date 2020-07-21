@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7964f96afc59464c28cabb9e1d5c7961fc765a3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460473"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501768"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Kurz: zabezpečení webového serveru na virtuálním počítači se systémem Linux v Azure s certifikáty TLS/SSL uloženými v Key Vault
 Aby bylo možné zabezpečit webové servery, lze pomocí protokolu TLS (Transport Layer Security), dříve označovaného jako SSL (Secure Sockets Layer) (SSL), použít certifikát k šifrování webového provozu. Tyto certifikáty TLS/SSL můžou být uložené v Azure Key Vault a umožňují zabezpečená nasazení certifikátů do virtuálních počítačů se systémem Linux v Azure. Co se v tomto kurzu naučíte:
@@ -30,7 +30,7 @@ Aby bylo možné zabezpečit webové servery, lze pomocí protokolu TLS (Transpo
 > * Vytvoření virtuálního počítače a instalace webového serveru NGINX
 > * Vložení certifikátu do virtuálního počítače a konfigurace NGINX s použitím vazby TLS
 
-V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
+V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](../../cloud-shell/overview.md), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -48,7 +48,7 @@ Než vytvoříte službu Key Vault a certifikáty, vytvořte skupinu prostředk�
 az group create --name myResourceGroupSecureWeb --location eastus
 ```
 
-Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. V následujícím příkladu nahraďte * \<mykeyvault>* vlastním jedinečným Key Vaultm názvem:
+Dále vytvořte službu Key Vault pomocí příkazu [az keyvault create](/cli/azure/keyvault) a povolte její použití při nasazování virtuálního počítače. Každá služba Key Vault vyžaduje jedinečný název, který by měl být malými písmeny. Nahraďte *\<mykeyvault>* v následujícím příkladu vlastním jedinečným názvem Key Vault:
 
 ```azurecli-interactive 
 keyvault_name=<mykeyvault>
@@ -135,7 +135,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Testování zabezpečené webové aplikace
-Nyní můžete otevřít webový prohlížeč a do adresního řádku zadat *https:\/\/\<publicIpAddress>* . Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
+Nyní můžete otevřít webový prohlížeč a zadat *https: \/ \/ \<publicIpAddress> * na adresním řádku. Zadejte vlastní veřejnou IP adresu získanou při vytváření virtuálního počítače. Pokud jste použili certifikát podepsaný svým držitelem, přijměte upozornění zabezpečení:
 
 ![Přijetí upozornění zabezpečení ve webovém prohlížeči](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -146,7 +146,7 @@ Následně se zobrazí váš zabezpečený web NGINX, jak je znázorněno v nás
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zabezpečený webový server NGINX s certifikátem TLS/SSL uloženým v Azure Key Vault. Naučili jste se tyto postupy:
+V tomto kurzu jste zabezpečený webový server NGINX s certifikátem TLS/SSL uloženým v Azure Key Vault. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvoření služby Azure Key Vault

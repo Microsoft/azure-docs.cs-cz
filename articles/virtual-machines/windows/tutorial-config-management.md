@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ed36dc669c8b89ba4a2b7831c6eb6f8742e73730
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf01e4baf96e4403dae443fa6c98f74c571641a8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100409"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508312"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Kurz: monitorování změn a aktualizace virtuálního počítače s Windows v Azure
 
@@ -31,19 +31,19 @@ Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použ
 
 Chcete-li otevřít libovolný blok kódu v Cloud Shell, stačí vybrat příkaz **vyzkoušet** v pravém horním rohu tohoto bloku kódu.
 
-Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to tak, [https://shell.azure.com/powershell](https://shell.azure.com/powershell)že kliknete na. Vyberte **Kopírovat** pro zkopírování bloků kódu, vložte je na kartu Cloud Shell a stiskněte klávesu ENTER pro spuštění kódu.
+Můžete také otevřít Cloud Shell na samostatné kartě prohlížeče, a to tak, že kliknete na [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . Vyberte **Kopírovat** pro zkopírování bloků kódu, vložte je na kartu Cloud Shell a stiskněte klávesu ENTER pro spuštění kódu.
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
 Ke konfiguraci monitorování a správy aktualizací Azure v tomto kurzu budete potřebovat virtuální počítač s Windows v Azure.
 
-Nejdřív pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) nastavte uživatelské jméno a heslo správce virtuálního počítače:
+Nejdřív pomocí rutiny [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) nastavte uživatelské jméno a heslo správce virtuálního počítače:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Pak vytvořte virtuální počítač pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem `myVM` v `East US` umístění. Pokud ještě neexistují, vytvoří se skupina `myResourceGroupMonitor` prostředků a podpůrné síťové prostředky:
+Pak vytvořte virtuální počítač pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Následující příklad vytvoří virtuální počítač s názvem `myVM` v `East US` umístění. Pokud ještě neexistují, vytvoří se skupina prostředků `myResourceGroupMonitor` a podpůrné síťové prostředky:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -76,7 +76,7 @@ Povolení Update Management pro virtuální počítač:
 
 K určení, jestli je pro tento virtuální počítač povolená Update Management, se provede ověření. Ověřování zahrnuje kontroly Log Analytics pracovního prostoru pro propojený účet Automation a pro to, jestli je řešení v pracovním prostoru.
 
-Pracovní prostor [Log Analytics](../../log-analytics/log-analytics-overview.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je například Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
+Pracovní prostor [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) slouží ke shromažďování dat generovaných funkcemi a službami, jako je například Update Management. Tento pracovní prostor poskytuje možnost kontroly a analýzy dat z několika zdrojů na jednom místě.
 
 K provedení dalších akcí na virtuálních počítačích, které vyžadují aktualizace, můžete použít Azure Automation ke spouštění Runbooků na virtuálních počítačích. Mezi tyto akce patří stahování nebo použití aktualizací.
 
@@ -86,8 +86,8 @@ V okně **povolit Update Management** zvolte pracovní prostor Log Analytics a �
 
 Automaticky se přidávají některé z následujících požadavků, které během připojování chybí:
 
-* Pracovní prostor [Log Analytics](../../log-analytics/log-analytics-overview.md)
-* [Automation](../../automation/automation-offering-get-started.md)
+* Pracovní prostor [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)
+* [Automation](../../automation/index.yml)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md), který je ve virtuálním počítači povolený
 
 Po povolení řešení se otevře okno **Správa aktualizací** . Nakonfigurujte umístění, Log Analytics pracovní prostor a účet Automation, které se mají použít, a pak vyberte **Povolit**. Pokud se tyto možnosti zobrazí šedě, pro virtuální počítač je povolené jiné řešení automatizace a musí se použít pracovní prostor řešení a účet Automation.
@@ -201,7 +201,7 @@ Každý řádek pruhových grafů představuje jiný typ změny, který se můž
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali a zkontrolovali Change Tracking a Update Management pro svůj virtuální počítač. Naučili jste se tyto postupy:
+V tomto kurzu jste nakonfigurovali a zkontrolovali Change Tracking a Update Management pro svůj virtuální počítač. Naučili jste se:
 
 > [!div class="checklist"]
 > * Vytvořte skupinu prostředků a virtuální počítač.

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460066"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526992"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Linuxem v Azure
 
@@ -34,7 +34,7 @@ Svá data můžete chránit prováděním záloh v pravidelných intervalech. Az
 
 Když služba Azure Backup zahájí zálohování, aktivuje rozšíření zálohování, které pořídí snímek v daném okamžiku. Služba Azure Backup využívá rozšíření _VMSnapshotLinux_ v Linuxu. Toto rozšíření se nainstaluje při prvním zálohování virtuálního počítače, pokud je tento virtuální počítač spuštěný. Pokud virtuální počítač není spuštěný, služba Backup pořídí snímek základního úložiště (protože aplikace neprovádí žádné zápisy, když je virtuální počítač zastavený).
 
-Ve výchozím nastavení služba Azure Backup pořídí zálohu virtuálního počítače s Linuxem konzistentní vzhledem k systému souborů, ale je možné ji nakonfigurovat tak, aby prováděla [zálohování konzistentní vzhledem k aplikacím pomocí rozhraní s předzálohovacími a pozálohovacími skripty](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). Jakmile služba Azure Backup pořídí snímek, data se přenesou do trezoru. Pro maximalizaci efektivity služba identifikuje a přenese pouze bloky dat, které se změnily od posledního zálohování.
+Ve výchozím nastavení služba Azure Backup pořídí zálohu virtuálního počítače s Linuxem konzistentní vzhledem k systému souborů, ale je možné ji nakonfigurovat tak, aby prováděla [zálohování konzistentní vzhledem k aplikacím pomocí rozhraní s předzálohovacími a pozálohovacími skripty](../../backup/backup-azure-linux-app-consistent.md). Jakmile služba Azure Backup pořídí snímek, data se přenesou do trezoru. Pro maximalizaci efektivity služba identifikuje a přenese pouze bloky dat, které se změnily od posledního zálohování.
 
 Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 
@@ -42,7 +42,7 @@ Po dokončení přenosu dat se snímek odstraní a vytvoří se bod obnovení.
 ## <a name="create-a-backup"></a>Vytvoření zálohy
 Vytvořte plánované denní zálohování do trezoru služby Recovery Services:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. V nabídce na levé straně vyberte **Virtuální počítače**. 
 3. V seznamu vyberte virtuální počítač, který chcete zálohovat.
 4. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Povolit zálohování** .
@@ -88,7 +88,7 @@ V tomto příkladu ukazujeme obnovení výchozí webové stránky serveru NGINX 
 
     ![Výchozí webová stránka serveru NGINX](./media/tutorial-backup-vms/nginx-broken.png)
     
-1. Na svém místním počítači se přihlaste k webu [Azure Portal](https://portal.azure.com/).
+1. V místním počítači se přihlaste k webu [Azure Portal](https://portal.azure.com/).
 6. V nabídce na levé straně vyberte **Virtuální počítače**. 
 7. V seznamu vyberte virtuální počítač.
 8. V okně virtuálního počítače v části **Nastavení** klikněte na **Zálohování**. Otevře se okno **Zálohování**. 
@@ -171,4 +171,3 @@ V dalším kurzu najdete informace o monitorování virtuálních počítačů.
 
 > [!div class="nextstepaction"]
 > [Řízení virtuálních počítačů](tutorial-govern-resources.md)
-

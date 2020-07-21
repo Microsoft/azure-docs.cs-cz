@@ -1,6 +1,6 @@
 ---
 title: Kurz – CI/CD do virtuálních počítačů Azure pomocí Azure Pipelines
-description: V tomto kurzu se naučíte nastavit průběžnou integraci (CI) a průběžné nasazování (CD) aplikace Node. js do virtuálních počítačů Azure pomocí kanálu Azure založeného na YAML.
+description: V tomto kurzu se naučíte nastavit průběžnou integraci (CI) a průběžné nasazování (CD) Node.js aplikace do virtuálních počítačů Azure pomocí kanálu Azure založeného na YAML.
 author: ushan
 tags: azure-devops-pipelines
 ms.assetid: ''
@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8aa53d4b08a4a0bdaa4e1f12169811ae88edbd2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76988324"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501870"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Kurz: nasazení aplikace do virtuálních počítačů se systémem Linux v Azure pomocí Azure DevOps Services a Azure Pipelines
 
@@ -24,7 +24,7 @@ Průběžná integrace (CI) a průběžné nasazování (CD) tvoří kanál, pom
 
 Azure Pipelines poskytuje kompletní, plně vybavenou sadu nástrojů pro automatizaci CI/CD pro nasazení do virtuálních počítačů, a to v Prem i v jakémkoli cloudu.
 
-V tomto kurzu nastavíte kanál CI/CD založený na YAML, který nasadí vaši aplikaci do [prostředí](https://docs.microsoft.com/azure/devops/pipelines/process/environments?view=azure-devops) Azure Pipelines s virtuálními počítači Linux jako prostředky, z nichž každý slouží jako webové servery ke spuštění aplikace.
+V tomto kurzu nastavíte kanál CI/CD založený na YAML, který nasadí vaši aplikaci do [prostředí](/azure/devops/pipelines/process/environments?view=azure-devops) Azure Pipelines s virtuálními počítači Linux jako prostředky, z nichž každý slouží jako webové servery ke spuštění aplikace.
 
 Získáte informace o těchto tématech:
 
@@ -35,17 +35,17 @@ Získáte informace o těchto tématech:
 > * Vytvořte Azure Pipelines kanál CD.
 > * Ruční nasazení nebo nasazení aktivované přes CI
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-* Přihlaste se k vaší Azure DevOps Services**https://dev.azure.com/** organizaci (). 
+* Přihlaste se k vaší Azure DevOps Services organizaci ( **https://dev.azure.com/** ). 
   Můžete si opatřit [bezplatnou organizaci služby Azure DevOps Services](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
 
   > [!NOTE]
-  > Další informace najdete v článku o [připojení ke službě Azure DevOps Services](https://docs.microsoft.com/azure/devops/organizations/projects/connect-to-projects?view=vsts).
+  > Další informace najdete v článku o [připojení ke službě Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects?view=vsts).
 
-*  Potřebujete linuxový virtuální počítač jako cíl nasazení.  Další informace najdete v článku o [vytvoření a správě linuxových virtuálních počítačů pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
+*  Potřebujete linuxový virtuální počítač jako cíl nasazení.  Další informace najdete v článku o [vytvoření a správě linuxových virtuálních počítačů pomocí rozhraní příkazového řádku Azure](./tutorial-manage-vm.md).
 
-*  Otevřete příchozí port 80 pro virtuální počítač. Další informace najdete v článku o [vytvoření skupin zabezpečení sítě pomocí Azure Portalu](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic).
+*  Otevřete příchozí port 80 pro virtuální počítač. Další informace najdete v článku o [vytvoření skupin zabezpečení sítě pomocí Azure Portalu](../../virtual-network/tutorial-filter-network-traffic.md).
 
 ## <a name="get-your-sample-app-code"></a>Získání kódu ukázkové aplikace
 
@@ -69,7 +69,7 @@ https://github.com/azure-devops/fabrikam-node
 ```
 
 > [!NOTE]
-> Tato aplikace Node. js byla sestavena prostřednictvím [Yeoman](https://yeoman.io/learning/index.html). Používá Express, Bower a Grunt. Jako závislosti také obsahuje několik balíčků npm.
+> Tato Node.js aplikace byla sestavena prostřednictvím [Yeoman](https://yeoman.io/learning/index.html). Používá Express, Bower a Grunt. Jako závislosti také obsahuje několik balíčků npm.
 > Součástí této ukázky je také skript, který nainstaluje Nginx a nasadí tuto aplikaci. Spouští se na virtuálních počítačích. Tento skript konkrétně:
 > 1. Nainstaluje Node, Nginx a PM2
 > 2. Nakonfiguruje Nginx a PM2
@@ -90,14 +90,14 @@ Postupujte podle dalších kroků popsaných níže v závislosti na zásobníku
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
-K instalaci aplikace JavaScriptu nebo aplikace Node. js budete potřebovat virtuální počítač Linux s webovým serverem Nginx pro nasazení aplikace.
-Pokud ještě nemáte virtuální počítač se systémem Linux s Nginx, vytvořte ho teď v Azure pomocí kroků v [tomto příkladu](/azure/virtual-machines/linux/quick-create-cli).
+K instalaci aplikace JavaScriptu nebo Node.js aplikace budete potřebovat virtuální počítač Linux s webovým serverem Nginx pro nasazení aplikace.
+Pokud ještě nemáte virtuální počítač se systémem Linux s Nginx, vytvořte ho teď v Azure pomocí kroků v [tomto příkladu](./quick-create-cli.md).
 
 * * * 
 
 ## <a name="create-an-azure-pipelines-environment-with-azure-virtual-machines"></a>Vytvoření prostředí Azure Pipelines s virtuálními počítači Azure
 
-Virtuální počítače se dají přidat jako prostředky v rámci [prostředí](https://docs.microsoft.com/azure/devops/pipelines/process/environments) a můžou se zaměřit na nasazení na více počítačů. Zobrazení historie nasazení v rámci prostředí poskytují sledovatelnost z virtuálního počítače do kanálu a pak na potvrzení.
+Virtuální počítače se dají přidat jako prostředky v rámci [prostředí](/azure/devops/pipelines/process/environments) a můžou se zaměřit na nasazení na více počítačů. Zobrazení historie nasazení v rámci prostředí poskytují sledovatelnost z virtuálního počítače do kanálu a pak na potvrzení.
 
 Prostředí můžete vytvořit v centru "**prostředí**" v části "**kanály**".
 1.  Přihlaste se ke svojí organizaci Azure DevOps a přejděte k projektu.
@@ -163,11 +163,11 @@ Vyberte **počáteční** šablonu a zkopírujte následující fragment kódu Y
     artifact: drop
 ```
 
-Pro další pokyny postupujte podle kroků uvedených v části [sestavování aplikace Java pomocí Maven](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java).
+Pro další pokyny postupujte podle kroků uvedených v části [sestavování aplikace Java pomocí Maven](/azure/devops/pipelines/ecosystems/java).
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
-Vyberte **počáteční** šablonu a ZKOPÍRUJTE níže YAML fragment kódu, který vytvoří obecný projekt Node. js pomocí npm.
+Vyberte **počáteční** šablonu a zkopírujte následující fragment kódu YAML, který vytvoří obecný projekt Node.js s npm.
 
 ```YAML
 - stage: Build
@@ -196,7 +196,7 @@ Vyberte **počáteční** šablonu a ZKOPÍRUJTE níže YAML fragment kódu, kte
       artifact: drop
 ```
 
-Pro další pokyny postupujte podle kroků v části [sestavení aplikace Node. js pomocí Gulp](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/javascript).
+Další pokyny najdete v postupu [sestavení aplikace Node.js pomocí Gulp](/azure/devops/pipelines/ecosystems/javascript).
 
 - Podívejte se na kanál, abyste viděli, co dělá. Ujistěte se, že všechny výchozí vstupy jsou vhodné pro váš kód.
 
@@ -208,7 +208,7 @@ Pro další pokyny postupujte podle kroků v části [sestavení aplikace Node. 
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>Definování kroků CD pro nasazení na virtuální počítač se systémem Linux
 
-1. Upravte výše uvedený kanál a zahrňte [úlohu nasazení](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs) , která odkazuje na prostředí a prostředky virtuálních počítačů, které jste použili dříve pomocí syntaxe YAML:
+1. Upravte výše uvedený kanál a zahrňte [úlohu nasazení](/azure/devops/pipelines/process/deployment-jobs) , která odkazuje na prostředí a prostředky virtuálních počítačů, které jste použili dříve pomocí syntaxe YAML:
 
    ```YAML
    jobs:  
@@ -221,11 +221,11 @@ Pro další pokyny postupujte podle kroků v části [sestavení aplikace Node. 
      strategy:
    ```
 2. Můžete vybrat konkrétní sady virtuálních počítačů z prostředí pro příjem nasazení zadáním **značek** , které jste definovali pro každý virtuální počítač v prostředí.
-[Tady](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) je kompletní schéma YAML pro úlohu nasazení.
+[Tady](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) je kompletní schéma YAML pro úlohu nasazení.
 
 3. Můžete zadat eithor `runOnce` nebo `rolling` strategii nasazení. 
 
-   `runOnce`je nejjednodušší strategii nasazení, která zaznamená, `preDeploy` `deploy`že všechny zavěšení životního `routeTraffic`cyklu, `postRouteTraffic`konkrétně, a, se spustí jednou. Pak se spustí `on:` `success` buď `on:` `failure` nebo.
+   `runOnce`je nejjednodušší strategii nasazení, která zaznamená, že všechny zavěšení životního cyklu, konkrétně, `preDeploy` `deploy` `routeTraffic` a `postRouteTraffic` , se spustí jednou. Pak se `on:` `success` spustí buď nebo `on:` `failure` .
 
    Níže je příklad fragmentu YAML pro `runOnce` :
    ```YAML
@@ -295,8 +295,8 @@ Zobrazení nasazení prostředí poskytují kompletní sledovatelnost potvrzení
 ![VMjobs_view](media/tutorial-deploy-vms-azure-pipelines/vm-jobsview.png)
 
 ## <a name="next-steps"></a>Další kroky
-- Můžete pokračovat k [přizpůsobení kanálu](https://docs.microsoft.com/azure/devops/pipelines/customize-pipeline) , který jste právě vytvořili.
-- Další informace o tom, co můžete dělat v kanálech YAML, najdete v tématu Referenční informace ke [schématu YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema).
+- Můžete pokračovat k [přizpůsobení kanálu](/azure/devops/pipelines/customize-pipeline) , který jste právě vytvořili.
+- Další informace o tom, co můžete dělat v kanálech YAML, najdete v tématu Referenční informace ke [schématu YAML](/azure/devops/pipelines/yaml-schema).
 - Pokud chcete zjistit, jak nasadit sadu LAMP (Linux, Apache, MySQL a PHP), přejděte k dalšímu kurzu.
 
 > [!div class="nextstepaction"]

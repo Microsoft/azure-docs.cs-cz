@@ -1,18 +1,18 @@
 ---
-title: Vytvoření upozornění na metriku pomocí šablony Resource Manageru
-description: Naučte se používat šablonu Správce prostředků k vytvoření upozornění na metriku.
+title: Ukázky šablon Správce prostředků pro výstrahy metriky
+description: Tento článek poskytuje ukázkové Správce prostředků šablony používané k vytváření výstrah metrik v Azure Monitor.
 author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 27d592a2702f9e2e8fda9094796cf2e37400621b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83854550"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515372"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Ukázky šablon pro pravidla upozornění metrik v Azure Monitor Správce prostředků
 
@@ -20,7 +20,7 @@ V tomto článku najdete ukázky použití [šablon Azure Resource Manager](../.
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
-Seznam prostředků, které se dají používat s pravidly upozornění metrik, najdete [v tématu Podporované prostředky pro výstrahy metrik v Azure monitor](../platform/alerts-metric-near-real-time.md) . Vysvětlení schématu a vlastností pro pravidlo výstrahy je k dispozici na stránce [Upozornění na metriky – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
+Seznam prostředků, které se dají používat s pravidly upozornění metrik, najdete [v tématu Podporované prostředky pro výstrahy metrik v Azure monitor](../platform/alerts-metric-near-real-time.md) . Vysvětlení schématu a vlastností pro pravidlo výstrahy je k dispozici na stránce [Upozornění na metriky – vytvořit nebo aktualizovat](/rest/api/monitor/metricalerts/createorupdate).
 
 > [!NOTE]
 > Šablona prostředků pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces` vyžaduje další kroky. Podrobnosti najdete v tématu [Výstraha metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
@@ -249,7 +249,7 @@ Následující ukázka vytvoří pravidlo upozornění metriky s použitím jedn
 Následující ukázka vytvoří pravidlo upozornění metriky s použitím jednoho kritéria a dynamické prahové hodnoty.
 
 ### <a name="template-file"></a>Soubor šablony
-Následující kód JSON uložte jako simpledynamicmetricalert. JSON pro účely tohoto Názorného postupu.
+Uložte JSON níže jako simpledynamicmetricalert.jspro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -1094,13 +1094,13 @@ Například několik možných časových řad, které jsou monitorovány pomoc�
 
 Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výstrahy metriky pro metriky pro vlastní metriky.
 
-Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vlastní metriky v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vlastní metriky v Azure monitor](../platform/metrics-custom-overview.md).
 
 Při vytváření pravidla výstrahy na vlastní metriky musíte zadat název metriky i obor názvů metriky. Ujistěte se také, že je již hlášena vlastní metrika, protože nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje.
 
 ### <a name="template-file"></a>Soubor šablony
 
-Následující kód JSON uložte jako customstaticmetricalert. JSON pro účely tohoto Názorného postupu.
+Uložte JSON níže jako customstaticmetricalert.jspro účely tohoto Názorného postupu.
 
 ```json
 {
@@ -1325,7 +1325,7 @@ Následující kód JSON uložte jako customstaticmetricalert. JSON pro účely 
 
 >[!NOTE]
 >
-> Obor názvů metriky konkrétní vlastní metriky můžete najít [procházením vlastních metrik pomocí Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
+> Obor názvů metriky konkrétní vlastní metriky můžete najít [procházením vlastních metrik pomocí Azure Portal](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal)
 
 
 ## <a name="multiple-resources"></a>Více prostředků
@@ -1348,7 +1348,7 @@ V této části najdete popis Azure Resource Manager šablon pro různé scéná
 
 Tato šablona vytvoří pravidlo upozornění na metriku statického prahového hodnoty, které monitoruje procentuální hodnotu procesoru pro všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků.
 
-Pro účely tohoto návodu uložte JSON jako all-VM-in-Resource-Group-static. JSON.
+Pro účely tohoto návodu uložte JSON níže jako all-vms-in-resource-group-static.js.
 
 ### <a name="template-file"></a>Soubor šablony
 
