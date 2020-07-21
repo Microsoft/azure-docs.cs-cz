@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7f6b9ddfd5b25ea8482e0bbf5622fa16bc450662
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224447"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525595"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Zálohování a obnovení databáze Oracle Database 12c na virtuálním počítači Azure Linux
 
 Pomocí Azure CLI můžete vytvořit a spravovat prostředky Azure na příkazovém řádku nebo použít skripty. V tomto článku používáme skripty Azure CLI k nasazení Oracle Database databáze 12c z Image Galerie Azure Marketplace.
 
-Než začnete, ujistěte se, že je rozhraní Azure CLI nainstalované. Další informace najdete v příručce pro [instalaci Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Než začnete, ujistěte se, že je rozhraní Azure CLI nainstalované. Další informace najdete v příručce pro [instalaci Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí
 
@@ -33,7 +33,7 @@ Než začnete, ujistěte se, že je rozhraní Azure CLI nainstalované. Další 
 
 *   Chcete-li provést proces zálohování a obnovení, je třeba nejprve vytvořit virtuální počítač se systémem Linux s nainstalovanou instancí Oracle Database 12c. Image Marketplace, kterou použijete k vytvoření virtuálního počítače, se jmenuje *Oracle: Oracle-Database-EE: 12.1.0.2: nejnovější*.
 
-    Informace o tom, jak vytvořit databázi Oracle, najdete v tématu [rychlý Start k vytvoření databáze Oracle](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
+    Informace o tom, jak vytvořit databázi Oracle, najdete v tématu [rychlý Start k vytvoření databáze Oracle](./oracle-database-quick-create.md).
 
 
 ### <a name="step-2-connect-to-the-vm"></a>Krok 2: připojení k virtuálnímu počítači
@@ -172,7 +172,7 @@ Zálohování konzistentní s aplikací je nová funkce v Azure Backup. Můžete
 
 4. Upravte soubor JSON.
 
-    Upravte VMSnapshotScriptPluginConfig.jsv souboru tak, aby obsahovala `PreScriptLocation` `PostScriptlocation` parametry a. Například:
+    Upravte VMSnapshotScriptPluginConfig.jsv souboru tak, aby obsahovala `PreScriptLocation` `PostScriptlocation` parametry a. Příklad:
 
     ```output
     {
@@ -572,6 +572,3 @@ az group delete --name myResourceGroup
 [Kurz: Vytvoření virtuálních počítačů s vysokou dostupností](../../linux/create-cli-complete.md)
 
 [Ukázky ukázek Azure CLI pro nasazení virtuálních počítačů](../../linux/cli-samples.md)
-
-
-

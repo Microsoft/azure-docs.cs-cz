@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 244bea1aaf5457601ced9bac05c8dae43e5b9199
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759505"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527128"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Běžné požadavky pro nasazení OpenShift kontejneru Platform 3,11 v Azure
 
@@ -62,7 +63,7 @@ Následující příklad vytvoří skupinu prostředků s názvem *keyvaultrg* v
 az group create --name keyvaultrg --location eastus
 ```
 
-## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
+## <a name="create-a-key-vault"></a>Vytvořte trezor klíčů.
 Vytvořte Trezor klíčů pro uložení klíčů SSH pro cluster pomocí příkazu [AZ Key trezor Create](/cli/azure/keyvault) . Název trezoru klíčů musí být globálně jedinečný a musí být povolen pro nasazení šablony, jinak se nasazení nezdaří a dojde k chybě "KeyVaultParameterReferenceSecretRetrieveFailed".
 
 Následující příklad vytvoří Trezor klíčů s názvem *trezor* klíčů ve skupině prostředků *keyvaultrg* :
@@ -83,7 +84,7 @@ ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 > [!NOTE]
 > Váš pár klíčů SSH nemůže mít heslo nebo přístupové heslo.
 
-Další informace o klíčích SSH ve Windows najdete v tématu [vytvoření klíčů ssh ve Windows](/azure/virtual-machines/linux/ssh-from-windows). Nezapomeňte exportovat privátní klíč ve formátu OpenSSH.
+Další informace o klíčích SSH ve Windows najdete v tématu [vytvoření klíčů ssh ve Windows](./ssh-from-windows.md). Nezapomeňte exportovat privátní klíč ve formátu OpenSSH.
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Uložení privátního klíče SSH do Azure Key Vault
 Nasazení OpenShift používá klíč SSH, který jste vytvořili, abyste zabezpečili přístup k hlavnímu serveru OpenShift. Chcete-li povolit nasazení bezpečně načíst klíč SSH, uložte klíč do Key Vault pomocí následujícího příkazu:
@@ -133,7 +134,7 @@ Poznamenejte si vlastnost appId a heslo vrácené příkazem:
  > [!WARNING] 
  > Nezapomeňte si zapsat zabezpečené heslo, protože ho nebude možné znovu načíst.
 
-Další informace o instančních objektech najdete v tématu [Vytvoření instančního objektu Azure pomocí Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
+Další informace o instančních objektech najdete v tématu [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Požadavky, které se vztahují pouze na šablonu Správce prostředků
 

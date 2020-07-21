@@ -1,30 +1,30 @@
 ---
-title: Referenční informace k úložišti sdílených složek Azure
+title: Referenční dokumentace souborů Azure
 description: Vyhledejte Azure Storage Reference k rozhraní API, soubory Readme a balíčky klientské knihovny.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/02/2020
+ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: ffe3777882cd857ffb776bbadb41da0fb88d994e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5799b7ec9f6ecce1b9203345446b2d3240beb80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976519"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527842"
 ---
-# <a name="azure-file-shares-storage-reference"></a>Referenční informace k úložišti sdílených složek Azure
+# <a name="azure-files-reference"></a>Referenční dokumentace souborů Azure
 
-Najděte si referenční informace k rozhraní API pro úložiště sdílených složek Azure, balíčky knihoven, soubory Readme a články Začínáme.
+Najděte si referenční informace k rozhraní API souborů Azure, balíčky knihoven, soubory Readme a úvodní články.
 
 ## <a name="net-client-libraries"></a>Klientské knihovny .NET
 
-Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní .NET API sdílené složky Azure.
+Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API .NET pro soubory Azure.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
+|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [V12 klientské knihovny sdílených složek Azure pro .NET](/dotnet/api/overview/azure/storage.files.shares-readme) | [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
+| 12. x | [Klientská knihovna V12 souborů Azure pro .NET](/dotnet/api/overview/azure/storage.files.shares-readme) | [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Files/) | &nbsp; |
 | 11. x | [Obor názvů Microsoft. Azure. Storage. File](/dotnet/api/microsoft.azure.storage.file) | [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/) | [Vývoj pro Soubory Azure pomocí .NET](/azure/storage/files/storage-dotnet-how-to-use-files) |
 
 ### <a name="storage-management"></a>Správa úložiště
@@ -45,11 +45,11 @@ V následující tabulce jsou uvedeny referenční dokumentace pro Azure Storage
 
 ## <a name="java-client-libraries"></a>Klientské knihovny Java
 
-Následující tabulka obsahuje referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API Java sdílených složek Azure.
+Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API Java souborů Azure.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
+|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Klientská knihovna pro sdílení souborů Azure pro Java](/java/api/overview/azure/storage-file-share-readme) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
+| 12. x | [Klientská knihovna souborů Azure Files pro Java](/java/api/overview/azure/storage-file-share-readme) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-file-share) | &nbsp; |
 | 8.x | [com. Microsoft. Azure. Storage. File](/java/api/com.microsoft.azure.storage.file) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Vývoj pro Soubory Azure pomocí Javy](/azure/storage/files/storage-java-how-to-use-file-storage) |
 
 ### <a name="storage-management"></a>Správa úložiště
@@ -62,25 +62,25 @@ V následující tabulce jsou uvedeny referenční dokumentace k rozhraním API 
 
 ## <a name="python-client-libraries"></a>Klientské knihovny Pythonu
 
-Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API Pythonu pro sdílené složky Azure.
+Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API Pythonu pro soubory Azure.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
+|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
 | :-------: | ----------------------- | ------- | ---------- |
 | 12. x | [Azure Storage klientské knihovny V12 pro Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v12) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-file/12.0.0b4/) | [Příklady](/python/api/overview/azure/storage-file-share-readme#examples) |
 | 2.x | [Azure Storage klientských knihoven v2 pro Python](/azure/developer/python/sdk/storage/overview?view=storage-py-v2) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-file/2.1.0/) | [Vývoj pro Soubory Azure pomocí Pythonu](/azure/storage/files/storage-python-how-to-use-file-storage) |
 
 ## <a name="javascript-client-libraries"></a>JavaScript – klientské knihovny
 
-Následující tabulka uvádí referenční a ukázkovou dokumentaci pro rozhraní API JavaScriptu pro sdílené složky Azure.
+Následující tabulka obsahuje referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API pro JavaScript souborů Azure.
 
-|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
+|  Verze  | Referenční dokumentace | Balíček | Rychlý start |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12. x | [Azure Storage Klientská knihovna pro sdílení souborů pro JavaScript](/javascript/api/overview/azure/storage-file-share-readme) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-file-share) | [Příklady](/javascript/api/overview/azure/storage-file-share-readme#examples) |
+| 12. x | [Klientská knihovna souborů Azure Files pro JavaScript](/javascript/api/overview/azure/storage-file-share-readme) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-file-share) | [Příklady](/javascript/api/overview/azure/storage-file-share-readme#examples) |
 | 10. x | [@azure/storage-file](/javascript/api/@azure/storage-file) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-file) | &nbsp; |
 
 ## <a name="rest-apis"></a>Rozhraní REST API
 
-Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní REST API sdílené složky Azure.
+Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní REST API služby Azure Files.
 
 | Referenční dokumentace | Přehled |
 | ----------------------- | -------- |

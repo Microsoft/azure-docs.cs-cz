@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním sdílených složek Azure
 description: Tento článek obsahuje informace o řešení potíží, ke kterým dochází při ochraně sdílených složek Azure.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079883"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524484"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Řešení potíží při zálohování sdílených složek Azure
 
@@ -57,6 +57,9 @@ V Azure Portal otevřete **Vault**  >  **Backup Infrastructure**  >  **účty ú
 >Trezor služby Recovery Services je možné odstranit až po zrušení registrace všech účtů úložiště zaregistrovaných v trezoru.
 
 ## <a name="common-backup-or-restore-errors"></a>Běžné chyby zálohování nebo obnovení
+
+>[!NOTE]
+>[Tento dokument](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup) obsahuje informace o tom, abyste měli jistotu, že máte dostatečná oprávnění k provádění operací zálohování nebo obnovení.
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound – operace se nezdařila, protože se nenašla sdílená složka.
 
@@ -313,7 +316,7 @@ Kód chyby: UserErrorBackupAFSInDeleteState
 
 Chybová zpráva: zálohování se nepovedlo, protože přidružená sdílená složka Azure je trvale Odstraněná.
 
-Ověřte, jestli je zálohovaná sdílená složka trvale Odstraněná. Pokud ano, zastavte zálohování sdílené složky, aby se předešlo opakovaným chybám zálohování. Informace o zastavení ochrany najdete v tématu [zastavení ochrany sdílené složky Azure](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share) .
+Ověřte, jestli je zálohovaná sdílená složka trvale Odstraněná. Pokud ano, zastavte zálohování sdílené složky, aby se předešlo opakovaným chybám zálohování. Informace o zastavení ochrany najdete v tématu [zastavení ochrany sdílené složky Azure](./manage-afs-backup.md#stop-protection-on-a-file-share) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ab1262def78da4971ea6e5535f3ac915a38ec8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678762"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526754"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Vypnutí virtuálního počítače Azure s Windows se zablokuje při restartování, vypínání nebo zastavování služeb.
 
@@ -24,7 +25,7 @@ Tento článek popisuje kroky pro řešení potíží se zprávami "restartován
 
 ## <a name="symptoms"></a>Příznaky
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, může se zobrazit, že snímek obrazovky zobrazuje zprávu "restartování", "vypínání" nebo "zastavení služeb".
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, může se zobrazit, že snímek obrazovky zobrazuje zprávu "restartování", "vypínání" nebo "zastavení služeb".
 
 ![Restart, vypínání a zastavování obrazovek služby](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
@@ -40,7 +41,7 @@ Systém Windows pomocí procesu vypnutí provádí operace údržby systému a z
 
 2. Odpojte disk obsahující soubory potřebné z pracovního virtuálního počítače a připojte tento disk k poškozenému VIRTUÁLNÍmu počítači. Tento disk voláme na **disk s nástrojem**.
 
-Pomocí [konzoly sériového portu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) proveďte následující kroky:
+Pomocí [konzoly sériového portu](./serial-console-windows.md) proveďte následující kroky:
 
 1. Otevřete modul PowerShell pro správu a podívejte se na službu, která při zastavování přestane reagovat.
 
@@ -80,13 +81,13 @@ Pokud se problém nevyřeší po čekání na zpracování změn, budete potřeb
 
 **Připojení disku s operačním systémem k virtuálnímu počítači pro obnovení**
 
-1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-2. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](./troubleshoot-recovery-disks-portal-windows.md).
 
 3. Vzdálená plocha do virtuálního počítače pro obnovení.
 
-4. Pokud je disk s operačním systémem zašifrovaný, musíte před přechodem k dalšímu kroku vypnout šifrování. Další informace najdete v tématu [dešifrujte zašifrovaný disk s operačním systémem ve virtuálním počítači, který se nedá spustit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution).
+4. Pokud je disk s operačním systémem zašifrovaný, musíte před přechodem k dalšímu kroku vypnout šifrování. Další informace najdete v tématu [dešifrujte zašifrovaný disk s operačním systémem ve virtuálním počítači, který se nedá spustit](./troubleshoot-bitlocker-boot-error.md#solution).
 
 **Vyhledat soubor s výpisem paměti a odeslat lístek podpory**
 
@@ -141,7 +142,7 @@ Pokud chcete povolit protokol výpisu a sériovou konzolu, spusťte následujíc
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+5. [Odpojte disk s operačním systémem a pak znovu připojte disk s operačním systémem k ovlivněnému virtuálnímu počítači](./troubleshoot-recovery-disks-portal-windows.md).
 
 6. Spusťte virtuální počítač a otevřete konzolu sériového portu.
 

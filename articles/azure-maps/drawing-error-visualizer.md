@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791111"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524739"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>Použití Azure Mapsho vykreslování – Vizualizér chyb
 
 Vizualizér chyb při vykreslování je samostatná webová aplikace, která zobrazuje [Upozornění a chyby balíčku pro vykreslování](drawing-conversion-error-codes.md) během procesu převodu. Webová aplikace Vizualizér chyb se skládá ze statické stránky, kterou můžete použít bez připojení k Internetu.  K opravě chyb a upozornění podle [požadavků balíčku pro vykreslování](drawing-requirements.md)můžete použít Vizualizér chyb. [Rozhraní API pro převod Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) vrátí odpověď s odkazem na Vizualizér chyb pouze v případě, že je zjištěna chyba.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než si můžete stáhnout Vizualizér chyba vykreslování, budete potřebovat:
 
-1. [Vytvoření účtu Azure Maps](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Vytvoření účtu Azure Maps](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Získejte primární klíč předplatného](quick-demo-map-app.md#get-the-primary-key-for-your-account), označovaný také jako primární klíč nebo klíč předplatného.
 3. [Vytvoření prostředku autora](how-to-manage-creator.md)
 

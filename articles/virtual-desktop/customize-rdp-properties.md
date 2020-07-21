@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení vlastností protokolu RDP pomocí prostředí PowerShell – Azure
+title: Přizpůsobení vlastností protokolu RDP pomocí prostředí PowerShell jarní 2020 – Azure
 description: Postup přizpůsobení vlastností protokolu RDP pro virtuální počítače s Windows pomocí rutin prostředí PowerShell.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d41df8fe4f411cf28af83c8b4b667f1e86bdb45d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c666a11f8d5e13d022309eddab16edb6aab76381
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259918"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527757"
 ---
-# <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů
+# <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) pro fond hostitelů
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md).
@@ -37,7 +37,7 @@ Publikované soubory RDP ve výchozím nastavení obsahují následující vlast
 
 |Vlastnosti protokolu RDP | Desktops | Vzdálené aplikace RemoteApp |
 |---|---| --- |
-| Režim více monitorů | Povoleno | Nelze použít |
+| Režim více monitorů | Povoleno | – |
 | Přesměrování jednotky povolena | Jednotky, schránka, tiskárny, porty COM, zařízení USB a čipové karty| Jednotky, schránka a tiskárny |
 | Režim vzdáleného zvuku | Přehrát místně | Přehrát místně |
 

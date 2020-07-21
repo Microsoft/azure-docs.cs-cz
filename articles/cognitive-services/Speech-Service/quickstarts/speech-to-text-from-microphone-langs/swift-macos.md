@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: rozpoznávání řeči pomocí mikrofonu, služby SWIFT – Speech'
+title: 'Rychlý Start: rozpoznávání řeči a SWIFT-Speech Service (macOS)'
 titleSuffix: Azure Cognitive Services
-description: Naučte se rozpoznávat řeč v SWIFT v macOS pomocí sady Speech SDK
+description: Naučte se, jak vytvořit aplikaci pro rozpoznávání řeči v SWIFT pro macOS počítač pomocí sady Cognitive Services Speech SDK.
 services: cognitive-services
 author: cbasoglu
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 440addd017e7a819d9d3d02a8b77b9432b68b9af
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 68947446d18ce1632b63ac3ba27311f648f3deea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524106"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Rychlý Start: rozpoznávání řeči v SWIFT v macOS pomocí sady Speech SDK
 
@@ -23,7 +23,7 @@ K dispozici jsou také rychlé starty pro [syntézu řeči](~/articles/cognitive
 
 V tomto článku se naučíte, jak vytvořit aplikaci v macOS v SWIFT pomocí sady Cognitive Services Speech SDK pro přepisovat řeči zaznamenané z mikrofonu na text.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, tady je seznam požadavků:
 

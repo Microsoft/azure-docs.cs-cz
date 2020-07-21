@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79266985"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526795"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -43,7 +44,7 @@ Tento scénář shromažďuje základní informace, jako je například úloži�
 
 - Informace o úložišti
 
-- Konfigurace virtuálního počítače Azure (shromážděné pomocí [Azure instance metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service))
+- Konfigurace virtuálního počítače Azure (shromážděné pomocí [Azure instance metadata Service](../windows/instance-metadata-service.md))
 
 - Seznam spuštěných procesů, disku, paměti a využití CPU
 
@@ -108,7 +109,7 @@ Shromažďují se informace o virtuálním počítači Linux, operačním systé
   - /etc/waagent.config
   - Výstup journalctl za posledních pět dní
 
-- [Metadata instance virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Metadata instance virtuálního počítače Azure](../windows/instance-metadata-service.md)
 
 >[!Note]
 >[ `*` ] Informace o PCI ještě nejsou shromážděny v Debian a SLES distribucích

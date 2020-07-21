@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 60053f24aa4231f1100d0b00cb6cf70b851b1939
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218085"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526026"
 ---
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -77,7 +77,7 @@ Dále změřte maximální požadavky na výkon vaší aplikace během své živ
 | Průměrná latence | | | |
 | Max. Procesor | | | |
 | Průměrný procesor | | | |
-| Max. Memory (Paměť) | | | |
+| Max. Paměť | | | |
 | Průměrná paměť | | | |
 | Hloubka fronty | | | |
 
@@ -138,7 +138,7 @@ Další informace o velikostech virtuálních počítačů a počtu vstupně-vý
 Vstupně-výstupní operace je jednotka vstupně-výstupních operací, kterou bude vaše aplikace provádět. Určení povahy požadavků na vstupně-výstupní operace, náhodných nebo sekvenčních, čtení nebo zápisu, malých nebo velkých, vám pomůže určit požadavky na výkon vaší aplikace. Je důležité pochopit charakter požadavků v/v, aby se při návrhu infrastruktury aplikace zajistila správná rozhodnutí. IOs se musí rovnoměrně distribuovat, aby se dosáhlo co nejlepšího výkonu.
 
 Velikost v/v je jedním z důležitějších faktorů. Velikost vstupně-výstupních operací je velikost žádosti o vstupně-výstupní operace vygenerované vaší aplikací. Velikost vstupně-výstupních operací má významný dopad na výkon hlavně na základě IOPS a šířky pásma, které aplikace dokáže dosáhnout. Následující vzorec znázorňuje vztah mezi vstupně-výstupními operacemi, velikostí vstupně-výstupních operací a šířkou pásma a propustností  
-    ![](media/premium-storage-performance/image1.png)
+    ![Diagram znázorňující rovnici I O-t, kolikrát se mění propustnost.](media/premium-storage-performance/image1.png)
 
 Některé aplikace umožňují změnit jejich vstupně-výstupní operace, zatímco některé aplikace ne. SQL Server například určuje optimální velikost vstupně-výstupních operací a neposkytuje uživatelům žádné ovladače ke změně. Na druhé straně Oracle poskytuje parametr s názvem [ \_ \_ velikost bloku DB](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) , pomocí kterého můžete nakonfigurovat velikost vstupně-výstupních požadavků databáze.
 
@@ -174,7 +174,7 @@ Když začnete navrhovat aplikaci, jednou z nich, kterou je třeba udělat, je, 
 
 Virtuální počítače s vysokým rozsahem jsou k dispozici v různých velikostech s různými počty PROCESORových jader, paměti, operačním systémem a dočasné velikosti disku. Každá velikost virtuálního počítače má také maximální počet datových disků, které můžete připojit k virtuálnímu počítači. Vybraná velikost virtuálního počítače proto bude mít vliv na to, kolik je pro vaši aplikaci k dispozici zpracování, paměť a kapacita úložiště. Ovlivňuje také náklady na výpočetní prostředky a úložiště. Níže jsou uvedené například specifikace největšího počtu virtuálních počítačů v řadě DS a řady GS:
 
-| Velikost virtuálního počítače | Procesorová jádra | Memory (Paměť) | Velikosti disků virtuálních počítačů | Max. datové disky | Velikost mezipaměti | IOPS | Omezení v/v mezipaměti šířky pásma |
+| Velikost virtuálního počítače | Procesorová jádra | Paměť | Velikosti disků virtuálních počítačů | Max. datové disky | Velikost mezipaměti | IOPS | Omezení v/v mezipaměti šířky pásma |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OS = 1023 GB <br> Místní SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB za sekundu |4 000 IOPS a 33 MB za sekundu |
 | Standard_GS5 |32 |448 GB |OS = 1023 GB <br> Místní SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB za sekundu |5 000 IOPS a 50 MB za sekundu |
@@ -252,7 +252,7 @@ Pro datové disky se doporučuje nastavení pro diskovou mezipaměť:
 
 | **Nastavení ukládání do mezipaměti disku** | **doporučení, kdy použít toto nastavení** |
 | --- | --- |
-| Žádná |Nakonfigurujte mezipaměť hosta jako žádná pro disky jen pro zápis a zápis s velkým množstvím. |
+| Žádný |Nakonfigurujte mezipaměť hosta jako žádná pro disky jen pro zápis a zápis s velkým množstvím. |
 | ReadOnly |Nakonfigurujte mezipaměť hosta jako ReadOnly pro disky jen pro čtení a pro čtení i zápis. |
 | ReadWrite |Nakonfigurujte mezipaměť hosta jako jen pro čtení, pokud vaše aplikace správně zpracovává zápis dat uložených v mezipaměti na trvalé disky v případě potřeby. |
 
@@ -371,15 +371,15 @@ Například v SQL Server se nastaví hodnota MAXDOP pro dotaz na "4" SQL Server 
 
 *Optimální hloubka fronty*  
 Velmi vysoká hodnota hloubky fronty má také své nevýhody. Pokud je hodnota hloubky fronty příliš vysoká, pokusí se aplikace zařídit velmi vysoký IOPS. Pokud aplikace nemá trvalé disky s dostatečným zřízeným IOPS, může to negativně ovlivnit latenci aplikace. Následující vzorec ukazuje vztah mezi vstupně-výstupními operacemi za sekundu, latencí a hloubkou fronty.  
-    ![](media/premium-storage-performance/image6.png)
+    ![Diagram znázorňující, že se v rovnici v době, kdy se jedná O latenci, rovná hloubka fronty.](media/premium-storage-performance/image6.png)
 
 Hloubku fronty byste neměli konfigurovat na žádnou vysokou hodnotu, ale na optimální hodnotu, která může poskytovat dostatek IOPS pro aplikaci, aniž by to mělo vliv na latenci. Pokud například latence aplikace musí být 1 milisekunda, hloubka fronty potřebná k dosažení 5 000 IOPS je, hloubka fronty = 5000 x 0,001 = 5.
 
 *Hloubka fronty pro prokládaný svazek*  
 U prokládaného svazku Udržujte dostatečně velkou hloubku fronty, takže každý disk má nejvyšší hloubku fronty ve špičce. Představte si například aplikaci, která nahraje hloubku fronty 2 a v pruzích jsou čtyři disky. Dvě vstupně-výstupní požadavky budou přijít na dva disky a zbývající dva disky budou nečinné. Proto nakonfigurujte hloubku fronty tak, aby všechny disky mohly být zaneprázdněné. Vzorec níže ukazuje, jak určit hloubku fronty prokládaných svazků.  
-    ![](media/premium-storage-performance/image7.png)
+    ![Diagram znázorňující, že se rovnice Q D na disk vynásobí počtem sloupců na jeden svazek, který se rovná Q D prokládaného svazku.](media/premium-storage-performance/image7.png)
 
-## <a name="throttling"></a>Throttling
+## <a name="throttling"></a>Omezování
 
 Azure Premium Storage zřídí zadaný počet vstupně-výstupních operací za sekundu v závislosti na velikosti virtuálních počítačů a velikosti disků, které si zvolíte. Kdykoli se vaše aplikace pokusí o zpracování IOPS nebo propustnosti nad rámec těchto limitů, které může virtuální počítač nebo disk zvládnout, Premium Storage ho omezí. Tyto manifesty ve formě sníženého výkonu ve vaší aplikaci. To může znamenat vyšší latenci, nižší propustnost nebo nižší IOPS. Pokud Premium Storage neomezuje, vaše aplikace by mohla být zcela neúspěšná, protože by se překročilo, jaké prostředky je možné dosáhnout. Aby se zabránilo problémům s výkonem kvůli omezení, vždy pro vaši aplikaci zajistěte dostatek prostředků. Vezměte v úvahu, co jsme probrali v oddílech velikosti virtuálních počítačů a velikosti disků výše. Srovnávací testy je nejlepším způsobem, jak zjistit, jaké prostředky budete potřebovat k hostování vaší aplikace.
 

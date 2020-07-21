@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77561945"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525938"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Spuštění virtuálního počítače se systémem Linux pro grub záchranu
 
@@ -33,8 +34,8 @@ Postupujte podle následujících kroků pro zmírnění rizika v závislosti na
 
 * Pokud se vám zobrazuje chyba **Neznámý systém**souborů, může tato chyba způsobit poškození systému souborů ve spouštěcím oddílu nebo nesprávnou konfiguraci jádra.
 
-   * V případě problémů se systémem souborů postupujte podle kroků v článku [obnovení ze systému Linux: z důvodu chyb systému souborů (fsck, uzlů inode) nelze provést SSH pro virtuální počítač se systémem Linux](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/).
-   * V případě problémů s jádrem postupujte podle kroků v článku obnovení ze systému [Linux: Ruční oprava potíží s nespouštěním souvisejících s problémy jádra](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)nebo [Obnovení systému Linux: Oprava potíží s nespouštěním, které souvisí s problémy jádra pomocí chroot](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
+   * V případě problémů se systémem souborů postupujte podle kroků v článku [obnovení ze systému Linux: z důvodu chyb systému souborů (fsck, uzlů inode) nelze provést SSH pro virtuální počítač se systémem Linux](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes).
+   * V případě problémů s jádrem postupujte podle kroků v článku obnovení ze systému [Linux: Ruční oprava potíží s nespouštěním souvisejících s problémy jádra](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems)nebo [Obnovení systému Linux: Oprava potíží s nespouštěním, které souvisí s problémy jádra pomocí chroot](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot).
    
 ### <a name="error---file-not-found"></a>Chyba – soubor nebyl nalezen.
 
@@ -50,7 +51,7 @@ Postupujte podle následujících kroků pro zmírnění rizika v závislosti na
 
 ### <a name="error---no-such-partition"></a>Chyba – žádný takový oddíl
 
-* Pokud se zobrazí chyba, že **Tento oddíl není**k dispozici, při pokusu o prodloužení jednotky operačního systému se při pokusu o [spuštění virtuálního počítače pořiďte v části scénář "žádný takový oddíl"](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/).
+* Pokud se zobrazí chyba, že **Tento oddíl není**k dispozici, při pokusu o prodloužení jednotky operačního systému se při pokusu o [spuštění virtuálního počítače pořiďte v části scénář "žádný takový oddíl"](/archive/blogs/shwetanayak/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive).
 
 ### <a name="error---grubcfg-file-not-found"></a>Chyba: soubor grub. cfg se nenašel.
 
@@ -68,4 +69,3 @@ Postupujte podle následujících kroků pro zmírnění rizika v závislosti na
 
 * [Přehled agenta virtuálního počítače Azure](../extensions/agent-windows.md)
 * [Rozšíření a funkce virtuálních počítačů pro Windows](../extensions/features-windows.md)
-

@@ -2,26 +2,30 @@
 title: Nastavit privátní odkaz
 description: Nastavte privátní koncový bod v registru kontejneru a povolte přístup přes privátní odkaz v místní virtuální síti. Přístup k privátním linkám je funkce úrovně Premium Service.
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/26/2020
+ms.openlocfilehash: 713b19e4a60e5dcad6cfd92d65f97af2e921c0e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509334"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523838"
 ---
-# <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Konfigurace privátního odkazu Azure pro službu Azure Container Registry 
+# <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Připojení soukromě ke službě Azure Container Registry pomocí privátního odkazu Azure
 
-Přiřaďte přístup k registru přiřazením privátních IP adres virtuální sítě k koncovým bodům registru pomocí [privátního odkazu Azure](../private-link/private-link-overview.md). Síťový provoz mezi klienty ve virtuální síti a v registru projde virtuální sítí a privátním odkazem v páteřní síti Microsoftu a odstraní tak expozici veřejného Internetu.
 
-Pro soukromý koncový bod můžete [nakonfigurovat nastavení DNS](../private-link/private-endpoint-overview.md#dns-configuration) tak, aby se nastavení přeložila na přidělenou privátní IP adresu v registru. Díky konfiguraci DNS můžou klienti a služby v síti nadále přistupovat k registru v plně kvalifikovaném názvu domény registru, jako je *myregistry.azurecr.IO*.
+Omezte přístup k registru přiřazením privátních IP adres virtuální sítě do koncových bodů registru a pomocí [privátního propojení Azure](../private-link/private-link-overview.md). Síťový provoz mezi klienty ve virtuální síti a soukromými koncovými body registru projde virtuální sítí a privátním odkazem v páteřní síti Microsoftu a odstraní tak expozici veřejného Internetu. Privátní odkaz taky umožňuje povolit přístup k privátnímu registru z místního prostředí prostřednictvím privátního partnerského vztahu [Azure ExpressRoute](../expressroute/expressroute-introduction.MD) nebo [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+
+[Nastavení DNS](../private-link/private-endpoint-overview.md#dns-configuration) pro privátní koncové body registru můžete nakonfigurovat tak, aby se nastavení přeložila na přidělenou privátní IP adresu registru. Díky konfiguraci DNS můžou klienti a služby v síti nadále přistupovat k registru v plně kvalifikovaném názvu domény registru, jako je *myregistry.azurecr.IO*. 
 
 Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně](container-registry-skus.md).
+
 
 ## <a name="things-to-know"></a>Co je potřeba vědět
 
 * V současné době se kontrola imagí pomocí Azure Security Center není dostupná v registru nakonfigurovaném pomocí privátního koncového bodu.
+* V současné době je možné pro registr nastavit maximálně 10 privátních koncových bodů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud chcete použít kroky Azure CLI v tomto článku, doporučujeme Azure CLI verze 2.6.0 nebo novější. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli]. Nebo spusťte v [Azure Cloud Shell](../cloud-shell/quickstart.md).
 * Pokud ještě nemáte registr kontejnerů, vytvořte ho (je potřeba Premium úrovně) a [naimportujte](container-registry-import-images.md) ukázkovou image, jako je například `hello-world` z dokovacího centra. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] .
@@ -211,9 +215,9 @@ Nastavte privátní odkaz při vytváření registru nebo přidejte privátní o
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Předplatné | Vyberte své předplatné. |
+    | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Zadejte název existující skupiny nebo vytvořte novou.|
-    | Name | Zadejte jedinečný název. |
+    | Název | Zadejte jedinečný název. |
     | Vytváření |Vybrat **registr**|
     | **Sítě** | |
     | Virtuální síť| Vyberte virtuální síť, ve které je nasazený virtuální počítač, například *myDockerVMVNET*. |
@@ -236,10 +240,10 @@ Nastavte privátní odkaz při vytváření registru nebo přidejte privátní o
     | Nastavení | Hodnota |
     | ------- | ----- |
     | **Podrobnosti o projektu** | |
-    | Předplatné | Vyberte své předplatné. |
+    | Předplatné | Vyberte předplatné. |
     | Skupina prostředků | Zadejte název existující skupiny nebo vytvořte novou.|
     | **Podrobnosti instance** |  |
-    | Name | Zadejte název. |
+    | Název | Zadejte název. |
     |Oblast|Vyberte oblast.|
     |||
 5. Vyberte **Další: prostředek**.
@@ -248,7 +252,7 @@ Nastavte privátní odkaz při vytváření registru nebo přidejte privátní o
     | Nastavení | Hodnota |
     | ------- | ----- |
     |Způsob připojení  | **V adresáři vyberte připojit k prostředku Azure**.|
-    | Předplatné| Vyberte své předplatné. |
+    | Předplatné| Vyberte předplatné. |
     | Typ prostředku | Vyberte **Microsoft. ContainerRegistry/Registry**. |
     | Prostředek |Vyberte název registru.|
     |Cílový podprostředek |Vybrat **registr**|
@@ -298,7 +302,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Zakázat veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Pak vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Potom vyberte **Uložit**.
 
 ## <a name="validate-private-link-connection"></a>Ověřit připojení privátního propojení
 

@@ -11,11 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250345"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525411"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Infrastruktura aktualizace Red Hat pro virtuální počítače na vyžádání Red Hat Enterprise Linux v Azure
  RHUI ( [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) ) umožňuje poskytovatelům cloudu, jako je Azure, zrcadlit obsah úložiště hostovaného na Red Hat, vytvářet vlastní úložiště pomocí obsahu specifického pro Azure a zpřístupňuje je pro virtuální počítače koncových uživatelů.
@@ -85,7 +86,7 @@ RedHat:RHEL:7.6:7.6.2019062116
 V době psaní tohoto zápisu skončila podpora EUS pro RHEL <= 7,4. Další podrobnosti najdete v části "Rozšířená údržba Red Hat Enterprise Linux" v [dokumentaci k Red Hat](https://access.redhat.com/support/policy/updates/errata/#Long_Support) .
 * RHEL 7,4 EUS Podpora končí 31. srpna 2019
 * RHEL 7,5 EUS Podpora končí 30. dubna 2020
-* RHEL 7,6 EUS Podpora končí 31. října 2020
+* RHEL 7,6 EUS Podpora končí na 31. května 2021
 * RHEL 7,7 EUS Podpora končí 30. srpna 2021
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>Přepnutí virtuálního počítače s RHEL na EUS (pro zámek verze na konkrétní dílčí verzi)
@@ -167,7 +168,7 @@ Pokud používáte konfiguraci sítě k dalšímu omezení přístupu z virtuál
 >Nové image vlády Azure USA, od ledna 2020, budou používat veřejnou IP adresu uvedenou v části globální hlavička Azure výše.
 
 >[!NOTE]
->Všimněte si také, že Azure Německo je zastaralá ve prospěch veřejných oblastí Německa. Doporučení pro zákazníky Azure v Německu je začít ukazovat na veřejné RHUI pomocí kroků uvedených [tady](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers).
+>Všimněte si také, že Azure Německo je zastaralá ve prospěch veřejných oblastí Německa. Doporučení pro zákazníky Azure v Německu je začít ukazovat na veřejné RHUI pomocí kroků uvedených [tady](#manual-update-procedure-to-use-the-azure-rhui-servers).
 
 ## <a name="azure-rhui-infrastructure"></a>Infrastruktura Azure RHUI
 

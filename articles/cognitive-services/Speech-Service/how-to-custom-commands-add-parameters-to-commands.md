@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362369"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524297"
 ---
 # <a name="add-parameters-to-commands"></a>Přidání parametrů do příkazů
 
 V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Parametry jsou informace vyžadované příkazy k dokončení úkolu. Ve složitých scénářích lze také pomocí parametrů definovat podmínky, které aktivují vlastní akce.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!div class="checklist"]
 > * [Postupy: vytváření aplikací pomocí jednoduchých příkazů](./how-to-custom-commands-create-application-with-simple-commands.md)
@@ -62,8 +62,11 @@ V tomto článku se dozvíte, jak přidat parametry do vlastních příkazů. Pa
        
         
    1. Pokud chcete přidat předdefinované vstupní hodnoty, vyberte **přidat předdefinované zadání** a v okně **Nová položka** zadejte **název** , jak je uvedeno v tabulce výše. V tomto případě nepoužíváme aliasy, takže je můžete nechat prázdné. 
+
     > [!div class="mx-imgBorder"]
-        > ![Vytvořit parametr](media/custom-commands/create-on-off-parameter.png)
+
+    > ![Vytvořit parametr](media/custom-commands/create-on-off-parameter.png)
+
    1. Vyberte **Uložit** a uložte všechny konfigurace parametru.
  
  ### <a name="add-subjectdevice-parameter"></a>Přidat parametr SubjectDevice 
@@ -123,7 +126,7 @@ Upravte stávající pravidlo dokončení **ConfirmationResponse**.
     ```
 1. Vyberte **Uložit**.
 
-### <a name="try-it-out"></a>Vyzkoušejte si to.
+### <a name="try-it-out"></a>Vyzkoušet
 1. Vyberte ikonu **výuky** v pravém horním rohu okna.
 
 1. Po dokončení školení vyberte **test**. Zobrazí se okno **test aplikace** .
@@ -168,7 +171,7 @@ Upravte existující pravidla dokončení podle následujících konfigurací.
 | Podmínky         | Požadovaný parametr > teplotu           |
 | Akce           | Odeslat > odpovědi na řeč`Ok, setting temperature to {Temperature} degrees` |
 
-### <a name="try-it-out"></a>Vyzkoušejte si to.
+### <a name="try-it-out"></a>Vyzkoušet
 
 **Prohlaste** a **otestujte** změny s několika interakcemi.
 
@@ -210,7 +213,7 @@ Upravte existující pravidla dokončení podle následujících konfigurací.
    | Akce    | Poslat odezvu na řeč –`Ok, alarm set for {DateTime}`  |
 
 
-### <a name="try-it-out"></a>Vyzkoušejte si to.
+### <a name="try-it-out"></a>Vyzkoušet
 
 **Výuka** a **testování** změn.
 - Vstup: nastavit alarm pro zítřejší čas v poledne

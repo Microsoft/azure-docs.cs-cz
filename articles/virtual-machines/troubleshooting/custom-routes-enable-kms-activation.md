@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 085647c392bb6cec51fba8b6e42cb8f03707223c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1c2050969e95b521554bba100b688add3a987a80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134580"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526737"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace systému Windows ve scénáři vynuceného tunelování se nezdařila
 
@@ -53,9 +53,9 @@ K přidání vlastní trasy použijte následující postup:
  
 
 > [!NOTE] 
-> Aktivace používá veřejné IP adresy a bude mít vliv na standardní SKU Load Balancer konfiguraci. Zkontrolujte pečlivě [odchozí připojení v Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , abyste se dozvěděli o požadavcích.
+> Aktivace používá veřejné IP adresy a bude mít vliv na standardní SKU Load Balancer konfiguraci. Zkontrolujte pečlivě [odchozí připojení v Azure](../../load-balancer/load-balancer-outbound-connections.md) , abyste se dozvěděli o požadavcích.
 
-1. Otevřete Azure PowerShell a [Přihlaste se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Otevřete Azure PowerShell a [Přihlaste se ke svému předplatnému Azure](/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:
 
     ```powershell
@@ -77,7 +77,7 @@ K přidání vlastní trasy použijte následující postup:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Přejít na virtuální počítač, který obsahuje problémy s aktivací. Použijte [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) k otestování, jestli se může připojit k serveru služby správy klíčů:
+3. Přejít na virtuální počítač, který obsahuje problémy s aktivací. Použijte [PsPing](/sysinternals/downloads/psping) k otestování, jestli se může připojit k serveru služby správy klíčů:
 
     ```console
     psping kms.core.windows.net:1688
@@ -89,7 +89,7 @@ K přidání vlastní trasy použijte následující postup:
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. Otevřete Azure PowerShell a [Přihlaste se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Otevřete Azure PowerShell a [Přihlaste se ke svému předplatnému Azure](/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:
 
     ```powershell
@@ -107,7 +107,7 @@ K přidání vlastní trasy použijte následující postup:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Přejít na virtuální počítač, který obsahuje problémy s aktivací. Použijte [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) k otestování, jestli se může připojit k serveru služby správy klíčů:
+3. Přejít na virtuální počítač, který obsahuje problémy s aktivací. Použijte [PsPing](/sysinternals/downloads/psping) k otestování, jestli se může připojit k serveru služby správy klíčů:
 
     ```console
     psping kms.core.windows.net:1688
@@ -117,7 +117,5 @@ K přidání vlastní trasy použijte následující postup:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Instalační klíče klienta služby správy klíčů](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
-)
-- [Kontrola a výběr metod aktivace](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
-)
+- [Instalační klíče klienta služby správy klíčů](/windows-server/get-started/kmsclientkeys)
+- [Kontrola a výběr metod aktivace](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj134256(v=ws.11))

@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869302"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524992"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Správa prostředků a aktivit privátního cloudu
 
@@ -36,13 +37,13 @@ Pro další informace a akce vyberte privátní cloud.
 
 ## <a name="private-cloud-summary"></a>Souhrn privátního cloudu
 
-Zobrazí komplexní souhrn vybraného privátního cloudu.  Stránka Souhrn obsahuje servery DNS nasazené v privátním cloudu.  Předávání DNS z místních serverů DNS můžete nastavit na servery DNS privátního cloudu.  Další informace o předávání DNS najdete v tématu [Konfigurace DNS pro překlad IP adres pro privátní cloud vCenter z místního](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/)prostředí.
+Zobrazí komplexní souhrn vybraného privátního cloudu.  Stránka Souhrn obsahuje servery DNS nasazené v privátním cloudu.  Předávání DNS z místních serverů DNS můžete nastavit na servery DNS privátního cloudu.  Další informace o předávání DNS najdete v tématu [Konfigurace DNS pro překlad IP adres pro privátní cloud vCenter z místního](./on-premises-dns-setup.md)prostředí.
 
 ![Souhrn privátního cloudu](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Dostupné akce
 
-* [Spusťte klienta vSphere](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access). Přístup k vCenter pro tento privátní cloud.
+* [Spusťte klienta vSphere](./vcenter-access.md). Přístup k vCenter pro tento privátní cloud.
 * [Koupit uzly](create-nodes.md). Přidejte uzly do tohoto privátního cloudu.
 * [Rozbalte](expand-private-cloud.md). Přidejte uzly do tohoto privátního cloudu.
 * **Aktualizovat**. Aktualizujte informace na této stránce.
@@ -57,10 +58,10 @@ Zobrazí seznam definovaných sítí VLAN a podsítí pro vybraný privátní cl
 
 ### <a name="available-actions"></a>Dostupné akce
 
-* [Přidejte sítě VLAN/podsítě](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/). Přidejte k tomuto privátnímu cloudu síť VLAN nebo podmnožinu.
+* [Přidejte sítě VLAN/podsítě](./create-vlan-subnet.md). Přidejte k tomuto privátnímu cloudu síť VLAN nebo podmnožinu.
 
 Vyberte síť VLAN nebo podsíť pro následující akce.
-* [Připojte tabulku brány firewall](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/). Připojte k tomuto privátnímu cloudu tabulku brány firewall.
+* [Připojte tabulku brány firewall](./firewall.md). Připojte k tomuto privátnímu cloudu tabulku brány firewall.
 * **Upravit**
 * **Odstranit** (jenom uživatelsky definované sítě VLAN/podsítě)
 

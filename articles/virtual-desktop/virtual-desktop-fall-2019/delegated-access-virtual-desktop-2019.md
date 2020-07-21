@@ -1,5 +1,5 @@
 ---
-title: Delegovaný přístup na virtuálním počítači s Windows – Azure
+title: Delegovaný přístup ve Windows Virtual desktopu je 2019 – Azure
 description: Jak delegovat možnosti správy pro nasazení virtuálních klientů s Windows, včetně příkladů.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 899e42e3b592ce1bc92d7d47578e10355b1c6de7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614431"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527553"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop"></a>Delegovaný přístup ve Windows Virtual Desktop
+# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Delegovaný přístup ve virtuálním počítači s Windows poklesl na 2019.
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../delegated-access-virtual-desktop.md).

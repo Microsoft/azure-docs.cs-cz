@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení vlastností protokolu RDP pomocí prostředí PowerShell – Azure
+title: Přizpůsobení vlastností protokolu RDP pomocí prostředí PowerShell spadají do 2019 – Azure
 description: Postup přizpůsobení vlastností protokolu RDP pro virtuální počítače s Windows pomocí rutin prostředí PowerShell.
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eeab433bbbfc9db0f1c5f5546ae80434899a91dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 844c59c6e5ea6d730c64fea5fb2dee51f602c382
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259217"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527621"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů
 
@@ -36,7 +36,7 @@ Publikované soubory RDP ve výchozím nastavení obsahují následující vlast
 
 |Vlastnosti protokolu RDP | Desktops | Vzdálené aplikace RemoteApp |
 |---|---| --- |
-| Režim více monitorů | Povoleno | Nelze použít |
+| Režim více monitorů | Povoleno | – |
 | Přesměrování jednotky povolena | Jednotky, schránka, tiskárny, porty COM, zařízení USB a čipové karty| Jednotky, schránka a tiskárny |
 | Režim vzdáleného zvuku | Přehrát místně | Přehrát místně |
 

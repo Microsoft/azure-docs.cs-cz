@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373346"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526534"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Virtuální počítač s Windows se nedá spustit kvůli Správci spouštění Windows.
 
@@ -29,7 +29,7 @@ Tento článek popisuje kroky pro řešení problémů, při kterých správce s
 
 Virtuální počítač se zablokuje při čekání na výzvu uživatele a nespustí se, pokud se nezadá ručně.
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazí správce spouštění systému Windows se zprávou *zvolit operační systém, který se má spustit, nebo stiskněte klávesu TAB a vyberte nástroj:*.
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazí správce spouštění systému Windows se zprávou *zvolit operační systém, který se má spustit, nebo stiskněte klávesu TAB a vyberte nástroj:*.
 
 Obrázek 1
  
@@ -53,7 +53,7 @@ Přehled procesu:
 
 Pokud máte přístup ke konzole sériového portu, existují dva způsoby, jak můžete dosáhnout rychlejšího spouštění. Buď snižte dobu čekání *DISPLAYBOOTMENU* , nebo příznak odeberte úplně.
 
-1. Podle pokynů pro přístup ke [konzole Azure Serial Console pro Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) získáte přístup k textové konzole.
+1. Podle pokynů pro přístup ke [konzole Azure Serial Console pro Windows](./serial-console-windows.md) získáte přístup k textové konzole.
 
    > [!NOTE]
    > Pokud nemůžete získat přístup k sériové konzole, přeskočte před [vytvořením a přístupem k opravnému virtuálnímu počítači](#create-and-access-a-repair-vm).
@@ -77,7 +77,7 @@ Pokud máte přístup ke konzole sériového portu, existují dva způsoby, jak 
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 2. Použijte Připojení ke vzdálené ploše Připojte se k opravnému virtuálnímu počítači.
 
 ### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>Konfigurace pro rychlejší spouštění na opravném virtuálním počítači
@@ -154,4 +154,4 @@ Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spu
 
 ### <a name="rebuild-the-original-vm"></a>Znovu sestavte původní virtuální počítač.
 
-Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač.
+Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) znovu sestavte virtuální počítač.

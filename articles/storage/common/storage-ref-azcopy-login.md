@@ -8,11 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754baa66d79d169f830332f3c39660f1d71f608a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219964"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527910"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -39,7 +40,7 @@ azcopy login [flags]
 
 - [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
 - [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
-- [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
+- [Přenos dat s použitím AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Příklady
@@ -83,7 +84,7 @@ azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/
 Přihlaste se jako instanční objekt pomocí tajného klíče klienta. Nastavte proměnnou prostředí AZCOPY_SPA_CLIENT_SECRET na tajný klíč klienta pro ověřování instančního objektu založeného na tajnosti.
 
 ```azcopy
-azcopy login --service-principal
+azcopy login --service-principal --application-id "YOUR_APP_ID" --tenant-id "YOUR_TENANT_ID"
 ```
 
 Přihlaste se jako instanční objekt pomocí certifikátu a hesla. Nastavte proměnnou prostředí AZCOPY_SPA_CERT_PASSWORD na heslo certifikátu pro autorizaci objektu služby na základě certifikátu.
@@ -98,7 +99,7 @@ Zajistěte, aby se/path/to/my/CERT považovala za cestu k souboru PEM nebo PKCS1
 
 ## <a name="options"></a>Možnosti
 
-|Možnost|Description|
+|Možnost|Popis|
 |--|--|
 |--AAD-koncový bod|Koncový bod Azure Active Directory, který se má použít. Výchozí hodnota ( `https://login.microsoftonline.com` ) je správná pro veřejný cloud Azure. Nastavte tento parametr při ověřování v národním cloudu. Viz [koncové body ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Tento příznak není pro Identita spravované služby potřebný.|
@@ -114,7 +115,7 @@ Tento příznak není pro Identita spravované služby potřebný.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Možnosti zděděné z nadřazených příkazů
 
-|Možnost|Description|
+|Možnost|Popis|
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|

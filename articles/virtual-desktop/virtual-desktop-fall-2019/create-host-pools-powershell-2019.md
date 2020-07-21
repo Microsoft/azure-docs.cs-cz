@@ -1,5 +1,5 @@
 ---
-title: Vytvoření PowerShellového fondu virtuálních počítačů s Windows – Azure
+title: Vytvoření virtuálního počítače s Windows na úrovni 2019 PowerShellu pro fond hostitelů – Azure
 description: Postup vytvoření fondu hostitelů na virtuálním počítači s Windows pomocí rutin prostředí PowerShell.
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 79bd13deb66998c8a1acde28774b47fd567d368c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 552a3fdd20d67d81fe0c6a81a965fd3231da643d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204706"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527638"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 

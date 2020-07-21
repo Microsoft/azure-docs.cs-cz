@@ -1,5 +1,5 @@
 ---
-title: Rozbalení stávajícího fondu hostitelů s novými hostiteli relací – Azure
+title: Rozbalení stávajícího fondu hostitelů s novými hostiteli relace spadají do 2019 – Azure
 description: Postup rozšíření stávajícího fondu hostitelů s novými hostiteli relací na virtuálním počítači s Windows
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 291dc32453001dd1e188bacae8be372bb3645ece
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260766"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527536"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-fall-2019"></a>Rozbalí existující fond hostitelů s novými hostiteli relací (2019.).
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../expand-existing-host-pool.md).
@@ -49,7 +49,7 @@ Pokud jste už vytvořili fond hostitelů a hostitele relací pomocí Azure Reso
 
 Zde je postup, jak znovu nasadit šablonu Azure Resource Manager pro rozšíření fondu hostitelů:
 
-1. Přihlaste se na portál [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Na panelu hledání v horní části Azure Portal vyhledejte **skupiny prostředků** a vyberte položku v části **služby**.
 3. Vyhledejte a vyberte skupinu prostředků, kterou jste vytvořili při vytváření fondu hostitelů.
 4. V panelu na levé straně prohlížeče vyberte **nasazení**.
@@ -76,7 +76,7 @@ Zde je postup, jak znovu nasadit šablonu Azure Resource Manager pro rozšířen
 
 Postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí Azure Marketplace,](create-host-pools-azure-marketplace-2019.md) dokud nedosáhnete [spuštění nabídky Azure Marketplace ke zřízení nového fondu hostitelů](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool). Až se dostanete k tomuto okamžiku, budete muset pro každou kartu zadat následující informace:
 
-### <a name="basics"></a>Základní kroky
+### <a name="basics"></a>Základy
 
 Všechny hodnoty v této části by se měly shodovat s tím, co jste zadali při prvním vytváření virtuálních počítačů hostitelů a hostitele relací, s výjimkou *výchozích uživatelů plochy*:
 

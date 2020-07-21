@@ -3,15 +3,16 @@ title: Obnovení virtuálních počítačů VMware s využitím Azure Backup Ser
 description: K obnovení virtuálních počítačů VMware běžících na serveru VMware vCenter/ESXi použijte Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d11b9259a44c32891f5fefa6f175681838927586
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212369"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524518"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Obnovení virtuálních počítačů VMware
 
-Tento článek vysvětluje, jak pomocí serveru Microsoft Azure Backup (MABS) obnovit body obnovení virtuálních počítačů VMware. Přehled použití MABS k obnovení dat najdete v tématu [obnovení chráněných dat](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server). V konzole pro správu MABS existují dva způsoby, jak najít obnovitelná data – prohledávání nebo procházení. Při obnovování dat můžete nebo nebudete chtít obnovit data nebo virtuální počítač do stejného umístění. Z tohoto důvodu podporuje MABS tři možnosti obnovení pro zálohování virtuálních počítačů VMware:
+Tento článek vysvětluje, jak pomocí serveru Microsoft Azure Backup (MABS) obnovit body obnovení virtuálních počítačů VMware. Přehled použití MABS k obnovení dat najdete v tématu [obnovení chráněných dat](./backup-azure-alternate-dpm-server.md). V konzole pro správu MABS existují dva způsoby, jak najít obnovitelná data – prohledávání nebo procházení. Při obnovování dat můžete nebo nebudete chtít obnovit data nebo virtuální počítač do stejného umístění. Z tohoto důvodu podporuje MABS tři možnosti obnovení pro zálohování virtuálních počítačů VMware:
 
 * **Obnovení původního umístění (OLR)** – k obnovení CHRÁNĚNÉHO virtuálního počítače do původního umístění použijte OLR. Virtuální počítač můžete obnovit do původního umístění pouze v případě, že nebyly přidány nebo smazány žádné disky, protože došlo k zálohování. Pokud byly disky přidány nebo odstraněny, je nutné použít obnovení do alternativního umístění.
 

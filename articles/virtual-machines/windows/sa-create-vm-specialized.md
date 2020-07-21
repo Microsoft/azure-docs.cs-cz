@@ -9,11 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dc671e3aab7568da61e5dab870967d7fd2bb90f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232814"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525734"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Vytvoření virtuálního počítače ze specializovaného virtuálního pevného disku v účtu úložiště
 
@@ -63,7 +64,7 @@ Pokud potřebujete vytvořit účet úložiště, použijte následující postu
     New-AzResourceGroup -Name myResourceGroup -Location "West US"
     ```
 
-2. Vytvořte účet úložiště s názvem **mystorageaccount** v této skupině prostředků pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) :
+2. Vytvořte účet úložiště s názvem **mystorageaccount** v této skupině prostředků pomocí rutiny [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) :
    
     ```powershell
     New-AzStorageAccount -ResourceGroupName myResourceGroup -Name mystorageaccount -Location "West US" `
@@ -71,7 +72,7 @@ Pokud potřebujete vytvořit účet úložiště, použijte následující postu
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>Nahrání virtuálního pevného disku do účtu úložiště
-Pomocí rutiny [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) nahrajte image do kontejneru v účtu úložiště. Tento příklad nahraje soubor **myVHD. VHD** z `"C:\Users\Public\Documents\Virtual hard disks\"` do účtu úložiště s názvem **Mystorageaccount** ve skupině prostředků **myResourceGroup** . Soubor se umístí do kontejneru s názvem **myContainer** a nový název souboru bude **myUploadedVHD. VHD**.
+Pomocí rutiny [Add-AzVhd](/powershell/module/az.compute/add-azvhd) nahrajte image do kontejneru v účtu úložiště. Tento příklad nahraje soubor **myVHD. VHD** z `"C:\Users\Public\Documents\Virtual hard disks\"` do účtu úložiště s názvem **Mystorageaccount** ve skupině prostředků **myResourceGroup** . Soubor se umístí do kontejneru s názvem **myContainer** a nový název souboru bude **myUploadedVHD. VHD**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -105,14 +106,14 @@ Virtuální pevný disk můžete zkopírovat do jiného účtu úložiště, aby
 ### <a name="before-you-begin"></a>Než začnete
 Ujistěte se, že:
 
-* Obsahuje informace o **zdrojovém a cílovém účtu úložiště**. Pro zdrojový virtuální počítač je potřeba mít účet úložiště a názvy kontejnerů. Název kontejneru bude obvykle **VHD**. Musíte mít také cílový účet úložiště. Pokud ho ještě nemáte, můžete ho vytvořit buď pomocí portálu (**všechny služby** > účty úložiště > přidat), nebo pomocí rutiny [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) . 
-* Stáhli a nainstalovali jste [Nástroj AzCopy](../../storage/common/storage-use-azcopy.md). 
+* Obsahuje informace o **zdrojovém a cílovém účtu úložiště**. Pro zdrojový virtuální počítač je potřeba mít účet úložiště a názvy kontejnerů. Název kontejneru bude obvykle **VHD**. Musíte mít také cílový účet úložiště. Pokud ho ještě nemáte, můžete ho vytvořit buď pomocí portálu (**všechny služby** > účty úložiště > přidat), nebo pomocí rutiny [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) . 
+* Stáhli a nainstalovali jste [Nástroj AzCopy](../../storage/common/storage-use-azcopy-v10.md). 
 
 ### <a name="deallocate-the-vm"></a>Zrušení přidělení virtuálního počítače
 Zrušení přidělení virtuálního počítače, který uvolní virtuální pevný disk pro zkopírování. 
 
 * **Portál**: klikněte na **virtuální počítače**  >  **myVM** > zastavit.
-* **PowerShell: pomocí rutiny** [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) můžete zastavit (navrátit) virtuální počítač s názvem **myVM** ve skupině prostředků **myResourceGroup**.
+* **PowerShell: pomocí rutiny** [stop-AzVM](/powershell/module/az.compute/stop-azvm) můžete zastavit (navrátit) virtuální počítač s názvem **myVM** ve skupině prostředků **myResourceGroup**.
 
 ```powershell
 Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -126,17 +127,17 @@ Potřebujete adresy URL zdrojového a cílového účtu úložiště. Adresy URL
 Adresu URL můžete získat pomocí Azure Portal nebo Azure PowerShellu:
 
 * **Portál**: klikněte na **>** **všechny služby**  >  **účty úložiště**  >  *storage account*  >  **objekty blob** účtu úložiště a zdrojový soubor VHD se pravděpodobně nacházejí v kontejneru **VHD** . Klikněte na **vlastnosti** kontejneru a zkopírujte text označený **Adresa URL**. Budete potřebovat adresy URL zdrojového i cílového kontejneru. 
-* **PowerShell: pomocí rutiny** [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) získáte informace o virtuálním počítači s názvem **myVM** ve skupině prostředků **myResourceGroup**. Ve výsledcích vyhledejte část **profil úložiště** pro **identifikátor URI virtuálního pevného disku**. První část identifikátoru URI je adresa URL kontejneru a poslední část je název virtuálního pevného disku operačního systému pro virtuální počítač.
+* **PowerShell: pomocí rutiny** [Get-AzVM](/powershell/module/az.compute/get-azvm) získáte informace o virtuálním počítači s názvem **myVM** ve skupině prostředků **myResourceGroup**. Ve výsledcích vyhledejte část **profil úložiště** pro **identifikátor URI virtuálního pevného disku**. První část identifikátoru URI je adresa URL kontejneru a poslední část je název virtuálního pevného disku operačního systému pro virtuální počítač.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
 ## <a name="get-the-storage-access-keys"></a>Získání přístupových klíčů k úložišti
-Vyhledejte přístupové klíče pro zdrojové a cílové účty úložiště. Další informace o přístupových klíčích najdete v tématu [informace o účtech Azure Storage](../../storage/common/storage-create-storage-account.md).
+Vyhledejte přístupové klíče pro zdrojové a cílové účty úložiště. Další informace o přístupových klíčích najdete v tématu [informace o účtech Azure Storage](../../storage/common/storage-account-create.md).
 
 * **Portál**: klikněte na **všechny služby**  >  **účty úložiště**  >  *storage account*  >  **přístupové klíče**účtu úložiště. Zkopírujte klíč označený jako **klíč1**.
-* **PowerShell: pomocí rutiny** [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) získáte klíč úložiště pro účet úložiště **mystorageaccount** ve skupině prostředků **myResourceGroup**. Zkopírujte klíč označený jako **klíč1**.
+* **PowerShell: pomocí rutiny** [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) získáte klíč úložiště pro účet úložiště **mystorageaccount** ve skupině prostředků **myResourceGroup**. Zkopírujte klíč označený jako **klíč1**.
 
 ```powershell
 Get-AzStorageAccountKey -Name mystorageaccount -ResourceGroupName myResourceGroup
@@ -308,4 +309,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>Další kroky
 Přihlaste se k novému virtuálnímu počítači. Další informace najdete v tématu [jak se připojit a přihlásit se k virtuálnímu počítači Azure s Windows](connect-logon.md).
-

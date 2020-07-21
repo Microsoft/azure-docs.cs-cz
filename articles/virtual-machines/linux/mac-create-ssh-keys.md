@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c57e370cf2f43fc5636cc6c70d2a9bdce4a1923
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df02378e638e9883d802318eba86dbfb066cd6cb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141734"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527284"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Rychlé kroky: vytvoření a použití páru veřejných privátních klíčů SSH pro virtuální počítače se systémem Linux v Azure
 
@@ -95,4 +96,4 @@ Pokud virtuální počítač používá zásady přístupu za běhu, musíte po�
 
 * Další informace o práci s páry klíčů SSH najdete v tématu [Podrobné kroky pro vytváření a správu párů klíčů ssh](create-ssh-keys-detailed.md).
 
-* Pokud máte problémy s připojením SSH k virtuálním počítačům Azure, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux](troubleshoot-ssh-connection.md).
+* Pokud máte problémy s připojením SSH k virtuálním počítačům Azure, přečtěte si téma [řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux](../troubleshooting/troubleshoot-ssh-connection.md).

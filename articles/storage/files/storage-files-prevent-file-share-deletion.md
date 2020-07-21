@@ -8,19 +8,20 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 6ee38dd6f9a2e254c57d6f79c09eee7bccfcd0aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11940a43438b72eb8a2e9391d56806744c4c27fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204680"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527808"
 ---
 # <a name="prevent-accidental-deletion-of-azure-file-shares"></a>Zabránit náhodnému odstranění sdílených složek Azure
 
-Azure Storage teď nabízí obnovitelné odstranění pro sdílené složky (Preview). Obnovitelné odstranění umožňuje obnovit data v případě, že je omylem odstraněno aplikací nebo jiným uživatelem účtu úložiště.
+Azure Storage teď nabízí obnovitelné odstranění pro sdílené složky (Preview). Obnovitelné odstranění umožňuje obnovit sdílenou složku, když ji omylem odstraníte pomocí aplikace nebo jiného uživatele účtu úložiště.
 
 ## <a name="how-soft-delete-preview-works"></a>Jak funguje obnovitelné odstranění (Preview)
 
-Pokud je pro sdílené složky Azure povolené obnovitelné odstranění, pokud je sdílená složka Odstraněná, přepne se do stavu bez trvalého vymazání. Můžete nakonfigurovat dobu, po kterou se Odstraněná data budou moct obnovit, než se trvale odstraní.
+Pokud je pro sdílené složky Azure povolené obnovitelné odstranění, pokud je sdílená složka Odstraněná, přepne se do stavu bez trvalého vymazání. Můžete nakonfigurovat dobu, po kterou se Odstraněná data odstraněná mají obnovit, než se trvale odstraní, a během této doby uchování zrušit její sdílení kdykoli. Po obnovení bude sdílená složka a veškerý obsah včetně snímků obnovena do stavu před odstraněním. Obnovitelné odstranění funguje jenom na úrovni sdílené složky – jednotlivé soubory, které se odstranily, se pořád vymažou trvale.
 
 Obnovitelné odstranění lze povolit buď pro nové, nebo existující sdílené složky. Obnovitelné odstranění je také zpětně kompatibilní, takže nemusíte dělat žádné změny v aplikacích, abyste mohli využít výhod ochrany obnovitelného odstranění. 
 

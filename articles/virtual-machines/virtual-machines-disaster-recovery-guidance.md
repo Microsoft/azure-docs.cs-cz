@@ -6,11 +6,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77115626"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525819"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Co když služba Azure ovlivňuje přerušení virtuálních počítačů Azure
 V Microsoftu pracujeme na tom, abychom zajistili, že naše služby jsou vždycky k dispozici, až je budete potřebovat. Síly nad rámec našeho ovládacího prvku někdy ovlivňují způsob, jakým způsobují neplánované výpadky služeb.
@@ -34,7 +35,7 @@ Tato možnost je nejlepší, pokud jste nemuseli nastavovat Azure Site Recovery,
 
 
 > [!NOTE]
-> Mějte na paměti, že k tomuto procesu nemáte žádnou kontrolu a dojde k tomu jenom pro přerušení služeb v rámci oblasti. Z tohoto důvodu musíte také spoléhat na jiné strategie zálohování specifické pro aplikace, abyste dosáhli nejvyšší úrovně dostupnosti. Další informace najdete v části o [strategiích dat pro zotavení po havárii](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan).
+> Mějte na paměti, že k tomuto procesu nemáte žádnou kontrolu a dojde k tomu jenom pro přerušení služeb v rámci oblasti. Z tohoto důvodu musíte také spoléhat na jiné strategie zálohování specifické pro aplikace, abyste dosáhli nejvyšší úrovně dostupnosti. Další informace najdete v části o [strategiích dat pro zotavení po havárii](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan).
 >
 >
 
@@ -44,7 +45,7 @@ Tato možnost je nejlepší, pokud jste nemuseli nastavovat Azure Site Recovery,
 
 - Další informace o tom, jak implementovat strategii zotavení po havárii a vysokou dostupnost, najdete v tématu [zotavení po havárii a vysoká dostupnost pro aplikace Azure](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-- Podrobné technické porozumění funkcím cloudové platformy najdete v tématu [technické pokyny k odolnosti Azure](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance).
+- Podrobné technické porozumění funkcím cloudové platformy najdete v tématu [technické pokyny k odolnosti Azure](../data-lake-store/data-lake-store-disaster-recovery-guidance.md).
 
 
 - Pokud pokyny nejsou jasné nebo pokud byste chtěli, aby Microsoft prováděl operace vaším jménem, obraťte se na [zákaznickou podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

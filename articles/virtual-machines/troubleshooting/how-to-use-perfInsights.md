@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207703"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526635"
 ---
-# <a name="how-to-use-perfinsights"></a>Použití PerfInsights
+# <a name="how-to-use-perfinsights-in-azure"></a>Jak používat PerfInsights v Azure
 
 [PerfInsights](https://aka.ms/perfinsightsdownload) je samoobslužný Nástroj pro diagnostiku, který shromažďuje a analyzuje diagnostická data a poskytuje zprávu, která vám může pomoct řešit problémy s výkonem virtuálních počítačů s Windows v Azure. PerfInsights je možné spustit na virtuálních počítačích jako samostatný nástroj přímo z portálu pomocí [diagnostiky výkonu pro virtuální počítače Azure](performance-diagnostics.md)nebo instalací [rozšíření virtuálního počítače Azure Performance Diagnostics](performance-diagnostics-vm-extension.md).
 
@@ -65,7 +65,7 @@ V tomto scénáři se spustí srovnávací test [DiskSpd](https://github.com/Mic
 
 ### <a name="performance-analysis"></a>Analýza výkonu
 
-Tento scénář spustí trasování [čítače výkonu](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) pomocí čítačů, které jsou zadány v RuleEngineConfig.jsv souboru. Pokud je virtuální počítač identifikovaný jako server, na kterém běží SQL Server, spustí se trasování čítače výkonu. K tomu slouží čítače, které se nacházejí v RuleEngineConfig.jsv souboru. Tento scénář také zahrnuje data diagnostiky výkonu.
+Tento scénář spustí trasování [čítače výkonu](/windows/win32/perfctrs/performance-counters-portal) pomocí čítačů, které jsou zadány v RuleEngineConfig.jsv souboru. Pokud je virtuální počítač identifikovaný jako server, na kterém běží SQL Server, spustí se trasování čítače výkonu. K tomu slouží čítače, které se nacházejí v RuleEngineConfig.jsv souboru. Tento scénář také zahrnuje data diagnostiky výkonu.
 
 ### <a name="azure-files-analysis"></a>Analýza souborů Azure
 
@@ -300,7 +300,7 @@ DiskSpd je generátor zátěžového úložiště a nástroj pro testování vý
 
 ### <a name="xperf"></a>Xperf
 
-Xperf je nástroj příkazového řádku pro zachycení trasování ze sady nástrojů Windows Performance Toolkit. Další informace najdete v tématu [Windows Performance Toolkit – Xperf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
+Xperf je nástroj příkazového řádku pro zachycení trasování ze sady nástrojů Windows Performance Toolkit. Další informace najdete v tématu [Windows Performance Toolkit – Xperf](/archive/blogs/ntdebugging/windows-performance-toolkit-xperf).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -313,4 +313,3 @@ Na následujícím snímku obrazovky se zobrazí zpráva podobná tomu, co se v�
 Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenosu souborů. Pro zvýšení zabezpečení je nutné při prvním použití změnit heslo.
 
 Po přihlášení se zobrazí dialogové okno pro nahrání souboru ** \_ \_hh-mm-ss-fff.ziprrrr-mm-dd** , který byl shromážděn nástrojem PerfInsights.
-

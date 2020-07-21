@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e26d4070bc9fabeb3467e7bdc805faad4e6646c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76842397"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526499"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Řešení potíží se spouštěním virtuálních počítačů se systémem Linux kvůli chybám systému souborů
 
@@ -74,7 +75,7 @@ Pro Linux je k dispozici několik kontrol systému souborů. Nejběžnější je
 
 ## <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzového režimu pomocí [konzoly sériového portu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) a pomocí tohoto nástroje opravte systém souborů. Pokud není na vašem VIRTUÁLNÍm počítači povolená konzola sériového prostředí nebo nefunguje, přečtěte si část [opravy offline virtuálního počítače](#repair-the-vm-offline) v tomto článku.
+Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzového režimu pomocí [konzoly sériového portu](./serial-console-linux.md) a pomocí tohoto nástroje opravte systém souborů. Pokud není na vašem VIRTUÁLNÍm počítači povolená konzola sériového prostředí nebo nefunguje, přečtěte si část [opravy offline virtuálního počítače](#repair-the-vm-offline) v tomto článku.
 
 ## <a name="use-the-serial-console"></a>Použití sériové konzoly
 
@@ -82,8 +83,8 @@ Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzovéh
 
    > [!Note]
    > Další informace o používání sériové konzoly pro Linux najdete v těchto tématech:
-   > * [Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-   > * [Použití sériové konzoly pro volání SysRq a NMI](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
+   > * [Použití sériové konzoly pro přístup k GRUB a jednomu uživatelskému režimu](../linux/serial-console-grub-single-user-mode.md)
+   > * [Použití sériové konzoly pro volání SysRq a NMI](./serial-console-nmi-sysrq.md)
 
 2. Vyberte tlačítko ikona napájení a pak vyberte restartovat virtuální počítač. (Pokud není sériová konzola povolená nebo není úspěšně připojená, tlačítko se nezobrazí.)
 
@@ -133,7 +134,7 @@ Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzovéh
 
 ## <a name="repair-the-vm-offline"></a>Oprava virtuálního počítače v režimu offline
 
-1. Připojte systémový disk virtuálního počítače jako datový disk k virtuálnímu počítači pro obnovení (libovolný pracovní virtuální počítač se systémem Linux). K tomu můžete použít [příkazy rozhraní příkazového řádku](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) nebo můžete automatizovat nastavení virtuálního počítače pro obnovení pomocí příkazů pro [opravu virtuálního počítače](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
+1. Připojte systémový disk virtuálního počítače jako datový disk k virtuálnímu počítači pro obnovení (libovolný pracovní virtuální počítač se systémem Linux). K tomu můžete použít [příkazy rozhraní příkazového řádku](./troubleshoot-recovery-disks-linux.md) nebo můžete automatizovat nastavení virtuálního počítače pro obnovení pomocí příkazů pro [opravu virtuálního počítače](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
 2. Vyhledejte označení jednotky systémového disku, který jste připojili. V takovém případě předpokládáme, že popisek systémového disku, který jste připojili, je/dev/sdc1.. Nahraďte ji odpovídající hodnotou pro váš virtuální počítač.
 
@@ -177,6 +178,5 @@ Chcete-li tento problém vyřešit, spusťte virtuální počítač do nouzovéh
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI 2,0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
-
+* [Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI 2,0](./troubleshoot-recovery-disks-linux.md)
+* [Připojení datového disku k virtuálnímu počítači se systémem Linux pomocí portálu](../linux/attach-disk-portal.md)

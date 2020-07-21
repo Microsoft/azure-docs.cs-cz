@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039003"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524501"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalace a spuštění kontejnerů Docker LUIS
 
@@ -28,7 +28,7 @@ Následující video znázorňuje použití tohoto kontejneru.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete spustit kontejner LUIS, vezměte na vědomí následující požadavky:
 
@@ -53,9 +53,9 @@ Vytváření rozhraní API pro zabalené aplikace:
 
 ### <a name="container-requirements-and-recommendations"></a>Požadavky na kontejner a doporučení
 
-Tento kontejner podporuje minimální a doporučené hodnoty pro nastavení:
+V níže uvedené tabulce jsou uvedeny minimální a doporučené hodnoty pro hostitele kontejneru. Vaše požadavky se mohou měnit v závislosti na objemu přenosů.
 
-|Kontejner| Minimální | Doporučené | TPS<br>(Minimum, maximum)|
+|Kontejner| Minimum | Doporučeno | TPS<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
 |LUIS|1 jádro, 2 GB paměti|1 jádro, 4 GB paměti|20, 40|
 
@@ -109,7 +109,7 @@ Vstupní adresář pro připojení může obsahovat současně **produkční**, 
 |--|--|--|--|
 |Verzí|ZÍSKAT, ZVEŘEJNIT|Pouze kontejner|`{APP_ID}_v{APP_VERSION}.gz`|
 |Příprava|ZÍSKAT, ZVEŘEJNIT|Azure a kontejner|`{APP_ID}_STAGING.gz`|
-|Produkce|ZÍSKAT, ZVEŘEJNIT|Azure a kontejner|`{APP_ID}_PRODUCTION.gz`|
+|Provoz|ZÍSKAT, ZVEŘEJNIT|Azure a kontejner|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
 > Neměňte přejmenování, změnu, přepsání nebo dekomprimaci souborů balíčku LUIS.
@@ -237,11 +237,11 @@ Tento příkaz:
 
 Verze V2 a [V3](luis-migration-api-v3.md) rozhraní API jsou k dispozici společně s kontejnerem.
 
-## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
+## <a name="query-the-containers-prediction-endpoint"></a>Zadání dotazu do prediktivního koncového bodu kontejneru
 
-Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. Koncové body pro publikované (pracovní nebo produkční) aplikace mají _jinou_ trasu než koncové body pro aplikace s verzemi.
+Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST. Koncové body pro publikované (pracovní nebo produkční) aplikace mají _jinou_ trasu než koncové body pro aplikace s verzemi.
 
-`http://localhost:5000`Pro rozhraní API kontejneru použijte hostitele.
+Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`.
 
 # <a name="v3-prediction-endpoint"></a>[Prediktivní koncový bod V3](#tab/v3)
 
@@ -255,9 +255,9 @@ Parametry dotazu konfigurují jak a co je vráceno v odpovědi na dotaz:
 |Parametr dotazu|Typ|Účel|
 |--|--|--|
 |`query`|řetězec|Utterance uživatele.|
-|`verbose`|Boolean|Logická hodnota označující, zda se mají vracet všechna metadata pro předpovězené modely. Výchozí hodnota je false.|
-|`log`|Boolean|Protokoluje dotazy, které se dají použít později pro [aktivní učení](luis-how-to-review-endpoint-utterances.md). Výchozí hodnota je false.|
-|`show-all-intents`|Boolean|Logická hodnota označující, zda se mají vracet všechny záměry nebo nejvyšší záměr vyhodnocování Výchozí hodnota je false.|
+|`verbose`|boolean|Logická hodnota označující, zda se mají vracet všechna metadata pro předpovězené modely. Výchozí hodnota je false.|
+|`log`|boolean|Protokoluje dotazy, které se dají použít později pro [aktivní učení](luis-how-to-review-endpoint-utterances.md). Výchozí hodnota je false.|
+|`show-all-intents`|boolean|Logická hodnota označující, zda se mají vracet všechny záměry nebo nejvyšší záměr vyhodnocování Výchozí hodnota je false.|
 
 # <a name="v2-prediction-endpoint"></a>[Koncový bod pro předpověď v2](#tab/v2)
 
@@ -272,9 +272,9 @@ Parametry dotazu konfigurují jak a co je vráceno v odpovědi na dotaz:
 |--|--|--|
 |`q`|řetězec|Utterance uživatele.|
 |`timezoneOffset`|číslo|TimezoneOffset umožňuje [změnit časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) používané předem vytvořenou entitou datetimeV2.|
-|`verbose`|Boolean|Vrátí všechny záměry a jejich skóre, pokud je nastaveno na hodnotu true. Výchozí hodnota je false, která vrací pouze nejvyšší záměr.|
-|`staging`|Boolean|Vrátí dotaz z výsledků přípravného prostředí, pokud je nastavena hodnota true. |
-|`log`|Boolean|Protokoluje dotazy, které se dají použít později pro [aktivní učení](luis-how-to-review-endpoint-utterances.md). Platí výchozí hodnota.|
+|`verbose`|boolean|Vrátí všechny záměry a jejich skóre, pokud je nastaveno na hodnotu true. Výchozí hodnota je false, která vrací pouze nejvyšší záměr.|
+|`staging`|boolean|Vrátí dotaz z výsledků přípravného prostředí, pokud je nastavena hodnota true. |
+|`log`|boolean|Protokoluje dotazy, které se dají použít později pro [aktivní učení](luis-how-to-review-endpoint-utterances.md). Platí výchozí hodnota.|
 
 ***
 

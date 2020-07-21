@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cea89087742f1987f693b8bfb627bd71038a0c14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ecb9ab208b6ead3944455b95f7fe6baa044d35
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616927"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525105"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>Nasazení SAP HANA (velké instance) 
 
@@ -35,7 +36,7 @@ Aby bylo možné nasadit jednotky velkých instancí HANA, společnost Microsoft
 - Pro každou oblast nasazení Azure:
     - Rozsah IP adres a/29 pro připojení ER-P2P, která spojují virtuální sítě Azure s velkými instancemi HANA.
     - Blok CIDR a/24 použitý pro fond IP adres serveru rozsáhlých instancí HANA.
-    - Volitelné při použití [Global REACH ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) k umožnění přímého směrování z místního prostředí do Hana velkých jednotek instancí nebo směrování mezi velkými jednotkami instancí v různých oblastech Azure, je potřeba rezervovat jiný rozsah IP adres/29. Tento konkrétní rozsah se nesmí překrývat s žádným z dalších rozsahů IP adres, které jste definovali dříve.
+    - Volitelné při použití [Global REACH ExpressRoute](../../../expressroute/expressroute-global-reach.md) k umožnění přímého směrování z místního prostředí do Hana velkých jednotek instancí nebo směrování mezi velkými jednotkami instancí v různých oblastech Azure, je potřeba rezervovat jiný rozsah IP adres/29. Tento konkrétní rozsah se nesmí překrývat s žádným z dalších rozsahů IP adres, které jste definovali dříve.
 - Hodnoty rozsahu IP adres, které se používají v atributu adresního prostoru virtuální sítě v každé službě Azure Virtual Network, která se připojuje ke velkých instancím HANA.
 - Data pro každý systém velkých instancí HANA:
   - Požadovaný název hostitele, v ideálním případě s plně kvalifikovaným názvem domény.
@@ -52,4 +53,3 @@ Pomocí následujícího postupu se připojte k velkým instancím HANA poté, c
 1. [Připojení virtuálních počítačů Azure k velkým instancím HANA](hana-connect-azure-vm-large-instances.md)
 2. [Připojení virtuální sítě k ExpressRoute velkým instancím v HANA](hana-connect-vnet-express-route.md)
 3. [Další požadavky na síť (volitelné)](hana-additional-network-requirements.md)
-

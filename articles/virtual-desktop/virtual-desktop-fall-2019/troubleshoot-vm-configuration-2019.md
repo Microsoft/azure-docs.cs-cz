@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s hostitelem relace virtuálních klientských počítačů s Windows – Azure
+title: Řešení potíží s hostitelem relace virtuálních počítačů s Windows je 2019 – Azure
 description: Jak vyřešit problémy při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů s Windows.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362505"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527655"
 ---
-# <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
+# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>Řešení potíží s konfigurací virtuálního počítače hostitele relace
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../troubleshoot-vm-configuration.md).

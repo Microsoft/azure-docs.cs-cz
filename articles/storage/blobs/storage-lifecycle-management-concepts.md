@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 789d70f77558bbade854ba31fd10ecd2b8e7b853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6285c25c44b7b8c5b2c1d9c148424fc36912b57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194701"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528691"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -36,7 +36,7 @@ Zásady správy životního cyklu jsou dostupné s účty Pro obecné účely v2
 
 ## <a name="pricing"></a>Ceny
 
-Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běžné provozní náklady na [seznam objektů BLOB seznamu](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a nastavování volání rozhraní API na [úrovni objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . Operace odstranění je zadarmo. Další informace o cenách najdete v tématu [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běžné provozní náklady za volání rozhraní API [vrstvy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . Operace odstranění je zadarmo. Další informace o cenách najdete v tématu [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
@@ -49,7 +49,7 @@ Zásadu můžete přidat, upravit nebo odebrat pomocí kterékoli z následujíc
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [Rozhraní REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
 Zásady je možné číst nebo zapisovat v plném rozsahu. Částečné aktualizace nejsou podporovány. 
 
@@ -202,7 +202,7 @@ Správu životního cyklu můžete definovat pomocí Azure Resource Manager šab
 
 ---
 
-## <a name="policy"></a>Zásada
+## <a name="policy"></a>Zásady
 
 Zásady správy životního cyklu jsou kolekce pravidel v dokumentu JSON:
 
@@ -234,10 +234,10 @@ Každé pravidlo v zásadě má několik parametrů:
 
 | Název parametru | Typ parametru | Poznámky | Vyžadováno |
 |----------------|----------------|-------|----------|
-| `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena.  Musí být jedinečný v rámci zásad. | True |
-| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | False | 
-| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle` . | True |
-| `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | True |
+| `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena.  Musí být jedinečný v rámci zásad. | Ano |
+| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Nepravda | 
+| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle` . | Ano |
+| `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | Ano |
 
 ## <a name="rules"></a>Pravidla
 
@@ -291,7 +291,7 @@ Filtry zahrnují:
 
 | Název filtru | Typ filtru | Poznámky | Je povinné |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob` . | Yes |
+| blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob` . | Ano |
 | prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly v rámci `https://myaccount.blob.core.windows.net/container1/foo/...` pravidla, prefixMatch je `container1/foo` . | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště.  | No |
 | blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly s `Project = Contoso` v rámci `https://myaccount.blob.core.windows.net/` pro pravidlo, je blobIndexMatch `{"name": "Project","op": "==","value": "Contoso"}` . | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
 
@@ -306,16 +306,16 @@ Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a 
 
 | Akce        | Základní objekt BLOB                                   | Snímek      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporuje se |
-| tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporuje se |
-| delete        | Podporuje se                                   | Podporuje se     |
+| tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporováno |
+| tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporováno |
+| odstranění        | Podporováno                                   | Podporováno     |
 
 >[!NOTE]
 >Pokud definujete více než jednu akci u stejného objektu blob, bude správa životního cyklu v objektu BLOB platit nejméně náročná akce. Například akce `delete` je levnější než akce `tierToArchive` . Akce `tierToArchive` je levnější než akce `tierToCool` .
 
 Podmínky spuštění jsou založené na stáří. Základní objekty blob používají čas poslední změny ke sledování stáří a snímky objektů BLOB používají čas vytvoření snímku ke sledování stáří.
 
-| Podmínka spuštění akce             | Hodnota podmínky                          | Description                             |
+| Podmínka spuštění akce             | Hodnota podmínky                          | Popis                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | Celočíselná hodnota označující stáří ve dnech | Podmínka pro základní akce objektů BLOB     |
 | daysAfterCreationGreaterThan     | Celočíselná hodnota označující stáří ve dnech | Podmínka pro akce snímku objektu BLOB |

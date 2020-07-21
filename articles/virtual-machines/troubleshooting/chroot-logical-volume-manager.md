@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74684132"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526873"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Řešení potíží s virtuálním počítačem Linux, když není k dispozici přístup ke konzole sériového rozhraní Azure a rozložení disku používá LVM (Správce logických svazků)
 
@@ -28,7 +29,7 @@ Tato příručka pro řešení potíží je výhodná pro situace, kdy se virtu�
 
 Pořídit snímek ovlivněného virtuálního počítače. 
 
-Snímek se pak připojí k **záchrannému** virtuálnímu počítači. Postupujte podle [pokynů,](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal) jak si pořídit **snímek**.
+Snímek se pak připojí k **záchrannému** virtuálnímu počítači. Postupujte podle [pokynů,](../linux/snapshot-copy-managed-disk.md#use-azure-portal) jak si pořídit **snímek**.
 
 ## <a name="create-a-rescue-vm"></a>Vytvoření záchranného virtuálního počítače
 Obvykle se doporučuje zachránit virtuální počítač se stejnou nebo podobnou verzí operačního systému. Použijte stejnou **oblast** a **skupinu prostředků** ovlivněného virtuálního počítače.
@@ -189,7 +190,7 @@ Spuštěním příkazu **LVS** ověřte, které **LVS** jsou k dispozici pro př
 
 Ukončení prostředí **chroot** připojit požadované **LV**
 
-![Pokročilý](./media/chroot-logical-volume-manager/advanced.png)
+![Upřesnit](./media/chroot-logical-volume-manager/advanced.png)
 
 Teď znovu přihlaste k prostředí **chroot** spuštěním
 
@@ -197,18 +198,18 @@ Teď znovu přihlaste k prostředí **chroot** spuštěním
 
 Všechny LVs musí být viditelné jako připojené oddíly.
 
-![Pokročilý](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
+![Upřesnit](./media/chroot-logical-volume-manager/chroot-all-mounts.png)
 
 Dotaz na nainstalované **jádro**
 
-![Pokročilý](./media/chroot-logical-volume-manager/rpm-kernel.png)
+![Upřesnit](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
 V případě potřeby odebrat nebo upgradovat **kernel** 
  ![ Pokročilé jádro](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>Příklad 3 – povolení sériové konzoly
-Pokud nemáte přístup ke konzole sériového prostředí Azure, ověřte parametry konfigurace GRUB pro virtuální počítač se systémem Linux a opravte je. Podrobné informace najdete [v tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) .
+Pokud nemáte přístup ke konzole sériového prostředí Azure, ověřte parametry konfigurace GRUB pro virtuální počítač se systémem Linux a opravte je. Podrobné informace najdete [v tomto dokumentu](./serial-console-grub-proactive-configuration.md) .
 
 ### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Příklad 4 – načítání jádra s problematickým svazkem LVM swap
 
@@ -273,4 +274,4 @@ Další informace:
 
  [Sériová konzola Azure]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
 
-[Režim jednoho uživatele](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
+[Režim jednoho uživatele](./serial-console-grub-single-user-mode.md)

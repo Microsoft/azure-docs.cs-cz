@@ -1,5 +1,5 @@
 ---
-title: Přidání panelu nástrojů pro kreslení na mapu | Mapy Microsoft Azure
+title: Události nástroje pro kreslení | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak přidat panel nástrojů pro kreslení na mapu pomocí Microsoft Azure Maps Web SDK
 author: rbrundritt
 ms.author: richbrun
@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5cbd5311c6070f59f8a5953d8b99789ab758c9c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804669"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524603"
 ---
 # <a name="drawing-tool-events"></a>Události nástrojů pro kreslení
 
 Při použití nástrojů pro kreslení na mapě je vhodné reagovat na určité události, když uživatel na mapě nakreslí. Tato tabulka uvádí všechny události, které `DrawingManager` Třída podporuje.
 
-| Událost | Description |
+| Událost | Popis |
 |-------|-------------|
 | `drawingchanged` | Je aktivována, když dojde k přidání nebo změně jakékoli souřadnice v obrazci. | 
 | `drawingchanging` | Je aktivována, když se zobrazí libovolná souřadnice náhledu pro obrazec. Tato událost se například aktivuje víckrát, protože je přetažena souřadnice. | 

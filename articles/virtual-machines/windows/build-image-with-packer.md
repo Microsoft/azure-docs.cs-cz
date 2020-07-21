@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 194610845d9625139ff826711fc361bd9670a426
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 14b2e3df6d7ea3f72c1968cfed222a1b9b0d636d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202653"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525853"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Použití balíčku k vytváření imagí virtuálních počítačů s Windows v Azure
 Každý virtuální počítač (VM) v Azure se vytvoří z image, která definuje distribuci Windows a verzi operačního systému. Obrázky můžou zahrnovat předem nainstalované aplikace a konfigurace. Azure Marketplace poskytuje mnoho prvních a imagí jiných výrobců pro většinu běžných prostředí operačního systému a aplikací, nebo můžete vytvořit vlastní image přizpůsobené vašim potřebám. Tento článek podrobně popisuje, jak používat open source [sadu](https://www.packer.io/) nástrojů k definování a vytváření vlastních imagí v Azure.
 
-Tento článek byl naposledy testován na 2/21/2019 pomocí [rutiny AZ PowerShell Module](https://docs.microsoft.com/powershell/azure/install-az-ps) verze 1.3.0 a [Pack](https://www.packer.io/docs/install) verze 1.3.4.
+Tento článek byl naposledy testován na 2/21/2019 pomocí [rutiny AZ PowerShell Module](/powershell/azure/install-az-ps) verze 1.3.0 a [Pack](https://www.packer.io/docs/install) verze 1.3.4.
 
 > [!NOTE]
 > Azure teď má službu, Azure image Builder (Preview) pro definování a vytváření vlastních imagí. Azure image Builder je postavená na balíčku, takže můžete s ním dokonce používat i existující skripty sestavovatele prostředí pro vytváření balíčků. Informace o tom, jak začít s Azure image Builder, najdete v tématu [Vytvoření virtuálního počítače s Windows pomocí Azure image Builder](image-builder.md).
@@ -26,7 +26,7 @@ Tento článek byl naposledy testován na 2/21/2019 pomocí [rutiny AZ PowerShel
 ## <a name="create-azure-resource-group"></a>Vytvoření skupiny prostředků Azure
 Během procesu sestavování vytvoří balíček dočasné prostředky Azure při sestavení zdrojového virtuálního počítače. Pokud chcete zachytit zdrojový virtuální počítač pro použití jako image, musíte definovat skupinu prostředků. Výstup procesu sestavení balíčku je uložený v této skupině prostředků.
 
-Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
+Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurepowershell
 $rgName = "myResourceGroup"
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Vytvoření přihlašovacích údajů Azure
 Balíček se ověřuje pomocí instančního objektu pomocí služby Azure. Instanční objekt Azure je identita zabezpečení, kterou můžete používat s aplikacemi, službami a nástroji pro automatizaci, jako je například nástroj Pack. Oprávnění můžete řídit a definovat podle toho, jaké operace může instanční objekt v Azure provádět.
 
-Vytvořte instanční objekt pomocí [New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) a přiřaďte oprávnění pro instanční objekt k vytváření a správě prostředků pomocí [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment). Hodnota pro `-DisplayName` musí být jedinečná; podle potřeby nahraďte vlastní hodnotou.  
+Vytvořte instanční objekt pomocí [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) a přiřaďte oprávnění pro instanční objekt k vytváření a správě prostředků pomocí [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). Hodnota pro `-DisplayName` musí být jedinečná; podle potřeby nahraďte vlastní hodnotou.  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -54,7 +54,7 @@ $sp.ApplicationId
 ```
 
 
-K ověření v Azure je také potřeba získat ID vašeho tenanta Azure a ID předplatného pomocí [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription):
+K ověření v Azure je také potřeba získat ID vašeho tenanta Azure a ID předplatného pomocí [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription):
 
 ```powershell
 Get-AzSubscription
@@ -213,7 +213,7 @@ Zabere několik minut, než balíček sestaví virtuální počítač, spustí z
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>Vytvoření virtuálního počítače z image balíčku
-Nyní můžete vytvořit virtuální počítač z Image pomocí [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Podpůrné síťové prostředky se vytvoří, pokud ještě neexistují. Po zobrazení výzvy zadejte uživatelské jméno a heslo pro správu, které se má vytvořit na virtuálním počítači. Následující příklad vytvoří virtuální počítač s názvem *myVM* z *myPackerImage*:
+Nyní můžete vytvořit virtuální počítač z Image pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Podpůrné síťové prostředky se vytvoří, pokud ještě neexistují. Po zobrazení výzvy zadejte uživatelské jméno a heslo pro správu, které se má vytvořit na virtuálním počítači. Následující příklad vytvoří virtuální počítač s názvem *myVM* z *myPackerImage*:
 
 ```powershell
 New-AzVm `
@@ -228,13 +228,13 @@ New-AzVm `
     -Image "myPackerImage"
 ```
 
-Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo v jiné oblasti, než je image vašeho balíčku, zadejte ID image, nikoli název bitové kopie. ID image můžete získat pomocí [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage).
+Pokud chcete vytvořit virtuální počítače v jiné skupině prostředků nebo v jiné oblasti, než je image vašeho balíčku, zadejte ID image, nikoli název bitové kopie. ID image můžete získat pomocí [Get-AzImage](/powershell/module/az.compute/get-azimage).
 
 Vytvoření virtuálního počítače z image balíčku trvá několik minut.
 
 
 ## <a name="test-vm-and-webserver"></a>Testovací virtuální počítač a Server
-Získejte veřejnou IP adresu vašeho virtuálního počítače pomocí [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu *myPublicIP*:
+Získejte veřejnou IP adresu vašeho virtuálního počítače pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu *myPublicIP*:
 
 ```powershell
 Get-AzPublicIPAddress `

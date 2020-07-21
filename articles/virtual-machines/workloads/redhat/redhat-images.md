@@ -1,5 +1,5 @@
 ---
-title: Red Hat Enterprise Linux imagí v Azure | Microsoft Docs
+title: Přehled Red Hat Enterprise Linux imagí v Azure
 description: Přečtěte si o Red Hat Enterprise Linuxch imagí v Microsoft Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80239878"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525496"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 
@@ -26,7 +26,7 @@ Tento článek popisuje dostupné Red Hat Enterprise Linux (RHEL) imagí v Azure
 Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete v tématu [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata). Podrobnosti o cenách najdete v tématu [Cenová Kalkulačka Azure](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 >[!IMPORTANT]
-> RHEL image aktuálně dostupné v Azure Marketplace podporují i modely licencování BYOS (Přineste si vlastní předplatné) nebo průběžné platby. [Zvýhodněné hybridní využití Azure](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) a dynamické přepínání mezi BYOS a licencováním s průběžnými platbami se nepodporují. Chcete-li přepnout režim licencování, musíte virtuální počítač znovu nasadit z odpovídající image.
+> RHEL image aktuálně dostupné v Azure Marketplace podporují i modely licencování BYOS (Přineste si vlastní předplatné) nebo průběžné platby. [Zvýhodněné hybridní využití Azure](../../windows/hybrid-use-benefit-licensing.md) a dynamické přepínání mezi BYOS a licencováním s průběžnými platbami se nepodporují. Chcete-li přepnout režim licencování, musíte virtuální počítač znovu nasadit z odpovídající image.
 
 >[!NOTE]
 > Pro všechny problémy související s RHEL obrázky v Azure Marketplace si zaregistrujte lístek podpory s Microsoftem.
@@ -64,8 +64,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> Obecně platí, že porovnání verzí za účelem určení nejnovější následuje pravidla [metody CompareTo](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
-Porovnání verzí tohoto obrázku je provedeno porovnáním hodnot jako objektu [verze](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) , nikoli jako řetězce.
+> Obecně platí, že porovnání verzí za účelem určení nejnovější následuje pravidla [metody CompareTo](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_).
+Porovnání verzí tohoto obrázku je provedeno porovnáním hodnot jako objektu [verze](/dotnet/api/system.version.-ctor?view=netframework-4.8) , nikoli jako řetězce.
 
 ## <a name="rhel-6-image-types"></a>Typy imagí RHEL 6
 
@@ -105,7 +105,7 @@ Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 |Publisher | Nabídka | Hodnota SKU | Verze | Podrobnosti
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191023) | Tyto image jsou image s RHEL 8 LVM oddíly připojené ke standardním úložištím Red Hat.
-|RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou image Hyper-V generace 2 RHEL 8 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
+|RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (například 8.0.20191024) | Tyto image jsou image Hyper-V generace 2 RHEL 8 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure najdete v tématu [Podpora virtuálních počítačů 2. generace v Azure](../../linux/generation-2.md).
 
 ## <a name="rhel-longer-support-add-ons"></a>RHEL už podporuje doplňky.
 
@@ -147,7 +147,7 @@ Dílčí verze |Příklad obrázku EUS              |Stav EUS                   
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Obrázky publikované v dubnu 2019 a novějších jsou ve výchozím nastavení EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Obrázky publikované od června 2019 a novějších jsou EUS ve výchozím nastavení. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publikované obrázky mohou být 2019 a novější EUS ve výchozím nastavení. |
-RHEL 8,0      |Není k dispozici                            | V Red Hat není k dispozici žádný EUS.                               |
+RHEL 8,0      |–                            | V Red Hat není k dispozici žádný EUS.                               |
 
 ### <a name="update-services-for-sap"></a>Aktualizace služeb pro SAP
 

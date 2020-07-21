@@ -7,13 +7,14 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6c621219bc424b7e0df6de286a066fd5b94af4a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a836f4ce40f4d2e0871f99122d25bb6c6f346d05
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514959"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527876"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>Přenos dat pomocí AzCopy a úložiště souborů 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>Přenos dat s použitím AzCopy a úložiště souborů 
 
 AzCopy je nástroj příkazového řádku, pomocí kterého můžete kopírovat objekty blob nebo soubory do nebo z účtu úložiště. Tento článek obsahuje příklady příkazů, které fungují se soubory Azure.
 
@@ -117,7 +118,7 @@ Soubory můžete také vyloučit pomocí `--exclude-path` Možnosti. Další inf
 
 #### <a name="use-wildcard-characters"></a>Použít zástupné znaky
 
-Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-pattern` možností. Zadejte částečné názvy, které obsahují zástupné znaky. Oddělte názvy pomocí semicolin ( `;` ).
+Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-pattern` možností. Zadejte částečné názvy, které obsahují zástupné znaky. Oddělte názvy pomocí středníku ( `;` ).
 
 |    |     |
 |--------|-----------|
@@ -188,7 +189,7 @@ Můžete zadat úplný název souboru nebo použít částečné názvy se zást
 
 #### <a name="specify-multiple-complete-file-names"></a>Zadat více úplných názvů souborů
 
-Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-path` možností. Jednotlivé názvy souborů oddělte pomocí semicolin ( `;` ).
+Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-path` možností. Jednotlivé názvy souborů oddělte pomocí středníku ( `;` ).
 
 |    |     |
 |--------|-----------|
@@ -201,7 +202,7 @@ Soubory můžete také vyloučit pomocí `--exclude-path` Možnosti. Další inf
 
 #### <a name="use-wildcard-characters"></a>Použít zástupné znaky
 
-Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-pattern` možností. Zadejte částečné názvy, které obsahují zástupné znaky. Oddělte názvy pomocí semicolin ( `;` ).
+Použijte příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) s `--include-pattern` možností. Zadejte částečné názvy, které obsahují zástupné znaky. Oddělte názvy pomocí středníku ( `;` ).
 
 |    |     |
 |--------|-----------|

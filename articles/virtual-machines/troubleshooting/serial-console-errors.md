@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 61ae0ef92fe522a2a038a6076a5e0c0a10ee47b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060690"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526431"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Běžné chyby v konzole sériového prostředí Azure
 V rámci konzole sériového prostředí Azure existuje sada známých chyb. Toto je seznam těchto chyb a jejich zmírňující kroky.
@@ -40,7 +40,7 @@ Nepovedlo se určit skupinu prostředků pro účet úložiště diagnostiky spo
 Zřizování pro tento virtuální počítač ještě nebylo úspěšné. Ujistěte se prosím, že je virtuální počítač plně nasazený, a zkuste připojení ke sériové konzole znovu. | Virtuální počítač nebo sada škálování virtuálního počítače se pořád můžou zřídit. Chvíli počkejte a pak to zkuste znovu.
 Webový soket je uzavřený nebo ho nejde otevřít. | Je možné, že budete muset přidat přístup k bráně firewall `*.console.azure.com` . Podrobnější, ale delší přístup je povolení přístupu brány firewall k [rozsahům IP adres Microsoft Azure datacentra](https://www.microsoft.com/download/details.aspx?id=41653), které se často mění poměrně.
 Sériová konzola nepracuje s účtem úložiště pomocí Azure Data Lake Storage Gen2 s hierarchickými obory názvů. | Jedná se o známý problém s hierarchickými obory názvů. Pokud chcete zmírnit, ujistěte se, že účet úložiště diagnostiky spouštění virtuálního počítače není vytvořený pomocí Azure Data Lake Storage Gen2. Tuto možnost lze nastavit pouze při vytváření účtu úložiště. Je možné, že budete muset vytvořit samostatný účet úložiště diagnostiky spouštění bez Azure Data Lake Storage Gen2 povoleného pro zmírnění tohoto problému.
-V připojení k virtuálnímu počítači v sériové konzole došlo k chybě: Forbidden (SubscriptionNotEnabled) – nedefinovaný název předplatného, ID \<subscription id> je v nedefinovaném stavu. | K tomuto problému může dojít, pokud předplatné, které uživatel vytvořil Cloud Shell účet úložiště v nástroji, je zakázané. Chcete-li zmírnit, spusťte Cloud Shell a [proveďte kroky potřebné](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1) k opětovnému zřízení účtu záložního úložiště pro Cloud Shell v aktuálním předplatném.
+V připojení k virtuálnímu počítači v sériové konzole došlo k chybě: Forbidden (SubscriptionNotEnabled) – nedefinovaný název předplatného, ID \<subscription id> je v nedefinovaném stavu. | K tomuto problému může dojít, pokud předplatné, které uživatel vytvořil Cloud Shell účet úložiště v nástroji, je zakázané. Chcete-li zmírnit, spusťte Cloud Shell a [proveďte kroky potřebné](../../cloud-shell/persisting-shell-storage.md#unmount-clouddrive-1) k opětovnému zřízení účtu záložního úložiště pro Cloud Shell v aktuálním předplatném.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o [konzole sériového rozhraní Azure pro virtuální počítače se systémem Linux](./serial-console-linux.md)

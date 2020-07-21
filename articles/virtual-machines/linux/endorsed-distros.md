@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: guybo
-ms.openlocfilehash: e51eeb32ecd306986dc22d6bfa09ee95b8b87852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2edc8d0116778e292f0e44761100d3c1e9212ff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658693"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527383"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Schválené distribuce Linux v Azure
 
-Partneři poskytují image Linux v Azure Marketplace. Microsoft spolupracuje s různými komunitami Linux za účelem přidání ještě více typů do schváleného distribučního seznamu. U distribucí, které nejsou k dispozici na webu Marketplace, můžete kdykoli využít vlastní Linux podle pokynů v části [Vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
+Partneři poskytují image Linux v Azure Marketplace. Microsoft spolupracuje s různými komunitami Linux za účelem přidání ještě více typů do schváleného distribučního seznamu. U distribucí, které nejsou k dispozici na webu Marketplace, můžete kdykoli využít vlastní Linux podle pokynů v části [Vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](./create-upload-generic.md).
 
 ## <a name="supported-distributions-and-versions"></a>Podporované distribuce a verze
 
@@ -35,17 +36,17 @@ Agent Azure Linux je už předinstalovaný na Azure Marketplace imagí a je typi
 | --- | --- | --- | --- |
 | CentOS podle neautorizovaných vln softwaru |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [stažení v lis](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: v jádru |Balíček: v [úložišti](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS je teď [konec životnosti](https://coreos.com/os/eol/) od 26. května 2020. |Již není k dispozici | | |
-| Debian podle credativ |8. x, 9. x |V jádru |Balíček: v úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-|Flatcar Container Linux od Kinvolk| Stabilní, hraniční| | |
-| Oracle Linux Oracle |6. x, 7. x, 8. x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux se Red Hat |6. x, 7. x, 8. x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Debian podle credativ |8.x, 9.x |V jádru |Balíček: v úložišti v části "waagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+|Flatcar Container Linux od Kinvolk| Stable, Edge| | |
+| Oracle Linux Oracle |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| Red Hat Enterprise Linux se Red Hat |6.x, 7.x, 8.x |V jádru |Balíček: v úložišti v části "WALinuxAgent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise podle SUSE |SLES/SLES pro SAP 11. x, 12. x, 15. x <br/> [Životní cyklus SUSE veřejné cloudové image](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |V jádru |Balíček<p> 11 v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools)<br>pro 12 zahrnuté v modulu "veřejný cloud" v části "Python-Azure-Agent"<br/>Zdrojový kód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE podle SUSE |openSUSE přestupní 15. x |V jádru |Balíček: v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools) v části Python – Azure-Agent <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| openSUSE podle SUSE |openSUSE Leap 15.x |V jádru |Balíček: v [cloudu: úložiště nástrojů](https://build.opensuse.org/project/show/Cloud:Tools) v části Python – Azure-Agent <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu podle kanonického |Server Ubuntu a verze pro. 16. x, 18. x, 20. x<p>Informace o rozšířené podpoře pro Ubuntu 12,04 a 14,04 najdete tady: [Ubuntu rozšířená údržba zabezpečení](https://www.ubuntu.com/esm). |V jádru |Balíček: v úložišti v části "walinuxagent" <br/>Zdrojový kód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>Tempo aktualizace image
 
-Azure vyžaduje, aby vydavatelé distribucí v systému Linux pravidelně aktualizovali své image v Azure Marketplace s nejnovějšími opravami a opravami zabezpečení, a to na čtvrtletním nebo rychlejším tempo. Aktualizované obrázky v Azure Marketplace jsou automaticky dostupné zákazníkům jako nové verze SKU image. Další informace o tom, jak najít image pro Linux: [vyhledání imagí virtuálních počítačů se systémem Linux v Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+Azure vyžaduje, aby vydavatelé distribucí v systému Linux pravidelně aktualizovali své image v Azure Marketplace s nejnovějšími opravami a opravami zabezpečení, a to na čtvrtletním nebo rychlejším tempo. Aktualizované obrázky v Azure Marketplace jsou automaticky dostupné zákazníkům jako nové verze SKU image. Další informace o tom, jak najít image pro Linux: [vyhledání imagí virtuálních počítačů se systémem Linux v Azure Marketplace](./cli-ps-findimage.md).
 
 ## <a name="azure-tuned-kernels"></a>Jádra Azure – vyladěné jádro
 

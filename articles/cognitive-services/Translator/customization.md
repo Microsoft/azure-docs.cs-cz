@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996994"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523991"
 ---
 # <a name="customize-your-text-translations"></a>Přizpůsobení překladů textu
 
@@ -27,7 +27,7 @@ Tuto funkci můžete také použít k přizpůsobení překladu řeči při pou�
 
 Pomocí vlastního překladatele můžete vytvářet neuronové překladatelské systémy, které rozumí terminologii používané ve vašem podniku a v průmyslu. Přizpůsobený systém překladu pak bude integrován do stávajících aplikací, pracovních postupů a webů.
 
-### <a name="how-does-it-work"></a>Jak to funguje?
+### <a name="how-does-it-work"></a>Jak funguje?
 
 Pomocí dříve přeložených dokumentů (letáků, webových stránek, dokumentace atd.) sestavíte systém překladu, který odráží vaši terminologii a styl specifický pro doménu, a lepší než standardní systém překladu. Uživatelé můžou ukládat dokumenty TMX, XLIFF, TXT, DOCX a XLSX.  
 
@@ -47,13 +47,13 @@ Další podrobnosti o různých úrovních přizpůsobení na základě dostupn�
 
 ## <a name="custom-translator-versus-hub"></a>Vlastní Překladatel versus centrum
 
-|   | **Zdroj** | **Custom Translator**|
-|:-----|:----:|:----:|
+| Funkce | Rozbočovač | Custom Translator |
+| ------- | :-: | :---------------: |
 |Stav funkce přizpůsobení    | Obecná dostupnost    | Obecná dostupnost |
 | Verze textového rozhraní API    | Pouze v2    | Jenom V3 |
-| Přizpůsobení SMT    | Ano    | Ne |
-| Přizpůsobení NMT    | Ne    | Ano |
-| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | Ne    | Ano |
+| Přizpůsobení SMT    | Ano    | No |
+| Přizpůsobení NMT    | No    | Ano |
+| Nové přizpůsobení sjednocené služby pro rozpoznávání řeči    | No    | Ano |
 | [Žádné trasování](https://www.aka.ms/notrace) | Ano    | Ano |
 
 ## <a name="collaborative-translations-framework"></a>Architektura pro spolupráci s překlady

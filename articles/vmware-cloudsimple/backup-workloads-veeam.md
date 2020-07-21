@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3262841efb9109b1de24fe501ea0a7bea0dd612d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e661485e58c7e00c4eee41d808f727153a7761c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025125"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525037"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Zálohování virtuálních počítačů s úlohami v privátním cloudu CloudSimple pomocí Veeam B&R
 
@@ -135,7 +136,7 @@ Vytvořte pravidla brány firewall mezi podsítí pro správu a sítí zálohov�
 
 V následující tabulce je uveden seznam portů.
 
-| Ikona | Description | Ikona | Description |
+| Ikona | Popis | Ikona | Popis |
 | ------------ | ------------- | ------------ | ------------- |
 | Záložní server  | vCenter  | PROTOKOL HTTPS/TCP  | 443 |
 | Záložní server <br> *Vyžaduje se pro nasazení součástí Veeam Backup & pro replikaci.* | Záložní proxy server  | TCP/UDP  | 135, 137 až 139 a 445 |
@@ -194,7 +195,7 @@ Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [přip
 ### <a name="configure-azure-blob-storage-for-long-term-data-retention"></a>Konfigurace úložiště objektů BLOB v Azure pro dlouhodobé uchovávání dat
 
 1. Vytvořte účet úložiště pro obecné účely (GPv2) standardního typu a kontejner objektů blob, jak je popsáno v části Microsoft video [Začínáme with Azure Storage](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage).
-2. Vytvořte kontejner úložiště Azure, jak je popsáno v tématu [Vytvoření](https://docs.microsoft.com/rest/api/storageservices/create-container) odkazu na kontejner.
+2. Vytvořte kontejner úložiště Azure, jak je popsáno v tématu [Vytvoření](/rest/api/storageservices/create-container) odkazu na kontejner.
 2. Stáhněte si `azcopy` Nástroj příkazového řádku pro Linux od Microsoftu. V prostředí bash v CentOS 7,5 můžete použít následující příkazy.
 
     ```
@@ -205,7 +206,7 @@ Připojte virtuální síť k privátnímu cloudu podle pokynů v tématu [přip
     sudo yum -y install icu
     ```
 
-3. Pomocí `azcopy` příkazu zkopírujte záložní soubory do kontejneru objektů BLOB a z něj.  Podrobné příkazy najdete v tématu [přenos dat pomocí AzCopy v systému Linux](../storage/common/storage-use-azcopy-linux.md) .
+3. Pomocí `azcopy` příkazu zkopírujte záložní soubory do kontejneru objektů BLOB a z něj.  Podrobné příkazy najdete v tématu [přenos dat pomocí AzCopy v systému Linux](../storage/common/storage-use-azcopy-v10.md) .
 
 ### <a name="vcenter-console-of-private-cloud-install-veeam-br"></a>Konzola vCenter pro privátní cloud: Nainstalujte Veeam B&R
 
@@ -290,8 +291,8 @@ Chcete-li zrušit oprávnění, přečtěte si téma oprávnění ke zrušení [
 * [Vytvoření virtuálního počítače se systémem Linux v Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Postup připojení spravovaného datového disku k virtuálnímu počítači s Windows v Azure Portal](../virtual-machines/windows/attach-managed-disk-portal.md)
 * [Začínáme s využitím Azure Storage-video](https://azure.microsoft.com/resources/videos/get-started-with-azure-storage)
-* [Vytvoření kontejneru](https://docs.microsoft.com/rest/api/storageservices/create-container)
-* [Přenos dat pomocí AzCopy v Linuxu](../storage/common/storage-use-azcopy-linux.md)
+* [Vytvoření kontejneru](/rest/api/storageservices/create-container)
+* [Přenos dat pomocí AzCopy v Linuxu](../storage/common/storage-use-azcopy-v10.md)
 
 ### <a name="vmware-references"></a>Reference VMware
 

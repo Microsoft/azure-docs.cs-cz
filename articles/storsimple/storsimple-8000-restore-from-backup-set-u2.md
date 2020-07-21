@@ -4,29 +4,24 @@ description: Vysvětluje způsob použití katalogu záloh služby StorSimple De
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 05/23/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 0f0be9609dfd00e8e5dc9919b20fc42ec91ce9eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514558"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527825"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovení svazku StorSimple ze zálohovacího skladu
 
 ## <a name="overview"></a>Přehled
 
 V tomto kurzu se popisuje operace obnovení prováděná na zařízení řady StorSimple 8000 pomocí existujícího zálohovacího skladu. K obnovení svazku z místního nebo cloudového zálohování použijte okno **katalog záloh** . V okně **katalog záloh** se zobrazí všechny zálohovací sklady, které jsou vytvořeny při ručním nebo automatizovaném zálohování. Operace obnovení ze zálohovacího skladu přinese svazek do online režimu okamžitě při stahování dat na pozadí.
-
-Alternativním způsobem, jak spustit obnovení, je přejít na **zařízení > [vaše zařízení] > svazcích**. V okně **svazky** vyberte svazek, klikněte pravým tlačítkem na vyvolat kontextovou nabídku a pak vyberte **obnovit**.
 
 ## <a name="before-you-restore"></a>Před obnovením
 

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 11207dceb29c779c081c140ee8cd362d8a217acf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: dd042b28035b5e9a4b18041d6c1a81f77cfd4ea7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856754"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527400"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Přehled automatického škálování pomocí škálovacích sad virtuálních počítačů Azure
 Sada škálování virtuálních počítačů Azure může automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, které spouštějí vaši aplikaci. Toto automatizované a elastické chování omezuje režijní náklady na správu, které sledují a optimalizují výkon vaší aplikace. Vytvoříte pravidla, která definují přijatelný výkon pro pozitivní prostředí zákazníka. Když jsou splněné tyto prahové hodnoty, pravidla automatického škálování přijímají akci pro úpravu kapacity sady škálování. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity sady škálování v pevně dané době. Tento článek poskytuje přehled o dostupných metrikách výkonu a o tom, jaké akce lze provádět pomocí automatického škálování.
@@ -73,11 +73,11 @@ Když vytváříte pravidla automatického škálování pro monitorování dan�
 | Typ agregace |
 |------------------|
 | Průměr          |
-| Minimální          |
+| Minimum          |
 | Maximum          |
 | Celkem            |
 | Poslední             |
-| Počet            |
+| Count            |
 
 Pravidla automatického škálování se pak aktivují, když se metriky porovnají s definovanou prahovou hodnotou pomocí jednoho z následujících operátorů:
 
@@ -137,6 +137,6 @@ Můžete vytvořit pravidla automatického škálování, která používají me
 
 Tento přehled podrobně popisuje, jak používat pravidla automatického škálování pro horizontální škálování a zvýšení nebo snížení *počtu* instancí virtuálních počítačů ve vaší sadě škálování. *Velikost*instance virtuálního počítače můžete zvýšit nebo snížit také vertikálně. Další informace najdete v tématu [vertikální automatické škálování pomocí služby Virtual Machine Scale Sets](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
-Informace o tom, jak spravovat instance virtuálních počítačů, najdete v tématu [Správa služby Virtual Machine Scale Sets pomocí Azure PowerShell](virtual-machine-scale-sets-windows-manage.md).
+Informace o tom, jak spravovat instance virtuálních počítačů, najdete v tématu [Správa služby Virtual Machine Scale Sets pomocí Azure PowerShell](./virtual-machine-scale-sets-manage-powershell.md).
 
-Informace o tom, jak generovat výstrahy při aktivaci pravidel automatického škálování, najdete [v tématu použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../azure-monitor/platform/autoscale-webhook-email.md). [Protokoly auditu můžete použít také k posílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
+Informace o tom, jak generovat výstrahy při aktivaci pravidel automatického škálování, najdete [v tématu použití akcí automatického škálování k odesílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../azure-monitor/platform/autoscale-webhook-email.md). [Protokoly auditu můžete použít také k posílání oznámení o výstrahách e-mailu a Webhooku v Azure monitor](../azure-monitor/platform/alerts-log-webhook.md).

@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2e5a4d057e1074c6cce0f374846bc9e0a64950
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869330"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525088"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Přístup k řešení VMware pomocí portálu CloudSimple z Azure Portal
 
@@ -20,9 +21,9 @@ Pro přístup k portálu CloudSimple je podporováno jednotné přihlašování.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Uživatelé s rolemi Builtin **Owner** a **Přispěvatel** mají přístup k portálu CloudSimple.  Role musí být nakonfigurované ve skupině prostředků, ve které je nasazená služba CloudSimple.  Role je také možné nakonfigurovat v objektu služby CloudSimple.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) . Přístup k portálu CloudSimple mají jenom uživatelé s předdefinovaným **vlastníkem** a rolemi **přispěvatele** .  Role musí být nakonfigurované v předplatném.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access) .
+Uživatelé s rolemi Builtin **Owner** a **Přispěvatel** mají přístup k portálu CloudSimple.  Role musí být nakonfigurované ve skupině prostředků, ve které je nasazená služba CloudSimple.  Role je také možné nakonfigurovat v objektu služby CloudSimple.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](../role-based-access-control/check-access.md) . Přístup k portálu CloudSimple mají jenom uživatelé s předdefinovaným **vlastníkem** a rolemi **přispěvatele** .  Role musí být nakonfigurované v předplatném.  Další informace o kontrole role najdete v článku [zobrazení přiřazení rolí](../role-based-access-control/check-access.md) .
 
-Pokud používáte vlastní role, role by měla mít následující operace ```Actions``` .  Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Pokud je některá z operací součástí ```NotActions``` , uživatel nemá přístup k portálu CloudSimple.
+Pokud používáte vlastní role, role by měla mít následující operace ```Actions``` .  Další informace o vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](../role-based-access-control/custom-roles.md).  Pokud je některá z operací součástí ```NotActions``` , uživatel nemá přístup k portálu CloudSimple.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -70,5 +71,5 @@ Pokud vaše oprávnění nepovolují přístup k portálu CloudSimple, obraťte 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o tom, jak [vytvořit privátní cloud](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/)
+* Informace o tom, jak [vytvořit privátní cloud](./create-private-cloud.md)
 * Informace o tom, jak [nakonfigurovat prostředí privátního cloudu](quickstart-create-private-cloud.md)

@@ -12,11 +12,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb9d46adf63f9cd0f4b19e4eace0a2f4a7129226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 110e8d3be88fb2e1bd958f40d5defa23f8c679f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022603"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525394"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP
 
@@ -25,7 +26,7 @@ Obecné informace o spuštění SAP Business Suite na IBM Db2 pro LUW najdete v 
 
 Další informace a aktualizace SAP v Db2 pro LUW v Azure najdete v článku SAP Note [2233094]. 
 
-V této části najdete různé články o úlohách SAP v Azure, které jsou vydány.  Doporučuje se začít pracovat s [úlohami SAP v Azure – Začínáme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) a pak vybrat oblast zájmů.
+V této části najdete různé články o úlohách SAP v Azure, které jsou vydány.  Doporučuje se začít pracovat s [úlohami SAP v Azure – Začínáme](./get-started.md) a pak vybrat oblast zájmů.
 
 Následující poznámky SAP se týkají SAP v Azure, které se týkají oblasti popsané v tomto dokumentu:
 
@@ -43,7 +44,7 @@ Následující poznámky SAP se týkají SAP v Azure, které se týkají oblasti
 | [2002167] |Red Hat Enterprise Linux 7. x: instalace a upgrade |
 | [1597355] |Doporučení pro zaměněné místo pro Linux |
 
-Jako žádost o přijetí změn v tomto dokumentu byste si měli přečíst informace v dokumentu [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a také další příručky v [dokumentaci ke službě SAP v dokumentaci k Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+Jako žádost o přijetí změn v tomto dokumentu byste si měli přečíst informace v dokumentu [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a také další příručky v [dokumentaci ke službě SAP v dokumentaci k Azure](./get-started.md). 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>Podpora IBM Db2 pro Linux, UNIX a Windows verze
@@ -72,7 +73,7 @@ Alternativně můžete použít fondy úložiště Windows (k dispozici jenom ve
 
 Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je nutné zadat velikost sektoru fyzického disku 512 KB. Při používání fondů úložiště Windows je potřeba vytvořit fondy úložiště ručně prostřednictvím rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault` . Další informace naleznete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
-U virtuálních počítačů Azure řady M-Series se při použití Azure Akcelerátor zápisu můžou latence zápisu do protokolů transakcí snížit podle faktorů v porovnání s výkonem Azure Premium Storage. Proto byste měli nasadit Azure Akcelerátor zápisu pro virtuální pevné disky, které tvoří svazek pro protokoly transakcí Db2. Podrobnosti lze přečíst v dokumentu [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
+U virtuálních počítačů Azure řady M-Series se při použití Azure Akcelerátor zápisu můžou latence zápisu do protokolů transakcí snížit podle faktorů v porovnání s výkonem Azure Premium Storage. Proto byste měli nasadit Azure Akcelerátor zápisu pro virtuální pevné disky, které tvoří svazek pro protokoly transakcí Db2. Podrobnosti lze přečíst v dokumentu [akcelerátor zápisu](../../windows/how-to-enable-write-accelerator.md).
 
 ### <a name="backuprestore"></a>Zálohování a obnovení
 Funkce zálohování a obnovení pro IBM Db2 pro LUW se podporuje stejným způsobem jako u standardních operačních systémů Windows Server a Hyper-V.
@@ -113,7 +114,7 @@ Pro disky obsahující cesty úložiště Db2 pro adresáře sapdata a saptmp je
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Další
 Všechny ostatní obecné oblasti, jako jsou skupiny dostupnosti Azure nebo monitorování SAP, jsou popsané v dokumentu [týkajícím se nasazení azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) pro nasazení virtuálních počítačů s využitím i databáze IBM.
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598

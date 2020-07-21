@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: becbf7f89266fb0f56aaa053eb7cba9291da6896
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527859"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>Použijte službu StorSimple Device Manager ke změně hesla StorSimple.
 
@@ -36,25 +36,25 @@ Heslo, které se poprvé nastavilo prostřednictvím rozhraní Windows PowerShel
 
 2. V tabulkovém výpisu zařízení vyberte a klikněte na zařízení, jehož heslo máte v úmyslu změnit.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+    ![Snímek obrazovky zobrazující službu StorSimple Device Manager. V části Správa vyberte zařízení. V seznamu zařízení je vybráno jedno zařízení.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. V okně **Nastavení** přejdete na **nastavení zařízení > zabezpečení**.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+    ![Snímek obrazovky zobrazující okno nastavení služby Device Manager V části nastavení zařízení je vybrána možnost zabezpečení.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. V okně **nastavení zabezpečení** klikněte na **heslo** a změňte heslo správce zařízení.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd3.png)
+    ![Snímek obrazovky zobrazující okno nastavení zabezpečení Tlačítko heslo je zvýrazněné.](./media/storsimple-8000-change-passwords/changepwd3.png)
 
 5. V okně **heslo** zadejte heslo správce, které obsahuje 8 až 15 znaků. Heslo musí obsahovat 3 nebo více velkých a malých písmen, číslic a speciálních znaků.
 
 6. Potvrďte heslo.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd4.png)
+    ![Snímek obrazovky zobrazující okno s heslem V části heslo správce zařízení se vyplní pole nové heslo a potvrzení hesla.](./media/storsimple-8000-change-passwords/changepwd4.png)
 
 7. Klikněte na **Uložit** a po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+    ![Snímek obrazovky zobrazující okno s heslem Tlačítko Uložit je zvýrazněno.](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 Heslo správce zařízení by se teď mělo aktualizovat. Toto upravené heslo můžete použít pro přístup k rozhraní Windows PowerShell.
 
@@ -70,25 +70,25 @@ Můžete nastavit nebo změnit heslo pro Snapshot Manager StorSimple prostředni
 
 2. V tabulkovém výpisu zařízení vyberte a klikněte na zařízení, jehož StorSimple Snapshot Manager heslo máte v úmyslu nastavit nebo změnit.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+     ![Snímek obrazovky zobrazující službu StorSimple Device Manager. V části Správa vyberte zařízení. V seznamu zařízení je vybráno jedno zařízení.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. V okně **Nastavení** přejdete na **nastavení zařízení > zabezpečení**.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+     ![Snímek obrazovky zobrazující okno nastavení služby Device Manager V části nastavení zařízení je vybrána možnost zabezpečení.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. V okně **nastavení zabezpečení** klikněte na **heslo** , abyste nastavili nebo změnili StorSimple Snapshot Manager heslo.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd3.png) 
+     ![Snímek obrazovky zobrazující okno nastavení zabezpečení Tlačítko heslo je zvýrazněné.](./media/storsimple-8000-change-passwords/changepwd3.png) 
 
 5. V okně **heslo** zadejte heslo, které je 14 nebo 15 znaků. Ujistěte se, že heslo obsahuje kombinaci 3 nebo více velkých písmen, malých písmen, číslic a speciálních znaků.
 
 6. Potvrďte heslo.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd5.png)
+     ![Snímek obrazovky zobrazující okno s heslem V části Snapshot Manager heslo jsou vyplněna pole nové heslo a potvrzení hesla.](./media/storsimple-8000-change-passwords/changepwd5.png)
 
 7. Klikněte na **Uložit** a po zobrazení výzvy k potvrzení klikněte na **Ano**.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+     ![Snímek obrazovky zobrazující okno s heslem Tlačítko Uložit je zvýrazněno.](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 Heslo Snapshot Manager StorSimple by teď mělo být aktualizované.
 

@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 84da8993bd1b0a61ef885d03f7c2bc80b92d47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510815"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528379"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Povolit obnovitelné odstranění u sdílených složek Azure
 
@@ -23,7 +23,7 @@ V následujících částech se dozvíte, jak povolit a použít obnovitelné od
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Přejděte do svého účtu úložiště a v části **Souborová služba**vyberte možnost **obnovitelné odstranění** .
 1. Pro **částečný DELETE pro sdílení souborů**vyberte **povoleno** .
 1. Vyberte možnost **Doba uchování sdílené složky ve dnech** a zadejte číslo, které si zvolíte.
@@ -33,7 +33,7 @@ V následujících částech se dozvíte, jak povolit a použít obnovitelné od
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Chcete-li povolit obnovitelné odstranění, je nutné aktualizovat vlastnosti služby klienta souboru. Následující příklad povoluje obnovitelné odstranění pro všechny sdílené složky v účtu úložiště:
+Rutiny obnovitelného odstranění jsou k dispozici ve verzi 2.1.1-Preview modulu AZ. Storage. Chcete-li povolit obnovitelné odstranění, je nutné aktualizovat vlastnosti služby klienta souboru. Následující příklad povoluje obnovitelné odstranění pro všechny sdílené složky v účtu úložiště:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"
@@ -70,7 +70,7 @@ Postup obnovení dočasné odstraněné složky pro sdílení souborů:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Chcete-li obnovit tichou odstraněnou sdílenou složku, použijte následující příkaz:
+Rutiny obnovitelného odstranění jsou k dispozici ve verzi 2.1.1-Preview modulu AZ. Storage. Chcete-li obnovit tichou odstraněnou sdílenou složku, použijte následující příkaz:
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -91,7 +91,7 @@ Pokud chcete ukončit použití obnovitelného odstranění nebo trvale odstrani
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pomocí následujícího příkazu můžete v účtu úložiště zakázat obnovitelné odstranění:
+Rutiny obnovitelného odstranění jsou k dispozici ve verzi 2.1.1-Preview modulu AZ. Storage. Pomocí následujícího příkazu můžete v účtu úložiště zakázat obnovitelné odstranění:
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false

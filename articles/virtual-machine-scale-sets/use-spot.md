@@ -9,11 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70d7eb000ed2d50bc22bb005621ee7515e5a2a61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310559"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527451"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Virtuální počítače Azure na místě pro Virtual Machine Scale Sets 
 
@@ -29,7 +30,7 @@ Ceny pro instance přímých instancí jsou proměnné na základě oblastí a S
 
 S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), která používá až 5 desetinných míst. Hodnota by měla být například `0.98765` maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu, instance se nevyřadí na `-1` základě ceny. Cena za instanci bude aktuální cena za cenu nebo cena standardní instance, která je stále menší, pokud je k dispozici kapacita a kvóta.
 
-## <a name="eviction-policy"></a>Zásada vyřazení
+## <a name="eviction-policy"></a>Zásady vyřazení
 
 Při vytváření sad s přímým škálováním můžete nastavit zásadu vyřazení, aby se nastavilo zrušení *přidělení* (výchozí) nebo *odstranění*. 
 
@@ -46,7 +47,7 @@ Pokud chcete nasadit virtuální počítače na místě v sadě škálování, m
 - [Azure Portal](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
-- [Šablony Azure Resource Manageru](#resource-manager-templates)
+- [Šablony Azure Resource Manager](#resource-manager-templates)
 
 ## <a name="portal"></a>Portál
 
@@ -114,12 +115,12 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 **Otázka:** Jak se Správa kvót spravuje pro místo?
 
-**A:** Instance bodů a standardní instance budou mít samostatné fondy kvót. Kvóta na místě se bude sdílet mezi virtuálními počítači a instancemi sady škálování. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+**A:** Instance bodů a standardní instance budou mít samostatné fondy kvót. Kvóta na místě se bude sdílet mezi virtuálními počítači a instancemi sady škálování. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
 **Otázka:** Můžu požádat o další kvótu na místě?
 
-**A:** Ano, žádost budete moci odeslat, abyste zvýšili kvótu pro virtuální počítače pomocí [procesu žádosti o standardní kvótu](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
+**A:** Ano, žádost budete moci odeslat, abyste zvýšili kvótu pro virtuální počítače pomocí [procesu žádosti o standardní kvótu](../azure-portal/supportability/per-vm-quota-requests.md).
 
 
 **Otázka:** Můžu převést existující sady škálování na škálované sady škálování?
@@ -155,17 +156,17 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte `evictionPolicy`
 
 | Kanály Azure               | Dostupnost virtuálních počítačů Azure       |
 |------------------------------|-----------------------------------|
-| Smlouva Enterprise         | Yes                               |
-| Pay As You Go                | Yes                               |
-| Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Smlouva Enterprise         | Ano                               |
+| Pay As You Go                | Ano                               |
+| Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](/partner-center/azure-plan-get-started) |
 | Výhody                     | Není k dispozici                     |
-| Financovan                    | Yes                               |
+| Financovan                    | Ano                               |
 | Bezplatná zkušební verze                   | Není k dispozici                     |
 
 
 **Otázka:** Kde můžu publikovat otázky?
 
-**A:** Svůj dotaz můžete odeslat a označit `azure-spot` na adrese [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html). 
+**A:** Svůj dotaz můžete odeslat a označit `azure-spot` na adrese [Q&A](/answers/topics/azure-spot.html). 
 
 ## <a name="next-steps"></a>Další kroky
 

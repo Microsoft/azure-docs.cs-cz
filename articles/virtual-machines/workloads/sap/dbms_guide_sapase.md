@@ -15,15 +15,16 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273201"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525258"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP
 
-V tomto dokumentu popisuje několik různých oblastí, které je potřeba vzít v úvahu při nasazování pomocného mechanismu SAP v Azure IaaS. Jako předběžnou podmínkou tohoto dokumentu byste měli mít přehled o dokumentech [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a další příručky v [dokumentaci ke službě SAP v dokumentaci k Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). Tento dokument popisuje službu SAP pomocného programu v operačních systémech Linux a Windows. Minimální podporovaná verze v Azure je SAP pomocného mechanismu 16.0.02 (verze 16 support Pack 2). Doporučuje se nasadit nejnovější verzi SAP a nejnovější úroveň oprav.  Pro SAP je doporučena minimální verze SAP pomocného 16.0.03.07 (verze 16 support Pack 3, úroveň opravy 7).  Nejnovější verzi SAP najdete v části cílový Průvodce příznakem pro [vydání 16,0 a informace o seznamu CR](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
+V tomto dokumentu popisuje několik různých oblastí, které je potřeba vzít v úvahu při nasazování pomocného mechanismu SAP v Azure IaaS. Jako předběžnou podmínkou tohoto dokumentu byste měli mít přehled o dokumentech [pro nasazení Azure Virtual Machines DBMS pro úlohy SAP](dbms_guide_general.md) a další příručky v [dokumentaci ke službě SAP v dokumentaci k Azure](./get-started.md). Tento dokument popisuje službu SAP pomocného programu v operačních systémech Linux a Windows. Minimální podporovaná verze v Azure je SAP pomocného mechanismu 16.0.02 (verze 16 support Pack 2). Doporučuje se nasadit nejnovější verzi SAP a nejnovější úroveň oprav.  Pro SAP je doporučena minimální verze SAP pomocného 16.0.03.07 (verze 16 support Pack 3, úroveň opravy 7).  Nejnovější verzi SAP najdete v části cílový Průvodce příznakem pro [vydání 16,0 a informace o seznamu CR](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information).
 
 K dispozici jsou další informace o podpoře vydaných verzí s aplikacemi SAP nebo umístěním instalačních médií, kromě v matici dostupnosti produktu SAP v těchto umístěních:
 
@@ -58,7 +59,7 @@ Velikost stránky je obvykle 2048 KB. Podrobnosti najdete v článku [velké str
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>Doporučení k VIRTUÁLNÍm počítačům a diskovým strukturám pro nasazení SAP pomocného mechanismu
 
-Pro všechny typy virtuálních počítačů uvedené v [poznámce SAP Support](https://launchpad.support.sap.com/#/notes/1928533) se podporuje SAP Poznámkový pro aplikace SAP #1928533 typické typy virtuálních počítačů používané pro databázové servery SAP pomocného mechanismu podpory střední velikosti zahrnují Esv3.  Velké databáze s více terabajty můžou využívat typy virtuálních počítačů řady M-Series. Zvýšení výkonu zápisu na disk protokolu transakcí SAP pomocného protokolu se může zlepšit povolením Akcelerátor zápisu řady M-Series. Akcelerátor zápisu by se měla pečlivě testovat se SAP pomocným mechanismem SAP v důsledku způsobu, jakým protokol SAP pomocného programu provádí zápis  Přečtěte [si poznámku k podpoře SAP #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) a zvažte spuštění testu výkonnosti.  
+Pro všechny typy virtuálních počítačů uvedené v [poznámce SAP Support](https://launchpad.support.sap.com/#/notes/1928533) se podporuje SAP Poznámkový pro aplikace SAP #1928533 typické typy virtuálních počítačů používané pro databázové servery SAP pomocného mechanismu podpory střední velikosti zahrnují Esv3.  Velké databáze s více terabajty můžou využívat typy virtuálních počítačů řady M-Series. Zvýšení výkonu zápisu na disk protokolu transakcí SAP pomocného protokolu se může zlepšit povolením Akcelerátor zápisu řady M-Series. Akcelerátor zápisu by se měla pečlivě testovat se SAP pomocným mechanismem SAP v důsledku způsobu, jakým protokol SAP pomocného programu provádí zápis  Přečtěte [si poznámku k podpoře SAP #2816580](../../windows/how-to-enable-write-accelerator.md) a zvažte spuštění testu výkonnosti.  
 Akcelerátor zápisu je navržena pouze pro disk protokolu transakcí. Mezipaměť na úrovni disku by měla být nastavená na NONE. Nepoužívejte překvapen, pokud Azure Akcelerátor zápisu nezobrazuje podobná vylepšení jako s jinými systémy DBMS. Na základě způsobu, jakým protokol SAP pomocného mechanismu zápisu do transakčního protokolu, může to být tím, že Azure Akcelerátor zápisu nezrychluje žádnou akceleraci.
 Pro datová zařízení a protokolová zařízení se doporučují samostatné disky.  Systémové databáze sybsecurity a `saptools` nevyžadují vyhrazené disky a je možné je umístit na disky obsahující data databáze SAP a protokolová zařízení. 
 
@@ -70,7 +71,7 @@ SAP pomocného mechanismu zapisuje data postupně do zařízení diskového úlo
 Doporučuje se nakonfigurovat automatické rozšíření databáze, jak je popsáno v článku [Konfigurace automatického rozšíření prostoru v databázi v SAP adaptivního serveru Enterprise a v](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) [poznámkách k podpoře SAP #1815695](https://launchpad.support.sap.com/#/notes/1815695). 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Ukázkový pomocného mechanismu pro SAP na virtuálním počítači Azure, konfiguraci disků a systémů souborů 
-Níže uvedené šablony znázorňují ukázkové konfigurace pro Linux i Windows. Před potvrzením konfigurace virtuálního počítače a disku zajistěte, aby byly kvóty šířky pásma sítě a úložiště pro jednotlivé virtuální počítače dostačující pro splnění podnikového požadavku. Pamatujte také, že různé typy virtuálních počítačů Azure mají různý maximální počet disků, které se dají připojit k virtuálnímu počítači. Například virtuální počítač E4s_v3 má omezení propustnosti vstupně-výstupních operací úložiště 48 MB/s. Pokud propustnost úložiště vyžadovaná aktivitou zálohování databáze vyžaduje více než 48 MB/s, větší typ virtuálního počítače s větší propustností šířky pásma úložiště je nenevyhnutelný. Při konfiguraci služby Azure Storage je také nutné mít na paměti, že se v [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance) mění propustnost a IOPS za GB kapacity. Další informace najdete v tomto tématu v článku [Jaké typy disků jsou k dispozici v Azure?](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types). Kvóty pro konkrétní typy virtuálních počítačů Azure jsou popsány v článku [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/sizes-memory) a články s nimi propojené. 
+Níže uvedené šablony znázorňují ukázkové konfigurace pro Linux i Windows. Před potvrzením konfigurace virtuálního počítače a disku zajistěte, aby byly kvóty šířky pásma sítě a úložiště pro jednotlivé virtuální počítače dostačující pro splnění podnikového požadavku. Pamatujte také, že různé typy virtuálních počítačů Azure mají různý maximální počet disků, které se dají připojit k virtuálnímu počítači. Například virtuální počítač E4s_v3 má omezení propustnosti vstupně-výstupních operací úložiště 48 MB/s. Pokud propustnost úložiště vyžadovaná aktivitou zálohování databáze vyžaduje více než 48 MB/s, větší typ virtuálního počítače s větší propustností šířky pásma úložiště je nenevyhnutelný. Při konfiguraci služby Azure Storage je také nutné mít na paměti, že se v [Azure Premium Storage](../../windows/premium-storage-performance.md) mění propustnost a IOPS za GB kapacity. Další informace najdete v tomto tématu v článku [Jaké typy disků jsou k dispozici v Azure?](../../windows/disks-types.md). Kvóty pro konkrétní typy virtuálních počítačů Azure jsou popsány v článku [paměťově optimalizované velikosti virtuálních počítačů](../../sizes-memory.md) a články s nimi propojené. 
 
 > [!NOTE]
 >  Pokud se systém DBMS přesouvá z místního prostředí do Azure, doporučuje se provést monitorování virtuálního počítače a vyhodnotit procesor, paměť, IOPS a propustnost úložiště. Porovnejte hodnoty ve špičce zjištěné s omezeními kvóty virtuálních počítačů popsanými v článcích uvedených výše.
@@ -212,7 +213,7 @@ Správce SAP software Provisioning (SWPM) poskytuje možnost šifrovat databázi
 - Zvažte použití UltraDisk pro x-large systémy 
 - Spuštění `saptune` SAP-POmocného mechanismu v operačním systému Linux 
 - Zabezpečte databázi pomocí šifrování DB – ruční ukládání klíčů v Azure Key Vault 
-- Dokončete [Kontrolní seznam SAP v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) . 
+- Dokončete [Kontrolní seznam SAP v Azure](./sap-deployment-checklist.md) . 
 - Konfigurace zálohování protokolu a úplného zálohování 
 - Test HA/DR, zálohování a obnovení a provádění zátěžového testu & 
 - Potvrďte, že automatické rozšíření databáze funguje 
@@ -309,5 +310,4 @@ Měsíční bulletin se zveřejňuje prostřednictvím [poznámky o podpoře SAP
 
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na článek [o úlohách SAP v Azure: kontrolní seznam pro plánování a nasazení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-
+Podívejte se na článek [o úlohách SAP v Azure: kontrolní seznam pro plánování a nasazení](./sap-deployment-checklist.md)

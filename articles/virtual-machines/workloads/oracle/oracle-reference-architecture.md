@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 9125d8d2177b9bc40bb280f414cdfb2797ccf8fe
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: dd5e3cf8ce9e52768c28598a819a28ad1ec4413c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221608"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525513"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenční architektury pro Oracle Database Enterprise Edition v Azure
 
@@ -37,13 +37,13 @@ Dosažení vysoké dostupnosti v cloudu je důležitou součástí plánování 
 
 Kromě nativních nástrojů a nabídek cloudu poskytuje Oracle řešení pro vysokou dostupnost, jako je [Oracle data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), [Ochrana dat s FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [horizontálního dělení](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)a [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) , která se dají nastavit v Azure. Tento průvodce popisuje referenční architektury pro každé z těchto řešení.
 
-Nakonec při migraci nebo vytváření aplikací pro Cloud je důležité upravit kód aplikace a přidat vzory nativní pro Cloud, jako je [vzor opakování](https://docs.microsoft.com/azure/architecture/patterns/retry) a [vzor přerušení okruhu](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker). Další vzory definované v [Průvodci návrhem cloudových vzorů](https://docs.microsoft.com/azure/architecture/patterns/) můžou přispět k vyšší odolnosti vaší aplikace.
+Nakonec při migraci nebo vytváření aplikací pro Cloud je důležité upravit kód aplikace a přidat vzory nativní pro Cloud, jako je [vzor opakování](/azure/architecture/patterns/retry) a [vzor přerušení okruhu](/azure/architecture/patterns/circuit-breaker). Další vzory definované v [Průvodci návrhem cloudových vzorů](/azure/architecture/patterns/) můžou přispět k vyšší odolnosti vaší aplikace.
 
 ### <a name="oracle-rac-in-the-cloud"></a>Oracle RAC v cloudu
 
 Oracle Real Application cluster (RAC) je řešení od Oracle, které zákazníkům umožňuje dosáhnout vysoké propustnosti tím, že má mnoho instancí přístup k jednomu úložišti databáze (Shared-All Pattern). I když se dá Oracle RAC použít i pro místní vysokou dostupnost, nedá se samotný Oracle RAC použít k zajištění vysoké dostupnosti v cloudu, protože chrání jenom proti selháním na úrovni instance a ne proti selháním na úrovni skříně nebo datového centra. Z tohoto důvodu Oracle doporučuje použít pro vysokou dostupnost databáze Oracle data Guard (bez ohledu na to, jestli jde o jedinou instanci nebo certifikát RAC). Zákazníci obecně vyžadují vysokou smlouvu SLA pro provozování důležitých aplikací. Oracle RAC není v současné době v Azure certifikovaný ani podporovaný. Azure ale nabízí funkce, jako je Azure, nabízí Zóny dostupnosti a plánovaná časová období údržby, která chrání před selháním na úrovni instance. Kromě toho můžou zákazníci využívat technologie, jako je Oracle data Guard, Oracle GoldenGate a Oracle horizontálního dělení pro zajištění vysokého výkonu a odolnosti díky ochraně jejich databází před rackem a i geograficky neznámým selháním.
 
-Při spouštění databází Oracle v různých [zónách dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview) ve spojení s Oracle data Guard nebo GoldenGate můžou zákazníci získat smlouvu SLA o provozu 99,99%. V oblastech Azure, kde se ještě nevyskytují zóny dostupnosti, můžou zákazníci používat [skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) a získat smlouvu SLA pro dobu provozu 99,95%.
+Při spouštění databází Oracle v různých [zónách dostupnosti](../../../availability-zones/az-overview.md) ve spojení s Oracle data Guard nebo GoldenGate můžou zákazníci získat smlouvu SLA o provozu 99,99%. V oblastech Azure, kde se ještě nevyskytují zóny dostupnosti, můžou zákazníci používat [skupiny dostupnosti](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) a získat smlouvu SLA pro dobu provozu 99,95%.
 
 >Poznámka: je možné, že máte cíl provozu, který je mnohem vyšší než smlouva SLA pro dobu provozu poskytovanou společností Microsoft.
 
@@ -51,7 +51,7 @@ Při spouštění databází Oracle v různých [zónách dostupnosti](https://d
 
 Při hostování důležitých podnikových aplikací v cloudu je důležité navrhovat pro vysokou dostupnost a zotavení po havárii.
 
-Pro Oracle Database Enterprise Edition je Oracle data Guard užitečnou funkcí pro zotavení po havárii. Můžete nastavit pohotovostní instanci databáze v [spárované oblasti Azure](/azure/best-practices-availability-paired-regions) a nastavit převzetí služeb při selhání pro ochranu dat pro zotavení po havárii. U nulových ztrát dat doporučujeme kromě aktivní ochrany dat použít i nasazovat instanci Oracle data Guard Far Sync. 
+Pro Oracle Database Enterprise Edition je Oracle data Guard užitečnou funkcí pro zotavení po havárii. Můžete nastavit pohotovostní instanci databáze v [spárované oblasti Azure](../../../best-practices-availability-paired-regions.md) a nastavit převzetí služeb při selhání pro ochranu dat pro zotavení po havárii. U nulových ztrát dat doporučujeme kromě aktivní ochrany dat použít i nasazovat instanci Oracle data Guard Far Sync. 
 
 Zvažte nastavení instance data Guard Far Sync v jiné zóně dostupnosti než v primární databázi Oracle, pokud vaše aplikace povoluje latenci (vyžaduje se důkladné testování). Použijte režim **maximální dostupnosti** k nastavení synchronního přenosu vašich souborů opětovného navýšení na instanci synchronizace. Tyto soubory se pak přenesou asynchronně do pohotovostní databáze. 
 
@@ -79,7 +79,7 @@ Následující diagram je doporučená architektura pro používání ochrany da
 
 ![Oracle Database použití zón dostupnosti s zprostředkovatelem ochrany dat – FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
-V předchozím diagramu klientský systém přistupuje k vlastní aplikaci pomocí back-endu Oracle přes web. Webový front-end je nakonfigurovaný v nástroji pro vyrovnávání zatížení. Webový front-end provede volání příslušného aplikačního serveru za účelem zpracování práce. Aplikační server se dotazuje na primární databázi Oracle. Databáze Oracle byla nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../../virtual-machines/windows/sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/windows/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. Pro výkon a vysokou dostupnost se používá několik disků Premium nebo Ultra (Managed Disks).
+V předchozím diagramu klientský systém přistupuje k vlastní aplikaci pomocí back-endu Oracle přes web. Webový front-end je nakonfigurovaný v nástroji pro vyrovnávání zatížení. Webový front-end provede volání příslušného aplikačního serveru za účelem zpracování práce. Aplikační server se dotazuje na primární databázi Oracle. Databáze Oracle byla nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/windows/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. Pro výkon a vysokou dostupnost se používá několik disků Premium nebo Ultra (Managed Disks).
 
 Databáze Oracle jsou umístěné v několika zónách dostupnosti pro zajištění vysoké dostupnosti. Každá zóna se skládá z jednoho nebo více datových center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, ve všech povolených oblastech se nastaví minimálně tři samostatné zóny. Fyzické oddělení zón dostupnosti v rámci oblasti chrání data před selháními datových center. Kromě toho se dva FSFO pozorovatelé nastavují ve dvou zónách dostupnosti, aby se při výpadku databáze nastavily a přestaly při selhání. 
 
@@ -113,7 +113,7 @@ Následující diagram je architektura, která využívá Oracle data Guard FSFO
 
 GoldenGate umožňuje výměnu a manipulaci s daty na úrovni transakcí mezi několika heterogenními platformami v celém podniku. Přesouvá potvrzené transakce s integritou transakcí a minimální režií na stávající infrastruktuře. Jeho modulární architektura poskytuje flexibilitu pro extrakci a replikaci vybraných záznamů dat, transakčních změn a změny v jazyce DDL (Data Definition Language) v nejrůznějších topologiích.
 
-Oracle GoldenGate umožňuje konfiguraci databáze pro zajištění vysoké dostupnosti díky obousměrné replikaci. To vám umožní nastavit konfiguraci s **více hlavními servery** nebo **aktivní-aktivní**. Následující diagram je doporučovanou architekturou pro Oracle GoldenGate Active-Active Setup v Azure. V následující architektuře byla databáze Oracle nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../../virtual-machines/windows/sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/windows/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. K výkonu a dostupnosti se používá několik disků Premium nebo Ultra (spravované disky).
+Oracle GoldenGate umožňuje konfiguraci databáze pro zajištění vysoké dostupnosti díky obousměrné replikaci. To vám umožní nastavit konfiguraci s **více hlavními servery** nebo **aktivní-aktivní**. Následující diagram je doporučovanou architekturou pro Oracle GoldenGate Active-Active Setup v Azure. V následující architektuře byla databáze Oracle nakonfigurovaná pomocí [virtuálního počítače optimalizovaného pro paměť](../../sizes-memory.md) ve vlákně s [omezeným jádrem vCPU](../../../virtual-machines/windows/constrained-vcpu.md) , který šetří náklady na licencování a maximalizuje výkon. K výkonu a dostupnosti se používá několik disků Premium nebo Ultra (spravované disky).
 
 ![Oracle Database použití zón dostupnosti s zprostředkovatelem ochrany dat – FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -215,7 +215,7 @@ Opravy operačního systému virtuálního počítače můžete automatizovat po
 
 ## <a name="architecture-and-design-considerations"></a>Požadavky na architekturu a návrh
 
-- Zvažte použití [optimalizovaného paměťového optimalizovaného virtuálního počítače](../../../virtual-machines/windows/sizes-memory.md) s [omezenými jádry vCPU](../../../virtual-machines/windows/constrained-vcpu.md) pro váš virtuální počítač Oracle Database, který šetří náklady na licencování a maximalizuje výkon. Pro výkon a dostupnost použijte více disků Premium nebo Ultra (spravované disky).
+- Zvažte použití [optimalizovaného paměťového optimalizovaného virtuálního počítače](../../sizes-memory.md) s [omezenými jádry vCPU](../../../virtual-machines/windows/constrained-vcpu.md) pro váš virtuální počítač Oracle Database, který šetří náklady na licencování a maximalizuje výkon. Pro výkon a dostupnost použijte více disků Premium nebo Ultra (spravované disky).
 - Při použití spravovaných disků se může při restartování změnit název disku nebo zařízení. Doporučuje se místo názvu použít UUID zařízení, abyste zajistili, že vaše připojení budou v rámci restartování trvalá. Další informace najdete [tady](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab).
 - Pomocí zón dostupnosti můžete dosáhnout vysoké dostupnosti v oblasti.
 - Zvažte použití disků Ultra (Pokud je k dispozici) nebo prémiových disků pro vaši databázi Oracle.

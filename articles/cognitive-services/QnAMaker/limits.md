@@ -3,12 +3,12 @@ title: Omezení a hranice – QnA Maker
 description: QnA Maker má meta omezení pro části znalostní báze a služby. Pro účely testování a publikování je důležité zachovat znalostní bázi v rámci těchto omezení.
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855565"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524433"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker limity a hranice znalostní báze
 
@@ -18,7 +18,7 @@ Níže uvedené limity QnA Maker jsou kombinací [omezení cenové úrovně Azur
 
 Maximální počet základů znalostní báze je založený na [omezeních vrstvy Azure kognitivní hledání](../../search/search-limits-quotas-capacity.md).
 
-|**Úroveň Kognitivní hledání Azure** | **Free** | **Základní** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Úroveň Kognitivní hledání Azure** | Zadejte možnost pro **bezplatnou** SKU. | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximální povolený počet publikovaných základů znalostí|2|14|49|199|199|2 999|
 
@@ -61,9 +61,9 @@ Metadata jsou uvedena jako textový klíč: dvojice hodnot, jako je například 
 
 Maximální počet polí metadat na bázi znalostní báze je založený na **[omezeních vaší vrstvy Azure kognitivní hledání](../../search/search-limits-quotas-capacity.md)**.
 
-|**Úroveň Kognitivní hledání Azure** | **Free** | **Základní** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Úroveň Kognitivní hledání Azure** | Zadejte možnost pro **bezplatnou** SKU. | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|Maximální počet polí metadat na službu QnA Maker (napříč všemi aktualizací KB)|1 000|100 *|1 000|1 000|1 000|1 000|
+|Maximální počet polí metadat na službu QnA Maker (napříč všemi aktualizací KB)|1 000|100 *|1 000|1 000|1 000|1 000|
 
 ### <a name="by-name-and-value"></a>Podle názvu a hodnoty
 
@@ -79,7 +79,8 @@ Délka a přijatelné znaky pro název a hodnotu metadat jsou uvedeny v následu
 Celková omezení obsahu ve znalostní bázi Knowledge Base:
 * Délka textu odpovědi: 25 000
 * Délka textu otázky: 1 000
-* Délka textu klíče a hodnoty metadat: 100
+* Délka textu klíče metadat: 100
+* Délka textu hodnoty metadat: 500
 * Podporované znaky pro název metadat: abecedy, číslice a`_`
 * Podporované znaky pro hodnotu metadat: vše kromě `:` a`|`
 * Délka názvu souboru: 200

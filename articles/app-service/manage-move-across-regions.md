@@ -4,14 +4,14 @@ description: Přečtěte si, jak přesunout App Service prostředky z jedné obl
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87a2da31802a8b6858e875c23ef1dbd2d6d006bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945473"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524850"
 ---
-# <a name="move-an-app-service-app-to-another-region"></a>Přesunutí aplikace App Service do jiné oblasti
+# <a name="move-an-app-service-resource-to-another-region"></a>Přesunutí prostředku App Service do jiné oblasti
 
 Tento článek popisuje, jak přesunout prostředky App Service do jiné oblasti Azure. Prostředky můžete přesunout do jiné oblasti z řady důvodů. Například pro využití nové oblasti Azure, k nasazení funkcí nebo služeb dostupných pouze v konkrétních oblastech, pro splnění požadavků na požadavky na interní zásady a zásady správného řízení nebo v reakci na požadavky na plánování kapacity.
 
@@ -19,7 +19,7 @@ Prostředky App Service jsou specifické pro oblast a nelze je přesouvat mezi o
 
 Pro snazší kopírování vaší aplikace můžete [naklonovat jednotlivé App Service aplikace](app-service-web-app-cloning.md) do plánu App Service v jiné oblasti, ale mají [omezení](app-service-web-app-cloning.md#current-restrictions), zejména v případě, že nepodporují aplikace pro Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Ujistěte se, že je aplikace App Service v oblasti Azure, ze které chcete přejít.
 - Ujistěte se, že cílová oblast podporuje App Service a všechny související služby, jejichž prostředky chcete přesunout.

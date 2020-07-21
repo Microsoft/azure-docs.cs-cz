@@ -13,11 +13,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6532558107463311c4225b9855bc4cd3f19eed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85acd8e26ca10730638332047a37d281358d205f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75965612"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526549"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Řešení potíží s nasazením při restartování nebo změně velikosti stávajícího virtuálního počítače s Windows v Azure
 Při pokusu o spuštění zastaveného virtuálního počítače Azure nebo změně velikosti stávajícího virtuálního počítače Azure se běžně narazí na chybu přidělení. K této chybě dojde, když v clusteru nebo oblasti nejsou k dispozici prostředky nebo pokud není podporována požadovaná velikost virtuálního počítače.
@@ -29,7 +30,7 @@ Pokud chcete začít řešit potíže, Shromážděte protokoly aktivit a Identi
 
 [Zobrazení operací nasazení](../../azure-resource-manager/templates/deployment-history.md)
 
-[Zobrazení protokolů aktivit pro správu prostředků Azure](../../resource-group-audit.md)
+[Zobrazení protokolů aktivit pro správu prostředků Azure](../../azure-resource-manager/management/view-activity-logs.md)
 
 ## <a name="issue-error-when-starting-a-stopped-vm"></a>Problém: Chyba při spuštění zastaveného virtuálního počítače
 Pokusíte se spustit zastavený virtuální počítač, ale získáte selhání přidělení.
@@ -61,5 +62,4 @@ Pokusíte se změnit velikost existujícího virtuálního počítače, ale zís
   3. Vyberte virtuální počítač se změněnou velikostí a klikněte na **Spustit**a potom spusťte všechny zastavené virtuální počítače.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud narazíte na problémy při vytváření nového virtuálního počítače s Windows v Azure, přečtěte si téma řešení potíží s [nasazením při vytváření nového virtuálního počítače s Windows v Azure](../windows/troubleshoot-deployment-new-vm.md).
-
+Pokud narazíte na problémy při vytváření nového virtuálního počítače s Windows v Azure, přečtěte si téma řešení potíží s [nasazením při vytváření nového virtuálního počítače s Windows v Azure](./troubleshoot-deployment-new-vm-windows.md).
