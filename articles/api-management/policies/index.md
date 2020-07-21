@@ -13,20 +13,19 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b5b8c82aa420b62e3b6e68ee53352eb9f77988f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242963"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506685"
 ---
 # <a name="api-management-policy-samples"></a>Ukázky zásad API Managementu
 
 [Zásady](../api-management-howto-policies.md) jsou vynikající funkcí systému, která vydavatelům umožňuje měnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Následující tabulka obsahuje odkazy na ukázky se stručným popisem každé ukázky.
 
-|                                                                                                                                                                      |                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Příchozí zásady**                                                                                                                                                 |                                                                                                                                                                                                                             |
+| Příchozí zásady | Popis |
+| ---------------- | ----------- |
 | [Přidání hlavičky Forwarded umožňující back-endovému rozhraní API vytvářet správné adresy URL](./set-header-to-enable-backend-to-construct-urls.md) | Ukazuje, jak do příchozí žádosti přidat hlavičku Forwarded, která back-endovému rozhraní API umožní vytvářet správné adresy URL.                                                                                                        |
 | [Přidání hlavičky obsahující ID korelace](./add-correlation-id.md)                                                             | Ukazuje, jak do příchozího požadavku přidat hlavičku obsahující ID korelace.                                                                                                                                        |
 | [Přidávání funkcí do back-endové služby a uložení odpovědi do mezipaměti](./cache-response.md)                                             | Ukazuje, jak do back-endové služby přidat funkce. Příkladem je přijmutí názvu místa namísto zeměpisné šířky a délky v rozhraní API předpovědi počasí.                                                                    |
@@ -40,7 +39,7 @@ ms.locfileid: "86242963"
 | [Směrování požadavku na základě velikosti jeho obsahu](./route-requests-based-on-size.md)                                            | Ukazuje, jak směrovat požadavky na základě velikosti jejich obsahu.                                                                                                                                                       |
 | [Odeslání informací o kontextu požadavku back-endové službě](./send-request-context-info-to-backend-service.md)                    | Ukazuje, jak odeslat určité kontextové informace back-endové službě kvůli protokolování nebo zpracování.                                                                                                                                |
 | [Nastavení doby uložení odpovědi v mezipaměti](./set-cache-duration.md)                                                                          | Ukazuje, jak nastavit dobu uložení odpovědi v mezipaměti pomocí hodnoty maxAge v hlavičce Cache-Control zaslané back-endem.                                                                                                             |
-| **Odchozí zásady**                                                                                                                                                |                                                                                                                                                                                                                             |
+| **Odchozí zásady** | **Popis** |
 | [Filtrování obsahu odpovědi](./filter-response-content.md)                                                                         | Ukazuje, jak filtrovat datové prvky z datové části odpovědi na základě produktu přidruženého k požadavku.                                                                                                        |
-| **Zásady při chybě**                                                                                                                                                |                                                                                                                                                                                                                             |
+| **Zásady při chybě** | **Popis** |
 | [Protokolování chyb do Stackify](./log-errors-to-stackify.md)                                                                           | Ukazuje, jak přidat zásadu protokolování chyb k zasílání chyb do Stackify za účelem protokolování.                                                                                                                                            |

@@ -323,11 +323,11 @@
               href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
-            - name: Virtuální počítače Azure na webu Azure Portal
+            - name: Virtuální počítače Azure
               href: backup-azure-vms-automation.md
-            - name: DPM na webu Azure Portal
+            - name: Data Protection Manager (DPM)
               href: backup-dpm-automation.md
-            - name: Windows Server na webu Azure Portal
+            - name: Windows Server s využitím agenta MARS
               href: backup-client-automation.md
             - name: SQL v zálohách virtuálních počítačů Azure
               href: backup-azure-sql-automation.md
@@ -422,7 +422,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Stránka s dotazy na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
+      href: /answers/topics/azure-backup.html
     - name: Cenová kalkulačka
       href: azure-backup-pricing.md
     - name: Aktualizace služeb

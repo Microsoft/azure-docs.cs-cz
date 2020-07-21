@@ -179,6 +179,8 @@
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
           href: azure-netapp-files.md
+        - name: Použití disků Azure úrovně Ultra (Preview)
+          href: use-ultra-disks.md
     - name: Konfigurace sítí
       items:
         - name: Vytvoření nebo použití existující virtuální sítě
@@ -191,8 +193,6 @@
           href: internal-lb.md
         - name: Použití standardního nástroje pro vyrovnávání zatížení
           href: load-balancer-standard.md
-        - name: Použití trasy definované uživatelem pro výchozí přenos dat
-          href: egress-outboundtype.md
         - name: Použití statické IP adresy
           href: static-ip.md
         - name: Příchozí přenos dat
@@ -214,8 +214,14 @@
                   href: ingress-tls.md
                 - name: Použití statické veřejné IP adresy
                   href: ingress-static-ip.md
-        - name: Výchozí přenos
-          href: egress.md
+        - name: Výchozí přenos dat
+          items:
+            - name: Omezení a řízení výchozí přenosu clusteru
+              href: limit-egress-traffic.md
+            - name: Použití trasy definované uživatelem pro výchozí přenos dat
+              href: egress-outboundtype.md
+            - name: Použití základního nástroje pro vyrovnávání zatížení a statické IP adresy
+              href: egress.md
         - name: Přizpůsobení CoreDNS
           href: coredns-custom.md
     - name: Zabezpečení a ověřování
@@ -238,13 +244,11 @@
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Aktualizace přihlašovacích údajů clusteru
           href: update-credentials.md
-        - name: Omezení a řízení výchozí přenosu clusteru
-          href: limit-egress-traffic.md
         - name: Povolení integrace Azure Active Directory
           items:
-            - name: AAD se správou AKS (Preview)
+            - name: AAD se správou AKS
               href: managed-aad.md
-            - name: Použití Azure CLI
+            - name: Integrace AAD (starší verze)
               href: azure-ad-integration-cli.md
         - name: Použití Azure RBAC pro autorizaci Kubernetes (Preview)
           href: manage-azure-rbac.md
@@ -291,8 +295,6 @@
       items:
         - name: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code (Preview)
           href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
-        - name: Použití místního procesu s Kubernetes s využitím sady Visual Studio (Preview)
-          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: Instalace existujících aplikací s využitím Helmu
           href: kubernetes-helm.md
         - name: Použití OpenFaaS
@@ -383,10 +385,10 @@
       href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: Zásady podpory
       href: support-policies.md
-    - name: Plán
+    - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Poskytnutí zpětné vazby k produktu
-      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: Plány AKS
+      href: 'https://github.com/Azure/AKS/projects/1'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: Videa
