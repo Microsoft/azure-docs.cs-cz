@@ -3,7 +3,7 @@
   items:
     - name: Informace o službách App Service Environment
       href: intro.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření externí služby ASE
@@ -16,11 +16,11 @@
       href: app-service-app-service-environment-web-application-firewall.md
     - name: Konfigurace TLS
       href: app-service-app-service-environment-custom-settings.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       href: ../samples-cli.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
 - name: Koncepty
   items:
@@ -46,6 +46,8 @@
       href: forced-tunnel-support.md
     - name: Integrace brány firewall
       href: firewall-integration.md
+    - name: Zónová redundance
+      href: zone-redundancy.md
 - name: Referenční informace
   items:
     - name: Adresy pro správu
@@ -83,12 +85,12 @@
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: Informace o kvótách
-      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits
     - name: Aktualizace služeb
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Osvědčené postupy
       href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
-    - name: Ukázky
+    - name: ukázky
       href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
     - name: Videa
       items:
