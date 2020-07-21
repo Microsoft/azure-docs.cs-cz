@@ -23,7 +23,7 @@ K dispozici jsou také rychlé starty pro [syntézu řeči](~/articles/cognitive
 
 V tomto článku se naučíte, jak vytvořit aplikaci v macOS v SWIFT pomocí sady Cognitive Services Speech SDK pro přepisovat řeči zaznamenané z mikrofonu na text.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, tady je seznam požadavků:
 

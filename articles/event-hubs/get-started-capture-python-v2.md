@@ -28,7 +28,7 @@ V tomto rychlém startu:
 > * Odešlete data do centra událostí pomocí skriptu Pythonu.
 > * Čtení a zpracování souborů z Event Hubs zachytávání pomocí jiného skriptu Pythonu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Python 2,7 a 3,5 nebo novější s nainstalovaným a aktualizovaným PIP.  
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.  

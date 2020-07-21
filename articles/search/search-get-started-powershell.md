@@ -29,7 +29,7 @@ Tento článek vás provede procesem vytvoření, načtení a dotazování index
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 

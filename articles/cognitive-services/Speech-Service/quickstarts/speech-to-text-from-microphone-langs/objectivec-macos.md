@@ -23,7 +23,7 @@ K dispozici jsou také rychlé starty pro [syntézu řeči](~/articles/cognitive
 
 V tomto článku se dozvíte, jak vytvořit aplikaci macOS v cíli-C pomocí sady Azure Cognitive Services Speech SDK pro přepisovat řeči zaznamenané z mikrofonu na text.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, budete potřebovat:
 

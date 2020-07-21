@@ -16,6 +16,8 @@
     - name: Nasazení instance kontejneru – šablona ARM
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
+    - name: Nasazení instance kontejneru – rozhraní příkazového řádku Dockeru
+      href: container-instances-quickstart-docker-cli.md
 - name: Kurzy
   items:
     - name: Vytvoření a nasazení image kontejneru
@@ -94,8 +96,10 @@
           href: container-instances-gpu.md
         - name: Povolení koncového bodu protokolu pro sajdkáru
           href: container-instances-container-group-ssl.md
-        - name: Zveřejnění statické IP adresy
+        - name: Vystavení statické IP adresy se službou App Gateway
           href: container-instances-application-gateway.md
+        - name: Použití Azure Firewallu pro příchozí a výchozí přenosy dat
+          href: container-instances-egress-ip-address.md
     - name: Připojení datových svazků
       items:
         - name: Sdílená složka Azure

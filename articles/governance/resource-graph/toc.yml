@@ -29,6 +29,9 @@
     - name: Spuštění prvního dotazu – Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: Spuštění prvního dotazu – Ruby
+      displayName: 'gem, azure-mgmt'
+      href: ./first-query-ruby.md
     - name: Spuštění prvního dotazu – REST
       displayName: 'armclient, postman'
       href: ./first-query-rest-api.md

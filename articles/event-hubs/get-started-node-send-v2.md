@@ -16,7 +16,7 @@ V tomto rychlém startu se dozvíte, jak odesílat události do centra událost�
 > [!IMPORTANT]
 > V tomto rychlém startu se používá nejnovější balíček Azure/Event-Centers verze 5. Rychlý Start, který používá starý balíček Azure/Event-hub verze 2, najdete v tématu [posílání a přijímání událostí pomocí Azure/Event – Center verze 2](event-hubs-node-get-started-send.md). 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:

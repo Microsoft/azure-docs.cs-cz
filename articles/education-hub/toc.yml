@@ -1,0 +1,56 @@
+- name: Dokumentace k Centru Education pro Azure
+  href: ./index.yml
+- name: Přehled
+  items:
+    - name: Co je Centrum Education?
+      href: about-education-hub.md
+- name: Rychlé starty
+  items:
+    - name: Přístup k Centru Education
+      href: access-education-hub.md
+    - name: Začínáme s Centrem Education
+      href: get-started-education-hub.md
+    - name: Nastavení kurzu a vytvoření učebny
+      href: set-up-course-classroom.md
+- name: Návody
+  items:
+    - name: Správa akademického grantu
+      href: hub-overview-page.md
+    - name: Vytvoření přiřazení a přidělení kreditu
+      href: create-assignment-allocate-credit.md
+- name: Podpora
+  items:
+    - name: Oddělení služeb
+      href: educator-service-desk.md
+- name: Azure Dev Tools for Teaching
+  items:
+    - name: Přehled
+      items:
+        - name: Co je Azure Dev Tools for Teaching?
+          href: azure-dev-tools-teaching/about-program.md
+        - name: Azure for Students
+          href: azure-dev-tools-teaching/azure-students-program.md
+        - name: Azure for Students Starter
+          href: azure-dev-tools-teaching/azure-students-starter-program.md
+    - name: Rychlé starty
+      items:
+        - name: Registrace nebo obnovení předplatného
+          href: azure-dev-tools-teaching/enroll-renew-subscription.md
+        - name: Nastavení přístupu
+          href: azure-dev-tools-teaching/set-up-access.md
+    - name: Návody
+      items:
+        - name: Postup při správě studentů
+          href: azure-dev-tools-teaching/manage-students.md
+        - name: Postup při stahování softwaru
+          href: azure-dev-tools-teaching/download-software.md
+    - name: Řešení potíží
+      items:
+        - name: Chyby přihlášení
+          href: azure-dev-tools-teaching/troubleshoot-login.md
+- name: Zdroje a prostředky
+  items:
+    - name: Nejčastější dotazy
+      href: azure-dev-tools-teaching/program-faq.md
+    - name: Podpora
+      href: azure-dev-tools-teaching/program-support.md

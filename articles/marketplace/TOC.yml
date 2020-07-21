@@ -135,10 +135,14 @@
               href: ./partner-center-portal/create-consulting-service-offer.md
         - name: Nabídky Dynamics 365
           items:
-            - name: Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
+            - name: Vytvoření nabídky Dynamics 365 for Customer Engagement a Power Apps
               href: ./partner-center-portal/create-new-customer-engagement-offer.md
             - name: Vytvoření nabídky Dynamics 365 for Operations
-              href: ./partner-center-portal/create-new-operations-offer.md
+              items:
+                - name: Vytvoření nabídky Dynamics 365 for Operations
+                  href: ./partner-center-portal/create-new-operations-offer.md
+                - name: Funkční ověření
+                  href: ./dynamics-365-finance-operations-functional-validation.md
             - name: Vytvoření nabídky Dynamics 365 Business Central
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: Nabídky modulů IoT Edge
