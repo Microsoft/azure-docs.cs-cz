@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496175"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Škálovatelnost a cíle výkonnosti služby Azure Files
 
@@ -74,15 +74,15 @@ Pro Azure File Sync je výkon kritický ve dvou fázích:
 
 Abychom vám pomohli naplánovat nasazení pro každou fázi, níže jsou výsledky zjištěné během interního testování v systému s konfigurací.
 
-| Konfigurace systému |  |
+| Konfigurace systému | Podrobnosti |
 |-|-|
 | Procesor | 64 virtuálních jader s 64 MiB L3 cache |
-| Memory (Paměť) | 128 GiB |
+| Paměť | 128 GiB |
 | Disk | Disky SAS s RAID 10 s mezipamětí zálohovanou pro baterie |
 | Síť | 1 GB/s sítě |
 | Úloha | Pro obecné účely souborový server|
 
-| Prvotní zřízení v jednom čase  |  |
+| Prvotní zřízení v jednom čase  | Podrobnosti |
 |-|-|
 | Počet objektů | objekty 25 000 000 |
 | Velikost datové sady| ~ 4,7 TiB |
@@ -92,7 +92,7 @@ Abychom vám pomohli naplánovat nasazení pro každou fázi, níže jsou výsle
 
 * Při vytvoření nového koncového bodu serveru nestáhne agent Azure File Sync žádný obsah souboru. Nejprve synchronizuje celý obor názvů a potom aktivuje odvolání na pozadí pro stažení souborů, a to buď v celém rozsahu, nebo v případě, že je povolená vrstva cloudu, do zásady clouding nastavené na koncovém bodu serveru.
 
-| Průběžná synchronizace  |   |
+| Průběžná synchronizace  | Podrobnosti  |
 |-|--|
 | Počet synchronizovaných objektů| 125 000 objektů (počet změn: 1%) |
 | Velikost datové sady| 50 GiB |
@@ -110,7 +110,7 @@ Jako obecné vodítko pro vaše nasazení byste měli mít na paměti pár věc�
 - Propustnost objektu se přibližně škáluje v poměru k počtu skupin synchronizace na serveru. Rozdělení dat do více skupin synchronizace na serveru má za důsledek lepší propustnost, což je také omezeno serverem a sítí.
 - Propustnost objektu je v opačném poměrně úměrná propustnosti MiB za sekundu. Pro menší soubory dojde k vyšší propustnosti z hlediska počtu zpracovaných objektů za sekundu, ale nižší propustnosti MiB za sekundu. Naopak pro větší soubory získáte méně zpracovaných objektů za sekundu, ale vyšší propustnost MiB za sekundu. Propustnost MiB za sekundu je omezená na cíle škálování souborů Azure.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
-- [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
+- [Plánování nasazení Azure Files](storage-files-planning.md)
 - [Plánování nasazení Synchronizace souborů Azure](storage-sync-files-planning.md)

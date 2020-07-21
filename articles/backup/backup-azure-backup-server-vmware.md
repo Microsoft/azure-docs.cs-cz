@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů VMware pomocí Azure Backup Serv
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálohovat virtuální počítače VMware běžící na serveru VMware vCenter/ESXi.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c9868012698fcdf5a2352c289de85261b6899dc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081056"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497909"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak:
 
 ## <a name="before-you-start"></a>Než začnete
 
-- Ověřte, že používáte verzi vCenter/ESXi, která je podporovaná pro zálohování. Další informace najdete v [tématu](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)věnovaném matici podpory.
+- Ověřte, že používáte verzi vCenter/ESXi, která je podporovaná pro zálohování. Další informace najdete v [tématu](./backup-mabs-protection-matrix.md)věnovaném matici podpory.
 - Ujistěte se, že jste nastavili Azure Backup Server. Pokud jste to ještě neudělali, [udělejte to předtím,](backup-azure-microsoft-azure-backup.md) než začnete. Měli byste používat Azure Backup Server s nejnovějšími aktualizacemi.
 - Ujistěte se, že jsou otevřené následující síťové porty:
   - TCP 443 mezi MABS a vCenter
@@ -41,7 +41,7 @@ Ve výchozím nastavení Azure Backup Server komunikuje se servery VMware pomoc�
 - Je důležité pochopit, jak Azure Backup Server zpracovává zálohy.
   - V prvním kroku Azure Backup Server zálohují data na místní diskové úložiště. Azure Backup Server používá fond úložiště, sadu disků a svazků, na kterých Azure Backup Server ukládá body obnovení disku pro chráněná data. Fond úložiště může být přímo připojený k úložišti (DAS), síti SAN s technologií Fibre Channel nebo úložnému zařízení iSCSI nebo SAN. Je důležité zajistit, abyste měli dostatečné úložiště pro místní zálohování dat virtuálních počítačů VMware.
   - Azure Backup Server pak zálohuje úložiště místního disku do Azure.
-  - [Získejte pomoc](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) , jak zjistit, kolik úložného prostoru potřebujete. Informace jsou určeny pro aplikaci DPM, ale lze je použít také pro Azure Backup Server.
+  - [Získejte pomoc](/system-center/dpm/create-dpm-protection-groups#figure-out-how-much-storage-space-you-need) , jak zjistit, kolik úložného prostoru potřebujete. Informace jsou určeny pro aplikaci DPM, ale lze je použít také pro Azure Backup Server.
 
 ### <a name="set-up-the-certificate"></a>Nastavení certifikátu
 
@@ -116,7 +116,7 @@ Azure Backup Server potřebuje uživatelský účet s oprávněními pro příst
 1. Přihlaste se k vCenter Server (nebo hostiteli ESXi, pokud nepoužíváte vCenter Server).
 2. Na panelu **navigátor** klikněte na možnost **Správa**.
 
-    ![Správa](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
+    ![Administration](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
 3. V části role **pro správu**  >  **Roles**klikněte na ikonu Přidat roli (symbol +).
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: mimckitt
 ms.custom: include file
-ms.openlocfilehash: 5c898721102177a0d796db3b8b0f194c4ec3efae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed1341a323d947441fa2cb3c239fcdf99c447a97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84793705"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494478"
 ---
 Některé databázové úlohy, jako je SQL Server nebo Oracle, vyžadují vysoké množství paměti, úložiště a vstupně-výstupních operací, ale ne vysoký počet jader. Mnoho úloh databáze není náročné na procesor. Azure nabízí určité velikosti virtuálních počítačů, ve kterých můžete omezit počet vCPU virtuálních počítačů a snížit tak náklady na licencování softwaru a zároveň zachovat stejnou velikost paměti, úložiště a vstupně-výstupní šířky pásma.
 
@@ -24,7 +24,7 @@ Aktuální velikost virtuálního počítače Standard_GS5 například přináš
 Licenční poplatky účtované za SQL Server nebo Oracle jsou omezené na nový počet vCPU a další produkty by se měly účtovat na základě nového počtu vCPU. Výsledkem je 50% až 75% zvýšení poměru specifikací virtuálních počítačů na aktivní (fakturovatelný) vCPU. Tyto nové velikosti virtuálních počítačů umožňují zákaznickým úlohám při optimalizaci nákladů na software využívat stejnou paměť, úložiště a I/O šířku pásma. V tomto okamžiku zůstává náklady na výpočetní výkon, včetně licencování operačního systému, stejné jako původní velikost. Další informace najdete v tématu [velikosti virtuálních počítačů Azure pro cenově výhodné databázové úlohy](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Name                | Virtuální procesory | Specifikace           |
+| Název                | Virtuální procesory | Specifikace           |
 |---------------------|------|-----------------|
 | Standard_M8 – 2 MS     | 2    | Stejné jako M8ms    |
 | Standard_M8 – 4ms     | 4    | Stejné jako M8ms    |
@@ -74,3 +74,5 @@ Licenční poplatky účtované za SQL Server nebo Oracle jsou omezené na nový
 | Standard_DS13 – 2_v2  | 2    | Stejné jako DS13_v2 |
 | Standard_DS14 – 8_v2  | 8    | Stejné jako DS14_v2 |
 | Standard_DS14 – 4_v2  | 4    | Stejné jako DS14_v2 |
+| Standard_M416 – 208s_v2 | 208    | Stejné jako M416s_v2|
+| Standard_M416 – 208ms_v2 | 208    | Stejné jako M416ms_v2 |

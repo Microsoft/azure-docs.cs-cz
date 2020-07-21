@@ -12,11 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 1d8261d05f59c7f40ba6b1e2d59d2b15ad56de95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3163d414e940d843489a34f319996b1b8ed6f4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424528"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497370"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>Spouštění balíčků SSIS v Azure z SSDT
 
@@ -26,7 +27,7 @@ Tento článek popisuje funkci projektů služba SSIS (SQL Server Integration Se
 
 Pomocí této funkce můžete vytvořit novou Azure-SSIS IR nebo připojit existující SSIS k projektům a pak na něm spustit balíčky.  Podporujeme spouštění balíčků pro nasazení do katalogu SSIS (SSISDB) v modelu nasazení projektu a ty, které se mají nasadit do systémů souborů/sdílených složek/souborů Azure v modelu nasazení balíčku. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete tuto funkci použít, Stáhněte si a nainstalujte nejnovější SSDT s rozšířením projektů SSIS pro Visual Studio z [tohoto místa](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) nebo jako samostatný instalační program z [tohoto místa](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer).
 
 ## <a name="azure-enable-ssis-projects"></a>Azure – povolení projektů SSIS
@@ -81,6 +82,30 @@ Připojením projektů s podporou Azure tak, aby se SSIS v ADF, můžete nahrát
    ![Výběr služby Azure Storage](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
 
 4. Kliknutím na tlačítko **připojit** dokončete připojení.  Vybraný Azure-SSIS IR a Azure Storage účet zobrazíme v uzlu **propojených prostředků Azure** na panelu Průzkumník řešení na panelu SSDT.  Aktualizujeme taky stav vašeho Azure-SSIS IR, ale můžete ho spravovat tak, že pravým tlačítkem myši kliknete na jeho uzel a pak vyberete položku nabídky **Start\Stop\Manage** , která vás přesměruje na portál a aplikaci ADF.
+
+## <a name="assess-ssis-projectpackages-for-executions-in-azure"></a>Vyhodnocení SSIS project\packages pro provádění v Azure
+### <a name="assess-ssis-project-or-package"></a>Posouzení projektu nebo balíčku SSIS
+Než zahájíte balíčky v Azure, můžete posoudit svůj balíček a vyhodnotit, jestli existují nějaké potenciální blokující migrace nebo informace, o kterých potřebujete vědět. 
+-  Můžete buď vyhodnotit všechny balíčky v rámci projektu nebo jednoho balíčku.
+
+   ![Vyhodnotit ](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
+    ![ balíček vyhodnocení projektu](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
+
+-  Můžete získat zprávu o posouzení pro kontrolu každého problému s posouzením a každý problém bude mít podrobný popis a doporučení. Sestavu posouzení můžete také exportovat jako soubor CSV. 
+
+   ![Vyhodnotit výsledek projektu](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+
+### <a name="suppress-assessment-rule"></a>Potlačit pravidlo vyhodnocení
+Pokud jste si jisti, že pro váš balíček není použité nějaké pravidlo hodnocení, můžete ho potlačit. 
+-  Můžete přímo kliknout na odkaz **Konfigurovat potlačení pravidla posouzení** v sestavě posouzení.
+
+   ![Nastavení potlačení pravidla posouzení](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
+
+-  Můžete ji také nakonfigurovat prostřednictvím **Nastavení Azure**.
+
+   ![Nastavení s podporou Azure](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
+
+   ![Nastavení potlačení pravidel posouzení prostřednictvím nastavení s podporou Azure](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png)
 
 ## <a name="execute-ssis-packages-in-azure"></a>Spouštění balíčků SSIS v Azure
 ### <a name="azure-enabled-setting"></a>Nastavení s povolenou službou Azure
@@ -159,6 +184,9 @@ Chcete-li přepnout prostředí pro spouštění balíčků s projekty s podporo
 6. Spusťte tento balíček v Azure. Prostředí můžete snadno přepnout zpátky na místní a přepnout aktuální konfiguraci sady Visual Studio.
 
    ![Přepnout konfiguraci sady Visual Studio](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png)
+
+## <a name="current-limitations"></a>Aktuální omezení
+-  Tato funkce SSDT v současné době nepodporuje národní Cloud.
 
 ## <a name="next-steps"></a>Další kroky
 Až budete s používáním balíčků v Azure spokojeni z SSDT, můžete je nasadit a spustit jako aktivity balíčku SSIS v kanálech ADF. Další informace najdete v tématu [spouštění balíčků SSIS jako spouštění aktivit balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

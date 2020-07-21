@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72025937"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499915"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Instalace IBM zD&T dev/test Environment v Azure
 
@@ -39,7 +39,7 @@ Další informace najdete v [přehledu zD&T](https://www.ibm.com/support/knowled
 
 V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prostředí Z verze (zD&T) Enterprise Edition. Pak můžete použít webový server zD&T Enterprise Edition k vytváření a správě prostředí Z na platformě Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 > [!NOTE]
 > IBM umožňuje instalovat zD&T Enterprise Edition pouze do prostředí pro vývoj a testování,*nikoli* v produkčních prostředích.
@@ -56,13 +56,13 @@ V tomto článku se dozvíte, jak v Azure nastavit vývojové a testovací prost
 
 ## <a name="create-the-base-image-and-connect"></a>Vytvoření základní image a připojení
 
-1. V Azure Portal [vytvořte virtuální počítač](/azure/virtual-machines/linux/quick-create-portal) s konfigurací operačního systému, který chcete. V tomto článku se předpokládá, že virtuální počítač B4ms (se 4 vCPU a 16 GB paměti) se systémem Ubuntu 16,04.
+1. V Azure Portal [vytvořte virtuální počítač](../../../linux/quick-create-portal.md) s konfigurací operačního systému, který chcete. V tomto článku se předpokládá, že virtuální počítač B4ms (se 4 vCPU a 16 GB paměti) se systémem Ubuntu 16,04.
 
 2. Po vytvoření virtuálního počítače otevřete příchozí porty 22 pro SSH, 21 pro FTP a 9443 pro webový server.
 
 3. Pomocí tlačítka **připojit** získáte přihlašovací údaje SSH zobrazené v okně **Přehled** virtuálního počítače. Vyberte kartu **SSH** a zkopírujte přihlašovací příkaz SSH do schránky.
 
-4. Přihlaste se k [prostředí bash](/azure/cloud-shell/quickstart) z místního počítače a vložte příkaz. Bude ve formě **SSH \<user id\> \@ \<IP Address\> **. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
+4. Přihlaste se k [prostředí bash](../../../../cloud-shell/quickstart.md) z místního počítače a vložte příkaz. Bude ve formě **SSH \<user id\> \@ \<IP Address\> **. Až se zobrazí výzva k zadání přihlašovacích údajů, zadejte je, abyste navázali připojení k domovskému adresáři.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Zkopírujte instalační soubor na server.
 

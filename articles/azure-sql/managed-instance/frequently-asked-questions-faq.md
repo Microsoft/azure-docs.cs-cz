@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498436"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,11 +66,11 @@ Můžete uvažovat o migraci na jiné typy Azure, které odpovídají vašim úl
 **Kde můžu migrovat konkrétní požadavky na hardware, jako je větší paměť RAM pro vCore poměr nebo více procesorů?**
 Můžete zvážit migraci na [SQL Server v Azure Virtual Machines](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) nebo [Azure SQL Database](../database/sql-database-paas-overview.md) paměti/procesoru optimalizované pro procesor.
 
-## <a name="known-issues--bugs"></a>Známé problémy & chybách
+## <a name="known-issues-and-defects"></a>Známé problémy a vady
 
-**Kde můžu najít známé problémy a chyby?**
+**Kde můžu najít známé problémy a vady?**
 
-Chyby a známé problémy najdete v tématu [známé problémy](../database/doc-changes-updates-release-notes.md#known-issues).
+Chyby produktu a známé problémy najdete v tématu [známé problémy](../database/doc-changes-updates-release-notes.md#known-issues).
 
 ## <a name="new-features"></a>Nové funkce
 
@@ -127,7 +127,7 @@ Chcete-li použít jinou zónu DNS namísto výchozího, například *. contoso.
 **Jak mohu migrovat z Azure SQL Database jednoho nebo elastického fondu do spravované instance SQL?**
 
 Managed instance nabízí stejné úrovně výkonu na výpočetní úrovni a velikosti úložiště jako jiné možnosti nasazení Azure SQL Database. Pokud chcete konsolidovat data na jednu instanci nebo jednoduše potřebujete funkci podporovanou výhradně ve spravované instanci, můžete data migrovat pomocí funkce Export/Import (BACPAC). Tady jsou další způsoby, jak zvážit SQL Database migrace do spravované instance SQL: 
-- Použití [externího zdroje dat]()
+- Použití [externího zdroje dat](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210)
 - Použití [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182)
 - Použití [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7)
 
@@ -192,7 +192,7 @@ Ne, nejsou podporovány. [Zobrazení dynamické správy](../database/monitoring-
 
 **Můžu vytvořit upozornění metriky na spravované instanci SQL?**
 
-Ano. Pokyny najdete v tématu [vytvoření výstrah pro spravovanou instanci SQL](alerts-create.md).
+Yes. Pokyny najdete v tématu [vytvoření výstrah pro spravovanou instanci SQL](alerts-create.md).
 
 **Můžu vytvářet upozornění na metriky v databázi ve spravované instanci?**
 
@@ -251,11 +251,11 @@ K tomu je potřeba zajistit nepřerušovaný tok provozu správy za účelem spl
 
 **Můžu získat zdrojové rozsahy IP adres, které se používají pro příchozí provoz správy?**
 
-Ano. Můžete analyzovat provoz přicházející do skupiny zabezpečení sítě [konfigurací protokolů Network Watcher Flow](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group).
+Yes. Můžete analyzovat provoz přicházející do skupiny zabezpečení sítě [konfigurací protokolů Network Watcher Flow](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group).
 
 **Můžu nastavit NSG pro řízení přístupu ke koncovému bodu dat (port 1433)?**
 
-Ano. Po zřízení spravované instance můžete nastavit NSG, který řídí příchozí přístup k portu 1433. Doporučuje se co nejvíc omezit rozsah IP adres.
+Yes. Po zřízení spravované instance můžete nastavit NSG, který řídí příchozí přístup k portu 1433. Doporučuje se co nejvíc omezit rozsah IP adres.
 
 **Můžu nastavit síťové virtuální zařízení nebo místní bránu firewall pro filtrování odchozího provozu správy na základě plně kvalifikovaných názvů domén?**
 
@@ -266,7 +266,7 @@ Ne. Tato akce není podporována z několika důvodů:
 
 **Můžu pro odchozí provoz bez správy nastavit síťové virtuální zařízení nebo bránu firewall?**
 
-Ano. Nejjednodušší způsob, jak toho dosáhnout, je přidání pravidla 0/0 do UDR přidruženého k podsíti spravované instance ke směrování provozu prostřednictvím síťové virtuální zařízení.
+Yes. Nejjednodušší způsob, jak toho dosáhnout, je přidání pravidla 0/0 do UDR přidruženého k podsíti spravované instance ke směrování provozu prostřednictvím síťové virtuální zařízení.
  
 **Kolik IP adres potřebuji pro spravovanou instanci?**
 
@@ -313,7 +313,7 @@ Z tohoto důvodu se důrazně nedoporučuje spoléhat na neměnnosti IP adresy, 
 
 **Má spravovaná instance veřejný koncový bod?**
 
-Ano. Spravovaná instance má veřejný koncový bod, který se ve výchozím nastavení používá jenom pro správu služeb, ale zákazník ho může povolit i pro přístup k datům. Další podrobnosti najdete v tématu [použití spravované instance SQL s veřejnými koncovými body](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). Pokud chcete nakonfigurovat veřejný koncový bod, použijte ke [konfiguraci veřejného koncového bodu ve spravované instanci SQL](public-endpoint-configure.md).
+Yes. Spravovaná instance má veřejný koncový bod, který se ve výchozím nastavení používá jenom pro správu služeb, ale zákazník ho může povolit i pro přístup k datům. Další podrobnosti najdete v tématu [použití spravované instance SQL s veřejnými koncovými body](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). Pokud chcete nakonfigurovat veřejný koncový bod, použijte ke [konfiguraci veřejného koncového bodu ve spravované instanci SQL](public-endpoint-configure.md).
 
 **Jak řízení spravované instance přistupuje k veřejnému koncovému bodu?**
 
@@ -323,7 +323,7 @@ Služba správy a nasazení se připojí ke spravované instanci pomocí [koncov
 
 **Můžu použít veřejný koncový bod pro přístup k datům v databázích spravované instance?**
 
-Ano. Zákazník bude muset povolit přístup k datům veřejného koncového bodu z webu [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM a nakonfigurovat NSG tak, aby zamkne přístup k datovému portu (číslo portu 3342). Další informace najdete v tématech [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](public-endpoint-configure.md) a [bezpečné použití spravované instance Azure SQL s veřejným koncovým bodem](public-endpoint-overview.md). 
+Yes. Zákazník bude muset povolit přístup k datům veřejného koncového bodu z webu [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM a nakonfigurovat NSG tak, aby zamkne přístup k datovému portu (číslo portu 3342). Další informace najdete v tématech [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](public-endpoint-configure.md) a [bezpečné použití spravované instance Azure SQL s veřejným koncovým bodem](public-endpoint-overview.md). 
 
 **Můžu zadat vlastní port pro koncové body dat SQL?**
 
@@ -349,26 +349,11 @@ Zákazníkům se doporučuje použít sadu nastavení zabezpečení a ovládací
 - Zapněte [auditování SQL](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)a integrujte je pomocí mechanismů upozorňování.
 - Zapněte [detekci hrozeb](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) ze sady [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) .
 
-
-## <a name="cost-saving-use-cases"></a>Úspory nákladů – úspora případů použití
-
-**Kde najdu případy použití a výsledkem jsou úspory nákladů pomocí spravované instance SQL?**
-
-Případové studie spravované instance SQL:
-
-- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
-- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
-
-Abychom lépe porozuměli výhodám, nákladům a rizikům spojeným s nasazením spravované instance Azure SQL, měli jsme také studii Forrester: [celkový ekonomický dopad Microsoft Azure SQL Database spravované instance](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
-
-
 ## <a name="dns"></a>DNS
 
 **Můžu nakonfigurovat vlastní DNS pro spravovanou instanci SQL?**
 
-Ano. Podívejte [se, jak nakonfigurovat vlastní DNS pro spravovanou instanci SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
+Yes. Podívejte [se, jak nakonfigurovat vlastní DNS pro spravovanou instanci SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
 
 **Můžu aktualizovat DNS?**
 
@@ -467,6 +452,19 @@ Náklady na úložiště zálohování můžete monitorovat prostřednictvím we
 **Jak můžu optimalizovat náklady na úložiště zálohování na spravované instanci?**
 
 Pokud chcete optimalizovat náklady na úložiště zálohování, přečtěte si téma [jemné vyladění záloh na spravované instanci SQL](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935).
+
+## <a name="cost-saving-use-cases"></a>Úspory nákladů – úspora případů použití
+
+**Kde najdu případy použití a výsledkem jsou úspory nákladů pomocí spravované instance SQL?**
+
+Případové studie spravované instance SQL:
+
+- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
+
+Abychom lépe porozuměli výhodám, nákladům a rizikům spojeným s nasazením spravované instance Azure SQL, měli jsme také studii Forrester: [celkový ekonomický dopad Microsoft Azure SQL Database spravované instance](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 ## <a name="password-policy"></a>Zásady hesel 
 

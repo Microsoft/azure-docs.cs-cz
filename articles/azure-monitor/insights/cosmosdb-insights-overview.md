@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945490"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498912"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Prozkoumejte Azure Monitor pro Azure Cosmos DB
 
@@ -72,13 +72,13 @@ V horní části stránky vyberte **selhání** a otevře se část **selhání*
 
 ![Snímek obrazovky s chybami s rozpisem podle typu požadavku HTTP](./media/cosmosdb-insights-overview/failures.png)
 
-| Kód      |  Description       | 
+| Kód      |  Popis       | 
 |-----------|:--------------------|
 | `200 OK`  | Jedna z následujících operací REST byla úspěšná: </br>– ZÍSKAT u prostředku. </br> -PUT do prostředku. </br> – ZVEŘEJNĚNÍ na prostředku. </br> -POST v prostředku uložené procedury a spusťte uloženou proceduru.|
 | `201 Created` | Operace POST pro vytvoření prostředku je úspěšná. |
 | `404 Not Found` | Operace se pokouší jednat o prostředek, který již neexistuje. Prostředek mohl být například již odstraněn. |
 
-Úplný seznam stavových kódů najdete v [článku Azure Cosmos DB stavový kód HTTP](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Úplný seznam stavových kódů najdete v [článku Azure Cosmos DB stavový kód HTTP](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 ### <a name="capacity"></a>Kapacita
 
@@ -98,7 +98,7 @@ Takže v příkladu níže vidíte, že se v rámci `eastus-billingint` toho dos
 
 ## <a name="pin-export-and-expand"></a>Připnout, exportovat a rozbalit
 
-Libovolný oddíl metriky můžete připnout na [řídicí panel Azure](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) tak, že vyberete ikonu připínáčku v pravém horním rohu oddílu.
+Libovolný oddíl metriky můžete připnout na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md) tak, že vyberete ikonu připínáčku v pravém horním rohu oddílu.
 
 ![Připnout oddíl metriky na příklad řídicího panelu](./media/cosmosdb-insights-overview/pin.png)
 
@@ -126,6 +126,6 @@ Pokyny k řešení potíží najdete v článku věnovaném [řešení potíží
 
 ## <a name="next-steps"></a>Další kroky
 
-* Nakonfigurujte [Upozornění metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
+* Nakonfigurujte [Upozornění metrik](../platform/alerts-metric.md) a [oznámení o stavu služby](../../service-health/alerts-activity-log-service-notifications-portal.md) , abyste nastavili automatizované upozorňování na pomoc při zjišťování problémů.
 
 * Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 529024256b8b3f6da7146787d3a37c59a13b5bd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201019"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494747"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportování skupin prostředků, které obsahují rozšíření virtuálních počítačů
 
@@ -137,7 +137,7 @@ Konečný prostředek rozšíření vypadá podobně jako v následujícím př�
 }
 ```
 
-Pokud používáte parametry šablony k poskytnutí hodnot vlastností, je nutné je vytvořit. Při vytváření parametrů šablony pro hodnoty chráněného nastavení nezapomeňte použít `SecureString` typ parametru, aby byly citlivé hodnoty zabezpečené. Další informace o použití parametrů najdete v tématu [vytváření Azure Resource Manager šablon](../../resource-group-authoring-templates.md).
+Pokud používáte parametry šablony k poskytnutí hodnot vlastností, je nutné je vytvořit. Při vytváření parametrů šablony pro hodnoty chráněného nastavení nezapomeňte použít `SecureString` typ parametru, aby byly citlivé hodnoty zabezpečené. Další informace o použití parametrů najdete v tématu [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md).
 
 V příkladu `IaasDiagnostic` rozšíření se vytvoří následující parametry v oddílu Parameters šablony Správce prostředků.
 

@@ -1,20 +1,21 @@
 ---
-title: Integrace Power BI – Azure Time Series Insights | Microsoft Docs
+title: Integrace Power BI – Azure Time Series Insights Gen 2 | Microsoft Docs
 description: Přečtěte si o integraci Power BI v Azure Time Series Insight.
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: ce566080c6ddbc4784365ceda6011c3f6612732a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: f2e1985dbc0860297b4f11b4d0a53affa26423d0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76276868"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495308"
 ---
-# <a name="connect-time-series-insights-to-power-bi"></a>Připojit Time Series Insights k Power BI  
+# <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>Připojit Azure Time Series Insights Gen 2 k Power BI  
 
 Hledáte řešení, které vám umožní sladit data časových řad, vytvářet ostré vizualizace a sdílet přehledy napříč vaší organizací?
 
@@ -28,18 +29,18 @@ Azure Time Series Insights se teď bezproblémově integruje s [Power BI](https:
 
 ## <a name="summary"></a>Souhrn
 
-   [![Možnost exportu v Time Series Insights](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
+   [![Možnost exportu v Azure Time Series Insights](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 
 Když propojíte vaše data s Power BI, můžete teď:
 
 * Proveďte korelaci s jinými zdroji dat podporovanými nástrojem Power BI a získejte přístup k hostiteli různých možností vizualizace dat. 
 * Vytvářejte Power BI řídicí panely a sestavy pomocí dat služby Time Series Insight a sdílejte je s vaší organizací. 
 * Scénáře interoperability dat můžete jednoduše snadno používat jednoduchým způsobem a získávat přehledy rychleji než kdykoli dřív.
-* Upravte data Time Series Insights v rámci Power BI pomocí výkonného Rozšířený editor.
+* Upravte data Azure Time Series Insights v rámci Power BI pomocí výkonného Rozšířený editor.
 
 ## <a name="native-connector"></a>Nativní konektor
 
-Připojení vašich dat trvá méně než minutu. Díky rychlému exportu zobrazení z Průzkumníka služby Time Series Insight do Power BI může kdokoli ve vaší organizaci intuitivní přístup k datům a jejich vizuální transformaci.
+Připojení vašich dat trvá méně než minutu. Díky rychlému exportu zobrazení z Azure Time Series Insights Exploreru do Power BI může kdokoli ve vaší organizaci intuitivní přístup k datům a jejich vizuální transformaci.
 
 Mezi možnosti konfigurace patří volba mezi **nezpracovanými** a **souhrnnými** daty a výběrem požadovaného časového rozsahu. 
 
@@ -47,14 +48,14 @@ Po připojení dat jsou k dispozici všechny funkce pro vizualizaci a vytvářen
 
    [![Příklady vytváření grafů v Power BI](./media/concepts-connect-power-bi/power-bi-tsi-example.png)](./media/concepts-connect-power-bi/power-bi-tsi-example.png#lightbox)
 
-Přečtěte si, [Jak připojit Time Series Insights k Power BI](./how-to-connect-power-bi.md) pro podrobné informace o jednotlivých krocích.
+Přečtěte si, [Jak připojit Azure Time Series Insights k Power BI](./how-to-connect-power-bi.md) pro podrobné informace o jednotlivých krocích.
 
 ## <a name="flexible-workflow"></a>Flexibilní pracovní postup
  
 Použijte konektor z libovolného místa v pracovním postupu:
 
-* Pokud jste v Time Series Insights Exploreru, můžete zobrazení rychle exportovat do Power BI. 
-* Pokud už jste v Power BI, Rozšiřte své stávající scénáře vizualizace pomocí Time Series Insights dat dotazů.
+* Pokud jste v Azure Time Series Insights Exploreru, můžete zobrazení rychle exportovat do Power BI. 
+* Pokud už jste v Power BI, Rozšiřte své stávající scénáře vizualizace pomocí Azure Time Series Insights k dotazování dat.
 
 Pro pokročilé funkce dotazování a úpravy v Power BI použijte Rozšířený editor Power BI.
 
@@ -62,6 +63,6 @@ Pro pokročilé funkce dotazování a úpravy v Power BI použijte Rozšířený
 
 * Přečtěte si, [Jak připojit Time Series Insights k Power BI](./how-to-connect-power-bi.md).
 
-* Přečtěte si další informace o [Power BI](https://docs.microsoft.com/power-bi/).
-
 * Stáhněte si [Power BI plochu](https://powerbi.microsoft.com/desktop/) a začněte připojovat data.
+
+* Přečtěte si další informace o [Power BI](https://docs.microsoft.com/power-bi/).

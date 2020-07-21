@@ -3,12 +3,12 @@ title: Monitorování využití a výkonu desktopových aplikací pro Windows
 description: Analyzujte využití a výkon vaší desktopové aplikace Windows pomocí Application Insights.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718780"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499184"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Monitorování využití a výkonu klasických desktopových aplikací pro Windows
 
@@ -73,9 +73,9 @@ using Microsoft.ApplicationInsights;
 
 Ve výchozím nastavení bude tato sada SDK shromažďovat a ukládat název počítače, který generuje telemetrii.
 
-Název počítače používá Application Insights [starší verze Enterprise (na jeden uzel) cenová úroveň](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) pro interní účely fakturace. Ve výchozím nastavení, pokud použijete inicializátor telemetrie k přepsání `telemetry.Context.Cloud.RoleInstance` , bude odeslána samostatná vlastnost, `ai.internal.nodeName` která bude stále obsahovat hodnotu názvu počítače. Tato hodnota se nebude ukládat spolu s vaší Application Insights telemetrie, ale používá se interně při příjmu, aby se zajistila zpětná kompatibilita se starším modelem fakturace na základě uzlů.
+Název počítače používá Application Insights [starší verze Enterprise (na jeden uzel) cenová úroveň](./pricing.md#legacy-enterprise-per-node-pricing-tier) pro interní účely fakturace. Ve výchozím nastavení, pokud použijete inicializátor telemetrie k přepsání `telemetry.Context.Cloud.RoleInstance` , bude odeslána samostatná vlastnost, `ai.internal.nodeName` která bude stále obsahovat hodnotu názvu počítače. Tato hodnota se nebude ukládat spolu s vaší Application Insights telemetrie, ale používá se interně při příjmu, aby se zajistila zpětná kompatibilita se starším modelem fakturace na základě uzlů.
 
-Pokud se nacházíte na [cenové úrovni starší verze Enterprise (na uzel)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) a jednoduše potřebujete přepsat úložiště pro název počítače, použijte inicializátor telemetrie:
+Pokud se nacházíte na [cenové úrovni starší verze Enterprise (na uzel)](./pricing.md#legacy-enterprise-per-node-pricing-tier) a jednoduše potřebujete přepsat úložiště pro název počítače, použijte inicializátor telemetrie:
 
 **Pište vlastní TelemetryInitializer, jak je uvedeno níže.**
 
@@ -116,7 +116,7 @@ Vytvořte instanci inicializátoru v `Program.cs` `Main()` metodě níže nastav
 
 ## <a name="override-transmission-of-computer-name"></a>Přepsat přenos názvu počítače
 
-Pokud nejste na [cenové úrovni starší verze Enterprise (na uzel)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) a chcete zcela zabránit tomu, aby se všechny telemetrie obsahující název počítače odesílaly, musíte použít procesor telemetrie.
+Pokud nejste na [cenové úrovni starší verze Enterprise (na uzel)](./pricing.md#legacy-enterprise-per-node-pricing-tier) a chcete zcela zabránit tomu, aby se všechny telemetrie obsahující název počítače odesílaly, musíte použít procesor telemetrie.
 
 ### <a name="telemetry-processor"></a>Procesor telemetrie
 
@@ -172,11 +172,10 @@ namespace WindowsFormsApp2
 ```
 
 > [!NOTE]
-> I když můžete technicky používat procesor telemetrie, jak je popsáno výše, i když pracujete na [cenové úrovni starší verze Enterprise (na uzel)](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier), výsledkem bude potenciální fakturace v důsledku nesprávného rozlišení uzlů pro ceny za uzel.
+> I když můžete technicky používat procesor telemetrie, jak je popsáno výše, i když pracujete na [cenové úrovni starší verze Enterprise (na uzel)](./pricing.md#legacy-enterprise-per-node-pricing-tier), výsledkem bude potenciální fakturace v důsledku nesprávného rozlišení uzlů pro ceny za uzel.
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření řídicího panelu](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnostické hledání](../../azure-monitor/app/diagnostic-search.md)
 * [Zkoumání metrik](../../azure-monitor/platform/metrics-charts.md)
-* [Psaní analytických dotazů](../../azure-monitor/app/analytics.md)
-
+* [Psaní analytických dotazů](../log-query/log-query-overview.md)

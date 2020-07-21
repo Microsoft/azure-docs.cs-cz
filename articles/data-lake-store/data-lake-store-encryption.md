@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60878363"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497178"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Šifrování dat v Azure Data Lake Storage Gen1
 
@@ -52,15 +52,15 @@ V obou režimech je hlavní šifrovací klíč zabezpečen uložením ve služb�
 
 Tady je stručné porovnání možností, které nabízí dva režimy správy hlavních šifrovacích klíčů.
 
-|  | Klíče spravované službou | Klíče spravované zákazníkem |
-| --- | --- | --- |
+| Otázka | Klíče spravované službou | Klíče spravované zákazníkem |
+| -------- | -------------------- | --------------------- |
 |Jak se data ukládají?|Před uložením se vždy šifrují.|Před uložením se vždy šifrují.|
 |Kde je uložený hlavní šifrovací klíč?|Key Vault|Key Vault|
-|Jsou nějaké šifrovací klíče uložené v nezašifrované podobě mimo službu Key Vault? |Ne|Ne|
+|Jsou nějaké šifrovací klíče uložené v nezašifrované podobě mimo službu Key Vault? |No|No|
 |Může služba Key Vault načíst hlavní šifrovací klíč?|Ne. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|Ne. Po uložení hlavního šifrovacího klíče ve službě Key Vault ho lze použít pouze k šifrování a dešifrování.|
 |Kdo je vlastníkem instance služby Key Vault a hlavního šifrovacího klíče?|Služba Data Lake Storage Gen1|Vlastníte instanci služby Key Vault, která patří do vašeho předplatného Azure. Hlavní šifrovací klíč ve službě Key Vault může být spravovaný softwarem nebo hardwarem.|
-|Můžete odvolat přístup k hlavní šifrovací klíč pro službu Data Lake Storage Gen1?|Ne|Yes. Můžete spravovat seznamy řízení přístupu v Key Vault a odebrat položky řízení přístupu k identitě služby Data Lake Storage Gen1.|
-|Je možné trvale odstranit hlavní šifrovací klíč?|Ne|Yes. Odstraníte-li hlavní šifrovací klíč z Key Vault, nelze data v Data Lake Storage Gen1m účtu dešifrovat nikdo, včetně služby Data Lake Storage Gen1. <br><br> Pokud jste hlavní šifrovací klíč před odstraněním ze služby Key Vault explicitně zazálohovali, je možné ho obnovit a následně obnovit i data. Pokud jste ale hlavní šifrovací klíč ještě před odstraněním z Key Vault nezálohovali, data v Data Lake Storage Gen1m účtu už nebude možné dešifrovat.|
+|Můžete odvolat přístup k hlavní šifrovací klíč pro službu Data Lake Storage Gen1?|No|Yes. Můžete spravovat seznamy řízení přístupu v Key Vault a odebrat položky řízení přístupu k identitě služby Data Lake Storage Gen1.|
+|Je možné trvale odstranit hlavní šifrovací klíč?|No|Yes. Odstraníte-li hlavní šifrovací klíč z Key Vault, nelze data v Data Lake Storage Gen1m účtu dešifrovat nikdo, včetně služby Data Lake Storage Gen1. <br><br> Pokud jste hlavní šifrovací klíč před odstraněním ze služby Key Vault explicitně zazálohovali, je možné ho obnovit a následně obnovit i data. Pokud jste ale hlavní šifrovací klíč ještě před odstraněním z Key Vault nezálohovali, data v Data Lake Storage Gen1m účtu už nebude možné dešifrovat.|
 
 
 Kromě tohoto rozdílu, tedy kdo spravuje hlavní šifrovací klíče a instanci služby Key Vault, ve které se nachází, je zbytek návrhu pro oba režimy stejný.
@@ -74,11 +74,11 @@ Při výběru režimu pro hlavní šifrovací klíče je důležité pamatovat n
 
 V návrhu šifrování dat používají tři typy klíčů. Následující tabulka poskytuje souhrn:
 
-| Klíč                   | Zkratka | Přidružený k | Umístění úložiště                             | Typ       | Poznámky                                                                                                   |
+| Key                   | Zkratka | Přidružený k | Umístění úložiště                             | Typ       | Poznámky                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Hlavní šifrovací klíč | MEK          | Účet Data Lake Storage Gen1 | Key Vault                              | Asymetrický | Dá se spravovat pomocí Data Lake Storage Gen1 nebo.                                                              |
 | Šifrovací klíč dat   | DEK          | Účet Data Lake Storage Gen1 | Trvalé úložiště spravované službou Data Lake Storage Gen1 | Symetrický  | Klíč DEK je šifrovaný klíčem MEK. Na trvalé médium se ukládá šifrovaný klíč DEK. |
-| Šifrovací klíč bloku  | BEK          | Blokem dat | Žádná                                         | Symetrický  | Klíč BEK je odvozený od klíče DEK a příslušného datového bloku.                                                      |
+| Šifrovací klíč bloku  | BEK          | Blokem dat | Žádný                                         | Symetrický  | Klíč BEK je odvozený od klíče DEK a příslušného datového bloku.                                                      |
 
 Následující diagram znázorňuje tyto koncepty:
 
@@ -107,7 +107,7 @@ Následující diagram znázorňuje tyto koncepty:
 
 Pokud používáte klíče spravované zákazníkem, můžete obměňovat klíč MEK. Informace o tom, jak nastavit účet Data Lake Storage Gen1 pomocí klíčů spravovaných zákazníkem, najdete v tématu [Začínáme](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Při nastavování účtu Data Lake Storage Gen1 jste se rozhodli používat vlastní klíče. Tuto možnost po vytvoření účtu nejde změnit. Následující postup předpokládá, že používáte klíče spravované zákazníkem (tedy že jste zvolili vlastní klíče ze služby Key Vault).
 

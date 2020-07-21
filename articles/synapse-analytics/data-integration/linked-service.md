@@ -1,5 +1,5 @@
 ---
-title: Zřízení a zabezpečení propojené služby v Azure synapse Analytics
+title: Zabezpečení propojené služby
 description: Naučte se zřizovat a zabezpečovat propojenou službu pomocí spravované virtuální sítě.
 services: synapse-analytics
 author: acomet
@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430549"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496073"
 ---
 # <a name="securing-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí privátních odkazů 
 
 V tomto článku se dozvíte, jak zabezpečit propojenou službu v synapse pomocí privátního koncového bodu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet Azure Storage**: Azure Data Lake Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md) , kde najdete kroky pro jeho vytvoření. Ujistěte se, že účet úložiště má k přístupu přístup synapse Studio IP a že povolujete přístup jenom **vybraným sítím** k účtu úložiště. Nastavení v okně **brány firewall a virtuální sítě** by mělo vypadat jako na obrázku níže.
@@ -56,7 +56,7 @@ Pokud jste v případě testování výše uvedeného připojení nepoužili odk
 1. Vyberte privátní koncový bod, který jste vytvořili výše. Můžete se podívat na hypertextový odkaz, který vám umožní schválit privátní koncový bod na úrovni účtu úložiště. *Alternativou je přejít přímo na účet úložiště Azure Portal a přejít do okna **připojení privátního koncového bodu** .*
 1. Zaznačte si privátní koncový bod, který jste vytvořili v nástroji Studio, a vyberte **schválit**.
 1. Přidejte popis a klikněte na **Ano** .
-1. Vraťte se do synapse studia v části **spravované virtuální sítě** na kartě **Spravovat**.
+1. Vraťte se do synapse studia v části **spravované virtuální sítě** na kartě **Spravovat** .
 1. Může trvat přibližně 1 minutu, aby se schválení projevilo pro váš soukromý koncový bod.
 
 ## <a name="check-the-connection-works"></a>Ověřte, že připojení funguje

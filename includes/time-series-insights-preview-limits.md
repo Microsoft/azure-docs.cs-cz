@@ -4,54 +4,37 @@ description: zahrnout soubor
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/07/2020
+ms.date: 07/09/2020
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 1171c07a754b056fb9df2cee73ddf224427037cc
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: cd6ea6d4967e024ddf88fb9572d5efae8b7a7815
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86277774"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495328"
 ---
-### <a name="general-availability-and-preview-comparison"></a>Obecná dostupnost a porovnání verze Preview
-
-Následující tabulka shrnuje několik hlavních rozdílů mezi Azure Time Series Insights obecné dostupnosti (GA) a instance Preview.
-
-| | GA | Preview |
-| --- | --- | ---|
-| **Občan první třídy** | Orientované na události | Orientované na časovou řadu |
-| **Sémantický důvod** | Nízká úroveň (referenční data) | Nejvyšší úroveň (modely) |
-| **Kontextová data** | Úroveň bez zařízení | Na úrovni zařízení a mimo zařízení |
-| **Úložiště COMPUTE Logic** | No | Uloženo v části typu proměnné modelu |
-| **Úložiště a řízení přístupu** | No | Povoleno přes model |
-| **Agregace a vzorkování** | No | Vážené a časově vážené události |
-| **Rekonstrukce signálu** | No | Interpolace |
-| **Výroba odvozených časových řad** | No | Ano, sloučit a spojení |
-| **Flexibilita jazyka** | Bez možnosti složení | Sestavitelné |
-| **Jazyk výrazů** | Řetězec predikátu | Výrazy časových řad (řetězce predikátů, hodnoty, výrazy a funkce) |
-
 ### <a name="property-limits"></a>Omezení vlastností
 
-Time Series Insights limity vlastností se zvýšily na 1 000 z maximálního limitu 800 v GA. Zadané vlastnosti události mají odpovídající sloupce JSON, CSV a grafu, které můžete zobrazit v [průzkumníkovi Time Series Insights Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+Azure Time Series Insights limity vlastností se zvýšily na 1 000 z maximálního limitu 800 v Gen1. Zadané vlastnosti událostí mají odpovídající sloupce JSON, CSV a grafu, které lze zobrazit v [Azure Time Series Insights Průzkumníku Gen2](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
-| SKU | Maximální vlastnosti |
+| Skladová položka | Maximální vlastnosti |
 | --- | --- |
-| Náhled PAYG | 1 000 vlastnosti (sloupce) |
-| GA S1 | 600 vlastnosti (sloupce) |
-| GA S2 | 800 vlastnosti (sloupce) |
+| Gen2 (L1) | 1 000 vlastnosti (sloupce) |
+| Gen1 (S1) | 600 vlastnosti (sloupce) |
+| Gen1 (S2) | 800 vlastnosti (sloupce) |
 
 ### <a name="event-sources"></a>Zdroje událostí
 
-Podporuje se maximálně dva zdroje událostí na instanci. 
+Podporuje se maximálně dva zdroje událostí na instanci.
 
 * Naučte se [Přidat zdroj centra událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * Nakonfigurujte [Zdroj služby IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub).
 
-Ve výchozím nastavení [podporují prostředí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations) pro příchozí přenosy až **1 megabajt za sekundu (MB/s) na prostředí**. Zákazníci můžou v případě potřeby škálovat v prostředích ve verzi Preview až o **16 MB/s** . K dispozici je také omezení počtu **0,5 MB/s**na oddíly. 
+Ve výchozím nastavení [prostředí Gen2 podporují](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-throughput-limitations) příchozí přenosy až o **1 megabajt za sekundu (MB/s) na prostředí**. V případě potřeby můžou zákazníci škálovat jejich prostředí až o **16 MB/s** . K dispozici je také omezení počtu **0,5 MB/s**na oddíly.
 
 ### <a name="api-limits"></a>Omezení rozhraní API
 
-Omezení REST API pro Time Series Insights Preview jsou uvedena v [referenční dokumentaci k REST API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#limits).
+REST API omezení pro Azure Time Series Insights Gen2 jsou uvedena v [referenční dokumentaci REST API](https://docs.microsoft.com/rest/api/time-series-insights/preview#limits-1).

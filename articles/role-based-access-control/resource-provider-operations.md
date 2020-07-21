@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/06/2020
-ms.openlocfilehash: 911e1de018ba7027585e19199b69eaaf116ba39a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 07/16/2020
+ms.openlocfilehash: 0fc2039805b155535eeac1d653fc9ecb9e576d5d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087108"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496940"
 ---
 # <a name="azure-resource-providers-operations"></a>Operace poskytovatelů prostředků Azure
 
@@ -23,16 +23,15 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 
 ## <a name="all"></a>Vše
 
-|  |
+| Obecné |
 | --- |
-| **Obecné** |
 | [Microsoft. addons](#microsoftaddons) |
 | [Microsoft. Marketplace](#microsoftmarketplace) |
 | [Microsoft. MarketplaceApps](#microsoftmarketplaceapps) |
 | [Microsoft. MarketplaceOrdering](#microsoftmarketplaceordering) |
 | [Microsoft. ResourceHealth](#microsoftresourcehealth) |
 | [Microsoft. support](#microsoftsupport) |
-| **Compute** |
+| **Výpočetní služby** |
 | [Microsoft.ClassicCompute](#microsoftclassiccompute) |
 | [Microsoft.Compute](#microsoftcompute) |
 | [Microsoft. ServiceFabric](#microsoftservicefabric) |
@@ -89,7 +88,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. MachineLearning](#microsoftmachinelearning) |
 | [Microsoft.MachineLearningServices](#microsoftmachinelearningservices) |
 | **Internet věcí** |
-| [Microsoft. Devices](#microsoftdevices) |
+| [Microsoft.Devices](#microsoftdevices) |
 | [Microsoft. IoTCentral](#microsoftiotcentral) |
 | [Microsoft. NotificationHubs](#microsoftnotificationhubs) |
 | [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights) |
@@ -146,7 +145,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 | [Microsoft. HybridCompute](#microsofthybridcompute) |
 | [Microsoft. ManagedServices](#microsoftmanagedservices) |
 | [Microsoft. Management](#microsoftmanagement) |
-| [Microsoft.PolicyInsights](#microsoftpolicyinsights) |
+| [Microsoft. PolicyInsights](#microsoftpolicyinsights) |
 | [Microsoft. Portal](#microsoftportal) |
 | [Microsoft. RecoveryServices](#microsoftrecoveryservices) |
 | [Microsoft. Resources](#microsoftresources) |
@@ -166,7 +165,7 @@ Seznam operací zobrazíte kliknutím na název poskytovatele prostředků v ná
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. addons/Register/Action | Zaregistrovat zadané předplatné pro Microsoft. addons |
 > | Microsoft. addons/Operations/Read | Načte podporované operace RP. |
@@ -180,7 +179,7 @@ Služba Azure: jádro
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Marketplace/registrace/akce | Zaregistruje poskytovatele prostředků Microsoft. Marketplace v předplatném. |
 > | Microsoft. Marketplace/privateStores/Action | Aktualizuje PrivateStore. |
@@ -202,7 +201,7 @@ Služba Azure: jádro
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. MarketplaceApps/ClassicDevServices/Read | Je operace GET na klasické vývojové službě. |
 > | Microsoft. MarketplaceApps/ClassicDevServices/DELETE | Provádí operaci odstranění na klasickém prostředku služby dev Service. |
@@ -216,7 +215,7 @@ Služba Azure: jádro
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. MarketplaceOrdering/Agreements/Read | Vrátí všechny smlouvy v rámci daného předplatného. |
 > | Microsoft. MarketplaceOrdering/smlouvy/nabídky/plány/číst | Vrácení smlouvy pro danou položku Marketplace |
@@ -231,7 +230,7 @@ Služba Azure: jádro
 Služba Azure: [Azure Service Health](../service-health/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ResourceHealth/Register/Action | Zaregistruje předplatné pro Microsoft ResourceHealth. |
 > | Microsoft. ResourceHealth/zrušit registraci/akce | Zruší registraci předplatného pro Microsoft ResourceHealth. |
@@ -255,7 +254,7 @@ Služba Azure: [Azure Service Health](../service-health/index.yml)
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft.Support/register/action | Registruje zprostředkovatele prostředků podpory. |
 > | Microsoft. support/checkNameAvailability/Action | Kontroluje, jestli je název platný a nepoužívá se pro typ prostředku. |
@@ -276,7 +275,7 @@ Služba Azure: jádro
 Služba Azure: virtuální počítač modelu nasazení Classic
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ClassicCompute/Register/Action | Registrovat do klasického výpočetního prostředí |
 > | Microsoft. ClassicCompute/checkDomainNameAvailability/Action | Ověří dostupnost daného názvu domény. |
@@ -393,7 +392,7 @@ Služba Azure: virtuální počítač modelu nasazení Classic
 Služba Azure: [Virtual Machines](../virtual-machines/index.yml), [Virtual Machine Scale Sets](../virtual-machine-scale-sets/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. COMPUTE/registr/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. Compute. |
 > | Microsoft. COMPUTE/zrušit registraci/akce | Zruší registraci předplatného u poskytovatele prostředků Microsoft. Compute. |
@@ -577,7 +576,7 @@ Služba Azure: [Virtual Machines](../virtual-machines/index.yml), [Virtual Machi
 Služba Azure: [Service Fabric](../service-fabric/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ServiceFabric/Register/Action | Registrovat jakoukoli akci |
 > | Microsoft. ServiceFabric/Clusters/Read | Číst libovolný cluster |
@@ -613,7 +612,7 @@ Služba Azure: [Service Fabric](../service-fabric/index.yml)
 Služba Azure: [Content Delivery Network](../cdn/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. CDN/registrovat/akce | Zaregistruje předplatné pro poskytovatele prostředků CDN a povolí vytváření profilů CDN. |
 > | Microsoft. CDN/CheckNameAvailability/Action |  |
@@ -684,7 +683,7 @@ Služba Azure: [Content Delivery Network](../cdn/index.yml)
 Služba Azure: virtuální síť modelu nasazení Classic
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ClassicNetwork/Register/Action | Registrovat do klasické sítě |
 > | Microsoft. ClassicNetwork/expressroutecrossconnections/Read | Získejte vzájemná propojení Express Route. |
@@ -763,7 +762,7 @@ Služba Azure: virtuální síť modelu nasazení Classic
 Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure bastionu](../bastion/index.yml), [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure Firewall](../firewall/index.yml), [azure front-dveří](../frontdoor/index.yml), [privátní propojení Azure](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Network Watcher](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Virtual Network](../virtual-network/index.yml), [Virtual WAN](../virtual-wan/index.yml), [VPN Gateway](../vpn-gateway/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Network/registrace/akce | Zaregistruje předplatné. |
 > | Microsoft. Network/zrušit registraci/akce | Zruší registraci předplatného. |
@@ -1298,7 +1297,7 @@ Služba Azure: [Application Gateway](../application-gateway/index.yml), [azure b
 Služba Azure: úložiště modelu nasazení Classic
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ClassicStorage/Register/Action | Registrovat do klasického úložiště |
 > | Microsoft. ClassicStorage/checkStorageAccountAvailability/Action | Kontroluje dostupnost účtu úložiště. |
@@ -1363,7 +1362,7 @@ Služba Azure: úložiště modelu nasazení Classic
 Služba Azure: [Azure Data box](../databox/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DataBox/Register/Action | Registrovat poskytovatele Microsoft. Databox |
 > | Microsoft. DataBox/zrušit registraci/akce | Zrušit registraci poskytovatele Microsoft. Databox |
@@ -1388,7 +1387,7 @@ Služba Azure: [Azure Data box](../databox/index.yml)
 Služba Azure: [Import/export Azure](../storage/common/storage-import-export-service.md)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ImportExport/Register/Action | Zaregistruje předplatné poskytovatele prostředků pro import/export a povolí vytváření úloh importu/exportu. |
 > | Microsoft. ImportExport/Jobs/Write | Vytvoří úlohu se zadanými parametry nebo aktualizuje vlastnosti nebo značky pro zadanou úlohu. |
@@ -1403,7 +1402,7 @@ Služba Azure: [Import/export Azure](../storage/common/storage-import-export-ser
 Služba Azure: [Azure NetApp Files](../azure-netapp-files/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. NetApp/Register/Action | Akce registrace předplatného |
 > | Microsoft. NetApp/zrušit registraci/akce | Zruší registraci předplatného u poskytovatele prostředků Microsoft. NetApp. |
@@ -1453,7 +1452,7 @@ Služba Azure: [Azure NetApp Files](../azure-netapp-files/index.yml)
 Služba Azure: [úložiště](../storage/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Storage/registr/Action | Zaregistruje předplatné pro poskytovatele prostředků úložiště a povolí vytváření účtů úložiště. |
 > | Microsoft. Storage/checknameavailability/Read | Kontroluje, že název účtu je platný a nepoužívá se. |
@@ -1580,7 +1579,7 @@ Služba Azure: [úložiště](../storage/index.yml)
 Služba Azure: [úložiště](../storage/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. storagesync/Register/Action | Zaregistruje předplatné pro zprostředkovatele synchronizace úložiště. |
 > | Microsoft. storagesync/zrušit registraci/akce | Zruší registraci předplatného pro zprostředkovatele synchronizace úložiště. |
@@ -1633,7 +1632,7 @@ Služba Azure: [úložiště](../storage/index.yml)
 Služba Azure: [StorSimple](../storsimple/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. StorSimple/Register/Action | Registrovat poskytovatele Microsoft. StorSimple |
 > | Microsoft. StorSimple/manažeři/clearAlerts/Action | Vymažte všechny výstrahy spojené se správcem zařízení. |
@@ -1812,7 +1811,7 @@ Služba Azure: [StorSimple](../storsimple/index.yml)
 Služba Azure: [App Service certifikátů](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. CertificateRegistration/provisionGlobalAppServicePrincipalInUserTenant/Action | Zřídit instanční objekt pro instanční objekt aplikace |
 > | Microsoft. CertificateRegistration/validateCertificateRegistrationInformation/Action | Ověřit objekt nákupu certifikátu bez odeslání |
@@ -1838,7 +1837,7 @@ Služba Azure: [App Service certifikátů](../app-service/configure-ssl-certific
 Služba Azure: [App Service](../app-service/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DomainRegistration/generateSsoRequest/Action | Vygenerujte žádost o přihlášení do centra řízení domény. |
 > | Microsoft. DomainRegistration/validateDomainRegistrationInformation/Action | Ověřit objekt nákupu domény bez odeslání |
@@ -1865,7 +1864,7 @@ Služba Azure: [App Service](../app-service/index.yml)
 Služba Azure: [Azure Maps](../azure-maps/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Maps/registr/Action | Zaregistrovat poskytovatele |
 > | Microsoft. Maps/Accounts/Write | Vytvořte nebo aktualizujte účet Maps. |
@@ -1901,7 +1900,7 @@ Služba Azure: [Azure Maps](../azure-maps/index.yml)
 Služba Azure: [Media Services](../media-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Media/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků Media Services a povolí vytváření účtů Media Services. |
 > | Microsoft. Media/zrušit registraci/akce | Zruší registraci předplatného pro Media Services poskytovatele prostředků. |
@@ -2005,7 +2004,7 @@ Služba Azure: [Media Services](../media-services/index.yml)
 Služba Azure: [Azure Search](../search/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Search/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků vyhledávání a povolí vytváření vyhledávacích služeb. |
 > | Microsoft. Search/checkNameAvailability/Action | Zkontroluje dostupnost názvu služby. |
@@ -2030,7 +2029,7 @@ Služba Azure: [Azure Search](../search/index.yml)
 Služba Azure: [Služba signalizace Azure](../azure-signalr/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. SignalRService/Register/Action | Zaregistruje poskytovatele prostředků Microsoft. SignalRService s předplatným. |
 > | Microsoft. SignalRService/zrušit registraci/akce | Zruší registraci poskytovatele prostředků Microsoft. SignalRService u předplatného. |
@@ -2067,7 +2066,7 @@ Služba Azure: [Služba signalizace Azure](../azure-signalr/index.yml)
 Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azure-functions/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Web/zrušit registraci/akce | Zrušte registraci poskytovatele prostředků Microsoft. Web pro předplatné. |
 > | Microsoft. Web/ověření/akce | Oproti. |
@@ -2525,14 +2524,14 @@ Služba Azure: [App Service](../app-service/index.yml), [Azure Functions](../azu
 > | Microsoft. Web/staticSites/customdomains/ověřit/akce | Ověření, jestli se vlastní doména dá přidat ke statické lokalitě |
 > | Microsoft. Web/staticSites/Functions/Read | Seznam funkcí pro statický Web |
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
 Služba Azure: [Container Instances](../container-instances/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ContainerInstance/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků instance kontejneru a povolí vytváření skupin kontejnerů. |
 > | Microsoft. ContainerInstance/containerGroups/Read | Získá všechny skupiny kontejnerů. |
@@ -2562,7 +2561,7 @@ Služba Azure: [Container Instances](../container-instances/index.yml)
 Služba Azure: [Container Registry](../container-registry/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ContainerRegistry/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků registru kontejneru a povolí vytváření registrů kontejnerů. |
 > | Microsoft. ContainerRegistry/checkNameAvailability/Read | Kontroluje, zda je název registru kontejneru k dispozici pro použití. |
@@ -2647,7 +2646,7 @@ Služba Azure: [Container Registry](../container-registry/index.yml)
 Služba Azure: [Služba Azure Kubernetes (AKS)](../aks/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ContainerService/Register/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. ContainerService. |
 > | Microsoft. ContainerService/zrušit registraci/akce | Zruší registraci předplatného u poskytovatele prostředků Microsoft. ContainerService. |
@@ -2990,7 +2989,7 @@ Služba Azure: [Služba Azure Kubernetes (AKS)](../aks/index.yml)
 Služba Azure: [Azure dev Spaces](../dev-spaces/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DevSpaces/Register/Action | Registrace poskytovatele prostředků pro vývoj Microsoft dev Spaces pomocí předplatného |
 > | Microsoft. DevSpaces/Controllers/Read | Číst Azure Dev Spaces vlastnosti kontroleru |
@@ -3009,7 +3008,7 @@ Služba Azure: [Azure dev Spaces](../dev-spaces/index.yml)
 Služba Azure: [Azure cache pro Redis](../azure-cache-for-redis/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. cache/checknameavailability/Action | Zkontroluje, jestli je název k dispozici pro použití s novým Redis Cache. |
 > | Microsoft. cache/registrovat/akce | Zaregistruje poskytovatele prostředků Microsoft. cache v rámci předplatného. |
@@ -3055,7 +3054,7 @@ Služba Azure: [Azure cache pro Redis](../azure-cache-for-redis/index.yml)
 Služba Azure: [Data Factory](../data-factory/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DataFactory/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků Data Factory. |
 > | Microsoft. DataFactory/zrušit registraci/akce | Zruší registraci předplatného pro Data Factory poskytovatele prostředků. |
@@ -3127,6 +3126,7 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/Factory/integrationruntimes/stop/Action | Zastaví všechny Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/synccredentials/Action | Synchronizuje pověření pro zadaný Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/upgrade/Action | Upgraduje zadaný Integration Runtime. |
+> | Microsoft. DataFactory/Factory/integrationruntimes/createexpressshirinstalllink/Action | Vytvoří odkaz Expresní instalace pro samoobslužné Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/regenerateauthkey/Action | Znovu vygeneruje ověřovací klíče pro zadaný Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/removelinks/Action | Odebere propojené Integration Runtime odkazy ze zadaného Integration Runtime. |
 > | Microsoft. DataFactory/Factory/integrationruntimes/linkedIntegrationRuntime/Action | Vytvoří odkaz na propojenou Integration Runtime v zadaném sdíleném Integration Runtime. |
@@ -3158,6 +3158,12 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/factorys/Pipelines/pipelineruns/activityruns/průběh/čtení | Získá průběh spuštění aktivity. |
 > | Microsoft. DataFactory/továrny/kanály/izolovaný prostor (sandbox)/vytvoření/akce | Vytvoří běhové prostředí pro ladění kanálu. |
 > | Microsoft. DataFactory/továrny/kanály/izolovaný prostor (sandbox)/spuštění/akce | Vytvoří ladicí běh pro kanál. |
+> | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/Read | Číst proxy připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/Write | Vytvoří nebo aktualizuje proxy připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/DELETE | Odstraní proxy server připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/Validate/Action | Ověřte proxy server připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/operationresults/Read | Přečtěte si výsledky vytvoření proxy připojení privátního koncového bodu. |
+> | Microsoft. DataFactory/Factory/privateEndpointConnectionProxies/operationstatuses/Read | Přečtěte si stav vytvoření proxy připojení privátního koncového bodu. |
 > | Microsoft. DataFactory/Factory/querypipelineruns/Read | Přečte výsledek spuštění kanálu dotazů. |
 > | Microsoft. DataFactory/Factory/querytriggerruns/Read | Přečte výsledek spuštění triggeru. |
 > | Microsoft. DataFactory/Factory/sandboxpipelineruns/Read | Získá informace o běhu ladění pro kanál. |
@@ -3182,7 +3188,7 @@ Služba Azure: [Data Factory](../data-factory/index.yml)
 Služba Azure: [Azure Database Migration Service](../dms/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. datamigrace/registrace/akce | Zaregistruje předplatné u poskytovatele Azure Database Migration Service. |
 > | Microsoft. datamigration/Locations/operationResults/Read | Získání stavu dlouhotrvající operace související s přijatou odpovědí 202 |
@@ -3220,7 +3226,7 @@ Služba Azure: [Azure Database Migration Service](../dms/index.yml)
 Služba Azure: [Azure Database for MariaDB](../mariadb/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DBforMariaDB/Register/Action | Zaregistrovat poskytovatele prostředků MariaDB |
 > | Microsoft. DBforMariaDB/checkNameAvailability/Action | Ověřte, jestli je zadaný název serveru k dispozici pro zřizování po celém světě pro dané předplatné. |
@@ -3298,7 +3304,7 @@ Služba Azure: [Azure Database for MariaDB](../mariadb/index.yml)
 Služba Azure: [Azure Database for MySQL](../mysql/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DBforMySQL/Register/Action | Registrovat poskytovatele prostředků MySQL |
 > | Microsoft. DBforMySQL/checkNameAvailability/Action | Ověřte, jestli je zadaný název serveru k dispozici pro zřizování po celém světě pro dané předplatné. |
@@ -3376,7 +3382,7 @@ Služba Azure: [Azure Database for MySQL](../mysql/index.yml)
 Služba Azure: [Azure Database for PostgreSQL](../postgresql/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DBforPostgreSQL/Register/Action | Zaregistrovat poskytovatele prostředků PostgreSQL |
 > | Microsoft. DBforPostgreSQL/checkNameAvailability/Action | Ověřte, jestli je zadaný název serveru k dispozici pro zřizování po celém světě pro dané předplatné. |
@@ -3468,7 +3474,7 @@ Služba Azure: [Azure Database for PostgreSQL](../postgresql/index.yml)
 Služba Azure: [Azure Cosmos DB](../cosmos-db/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft.DocumentDB/registrovat/akce |  Registrace poskytovatele prostředků Microsoft DocumentDB pro předplatné |
 > | Microsoft.DocumentDB/databaseAccountNames/Read | Ověří dostupnost názvu. |
@@ -3697,7 +3703,7 @@ Služba Azure: [Azure Cosmos DB](../cosmos-db/index.yml)
 Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovaná instance azure SQL](../azure-sql/managed-instance/index.yml), [SQL Data Warehouse](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. SQL/checkNameAvailability/Action | Ověřte, jestli je zadaný název serveru k dispozici pro zřizování po celém světě pro dané předplatné. |
 > | Microsoft. SQL/registr/Action | Zaregistruje předplatné pro poskytovatele prostředků Microsoft SQL Database a povolí vytváření databází Microsoft SQL. |
@@ -4113,7 +4119,7 @@ Služba Azure: [Azure SQL Database](../azure-sql/database/index.yml), [spravovan
 Služba Azure: [SQL Server v azure Virtual Machines](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. SqlVirtualMachine/Register/Action | Registrovat předplatné u poskytovatele prostředků Microsoft. SqlVirtualMachine |
 > | Microsoft. SqlVirtualMachine/zrušit registraci/akce | Zrušení registrace předplatného u poskytovatele prostředků Microsoft. SqlVirtualMachine |
@@ -4133,14 +4139,14 @@ Služba Azure: [SQL Server v azure Virtual Machines](../azure-sql/virtual-machin
 > | Microsoft. SqlVirtualMachine/sqlVirtualMachines/Write | Vytvořit nové nebo změnit vlastnosti stávajícího virtuálního počítače SQL |
 > | Microsoft. SqlVirtualMachine/sqlVirtualMachines/DELETE | Odstranit stávající virtuální počítač s SQL |
 
-## <a name="analytics"></a>Analýzy
+## <a name="analytics"></a>Analýza
 
 ### <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
 Služba Azure: [Azure Analysis Services](../analysis-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. AnalysisServices/Register/Action | Zaregistruje poskytovatele prostředků Analysis Services. |
 > | Microsoft. AnalysisServices/Locations/checkNameAvailability/Action | Kontroluje, zda je zadaný název Analysis Server platný a nepoužívá se. |
@@ -4161,7 +4167,7 @@ Služba Azure: [Azure Analysis Services](../analysis-services/index.yml)
 Služba Azure: [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. datacihly/registrovat/akce | Zaregistrujte se do datacihl. |
 > | Microsoft. datacihly/umístění/getNetworkPolicies/Action | Získání zásad záměru sítě pro podsíť na základě umístění používaného službou NRP |
@@ -4188,7 +4194,7 @@ Služba Azure: [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
 Služba Azure: [Data Lake Analytics](../data-lake-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DataLakeAnalytics/Register/Action | Zaregistrujte předplatné do DataLakeAnalytics. |
 > | Microsoft. DataLakeAnalytics/Accounts/Read | Získejte informace o existujícím účtu DataLakeAnalytics. |
@@ -4228,7 +4234,7 @@ Služba Azure: [Data Lake Analytics](../data-lake-analytics/index.yml)
 Služba Azure: [Azure Data Lake Store](../storage/blobs/data-lake-storage-introduction.md)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DataLakeStore/Register/Action | Zaregistrujte předplatné do DataLakeStore. |
 > | Microsoft. DataLakeStore/Accounts/Read | Získejte informace o existujícím účtu DataLakeStore. |
@@ -4263,7 +4269,7 @@ Služba Azure: [Azure Data Lake Store](../storage/blobs/data-lake-storage-introd
 Služba Azure: [Event Hubs](../event-hubs/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. EventHub/checkNamespaceAvailability/Action | Zkontroluje dostupnost oboru názvů v rámci daného předplatného. Toto rozhraní API je zastaralé, použijte místo toho CheckNameAvailability. |
 > | Microsoft. EventHub/checkNameAvailability/Action | Zkontroluje dostupnost oboru názvů v rámci daného předplatného. |
@@ -4348,7 +4354,7 @@ Služba Azure: [Event Hubs](../event-hubs/index.yml)
 Služba Azure: [HDInsight](../hdinsight/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. HDInsight/registrace/akce | Registrace poskytovatele prostředků služby HDInsight pro předplatné |
 > | Microsoft. HDInsight/zrušit registraci/akce | Zrušení registrace poskytovatele prostředků služby HDInsight u předplatného |
@@ -4378,7 +4384,7 @@ Služba Azure: [HDInsight](../hdinsight/index.yml)
 Služba Azure: [azure Průzkumník dat](/azure/data-explorer/)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Kusto/Register/Action | Akce registrace předplatného |
 > | Microsoft. Kusto/Register/Action | Zaregistruje předplatné do poskytovatele prostředků Kusto. |
@@ -4436,7 +4442,7 @@ Služba Azure: [azure Průzkumník dat](/azure/data-explorer/)
 Služba Azure: [Power BI Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. PowerBIDedicated/Register/Action | Zaregistruje Power BI vyhrazeného poskytovatele prostředků. |
 > | Microsoft. PowerBIDedicated/kapacit/čtení | Načte informace o zadané Power BI vyhrazené kapacitě. |
@@ -4456,7 +4462,7 @@ Služba Azure: [Power BI Embedded](https://docs.microsoft.com/azure/power-bi-emb
 Služba Azure: [Stream Analytics](../stream-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. StreamAnalytics/Register/Action | Registrovat předplatné u Stream Analyticsho poskytovatele prostředků |
 > | Microsoft. StreamAnalytics/umístění/kvóty/číst | Kvóta pro čtení Stream Analytics předplatného |
@@ -4502,7 +4508,7 @@ Služba Azure: [Stream Analytics](../stream-analytics/index.yml)
 Služba Azure: [Služba Azure blockchain](../blockchain/workbench/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. blockchain/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků blockchain. |
 > | Microsoft. blockchain/blockchainMembers/Read | Získá nebo zobrazí seznam existujících členů blockchain. |
@@ -4529,7 +4535,7 @@ Služba Azure: [Služba Azure blockchain](../blockchain/workbench/index.yml)
 Služba Azure: [Azure bot Service](https://docs.microsoft.com/azure/bot-service/)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. BotService/checknameavailability/Action | Ověřit dostupnost názvu robota |
 > | Microsoft. BotService/listauthserviceproviders/Action | Vypsat poskytovatele ověřovacích služeb |
@@ -4552,7 +4558,7 @@ Služba Azure: [Azure bot Service](https://docs.microsoft.com/azure/bot-service/
 Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Cognitiveservices Account/Register/Action | Akce registrace předplatného |
 > | Microsoft. Cognitiveservices Account/Register/Action | Zaregistruje předplatné pro Cognitive Services. |
@@ -4880,7 +4886,7 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/jazyky/akce | Rozhraní API vrátí zjištěný jazyk a číselné skóre mezi 0 a 1. Skóre blížící se 1 značí 100% jistotu, že identifikovaný jazyk je pravdivý. Podporuje se celkem 120 jazyků. |
 > | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/entity/Action | Rozhraní API vrátí seznam známých entit a obecně pojmenovaných entit ( \" osoba \" , \" umístění \" , \" organizace \" atd.) v daném dokumentu. |
 > | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/klíčová fráze/akce | Rozhraní API vrátí seznam řetězců, ve kterých se ve vstupním textu zaznamená klíčové body. |
-> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/mínění/Action | Rozhraní API vrací číselné skóre v rozsahu 0 až 1.<br>Scores close to 1 indicate positive sentiment, while scores close to 0 indicate negative sentiment.<br>Skóre 0,5 označuje nedostatek mínění (např.<br>příkaz factoid). |
+> | Microsoft. Cognitiveservices Account/Accounts/TextAnalytics/mínění/Action | Rozhraní API vrací číselné skóre v rozsahu 0 až 1.<br>Skóre blížící se 1 značí pozitivní mínění, zatímco skóre blížící se 0 značí negativní mínění.<br>Skóre 0,5 označuje nedostatek mínění (např.<br>příkaz factoid). |
 > | Microsoft. Cognitiveservices Account/Accounts/VideoSearch/LINTREND/Action | Získejte aktuálně Trendovaná videa. |
 > | Microsoft. Cognitiveservices Account/Accounts/VideoSearch/Details/Action | Získejte přehled o videu, jako jsou například související videa. |
 > | Microsoft. Cognitiveservices Account/Accounts/VideoSearch/Search/Action | Získejte videa relevantní pro daný dotaz. |
@@ -4892,7 +4898,7 @@ Služba Azure: [Cognitive Services](../cognitive-services/index.yml)
 Služba Azure: [Machine Learning Studio](../machine-learning/studio/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. MachineLearning/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků webové služby Machine Learning a povolí vytváření webových služeb. |
 > | Microsoft. MachineLearning/WebServices/Action | Vytvoření vlastností místních webových služeb pro podporované oblasti |
@@ -4921,7 +4927,7 @@ Služba Azure: [Machine Learning Studio](../machine-learning/studio/index.yml)
 Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. MachineLearningServices/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků Machine Learning Services. |
 > | Microsoft. MachineLearningServices/Locations/updateQuotas/Action | Aktualizujte kvótu pro každou rodinu virtuálních počítačů v pracovním prostoru. |
@@ -5026,12 +5032,12 @@ Služba Azure: [služba Machine Learning](../machine-learning/index.yml)
 
 ## <a name="internet-of-things"></a>Internet věcí
 
-### <a name="microsoftdevices"></a>Microsoft. Devices
+### <a name="microsoftdevices"></a>Microsoft.Devices
 
 Služba Azure: [IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning Service](../iot-dps/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Devices/Register/Action | Zaregistrujte předplatné pro poskytovatele prostředků IotHub a povolíte vytváření prostředků IotHub. |
 > | Microsoft. Devices/checkNameAvailability/Action | Ověřte, jestli je k dispozici IotHub název. |
@@ -5176,7 +5182,7 @@ Služba Azure: [IoT Hub](../iot-hub/index.yml), [IoT Hub Device Provisioning Ser
 Služba Azure: [IoT Central](../iot-central/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. IoTCentral/checkNameAvailability/Action | Zkontroluje, jestli je k dispozici IoT Central název aplikace. |
 > | Microsoft. IoTCentral/checkSubdomainAvailability/Action | Kontroluje, zda je k dispozici IoT Central subdoména aplikace. |
@@ -5192,7 +5198,7 @@ Služba Azure: [IoT Central](../iot-central/index.yml)
 Služba Azure: [Notification Hubs](../notification-hubs/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. NotificationHubs/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků NotificationHubs a povolí vytváření oborů názvů a NotificationHubs. |
 > | Microsoft. NotificationHubs/zrušit registraci/akce | Zruší registraci předplatného pro poskytovatele prostředků NotificationHubs a povolí vytváření oborů názvů a NotificationHubs. |
@@ -5227,7 +5233,7 @@ Služba Azure: [Notification Hubs](../notification-hubs/index.yml)
 Služba Azure: [Time Series Insights](../time-series-insights/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. TimeSeriesInsights/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků Time Series Insights a povolí vytváření Time Series Insights prostředí. |
 > | Microsoft. TimeSeriesInsights/prostředí/číst | Získá vlastnosti prostředí. |
@@ -5251,7 +5257,7 @@ Služba Azure: [Time Series Insights](../time-series-insights/index.yml)
 Služba Azure: [digitální vlákna Azure](../digital-twins/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. IoTSpaces/Register/Action | Registrace předplatného pro poskytovatele prostředků Microsoft. IoTSpaces Graph pro povolení vytváření prostředků |
 > | Microsoft. IoTSpaces/Graph/Write | Vytvořit prostředek Microsoft. IoTSpaces Graph |
@@ -5263,7 +5269,7 @@ Služba Azure: [digitální vlákna Azure](../digital-twins/index.yml)
 Služba Azure: [prostorové kotvy Azure](../spatial-anchors/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. MixedReality/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků smíšené reality. |
 > | Microsoft. MixedReality/remoteRenderingAccounts/Providers/Microsoft. Insights/metricDefinitions/Read | Získá dostupné metriky pro Microsoft. MixedReality/remoteRenderingAccounts. |
@@ -5296,7 +5302,7 @@ Služba Azure: [prostorové kotvy Azure](../spatial-anchors/index.yml)
 Služba Azure: [API Management](../api-management/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ApiManagement/Register/Action | Registrace předplatného pro poskytovatele prostředků Microsoft. ApiManagement |
 > | Microsoft. ApiManagement/zrušit registraci/akce | Zrušení registrace předplatného pro poskytovatele prostředků Microsoft. ApiManagement |
@@ -5515,7 +5521,7 @@ Služba Azure: [API Management](../api-management/index.yml)
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. AppConfiguration/Register/Action | Zaregistruje předplatné pro použití konfigurace aplikace Microsoft. |
 > | Microsoft. AppConfiguration/zrušit registraci/akce | Zruší registraci předplatného pomocí konfigurace aplikace Microsoft. |
@@ -5553,7 +5559,7 @@ Služba Azure: jádro
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. AzureStack/Register/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. AzureStack. |
 > | Microsoft. AzureStack/cloudManifestFiles/Read | Načte soubor manifestu cloudu. |
@@ -5577,7 +5583,7 @@ Služba Azure: jádro
 Služba Azure: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DataBoxEdge/availableSkus/Read | Zobrazí nebo získá ArmApiRes_availableSkus. |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/Action | Nahrát certifikát pro registraci zařízení |
@@ -5656,25 +5662,22 @@ Služba Azure: [Azure Stack Edge](../databox-online/azure-stack-edge-overview.md
 Služba Azure: [Data Catalog](../data-catalog/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
-> | Microsoft. datacatalog/registrovat/Action | Registrace předplatného pro Data Catalog poskytovatele prostředků |
-> | Microsoft. datacatalog/zrušit registraci/akce | Zrušení registrace předplatného pro Data Catalog poskytovatele prostředků |
-> | Microsoft. datacatalog/Katalogs/Read | Číst prostředky katalogu pro Data Catalog poskytovatele prostředků |
-> | Microsoft. datacatalog/Katalogs/Write | Zapsat prostředek katalogů pro Data Catalog poskytovatele prostředků |
-> | Microsoft. datacatalog/Katalogs/DELETE | Odstraní prostředek catalogs pro poskytovatele prostředků Data Catalog. |
-> | Microsoft. datacatalog/checkNameAvailability/Read | Ověřte dostupnost názvu katalogu pro Data Catalog poskytovatele prostředků. |
-> | Microsoft. datacatalog/datacatalogs/Ready | Načte prostředek datacatalog pro poskytovatele prostředků Data Catalog. |
-> | Microsoft. datacatalog/datacatalogs/Write | Zápis prostředku datacatalog pro poskytovatele prostředků Data Catalog. |
-> | Microsoft. datacatalog/datacatalogs/DELETE | Odstraní prostředek datacatalog pro poskytovatele prostředků Data Catalog. |
-> | Microsoft. datacatalog/Operations/Read | Přečte všechny dostupné operace v Data Catalog poskytovatel prostředků. |
+> | Microsoft. datacatalog/checkNameAvailability/Action | Kontroluje dostupnost názvu katalogu pro tenanta. |
+> | Microsoft. datacatalog/registrovat/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. datacatalog. |
+> | Microsoft. datacatalog/zrušit registraci/akce | Zruší registraci předplatného od poskytovatele prostředků Microsoft. datacatalog. |
+> | Microsoft. datacatalog/Katalogs/Read | Získejte vlastnosti katalogu nebo katalogů v rámci předplatného nebo skupiny prostředků. |
+> | Microsoft. datacatalog/Katalogs/Write | Vytvoří katalog nebo aktualizuje značky a vlastnosti katalogu. |
+> | Microsoft. datacatalog/Katalogs/DELETE | Odstraní katalog. |
+> | Microsoft. datacatalog/Operations/Read | Zobrazí seznam operací, které jsou k dispozici v poskytovateli prostředků Microsoft. datacatalog. |
 
 ### <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 Služba Azure: [Event Grid](../event-grid/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. EventGrid/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků EventGrid. |
 > | Microsoft. EventGrid/zrušit registraci/akce | Zruší registraci předplatného pro poskytovatele prostředků EventGrid. |
@@ -5746,7 +5749,7 @@ Služba Azure: [Event Grid](../event-grid/index.yml)
 Služba Azure: [Logic Apps](../logic-apps/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Logic/Register/Action | Zaregistruje poskytovatele prostředků Microsoft. Logic pro dané předplatné. |
 > | Microsoft. Logic/integrationAccounts/Read | Přečte účet pro integraci. |
@@ -5859,7 +5862,7 @@ Služba Azure: [Logic Apps](../logic-apps/index.yml)
 Služba Azure: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Relay/checkNamespaceAvailability/Action | Zkontroluje dostupnost oboru názvů v rámci daného předplatného. Toto rozhraní API je zastaralé, použijte místo toho CheckNameAvailability. |
 > | Microsoft. Relay/checkNameAvailability/Action | Zkontroluje dostupnost oboru názvů v rámci daného předplatného. |
@@ -5922,7 +5925,7 @@ Služba Azure: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 Služba Azure: [Service Bus](../service-bus/index.md)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ServiceBus/checkNamespaceAvailability/Action | Zkontroluje dostupnost oboru názvů v rámci daného předplatného. Toto rozhraní API je zastaralé, použijte místo toho CheckNameAvailability. |
 > | Microsoft. ServiceBus/checkNameAvailability/Action | Zkontroluje dostupnost oboru názvů v rámci daného předplatného. |
@@ -5986,6 +5989,7 @@ Služba Azure: [Service Bus](../service-bus/index.md)
 > | Microsoft. ServiceBus/obory názvů/Queues/autorizačních pravidel/DELETE | Operace odstranění autorizačních pravidel fronty |
 > | Microsoft. ServiceBus/obory názvů/Queues/autorizačních pravidel/klíče listkey/Action | Získá připojovací řetězec k zařazení do fronty. |
 > | Microsoft. ServiceBus/obory názvů/Queues/autorizačních pravidel/regenerateKeys/Action | Znovu vygenerovat primární nebo sekundární klíč k prostředku |
+> | Microsoft. ServiceBus/obory názvů/SKU/číst | Vypsat podporované SKU pro obor názvů |
 > | Microsoft. ServiceBus/obory názvů/témata/zápis | Vytvoří nebo aktualizuje vlastnosti tématu. |
 > | Microsoft. ServiceBus/obory názvů/témata/číst | Získá seznam popisů prostředků tématu. |
 > | Microsoft. ServiceBus/obory názvů/témata/DELETE | Operace odstranění prostředku tématu |
@@ -6018,7 +6022,7 @@ Služba Azure: [Service Bus](../service-bus/index.md)
 Služba Azure: [Azure Active Directory Domain Services](../active-directory-domain-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. AAD/zrušit registraci/akce | Zrušit registraci doménové služby |
 > | Microsoft. AAD/registrace/akce | Registrovat doménovou službu |
@@ -6036,7 +6040,7 @@ Služba Azure: [Azure Active Directory Domain Services](../active-directory-doma
 Služba Azure: Azure Active Directory
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. aadiam/azureADMetrics/Read | Načíst definici metrik Azure AD |
 > | Microsoft. aadiam/azureADMetrics/Write | Vytvoření a aktualizace definice metrik služby Azure AD |
@@ -6066,7 +6070,7 @@ Služba Azure: Azure Active Directory
 Služba Azure: [Azure Active Directory](../active-directory/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ADHybridHealthService/Configuration/Action | Aktualizuje konfiguraci tenanta. |
 > | Microsoft. ADHybridHealthService/Services/Action | Aktualizuje instanci služby v tenantovi. |
@@ -6145,7 +6149,7 @@ Služba Azure: [Azure Active Directory](../active-directory/index.yml)
 Služba Azure: [Azure Active Directory B2C](../active-directory-b2c/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Azureactivedirectory selhala/Register/Action | Registrace předplatného pro poskytovatele prostředků Microsoft. Azureactivedirectory selhala |
 > | Microsoft. Azureactivedirectory selhala/b2cDirectories/Write | Vytvořit nebo aktualizovat prostředek adresáře B2C |
@@ -6162,7 +6166,7 @@ Služba Azure: [Azure Active Directory B2C](../active-directory-b2c/index.yml)
 Služba Azure: [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ManagedIdentity/Register/Action | Zaregistruje předplatné pro poskytovatele spravovaného prostředku identity. |
 > | Microsoft. ManagedIdentity/identity/číst | Získá existující identitu přiřazenou systémem. |
@@ -6179,7 +6183,7 @@ Služba Azure: [spravované identity pro prostředky Azure](../active-directory/
 Služba Azure: [Key Vault](../key-vault/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft... trezor/registrace/akce | Zaregistruje předplatné. |
 > | Microsoft... trezor/zrušení registrace/akce | Zruší registraci předplatného. |
@@ -6258,7 +6262,7 @@ Služba Azure: [Key Vault](../key-vault/index.yml)
 Služba Azure: [Security Center](../security-center/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Security/registr/Action | Zaregistruje předplatné pro Azure Security Center. |
 > | Microsoft. Security/zrušit registraci/akce | Zruší registraci předplatného z Azure Security Center. |
@@ -6335,7 +6339,7 @@ Služba Azure: [Security Center](../security-center/index.yml)
 Služba Azure: přehledy monitorování Microsoftu
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. SecurityGraph/diagnosticsettings/Write | Zápis nastavení diagnostiky |
 > | Microsoft. SecurityGraph/diagnosticsettings/Read | Čtení nastavení diagnostiky |
@@ -6347,7 +6351,7 @@ Služba Azure: přehledy monitorování Microsoftu
 Služba Azure: [Azure Sentinel](../sentinel/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. SecurityInsights/Register/Action | Zaregistruje předplatné do Azure Sentinel. |
 > | Microsoft. SecurityInsights/zrušit registraci/akce | Zruší registraci předplatného z Azure Sentinel. |
@@ -6410,7 +6414,7 @@ Služba Azure: [Azure Sentinel](../sentinel/index.yml)
 Služba Azure: [Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. DevTestLab/Register/Action | Zaregistruje předplatné. |
 > | Microsoft. DevTestLab/labCenters/DELETE | Odstranit centra testovacího prostředí. |
@@ -6530,7 +6534,7 @@ Služba Azure: [Azure Lab Services](../lab-services/index.yml)
 Služba Azure: [Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. LabServices/Register/Action | Zaregistruje předplatné. |
 > | Microsoft. LabServices/labAccounts/DELETE | Odstraní účty testovacího prostředí. |
@@ -6587,7 +6591,7 @@ Služba Azure: [Azure Lab Services](../lab-services/index.yml)
 Služba Azure: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. VisualStudio/Register/Action | Registrace předplatného Azure u poskytovatele Microsoft. VisualStudio |
 > | Microsoft. VisualStudio/Account/Write | Nastavit účet |
@@ -6610,7 +6614,7 @@ Služba Azure: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. migrace/registrace/akce | Zaregistruje předplatné u poskytovatele prostředků Microsoft. migruje. |
 > | Microsoft. migruje/assessmentprojects/Read | Získá vlastnosti projektu vyhodnocení. |
@@ -6677,7 +6681,7 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. OffAzure/Register/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. OffAzure. |
 > | Microsoft. OffAzure/Register/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. OffAzure. |
@@ -6932,8 +6936,9 @@ Služba Azure: [Azure Migrate](../migrate/migrate-services-overview.md)
 Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
+> | Microsoft. AlertsManagement/Register/Action | Akce registrace předplatného |
 > | Microsoft. AlertsManagement/Register/Action | Zaregistruje předplatné pro správu výstrah společnosti Microsoft. |
 > | Microsoft. AlertsManagement/actionRules/Read | Získejte všechna pravidla akcí pro vstupní filtry. |
 > | Microsoft. AlertsManagement/actionRules/Write | Vytvořit nebo aktualizovat pravidlo akce v daném předplatném |
@@ -6959,7 +6964,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Insights/metriky/akce | Akce metriky |
 > | Microsoft. Insights/registr/Action | Registrace poskytovatele Microsoft Insights |
@@ -7276,7 +7281,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. OperationalInsights/Register/Action | Registrace předplatného pro poskytovatele prostředků. |
 > | Microsoft. operationalinsights/Register/Action | Rergisters předplatné. |
@@ -7306,9 +7311,9 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/configurationScopes/číst | Získat rozsah konfigurace |
 > | Microsoft. OperationalInsights/pracovní prostory/configurationScopes/Write | Nastavit rozsah konfigurace |
 > | Microsoft. OperationalInsights/pracovní prostory/configurationScopes/DELETE | Odstranit obor konfigurace |
-> | Microsoft. operationalinsights/pracovní prostory/DataExport/číst | Načte konkrétní export dat. |
-> | Microsoft. operationalinsights/pracovní prostory/exportovat/zapisovat | Vytvořte nebo aktualizujte export dat. |
-> | Microsoft. operationalinsights/pracovní prostory/DataExport/DELETE | Odstraní konkrétní export dat. |
+> | Microsoft. operationalinsights/pracovní prostory/informace o exportu/čtení | Načte konkrétní export dat. |
+> | Microsoft. operationalinsights/pracovní prostory/exporty/zápisy | Vytvořte nebo aktualizujte export dat. |
+> | Microsoft. operationalinsights/pracovní prostory/exporty/odstranit | Odstraní konkrétní export dat. |
 > | Microsoft. OperationalInsights/pracovní prostory/zdroje dat/číst | Získat zdroje dat v pracovním prostoru. |
 > | Microsoft. OperationalInsights/pracovní prostory/zdroje dat/zápis | Vytvořit nebo aktualizovat zdroje dat v pracovním prostoru. |
 > | Microsoft. OperationalInsights/pracovní prostory/zdroje dat/odstranit | Odstranění zdrojů dat v pracovním prostoru. |
@@ -7361,7 +7366,9 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AlertHistory/číst | Čtení dat z tabulky AlertHistory |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AmlComputeClusterEvent/číst | Čtení dat z tabulky AmlComputeClusterEvent |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AmlComputeClusterNodeEvent/číst | Čtení dat z tabulky AmlComputeClusterNodeEvent |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/AmlComputeCpuGpuUtilization/číst | Čtení dat z tabulky AmlComputeCpuGpuUtilization |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AmlComputeJobEvent/číst | Čtení dat z tabulky AmlComputeJobEvent |
+> | Microsoft. OperationalInsights/pracovní prostory/dotazy/AmlRunStatusChangedEvent/číst | Čtení dat z tabulky AmlRunStatusChangedEvent |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ApiManagementGatewayLogs/číst | Čtení dat z tabulky ApiManagementGatewayLogs |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppAvailabilityResults/číst | Čtení dat z tabulky AppAvailabilityResults |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/AppBrowserTimings/číst | Čtení dat z tabulky AppBrowserTimings |
@@ -7540,7 +7547,6 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/pracovní prostory/dotaz/výkon/čtení | Čtení dat z tabulky perf |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/ProtectionStatus/číst | Čtení dat z tabulky ProtectionStatus |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/požadavky/číst | Čtení dat z tabulky requests |
-> | Microsoft. OperationalInsights/pracovní prostory/dotazy/ReservedCommonFields/číst | Čtení dat z tabulky ReservedCommonFields |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SCCMAssessmentRecommendation/číst | Čtení dat z tabulky SCCMAssessmentRecommendation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SCOMAssessmentRecommendation/číst | Čtení dat z tabulky SCOMAssessmentRecommendation |
 > | Microsoft. OperationalInsights/pracovní prostory/dotazy/SecurityAlert/číst | Čtení dat z tabulky SecurityAlert |
@@ -7643,7 +7649,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. OperationsManagement/Register/Action | Registrace předplatného pro poskytovatele prostředků. |
 > | Microsoft. OperationsManagement/managementAssociations/Write | Vytvořit nové přidružení pro správu |
@@ -7661,7 +7667,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. monitor zátěže byl/komponenty/číst | Načte součásti pro daný prostředek. |
 > | Microsoft. monitor zátěže byl/componentsSummary/Read | Získá souhrn komponent. |
@@ -7680,7 +7686,7 @@ Služba Azure: [Azure monitor](../azure-monitor/index.yml)
 Služba Azure: [Azure Advisor](../advisor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Advisor/generateRecommendations/Action | Získá stav doporučení pro generování doporučení. |
 > | Microsoft. Advisor/registr/Action | Zaregistruje předplatné pro Microsoft Advisor. |
@@ -7704,7 +7710,7 @@ Služba Azure: [Azure Advisor](../advisor/index.yml)
 Služba Azure: [Azure Policy](../governance/policy/overview.md), [azure RBAC](overview.md), [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Authorization/elevateAccess/Action | Udělit volajícímu přístup Správce uživatelských přístupů v oboru tenanta |
 > | Microsoft. Authorization/classicAdministrators/Read | Přečte Správce předplatného. |
@@ -7758,7 +7764,7 @@ Služba Azure: [Azure Policy](../governance/policy/overview.md), [azure RBAC](ov
 Služba Azure: [Automatizace](../automation/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Automation/Register/Action | Zaregistruje předplatné do Azure Automation |
 > | Microsoft. Automation/automationAccounts/webhooks/Action | Generuje identifikátor URI pro Azure Automation Webhook. |
@@ -7890,7 +7896,7 @@ Služba Azure: [Automatizace](../automation/index.yml)
 Služba Azure: [Batch](../batch/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft.Batch/registrovat/akce | Zaregistruje předplatné pro poskytovatele prostředků služby Batch a povolí vytváření účtů Batch. |
 > | Microsoft.Batch/zrušit registraci/akce | Zruší registraci předplatného poskytovatele prostředků služby Batch, aby se zabránilo vytváření účtů Batch. |
@@ -7940,7 +7946,7 @@ Služba Azure: [Batch](../batch/index.yml)
 Služba Azure: [cost management + fakturace](../cost-management-billing/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. fakturace/validateAddress/Action |  |
 > | Microsoft. fakturace/registrace/akce |  |
@@ -7979,7 +7985,7 @@ Služba Azure: [cost management + fakturace](../cost-management-billing/index.ym
 Služba Azure: [Azure modrotisky](../governance/blueprints/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. detail/Register/Action | Zaregistruje poskytovatele prostředků Azure modrotisky. |
 > | Microsoft. detail/blueprintAssignments/Read | Přečtěte si všechny artefakty podrobného plánu |
@@ -8003,7 +8009,7 @@ Služba Azure: [Azure modrotisky](../governance/blueprints/index.yml)
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Capacity/calculateprice/Action | Vypočítat cenu za rezervované |
 > | Microsoft. Capacity/checkoffers/Action | Podívejte se na nabídky předplatného |
@@ -8042,7 +8048,7 @@ Služba Azure: jádro
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. obchod/registrace/akce | Registrace předplatného pro Microsoft Commerce UsageAggregate |
 > | Microsoft. Commerce/zrušit registraci/akce | Zrušení registrace předplatného pro Microsoft Commerce UsageAggregate |
@@ -8054,7 +8060,7 @@ Služba Azure: jádro
 Služba Azure: [cost management](../cost-management-billing/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. spotřeba/registrace/akce | Registrovat do RP spotřeby |
 > | Microsoft. spotřeb/aggregatedcost/Read | Seznam AggregatedCost pro skupinu pro správu. |
@@ -8089,7 +8095,7 @@ Služba Azure: [cost management](../cost-management-billing/index.yml)
 Služba Azure: [cost management](../cost-management-billing/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. CostManagement/dotaz/akce | Dotazování dat o využití podle oboru |
 > | Microsoft. CostManagement/Reports/Action | Plánování sestav o využití dat podle oboru |
@@ -8135,7 +8141,7 @@ Služba Azure: [cost management](../cost-management-billing/index.yml)
 Služba Azure: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Features/Register/Action | Zaregistruje funkci předplatného. |
 > | Microsoft. Features/Features/Read | Získá funkce předplatného. |
@@ -8149,7 +8155,7 @@ Služba Azure: [Azure Resource Manager](../azure-resource-manager/index.yml)
 Služba Azure: [Azure Policy](../governance/policy/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. GuestConfiguration/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků Microsoft. GuestConfiguration. |
 > | Microsoft. GuestConfiguration/guestConfigurationAssignments/Write | Vytvořte nové přiřazení konfigurace hostů. |
@@ -8163,7 +8169,7 @@ Služba Azure: [Azure Policy](../governance/policy/index.yml)
 Služba Azure: [Azure ARC](../azure-arc/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. HybridCompute/Register/Action | Zaregistruje předplatné pro poskytovatele prostředků Microsoft. HybridCompute. |
 > | Microsoft. HybridCompute/zrušit registraci/akce | Zruší registraci předplatného pro poskytovatele prostředků Microsoft. HybridCompute. |
@@ -8182,7 +8188,7 @@ Služba Azure: [Azure ARC](../azure-arc/index.yml)
 Služba Azure: [Azure Lighthouse](../lighthouse/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. ManagedServices/Register/Action | Zaregistrujte se do spravovaných služeb. |
 > | Microsoft. ManagedServices/zrušit registraci/akce | Zrušte registraci ze spravovaných služeb. |
@@ -8201,7 +8207,7 @@ Služba Azure: [Azure Lighthouse](../lighthouse/index.yml)
 Služba Azure: [skupiny pro správu](../governance/management-groups/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Management/checkNameAvailability/Action | Kontroluje, zda je zadaný název skupiny pro správu platný a jedinečný. |
 > | Microsoft. Management/getentities/Action | Vypíše všechny entity (Skupiny pro správu, odběry atd.) pro ověřeného uživatele. |
@@ -8217,12 +8223,12 @@ Služba Azure: [skupiny pro správu](../governance/management-groups/index.yml)
 > | Microsoft. Management/managementGroups/Subscriptions/Write | Přidruží stávající předplatné ke skupině pro správu. |
 > | Microsoft. Management/managementGroups/Subscriptions/DELETE | Odpojí předplatné ze skupiny pro správu. |
 
-### <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
+### <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
 
 Služba Azure: [Azure Policy](../governance/policy/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. PolicyInsights/Register/Action | Zaregistruje poskytovatele prostředků Microsoft Policy Insights a povolí akce. |
 > | Microsoft. PolicyInsights/zrušit registraci/akce | Zruší registraci poskytovatele prostředků Microsoft Policy Insights. |
@@ -8254,7 +8260,7 @@ Služba Azure: [Azure Policy](../governance/policy/index.yml)
 Služba Azure: [Azure Portal](../azure-portal/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Portal/registrace/akce | Zaregistrovat na portál |
 > | Microsoft. Portal/konzoly/DELETE | Odebere instanci Cloud Shell. |
@@ -8272,72 +8278,72 @@ Služba Azure: [Azure Portal](../azure-portal/index.yml)
 Služba Azure: [Site Recovery](../site-recovery/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. RecoveryServices/Register/Action | Zaregistruje předplatné pro daného poskytovatele prostředků. |
-> | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. RecoveryServices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Ověřit funkce |
+> | Microsoft. recoveryservices/Locations/backupPreValidateProtection/Action |  |
+> | Microsoft. recoveryservices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
+> | Microsoft. recoveryservices/Locations/backupValidateFeatures/Action | Ověřit funkce |
 > | Microsoft. RecoveryServices/Locations/allocateStamp/Action | AllocateStamp je interní operace, kterou používá služba. |
 > | Microsoft. RecoveryServices/Locations/checkNameAvailability/Action | Ověřit dostupnost názvu prostředku je rozhraní API, které kontroluje, jestli je název prostředku dostupný. |
 > | Microsoft. RecoveryServices/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
-> | Microsoft. RecoveryServices/Locations/backupProtectedItem/Write | Vytvořit položku chráněnou zálohováním |
-> | Microsoft. RecoveryServices/Locations/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
+> | Microsoft. recoveryservices/Locations/backupProtectedItem/Write | Vytvořit položku chráněnou zálohováním |
+> | Microsoft. recoveryservices/Locations/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
 > | Microsoft. RecoveryServices/Locations/stav operationstatus/Read | Získá stav operace pro danou operaci. |
 > | Microsoft. RecoveryServices/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
-> | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
-> | Microsoft. RecoveryServices/trezory/backupSecurityPIN/Action | Vrátí informace o bezpečnostním PIN kódu pro trezor Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
+> | Microsoft. recoveryservices/trezory/backupJobsExport/Action | Exportovat úlohy |
+> | Microsoft. recoveryservices/trezory/backupSecurityPIN/Action | Vrátí informace o bezpečnostním PIN kódu pro trezor Recovery Services. |
+> | Microsoft. recoveryservices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
 > | Microsoft. RecoveryServices/trezory/Write | Operace vytvořit trezor vytvoří prostředek Azure typu trezor. |
 > | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
 > | Microsoft. RecoveryServices/trezory/odstranit | Operace odstranění trezoru odstraní zadaný prostředek Azure typu trezor. |
-> | Microsoft. RecoveryServices/trezory/backupconfig/Read | Vrátí konfiguraci pro trezor Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/backupconfig/Write | Aktualizuje konfiguraci pro trezor Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/backupEncryptionConfigs/Read | Získá konfiguraci šifrování prostředků zálohování. |
-> | Microsoft. RecoveryServices/trezory/backupEncryptionConfigs/Write | Aktualizuje konfiguraci šifrování prostředků zálohy. |
-> | Microsoft. RecoveryServices/trezory/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/DELETE | Odstranit záložní záměr ochrany |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/operationResults/Read | Vrátí stav operace. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/operationsStatus/Read | Vrátí stav operace. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/DELETE | Odstraní registrovaný kontejner. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Dotázat se/Action | Dotazování na úlohy v rámci kontejneru |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/operationsStatus/Read | Načte stav operace provedené na kontejneru ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Backup/Action | Provede zálohování chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/DELETE | Odstraní chráněnou položku. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationResults/číst | Načte výsledek operace provedené na chráněných položkách. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationsStatus/číst | Vrátí stav operace provedené na chráněných položkách. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Zřídit rychlé obnovení položky pro chráněnou položku |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/číst | Získat body obnovení pro chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
-> | Microsoft. RecoveryServices/trezory/backupJobs/Cancel/Action | Zrušit úlohu |
-> | Microsoft. RecoveryServices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
-> | Microsoft. RecoveryServices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
-> | Microsoft. RecoveryServices/trezory/backupJobs/operationsStatus/Read | Vrátí stav operace úlohy. |
-> | Microsoft. RecoveryServices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
-> | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/DELETE | Odstraní zásady ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/Write | Vytvoří zásady ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/operace/číst | Získá stav operace zásad. |
-> | Microsoft. RecoveryServices/trezory/backupProtectableItems/Read | Vrátí seznam všech chráněných položek. |
-> | Microsoft. RecoveryServices/trezory/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
-> | Microsoft. RecoveryServices/trezory/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
-> | Microsoft. RecoveryServices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
-> | Microsoft. RecoveryServices/trezory/backupstorageconfig/Read | Vrátí konfiguraci úložiště pro Recovery Services trezor. |
-> | Microsoft. RecoveryServices/trezory/backupstorageconfig/Write | Aktualizuje konfiguraci úložiště pro trezor Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
+> | Microsoft. recoveryservices/trezory/backupconfig/Read | Vrátí konfiguraci pro trezor Recovery Services. |
+> | Microsoft. recoveryservices/trezory/backupconfig/Write | Aktualizuje konfiguraci pro trezor Recovery Services. |
+> | Microsoft. recoveryservices/trezory/backupEncryptionConfigs/Read | Získá konfiguraci šifrování prostředků zálohování. |
+> | Microsoft. recoveryservices/trezory/backupEncryptionConfigs/Write | Aktualizuje konfiguraci šifrování prostředků zálohy. |
+> | Microsoft. recoveryservices/trezory/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/backupProtectionIntent/DELETE | Odstranit záložní záměr ochrany |
+> | Microsoft. recoveryservices/trezory/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
+> | Microsoft. recoveryservices/trezory/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
+> | Microsoft. recoveryservices/trezory/backupFabrics/operationResults/Read | Vrátí stav operace. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/operationsStatus/Read | Vrátí stav operace. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/DELETE | Odstraní registrovaný kontejner. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Dotázat se/Action | Dotazování na úlohy v rámci kontejneru |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/operationsStatus/Read | Načte stav operace provedené na kontejneru ochrany. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/Backup/Action | Provede zálohování chráněné položky. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/DELETE | Odstraní chráněnou položku. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/operationResults/číst | Načte výsledek operace provedené na chráněných položkách. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/operationsStatus/číst | Vrátí stav operace provedené na chráněných položkách. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Zřídit rychlé obnovení položky pro chráněnou položku |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/číst | Získat body obnovení pro chráněné položky. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky. |
+> | Microsoft. recoveryservices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
+> | Microsoft. recoveryservices/trezory/backupJobs/Cancel/Action | Zrušit úlohu |
+> | Microsoft. recoveryservices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
+> | Microsoft. recoveryservices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
+> | Microsoft. recoveryservices/trezory/backupJobs/operationsStatus/Read | Vrátí stav operace úlohy. |
+> | Microsoft. recoveryservices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
+> | Microsoft. recoveryservices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
+> | Microsoft. recoveryservices/trezory/backupPolicies/DELETE | Odstraní zásady ochrany. |
+> | Microsoft. recoveryservices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
+> | Microsoft. recoveryservices/trezory/backupPolicies/Write | Vytvoří zásady ochrany. |
+> | Microsoft. recoveryservices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
+> | Microsoft. recoveryservices/trezory/backupPolicies/operace/číst | Získá stav operace zásad. |
+> | Microsoft. recoveryservices/trezory/backupProtectableItems/Read | Vrátí seznam všech chráněných položek. |
+> | Microsoft. recoveryservices/trezory/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
+> | Microsoft. recoveryservices/trezory/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
+> | Microsoft. recoveryservices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
+> | Microsoft. recoveryservices/trezory/backupstorageconfig/Read | Vrátí konfiguraci úložiště pro Recovery Services trezor. |
+> | Microsoft. recoveryservices/trezory/backupstorageconfig/Write | Aktualizuje konfiguraci úložiště pro trezor Recovery Services. |
+> | Microsoft. recoveryservices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/certifikáty/zapisovat | Operace aktualizovat certifikát prostředku aktualizuje certifikát přihlašovacích údajů k prostředku nebo úložišti. |
 > | Microsoft. RecoveryServices/trezory/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
 > | Microsoft. RecoveryServices/trezory/extendedInformation/Write | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
@@ -8346,14 +8352,14 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/trezory/monitoringAlerts/Write | Vyřeší upozornění. |
 > | Microsoft. RecoveryServices/trezory/monitoringConfigurations/Read | Získá konfiguraci oznámení trezoru služby Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/monitoringConfigurations/Write | Nakonfiguruje e-mailová oznámení pro trezor služby Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/DELETE | Počkejte několik minut a potom operaci opakujte. Pokud problém přetrvá, obraťte se na podporu Microsoftu. |
-> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/ověřit/akci | Získat všechny chráněné kontejnery |
-> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/Write | Získat všechny chráněné kontejnery |
-> | Microsoft. RecoveryServices/trezory/privateEndpointConnectionProxies/operationsStatus/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. RecoveryServices/trezory/privateEndpointConnections/DELETE | Odstranění požadavků na soukromý koncový bod Toto volání provádí správce zálohování. |
-> | Microsoft. RecoveryServices/trezory/privateEndpointConnections/Write | Schvalte nebo odmítněte požadavky na soukromý koncový bod. Toto volání provádí správce zálohování. |
-> | Microsoft. RecoveryServices/trezory/privateEndpointConnections/operationsStatus/Read | Vrátí stav operace pro připojení privátního koncového bodu. |
+> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/DELETE | Počkejte několik minut a potom operaci opakujte. Pokud problém přetrvá, obraťte se na podporu Microsoftu. |
+> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/ověřit/akci | Získat všechny chráněné kontejnery |
+> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/Write | Získat všechny chráněné kontejnery |
+> | Microsoft. recoveryservices/trezory/privateEndpointConnectionProxies/operationsStatus/Read | Získat všechny chráněné kontejnery |
+> | Microsoft. recoveryservices/trezory/privateEndpointConnections/DELETE | Odstranění požadavků na soukromý koncový bod Toto volání provádí správce zálohování. |
+> | Microsoft. recoveryservices/trezory/privateEndpointConnections/Write | Schvalte nebo odmítněte požadavky na soukromý koncový bod. Toto volání provádí správce zálohování. |
+> | Microsoft. recoveryservices/trezory/privateEndpointConnections/operationsStatus/Read | Vrátí stav operace pro připojení privátního koncového bodu. |
 > | Microsoft. RecoveryServices/trezory/registeredIdentities/Write | Operaci kontejneru registrovat službu lze použít k registraci kontejneru pomocí služby Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
 > | Microsoft. RecoveryServices/trezory/registeredIdentities/DELETE | Operaci zrušení registrace kontejneru lze použít k odregistraci kontejneru. |
@@ -8469,7 +8475,7 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 > | Microsoft. RecoveryServices/trezory/replicationVaultSettings/Read | Přečíst vše  |
 > | Microsoft. RecoveryServices/trezory/replicationVaultSettings/Write | Vytvořit nebo aktualizovat libovolnou  |
 > | Microsoft. RecoveryServices/trezory/replicationvCenters/Read | Číst libovolný servery vCenter |
-> | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | Microsoft. recoveryservices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
 > | Microsoft. RecoveryServices/trezory/používání/čtení | Čtení všech použití trezoru |
 > | Microsoft. RecoveryServices/trezory/vaultTokens/Read | Operaci tokenu trezoru jde použít k získání tokenu trezoru pro operace back-endu na úrovni trezoru. |
 
@@ -8478,7 +8484,7 @@ Služba Azure: [Site Recovery](../site-recovery/index.yml)
 Služba Azure: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Resources/checkResourceName/Action | Ověřte platnost názvu prostředku. |
 > | Microsoft. Resources/calculateTemplateHash/Action | Vypočítá hodnotu hash poskytnuté šablony. |
@@ -8539,7 +8545,7 @@ Služba Azure: [Azure Resource Manager](../azure-resource-manager/index.yml)
 Služba Azure: [Scheduler](../scheduler/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Scheduler/jobcollections/Read | Získat kolekci úloh |
 > | Microsoft. Scheduler/jobcollections/Write | Vytvoří nebo aktualizuje kolekci úloh. |
@@ -8558,7 +8564,7 @@ Služba Azure: [Scheduler](../scheduler/index.yml)
 Služba Azure: [Azure Managed Applications](../azure-resource-manager/managed-applications/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Solutions/Register/Action | Zaregistrujte se do řešení. |
 > | Microsoft. Solutions/zrušit registraci/akce | Zruší registraci z řešení. |
@@ -8583,7 +8589,7 @@ Služba Azure: [Azure Managed Applications](../azure-resource-manager/managed-ap
 Služba Azure: jádro
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Subscription/CreateSubscription/Action | Vytvoření předplatného Azure |
 > | Microsoft. Subscription/registr/Action | Zaregistruje předplatné u poskytovatele prostředků Microsoft. Subscription. |
@@ -8599,21 +8605,21 @@ Služba Azure: jádro
 Služba Azure: přehledy monitorování Microsoftu
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. Intune/diagnosticsettings/Write | Zápis nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettings/Read | Čtení nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettings/DELETE | Odstranění nastavení diagnostiky |
 > | Microsoft. Intune/diagnosticsettingscategories/Read | Čtení kategorií nastavení diagnostiky |
 
-## <a name="other"></a>Jiné
+## <a name="other"></a>Další
 
 ### <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 Služba Azure: [mapy Bing](https://docs.microsoft.com/BingMaps/)
 
 > [!div class="mx-tableFixed"]
-> | Akce | Description |
+> | Akce | Popis |
 > | --- | --- |
 > | Microsoft. BingMaps/updateCommunicationPreference/Action | Aktualizuje předvolby komunikace pro vlastníka Microsoft. BingMaps. |
 > | Microsoft. BingMaps/listCommunicationPreference/Action | Získá předvolby komunikace pro vlastníka Microsoft. BingMaps. |

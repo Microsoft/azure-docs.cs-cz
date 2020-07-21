@@ -13,18 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698508"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494781"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
 Požadovaná konfigurace stavu (DSC) je platforma pro správu, kterou můžete použít ke správě infrastruktury IT a vývoje s konfigurací jako kód.
 
 > [!NOTE]
-> Rozšíření DSC pro Linux a [rozšíření virtuálního počítače Azure monitor pro Linux](/azure/virtual-machines/extensions/oms-linux) aktuálně prezentují konflikt a nepodporuje se v souběžné konfiguraci. Nepoužívejte tato dvě řešení společně na stejném virtuálním počítači.
+> Rozšíření DSC pro Linux a [rozšíření virtuálního počítače Azure monitor pro Linux](./oms-linux.md) aktuálně prezentují konflikt a nepodporuje se v souběžné konfiguraci. Nepoužívejte tato dvě řešení společně na stejném virtuálním počítači.
 
 Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíření nainstaluje agenta OMI a DSC na virtuální počítače Azure. Rozšíření DSC může také provádět tyto akce:
 
@@ -37,11 +38,11 @@ Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíře
 
  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](/azure/virtual-machines/linux/endorsed-distros) s výjimkou těchto:
+Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](../linux/endorsed-distros.md) s výjimkou těchto:
 
 | Distribuce | Verze |
 |---|---|
@@ -409,7 +410,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstraňování potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí rozhraní příkazového řádku Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí Azure CLI.
 

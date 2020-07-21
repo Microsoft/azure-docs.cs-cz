@@ -7,11 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f4e5bbdc50d99eca774dc5b96657ac8bfdebca17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414143"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496957"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -23,7 +24,7 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
 
 |Vlastnost  |Popis |
 |---------|---------|
-|Name    |    Jedinečný název v rámci skupiny prostředků.      |
+|Název    |    Jedinečný název v rámci skupiny prostředků.      |
 |Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
 |Prostředek privátního propojení    |   Prostředek privátního propojení pro připojení pomocí ID prostředku nebo aliasu ze seznamu dostupných typů. Pro veškerý provoz odeslaný do tohoto prostředku se vygeneruje jedinečný identifikátor sítě.       |
 |Cílový podprostředek   |      Prostředek, který se má připojit. Každý typ prostředku privátního propojení má různé možnosti pro výběr na základě předvolby.    |
@@ -68,7 +69,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |**Azure Kubernetes Service – rozhraní API pro Kubernetes** | Microsoft. ContainerService/managedClusters    | managedCluster |
 |**Azure Search** | Microsoft. Search/searchService| searchService|  
 |**Azure Container Registry** | Microsoft. ContainerRegistry/Registry    | registry |
-|**Azure App Configuration** | Microsoft. Appconfiguration/configurationStores    | configurationStore |
+|**Azure App Configuration** | Microsoft. Appconfiguration/configurationStores    | configurationStores |
 |**Azure Backup** | Microsoft. RecoveryServices/trezory    | Trezor |
 |**Azure Event Hub** | Microsoft. EventHub/obory názvů    | namespace |
 |**Azure Service Bus** | Microsoft. ServiceBus/obory názvů | namespace |

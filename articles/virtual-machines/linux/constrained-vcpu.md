@@ -6,11 +6,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: mimckitt
-ms.openlocfilehash: 70e6d043b3ad033e1a43c566e5d1da49a1447c6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 136a097f3b2c0267ee71dfbb916b8a52adaf4e80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81273558"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494479"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Omezené velikosti virtuálních počítačů s možností omezení vCPU
 
@@ -19,12 +20,11 @@ ms.locfileid: "81273558"
 
 
 ## <a name="other-sizes"></a>Jiné velikosti
-- [Optimalizované z hlediska výpočetních služeb](../windows/sizes-compute.md)
-- [Optimalizované z hlediska paměti](sizes-memory.md)
-- [Optimalizované z hlediska úložiště](sizes-storage.md)
-- [GPU](sizes-gpu.md)
-- [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
+- [Optimalizované pro výpočty](../sizes-compute.md)
+- [Optimalizované pro paměť](../sizes-memory.md)
+- [Optimalizované pro úložiště](../sizes-storage.md)
+- [GPU](../sizes-gpu.md)
+- [Vysokovýkonné výpočetní prostředí](../sizes-hpc.md)
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
-
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](../acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

@@ -1,14 +1,14 @@
 ---
 title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
-ms.date: 06/22/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a66fb383195a7de347b5e6ce83ad89fa3706e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954145"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497773"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -146,6 +146,10 @@ Spojení adresářů, někdy označované jako pevné odkazy v adresáři, se ob
 ### <a name="collect-the-batch-agent-logs"></a>Shromáždění protokolů agenta Batch
 
 Pokud si všimnete problému s chováním uzlu nebo úloh, které jsou spuštěné na uzlu, Shromážděte protokoly služby Batch Agent před tím, než dojde k jejich navýšení na příslušné uzly. Protokoly služby Batch Agent se dají shromáždit pomocí rozhraní API pro nahrání protokolů služby Batch. Tyto protokoly je možné dodávat jako součást lístku podpory společnosti Microsoft a pomohou vám při řešení potíží a řešení problémů.
+
+### <a name="manage-os-upgrades"></a>Spravovat upgrady operačního systému
+
+Pro účty Batch v režimu předplatného uživatele můžou automatizované upgrady operačního systému přerušit průběh úloh, zejména v případě, že se úlohy dlouho spouští. [Vytváření úloh idempotentní](#build-durable-tasks) může přispět k omezení chyb způsobených těmito přerušeními. Doporučujeme také [naplánovat upgrady bitových kopií operačního systému po dobu, kdy se úlohy neočekávají, aby běžely](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades).
 
 ## <a name="isolation-security"></a>Zabezpečení izolace
 

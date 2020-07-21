@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045752"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494509"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Zakázání nebo odebrání agenta pro Linux z virtuálních počítačů a imagí
 
 Před odebráním agenta pro Linux musíte porozumět tomu, co po odebrání agenta pro Linux nebude moct virtuální počítač dělat.
 
-[Rozšíření](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) virtuálních počítačů Azure jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. rozšíření se instalují a spravují na základě plochy ovládacího prvku Azure. Je to úloha [agenta Azure Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) ke zpracování příkazů rozšíření platformy a zajištění správného stavu rozšíření v rámci virtuálního počítače.
+[Rozšíření](../extensions/overview.md) virtuálních počítačů Azure jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. rozšíření se instalují a spravují na základě plochy ovládacího prvku Azure. Je to úloha [agenta Azure Linux](../extensions/agent-linux.md) ke zpracování příkazů rozšíření platformy a zajištění správného stavu rozšíření v rámci virtuálního počítače.
 
 Platforma Azure je hostitelem mnoha rozšíření, která jsou v rozsahu od konfigurace virtuálních počítačů, monitorování, zabezpečení a aplikace nástrojů. Existuje velký výběr první a rozšíření od jiných výrobců. Příklady klíčových scénářů, které se používají pro tyto přípony:
 * Podpora služeb Azure First stran, jako jsou Azure Backup, monitorování, šifrování disků, zabezpečení, replikace webů a další.
@@ -31,7 +31,7 @@ Platforma Azure je hostitelem mnoha rozšíření, která jsou v rozsahu od konf
 
 ## <a name="disabling-extension-processing"></a>Zákaz zpracování rozšíření
 
-Existuje několik způsobů, jak zakázat zpracování rozšíření v závislosti na vašich potřebách, ale před pokračováním **musíte** odebrat všechna rozšíření nasazená na virtuální počítač, například pomocí AZ CLI, můžete [Zobrazit](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) a [Odstranit](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
+Existuje několik způsobů, jak zakázat zpracování rozšíření v závislosti na vašich potřebách, ale před pokračováním **musíte** odebrat všechna rozšíření nasazená na virtuální počítač, například pomocí AZ CLI, můžete [Zobrazit](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) a [Odstranit](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
 
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -155,7 +155,7 @@ Když vytváříte virtuální počítač z image bez agenta pro Linux, musíte 
 > 
 > Pokud to neuděláte výše, platforma se pokusí odeslat konfiguraci rozšíření a časový limit po 40min.
 
-Pokud chcete nasadit virtuální počítač s zakázanými rozšířeními, můžete použít Azure CLI s [agentem--Enable-agent](https://docs.microsoft.com/cli/azure/vm#az-vm-create).
+Pokud chcete nasadit virtuální počítač s zakázanými rozšířeními, můžete použít Azure CLI s [agentem--Enable-agent](/cli/azure/vm#az-vm-create).
 
 ```bash
 az vm create \

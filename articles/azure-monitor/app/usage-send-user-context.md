@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797686"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499235"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslání ID kontextů uživatele pro povolení prostředí využití v Azure Application Insights
 
@@ -18,10 +19,10 @@ ms.locfileid: "83797686"
 
 Application Insights vám umožní monitorovat a sledovat uživatele pomocí sady nástrojů pro použití produktů:
 
-- [Uživatelé, relace, události](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
-- [Trychtýře](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [Uchovávání informací](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Kohorty
-- [Workbooks](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Uživatelé, relace, události](./usage-segmentation.md)
+- [Trychtýře](./usage-funnels.md)
+- [Uchovávání informací](./usage-retention.md) Kohorty
+- [Sešity](../platform/workbooks-overview.md)
 
 Aby bylo možné sledovat, co uživatel pracuje v průběhu času, Application Insights potřebovat ID pro každého uživatele nebo relaci. Do každé vlastní události nebo zobrazení stránky zahrňte následující ID.
 
@@ -41,11 +42,11 @@ ID uživatelů by měla být trvalá napříč uživatelskými relacemi a sledov
 
 ID by mělo být identifikátor GUID nebo jiný řetězec, který je dostatečně složitý pro identifikaci každého uživatele jedinečně. Může to být třeba dlouhé náhodné číslo.
 
-Pokud ID obsahuje osobní identifikační údaje uživatele, není vhodná hodnota pro odeslání do Application Insights jako ID uživatele. Takové ID můžete odeslat jako [ID ověřeného uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), ale nesplňuje požadavky na ID uživatele pro scénáře používání.
+Pokud ID obsahuje osobní identifikační údaje uživatele, není vhodná hodnota pro odeslání do Application Insights jako ID uživatele. Takové ID můžete odeslat jako [ID ověřeného uživatele](./api-custom-events-metrics.md#authenticated-users), ale nesplňuje požadavky na ID uživatele pro scénáře používání.
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>Aplikace ASP.NET: nastavení kontextu uživatele v ITelemetryInitializer
 
-Vytvořte inicializátor telemetrie, jak je popsáno [zde](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer). Předejte ID relace prostřednictvím telemetrie požadavků a nastavte Context.User.Id a Context.Session.Id.
+Vytvořte inicializátor telemetrie, jak je popsáno [zde](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer). Předejte ID relace prostřednictvím telemetrie požadavků a nastavte Context.User.Id a Context.Session.Id.
 
 Tento příklad nastaví ID uživatele na identifikátor, jehož platnost vyprší po relaci. Pokud je to možné, použijte ID uživatele, které trvá napříč relacemi.
 
@@ -127,10 +128,10 @@ namespace MvcWebRole.Telemetry
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li povolit prostředí používání, začněte odesílat [vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Chcete-li povolit prostředí používání, začněte odesílat [vlastní události](./api-custom-events-metrics.md#trackevent) nebo [zobrazení stránek](./api-custom-events-metrics.md#page-views).
 - Pokud jste už odeslali vlastní události nebo zobrazení stránky, prozkoumejte nástroje využití a zjistěte, jak uživatelé používají vaši službu.
     - [Přehled využití](usage-overview.md)
     - [Uživatelé, relace a události](usage-segmentation.md)
     - [Trychtýře](usage-funnels.md)
     - [Uchovávání](usage-retention.md)
-    - [Workbooks](../../azure-monitor/platform/workbooks-overview.md)
+    - [Sešity](../../azure-monitor/platform/workbooks-overview.md)

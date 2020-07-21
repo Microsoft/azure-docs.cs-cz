@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671643"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499388"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profilace produkčních aplikací v Azure pomocí Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Povolení Application Insights Profiler pro vaši aplikaci
@@ -29,7 +30,7 @@ Pokud jste povolili profilování, ale nevidíte trasování, podívejte se na n
 
 ## <a name="view-profiler-data"></a>Zobrazit data profileru
 
-Aby Profiler mohl nahrávat trasování, musí vaše aplikace aktivně zpracovávat požadavky. Pokud provádíte experiment, můžete vygenerovat žádosti do vaší webové aplikace pomocí [Application Insights testování výkonu](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test). Pokud máte nově povolený Profiler, můžete spustit krátký zátěžový test. Když je spuštěn zátěžový test, v [podokně **Nastavení profileru** ](profiler-settings.md)vyberte tlačítko **profil nyní** . Když je profiler spuštěný, profiluje se náhodně přibližně jednou za hodinu a po dobu 2 minut. Pokud vaše aplikace zpracovává konstantní datový proud požadavků, profilery nahraje každou hodinu.
+Aby Profiler mohl nahrávat trasování, musí vaše aplikace aktivně zpracovávat požadavky. Pokud provádíte experiment, můžete vygenerovat žádosti do vaší webové aplikace pomocí [Application Insights testování výkonu](/vsts/load-test/app-service-web-app-performance-test). Pokud máte nově povolený Profiler, můžete spustit krátký zátěžový test. Když je spuštěn zátěžový test, v [podokně **Nastavení profileru** ](profiler-settings.md)vyberte tlačítko **profil nyní** . Když je profiler spuštěný, profiluje se náhodně přibližně jednou za hodinu a po dobu 2 minut. Pokud vaše aplikace zpracovává konstantní datový proud požadavků, profilery nahraje každou hodinu.
 
 Poté, co vaše aplikace obdrží nějaký provoz a Profiler měl čas na nahrání trasování, byste měli mít trasování k zobrazení. Tento proces může trvat 5 až 10 minut. Chcete-li zobrazit trasování, v podokně **výkon** vyberte **provést akce**a pak vyberte tlačítko **Profiler trasování** .
 

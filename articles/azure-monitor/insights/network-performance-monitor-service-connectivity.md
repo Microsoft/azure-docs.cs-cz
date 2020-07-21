@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 93f3820b7cf1db85b9ff4cd514fe22efc75a90d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ba93db3e692a34de42849b469978cea4459c6fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690010"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498861"
 ---
 # <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
@@ -56,7 +57,7 @@ Začněte vytvářet testy pro monitorování síťového připojení k koncový
 
     * Vyberte **Web** a sledujte připojení ke službě, která reaguje na požadavky HTTP/S, jako je například outlook.office365.com nebo Bing.com.<br>
     * Vyberte **síť** pro monitorování připojení ke službě, která reaguje na požadavky TCP, ale nereaguje na požadavky HTTP/S, jako je třeba SQL Server, server FTP nebo port SSH. 
-    * Příklad: Chcete-li vytvořit webový test na účet úložiště objektů blob, vyberte možnost **Web** a zadejte cíl jako *yourstorageaccount*. blob.Core.Windows.NET. Podobně můžete pomocí [tohoto odkazu](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints) vytvořit testy pro jiné úložiště tabulek, úložiště front a soubory Azure.
+    * Příklad: Chcete-li vytvořit webový test na účet úložiště objektů blob, vyberte možnost **Web** a zadejte cíl jako *yourstorageaccount*. blob.Core.Windows.NET. Podobně můžete pomocí [tohoto odkazu](../../storage/common/storage-account-overview.md#storage-account-endpoints) vytvořit testy pro jiné úložiště tabulek, úložiště front a soubory Azure.
 4. Pokud nechcete provádět měření sítě, například latence sítě, ztráty paketů a zjišťování topologie, zrušte zaškrtnutí políčka **provádět měření sítě** . Nechte si ho nechat vybraný, aby bylo možné získat maximální výhodu z této schopnosti. 
 5. V části **cíl**zadejte adresu URL/plně kvalifikovaný název domény nebo IP adresu, na které chcete monitorovat síťové připojení.
 6. Do pole **číslo portu**zadejte číslo portu cílové služby. 
@@ -74,7 +75,7 @@ Začněte vytvářet testy pro monitorování síťového připojení k koncový
 
 
 
-## <a name="walkthrough"></a>Názorný postup 
+## <a name="walkthrough"></a>Návod 
 
 Přejít do zobrazení řídicího panelu Network Performance Monitor. Chcete-li získat souhrn stavu různých testů, které jste vytvořili, podívejte se na stránku **monitorování připojení služby** . 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945456"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498946"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Monitorování služby trezoru klíčů pomocí Azure Monitor pro Key Vault (Preview)
 Azure Monitor for Key Vault (Preview) poskytuje ucelený přehled o vašich trezorech klíčů tím, že nabízí jednotný pohled na vaše Key Vault požadavky, výkon, chyby a latenci.
@@ -24,7 +24,7 @@ Před přechodem na prostředí byste měli pochopit, jak prezentuje a vizualizu
 -   **Přechod k podrobnostem o analýze** konkrétního trezoru klíčů za účelem provedení podrobné analýzy.
 -    **Přizpůsobitelné** , kde můžete změnit metriky, které chcete zobrazit, upravit nebo nastavit prahové hodnoty, které odpovídají vašim limitům, a uložit vlastní sešit. Grafy v sešitě lze připnout na řídicí panely Azure.
 
-Azure Monitor pro Key Vault kombinuje protokoly a metriky, aby poskytovaly globální řešení monitorování. Všichni uživatelé mají přístup k datům monitorování založeným na metrikách, ale zahrnutí vizualizací založených na protokolech může vyžadovat, aby uživatelé [povolili protokolování jejich Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-logging).
+Azure Monitor pro Key Vault kombinuje protokoly a metriky, aby poskytovaly globální řešení monitorování. Všichni uživatelé mají přístup k datům monitorování založeným na metrikách, ale zahrnutí vizualizací založených na protokolech může vyžadovat, aby uživatelé [povolili protokolování jejich Azure Key Vault](../../key-vault/general/logging.md).
 
 ## <a name="configuring-your-key-vaults-for-monitoring"></a>Konfigurace trezorů klíčů pro monitorování
 
@@ -39,7 +39,7 @@ Azure Monitor pro Key Vault kombinuje protokoly a metriky, aby poskytovaly glob�
 
 3. Po uložení nastavení diagnostiky budete moct zobrazit všechny grafy založené na protokolech a vizualizace pod Key Vault Insights. Upozorňujeme, že k zahájení načítání protokolů může trvat několik minut.
 
-4. Další pomoc týkající se povolení protokolů diagnostiky pro vaši službu Key Vault najdete v [úplné příručce](https://docs.microsoft.com/azure/key-vault/key-vault-logging).
+4. Další pomoc týkající se povolení protokolů diagnostiky pro vaši službu Key Vault najdete v [úplné příručce](../../key-vault/general/logging.md).
 
 ## <a name="view-from-azure-monitor"></a>Zobrazit z Azure Monitor
 
@@ -75,7 +75,7 @@ Pro sloupce v sešitu je podmíněné kódování barev nebo Heat mapy, které v
 
 Sešit zobrazuje úspěchy (stavové kódy 2xx), chyby ověřování (stavové kódy 401/403), omezování (429 stavových kódů) a další selhání (stavové kódy 4xx).
 
-Pro lepší pochopení toho, co jednotlivé stavové kódy představují, doporučujeme přečíst si dokumentaci k [Azure Key Vault kódů stavu a odpovědi](https://docs.microsoft.com/azure/key-vault/authentication-requests-and-responses).
+Pro lepší pochopení toho, co jednotlivé stavové kódy představují, doporučujeme přečíst si dokumentaci k [Azure Key Vault kódů stavu a odpovědi](../../key-vault/general/authentication-requests-and-responses.md).
 
 ## <a name="operations--latency-workbook"></a>Sešit latence & operací
 
@@ -120,7 +120,7 @@ Pracovní sešit umožňuje uživatelům hluboko podrobně do úplných podrobno
 Uživatelé mohou také vystavovat zobrazení na základě konkrétních typů transakcí v horní tabulce, která dynamicky aktualizuje spodní tabulku, kde mohou uživatelé zobrazit podrobnosti úplné operace v podokně místní nabídky.
 
 >[!NOTE]
-> Všimněte si, že uživatelé musí mít povolené nastavení diagnostiky pro zobrazení tohoto sešitu. Další informace o povolení nastavení diagnostiky najdete v článku o [protokolování Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/logging).
+> Všimněte si, že uživatelé musí mít povolené nastavení diagnostiky pro zobrazení tohoto sešitu. Další informace o povolení nastavení diagnostiky najdete v článku o [protokolování Azure Key Vault](../../key-vault/general/logging.md).
 
 ## <a name="pin-and-export"></a>Připnout a exportovat
 
@@ -164,7 +164,7 @@ Tato část vám pomůže s diagnostikou a řešením potíží s některými b�
 
 ### <a name="resolving-performance-issues-or-failures"></a>Řešení potíží s výkonem nebo selhání
 
-Chcete-li pomoct řešit problémy související s trezorem klíčů, které identifikujete pomocí Azure Monitor pro Key Vault (Preview), přečtěte si [dokumentaci Azure Key Vault](https://docs.microsoft.com/azure/key-vault/).
+Chcete-li pomoct řešit problémy související s trezorem klíčů, které identifikujete pomocí Azure Monitor pro Key Vault (Preview), přečtěte si [dokumentaci Azure Key Vault](../../key-vault/index.yml).
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Proč můžu zobrazit jenom trezory klíčů 200
 
@@ -208,4 +208,4 @@ Existující sešit můžete upravit pomocí režimu úprav a pak uložit práci
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview).
+Seznamte se s scénáři, které jsou navržené tak, aby podporovaly, vytváření nových a přizpůsobení existujících sestav a další informace najdete v tématu [vytváření interaktivních sestav pomocí Azure Monitorch sešitů](../platform/workbooks-overview.md).

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262629"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497756"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Jak používat Azure Kubernetes s Azure Cosmos DB (Preview)
 
@@ -25,7 +25,7 @@ Rozhraní etcd API v Azure Cosmos DB umožňuje používat Azure Cosmos DB jako 
 
 Další informace o rozhraní etcd API v Azure Cosmos DB najdete v článku [Přehled](etcd-api-introduction.md) . V tomto článku se dozvíte, jak pomocí [modulu Azure Kubernetes Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (AKS-Engine) vytvořit cluster Kubernetes v Azure, který používá [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) namísto lokálně nainstalovaného a nakonfigurovaného etcd. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 1. Nainstalujte nejnovější verzi rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Můžete stáhnout Azure CLI specifické pro váš operační systém a nainstalovat.
 
@@ -33,7 +33,7 @@ Další informace o rozhraní etcd API v Azure Cosmos DB najdete v článku [Př
 
    Modul Azure Kubernetes Engine (**AKS-Engine**) generuje šablony Azure Resource Manager pro clustery Kubernetes v Azure. Vstup do AKS-Engine je definiční soubor clusteru, který popisuje požadovaný cluster, včetně nástroje Orchestrator, features a agentů. Struktura vstupních souborů je podobná veřejnému rozhraní API pro službu Azure Kubernetes.
 
-1. Rozhraní etcd API v Azure Cosmos DB je momentálně ve verzi Preview. Zaregistrujte se a použijte verzi Preview na adrese: https://aka.ms/cosmosetcdapi-signup . Po odeslání formuláře se vašemu předplatnému bude používat rozhraní etcd API služby Azure Cosmos. 
+1. Rozhraní etcd API v Azure Cosmos DB je momentálně ve verzi Preview. Zaregistrujte se a použijte verzi Preview na adrese: https://aka.ms/cosmosetcdapi-signup . Po odeslání formuláře bude vaše předplatné moct používat rozhraní etcd API Azure Cosmos. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>Nasazení clusteru s Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Další informace o rozhraní etcd API v Azure Cosmos DB najdete v článku [Př
    az login 
    ```
 
-1. Pokud máte více než jedno předplatné, přepněte do předplatného, které je na seznamu povolených pro Azure Cosmos DB rozhraní etcd API. Pomocí následujícího příkazu můžete přepnout na požadované předplatné:
+1. Pokud máte více než jedno předplatné, přepněte do předplatného, které bylo povoleno pro Azure Cosmos DB rozhraní etcd API. Pomocí následujícího příkazu můžete přepnout na požadované předplatné:
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"

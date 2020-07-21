@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 385f4a9ff1c299f49a514ad63bb3c8d633d8c191
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552807"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498997"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS pomocí řešení DNS Analytics Preview.
 
@@ -35,14 +35,14 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 
 | **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
-| [Agenti systému Windows](../platform/agent-windows.md) | Yes | Řešení shromažďuje informace o DNS z agentů Windows. |
+| [Agenti systému Windows](../platform/agent-windows.md) | Ano | Řešení shromažďuje informace o DNS z agentů Windows. |
 | [Agenti systému Linux](../learn/quick-collect-linux-computer.md) | No | Řešení neshromažďuje informace DNS z přímých agentů systému Linux. |
-| [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | Yes | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet úložiště Azure](../platform/collect-azure-metrics-logs.md) | No | Řešení Azure Storage se v řešení nepoužívá. |
+| [Skupina pro správu nástroje System Center Operations Manager](../platform/om-agents.md) | Ano | Řešení shromažďuje informace o DNS od agentů v připojené skupině pro správu Operations Manager. Přímé připojení od agenta Operations Manager k Azure Monitor není vyžadováno. Data se předávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Účet úložiště Azure](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Řešení Azure Storage se v řešení nepoužívá. |
 
 ### <a name="data-collection-details"></a>Podrobnosti shromažďování dat
 
-Řešení shromažďuje data o inventáři DNS a událostech DNS ze serverů DNS, na kterých je nainstalovaný agent Log Analytics. Tato data se pak nahrají do Azure Monitor a zobrazí se na řídicím panelu řešení. Data související s inventářem, jako je třeba počet serverů DNS, zón a záznamů prostředků, se shromažďují spuštěním rutin služby DNS PowerShell. Data se aktualizují po každém dvou dnech. Data související s událostmi se shromažďují prakticky v reálném čase z [protokolů analýzy a auditu](https://technet.microsoft.com/library/dn800669.aspx#enhanc) , které nabízí rozšířené protokolování a diagnostika DNS ve Windows Serveru 2012 R2.
+Řešení shromažďuje data o inventáři DNS a událostech DNS ze serverů DNS, na kterých je nainstalovaný agent Log Analytics. Tato data se pak nahrají do Azure Monitor a zobrazí se na řídicím panelu řešení. Data související s inventářem, jako je třeba počet serverů DNS, zón a záznamů prostředků, se shromažďují spuštěním rutin služby DNS PowerShell. Data se aktualizují po každém dvou dnech. Data související s událostmi se shromažďují prakticky v reálném čase z [protokolů analýzy a auditu](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)#enhanc) , které nabízí rozšířené protokolování a diagnostika DNS ve Windows Serveru 2012 R2.
 
 ## <a name="configuration"></a>Konfigurace
 

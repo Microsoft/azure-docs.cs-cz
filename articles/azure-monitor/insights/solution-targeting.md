@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663228"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498674"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Cílení řešení monitorování v Azure Monitor (Preview)
 Když přidáte řešení monitorování do předplatného, automaticky se nasadí ve výchozím nastavení na všechny agenty systému Windows a Linux připojené k vašemu pracovnímu prostoru Log Analytics.  Můžete chtít spravovat náklady a omezit množství shromažďovaných dat pro řešení tím, že je omezíte na konkrétní sadu agentů.  Tento článek popisuje, jak používat **cílení na řešení** , což je funkce, která umožňuje použít obor pro vaše řešení.
@@ -58,7 +59,7 @@ Použijte konfiguraci oboru pomocí následujícího procesu.
 Níže jsou uvedena kritéria pro agenty a řešení, která se nedají použít při cílení na řešení.
 
 - Cílení na řešení platí jenom pro řešení, která se nasazují na agenty.
-- Cílení na řešení platí jenom pro řešení poskytovaná Microsoftem.  Nevztahuje se na řešení [vytvořená sami nebo partnery](solutions-creating.md).
+- Cílení na řešení platí jenom pro řešení poskytovaná Microsoftem.  Nevztahuje se na řešení [vytvořená sami nebo partnery](./solutions.md).
 - Můžete odfiltrovat jenom agenty, kteří se připojují přímo k Azure Monitor.  Řešení se automaticky nasadí na všechny agenty, kteří jsou součástí propojené skupiny pro správu Operations Manager bez ohledu na to, jestli jsou zahrnuté v konfiguraci oboru.
 
 ### <a name="exceptions"></a>Výjimky

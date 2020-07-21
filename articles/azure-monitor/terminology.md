@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 819ef7e61045c0ed4205eeaf0094fec706b0b9da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691812"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498606"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitor změny názvů a terminologie
 V nedávné době byly provedeny významné změny, které se Azure Monitor v poslední době s různými službami konsolidovány, aby se zjednodušilo monitorování pro zákazníky Azure. Tento článek popisuje nedávné změny názvů a terminologie v dokumentaci Azure Monitor.
@@ -58,4 +59,4 @@ Operations Management Suite (OMS) je sdružením následujících služeb správ
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si [přehled Azure monitor](overview.md) , který popisuje jeho různé komponenty a funkce.
-- Přečtěte si o [přechodu portálu OMS](../log-analytics/log-analytics-oms-portal-transition.md).
+- Přečtěte si o [přechodu portálu OMS](./platform/oms-portal-transition.md).

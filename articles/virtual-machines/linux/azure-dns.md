@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135309"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494730"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překladu názvů DNS pro virtuální počítače se systémem Linux v Azure
 Azure poskytuje překlad názvů DNS standardně pro všechny virtuální počítače, které jsou v jedné virtuální síti. Můžete implementovat vlastní řešení překladu názvů DNS tak, že na virtuálních počítačích, které hostují Azure, nakonfigurujete vlastní služby DNS. Následující scénáře vám pomůžou vybrat ten, který bude fungovat pro vaši situaci.
@@ -121,7 +121,7 @@ Předávání DNS taky umožňuje překlad DNS mezi virtuálními sítěmi a umo
 
 Když použijete překlad IP adres, který poskytuje Azure, interní přípona DNS se poskytne každému virtuálnímu počítači pomocí DHCP. Pokud používáte vlastní řešení překladu IP adres, tato přípona není k dispozici virtuálním počítačům, protože přípona koliduje s ostatními architekturami DNS. Pokud chcete odkazovat na počítače podle plně kvalifikovaného názvu domény nebo nakonfigurovat příponu na virtuálních počítačích, můžete k určení přípony použít PowerShell nebo rozhraní API:
 
-* Pro virtuální sítě, které jsou spravovány nástrojem Azure Resource Manager, je přípona k dispozici prostřednictvím prostředku [síťového rozhraní](https://msdn.microsoft.com/library/azure/mt163668.aspx) . Můžete také spustit `azure network public-ip show <resource group> <pip name>` příkaz, který zobrazí podrobnosti o veřejné IP adrese, včetně plně kvalifikovaného názvu domény síťového rozhraní.
+* Pro virtuální sítě, které jsou spravovány nástrojem Azure Resource Manager, je přípona k dispozici prostřednictvím prostředku [síťového rozhraní](/rest/api/virtualnetwork/networkinterfaces) . Můžete také spustit `azure network public-ip show <resource group> <pip name>` příkaz, který zobrazí podrobnosti o veřejné IP adrese, včetně plně kvalifikovaného názvu domény síťového rozhraní.
 
 Pokud předávání dotazů do Azure nevyhovuje vašim potřebám, je třeba zadat vlastní řešení DNS.  Vaše řešení DNS potřebuje:
 
@@ -131,6 +131,6 @@ Pokud předávání dotazů do Azure nevyhovuje vašim potřebám, je třeba zad
 * Zabezpečený přístup z Internetu, aby se zmírnily hrozby, které představují externí agenti.
 
 > [!NOTE]
-> Nejlepšího výkonu dosáhnete, když při použití virtuálních počítačů na serverech Azure DNS zakážete protokol IPv6 a přiřadíte [veřejnou IP adresu na úrovni instance](../../virtual-network/virtual-networks-instance-level-public-ip.md) ke každému virtuálnímu počítači serveru DNS.  
+> Nejlepšího výkonu dosáhnete, když při použití virtuálních počítačů na serverech Azure DNS zakážete protokol IPv6 a přiřadíte [veřejnou IP adresu na úrovni instance](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) ke každému virtuálnímu počítači serveru DNS.  
 >
 >

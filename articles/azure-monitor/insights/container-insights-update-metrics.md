@@ -2,12 +2,13 @@
 title: Postup aktualizace Azure Monitor pro kontejnery pro metriky | Microsoft Docs
 description: Tento článek popisuje, jak aktualizovat Azure Monitor pro kontejnery pro povolení funkce vlastní metriky, která podporuje prozkoumávání a upozorňování na agregované metriky.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298257"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498980"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Jak aktualizovat službu Azure Monitor pro kontejnery a povolit metriky
 
@@ -19,23 +20,25 @@ Azure Monitor for Containers zavádí podporu shromažďování metrik z uzlů c
 
 V rámci této funkce jsou povoleny následující metriky:
 
-| Obor názvů metriky | Metric | Popis |
+| Obor názvů metriky | Metrika | Popis |
 |------------------|--------|-------------|
-| Insights. Container/Nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Jedná se o metriky *uzlů* a zahrnují *hostitele* jako dimenzi a také zahrnují<br> název uzlu jako hodnota pro dimenzi *hostitele* . |
-| přehledy. kontejner/lusky | podCount | Jsou *pod* metrikami a obsahují následující údaje jako Dimensions-Controller, Kubernetes Namespace, Name, Phase. |
+| Insights. Container/Nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | Jako metriky *uzlů* zahrnují *hostitel* jako dimenzi. Zahrnují taky<br> název uzlu jako hodnota pro dimenzi *hostitele* . |
+| Přehledy. kontejner/lusky | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | Stejně *jako metriky* obsahují tyto údaje: Dimensions-Controller, Kubernetes Namespace, Name, Phase. |
+| Insights. Container/Containers | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-Aktualizace clusteru tak, aby podporovala tyto nové funkce, se dá provádět z Azure Portal, Azure PowerShell nebo pomocí Azure CLI. Pomocí Azure PowerShell a rozhraní příkazového řádku můžete povolit tento cluster nebo pro všechny clustery v rámci vašeho předplatného. Nová nasazení AKS budou automaticky zahrnovat tuto změnu konfigurace a možnosti.
+V rámci podpory těchto nových funkcí je součástí vydání nový kontejnerový Agent verze **Microsoft/OMS: ciprod02212019**. Nová nasazení AKS automaticky zahrnují tuto změnu konfigurace a možnosti. Aktualizace clusteru pro podporu této funkce se dá provést z Azure Portal, Azure PowerShell nebo pomocí Azure CLI. Pomocí Azure PowerShell a CLI. Tento cluster můžete povolit pro všechny clustery v rámci vašeho předplatného.
 
 Buď proces přiřadí roli **vydavatele metrik monitorování** k instančnímu objektu clusteru nebo k souboru MSI přiřazenému uživateli pro doplněk monitorování, aby data shromážděná agentem mohla být publikována do vašeho prostředku clusterů. Vydavatel monitorování metrik má oprávnění pouze k odeslání metrik do prostředku, nemůže změnit žádný stav, aktualizovat prostředek ani číst žádná data. Další informace o roli najdete v tématu [monitorování role vydavatele metrik](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete, zkontrolujte následující:
+Před aktualizací clusteru potvrďte následující:
 
 * Vlastní metriky jsou dostupné jenom v podmnožině oblastí Azure. [Tady](../platform/metrics-custom-overview.md#supported-regions)je popsán seznam podporovaných oblastí.
-* Jste členem role **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** v prostředku clusteru AKS, aby bylo možné povolit shromažďování uzlů a pod vlastním metriku výkonu. 
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+* Jste členem role **[vlastníka](../../role-based-access-control/built-in-roles.md#owner)** v prostředku clusteru AKS, aby bylo možné povolit shromažďování uzlů a pod vlastním metriku výkonu.
+
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Upgrade clusteru z Azure Portal
 
@@ -76,7 +79,7 @@ Provedením následujících kroků aktualizujete konkrétní cluster v předpla
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ```
 
-    Chcete-li získat hodnotu pro **clientIdOfSPNOrMsi**, můžete spustit příkaz, `az aks show` jak je znázorněno v následujícím příkladu. Pokud má objekt **servicePrincipalProfile** platnou hodnotu *ClientID* , můžete ji použít. V opačném případě, pokud je nastaveno na *MSI*, musíte předat ClientID z `addonProfiles.omsagent.identity.clientId` .
+    Chcete-li získat hodnotu pro **clientIdOfSPNOrMsi**, můžete spustit příkaz, `az aks show` jak je znázorněno v následujícím příkladu. Pokud má objekt **servicePrincipalProfile** platnou hodnotu *ClientID* , můžete jej použít. V opačném případě, pokud je nastaveno na *MSI*, musíte předat ClientID z `addonProfiles.omsagent.identity.clientId` .
 
     ```azurecli
     az login
@@ -121,4 +124,4 @@ Provedením následujících kroků aktualizujte konkrétní cluster pomocí Azu
 
 ## <a name="verify-update"></a>Ověřit aktualizaci
 
-Po zahájení aktualizace pomocí jedné z výše popsaných metod můžete použít Azure Monitor Průzkumníku metrik a ověřit z **oboru názvů metriky** , na které je **Přehled** uvedený. Pokud je to, znamená to, že můžete pokračovat a začít nastavovat [výstrahy metriky](../platform/alerts-metric.md) nebo připínat grafy k [řídicím panelům](../../azure-portal/azure-portal-dashboards.md).  
+Po zahájení aktualizace pomocí jedné z výše popsaných metod můžete použít Azure Monitor Průzkumníku metrik a ověřit z **oboru názvů metriky** , na které je **Přehled** uvedený. Pokud je, můžete pokračovat a začít nastavovat [výstrahy metriky](../platform/alerts-metric.md) nebo připínat grafy k [řídicím panelům](../../azure-portal/azure-portal-dashboards.md).  

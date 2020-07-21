@@ -1,31 +1,30 @@
 ---
-title: Model časové řady – Azure Time Series Insights | Microsoft Docs
-description: Přečtěte si o modelu časové řady v Azure Time Series Insights Preview.
+title: Model časové řady – Azure Time Series Insights Gen2 | Microsoft Docs
+description: Přečtěte si o modelu časové řady v Azure Time Series Insights Gen2.
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c5a22987b1d67f9e9f8384e5376343af2f91b5e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049785"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495376"
 ---
-# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Model časové řady v Azure Time Series Insights Preview
+# <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Model časové řady v Azure Time Series Insights Gen2
 
-Tento článek popisuje model časových řad, možnosti a způsob, jak začít sestavovat a aktualizovat vlastní modely v prostředí Azure Time Series Insights Preview.
+Tento článek popisuje model časových řad, možnosti a způsob, jak začít sestavovat a aktualizovat vlastní modely v prostředí Azure Time Series Insights Gen2.
 
 > [!TIP]
 >
 > * Příklad modelu živé časové řady najdete v [ukázkovém prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) .
-> * Přečtěte si informace o tom, jak přejít k uživatelskému rozhraní modelu časové řady v [Průzkumníkovi služby Azure Time Series Insights Preview](time-series-insights-update-explorer.md) .
-> * Naučte se [pracovat s modelem časových řad](time-series-insights-update-how-to-tsm.md) pomocí Time Series Insights webovým průzkumníkem.
+> * Naučte se [pracovat s modelem časových řad](time-series-insights-update-how-to-tsm.md) pomocí Azure Time Series Insights Gen2 Explorer.
 
 ## <a name="summary"></a>Souhrn
 
@@ -58,7 +57,7 @@ Tato omezení ukázala důležitost nástrojů agregace inteligentních dat a vi
 
 ### <a name="key-capabilities"></a>Klíčové funkce
 
-Díky cíli, který zjednodušuje a usnadňuje správu kontextu časových řad, poskytuje model časových řad následující funkce Time Series Insights ve verzi Preview. Pomůže vám:
+S cílem zjednodušit a zjednodušit správu kontextu časových řad, model časových řad umožňuje následující funkce Azure Time Series Insights Gen2. Pomůže vám:
 
 * Vytvářejte a spravujte výpočty nebo vzorce s využitím skalárních funkcí, agregačních operací a tak dále.
 * Definujte vztahy nadřazenosti a podřízenosti pro povolení navigace, hledání a odkazů.
@@ -72,11 +71,11 @@ Model časové řady má tři základní komponenty:
 * [Hierarchie modelů časových řad](#time-series-model-hierarchies)
 * [Typy modelů časových řad](#time-series-model-types)
 
-Tyto součásti jsou kombinovány pro určení modelu časové řady a k uspořádání dat Azure Time Series Insights.
+Tyto součásti jsou kombinovány pro určení modelu časové řady a k uspořádání dat.
 
 [![Graf s přehledem modelu časové řady](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Model časových řad se dá vytvořit a spravovat prostřednictvím rozhraní [Time Series Insights Preview](time-series-insights-update-how-to-tsm.md) . Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
+Model časových řad se dá vytvořit a spravovat pomocí [Azure Time Series Insights Gen2 Exploreru](time-series-insights-update-how-to-tsm.md). Nastavení modelu časové řady lze spravovat prostřednictvím [rozhraní API pro nastavení modelu](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api).
 
 ## <a name="time-series-model-instances"></a>Instance modelů časových řad
 
@@ -88,7 +87,7 @@ Instance obsahují popisné informace spojené s názvem *vlastnosti instance*, 
 
 *Pole instancí* jsou kolekce popisných informací, které mohou obsahovat hodnoty pro úrovně hierarchie, a také výrobce, operátor a tak dále.
 
-Po nakonfigurování zdroje událostí pro prostředí Time Series Insights se instance automaticky zjišťují a vytvoří v modelu časové řady. Instance lze vytvořit nebo aktualizovat prostřednictvím aplikace Time Series Insights Explorer pomocí dotazů na model časové řady.
+Po nakonfigurování zdroje událostí pro prostředí Azure Time Series Insights Gen2 jsou instance automaticky zjišťovány a vytvořeny v modelu časové řady. Instance se dají vytvořit nebo aktualizovat prostřednictvím Azure Time Series Insights Průzkumníku Gen2 pomocí dotazů na model časových řad.
 
 [Ukázková farma společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) nabízí několik příkladů instancí za provozu.
 
@@ -103,7 +102,7 @@ Instance jsou definovány pomocí **timeSeriesId**, **typeId**, **Name**, **Desc
 | timeSeriesId | Jedinečné ID časové řady, ke které je instance přidružena. Ve většině případů jsou instance jednoznačně identifikované vlastností, jako je deviceId nebo assetId. V některých případech lze použít více specifických IDENTIFIKÁTORů s kombinací až tří vlastností. |
 | typeId | Jedinečné ID řetězce s rozlišením velkých a malých písmen pro typ modelu časové řady, ke kterému je instance přidružena. Ve výchozím nastavení se všechny zjištěné nové instance přidružit k výchozímu typu.
 | name | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [well](time-series-insights-update-explorer.md#4-time-series-well) |
-| description | Textový popis instance. |
+| Popis | Textový popis instance. |
 | hierarchyIds | Definuje, do kterých hierarchií patří instance. |
 | instanceFields | Vlastnosti instance a všech statických dat, která definují instanci. Definují hodnoty vlastností hierarchie nebo mimo hierarchii a zároveň podporují indexování k provádění operací vyhledávání. |
 
@@ -130,15 +129,15 @@ Instance mají následující reprezentaci JSON:
 ```
 
 > [!TIP]
-> Pro Time Series Insights rozhraní API instance a podporu vytváření, čtení, aktualizace a odstranění (CRUD) si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci instance rozhraní API instance](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+> Pro podporu vytváření, čtení, aktualizace a odstraňování (CRUD) rozhraní API si přečtěte článek [dotazování na data](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API instance rozhraní API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
 ## <a name="time-series-model-hierarchies"></a>Hierarchie modelů časových řad
 
 *Hierarchie* modelů časových řad organizují instance zadáním názvů vlastností a jejich vztahů.
 
-V daném Time Series Insights prostředí můžete nakonfigurovat více hierarchií. Instance modelu časové řady může být namapována na jednu hierarchii nebo na více hierarchií (relace m:n).
+V daném prostředí Azure Time Series Insights Gen2 můžete nakonfigurovat více hierarchií. Instance modelu časové řady může být namapována na jednu hierarchii nebo na více hierarchií (relace m:n).
 
-Ukázkové klientské rozhraní [farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) zobrazuje standardní instanci a hierarchii typů.
+[Ukázka farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) zobrazuje standardní instanci a hierarchii typů.
 
 [![Příklad hierarchie modelu časové řady](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
@@ -187,7 +186,7 @@ V předchozím příkladu JSON:
 * `ManufactureDate`definuje hierarchii s nadřazenou `year` a podřízenou položkou `month` . Každý `ManufactureDate` může mít více `years` , což může mít více `months` .
 
 > [!TIP]
-> Pro Time Series Insights rozhraní API instance a podporu CRUD si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API hierarchie REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> Pro podporu rozhraní API pro vytváření, čtení, aktualizaci a odstraňování (CRUD) si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API pro rozhraní API pro hierarchii](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Příklad hierarchie
 
@@ -217,13 +216,13 @@ Vzhledem k polím instance použitým v předchozí definici a několika časov�
 | ID4 | "sestavování" = "1000", "patra" = "10"  |
 | ID5 | Není nastaven žádný z "budova", "patra" ani "místnost". |
 
-Time Series **ID1** a **ID4** se zobrazují jako součást hierarchie **H1** v [Azure Time Series Insights Exploreru](time-series-insights-update-explorer.md) , protože mají plně definované a správně seřazené parametry *sestavení*, *podlah*a *místností* .
+Time Series **ID1** a **ID4** se zobrazují jako součást hierarchie **H1** v [Průzkumníku Azure Time Series Insights Gen2](time-series-insights-update-explorer.md) , protože mají plně definované a správně seřazené parametry pro *sestavování*, *podlah*a *místností* .
 
 Ostatní jsou klasifikovány v rámci *nenadřazených instancí* , protože neodpovídají zadané hierarchii dat.
 
 ## <a name="time-series-model-types"></a>Typy modelů časových řad
 
-*Typy* modelů časových řad vám pomůžou definovat proměnné nebo vzorce pro provádění výpočtů. Typy jsou spojeny s konkrétní instancí Time Series Insights.
+*Typy* modelů časových řad vám pomůžou definovat proměnné nebo vzorce pro provádění výpočtů. Typy jsou přidruženy k určité instanci.
 
 Typ může mít jednu nebo více proměnných. Například instance modelu časové řady může být typu *snímače teploty*, který se skládá z proměnných *Průměrná teplota*, *Minimální teplota*a *Maximální teplota*.
 
@@ -232,7 +231,7 @@ Typ může mít jednu nebo více proměnných. Například instance modelu časo
 [![Příklad typu modelu časové řady](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Pro Time Series Insights rozhraní API instance a podporu CRUD si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci k rozhraní API typu REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> V případě podpory typu rozhraní API vytváření, čtení, aktualizace a odstraňování (CRUD) si přečtěte článek [dotazování na data](concepts-query-overview.md#time-series-model-query-tsm-q-apis) a [dokumentaci typu rozhraní API REST](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Vlastnosti typu
 
@@ -242,7 +241,7 @@ Typy modelů časových řad jsou definovány podle **ID**, **názvu**, **popisu
 | ---| ---|
 | id | Jedinečné ID řetězce rozlišující velká a malá písmena pro daný typ. |
 | name | Řetězec, který slouží k zadání názvu pro typ. |
-| description | Popis řetězce pro typ. |
+| Popis | Popis řetězce pro typ. |
 | proměnné | Zadejte proměnné přidružené k typu. |
 
 Typy odpovídají následujícímu příkladu JSON:
@@ -266,7 +265,7 @@ Typy odpovídají následujícímu příkladu JSON:
         "Interpolated Speed": {
           "kind": "numeric",
           "value": {
-              "tsx": "$event.[speed].Double"
+              "tsx": "$event['Speed-Sensor'].Double"
           },
           "filter": null,
           "interpolation": {
@@ -276,7 +275,7 @@ Typy odpovídají následujícímu příkladu JSON:
               }
           },
           "aggregation": {
-              "tsx": "left($value)"
+              "tsx": "right($value)"
           }
         }
       }
@@ -284,114 +283,12 @@ Typy odpovídají následujícímu příkladu JSON:
   ]
 }
 ```
-
-### <a name="variables"></a>Proměnné
-
-Time Series Insights typy mohou mít mnoho proměnných, které určují vzorce a pravidla výpočtu pro události.
-
-Každá proměnná může být jeden ze tří *typů*: *Číselná*, *kategorií*a *Aggregate*.
-
-* **Číselné** typy fungují se souvislými hodnotami.
-* **Kategorií** druhy pracují s definovanou sadou diskrétních hodnot.
-* **Agregované** hodnoty spojují více proměnných jednoho druhu (buď všechny číselné, nebo všechny kategorií).
-
-V následující tabulce jsou uvedeny vlastnosti, které jsou relevantní pro jednotlivé druhy proměnných.
-
-[![Tabulka proměnných modelu časové řady](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
-
-#### <a name="numeric-variables"></a>Číselné proměnné
-
-| Proměnná – vlastnost | Description |
-| --- | ---|
-| Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
-| Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů nebo transformované pomocí výrazů Time Series. Proměnné číselného typu musí být typu *Double*.|
-| Proměnlivá interpolace | Interpolace určuje, jak rekonstruovat signál pomocí stávajících dat. Možnosti *kroku* a *lineární* interpolace jsou k dispozici pro číselné proměnné. |
-| Agregace proměnných | Podpora výpočtů prostřednictvím operátorů *AVG*, *min*, *Max*, *Sum*, *Count*, *First*, *Last* a Time-Weighted (*AVG*, *min*, *Max*, *Sum*, *Left*). |
-
-Proměnné odpovídají následujícímu příkladu JSON:
-
-```JSON
-"Interpolated Speed": {
-  "kind": "numeric",
-  "value": {
-    "tsx": "$event.[speed].Double"
-  },
-  "filter": null,
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span": "P1D"
-    }
-  },
-  "aggregation": {
-    "tsx": "left($value)"
-  }
-}
-```
-
-#### <a name="categorical-variables"></a>Proměnné kategorií
-
-| Proměnná – vlastnost | Description |
-| --- | ---|
-| Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
-| Hodnota proměnné | Hodnoty telemetrie používané pro výpočet pocházející ze zařízení nebo senzorů. Proměnné kategorií druhu musí být buď *Long* , nebo *String*. |
-| Proměnlivá interpolace | Interpolace určuje, jak rekonstruovat signál pomocí stávajících dat. Možnost interpolace *kroku* je k dispozici pro proměnné kategorií. |
-| Kategorie proměnných | Kategorie vytvoří mapování mezi hodnotami, které přicházejí ze zařízení nebo senzorů do popisku. |
-| Výchozí kategorie proměnných | Výchozí kategorie je určena pro všechny hodnoty, které nejsou namapované ve vlastnosti "Categories". |
-
-Proměnné odpovídají následujícímu příkladu JSON:
-
-```JSON
-"Status": {
-  "kind": "categorical",
-  "value": {
-     "tsx": "toLong($event.[Status].Double)"
-},
-  "interpolation": {
-    "kind": "step",
-    "boundary": {
-      "span" : "PT1M"
-    }
-  },
-  "categories": [
-    {
-      "values": [0, 1, 2],
-      "label": "Good"
-    },
-    {
-      "values": [3],
-      "label": "Bad"
-    }
-  ],
-  "defaultCategory": {
-    "label": "Not Applicable"
-  }
-}
-```
-
-#### <a name="aggregate-variables"></a>Agregační proměnné
-
-| Proměnná – vlastnost | Description |
-| --- | ---|
-| Filtr proměnných | Filtry jsou volitelné podmíněné klauzule, které omezují počet řádků, které se považují za výpočet. |
-| Agregace proměnných | Podpora výpočtů prostřednictvím funkce *AVG*, *min*, *Max*, *Sum*, *Count*, *First*, *Last*. |
-
-Proměnné odpovídají následujícímu příkladu JSON:
-
-```JSON
-"Aggregate Speed": {
-  "kind": "aggregate",
-  "filter": null,
-  "aggregation": {
-    "tsx": "avg($event.Speed.Double)"
-  }
-}
-```
-
-Proměnné jsou uloženy v definici typu modelu časové řady a lze je poskytnout prostřednictvím [rozhraní API pro dotaz](concepts-query-overview.md) pro přepsání uložené definice.
+Typy modelů časových řad můžou mít mnoho proměnných, které určují pravidla vzorce a výpočtu pro události. Přečtěte si další informace o [Definování proměnných modelu časové řady](./concepts-variables.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [dotazování na data](concepts-query-overview.md)
+- Další informace o tom, jak upravit model prostřednictvím rozhraní API, najdete v referenční dokumentaci k [modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) .
 
-* Přečtěte si referenční dokumentaci k [modelu časové řady](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) .
+- Prozkoumejte vzorce a výpočty, které můžete vytvořit pomocí [proměnných modelu časové řady](./concepts-variables.md) .
+
+- Další informace o [dotazování na data](concepts-query-overview.md) v Azure Time Series Insights Gen2

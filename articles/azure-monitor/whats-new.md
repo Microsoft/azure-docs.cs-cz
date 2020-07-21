@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 4d061e7a105fc73f7f44c8336df82ff363ee6ded
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203757"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498504"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 
@@ -67,21 +67,21 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 - [Odeslání protokolu aktivit Azure do Log Analytics pracovního prostoru pomocí Azure Resource Manager šablony](learn/quick-collect-activity-log-arm.md) – nový článek.
 
 #### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>Nové a aktualizované články z restrukturování a konsolidace obsahu protokolu platformy
-- [Archivace protokolů prostředků Azure do účtu úložiště](platform/resource-logs-collect-storage.md)
+- [Archivace protokolů prostředků Azure do účtu úložiště](./platform/resource-logs.md#send-to-azure-storage)
 - [Schéma událostí protokolu aktivit Azure](platform/activity-log-schema.md)
 - [Protokol aktivit Azure](platform/activity-log.md)
 - [Ukázky Azure Monitor CLI](samples/cli-samples.md)
 - [Ukázky Azure Monitor PowerShellu](samples/powershell-samples.md)
 - [Návod k Azure Monitoring REST API](platform/rest-api-walkthrough.md)
-- [Protokoly prostředků Azure podporují služby a schémata.](platform/diagnostic-logs-schema.md)
+- [Protokoly prostředků Azure podporují služby a schémata.](./platform/resource-logs-schema.md)
 - [Protokoly prostředků Azure](platform/resource-logs.md)
-- [Shromažďování a analýza protokolu aktivit Azure v Azure Monitor](platform/activity-log-collect.md)
-- [Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics](platform/resource-logs-collect-workspace.md)
+- [Shromažďování a analýza protokolu aktivit Azure v Azure Monitor](./platform/activity-log.md)
+- [Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Vytvoření nastavení diagnostiky pro odesílání protokolů a metrik platforem do různých umístění](platform/diagnostic-settings.md)
-- [Exportovat protokol aktivit Azure](platform/activity-log-export.md)
+- [Exportovat protokol aktivit Azure](./platform/activity-log.md#legacy-collection-methods)
 - [Přehled protokolů platformy Azure](platform/platform-logs-overview.md)
-- [Streamování protokolů platformy Azure do centra událostí](platform/resource-logs-stream-event-hubs.md)
-- [Zobrazení událostí protokolu aktivit Azure v Azure Monitor](platform/activity-log-view.md)
+- [Streamování protokolů platformy Azure do centra událostí](./platform/resource-logs.md#send-to-azure-event-hubs)
+- [Zobrazení událostí protokolu aktivit Azure v Azure Monitor](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>Virtuální počítače
 - [Povolit Azure monitor pro virtuální počítače v Azure Portal](insights/vminsights-enable-single-vm.md) -aktualizováno tak, aby zahrnovalo Azure ARC.
@@ -155,7 +155,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 
 ### <a name="insights"></a>Insights
 - [Azure monitor pro Azure cache pro Redis (Preview)](insights/redis-cache-insights-overview.md) – nový článek.
-- [Monitorování Key Vault pomocí Azure monitor pro Key Vault (Preview)](insights/key-vaults-insights-overview.md) – nový článek
+- [Monitorování Key Vault pomocí Azure monitor pro Key Vault (Preview)](./insights/key-vault-insights-overview.md) – nový článek
 
 ### <a name="logs"></a>Protokoly
 - [Vytvoření & konfigurace Log Analytics pomocí prostředí PowerShell](platform/powershell-workspace-configuration.md) – přidání části Poradce při potížích.
@@ -231,7 +231,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 
 - [Pokročilé funkce](platform/metrics-charts.md) oddílu agregace služby Azure Průzkumník metrik – přidáno
 
-### <a name="workbooks"></a>Workbooks
+### <a name="workbooks"></a>Sešity
 
 - [Azure monitor sešitů a šablon Azure Resource Manager](platform/workbooks-automate.md) přidány šablony Správce prostředků pro nasazení šablony sešitu.
 
@@ -280,7 +280,7 @@ Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové
 
 ### <a name="platform-logs"></a>Protokoly platformy
 
-- [Shromažďování a analýza protokolu aktivit Azure v Azure monitor](platform/activity-log-collect.md) přepsání pro lepší vysvětlení shromažďování protokolu aktivit s nastavením diagnostiky.
+- [Shromažďování a analýza protokolu aktivit Azure v Azure monitor](./platform/activity-log.md) přepsání pro lepší vysvětlení shromažďování protokolu aktivit s nastavením diagnostiky.
 
 ### <a name="virtual-machines"></a>Virtuální počítače
 
@@ -326,7 +326,7 @@ Více aktualizací jako součást přepisu obsahu diagnostického rozšíření.
 
 #### <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
 
-- [Integrace Azure Active Directory se službou Azure Kubernetes](../aks/azure-ad-integration.md) – přidání poznámky k vytvoření klientské aplikace pro podporu clusteru s POVOLENým RBAC pro podporu Azure monitor pro kontejnery.
+- [Integrace Azure Active Directory se službou Azure Kubernetes](../aks/azure-ad-integration-cli.md) – přidání poznámky k vytvoření klientské aplikace pro podporu clusteru s POVOLENým RBAC pro podporu Azure monitor pro kontejnery.
 
 #### <a name="azure-monitor-for-vms"></a>Azure Monitor pro virtuální počítače
 
@@ -412,8 +412,8 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 
 ### <a name="platform-logs"></a>Protokoly platformy
 
-- [Shromažďování protokolů aktivit Azure s nastavením diagnostiky – Azure monitor](platform/diagnostic-settings-legacy.md) – Další informace o změněných vlastnostech.
-- [Exportujte protokol aktivit Azure](platform/activity-log-export.md) – Aktualizováno pro změny uživatelského rozhraní. 
+- [Shromažďování protokolů aktivit Azure s nastavením diagnostiky – Azure monitor](./platform/activity-log.md) – Další informace o změněných vlastnostech.
+- [Exportujte protokol aktivit Azure](./platform/activity-log.md#legacy-collection-methods) – Aktualizováno pro změny uživatelského rozhraní. 
 
 ## <a name="december-2019"></a>Prosinec 2019
 
@@ -450,7 +450,7 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 
 ### <a name="insights-and-solutions"></a>Přehledy a řešení
 
-- [Azure monitor pro kontejnery často kladené otázky](insights/container-insights-faq.md) – přidání otázky do polí obrázek a název.
+- [Azure monitor pro kontejnery často kladené otázky](./faq.md) – přidání otázky do polí obrázek a název.
 - [Řešení Azure SQL Analytics v Azure monitor](insights/azure-sql.md) -aktualizované databázi čekají na podporu spravované instance.
 - [Konfigurace Azure monitor pro shromažďování dat agenta kontejnerů](insights/container-insights-agent-config.md) – přidáno nastavení pro enrich_container_logs.
 - [Nakonfigurujte hybridní clustery Kubernetes s Azure monitor pro kontejnery](insights/container-insights-hybrid-setup.md) – přidání části řešení potíží.
@@ -474,19 +474,19 @@ Několik nových článků pro Průvodce převodem návrháře zobrazení na se�
 
 Několik článků bylo aktualizováno v rámci změny struktury obsahu pro protokoly platformy na základě nové funkce pro konfiguraci protokolu aktivit pomocí nastavení diagnostiky.
 
-- [Archivace protokolů prostředků Azure do účtu úložiště](platform/resource-logs-collect-storage.md)
+- [Archivace protokolů prostředků Azure do účtu úložiště](./platform/resource-logs.md#send-to-azure-storage)
 - [Schéma událostí protokolu aktivit Azure](platform/activity-log-schema.md)
 - [Omezení služby Azure Monitor](service-limits.md)
-- [Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics](platform/activity-log-collect.md)
-- [Shromažďování protokolů aktivit Azure s nastavením diagnostiky (Preview) – Azure Monitor](platform/diagnostic-settings-legacy.md)
+- [Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics](./platform/activity-log.md)
+- [Shromažďování protokolů aktivit Azure s nastavením diagnostiky (Preview) – Azure Monitor](./platform/activity-log.md)
 - [Shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics napříč klienty Azure](platform/activity-log-collect-tenants.md)
-- [Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics](platform/resource-logs-collect-workspace.md)
+- [Shromažďování protokolů prostředků Azure v pracovním prostoru Log Analytics](./platform/resource-logs.md#send-to-log-analytics-workspace)
 - [Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků](platform/diagnostic-settings-template.md)
 - [Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik v Azure](platform/diagnostic-settings.md)
-- [Exportovat protokol aktivit Azure](platform/activity-log-export.md)
+- [Exportovat protokol aktivit Azure](./platform/activity-log.md#legacy-collection-methods)
 - [Přehled protokolů platformy Azure](platform/platform-logs-overview.md)
 - [Streamování dat monitorování Azure do centra událostí](platform/stream-monitoring-data-event-hubs.md)
-- [Streamování protokolů platformy Azure do centra událostí](platform/resource-logs-stream-event-hubs.md)
+- [Streamování protokolů platformy Azure do centra událostí](./platform/resource-logs.md#send-to-azure-event-hubs)
 
 ### <a name="quickstarts-and-tutorials"></a>Rychlé starty a kurzy
 

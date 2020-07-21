@@ -1,21 +1,23 @@
 ---
 title: Správa a aktualizace mezipaměti HPC Azure
-description: Jak spravovat a aktualizovat mezipaměť HPC Azure pomocí Azure Portal
+description: Jak spravovat a aktualizovat mezipaměť HPC Azure pomocí Azure Portal nebo Azure CLI
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 825b8a34e130286a5772363107311fe4170e8743
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66b084cca3d1cd54362a538423988755a3d31ced
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515561"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497215"
 ---
-# <a name="manage-your-cache-from-the-azure-portal"></a>Správa mezipaměti z Azure Portal
+# <a name="manage-your-cache"></a>Správa mezipaměti
 
 Stránka s přehledem mezipaměti v Azure Portal zobrazuje podrobnosti projektu, stav mezipaměti a základní statistiky pro vaši mezipaměť. Obsahuje taky ovládací prvky pro zastavení nebo spuštění mezipaměti, odstranění mezipaměti, vyprázdnění dat pro dlouhodobé ukládání a aktualizace softwaru.
+
+Tento článek také vysvětluje, jak provádět tyto základní úlohy pomocí Azure CLI.
 
 Chcete-li otevřít stránku Přehled, vyberte prostředek mezipaměti v Azure Portal. Načtěte například stránku **všechny prostředky** a klikněte na název mezipaměti.
 
@@ -23,7 +25,7 @@ Chcete-li otevřít stránku Přehled, vyberte prostředek mezipaměti v Azure P
 
 Tlačítka v horní části stránky vám pomůžou spravovat mezipaměť:
 
-* **Spustit** a [**zastavit**](#stop-the-cache) – pozastaví operaci mezipaměti.
+* **Spuštění** a [**zastavení**](#stop-the-cache) – obnoví nebo pozastaví operaci mezipaměti.
 * [**Flush**](#flush-cached-data) – zapisuje změněná data do cílů úložiště
 * [**Upgrade**](#upgrade-cache-software) – aktualizuje software pro mezipaměť.
 * **Refresh** -znovu načte stránku Přehled.
@@ -41,6 +43,8 @@ Můžete zastavit mezipaměť a snížit tak náklady během neaktivního obdob�
 
 Zastavená mezipaměť nereaguje na požadavky klientů. Před zastavením mezipaměti byste měli odpojit klienty.
 
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 Tlačítko **zastavit** pozastavuje aktivní mezipaměť. Tlačítko **zastavit** je k dispozici, když je stav mezipaměti **v pořádku** nebo je **degradován**.
 
 ![snímek obrazovky horních tlačítek se zvýrazněným stopou a automaticky otevíraná zpráva popisující akci zastavení a dotazování chcete pokračovat? s Ano (výchozí) a bez tlačítek](media/stop-cache.png)
@@ -51,6 +55,42 @@ Chcete-li znovu aktivovat zastavenou mezipaměť, klikněte na tlačítko **Star
 
 ![snímek obrazovky horních tlačítek se zvýrazněnou možností Start](media/start-cache.png)
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Dočasně pozastavíte mezipaměť pomocí příkazu [AZ HPC-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) . Tato akce je platná jenom v případě, že stav mezipaměti je **v pořádku** nebo je **degradováný**.
+
+Mezipaměť automaticky vyprázdní svůj obsah do cílů úložiště před jeho zastavením. Tento proces může nějakou dobu trvat, ale zajišťuje konzistenci dat.
+
+Po dokončení akce se stav mezipaměti změní na **Zastaveno**.
+
+Znovu aktivujte zastavenou mezipaměť pomocí [AZ HPC-cache Start](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-start).
+
+Při vystavení příkazu spustit nebo zastavit zobrazí příkazový řádek spuštěnou stavovou zprávu, dokud se operace nedokončí.
+
+```azurecli
+$ az hpc-cache start --name doc-cache0629
+ - Running ..
+```
+
+Po dokončení se zpráva aktualizuje na dokončeno a zobrazí návratové kódy a další informace.
+
+```azurecli
+$ az hpc-cache start --name doc-cache0629
+{- Finished ..
+  "endTime": "2020-07-01T18:46:43.6862478+00:00",
+  "name": "c48d320f-f5f5-40ab-8b25-0ac065984f62",
+  "properties": {
+    "output": "success"
+  },
+  "startTime": "2020-07-01T18:40:28.5468983+00:00",
+  "status": "Succeeded"
+}
+```
+
+---
+
 ## <a name="flush-cached-data"></a>Vyprázdnit data uložená v mezipaměti
 
 Tlačítko **vyprázdnit** na stránce Přehled oznamuje mezipaměť, aby okamžitě zapisovala všechna změněná data, která jsou uložená v mezipaměti, do cíle úložiště back-endu. Mezipaměť rutinně ukládá data do cílů úložiště, takže není nutné ji provádět ručně, pokud nechcete zajistit, aby byl systém back-end úložiště aktuální. Například můžete použít **vyprázdnit** před pořizováním snímku úložiště nebo kontrolou velikosti sady dat.
@@ -58,13 +98,47 @@ Tlačítko **vyprázdnit** na stránce Přehled oznamuje mezipaměť, aby okamž
 > [!NOTE]
 > V průběhu procesu vyprázdnění nemůže mezipaměť obsluhovat požadavky klienta. Po dokončení operace je přístup do mezipaměti pozastaven a pokračuje.
 
-![snímek obrazovky horních tlačítek s zvýrazněnou možností vyprázdnění a automaticky otevíraná okna popisující akci vyprázdnění a dotaz Chcete pokračovat? s Ano (výchozí) a bez tlačítek](media/hpc-cache-flush.png)
-
 Když zahájíte operaci vyprázdnění mezipaměti, mezipaměť zastaví přijímání požadavků klientů a stav mezipaměti na stránce s přehledem se změní na **vyprázdnění**.
 
 Data v mezipaměti se ukládají do příslušných cílů úložiště. V závislosti na tom, kolik dat je potřeba vyprázdnit, může tento proces trvat několik minut nebo déle než hodinu.
 
 Po uložení všech dat do cílů úložiště mezipaměť automaticky začne přebírat požadavky klienta. Stav mezipaměti se vrátí do **stavu v pořádku**.
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Pokud chcete mezipaměť vyprázdnit, klikněte na tlačítko **vyprázdnit** a potom kliknutím na **Ano** tuto akci potvrďte.
+
+![snímek obrazovky horních tlačítek s zvýrazněnou možností vyprázdnění a automaticky otevíraná okna popisující akci vyprázdnění a dotaz Chcete pokračovat? s Ano (výchozí) a bez tlačítek](media/hpc-cache-flush.png)
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Pomocí [AZ HPC-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) vynutíte mezipaměť zapisovat všechna změněná data do cílů úložiště.
+
+Příklad:
+
+```azurecli
+$ az hpc-cache flush --name doc-cache0629 --resource-group doc-rg
+ - Running ..
+```
+
+Po dokončení operace vyprázdnění se vrátí zpráva o úspěchu.
+
+```azurecli
+{- Finished ..
+  "endTime": "2020-07-09T17:26:13.9371983+00:00",
+  "name": "c22f8e12-fcf0-49e5-b897-6a6e579b6489",
+  "properties": {
+    "output": "success"
+  },
+  "startTime": "2020-07-09T17:25:21.4278297+00:00",
+  "status": "Succeeded"
+}
+$
+```
+
+---
 
 ## <a name="upgrade-cache-software"></a>Upgrade softwaru pro mezipaměť
 
@@ -80,7 +154,48 @@ Pokud je k dispozici upgrade softwaru, budete mít týden, nebo ho budete muset 
 
 Pokud se vaše mezipaměť zastaví po průchodu koncového data, mezipaměť při příštím spuštění automaticky upgraduje software. (Aktualizace se nemusí spustit okamžitě, ale spustí se první hodinu.)
 
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
 Kliknutím na tlačítko **upgradovat** zahájíte aktualizaci softwaru. Stav mezipaměti se změní na **upgradovat** , dokud se operace nedokončí.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+V rozhraní příkazového řádku Azure CLI jsou nové informace o softwaru součástí na konci sestavy o stavu mezipaměti. (K ověření použijte [AZ HPC-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) .) Ve zprávě vyhledejte řetězec "upgradeStatus".
+
+Použijte [AZ HPC-cache upgrade-firmware](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-upgrade-firmware) pro použití aktualizace, pokud existuje.
+
+Pokud není k dispozici žádná aktualizace, tato operace nemá žádný vliv.
+
+Tento příklad ukazuje stav mezipaměti (žádná aktualizace není k dispozici) a výsledky příkazu upgrade-firmware.
+
+```azurecli
+$ az hpc-cache show --name doc-cache0629
+{
+  "cacheSizeGb": 3072,
+  "health": {
+    "state": "Healthy",
+    "statusDescription": "The cache is in Running state"
+  },
+
+<...>
+
+  "tags": null,
+  "type": "Microsoft.StorageCache/caches",
+  "upgradeStatus": {
+    "currentFirmwareVersion": "5.3.61",
+    "firmwareUpdateDeadline": "0001-01-01T00:00:00+00:00",
+    "firmwareUpdateStatus": "unavailable",
+    "lastFirmwareUpdate": "2020-06-29T22:18:32.004822+00:00",
+    "pendingFirmwareVersion": null
+  }
+}
+$ az hpc-cache upgrade-firmware --name doc-cache0629
+$
+```
+
+---
 
 ## <a name="delete-the-cache"></a>Odstraní mezipaměť.
 
@@ -91,7 +206,35 @@ Záložní úložné svazky používané jako cíle úložiště nejsou při ods
 > [!NOTE]
 > Mezipaměť HPC Azure nepřed odstraněním mezipaměti automaticky nezapisuje změněná data z mezipaměti do back-endové systémů úložiště.
 >
-> Chcete-li zajistit, aby byla všechna data v mezipaměti zapsána do dlouhodobého úložiště, [zastavte mezipaměť](#stop-the-cache) před odstraněním. Před kliknutím na tlačítko Odstranit se ujistěte, že zobrazuje stav **Zastaveno** .
+> Chcete-li zajistit, aby byla všechna data v mezipaměti zapsána do dlouhodobého úložiště, [zastavte mezipaměť](#stop-the-cache) před odstraněním. Ujistěte se, že se před odstraněním zobrazuje stav **Zastaveno** .
+
+### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+
+Po zastavení mezipaměti kliknutím na tlačítko **Odstranit** trvale odeberete mezipaměť.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+Pomocí příkazu rozhraní příkazového řádku Azure [AZ HPC-cache Delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) trvale odeberte mezipaměť.
+
+Příklad:
+```azurecli
+$ az hpc-cache delete --name doc-cache0629
+ - Running ..
+
+<...>
+
+{- Finished ..
+  "endTime": "2020-07-09T22:24:35.1605019+00:00",
+  "name": "7d3cd0ba-11b3-4180-8298-d9cafc9f22c1",
+  "startTime": "2020-07-09T22:13:32.0732892+00:00",
+  "status": "Succeeded"
+}
+$
+```
+
+---
 
 ## <a name="cache-metrics-and-monitoring"></a>Metriky a monitorování mezipaměti
 

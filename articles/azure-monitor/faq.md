@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807702"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499218"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -29,7 +30,7 @@ V září 2018 společnost Microsoft kombinovaná Azure Monitor, Log Analytics a
 Funkce Azure Monitor, které jsou automaticky povoleny, například shromažďování metrik a protokolů aktivit, jsou poskytovány bez nákladů. Existují náklady spojené s dalšími funkcemi, jako jsou dotazy protokolu a výstrahy. Podrobné informace o cenách najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) .
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Návody povolit Azure Monitor?
-Azure Monitor je povolený okamžik, kdy vytvoříte nové předplatné Azure, a automaticky se shromažďují [metriky](platform/data-platform-metrics.md) [protokolů aktivit](platform/activity-logs-overview.md) a platforem. Vytvořte [nastavení diagnostiky](platform/diagnostic-settings.md) pro shromažďování podrobnějších informací o provozu prostředků Azure a přidejte [řešení monitorování](insights/solutions.md) a [přehledy](insights/insights-overview.md) , které poskytují další analýzy shromážděných dat pro konkrétní služby. 
+Azure Monitor je povolený okamžik, kdy vytvoříte nové předplatné Azure, a automaticky se shromažďují [metriky](platform/data-platform-metrics.md) [protokolů aktivit](./platform/platform-logs-overview.md) a platforem. Vytvořte [nastavení diagnostiky](platform/diagnostic-settings.md) pro shromažďování podrobnějších informací o provozu prostředků Azure a přidejte [řešení monitorování](insights/solutions.md) a [přehledy](insights/insights-overview.md) , které poskytují další analýzy shromážděných dat pro konkrétní služby. 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Azure Monitor Návody Access?
 Přístup ke všem funkcím Azure Monitor a datům z nabídky **monitor** v Azure Portal. Část **monitorování** v nabídce různých služeb Azure poskytuje přístup ke stejným nástrojům, které obsahují data filtrovaná pro konkrétní prostředek. Data Azure Monitor jsou také přístupná pro celou řadu scénářů pomocí rozhraní příkazového řádku, PowerShellu a REST API.
@@ -215,7 +216,7 @@ Návrhář zobrazení je k dispozici pouze pro uživatele, kteří jsou přiřaz
 * [Webové aplikace na serveru služby IIS na virtuálním počítači Azure nebo v sadě Azure Virtual Machine scaleing](app/azure-vm-vmss-apps.md)
 * [Webové aplikace na serveru služby IIS místně nebo na virtuálním počítači](app/asp-net.md)
 * [Webové aplikace v Javě](app/java-get-started.md)
-* [Aplikace v Node.js](app/nodejs.md)
+* [Aplikace Node.js](app/nodejs.md)
 * [Webové aplikace v Azure](app/azure-web-apps.md)
 * [Cloud Services v Azure](app/cloudservices.md)
 * [Aplikační servery běžící v Docker](app/docker.md)
@@ -271,7 +272,7 @@ Tuto metodu nedoporučujeme používat pro naplnění verze rozhraní API. Nejno
 
 Desktopová aplikace, kterou můžete použít na webovém serveru služby IIS a které vám pomůžou nakonfigurovat Application Insights ve webových aplikacích. Neshromažďuje telemetrii: když aplikaci nekonfigurujete, můžete ji zastavit. 
 
-[Další informace](app/monitor-performance-live-website-now.md#questions).
+[Přečtěte si další informace](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Jaká telemetrie se shromažďuje pomocí Application Insights?
 
@@ -314,10 +315,10 @@ IP adresu (IPv4 nebo IPv6) webového klienta vyhledáme pomocí [GeoLite2](https
 
 * Telemetrie prohlížeče: shromažďujeme IP adresu odesílatele.
 * Telemetrie serveru: modul Application Insights shromažďuje IP adresu klienta. Není shromažďována, pokud `X-Forwarded-For` je nastavena.
-* Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
+* Další informace o tom, jak se shromažďují údaje o IP adrese a geografickém umístění v Application Insights najdete v tomto [článku](./app/ip-collection.md).
 
 
-Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Můžete nakonfigurovat, `ClientIpHeaderTelemetryInitializer` aby se IP adresa převzala z jiného záhlaví. V některých systémech je například přesouvá server proxy, nástroj pro vyrovnávání zatížení nebo síť CDN `X-Originating-IP` . [Přečtěte si další informace](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 [Pomocí Power BI](app/export-power-bi.md ) můžete zobrazit telemetrii žádostí na mapě.
 
@@ -327,7 +328,7 @@ Podívejte se na [uchovávání dat a ochranu osobních údajů][data].
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Co se stane s telemetriemi Application Insights, když server nebo zařízení ztratí spojení s Azure?
 
-Všechny naše sady SDK, včetně webové sady SDK, zahrnují "spolehlivý přenos" nebo "robustní přenos". Když server nebo zařízení ztratí spojení s Azure, telemetrie se [uloží lokálně na systém souborů](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (sady SDK serveru) nebo v ÚLOŽIŠTI relace HTML5 (webová sada SDK). Sada SDK se bude pravidelně pokoušet o odeslání této telemetrie, dokud naše služba pro příjem dat nepovažuje za "zastaralou" (48 – hodiny pro protokoly, 30 minut pro metriky). Zahozená zastaralá telemetrie se vynechá. V některých případech, například v případě, že je místní úložiště plný, nebude k opakování docházet.
+Všechny naše sady SDK, včetně webové sady SDK, zahrnují "spolehlivý přenos" nebo "robustní přenos". Když server nebo zařízení ztratí spojení s Azure, telemetrie se [uloží lokálně na systém souborů](./app/data-retention-privacy.md#does-the-sdk-create-temporary-local-storage) (sady SDK serveru) nebo v ÚLOŽIŠTI relace HTML5 (webová sada SDK). Sada SDK se bude pravidelně pokoušet o odeslání této telemetrie, dokud naše služba pro příjem dat nepovažuje za "zastaralou" (48 – hodiny pro protokoly, 30 minut pro metriky). Zahozená zastaralá telemetrie se vynechá. V některých případech, například v případě, že je místní úložiště plný, nebude k opakování docházet.
 
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Můžou být do telemetrie odesílána osobní data?
@@ -393,7 +394,7 @@ Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik pů
 ```
 
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Automatizace
 
 #### <a name="configuring-application-insights"></a>Konfigurace Application Insights
 
@@ -409,7 +410,7 @@ Nemůžete nastavit sestavu Průzkumníka metrik ani nastavit průběžný expor
 
 #### <a name="querying-the-telemetry"></a>Dotazování telemetrie
 
-Pro spouštění [analytických](app/analytics.md) dotazů použijte [REST API](https://dev.applicationinsights.io/) .
+Pro spouštění [analytických](./log-query/log-query-overview.md) dotazů použijte [REST API](https://dev.applicationinsights.io/) .
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>Jak můžu nastavit upozornění na událost?
 
@@ -476,7 +477,7 @@ Brána by měla směrovat provoz na základní adresu našeho koncového bodu. V
 #### <a name="proxy-passthrough"></a>Průchozí proxy
 
 Passthrough proxy můžete dosáhnout konfigurací úrovně počítače nebo proxy serveru na úrovni aplikace.
-Další informace najdete v článku dotnet na [defaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
+Další informace najdete v článku dotnet na [defaultProxy](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
  
  Příklad Web.config:
  ```xml
@@ -734,7 +735,7 @@ V rámci této podmínky budete po otevření virtuálního počítače vyzváni
 ## <a name="next-steps"></a>Další kroky
 Pokud tady na váš dotaz neodpovíte, můžete na následující fóra najít další otázky a odpovědi.
 
-- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
-- [Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Log Analytics](/answers/topics/azure-monitor.html)
+- [Application Insights](/answers/topics/azure-monitor.html)
 
 Pokud chcete získat obecnou zpětnou vazbu na Azure Monitor, navštivte [fórum pro názory](https://feedback.azure.com/forums/34192--general-feedback).

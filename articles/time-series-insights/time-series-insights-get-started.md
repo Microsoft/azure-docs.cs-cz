@@ -1,27 +1,28 @@
 ---
 title: Vytvoření prostředí – Azure Time Series Insights | Microsoft Docs
-description: Naučte se, jak pomocí Azure Portal vytvořit nové prostředí Time Series Insights.
+description: Naučte se, jak pomocí Azure Portal vytvořit nové prostředí Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7459c6afc775aa0df43d6f9285191c4c7e1b8cb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02997b421a57363e04a0d988685b76f59954439e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81602362"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495138"
 ---
-# <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Time Series Insights na webu Azure Portal
+# <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Vytvoření nového prostředí Azure Time Series Insights Gen1 v Azure Portal
 
-Tento článek popisuje, jak vytvořit nové prostředí Time Series Insights pomocí Azure Portal.
+Tento článek popisuje, jak vytvořit nové prostředí Azure Time Series Insights pomocí Azure Portal.
 
-Time Series Insights vám umožňuje začít vizualizovat a dotazovat tok dat do služby Azure IoT Hub a Event Hubs v řádu minut, což vám umožní dotazovat se na velké objemy dat časových řad v řádu sekund.  Byla navržena pro škálování na internetu věcí (IoT) a může zpracovávat terabajty dat.
+Azure Time Series Insights vám umožňuje začít vizualizovat a dotazovat tok dat do služby Azure IoT Hub a Event Hubs v řádu minut, což vám umožní dotazovat se na velké objemy dat časových řad v řádu sekund.  Byla navržena pro škálování na internetu věcí (IoT) a může zpracovávat terabajty dat.
 
 ## <a name="steps-to-create-the-environment"></a>Postup vytvoření prostředí
 
@@ -33,18 +34,18 @@ Pomocí těchto kroků vytvořte prostředí:
 
 1. Vyberte kategorii **Internet věcí** a vyberte možnost **Time Series Insights**.
 
-   [![Vytvoření prostředí Time Series Insights](media/time-series-insights-get-started/tsi-create-new-environment.png)](media/time-series-insights-get-started/tsi-create-new-environment.png#lightbox)
+   [![Vytvoření prostředí Azure Time Series Insights](media/time-series-insights-get-started/tsi-create-new-environment.png)](media/time-series-insights-get-started/tsi-create-new-environment.png#lightbox)
 
 1. Na stránce **Time Series Insights** vyberte **vytvořit**.
 
 1. Vyplňte požadované parametry. Jednotlivé parametry jsou vysvětleny v následující tabulce:
 
-   [![Vytvoření skupiny prostředků Time Series Insights](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
+   [![Vytvoření skupiny prostředků Azure Time Series Insights](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
 
    Nastavení|Navrhovaná hodnota|Popis
    ---|---|---
    Název prostředí | Jedinečný název | Tento název představuje prostředí v [Průzkumníkovi časových řad](https://insights.timeseries.azure.com) .
-   Předplatné | Vaše předplatné | Máte-li více předplatných, vyberte předplatné, které obsahuje váš zdroj událostí nejlépe. Time Series Insights může automaticky zjišťovat prostředky Azure IoT Hub a centra událostí existující ve stejném předplatném.
+   Předplatné | Vaše předplatné | Máte-li více předplatných, vyberte předplatné, které obsahuje váš zdroj událostí nejlépe. Azure Time Series Insights může automaticky zjišťovat prostředky Azure IoT Hub a centra událostí existující ve stejném předplatném.
    Skupina prostředků | Vytvořit nový nebo použít existující | Skupina prostředků je kolekce společně používaných prostředků Azure. Můžete vybrat existující skupinu prostředků, například tu, která obsahuje vaše centrum událostí nebo IoT Hub. Nebo můžete vytvořit nový, pokud tento prostředek nesouvisí s ostatními prostředky.
    Umístění | Nejbližší zdroji události | V takovém případě můžete zvolit stejné umístění datového centra, které obsahuje vaše data zdroje událostí, a vyhnout se tak nákladům na šířku pásma mezi oblastí a mezi zónami a přidáním latence při přesunu dat mimo oblast.
    Cenová úroveň | S1 | Vyberte potřebnou propustnost. Pro nejnižší náklady a počáteční kapacitu vyberte S1.
@@ -58,9 +59,9 @@ Pomocí těchto kroků vytvořte prostředí:
 
 1. V **přehledu**prostředků ověřte nastavení konfigurace nasazení.
 
-   [![Vytvoření služby Time Series Insights – připnutí na řídicí panel](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
+   [![Vytvoření Azure Time Series Insights připnout na řídicí panel](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
-1. **(Volitelné)** Výběrem **ikony připnutí** v pravém horním rohu snadno získáte přístup k prostředí Time Series Insights v budoucnu.
+1. **(Volitelné)** Výběrem **ikony připnutí** v pravém horním rohu snadno získáte přístup k prostředí Azure Time Series Insights v budoucnu.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -70,4 +71,4 @@ Pomocí těchto kroků vytvořte prostředí:
 
 * [Odešle události](time-series-insights-send-events.md) do zdroje událostí.
 
-* Zobrazte si prostředí v [průzkumníkovi Time Series Insights](https://insights.timeseries.azure.com).
+* Zobrazte si prostředí v [průzkumníkovi Azure Time Series Insights](https://insights.timeseries.azure.com).

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205716"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499405"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurace Application Insights Profiler
 
@@ -41,7 +41,7 @@ Nedávné relace profilování | Zobrazí informace o minulých relacích profil
 ## <a name="profile-now"></a>Profilovat teď
 Tato možnost umožňuje spustit relaci profilování na vyžádání. Po kliknutí na tento odkaz začnou všichni agenti profileru, kteří odesílají data do této instance Application Insights, zachytí profil. Po 5 až 10 minutách se relace profilu zobrazí v následujícím seznamu.
 
-Aby mohl uživatel ručně aktivovat relaci profileru, musí pro Application Insights komponentu vyžadovat minimální přístup "Write" na jejich roli. Ve většině případů tento přístup získáte automaticky a nebudete potřebovat žádnou další práci. Pokud máte problémy, obor předplatného, který se má přidat, by byl rolí "Application Insights Přispěvatel komponent". [Přečtěte si další informace o řízení přístupu k rolím pomocí monitorování Azure](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
+Aby mohl uživatel ručně aktivovat relaci profileru, musí pro Application Insights komponentu vyžadovat minimální přístup "Write" na jejich roli. Ve většině případů tento přístup získáte automaticky a nebudete potřebovat žádnou další práci. Pokud máte problémy, obor předplatného, který se má přidat, by byl rolí "Application Insights Přispěvatel komponent". [Přečtěte si další informace o řízení přístupu k rolím pomocí monitorování Azure](./resources-roles-access-control.md).
 
 ## <a name="trigger-settings"></a>Nastavení aktivační události
 ![Informační rámeček nastavení triggeru][trigger-settings-flyout]

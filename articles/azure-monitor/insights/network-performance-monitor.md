@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480874"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498956"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Řešení Network Performance Monitor v Azure
 
@@ -31,7 +32,7 @@ Network Performance Monitor nabízí tři široké možnosti:
 
 * [Monitorování ExpressRoute](network-performance-monitor-expressroute.md): monitorujte komplexní konektivitu a výkon mezi firemními pobočkami a Azure, a to prostřednictvím Azure ExpressRoute.  
 
-Další informace o různých funkcích podporovaných nástrojem [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) jsou k dispozici online.
+Další informace o různých funkcích podporovaných nástrojem [Network Performance Monitor](../../networking/network-monitoring-overview.md) jsou k dispozici online.
  
 ## <a name="supported-regions"></a>Podporované oblasti
 NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části světa, a to z pracovního prostoru hostovaného v jedné z následujících oblastí:
@@ -42,11 +43,11 @@ NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části
 * USA – západ
 * USA – středozápad
 * USA – středosever
-* USA – středojih
-* USA – střed
-* USA – východ
+* Středojižní USA
+* Střední USA
+* East US
 * USA – východ 2
-* USA – západ 2
+* Západní USA 2
 * Východní Japonsko
 * Jihovýchodní Asie
 * Austrálie – jihovýchod
@@ -55,12 +56,12 @@ NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části
 * Jižní Velká Británie
 * Východní Asie
 * Jižní Korea – střed
-* Indie – střed
+* Central India
 * ) – Virginia vlády USA
 * Čína – východ 2
 
 
-Seznam podporovaných oblastí pro monitorování ExpressRoute je k dispozici v [dokumentaci](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117).
+Seznam podporovaných oblastí pro monitorování ExpressRoute je k dispozici v [dokumentaci](../../expressroute/how-to-npm.md?utm_swu=8117).
 
 
 ## <a name="set-up-and-configure"></a>Nastavení a konfigurace
@@ -255,9 +256,9 @@ Všechna data, která jsou zveřejněna prostřednictvím řídicího panelu Net
 
 ## <a name="alerts"></a>Výstrahy
 
-Network Performance Monitor používá funkce upozorňování [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
+Network Performance Monitor používá funkce upozorňování [Azure monitor](../platform/alerts-overview.md).
 
-To znamená, že všechna oznámení jsou spravovaná pomocí [skupin akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups).  
+To znamená, že všechna oznámení jsou spravovaná pomocí [skupin akcí](../platform/action-groups.md).  
 
 Pokud jste uživatelem NPM, který vytváří upozornění prostřednictvím Log Analytics: 
 1. Zobrazí se odkaz, který vás přesměruje na Azure Portal. Kliknutím na něj získáte přístup k portálu.
@@ -268,7 +269,7 @@ Pokud jste uživatelem NPM, který vytváří upozornění prostřednictvím Log
 Pokud jste uživatelem NPM, který vytváří upozornění prostřednictvím Azure Portal:  
 1. Svůj e-mail můžete zadat přímo nebo můžete zvolit vytvoření výstrah prostřednictvím skupin akcí.
 2. Pokud se rozhodnete zadat přímo svůj e-mail, vytvoří se skupina akcí se skupinou **akcí název npm e-mail** a do této skupiny akcí se přidá ID e-mailu.
-3. Pokud se rozhodnete použít skupiny akcí, budete muset vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete [tady.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
+3. Pokud se rozhodnete použít skupiny akcí, budete muset vybrat dříve vytvořenou skupinu akcí. Informace o tom, jak vytvořit skupinu akcí, najdete [tady.](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
 4. Po úspěšném vytvoření výstrahy můžete pomocí odkazu spravovat výstrahy spravovat výstrahy. 
 
 Pokaždé, když vytvoříte upozornění, NPM vytvoří pravidlo výstrahy protokolu založené na dotazech v Azure Monitor. Tento dotaz se ve výchozím nastavení spouští každých 5 minut. Azure monitor neúčtuje za první vytvořená pravidla upozornění protokolu 250 a všechna pravidla výstrah nad limitem pravidel upozornění protokolů 250 se budou fakturovat podle ceny za výstrahy na [stránce Azure monitor Price](https://azure.microsoft.com/pricing/details/monitor/).

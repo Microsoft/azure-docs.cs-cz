@@ -14,21 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: 476241ad3d4077f2da0c513e3c989218701232ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37a2724e28269d5f8b10d6ae7073aacc8272255b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81255749"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494764"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače o agenta Network Watcher pro Linux
 
 ## <a name="overview"></a>Přehled
 
-[Azure Network Watcher](/azure/network-watcher/) je služba pro sledování, diagnostiku a analýzu výkonu sítě, která umožňuje monitorování sítí Azure. Rozšíření virtuálního počítače s Network Watcher agentem je požadavek na některé z Network Watcher funkcí na virtuálních počítačích Azure, jako je třeba zachycení síťového provozu na vyžádání a další pokročilé funkce.
+[Azure Network Watcher](../../network-watcher/index.yml) je služba pro sledování, diagnostiku a analýzu výkonu sítě, která umožňuje monitorování sítí Azure. Rozšíření virtuálního počítače s Network Watcher agentem je požadavek na některé z Network Watcher funkcí na virtuálních počítačích Azure, jako je třeba zachycení síťového provozu na vyžádání a další pokročilé funkce.
 
 Tento článek podrobně popisuje podporované platformy a možnosti nasazení pro rozšíření virtuálního počítače Network Watcher agenta pro Linux. Instalace agenta neruší nebo vyžaduje restart virtuálního počítače. Rozšíření můžete nasadit do virtuálních počítačů, které nasadíte. Pokud je virtuální počítač nasazený službou Azure, Projděte si dokumentaci ke službě, kde zjistíte, jestli umožňuje nainstalovat rozšíření na virtuálním počítači.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -48,7 +49,7 @@ Rozšíření agenta Network Watcher lze nakonfigurovat pro následující distr
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Některé funkce agenta Network Watcher vyžadují, aby byl virtuální počítač připojený k Internetu. Bez možnosti navázání odchozích připojení nemusí některé funkce agenta Network Watcher fungovat správně nebo nebudou k dispozici. Další informace o funkcích Network Watcher, které vyžadují agenta, najdete v[dokumentaci k Network Watcher](/azure/network-watcher/).
+Některé funkce agenta Network Watcher vyžadují, aby byl virtuální počítač připojený k Internetu. Bez možnosti navázání odchozích připojení nemusí některé funkce agenta Network Watcher fungovat správně nebo nebudou k dispozici. Další informace o funkcích Network Watcher, které vyžadují agenta, najdete v[dokumentaci k Network Watcher](../../network-watcher/index.yml).
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -74,7 +75,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad |
+| Název | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. Azure. NetworkWatcher |
@@ -118,4 +119,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>Podpora
 
-Pokud potřebujete další informace v jakémkoli bodě tohoto článku, můžete si přečtěte v dokumentaci k [Network Watcher](/azure/network-watcher/)nebo se obraťte na odborníky na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud potřebujete další informace v jakémkoli bodě tohoto článku, můžete si přečtěte v dokumentaci k [Network Watcher](../../network-watcher/index.yml)nebo se obraťte na odborníky na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Případně můžete zasouborovat incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).

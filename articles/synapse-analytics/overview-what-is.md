@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96bb624472aa2053599765d5bfedeb96339d0973
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85808042"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496043"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Co je Azure synapse Analytics (pracovní prostory verze Preview)?
 
@@ -40,7 +40,7 @@ Kromě toho Azure synapse usnadňuje vytváření prediktivních modelů a pokro
 
 * Synapse SQL nabízí jak **servery bez serveru** , tak i **zřízené** modely prostředků, což nabízí možnosti spotřeby a fakturace podle vašich potřeb. V případě předvídatelného výkonu a nákladů zřídí fondy, aby vyhradí výpočetní výkon pro data uložená v tabulkách SQL. Pro neplánované nebo rozstupné úlohy můžete použít koncový bod SQL bez serveru, který je k dispozici vždy.
 * Použití integrovaných funkcí **streamování** k obstání dat z cloudových zdrojů dat do tabulek SQL
-* Integrujte AI s SQL pomocí modelů **strojového učení** pro stanovení skóre dat pomocí funkce prediktivního jazyka T-SQL.
+* Integrujte AI s SQL pomocí modelů **strojového učení** pro stanovení skóre dat pomocí [funkce prediktivního jazyka T-SQL](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) .
 
 ### <a name="industry-standard-apache-spark"></a>Oborová standardní Apache Spark
 

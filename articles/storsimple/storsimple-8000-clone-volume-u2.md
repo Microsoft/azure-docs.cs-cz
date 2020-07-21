@@ -4,22 +4,18 @@ description: Popisuje různé typy a využití klonování a vysvětluje, jak m�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 12/05/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ddc7d9e359fbb43680ae093c4e6cd2b9fb1ab2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514983"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496141"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Použití služby Správce zařízení StorSimple na webu Azure Portal ke klonování svazku
 
@@ -31,7 +27,7 @@ V okně StorSimple Device Manager Service **Backup Catalog** se zobrazí všechn
 
  ![Seznam zálohovacích skladů](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
-## <a name="considerations-for-cloning-a-volume"></a>Pokyny pro klonování svazku
+## <a name="considerations-for-cloning-a-volume"></a>Důležité informace o klonování svazku
 
 Při klonování svazku Vezměte v úvahu následující informace.
 
@@ -51,7 +47,7 @@ Při klonování svazku Vezměte v úvahu následující informace.
 
 Pomocí místního nebo cloudového snímku můžete vytvořit klon na stejném zařízení, na jiném zařízení nebo dokonce na cloudovém zařízení.
 
-Následující postup popisuje, jak vytvořit klon ze zálohy katalogu.  Alternativním způsobem inicializace klonování je přejít na **svazky**, vybrat svazek a potom kliknutím pravým tlačítkem vyvolat kontextovou nabídku a vybrat **klonovat**.
+Následující postup popisuje, jak vytvořit klon ze zálohy katalogu.  
 
 Provedením následujících kroků vytvoříte klon svazku ze zálohy katalogu.
 

@@ -9,22 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 611ab503dfea44e8287e95cf607ce6af3b447d1f
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: a74b77ac59ece98f1a64839fd5000f4ab5d638f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83815787"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497875"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Instalace a spuštění kontejnerů obličeje (Preview)
+
+> [!IMPORTANT]
+> Bylo dosaženo limitu pro uživatele kontejneru obličeje. V současné době nepřijímáme nové aplikace pro kontejner obličeje.
 
 Azure Cognitive Services Face poskytuje standardizovaný kontejner pro Linux pro Docker, který detekuje lidské obličeje na obrázcích. Také identifikuje atributy, které zahrnují orientační orientační prvky, jako jsou například nos a oči, pohlaví, věk a další funkce obličeje v počítači. Kromě detekce může ploška kontrolovat, jestli dvě plošky ve stejné imagi nebo v různých imagích jsou stejné pomocí skóre spolehlivosti. Ploška také může porovnat plošky s databází a zjistit, zda již existuje podobný vzhled nebo identický obličej. Můžete také uspořádat podobné plošky do skupin pomocí sdílených vizuálních vlastností.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete používat kontejnery služby Face, musíte splnit následující předpoklady.
 
@@ -36,12 +39,6 @@ Než začnete používat kontejnery služby Face, musíte splnit následující 
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-## <a name="request-access-to-the-private-container-registry"></a>Požádat o přístup k privátnímu registru kontejnerů
-
-Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) pro vyžádání přístupu ke kontejneru. 
-
-[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
-
 ### <a name="the-host-computer"></a>Hostitelský počítač
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
@@ -50,9 +47,9 @@ Vyplňte a odešlete [formulář žádosti](https://aka.ms/cognitivegate) pro vy
 
 V následující tabulce jsou popsány minimální a doporučené PROCESORy a paměťová jádra, která se mají přidělit pro každý kontejner služby obličeje.
 
-| Kontejner | Minimální | Doporučené | Transakcí za sekundu<br>(Minimum, maximum)|
+| Kontejner | Minimum | Doporučeno | Transakcí za sekundu<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
-|Tvář | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |10, 20|
+|Rozpoznávání tváře | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |10, 20|
 
 * Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
 * Transakcí za sekundu (TPS).
@@ -65,7 +62,7 @@ K dispozici jsou image kontejneru pro službu obličeje.
 
 | Kontejner | Repository |
 |-----------|------------|
-| Tvář | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
+| Rozpoznávání tváře | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -111,11 +108,11 @@ Tento příkaz:
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 
-## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
+## <a name="query-the-containers-prediction-endpoint"></a>Zadání dotazu do prediktivního koncového bodu kontejneru
 
-Kontejner poskytuje rozhraní API koncového bodu předpovědi založené na REST. 
+Kontejner poskytuje rozhraní API prediktivního koncového bodu pro dotazy založené na REST. 
 
-`http://localhost:5000`Pro rozhraní API kontejneru použijte hostitele.
+Pro rozhraní API kontejneru použijte hostitele `http://localhost:5000`.
 
 
 <!--  ## Validate container is running -->

@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32fd0da0095c34c4ef199eb703881e048473f0a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733671"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499354"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Reference k rozhraní API agenta Azure Monitor Application Insights
 
@@ -82,7 +83,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
-V tomto příkladu:
+V tomto příkladu:
 - `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
 - `AppFilter='WebAppExclude'`poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentovaná.
 - `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
@@ -118,7 +119,7 @@ Jeden instalační skript pro několik počítačů můžete vytvořit nastaven�
 - **MachineFilter** je povinný regulární výraz jazyka C# počítače nebo názvu virtuálního počítače.
     - '. * ' bude odpovídat všem
     - Hodnota ComputerName bude odpovídat jenom počítačům se zadaným přesným názvem.
-- **AppFilter** je požadovaný regulární výraz jazyka C# názvu webu služby IIS. Seznam webů na serveru můžete získat spuštěním příkazu [Get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite).
+- **AppFilter** je požadovaný regulární výraz jazyka C# názvu webu služby IIS. Seznam webů na serveru můžete získat spuštěním příkazu [Get-iissite](/powershell/module/iisadministration/get-iissite).
     - '. * ' bude odpovídat všem
     - Možnost ' název_webu ' bude odpovídat pouze stránce služby IIS se zadaným přesným názvem.
 - **InstrumentationKey** se vyžaduje k tomu, aby bylo možné monitorovat aplikace, které odpovídají předchozím dvěma filtrům.
@@ -134,7 +135,7 @@ Modul instrumentace zvyšuje režii a je ve výchozím nastavení vypnutý.
 **Volitelné.** Pomocí tohoto přepínače přijměte licence a prohlášení o zásadách ochrany osobních údajů v bezobslužné instalaci.
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
-Pokud máte cluster webových serverů, můžete použít [sdílenou konfiguraci](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
+Pokud máte cluster webových serverů, můžete použít [sdílenou konfiguraci](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211).
 Do této sdílené konfigurace nelze vložit modul HTTP.
 Tento skript selže a zobrazí se zpráva, že je nutné provést další kroky instalace.
 Pomocí tohoto přepínače tuto kontrolu ignorujte a pokračujte v instalaci požadovaných součástí. Další informace najdete v tématu [známé konflikty – with-IIS-Shared-Configuration](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration) .
@@ -446,8 +447,8 @@ Stáhne také externí nástroje a určí, zda jsou potřebné knihovny DLL nač
 
 Pokud se tento proces z jakéhokoli důvodu nepovede, můžete tyto příkazy spustit ručně:
 - iisreset.exe/status
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | Findstr/I "InstrumentationEngine AI". ApplicationInsights
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "InstrumentationEngine AI ApplicationInsights"
+- [handle64.exe](/sysinternals/downloads/handle) -p W3wp | Findstr/I "InstrumentationEngine AI". ApplicationInsights
+- [listdlls64.exe](/sysinternals/downloads/listdlls) W3wp | Findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -474,7 +475,7 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-x
 ```
 
 #### <a name="example-with-an-instrumentation-key-map"></a>Příklad s mapou klíče instrumentace
-V tomto příkladu:
+V tomto příkladu:
 - `MachineFilter`odpovídá aktuálnímu počítači pomocí `'.*'` zástupného znaku.
 - `AppFilter='WebAppExclude'`poskytuje `null` klíč instrumentace. Zadaná aplikace nebude instrumentovaná.
 - `AppFilter='WebAppOne'`přiřadí zadané aplikaci jedinečný klíč instrumentace.
@@ -551,7 +552,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 
 ## <a name="start-applicationinsightsmonitoringtrace"></a>Spustit – ApplicationInsightsMonitoringTrace
 
-Shromažďuje [události ETW](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) z běhového modulu připojení s kódováním. Tato rutina je alternativou ke spuštění [PerfView](https://github.com/microsoft/perfview).
+Shromažďuje [události ETW](/windows/desktop/etw/event-tracing-portal) z běhového modulu připojení s kódováním. Tato rutina je alternativou ke spuštění [PerfView](https://github.com/microsoft/perfview).
 
 Shromážděné události budou v reálném čase vytištěny do konzoly a uloženy do souboru ETL. Výstupní soubor ETL může otevřít [PerfView](https://github.com/microsoft/perfview) k dalšímu prošetření.
 
@@ -636,9 +637,9 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>Další kroky
 
   Zobrazení telemetrických dat:
- - [Prozkoumejte metriky](../../azure-monitor/app/metrics-explorer.md) pro monitorování výkonu a využití.
+ - [Prozkoumejte metriky](../platform/metrics-charts.md) pro monitorování výkonu a využití.
 - [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
-- K pokročilejším dotazům použijte [Analytics](../../azure-monitor/app/analytics.md) .
+- K pokročilejším dotazům použijte [Analytics](../log-query/log-query-overview.md) .
 - [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
  
  Přidání další telemetrie:
@@ -648,9 +649,3 @@ Timeout Reached. Stopping...
  
  Další Application Insights agenta:
  - Pomocí naší příručky můžete [řešit potíže s](status-monitor-v2-troubleshoot.md) agentem Application Insights.
-
-
-
-
-
-

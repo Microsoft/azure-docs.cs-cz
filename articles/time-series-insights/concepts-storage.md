@@ -1,78 +1,78 @@
 ---
-title: Přehled úložiště – Azure Time Series Insights | Microsoft Docs
-description: Seznamte se s úložištěm dat v Azure Time Series Insights.
+title: Přehled úložiště – Azure Time Series Insights Gen2 | Microsoft Docs
+description: Seznamte se s úložištěm dat v Azure Time Series Insights Gen2.
 author: esung22
 ms.author: elsung
-manager: diegoviso
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc6b6b42293b4f2028f1a12af950e96e28febc87
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 77616afa95b61d5a0ca726db0d66734fc57133f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085561"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495359"
 ---
 # <a name="data-storage"></a>Úložiště dat
 
-Při vytváření Time Series Insights prostředí s *průběžnými platbami* (PAYG) SKU vytvoříte dva prostředky Azure:
+Když vytvoříte prostředí Azure Time Series Insights Gen2, vytvoříte dva prostředky Azure:
 
-* Prostředí Azure Time Series Insights, které se dá nakonfigurovat pro teplé úložiště dat.
+* Prostředí Azure Time Series Insights Gen2, které se dá nakonfigurovat pro úložiště dat s teplou.
 * Účet Azure Storage pro úložiště studených dat.
 
-Data v teplém úložišti jsou dostupná jenom v [dotazech Time Series](./time-series-insights-update-tsq.md) a v [Azure Time Series Insights Exploreru](./time-series-insights-update-explorer.md). Vaše teplé úložiště bude obsahovat poslední data v rámci [doby uchování](./time-series-insights-update-plan.md#the-preview-environment) vybrané při vytváření prostředí Time Series Insights.
+Data v teplém úložišti jsou k dispozici pouze prostřednictvím [rozhraní API pro dotazy Time Series](./time-series-insights-update-tsq.md) a [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md). Vaše teplé úložiště bude obsahovat poslední data v rámci [doby uchování](./time-series-insights-update-plan.md#the-preview-environment) vybrané při vytváření prostředí Azure Time Series Insights Gen2.
 
-Azure Time Series Insights uloží data z chladírny do úložiště objektů BLOB v Azure ve [formátu souboru Parquet](#parquet-file-format-and-folder-structure). Time Series Insights spravuje tato data z chladírenského úložiště výhradně, ale je k dispozici pro čtení přímo jako standardních souborů Parquet.
+Azure Time Series Insights Gen2 ukládá data z chladírny do úložiště objektů BLOB v Azure ve [formátu souboru Parquet](#parquet-file-format-and-folder-structure). Azure Time Series Insights Gen2 spravuje tato data studeného úložiště výhradně, ale je k dispozici pro čtení přímo jako standardních souborů Parquet.
 
 > [!WARNING]
-> Jako vlastník účtu služby Azure Blob Storage, ve kterém jsou uložená data, máte plný přístup ke všem datům v účtu. Tento přístup zahrnuje oprávnění k zápisu a odstraňování. Neupravujte ani neodstraňujte data, která Azure Time Series Insights zapisuje, protože by mohlo dojít ke ztrátě dat.
+> Jako vlastník účtu služby Azure Blob Storage, ve kterém jsou uložená data, máte plný přístup ke všem datům v účtu. Tento přístup zahrnuje oprávnění k zápisu a odstraňování. Neupravujte ani neodstraňujte data, která Azure Time Series Insights Gen2 zápisy, protože to může způsobit ztrátu dat.
 
 ## <a name="data-availability"></a>Dostupnost dat
 
-Azure Time Series Insights oddíly a data indexů pro optimální výkon dotazů. Data budou k dispozici pro dotazy z teplého (Pokud povoleného) a studeného úložiště po jeho indexování. Množství dat, která se ingestují, můžou ovlivnit tuto dostupnost.
+Azure Time Series Insights Gen2 oddíly a data indexů pro optimální výkon dotazů. Data budou k dispozici pro dotazy z teplého (Pokud povoleného) a studeného úložiště po jeho indexování. Množství dat, která se ingestují, můžou ovlivnit tuto dostupnost.
 
 > [!IMPORTANT]
 > Až budou data k dispozici, může docházet k období až 60 sekund. Pokud se setkáte s významnou latencí delší než 60 sekund, odešlete prosím lístek podpory prostřednictvím Azure Portal.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-Tato část popisuje Azure Storage podrobnosti, které jsou relevantní pro Azure Time Series Insights.
+Tato část popisuje Azure Storage detailů, které jsou relevantní pro Azure Time Series Insights Gen2.
 
 Podrobný popis úložiště objektů BLOB v Azure najdete v [úvodu do objektů BLOB úložiště](../storage/blobs/storage-blobs-introduction.md).
 
 ### <a name="your-storage-account"></a>Váš účet úložiště
 
-Když vytvoříte prostředí Azure Time Series Insights PAYG, vytvoří se účet Azure Storage jako dlouhodobý chladírenský sklad.  
+Když vytvoříte prostředí Azure Time Series Insights Gen2, vytvoří se účet Azure Storage jako dlouhodobý chladírenský sklad.  
 
-Azure Time Series Insights zachovává až dvě kopie každé události v účtu Azure Storage. Jedna kopie ukládá události seřazené podle času příjmu, vždy umožňuje přístup k událostem v posloupnosti seřazené podle času. V průběhu času Time Series Insights také vytvořit znovu rozdělenou kopii dat, která se mají optimalizovat pro provádění Time Series Insights dotazů.
+Azure Time Series Insights Gen2 zachovává až dvě kopie každé události v účtu Azure Storage. Jedna kopie ukládá události seřazené podle času příjmu, vždy umožňuje přístup k událostem v posloupnosti seřazené podle času. V průběhu času Azure Time Series Insights Gen2 také vytvoří znovu rozdělenou kopii dat, která se mají optimalizovat pro provádění dotazů.
 
 Všechna vaše data se ve vašem účtu Azure Storage ukládají na neomezenou dobu.
 
-#### <a name="writing-and-editing-time-series-insights-blobs"></a>Zápis a úpravy objektů BLOB Time Series Insights
+#### <a name="writing-and-editing-blobs"></a>Zápis a úpravy objektů BLOB
 
-Aby se zajistil výkon dotazů a dostupnost dat, neupravujte ani neodstraňujte žádné objekty blob, které Time Series Insights vytvoří.
+Aby se zajistil výkon dotazů a dostupnost dat, neupravujte ani neodstraňujte žádné objekty blob, které Azure Time Series Insights Gen2 vytvoří.
 
-#### <a name="accessing-time-series-insights-cold-store-data"></a>Přístup k Time Series Insights dat z chladírenského úložiště
+#### <a name="accessing-cold-store-data"></a>Přístup k datům z chladírenského úložiště
 
-Kromě přístupu k datům z [aplikace Time Series Insights Explorer](./time-series-insights-update-explorer.md) a [dotaz časové řady](./time-series-insights-update-tsq.md)můžete také chtít získat přístup k datům přímo ze souborů Parquet uložených v chladírenském úložišti. Můžete například číst, transformovat a čistit data v Jupyter poznámkovém bloku a pak je použít ke školení modelu Azure Machine Learning ve stejném pracovním postupu Spark.
+Kromě přístupu k datům z [Azure Time Series Insights Průzkumníku Gen2](./time-series-insights-update-explorer.md) a [rozhraní API pro dotazování časové řady](./time-series-insights-update-tsq.md)můžete také chtít přistupovat k datům přímo ze souborů Parquet uložených v chladírenském úložišti. Můžete například číst, transformovat a čistit data v Jupyter poznámkovém bloku a pak je použít ke školení modelu Azure Machine Learning ve stejném pracovním postupu Spark.
 
-Pokud chcete získat přístup k datům přímo z účtu Azure Storage, potřebujete přístup pro čtení k účtu, který se používá k ukládání dat ve verzi Preview Time Series Insights. Následně si můžete přečíst vybraná data na základě doby vytvoření souboru Parquet ve `PT=Time` složce popsané níže v části [Formát souboru Parquet](#parquet-file-format-and-folder-structure) .  Další informace o povolení přístupu pro čtení k vašemu účtu úložiště najdete v tématu [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
+Pokud chcete získat přístup k datům přímo z účtu Azure Storage, potřebujete přístup pro čtení k účtu, který se používá k ukládání dat Azure Time Series Insights Gen2. Následně si můžete přečíst vybraná data na základě doby vytvoření souboru Parquet ve `PT=Time` složce popsané níže v části [Formát souboru Parquet](#parquet-file-format-and-folder-structure) .  Další informace o povolení přístupu pro čtení k vašemu účtu úložiště najdete v tématu [Správa přístupu k prostředkům účtu úložiště](../storage/blobs/storage-manage-access-to-resources.md).
 
 #### <a name="data-deletion"></a>Odstranění dat
 
-Neodstraňujte soubory Azure Time Series Insights. Spravujte související data jenom v rámci Azure Time Series Insights.
+Neodstraňujte soubory Gen2 Azure Time Series Insights. Spravujte související data jenom z Azure Time Series Insights jenom v Gen2.
 
 ### <a name="parquet-file-format-and-folder-structure"></a>Formát souboru a struktura složek Parquet
 
-Parquet je open source formát sloupcového souboru navržený pro efektivní úložiště a výkon. Azure Time Series Insights používá Parquet k povolení škálovatelného výkonu dotazů založených na ID časové řady.  
+Parquet je open source formát sloupcového souboru navržený pro efektivní úložiště a výkon. Azure Time Series Insights Gen2 používá Parquet k povolení výkonu dotazů na základě ID časových řad.  
 
 Další informace o typu souboru Parquet najdete v [dokumentaci k Parquet](https://parquet.apache.org/documentation/latest/).
 
-Azure Time Series Insights ukládá kopie vašich dat následujícím způsobem:
+Azure Time Series Insights Gen2 ukládá kopie vašich dat následujícím způsobem:
 
 * První, počáteční kopie je dělená časem ingestování a ukládá data přibližně v pořadí doručení. Tato data se nachází ve `PT=Time` složce:
 
@@ -82,7 +82,7 @@ Azure Time Series Insights ukládá kopie vašich dat následujícím způsobem:
 
   `V=1/PT=TsId/<TSI_INTERNAL_NAME>.parquet`
 
-Časové razítko v názvech objektů BLOB ve `PT=Time` složce odpovídá době příchodu dat, která se Azure Time Series Insights, a nikoli časovým razítkem událostí.
+Časové razítko v názvech objektů BLOB ve `PT=Time` složce odpovídá době příchodu dat, aby Azure Time Series Insights Gen2, a ne časové razítko událostí.
 
 Data ve `PT=TsId` složce budou optimalizována pro dotazy v průběhu času a nejsou statická. Během změny oddílů můžou být některé události přítomné ve více objektech blob. Pojmenování objektů BLOB v této složce není zaručeno, aby zůstalo stejné. 
 
@@ -94,11 +94,11 @@ Obecně platí, že pokud potřebujete získat přístup k datům přímo pomoc�
 > * `<MM>`provede mapování na vyjádření měsíčních číslic.
 > * `<YYYYMMDDHHMMSSfff>`mapuje se na časovou reprezentaci se čtyřmi číslicemi (), měsíčním číslem (), dvěma číslicemi `YYYY` (), dvěma číslicemi (), dvěma číslicemi (), dvěma číslicemi `MM` `DD` () a třemi číslicemi `HH` `MM` `SS` milisekund ( `fff` ).
 
-Události ve verzi Preview Time Series Insights jsou namapovány na obsah souboru Parquet následujícím způsobem:
+Azure Time Series Insights události Gen2 jsou namapovány na obsah souboru Parquet následujícím způsobem:
 
 * Každá událost je mapována na jeden řádek.
 * Každý řádek obsahuje sloupec **časového razítka** s časovým razítkem události. Vlastnost časového razítka není nikdy null. Ve výchozím nastavení je **čas** zařazený do fronty, pokud není ve zdroji událostí zadaná vlastnost časového razítka. Uložené časové razítko je vždy ve formátu UTC.
-* Každý řádek obsahuje sloupce s ID časové řady (TSID), jak je definováno při vytváření prostředí Time Series Insights. Název vlastnosti TSID zahrnuje `_string` příponu.
+* Každý řádek obsahuje sloupce s ID časové řady (TSID), jak je definováno při vytváření prostředí Azure Time Series Insights Gen2. Název vlastnosti TSID zahrnuje `_string` příponu.
 * Všechny ostatní vlastnosti odeslané jako data telemetrie jsou mapovány na názvy sloupců, které končí `_bool` (Boolean), `_datetime` (časové razítko), `_long` (Long), ( `_double` Double), `_string` (řetězec) nebo `dynamic` (dynamické), v závislosti na typu vlastnosti.  Další informace najdete v článku o [podporovaných datových typech](./concepts-supported-data-types.md).
 * Toto mapování schématu se vztahuje na první verzi formátu souboru, na kterou odkazuje **v = 1** a je uloženo v základní složce se stejným názvem. Vzhledem k tomu, že se tato funkce vyvíjí, může se toto mapování schématu změnit a zvýší se název odkazu.
 
@@ -106,4 +106,4 @@ Události ve verzi Preview Time Series Insights jsou namapovány na obsah soubor
 
 * Přečtěte si o [modelování dat](./time-series-insights-update-tsm.md).
 
-* Naplánujte si [prostředí pro Azure Time Series Insights Preview](./time-series-insights-update-plan.md).
+* Plánování [Azure Time Series Insightsho prostředí Gen2](./time-series-insights-update-plan.md).

@@ -3,17 +3,17 @@ title: Monitorování živé webové aplikace v ASP.NET pomocí Azure Applicatio
 description: Monitorování výkonu webu bez opětovného nasazení. Funguje s ASP.NET webovými aplikacemi hostovanými místně nebo na virtuálních počítačích.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166378"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499524"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
 > [!IMPORTANT]
-> Monitorování stavu se již nedoporučuje používat a **od 1. června 2021** Tato verze monitorování stavu nebude podporována. Byl nahrazen agentem Azure Monitor Application Insights (dříve nazvaný Monitorování stavu v2). Podívejte se na naši dokumentaci pro [nasazení na místních serverech nebo na](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) [virtuální počítač Azure a nasazení sady škálování virtuálních počítačů](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
+> Monitorování stavu se již nedoporučuje používat a **od 1. června 2021** Tato verze monitorování stavu nebude podporována. Byl nahrazen agentem Azure Monitor Application Insights (dříve nazvaný Monitorování stavu v2). Podívejte se na naši dokumentaci pro [nasazení na místních serverech nebo na](./status-monitor-v2-overview.md) [virtuální počítač Azure a nasazení sady škálování virtuálních počítačů](./azure-vm-vmss-apps.md).
 
 Azure Application Insights vám umožňuje instrumentovat živou webovou aplikaci, aniž byste museli upravovat nebo znovu nasazovat kód. Budete potřebovat předplatné [Microsoft Azure](https://azure.com).
 
@@ -43,10 +43,10 @@ Tady je rekapitulace toho, co každý způsob přináší:
 | **[Podrobnější výjimky](../../azure-monitor/app/asp-net-exceptions.md)** | |Ano |
 | **[Diagnostika závislostí](../../azure-monitor/app/asp-net-dependencies.md)** |Na platformě .NET 4.6+, ale méně podrobná |Ano, úplné podrobnosti: kódy výsledků, text příkazu SQL, příkaz HTTP|
 | **[Čítače výkonu systému](../../azure-monitor/app/performance-counters.md)** |Ano |Ano |
-| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |Ne |
-| **[Integrace protokolu trasování](../../azure-monitor/app/asp-net-trace-logs.md)** |Ano |Ne |
-| **[Zobrazení stránky & uživatelských dat](../../azure-monitor/app/javascript.md)** |Ano |Ne |
-| **Nutnost znovu sestavit kód** |Ano | Ne |
+| **[Rozhraní API pro vlastní telemetrii][api]** |Ano |No |
+| **[Integrace protokolu trasování](../../azure-monitor/app/asp-net-trace-logs.md)** |Ano |No |
+| **[Zobrazení stránky & uživatelských dat](../../azure-monitor/app/javascript.md)** |Ano |No |
+| **Nutnost znovu sestavit kód** |Ano | No |
 
 
 
@@ -84,7 +84,7 @@ Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu
 4. Obnovte veškeré úpravy, které jste provedli v souboru .config.
 
 
-## <a name="troubleshooting"></a><a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Při
 
 ### <a name="confirm-a-valid-installation"></a>Potvrďte platnou instalaci. 
 
@@ -97,7 +97,7 @@ Tady je několik kroků, pomocí kterých můžete ověřit, že se instalace ú
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- Pokud potřebujete potvrdit, že Application Insights úspěšně připojen, můžete spustit [popisovač Sysinternals](https://docs.microsoft.com/sysinternals/downloads/handle) v příkazovém okně a ověřit tak, že služba IIS načetla applicationinsights.dll.
+- Pokud potřebujete potvrdit, že Application Insights úspěšně připojen, můžete spustit [popisovač Sysinternals](/sysinternals/downloads/handle) v příkazovém okně a ověřit tak, že služba IIS načetla applicationinsights.dll.
 
   ```console
   handle.exe /p w3wp.exe
@@ -145,7 +145,7 @@ Tento problém sledujeme [tady](https://github.com/Microsoft/ApplicationInsights
 * Pro výstup podrobných protokolů upravte konfigurační soubor: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` a přidejte `<add key="TraceLevel" value="All" />` do `appsettings` .
 Pak restartujte monitorování stavu.
 
-* Jak Monitorování stavu je aplikace .NET, můžete také povolit [trasování .NET přidáním příslušné diagnostiky do konfiguračního souboru](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). V některých scénářích může být například užitečné zjistit, co se děje na úrovni sítě [konfigurací trasování sítě](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing) .
+* Jak Monitorování stavu je aplikace .NET, můžete také povolit [trasování .NET přidáním příslušné diagnostiky do konfiguračního souboru](/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). V některých scénářích může být například užitečné zjistit, co se děje na úrovni sítě [konfigurací trasování sítě](/dotnet/framework/network-programming/how-to-configure-network-tracing) .
 
 ### <a name="insufficient-permissions"></a>Nedostatečná oprávnění
   
@@ -265,7 +265,7 @@ Desktopová aplikace, kterou instalujete s webovým serverem IIS. Pomáhá prov�
 
 ### <a name="can-i-close-it-after-it-runs"></a>Můžu ji po spuštění zavřít?
 
-Ano. Poté, co se provedla instrumentaci vybraných webových stránek, můžete ji zavřít.
+Yes. Poté, co se provedla instrumentaci vybraných webových stránek, můžete ji zavřít.
 
 Sama o sobě telemetrii neshromažďuje. Pouze nakonfiguruje webové aplikace a nastaví některá oprávnění.
 
@@ -311,7 +311,7 @@ Pro aplikace již instrumentované v době kompilace:
 
 ## <a name="download-status-monitor"></a><a name="download"></a>Stáhnout Monitorování stavu
 
-- Použití nového [modulu PowerShellu](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)
+- Použití nového [modulu PowerShellu](./status-monitor-v2-overview.md)
 - Stažení a spuštění [instalačního programu monitorování stavu](https://go.microsoft.com/fwlink/?LinkId=506648)
 - Nebo spusťte [instalaci webové platformy](https://www.microsoft.com/web/downloads/platform.aspx) a vyhledejte ji monitorování stavu Application Insights.
 
@@ -321,7 +321,7 @@ Zobrazení telemetrických dat:
 
 * [Zkoumání metrik](../../azure-monitor/platform/metrics-charts.md) pro monitorování výkonu a využití
 * [Prohledávání událostí a protokolů][diagnostic] pro diagnostiku problémů
-* [Analýzy](../../azure-monitor/app/analytics.md) pro pokročilejší dotazy
+* [Analýzy](../log-query/log-query-overview.md) pro pokročilejší dotazy
 
 Přidání další telemetrie:
 
@@ -336,6 +336,6 @@ Přidání další telemetrie:
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

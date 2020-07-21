@@ -4,12 +4,12 @@ description: Přečtěte si o škálování ve službě Azure Kubernetes Service
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244510"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499881"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -58,7 +58,7 @@ Automatické škálování clusteru se obvykle používá společně s autohoriz
 
 Pokud chcete začít s nástrojem pro automatické škálování clusteru v AKS, přečtěte si téma [Automatické škálování clusteru na AKS][aks-cluster-autoscaler].
 
-### <a name="scale-up-events"></a>Horizontální navýšení kapacity
+### <a name="scale-out-events"></a>Horizontální navýšení kapacity událostí
 
 Pokud uzel nemá dostatek výpočetních prostředků ke spuštění požadovaného uzlu, může to v průběhu procesu plánování probíhat. Uzel pod nemůže začít, pokud není v rámci fondu uzlů k dispozici další výpočetní prostředky.
 
@@ -66,7 +66,7 @@ Když se pro automatické škálování clusteru vydává oznámení, že se ned
 
 Pokud vaše aplikace potřebuje rychle škálovat, některé lusky můžou zůstat ve stavu, který čeká na naplánování, dokud další uzly nasazené nástrojem pro automatické škálování clusteru nemůžou akceptovat naplánované lusky. U aplikací, které mají vysoké požadavky na nárůst zatížení, můžete škálovat pomocí virtuálních uzlů a Azure Container Instances.
 
-### <a name="scale-down-events"></a>Události horizontálního navýšení kapacity
+### <a name="scale-in-events"></a>Škálování v událostech
 
 Automatické škálování clusteru také monitoruje stav plánování pod uzlem, které nedávno nepřijaly nové požadavky na plánování. Tento scénář znamená, že fond uzlů má víc výpočetních prostředků, než kolik jich je potřeba, a počet uzlů může být snížený.
 

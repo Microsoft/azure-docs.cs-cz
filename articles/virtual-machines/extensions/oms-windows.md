@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481778"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494662"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Rozšíření Log Analytics pro virtuální počítače pro Windows
 
 Protokoly Azure Monitor poskytují možnosti monitorování v cloudových i místních prostředcích. Rozšíření virtuálního počítače Log Analytics agenta pro Windows je publikované a podporované Microsoftem. Rozšíření nainstaluje agenta Log Analytics na virtuální počítače Azure a zaregistruje virtuální počítače do existujícího pracovního prostoru Log Analytics. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření Log Analytics virtuálních počítačů pro Windows.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -34,7 +34,7 @@ Podrobnosti o podporovaných operačních systémech Windows najdete v článku 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
 Následující tabulka poskytuje mapování verze rozšíření virtuálního počítače s Windows Log Analytics a sady Log Analytics agenta pro každou verzi. 
 
-| Log Analytics verze sady Windows Agent | Log Analytics verze rozšíření virtuálního počítače s Windows | Datum vydání | Poznámky k verzi |
+| Log Analytics verze sady Windows Agent | Log Analytics verze rozšíření virtuálního počítače s Windows | Datum vydání | Zpráva k vydání verze |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18038 | 1.0.18038 | Duben 2020   | <ul><li>Umožňuje připojení prostřednictvím privátního propojení pomocí Azure Monitor oborů privátních odkazů.</li><li>Přidá omezování příjmu, aby nedocházelo k náhlému a náhodnému výpadku v ingestování do pracovního prostoru.</li><li>Přidá podporu pro další Azure Government cloudy a oblasti.</li><li>Vyřeší chybu, ve které došlo k chybě HealthService.exe</li></ul> |
 | 10.20.18029 | 1.0.18029 | Březen 2020   | <ul><li>Přidání podpory podepisování kódu SHA-2</li><li>Vylepšuje instalaci a správu rozšíření virtuálních počítačů.</li><li>Vyřeší chybu v integraci služby Azure ARC pro servery</li><li>Přidá integrovaný nástroj pro řešení potíží pro zákaznickou podporu.</li><li>Přidá podporu pro další Azure Government oblasti.</li> |
@@ -86,7 +86,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 ```
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Name | Hodnota/příklad |
+| Název | Hodnota/příklad |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | vydavatel | Microsoft. EnterpriseCloud. Monitoring |
@@ -98,7 +98,7 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Log Analytics. P�
 \*ID pracovního prostoru se nazývá consumerId v rozhraní Log Analytics API.
 
 > [!NOTE]
-> Další vlastnosti najdete v tématu [připojení počítačů s Windows k Azure a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+> Další vlastnosti najdete v tématu [připojení počítačů s Windows k Azure a Azure monitor](../../azure-monitor/platform/agent-windows.md).
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
@@ -183,7 +183,7 @@ Set-AzVMExtension -ExtensionName "MicrosoftMonitoringAgent" `
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstraňování potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí modulu Azure PowerShell. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz pomocí modulu Azure PowerShell.
 

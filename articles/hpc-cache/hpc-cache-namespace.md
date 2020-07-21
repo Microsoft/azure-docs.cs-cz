@@ -1,17 +1,17 @@
 ---
-title: Vytvoření instance mezipaměti prostředí Azure HPC
-description: Vytvoření instance mezipaměti prostředí Azure HPC
+title: Použití agregovaného oboru názvů mezipaměti HPC Azure
+description: Jak naplánovat virtuální obor názvů pro mezipaměť HPC Azure
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: v-erkel
+ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045803"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497025"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Plánování agregovaného oboru názvů
 
@@ -30,7 +30,7 @@ Představte si třeba systém, kde se instance mezipaměti HPC Azure používá 
 Data šablony jsou uložena v datovém centru a informace potřebné pro tuto úlohu jsou uloženy v těchto podadresářích:
 
 * */goldline/templates/acme2017/sku798*
-* */goldline/templates/acme2017/sku980* 
+* */goldline/templates/acme2017/sku980*
 
 Tyto exporty zpřístupňuje systém úložiště Datacenter:
 
@@ -52,10 +52,10 @@ Cíl úložiště NFS může mít několik cest k virtuálnímu oboru názvů, p
 
 Vzhledem k tomu, že zdrojové cesty NFS jsou podadresářům stejného exportu, budete muset definovat několik cest k oboru názvů ze stejného cíle úložiště.
 
-| Cílový název hostitele úložiště  | Cesta exportu NFS      | Cesta k podadresáři | Cesta oboru názvů    |
-|--------------------------|----------------------|-------------------|-------------------|
-| *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
-| *IP adresa nebo název hostitele* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
+| Cílový název hostitele úložiště  | Cesta exportu NFS     | Cesta k podadresáři | Cesta oboru názvů    |
+|--------------------------|---------------------|-------------------|-------------------|
+| *IP adresa nebo název hostitele* | /goldline/templates | acme2017/sku798   | /templates/sku798 |
+| *IP adresa nebo název hostitele* | /goldline/templates | acme2017/sku980   | /templates/sku980 |
 
 Klientská aplikace může připojit mezipaměť a snadno získat přístup k agregovaným cestám k souborům oboru názvů, ``/source`` ``/templates/sku798`` a ``/templates/sku980`` .
 

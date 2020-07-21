@@ -1,18 +1,18 @@
 ---
-title: Integrace s povětrnostními partnery
+title: Integrace partnerských řešení pro počasí
 description: Tento článek popisuje, jak může zprostředkovatel dat počasí integrovat s FarmBeats
 author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: d4ceb25b9b81c831ed1b285a875742ebfaa6d24f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232640"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496991"
 ---
-# <a name="weather-partner-integration"></a>Integrace s povětrnostními partnery
+# <a name="weather-partner-integration"></a>Integrace partnerských řešení pro počasí
 
 Tento článek poskytuje informace o komponentě Docker **konektoru** služby Azure FarmBeats, kterou můžou poskytovatelé dat pro práci s FarmBeats vyvíjet, a to díky využití svých rozhraní API a posílání dat počasí do FarmBeats. Jakmile jsou data v FarmBeats k dispozici, je možné je použít pro syntézu dat a pro sestavování strojového učení nebo umělých analytických modelů.
 
@@ -36,16 +36,16 @@ Pomocí výše uvedených informací Docker si zákazník zaregistruje počasí 
 
 Rozhraní API FarmBeats obsahují technickou dokumentaci k Swagger. Informace o všech rozhraních API a jejich odpovídajících požadavcích nebo odpovědích najdete v tématu [FarmBeats Swagger](https://aka.ms/farmbeatsswagger). 
 
-Pokud jste nainstalovali FarmBeats, získáte přístup k FarmBeats Swagger na adrese[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger)
+Pokud jste nainstalovali FarmBeats, získáte přístup k FarmBeats Swagger na adrese`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
 Všimněte si, že rozhraní "-API" se připojuje k vašemu názvu webu FarmBeats.
-Koncový bod rozhraní API bude:[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net)
+Koncový bod rozhraní API bude:`https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>DataHub lib
 
 FarmBeats poskytne lib, kterou může použít partner pro počasí. Lib je aktuálně k dispozici jako součást implementace reference [zde](https://github.com/azurefarmbeats/noaa_docker/tree/master/datahub_lib). V budoucnu bude k dispozici jako sada SDK pro více jazyků.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 **Ověřování pomocí rozhraní FarmBeats API**
 
@@ -134,9 +134,9 @@ Tato součást bude vyvolána pokaždé, když uživatel FarmBeats spustí úloh
 
 ### <a name="details-of-the-objects"></a>Podrobnosti o objektech
 
-  **WeatherDataModel** |  |
+  WeatherDataModel | Popis |
   --- | ---
-  Name  | Název datového modelu počasí |
+  Název  | Název datového modelu počasí |
   Popis  | Poskytněte smysluplný popis modelu. |
   Vlastnosti  | Další vlastnosti definované poskytovatelem dat. |
   Název > weatherMeasures  | Název míry počasí Například humidity_max |
@@ -147,8 +147,8 @@ Tato součást bude vyvolána pokaždé, když uživatel FarmBeats spustí úloh
   weatherMeasures > AggregationType  | Buď None, Average, Max, minim, StandardDeviation, Sum, Total
   Hloubka > weatherMeasures  | Hloubka senzoru v centimetrech Například měření vlhkosti 10 cm pod vozovkou.
   Popis > weatherMeasures  | Poskytněte smysluplný popis měření. |
-  **JobType** |  |
-  Name  | název úlohy, například Get_Daily_Forecast; úloha, kterou zákazník spustí, aby získala data o počasí|
+  **JobType** | **Popis** |
+  Název  | název úlohy, například Get_Daily_Forecast; úloha, kterou zákazník spustí, aby získala data o počasí|
   pipelineDetails > parametry > název  | název parametru |
   pipelineDetails > parametry > typu | buď řetězec, int, float, bool, Array |
   parametry > pipelineDetails > je potřeba. | datového true, pokud je parametr povinný, false, pokud ne; Výchozí hodnota je true. |
@@ -156,10 +156,10 @@ Tato součást bude vyvolána pokaždé, když uživatel FarmBeats spustí úloh
   pipelineDetails > parametry > popisu | Popis parametru |
   Vlastnosti  | Další vlastnosti od výrobce.
   Vlastnosti > **programRunCommand** | příkaz Spustit jako Docker – tento příkaz se spustí, když zákazník spustí úlohu počasí. |
-  **WeatherDataLocation** |  |
+  **WeatherDataLocation** | **Popis** |
   weatherDataModelId  | ID odpovídající WeatherDataModel, která byla vytvořena během Bootstrap|
   location  | představuje zeměpisnou šířku, délku a zvýšení úrovně oprávnění. |
-  Name | Název objektu |
+  Název | Název objektu |
   Popis | Popis |
   farmId | **volitelné** ID farmy poskytované zákazníkem jako součást parametru úlohy |
   Vlastnosti  | Další vlastnosti od výrobce.
