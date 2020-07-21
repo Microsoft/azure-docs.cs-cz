@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 7622ac319929548dd50a3af763b1b65ea8a36d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506549"
 ---
 # <a name="how-an-application-gateway-works"></a>Jak funguje Aplikační brána
 
@@ -62,7 +62,7 @@ Aplikační brána vloží čtyři další hlavičky do všech požadavků před
 
 Platné hodnoty pro předané x-a jsou proto HTTP nebo HTTPS. Port předaný přes X Určuje port, na který požadavek dostal Aplikační bránu. Hlavička X-originál-Host obsahuje původní hlavičku hostitele, se kterou byl požadavek přijat. Tato hlavička je užitečná v integraci webů Azure, kde se před směrováním provozu do back-endu změnila hlavička příchozího hostitele. Pokud je spřažení relace povolené jako možnost, přidá soubor cookie spřažení spravovaný bránou.
 
-Aplikační bránu můžete nakonfigurovat tak, aby používala změny hlaviček, a to pomocí [hlaviček protokolu HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) přepisu nebo upravit cestu identifikátoru URI pomocí nastavení přepsání cesty. Pokud to ale není nakonfigurované, všechny příchozí požadavky se zaúčtují proxy serverem do back-endu.
+Aplikační bránu můžete nakonfigurovat tak, aby upravila hlavičky požadavků a odpovědí a adresu URL pomocí přepsání [hlaviček protokolu HTTP a adresy URL](rewrite-http-headers-url.md) nebo upravili cestu identifikátoru URI pomocí nastavení přepsat cestu. Pokud to ale není nakonfigurované, všechny příchozí požadavky se zaúčtují proxy serverem do back-endu.
 
 ## <a name="next-steps"></a>Další kroky
 

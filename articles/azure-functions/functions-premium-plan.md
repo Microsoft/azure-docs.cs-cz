@@ -5,12 +5,13 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 5ab506c57a78c67b33b888f1f50d83fe9813d0af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298510"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506192"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -90,7 +91,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|SKU|Cores|Memory (Paměť)|Storage|
+|Skladová položka|Cores|Paměť|Storage|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -112,31 +113,31 @@ Kompletní regionální dostupnost funkcí najdete tady: [Azure.com](https://azu
 |Austrálie – střed| 20 | Není k dispozici |
 |Austrálie – střed 2| 20 | Není k dispozici |
 |Austrálie – východ| 100 | 20 |
-|Austrálie – jihovýchod | 100 | 20 |
-|Brazílie – jih| 60 | 20 |
+|Australia Southeast | 100 | 20 |
+|Brazil South| 60 | 20 |
 |Střední Kanada| 100 | 20 |
-|USA – střed| 100 | 20 |
+|Střední USA| 100 | 20 |
 |Východní Asie| 100 | 20 |
-|USA – východ | 100 | 20 |
+|East US | 100 | 20 |
 |USA – východ 2| 100 | 20 |
 |Francie – střed| 100 | 20 |
 |Německo – středozápad| 100 | Není k dispozici |
-|Japonsko – východ| 100 | 20 |
+|Japan East| 100 | 20 |
 |Japonsko – západ| 100 | 20 |
 |Jižní Korea – střed| 100 | 20 |
 |USA – středosever| 100 | 20 |
 |Severní Evropa| 100 | 20 |
 |Norsko – východ| 20 | 20 |
-|USA – středojih| 100 | 20 |
+|Středojižní USA| 100 | 20 |
 |Indie – jih | 100 | Není k dispozici |
 |Jihovýchodní Asie| 100 | 20 |
 |Spojené království – jih| 100 | 20 |
 |Spojené království – západ| 100 | 20 |
 |Západní Evropa| 100 | 20 |
-|Indie – západ| 100 | 20 |
+|Západní Indie| 100 | 20 |
 |USA – středozápad| 20 | 20 |
 |USA – západ| 100 | 20 |
-|USA – západ 2| 100 | 20 |
+|Západní USA 2| 100 | 20 |
 
 ## <a name="next-steps"></a>Další kroky
 

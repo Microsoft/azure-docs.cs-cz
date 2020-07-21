@@ -12,11 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
-ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509354"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Řešení potíží s chybami přidělení při vytváření, restartování nebo změně velikosti virtuálních počítačů v Azure
 
@@ -78,7 +79,7 @@ Pokud používáte zóny dostupnosti, zkuste jinou zónu v rámci oblasti, kter�
 
 Pokud je vaše žádost o přidělení velká (více než 500 jader), přečtěte si pokyny v následujících částech, kde můžete žádost rozdělit do menších nasazení.
 
-Zkuste [virtuální počítač znovu nasadit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows). Po opětovném nasazení se virtuální počítač přidělí k novému clusteru v rámci dané oblasti.
+Zkuste [virtuální počítač znovu nasadit](./redeploy-to-new-node-windows.md). Po opětovném nasazení se virtuální počítač přidělí k novému clusteru v rámci dané oblasti.
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Selhání přidělení u starších velikostí virtuálních počítačů (Av1, Dv1, DSv1, D15v2, DS15v2 atd.)
 
@@ -93,7 +94,7 @@ Když rozšíříme infrastrukturu Azure, nasadíme novější hardware, který 
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Selhání přidělení u rozsáhlých nasazení (více než 500 jader)
 
-Snižte počet instancí požadované velikosti virtuálního počítače a pak zkuste operaci nasazení zopakovat. U větších nasazení můžete navíc chtít zhodnotit službu [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/). Počet instancí virtuálních počítačů se může automaticky zvětšit nebo zmenšit v reakci na poptávku nebo podle definovaného plánu a máte větší šanci na úspěšnost přidělení, protože nasazení je možné rozložit mezi více clusterů. 
+Snižte počet instancí požadované velikosti virtuálního počítače a pak zkuste operaci nasazení zopakovat. U větších nasazení můžete navíc chtít zhodnotit službu [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml). Počet instancí virtuálních počítačů se může automaticky zvětšit nebo zmenšit v reakci na poptávku nebo podle definovaného plánu a máte větší šanci na úspěšnost přidělení, protože nasazení je možné rozložit mezi více clusterů. 
 
 ## <a name="background-information"></a>Základní informace
 ### <a name="how-allocation-works"></a>Jak přidělování funguje
@@ -104,5 +105,3 @@ Servery v datových centrech Azure jsou rozdělené do clusterů. Za normálníc
 Když je požadavek na přidělení připnutý ke clusteru, existuje větší šance na selhání při hledání volných prostředků, protože dostupný fond zdrojů je menší. Pokud je váš požadavek na přidělení připnutý ke clusteru, ale požadovaný typ prostředku není tímto clusterem podporován, požadavek selže, i když má cluster bezplatné prostředky. Následující diagram 3 znázorňuje případ, kdy připnuté přidělení selhává, protože jediný cluster kandidátů nemá volné prostředky. Diagram 4 znázorňuje případ, kdy připnuté přidělení selhává, protože jediný kandidát clusteru nepodporuje požadovanou velikost virtuálního počítače, i když má cluster bezplatné prostředky.
 
 ![Připnuté selhání přidělení](./media/virtual-machines-common-allocation-failure/Allocation2.png)
-
-

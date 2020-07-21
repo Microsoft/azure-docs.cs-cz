@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224566"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507926"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Návrh a implementace databáze Oracle v Azure
 
@@ -43,17 +43,17 @@ Jedním z důležitých rozdílů je to, že v implementaci Azure se prostředky
 
 V následující tabulce jsou uvedeny některé rozdíly mezi místními implementacemi a implementací Azure databáze Oracle.
 
-> 
-> |  | **Místní implementace** | **Implementace Azure** |
-> | --- | --- | --- |
-> | **Sítě** |LAN/WAN  |SDN (softwarově definované sítě)|
-> | **Skupina zabezpečení** |Nástroje pro omezení IP adres nebo portů |[Skupina zabezpečení sítě (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
-> | **Odolnost** |MTBF (střední doba mezi selháními) |MTTR (Průměrná doba obnovení)|
-> | **Plánovaná údržba** |Opravy a upgrady|[Skupiny dostupnosti](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (opravy a upgrady spravované přes Azure) |
-> | **Prostředek** |Vyhrazená  |Sdíleno s ostatními klienty|
-> | **Oblasti** |Datová centra |[Párování oblastí](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Storage** |SÍŤ SAN/fyzické disky |[Úložiště spravované v Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Škálování** |Vertikální škálování |Horizontální škálování|
+
+|  | Místní implementace | Implementace Azure |
+| --- | --- | --- |
+| **Sítě** |LAN/WAN  |SDN (softwarově definované sítě)|
+| **Skupina zabezpečení** |Nástroje pro omezení IP adres nebo portů |[Skupina zabezpečení sítě (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+| **Odolnost** |MTBF (střední doba mezi selháními) |MTTR (Průměrná doba obnovení)|
+| **Plánovaná údržba** |Opravy a upgrady|[Skupiny dostupnosti](../../windows/infrastructure-example.md) (opravy a upgrady spravované přes Azure) |
+| **Prostředek** |Vyhrazená  |Sdíleno s ostatními klienty|
+| **Oblasti** |Datová centra |[Párování oblastí](../../regions.md#region-pairs)|
+| **Storage** |SÍŤ SAN/fyzické disky |[Úložiště spravované v Azure](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **Škálování** |Vertikální škálování |Horizontální škálování|
 
 
 ### <a name="requirements"></a>Požadavky
@@ -116,11 +116,11 @@ Následující diagram znázorňuje celkový počet vstupně-výstupních operac
 
 #### <a name="2-choose-a-vm"></a>2. Volba virtuálního počítače
 
-Na základě informací, které jste shromáždili ze sestavy AWR, je dalším krokem výběr virtuálního počítače podobné velikosti, která splňuje vaše požadavky. Seznam dostupných virtuálních počítačů najdete v paměti v článku [optimalizované pro paměť](../../linux/sizes-memory.md).
+Na základě informací, které jste shromáždili ze sestavy AWR, je dalším krokem výběr virtuálního počítače podobné velikosti, která splňuje vaše požadavky. Seznam dostupných virtuálních počítačů najdete v paměti v článku [optimalizované pro paměť](../../sizes-memory.md).
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. vyladění velikosti virtuálního počítače pomocí podobné série virtuálních počítačů na základě ACU
 
-Po výběru virtuálního počítače věnujte pozornost ACU pro virtuální počítač. Můžete zvolit jiný virtuální počítač na základě hodnoty ACU, která lépe vyhovuje vašim požadavkům. Další informace najdete v tématu [výpočetní jednotka Azure](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
+Po výběru virtuálního počítače věnujte pozornost ACU pro virtuální počítač. Můžete zvolit jiný virtuální počítač na základě hodnoty ACU, která lépe vyhovuje vašim požadavkům. Další informace najdete v tématu [výpočetní jednotka Azure](../../acu.md).
 
 ![Snímek obrazovky se stránkou jednotek ACU](./media/oracle-design/acu_units.png)
 
@@ -143,8 +143,8 @@ Na základě požadavků na šířku pásma sítě si můžete vybrat z různýc
 
 - V porovnání s místním nasazením je latence sítě vyšší. Snížení zatížení sítě může výrazně zlepšit výkon.
 - Pro omezení zpátečních cest Konsolidujte aplikace, které mají vysoké transakce nebo "konverzace" na stejném virtuálním počítači.
-- Pro lepší výkon sítě používejte Virtual Machines s [akcelerovanými síťovými](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) službami.
-- U některých distribucí systému Linux zvažte možnost povolit [podporu pro funkci trim a](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)oddálení.
+- Pro lepší výkon sítě používejte Virtual Machines s [akcelerovanými síťovými](../../../virtual-network/create-vm-accelerated-networking-cli.md) službami.
+- U některých distribucí systému Linux zvažte možnost povolit [podporu pro funkci trim a](../../linux/configure-lvm.md#trimunmap-support)oddálení.
 - Nainstalujte [správce Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) do samostatného virtuálního počítače.
 - Ve výchozím nastavení nejsou v systému Linux povoleny velké stránky. Zvažte možnost Povolit velké stránky a nastavit `use_large_pages = ONLY` Oracle DB. To může přispět ke zvýšení výkonu. Další informace najdete [tady](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 
@@ -187,7 +187,7 @@ Po jasném přehledu požadavků na vstupně-výstupní operace můžete zvolit 
 - Komprese dat slouží k omezení vstupně-výstupních operací (pro data i indexy).
 - Oddělte protokoly znovu, systém a dočasné soubory a vraťte se do služby TS TS na samostatných datových discích.
 - Neumísťujte žádné soubory aplikace na výchozí disky s operačním systémem (/dev/sda). Tyto disky nejsou optimalizované pro rychlé spouštění virtuálních počítačů a nemusí pro vaši aplikaci poskytovat dobrý výkon.
-- Při použití virtuálních počítačů řady M-Series na Premium Storage povolte [akcelerátor zápisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) na disku znovu protokoly.
+- Při použití virtuálních počítačů řady M-Series na Premium Storage povolte [akcelerátor zápisu](../../linux/how-to-enable-write-accelerator.md) na disku znovu protokoly.
 
 ### <a name="disk-cache-settings"></a>Nastavení diskové mezipaměti
 
@@ -225,7 +225,7 @@ Po nastavení a konfiguraci prostředí Azure je dalším krokem zabezpečení v
 - *Privátní síť* (podsítě): Doporučujeme, abyste měli aplikační službu a databázi v samostatných podsítích, takže lepší kontrolu můžete nastavit pomocí zásad NSG.
 
 
-## <a name="additional-reading"></a>Další čtení
+## <a name="additional-reading"></a>Další materiály ke čtení
 
 - [Konfigurace Oracle ASM](configure-oracle-asm.md)
 - [Konfigurace Oracle Data Guardu](configure-oracle-dataguard.md)

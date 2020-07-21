@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793036"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507663"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizace privátního cloudu CloudSimple pro instalaci Oracle RAC
 
@@ -49,10 +50,10 @@ V následujícím příkladu se používají disky definované v následující 
 | MŘÍŽKY                                      | Umístění instalace pro software Oracle Grid     | No          |
 | DATABÁZE                                  | Umístění instalace pro software Oracle Database | No          |
 | ORAHOME                                   | Základní umístění pro binární soubory Oracle Database    | No          |
-| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Yes         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Yes         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Yes         |
-| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Yes         |
+| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Ano         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Ano         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Ano         |
+| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Ano         |
 
 ![Konfigurace disku virtuálního počítače Oracle](media/oracle-vmdk.png)
 
@@ -168,7 +169,7 @@ Pokud chcete nasadit cluster vSphere do privátního cloudu, postupujte podle to
 
 zásady síti vSAN definují selhání pro tolerovat a diskové obložení pro data uložená na discích virtuálních počítačů.  Vytvořené zásady úložiště musí být na discích virtuálních počítačů při vytváření virtuálního počítače aplikovány.
 
-1. [Přihlaste se ke klientovi vSphere](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access) vašeho privátního cloudu.
+1. [Přihlaste se ke klientovi vSphere](./vcenter-access.md) vašeho privátního cloudu.
 2. V horní nabídce vyberte **zásady a profily**.
 3. V nabídce vlevo vyberte **zásady úložiště virtuálního počítače** a pak vyberte **vytvořit zásadu úložiště virtuálního počítače**.
 4. Zadejte smysluplný název zásady a klikněte na **Další**.

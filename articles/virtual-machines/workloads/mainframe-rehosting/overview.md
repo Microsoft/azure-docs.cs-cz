@@ -10,11 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289794"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507875"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Opětovné hostování sálového počítače na virtuálních počítačích Azure
 
@@ -69,11 +70,11 @@ Jak začít:
 
 Prostředí IBM DB2 pureScale poskytuje databázový cluster pro Azure. Není totožný s původním prostředím, ale nabízí podobnou dostupnost a škálování jako IBM DB2 pro z/OS běžící v paralelní instalaci Sysplex.
 
-Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](/azure/virtual-machines/linux/ibm-db2-purescale-azure).
+Informace o tom, jak začít, najdete v článku [IBM DB2 pureScale v Azure](../../linux/ibm-db2-purescale-azure.md).
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
-Když migrujete sálové úlohy do infrastruktury Azure jako služby (IaaS), můžete si vybrat z několika typů škálovatelných výpočetních prostředků na vyžádání, včetně virtuálních počítačů Azure. Azure nabízí řadu virtuálních počítačů se systémy [Linux](/azure/virtual-machines/linux/overview) a [Windows](/azure/virtual-machines/windows/overview) .
+Když migrujete sálové úlohy do infrastruktury Azure jako služby (IaaS), můžete si vybrat z několika typů škálovatelných výpočetních prostředků na vyžádání, včetně virtuálních počítačů Azure. Azure nabízí řadu virtuálních počítačů se systémy [Linux](../../linux/overview.md) a [Windows](../../windows/overview.md) .
 
 ### <a name="compute"></a>Compute
 
@@ -85,21 +86,21 @@ Naučte se, jak [přesunout výpočetní sálové počítače do Azure](./concep
 
 Azure nabízí smlouvy o úrovni služeb (SLA) založené na závazku. Dostupnost s více devěty je výchozí a SLA je možné optimalizovat pomocí místní nebo geografické replikace služeb. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
 
-V případě Azure IaaS, jako je třeba virtuální počítač, poskytují konkrétní systémové funkce podporu převzetí služeb při selhání, například instance clusteringu s podporou převzetí služeb při selhání a sady dostupnosti. Když použijete prostředky Azure Platform as a Service (PaaS), platforma zpracovává převzetí služeb při selhání automaticky. Příklady zahrnují [Azure SQL Database](/azure/sql-database/sql-database-technical-overview) a [Azure Cosmos DB](/azure/cosmos-db/introduction).
+V případě Azure IaaS, jako je třeba virtuální počítač, poskytují konkrétní systémové funkce podporu převzetí služeb při selhání, například instance clusteringu s podporou převzetí služeb při selhání a sady dostupnosti. Když použijete prostředky Azure Platform as a Service (PaaS), platforma zpracovává převzetí služeb při selhání automaticky. Příklady zahrnují [Azure SQL Database](../../../azure-sql/database/sql-database-paas-overview.md) a [Azure Cosmos DB](../../../cosmos-db/introduction.md).
 
 ### <a name="scalability"></a>Škálovatelnost
 
-Při horizontálním navýšení kapacity cloudových prostředí se většinou škálují sálové počítače. Azure nabízí řadu velikostí pro [Linux](/azure/virtual-machines/linux/sizes) a [Windows](/azure/virtual-machines/windows/sizes) , které vyhovují vašim potřebám. Cloud se také škáluje nahoru nebo dolů, aby odpovídal přesně zadaným uživatelským specifikacím. Výpočetní výkon, úložiště a služby se [škálují](/azure/architecture/best-practices/auto-scaling) na vyžádání v rámci fakturačního modelu založeného na využití.
+Při horizontálním navýšení kapacity cloudových prostředí se většinou škálují sálové počítače. Azure nabízí řadu velikostí pro [Linux](../../linux/sizes.md) a [Windows](../../windows/sizes.md) , které vyhovují vašim potřebám. Cloud se také škáluje nahoru nebo dolů, aby odpovídal přesně zadaným uživatelským specifikacím. Výpočetní výkon, úložiště a služby se [škálují](/azure/architecture/best-practices/auto-scaling) na vyžádání v rámci fakturačního modelu založeného na využití.
 
 ### <a name="storage"></a>Storage
 
-V cloudu máte řadu flexibilních a škálovatelných možností úložiště a platíte jenom za to, co potřebujete. [Azure Storage](/azure/storage/common/storage-introduction) nabízí rozsáhle škálovatelné úložiště objektů pro datové objekty, službu systému souborů pro Cloud, spolehlivé úložiště pro zasílání zpráv a NoSQL úložiště. U virtuálních počítačů poskytují spravované a nespravované disky Trvalé a zabezpečené úložiště na disku.
+V cloudu máte řadu flexibilních a škálovatelných možností úložiště a platíte jenom za to, co potřebujete. [Azure Storage](../../../storage/common/storage-introduction.md) nabízí rozsáhle škálovatelné úložiště objektů pro datové objekty, službu systému souborů pro Cloud, spolehlivé úložiště pro zasílání zpráv a NoSQL úložiště. U virtuálních počítačů poskytují spravované a nespravované disky Trvalé a zabezpečené úložiště na disku.
 
 Přečtěte si, jak [přesunout sálové úložiště do Azure](./concepts/mainframe-storage-azure.md).
 
-### <a name="backup-and-recovery"></a>Backup a obnovení
+### <a name="backup-and-recovery"></a>Zálohování a obnova
 
-Udržování vlastního webového serveru pro zotavení po havárii může být nákladným umístěním. Azure má snadno implementované a nákladově efektivní možnosti pro [zálohování](/azure/backup/backup-introduction-to-azure-backup), [obnovu](/azure/site-recovery/site-recovery-overview)a [redundanci](/azure/storage/common/storage-redundancy) v místní nebo regionální úrovni nebo prostřednictvím geografické redundance.
+Udržování vlastního webového serveru pro zotavení po havárii může být nákladným umístěním. Azure má snadno implementované a nákladově efektivní možnosti pro [zálohování](../../../backup/backup-overview.md), [obnovu](../../../site-recovery/site-recovery-overview.md)a [redundanci](../../../storage/common/storage-redundancy.md) v místní nebo regionální úrovni nebo prostřednictvím geografické redundance.
 
 ## <a name="azure-government-for-mainframe-migrations"></a>Azure Government pro migrace sálového počítače
 
@@ -117,7 +118,7 @@ Viz také:
 
 - [Dokumenty White paper o tématech z sálového počítače](mainframe-white-papers.md)
 - [Migrace sálového počítače](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Řešení potíží](/azure/virtual-machines/troubleshooting/)
+- [Řešení potíží](../../troubleshooting/index.yml)
 - [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

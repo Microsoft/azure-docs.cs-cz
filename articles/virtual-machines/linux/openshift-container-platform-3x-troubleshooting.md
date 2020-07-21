@@ -10,11 +10,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-ansible
+ms.openlocfilehash: ca08115d18f986ee51658c713686ff3a16abcc2c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759468"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510340"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Řešení potíží s nasazením OpenShift Container Platform 3,11 v Azure
 
@@ -34,7 +36,7 @@ SSH pro hostitele Ansible PlayBook. Pro šablonu nebo nabídku Marketplace použ
 
 SSH pro hostitele Ansible PlayBook. Pro šablonu OKD (verze 3,9 a starší) použijte hostitele hlavní-0. Pro šablonu OKD (verze 3,10 a novější) použijte hostitele bastionu. Z hostitele Ansible PlayBook můžete SSH pro všechny ostatní uzly v clusteru (hlavní, infračervená, CNS, COMPUTE). Chcete-li zobrazit soubory protokolu, bude nutné, abyste byli kořen (sudo SU-). Kořen je ve výchozím nastavení zakázán pro přístup SSH, takže nelze použít root pro SSH pro jiné uzly.
 
-## <a name="log-files"></a>Soubory protokolů
+## <a name="log-files"></a>Soubory protokolu
 
 Soubory protokolu (stderr a STDOUT) pro skripty přípravy hostitele se nacházejí ve složce `/var/lib/waagent/custom-script/download/0` na všech hostitelích. Pokud během přípravy hostitele došlo k chybě, Projděte si tyto soubory protokolů a určete chybu.
 

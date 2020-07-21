@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bbd81730ea822381f1d0f0e15011fb4ed0c29e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb26260d0e1f59e78c8328de298c3d4d92c19d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735910"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509305"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro GPU
 
@@ -31,13 +31,13 @@ Velikosti virtuálních počítačů optimalizované pro GPU jsou specializovan�
 
 Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azure N-Series, je nutné nainstalovat ovladače NVIDIA nebo AMD GPU.
 
-- Pro virtuální počítače, které jsou zajištěné grafickými procesory NVIDIA, nainstaluje [rozšíření ovladače NVIDIA GPU](/azure/virtual-machines/extensions/hpccompute-gpu-windows) příslušné ovladače NVIDIA CUDA nebo Grid. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](/azure/virtual-machines/extensions/hpccompute-gpu-windows) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](/azure/virtual-machines/extensions/overview).
+- Pro virtuální počítače, které jsou zajištěné grafickými procesory NVIDIA, nainstaluje [rozšíření ovladače NVIDIA GPU](./extensions/hpccompute-gpu-windows.md) příslušné ovladače NVIDIA CUDA nebo Grid. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](./extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](./extensions/overview.md).
 
-   Alternativně můžete ovladače NVIDIA GPU nainstalovat ručně. Další informace najdete v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady n-Series s Windows](/azure/virtual-machines/windows/n-series-driver-setup) nebo [instalace ovladačů NVIDIA GPU pro virtuální počítače řady n-Series s operačním systémem Linux](/azure/virtual-machines/linux/n-series-driver-setup) pro podporované operační systémy, ovladače, instalace a postupy ověření.
+   Alternativně můžete ovladače NVIDIA GPU nainstalovat ručně. Další informace najdete v tématu [instalace ovladačů NVIDIA GPU pro virtuální počítače řady n-Series s Windows](./windows/n-series-driver-setup.md) nebo [instalace ovladačů NVIDIA GPU pro virtuální počítače řady n-Series s operačním systémem Linux](./linux/n-series-driver-setup.md) pro podporované operační systémy, ovladače, instalace a postupy ověření.
 
-- Pro virtuální počítače, které jsou založené na technologii AMD GPU, najdete informace v tématu [instalace ovladačů AMD GPU na virtuálních počítačích řady N-Series](/azure/virtual-machines/windows/n-series-amd-driver-setup) se systémem Windows pro podporované operační systémy, ovladače, instalace a postupy ověření.
+- Pro virtuální počítače, které jsou založené na technologii AMD GPU, najdete informace v tématu [instalace ovladačů AMD GPU na virtuálních počítačích řady N-Series](./windows/n-series-amd-driver-setup.md) se systémem Windows pro podporované operační systémy, ovladače, instalace a postupy ověření.
 
-## <a name="deployment-considerations"></a>Aspekty nasazování
+## <a name="deployment-considerations"></a>Co je potřeba vzít v úvahu při nasazování
 
 - Dostupnost virtuálních počítačů řady N-Series najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
 
@@ -52,10 +52,10 @@ Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azur
 ## <a name="other-sizes"></a>Jiné velikosti
 
 - [Obecné účely](sizes-general.md)
-- [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
+- [Optimalizované pro výpočty](sizes-compute.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
-- [Optimalizované z hlediska paměti](sizes-memory.md)
-- [Optimalizované z hlediska úložiště](sizes-storage.md)
+- [Optimalizované pro paměť](sizes-memory.md)
+- [Optimalizované pro úložiště](sizes-storage.md)
 - [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další kroky

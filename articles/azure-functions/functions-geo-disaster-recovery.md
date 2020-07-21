@@ -4,11 +4,12 @@ description: Použití geografických oblastí pro zajištění redundance a př
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 446a76b823ce3592a83d0c2f898041951361b47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080236"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506277"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geografické zotavení po havárii
 
@@ -21,7 +22,7 @@ Azure Functions spustit v konkrétní oblasti.  Chcete-li získat vyšší dostu
 * Aktivní/aktivní vysoká dostupnost: Obě oblasti jsou aktivní a přijímají se události (jsou duplicitní nebo kruhové). Aktivní/aktivní se doporučuje pro funkce protokolu HTTPS v kombinaci s předními dvířky Azure.
 * Aktivní/pasivní. Jedna oblast je aktivní a přijímá události, zatímco sekundární je nečinný.  Pokud je vyžadováno převzetí služeb při selhání, je sekundární oblast aktivována a převezme se zpracování.  Tato možnost se doporučuje pro jiné funkce než HTTP, jako je Service Bus a Event Hubs.
 
-Další informace o nasazeních ve více oblastech najdete [v tématu spuštění aplikací v několika oblastech](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) .
+Další informace o nasazeních ve více oblastech najdete [v tématu spuštění aplikací v několika oblastech](/azure/architecture/reference-architectures/app-service-web-app/multi-region) .
 
 ## <a name="activeactive-for-https-functions"></a>Aktivní/aktivní pro funkce HTTPS
 

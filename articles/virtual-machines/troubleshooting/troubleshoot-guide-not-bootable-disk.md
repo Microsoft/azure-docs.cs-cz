@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80300976"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509031"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Chyba spuštění – toto není spouštěcí disk.
 
@@ -27,7 +27,7 @@ Tento článek popisuje kroky pro řešení problémů, které neběží na virt
 
 ## <a name="symptoms"></a>Příznaky
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje výzvu se zprávou ' Toto není spouštěcí disk. Vložte prosím spouštěcí disketu a stiskněte libovolnou klávesu a zkuste to znovu...
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje výzvu se zprávou ' Toto není spouštěcí disk. Vložte prosím spouštěcí disketu a stiskněte libovolnou klávesu a zkuste to znovu...
 
    Obrázek 1
 
@@ -52,7 +52,7 @@ Tato chybová zpráva znamená, že proces spouštění operačního systému ne
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí kroků 1-3 příkazů pro [opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 2. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
 ### <a name="set-partition-status-to-active"></a>Nastavit stav oddílu na aktivní
@@ -148,4 +148,4 @@ Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spu
 
 ### <a name="rebuild-the-original-vm"></a>Znovu sestavte původní virtuální počítač.
 
-Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač.
+Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) znovu sestavte virtuální počítač.

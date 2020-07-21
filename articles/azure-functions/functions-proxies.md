@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d66c690c3a0ba638a92150c9aa1dbb0dc2a41268
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82562062"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506157"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s Proxy služby Azure Functions
 
@@ -89,7 +89,7 @@ Parametry odpovědi lze použít jako součást změny odpovědi na klienta. V k
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>Referenční nastavení aplikace
 
-Můžete také odkazovat na [nastavení aplikace, která jsou definována pro aplikaci Function App](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) , a to tak, že se název nastavení zobrazí jako znak procenta (%).
+Můžete také odkazovat na [nastavení aplikace, která jsou definována pro aplikaci Function App](./functions-how-to-use-azure-function-app-settings.md) , a to tak, že se název nastavení zobrazí jako znak procenta (%).
 
 Například adresa URL back-endu *https://%ORDER_PROCESSING_HOST%/api/orders* by měla být "% ORDER_PROCESSING_HOST%" nahrazena hodnotou nastavení ORDER_PROCESSING_HOST.
 
@@ -110,7 +110,7 @@ Zcela zakažte trasování přidáním `"debug":false` určitého proxy serveru 
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 
-Proxy servery, které nakonfigurujete, se ukládají do *proxies.jsv* souboru, který se nachází v kořenovém adresáři adresáře Function App. Tento soubor můžete ručně upravit a nasadit jako součást aplikace při použití libovolné [metody nasazení](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) , které funkce podporuje. 
+Proxy servery, které nakonfigurujete, se ukládají do *proxies.jsv* souboru, který se nachází v kořenovém adresáři adresáře Function App. Tento soubor můžete ručně upravit a nasadit jako součást aplikace při použití libovolné [metody nasazení](./functions-continuous-deployment.md) , které funkce podporuje. 
 
 > [!TIP] 
 > Pokud jste nestavili jednu z metod nasazení, můžete také pracovat s *proxies.js* v souboru na portálu. Přejít do aplikace Function App, vybrat **funkce platformy**a pak vybrat **Editor služby App Service**. Díky tomu můžete zobrazit celou strukturu souborů aplikace Function App a pak provést změny.
@@ -244,7 +244,7 @@ Příklad konfigurace může vypadat takto:
 > V tomto příkladu je tělo odpovědi nastaveno přímo, takže `backendUri` není potřeba žádná vlastnost. Příklad ukazuje, jak můžete použít Proxy služby Azure Functions pro napodobování rozhraní API.
 
 [Azure Portal]: https://portal.azure.com
-[Aktivační události HTTP]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[Aktivační události HTTP]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [Definování objektu requestOverrides]: #requestOverrides

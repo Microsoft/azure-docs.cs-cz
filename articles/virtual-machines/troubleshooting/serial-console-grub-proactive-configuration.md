@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f4846947b18adb1d3f33f1d46482b5c02ee831e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309828"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509150"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktivní zajištění přístupu k GRUB a SysRq vám může ušetřit spoustu času.
 
@@ -36,11 +37,11 @@ Důvody pro provedení obnovení virtuálního počítače jsou mnoho a můžou 
    - Soubory s pozměněnými sshd konfiguracemi
    - Síťové konfigurace
 
- Mnoho dalších scénářů, jak je popsáno [zde](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux#common-scenarios-for-accessing-the-serial-console)
+ Mnoho dalších scénářů, jak je popsáno [zde](./serial-console-linux.md#common-scenarios-for-accessing-the-serial-console)
 
 Ověřte, že máte přístup k GRUB a Sériová konzola na virtuálních počítačích nasazených v Azure. 
 
-Pokud s konzolou sériového portu začínáte, přečtěte si [Tento odkaz](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux/).
+Pokud s konzolou sériového portu začínáte, přečtěte si [Tento odkaz](./serial-console-linux.md).
 
 > [!TIP]
 > Před provedením změn se ujistěte, že jste provedli zálohování souborů.
@@ -345,7 +346,7 @@ Nabídka GRUB by se měla zobrazit na obrazovce pro nakonfigurovaný časový li
 ## <a name="suse"></a>SuSE
 
 ## <a name="sles-12-sp1"></a>SLES 12 SP1
-Buď použijte program pro spouštění YaST jako oficiální [dokumentaci](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles)
+Buď použijte program pro spouštění YaST jako oficiální [dokumentaci](./serial-console-grub-single-user-mode.md#grub-access-in-suse-sles)
 
 Nebo přidejte nebo změňte/etc/default/grub následující parametry:
 
@@ -429,7 +430,7 @@ Restartujte virtuální počítač s
 Případně je možné, že budete potřebovat přístup k virtuálnímu počítači v režimu jednoho uživatele nebo v nouzovém režimu. Vyberte jádro, které chcete spustit, nebo přerušit pomocí kláves se šipkami.
 Zadejte požadovaný režim připojením klíčového slova **Single** nebo **1** ke spouštěcímu řádku jádra. V systémech RHEL můžete také připojit **Rd. Break**.
 
-Další informace o tom, jak přistupovat k jednomu uživatelskému režimu, najdete v [tomto dokumentu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#general-single-user-mode-access) . 
+Další informace o tom, jak přistupovat k jednomu uživatelskému režimu, najdete v [tomto dokumentu](./serial-console-grub-single-user-mode.md#general-single-user-mode-access) . 
 
 
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)

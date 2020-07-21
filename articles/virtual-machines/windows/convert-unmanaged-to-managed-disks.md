@@ -7,11 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b5d2e82b439454ff33a263af7710fe79f246893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658192"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508606"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows z nespravovaných disků na spravované disky
 
@@ -34,7 +35,7 @@ Pokud máte existující virtuální počítače s Windows, které používají 
 ## <a name="convert-single-instance-vms"></a>Převod virtuálních počítačů s jednou instancí
 Tato část popisuje, jak převést virtuální počítače Azure s jednou instancí z nespravovaných disků na Managed disks. (Pokud jsou vaše virtuální počítače ve skupině dostupnosti, přečtěte si další část.) 
 
-1. Zrušte přidělení virtuálního počítače pomocí rutiny [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) . Následující příklad zruší přidělení virtuálního počítače `myVM` ve skupině prostředků s názvem `myResourceGroup` : 
+1. Zrušte přidělení virtuálního počítače pomocí rutiny [stop-AzVM](/powershell/module/az.compute/stop-azvm) . Následující příklad zruší přidělení virtuálního počítače `myVM` ve skupině prostředků s názvem `myResourceGroup` : 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -42,7 +43,7 @@ Tato část popisuje, jak převést virtuální počítače Azure s jednou insta
    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
    ```
 
-2. Pomocí rutiny [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) PŘEVEĎTE virtuální počítač na spravované disky. Následující postup převede předchozí virtuální počítač, včetně disku s operačním systémem a všech datových disků, a spustí virtuální počítač:
+2. Pomocí rutiny [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) PŘEVEĎTE virtuální počítač na spravované disky. Následující postup převede předchozí virtuální počítač, včetně disku s operačním systémem a všech datových disků, a spustí virtuální počítač:
 
    ```azurepowershell-interactive
    ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -54,7 +55,7 @@ Tato část popisuje, jak převést virtuální počítače Azure s jednou insta
 
 Pokud jsou virtuální počítače, které chcete převést na spravované disky, ve skupině dostupnosti, musíte nejdřív převést skupinu dostupnosti na spravovanou skupinu dostupnosti.
 
-1. Pomocí rutiny [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) převeďte skupinu dostupnosti. Následující příklad aktualizuje skupinu dostupnosti s názvem `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup` :
+1. Pomocí rutiny [Update-AzAvailabilitySet](/powershell/module/az.compute/update-azavailabilityset) převeďte skupinu dostupnosti. Následující příklad aktualizuje skupinu dostupnosti s názvem `myAvailabilitySet` ve skupině prostředků s názvem `myResourceGroup` :
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -71,7 +72,7 @@ Pokud jsou virtuální počítače, které chcete převést na spravované disky
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
    ```
 
-2. Navrácení a převod virtuálních počítačů ve skupině dostupnosti. Následující skript zruší přidělení každého virtuálního počítače pomocí rutiny [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) , převede ho pomocí [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)a automaticky ho restartuje, i když je kromě procesu převodu:
+2. Navrácení a převod virtuálních počítačů ve skupině dostupnosti. Následující skript zruší přidělení každého virtuálního počítače pomocí rutiny [stop-AzVM](/powershell/module/az.compute/stop-azvm) , převede ho pomocí [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk)a automaticky ho restartuje, i když je kromě procesu převodu:
 
    ```azurepowershell-interactive
    $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -107,4 +108,3 @@ Po dokončení migrace se virtuální počítač zastaví a restartuje.
 [Převod standardních spravovaných disků na úroveň Premium](convert-disk-storage.md)
 
 Poznamenejte si kopii virtuálního počítače jen pro čtení pomocí [snímků](snapshot-copy-managed-disk.md).
-

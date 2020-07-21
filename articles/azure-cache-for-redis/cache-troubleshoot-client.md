@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 9317999f8862cd9930870fecaf5be44d291c07a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d5ab5c125a8a395d1bc0139421ec804e1221e12
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829665"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506430"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Řešení potíží se službou Azure Cache for Redis na straně klienta
 
@@ -84,12 +84,14 @@ Velký požadavek nebo odpověď může způsobit vypršení časových limitů.
 
 V následujícím příkladu je žádost "A" a "B" na server odesílána rychle. Server rychle spouští posílání odpovědí a a B. Z důvodu doby přenosu dat musí odpověď B počkat na odezvu "A", a to i v případě, že server rychle odpoví.
 
-    |-------- 1 Second Timeout (A)----------|
-    |-Request A-|
-         |-------- 1 Second Timeout (B) ----------|
-         |-Request B-|
-                |- Read Response A --------|
-                                           |- Read Response B-| (**TIMEOUT**)
+```console
+|-------- 1 Second Timeout (A)----------|
+|-Request A-|
+     |-------- 1 Second Timeout (B) ----------|
+     |-Request B-|
+            |- Read Response A --------|
+                                       |- Read Response B-| (**TIMEOUT**)
+```
 
 Tento požadavek nebo odpověď je pro měření obtížné. Můžete instrumentovat klientský kód pro sledování velkých požadavků a odpovědí.
 

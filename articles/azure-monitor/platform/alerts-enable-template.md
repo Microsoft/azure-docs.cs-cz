@@ -6,11 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114436"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505444"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
 > [!WARNING]
@@ -175,7 +176,7 @@ Chcete-li vytvořit výstrahu pomocí šablony Správce prostředků, vytvořte 
 }
 ```
 
-Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+Vysvětlení schématu a vlastností pro pravidlo výstrahy [jsou k dispozici zde](/rest/api/monitor/alertrules).
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Šablona Správce prostředků pro prostředek s klasickou výstrahou metriky
 Výstraha na Správce prostředků šabloně je nejčastěji užitečná při vytváření výstrahy při vytváření prostředku. Například může být vhodné zajistit, aby bylo pravidlo "CPU% > 80" nastaveno při každém nasazení virtuálního počítače. Chcete-li to provést, přidejte pravidlo výstrahy jako prostředek do pole prostředků pro šablonu virtuálního počítače a přidejte závislost pomocí `dependsOn` vlastnosti do ID prostředku virtuálního počítače. Tady je úplný příklad, který vytvoří virtuální počítač s Windows a přidá výstrahu, která upozorní správce předplatného, když využití procesoru překročí 80%.
@@ -401,4 +402,3 @@ Výstraha na Správce prostředků šabloně je nejčastěji užitečná při vy
 * [Přečtěte si další informace o výstrahách](alerts-overview.md)
 * [Přidání nastavení diagnostiky](../../azure-monitor/platform/diagnostic-settings-template.md) do šablony Správce prostředků
 * Syntaxi a vlastnosti JSON najdete v referenčních informacích k šabloně [Microsoft. Insights/alertrules](/azure/templates/microsoft.insights/alertrules) .
-

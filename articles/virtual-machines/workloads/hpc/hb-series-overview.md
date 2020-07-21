@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
-ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5606da84d8311785752cc8319b7a3c642c1f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707764"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508028"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>Přehled virtuálních počítačů s více než jednou řadou
 
@@ -46,7 +46,7 @@ Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hy
 | Cores                            | 60 (SMT zakázané)                |
 | Procesor                              | AMD EPYC 7551 *                   |
 | Frekvence procesoru (ne AVX)          | ~ 2,55 GHz (jedna + všechna jádra)   |
-| Memory (Paměť)                           | 4 GB/jádro (celkem 240)            |
+| Paměť                           | 4 GB/jádro (celkem 240)            |
 | Místní disk                       | 700 GB NVMe                      |
 | InfiniBand                       | 100 GB EDR Mellanox ConnectX-5 * * |
 | Síť                          | 50 GB Ethernet (40 GB použitelné) Azure Second gen SmartNIC * * * |
@@ -65,6 +65,6 @@ Následující diagram znázorňuje oddělení jader rezervovaných pro Azure hy
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o velikostech virtuálních počítačů HPC pro [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) a [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) v Azure.
+* Přečtěte si další informace o velikostech virtuálních počítačů HPC pro [Linux](../../sizes-hpc.md) a [Windows](../../sizes-hpc.md) v Azure.
 
-* Přečtěte si další informace o [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) v Azure.
+* Přečtěte si další informace o [HPC](/azure/architecture/topics/high-performance-computing/) v Azure.

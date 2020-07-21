@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422609"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509082"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Řešení potíží s virtuálními počítači Azure pomocí nástrojů Remote Tools
 
@@ -31,7 +31,7 @@ Pomocí [sériové konzoly pro Azure Virtual Machines](serial-console-windows.md
 
 ## <a name="remote-cmd"></a>Vzdálený CMD
 
-Stáhněte si [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Připojte se k virtuálnímu počítači spuštěním následujícího příkazu:
+Stáhněte si [PsExec](/sysinternals/downloads/psexec). Připojte se k virtuálnímu počítači spuštěním následujícího příkazu:
 
 ```cmd
 psexec \\<computer>-u user -s cmd
@@ -251,9 +251,7 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o rutině Enter-PSSession naleznete v tématu [Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
-- Další informace o rozšíření vlastních skriptů pro Windows s použitím modelu nasazení Classic najdete v tématu [rozšíření vlastních skriptů pro Windows](../extensions/custom-script-classic.md).
+- Další informace o rutině Enter-PSSession naleznete v tématu [Enter-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1).
+- Další informace o rozšíření vlastních skriptů pro Windows s použitím modelu nasazení Classic najdete v tématu [rozšíření vlastních skriptů pro Windows](../extensions/custom-script-windows.md).
 - PsExec je součástí [sady nástroj PsTools](https://download.sysinternals.com/files/PSTools.zip).
-- Další informace o sadě nástroj PsTools naleznete v tématu [Nástroj PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
-
-
+- Další informace o sadě nástroj PsTools naleznete v tématu [Nástroj PsTools](/sysinternals/downloads/pstools).

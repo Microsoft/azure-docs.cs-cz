@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: daf3e3aaa95734c79e513c16e5d41aeb0bf894dc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cf27a842d37e96c82370e9b9b81763c8a5d1f7c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135266"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509048"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Řešení potíží se spouštěním virtuálních počítačů s Linuxem z důvodu chyb fstab
 
-K virtuálnímu počítači Azure Linux se nemůžete připojit pomocí připojení Secure Shell (SSH). Když spustíte funkci [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) na [Azure Portal](https://portal.azure.com/), zobrazí se položky protokolu, které budou vypadat jako v následujících příkladech:
+K virtuálnímu počítači Azure Linux se nemůžete připojit pomocí připojení Secure Shell (SSH). Když spustíte funkci [diagnostiky spouštění](./boot-diagnostics.md) na [Azure Portal](https://portal.azure.com/), zobrazí se položky protokolu, které budou vypadat jako v následujících příkladech:
 
 ## <a name="examples"></a>Příklady
 
@@ -106,8 +106,8 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
 
 ### <a name="using-single-user-mode"></a>Použití režimu Single User
 
-1. Připojte se ke [konzole sériového portu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
-2. Použití konzoly sériového režimu pro jeden [uživatelský](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode) režim single user
+1. Připojte se ke [konzole sériového portu](./serial-console-linux.md).
+2. Použití konzoly sériového režimu pro jeden [uživatelský](../linux/serial-console-grub-single-user-mode.md) režim single user
 3. Po spuštění virtuálního počítače do režimu jednoho uživatele. K otevření souboru fstab použijte oblíbený textový editor. 
 
    ```
@@ -140,7 +140,7 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
 
 ### <a name="using-root-password"></a>Použití kořenového hesla
 
-1. Připojte se ke [konzole sériového portu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux).
+1. Připojte se ke [konzole sériového portu](./serial-console-linux.md).
 2. Přihlaste se k systému pomocí místního uživatele a hesla.
 
    > [!Note]
@@ -188,7 +188,7 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
 
 ## <a name="repair-the-vm-offline"></a>Oprava virtuálního počítače v režimu offline
 
-1. Připojte systémový disk virtuálního počítače jako datový disk k virtuálnímu počítači pro obnovení (libovolný pracovní virtuální počítač se systémem Linux). K tomu můžete použít [příkazy rozhraní příkazového řádku](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) nebo můžete automatizovat nastavení virtuálního počítače pro obnovení pomocí příkazů pro [opravu virtuálního počítače](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
+1. Připojte systémový disk virtuálního počítače jako datový disk k virtuálnímu počítači pro obnovení (libovolný pracovní virtuální počítač se systémem Linux). K tomu můžete použít [příkazy rozhraní příkazového řádku](./troubleshoot-recovery-disks-linux.md) nebo můžete automatizovat nastavení virtuálního počítače pro obnovení pomocí příkazů pro [opravu virtuálního počítače](repair-linux-vm-using-azure-virtual-machine-repair-commands.md).
 
 2. Jakmile připojíte systémový disk jako datový disk na virtuálním počítači pro obnovení, před provedením změn zálohujte soubor fstab a pak postupujte podle dalších kroků a opravte soubor fstab.
 
@@ -217,7 +217,7 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
    > * Pole na každém řádku jsou oddělená tabulátory nebo mezerami. Prázdné řádky jsou ignorovány. Řádky, které mají znak čísla (#) jako první znak jsou komentáře. Řádky s komentářem mohou zůstat v souboru fstab, ale nebudou zpracovány. Doporučujeme, abyste fstab řádky, na které si nejste jisti, místo odebrání řádků.
    > * Aby se virtuální počítač mohl zotavit a spustit, měly by být oddíly systému souborů jedinými požadovanými oddíly. Virtuální počítač může zaznamenat chyby aplikace o dalších oddílech s komentářem. Virtuální počítač by se ale měl spustit bez dalších oddílů. Později můžete odkomentovat všechny řádky s komentářem.
    > * Pro virtuální počítače Azure doporučujeme připojit datové disky pomocí identifikátoru UUID oddílu systému souborů. Například spusťte následující příkaz:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * Chcete-li zjistit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid. Všimněte si, že disk, který chcete obnovit, je nyní připojen k novému virtuálnímu počítači. I když by identifikátory UUID měly být konzistentní, ID oddílů zařízení (například "/dev/sda1") se na tomto virtuálním počítači liší. Oddíly systému souborů původního neúspěšného virtuálního počítače, které jsou umístěné na nesystémovém virtuálním pevném disku, nejsou k dispozici pro virtuální počítač pro obnovení [pomocí příkazů rozhraní příkazového řádku](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux).
+   > * Chcete-li zjistit UUID systému souborů, spusťte příkaz blkid. Další informace o syntaxi získáte spuštěním příkazu man blkid. Všimněte si, že disk, který chcete obnovit, je nyní připojen k novému virtuálnímu počítači. I když by identifikátory UUID měly být konzistentní, ID oddílů zařízení (například "/dev/sda1") se na tomto virtuálním počítači liší. Oddíly systému souborů původního neúspěšného virtuálního počítače, které jsou umístěné na nesystémovém virtuálním pevném disku, nejsou k dispozici pro virtuální počítač pro obnovení [pomocí příkazů rozhraní příkazového řádku](./troubleshoot-recovery-disks-linux.md).
    > * Možnost neúspěchu pomáhá zajistit, že se virtuální počítač spustí i v případě, že je systém souborů poškozený nebo když systém souborů neexistuje při spuštění. Doporučujeme, abyste v souboru fstab použili možnost neúspěšného spuštění, abyste mohli v případě výskytu chyb v oddílech, které nejsou nutné k tomu, aby se virtuální počítač spustil, pokračovat v práci.
 
 7. Pokud chcete povolit, aby se virtuální počítač spouštěl správně, změňte nebo zakomentujte všechny nesprávné nebo nepotřebné řádky v souboru fstab.
@@ -240,5 +240,5 @@ Pokud chcete tento problém vyřešit, spusťte virtuální počítač v nouzov�
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI 2,0](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure CLI 2,0](./troubleshoot-recovery-disks-linux.md)
+* [Řešení potíží s virtuálním počítačem se systémem Linux připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal](./troubleshoot-recovery-disks-portal-linux.md)

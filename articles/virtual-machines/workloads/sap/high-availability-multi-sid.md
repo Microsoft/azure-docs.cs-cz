@@ -1,5 +1,5 @@
 ---
-title: Vytvoření konfigurace SAP multi-SID v Azure | Microsoft Docs
+title: Vytvoření konfigurace s vysokou dostupností pro SAP v Azure
 description: Průvodce vysokou dostupností konfigurace NetWeaver s více identifikátory SID na virtuálních počítačích s Windows
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 553abc0a221950d81f3ee8591875507d0b6a2f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e2055d194e1836ebc0b2e1181ca49794bc4a3b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020757"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507994"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Vytvoření konfigurace NetWeaver s více identifikátory SID pro SAP
 
@@ -454,7 +455,7 @@ Tento článek se zaměřuje na to, jak přejít z jedné instalace ASCS/SCS do 
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Cluster služby WSFC byl již nakonfigurován pro jednu instanci SAP ASCS/SCS, jak je popsáno v [Průvodci pro vysoce DOSTUPNOU SAP NetWeaver na virtuálních počítačích s Windows][sap-ha-guide] a jak je znázorněno v tomto diagramu.
 
 ![Instance SAP ASCS/SCS s vysokou dostupností][sap-ha-guide-figure-6001]
@@ -618,7 +619,7 @@ Po spuštění skriptu se výsledky zobrazí v Azure Portal, jak je znázorněno
 
 Pro každou další instanci SAP ASCS/SCS je nutné přidat nový disk pro sdílení clusteru. Pro Windows Server 2012 R2 se sdílený disk clusteru služby WSFC, který se právě používá, je softwarové řešení s.
 
-Udělejte toto:
+Postupujte následovně:
 1. Přidejte další disk nebo disky stejné velikosti (které je třeba protáhnout) do každého uzlu clusteru a naformátujte je.
 2. Nakonfigurujte replikaci úložiště s využitím datakeep.
 

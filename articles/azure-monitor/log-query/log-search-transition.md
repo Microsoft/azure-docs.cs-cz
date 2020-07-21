@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670130"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505801"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Přechod z Log Analyticsho prohledávání protokolu do protokolů Azure Monitor
 Hledání protokolu v Log Analytics bylo nedávno nahrazeno novým prostředím pro analýzu Azure Monitor protokolů. Stránka pro prohledávání protokolu je nyní stále přístupná prostřednictvím položky nabídky **protokoly (Classic)** na stránce **Log Analytics pracovní prostory** v Azure Portal, ale bude odebrána 15. února 2019. Tento článek popisuje rozdíly mezi dvěma prostředími, které vám pomůžou při přechodu z prohledávání protokolu. 
@@ -57,7 +58,7 @@ V protokolu Azure Monitor musíte upravit dotaz, aby se tyto záznamy vracely. R
 ![Podrobnosti o protokolu Azure Monitor](media/log-search-transition/drilldown-logs.png)
 
 ## <a name="take-action"></a>Provést akci
-V hledání v protokolu můžete [Spustit sadu Runbook](take-action.md) z výsledků hledání výběrem **akce provést**.
+V hledání v protokolu můžete [Spustit sadu Runbook](../platform/action-groups.md) z výsledků hledání výběrem **akce provést**.
 
 ![Provést akci](media/log-search-transition/take-action-log-search.png)
 

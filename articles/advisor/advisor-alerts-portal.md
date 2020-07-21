@@ -3,18 +3,18 @@ title: Vytváření výstrah Azure Advisor pro nová doporučení pomocí Azure 
 description: Vytvořit upozornění Azure Advisor pro nové doporučení
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 351d1faf0cb049babe1091aaac465ff975ab47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568376"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507212"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Vytváření Azure Advisor upozornění na nová doporučení pomocí Azure Portal 
 
 V tomto článku se dozvíte, jak nastavit upozornění pro nová doporučení od Azure Advisor pomocí Azure Portal. 
 
-Kdykoli Azure Advisor zjistí nové doporučení pro jeden z vašich prostředků, uloží se do [protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview). Pro tyto události můžete nastavit výstrahy z Azure Advisor pomocí prostředí pro vytváření výstrah specifických pro doporučení. Můžete vybrat předplatné a volitelně také skupinu prostředků a určit prostředky, na které chcete dostávat výstrahy. 
+Kdykoli Azure Advisor zjistí nové doporučení pro jeden z vašich prostředků, uloží se do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md). Pro tyto události můžete nastavit výstrahy z Azure Advisor pomocí prostředí pro vytváření výstrah specifických pro doporučení. Můžete vybrat předplatné a volitelně také skupinu prostředků a určit prostředky, na které chcete dostávat výstrahy. 
 
 Můžete také určit typy doporučení pomocí těchto vlastností:
 
@@ -57,7 +57,7 @@ Další informace o skupinách akcí naleznete v tématu [Create and Manage Acti
 
     ![Skupina akcí výstrah Advisoru](./media/advisor-alerts/create6.png)
 
-7. V části **skupiny akcí** vyberte **Přidat existující** a použijte skupinu akcí, kterou jste už vytvořili, nebo vyberte **vytvořit novou** a nastavte novou [skupinu akcí](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). 
+7. V části **skupiny akcí** vyberte **Přidat existující** a použijte skupinu akcí, kterou jste už vytvořili, nebo vyberte **vytvořit novou** a nastavte novou [skupinu akcí](../azure-monitor/platform/action-groups.md). 
 
     ![Upozornění poradce přidat existující](./media/advisor-alerts/create7.png)
 

@@ -7,11 +7,13 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8381e391afa0f8866f511d3d85e02467c6d9ba5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 0a5a7ac7d830cb03b1370c31d7e854f3b2a5a2fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413378"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507178"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchronní aktualizace s využitím rozhraní REST API
 
@@ -55,7 +57,7 @@ Můžete například použít příkaz POST v kolekci reaktuálnosti k proveden�
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2) v autorizační hlavičce a musí splňovat následující požadavky:
 
@@ -96,7 +98,7 @@ Tělo může vypadat takto:
 
 Určení parametrů není vyžadováno. Použije se výchozí hodnota.
 
-| Name             | Typ  | Description  |Výchozí  |
+| Název             | Typ  | Popis  |Výchozí  |
 |------------------|-------|--------------|---------|
 | `Type`           | Výčet  | Typ zpracování, které má být provedeno. Typy jsou zarovnány s TMSL typy [příkazů pro obnovení](https://docs.microsoft.com/analysis-services/tmsl/refresh-command-tmsl) : Full, clearValues, vypočítat, dataonly, Automatic a defragmentovat. Typ přidání není podporován.      |   automatická      |
 | `CommitMode`     | Výčet  | Určuje, zda budou objekty potvrzeny v dávkách nebo pouze v případě, že jsou dokončeny. Mezi režimy patří: Default, Transaction, partialBatch.  |  doručen       |
@@ -111,7 +113,7 @@ CommitMode se rovná partialBatch. Používá se při počátečním zatížení
 
 ### <a name="status-values"></a>Hodnoty stavu
 
-|Hodnota stavu  |Description  |
+|Hodnota stavu  |Popis  |
 |---------|---------|
 |`notStarted`    |   Operace se ještě nespustila.      |
 |`inProgress`     |   Probíhá operace.      |

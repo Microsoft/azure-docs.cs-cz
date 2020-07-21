@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617171"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507943"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Podporované scénáře pro velké instance HANA
 Tento článek popisuje podporované scénáře a podrobnosti architektury pro velké instance HANA (HLI).
@@ -48,10 +49,10 @@ Návrh odvozené architektury je čistě z hlediska infrastruktury a Vy musíte 
 
 Tento článek popisuje podrobné informace o těchto dvou součástech v každé podporované architektuře:
 
-- Síť Ethernet
+- Ethernet
 - Storage
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 
 Každý zřízený Server obsahuje předem nakonfigurované sady rozhraní Ethernet. Rozhraní sítě Ethernet konfigurovaná u každé jednotky HLI jsou rozdělená do čtyř typů:
 
@@ -129,7 +130,7 @@ Tato topologie podporuje jeden uzel v konfiguraci škálování s jedním identi
 
 ![Jeden uzel s jedním identifikátorem SID](media/hana-supported-scenario/Single-node-with-one-SID.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -164,7 +165,7 @@ Tato topologie podporuje jeden uzel v konfiguraci škálování s více identifi
 
 ![MCOS jednoho uzlu](media/hana-supported-scenario/single-node-mcos.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -194,7 +195,7 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- Distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- Distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](./hana-overview-architecture.md).
 
 ## <a name="single-node-with-dr-using-storage-replication"></a>Jeden uzel se systémem DR pomocí replikace úložiště
  
@@ -204,7 +205,7 @@ Tato topologie podporuje jeden uzel v konfiguraci škálování s jedním nebo v
 
 ![Jeden uzel se systémem DR pomocí replikace úložiště](media/hana-supported-scenario/Single-node-with-dr.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -231,9 +232,9 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](./hana-overview-architecture.md).
 - Na webu DR: jsou nakonfigurované svazky a přípojné body (u instalace s označením "požadováno pro instalaci HANA") pro instalaci instance provozní HANA v HLI jednotce DR. 
-- Na webu DR: data, zálohy protokolů a sdílené svazky (označené jako replikace úložiště) se replikují prostřednictvím snímku z produkčního webu. Tyto svazky jsou připojeny pouze při převzetí služeb při selhání. Další informace najdete v tématu [postup převzetí služeb při selhání při zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery).
+- Na webu DR: data, zálohy protokolů a sdílené svazky (označené jako replikace úložiště) se replikují prostřednictvím snímku z produkčního webu. Tyto svazky jsou připojeny pouze při převzetí služeb při selhání. Další informace najdete v tématu [postup převzetí služeb při selhání při zotavení po havárii](./hana-overview-high-availability-disaster-recovery.md).
 - Spouštěcí svazek pro *třídu typu SKU I* se replikuje do uzlu Dr.
 
 
@@ -245,7 +246,7 @@ Tato topologie podporuje jeden uzel v konfiguraci škálování s jedním nebo v
 
 ![Jeden uzel se systémem DR (víceúčelový) pomocí replikace úložiště](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -280,9 +281,9 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](./hana-overview-architecture.md).
 - Na webu DR: jsou nakonfigurované svazky a přípojné body (u instalace s označením "požadováno pro instalaci HANA") pro instalaci instance provozní HANA v HLI jednotce DR. 
-- Na webu DR: data, zálohy protokolů a sdílené svazky (označené jako replikace úložiště) se replikují prostřednictvím snímku z produkčního webu. Tyto svazky jsou připojeny pouze při převzetí služeb při selhání. Další informace najdete v tématu [postup převzetí služeb při selhání při zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- Na webu DR: data, zálohy protokolů a sdílené svazky (označené jako replikace úložiště) se replikují prostřednictvím snímku z produkčního webu. Tyto svazky jsou připojeny pouze při převzetí služeb při selhání. Další informace najdete v tématu [postup převzetí služeb při selhání při zotavení po havárii](./hana-overview-high-availability-disaster-recovery.md). 
 - Na webu DR: jsou nakonfigurovaná data, zálohy protokolů, protokoly a sdílené svazky pro QA (s označením "instalace instance QA") pro instalaci instance QA.
 - Spouštěcí svazek pro *třídu typu SKU I* se replikuje do uzlu Dr.
 
@@ -300,7 +301,7 @@ Tato topologie podporuje dva uzly pro konfiguraci replikace systému HANA. Tato 
 
 
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -332,7 +333,7 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](./hana-overview-architecture.md).
 - STONITH: SBD je nakonfigurovaný pro nastavení STONITH. Použití STONITH je však volitelné.
 
 
@@ -346,7 +347,7 @@ V diagramu je víceúčelový scénář znázorněný na webu DR, kde se jednotk
 
 ![Vysoká dostupnost pomocí HSR a zotavení po havárii s využitím replikace úložiště](media/hana-supported-scenario/HSR-with-DR.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -386,11 +387,11 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](./hana-overview-architecture.md).
 - STONITH: SBD je nakonfigurovaný pro nastavení STONITH. Použití STONITH je však volitelné.
 - Na webu DR: pro replikaci primárního a sekundárního uzlu *jsou vyžadovány dvě sady svazků úložiště* .
 - Na webu DR: jsou nakonfigurované svazky a přípojné body (u instalace s označením "požadováno pro instalaci HANA") pro instalaci instance provozní HANA v HLI jednotce DR. 
-- Na webu DR: data, zálohy protokolů a sdílené svazky (označené jako replikace úložiště) se replikují prostřednictvím snímku z produkčního webu. Tyto svazky jsou připojeny pouze při převzetí služeb při selhání. Další informace najdete v tématu [postup převzetí služeb při selhání při zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- Na webu DR: data, zálohy protokolů a sdílené svazky (označené jako replikace úložiště) se replikují prostřednictvím snímku z produkčního webu. Tyto svazky jsou připojeny pouze při převzetí služeb při selhání. Další informace najdete v tématu [postup převzetí služeb při selhání při zotavení po havárii](./hana-overview-high-availability-disaster-recovery.md). 
 - Na webu DR: jsou nakonfigurovaná data, zálohy protokolů, protokoly a sdílené svazky pro QA (s označením "instalace instance QA") pro instalaci instance QA.
 - Spouštěcí svazek pro *třídu typu SKU I* se replikuje do uzlu Dr.
 
@@ -405,7 +406,7 @@ Tato topologie podporuje dva uzly v konfiguraci automatického převzetí služe
 
 ![Automatické převzetí služeb při selhání hostitele (1 + 1)](media/hana-supported-scenario/scaleup-with-standby.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -446,7 +447,7 @@ Tato topologie podporuje více uzlů v konfiguraci s možností horizontálního
 
 ![Horizontální navýšení kapacity pomocí úsporného režimu](media/hana-supported-scenario/scaleout-nm-standby.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -482,7 +483,7 @@ Tato topologie podporuje více uzlů v konfiguraci s možností horizontálního
 ![Horizontální navýšení kapacity bez úsporného režimu](media/hana-supported-scenario/scaleout-nm.png)
 
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -521,7 +522,7 @@ Tato topologie podporuje více uzlů ve škálování na více instancí s použ
 ![Horizontální navýšení kapacity pomocí replikace úložiště v systému DR](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -554,7 +555,7 @@ Jsou předem nakonfigurované následující přípojné body:
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
 -  Na webu DR: jsou nakonfigurované svazky a přípojné body (u instalace s označením "požadováno pro instalaci HANA") pro instalaci instance provozní HANA v HLI jednotce DR. 
-- Na webu DR: data, zálohy protokolů a sdílené svazky (označené jako replikace úložiště) se replikují prostřednictvím snímku z produkčního webu. Tyto svazky jsou připojeny pouze při převzetí služeb při selhání. Další informace najdete v tématu [postup převzetí služeb při selhání při zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- Na webu DR: data, zálohy protokolů a sdílené svazky (označené jako replikace úložiště) se replikují prostřednictvím snímku z produkčního webu. Tyto svazky jsou připojeny pouze při převzetí služeb při selhání. Další informace najdete v tématu [postup převzetí služeb při selhání při zotavení po havárii](./hana-overview-high-availability-disaster-recovery.md). 
 - Spouštěcí svazek pro *třídu typu SKU I* se replikuje do uzlu Dr.
 
 
@@ -566,7 +567,7 @@ Tato topologie podporuje jeden uzel v konfiguraci škálování s jedním identi
 
 ![Jeden uzel s DR pomocí HSR](media/hana-supported-scenario/single-node-hsr-dr-111.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -593,9 +594,9 @@ V jednotkách HLI (primárních i DR) jsou předem nakonfigurované následujíc
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](./hana-overview-architecture.md).
 - Primární uzel se synchronizuje s uzlem DR pomocí replikace systému HANA. 
-- [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
+- [Global REACH](../../../expressroute/expressroute-global-reach.md) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
 
 
 
@@ -607,7 +608,7 @@ V jednotkách HLI (primárních i DR) jsou předem nakonfigurované následujíc
 
 ![HSR jednoho uzlu do DR (náklady optimalizované)](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -643,11 +644,11 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
-- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+- MCOS: distribuce velikosti svazku je založena na velikosti databáze v paměti. Informace o tom, jaké velikosti databází jsou v paměti podporované v prostředí s více identifikátory SID, najdete v tématu [Přehled a architektura](./hana-overview-architecture.md).
 - Na serveru DR: jsou nakonfigurované svazky a přípojné body (označené jako "výrobní instance v lokalitě DR") pro instalaci instance provozní HANA v HLI jednotce DR. 
 - Na webu DR: jsou nakonfigurovaná data, zálohy protokolů, protokoly a sdílené svazky pro QA (s označením "instalace instance QA") pro instalaci instance QA.
 - Primární uzel se synchronizuje s uzlem DR pomocí replikace systému HANA. 
-- [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
+- [Global REACH](../../../expressroute/expressroute-global-reach.md) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr"></a>Vysoká dostupnost a zotavení po havárii pomocí HSR 
  
@@ -657,7 +658,7 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ![Vysoká dostupnost a zotavení po havárii pomocí HSR](media/hana-supported-scenario/hana-system-replication-dr-131.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -692,7 +693,7 @@ Jsou předem nakonfigurované následující přípojné body:
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
 - Na serveru DR: jsou nakonfigurované svazky a přípojné body (označené jako "výr DR instance") pro instalaci instance v produkčním prostředí HANA na HLI jednotce DR. 
 - Uzel primární lokality se synchronizuje s uzlem DR pomocí replikace systému HANA. 
-- [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
+- [Global REACH](../../../expressroute/expressroute-global-reach.md) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>Vysoká dostupnost a zotavení po havárii s HSR (náklady optimalizované)
  
@@ -702,7 +703,7 @@ Jsou předem nakonfigurované následující přípojné body:
 
 ![Vysoká dostupnost a zotavení po havárii s HSR (náklady optimalizované)](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -741,7 +742,7 @@ Jsou předem nakonfigurované následující přípojné body:
 - Na serveru DR: jsou nakonfigurované svazky a přípojné body (označené jako "výr DR instance") pro instalaci instance v produkčním prostředí HANA na HLI jednotce DR. 
 - Na webu DR: jsou nakonfigurovaná data, zálohy protokolů, protokoly a sdílené svazky pro QA (s označením "instalace instance QA") pro instalaci instance QA.
 - Uzel primární lokality se synchronizuje s uzlem DR pomocí replikace systému HANA. 
-- [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
+- [Global REACH](../../../expressroute/expressroute-global-reach.md) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
 
 ## <a name="scale-out-with-dr-using-hsr"></a>Horizontální navýšení kapacity pomocí HSR
  
@@ -753,7 +754,7 @@ Tato topologie podporuje více uzlů ve škálování na více instancí s použ
 [Horizontální navýšení ![ kapacity pomocí HSR](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
 
 
-### <a name="ethernet"></a>Síť Ethernet
+### <a name="ethernet"></a>Ethernet
 Jsou předem nakonfigurované následující síťová rozhraní:
 
 | Logické rozhraní NIC | Typ SKU | Název s operačním systémem SUSE | Název s operačním systémem RHEL | Případ použití|
@@ -788,9 +789,9 @@ Jsou předem nakonfigurované následující přípojné body:
 - /usr/sap/SID je symbolický odkaz na/hana/shared/SID..
 - Na serveru DR: svazky a přípojné body jsou konfigurovány pro instalaci instance provozní HANA v HLI jednotce DR. 
 - Uzel primární lokality se synchronizuje s uzlem DR pomocí replikace systému HANA. 
-- [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
+- [Global REACH](../../../expressroute/expressroute-global-reach.md) slouží k propojení okruhů ExpressRoute a vytvoření privátní sítě mezi vašimi regionálními sítěmi.
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Infrastruktura a konektivita](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) pro velké instance Hana
-- [Vysoká dostupnost a zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) pro velké instance Hana
+- [Infrastruktura a konektivita](./hana-overview-infrastructure-connectivity.md) pro velké instance Hana
+- [Vysoká dostupnost a zotavení po havárii](./hana-overview-high-availability-disaster-recovery.md) pro velké instance Hana

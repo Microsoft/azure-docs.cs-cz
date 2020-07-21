@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 886e6cf237df94c056ec7c592e0b535327339871
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243792"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507059"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -131,11 +131,11 @@ Historii předchozích verzí najdete [tady](https://en.wikipedia.org/wiki/Kuber
 | 1,17  | Dec-09-19  | 19. ledna   | Července 20  | 1,20 GA | 
 | 1,18  | Březen – 23-20  | 20. května   | 20. srpna  | 1,21 GA | 
 | 1,19  | Srpna 04-20  | 20. srpna   | 20. listopadu  | 1,22 GA | 
-| 1.20  | * Listopadu 20    | * Prosinec 21   | * Jan 21  | 1,23 GA | 
+| 1.20  | * Listopadu 20    | * Prosinec 20   | * Jan 21  | 1,23 GA | 
 
 \*Čeká na nedokončené odesílání data vydání.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Co se stane, když uživatel upgraduje cluster Kubernetes s menší verzí, která se nepodporuje?**
 
@@ -181,4 +181,4 @@ Informace o tom, jak upgradovat cluster, najdete v tématu [upgrade clusteru Azu
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
 [az-aks-get-versions]: /cli/azure/aks#az-aks-get-versions
-[preview-terms]: /support/legal/preview-supplemental-terms
+[preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

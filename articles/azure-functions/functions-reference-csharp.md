@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: a8041f2514f59ac2511fcd64eeb0283565a0e07a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 177e9fcd872c594fbfb5f29077235113c6342860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249236"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506141"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions referenční příručka pro vývojáře skriptu jazyka C# (. csx)
 
@@ -238,7 +238,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>Protokolování
 
-Chcete-li protokolovat výstup do protokolů streamování v jazyce C#, zahrňte argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme vám ho pojmenovat `log` . Nepoužívejte `Console.Write` v Azure Functions.
+Chcete-li protokolovat výstup do protokolů streamování v jazyce C#, zahrňte argument typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme vám ho pojmenovat `log` . Nepoužívejte `Console.Write` v Azure Functions.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -252,7 +252,7 @@ public static void Run(string myBlob, ILogger log)
 
 ## <a name="async"></a>Async
 
-Chcete-li provést [asynchronní](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)funkci, použijte `async` klíčové slovo a vraťte `Task` objekt.
+Chcete-li provést [asynchronní](/dotnet/csharp/programming-guide/concepts/async/)funkci, použijte `async` klíčové slovo a vraťte `Task` objekt.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(

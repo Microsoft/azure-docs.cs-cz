@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244527"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507093"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepty zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)
 
@@ -54,9 +54,9 @@ Prostředí Kubernetes, v AKS nebo jinde, aktuálně nejsou zcela bezpečná pro
 
 ### <a name="compute-isolation"></a>Izolace výpočtů
 
- Kvůli dodržování předpisů nebo zákonných požadavků můžou některé úlohy vyžadovat vysoký stupeň izolace od jiných zákaznických úloh. Pro tyto úlohy Azure poskytuje [izolované virtuální počítače](../virtual-machines/linux/isolation.md), které se dají použít jako uzly agentů v clusteru AKS. Tyto izolované virtuální počítače jsou izolované na určitý typ hardwaru a vyhrazené pro jediného zákazníka. 
+ Kvůli dodržování předpisů nebo zákonných požadavků můžou některé úlohy vyžadovat vysoký stupeň izolace od jiných zákaznických úloh. Pro tyto úlohy Azure poskytuje [izolované virtuální počítače](../virtual-machines/isolation.md), které se dají použít jako uzly agentů v clusteru AKS. Tyto izolované virtuální počítače jsou izolované na určitý typ hardwaru a vyhrazené pro jediného zákazníka. 
 
- Pokud chcete použít tyto izolované virtuální počítače s clusterem AKS, vyberte jednu z velikostí izolovaných počítačů, které jsou [tady](../virtual-machines/linux/isolation.md) uvedené, jako **Velikost uzlu** při vytváření clusteru AKS nebo přidávání fondu uzlů.
+ Pokud chcete použít tyto izolované virtuální počítače s clusterem AKS, vyberte jednu z velikostí izolovaných počítačů, které jsou [tady](../virtual-machines/isolation.md) uvedené, jako **Velikost uzlu** při vytváření clusteru AKS nebo přidávání fondu uzlů.
 
 
 ## <a name="cluster-upgrades"></a>Upgrady clusteru
@@ -81,6 +81,8 @@ V případě připojení a zabezpečení pomocí místních sítí můžete nasa
 ### <a name="azure-network-security-groups"></a>Skupiny zabezpečení sítě Azure
 
 Pokud chcete filtrovat tok provozu ve virtuálních sítích, Azure používá pravidla skupiny zabezpečení sítě. Tato pravidla definují zdrojové a cílové rozsahy IP adres, porty a protokoly, které mají povolený nebo odepřený přístup k prostředkům. Vytvoří se výchozí pravidla, která povolí přenos TLS do serveru rozhraní Kubernetes API. Když vytváříte služby pomocí nástrojů pro vyrovnávání zatížení, mapování portů nebo tras příchozího přenosu dat, AKS automaticky upraví skupinu zabezpečení sítě, aby se provoz správně Flow.
+
+V případech, kdy pro svůj cluster AKS zadáte vlastní podsíť a chcete upravit tok přenosů, neměňte skupinu zabezpečení sítě na úrovni podsítě spravovanou nástrojem AKS. Můžete vytvořit další skupiny zabezpečení sítě na úrovni podsítě, abyste mohli upravit tok provozu tak dlouho, dokud nebrání provozu, který je potřeba pro správu clusteru, jako je například přístup k nástroji pro vyrovnávání zatížení, komunikace s rovinou ovládacího prvku a [výstup][aks-limit-egress-traffic].
 
 ### <a name="kubernetes-network-policy"></a>Zásady sítě Kubernetes
 
@@ -123,6 +125,7 @@ Další informace o základních konceptech Kubernetes a AKS najdete v následuj
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md

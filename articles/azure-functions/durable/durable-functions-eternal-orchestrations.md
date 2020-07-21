@@ -3,14 +3,14 @@ title: Externí orchestrace v Durable Functions – Azure
 description: Naučte se implementovat orchestraci externí pomocí rozšíření Durable Functions pro Azure Functions.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478817"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506362"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Orchestrace externí v Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ Jak je vysvětleno v tématu [Historie orchestrace](durable-functions-orchestrat
 
 ## <a name="resetting-and-restarting"></a>Resetování a restartování
 
-Namísto použití nekonečné smyčky, funkce Orchestrator obnoví jejich stav voláním `ContinueAsNew` metody (.NET) nebo `continueAsNew` (JavaScript) [aktivační vazby orchestration](durable-functions-bindings.md#orchestration-trigger). Tato metoda přijímá jeden parametr s možností serializace JSON, který se stal novým vstupem pro další generování funkce Orchestrator.
+Namísto použití nekonečné smyčky funkce nástroje Orchestrator obnoví jejich stav voláním `ContinueAsNew` metody (.NET), `continueAsNew` (JavaScript) nebo `continue_as_new` (Python) [vazby triggeru Orchestration](durable-functions-bindings.md#orchestration-trigger). Tato metoda přijímá jeden parametr s možností serializace JSON, který se stal novým vstupem pro další generování funkce Orchestrator.
 
 Když `ContinueAsNew` je volána, instance před ukončením zachová zprávy do sebe samé. Zpráva restartuje instanci s novou vstupní hodnotou. Stejné ID instance je zachované, ale historie funkce Orchestrator je ve skutečnosti zkrácená.
 
@@ -70,13 +70,32 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("DoCleanup")
+
+    # sleep for one hour between cleanups
+    next_cleanup = context.current_utc_datetime + timedelta(hours = 1)
+    yield context.create_timer(next_cleanup)
+
+    context.continue_as_new(None)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 Rozdíl mezi tímto příkladem a funkcí aktivovanou časovačem je, že doba triggeru vyčištění tady není založena na plánu. Například plán CRON, který spouští funkci každou hodinu, se spustí v 1:00, 2:00, 3:00 atd. a může potenciálně vést k překrývání problémů. V tomto příkladu, pokud vyčištění trvá 30 minut, pak bude naplánováno na 1:00, 2:30, 4:00 atd. a neexistuje možnost překrytí.
 
 ## <a name="starting-an-eternal-orchestration"></a>Spuštění orchestrace externí
 
-Použijte `StartNewAsync` metodu (.NET) nebo `startNew` (JavaScript) k zahájení orchestrace externí, stejně jako u jakékoli jiné funkce orchestrace.  
+`StartNewAsync` `startNew` K zahájení orchestrace externí použijte metodu (.NET), (JavaScript), `start_new` (Python), stejně jako u jakékoli jiné funkce orchestrace.  
 
 > [!NOTE]
 > Pokud potřebujete zajistit, aby orchestrace typu Singleton externí běžela, je důležité `id` při spouštění orchestrace zachovat stejnou instanci. Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
@@ -115,6 +134,19 @@ module.exports = async function (context, req) {
     return client.createCheckStatusResponse(context.bindingData.req, instanceId);
 };
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    instance_id = 'StaticId'
+
+    await client.start_new('Periodic_Cleanup_Loop', instance_id, None)
+
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+
+```
 
 ---
 
@@ -122,7 +154,7 @@ module.exports = async function (context, req) {
 
 Pokud je nutné, aby funkce Orchestrator mohla být nakonec dokončena, *Nevolejte vše* , co je potřeba udělat, `ContinueAsNew` a nechejte funkci ukončit.
 
-Pokud je funkce Orchestrator v nekonečné smyčce a je potřeba ji zastavit, použijte `TerminateAsync` `terminate` k zastavení [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) metodu (.NET) nebo (JavaScript). Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
+Pokud je funkce Orchestrator v nekonečné smyčce a je nutné ji zastavit, použijte `TerminateAsync` k zastavení rozhraní (.NET), `terminate` (JavaScript) nebo `terminate` (Python) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) . Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>Další kroky
 

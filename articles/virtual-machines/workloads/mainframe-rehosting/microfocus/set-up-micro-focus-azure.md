@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 7647283444ba41a5d629ba8a26fc711a699cd78d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561098"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507892"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Instalace Micro Micro Enterprise Server 5,0 a Enterprise Developer 5,0 v Azure
 
@@ -29,7 +29,7 @@ Tento instalační program používá virtuální počítače Azure s Windows se
 
 Odpovídající vývojové prostředí pro podnikový server je podnikovým vývojářem, který běží na Microsoft Visual Studio 2017 nebo novějším, v rámci sady Visual Studio Community (zdarma ke stažení) nebo na zatmění. Tento článek ukazuje, jak ho nasadit pomocí virtuálního počítače s Windows serverem 2016, který je součástí sady Visual Studio 2017 nebo novější.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, podívejte se na tyto požadavky:
 
@@ -42,7 +42,7 @@ Než začnete, podívejte se na tyto požadavky:
     > [!Note]
     > Pro řízení přístupu k virtuálním počítačům je k dispozici několik možností:
     > -   Osvědčeným postupem je nastavit [Azure bastionu](https://azure.microsoft.com/services/azure-bastion/).
-    > -   Tunelové propojení typu [site-to-site sítě VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell) .
+    > -   Tunelové propojení typu [site-to-site sítě VPN](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) .
     > -   Virtuální počítač JumpBox.
 
 ## <a name="install-enterprise-server"></a>Instalace Enterprise Serveru
@@ -125,8 +125,8 @@ Po načtení podnikového vývojáře se vaše nasazení vývojového a testovac
 
 **Další kroky**
 
--   [Nastavení aplikace BankDemo](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo)
+-   [Nastavení aplikace BankDemo](./demo.md)
 
--   [Provozování podnikového serveru v kontejnerech Docker](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)
+-   [Provozování podnikového serveru v kontejnerech Docker](./run-enterprise-server-container.md)
 
--   [Migrace mainframových aplikací](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [Migrace mainframových aplikací](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

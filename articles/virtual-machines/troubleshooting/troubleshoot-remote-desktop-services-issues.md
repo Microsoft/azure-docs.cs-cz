@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084323"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508878"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Služba Vzdálená plocha se nespouští na virtuálním počítači Azure.
 
@@ -145,7 +145,7 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
 
     1. [Připojte datový disk k virtuálnímu počítači](../windows/attach-managed-disk-portal.md
 ).
-    2. Pomocí sériové konzoly můžete soubor zkopírovat na novou jednotku. Například, `copy C:\temp\ProcMonTrace.PML F:\`. V tomto příkazu je F písmeno ovladače připojeného datového disku.
+    2. Pomocí sériové konzoly můžete soubor zkopírovat na novou jednotku. Například `copy C:\temp\ProcMonTrace.PML F:\`. V tomto příkazu je F písmeno ovladače připojeného datového disku.
     3. Odpojte datovou jednotku a připojte ji k pracovnímu virtuálnímu počítači, na kterém je nainstalovaný ubstakke monitor procesu.
 
 6. Otevřete **ProcMonTrace. PML** pomocí procesu sledovat pracovní virtuální počítač. Pak je filtr podle **výsledku odepřen přístup**, jak je znázorněno na následujícím snímku obrazovky:
@@ -218,7 +218,7 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojení disku s operačním systémem k virtuálnímu počítači pro obnovení
 
-1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](./troubleshoot-recovery-disks-portal-windows.md).
 2. Spusťte připojení ke vzdálené ploše virtuálního počítače pro obnovení. Ujistěte se, že připojený disk je označen jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky přiřazené k připojenému disku s operačním systémem.
 3. Otevřete instanci příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**). Pak spusťte následující skript. Předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je **F**. Nahraďte ji odpovídající hodnotou ve vašem VIRTUÁLNÍm počítači. 
 
@@ -234,7 +234,7 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [Odpojte disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Potom zkontrolujte, zda byl problém vyřešen.
+4. [Odpojte disk s operačním systémem a znovu vytvořte virtuální počítač](./troubleshoot-recovery-disks-portal-windows.md). Potom zkontrolujte, zda byl problém vyřešen.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 

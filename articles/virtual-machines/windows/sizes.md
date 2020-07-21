@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a60200bd35d142b8b55a40d6912f946f9421f52e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a97bd1327ab3cc2a35f94553259fb6095217fe7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207658"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508215"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Velikosti virtuálních počítačů s Windows v Azure
 
@@ -28,7 +28,7 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 | [Vysokovýkonné výpočetní prostředí](../sizes-hpc.md) | HBv2, HC, H | Naši nejrychlejší a nejvíc nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). |
 
 - Informace o cenách různých velikostí najdete v článku [Virtual Machines ceny](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows).
-- Obecné omezení virtuálních počítačů Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-subscription-service-limits.md).
+- Obecné omezení virtuálních počítačů Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Náklady na úložiště se počítají samostatně na základě využitých stránek v účtu úložiště. Podrobnosti [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).
 - Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](../acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
 
@@ -36,9 +36,9 @@ Tento článek popisuje dostupné velikosti a možnosti pro virtuální počíta
 
 Informace o použití REST API k dotazování na velikosti virtuálních počítačů najdete v následujících tématech:
 
-- [Vypsat dostupné velikosti virtuálních počítačů pro změnu velikosti](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
-- [Zobrazit seznam dostupných velikostí virtuálních počítačů pro předplatné](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
-- [Zobrazit seznam dostupných velikostí virtuálních počítačů ve skupině dostupnosti](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+- [Vypsat dostupné velikosti virtuálních počítačů pro změnu velikosti](/rest/api/compute/virtualmachines/listavailablesizes)
+- [Zobrazit seznam dostupných velikostí virtuálních počítačů pro předplatné](/rest/api/compute/resourceskus/list)
+- [Zobrazit seznam dostupných velikostí virtuálních počítačů ve skupině dostupnosti](/rest/api/compute/availabilitysets/listavailablesizes)
 
 ## <a name="acu"></a>ACU
 

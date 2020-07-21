@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170390"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506226"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -28,8 +28,8 @@ Nasazení Azure Functions se typicky skládá z těchto prostředků:
 
 | Prostředek                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
-| Aplikace Function App                                                                     | Povinné    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |
-| Účet [Azure Storage](../storage/index.yml)                                   | Povinné    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| Aplikace Function App                                                                     | Vyžadováno    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |
+| Účet [Azure Storage](../storage/index.yml)                                   | Vyžadováno    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Volitelné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |
 | [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)                 |
 
@@ -309,7 +309,7 @@ Plán Premium nabízí stejné škálování jako plán spotřeby, ale zahrnuje 
 
 ### <a name="create-a-premium-plan"></a>Vytvořit plán Premium
 
-Plán Premium je zvláštní typ prostředku "serverová farma". Můžete ji zadat buď pomocí `EP1` , `EP2` nebo `EP3` pro `Name` hodnotu vlastnosti v `sku` [objektu Description](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
+Plán Premium je zvláštní typ prostředku "serverová farma". Můžete ji zadat buď pomocí `EP1` , `EP2` nebo `EP3` pro `Name` hodnotu vlastnosti v `sku` [objektu Description](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
 
 ```json
 {
@@ -516,7 +516,7 @@ Aplikace pro Linux by měly také obsahovat `linuxFxVersion` vlastnost `siteConf
 }
 ```
 
-Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-custom-image.md), musíte ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje, aby se vaše image obnovila, jako v [Web App for Containers](/azure/app-service/containers). Nastavte také `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na `false` , protože obsah vaší aplikace je k dispozici v kontejneru samotném:
+Pokud [nasazujete vlastní image kontejneru](./functions-create-function-linux-custom-image.md), musíte ji zadat s `linuxFxVersion` a zahrnout konfiguraci, která umožňuje, aby se vaše image obnovila, jako v [Web App for Containers](../app-service/containers/index.yml). Nastavte také `WEBSITES_ENABLE_APP_SERVICE_STORAGE` na `false` , protože obsah vaší aplikace je k dispozici v kontejneru samotném:
 
 ```json
 {

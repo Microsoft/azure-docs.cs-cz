@@ -3,12 +3,12 @@ title: Správa připojení v Azure Functions
 description: Zjistěte, jak se vyhnout problémům s výkonem v Azure Functions pomocí klientů se statickým připojením.
 ms.topic: conceptual
 ms.date: 02/25/2018
-ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ab59d82ad4b11e4ac5179ef727392a83bb263e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846777"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505988"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Správa připojení v Azure Functions
 
@@ -24,8 +24,7 @@ Při řešení potíží se ujistěte, že jste povolili Application Insights ap
 
 ## <a name="static-clients"></a>Statické klienty
 
-Aby nedošlo k většímu podílu připojení, než je potřeba, místo vytváření nových funkcí pomocí jednotlivých volání funkce znovu použijte instance klientů. Pro libovolný jazyk, ve kterém můžete napsat funkci, doporučujeme znovu použít připojení klientů. Například klienti .NET, jako jsou [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-)a klienti Azure Storage, můžou spravovat připojení, pokud použijete jediného statického klienta.
+Aby nedošlo k většímu podílu připojení, než je potřeba, místo vytváření nových funkcí pomocí jednotlivých volání funkce znovu použijte instance klientů. Pro libovolný jazyk, ve kterém můžete napsat funkci, doporučujeme znovu použít připojení klientů. Například klienti .NET, jako jsou [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1), [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient)a klienti Azure Storage, můžou spravovat připojení, pokud použijete jediného statického klienta.
 
 Tady jsou některé pokyny, které je potřeba provést, když v Azure Functions aplikaci používáte klienta pro konkrétní služby:
 
@@ -39,7 +38,7 @@ Tato část popisuje osvědčené postupy pro vytváření a používání klien
 
 ### <a name="httpclient-example-c"></a>Příklad HttpClient (C#)
 
-Zde je příklad kódu funkce jazyka C#, který vytváří statickou instanci [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) :
+Zde je příklad kódu funkce jazyka C#, který vytváří statickou instanci [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) :
 
 ```cs
 // Create a single, static HttpClient
@@ -52,7 +51,7 @@ public static async Task Run(string input)
 }
 ```
 
-Běžným dotazem týkajícím se [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) v .NET je "Mám vyřadit klienta?" Obecně platí, že budete nakládat objekty, které implementují, `IDisposable` až je budete používat. Ale nebudete odstraňovat statický klient, protože ho nebudete používat, když funkce skončí. Chcete, aby byl statický klient aktivní po dobu trvání vaší aplikace.
+Běžným dotazem týkajícím se [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) v .NET je "Mám vyřadit klienta?" Obecně platí, že budete nakládat objekty, které implementují, `IDisposable` až je budete používat. Ale nebudete odstraňovat statický klient, protože ho nebudete používat, když funkce skončí. Chcete, aby byl statický klient aktivní po dobu trvání vaší aplikace.
 
 ### <a name="http-agent-examples-javascript"></a>Příklady agenta HTTP (JavaScript)
 
@@ -76,8 +75,7 @@ http.request(options, onResponseCallback);
 
 ### <a name="documentclient-code-example-c"></a>Příklad kódu DocumentClient (C#)
 
-[DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) se připojuje k instanci Azure Cosmos DB. Dokumentace Azure Cosmos DB doporučuje, abyste [pro celou dobu života vaší aplikace používali klienta s jedním Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/performance-tips#sdk-usage). Následující příklad ukazuje jeden vzor pro provedení ve funkci:
+[DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) se připojuje k instanci Azure Cosmos DB. Dokumentace Azure Cosmos DB doporučuje, abyste [pro celou dobu života vaší aplikace používali klienta s jedním Azure Cosmos DB](../cosmos-db/performance-tips.md#sdk-usage). Následující příklad ukazuje jeden vzor pro provedení ve funkci:
 
 ```cs
 #r "Microsoft.Azure.Documents.Client"
@@ -126,14 +124,13 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>Připojení SqlClient
 
-Kód funkce může použít .NET Framework Zprostředkovatel dat pro SQL Server ([SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)) k vytvoření připojení k RELAČNÍ databázi SQL. Toto je také základní poskytovatel pro datové architektury, které spoléhají na ADO.NET, jako je například [Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx). Na rozdíl od připojení [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) a [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) implementuje ADO.NET ve výchozím nastavení sdružování připojení. Ale vzhledem k tomu, že stále může docházet k připojení, byste měli optimalizovat připojení k databázi. Další informace najdete v tématu věnovaném [sdružování připojení SQL Server (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+Kód funkce může použít .NET Framework Zprostředkovatel dat pro SQL Server ([SqlClient](/dotnet/api/system.data.sqlclient?view=dotnet-plat-ext-3.1)) k vytvoření připojení k RELAČNÍ databázi SQL. Toto je také základní poskytovatel pro datové architektury, které spoléhají na ADO.NET, jako je například [Entity Framework](/ef/ef6/). Na rozdíl od připojení [HttpClient](/dotnet/api/system.net.http.httpclient?view=netcore-3.1) a [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient) implementuje ADO.NET ve výchozím nastavení sdružování připojení. Ale vzhledem k tomu, že stále může docházet k připojení, byste měli optimalizovat připojení k databázi. Další informace najdete v tématu věnovaném [sdružování připojení SQL Server (ADO.NET)](/dotnet/framework/data/adonet/sql-server-connection-pooling).
 
 > [!TIP]
-> Některá datová rozhraní, například Entity Framework, obvykle získávají připojovací řetězce z oddílu **connectionStrings** konfiguračního souboru. V tomto případě musíte explicitně přidat připojovací řetězce databáze SQL do kolekce **připojovacích řetězců** v nastavení aplikace Function App a v [local.settings.jsv souboru](functions-run-local.md#local-settings-file) v místním projektu. Pokud vytváříte instanci [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** s ostatními připojeními.
+> Některá datová rozhraní, například Entity Framework, obvykle získávají připojovací řetězce z oddílu **connectionStrings** konfiguračního souboru. V tomto případě musíte explicitně přidat připojovací řetězce databáze SQL do kolekce **připojovacích řetězců** v nastavení aplikace Function App a v [local.settings.jsv souboru](functions-run-local.md#local-settings-file) v místním projektu. Pokud vytváříte instanci [SqlConnection](/dotnet/api/system.data.sqlclient.sqlconnection?view=dotnet-plat-ext-3.1) v kódu funkce, měli byste uložit hodnotu připojovacího řetězce v **nastavení aplikace** s ostatními připojeními.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, proč doporučujeme statické klienty, najdete v tématu [antipattern nesprávného vytváření instancí](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/).
+Další informace o tom, proč doporučujeme statické klienty, najdete v tématu [antipattern nesprávného vytváření instancí](/azure/architecture/antipatterns/improper-instantiation/).
 
 Další Azure Functions tipů ke zvýšení výkonu najdete v tématu [optimalizace výkonu a spolehlivosti Azure Functions](functions-best-practices.md).

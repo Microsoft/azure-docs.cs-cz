@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: b7566260786b6fcfa639f244e2eff0cc8304ed9e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d489ed9dbf9b8075951258e0841675877e11be38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205790"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506787"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rychlý Start: Vytvoření webové aplikace v ASP.NET Core v Azure
 
@@ -18,7 +18,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit a nasadit první webovou apli
 
 Až budete hotovi, budete mít skupinu prostředků Azure, která se skládá z App Service plánu hostování a App Service s nasazenou webovou aplikací.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/dotnet/).
 - V tomto rychlém startu se nasadí aplikace, která se App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v .NET Core ve službě App Service v Linuxu](./containers/quickstart-dotnetcore.md).
@@ -42,7 +42,7 @@ Pomocí následujících kroků vytvořte webovou aplikaci ASP.NET Core v aplika
 
    ![Konfigurace projektu webové aplikace](./media/app-service-web-get-started-dotnet/configure-web-app-project.png)
 
-1. Do Azure můžete nasadit jakýkoli typ ASP.NET Core webové aplikace, ale pro účely tohoto rychlého startu vyberte šablonu **webové aplikace** . Ujistěte se, že je **ověřování** nastaveno na **bez ověřování**a že není vybrána žádná jiná možnost. Pak vyberte **vytvořit**.
+1. Do Azure můžete nasadit jakýkoli typ ASP.NET Core webové aplikace, ale pro účely tohoto rychlého startu vyberte šablonu **webové aplikace** . Ujistěte se, že je **ověřování** nastaveno na **bez ověřování**a že není vybrána žádná jiná možnost. Potom vyberte **Vytvořit**.
 
    ![Vytvoření nové ASP.NET Core webové aplikace](./media/app-service-web-get-started-dotnet/create-aspnet-core-web-app.png) 
    
@@ -81,7 +81,7 @@ Při vytváření App Service a publikování webové aplikace postupujte podle 
    | -------- | --------------- | ----------- |
    | **Plán hostování**  | *myFirstAzureWebAppPlan* | Název plánu služby App Service. |
    | **Umístění**      | *Západní Evropa* | Datacentrum, které je hostitelem webové aplikace. |
-   | **Velikost**          | *Free* | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
+   | **Velikost**          | Zadejte možnost pro *bezplatnou* SKU. | [Cenová úroveň](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) určuje funkce hostování. |
    
    ![Vytvořit nový plán hostování](./media/app-service-web-get-started-dotnet/create-new-hosting-plan-vs2019.png)
 
@@ -99,7 +99,7 @@ Při vytváření App Service a publikování webové aplikace postupujte podle 
 
    ![Publikovaná webová aplikace v ASP.NET běžící v Azure](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
 
-**Gratulujeme!** Vaše webová aplikace v ASP.NET Core běží živě v Azure App Service.
+**Blahopřejeme!** Vaše webová aplikace v ASP.NET Core běží živě v Azure App Service.
 
 ## <a name="update-the-app-and-redeploy"></a>Aktualizace a opětovné nasazení aplikace
 
@@ -153,3 +153,8 @@ V dalším článku se dozvíte, jak vytvořit aplikaci .NET Core a jak ji přip
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace ASP.NET Core](configure-language-dotnetcore.md)
+
+Chcete optimalizovat a uložit své útraty do cloudu?
+
+> [!div class="nextstepaction"]
+> [Zahájení analýzy nákladů pomocí Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

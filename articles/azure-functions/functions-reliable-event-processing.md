@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676127"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506022"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions spolehlivé zpracování událostí
 
@@ -69,7 +70,7 @@ Představujeme knihovny pro zpracování chyb do vašich funkcí vám umožní d
 > [!NOTE]
 > [Polly](https://github.com/App-vNext/Polly) je příklad odolnosti a knihovny pro zpracování s přechodnou chybou pro aplikace v jazyce C#.
 
-Při práci s předem vyplněnými knihovnami tříd jazyka C# umožňují [filtry výjimek](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) spustit kód vždy, když dojde k neošetřené výjimce.
+Při práci s předem vyplněnými knihovnami tříd jazyka C# umožňují [filtry výjimek](/dotnet/csharp/language-reference/keywords/try-catch) spustit kód vždy, když dojde k neošetřené výjimce.
 
 Ukázky, které ukazují, jak používat filtry výjimek, jsou k dispozici v úložišti [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) .
 
@@ -119,14 +120,14 @@ Příjemce e-mailu může prozkoumat stav okruhu a v případě potřeby restart
 
 Při použití tohoto přístupu se neztratí žádné zprávy, všechny zprávy jsou zpracovávány v daném pořadí a okruh můžete v případě potřeby rozdělit na dlouhou dobu.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 
 - [Ukázky spolehlivých zpracování událostí](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Přerušení okruhu trvalých entit Azure](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 - [Zpracování chyb Azure Functions](./functions-bindings-error-pages.md)
 - [Automatizace změny velikosti nahraných obrázků s využitím služby Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)

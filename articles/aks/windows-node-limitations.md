@@ -5,12 +5,12 @@ description: Přečtěte si o známých omezeních při spouštění fondů uzl�
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a86d6f0fe942a72a96c504a61d5030624f161cd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339884"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507008"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -44,11 +44,15 @@ Hlavní uzly (Řídicí rovina) v clusteru AKS jsou hostované AKS služby, nebu
 
 ## <a name="what-network-plug-ins-are-supported"></a>Jaké síťové moduly plug-in jsou podporované?
 
-Clustery AKS s fondy uzlů Windows musí používat síťový model Azure CNI (rozšířené). Kubenet (základní) sítě se nepodporují. Další informace o rozdílech v síťových modelech najdete v tématu [Koncepty sítě pro aplikace v AKS][azure-network-models]. – Model sítě Azure CNI vyžaduje další plánování a předpoklady pro správu IP adres. Další informace o plánování a implementaci Azure CNI najdete v tématu [Konfigurace sítě Azure CNI v AKS][configure-azure-cni].
+Clustery AKS s fondy uzlů Windows musí používat síťový model Azure CNI (rozšířené). Kubenet (základní) sítě se nepodporují. Další informace o rozdílech v síťových modelech najdete v tématu [Koncepty sítě pro aplikace v AKS][azure-network-models]. Model sítě Azure CNI vyžaduje další plánování a předpoklady pro správu IP adres. Další informace o plánování a implementaci Azure CNI najdete v tématu [Konfigurace sítě Azure CNI v AKS][configure-azure-cni].
+
+## <a name="is-preserving-the-client-source-ip-supported"></a>Zachovává se podpora zdrojové IP adresy klienta?
+
+V současné době [zachování IP adresy zdrojového klienta][client-source-ip] není u uzlů Windows podporováno.
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>Můžu změnit maximum. počet lusků na uzel?
 
-Ano. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
+Yes. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Jak mám opravit uzly Windows?
 
@@ -103,6 +107,14 @@ Podpora skupinových účtů spravované služby (gMSA) není v současné době
 
 Ano, můžete ale Azure Monitor ve verzi Public Preview pro shromažďování protokolů (stdout, stderr) a metriky z kontejnerů Windows. Můžete se také připojit k živému streamu protokolů stdout z kontejneru Windows.
 
+## <a name="are-there-any-limitations-on-the-number-of-services-on-a-cluster-with-windows-nodes"></a>Existují nějaká omezení počtu služeb v clusteru s uzly Windows?
+
+Cluster s uzly Windows může mít přibližně 500 služeb před tím, než dojde k vyčerpání portů.
+
+## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Můžu použít webový řídicí panel Kubernetes s kontejnery Windows?
+
+Ano, pomocí [webového řídicího panelu Kubernetes][kubernetes-dashboard] můžete získat přístup k informacím o kontejnerech Windows, ale v tuto chvíli nemůžete spustit *kubectl exec* do běžícího kontejneru Windows přímo z webového řídicího panelu Kubernetes. Další podrobnosti o připojení ke spuštěnému kontejneru Windows najdete v tématu [připojení pomocí protokolu RDP ke službě Azure Kubernetes (AKS) clustery Windows serveru pro účely údržby nebo řešení potíží][windows-rdp].
+
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Co když potřebuji funkci, která není podporovaná?
 
 V AKS pracujeme na zprovoznění všech funkcí, které v systému Windows potřebujete, ale pokud se setkáte, je open source projekt [AKS-Engine][aks-engine] jednoduchý a plně přizpůsobitelný způsob, jak spustit Kubernetes v Azure, včetně podpory Windows. Ujistěte se prosím, že máte přehled o funkcích, které připravujeme pro [AKS][aks-roadmap].
@@ -132,3 +144,6 @@ Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, 
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
 [azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[client-source-ip]: concepts-network.md#ingress-controllers
+[kubernetes-dashboard]: kubernetes-dashboard.md
+[windows-rdp]: rdp.md

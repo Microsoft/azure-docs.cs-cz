@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d9374f83110176e6705e2c6cca6c7794738a8c6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78d4ffda62b98ca57a8204e6037f8ccd8c470924
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83848834"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508538"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Nejčastější dotazy k Azure Disk Encryption pro virtuální počítače s Windows
 
@@ -97,7 +98,7 @@ Existují předpoklady pro Azure Disk Encryption. Další informace o vytvořen�
 Existují předpoklady pro Azure Disk Encryption. Pokud chcete vytvořit aplikaci Azure Active Directory, vytvořit nový trezor klíčů nebo nastavit existující Trezor klíčů pro přístup k šifrování disku, abyste mohli povolit šifrování a chránit tajné klíče a klíče, přečtěte si téma [Azure Disk Encryption s obsahem Azure AD](disk-encryption-windows-aad.md) . Další informace o scénářích podpory klíčového šifrovacího klíče najdete v tématu [Vytvoření a konfigurace trezoru klíčů pro Azure Disk Encryption s Azure AD](disk-encryption-key-vault-aad.md).
 
 ## <a name="is-azure-disk-encryption-using-an-azure-ad-app-previous-release-still-supported"></a>Je Azure Disk Encryption používání aplikace Azure AD (předchozí verze) stále podporovaná?
-Ano. Šifrování disku pomocí aplikace Azure AD se pořád podporuje. Při šifrování nových virtuálních počítačů se ale doporučuje použít místo šifrování v aplikaci Azure AD novou metodu. 
+Yes. Šifrování disku pomocí aplikace Azure AD se pořád podporuje. Při šifrování nových virtuálních počítačů se ale doporučuje použít místo šifrování v aplikaci Azure AD novou metodu. 
 
 ## <a name="can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app"></a>Můžu migrovat virtuální počítače, které byly zašifrované pomocí aplikace Azure AD pro šifrování bez aplikace Azure AD?
   V současné době není k dispozici přímá migrační cesta pro počítače, které byly zašifrované pomocí aplikace Azure AD pro šifrování bez aplikace Azure AD. Kromě toho neexistuje Přímá cesta ze šifrování bez aplikace služby Azure AD pro šifrování pomocí aplikace AD. 
@@ -133,11 +134,11 @@ Azure Backup poskytuje mechanismus pro zálohování a obnovení šifrovaného v
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Kde můžu přejít na dotazy nebo poskytnout zpětnou vazbu?
 
-Můžete klást otázky nebo poskytovat zpětnou vazbu na [stránce s dotazem&Microsoft Q pro Azure Disk Encryption](https://docs.microsoft.com/answers/topics/azure-disk-encryption.html).
+Můžete klást otázky nebo poskytovat zpětnou vazbu na [stránce s dotazem&Microsoft Q pro Azure Disk Encryption](/answers/topics/azure-disk-encryption.html).
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste se dozvěděli víc o nejčastějších dotazech souvisejících s Azure Disk Encryption. Další informace o této službě najdete v následujících článcích:
 
 - [Přehled služby Azure Disk Encryption](disk-encryption-overview.md)
-- [Použít šifrování disku v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Šifrování dat Azure v klidovém umístění](../../security/fundamentals/encryption-atrest.md)
+- [Použít šifrování disku v Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Šifrování neaktivních uložených dat v Azure](../../security/fundamentals/encryption-atrest.md)

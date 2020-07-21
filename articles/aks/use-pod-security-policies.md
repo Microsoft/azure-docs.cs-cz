@@ -4,22 +4,21 @@ description: Naučte se řídit přístup pomocí PodSecurityPolicy ve službě 
 services: container-service
 ms.topic: article
 ms.date: 06/30/2020
-ms.openlocfilehash: eb2e7fca3a808a1e2c4f7d1f81b8dc1d64deeee7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dd526b7825279d886c60fbb1820222a75abab03e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077622"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507076"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Preview – Zabezpečte svůj cluster pomocí zásad zabezpečení v Azure Kubernetes Service (AKS).
 
-<!--
 > [!WARNING]
-> **The pod security policy feature on AKS is set for deprecation** in favor of [Azure Policy for AKS](use-pod-security-on-azure-policy.md). The feature described in this document is not moving to general availability and is set for removal in September 2020.
-> It is highly recommended to begin testing with the Azure Policy Add-on which offers unique policies which support scenarios captured by pod security policy.
-
-**This document and feature are set for deprecation.**
--->
+> **Funkce popsaná v tomto dokumentu, pod zásadou zabezpečení (Preview), je nastavena pro vyřazení a nebude již k dispozici po 15. říjnu 2020** ve prospěch [Azure Policy pro AKS](use-pod-security-on-azure-policy.md).
+>
+> Po použití zásady zabezpečení (Preview) je zastaralá. tuto funkci je třeba zakázat na všech stávajících clusterech pomocí zastaralé funkce, aby se prováděly budoucí upgrady clusteru a zůstaly v rámci podpory Azure.
+>
+> Důrazně doporučujeme začít s testováním scénářů pomocí Azure Policy pro AKS, což nabízí integrované zásady pro zabezpečení lusků a integrovaných iniciativ, které se mapují na zásady zabezpečení pod. Kliknutím sem se dozvíte víc o [migraci na Azure Policy ze zásady zabezpečení (Preview)](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy).
 
 Chcete-li zlepšit zabezpečení clusteru AKS, můžete omezit, které části je možné naplánovat. Lusky, které vyžadují prostředky, které nepovolíte, nejde spustit v clusteru AKS. Tento přístup definujete pomocí zásad zabezpečení pod. V tomto článku se dozvíte, jak používat zásady zabezpečení pod k omezení nasazení lusků v AKS.
 
@@ -35,7 +34,7 @@ V tomto článku se předpokládá, že máte existující cluster AKS. Pokud po
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
-### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
+### <a name="install-aks-preview-cli-extension"></a>Instalace rozšíření rozhraní příkazového řádku aks-preview
 
 Pokud chcete použít zásady zabezpečení pod, potřebujete rozšíření *AKS-Preview* CLI verze 0.4.1 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
 
@@ -48,6 +47,8 @@ az extension update --name aks-preview
 ```
 
 ### <a name="register-pod-security-policy-feature-provider"></a>Registrace pod poskytovatelem funkcí zásad zabezpečení
+
+**Tento dokument a funkce se nastavují pro vyřazení 15. října 2020.**
 
 Pokud chcete vytvořit nebo aktualizovat cluster AKS pro použití zásad zabezpečení pod, nejdřív Povolte ve svém předplatném příznak funkce. Chcete-li zaregistrovat příznak funkce *PodSecurityPolicyPreview* , použijte příkaz [AZ Feature Register][az-feature-register] , jak je znázorněno v následujícím příkladu:
 

@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100027"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506345"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce v Azure, která reaguje na požadavky HTTP
 
@@ -40,7 +40,7 @@ K dispozici je také [Visual Studio Codeá verze](functions-create-first-functio
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Pokud Maven není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Gradle](/azure/azure-functions/functions-create-first-java-gradle), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
+> Pokud Maven není preferovaným vývojářským nástrojem, Projděte si podobné kurzy pro vývojáře v jazyce Java, které využívají [Gradle](./functions-create-first-java-gradle.md), [IntelliJ](/azure/developer/java/toolkit-for-intellij/quickstart-functions) a [Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java).
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -101,7 +101,7 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 Maven vás vyzve k zadání hodnot potřebných k dokončení generování projektu při nasazení.   
 Po zobrazení výzvy zadejte následující hodnoty:
 
-| Výzva | Hodnota | Description |
+| Výzva | Hodnota | Popis |
 | ------ | ----- | ----------- |
 | **groupId** | `com.fabrikam` | Hodnota, která jednoznačně identifikuje váš projekt napříč všemi projekty, podle [pravidel pro pojmenovávání balíčků](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) pro Java. |
 | **artifactId** | `fabrikam-functions` | Hodnota, která představuje název jar bez čísla verze. |
@@ -139,7 +139,7 @@ V případě potřeby můžete přeskočit, aby se [funkce spouštěla místně]
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
-Návratový objekt je [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) , který vrací zprávu odpovědi buď jako [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200), nebo jako [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp).
+Návratový objekt je [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) , který vrací zprávu odpovědi buď jako [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200), nebo jako [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=csharp).
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -169,7 +169,7 @@ Archetype také generuje test jednotek pro vaši funkci. Když změníte funkci 
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. `req`je instancí [třídy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Návratový objekt definovaný jako `$return` in *function.json*, je instancí [třídy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
+U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. `req`je instancí [třídy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Návratový objekt definovaný jako `$return` in *function.json*, je instancí [třídy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
@@ -179,7 +179,7 @@ U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je def
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. Návratový objekt definovaný jako `$return` in *function.json*, je odpověď. Další informace najdete v tématu [Azure Functions triggerů http a vazeb](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
+U triggeru HTTP funkce přijímá data žádosti v proměnné `req` , jak je definováno v *function.js*. Návratový objekt definovaný jako `$return` in *function.json*, je odpověď. Další informace najdete v tématu [Azure Functions triggerů http a vazeb](./functions-bindings-http-webhook.md?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"

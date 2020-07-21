@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117117"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507841"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Jak nainstalovat a nakonfigurovat SAP HANA (velké instance) v Azure
 
@@ -41,11 +42,11 @@ Než začnete s instalací HANA, ověřte následující:
 
 Po přijetí jednotky velkých instancí HANA od Microsoftu ověřte následující nastavení a podle potřeby ho upravte.
 
-**První krok** po obdržení velké instance Hana a vytvoření přístupu a připojení k instancím je třeba vrátit se změnami Azure Portal, jestli se instance zobrazují se správnými SKU a operačním systémem. Pomocí Azure Portal si můžete přečíst [rozsáhlé instance Azure Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal) , které vás provedou kroky potřebnými k provedení kontrol.
+**První krok** po obdržení velké instance Hana a vytvoření přístupu a připojení k instancím je třeba vrátit se změnami Azure Portal, jestli se instance zobrazují se správnými SKU a operačním systémem. Pomocí Azure Portal si můžete přečíst [rozsáhlé instance Azure Hana](./hana-li-portal.md) , které vás provedou kroky potřebnými k provedení kontrol.
 
 **Druhý krok** po obdržení velké instance Hana a zavedení přístupu a připojení k instancím je registrace operačního systému instance s vaším poskytovatelem operačního systému. Tento krok zahrnuje registraci operačního systému SUSE Linux v instanci SUSE SMT, která je nasazená na virtuálním počítači v Azure. 
 
-Jednotka velká instance HANA se může připojit k této instanci SMT. (Další informace najdete v tématu [jak nastavit server SMT pro systém SUSE Linux](hana-setup-smt.md)). Případně musí být váš operační systém Red Hat zaregistrován ve Správci předplatných Red Hat, ke kterému se potřebujete připojit. Další informace najdete v komentářích v tématu [co je SAP HANA v Azure (velké instance)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Jednotka velká instance HANA se může připojit k této instanci SMT. (Další informace najdete v tématu [jak nastavit server SMT pro systém SUSE Linux](hana-setup-smt.md)). Případně musí být váš operační systém Red Hat zaregistrován ve Správci předplatných Red Hat, ke kterému se potřebujete připojit. Další informace najdete v komentářích v tématu [co je SAP HANA v Azure (velké instance)?](./hana-overview-architecture.md?toc=/azure/virtual-machines/linux/toc.json). 
 
 Tento krok je nezbytný pro opravy operačního systému, který je zodpovědný za zákazníka. Informace o SUSE najdete v dokumentaci k instalaci a konfiguraci SMT na této stránce o [instalaci SMT](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
@@ -126,10 +127,10 @@ V důsledku toho musíte nastavit samostatný časový server, který mohou pou�
 ## <a name="networking"></a>Sítě
 Předpokládáme, že jste postupovali podle doporučení v tématu navrhování virtuálních sítí Azure a v tématu propojení těchto virtuálních sítí s velkými instancemi HANA, jak je popsáno v následujících dokumentech:
 
-- [Přehled a architektura SAP HANA (Velká instance) v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Přehled a architektura SAP HANA (Velká instance) v Azure](./hana-overview-architecture.md)
 - [SAP HANA (velké instance) infrastruktury a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-V některých podrobnostech se dozvíte o sítích jednotlivých jednotek. Každá jednotka velkých instancí HANA má dvě nebo tři IP adresy, které jsou přiřazené dvěma nebo třem portům síťových adaptérů. V konfiguracích se škálováním na více systémů a ve scénáři replikace systému HANA se používají tři IP adresy. Jedna z IP adres přiřazená síťovému rozhraní jednotky je mimo fond IP adres, který je popsaný v tématu [SAP Hana (velké instance) přehled a architektura v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+V některých podrobnostech se dozvíte o sítích jednotlivých jednotek. Každá jednotka velkých instancí HANA má dvě nebo tři IP adresy, které jsou přiřazené dvěma nebo třem portům síťových adaptérů. V konfiguracích se škálováním na více systémů a ve scénáři replikace systému HANA se používají tři IP adresy. Jedna z IP adres přiřazená síťovému rozhraní jednotky je mimo fond IP adres, který je popsaný v tématu [SAP Hana (velké instance) přehled a architektura v Azure](./hana-overview-architecture.md).
 
 Další informace o možnostech sítě Ethernet pro vaši architekturu najdete v tématu [podporované scénáře HLI](hana-supported-scenario.md).
 
@@ -264,7 +265,3 @@ Další informace o rozložení úložiště pro vaši architekturu najdete v t�
 
 
  
-
-
-
-

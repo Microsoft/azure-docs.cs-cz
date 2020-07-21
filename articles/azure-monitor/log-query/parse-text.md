@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76cf939959d198d2c28181295a695a65ae46af9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672442"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505699"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Analyzovat textová data v protokolech Azure Monitor
-Některá data protokolu shromážděná pomocí Azure Monitor budou obsahovat více informací v jedné vlastnosti. Analýza těchto dat na více vlastností usnadňuje jejich použití v dotazech. Běžným příkladem je [vlastní protokol](../../log-analytics/log-analytics-data-sources-custom-logs.md) , který shromažďuje celou položku protokolu s více hodnotami do jedné vlastnosti. Vytvořením samostatných vlastností pro různé hodnoty můžete vyhledávat a agregovat na každé z nich.
+Některá data protokolu shromážděná pomocí Azure Monitor budou obsahovat více informací v jedné vlastnosti. Analýza těchto dat na více vlastností usnadňuje jejich použití v dotazech. Běžným příkladem je [vlastní protokol](../platform/data-sources-custom-logs.md) , který shromažďuje celou položku protokolu s více hodnotami do jedné vlastnosti. Vytvořením samostatných vlastností pro různé hodnoty můžete vyhledávat a agregovat na každé z nich.
 
 Tento článek popisuje různé možnosti analýzy dat protokolu v Azure Monitor, když se data ingestují a když se načtou v dotazu, a porovnává si relativní výhody pro každou z nich.
 
@@ -22,7 +23,7 @@ Tento článek popisuje různé možnosti analýzy dat protokolu v Azure Monitor
 Data můžete analyzovat buď při příjmu dat, když jsou data shromažďována nebo v době dotazu při analýze dat pomocí dotazu. Každá strategie má jedinečné výhody, jak je popsáno níže.
 
 ### <a name="parse-data-at-collection-time"></a>Analyzovat data v době shromažďování
-Při analýze dat v době shromažďování můžete nakonfigurovat [vlastní pole](../../log-analytics/log-analytics-custom-fields.md) , která vytvoří nové vlastnosti v tabulce. Dotazy nemusejí zahrnovat žádnou logiku analýzy a jednoduše tyto vlastnosti použít jako jakékoli jiné pole v tabulce.
+Při analýze dat v době shromažďování můžete nakonfigurovat [vlastní pole](../platform/custom-fields.md) , která vytvoří nové vlastnosti v tabulce. Dotazy nemusejí zahrnovat žádnou logiku analýzy a jednoduše tyto vlastnosti použít jako jakékoli jiné pole v tabulce.
 
 Mezi výhody této metody patří následující:
 
@@ -138,7 +139,7 @@ Pokud jsou data ve známé struktuře naformátovaná, možná budete moct použ
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
-- [URL](/azure/kusto/query/parseurlfunction)
+- [Adresa URL](/azure/kusto/query/parseurlfunction)
 - [Dotaz na adresu URL](/azure/kusto/query/parseurlqueryfunction)
 - [Cesta k souboru](/azure/kusto/query/parsepathfunction)
 - [Uživatelský agent](/azure/kusto/query/parse-useragentfunction)

@@ -3,12 +3,12 @@ title: Referenční informace pro vývojáře v jazyce C# Azure Functions
 description: Naučte se vyvíjet Azure Functions pomocí jazyka C#.
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254363"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506504"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční informace pro vývojáře v jazyce C# Azure Functions
 
@@ -202,6 +202,28 @@ Pokud nainstalujete základní nástroje pomocí NPM, neovlivní to základní v
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+Aplikaci Function App můžete zkompilovat jako [binární soubory ReadyToRun](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images). ReadyToRun je forma průběžné kompilace, která může zlepšit výkon při spuštění, aby se snížil dopad [studeného](functions-scale.md#cold-start) startu při spuštění v [plánu spotřeby](functions-scale.md#consumption-plan).
+
+ReadyToRun je k dispozici v rozhraní .NET 3,0 a vyžaduje [verzi 3,0 modulu runtime Azure Functions](functions-versions.md).
+
+Chcete-li zkompilovat projekt jako ReadyToRun, aktualizujte soubor projektu přidáním `<PublishReadyToRun>` prvků a `<RuntimeIdentifier>` . Následuje konfigurace pro publikování do aplikace Function App v systému Windows 32.
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> ReadyToRun aktuálně nepodporuje křížovou kompilaci. Aplikaci musíte sestavit na stejné platformě jako cíl nasazení. Věnujte pozornost také "bitová verze", který je nakonfigurovaný ve vaší aplikaci Function App. Pokud je vaše aplikace Function App v Azure například Windows 64-bit, musíte aplikaci zkompilovat ve Windows s `win-x64` [identifikátorem modulu runtime](/dotnet/core/rid-catalog).
+
+Můžete také vytvořit aplikaci pomocí ReadyToRun z příkazového řádku. Další informace naleznete `-p:PublishReadyToRun=true` v možnosti v tématu [`dotnet publish`](/dotnet/core/tools/dotnet-publish) .
+
 ## <a name="supported-types-for-bindings"></a>Podporované typy pro vazby
 
 Každá vazba má své vlastní podporované typy; atribut triggeru objektu BLOB lze například použít na řetězcový parametr, parametr POCO, `CloudBlockBlob` parametr nebo některý z několika dalších podporovaných typů. [Článek odkazu vazby pro vazby objektů BLOB](functions-bindings-storage-blob-trigger.md#usage) obsahuje seznam všech podporovaných typů parametrů. Další informace najdete v tématech [triggery a vazby](functions-triggers-bindings.md) a [Referenční dokumentace k vazbě pro každý typ vazby](functions-triggers-bindings.md#next-steps).
@@ -238,7 +260,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Protokolování
 
-Chcete-li protokolovat výstup do protokolů streamování v jazyce C#, zahrňte argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme, abyste ho pojmenovat `log` jako v následujícím příkladu:  
+Chcete-li protokolovat výstup do protokolů streamování v jazyce C#, zahrňte argument typu [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme, abyste ho pojmenovat `log` jako v následujícím příkladu:  
 
 ```csharp
 public static class SimpleExample
@@ -257,7 +279,7 @@ Nepoužívejte `Console.Write` v Azure Functions. Další informace najdete v t�
 
 ## <a name="async"></a>Async
 
-Chcete-li provést [asynchronní](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)funkci, použijte `async` klíčové slovo a vraťte `Task` objekt.
+Chcete-li provést [asynchronní](/dotnet/csharp/programming-guide/concepts/async/)funkci, použijte `async` klíčové slovo a vraťte `Task` objekt.
 
 ```csharp
 public static class AsyncExample
@@ -330,7 +352,7 @@ public static class EnvironmentVariablesExample
 
 Nastavení aplikace je možné číst z proměnných prostředí při vývoji místně a při spuštění v Azure. Při místním vývoji se nastavení aplikace podávají z `Values` kolekce v *local.settings.js* souboru. V obou prostředích místní a Azure `GetEnvironmentVariable("<app setting name>")` načítá hodnotu nastavení pojmenované aplikace. Například když spouštíte místně, vrátí se název "můj web", pokud *local.settings.js* soubor obsahuje `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` .
 
-Vlastnost [System.Configuration.ConfigurationManager. appSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) je alternativní rozhraní API pro získání hodnot nastavení aplikace, ale doporučujeme, abyste používali, `GetEnvironmentVariable` jak je znázorněno zde.
+Vlastnost [System.Configuration.ConfigurationManager. appSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) je alternativní rozhraní API pro získání hodnot nastavení aplikace, ale doporučujeme, abyste používali, `GetEnvironmentVariable` jak je znázorněno zde.
 
 ## <a name="binding-at-runtime"></a>Vazba za běhu
 

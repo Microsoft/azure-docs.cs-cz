@@ -9,13 +9,14 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: cf8d4cd3c70e28a6c70ab9321a8f55271ead754f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aa4a7db9982d41cf32c1ddc4de6762bf1fdecf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807498"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508793"
 ---
-# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image generalizovaného virtuálního počítače v Azure
+# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Vytvoření spravované image zobecněného virtuálního počítače v Azure
 
 Prostředek spravované image lze vytvořit ze zobecněného virtuálního počítače, který je uložen v účtu úložiště buď jako spravovaný disk, nebo jako nespravovaný disk. Z image je potom možné vytvořit více virtuálních počítačů. Informace o tom, jak se účtují spravované image, najdete v článku [Managed disks ceny](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
@@ -23,9 +24,9 @@ Jedna spravovaná bitová kopie podporuje až 20 současných nasazení. Při po
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Generalizace virtuálního počítače s Windows pomocí nástroje Sysprep
 
-Nástroj Sysprep odebere všechny informace o vašem osobním účtu a zabezpečení a pak připraví počítač, který se má použít jako image. Informace o nástroji Sysprep najdete v tématu [Přehled nástroje Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+Nástroj Sysprep odebere všechny informace o vašem osobním účtu a zabezpečení a pak připraví počítač, který se má použít jako image. Informace o nástroji Sysprep najdete v tématu [Přehled nástroje Sysprep](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) a [nepodporované scénáře](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). Nástroj Sysprep vyžaduje, aby byly před provedením plně dešifrovány jednotky. Pokud jste na svém VIRTUÁLNÍm počítači povolili šifrování, před spuštěním nástroje Sysprep zakažte šifrování.
+Ujistěte se, že nástroj Sysprep podporuje role serveru spuštěné v počítači. Další informace najdete v tématu [Podpora nástroje Sysprep pro role serveru](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) a [nepodporované scénáře](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). Nástroj Sysprep vyžaduje, aby byly před provedením plně dešifrovány jednotky. Pokud jste na svém VIRTUÁLNÍm počítači povolili šifrování, před spuštěním nástroje Sysprep zakažte šifrování.
 
 > [!IMPORTANT]
 > Po spuštění příkazu Sysprep na virtuálním počítači je tento virtuální počítač považován za *zobecněný* a nelze jej restartovat. Proces generalizace virtuálního počítače je nevrtaný. Pokud potřebujete zachovat fungování původního virtuálního počítače, měli byste vytvořit [kopii virtuálního počítače](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) a zobecnit jeho kopii. 
@@ -51,7 +52,7 @@ K generalizaci virtuálního počítače s Windows použijte následující post
 6. Po dokončení programu Sysprep se virtuální počítač vypne. Virtuální počítač nerestartujte.
 
 > [!TIP]
-> **Volitelné** Pomocí [nástroje DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) optimalizujte svou image a snižte čas prvního spuštění virtuálního počítače.
+> **Volitelné** Pomocí [nástroje DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) optimalizujte svou image a snižte čas prvního spuštění virtuálního počítače.
 >
 > Pokud chcete image optimalizovat, připojte virtuální pevný disk tak, že na něj dvakrát kliknete v Průzkumníkovi Windows, a pak spusťte DISM s `/optimize-image` parametrem.
 >
@@ -246,4 +247,3 @@ Pokud chcete vytvořit spravovanou image z virtuálního počítače, který nep
     
 ## <a name="next-steps"></a>Další kroky
 - [Vytvořte virtuální počítač ze spravované image](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
-

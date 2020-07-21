@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef746186717f3eb6bb93263c7f86c26606f65ea9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 290765b17cf34417176930dc9116309bdfd754c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322511"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506532"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph vazby pro Azure Functions
 
@@ -58,7 +59,7 @@ Pokud používáte aplikaci Visual Studio, můžete získat rozšíření instal
 
 ### <a name="configuring-authentication--authorization"></a>Konfigurace ověřování/autorizace
 
-Vazby uvedené v tomto článku vyžadují identitu, která se má použít. To umožňuje Microsoft Graph vymáhat interakce oprávnění a auditu. Identitou může být uživatel, který přistupuje k aplikaci nebo samotné aplikaci. Pokud chcete tuto identitu nakonfigurovat, nastavte [App Service ověřování/autorizaci](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) pomocí Azure Active Directory. Budete taky muset požádat o všechna oprávnění prostředků, která vaše funkce vyžadují.
+Vazby uvedené v tomto článku vyžadují identitu, která se má použít. To umožňuje Microsoft Graph vymáhat interakce oprávnění a auditu. Identitou může být uživatel, který přistupuje k aplikaci nebo samotné aplikaci. Pokud chcete tuto identitu nakonfigurovat, nastavte [App Service ověřování/autorizaci](../app-service/overview-authentication-authorization.md) pomocí Azure Active Directory. Budete taky muset požádat o všechna oprávnění prostředků, která vaše funkce vyžadují.
 
 > [!Note] 
 > Rozšíření Microsoft Graph podporuje jenom ověřování Azure AD. Uživatelé se musí přihlásit pomocí pracovního nebo školního účtu.
@@ -204,11 +205,11 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Token` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro ověřovací token. Viz [použití vstupní vazby ověřovacího tokenu z kódu](#token-input-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `token` .|
-|**direction**| Není k dispozici |Požadováno – musí být nastavené na `in` .|
+|**směr**| Není k dispozici |Požadováno – musí být nastavené na `in` .|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code>-Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code>– Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code>– Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code>– Používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
@@ -339,11 +340,11 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Excel` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Required – název proměnné použitý v kódu funkce pro excelovou tabulku. Viz [použití vstupní vazby z tabulky v aplikaci Excel z kódu](#excel-input-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `excel` .|
-|**direction**| Není k dispozici |Požadováno – musí být nastavené na `in` .|
+|**směr**| Není k dispozici |Požadováno – musí být nastavené na `in` .|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code>-Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code>– Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code>– Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code>– Používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
@@ -501,11 +502,11 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Excel` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro ověřovací token. Viz [použití výstupní vazby tabulky aplikace Excel z kódu](#excel-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `excel` .|
-|**direction**| Není k dispozici |Požadováno – musí být nastavené na `out` .|
+|**směr**| Není k dispozici |Požadováno – musí být nastavené na `out` .|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code>-Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code>– Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code>– Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code>– Používá identitu aplikace Function App.</li></ul>|
 |**UserId** |**userId** |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
@@ -647,11 +648,11 @@ V [knihovnách tříd C#](functions-dotnet-class-library.md)použijte atribut [O
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `OneDrive` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce souboru. Viz [použití vazby vstupu souboru na OneDrivu z kódu](#onedrive-input-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `onedrive` .|
-|**direction**| Není k dispozici |Požadováno – musí být nastavené na `in` .|
+|**směr**| Není k dispozici |Požadováno – musí být nastavené na `in` .|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code>-Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code>– Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code>– Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code>– Používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
@@ -668,7 +669,7 @@ Tato vazba vyžaduje následující oprávnění služby Azure AD:
 
 Vazba zpřístupňuje následující typy pro funkce .NET:
 - Byte []
-- Datový proud
+- Stream
 - řetězec
 - Microsoft. Graph. DriveItem
 
@@ -795,11 +796,11 @@ V [knihovnách tříd C#](functions-dotnet-class-library.md)použijte atribut [O
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `OneDrive` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro soubor. Viz [použití vazby výstupu souboru na OneDrivu z kódu](#onedrive-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `onedrive` .|
-|**direction**| Není k dispozici |Požadováno – musí být nastavené na `out` .|
+|**směr**| Není k dispozici |Požadováno – musí být nastavené na `out` .|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code>-Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code>– Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code>– Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code>– Používá identitu aplikace Function App.</li></ul>|
 |**UserId** |**userId** |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
@@ -816,7 +817,7 @@ Tato vazba vyžaduje následující oprávnění služby Azure AD:
 
 Vazba zpřístupňuje následující typy pro funkce .NET:
 - Byte []
-- Datový proud
+- Stream
 - řetězec
 - Microsoft. Graph. DriveItem
 
@@ -946,11 +947,11 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `Outlook` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `outlook` .|
-|**direction**| Není k dispozici |Požadováno – musí být nastavené na `out` .|
+|**směr**| Není k dispozici |Požadováno – musí být nastavené na `out` .|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code>-Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code>– Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code>– Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code>– Používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |
@@ -982,7 +983,7 @@ Webhooky umožňují reagovat na události v Microsoft Graph. Pro podporu webhoo
 - [Vstupní vazba předplatného webhooku Microsoft Graph](#webhook-input) umožňuje zobrazit seznam existujících předplatných a volitelně je aktualizovat.
 - [Výstupní vazba předplatného webhooku Microsoft Graph](#webhook-output) umožňuje vytvořit nebo odstranit odběry webhooků.
 
-Samotné vazby nevyžadují žádná oprávnění Azure AD, ale musíte požádat o oprávnění, která jsou relevantní pro typ prostředku, na který chcete reagovat. Seznam oprávnění, která jsou potřebná pro jednotlivé typy prostředků, najdete v tématu [oprávnění k předplatnému](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
+Samotné vazby nevyžadují žádná oprávnění Azure AD, ale musíte požádat o oprávnění, která jsou relevantní pro typ prostředku, na který chcete reagovat. Seznam oprávnění, která jsou potřebná pro jednotlivé typy prostředků, najdete v tématu [oprávnění k předplatnému](/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
 
 Další informace o webhookech najdete v tématu [práce s Webhooky v Microsoft Graph].
 
@@ -1089,11 +1090,11 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `GraphWebhookTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `graphWebhook` .|
-|**direction**| Není k dispozici |Požadováno – musí být nastavené na `trigger` .|
+|**směr**| Není k dispozici |Požadováno – musí být nastavené na `trigger` .|
 |**resourceType**|**ResourceType**|Požadováno – prostředek grafu, pro který by měla tato funkce reagovat na Webhooky. Může to být jedna z následujících hodnot:<ul><li><code>#Microsoft.Graph.Message</code>-změny provedené ve zprávách aplikace Outlook.</li><li><code>#Microsoft.Graph.DriveItem</code>-změny provedené na kořenových položkách OneDrivu.</li><li><code>#Microsoft.Graph.Contact</code>-změny provedené u osobních kontaktů v aplikaci Outlook.</li><li><code>#Microsoft.Graph.Event</code>-změny provedené v položkách kalendáře aplikace Outlook.</li></ul>|
 
 > [!Note]
@@ -1241,11 +1242,11 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `GraphWebhookSubscription` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `graphWebhookSubscription` .|
-|**direction**| Není k dispozici |Požadováno – musí být nastavené na `in` .|
+|**směr**| Není k dispozici |Požadováno – musí být nastavené na `in` .|
 |**filtrovací**|**Filtr**| Pokud je nastaveno na `userFromRequest` , vazba bude načítat pouze odběry vlastněné volajícím uživatelem (platné pouze s [triggerem http]).| 
 
 ### <a name="webhook-input---usage"></a>Vstup Webhooku – použití
@@ -1382,11 +1383,11 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atr
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `GraphWebhookSubscription` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**Jméno**| Není k dispozici |Požadováno – název proměnné použitý v kódu funkce pro e-mailovou zprávu. Viz [použití výstupní vazby zprávy Outlooku z kódu](#outlook-output-code).|
 |**textový**| Není k dispozici |Požadováno – musí být nastavené na `graphWebhookSubscription` .|
-|**direction**| Není k dispozici |Požadováno – musí být nastavené na `out` .|
+|**směr**| Není k dispozici |Požadováno – musí být nastavené na `out` .|
 |**odcizen**|**Identita**|Požadováno – identita, která se použije k provedení této akce. Může to být jedna z následujících hodnot:<ul><li><code>userFromRequest</code>-Je platná pouze s [triggerem protokolu HTTP]. Používá identitu volajícího uživatele.</li><li><code>userFromId</code>– Používá identitu dříve přihlášeného uživatele se zadaným ID. Podívejte se na <code>userId</code> vlastnost.</li><li><code>userFromToken</code>– Používá identitu představovanou zadaným tokenem. Podívejte se na <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code>– Používá identitu aplikace Function App.</li></ul>|
 |**userId**|**UserId**  |Nutné pouze v případě, že je _Identita_ nastavena na `userFromId` . ID instančního uživatele přidruženého k dříve přihlášenému uživateli|
 |**userToken**|**UserToken**|Nutné pouze v případě, že je _Identita_ nastavena na `userFromToken` . Token platný pro aplikaci Function App |

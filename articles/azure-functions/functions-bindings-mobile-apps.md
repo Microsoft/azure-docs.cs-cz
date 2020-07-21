@@ -5,19 +5,19 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3f16f2ef077a1fc3c82075aaf7b7685f941d0a31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6810ba76379e78d3cde4f3cd341d501be3725257
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82559592"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506328"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps vazby pro Azure Functions 
 
 > [!NOTE]
 > Vazby Azure Mobile Apps jsou dostupné jenom pro Azure Functions 1. x. Nepodporují se v Azure Functions 2. x a vyšších.
 
-Tento článek vysvětluje, jak pracovat s vazbami [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) v Azure Functions. Azure Functions podporuje vstupní a výstupní vazby pro Mobile Apps.
+Tento článek vysvětluje, jak pracovat s vazbami [Azure Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) v Azure Functions. Azure Functions podporuje vstupní a výstupní vazby pro Mobile Apps.
 
 Vazby Mobile Apps umožňují číst a aktualizovat tabulky dat v mobilních aplikacích.
 
@@ -137,10 +137,10 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 | **textový**| Není k dispozici | Musí být nastavené na "mobilní".|
-| **direction**| Není k dispozici |Musí být nastavené na "in"|
+| **směr**| Není k dispozici |Musí být nastavené na "in"|
 | **Jméno**| Není k dispozici | Název vstupního parametru v signatuře funkce.|
 |**tableName** |**Tabulky**|Název tabulky dat mobilní aplikace|
-| **účet**| **Účet** | Identifikátor záznamu, který se má načíst Může být statický nebo založený na triggeru, který funkci vyvolá. Pokud například pro funkci použijete Trigger fronty, `"id": "{queueTrigger}"` použije se jako ID záznamu řetězcová hodnota zprávy Queue, která se má načíst.|
+| **id**| **Účet** | Identifikátor záznamu, který se má načíst Může být statický nebo založený na triggeru, který funkci vyvolá. Pokud například pro funkci použijete Trigger fronty, `"id": "{queueTrigger}"` použije se jako ID záznamu řetězcová hodnota zprávy Queue, která se má načíst.|
 |**vázán**|**Připojení**|Název nastavení aplikace, které má adresu URL mobilní aplikace Funkce používá tuto adresu URL k sestavení požadovaných operací REST v mobilní aplikaci. Ve své aplikaci Function App vytvořte nastavení aplikace, které obsahuje adresu URL mobilní aplikace, a potom zadejte název nastavení aplikace ve `connection` vlastnosti ve vstupní vazbě. Adresa URL vypadá jako `http://<appname>.azurewebsites.net` .
 |**apiKey**|**ApiKey**|Název nastavení aplikace, které má klíč rozhraní API mobilní aplikace. Pokud [implementujete klíč rozhraní API v mobilní aplikaci Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)nebo [implementujete klíč rozhraní API v mobilní aplikaci .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key), zadejte klíč rozhraní API. Klíč zadáte tak, že ve své aplikaci Function App vytvoříte nastavení aplikace, které obsahuje klíč rozhraní API, a potom `apiKey` do vstupní vazby přidáte vlastnost s názvem nastavení aplikace. |
 
@@ -295,7 +295,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 | **textový**| Není k dispozici | Musí být nastavené na "mobilní".|
-| **direction**| Není k dispozici |Musí být nastavené na out.|
+| **směr**| Není k dispozici |Musí být nastavené na out.|
 | **Jméno**| Není k dispozici | Název výstupního parametru v podpisu funkce.|
 |**tableName** |**Tabulky**|Název tabulky dat mobilní aplikace|
 |**vázán**|**MobileAppUriSetting**|Název nastavení aplikace, které má adresu URL mobilní aplikace Funkce používá tuto adresu URL k sestavení požadovaných operací REST v mobilní aplikaci. Ve své aplikaci Function App vytvořte nastavení aplikace, které obsahuje adresu URL mobilní aplikace, a potom zadejte název nastavení aplikace ve `connection` vlastnosti ve vstupní vazbě. Adresa URL vypadá jako `http://<appname>.azurewebsites.net` .

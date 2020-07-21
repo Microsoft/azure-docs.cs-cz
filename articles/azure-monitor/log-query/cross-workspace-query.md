@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 83c33e6935de7c9ed9f1b2c9f97aa18dd6b10f01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d16c62c14ff6f24e519173b979e11d21d997927
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83199906"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505784"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Provádění dotazů protokolu pro více prostředků v Azure Monitor  
 
@@ -19,17 +20,17 @@ ms.locfileid: "83199906"
 
 Dřív s Azure Monitor mohli analyzovat data jenom z aktuálního pracovního prostoru a omezili jsme možnost dotazování napříč několika pracovními prostory definovanými v rámci vašeho předplatného.  Kromě toho můžete hledat pouze položky telemetrie shromážděné z vaší webové aplikace pomocí Application Insights přímo v Application Insights nebo ze sady Visual Studio. Tím se také provedla výzva k nativně analýze provozu a dat aplikací dohromady.
 
-Nyní se můžete dotazovat nejen na více Log Analytics pracovních prostorů, ale také na data z konkrétní Application Insights aplikace ve stejné skupině prostředků, na jiné skupině prostředků nebo v jiném předplatném. Získáte tak zobrazení dat v rámci systému. Tyto typy dotazů můžete provádět pouze v [Log Analytics](portals.md).
+Nyní se můžete dotazovat nejen na více Log Analytics pracovních prostorů, ale také na data z konkrétní Application Insights aplikace ve stejné skupině prostředků, na jiné skupině prostředků nebo v jiném předplatném. Získáte tak zobrazení dat v rámci systému. Tyto typy dotazů můžete provádět pouze v [Log Analytics](./log-query-overview.md).
 
 ## <a name="cross-resource-query-limits"></a>Omezení dotazů mezi prostředky 
 
 * Počet Application Insightsch prostředků a Log Analytics pracovních prostorů, které můžete zahrnout do jednoho dotazu, je omezený na 100.
 * Dotaz mezi prostředky není v Návrháři zobrazení podporován. Dotaz můžete v Log Analytics vytvořit a připnout na řídicí panel Azure a [vizualizovat dotaz protokolu](../learn/tutorial-logs-dashboards.md). 
-* Dotaz na více prostředků v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](../platform/api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pomocí [šablony Azure Resource Manager pro rozhraní API pro scheduledQueryRules](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) můžete vytvořit pravidla upozornění protokolu pro více prostředků, aniž byste museli provést tento přepínač, ale toto pravidlo výstrah lze spravovat i přes [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
+* Dotaz na více prostředků v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](../platform/api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pomocí [šablony Azure Resource Manager pro rozhraní API pro scheduledQueryRules](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) můžete vytvořit pravidla upozornění protokolu pro více prostředků, aniž byste museli provést tento přepínač, ale toto pravidlo výstrah lze spravovat i přes [rozhraní scheduledQueryRules API](/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč Log Analyticsmi pracovními prostory a z Application Insights
-Pokud chcete odkazovat na jiný pracovní prostor v dotazu, použijte identifikátor [*pracovního prostoru*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) a pro aplikaci z Application Insights použijte identifikátor [*aplikace*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression) .  
+Pokud chcete odkazovat na jiný pracovní prostor v dotazu, použijte identifikátor [*pracovního prostoru*](./workspace-expression.md) a pro aplikaci z Application Insights použijte identifikátor [*aplikace*](./app-expression.md) .  
 
 ### <a name="identifying-workspace-resources"></a>Určení prostředků pracovního prostoru
 Následující příklady ukazují dotazy napříč Log Analytics pracovními prostory pro vrácení souhrnných počtů protokolů z tabulky aktualizací v pracovním prostoru s názvem *ContosoRetail-IT*. 

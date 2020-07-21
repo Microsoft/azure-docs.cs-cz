@@ -6,12 +6,12 @@ ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80411076"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508045"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Nastavení Micro Focus CICS BankDemo pro Micro Enterprise Developer 4,0 v Azure
 
@@ -22,7 +22,7 @@ CICs představuje systém pro řízení informací o zákaznících, platformu t
 > [!NOTE]
 > Už brzy: pokyny pro nastavení [Micro Enterprise Server 5,0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) na virtuálních počítačích Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Virtuální počítač s [podnikovým vývojářem](set-up-micro-focus-azure.md). Mějte na paměti, že Enterprise Developer má pro účely vývoje a testování kompletní instanci podnikového serveru. Tato instance je instancí podnikového serveru, který se používá pro ukázku.
 
@@ -268,12 +268,12 @@ Poslední věcí, kterou musíte udělat, je konfigurace relace 3270 pomocí Rum
 ![Úvodní obrazovka zobrazení sálového počítače v sálovém sálovém zobrazení ](media/14-demo.png)
  ![ -Rumba-subsystému](media/15-demo.png)
 
-Gratulujeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
+Blahopřejeme! Nyní máte v Azure spuštěnou aplikaci CICS s využitím podnikového serveru Micro.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Provozování podnikového serveru v kontejnerech Docker v Azure](run-enterprise-server-container.md)
-- [Migrace sálového počítače – portál](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
-- [Řešení potíží](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [Migrace sálového počítače – portál](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
+- [Virtual Machines](../../../linux/overview.md)
+- [Řešení potíží](../../../troubleshooting/index.yml)
 - [Migrace Demystifying z sálového počítače do Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

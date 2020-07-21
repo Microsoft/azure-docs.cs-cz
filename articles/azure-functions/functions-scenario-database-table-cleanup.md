@@ -4,26 +4,26 @@ description: Použijte Azure Functions k naplánování úlohy, která se připo
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29e90838d91de69af43ae9cf8ec0d99b534f66be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506073"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Připojení k Azure SQL Database pomocí Azure Functions
 
-V tomto článku se dozvíte, jak pomocí Azure Functions vytvořit naplánovanou úlohu, která se připojí k Azure SQL Database nebo spravované instanci Azure SQL. Kód funkce vyčistí řádky v tabulce v databázi. Nová funkce jazyka C# je vytvořena na základě předdefinované šablony triggeru časovače v aplikaci Visual Studio 2019. Pro podporu tohoto scénáře musíte také nastavit připojovací řetězec databáze jako nastavení aplikace ve Function App. Pro spravovanou instanci Azure SQL musíte [Povolit veřejný koncový bod](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , abyste se mohli připojit z Azure Functions. Tento scénář používá pro databázi hromadnou operaci. 
+V tomto článku se dozvíte, jak pomocí Azure Functions vytvořit naplánovanou úlohu, která se připojí k Azure SQL Database nebo spravované instanci Azure SQL. Kód funkce vyčistí řádky v tabulce v databázi. Nová funkce jazyka C# je vytvořena na základě předdefinované šablony triggeru časovače v aplikaci Visual Studio 2019. Pro podporu tohoto scénáře musíte také nastavit připojovací řetězec databáze jako nastavení aplikace ve Function App. Pro spravovanou instanci Azure SQL musíte [Povolit veřejný koncový bod](../azure-sql/managed-instance/public-endpoint-configure.md) , abyste se mohli připojit z Azure Functions. Tento scénář používá pro databázi hromadnou operaci. 
 
 Pokud se jedná o vaše první prostředí při práci s funkcemi jazyka C#, měli byste si přečíst [referenční informace pro vývojáře Azure Functions C#](functions-dotnet-class-library.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + Dokončete kroky v článku [Vytvoření první funkce pomocí sady Visual Studio](functions-create-your-first-function-visual-studio.md) k vytvoření místní aplikace Function App, která cílí na verzi 2. x nebo novější verzi modulu runtime. Projekt musíte také publikovat do aplikace Function App v Azure.
 
 + Tento článek ukazuje příkaz Transact-SQL, který provede operaci hromadného vyčištění v tabulce **SalesOrderHeader** v ukázkové databázi AdventureWorksLT. Chcete-li vytvořit ukázkovou databázi AdventureWorksLT, proveďte kroky v článku [Vytvoření databáze v Azure SQL Database pomocí Azure Portal](../azure-sql/database/single-database-create-quickstart.md).
 
-+ Je nutné přidat [pravidlo brány firewall na úrovni serveru](../sql-database/sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače, který používáte pro účely tohoto rychlého startu. Toto pravidlo je vyžadováno, aby bylo možné získat přístup k instanci SQL Database z místního počítače.  
++ Je nutné přidat [pravidlo brány firewall na úrovni serveru](../azure-sql/database/firewall-create-server-level-portal-quickstart.md) pro veřejnou IP adresu počítače, který používáte pro účely tohoto rychlého startu. Toto pravidlo je vyžadováno, aby bylo možné získat přístup k instanci SQL Database z místního počítače.  
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9c2cee1478bc64c63b0d7ad09eec386b59678ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77167015"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509014"
 ---
 # <a name="azure-serial-console-for-linux"></a>Azure Serial Console for Linux
 
@@ -25,19 +26,19 @@ Konzola sériového portu v Azure Portal poskytuje přístup k textové konzole 
 
 Sériová konzola funguje stejným způsobem pro virtuální počítače a instance sady škálování virtuálních počítačů. V tomto dokumentu budou všechny zmínky k virtuálním počítačům implicitně zahrnovat instance sady škálování virtuálních počítačů, pokud není uvedeno jinak.
 
-Dokumentaci k sériové konzole pro Windows najdete v tématu [sériová Konzola pro Windows](../windows/serial-console.md).
+Dokumentaci k sériové konzole pro Windows najdete v tématu [sériová Konzola pro Windows](./serial-console-windows.md).
 
 > [!NOTE]
 > Konzola sériového portu je všeobecně dostupná v globálních oblastech Azure a ve veřejné verzi Preview v Azure Government. Ještě není k dispozici v cloudu Azure Čína.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovaná.
 
 - Váš účet, který používá sériová konzola, musí mít [roli Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač a účet úložiště [diagnostiky spouštění](boot-diagnostics.md) .
 
-- Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí mít uživatele založené na heslech. Můžete ho vytvořit pomocí funkce [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) rozšíření pro přístup k virtuálním počítačům. V části **Podpora a řešení potíží** vyberte **resetovat heslo** .
+- Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí mít uživatele založené na heslech. Můžete ho vytvořit pomocí funkce [resetovat heslo](../extensions/vmaccess.md#reset-password) rozšíření pro přístup k virtuálním počítačům. V části **Podpora a řešení potíží** vyberte **resetovat heslo** .
 
 - Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí mít povolenou [diagnostiku spouštění](boot-diagnostics.md) .
 
@@ -49,11 +50,11 @@ Dokumentaci k sériové konzole pro Windows najdete v tématu [sériová Konzola
 
 
 > [!NOTE]
-> Konzola sériového portu vyžaduje, aby místní uživatel s nakonfigurovaným heslem. Virtuální počítače nebo sady škálování virtuálních počítačů, které jsou nakonfigurované jenom pomocí veřejného klíče SSH, se nebudou moct přihlásit ke konzole sériového portu. Chcete-li vytvořit místního uživatele s heslem, použijte [rozšíření VMAccess](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), které je k dispozici na portálu, a vyberte možnost **resetovat heslo** v Azure Portal a vytvořte místního uživatele s heslem.
+> Konzola sériového portu vyžaduje, aby místní uživatel s nakonfigurovaným heslem. Virtuální počítače nebo sady škálování virtuálních počítačů, které jsou nakonfigurované jenom pomocí veřejného klíče SSH, se nebudou moct přihlásit ke konzole sériového portu. Chcete-li vytvořit místního uživatele s heslem, použijte [rozšíření VMAccess](../extensions/vmaccess.md), které je k dispozici na portálu, a vyberte možnost **resetovat heslo** v Azure Portal a vytvořte místního uživatele s heslem.
 > Můžete také resetovat heslo správce v účtu [pomocí grub ke spuštění do režimu jednoho uživatele](./serial-console-grub-single-user-mode.md).
 
 ## <a name="serial-console-linux-distribution-availability"></a>Dostupnost distribuce systému Linux v sériové konzole
-Aby mohla konzola sériového fungování fungovat správně, musí být hostovaný operační systém nakonfigurovaný na čtení a zápis zpráv konzoly do sériového portu. U nejdůležitějších [distribucí systému Azure Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) je ve výchozím nastavení nakonfigurována sériová konzola. Výběr **sériová konzola** v části **Podpora a řešení potíží** v Azure Portal poskytuje přístup ke konzole sériového portu.
+Aby mohla konzola sériového fungování fungovat správně, musí být hostovaný operační systém nakonfigurovaný na čtení a zápis zpráv konzoly do sériového portu. U nejdůležitějších [distribucí systému Azure Linux](../linux/endorsed-distros.md) je ve výchozím nastavení nakonfigurována sériová konzola. Výběr **sériová konzola** v části **Podpora a řešení potíží** v Azure Portal poskytuje přístup ke konzole sériového portu.
 
 > [!NOTE]
 > Pokud nevidíte cokoli v konzole sériového portu, ujistěte se, že je na vašem VIRTUÁLNÍm počítači povolená Diagnostika spouštění. Při stisknutí této akce budou často opravovat problémy, **které se v** konzole sériového umístění nezobrazí.
@@ -68,7 +69,7 @@ CoreOS      | Ve výchozím nastavení je povolený přístup Sériová konzola.
 SUSE        | Novější image SLES dostupné v Azure mají ve výchozím nastavení povolený přístup pomocí sériové konzoly. Pokud používáte starší verze (10 nebo starší) služby SLES v Azure, přečtěte si [článek znalostní báze](https://www.novell.com/support/kb/doc.php?id=3456486) , ve kterém můžete povolit sériovou konzolu.
 Oracle Linux        | Ve výchozím nastavení je povolený přístup Sériová konzola.
 
-### <a name="custom-linux-images"></a>Vlastní image Linux
+### <a name="custom-linux-images"></a>Vlastní image Linuxu
 Pokud chcete pro vlastní image virtuálního počítače se systémem Linux povolit konzolu sériového prostředí, povolte přístup k konzole v souboru */etc/inittab* pro spuštění terminálu `ttyS0` . Například: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. V ttyS0 možná budete muset vytvořit také Getty. To lze provést pomocí `systemctl start serial-getty@ttyS0.service` .
 
 Budete také chtít přidat ttyS0 jako cíl pro sériový výstup. Další informace o konfiguraci vlastní image pro práci s konzolou sériového rozhraní najdete v tématu Obecné požadavky na systém při [vytváření a nahrání virtuálního pevného disku pro Linux v Azure](https://aka.ms/createuploadvhd#general-linux-system-requirements).
@@ -82,7 +83,7 @@ Scénář          | Akce v konzole sériového portu
 Poškozený soubor *FSTAB* | Pokračujte stisknutím klávesy **ENTER** a opravte soubor *FSTAB* pomocí textového editoru. Je možné, že budete muset být v režimu jednoho uživatele. Další informace najdete v části "sériová konzola" o [tom, jak opravit problémy fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) a [pomocí konzoly sériového přístupu získat přístup k grub a jednomu uživatelskému režimu](serial-console-grub-single-user-mode.md).
 Nesprávná pravidla brány firewall |  Pokud jste nakonfigurovali softwaru iptables k blokování připojení SSH, můžete pomocí sériové konzoly pracovat s VIRTUÁLNÍm počítačem bez nutnosti SSH. Další podrobnosti najdete na [stránce softwaru iptables Man](https://linux.die.net/man/8/iptables).<br>Podobně pokud brána firewall blokuje přístup přes SSH, můžete k virtuálnímu počítači přistupovat pomocí sériové konzoly a znovu nakonfigurovat bránu firewall. Další podrobnosti najdete v [dokumentaci k bráně firewall](https://firewalld.org/documentation/).
 Poškození nebo ověření systému souborů | Další informace o řešení potíží s poškozenými systémy souborů pomocí sériové konzoly najdete v části věnované sériovým konzolám [virtuálního počítače Azure Linux](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck) .
-Problémy s konfigurací SSH | Přejděte do konzoly sériového portu a změňte nastavení. Sériová konzola lze použít bez ohledu na konfiguraci SSH virtuálního počítače, protože nevyžaduje, aby virtuální počítač fungoval s připojením k síti. Průvodce odstraňováním potíží je k dispozici v tématu [řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux, u kterého došlo k chybě, nebo je zamítnutá](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection). Další podrobnosti najdete v [podrobnějších postupech při řešení potíží s nástrojem SSH pro problémy s připojením k virtuálnímu počítači Linux v Azure](./detailed-troubleshoot-ssh-connection.md) .
+Problémy s konfigurací SSH | Přejděte do konzoly sériového portu a změňte nastavení. Sériová konzola lze použít bez ohledu na konfiguraci SSH virtuálního počítače, protože nevyžaduje, aby virtuální počítač fungoval s připojením k síti. Průvodce odstraňováním potíží je k dispozici v tématu [řešení potíží s připojením SSH k virtuálnímu počítači Azure Linux, u kterého došlo k chybě, nebo je zamítnutá](./troubleshoot-ssh-connection.md). Další podrobnosti najdete v [podrobnějších postupech při řešení potíží s nástrojem SSH pro problémy s připojením k virtuálnímu počítači Linux v Azure](./detailed-troubleshoot-ssh-connection.md) .
 Interakce s nástrojem pro spouštění | Restartujte virtuální počítač v okně sériové konzoly, abyste měli přístup k GRUB na svém VIRTUÁLNÍm počítači se systémem Linux. Další podrobnosti a informace týkající se distribuce najdete v tématu [použití sériové konzoly pro přístup k grub a jednomu uživatelskému režimu](serial-console-grub-single-user-mode.md).
 
 ## <a name="disable-the-serial-console"></a>Zakázání sériové konzoly
@@ -97,8 +98,8 @@ Přístup ke konzole sériového portu je omezený na uživatele, kteří mají 
 ### <a name="channel-security"></a>Zabezpečení kanálu
 Všechna data, která se odesílají zpátky a zpátky, se šifrují na lince.
 
-### <a name="audit-logs"></a>Protokoly auditu
-Veškerý přístup ke konzole sériového portu je aktuálně přihlášený k protokolům [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) virtuálního počítače. Přístup k těmto protokolům jsou vlastněné a řízené správcem virtuálního počítače Azure.
+### <a name="audit-logs"></a>Protokoly auditování
+Veškerý přístup ke konzole sériového portu je aktuálně přihlášený k protokolům [diagnostiky spouštění](./boot-diagnostics.md) virtuálního počítače. Přístup k těmto protokolům jsou vlastněné a řízené správcem virtuálního počítače Azure.
 
 > [!CAUTION]
 > Do protokolu nejsou protokolována žádná přístupová hesla pro konzolu. Pokud se ale v konzole spouštějí příkazy, které obsahují nebo využívají hesla, tajné klíče, uživatelská jména nebo jakékoli jiné formy osobních údajů (PII), zapíší se do protokolů diagnostiky spouštění virtuálního počítače. Budou zapsány spolu s veškerým jiným viditelným textem jako součást implementace funkce Posun zpět pomocí sériové konzoly. Tyto protokoly jsou cyklické a k nim mají přístup jenom jednotlivci s oprávněním ke čtení k účtu úložiště diagnostiky. Pokud zadáváte nějaké příkazy pro práci s daty, které obsahují tajná data nebo PII, doporučujeme použít SSH, pokud není bezpodmínečně nutné použít sériová konzola.
@@ -112,7 +113,7 @@ Pokud je uživatel připojen ke konzole sériového portu a jiný uživatel úsp
 ## <a name="accessibility"></a>Usnadnění
 Přístupnost je klíčovým fokusem pro konzolu sériového rozhraní Azure. Za tímto účelem jsme zajistili, že sériová konzola je plně přístupná.
 
-### <a name="keyboard-navigation"></a>Procházení pomocí klávesnice
+### <a name="keyboard-navigation"></a>Navigace přes klávesnici
 Pomocí klávesy **TAB** na klávesnici přejděte v rozhraní sériové konzoly z Azure Portal. Vaše poloha se zvýrazní na obrazovce. Pokud chcete opustit okno konzoly sériového portu, stiskněte na své klávesnici **kombinaci kláves CTRL** + **F6** .
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>Použití sériové konzoly se čtečkou obrazovky
@@ -137,7 +138,7 @@ A. Poskytněte zpětnou vazbu vytvořením problému GitHubu na adrese https://a
 
 **Otázka: podporuje konzola sériového kopírování/vkládání?**
 
-A. Ano. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
+A. Yes. Pomocí **kombinace kláves CTRL** + **+ SHIFT**+ Shift + + **C** **Ctrl** + **Shift** + **V** zkopírujte a vložte do terminálu.
 
 **Otázka: můžu použít sériovou konzolu místo připojení SSH?**
 
@@ -164,12 +165,11 @@ A. Ano, je! Další informace najdete v tématu [sériová Konzola pro Virtual M
 
 **Dotaz. Pokud mám virtuální počítač nebo sadu škálování virtuálního počítače nastavili jenom pomocí ověřování pomocí protokolu SSH, můžu stále používat sériovou konzolu pro připojení k virtuálnímu počítači nebo instanci sady škálování virtuálního počítače?**
 
-A. Ano. Vzhledem k tomu, že konzola sériového portu nevyžaduje klíče SSH, stačí nastavit kombinaci uživatelského jména a hesla. Můžete to udělat tak, že v Azure Portal vyberete **resetovat heslo** a pomocí těchto přihlašovacích údajů se přihlásíte ke konzole sériového portu.
+A. Yes. Vzhledem k tomu, že konzola sériového portu nevyžaduje klíče SSH, stačí nastavit kombinaci uživatelského jména a hesla. Můžete to udělat tak, že v Azure Portal vyberete **resetovat heslo** a pomocí těchto přihlašovacích údajů se přihlásíte ke konzole sériového portu.
 
 ## <a name="next-steps"></a>Další kroky
 * Použijte konzolu sériového [přístupu pro přístup k grub a jednomu uživatelskému režimu](serial-console-grub-single-user-mode.md).
 * Použijte konzolu sériového rozhraní pro [volání NMI a SysRq](serial-console-nmi-sysrq.md).
 * Naučte se používat konzolu sériového portu k [Povolení GRUB v různých distribuce](serial-console-grub-proactive-configuration.md) .
-* Pro [virtuální počítače s Windows](../windows/serial-console.md)je dostupná taky konzola sériového portu.
+* Pro [virtuální počítače s Windows](./serial-console-windows.md)je dostupná taky konzola sériového portu.
 * Přečtěte si další informace o [diagnostice spouštění](boot-diagnostics.md).
-

@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4083bdc896ce2f78484fe4ab083b234c4c5d12
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726957"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508572"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Vytvoření virtuálního počítače ze spravované image
 
@@ -32,13 +33,13 @@ Jedna spravovaná bitová kopie podporuje až 20 současných nasazení. Při po
 8. Na stránce Souhrn byste měli vidět název Image uvedený jako **privátní obrázek**. Výběrem **OK** spusťte nasazení virtuálního počítače.
 
 
-## <a name="use-powershell"></a>Použití prostředí PowerShell
+## <a name="use-powershell"></a>Použití PowerShellu
 
-PowerShell můžete použít k vytvoření virtuálního počítače z Image pomocí zjednodušené sady parametrů pro rutinu [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . Bitová kopie musí být ve stejné skupině prostředků, ve které vytvoříte virtuální počítač.
+PowerShell můžete použít k vytvoření virtuálního počítače z Image pomocí zjednodušené sady parametrů pro rutinu [New-AzVm](/powershell/module/az.compute/new-azvm) . Bitová kopie musí být ve stejné skupině prostředků, ve které vytvoříte virtuální počítač.
 
  
 
-Zjednodušená sada parametrů pro [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) vyžaduje, abyste zadali název, skupinu prostředků a název Image k vytvoření virtuálního počítače z image. New-AzVm použije hodnotu parametru **-Name** jako název všech prostředků, které vytvoří automaticky. V tomto příkladu poskytujeme podrobnější názvy pro každý z těchto prostředků, ale nechat rutinu je automaticky vytvořit. Můžete také vytvořit prostředky předem, například virtuální síť, a předat název prostředku do rutiny. New-AzVm použije stávající prostředky, pokud je může najít podle jména.
+Zjednodušená sada parametrů pro [New-AzVm](/powershell/module/az.compute/new-azvm) vyžaduje, abyste zadali název, skupinu prostředků a název Image k vytvoření virtuálního počítače z image. New-AzVm použije hodnotu parametru **-Name** jako název všech prostředků, které vytvoří automaticky. V tomto příkladu poskytujeme podrobnější názvy pro každý z těchto prostředků, ale nechat rutinu je automaticky vytvořit. Můžete také vytvořit prostředky předem, například virtuální síť, a předat název prostředku do rutiny. New-AzVm použije stávající prostředky, pokud je může najít podle jména.
 
 Následující příklad vytvoří virtuální počítač s názvem *myVMFromImage*ve skupině prostředků *myResourceGroup* z image s názvem *myImage*. 
 
@@ -60,4 +61,3 @@ New-AzVm `
 
 ## <a name="next-steps"></a>Další kroky
 [Vytvoření a správa virtuálních počítačů s Windows pomocí modulu Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

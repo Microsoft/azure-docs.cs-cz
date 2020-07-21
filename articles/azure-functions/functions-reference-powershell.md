@@ -4,11 +4,12 @@ description: Naučte se vyvíjet funkce pomocí prostředí PowerShell.
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697268"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506124"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -18,7 +19,7 @@ Funkce PowerShellu Azure (Function) je reprezentovaná jako PowerShellový skrip
 
 Podobně jako u jiných druhů funkcí mají funkce skriptu PowerShellu parametry, které odpovídají názvům všech vstupních vazeb definovaných v `function.json` souboru. `TriggerMetadata`Předává se i parametr, který obsahuje další informace o triggeru, který tuto funkci spustil.
 
-V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). K vytvoření první funkce PowerShellu byste měli také dokončit [rychlé zprovoznění funkcí pro PowerShell](functions-create-first-function-powershell.md) .
+V tomto článku se předpokládá, že už jste si přečetli [Azure Functions referenci pro vývojáře](functions-reference.md). K vytvoření první funkce PowerShellu byste měli také dokončit [rychlé zprovoznění funkcí pro PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) .
 
 ## <a name="folder-structure"></a>Struktura složek
 
@@ -124,7 +125,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Níže jsou uvedené platné parametry pro volání `Push-OutputBinding` :
 
-| Name | Typ | Pozice | Description |
+| Název | Typ | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Řetězec | 1 | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
@@ -225,7 +226,7 @@ MyQueue                        myData
 
 Zástupné znaky (*) jsou podporovány v `Get-OutputBinding` .
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Protokolování funkcí prostředí PowerShell funguje jako běžné protokolování do PowerShellu. K zápisu do každého výstupního datového proudu můžete použít rutiny protokolování. Každá rutina se mapuje na úroveň protokolu využívané funkcemi.
 
@@ -233,8 +234,8 @@ Protokolování funkcí prostředí PowerShell funguje jako běžné protokolov�
 | ------------- | -------------- |
 | Chyba | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
-| Informace | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informace | Zapisuje do protokolování na úrovni _informací_ . |
-| Ladit | **`Write-Debug`** |
+| Informační | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informační | Zapisuje do protokolování na úrovni _informací_ . |
+| Ladění | **`Write-Debug`** |
 | Trasování | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Kromě těchto rutin se vše zapsané do kanálu přesměruje na `Information` úroveň protokolu a zobrazí se s výchozím formátováním PowerShellu.
@@ -295,7 +296,7 @@ Objekt Request, který je předán do skriptu, je typu `HttpRequestContext` , kt
 
 | Vlastnost  | Popis                                                    | Typ                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body`je serializována do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | odkazy objektů |
+| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body`je serializována do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | object |
 | **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | Řetězec<slovníku, řetězec><sup>*</sup> |
 | **`Method`** | Metoda HTTP požadavku.                                | řetězec                    |
 | **`Params`**  | Objekt, který obsahuje parametry směrování požadavku. | Řetězec<slovníku, řetězec><sup>*</sup> |
@@ -310,7 +311,7 @@ Objekt Response, který byste měli poslat zpátky, je typu `HttpResponseContext
 
 | Vlastnost      | Popis                                                 | Typ                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | odkazy objektů                    |
+| **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | object                    |
 | **`ContentType`** | Krátká ruka pro nastavení typu obsahu pro odpověď. | řetězec                    |
 | **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulka   |
 | **`StatusCode`**  | Stavový kód protokolu HTTP odpovědi.                       | řetězec nebo int             |
@@ -419,7 +420,7 @@ Když aktualizujete soubor requirements.psd1, po restartování se nainstalují 
 
 Pomocí následujících nastavení aplikace můžete změnit způsob stažení a instalace spravovaných závislostí. Upgrade vaší aplikace se spouští v rámci nástroje `MDMaxBackgroundUpgradePeriod` a proces upgradu se dokončí přibližně v `MDNewSnapshotCheckPeriod` .
 
-| Nastavení Function App              | Výchozí hodnota             | Description                                         |
+| Nastavení Function App              | Výchozí hodnota             | Popis                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`(7 dnů)     | Každý pracovní proces PowerShellu inicializuje kontrolu upgradů modulů na Galerie prostředí PowerShell spuštění procesu a každé z nich `MDMaxBackgroundUpgradePeriod` . Když je v Galerie prostředí PowerShell k dispozici nová verze modulu, nainstaluje se do systému souborů a zpřístupní se pro pracovní procesy prostředí PowerShell. Snížením této hodnoty umožníte, aby aplikace Function App získala novější verze modulu, ale také zvyšuje využití prostředků aplikace (v/v sítě, CPU, úložiště). Zvýšením této hodnoty se sníží využití prostředků aplikace, ale může také dojít k zpoždění doručení nových verzí modulu do aplikace. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00`(1 hodina)       | Až se v systému souborů nainstalují nové verze modulů, musí se všechny pracovní procesy PowerShellu restartovat. Restartování pracovních procesů PowerShell ovlivní dostupnost vaší aplikace, protože může přerušit aktuální spuštění funkce. Dokud nebudou všechny pracovní procesy prostředí PowerShell restartovány, mohou být vyvolány funkce buď staré, nebo nové verze modulu. Restart všech pracovních procesů PowerShellu se dokončil v rámci `MDNewSnapshotCheckPeriod` . Zvýšením této hodnoty se zkrátí frekvence přerušení, ale může se prodloužit i čas, kdy volání funkcí používají buď starou, nebo nové verze modulu, které nejsou deterministické. |
@@ -600,7 +601,7 @@ Váš skript se spustí při každém vyvolání. Vyhněte se použití `Install
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

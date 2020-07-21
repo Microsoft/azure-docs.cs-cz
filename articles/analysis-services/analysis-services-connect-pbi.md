@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4e75329444c2ddb9401f32bccea400d90b633294
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f79ff9af1272ca908c7a5ba35fbaa1e8bb87fc50
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361519"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506704"
 ---
 # <a name="connect-with-power-bi"></a>Propojení s Power BI
 
@@ -36,6 +36,9 @@ Po vytvoření serveru v Azure a nasazení tabelárního modelu do něj budou u�
     Podporují se možnosti **připojit živě** i **importovat** . Doporučujeme však používat živá připojení, protože režim importu má určitá omezení. v průběhu importu může být ovlivněný výkon serveru. Také pokud se má model aktualizovat v služba Power BI, platí nastavení **Povolení přístupu z Power BI** pouze při výběru možnosti **připojit živě**.
 
 5. Pokud se zobrazí výzva, zadejte přihlašovací údaje. 
+
+   > [!NOTE]
+   > Účty JEDNORÁZOVého hesla se nepodporují. 
 
 6. V **navigátoru**rozbalte server, vyberte model nebo perspektivu, ke kterým se chcete připojit, a potom klikněte na **připojit**. Kliknutím na model nebo perspektivu zobrazíte všechny objekty pro toto zobrazení.
 

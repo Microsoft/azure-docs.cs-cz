@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 03804229221c2b1deb94f6c32a5be9defd304ff6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628278"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509116"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením virtuálního počítače s Windows v Azure
 
@@ -70,7 +70,7 @@ Pro smlouvu Enterprise:
 
 • Nahrajte vlastní virtuální počítač a nasaďte ho pomocí Správce prostředků šablony nebo Azure PowerShell.
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
  - [Přehled programu zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
@@ -78,7 +78,7 @@ Další informace najdete v následujících materiálech:
 
  - [Zvýhodněné hybridní využití Azure pro Windows Server a klienta Windows](../windows/hybrid-use-benefit-licensing.md)
 
- - [Jak můžu využít zvýhodněné hybridní využití v Azure](https://blogs.msdn.microsoft.com/azureedu/2016/04/13/how-can-i-use-the-hybrid-use-benefit-in-azure)
+ - [Jak můžu využít zvýhodněné hybridní využití v Azure](/archive/blogs/azureedu/how-can-i-use-the-hybrid-use-benefit-in-azure)
 
 ## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Návody aktivovat svůj měsíční kredit pro Visual Studio Enterprise (BizSpark)
 
@@ -125,7 +125,7 @@ Vyberte velikost podporovanou v clusteru skupiny dostupnosti. Doporučuje se př
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Můžu přidat existující klasický virtuální počítač do skupiny dostupnosti?
 
-Ano. Existující klasický virtuální počítač můžete přidat do nové nebo existující skupiny dostupnosti. Další informace najdete v tématu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
+Yes. Existující klasický virtuální počítač můžete přidat do nové nebo existující skupiny dostupnosti. Další informace najdete v tématu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
 ## <a name="next-steps"></a>Další kroky

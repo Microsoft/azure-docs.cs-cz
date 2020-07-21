@@ -4,16 +4,18 @@ description: Tento článek popisuje, jak zálohovat a obnovit metadata modelu a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 07/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 66d09c2faa52cee3e94402be708d654b548c0de1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871291"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506991"
 ---
-# <a name="backup-and-restore"></a>Zálohování a obnovení
+# <a name="analysis-services-database-backup-and-restore"></a>Zálohování a obnovení databáze Analysis Services
 
 Zálohování databází tabelárních modelů v Azure Analysis Services je v podstatě stejné jako u místních Analysis Services. Hlavním rozdílem je místo, kam ukládáte soubory zálohy. Záložní soubory musí být uložené do kontejneru v [účtu úložiště Azure](../storage/common/storage-create-storage-account.md). Můžete použít účet úložiště a kontejner, který už máte, nebo ho můžete vytvořit při konfiguraci nastavení úložiště pro váš server.
 
@@ -105,6 +107,6 @@ Použijte rutinu [Restore-ASDatabase](https://docs.microsoft.com/powershell/modu
 
 ## <a name="related-information"></a>Související informace
 
-[Účty služby Azure Storage](../storage/common/storage-create-storage-account.md)  
+[Účty úložiště Azure](../storage/common/storage-create-storage-account.md)  
 [Vysoká dostupnost](analysis-services-bcdr.md)      
 [Nejčastější dotazy k Analysis Services připojení k síti](analysis-services-network-faq.md)

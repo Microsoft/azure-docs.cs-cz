@@ -12,23 +12,24 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255231"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507824"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Průvodce zálohováním pro SAP HANA v Azure Virtual Machines
 
-## <a name="getting-started"></a>začínáme
+## <a name="getting-started"></a>Začínáme
 
 Průvodce zálohováním pro SAP HANA běžící na virtuálních počítačích Azure bude popsat jenom Témata specifická pro Azure. Obecné položky SAP HANA související s zálohováním najdete v dokumentaci k SAP HANA. Očekáváme, že budete obeznámeni s principem strategie zálohování databáze, důvody a motivace, které mají zvukovou a platnou strategii zálohování, a mají na paměti informace, které vaše společnost má pro postup zálohování, dobu uchování záloh a postup obnovení.
 
-SAP HANA se oficiálně podporuje u různých typů virtuálních počítačů Azure, jako je Azure M-Series. Úplný seznam SAP HANA certifikovaných virtuálních počítačů Azure a jednotek velkých instancí HANA najdete v části [vyhledání certifikovaných platforem IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Microsoft Azure nabízí řadu jednotek, ve kterých SAP HANA spouští nevirtualizované na fyzických serverech. Tato služba se nazývá [velké instance Hana](hana-overview-architecture.md). Tato příručka se nezabývá procesy zálohování a nástroji pro velké instance HANA. Ale budou omezeny na virtuální počítače Azure. Podrobnosti o procesech zálohování a obnovení s velkými instancemi HANA najdete v článku [HLI Backup and Restore](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore).
+SAP HANA se oficiálně podporuje u různých typů virtuálních počítačů Azure, jako je Azure M-Series. Úplný seznam SAP HANA certifikovaných virtuálních počítačů Azure a jednotek velkých instancí HANA najdete v části [vyhledání certifikovaných platforem IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Microsoft Azure nabízí řadu jednotek, ve kterých SAP HANA spouští nevirtualizované na fyzických serverech. Tato služba se nazývá [velké instance Hana](hana-overview-architecture.md). Tato příručka se nezabývá procesy zálohování a nástroji pro velké instance HANA. Ale budou omezeny na virtuální počítače Azure. Podrobnosti o procesech zálohování a obnovení s velkými instancemi HANA najdete v článku [HLI Backup and Restore](./hana-backup-restore.md).
 
 Tento článek se zaměřuje na tři možnosti zálohování SAP HANA na virtuálních počítačích Azure:
 
-- Zálohování HANA prostřednictvím [služby Azure Backup Services](https://docs.microsoft.com/azure/backup/backup-overview) 
+- Zálohování HANA prostřednictvím [služby Azure Backup Services](../../../backup/backup-overview.md) 
 - Zálohování HANA do systému souborů na virtuálním počítači Azure Linux (viz [SAP HANA Azure Backup na úrovni souborů](sap-hana-backup-file-level.md))
 - Zálohování HANA na základě snímků úložiště pomocí funkce snímku objektu BLOB služby Azure Storage ručně nebo Azure Backup služby
 
@@ -36,18 +37,18 @@ Tento článek se zaměřuje na tři možnosti zálohování SAP HANA na virtuá
 SAP HANA nabízí záložní rozhraní API, které umožňuje nástrojům pro zálohování třetích stran integrovat přímo s SAP HANA. Produkty, jako je Azure Backup služba nebo [CommVault](https://azure.microsoft.com/resources/protecting-sap-hana-in-azure/) , používají toto proprietární rozhraní k aktivaci SAP HANA databáze nebo zálohování protokolů znovu. 
 
 
-Informace o tom, jak najít software SAP v Azure, najdete v článku o [tom, jaký software SAP je podporován pro nasazení Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure).
+Informace o tom, jak najít software SAP v Azure, najdete v článku o [tom, jaký software SAP je podporován pro nasazení Azure](./sap-supported-product-on-azure.md).
 
 ## <a name="azure-backup-service"></a>Služba Azure Backup
 
 Prvním zobrazeným scénářem je situace, kdy služba Azure Backup používá `backint` rozhraní SAP HANA k provedení zálohy streamování z databáze SAP HANA. Nebo můžete použít obecnější schopnost služby Azure Backup k vytvoření snímku disku konzistentního s aplikací a jeho přenesení do služby Azure Backup.
 
-Azure Backup integruje a je certifikovaný jako řešení zálohování pro SAP HANA pomocí vlastního rozhraní SAP HANA s názvem [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5). Další podrobnosti o řešení, jeho schopnostech a oblastech Azure, kde jsou k dispozici, najdete v článku věnovaném [podpoře pro zálohování SAP HANA databází na virtuálních počítačích Azure v matici podpory](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). Podrobnosti a principy služby Azure Backup pro HANA najdete v článku [o SAP HANA zálohování databáze ve virtuálních počítačích Azure](https://docs.microsoft.com/azure/backup/sap-hana-db-about). 
+Azure Backup integruje a je certifikovaný jako řešení zálohování pro SAP HANA pomocí vlastního rozhraní SAP HANA s názvem [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5). Další podrobnosti o řešení, jeho schopnostech a oblastech Azure, kde jsou k dispozici, najdete v článku věnovaném [podpoře pro zálohování SAP HANA databází na virtuálních počítačích Azure v matici podpory](../../../backup/sap-hana-backup-support-matrix.md#scenario-support). Podrobnosti a principy služby Azure Backup pro HANA najdete v článku [o SAP HANA zálohování databáze ve virtuálních počítačích Azure](../../../backup/sap-hana-db-about.md). 
 
-Druhou možností, jak službu Azure Backup využít, je vytvoření zálohy konzistentní s aplikací pomocí snímků disku Azure Premium Storage. Další úložiště Azure s certifikací HANA, jako je [Azure Ultra disk](https://docs.microsoft.com/azure/virtual-machines/linux/disks-enable-ultra-ssd) a [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) , nepodporují tento druh snímku prostřednictvím služby Azure Backup. Přečtěte si tyto články:
+Druhou možností, jak službu Azure Backup využít, je vytvoření zálohy konzistentní s aplikací pomocí snímků disku Azure Premium Storage. Další úložiště Azure s certifikací HANA, jako je [Azure Ultra disk](../../linux/disks-enable-ultra-ssd.md) a [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) , nepodporují tento druh snímku prostřednictvím služby Azure Backup. Přečtěte si tyto články:
 
-- [Plánování infrastruktury zálohování virtuálních počítačů v Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
-- [Zálohování virtuálních počítačů Azure Linux konzistentní vzhledem k aplikacím](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) 
+- [Plánování infrastruktury zálohování virtuálních počítačů v Azure](../../../backup/backup-azure-vms-introduction.md)
+- [Zálohování virtuálních počítačů Azure s Linuxem konzistentní vzhledem k aplikacím](../../../backup/backup-azure-linux-app-consistent.md) 
 
 Tato posloupnost činnosti:
 
@@ -103,7 +104,7 @@ Informace o kontrole konzistence tabulky najdete také na webu SAP v části [ko
 
 SAP ne&#39;t dává přednost buď na úložiště HANA, tak i na snímek úložiště. Uvádí jejich specialisty a nevýhody, takže je možné určit, která z nich se má použít v závislosti na situaci a dostupné technologii úložiště (viz [Plánování strategie zálohování a obnovení](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)).
 
-V Azure si pamatujte na skutečnost, že funkce snímku Azure Blob nenabízí&#39;k zajištění konzistence systému souborů na více discích (viz [použití snímků objektů BLOB pomocí PowerShellu](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)). 
+V Azure si pamatujte na skutečnost, že funkce snímku Azure Blob nenabízí&#39;k zajištění konzistence systému souborů na více discích (viz [použití snímků objektů BLOB pomocí PowerShellu](/archive/blogs/cie/using-blob-snapshots-with-powershell)). 
 
 Kromě toho je potřeba pochopit dopad fakturace při častých pracích se snímky objektů blob, jak je popsáno v tomto článku: [Vysvětlení způsobu, jakým se účtují poplatky za](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)to,&#39;t, jako by se používaly virtuální disky Azure.
 

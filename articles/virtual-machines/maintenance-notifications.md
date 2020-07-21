@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: e65b2c94b5042f857a6ea5fc61136c572b780764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678507"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510034"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Zpracování oznámení o plánované údržbě
 
@@ -24,7 +25,7 @@ Azure pravidelně provádí aktualizace za účelem zlepšení spolehlivosti, v�
 
 Plánovaná údržba, která vyžaduje restart, je naplánována na vlny. Každý vlna má jiný obor (oblasti).
 
-- Wave začíná oznámením pro zákazníky. Ve výchozím nastavení se oznámení odesílají správcům služby a spolusprávcům. Pomocí [upozornění protokolu aktivit](../service-health/alerts-activity-log-service-notifications.md)můžete přidat další příjemce a možnosti zasílání zpráv, jako jsou E-mail, SMS a Webhooky.  
+- Wave začíná oznámením pro zákazníky. Ve výchozím nastavení se oznámení odesílají správcům služby a spolusprávcům. Pomocí [upozornění protokolu aktivit](../service-health/alerts-activity-log-service-notifications-portal.md)můžete přidat další příjemce a možnosti zasílání zpráv, jako jsou E-mail, SMS a Webhooky.  
 - Jakmile se oznámení dostane, zpřístupní se *samoobslužné okno* . Během tohoto okna se můžete dotazovat na to, které z vašich virtuálních počítačů jsou ovlivněné, a zahájit údržbu na základě vlastních potřeb plánování. Samoobslužné okno je obvykle přibližně 35 dní.
 - Po samoobslužném okně začne *plánované časové období údržby* . V určitém okamžiku v tomto okně Azure plánuje a na virtuálním počítači aplikuje požadovanou údržbu. 
 
@@ -75,7 +76,7 @@ Služba samoobslužná údržba se doporučuje používat v následujících př
 
 **A:** Virtuální počítače nasazené ve skupině dostupnosti nebo ve službě Virtual Machine Scale Sets mají pojem aktualizačních domén (UD). Při provádění údržby Azure respektuje omezení UD a nerestartuje virtuální počítače z různých UD (v rámci stejné skupiny dostupnosti).  Azure také před přechodem na další skupinu virtuálních počítačů počká aspoň 30 minut. 
 
-Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtuální počítače v Azure](./linux/availability.md).
+Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtuální počítače v Azure](availability.md).
 
 **Otázka: Návody dostávat oznámení o plánované údržbě?**
 
@@ -121,4 +122,3 @@ Další informace o vysoké dostupnosti najdete v tématu [dostupnost pro virtu�
 ## <a name="next-steps"></a>Další kroky
 
 Plánovanou údržbu můžete zvládnout pomocí [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) nebo [portálu](maintenance-notifications-portal.md).
-

@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 6fb9f691afc8874b19ca4575408027357f07cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833532"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505767"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Upgrade vizualizací řídicího panelu Log Analytics
 
@@ -25,7 +25,7 @@ Tato nová technologie vizualizace je přízpůsobí pro nové a vylepšené pro
 
 Řídicí panely Azure představují způsob, jak vizualizovat stav celé oblasti Azure Surface. Jsou navržené tak, aby poskytovaly jediné podokno se svým stavem v Azure a povolili celou řadu zástupců k běžným akcím. 
 
-Další informace najdete v tématu [řídicí panely Azure](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) .
+Další informace najdete v tématu [řídicí panely Azure](../../azure-portal/azure-portal-dashboards.md) .
 
 
 ## <a name="upgrading-log-analytics-dashboard-parts"></a>Upgrade Log Analytics částí řídicího panelu
@@ -62,13 +62,13 @@ Po upgradu vizualizací je potřeba znovu publikovat řídicí panel, aby se zm�
 
 Po uplynutí počátečního přihlašovacího období bude tým Log Analytics upgradovat všechny řídicí panely v systému. Zarovnávání všech řídicích panelů Azure umožňuje týmu zavést více vizualizací a vylepšení zkušeností napříč panelem.
 
-## <a name="considerations"></a>Důležité informace
+## <a name="considerations"></a>Co je potřeba vzít v úvahu
 
 Log Analytics vizualizace připnuté na řídicí panel mají určité specifické chování, které je navržené pro optimální prostředí. Pokud připnete vizualizaci na řídicí panel, přečtěte si následující pokyny k návrhu.
 
 ### <a name="query-time-scope---30-day-limit"></a>Rozsah času dotazu – limit 30 dní
 
-V případě, že řídicí panely mohou obsahovat více vizualizací z více dotazů, je časový rozsah jednoho připnutého dotazu omezen na 30 dní. Jeden dotaz může běžet pouze v časovém rozsahu, který je menší nebo roven 30 dnů. Toto omezení znamená zajistit přiměřenou dobu načítání řídicího panelu.
+Vzhledem k tomu, že řídicí panely můžou obsahovat více vizualizací z několika dotazů, časový rozsah každého připnutého dotazu je omezený na 30 dnů. Jeden dotaz může běžet pouze v časovém rozsahu, který je menší nebo roven 30 dnů. Toto omezení znamená zajistit přiměřenou dobu načítání řídicího panelu.
 
 ### <a name="query-data-values---25-values-and-other-grouping"></a>Dotazování hodnot dat – 25 hodnot a dalších seskupení
 

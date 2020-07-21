@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9e4c4b9c809a626c71b4a7e9235d917b442be160
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373359"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509099"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Chyba stop systému Windows – #0x000000EF "nepostradatelný proces zemřel"
 
@@ -27,13 +27,13 @@ Tento článek popisuje kroky pro řešení problémů, při kterých během spo
 
 ## <a name="symptom"></a>Příznak
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu *#0x000000EF* se *nezpracovaným nepostradatelným procesem*zprávy.
+Když pomocí [diagnostiky spouštění](./boot-diagnostics.md) zobrazíte snímek obrazovky virtuálního počítače, uvidíte, že snímek obrazovky zobrazuje chybu *#0x000000EF* se *nezpracovaným nepostradatelným procesem*zprávy.
 
 !["Váš počítač byl příčinou problému a je nutné ho restartovat. Jenom shromažďujeme nějaké informace o chybách a pak se můžete restartovat. (# #% dokončeno) Pokud se chcete dozvědět víc, můžete k této chybě vyhledat online v online režimu: 0x000000EF "](media/troubleshoot-guide-critical-process-died/1.jpg)
 
 ## <a name="cause"></a>Příčina
 
-Obvykle je to kvůli selhání kritického systémového procesu během spouštění. Další informace o problémech s kritickými procesy najdete v tématu "[kontroly chyb 0xEF: CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)".
+Obvykle je to kvůli selhání kritického systémového procesu během spouštění. Další informace o problémech s kritickými procesy najdete v tématu "[kontroly chyb 0xEF: CRITICAL_PROCESS_DIED](/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)".
 
 ## <a name="solution"></a>Řešení
 
@@ -49,7 +49,7 @@ Obvykle je to kvůli selhání kritického systémového procesu během spoušt�
 
 ### <a name="create-and-access-a-repair-vm"></a>Vytvoření a přístup k opravnému virtuálnímu počítači
 
-1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) Připravte opravný virtuální počítač.
+1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) Připravte opravný virtuální počítač.
 2. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
 ### <a name="fix-any-os-corruption"></a>Oprava poškození operačního systému
@@ -61,7 +61,7 @@ Obvykle je to kvůli selhání kritického systémového procesu během spoušt�
 
    * Kde < spouštěcí DISKová jednotka > je spouštěcím svazkem opravného virtuálního počítače (obvykle "C:") a <m >m disku, bude k připojenému disku z poškozeného virtuálního počítače písmeno jednotky. Nahraďte symboly větší než/menší než a text obsažený v nich, například "< text >" s příslušným písmenem.
 
-3. V dalším [kroku pomocí příkazu pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač a zjistěte, jestli se spustí.
+3. V dalším [kroku pomocí příkazu pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) znovu sestavte virtuální počítač a zjistěte, jestli se spustí.
 4. Pokud se virtuální počítač stále nespouští, pokračujte ve shromažďování souboru s výpisem paměti.
 
 ### <a name="collect-the-memory-dump-file"></a>Shromáždit soubor výpisu paměti
@@ -70,7 +70,7 @@ Pokud potíže potrvají po spuštění nástroje SFC, bude nutné provést anal
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Připojit disk s operačním systémem k nové opravě virtuálního počítače
 
-1. K přípravě nového opravného virtuálního počítače použijte [kroky 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) .
+1. K přípravě nového opravného virtuálního počítače použijte [kroky 1-3 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) .
 2. Pomocí Připojení ke vzdálené ploše připojit k opravnému virtuálnímu počítači.
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>Vyhledejte soubor s výpisem paměti a odešlete lístek podpory.
@@ -128,4 +128,4 @@ Pokud na disku operačního systému není dostatek místa, měli byste změnit 
 
 ### <a name="rebuild-the-original-vm"></a>Znovu sestavte původní virtuální počítač.
 
-Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač.
+Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) znovu sestavte virtuální počítač.

@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: e4ac4f669d38f07d9fe4edbd600cc06f135fac03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80674101"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506294"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rychlý Start: Vytvoření první funkce pomocí Kotlin a Maven
 
@@ -19,13 +19,13 @@ Tento článek vás provede použitím nástroje příkazového řádku Maven k 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vývoji funkcí pomocí Kotlin musíte mít nainstalované následující:
 
 - [Java Developer Kit](https://aka.ms/azure-jdks) verze 8
 - [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [Azure Functions Core Tools](./functions-run-local.md#v2) verze 2.6.666 nebo vyšší
 
 > [!IMPORTANT]
@@ -43,7 +43,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Pokud máte problémy se spuštěním příkazu, Prohlédněte si, jaká `maven-archetype-plugin` verze se používá. Vzhledem k tomu, že příkaz spouštíte v prázdném adresáři `.pom` bez souboru, může se pokusit použít modul plug-in starší verze z `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` , pokud jste Maven upgradovali ze starší verze. Pokud ano, zkuste odstranit `maven-archetype-plugin` adresář a znovu spustit příkaz.
+> Pokud máte problémy se spuštěním příkazu, Prohlédněte si, jaká `maven-archetype-plugin` verze se používá. Vzhledem k tomu, že příkaz spouštíte v prázdném adresáři bez `.pom` souboru, může se pokusit použít modul plug-in starší verze z, `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` Pokud jste Maven upgradovali ze starší verze. Pokud ano, zkuste odstranit `maven-archetype-plugin` adresář a znovu spustit příkaz.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
@@ -79,7 +79,7 @@ Níže uvedené identifikátory `com.fabrikam.functions` a `fabrikam-functions` 
 [INFO] Parameter: artifactId, Value: fabrikam-function
 </pre>
 
-Maven vytvoří soubory projektu, v tomto příkladu `fabrikam-functions`, v nové složce _artifactId_. Vygenerovaný kód připravený k použití v projektu je jednoduchá funkce [aktivovaná protokolem HTTP](/azure/azure-functions/functions-bindings-http-webhook), která vypisuje text žádosti:
+Maven vytvoří soubory projektu, v tomto příkladu `fabrikam-functions`, v nové složce _artifactId_. Vygenerovaný kód připravený k použití v projektu je jednoduchá funkce [aktivovaná protokolem HTTP](./functions-bindings-http-webhook.md), která vypisuje text žádosti:
 
 ```kotlin
 class Function {
@@ -185,7 +185,7 @@ Po dokončení nasazení se zobrazí adresa URL, pomocí které můžete přistu
 Otestujte aplikaci funkcí spuštěnou v Azure pomocí `cURL`. V níže uvedené ukázce budete muset změnit adresu URL, aby odpovídala adrese URL nasazené vlastní aplikace funkcí z předchozího kroku.
 
 > [!NOTE]
-> Ujistěte se, že jste nastavili `Anonymous` **přístupová práva** na. Když zvolíte výchozí úroveň `Function`, budete muset [klíč funkce](functions-bindings-http-webhook-trigger.md#authorization-keys) prezentovat v žádosti o přístup ke koncovému bodu funkce.
+> Ujistěte se, že jste nastavili **přístupová práva** na `Anonymous` . Když zvolíte výchozí úroveň `Function` , budete muset [klíč funkce](functions-bindings-http-webhook-trigger.md#authorization-keys) prezentovat v žádosti o přístup ke koncovému bodu funkce.
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions

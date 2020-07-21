@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 85aaefa12f0cef21e3a367700d1a4899a75e8a90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57cc3624a38fbec1e5bef7bb281363d34acef2b1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298336"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505597"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
 
@@ -20,10 +21,10 @@ V tomto článku se dozvíte, jak vytvářet a spravovat výstrahy protokolu pom
 - Kritéria: podmínku nebo logiku, která se má vyhodnotit jako pravdy. Při hodnotě true se výstraha aktivuje.  
 - Action: konkrétní volání odeslané příjemci oznámení – e-mail, SMS, Webhook atd.
 
-Pojem **Výstraha protokolu** popisuje výstrahy, ve kterých je vyhodnocen dotaz protokolu v [Log Analytics pracovní prostor](../learn/tutorial-viewdata.md) nebo [Application Insights](../app/analytics.md) , a výstrahu, která je vyvolána, pokud je výsledek true. Přečtěte si další informace o funkcích, terminologii a typech z [Upozornění protokolů – přehled](alerts-unified-log.md).
+Pojem **Výstraha protokolu** popisuje výstrahy, ve kterých je vyhodnocen dotaz protokolu v [Log Analytics pracovní prostor](../log-query/get-started-portal.md) nebo [Application Insights](../log-query/log-query-overview.md) , a výstrahu, která je vyvolána, pokud je výsledek true. Přečtěte si další informace o funkcích, terminologii a typech z [Upozornění protokolů – přehled](alerts-unified-log.md).
 
 > [!NOTE]
-> Data protokolu z [log Analyticsho pracovního prostoru](../../azure-monitor/learn/tutorial-viewdata.md) je také možné směrovat do databáze Azure monitor metrik. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete.   Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
+> Data protokolu z [log Analyticsho pracovního prostoru](../log-query/get-started-portal.md) je také možné směrovat do databáze Azure monitor metrik. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete.   Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Vytvořte pravidlo upozornění protokolu s Azure Portal
 
@@ -47,7 +48,7 @@ Pojem **Výstraha protokolu** popisuje výstrahy, ve kterých je vyhodnocen dota
 
    ![Vybrat prostředek](media/alerts-log/Alert-SelectResourceLog.png)
 
-1. Ujistěte se, že **typ prostředku** je zdroj analýzy, jako je *Log Analytics* nebo *Application Insights* a typ signálu jako *log*. Klikněte na **Done** (Hotovo). V dalším kroku použijte tlačítko **Přidat kritéria** k zobrazení seznamu možností signálu dostupných pro daný prostředek. V závislosti na tom, kde se nacházejí data pro výstrahy protokolu, najděte a vyberte možnost **hledání vlastního protokolu** pro *Log Analytics* nebo *Application Insights*.
+1. Ujistěte se, že **typ prostředku** je zdroj analýzy, jako je *Log Analytics* nebo *Application Insights* a typ signálu jako *log*. Klikněte na **Hotovo**. V dalším kroku použijte tlačítko **Přidat kritéria** k zobrazení seznamu možností signálu dostupných pro daný prostředek. V závislosti na tom, kde se nacházejí data pro výstrahy protokolu, najděte a vyberte možnost **hledání vlastního protokolu** pro *Log Analytics* nebo *Application Insights*.
 
    ![Výběr prostředku – hledání vlastního protokolu](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
@@ -63,7 +64,7 @@ Pojem **Výstraha protokolu** popisuje výstrahy, ve kterých je vyhodnocen dota
 
    Vizualizace historických dat se zobrazí pouze v případě, že výsledky dotazu obsahují informace o čase. Pokud výsledkem dotazu jsou souhrnná data nebo konkrétní hodnoty sloupce, zobrazí se v zobrazení jeden graf.
   
-   Pro měření metrik pomocí Application Insights nebo [rozhraní API Log Analytics](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)můžete určit konkrétní proměnnou, která má seskupovat data pomocí možnosti **agregace on** ; Jak je znázorněno zde: 
+   Pro měření metrik pomocí Application Insights nebo [rozhraní API Log Analytics](/rest/api/monitor/scheduledqueryrules)můžete určit konkrétní proměnnou, která má seskupovat data pomocí možnosti **agregace on** ; Jak je znázorněno zde: 
   
    ![možnost agregace při](media/alerts-log/aggregate-on.png)
 
@@ -80,7 +81,7 @@ Pojem **Výstraha protokolu** popisuje výstrahy, ve kterých je vyhodnocen dota
     - [Měření metriky](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): je vytvořena výstraha, pokud každá *agregovaná hodnota* ve výsledcích překračuje stanovenou prahovou hodnotu a je *seskupena podle* zvolené hodnoty. Počet porušení pro výstrahu je počet překročení prahové hodnoty ve zvoleném časovém období. Můžete určit celkový počet porušení pro libovolnou kombinaci porušení v rámci sady výsledků nebo po sobě jdoucí porušení předpisů, aby se v následných vzorcích vyžadovalo, aby v nich došlo k narušení.
 
 
-1. Klikněte na **Done** (Hotovo). 
+1. Klikněte na **Hotovo**. 
 
 1. Zadejte název upozornění v poli **název pravidla výstrahy** spolu s **popisem** podrobností o výstraze a hodnotě **závažnosti** z poskytnutých možností. Tyto podrobnosti se znovu použijí ve všech e-mailech s výstrahami, oznámeních nebo nabízených oznámeních, které provádí Azure Monitor. Kliknutím na **Povolit pravidlo při vytváření**můžete také zvolit, že se má pravidlo výstrahy při vytváření okamžitě aktivovat.
 
@@ -110,7 +111,7 @@ Pojem **Výstraha protokolu** popisuje výstrahy, ve kterých je vyhodnocen dota
 
      Během několika minut je výstraha aktivní a triggery, jak je popsáno výše.
 
-Uživatelé můžou také dokončit dotaz Analytics v [Log Analytics](../log-query/portals.md) a pak ho vložit, aby se vytvořila výstraha prostřednictvím tlačítka nastavit výstrahu. potom postupujte podle pokynů v kroku 6 výše v předchozím kurzu.
+Uživatelé můžou také dokončit dotaz Analytics v [Log Analytics](../log-query/log-query-overview.md) a pak ho vložit, aby se vytvořila výstraha prostřednictvím tlačítka nastavit výstrahu. potom postupujte podle pokynů v kroku 6 výše v předchozím kurzu.
 
  ![Výstraha Log Analytics-set](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -127,15 +128,15 @@ Uživatelé můžou také dokončit dotaz Analytics v [Log Analytics](../log-que
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Správa výstrah protokolu pomocí šablony prostředků Azure
 
-Výstrahy protokolu v Azure Monitor jsou přidruženy k typu prostředku `Microsoft.Insights/scheduledQueryRules/` . Další informace o tomto typu prostředku najdete v tématu [Azure monitor – Reference k rozhraní API pro pravidla dotazů na naplánované dotazy](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Výstrahy protokolu pro Application Insights nebo Log Analytics můžete vytvořit pomocí [naplánovaných rozhraní API pravidel dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+Výstrahy protokolu v Azure Monitor jsou přidruženy k typu prostředku `Microsoft.Insights/scheduledQueryRules/` . Další informace o tomto typu prostředku najdete v tématu [Azure monitor – Reference k rozhraní API pro pravidla dotazů na naplánované dotazy](/rest/api/monitor/scheduledqueryrules/). Výstrahy protokolu pro Application Insights nebo Log Analytics můžete vytvořit pomocí [naplánovaných rozhraní API pravidel dotazů](/rest/api/monitor/scheduledqueryrules/).
 
 > [!NOTE]
-> Výstrahy protokolu pro Log Analytics je taky možné spravovat pomocí starších [Log Analytics rozhraní API pro upozornění](api-alerts.md) a starších šablon [Log Analytics uložená hledání a upozornění](../insights/solutions-resources-searches-alerts.md) . Další informace o tom, jak se ve výchozím nastavení používá nové rozhraní API ScheduledQueryRules, najdete v tématu [Přepnutí na nové rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
+> Výstrahy protokolu pro Log Analytics je taky možné spravovat pomocí starších [Log Analytics rozhraní API pro upozornění](api-alerts.md) a starších šablon [Log Analytics uložená hledání a upozornění](../insights/solutions.md) . Další informace o tom, jak se ve výchozím nastavení používá nové rozhraní API ScheduledQueryRules, najdete v tématu [Přepnutí na nové rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
 
 
 ### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Ukázka vytvoření upozornění protokolu pomocí šablony prostředků Azure
 
-Následuje struktura šablony prostředků založené na [vytváření pravidel pro vytváření pravidel dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) pomocí standardního vyhledávacího dotazu protokolu s [počtem výstrah protokolu typu výsledků](alerts-unified-log.md#number-of-results-alert-rules)a ukázkovou datovou sadou jako proměnné.
+Následuje struktura šablony prostředků založené na [vytváření pravidel pro vytváření pravidel dotazů](/rest/api/monitor/scheduledqueryrules/createorupdate) pomocí standardního vyhledávacího dotazu protokolu s [počtem výstrah protokolu typu výsledků](alerts-unified-log.md#number-of-results-alert-rules)a ukázkovou datovou sadou jako proměnné.
 
 ```json
 {
@@ -211,7 +212,7 @@ Vzorový formát JSON se dá uložit jako (řekněme) sampleScheduledQueryRule.j
 
 ### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Výstraha protokolu s dotazem mezi prostředky pomocí šablony prostředků Azure
 
-Následuje struktura šablony prostředků založené na [vytváření pravidel pro vytváření pravidel dotazu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) pomocí [vyhledávacího dotazu protokolu](../../azure-monitor/log-query/cross-workspace-query.md) pro [měření metriky protokolu typu měření metriky](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)s ukázkovou datovou sadou jako proměnné.
+Následuje struktura šablony prostředků založené na [vytváření pravidel pro vytváření pravidel dotazu](/rest/api/monitor/scheduledqueryrules/createorupdate) pomocí [vyhledávacího dotazu protokolu](../../azure-monitor/log-query/cross-workspace-query.md) pro [měření metriky protokolu typu měření metriky](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)s ukázkovou datovou sadou jako proměnné.
 
 ```json
 
@@ -301,7 +302,7 @@ Následuje struktura šablony prostředků založené na [vytváření pravidel 
 ```
 
 > [!IMPORTANT]
-> Při použití dotazu mezi prostředky v upozornění protokolu je použití [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) povinné a uživatel musí mít přístup k seznamu uvedených prostředků.
+> Při použití dotazu mezi prostředky v upozornění protokolu je použití [authorizedResources](/rest/api/monitor/scheduledqueryrules/createorupdate#source) povinné a uživatel musí mít přístup k seznamu uvedených prostředků.
 
 Vzorový formát JSON se dá uložit jako (řekněme) sampleScheduledQueryRule.jspro účely tohoto průvodce pomocí a je možné ho nasadit pomocí [Azure Resource Manager v Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
@@ -309,22 +310,22 @@ Vzorový formát JSON se dá uložit jako (řekněme) sampleScheduledQueryRule.j
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor – [rozhraní API pro plánovaná pravidla dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) je REST API a plně kompatibilní s Azure Resource Manager REST API. A níže uvedené rutiny prostředí PowerShell jsou k dispozici pro využití [naplánovaných rozhraní API pravidel dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+Azure Monitor – [rozhraní API pro plánovaná pravidla dotazů](/rest/api/monitor/scheduledqueryrules/) je REST API a plně kompatibilní s Azure Resource Manager REST API. A níže uvedené rutiny prostředí PowerShell jsou k dispozici pro využití [naplánovaných rozhraní API pravidel dotazů](/rest/api/monitor/scheduledqueryrules/).
 
-- [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : PowerShell Rutina pro vytvoření nového pravidla upozornění protokolu
-- Rutina [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : PowerShell aktualizuje existující pravidlo upozornění protokolu.
-- [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu, který určuje zdrojové parametry výstrahy protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
-- [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry plánu pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
-- [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry akce pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
-- [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu, který určuje parametry skupin akcí pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
-- [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
-- [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru metriky pro [výstrahu protokolu typu měření metriky](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules). Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
-- [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : PowerShell Rutina pro výpis stávajících pravidel upozornění protokolů nebo konkrétního pravidla výstrahy protokolu
-- [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : rutina prostředí PowerShell pro povolení nebo zakázání pravidla upozornění protokolu
-- [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell Rutina pro odstranění existujícího pravidla upozornění protokolu
+- [New-AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) : PowerShell Rutina pro vytvoření nového pravidla upozornění protokolu
+- Rutina [set-AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) : PowerShell aktualizuje existující pravidlo upozornění protokolu.
+- [New-AzScheduledQueryRuleSource](/powershell/module/az.monitor/new-azscheduledqueryrulesource) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu, který určuje zdrojové parametry výstrahy protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) .
+- [New-AzScheduledQueryRuleSchedule](/powershell/module/az.monitor/new-azscheduledqueryruleschedule): rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry plánu pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) .
+- [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry akce pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](/powershell/module/az.monitor/set-azscheduledqueryrule) .
+- [New-AzScheduledQueryRuleAznsActionGroup](/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu, který určuje parametry skupin akcí pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) .
+- [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](/powershell/module/az.monitor/new-azscheduledqueryrulealertingaction) .
+- [New-AzScheduledQueryRuleLogMetricTrigger](/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru metriky pro [výstrahu protokolu typu měření metriky](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules). Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleTriggerCondition](/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
+- [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule) : PowerShell Rutina pro výpis stávajících pravidel upozornění protokolů nebo konkrétního pravidla výstrahy protokolu
+- [Update-AzScheduledQueryRule](/powershell/module/az.monitor/update-azscheduledqueryrule) : rutina prostředí PowerShell pro povolení nebo zakázání pravidla upozornění protokolu
+- [Remove-AzScheduledQueryRule](/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell Rutina pro odstranění existujícího pravidla upozornění protokolu
 
 > [!NOTE]
-> Rutiny PowerShellu pro ScheduledQueryRules můžou spravovat jenom pravidla vytvořená samotným rutinou nebo [rozhraní API pro naplánovaná pravidla dotazování](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)pomocí Azure monitor. Pravidla upozornění protokolů vytvořená pomocí starších [Log Analytics rozhraní API výstrah](api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions-resources-searches-alerts.md) se dají spravovat pomocí rutin prostředí ScheduledQueryRules PowerShellu, jenom když uživatel [přepne předvolby rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
+> Rutiny PowerShellu pro ScheduledQueryRules můžou spravovat jenom pravidla vytvořená samotným rutinou nebo [rozhraní API pro naplánovaná pravidla dotazování](/rest/api/monitor/scheduledqueryrules/)pomocí Azure monitor. Pravidla upozornění protokolů vytvořená pomocí starších [Log Analytics rozhraní API výstrah](api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions.md) se dají spravovat pomocí rutin prostředí ScheduledQueryRules PowerShellu, jenom když uživatel [přepne předvolby rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
 
 V následujícím seznamu jsou uvedené kroky pro vytvoření ukázkového pravidla upozornění protokolu pomocí rutin PowerShellu pro scheduledQueryRules.
 
@@ -346,11 +347,11 @@ New-AzScheduledQueryRule -ResourceGroupName "contosoRG" -Location "Region Name f
 
 ## <a name="managing-log-alerts-using-cli-or-api"></a>Správa výstrah protokolu pomocí rozhraní příkazového řádku nebo rozhraní příkazového řádku
 
-Azure Monitor – [rozhraní API pro plánovaná pravidla dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) je REST API a plně kompatibilní s Azure Resource Manager REST API. Proto se dá použít přes PowerShell pomocí příkazů Správce prostředků pro Azure CLI.
+Azure Monitor – [rozhraní API pro plánovaná pravidla dotazů](/rest/api/monitor/scheduledqueryrules/) je REST API a plně kompatibilní s Azure Resource Manager REST API. Proto se dá použít přes PowerShell pomocí příkazů Správce prostředků pro Azure CLI.
 
 
 > [!NOTE]
-> Výstrahy protokolu pro Log Analytics je taky možné spravovat pomocí starších [Log Analytics rozhraní API pro upozornění](api-alerts.md) a starších šablon [Log Analytics uložená hledání a upozornění](../insights/solutions-resources-searches-alerts.md) . Další informace o tom, jak se ve výchozím nastavení používá nové rozhraní API ScheduledQueryRules, najdete v tématu [Přepnutí na nové rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
+> Výstrahy protokolu pro Log Analytics je taky možné spravovat pomocí starších [Log Analytics rozhraní API pro upozornění](api-alerts.md) a starších šablon [Log Analytics uložená hledání a upozornění](../insights/solutions.md) . Další informace o tom, jak se ve výchozím nastavení používá nové rozhraní API ScheduledQueryRules, najdete v tématu [Přepnutí na nové rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
 
 Výstrahy protokolu aktuálně nemají vyhrazené příkazy rozhraní příkazového řádku. Jak je znázorněno níže, můžete použít příkaz Azure Resource Manager CLI pro ukázkovou šablonu prostředků, která se zobrazila dříve (sampleScheduledQueryRule.json) v části šablona prostředků:
 
@@ -364,5 +365,5 @@ Po úspěšné operaci bude 201 vrácen do stavu nové vytvoření pravidla výs
 
 * Přečtěte si o [výstrahách protokolů v Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md) .
 * Porozumění [akcím Webhooku pro výstrahy protokolu](../../azure-monitor/platform/alerts-log-webhook.md)
-* Další informace o [Application Insights](../../azure-monitor/app/analytics.md)
+* Další informace o [Application Insights](../log-query/log-query-overview.md)
 * Přečtěte si další informace o [dotazech protokolu](../log-query/log-query-overview.md).
