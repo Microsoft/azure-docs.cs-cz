@@ -9,11 +9,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: f3fa4c3e194d05edce973bdeddd0e75de5cdfd4e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 85a5e69c1fe1707e29d2de5f62e9d4b3c2161472
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75928005"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544158"
 ---
-Pokud si přejete přejít přímo do, zobrazte si nebo Stáhněte si <a href="https://aka.ms/speech/github-python">ukázky Python SDK pro řeč</a> na GitHubu. V opačném případě můžeme začít.
+Všechny <a href="https://aka.ms/speech/github-python">ukázky v Pythonu pro sadu Speech SDK</a> můžete zobrazit nebo stáhnout na GitHubu. 

@@ -4,12 +4,12 @@ description: Naučte se, jak kódovat a nakonfigurovat Durable Functions pro spo
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733409"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540294"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit Durable Functions jako WebJobs
 
@@ -21,7 +21,7 @@ Ve verzi 3. x sady WebJobs SDK je hostitel implementací `IHost` a ve verzi 2. x
 
 Ukázka řetězení Durable Functions je k dispozici v sadě WebJobs SDK 2. x: Stáhněte nebo naklonujte [úložiště Durable Functions](https://github.com/azure/azure-functions-durable-extension/)a zarezervujte větev *v1* a pokračujte na složku *Samples \\ webjobssdk \\ Chaining* .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste obeznámeni se základy sady WebJobs SDK, vývojem knihovny tříd C# pro Azure Functions a Durable Functions. Pokud potřebujete Úvod do těchto témat, přečtěte si následující zdroje informací:
 
@@ -31,7 +31,7 @@ V tomto článku se předpokládá, že jste obeznámeni se základy sady WebJob
 
 Postup dokončení kroků v tomto článku:
 
-* [Nainstalujte Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) s úlohou **vývoj pro Azure** .
+* [Nainstalujte Visual Studio 2019](/visualstudio/install/) s úlohou **vývoj pro Azure** .
 
   Pokud již máte aplikaci Visual Studio, ale nemáte tuto úlohu, přidejte úlohu výběrem **nástrojů**  >  **získat nástroje a funkce**.
 
@@ -119,7 +119,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 
 Durable Functions v kontextu WebJobs se trochu liší od Durable Functions v kontextu Azure Functions. Je důležité vědět o rozdílech při psaní kódu.
 

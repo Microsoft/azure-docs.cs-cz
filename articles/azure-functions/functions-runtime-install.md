@@ -5,11 +5,12 @@ author: apwestgarth
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74226726"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540379"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Nainstalovat Modul runtime služby Azure Functions Preview 2
 
@@ -24,7 +25,7 @@ Chcete-li nainstalovat Modul runtime služby Azure Functions verze Preview 2, po
 1. Dokončete konfiguraci Modul runtime služby Azure Functions verze Preview 2.
 1. Vytvoření první funkce v Modul runtime služby Azure Functions Preview
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než nainstalujete Modul runtime služby Azure Functions Preview, musíte mít k dispozici následující prostředky:
 
@@ -45,7 +46,7 @@ Instalační program služby Modul runtime služby Azure Functions Preview vás 
 
     ![Instalační program služby Modul runtime služby Azure Functions Preview][1]
 
-1. Klikněte na **Další**.
+1. Klikněte na **Next** (Další).
 1. Po přečtení podmínek **smlouvy EULA** **zaškrtněte políčko** , abyste mohli podmínky přijmout, a kliknutím na Další přejděte k **dalšímu kroku** .
 1. Vyberte role, které chcete nainstalovat, do role **správce Functions Worker Functions** nebo **Functions Worker** functions a klikněte na **Další**.
 
@@ -70,7 +71,7 @@ Chcete-li dokončit instalaci Modul runtime služby Azure Functions, je nutné d
 
     ![Nástroj pro konfiguraci Modul runtime služby Azure Functions Preview][7]
 
-1. Klikněte na kartu **databáze** , zadejte podrobnosti o připojení pro vaši instanci SQL Server, včetně zadání [hlavního klíče databáze](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), a klikněte na **použít**.  Aby se Modul runtime služby Azure Functions vytvořila databáze pro podporu modulu runtime, je nutné připojení k instanci SQL Server.
+1. Klikněte na kartu **databáze** , zadejte podrobnosti o připojení pro vaši instanci SQL Server, včetně zadání [hlavního klíče databáze](/sql/relational-databases/security/encryption/sql-server-and-database-encryption-keys-database-engine), a klikněte na **použít**.  Aby se Modul runtime služby Azure Functions vytvořila databáze pro podporu modulu runtime, je nutné připojení k instanci SQL Server.
 
     ![Konfigurace databáze Modul runtime služby Azure Functions Preview][8]
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbca8798af83108ca5e8bdfe5918a25423fd934d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84436134"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545040"
 ---
 Služba Azure Managed disks v současné době nabízí čtyři typy disků. každý typ je zaměřený na konkrétní scénáře zákazníků.
 
@@ -21,8 +21,8 @@ Služba Azure Managed disks v současné době nabízí čtyři typy disků. ka�
 
 V následující tabulce najdete porovnání disků Ultra, Premium Solid-State Drives (SSD), Standard SSD a standardních pevných disků (HDD) pro spravované disky, které vám pomůžou rozhodnout se, co použít.
 
-|   | Disky Ultra   | SSD úrovně Premium   | SSD úrovně Standard   | HDD úrovně Standard   |
-|---------|---------|---------|---------|---------|
+| Podrobnosti | Disky Ultra | SSD úrovně Premium | SSD úrovně Standard | HDD úrovně Standard |
+| ------ | ---------- | ----------- | ------------ | ------------ |
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
 |Scénář   |Úlohy náročné na v/v, jako jsou [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používané podnikové aplikace a vývoj či testování   |Zálohování, úlohy, které nejsou kritické a používají se zřídka   |
 |Maximální velikost disku   |65 536 gibibajtů (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
@@ -48,9 +48,9 @@ Mezi klíčové funkce Ultra diskù patří:
 
 |Velikost disku (GiB)  |Limit IOPS  |Limit propustnosti (MB/s)  |
 |---------|---------|---------|
-|4     |1 200         |300         |
+|4     |1 200         |300         |
 |8     |2 400         |600         |
-|16     |4 800         |1 200         |
+|16     |4 800         |1 200         |
 |32     |9 600         |2 000         |
 |64     |19 200         |2 000         |
 |128     |38 400         |2 000         |

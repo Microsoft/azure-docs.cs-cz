@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792971"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544058"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2 přiřazení přístupových oprávnění k identitě
 
@@ -92,7 +92,16 @@ V kořenovém adresáři sdílené složky jsou podporovány následující sady
 Sdílenou složku Azure připojíte pomocí příkazu Windows **net use** . Nezapomeňte nahradit zástupné hodnoty v následujícím příkladu vlastními hodnotami. Další informace o připojení sdílených složek najdete v tématu [použití sdílené složky Azure v systému Windows](../articles/storage/files/storage-how-to-use-files-windows.md). 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+ net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+ Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 Pokud dochází k problémům s připojením k souborům Azure, přečtěte si prosím [Nástroj pro řešení potíží, který jsme publikovali pro chyby připojení k souborům Azure ve Windows](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5). Poskytujeme také [pokyny](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) pro řešení scénářů při zablokování portu 445. 
@@ -130,5 +139,13 @@ Přihlaste se k virtuálnímu počítači pomocí identity Azure AD, ke které j
 Sdílenou složku Azure připojíte pomocí následujícího příkazu. Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami. Vzhledem k tomu, že jste ověření, nemusíte zadávat klíč účtu úložiště, místní služba AD DS přihlašovací údaje ani přihlašovací údaje Azure služba AD DS. Možnosti jednotného přihlašování se podporují pro ověřování pomocí místních služba AD DS nebo Azure služba AD DS. Pokud narazíte na problémy s připojením k služba AD DS přihlašovací údaje, přečtěte si téma řešení potíží se [soubory Azure v systému Windows](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) , kde najdete pokyny.
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+ net use <desired-drive letter>: \\<storage-account-name>.file.core.windows.net\<fileshare-name>
+} 
+else 
+{
+ Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
 ```

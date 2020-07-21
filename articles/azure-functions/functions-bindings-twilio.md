@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8116abda71ae78b05786ede03256eb9e9bb59345
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76715059"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540260"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio vazba pro Azure Functions
 
@@ -240,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-Následující příklad ukazuje, jak pomocí anotace [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) odeslat zprávu SMS. Hodnoty pro `to` , `from` a `body` jsou požadovány v definici atributu i v případě, že je přepíšete programově.
+Následující příklad ukazuje, jak pomocí anotace [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) odeslat zprávu SMS. Hodnoty pro `to` , `from` a `body` jsou požadovány v definici atributu i v případě, že je přepíšete programově.
 
 ```java
 package com.function;
@@ -318,7 +319,7 @@ Python nepodporuje atributy.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Umístěte anotaci [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) na [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) parametr, kde `T` může být jakýkoli nativní typ Java `int` , jako je,, `String` `byte[]` nebo typ Pojo.
+Umístěte anotaci [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) na [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) parametr, kde `T` může být jakýkoli nativní typ Java `int` , jako je,, `String` `byte[]` nebo typ Pojo.
 
 ---
 
@@ -326,14 +327,14 @@ Umístěte anotaci [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.mic
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `TwilioSms` atribut.
 
-| V1 function.jsu vlastnosti | V2 function.jsvlastnost | Vlastnost atributu |Description|
+| V1 function.jsu vlastnosti | V2 function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|---------|----------------------|
 |**textový**|**textový**| musí být nastaven na hodnotu `twilioSms` .|
-|**direction**|**direction**| musí být nastaven na hodnotu `out` .|
+|**směr**|**směr**| musí být nastaven na hodnotu `out` .|
 |**Jméno**|**Jméno**| Název proměnné použitý v kódu funkce pro textovou zprávu SMS Twilio. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Tato hodnota musí být nastavená na název nastavení aplikace, které obsahuje váš účet Twilio SID ( `TwilioAccountSid` ). Pokud není nastavená, výchozí název nastavení aplikace je "AzureWebJobsTwilioAccountSid". |
 |**authToken**|**authTokenSetting**|**AuthTokenSetting**| Tato hodnota musí být nastavená na název nastavení aplikace, které obsahuje váš ověřovací token Twilio ( `TwilioAccountAuthToken` ). Pokud není nastavená, výchozí název nastavení aplikace je "AzureWebJobsTwilioAuthToken". |
-|**schopn**| Není k dispozici – zadejte v kódu | **Schopn**| Tato hodnota je nastavená na telefonní číslo, na které se pošle text SMS.|
+|**na**| Není k dispozici – zadejte v kódu | **Schopn**| Tato hodnota je nastavená na telefonní číslo, na které se pošle text SMS.|
 |**Výsledkem**|**Výsledkem** | **Výsledkem**| Tato hodnota je nastavená na telefonní číslo, ze kterého se posílá text SMS.|
 |**těles**|**těles** | **Text**| Tato hodnota se dá použít k zakódování textové zprávy SMS, pokud ji nemusíte dynamicky nastavovat v kódu pro vaši funkci. |  
 

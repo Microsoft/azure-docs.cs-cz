@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: d4d811d782acdd75550f05a8be28711be41ad343
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7db367222d96d7bc9dae48242992ee76a89c849d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038192"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544898"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
+V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci vlastností prostředí budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
-* [Git](https://git-scm.com/)
-* [SADA moderní čtečky](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Když nakonfigurujete vlastnosti prostředí, budete potřebovat některé z hodnot, které jsou tady vytvořené. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
+* [Git](https://git-scm.com/).
+* [Sada moderního čtecího zařízení](https://github.com/microsoft/immersive-reader-sdk).
+* [Android Studio](https://developer.android.com/studio).
 
 ## <a name="create-an-android-project"></a>Vytvoření projektu Android
 
-Spustí nový projekt v Android Studio. Zdrojový kód pro tento příklad je k dispozici jako součást [sady pro moderní čtečku](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin) .
+Spustí nový projekt v Android Studio. Zdrojový kód pro tento příklad je k dispozici jako součást [sady pro moderní čtečku](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
 ![Nový projekt](../../media/android/kotlin/android-studio-create-project.png)
 
-V okně zvolte projekt vyberte **prázdná aktivita** a potom klikněte na tlačítko Další.
+V okně **Zvolte projekt** vyberte možnost **prázdná aktivita**a potom vyberte možnost **Další**.
 
 ![Prázdný projekt aktivity](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurace projektu
 
-Pojmenujte projekt ' QuickstartKotlin', vyberte umístění pro uložení a zvolte ' Kotlin' ' jako programovací jazyk a pak klikněte na ' Dokončit '.
+Pojmenujte projekt **QuickstartKotlin**a vyberte umístění pro uložení. Jako programovací jazyk vyberte **Kotlin** a pak vyberte **Dokončit**.
 
 ![Konfigurace projektu](../../media/android/kotlin/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Nastavení prostředků a ověřování
 
-Vytvořit novou složku **/assets**
+Vytvořte novou složku **/assets** .
 
 ![Vytvoří novou složku assets.](../../media/android/kotlin/android-studio-assets-folder.png)
 
- Ve složce assets (prostředky) vytvořte soubor s názvem **ENV** . Podle potřeby přidejte následující hodnoty a zadejte hodnoty. Ujistěte se, že tento soubor ENV nechcete potvrdit do správy zdrojových kódů, protože obsahuje tajné kódy, které by neměly být zveřejněny.
+ Ve složce assets (prostředky) vytvořte soubor s názvem **ENV** . Přidejte následující názvy a hodnoty a podle potřeby zadejte hodnoty. Tento soubor ENV Nepotvrzujte do správy zdrojových kódů, protože obsahuje tajné klíče, které by se neměly zveřejnit.
 
 ![Vytvořit nový soubor ENV](../../media/android/kotlin/android-studio-create-env-file.png)
 
@@ -65,7 +65,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-Nahraďte stávající závislosti v souboru **Build. Gradle** následujícími implementacemi pro povolení couroutines (asynchronní programování), gson (analýza JSON a serializace) a dotenv pro odkazování na proměnné definované v souboru env. Možná budete muset projekt znovu synchronizovat při implementaci MainActivity. kt v pozdějším kroku v tomto rychlém startu.
+Nahraďte stávající závislosti v souboru **Build. Gradle** následujícími implementacemi pro povolení korutin (asynchronní programování), gson (analýza JSON a serializace) a dotenv pro odkazování na proměnné definované v souboru env. Pokud v pozdějším kroku v tomto rychlém startu implementujete MainActivity. KT, možná budete muset projekt znovu synchronizovat.
 
 ```build.gradle
 dependencies {
@@ -88,7 +88,7 @@ dependencies {
 
 ## <a name="update-app-strings-and-layout-resources"></a>Aktualizace řetězců aplikace a prostředků rozložení
 
-Nahraďte obsah v **res/Strings/strings.xml** pomocí níže uvedených řetězců, které se mají v aplikaci použít.
+Nahraďte obsah v **res/Strings/strings.xml** pomocí následujících řetězců, které se mají v aplikaci použít.
 
 ![strings.xml aplikace](../../media/android/kotlin/android-studio-strings.png)
 
@@ -106,7 +106,7 @@ Nahraďte obsah v **res/Strings/strings.xml** pomocí níže uvedených řetězc
 </resources>
 ```
 
-Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kódem XML, který se má v aplikaci použít. Toto je rozložení uživatelského rozhraní aplikace.
+Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kódem XML, který se použije v aplikaci. Toto XML je rozložení uživatelského rozhraní aplikace.
 
 ![activity_main.xml aplikace](../../media/android/kotlin/android-studio-activity-main-xml.png)
 
@@ -207,7 +207,7 @@ Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kóde
 
 ## <a name="set-up-the-app-kotlin-code-javascript-interface"></a>Nastavení rozhraní JavaScript pro App Kotlin Code
 
-Ve složce **/Java/com.example.quickstartkotlin** vytvořte novou třídu Kotlin a pojmenujte ji **WebAppInterface**a přidejte do ní následující kód. To umožňuje aplikaci rozhraní s funkcemi JavaScriptu v HTML, které budou přidány v pozdějším kroku.
+Ve složce **/Java/com.example.quickstartkotlin** vytvořte novou třídu Kotlin a pojmenujte ji **WebAppInterface**. Potom do něj přidejte následující kód. Tento kód umožňuje aplikaci rozhraní s funkcemi jazyka JavaScript v jazyce HTML, které budou přidány v pozdějším kroku.
 
 ![com. example. quickstartkotlin složka](../../media/android/kotlin/android-studio-com-folder.png)
 
@@ -262,7 +262,7 @@ class WebAppInterface(private val mContext: Context, var parentLayout: LinearLay
 
 ## <a name="set-up-the-app-kotlin-code-main-activity"></a>Nastavení hlavní aktivity aplikace Kotlin Code
 
-Ve složce **/Java/com.example.quickstartkotlin** se zobrazí existující soubor třídy **MainActivity. kt** Kotlin. Tady je místo, kde je logika aplikace vytvořená. Nahraďte jeho obsah následujícím kódem.
+Ve složce **/Java/com.example.quickstartkotlin** se zobrazí existující soubor třídy **MainActivity. kt** Kotlin. Tento soubor je tam, kde je logika aplikace vytvořená. Jeho obsah nahraďte následujícím kódem.
 
 ```MainActivity.kt
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -290,10 +290,10 @@ import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.util.*
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 class MainActivity : AppCompatActivity() {
     private val dotEnv = dotenv {
@@ -313,10 +313,10 @@ class MainActivity : AppCompatActivity() {
         immersiveReaderButton.setOnClickListener { GlobalScope.launch { handleLoadImmersiveReaderWebView() } }
     }
 
-    // Assigns values to the objects sent to the Immersive Reader SDK
+    // Assigns values to the objects sent to the Immersive Reader SDK,
     // acquires the token and authorizes the app, then launches
     // the Web View to get the response and load the Immersive Reader
-    // When the button is clicked in HTML.
+    // when the button is clicked in HTML.
     private suspend fun handleLoadImmersiveReaderWebView() {
         val exampleActivity = this
         val subdomain = dotEnv["SUBDOMAIN"]
@@ -358,7 +358,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // The next two functions get the token from the Immersive Reader SDK
-    // and authorizes the app.
+    // and authorize the app.
     private suspend fun getImmersiveReaderTokenAsync(): String {
         return getToken()
     }
@@ -416,7 +416,7 @@ class MainActivity : AppCompatActivity() {
                   var options: Options? = null)
 
     // Only includes Immersive Reader options relevant to Android apps.
-    // For a complete list visit https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference
+    // For a complete list, visit https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference
     class Options(var uiLang: String? = null, // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
                   var timeout: Int? = null, // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
                   var uiZIndex: Int? = null, // Z-index of the iframe that will be created (default is 1000)
@@ -507,9 +507,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                // This is where the WebAppInterface Class is used
+                // This is where the WebAppInterface Class is used.
                 // Affords a way for JavaScript to work with the app directly from
-                // the Web View's HTML
+                // the Web View's HTML.
                 val jsInterface = WebAppInterface(exampleActivity, parentLayout, contextualWebView)
                 contextualWebView.addJavascriptInterface(jsInterface, "Android")
                 contextualWebView.loadUrl("file:///android_asset/immersiveReader.html")
@@ -521,13 +521,13 @@ class MainActivity : AppCompatActivity() {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>Přidání HTML aplikace do zobrazení webu
 
-Implementace webového zobrazení bude potřebovat jazyk HTML pro práci. Klikněte pravým tlačítkem na složku **/assets** a vytvořte nový soubor a pojmenujte ho **immersiveReader.html**.
+Implementace webového zobrazení potřebuje k práci HTML. Klikněte pravým tlačítkem na složku **/assets** , vytvořte nový soubor a pojmenujte ho **immersiveReader.html**.
 
 ![Vytvořit nový soubor HTML](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
 ![Umístění prostředku HTML](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
 
-Níže přidejte HTML a JavaScript. Tím se do aplikace přidá sada moderního čtecího zařízení a použije se k otevření moderní čtečky pomocí kódu aplikace, který jsme napsali.
+Přidejte následující kód HTML a JavaScript. Tento kód přidá do aplikace sadu pro moderní čtečku a použije ji k otevření moderního čtecího zařízení pomocí kódu aplikace, který jsme napsali.
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -576,7 +576,7 @@ Licensed under the MIT License. -->
 
 ![Souboru AndroidManifest](../../media/android/kotlin/android-studio-android-manifest-xml.png)
 
-Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady SDK pro moderní čtečku, je potřeba zajistit, aby byla oprávnění aplikace nakonfigurovaná tak, aby povolovala přístup k síti. Obsah **/manifests/AndroidManifest.xml** nahraďte následujícím kódem XML.
+Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady moderní čtečky, aby fungovala, potřebujeme, abyste zajistili, že oprávnění aplikace jsou nakonfigurovaná tak, aby povolovala přístup k síti. Obsah **/manifests/AndroidManifest.xml** nahraďte následujícím kódem XML:
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -604,12 +604,12 @@ Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady SDK pro
 </manifest>
 ```
 
-## <a name="running-the-app"></a>Spuštění aplikace
+## <a name="run-the-app"></a>Spuštění aplikace
 
-Použijte Android Studio ke spuštění aplikace na emulátoru zařízení. Po kliknutí na tlačítko pro **moderní čtečku** se zobrazí moderní čtečka, která se spustí s obsahem aplikace.
+Použijte Android Studio ke spuštění aplikace na emulátoru zařízení. Když vyberete **moderní čtečku**, otevře se moderní čtečka s obsahem aplikace.
 
 ![Asistivní čtečka](../../media/android/kotlin/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../../reference.md)
+Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../../reference.md).

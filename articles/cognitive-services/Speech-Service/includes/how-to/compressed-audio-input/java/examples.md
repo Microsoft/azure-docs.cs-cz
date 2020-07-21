@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 666decfe3982ea58f5db3561eb9fb6e96965df5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: caada98d3a2bcc4acb566cb02065c6451c233066
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422075"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544513"
 ---
-Chcete-li streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání `PullAudioInputStream` řeči `PushAudioInputStream`, vytvořte nebo. Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
+Chcete-li streamovat v komprimovaném zvukovém formátu ke službě rozpoznávání řeči, vytvořte `PullAudioInputStream` nebo `PushAudioInputStream` . Pak vytvořte `AudioConfig` z instance vaší třídy streamu a určete formát komprese datového proudu.
 
 Pojďme předpokládat, že máte třídu vstupního datového proudu nazvanou `pullStream` a používáte Opus/OGG. Váš kód může vypadat takto:
 
@@ -40,7 +40,7 @@ AudioConfig audioConfig =
         audioFormat);
 
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get()
+SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
 
 String text = result.getText();
 ```

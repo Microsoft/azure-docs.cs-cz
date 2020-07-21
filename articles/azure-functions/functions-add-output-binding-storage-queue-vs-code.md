@@ -5,11 +5,12 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d41c018e07f792fd0af4027229449d8352aa6c55
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 65570674f16e660c4101088cd77db433abab59a2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849976"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540328"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Připojení Azure Functions k Azure Storage pomocí Visual Studio Code
 
@@ -28,7 +29,7 @@ Než začnete tento článek, musíte splnit následující požadavky:
 * Nainstalujte [Průzkumník služby Azure Storage](https://storageexplorer.com/). Průzkumník služby Storage je nástroj, který budete používat k prohlédnutí zpráv ve frontě generovaných výstupní vazbou. Průzkumník služby Storage se podporují v operačních systémech macOS, Windows a Linux.
 
 ::: zone pivot="programming-language-csharp"
-* Instalace [.NET Core CLIch nástrojů](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x).
+* Instalace [.NET Core CLIch nástrojů](/dotnet/core/tools/?tabs=netcore2x).
 ::: zone-end
 
 * Proveďte kroky v [části 1 rychlého startu Visual Studio Code](functions-create-first-function-vs-code.md). 

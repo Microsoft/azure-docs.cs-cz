@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: glenga
-ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63c52b8b1ee9b9448a1ba6f78873ae6a036e3563
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735296"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540209"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -21,7 +21,7 @@ K nasazení kódu Azure Functions projektu do Azure můžete použít několik r
 
 Azure Functions podporuje místní vývoj a hostování pro různé platformy v systémech Windows a Linux. V současné době jsou k dispozici tři plány hostování:
 
-+ [Nároky](functions-scale.md#consumption-plan)
++ [Využití](functions-scale.md#consumption-plan)
 + [Premium](functions-scale.md#premium-plan)
 + [Vyhrazeno (App Service)](functions-scale.md#app-service-plan)
 
@@ -179,7 +179,7 @@ V editoru založeném na portálu můžete přímo upravovat soubory, které jso
 
 V následující tabulce jsou uvedeny operační systémy a jazyky, které podporují úpravy portálu:
 
-| | Spotřeba Windows | Windows Premium | Vyhrazená pro Windows | Spotřeba Linux | Linux Premium | Vyhrazený pro Linux |
+| Jazyk | Spotřeba Windows | Windows Premium | Vyhrazená pro Windows | Spotřeba Linux | Linux Premium | Vyhrazený pro Linux |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | Skript jazyka C# |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|

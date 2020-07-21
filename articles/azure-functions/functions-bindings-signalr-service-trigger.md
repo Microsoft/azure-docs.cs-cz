@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830702"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540226"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Aktivační událost služby signalizace pro Azure Functions
 
@@ -43,7 +43,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="with-traditional-model"></a>S tradičním modelem
 
-Tradiční model dodržuje konvenci funkce Azure vyvinuté v jazyce C#. Pokud s ním nejste obeznámeni, můžete se dozvědět od [dokumentů](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-class-library).
+Tradiční model dodržuje konvenci funkce Azure vyvinuté v jazyce C#. Pokud s ním nejste obeznámeni, můžete se dozvědět od [dokumentů](./functions-dotnet-class-library.md).
 
 ```cs
 [FunctionName("SignalRTest")]
@@ -168,10 +168,10 @@ def main(invocation) -> None:
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `SignalRTrigger` atribut.
 
-|function.jsvlastnost | Vlastnost atributu |Description|
+|function.jsvlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
 |**textový**| Není k dispozici | Musí být nastaven na hodnotu `SignalRTrigger` .|
-|**direction**| Není k dispozici | Musí být nastaven na hodnotu `in` .|
+|**směr**| Není k dispozici | Musí být nastaven na hodnotu `in` .|
 |**Jméno**| Není k dispozici | Název proměnné použitý v kódu funkce pro objekt kontextu vyvolání triggeru |
 |**hubName**|**HubName**| Tato hodnota musí být nastavená na název centra signalizace pro funkci, která se má aktivovat.|
 |**kategorií**|**Kategorie**| Tato hodnota musí být nastavena jako kategorie zpráv pro funkci, která má být aktivována. Kategorie může být jedna z následujících hodnot: <ul><li>**připojení**: včetně *připojených* a *odpojených* událostí</li><li>**zprávy**: včetně všech ostatních událostí kromě těch v kategorii *připojení*</li></ul> |
@@ -187,7 +187,7 @@ Vstupní typ triggeru je deklarován jako `InvocationContext` nebo vlastní typ.
 
 InvocationContext obsahuje veškerý obsah ve zprávě odesílané ze služby signalizace.
 
-|Vlastnost v InvocationContext | Description|
+|Vlastnost v InvocationContext | Popis|
 |------------------------------|------------|
 |Arguments| K dispozici pro kategorii *zpráv* . Obsahuje *argumenty* ve [zprávě vyvolání](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding) .|
 |Chyba| K dispozici pro *odpojenou* událost. Může být prázdné, pokud připojení bylo ukončeno bez chyby nebo obsahuje chybové zprávy.|
@@ -197,10 +197,10 @@ InvocationContext obsahuje veškerý obsah ve zprávě odesílané ze služby si
 |ConnectionId| ID připojení klienta, které odesílá zprávu.|
 |UserId| Identita uživatele klienta, který odesílá zprávu.|
 |Hlavičky| Hlavičky požadavku|
-|Dotaz| Dotaz na požadavek při připojení klientů ke službě.|
-|Deklarace identity| Deklarace identity klienta.|
+|Dotazy| Dotaz na požadavek při připojení klientů ke službě.|
+|Deklarace identit| Deklarace identity klienta.|
 
-## <a name="using-parameternames"></a>Použití metody `ParameterNames`
+## <a name="using-parameternames"></a>Používání akce `ParameterNames`
 
 Vlastnost `ParameterNames` v `SignalRTrigger` umožňuje navazovat argumenty vyvolání zpráv do parametrů funkcí. Poskytuje pohodlnější způsob přístupu k argumentům `InvocationContext` .
 

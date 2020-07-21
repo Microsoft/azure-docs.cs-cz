@@ -5,31 +5,31 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a924cb42ce1c5fccde3d49fa8f9c2d402997df52
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83721215"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544827"
 ---
 >[!NOTE]
 >Těžko pracujeme na přidání dalších oblastí. Po přidání oblasti ji přidáme do tohoto seznamu.
 >
 
 **Amerika**
-* Brazílie – jih
+* Brazil South
 * Střední Kanada
-* USA – střed
-* USA – východ
+* Střední USA
+* East US
 * USA – východ 2
 * USA – středosever
-* USA – středojih
+* Středojižní USA
 * USA – středozápad
 * USA – západ
-* USA – západ 2
+* Západní USA 2
 
 **Evropa**
 * Francie – střed
@@ -51,8 +51,8 @@ ms.locfileid: "83721215"
 * Jižní Korea – střed
 * Jižní Korea – jih
 * Jihovýchodní Asie
-* Indie – střed
-* Indie – západ
+* Central India
+* Západní Indie
 
 **Střední východ a Afrika**
 * Jižní Afrika – sever
@@ -65,3 +65,6 @@ ms.locfileid: "83721215"
 * US Gov – Iowa
 * USA (Gov) – Texas
 * USA (Gov) – Virginia
+
+**Azure (Čína)**
+* Čína – sever 2

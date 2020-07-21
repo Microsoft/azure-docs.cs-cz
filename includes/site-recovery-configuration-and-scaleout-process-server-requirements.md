@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85292137"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544747"
 ---
 **Požadavky na konfigurační a procesní Server**
 
@@ -46,7 +46,7 @@ FIPS (Federal Information Processing Standards) | Nepovolit režim FIPS
 
 **Komponenta** | **Požadavek** 
 --- | --- 
-Typ IP adresy | Static 
+Typ IP adresy | Statická 
 Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat) 
 Typ síťové karty | VMXNET3 (Pokud je konfigurační server virtuálním počítačem VMware)
  |
@@ -61,6 +61,9 @@ time.windows.com | Používá se ke kontrole časové synchronizace mezi systém
 https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | Pro dokončení stažení MySQL. </br> V několika oblastech může být stahování Přesměrováno na adresu URL CDN. V případě potřeby zkontrolujte, jestli je v případě potřeby také povolená adresa URL CDN.
 |
 
+> [!NOTE]
+> Pokud máte připojení k Site Recovery trezoru [privátních odkazů](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md) , nepotřebujete žádný další internetový přístup ke konfiguračnímu serveru. Výjimkou je, že při nastavování počítače CS pomocí šablony vajíček budete potřebovat přístup k následujícím adresám URL přes přístup k privátním odkazům a dál nad ním https://management.azure.com https://www.live.com https://www.microsoft.com . Pokud nechcete povolit přístup k těmto adresám URL, nastavte prosím CS pomocí sjednoceného instalačního programu.
+
 ## <a name="required-software"></a>Požadovaný software
 
 **Komponenta** | **Požadavek** 
@@ -74,7 +77,7 @@ MYSQL | Je potřeba nainstalovat MySQL. Instalaci můžete provést ručně, neb
 Následující tabulka shrnuje požadavky na kapacitu pro konfigurační server. Pokud provádíte replikaci několika virtuálních počítačů VMware, Projděte si téma [požadavky na plánování kapacity](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) a spusťte [nástroj Plánovač nasazení služby Azure Site Recovery](../articles/site-recovery/site-recovery-deployment-planner.md).
 
 
-**Procesor** | **Memory (Paměť)** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
+**Procesor** | **Paměť** | **Disk mezipaměti** | **Frekvence změny dat** | **Replikované počítače**
 --- | --- | --- | --- | ---
 8 vCPU<br/><br/> 2 sokety × 4 jádra \@ 2,5 GHz | 16 GB | 300 GB | 500 GB nebo méně | Počítače s < 100
 12 vCPU<br/><br/> 2 SOCKS * 6 jader \@ 2,5 GHz | 18 GB | 600 GB | 500 GB AŽ 1 TB | 100 až 150 počítačů

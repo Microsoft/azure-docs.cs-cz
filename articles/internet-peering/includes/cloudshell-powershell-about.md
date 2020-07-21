@@ -8,17 +8,17 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3a5485475e3d8030bf85734faec53b0ff0747499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee071f2cf6e31d46ccd483935f137f16bcacf337
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81678470"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545009"
 ---
 Pokud chcete spustit rutiny, můžete použít Azure Cloud Shell, což je bezplatné interaktivní prostředí. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Vyberte **Kopírovat** a zkopírujte kód a vložte ho do Cloud Shell. Pak vyberte **ENTER** a spusťte ji. K dispozici je několik způsobů, jak spustit Cloud Shell:
 
 
-|  |   |
+| Launch – metoda | Snímek obrazovky  |
 |-----------------------------------------------|---|
 | Otevřete Cloud Shell ve vašem prohlížeči. | [![https://shell.azure.com/powershell](../media/launchcloudshell.png)](https://shell.azure.com/powershell) |
 | Na panelu nástrojů v pravém horním rohu Azure Portal vyberte tlačítko **Cloud Shell** . | [![Cloud Shell na portálu](../media/cloud-shell-menu.png)](https://portal.azure.com) |

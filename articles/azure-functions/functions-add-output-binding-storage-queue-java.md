@@ -6,24 +6,24 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: d9815fd27a57acc8b418962e610d2ae1c106edde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e5b1250170830af24ddc1f2e3b78965ebcea051e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673309"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540311"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Připojte funkci jazyka Java k Azure Storage
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlý Start](functions-create-first-java-maven.md) s frontou Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
+V tomto článku se dozvíte, jak integrovat funkci, kterou jste vytvořili v [předchozím článku rychlý Start](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser) s frontou Azure Storage. Výstupní vazba, kterou přidáte do této funkce, zapisuje data z požadavku HTTP do zprávy ve frontě.
 
-Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
+Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Aby bylo toto připojení snazší, použijte účet úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage` .  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu Java](functions-create-first-java-maven.md).
+Než začnete s tímto článkem, proveďte kroky v [části 1 rychlého startu Java](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser).
 
 ## <a name="download-the-function-app-settings"></a>Stažení nastavení Function App
 
@@ -64,7 +64,7 @@ gradle azureFunctionsRun
 ---
 
 > [!NOTE]  
-> Vzhledem k tomu, že jste povolili sady rozšíření v Host. JSON, [rozšíření pro vytváření vazeb úložiště](functions-bindings-storage-blob.md#add-to-your-functions-app) se během spouštění stáhlo a nainstalovalo společně s dalšími rozšířeními vazby Microsoftu.
+> Vzhledem k tomu, že jste povolili sady rozšíření v host.jsna, bylo [rozšíření pro vytváření úložiště](functions-bindings-storage-blob.md#add-to-your-functions-app) během spouštění staženo a nainstalováno společně s dalšími rozšířeními vazby společnosti Microsoft.
 
 Stejně jako dřív aktivujte funkci z příkazového řádku pomocí funkce kudrlinkou v novém okně terminálu:
 
@@ -72,7 +72,7 @@ Stejně jako dřív aktivujte funkci z příkazového řádku pomocí funkce kud
 curl -w "\n" http://localhost:7071/api/HttpTrigger-Java --data AzureFunctions
 ```
 
-Tentokrát výstupní vazba také vytvoří ve svém účtu úložiště frontu `outqueue` s názvem a přidá zprávu se stejným řetězcem.
+Tentokrát výstupní vazba také vytvoří ve svém účtu úložiště frontu s názvem `outqueue` a přidá zprávu se stejným řetězcem.
 
 Dále pomocí Azure CLI zobrazíte novou frontu a ověříte, že se přidala zpráva. Frontu můžete také zobrazit pomocí [Průzkumník služby Microsoft Azure Storage][Azure Storage Explorer] nebo v [Azure Portal](https://portal.azure.com).
 

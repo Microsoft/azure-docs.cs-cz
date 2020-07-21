@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b362a5ab627714f106a9528e25474c9f3c33b81a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 113bc137a0be657c0920f45a3f1c90ec11ee9e10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82978812"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544994"
 ---
-Pokud si přejete přejít přímo do, zobrazte si nebo Stáhněte si <a href="https://aka.ms/speech/github-javascript">ukázky JavaScriptu pro sadu Speech SDK</a> na GitHubu. V opačném případě můžeme začít.
+Všechny <a href="https://aka.ms/speech/github-javascript">ukázky JavaScriptu sady Speech SDK</a> můžete zobrazit nebo stáhnout na GitHubu. 

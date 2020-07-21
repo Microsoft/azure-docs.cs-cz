@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: f1d5a5cf6fb23ce3ccf92faf75d80cbe760b9bdc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d7b027ead90c0bde8611fc08f19f261c934de2e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038198"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544404"
 ---
 [Moderní čtečka](https://www.onenote.com/learningtools) je celkově navržený nástroj, který implementuje osvědčené techniky pro zlepšení porozumění čtení.
 
-V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [zde](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
+V tomto rychlém startu sestavíte aplikaci pro Android od začátku a integrujete moderní čtečku. Kompletní pracovní vzorek tohoto rychlého startu je k dispozici [na GitHubu](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Při konfiguraci vlastností prostředí budete potřebovat některé z hodnot, které jsou zde vytvořeny. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
-* [Git](https://git-scm.com/)
-* [SADA moderní čtečky](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* Prostředek moderního čtecího zařízení nakonfigurovaný pro ověřování Azure Active Directory. Pomocí [těchto pokynů](../../how-to-create-immersive-reader.md) si můžete nastavit. Když nakonfigurujete vlastnosti prostředí, budete potřebovat některé z hodnot, které jsou tady vytvořené. Uložte výstup vaší relace do textového souboru pro budoucí referenci.
+* [Git](https://git-scm.com/).
+* [Sada moderního čtecího zařízení](https://github.com/microsoft/immersive-reader-sdk).
+* [Android Studio](https://developer.android.com/studio).
 
 ## <a name="create-an-android-project"></a>Vytvoření projektu Android
 
-Spustí nový projekt v Android Studio. Zdrojový kód pro tento příklad je k dispozici jako součást [sady pro moderní čtečku](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) .
+Spustí nový projekt v Android Studio. Zdrojový kód pro tento příklad je k dispozici jako součást [sady pro moderní čtečku](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
 ![Nový projekt](../../media/android/java/android-studio-create-project.png)
 
-V okně zvolte projekt vyberte **prázdná aktivita** a potom klikněte na tlačítko Další.
+V okně **Zvolte projekt** vyberte možnost **prázdná aktivita**a potom vyberte možnost **Další**.
 
 ![Prázdný projekt aktivity](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>Konfigurace projektu
 
-Pojmenujte projekt ' QuickstartJava ', vyberte umístění pro uložení a zvolte ' Java ' jako programovací jazyk a potom klikněte na tlačítko ' Dokončit '.
+Pojmenujte projekt **QuickstartJava**a vyberte umístění pro uložení. Jako programovací jazyk vyberte **Java** a pak vyberte **Dokončit**.
 
 ![Konfigurace projektu](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Nastavení prostředků a ověřování
 
-Vytvořit novou složku **/assets**
+Vytvořte novou složku **/assets** .
 
 ![Vytvoří novou složku assets.](../../media/android/java/android-studio-assets-folder.png)
 
- Ve složce assets (prostředky) vytvořte soubor s názvem **ENV** . Podle potřeby přidejte následující hodnoty a zadejte hodnoty. Ujistěte se, že tento soubor ENV nechcete potvrdit do správy zdrojových kódů, protože obsahuje tajné kódy, které by neměly být zveřejněny.
+ Ve složce assets (prostředky) vytvořte soubor s názvem **ENV** . Přidejte následující názvy a hodnoty a podle potřeby zadejte hodnoty. Tento soubor ENV Nepotvrzujte do správy zdrojových kódů, protože obsahuje tajné klíče, které by se neměly zveřejnit.
 
 ![Vytvořit nový soubor ENV](../../media/android/java/android-studio-create-env-file.png)
 
@@ -84,7 +84,7 @@ dependencies {
 
 ## <a name="update-app-strings-and-layout-resources"></a>Aktualizace řetězců aplikace a prostředků rozložení
 
-Nahraďte obsah v **res/Strings/strings.xml** pomocí níže uvedených řetězců, které se mají v aplikaci použít.
+Nahraďte obsah v **res/Strings/strings.xml** pomocí následujících řetězců, které se mají v aplikaci použít.
 
 ![strings.xml aplikace](../../media/android/java/android-studio-strings.png)
 
@@ -102,7 +102,7 @@ Nahraďte obsah v **res/Strings/strings.xml** pomocí níže uvedených řetězc
 </resources>
 ```
 
-Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kódem XML, který se má v aplikaci použít. Toto je rozložení uživatelského rozhraní aplikace.
+Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kódem XML, který se použije v aplikaci. Toto XML je rozložení uživatelského rozhraní aplikace.
 
 ![activity_main.xml aplikace](../../media/android/java/android-studio-activity-main-xml.png)
 
@@ -203,7 +203,7 @@ Obsah v souboru **res/layout/activity_main.xml** nahraďte následujícím kóde
 
 ## <a name="add-the-web-view-layout"></a>Přidat rozložení webového zobrazení
 
-Ve složce **res/layout/** Folder vytvořte nový soubor prostředků rozložení a pojmenujte ho **activity_immersive_reader**a potom nahraďte jeho obsah následujícím kódem XML. Tím se přidá komponenta WebView, kterou bude používat IRActivity kód Java, který se vytvoří v pozdějším kroku, zatím není definován a způsobí chyby.
+Ve složce **res/layout/** Folder vytvořte nový soubor prostředků rozložení a pojmenujte ho **activity_immersive_reader**. Potom nahraďte jeho obsah následujícím kódem XML. Tento kód XML přidá komponentu WebView, kterou bude používat IRActivity kód Java, který bude vytvořen v pozdějším kroku. Prozatím není definováno a způsobí chyby.
 
 ![Vytvořit nový soubor prostředků rozložení](../../media/android/java/android-studio-new-layout-resource.png)
 
@@ -256,9 +256,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Creates a new activity, finds its content and the Immersive Reader button
- * when clicked the app sends the content to the Immersive Reader SDK and
- * Launches the Immersive Reader
+ * Creates a new activity, finds its content and the Immersive Reader button.
+ * When clicked, the app sends the content to the Immersive Reader SDK and
+ * launches the Immersive Reader.
  */
 public class MainActivity extends Activity {
 
@@ -287,13 +287,13 @@ public class MainActivity extends Activity {
 }
 ```
 
-Ve složce **/Java/com.example.quickstartjava** budeme vytvářet 16 dalších souborů třídy Java. Každá z těchto tříd se používá v aplikaci k integraci sady pro moderní čtečku. U každého nového souboru existuje několik tříd, které jsou odkazovány v kódu, který ještě neexistuje a který bude vytvořen v pozdějších verzích. Po vytvoření všech tříd by neměly být žádné chyby odkazu s hodnotou null.
+Ve složce **/Java/com.example.quickstartjava** vytvoříme 16 dalších souborů třídy Java. Každá z těchto tříd se používá v aplikaci k integraci sady pro moderní čtečku. U každého nového souboru je k dispozici několik tříd v kódu, které ještě neexistují a budou vytvořeny později. Po vytvoření všech tříd by neměly být žádné chyby odkazu s hodnotou null.
 
-Vytvořte nový soubor třídy Java **ImmersiveReader. Java** tak, že kliknete pravým tlačítkem na složku v Android Studio pak vyberete New a potom vyberete Java Class. Tuto metodu použijete pro vytváření souborů tříd Java pro každý nový vytvořený soubor třídy Java.
+Pokud chcete vytvořit nový soubor třídy Java **ImmersiveReader. Java** , klikněte pravým tlačítkem na složku v Android Studio, vyberte **Nový**a pak vyberte **Třída Java**. Stejnou metodu použijete k vytvoření souborů tříd Java pro každý nový soubor třídy Java, který vytvoříte.
 
 ![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
 
-Obsah **ImmersiveReader. Java** nahraďte následujícím kódem.
+Obsah **ImmersiveReader. Java** nahraďte následujícím kódem:
 
 ```ImmersiveReader.java
 /**
@@ -347,7 +347,7 @@ public class ImmersiveReader {
      * @param dataToRead - Content to be read
      * @return IRError - IRError, with following error codes:
      * a) Error.NONE in case of successful launch of Immersive Reader
-     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token.
+     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token
      * c) Error.INVALID_STATE in case of empty activity
      * d) Error.INVALID_CONTENT in case of empty list of text chunks
      */
@@ -377,7 +377,7 @@ Vytvořte nový soubor třídy Java **IRActivity. Java** .
 
 ![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
 
-Obsah **IRActivity. Java** nahraďte následujícím kódem.
+Obsah **IRActivity. Java** nahraďte následujícím kódem:
 
 ```IRActivity.java
 /**
@@ -408,8 +408,8 @@ public class ImmersiveReader {
 
     /**
      * Interface to accept access token from client app.
-     * Note that it is client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
-     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string
+     * Note that it is the client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
+     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string.
      */
     @Keep
     public interface IAuthenticator {
@@ -461,7 +461,7 @@ Vytvořte nový soubor třídy Java **IRError. Java** .
 
 ![IRError](../../media/android/java/android-studio-irerror-java.png)
 
-Obsah **IRError. Java** nahraďte následujícím kódem.
+Obsah **IRError. Java** nahraďte následujícím kódem:
 
 ```IRError.java
 /**
@@ -540,7 +540,7 @@ Vytvoří novou **chybu.** soubor třídy Java Java.
 
 ![Chyba](../../media/android/java/android-studio-error-java.png)
 
-Nahraďte text **Error. Java** obsahem následujícího kódu.
+Nahraďte **Error. Java** obsahem následujícím kódem:
 
 ```Error.java
 /**
@@ -571,7 +571,7 @@ Vytvořte nový soubor třídy Java **ReadableContent. Java** .
 
 ![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
 
-Obsah **ReadableContent. Java** nahraďte následujícím kódem.
+Obsah **ReadableContent. Java** nahraďte následujícím kódem:
 
 ```ReadableContent.java
 /**
@@ -615,7 +615,7 @@ Vytvořte nový soubor třídy Java **ReadableTextChunk. Java** .
 
 ![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
 
-Obsah **ReadableTextChunk. Java** nahraďte následujícím kódem.
+Obsah **ReadableTextChunk. Java** nahraďte následujícím kódem:
 
 ```ReadableTextChunk.java
 /**
@@ -647,7 +647,7 @@ Vytvořte nový soubor třídy Java **IRDataHolder. Java** .
 
 ![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
 
-Obsah **IRDataHolder. Java** nahraďte následujícím kódem.
+Obsah **IRDataHolder. Java** nahraďte následujícím kódem:
 
 ```IRDataHolder.java
 /**
@@ -663,7 +663,7 @@ import androidx.annotation.Keep;
  * A thin singleton class that is used to hold the Client's IAuthenticator's implementation and the Content to be read.
  * This is required for two reasons:
  * 1) As per Android guidelines, data being passed via intent should be limited to a few KBs. Alternative is to use Singleton holder classes like this one.
- * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios
+ * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios.
  */
 
 @Keep
@@ -712,7 +712,7 @@ Vytvořte nový soubor třídy Java **IRAuthenticator. Java** .
 
 ![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
 
-Obsah **IRAuthenticator. Java** nahraďte následujícím kódem.
+Obsah **IRAuthenticator. Java** nahraďte následujícím kódem:
 
 ```IRAuthenticator.java
 /**
@@ -739,10 +739,10 @@ import java.net.URL;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
     private static final String LOG_TAG = "IRAuthenticator";
@@ -823,7 +823,7 @@ Vytvořte nový soubor třídy Java **IRLauncher. Java** .
 
 ![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
 
-Obsah **IRLauncher. Java** nahraďte následujícím kódem.
+Obsah **IRLauncher. Java** nahraďte následujícím kódem:
 
 ```IRLauncher.java
 /**
@@ -853,7 +853,7 @@ import java.util.concurrent.Callable;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
- * Responsible for setting up the web view with appropriate bridging between JS and Java to launch the Immersive reader url for reading the content
+ * Responsible for setting up the web view with appropriate bridging between JavaScript and Java to launch the Immersive Reader url for reading the content.
  */
 
 public class IRLauncher {
@@ -876,7 +876,7 @@ public class IRLauncher {
         // Invoked in case of empty access token or empty content request to be read
         void onFailure(IRError error);
 
-        // Invoked when Immersive reader is exiting (e.g.) user pressed back in the immersive reader experience
+        // Invoked when Immersive Reader is exiting (e.g.) user pressed back in the Immersive Reader experience
         void onExit();
     }
 
@@ -981,7 +981,7 @@ public class IRLauncher {
             }
         });
 
-        // Prepare and set the WebAppInterface to hear back from the JS
+        // Prepare and set the WebAppInterface to hear back from the JavaScript
         WebAppInterface jsInterface = new WebAppInterface(new WebAppInterface.WebAppListener() {
             @Override
             public void onShowToast(String toast) {
@@ -1016,7 +1016,7 @@ Vytvořte nový soubor třídy Java **IRStore. Java** .
 
 ![IRStore](../../media/android/java/android-studio-irstore-java.png)
 
-Obsah **IRStore. Java** nahraďte následujícím kódem.
+Obsah **IRStore. Java** nahraďte následujícím kódem:
 
 ```IRStore.java
 /**
@@ -1041,7 +1041,7 @@ Vytvořte nový soubor třídy Java **AuthenticationTask. Java** .
 
 ![AuthenticationTask](../../media/android/java/android-studio-authenticationtask-java.png)
 
-Obsah **AuthenticationTask. Java** nahraďte následujícím kódem.
+Obsah **AuthenticationTask. Java** nahraďte následujícím kódem:
 
 ```AuthenticationTask.java
 /**
@@ -1098,7 +1098,7 @@ Vytvořte nový soubor třídy Java v **bloku. Java** .
 
 ![Blok dat](../../media/android/java/android-studio-chunk-java.png)
 
-Obsah **bloku. Java** nahraďte následujícím kódem.
+Nahraďte obsah **bloku dat** pomocí následujícího kódu:
 
 ```Chunk.java
 /**
@@ -1112,8 +1112,8 @@ import androidx.annotation.Keep;
 
 /**
  * The chunk object that will be sent to the Immersive Reader SDK.
- * The content is a string of text, the lang is a string, e.g. 'll-cc'
- * and the mimeType is also a string, e.g. 'text/plain'
+ * The content is a string of text, the lang is a string, e.g. 'll-cc',
+ * and the mimeType is also a string, e.g. 'text/plain'.
  */
 
 @Keep
@@ -1135,7 +1135,7 @@ Vytvoří nový soubor **. Java Class pro obsah.**
 
 ![Obsah](../../media/android/java/android-studio-content-java.png)
 
-Obsah **. Java** nahraďte následujícím kódem.
+Obsah **. Java** nahraďte následujícím kódem:
 
 ```Content.java
 /**
@@ -1171,7 +1171,7 @@ Vytvoří **nový soubor třídy Java Java.**
 
 ![Možnosti](../../media/android/java/android-studio-options-java.png)
 
-**Položky Options. Java** nahraďte následujícím kódem.
+Nahraďte **možnostmi obsah. Java** následujícím kódem:
 
 ```Options.java
 /**
@@ -1205,7 +1205,7 @@ Vytvořte nový soubor **. Java** Class třídy Java.
 
 ![Zpráva](../../media/android/java/android-studio-message-java.png)
 
-Obsah **Message. Java** nahraďte následujícím kódem.
+Obsah **Message. Java** nahraďte následujícím kódem:
 
 ```Message.java
 /**
@@ -1217,7 +1217,7 @@ import androidx.annotation.Keep;
 
 /**
  * The message object that will be sent to the Immersive Reader SDK.
- * This object contains the access token, sub domain, Content and Options.
+ * This object contains the access token, sub domain, Content, and Options.
  */
 
 @Keep
@@ -1243,7 +1243,7 @@ Vytvořte nový soubor třídy Java **WebAppInterface. Java** .
 
 ![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
 
-Obsah **WebAppInterface. Java** nahraďte následujícím kódem.
+Obsah **WebAppInterface. Java** nahraďte následujícím kódem:
 
 ```WebAppInterface.java
 /**
@@ -1257,7 +1257,7 @@ import androidx.annotation.Keep;
 import android.webkit.JavascriptInterface;
 
 /**
- * JavaScript interface implementation passed to the WebView to enable talking between JS and Java
+ * JavaScript interface implementation passed to the WebView to enable talking between JavaScript and Java.
  */
 
 @Keep
@@ -1290,13 +1290,13 @@ public class WebAppInterface {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>Přidání HTML aplikace do zobrazení webu
 
-Implementace webového zobrazení bude potřebovat jazyk HTML pro práci. Klikněte pravým tlačítkem na složku **/assets** a vytvořte nový soubor a pojmenujte ho **immersiveReader.html**.
+Implementace webového zobrazení potřebuje k práci HTML. Klikněte pravým tlačítkem na složku **/assets** , vytvořte nový soubor a pojmenujte ho **immersiveReader.html**.
 
 ![Vytvořit nový soubor HTML](../../media/android/java/android-studio-immersive-reader-html.png)
 
 ![Umístění prostředku HTML](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
-Níže přidejte HTML a JavaScript. Tím se do aplikace přidá sada moderního čtecího zařízení a použije se k otevření moderní čtečky pomocí kódu aplikace, který jsme napsali.
+Přidejte následující kód HTML a JavaScript. Tento kód přidá do aplikace sadu pro moderní čtečku a použije ji k otevření moderního čtecího zařízení pomocí kódu aplikace, který jsme napsali.
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1353,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ![Souboru AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
 
-Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady SDK pro moderní čtečku, je potřeba zajistit, aby byla oprávnění aplikace nakonfigurovaná tak, aby povolovala přístup k síti. Obsah **/manifests/AndroidManifest.xml** nahraďte následujícím kódem XML.
+Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady moderní čtečky, aby fungovala, potřebujeme, abyste zajistili, že oprávnění aplikace jsou nakonfigurovaná tak, aby povolovala přístup k síti. Obsah **/manifests/AndroidManifest.xml** nahraďte následujícím kódem XML:
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1384,12 +1384,12 @@ Vzhledem k tomu, že aplikace potřebuje učinit síťová volání sady SDK pro
 </manifest>
 ```
 
-## <a name="running-the-app"></a>Spuštění aplikace
+## <a name="run-the-app"></a>Spuštění aplikace
 
-Použijte Android Studio ke spuštění aplikace na emulátoru zařízení. Po kliknutí na tlačítko pro **moderní čtečku** se zobrazí moderní čtečka, která se spustí s obsahem aplikace.
+Použijte Android Studio ke spuštění aplikace na emulátoru zařízení. Když vyberete **moderní čtečku**, otevře se moderní čtečka s obsahem aplikace.
 
 ![Asistivní čtečka](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../../reference.md)
+Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../../reference.md).
