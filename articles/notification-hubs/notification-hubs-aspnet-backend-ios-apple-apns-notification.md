@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 71d55471de6fc8681f19a56cd67bb9ba7390e026
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248798"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530164"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Kurz: odeslání nabízených oznámení konkrétním uživatelům pomocí Azure Notification Hubs
 
@@ -38,10 +38,10 @@ V tomto kurzu provedete následující kroky:
 > * Úprava aplikace pro iOS
 > * Testování aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali centrum oznámení, jak je popsáno v tématu [Posílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs](ios-sdk-get-started.md). Tento kurz je také předpokladem pro kurz [zabezpečeného nabízení oznámení (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) .
-Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [Mobile Apps Začínáme s nabízenými oznámeními](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [Mobile Apps Začínáme s nabízenými oznámeními](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -86,7 +86,7 @@ Pokud chcete jako back-end službu použít Mobile Apps, přečtěte si téma [M
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. V aplikaci `ViewController.h` přidejte následující `#define` po příkazech import. `<Enter Your Backend Endpoint>`Zástupný symbol nahraďte cílovou adresou URL, kterou jste použili k nasazení back-endu aplikace v předchozí části. Například, `http://your_backend.azurewebsites.net`.
+4. V aplikaci `ViewController.h` přidejte následující `#define` po příkazech import. `<Enter Your Backend Endpoint>`Zástupný symbol nahraďte cílovou adresou URL, kterou jste použili k nasazení back-endu aplikace v předchozí části. Například `http://your_backend.azurewebsites.net`.
 
     ```objc
     #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"

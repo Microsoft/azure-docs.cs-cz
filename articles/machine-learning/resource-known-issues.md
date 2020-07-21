@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223454"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536109"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Známé problémy a řešení potíží v Azure Machine Learning
 
@@ -96,6 +96,22 @@ V některých případech může být užitečné, pokud při dotazování na n�
     ```bash
     automl_setup
     ```
+    
+* **Klíčové slovo: ' Brand ' při spuštění AutoML na místním výpočetním nebo Azure Databricksm clusteru**
+
+    Pokud bylo nové prostředí vytvořeno po 10. června 2020, pomocí sady SDK 1.7.0 nebo starší, může být školení v důsledku aktualizace balíčku py-cpuinfo neúspěšné. (Prostředí vytvořená od 10. června 2020 nejsou ovlivněná, protože jsou experimenty spouštěny na vzdálené výpočetní prostředky, protože se používají školicí snímky v mezipaměti.) Pokud chcete tento problém obejít, proveďte některý z následujících dvou kroků:
+    
+    * Aktualizujte verzi sady SDK na 1.8.0 nebo novější (tím se také downgrade py-cpuinfo na 5.0.0):
+    
+      ```bash
+      pip install --upgrade azureml-sdk[automl]
+      ```
+    
+    * Downgrade nainstalovanou verzi py-cpuinfo na 5.0.0:
+    
+      ```bash
+      pip install py-cpuinfo==5.0.0
+      ```
   
 * **Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
 
@@ -146,6 +162,12 @@ V některých případech může být užitečné, pokud při dotazování na n�
 > Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
 
 * **Azure Portal**: Pokud přejdete přímo k pracovnímu prostoru z odkazu na sdílení ze sady SDK nebo portálu, nebudete moci zobrazit normální stránku **přehledu** s informacemi o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledejte název pracovního prostoru.
+
+* **Podporované prohlížeče na webovém portálu Azure Machine Learning Studio**: Doporučujeme, abyste používali nejaktuálnější prohlížeč, který je kompatibilní s vaším operačním systémem. Podporovány jsou následující prohlížeče:
+  * Microsoft Edge (nová Microsoft Edge, nejnovější verze Ne Microsoft Edge starší verze)
+  * Safari (nejnovější verze, jen Mac)
+  * Chrome (nejnovější verze)
+  * Firefox (nejnovější verze)
 
 ## <a name="set-up-your-environment"></a>Nastavení prostředí
 
@@ -217,9 +239,16 @@ Omezení a známé problémy pro sledování posunu dat:
 
 ## <a name="azure-machine-learning-designer"></a>Návrhář Azure Machine Learning
 
-Známé problémy:
+* **Doba přípravy na dlouhou výpočetní výkon:**
 
-* **Dlouhodobá doba přípravy výpočtů**: může to trvat několik minut nebo i déle, když se poprvé připojíte k cíli výpočtů nebo ho vytvoříte. 
+Může to trvat několik minut nebo i déle, než se poprvé připojíte k cíli výpočetního prostředí nebo ho vytvořit. 
+
+Z kolekce dat modelu může trvat až (obvykle méně než) 10 minut, než se data dorazí do účtu BLOB Storage. Počkejte 10 minut a ujistěte se, že se buňky níže spustí.
+
+```python
+import time
+time.sleep(600)
+```
 
 ## <a name="train-models"></a>Trénování modelů
 

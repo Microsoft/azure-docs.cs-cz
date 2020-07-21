@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
-ms.openlocfilehash: ca6e9a66d6c4daa4706813f945850b51505adeca
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9ee433f226b37c8ffd6ad466cca7cbd844d53524
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133452"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535973"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Potenciální zákazníci z komerční nabídky na webu Marketplace
 
@@ -106,7 +106,7 @@ Odpověď závisí na typu nabídky, kterou publikujete. Software jako služba (
 
 ### <a name="how-can-i-find-the-test-lead"></a>Jak můžu najít vedoucí test?
 
-Vyhledejte `"MSFT_TEST"` v cíli zájemce. Tady je ukázka vedoucího testu od Microsoftu:
+Vyhledejte `"MSFT_TEST"` v cíli zájemce. Níže je ukázkový vedoucí testu od Microsoftu. Všimněte si, že formát vedoucího testu se liší v závislosti na cíli zájemce.
 
 ```
 {
@@ -146,7 +146,7 @@ K datům zájemce uloženým v tabulce Azure můžete přistupovat z Azure Porta
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-commercial-marketplace-lead-is-sent"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Můžu dostávat oznámení při každém odeslání nového potenciálního zákazníka z obchodu Marketplace?
 
-Ano. Postupujte podle pokynů v tématu [Konfigurace řízení zájemců pomocí tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) k nastavení služby Microsoft flow, která odešle e-mail, když se do tabulky Azure přidá zájemce.
+Yes. Postupujte podle pokynů v tématu [Konfigurace řízení zájemců pomocí tabulky Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) k nastavení služby Microsoft flow, která odešle e-mail, když se do tabulky Azure přidá zájemce.
 
 ### <a name="i-configured-salesforce-as-my-lead-destination-but-why-cant-i-find-the-leads"></a>Nakonfigurovali jste Salesforce jako cíl pro zájem, ale proč nemůžu najít potenciální zákazníky?
 

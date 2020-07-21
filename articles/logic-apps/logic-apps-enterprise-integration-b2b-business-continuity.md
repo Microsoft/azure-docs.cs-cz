@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b618513965298889fb656750419dedd79729f7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905136"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536466"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Nastavení zotavení po havárii mezi oblastmi pro účty pro integraci v Azure Logic Apps
 
@@ -59,7 +60,7 @@ Provozní kontinuita v účtu Logic Apps Integration účet poskytuje podporu za
 
 Když v případě havárie není dostupná primární oblast pro provozní kontinuitu, přímý provoz do sekundární oblasti. Sekundární oblast pomáhá podnikům rychle obnovit funkce, aby splnily požadavky na RPO a RTO, na základě kterých jejich partneři souhlasí. Také minimalizuje úsilí při převzetí služeb při selhání z jedné oblasti do jiné oblasti. 
 
-Při kopírování řídicích čísel z primární oblasti do sekundární oblasti je očekávaná latence. Abyste se vyhnuli odesílání duplicitních řídicích čísel partnerům během události havárie, doporučujeme zvýšit počet kontrolních čísel v rámci smluv o sekundárních oblastech pomocí [rutin PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
+Při kopírování řídicích čísel z primární oblasti do sekundární oblasti je očekávaná latence. Abyste se vyhnuli odesílání duplicitních řídicích čísel partnerům během události havárie, doporučujeme zvýšit počet kontrolních čísel v rámci smluv o sekundárních oblastech pomocí [rutin PowerShellu](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Přejít zpět na událost po havárii primární oblasti
 
@@ -67,7 +68,7 @@ Pokud se chcete vrátit k primární oblasti, když je k dispozici, postupujte p
 
 1. Přestanou přijímat zprávy od partnerů v sekundární oblasti.  
 
-2. Zvyšte čísla vygenerovaných ovládacích prvků pro všechny smlouvy primární oblasti pomocí [rutin PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
+2. Zvyšte čísla vygenerovaných ovládacích prvků pro všechny smlouvy primární oblasti pomocí [rutin PowerShellu](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0).  
 
 3. Přímý provoz ze sekundární oblasti do primární oblasti.
 
@@ -240,4 +241,3 @@ V závislosti na časovém intervalu je přírůstkový běhový stav repliková
 ## <a name="next-steps"></a>Další kroky
 
 [Monitorování zpráv B2B s využitím protokolů Azure Monitoru](../logic-apps/monitor-b2b-messages-log-analytics.md)
-

@@ -1,122 +1,164 @@
 ---
-title: 'Rychlý Start: vytvoření veřejné Load Balancer – Azure Portal'
+title: 'Rychlý Start: vytvoření veřejného nástroje pro vyrovnávání zatížení – Azure Portal'
 titleSuffix: Azure Load Balancer
-description: V tomto rychlém startu se dozvíte, jak vytvořit Load Balancer pomocí Azure Portal.
+description: V tomto rychlém startu se dozvíte, jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure Portal.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
-Customer intent: I want to create a Load Balancer so that I can load balance internet traffic to VMs.
+manager: KumudD
+Customer intent: I want to create a load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/08/2020
+ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 99a2de4cd8a19d3f05b9dc37f3bcd08cd84b2e68
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: eb23f1e703c2e447c484ccb366914cb4b23c5bf7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052754"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536538"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření služby Vyrovnávání zatížení pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
-Vyrovnávání zatížení zajišťuje vyšší úroveň dostupnosti a škálování tím, že rozprostírá příchozí požadavky na více virtuálních počítačů. K vytvoření nástroje pro vyrovnávání zatížení virtuálních počítačů můžete použít web Azure Portal. V tomto rychlém startu se dozvíte, jak vyrovnávat zatížení virtuálních počítačů pomocí veřejné Load Balancer.
+Začněte s Azure Load Balancer pomocí Azure Portal k vytvoření veřejného nástroje pro vyrovnávání zatížení a tří virtuálních počítačů.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
+## <a name="prerequisites"></a>Předpoklady
+
+- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
+---
 
-V této části vytvoříte Load Balancer, která pomáhá vyrovnávat zatížení virtuálních počítačů. Můžete vytvořit veřejné Load Balancer nebo interní Load Balancer. Při vytváření veřejné Load Balancer musíte také vytvořit novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurovaná jako front-end (s názvem jako *LoadBalancerFrontend* ) pro Load Balancer.
+# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[Možnost 1 (výchozí): Vytvoření nástroje pro vyrovnávání zatížení (standardní SKU)](#tab/option-1-create-load-balancer-standard)
+
+>[!NOTE]
+>Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
+
+V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. 
+
+Můžete vytvořit veřejný Nástroj pro vyrovnávání zatížení nebo interní nástroj pro vyrovnávání zatížení. 
+
+Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurována jako front-end (s názvem jako **LoadBalancerFrontend** ) pro nástroj pro vyrovnávání zatížení.
 
 1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **Load Balancer**.
-2. Na kartě **základy** na stránce **vytvořit službu Vyrovnávání zatížení** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
+
+2. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *myResourceGroupSLB* .|
-    | Name                   | *myLoadBalancer*                                   |
+    | Předplatné               | Vyberte předplatné.    |    
+    | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupLB** .|
+    | Název                   | Zadejte **myLoadBalancer**                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
-    | Typ          | Vyberte možnost **veřejné**.                                        |
-    | SKU           | Vyberte **Standard** nebo **Basic**. Microsoft doporučuje pro produkční úlohy Standard. |
-    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou chcete použít, vyberte **použít existující** . |
-    | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   Použijte ```-SKU Basic``` k vytvoření základní veřejné IP adresy. Základní veřejné IP adresy nejsou kompatibilní se službou Load Balancer **úrovně Standard** . Microsoft doporučuje používat pro produkční úlohy **Standard** .|
-    | Zóna dostupnosti | Typ *zóna – redundantní* pro vytvoření odolného Load Balancer. Pokud chcete vytvořit oblast Load Balancer, vyberte konkrétní zónu z 1, 2 nebo 3. |
+    | Typ          | Vyberte **Veřejný**.                                        |
+    | Skladová položka           | Vybrat **Standard** |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
+    | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP** .|
+    | Zóna dostupnosti | Chcete-li vytvořit odolný Nástroj pro vyrovnávání zatížení, vyberte **zónu – redundantní** . Pokud chcete vytvořit nástroj pro vyrovnávání zatížení, vyberte konkrétní zónu z 1, 2 nebo 3. |
+    | Přidat veřejnou IPv6 adresu | Vyberte **Ne**. </br> Další informace o adresách IPv6 a nástroji pro vyrovnávání zatížení najdete v tématu [co je protokol IPv6 pro Azure Virtual Network?](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)  |
 
-> [!IMPORTANT]
-> Zbytek v tomto rychlém startu předpokládá, že se během výše uvedeného procesu výběru skladové položky vybere **standardní** SKU.
+3. U zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
 
+4. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
+    
+    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png" alt-text="Vytvoření standardního nástroje pro vyrovnávání zatížení" border="true":::
+ 
+## <a name="create-load-balancer-resources"></a>Vytvoření prostředků nástroje pro vyrovnávání zatížení
 
-3. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
+V této části nakonfigurujete:
 
-    ![Vytvoření Load Balanceru úrovně Standard](./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png)
+* Nastavení nástroje pro vyrovnávání zatížení pro fond back-end adres.
+* Sonda stavu.
+* Pravidlo nástroje pro vyrovnávání zatížení a automatické odchozí pravidlo.
 
-## <a name="create-load-balancer-resources"></a>Vytvoření prostředků Load Balancer
+### <a name="create-a-backend-pool"></a>Vytvoření back-endového fondu
 
-V této části nakonfigurujete Load Balancer nastavení pro fond back-end adres, sondu stavu a zadáváte pravidlo pro vyrovnávání zatížení.
+Fond adres back-endu obsahuje IP adresy virtuálních (síťových rozhraní) připojených k nástroji pro vyrovnávání zatížení. 
 
-### <a name="create-a-backend-pool"></a>Vytvoření fondu back-endu
-
-Aby bylo možné distribuovat provoz do virtuálních počítačů, fond adres back-endu obsahuje IP adresy virtuálních (síťových rozhraní) připojených k Load Balancer. Vytvořte fond back-end adres *myBackendPool* , který bude zahrnovat virtuální počítače pro internetovou komunikaci s vyrovnáváním zatížení.
+Vytvořte fond back-end adres **myBackendPool** , který bude zahrnovat virtuální počítače pro internetovou komunikaci s vyrovnáváním zatížení.
 
 1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+
 2. V části **Nastavení**vyberte **back-end fondy**a pak vyberte **Přidat**.
-3. Do pole název na stránce **Přidat fond back-end** serveru zadejte *myBackendPool*jako název vašeho back-end fondu a pak vyberte **Přidat**.
+
+3. Do pole název na stránce **Přidat fond back-end** serveru zadejte **myBackendPool**jako název vašeho back-end fondu a pak vyberte **Přidat**.
 
 ### <a name="create-a-health-probe"></a>Vytvoření sondy stavu
 
-Pokud chcete Load Balancer, aby mohl monitorovat stav vaší aplikace, použijte sondu stavu. Sonda stavu dynamicky přidává nebo odebírá virtuální počítače z Load Balancer rotace na základě jejich reakcí na kontroly stavu. Vytvořte sondu stavu *myHealthProbe* pro monitorování stavu virtuálních počítačů.
+Nástroj pro vyrovnávání zatížení monitoruje stav vaší aplikace s sondou stavu. 
+
+Sonda stavu přidá nebo odebere virtuální počítače z nástroje pro vyrovnávání zatížení na základě jejich odpovědí na kontroly stavu. 
+
+Vytvořte sondu stavu s názvem **myHealthProbe**, abyste mohli monitorovat stav virtuálních počítačů.
 
 1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+
 2. V části **Nastavení**vyberte **sondy stavu**a pak vyberte **Přidat**.
     
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název | Zadejte *myHealthProbe*. |
-    | Protocol (Protokol) | Vyberte **http**. |
-    | Port | Zadejte *80*.|
-    | Interval | Zadejte hodnotu *15* pro **interval** mezi pokusy o sondu v sekundách. |
+    | Název | Zadejte **myHealthProbe**. |
+    | Protokol | Vyberte **http**. |
+    | Port | Zadejte **80**.|
+    | Interval | Zadejte hodnotu **15** pro **interval** mezi pokusy o sondu v sekundách. |
     | Prahová hodnota pro poškozený stav | Vyberte **2** pro počet chybných **prahových hodnot** nebo po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.|
     | | |
-4. Vyberte **OK**.
 
-### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla Load Balanceru
-Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo Load Balancer *myLoadBalancerRuleWeb* pro naslouchání na portu 80 ve front-endu *FrontendLoadBalancer* a odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres *myBackEndPool* také pomocí portu 80. 
+3. Vyberte **OK**.
+
+### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
+
+Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujete konfiguraci IP adresy front-endu pro příchozí provoz a fond IP adres back-endu pro příjem provozu. Zdrojový a cílový port se definují v pravidle. 
+
+V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
+
+* S názvem **myHTTPRule**.
+* Ve front-endu s názvem **LoadBalancerFrontEnd**.
+* Naslouchá na **portu 80**.
+* Směruje provoz s vyrovnáváním zatížení do back-endu s názvem **myBackendPool** na **portu 80**.
 
 1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+
 2. V části **Nastavení**vyberte **pravidla vyrovnávání zatížení**a pak vyberte **Přidat**.
-3. Ke konfiguraci pravidla vyrovnávání zatížení použijte tyto hodnoty:
+
+3. Pomocí těchto hodnot můžete nakonfigurovat pravidlo vyrovnávání zatížení:
     
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Název | Zadejte *myHTTPRule*. |
-    | Protocol (Protokol) | Vyberte **TCP**. |
-    | Port | Zadejte *80*.|
-    | Port back-endu | Zadejte *80*. |
-    | Back-endový fond | Vyberte *myBackendPool*.|
-    | Sonda stavu | Vyberte *myHealthProbe*. |
-4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
+    | Název | Zadejte **myHTTPRule**. |
+    | Verze protokolu IP | Vybrat **IPv4** |
+    | IP adresa front-endu | Vybrat **LoadBalancerFrontEnd** |
+    | Protokol | Vyberte **TCP**. |
+    | Port | Zadejte **80**.|
+    | Back-endový port | Zadejte **80**. |
+    | Back-endový fond | Vyberte **myBackendPool**.|
+    | Sonda stavu | Vyberte **myHealthProbe**. |
+    | Vytvořit implicitní odchozí pravidla | Vyberte **Ano**. </br> Další informace a pokročilou konfiguraci odchozího pravidla najdete v těchto tématech: </br> [Odchozí připojení v Azure](load-balancer-outbound-connections.md) </br> [Konfigurace vyrovnávání zatížení a odchozích pravidel v Standard Load Balancer pomocí Azure Portal](configure-load-balancer-outbound-portal.md)
 
+4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
-V této části vytvoříte virtuální síť, vytvoříte tři virtuální počítače pro back-end fond Load Balancer a pak na virtuální počítače nainstalujete službu IIS, která vám pomůžou otestovat Load Balancer.
+V této části:
+
+* Vytvořte virtuální síť.
+* Vytvořte tři virtuální počítače pro back-end fond nástroje pro vyrovnávání zatížení.
+* K otestování nástroje pro vyrovnávání zatížení nainstalujte na virtuálních počítačích službu IIS.
 
 ## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
-V této části budete muset v krocích níže nahradit následující parametry:
+V této části nahradíte parametry v krocích níže uvedenými informacemi:
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<resource-group-name>**  | myResourceGroupLB |
 | **\<virtual-network-name>** | myVNet          |
 | **\<region-name>**          | Západní Evropa      |
 | **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
@@ -126,75 +168,300 @@ V této části budete muset v krocích níže nahradit následující parametry
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
-SKU veřejných IP adres a Load Balancer SKU se musí shodovat. V případě Standard Load Balancer použijte virtuální počítače se standardními IP adresami ve fondu back-end. V této části vytvoříte tři virtuální počítače (*myVM1*, *myVM2* a *MYVM3*) se standardní veřejnou IP adresou ve třech různých zónách (*zóna 1*, *zóna 2*a *zóna 3*), které jsou později přidané do fondu back-end Load Balancer, který jste vytvořili dříve. Pokud jste vybrali základní, použijte virtuální počítače se základními IP adresami.
 
-1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **COMPUTE**  >  **Windows Server 2019 Datacenter**. 
+SKU veřejných IP adres a SKU nástroje pro vyrovnávání zatížení se musí shodovat. Pro nástroj Load Balancer úrovně Standard použijte virtuální počítače se standardními IP adresami ve fondu back-end. 
+
+V této části vytvoříte tři virtuální počítače (**myVM1**, **myVM2** a **MYVM3**) se standardní veřejnou IP adresou ve třech různých zónách (**zóna 1**, **zóna 2**a **zóna 3**). 
+
+Tyto virtuální počítače se přidají do back-endového fondu nástroje pro vyrovnávání zatížení, který se vytvořil dříve.
+
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač**Compute. 
    
-1. V části **vytvořit virtuální počítač**zadejte nebo vyberte následující hodnoty na kartě **základy** :
-   - **Předplatné**  >  **Skupina prostředků**: vyberte **myResourceGroupSLB**.
-   - **Podrobnosti instance**  >  **Název virtuálního počítače**: zadejte *myVM1*.
-   - **Podrobnosti instance**  >  **Oblast** > vyberte **západní Evropa**.
-   - **Podrobnosti instance**  >  **Možnosti dostupnosti** > vybrat **zóny dostupnosti**. 
-   - **Podrobnosti instance**  >  **Zóna dostupnosti** > vybrat **1**.
-   - **Účet správce**> zadejte **uživatelské jméno**, **heslo** a **potvrzení informací o hesle** .
-   - Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
+2. V části **vytvořit virtuální počítač**zadejte nebo vyberte hodnoty na kartě **základy** :
+
+    | Nastavení | Hodnota                                          |
+    |-----------------------|----------------------------------|
+    | **Podrobnosti o projektu** |  |
+    | Předplatné | Vyberte své předplatné Azure. |
+    | Skupina prostředků | Vybrat **myResourceGroupLB** |
+    | **Podrobnosti instance** |  |
+    | Název virtuálního počítače | Zadejte **myVM1** |
+    | Oblast | Vyberte **západní Evropa** |
+    | Možnosti dostupnosti | Vybrat **zóny dostupnosti** |
+    | Zóna dostupnosti | Vyberte **1** |
+    | Image | Vyberte **Windows Server 2019 Datacenter** |
+    | Instance Azure Spot | Vybrat **ne** |
+    | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
+    | **Účet správce** |  |
+    | Uživatelské jméno | Zadejte uživatelské jméno. |
+    | Heslo | Zadat heslo |
+    | Potvrzení hesla | Zadejte znovu heslo. |
+
+3. Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
   
-1. Na kartě **sítě** zkontrolujte, že jsou vybrané následující:
-   - **Virtuální síť**: *myVnet*
-   - **Podsíť**: *myBackendSubnet*
-   - **Veřejná IP** adresa > vyberte **vytvořit novou**a v okně **vytvořit veřejnou IP adresu** pro položku **SKU**vyberte možnost **Standard**a v části **zóna dostupnosti**vyberte **zóna – redundantní**a pak vyberte **OK**. Pokud jste vytvořili základní Load Balancer, vyberte základní. Microsoft doporučuje pro produkční úlohy používat standardní SKU.
-   - Pokud chcete vytvořit novou skupinu zabezpečení sítě (NSG), typ brány firewall, v části **Skupina zabezpečení sítě**vyberte **Upřesnit**. 
-       1. V poli **Konfigurovat skupinu zabezpečení sítě** vyberte **vytvořit novou**. 
-       1. Zadejte *myNetworkSecurityGroup*a vyberte **OK**.
-   - Pokud chcete virtuálnímu počítači udělat součást back-endu fondu Load Balancer, proveďte následující kroky:
-        - V případě **Vyrovnávání zatížení** **umístěte tento virtuální počítač za existující řešení vyrovnávání zatížení**a vyberte **Ano**.
-        - V **nastavení vyrovnávání zatížení**v možnosti vyrovnávání **zatížení**vyberte **Azure Load Balancer**.
-        - Pro **Vyberte nástroj pro vyrovnávání zatížení** *myLoadBalancer*.
-        - Vyberte kartu **Správa** nebo vyberte možnost **Další**  >  **Správa**.
-2. Na kartě **Správa** v části **monitorování**nastavte **diagnostiku spouštění** na **vypnuto**. 
-1. Vyberte **Zkontrolovat a vytvořit**.   
-1. Zkontrolujte nastavení a pak vyberte **vytvořit**.
-1. Postupujte podle kroků 2 až 6 a vytvořte dva další virtuální počítače s následujícími hodnotami a všechna ostatní nastavení, která jsou stejná jako *myVM1*:
+4. Na kartě sítě vyberte nebo zadejte:
+
+    | Nastavení | Hodnota |
+    |-|-|
+    | **Síťové rozhraní** |  |
+    | Virtuální síť | **myVNet** |
+    | Podsíť | **myBackendSubnet** |
+    | Veřejná IP adresa | Přijměte výchozí hodnotu **myVM-IP**. </br> IP adresa bude automaticky standardní IP adresa SKU v Zóna 1. |
+    | Skupina zabezpečení sítě NIC | Výběr **Možnosti Upřesnit**|
+    | Konfigurovat skupinu zabezpečení sítě | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V části **vytvořit skupinu zabezpečení sítě**zadejte **MyNSG** do **pole název**. </br> V části **příchozí pravidla**vyberte **+ Přidat příchozí pravidlo**. </br> V části **rozsahy cílových portů**zadejte **80**. </br> V části **Priorita**zadejte **100**. </br> Do **název**zadejte **myHTTPRule** </br> Vyberte **Přidat** </br> Vybrat **OK** |
+    | **Vyrovnávání zatížení**  |
+    | Umístit tento virtuální počítač za existující řešení vyrovnávání zatížení? | Vyberte **Ano** |
+    | **Nastavení vyrovnávání zatížení** |
+    | Možnosti vyrovnávání zatížení | Vybrat **Vyrovnávání zatížení Azure** |
+    | Vyberte nástroj pro vyrovnávání zatížení. | Vybrat **myLoadBalancer**  |
+    | Vybrat back-end fond | Vybrat **myBackendPool** |
+
+5. Vyberte kartu **Správa** nebo vyberte možnost **Další**  >  **Správa**.
+
+6. Na kartě **Správa** vyberte nebo zadejte:
+    
+    | Nastavení | Hodnota |
+    |-|-|
+    | **Monitorování** |  |
+    | Diagnostika spouštění | Vybrat **vypnuto** |
+   
+7. Vyberte **Zkontrolovat a vytvořit**. 
+  
+8. Zkontrolujte nastavení a pak vyberte **vytvořit**.
+
+9. Postupujte podle kroků 1 až 8 a vytvořte dva další virtuální počítače s následujícími hodnotami a všechna ostatní nastavení, která jsou stejná jako **myVM1**:
 
     | Nastavení | VIRTUÁLNÍ POČÍTAČ 2| VIRTUÁLNÍ POČÍTAČ 3|
     | ------- | ----- |---|
-    | Name |  *myVM2* |*myVM3*|
-    | Zóna dostupnosti | 2 |3|
-    |Veřejná IP adresa| **Standardní** SKLADOVÉ|**Standardní** SKLADOVÉ|
-    | Veřejná IP adresa – zóna dostupnosti| **Zóna redundantní** |**Zóna redundantní**|
-    | Skupina zabezpečení sítě | Vybrat existující *myNetworkSecurityGroup*| Vybrat existující *myNetworkSecurityGroup*|
+    | Název |  **myVM2** |**myVM3**|
+    | Zóna dostupnosti | **2** |**3**|
+    | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
 
- ### <a name="create-nsg-rule"></a>Vytvoření pravidla skupiny zabezpečení sítě
 
-V této části vytvoříte pravidlo skupiny zabezpečení sítě, které povolí příchozí připojení pomocí protokolu HTTP.
+# <a name="option-2-create-a-load-balancer-basic-sku"></a>[Možnost 2: Vytvoření nástroje pro vyrovnávání zatížení (základní skladová položka)](#tab/option-1-create-load-balancer-basic)
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom ze seznamu prostředky vyberte **myNetworkSecurityGroup** , která je umístěná ve skupině prostředků **myResourceGroupSLB** .
-2. V části **Nastavení** vyberte **Příchozí pravidla zabezpečení** a potom vyberte **Přidat**.
-3. Zadáním následujících hodnot pro příchozí pravidlo zabezpečení *myHTTPRule* povolte příchozí připojení HTTP na portu 80:
-    - **Zdroj**: *značka služby*
-    -  **Značka zdrojové služby**: *Internet*
-    - **Rozsahy cílových portů**: *80*
-    - **Protokol**: *TCP*
-    - **Akce**: *Povolení*
-    - **Priorita**: *100*
-    - **Název**: *myHTTPRule* 
-    - **Popis**: "*Allow http* 
-4. Vyberte možnost **Přidat**.
-5. Opakujte postup pro příchozí pravidlo protokolu RDP, pokud je potřeba, s následujícími hodnotami, které se liší:
-   - **Rozsahy cílových portů**: zadejte *3389*.
-   - **Priorita**: typ *200*. 
-   - **Název**: zadejte *MyRDPRule*. 
-   - **Popis**: zadejte *Allow RDP*. 
+>[!NOTE]
+>Pro produkční úlohy se doporučuje používat nástroj pro vyrovnávání zatížení Standard SKU.  Další informace o SKU najdete v tématu **[Azure Load Balancer SKU](skus.md)**.
+
+V této části vytvoříte Nástroj pro vyrovnávání zatížení, který vyrovnává zatížení virtuálních počítačů. 
+
+Můžete vytvořit veřejný Nástroj pro vyrovnávání zatížení nebo interní nástroj pro vyrovnávání zatížení. 
+
+Při vytváření veřejného nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurována jako front-end (s názvem jako **LoadBalancerFrontend** ) pro nástroj pro vyrovnávání zatížení.
+
+1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **Load Balancer**.
+
+2. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace: 
+
+    | Nastavení                 | Hodnota                                              |
+    | ---                     | ---                                                |
+    | Předplatné               | Vyberte předplatné.    |    
+    | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte **myResourceGroupLB** .|
+    | Název                   | Zadejte **myLoadBalancer**                                   |
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
+    | Typ          | Vyberte **Veřejný**.                                        |
+    | Skladová položka           | Vybrat **základní** |
+    | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou byste chtěli použít, vyberte **použít existující**. |
+    | Název veřejné IP adresy | Do textového pole zadejte **myPublicIP** .|
+    | Přiřazení | Vybrat **dynamický** |
+    | Přidat veřejnou IPv6 adresu | Vyberte **Ne**. </br> Další informace o adresách IPv6 a nástroji pro vyrovnávání zatížení najdete v tématu [co je protokol IPv6 pro Azure Virtual Network?](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)  |
+
+3. U zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**.
+
+4. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
+
+    :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Vytvoření základního nástroje pro vyrovnávání zatížení" border="true":::
+
+## <a name="create-load-balancer-resources"></a>Vytvoření prostředků nástroje pro vyrovnávání zatížení
+
+V této části nakonfigurujete:
+
+* Vytvořte virtuální síť.
+* Nastavení nástroje pro vyrovnávání zatížení pro fond back-end adres.
+* Sonda stavu.
+* Pravidlo nástroje pro vyrovnávání zatížení.
+
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
+
+V této části nahradíte parametry v krocích níže uvedenými informacemi:
+
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Západní Evropa      |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+
+### <a name="create-a-backend-pool"></a>Vytvoření back-endového fondu
+
+Fond adres back-endu obsahuje IP adresy virtuálních (síťových rozhraní) připojených k nástroji pro vyrovnávání zatížení. 
+
+Vytvořte fond back-end adres **myBackendPool** , který bude zahrnovat virtuální počítače pro internetovou komunikaci s vyrovnáváním zatížení.
+
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+
+2. V části **Nastavení**vyberte **back-end fondy**a pak vyberte **Přidat**.
+
+3. Na stránce **Přidat back-end fond** zadejte nebo vyberte:
+    
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | Název | Zadejte **myBackendPool**. |
+    | Virtuální síť | Vyberte **myVNet**. |
+    | Přidruženo k | Vybrat **virtuální počítače** |
+
+### <a name="create-a-health-probe"></a>Vytvoření sondy stavu
+
+Nástroj pro vyrovnávání zatížení monitoruje stav vaší aplikace s sondou stavu. 
+
+Sonda stavu přidá nebo odebere virtuální počítače z nástroje pro vyrovnávání zatížení na základě jejich odpovědí na kontroly stavu. 
+
+Vytvořte sondu stavu s názvem **myHealthProbe**, abyste mohli monitorovat stav virtuálních počítačů.
+
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+
+2. V části **Nastavení**vyberte **sondy stavu**a pak vyberte **Přidat**.
+    
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | Název | Zadejte **myHealthProbe**. |
+    | Protokol | Vyberte **http**. |
+    | Port | Zadejte **80**.|
+    | Cesta | Napište**/** |
+    | Interval | Zadejte hodnotu **15** pro **interval** mezi pokusy o sondu v sekundách. |
+    | Prahová hodnota pro poškozený stav | Vyberte **2** pro počet chybných **prahových hodnot** nebo po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.|
+
+3. Vyberte **OK**.
+
+### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
+
+Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujete konfiguraci IP adresy front-endu pro příchozí provoz a fond IP adres back-endu pro příjem provozu. Zdrojový a cílový port se definují v pravidle. 
+
+V této části vytvoříte pravidlo nástroje pro vyrovnávání zatížení:
+
+* S názvem **myHTTPRule**.
+* Ve front-endu s názvem **LoadBalancerFrontEnd**.
+* Naslouchá na **portu 80**.
+* Směruje provoz s vyrovnáváním zatížení do back-endu s názvem **myBackendPool** na **portu 80**.
+
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+
+2. V části **Nastavení**vyberte **pravidla vyrovnávání zatížení**a pak vyberte **Přidat**.
+
+3. Pomocí těchto hodnot můžete nakonfigurovat pravidlo vyrovnávání zatížení:
+    
+    | Nastavení | Hodnota |
+    | ------- | ----- |
+    | Název | Zadejte **myHTTPRule**. |
+    | Verze protokolu IP | Vybrat **IPv4** |
+    | IP adresa front-endu | Vybrat **LoadBalancerFrontEnd** |
+    | Protokol | Vyberte **TCP**. |
+    | Port | Zadejte **80**.|
+    | Back-endový port | Zadejte **80**. |
+    | Back-endový fond | Vyberte **myBackendPool**.|
+    | Sonda stavu | Vyberte **myHealthProbe**. |
  
+4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
+
+## <a name="create-backend-servers"></a>Vytvoření serverů back-end
+
+V této části:
+
+* Vytvořte tři virtuální počítače pro back-end fond nástroje pro vyrovnávání zatížení.
+* Vytvořte skupinu dostupnosti pro virtuální počítače.
+* K otestování nástroje pro vyrovnávání zatížení nainstalujte na virtuálních počítačích službu IIS.
+
+### <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
+
+SKU veřejných IP adres a SKU nástroje pro vyrovnávání zatížení se musí shodovat. Pro nástroj pro vyrovnávání zatížení Basic použijte virtuální počítače se základními IP adresami ve fondu back-end. 
+
+V této části vytvoříte tři virtuální počítače (**myVM1**, **myVM2**a **MYVM3**) se základní veřejnou IP adresou.  
+
+Tři virtuální počítače se přidají do skupiny dostupnosti s názvem **myAvailabilitySet**.
+
+Tyto virtuální počítače se přidají do back-endového fondu nástroje pro vyrovnávání zatížení, který se vytvořil dříve.
+
+1. V levé horní části portálu vyberte **vytvořit prostředek**  >  **Compute**  >  **virtuální počítač**Compute. 
+   
+2. V části **vytvořit virtuální počítač**zadejte nebo vyberte hodnoty na kartě **základy** :
+
+    | Nastavení | Hodnota                                          |
+    |-----------------------|----------------------------------|
+    | **Podrobnosti o projektu** |  |
+    | Předplatné | Vyberte své předplatné Azure. |
+    | Skupina prostředků | Vybrat **myResourceGroupLB** |
+    | **Podrobnosti instance** |  |
+    | Název virtuálního počítače | Zadejte **myVM1** |
+    | Oblast | Vyberte **západní Evropa** |
+    | Možnosti dostupnosti | Vyberte **Skupina dostupnosti**. |
+    | Skupina dostupnosti | Vyberte, že chcete **vytvořit novou** IP adresu. </br> Jako **název**zadejte **myAvailabilitySet** . </br> Vybrat **OK** |
+    | Image | **Windows Server 2019 Datacenter** |
+    | Instance Azure Spot | Vybrat **ne** |
+    | Velikost | Vyberte velikost virtuálního počítače nebo použijte výchozí nastavení. |
+    | **Účet správce** |  |
+    | Uživatelské jméno | Zadejte uživatelské jméno. |
+    | Heslo | Zadat heslo |
+    | Potvrzení hesla | Zadejte znovu heslo. |
+
+3. Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
+  
+4. Na kartě sítě vyberte nebo zadejte:
+
+    | Nastavení | Hodnota |
+    |-|-|
+    | **Síťové rozhraní** |  |
+    | Virtuální síť | Vybrat **myVNet** |
+    | Podsíť | Vybrat **myBackendSubnet** |
+    | Veřejná IP adresa | Vyberte **vytvořit novou** . </br> Do názvu zadejte **myVM-IP** . </br> Vybrat **OK** |
+    | Skupina zabezpečení sítě NIC | Výběr **Možnosti Upřesnit**|
+    | Konfigurovat skupinu zabezpečení sítě | Vyberte, že chcete **vytvořit novou** IP adresu. </br> V části **vytvořit skupinu zabezpečení sítě**zadejte **MyNSG** do **pole název**. </br> V části **příchozí pravidla**vyberte **+ Přidat příchozí pravidlo**. </br> V části **rozsahy cílových portů**zadejte **80**. </br> V části **Priorita**zadejte **100**. </br> Do **název**zadejte **myHTTPRule** </br> Vyberte **Přidat** </br> Vybrat **OK** |
+    | **Vyrovnávání zatížení**  |
+    | Umístit tento virtuální počítač za existující řešení vyrovnávání zatížení? | Vybrat **ne** |
+ 
+5. Vyberte kartu **Správa** nebo vyberte možnost **Další**  >  **Správa**.
+
+6. Na kartě **Správa** vyberte nebo zadejte:
+    | Nastavení | Hodnota |
+    |-|-|
+    | **Monitorování** | |
+    | Diagnostika spouštění | Vybrat **vypnuto** |
+
+7. Vyberte **Zkontrolovat a vytvořit**. 
+  
+8. Zkontrolujte nastavení a pak vyberte **vytvořit**.
+
+9. Postupujte podle kroků 1 až 8 a vytvořte dva další virtuální počítače s následujícími hodnotami a všechna ostatní nastavení, která jsou stejná jako **myVM1**:
+
+    | Nastavení | VIRTUÁLNÍ POČÍTAČ 2| VIRTUÁLNÍ POČÍTAČ 3|
+    | ------- | ----- |---|
+    | Název |  **myVM2** |**myVM3**|
+    | Skupina dostupnosti| Vybrat **myAvailabilitySet** | Vybrat **myAvailabilitySet**|
+    | Skupina zabezpečení sítě | Vybrat existující **myNSG**| Vybrat existující **myNSG**|
+---
+
 ### <a name="install-iis"></a>Instalace služby IIS
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myVM1** , která je umístěná ve skupině prostředků *myResourceGroupSLB* .
-2. Na stránce **Přehled** vyberte **Připojit** a připojte se přes RDP k virtuálnímu počítači.
-5. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali při vytváření tohoto virtuálního počítače. Tím se otevře relace vzdálené plochy s virtuálním počítačem *myVM1*.
-6. Na ploše serveru přejděte do části **Nástroje pro správu Windows** > **Windows PowerShell**.
-7. V okně PowerShellu spuštěním následujících příkazů nainstalujte server služby IIS, odeberte výchozí soubor iisstart.htm a pak přidejte nový soubor iisstart.htm, který zobrazuje název virtuálního počítače:
+1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředky vyberte **myVM1** , která je umístěná ve skupině prostředků **myResourceGroupLB** .
 
-   ```azurepowershell-interactive
+2. Na stránce **Přehled** vyberte **připojit** a Stáhněte soubor RDP pro virtuální počítač.
+
+3. Otevřete soubor RDP.
+
+4. Přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali při vytváření tohoto virtuálního počítače.
+
+5. Na ploše serveru přejděte do části **Nástroje pro správu Windows** > **Windows PowerShell**.
+
+6. V okně PowerShellu spusťte následující příkazy pro:
+
+    * Instalace serveru služby IIS
+    * Odebrat výchozí soubor iisstart.htm
+    * Přidejte nový soubor iisstart.htm, který zobrazuje název virtuálního počítače:
+
+   ```powershell
     
     # install IIS server role
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -205,24 +472,32 @@ V této části vytvoříte pravidlo skupiny zabezpečení sítě, které povol�
     # Add a new htm file that displays server name
      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
    ```
-6. Zavřete relaci RDP pomocí *myVM1*.
-7. Opakováním kroků 1 až 6 nainstalujte službu IIS a aktualizovaný soubor iisstart.htm na *myVM2* a *myVM3*.
+7. Zavřete relaci RDP pomocí **myVM1**.
 
-## <a name="test-the-load-balancer"></a>Otestování Load Balancer
-1. Na obrazovce **Přehled** vyhledejte veřejnou IP adresu Load Balanceru. V nabídce na levé straně vyberte **všechny služby** a vyberte **všechny prostředky**a pak vyberte **myPublicIP**.
+8. Opakováním kroků 1 až 6 nainstalujte službu IIS a aktualizovaný soubor iisstart.htm na **myVM2** a **myVM3**.
+
+## <a name="test-the-load-balancer"></a>Testování Load Balanceru
+
+1. Vyhledejte veřejnou IP adresu nástroje pro vyrovnávání zatížení na obrazovce **Přehled** . V nabídce na levé straně vyberte **všechny služby** a vyberte **všechny prostředky**a pak vyberte **myPublicIP**.
 
 2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V prohlížeči se zobrazí výchozí stránka webového serveru služby IIS.
 
    ![Webový server služby IIS](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-Pokud chcete zobrazit Load Balancer distribuci provozu napříč všemi třemi virtuálními počítači, můžete přizpůsobit výchozí stránku webového serveru IIS každého virtuálního počítače a potom vynutit aktualizaci webového prohlížeče z klientského počítače.
+Pokud chcete zobrazit distribuci provozu nástroje pro vyrovnávání zatížení napříč všemi třemi virtuálními počítači, můžete přizpůsobit výchozí stránku webového serveru IIS každého virtuálního počítače a potom vynutit aktualizaci webového prohlížeče z klientského počítače.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, Load Balancer a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků (*myResourceGroupSLB*) obsahující Load Balancer a pak vyberete **Odstranit**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků **myResourceGroupLB** , která obsahuje prostředky, a pak vyberete **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili Standard Load Balancer k němu připojené virtuální počítače, nakonfigurovali jste pravidlo Load Balancer přenosů dat, sondu stavu a pak jste otestovali Load Balancer. Pokud se chcete dozvědět víc o Azure Load Balancer, pokračujte [Azure Load Balancer kurzy](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
+V tomto rychlém startu:
+
+* Vytvořili Load Balancer Azure Standard nebo Basic.
+* K nástroji pro vyrovnávání zatížení se připojily 3 virtuální počítače.
+* Nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení, sondu stavu a pak otestovali Nástroj pro vyrovnávání zatížení. 
+
+Chcete-li získat další informace o Azure Load Balancer, pokračujte v [Azure Load Balancer?](load-balancer-overview.md) a [Load Balancer Nejčastější dotazy](load-balancer-faqs.md).
 
 Přečtěte si další informace o [Load Balancer a zónách dostupnosti](load-balancer-standard-availability-zones.md).

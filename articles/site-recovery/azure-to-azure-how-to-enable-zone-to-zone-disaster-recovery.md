@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 1a522193e9e704dce967daeeef70f82a6c0b1378
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135719"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528974"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Povolení zotavení po havárii zóny pro virtuální počítače Azure
 
@@ -22,6 +22,7 @@ Tento článek popisuje, jak replikovat, převzetí služeb při selhání a nav
 >
 >- Site Recovery v současné době nepodporuje pro zotavení po havárii zóny plány obnovení prostřednictvím portálu. Použijte prosím prostředí PowerShell nebo REST API k využití plánů obnovení pro zotavení po havárii zóny. 
 >- Podpora zóny až po zotavení po havárii zóny je aktuálně omezená na dvě oblasti: jihovýchodní Asie a Velká Británie – jih.  
+>- Site Recovery nepřesouvá ani neukládají zákaznická data mimo oblast, ve které je nasazená, když zákazník používá k zotavení po havárii zóny. Zákazníci si můžou vybrat Recovery Services trezor z jiné oblasti, pokud si si je vyberou. Trezor Recovery Services obsahuje metadata, ale žádná skutečná zákaznická data.
 
 Služba Site Recovery přispívá k strategii pro provozní kontinuitu a zotavení po havárii tím, že během plánovaných a neplánovaných výpadků udržuje podnikové aplikace v provozu. Tato možnost zotavení po havárii se doporučuje, aby vaše aplikace zůstaly v provozu a v případě regionálních výpadků.
 
@@ -67,14 +68,14 @@ Předtím, než nasadíte zónu do zóny zotavení po havárii pro vaše virtuá
 
 |Funkce  | Příkaz support  |
 |---------|---------|
-|Klasické virtuální počítače   |     Nepodporuje se    |
-|Virtuální počítače ARM    |    Podporuje se    |
-|Azure Disk Encryption V1 (Dual Pass, with AAD)     |     Podporuje se |
-|Azure Disk Encryption v2 (Single Pass, bez AAD)    |    Podporuje se    |
-|Nespravované disky    |    Nepodporuje se    |
-|Spravované disky    |    Podporuje se    |
-|Klíče spravované zákazníkem    |    Podporuje se    |
-|Skupiny umístění bezkontaktní komunikace    |    Podporuje se    |
+|Klasické virtuální počítače   |     Nepodporováno    |
+|Virtuální počítače ARM    |    Podporováno    |
+|Azure Disk Encryption V1 (Dual Pass, with AAD)     |     Podporováno |
+|Azure Disk Encryption v2 (Single Pass, bez AAD)    |    Podporováno    |
+|Nespravované disky    |    Nepodporováno    |
+|Spravované disky    |    Podporováno    |
+|Klíče spravované zákazníkem    |    Podporováno    |
+|Skupiny umístění bezkontaktní komunikace    |    Podporováno    |
 |Interoperabilita zálohování    |    Podporuje se zálohování a obnovení na úrovni souborů. Zálohování a obnovení na úrovni disku a virtuálního počítače se nepodporuje.    |
 |Připojit a přidat/odebrat    |    Disky je možné přidat po povolení replikace zóny do zóny. Odebrání disků po povolení replikace zóny do zóny se nepodporuje.    | 
 

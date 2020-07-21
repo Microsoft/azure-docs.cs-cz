@@ -17,12 +17,12 @@ ms.date: 03/23/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: f5b59d1669d89c73b93199d1f833da149003d399
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8ac964c62ac4b30e9280e4ae921297ba860d7c2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80159332"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529926"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Co je Azure Notification Hubs?
 
@@ -48,7 +48,7 @@ Další informace o nabízených oznámeních pro některé oblíbené platformy
 
 - [Android](https://developer.android.com/guide/topics/ui/notifiers/notifications.html)
 - [iOS](https://developer.apple.com/notifications/)
-- [Windows](https://msdn.microsoft.com/library/windows/apps/hh779725.aspx)
+- [Windows](/previous-versions/windows/apps/hh779725(v=win.10))
 
 ## <a name="how-do-push-notifications-work"></a>Jak fungují nabízená oznámení?
 
@@ -71,7 +71,7 @@ Odesílání nabízených oznámení vyžaduje složitou infrastrukturu, která 
 
 - **Závislost na platformě**
   - Back-end vyžaduje pro posílání oznámení do zařízení na různých platformách komplexní a pevně zachovávat platformu závislou na platformách, protože PNSes nejsou sjednocené.
-- **Měřítko**
+- **Škálování**
   - Podle pokynů pro PNS je potřeba při každém spuštění aplikace aktualizovat tokeny zařízení. Back-end se zabývá velkým objemem provozu a přístup k databázím, aby bylo možné tokeny udržovat v aktuálním stavu. Když počet zařízení roste na stovky, tisíce nebo miliony, náklady na vytvoření a údržbu této infrastruktury jsou obrovské.
   - Většina systémů PNS nepodporuje vysílání na více zařízení. Jednoduché vysílání pro milion zařízení znamená milion volání systémů PNS. Škálovat tento provoz s minimální latencí není úplně jednoduché.
 - **Směrování**
@@ -91,7 +91,7 @@ Notification Hubs je připravený modul nabízených oznámení pro použití s 
   - Správa popisovačů zařízení se provádí na jednom místě.
 - **Jsou pro různé back-endy**
   - V cloudu nebo v místním prostředí.
-  - .NET, Node. js, Java, Python atd.
+  - .NET, Node.js, Java, Python atd.
 - **Bohatá sada schémat doručování**
   - Všesměrové vysílání na jednu nebo víc platforem: pomocí jediného volání rozhraní API se můžete okamžitě vysílat na miliony zařízení napříč platformami.
   - Zasílání zařízení: Oznámení mohou být určena i jednotlivým zařízením.
@@ -120,16 +120,16 @@ Začínáme vytvářet a používat centrum oznámení podle [kurzu o zasílán�
 
 [How customers are using Notification Hubs]: https://azure.microsoft.com/services/notification-hubs
 [Notification Hubs tutorials and guides]: https://azure.microsoft.com/documentation/services/notification-hubs
-[iOS]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started
-[Android]: https://azure.microsoft.com/documentation/articles/notification-hubs-android-get-started
-[Windows Universal]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started
-[Windows Phone]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-phone-get-started
-[Kindle]: https://azure.microsoft.com/documentation/articles/notification-hubs-kindle-get-started
-[Xamarin.iOS]: https://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-ios-get-started
-[Xamarin.Android]: https://azure.microsoft.com/documentation/articles/partner-xamarin-notification-hubs-android-get-started
-[Microsoft.WindowsAzure.Messaging.NotificationHub]: https://msdn.microsoft.com/library/microsoft.windowsazure.messaging.notificationhub.aspx
-[Microsoft.ServiceBus.Notifications]: https://msdn.microsoft.com/library/microsoft.servicebus.notifications.aspx
-[App Service Mobile Apps]: https://azure.microsoft.com/documentation/articles/app-service-mobile-value-prop/
+[iOS]: ./notification-hubs-push-notification-fixer.md
+[Android]: ./notification-hubs-android-push-notification-google-gcm-get-started.md
+[Windows Universal]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Windows Phone]: ./notification-hubs-windows-mobile-push-notifications-mpns.md
+[Kindle]: ./notification-hubs-android-push-notification-google-fcm-get-started.md
+[Xamarin.iOS]: ./xamarin-notification-hubs-ios-push-notification-apns-get-started.md
+[Xamarin.Android]: ./xamarin-notification-hubs-push-notifications-android-gcm.md
+[Microsoft.WindowsAzure.Messaging.NotificationHub]: /previous-versions/azure/reference/dn339221(v=azure.100)
+[Microsoft.ServiceBus.Notifications]: /previous-versions/azure/
+[App Service Mobile Apps]: /previous-versions/azure/app-service-mobile/app-service-mobile-value-prop
 [templates]: notification-hubs-templates-cross-platform-push-messages.md
 [Azure portal]: https://portal.azure.com
 [tags]: (https://msdn.microsoft.com/library/azure/dn530749.aspx)

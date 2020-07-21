@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82731998"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536246"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Monitorovat stav spuštění, zkontrolovat historii triggerů a nastavit výstrahy pro Azure Logic Apps
 
@@ -48,11 +48,11 @@ Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul
 
    | Status | Popis |
    |--------|-------------|
-   | **Cancelled** | Pracovní postup byl spuštěn, ale přijal žádost o zrušení. |
-   | **Failed** | Nejméně jedna akce se nezdařila a žádné pozdější akce v pracovním postupu nebyly nastaveny pro zpracování selhání. |
-   | **Spuštěno** | Pracovní postup je aktuálně spuštěný. <p>Tento stav se může zobrazit také pro omezené pracovní postupy nebo z důvodu aktuálního cenového plánu. Další informace najdete v tématu [omezení akcí na stránce s cenami](https://azure.microsoft.com/pricing/details/logic-apps/). Pokud nastavíte [diagnostické protokolování](../logic-apps/monitor-logic-apps.md), můžete získat informace o všech událostech omezení, ke kterým dochází. |
-   | **Úspěch** | Všechny akce byly úspěšné. <p>**Poznámka**: Pokud došlo k nějakým chybám v určité akci, bude tato chyba zpracována později v pracovním postupu. |
-   | **Čekání** | Pracovní postup nebyl spuštěn nebo byl pozastaven, například kvůli dřívějšímu pracovnímu postupu, který je stále spuštěn. |
+   | **Stornován** | Pracovní postup byl spuštěn, ale přijal žádost o zrušení. |
+   | **Neúspěšný** | Nejméně jedna akce se nezdařila a žádné pozdější akce v pracovním postupu nebyly nastaveny pro zpracování selhání. |
+   | **Spuštěný** | Pracovní postup je aktuálně spuštěný. <p>Tento stav se může zobrazit také pro omezené pracovní postupy nebo z důvodu aktuálního cenového plánu. Další informace najdete v tématu [omezení akcí na stránce s cenami](https://azure.microsoft.com/pricing/details/logic-apps/). Pokud nastavíte [diagnostické protokolování](../logic-apps/monitor-logic-apps.md), můžete získat informace o všech událostech omezení, ke kterým dochází. |
+   | **Úspěšný** | Všechny akce byly úspěšné. <p>**Poznámka**: Pokud došlo k nějakým chybám v určité akci, bude tato chyba zpracována později v pracovním postupu. |
+   | **Čekající** | Pracovní postup nebyl spuštěn nebo byl pozastaven, například kvůli dřívějšímu pracovnímu postupu, který je stále spuštěn. |
    |||
 
 1. Chcete-li zkontrolovat postup a další informace pro konkrétní spuštění, vyberte v části **historie spuštění**možnost spustit.
@@ -71,7 +71,7 @@ Pokaždé, když se Trigger aktivuje pro položku nebo událost, vytvoří modul
 
    ![Zkontrolujte podrobnosti o jednotlivých krocích spuštění.](./media/monitor-logic-apps/review-logic-app-run-details.png)
 
-   Můžete například získat vlastnost **ID korelace** spuštění, kterou můžete potřebovat při použití [REST API pro Logic Apps](https://docs.microsoft.com/rest/api/logic).
+   Můžete například získat vlastnost **ID korelace** spuštění, kterou můžete potřebovat při použití [REST API pro Logic Apps](/rest/api/logic).
 
 1. Pokud chcete získat další informace o konkrétním kroku, vyberte jednu z možností:
 
@@ -118,9 +118,9 @@ Každá aplikace logiky se spustí s triggerem. V okně historie aktivačních u
 
    | Status | Popis |
    |--------|-------------|
-   | **Failed** | Došlo k chybě. Pokud chcete zkontrolovat všechny generované chybové zprávy pro aktivační událost, vyberte tuto aktivační událost a zvolte **výstup**. Například můžete najít vstupy, které nejsou platné. |
+   | **Neúspěšný** | Došlo k chybě. Pokud chcete zkontrolovat všechny generované chybové zprávy pro aktivační událost, vyberte tuto aktivační událost a zvolte **výstup**. Například můžete najít vstupy, které nejsou platné. |
    | **Přeskočeno** | Aktivační událost kontrolovala koncový bod, ale nenašla žádná data. |
-   | **Úspěch** | Aktivační událost kontrolovala koncový bod a našla dostupná data. Stav "aktivováno" se obvykle zobrazuje současně s tímto stavem. V takovém případě může být v definici triggeru podmínka nebo `SplitOn` příkaz, který nebyl splněn. <p>Tento stav se může vztahovat na manuální aktivační událost, Trigger opakování nebo aktivační událost cyklického dotazování. Aktivační událost může být úspěšně spuštěna, ale samotný běh může selhat i v případě, že akce generují neošetřené chyby. |
+   | **Úspěšný** | Aktivační událost kontrolovala koncový bod a našla dostupná data. Stav "aktivováno" se obvykle zobrazuje současně s tímto stavem. V takovém případě může být v definici triggeru podmínka nebo `SplitOn` příkaz, který nebyl splněn. <p>Tento stav se může vztahovat na manuální aktivační událost, Trigger opakování nebo aktivační událost cyklického dotazování. Aktivační událost může být úspěšně spuštěna, ale samotný běh může selhat i v případě, že akce generují neošetřené chyby. |
    |||
 
    > [!TIP]
@@ -138,7 +138,7 @@ Každá aplikace logiky se spustí s triggerem. V okně historie aktivačních u
 
 ## <a name="set-up-monitoring-alerts"></a>Nastavení výstrah monitorování
 
-Pokud chcete dostávat upozornění na základě konkrétních metrik nebo překročení prahových hodnot pro vaši aplikaci logiky, nastavte [výstrahy v Azure monitor](../azure-monitor/platform/alerts-overview.md). Seznamte [se s metrikami v Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md). Pokud chcete nastavit výstrahy bez použití [Azure monitor](../log-analytics/log-analytics-overview.md), postupujte podle těchto kroků.
+Pokud chcete dostávat upozornění na základě konkrétních metrik nebo překročení prahových hodnot pro vaši aplikaci logiky, nastavte [výstrahy v Azure monitor](../azure-monitor/platform/alerts-overview.md). Seznamte [se s metrikami v Azure](../azure-monitor/platform/data-platform.md). Pokud chcete nastavit výstrahy bez použití [Azure monitor](../azure-monitor/log-query/log-query-overview.md), postupujte podle těchto kroků.
 
 1. V nabídce aplikace logiky v části **monitorování**vyberte **výstrahy**  >  **nové pravidlo výstrahy**.
 

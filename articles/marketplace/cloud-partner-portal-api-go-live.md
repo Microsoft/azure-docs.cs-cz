@@ -4,18 +4,20 @@ description: Rozhraní API na cestách spustí proces dynamického výpisu nabí
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: f356291662851172a3c6917b44891ce901546dfa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5c5448a853447a0eacc8d974a5b00d5d1e8f4be2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115702"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535939"
 ---
 # <a name="go-live"></a>Přejít na Live
 
 > [!NOTE]
-> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
 Toto rozhraní API spustí proces pro vložení aplikace do produkčního prostředí. Tato operace je obvykle dlouhodobě spuštěna. Toto volání používá v rámci operace [publikování](./cloud-partner-portal-api-publish-offer.md) rozhraní API seznam e-mailových oznámení.
 
@@ -31,7 +33,7 @@ Toto rozhraní API spustí proces pro vložení aplikace do produkčního prost�
 | verze-api    | Nejnovější verze rozhraní API                                                   |  Datum         |
 |  |  |  |
 
-## <a name="header"></a>Záhlaví
+## <a name="header"></a>Hlavička
 ------
 
 |  **Název**       |     **Hodnota**       |

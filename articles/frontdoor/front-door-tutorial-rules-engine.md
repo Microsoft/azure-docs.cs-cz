@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: 'Kurz: Konfigurace modulu pravidel – přední dvířka Azure'
 description: Tento článek popisuje, jak nakonfigurovat modul pravidel v Azure Portal i CLI.
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: a931a12889cec67baf6ef2db09091c8ec581ef08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b40bb0e426571acc66d4f5f1b992fb4c6b67494a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321558"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536948"
 ---
 # <a name="configure-your-rules-engine"></a>Konfigurace modulu pravidel
 

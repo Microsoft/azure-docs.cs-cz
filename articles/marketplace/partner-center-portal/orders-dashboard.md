@@ -3,14 +3,14 @@ title: Řídicí panel objednávky partnerského centra v analýzách komerční
 description: Naučte se, jak získat přístup k analytickým sestavám o objednávkách nabídek na webu Marketplace v grafickém a ke stažení.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118354"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536126"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Objednávky v analýzách komerčního marketplace
 
@@ -29,12 +29,9 @@ Pokud chcete získat přístup k **řídicímu panelu objednávky** v analytick�
 - [Objednávky podle geografického](#orders-by-geography)
 - [Objednávky podle nabídek](#orders-by-offers)
 - [Trend objednávek na web versus na pracovišti](#orders-trend-per-site-versus-per-seat)
-- [Objednávky podle SKU](#orders-by-skus)
+- [Objednávky podle plánů](#orders-by-plans)
 - [Trend objednávek a sedadel](#orders-and-seats-trend)
 - [Tabulka podrobností objednávky](#order-details-table)
-
-> [!NOTE]
-> Existují rozdíly mezi zobrazením sestav analýzy v portál partnerů cloudu (CPP) a v novém programu komerčního obchodu v partnerském centru. Jedním z nich je, že **přehledy prodejců** v CPP mají **objednávky & použití** , která zobrazuje data pro nabídky založené na využití a nabídky nevyužívající použití. Stránka **objednávky** v partnerském centru má samostatnou kartu pro nabídky SaaS.
 
 ## <a name="order-dashboard-details"></a>Objednat podrobnosti řídicího panelu
 
@@ -76,16 +73,16 @@ Heatmapu **ORDER by geografie** zobrazuje počet objednávek na mapě světa a u
 
 Graf na **jeden web oproti pracovnímu** prstenci znázorňuje rozdělení na SaaS webu a objednávky SaaS na pracovní stanici zakoupené zákazníky (Tento graf obsahuje zrušené objednávky). Sloupcový graf představuje trend počtu SaaSů na webu a objednávek SaaS na pracovní stanici koupených zákazníky (Tento graf obsahuje zrušené objednávky).
 
-### <a name="orders-by-skus"></a>Objednávky podle SKU
+### <a name="orders-by-plans"></a>Objednávky podle plánů
 
-Graf **ORDER by SKU** představuje trend objednávek na úrovni skladových jednotek (SKU) pro všechny vaše nabídky (zahrnuje zrušené objednávky). Prstencový graf představuje rozpis pěti objednávek SKU a sloupcového grafu představuje trend objednávek pro prvních pět SKU.
+Graf **objednávky podle plánů** představuje trend objednávek na úrovni plánu pro všechny vaše nabídky (zahrnuje zrušené objednávky). Prstencový graf představuje rozpis pěti hlavních objednávek plánu a sloupcový graf představuje trend objednávek pro 5 nejoblíbenějších plánů.
 
 ### <a name="orders-and-seats-trend"></a>Trend objednávek a sedadel
 
 Graf **trendu objednávek a sedadel** představuje nejvyšší 50 nabídky s největším počtem objednávek. Tyto hodnoty jsou zobrazeny na kartě vedoucí a jsou seřazeny podle nejvyšší počet objednávek a procento objednávky.
 
-- **Objednávky podle SKU**: vyberte nabídku pro zobrazení rozpisu počtu objednávek pro prvních pět SKU v grafu.
-- **Místa na SKU**: Měsíční trend sedadel pro 5 hlavních SKU. Pokud nabídka, kterou jste vybrali, není na pracovní stanici, nezobrazí se v tomto plošném grafu žádná data.
+- **Orders by plány** – vyberte nabídku pro zobrazení rozpisu počtu objednávek v horních pěti plánech v grafu.
+- **Křesla podle plánů** – měsíční trend sedadel pro 5 nejoblíbenějších plánů. Pokud nabídka, kterou jste vybrali, není na pracovní stanici, nezobrazí se v tomto plošném grafu žádná data.
 
 ### <a name="canceled-orders-by-offers"></a>Zrušené objednávky podle nabídek
 

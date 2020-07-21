@@ -1,20 +1,20 @@
 ---
 title: Povolit přihlašování Azure Machine Learning
 description: Naučte se, jak povolit protokolování Azure Machine Learning pomocí výchozího balíčku protokolování Pythonu i pomocí funkcí specifických pro sadu SDK.
-ms.author: trbye
-author: trevorbye
+ms.author: larryfr
+author: BlackMist
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.reviewer: trbye
 ms.date: 03/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 25c0f906cdf8a351d868dcae0b794d4ea833466e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8f9923f9a5c4954fbc4682f464100b18eb469eb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560243"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536194"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Povolit přihlašování Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146561"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536381"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Pracovní postup je podobný bez ohledu na [to, kam model nasazujete](#target) :
 
 Další informace o konceptech, které jsou součástí pracovního postupu nasazení, najdete v tématu [Správa, nasazení a monitorování modelů pomocí Azure Machine Learning](concept-model-management-and-deployment.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -442,8 +442,8 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 V tomto příkladu konfigurace určuje následující nastavení:
 
 * Model vyžaduje Python.
-* [Skript vstupu](#script), který se používá ke zpracování webových požadavků odeslaných do nasazené služby.
-* Soubor Conda, který popisuje balíčky Pythonu potřebné pro odvození.
+* [Skript vstupu](#script), který se používá ke zpracování webových požadavků odeslaných do nasazené služby
+* Soubor Conda, který popisuje balíčky Pythonu potřebné pro odvození
 
 Informace o použití vlastní image Docker s odvozenou konfigurací najdete v tématu [nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md).
 
@@ -537,7 +537,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="deploy-to-target"></a>Nasadit do cíle
 
-Nasazení používá k nasazení modelů konfiguraci nasazení nasazení konfigurace. Proces nasazení je podobný bez ohledu na cíl výpočtů. Nasazení na AKS se mírně liší, protože musíte zadat odkaz na cluster AKS.
+Nasazení používá k nasazení modelů konfiguraci nasazení nasazení konfigurace. Proces nasazení je podobný bez ohledu na cíl výpočtů. Nasazení do služby Azure Kubernetes Service (AKS) se mírně liší, protože musíte poskytnout odkaz na cluster AKS.
 
 ### <a name="choose-a-compute-target"></a>Zvolit cíl výpočetní technologie
 
@@ -559,7 +559,7 @@ Následující tabulka uvádí příklad vytvoření konfigurace nasazení pro k
 
 | Cílový výpočetní objekt | Příklad konfigurace nasazení |
 | ----- | ----- |
-| Local | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Místní | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
@@ -610,10 +610,10 @@ Následující tabulka popisuje různé stavy služby:
 
 | Stav WebService | Popis | Konečný stav?
 | ----- | ----- | ----- |
-| Přechod | Služba je v procesu nasazení. | Ne |
-| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
-| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
-| Neúspěšné | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
+| Přechod | Služba je v procesu nasazení. | No |
+| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | No |
+| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | No |
+| Neúspěšný | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
 | V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>Webová služba COMPUTE instance (vývoj/testování)
@@ -629,7 +629,7 @@ Viz [nasazení na Azure Container Instances](how-to-deploy-azure-container-insta
 Viz [nasazení do služby Azure Kubernetes](how-to-deploy-azure-kubernetes-service.md).
 
 ### <a name="ab-testing-controlled-rollout"></a>Testování a/B (řízené zavedení)
-Další informace najdete v tématu [řízená zavedení modelů ml](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) .
+Další informace najdete v tématu [řízená zavedení modelů ml](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) pro další informace.
 
 ## <a name="consume-web-services"></a>Využívání webových služeb
 
@@ -878,7 +878,7 @@ Nasazení modelu bez kódu je momentálně ve verzi Preview a podporuje následu
 ### <a name="tensorflow-savedmodel-format"></a>Formát Tensorflow SavedModel
 Modely Tensorflow je nutné zaregistrovat ve **formátu SavedModel** pro práci s nasazením modelu bez kódu.
 
-Informace o tom, jak vytvořit SavedModel, najdete v [tomto odkazu](https://www.tensorflow.org/guide/saved_model) .
+V [tomto odkazu](https://www.tensorflow.org/guide/saved_model) najdete informace o tom, jak vytvořit SavedModel.
 
 ```python
 from azureml.core import Model
@@ -913,6 +913,12 @@ model = Model.register(workspace=ws,
 service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
+
+Chcete-li určit skóre modelu, přečtěte si téma věnované [využívání modelu Azure Machine Learning nasazeného jako webové služby](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service). Mnoho projektů ONNX používá soubory protobuf k komprimaci dat o školeních a ověřováních, což může být obtížné zjistit, co formát dat očekávala služba. Jako vývojář modelů byste měli dokument pro vaše vývojáře:
+
+* Vstupní formát (JSON nebo binární)
+* Vstupní datový tvar a typ (například pole plovoucích tvarů [100100, 3])
+* Informace o doméně (například pro obrázek, barevný prostor, pořadí součástí a zda jsou hodnoty normalizovány)
 
 Pokud používáte Pytorch, jsou [exportovány modely z Pytorch na ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) v podrobnostech o převodu a omezeních. 
 
@@ -998,7 +1004,7 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Zde je příklad: 
+Po vytvoření balíčku můžete použít `package.pull()` k načtení image do místního prostředí Docker. Výstup tohoto příkazu zobrazí název obrázku. Příklad: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
@@ -1227,7 +1233,7 @@ def run(request):
 * [Postup nasazení modelu pomocí vlastní image Docker](how-to-deploy-custom-docker-image.md)
 * [Řešení potíží s nasazením](how-to-troubleshoot-deployment.md)
 * [Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning](how-to-secure-web-service.md)
-* [Využití modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md)
+* [Využívání modelu služby Azure Machine Learning nasazeného jako webová služba](how-to-consume-web-service.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
 * [Vytváření výstrah a triggerů událostí pro nasazení modelů](how-to-use-event-grid.md)

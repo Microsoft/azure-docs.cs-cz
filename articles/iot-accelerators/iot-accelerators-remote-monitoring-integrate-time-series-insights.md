@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232062"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536602"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
@@ -24,7 +24,7 @@ Akcelerátor řešení vzdáleného monitorování teď poskytuje automatické n
 > [!NOTE]
 > Time Series Insights není aktuálně k dispozici v cloudu Azure Čína. Nové nasazení akcelerátoru řešení vzdáleného monitorování v cloudu Azure Čína používá Cosmos DB pro všechna úložiště.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li dokončit tento postup, musíte již nasadit řešení vzdáleného monitorování:
 
@@ -66,9 +66,9 @@ V dalším kroku nasaďte Time Series Insights jako další prostředek do řeš
     | Skladová jednotka (SKU) |**S1** |
     | Kapacita | **1** |
 
-    ![Vytvořit Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
+    ![Vytvoření instance Time Series Insights](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Klikněte na **Create** (Vytvořit). Vytvoření prostředí může chvíli trvat.
+1. Klikněte na **Vytvořit**. Vytvoření prostředí může chvíli trvat.
 
 ## <a name="create-event-source"></a>Vytvoření zdroje událostí
 
@@ -101,7 +101,7 @@ Vytvořte nový zdroj událostí pro připojení ke službě IoT Hub. Ujistěte 
 
     ![Vytvořit zdroj události](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klikněte na **Create** (Vytvořit).
+1. Klikněte na **Vytvořit**.
 
 ## <a name="configure-the-data-access-policy"></a>Konfigurace zásad přístupu k datům
 
@@ -244,7 +244,7 @@ Nakonfigurujte prostředí `basic` nasazení pro aktualizované mikroslužby.
 
 Konfigurace prostředí `standard` nasazení pro aktualizované mikroslužby výše
 
-1. Na příkazovém řádku spusťte příkaz `kubectl proxy` . Další informace najdete v tématu [přístup k rozhraní Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/).
+1. Na příkazovém řádku spusťte příkaz `kubectl proxy` . Další informace najdete v tématu [přístup k rozhraní Kubernetes API](https://kubernetes.io/docs/reference/access-authn-authz/#using-kubectl-to-start-a-proxy-server).
 
 1. Otevřete konzolu pro správu Kubernetes.
 

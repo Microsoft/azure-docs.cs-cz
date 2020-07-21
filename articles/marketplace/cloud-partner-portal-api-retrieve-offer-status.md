@@ -4,18 +4,20 @@ description: Rozhraní API pro načtení aktuálního stavu nabídky
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: 897c2517c3836e1c3940db02efae0e5d94667a65
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114070"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535871"
 ---
 # <a name="retrieve-offer-status"></a>Načtení stavu nabídky
 
 > [!NOTE]
-> Rozhraní API pro portál partnerů cloudu jsou integrovaná do partnerského centra a budou fungovat i po migraci nabídek do partnerského centra. Integrace přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že váš kód bude i nadále fungovat po migraci do partnerského centra.
+> Rozhraní API pro portál partnerů cloudu jsou integrovaná s a budou pokračovat v práci v partnerském centru. Přechod přináší malé změny. Projděte si změny uvedené v části [portál partnerů cloudu rozhraní API](./cloud-partner-portal-api-overview.md) , abyste zajistili, že kód pokračuje v práci po přechodu do partnerského centra. Rozhraní API CPP by se mělo používat jenom pro existující produkty, které už jsou integrované před přechodem do partnerského centra; nové produkty by měly používat rozhraní API pro odesílání v partnerském centru.
 
 Načte aktuální stav nabídky.
 
@@ -30,18 +32,16 @@ Načte aktuální stav nabídky.
 |  verze-api    | Nejnovější verze rozhraní API                        |     Datum       |
 |  |  |
 
+## <a name="header"></a>Hlavička
 
-## <a name="header"></a>Záhlaví
 
-
-|  Name           |  Hodnota               |
+|  Název           |  Hodnota               |
 |  -------------  | -------------------  |
 |  Typ obsahu   |  `application/json`  |
 |  Autorizace  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
 ## <a name="body-example"></a>Příklad textu
-
 
 ### <a name="response"></a>Odpověď
 
@@ -116,7 +116,6 @@ Načte aktuální stav nabídky.
   }
 ```
 
-
 ### <a name="response-body-properties"></a>Vlastnosti textu odpovědi
 
 |  **Název**             |    **Popis**                                                                             |
@@ -127,7 +126,7 @@ Načte aktuální stav nabídky.
 |  estimatedTimeFrame   | Odhad doby provedení tohoto kroku v popisném formátu                       |
 |  id                   | Identifikátor kroku                                                                         |
 |  Step             | Název kroku                                                                               |
-|  description          | Popis kroku                                                                        |
+|  Popis          | Popis kroku                                                                        |
 |  status               | Stav kroku. Seznam možných hodnot najdete v tématu [stav kroku](#step-status) níže.    |
 |  cloud-zařízení             | Pole zpráv souvisejících s krokem                                                          |
 |  processPercentage    | Procentuální podíl dokončení kroku                                                              |
@@ -152,10 +151,10 @@ Načte aktuální stav nabídky.
 |  NeverPublished              | Nabídka nebyla nikdy publikována.                          |
 |  NotStarted                  | Nabídka je nová a není spuštěná.                            |
 |  WaitingForPublisherReview   | Nabídka čeká na schválení vydavatele.                 |
-|  Spuštěno                     | Zpracovává se odeslání nabídky.                     |
-|  Úspěch                   | Bylo dokončeno zpracování příspěvku nabídky.               |
+|  Spuštěný                     | Zpracovává se odeslání nabídky.                     |
+|  Úspěšný                   | Bylo dokončeno zpracování příspěvku nabídky.               |
 |  Zrušeno                    | Odeslání nabídky se zrušilo.                           |
-|  Failed                      | Odeslání nabídky se nezdařilo.                                 |
+|  Neúspěšný                      | Odeslání nabídky se nezdařilo.                                 |
 |  |  |
 
 ### <a name="step-status"></a>Stav kroku

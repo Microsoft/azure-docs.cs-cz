@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f14f5412b701ce055713fee347175c2dffd5c5b7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77912048"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529413"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
 Upgradujte na Security Center Standard, abyste mohli využívat rozšířenou správu zabezpečení a ochranu před hrozbami pro vaše hybridní cloudové úlohy. Můžete vyzkoušet Standard zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Security Center.
@@ -47,7 +48,7 @@ Upgrade předplatného nebo pracovního prostoru na standard:
    -    Předplatná a pracovní prostory, které si nemůžete zdarma vyzkoušet, můžete upgradovat.
    -    V bezplatné zkušební verzi můžete začít používat vybrané pracovní prostory a předplatná.
 3.  Pokud chcete začít používat zkušební verzi vybraných předplatných, klikněte na **Zahájit zkušební období**.
-  ![Vybrat předplatné](./media/security-center-onboarding/select-subscription.png)
+  ![Výběr předplatného](./media/security-center-onboarding/select-subscription.png)
 
 
    > [!NOTE]

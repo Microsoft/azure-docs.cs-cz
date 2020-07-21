@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd54c8f7e8a3784672f5364efc6f6b51186f911d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81454675"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529280"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Šifrování dat Azure – v klidovém případě
 
@@ -258,9 +258,8 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 
 #### <a name="encryption-model-and-key-management-table"></a>Model šifrování a tabulka správy klíčů
 
-|                                  |                    | **Model šifrování a Správa klíčů** |                    |
+| Produkt, funkce nebo služba | Na straně serveru pomocí klíče spravovaného službou   | Na straně serveru pomocí klíče spravovaného zákazníkem | Klientská strana s použitím klíče spravovaného klientem  |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
-|                                  | **Na straně serveru pomocí klíče spravovaného službou**     | **Na straně serveru pomocí klíče spravovaného zákazníkem**             | **Klientská strana s použitím klíče spravovaného klientem**      |
 | **AI a strojové učení**      |                    |                    |                    |
 | Azure Cognitive Search           | Ano                | Ano                | -                  |
 | Azure Cognitive Services         | Ano                | Ano                | -                  |
@@ -275,9 +274,9 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Translator Text                  | Ano                | Ano                | -                  |
 | Power BI                         | Ano                | Verze Preview, RSA 2048-bit | -                  |
 | **Analýzy**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ano                | Není k dispozici\*            | -                  |
+| Azure Stream Analytics           | Ano                | –\*            | -                  |
 | Event Hubs                       | Ano                | Ano, všechny délky RSA. | -                  |
-| Functions                        | Ano                | Ano, všechny délky RSA. | -                  |
+| Funkce                        | Ano                | Ano, všechny délky RSA. | -                  |
 | Azure Analysis Services          | Ano                | -                  | -                  |
 | Azure Data Catalog               | Ano                | -                  | -                  |
 | Azure HDInsight                  | Ano                | Vše                | -                  |
@@ -290,12 +289,12 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Azure Kubernetes Service         | Ano                | Ano                | -                  |
 | Container Instances              | Ano                | Ano                | -                  |
 | Container Registry               | Ano                | Ano                | -                  |
-| **Compute**                      |                    |                    |                    |
+| **Výpočetní služby**                      |                    |                    |                    |
 | Virtual Machines                 | Ano                | Ano, RSA 2048-bit  | -                  |
 | Sada škálování virtuálních počítačů        | Ano                | Ano, RSA 2048-bit  | -                  |
 | SAP HANA                         | Ano                | Ano, RSA 2048-bit  | -                  |
 | App Service                      | Ano                | Ano\*\*            | -                  |
-| Automation                       | Ano                | Ano\*\*            | -                  |
+| Automatizace                       | Ano                | Ano\*\*            | -                  |
 | Azure Functions                  | Ano                | Ano\*\*            | -                  |
 | Azure Portal                     | Ano                | Ano\*\*            | -                  |
 | Logic Apps                       | Ano                | Ano                | -                  |
@@ -313,7 +312,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Table Storage                    | Ano                | Ano                | Ano                |
 | Azure Cosmos DB                  | Ano                | Ano                | -                  |
 | Azure Databricks                 | Ano                | Ano                | -                  |
-| Azure Database Migration Service | Ano                | Není k dispozici\*              | -                  |
+| Azure Database Migration Service | Ano                | –\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Ano                | -                  | Ano                |
 | Azure Repos                      | Ano                | -                  | Ano                |
@@ -346,7 +345,7 @@ Podpora pro šifrování serveru se v současnosti poskytuje prostřednictvím f
 | Synchronizace souborů                        | Ano                | Ano, RSA 2048-bit  | -                  |
 | Queue Storage                    | Ano                | Ano                | Ano                |
 | Avere vFXT                       | Ano                | -                  | -                  |
-| Azure Cache for Redis            | Ano                | Není k dispozici\*              | -                  |
+| Azure Cache for Redis            | Ano                | –\*              | -                  |
 | Azure NetApp Files               | Ano                | Ano                | -                  |
 | Archiv služby Storage                  | Ano                | Ano, RSA 2048-bit  | -                  |
 | StorSimple                       | Ano                | Ano, RSA 2048-bit  | Ano                |

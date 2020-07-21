@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d45b98f291a7524dac2927fc74c5dc52400209f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891200"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529977"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a Správa centra oznámení pomocí PowerShellu
 
@@ -31,11 +32,11 @@ V tomto článku se dozvíte, jak pomocí PowerShellu vytvořit a spravovat Azur
 - Vytvoření centra oznámení
 - Nastavit přihlašovací údaje
 
-Pokud také potřebujete vytvořit nový obor názvů služby Service Bus pro vaše centra oznámení, přečtěte si téma [správa Service Bus pomocí PowerShellu](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
+Pokud také potřebujete vytvořit nový obor názvů služby Service Bus pro vaše centra oznámení, přečtěte si téma [správa Service Bus pomocí PowerShellu](../service-bus-messaging/service-bus-manage-with-ps.md).
 
 Správa Center oznámení není podporovaná přímo rutinami, které jsou součástí Azure PowerShell. Nejlepším přístupem z PowerShellu je odkazování na sestavení Microsoft.Azure.NotificationHubs.dll. Sestavení je distribuováno pomocí [Microsoft Azure Notification Hubs balíčku NuGet](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Azure je platforma založená na předplatném. Další informace o získání předplatného najdete v tématu [možnosti nákupu], [nabídky členů]nebo [bezplatné zkušební verze].
 - Počítač se Azure PowerShell. Pokyny najdete v tématu [instalace a konfigurace Azure PowerShell].
@@ -145,11 +146,11 @@ else
 }
 ```
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály
 
-- [Správa služby Service Bus pomocí PowerShellu](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-- [Postup vytvoření Service Bus front, témat a odběrů pomocí skriptu PowerShellu](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-- [Postup vytvoření oboru názvů Service Bus a centra událostí pomocí skriptu PowerShellu](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+- [Správa služby Service Bus pomocí PowerShellu](../service-bus-messaging/service-bus-manage-with-ps.md)
+- [Postup vytvoření Service Bus front, témat a odběrů pomocí skriptu PowerShellu](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+- [Postup vytvoření oboru názvů Service Bus a centra událostí pomocí skriptu PowerShellu](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 
 Některé připravené skripty jsou k dispozici také ke stažení:
 
@@ -159,7 +160,7 @@ Některé připravené skripty jsou k dispozici také ke stažení:
 [Nabídky členů]: https://azure.microsoft.com/pricing/member-offers/
 [Bezplatná zkušební verze]: https://azure.microsoft.com/pricing/free-trial/
 [Instalace a konfigurace Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Rozhraní .NET API pro Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-[Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
-[New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
-[Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule
+[Rozhraní .NET API pro Notification Hubs]: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[Get-AzureSBNamespace]: /powershell/module/servicemanagement/azure/get-azuresbnamespace
+[New-AzureSBNamespace]: /powershell/module/servicemanagement/azure/new-azuresbnamespace
+[Get-AzureSBAuthorizationRule]: /powershell/module/servicemanagement/azure/get-azuresbauthorizationrule

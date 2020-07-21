@@ -1,18 +1,18 @@
 ---
 title: Přehled souhrnu výběrů-Azure Marketplace
 description: Ve shrnutí výběr se zobrazí podrobnosti o peníze, které jste získali s vaší nabídkou. Také vám umožní zjistit, kdy obdržíte platby a kolik vám bude placeno.
-ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.service: marketplace
+ms.topic: article
 author: mingshen
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 087f7df8f8e3cc5e6e01ff023a88306d5fc4102d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118473"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535956"
 ---
 # <a name="payout-summary-overview"></a>Souhrnný přehled plateb
 
@@ -43,19 +43,6 @@ Jedná se o role a oprávnění pro přístup k sestavě výběr:
 | Přehled plateb | Může zobrazit | Bez přístupu | Bez přístupu | Bez přístupu | Může zobrazit | Bez přístupu  |
 | | | | | | | |
 
-## <a name="payout-report-differences"></a>Výběr rozdílů sestav
-
-Jedná se o rozdíly v sestavě výběr mezi portál partnerů cloudu (starý) a Partnerským centrem (nové):
-
-| Portál Cloud Partner | Partnerské centrum |
-| --- | --- |
-| **Odkaz**:https://cloudpartner.azure.com/ | **Odkaz**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory ahttps://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigace**: vytváření sestav o výběrech poskytované ve výběrech Insights | **Navigace**: vytváření sestav o výběrech poskytované v partnerském centru – ikona výběr |
-| **Rozsah**:<ul><li>Transakce pro položku na řádku je viditelná, pro probíhající shromažďování, shromažďování a platby.</li><li>Vytváření sestav – zobrazí všechny položky řádků po vytvoření objednávky nákupu, včetně probíhajícího shromažďování a fakturace probíhá, a stavu kolekce a položek řádků, které ještě nejsou způsobilé k placení.</li></ul> | **Rozsah**:<ul><li>Zobrazuje položky řádků poté, co se považují za oprávněné tržby.</li><li>Zákazníci se nejprve účtují do Microsoftu a potom prodejci uvidí, že sestava výběru začíná.</li><li>Sestava výběru nezobrazuje probíhající shromažďování a probíhá fakturace.</li></ul> |
-| **Transakce není připravená na výběr**: probíhá fakturace. | **Transakce není připravená na výběr**: další odhadovaná platba: stav vyvýběru je v nezpracovaném stavu. |
-| **Stav výběr**: není k dispozici | **Stav výběr**:<ul><li>Nezpracováno: zisk má nárok na platbu.</li><li>Nadcházející: vzdálení bude odesláno vydavateli v nejbližším měsíčním výběrovém.</li><li>Odesláno: platba byla odeslána do vaší banky.</li></ul> |
-| | |
-
 ## <a name="payment-schedules"></a>Platební plány
 
 Diskuzi o platebních plánech, včetně časových období, viditelnosti partnerů a o tom, kdy zákazník používá platební kartu nebo fakturu, najdete v části [Platební kalendáře](./payout-policy-details.md#payment-schedules) v tématu **Výběr podrobností** .
@@ -64,7 +51,7 @@ Diskuzi o platebních plánech, včetně časových období, viditelnosti partne
 
 Tato možnost poskytuje stažení každé položky řádku s možností přijetí, kterou vidíte na stránce Historie transakcí. To zahrnuje typ, datum, přidruženou částku transakce, zákazníka, produkt a další transakční údaje týkající se programu pobídek.
 
-| Název sloupce | Description |
+| Název sloupce | Popis |
 | --- | --- |
 | earningId | Jedinečný identifikátor pro každý z nich |
 | participantId | Primární identita partnera v rámci programu |

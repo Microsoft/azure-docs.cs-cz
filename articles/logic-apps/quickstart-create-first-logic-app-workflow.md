@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 0b3559a27fe9fae6c34b07c648a289d205560bd8
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2fdb83a61f7eaaefb3fab10af46315893791590c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321577"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536274"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps-Azure Portal
 
@@ -20,10 +20,10 @@ V tomto rychlém startu se seznámíte se základními obecnými koncepty, jak v
 
 ![Ukázkový pracovní postup aplikace logiky vysoké úrovně](./media/quickstart-create-first-logic-app-workflow/quickstart-workflow-overview.png)
 
-Pro tento scénář potřebujete předplatné Azure, nebo si [Zaregistrujte bezplatný účet Azure](https://azure.microsoft.com/free/), e-mailový účet ze služby, kterou podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Další podporované e-mailové služby najdete [v seznamu konektorů](https://docs.microsoft.com/connectors/). V tomto příkladu aplikace logiky používá účet Office 365 Outlook. Pokud používáte jinou e-mailovou službu, je celkový obecný postup stejný, ale vaše uživatelské rozhraní se může mírně lišit.
+Pro tento scénář potřebujete předplatné Azure, nebo si [Zaregistrujte bezplatný účet Azure](https://azure.microsoft.com/free/), e-mailový účet ze služby, kterou podporuje Azure Logic Apps, jako je například Office 365 Outlook, Outlook.com nebo Gmail. Další podporované e-mailové služby najdete [v seznamu konektorů](/connectors/). V tomto příkladu aplikace logiky používá účet Office 365 Outlook. Pokud používáte jinou e-mailovou službu, je celkový obecný postup stejný, ale vaše uživatelské rozhraní se může mírně lišit.
 
 > [!IMPORTANT]
-> Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+> Pokud chcete použít konektor Gmail, můžou tento konektor používat jenom obchodní účty G-Suite bez omezení v Logic Apps. Pokud máte účet příjemce Gmail, můžete tento konektor použít jenom pro konkrétní služby schválené v Google, nebo můžete [vytvořit klientskou aplikaci Google pro ověřování pomocí konektoru Gmail](/connectors/gmail/#authentication-and-bring-your-own-application). Další informace najdete v tématu [zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -49,7 +49,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
    | **Předplatné** | <*Azure – předplatné – název*> | Název vašeho předplatného Azure |
    | **Skupina prostředků** | <*Azure-Resource-Group-Name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". <p><p>**Poznámka**: názvy skupin prostředků musí být v různých oblastech jedinečné. |
    | **Umístění** | <*Oblast Azure*> | Oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
-   | **Log Analytics** | Vypnout | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
+   | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 
 1. Až Azure nasadí vaši aplikaci, vyberte na panelu nástrojů Azure možnost **oznámení**  >  **Přejít na prostředek** pro vaši nasazenou aplikaci logiky.
@@ -58,7 +58,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
 
    Nebo můžete vyhledat a vybrat aplikaci logiky zadáním názvu do vyhledávacího pole.
 
-   Otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem a běžně používanými triggery. V části **Šablony** vyberte **Prázdná aplikace logiky**.
+   Otevře se Návrhář pro Logic Apps se zobrazenou stránkou s úvodním videem a běžně používanými triggery. V oblasti **Šablony** vyberte **Prázdná aplikace logiky**.
 
    ![Vybrat prázdnou šablonu pro aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
@@ -81,7 +81,7 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Adresa URL informačního kanálu RSS** | <*RSS – informační kanál – adresa URL*> | Odkaz na informační kanál RSS, který chcete monitorovat. Tento příklad používá `http://feeds.reuters.com/reuters/topNews` . |
-   | **Doba** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
+   | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
    | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami  |
    ||||
 
@@ -91,7 +91,7 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Sbalením obrazce aplikace logiky skryjete podrobnosti.](./media/quickstart-create-first-logic-app-workflow/collapse-trigger-shape.png)
 
-1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
+1. Uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
 Vaše aplikace logiky je teď v provozu, ale kromě kontroly informačního kanálu nic nedělá. Přidejte tedy akci, která bude reagovat na aktivaci triggeru.
 
@@ -155,7 +155,7 @@ Teď přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts) ,
       | **Odkaz na primární informační kanál** | Adresa URL položky |
       |||
 
-1. Uložte svou aplikaci logiky.
+1. Uložte aplikaci logiky.
 
 Dále svou aplikaci logiky otestujte.
 

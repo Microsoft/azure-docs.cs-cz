@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76907978"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536262"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Nastavení protokolů služby Azure Monitor a shromažďování diagnostických dat o zprávách B2B v Azure Logic Apps
 
-Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace mohou tito partneři vyměňovat zprávy pomocí protokolů, jako jsou AS2, X12 a EDIFACT. Pokud chcete ověřit, že tato komunikace funguje očekávaným způsobem, můžete nastavit [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) pro svůj účet pro integraci. [Azure monitor](../azure-monitor/overview.md) vám pomůže monitorovat cloudová a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pomocí protokolů Azure Monitor můžete zaznamenávat a ukládat data o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v [pracovním prostoru Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md). V případě zpráv se v protokolování také shromažďují informace, jako například:
+Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace mohou tito partneři vyměňovat zprávy pomocí protokolů, jako jsou AS2, X12 a EDIFACT. Pokud chcete ověřit, že tato komunikace funguje očekávaným způsobem, můžete nastavit [protokoly Azure monitor](../azure-monitor/platform/data-platform-logs.md) pro svůj účet pro integraci. [Azure monitor](../azure-monitor/overview.md) vám pomůže monitorovat cloudová a místní prostředí, abyste mohli snadněji udržovat jejich dostupnost a výkon. Pomocí protokolů Azure Monitor můžete zaznamenávat a ukládat data o běhových datech a událostech, jako jsou události triggeru, události spuštění a události akcí v [pracovním prostoru Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). V případě zpráv se v protokolování také shromažďují informace, jako například:
 
 * Počet zpráv a stav
 * Stav potvrzení
@@ -29,7 +30,7 @@ Tento článek popisuje, jak povolit protokolování Azure Monitor pro účet pr
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pracovní prostor služby Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
@@ -162,7 +163,7 @@ Po spuštění aplikace logiky můžete zobrazit stav a data o těchto zprávác
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../log-analytics/log-analytics-log-searches.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->
@@ -189,7 +190,7 @@ Tady jsou popisy vlastností každé zprávy AS2.
 | **Směr** | Směr zprávy AS2 |
 | **ID sledování** | ID, které koreluje všechny triggery a akce v aplikaci logiky |
 | **ID zprávy** | ID zprávy AS2 ze záhlaví zpráv AS2 |
-| **Časové razítko** | Čas, kdy akce AS2 zpracovala zprávu |
+| **Timestamp** | Čas, kdy akce AS2 zpracovala zprávu |
 |||
 
 <!--
@@ -224,7 +225,7 @@ Tady jsou popisy vlastností každé zprávy X12.
 | **Typ zprávy** | Typ zprávy X12 EDI |
 | **ICN** | Řídicí číslo výměny pro zprávu X12 |
 | **TSCN** | Kontrolní číslo sady transakcí pro zprávu X12 |
-| **Časové razítko** | Čas, kdy akce X12 zpracovala zprávu |
+| **Timestamp** | Čas, kdy akce X12 zpracovala zprávu |
 |||
 
 <!--
@@ -259,7 +260,7 @@ Tady jsou popisy vlastností každé zprávy EDIFACT.
 | **Typ zprávy** | Typ zprávy EDIFACT |
 | **ICN** | Řídicí číslo výměny pro zprávu EDIFACT |
 | **TSCN** | Kontrolní číslo sady transakcí pro zprávu EDIFACT |
-| **Časové razítko** | Čas, kdy akce EDIFACT zpracovala zprávu |
+| **Timestamp** | Čas, kdy akce EDIFACT zpracovala zprávu |
 |||
 
 <!--

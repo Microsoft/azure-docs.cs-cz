@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 67dfc0b2da753f005c1723ff0cf3370ce288c6de
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8c13dc43f4b7c66bd804fd9ec016f5e1a467bd8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086615"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536761"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
@@ -23,7 +23,7 @@ ms.locfileid: "86086615"
 
 HDInsight obsahuje dvě vestavěné Instalace Pythonu v clusteru Spark, Anaconda Python 2,7 a Python 3,5. Zákazníci možná budou muset přizpůsobit prostředí Python. Podobně jako instalace externích balíčků Pythonu nebo jiné verze Pythonu. Tady uvádíme osvědčený postup pro bezpečnou správu prostředí Pythonu pro Apache Spark clustery v HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md). Pokud ještě nemáte cluster Spark ve službě HDInsight, můžete spustit akce skriptu během vytváření clusteru. Podívejte se na dokumentaci, [Jak používat akce vlastního skriptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -33,7 +33,7 @@ Služba Microsoft Azure HDInsight používá prostředí Open Source technologi�
 
 Existují dva typy open source komponent, které jsou k dispozici ve službě HDInsight:
 
-|Součást |Description |
+|Komponenta |Popis |
 |---|---|
 |Integrované|Tyto komponenty jsou předem nainstalované v clusterech HDInsight a poskytují základní funkce clusteru. Do této kategorie patří například Apache Hadoop nitě Správce prostředků, HiveQL (Apache Hive Query Language) a Mahout Library. Úplný seznam součástí clusteru je k dispozici v [části Co je nového ve verzích Apache Hadoop clusteru poskytovaných službou HDInsight](../hdinsight-component-versioning.md).|
 |Vlastní|Vy, jako uživatel clusteru, můžete nainstalovat nebo používat ve svých úlohách libovolnou komponentu dostupnou ve komunitě nebo vytvořenou vámi.|
@@ -47,11 +47,11 @@ Existují dva typy open source komponent, které jsou k dispozici ve službě HD
 
 Cluster HDInsight Spark se vytvoří s instalací Anaconda. V clusteru jsou dvě instalace Pythonu, Anaconda Python 2,7 a Python 3,5. Následující tabulka ukazuje výchozí nastavení Pythonu pro Spark, Livy a Jupyter.
 
-| |Python 2,7|Python 3,5|
+|Nastavení |Python 2,7|Python 3,5|
 |----|----|----|
 |Cesta|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Výchozí nastavení je 2,7|Není k dispozici|
-|Livy|Výchozí nastavení je 2,7|Není k dispozici|
+|Verze Sparku|Výchozí nastavení je 2,7|–|
+|Verze Livy|Výchozí nastavení je 2,7|–|
 |Jupyter|Jádro PySpark|Jádro PySpark3|
 
 ## <a name="safely-install-external-python-packages"></a>Bezpečně instalovat externí balíčky Pythonu

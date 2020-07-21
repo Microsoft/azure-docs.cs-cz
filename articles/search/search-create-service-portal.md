@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/24/2020
-ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/14/2020
+ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562543"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529620"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlé zprovoznění: Vytvoření služby Azure Cognitive Search na portálu
 
@@ -27,11 +27,11 @@ Dáváte přednost prostředí PowerShell? Použijte [šablonu služby](https://
 
 ## <a name="before-you-start"></a>Než začnete
 
-Následující vlastnosti služby jsou pevně dané pro dobu života služby a jejich změna vyžaduje novou službu. Při vytváření služby si představte, jak ji budete používat:
+Pro dobu života služby jsou opraveny následující vlastnosti služby – změna kterékoli z nich vyžaduje novou službu. Vzhledem k tomu, že jsou pevně dané, zvažte použití dopadu při vyplňování jednotlivých vlastností:
 
-* název (přezkoumání [těchto doporučení](#name-the-service) pro názvy služeb)
-* úroveň (Free, Basic, Standard, [má vliv na fakturaci](search-sku-tier.md) a nastaví limit nahoru na kapacitu)
-* oblast (vyberte umístění, které obsahuje související služby. Pro integraci s Cognitive Services nebo Azure Machine Learning je požadavek společné lokalizace služeb ve stejné oblasti.)
+* název služby se může nacházet v rámci koncového bodu adresy URL ([recenze tipů](#name-the-service) pro užitečné názvy služeb).
+* úroveň služby [má vliv na fakturaci](search-sku-tier.md) a nastavuje limit nahoru pro kapacitu.
+* oblast služby může určit dostupnost určitých scénářů. Pokud vás zajímá znalostní báze dolování a rozšíření AI, potřebujete Cognitive Services a případně Azure Machine Learning ve stejné oblasti jako Azure Kognitivní hledání.
 
 ## <a name="subscribe-free-or-paid"></a>Předplatné (bezplatné nebo placené)
 
@@ -41,7 +41,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-cognitive-search"></a>Najít Kognitivní hledání Azure
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
 
@@ -59,7 +59,7 @@ Skupina prostředků je kontejner, který obsahuje související prostředky pro
 
 Pokud nekombinujete prostředky do jedné skupiny, nebo pokud jsou stávající skupiny prostředků vyplněné prostředky používanými v nesouvisejících řešeních, vytvořte novou skupinu prostředků jenom pro svůj prostředek Azure Kognitivní hledání. 
 
-![Vytvořit novou skupinu prostředků](./media/search-create-service-portal/new-resource-group.png "Vytvořte novou skupinu prostředků")
+![Vytvoření nové skupiny prostředků](./media/search-create-service-portal/new-resource-group.png "Vytvoření nové skupiny prostředků")
 
 V průběhu času můžete sledovat aktuální a předpokládané náklady nebo si můžete zobrazit poplatky za jednotlivé prostředky. Následující snímek obrazovky znázorňuje druh informací o nákladech, které můžete očekávat při kombinování více prostředků do jedné skupiny.
 

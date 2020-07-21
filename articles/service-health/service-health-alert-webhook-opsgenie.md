@@ -3,11 +3,12 @@ title: Odesílání upozornění na Azure Service Health s OpsGenie pomocí webh
 description: Získejte přizpůsobená oznámení o událostech služby Service Health do vaší instance OpsGenie.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: def12d5e7b1b93b8370cd7be61538fca53531ae1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654133"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529093"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>Odesílání upozornění na Azure Service Health s OpsGenie pomocí webhooků
 
@@ -36,7 +37,7 @@ V tomto článku se dozvíte, jak nastavit upozornění na stav služby Azure po
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Vytvoření upozornění pomocí OpsGenie v Azure Portal
 ### <a name="for-a-new-action-group"></a>Pro novou skupinu akcí:
-1. Postupujte podle kroků 1 až 8 v [části Vytvoření výstrahy na oznámení o stavu služby pro novou skupinu akcí pomocí Azure Portal](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. Postupujte podle kroků 1 až 8 v [části Vytvoření výstrahy na oznámení o stavu služby pro novou skupinu akcí pomocí Azure Portal](./alerts-activity-log-service-notifications-portal.md).
 
 1. V seznamu akcí definujte tyto **Akce**:
 
@@ -84,5 +85,5 @@ V tomto článku se dozvíte, jak nastavit upozornění na stav služby Azure po
 ## <a name="next-steps"></a>Další kroky
 - Naučte se [Konfigurovat oznámení Webhooku pro stávající systémy správy problémů](service-health-alert-webhook-guide.md).
 - Zkontrolujte [schéma Webhooku upozornění protokolu aktivit](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Přečtěte si o [oznámeních o stavu služby](../azure-monitor/platform/service-notifications.md).
+- Přečtěte si o [oznámeních o stavu služby](./service-notifications.md).
 - Přečtěte si další informace o [skupinách akcí](../azure-monitor/platform/action-groups.md).

@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
 ms.custom: mvc
-ms.openlocfilehash: aaa1a4423363255536db7d53a1f8f8fa9ba686ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b54f216850b77473ea8c272311e3f135f256518
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76941399"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536500"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rychlý start: Zřízení simulovaného zařízení se symetrickými klíči
+# <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>Rychlý Start: zřízení simulovaného zařízení pro IoT Hub s symetrickými klíči
 
 V tomto rychlém startu se dozvíte, jak vytvořit a spustit simulátor zařízení na vývojovém počítači s Windows. Toto simulované zařízení nakonfigurujete tak, aby používalo symetrický klíč k ověřování pomocí instance služby Device Provisioning (DPS) a aby se přiřadila ke službě IoT Hub. Vzorový kód z [Microsoft Azure sady IoT SDK pro jazyk Java](https://github.com/Azure/azure-iot-sdk-java) bude použit k simulaci spouštěcí sekvence pro zařízení, které iniciuje zřizování. Zařízení se rozpozná na základě individuální registrace s instancí služby DPS a přiřazenou ke službě IoT Hub.
 
@@ -32,7 +32,7 @@ Tento článek je orientovaný na pracovní stanici s Windows. Stejným postupem
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Ujistěte se, že na svém počítači máte nainstalovanou [Java se Development Kit 8](https://aka.ms/azure-jdks) nebo novější.
 
@@ -111,7 +111,7 @@ V této části provedete aktualizaci ukázkového kódu zařízení a odešlete
     cd azure-iot-sdk-java/provisioning/provisioning-samples/provisioning-symmetrickey-sample
     ```
 
-4. Sestavte ukázku a potom přejděte `target` do složky a spusťte vytvořený soubor. jar.
+4. Sestavte ukázku a potom přejděte do `target` složky a spusťte vytvořený soubor. jar.
 
     ```cmd/sh
     mvn clean install

@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 72c0c33c973219a9701c8a7c8d45324681e14850
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435982"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529773"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Linuxem ke službě Azure Security Center
 Po připojení předplatných Azure můžete povolit Security Center pro prostředky Linux spuštěné mimo Azure, například místně nebo v jiných cloudech, zřízením agenta. Agent se nazývá agent Log Analytics, ale je také známý jako agent OMS.
 
 V tomto rychlém startu se dozvíte, jak nainstalovat agenta na počítač se systémem Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
 Než začnete s tímto rychlým startem, musíte být v Security Center cenové úrovně Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Můžete vyzkoušet Standard Security Center na žádné náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Přidání nového počítače s Linuxem
 
-1. Přihlaste se k [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
-2. V nabídce **Microsoft Azure** vyberte možnost **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
+1. Přihlaste se k webu [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+2. V nabídce **Microsoft Azure** vyberte možnost **Security Center**. **Security Center –** zobrazí se přehled.
 
    ![Přehled služby Security Center][2]
 
 3. V hlavní nabídce služby Security Center vyberte **Začínáme**.
-4. Vyberte kartu **Začínáme** . ![Začínáme][3]
+4. Vyberte kartu **Začínáme** . ![ Začínáme][3]
 
 5. V části **Přidat počítače umístěné mimo Azure** klikněte na **Konfigurovat**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento nebo jiný pracovní prostor, který chcete použít.
 
@@ -56,7 +56,7 @@ Než začnete s tímto rychlým startem, musíte být v Security Center cenové 
 
    ![Instalace agenta][5]
 
-Protokoly pro agenta najdete na adrese: */var/opt/Microsoft/omsagent/\<v pracovním prostoru ID>/log/*
+Protokoly pro agenta najdete na adrese: */var/opt/Microsoft/omsagent/ \<workspace id> /log/* .
 
   ![Protokoly agenta][6]
 

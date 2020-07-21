@@ -3,22 +3,22 @@ title: Identifikátor URI sdíleného přístupového podpisu pro image virtuál
 description: Vygenerujte identifikátor URI sdíleného přístupového podpisu (SAS) pro vaše virtuální pevné disky (VHD) v Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: anbene
 ms.author: mingshen
-ms.date: 04/09/2020
-ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 569d9ce04422230c1d6b9ebb0957f01c320c5ba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121720"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536143"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače
 
 Tento článek popisuje, jak vygenerovat identifikátor URI sdíleného přístupového podpisu (SAS) pro každý virtuální pevný disk (VHD).
 
-Během procesu publikování je nutné zadat identifikátor URI pro každý virtuální pevný disk, který je přidružen k vašim plánům. Tyto plány se dřív odkazovaly na skladové položky nebo skladové jednotky. Společnost Microsoft potřebuje během procesu certifikace přístup k těmto virtuálním pevným diskům. Tento identifikátor URI zadáte na kartě **plány** v partnerském centru.
+Během procesu publikování je nutné zadat identifikátor URI pro každý virtuální pevný disk, který je přidružen k vašim plánům (dříve nazývaném SKU). Společnost Microsoft potřebuje během procesu certifikace přístup k těmto virtuálním pevným diskům. Tento identifikátor URI zadáte na kartě **plány** v partnerském centru.
 
 Při generování identifikátorů URI SAS pro vaše virtuální pevné disky postupujte podle těchto požadavků:
 
@@ -110,7 +110,7 @@ Existují dva běžné nástroje, které slouží k vytvoření adresy SAS (URL)
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-Tento postup opakujte pro každý virtuální pevný disk ve skladových položkách, které plánujete publikovat.
+Tento postup opakujte pro každý virtuální pevný disk v plánech, které budete publikovat.
 
 ## <a name="verify-the-sas-uri"></a>Ověření identifikátoru URI SAS
 

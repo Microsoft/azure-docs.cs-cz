@@ -1,6 +1,6 @@
 ---
 title: Vytvoření služby privátního propojení ve službě Azure Private Link
-description: V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření služby privátního propojení.
+description: V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření služby privátního propojení.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: c9ed628501e8fa02b816a1564b91620404dfc379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a3c7245a4e6c69e87791ca3364ad588b82572c6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817623"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529603"
 ---
-# <a name="quickstart-create-a-private-link-service-by-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření služby privátního propojení pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Rychlý Start: vytvoření služby privátního propojení pomocí šablony ARM
 
-V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření služby privátního propojení.
+V tomto rychlém startu použijete šablonu Azure Resource Manager (šablona ARM) k vytvoření služby privátního propojení.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Tento rychlý Start můžete také dokončit pomocí [Azure Portal](create-private-link-service-portal.md), [Azure PowerShell](create-private-link-service-powershell.md)nebo rozhraní příkazového [řádku Azure](create-private-link-service-cli.md).
 
-## <a name="prerequisite"></a>Požadavek
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Požadavky
 
 Potřebujete účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-private-link-service"></a>Vytvoření služby privátního propojení
+## <a name="review-the-template"></a>Kontrola šablony
 
 Tato šablona vytvoří službu privátního propojení.
 
-### <a name="review-the-template"></a>Kontrola šablony
-
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-privatelink-service/).
 
 :::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
 
@@ -48,13 +50,13 @@ V šabloně je definováno víc prostředků Azure:
 - [**Microsoft. Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses): Existují dvě veřejné IP adresy, jednu pro každý virtuální počítač.
 - [**Microsoft. Network/privateendpoints**](/azure/templates/microsoft.network/privateendpoints): soukromý koncový bod pro přístup ke službě.
 
-### <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
-Tady je postup, jak nasadit šablonu Azure Resource Manager do Azure:
+Tady je postup, jak nasadit šablonu ARM do Azure:
 
 1. Pokud se chcete přihlásit k Azure a otevřít šablonu, vyberte **nasadit do Azure**. Šablona vytvoří virtuální počítač, službu Load Balancer úrovně Standard, privátního koncového bodu, sítě a virtuální počítač k ověření.
 
-   [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+   [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
 
 2. Vyberte nebo vytvořte skupinu prostředků.
 3. Zadejte uživatelské jméno a heslo správce virtuálního počítače.
@@ -63,7 +65,7 @@ Tady je postup, jak nasadit šablonu Azure Resource Manager do Azure:
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
 > [!NOTE]
-> Šablona Azure Resource Manager vygeneruje jedinečný název pro prostředek myConsumerVm<b>{UniqueID}</b> virtuálního počítače. Vygenerovanou hodnotu pro **{UniqueID}** nahraďte.
+> Šablona ARM vygeneruje jedinečný název pro prostředek myConsumerVm<b>{UniqueID}</b> virtuálního počítače. Vygenerovanou hodnotu pro **{UniqueID}** nahraďte.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
@@ -95,7 +97,7 @@ Připojte se k virtuálnímu počítači _myConsumerVm {UniqueID}_ z Internetu n
 Tady je postup, jak se připojit ke službě HTTP z virtuálního počítače pomocí privátního koncového bodu.
 
 1.  Přejít do vzdálené plochy _myConsumerVm {UniqueID}_
-2.  Otevřete prohlížeč a zadejte adresu privátního koncového bodu: http://10.0.0.5/ .
+2.  Otevřete prohlížeč a zadejte adresu privátního koncového bodu: `http://10.0.0.5/` .
 3.  Zobrazí se výchozí stránka IIS.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

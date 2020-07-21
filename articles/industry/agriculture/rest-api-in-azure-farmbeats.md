@@ -1,23 +1,20 @@
 ---
-title: Odkazy
-description: ''
+title: Rozhraní API Azure FarmBeats
+description: Přečtěte si o rozhraních API Azure FarmBeats, která poskytují zemědělským firmám standardizované rozhraní RESTful s odpověďmi založenými na JSON.
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488031"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536568"
 ---
-# <a name="references"></a>Odkazy
+# <a name="azure-farmbeats-apis"></a>Rozhraní API Azure FarmBeats
 
-Tento článek popisuje rozhraní API služby Azure FarmBeats.
-
-## <a name="rest-api"></a>REST API
-
-Rozhraní API Azure FarmBeats poskytují zemědělským firmám standardizované rozhraní RESTful s odpověďmi založenými na standardu JSON, které vám pomůžou využít možnosti Azure FarmBeats, například:
+Tento článek popisuje rozhraní API služby Azure FarmBeats. Rozhraní API Azure FarmBeats poskytují zemědělským firmám standardizované rozhraní RESTful s odpověďmi založenými na standardu JSON, které vám pomůžou využít možnosti Azure FarmBeats, například:
 
 - Rozhraní API pro získání senzorů, fotoaparátů, pomocí dronů, počasí, satelitních a spravovaných pozemních dat.
 - Normalizace a kontext dat napříč společnými poskytovateli dat.
@@ -32,7 +29,7 @@ Rozhraní API FarmBeats obsahují technickou dokumentaci k Swagger. Informace o 
 
 V následující tabulce najdete souhrn všech objektů a prostředků v FarmBeats DataHub:
 
-| Objekty a prostředky | Description
+| Objekty a prostředky | Popis
 --- | ---|
 Sdílených | Farma odpovídá fyzickému umístění zájmu v rámci systému FarmBeats. Každá farma má název farmy a jedinečné ID farmy. |
 Zařízení  | Zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné. Každé zařízení má jedinečné ID zařízení. Zařízení je obvykle zřízené pro farmu s ID farmy.
@@ -62,7 +59,7 @@ Aby bylo možné provést ověřený požadavek na rozhraní REST API, kód klie
 
 Přístupový token se musí poslat v následných požadavcích rozhraní API v části záhlaví jako:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
@@ -71,7 +68,7 @@ headers = {"Authorization": "Bearer " + **access_token**}
 Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při volání rozhraní API do Azure FarmBeats DataHub.
 
 
-**Hlaviček** | **Popis a příklad**
+**Hlavička** | **Popis a příklad**
 --- | ---
 Typ obsahu  | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní API Azure FarmBeats DataHub je formát JSON. Content-Type: Application/JSON
 Autorizace  | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný <přístup-token>
@@ -110,9 +107,9 @@ Například při dotazování na seznam zařízení (získat hovor v/Device) lze
 
 Rozhraní API služby Azure FarmBeats DataHub vrací standardní chyby protokolu HTTP. Nejběžnější kódy chyb jsou následující:
 
- |Kód chyby             | Description |
+ |Kód chyby             | Popis |
  |---                    | --- |
- |200                    | Úspěch |
+ |200                    | Success |
  |201                    | Vytvoření (post) úspěšné |
  |400                    | Chybný požadavek. V žádosti došlo k chybě. |
  |401                    | Přístupu. Volající rozhraní API nemá autorizaci pro přístup k prostředku. |
@@ -181,6 +178,6 @@ Po dokončení předchozích kroků může registrace vaší aplikace (klienta) 
 
 Pomocí přístupového tokenu ho odešlete v následujících požadavcích rozhraní API v části záhlaví jako:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**, "Content-Type" : "application/json" }
 ```

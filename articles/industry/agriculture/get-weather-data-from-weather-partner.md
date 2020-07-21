@@ -5,34 +5,30 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 7666ee1a81c2ed93ee5e246b3ec79f056f9d63ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187774"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536619"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Získat data o počasí od partnerů počasí
 
-Azure FarmBeats pomáhá přenášet údaje o počasí ze zprostředkovatelů dat počasí pomocí rozhraní konektoru na bázi Docker. Pomocí tohoto rozhraní poskytovatelé dat počasí implementují Docker, který se dá integrovat s FarmBeats. V současné době jsou podporovány následující poskytovatelé dat počasí:
+Azure FarmBeats vám pomůže přenést data z vašich poskytovatelů dat počasí pomocí rozhraní konektoru na bázi Docker. Pomocí tohoto rozhraní poskytovatelé dat počasí implementují Docker, který se dá integrovat s FarmBeats. V současné době se podporuje jenom poskytovatel dat s [DTN](https://www.dtn.com/dtn-content-integration/) počasí.
 
-  ![DTN](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
-
-  [DTN](https://www.dtn.com/dtn-content-integration/)
-
-Data o počasí je možné využít ke generování přehledů s užitečnými informacemi a sestavení modelů AI/ML na FarmBeats.
+Data o počasí je možné využít ke generování přehledů s užitečnými poznatky a vytváření modelů AI a ML v FarmBeats.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Pokud chcete získat data o počasí, ujistěte se, že máte nainstalovanou FarmBeats. **Integrace počasí je podporovaná ve verzi 1.2.11 nebo vyšší**. Pokud chcete nainstalovat Azure FarmBeats, přečtěte si téma [install FarmBeats](https://aka.ms/farmbeatsinstalldocumentation).
+Pokud chcete získat data o počasí, ujistěte se, že máte [nainstalovanou FarmBeats](https://aka.ms/farmbeatsinstalldocumentation). Integrace počasí je podporovaná ve verzích 1.2.11 a vyšších. 
 
 ## <a name="enable-weather-integration-with-farmbeats"></a>Povolit integraci počasí s FarmBeats
 
-Pokud chcete začít získávat data o počasí v datovém centru FarmBeats, postupujte podle následujících kroků:
+Jak začít získávat data o počasí na FarmBeats DataHub:
 
-1. Přejít do aplikace FarmBeats data hub Swagger (https://farmbeatswebsite-api.azurewebsites.net/swagger)
+1. Přejít na FarmBeats DataHub [Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger).
 
-2. Přejděte na/partner API a vytvořte žádost POST s následující vstupní datovou částí:
+2. Přejít na rozhraní API/partner a pak vytvořit žádost POST. Použijte následující vstupní datovou část:
 
    ```json
    {  
@@ -61,10 +57,10 @@ Pokud chcete začít získávat data o počasí v datovém centru FarmBeats, pos
    }  
    ```
 
-   Pokud například chcete získat data o počasí z DTN, použijte následující datovou část. Můžete upravit název a popis podle vaší předvolby.
+   Pokud například chcete získat data o počasí z DTN, použijte následující datovou část. Můžete upravit název a popis podle svých preferencí.
 
    > [!NOTE]
-   > Níže uvedený krok vyžaduje klíč rozhraní API, obraťte se prosím na DTN a získejte stejné předplatné DTN.
+   > Následující krok vyžaduje klíč rozhraní API. Pokud chcete získat klíč pro předplatné DTN, kontaktujte DTN.
 
    ```json
    {
@@ -88,28 +84,28 @@ Pokud chcete začít získávat data o počasí v datovém centru FarmBeats, pos
    ```
 
    > [!NOTE]
-   > Další informace o partnerském objektu najdete v [příloze](get-weather-data-from-weather-partner.md#appendix) .
+   > Další informace o partnerském objektu najdete v [příloze](get-weather-data-from-weather-partner.md#appendix) v tomto článku.
 
    Předchozí krok zřídí prostředky pro povolení Docker pro spuštění v prostředí FarmBeats zákazníka.  
 
-   Zřizování výše uvedených prostředků trvá přibližně 10-15 minut.
+   Zřizování prostředků trvá přibližně 10 až 15 minut.
 
-3. Ověřte stav objektu/partner, který jste vytvořili v kroku 2. Provedete to tak, že vytvoříte požadavek GET na rozhraní/partner API a zkontrolujete **stav** objektu partnera. Jakmile FarmBeats zřídí partnera úspěšně, stav se nastaví na **aktivní**.
+3. Ověřte stav objektu/partner, který jste vytvořili v předchozím kroku. Pokud chcete zkontrolovat stav, udělejte požadavek GET na rozhraní/partner API a zkontrolujte stav objektu partnera. Jakmile FarmBeats zřídí partnera úspěšně, stav je nastaven na **aktivní**.
 
-4. Přejděte na/JobType API a vytvořte požadavek GET na stejnou hodnotu. Podívejte se na úlohy počasí vytvořené v rámci procesu přidávání partnerů v kroku 2. Pole název **kanálu** v úkolech počasí bude v následujícím formátu: "partner-name_partner-type_job-Name".
+4. V rozhraní/JobType API udělejte požadavek GET. Projděte si úlohy počasí, které jste vytvořili dříve, v procesu přidání partnera. V úkolech počasí má pole **Pipeline** následující formát: **partner-name_partner-type_job-Name**.
 
-5. Instance FarmBeats má teď aktivní datový partner s daty o počasí a můžete spouštět úlohy pro vyžádání dat o počasí pro konkrétní umístění (zeměpisná šířka/délka) a rozsah dat. JobType (y) bude obsahovat podrobnosti o tom, jaké parametry jsou potřeba ke spouštění úloh počasí.
+      Vaše FarmBeats instance teď má aktivní datový partner pro počasí. Můžete spouštět úlohy pro vyžádání dat o počasí pro konkrétní umístění (zeměpisná šířka a délka) a rozsah dat. Typy úloh budou mít podrobné informace o tom, jaké parametry jsou potřeba ke spouštění úloh počasí.
 
-   Například pro DTN se vytvoří následující JobType (y):
+      Například pro DTN se vytvoří následující typy úloh:
    
-   - get_dtn_daily_observations (získání každodenních připomínek k umístění a časovému období)
-   - get_dtn_daily_forecasts (získání každodenních předpovědí za určité místo a časové období)
-   - get_dtn_hourly_observations (získání hodinových pozorování pro určité umístění a časové období)
-   - get_dtn_hourly_forecasts (získat hodinové prognózy pro určité umístění a časové období)
+      - **get_dtn_daily_observations**: Získejte každodenní poznámky k umístění a časovému období.
+      - **get_dtn_daily_forecasts**: Získejte denní předpovědi pro určité umístění a časové období.
+      - **get_dtn_hourly_observations**: Získejte hodinové pozorování pro určité umístění a časové období.
+      - **get_dtn_hourly_forecasts**: Získejte hodinové prognózy pro určité umístění a časové období.
 
-6. Poznamenejte si **ID** a parametry JobType (y).
+6. Poznamenejte si ID a parametry typů úloh.
 
-7. Přejděte na/Jobs API a v/Jobs vytvořte žádost POST s následující vstupní datovou částí:
+7. Přejít na rozhraní/Jobs API a vytvořit žádost POST v/Jobs. Použijte následující vstupní datovou část:
 
    ```json
     {
@@ -141,19 +137,17 @@ Pokud chcete začít získávat data o počasí v datovém centru FarmBeats, pos
    }
    ```
 
-8. Předchozí krok spustí úlohy počasí podle definice v Docker partnera a ingestuje data o počasí do FarmBeats. Stav úlohy můžete zkontrolovat tak, že na/Jobs vytvoříte požadavek GET a v odpovědi vyhledáte **CurrentState** . Po dokončení bude currentState nastaven na hodnotu **úspěch**.
+8. Předchozí krok spustí úlohy počasí podle definice v Docker partnera a ingestuje data o počasí do FarmBeats. Stav úlohy můžete zjistit tak, že na/Jobs. vytvoříte požadavek GET. V odpovědi vyhledejte **CurrentState**. Po dokončení bude **CurrentState** nastaveno na hodnotu **úspěšné**.
 
 ## <a name="query-ingested-weather-data"></a>Dotázat se na data ingestovaná počasí
 
-Po dokončení úloh počasí můžete pomocí rozhraní REST API pro FarmBeats DataHub zadávat dotazy na ingestovaná data o počasí k vytváření modelů nebo přehledy, které lze zpracovat.
+Po dokončení úloh počasí můžete pomocí rozhraní REST API pro FarmBeats DataHub zadávat dotazy na ingestovaná data o počasí k vytváření modelů nebo užitečných přehledů.
 
-### <a name="query-using-rest-api"></a>Dotaz pomocí REST API
+Dotazování dat o počasí pomocí REST API FarmBeats:
 
-Pokud chcete zadat dotaz na data o počasí pomocí REST API FarmBeats, postupujte podle následujících kroků:
+1. V nástroji FarmBeats DataHub [Swagger](https://yourdatahub.azurewebsites.net/swagger), navštivte rozhraní/WeatherDataLocation API a vytvořte žádost o získání. Odpověď zahrnuje objekty/WeatherDataLocation vytvořené pro umístění (zeměpisná šířka a délka), které úloha zadala. Poznamenejte si **ID** a **weatherDataModelId** objektů.
 
-1. V Swagger FarmBeats datacentra ( https://yourdatahub.azurewebsites.net/swagger) , přejděte na rozhraní/WeatherDataLocation API a vytvořte žádost o získání. Odpověď bude obsahovat objekty/WeatherDataLocation vytvořené pro umístění (zeměpisná šířka/délka), která byla zadána jako součást běhu úlohy. Poznamenejte si **ID** a **weatherDataModelId** objektu (y).
-
-2. Pro **weatherDataModelId** , jak je uvedeno v kroku 1, vytvořte/WEATHERDATAMODEL API Get/{ID}. "Datový model počasí" obsahuje veškerá metadata a podrobnosti o přijatých datech o počasí. Například **míra počasí** v objektu **datového modelu počasí** obsahuje podrobnosti o tom, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Příklad:
+2. Vytvořte si požadavek GET/{ID} na rozhraní/WeatherDataModel API pro **weatherDataModelId** , jak jste to provedli dříve. Datový model počasí zobrazuje všechna metadata a podrobnosti o přijatých datech o počasí. Například v objektu datového modelu počasí, míra počasí podrobně popisuje, jaké informace o počasí jsou podporovány a v jakých typech a jednotkách. Příklad:
 
    ```json
    {
@@ -168,7 +162,7 @@ Pokud chcete zadat dotaz na data o počasí pomocí REST API FarmBeats, postupuj
 
    Poznamenejte si odpověď z volání metody GET/{ID} pro datový model počasí.
 
-3. Přejděte na rozhraní API **telemetrie** a vytvořte žádost post s následující vstupní datovou částí:
+3. Přejít na rozhraní API telemetrie a vytvořit žádost POST. Použijte následující vstupní datovou část:
 
    ```json
    {
@@ -180,7 +174,7 @@ Pokud chcete zadat dotaz na data o počasí pomocí REST API FarmBeats, postupuj
    }
    ```
 
-4. Odpověď obsahující data v počasí, která jsou k dispozici pro zadaný časový rozsah, budou vypadat takto:
+    Odpověď zobrazuje data o počasí, která jsou k dispozici pro zadaný časový rozsah:
 
    ```json
    {
@@ -209,28 +203,28 @@ Pokud chcete zadat dotaz na data o počasí pomocí REST API FarmBeats, postupuj
    }
    ```
 
-V předchozím příkladu má odpověď data pro dvě časová razítka spolu s názvem míry ("teplota") a hodnotami hlášených povětrnostních dat ve dvou časových razítkech. Pro interpretaci typu a jednotky hlášených hodnot budete potřebovat odkaz na přidružený datový model počasí (jak je popsáno v kroku 2 výše).
+V předchozím příkladu odpověď zobrazuje data pro dvě časová razítka. Zobrazuje také název míry (teplotu) a hodnoty hlášených dat počasí v těchto dvou časových razítkách. Pokud chcete interpretovat typ a jednotku hlášených hodnot, přečtěte si související datový model počasí.
 
 ## <a name="troubleshoot-job-failures"></a>Řešení potíží s chybami úloh
 
-Pokud chcete řešit problémy s chybami úloh, můžete vyhledat protokoly úloh. Postupujte prosím podle následujících [kroků](troubleshoot-azure-farmbeats.md#weather-data-job-failures) .
+Pokud chcete řešit problémy s chybami úloh, [Podívejte se do protokolů úloh](troubleshoot-azure-farmbeats.md#weather-data-job-failures).
 
 
-## <a name="appendix"></a>Příloha
+## <a name="appendix"></a>Přílohy
 
 |        Partner   |  Podrobnosti   |
 | ------- | -------             |
-|     DockerDetails – imageName         |          Název bitové kopie Docker. Například docker.io/mydockerimage (Image in hub.docker.com) nebo myazureacr.azurecr.io/mydockerimage (obrázek v Azure Container Registry) a tak dále. Pokud není zadaný žádný registr, výchozí hodnota je hub.docker.com      |
-|          DockerDetails - imageTag             |         Název značky obrázku Docker Výchozí hodnota je "nejnovější"     |
-|  DockerDetails – přihlašovací údaje      |  Přihlašovací údaje pro přístup k soukromému Docker. Tuto adresu poskytne partner pro zákazníka.   |
-|  DockerDetails - azureBatchVMDetails - batchVMSKU     |    Azure Batch SKU virtuálního počítače. Všechny dostupné virtuální počítače se systémem Linux najdete [tady](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Platné hodnoty jsou: "Small", "ExtraLarge", "Large", "A8", "Medium", "Medium", "A5", "A7", "STANDARD_D1", "STANDARD_D2", "STANDARD_D3", "STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' A10 ', ' A11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 '; ' STANDARD_G2 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ', ' STANDARD_NC12 ', ' STANDARD_NC24 ', ' STANDARD_NC24r ', ' ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ', ' STANDARD_M64ms ', ' STANDARD_M128s ', ' STANDARD_D2_V3 ', ' ', ' ', ' '. **Výchozí hodnota je "standard_d2_v2".**  |
-|    DockerDetails - azureBatchVMDetails - dedicatedComputerNodes   |  Ne. vyhrazené uzly počítače pro fond služby Batch. Výchozí hodnota je 1. |
+|     DockerDetails – imageName         |          Název bitové kopie Docker. Například docker.io/mydockerimage (Image in hub.docker.com) nebo myazureacr.azurecr.io/mydockerimage (obrázek v Azure Container Registry) a tak dále. Pokud není k dispozici žádný registr, výchozí hodnota je hub.docker.com.      |
+|          DockerDetails - imageTag             |         Název značky obrázku Docker Výchozí hodnota je "nejnovější".     |
+|  DockerDetails – přihlašovací údaje      |  Přihlašovací údaje pro přístup k soukromému Docker. Partner poskytne přihlašovací údaje.   |
+|  DockerDetails - azureBatchVMDetails - batchVMSKU     |    Azure Batch SKU virtuálního počítače. Další informace najdete v tématu [všechny dostupné virtuální počítače se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). <BR> <BR> Platné hodnoty jsou ' Small ', ' ExtraLarge ', ' large ', ' A8 ', ' Medium ', ' a5 ', ' A6 ', ' A7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' A10 ', ' A11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 '; ' STANDARD_G2 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ', ' STANDARD_NC12 ', ' STANDARD_NC24 ', ' STANDARD_NC24r ', ' ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ', ' STANDARD_M64ms ', ' STANDARD_M128s ', ' STANDARD_D2_V3 ', ' ', ' ' a ' '. *Výchozí hodnota je ' STANDARD_D2_V2 '.*  |
+|    DockerDetails - azureBatchVMDetails - dedicatedComputerNodes   |  Počet vyhrazených uzlů počítače na jeden fond Batch. Výchozí hodnota je 1. |
 |    DockerDetails - azureBatchVMDetails - nodeAgentSKUID          |    ID SKU agenta uzlu Azure Batch. V současné době je podporován pouze agent uzlu Batch. Node. Ubuntu 18,04.    |
-| DockerDetails - partnerCredentials | přihlašovací údaje pro volání rozhraní API partnerského serveru v Docker Partner musí zákazníkům poskytnout tyto informace na základě ověřovacího mechanizmu, který je podporován například. Uživatelské jméno/heslo nebo klíče rozhraní API. |
-| partnerType | "Počasí" (jiné typy partnerů v FarmBeats jsou "senzor" a "satelitní")  |
-|  name   |   Požadovaný název partnera v FarmBeats systému   |
+| DockerDetails - partnerCredentials | Přihlašovací údaje pro volání partnerského rozhraní API v Docker Partner poskytuje tyto informace na základě podporovaného autorizačního mechanismu; například uživatelské jméno a heslo nebo klíče rozhraní API. |
+| partnerType | "Počasí". Další typy partnerů v FarmBeats jsou "senzor" a "satelitní".  |
+|  name   |   Požadovaný název partnera v systému FarmBeats.   |
 |  Popis |  Popis   |
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní máte dotazovaná data senzorů z vaší instance Azure FarmBeats. Nyní se dozvíte, jak [vygenerovat mapy](generate-maps-in-azure-farmbeats.md#generate-maps) pro vaše farmy.
+Teď, když jste dotazováni data ze senzorů z instance Azure FarmBeats, zjistíte, jak [vygenerovat mapy](generate-maps-in-azure-farmbeats.md#generate-maps) pro vaše farmy.

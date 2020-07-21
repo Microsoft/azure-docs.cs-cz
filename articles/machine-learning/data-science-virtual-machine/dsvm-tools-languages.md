@@ -11,11 +11,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3ab058d76186f73fa1a985d7e8af38dbd7a6f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557472"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536177"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované v Data Science Virtual Machine 
 
@@ -23,7 +24,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 ## <a name="python-windows-server-2016-edition"></a>Python (edice Windows serveru 2016)
 
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované jazykové verze | Python 2,7 a 3,7 |
 | Podporované edice DSVM      | Windows Server 2016     |
@@ -67,13 +68,14 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 ## <a name="python-linux-edition"></a>Python (edice Linux)
 
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované jazykové verze | Python 2,7 a 3,5 |
 | Podporované edice DSVM      | Linux   |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | `conda`Vytvoří se dvě globální prostředí: <br /> * `root`prostředí umístěné na adrese `/anaconda/` je Python 2,7. <br/> * `py35`prostředí umístěné na adrese `/anaconda/envs/py35` je Python 3,5.       |
 | Odkazy na ukázky      | Zahrnuje ukázky Jupyter poznámkových bloků pro Python.     |
 | Související nástroje na DSVM      | PySpark, R, Helena      |
+
 ### <a name="how-to-use-and-run-it"></a>Jak použít a spustit    
 
 * Spusťte v terminálu:
@@ -105,13 +107,14 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 ## <a name="r"></a>R
 
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované jazykové verze | Microsoft R Open 3. x (100% kompatibilní s CRAN-R)<br /> Microsoft R Server 9. x Developer Edition (škálovatelná platforma R připravená pro podniky)|
 | Podporované edice DSVM      | Linux, Windows     |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Systému`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux`/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Odkazy na ukázky      | Zahrnuje ukázky Jupyter poznámkových bloků pro R.     |
 | Související nástroje na DSVM      | Spark, Python, Helena      |
+
 ### <a name="how-to-use-and-run-it"></a>Jak použít a spustit    
 
 **Windows**:
@@ -153,13 +156,14 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 ## <a name="julia"></a>Julia
 
-|    |           |
+| Kategorie | Hodnota |
 | ------------- | ------------- |
 | Podporované jazykové verze | 0.6 |
 | Podporované edice DSVM      | Linux, Windows     |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Windows: nainstalováno na`C:\JuliaPro-VERSION`<br /> Linux: nainstalováno na`/opt/JuliaPro-VERSION`    |
 | Odkazy na ukázky      | Zahrnuje ukázky Jupyter poznámkových bloků pro Helena.     |
 | Související nástroje na DSVM      | Python, R      |
+
 ### <a name="how-to-use-and-run-it"></a>Jak použít a spustit    
 
 **Windows**:

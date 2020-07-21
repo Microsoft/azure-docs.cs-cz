@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae4b984d0ce66dec2a32b3431301ed97fe2c3fd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71212202"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530130"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
 
@@ -31,7 +31,7 @@ Aby bylo možné zapojovat uživatele s okamžitým bohatým obsahem, může apl
 
 Tento kurz je kompatibilní se systémem iOS 7 & 8.
 
-  ![][IOS1]
+  ![Tři snímky obrazovky: obrazovka aplikace s tlačítkem pro odeslání nabízených oznámení, úvodní obrazovka na zařízení a logo Windows s tlačítkem zpět.][IOS1]
 
 Na nejvyšší úrovni:
 
@@ -49,7 +49,7 @@ Na nejvyšší úrovni:
 3. Klikněte na **Zobrazit všechny soubory** v Průzkumník řešení a klikněte pravým tlačítkem myši na složku, kterou chcete **zahrnout do projektu**.
 4. Když je vybraná image, změňte její akci sestavení v okno Vlastnosti na **Integrovaný prostředek**.
 
-    ![][IOS2]
+    ![Snímek obrazovky Průzkumník řešení. Je vybrán soubor obrázku a v podokně vlastností je vložený prostředek uveden jako akce sestavení.][IOS2]
 5. Do `Notifications.cs` přidejte následující příkaz using:
 
     ```csharp
@@ -146,12 +146,12 @@ Teď, když jste změnili back-end aplikace tak, aby odesílaly jenom *ID* ozná
 1. Otevřete svůj projekt pro iOS a povolte vzdálená oznámení tak, že v části **cíle** spustíte hlavní cíl aplikace.
 2. Klikněte na **Možnosti**, zapnout **režimy na pozadí**a zaškrtněte políčko **Vzdálená oznámení** .
 
-    ![][IOS3]
+    ![Snímek obrazovky s projektem iOS, na kterém se zobrazuje obrazovka možnosti Režimy pozadí jsou zapnuté a zaškrtávací políčko pro vzdálené oznámení je zaškrtnuté.][IOS3]
 3. Otevřete `Main.storyboard` a v tomto kurzu se ujistěte, že máte kontroler zobrazení (v tomto kurzu se označuje jako kontroler [Notify User](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) domovského zobrazení).
 4. Přidejte do scénáře **navigační kontroler** a pomocí ovládacího prvku přetáhněte ho do řídicího panelu pro zobrazení domů, aby byl **kořenovým zobrazením** navigace. Ujistěte se, že je zaškrtnuto políčko **je prvotní kontroler zobrazení** v inspektoru atributů pouze pro navigační kontroler.
 5. Přidejte **kontroler zobrazení** do scénáře a přidejte **zobrazení obrázku**. Toto je stránka, kterou uživatelé uvidí, až se po výběru zobrazí další informace kliknutím na oznámení. Scénář by měl vypadat takto:
 
-    ![][IOS4]
+    ![Snímek obrazovky scénáře. K dispozici jsou tři obrazovky aplikací: navigační zobrazení, domácí zobrazení a zobrazení obrázku.][IOS4]
 6. Ve scénáři klikněte na **kontroler domovského zobrazení** a ujistěte se, že se v inspektoru identity **HomeViewController** jako **vlastní třída** a **ID scénáře** .
 7. Stejnou pro kontroler zobrazení obrázku jako **imageViewController**.
 8. Pak vytvořte novou třídu kontroleru zobrazení s názvem **imageViewController** , která bude zpracovávat právě vytvořené uživatelské rozhraní.

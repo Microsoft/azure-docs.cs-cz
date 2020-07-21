@@ -143,6 +143,8 @@
           href: cluster-security-certificates.md
         - name: Správa certifikátů ve službě Service Fabric
           href: cluster-security-certificate-management.md
+        - name: Standardní hodnoty zabezpečení pro srovnávací test zabezpečení Azure
+          href: security-baseline.md
     - name: Terminologie
       href: service-fabric-technical-overview.md
     - name: Sestavování aplikací
