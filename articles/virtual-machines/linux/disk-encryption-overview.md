@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75e469b30632bb7e7e8f6445db78acda784ac5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8e4843ad71455f8e478ef74ee71975c1dbf2925
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601271"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510552"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače se systémem Linux 
 
@@ -26,7 +26,7 @@ Pokud používáte [Azure Security Center](../../security-center/index.yml), bud
 > [!WARNING]
 > - Pokud jste předtím používali Azure Disk Encryption se službou Azure AD k šifrování virtuálního počítače, musíte tuto možnost použít k zašifrování virtuálního počítače. Podrobnosti najdete v tématu [Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-overview-aad.md) . 
 > - Některá doporučení můžou zvýšit využití dat, sítě nebo výpočetních prostředků, což má za následek další licence nebo náklady na předplatné. Abyste mohli vytvářet prostředky v Azure v podporovaných oblastech, musíte mít platné aktivní předplatné Azure.
-> - V současné době generace 2 virtuální počítače nepodporují Azure Disk Encryption. Podrobnosti najdete v tématu [Podpora pro virtuální počítače 2. generace v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) .
+> - V současné době generace 2 virtuální počítače nepodporují Azure Disk Encryption. Podrobnosti najdete v tématu [Podpora pro virtuální počítače 2. generace v Azure](../windows/generation-2.md) .
 
 Základní informace o nástroji Azure Disk Encryption pro Linux najdete během několika minut pomocí [virtuálního počítače se systémem Linux pomocí Azure CLI](disk-encryption-cli-quickstart.md) nebo [Vytvoření a šifrování virtuálního počítače se systémem linux pomocí nástroje Azure PowerShell rychlý Start](disk-encryption-powershell-quickstart.md).
 
@@ -56,13 +56,14 @@ Azure Disk Encryption je podporovaná u podmnožiny [distribucí systému Linux 
 
 Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Azure Disk Encryption; z těch, které jsou schváleny, podporuje pouze následující distribuce a verze Azure Disk Encryption:
 
-| Publisher | Nabídka | SKU | NÁZVEM | Typ svazku podporovaný pro šifrování |
+| Publisher | Nabídka | Skladová položka | NÁZVEM | Typ svazku podporovaný pro šifrování |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04 – LTS | Kanonický: UbuntuServer: 18.04-LTS: nejnovější | Operační systém a datový disk |
 | Canonical | Ubuntu 18.04 | 18,04-DENNĚ – LTS | Kanonický: UbuntuServer: 18.04-DAILY-LTS: nejnovější | Operační systém a datový disk |
 | Canonical | Ubuntu 16.04 | 16,04-DENNĚ – LTS | Kanonický: UbuntuServer: 16.04-DAILY-LTS: nejnovější | Operační systém a datový disk |
 | Canonical | Ubuntu 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Kanonický: UbuntuServer: 14.04.5-LTS: nejnovější | Operační systém a datový disk |
 | Canonical | Ubuntu 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | 14.04.5 – DENNĚ – LTS | Kanonický: UbuntuServer: 14.04.5-DAILY-LTS: nejnovější | Operační systém a datový disk |
+| RedHat | RHEL 7,8 | 7.8 | RedHat: RHEL: 7,8: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7,7 | 7 – LVM | RedHat: RHEL: 7-LVM: nejnovější | Operační systém a datový disk (viz poznámka níže) |
 | RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: nejnovější | Operační systém a datový disk (viz poznámka níže) |
@@ -95,7 +96,7 @@ Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Az
 
 Azure Disk Encryption vyžaduje, aby byly v systému přítomné moduly dm-crypt a vfat. Odebráním nebo zakázáním VFAT z výchozí image znemožníte systému číst klíč a získat klíč potřebný k odemknutí disků při dalším restartování. Kroky pro posílení zabezpečení systému, které odeberou modul VFAT ze systému nebo vynutili rozšiřování mountpoints/složek operačního systému v datových jednotkách nejsou kompatibilní s Azure Disk Encryption. 
 
-Než povolíte šifrování, datové disky, které mají být zašifrované, musí být správně uvedené v adresáři/etc/fstab.. Při vytváření položek použít možnost "neúspěch" a zvolit název trvalého blokového zařízení (jako názvy zařízení ve formátu "/dev/sdX" nemusí být přidružen ke stejnému disku během restartování, zejména po šifrování; Další informace o tomto chování najdete v tématu: [řešení potíží se změnami názvů zařízení s platformou Linux VM](troubleshoot-device-names-problems.md)).
+Než povolíte šifrování, datové disky, které mají být zašifrované, musí být správně uvedené v adresáři/etc/fstab.. Při vytváření položek použít možnost "neúspěch" a zvolit název trvalého blokového zařízení (jako názvy zařízení ve formátu "/dev/sdX" nemusí být přidružen ke stejnému disku během restartování, zejména po šifrování; Další informace o tomto chování najdete v tématu: [řešení potíží se změnami názvů zařízení s platformou Linux VM](../troubleshooting/troubleshoot-device-names-problems.md)).
 
 Ujistěte se, že nastavení/etc/fstab jsou správně nakonfigurovaná pro připojení. Chcete-li nakonfigurovat tato nastavení, spusťte příkaz Mount-a, restartujte virtuální počítač a aktivujte znovu připojení tímto způsobem. Až to bude hotové, zkontrolujte výstup příkazu lsblk a ověřte, jestli je jednotka pořád připojená. 
 
@@ -136,7 +137,7 @@ Následující tabulka popisuje některé běžné výrazy používané v dokume
 | --- | --- |
 | Azure Key Vault | Key Vault je kryptografická služba pro správu klíčů založená na modulech zabezpečení hardwaru FIPS (Federal Information Processing Standards) ověřené. Tyto standardy usnadňují ochranu kryptografických klíčů a citlivých tajných klíčů. Další informace najdete v dokumentaci [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a [vytváření a konfiguraci trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md). |
 | Azure CLI | [Azure CLI](/cli/azure/install-azure-cli) je optimalizováno pro správu a správu prostředků Azure z příkazového řádku.|
-| DM-crypt |[Dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) je transparentní podsystém šifrování disku založený na systému Linux, který slouží k povolení šifrování disku na virtuálních počítačích se systémem Linux. |
+| DM-Crypt |[Dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) je transparentní podsystém šifrování disku založený na systému Linux, který slouží k povolení šifrování disku na virtuálních počítačích se systémem Linux. |
 | Klíč šifrování klíče (KEK) | Asymetrický klíč (RSA 2048), který můžete použít k ochraně nebo zabalení tajného klíče. Můžete poskytnout klíč chráněný modulem hardwarového zabezpečení (HSM) nebo klíč chráněný softwarem. Další informace najdete v dokumentaci [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) a [vytváření a konfiguraci trezoru klíčů pro Azure Disk Encryption](disk-encryption-key-vault.md). |
 | Rutiny prostředí PowerShell | Další informace najdete v tématu [rutiny Azure PowerShell](/powershell/azure/overview). |
 
@@ -145,9 +146,7 @@ Následující tabulka popisuje některé běžné výrazy používané v dokume
 
 - [Rychlý Start – vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure CLI](disk-encryption-cli-quickstart.md)
 - [Rychlý Start – vytvoření a šifrování virtuálního počítače se systémem Linux pomocí prostředí Azure PowerShell](disk-encryption-powershell-quickstart.md)
-- [Scénáře služby Azure Disk Encryption na virtuálních počítačích s Linuxem](disk-encryption-linux.md)
+- [Scénáře použití služby Azure Disk Encryption na virtuálních počítačích se systémem Linux](disk-encryption-linux.md)
 - [Skript CLI pro Azure Disk Encryption předpoklady](https://github.com/ejarvi/ade-cli-getting-started)
 - [Skript prostředí PowerShell pro Azure Disk Encryption předpoklady](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
 - [Vytvoření a konfigurace trezoru klíčů pro službu Azure Disk Encryption](disk-encryption-key-vault.md)
-
-

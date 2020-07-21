@@ -12,6 +12,7 @@
         - name: Portál
           href: quickstart-create-data-migration-service-portal.md
         - name: Šablona ARM
+          displayName: Resource Manager
           href: create-dms-resource-manager-template.md
         - name: v hybridním režimu (portál)
           href: quickstart-create-data-migration-service-hybrid-portal.md

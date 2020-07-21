@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1be80defd7a4291d1224d5b0cb9f9e833dcf9af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460116"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510510"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption v izolované síti
 
@@ -36,14 +36,14 @@ Pokud je v Red Hat vyžadován proxy server, je nutné zajistit, aby byly správ
 
 Pokud jsou balíčky nainstalovány ručně, je nutné je také ručně upgradovat při vydání nových verzí.
 
-## <a name="network-security-groups"></a>Skupiny zabezpečení sítě
+## <a name="network-security-groups"></a>skupiny zabezpečení sítě,
 Všechna použitá nastavení skupiny zabezpečení sítě musí stále umožňovat, aby koncový bod splňoval popsané požadavky na konfiguraci sítě pro šifrování disků.  Viz [Azure Disk Encryption: požadavky na síť](disk-encryption-overview.md#networking-requirements)
 
 ## <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Azure Disk Encryption s Azure AD (předchozí verze)
 
 Pokud používáte [Azure Disk Encryption s Azure AD (předchozí verze)](disk-encryption-overview-aad.md), bude nutné ručně nainstalovat [knihovnu Azure Active Directory](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) pro všechny distribuce (kromě balíčků odpovídajících distribuce, jak je [uvedeno výše](#package-management)).
 
-Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-linux-aad.md), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování se udržují v oddílech 56 a 59 v dokumentaci k [adresám URL a rozsahům IP adres sady Office 365](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
+Když se povolí šifrování s [přihlašovacími údaji Azure AD](disk-encryption-linux-aad.md), cílový virtuální počítač musí umožňovat připojení ke koncovým bodům Azure Active Directory i k Key Vault koncovým bodům. Aktuální Azure Active Directory koncové body ověřování se udržují v oddílech 56 a 59 v dokumentaci k [adresám URL a rozsahům IP adres sady Office 365](/office365/enterprise/urls-and-ip-address-ranges) . Pokyny pro Key Vault najdete v dokumentaci týkající se [přístupu Azure Key Vault za bránou firewall](../../key-vault/general/access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service 
 
@@ -52,4 +52,4 @@ Virtuální počítač musí mít přístup ke koncovému bodu [služby metadat 
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si další kroky pro [řešení potíží s Azure Disk Encryption](disk-encryption-troubleshooting.md) .
-- [Šifrování dat Azure v klidovém umístění](../../security/fundamentals/encryption-atrest.md)
+- [Šifrování neaktivních uložených dat v Azure](../../security/fundamentals/encryption-atrest.md)

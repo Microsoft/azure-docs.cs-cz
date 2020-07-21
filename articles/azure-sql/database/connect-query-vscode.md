@@ -13,23 +13,23 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e0554711aa6db436bc0c3076ec468555c47fff39
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267252"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515049"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rychlý Start: použití Visual Studio Code k připojení a dotazování 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 [Visual Studio Code](https://code.visualstudio.com/docs) je grafický editor kódu pro Linux, MacOS a Windows. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování instance SQL Server, Azure SQL Database, spravované instance Azure SQL a databáze ve službě Azure synapse Analytics. V tomto rychlém startu použijete Visual Studio Code k připojení k Azure SQL Database nebo spravované instanci SQL Azure a potom spustíte příkazy jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Databáze v Azure SQL Database nebo spravované instanci Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
-  || Azure SQL Database | Spravovaná instance Azure SQL |
+  | Akce | Azure SQL Database | Spravovaná instance Azure SQL |
   |:--- |:--- |:---|
   | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) |
   || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -74,7 +74,7 @@ Není potřeba žádná zvláštní konfigurace.
 
 Získejte informace o připojení, které potřebujete pro připojení k Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
@@ -111,7 +111,7 @@ K navázání připojení k serveru použijte Visual Studio Code.
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **mynewserver20170313.Database.Windows.NET**. |
    | **Název databáze** | mySampleDatabase | Databáze, ke které se chcete připojit |
-   | **Authentication** | Přihlášení k SQL serveru| V tomto kurzu se používá ověřování SQL. |
+   | **Ověřování** | Přihlášení k SQL serveru| V tomto kurzu se používá ověřování SQL. |
    | **Uživatelské jméno** | Uživatelské jméno | Uživatelské jméno účtu správce serveru použitého k vytvoření serveru. |
    | **Heslo (Přihlášení SQL)** | Heslo | Heslo účtu správce serveru použitého k vytvoření serveru. |
    | **Uložit heslo?** | Ano nebo Ne | Pokud nechcete heslo zadávat pokaždé, vyberte **Ano** . |

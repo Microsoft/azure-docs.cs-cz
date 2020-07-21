@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2299878d46db90e8f3b91e27faf8a9b2b353dbb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5350b4a6a505a29be0ea1b5eed76937574b93568
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986955"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514712"
 ---
-<Token>**platí pro:** ![ Ano ](../media/applies-to/yes.png) Azure SQL Database ![ Ano Azure ](../media/applies-to/yes.png) SQL Managed instance ![ Yes ](../media/applies-to/yes.png) Azure synapse Analytics (SQL DW)</Token>
+<Token>**platí pro:** ![ Ano ](../media/applies-to/yes.png) Azure SQL Database ![ Ano Azure ](../media/applies-to/yes.png) SQL Managed instance ![ Yes ](../media/applies-to/yes.png) Azure synapse Analytics (SQL DW)</Token> 
 

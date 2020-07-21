@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650542"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515780"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Odeslání metriky hostovaného operačního systému do úložiště metriky Azure Monitor pomocí šablony Azure Resource Manager pro virtuální počítač s Windows
 Údaje o výkonu z hostovaného operačního systému virtuálních počítačů Azure se neshromažďují automaticky jako jiné [metriky platforem](../insights/monitor-azure-resource.md#monitoring-data). Nainstalujte rozšíření Azure Monitor [Diagnostics](diagnostics-extension-overview.md) , které shromáždí metriky operačního systému hosta do databáze metrik, takže se dá použít se všemi funkcemi Azure monitor metrik, včetně výstrah v reálném čase, vytváření grafů, směrování a přístupu z REST API. Tento článek popisuje proces odeslání metrik výkonu hostovaného operačního systému pro virtuální počítač s Windows do databáze metrik pomocí šablony Správce prostředků. 
@@ -22,11 +23,11 @@ ms.locfileid: "83650542"
 
 Pokud s Správce prostředků šablonou začínáte, přečtěte si o [Nasazení šablon](../../azure-resource-manager/management/overview.md) a jejich struktuře a syntaxi.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Vaše předplatné musí být zaregistrované ve službě [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services).
+- Vaše předplatné musí být zaregistrované ve službě [Microsoft. Insights](../../azure-resource-manager/management/resource-providers-and-types.md).
 
-- Musíte mít nainstalované buď [Azure PowerShell](/powershell/azure) , nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
+- Musíte mít nainstalované buď [Azure PowerShell](/powershell/azure) , nebo [Azure Cloud Shell](../../cloud-shell/overview.md) .
 
 - Prostředek virtuálního počítače musí být v [oblasti, která podporuje vlastní metriky](metrics-custom-overview.md#supported-regions). 
 
@@ -285,4 +286,3 @@ K nasazení šablony Správce prostředků využíváme Azure PowerShell.
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si další informace o [vlastních metrikách](metrics-custom-overview.md).
-

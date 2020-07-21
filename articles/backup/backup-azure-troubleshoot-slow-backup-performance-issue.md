@@ -3,12 +3,12 @@ title: Řešení potíží s pomalým zálohováním souborů a složek
 description: Poskytuje pokyny k odstraňování potíží, které vám pomůžou diagnostikovat příčinu potíží s výkonem Azure Backup.
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7bdda02b837cc2312b997b23ba7b714ca7ebb41a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135036"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513828"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Řešení potíží s pomalým zálohováním souborů a složek ve službě Azure Backup
 
@@ -95,7 +95,7 @@ Následující indikátory vám pomohou pochopit kritické body a odpovídajíc�
 * **Uživatelské rozhraní zobrazuje průběh přenosu dat**. Data se pořád přenáší. Šířka pásma sítě nebo velikost dat můžou způsobovat zpoždění.
 * **Uživatelské rozhraní nezobrazuje průběh přenosu dat**. Otevřete protokoly nacházející se v umístění C:\Program Files\Microsoft Azure Recovery Services Agent\Temp a potom zkontrolujte, jestli v protokolech není záznam. Provider:: EndData. Tato položka znamená, že se dokončil přenos dat a operace katalogu. Neruší úlohy zálohování. Místo toho počkejte trochu déle, než se operace katalogu dokončí. Pokud se problém opakuje, obraťte se na [podporu Azure](https://portal.azure.com/#create/Microsoft.Support).
 
-Při pokusu o zálohování velkých disků se doporučuje použít [Azure Data box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box) pro první zálohování (počáteční replikace).  Pokud nemůžete použít Data Box, pak jakékoli přechodné problémy se sítí, které ve vašem prostředí probíhají během dlouhých přenosů dat přes síť, můžou způsobit selhání zálohování.  K ochraně proti těmto chybám můžete do prvotního zálohování přidat několik složek a průběžně přidávat další složky, dokud se všechny složky úspěšně nezálohují do Azure.  Následné přírůstkové zálohování bude poměrně rychlejší.
+Při pokusu o zálohování velkých disků se doporučuje použít [Azure Data box](./offline-backup-azure-data-box.md) pro první zálohování (počáteční replikace).  Pokud nemůžete použít Data Box, pak jakékoli přechodné problémy se sítí, které ve vašem prostředí probíhají během dlouhých přenosů dat přes síť, můžou způsobit selhání zálohování.  K ochraně proti těmto chybám můžete do prvotního zálohování přidat několik složek a průběžně přidávat další složky, dokud se všechny složky úspěšně nezálohují do Azure.  Následné přírůstkové zálohování bude poměrně rychlejší.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,11 +3,12 @@ title: Instalace Azure Backup Serveru v Azure Stacku
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chránit nebo zálohovat úlohy v Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 7a1f48c0987ed0eaea70d887709e52b9a1f1fe1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 634f560174413dd75bebdee6513160a3700df9a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83747441"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513893"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -88,9 +89,9 @@ Azure Backup Server virtuální počítač musí být připojený k doméně. Na
 
 ## <a name="using-an-iaas-vm-in-azure-stack"></a>Použití virtuálního počítače s IaaS v Azure Stack
 
-Při volbě serveru pro Azure Backup Server začněte s imagí Windows Server 2012 R2 Datacenter nebo Windows Server 2016 Datacenter. [V tomto článku vytvořte svůj první virtuální počítač s Windows ve službě Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), který poskytuje kurz, jak začít s doporučeným virtuálním počítačem. Doporučené minimální požadavky pro virtuální počítač serveru (VM) by měly být: a2 Standard se dvěma jádry a 3,5-GB RAM.
+Při volbě serveru pro Azure Backup Server začněte s imagí Windows Server 2012 R2 Datacenter nebo Windows Server 2016 Datacenter. [V tomto článku vytvořte svůj první virtuální počítač s Windows ve službě Azure Portal](../virtual-machines/windows/quick-create-portal.md?toc=/azure/virtual-machines/windows/toc.json), který poskytuje kurz, jak začít s doporučeným virtuálním počítačem. Doporučené minimální požadavky pro virtuální počítač serveru (VM) by měly být: a2 Standard se dvěma jádry a 3,5-GB RAM.
 
-Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tato drobné odlišnosti je popsána v [matrici ochrany pro MABS](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) . Než počítač nasadíte, přečtěte si tento článek kompletně.
+Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tato drobné odlišnosti je popsána v [matrici ochrany pro MABS](./backup-mabs-protection-matrix.md) . Než počítač nasadíte, přečtěte si tento článek kompletně.
 
 > [!NOTE]
 > Azure Backup Server je navržená tak, aby běžela na vyhrazeném virtuálním počítači s jedním účelem. Nemůžete nainstalovat Azure Backup Server na:
@@ -106,7 +107,7 @@ Vždy připojte Azure Backup Server k doméně. Pokud potřebujete přesunout Az
 
 ### <a name="set-storage-replication"></a>Nastavení replikace úložiště
 
-Možnost replikace úložiště Recovery Services trezoru umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která je méně trvalá, vyberte možnost místně redundantní úložiště. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště najdete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
+Možnost replikace úložiště Recovery Services trezoru umožňuje výběr mezi geograficky redundantním úložištěm a místně redundantním úložištěm. Ve výchozím nastavení používají trezory Recovery Services geograficky redundantní úložiště. Pokud je tento trezor vaším primárním trezorem, ponechte možnost úložiště nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která je méně trvalá, vyberte možnost místně redundantní úložiště. Další informace o možnostech [geograficky redundantního](../storage/common/storage-redundancy.md) a [místně redundantního](../storage/common/storage-redundancy.md) úložiště najdete v tématu [Přehled replikace Azure Storage](../storage/common/storage-redundancy.md).
 
 Chcete-li upravit nastavení replikace úložiště:
 
@@ -216,7 +217,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
 
     ![Azure Backup Server – uvítání a kontrolu předpokladů](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    Pokud má vaše prostředí nezbytné požadavky, zobrazí se zpráva oznamující, že počítač splňuje požadavky. Klikněte na **Další**.  
+    Pokud má vaše prostředí nezbytné požadavky, zobrazí se zpráva oznamující, že počítač splňuje požadavky. Klikněte na **Next** (Další).  
 
     ![Azure Backup Server – byla úspěšná kontrolu předpokladů.](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
@@ -242,7 +243,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Příprava úložiště dat](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 
 6. Na obrazovce **nastavení zabezpečení** zadejte silné heslo pro omezené místní uživatelské účty a klikněte na **Další**.
 
@@ -308,7 +309,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
 
 ## <a name="add-backup-storage"></a>Přidat úložiště zálohování
 
-První záložní kopie je udržována v úložišti připojeném k Azure Backup Servermu počítači. Další informace o přidávání disků najdete v tématu [Přidání moderního úložiště záloh](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801).
+První záložní kopie je udržována v úložišti připojeném k Azure Backup Servermu počítači. Další informace o přidávání disků najdete v tématu [Přidání moderního úložiště záloh](/system-center/dpm/add-storage).
 
 > [!NOTE]
 > Úložiště zálohování je nutné přidat i v případě, že plánujete odeslat data do Azure. V architektuře Azure Backup Server ukládá trezor Recovery Services *druhou* kopii dat, zatímco místní úložiště obsahuje první (a povinnou) záložní kopii.
@@ -323,13 +324,13 @@ Kromě toho musí být předplatné Azure v dobrém stavu. Pokud chcete zjistit 
 
 Jakmile budete znát stav připojení Azure a předplatného Azure, můžete pomocí následující tabulky zjistit dopad na nabízené funkce zálohování a obnovení.
 
-| Stav připojení | předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
+| Stav připojení | Předplatné Azure | Zálohování do Azure | Zálohovat na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
 | Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
-| Připojeno |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Připojeno |Ukončená platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Připojeno |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
 | Ztracené připojení > 15 dní |Aktivní |Zastaveno |Zastaveno |Povoleno |Povoleno |
-| Ztracené připojení > 15 dní |Platnost vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Ztracené připojení > 15 dní |Ukončená platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Ztracené připojení > 15 dní |Zajištění zrušeno |Zastaveno |Zastaveno |Zastaveno a body obnovení Azure byly odstraněny |Zastaveno |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovování ze ztráty připojení
@@ -358,10 +359,10 @@ Můžete se také podívat na [Azure Backup souvisejících nejčastějších](b
 
 ## <a name="next-steps"></a>Další kroky
 
-Článek [Příprava prostředí pro aplikaci DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801)obsahuje informace o podporovaných konfiguracích Azure Backup Server.
+Článek [Příprava prostředí pro aplikaci DPM](/system-center/dpm/prepare-environment-for-dpm)obsahuje informace o podporovaných konfiguracích Azure Backup Server.
 
 Následující články vám pomohou získat hlubší princip ochrany zatížení pomocí Microsoft Azure Backup serveru.
 
-- [Zálohování SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
-- [Zálohování serveru SharePoint](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Zálohování SQL Server](./backup-mabs-sql-azure-stack.md)
+- [Zálohování serveru SharePoint](./backup-mabs-sharepoint-azure-stack.md)
 - [Alternativní zálohování serveru](backup-azure-alternate-dpm-server.md)

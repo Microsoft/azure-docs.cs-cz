@@ -6,17 +6,18 @@ ms.service: signalr
 ms.topic: reference
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 3c28781362e60d22b0d9a4e3754daaa24e5b61ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99ebe9c078ef4775e8f0df0545fb0af4b3d1057b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74158122"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515236"
 ---
 # <a name="azure-cli-reference"></a>Referenční informace k Azure CLI
 
 Následující tabulka obsahuje odkazy na skripty Bash pro službu Azure SignalR vytvořené pomocí Azure CLI.
 
-| | |
+| Skript | Označení |
 |-|-|
 |**Vytvořit**||
 | [Vytvoření nové služby SignalR a skupiny prostředků](scripts/signalr-cli-create-service.md) | Vytvoří nový prostředek služby Azure SignalR v nové skupině prostředků s náhodným názvem.  |

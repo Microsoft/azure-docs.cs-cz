@@ -3,11 +3,12 @@ title: Získat pomoc s nasazením řešení Azure VMware nebo chybami zřizován
 description: Jak získat potřebné informace z privátního cloudu řešení Azure VMware (AVS) do souboru žádosti o službu pro nasazení nebo selhání zřizování služby AVS
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 3032c01d48617347c454d71498571b0e6b789e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986862"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514573"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Získat pomoc s nasazením řešení Azure VMware nebo chybami zřizování
 
@@ -71,7 +72,7 @@ Vložte ID ExpressRoute do příslušného pole v nové žádosti o podporu. Dal
 
 ## <a name="create-your-support-request"></a>Vytvoření žádosti o podporu
 
-Obecné pokyny k vytvoření žádosti o podporu najdete v tématu [Postup vytvoření žádosti o podporu Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+Obecné pokyny k vytvoření žádosti o podporu najdete v tématu [Postup vytvoření žádosti o podporu Azure](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
 Tady jsou další doprovodné materiály, které jsou specifické pro vytvoření SR pro nasazení nebo selhání zřizování služby AVS.
 

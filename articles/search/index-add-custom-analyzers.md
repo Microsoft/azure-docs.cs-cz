@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555235"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511394"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání vlastních analyzátorů do polí řetězců v indexu služby Azure Kognitivní hledání
 
@@ -134,7 +135,7 @@ Definice pro filtry znaků, tokenizátory musíte nejdřív a filtry tokenů jso
 
 Můžete použít **operaci analyzátoru testů** v [REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) k zobrazení, jak analyzátor přerušuje daný text na tokeny.
 
-**Žádost**
+**Request**
 ```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
@@ -145,7 +146,7 @@ Můžete použít **operaci analyzátoru testů** v [REST API](https://docs.micr
      "text": "Vis-à-vis means Opposite"
   }
 ```
-**Základě**
+**Response** (Odpověď)
 ```
   {
     "tokens": [
@@ -199,17 +200,17 @@ V případě analyzátorů se atributy indexu liší v závislosti na tom, zda p
 
 #### <a name="predefined-analyzers"></a>Předdefinované analyzátory
 
-|||  
-|-|-|  
-|Name|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
+| Typ | Popis |
+| ---- | ----------- |  
+|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
 |Typ|Typ analyzátoru ze seznamu podporovaných analyzátorů. Podívejte se do sloupce **analyzer_type** v níže uvedené tabulce [analyzátorů](#AnalyzerTable) .|  
 |Možnosti|Musí se jednat o platné možnosti předdefinovaného analyzátoru uvedeného v tabulce [analyzátory](#AnalyzerTable) níže.|  
 
 #### <a name="custom-analyzers"></a>Vlastní analyzátory
 
-|||  
-|-|-|  
-|Name|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
+| Typ | Popis |
+| ---- | ----------- |  
+|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
 |Typ|Musí být "#Microsoft. Azure. Search. CustomAnalyzer".|  
 |CharFilters|Nastavte buď na jeden z předdefinovaných filtrů znaků uvedených v tabulce [filtrů znaků](#char-filters-reference) , nebo na vlastní filtr znaků zadaný v definici indexu.|  
 |Provádějících tokenizaci|Povinná hodnota. Nastavte buď na jednu z předdefinovaných tokenizátory musíte nejdřív uvedených v tabulce [tokenizátory musíte nejdřív](#Tokenizers) , nebo na vlastní provádějících tokenizaci zadané v definici indexu.|  
@@ -224,9 +225,9 @@ V případě analyzátorů se atributy indexu liší v závislosti na tom, zda p
 
  Filtr znaků slouží k přípravě vstupního textu před jeho zpracováním pomocí provádějících tokenizaci. Například může nahradit určité znaky nebo symboly. Ve vlastním analyzátoru můžete mít více filtrů znaků. Filtry znaků jsou spouštěny v pořadí, ve kterém jsou uvedeny.  
 
-|||  
-|-|-|  
-|Name|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
+| Typ | Popis |
+| ---- | ----------- | 
+|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
 |Typ|Typ filtru znaků ze seznamu podporovaných filtrů znaků. Viz **char_filter_type** sloupec v tabulce [filtry znaků](#char-filters-reference) níže.|  
 |Možnosti|Musí být platné možnosti pro daný typ [filtru znaků](#char-filters-reference) .|  
 
@@ -237,9 +238,9 @@ V případě analyzátorů se atributy indexu liší v závislosti na tom, zda p
  Můžete zadat přesně jeden provádějících tokenizaci na vlastní analyzátor. Pokud potřebujete více než jeden provádějících tokenizaci, můžete vytvořit více vlastních analyzátorů a přiřadit je podle pole v rámci schématu indexu.  
 Vlastní analyzátor může použít předdefinované provádějících tokenizaci buď s výchozími, nebo s přizpůsobenými možnostmi.  
 
-|||  
-|-|-|  
-|Name|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
+| Typ | Popis |
+| ---- | ----------- | 
+|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
 |Typ|Provádějících tokenizaci název ze seznamu podporovaných tokenizátory musíte nejdřív. Viz **tokenizer_type** sloupec v tabulce [tokenizátory musíte nejdřív](#Tokenizers) níže.|  
 |Možnosti|Musí se jednat o platné možnosti daného typu provádějících tokenizaci uvedeného v tabulce [tokenizátory musíte nejdřív](#Tokenizers) .|  
 
@@ -248,9 +249,9 @@ Vlastní analyzátor může použít předdefinované provádějících tokeniza
  Filtr tokenu slouží k odfiltrování nebo úpravě tokenů generovaných objektem provádějících tokenizaci. Můžete například zadat filtr malých písmen, který převede všechny znaky na malá písmena.   
 Ve vlastním analyzátoru můžete mít více filtrů tokenů. Filtry tokenů jsou spouštěny v pořadí, ve kterém jsou uvedeny.  
 
-|||  
-|-|-|  
-|Name|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
+| Typ | Popis |
+| ---- | ----------- |  
+|Název|Musí obsahovat jenom písmena, číslice, mezery, pomlčky a podtržítka, může začínat a končit jenom alfanumerickými znaky a je omezený na 128 znaků.|  
 |Typ|Název filtru tokenů ze seznamu podporovaných filtrů tokenů. Viz sloupec **token_filter_type** v následující tabulce [filtrů tokenů](#TokenFilters) .|  
 |Možnosti|Musí se jednat o [filtry tokenů](#TokenFilters) daného typu filtru tokenu.|  
 

@@ -3,11 +3,12 @@ title: Automatické povolení zálohování při vytváření virtuálních poč
 description: Článek popisující, jak použít Azure Policy k automatickému povolení zálohování pro všechny virtuální počítače vytvořené v daném oboru
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77584264"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514216"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
 
@@ -17,7 +18,7 @@ V současné době Azure Backup poskytuje předdefinované zásady (pomocí Azur
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-* Předdefinované zásady se aktuálně podporují jenom pro virtuální počítače Azure. Uživatelé musí dbát na to, aby zásady uchovávání informací zadané během přiřazování byly zásadami uchovávání virtuálních počítačů. Pokud chcete zobrazit všechny SKU virtuálních počítačů podporované touto zásadou, přečtěte si [Tento](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) dokument.
+* Předdefinované zásady se aktuálně podporují jenom pro virtuální počítače Azure. Uživatelé musí dbát na to, aby zásady uchovávání informací zadané během přiřazování byly zásadami uchovávání virtuálních počítačů. Pokud chcete zobrazit všechny SKU virtuálních počítačů podporované touto zásadou, přečtěte si [Tento](./backup-azure-policy-supported-skus.md) dokument.
 
 * Tato zásada se dá přiřadit k jednomu umístění a předplatnému v jednom okamžiku. Pokud chcete povolit zálohování virtuálních počítačů napříč umístěními a odběry, je potřeba vytvořit víc instancí přiřazení zásad, jednu pro každou kombinaci umístění a předplatného.
 
@@ -47,7 +48,7 @@ Chcete-li přiřadit zásadu k požadovanému oboru, postupujte podle následuj�
 
 > [!NOTE]
 >
-> Azure Policy můžete použít taky na stávajících virtuálních počítačích, a to pomocí [nápravy](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources).
+> Azure Policy můžete použít taky na stávajících virtuálních počítačích, a to pomocí [nápravy](../governance/policy/how-to/remediate-resources.md).
 
 > [!NOTE]
 >
@@ -55,4 +56,4 @@ Chcete-li přiřadit zásadu k požadovanému oboru, postupujte podle následuj�
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview)
+[Další informace o Azure Policy](../governance/policy/overview.md)

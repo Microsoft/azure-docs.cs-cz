@@ -1,18 +1,18 @@
 ---
-title: Zálohování souborů a složek – běžné otázky
+title: Agent Microsoft Azure Recovery Services (MARS) – nejčastější dotazy
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056170"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514063"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné dotazy týkající se zálohování souborů a složek
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Nejčastější dotazy – agent Microsoft Azure Recovery Services (MARS)
 
-Tento článek obsahuje odpovědi na běžné dotazy Abound zálohování souborů a složek pomocí agenta služby Microsoft Azure Recovery Services (MARS) ve službě [Azure Backup](backup-overview.md) .
+Tento článek obsahuje odpovědi na běžné dotazy týkající se zálohování dat pomocí agenta Microsoft Azure Recovery Services (MARS) ve službě [Azure Backup](backup-overview.md) .
 
 ## <a name="configure-backups"></a>Konfigurace zálohování
 
@@ -41,11 +41,11 @@ Nemůžete zálohovat následující typy jednotek a svazků:
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>Můžu použít agenta MARS k zálohování souborů a složek na virtuálním počítači Azure?  
 
-Ano. Azure Backup poskytuje zálohování na úrovni virtuálního počítače pro virtuální počítače Azure pomocí rozšíření virtuálního počítače pro agenta virtuálního počítače Azure. Pokud chcete zálohovat soubory a složky na hostovaném operačním systému Windows na VIRTUÁLNÍm počítači, můžete k tomu nainstalovat agenta MARS.
+Yes. Azure Backup poskytuje zálohování na úrovni virtuálního počítače pro virtuální počítače Azure pomocí rozšíření virtuálního počítače pro agenta virtuálního počítače Azure. Pokud chcete zálohovat soubory a složky na hostovaném operačním systému Windows na VIRTUÁLNÍm počítači, můžete k tomu nainstalovat agenta MARS.
 
 ### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>Můžu použít agenta MARS k zálohování souborů a složek v dočasném úložišti pro virtuální počítač Azure?
 
-Ano. Nainstalujte agenta MARS a zálohujte soubory a složky v hostovaném operačním systému Windows do dočasného úložiště.
+Yes. Nainstalujte agenta MARS a zálohujte soubory a složky v hostovaném operačním systému Windows do dočasného úložiště.
 
 * Úlohy zálohování selžou, když se vymažou data dočasného úložiště.
 * Pokud jsou data dočasného úložiště odstraněna, lze obnovit pouze do úložiště, které není volatile.
@@ -56,7 +56,7 @@ Zálohovaná data se odesílají do datacentra trezoru, ve kterém je server zar
 
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>Podporuje agent MARS odstranění duplicitních dat ve Windows Serveru 2012?
 
-Ano. Po přípravě operace zálohování převede agent MARS data s odstraněnými duplicitními daty na běžná data. Pak optimalizuje data pro zálohování, šifruje data a pak zašifrovaná data pošle do trezoru.
+Yes. Po přípravě operace zálohování převede agent MARS data s odstraněnými duplicitními daty na běžná data. Pak optimalizuje data pro zálohování, šifruje data a pak zašifrovaná data pošle do trezoru.
 
 ### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>Potřebuji pro instalaci a konfiguraci agenta MARS oprávnění správce?
 
@@ -70,15 +70,15 @@ Při přejmenování počítače se systémem Windows se zastaví všechna aktu�
 
 * Nový název počítače je potřeba zaregistrovat v úložišti záloh.
 * Když zaregistrujete nový název trezoru, první operace je *Úplná* záloha.
-* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+* Pokud potřebujete obnovit data zálohovaná do trezoru se starým názvem serveru, použijte možnost obnovení do alternativního umístění v Průvodci obnovením dat. [Přečtěte si další informace](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Jaká je maximální délka cesty k souboru pro zálohování?
 
-Agent MARS spoléhá na systém souborů NTFS a použije specifikaci délky FilePath, která je omezená [rozhraním API systému Windows](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths). Pokud soubory, které chcete chránit, jsou delší než povolená hodnota, zálohujte nadřazenou složku nebo diskovou jednotku.  
+Agent MARS spoléhá na systém souborů NTFS a použije specifikaci délky FilePath, která je omezená [rozhraním API systému Windows](/windows/win32/FileIO/naming-a-file#fully-qualified-vs-relative-paths). Pokud soubory, které chcete chránit, jsou delší než povolená hodnota, zálohujte nadřazenou složku nebo diskovou jednotku.  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>Jaké znaky jsou povoleny v cestách k souborům?
 
-Agent MARS spoléhá na NTFS a v názvech souborů nebo cestách umožňuje [podporované znaky](/windows/desktop/FileIO/naming-a-file#naming-conventions) .
+Agent MARS spoléhá na NTFS a v názvech souborů nebo cestách umožňuje [podporované znaky](/windows/win32/FileIO/naming-a-file#naming-conventions) .
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Zobrazí se upozornění "zálohy Azure nebyly pro tento server nakonfigurovány".
 
@@ -91,11 +91,11 @@ Toto upozornění se může objevit i v případě, že jste nakonfigurovali zá
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder"></a>Jaký je požadavek na minimální velikost složky mezipaměti?
 
-Velikost složky mezipaměti určuje množství dat, která zálohujete.
+Velikost složky mezipaměti určuje množství zálohovaných dat.
 
 * Svazky složek mezipaměti by měly mít volné místo, které se rovná minimálně 5-10% celkové velikosti zálohovaných dat.
 * Pokud svazek obsahuje méně než 5% volného místa, zvětšete velikost svazku nebo přesuňte složku mezipaměti na svazek s dostatkem místa pomocí následujících [kroků](#how-do-i-change-the-cache-location-for-the-mars-agent).
-* Pokud budete zálohovat stav systému Windows, budete potřebovat dalších 30-35 GB volného místa ve svazku, který obsahuje složku mezipaměti.
+* Pokud zálohujete stav systému Windows, budete potřebovat dalších 30-35 GB volného místa ve svazku, který obsahuje složku mezipaměti.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Jak zjistit, jestli je pomocná složka platná a dostupná?
 
@@ -141,7 +141,7 @@ Pro složku mezipaměti nedoporučujeme používat následující umístění:
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>Existují nějaké atributy složky mezipaměti, které nejsou podporované?
 
-Složka mezipaměti nepodporuje následující atributy nebo jejich kombinace:
+Pro složku mezipaměti nejsou podporovány následující atributy nebo jejich kombinace:
 
 * Šifrované
 * S odstraněním duplicit
@@ -153,7 +153,7 @@ Složka mezipaměti a virtuální pevný disk metadat nemají potřebné atribut
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Existuje způsob, jak upravit šířku pásma používanou pro zálohování?
 
-Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Další informace](backup-windows-with-mars-agent.md#enable-network-throttling).
+Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit šířku pásma a časování. [Přečtěte si další informace](backup-windows-with-mars-agent.md#enable-network-throttling).
 
 ## <a name="restore"></a>Obnovení
 
@@ -165,17 +165,17 @@ Agent Azure Backup vyžaduje heslo (které jste zadali během registrace) k deš
 
 | Původní počítač <br> *(zdrojový počítač, ve kterém proběhlo zálohování)* | Hesel | Dostupné možnosti |
 | --- | --- | --- |
-| K dispozici |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
+| K dispozici |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](./backup-azure-manage-mars.md#re-generate-passphrase).  |
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 Vezměte v úvahu následující podmínky:
 
-* Pokud agenta odinstalujete a znovu zaregistrujete na stejný původní počítač s
-  * *Stejné heslo*, pak budete moct obnovit zálohovaná data.
-  * *Jiné heslo*, pak nebudete moci obnovit zálohovaná data.
+* Pokud agenta odinstalujete a znovu zaregistrujete na stejný původní počítač s Thee
+  * *Stejné heslo*, pak můžete zálohovaná data obnovit.
+  * *Jiné heslo*, potom nemůžete obnovit zálohovaná data.
 * Pokud nainstalujete agenta na *jiný počítač* s
-  * *Stejné přístupové heslo* (používá se v původním počítači), pak budete moct obnovit zálohovaná data.
-  * *Jiné heslo*, nebudete moci obnovit zálohovaná data.
+  * *Stejné přístupové heslo* (používá se v původním počítači), můžete obnovit zálohovaná data.
+  * *Jiné heslo*, nemůžete obnovit zálohovaná data.
 * Pokud je původní počítač poškozený (bráníte opětovnému generování hesla přes konzolu MARS), ale můžete obnovit nebo získat přístup k původní pomocné složce používané agentem Mars, pak budete moct obnovit (Pokud jste zapomněli heslo). Pokud potřebujete další pomoc, obraťte se na zákaznickou podporu.
 
 #### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>Návody obnovení po ztrátě původního počítače (kde se prováděly zálohy)?
@@ -184,7 +184,7 @@ Pokud máte stejné heslo (které jste zadali během registrace) původního po�
 
 | Původní počítač | Hesel | Dostupné možnosti |
 | --- | --- | --- |
-| Ztráty |K dispozici |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. **Recovery Option**  >  Chcete-li provést obnovení, vyberte možnost obnovení**jiné umístění** . Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Ztráty |K dispozici |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. **Recovery Option**  >  Chcete-li provést obnovení, vyberte možnost obnovení**jiné umístění** . Další informace najdete v tomto [článku](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>Úlohy zálohování se nezdařily nebo nejsou spuštěny po dlouhou dobu. Jsem po dobu uchování. Můžu I nadále obnovit?

@@ -4,18 +4,18 @@ description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e3e89d93ab35724a09138d48863badad6a41b71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80421335"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514114"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Zálohování serveru Exchange do Azure pomocí Azure Backup Server
 
 Tento článek popisuje, jak nakonfigurovat Microsoft Azure Backup Server (MABS) pro zálohování Microsoft Exchange serveru do Azure.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že jsou [nainstalované a připravené](backup-azure-microsoft-azure-backup.md)Azure Backup Server.
 
@@ -23,8 +23,8 @@ Než budete pokračovat, ujistěte se, že jsou [nainstalované a připravené](
 
 Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte podle následujících kroků:
 
-1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > nainstalovat** v konzole pro správu MABS. Podrobné pokyny najdete v tématu [instalace agenta MABS Protection](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
+1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > nainstalovat** v konzole pro správu MABS. Podrobné pokyny najdete v tématu [instalace agenta MABS Protection](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
 
@@ -34,7 +34,7 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
 4. Vyberte databázi systému Exchange Server, kterou chcete chránit, a klikněte na tlačítko **Další**.
 
    > [!NOTE]
-   > Pokud chráníte Exchange 2013, podívejte se na [požadavky exchange 2013](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016).
+   > Pokud chráníte Exchange 2013, podívejte se na [požadavky exchange 2013](/system-center/dpm/back-up-exchange).
    >
    >
 
@@ -47,7 +47,7 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
 
    * Chci krátkodobou ochranu pomocí disku.
    * Chci online ochranu.
-6. Klikněte na **Další**.
+6. Klikněte na **Next** (Další).
 7. Zaškrtněte možnost **Spustit Eseutil pro kontrolu integrity dat** , pokud chcete ověřit integritu databází serveru Exchange.
 
     Po výběru této možnosti se kontrola konzistence zálohy spustí na MABS, aby se předešlo vstupně-výstupnímu přenosu generovanému spuštěním příkazu **eseutil** na serveru Exchange.
@@ -57,7 +57,7 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
    > ![Chyba programu Eseutil](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
-8. Klikněte na **Další**.
+8. Klikněte na **Next** (Další).
 9. Vyberte databázi pro **zálohování kopírováním**a pak klikněte na **Další**.
 
    > [!NOTE]

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184493"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515423"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Účty úložiště vlastněné zákazníkem pro přijímání protokolů v Azure Monitor
 
-Azure Monitor používá účty úložiště v procesu přijímání některých datových typů, jako jsou například [vlastní protokoly](data-sources-custom-logs.md) a některé [protokoly Azure](azure-storage-iis-table.md). Během procesu příjmu se protokoly nejdřív odesílají do účtu úložiště a později se ingestují do Log Analytics nebo Application Insights. Pokud chcete mít kontrolu nad daty během přijímání, můžete místo úložiště spravovaného službou použít vlastní účty úložiště. Pomocí vlastního účtu úložiště získáte kontrolu nad přístupem, obsahem, šifrováním a uchováváním protokolů během přijímání. Odkazujeme na to, že Přineste si vlastní úložiště nebo BYOS. 
+Azure Monitor používá účty úložiště v procesu přijímání některých datových typů, jako jsou například [vlastní protokoly](data-sources-custom-logs.md) a některé [protokoly Azure](./diagnostics-extension-logs.md). Během procesu příjmu se protokoly nejdřív odesílají do účtu úložiště a později se ingestují do Log Analytics nebo Application Insights. Pokud chcete mít kontrolu nad daty během přijímání, můžete místo úložiště spravovaného službou použít vlastní účty úložiště. Pomocí vlastního účtu úložiště získáte kontrolu nad přístupem, obsahem, šifrováním a uchováváním protokolů během přijímání. Odkazujeme na to, že Přineste si vlastní úložiště nebo BYOS. 
 
 Jedním z scénářů, které vyžadují BYOS, je izolace sítě prostřednictvím privátních odkazů. Pokud používáte virtuální síť, je často požadavek na izolaci sítě a přístup k veřejnému Internetu je omezený. V takových případech je přístup k úložišti služby Azure Monitor pro ingestování protokolu buď úplně blokovaný, nebo se považuje za špatný postup. Místo toho by se měly protokoly přijímat prostřednictvím účtu úložiště ve vlastnictví zákazníka v rámci virtuální sítě nebo snadno dostupného.
 
@@ -23,9 +23,9 @@ Dalším scénářem je šifrování protokolů pomocí klíčů spravovaných z
 
 ## <a name="data-types-supported"></a>Podporované datové typy
 
-K datovým typům, které se ingestují z účtu úložiště, patří následující. Další informace o přijímání těchto typů najdete v tématu [shromáždění dat z rozšíření Azure Diagnostics pro Azure monitor protokolů](azure-storage-iis-table.md) .
+K datovým typům, které se ingestují z účtu úložiště, patří následující. Další informace o přijímání těchto typů najdete v tématu [shromáždění dat z rozšíření Azure Diagnostics pro Azure monitor protokolů](./diagnostics-extension-logs.md) .
 
-| Type | Informace o tabulce |
+| Typ | Informace o tabulce |
 |:-----|:------------------|
 | Protokoly IIS | Objekt BLOB: wad-IIS-LogFiles|
 |Protokoly událostí Windows | Tabulka: WADWindowsEventLogsTable |
@@ -54,7 +54,7 @@ Jedinou metodou, kterou je možné vytvořit a odebrat, je REST API. Podrobnosti
 ## <a name="command-line-and-rest-api"></a>Příkazový řádek a REST API
 
 ### <a name="command-line"></a>Příkazový řádek
-Pokud chcete vytvořit a spravovat propojené účty úložiště, použijte příkaz [AZ monitor Log-Analytics pracovní prostor propojený-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage). Tento příkaz může propojit účty úložiště a odpojit je od pracovního prostoru a zobrazit seznam propojených účtů úložiště.
+Pokud chcete vytvořit a spravovat propojené účty úložiště, použijte příkaz [AZ monitor Log-Analytics pracovní prostor propojený-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage). Tento příkaz může propojit účty úložiště a odpojit je od pracovního prostoru a zobrazit seznam propojených účtů úložiště.
 
 ### <a name="request-and-cli-values"></a>Hodnoty požadavků a CLI
 

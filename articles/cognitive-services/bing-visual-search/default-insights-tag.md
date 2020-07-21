@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60510118"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512635"
 ---
 # <a name="default-insights-tag"></a>Výchozí značka Insights
 
@@ -313,7 +313,7 @@ ImageById Insight poskytuje `Image` objekt obrázku, pro který jste si vyžáda
 
 ## <a name="productvisualsearch-insight"></a>Přehled ProductVisualSearch
 
-ProductVisualSearch Insight nabízí seznam imagí produktů, které jsou vizuálně podobné produktům uvedeným v původní imagi. `insightsMetadata` Pole může obsahovat informace o nabídkách, kde si můžete koupit produkt a cenu produktu.
+ProductVisualSearch Insight nabízí seznam imagí produktů, které jsou vizuálně podobné produktům uvedeným v původní imagi. `insightsMetadata`Pole může obsahovat informace o nabídkách, kde si můžete koupit produkt a cenu produktu.
 
 ```json
       {
@@ -425,4 +425,12 @@ DocumentLevelSuggestions Insight obsahuje seznam navrhovaných hledaných výraz
 
 Podívejte se na [Příklady využití Bing Insights](bing-insights-usage.md) a podívejte se, jak může Bing zobrazit Visual Insights.
 
-Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Pokud chcete rychle začít s prvním požadavkem, přečtěte si rychlý Start:
+
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md).

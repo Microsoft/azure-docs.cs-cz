@@ -1,190 +1,497 @@
 ---
-title: Použití jazyka Java k dotazování databáze
-description: Ukazuje, jak pomocí jazyka Java vytvořit program, který se připojí k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance a provede dotaz pomocí příkazů T-SQL.
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: Použití jazyků Java a JDBC s Azure SQL Database
+description: Naučte se používat Java a JDBC s Azure SQL Database.
 services: sql-database
+author: jdubois
+ms.author: judubois
 ms.service: sql-database
 ms.subservice: development
-ms.devlang: java
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: v-masebo
-ms.date: 05/29/2020
-ms.custom: seo-java-july2019. seo-java-august2019, sqldbrb=2 
-ms.openlocfilehash: 6be52d2d3472888607bbd6276b4794184bb11273
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.devlang: java
+ms.date: 06/26/2020
+ms.openlocfilehash: 59124928e9bfb75265e3556e37d65a3b30c851d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267388"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515071"
 ---
-# <a name="quickstart-use-java-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití jazyka Java k dotazování databáze v Azure SQL Database nebo spravované instanci Azure SQL
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="use-java-and-jdbc-with--azure-sql-database"></a>Použití jazyků Java a JDBC s Azure SQL Database
 
-V tomto rychlém startu použijete Java pro připojení k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance a k dotazování na data použijeme příkazy T-SQL.
+Toto téma ukazuje, jak vytvořit ukázkovou aplikaci, která používá Java a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) k ukládání a načítání informací v [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/).
 
-## <a name="prerequisites"></a>Požadavky
+JDBC je standardní rozhraní Java API pro připojení k tradičním relačním databázím.
 
-K dokončení tohoto rychlého startu je potřeba:
+## <a name="prerequisites"></a>Předpoklady
 
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Účet Azure: Pokud ho nemáte, [Získejte bezplatnou zkušební verzi](https://azure.microsoft.com/free/).
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) nebo [Azure CLI](/cli/azure/install-azure-cli). Doporučujeme, abyste Azure Cloud Shell, že budete automaticky přihlášeni a budete mít přístup ke všem nástrojům, které budete potřebovat.
+- Podporovaná [sada Java Development Kit](https://aka.ms/azure-jdks), verze 8 (obsažená v Azure Cloud Shell).
+- Nástroj pro sestavení [Apache Maven](https://maven.apache.org/)
 
-  || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
-  |:--- |:--- |:---|:---|
-  | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) | [Azure Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
-  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](firewall-create-server-level-portal-quickstart.md)| [Připojení z virtuálního počítače](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Připojení z místního prostředí](../managed-instance/point-to-site-p2s-configure.md) | [Připojení k instanci SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](../managed-instance/restore-sample-database-quickstart.md) | [Obnovení celosvětových dovozců](../managed-instance/restore-sample-database-quickstart.md) |
-  |||Obnovení nebo import Adventure Works ze souboru [BacPac](database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Obnovení nebo import Adventure Works ze souboru [BacPac](database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
+## <a name="prepare-the-working-environment"></a>Příprava pracovního prostředí
 
-- Software související s jazykem [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)
+Proměnné prostředí se používají k omezení chyb při psaní a usnadňuje vám přizpůsobení následující konfigurace konkrétním potřebám.
 
-  # <a name="macos"></a>[macOS](#tab/macos)
+Tyto proměnné prostředí nastavte pomocí následujících příkazů:
 
-  Nainstalujte homebrew a Java a pak nainstalujte Maven pomocí kroků **1,2** a **1,3** v [vytváření aplikací Java pomocí SQL Server v MacOS](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
+```bash
+AZ_RESOURCE_GROUP=database-workshop
+AZ_DATABASE_NAME=<YOUR_DATABASE_NAME>
+AZ_LOCATION=<YOUR_AZURE_REGION>
+AZ_SQL_SERVER_USERNAME=demo
+AZ_SQL_SERVER_PASSWORD=<YOUR_AZURE_SQL_PASSWORD>
+AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
+```
 
-  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
+Zástupné symboly nahraďte následujícími hodnotami, které se používají v celém tomto článku:
 
-  Nainstalujte Java, nainstalujte sadu Java Development Kit a pak nainstalujte Maven pomocí kroků **1,2**, **1,3**a **1,4** v části [vytváření aplikací Java pomocí SQL Server v Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+- `<YOUR_DATABASE_NAME>`: Název vašeho serveru Azure SQL Database. Měl by být jedinečný v rámci Azure.
+- `<YOUR_AZURE_REGION>`: Oblast Azure, kterou budete používat. `eastus`Ve výchozím nastavení můžete použít, ale doporučujeme, abyste nakonfigurovali oblast blíže k umístění, kde žijete. Můžete mít úplný seznam oblastí, které jsou k dispozici, zadáním `az account list-locations` .
+- `<AZ_SQL_SERVER_PASSWORD>`: Heslo serveru Azure SQL Database. Heslo by mělo mít minimálně osm znaků. Znaky by měly být ze tří z následujících kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0-9) a jiné než alfanumerické znaky (!, $, #,% a tak dále).
+- `<YOUR_LOCAL_IP_ADDRESS>`: IP adresa místního počítače, ze kterého spouštíte aplikaci Java. Jedním pohodlným způsobem, jak ho najít, je ukázat svůj prohlížeč na [whatismyip.Akamai.com](http://whatismyip.akamai.com/).
 
-  # <a name="windows"></a>[Windows](#tab/windows)
+Dále vytvořte skupinu prostředků pomocí následujícího příkazu:
 
-  Nainstalujte Java a pak nainstalujte Maven pomocí kroků **1,2** a **1,3** v [vytváření aplikací Java pomocí SQL Server ve Windows](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
-
-  ---
-
-> [!IMPORTANT]
-> Skripty v tomto článku jsou určeny k používání databáze **Adventure Works** .
-
-> [!NOTE]
-> Volitelně můžete zvolit použití spravované instance Azure SQL.
->
-> K vytvoření a konfiguraci použijte [Azure Portal](../managed-instance/instance-create-quickstart.md), [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md)nebo [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)a pak nastavte [místní nebo](../managed-instance/point-to-site-p2s-configure.md) konektivitu [virtuálních počítačů](../managed-instance/connect-vm-instance-configure.md) .
->
-> Pokud chcete načíst data, přečtěte si téma [Restore with BacPac](database-import.md) se souborem [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) nebo si přečtěte část [obnovení databáze World Importers](../managed-instance/restore-sample-database-quickstart.md).
-
-## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru
-
-Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-
-2. Vyberte **databáze SQL** nebo otevřete stránku **spravované instance SQL** .
-
-3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server na virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
+```azurecli
+az group create \
+    --name $AZ_RESOURCE_GROUP \
+    --location $AZ_LOCATION \
+  	| jq
+```
 
 > [!NOTE]
-> Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
+> Nástroj používáme `jq` k zobrazení dat JSON a k lepší čitelnosti. Tento nástroj je ve výchozím nastavení nainstalován na [Azure Cloud Shell](https://shell.azure.com/). Pokud tento nástroj nechcete, můžete bezpečně odebrat `| jq` část všech příkazů, které budeme používat.
 
-## <a name="create-the-project"></a>Vytvoření projektu
+## <a name="create-an-azure-sql-database-instance"></a>Vytvoření instance Azure SQL Database
 
-1. Z příkazového řádku vytvořte nový projekt Maven s názvem *sqltest*.
+První věc, kterou vytvoříme, je spravovaný server Azure SQL Database.
 
-    ```bash
-    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
-    ```
+> [!NOTE]
+> Podrobnější informace o vytváření Azure SQL Databasech serverů najdete v tématu [rychlý Start: vytvoření databáze Azure SQL Database s jedinou databází](/azure/sql-database/sql-database-single-database-get-started).
 
-1. Změňte složku na *sqltest* a otevřete *pom. XML* v oblíbeném textovém editoru. Přidejte **ovladač Microsoft JDBC pro SQL Server** do závislostí projektu pomocí následujícího kódu.
+V [Azure Cloud Shell](https://shell.azure.com/)spusťte následující příkaz:
 
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.sqlserver</groupId>
-        <artifactId>mssql-jdbc</artifactId>
-        <version>7.0.0.jre8</version>
-    </dependency>
-    ```
+```azurecli
+az sql server create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME \
+    --location $AZ_LOCATION \
+    --admin-user $AZ_SQL_SERVER_USERNAME \
+    --admin-password $AZ_SQL_SERVER_PASSWORD \
+  	| jq
+```
 
-1. Také do souboru *pom.xml* přidejte k projektu následující vlastnosti. Pokud nemáte část s vlastnostmi, můžete ji přidat po závislostech.
+Tento příkaz vytvoří server Azure SQL Database.
 
-   ```xml
-   <properties>
-       <maven.compiler.source>1.8</maven.compiler.source>
-       <maven.compiler.target>1.8</maven.compiler.target>
-   </properties>
-   ```
+### <a name="configure-a-firewall-rule-for-your-azure-sql-database-server"></a>Konfigurace pravidla brány firewall pro Azure SQL Database Server
 
-1. Soubor *pom.xml* uložte a zavřete.
+Instance Azure SQL Database jsou ve výchozím zabezpečení zabezpečené. Mají bránu firewall, která nepovoluje žádné příchozí připojení. Aby bylo možné používat vaši databázi, je nutné přidat pravidlo brány firewall, které umožní místní IP adrese přístup k databázovému serveru.
 
-## <a name="add-code-to-query-the-database"></a>Přidání kódu pro dotaz do databáze
+Vzhledem k tomu, že jste místní IP adresu nakonfigurovali na začátku tohoto článku, můžete bránu firewall serveru otevřít spuštěním následujícího příkazu:
 
-1. V projektu Maven byste už měli mít soubor s názvem *App. Java* , který najdete tady:
+```azurecli
+az sql server firewall-rule create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME-database-allow-local-ip \
+    --server $AZ_DATABASE_NAME \
+    --start-ip-address $AZ_LOCAL_IP_ADDRESS \
+    --end-ip-address $AZ_LOCAL_IP_ADDRESS \
+  	| jq
+```
 
-   *.. \sqltest\src\main\java\com\sqldbsamples\App.java*
+### <a name="configure-a-azure-sql-database"></a>Konfigurace Azure SQL Database
 
-1. Soubor otevřete a nahraďte jeho obsah následujícím kódem. Pak přidejte příslušné hodnoty pro váš server, databázi, uživatele a heslo.
+Server Azure SQL Database, který jste vytvořili dříve, je prázdný. Nemá žádnou databázi, kterou můžete použít s aplikací Java. Pomocí následujícího příkazu vytvořte novou databázi s názvem `demo` :
 
-    ```java
-    package com.sqldbsamples;
+```azurecli
+az sql db create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name demo \
+    --server $AZ_DATABASE_NAME \
+  	| jq
+```
 
-    import java.sql.Connection;
-    import java.sql.Statement;
-    import java.sql.PreparedStatement;
-    import java.sql.ResultSet;
-    import java.sql.DriverManager;
+### <a name="create-a-new-java-project"></a>Vytvořit nový projekt Java
 
-    public class App {
+Pomocí svého oblíbeného integrovaného vývojového prostředí (IDE) vytvořte nový projekt Java a přidejte `pom.xml` ho do svého kořenového adresáře:
 
-        public static void main(String[] args) {
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo</name>
 
-            // Connect to database
-            String hostName = "your_server.database.windows.net"; // update me
-            String dbName = "your_database"; // update me
-            String user = "your_username"; // update me
-            String password = "your_password"; // update me
-            String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
-                + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-            Connection connection = null;
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
-            try {
-                connection = DriverManager.getConnection(url);
-                String schema = connection.getSchema();
-                System.out.println("Successful connection - Schema: " + schema);
+    <dependencies>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.4.1.jre8</version>
+        </dependency>
+    </dependencies>
+</project>
+```
 
-                System.out.println("Query data example:");
-                System.out.println("=========================================");
+Tento soubor je [Apache Maven](https://maven.apache.org/) , který nakonfiguruje náš projekt na použití:
 
-                // Create and execute a SELECT SQL statement.
-                String selectSql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName "
-                    + "FROM [SalesLT].[ProductCategory] pc "  
-                    + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid";
+- Java 8
+- Nedávné SQL Server ovladače pro Java
 
-                try (Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(selectSql)) {
+### <a name="prepare-a-configuration-file-to-connect-to-azure-sql-database"></a>Příprava konfiguračního souboru pro připojení ke službě Azure SQL Database
 
-                    // Print results from select statement
-                    System.out.println("Top 20 categories:");
-                    while (resultSet.next())
-                    {
-                        System.out.println(resultSet.getString(1) + " "
-                            + resultSet.getString(2));
-                    }
-                    connection.close();
-                }
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+Vytvořte soubor *Src/Main/Resources/Application. Properties* a přidejte:
+
+```properties
+url=jdbc:sqlserver://$AZ_DATABASE_NAME.database.windows.net:1433;database=demo;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+user=demo@$AZ_DATABASE_NAME
+password=$AZ_SQL_SERVER_PASSWORD
+```
+
+- Nahraďte dvě `$AZ_DATABASE_NAME` proměnné hodnotou, kterou jste nakonfigurovali na začátku tohoto článku.
+- Nahraďte `$AZ_SQL_SERVER_PASSWORD` proměnnou hodnotou, kterou jste nakonfigurovali na začátku tohoto článku.
+
+### <a name="create-an-sql-file-to-generate-the-database-schema"></a>Vytvoření souboru SQL pro generování schématu databáze
+
+Pro vytvoření schématu databáze použijeme *Src/Main/ `schema.sql` Resources/* File. Vytvořte tento soubor s následujícím obsahem:
+
+```sql
+DROP TABLE IF EXISTS todo;
+CREATE TABLE todo (id INT PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BIT);
+```
+
+## <a name="code-the-application"></a>Kódování aplikace
+
+### <a name="connect-to-the-database"></a>Připojte se k databázi.
+
+Dále přidejte kód Java, který bude používat JDBC k ukládání a načítání dat ze služby Azure SQL Database.
+
+Vytvořte soubor *Src/Main/Java/DemoApplication. Java* , který obsahuje:
+
+```java
+package com.example.demo;
+
+import java.sql.*;
+import java.util.*;
+import java.util.logging.Logger;
+
+public class DemoApplication {
+
+    private static final Logger log;
+
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-7s] %5$s %n");
+        log =Logger.getLogger(DemoApplication.class.getName());
     }
-    ```
 
-   > [!NOTE]
-   > Příklad kódu používá ukázkovou databázi **AdventureWorksLT** v Azure SQL Database.
+    public static void main(String[] args) throws Exception {
+        log.info("Loading application properties");
+        Properties properties = new Properties();
+        properties.load(DemoApplication.class.getClassLoader().getResourceAsStream("application.properties"));
 
-## <a name="run-the-code"></a>Spuštění kódu
+        log.info("Connecting to the database");
+        Connection connection = DriverManager.getConnection(properties.getProperty("url"), properties);
+        log.info("Database connection test: " + connection.getCatalog());
 
-1. Na příkazovém řádku spusťte aplikaci.
+        log.info("Create database schema");
+        Scanner scanner = new Scanner(DemoApplication.class.getClassLoader().getResourceAsStream("schema.sql"));
+        Statement statement = connection.createStatement();
+        while (scanner.hasNextLine()) {
+            statement.execute(scanner.nextLine());
+        }
 
-    ```bash
-    mvn package -DskipTests
-    mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
-    ```
+        /*
+        Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+        insertData(todo, connection);
+        todo = readData(connection);
+        todo.setDetails("congratulations, you have updated data!");
+        updateData(todo, connection);
+        deleteData(todo, connection);
+        */
 
-1. Ověřte, zda je vráceno prvních 20 řádků a okno aplikace zavřete.
+        log.info("Closing database connection");
+        connection.close();
+    }
+}
+```
+
+Tento kód Java bude používat soubory *Application. Properties* a *Schema. SQL* , které jsme vytvořili dříve, aby se mohl připojit k databázi SQL Server a vytvořit schéma, které bude ukládat naše data.
+
+V tomto souboru vidíte, že jsme do těchto metod vložili metody pro vkládání, čtení, aktualizaci a odstraňování dat: tyto metody budeme kódovat ve zbývající části tohoto článku a budete je moct po sobě odkomentovat.
+
+> [!NOTE]
+> Pověření databáze se ukládají do vlastností *uživatel* a *heslo* souboru *Application. Properties* . Tyto přihlašovací údaje se používají při spuštění `DriverManager.getConnection(properties.getProperty("url"), properties);` , protože soubor vlastností se předává jako argument.
+
+Tuto hlavní třídu teď můžete spustit pomocí vašeho oblíbeného nástroje:
+
+- Pomocí prostředí IDE byste měli být schopni kliknout pravým tlačítkem na třídu *DemoApplication* a provést ji.
+- Pomocí Maven můžete spustit aplikaci spuštěním příkazu: `mvn exec:java -Dexec.mainClass="com.example.demo.DemoApplication"` .
+
+Aplikace by se měla připojit k Azure SQL Database, vytvořit schéma databáze a pak připojení zavřít, jak by se mělo zobrazit v protokolech konzoly:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Closing database connection 
+```
+
+### <a name="create-a-domain-class"></a>Vytvoření doménové třídy
+
+Vytvořte novou `Todo` třídu Java vedle `DemoApplication` třídy a přidejte následující kód:
+
+```java
+package com.example.demo;
+
+public class Todo {
+
+    private Long id;
+    private String description;
+    private String details;
+    private boolean done;
+
+    public Todo() {
+    }
+
+    public Todo(Long id, String description, String details, boolean done) {
+        this.id = id;
+        this.description = description;
+        this.details = details;
+        this.done = done;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", details='" + details + '\'' +
+                ", done=" + done +
+                '}';
+    }
+}
+```
+
+Tato třída je model domény mapovaný na `todo` tabulku, kterou jste vytvořili při provádění skriptu *Schema. SQL* .
+
+### <a name="insert-data-into-azure-sql-database"></a>Vložení dat do služby Azure SQL Database
+
+V souboru *Src/Main/Java/DemoApplication. Java* za metodou Main přidejte následující metodu, která vloží data do databáze:
+
+```java
+private static void insertData(Todo todo, Connection connection) throws SQLException {
+    log.info("Insert data");
+    PreparedStatement insertStatement = connection
+            .prepareStatement("INSERT INTO todo (id, description, details, done) VALUES (?, ?, ?, ?);");
+
+    insertStatement.setLong(1, todo.getId());
+    insertStatement.setString(2, todo.getDescription());
+    insertStatement.setString(3, todo.getDetails());
+    insertStatement.setBoolean(4, todo.isDone());
+    insertStatement.executeUpdate();
+}
+```
+
+Nyní můžete odkomentovat tyto dva řádky v `main` metodě:
+
+```java
+Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+insertData(todo, connection);
+```
+
+Spuštění hlavní třídy by nyní mělo mít následující výstup:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Closing database connection
+```
+
+### <a name="reading-data-from-azure-sql-database"></a>Čtení dat ze služby Azure SQL Database
+
+Pojďme číst dřív vložená data a ověřit tak, že náš kód funguje správně.
+
+V souboru *Src/Main/Java/DemoApplication. Java* za `insertData` metodou přidejte následující metodu pro čtení dat z databáze:
+
+```java
+private static Todo readData(Connection connection) throws SQLException {
+    log.info("Read data");
+    PreparedStatement readStatement = connection.prepareStatement("SELECT * FROM todo;");
+    ResultSet resultSet = readStatement.executeQuery();
+    if (!resultSet.next()) {
+        log.info("There is no data in the database!");
+        return null;
+    }
+    Todo todo = new Todo();
+    todo.setId(resultSet.getLong("id"));
+    todo.setDescription(resultSet.getString("description"));
+    todo.setDetails(resultSet.getString("details"));
+    todo.setDone(resultSet.getBoolean("done"));
+    log.info("Data read from the database: " + todo.toString());
+    return todo;
+}
+```
+
+Nyní můžete v metodě zrušit komentář k následujícímu řádku `main` :
+
+```java
+todo = readData(connection);
+```
+
+Spuštění hlavní třídy by nyní mělo mít následující výstup:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="updating-data-in-azure-sql-database"></a>Aktualizace dat v Azure SQL Database
+
+Pojďme aktualizovat data, která jsme předtím vložili.
+
+Ještě v souboru *Src/Main/Java/DemoApplication. Java* , a to za `readData` metodu, přidejte následující metodu pro aktualizaci dat v databázi:
+
+```java
+private static void updateData(Todo todo, Connection connection) throws SQLException {
+    log.info("Update data");
+    PreparedStatement updateStatement = connection
+            .prepareStatement("UPDATE todo SET description = ?, details = ?, done = ? WHERE id = ?;");
+
+    updateStatement.setString(1, todo.getDescription());
+    updateStatement.setString(2, todo.getDetails());
+    updateStatement.setBoolean(3, todo.isDone());
+    updateStatement.setLong(4, todo.getId());
+    updateStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Nyní můžete odkomentovat tyto dva řádky v `main` metodě:
+
+```java
+todo.setDetails("congratulations, you have updated data!");
+updateData(todo, connection);
+```
+
+Spuštění hlavní třídy by nyní mělo mít následující výstup:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="deleting-data-in-azure-sql-database"></a>Odstraňování dat ve službě Azure SQL Database
+
+Nakonec odstraníme data, která jsme předtím vložili.
+
+Ještě v souboru *Src/Main/Java/DemoApplication. Java* za `updateData` metodou přidejte následující metodu, která odstraní data v databázi:
+
+```java
+private static void deleteData(Todo todo, Connection connection) throws SQLException {
+    log.info("Delete data");
+    PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM todo WHERE id = ?;");
+    deleteStatement.setLong(1, todo.getId());
+    deleteStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Nyní můžete v metodě zrušit komentář k následujícímu řádku `main` :
+
+```java
+deleteData(todo, connection);
+```
+
+Spuštění hlavní třídy by nyní mělo mít následující výstup:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Delete data 
+[INFO   ] Read data 
+[INFO   ] There is no data in the database! 
+[INFO   ] Closing database connection 
+```
+
+## <a name="conclusion-and-resources-clean-up"></a>Vyčištění závěrů a prostředků
+
+Blahopřejeme! Vytvořili jste aplikaci Java, která používá JDBC k ukládání a načítání dat ze služby Azure SQL Database.
+
+Pokud chcete vyčistit všechny prostředky používané v rámci tohoto rychlého startu, odstraňte skupinu prostředků pomocí následujícího příkazu:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,13 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510476"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure Disk Encryption
+# <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Azure Disk Encryption pro virtuální počítače se systémem Linux
 
 Tato příručka je určena pro odborníky v oblasti IT, analytiky zabezpečení informací a správce cloudu, jejichž organizace používají Azure Disk Encryption. V tomto článku se dozvíte, jak vyřešit problémy související s šifrováním disku.
 
@@ -110,5 +111,5 @@ Pokud chcete zakázat Azure Disk Encryption pomocí rozhraní příkazového ř�
 
 V tomto dokumentu jste se dozvěděli o některých běžných problémech v Azure Disk Encryption a o tom, jak tyto problémy řešit. Další informace o této službě a jejích funkcích najdete v následujících článcích:
 
-- [Použít šifrování disku v Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
-- [Šifrování dat Azure v klidovém umístění](../../security/fundamentals/encryption-atrest.md)
+- [Použít šifrování disku v Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Šifrování neaktivních uložených dat v Azure](../../security/fundamentals/encryption-atrest.md)

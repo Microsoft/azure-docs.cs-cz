@@ -15,11 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996616"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511632"
 ---
 # <a name="understand-azure-role-definitions"></a>Vysvětlení definic rolí Azure
 
@@ -27,7 +28,7 @@ Pokud se snažíte pochopit, jak funguje role Azure, nebo pokud vytváříte vla
 
 ## <a name="role-definition"></a>Definice role
 
-*Definice role* je kolekce oprávnění. Někdy jí jednoduše říká *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Může taky vypsat operace, které jsou vyloučené z povolených operací nebo operací souvisejících s podkladovým datům.
+*Definice role* je kolekce oprávnění. Někdy se pouze nazývá *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Může taky vypsat operace, které jsou vyloučené z povolených operací nebo operací souvisejících s podkladovým datům.
 
 V následujícím příkladu vidíte příklad vlastností v definici role při zobrazení pomocí Azure PowerShell:
 
@@ -79,7 +80,7 @@ Operace jsou zadány s řetězci, které mají následující formát:
 
 `{action}`Část řetězce operace určuje typ operací, které můžete provádět u typu prostředku. Například se zobrazí následující podřetězce v `{action}` :
 
-| Podřetězec akce    | Description         |
+| Podřetězec akce    | Popis         |
 | ------------------- | ------------------- |
 | `*` | Zástupný znak uděluje přístup ke všem operacím, které odpovídají řetězci. |
 | `read` | Povoluje operace čtení (GET). |
@@ -89,7 +90,7 @@ Operace jsou zadány s řetězci, které mají následující formát:
 
 ### <a name="role-definition-example"></a>Příklad definice role
 
-Tady je definice role [Přispěvatel](built-in-roles.md#contributor) , jak se zobrazuje Azure PowerShell a Azure CLI. Zástupný znak operace (`*`) ve sloupci `Actions` označuje, že objekt zabezpečení přiřazený k této roli může provádět všechny akce – neboli (jinými slovy) může spravovat vše. Zahrnuje to i akce definované v budoucnosti v souvislosti s tím, jak Azure přidává nové typy prostředků. Operace ve sloupci `NotActions` se odčítají od operací ve sloupci `Actions`. V případě role [Contributor](built-in-roles.md#contributor) (Přispěvatel) se prostřednictvím `NotActions` odebere schopnost role spravovat přístup k prostředkům a také přiřazovat přístup k prostředkům.
+Tady je definice role [Přispěvatel](built-in-roles.md#contributor) , jak se zobrazuje Azure PowerShell a Azure CLI. Zástupný znak operace (`*`) ve sloupci `Actions` označuje, že objekt zabezpečení přiřazený k této roli může provádět všechny akce – neboli (jinými slovy) může spravovat vše. Zahrnuje to i akce definované v budoucnosti v souvislosti s tím, jak Azure přidává nové typy prostředků. Operace ve sloupci `NotActions` se odčítají od operací ve sloupci `Actions`. V případě role [přispěvatele](built-in-roles.md#contributor) `NotActions` Odebere tuto roli schopnost spravovat přístup k prostředkům a také spravovat Azure Blueprint přiřazení.
 
 Role přispěvatele, jak se zobrazuje v Azure PowerShell:
 
@@ -280,7 +281,7 @@ Chcete-li zobrazit a používat operace s daty v REST API, je nutné nastavit pa
 `Actions`Oprávnění určuje operace správy, které může role provést. Je to kolekce řetězců operací, které identifikují zabezpečitelné operace poskytovatelů prostředků Azure. Zde je několik příkladů operací správy, které lze použít v nástroji `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | Řetězec operace    | Description         |
+> | Řetězec operace    | Popis         |
 > | ------------------- | ------------------- |
 > | `*/read` | Uděluje přístup k operacím čtení pro všechny typy prostředků všech poskytovatelů prostředků Azure.|
 > | `Microsoft.Compute/*` | Uděluje přístup ke všem operacím pro všechny typy prostředků v poskytovateli prostředků Microsoft. Compute.|
@@ -301,7 +302,7 @@ Chcete-li zobrazit a používat operace s daty v REST API, je nutné nastavit pa
 `DataActions`Oprávnění určuje operace s daty, které role umožňuje provádět na vašich datech v rámci daného objektu. Pokud má uživatel například oprávnění číst data objektů BLOB k účtu úložiště, může číst objekty BLOB v rámci tohoto účtu úložiště. Zde je několik příkladů operací s daty, které lze použít v nástroji `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | Řetězec operace    | Description         |
+> | Řetězec operace    | Popis         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Vrátí objekt BLOB nebo seznam objektů BLOB. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Vrátí výsledek zápisu objektu BLOB. |
@@ -338,4 +339,4 @@ Informace o `AssignableScopes` vlastních rolích najdete v tématu [vlastní ro
 
 * [Předdefinované role Azure](built-in-roles.md)
 * [Vlastní role Azure](custom-roles.md)
-* [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md)
+* [Operace poskytovatele prostředků Azure Resource Manager](resource-provider-operations.md)

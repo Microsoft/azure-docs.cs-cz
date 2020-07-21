@@ -3,15 +3,15 @@ title: Ukázky – Azure Event Hubs | Microsoft Docs
 description: Tento článek poskytuje seznam ukázek pro Azure Event Hubs, které jsou na GitHubu.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9529b11d15460c713a0ae14f3bccfa1c2684a3ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d7a40e399482af0ad3a501918a7e3307d724c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315513"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512295"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Úložiště Git s ukázkami pro Azure Event Hubs 
-Ukázky Event Hubs najdete na [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky demonstrují klíčové funkce v [Azure Event Hubs](/azure/event-hubs/). Tento článek obsahuje kategorizaci a popis dostupných ukázek s odkazy na jednotlivé.
+Ukázky Event Hubs najdete na [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples). Tyto ukázky demonstrují klíčové funkce v [Azure Event Hubs](./index.yml). Tento článek obsahuje kategorizaci a popis dostupných ukázek s odkazy na jednotlivé.
 
 ## <a name="net-samples"></a>Ukázky .NET
 
@@ -57,6 +57,6 @@ Ukázky pro funkci Event Hubs for Apache Kafka najdete v úložišti GitHub [Azu
 ## <a name="next-steps"></a>Další kroky
 Další informace o Event Hubs najdete v následujících článcích:
 
-- [Přehled Event Hubs](event-hubs-what-is-event-hubs.md)
+- [Přehled Event Hubs](./event-hubs-about.md)
 - [Funkce Event Hubs](event-hubs-features.md)
 - [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

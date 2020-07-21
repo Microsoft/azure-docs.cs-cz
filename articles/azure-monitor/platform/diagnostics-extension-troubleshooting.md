@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696962"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515491"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží se službou Azure Diagnostics
 Tento článek popisuje informace o odstraňování potíží, které souvisí s používáním Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -29,7 +30,7 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 | Artefakt | Cesta |
 | --- | --- |
 | **Konfigurační soubor Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics \<version>\Config.txt |
-| **Soubory protokolů** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
+| **Soubory protokolu** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
 | **Místní úložiště pro diagnostická data** | C:\Resources\Directory \<CloudServiceDeploymentID> . \<RoleName> .. DiagnosticStore\WAD0107\Tables |
 | **Konfigurační soubor agenta monitorování** | C:\Resources\Directory \<CloudServiceDeploymentID> . \<RoleName>.DiagnosticStore\WAD0107\Configuration\MaConfig.xml |
 | **Balíček rozšíření Azure Diagnostics** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version> |
@@ -40,7 +41,7 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 | Artefakt | Cesta |
 | --- | --- |
 | **Konfigurační soubor Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \RuntimeSettings |
-| **Soubory protokolů** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
+| **Soubory protokolu** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
 | **Místní úložiště pro diagnostická data** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Tables |
 | **Konfigurační soubor agenta monitorování** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
 | **Stavový soubor** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \Status |
@@ -49,7 +50,7 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 | **Soubor protokolu MonAgentHost** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num>. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Data metriky se nezobrazí v Azure Portal
-Azure Diagnostics poskytuje data metrik, která se dají zobrazit v Azure Portal. Pokud máte problémy se zobrazením dat na portálu, zkontrolujte v \* tabulce WADMetrics v účtu úložiště Azure Diagnostics, jestli jsou k dispozici odpovídající záznamy metriky, a ujistěte se, že je [poskytovatel prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) Microsoft. Insights zaregistrovaný.
+Azure Diagnostics poskytuje data metrik, která se dají zobrazit v Azure Portal. Pokud máte problémy se zobrazením dat na portálu, zkontrolujte v \* tabulce WADMetrics v účtu úložiště Azure Diagnostics, jestli jsou k dispozici odpovídající záznamy metriky, a ujistěte se, že je [poskytovatel prostředků](../../azure-resource-manager/management/resource-providers-and-types.md) Microsoft. Insights zaregistrovaný.
 
 Tady je **PartitionKey** tabulky ID prostředku, virtuální počítač nebo sada škálování virtuálních počítačů. **RowKey** je název metriky (označuje se také jako název čítače výkonu).
 
@@ -164,7 +165,7 @@ Tabulky v úložišti Azure, které uchovávají události ETW, se nazývají po
             tableName = "WAD" + eventDestination;
 ```
 
-Zde naleznete příklad:
+Tady je příklad:
 
 ```XML
         <EtwEventSourceProviderConfiguration provider="prov1">
@@ -227,7 +228,7 @@ Pokud v případě role cloudové služby zvolíte konfiguraci z disku, jsou dat
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Ukončovací kódy modulu plug-in Azure Diagnostics
 Modul plug-in vrátí následující ukončovací kódy:
 
-| Ukončovací kód | Description |
+| Ukončovací kód | Popis |
 | --- | --- |
 | 0 |Úspěch. |
 | -1 |Obecná chyba |
@@ -296,4 +297,3 @@ Prostředí portálu ve virtuálních počítačích zobrazuje určité čítač
 - Určuje, jestli data v úložišti mají názvy čítačů v angličtině. Pokud názvy čítačů nejsou v angličtině, graf metriky portálu ho nedokáže rozpoznat. **Omezení rizik**: změňte jazyk počítače na angličtinu pro systémové účty. Provedete to tak, že vyberete oblast **ovládacích panelů**  >  **Region**  >  **Administrative**  >  **nastavení kopírování**pro správu. Pak zrušte výběr **uvítací obrazovky a systémových účtů** , aby se vlastní jazyk nepoužíval na účet System.
 
 - Pokud ve svém názvu čítače výkonu používáte zástupné znaky ( \* ), portál nebude moci korelovat nakonfigurovaný a shromážděný čítač, když jsou čítače výkonu odesílány do Azure Storage jímky. **Zmírnění**: abyste měli jistotu, že budete používat zástupné znaky a chcete, aby portál rozšířil ( \* ), směrujte čítače výkonu do Azure monitor jímky.
-

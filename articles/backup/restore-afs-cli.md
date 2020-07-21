@@ -3,15 +3,16 @@ title: Obnovení sdílených složek Azure pomocí Azure CLI
 description: Naučte se používat Azure CLI k obnovení zálohovaných sdílených složek Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24939d020ba61c633eb382654a9260aa3729a271
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80757091"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513655"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Obnovení sdílených složek Azure pomocí Azure CLI
 
-Azure CLI poskytuje prostředí příkazového řádku pro správu prostředků Azure. Je skvělým nástrojem pro vytváření vlastních automatizace pro používání prostředků Azure. Tento článek vysvětluje, jak obnovit celou sdílenou složku nebo konkrétní soubory z bodu obnovení vytvořeného pomocí služby [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) pomocí rozhraní příkazového řádku Azure. K provedení těchto kroků můžete také využít [Azure PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-afs-automation) nebo [Azure Portal](backup-afs.md).
+Azure CLI poskytuje prostředí příkazového řádku pro správu prostředků Azure. Je skvělým nástrojem pro vytváření vlastních automatizace pro používání prostředků Azure. Tento článek vysvětluje, jak obnovit celou sdílenou složku nebo konkrétní soubory z bodu obnovení vytvořeného pomocí služby [Azure Backup](./backup-overview.md) pomocí rozhraní příkazového řádku Azure. K provedení těchto kroků můžete také využít [Azure PowerShell](./backup-azure-afs-automation.md) nebo [Azure Portal](backup-afs.md).
 
 Na konci tohoto článku se dozvíte, jak pomocí Azure CLI provádět následující operace:
 
@@ -24,9 +25,9 @@ Na konci tohoto článku se dozvíte, jak pomocí Azure CLI provádět následuj
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně, musíte použít Azure CLI verze 2.0.18 nebo novější. Verzi rozhraní příkazového řádku zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Pokud chcete rozhraní příkazového řádku nainstalovat a používat místně, musíte použít Azure CLI verze 2.0.18 nebo novější. Verzi rozhraní příkazového řádku zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že už máte sdílenou složku Azure, která je zálohovaná pomocí Azure Backup. Pokud ho nemáte, přečtěte si téma [Zálohování sdílených složek Azure pomocí rozhraní](backup-afs-cli.md) příkazového řádku pro konfiguraci zálohování sdílené složky. V tomto článku použijete následující prostředky:
 
@@ -39,7 +40,7 @@ Podobnou strukturu pro sdílené složky můžete použít k vyzkoušení různ�
 
 ## <a name="fetch-recovery-points-for-the-azure-file-share"></a>Načítají se body obnovení pro sdílenou složku Azure.
 
-K vypsání všech bodů obnovení pro zálohované sdílení souborů použijte rutinu [AZ Backup RecoveryPoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) .
+K vypsání všech bodů obnovení pro zálohované sdílení souborů použijte rutinu [AZ Backup RecoveryPoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) .
 
 Následující příklad načte seznam bodů obnovení pro sdílenou složku *azurefiles* v účtu úložiště *afsaccount* .
 
@@ -74,14 +75,14 @@ Pomocí této možnosti obnovení můžete obnovit úplnou sdílenou složku v p
 
 Zadejte následující parametry pro provedení operací obnovení:
 
-* **--Container-Name**: název účtu úložiště, který hostuje zálohovanou původní sdílenou složku. Pokud chcete načíst název nebo popisný název svého kontejneru, použijte příkaz [AZ Backup Container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
-* **--Item-Name**: název zálohované původní sdílené složky, kterou chcete použít pro operaci obnovení. Pokud chcete načíst název nebo popisný název zálohované položky, použijte příkaz [AZ Backup Item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
+* **--Container-Name**: název účtu úložiště, který hostuje zálohovanou původní sdílenou složku. Pokud chcete načíst název nebo popisný název svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
+* **--Item-Name**: název zálohované původní sdílené složky, kterou chcete použít pro operaci obnovení. Pokud chcete načíst název nebo popisný název zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
 
 ### <a name="restore-a-full-share-to-the-original-location"></a>Obnovení úplné sdílené složky do původního umístění
 
 Při obnovení do původního umístění není nutné zadávat parametry související s cíli. Pouze **vyřešit konflikt** je nutné zadat.
 
-V následujícím příkladu se používá rutina [AZ Backup Restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) s režimem obnovení nastaveným na *originallocation* pro obnovení sdílené složky *azurefiles* v původním umístění. Použijete bod obnovení 932883129628959823, který jste získali v [části načtení bodů obnovení pro sdílenou složku Azure](#fetch-recovery-points-for-the-azure-file-share):
+V následujícím příkladu se používá rutina [AZ Backup Restore-azurefileshare](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) s režimem obnovení nastaveným na *originallocation* pro obnovení sdílené složky *azurefiles* v původním umístění. Použijete bod obnovení 932883129628959823, který jste získali v [části načtení bodů obnovení pro sdílenou složku Azure](#fetch-recovery-points-for-the-azure-file-share):
 
 ```azurecli-interactive
 az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation --resolve-conflict overwrite --out table
@@ -93,7 +94,7 @@ Name                                  ResourceGroup
 6a27cc23-9283-4310-9c27-dcfb81b7b4bb  azurefiles
 ```
 
-Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
 
 ### <a name="restore-a-full-share-to-an-alternate-location"></a>Obnovení úplné sdílené složky do alternativního umístění
 
@@ -104,7 +105,7 @@ Tuto možnost můžete použít k obnovení sdílené složky do alternativního
 * **--target-Folder**: složka ve sdílené složce, do které se mají obnovit data. Pokud bude zálohovaný obsah obnoven do kořenové složky, zadejte hodnoty cílové složky jako prázdný řetězec.
 * **--Resolve-konflikt**: instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
 
-Následující příklad používá příkaz [AZ Backup Restore-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) with Restore Mode *jako alternatelocation* pro obnovení sdílené složky *azurefiles* v účtu úložiště *afsaccount* do sdílené složky *azurefiles1* v účtu úložiště *afaccount1* .
+Následující příklad používá příkaz [AZ Backup Restore-azurefileshare](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) with Restore Mode *jako alternatelocation* pro obnovení sdílené složky *azurefiles* v účtu úložiště *afsaccount* do sdílené složky *azurefiles1* v účtu úložiště *afaccount1* .
 
 ```azurecli-interactive
 az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
@@ -116,7 +117,7 @@ Name                                  ResourceGroup
 babeb61c-d73d-4b91-9830-b8bfa83c349a  azurefiles
 ```
 
-Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
 
 ## <a name="item-level-recovery"></a>Obnovení na úrovni položek
 
@@ -124,18 +125,18 @@ Tuto možnost obnovení můžete použít k obnovení jednotlivých souborů neb
 
 Zadejte následující parametry pro provedení operací obnovení:
 
-* **--Container-Name**: název účtu úložiště, který hostuje zálohovanou původní sdílenou složku. Pokud chcete načíst název nebo popisný název svého kontejneru, použijte příkaz [AZ Backup Container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
-* **--Item-Name**: název zálohované původní sdílené složky, kterou chcete použít pro operaci obnovení. Pokud chcete načíst název nebo popisný název zálohované položky, použijte příkaz [AZ Backup Item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
+* **--Container-Name**: název účtu úložiště, který hostuje zálohovanou původní sdílenou složku. Pokud chcete načíst název nebo popisný název svého kontejneru, použijte příkaz [AZ Backup Container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) .
+* **--Item-Name**: název zálohované původní sdílené složky, kterou chcete použít pro operaci obnovení. Pokud chcete načíst název nebo popisný název zálohované položky, použijte příkaz [AZ Backup Item list](/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) .
 
 Zadejte následující parametry pro položky, které chcete obnovit:
 
-* **SourceFilePath**: absolutní cesta k souboru, která se má obnovit v rámci sdílené složky jako řetězec. Tato cesta se shoduje s použitím příkazu [AZ Storage File Download](https://docs.microsoft.com/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-download) nebo [AZ Storage File show](https://docs.microsoft.com/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-show) CLI.
+* **SourceFilePath**: absolutní cesta k souboru, která se má obnovit v rámci sdílené složky jako řetězec. Tato cesta se shoduje s použitím příkazu [AZ Storage File Download](/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-download) nebo [AZ Storage File show](/cli/azure/storage/file?view=azure-cli-latest#az-storage-file-show) CLI.
 * **SourceFileType**: vyberte, zda je vybrán adresář nebo soubor. Přijímá **adresář** nebo **soubor**.
 * **ResolveConflict selhalo**: instrukce, pokud dojde ke konfliktu s obnovenými daty. Přijímá **přepis** nebo **Skip**.
 
 ### <a name="restore-individual-files-or-folders-to-the-original-location"></a>Obnovte jednotlivé soubory nebo složky do původního umístění.
 
-Pomocí rutiny [AZ Backup Restore-azurefiles](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) s režimem obnovení nastavenou na *originallocation* obnovte konkrétní soubory nebo složky do jejich původního umístění.
+Pomocí rutiny [AZ Backup Restore-azurefiles](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) s režimem obnovení nastavenou na *originallocation* obnovte konkrétní soubory nebo složky do jejich původního umístění.
 
 Následující příklad obnoví soubor *RestoreTest.txt* v původním umístění: sdílená složka *azurefiles* .
 
@@ -149,11 +150,11 @@ Name                                  ResourceGroup
 df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
-Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
 
 ### <a name="restore-individual-files-or-folders-to-an-alternate-location"></a>Obnovení jednotlivých souborů nebo složek do alternativního umístění
 
-Chcete-li obnovit konkrétní soubory nebo složky do alternativního umístění, použijte rutinu [AZ Backup Restore-azurefiles](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) s režimem obnovení nastavenou na *alternatelocation* a zadejte následující parametry související s cíli:
+Chcete-li obnovit konkrétní soubory nebo složky do alternativního umístění, použijte rutinu [AZ Backup Restore-azurefiles](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefiles) s režimem obnovení nastavenou na *alternatelocation* a zadejte následující parametry související s cíli:
 
 * **--target-Storage-Account**: účet úložiště, na který se obnovil zálohovaný obsah. Cílový účet úložiště musí být ve stejném umístění jako trezor.
 * **--target-File-Share**: sdílená složka v rámci cílového účtu úložiště, do kterého se obnovil zálohovaný obsah.
@@ -171,7 +172,7 @@ Name                                  ResourceGroup
 df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
-Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Obnovení více souborů nebo složek do původního nebo alternativního umístění
 
@@ -191,7 +192,7 @@ Name                                          ResourceGroup
 649b0c14-4a94-4945-995a-19e2aace0305          azurefiles
 ```
 
-Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
+Atribut **Name** ve výstupu odpovídá názvu úlohy, kterou vytvořila služba zálohování pro vaši operaci obnovení. Chcete-li sledovat stav úlohy, použijte rutinu [AZ Backup Job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) .
 
 Pokud chcete obnovit více položek do alternativního umístění, použijte příkaz uvedený výše zadáním parametrů souvisejících s cíli, jak je vysvětleno v části [obnovení jednotlivých souborů nebo složek do alternativního umístění](#restore-individual-files-or-folders-to-an-alternate-location) .
 

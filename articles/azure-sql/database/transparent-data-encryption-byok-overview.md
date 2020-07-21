@@ -12,14 +12,14 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985305"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514713"
 ---
-# <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem
+# <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparentní šifrování dat Azure SQL s využitím klíče spravovaného zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Azure SQL [transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) s klíčem spravovaným zákazníkem povoluje scénář BRING Your Own Key (BYOK) pro ochranu dat v klidovém umístění a umožňuje organizacím implementovat oddělení úloh v rámci správy klíčů a dat. U transparentního šifrování dat spravovaného zákazníkem je zákazník zodpovědný za a úplnou kontrolu nad správou životního cyklu klíčů (vytváření klíčů, nahrávání, rotace, odstraňování), oprávnění použití klíčů a auditování operací s klíči.
@@ -62,7 +62,7 @@ Aby mohl server využívat ochranu TDE, která je uložená v integrace pro šif
 
 - **unwrapKey** – aby bylo možné zrušit ochranu (dešifrovat) klíč DEK
 
-Správce trezoru klíčů může taky [Povolit protokolování událostí auditu trezoru klíčů](../../azure-monitor/insights/azure-key-vault.md), aby se mohly auditovat později.
+Správce trezoru klíčů může taky [Povolit protokolování událostí auditu trezoru klíčů](../../azure-monitor/insights/key-vault-insights-overview.md), aby se mohly auditovat později.
 
 Když je server nakonfigurovaný tak, aby používal ochranu TDE z integrace, server pošle klíč DEK každé databázi s povoleným TDEm do trezoru klíčů pro šifrování. Trezor klíčů vrátí šifrovaný klíč DEK, který je pak uložený v uživatelské databázi.
 

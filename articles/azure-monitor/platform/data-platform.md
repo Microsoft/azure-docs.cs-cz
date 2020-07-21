@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81457259"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515525"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor datovou platformu
 
@@ -49,7 +49,7 @@ Protokoly v Azure Monitor jsou uložené v pracovním prostoru Log Analytics, kt
 > Je důležité rozlišovat mezi protokoly Azure Monitor a zdroji dat protokolů v Azure. Například události na úrovni předplatného v Azure se zapisují do [protokolu aktivit](platform-logs-overview.md) , který můžete zobrazit v nabídce Azure monitor. Většina prostředků zapisuje provozní informace do [protokolu prostředků](platform-logs-overview.md) , který můžete přemístit do různých umístění. Protokoly Azure Monitor jsou datovou platformou protokolu, která shromažďuje protokoly aktivit a protokoly prostředků spolu s dalšími daty monitorování a zajišťuje tak hloubkovou analýzu v celé sadě prostředků.
 
 
- S [dotazy protokolu](../log-query/log-query-overview.md) můžete pracovat interaktivně pomocí [Log Analytics](../log-query/portals.md) v Azure Portal nebo přidat výsledky do [řídicího panelu Azure](../learn/tutorial-app-dashboards.md) pro vizualizaci v kombinaci s jinými daty. Můžete také vytvořit [výstrahy protokolu](alerts-log.md) , které aktivují výstrahu na základě výsledků dotazu plánu.
+ S [dotazy protokolu](../log-query/log-query-overview.md) můžete pracovat interaktivně pomocí [Log Analytics](../log-query/log-query-overview.md) v Azure Portal nebo přidat výsledky do [řídicího panelu Azure](../learn/tutorial-app-dashboards.md) pro vizualizaci v kombinaci s jinými daty. Můžete také vytvořit [výstrahy protokolu](alerts-log.md) , které aktivují výstrahu na základě výsledků dotazu plánu.
 
 Přečtěte si další informace o protokolech Azure Monitor, včetně jejich zdrojů dat, v části [protokoly v Azure monitor](data-platform-logs.md).
 
@@ -70,7 +70,7 @@ Následující tabulka porovnává metriky a protokoly v Azure Monitor.
 | Výhody | Odlehčené a schopné scénáře téměř v reálném čase, jako jsou například výstrahy. Ideální pro rychlé zjišťování problémů. | Analyzováno pomocí bohatých dotazovacích jazyků. Ideální pro hloubkovou analýzu a identifikaci hlavní příčiny. |
 | Data | Pouze číselné hodnoty | Textová nebo číselná data |
 | Struktura | Standardní sada vlastností včetně času vzorkování, monitorovaného prostředku a číselné hodnoty Některé metriky obsahují více dimenzí pro další definice. | Jedinečná sada vlastností v závislosti na typu protokolu. |
-| Kolekce | Shromažďováno v pravidelných intervalech. | Může být shromažďována občas, protože události spouštějí záznam, který se má vytvořit. |
+| Shromažďování | Shromažďováno v pravidelných intervalech. | Může být shromažďována občas, protože události spouštějí záznam, který se má vytvořit. |
 | Zobrazení na webu Azure Portal | Průzkumník metrik | Log Analytics |
 | Zdroje dat zahrnují | Metriky platformy shromážděné z prostředků Azure.<br>Aplikace monitorované pomocí Application Insights.<br>Vlastní definuje aplikace nebo rozhraní API. | Protokoly aplikací a prostředků.<br>Monitorování řešení.<br>Agenti a rozšíření virtuálních počítačů.<br>Žádosti a výjimky aplikace<br>Azure Security Center.<br>Rozhraní API kolekce dat. |
 
@@ -81,7 +81,7 @@ Seznam různých zdrojů dat, které naplňují jednotlivé typy, najdete v tém
 
 
 ## <a name="stream-data-to-external-systems"></a>Streamování dat do externích systémů
-Kromě používání nástrojů v Azure k analýze dat monitorování je možné, že budete mít požadavek na jejich přeposlání na externí nástroj, jako je například produkt pro správu událostí a SIEM (Security Information and Event Management). Toto přesměrování se obvykle provádí přímo ze sledovaných prostředků prostřednictvím [Azure Event Hubs](/azure/event-hubs/). Některé zdroje je možné nakonfigurovat tak, aby odesílaly data přímo do centra událostí, zatímco můžete k získání požadovaných dat použít jiný proces, jako je například aplikace logiky. Podrobnosti najdete v tématu [streamování dat monitorování Azure do centra událostí pro využití externím nástrojem](stream-monitoring-data-event-hubs.md) .
+Kromě používání nástrojů v Azure k analýze dat monitorování je možné, že budete mít požadavek na jejich přeposlání na externí nástroj, jako je například produkt pro správu událostí a SIEM (Security Information and Event Management). Toto přesměrování se obvykle provádí přímo ze sledovaných prostředků prostřednictvím [Azure Event Hubs](../../event-hubs/index.yml). Některé zdroje je možné nakonfigurovat tak, aby odesílaly data přímo do centra událostí, zatímco můžete k získání požadovaných dat použít jiný proces, jako je například aplikace logiky. Podrobnosti najdete v tématu [streamování dat monitorování Azure do centra událostí pro využití externím nástrojem](stream-monitoring-data-event-hubs.md) .
 
 
 

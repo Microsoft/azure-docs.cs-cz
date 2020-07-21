@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 34d714d1adefbef6572e99c5a98ee968fbb06339
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 348b353d9f7509836007ced70166f6a98bd419c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987381"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512928"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-go"></a>Rychlý Start: analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API s nástrojem přejít
 
 V tomto rychlém startu analyzujete vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí Počítačové zpracování obrazu REST API. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * [Přejít](https://golang.org/dl/)
@@ -37,10 +37,10 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
 1. Zkopírujte následující kód do textového editoru.
 1. Volitelně můžete hodnotu `imageUrl` nahradit adresou URL jiného obrázku, který chcete analyzovat.
-1. Uložte kód jako soubor s příponou `.go`. Například, `analyze-image.go`.
+1. Uložte kód jako soubor s příponou `.go`. Například `analyze-image.go`.
 1. Otevřete okno příkazového řádku.
-1. Na příkazovém řádku spusťte příkaz `go build`, aby se ze souboru zkompiloval balíček. Například, `go build analyze-image.go`.
-1. Na příkazovém řádku spusťte zkompilovaný balíček. Například, `analyze-image`.
+1. Na příkazovém řádku spusťte příkaz `go build`, aby se ze souboru zkompiloval balíček. Například `go build analyze-image.go`.
+1. Na příkazovém řádku spusťte zkompilovaný balíček. Například `analyze-image`.
 
 ```go
 package main
@@ -64,7 +64,7 @@ func main() {
     const imageUrl =
         "https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg"
 
-    const params = "?visualFeatures=Description&details=Landmarks&language=en"
+    const params = "?visualFeatures=Description&details=Landmarks"
     uri := uriBase + params
     const imageUrlEnc = "{\"url\":\"" + imageUrl + "\"}"
 

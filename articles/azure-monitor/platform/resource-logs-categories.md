@@ -4,11 +4,12 @@ description: Referenční informace o Azure Monitorch pochopit podporované slu�
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: 6156b9d311859534160258256ff6315b037f3a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418761"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515389"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Podporované kategorie pro protokoly prostředků Azure
 
@@ -357,7 +358,7 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 |Kategorie|Zobrazovaný název kategorie|
 |---|---|
-|AuditLogs|Protokoly auditu|
+|AuditLogs|Protokoly auditování|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. Insights/AutoscaleSettings
@@ -602,7 +603,7 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 
 |Kategorie|Zobrazovaný název kategorie|
 |---|---|
-|chyby|chyby|
+|Chyby|Chyby|
 |QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|
 |QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|
 |SQLInsights|Přehledy SQL|
@@ -618,7 +619,7 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |Zablokování|Zablokování|
 |DevOpsOperationsAudit|Protokoly auditu operací DevOps|
 |DmsWorkers|Pracovní procesy DMS|
-|chyby|chyby|
+|Chyby|Chyby|
 |ExecRequests|Požadavky exec|
 |QueryStoreRuntimeStatistics|Statistiky za běhu úložiště dotazů|
 |QueryStoreWaitStatistics|Statistika čekání na úložiště dotazů|
@@ -671,7 +672,7 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 |Kategorie|Zobrazovaný název kategorie|
 |---|---|
 |Vytváření obsahu|Vytváření obsahu|
-|Spouštěcí|Spouštěcí|
+|Spuštění|Spuštění|
 
 
 ## <a name="microsoftwebhostingenvironments"></a>Microsoft. Web/hostingenvironments
@@ -711,6 +712,6 @@ Pokud ještě chybí něco, můžete otevřít komentář k GitHubu na konci toh
 ## <a name="next-steps"></a>Další kroky
 
 * [Další informace o protokolech prostředků](../../azure-monitor/platform/platform-logs-overview.md)
-* [**Event Hubs** protokolů prostředku prostředku streamování](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Změna nastavení diagnostiky protokolu prostředků pomocí Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Analýza protokolů z Azure Storage pomocí Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [**Event Hubs** protokolů prostředku prostředku streamování](./resource-logs.md#send-to-azure-event-hubs)
+* [Změna nastavení diagnostiky protokolu prostředků pomocí Azure Monitor REST API](/rest/api/monitor/diagnosticsettings)
+* [Analýza protokolů z Azure Storage pomocí Log Analytics](./resource-logs.md#send-to-log-analytics-workspace)

@@ -3,11 +3,12 @@ title: Relace Azure Service Bus zpráv | Microsoft Docs
 description: Tento článek vysvětluje, jak pomocí relací povolit společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341192"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511292"
 ---
 # <a name="message-sessions"></a>Relace zpráv
 Microsoft Azure Service Bus relace umožňují společné a seřazené zpracování neohraničených sekvencí souvisejících zpráv. Relace se dají použít v vzorcích **First in, First out (FIFO)** a **Request-response** . Tento článek popisuje, jak používat relace k implementaci těchto vzorů při použití Service Bus. 
@@ -30,7 +31,7 @@ Funkce Session v Service Bus umožňuje konkrétní operace Receive ve formě [M
 
 Na portálu nastavte příznak následujícím zaškrtávacím políčkem:
 
-![][2]
+![Snímek obrazovky dialogového okna vytvořit front s vybranou možností povolit relace a popsaný červeně][2]
 
 > [!NOTE]
 > Když jsou povoleny relace ve frontě nebo v předplatném, klientské aplikace ***již*** nemohou odesílat a přijímat pravidelné zprávy. Všechny zprávy musí být odesílány v rámci relace (nastavením ID relace) a přijaty přijetím relace.
@@ -41,7 +42,7 @@ Rozhraní API pro relace existují na klientech front a předplatných. Existuje
 
 Relace poskytují souběžné demultiplexování datových proudů zpráv při zachování a zaručení objednaného doručení.
 
-![][1]
+![Diagram znázorňující, jak funkce relace zachovává seřazené doručení.][1]
 
 Příjemce [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) je vytvořen klientem, který přijímá relaci. Klient volá v jazyce C# [QueueClient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) nebo [QueueClient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) . V modelu reaktivního zpětného volání zaregistruje obslužnou rutinu relace.
 
@@ -77,7 +78,7 @@ Definice počtu doručení na zprávu v kontextu relací se mírně liší od de
 
 | Scénář | Zvyšuje se počet doručení zprávy |
 |----------|---------------------------------------------|
-| Relace je přijata, ale zámek relace vyprší (z důvodu vypršení časového limitu). | Yes |
+| Relace je přijata, ale zámek relace vyprší (z důvodu vypršení časového limitu). | Ano |
 | Relace je přijata, zprávy v relaci nejsou dokončeny (i v případě, že jsou uzamčené) a relace je zavřena. | No |
 | Relace je přijata, zprávy jsou dokončeny a relace je explicitně zavřena. | Není k dispozici (Jedná se o standardní tok. Z relace se odeberou tyto zprávy.) |
 

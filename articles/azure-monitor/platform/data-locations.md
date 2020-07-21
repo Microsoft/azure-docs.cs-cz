@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/21/2019
-ms.openlocfilehash: 7d4459867081d920fefb9471b1a682d21040da9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb7e92a676115d784bd19714178b3bd442798e26
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666611"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515542"
 ---
 # <a name="monitoring-data-locations-in-azure-monitor"></a>Monitorování umístění dat v Azure Monitor
 
@@ -20,15 +21,15 @@ Azure Monitor je založena na [datové platformě](data-platform.md) [protokolů
 
 Následující tabulka uvádí různá umístění, kde jsou odesílána data monitorování v Azure, a různé metody pro přístup k nim.
 
-| Umístění | Description | Metody přístupu |
+| Umístění | Popis | Metody přístupu |
 |:---|:---|:---|:--|
 | Azure Monitor metriky | Databáze časových řad, která je optimalizována pro analýzu časových údajů s časovým razítkem. | [Průzkumník metrik](metrics-getting-started.md)<br>[Rozhraní API pro Azure Monitor metriky](/rest/api/monitor/metrics) |
-| Protokoly služby Azure Monitor    | Log Analytics pracovní prostor založený na Azure Průzkumník dat, který poskytuje výkonný analytický modul a bohatý dotazovací jazyk. | [Log Analytics](../log-query/portals.md)<br>[Rozhraní API pro Log Analytics](https://dev.loganalytics.io/)<br>[Rozhraní API pro Application Insights](https://dev.applicationinsights.io/reference/get-query) |
-| Protokol aktivit | Data z protokolu aktivit jsou nejužitečnější, když jsou odesílána do Azure Monitor protokolů, aby je bylo možné analyzovat s ostatními daty, ale jsou shromažďována i samostatně, takže je lze přímo zobrazit v Azure Portal. | [Azure Portal](activity-log-view.md#azure-portal)<br>[Rozhraní API pro Azure Monitor události](/rest/api/monitor/eventcategories) |
-| Azure Storage | Některé zdroje dat budou zapisovat přímo do služby Azure Storage a vyžadují, aby konfigurace přesunula data do protokolů. Můžete také odesílat data do služby Azure Storage pro archivaci a pro integraci s externími systémy.  | [Storage Analytics](/rest/api/storageservices/storage-analytics)<br>[Průzkumník serveru](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[Průzkumník služby Storage](/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) |
+| Protokoly služby Azure Monitor    | Log Analytics pracovní prostor založený na Azure Průzkumník dat, který poskytuje výkonný analytický modul a bohatý dotazovací jazyk. | [Log Analytics](../log-query/log-query-overview.md)<br>[Rozhraní API pro Log Analytics](https://dev.loganalytics.io/)<br>[Rozhraní API pro Application Insights](https://dev.applicationinsights.io/reference/get-query) |
+| Protokol aktivit | Data z protokolu aktivit jsou nejužitečnější, když jsou odesílána do Azure Monitor protokolů, aby je bylo možné analyzovat s ostatními daty, ale jsou shromažďována i samostatně, takže je lze přímo zobrazit v Azure Portal. | [Azure Portal](./activity-log.md#view-the-activity-log)<br>[Rozhraní API pro Azure Monitor události](/rest/api/monitor/eventcategories) |
+| Azure Storage | Některé zdroje dat budou zapisovat přímo do služby Azure Storage a vyžadují, aby konfigurace přesunula data do protokolů. Můžete také odesílat data do služby Azure Storage pro archivaci a pro integraci s externími systémy.  | [Storage Analytics](/rest/api/storageservices/storage-analytics)<br>[Průzkumník serveru](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)<br>[Průzkumník služby Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) |
 | Event Hubs | Odešlete data do Azure Event Hubs, abyste je mohli streamovat do jiných umístění. | [Zachytit do úložiště](../../event-hubs/event-hubs-capture-overview.md)  |
-| Azure Monitor pro virtuální počítače | Azure Monitor pro virtuální počítače ukládá data o stavu úloh ve vlastním umístění, které používá jeho prostředí pro monitorování v Azure Portal. | [Azure Portal](../insights/vminsights-overview.md)<br>[REST API monitorování úloh](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)<br>[REST API stavu prostředků Azure](https://docs.microsoft.com/rest/api/resourcehealth/)  |
-| Výstrahy | Výstrahy vytvořené pomocí Azure Monitor. | [Azure Portal](alerts-managing-alert-instances.md)<br>[REST API správy výstrah](https://docs.microsoft.com/rest/api/monitor/alertsmanagement/alerts) |
+| Azure Monitor pro virtuální počítače | Azure Monitor pro virtuální počítače ukládá data o stavu úloh ve vlastním umístění, které používá jeho prostředí pro monitorování v Azure Portal. | [Azure Portal](../insights/vminsights-overview.md)<br>[REST API monitorování úloh](/rest/api/monitor/microsoft.workloadmonitor/components)<br>[REST API stavu prostředků Azure](/rest/api/resourcehealth/)  |
+| Výstrahy | Výstrahy vytvořené pomocí Azure Monitor. | [Azure Portal](alerts-managing-alert-instances.md)<br>[REST API správy výstrah](/rest/api/monitor/alertsmanagement/alerts) |
 
 
 

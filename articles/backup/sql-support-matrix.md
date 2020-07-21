@@ -3,11 +3,13 @@ title: Azure Backupová matice podpory pro zálohování SQL Server na virtuáln
 description: Poskytuje souhrn nastavení podpory a omezení při zálohování SQL Server ve virtuálních počítačích Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: f9594b9157f84a0536ffd4b62f792fd86fb1c243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234253"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513179"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Matice podpory pro zálohování SQL Server ve virtuálních počítačích Azure
 
@@ -26,7 +28,7 @@ Pomocí Azure Backup můžete zálohovat databáze SQL Server ve virtuálních p
 ## <a name="feature-consideration-and-limitations"></a>Aspekty a omezení funkcí
 
 * Zálohování SQL Server můžete nakonfigurovat v Azure Portal nebo **PowerShellu**. Rozhraní příkazového řádku nepodporujeme.
-* Řešení je podporované v obou druzích [nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) – Azure Resource Manager virtuálních počítačů a klasických virtuálních počítačů.
+* Řešení je podporované v obou druzích [nasazení](../azure-resource-manager/management/deployment-models.md) – Azure Resource Manager virtuálních počítačů a klasických virtuálních počítačů.
 * Virtuální počítač se spuštěným SQL Server vyžaduje připojení k Internetu pro přístup k veřejným IP adresám Azure.
 * SQL Server **instance clusteru s podporou převzetí služeb při selhání (FCI)** se nepodporuje.
 * Operace zálohování a obnovení pro databáze zrcadlení a snímky databáze nejsou podporovány.
@@ -53,7 +55,7 @@ V závislosti na předvolbách zálohování a typech zálohování (úplné/roz
 
 #### <a name="backup-preference-primary"></a>Předvolby zálohování: primární
 
-**Typ zálohování** | **Node**
+**Typ zálohování** | **Uzel**
 --- | ---
 Do bloku | Primární
 Diferenciál | Primární
@@ -62,7 +64,7 @@ Pouze kopírování je úplné |  Primární
 
 #### <a name="backup-preference-secondary-only"></a>Předvolby zálohování: jenom sekundární
 
-**Typ zálohování** | **Node**
+**Typ zálohování** | **Uzel**
 --- | ---
 Do bloku | Primární
 Diferenciál | Primární
@@ -71,7 +73,7 @@ Pouze kopírování je úplné |  Sekundární
 
 #### <a name="backup-preference-secondary"></a>Předvolby zálohování: sekundární
 
-**Typ zálohování** | **Node**
+**Typ zálohování** | **Uzel**
 --- | ---
 Do bloku | Primární
 Diferenciál | Primární
@@ -80,7 +82,7 @@ Pouze kopírování je úplné |  Sekundární
 
 #### <a name="no-backup-preference"></a>Žádná předvolba zálohování
 
-**Typ zálohování** | **Node**
+**Typ zálohování** | **Uzel**
 --- | ---
 Do bloku | Primární
 Diferenciál | Primární

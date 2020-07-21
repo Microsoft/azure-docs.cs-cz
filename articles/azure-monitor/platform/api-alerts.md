@@ -4,23 +4,23 @@ description: REST API výstrahy Log Analytics umožňuje vytvářet a spravovat 
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: 4ab2a1369fc4902afec7d62e44ef8e947864167f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 38f2f671ecf426f6544f6faf934aec7071451b0d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112047"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515746"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytváření a Správa pravidel výstrah v Log Analytics s využitím REST API 
 
 REST API výstrahy Log Analytics umožňuje vytvářet a spravovat výstrahy v Log Analytics.  Tento článek poskytuje podrobné informace o rozhraní API a několika příkladech pro provádění různých operací.
 
 > [!IMPORTANT]
-> Jak jsme [oznámili dřív](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), pracovní prostory Log Analytics vytvořené od *1. června 2019* – budou moct spravovat pravidla výstrah **jenom** pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)Azure scheduledQueryRules, [šablony Azure Resource Manager](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) a [rutiny PowerShellu](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Zákazníci můžou snadno [Přepnout do preferovaného způsobu správy pravidel výstrah](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) pro starší pracovní prostory a využít Azure monitor scheduledQueryRules jako výchozí a získat spoustu [nových výhod](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , jako je možnost použití nativních rutin PowerShellu, což je zvýšené lookbacké časové období v pravidlech, vytváření pravidel v samostatné skupině prostředků nebo předplatném a mnohem víc.
+> Jak jsme [oznámili dřív](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), pracovní prostory Log Analytics vytvořené od *1. června 2019* – budou moct spravovat pravidla výstrah **jenom** pomocí [REST API](/rest/api/monitor/scheduledqueryrules/)Azure scheduledQueryRules, [šablony Azure Resource Manager](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) a [rutiny PowerShellu](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Zákazníci můžou snadno [Přepnout do preferovaného způsobu správy pravidel výstrah](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) pro starší pracovní prostory a využít Azure monitor scheduledQueryRules jako výchozí a získat spoustu [nových výhod](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , jako je možnost použití nativních rutin PowerShellu, což je zvýšené lookbacké časové období v pravidlech, vytváření pravidel v samostatné skupině prostředků nebo předplatném a mnohem víc.
 
 Log Analytics vyhledávání REST API je RESTful a lze k němu přistupovat prostřednictvím REST API Azure Resource Manager. V tomto dokumentu najdete příklady, ve kterých je k rozhraní API přistup z příkazového řádku PowerShellu pomocí [ARMClient](https://github.com/projectkudu/ARMClient), open source nástroje příkazového řádku, který zjednodušuje vyvolání rozhraní Azure Resource Manager API. Použití ARMClient a PowerShellu je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful Azure Resource Manager API k volání Log Analytics pracovních prostorů a provádění příkazů hledání v nich. Rozhraní API bude výstupem výsledků hledání ve formátu JSON, což vám umožní používat výsledky hledání mnoha různými způsoby prostřednictvím kódu programu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V současné době je možné výstrahy vytvořit pouze s uloženým hledáním v Log Analytics.  Další informace najdete v [REST API prohledávání protokolu](../../azure-monitor/log-query/log-query-overview.md) .
 
 ## <a name="schedules"></a>Plány
@@ -136,7 +136,7 @@ armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupN
 ### <a name="alert-actions"></a>Akce výstrah
 Plán by měl mít jednu a jenom jednu akci výstrahy.  Akce výstrahy mají jednu nebo více částí v následující tabulce.  Každá je podrobněji popsána níže.
 
-| Sekce | Description | Využití |
+| Sekce | Popis | Využití |
 |:--- |:--- |:--- |
 | Prahová hodnota |Kritéria pro spuštění akce.| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
 | Severity |Popisek, který se používá k klasifikaci výstrahy, když se aktivuje| Vyžaduje se pro každé upozornění, před nebo po rozšíření na Azure. |
@@ -265,7 +265,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName
 #### <a name="action-groups"></a>Skupiny akcí
 Všechny výstrahy v Azure používají jako výchozí mechanismus pro zpracování akcí skupinu akcí. Pomocí skupiny akcí můžete zadat akce jednou a potom přidružit skupinu akcí k několika výstrahám – napříč Azure. Bez nutnosti opakovaně deklarovat stejné akce před a znovu. Skupiny akcí podporují více akcí – včetně e-mailu, SMS, hlasového hovoru, připojení ITSM, sady Automation Runbook, identifikátoru URI Webhooku a dalších. 
 
-Pro uživatele, kteří rozšířili své výstrahy do Azure – by měl nyní mít plán k dispozici podrobnosti skupiny akcí, které mají za úkol vytvořit výstrahu. Podrobnosti e-mailu, adresy URL Webhooku, podrobnosti automatizace sady Runbook a další akce musí být před vytvořením výstrahy nejprve definovány na straně skupiny akcí; jedna z nich může vytvořit [skupinu akcí z Azure monitor](../../azure-monitor/platform/action-groups.md) na portálu nebo pomocí [rozhraní API pro skupiny akcí](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+Pro uživatele, kteří rozšířili své výstrahy do Azure – by měl nyní mít plán k dispozici podrobnosti skupiny akcí, které mají za úkol vytvořit výstrahu. Podrobnosti e-mailu, adresy URL Webhooku, podrobnosti automatizace sady Runbook a další akce musí být před vytvořením výstrahy nejprve definovány na straně skupiny akcí; jedna z nich může vytvořit [skupinu akcí z Azure monitor](../../azure-monitor/platform/action-groups.md) na portálu nebo pomocí [rozhraní API pro skupiny akcí](/rest/api/monitor/actiongroups).
 
 Chcete-li přidat přidružení skupiny akcí k výstraze, zadejte jedinečné ID Azure Resource Manager skupiny akcí v definici výstrahy. Ukázka ilustrace je k dispozici níže:
 
@@ -390,4 +390,3 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 * Pomocí [REST API provádět prohledávání protokolu](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics.
 * Informace o [upozorněních protokolu ve službě Azure monitor](../../azure-monitor/platform/alerts-unified-log.md)
 * Jak [vytvářet, upravovat a spravovat pravidla upozornění protokolů ve službě Azure monitor](../../azure-monitor/platform/alerts-log.md)
-

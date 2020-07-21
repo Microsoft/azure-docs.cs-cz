@@ -8,12 +8,12 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a4b90d8b6fe67de26c8e652e0dc5b62cc27023f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd2b9bc462a9d4bc11f49a7e3294e52f88a926fb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80545629"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511836"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>Nasazování modulů a vytváření tras ve službě IoT Edge
 
@@ -38,7 +38,7 @@ Manifest nasazení je na vysoké úrovni seznamem vláken modulu, které jsou na
 
 V každém manifestu nasazení jsou vyžadovány dva moduly: `$edgeAgent` a `$edgeHub` . Tyto moduly jsou součástí modulu runtime IoT Edge, který spravuje zařízení IoT Edge a moduly, které jsou v něm spuštěné. Další informace o těchto modulech naleznete v tématu [pochopení IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
-Kromě těchto dvou běhových modulů můžete přidat až 20 modulů, které mají být spuštěny na zařízení IoT Edge.
+Kromě těchto dvou běhových modulů můžete přidat až 30 modulů, které mají být spuštěny na zařízení IoT Edge.
 
 Manifest nasazení, který obsahuje pouze modul runtime IoT Edge (edgeAgent a edgeHub), je platný.
 

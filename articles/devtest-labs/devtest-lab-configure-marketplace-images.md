@@ -3,22 +3,24 @@ title: Konfigurace nastavení Azure Marketplace imagí v Azure DevTest Labs
 description: Nakonfigurovat, které Azure Marketplace image se dají použít při vytváření virtuálního počítače v Azure DevTest Labs
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9fdb4e3a888e876f91b8af2e4854a9c101eea45c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5158ed33bf253db1dbe0eb3232bc43d27ce15e7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482713"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512431"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Konfigurace nastavení Azure Marketplace imagí v Azure DevTest Labs
-DevTest Labs podporuje vytváření virtuálních počítačů na základě Azure Marketplace imagí v závislosti na tom, jak jste nakonfigurovali Azure Marketplace imagí pro použití v testovacím prostředí. V tomto článku se dozvíte, jak určit, které Azure Marketplace image se můžou použít při vytváření virtuálních počítačů v testovacím prostředí. Tím zajistíte, že váš tým bude mít přístup jenom k potřebným imagím Marketplace. 
+DevTest Labs podporuje vytváření virtuálních počítačů na základě Azure Marketplace imagí v závislosti na tom, jak jste nakonfigurovali Azure Marketplace imagí pro použití v testovacím prostředí. V tomto článku se dozvíte, jak určit, které Azure Marketplace image se můžou použít při vytváření virtuálních počítačů v testovacím prostředí. Zajišťuje, aby váš tým měl přístup jenom k potřebným imagím Marketplace. 
 
-## <a name="select-which-azure-marketplace-images-are-allowed-when-creating-a-vm"></a>Vyberte, které Azure Marketplace image jsou povolené při vytváření virtuálního počítače.
+## <a name="specify-allowed-images-for-creating-vms"></a>Určení povolených imagí pro vytváření virtuálních počítačů
+Pomocí těchto kroků určíte, které Azure Marketplace image se při vytváření virtuálního počítače povolí. 
+
 1. Přihlaste se k [portálu Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 2. Vyberte **všechny služby**a v seznamu vyberte **DevTest Labs** .
-3. V seznamu cvičení vyberte požadované testovací prostředí. 
-4. V okně testovacího prostředí vyberte **Konfigurace a zásady**.
-5. V okně **Konfigurace a zásady** testovacího prostředí v části **základy virtuálního počítače**vyberte **Image Marketplace**.
+3. V seznamu cvičení vyberte testovací prostředí. 
+4. Na stránce Domovská stránka testovacího prostředí vyberte **Konfigurace a zásady**.
+5. Na stránce **Konfigurace a zásady** testovacího prostředí v části **základy virtuálních počítačů**vyberte **Image Marketplace**.
 6. Určete, jestli chcete, aby všechny kvalifikované Azure Marketplace Image byly dostupné pro použití jako základ nového virtuálního počítače. Vyberete-li možnost **Ano**, budou v testovacím prostředí povoleny všechny Azure Marketplace bitové kopie, které splňují všechna následující kritéria:
    
    * Image vytvoří jeden virtuální počítač **a**
@@ -35,7 +37,15 @@ DevTest Labs podporuje vytváření virtuálních počítačů na základě Azur
    
      ![Můžete určit, které Azure Marketplace image se dají použít jako základní image pro virtuální počítače.](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+
+## <a name="troubleshoot"></a>Odstraňování potíží
+Pokud nemůžete najít konkrétní bitovou kopii, kterou by bylo možné použít pro testovací prostředí, postupujte podle následujících kroků: 
+
+- Zkontrolujte, jestli si nemůžete zobrazit image při vytváření výpočetního virtuálního počítače.
+- Bitová kopie nemusí být k dispozici v typu předplatného, které používáte. Obraťte se na správce předplatného pro daný typ předplatného (například MSDN, free, průběžné platby atd.). 
+- Podpora imagí Gen 2 v DevTest Labs je omezená. Pokud je pro Image k dispozici jak 1, tak i Gen 2, při vytváření virtuálního počítače se v DevTest Labs zobrazí jenom verze 1. generace. Alternativním řešením je vytvořit vlastní obrázek Gen 2 mimo testovací prostředí a použít ho k vytvoření virtuálního počítače. Pokud je k dispozici jenom verze Gen 2, je podporovaná a zobrazená v seznamu podle DevTest Labs. 
+      
+
 
 ## <a name="next-steps"></a>Další kroky
 Až nakonfigurujete způsob, jakým se při vytváření virtuálního počítače povolí Azure Marketplace image, je dalším krokem [Přidání virtuálního počítače do testovacího prostředí](devtest-lab-add-vm.md).

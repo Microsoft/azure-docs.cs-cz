@@ -3,12 +3,12 @@ title: AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs | Microsof
 description: Průvodce protokolem pro výrazy a popis AMQP 1,0 v Azure Service Bus a Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186907"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511309"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 v Azure Service Bus a průvodci protokolem Event Hubs
 
@@ -48,7 +48,7 @@ Nejvíc směrodatná zdrojová informace o tom, jak AMQP funguje jako specifikac
 
 AMQP volá *kontejnery*komunikujících programů; Ty obsahují *uzly*, které jsou komunikujícími entitami v těchto kontejnerech. Frontou může být takový uzel. AMQP umožňuje multiplexing, takže jedno připojení lze použít pro mnoho komunikačních cest mezi uzly. klient aplikace může například souběžně přijímat z jedné fronty a odesílat je do jiné fronty přes stejné síťové připojení.
 
-![][1]
+![Diagram znázorňující relace a připojení mezi kontejnery.][1]
 
 Síťové připojení je tedy ukotveno na kontejneru. Je iniciován kontejnerem v roli klienta, který vytváří odchozí připojení soketu TCP ke kontejneru v roli příjemce, který naslouchá a přijímá příchozí připojení TCP. Metoda handshake připojení zahrnuje vyjednávání verze protokolu, deklaraci nebo vyjednávání o použití TLS/SSL (Transport Level Security) a ověřovací/autorizační metody handshake v oboru připojení, který je založen na SASL.
 
@@ -84,7 +84,7 @@ Klient rozhraní .NET selže s SocketException ("byl proveden pokus o přístup 
 
 AMQP přenáší zprávy přes odkazy. Odkaz je komunikační cesta vytvořená v relaci, která umožňuje přenos zpráv v jednom směru. vyjednávání stavu přenosu probíhá přes propojení a obousměrně mezi připojenými stranami.
 
-![][2]
+![Snímek obrazovky znázorňující relaci carryign propojení mezi dvěma kontejnery.][2]
 
 Odkazy mohou být vytvořeny buď kontejnerem, kdykoli, a přes existující relaci, která AMQP liší od mnoha dalších protokolů, včetně HTTP a MQTT, kde iniciování přenosů a cest přenosu je výhradním oprávněním stran, které vytváří připojení soketu.
 
@@ -100,7 +100,7 @@ Připojující se klient také vyžaduje, aby při vytváření odkazů použív
 
 Po vytvoření propojení lze prostřednictvím tohoto propojení přenést zprávy. V AMQP se přenos provádí pomocí explicitního gesta protokolu (performative *přenosu* ), které přesouvá zprávu od odesílatele k přijímači přes odkaz. Přenos je dokončený, když je "vyrovnaný", což znamená, že obě strany navázaly sdílené porozumění výsledku tohoto přenosu.
 
-![][3]
+![Diagram znázorňující přenos zprávy mezi odesílatelem a příjemcem a jejich dispozice, která z ní vznikne.][3]
 
 V nejjednodušším případě se odesílatel může rozhodnout odeslat zprávy "předem vyrovnaný", což znamená, že klient nemá zájem o výsledek a příjemce neposkytne zpětnou vazbu k výsledku operace. Tento režim je podporován Service Bus na úrovni protokolu AMQP, ale nezveřejňuje se v žádném z klientských rozhraní API.
 
@@ -120,7 +120,7 @@ Pokud chcete kompenzovat možné duplicitní odesílání, Service Bus podporuje
 
 Kromě výše popsaného modelu řízení toku na úrovni relace má každý odkaz svůj vlastní model řízení toku. Řízení toku na úrovni relace chrání kontejner před tím, než musí zpracovávat příliš mnoho rámců najednou, řízení toku na úrovni propojení vloží aplikaci za poplatek, kolik zpráv chce zpracovat z odkazu a kdy.
 
-![][4]
+![Snímek obrazovky protokolu se zobrazením zdroje, cíle, zdrojového portu, cílového portu a názvu protokolu. V řádku fiest je cílový port 10401 (0x28 A 1) popsaný černě.][4]
 
 V případě odkazu může k přenosu docházet pouze v případě, že odesílatel má dostatek *kreditů propojení*. Kredit propojení je čítač nastavený příjemcem pomocí performative *Flow* , který je vymezen na odkaz. Když je odesilateli přiřazen odkaz na akreditiv, pokusí se ho použít k doručování zpráv. Každé doručení zprávy sníží kredit zbývajícího propojení o 1. Po použití kreditu propojení se dokončí doručení.
 
@@ -225,7 +225,7 @@ Jakákoli vlastnost, kterou musí aplikace definovat, by měla být namapována 
 | na |Identifikátor cíle definovaného aplikací, není interpretován pomocí Service Bus. |[Schopn](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | závislosti |Identifikátor účelu zprávy definované aplikací, není interpretován pomocí Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | odpovědět na |Indikátor odpovědi na cestu definovaný aplikací, není interpretován pomocí Service Bus. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
-| correlation-id |Identifikátor korelace definovaný aplikací, není interpretován pomocí Service Bus. |[ID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| correlation-id |Identifikátor korelace definovaný aplikací, není interpretován pomocí Service Bus. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | typ obsahu |Indikátor typu obsahu definovaného aplikací pro tělo, které není interpretováno Service Bus. |[Třída](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | kódování obsahu |Symbol pro kódování obsahu definovaného aplikací pro tělo, které není interpretováno Service Bus. |Nedostupné prostřednictvím rozhraní Service Bus API. |
 | absolutní – doba vypršení platnosti |Deklaruje, na jakém místě vyprší absolutní Okamžitá zpráva. Ignoruje se při vstupu (pozoruje se hlavička TTL), která je pro výstup směrodatná. |[ExpiresAtUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -357,11 +357,11 @@ Gesto protokolu je výměna požadavků a odpovědí definovaná specifikací sp
 
 Zpráva požadavku má následující vlastnosti aplikace:
 
-| Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
+| Key | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| NázevOperace |Ne |řetězec |**token Put** |
-| typ |Ne |řetězec |Typ vytvářeného tokenu. |
-| name |Ne |řetězec |Cílová skupina, na kterou se vztahuje token. |
+| NázevOperace |No |řetězec |**token Put** |
+| typ |No |řetězec |Typ vytvářeného tokenu. |
+| name |No |řetězec |Cílová skupina, na kterou se vztahuje token. |
 | vypršení platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
 
 Vlastnost *Name* určuje entitu, ke které je token přidružen. V Service Bus se jedná o cestu k frontě nebo k tématu nebo předplatnému. Vlastnost *Type* určuje typ tokenu:
@@ -376,9 +376,9 @@ Tokeny udělují práva. Service Bus ví o třech základních právech: "Odesla
 
 Zpráva s odpovědí obsahuje následující hodnoty *vlastností aplikace* .
 
-| Klíč | Volitelné | Typ hodnoty | Obsah hodnoty |
+| Key | Volitelné | Typ hodnoty | Obsah hodnoty |
 | --- | --- | --- | --- |
-| Stavový kód |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
+| Stavový kód |No |int |Kód odpovědi HTTP **[RFC2616]**. |
 | Popis stavu |Ano |řetězec |Popis stavu |
 
 Klient může opakovaně volat *tokeny Put* a pro každou entitu v infrastruktuře zasílání zpráv. Tokeny jsou vymezeny na aktuálního klienta a ukotveny k aktuálnímu připojení, což znamená, že server při poklesu připojení vyřazuje všechny zachované tokeny.

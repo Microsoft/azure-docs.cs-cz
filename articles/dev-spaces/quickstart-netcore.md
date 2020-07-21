@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b38562879fa67d7ee82e3251ea2fcaa57a2075d6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240214"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512448"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio Code a .NET Core – Azure Dev Spaces
 
@@ -23,17 +23,17 @@ V tomto průvodci se naučíte:
 
 Azure Dev Spaces také umožňují ladit a iterovat pomocí:
 - [Java a Visual Studio Code](quickstart-java.md)
-- [Node. js a Visual Studio Code](quickstart-nodejs.md)
+- [Node.js a Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core a Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Visual Studio Code nainstalován](https://code.visualstudio.com/download).
 - Rozšíření [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) a [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) pro Visual Studio Code nainstalovány.
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes Service
 
 Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. Níže uvedené příkazy vytvoří skupinu prostředků s názvem *MyResourceGroup* a cluster AKS s názvem *MyAKS*.
 
@@ -47,7 +47,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 Pomocí `use-dev-spaces` příkazu povolte v clusteru AKS vývojářské prostory a postupujte podle pokynů. Následující příkaz povolí v *MyAKS* ve skupině *MyResourceGroup* vývojářské prostory a vytvoří *výchozí* místo pro vývoj.
 
 > [!NOTE]
-> `use-dev-spaces` Příkaz nainstaluje taky Azure dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nelze nainstalovat do Azure Cloud Shell.
+> `use-dev-spaces`Příkaz nainstaluje taky Azure dev Spaces CLI, pokud ještě není nainstalovaný. Azure Dev Spaces CLI nelze nainstalovat do Azure Cloud Shell.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -85,11 +85,11 @@ Otevřete Visual Studio Code, klikněte na *soubor* a pak na otevřít *...*, p�
 
 Nyní máte projekt *webendu* otevřený v Visual Studio Code. Chcete-li aplikaci spustit ve vývojovém prostoru, vygenerujte pomocí rozšíření Azure Dev Spaces v paletě příkazů prostředky Docker a Helm Chart.
 
-Chcete-li otevřít paletu příkazů v Visual Studio Code, klikněte na tlačítko *Zobrazit* *paletu příkazů*. Začněte psát `Azure Dev Spaces` a klikněte na `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
+Chcete-li otevřít paletu příkazů v Visual Studio Code, klikněte na tlačítko *Zobrazit* *paletu příkazů*. Začněte psát `Azure Dev Spaces` a klikněte na `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces` .
 
 ![Příprava konfiguračních souborů pro Azure Dev Spaces](./media/common/command-palette.png)
 
-Když Visual Studio Code také vyzve ke konfiguraci veřejného koncového bodu, vyberte `Yes` možnost Povolit veřejný koncový bod.
+Když Visual Studio Code také vyzve ke konfiguraci veřejného koncového bodu, vyberte možnost `Yes` Povolit veřejný koncový bod.
 
 ![Vybrat veřejný koncový bod](media/common/select-public-endpoint.png)
 
@@ -102,7 +102,7 @@ Tento příkaz připraví projekt tak, aby běžel v Azure Dev Spaces generován
 
 Klikněte na ikonu *ladění* vlevo a v horní části klikněte na možnost *spuštění .NET Core (AZDS)* .
 
-![](media/get-started-netcore/debug-configuration.png)
+![Snímek obrazovky je v levém horním rohu okna Visual Studio Code. Ikona ladění je zvýrazněna, levý panel má název "ladění" a rozevírací seznam napravo od názvu zobrazuje "tečka .NET Core Launch (A Z D S).](media/get-started-netcore/debug-configuration.png)
 
 Tento příkaz vytvoří a spustí vaši službu v Azure Dev Spaces v režimu ladění. V dolní části okna *terminálu* se zobrazuje výstup sestavení a adresy URL pro vaši službu spuštěnou v Azure dev Spaces. *Konzola ladění* zobrazuje výstup protokolu.
 
@@ -143,11 +143,11 @@ V prohlížeči otevřete službu a Všimněte si, že se nezobrazí žádná zp
 
 Při spouštění služby v Kubernetes s připojeným ladicím programem máte úplný přístup k ladicím informacím, jako je zásobník volání, místní proměnné a informace o výjimkách.
 
-Odstraňte zarážku tak, že umístíte kurzor na řádek 22 `Controllers/HomeController.cs` v a zapnete *F9*.
+Odstraňte zarážku tak, že umístíte kurzor na řádek 22 v a zapnete `Controllers/HomeController.cs` *F9*.
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizace kódu z Visual Studio Code
 
-Když je služba spuštěna v režimu ladění, aktualizujte řádek 22 v `Controllers/HomeController.cs`. Příklad:
+Když je služba spuštěna v režimu ladění, aktualizujte řádek 22 v `Controllers/HomeController.cs` . Příklad:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";
@@ -155,7 +155,7 @@ ViewData["Message"] = "Your application description page in Azure while debuggin
 
 Uložte soubor. Klikněte na *ladit* a pak *znovu spusťte ladění* nebo na *panelu nástrojů ladění*klikněte na tlačítko *restartovat ladění* .
 
-![](media/common/debug-action-refresh.png)
+![Panel nástrojů ladění je malé podokno v horním středu stránky (hned pod nadpisem stránky). Na tlačítku restartovat se zobrazí KRUHOVÁ ŠIPKA a zvýrazní se. Obrázek najetí myší na tlačítko je "restartovat (Ctrl + Shift + F5)".](media/common/debug-action-refresh.png)
 
 V prohlížeči otevřete službu a Všimněte si, že se zobrazí aktualizovaná zpráva.
 

@@ -3,11 +3,12 @@ title: Příprava serveru DPM pro zálohování úloh
 description: V tomto článku se dozvíte, jak připravit zálohy aplikace System Center Data Protection Manager (DPM) do Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7c2b811685ec9ea5f8fe752a5a1c73611a624b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9891be5eded94c64a6cc256b99510a9c0c673daf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718321"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514165"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -23,7 +24,7 @@ Tento článek vysvětluje, jak připravit zálohy aplikace System Center Data P
 
 ## <a name="why-back-up-dpm-to-azure"></a>Proč zálohovat DPM do Azure?
 
-[Aplikace System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) zálohuje data souborů a aplikací. DPM komunikuje s Azure Backup následujícím způsobem:
+[Aplikace System Center DPM](/system-center/dpm/dpm-overview) zálohuje data souborů a aplikací. DPM komunikuje s Azure Backup následujícím způsobem:
 
 - **DPM běžící na fyzickém serveru nebo místním virtuálním počítači** – data můžete zálohovat do trezoru záloh v Azure, kromě zálohování na disk a na pásku.
 - **DPM běžící na virtuálním počítači Azure** – od verze System Center 2012 R2 s aktualizací Update 3 nebo novější můžete nasadit DPM na virtuálním počítači Azure. Data můžete zálohovat na disky Azure připojené k virtuálnímu počítači nebo použít Azure Backup k zálohování dat do trezoru služby Backup.
@@ -42,12 +43,12 @@ DPM na fyzickém serveru | System Center 2012 SP1 nebo novější; System Center
 DPM na virtuálním počítači s technologií Hyper-V | System Center 2012 SP1 nebo novější; System Center 2012 R2.
 DPM na virtuálním počítači VMware | System Center 2012 R2 s kumulativní aktualizací 5 nebo novější.
 Komponenty | Na serveru DPM musí být nainstalováno prostředí Windows PowerShell a .NET Framework 4,5.
-Podporované aplikace | [Přečtěte si](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) , co může aplikace DPM zálohovat.
+Podporované aplikace | [Přečtěte si](/system-center/dpm/dpm-protection-matrix) , co může aplikace DPM zálohovat.
 Podporované typy souborů | Tyto typy souborů je možné zálohovat pomocí Azure Backup: šifrované (pouze úplné zálohy); Komprimovaná (podpora přírůstkových záloh); Zhuštěné (podporované přírůstkové zálohy); Komprimovaný a zhuštěný (je považován za zhuštěný).
 Nepodporované typy souborů | Servery se systémy souborů s rozlišováním velkých a malých písmen; pevné odkazy (vynecháno); body rozboru (přeskočeny); šifrované a komprimované (vynechané); šifrované a zhuštěné (přeskočené); Komprimovaný datový proud; analyzovat datový proud.
 Místní úložiště | Každý počítač, který chcete zálohovat, musí mít místní volné úložiště, které má nejméně 5% velikosti zálohovaných dat. Například zálohování 100 GB dat vyžaduje minimálně 5 GB volného místa v umístění od začátku.
 Úložiště trezoru | Neexistuje žádné omezení na množství dat, která můžete zálohovat do trezoru Azure Backup, ale velikost zdroje dat (například virtuální počítač nebo databáze) by neměla překročit 54 400 GB.
-Azure ExpressRoute | Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.<br/><br/> **S veřejným partnerským vztahem**: Zajistěte přístup k následujícím doménám nebo adresám:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **S partnerským vztahem Microsoftu**vyberte následující služby nebo oblasti a příslušné hodnoty komunity:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure oblasti (podle umístění vašeho trezoru Recovery Services)<br/><br/>-Azure Storage (podle umístění vašeho trezoru Recovery Services)<br/><br/>Další informace najdete v tématu [požadavky na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).<br/><br/>**Poznámka**: veřejný partnerský vztah je pro nové okruhy zastaralý.
+Azure ExpressRoute | Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.<br/><br/> **S veřejným partnerským vztahem**: Zajistěte přístup k následujícím doménám nebo adresám:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **S partnerským vztahem Microsoftu**vyberte následující služby nebo oblasti a příslušné hodnoty komunity:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure oblasti (podle umístění vašeho trezoru Recovery Services)<br/><br/>-Azure Storage (podle umístění vašeho trezoru Recovery Services)<br/><br/>Další informace najdete v tématu [požadavky na směrování ExpressRoute](../expressroute/expressroute-routing.md).<br/><br/>**Poznámka**: veřejný partnerský vztah je pro nové okruhy zastaralý.
 Agent Azure Backup | Je-li aplikace DPM spuštěna v produktu System Center 2012 SP1, nainstalujte kumulativní aktualizaci 2 nebo novější pro aplikaci DPM SP1. To je vyžadováno pro instalaci agenta.<br/><br/> Tento článek popisuje, jak nasadit nejnovější verzi agenta Azure Backup, označovaného také jako agent služby Microsoft Azure Recovery Services (MARS). Pokud máte nasazenou starší verzi, aktualizujte na nejnovější verzi, abyste zajistili, že zálohování funguje podle očekávání.
 
 Než začnete, potřebujete účet Azure s povolenou funkcí Azure Backup. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Přečtěte si o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
@@ -60,7 +61,7 @@ Můžete si vybrat mezi geograficky redundantním úložištěm a místně redun
 
 - Ve výchozím nastavení má váš trezor nastavené geograficky redundantní úložiště.
 - Pokud je trezor vaší primární zálohou, ponechte možnost nastavenou na geograficky redundantní úložiště. Pokud chcete levnější možnost, která není úplně stejná jako trvalá, nakonfigurujte místně redundantní úložiště pomocí následujícího postupu.
-- Přečtěte si o [Azure Storage](../storage/common/storage-redundancy.md)a možnostech [geograficky redundantního](../storage/common/storage-redundancy-grs.md) a [místně redundantního](../storage/common/storage-redundancy-lrs.md) úložiště.
+- Přečtěte si o [Azure Storage](../storage/common/storage-redundancy.md)a možnostech [geograficky redundantního](../storage/common/storage-redundancy.md) a [místně redundantního](../storage/common/storage-redundancy.md) úložiště.
 - Úprava nastavení úložiště před prvotním zálohováním. Pokud jste už zálohované položky zálohovali, před úpravou nastavení úložiště zastavte zálohování v trezoru.
 
 Chcete-li upravit nastavení replikace úložiště:
@@ -164,7 +165,7 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
 
 7. Kliknutím na **Registrovat** zaregistrujete server DPM do trezoru.
 
-Po úspěšném zaregistrování serveru do trezoru jste nyní připraveni začít s zálohováním Microsoft Azure. Chcete-li zálohovat úlohy do Azure, budete muset nakonfigurovat skupinu ochrany v konzole DPM. [Přečtěte si, jak](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) nasadit skupiny ochrany.
+Po úspěšném zaregistrování serveru do trezoru jste nyní připraveni začít s zálohováním Microsoft Azure. Chcete-li zálohovat úlohy do Azure, budete muset nakonfigurovat skupinu ochrany v konzole DPM. [Přečtěte si, jak](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) nasadit skupiny ochrany.
 
 ## <a name="troubleshoot-vault-credentials"></a>Řešení potíží s přihlašovacími údaji trezoru
 

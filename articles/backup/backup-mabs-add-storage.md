@@ -3,11 +3,12 @@ title: Použití Moderní úložiště zálohování s Azure Backup Server
 description: Seznamte se s novými funkcemi v Azure Backup Server. Tento článek popisuje, jak upgradovat instalaci záložního serveru.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172379"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513706"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 
@@ -17,7 +18,7 @@ Azure Backup Server v2 a novější podporuje Moderní úložiště zálohován�
 > Chcete-li použít Moderní úložiště zálohování, je nutné spustit záložní server v2 nebo V3 v systému Windows Server 2016 nebo V3 v systému Windows Server 2019.
 > Pokud spustíte záložní server V2 v dřívější verzi Windows serveru, Azure Backup Server nemůže využít Moderní úložiště zálohování. Místo toho chrání úlohy stejně jako u záložního serveru v1. Další informace najdete v tématu [matice ochrany](backup-mabs-protection-matrix.md)verzí záložního serveru.
 >
-> Aby se dosáhlo lepších výkonů služby Backup, doporučujeme nasadit MABS V3 se vrstveným úložištěm v systému Windows Server 2019. Postup konfigurace vrstveného úložiště najdete v článku aplikace DPM "[Nastavení MB pomocí Tiered Storage](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)".
+> Aby se dosáhlo lepších výkonů služby Backup, doporučujeme nasadit MABS V3 se vrstveným úložištěm v systému Windows Server 2019. Postup konfigurace vrstveného úložiště najdete v článku aplikace DPM "[Nastavení MB pomocí Tiered Storage](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)".
 
 ## <a name="volumes-in-backup-server"></a>Svazky na záložním serveru
 
@@ -102,13 +103,13 @@ Aktualizace skupin ochrany na používání moderního úložiště záloh je vo
 
 1. V konzole pro správu vyberte funkci **ochrana** . V seznamu **členů skupiny ochrany** klikněte pravým tlačítkem myši na člena a vyberte možnost **Zastavit ochranu člena**.
 
-   ![Zastavení ochrany člena](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![Zastavení ochrany člena](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. V dialogovém okně **Odebrat ze skupiny** zkontrolujte využité místo na disku a dostupné volné místo pro fond úložiště. Výchozím postupem je nechat body obnovení na disku a umožnit jim vypršení platnosti podle přidružené zásady uchovávání. Klikněte na **OK**.
 
    Pokud chcete hned vrátit využité místo na disku do fondu volných úložišť, zaškrtněte políčko **Odstranit repliku na disku** , chcete-li odstranit data zálohy (a body obnovení) přidružené k tomuto členu.
 
-   ![Dialogové okno odebrat ze skupiny](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![Dialogové okno odebrat ze skupiny](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Vytvořte skupinu ochrany, která používá Moderní úložiště zálohování. Zahrňte nechráněné zdroje dat.
 
@@ -120,7 +121,7 @@ Přidání diskového úložiště:
 
 1. V konzole pro správu vyberte **Správa**  >  **Disk Storage**  >  **Přidat**.
 
-    ![Přidat Disk Storage – dialogové okno](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![Přidat Disk Storage – dialogové okno](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. V dialogovém okně **přidat disk Storage** vyberte **Přidat disky**.
 

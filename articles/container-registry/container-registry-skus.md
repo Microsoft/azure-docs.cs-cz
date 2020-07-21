@@ -3,19 +3,20 @@ title: Úrovně a funkce služby registru
 description: Přečtěte si o funkcích a omezeních úrovní služeb Basic, Standard a Premium (SKU) Azure Container Registry.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 35f5d4ebd4a2b427aadc6e82e265a7da9b6409f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66cb5d7c3cdca45f7a44f0f23bfa449d5ade6dbf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683422"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512604"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry úrovní služeb
 
 Azure Container Registry je k dispozici ve více úrovních služby (označované také jako SKU). Tyto úrovně poskytují předvídatelné ceny a několik možností pro zarovnávání se vzory kapacity a využití vašeho privátního registru Docker v Azure.
 
-| Úroveň | Description |
+| Úroveň | Popis |
 | --- | ----------- |
-| **Základní** | Vstupní bod optimalizovaný z hlediska nákladů pro vývojáře, kteří se seznamují se službou Azure Container Registry. Základní registry mají stejné programové možnosti jako standard a Premium (jako je Azure Active Directory [integrace ověřování](container-registry-authentication.md#individual-login-with-azure-ad), [odstraňování imagí][container-registry-delete]a [Webhooky][container-registry-webhook]). Zahrnutá propustnost úložiště a imagí je ale nejvhodnější pro scénáře s nižším využitím. |
+| **Basic** | Vstupní bod optimalizovaný z hlediska nákladů pro vývojáře, kteří se seznamují se službou Azure Container Registry. Základní registry mají stejné programové možnosti jako standard a Premium (jako je Azure Active Directory [integrace ověřování](container-registry-authentication.md#individual-login-with-azure-ad), [odstraňování imagí][container-registry-delete]a [Webhooky][container-registry-webhook]). Zahrnutá propustnost úložiště a imagí je ale nejvhodnější pro scénáře s nižším využitím. |
 | **Standard** | Registry úrovně Standard nabízejí stejné možnosti jako základní a zvyšují propustnost úložiště a imagí. Registry úrovně Standard by měly vyhovovat požadavkům většiny produkčních scénářů. |
 | **Premium** | Registry úrovně Premium poskytují nejvyšší objem zahrnutých úložišť a souběžných operací, což umožňuje použití scénářů s velkými objemy. Kromě propustnosti vyšších imagí přináší Premium navíc funkce, jako je [geografická replikace][container-registry-geo-replication] pro správu jednoho registru napříč několika oblastmi, [důvěryhodnost obsahu](container-registry-content-trust.md) pro podepisování značek obrázků, [soukromé propojení s privátními koncovými body](container-registry-private-link.md) , aby se omezil přístup k registru. |
 
@@ -23,7 +24,7 @@ Azure Container Registry je k dispozici ve více úrovních služby (označovan�
 
 ## <a name="service-tier-features-and-limits"></a>Funkce a omezení úrovně služby
 
-Následující tabulka obsahuje informace o funkcích a omezeních úrovní služeb Basic, Standard a Premium.
+Následující tabulka obsahuje podrobnosti o funkcích a omezeních úrovně služeb Basic, Standard a Premium.
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 

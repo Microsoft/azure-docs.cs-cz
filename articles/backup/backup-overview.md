@@ -4,12 +4,12 @@ description: Poskytuje přehled služby Azure Backup a jejich podíl na strategi
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 70fcbc432c3a3584047fe5ac39f217981a73df71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709925"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513519"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
@@ -43,8 +43,8 @@ Azure Backup přináší tyto klíčové výhody:
 - **Uchování krátkodobých a dlouhodobých dat**: [Recovery Services trezory](backup-azure-recovery-services-vault-overview.md) můžete použít k krátkodobému a dlouhodobému uchovávání dat.
 - **Automatická správa úložiště** – Hybridní prostředí často vyžadují heterogenní úložiště – některá místní a některá cloudová. S Azure Backup se neúčtují žádné náklady na používání místních úložných zařízení. Azure Backup automaticky přiděluje a spravuje úložiště záloh a používá model založený na průběžných platbách. Platíte jenom za úložiště, které spotřebováváte. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/backup) o cenách.
 - **Více možností úložiště** – Azure Backup nabízí dva typy replikace k zajištění vysoké dostupnosti úložiště/dat.
-  - [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy-lrs.md) replikuje vaše data třikrát (vytváří tři kopie dat) v jednotce škálování úložiště v datacentru. Všechny kopie dat existují ve stejné oblasti. Místně redundantní úložiště nabízí cenově úsporný způsob ochrany dat před selháním místního hardwaru.
-  - [Geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy-grs.md) je výchozí a doporučená možnost replikace. GRS replikuje vaše data do sekundární oblasti (vzdálené stovky kilometrů od primárního umístění zdrojových dat). GRS náklady jsou větší než LRS, ale GRS poskytuje vyšší úroveň trvanlivosti vašich dat, i když dojde k oblastnímu výpadku.
+  - [Místně redundantní úložiště (LRS)](../storage/common/storage-redundancy.md) replikuje vaše data třikrát (vytváří tři kopie dat) v jednotce škálování úložiště v datacentru. Všechny kopie dat existují ve stejné oblasti. Místně redundantní úložiště nabízí cenově úsporný způsob ochrany dat před selháním místního hardwaru.
+  - [Geograficky redundantní úložiště (GRS)](../storage/common/storage-redundancy.md) je výchozí a doporučená možnost replikace. GRS replikuje vaše data do sekundární oblasti (vzdálené stovky kilometrů od primárního umístění zdrojových dat). GRS náklady jsou větší než LRS, ale GRS poskytuje vyšší úroveň trvanlivosti vašich dat, i když dojde k oblastnímu výpadku.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,25 +8,25 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80247380"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511173"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup pro SQL Server běžící na virtuálním počítači Azure
 
 Azure Backup, mimo jiné nabídky, poskytuje podporu pro zálohování úloh, jako je SQL Server spouštění na virtuálních počítačích Azure. Vzhledem k tomu, že aplikace SQL běží v rámci virtuálního počítače Azure, služba zálohování potřebuje oprávnění pro přístup k aplikaci a načtení potřebných podrobností.
 K tomu Azure Backup nainstaluje na virtuální počítač rozšíření **AzureBackupWindowsWorkload** , ve kterém je spuštěná SQL Server během procesu registrace aktivovaného uživatelem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Seznam podporovaných scénářů najdete v tématu věnovaném [podpoře](../../backup/sql-support-matrix.md#scenario-support) , které podporuje Azure Backup.
 
 ## <a name="network-connectivity"></a>Připojení k síti
 
-Azure Backup podporuje značky NSG, nasazení proxy server nebo uvedené rozsahy IP adres; Podrobnosti o jednotlivých metodách najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity).
+Azure Backup podporuje značky NSG, nasazení proxy server nebo uvedené rozsahy IP adres; Podrobnosti o jednotlivých metodách najdete v tomto [článku](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
@@ -85,7 +85,7 @@ Následující JSON zobrazuje schéma pro rozšíření WorkloadBackup.
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-Name | Hodnota/příklad | Datový typ
+Název | Hodnota/příklad | Datový typ
  --- | --- | ---
 locale | cs-cz  |  řetězec
 taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | řetězec
@@ -102,7 +102,7 @@ K virtuálnímu počítači doporučujeme přidat rozšíření AzureBackupWindo
 
 ## <a name="powershell-deployment"></a>Nasazení prostředí PowerShell
 
-Musíte zaregistrovat virtuální počítač Azure, který obsahuje aplikaci SQL, do trezoru služby Recovery Services. Během registrace se na virtuální počítač nainstaluje rozšíření AzureBackupWindowsWorkload. K registraci virtuálního počítače použijte rutinu [Register-AzRecoveryServicesBackupContainerPS](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) .
+Musíte zaregistrovat virtuální počítač Azure, který obsahuje aplikaci SQL, do trezoru služby Recovery Services. Během registrace se na virtuální počítač nainstaluje rozšíření AzureBackupWindowsWorkload. K registraci virtuálního počítače použijte rutinu [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) .
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -113,5 +113,5 @@ Příkaz vrátí **kontejner zálohování** tohoto prostředku a stav bude **za
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Další informace](https://docs.microsoft.com/azure/backup/backup-sql-server-azure-troubleshoot) o pokynech pro řešení potíží se ZÁLOHOVÁNÍM virtuálních počítačů Azure SQL Server
-- [Běžné dotazy](https://docs.microsoft.com/azure/backup/faq-backup-sql-server) týkající se zálohování SQL Server databází, které běží na virtuálních počítačích Azure a využívají službu Azure Backup.
+- [Další informace](../../backup/backup-sql-server-azure-troubleshoot.md) o pokynech pro řešení potíží se ZÁLOHOVÁNÍM virtuálních počítačů Azure SQL Server
+- [Běžné dotazy](../../backup/faq-backup-sql-server.md) týkající se zálohování SQL Server databází, které běží na virtuálních počítačích Azure a využívají službu Azure Backup.

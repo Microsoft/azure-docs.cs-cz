@@ -3,12 +3,13 @@ title: Azure Service Bus – odložení zprávy
 description: Tento článek vysvětluje, jak odložit doručování Azure Service Busch zpráv. Zpráva zůstane ve frontě nebo odběru, ale odloží se bokem.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f4fe231c56a1bcdea4f15de90cb0e9406f0284a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7c9ec55de24c97df3530d80deef55ed87be84077
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341222"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511275"
 ---
 # <a name="message-deferral"></a>Odložení zpráv
 
@@ -19,6 +20,9 @@ Odložení je funkce specificky vytvořená pro scénáře zpracování pracovn�
 Jednoduchým ilustrativním příkladem je pořadí zpracování objednávky, ve kterém se v systému zobrazí oznámení o platbě od externího zprostředkovatele plateb, než se z obchodu dokončí výšení odpovídajícího nákupního Objednávky do systému plnění. V takovém případě může systém plnění odložit zpracování oznámení o platbě, dokud není objednávka, ke které se má přidružit. Ve scénářích Rendezvous, kde zprávy z různých zdrojů doplňují pracovní postup, může být v reálném čase pořadí spouštění skutečně správné, ale zprávy odrážející výsledky mohou být doručeny mimo pořadí.
 
 Časově rozlišené prostředky v konečném uspořádání zpráv z pořadí doručení do pořadí, ve kterém je lze zpracovat, ale tyto zprávy bez obav ponechají v úložišti zpráv, pro které je nutné zpracování odložit.
+
+> [!NOTE]
+> Odložené zprávy se [po vypršení platnosti](./service-bus-dead-letter-queues.md#exceeding-timetolive)automaticky nepřesunou do fronty nedoručených zpráv. Toto chování je záměrné.
 
 ## <a name="message-deferral-apis"></a>Rozhraní API pro odložení zpráv
 

@@ -3,12 +3,12 @@ title: Vyrovnávání zatížení oddílu napříč několika instancemi – Azu
 description: Popisuje, jak vyrovnávat zatížení oddílů mezi několika instancemi aplikace pomocí procesoru událostí a sady Azure Event Hubs SDK.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d5db1e877c1bfa6fac177e1ff8ed137e0301b709
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff68408be15d8160ea7ecd878a05441d82700f99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314988"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512312"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Vyrovnávání zatížení oddílu napříč několika instancemi vaší aplikace
 Chcete-li škálovat aplikaci pro zpracování událostí, můžete spustit více instancí aplikace a vyrovnávat zatížení mezi sebou. Ve starších verzích vám [EventProcessorHost](event-hubs-event-processor-host.md) povolil vyrovnávat zatížení mezi několika instancemi programu a události kontrolního bodu při příjmu. V novějších verzích (5,0 a vyšší), **EventProcessorClient** (.NET a Java) nebo **EventHubConsumerClient** (Python a JavaScript) vám umožňuje provádět stejné. Vývojový model je jednodušší pomocí událostí. Přihlásíte se k odběru událostí, na které vás zajímáte, registrací obslužné rutiny události.
@@ -16,7 +16,7 @@ Chcete-li škálovat aplikaci pro zpracování událostí, můžete spustit víc
 Tento článek popisuje vzorový scénář pro použití více instancí ke čtení událostí z centra událostí a pak vám poskytne podrobné informace o funkcích klienta procesoru událostí, který umožňuje přijímat události z více oddílů najednou a vyrovnávat zatížení s ostatními uživateli, kteří používají stejné centrum událostí a skupinu uživatelů.
 
 > [!NOTE]
-> Klíčem k horizontálnímu navýšení kapacity pro Event Hubs je nápad rozdělit uživatele na oddíly. Na rozdíl od vzorce [konkurenčních spotřebitelů](https://msdn.microsoft.com/library/dn568101.aspx) umožňuje vzor rozděleného uživatele vysoké škálování odebráním kritických bodů pro spor a zjednodušením koncového paralelismu.
+> Klíčem k horizontálnímu navýšení kapacity pro Event Hubs je nápad rozdělit uživatele na oddíly. Na rozdíl od vzorce [konkurenčních spotřebitelů](/previous-versions/msp-n-p/dn568101(v=pandp.10)) umožňuje vzor rozděleného uživatele vysoké škálování odebráním kritických bodů pro spor a zjednodušením koncového paralelismu.
 
 ## <a name="example-scenario"></a>Ukázkový scénář
 
@@ -75,7 +75,7 @@ Pokud se procesor událostí z oddílu odpojí, může jiná instance pokračova
 Při provádění kontrolního bodu za účelem označení události jako zpracovaného je položka v úložišti kontrolního bodu přidána nebo aktualizována pomocí posunu události a čísla sekvence. Uživatelé by se měli rozhodnout frekvence aktualizace kontrolního bodu. Aktualizace po všech úspěšně zpracovaných událostech může mít dopad na výkon a náklady, protože aktivuje operaci zápisu do základního úložiště kontrolního bodu. Vytváření kontrolních bodů pro každou jednotlivou událost je také informativní. vzor zasílání zpráv ve frontě, pro který Service Bus frontu, může být lepší volbou než centrum událostí. Nápad za Event Hubs je, že se vám dostanete aspoň jednou doručování ve skvělém měřítku. Díky tomu, že vaše systémy pro příjem dat idempotentní, je snadné se zotavit z chyb nebo restartovat, což vede k tomu, že se stejné události přijímají vícekrát.
 
 > [!NOTE]
-> Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack verze 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 
+> Pokud používáte Azure Blob Storage jako úložiště kontrolního bodu v prostředí, které podporuje jinou verzi sady SDK pro úložiště objektů blob, než jaké jsou běžně dostupné v Azure, budete muset použít kód ke změně verze rozhraní API služby úložiště na konkrétní verzi podporovanou tímto prostředím. Pokud například používáte [Event Hubs v centru Azure Stack verze 2002](/azure-stack/user/event-hubs-overview), nejvyšší dostupná verze služby úložiště je verze 2017-11-09. V takovém případě je nutné použít kód pro cílení na verzi rozhraní API služby úložiště na 2017-11-09. Příklad cílení na konkrétní verzi rozhraní API úložiště najdete v těchto ukázkách na GitHubu: 
 > - [Rozhraní .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) nebo [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)

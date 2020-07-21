@@ -5,11 +5,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: d2fd8a2cd7dac7b1d3c78691c84a861d924005ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a28b238701eeb0572149fb55e1633cdd40ec0a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250280"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511020"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>Společné umístění prostředků pro lepší latenci
 
@@ -25,6 +26,6 @@ Nasaďte virtuální počítač do [skupiny umístění blízkosti](proximity-pl
 
 Naučte se [testovat latenci sítě](https://aka.ms/TestNetworkLatency?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Naučte se [optimalizovat propustnost sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-optimize-network-bandwidth?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
+Naučte se [optimalizovat propustnost sítě](../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
-Naučte [se používat skupiny umístění pro Proximity s aplikacemi SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Naučte [se používat skupiny umístění pro Proximity s aplikacemi SAP](../workloads/sap/sap-proximity-placement-scenarios.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

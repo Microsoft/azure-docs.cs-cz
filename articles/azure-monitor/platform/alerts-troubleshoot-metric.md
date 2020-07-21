@@ -4,14 +4,14 @@ description: Běžné problémy se Azure Monitor výstrahami metrik a možnými 
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 06/21/2020
+ms.date: 07/15/2020
 ms.subservice: alerts
-ms.openlocfilehash: 36ff80bc0858d6d08cc120d126628de02ba6e703
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d569facb6c2b58222980cfa1488de3b1f5fb60f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130734"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515763"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Řešení potíží s výstrahami Azure Monitor metriky 
 
@@ -30,11 +30,11 @@ Pokud se domníváte, že výstraha metriky by měla být aktivována, ale nenar
        > [!NOTE] 
        > Dynamické prahové hodnoty vyžadují nejméně 3 dny a 30 vzorků metriky, než se stanou aktivní.
 
-2. **Aktivováno, ale žádné oznámení** – Projděte si seznam aktivovaných [výstrah](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) , abyste viděli, jestli můžete najít aktivované upozornění. Pokud se v seznamu zobrazí výstraha, ale došlo k potížím s některými jeho akcemi nebo oznámeními, přečtěte si [zde](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-troubleshoot#action-or-notification-on-my-alert-did-not-work-as-expected)Další informace.
+2. **Aktivováno, ale žádné oznámení** – Projděte si seznam aktivovaných [výstrah](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) , abyste viděli, jestli můžete najít aktivované upozornění. Pokud se v seznamu zobrazí výstraha, ale došlo k potížím s některými jeho akcemi nebo oznámeními, přečtěte si [zde](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)Další informace.
 
 3. **Již aktivní** – ověřte, zda již není aktivována výstraha v časové řadě metriky, pro kterou jste očekávali upozornění. Výstrahy metriky jsou stavové výstrahy, což znamená, že jakmile se výstraha aktivuje na konkrétní časové řadě metriky, neprojeví se další výstrahy v této časové řadě, dokud nebude problém nepozorovaný. Tato volba návrhu snižuje šum. Výstraha je vyřešena automaticky, pokud není splněna podmínka upozornění pro tři po sobě jdoucí hodnocení.
 
-4. **Použité dimenze** – Pokud jste vybrali některé [hodnoty dimenzí metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#using-dimensions), pravidlo výstrahy monitoruje každou jednotlivou časovou řadu metrik (definovanou kombinací hodnot dimenzí) pro porušení prahové hodnoty. Chcete-li také monitorovat agregovanou časovou řadu metrik (bez vybraných dimenzí), nakonfigurujte další pravidlo výstrahy pro metriku bez výběru dimenzí.
+4. **Použité dimenze** – Pokud jste vybrali některé [hodnoty dimenzí metriky](./alerts-metric-overview.md#using-dimensions), pravidlo výstrahy monitoruje každou jednotlivou časovou řadu metrik (definovanou kombinací hodnot dimenzí) pro porušení prahové hodnoty. Chcete-li také monitorovat agregovanou časovou řadu metrik (bez vybraných dimenzí), nakonfigurujte další pravidlo výstrahy pro metriku bez výběru dimenzí.
 
 5. **Agregovaná a časová členitost** – Pokud vizualizujete metriku pomocí [grafů metrik](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics), ujistěte se, že:
     * Vybraná **agregace** v grafu metriky je stejná jako **typ agregace** v pravidle upozornění.
@@ -49,7 +49,7 @@ Pokud se domníváte, že výstraha o metrikě by neměla být aktivována, ale 
     > [!NOTE] 
     > Pokud používáte typ podmínky Dynamické prahové hodnoty a myslíte si, že použité prahové hodnoty nebyly správné, pomocí ikony zamračeného smajlíka nám poskytněte zpětnou vazbu. Tato zpětná vazba bude mít vliv na algoritmus Machine Learning algorithming a pomůže vám zlepšit budoucí zjišťování.
 
-2. Pokud jste pro metriku vybrali více hodnot dimenzí, bude tato výstraha aktivována, pokud **kterákoli** z časových řad metriky (definovaná kombinací hodnot dimenzí) nedodržuje prahovou hodnotu. Další informace o používání dimenzí v upozorněních metrik najdete [tady](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#using-dimensions).
+2. Pokud jste pro metriku vybrali více hodnot dimenzí, bude tato výstraha aktivována, pokud **kterákoli** z časových řad metriky (definovaná kombinací hodnot dimenzí) nedodržuje prahovou hodnotu. Další informace o používání dimenzí v upozorněních metrik najdete [tady](./alerts-metric-overview.md#using-dimensions).
 
 3. Zkontrolujte konfiguraci pravidla výstrahy, abyste se ujistili, že je správně nakonfigurovaný:
     - Ověřte, že **typ agregace**, **členitost agregace (period)** a **prahová hodnota** nebo **Citlivost** jsou nakonfigurovány podle očekávání.
@@ -65,23 +65,25 @@ Pokud se domníváte, že výstraha o metrikě by neměla být aktivována, ale 
 5. Pokud se výstraha vyvolala v době, kdy jsou již aktivována upozornění, která sledují stejná kritéria (která nejsou vyřešena), ověřte, zda bylo pravidlo výstrahy nakonfigurováno s vlastností *Autozmírňování* nastavenou na **hodnotu false** (tuto vlastnost lze nakonfigurovat pouze pomocí REST/PowerShell/CLI), a proto ověřte skript používaný k nasazení pravidla výstrahy. V takovém případě pravidlo výstrahy nevyvolá automaticky aktivované výstrahy a před opětovným vypálením nevyžaduje, aby byla vyřešena výstraha aktivována.
 
 
-## <a name="cant-find-metric-to-alert-on---virtual-machines"></a>Nejde najít metriku pro upozornění na virtuálních počítačích. 
+## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>Nejde najít metriku pro upozornění na metriky hosta virtuálních počítačů.
 
-Chcete-li upozornit na metriky hostů na virtuálních počítačích (pro paměť, místo na disku), ujistěte se, že jste nastavili nastavení diagnostiky k odesílání dat do Azure Monitor jímky:
-    * [Pro virtuální počítače s Windows](https://docs.microsoft.com/azure/azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm)
-    * [Pro virtuální počítače s Linuxem](https://docs.microsoft.com/azure/azure-monitor/platform/collect-custom-metrics-linux-telegraf)
+Pokud chcete upozornit na metriky virtuálních počítačů hostovaného operačního systému (třeba paměť, místo na disku), ujistěte se, že jste nainstalovali požadovaného agenta pro shromáždění těchto dat do Azure Monitor metrik:
+- [Pro virtuální počítače s Windows](./collect-custom-metrics-guestos-resource-manager-vm.md)
+- [Pro virtuální počítače s Linuxem](./collect-custom-metrics-linux-telegraf.md)
+
+Další informace o shromažďování dat z hostovaného operačního systému virtuálního počítače najdete [tady](../insights/monitor-vm-azure.md#guest-operating-system).
     
 > [!NOTE] 
-> Pokud jste nakonfigurovali metriky hosta k odeslání do Log Analytics pracovního prostoru, zobrazí se metriky pod prostředkem Log Analytics pracovního prostoru a začnou se **zobrazovat data až** po vytvoření pravidla výstrahy, které je monitoruje. Postupujte podle pokynů ke [konfiguraci upozornění na metriku pro protokoly](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-logs#configuring-metric-alert-for-logs).
+> Pokud jste nakonfigurovali metriky hosta k odeslání do Log Analytics pracovního prostoru, zobrazí se metriky pod prostředkem Log Analytics pracovního prostoru a začnou se **zobrazovat data až** po vytvoření pravidla výstrahy, které je monitoruje. Postupujte podle pokynů ke [konfiguraci upozornění na metriku pro protokoly](./alerts-metric-logs.md#configuring-metric-alert-for-logs).
 
 ## <a name="cant-find-the-metric-to-alert-on"></a>Nejde najít metriku, na které se má upozornit.
 
-Pokud chcete upozornit na konkrétní metriku, ale nevidíte žádné metriky pro daný prostředek, [Zkontrolujte, jestli je typ prostředku podporovaný pro výstrahy metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-near-real-time).
-Pokud vidíte některé metriky pro prostředek, ale nemůžete najít konkrétní metriky, [Zkontrolujte, jestli je tato metrika k dispozici](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported), a pokud ano, podívejte se na popis metriky a zjistěte, jestli je k dispozici jenom pro konkrétní verze nebo edice prostředku.
+Pokud chcete upozornit na konkrétní metriku, ale nevidíte žádné metriky pro daný prostředek, [Zkontrolujte, jestli je typ prostředku podporovaný pro výstrahy metriky](./alerts-metric-near-real-time.md).
+Pokud vidíte některé metriky pro prostředek, ale nemůžete najít konkrétní metriky, [Zkontrolujte, jestli je tato metrika k dispozici](./metrics-supported.md), a pokud ano, podívejte se na popis metriky a zjistěte, jestli je k dispozici jenom pro konkrétní verze nebo edice prostředku.
 
 ## <a name="cant-find-the-metric-dimension-to-alert-on"></a>Nejde najít dimenzi metriky, na které se má upozornit.
 
-Pokud chcete upozornit na [konkrétní hodnoty dimenze metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#using-dimensions), ale tyto hodnoty nejdou najít, pamatujte na toto:
+Pokud chcete upozornit na [konkrétní hodnoty dimenze metriky](./alerts-metric-overview.md#using-dimensions), ale tyto hodnoty nejdou najít, pamatujte na toto:
 
 1. Zobrazení hodnot dimenzí v seznamu **Hodnoty dimenzí** může několik minut trvat.
 1. Zobrazené hodnoty dimenzí vycházejí z dat metriky shromážděných za poslední tři dny.
@@ -99,7 +101,7 @@ Při odstranění prostředku Azure nedojde k automatickému odstranění souvis
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Vytváření upozornění na metriky při každém splnění podmínky
 
-Výstrahy metriky jsou ve výchozím stavu stav, a proto se další výstrahy nespustí, pokud je v dané časové řadě již aktivována výstraha. Pokud chcete nastavit konkrétní pravidlo upozornění na metriku bez stavů a upozornit na každé vyhodnocení, ve kterém je podmínka výstrahy splněná, vytvořte pravidlo výstrahy programově (například prostřednictvím [Správce prostředků](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates), [PowerShellu](https://docs.microsoft.com/powershell/module/az.monitor/?view=azps-3.6.1), [REST](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate), [CLI](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)) a nastavte vlastnost *autozmírňovat* na false.
+Výstrahy metriky jsou ve výchozím stavu stav, a proto se další výstrahy nespustí, pokud je v dané časové řadě již aktivována výstraha. Pokud chcete nastavit konkrétní pravidlo upozornění na metriku bez stavů a upozornit na každé vyhodnocení, ve kterém je podmínka výstrahy splněná, vytvořte pravidlo výstrahy programově (například prostřednictvím [Správce prostředků](./alerts-metric-create-templates.md), [PowerShellu](/powershell/module/az.monitor/?view=azps-3.6.1), [REST](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)) a nastavte vlastnost *autozmírňovat* na false.
 
 > [!NOTE] 
 > Když se pravidlo upozornění na metriku nevrátí, zaaktivuje se nevyřešené výstrahy, takže i po nesplnění podmínky zůstane aktivované výstrahy v aktivovaném stavu, dokud nebude doba uchování 30 dnů.
@@ -107,12 +109,12 @@ Výstrahy metriky jsou ve výchozím stavu stav, a proto se další výstrahy ne
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Kvóta pravidel upozornění metrik je příliš malá.
 
-Povolený počet pravidel upozornění metrik na předplatné podléhá [omezením kvót](https://docs.microsoft.com/azure/azure-monitor/service-limits).
+Povolený počet pravidel upozornění metrik na předplatné podléhá [omezením kvót](../service-limits.md).
 
 Pokud jste dosáhli limitu kvóty, může vám s řešením tohoto problému pomoct následující postup:
 1. Zkuste odstranit nebo zakázat pravidla upozornění na metriky, které už se nepoužívají.
 
-2. Přejděte na používání pravidel upozornění na metriky, která monitorují více prostředků. Díky této funkci může jedno pravidlo výstrahy monitorovat více prostředků pomocí pouze jednoho pravidla výstrahy započítaného na kvótu. Další informace o této možnosti a podporovaných typech prostředků najdete [tady](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-overview#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
+2. Přejděte na používání pravidel upozornění na metriky, která monitorují více prostředků. Díky této funkci může jedno pravidlo výstrahy monitorovat více prostředků pomocí pouze jednoho pravidla výstrahy započítaného na kvótu. Další informace o této možnosti a podporovaných typech prostředků najdete [tady](./alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor).
 
 3. Pokud potřebujete maximální kvótu zvýšit, otevřete žádost o podporu a zadejte následující informace:
 
@@ -135,9 +137,9 @@ Chcete-li zjistit aktuální využití pravidel upozornění metriky, postupujte
 
 ### <a name="from-api"></a>Pomocí rozhraní API
 
-- PowerShell – [Get-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
-- Rozhraní REST API – [Seznam podle předplatného](https://docs.microsoft.com/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI – [az monitor metrics alert list](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+- PowerShell – [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- Rozhraní REST API – [Seznam podle předplatného](/rest/api/monitor/metricalerts/listbysubscription)
+- Azure CLI – [az monitor metrics alert list](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Správa pravidel výstrah pomocí Správce prostředků šablon, REST API, PowerShellu nebo rozhraní příkazového řádku Azure
 
@@ -145,43 +147,43 @@ Pokud dochází k potížím při vytváření, aktualizaci, načítání nebo o
 
 ### <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
-- Projděte si seznam [běžných chyb nasazení Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors) a vyřešte případné potíže.
-- V [příkladech výstrahy metriky Azure Resource Manager příklady šablon](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates) , které vám zajistí správné předání všech parametrů.
+- Projděte si seznam [běžných chyb nasazení Azure](../../azure-resource-manager/templates/common-deployment-errors.md) a vyřešte případné potíže.
+- V [příkladech výstrahy metriky Azure Resource Manager příklady šablon](./alerts-metric-create-templates.md) , které vám zajistí správné předání všech parametrů.
 
 ### <a name="rest-api"></a>REST API
 
-Projděte si [příručku k rozhraní REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/) a ověřte, že správně předáváte všechny parametry.
+Projděte si [příručku k rozhraní REST API](/rest/api/monitor/metricalerts/) a ověřte, že správně předáváte všechny parametry.
 
 ### <a name="powershell"></a>PowerShell
 
 Ujistěte se, že používáte správné rutiny PowerShellu pro výstrahy metrik:
 
-- Rutiny PowerShellu pro upozornění metrik jsou k dispozici v [modulu Az.Monitor](https://docs.microsoft.com/powershell/module/az.monitor/?view=azps-3.6.1).
-- Nezapomeňte použít rutiny končící na v2 pro nové (neklasické) výstrahy metriky (například [Add-AzMetricAlertRuleV2](https://docs.microsoft.com/powershell/module/az.monitor/Add-AzMetricAlertRuleV2?view=azps-3.6.1)).
+- Rutiny PowerShellu pro upozornění metrik jsou k dispozici v [modulu Az.Monitor](/powershell/module/az.monitor/?view=azps-3.6.1).
+- Nezapomeňte použít rutiny končící na v2 pro nové (neklasické) výstrahy metriky (například [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1)).
 
 ### <a name="azure-cli"></a>Azure CLI
 
 Ujistěte se, že používáte pro výstrahy metrik správné příkazy rozhraní příkazového řádku:
 
-- Příkazy rozhraní příkazového řádku pro upozornění metrik začínají na `az monitor metrics alert`. Projděte si [referenční dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest) a seznamte se se syntaxí.
-- Můžete si prohlédnout [ukázku použití rozhraní příkazového řádku pro upozornění metrik](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#with-azure-cli).
+- Příkazy rozhraní příkazového řádku pro upozornění metrik začínají na `az monitor metrics alert`. Projděte si [referenční dokumentaci k Azure CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest) a seznamte se se syntaxí.
+- Můžete si prohlédnout [ukázku použití rozhraní příkazového řádku pro upozornění metrik](./alerts-metric.md#with-azure-cli).
 - Pokud chcete nastavit upozorňování na vlastní metriku, nezapomeňte jako předponu názvu metriky použít odpovídající obor názvů metriky: OBOR_NÁZVŮ.METRIKA
 
 ### <a name="general"></a>Obecné
 
 - Pokud se vám zobrazuje chyba `Metric not found`:
 
-   - Metrika platformy: Ujistěte se, že používáte název **metriky** ze [stránky podporované metriky Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported), a ne jako **Zobrazovaný název metriky** .
+   - Metrika platformy: Ujistěte se, že používáte název **metriky** ze [stránky podporované metriky Azure monitor](./metrics-supported.md), a ne jako **Zobrazovaný název metriky** .
 
-   - Vlastní metrika: Ujistěte se, že je metrika už vysílaná (nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje) a jestli poskytujete obor názvů vlastní metriky ( [tady](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)najdete příklad šablony ARM).
+   - Vlastní metrika: Ujistěte se, že je metrika už vysílaná (nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje) a jestli poskytujete obor názvů vlastní metriky ( [tady](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)najdete příklad šablony ARM).
 
-- Pokud vytváříte [upozornění na metriky týkající se protokolů](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-logs), zkontrolujte, jestli jsou zahrnuté příslušné závislosti. Prohlédněte si [ukázkovou šablonu](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-logs#resource-template-for-metric-alerts-for-logs).
+- Pokud vytváříte [upozornění na metriky týkající se protokolů](./alerts-metric-logs.md), zkontrolujte, jestli jsou zahrnuté příslušné závislosti. Prohlédněte si [ukázkovou šablonu](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 - Pokud vytváříte pravidlo upozornění, které obsahuje více kritérií, pamatujte na následující omezení:
 
    - V rámci každého kritéria můžete vybrat jenom jednu hodnotu pro každou dimenzi.
    - Jako hodnotu dimenze nemůžete použít \*.
-   - Pokud metriky, které jsou konfigurovány v různých kriteriích, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky ( [Viz příklad šablony](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates#template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria)správce prostředků příklad).
+   - Pokud metriky, které jsou konfigurovány v různých kriteriích, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky ( [Viz příklad šablony](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria)správce prostředků příklad).
 
 
 ## <a name="no-permissions-to-create-metric-alert-rules"></a>Žádná oprávnění k vytváření pravidel upozornění metrik

@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112982"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512659"
 ---
-# <a name="release-notes"></a>Poznámky k verzi
+# <a name="speech-service-release-notes"></a>Poznámky k verzi služby Speech Service
 
 ## <a name="text-to-speech-2020-july-release"></a>Převod textu na řeč 2020 – červenec verze
 
@@ -105,7 +105,7 @@ ms.locfileid: "86112982"
 -   Oprava chyby narušení přístupu ověřovatele aplikace systému Windows v přepisu konverzace při použití streamu s 8 kanály.
 -   Oprava chyby narušení přístupu ověřovače aplikací systému Windows v překladu konverzací na více zařízení.
 
-**Ukázky**
+**ukázky**
 -   **C#**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/speaker-recognition) pro rozpoznávání mluvčího.
 -   **C++**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/speaker-recognition) pro rozpoznávání mluvčího.
 -   **Java**: [Ukázka kódu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/intent-recognition) pro rozpoznávání záměrů v Androidu. 
@@ -140,7 +140,7 @@ Buďte v pořádku!
 - Opravili spor, ve kterém se sada SDK pokoušela Odeslat síťovou zprávu před otevřením připojení protokolu WebSocket. Bylo reprodukovatelné `TranslationRecognizer` při přidávání účastníků.
 - Pevná nevracení paměti v modulu pro rozpoznávání klíčových slov.
 
-**Ukázky**
+**ukázky**
 - **Přejít**: Přidali jsme rychlé starty pro [rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone?pivots=programming-language-go) a [vlastního hlasového asistenta](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/voice-assistants?pivots=programming-language-go). [Zde](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)najdete vzorový kód. 
 - **JavaScript**: Přidali jsme rychlé starty pro převod [textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/text-to-speech?pivots=programming-language-javascript), [překlady](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/translate-speech-to-text?pivots=programming-language-javascript)a [rozpoznávání záměru](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition?pivots=programming-language-javascript).
 - Ukázky rozpoznávání klíčových slov pro jazyky [C \# ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) a [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android).  
@@ -166,7 +166,7 @@ Buďte v pořádku!
 - JavaScript: Přidání podpory pro oblasti v Číně s `fromSubscription` rozhraním API. Podrobnosti [.](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-) 
 - JavaScript: přidejte další informace o chybě pro chyby připojení z NodeJS.
         
-**Ukázky**
+**ukázky**
 - Unity: veřejná ukázka rozpoznávání záměrů je pevná, kde se LUIS import JSON nezdařil. Podrobnosti [.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369)
 - Python: byla přidána ukázka pro `Language ID` . Podrobnosti [.](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)
     
@@ -196,7 +196,7 @@ Buďte v pořádku!
  - Použití koncového bodu bez oblasti způsobí selhání USP pro překladatele konverzace.
  - Generování ID v univerzálních aplikacích pro Windows teď používá vhodně jedinečný algoritmus GUID; dřív a záměrně neúmyslně nastavily implementaci podložit, která často produkuje kolizí v rámci velkých sad interakcí.
  
- **Ukázky**
+ **ukázky**
  
  - Ukázka Unity pro použití sady Speech SDK s [mikrofonem Unity a streamování přes nabízený režim](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone)
 
@@ -217,7 +217,7 @@ Buďte v pořádku!
 - JavaScript: Přidání podpory pro pro `FromHost API` usnadnění používání s Prem kontejnery a svrchovanými cloudy. Další informace [najdete v dokumentaci.](speech-container-howto.md)
 - JavaScript: nyní jsme se spojili `NODE_TLS_REJECT_UNAUTHORIZED` s příspěvkem z [orgads](https://github.com/orgads). [Tady](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)najdete podrobnosti.
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
 - `OpenSSL`byla aktualizována na verzi 1.1.1 b a staticky propojená se základní knihovnou sady Speech SDK pro Linux. To může způsobit přerušení, pokud vaše Doručená pošta nebyla `OpenSSL` nainstalována do `/usr/lib/ssl` adresáře v systému. Pokud chcete tento problém obejít, přečtěte si [naši dokumentaci](how-to-configure-openssl-linux.md) v části dokumentace k sadě Speech SDK.
 - Změnili jsme datový typ vrácený pro C# `WordLevelTimingResult.Offset` z `int` na, `long` aby bylo umožněno přístupu k `WordLevelTimingResults` datům, když jsou data řeči delší než 2 minuty.
@@ -237,7 +237,7 @@ Buďte v pořádku!
 - JavaScript: Přidání podpory pro nastavení vlastností služby, jak je přidáno v 1,7.
 - JavaScript: Opravili jsme problém, kdy by chyba připojení mohla způsobit průběžné pokusy o opětovné připojení k soketu WebSocket.
 
-**Ukázky**
+**ukázky**
 
 - [Sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)přidejte ukázku rozpoznávání klíčových slov pro Android.
 - [Sem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)přidejte ukázku TTS pro scénář serveru.
@@ -258,7 +258,7 @@ Buďte v pořádku!
 - Přidání `KeywordRecognizer` podpory pro Windows (UWP), Android a iOS prostřednictvím balíčků NuGet a Unity
 - Bylo přidáno rozhraní API vzdálené konverzace Java, které umožní přepis konverzace v asynchronních dávkách.
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
 - Funkce konverzace Transcriber přesunuté do oboru názvů `Microsoft.CognitiveServices.Speech.Transcription` .
 - Součást metod konverzace Transcriber je přesunuta do nové `Conversation` třídy.
@@ -268,7 +268,7 @@ Buďte v pořádku!
 
 - Opravit pro chybu, pokud `KeywordRecognizer` je místní použití bez platného klíče předplatného služby Speech
 
-**Ukázky**
+**ukázky**
 
 - Ukázka Xamarin pro`KeywordRecognizer`
 - Ukázka Unity pro`KeywordRecognizer`
@@ -299,7 +299,7 @@ Buďte v pořádku!
 - `DialogServiceConnector`spuštění relace nyní bude správně poskytovat události, včetně při volání `ListenOnceAsync()` během aktivní`StartKeywordRecognitionAsync()`
 - Vyřešená havárie přidružená k `DialogServiceConnector` přijatým aktivitám
 
-**Ukázky**
+**ukázky**
 
 - Rychlý Start pro Xamarin
 - Aktualizovaný rychlý Start pro CPP s ARM64 informacemi pro Linux
@@ -307,7 +307,7 @@ Buďte v pořádku!
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Sada Speech SDK 1.6.0:2019 – červenou verzi
 
-**Ukázky**
+**ukázky**
 
 - Ukázky rychlý Start pro převod textu na řeč pro UWP a Unity
 - Ukázka rychlého startu pro SWIFT v iOS
@@ -356,7 +356,7 @@ Toto je vydání opravy chyby a ovlivňuje pouze nativní/spravované sady SDK. 
 - Funkce přepisu konverzace je k dispozici prostřednictvím sady SDK. Podívejte se [sem](conversation-transcription-service.md).
 - Přidejte podporu pro hlasové asistenty pomocí kanálu Direct line Speech.
 
-**Ukázky**
+**ukázky**
 
 - Byly přidány ukázky pro nové funkce nebo nové služby, které sada SDK podporuje.
 
@@ -392,7 +392,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 - JavaScript: podpora pro jiný než výchozí mikrofon jako vstupní zařízení.
 - JavaScript: podpora proxy serveru pro Node.js.
 
-**Ukázky**
+**ukázky**
 
 - Byly přidány ukázky pro použití sady Speech SDK s C++ a s cílem-C v macOS.
 - Byly přidány ukázky demonstrující použití služby převodu textu na řeč.
@@ -425,7 +425,7 @@ Toto je vydání opravy chyby a ovlivňuje pouze nativní/spravované sady SDK. 
 - Sada Speech SDK teď ve verzi beta verze podporuje Unity. Poskytněte zpětnou vazbu v části problém v [ukázkovém úložišti GitHubu](https://aka.ms/csspeech/samples). Tato verze podporuje Unity v systémech Windows x86 a x64 (desktopové nebo Univerzální platforma Windows aplikace) a Androidu (ARM32/64, x86). Další informace najdete v našem [rychlém](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)startu pro Unity.
 - Soubor `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (dodán v předchozích verzích) už není potřeba. Tato funkce je teď integrovaná do základní sady SDK.
 
-**Ukázky**
+**ukázky**
 
 V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)je k dispozici následující nový obsah:
 
@@ -486,7 +486,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
   - Z `Recognizer` , můžete získat přístup k `Connection` objektu. Tento objekt vám umožňuje explicitně iniciovat připojení služby a přihlásit se k odběru událostí a odpojovat se.
     (Tato funkce ještě není dostupná z JavaScriptu a Pythonu.)
 - Podpora pro Ubuntu 18,04.
-- Android
+- Telefon
   - Povolená podpora ProGuard během generování APK
 
 **Vylepšen**
@@ -508,7 +508,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 - JavaScript: Nastavte výchozí výstupní formát na možnost "jednoduchý" v `SpeechConfig` .
 - JavaScript: odebrání nekonzistence mezi vlastnostmi objektu konfigurace v jazyce JavaScript a dalších jazycích.
 
-**Ukázky**
+**ukázky**
 
 - Aktualizovali a opravili jsme několik ukázek (například výstupní hlasy pro překlad atd.).
 - Do [ukázkového úložiště](https://aka.ms/csspeech/samples)se přidaly Node.js ukázky.
@@ -540,7 +540,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 - Opravili jsme chybu, která brání v nastavení `EndpointId` (v některých případech) v JavaScriptu.
 - Změnili jsme pořadí parametrů v AddIntent v JavaScriptu a Přidali jste chybějící `AddIntent` podpis JavaScriptu.
 
-**Ukázky**
+**ukázky**
 
 - Přidány ukázky jazyka C++ a C# pro použití pro vyžádání obsahu a nabízené vysílání do [vzorového úložiště](https://aka.ms/csspeech/samples).
 
@@ -565,7 +565,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 - Podpora pro cíl-C v iOS. Podívejte se na náš rychlý úvodní úkol [v jazyce C pro iOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md).
 - Podpora JavaScriptu v prohlížeči Podívejte se na náš [rychlý úvodní JavaScript](quickstart-js-browser.md).
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
 - V této verzi se zavádí určitý počet nezměněných změn.
   Podrobnosti najdete na [této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) .
@@ -584,7 +584,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 
 - Vystavení dalších podrobností o chybách při chybě připojení
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
 - V jazyce Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` již funkce nevyžaduje parametr cesty. Tato cesta se teď automaticky detekuje na všech podporovaných platformách.
 - Přístupový objekt get vlastnosti `EndpointUrl` v jazycích Java a C# byl odebrán.
@@ -613,7 +613,7 @@ V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala N
 - Výsledek rozpoznávání obsahuje více polí. Jsou posunuty od zahájení zvuku a doby trvání (v tiků) rozpoznaného textu a dalších hodnot, které představují stav rozpoznávání, například `InitialSilenceTimeout` a `InitialBabbleTimeout` .
 - Podporuje AuthorizationToken pro vytváření instancí továrny.
 
-**Průlomové změny**
+**Změny způsobující chyby**
 
 - Události rozpoznávání: `NoMatch` Typ události byl sloučen do `Error` události.
 - SpeechOutputFormat v jazyce C# byla přejmenována na `OutputFormat` , aby zůstala v souladu s C++.

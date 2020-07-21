@@ -2,18 +2,16 @@
 title: Vytvoření členu služby Azure blockchain pomocí šablony Azure Resource Manager
 description: Naučte se vytvořit člena služby Azure blockchain pomocí šablony Azure Resource Manager.
 services: azure-resource-manager
-author: PatAltimore
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
-ms.author: patricka
-ms.date: 06/04/2020
-ms.openlocfilehash: 8eabb6806dee96871648ea419ba36d768d32a2ab
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: subject-armqs, references_regions
+ms.date: 07/16/2020
+ms.openlocfilehash: fb7f91a0670d99170656c0c3a2c1b73d96095762
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078162"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513009"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-arm-template"></a>Rychlý Start: Vytvoření členu služby Azure blockchain pomocí šablony ARM
 
@@ -21,7 +19,7 @@ V tomto rychlém startu nasadíte nového člena blockchain a konsorcia v Azure 
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud vaše prostředí splňuje požadavky a Vy jste obeznámeni s používáním šablon ARM, vyberte tlačítko **nasadit do Azure** . Šablona se otevře v Azure Portal.
+Pokud vaše prostředí splňuje požadavky a jste obeznámeni s používáním šablon ARM, vyberte tlačítko **Nasazení do Azure**. Šablona se otevře v prostředí Azure Portal.
 
 [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
 
@@ -31,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ## <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/).
 
 :::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json" range="1-84" highlight="52-80":::
 
@@ -47,11 +45,11 @@ Prostředky Azure definované v šabloně:
 
 1. Zadejte nastavení pro člena služby Azure blockchain.
 
-    Nastavení | Description
+    Nastavení | Popis
     --------|------------
     Předplatné | Vyberte předplatné Azure, které chcete použít pro vaši službu. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | Vytvořte nový název skupiny prostředků nebo vyberte existující v rámci svého předplatného.
-    Umístění | Vyberte umístění pro vytvoření člena. Všichni členové konsorcia musí být ve stejném umístění. Dostupná umístění pro nasazení jsou *westeurope, eastus, southeastasia, westeurope, northeurope, westus2*a *japaneast*.
+    Umístění | Vyberte umístění pro vytvoření člena. Všichni členové konsorcia musí být ve stejném umístění. Dostupná umístění pro nasazení jsou *westeurope, eastus, southeastasia, westeurope, northeurope, westus2*a *japaneast*. Funkce nemusí být k dispozici v některých oblastech. Azure blockchain Data Manager je k dispozici v následujících oblastech Azure: Východní USA a Západní Evropa.
     Název členu | Vyberte jedinečný název členu služby Azure blockchain. Název členu blockchain může obsahovat jenom malá písmena a číslice. Prvním znakem musí být písmeno. Hodnota musí být dlouhá 2 až 20 znaků.
     Název konsorcia | Zadejte jedinečný název. Další informace o konsorciích najdete v článku [konsorcium služby Azure blockchain](consortium.md).
     Heslo člena | Heslo pro členský účet slouží k šifrování privátního klíče pro účet Ethereem, který je vytvořen pro vašeho člena. Použijete členský účet a heslo členského účtu pro správu konsorcia.

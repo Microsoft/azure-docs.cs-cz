@@ -9,11 +9,13 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-ansible
+ms.openlocfilehash: ba6fab2c2112c0e2c32e07965ededea817c37cbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759530"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510595"
 ---
 # <a name="post-deployment-tasks"></a>Úkoly po nasazení
 
@@ -84,7 +86,7 @@ Na webu Azure Portal:
 
    ![Přístup k registraci aplikace](media/openshift-post-deployment/app-registration-access.png)
 
-8. Vyberte **Done** (Hotovo).
+8. Vyberte **Hotovo**.
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Konfigurace OpenShift pro ověřování Azure AD
 
@@ -158,7 +160,7 @@ Existují tři způsoby, jak přidat agenta Log Analytics do OpenShift.
 - Povolit rozšíření Azure Monitor VM na každém uzlu OpenShift
 - Instalace agenta Log Analytics jako sady OpenShift démona
 
-Další podrobnosti si můžete přečíst v části úplné [pokyny](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) .
+Další podrobnosti si můžete přečíst v části úplné [pokyny](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) .
 
 ## <a name="configure-metrics-and-logging"></a>Konfigurace metrik a protokolování
 

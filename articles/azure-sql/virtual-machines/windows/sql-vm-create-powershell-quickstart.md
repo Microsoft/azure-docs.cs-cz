@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e821c650bae7694070624aeebe7fcc3482f7a3b9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: eafbf102c092b180a1f3c882f5ae626e60b80f30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667382"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514607"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Rychlý Start: vytvoření SQL Server na virtuálním počítači s Windows pomocí Azure PowerShell
 
@@ -89,7 +89,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
       -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name $PipName
    ```
 
-1. Vytvořte skupinu zabezpečení sítě. Konfigurujte pravidla, která povolí připojení ke vzdálené ploše (RDP) a SQL serveru.
+1. Vytvoření skupiny zabezpečení sítě Konfigurujte pravidla, která povolí připojení ke vzdálené ploše (RDP) a SQL serveru.
 
    ```powershell
    # Rule to allow remote desktop (RDP)
@@ -147,13 +147,34 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
    > [!TIP]
    > Vytvoření virtuálního počítače trvá několik minut.
 
-## <a name="install-the-sql-iaas-agent"></a>Instalace agenta SQL IaaS
+## <a name="register-with-sql-vm-rp"></a>Registrace s využitím SQL VM RP 
 
-Chcete-li získat funkce integrace portálu a virtuálního počítače SQL, je nutné nainstalovat [rozšíření agenta SQL Server IaaS](sql-server-iaas-agent-extension-automate-management.md). Pokud chcete nainstalovat agenta na nový virtuální počítač, spusťte po vytvoření virtuálního počítače následující příkaz.
+Pokud chcete získat funkce integrace portálu a virtuálního počítače SQL, musíte se zaregistrovat u [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md).
 
-   ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
-   ```
+Pokud chcete získat plnou funkčnost, budete se muset zaregistrovat u poskytovatele prostředků v plném režimu. Tím se ale služba SQL Server restartuje, takže doporučeným přístupem je registrace v nenáročném režimu a následná aktualizace na plnou dobu v časovém intervalu pro správu a údržbu. 
+
+Nejdřív Zaregistrujte svůj SQL Server virtuální počítač v režimu prostého zápisu: 
+
+```powershell-interactive
+# Get the existing compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+        
+# Register SQL VM with 'Lightweight' SQL IaaS agent
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+  -LicenseType PAYG -SqlManagementType LightWeight
+```
+
+Během časového období údržby upgradujte na úplný režim: 
+
+```powershell-interactive
+# Get the existing Compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+      
+# Register with SQL VM resource provider in full mode
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+```
+
+
 
 ## <a name="remote-desktop-into-the-vm"></a>Připojení k virtuálnímu počítači pomocí Vzdálené plochy
 

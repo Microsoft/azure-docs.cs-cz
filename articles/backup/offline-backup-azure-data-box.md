@@ -3,16 +3,16 @@ title: Offline zálohování pomocí Azure Data Box
 description: Naučte se, jak můžete použít Azure Data Box k osazení velkých počátečních zálohovaných dat offline od agenta MARS do trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160951"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513689"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
 
-[Azure Data box](https://docs.microsoft.com/azure/databox/data-box-overview) můžete použít k osazení velkých počátečních záloh Microsoft Azure Recovery Services (MARS) offline (bez použití sítě) do trezoru Recovery Services. Tento proces šetří čas a šířku pásma sítě, které by jinak využily přesun velkých objemů zálohovaných dat online přes síť s vysokou latencí. Toto vylepšení je momentálně ve verzi Preview. Offline zálohování na základě Azure Data Box poskytuje dvě různé výhody oproti [zálohování offline založené na službě Azure import/export](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export):
+[Azure Data box](../databox/data-box-overview.md) můžete použít k osazení velkých počátečních záloh Microsoft Azure Recovery Services (MARS) offline (bez použití sítě) do trezoru Recovery Services. Tento proces šetří čas a šířku pásma sítě, které by jinak využily přesun velkých objemů zálohovaných dat online přes síť s vysokou latencí. Toto vylepšení je momentálně ve verzi Preview. Offline zálohování na základě Azure Data Box poskytuje dvě různé výhody oproti [zálohování offline založené na službě Azure import/export](./backup-azure-backup-import-export.md):
 
 - Nemusíte si vystarat vlastní disky a konektory, které jsou kompatibilní s Azure. Azure Data Box dodávající disky přidružené k vybrané [SKU data box](https://azure.microsoft.com/services/databox/data/).
 - Azure Backup (agent MARS) může přímo zapisovat data zálohy na podporované SKU Azure Data Box. Tato funkce eliminuje nutnost zřídit pracovní umístění pro počáteční data záloh. Nepotřebujete také nástroje pro formátování a kopírování těchto dat na disky.
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak můžete použít Azure Data Box k počátečn
 
 Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v následujících SKU systému Windows.
 
-| **OS**                                 | **SKU**                                                      |
+| **OS**                                 | **Skladová jednotka (SKU)**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **Pracovní stanice**                        |                                                              |
 | Windows 10, 64bitová verze                     | Enterprise, Pro, Home                                       |
@@ -47,8 +47,8 @@ Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v n�
 
 | Velikost zálohovaných dat (po kompresi pomocí MARS) * na server | Podporovaná Azure Data Box SKU                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 7,2 TB                                                    | [Azure Data Box disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| >7,2 TB a <= 80 TB * *                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| <= 7,2 TB                                                    | [Azure Data Box disk](../databox/data-box-disk-overview.md) |
+| >7,2 TB a <= 80 TB * *                                      | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 * Typické kompresní frekvence se liší od 10% do 20%. <br>
 * * Pokud očekáváte, že budete mít více než 80 TB počátečních dat zálohování pro jeden server MARS, kontaktujte [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
@@ -56,7 +56,7 @@ Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v n�
 >[!IMPORTANT]
 >Počáteční data zálohy z jednoho serveru musí být obsažena v rámci jedné Azure Data Box instance nebo Azure Data Box disku a nemohou být sdílena mezi více zařízeními stejné nebo jiné SKU. Zařízení Azure Data Box může ale obsahovat počáteční zálohy z více serverů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-subscription-and-required-permissions"></a>Předplatné Azure a požadovaná oprávnění
 
@@ -113,7 +113,7 @@ Azure PowerShell mohl být nainstalován také pomocí souboru MSI. Pokud ho chc
 
 ### <a name="order-and-receive-the-data-box-device"></a>Objednat a přijmout Data Box zařízení
 
-Proces offline zálohování pomocí MARS a Azure Data Box vyžaduje, aby byla Data Boxá zařízení v doručeném stavu před aktivací offline zálohování pomocí agenta MARS. Pro seřazení nejvhodnější skladové položky podle vašeho požadavku si přečtěte část [Velikost dat zálohy a podporované data box SKU](#backup-data-size-and-supported-data-box-skus). Postupujte podle kroků v [kurzu: objednání Azure Data Boxho disku](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) pro objednání a příjem data box zařízení.
+Proces offline zálohování pomocí MARS a Azure Data Box vyžaduje, aby byla Data Boxá zařízení v doručeném stavu před aktivací offline zálohování pomocí agenta MARS. Pro seřazení nejvhodnější skladové položky podle vašeho požadavku si přečtěte část [Velikost dat zálohy a podporované data box SKU](#backup-data-size-and-supported-data-box-skus). Postupujte podle kroků v [kurzu: objednání Azure Data Boxho disku](../databox/data-box-disk-deploy-ordered.md) pro objednání a příjem data box zařízení.
 
 > [!IMPORTANT]
 > Pro **druh účtu**nevybírejte *BlobStorage* . Agent MARS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost *BlobStorage* . Jako **druh účtu** při vytváření cílového účtu úložiště pro úlohu Azure Data box vyberte **úložiště v2 (obecné účely v2)** .
@@ -124,7 +124,7 @@ Proces offline zálohování pomocí MARS a Azure Data Box vyžaduje, aby byla D
 
 1. Ujistěte se, že jste odinstalovali všechny předchozí instalace agenta MARS.
 1. Stáhněte si nejnovějšího agenta MARS z [tohoto webu](https://aka.ms/azurebackup_agent).
-1. Spusťte *MARSAgentInstaller.exe*a proveďte *pouze* kroky pro [instalaci a registraci agenta](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) do trezoru Recovery Services, kde chcete ukládat zálohy.
+1. Spusťte *MARSAgentInstaller.exe*a proveďte *pouze* kroky pro [instalaci a registraci agenta](./install-mars-agent.md#install-and-register-the-agent) do trezoru Recovery Services, kde chcete ukládat zálohy.
 
    > [!NOTE]
    > Trezor Recovery Services musí být ve stejném předplatném jako úloha Azure Data Box.
@@ -137,14 +137,14 @@ V závislosti na Azure Data Box SKU, které jste objednali, postupujte podle kro
 
 ### <a name="set-up-azure-data-box-disks"></a>Nastavení Azure Data Box disků
 
-Pokud jste si objednali jeden nebo více Azure Data Box disků (každý až 8 TB), postupujte podle kroků uvedených tady a [rozbalte tak data box disk, připojte se a odemkněte](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up).
+Pokud jste si objednali jeden nebo více Azure Data Box disků (každý až 8 TB), postupujte podle kroků uvedených tady a [rozbalte tak data box disk, připojte se a odemkněte](../databox/data-box-disk-deploy-set-up.md).
 
 >[!NOTE]
 >Je možné, že server s agentem MARS nemá port USB. V takové situaci můžete Azure Data Box disk připojit k jinému serveru nebo klientovi a zveřejnit kořen zařízení jako sdílenou síťovou složku.
 
 ### <a name="set-up-azure-data-box"></a>Nastavit Azure Data Box
 
-Pokud jste objednali instanci Azure Data Box (až 100 TB), [nastavte instanci data box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)pomocí následujících kroků.
+Pokud jste objednali instanci Azure Data Box (až 100 TB), [nastavte instanci data box](../databox/data-box-deploy-set-up.md)pomocí následujících kroků.
 
 #### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>Připojení instance Azure Data Box jako místní systém
 
@@ -160,8 +160,8 @@ K zajištění toho, aby zařízení Data Box bylo možné připojit jako místn
     psexec.exe  -s  -i  cmd.exe
     ```
 
-   Příkazové okno, které se otevře v důsledku předchozího příkazu, je v kontextu místního systému. Pomocí tohoto příkazového okna můžete provést kroky pro připojení sdílené složky Azure Page BLOB jako síťové jednotky na Windows serveru.
-1. Pomocí postupu v části [připojení k data box](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) připojte Server s agentem Mars k zařízení data box přes systém souborů NFS. Spuštěním následujícího příkazu na příkazovém řádku místního systému připojte sdílenou složku objektů blob stránky Azure.
+   Příkazové okno, které se otevře z důvodu předchozího příkazu, je v kontextu místního systému. Pomocí tohoto příkazového okna můžete provést kroky pro připojení sdílené složky Azure Page BLOB jako síťové jednotky na Windows serveru.
+1. Pomocí postupu v části [připojení k data box](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) připojte Server s agentem Mars k zařízení data box přes systém souborů NFS. Spuštěním následujícího příkazu na příkazovém řádku místního systému připojte sdílenou složku objektů blob stránky Azure.
 
     ```cmd
     mount -o nolock \\<DeviceIPAddress>\<StorageAccountName_PageBlob X:  
@@ -238,9 +238,9 @@ Po dokončení zálohování dat uvidíte stránku agenta MARS, který je podobn
 
 V této části najdete popis kroků, které je potřeba provést po úspěšném zálohování dat do Azure Data Box Disk.
 
-- Pomocí kroků v tomto článku [dodáte Azure Data box disk do Azure](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up). Pokud jste použili Azure Data Box 100-TB, postupujte podle těchto kroků a dodejte [zařízení Azure Data box do Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
+- Pomocí kroků v tomto článku [dodáte Azure Data box disk do Azure](../databox/data-box-disk-deploy-picked-up.md). Pokud jste použili Azure Data Box 100-TB, postupujte podle těchto kroků a dodejte [zařízení Azure Data box do Azure](../databox/data-box-deploy-picked-up.md).
 
-- [Monitorujte úlohu data box](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) v Azure Portal. Po dokončení úlohy Azure Data Box se agent MARS automaticky přesune data z účtu úložiště do trezoru Recovery Services v době příštího naplánovaného zálohování. Po úspěšném vytvoření bodu obnovení pak označí úlohu zálohování jako *úlohu dokončenou* .
+- [Monitorujte úlohu data box](../databox/data-box-disk-deploy-upload-verify.md) v Azure Portal. Po dokončení úlohy Azure Data Box se agent MARS automaticky přesune data z účtu úložiště do trezoru Recovery Services v době příštího naplánovaného zálohování. Po úspěšném vytvoření bodu obnovení pak označí úlohu zálohování jako *úlohu dokončenou* .
 
     >[!NOTE]
     >Agent MARS spustí zálohy v časech naplánovaných během vytváření zásad. Tyto úlohy označují příznak "čekání na dokončení Azure Data Box úlohy" až do doby, kdy je úloha dokončena.
@@ -249,7 +249,7 @@ V této části najdete popis kroků, které je potřeba provést po úspěšné
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Agent Microsoft Azure Backup (MAB) Vytvoří aplikaci Azure Active Directory (Azure AD) pro vás ve vašem tenantovi. Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro počáteční nastavení offline. K vytvoření a nahrání certifikátu do aplikace Azure AD používáme Azure PowerShell.
+Agent Microsoft Azure Recovery Services (MARS) vytvoří ve vašem tenantovi aplikaci Azure Active Directory (Azure AD). Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro počáteční nastavení offline. K vytvoření a nahrání certifikátu do aplikace Azure AD používáme Azure PowerShell.
 
 ### <a name="problem"></a>Problém
 

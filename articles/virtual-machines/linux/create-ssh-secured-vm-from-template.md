@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 0c77864acd53976b9108a77198f645c419763b21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28c688526bccc411bce6f4118dc55160083deba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414449"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510918"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Postup vytvoření virtuálního počítače se systémem Linux pomocí šablon Azure Resource Manager
 
@@ -55,7 +56,7 @@ V předchozím příkladu jste zadali šablonu uloženou v GitHubu. Můžete si 
 
 Tady je několik dalších zdrojů:
 
-- Další informace o vývoji šablon Správce prostředků najdete v [dokumentaci k Azure Resource Manager](/azure/azure-resource-manager/).
+- Další informace o vývoji šablon Správce prostředků najdete v [dokumentaci k Azure Resource Manager](../../azure-resource-manager/index.yml).
 - Schémata virtuálních počítačů Azure najdete v tématu Referenční informace k [šablonám Azure](/azure/templates/microsoft.compute/allversions).
 - Další ukázky šablon virtuálních počítačů najdete v tématu [šablony pro rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
 

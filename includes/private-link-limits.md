@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/21/2020
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 2c33d4988082496e53520254e0d85431497d8b38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49a9917d925ebc7a36d14ff6679ad4b1737f9627
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84902695"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515848"
 ---
  U privátního odkazu na Azure platí následující omezení:
 
@@ -25,5 +25,5 @@ ms.locfileid: "84902695"
 |Počet konfigurací IP na službě privátního propojení     |  8 (Toto číslo je určené pro IP adresy NAT používané na jiných pracovních prostorů)       |
 |Počet privátních koncových bodů ve stejné službě privátního propojení   |  1000       |
 |Počet privátních koncových bodů na Trezor klíčů | 64 |
-|Počet trezorů klíčů s privátními koncovými body na předplatné | 64 |
+|Počet trezorů klíčů s privátními koncovými body na předplatné | 400 |
 

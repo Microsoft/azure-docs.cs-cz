@@ -3,14 +3,13 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 ms.topic: conceptual
 author: davidsmatlak
-ms.author: v-dasmat
 ms.date: 06/04/2020
-ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080971"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515847"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -377,6 +376,10 @@ Další informace o omezeních souborů Azure najdete v tématu [škálovatelnos
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
 Další informace najdete v tématu [velikosti virtuálních počítačů](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+#### <a name="disk-encryption-sets"></a>Sady šifrování disků
+
+U každého předplatného je omezení 50 sad Disk Encryption pro jednotlivé oblasti. Další informace najdete v dokumentaci k šifrování pro virtuální počítače se systémem [Linux](/azure/virtual-machines/linux/disk-encryption#restrictions) nebo [Windows](/azure/virtual-machines/windows/disk-encryption#restrictions) . Pokud potřebujete tuto kvótu zvýšit, obraťte se na podporu Azure.
 
 ### <a name="managed-virtual-machine-disks"></a>Spravované disky virtuálních počítačů
 

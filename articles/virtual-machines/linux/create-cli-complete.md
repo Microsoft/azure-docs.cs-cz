@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969565"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511122"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Vytvoření kompletního virtuálního počítače se systémem Linux pomocí Azure CLI
 Pokud chcete rychle vytvořit virtuální počítač v Azure, můžete použít jeden příkaz Azure CLI, který pomocí výchozích hodnot vytvoří všechny požadované podpůrné prostředky. Automaticky se vytvoří prostředky, jako je virtuální síť, veřejná IP adresa a pravidla skupiny zabezpečení sítě. Pro lepší kontrolu vašeho prostředí při použití v produkčním prostředí můžete tyto prostředky vytvořit předem a potom do nich přidat své virtuální počítače. Tento článek vás provede postupem, jak vytvořit virtuální počítač a každý z podpůrných prostředků od jednoho.
@@ -549,13 +550,13 @@ Pokud chcete zobrazit výchozí web NGINX v akci, otevřete webový prohlížeč
 ![Výchozí NGINX web na vašem VIRTUÁLNÍm počítači](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Exportovat jako šablonu
-Co když teď chcete vytvořit další vývojové prostředí se stejnými parametry nebo produkčním prostředím, které odpovídá? Správce prostředků používá šablony JSON, které definují všechny parametry vašeho prostředí. Můžete sestavit celá prostředí odkazem na tuto šablonu JSON. Můžete vytvořit [šablony JSON ručně](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo exportovat existující prostředí a vytvořit šablonu JSON. Pomocí příkazu [AZ Group export](/cli/azure/group) exportujte skupinu prostředků následujícím způsobem:
+Co když teď chcete vytvořit další vývojové prostředí se stejnými parametry nebo produkčním prostředím, které odpovídá? Správce prostředků používá šablony JSON, které definují všechny parametry vašeho prostředí. Můžete sestavit celá prostředí odkazem na tuto šablonu JSON. Můžete vytvořit [šablony JSON ručně](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) nebo exportovat existující prostředí a vytvořit šablonu JSON. Pomocí příkazu [AZ Group export](/cli/azure/group) exportujte skupinu prostředků následujícím způsobem:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Tento příkaz vytvoří `myResourceGroup.json` soubor v aktuálním pracovním adresáři. Když z této šablony vytvoříte prostředí, zobrazí se výzva k zadání všech názvů prostředků. Tyto názvy můžete vyplnit v souboru šablony přidáním `--include-parameter-default-value` parametru do `az group export` příkazu. Upravte šablonu JSON tak, aby určovala názvy prostředků, nebo [vytvořte parameters.jsv souboru](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , který určuje názvy prostředků.
+Tento příkaz vytvoří `myResourceGroup.json` soubor v aktuálním pracovním adresáři. Když z této šablony vytvoříte prostředí, zobrazí se výzva k zadání všech názvů prostředků. Tyto názvy můžete vyplnit v souboru šablony přidáním `--include-parameter-default-value` parametru do `az group export` příkazu. Upravte šablonu JSON tak, aby určovala názvy prostředků, nebo [vytvořte parameters.jsv souboru](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) , který určuje názvy prostředků.
 
 Pokud chcete vytvořit prostředí ze šablony, použijte příkaz [AZ Group Deployment Create](/cli/azure/group/deployment) následujícím způsobem:
 
@@ -565,7 +566,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-Můžete si přečíst [Další informace o tom, jak nasadit z šablon](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Přečtěte si, jak postupně aktualizovat prostředí, použít soubor parametrů a získat přístup k šablonám z jediného umístění úložiště.
+Můžete si přečíst [Další informace o tom, jak nasadit z šablon](../../azure-resource-manager/templates/deploy-cli.md?toc=/azure/virtual-machines/linux/toc.json). Přečtěte si, jak postupně aktualizovat prostředí, použít soubor parametrů a získat přístup k šablonám z jediného umístění úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 Teď jste připraveni začít pracovat s několika síťovými součástmi a virtuálními počítači. Toto ukázkové prostředí můžete použít k sestavení aplikace pomocí základních součástí, které jsou zde zavedeny.

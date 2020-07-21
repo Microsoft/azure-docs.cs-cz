@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891648"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511156"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Požadovaná rozšíření konfigurace stavu pomocí šablon Azure Resource Manager
 
-Tento článek popisuje šablonu Azure Resource Manager pro [obslužnou rutinu rozšíření požadované konfigurace stavu (DSC)](dsc-overview.md). Mnohé z příkladů používají **RegistrationURL** (poskytované jako řetězec) a **RegistrationKey** (poskytované jako [PSCredential](/dotnet/api/system.management.automation.pscredential)) k připojení Azure Automation. Podrobnosti o získání těchto hodnot najdete v tématu věnovaném [připojování počítačů pro správu pomocí konfigurace stavu Azure Automation – zabezpečená registrace](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration).
+Tento článek popisuje šablonu Azure Resource Manager pro [obslužnou rutinu rozšíření požadované konfigurace stavu (DSC)](dsc-overview.md). Mnohé z příkladů používají **RegistrationURL** (poskytované jako řetězec) a **RegistrationKey** (poskytované jako [PSCredential](/dotnet/api/system.management.automation.pscredential) pro začlenění Azure Automation. Podrobnosti o získání těchto hodnot najdete v tématu věnovaném [připojování počítačů pro správu pomocí konfigurace stavu Azure Automation – zabezpečená registrace](../../automation/automation-dsc-onboarding.md#enable-machines-securely-using-registration).
 
 > [!NOTE]
 > Můžete se setkat s trochu odlišnými příklady schématu. Změna schématu se stala ve verzi z října 2016. Podrobnosti najdete v tématu [aktualizace z předchozího formátu](#update-from-a-previous-format).
@@ -176,17 +177,17 @@ Seznam argumentů, které jsou k dispozici pro výchozí konfigurační skript, 
 
 ## <a name="details"></a>Podrobnosti
 
-| Název vlastnosti | Typ | Description |
+| Název vlastnosti | Typ | Popis |
 | --- | --- | --- |
 | Settings. wmfVersion |řetězec |Určuje verzi rozhraní Windows Management Framework (WMF), která má být nainstalována na VIRTUÁLNÍm počítači. Nastavení této vlastnosti na **nejnovější** nainstaluje nejnovější verzi WMF. V současné době jsou jedinou možnou hodnotou této vlastnosti **4,0**, **5,0**, **5,1**a **nejnovější**. Tyto možné hodnoty se vztahují na aktualizace. Výchozí hodnota je **nejnovější**. |
 | settings.configuration. URL |řetězec |Určuje umístění adresy URL, ze kterého se má stáhnout soubor. zip konfigurace DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, nastavte vlastnost **protectedSettings.configurationUrlSasToken** na hodnotu vašeho tokenu SAS. Tato vlastnost je povinná, pokud je definována **settings.configuration. Script** nebo **settings.configuration. Function** . Pokud se pro tyto vlastnosti nezadá žádná hodnota, přípona volá výchozí konfigurační skript pro nastavení Configuration Manageru (LCM) metadata a měly by se zadat argumenty. |
 | settings.configuration. Script |řetězec |Určuje název souboru skriptu, který obsahuje definici konfigurace DSC. Tento skript musí být v kořenové složce souboru. zip, který je stažený z adresy URL určené vlastností **settings.configuration. URL** . Tato vlastnost je povinná, pokud jsou definovány **settings.configuration. URL** nebo **settings.configuration. Script** . Pokud pro tyto vlastnosti není zadána žádná hodnota, přípona volá výchozí konfigurační skript pro nastavení metadat LCM a argumenty by měly být zadány. |
 | settings.configuration. Function |řetězec |Určuje název konfigurace DSC. Nazvaná konfigurace musí být součástí skriptu, který **settings.configuration. Script** definuje. Tato vlastnost je povinná, pokud jsou definovány **settings.configuration. URL** nebo **settings.configuration. Function** . Pokud pro tyto vlastnosti není zadána žádná hodnota, přípona volá výchozí konfigurační skript pro nastavení metadat LCM a argumenty by měly být zadány. |
-| settings.configurationArguments |Kolekce |Definuje všechny parametry, které chcete předat konfiguraci DSC. Tato vlastnost není šifrovaná. |
+| settings.configurationArguments |Shromažďování |Definuje všechny parametry, které chcete předat konfiguraci DSC. Tato vlastnost není šifrovaná. |
 | settings.configurationData. URL |řetězec |Určuje adresu URL, ze které se má stáhnout soubor konfiguračních dat (. psd1), který se použije jako vstup pro konfiguraci DSC. Pokud zadaná adresa URL vyžaduje pro přístup token SAS, nastavte vlastnost **protectedSettings.configurationDataUrlSasToken** na hodnotu vašeho tokenu SAS. |
 | Settings. Privacy. DataCollection |řetězec |Povolí nebo zakáže shromažďování telemetrie. Jedinou možnou hodnotou této vlastnosti je **Enable**, **Disable** **, nebo** **$null**. Tato vlastnost zůstane prázdná nebo má hodnotu null. umožňuje telemetrii. Výchozí hodnota je ' **'**. Další informace najdete v tématu [shromažďování dat rozšíření Azure DSC](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/). |
-| Settings. advancedOptions. downloadMappings |Kolekce |Definuje alternativní umístění, ze kterých se má stáhnout WMF. Další informace najdete v tématu [rozšíření Azure DSC 2,8 a postup mapování stahování závislostí rozšíření na vaše vlastní umístění](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/). |
-| protectedSettings.configurationArguments |Kolekce |Definuje všechny parametry, které chcete předat konfiguraci DSC. Tato vlastnost je zašifrovaná. |
+| Settings. advancedOptions. downloadMappings |Shromažďování |Definuje alternativní umístění, ze kterých se má stáhnout WMF. Další informace najdete v tématu [rozšíření Azure DSC 2,8 a postup mapování stahování závislostí rozšíření na vaše vlastní umístění](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/). |
+| protectedSettings.configurationArguments |Shromažďování |Definuje všechny parametry, které chcete předat konfiguraci DSC. Tato vlastnost je zašifrovaná. |
 | protectedSettings.configurationUrlSasToken |řetězec |Určuje token SAS, který se má použít pro přístup k adrese URL, kterou **settings.configuration. URL** definuje. Tato vlastnost je zašifrovaná. |
 | protectedSettings.configurationDataUrlSasToken |řetězec |Určuje token SAS, který se má použít pro přístup k adrese URL, kterou **settings.configurationData. URL** definuje. Tato vlastnost je zašifrovaná. |
 
@@ -195,7 +196,7 @@ Seznam argumentů, které jsou k dispozici pro výchozí konfigurační skript, 
 Další informace o následujících hodnotách naleznete v tématu [místní nastavení Configuration Manager Basic](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 Můžete použít výchozí konfigurační skript rozšíření DSC ke konfiguraci pouze vlastností LCM, které jsou uvedeny v následující tabulce.
 
-| Název vlastnosti | Typ | Description |
+| Název vlastnosti | Typ | Popis |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Požadovaná vlastnost. Určuje klíč, který se používá pro uzel, který se má zaregistrovat ve službě Azure Automation jako heslo objektu přihlašovacích údajů prostředí PowerShell. Tato hodnota se dá automaticky zjistit pomocí metody **klíče listkey** na účtu Automation.  Podívejte se na [příklad](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments. RegistrationUrl |řetězec |Požadovaná vlastnost. Určuje adresu URL koncového bodu automatizace, kde se uzel pokusí zaregistrovat. Tato hodnota se může automaticky zjistit pomocí metody **reference** k účtu Automation. |
@@ -203,9 +204,9 @@ Můžete použít výchozí konfigurační skript rozšíření DSC ke konfigura
 | settings.configurationArguments.ConfigurationMode |řetězec |Určuje režim pro LCM. Mezi platné možnosti patří **ApplyOnly**, **ApplyandMonitor**a **ApplyandAutoCorrect**.  Výchozí hodnota je **ApplyandMonitor**. |
 | settings.configurationArguments. RefreshFrequencyMins | UInt32 | Určuje, jak často se při pokusu o aktualizaci v účtu Automation pokusí zjistit aktualizace.  Výchozí hodnota je **30**.  Minimální hodnota je **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Určuje, jak často funkce LCM ověřuje aktuální konfiguraci. Výchozí hodnota je **15**. Minimální hodnota je **15**. |
-| settings.configurationArguments. RebootNodeIfNeeded | Boolean | Určuje, zda může být uzel automaticky restartován, pokud na něj operace DSC žádá. Výchozí hodnota je **false**. |
+| settings.configurationArguments. RebootNodeIfNeeded | boolean | Určuje, zda může být uzel automaticky restartován, pokud na něj operace DSC žádá. Výchozí hodnota je **false**. |
 | settings.configurationArguments. ActionAfterReboot | řetězec | Určuje, co se stane po restartování při použití konfigurace. Platné možnosti jsou **ContinueConfiguration** a **StopConfiguration**. Výchozí hodnota je **ContinueConfiguration**. |
-| settings.configurationArguments. AllowModuleOverwrite | Boolean | Určuje, zda LCM Přepisuje existující moduly na uzlu. Výchozí hodnota je **false**. |
+| settings.configurationArguments. AllowModuleOverwrite | boolean | Určuje, zda LCM Přepisuje existující moduly na uzlu. Výchozí hodnota je **false**. |
 
 ## <a name="settings-vs-protectedsettings"></a>nastavení vs. protectedSettings
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: cce74358a206c7103d537ba80c62d6561606b818
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 983091ac0d1f9fdcb33e64d2af521ec3442a040b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242028"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515508"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Zdroje dat Syslogu ve službě Azure Monitor
 Syslog je protokol protokolování událostí, který je společný pro Linux. Aplikace budou odesílat zprávy, které mohou být uloženy v místním počítači nebo doručeny do kolekce syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.  
@@ -90,7 +90,6 @@ Zařízení můžete odebrat tak, že odeberete jeho část konfiguračního sou
 user.error    @127.0.0.1:25224
 ```
 
-
 #### <a name="syslog-ng"></a>syslog – ng
 Konfigurační soubor protokolu syslog-ng je umístění na adrese **/etc/syslog-ng/syslog-ng.conf**.  Výchozí obsah je uveden níže. Tím se shromáždí zprávy syslog odeslané z místního agenta pro všechna zařízení a všechny závažnosti.   
 
@@ -163,17 +162,16 @@ Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 2
 
 * V tomto souboru by měl být soubor s přístavou, který se nachází v umístění: `/etc/opt/microsoft/omsagent/conf/omsagent.d` a nahradit hodnotu v položce **port** vlastním číslem portu.
 
-    ```config
+    ```xml
     <source>
-      type syslog
-      port %SYSLOG_PORT%
-      bind 127.0.0.1
-      protocol_type udp
-      tag oms.syslog
+        type syslog
+        port %SYSLOG_PORT%
+        bind 127.0.0.1
+        protocol_type udp
+        tag oms.syslog
     </source>
     <filter oms.syslog.**>
-      type filter_syslog
-    </filter>
+        type filter_syslog
     ```
 
 * V případě rsyslog byste měli vytvořit nový konfigurační soubor v umístění: `/etc/rsyslog.d/` a nahradit hodnotu% SYSLOG_PORT% vlastním číslem portu.  
@@ -221,7 +219,7 @@ Záznamy syslog mají typ **SYSLOG** a mají vlastnosti v následující tabulce
 ## <a name="log-queries-with-syslog-records"></a>Dotazy protokolu se záznamy syslog
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy syslog.
 
-| Dotaz | Popis |
+| Dotazy | Popis |
 |:--- |:--- |
 | Syslog |Všechny Syslogy. |
 | Syslog &#124;, kde SeverityLevel = = "Error" |Všechny záznamy syslog se závažností chyby. |

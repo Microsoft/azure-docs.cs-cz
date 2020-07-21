@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610349"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510493"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Ukázkové skripty pro službu Azure Disk Encryption 
+# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>Azure Disk Encryption ukázkové skripty pro virtuální počítače se systémem Linux
 
 Tento článek poskytuje ukázkové skripty pro přípravu předem šifrovaných virtuálních pevných disků a dalších úloh.
 
@@ -45,13 +45,13 @@ Následující tabulka ukazuje, které parametry lze použít ve skriptu prostř
 
 |Parametr|Popis|Závaznou?|
 |------|------|------|
-|$resourceGroupName| Název skupiny prostředků, do které patří Trezor klíčů.  Pokud neexistuje, vytvoří se nová skupina prostředků s tímto názvem.| True|
-|$keyVaultName|Název trezoru klíčů, do kterého se mají umístit šifrovací klíče Pokud jeden z nich neexistuje, vytvoří se nový trezor s tímto názvem.| True|
-|$location|Umístění trezoru klíčů. Zajistěte, aby byl Trezor klíčů a virtuální počítače zašifrované ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzLocation`.|True|
-|$subscriptionId|Identifikátor předplatného Azure, který se má použít  Své ID předplatného můžete získat pomocí rutiny `Get-AzSubscription`.|True|
-|$aadAppName|Název aplikace služby Azure AD, která bude použita k zápisu tajných kódů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace již existuje, předejte do skriptu parametr aadClientSecret.|False|
-|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který byl vytvořen dříve.|False|
-|$keyEncryptionKeyName|Název volitelného šifrovacího klíče klíče v trezoru klíčů. Pokud neexistuje, vytvoří se nový klíč s tímto názvem.|False|
+|$resourceGroupName| Název skupiny prostředků, do které patří Trezor klíčů.  Pokud neexistuje, vytvoří se nová skupina prostředků s tímto názvem.| Ano|
+|$keyVaultName|Název trezoru klíčů, do kterého se mají umístit šifrovací klíče Pokud jeden z nich neexistuje, vytvoří se nový trezor s tímto názvem.| Ano|
+|$location|Umístění trezoru klíčů. Zajistěte, aby byl Trezor klíčů a virtuální počítače zašifrované ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzLocation`.|Ano|
+|$subscriptionId|Identifikátor předplatného Azure, který se má použít  Své ID předplatného můžete získat pomocí rutiny `Get-AzSubscription`.|Ano|
+|$aadAppName|Název aplikace služby Azure AD, která bude použita k zápisu tajných kódů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace již existuje, předejte do skriptu parametr aadClientSecret.|Nepravda|
+|$aadClientSecret|Tajný kód klienta aplikace Azure AD, který byl vytvořen dříve.|Nepravda|
+|$keyEncryptionKeyName|Název volitelného šifrovacího klíče klíče v trezoru klíčů. Pokud neexistuje, vytvoří se nový klíč s tímto názvem.|Nepravda|
 
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Šifrování nebo dešifrování virtuálních počítačů bez aplikace Azure AD
@@ -186,7 +186,7 @@ Pomocí následujících kroků nakonfigurujte šifrování při instalaci distr
 
    ![Nastavení Ubuntu 16,04 – poskytnutí hesla při spuštění](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. Pomocí [těchto pokynů](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)Připravte virtuální počítač pro nahrání do Azure. Nespouštějte poslední krok (zrušení zřízení virtuálního počítače).
+6. Pomocí [těchto pokynů](./create-upload-ubuntu.md?toc=/azure/virtual-machines/linux/toc.json)Připravte virtuální počítač pro nahrání do Azure. Nespouštějte poslední krok (zrušení zřízení virtuálního počítače).
 
 Nakonfigurujte šifrování pro práci s Azure pomocí následujících kroků:
 
@@ -262,7 +262,7 @@ Chcete-li konfigurovat šifrování při instalaci distribuce, proveďte násled
 
    ![Nastavení openSUSE 13,2 – poskytnutí hesla při spuštění](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. Připravte virtuální počítač na nahrávání do Azure podle pokynů v tématu [Příprava virtuálního počítače s SLES nebo openSUSE pro Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Nespouštějte poslední krok (zrušení zřízení virtuálního počítače).
+3. Připravte virtuální počítač na nahrávání do Azure podle pokynů v tématu [Příprava virtuálního počítače s SLES nebo openSUSE pro Azure](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131). Nespouštějte poslední krok (zrušení zřízení virtuálního počítače).
 
 Pokud chcete nakonfigurovat šifrování pro práci s Azure, proveďte následující kroky:
 1. Upravte/etc/Dracut.conf a přidejte následující řádek:
@@ -339,7 +339,7 @@ Chcete-li konfigurovat šifrování při instalaci distribuce, proveďte násled
 
    ![Instalace CentOS 7 – zadejte přístupové heslo na spouštění](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. Připravte virtuální počítač pro nahrání do Azure pomocí instrukcí "CentOS 7.0 +" v tématu [Příprava virtuálního počítače založeného na CentOS pro Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Nespouštějte poslední krok (zrušení zřízení virtuálního počítače).
+5. Připravte virtuální počítač pro nahrání do Azure pomocí instrukcí "CentOS 7.0 +" v tématu [Příprava virtuálního počítače založeného na CentOS pro Azure](./create-upload-centos.md?toc=/azure/virtual-machines/linux/toc.json#centos-70). Nespouštějte poslední krok (zrušení zřízení virtuálního počítače).
 
 6. Teď můžete zrušit zřízení virtuálního počítače a nahrát virtuální pevný disk do Azure.
 
@@ -439,7 +439,7 @@ K nastavení tajného klíče v trezoru klíčů použijte [set-AzKeyVaultSecret
 `$secretUrl`K [připojení disku s operačním systémem bez použití KEK](#without-using-a-kek)použijte v dalším kroku.
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>Tajný kód šifrování disku zašifrovaný pomocí KEK
-Než nahrajete tajný klíč do trezoru klíčů, můžete ho případně zašifrovat pomocí klíčového šifrovacího klíče. Použijte [rozhraní API](https://msdn.microsoft.com/library/azure/dn878066.aspx) pro zabalení k prvnímu šifrování tajného klíče pomocí klíčového šifrovacího klíče. Výstupem této operace zalamování je řetězec kódovaný v adrese URL Base64, který pak můžete nahrát jako tajný kód pomocí [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) rutiny.
+Než nahrajete tajný klíč do trezoru klíčů, můžete ho případně zašifrovat pomocí klíčového šifrovacího klíče. Použijte [rozhraní API](/rest/api/keyvault/wrapkey) pro zabalení k prvnímu šifrování tajného klíče pomocí klíčového šifrovacího klíče. Výstupem této operace zalamování je řetězec kódovaný v adrese URL Base64, který pak můžete nahrát jako tajný kód pomocí [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) rutiny.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

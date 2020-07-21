@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 68dddde965900b966efa96fbd7da7141f1ed8a94
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52f896e5cbcc8089ee8683338c99fb514400be4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753544"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511139"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladače NVIDIA GPU pro Linux
 
@@ -26,11 +26,10 @@ ms.locfileid: "84753544"
 
 Toto rozšíření nainstaluje ovladače NVIDIA GPU na virtuální počítače se systémem Linux N-Series. V závislosti na rodině virtuálních počítačů rozšíření nainstaluje ovladače CUDA nebo GRIDu. Když instalujete ovladače NVIDIA pomocí tohoto rozšíření, přijímáte podmínky [licenční smlouvy pro koncové uživatele NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330)a souhlasíte s nimi. Během procesu instalace může být virtuální počítač restartován, aby bylo možné dokončit instalaci ovladače.
 
-Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dispozici [zde](
-https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup).
+Pokyny k ruční instalaci ovladačů a aktuálně podporované verze jsou k dispozici [zde](../linux/n-series-driver-setup.md).
 K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU na [virtuálních počítačích s Windows N-Series](hpccompute-gpu-windows.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -72,7 +71,7 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Name | Hodnota/příklad | Typ dat |
+| Název | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
@@ -83,11 +82,11 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 Všechna nastavení jsou volitelná. Výchozím chováním je neaktualizovat jádro, pokud není pro instalaci ovladače vyžadováno, nainstalujte nejnovější podporovaný ovladač a CUDA Toolkit (podle potřeby).
 
-| Name | Description | Výchozí hodnota | Platné hodnoty | Typ dat |
+| Název | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Aktualizace jádra i v případě, že není potřeba k instalaci ovladače | false (nepravda) | true, false | Boolean |
+| updateOS | Aktualizace jádra i v případě, že není potřeba k instalaci ovladače | false (nepravda) | true, false | boolean |
 | driverVersion | NV: verze ovladače mřížky<br> NC/ND: verze sady CUDA Toolkit. Nejnovější ovladače pro zvolené CUDA se nainstalují automaticky. | nejnovější | GRID: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130"; "9.2.88"; "9.1.85" | řetězec |
-| installCUDA | Nainstalujte sadu CUDA Toolkit. Platí jenom pro virtuální počítače řady NC/ND. | true | true, false | Boolean |
+| installCUDA | Nainstalujte sadu CUDA Toolkit. Platí jenom pro virtuální počítače řady NC/ND. | true | true, false | boolean |
 
 
 ## <a name="deployment"></a>Nasazení
@@ -97,7 +96,7 @@ Všechna nastavení jsou volitelná. Výchozím chováním je neaktualizovat já
 
 Rozšíření virtuálních počítačů Azure je možné nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální při nasazení jednoho nebo více virtuálních počítačů, které vyžadují konfiguraci po nasazení.
 
-Konfiguraci JSON pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění konfigurace JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [Nastavení názvu a typu pro podřízené prostředky](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+Konfiguraci JSON pro rozšíření virtuálního počítače můžete vnořit do prostředku virtuálního počítače nebo umístit na kořenovou nebo nejvyšší úroveň šablony Správce prostředků JSON. Umístění konfigurace JSON má vliv na hodnotu názvu a typu prostředku. Další informace najdete v tématu [Nastavení názvu a typu pro podřízené prostředky](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
 Následující příklad předpokládá, že rozšíření je vnořeno do prostředku virtuálního počítače. Při vnořování prostředku rozšíření je kód JSON umístěný v `"resources": []` objektu virtuálního počítače.
 
@@ -166,7 +165,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstraňování potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 
@@ -204,4 +203,4 @@ Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto č
 ## <a name="next-steps"></a>Další kroky
 Další informace o rozšířeních najdete v tématu [rozšíření virtuálních počítačů a funkce pro Linux](features-linux.md).
 
-Další informace o virtuálních počítačích řady N-Series najdete v tématu [velikosti virtuálních počítačů optimalizované pro procesory GPU](../linux/sizes-gpu.md).
+Další informace o virtuálních počítačích řady N-Series najdete v tématu [velikosti virtuálních počítačů optimalizované pro procesory GPU](../sizes-gpu.md).

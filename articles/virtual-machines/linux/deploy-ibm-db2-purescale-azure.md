@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78968898"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510723"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Nasazení IBM DB2 pureScale v Azure
 
@@ -25,7 +26,7 @@ Pokud chcete nasadit tuto architekturu, Stáhněte a spusťte skript deploy.sh, 
 Úložiště má také skripty pro nastavení řídicího panelu Grafana. Řídicí panel můžete použít k dotazování na Prometheus, open source monitorování a systém výstrah, který je součástí DB2.
 
 > [!NOTE]
-> Skript deploy.sh na klientovi vytvoří privátní klíče SSH a předá je do šablony nasazení přes protokol HTTPS. Pro zajištění vyššího zabezpečení doporučujeme použít [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) k ukládání tajných klíčů, klíčů a hesel.
+> Skript deploy.sh na klientovi vytvoří privátní klíče SSH a předá je do šablony nasazení přes protokol HTTPS. Pro zajištění vyššího zabezpečení doporučujeme použít [Azure Key Vault](../../key-vault/general/overview.md) k ukládání tajných klíčů, klíčů a hesel.
 
 ## <a name="how-the-deployment-script-works"></a>Jak skript nasazení funguje
 
@@ -76,7 +77,7 @@ Až skripty vytvoří zařízení iSCSI, posledním krokem je instalace DB2 pure
 | Zvolit produkt          |                                              | 11.1.3.3 verze DB2 Edice serveru s DB2 pureScale                                              |
 | Konfigurace             | Adresář                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | Vyberte typ instalace.                 | Typické                                                                                               |
-|                           | Souhlasím s podmínkami IBM                     | Zaškrtnuté                                                                                               |
+|                           | Souhlasím s podmínkami IBM                     | Zaškrtnuto                                                                                               |
 | Vlastník instance            | Stávající uživatel instance, uživatelské jméno        | DB2sdin1                                                                                              |
 | Uživatel s ochranou               | Existující uživatel, uživatelské jméno                     | DB2sdfe1                                                                                              |
 | Systém souborů clusteru       | Cesta k zařízení oddílu sdíleného disku            | /dev/dm-2                                                                                             |

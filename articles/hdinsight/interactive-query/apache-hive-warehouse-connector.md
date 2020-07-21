@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221013"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511887"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrace Apache Spark a Apache Hive pomocí konektoru skladu s podregistru v Azure HDInsight
 
@@ -179,9 +179,9 @@ Po sestavení kódu Scala/Java společně se závislostmi na jar sestavení pou�
 
 Pro Python přidejte taky následující konfiguraci. 
 
-    ```python
-    --py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
-    ```
+```python
+--py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
+```
     
 ## <a name="run-queries-on-enterprise-security-package-esp-clusters"></a>Spouštění dotazů v clusterech Balíček zabezpečení podniku (ESP)
 

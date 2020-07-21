@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82134413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512006"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Nasazení IoT Edgech modulů ve velkém měřítku pomocí Azure Portal
 
@@ -61,7 +61,7 @@ Existuje pět kroků k vytvoření nasazení. V následujících částech si pr
 
 ### <a name="step-2-modules"></a>Krok 2: moduly
 
-Do nasazení můžete přidat až 20 modulů. Pokud vytvoříte nasazení bez modulů, odebere všechny aktuální moduly z cílových zařízení.
+Do nasazení můžete přidat až 30 modulů. Pokud vytvoříte nasazení bez modulů, odebere všechny aktuální moduly z cílových zařízení.
 
 V nasazeních můžete spravovat nastavení pro IoT Edge agenta a IoT Edge moduly centra. Vyberte **nastavení modulu runtime** a nakonfigurujte dva běhové moduly. V vrstveném nasazení nejsou moduly runtime zahrnuty, takže není možné je nakonfigurovat.
 
@@ -175,7 +175,7 @@ Když upravíte nasazení, změny se okamžitě replikují na všechna cílová 
 
 * Cílové podmínky
 * Vlastní metriky
-* Popisky
+* Štítky
 * Značky
 * Požadované vlastnosti
 
@@ -209,7 +209,7 @@ Při odstranění nasazení převezmou všechna nasazená zařízení nasazení 
 
 1. Pomocí zaškrtávacího políčka vyberte nasazení, které chcete odstranit.
 1. Vyberte **Odstranit**.
-1. Výzva vás upozorní, že tato akce odstraní toto nasazení a vrátí se k předchozímu stavu pro všechna zařízení.Bude použito nasazení s nižší prioritou.Pokud není zacíleno žádné jiné nasazení, nebudou odebrány žádné moduly. Pokud chcete odebrat všechny moduly ze zařízení, vytvořte nasazení s nulovými moduly a nasaďte je do stejného zařízení.Pokračujte výběrem **Ano** .
+1. Výzva vás upozorní, že tato akce odstraní toto nasazení a vrátí se k předchozímu stavu pro všechna zařízení.Bude použito nasazení s nižší prioritou.Pokud není zacíleno žádné jiné nasazení, nebudou odebrány žádné moduly. Pokud chcete odebrat všechny moduly ze zařízení, vytvořte nasazení s nulovými moduly a nasaďte je do stejného zařízení.Vyberte **Ano**, abyste mohli pokračovat.
 
 ## <a name="next-steps"></a>Další kroky
 

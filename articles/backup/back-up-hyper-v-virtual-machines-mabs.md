@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí M
 description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420405"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514543"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
 
@@ -132,7 +132,7 @@ Když chcete obnovit zálohovaný virtuální počítač, pomocí Průvodce obno
 
 3. V nabídce **Akce** klikněte na **Obnovit**. Tím se otevře Průvodce obnovením.
 
-    Vybraný virtuální počítač a bod obnovení se zobrazí v obrazovce **Revidovat výběr obnovení**. Klikněte na **Další**.
+    Vybraný virtuální počítač a bod obnovení se zobrazí v obrazovce **Revidovat výběr obnovení**. Klikněte na **Next** (Další).
 
 4. Na obrazovce **Vybrat typ obnovení** vyberte, kde chcete obnovit data, a pak klikněte na **Další**.
 
@@ -155,4 +155,4 @@ Když chcete obnovit zálohovaný virtuální počítač, pomocí Průvodce obno
 
 ## <a name="next-steps"></a>Další kroky
 
-[Obnovení dat z Azure Backup Serveru](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)
+[Obnovení dat z Azure Backup Serveru](./backup-azure-alternate-dpm-server.md)

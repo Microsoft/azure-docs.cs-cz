@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 26f10f96cac412854f4bb0f732a0aec7f595c8ae
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055252"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514301"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -42,17 +42,17 @@ Recovery Services trezory mají následující funkce:
 - Trezory usnadňují uspořádání zálohovaných dat a současně minimalizují nároky na správu.
 - V každém předplatném Azure můžete vytvořit až 500 trezorů.
 - Zálohované položky můžete monitorovat v trezoru, včetně virtuálních počítačů Azure a místních počítačů.
-- Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)v Azure.
+- Přístup k trezoru můžete spravovat pomocí [řízení přístupu na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md)v Azure.
 - Určíte, jak se data v trezoru replikují pro redundanci:
-  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Další informace](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - **Místně redundantní úložiště (LRS)**: Pokud chcete chránit před selháním v datacentru, můžete použít LRS. LRS replikuje data do jednotky škálování úložiště. [Přečtěte si další informace](../storage/common/storage-redundancy.md).
+  - **Geograficky redundantní úložiště (GRS)**: Pokud chcete chránit před výpadky v rámci oblastí, můžete použít GRS. GRS replikuje vaše data do sekundární oblasti. [Přečtěte si další informace](../storage/common/storage-redundancy.md).
   - Ve výchozím nastavení používají trezory Recovery Services GRS.
 
 ## <a name="backup-agents"></a>Agenti zálohování
 
 Azure Backup poskytuje různé agenty zálohování v závislosti na tom, jaký typ počítače se zálohuje:
 
-**Agenta** | **Podrobnosti**
+**Agent** | **Podrobnosti**
 --- | ---
 **Agent MARS** | <ul><li>Spouští se na jednotlivých místních počítačích Windows serveru pro zálohování souborů, složek a stavu systému.</li> <li>Spouští se na virtuálních počítačích Azure pro zálohování souborů, složek a stavu systému.</li> <li>Spouští na serverech DPM nebo MABS k zálohování místního úložiště aplikace DPM/MABS do Azure.</li></ul>
 **Rozšíření virtuálního počítače Azure** | Spustí se na virtuálních počítačích Azure, které je zálohují do trezoru.
@@ -95,8 +95,8 @@ Následující tabulka shrnuje podporované funkce pro různé typy zálohován�
 **Funkce** | **Přímé zálohování souborů a složek (pomocí agenta MARS)** | **Zálohování virtuálních počítačů Azure** | **Počítače nebo aplikace s DPM/MABS**
 --- | --- | --- | ---
 Zálohování do trezoru | ![Ano][green] | ![Ano][green] | ![Ano][green]
-Zálohování na disk DPM/MABS, potom do Azure | | | ![Yes][green]
-Komprimovat data odesílaná k zálohování | ![Yes][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Yes][green]
+Zálohování na disk DPM/MABS, potom do Azure | | | ![Ano][green]
+Komprimovat data odesílaná k zálohování | ![Ano][green] | Při přenosu dat se nepoužívá žádná komprese. Úložiště je mírně nepatrné, ale obnovení je rychlejší.  | ![Ano][green]
 Spustit přírůstkové zálohování |![Ano][green] |![Ano][green] |![Ano][green]
 Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][yellow]<br/><br/> Jenom pro servery DPM/MABS nasazené místně.
 
@@ -120,6 +120,17 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
 - Při vytvoření trezoru se vytvoří také "DefaultPolicy" a můžete ho použít k zálohování prostředků.
 - Všechny změny provedené v době uchování zásady zálohování se použijí zpět na všechny starší body obnovení z nových.
 
+### <a name="additional-reference"></a>Další referenční informace 
+
+-   Počítač Azure VM: jak [vytvářet](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) a [upravovat](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) zásady? 
+-   SQL Server databáze na virtuálním počítači Azure: jak [vytvářet](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) a [upravovat](./manage-monitor-sql-database-backup.md#modify-policy) zásady? 
+-   Sdílená složka Azure: jak [vytvářet](./backup-afs.md#discover-file-shares-and-configure-backup) a [upravovat](./manage-afs-backup.md#modify-policy) zásady? 
+-   SAP HANA: jak [vytvářet](./backup-azure-sap-hana-database.md#create-a-backup-policy) a [upravovat](./sap-hana-db-manage.md#change-policy) zásady? 
+-   MARS: jak [vytvářet](./backup-windows-with-mars-agent.md#create-a-backup-policy) a [upravovat](./backup-azure-manage-mars.md#modify-a-backup-policy) zásady? 
+-   [Existují nějaká omezení pro plánování zálohování na základě typu úlohy?](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- [Co se stane se stávajícími body obnovení, když změním zásady uchovávání informací?](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
+
+
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektura: Integrovaná záloha virtuálního počítače Azure
 
 1. Když povolíte zálohování pro virtuální počítač Azure, zálohování se spustí podle plánu, který zadáte.
@@ -134,7 +145,7 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
     - Zkopírovány jsou pouze bloky dat, které se od posledního zálohování změnily.
     - Data nejsou šifrovaná. Azure Backup můžou zálohovat virtuální počítače Azure, které se šifrují pomocí Azure Disk Encryption.
     - Data snímku se nemusí hned zkopírovat do trezoru. V časech špičky může zálohování trvat několik hodin. Celková doba zálohování pro virtuální počítač bude pro denní zásady zálohování kratší než 24 hodin.
-1. Po odeslání dat do trezoru se vytvoří bod obnovení. Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů, než se odstraní. Tato funkce umožňuje operaci obnovení z těchto snímků, takže vystřihuje časy obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. Informace najdete v tématu [Azure Backup možnosti okamžitého obnovení](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
+1. Po odeslání dat do trezoru se vytvoří bod obnovení. Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů, než se odstraní. Tato funkce umožňuje operaci obnovení z těchto snímků, takže vystřihuje časy obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. Informace najdete v tématu [Azure Backup možnosti okamžitého obnovení](./backup-instant-restore-capability.md).
 
 Nemusíte výslovně povolit připojení k Internetu pro zálohování virtuálních počítačů Azure.
 

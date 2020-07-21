@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-ms.date: 06/04/2020
-ms.openlocfilehash: 340f4310da5131ea0d2576e7c77d8f6cd0a731b3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/20/2020
+ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983100"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515106"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -101,7 +101,7 @@ Využití úložiště zálohování až do maximální velikosti dat pro datab�
 
 ## <a name="backup-retention"></a>Uchování záloh
 
-U všech nových, obnovených a kopírovaných databází jsou Azure SQL Database a Azure SQL Managed instance zachovány dostatečné zálohy, aby ve výchozím nastavení povolovaly PITR během posledních 7 dnů. S výjimkou databází s škálovatelným škálováním můžete [změnit dobu uchovávání záloh](#change-the-pitr-backup-retention-period) na databázi v rozsahu od 1-35 dne. Jak je popsáno v části [spotřeba úložiště zálohy](#backup-storage-consumption), zálohy uložené do povolit PITR můžou být starší než doba uchování.
+U všech nových, obnovených a kopírovaných databází jsou Azure SQL Database a Azure SQL Managed instance zachovány dostatečné zálohy, aby ve výchozím nastavení povolovaly PITR během posledních 7 dnů. S výjimkou databází v rámci škálování můžete [změnit dobu uchovávání záloh](#change-the-pitr-backup-retention-period) na každou aktivní databázi v rozsahu 1-35 dne. Jak je popsáno v části [spotřeba úložiště zálohy](#backup-storage-consumption), zálohy uložené do povolit PITR můžou být starší než doba uchování. Jenom pro Azure SQL Managed instance je možné nastavit míru uchovávání záloh PITR, jakmile se databáze odstraní v rozsahu 0-35 dnů. 
 
 Pokud databázi odstraníte, systém bude uchovávat zálohy stejným způsobem jako online databáze s určitou dobou uchování. Nemůžete změnit dobu uchování zálohy pro odstraněnou databázi.
 
@@ -118,7 +118,7 @@ Podobně jako zálohy PITR jsou zálohy LTR chráněné pomocí geograficky redu
 
 Další informace o LTR najdete v tématu [dlouhodobé uchovávání záloh](long-term-retention-overview.md).
 
-## <a name="storage-costs"></a>Cena za uložení
+## <a name="storage-costs"></a>Náklady na úložiště
 
 Cena za úložiště se liší v závislosti na tom, jestli používáte model DTU nebo model vCore.
 
@@ -192,7 +192,7 @@ Výchozí dobu uchování zálohy PITR můžete změnit pomocí Azure Portal, Po
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>Změňte dobu uchování zálohy PITR pomocí Azure Portal
 
-Pokud chcete změnit dobu uchovávání záloh PITR pomocí Azure Portal, přejděte na server nebo na spravovanou instanci s databázemi, jejichž doba uchovávání se má změnit. 
+Pokud chcete změnit dobu uchovávání záloh PITR pro aktivní databáze pomocí Azure Portal, přejděte na server nebo na spravovanou instanci s databázemi, jejichž doba uchovávání se má změnit. 
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
@@ -214,9 +214,54 @@ Změny uchovávání záloh PITR pro spravovanou instanci SQL se provádí na ú
 > [!IMPORTANT]
 > Modul PowerShell AzureRM je stále podporován SQL Database a SQL Managed instance, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Další informace naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty příkazů v modulu AZ jsou v podstatě stejné jako v modulech AzureRm.
 
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
+
+Pro změnu uchovávání záloh PITR pro aktivní databáze SQL Azure použijte následující příklad PowerShellu.
+
 ```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
+
+#### <a name="sql-managed-instance"></a>[Spravovaná instance SQL](#tab/managed-instance)
+
+Chcete-li změnit uchovávání záloh PITR pro **jednotlivé aktivní** databáze spravované instance SQL, použijte následující příklad prostředí PowerShell.
+
+```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase -RetentionDays 1
+```
+
+Pro změnu uchovávání záloh PITR pro **všechny aktivní** databáze spravované instance SQL použijte následující příklad prostředí PowerShell.
+
+```powershell
+# SET new PITR backup retention period for ALL active databases
+# Valid backup retention must be between 1 and 35 days
+Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 1
+```
+
+Pro změnu uchovávání záloh PITR pro **jednotlivé odstraněné** databáze spravované instance SQL použijte následující příklad PowerShellu.
+ 
+```powershell
+# SET new PITR backup retention on an individual deleted database
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database.
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+Pro změnu uchovávání záloh PITR pro **všechny odstraněné** databáze spravované instance SQL použijte následující příklad PowerShellu.
+
+```powershell
+# SET new PITR backup retention for ALL deleted databases
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+Nula (0) dnů uchování znamená, že se záloha okamžitě odstraní a nebude se už uchovávat pro odstraněnou databázi.
+Po zmenšení PITR zálohy pro odstraněnou databázi již nebude možné ji zvýšit.
+
+---
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-rest-api"></a>Změňte dobu uchování zálohy PITR pomocí REST API
 
@@ -260,3 +305,4 @@ Další informace najdete v tématu [REST API uchovávání záloh](https://docs
 - Získejte další informace o tom, jak [obnovit databázi k určitému bodu v čase pomocí prostředí PowerShell](scripts/restore-database-powershell.md).
 - Informace o tom, jak nakonfigurovat, spravovat a obnovit dlouhodobé uchovávání automatizovaných záloh v úložišti objektů BLOB v Azure pomocí Azure Portal, najdete v tématu [Správa dlouhodobého uchovávání záloh pomocí Azure Portal](long-term-backup-retention-configure.md).
 - Informace o tom, jak nakonfigurovat, spravovat a obnovit dlouhodobé uchovávání automatizovaných záloh v úložišti objektů BLOB v Azure pomocí PowerShellu, najdete v tématu [Správa dlouhodobého uchovávání záloh pomocí PowerShellu](long-term-backup-retention-configure.md).
+- Informace o tom, jak vyladit uchování a náklady na úložiště zálohování pro spravovanou instanci Azure SQL, najdete v tématu [jemné vyladění nákladů na úložiště zálohování ve spravované instanci](https://aka.ms/mi-backup-tuning).

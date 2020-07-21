@@ -4,11 +4,12 @@ description: V tomto článku se dozvíte, jak nakonfigurovat, iniciovat a sprav
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 595291549b4d181967ea168d0dc71bc7e2237a67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248681"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514199"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Zálohování virtuálního počítače Azure pomocí Azure Backup přes REST API
 
@@ -22,7 +23,7 @@ Předpokládejme, že chcete chránit virtuální počítač "testVM" v rámci s
 
 ### <a name="discover-unprotected-azure-vms"></a>Zjišťování nechráněných virtuálních počítačů Azure
 
-Nejdřív by měl být trezor schopný identifikovat virtuální počítač Azure. Tato operace se aktivuje pomocí [operace aktualizace](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh). Je to asynchronní operace *post* , která zajišťuje, že trezor získá nejnovější seznam všech NECHRÁNĚNÝCH virtuálních počítačů v aktuálním předplatném a ukládá je do mezipaměti. Jakmile je virtuální počítač uložený v mezipaměti, služba Recovery Services bude moct přistupovat k virtuálnímu počítači a chránit ho.
+Nejdřív by měl být trezor schopný identifikovat virtuální počítač Azure. Tato operace se aktivuje pomocí [operace aktualizace](/rest/api/backup/protectioncontainers/refresh). Je to asynchronní operace *post* , která zajišťuje, že trezor získá nejnovější seznam všech NECHRÁNĚNÝCH virtuálních počítačů v aktuálním předplatném a ukládá je do mezipaměti. Jakmile je virtuální počítač uložený v mezipaměti, služba Recovery Services bude moct přistupovat k virtuálnímu počítači a chránit ho.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -36,11 +37,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Odpovědi
 
-Operace Refresh je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
+Operace Refresh je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |204 bez obsahu     |         |  OK bez vráceného obsahu      |
 |202 přijato     |         |     Přijato    |
@@ -91,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>Výběr relevantního virtuálního počítače Azure
 
- Můžete potvrdit, že se ukládá do mezipaměti [výpisem všech chráněných položek](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) v rámci předplatného a vyhledat požadovaný virtuální počítač v odpovědi. [Odezva této operace](#example-responses-1) také poskytuje informace o tom, jak Recovery Services identifikuje virtuální počítač.  Až budete s vzorem obeznámeni, můžete tento krok přeskočit a přímo přejít na [Povolení ochrany](#enabling-protection-for-the-azure-vm).
+ Můžete potvrdit, že se ukládá do mezipaměti [výpisem všech chráněných položek](/rest/api/backup/backupprotectableitems/list) v rámci předplatného a vyhledat požadovaný virtuální počítač v odpovědi. [Odezva této operace](#example-responses-1) také poskytuje informace o tom, jak Recovery Services identifikuje virtuální počítač.  Až budete s vzorem obeznámeni, můžete tento krok přeskočit a přímo přejít na [Povolení ochrany](#enabling-protection-for-the-azure-vm).
 
 Tato operace je operace *Get* .
 
@@ -103,9 +104,9 @@ Identifikátor URI *Get* má všechny požadované parametry. Není potřeba ž�
 
 #### <a name="responses"></a><a name="responses-1"></a>Odpovědi
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
-|200 OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
+|200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
 #### <a name="example-responses"></a><a name="example-responses-1"></a>Příklady odpovědí
 
@@ -161,7 +162,7 @@ V příkladu jsou výše uvedené hodnoty přeloženy na:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Povolení ochrany pro virtuální počítač Azure
 
-Až bude příslušný virtuální počítač uložený v mezipaměti a identifikovaný, vyberte zásadu, která se má chránit. Pokud chcete získat další informace o existujících zásadách v trezoru, přečtěte si téma [rozhraní API zásad seznamu](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Pak vyberte [příslušnou zásadu](/rest/api/backup/protectionpolicies/get) odkazem na název zásady. Pokud chcete vytvořit zásady, Projděte si [kurz vytvoření zásad](backup-azure-arm-userestapi-createorupdatepolicy.md). V následujícím příkladu je vybrán "DefaultPolicy".
+Až bude příslušný virtuální počítač uložený v mezipaměti a identifikovaný, vyberte zásadu, která se má chránit. Pokud chcete získat další informace o existujících zásadách v trezoru, přečtěte si téma [rozhraní API zásad seznamu](/rest/api/backup/backuppolicies/list). Pak vyberte [příslušnou zásadu](/rest/api/backup/protectionpolicies/get) odkazem na název zásady. Pokud chcete vytvořit zásady, Projděte si [kurz vytvoření zásad](backup-azure-arm-userestapi-createorupdatepolicy.md). V následujícím příkladu je vybrán "DefaultPolicy".
 
 Povolení ochrany je asynchronní operace *Put* , která vytvoří chráněnou položku.
 
@@ -179,11 +180,11 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Chcete-li vytvořit chráněnou položku, níže jsou uvedené součásti textu žádosti.
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |Vlastnosti prostředku ProtectedItem         |
 
-Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [Vytvoření chráněné položky REST API dokumentu](https://docs.microsoft.com/rest/api/backup/protecteditems/createorupdate#request-body).
+Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [Vytvoření chráněné položky REST API dokumentu](/rest/api/backup/protecteditems/createorupdate#request-body).
 
 ##### <a name="example-request-body"></a>Příklad textu žádosti
 
@@ -203,13 +204,13 @@ Následující text požadavku definuje vlastnosti vyžadované k vytvoření ch
 
 #### <a name="responses"></a>Odpovědi
 
-Vytvoření chráněné položky je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
+Vytvoření chráněné položky je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
-|200 OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
+|200 OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 přijato     |         |     Přijato    |
 
 ##### <a name="example-responses"></a>Příklady odpovědí
@@ -293,11 +294,11 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Chcete-li aktivovat zálohování na vyžádání, níže jsou uvedené součásti textu žádosti.
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
-|properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
+|properties     | [IaaSVMBackupRequest](/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |Vlastnosti BackupRequestResource         |
 
-Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [spuštění zálohování chráněných položek REST API dokumentu](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
+Úplný seznam definic těla žádosti a další podrobnosti najdete v tématu [spuštění zálohování chráněných položek REST API dokumentu](/rest/api/backup/backups/trigger#request-body).
 
 #### <a name="example-request-body"></a>Příklad textu žádosti
 
@@ -314,11 +315,11 @@ Následující text žádosti definuje vlastnosti vyžadované k aktivaci záloh
 
 ### <a name="responses"></a>Odpovědi
 
-Aktivace zálohování na vyžádání je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
+Aktivace zálohování na vyžádání je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a po dokončení této operace 200 (OK).
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |202 přijato     |         |     Přijato    |
 
@@ -418,7 +419,7 @@ Odpověď bude následovat po stejném formátu, jak je uvedeno [pro aktivaci z�
 
 ### <a name="stop-protection-and-delete-data"></a>Zastavení ochrany a odstranění dat
 
-Chcete-li odebrat ochranu na chráněném virtuálním počítači a odstranit také data záloh, proveďte operaci odstranění, jak je [zde](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)popsáno.
+Chcete-li odebrat ochranu na chráněném virtuálním počítači a odstranit také data záloh, proveďte operaci odstranění, jak je [zde](/rest/api/backup/protecteditems/delete)popsáno.
 
 Zastavení ochrany a odstranění dat je operace *odstranění* .
 
@@ -434,11 +435,11 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 
 #### <a name="responses"></a><a name="responses-2"></a>Odpovědi
 
-*Odstranění* ochrany je [asynchronní operace](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
+*Odstranění* ochrany je [asynchronní operace](../azure-resource-manager/management/async-operations.md). To znamená, že tato operace vytvoří další operaci, která musí být sledována samostatně.
 
 Vrátí dvě odpovědi: 202 (přijato) při vytvoření jiné operace a až 204 (obsah) po dokončení této operace.
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |204. obsah     |         |  Obsah       |
 |202 přijato     |         |     Přijato    |

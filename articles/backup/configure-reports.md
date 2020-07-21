@@ -3,11 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484980"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513621"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -17,7 +18,7 @@ Běžným požadavkem pro správce zálohování je získat přehled o zálohác
 - Auditování záloh a obnovení.
 - Identifikujte klíčové trendy v různých úrovních členitosti.
 
-Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá [protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) a [sešity Azure](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview). Tyto prostředky vám pomůžou získat přehled o vašich zálohách napříč celou záloze. Tento článek vysvětluje, jak konfigurovat a zobrazovat sestavy Azure Backup.
+Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá [protokoly Azure monitor](../azure-monitor/log-query/get-started-portal.md) a [sešity Azure](../azure-monitor/platform/workbooks-overview.md). Tyto prostředky vám pomůžou získat přehled o vašich zálohách napříč celou záloze. Tento článek vysvětluje, jak konfigurovat a zobrazovat sestavy Azure Backup.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
@@ -25,7 +26,7 @@ Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá
 - Pro úlohy DPM jsou sestavy zálohování podporované pro DPM verze 5.1.363.0 a novější a verze agenta 2.0.9127.0 a vyšší.
 - Pro úlohy MABS jsou sestavy zálohování podporované pro MABS verze 13.0.415.0 a vyšší a verze agenta 2.0.9170.0 a vyšší.
 - Sestavy zálohování můžete zobrazit ve všech zálohovaných položkách, trezorech, předplatných a oblastech, pokud jsou data odesílána do Log Analyticsho pracovního prostoru, ke kterému má uživatel přístup. Chcete-li zobrazit sestavy pro sadu trezorů, stačí mít přístup čtenář k pracovnímu prostoru Log Analytics, do kterého trezory odesílají svá data. Nemusíte mít přístup k jednotlivým trezorům.
-- Pokud jste uživatelem [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) , který má delegovaný přístup k předplatným vašich zákazníků, můžete pomocí těchto sestav s Azure Lighthouse zobrazit sestavy pro všechny klienty.
+- Pokud jste uživatelem [Azure Lighthouse](../lighthouse/index.yml) , který má delegovaný přístup k předplatným vašich zákazníků, můžete pomocí těchto sestav s Azure Lighthouse zobrazit sestavy pro všechny klienty.
 - V současné době je možné data zobrazit v sestavách zálohování v rámci maximálního počtu 100 Log Analytics pracovních prostorů (mezi klienty).
 - Data pro úlohy zálohování protokolů aktuálně nejsou v sestavách zobrazená.
 
@@ -37,22 +38,22 @@ Chcete-li začít používat sestavy, postupujte podle těchto kroků.
 
 Nastavte jeden nebo více pracovních prostorů Log Analytics pro uložení dat generování sestav zálohování. Umístění a předplatné, kde se dá tento Log Analytics pracovní prostor vytvořit, nezávisí na umístění a předplatném, kde existují vaše trezory.
 
-Pokud chcete nastavit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Pokud chcete nastavit pracovní prostor Log Analytics, přečtěte si téma [Vytvoření pracovního prostoru Log Analytics v Azure Portal](../azure-monitor/learn/quick-create-workspace.md).
 
-Ve výchozím nastavení jsou data v pracovním prostoru Log Analytics uchována po dobu 30 dnů. Chcete-li zobrazit data pro časový horizont delší dobu, změňte dobu uchování Log Analytics pracovního prostoru. Pokud chcete změnit dobu uchovávání, přečtěte si téma [Správa využití a nákladů pomocí protokolů Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage).
+Ve výchozím nastavení jsou data v pracovním prostoru Log Analytics uchována po dobu 30 dnů. Chcete-li zobrazit data pro časový horizont delší dobu, změňte dobu uchování Log Analytics pracovního prostoru. Pokud chcete změnit dobu uchovávání, přečtěte si téma [Správa využití a nákladů pomocí protokolů Azure monitor](../azure-monitor/platform/manage-cost-storage.md).
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. Konfigurace nastavení diagnostiky pro vaše trezory
 
 Azure Resource Manager prostředky, jako jsou například trezory Recovery Services, zaznamenávají informace o plánovaných operacích a uživatelem aktivované operace jako diagnostická data.
 
-V části monitorování vašeho trezoru Recovery Services vyberte **nastavení diagnostiky** a zadejte cíl pro diagnostická data trezoru Recovery Services. Další informace o použití diagnostických událostí najdete v tématu [použití nastavení diagnostiky pro trezory Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
+V části monitorování vašeho trezoru Recovery Services vyberte **nastavení diagnostiky** a zadejte cíl pro diagnostická data trezoru Recovery Services. Další informace o použití diagnostických událostí najdete v tématu [použití nastavení diagnostiky pro trezory Recovery Services](./backup-azure-diagnostic-events.md).
 
 ![Podokno nastavení diagnostiky](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup také poskytuje integrovanou Azure Policy definici, která automatizuje konfiguraci nastavení diagnostiky pro všechny trezory v daném oboru. Informace o tom, jak používat tuto zásadu, najdete v tématu [Konfigurace nastavení diagnostiky trezoru ve velkém měřítku](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics).
+Azure Backup také poskytuje integrovanou Azure Policy definici, která automatizuje konfiguraci nastavení diagnostiky pro všechny trezory v daném oboru. Informace o tom, jak používat tuto zásadu, najdete v tématu [Konfigurace nastavení diagnostiky trezoru ve velkém měřítku](./azure-policy-configure-diagnostics.md).
 
 > [!NOTE]
-> Po dokončení konfigurace diagnostiky může trvat až 24 hodin, než se počáteční nabízení dat dokončí. Po zahájení toku dat do Log Analytics pracovního prostoru se data v sestavách nemusí okamžitě zobrazovat, protože v sestavách není zobrazená data pro aktuální částečný den. Další informace najdete v tématu [konvence používané v sestavách zálohování](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports). Doporučujeme, abyste začali zobrazovat sestavy dvou dnů po konfiguraci trezorů, aby odesílaly data do Log Analytics.
+> Po dokončení konfigurace diagnostiky může trvat až 24 hodin, než se počáteční nabízení dat dokončí. Po zahájení toku dat do Log Analytics pracovního prostoru se data v sestavách nemusí okamžitě zobrazovat, protože v sestavách není zobrazená data pro aktuální částečný den. Další informace najdete v tématu [konvence používané v sestavách zálohování](#conventions-used-in-backup-reports). Doporučujeme, abyste začali zobrazovat sestavy dvou dnů po konfiguraci trezorů, aby odesílaly data do Log Analytics.
 
 #### <a name="3-view-reports-in-the-azure-portal"></a>3. zobrazení sestav v Azure Portal
 
@@ -71,7 +72,7 @@ Sestava obsahuje různé karty:
 
 - **Shrnutí**: na této kartě můžete získat podrobný přehled o vaší nemovitosti k zálohování. Můžete získat rychlý přehled o celkovém počtu zálohovaných položek, celkovém využitém cloudovém úložišti, počtu chráněných instancí a četnosti úspěšnosti úlohy na jeden typ pracovního vytížení. Podrobnější informace o konkrétním typu artefaktu zálohování získáte, když přejdete na příslušné karty.
 
-   ![Karta Souhrn](./media/backup-azure-configure-backup-reports/summary.png)
+   ![Karta se shrnutím](./media/backup-azure-configure-backup-reports/summary.png)
 
 - **Zálohované položky**: pomocí této karty můžete zobrazit informace a trendy v cloudovém úložišti spotřebovaném na úrovni záložních položek. Pokud například použijete SQL v zálohování virtuálního počítače Azure, můžete zobrazit cloudové úložiště spotřebované pro každou zálohovanou databázi SQL. Můžete se také rozhodnout, že se budou zobrazovat data pro záložní položky určitého stavu ochrany. Například když vyberete dlaždici **zastavená ochrana** v horní části karty, vyfiltruje všechny widgety pod tím, aby zobrazovaly data pouze pro zálohované položky ve stavu ochrana zastaveno.
 
@@ -102,7 +103,7 @@ Vyberte tlačítko připnout v horní části každého widgetu a připněte pom
 
 ## <a name="cross-tenant-reports"></a>Sestavy mezi klienty
 
-Pokud používáte [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) s delegovaným přístupem k předplatným napříč více klientskými prostředími, můžete použít výchozí filtr předplatného. Vyberte tlačítko Filtr v pravém horním rohu Azure Portal a zvolte všechna předplatná, pro která chcete zobrazit data. Díky tomu můžete v rámci svých klientů vybrat Log Analytics pracovní prostory pro zobrazení víceklientské sestav.
+Pokud používáte [Azure Lighthouse](../lighthouse/index.yml) s delegovaným přístupem k předplatným napříč více klientskými prostředími, můžete použít výchozí filtr předplatného. Vyberte tlačítko Filtr v pravém horním rohu Azure Portal a zvolte všechna předplatná, pro která chcete zobrazit data. Díky tomu můžete v rámci svých klientů vybrat Log Analytics pracovní prostory pro zobrazení víceklientské sestav.
 
 ## <a name="conventions-used-in-backup-reports"></a>Konvence používané v sestavách zálohování
 
@@ -130,8 +131,8 @@ Widgety v sestavě zálohování využívají dotazy Kusto, které se spouštěj
 
 - Předchozí Power BI App Template pro vytváření sestav, která zdrojová data z účtu služby Azure Storage, je na cestě k vyřazení. Pro zobrazení sestav doporučujeme spustit odesílání diagnostických dat trezoru pro Log Analytics.
 
-- Kromě toho [schéma v1](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) odesílání diagnostických dat do účtu úložiště nebo v pracovním prostoru La je také na cestě k vyřazení. To znamená, že pokud jste napsali vlastní dotazy nebo automatizace založené na schématu V1, doporučujeme tyto dotazy aktualizovat tak, aby používaly aktuálně podporované schéma v2.
+- Kromě toho [schéma v1](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) odesílání diagnostických dat do účtu úložiště nebo v pracovním prostoru La je také na cestě k vyřazení. To znamená, že pokud jste napsali vlastní dotazy nebo automatizace založené na schématu V1, doporučujeme tyto dotazy aktualizovat tak, aby používaly aktuálně podporované schéma v2.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o monitorování a vytváření sestav pomocí Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)
+[Další informace o monitorování a vytváření sestav pomocí Azure Backup](./backup-azure-monitor-alert-faq.md)

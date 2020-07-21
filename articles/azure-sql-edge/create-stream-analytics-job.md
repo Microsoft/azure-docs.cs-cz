@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: fc6ab2c9c844350e83674ed96a0e79289c7f5b43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e1f98cffd17d0a8823cc5849830667fcdad1212
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255411"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515219"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Vytvoření úlohy Azure Stream Analytics v Azure SQL Edge (Preview) 
 
@@ -39,12 +39,12 @@ Pokud se navíc jako výstupní datový proud používá Azure SQL Edge, SQL Ser
 
 Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy a výstupy streamu.
 
-| Typ zdroje dat | Vstup | Výstup | Description |
+| Typ zdroje dat | Vstup | Výstup | Popis |
 |------------------|-------|--------|------------------|
-| Centrum Azure IoT Edge | Ano | Ano | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| Databáze SQL | N | Ano | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
-| Azure Blob Storage | N | Ano | Zdroj dat pro zápis dat do objektu BLOB v účtu úložiště Azure. |
-| Kafka | Ano | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je v tuto chvíli dostupný jenom pro verze Intel nebo AMD serveru Azure SQL Edge. Není k dispozici pro verzi ARM64 serveru Azure SQL Edge.|
+| Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamovaná data do centra Azure IoT Edge. Další informace najdete v tématu [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
+| SQL Database | N | A | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. Databáze může být místní databáze ve službě Azure SQL Edge nebo Vzdálená databáze ve SQL Server nebo Azure SQL Database.|
+| Azure Blob Storage | N | A | Zdroj dat pro zápis dat do objektu BLOB v účtu úložiště Azure. |
+| Kafka | A | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je v tuto chvíli dostupný jenom pro verze Intel nebo AMD serveru Azure SQL Edge. Není k dispozici pro verzi ARM64 serveru Azure SQL Edge.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Příklad: vytvoření objektu vstupu/výstupu externího datového proudu pro Azure IoT Edge hub
 
@@ -153,7 +153,7 @@ SELECT
 Timestamp as [Time],
 [Temperature] As [Temperature],
 GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''Score'') as ChangePointScore,
-GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly,
+GetRecordPropertyValue(AnomalyDetection_ChangePoint(Temperature, 80, 1200) OVER(LIMIT DURATION(minute, 20)), ''IsAnomaly'') as IsChangePointAnomaly
 INTO TemperatureAnomalies FROM MyEdgeHubInput2;
 '
 go
@@ -205,7 +205,7 @@ exec sys.sp_get_streaming_job @name=N'StreamingJob1'
 | Zpracování | Úloha streamování je spuštěná a zpracovává vstupy. Tento stav označuje stav v pořádku pro úlohu streamování. |
 | Snížený výkon | Úloha streamování je spuštěná, ale během zpracování vstupu došlo k nějakým chybám, které nejsou závažné. Vstupní úloha bude pokračovat v běhu, ale zahodí vstupy, které nastanou chyby. |
 | Zastaveno | Úloha streamování se zastavila. |
-| Failed | Úloha streamování se nezdařila. To je obvykle indikace závažné chyby během zpracování. |
+| Neúspěšný | Úloha streamování se nezdařila. To je obvykle indikace závažné chyby během zpracování. |
 
 ## <a name="next-steps"></a>Další kroky
 

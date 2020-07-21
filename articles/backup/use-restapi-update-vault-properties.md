@@ -4,11 +4,12 @@ description: V tomto článku se dozvíte, jak aktualizovat konfiguraci trezoru 
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248222"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513111"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizace konfigurace služby Azure Recovery Services trezoru pomocí REST API
 
@@ -24,7 +25,7 @@ Proto je třeba pečlivě určit, jestli se má v závislosti na scénáři zak�
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Načíst stav obnovitelného odstranění pomocí REST API
 
-Ve výchozím nastavení bude stav obnovitelného odstranění povolen pro všechny nově vytvořené Recovery Services trezory. Pokud chcete načíst nebo aktualizovat stav obnovitelného odstranění trezoru, použijte [dokument REST API](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) související s konfigurací úložiště záloh.
+Ve výchozím nastavení bude stav obnovitelného odstranění povolen pro všechny nově vytvořené Recovery Services trezory. Pokud chcete načíst nebo aktualizovat stav obnovitelného odstranění trezoru, použijte [dokument REST API](/rest/api/backup/backupresourcevaultconfigs) související s konfigurací úložiště záloh.
 
 Pokud chcete načíst aktuální stav obnovitelného odstranění trezoru, použijte následující operaci *Get* .
 
@@ -42,9 +43,9 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Úspěšná odpověď pro operaci GET je uvedená níže:
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Příklad odpovědi
 
@@ -80,13 +81,13 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 K vytvoření textu žádosti se použijí tyto společné definice.
 
-Další podrobnosti najdete [v dokumentaci k REST API](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
+Další podrobnosti najdete [v dokumentaci k REST API](/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Name  |Požaduje se  |Typ  |Description  |
+|Název  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
 |značk     |         |   Řetězec      |  Volitelné eTag       |
 |location     |  true       |Řetězec         |   Umístění prostředku      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Vlastnosti trezoru       |
 |tags     |         | Objekt        |     Značky prostředků    |
 
 #### <a name="example-request-body"></a>Příklad textu žádosti
@@ -106,9 +107,9 @@ Následující příklad slouží k aktualizaci stavu obnovitelného odstraněn�
 
 Úspěšná odpověď pro operaci PATCH je uvedená níže:
 
-|Name  |Typ  |Description  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Příklad odpovědi
 
